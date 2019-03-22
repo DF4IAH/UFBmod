@@ -3,7 +3,7 @@ Ultra-Fine-Business Modulation - Trying a new data modulation to compete with Lo
 
 
 ## Topics
-UFMmod is intented to be a digital spreadband data modulation with low power and high range performance.
+UFMmod is intented to be a digital Spread Spectrum Modulation for data transfer with Low Power and High Range performance. It is non-chirp based, instead it uses Pseudo-Noise coding sequence.
 
 
 ## The frequencies to be used by UFMmod
