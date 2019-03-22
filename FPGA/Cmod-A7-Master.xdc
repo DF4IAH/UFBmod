@@ -130,3 +130,17 @@
 #set_property -dict { PACKAGE_PIN R19   IOSTANDARD LVCMOS33 } [get_ports { RamWEn     }]; #IO_L10N_T1_D15_14 Sch=sram-we
 #set_property -dict { PACKAGE_PIN N19   IOSTANDARD LVCMOS33 } [get_ports { RamCEn     }]; #IO_L9N_T1_DQS_D13_14 Sch=sram-ce
 
+
+set_property PACKAGE_PIN V14 [get_ports {btn[1]}]
+set_property PACKAGE_PIN U16 [get_ports {led[1]}]
+set_property PACKAGE_PIN V13 [get_ports {led[0]}]
+set_property PACKAGE_PIN U14 [get_ports {btn[0]}]
+
+set_property IOSTANDARD LVCMOS33 [get_ports {btn[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {btn[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {led[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {led[0]}]
+
+set_property BITSTREAM.GENERAL.COMPRESS TRUE [current_design]
+set_property BITSTREAM.CONFIG.CONFIGRATE 33 [current_design]
+set_property CONFIG_MODE SPIx4 [current_design]

@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+
+# XILINX Vivado
+CMOD_A735T.cache/
+CMOD_A735T.hw/
+CMOD_A735T.runs/
+
+
