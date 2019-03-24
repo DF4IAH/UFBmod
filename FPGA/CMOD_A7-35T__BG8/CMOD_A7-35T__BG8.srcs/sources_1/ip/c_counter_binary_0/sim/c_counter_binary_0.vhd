@@ -59,7 +59,8 @@ USE c_counter_binary_v12_0_12.c_counter_binary_v12_0_12;
 ENTITY c_counter_binary_0 IS
   PORT (
     CLK : IN STD_LOGIC;
-    Q : OUT STD_LOGIC_VECTOR(25 DOWNTO 0)
+    SCLR : IN STD_LOGIC;
+    Q : OUT STD_LOGIC_VECTOR(26 DOWNTO 0)
   );
 END c_counter_binary_0;
 
@@ -99,15 +100,17 @@ ARCHITECTURE c_counter_binary_0_arch OF c_counter_binary_0 IS
       SINIT : IN STD_LOGIC;
       UP : IN STD_LOGIC;
       LOAD : IN STD_LOGIC;
-      L : IN STD_LOGIC_VECTOR(25 DOWNTO 0);
+      L : IN STD_LOGIC_VECTOR(26 DOWNTO 0);
       THRESH0 : OUT STD_LOGIC;
-      Q : OUT STD_LOGIC_VECTOR(25 DOWNTO 0)
+      Q : OUT STD_LOGIC_VECTOR(26 DOWNTO 0)
     );
   END COMPONENT c_counter_binary_v12_0_12;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF Q: SIGNAL IS "XIL_INTERFACENAME q_intf, LAYERED_METADATA undef";
   ATTRIBUTE X_INTERFACE_INFO OF Q: SIGNAL IS "xilinx.com:signal:data:1.0 q_intf DATA";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF SCLR: SIGNAL IS "XIL_INTERFACENAME sclr_intf, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF SCLR: SIGNAL IS "xilinx.com:signal:reset:1.0 sclr_intf RST";
   ATTRIBUTE X_INTERFACE_PARAMETER OF CLK: SIGNAL IS "XIL_INTERFACENAME clk_intf, ASSOCIATED_BUSIF q_intf:thresh0_intf:l_intf:load_intf:up_intf:sinit_intf:sset_intf, ASSOCIATED_RESET SCLR, ASSOCIATED_CLKEN CE, FREQ_HZ 10000000, PHASE 0.000, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF CLK: SIGNAL IS "xilinx.com:signal:clock:1.0 clk_intf CLK";
 BEGIN
@@ -116,11 +119,11 @@ BEGIN
       C_IMPLEMENTATION => 0,
       C_VERBOSITY => 0,
       C_XDEVICEFAMILY => "artix7",
-      C_WIDTH => 26,
+      C_WIDTH => 27,
       C_HAS_CE => 0,
-      C_HAS_SCLR => 0,
+      C_HAS_SCLR => 1,
       C_RESTRICT_COUNT => 1,
-      C_COUNT_TO => "10110111000110101111111111",
+      C_COUNT_TO => "101111101011110000011111111",
       C_COUNT_BY => "1",
       C_COUNT_MODE => 0,
       C_THRESH0_VALUE => "1",
@@ -139,12 +142,12 @@ BEGIN
     PORT MAP (
       CLK => CLK,
       CE => '1',
-      SCLR => '0',
+      SCLR => SCLR,
       SSET => '0',
       SINIT => '0',
       UP => '1',
       LOAD => '0',
-      L => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 26)),
+      L => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 27)),
       Q => Q
     );
 END c_counter_binary_0_arch;

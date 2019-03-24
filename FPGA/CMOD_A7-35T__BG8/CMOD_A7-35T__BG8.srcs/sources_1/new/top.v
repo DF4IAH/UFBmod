@@ -84,7 +84,7 @@ module top(
     input uart_txd_in,
     output uart_rxd_out,
 
-    output qspi_cs,
+    tri1 qspi_cs,
     tri0 [3:0] qspi_dq,
 
     tri1 crypto_sda,
@@ -108,44 +108,168 @@ module top(
 
 
     /* Clock */
-    wire clk_48mhz;
+    wire clk_100mhz;
 
     /* Counter output */
-    wire [25:0] q_48mhz;
+    wire [25:0] q_100mhz;
 
+
+
+    /* QSPI Flash */
+    wire flash_ss_t;
+    wire flash_ss_o;
+    wire flash_ss_i;
+    wire flash_io0_t;
+    wire flash_io0_o;
+    wire flash_io0_i;
+    wire flash_io1_t;
+    wire flash_io1_o;
+    wire flash_io1_i;
+    wire flash_io2_t;
+    wire flash_io2_o;
+    wire flash_io2_i;
+    wire flash_io3_t;
+    wire flash_io3_o;
+    wire flash_io3_i;
+
+    IOBUF #(
+        .DRIVE(12),
+        .IOSTANDARD("LVCMOS33"),
+        .SLEW("FAST")
+    ) flash_ss_iobuf (
+        .I(flash_ss_o),
+        .O(flash_ss_i),
+        .T(flash_ss_t),
+        .IO(qspi_cs)
+    );
+
+    IOBUF #(
+        .DRIVE(12),
+        .IOSTANDARD("LVCMOS33"),
+        .SLEW("FAST")
+    ) flash_io_iobuf_0 (
+        .I(flash_io0_o),
+        .O(flash_io0_i),
+        .T(flash_io0_t),
+        .IO(qspi_dq[0])
+    );
+
+    IOBUF #(
+        .DRIVE(12),
+        .IOSTANDARD("LVCMOS33"),
+        .SLEW("FAST")
+    ) flash_io_iobuf_1 (
+        .I(flash_io1_o),
+        .O(flash_io1_i),
+        .T(flash_io1_t),
+        .IO(qspi_dq[1])
+    );
+
+    IOBUF #(
+        .DRIVE(12),
+        .IOSTANDARD("LVCMOS33"),
+        .SLEW("FAST")
+    ) flash_io_iobuf_2 (
+        .I(flash_io2_o),
+        .O(flash_io2_i),
+        .T(flash_io2_t),
+        .IO(qspi_dq[2])
+    );
+
+    IOBUF #(
+        .DRIVE(12),
+        .IOSTANDARD("LVCMOS33"),
+        .SLEW("FAST")
+    ) flash_io_iobuf_3 (
+        .I(flash_io3_o),
+        .O(flash_io3_i),
+        .T(flash_io3_t),
+        .IO(qspi_dq[3])
+    );
+
+
+    /* RAM inout Data drivers */
+    wire [7:0] mem_i;
+    wire [7:0] mem_o;
+    wire [7:0] mem_t;
+
+    genvar i2;
+    generate
+        for (i2 = 0; i2 <= 7; i2 = i2 + 1) begin : ram_d_iobuf_loop
+           IOBUF #(
+                .DRIVE(12),
+                .IOSTANDARD("LVCMOS33"),
+                .SLEW("FAST")
+            ) ram_d_iobuf (
+                .I(mem_o[i2]),
+                .O(mem_i[i2]),
+                .T(mem_t[i2]),
+                .IO(MemDB[i2])
+            );
+        end 
+    endgenerate
 
 
     /* AXI Block Design */
     AXI_bd_0 top_axi(
-        .sys_clock(sysclk),
-        .reset(btn[0]),
-        .AXI_bd_clk_48mhz(clk_48mhz),
+        .AXI_bd_sys_clock(sysclk),
+        .AXI_bd_reset(btn[0]),
+        .AXI_bd_clk_100mhz_out(clk_100mhz),
 
-        .Vaux4_0(  { xa_p[0], xa_n[0] } ),
-        .Vaux12_0( { xa_p[1], xa_n[1] } ),
+        .AXI_bd_In0(btn[1]),
 
-        .cellular_ram(),
-        .qspi_flash(),
-        .usb_uart()
+        .AXI_bd_usb_uart_sout(uart_rxd_out),
+        .AXI_bd_usb_uart_sin( uart_txd_in),
+
+        .AXI_bd_vauxp4(  xa_p[0] ),
+        .AXI_bd_vauxn4(  xa_n[0] ),
+        .AXI_bd_vauxp12( xa_p[1] ),
+        .AXI_bd_vauxn12( xa_n[1] ),
+
+        .AXI_bd_qspi_flash_ss_t(flash_ss_t),
+        .AXI_bd_qspi_flash_ss_o(flash_ss_o),
+        .AXI_bd_qspi_flash_ss_i(flash_ss_i),
+        .AXI_bd_qspi_flash_io0_t(flash_io0_t),
+        .AXI_bd_qspi_flash_io0_o(flash_io0_o),
+        .AXI_bd_qspi_flash_io0_i(flash_io0_i),
+        .AXI_bd_qspi_flash_io1_t(flash_io1_t),
+        .AXI_bd_qspi_flash_io1_o(flash_io1_o),
+        .AXI_bd_qspi_flash_io1_i(flash_io1_i),
+        .AXI_bd_qspi_flash_io2_t(flash_io2_t),
+        .AXI_bd_qspi_flash_io2_o(flash_io2_o),
+        .AXI_bd_qspi_flash_io2_i(flash_io2_i),
+        .AXI_bd_qspi_flash_io3_t(flash_io3_t),
+        .AXI_bd_qspi_flash_io3_o(flash_io3_o),
+        .AXI_bd_qspi_flash_io3_i(flash_io3_i),
+
+        .AXI_bd_cellular_ram_mem_a(MemAdr),
+        .AXI_bd_cellular_ram_mem_dq_t(mem_t),
+        .AXI_bd_cellular_ram_mem_dq_o(mem_o),
+        .AXI_bd_cellular_ram_mem_dq_i(mem_i),
+        .AXI_bd_cellular_ram_mem_cen(RamCEn),
+        .AXI_bd_cellular_ram_mem_wen(RamWEn),
+        .AXI_bd_cellular_ram_mem_oen(RamOEn)
     );
 
 
-    /* 48 MHz - 1 sec counter */
-    c_counter_binary_0 ctr48mhz(
-        .CLK(clk_48mhz),
 
-        .Q(q_48mhz)
+    /* 100 MHz - 1 sec counter */
+    c_counter_binary_0 ctr100mhz(
+        .CLK(clk_100mhz),
+        .SCLR(btn[0]),
+
+        .Q(q_100mhz)
     );
 
 
     /* led[1:0] <-- btn[1] */
-    assign led[0] = !btn[1];
-    assign led[1] =  btn[1] & !q_48mhz[0];
+    assign led[0] = !btn[0] &  !btn[1];
+    assign led[1] = !btn[0] &   btn[1];
 
     /* ledrgb_X <-- counter(clk_48mhz) */
-    assign ledrgb_r = q_48mhz[25] & q_48mhz[0];
-    assign ledrgb_g = q_48mhz[24] & q_48mhz[0];
-    assign ledrgb_b = q_48mhz[23] & q_48mhz[0];
+    assign ledrgb_r = q_100mhz[25] & q_100mhz[1] & q_100mhz[0];
+    assign ledrgb_g = q_100mhz[24] & q_100mhz[1] & q_100mhz[0];
+    assign ledrgb_b = q_100mhz[23] & q_100mhz[1] & q_100mhz[0];
 
 
     /* PMOD interface */

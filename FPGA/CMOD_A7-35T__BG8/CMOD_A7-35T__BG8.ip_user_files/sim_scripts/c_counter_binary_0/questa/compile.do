@@ -29,6 +29,8 @@ vmap c_counter_binary_v12_0_12 questa_lib/msim/c_counter_binary_v12_0_12
 
 vlog -work xil_defaultlib -64 -sv \
 "C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
+"C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv" \
+"C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm -64 -93 \
 "C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_VCOMP.vhd" \
@@ -65,7 +67,6 @@ vcom -work c_counter_binary_v12_0_12 -64 -93 \
 
 vcom -work xil_defaultlib -64 -93 \
 "../../../../CMOD_A7-35T__BG8.srcs/sources_1/ip/c_counter_binary_0/sim/c_counter_binary_0.vhd" \
-
 
 vlog -work xil_defaultlib \
 "glbl.v"
