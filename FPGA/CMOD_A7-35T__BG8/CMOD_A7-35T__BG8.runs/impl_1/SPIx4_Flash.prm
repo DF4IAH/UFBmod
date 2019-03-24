@@ -6,9 +6,9 @@ Interface          SPIX4
 Size               4M
 Start Address      0x00000000
 End Address        0x003FFFFF
-Checksum           0x3C3D38C9
+Checksum           0x3C32AFCC
 Fill Value         0xFF
 
 Addr1         Addr2         Date                    File(s)                                                                                Checksum
-0x00000000    0x0003A54F    Mar 23 21:20:36 2019    Z:/nfs_ds_nfs/git/UFBmod/FPGA/CMOD_A7-35T__BG8/CMOD_A7-35T__BG8.runs/impl_1/top.bit    0x001EE379
-File Checksum Total                                                                                                                        0x001EE379
+0x00000000    0x0003B043    Mar 24 00:25:35 2019    Z:/nfs_ds_nfs/git/UFBmod/FPGA/CMOD_A7-35T__BG8/CMOD_A7-35T__BG8.runs/impl_1/top.bit    0x001F4388
+File Checksum Total                                                                                                                        0x001F4388
