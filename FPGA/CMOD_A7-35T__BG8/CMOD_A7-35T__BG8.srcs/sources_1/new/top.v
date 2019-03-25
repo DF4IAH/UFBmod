@@ -267,9 +267,9 @@ module top(
     assign led[1] = !btn[0] &   btn[1];
 
     /* ledrgb_X <-- counter(clk_48mhz) */
-    assign ledrgb_r = q_100mhz[25] & q_100mhz[1] & q_100mhz[0];
-    assign ledrgb_g = q_100mhz[24] & q_100mhz[1] & q_100mhz[0];
-    assign ledrgb_b = q_100mhz[23] & q_100mhz[1] & q_100mhz[0];
+    assign ledrgb_r = q_100mhz[25]  || q_100mhz[1] || q_100mhz[0];
+    assign ledrgb_g = q_100mhz[24]  || q_100mhz[1] || q_100mhz[0];
+    assign ledrgb_b = q_100mhz[23]  || q_100mhz[1] || q_100mhz[0];
 
 
     /* PMOD interface */
