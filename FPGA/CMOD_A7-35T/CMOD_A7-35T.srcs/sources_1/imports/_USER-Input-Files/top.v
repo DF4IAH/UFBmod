@@ -26,14 +26,14 @@ module top(
 
     tri0 [7:0] ja,
 
-    tri0 pio1,
+    output pio1,
     tri0 pio2,
     tri0 pio3,
     tri0 pio4,
     tri0 pio5,
     tri0 pio6,
     tri0 pio7,
-    tri0 pio8,
+    output pio8,
     tri0 pio9,
     tri0 pio10,
     tri0 pio11,
@@ -266,10 +266,13 @@ module top(
     assign led[0] = btn[0];
     assign led[1] = btn[1];
 
-    /* ledrgb_X <-- counter(clk_100mhz) */
-    assign ledrgb_r = q_100mhz[26]  || q_100mhz[1] || q_100mhz[0];
-    assign ledrgb_g = q_100mhz[25]  || q_100mhz[1] || q_100mhz[0];
-    assign ledrgb_b = q_100mhz[24]  || q_100mhz[1] || q_100mhz[0];
+    /* ledrgb_X <-- LowActive ( counter(clk_100mhz) and 1/4-Dimmed  and  not-RESET ) */
+    assign ledrgb_r = !((q_100mhz[26]  &&  q_100mhz[0])  && !btn[0]);
+    assign ledrgb_g = !((q_100mhz[25]  &&  q_100mhz[0])  && !btn[0]);
+    assign ledrgb_b = !((q_100mhz[24]  &&  q_100mhz[0])  && !btn[0]);
+
+    assign pio1 = q_100mhz[23];
+    assign pio8 = q_100mhz[22];
 
 
     /* PMOD interface */
@@ -277,14 +280,14 @@ module top(
 
 
     /* PIOs interface */
-    assign pio1  = 1'bZ;
+    //assign pio1  = 1'bZ;
     assign pio2  = 1'bZ;
     assign pio3  = 1'bZ;
     assign pio4  = 1'bZ;
     assign pio5  = 1'bZ;
     assign pio6  = 1'bZ;
     assign pio7  = 1'bZ;
-    assign pio8  = 1'bZ;
+    //assign pio8  = 1'bZ;
     assign pio9  = 1'bZ;
     assign pio10 = 1'bZ;
     assign pio11 = 1'bZ;
