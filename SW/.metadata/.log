@@ -1489,3 +1489,6 @@ For each bit:
 "microblaze_0_local_memory_ilmb_bram_if_cntlr": {},
 "xadc_wiz_0": {},
 }]. Thread: main
+
+!ENTRY ilg.gnuarmeclipse.packs.data 4 1 2019-03-25 14:41:18.871
+!MESSAGE File .repos.xml does not exist, using defaults.
