@@ -111,7 +111,7 @@ module top(
     wire clk_100mhz;
 
     /* Counter output */
-    wire [26:0] q_100mhz;
+    wire [27:0] q_100mhz;
 
 
 
@@ -266,13 +266,13 @@ module top(
     assign led[0] = btn[0];
     assign led[1] = btn[1];
 
-    /* ledrgb_X <-- LowActive ( counter(clk_100mhz) and 1/4-Dimmed  and  not-RESET ) */
-    assign ledrgb_r = !((q_100mhz[24]  &&  q_100mhz[0])  && !btn[0]);
-    assign ledrgb_g = !((q_100mhz[25]  &&  q_100mhz[0])  && !btn[0]);
-    assign ledrgb_b = !((q_100mhz[26]  &&  q_100mhz[0])  && !btn[0]);
+    /* ledrgb_X <-- LowActive ( counter(clk_100mhz) and 1/2-Dimmed ) */
+    assign ledrgb_r = !(q_100mhz[25]  &&  q_100mhz[0]);
+    assign ledrgb_g = !(q_100mhz[26]  &&  q_100mhz[0]);
+    assign ledrgb_b = !(q_100mhz[27]  &&  q_100mhz[0]);
 
-    assign pio1 = q_100mhz[23];
-    assign pio8 = q_100mhz[22];
+    assign pio1 = q_100mhz[24];
+    assign pio8 = q_100mhz[23];
 
 
     /* PMOD interface */

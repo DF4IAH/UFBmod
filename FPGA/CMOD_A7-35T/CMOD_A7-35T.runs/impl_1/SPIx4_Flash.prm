@@ -6,9 +6,9 @@ Interface          SPIX4
 Size               4M
 Start Address      0x00000000
 End Address        0x003FFFFF
-Checksum           0x2DF93B0F
+Checksum           0x2ED0B419
 Fill Value         0xFF
 
-Addr1         Addr2         Date                    File(s)                                                                       Checksum
-0x00000000    0x0012F81B    Mar 25 13:29:40 2019    C:/Users/habel/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.runs/impl_1/top.bit    0x011E5EF3
-File Checksum Total                                                                                                               0x011E5EF3
+Addr1         Addr2         Date                    File(s)                                                                        Checksum
+0x00000000    0x001221F3    Mar 25 21:41:46 2019    C:/Users/espero/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.runs/impl_1/top.bit    0x01208625
+File Checksum Total                                                                                                                0x01208625

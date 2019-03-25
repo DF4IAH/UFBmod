@@ -56,7 +56,7 @@ COMPONENT c_counter_binary_0
   PORT (
     CLK : IN STD_LOGIC;
     SCLR : IN STD_LOGIC;
-    Q : OUT STD_LOGIC_VECTOR(26 DOWNTO 0)
+    Q : OUT STD_LOGIC_VECTOR(27 DOWNTO 0)
   );
 END COMPONENT;
 -- COMP_TAG_END ------ End COMPONENT Declaration ------------

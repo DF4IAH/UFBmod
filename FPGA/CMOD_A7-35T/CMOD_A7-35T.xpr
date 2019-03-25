@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="39" Path="C:/Users/habel/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.xpr">
+<Project Version="7" Minor="39" Path="C:/Users/espero/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="e3df88b98deb4944bb481896ea97d4f8"/>
@@ -39,13 +39,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="8"/>
-    <Option Name="WTModelSimExportSim" Val="8"/>
-    <Option Name="WTQuestaExportSim" Val="8"/>
-    <Option Name="WTIesExportSim" Val="8"/>
-    <Option Name="WTVcsExportSim" Val="8"/>
-    <Option Name="WTRivieraExportSim" Val="8"/>
-    <Option Name="WTActivehdlExportSim" Val="8"/>
+    <Option Name="WTXSimExportSim" Val="9"/>
+    <Option Name="WTModelSimExportSim" Val="9"/>
+    <Option Name="WTQuestaExportSim" Val="9"/>
+    <Option Name="WTIesExportSim" Val="9"/>
+    <Option Name="WTVcsExportSim" Val="9"/>
+    <Option Name="WTRivieraExportSim" Val="9"/>
+    <Option Name="WTActivehdlExportSim" Val="9"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -68,53 +68,50 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_mdm_1_0/AXI_bd_0_mdm_1_0.xci">
-          <Proxy FileSetName="AXI_bd_0_mdm_1_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_microblaze_0_axi_intc_0/AXI_bd_0_microblaze_0_axi_intc_0.xci">
-          <Proxy FileSetName="AXI_bd_0_microblaze_0_axi_intc_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_xbar_0/AXI_bd_0_xbar_0.xci">
-          <Proxy FileSetName="AXI_bd_0_xbar_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_lmb_bram_0/AXI_bd_0_lmb_bram_0.xci">
-          <Proxy FileSetName="AXI_bd_0_lmb_bram_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_ilmb_bram_if_cntlr_0/AXI_bd_0_ilmb_bram_if_cntlr_0.xci">
-          <Proxy FileSetName="AXI_bd_0_ilmb_bram_if_cntlr_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_dlmb_bram_if_cntlr_0/AXI_bd_0_dlmb_bram_if_cntlr_0.xci">
-          <Proxy FileSetName="AXI_bd_0_dlmb_bram_if_cntlr_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_ilmb_v10_0/AXI_bd_0_ilmb_v10_0.xci">
-          <Proxy FileSetName="AXI_bd_0_ilmb_v10_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_dlmb_v10_0/AXI_bd_0_dlmb_v10_0.xci">
-          <Proxy FileSetName="AXI_bd_0_dlmb_v10_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_microblaze_0_0/AXI_bd_0_microblaze_0_0.xci">
-          <Proxy FileSetName="AXI_bd_0_microblaze_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_axi_protocol_convert_2_0/AXI_bd_0_axi_protocol_convert_2_0.xci">
           <Proxy FileSetName="AXI_bd_0_axi_protocol_convert_2_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_axi_protocol_convert_1_0/AXI_bd_0_axi_protocol_convert_1_0.xci">
-          <Proxy FileSetName="AXI_bd_0_axi_protocol_convert_1_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_axi_protocol_convert_0_0/AXI_bd_0_axi_protocol_convert_0_0.xci">
-          <Proxy FileSetName="AXI_bd_0_axi_protocol_convert_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_rst_clk_wiz_0_100M_0/AXI_bd_0_rst_clk_wiz_0_100M_0.xci">
-          <Proxy FileSetName="AXI_bd_0_rst_clk_wiz_0_100M_0"/>
+        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_axi_uart16550_0_0/AXI_bd_0_axi_uart16550_0_0.xci">
+          <Proxy FileSetName="AXI_bd_0_axi_uart16550_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_clk_wiz_0/AXI_bd_0_clk_wiz_0.xci">
           <Proxy FileSetName="AXI_bd_0_clk_wiz_0"/>
         </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_ilmb_v10_0/AXI_bd_0_ilmb_v10_0.xci">
+          <Proxy FileSetName="AXI_bd_0_ilmb_v10_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_rst_clk_wiz_0_100M_0/AXI_bd_0_rst_clk_wiz_0_100M_0.xci">
+          <Proxy FileSetName="AXI_bd_0_rst_clk_wiz_0_100M_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_axi_protocol_convert_1_0/AXI_bd_0_axi_protocol_convert_1_0.xci">
+          <Proxy FileSetName="AXI_bd_0_axi_protocol_convert_1_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_microblaze_0_0/AXI_bd_0_microblaze_0_0.xci">
+          <Proxy FileSetName="AXI_bd_0_microblaze_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_ilmb_bram_if_cntlr_0/AXI_bd_0_ilmb_bram_if_cntlr_0.xci">
+          <Proxy FileSetName="AXI_bd_0_ilmb_bram_if_cntlr_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_xbar_0/AXI_bd_0_xbar_0.xci">
+          <Proxy FileSetName="AXI_bd_0_xbar_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_mdm_1_0/AXI_bd_0_mdm_1_0.xci">
+          <Proxy FileSetName="AXI_bd_0_mdm_1_0"/>
+        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_xadc_wiz_0_0/AXI_bd_0_xadc_wiz_0_0.xci">
           <Proxy FileSetName="AXI_bd_0_xadc_wiz_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_axi_uart16550_0_0/AXI_bd_0_axi_uart16550_0_0.xci">
-          <Proxy FileSetName="AXI_bd_0_axi_uart16550_0_0"/>
+        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_axi_protocol_convert_0_0/AXI_bd_0_axi_protocol_convert_0_0.xci">
+          <Proxy FileSetName="AXI_bd_0_axi_protocol_convert_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_microblaze_0_axi_intc_0/AXI_bd_0_microblaze_0_axi_intc_0.xci">
+          <Proxy FileSetName="AXI_bd_0_microblaze_0_axi_intc_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_dlmb_v10_0/AXI_bd_0_dlmb_v10_0.xci">
+          <Proxy FileSetName="AXI_bd_0_dlmb_v10_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="AXI_bd_0.bd" FileRelPathName="ip/AXI_bd_0_lmb_bram_0/AXI_bd_0_lmb_bram_0.xci">
+          <Proxy FileSetName="AXI_bd_0_lmb_bram_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/imports/_USER-Input-Files/top.v">
@@ -270,12 +267,6 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="AXI_bd_0_dlmb_bram_if_cntlr_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/AXI_bd_0_dlmb_bram_if_cntlr_0">
-      <Config>
-        <Option Name="TopModule" Val="AXI_bd_0_dlmb_bram_if_cntlr_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
   </FileSets>
   <Simulators>
     <Simulator Name="XSim">
@@ -298,9 +289,7 @@
   <Runs Version="1" Minor="10">
     <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7a35tcpg236-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -451,20 +440,9 @@
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="AXI_bd_0_dlmb_bram_if_cntlr_0_synth_1" Type="Ft3:Synth" SrcSet="AXI_bd_0_dlmb_bram_if_cntlr_0" Part="xc7a35tcpg236-1" ConstrsSet="AXI_bd_0_dlmb_bram_if_cntlr_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/AXI_bd_0_dlmb_bram_if_cntlr_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
     <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -722,22 +700,6 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
     <Run Id="AXI_bd_0_ilmb_v10_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="AXI_bd_0_ilmb_v10_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="AXI_bd_0_ilmb_v10_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="AXI_bd_0_dlmb_bram_if_cntlr_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="AXI_bd_0_dlmb_bram_if_cntlr_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="AXI_bd_0_dlmb_bram_if_cntlr_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
         <Step Id="init_design"/>
