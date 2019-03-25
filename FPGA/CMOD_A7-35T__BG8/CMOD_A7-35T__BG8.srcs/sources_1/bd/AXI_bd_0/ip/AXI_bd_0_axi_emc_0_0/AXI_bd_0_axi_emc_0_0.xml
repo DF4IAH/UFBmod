@@ -1993,6 +1993,24 @@ Note: Valid only if connected memory is Micron Flash
   <spirit:model>
     <spirit:views>
       <spirit:view>
+        <spirit:name>xilinx_externalfiles</spirit:name>
+        <spirit:displayName>External Files</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:external.files</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_externalfiles_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Sun Mar 24 22:48:04 UTC 2019</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:2fd49512</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
         <spirit:name>xilinx_vhdlsynthesis</spirit:name>
         <spirit:displayName>VHDL Synthesis</spirit:displayName>
         <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:synthesis</spirit:envIdentifier>
@@ -2013,11 +2031,11 @@ Note: Valid only if connected memory is Micron Flash
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 24 17:22:17 UTC 2019</spirit:value>
+            <spirit:value>Sun Mar 24 22:47:56 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2fd49512</spirit:value>
+            <spirit:value>9:7257299f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2033,11 +2051,11 @@ Note: Valid only if connected memory is Micron Flash
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 24 17:22:18 UTC 2019</spirit:value>
+            <spirit:value>Sun Mar 24 22:47:56 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2fd49512</spirit:value>
+            <spirit:value>9:7257299f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2062,11 +2080,11 @@ Note: Valid only if connected memory is Micron Flash
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 24 11:34:59 UTC 2019</spirit:value>
+            <spirit:value>Sun Mar 24 20:02:14 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:aea317cd</spirit:value>
+            <spirit:value>9:e15e2637</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2082,11 +2100,11 @@ Note: Valid only if connected memory is Micron Flash
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 24 17:22:18 UTC 2019</spirit:value>
+            <spirit:value>Sun Mar 24 22:47:56 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:aea317cd</spirit:value>
+            <spirit:value>9:e15e2637</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2100,29 +2118,11 @@ Note: Valid only if connected memory is Micron Flash
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 24 17:22:19 UTC 2019</spirit:value>
+            <spirit:value>Sun Mar 24 22:47:56 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2fd49512</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
-        <spirit:name>xilinx_externalfiles</spirit:name>
-        <spirit:displayName>External Files</spirit:displayName>
-        <spirit:envIdentifier>:vivado.xilinx.com:external.files</spirit:envIdentifier>
-        <spirit:fileSetRef>
-          <spirit:localName>xilinx_externalfiles_view_fileset</spirit:localName>
-        </spirit:fileSetRef>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 24 17:29:29 UTC 2019</spirit:value>
-          </spirit:parameter>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2fd49512</spirit:value>
+            <spirit:value>9:7257299f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3796,7 +3796,7 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_MEM0_TYPE</spirit:name>
         <spirit:displayName>Memory Type</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_MEM0_TYPE" spirit:minimum="0" spirit:maximum="5" spirit:rangeType="long">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_MEM0_TYPE" spirit:minimum="0" spirit:maximum="5" spirit:rangeType="long">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_MEM1_TYPE</spirit:name>
@@ -3898,12 +3898,12 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_TCEDV_PS_MEM_0</spirit:name>
         <spirit:displayName>C TCEDV PS Mem 0</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_TCEDV_PS_MEM_0">15000</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_TCEDV_PS_MEM_0">8000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_TAVDV_PS_MEM_0</spirit:name>
         <spirit:displayName>C TAVDV PS Mem 0</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_TAVDV_PS_MEM_0">15000</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_TAVDV_PS_MEM_0">8000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_TPACC_PS_FLASH_0</spirit:name>
@@ -3913,22 +3913,22 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_THZCE_PS_MEM_0</spirit:name>
         <spirit:displayName>C THZCE PS Mem 0</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_THZCE_PS_MEM_0">7000</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_THZCE_PS_MEM_0">8000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_THZOE_PS_MEM_0</spirit:name>
         <spirit:displayName>C THZOE PS Mem 0</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_THZOE_PS_MEM_0">7000</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_THZOE_PS_MEM_0">8000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_TWC_PS_MEM_0</spirit:name>
         <spirit:displayName>C TWC PS Mem 0</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_TWC_PS_MEM_0">15000</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_TWC_PS_MEM_0">8000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_TWP_PS_MEM_0</spirit:name>
         <spirit:displayName>C TWP PS Mem 0</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_TWP_PS_MEM_0">12000</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_TWP_PS_MEM_0">8000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_TWPH_PS_MEM_0</spirit:name>
@@ -3938,7 +3938,7 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_TLZWE_PS_MEM_0</spirit:name>
         <spirit:displayName>C TLZWE PS Mem 0</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_TLZWE_PS_MEM_0">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_TLZWE_PS_MEM_0">3000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_WR_REC_TIME_MEM_0</spirit:name>
@@ -4169,6 +4169,42 @@ Note: Valid only if connected memory is Micron Flash
   </spirit:choices>
   <spirit:fileSets>
     <spirit:fileSet>
+      <spirit:name>xilinx_externalfiles_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>AXI_bd_0_axi_emc_0_0.dcp</spirit:name>
+        <spirit:userFileType>dcp</spirit:userFileType>
+        <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>AXI_bd_0_axi_emc_0_0_stub.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>AXI_bd_0_axi_emc_0_0_stub.vhdl</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>AXI_bd_0_axi_emc_0_0_sim_netlist.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>AXI_bd_0_axi_emc_0_0_sim_netlist.vhdl</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
       <spirit:name>xilinx_vhdlsynthesis_xilinx_com_ip_lib_pkg_1_0__ref_view_fileset</spirit:name>
       <spirit:file>
         <spirit:name>../../ipshared/0513/hdl/lib_pkg_v1_0_rfs.vhd</spirit:name>
@@ -4313,42 +4349,6 @@ Note: Valid only if connected memory is Micron Flash
         <spirit:userFileType>USED_IN_board</spirit:userFileType>
         <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
         <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
-      </spirit:file>
-    </spirit:fileSet>
-    <spirit:fileSet>
-      <spirit:name>xilinx_externalfiles_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>AXI_bd_0_axi_emc_0_0.dcp</spirit:name>
-        <spirit:userFileType>dcp</spirit:userFileType>
-        <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
-        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>AXI_bd_0_axi_emc_0_0_stub.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>AXI_bd_0_axi_emc_0_0_stub.vhdl</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>AXI_bd_0_axi_emc_0_0_sim_netlist.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
-        <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>AXI_bd_0_axi_emc_0_0_sim_netlist.vhdl</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
-        <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
     </spirit:fileSet>
   </spirit:fileSets>
@@ -4791,7 +4791,7 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_WR_REC_TIME_MEM_0">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_WR_REC_TIME_MEM_0">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -4800,11 +4800,11 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:name>C_TLZWE_PS_MEM_0</spirit:name>
       <spirit:displayName>Write WE High to Data Bus LZ Period</spirit:displayName>
       <spirit:description>This parameter should be set when the targeted memory is working in Asynchronous interface. Refer data sheet for adding the values here.</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_TLZWE_PS_MEM_0" spirit:order="5500" spirit:configGroups="2 UnGrouped">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_TLZWE_PS_MEM_0" spirit:order="5500" spirit:configGroups="2 UnGrouped">3000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TLZWE_PS_MEM_0">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TLZWE_PS_MEM_0">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -4817,7 +4817,7 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TWPH_PS_MEM_0">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TWPH_PS_MEM_0">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -4826,11 +4826,11 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:name>C_TWP_PS_MEM_0</spirit:name>
       <spirit:displayName>Write Enable Min. Pulse Width</spirit:displayName>
       <spirit:description>This parameter should be set when the targeted memory is working in Asynchronous interface. Refer data sheet for adding the values here.</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_TWP_PS_MEM_0" spirit:order="5300" spirit:configGroups="2 UnGrouped">12000</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_TWP_PS_MEM_0" spirit:order="5300" spirit:configGroups="2 UnGrouped">8000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TWP_PS_MEM_0">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TWP_PS_MEM_0">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -4839,11 +4839,11 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:name>C_TWC_PS_MEM_0</spirit:name>
       <spirit:displayName>Write Cycle Period</spirit:displayName>
       <spirit:description>This parameter should be set when the targeted memory is working in Asynchronous interface. Refer data sheet for adding the values here.</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_TWC_PS_MEM_0" spirit:order="5200" spirit:configGroups="2 UnGrouped">15000</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_TWC_PS_MEM_0" spirit:order="5200" spirit:configGroups="2 UnGrouped">8000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TWC_PS_MEM_0">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TWC_PS_MEM_0">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -4852,11 +4852,11 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:name>C_THZOE_PS_MEM_0</spirit:name>
       <spirit:displayName>Read OE High to Data Bus HZ Period</spirit:displayName>
       <spirit:description>This parameter should be set when the targeted memory is working in Asynchronous interface. Refer data sheet for adding the values here.</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_THZOE_PS_MEM_0" spirit:order="5100" spirit:configGroups="2 UnGrouped">7000</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_THZOE_PS_MEM_0" spirit:order="5100" spirit:configGroups="2 UnGrouped">8000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_THZOE_PS_MEM_0">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_THZOE_PS_MEM_0">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -4865,11 +4865,11 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:name>C_THZCE_PS_MEM_0</spirit:name>
       <spirit:displayName>Read CE High to Data Bus HZ Period</spirit:displayName>
       <spirit:description>This parameter should be set when the targeted memory is working in Asynchronous interface. Refer data sheet for adding the values here.</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_THZCE_PS_MEM_0" spirit:order="5000" spirit:configGroups="2 UnGrouped">7000</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_THZCE_PS_MEM_0" spirit:order="5000" spirit:configGroups="2 UnGrouped">8000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_THZCE_PS_MEM_0">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_THZCE_PS_MEM_0">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -4882,7 +4882,7 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TPACC_PS_FLASH_0">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TPACC_PS_FLASH_0">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -4891,11 +4891,11 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:name>C_TAVDV_PS_MEM_0</spirit:name>
       <spirit:displayName>Read Address Valid to Data Valid Period</spirit:displayName>
       <spirit:description>This parameter should be set when the targeted memory is working in Asynchronous interface. Refer data sheet for adding the values here.</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_TAVDV_PS_MEM_0" spirit:order="4800" spirit:configGroups="2 UnGrouped">15000</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_TAVDV_PS_MEM_0" spirit:order="4800" spirit:configGroups="2 UnGrouped">8000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TAVDV_PS_MEM_0">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TAVDV_PS_MEM_0">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -4904,11 +4904,11 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:name>C_TCEDV_PS_MEM_0</spirit:name>
       <spirit:displayName>Read CE Low to Data Valid Period</spirit:displayName>
       <spirit:description>This parameter should be set when the targeted memory is working in Asynchronous interface. Refer data sheet for adding the values here.</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_TCEDV_PS_MEM_0" spirit:order="4700" spirit:configGroups="2 UnGrouped">15000</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_TCEDV_PS_MEM_0" spirit:order="4700" spirit:configGroups="2 UnGrouped">8000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TCEDV_PS_MEM_0">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TCEDV_PS_MEM_0">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -4921,7 +4921,7 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_SYNCH_PIPEDELAY_0">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_SYNCH_PIPEDELAY_0">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -5025,7 +5025,7 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_PARITY_TYPE_MEM_0">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_PARITY_TYPE_MEM_0">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -5038,7 +5038,7 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_MAX_MEM_WIDTH">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_MAX_MEM_WIDTH">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -5138,7 +5138,7 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:name>C_MEM0_TYPE</spirit:name>
       <spirit:displayName>Memory Type</spirit:displayName>
       <spirit:description>User should select the targeted memory type.</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_MEM0_TYPE" spirit:choiceRef="choice_pairs_8c24c110" spirit:order="2900" spirit:configGroups="2 UnGrouped">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_MEM0_TYPE" spirit:choiceRef="choice_pairs_8c24c110" spirit:order="2900" spirit:configGroups="2 UnGrouped">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -5155,7 +5155,7 @@ Note: Valid only if connected memory is Micron Flash
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_NUM_BANKS_MEM">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_NUM_BANKS_MEM">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -5393,7 +5393,7 @@ Note: Valid only if connected memory is Micron Flash
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>EMC_BOARD_INTERFACE</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.EMC_BOARD_INTERFACE" spirit:choiceRef="choice_list_5f03e0dd" spirit:order="1001">Custom</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.EMC_BOARD_INTERFACE" spirit:choiceRef="choice_list_5f03e0dd" spirit:order="1001">cellular_ram</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>

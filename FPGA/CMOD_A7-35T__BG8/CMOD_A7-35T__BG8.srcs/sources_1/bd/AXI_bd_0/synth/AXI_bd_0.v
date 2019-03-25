@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Sun Mar 24 20:35:12 2019
+//Date        : Sun Mar 24 23:59:09 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target AXI_bd_0.bd
 //Design      : AXI_bd_0
@@ -12,78 +12,106 @@
 (* CORE_GENERATION_INFO = "AXI_bd_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=AXI_bd_0,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=31,numReposBlks=21,numNonXlnxBlks=0,numHierBlks=10,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,da_board_cnt=7,da_clkrst_cnt=14,da_mb_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "AXI_bd_0.hwdef" *) 
 module AXI_bd_0
    (AXI_bd_In0,
-    AXI_bd_cellular_ram_mem_a,
-    AXI_bd_cellular_ram_mem_cen,
-    AXI_bd_cellular_ram_mem_dq_i,
-    AXI_bd_cellular_ram_mem_dq_o,
-    AXI_bd_cellular_ram_mem_dq_t,
-    AXI_bd_cellular_ram_mem_oen,
-    AXI_bd_cellular_ram_mem_wen,
+    AXI_bd_Vaux12_v_n,
+    AXI_bd_Vaux12_v_p,
+    AXI_bd_Vaux4_v_n,
+    AXI_bd_Vaux4_v_p,
+    AXI_bd_cellular_ram_EMC_INTF_addr,
+    AXI_bd_cellular_ram_EMC_INTF_ce_n,
+    AXI_bd_cellular_ram_EMC_INTF_dq_i,
+    AXI_bd_cellular_ram_EMC_INTF_dq_o,
+    AXI_bd_cellular_ram_EMC_INTF_dq_t,
+    AXI_bd_cellular_ram_EMC_INTF_oen,
+    AXI_bd_cellular_ram_EMC_INTF_wen,
     AXI_bd_clk_100mhz_out,
-    AXI_bd_qspi_flash_io0_i,
-    AXI_bd_qspi_flash_io0_o,
-    AXI_bd_qspi_flash_io0_t,
-    AXI_bd_qspi_flash_io1_i,
-    AXI_bd_qspi_flash_io1_o,
-    AXI_bd_qspi_flash_io1_t,
-    AXI_bd_qspi_flash_io2_i,
-    AXI_bd_qspi_flash_io2_o,
-    AXI_bd_qspi_flash_io2_t,
-    AXI_bd_qspi_flash_io3_i,
-    AXI_bd_qspi_flash_io3_o,
-    AXI_bd_qspi_flash_io3_t,
-    AXI_bd_qspi_flash_ss_i,
-    AXI_bd_qspi_flash_ss_o,
-    AXI_bd_qspi_flash_ss_t,
+    AXI_bd_qspi_flash_SPI_0_io0_i,
+    AXI_bd_qspi_flash_SPI_0_io0_o,
+    AXI_bd_qspi_flash_SPI_0_io0_t,
+    AXI_bd_qspi_flash_SPI_0_io1_i,
+    AXI_bd_qspi_flash_SPI_0_io1_o,
+    AXI_bd_qspi_flash_SPI_0_io1_t,
+    AXI_bd_qspi_flash_SPI_0_io2_i,
+    AXI_bd_qspi_flash_SPI_0_io2_o,
+    AXI_bd_qspi_flash_SPI_0_io2_t,
+    AXI_bd_qspi_flash_SPI_0_io3_i,
+    AXI_bd_qspi_flash_SPI_0_io3_o,
+    AXI_bd_qspi_flash_SPI_0_io3_t,
+    AXI_bd_qspi_flash_SPI_0_ss_i,
+    AXI_bd_qspi_flash_SPI_0_ss_o,
+    AXI_bd_qspi_flash_SPI_0_ss_t,
     AXI_bd_reset,
     AXI_bd_sys_clock,
-    AXI_bd_usb_uart_sin,
-    AXI_bd_usb_uart_sout,
-    AXI_bd_vauxn12,
-    AXI_bd_vauxn4,
-    AXI_bd_vauxp12,
-    AXI_bd_vauxp4);
+    AXI_bd_usb_uart_UART_baudoutn,
+    AXI_bd_usb_uart_UART_ctsn,
+    AXI_bd_usb_uart_UART_dcdn,
+    AXI_bd_usb_uart_UART_ddis,
+    AXI_bd_usb_uart_UART_dsrn,
+    AXI_bd_usb_uart_UART_dtrn,
+    AXI_bd_usb_uart_UART_out1n,
+    AXI_bd_usb_uart_UART_out2n,
+    AXI_bd_usb_uart_UART_ri,
+    AXI_bd_usb_uart_UART_rtsn,
+    AXI_bd_usb_uart_UART_rxd,
+    AXI_bd_usb_uart_UART_rxrdyn,
+    AXI_bd_usb_uart_UART_txd,
+    AXI_bd_usb_uart_UART_txrdyn);
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.AXI_BD_IN0 INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.AXI_BD_IN0, PortWidth 1, SENSITIVITY LEVEL_HIGH" *) input AXI_bd_In0;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.AXI_BD_CELLULAR_RAM_MEM_A DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.AXI_BD_CELLULAR_RAM_MEM_A, LAYERED_METADATA undef" *) output [31:0]AXI_bd_cellular_ram_mem_a;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clockenable:1.0 CE.AXI_BD_CELLULAR_RAM_MEM_CEN CE" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CE.AXI_BD_CELLULAR_RAM_MEM_CEN, POLARITY ACTIVE_LOW" *) output [0:0]AXI_bd_cellular_ram_mem_cen;
-  input [7:0]AXI_bd_cellular_ram_mem_dq_i;
-  output [7:0]AXI_bd_cellular_ram_mem_dq_o;
-  output [7:0]AXI_bd_cellular_ram_mem_dq_t;
-  output [0:0]AXI_bd_cellular_ram_mem_oen;
-  output [0:0]AXI_bd_cellular_ram_mem_wen;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_analog_io:1.0 AXI_bd_Vaux12 " *) input AXI_bd_Vaux12_v_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_analog_io:1.0 AXI_bd_Vaux12 " *) input AXI_bd_Vaux12_v_p;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_analog_io:1.0 AXI_bd_Vaux4 " *) input AXI_bd_Vaux4_v_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_analog_io:1.0 AXI_bd_Vaux4 " *) input AXI_bd_Vaux4_v_p;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:emc:1.0 AXI_bd_cellular_ram_EMC_INTF " *) output [18:0]AXI_bd_cellular_ram_EMC_INTF_addr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:emc:1.0 AXI_bd_cellular_ram_EMC_INTF " *) output AXI_bd_cellular_ram_EMC_INTF_ce_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:emc:1.0 AXI_bd_cellular_ram_EMC_INTF " *) input [7:0]AXI_bd_cellular_ram_EMC_INTF_dq_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:emc:1.0 AXI_bd_cellular_ram_EMC_INTF " *) output [7:0]AXI_bd_cellular_ram_EMC_INTF_dq_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:emc:1.0 AXI_bd_cellular_ram_EMC_INTF " *) output [7:0]AXI_bd_cellular_ram_EMC_INTF_dq_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:emc:1.0 AXI_bd_cellular_ram_EMC_INTF " *) output AXI_bd_cellular_ram_EMC_INTF_oen;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:emc:1.0 AXI_bd_cellular_ram_EMC_INTF " *) output AXI_bd_cellular_ram_EMC_INTF_wen;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_BD_CLK_100MHZ_OUT CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_BD_CLK_100MHZ_OUT, CLK_DOMAIN /clk_wiz_0_clk_out1, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.0" *) output AXI_bd_clk_100mhz_out;
-  input AXI_bd_qspi_flash_io0_i;
-  output AXI_bd_qspi_flash_io0_o;
-  output AXI_bd_qspi_flash_io0_t;
-  input AXI_bd_qspi_flash_io1_i;
-  output AXI_bd_qspi_flash_io1_o;
-  output AXI_bd_qspi_flash_io1_t;
-  input AXI_bd_qspi_flash_io2_i;
-  output AXI_bd_qspi_flash_io2_o;
-  output AXI_bd_qspi_flash_io2_t;
-  input AXI_bd_qspi_flash_io3_i;
-  output AXI_bd_qspi_flash_io3_o;
-  output AXI_bd_qspi_flash_io3_t;
-  input AXI_bd_qspi_flash_ss_i;
-  output [0:0]AXI_bd_qspi_flash_ss_o;
-  output AXI_bd_qspi_flash_ss_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 " *) input AXI_bd_qspi_flash_SPI_0_io0_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 " *) output AXI_bd_qspi_flash_SPI_0_io0_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 " *) output AXI_bd_qspi_flash_SPI_0_io0_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 " *) input AXI_bd_qspi_flash_SPI_0_io1_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 " *) output AXI_bd_qspi_flash_SPI_0_io1_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 " *) output AXI_bd_qspi_flash_SPI_0_io1_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 " *) input AXI_bd_qspi_flash_SPI_0_io2_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 " *) output AXI_bd_qspi_flash_SPI_0_io2_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 " *) output AXI_bd_qspi_flash_SPI_0_io2_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 " *) input AXI_bd_qspi_flash_SPI_0_io3_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 " *) output AXI_bd_qspi_flash_SPI_0_io3_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 " *) output AXI_bd_qspi_flash_SPI_0_io3_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 " *) input AXI_bd_qspi_flash_SPI_0_ss_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 " *) output AXI_bd_qspi_flash_SPI_0_ss_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 " *) output AXI_bd_qspi_flash_SPI_0_ss_t;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.AXI_BD_RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.AXI_BD_RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input AXI_bd_reset;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_BD_SYS_CLOCK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_BD_SYS_CLOCK, CLK_DOMAIN AXI_bd_0_AXI_bd_sys_clock, FREQ_HZ 12000000, INSERT_VIP 0, PHASE 0.000" *) input AXI_bd_sys_clock;
-  input AXI_bd_usb_uart_sin;
-  output AXI_bd_usb_uart_sout;
-  input AXI_bd_vauxn12;
-  input AXI_bd_vauxn4;
-  input AXI_bd_vauxp12;
-  input AXI_bd_vauxp4;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART " *) output AXI_bd_usb_uart_UART_baudoutn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART " *) input AXI_bd_usb_uart_UART_ctsn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART " *) input AXI_bd_usb_uart_UART_dcdn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART " *) output AXI_bd_usb_uart_UART_ddis;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART " *) input AXI_bd_usb_uart_UART_dsrn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART " *) output AXI_bd_usb_uart_UART_dtrn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART " *) output AXI_bd_usb_uart_UART_out1n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART " *) output AXI_bd_usb_uart_UART_out2n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART " *) input AXI_bd_usb_uart_UART_ri;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART " *) output AXI_bd_usb_uart_UART_rtsn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART " *) input AXI_bd_usb_uart_UART_rxd;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART " *) output AXI_bd_usb_uart_UART_rxrdyn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART " *) output AXI_bd_usb_uart_UART_txd;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART " *) output AXI_bd_usb_uart_UART_txrdyn;
 
   wire AXI_bd_In0_1;
-  wire AXI_bd_qspi_flash_ss_i_1;
-  wire [31:0]axi_emc_0_mem_a;
-  wire [0:0]axi_emc_0_mem_cen;
-  wire [7:0]axi_emc_0_mem_dq_o;
-  wire [7:0]axi_emc_0_mem_dq_t;
-  wire [0:0]axi_emc_0_mem_oen;
-  wire [0:0]axi_emc_0_mem_qwen;
+  wire Vaux12_0_1_V_N;
+  wire Vaux12_0_1_V_P;
+  wire Vaux4_0_1_V_N;
+  wire Vaux4_0_1_V_P;
+  wire [18:0]axi_emc_0_EMC_INTF_ADDR;
+  wire [0:0]axi_emc_0_EMC_INTF_CE_N;
+  wire [7:0]axi_emc_0_EMC_INTF_DQ_I;
+  wire [7:0]axi_emc_0_EMC_INTF_DQ_O;
+  wire [7:0]axi_emc_0_EMC_INTF_DQ_T;
+  wire [0:0]axi_emc_0_EMC_INTF_OEN;
+  wire axi_emc_0_EMC_INTF_WEN;
   wire [31:0]axi_protocol_convert_0_M_AXI_ARADDR;
   wire axi_protocol_convert_0_M_AXI_ARREADY;
   wire axi_protocol_convert_0_M_AXI_ARVALID;
@@ -135,25 +163,38 @@ module AXI_bd_0
   wire axi_protocol_convert_2_M_AXI_WREADY;
   wire [3:0]axi_protocol_convert_2_M_AXI_WSTRB;
   wire axi_protocol_convert_2_M_AXI_WVALID;
-  wire axi_quad_spi_0_io0_o;
-  wire axi_quad_spi_0_io0_t;
-  wire axi_quad_spi_0_io1_o;
-  wire axi_quad_spi_0_io1_t;
-  wire axi_quad_spi_0_io2_o;
-  wire axi_quad_spi_0_io2_t;
-  wire axi_quad_spi_0_io3_o;
-  wire axi_quad_spi_0_io3_t;
+  wire axi_quad_spi_0_SPI_0_IO0_I;
+  wire axi_quad_spi_0_SPI_0_IO0_O;
+  wire axi_quad_spi_0_SPI_0_IO0_T;
+  wire axi_quad_spi_0_SPI_0_IO1_I;
+  wire axi_quad_spi_0_SPI_0_IO1_O;
+  wire axi_quad_spi_0_SPI_0_IO1_T;
+  wire axi_quad_spi_0_SPI_0_IO2_I;
+  wire axi_quad_spi_0_SPI_0_IO2_O;
+  wire axi_quad_spi_0_SPI_0_IO2_T;
+  wire axi_quad_spi_0_SPI_0_IO3_I;
+  wire axi_quad_spi_0_SPI_0_IO3_O;
+  wire axi_quad_spi_0_SPI_0_IO3_T;
+  wire axi_quad_spi_0_SPI_0_SS_I;
+  wire [0:0]axi_quad_spi_0_SPI_0_SS_O;
+  wire axi_quad_spi_0_SPI_0_SS_T;
   wire axi_quad_spi_0_ip2intc_irpt;
-  wire [0:0]axi_quad_spi_0_ss_o;
-  wire axi_quad_spi_0_ss_t;
+  wire axi_uart16550_0_UART_BAUDOUTn;
+  wire axi_uart16550_0_UART_CTSn;
+  wire axi_uart16550_0_UART_DCDn;
+  wire axi_uart16550_0_UART_DDIS;
+  wire axi_uart16550_0_UART_DSRn;
+  wire axi_uart16550_0_UART_DTRn;
+  wire axi_uart16550_0_UART_OUT1n;
+  wire axi_uart16550_0_UART_OUT2n;
+  wire axi_uart16550_0_UART_RI;
+  wire axi_uart16550_0_UART_RTSn;
+  wire axi_uart16550_0_UART_RXRDYn;
+  wire axi_uart16550_0_UART_RxD;
+  wire axi_uart16550_0_UART_TXRDYn;
+  wire axi_uart16550_0_UART_TxD;
   wire axi_uart16550_0_ip2intc_irpt;
-  wire axi_uart16550_0_sout;
-  wire io0_i_0_1;
-  wire io1_i_0_1;
-  wire io2_i_0_1;
-  wire io3_i_0_1;
   wire mdm_1_debug_sys_rst;
-  wire [7:0]mem_dq_i_0_1;
   wire microblaze_0_Clk;
   wire [31:0]microblaze_0_M_AXI_DC_ARADDR;
   wire [1:0]microblaze_0_M_AXI_DC_ARBURST;
@@ -453,55 +494,62 @@ module AXI_bd_0
   wire [0:0]rst_clk_wiz_0_100M_bus_struct_reset;
   wire rst_clk_wiz_0_100M_mb_reset;
   wire [0:0]rst_clk_wiz_0_100M_peripheral_aresetn;
-  wire sin_0_1;
   wire sys_clock_1;
-  wire vauxn12_0_1;
-  wire vauxn4_0_1;
-  wire vauxp12_0_1;
-  wire vauxp4_0_1;
   wire xadc_wiz_0_ip2intc_irpt;
 
   assign AXI_bd_In0_1 = AXI_bd_In0;
-  assign AXI_bd_cellular_ram_mem_a[31:0] = axi_emc_0_mem_a;
-  assign AXI_bd_cellular_ram_mem_cen[0] = axi_emc_0_mem_cen;
-  assign AXI_bd_cellular_ram_mem_dq_o[7:0] = axi_emc_0_mem_dq_o;
-  assign AXI_bd_cellular_ram_mem_dq_t[7:0] = axi_emc_0_mem_dq_t;
-  assign AXI_bd_cellular_ram_mem_oen[0] = axi_emc_0_mem_oen;
-  assign AXI_bd_cellular_ram_mem_wen[0] = axi_emc_0_mem_qwen;
+  assign AXI_bd_cellular_ram_EMC_INTF_addr[18:0] = axi_emc_0_EMC_INTF_ADDR;
+  assign AXI_bd_cellular_ram_EMC_INTF_ce_n = axi_emc_0_EMC_INTF_CE_N;
+  assign AXI_bd_cellular_ram_EMC_INTF_dq_o[7:0] = axi_emc_0_EMC_INTF_DQ_O;
+  assign AXI_bd_cellular_ram_EMC_INTF_dq_t[7:0] = axi_emc_0_EMC_INTF_DQ_T;
+  assign AXI_bd_cellular_ram_EMC_INTF_oen = axi_emc_0_EMC_INTF_OEN;
+  assign AXI_bd_cellular_ram_EMC_INTF_wen = axi_emc_0_EMC_INTF_WEN;
   assign AXI_bd_clk_100mhz_out = microblaze_0_Clk;
-  assign AXI_bd_qspi_flash_io0_o = axi_quad_spi_0_io0_o;
-  assign AXI_bd_qspi_flash_io0_t = axi_quad_spi_0_io0_t;
-  assign AXI_bd_qspi_flash_io1_o = axi_quad_spi_0_io1_o;
-  assign AXI_bd_qspi_flash_io1_t = axi_quad_spi_0_io1_t;
-  assign AXI_bd_qspi_flash_io2_o = axi_quad_spi_0_io2_o;
-  assign AXI_bd_qspi_flash_io2_t = axi_quad_spi_0_io2_t;
-  assign AXI_bd_qspi_flash_io3_o = axi_quad_spi_0_io3_o;
-  assign AXI_bd_qspi_flash_io3_t = axi_quad_spi_0_io3_t;
-  assign AXI_bd_qspi_flash_ss_i_1 = AXI_bd_qspi_flash_ss_i;
-  assign AXI_bd_qspi_flash_ss_o[0] = axi_quad_spi_0_ss_o;
-  assign AXI_bd_qspi_flash_ss_t = axi_quad_spi_0_ss_t;
-  assign AXI_bd_usb_uart_sout = axi_uart16550_0_sout;
-  assign io0_i_0_1 = AXI_bd_qspi_flash_io0_i;
-  assign io1_i_0_1 = AXI_bd_qspi_flash_io1_i;
-  assign io2_i_0_1 = AXI_bd_qspi_flash_io2_i;
-  assign io3_i_0_1 = AXI_bd_qspi_flash_io3_i;
-  assign mem_dq_i_0_1 = AXI_bd_cellular_ram_mem_dq_i[7:0];
+  assign AXI_bd_qspi_flash_SPI_0_io0_o = axi_quad_spi_0_SPI_0_IO0_O;
+  assign AXI_bd_qspi_flash_SPI_0_io0_t = axi_quad_spi_0_SPI_0_IO0_T;
+  assign AXI_bd_qspi_flash_SPI_0_io1_o = axi_quad_spi_0_SPI_0_IO1_O;
+  assign AXI_bd_qspi_flash_SPI_0_io1_t = axi_quad_spi_0_SPI_0_IO1_T;
+  assign AXI_bd_qspi_flash_SPI_0_io2_o = axi_quad_spi_0_SPI_0_IO2_O;
+  assign AXI_bd_qspi_flash_SPI_0_io2_t = axi_quad_spi_0_SPI_0_IO2_T;
+  assign AXI_bd_qspi_flash_SPI_0_io3_o = axi_quad_spi_0_SPI_0_IO3_O;
+  assign AXI_bd_qspi_flash_SPI_0_io3_t = axi_quad_spi_0_SPI_0_IO3_T;
+  assign AXI_bd_qspi_flash_SPI_0_ss_o = axi_quad_spi_0_SPI_0_SS_O;
+  assign AXI_bd_qspi_flash_SPI_0_ss_t = axi_quad_spi_0_SPI_0_SS_T;
+  assign AXI_bd_usb_uart_UART_baudoutn = axi_uart16550_0_UART_BAUDOUTn;
+  assign AXI_bd_usb_uart_UART_ddis = axi_uart16550_0_UART_DDIS;
+  assign AXI_bd_usb_uart_UART_dtrn = axi_uart16550_0_UART_DTRn;
+  assign AXI_bd_usb_uart_UART_out1n = axi_uart16550_0_UART_OUT1n;
+  assign AXI_bd_usb_uart_UART_out2n = axi_uart16550_0_UART_OUT2n;
+  assign AXI_bd_usb_uart_UART_rtsn = axi_uart16550_0_UART_RTSn;
+  assign AXI_bd_usb_uart_UART_rxrdyn = axi_uart16550_0_UART_RXRDYn;
+  assign AXI_bd_usb_uart_UART_txd = axi_uart16550_0_UART_TxD;
+  assign AXI_bd_usb_uart_UART_txrdyn = axi_uart16550_0_UART_TXRDYn;
+  assign Vaux12_0_1_V_N = AXI_bd_Vaux12_v_n;
+  assign Vaux12_0_1_V_P = AXI_bd_Vaux12_v_p;
+  assign Vaux4_0_1_V_N = AXI_bd_Vaux4_v_n;
+  assign Vaux4_0_1_V_P = AXI_bd_Vaux4_v_p;
+  assign axi_emc_0_EMC_INTF_DQ_I = AXI_bd_cellular_ram_EMC_INTF_dq_i[7:0];
+  assign axi_quad_spi_0_SPI_0_IO0_I = AXI_bd_qspi_flash_SPI_0_io0_i;
+  assign axi_quad_spi_0_SPI_0_IO1_I = AXI_bd_qspi_flash_SPI_0_io1_i;
+  assign axi_quad_spi_0_SPI_0_IO2_I = AXI_bd_qspi_flash_SPI_0_io2_i;
+  assign axi_quad_spi_0_SPI_0_IO3_I = AXI_bd_qspi_flash_SPI_0_io3_i;
+  assign axi_quad_spi_0_SPI_0_SS_I = AXI_bd_qspi_flash_SPI_0_ss_i;
+  assign axi_uart16550_0_UART_CTSn = AXI_bd_usb_uart_UART_ctsn;
+  assign axi_uart16550_0_UART_DCDn = AXI_bd_usb_uart_UART_dcdn;
+  assign axi_uart16550_0_UART_DSRn = AXI_bd_usb_uart_UART_dsrn;
+  assign axi_uart16550_0_UART_RI = AXI_bd_usb_uart_UART_ri;
+  assign axi_uart16550_0_UART_RxD = AXI_bd_usb_uart_UART_rxd;
   assign reset_1 = AXI_bd_reset;
-  assign sin_0_1 = AXI_bd_usb_uart_sin;
   assign sys_clock_1 = AXI_bd_sys_clock;
-  assign vauxn12_0_1 = AXI_bd_vauxn12;
-  assign vauxn4_0_1 = AXI_bd_vauxn4;
-  assign vauxp12_0_1 = AXI_bd_vauxp12;
-  assign vauxp4_0_1 = AXI_bd_vauxp4;
   AXI_bd_0_axi_emc_0_0 axi_emc_0
-       (.mem_a(axi_emc_0_mem_a),
-        .mem_cen(axi_emc_0_mem_cen),
-        .mem_dq_i(mem_dq_i_0_1),
-        .mem_dq_o(axi_emc_0_mem_dq_o),
-        .mem_dq_t(axi_emc_0_mem_dq_t),
-        .mem_oen(axi_emc_0_mem_oen),
-        .mem_qwen(axi_emc_0_mem_qwen),
+       (.mem_a(axi_emc_0_EMC_INTF_ADDR),
+        .mem_cen(axi_emc_0_EMC_INTF_CE_N),
+        .mem_dq_i(axi_emc_0_EMC_INTF_DQ_I),
+        .mem_dq_o(axi_emc_0_EMC_INTF_DQ_O),
+        .mem_dq_t(axi_emc_0_EMC_INTF_DQ_T),
+        .mem_oen(axi_emc_0_EMC_INTF_OEN),
         .mem_wait(1'b0),
+        .mem_wen(axi_emc_0_EMC_INTF_WEN),
         .rdclk(microblaze_0_Clk),
         .s_axi_aclk(microblaze_0_Clk),
         .s_axi_aresetn(rst_clk_wiz_0_100M_peripheral_aresetn),
@@ -719,18 +767,18 @@ module AXI_bd_0
         .s_axi_wvalid(microblaze_0_axi_periph_M04_AXI_WVALID));
   AXI_bd_0_axi_quad_spi_0_0 axi_quad_spi_0
        (.ext_spi_clk(microblaze_0_Clk),
-        .io0_i(io0_i_0_1),
-        .io0_o(axi_quad_spi_0_io0_o),
-        .io0_t(axi_quad_spi_0_io0_t),
-        .io1_i(io1_i_0_1),
-        .io1_o(axi_quad_spi_0_io1_o),
-        .io1_t(axi_quad_spi_0_io1_t),
-        .io2_i(io2_i_0_1),
-        .io2_o(axi_quad_spi_0_io2_o),
-        .io2_t(axi_quad_spi_0_io2_t),
-        .io3_i(io3_i_0_1),
-        .io3_o(axi_quad_spi_0_io3_o),
-        .io3_t(axi_quad_spi_0_io3_t),
+        .io0_i(axi_quad_spi_0_SPI_0_IO0_I),
+        .io0_o(axi_quad_spi_0_SPI_0_IO0_O),
+        .io0_t(axi_quad_spi_0_SPI_0_IO0_T),
+        .io1_i(axi_quad_spi_0_SPI_0_IO1_I),
+        .io1_o(axi_quad_spi_0_SPI_0_IO1_O),
+        .io1_t(axi_quad_spi_0_SPI_0_IO1_T),
+        .io2_i(axi_quad_spi_0_SPI_0_IO2_I),
+        .io2_o(axi_quad_spi_0_SPI_0_IO2_O),
+        .io2_t(axi_quad_spi_0_SPI_0_IO2_T),
+        .io3_i(axi_quad_spi_0_SPI_0_IO3_I),
+        .io3_o(axi_quad_spi_0_SPI_0_IO3_O),
+        .io3_t(axi_quad_spi_0_SPI_0_IO3_T),
         .ip2intc_irpt(axi_quad_spi_0_ip2intc_irpt),
         .s_axi_aclk(microblaze_0_Clk),
         .s_axi_araddr(axi_protocol_convert_0_M_AXI_ARADDR[6:0]),
@@ -751,16 +799,23 @@ module AXI_bd_0
         .s_axi_wready(axi_protocol_convert_0_M_AXI_WREADY),
         .s_axi_wstrb(axi_protocol_convert_0_M_AXI_WSTRB),
         .s_axi_wvalid(axi_protocol_convert_0_M_AXI_WVALID),
-        .ss_i(AXI_bd_qspi_flash_ss_i_1),
-        .ss_o(axi_quad_spi_0_ss_o),
-        .ss_t(axi_quad_spi_0_ss_t));
+        .ss_i(axi_quad_spi_0_SPI_0_SS_I),
+        .ss_o(axi_quad_spi_0_SPI_0_SS_O),
+        .ss_t(axi_quad_spi_0_SPI_0_SS_T));
   AXI_bd_0_axi_uart16550_0_0 axi_uart16550_0
-       (.ctsn(1'b1),
-        .dcdn(1'b1),
-        .dsrn(1'b1),
+       (.baudoutn(axi_uart16550_0_UART_BAUDOUTn),
+        .ctsn(axi_uart16550_0_UART_CTSn),
+        .dcdn(axi_uart16550_0_UART_DCDn),
+        .ddis(axi_uart16550_0_UART_DDIS),
+        .dsrn(axi_uart16550_0_UART_DSRn),
+        .dtrn(axi_uart16550_0_UART_DTRn),
         .freeze(1'b0),
         .ip2intc_irpt(axi_uart16550_0_ip2intc_irpt),
-        .rin(1'b1),
+        .out1n(axi_uart16550_0_UART_OUT1n),
+        .out2n(axi_uart16550_0_UART_OUT2n),
+        .rin(axi_uart16550_0_UART_RI),
+        .rtsn(axi_uart16550_0_UART_RTSn),
+        .rxrdyn(axi_uart16550_0_UART_RXRDYn),
         .s_axi_aclk(microblaze_0_Clk),
         .s_axi_araddr(axi_protocol_convert_1_M_AXI_ARADDR),
         .s_axi_aresetn(rst_clk_wiz_0_100M_peripheral_aresetn),
@@ -780,8 +835,9 @@ module AXI_bd_0
         .s_axi_wready(axi_protocol_convert_1_M_AXI_WREADY),
         .s_axi_wstrb(axi_protocol_convert_1_M_AXI_WSTRB),
         .s_axi_wvalid(axi_protocol_convert_1_M_AXI_WVALID),
-        .sin(sin_0_1),
-        .sout(axi_uart16550_0_sout));
+        .sin(axi_uart16550_0_UART_RxD),
+        .sout(axi_uart16550_0_UART_TxD),
+        .txrdyn(axi_uart16550_0_UART_TXRDYn));
   AXI_bd_0_clk_wiz_0 clk_wiz_0
        (.clk_100mhz(microblaze_0_Clk),
         .clk_in1(sys_clock_1),
@@ -1273,8 +1329,7 @@ module AXI_bd_0
         .peripheral_aresetn(rst_clk_wiz_0_100M_peripheral_aresetn),
         .slowest_sync_clk(microblaze_0_Clk));
   AXI_bd_0_xadc_wiz_0_0 xadc_wiz_0
-       (.convst_in(1'b0),
-        .ip2intc_irpt(xadc_wiz_0_ip2intc_irpt),
+       (.ip2intc_irpt(xadc_wiz_0_ip2intc_irpt),
         .s_axi_aclk(microblaze_0_Clk),
         .s_axi_araddr(axi_protocol_convert_2_M_AXI_ARADDR[10:0]),
         .s_axi_aresetn(rst_clk_wiz_0_100M_peripheral_aresetn),
@@ -1294,10 +1349,10 @@ module AXI_bd_0
         .s_axi_wready(axi_protocol_convert_2_M_AXI_WREADY),
         .s_axi_wstrb(axi_protocol_convert_2_M_AXI_WSTRB),
         .s_axi_wvalid(axi_protocol_convert_2_M_AXI_WVALID),
-        .vauxn12(vauxn12_0_1),
-        .vauxn4(vauxn4_0_1),
-        .vauxp12(vauxp12_0_1),
-        .vauxp4(vauxp4_0_1),
+        .vauxn12(Vaux12_0_1_V_N),
+        .vauxn4(Vaux4_0_1_V_N),
+        .vauxp12(Vaux12_0_1_V_P),
+        .vauxp4(Vaux4_0_1_V_P),
         .vn_in(1'b0),
         .vp_in(1'b0));
 endmodule

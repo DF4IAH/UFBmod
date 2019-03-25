@@ -215,10 +215,10 @@ set_property -dict {PACKAGE_PIN V8 IOSTANDARD LVCMOS33} [get_ports pio48]
 
 
 ## UART
-set_property -dict {PACKAGE_PIN J18 IOSTANDARD LVCMOS33} [get_ports uart_rxd_out]
+set_property -dict {PACKAGE_PIN J18 IOSTANDARD LVCMOS33} [get_ports usb_uart_txd]
 #IO_L7N_T1_D10_14 Sch=uart_rxd_out
 
-set_property -dict {PACKAGE_PIN J17 IOSTANDARD LVCMOS33} [get_ports uart_txd_in]
+set_property -dict {PACKAGE_PIN J17 IOSTANDARD LVCMOS33} [get_ports usb_uart_rxd]
 #IO_L7P_T1_D09_14 Sch=uart_txd_in
 
 
@@ -344,6 +344,8 @@ set_property CONFIG_MODE SPIx4 [current_design]
 set_property CONFIG_VOLTAGE 3.3 [current_design]
 set_property CFGBVS VCCO [current_design]
 
+#set_property IO_BUFFER_TYPE NONE [get_ports xa_*]
+
 set_property DRIVE 4 [get_ports {led[1]}]
 set_property DRIVE 4 [get_ports {led[0]}]
 set_property DRIVE 4 [get_ports ledrgb_b]
@@ -359,7 +361,7 @@ set_property DRIVE 12 [get_ports {qspi_dq[0]}]
 set_property DRIVE 12 [get_ports RamCEn]
 set_property DRIVE 12 [get_ports RamOEn]
 set_property DRIVE 12 [get_ports RamWEn]
-set_property DRIVE 12 [get_ports uart_rxd_out]
+set_property DRIVE 12 [get_ports usb_uart_txd]
 set_property DRIVE 12 [get_ports {MemAdr[18]}]
 set_property DRIVE 12 [get_ports {MemAdr[17]}]
 set_property DRIVE 12 [get_ports {MemAdr[16]}]
@@ -387,7 +389,6 @@ set_property DRIVE 12 [get_ports {MemDB[3]}]
 set_property DRIVE 12 [get_ports {MemDB[2]}]
 set_property DRIVE 12 [get_ports {MemDB[1]}]
 set_property DRIVE 12 [get_ports {MemDB[0]}]
-
 
 set_property OFFCHIP_TERM NONE [get_ports RamCEn]
 set_property OFFCHIP_TERM NONE [get_ports RamOEn]

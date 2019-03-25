@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Sun Mar 24 12:59:02 2019
+// Date        : Sun Mar 24 12:58:56 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               Z:/nfs_ds_nfs/git/UFBmod/FPGA/CMOD_A7-35T__BG8/CMOD_A7-35T__BG8.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_dlmb_v10_0/AXI_bd_0_dlmb_v10_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top AXI_bd_0_dlmb_v10_0 -prefix
+//               AXI_bd_0_dlmb_v10_0_ AXI_bd_0_dlmb_v10_0_sim_netlist.v
 // Design      : AXI_bd_0_dlmb_v10_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -125,7 +125,7 @@ module AXI_bd_0_dlmb_v10_0
 endmodule
 
 (* C_EXT_RESET_HIGH = "1" *) (* C_LMB_AWIDTH = "32" *) (* C_LMB_DWIDTH = "32" *) 
-(* C_LMB_NUM_SLAVES = "1" *) (* ORIG_REF_NAME = "lmb_v10" *) 
+(* C_LMB_NUM_SLAVES = "1" *) 
 module AXI_bd_0_dlmb_v10_0_lmb_v10
    (LMB_Clk,
     SYS_Rst,

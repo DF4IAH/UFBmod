@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Sun Mar 24 18:25:33 2019
+-- Date        : Sun Mar 24 18:25:21 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               Z:/nfs_ds_nfs/git/UFBmod/FPGA/CMOD_A7-35T__BG8/CMOD_A7-35T__BG8.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_axi_uart16550_0_0/AXI_bd_0_axi_uart16550_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top AXI_bd_0_axi_uart16550_0_0 -prefix
+--               AXI_bd_0_axi_uart16550_0_0_ AXI_bd_0_axi_uart16550_0_0_sim_netlist.vhdl
 -- Design      : AXI_bd_0_axi_uart16550_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -28,8 +28,6 @@ entity AXI_bd_0_axi_uart16550_0_0_address_decoder is
     Bus_RNW_reg_reg_0 : in STD_LOGIC;
     wrReq_d1 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_uart16550_0_0_address_decoder : entity is "address_decoder";
 end AXI_bd_0_axi_uart16550_0_0_address_decoder;
 
 architecture STRUCTURE of AXI_bd_0_axi_uart16550_0_0_address_decoder is
@@ -126,8 +124,6 @@ entity AXI_bd_0_axi_uart16550_0_0_ipic_if is
     s_axi_aclk : in STD_LOGIC;
     bus2ip_rdce_i : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_uart16550_0_0_ipic_if : entity is "ipic_if";
 end AXI_bd_0_axi_uart16550_0_0_ipic_if;
 
 architecture STRUCTURE of AXI_bd_0_axi_uart16550_0_0_ipic_if is
@@ -323,8 +319,6 @@ entity AXI_bd_0_axi_uart16550_0_0_rx16550 is
     L : in STD_LOGIC_VECTOR ( 0 to 3 );
     \Dout_reg[3]_2\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_uart16550_0_0_rx16550 : entity is "rx16550";
 end AXI_bd_0_axi_uart16550_0_0_rx16550;
 
 architecture STRUCTURE of AXI_bd_0_axi_uart16550_0_0_rx16550 is
@@ -2485,8 +2479,6 @@ entity AXI_bd_0_axi_uart16550_0_0_tx16550 is
     \tsr_reg[7]_0\ : in STD_LOGIC_VECTOR ( 7 downto 0 );
     sin : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_uart16550_0_0_tx16550 : entity is "tx16550";
 end AXI_bd_0_axi_uart16550_0_0_tx16550;
 
 architecture STRUCTURE of AXI_bd_0_axi_uart16550_0_0_tx16550 is
@@ -3114,8 +3106,6 @@ entity AXI_bd_0_axi_uart16550_0_0_xuart_tx_load_sm is
     writing_thr : in STD_LOGIC;
     \tsr_int_reg[7]_0\ : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_uart16550_0_0_xuart_tx_load_sm : entity is "xuart_tx_load_sm";
 end AXI_bd_0_axi_uart16550_0_0_xuart_tx_load_sm;
 
 architecture STRUCTURE of AXI_bd_0_axi_uart16550_0_0_xuart_tx_load_sm is
@@ -3323,8 +3313,6 @@ entity AXI_bd_0_axi_uart16550_0_0_slave_attachment is
     Q : in STD_LOGIC_VECTOR ( 7 downto 0 );
     wrReq_d1 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_uart16550_0_0_slave_attachment : entity is "slave_attachment";
 end AXI_bd_0_axi_uart16550_0_0_slave_attachment;
 
 architecture STRUCTURE of AXI_bd_0_axi_uart16550_0_0_slave_attachment is
@@ -3734,8 +3722,6 @@ entity AXI_bd_0_axi_uart16550_0_0_uart16550 is
     freeze : in STD_LOGIC;
     sin : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_uart16550_0_0_uart16550 : entity is "uart16550";
 end AXI_bd_0_axi_uart16550_0_0_uart16550;
 
 architecture STRUCTURE of AXI_bd_0_axi_uart16550_0_0_uart16550 is
@@ -6572,8 +6558,6 @@ entity AXI_bd_0_axi_uart16550_0_0_axi_lite_ipif is
     Q : in STD_LOGIC_VECTOR ( 7 downto 0 );
     wrReq_d1 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_uart16550_0_0_axi_lite_ipif : entity is "axi_lite_ipif";
 end AXI_bd_0_axi_uart16550_0_0_axi_lite_ipif;
 
 architecture STRUCTURE of AXI_bd_0_axi_uart16550_0_0_axi_lite_ipif is
@@ -6639,8 +6623,6 @@ entity AXI_bd_0_axi_uart16550_0_0_xuart is
     freeze : in STD_LOGIC;
     sin : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_uart16550_0_0_xuart : entity is "xuart";
 end AXI_bd_0_axi_uart16550_0_0_xuart;
 
 architecture STRUCTURE of AXI_bd_0_axi_uart16550_0_0_xuart is
@@ -6746,8 +6728,6 @@ entity AXI_bd_0_axi_uart16550_0_0_axi_uart16550 is
   attribute C_S_AXI_ADDR_WIDTH of AXI_bd_0_axi_uart16550_0_0_axi_uart16550 : entity is 13;
   attribute C_S_AXI_DATA_WIDTH : integer;
   attribute C_S_AXI_DATA_WIDTH of AXI_bd_0_axi_uart16550_0_0_axi_uart16550 : entity is 32;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_uart16550_0_0_axi_uart16550 : entity is "axi_uart16550";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of AXI_bd_0_axi_uart16550_0_0_axi_uart16550 : entity is "yes";
 end AXI_bd_0_axi_uart16550_0_0_axi_uart16550;

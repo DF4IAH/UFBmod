@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Sun Mar 24 18:29:33 2019
+// Date        : Sun Mar 24 12:49:17 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               Z:/nfs_ds_nfs/git/UFBmod/FPGA/CMOD_A7-35T__BG8/CMOD_A7-35T__BG8.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_axi_quad_spi_0_0/AXI_bd_0_axi_quad_spi_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top AXI_bd_0_axi_quad_spi_0_0 -prefix
+//               AXI_bd_0_axi_quad_spi_0_0_ AXI_bd_0_axi_quad_spi_0_0_sim_netlist.v
 // Design      : AXI_bd_0_axi_quad_spi_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -171,7 +171,7 @@ module AXI_bd_0_axi_quad_spi_0_0
   (* C_SCK_RATIO = "2" *) 
   (* C_SELECT_XPM = "1" *) 
   (* C_SHARED_STARTUP = "0" *) 
-  (* C_SPI_MEMORY = "1" *) 
+  (* C_SPI_MEMORY = "2" *) 
   (* C_SPI_MEM_ADDR_BITS = "24" *) 
   (* C_SPI_MODE = "2" *) 
   (* C_SUB_FAMILY = "artix7" *) 
@@ -295,7 +295,6 @@ module AXI_bd_0_axi_quad_spi_0_0
         .usrdonets(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "address_decoder" *) 
 module AXI_bd_0_axi_quad_spi_0_0_address_decoder
    (p_2_in,
     \GEN_BKEND_CE_REGISTERS[29].ce_out_i_reg[29]_0 ,
@@ -1581,7 +1580,6 @@ module AXI_bd_0_axi_quad_spi_0_0_address_decoder
         .O(sw_rst_cond));
 endmodule
 
-(* ORIG_REF_NAME = "async_fifo_fg" *) 
 module AXI_bd_0_axi_quad_spi_0_0_async_fifo_fg
    (wr_data_count,
     almost_full,
@@ -1593,6 +1591,7 @@ module AXI_bd_0_axi_quad_spi_0_0_async_fifo_fg
     \gwdc.wr_data_count_i_reg[1] ,
     \gen_rd_b.gen_doutb_pipe.doutb_pipe_reg[0][4] ,
     D,
+    qspi_cntrl_ns132_out__0,
     rst,
     s_axi_aclk,
     s_axi_wdata,
@@ -1604,12 +1603,13 @@ module AXI_bd_0_axi_quad_spi_0_0_async_fifo_fg
     \gwack.wr_ack_i_reg ,
     p_6_in,
     \LEGACY_MD_IP2BUS_DATA_GEN.IP2Bus_Data_reg[29] ,
-    mode_0__2,
-    mode_1__2,
+    mode_0__3,
+    mode_1__3,
     p_3_out__0,
     io1_i_sync,
-    p_32_out__0,
-    io0_i_sync);
+    p_34_out__0,
+    io0_i_sync,
+    douta);
   output [1:0]wr_data_count;
   output almost_full;
   output [7:0]dout;
@@ -1620,6 +1620,7 @@ module AXI_bd_0_axi_quad_spi_0_0_async_fifo_fg
   output \gwdc.wr_data_count_i_reg[1] ;
   output \gen_rd_b.gen_doutb_pipe.doutb_pipe_reg[0][4] ;
   output [0:0]D;
+  output qspi_cntrl_ns132_out__0;
   input rst;
   input s_axi_aclk;
   input [7:0]s_axi_wdata;
@@ -1631,12 +1632,13 @@ module AXI_bd_0_axi_quad_spi_0_0_async_fifo_fg
   input \gwack.wr_ack_i_reg ;
   input p_6_in;
   input \LEGACY_MD_IP2BUS_DATA_GEN.IP2Bus_Data_reg[29] ;
-  input mode_0__2;
-  input mode_1__2;
+  input mode_0__3;
+  input mode_1__3;
   input p_3_out__0;
   input io1_i_sync;
-  input p_32_out__0;
+  input p_34_out__0;
   input io0_i_sync;
+  input [0:0]douta;
 
   wire Bus_RNW_reg;
   wire [0:0]D;
@@ -1648,6 +1650,7 @@ module AXI_bd_0_axi_quad_spi_0_0_async_fifo_fg
   wire [4:2]Tx_FIFO_occ_Reversed;
   wire almost_full;
   wire [7:0]dout;
+  wire [0:0]douta;
   wire empty;
   wire ext_spi_clk;
   wire full;
@@ -1657,12 +1660,13 @@ module AXI_bd_0_axi_quad_spi_0_0_async_fifo_fg
   wire \gwdc.wr_data_count_i_reg[2] ;
   wire io0_i_sync;
   wire io1_i_sync;
-  wire mode_0__2;
-  wire mode_1__2;
-  wire p_32_out__0;
+  wire mode_0__3;
+  wire mode_1__3;
+  wire p_34_out__0;
   wire p_3_in_0;
   wire p_3_out__0;
   wire p_6_in;
+  wire qspi_cntrl_ns132_out__0;
   wire rd_en;
   wire rst;
   wire s_axi_aclk;
@@ -1723,22 +1727,28 @@ module AXI_bd_0_axi_quad_spi_0_0_async_fifo_fg
         .I3(Tx_FIFO_occ_Reversed[3]),
         .I4(Tx_FIFO_occ_Reversed[4]),
         .O(\gwdc.wr_data_count_i_reg[1] ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    QSPI_IO0_T_i_6
+       (.I0(empty),
+        .I1(douta),
+        .O(qspi_cntrl_ns132_out__0));
   LUT5 #(
     .INIT(32'hAACFAAC0)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_2 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_2 
        (.I0(dout[4]),
         .I1(dout[6]),
-        .I2(mode_0__2),
-        .I3(mode_1__2),
+        .I2(mode_0__3),
+        .I3(mode_1__3),
         .I4(dout[7]),
         .O(\gen_rd_b.gen_doutb_pipe.doutb_pipe_reg[0][4] ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[7]_i_1 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[7]_i_1 
        (.I0(dout[0]),
         .I1(p_3_out__0),
         .I2(io1_i_sync),
-        .I3(p_32_out__0),
+        .I3(p_34_out__0),
         .I4(io0_i_sync),
         .O(D));
   (* CDC_SYNC_STAGES = "2" *) 
@@ -2112,7 +2122,6 @@ module AXI_bd_0_axi_quad_spi_0_0_async_fifo_fg__xdcDup__1
         .O(\xpm_fifo_instance.xpm_fifo_async_inst_i_2__0_n_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "axi_lite_ipif" *) 
 module AXI_bd_0_axi_quad_spi_0_0_axi_lite_ipif
    (bus2ip_reset_ipif_inverted,
     p_2_in,
@@ -2937,13 +2946,13 @@ endmodule
 (* Async_Clk = "0" *) (* C_DUAL_QUAD_MODE = "0" *) (* C_FAMILY = "artix7" *) 
 (* C_FIFO_DEPTH = "16" *) (* C_INSTANCE = "axi_quad_spi_inst" *) (* C_LSB_STUP = "0" *) 
 (* C_NUM_SS_BITS = "1" *) (* C_NUM_TRANSFER_BITS = "8" *) (* C_SCK_RATIO = "2" *) 
-(* C_SELECT_XPM = "1" *) (* C_SHARED_STARTUP = "0" *) (* C_SPI_MEMORY = "1" *) 
+(* C_SELECT_XPM = "1" *) (* C_SHARED_STARTUP = "0" *) (* C_SPI_MEMORY = "2" *) 
 (* C_SPI_MEM_ADDR_BITS = "24" *) (* C_SPI_MODE = "2" *) (* C_SUB_FAMILY = "artix7" *) 
 (* C_S_AXI4_ADDR_WIDTH = "24" *) (* C_S_AXI4_BASEADDR = "-1" *) (* C_S_AXI4_DATA_WIDTH = "32" *) 
 (* C_S_AXI4_HIGHADDR = "0" *) (* C_S_AXI4_ID_WIDTH = "1" *) (* C_S_AXI_ADDR_WIDTH = "7" *) 
 (* C_S_AXI_DATA_WIDTH = "32" *) (* C_TYPE_OF_AXI4_INTERFACE = "0" *) (* C_UC_FAMILY = "0" *) 
 (* C_USE_STARTUP = "1" *) (* C_USE_STARTUP_EXT = "0" *) (* C_XIP_MODE = "0" *) 
-(* ORIG_REF_NAME = "axi_quad_spi" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* downgradeipidentifiedwarnings = "yes" *) 
 module AXI_bd_0_axi_quad_spi_0_0_axi_quad_spi
    (ext_spi_clk,
     s_axi_aclk,
@@ -3320,7 +3329,6 @@ module AXI_bd_0_axi_quad_spi_0_0_axi_quad_spi
         .ss_t(ss_t));
 endmodule
 
-(* ORIG_REF_NAME = "axi_quad_spi_top" *) 
 module AXI_bd_0_axi_quad_spi_0_0_axi_quad_spi_top
    (io2_o,
     ss_t,
@@ -3800,7 +3808,6 @@ module AXI_bd_0_axi_quad_spi_0_0_axi_quad_spi_top
         .wr_ce_or_reduce_core_cmb(wr_ce_or_reduce_core_cmb));
 endmodule
 
-(* ORIG_REF_NAME = "cdc_sync" *) 
 module AXI_bd_0_axi_quad_spi_0_0_cdc_sync
    (scndry_out,
     prmry_in,
@@ -3888,7 +3895,6 @@ module AXI_bd_0_axi_quad_spi_0_0_cdc_sync_0
         .O(Rx_FIFO_Full_Fifo_d1_synced_i));
 endmodule
 
-(* ORIG_REF_NAME = "counter_f" *) 
 module AXI_bd_0_axi_quad_spi_0_0_counter_f
    (tx_occ_msb_1,
     \icount_out_reg[0]_0 ,
@@ -4054,7 +4060,6 @@ module AXI_bd_0_axi_quad_spi_0_0_counter_f
         .O(Tx_FIFO_Empty_intr));
 endmodule
 
-(* ORIG_REF_NAME = "cross_clk_sync_fifo_1" *) 
 module AXI_bd_0_axi_quad_spi_0_0_cross_clk_sync_fifo_1
    (SPISR_0_CMD_Error_to_axi_clk,
     \LOGIC_GENERATION_FDR.SPISEL_D1_REG_S2AX_2_0 ,
@@ -4086,6 +4091,7 @@ module AXI_bd_0_axi_quad_spi_0_0_cross_clk_sync_fifo_1
     D_0,
     master_tri_state_en_control1__1,
     rst,
+    \LOGIC_GENERATION_FDR.SPISSR_SYNC_GEN[0].SPISSR_SYNC_AXI_2_SPI_2_0 ,
     reset2ip_reset_int,
     SPISR_0_CMD_Error_int,
     s_axi_aclk,
@@ -4159,6 +4165,7 @@ module AXI_bd_0_axi_quad_spi_0_0_cross_clk_sync_fifo_1
   output D_0;
   output master_tri_state_en_control1__1;
   output rst;
+  output \LOGIC_GENERATION_FDR.SPISSR_SYNC_GEN[0].SPISSR_SYNC_AXI_2_SPI_2_0 ;
   input reset2ip_reset_int;
   input SPISR_0_CMD_Error_int;
   input s_axi_aclk;
@@ -4223,6 +4230,7 @@ module AXI_bd_0_axi_quad_spi_0_0_cross_clk_sync_fifo_1
   wire \LOGIC_GENERATION_FDR.SPICR_RX_FIFO_Rst_en_d1_reg_n_0 ;
   wire \LOGIC_GENERATION_FDR.SPISEL_D1_REG_S2AX_2_0 ;
   wire \LOGIC_GENERATION_FDR.SPISEL_PULSE_S2AX_2_0 ;
+  wire \LOGIC_GENERATION_FDR.SPISSR_SYNC_GEN[0].SPISSR_SYNC_AXI_2_SPI_2_0 ;
   wire \LOGIC_GENERATION_FDR.SYNC_SPIXFER_DONE_S2AX_2_0 ;
   wire \LOGIC_GENERATION_FDR.TX_EMPT_4_SPISR_S2AX_2_0 ;
   wire \LOGIC_GENERATION_FDR.drr_Overrun_int_cdc_from_spi_int_2_reg_n_0 ;
@@ -4380,7 +4388,7 @@ module AXI_bd_0_axi_quad_spi_0_0_cross_clk_sync_fifo_1
         .I4(\LOGIC_GENERATION_FDR.SPICR_2_MST_N_SLV_AX2S_1_CDC_0 ),
         .I5(p_1_in14_in),
         .O(\s_axi_wdata[8] ));
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT4 #(
     .INIT(16'h0007)) 
     \GEN_IP_IRPT_STATUS_REG[8].GEN_REG_STATUS.ip_irpt_status_reg[8]_i_2 
@@ -4852,7 +4860,7 @@ module AXI_bd_0_axi_quad_spi_0_0_cross_clk_sync_fifo_1
         .D(p_9_out),
         .Q(\LOGIC_GENERATION_FDR.spisel_pulse_cdc_from_spi_int_2_reg_n_0 ),
         .R(Rst_to_spi));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT4 #(
     .INIT(16'h0008)) 
     QSPI_IO1_T_i_2
@@ -4861,7 +4869,7 @@ module AXI_bd_0_axi_quad_spi_0_0_cross_clk_sync_fifo_1
         .I2(modf_strobe_int),
         .I3(sr_3_modf_to_spi_clk),
         .O(master_tri_state_en_control1__1));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT4 #(
     .INIT(16'hEFFF)) 
     QSPI_SCK_T_i_1
@@ -4894,7 +4902,7 @@ module AXI_bd_0_axi_quad_spi_0_0_cross_clk_sync_fifo_1
         .I4(spiXfer_done_d2),
         .I5(spiXfer_done_d3),
         .O(\RESET_FLOPS[15].RST_FLOPS ));
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT3 #(
     .INIT(8'h2A)) 
     \ip_irpt_enable_reg[8]_i_1 
@@ -4912,6 +4920,12 @@ module AXI_bd_0_axi_quad_spi_0_0_cross_clk_sync_fifo_1
         .I4(sr_3_MODF_int),
         .I5(reset2ip_reset_int),
         .O(\LEGACY_MD_WR_RD_ACK_GEN.ip2Bus_RdAck_core_reg_reg ));
+  LUT2 #(
+    .INIT(4'h7)) 
+    \qspi_cntrl_ps[2]_i_2 
+       (.I0(register_Data_slvsel_int),
+        .I1(empty),
+        .O(\LOGIC_GENERATION_FDR.SPISSR_SYNC_GEN[0].SPISSR_SYNC_AXI_2_SPI_2_0 ));
   LUT6 #(
     .INIT(64'h0000000000000004)) 
     transfer_start_i_1
@@ -4937,7 +4951,6 @@ module AXI_bd_0_axi_quad_spi_0_0_cross_clk_sync_fifo_1
         .O(rst));
 endmodule
 
-(* ORIG_REF_NAME = "interrupt_control" *) 
 module AXI_bd_0_axi_quad_spi_0_0_interrupt_control
    (irpt_wrack_d1,
     \GEN_IP_IRPT_STATUS_REG[0].GEN_REG_STATUS.ip_irpt_status_reg_reg[0]_0 ,
@@ -5446,7 +5459,6 @@ module AXI_bd_0_axi_quad_spi_0_0_interrupt_control
         .R(reset2ip_reset_int));
 endmodule
 
-(* ORIG_REF_NAME = "qspi_cntrl_reg" *) 
 module AXI_bd_0_axi_quad_spi_0_0_qspi_cntrl_reg
    (spicr_bits_7_8_frm_axi_clk,
     SPISR_1_LOOP_Back_Error_int,
@@ -5726,7 +5738,6 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_cntrl_reg
         .O(rst));
 endmodule
 
-(* ORIG_REF_NAME = "qspi_core_interface" *) 
 module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
    (SPISR_0_CMD_Error_to_axi_clk,
     spisel_d1_reg_to_axi_clk,
@@ -5964,6 +5975,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
   wire [7:0]D;
   wire DTR_FIFO_Data_Exists_d1;
   wire D_0;
+  wire Data_Dir_int;
   wire Data_Mode_0_int;
   wire Data_Mode_1_int;
   wire Data_Phase_int;
@@ -5979,6 +5991,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
   wire \FIFO_EXISTS.CLK_CROSS_I_n_22 ;
   wire \FIFO_EXISTS.CLK_CROSS_I_n_23 ;
   wire \FIFO_EXISTS.CLK_CROSS_I_n_27 ;
+  wire \FIFO_EXISTS.CLK_CROSS_I_n_31 ;
   wire \FIFO_EXISTS.RX_FIFO_II_n_12 ;
   wire \FIFO_EXISTS.RX_FIFO_II_n_13 ;
   wire \FIFO_EXISTS.RX_FIFO_II_n_15 ;
@@ -5990,6 +6003,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
   wire \FIFO_EXISTS.TX_FIFO_II_n_17 ;
   wire \GEN_IP_IRPT_STATUS_REG[0].GEN_REG_STATUS.ip_irpt_status_reg_reg[0] ;
   wire \GEN_IP_IRPT_STATUS_REG[1].GEN_REG_STATUS.ip_irpt_status_reg_reg[1] ;
+  wire IO0_T_control0__0;
   wire IP2Bus_Error_1;
   wire IP2Bus_RdAck_1;
   wire IP2Bus_WrAck_1;
@@ -6012,22 +6026,22 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
   wire \LEGACY_MD_WR_RD_ACK_GEN.read_ack_delay_5_reg_NO_DUAL_QUAD_MODE.QSPI_NORMAL_QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I_LOGIC_FOR_MD_12_GEN.SCK_MISO_STARTUP_USED.QSPI_STARTUP_BLOCK_I_pipe_signal_reg_r_3_n_0 ;
   wire \LEGACY_MD_WR_RD_ACK_GEN.read_ack_delay_5_reg_gate_n_0 ;
   wire \LOGIC_FOR_MD_12_GEN.SCK_MISO_STARTUP_USED.QSPI_STARTUP_BLOCK_I_n_0 ;
-  wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_10 ;
   wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_12 ;
-  wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_13 ;
   wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_14 ;
   wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_15 ;
   wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_16 ;
-  wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_22 ;
-  wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_27 ;
-  wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_29 ;
+  wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_17 ;
+  wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_23 ;
+  wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_28 ;
   wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_30 ;
   wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_31 ;
-  wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_35 ;
+  wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_32 ;
   wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_36 ;
   wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_37 ;
+  wire \LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_38 ;
   wire [7:0]Q;
-  wire [2:0]\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 ;
+  wire [2:0]\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 ;
+  wire Quad_Phase_int;
   wire R;
   wire [4:4]\RATIO_OF_2_GENERATE.Count_reg__0 ;
   wire Receive_ip2bus_error0;
@@ -6114,8 +6128,8 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
   wire irpt_wrack;
   wire irpt_wrack_d1;
   wire master_tri_state_en_control1__1;
-  wire mode_0__2;
-  wire mode_1__2;
+  wire mode_0__3;
+  wire mode_1__3;
   wire modf_reg;
   wire modf_strobe_int;
   wire p_0_in1_in;
@@ -6135,12 +6149,13 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
   wire p_1_in5_in;
   wire p_1_in8_in;
   wire p_1_in_1;
+  wire p_1_out;
   wire p_24_in;
   wire p_2_in;
   wire p_2_out;
-  wire p_32_out__0;
   wire p_34_out__0;
   wire p_36_out__0;
+  wire p_38_out__0;
   wire p_3_in;
   wire p_3_in_0;
   wire p_3_out__0;
@@ -6149,7 +6164,8 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
   wire p_6_in;
   wire p_8_in;
   wire preq;
-  wire qspi_cntrl_ns129_out__3;
+  wire qspi_cntrl_ns131_out__3;
+  wire qspi_cntrl_ns132_out__0;
   wire [2:0]qspi_cntrl_ps;
   wire rc_FIFO_Full_d1;
   wire rd_ce_or_reduce_core_cmb;
@@ -6263,6 +6279,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
         .\LOGIC_GENERATION_FDR.SPICR_5_TXFIFO_AX2S_1_CDC_0 (spicr_5_txfifo_rst_frm_axi_clk),
         .\LOGIC_GENERATION_FDR.SPISEL_D1_REG_S2AX_2_0 (spisel_d1_reg_to_axi_clk),
         .\LOGIC_GENERATION_FDR.SPISEL_PULSE_S2AX_2_0 (\FIFO_EXISTS.CLK_CROSS_I_n_20 ),
+        .\LOGIC_GENERATION_FDR.SPISSR_SYNC_GEN[0].SPISSR_SYNC_AXI_2_SPI_2_0 (\FIFO_EXISTS.CLK_CROSS_I_n_31 ),
         .\LOGIC_GENERATION_FDR.SYNC_SPIXFER_DONE_S2AX_2_0 (\FIFO_EXISTS.CLK_CROSS_I_n_15 ),
         .\LOGIC_GENERATION_FDR.TX_EMPT_4_SPISR_S2AX_2_0 (Tx_FIFO_Empty_SPISR_to_axi_clk),
         .Q(\RATIO_OF_2_GENERATE.Count_reg__0 ),
@@ -6314,7 +6331,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
         .sr_3_modf_to_spi_clk(sr_3_modf_to_spi_clk),
         .stop_clock(stop_clock),
         .transfer_start_d2(transfer_start_d2),
-        .transfer_start_reg(\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_27 ),
+        .transfer_start_reg(\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_28 ),
         .tx_FIFO_Occpncy_MSB_d1(tx_FIFO_Occpncy_MSB_d1),
         .tx_occ_msb(tx_occ_msb),
         .tx_occ_msb_4(tx_occ_msb_4),
@@ -6450,6 +6467,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
         .Tx_FIFO_Empty_SPISR_to_axi_clk(Tx_FIFO_Empty_SPISR_to_axi_clk),
         .almost_full(almost_full),
         .dout({data_from_txfifo[0],data_from_txfifo[1],data_from_txfifo[2],data_from_txfifo[3],data_from_txfifo[4],data_from_txfifo[5],data_from_txfifo[6],data_from_txfifo[7]}),
+        .douta(Data_Phase_int),
         .empty(tx_fifo_empty),
         .ext_spi_clk(ext_spi_clk),
         .\gen_rd_b.gen_doutb_pipe.doutb_pipe_reg[0][4] (\FIFO_EXISTS.TX_FIFO_II_n_16 ),
@@ -6458,12 +6476,13 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
         .\gwdc.wr_data_count_i_reg[2] (\FIFO_EXISTS.TX_FIFO_II_n_14 ),
         .io0_i_sync(io0_i_sync),
         .io1_i_sync(io1_i_sync),
-        .mode_0__2(mode_0__2),
-        .mode_1__2(mode_1__2),
-        .p_32_out__0(p_32_out__0),
+        .mode_0__3(mode_0__3),
+        .mode_1__3(mode_1__3),
+        .p_34_out__0(p_34_out__0),
         .p_3_in_0(p_3_in_0),
         .p_3_out__0(p_3_out__0),
         .p_6_in(p_6_in),
+        .qspi_cntrl_ns132_out__0(qspi_cntrl_ns132_out__0),
         .rd_en(SPIXfer_done_rd_tx_en),
         .rst(reset_TxFIFO_ptr_int),
         .s_axi_aclk(s_axi_aclk),
@@ -6738,60 +6757,62 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
        (.CE(CE),
         .D({rx_shft_reg_mode_0011[4],rx_shft_reg_mode_0011[5],rx_shft_reg_mode_0011[7]}),
         .DTR_FIFO_Data_Exists_d1(DTR_FIFO_Data_Exists_d1),
-        .E(\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_22 ),
+        .E(\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_23 ),
+        .IO0_T_control0__0(IO0_T_control0__0),
         .Q(qspi_cntrl_ps),
-        .\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 (\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 ),
+        .\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 (\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 ),
         .R(R),
-        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_2 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_36 ),
-        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg (\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_37 ),
-        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg_0 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_35 ),
-        .\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[4] ({\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_29 ,\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_30 ,\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_31 }),
+        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg (\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_37 ),
+        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_0 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_36 ),
+        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_1 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_38 ),
+        .\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[4] ({\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_30 ,\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_31 ,\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_32 }),
         .Rst_to_spi(rst_to_spi_int),
         .SPISR_0_CMD_Error_int(SPISR_0_CMD_Error_int),
         .SPIXfer_done_int(SPIXfer_done_int),
         .SPIXfer_done_int_pulse(SPIXfer_done_int_pulse),
         .Serial_Dout_019_in(Serial_Dout_019_in),
         .dout({data_from_txfifo[0],data_from_txfifo[1],data_from_txfifo[2],data_from_txfifo[3],data_from_txfifo[4],data_from_txfifo[5],data_from_txfifo[6],data_from_txfifo[7]}),
-        .douta({Data_Mode_1_int,Data_Mode_0_int,Data_Phase_int,Addr_Mode_1_int,Addr_Mode_0_int,Addr_Bit_int,Addr_Phase_int,CMD_Mode_1_int,CMD_Mode_0_int}),
+        .douta({Data_Dir_int,Data_Mode_1_int,Data_Mode_0_int,Data_Phase_int,Quad_Phase_int,Addr_Mode_1_int,Addr_Mode_0_int,Addr_Bit_int,Addr_Phase_int,CMD_Mode_1_int,CMD_Mode_0_int}),
         .empty(tx_fifo_empty),
         .ext_spi_clk(ext_spi_clk),
-        .\gen_rd_a.douta_reg_reg (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_10 ),
-        .\gen_rd_a.douta_reg_reg_0 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_12 ),
-        .\gen_rd_a.douta_reg_reg_1 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_13 ),
-        .\gen_rd_a.douta_reg_reg_2 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_14 ),
-        .\gen_rd_a.douta_reg_reg_3 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_15 ),
-        .\gen_rd_a.douta_reg_reg_4 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_16 ),
-        .\gen_rd_a.douta_reg_reg_5 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_27 ),
+        .\gen_rd_a.douta_reg_reg (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_12 ),
+        .\gen_rd_a.douta_reg_reg_0 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_14 ),
+        .\gen_rd_a.douta_reg_reg_1 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_15 ),
+        .\gen_rd_a.douta_reg_reg_2 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_16 ),
+        .\gen_rd_a.douta_reg_reg_3 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_17 ),
+        .\gen_rd_a.douta_reg_reg_4 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_28 ),
         .io0_i_sync(io0_i_sync),
         .io1_i_sync(io1_i_sync),
         .io2_i_sync(io2_i_sync),
         .io3_i_sync(io3_i_sync),
         .master_tri_state_en_control1__1(master_tri_state_en_control1__1),
-        .mode_0__2(mode_0__2),
-        .mode_1__2(mode_1__2),
+        .mode_0__3(mode_0__3),
+        .mode_1__3(mode_1__3),
+        .p_1_out(p_1_out),
         .p_2_out(p_2_out),
-        .p_32_out__0(p_32_out__0),
         .p_34_out__0(p_34_out__0),
         .p_36_out__0(p_36_out__0),
-        .qspi_cntrl_ns129_out__3(qspi_cntrl_ns129_out__3),
-        .register_Data_slvsel_int(register_Data_slvsel_int),
+        .p_38_out__0(p_38_out__0),
+        .qspi_cntrl_ns131_out__3(qspi_cntrl_ns131_out__3),
+        .qspi_cntrl_ns132_out__0(qspi_cntrl_ns132_out__0),
         .sck_d3(sck_d3));
   AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic \LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I 
        (.CE(CE),
         .D({rx_shft_reg_mode_0011[4],rx_shft_reg_mode_0011[5],rx_shft_reg_mode_0011[7]}),
         .DTR_FIFO_Data_Exists_d1(DTR_FIFO_Data_Exists_d1),
         .D_0(D_0),
-        .E(\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_22 ),
+        .E(\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_23 ),
+        .IO0_T_control0__0(IO0_T_control0__0),
         .Q(qspi_cntrl_ps),
         .QSPI_IO0_T_0(\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_15 ),
-        .QSPI_IO1_T_0(\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_14 ),
-        .\QSPI_MODE_2_T_CONTROL.QSPI_IO3_T_0 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_12 ),
-        .\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 (\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 ),
+        .QSPI_IO1_T_0(\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_17 ),
+        .\QSPI_MODE_2_T_CONTROL.QSPI_IO3_T_0 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_14 ),
+        .\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 (\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 ),
         .\RATIO_OF_2_GENERATE.Count_reg[0]_0 (\FIFO_EXISTS.CLK_CROSS_I_n_27 ),
         .\RATIO_OF_2_GENERATE.Count_reg[4]_0 (\RATIO_OF_2_GENERATE.Count_reg__0 ),
-        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_reg_0 (\FIFO_EXISTS.TX_FIFO_II_n_16 ),
-        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg[7]_0 (\FIFO_EXISTS.TX_FIFO_II_n_17 ),
-        .\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[5]_0 ({\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_29 ,\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_30 ,\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_31 }),
+        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_reg_0 (\FIFO_EXISTS.TX_FIFO_II_n_16 ),
+        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg[7]_0 (\FIFO_EXISTS.TX_FIFO_II_n_17 ),
+        .\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[5]_0 ({\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_30 ,\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_31 ,\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_32 }),
         .\RX_DATA_SCK_RATIO_2_GEN1.receive_Data_int_reg[0]_0 ({data_to_rx_fifo[0],data_to_rx_fifo[1],data_to_rx_fifo[2],data_to_rx_fifo[3],data_to_rx_fifo[4],data_to_rx_fifo[5],data_to_rx_fifo[6],data_to_rx_fifo[7]}),
         .Rst_to_spi(rst_to_spi_int),
         .SCK_O_int(SCK_O_int),
@@ -6802,12 +6823,12 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
         .Serial_Dout_019_in(Serial_Dout_019_in),
         .almost_full(Rx_FIFO_Full_Fifo_org),
         .dout({data_from_txfifo[0],data_from_txfifo[1],data_from_txfifo[2],data_from_txfifo[3],data_from_txfifo[4],data_from_txfifo[5],data_from_txfifo[6]}),
-        .douta({Data_Mode_1_int,Data_Mode_0_int,Data_Phase_int,Addr_Mode_1_int,Addr_Mode_0_int,Addr_Bit_int,Addr_Phase_int,CMD_Mode_1_int,CMD_Mode_0_int}),
+        .douta({Data_Dir_int,Data_Mode_1_int,Data_Mode_0_int,Data_Phase_int,Quad_Phase_int,Addr_Mode_1_int,Addr_Mode_0_int,Addr_Bit_int,Addr_Phase_int,CMD_Mode_1_int,CMD_Mode_0_int}),
         .drr_Overrun_int(drr_Overrun_int),
         .empty(tx_fifo_empty),
         .ext_spi_clk(ext_spi_clk),
-        .\gen_rd_a.douta_reg_reg (\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_36 ),
-        .\gen_rd_a.douta_reg_reg_0 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_37 ),
+        .\gen_rd_a.douta_reg_reg (\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_37 ),
+        .\gen_rd_a.douta_reg_reg_0 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_38 ),
         .io0_o(io0_o),
         .io0_t(io0_t),
         .io1_i_sync(io1_i_sync),
@@ -6819,19 +6840,21 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
         .io3_i_sync(io3_i_sync),
         .io3_o(io3_o),
         .io3_t(io3_t),
-        .mode_0__2(mode_0__2),
-        .mode_1__2(mode_1__2),
+        .mode_0__3(mode_0__3),
+        .mode_1__3(mode_1__3),
         .modf_strobe_int(modf_strobe_int),
+        .p_1_out(p_1_out),
         .p_2_out(p_2_out),
-        .p_32_out__0(p_32_out__0),
         .p_34_out__0(p_34_out__0),
         .p_36_out__0(p_36_out__0),
+        .p_38_out__0(p_38_out__0),
         .p_3_out__0(p_3_out__0),
-        .qspi_cntrl_ns129_out__3(qspi_cntrl_ns129_out__3),
-        .\qspi_cntrl_ps_reg[0]_0 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_10 ),
-        .\qspi_cntrl_ps_reg[1]_0 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_35 ),
-        .\qspi_cntrl_ps_reg[1]_1 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_16 ),
-        .\qspi_cntrl_ps_reg[2]_0 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_13 ),
+        .qspi_cntrl_ns131_out__3(qspi_cntrl_ns131_out__3),
+        .qspi_cntrl_ns132_out__0(qspi_cntrl_ns132_out__0),
+        .\qspi_cntrl_ps_reg[0]_0 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_12 ),
+        .\qspi_cntrl_ps_reg[1]_0 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_CONTROL_LOGIC_I_n_36 ),
+        .\qspi_cntrl_ps_reg[2]_0 (\FIFO_EXISTS.CLK_CROSS_I_n_31 ),
+        .\qspi_cntrl_ps_reg[2]_1 (\LOGIC_FOR_MD_12_GEN.SPI_MODE_1_LUT_LOGIC_I_n_16 ),
         .rd_en(SPIXfer_done_rd_tx_en),
         .register_Data_slvsel_int(register_Data_slvsel_int),
         .sck_d3(sck_d3),
@@ -6908,7 +6931,6 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_core_interface
         .R(reset2ip_reset_int));
 endmodule
 
-(* ORIG_REF_NAME = "qspi_fifo_ifmodule" *) 
 module AXI_bd_0_axi_quad_spi_0_0_qspi_fifo_ifmodule
    (rc_FIFO_Full_d1,
     tx_FIFO_Empty_d1,
@@ -6968,7 +6990,6 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_fifo_ifmodule
         .R(reset2ip_reset_int));
 endmodule
 
-(* ORIG_REF_NAME = "qspi_look_up_logic" *) 
 module AXI_bd_0_axi_quad_spi_0_0_qspi_look_up_logic
    (douta,
     DTR_FIFO_Data_Exists_d1,
@@ -6978,40 +6999,41 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_look_up_logic
     \gen_rd_a.douta_reg_reg_1 ,
     \gen_rd_a.douta_reg_reg_2 ,
     \gen_rd_a.douta_reg_reg_3 ,
-    \gen_rd_a.douta_reg_reg_4 ,
     D,
-    p_32_out__0,
     p_34_out__0,
+    p_36_out__0,
     E,
     Serial_Dout_019_in,
-    mode_1__2,
-    mode_0__2,
-    p_36_out__0,
-    \gen_rd_a.douta_reg_reg_5 ,
+    mode_1__3,
+    mode_0__3,
+    p_38_out__0,
+    \gen_rd_a.douta_reg_reg_4 ,
+    IO0_T_control0__0,
     ext_spi_clk,
     Rst_to_spi,
     R,
     CE,
     dout,
     p_2_out,
+    p_1_out,
     SPIXfer_done_int_pulse,
     Q,
     empty,
-    qspi_cntrl_ns129_out__3,
+    qspi_cntrl_ns131_out__3,
     master_tri_state_en_control1__1,
-    register_Data_slvsel_int,
+    qspi_cntrl_ns132_out__0,
+    \QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 ,
     io1_i_sync,
     io0_i_sync,
     io2_i_sync,
     \RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[4] ,
     io3_i_sync,
     sck_d3,
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg ,
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg_0 ,
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_2 ,
-    \QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 ,
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg ,
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_0 ,
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_1 ,
     SPIXfer_done_int);
-  output [8:0]douta;
+  output [10:0]douta;
   output DTR_FIFO_Data_Exists_d1;
   output \gen_rd_a.douta_reg_reg ;
   output SPISR_0_CMD_Error_int;
@@ -7019,38 +7041,39 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_look_up_logic
   output \gen_rd_a.douta_reg_reg_1 ;
   output \gen_rd_a.douta_reg_reg_2 ;
   output \gen_rd_a.douta_reg_reg_3 ;
-  output \gen_rd_a.douta_reg_reg_4 ;
   output [2:0]D;
-  output p_32_out__0;
   output p_34_out__0;
+  output p_36_out__0;
   output [0:0]E;
   output Serial_Dout_019_in;
-  output mode_1__2;
-  output mode_0__2;
-  output p_36_out__0;
-  output \gen_rd_a.douta_reg_reg_5 ;
+  output mode_1__3;
+  output mode_0__3;
+  output p_38_out__0;
+  output \gen_rd_a.douta_reg_reg_4 ;
+  output IO0_T_control0__0;
   input ext_spi_clk;
   input Rst_to_spi;
   input R;
   input CE;
   input [7:0]dout;
   input p_2_out;
+  input p_1_out;
   input SPIXfer_done_int_pulse;
   input [2:0]Q;
   input empty;
-  input qspi_cntrl_ns129_out__3;
+  input qspi_cntrl_ns131_out__3;
   input master_tri_state_en_control1__1;
-  input register_Data_slvsel_int;
+  input qspi_cntrl_ns132_out__0;
+  input [2:0]\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 ;
   input io1_i_sync;
   input io0_i_sync;
   input io2_i_sync;
   input [2:0]\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[4] ;
   input io3_i_sync;
   input sck_d3;
-  input \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg ;
-  input \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg_0 ;
-  input \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_2 ;
-  input [2:0]\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 ;
+  input \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg ;
+  input \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_0 ;
+  input \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_1 ;
   input SPIXfer_done_int;
 
   wire CE;
@@ -7059,20 +7082,21 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_look_up_logic
   wire [2:0]D;
   wire DTR_FIFO_Data_Exists_d1;
   wire [0:0]E;
+  wire IO0_T_control0__0;
   wire [2:0]Q;
-  wire \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[0].TXFIFO_FIRST_ENTRY_REG_I__0 ;
-  wire \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[1].TXFIFO_FIRST_ENTRY_REG_I__0 ;
-  wire \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[2].TXFIFO_FIRST_ENTRY_REG_I__0 ;
-  wire \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[3].TXFIFO_FIRST_ENTRY_REG_I__0 ;
-  wire \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[4].TXFIFO_FIRST_ENTRY_REG_I__0 ;
-  wire \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[5].TXFIFO_FIRST_ENTRY_REG_I__0 ;
-  wire \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[6].TXFIFO_FIRST_ENTRY_REG_I__0 ;
-  wire \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[7].TXFIFO_FIRST_ENTRY_REG_I__0 ;
-  wire [2:0]\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 ;
+  wire \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[0].TXFIFO_FIRST_ENTRY_REG_I__0 ;
+  wire \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[1].TXFIFO_FIRST_ENTRY_REG_I__0 ;
+  wire \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[2].TXFIFO_FIRST_ENTRY_REG_I__0 ;
+  wire \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[3].TXFIFO_FIRST_ENTRY_REG_I__0 ;
+  wire \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[4].TXFIFO_FIRST_ENTRY_REG_I__0 ;
+  wire \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[5].TXFIFO_FIRST_ENTRY_REG_I__0 ;
+  wire \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[6].TXFIFO_FIRST_ENTRY_REG_I__0 ;
+  wire \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[7].TXFIFO_FIRST_ENTRY_REG_I__0 ;
+  wire [2:0]\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 ;
   wire R;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_2 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_1 ;
   wire [2:0]\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[4] ;
   wire Rst_to_spi;
   wire SPISR_0_CMD_Error_int;
@@ -7080,7 +7104,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_look_up_logic
   wire SPIXfer_done_int_pulse;
   wire Serial_Dout_019_in;
   wire [7:0]dout;
-  wire [8:0]douta;
+  wire [10:0]douta;
   wire empty;
   wire ext_spi_clk;
   wire \gen_rd_a.douta_reg_reg ;
@@ -7089,35 +7113,35 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_look_up_logic
   wire \gen_rd_a.douta_reg_reg_2 ;
   wire \gen_rd_a.douta_reg_reg_3 ;
   wire \gen_rd_a.douta_reg_reg_4 ;
-  wire \gen_rd_a.douta_reg_reg_5 ;
   wire io0_i_sync;
   wire io1_i_sync;
   wire io2_i_sync;
   wire io3_i_sync;
   wire master_tri_state_en_control1__1;
-  wire mode_0__2;
-  wire mode_1__2;
+  wire mode_0__3;
+  wire mode_1__3;
+  wire p_1_out;
   wire p_2_out;
-  wire p_32_out__0;
   wire p_34_out__0;
   wire p_36_out__0;
-  wire qspi_cntrl_ns129_out__3;
-  wire register_Data_slvsel_int;
+  wire p_38_out__0;
+  wire qspi_cntrl_ns131_out__3;
+  wire qspi_cntrl_ns132_out__0;
   wire sck_d3;
 
-  FDRE \QSPI_LOOK_UP_MODE_2_MEMORY_1.CMD_decoded_int_d1_reg 
+  FDRE \QSPI_LOOK_UP_MODE_2_MEMORY_2.CMD_decoded_int_d1_reg 
        (.C(ext_spi_clk),
         .CE(1'b1),
-        .D(DTR_FIFO_Data_Exists_d1),
+        .D(p_1_out),
         .Q(CMD_decoded_int_d1),
         .R(Rst_to_spi));
-  FDRE \QSPI_LOOK_UP_MODE_2_MEMORY_1.CMD_decoded_int_reg 
+  FDRE \QSPI_LOOK_UP_MODE_2_MEMORY_2.CMD_decoded_int_reg 
        (.C(ext_spi_clk),
         .CE(1'b1),
         .D(CMD_decoded_int_d1),
         .Q(CMD_decoded_int),
         .R(Rst_to_spi));
-  FDRE \QSPI_LOOK_UP_MODE_2_MEMORY_1.DTR_FIFO_Data_Exists_d1_reg 
+  FDRE \QSPI_LOOK_UP_MODE_2_MEMORY_2.DTR_FIFO_Data_Exists_d1_reg 
        (.C(ext_spi_clk),
         .CE(1'b1),
         .D(p_2_out),
@@ -7129,11 +7153,11 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_look_up_logic
     .IS_C_INVERTED(1'b0),
     .IS_D_INVERTED(1'b0),
     .IS_R_INVERTED(1'b0)) 
-    \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[0].TXFIFO_FIRST_ENTRY_REG_I 
+    \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[0].TXFIFO_FIRST_ENTRY_REG_I 
        (.C(ext_spi_clk),
         .CE(CE),
         .D(dout[7]),
-        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[0].TXFIFO_FIRST_ENTRY_REG_I__0 ),
+        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[0].TXFIFO_FIRST_ENTRY_REG_I__0 ),
         .R(R));
   (* box_type = "PRIMITIVE" *) 
   FDRE #(
@@ -7141,11 +7165,11 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_look_up_logic
     .IS_C_INVERTED(1'b0),
     .IS_D_INVERTED(1'b0),
     .IS_R_INVERTED(1'b0)) 
-    \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[1].TXFIFO_FIRST_ENTRY_REG_I 
+    \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[1].TXFIFO_FIRST_ENTRY_REG_I 
        (.C(ext_spi_clk),
         .CE(CE),
         .D(dout[6]),
-        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[1].TXFIFO_FIRST_ENTRY_REG_I__0 ),
+        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[1].TXFIFO_FIRST_ENTRY_REG_I__0 ),
         .R(R));
   (* box_type = "PRIMITIVE" *) 
   FDRE #(
@@ -7153,11 +7177,11 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_look_up_logic
     .IS_C_INVERTED(1'b0),
     .IS_D_INVERTED(1'b0),
     .IS_R_INVERTED(1'b0)) 
-    \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[2].TXFIFO_FIRST_ENTRY_REG_I 
+    \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[2].TXFIFO_FIRST_ENTRY_REG_I 
        (.C(ext_spi_clk),
         .CE(CE),
         .D(dout[5]),
-        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[2].TXFIFO_FIRST_ENTRY_REG_I__0 ),
+        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[2].TXFIFO_FIRST_ENTRY_REG_I__0 ),
         .R(R));
   (* box_type = "PRIMITIVE" *) 
   FDRE #(
@@ -7165,11 +7189,11 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_look_up_logic
     .IS_C_INVERTED(1'b0),
     .IS_D_INVERTED(1'b0),
     .IS_R_INVERTED(1'b0)) 
-    \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[3].TXFIFO_FIRST_ENTRY_REG_I 
+    \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[3].TXFIFO_FIRST_ENTRY_REG_I 
        (.C(ext_spi_clk),
         .CE(CE),
         .D(dout[4]),
-        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[3].TXFIFO_FIRST_ENTRY_REG_I__0 ),
+        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[3].TXFIFO_FIRST_ENTRY_REG_I__0 ),
         .R(R));
   (* box_type = "PRIMITIVE" *) 
   FDRE #(
@@ -7177,11 +7201,11 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_look_up_logic
     .IS_C_INVERTED(1'b0),
     .IS_D_INVERTED(1'b0),
     .IS_R_INVERTED(1'b0)) 
-    \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[4].TXFIFO_FIRST_ENTRY_REG_I 
+    \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[4].TXFIFO_FIRST_ENTRY_REG_I 
        (.C(ext_spi_clk),
         .CE(CE),
         .D(dout[3]),
-        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[4].TXFIFO_FIRST_ENTRY_REG_I__0 ),
+        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[4].TXFIFO_FIRST_ENTRY_REG_I__0 ),
         .R(R));
   (* box_type = "PRIMITIVE" *) 
   FDRE #(
@@ -7189,11 +7213,11 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_look_up_logic
     .IS_C_INVERTED(1'b0),
     .IS_D_INVERTED(1'b0),
     .IS_R_INVERTED(1'b0)) 
-    \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[5].TXFIFO_FIRST_ENTRY_REG_I 
+    \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[5].TXFIFO_FIRST_ENTRY_REG_I 
        (.C(ext_spi_clk),
         .CE(CE),
         .D(dout[2]),
-        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[5].TXFIFO_FIRST_ENTRY_REG_I__0 ),
+        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[5].TXFIFO_FIRST_ENTRY_REG_I__0 ),
         .R(R));
   (* box_type = "PRIMITIVE" *) 
   FDRE #(
@@ -7201,11 +7225,11 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_look_up_logic
     .IS_C_INVERTED(1'b0),
     .IS_D_INVERTED(1'b0),
     .IS_R_INVERTED(1'b0)) 
-    \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[6].TXFIFO_FIRST_ENTRY_REG_I 
+    \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[6].TXFIFO_FIRST_ENTRY_REG_I 
        (.C(ext_spi_clk),
         .CE(CE),
         .D(dout[1]),
-        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[6].TXFIFO_FIRST_ENTRY_REG_I__0 ),
+        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[6].TXFIFO_FIRST_ENTRY_REG_I__0 ),
         .R(R));
   (* box_type = "PRIMITIVE" *) 
   FDRE #(
@@ -7213,28 +7237,29 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_look_up_logic
     .IS_C_INVERTED(1'b0),
     .IS_D_INVERTED(1'b0),
     .IS_R_INVERTED(1'b0)) 
-    \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[7].TXFIFO_FIRST_ENTRY_REG_I 
+    \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[7].TXFIFO_FIRST_ENTRY_REG_I 
        (.C(ext_spi_clk),
         .CE(CE),
         .D(dout[0]),
-        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[7].TXFIFO_FIRST_ENTRY_REG_I__0 ),
+        .Q(\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[7].TXFIFO_FIRST_ENTRY_REG_I__0 ),
         .R(R));
-  AXI_bd_0_axi_quad_spi_0_0_xpm_memory_sprom \QSPI_LOOK_UP_MODE_2_MEMORY_1.xpm_mem_gen_QSPI_LOOK_UP_MODE_2_MEMORY_1.xpm_memory_inst 
+  AXI_bd_0_axi_quad_spi_0_0_xpm_memory_sprom \QSPI_LOOK_UP_MODE_2_MEMORY_2.xpm_mem_gen_QSPI_LOOK_UP_MODE_2_MEMORY_2.xpm_memory_inst 
        (.CMD_decoded_int(CMD_decoded_int),
         .D(D),
         .E(E),
+        .IO0_T_control0__0(IO0_T_control0__0),
         .Q(Q),
-        .\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 (\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 ),
-        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_2 (\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_2 ),
-        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg (\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg ),
-        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg_0 (\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg_0 ),
+        .\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 (\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 ),
+        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg (\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg ),
+        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_0 (\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_0 ),
+        .\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_1 (\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_1 ),
         .\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[4] (\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[4] ),
         .Rst_to_spi(Rst_to_spi),
         .SPISR_0_CMD_Error_int(SPISR_0_CMD_Error_int),
         .SPIXfer_done_int(SPIXfer_done_int),
         .SPIXfer_done_int_pulse(SPIXfer_done_int_pulse),
         .Serial_Dout_019_in(Serial_Dout_019_in),
-        .addra({\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[0].TXFIFO_FIRST_ENTRY_REG_I__0 ,\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[1].TXFIFO_FIRST_ENTRY_REG_I__0 ,\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[2].TXFIFO_FIRST_ENTRY_REG_I__0 ,\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[3].TXFIFO_FIRST_ENTRY_REG_I__0 ,\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[4].TXFIFO_FIRST_ENTRY_REG_I__0 ,\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[5].TXFIFO_FIRST_ENTRY_REG_I__0 ,\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[6].TXFIFO_FIRST_ENTRY_REG_I__0 ,\QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[7].TXFIFO_FIRST_ENTRY_REG_I__0 }),
+        .addra({\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[0].TXFIFO_FIRST_ENTRY_REG_I__0 ,\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[1].TXFIFO_FIRST_ENTRY_REG_I__0 ,\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[2].TXFIFO_FIRST_ENTRY_REG_I__0 ,\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[3].TXFIFO_FIRST_ENTRY_REG_I__0 ,\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[4].TXFIFO_FIRST_ENTRY_REG_I__0 ,\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[5].TXFIFO_FIRST_ENTRY_REG_I__0 ,\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[6].TXFIFO_FIRST_ENTRY_REG_I__0 ,\QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[7].TXFIFO_FIRST_ENTRY_REG_I__0 }),
         .douta(douta),
         .empty(empty),
         .ext_spi_clk(ext_spi_clk),
@@ -7243,24 +7268,22 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_look_up_logic
         .\gen_rd_a.douta_reg_reg_1 (\gen_rd_a.douta_reg_reg_1 ),
         .\gen_rd_a.douta_reg_reg_2 (\gen_rd_a.douta_reg_reg_2 ),
         .\gen_rd_a.douta_reg_reg_3 (\gen_rd_a.douta_reg_reg_3 ),
-        .\gen_rd_a.douta_reg_reg_4 (\gen_rd_a.douta_reg_reg_4 ),
-        .\gen_rd_a.douta_reg_reg_5 (p_32_out__0),
-        .\gen_rd_a.douta_reg_reg_6 (mode_1__2),
-        .\gen_rd_a.douta_reg_reg_7 (mode_0__2),
-        .\gen_rd_a.douta_reg_reg_8 (\gen_rd_a.douta_reg_reg_5 ),
+        .\gen_rd_a.douta_reg_reg_4 (p_34_out__0),
+        .\gen_rd_a.douta_reg_reg_5 (mode_1__3),
+        .\gen_rd_a.douta_reg_reg_6 (mode_0__3),
+        .\gen_rd_a.douta_reg_reg_7 (\gen_rd_a.douta_reg_reg_4 ),
         .io0_i_sync(io0_i_sync),
         .io1_i_sync(io1_i_sync),
         .io2_i_sync(io2_i_sync),
         .io3_i_sync(io3_i_sync),
         .master_tri_state_en_control1__1(master_tri_state_en_control1__1),
-        .p_34_out__0(p_34_out__0),
         .p_36_out__0(p_36_out__0),
-        .qspi_cntrl_ns129_out__3(qspi_cntrl_ns129_out__3),
-        .register_Data_slvsel_int(register_Data_slvsel_int),
+        .p_38_out__0(p_38_out__0),
+        .qspi_cntrl_ns131_out__3(qspi_cntrl_ns131_out__3),
+        .qspi_cntrl_ns132_out__0(qspi_cntrl_ns132_out__0),
         .sck_d3(sck_d3));
 endmodule
 
-(* ORIG_REF_NAME = "qspi_mode_control_logic" *) 
 module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
    (ss_t,
     sck_t,
@@ -7286,11 +7309,12 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
     io3_o,
     p_3_out__0,
     Q,
+    p_1_out,
     CE,
     p_2_out,
-    qspi_cntrl_ns129_out__3,
+    qspi_cntrl_ns131_out__3,
     \RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[5]_0 ,
-    \QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 ,
+    \QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 ,
     \qspi_cntrl_ps_reg[1]_0 ,
     \gen_rd_a.douta_reg_reg ,
     \gen_rd_a.douta_reg_reg_0 ,
@@ -7307,33 +7331,35 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
     transfer_start_reg_0,
     scndry_out,
     almost_full,
-    mode_1__2,
-    p_36_out__0,
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_reg_0 ,
+    mode_1__3,
+    p_38_out__0,
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_reg_0 ,
     Serial_Dout_019_in,
-    p_32_out__0,
     p_34_out__0,
+    p_36_out__0,
+    mode_0__3,
     SPICR_2_MST_N_SLV_to_spi_clk,
     spicr_3_cpol_to_spi_clk,
     spicr_4_cpha_to_spi_clk,
-    empty,
     DTR_FIFO_Data_Exists_d1,
+    empty,
     \qspi_cntrl_ps_reg[0]_0 ,
     douta,
-    \qspi_cntrl_ps_reg[1]_1 ,
-    \qspi_cntrl_ps_reg[2]_0 ,
     \QSPI_MODE_2_T_CONTROL.QSPI_IO3_T_0 ,
+    IO0_T_control0__0,
     QSPI_IO0_T_0,
+    qspi_cntrl_ns132_out__0,
     io1_i_sync,
     dout,
     io2_i_sync,
-    mode_0__2,
     io3_i_sync,
     D,
+    \qspi_cntrl_ps_reg[2]_0 ,
+    \qspi_cntrl_ps_reg[2]_1 ,
     sr_3_modf_to_spi_clk,
     spicr_bits_7_8_to_spi_clk,
     E,
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg[7]_0 ,
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg[7]_0 ,
     \RATIO_OF_2_GENERATE.Count_reg[0]_0 );
   output ss_t;
   output sck_t;
@@ -7359,11 +7385,12 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
   output io3_o;
   output p_3_out__0;
   output [2:0]Q;
+  output p_1_out;
   output CE;
   output p_2_out;
-  output qspi_cntrl_ns129_out__3;
+  output qspi_cntrl_ns131_out__3;
   output [2:0]\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[5]_0 ;
-  output [2:0]\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 ;
+  output [2:0]\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 ;
   output \qspi_cntrl_ps_reg[1]_0 ;
   output \gen_rd_a.douta_reg_reg ;
   output \gen_rd_a.douta_reg_reg_0 ;
@@ -7380,33 +7407,35 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
   input transfer_start_reg_0;
   input scndry_out;
   input almost_full;
-  input mode_1__2;
-  input p_36_out__0;
-  input \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_reg_0 ;
+  input mode_1__3;
+  input p_38_out__0;
+  input \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_reg_0 ;
   input Serial_Dout_019_in;
-  input p_32_out__0;
   input p_34_out__0;
+  input p_36_out__0;
+  input mode_0__3;
   input SPICR_2_MST_N_SLV_to_spi_clk;
   input spicr_3_cpol_to_spi_clk;
   input spicr_4_cpha_to_spi_clk;
-  input empty;
   input DTR_FIFO_Data_Exists_d1;
+  input empty;
   input \qspi_cntrl_ps_reg[0]_0 ;
-  input [8:0]douta;
-  input \qspi_cntrl_ps_reg[1]_1 ;
-  input \qspi_cntrl_ps_reg[2]_0 ;
+  input [10:0]douta;
   input \QSPI_MODE_2_T_CONTROL.QSPI_IO3_T_0 ;
+  input IO0_T_control0__0;
   input QSPI_IO0_T_0;
+  input qspi_cntrl_ns132_out__0;
   input io1_i_sync;
   input [6:0]dout;
   input io2_i_sync;
-  input mode_0__2;
   input io3_i_sync;
   input [2:0]D;
+  input \qspi_cntrl_ps_reg[2]_0 ;
+  input \qspi_cntrl_ps_reg[2]_1 ;
   input sr_3_modf_to_spi_clk;
   input [0:1]spicr_bits_7_8_to_spi_clk;
   input [0:0]E;
-  input [0:0]\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg[7]_0 ;
+  input [0:0]\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg[7]_0 ;
   input [0:0]\RATIO_OF_2_GENERATE.Count_reg[0]_0 ;
 
   wire Allow_MODF_Strobe;
@@ -7417,56 +7446,60 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
   wire DTR_FIFO_Data_Exists_d1;
   wire D_0;
   wire [0:0]E;
+  wire IO0_T_control0__0;
   wire MODF_strobe_i_1_n_0;
   wire Mst_Trans_inhibit_d1;
   wire [2:0]Q;
   wire QSPI_IO0_T_0;
   wire QSPI_IO0_T_i_1_n_0;
   wire QSPI_IO0_T_i_2_n_0;
+  wire QSPI_IO0_T_i_3_n_0;
   wire QSPI_IO1_T_0;
   wire \QSPI_MODE_2_T_CONTROL.QSPI_IO2_T_i_1_n_0 ;
   wire \QSPI_MODE_2_T_CONTROL.QSPI_IO2_T_i_2_n_0 ;
   wire \QSPI_MODE_2_T_CONTROL.QSPI_IO3_T_0 ;
   wire \QSPI_MODE_2_T_CONTROL.QSPI_IO3_T_i_1_n_0 ;
-  wire \QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[0]_i_1_n_0 ;
-  wire \QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[1]_i_1_n_0 ;
-  wire \QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[2]_i_1_n_0 ;
-  wire \QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[2]_i_2_n_0 ;
-  wire [2:0]\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 ;
+  wire \QSPI_MODE_2_T_CONTROL.QSPI_IO3_T_i_2_n_0 ;
+  wire \QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[0]_i_1_n_0 ;
+  wire \QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[1]_i_1_n_0 ;
+  wire \QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[2]_i_1_n_0 ;
+  wire \QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[2]_i_2_n_0 ;
+  wire [2:0]\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 ;
   wire \RATIO_NOT_EQUAL_4_GENERATE.SCK_O_NQ_4_STARTUP_USED.SCK_O_reg_i_1_n_0 ;
   wire \RATIO_NOT_EQUAL_4_GENERATE.SCK_O_NQ_4_STARTUP_USED.SCK_O_reg_i_2_n_0 ;
   wire [0:0]\RATIO_OF_2_GENERATE.Count_reg[0]_0 ;
   wire [0:0]\RATIO_OF_2_GENERATE.Count_reg[4]_0 ;
   wire \RATIO_OF_2_GENERATE.Count_reg_n_0_[0] ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_1_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_4_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_5_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_reg_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_1_i_1_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_1_i_2_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_1_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_3_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_3_i_1_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_3_i_2_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_1_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_2_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_3_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[1]_i_1_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[1]_i_2_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[2]_i_1_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[2]_i_2_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[3]_i_1_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[3]_i_2_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[4]_i_1_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[4]_i_2_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[5]_i_1_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[5]_i_2_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[6]_i_1_n_0 ;
-  wire [0:0]\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg[7]_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[0] ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[1] ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[2] ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[3] ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_1_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_4_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_5_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_reg_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_1_i_1_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_1_i_2_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_1_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_3_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_i_1_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_i_2_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_i_3_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_1_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_2_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_3_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[1]_i_1_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[1]_i_2_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[2]_i_1_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[2]_i_2_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[3]_i_1_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[3]_i_2_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[4]_i_1_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[4]_i_2_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[5]_i_1_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[5]_i_2_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[6]_i_1_n_0 ;
+  wire [0:0]\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg[7]_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[0] ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[1] ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[2] ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[3] ;
   wire [2:0]\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[5]_0 ;
   wire \RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg_n_0_[1] ;
   wire \RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg_n_0_[2] ;
@@ -7489,7 +7522,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
   wire [4:7]Shift_Reg;
   wire almost_full;
   wire [6:0]dout;
-  wire [8:0]douta;
+  wire [10:0]douta;
   wire drr_Overrun_int;
   wire empty;
   wire ext_spi_clk;
@@ -7506,30 +7539,34 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
   wire io3_i_sync;
   wire io3_o;
   wire io3_t;
-  wire mode_0__2;
-  wire mode_1__2;
+  wire mode_0__3;
+  wire mode_1__3;
   wire modf_strobe_int;
   wire p_1_in;
+  wire p_1_out;
   wire p_2_in;
-  wire p_2_in45_in;
+  wire p_2_in47_in;
   wire p_2_out;
-  wire p_32_out__0;
   wire p_34_out__0;
   wire p_36_out__0;
+  wire p_38_out__0;
   wire p_3_out__0;
-  wire p_42_in;
-  wire p_43_out__0;
+  wire p_44_in;
+  wire p_45_out__0;
   wire p_6_out;
   wire p_9_out__1;
   wire [4:1]plusOp__0;
   wire [2:0]qspi_cntrl_ns;
   wire qspi_cntrl_ns129_out__3;
+  wire qspi_cntrl_ns131_out__3;
+  wire qspi_cntrl_ns132_out__0;
   wire \qspi_cntrl_ps[0]_i_2_n_0 ;
   wire \qspi_cntrl_ps[1]_i_2_n_0 ;
+  wire \qspi_cntrl_ps[1]_i_3_n_0 ;
   wire \qspi_cntrl_ps_reg[0]_0 ;
   wire \qspi_cntrl_ps_reg[1]_0 ;
-  wire \qspi_cntrl_ps_reg[1]_1 ;
   wire \qspi_cntrl_ps_reg[2]_0 ;
+  wire \qspi_cntrl_ps_reg[2]_1 ;
   wire rd_en;
   wire receive_Data_int;
   wire register_Data_slvsel_int;
@@ -7559,7 +7596,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
   wire transfer_start_reg_0;
   wire wr_en;
 
-  (* SOFT_HLUTNM = "soft_lutpair93" *) 
+  (* SOFT_HLUTNM = "soft_lutpair96" *) 
   LUT4 #(
     .INIT(16'hFFF2)) 
     Allow_MODF_Strobe_i_1
@@ -7588,7 +7625,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
         .D(DRR_Overrun_reg_int0__0),
         .Q(drr_Overrun_int),
         .R(Rst_to_spi));
-  (* SOFT_HLUTNM = "soft_lutpair93" *) 
+  (* SOFT_HLUTNM = "soft_lutpair96" *) 
   LUT4 #(
     .INIT(16'h0008)) 
     MODF_strobe_i_1
@@ -7624,25 +7661,33 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
         .Q(io0_t),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'hFAABAAABAAABAAAB)) 
+    .INIT(64'hFFFFFFFFE2222222)) 
     QSPI_IO0_T_i_1
        (.I0(QSPI_IO0_T_i_2_n_0),
-        .I1(Q[2]),
+        .I1(Q[0]),
         .I2(Q[1]),
-        .I3(Q[0]),
-        .I4(douta[4]),
-        .I5(douta[5]),
+        .I3(douta[4]),
+        .I4(douta[5]),
+        .I5(QSPI_IO0_T_i_3_n_0),
         .O(QSPI_IO0_T_i_1_n_0));
   LUT6 #(
-    .INIT(64'hAAAAAEAEFFAAAEAE)) 
+    .INIT(64'h00000000F5F5FF75)) 
     QSPI_IO0_T_i_2
-       (.I0(\QSPI_MODE_2_T_CONTROL.QSPI_IO2_T_i_2_n_0 ),
-        .I1(douta[0]),
-        .I2(Q[2]),
+       (.I0(Q[1]),
+        .I1(qspi_cntrl_ns131_out__3),
+        .I2(IO0_T_control0__0),
         .I3(QSPI_IO0_T_0),
-        .I4(Q[1]),
-        .I5(Q[0]),
+        .I4(qspi_cntrl_ns132_out__0),
+        .I5(Q[2]),
         .O(QSPI_IO0_T_i_2_n_0));
+  LUT4 #(
+    .INIT(16'hFF10)) 
+    QSPI_IO0_T_i_3
+       (.I0(Q[1]),
+        .I1(Q[2]),
+        .I2(douta[0]),
+        .I3(\QSPI_MODE_2_T_CONTROL.QSPI_IO2_T_i_2_n_0 ),
+        .O(QSPI_IO0_T_i_3_n_0));
   (* XILINX_LEGACY_PRIM = "FD" *) 
   (* box_type = "PRIMITIVE" *) 
   FDRE #(
@@ -7653,9 +7698,19 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
         .D(QSPI_IO1_T_0),
         .Q(io1_t),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair93" *) 
+  LUT4 #(
+    .INIT(16'h0004)) 
+    \QSPI_LOOK_UP_MODE_2_MEMORY_2.CMD_decoded_int_d1_i_1 
+       (.I0(Q[1]),
+        .I1(DTR_FIFO_Data_Exists_d1),
+        .I2(Q[2]),
+        .I3(Q[0]),
+        .O(p_1_out));
+  (* SOFT_HLUTNM = "soft_lutpair94" *) 
   LUT4 #(
     .INIT(16'h0001)) 
-    \QSPI_LOOK_UP_MODE_2_MEMORY_1.DTR_FIFO_Data_Exists_d1_i_1 
+    \QSPI_LOOK_UP_MODE_2_MEMORY_2.DTR_FIFO_Data_Exists_d1_i_1 
        (.I0(empty),
         .I1(Q[1]),
         .I2(Q[2]),
@@ -7663,7 +7718,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
         .O(p_2_out));
   LUT5 #(
     .INIT(32'h00000001)) 
-    \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[0].TXFIFO_FIRST_ENTRY_REG_I_i_2 
+    \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[0].TXFIFO_FIRST_ENTRY_REG_I_i_2 
        (.I0(Q[0]),
         .I1(Q[2]),
         .I2(Q[1]),
@@ -7682,10 +7737,10 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair87" *) 
   LUT5 #(
-    .INIT(32'hFFBFAABF)) 
+    .INIT(32'hFFFFAABF)) 
     \QSPI_MODE_2_T_CONTROL.QSPI_IO2_T_i_1 
        (.I0(\QSPI_MODE_2_T_CONTROL.QSPI_IO2_T_i_2_n_0 ),
-        .I1(douta[8]),
+        .I1(douta[9]),
         .I2(Q[2]),
         .I3(Q[1]),
         .I4(\QSPI_MODE_2_T_CONTROL.QSPI_IO3_T_0 ),
@@ -7710,71 +7765,78 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
         .D(\QSPI_MODE_2_T_CONTROL.QSPI_IO3_T_i_1_n_0 ),
         .Q(io3_t),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair87" *) 
   LUT5 #(
-    .INIT(32'hBBFFBBAF)) 
+    .INIT(32'hBFBFBFBA)) 
     \QSPI_MODE_2_T_CONTROL.QSPI_IO3_T_i_1 
        (.I0(\QSPI_MODE_2_T_CONTROL.QSPI_IO2_T_i_2_n_0 ),
-        .I1(douta[8]),
-        .I2(Q[1]),
-        .I3(Q[2]),
+        .I1(douta[9]),
+        .I2(Q[2]),
+        .I3(\QSPI_MODE_2_T_CONTROL.QSPI_IO3_T_i_2_n_0 ),
         .I4(\QSPI_MODE_2_T_CONTROL.QSPI_IO3_T_0 ),
         .O(\QSPI_MODE_2_T_CONTROL.QSPI_IO3_T_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair94" *) 
+  LUT3 #(
+    .INIT(8'h07)) 
+    \QSPI_MODE_2_T_CONTROL.QSPI_IO3_T_i_2 
+       (.I0(douta[6]),
+        .I1(Q[0]),
+        .I2(Q[1]),
+        .O(\QSPI_MODE_2_T_CONTROL.QSPI_IO3_T_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h000000D200000000)) 
-    \QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[0]_i_1 
+    \QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[0]_i_1 
        (.I0(SPIXfer_done_int),
         .I1(SPIXfer_done_int_d1),
-        .I2(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 [0]),
+        .I2(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [0]),
         .I3(Q[0]),
         .I4(Q[2]),
         .I5(Q[1]),
-        .O(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[0]_i_1_n_0 ));
+        .O(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[0]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0000006A00000000)) 
-    \QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[1]_i_1 
-       (.I0(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 [1]),
+    \QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[1]_i_1 
+       (.I0(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [1]),
         .I1(SPIXfer_done_int_pulse),
-        .I2(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 [0]),
+        .I2(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [0]),
         .I3(Q[0]),
         .I4(Q[2]),
         .I5(Q[1]),
-        .O(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[1]_i_1_n_0 ));
+        .O(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[1]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h00000000AAAA6AAA)) 
-    \QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[2]_i_1 
-       (.I0(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 [2]),
-        .I1(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 [1]),
-        .I2(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 [0]),
+    \QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[2]_i_1 
+       (.I0(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [2]),
+        .I1(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [1]),
+        .I2(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [0]),
         .I3(SPIXfer_done_int),
         .I4(SPIXfer_done_int_d1),
-        .I5(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[2]_i_2_n_0 ),
-        .O(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair86" *) 
+        .I5(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[2]_i_2_n_0 ),
+        .O(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[2]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair89" *) 
   LUT3 #(
     .INIT(8'hFD)) 
-    \QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[2]_i_2 
+    \QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[2]_i_2 
        (.I0(Q[1]),
         .I1(Q[2]),
         .I2(Q[0]),
-        .O(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[2]_i_2_n_0 ));
-  FDRE \QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg[0] 
+        .O(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[2]_i_2_n_0 ));
+  FDRE \QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg[0] 
        (.C(ext_spi_clk),
         .CE(1'b1),
-        .D(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[0]_i_1_n_0 ),
-        .Q(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 [0]),
+        .D(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[0]_i_1_n_0 ),
+        .Q(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [0]),
         .R(1'b0));
-  FDRE \QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg[1] 
+  FDRE \QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg[1] 
        (.C(ext_spi_clk),
         .CE(1'b1),
-        .D(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[1]_i_1_n_0 ),
-        .Q(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 [1]),
+        .D(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[1]_i_1_n_0 ),
+        .Q(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [1]),
         .R(1'b0));
-  FDRE \QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg[2] 
+  FDRE \QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg[2] 
        (.C(ext_spi_clk),
         .CE(1'b1),
-        .D(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt[2]_i_1_n_0 ),
-        .Q(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 [2]),
+        .D(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt[2]_i_1_n_0 ),
+        .Q(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [2]),
         .R(1'b0));
   (* XILINX_LEGACY_PRIM = "FD" *) 
   (* box_type = "PRIMITIVE" *) 
@@ -7812,10 +7874,9 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
        (.I0(sck_o_int),
         .I1(\RATIO_NOT_EQUAL_4_GENERATE.SCK_O_NQ_4_STARTUP_USED.SCK_O_reg_i_2_n_0 ),
         .I2(spicr_3_cpol_to_spi_clk),
-        .I3(transfer_start_d1),
-        .I4(transfer_start),
+        .I3(transfer_start),
+        .I4(transfer_start_d1),
         .O(\RATIO_NOT_EQUAL_4_GENERATE.SCK_O_NQ_4_STARTUP_USED.SCK_O_reg_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair86" *) 
   LUT5 #(
     .INIT(32'hDDDDDDDF)) 
     \RATIO_NOT_EQUAL_4_GENERATE.SCK_O_NQ_4_STARTUP_USED.SCK_O_reg_i_2 
@@ -7831,35 +7892,35 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
         .D(\RATIO_NOT_EQUAL_4_GENERATE.SCK_O_NQ_4_STARTUP_USED.SCK_O_reg_i_1_n_0 ),
         .Q(SCK_O_int),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair96" *) 
+  (* SOFT_HLUTNM = "soft_lutpair98" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \RATIO_OF_2_GENERATE.Count[0]_i_1 
        (.I0(\RATIO_OF_2_GENERATE.Count_reg_n_0_[0] ),
         .O(p_2_in));
-  (* SOFT_HLUTNM = "soft_lutpair96" *) 
+  (* SOFT_HLUTNM = "soft_lutpair98" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \RATIO_OF_2_GENERATE.Count[1]_i_1 
        (.I0(\RATIO_OF_2_GENERATE.Count_reg_n_0_[0] ),
-        .I1(p_42_in),
+        .I1(p_44_in),
         .O(plusOp__0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair95" *) 
+  (* SOFT_HLUTNM = "soft_lutpair97" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \RATIO_OF_2_GENERATE.Count[2]_i_1 
        (.I0(\RATIO_OF_2_GENERATE.Count_reg_n_0_[0] ),
-        .I1(p_42_in),
+        .I1(p_44_in),
         .I2(p_1_in),
         .O(plusOp__0[2]));
   (* SOFT_HLUTNM = "soft_lutpair92" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \RATIO_OF_2_GENERATE.Count[3]_i_1 
-       (.I0(p_42_in),
+       (.I0(p_44_in),
         .I1(\RATIO_OF_2_GENERATE.Count_reg_n_0_[0] ),
         .I2(p_1_in),
-        .I3(p_2_in45_in),
+        .I3(p_2_in47_in),
         .O(plusOp__0[3]));
   LUT3 #(
     .INIT(8'hFD)) 
@@ -7874,8 +7935,8 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
     \RATIO_OF_2_GENERATE.Count[4]_i_3 
        (.I0(p_1_in),
         .I1(\RATIO_OF_2_GENERATE.Count_reg_n_0_[0] ),
-        .I2(p_42_in),
-        .I3(p_2_in45_in),
+        .I2(p_44_in),
+        .I3(p_2_in47_in),
         .O(plusOp__0[4]));
   FDRE \RATIO_OF_2_GENERATE.Count_reg[0] 
        (.C(ext_spi_clk),
@@ -7887,7 +7948,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
        (.C(ext_spi_clk),
         .CE(\RATIO_OF_2_GENERATE.Count_reg[0]_0 ),
         .D(plusOp__0[1]),
-        .Q(p_42_in),
+        .Q(p_44_in),
         .R(p_6_out));
   FDRE \RATIO_OF_2_GENERATE.Count_reg[2] 
        (.C(ext_spi_clk),
@@ -7899,7 +7960,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
        (.C(ext_spi_clk),
         .CE(\RATIO_OF_2_GENERATE.Count_reg[0]_0 ),
         .D(plusOp__0[3]),
-        .Q(p_2_in45_in),
+        .Q(p_2_in47_in),
         .R(p_6_out));
   FDRE \RATIO_OF_2_GENERATE.Count_reg[4] 
        (.C(ext_spi_clk),
@@ -7909,350 +7970,358 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
         .R(p_6_out));
   LUT6 #(
     .INIT(64'hB8FFFFFFB8000000)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_1 
-       (.I0(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_reg_0 ),
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_1 
+       (.I0(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_reg_0 ),
         .I1(p_3_out__0),
-        .I2(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_4_n_0 ),
-        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_5_n_0 ),
+        .I2(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_4_n_0 ),
+        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_5_n_0 ),
         .I4(Serial_Dout_019_in),
         .I5(io0_o),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair90" *) 
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair88" *) 
   LUT3 #(
     .INIT(8'hF4)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_3 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_3 
        (.I0(transfer_start_d1),
         .I1(transfer_start),
         .I2(SPIXfer_done_int_d1),
         .O(p_3_out__0));
   LUT5 #(
     .INIT(32'hAACFAAC0)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_4 
-       (.I0(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[3] ),
-        .I1(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[1] ),
-        .I2(mode_0__2),
-        .I3(mode_1__2),
-        .I4(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[0] ),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair94" *) 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_4 
+       (.I0(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[3] ),
+        .I1(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[1] ),
+        .I2(mode_0__3),
+        .I3(mode_1__3),
+        .I4(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[0] ),
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair95" *) 
   LUT4 #(
     .INIT(16'hF700)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_5 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_5 
        (.I0(\RATIO_OF_2_GENERATE.Count_reg_n_0_[0] ),
         .I1(transfer_start_d1),
         .I2(SPIXfer_done_int_d1),
         .I3(transfer_start),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair88" *) 
-  LUT5 #(
-    .INIT(32'hA3A0A0A0)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_8 
-       (.I0(douta[7]),
-        .I1(Q[1]),
-        .I2(Q[2]),
-        .I3(Q[0]),
-        .I4(douta[0]),
-        .O(\gen_rd_a.douta_reg_reg ));
-  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_reg 
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_5_n_0 ));
+  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_reg 
        (.C(ext_spi_clk),
         .CE(1'b1),
-        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_1_n_0 ),
+        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_1_n_0 ),
         .Q(io0_o),
         .R(Rst_to_spi));
   LUT6 #(
     .INIT(64'hEFEFEFFF20202000)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_1_i_1 
-       (.I0(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_1_i_2_n_0 ),
-        .I1(p_32_out__0),
-        .I2(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_5_n_0 ),
-        .I3(p_36_out__0),
-        .I4(p_34_out__0),
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_1_i_1 
+       (.I0(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_1_i_2_n_0 ),
+        .I1(p_34_out__0),
+        .I2(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_5_n_0 ),
+        .I3(p_38_out__0),
+        .I4(p_36_out__0),
         .I5(io1_o),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_1_i_1_n_0 ));
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_1_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hE4E4FFE4E4E400E4)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_1_i_2 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_1_i_2 
        (.I0(p_3_out__0),
-        .I1(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[2] ),
+        .I1(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[2] ),
         .I2(dout[4]),
-        .I3(mode_0__2),
-        .I4(mode_1__2),
-        .I5(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_3_i_2_n_0 ),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_1_i_2_n_0 ));
-  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_1_reg 
+        .I3(mode_0__3),
+        .I4(mode_1__3),
+        .I5(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_i_3_n_0 ),
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_1_i_2_n_0 ));
+  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_1_reg 
        (.C(ext_spi_clk),
         .CE(1'b1),
-        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_1_i_1_n_0 ),
+        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_1_i_1_n_0 ),
         .Q(io1_o),
         .R(Rst_to_spi));
   LUT5 #(
     .INIT(32'hDFFF8000)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_1 
-       (.I0(mode_1__2),
-        .I1(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_3_n_0 ),
-        .I2(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_5_n_0 ),
-        .I3(p_36_out__0),
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_1 
+       (.I0(mode_1__3),
+        .I1(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_3_n_0 ),
+        .I2(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_5_n_0 ),
+        .I3(p_38_out__0),
         .I4(io2_o),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair90" *) 
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair88" *) 
   LUT5 #(
     .INIT(32'hAAEFAA20)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_3 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_3 
        (.I0(dout[5]),
         .I1(transfer_start_d1),
         .I2(transfer_start),
         .I3(SPIXfer_done_int_d1),
-        .I4(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[1] ),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_3_n_0 ));
+        .I4(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[1] ),
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_3_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair89" *) 
   LUT5 #(
-    .INIT(32'hA3A0A0A0)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_4 
-       (.I0(douta[8]),
-        .I1(Q[1]),
-        .I2(Q[2]),
-        .I3(Q[0]),
-        .I4(douta[1]),
-        .O(\gen_rd_a.douta_reg_reg_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair88" *) 
+    .INIT(32'hAA00AAC0)) 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_4 
+       (.I0(douta[9]),
+        .I1(douta[1]),
+        .I2(Q[0]),
+        .I3(Q[2]),
+        .I4(Q[1]),
+        .O(\gen_rd_a.douta_reg_reg ));
+  (* SOFT_HLUTNM = "soft_lutpair87" *) 
   LUT2 #(
     .INIT(4'h2)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_6 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_6 
        (.I0(Q[1]),
         .I1(Q[2]),
         .O(\qspi_cntrl_ps_reg[1]_0 ));
-  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg 
+  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_reg 
        (.C(ext_spi_clk),
         .CE(1'b1),
-        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_1_n_0 ),
+        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_1_n_0 ),
         .Q(io2_o),
         .R(Rst_to_spi));
   LUT6 #(
-    .INIT(64'h3F3F3B3F00000800)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_3_i_1 
-       (.I0(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_3_i_2_n_0 ),
-        .I1(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_5_n_0 ),
-        .I2(p_32_out__0),
-        .I3(p_36_out__0),
-        .I4(p_34_out__0),
+    .INIT(64'hFFCFFFAF00C000A0)) 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_i_1 
+       (.I0(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_i_2_n_0 ),
+        .I1(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_i_3_n_0 ),
+        .I2(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_5_n_0 ),
+        .I3(mode_0__3),
+        .I4(mode_1__3),
         .I5(io3_o),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_3_i_1_n_0 ));
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair93" *) 
+  LUT4 #(
+    .INIT(16'h1000)) 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_i_2 
+       (.I0(Q[1]),
+        .I1(Q[2]),
+        .I2(Q[0]),
+        .I3(douta[6]),
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hAAEFAA20)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_3_i_2 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_i_3 
        (.I0(dout[6]),
         .I1(transfer_start_d1),
         .I2(transfer_start),
         .I3(SPIXfer_done_int_d1),
-        .I4(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[0] ),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_3_i_2_n_0 ));
-  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_3_reg 
+        .I4(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[0] ),
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair90" *) 
+  LUT5 #(
+    .INIT(32'hAA00AAC0)) 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_i_5 
+       (.I0(douta[8]),
+        .I1(douta[0]),
+        .I2(Q[0]),
+        .I3(Q[2]),
+        .I4(Q[1]),
+        .O(\gen_rd_a.douta_reg_reg_0 ));
+  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg 
        (.C(ext_spi_clk),
         .CE(1'b1),
-        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_3_i_1_n_0 ),
+        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_i_1_n_0 ),
         .Q(io3_o),
         .R(Rst_to_spi));
   LUT5 #(
     .INIT(32'hFF008F00)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_1 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_1 
        (.I0(Serial_Dout_019_in),
         .I1(\RATIO_OF_2_GENERATE.Count_reg_n_0_[0] ),
         .I2(transfer_start_d1),
         .I3(transfer_start),
         .I4(SPIXfer_done_int_d1),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_1_n_0 ));
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'hAEA2)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_2 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_2 
        (.I0(dout[6]),
         .I1(transfer_start_d1),
         .I2(SPIXfer_done_int_d1),
-        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_3_n_0 ),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_2_n_0 ));
+        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_3_n_0 ),
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hAACFAAC0)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_3 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_3 
        (.I0(Shift_Reg[4]),
-        .I1(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[2] ),
-        .I2(mode_0__2),
-        .I3(mode_1__2),
-        .I4(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[1] ),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_3_n_0 ));
+        .I1(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[2] ),
+        .I2(mode_0__3),
+        .I3(mode_1__3),
+        .I4(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[1] ),
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_3_n_0 ));
   LUT4 #(
     .INIT(16'hAEA2)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[1]_i_1 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[1]_i_1 
        (.I0(dout[5]),
         .I1(transfer_start_d1),
         .I2(SPIXfer_done_int_d1),
-        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[1]_i_2_n_0 ),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[1]_i_1_n_0 ));
+        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[1]_i_2_n_0 ),
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[1]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'hAACFAAC0)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[1]_i_2 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[1]_i_2 
        (.I0(Shift_Reg[5]),
-        .I1(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[3] ),
-        .I2(mode_0__2),
-        .I3(mode_1__2),
-        .I4(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[2] ),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[1]_i_2_n_0 ));
+        .I1(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[3] ),
+        .I2(mode_0__3),
+        .I3(mode_1__3),
+        .I4(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[2] ),
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[1]_i_2_n_0 ));
   LUT4 #(
     .INIT(16'hAEA2)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[2]_i_1 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[2]_i_1 
        (.I0(dout[4]),
         .I1(transfer_start_d1),
         .I2(SPIXfer_done_int_d1),
-        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[2]_i_2_n_0 ),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[2]_i_1_n_0 ));
+        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[2]_i_2_n_0 ),
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[2]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'hAACFAAC0)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[2]_i_2 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[2]_i_2 
        (.I0(Shift_Reg[6]),
         .I1(Shift_Reg[4]),
-        .I2(mode_0__2),
-        .I3(mode_1__2),
-        .I4(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[3] ),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[2]_i_2_n_0 ));
+        .I2(mode_0__3),
+        .I3(mode_1__3),
+        .I4(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[3] ),
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[2]_i_2_n_0 ));
   LUT4 #(
     .INIT(16'hAEA2)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[3]_i_1 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[3]_i_1 
        (.I0(dout[3]),
         .I1(transfer_start_d1),
         .I2(SPIXfer_done_int_d1),
-        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[3]_i_2_n_0 ),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[3]_i_1_n_0 ));
+        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[3]_i_2_n_0 ),
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[3]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'hAACFAAC0)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[3]_i_2 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[3]_i_2 
        (.I0(Shift_Reg[7]),
         .I1(Shift_Reg[5]),
-        .I2(mode_0__2),
-        .I3(mode_1__2),
+        .I2(mode_0__3),
+        .I3(mode_1__3),
         .I4(Shift_Reg[4]),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[3]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair91" *) 
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[3]_i_2_n_0 ));
   LUT4 #(
     .INIT(16'hAEA2)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[4]_i_1 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[4]_i_1 
        (.I0(dout[2]),
         .I1(transfer_start_d1),
         .I2(SPIXfer_done_int_d1),
-        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[4]_i_2_n_0 ),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[4]_i_1_n_0 ));
+        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[4]_i_2_n_0 ),
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[4]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'hAACFAAC0)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[4]_i_2 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[4]_i_2 
        (.I0(io3_i_sync),
         .I1(Shift_Reg[6]),
-        .I2(mode_0__2),
-        .I3(mode_1__2),
+        .I2(mode_0__3),
+        .I3(mode_1__3),
         .I4(Shift_Reg[5]),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[4]_i_2_n_0 ));
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[4]_i_2_n_0 ));
   LUT4 #(
     .INIT(16'hAEA2)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[5]_i_1 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[5]_i_1 
        (.I0(dout[1]),
         .I1(transfer_start_d1),
         .I2(SPIXfer_done_int_d1),
-        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[5]_i_2_n_0 ),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[5]_i_1_n_0 ));
+        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[5]_i_2_n_0 ),
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[5]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'hAACFAAC0)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[5]_i_2 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[5]_i_2 
        (.I0(io2_i_sync),
         .I1(Shift_Reg[7]),
-        .I2(mode_0__2),
-        .I3(mode_1__2),
+        .I2(mode_0__3),
+        .I3(mode_1__3),
         .I4(Shift_Reg[6]),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[5]_i_2_n_0 ));
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[5]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFE200E2)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[6]_i_1 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[6]_i_1 
        (.I0(io1_i_sync),
-        .I1(p_32_out__0),
+        .I1(p_34_out__0),
         .I2(Shift_Reg[7]),
         .I3(p_3_out__0),
         .I4(dout[0]),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[6]_i_1_n_0 ));
-  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg[0] 
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[6]_i_1_n_0 ));
+  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg[0] 
        (.C(ext_spi_clk),
-        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
-        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_2_n_0 ),
-        .Q(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[0] ),
+        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
+        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_2_n_0 ),
+        .Q(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[0] ),
         .R(Rst_to_spi));
-  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg[1] 
+  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg[1] 
        (.C(ext_spi_clk),
-        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
-        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[1]_i_1_n_0 ),
-        .Q(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[1] ),
+        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
+        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[1]_i_1_n_0 ),
+        .Q(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[1] ),
         .R(Rst_to_spi));
-  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg[2] 
+  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg[2] 
        (.C(ext_spi_clk),
-        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
-        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[2]_i_1_n_0 ),
-        .Q(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[2] ),
+        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
+        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[2]_i_1_n_0 ),
+        .Q(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[2] ),
         .R(Rst_to_spi));
-  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg[3] 
+  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg[3] 
        (.C(ext_spi_clk),
-        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
-        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[3]_i_1_n_0 ),
-        .Q(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg_n_0_[3] ),
+        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
+        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[3]_i_1_n_0 ),
+        .Q(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg_n_0_[3] ),
         .R(Rst_to_spi));
-  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg[4] 
+  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg[4] 
        (.C(ext_spi_clk),
-        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
-        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[4]_i_1_n_0 ),
+        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
+        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[4]_i_1_n_0 ),
         .Q(Shift_Reg[4]),
         .R(Rst_to_spi));
-  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg[5] 
+  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg[5] 
        (.C(ext_spi_clk),
-        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
-        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[5]_i_1_n_0 ),
+        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
+        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[5]_i_1_n_0 ),
         .Q(Shift_Reg[5]),
         .R(Rst_to_spi));
-  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg[6] 
+  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg[6] 
        (.C(ext_spi_clk),
-        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
-        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[6]_i_1_n_0 ),
+        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
+        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[6]_i_1_n_0 ),
         .Q(Shift_Reg[6]),
         .R(Rst_to_spi));
-  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg[7] 
+  FDRE \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg[7] 
        (.C(ext_spi_clk),
-        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
-        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Shift_Reg_reg[7]_0 ),
+        .CE(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg[0]_i_1_n_0 ),
+        .D(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Shift_Reg_reg[7]_0 ),
         .Q(Shift_Reg[7]),
         .R(Rst_to_spi));
   LUT5 #(
     .INIT(32'hFFE400E4)) 
     \RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011[1]_i_2 
-       (.I0(p_34_out__0),
+       (.I0(p_36_out__0),
         .I1(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[5]_0 [2]),
         .I2(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg_n_0_[3] ),
-        .I3(p_32_out__0),
+        .I3(p_34_out__0),
         .I4(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg_n_0_[2] ),
         .O(rx_shft_reg_mode_0011[1]));
   LUT5 #(
     .INIT(32'hFFE400E4)) 
     \RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011[2]_i_1 
-       (.I0(p_34_out__0),
+       (.I0(p_36_out__0),
         .I1(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[5]_0 [1]),
         .I2(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg_n_0_[4] ),
-        .I3(p_32_out__0),
+        .I3(p_34_out__0),
         .I4(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg_n_0_[3] ),
         .O(rx_shft_reg_mode_0011[2]));
   LUT5 #(
     .INIT(32'hFFE400E4)) 
     \RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011[3]_i_1 
-       (.I0(p_34_out__0),
+       (.I0(p_36_out__0),
         .I1(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[5]_0 [0]),
         .I2(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[5]_0 [2]),
-        .I3(p_32_out__0),
+        .I3(p_34_out__0),
         .I4(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg_n_0_[4] ),
         .O(rx_shft_reg_mode_0011[3]));
   LUT3 #(
     .INIT(8'hB8)) 
     \RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011[6]_i_1 
        (.I0(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[5]_0 [0]),
-        .I1(p_32_out__0),
+        .I1(p_34_out__0),
         .I2(io1_i_sync),
         .O(rx_shft_reg_mode_0011[6]));
   FDRE \RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[1] 
@@ -8343,10 +8412,10 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
     \RX_DATA_SCK_RATIO_2_GEN1.SPIXfer_done_int_i_1 
        (.I0(\RX_DATA_SCK_RATIO_2_GEN1.SPIXfer_done_int_i_2_n_0 ),
         .I1(p_1_in),
-        .I2(p_43_out__0),
-        .I3(p_34_out__0),
-        .I4(p_2_in45_in),
-        .I5(p_36_out__0),
+        .I2(p_45_out__0),
+        .I3(p_36_out__0),
+        .I4(p_2_in47_in),
+        .I5(p_38_out__0),
         .O(\RX_DATA_SCK_RATIO_2_GEN1.SPIXfer_done_int_i_1_n_0 ));
   LUT3 #(
     .INIT(8'h0B)) 
@@ -8355,13 +8424,13 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
         .I1(transfer_start),
         .I2(Rst_to_spi),
         .O(\RX_DATA_SCK_RATIO_2_GEN1.SPIXfer_done_int_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair95" *) 
+  (* SOFT_HLUTNM = "soft_lutpair97" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \RX_DATA_SCK_RATIO_2_GEN1.SPIXfer_done_int_i_3 
-       (.I0(p_42_in),
+       (.I0(p_44_in),
         .I1(\RATIO_OF_2_GENERATE.Count_reg_n_0_[0] ),
-        .O(p_43_out__0));
+        .O(p_45_out__0));
   FDRE \RX_DATA_SCK_RATIO_2_GEN1.SPIXfer_done_int_reg 
        (.C(ext_spi_clk),
         .CE(1'b1),
@@ -8377,10 +8446,10 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
   LUT5 #(
     .INIT(32'hFFE400E4)) 
     \RX_DATA_SCK_RATIO_2_GEN1.receive_Data_int[0]_i_2 
-       (.I0(p_34_out__0),
+       (.I0(p_36_out__0),
         .I1(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg_n_0_[4] ),
         .I2(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg_n_0_[2] ),
-        .I3(p_32_out__0),
+        .I3(p_34_out__0),
         .I4(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg_n_0_[1] ),
         .O(rx_shft_reg_mode_0011[0]));
   FDRE \RX_DATA_SCK_RATIO_2_GEN1.receive_Data_int_reg[0] 
@@ -8483,7 +8552,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
     \qspi_cntrl_ps[0]_i_2 
        (.I0(register_Data_slvsel_int),
         .I1(Q[1]),
-        .I2(douta[6]),
+        .I2(douta[7]),
         .I3(empty),
         .I4(Q[0]),
         .O(\qspi_cntrl_ps[0]_i_2_n_0 ));
@@ -8493,38 +8562,59 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
        (.I0(\qspi_cntrl_ps[1]_i_2_n_0 ),
         .I1(empty),
         .I2(register_Data_slvsel_int),
-        .I3(\qspi_cntrl_ps_reg[1]_1 ),
+        .I3(\qspi_cntrl_ps[1]_i_3_n_0 ),
         .I4(Q[1]),
         .I5(Q[2]),
         .O(qspi_cntrl_ns[1]));
   LUT6 #(
-    .INIT(64'h0000000000002000)) 
+    .INIT(64'h0000000800000000)) 
     \qspi_cntrl_ps[1]_i_2 
-       (.I0(SPIXfer_done_int),
-        .I1(SPIXfer_done_int_d1),
-        .I2(Q[0]),
-        .I3(douta[2]),
+       (.I0(douta[2]),
+        .I1(SPIXfer_done_int),
+        .I2(SPIXfer_done_int_d1),
+        .I3(Q[1]),
         .I4(Q[2]),
-        .I5(Q[1]),
+        .I5(Q[0]),
         .O(\qspi_cntrl_ps[1]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h7700770077F07700)) 
+    .INIT(64'h15BFBFBF00FFBFBF)) 
+    \qspi_cntrl_ps[1]_i_3 
+       (.I0(Q[0]),
+        .I1(qspi_cntrl_ns131_out__3),
+        .I2(douta[10]),
+        .I3(register_Data_slvsel_int),
+        .I4(empty),
+        .I5(douta[7]),
+        .O(\qspi_cntrl_ps[1]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hAA00AA00AAFCAA00)) 
     \qspi_cntrl_ps[2]_i_1 
-       (.I0(register_Data_slvsel_int),
-        .I1(empty),
+       (.I0(\qspi_cntrl_ps_reg[2]_0 ),
+        .I1(qspi_cntrl_ns131_out__3),
         .I2(qspi_cntrl_ns129_out__3),
         .I3(Q[2]),
         .I4(Q[1]),
-        .I5(\qspi_cntrl_ps_reg[2]_0 ),
+        .I5(\qspi_cntrl_ps_reg[2]_1 ),
         .O(qspi_cntrl_ns[2]));
+  (* SOFT_HLUTNM = "soft_lutpair86" *) 
   LUT5 #(
     .INIT(32'h00080000)) 
-    \qspi_cntrl_ps[2]_i_2 
-       (.I0(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 [0]),
-        .I1(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 [1]),
-        .I2(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 [2]),
+    \qspi_cntrl_ps[2]_i_3 
+       (.I0(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [0]),
+        .I1(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [1]),
+        .I2(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [2]),
         .I3(douta[3]),
-        .I4(douta[6]),
+        .I4(douta[7]),
+        .O(qspi_cntrl_ns131_out__3));
+  (* SOFT_HLUTNM = "soft_lutpair86" *) 
+  LUT5 #(
+    .INIT(32'h04000000)) 
+    \qspi_cntrl_ps[2]_i_4 
+       (.I0(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [0]),
+        .I1(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [2]),
+        .I2(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [1]),
+        .I3(douta[7]),
+        .I4(douta[3]),
         .O(qspi_cntrl_ns129_out__3));
   FDRE \qspi_cntrl_ps_reg[0] 
        (.C(ext_spi_clk),
@@ -8560,6 +8650,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
         .I4(Q[0]),
         .I5(stop_clock_reg_i_3_n_0),
         .O(stop_clock));
+  (* SOFT_HLUTNM = "soft_lutpair91" *) 
   LUT4 #(
     .INIT(16'hFF04)) 
     stop_clock_reg_i_2
@@ -8568,7 +8659,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
         .I2(SPIXfer_done_int_d1),
         .I3(stop_clock_reg),
         .O(stop_clock_reg_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair89" *) 
+  (* SOFT_HLUTNM = "soft_lutpair90" *) 
   LUT2 #(
     .INIT(4'hE)) 
     stop_clock_reg_i_3
@@ -8599,7 +8690,7 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
         .D(transfer_start_reg_0),
         .Q(transfer_start),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair94" *) 
+  (* SOFT_HLUTNM = "soft_lutpair95" *) 
   LUT3 #(
     .INIT(8'hF4)) 
     \xpm_fifo_instance.xpm_fifo_async_inst_i_3 
@@ -8609,7 +8700,6 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_mode_control_logic
         .O(rd_en));
 endmodule
 
-(* ORIG_REF_NAME = "qspi_startup_block" *) 
 module AXI_bd_0_axi_quad_spi_0_0_qspi_startup_block
    (pipe_signal_reg_r_3_0,
     cfgclk,
@@ -8745,7 +8835,6 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_startup_block
         .R(reset2ip_reset_int));
 endmodule
 
-(* ORIG_REF_NAME = "qspi_status_slave_sel_reg" *) 
 module AXI_bd_0_axi_quad_spi_0_0_qspi_status_slave_sel_reg
    (sr_3_MODF_int,
     SPISSR_frm_axi_clk,
@@ -8800,7 +8889,6 @@ module AXI_bd_0_axi_quad_spi_0_0_qspi_status_slave_sel_reg
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "reset_sync_module" *) 
 module AXI_bd_0_axi_quad_spi_0_0_reset_sync_module
    (R,
     Rst_to_spi,
@@ -8822,7 +8910,7 @@ module AXI_bd_0_axi_quad_spi_0_0_reset_sync_module
 
   LUT2 #(
     .INIT(4'hE)) 
-    \QSPI_LOOK_UP_MODE_2_MEMORY_1.TXFIFO_ADDR_BITS_GENERATE[0].TXFIFO_FIRST_ENTRY_REG_I_i_1 
+    \QSPI_LOOK_UP_MODE_2_MEMORY_2.TXFIFO_ADDR_BITS_GENERATE[0].TXFIFO_FIRST_ENTRY_REG_I_i_1 
        (.I0(Rst_to_spi),
         .I1(spicr_5_txfifo_to_spi_clk),
         .O(R));
@@ -8850,7 +8938,6 @@ module AXI_bd_0_axi_quad_spi_0_0_reset_sync_module
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "slave_attachment" *) 
 module AXI_bd_0_axi_quad_spi_0_0_slave_attachment
    (SR,
     p_2_in,
@@ -9862,7 +9949,6 @@ module AXI_bd_0_axi_quad_spi_0_0_slave_attachment
         .R(SR));
 endmodule
 
-(* ORIG_REF_NAME = "soft_reset" *) 
 module AXI_bd_0_axi_quad_spi_0_0_soft_reset
    (sw_rst_cond_d1,
     \RESET_FLOPS[15].RST_FLOPS_0 ,
@@ -9958,7 +10044,7 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(D),
         .Q(wrack),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair98" *) 
+  (* SOFT_HLUTNM = "soft_lutpair100" *) 
   LUT2 #(
     .INIT(4'h2)) 
     FF_WRACK_i_1
@@ -10002,7 +10088,7 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(\RESET_FLOPS[10].RST_FLOPS_i_1_n_0 ),
         .Q(flop_q_chain_5),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair103" *) 
+  (* SOFT_HLUTNM = "soft_lutpair105" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \RESET_FLOPS[10].RST_FLOPS_i_1 
@@ -10023,7 +10109,7 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(\RESET_FLOPS[11].RST_FLOPS_i_1_n_0 ),
         .Q(flop_q_chain_4),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair104" *) 
+  (* SOFT_HLUTNM = "soft_lutpair106" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \RESET_FLOPS[11].RST_FLOPS_i_1 
@@ -10044,7 +10130,7 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(\RESET_FLOPS[12].RST_FLOPS_i_1_n_0 ),
         .Q(flop_q_chain_3),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair104" *) 
+  (* SOFT_HLUTNM = "soft_lutpair106" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \RESET_FLOPS[12].RST_FLOPS_i_1 
@@ -10065,7 +10151,7 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(\RESET_FLOPS[13].RST_FLOPS_i_1_n_0 ),
         .Q(flop_q_chain_2),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair105" *) 
+  (* SOFT_HLUTNM = "soft_lutpair107" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \RESET_FLOPS[13].RST_FLOPS_i_1 
@@ -10086,7 +10172,7 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(\RESET_FLOPS[14].RST_FLOPS_i_1_n_0 ),
         .Q(flop_q_chain_1),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair105" *) 
+  (* SOFT_HLUTNM = "soft_lutpair107" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \RESET_FLOPS[14].RST_FLOPS_i_1 
@@ -10107,7 +10193,7 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(\RESET_FLOPS[15].RST_FLOPS_i_1_n_0 ),
         .Q(\RESET_FLOPS[15].RST_FLOPS_0 ),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair98" *) 
+  (* SOFT_HLUTNM = "soft_lutpair100" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \RESET_FLOPS[15].RST_FLOPS_i_1 
@@ -10128,7 +10214,7 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(\RESET_FLOPS[1].RST_FLOPS_i_1_n_0 ),
         .Q(flop_q_chain_14),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair99" *) 
+  (* SOFT_HLUTNM = "soft_lutpair101" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \RESET_FLOPS[1].RST_FLOPS_i_1 
@@ -10149,7 +10235,7 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(\RESET_FLOPS[2].RST_FLOPS_i_1_n_0 ),
         .Q(flop_q_chain_13),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair99" *) 
+  (* SOFT_HLUTNM = "soft_lutpair101" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \RESET_FLOPS[2].RST_FLOPS_i_1 
@@ -10170,7 +10256,7 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(\RESET_FLOPS[3].RST_FLOPS_i_1_n_0 ),
         .Q(flop_q_chain_12),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair100" *) 
+  (* SOFT_HLUTNM = "soft_lutpair102" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \RESET_FLOPS[3].RST_FLOPS_i_1 
@@ -10191,7 +10277,7 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(\RESET_FLOPS[4].RST_FLOPS_i_1_n_0 ),
         .Q(flop_q_chain_11),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair100" *) 
+  (* SOFT_HLUTNM = "soft_lutpair102" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \RESET_FLOPS[4].RST_FLOPS_i_1 
@@ -10212,7 +10298,7 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(\RESET_FLOPS[5].RST_FLOPS_i_1_n_0 ),
         .Q(flop_q_chain_10),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair101" *) 
+  (* SOFT_HLUTNM = "soft_lutpair103" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \RESET_FLOPS[5].RST_FLOPS_i_1 
@@ -10233,7 +10319,7 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(\RESET_FLOPS[6].RST_FLOPS_i_1_n_0 ),
         .Q(flop_q_chain_9),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair101" *) 
+  (* SOFT_HLUTNM = "soft_lutpair103" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \RESET_FLOPS[6].RST_FLOPS_i_1 
@@ -10254,7 +10340,7 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(\RESET_FLOPS[7].RST_FLOPS_i_1_n_0 ),
         .Q(flop_q_chain_8),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair102" *) 
+  (* SOFT_HLUTNM = "soft_lutpair104" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \RESET_FLOPS[7].RST_FLOPS_i_1 
@@ -10275,7 +10361,7 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(\RESET_FLOPS[8].RST_FLOPS_i_1_n_0 ),
         .Q(flop_q_chain_7),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair102" *) 
+  (* SOFT_HLUTNM = "soft_lutpair104" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \RESET_FLOPS[8].RST_FLOPS_i_1 
@@ -10296,21 +10382,21 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .D(\RESET_FLOPS[9].RST_FLOPS_i_1_n_0 ),
         .Q(flop_q_chain_6),
         .R(bus2ip_reset_ipif_inverted));
-  (* SOFT_HLUTNM = "soft_lutpair103" *) 
+  (* SOFT_HLUTNM = "soft_lutpair105" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \RESET_FLOPS[9].RST_FLOPS_i_1 
        (.I0(S),
         .I1(flop_q_chain_7),
         .O(\RESET_FLOPS[9].RST_FLOPS_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair97" *) 
+  (* SOFT_HLUTNM = "soft_lutpair99" *) 
   LUT2 #(
     .INIT(4'hE)) 
     RESET_SYNC_AX2S_1_i_1
        (.I0(\RESET_FLOPS[15].RST_FLOPS_0 ),
         .I1(bus2ip_reset_ipif_inverted),
         .O(reset2ip_reset_int));
-  (* SOFT_HLUTNM = "soft_lutpair97" *) 
+  (* SOFT_HLUTNM = "soft_lutpair99" *) 
   LUT4 #(
     .INIT(16'hFEFF)) 
     \icount_out[0]_i_1 
@@ -10333,10 +10419,9 @@ module AXI_bd_0_axi_quad_spi_0_0_soft_reset
         .R(bus2ip_reset_ipif_inverted));
 endmodule
 
-(* DEST_SYNC_FF = "2" *) (* INIT_SYNC_FF = "1" *) (* ORIG_REF_NAME = "xpm_cdc_gray" *) 
-(* REG_OUTPUT = "0" *) (* SIM_ASSERT_CHK = "0" *) (* SIM_LOSSLESS_GRAY_CHK = "0" *) 
-(* VERSION = "0" *) (* WIDTH = "4" *) (* XPM_MODULE = "TRUE" *) 
-(* xpm_cdc = "GRAY" *) 
+(* DEST_SYNC_FF = "2" *) (* INIT_SYNC_FF = "1" *) (* REG_OUTPUT = "0" *) 
+(* SIM_ASSERT_CHK = "0" *) (* SIM_LOSSLESS_GRAY_CHK = "0" *) (* VERSION = "0" *) 
+(* WIDTH = "4" *) (* XPM_MODULE = "TRUE" *) (* xpm_cdc = "GRAY" *) 
 module AXI_bd_0_axi_quad_spi_0_0_xpm_cdc_gray
    (src_clk,
     src_in_bin,
@@ -11994,8 +12079,8 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_cdc_gray__parameterized1__2
 endmodule
 
 (* DEF_VAL = "1'b0" *) (* DEST_SYNC_FF = "2" *) (* INIT = "0" *) 
-(* INIT_SYNC_FF = "1" *) (* ORIG_REF_NAME = "xpm_cdc_sync_rst" *) (* SIM_ASSERT_CHK = "0" *) 
-(* VERSION = "0" *) (* XPM_MODULE = "TRUE" *) (* xpm_cdc = "SYNC_RST" *) 
+(* INIT_SYNC_FF = "1" *) (* SIM_ASSERT_CHK = "0" *) (* VERSION = "0" *) 
+(* XPM_MODULE = "TRUE" *) (* xpm_cdc = "SYNC_RST" *) 
 module AXI_bd_0_axi_quad_spi_0_0_xpm_cdc_sync_rst
    (src_rst,
     dest_clk,
@@ -12153,7 +12238,6 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_cdc_sync_rst__6
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "xpm_counter_updn" *) 
 module AXI_bd_0_axi_quad_spi_0_0_xpm_counter_updn
    (Q,
     wrst_busy,
@@ -13877,13 +13961,12 @@ endmodule
 
 (* CDC_SYNC_STAGES = "2" *) (* DOUT_RESET_VALUE = "0" *) (* ECC_MODE = "no_ecc" *) 
 (* EN_ADV_FEATURE_ASYNC = "16'b0001111100011111" *) (* FIFO_MEMORY_TYPE = "auto" *) (* FIFO_READ_LATENCY = "0" *) 
-(* FIFO_WRITE_DEPTH = "16" *) (* FULL_RESET_VALUE = "1" *) (* ORIG_REF_NAME = "xpm_fifo_async" *) 
-(* PROG_EMPTY_THRESH = "10" *) (* PROG_FULL_THRESH = "10" *) (* P_COMMON_CLOCK = "0" *) 
-(* P_ECC_MODE = "0" *) (* P_FIFO_MEMORY_TYPE = "0" *) (* P_READ_MODE = "1" *) 
-(* P_WAKEUP_TIME = "2" *) (* RD_DATA_COUNT_WIDTH = "5" *) (* READ_DATA_WIDTH = "8" *) 
-(* READ_MODE = "fwft" *) (* RELATED_CLOCKS = "0" *) (* USE_ADV_FEATURES = "1F1F" *) 
-(* WAKEUP_TIME = "0" *) (* WRITE_DATA_WIDTH = "8" *) (* WR_DATA_COUNT_WIDTH = "5" *) 
-(* XPM_MODULE = "TRUE" *) 
+(* FIFO_WRITE_DEPTH = "16" *) (* FULL_RESET_VALUE = "1" *) (* PROG_EMPTY_THRESH = "10" *) 
+(* PROG_FULL_THRESH = "10" *) (* P_COMMON_CLOCK = "0" *) (* P_ECC_MODE = "0" *) 
+(* P_FIFO_MEMORY_TYPE = "0" *) (* P_READ_MODE = "1" *) (* P_WAKEUP_TIME = "2" *) 
+(* RD_DATA_COUNT_WIDTH = "5" *) (* READ_DATA_WIDTH = "8" *) (* READ_MODE = "fwft" *) 
+(* RELATED_CLOCKS = "0" *) (* USE_ADV_FEATURES = "1F1F" *) (* WAKEUP_TIME = "0" *) 
+(* WRITE_DATA_WIDTH = "8" *) (* WR_DATA_COUNT_WIDTH = "5" *) (* XPM_MODULE = "TRUE" *) 
 module AXI_bd_0_axi_quad_spi_0_0_xpm_fifo_async
    (sleep,
     rst,
@@ -14249,18 +14332,18 @@ endmodule
 (* EN_WDC = "1'b1" *) (* FG_EQ_ASYM_DOUT = "1'b0" *) (* FIFO_MEMORY_TYPE = "0" *) 
 (* FIFO_MEM_TYPE = "0" *) (* FIFO_READ_DEPTH = "16" *) (* FIFO_READ_LATENCY = "0" *) 
 (* FIFO_SIZE = "128" *) (* FIFO_WRITE_DEPTH = "16" *) (* FULL_RESET_VALUE = "1" *) 
-(* FULL_RST_VAL = "1'b1" *) (* ORIG_REF_NAME = "xpm_fifo_base" *) (* PE_THRESH_ADJ = "8" *) 
-(* PE_THRESH_MAX = "11" *) (* PE_THRESH_MIN = "5" *) (* PF_THRESH_ADJ = "8" *) 
-(* PF_THRESH_MAX = "11" *) (* PF_THRESH_MIN = "7" *) (* PROG_EMPTY_THRESH = "10" *) 
-(* PROG_FULL_THRESH = "10" *) (* RD_DATA_COUNT_WIDTH = "5" *) (* RD_DC_WIDTH_EXT = "5" *) 
-(* RD_LATENCY = "2" *) (* RD_MODE = "1" *) (* RD_PNTR_WIDTH = "4" *) 
-(* READ_DATA_WIDTH = "8" *) (* READ_MODE = "1" *) (* RELATED_CLOCKS = "0" *) 
-(* REMOVE_WR_RD_PROT_LOGIC = "0" *) (* SIM_ASSERT_CHK = "0" *) (* USE_ADV_FEATURES = "1F1F" *) 
-(* VERSION = "0" *) (* WAKEUP_TIME = "0" *) (* WIDTH_RATIO = "1" *) 
-(* WRITE_DATA_WIDTH = "8" *) (* WR_DATA_COUNT_WIDTH = "5" *) (* WR_DC_WIDTH_EXT = "5" *) 
-(* WR_DEPTH_LOG = "4" *) (* WR_PNTR_WIDTH = "4" *) (* WR_RD_RATIO = "0" *) 
-(* WR_WIDTH_LOG = "3" *) (* XPM_MODULE = "TRUE" *) (* both_stages_valid = "3" *) 
-(* invalid = "0" *) (* stage1_valid = "2" *) (* stage2_valid = "1" *) 
+(* FULL_RST_VAL = "1'b1" *) (* PE_THRESH_ADJ = "8" *) (* PE_THRESH_MAX = "11" *) 
+(* PE_THRESH_MIN = "5" *) (* PF_THRESH_ADJ = "8" *) (* PF_THRESH_MAX = "11" *) 
+(* PF_THRESH_MIN = "7" *) (* PROG_EMPTY_THRESH = "10" *) (* PROG_FULL_THRESH = "10" *) 
+(* RD_DATA_COUNT_WIDTH = "5" *) (* RD_DC_WIDTH_EXT = "5" *) (* RD_LATENCY = "2" *) 
+(* RD_MODE = "1" *) (* RD_PNTR_WIDTH = "4" *) (* READ_DATA_WIDTH = "8" *) 
+(* READ_MODE = "1" *) (* RELATED_CLOCKS = "0" *) (* REMOVE_WR_RD_PROT_LOGIC = "0" *) 
+(* SIM_ASSERT_CHK = "0" *) (* USE_ADV_FEATURES = "1F1F" *) (* VERSION = "0" *) 
+(* WAKEUP_TIME = "0" *) (* WIDTH_RATIO = "1" *) (* WRITE_DATA_WIDTH = "8" *) 
+(* WR_DATA_COUNT_WIDTH = "5" *) (* WR_DC_WIDTH_EXT = "5" *) (* WR_DEPTH_LOG = "4" *) 
+(* WR_PNTR_WIDTH = "4" *) (* WR_RD_RATIO = "0" *) (* WR_WIDTH_LOG = "3" *) 
+(* XPM_MODULE = "TRUE" *) (* both_stages_valid = "3" *) (* invalid = "0" *) 
+(* stage1_valid = "2" *) (* stage2_valid = "1" *) 
 module AXI_bd_0_axi_quad_spi_0_0_xpm_fifo_base
    (sleep,
     rst,
@@ -15693,7 +15776,6 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_fifo_base__xdcDup__1
         .wrst_busy(wrst_busy));
 endmodule
 
-(* ORIG_REF_NAME = "xpm_fifo_reg_bit" *) 
 module AXI_bd_0_axi_quad_spi_0_0_xpm_fifo_reg_bit
    (rst_d1,
     \gen_pf_ic_rc.gpf_ic.diff_pntr_pf_q_reg[4] ,
@@ -15839,7 +15921,6 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_fifo_reg_bit_13
         .O(overflow_i0));
 endmodule
 
-(* ORIG_REF_NAME = "xpm_fifo_reg_vec" *) 
 module AXI_bd_0_axi_quad_spi_0_0_xpm_fifo_reg_vec
    (\gen_pf_ic_rc.gen_full_rst_val.ram_full_i_reg ,
     diff_pntr_pf_q0,
@@ -16821,7 +16902,6 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_fifo_reg_vec__parameterized0_9
         .R(\reg_out_i_reg[4]_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "xpm_fifo_rst" *) 
 module AXI_bd_0_axi_quad_spi_0_0_xpm_fifo_rst
    (\gen_rst_ic.fifo_rd_rst_ic_reg_0 ,
     wrst_busy,
@@ -17554,22 +17634,22 @@ endmodule
 (* ECC_MODE = "0" *) (* MAX_NUM_CHAR = "0" *) (* MEMORY_INIT_FILE = "none" *) 
 (* MEMORY_INIT_PARAM = "" *) (* MEMORY_OPTIMIZATION = "true" *) (* MEMORY_PRIMITIVE = "0" *) 
 (* MEMORY_SIZE = "128" *) (* MEMORY_TYPE = "1" *) (* MESSAGE_CONTROL = "0" *) 
-(* NUM_CHAR_LOC = "0" *) (* ORIG_REF_NAME = "xpm_memory_base" *) (* P_ECC_MODE = "no_ecc" *) 
-(* P_ENABLE_BYTE_WRITE_A = "0" *) (* P_ENABLE_BYTE_WRITE_B = "0" *) (* P_MAX_DEPTH_DATA = "16" *) 
-(* P_MEMORY_OPT = "yes" *) (* P_MEMORY_PRIMITIVE = "auto" *) (* P_MIN_WIDTH_DATA = "8" *) 
-(* P_MIN_WIDTH_DATA_A = "8" *) (* P_MIN_WIDTH_DATA_B = "8" *) (* P_MIN_WIDTH_DATA_ECC = "8" *) 
-(* P_MIN_WIDTH_DATA_LDW = "4" *) (* P_MIN_WIDTH_DATA_SHFT = "8" *) (* P_NUM_COLS_WRITE_A = "1" *) 
-(* P_NUM_COLS_WRITE_B = "1" *) (* P_NUM_ROWS_READ_A = "1" *) (* P_NUM_ROWS_READ_B = "1" *) 
-(* P_NUM_ROWS_WRITE_A = "1" *) (* P_NUM_ROWS_WRITE_B = "1" *) (* P_SDP_WRITE_MODE = "yes" *) 
-(* P_WIDTH_ADDR_LSB_READ_A = "0" *) (* P_WIDTH_ADDR_LSB_READ_B = "0" *) (* P_WIDTH_ADDR_LSB_WRITE_A = "0" *) 
-(* P_WIDTH_ADDR_LSB_WRITE_B = "0" *) (* P_WIDTH_ADDR_READ_A = "4" *) (* P_WIDTH_ADDR_READ_B = "4" *) 
-(* P_WIDTH_ADDR_WRITE_A = "4" *) (* P_WIDTH_ADDR_WRITE_B = "4" *) (* P_WIDTH_COL_WRITE_A = "8" *) 
-(* P_WIDTH_COL_WRITE_B = "8" *) (* READ_DATA_WIDTH_A = "8" *) (* READ_DATA_WIDTH_B = "8" *) 
-(* READ_LATENCY_A = "2" *) (* READ_LATENCY_B = "2" *) (* READ_RESET_VALUE_A = "0" *) 
-(* READ_RESET_VALUE_B = "0" *) (* RST_MODE_A = "SYNC" *) (* RST_MODE_B = "SYNC" *) 
-(* USE_EMBEDDED_CONSTRAINT = "0" *) (* USE_MEM_INIT = "0" *) (* VERSION = "0" *) 
-(* WAKEUP_TIME = "0" *) (* WRITE_DATA_WIDTH_A = "8" *) (* WRITE_DATA_WIDTH_B = "8" *) 
-(* WRITE_MODE_A = "2" *) (* WRITE_MODE_B = "2" *) (* XPM_MODULE = "TRUE" *) 
+(* NUM_CHAR_LOC = "0" *) (* P_ECC_MODE = "no_ecc" *) (* P_ENABLE_BYTE_WRITE_A = "0" *) 
+(* P_ENABLE_BYTE_WRITE_B = "0" *) (* P_MAX_DEPTH_DATA = "16" *) (* P_MEMORY_OPT = "yes" *) 
+(* P_MEMORY_PRIMITIVE = "auto" *) (* P_MIN_WIDTH_DATA = "8" *) (* P_MIN_WIDTH_DATA_A = "8" *) 
+(* P_MIN_WIDTH_DATA_B = "8" *) (* P_MIN_WIDTH_DATA_ECC = "8" *) (* P_MIN_WIDTH_DATA_LDW = "4" *) 
+(* P_MIN_WIDTH_DATA_SHFT = "8" *) (* P_NUM_COLS_WRITE_A = "1" *) (* P_NUM_COLS_WRITE_B = "1" *) 
+(* P_NUM_ROWS_READ_A = "1" *) (* P_NUM_ROWS_READ_B = "1" *) (* P_NUM_ROWS_WRITE_A = "1" *) 
+(* P_NUM_ROWS_WRITE_B = "1" *) (* P_SDP_WRITE_MODE = "yes" *) (* P_WIDTH_ADDR_LSB_READ_A = "0" *) 
+(* P_WIDTH_ADDR_LSB_READ_B = "0" *) (* P_WIDTH_ADDR_LSB_WRITE_A = "0" *) (* P_WIDTH_ADDR_LSB_WRITE_B = "0" *) 
+(* P_WIDTH_ADDR_READ_A = "4" *) (* P_WIDTH_ADDR_READ_B = "4" *) (* P_WIDTH_ADDR_WRITE_A = "4" *) 
+(* P_WIDTH_ADDR_WRITE_B = "4" *) (* P_WIDTH_COL_WRITE_A = "8" *) (* P_WIDTH_COL_WRITE_B = "8" *) 
+(* READ_DATA_WIDTH_A = "8" *) (* READ_DATA_WIDTH_B = "8" *) (* READ_LATENCY_A = "2" *) 
+(* READ_LATENCY_B = "2" *) (* READ_RESET_VALUE_A = "0" *) (* READ_RESET_VALUE_B = "0" *) 
+(* RST_MODE_A = "SYNC" *) (* RST_MODE_B = "SYNC" *) (* USE_EMBEDDED_CONSTRAINT = "0" *) 
+(* USE_MEM_INIT = "0" *) (* VERSION = "0" *) (* WAKEUP_TIME = "0" *) 
+(* WRITE_DATA_WIDTH_A = "8" *) (* WRITE_DATA_WIDTH_B = "8" *) (* WRITE_MODE_A = "2" *) 
+(* WRITE_MODE_B = "2" *) (* XPM_MODULE = "TRUE" *) 
 module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_base
    (sleep,
     clka,
@@ -18152,25 +18232,25 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_base__2
 endmodule
 
 (* ADDR_WIDTH_A = "8" *) (* ADDR_WIDTH_B = "8" *) (* AUTO_SLEEP_TIME = "0" *) 
-(* BYTE_WRITE_WIDTH_A = "11" *) (* BYTE_WRITE_WIDTH_B = "11" *) (* CLOCKING_MODE = "0" *) 
-(* ECC_MODE = "0" *) (* MAX_NUM_CHAR = "0" *) (* MEMORY_INIT_FILE = "mode_2_memory_1_wb.mem" *) 
+(* BYTE_WRITE_WIDTH_A = "12" *) (* BYTE_WRITE_WIDTH_B = "12" *) (* CLOCKING_MODE = "0" *) 
+(* ECC_MODE = "0" *) (* MAX_NUM_CHAR = "0" *) (* MEMORY_INIT_FILE = "mode_2_memory_2_nm.mem" *) 
 (* MEMORY_INIT_PARAM = "" *) (* MEMORY_OPTIMIZATION = "true" *) (* MEMORY_PRIMITIVE = "0" *) 
-(* MEMORY_SIZE = "2816" *) (* MEMORY_TYPE = "3" *) (* MESSAGE_CONTROL = "0" *) 
+(* MEMORY_SIZE = "3072" *) (* MEMORY_TYPE = "3" *) (* MESSAGE_CONTROL = "0" *) 
 (* NUM_CHAR_LOC = "0" *) (* ORIG_REF_NAME = "xpm_memory_base" *) (* P_ECC_MODE = "no_ecc" *) 
 (* P_ENABLE_BYTE_WRITE_A = "0" *) (* P_ENABLE_BYTE_WRITE_B = "0" *) (* P_MAX_DEPTH_DATA = "256" *) 
-(* P_MEMORY_OPT = "yes" *) (* P_MEMORY_PRIMITIVE = "auto" *) (* P_MIN_WIDTH_DATA = "11" *) 
-(* P_MIN_WIDTH_DATA_A = "11" *) (* P_MIN_WIDTH_DATA_B = "11" *) (* P_MIN_WIDTH_DATA_ECC = "11" *) 
-(* P_MIN_WIDTH_DATA_LDW = "4" *) (* P_MIN_WIDTH_DATA_SHFT = "11" *) (* P_NUM_COLS_WRITE_A = "1" *) 
+(* P_MEMORY_OPT = "yes" *) (* P_MEMORY_PRIMITIVE = "auto" *) (* P_MIN_WIDTH_DATA = "12" *) 
+(* P_MIN_WIDTH_DATA_A = "12" *) (* P_MIN_WIDTH_DATA_B = "12" *) (* P_MIN_WIDTH_DATA_ECC = "12" *) 
+(* P_MIN_WIDTH_DATA_LDW = "4" *) (* P_MIN_WIDTH_DATA_SHFT = "12" *) (* P_NUM_COLS_WRITE_A = "1" *) 
 (* P_NUM_COLS_WRITE_B = "1" *) (* P_NUM_ROWS_READ_A = "1" *) (* P_NUM_ROWS_READ_B = "1" *) 
 (* P_NUM_ROWS_WRITE_A = "1" *) (* P_NUM_ROWS_WRITE_B = "1" *) (* P_SDP_WRITE_MODE = "yes" *) 
 (* P_WIDTH_ADDR_LSB_READ_A = "0" *) (* P_WIDTH_ADDR_LSB_READ_B = "0" *) (* P_WIDTH_ADDR_LSB_WRITE_A = "0" *) 
 (* P_WIDTH_ADDR_LSB_WRITE_B = "0" *) (* P_WIDTH_ADDR_READ_A = "8" *) (* P_WIDTH_ADDR_READ_B = "8" *) 
-(* P_WIDTH_ADDR_WRITE_A = "8" *) (* P_WIDTH_ADDR_WRITE_B = "8" *) (* P_WIDTH_COL_WRITE_A = "11" *) 
-(* P_WIDTH_COL_WRITE_B = "11" *) (* READ_DATA_WIDTH_A = "11" *) (* READ_DATA_WIDTH_B = "11" *) 
+(* P_WIDTH_ADDR_WRITE_A = "8" *) (* P_WIDTH_ADDR_WRITE_B = "8" *) (* P_WIDTH_COL_WRITE_A = "12" *) 
+(* P_WIDTH_COL_WRITE_B = "12" *) (* READ_DATA_WIDTH_A = "12" *) (* READ_DATA_WIDTH_B = "12" *) 
 (* READ_LATENCY_A = "1" *) (* READ_LATENCY_B = "1" *) (* READ_RESET_VALUE_A = "0" *) 
 (* READ_RESET_VALUE_B = "0" *) (* RST_MODE_A = "SYNC" *) (* RST_MODE_B = "SYNC" *) 
 (* USE_EMBEDDED_CONSTRAINT = "0" *) (* USE_MEM_INIT = "1" *) (* VERSION = "0" *) 
-(* WAKEUP_TIME = "0" *) (* WRITE_DATA_WIDTH_A = "11" *) (* WRITE_DATA_WIDTH_B = "11" *) 
+(* WAKEUP_TIME = "0" *) (* WRITE_DATA_WIDTH_A = "12" *) (* WRITE_DATA_WIDTH_B = "12" *) 
 (* WRITE_MODE_A = "1" *) (* WRITE_MODE_B = "1" *) (* XPM_MODULE = "TRUE" *) 
 module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_base__parameterized0
    (sleep,
@@ -18205,10 +18285,10 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_base__parameterized0
   input regcea;
   input [0:0]wea;
   input [7:0]addra;
-  input [10:0]dina;
+  input [11:0]dina;
   input injectsbiterra;
   input injectdbiterra;
-  output [10:0]douta;
+  output [11:0]douta;
   output sbiterra;
   output dbiterra;
   input clkb;
@@ -18217,26 +18297,27 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_base__parameterized0
   input regceb;
   input [0:0]web;
   input [7:0]addrb;
-  input [10:0]dinb;
+  input [11:0]dinb;
   input injectsbiterrb;
   input injectdbiterrb;
-  output [10:0]doutb;
+  output [11:0]doutb;
   output sbiterrb;
   output dbiterrb;
 
   wire \<const0> ;
   wire [7:0]addra;
   wire clka;
-  wire [10:0]douta;
+  wire [11:0]douta;
   wire rsta;
   wire sleep;
-  wire [15:11]\NLW_gen_rd_a.douta_reg_reg_DOADO_UNCONNECTED ;
+  wire [15:12]\NLW_gen_rd_a.douta_reg_reg_DOADO_UNCONNECTED ;
   wire [15:0]\NLW_gen_rd_a.douta_reg_reg_DOBDO_UNCONNECTED ;
   wire [1:0]\NLW_gen_rd_a.douta_reg_reg_DOPADOP_UNCONNECTED ;
   wire [1:0]\NLW_gen_rd_a.douta_reg_reg_DOPBDOP_UNCONNECTED ;
 
   assign dbiterra = \<const0> ;
   assign dbiterrb = \<const0> ;
+  assign doutb[11] = \<const0> ;
   assign doutb[10] = \<const0> ;
   assign doutb[9] = \<const0> ;
   assign doutb[8] = \<const0> ;
@@ -18254,20 +18335,20 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_base__parameterized0
        (.G(\<const0> ));
   (* \MEM.PORTA.ADDRESS_BEGIN  = "0" *) 
   (* \MEM.PORTA.ADDRESS_END  = "1023" *) 
-  (* \MEM.PORTA.DATA_BIT_LAYOUT  = "p0_d11" *) 
+  (* \MEM.PORTA.DATA_BIT_LAYOUT  = "p0_d12" *) 
   (* \MEM.PORTA.DATA_LSB  = "0" *) 
-  (* \MEM.PORTA.DATA_MSB  = "10" *) 
+  (* \MEM.PORTA.DATA_MSB  = "11" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-6 {cell *THIS*}}" *) 
-  (* RTL_RAM_BITS = "2816" *) 
+  (* RTL_RAM_BITS = "3072" *) 
   (* RTL_RAM_NAME = "gen_rd_a.douta_reg" *) 
   (* bram_addr_begin = "0" *) 
   (* bram_addr_end = "1023" *) 
   (* bram_slice_begin = "0" *) 
-  (* bram_slice_end = "10" *) 
+  (* bram_slice_end = "11" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "1023" *) 
   (* ram_slice_begin = "0" *) 
-  (* ram_slice_end = "10" *) 
+  (* ram_slice_end = "11" *) 
   RAMB18E1 #(
     .DOA_REG(0),
     .DOB_REG(0),
@@ -18279,21 +18360,21 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_base__parameterized0
     .INITP_05(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_06(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_07(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'h0001000100010001000800010001000100010000000800000008000800080001),
-    .INIT_01(256'h0001000100010001000100010001000100010001000100010001000100010001),
+    .INIT_00(256'h0001000100010008000800010001000100010000000800000008000800080001),
+    .INIT_01(256'h000100010001000100010001000100010001000100010001000800C800010001),
     .INIT_02(256'h0001000100010001000100010001000100010001000100010001000100010008),
-    .INIT_03(256'h0001000100010001018800010001000100010001000800010001068800010001),
-    .INIT_04(256'h0001000100010001000800010001000100010001000100010001000100010001),
-    .INIT_05(256'h0001000100010001000100010001000100010001000100010001000800010001),
-    .INIT_06(256'h0001000100010001028800010001000100010001000100010001000100010000),
-    .INIT_07(256'h0001000100010001000100000001000100010001000000010001000100010001),
-    .INIT_08(256'h0001000100010001000100010001000100010001000100010001000100010001),
-    .INIT_09(256'h0008000100010001000100010001000100010001000100010001000100010008),
-    .INIT_0A(256'h0001000100010001000000010001000100010001000100010008000100010001),
-    .INIT_0B(256'h000100010001000101A800010000000100010001000100010001000100010001),
-    .INIT_0C(256'h0001000100010001000100010001000100000001000100010001000100010001),
-    .INIT_0D(256'h0001000100010001000100010001000800010001000100010001000100010001),
-    .INIT_0E(256'h000100010001000102C8000100010001000100010001000102C8000100010001),
+    .INIT_03(256'h00010001000103180308000100010001000100010008000100010D8800010001),
+    .INIT_04(256'h0001000100010001000800080001000100010001000100010001000800010001),
+    .INIT_05(256'h0001000100010001000100080001000100010001000100010001000800010000),
+    .INIT_06(256'h0001000100010598058805080001000100010000000800010001000100080000),
+    .INIT_07(256'h0001000100010001000100000001000100010001000000010001000100010008),
+    .INIT_08(256'h0001000100010001000100010001000100010001000800010001000100080001),
+    .INIT_09(256'h0008000800010001000100010000000100010001000100010001000100010008),
+    .INIT_0A(256'h00010001000100010000000100010001000100010001000100080B0800010001),
+    .INIT_0B(256'h0001000100010338032800010000000100000001000800010001000100080001),
+    .INIT_0C(256'h0001000100010001000100010001000800000001000800010001000100010001),
+    .INIT_0D(256'h00010001000100010001000100010008000100010001000100010B2800010001),
+    .INIT_0E(256'h00010001000105D805C800010000000800010001000800010009000100010001),
     .INIT_0F(256'h0001000100010001000100010001000100010001000100010001000100010001),
     .INIT_10(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INIT_11(256'h0000000000000000000000000000000000000000000000000000000000000000),
@@ -18364,11 +18445,11 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_base__parameterized0
         .ADDRBWRADDR({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
         .CLKARDCLK(clka),
         .CLKBWRCLK(1'b0),
-        .DIADI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
+        .DIADI({1'b0,1'b0,1'b0,1'b0,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
         .DIBDI({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
         .DIPADIP({1'b0,1'b0}),
         .DIPBDIP({1'b1,1'b1}),
-        .DOADO({\NLW_gen_rd_a.douta_reg_reg_DOADO_UNCONNECTED [15:11],douta}),
+        .DOADO({\NLW_gen_rd_a.douta_reg_reg_DOADO_UNCONNECTED [15:12],douta}),
         .DOBDO(\NLW_gen_rd_a.douta_reg_reg_DOBDO_UNCONNECTED [15:0]),
         .DOPADOP(\NLW_gen_rd_a.douta_reg_reg_DOPADOP_UNCONNECTED [1:0]),
         .DOPBDOP(\NLW_gen_rd_a.douta_reg_reg_DOPBDOP_UNCONNECTED [1:0]),
@@ -18384,7 +18465,6 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_base__parameterized0
         .WEBWE({1'b0,1'b0,1'b0,1'b0}));
 endmodule
 
-(* ORIG_REF_NAME = "xpm_memory_sprom" *) 
 module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_sprom
    (douta,
     \gen_rd_a.douta_reg_reg ,
@@ -18393,16 +18473,16 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_sprom
     \gen_rd_a.douta_reg_reg_1 ,
     \gen_rd_a.douta_reg_reg_2 ,
     \gen_rd_a.douta_reg_reg_3 ,
-    \gen_rd_a.douta_reg_reg_4 ,
     D,
-    \gen_rd_a.douta_reg_reg_5 ,
-    p_34_out__0,
+    \gen_rd_a.douta_reg_reg_4 ,
+    p_36_out__0,
     E,
     Serial_Dout_019_in,
+    \gen_rd_a.douta_reg_reg_5 ,
     \gen_rd_a.douta_reg_reg_6 ,
+    p_38_out__0,
     \gen_rd_a.douta_reg_reg_7 ,
-    p_36_out__0,
-    \gen_rd_a.douta_reg_reg_8 ,
+    IO0_T_control0__0,
     ext_spi_clk,
     Rst_to_spi,
     addra,
@@ -18410,37 +18490,37 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_sprom
     SPIXfer_done_int_pulse,
     Q,
     empty,
-    qspi_cntrl_ns129_out__3,
+    qspi_cntrl_ns131_out__3,
     master_tri_state_en_control1__1,
-    register_Data_slvsel_int,
+    qspi_cntrl_ns132_out__0,
+    \QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 ,
     io1_i_sync,
     io0_i_sync,
     io2_i_sync,
     \RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[4] ,
     io3_i_sync,
     sck_d3,
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg ,
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg_0 ,
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_2 ,
-    \QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 ,
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg ,
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_0 ,
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_1 ,
     SPIXfer_done_int);
-  output [8:0]douta;
+  output [10:0]douta;
   output \gen_rd_a.douta_reg_reg ;
   output SPISR_0_CMD_Error_int;
   output \gen_rd_a.douta_reg_reg_0 ;
   output \gen_rd_a.douta_reg_reg_1 ;
   output \gen_rd_a.douta_reg_reg_2 ;
   output \gen_rd_a.douta_reg_reg_3 ;
-  output \gen_rd_a.douta_reg_reg_4 ;
   output [2:0]D;
-  output \gen_rd_a.douta_reg_reg_5 ;
-  output p_34_out__0;
+  output \gen_rd_a.douta_reg_reg_4 ;
+  output p_36_out__0;
   output [0:0]E;
   output Serial_Dout_019_in;
+  output \gen_rd_a.douta_reg_reg_5 ;
   output \gen_rd_a.douta_reg_reg_6 ;
+  output p_38_out__0;
   output \gen_rd_a.douta_reg_reg_7 ;
-  output p_36_out__0;
-  output \gen_rd_a.douta_reg_reg_8 ;
+  output IO0_T_control0__0;
   input ext_spi_clk;
   input Rst_to_spi;
   input [7:0]addra;
@@ -18448,35 +18528,34 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_sprom
   input SPIXfer_done_int_pulse;
   input [2:0]Q;
   input empty;
-  input qspi_cntrl_ns129_out__3;
+  input qspi_cntrl_ns131_out__3;
   input master_tri_state_en_control1__1;
-  input register_Data_slvsel_int;
+  input qspi_cntrl_ns132_out__0;
+  input [2:0]\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 ;
   input io1_i_sync;
   input io0_i_sync;
   input io2_i_sync;
   input [2:0]\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[4] ;
   input io3_i_sync;
   input sck_d3;
-  input \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg ;
-  input \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg_0 ;
-  input \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_2 ;
-  input [2:0]\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 ;
+  input \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg ;
+  input \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_0 ;
+  input \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_1 ;
   input SPIXfer_done_int;
 
   wire CMD_decoded_int;
   wire [2:0]D;
-  wire Data_Dir_int;
   wire [0:0]E;
+  wire IO0_T_control0__0;
   wire [0:0]Look_up_op;
   wire [2:0]Q;
   wire QSPI_IO1_T_i_3_n_0;
   wire QSPI_IO1_T_i_4_n_0;
-  wire QSPI_IO1_T_i_5_n_0;
-  wire [2:0]\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_2 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_5_n_0 ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg ;
-  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg_0 ;
+  wire [2:0]\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_5_n_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_0 ;
+  wire \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_1 ;
   wire [2:0]\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[4] ;
   wire Rst_to_spi;
   wire SPISR_0_CMD_Error_int;
@@ -18484,7 +18563,7 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_sprom
   wire SPIXfer_done_int_pulse;
   wire Serial_Dout_019_in;
   wire [7:0]addra;
-  wire [8:0]douta;
+  wire [10:0]douta;
   wire empty;
   wire ext_spi_clk;
   wire \gen_rd_a.douta_reg_reg ;
@@ -18496,22 +18575,21 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_sprom
   wire \gen_rd_a.douta_reg_reg_5 ;
   wire \gen_rd_a.douta_reg_reg_6 ;
   wire \gen_rd_a.douta_reg_reg_7 ;
-  wire \gen_rd_a.douta_reg_reg_8 ;
   wire io0_i_sync;
   wire io1_i_sync;
   wire io2_i_sync;
   wire io3_i_sync;
   wire master_tri_state_en_control1__1;
-  wire p_34_out__0;
   wire p_36_out__0;
-  wire qspi_cntrl_ns129_out__3;
-  wire register_Data_slvsel_int;
+  wire p_38_out__0;
+  wire qspi_cntrl_ns131_out__3;
+  wire qspi_cntrl_ns132_out__0;
   wire sck_d3;
   wire NLW_xpm_memory_base_inst_dbiterra_UNCONNECTED;
   wire NLW_xpm_memory_base_inst_dbiterrb_UNCONNECTED;
   wire NLW_xpm_memory_base_inst_sbiterra_UNCONNECTED;
   wire NLW_xpm_memory_base_inst_sbiterrb_UNCONNECTED;
-  wire [10:0]NLW_xpm_memory_base_inst_doutb_UNCONNECTED;
+  wire [11:0]NLW_xpm_memory_base_inst_doutb_UNCONNECTED;
 
   LUT2 #(
     .INIT(4'h8)) 
@@ -18519,145 +18597,150 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_sprom
        (.I0(CMD_decoded_int),
         .I1(Look_up_op),
         .O(SPISR_0_CMD_Error_int));
-  LUT6 #(
-    .INIT(64'h08008888F8FF8888)) 
-    QSPI_IO0_T_i_3
+  LUT2 #(
+    .INIT(4'h8)) 
+    QSPI_IO0_T_i_4
        (.I0(douta[5]),
         .I1(douta[4]),
-        .I2(douta[6]),
-        .I3(empty),
-        .I4(qspi_cntrl_ns129_out__3),
-        .I5(Data_Dir_int),
-        .O(\gen_rd_a.douta_reg_reg_3 ));
+        .O(IO0_T_control0__0));
+  LUT6 #(
+    .INIT(64'h0300004000000000)) 
+    QSPI_IO0_T_i_5
+       (.I0(douta[10]),
+        .I1(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [0]),
+        .I2(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [1]),
+        .I3(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [2]),
+        .I4(douta[3]),
+        .I5(douta[7]),
+        .O(\gen_rd_a.douta_reg_reg_1 ));
   LUT6 #(
     .INIT(64'hFFFF9FFF0F0F9FFF)) 
     QSPI_IO1_T_i_1
-       (.I0(douta[8]),
-        .I1(douta[7]),
+       (.I0(douta[9]),
+        .I1(douta[8]),
         .I2(master_tri_state_en_control1__1),
         .I3(Q[2]),
         .I4(Q[1]),
         .I5(QSPI_IO1_T_i_3_n_0),
-        .O(\gen_rd_a.douta_reg_reg_2 ));
+        .O(\gen_rd_a.douta_reg_reg_3 ));
   LUT6 #(
-    .INIT(64'hFBEAFBFBFAFAFAFA)) 
+    .INIT(64'hEBEBEBFFEBEBEBAA)) 
     QSPI_IO1_T_i_3
        (.I0(Q[2]),
-        .I1(\gen_rd_a.douta_reg_reg_1 ),
-        .I2(QSPI_IO1_T_i_4_n_0),
-        .I3(QSPI_IO1_T_i_5_n_0),
-        .I4(Data_Dir_int),
-        .I5(qspi_cntrl_ns129_out__3),
-        .O(QSPI_IO1_T_i_3_n_0));
-  LUT2 #(
-    .INIT(4'h9)) 
-    QSPI_IO1_T_i_4
-       (.I0(douta[5]),
         .I1(douta[4]),
-        .O(QSPI_IO1_T_i_4_n_0));
-  LUT2 #(
-    .INIT(4'h9)) 
-    QSPI_IO1_T_i_5
-       (.I0(douta[7]),
-        .I1(douta[8]),
-        .O(QSPI_IO1_T_i_5_n_0));
-  LUT5 #(
-    .INIT(32'h27773333)) 
-    \QSPI_MODE_2_T_CONTROL.QSPI_IO2_T_i_3 
+        .I2(douta[5]),
+        .I3(qspi_cntrl_ns132_out__0),
+        .I4(Q[0]),
+        .I5(QSPI_IO1_T_i_4_n_0),
+        .O(QSPI_IO1_T_i_3_n_0));
+  LUT6 #(
+    .INIT(64'hFFEBAAEBAAEBFFEB)) 
+    QSPI_IO1_T_i_4
        (.I0(\gen_rd_a.douta_reg_reg_1 ),
-        .I1(douta[5]),
-        .I2(douta[8]),
-        .I3(Data_Dir_int),
-        .I4(qspi_cntrl_ns129_out__3),
+        .I1(douta[4]),
+        .I2(douta[5]),
+        .I3(qspi_cntrl_ns131_out__3),
+        .I4(douta[8]),
+        .I5(douta[9]),
+        .O(QSPI_IO1_T_i_4_n_0));
+  LUT6 #(
+    .INIT(64'h0F0FFF2700000000)) 
+    \QSPI_MODE_2_T_CONTROL.QSPI_IO2_T_i_3 
+       (.I0(qspi_cntrl_ns131_out__3),
+        .I1(douta[9]),
+        .I2(douta[5]),
+        .I3(\gen_rd_a.douta_reg_reg_1 ),
+        .I4(\gen_rd_a.douta_reg_reg_2 ),
+        .I5(Q[1]),
         .O(\gen_rd_a.douta_reg_reg_0 ));
   (* SOFT_HLUTNM = "soft_lutpair84" *) 
   LUT2 #(
     .INIT(4'h7)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_6 
-       (.I0(\gen_rd_a.douta_reg_reg_6 ),
-        .I1(\gen_rd_a.douta_reg_reg_7 ),
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_0_i_6 
+       (.I0(\gen_rd_a.douta_reg_reg_5 ),
+        .I1(\gen_rd_a.douta_reg_reg_6 ),
         .O(Serial_Dout_019_in));
-  LUT6 #(
-    .INIT(64'hFAFBFAEAAAAAAAAA)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_7 
-       (.I0(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_0_i_2 ),
-        .I1(\gen_rd_a.douta_reg_reg_1 ),
-        .I2(douta[4]),
-        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_5_n_0 ),
-        .I4(douta[7]),
-        .I5(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg_0 ),
-        .O(\gen_rd_a.douta_reg_reg_7 ));
-  (* SOFT_HLUTNM = "soft_lutpair84" *) 
+  (* SOFT_HLUTNM = "soft_lutpair85" *) 
   LUT2 #(
     .INIT(4'h1)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_1_i_3 
-       (.I0(\gen_rd_a.douta_reg_reg_7 ),
-        .I1(\gen_rd_a.douta_reg_reg_6 ),
-        .O(\gen_rd_a.douta_reg_reg_5 ));
-  (* SOFT_HLUTNM = "soft_lutpair85" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_1_i_4 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_1_i_3 
        (.I0(\gen_rd_a.douta_reg_reg_6 ),
-        .I1(\gen_rd_a.douta_reg_reg_7 ),
-        .O(p_36_out__0));
+        .I1(\gen_rd_a.douta_reg_reg_5 ),
+        .O(\gen_rd_a.douta_reg_reg_4 ));
+  (* SOFT_HLUTNM = "soft_lutpair84" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_1_i_4 
+       (.I0(\gen_rd_a.douta_reg_reg_5 ),
+        .I1(\gen_rd_a.douta_reg_reg_6 ),
+        .O(p_38_out__0));
   (* SOFT_HLUTNM = "soft_lutpair85" *) 
   LUT2 #(
     .INIT(4'h2)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_1_i_5 
-       (.I0(\gen_rd_a.douta_reg_reg_7 ),
-        .I1(\gen_rd_a.douta_reg_reg_6 ),
-        .O(p_34_out__0));
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_1_i_5 
+       (.I0(\gen_rd_a.douta_reg_reg_6 ),
+        .I1(\gen_rd_a.douta_reg_reg_5 ),
+        .O(p_36_out__0));
   LUT6 #(
     .INIT(64'hFAFBFAEAAAAAAAAA)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_2 
-       (.I0(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg ),
-        .I1(\gen_rd_a.douta_reg_reg_1 ),
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_2 
+       (.I0(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg ),
+        .I1(\gen_rd_a.douta_reg_reg_2 ),
         .I2(douta[5]),
-        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_5_n_0 ),
-        .I4(douta[8]),
-        .I5(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_reg_0 ),
-        .O(\gen_rd_a.douta_reg_reg_6 ));
+        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_5_n_0 ),
+        .I4(douta[9]),
+        .I5(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_0 ),
+        .O(\gen_rd_a.douta_reg_reg_5 ));
   LUT6 #(
-    .INIT(64'hFDFFFFFFFFFFFFFF)) 
-    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_5 
-       (.I0(douta[6]),
-        .I1(douta[3]),
-        .I2(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 [2]),
-        .I3(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 [1]),
-        .I4(\QSPI_QUAD_MODE_MIXED_WB_MEM_GEN.addr_cnt_reg__0 [0]),
-        .I5(Data_Dir_int),
-        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_OTHER_MEM_GEN.Serial_Dout_2_i_5_n_0 ));
+    .INIT(64'hFCFFFF7FFFFFFFFF)) 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_5 
+       (.I0(douta[10]),
+        .I1(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [0]),
+        .I2(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [1]),
+        .I3(\QSPI_QUAD_MODE_NM_MEM_GEN.addr_cnt_reg__0 [2]),
+        .I4(douta[3]),
+        .I5(douta[7]),
+        .O(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_5_n_0 ));
+  LUT6 #(
+    .INIT(64'hFAFBFAEAAAAAAAAA)) 
+    \RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_i_4 
+       (.I0(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_1 ),
+        .I1(\gen_rd_a.douta_reg_reg_2 ),
+        .I2(douta[4]),
+        .I3(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_2_i_5_n_0 ),
+        .I4(douta[8]),
+        .I5(\RATIO_OF_2_GENERATE.RATIO_2_CAP_QSPI_QUAD_MODE_NM_MEM_GEN.Serial_Dout_3_reg_0 ),
+        .O(\gen_rd_a.douta_reg_reg_6 ));
   LUT3 #(
     .INIT(8'h10)) 
     \RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011[1]_i_1 
-       (.I0(Data_Dir_int),
+       (.I0(douta[10]),
         .I1(sck_d3),
         .I2(Serial_Dout_019_in),
         .O(E));
   LUT5 #(
     .INIT(32'hFFE400E4)) 
     \RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011[4]_i_1 
-       (.I0(p_34_out__0),
+       (.I0(p_36_out__0),
         .I1(io3_i_sync),
         .I2(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[4] [1]),
-        .I3(\gen_rd_a.douta_reg_reg_5 ),
+        .I3(\gen_rd_a.douta_reg_reg_4 ),
         .I4(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[4] [2]),
         .O(D[2]));
   LUT5 #(
     .INIT(32'hFFE400E4)) 
     \RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011[5]_i_1 
-       (.I0(p_34_out__0),
+       (.I0(p_36_out__0),
         .I1(io2_i_sync),
         .I2(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[4] [0]),
-        .I3(\gen_rd_a.douta_reg_reg_5 ),
+        .I3(\gen_rd_a.douta_reg_reg_4 ),
         .I4(\RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011_reg[4] [1]),
         .O(D[1]));
   LUT3 #(
     .INIT(8'hB8)) 
     \RATIO_OF_2_GENERATE.rx_shft_reg_mode_0011[7]_i_1 
        (.I0(io1_i_sync),
-        .I1(\gen_rd_a.douta_reg_reg_5 ),
+        .I1(\gen_rd_a.douta_reg_reg_4 ),
         .I2(io0_i_sync),
         .O(D[0]));
   LUT6 #(
@@ -18670,52 +18753,42 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_sprom
         .I4(empty),
         .I5(douta[2]),
         .O(\gen_rd_a.douta_reg_reg ));
-  LUT6 #(
-    .INIT(64'h002AFF7FFF3FFF3F)) 
-    \qspi_cntrl_ps[1]_i_3 
-       (.I0(douta[6]),
-        .I1(qspi_cntrl_ns129_out__3),
-        .I2(Data_Dir_int),
-        .I3(Q[0]),
-        .I4(register_Data_slvsel_int),
-        .I5(empty),
-        .O(\gen_rd_a.douta_reg_reg_4 ));
   (* SOFT_HLUTNM = "soft_lutpair83" *) 
   LUT3 #(
     .INIT(8'hF4)) 
-    \qspi_cntrl_ps[2]_i_3 
-       (.I0(douta[6]),
+    \qspi_cntrl_ps[2]_i_5 
+       (.I0(douta[7]),
         .I1(empty),
         .I2(Q[0]),
-        .O(\gen_rd_a.douta_reg_reg_1 ));
+        .O(\gen_rd_a.douta_reg_reg_2 ));
   (* SOFT_HLUTNM = "soft_lutpair83" *) 
   LUT4 #(
     .INIT(16'h0400)) 
     transfer_start_i_2
        (.I0(douta[2]),
         .I1(SPIXfer_done_int),
-        .I2(douta[6]),
+        .I2(douta[7]),
         .I3(empty),
-        .O(\gen_rd_a.douta_reg_reg_8 ));
+        .O(\gen_rd_a.douta_reg_reg_7 ));
   (* ADDR_WIDTH_A = "8" *) 
   (* ADDR_WIDTH_B = "8" *) 
   (* AUTO_SLEEP_TIME = "0" *) 
-  (* BYTE_WRITE_WIDTH_A = "11" *) 
-  (* BYTE_WRITE_WIDTH_B = "11" *) 
+  (* BYTE_WRITE_WIDTH_A = "12" *) 
+  (* BYTE_WRITE_WIDTH_B = "12" *) 
   (* CLOCKING_MODE = "0" *) 
   (* ECC_MODE = "0" *) 
   (* MAX_NUM_CHAR = "0" *) 
   (* \MEM.ADDRESS_SPACE  *) 
   (* \MEM.ADDRESS_SPACE_BEGIN  = "0" *) 
   (* \MEM.ADDRESS_SPACE_DATA_LSB  = "0" *) 
-  (* \MEM.ADDRESS_SPACE_DATA_MSB  = "10" *) 
+  (* \MEM.ADDRESS_SPACE_DATA_MSB  = "11" *) 
   (* \MEM.ADDRESS_SPACE_END  = "1023" *) 
-  (* \MEM.CORE_MEMORY_WIDTH  = "11" *) 
-  (* MEMORY_INIT_FILE = "mode_2_memory_1_wb.mem" *) 
+  (* \MEM.CORE_MEMORY_WIDTH  = "12" *) 
+  (* MEMORY_INIT_FILE = "mode_2_memory_2_nm.mem" *) 
   (* MEMORY_INIT_PARAM = "" *) 
   (* MEMORY_OPTIMIZATION = "true" *) 
   (* MEMORY_PRIMITIVE = "0" *) 
-  (* MEMORY_SIZE = "2816" *) 
+  (* MEMORY_SIZE = "3072" *) 
   (* MEMORY_TYPE = "3" *) 
   (* MESSAGE_CONTROL = "0" *) 
   (* NUM_CHAR_LOC = "0" *) 
@@ -18725,12 +18798,12 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_sprom
   (* P_MAX_DEPTH_DATA = "256" *) 
   (* P_MEMORY_OPT = "yes" *) 
   (* P_MEMORY_PRIMITIVE = "auto" *) 
-  (* P_MIN_WIDTH_DATA = "11" *) 
-  (* P_MIN_WIDTH_DATA_A = "11" *) 
-  (* P_MIN_WIDTH_DATA_B = "11" *) 
-  (* P_MIN_WIDTH_DATA_ECC = "11" *) 
+  (* P_MIN_WIDTH_DATA = "12" *) 
+  (* P_MIN_WIDTH_DATA_A = "12" *) 
+  (* P_MIN_WIDTH_DATA_B = "12" *) 
+  (* P_MIN_WIDTH_DATA_ECC = "12" *) 
   (* P_MIN_WIDTH_DATA_LDW = "4" *) 
-  (* P_MIN_WIDTH_DATA_SHFT = "11" *) 
+  (* P_MIN_WIDTH_DATA_SHFT = "12" *) 
   (* P_NUM_COLS_WRITE_A = "1" *) 
   (* P_NUM_COLS_WRITE_B = "1" *) 
   (* P_NUM_ROWS_READ_A = "1" *) 
@@ -18746,10 +18819,10 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_sprom
   (* P_WIDTH_ADDR_READ_B = "8" *) 
   (* P_WIDTH_ADDR_WRITE_A = "8" *) 
   (* P_WIDTH_ADDR_WRITE_B = "8" *) 
-  (* P_WIDTH_COL_WRITE_A = "11" *) 
-  (* P_WIDTH_COL_WRITE_B = "11" *) 
-  (* READ_DATA_WIDTH_A = "11" *) 
-  (* READ_DATA_WIDTH_B = "11" *) 
+  (* P_WIDTH_COL_WRITE_A = "12" *) 
+  (* P_WIDTH_COL_WRITE_B = "12" *) 
+  (* READ_DATA_WIDTH_A = "12" *) 
+  (* READ_DATA_WIDTH_B = "12" *) 
   (* READ_LATENCY_A = "1" *) 
   (* READ_LATENCY_B = "1" *) 
   (* READ_RESET_VALUE_A = "0" *) 
@@ -18760,8 +18833,8 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_sprom
   (* USE_MEM_INIT = "1" *) 
   (* VERSION = "0" *) 
   (* WAKEUP_TIME = "0" *) 
-  (* WRITE_DATA_WIDTH_A = "11" *) 
-  (* WRITE_DATA_WIDTH_B = "11" *) 
+  (* WRITE_DATA_WIDTH_A = "12" *) 
+  (* WRITE_DATA_WIDTH_B = "12" *) 
   (* WRITE_MODE_A = "1" *) 
   (* WRITE_MODE_B = "1" *) 
   (* XPM_MODULE = "TRUE" *) 
@@ -18772,10 +18845,10 @@ module AXI_bd_0_axi_quad_spi_0_0_xpm_memory_sprom
         .clkb(1'b0),
         .dbiterra(NLW_xpm_memory_base_inst_dbiterra_UNCONNECTED),
         .dbiterrb(NLW_xpm_memory_base_inst_dbiterrb_UNCONNECTED),
-        .dina({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .dinb({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .douta({Data_Dir_int,douta,Look_up_op}),
-        .doutb(NLW_xpm_memory_base_inst_doutb_UNCONNECTED[10:0]),
+        .dina({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .dinb({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .douta({douta,Look_up_op}),
+        .doutb(NLW_xpm_memory_base_inst_doutb_UNCONNECTED[11:0]),
         .ena(1'b1),
         .enb(1'b0),
         .injectdbiterra(1'b0),

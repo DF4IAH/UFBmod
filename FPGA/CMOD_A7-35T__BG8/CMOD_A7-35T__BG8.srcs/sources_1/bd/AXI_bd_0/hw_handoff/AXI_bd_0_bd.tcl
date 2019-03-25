@@ -239,32 +239,15 @@ proc create_root_design { parentCell } {
 
 
   # Create interface ports
+  set AXI_bd_Vaux4 [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:diff_analog_io_rtl:1.0 AXI_bd_Vaux4 ]
+  set AXI_bd_Vaux12 [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:diff_analog_io_rtl:1.0 AXI_bd_Vaux12 ]
+  set AXI_bd_cellular_ram_EMC_INTF [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:emc_rtl:1.0 AXI_bd_cellular_ram_EMC_INTF ]
+  set AXI_bd_qspi_flash_SPI_0 [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:spi_rtl:1.0 AXI_bd_qspi_flash_SPI_0 ]
+  set AXI_bd_usb_uart_UART [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:uart_rtl:1.0 AXI_bd_usb_uart_UART ]
 
   # Create ports
   set AXI_bd_In0 [ create_bd_port -dir I -type intr AXI_bd_In0 ]
-  set AXI_bd_cellular_ram_mem_a [ create_bd_port -dir O -from 31 -to 0 -type data AXI_bd_cellular_ram_mem_a ]
-  set AXI_bd_cellular_ram_mem_cen [ create_bd_port -dir O -from 0 -to 0 -type ce AXI_bd_cellular_ram_mem_cen ]
-  set AXI_bd_cellular_ram_mem_dq_i [ create_bd_port -dir I -from 7 -to 0 AXI_bd_cellular_ram_mem_dq_i ]
-  set AXI_bd_cellular_ram_mem_dq_o [ create_bd_port -dir O -from 7 -to 0 AXI_bd_cellular_ram_mem_dq_o ]
-  set AXI_bd_cellular_ram_mem_dq_t [ create_bd_port -dir O -from 7 -to 0 AXI_bd_cellular_ram_mem_dq_t ]
-  set AXI_bd_cellular_ram_mem_oen [ create_bd_port -dir O -from 0 -to 0 AXI_bd_cellular_ram_mem_oen ]
-  set AXI_bd_cellular_ram_mem_wen [ create_bd_port -dir O -from 0 -to 0 AXI_bd_cellular_ram_mem_wen ]
   set AXI_bd_clk_100mhz_out [ create_bd_port -dir O -type clk AXI_bd_clk_100mhz_out ]
-  set AXI_bd_qspi_flash_io0_i [ create_bd_port -dir I AXI_bd_qspi_flash_io0_i ]
-  set AXI_bd_qspi_flash_io0_o [ create_bd_port -dir O AXI_bd_qspi_flash_io0_o ]
-  set AXI_bd_qspi_flash_io0_t [ create_bd_port -dir O AXI_bd_qspi_flash_io0_t ]
-  set AXI_bd_qspi_flash_io1_i [ create_bd_port -dir I AXI_bd_qspi_flash_io1_i ]
-  set AXI_bd_qspi_flash_io1_o [ create_bd_port -dir O AXI_bd_qspi_flash_io1_o ]
-  set AXI_bd_qspi_flash_io1_t [ create_bd_port -dir O AXI_bd_qspi_flash_io1_t ]
-  set AXI_bd_qspi_flash_io2_i [ create_bd_port -dir I AXI_bd_qspi_flash_io2_i ]
-  set AXI_bd_qspi_flash_io2_o [ create_bd_port -dir O AXI_bd_qspi_flash_io2_o ]
-  set AXI_bd_qspi_flash_io2_t [ create_bd_port -dir O AXI_bd_qspi_flash_io2_t ]
-  set AXI_bd_qspi_flash_io3_i [ create_bd_port -dir I AXI_bd_qspi_flash_io3_i ]
-  set AXI_bd_qspi_flash_io3_o [ create_bd_port -dir O AXI_bd_qspi_flash_io3_o ]
-  set AXI_bd_qspi_flash_io3_t [ create_bd_port -dir O AXI_bd_qspi_flash_io3_t ]
-  set AXI_bd_qspi_flash_ss_i [ create_bd_port -dir I AXI_bd_qspi_flash_ss_i ]
-  set AXI_bd_qspi_flash_ss_o [ create_bd_port -dir O -from 0 -to 0 AXI_bd_qspi_flash_ss_o ]
-  set AXI_bd_qspi_flash_ss_t [ create_bd_port -dir O AXI_bd_qspi_flash_ss_t ]
   set AXI_bd_reset [ create_bd_port -dir I -type rst AXI_bd_reset ]
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_HIGH} \
@@ -274,27 +257,21 @@ proc create_root_design { parentCell } {
    CONFIG.FREQ_HZ {12000000} \
    CONFIG.PHASE {0.000} \
  ] $AXI_bd_sys_clock
-  set AXI_bd_usb_uart_sin [ create_bd_port -dir I AXI_bd_usb_uart_sin ]
-  set AXI_bd_usb_uart_sout [ create_bd_port -dir O AXI_bd_usb_uart_sout ]
-  set AXI_bd_vauxn4 [ create_bd_port -dir I AXI_bd_vauxn4 ]
-  set AXI_bd_vauxn12 [ create_bd_port -dir I AXI_bd_vauxn12 ]
-  set AXI_bd_vauxp4 [ create_bd_port -dir I AXI_bd_vauxp4 ]
-  set AXI_bd_vauxp12 [ create_bd_port -dir I AXI_bd_vauxp12 ]
 
   # Create instance: axi_emc_0, and set properties
   set axi_emc_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_emc:3.0 axi_emc_0 ]
   set_property -dict [ list \
    CONFIG.C_MAX_MEM_WIDTH {8} \
-   CONFIG.C_MEM0_TYPE {0} \
+   CONFIG.C_MEM0_TYPE {1} \
    CONFIG.C_MEM0_WIDTH {8} \
-   CONFIG.C_TAVDV_PS_MEM_0 {15000} \
-   CONFIG.C_TCEDV_PS_MEM_0 {15000} \
-   CONFIG.C_THZCE_PS_MEM_0 {7000} \
-   CONFIG.C_THZOE_PS_MEM_0 {7000} \
-   CONFIG.C_TLZWE_PS_MEM_0 {0} \
-   CONFIG.C_TWC_PS_MEM_0 {15000} \
-   CONFIG.C_TWP_PS_MEM_0 {12000} \
-   CONFIG.EMC_BOARD_INTERFACE {Custom} \
+   CONFIG.C_TAVDV_PS_MEM_0 {8000} \
+   CONFIG.C_TCEDV_PS_MEM_0 {8000} \
+   CONFIG.C_THZCE_PS_MEM_0 {8000} \
+   CONFIG.C_THZOE_PS_MEM_0 {8000} \
+   CONFIG.C_TLZWE_PS_MEM_0 {3000} \
+   CONFIG.C_TWC_PS_MEM_0 {8000} \
+   CONFIG.C_TWP_PS_MEM_0 {8000} \
+   CONFIG.EMC_BOARD_INTERFACE {cellular_ram} \
    CONFIG.USE_BOARD_FLOW {true} \
  ] $axi_emc_0
 
@@ -310,8 +287,8 @@ proc create_root_design { parentCell } {
   # Create instance: axi_quad_spi_0, and set properties
   set axi_quad_spi_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_quad_spi:3.2 axi_quad_spi_0 ]
   set_property -dict [ list \
-   CONFIG.C_SPI_MEMORY {1} \
-   CONFIG.QSPI_BOARD_INTERFACE {Custom} \
+   CONFIG.C_SPI_MEMORY {2} \
+   CONFIG.QSPI_BOARD_INTERFACE {qspi_flash} \
    CONFIG.USE_BOARD_FLOW {true} \
  ] $axi_quad_spi_0
 
@@ -396,8 +373,8 @@ proc create_root_design { parentCell } {
   set microblaze_0_axi_intc [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_intc:4.1 microblaze_0_axi_intc ]
   set_property -dict [ list \
    CONFIG.C_HAS_FAST {1} \
-   CONFIG.C_PROCESSOR_CLK_FREQ_MHZ {100} \
-   CONFIG.C_S_AXI_ACLK_FREQ_MHZ {100} \
+   CONFIG.C_PROCESSOR_CLK_FREQ_MHZ {100.0} \
+   CONFIG.C_S_AXI_ACLK_FREQ_MHZ {100.0} \
  ] $microblaze_0_axi_intc
 
   # Create instance: microblaze_0_axi_periph, and set properties
@@ -423,7 +400,7 @@ proc create_root_design { parentCell } {
   set xadc_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xadc_wiz:3.3 xadc_wiz_0 ]
   set_property -dict [ list \
    CONFIG.ACQUISITION_TIME {4} \
-   CONFIG.ADC_CONVERSION_RATE {48} \
+   CONFIG.ADC_CONVERSION_RATE {192.0} \
    CONFIG.AVERAGE_ENABLE_TEMPERATURE {false} \
    CONFIG.AVERAGE_ENABLE_VAUXP12_VAUXN12 {true} \
    CONFIG.AVERAGE_ENABLE_VAUXP4_VAUXN4 {true} \
@@ -439,25 +416,31 @@ proc create_root_design { parentCell } {
    CONFIG.CHANNEL_ENABLE_VBRAM {false} \
    CONFIG.CHANNEL_ENABLE_VCCAUX {true} \
    CONFIG.CHANNEL_ENABLE_VCCINT {true} \
-   CONFIG.CHANNEL_ENABLE_VP_VN {true} \
-   CONFIG.DCLK_FREQUENCY {100} \
-   CONFIG.ENABLE_EXTERNAL_MUX {false} \
-   CONFIG.EXTERNAL_MUX_CHANNEL {VP_VN} \
+   CONFIG.CHANNEL_ENABLE_VP_VN {false} \
+   CONFIG.DCLK_FREQUENCY {100.0} \
+   CONFIG.ENABLE_AXI4STREAM {false} \
+   CONFIG.ENABLE_EXTERNAL_MUX {true} \
+   CONFIG.EXTERNAL_MUX_CHANNEL {VAUXP4_VAUXN4} \
    CONFIG.OT_ALARM {false} \
-   CONFIG.SEQUENCER_MODE {Continuous} \
+   CONFIG.SEQUENCER_MODE {Off} \
    CONFIG.SINGLE_CHANNEL_ACQUISITION_TIME {false} \
    CONFIG.SINGLE_CHANNEL_SELECTION {TEMPERATURE} \
-   CONFIG.TIMING_MODE {Event} \
+   CONFIG.TIMING_MODE {Continuous} \
    CONFIG.USER_TEMP_ALARM {false} \
    CONFIG.VCCAUX_ALARM {false} \
    CONFIG.VCCINT_ALARM {false} \
-   CONFIG.XADC_STARUP_SELECTION {channel_sequencer} \
+   CONFIG.XADC_STARUP_SELECTION {simultaneous_sampling} \
  ] $xadc_wiz_0
 
   # Create interface connections
+  connect_bd_intf_net -intf_net Vaux12_0_1 [get_bd_intf_ports AXI_bd_Vaux12] [get_bd_intf_pins xadc_wiz_0/Vaux12]
+  connect_bd_intf_net -intf_net Vaux4_0_1 [get_bd_intf_ports AXI_bd_Vaux4] [get_bd_intf_pins xadc_wiz_0/Vaux4]
+  connect_bd_intf_net -intf_net axi_emc_0_EMC_INTF [get_bd_intf_ports AXI_bd_cellular_ram_EMC_INTF] [get_bd_intf_pins axi_emc_0/EMC_INTF]
   connect_bd_intf_net -intf_net axi_protocol_convert_0_M_AXI [get_bd_intf_pins axi_protocol_convert_0/M_AXI] [get_bd_intf_pins axi_quad_spi_0/AXI_LITE]
   connect_bd_intf_net -intf_net axi_protocol_convert_1_M_AXI [get_bd_intf_pins axi_protocol_convert_1/M_AXI] [get_bd_intf_pins axi_uart16550_0/S_AXI]
   connect_bd_intf_net -intf_net axi_protocol_convert_2_M_AXI [get_bd_intf_pins axi_protocol_convert_2/M_AXI] [get_bd_intf_pins xadc_wiz_0/s_axi_lite]
+  connect_bd_intf_net -intf_net axi_quad_spi_0_SPI_0 [get_bd_intf_ports AXI_bd_qspi_flash_SPI_0] [get_bd_intf_pins axi_quad_spi_0/SPI_0]
+  connect_bd_intf_net -intf_net axi_uart16550_0_UART [get_bd_intf_ports AXI_bd_usb_uart_UART] [get_bd_intf_pins axi_uart16550_0/UART]
   connect_bd_intf_net -intf_net microblaze_0_M_AXI_DC [get_bd_intf_pins microblaze_0/M_AXI_DC] [get_bd_intf_pins microblaze_0_axi_periph/S01_AXI]
   connect_bd_intf_net -intf_net microblaze_0_M_AXI_IC [get_bd_intf_pins microblaze_0/M_AXI_IC] [get_bd_intf_pins microblaze_0_axi_periph/S02_AXI]
   connect_bd_intf_net -intf_net microblaze_0_axi_dp [get_bd_intf_pins microblaze_0/M_AXI_DP] [get_bd_intf_pins microblaze_0_axi_periph/S00_AXI]
@@ -473,44 +456,16 @@ proc create_root_design { parentCell } {
 
   # Create port connections
   connect_bd_net -net AXI_bd_In0_1 [get_bd_ports AXI_bd_In0] [get_bd_pins microblaze_0_xlconcat/In0]
-  connect_bd_net -net AXI_bd_qspi_flash_ss_i_1 [get_bd_ports AXI_bd_qspi_flash_ss_i] [get_bd_pins axi_quad_spi_0/ss_i]
-  connect_bd_net -net axi_emc_0_mem_a [get_bd_ports AXI_bd_cellular_ram_mem_a] [get_bd_pins axi_emc_0/mem_a]
-  connect_bd_net -net axi_emc_0_mem_cen [get_bd_ports AXI_bd_cellular_ram_mem_cen] [get_bd_pins axi_emc_0/mem_cen]
-  connect_bd_net -net axi_emc_0_mem_dq_o [get_bd_ports AXI_bd_cellular_ram_mem_dq_o] [get_bd_pins axi_emc_0/mem_dq_o]
-  connect_bd_net -net axi_emc_0_mem_dq_t [get_bd_ports AXI_bd_cellular_ram_mem_dq_t] [get_bd_pins axi_emc_0/mem_dq_t]
-  connect_bd_net -net axi_emc_0_mem_oen [get_bd_ports AXI_bd_cellular_ram_mem_oen] [get_bd_pins axi_emc_0/mem_oen]
-  connect_bd_net -net axi_emc_0_mem_qwen [get_bd_ports AXI_bd_cellular_ram_mem_wen] [get_bd_pins axi_emc_0/mem_qwen]
-  connect_bd_net -net axi_quad_spi_0_io0_o [get_bd_ports AXI_bd_qspi_flash_io0_o] [get_bd_pins axi_quad_spi_0/io0_o]
-  connect_bd_net -net axi_quad_spi_0_io0_t [get_bd_ports AXI_bd_qspi_flash_io0_t] [get_bd_pins axi_quad_spi_0/io0_t]
-  connect_bd_net -net axi_quad_spi_0_io1_o [get_bd_ports AXI_bd_qspi_flash_io1_o] [get_bd_pins axi_quad_spi_0/io1_o]
-  connect_bd_net -net axi_quad_spi_0_io1_t [get_bd_ports AXI_bd_qspi_flash_io1_t] [get_bd_pins axi_quad_spi_0/io1_t]
-  connect_bd_net -net axi_quad_spi_0_io2_o [get_bd_ports AXI_bd_qspi_flash_io2_o] [get_bd_pins axi_quad_spi_0/io2_o]
-  connect_bd_net -net axi_quad_spi_0_io2_t [get_bd_ports AXI_bd_qspi_flash_io2_t] [get_bd_pins axi_quad_spi_0/io2_t]
-  connect_bd_net -net axi_quad_spi_0_io3_o [get_bd_ports AXI_bd_qspi_flash_io3_o] [get_bd_pins axi_quad_spi_0/io3_o]
-  connect_bd_net -net axi_quad_spi_0_io3_t [get_bd_ports AXI_bd_qspi_flash_io3_t] [get_bd_pins axi_quad_spi_0/io3_t]
   connect_bd_net -net axi_quad_spi_0_ip2intc_irpt [get_bd_pins axi_quad_spi_0/ip2intc_irpt] [get_bd_pins microblaze_0_xlconcat/In1]
-  connect_bd_net -net axi_quad_spi_0_ss_o [get_bd_ports AXI_bd_qspi_flash_ss_o] [get_bd_pins axi_quad_spi_0/ss_o]
-  connect_bd_net -net axi_quad_spi_0_ss_t [get_bd_ports AXI_bd_qspi_flash_ss_t] [get_bd_pins axi_quad_spi_0/ss_t]
   connect_bd_net -net axi_uart16550_0_ip2intc_irpt [get_bd_pins axi_uart16550_0/ip2intc_irpt] [get_bd_pins microblaze_0_xlconcat/In3]
-  connect_bd_net -net axi_uart16550_0_sout [get_bd_ports AXI_bd_usb_uart_sout] [get_bd_pins axi_uart16550_0/sout]
-  connect_bd_net -net io0_i_0_1 [get_bd_ports AXI_bd_qspi_flash_io0_i] [get_bd_pins axi_quad_spi_0/io0_i]
-  connect_bd_net -net io1_i_0_1 [get_bd_ports AXI_bd_qspi_flash_io1_i] [get_bd_pins axi_quad_spi_0/io1_i]
-  connect_bd_net -net io2_i_0_1 [get_bd_ports AXI_bd_qspi_flash_io2_i] [get_bd_pins axi_quad_spi_0/io2_i]
-  connect_bd_net -net io3_i_0_1 [get_bd_ports AXI_bd_qspi_flash_io3_i] [get_bd_pins axi_quad_spi_0/io3_i]
   connect_bd_net -net mdm_1_debug_sys_rst [get_bd_pins mdm_1/Debug_SYS_Rst] [get_bd_pins rst_clk_wiz_0_100M/mb_debug_sys_rst]
-  connect_bd_net -net mem_dq_i_0_1 [get_bd_ports AXI_bd_cellular_ram_mem_dq_i] [get_bd_pins axi_emc_0/mem_dq_i]
   connect_bd_net -net microblaze_0_Clk [get_bd_ports AXI_bd_clk_100mhz_out] [get_bd_pins axi_emc_0/rdclk] [get_bd_pins axi_emc_0/s_axi_aclk] [get_bd_pins axi_protocol_convert_0/aclk] [get_bd_pins axi_protocol_convert_1/aclk] [get_bd_pins axi_protocol_convert_2/aclk] [get_bd_pins axi_quad_spi_0/ext_spi_clk] [get_bd_pins axi_quad_spi_0/s_axi_aclk] [get_bd_pins axi_uart16550_0/s_axi_aclk] [get_bd_pins clk_wiz_0/clk_100mhz] [get_bd_pins microblaze_0/Clk] [get_bd_pins microblaze_0_axi_intc/processor_clk] [get_bd_pins microblaze_0_axi_intc/s_axi_aclk] [get_bd_pins microblaze_0_axi_periph/ACLK] [get_bd_pins microblaze_0_axi_periph/M00_ACLK] [get_bd_pins microblaze_0_axi_periph/M01_ACLK] [get_bd_pins microblaze_0_axi_periph/M02_ACLK] [get_bd_pins microblaze_0_axi_periph/M03_ACLK] [get_bd_pins microblaze_0_axi_periph/M04_ACLK] [get_bd_pins microblaze_0_axi_periph/S00_ACLK] [get_bd_pins microblaze_0_axi_periph/S01_ACLK] [get_bd_pins microblaze_0_axi_periph/S02_ACLK] [get_bd_pins microblaze_0_local_memory/LMB_Clk] [get_bd_pins rst_clk_wiz_0_100M/slowest_sync_clk] [get_bd_pins xadc_wiz_0/s_axi_aclk]
   connect_bd_net -net microblaze_0_intr [get_bd_pins microblaze_0_axi_intc/intr] [get_bd_pins microblaze_0_xlconcat/dout]
   connect_bd_net -net reset_1 [get_bd_ports AXI_bd_reset] [get_bd_pins clk_wiz_0/reset] [get_bd_pins rst_clk_wiz_0_100M/ext_reset_in]
   connect_bd_net -net rst_clk_wiz_0_100M_bus_struct_reset [get_bd_pins microblaze_0_local_memory/SYS_Rst] [get_bd_pins rst_clk_wiz_0_100M/bus_struct_reset]
   connect_bd_net -net rst_clk_wiz_0_100M_mb_reset [get_bd_pins microblaze_0/Reset] [get_bd_pins microblaze_0_axi_intc/processor_rst] [get_bd_pins rst_clk_wiz_0_100M/mb_reset]
   connect_bd_net -net rst_clk_wiz_0_100M_peripheral_aresetn [get_bd_pins axi_emc_0/s_axi_aresetn] [get_bd_pins axi_protocol_convert_0/aresetn] [get_bd_pins axi_protocol_convert_1/aresetn] [get_bd_pins axi_protocol_convert_2/aresetn] [get_bd_pins axi_quad_spi_0/s_axi_aresetn] [get_bd_pins axi_uart16550_0/s_axi_aresetn] [get_bd_pins microblaze_0_axi_intc/s_axi_aresetn] [get_bd_pins microblaze_0_axi_periph/ARESETN] [get_bd_pins microblaze_0_axi_periph/M00_ARESETN] [get_bd_pins microblaze_0_axi_periph/M01_ARESETN] [get_bd_pins microblaze_0_axi_periph/M02_ARESETN] [get_bd_pins microblaze_0_axi_periph/M03_ARESETN] [get_bd_pins microblaze_0_axi_periph/M04_ARESETN] [get_bd_pins microblaze_0_axi_periph/S00_ARESETN] [get_bd_pins microblaze_0_axi_periph/S01_ARESETN] [get_bd_pins microblaze_0_axi_periph/S02_ARESETN] [get_bd_pins rst_clk_wiz_0_100M/peripheral_aresetn] [get_bd_pins xadc_wiz_0/s_axi_aresetn]
-  connect_bd_net -net sin_0_1 [get_bd_ports AXI_bd_usb_uart_sin] [get_bd_pins axi_uart16550_0/sin]
   connect_bd_net -net sys_clock_1 [get_bd_ports AXI_bd_sys_clock] [get_bd_pins clk_wiz_0/clk_in1]
-  connect_bd_net -net vauxn12_0_1 [get_bd_ports AXI_bd_vauxn12] [get_bd_pins xadc_wiz_0/vauxn12]
-  connect_bd_net -net vauxn4_0_1 [get_bd_ports AXI_bd_vauxn4] [get_bd_pins xadc_wiz_0/vauxn4]
-  connect_bd_net -net vauxp12_0_1 [get_bd_ports AXI_bd_vauxp12] [get_bd_pins xadc_wiz_0/vauxp12]
-  connect_bd_net -net vauxp4_0_1 [get_bd_ports AXI_bd_vauxp4] [get_bd_pins xadc_wiz_0/vauxp4]
   connect_bd_net -net xadc_wiz_0_ip2intc_irpt [get_bd_pins microblaze_0_xlconcat/In2] [get_bd_pins xadc_wiz_0/ip2intc_irpt]
 
   # Create address segments

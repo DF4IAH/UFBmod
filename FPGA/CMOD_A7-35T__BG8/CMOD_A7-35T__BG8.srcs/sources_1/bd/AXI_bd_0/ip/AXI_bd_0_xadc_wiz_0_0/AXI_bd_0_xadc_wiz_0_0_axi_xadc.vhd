@@ -1,4 +1,3 @@
- 
 
 -------------------------------------------------------------------------------
 -- AXI_bd_0_xadc_wiz_0_0_axi_xadc.vhd - entity/architecture pair
@@ -191,7 +190,6 @@ entity AXI_bd_0_xadc_wiz_0_0_axi_xadc is
    -- XADC External interface signals
 
     -- Conversion start control signal for Event driven mode
-    convst_in       : in  STD_LOGIC;                         -- Convert Start Input
     vauxp4          : in  STD_LOGIC;                         -- Auxiliary Channel 4
     vauxn4          : in  STD_LOGIC;
     vauxp12         : in  STD_LOGIC;                         -- Auxiliary Channel 12
@@ -201,6 +199,7 @@ entity AXI_bd_0_xadc_wiz_0_0_axi_xadc is
     eoc_out         : out  STD_LOGIC;                        -- End of Conversion Signal
     eos_out         : out  STD_LOGIC;                        -- End of Sequence Signal
     alarm_out       : out STD_LOGIC_VECTOR (7 downto 0);                         -- OR'ed output of all the Alarms
+    muxaddr_out     : out STD_LOGIC_VECTOR(4 downto 0); 
     vp_in           : in  STD_LOGIC;                         -- Dedicated Analog Input Pair
     vn_in           : in  STD_LOGIC
   );   
@@ -270,7 +269,6 @@ component AXI_bd_0_xadc_wiz_0_0_xadc_core_drp
      ---------------- interrupt interface with the system  -----------
      Interrupt_status       : out std_logic_vector(0 to IP_INTR_NUM-1);
      ----------------  sysmon macro interface  -------------------
-     convst_in              : in  STD_LOGIC;                         -- Convert Start Input
      vauxp4                 : in  STD_LOGIC;                         -- Auxiliary Channel 4
      vauxn4                 : in  STD_LOGIC;
      vauxp12                : in  STD_LOGIC;                         -- Auxiliary Channel 12
@@ -280,6 +278,7 @@ component AXI_bd_0_xadc_wiz_0_0_xadc_core_drp
      eoc_out                : out  STD_LOGIC;                        -- End of Conversion Signal
      eos_out                : out  STD_LOGIC;                        -- End of Sequence Signal
      alarm_out              : out STD_LOGIC_VECTOR (7 downto 0);                   
+     muxaddr_out            : out STD_LOGIC_VECTOR(4 downto 0); 
      vp_in                  : in  STD_LOGIC;                         -- Dedicated Analog Input Pair
      vn_in                  : in  STD_LOGIC
    );
@@ -724,7 +723,6 @@ AXI_XADC_CORE_I : AXI_bd_0_xadc_wiz_0_0_xadc_core_drp
     Sysmon_IP2Bus_RdAck          => xadc_ip2bus_rdack,
     Interrupt_status             => interrupt_status_i,
     --- external interface signals ------------------
-    convst_in                    => convst_in,
     vauxp4                       => vauxp4,
     vauxn4                       => vauxn4,
     vauxp12                      => vauxp12,
@@ -734,6 +732,7 @@ AXI_XADC_CORE_I : AXI_bd_0_xadc_wiz_0_0_xadc_core_drp
     eoc_out                      => eoc_out,
     eos_out                      => eos_out,
     alarm_out                    => alarm_out,
+    muxaddr_out                  => muxaddr_out,
     vp_in                        => vp_in,
     vn_in                        => vn_in
    );

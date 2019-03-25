@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Sun Mar 24 18:25:32 2019
+// Date        : Sun Mar 24 18:25:21 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               Z:/nfs_ds_nfs/git/UFBmod/FPGA/CMOD_A7-35T__BG8/CMOD_A7-35T__BG8.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_axi_uart16550_0_0/AXI_bd_0_axi_uart16550_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top AXI_bd_0_axi_uart16550_0_0 -prefix
+//               AXI_bd_0_axi_uart16550_0_0_ AXI_bd_0_axi_uart16550_0_0_sim_netlist.v
 // Design      : AXI_bd_0_axi_uart16550_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -173,7 +173,6 @@ module AXI_bd_0_axi_uart16550_0_0
         .xout(NLW_U0_xout_UNCONNECTED));
 endmodule
 
-(* ORIG_REF_NAME = "address_decoder" *) 
 module AXI_bd_0_axi_uart16550_0_0_address_decoder
    (\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ,
     bus2ip_rdce_i,
@@ -266,7 +265,6 @@ module AXI_bd_0_axi_uart16550_0_0_address_decoder
         .O(Wr));
 endmodule
 
-(* ORIG_REF_NAME = "axi_lite_ipif" *) 
 module AXI_bd_0_axi_uart16550_0_0_axi_lite_ipif
    (ce_out_i,
     s_axi_rvalid,
@@ -363,8 +361,7 @@ endmodule
 
 (* C_EXTERNAL_XIN_CLK_HZ = "25000000" *) (* C_FAMILY = "artix7" *) (* C_HAS_EXTERNAL_RCLK = "0" *) 
 (* C_HAS_EXTERNAL_XIN = "0" *) (* C_IS_A_16550 = "0" *) (* C_S_AXI_ACLK_FREQ_HZ = "100000000" *) 
-(* C_S_AXI_ADDR_WIDTH = "13" *) (* C_S_AXI_DATA_WIDTH = "32" *) (* ORIG_REF_NAME = "axi_uart16550" *) 
-(* downgradeipidentifiedwarnings = "yes" *) 
+(* C_S_AXI_ADDR_WIDTH = "13" *) (* C_S_AXI_DATA_WIDTH = "32" *) (* downgradeipidentifiedwarnings = "yes" *) 
 module AXI_bd_0_axi_uart16550_0_0_axi_uart16550
    (s_axi_aclk,
     s_axi_aresetn,
@@ -583,7 +580,6 @@ module AXI_bd_0_axi_uart16550_0_0_axi_uart16550
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "ipic_if" *) 
 module AXI_bd_0_axi_uart16550_0_0_ipic_if
    (wrReq_d1,
     s_axi_awready,
@@ -707,7 +703,6 @@ module AXI_bd_0_axi_uart16550_0_0_ipic_if
         .R(bus2ip_reset_int_core));
 endmodule
 
-(* ORIG_REF_NAME = "rx16550" *) 
 module AXI_bd_0_axi_uart16550_0_0_rx16550
    (framing_error_i,
     break_interrupt,
@@ -2510,7 +2505,6 @@ module AXI_bd_0_axi_uart16550_0_0_rx16550
         .R(rx_rst));
 endmodule
 
-(* ORIG_REF_NAME = "slave_attachment" *) 
 module AXI_bd_0_axi_uart16550_0_0_slave_attachment
    (\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0] ,
     s_axi_rvalid,
@@ -2859,7 +2853,6 @@ module AXI_bd_0_axi_uart16550_0_0_slave_attachment
         .R(bus2ip_reset_int_core));
 endmodule
 
-(* ORIG_REF_NAME = "tx16550" *) 
 module AXI_bd_0_axi_uart16550_0_0_tx16550
    (tsr_loaded,
     sout,
@@ -3366,7 +3359,6 @@ module AXI_bd_0_axi_uart16550_0_0_tx16550
         .R(bus2ip_reset_int_core));
 endmodule
 
-(* ORIG_REF_NAME = "uart16550" *) 
 module AXI_bd_0_axi_uart16550_0_0_uart16550
    (baudoutn,
     ip2intc_irpt,
@@ -5570,7 +5562,6 @@ module AXI_bd_0_axi_uart16550_0_0_uart16550
         .writing_thr(writing_thr));
 endmodule
 
-(* ORIG_REF_NAME = "xuart" *) 
 module AXI_bd_0_axi_uart16550_0_0_xuart
    (baudoutn,
     ip2intc_irpt,
@@ -5695,7 +5686,6 @@ module AXI_bd_0_axi_uart16550_0_0_xuart
         .txrdyn(txrdyn));
 endmodule
 
-(* ORIG_REF_NAME = "xuart_tx_load_sm" *) 
 module AXI_bd_0_axi_uart16550_0_0_xuart_tx_load_sm
    (Thre,
     Tsre,

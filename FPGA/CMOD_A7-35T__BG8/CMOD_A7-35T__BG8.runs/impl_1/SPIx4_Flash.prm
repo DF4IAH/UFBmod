@@ -1,0 +1,14 @@
+===================================
+Configuration Memory information
+===================================
+File Format        MCS
+Interface          SPIX4
+Size               4M
+Start Address      0x00000000
+End Address        0x003FFFFF
+Checksum           0x2F6E6D5A
+Fill Value         0xFF
+
+Addr1         Addr2         Date                    File(s)                                                                                  Checksum
+0x00000000    0x0011837F    Mar 25 01:32:37 2019    C:/Users/espero/git/UFBmod/FPGA/CMOD_A7-35T__BG8/CMOD_A7-35T__BG8.runs/impl_1/top.bit    0x012069DA
+File Checksum Total                                                                                                                          0x012069DA

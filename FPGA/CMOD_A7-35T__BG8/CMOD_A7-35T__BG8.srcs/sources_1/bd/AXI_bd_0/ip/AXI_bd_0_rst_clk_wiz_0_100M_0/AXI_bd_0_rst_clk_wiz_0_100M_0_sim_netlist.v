@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Sun Mar 24 12:49:52 2019
+// Date        : Sun Mar 24 12:49:41 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               Z:/nfs_ds_nfs/git/UFBmod/FPGA/CMOD_A7-35T__BG8/CMOD_A7-35T__BG8.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_rst_clk_wiz_0_100M_0/AXI_bd_0_rst_clk_wiz_0_100M_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top AXI_bd_0_rst_clk_wiz_0_100M_0 -prefix
+//               AXI_bd_0_rst_clk_wiz_0_100M_0_ AXI_bd_0_rst_clk_wiz_0_100M_0_sim_netlist.v
 // Design      : AXI_bd_0_rst_clk_wiz_0_100M_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -69,7 +69,6 @@ module AXI_bd_0_rst_clk_wiz_0_100M_0
         .slowest_sync_clk(slowest_sync_clk));
 endmodule
 
-(* ORIG_REF_NAME = "cdc_sync" *) 
 module AXI_bd_0_rst_clk_wiz_0_100M_0_cdc_sync
    (lpf_exr_reg,
     scndry_out,
@@ -251,7 +250,6 @@ module AXI_bd_0_rst_clk_wiz_0_100M_0_cdc_sync_0
         .O(lpf_asr_reg));
 endmodule
 
-(* ORIG_REF_NAME = "lpf" *) 
 module AXI_bd_0_rst_clk_wiz_0_100M_0_lpf
    (lpf_int,
     slowest_sync_clk,
@@ -400,7 +398,6 @@ endmodule
 (* C_AUX_RESET_HIGH = "1'b0" *) (* C_AUX_RST_WIDTH = "4" *) (* C_EXT_RESET_HIGH = "1'b1" *) 
 (* C_EXT_RST_WIDTH = "4" *) (* C_FAMILY = "artix7" *) (* C_NUM_BUS_RST = "1" *) 
 (* C_NUM_INTERCONNECT_ARESETN = "1" *) (* C_NUM_PERP_ARESETN = "1" *) (* C_NUM_PERP_RST = "1" *) 
-(* ORIG_REF_NAME = "proc_sys_reset" *) 
 module AXI_bd_0_rst_clk_wiz_0_100M_0_proc_sys_reset
    (slowest_sync_clk,
     ext_reset_in,
@@ -517,7 +514,6 @@ module AXI_bd_0_rst_clk_wiz_0_100M_0_proc_sys_reset
         .slowest_sync_clk(slowest_sync_clk));
 endmodule
 
-(* ORIG_REF_NAME = "sequence_psr" *) 
 module AXI_bd_0_rst_clk_wiz_0_100M_0_sequence_psr
    (MB_out,
     Bsr_out,
@@ -758,7 +754,6 @@ module AXI_bd_0_rst_clk_wiz_0_100M_0_sequence_psr
         .R(lpf_int));
 endmodule
 
-(* ORIG_REF_NAME = "upcnt_n" *) 
 module AXI_bd_0_rst_clk_wiz_0_100M_0_upcnt_n
    (Q,
     seq_clr,

@@ -41,8 +41,8 @@ module top(
     tri0 pio13,
     tri0 pio14,
 
-    tri [1:0] xa_p,
-    tri [1:0] xa_n,
+    input [1:0] xa_p,
+    input [1:0] xa_n,
 
     tri0 pio17,
     tri0 pio18,
@@ -81,11 +81,11 @@ module top(
     output ledrgb_g,
     output ledrgb_b,
 
-    input uart_txd_in,
-    output uart_rxd_out,
+    output usb_uart_txd,
+    input usb_uart_rxd,
 
-    tri1 qspi_cs,
-    tri0 [3:0] qspi_dq,
+    inout qspi_cs,
+    inout [3:0] qspi_dq,
 
     tri1 crypto_sda,
 
@@ -218,37 +218,37 @@ module top(
 
         .AXI_bd_In0(btn[1]),
 
-        .AXI_bd_usb_uart_sout(uart_rxd_out),
-        .AXI_bd_usb_uart_sin( uart_txd_in),
+        .AXI_bd_usb_uart_UART_txd(usb_uart_txd),
+        .AXI_bd_usb_uart_UART_rxd(usb_uart_rxd),
 
-        .AXI_bd_vauxp4(  xa_p[0] ),
-        .AXI_bd_vauxn4(  xa_n[0] ),
-        .AXI_bd_vauxp12( xa_p[1] ),
-        .AXI_bd_vauxn12( xa_n[1] ),
+        .AXI_bd_Vaux4_v_p(xa_p[0]),
+        .AXI_bd_Vaux4_v_n(xa_n[0]),
+        .AXI_bd_Vaux12_v_p(xa_p[1]),
+        .AXI_bd_Vaux12_v_n(xa_n[1]),
 
-        .AXI_bd_qspi_flash_ss_t(flash_ss_t),
-        .AXI_bd_qspi_flash_ss_o(flash_ss_o),
-        .AXI_bd_qspi_flash_ss_i(flash_ss_i),
-        .AXI_bd_qspi_flash_io0_t(flash_io0_t),
-        .AXI_bd_qspi_flash_io0_o(flash_io0_o),
-        .AXI_bd_qspi_flash_io0_i(flash_io0_i),
-        .AXI_bd_qspi_flash_io1_t(flash_io1_t),
-        .AXI_bd_qspi_flash_io1_o(flash_io1_o),
-        .AXI_bd_qspi_flash_io1_i(flash_io1_i),
-        .AXI_bd_qspi_flash_io2_t(flash_io2_t),
-        .AXI_bd_qspi_flash_io2_o(flash_io2_o),
-        .AXI_bd_qspi_flash_io2_i(flash_io2_i),
-        .AXI_bd_qspi_flash_io3_t(flash_io3_t),
-        .AXI_bd_qspi_flash_io3_o(flash_io3_o),
-        .AXI_bd_qspi_flash_io3_i(flash_io3_i),
+        .AXI_bd_qspi_flash_SPI_0_ss_t(flash_ss_t),
+        .AXI_bd_qspi_flash_SPI_0_ss_o(flash_ss_o),
+        .AXI_bd_qspi_flash_SPI_0_ss_i(flash_ss_i),
+        .AXI_bd_qspi_flash_SPI_0_io0_t(flash_io0_t),
+        .AXI_bd_qspi_flash_SPI_0_io0_o(flash_io0_o),
+        .AXI_bd_qspi_flash_SPI_0_io0_i(flash_io0_i),
+        .AXI_bd_qspi_flash_SPI_0_io1_t(flash_io1_t),
+        .AXI_bd_qspi_flash_SPI_0_io1_o(flash_io1_o),
+        .AXI_bd_qspi_flash_SPI_0_io1_i(flash_io1_i),
+        .AXI_bd_qspi_flash_SPI_0_io2_t(flash_io2_t),
+        .AXI_bd_qspi_flash_SPI_0_io2_o(flash_io2_o),
+        .AXI_bd_qspi_flash_SPI_0_io2_i(flash_io2_i),
+        .AXI_bd_qspi_flash_SPI_0_io3_t(flash_io3_t),
+        .AXI_bd_qspi_flash_SPI_0_io3_o(flash_io3_o),
+        .AXI_bd_qspi_flash_SPI_0_io3_i(flash_io3_i),
 
-        .AXI_bd_cellular_ram_mem_a(MemAdr),
-        .AXI_bd_cellular_ram_mem_dq_t(mem_t),
-        .AXI_bd_cellular_ram_mem_dq_o(mem_o),
-        .AXI_bd_cellular_ram_mem_dq_i(mem_i),
-        .AXI_bd_cellular_ram_mem_cen(RamCEn),
-        .AXI_bd_cellular_ram_mem_wen(RamWEn),
-        .AXI_bd_cellular_ram_mem_oen(RamOEn)
+        .AXI_bd_cellular_ram_EMC_INTF_addr(MemAdr),
+        .AXI_bd_cellular_ram_EMC_INTF_dq_t( { mem_t } ),
+        .AXI_bd_cellular_ram_EMC_INTF_dq_o( { mem_o } ),
+        .AXI_bd_cellular_ram_EMC_INTF_dq_i( { mem_i } ),
+        .AXI_bd_cellular_ram_EMC_INTF_ce_n(RamCEn),
+        .AXI_bd_cellular_ram_EMC_INTF_wen(RamWEn),
+        .AXI_bd_cellular_ram_EMC_INTF_oen(RamOEn)
     );
 
 
@@ -325,18 +325,5 @@ module top(
     assign pio48 = 1'bZ;
 
     assign crypto_sda = 1'bZ;
-
-
-    /* QSPI FLASH */
-    //assign qspi_cs = 1;
-    //assign qspi_dq = 4'bZ;
-
-
-    /* RAM */
-    //assign RamCEn = 1;
-    //assign RamOEn = 1;
-    //assign RamWEn = 1;
-    //assign MemAdr = 19'b0;
-    //assign MemDB = 8'bZ;
 
 endmodule

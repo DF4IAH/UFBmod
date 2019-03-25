@@ -1,4 +1,3 @@
- 
 
 -------------------------------------------------------------------------------
 -- AXI_bd_0_xadc_wiz_0_0_xadc_core_drp.vhd - entity/architecture pair
@@ -170,7 +169,6 @@ entity AXI_bd_0_xadc_wiz_0_0_xadc_core_drp is
      ---------------- interrupt interface with the system  -----------
      Interrupt_status       : out std_logic_vector(0 to IP_INTR_NUM-1);
      ----------------  sysmon macro interface  -------------------
-     convst_in              : in  STD_LOGIC;                         -- Convert Start Input
      vauxp4                 : in  STD_LOGIC;                         -- Auxiliary Channel 4
      vauxn4                 : in  STD_LOGIC;
      vauxp12                : in  STD_LOGIC;                         -- Auxiliary Channel 12
@@ -180,6 +178,7 @@ entity AXI_bd_0_xadc_wiz_0_0_xadc_core_drp is
      eoc_out                : out  STD_LOGIC;                        -- End of Conversion Signal
      eos_out                : out  STD_LOGIC;                        -- End of Sequence Signal
      alarm_out              : out STD_LOGIC_VECTOR (7 downto 0);
+     muxaddr_out            : out STD_LOGIC_VECTOR(4 downto 0);
      vp_in                  : in  STD_LOGIC;                         -- Dedicated Analog Input Pair
      vn_in                  : in  STD_LOGIC
    );
@@ -528,20 +527,6 @@ end process CONVST_RST_PROCESS;
   Sysmon_IP2Bus_RdAck <= (drdy_rd_ack_i or local_reg_rdack_final);
 
 
--------------------------------------------------------------------------------
--- Starting conversion in event driven mode by using the "convst_reg_input"
--- register or external CONVST input
--------------------------------------------------------------------------------
--- CONV_START_REG_PROCESS: Conversion Start Register (CONVSTR)
--------------------------------------------------------------------------------
-   CONV_START_REG_PROCESS: process(Bus2IP_Clk) is
-   begin
-       if (Bus2IP_Clk'event and Bus2IP_Clk='1') then
-            convst_d1 <= convst_in;
-       end if;
-   end process CONV_START_REG_PROCESS;
-
-convst_reg <= convst_reg_input or convst_d1;
 
 -------------------------------------------------------------------------------
 -- Bus reset as well as the hard macro register reset
@@ -901,6 +886,7 @@ alarm_out <= alarm_reg(8 downto 1);-- updated from 2 downto 1 to 8 downto 1 for 
 
 -- Added interface to MUX ADDRESS for external address multiplexer from the
 -- XADC macro to core ports.
+muxaddr_out <= mux_addr_no_i;
 
 -------------------------------------------------------------------------------
 -- == XADC INTERFACE --  OUTPUT Signals ==
@@ -985,11 +971,11 @@ alarm_out <= alarm_reg(8 downto 1);-- updated from 2 downto 1 to 8 downto 1 for 
 
  XADC_INST : XADC
      generic map(
-        INIT_40 => X"1200", -- config reg 0
-        INIT_41 => X"21AF", -- config reg 1
-        INIT_42 => X"5100", -- config reg 2
-        INIT_48 => X"0F01", -- Sequencer channel selection
-        INIT_49 => X"1010", -- Sequencer channel selection
+        INIT_40 => X"1814", -- config reg 0
+        INIT_41 => X"410F", -- config reg 1
+        INIT_42 => X"1500", -- config reg 2
+        INIT_48 => X"0701", -- Sequencer channel selection
+        INIT_49 => X"0010", -- Sequencer channel selection
         INIT_4A => X"0000", -- Sequencer Average selection
         INIT_4B => X"1010", -- Sequencer Average selection
         INIT_4C => X"0000", -- Sequencer Bipolar selection
@@ -1011,7 +997,7 @@ alarm_out <= alarm_reg(8 downto 1);-- updated from 2 downto 1 to 8 downto 1 for 
         )
 
 port map (
-        CONVST              => convst_reg,
+        CONVST              => '0',
         CONVSTCLK           => '0',
         DADDR               => daddr_C(6 downto 0),            --: in (6 downto 0)
         DCLK                => Bus2IP_Clk,         --: in
@@ -1032,6 +1018,7 @@ port map (
         JTAGBUSY            => jtagbusy_i,         --: out
         JTAGMODIFIED        => jtagmodified_i,     --: out
         OT                  => ot_i,               --: out
+        MUXADDR             => mux_addr_no_i,       --; out (4 downto 0)-- added for XADC
         VN                  => vn_in,
         VP                  => vp_in
          );

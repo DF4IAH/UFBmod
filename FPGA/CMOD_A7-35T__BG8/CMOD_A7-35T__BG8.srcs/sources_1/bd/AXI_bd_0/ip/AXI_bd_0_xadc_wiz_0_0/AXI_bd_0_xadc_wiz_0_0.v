@@ -1,4 +1,3 @@
- 
 
 // file: AXI_bd_0_xadc_wiz_0_0.v
 // (c) Copyright 2009 - 2013 Xilinx, Inc. All rights reserved.
@@ -48,7 +47,7 @@
 // PART OF THIS FILE AT ALL TIMES.
 `timescale 1ns / 1 ps
 
-(* CORE_GENERATION_INFO = "AXI_bd_0_xadc_wiz_0_0,xadc_wiz_v3_3_6,{component_name=AXI_bd_0_xadc_wiz_0_0,enable_axi=true,enable_axi4stream=false,dclk_frequency=100,enable_busy=true,enable_convst=true,enable_convstclk=false,enable_dclk=true,enable_drp=false,enable_eoc=true,enable_eos=true,enable_vbram_alaram=false,enable_vccddro_alaram=false,enable_Vccint_Alaram=false,enable_Vccaux_alaram=false,enable_vccpaux_alaram=false,enable_vccpint_alaram=false,ot_alaram=false,user_temp_alaram=false,timing_mode=event_driven,channel_averaging=16,sequencer_mode=on,startup_channel_selection=contineous_sequence}" *)
+(* CORE_GENERATION_INFO = "AXI_bd_0_xadc_wiz_0_0,xadc_wiz_v3_3_6,{component_name=AXI_bd_0_xadc_wiz_0_0,enable_axi=true,enable_axi4stream=false,dclk_frequency=100,enable_busy=true,enable_convst=false,enable_convstclk=false,enable_dclk=true,enable_drp=false,enable_eoc=true,enable_eos=true,enable_vbram_alaram=false,enable_vccddro_alaram=false,enable_Vccint_Alaram=false,enable_Vccaux_alaram=false,enable_vccpaux_alaram=false,enable_vccpint_alaram=false,ot_alaram=false,user_temp_alaram=false,timing_mode=continuous,channel_averaging=16,sequencer_mode=on,startup_channel_selection=simultaneous_sampling}" *)
 
 
 module AXI_bd_0_xadc_wiz_0_0
@@ -73,7 +72,6 @@ module AXI_bd_0_xadc_wiz_0_0
     output s_axi_rvalid,
     input s_axi_rready,
     output ip2intc_irpt,
-    input convst_in,                                           
     input vauxp4,                                              
     input vauxn4,                                              
     input vauxp12,                                             
@@ -83,6 +81,7 @@ module AXI_bd_0_xadc_wiz_0_0
     output eoc_out, 
     output eos_out,
     output alarm_out ,                                          
+    output [4:0] muxaddr_out,                                         
     input vp_in,                                               
     input vn_in
 );
@@ -114,7 +113,6 @@ module AXI_bd_0_xadc_wiz_0_0
     .s_axi_rvalid    (s_axi_rvalid),                    
     .s_axi_rready    (s_axi_rready),                    
     .ip2intc_irpt    (ip2intc_irpt),  
-    .convst_in (convst_in), 
     .vauxp4 (vauxp4),
     .vauxn4 (vauxn4),
     .vauxp12 (vauxp12),
@@ -124,6 +122,7 @@ module AXI_bd_0_xadc_wiz_0_0
     .eoc_out(eoc_out), 
     .eos_out(eos_out),
     .alarm_out  (alm_int),
+    .muxaddr_out (muxaddr_out), 
     .vp_in (vp_in),
     .vn_in (vn_in)
 
