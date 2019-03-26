@@ -4,3 +4,267 @@
 13:19:38 INFO  : Successfully done setting XSCT server connection channel  
 13:19:38 INFO  : Successfully done setting SDK workspace  
 13:19:38 INFO  : Processing command line option -hwspec C:/Users/habel/git/UFBmod/SW/top.hdf.
+13:46:28 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:46:33 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+13:46:33 ERROR : couldn't open "C:/Users/habel/git/UFBmod/SW/top_hw_platform_0/download.bit": no such file or directory
+13:49:21 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:49:22 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+13:49:22 ERROR : couldn't open "C:/Users/habel/git/UFBmod/SW/top_hw_platform_0/download.bit": no such file or directory
+13:50:10 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:54:28 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:54:28 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+13:54:29 INFO  : FPGA configured successfully with bitstream "C:/Users/habel/git/UFBmod/SW/top_hw_platform_0/download.bit"
+13:57:00 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:57:00 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+13:57:01 INFO  : FPGA configured successfully with bitstream "C:/Users/habel/git/UFBmod/SW/top_hw_platform_0/download.bit"
+14:00:30 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:00:30 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+14:00:31 INFO  : FPGA configured successfully with bitstream "C:/Users/habel/git/UFBmod/SW/top_hw_platform_0/download.bit"
+14:05:50 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:05:50 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+14:05:51 INFO  : FPGA configured successfully with bitstream "C:/Users/habel/git/UFBmod/SW/top_hw_platform_0/download.bit"
+14:07:02 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+14:07:02 INFO  : 'fpga -state' command is executed.
+14:07:02 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:07:02 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+14:07:02 INFO  : 'jtag frequency' command is executed.
+14:07:02 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+14:07:02 INFO  : Context for processor 'microblaze_0' is selected.
+14:07:02 INFO  : Processor reset is completed for 'microblaze_0'.
+14:07:02 INFO  : Context for processor 'microblaze_0' is selected.
+14:07:02 INFO  : The application 'C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf' is downloaded to processor 'microblaze_0'.
+14:07:02 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf
+----------------End of Script----------------
+
+14:07:02 INFO  : Memory regions updated for context MicroBlaze #0
+14:07:02 INFO  : Memory regions updated for context MicroBlaze #0
+14:07:02 INFO  : Context for processor 'microblaze_0' is selected.
+14:07:02 INFO  : 'con' command is executed.
+14:07:02 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+14:07:02 INFO  : Launch script is exported to file 'C:\Users\habel\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_cmod_a7-35-t_fw.elf_on_local.tcl'
+14:09:22 INFO  : Disconnected from the channel tcfchan#1.
+14:09:29 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+14:09:29 INFO  : 'fpga -state' command is executed.
+14:09:29 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:09:30 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+14:09:30 INFO  : 'jtag frequency' command is executed.
+14:09:30 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+14:09:30 INFO  : Context for processor 'microblaze_0' is selected.
+14:09:30 INFO  : Processor reset is completed for 'microblaze_0'.
+14:09:30 INFO  : Context for processor 'microblaze_0' is selected.
+14:09:30 INFO  : The application 'C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf' is downloaded to processor 'microblaze_0'.
+14:09:30 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf
+----------------End of Script----------------
+
+14:09:30 INFO  : Memory regions updated for context MicroBlaze #0
+14:09:30 INFO  : Memory regions updated for context MicroBlaze #0
+14:09:30 INFO  : Context for processor 'microblaze_0' is selected.
+14:09:30 INFO  : 'con' command is executed.
+14:09:30 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+14:09:30 INFO  : Launch script is exported to file 'C:\Users\habel\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_cmod_a7-35-t_fw.elf_on_local.tcl'
+14:10:42 INFO  : Disconnected from the channel tcfchan#2.
+14:10:43 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+14:10:43 INFO  : 'fpga -state' command is executed.
+14:10:43 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:10:43 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+14:10:43 INFO  : 'jtag frequency' command is executed.
+14:10:43 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+14:10:43 INFO  : Context for processor 'microblaze_0' is selected.
+14:10:43 INFO  : Processor reset is completed for 'microblaze_0'.
+14:10:43 INFO  : Context for processor 'microblaze_0' is selected.
+14:10:43 INFO  : The application 'C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf' is downloaded to processor 'microblaze_0'.
+14:10:43 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf
+----------------End of Script----------------
+
+14:10:43 INFO  : Memory regions updated for context MicroBlaze #0
+14:10:43 INFO  : Memory regions updated for context MicroBlaze #0
+14:10:43 INFO  : Context for processor 'microblaze_0' is selected.
+14:10:43 INFO  : 'con' command is executed.
+14:10:43 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+14:10:43 INFO  : Launch script is exported to file 'C:\Users\habel\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_cmod_a7-35-t_fw.elf_on_local.tcl'
+14:11:15 INFO  : Disconnected from the channel tcfchan#3.
+14:11:22 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+14:11:22 INFO  : 'fpga -state' command is executed.
+14:11:22 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:11:22 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+14:11:22 INFO  : 'jtag frequency' command is executed.
+14:11:22 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+14:11:22 INFO  : Context for processor 'microblaze_0' is selected.
+14:11:23 INFO  : Processor reset is completed for 'microblaze_0'.
+14:11:23 INFO  : Context for processor 'microblaze_0' is selected.
+14:11:23 INFO  : The application 'C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf' is downloaded to processor 'microblaze_0'.
+14:11:23 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf
+----------------End of Script----------------
+
+14:11:23 INFO  : Memory regions updated for context MicroBlaze #0
+14:11:23 INFO  : Memory regions updated for context MicroBlaze #0
+14:11:23 INFO  : Context for processor 'microblaze_0' is selected.
+14:11:23 INFO  : 'con' command is executed.
+14:11:23 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+14:11:23 INFO  : Launch script is exported to file 'C:\Users\habel\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_cmod_a7-35-t_fw.elf_on_local.tcl'
+14:11:40 INFO  : Disconnected from the channel tcfchan#4.
+14:12:36 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:14:33 INFO  : Invoking Bootgen: bootgen -arch fpga -image C:/Users/habel/git/UFBmod/SW/top_hw_platform_0/cache/bootimage.bif -w -o C:/Users/habel/git/UFBmod/SW/top_hw_platform_0/cache/BOOT.bin  -interface spi
+14:14:35 INFO  : Bootgen command execution is done.
+14:16:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+14:16:51 INFO  : 'fpga -state' command is executed.
+14:16:51 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:16:51 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+14:16:51 INFO  : 'jtag frequency' command is executed.
+14:16:51 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+14:16:52 INFO  : Context for processor 'microblaze_0' is selected.
+14:16:52 INFO  : Processor reset is completed for 'microblaze_0'.
+14:16:52 INFO  : Context for processor 'microblaze_0' is selected.
+14:16:52 INFO  : The application 'C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf' is downloaded to processor 'microblaze_0'.
+14:16:52 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf
+----------------End of Script----------------
+
+14:16:52 INFO  : Memory regions updated for context MicroBlaze #0
+14:16:52 INFO  : Memory regions updated for context MicroBlaze #0
+14:16:52 INFO  : Context for processor 'microblaze_0' is selected.
+14:16:52 INFO  : 'con' command is executed.
+14:16:52 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+14:16:52 INFO  : Launch script is exported to file 'C:\Users\habel\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_cmod_a7-35-t_fw.elf_on_local.tcl'
+14:18:11 INFO  : Disconnected from the channel tcfchan#5.
+14:18:18 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+14:18:18 INFO  : 'fpga -state' command is executed.
+14:18:18 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:18:18 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+14:18:18 INFO  : 'jtag frequency' command is executed.
+14:18:18 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+14:18:18 INFO  : Context for processor 'microblaze_0' is selected.
+14:18:18 INFO  : Processor reset is completed for 'microblaze_0'.
+14:18:18 INFO  : Context for processor 'microblaze_0' is selected.
+14:18:18 INFO  : The application 'C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf' is downloaded to processor 'microblaze_0'.
+14:18:18 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf
+----------------End of Script----------------
+
+14:18:18 INFO  : Memory regions updated for context MicroBlaze #0
+14:18:18 INFO  : Memory regions updated for context MicroBlaze #0
+14:18:18 INFO  : Context for processor 'microblaze_0' is selected.
+14:18:18 INFO  : 'con' command is executed.
+14:18:18 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+14:18:18 INFO  : Launch script is exported to file 'C:\Users\habel\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_cmod_a7-35-t_fw.elf_on_local.tcl'
+14:21:06 INFO  : Disconnected from the channel tcfchan#6.
+14:21:12 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+14:21:12 INFO  : 'fpga -state' command is executed.
+14:21:12 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:21:12 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+14:21:12 INFO  : 'jtag frequency' command is executed.
+14:21:12 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+14:21:12 INFO  : Context for processor 'microblaze_0' is selected.
+14:21:12 INFO  : Processor reset is completed for 'microblaze_0'.
+14:21:12 INFO  : Context for processor 'microblaze_0' is selected.
+14:21:12 INFO  : The application 'C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf' is downloaded to processor 'microblaze_0'.
+14:21:12 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf
+----------------End of Script----------------
+
+14:21:12 INFO  : Memory regions updated for context MicroBlaze #0
+14:21:12 INFO  : Memory regions updated for context MicroBlaze #0
+14:21:13 INFO  : Context for processor 'microblaze_0' is selected.
+14:21:13 INFO  : 'con' command is executed.
+14:21:13 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+14:21:13 INFO  : Launch script is exported to file 'C:\Users\habel\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_cmod_a7-35-t_fw.elf_on_local.tcl'
+14:22:38 INFO  : Disconnected from the channel tcfchan#7.
+14:37:36 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+14:37:36 INFO  : 'fpga -state' command is executed.
+14:37:36 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:37:36 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+14:37:36 INFO  : 'jtag frequency' command is executed.
+14:37:36 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+14:37:36 INFO  : Context for processor 'microblaze_0' is selected.
+14:37:36 INFO  : Processor reset is completed for 'microblaze_0'.
+14:37:36 INFO  : Context for processor 'microblaze_0' is selected.
+14:37:36 INFO  : The application 'C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf' is downloaded to processor 'microblaze_0'.
+14:37:36 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf
+----------------End of Script----------------
+
+14:37:36 INFO  : Memory regions updated for context MicroBlaze #0
+14:37:36 INFO  : Memory regions updated for context MicroBlaze #0
+14:37:36 INFO  : Context for processor 'microblaze_0' is selected.
+14:37:36 INFO  : 'con' command is executed.
+14:37:36 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+14:37:36 INFO  : Launch script is exported to file 'C:\Users\habel\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_cmod_a7-35-t_fw.elf_on_local.tcl'
+14:38:39 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:38:39 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+14:38:40 INFO  : FPGA configured successfully with bitstream "C:/Users/habel/git/UFBmod/SW/top_hw_platform_0/download.bit"
