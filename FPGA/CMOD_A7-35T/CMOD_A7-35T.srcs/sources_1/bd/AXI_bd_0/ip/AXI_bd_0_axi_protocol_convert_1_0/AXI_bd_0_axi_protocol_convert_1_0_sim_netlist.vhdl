@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Mon Mar 25 20:49:20 2019
--- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_axi_protocol_convert_1_0/AXI_bd_0_axi_protocol_convert_1_0_sim_netlist.vhdl
+-- Date        : Mon Mar 25 09:44:36 2019
+-- Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
+-- Command     : write_vhdl -force -mode funcsim -rename_top AXI_bd_0_axi_protocol_convert_1_0 -prefix
+--               AXI_bd_0_axi_protocol_convert_1_0_ AXI_bd_0_axi_protocol_convert_1_0_sim_netlist.vhdl
 -- Design      : AXI_bd_0_axi_protocol_convert_1_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -38,8 +38,6 @@ entity AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_incr
     sel_first : in STD_LOGIC;
     \axlen_cnt_reg[0]_1\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_incr_cmd : entity is "axi_protocol_converter_v2_1_18_b2s_incr_cmd";
 end AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_incr_cmd;
 
 architecture STRUCTURE of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_incr_cmd is
@@ -1983,8 +1981,6 @@ entity AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_rd_c
     r_full : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_rd_cmd_fsm : entity is "axi_protocol_converter_v2_1_18_b2s_rd_cmd_fsm";
 end AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_rd_cmd_fsm;
 
 architecture STRUCTURE of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_rd_cmd_fsm is
@@ -2383,8 +2379,6 @@ entity AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_simp
     \in\ : in STD_LOGIC_VECTOR ( 9 downto 0 );
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_simple_fifo : entity is "axi_protocol_converter_v2_1_18_b2s_simple_fifo";
 end AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_simple_fifo;
 
 architecture STRUCTURE of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_simple_fifo is
@@ -3930,8 +3924,6 @@ entity AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_wr_c
     cnt_read : in STD_LOGIC_VECTOR ( 1 downto 0 );
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_wr_cmd_fsm : entity is "axi_protocol_converter_v2_1_18_b2s_wr_cmd_fsm";
 end AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_wr_cmd_fsm;
 
 architecture STRUCTURE of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_wr_cmd_fsm is
@@ -4196,8 +4188,6 @@ entity AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_wrap
     \wrap_cnt_r_reg[3]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \wrap_boundary_axaddr_r_reg[6]_0\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_wrap_cmd : entity is "axi_protocol_converter_v2_1_18_b2s_wrap_cmd";
 end AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_wrap_cmd;
 
 architecture STRUCTURE of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_wrap_cmd is
@@ -5617,8 +5607,6 @@ entity AXI_bd_0_axi_protocol_convert_1_0_axi_register_slice_v2_1_18_axic_registe
     \m_axi_araddr[11]_2\ : in STD_LOGIC;
     \m_payload_i_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_protocol_convert_1_0_axi_register_slice_v2_1_18_axic_register_slice : entity is "axi_register_slice_v2_1_18_axic_register_slice";
 end AXI_bd_0_axi_protocol_convert_1_0_axi_register_slice_v2_1_18_axic_register_slice;
 
 architecture STRUCTURE of AXI_bd_0_axi_protocol_convert_1_0_axi_register_slice_v2_1_18_axic_register_slice is
@@ -10058,8 +10046,6 @@ entity AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_b_ch
     \in\ : in STD_LOGIC_VECTOR ( 9 downto 0 );
     m_axi_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_b_channel : entity is "axi_protocol_converter_v2_1_18_b2s_b_channel";
 end AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_b_channel;
 
 architecture STRUCTURE of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_b_channel is
@@ -10411,8 +10397,6 @@ entity AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_cmd_
     \wrap_cnt_r_reg[3]\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \wrap_boundary_axaddr_r_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_cmd_translator : entity is "axi_protocol_converter_v2_1_18_b2s_cmd_translator";
 end AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_cmd_translator;
 
 architecture STRUCTURE of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_cmd_translator is
@@ -10739,8 +10723,6 @@ entity AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_r_ch
     D : in STD_LOGIC_VECTOR ( 1 downto 0 );
     areset_d1 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_r_channel : entity is "axi_protocol_converter_v2_1_18_b2s_r_channel";
 end AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_r_channel;
 
 architecture STRUCTURE of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_r_channel is
@@ -10906,8 +10888,6 @@ entity AXI_bd_0_axi_protocol_convert_1_0_axi_register_slice_v2_1_18_axi_register
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     \m_payload_i_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_protocol_convert_1_0_axi_register_slice_v2_1_18_axi_register_slice : entity is "axi_register_slice_v2_1_18_axi_register_slice";
 end AXI_bd_0_axi_protocol_convert_1_0_axi_register_slice_v2_1_18_axi_register_slice;
 
 architecture STRUCTURE of AXI_bd_0_axi_protocol_convert_1_0_axi_register_slice_v2_1_18_axi_register_slice is
@@ -11080,8 +11060,6 @@ entity AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_ar_c
     \wrap_cnt_r_reg[3]\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \wrap_boundary_axaddr_r_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_ar_channel : entity is "axi_protocol_converter_v2_1_18_b2s_ar_channel";
 end AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_ar_channel;
 
 architecture STRUCTURE of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_ar_channel is
@@ -11338,8 +11316,6 @@ entity AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_aw_c
     \wrap_cnt_r_reg[3]\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \wrap_boundary_axaddr_r_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_aw_channel : entity is "axi_protocol_converter_v2_1_18_b2s_aw_channel";
 end AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_aw_channel;
 
 architecture STRUCTURE of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s_aw_channel is
@@ -11580,8 +11556,6 @@ entity AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s is
     s_axi_bready : in STD_LOGIC;
     aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s : entity is "axi_protocol_converter_v2_1_18_b2s";
 end AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s;
 
 architecture STRUCTURE of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_b2s is
@@ -12144,8 +12118,6 @@ entity AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_axi_prot
   attribute C_TRANSLATION_MODE of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_axi_protocol_converter : entity is 2;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_axi_protocol_converter : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_axi_protocol_converter : entity is "axi_protocol_converter_v2_1_18_axi_protocol_converter";
   attribute P_AXI3 : integer;
   attribute P_AXI3 of AXI_bd_0_axi_protocol_convert_1_0_axi_protocol_converter_v2_1_18_axi_protocol_converter : entity is 1;
   attribute P_AXI4 : integer;

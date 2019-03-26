@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Sun Mar 24 12:57:07 2019
-// Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top AXI_bd_0_axi_emc_0_0 -prefix
-//               AXI_bd_0_axi_emc_0_0_ AXI_bd_0_axi_emc_0_0_sim_netlist.v
+// Date        : Tue Mar 26 09:34:40 2019
+// Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
+// Command     : write_verilog -force -mode funcsim
+//               C:/Users/habel/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_axi_emc_0_0/AXI_bd_0_axi_emc_0_0_sim_netlist.v
 // Design      : AXI_bd_0_axi_emc_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -228,6 +228,7 @@ module AXI_bd_0_axi_emc_0_0
         .s_axi_mem_wvalid(s_axi_mem_wvalid));
 endmodule
 
+(* ORIG_REF_NAME = "EMC" *) 
 module AXI_bd_0_axi_emc_0_0_EMC
    (burst_cnt_i,
     ip2bus_rdack,
@@ -1124,6 +1125,7 @@ module AXI_bd_0_axi_emc_0_0_EMC
         .s_axi_aclk(s_axi_aclk));
 endmodule
 
+(* ORIG_REF_NAME = "addr_counter_mux" *) 
 module AXI_bd_0_axi_emc_0_0_addr_counter_mux
    (\PERBIT_GEN[1].FF_RST0_GEN.FDRE_i1 ,
     \PERBIT_GEN[0].FF_RST0_GEN.FDRE_i1 ,
@@ -1864,6 +1866,7 @@ module AXI_bd_0_axi_emc_0_0_addr_counter_mux
         .O(mem_ben_int));
 endmodule
 
+(* ORIG_REF_NAME = "axi_emc" *) 
 module AXI_bd_0_axi_emc_0_0_axi_emc
    (s_axi_mem_bvalid_reg_reg,
     s_axi_mem_rdata,
@@ -2570,6 +2573,7 @@ module AXI_bd_0_axi_emc_0_0_axi_emc
         .R(EMC_CTRL_I_n_65));
 endmodule
 
+(* ORIG_REF_NAME = "axi_emc_addr_gen" *) 
 module AXI_bd_0_axi_emc_0_0_axi_emc_addr_gen
    (\BUS2IP_ADDR_GEN_DATA_WDTH_32.bus2ip_addr_i_reg[2]_0 ,
     s_axi_aresetn_0,
@@ -3539,6 +3543,7 @@ module AXI_bd_0_axi_emc_0_0_axi_emc_addr_gen
         .O(\rd_data_count_reg[3] ));
 endmodule
 
+(* ORIG_REF_NAME = "axi_emc_address_decode" *) 
 module AXI_bd_0_axi_emc_0_0_axi_emc_address_decode
    (\MEM_DECODE_GEN[0].cs_out_i_reg[0]_0 ,
     \MEM_DECODE_GEN[0].rdce_out_i_reg[0]_0 ,
@@ -4080,6 +4085,7 @@ module AXI_bd_0_axi_emc_0_0_axi_emc_address_decode
         .O(pend_rdreq_reg_0));
 endmodule
 
+(* ORIG_REF_NAME = "axi_emc_native_interface" *) 
 module AXI_bd_0_axi_emc_0_0_axi_emc_native_interface
    (bus2ip_reset,
     bus2ip_addr_temp,
@@ -6251,6 +6257,7 @@ module AXI_bd_0_axi_emc_0_0_axi_emc_native_interface
         .R(AXI_EMC_ADDR_GEN_INSTANCE_I_n_1));
 endmodule
 
+(* ORIG_REF_NAME = "cntr_incr_decr_addn_f" *) 
 module AXI_bd_0_axi_emc_0_0_cntr_incr_decr_addn_f
    (Q,
     \INFERRED_GEN.cnt_i_reg[8]_0 ,
@@ -6554,6 +6561,7 @@ module AXI_bd_0_axi_emc_0_0_cntr_incr_decr_addn_f
         .O(s_axi_mem_rvalid));
 endmodule
 
+(* ORIG_REF_NAME = "counters" *) 
 module AXI_bd_0_axi_emc_0_0_counters
    (\PERBIT_GEN[0].FF_RST1_GEN.FDSE_i1 ,
     \PERBIT_GEN[0].FF_RST0_GEN.FDRE_i1 ,
@@ -6911,6 +6919,7 @@ module AXI_bd_0_axi_emc_0_0_counters
         .twr_rec_cnt_en_int(twr_rec_cnt_en_int));
 endmodule
 
+(* ORIG_REF_NAME = "dynshreg_f" *) 
 module AXI_bd_0_axi_emc_0_0_dynshreg_f
    (s_axi_mem_rresp,
     s_axi_mem_rdata,
@@ -11830,6 +11839,7 @@ module AXI_bd_0_axi_emc_0_0_dynshreg_f
         .O(s_axi_mem_rresp));
 endmodule
 
+(* ORIG_REF_NAME = "io_registers" *) 
 module AXI_bd_0_axi_emc_0_0_io_registers
    (mem_wen,
     mem_cen,
@@ -12134,6 +12144,7 @@ module AXI_bd_0_axi_emc_0_0_io_registers
         .S(bus2ip_reset));
 endmodule
 
+(* ORIG_REF_NAME = "ipic_if" *) 
 module AXI_bd_0_axi_emc_0_0_ipic_if
    (burst_cnt_i,
     ip2bus_rdack,
@@ -12476,6 +12487,7 @@ module AXI_bd_0_axi_emc_0_0_ipic_if
         .O(pend_wrreq_reg_2));
 endmodule
 
+(* ORIG_REF_NAME = "ld_arith_reg" *) 
 module AXI_bd_0_axi_emc_0_0_ld_arith_reg
    (burst_cnt_i,
     \PERBIT_GEN[7].FF_RST0_GEN.FDRE_i1_0 ,
@@ -14983,6 +14995,7 @@ module AXI_bd_0_axi_emc_0_0_ld_arith_reg__parameterized3
         .O(gen_cry_kill_n_6));
 endmodule
 
+(* ORIG_REF_NAME = "mem_state_machine" *) 
 module AXI_bd_0_axi_emc_0_0_mem_state_machine
    (Bus2IP_Mem_CS_d1_reg_0,
     read_data_en,
@@ -17203,6 +17216,7 @@ module AXI_bd_0_axi_emc_0_0_mem_state_machine
         .R(bus2ip_reset));
 endmodule
 
+(* ORIG_REF_NAME = "mem_steer" *) 
 module AXI_bd_0_axi_emc_0_0_mem_steer
    (\ASYNC_MEM_RDACK_GEN.RDACK_PIPE_GEN_ASYNC[1].RDACK_PIPE_ASYNC__0 ,
     D,
@@ -18229,6 +18243,7 @@ module AXI_bd_0_axi_emc_0_0_mem_steer
         .S(bus2ip_reset));
 endmodule
 
+(* ORIG_REF_NAME = "srl_fifo_rbu_f" *) 
 module AXI_bd_0_axi_emc_0_0_srl_fifo_rbu_f
    (Q,
     FIFO_Full_reg_0,

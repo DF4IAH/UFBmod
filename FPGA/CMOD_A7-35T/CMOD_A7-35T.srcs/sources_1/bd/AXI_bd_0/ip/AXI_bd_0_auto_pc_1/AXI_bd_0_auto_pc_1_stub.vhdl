@@ -1,11 +1,11 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Sun Mar 24 13:01:47 2019
--- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
+-- Date        : Tue Mar 26 09:35:34 2019
+-- Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
 -- Command     : write_vhdl -force -mode synth_stub -rename_top AXI_bd_0_auto_pc_1 -prefix
---               AXI_bd_0_auto_pc_1_ AXI_bd_0_auto_pc_1_stub.vhdl
--- Design      : AXI_bd_0_auto_pc_1
+--               AXI_bd_0_auto_pc_1_ AXI_bd_0_auto_pc_2_stub.vhdl
+-- Design      : AXI_bd_0_auto_pc_2
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a35tcpg236-1
 -- --------------------------------------------------------------------------------

@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Sun Mar 24 12:57:08 2019
--- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top AXI_bd_0_axi_emc_0_0 -prefix
---               AXI_bd_0_axi_emc_0_0_ AXI_bd_0_axi_emc_0_0_sim_netlist.vhdl
+-- Date        : Tue Mar 26 09:34:41 2019
+-- Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
+-- Command     : write_vhdl -force -mode funcsim
+--               C:/Users/habel/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_axi_emc_0_0/AXI_bd_0_axi_emc_0_0_sim_netlist.vhdl
 -- Design      : AXI_bd_0_axi_emc_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -60,6 +60,8 @@ entity AXI_bd_0_axi_emc_0_0_axi_emc_addr_gen is
     \BUS2IP_ADDR_GEN_DATA_WDTH_32.internal_count_reg[0]_1\ : in STD_LOGIC;
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AXI_bd_0_axi_emc_0_0_axi_emc_addr_gen : entity is "axi_emc_addr_gen";
 end AXI_bd_0_axi_emc_0_0_axi_emc_addr_gen;
 
 architecture STRUCTURE of AXI_bd_0_axi_emc_0_0_axi_emc_addr_gen is
@@ -1288,6 +1290,8 @@ entity AXI_bd_0_axi_emc_0_0_axi_emc_address_decode is
     s_axi_mem_bresp : in STD_LOGIC_VECTOR ( 0 to 0 );
     addr_sm_ps_idle_cmb : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AXI_bd_0_axi_emc_0_0_axi_emc_address_decode : entity is "axi_emc_address_decode";
 end AXI_bd_0_axi_emc_0_0_axi_emc_address_decode;
 
 architecture STRUCTURE of AXI_bd_0_axi_emc_0_0_axi_emc_address_decode is
@@ -1775,6 +1779,8 @@ entity AXI_bd_0_axi_emc_0_0_cntr_incr_decr_addn_f is
     SS : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axi_aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AXI_bd_0_axi_emc_0_0_cntr_incr_decr_addn_f : entity is "cntr_incr_decr_addn_f";
 end AXI_bd_0_axi_emc_0_0_cntr_incr_decr_addn_f;
 
 architecture STRUCTURE of AXI_bd_0_axi_emc_0_0_cntr_incr_decr_addn_f is
@@ -2148,6 +2154,8 @@ entity AXI_bd_0_axi_emc_0_0_dynshreg_f is
     A : in STD_LOGIC_VECTOR ( 1 downto 0 );
     addr : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AXI_bd_0_axi_emc_0_0_dynshreg_f : entity is "dynshreg_f";
 end AXI_bd_0_axi_emc_0_0_dynshreg_f;
 
 architecture STRUCTURE of AXI_bd_0_axi_emc_0_0_dynshreg_f is
@@ -8622,6 +8630,8 @@ entity AXI_bd_0_axi_emc_0_0_io_registers is
     D : in STD_LOGIC_VECTOR ( 7 downto 0 );
     \mem_dq_t_reg_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AXI_bd_0_axi_emc_0_0_io_registers : entity is "io_registers";
 end AXI_bd_0_axi_emc_0_0_io_registers;
 
 architecture STRUCTURE of AXI_bd_0_axi_emc_0_0_io_registers is
@@ -8945,6 +8955,8 @@ entity AXI_bd_0_axi_emc_0_0_ld_arith_reg is
     CE : in STD_LOGIC;
     s_axi_aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AXI_bd_0_axi_emc_0_0_ld_arith_reg : entity is "ld_arith_reg";
 end AXI_bd_0_axi_emc_0_0_ld_arith_reg;
 
 architecture STRUCTURE of AXI_bd_0_axi_emc_0_0_ld_arith_reg is
@@ -12052,6 +12064,8 @@ entity AXI_bd_0_axi_emc_0_0_mem_state_machine is
     \DATAWIDTH_MATCH_GEN.addr_cnt_i_reg[1]_4\ : in STD_LOGIC;
     D : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AXI_bd_0_axi_emc_0_0_mem_state_machine : entity is "mem_state_machine";
 end AXI_bd_0_axi_emc_0_0_mem_state_machine;
 
 architecture STRUCTURE of AXI_bd_0_axi_emc_0_0_mem_state_machine is
@@ -14419,6 +14433,8 @@ entity AXI_bd_0_axi_emc_0_0_mem_steer is
     \RDDATA_PATH_MUX_GEN.ASYNC_ADDR_CNT_GEN.addr_cnt_d1_reg[0]_0\ : in STD_LOGIC_VECTOR ( 1 downto 0 );
     SR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AXI_bd_0_axi_emc_0_0_mem_steer : entity is "mem_steer";
 end AXI_bd_0_axi_emc_0_0_mem_steer;
 
 architecture STRUCTURE of AXI_bd_0_axi_emc_0_0_mem_steer is
@@ -15739,6 +15755,8 @@ entity AXI_bd_0_axi_emc_0_0_addr_counter_mux is
     \DATAWIDTH_MATCH_GEN.addr_cnt_i_reg[0]_1\ : in STD_LOGIC;
     \DATAWIDTH_MATCH_GEN.addr_cnt_i_reg[0]_2\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AXI_bd_0_axi_emc_0_0_addr_counter_mux : entity is "addr_counter_mux";
 end AXI_bd_0_axi_emc_0_0_addr_counter_mux;
 
 architecture STRUCTURE of AXI_bd_0_axi_emc_0_0_addr_counter_mux is
@@ -16431,6 +16449,8 @@ entity AXI_bd_0_axi_emc_0_0_counters is
     bus2Mem_RdReq : in STD_LOGIC;
     \RDDATA_PATH_MUX_GEN.ASYNC_ADDR_CNT_GEN.addr_cnt_d1[0]_i_4\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AXI_bd_0_axi_emc_0_0_counters : entity is "counters";
 end AXI_bd_0_axi_emc_0_0_counters;
 
 architecture STRUCTURE of AXI_bd_0_axi_emc_0_0_counters is
@@ -16614,6 +16634,8 @@ entity AXI_bd_0_axi_emc_0_0_ipic_if is
     temp_bus2ip_cs : in STD_LOGIC;
     D : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AXI_bd_0_axi_emc_0_0_ipic_if : entity is "ipic_if";
 end AXI_bd_0_axi_emc_0_0_ipic_if;
 
 architecture STRUCTURE of AXI_bd_0_axi_emc_0_0_ipic_if is
@@ -17025,6 +17047,8 @@ entity AXI_bd_0_axi_emc_0_0_srl_fifo_rbu_f is
     rd_fifo_wr_en : in STD_LOGIC;
     \in\ : in STD_LOGIC_VECTOR ( 0 to 32 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AXI_bd_0_axi_emc_0_0_srl_fifo_rbu_f : entity is "srl_fifo_rbu_f";
 end AXI_bd_0_axi_emc_0_0_srl_fifo_rbu_f;
 
 architecture STRUCTURE of AXI_bd_0_axi_emc_0_0_srl_fifo_rbu_f is
@@ -17527,6 +17551,8 @@ entity AXI_bd_0_axi_emc_0_0_EMC is
     mem_dq_i : in STD_LOGIC_VECTOR ( 7 downto 0 );
     rdclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AXI_bd_0_axi_emc_0_0_EMC : entity is "EMC";
 end AXI_bd_0_axi_emc_0_0_EMC;
 
 architecture STRUCTURE of AXI_bd_0_axi_emc_0_0_EMC is
@@ -18308,6 +18334,8 @@ entity AXI_bd_0_axi_emc_0_0_axi_emc_native_interface is
     s_axi_mem_arid : in STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_mem_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AXI_bd_0_axi_emc_0_0_axi_emc_native_interface : entity is "axi_emc_native_interface";
 end AXI_bd_0_axi_emc_0_0_axi_emc_native_interface;
 
 architecture STRUCTURE of AXI_bd_0_axi_emc_0_0_axi_emc_native_interface is
@@ -20824,6 +20852,8 @@ entity AXI_bd_0_axi_emc_0_0_axi_emc is
     s_axi_mem_arvalid : in STD_LOGIC;
     s_axi_mem_wlast : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of AXI_bd_0_axi_emc_0_0_axi_emc : entity is "axi_emc";
 end AXI_bd_0_axi_emc_0_0_axi_emc;
 
 architecture STRUCTURE of AXI_bd_0_axi_emc_0_0_axi_emc is

@@ -27,13 +27,13 @@ module top(
     tri0 [7:0] ja,
 
     output pio1,
-    tri0 pio2,
-    tri0 pio3,
-    tri0 pio4,
-    tri0 pio5,
+    output pio2,
+    output pio3,
+    output pio4,
+    output pio5,
     tri0 pio6,
     tri0 pio7,
-    output pio8,
+    tri0 pio8,
     tri0 pio9,
     tri0 pio10,
     tri0 pio11,
@@ -76,10 +76,10 @@ module top(
     tri0 pio47,
     tri0 pio48,
 
-    output [1:0] led,
-    output ledrgb_r,
-    output ledrgb_g,
-    output ledrgb_b,
+    inout [1:0] led,
+    inout ledrgb_r,
+    inout ledrgb_g,
+    inout ledrgb_b,
 
     output usb_uart_txd,
     input usb_uart_rxd,
@@ -98,13 +98,55 @@ module top(
 
 
 
-    /* Defined in the module interface */
-    //wire sysclk;
-    //wire btn;
-    //wire led;
-    //wire ledrgb_r;
-    //wire ledrgb_g;
-    //wire ledrgb_b;
+    // Wires
+    wire [1:0] led_tri_t;
+    wire [1:0] led_tri_o;
+    wire [1:0] led_tri_i;
+    wire [1:0] LedPort;
+
+    wire [2:0] ledrgb_tri_t;
+    wire [2:0] ledrgb_tri_o;
+    wire [2:0] ledrgb_tri_i;
+    wire [2:0] LedRgbPort;
+
+
+
+    genvar i;
+    generate
+        for (i = 0; i <= 1; i = i + 1) begin : led_iobuf_loop
+           IOBUF #(
+                .DRIVE(12),
+                .IOSTANDARD("LVCMOS33"),
+                .SLEW("FAST")
+            ) led_iobuf (
+                .T(led_tri_t[i]),
+                .O(led_tri_i[i]),
+                .I(led_tri_o[i]),
+                .IO(LedPort[i])
+            );
+        end 
+    endgenerate
+
+    generate
+        for (i = 0; i <= 2; i = i + 1) begin : ledrgb_iobuf_loop
+           IOBUF #(
+                .DRIVE(12),
+                .IOSTANDARD("LVCMOS33"),
+                .SLEW("FAST")
+            ) ledrgb_iobuf (
+                .T( ledrgb_tri_t[i]),
+                .O( ledrgb_tri_i[i]),
+                .I(!ledrgb_tri_o[i]),
+                .IO(LedRgbPort[i])
+            );
+        end 
+    endgenerate
+    
+    assign led[0]   = LedPort[0];
+    assign led[1]   = LedPort[1];
+    assign ledrgb_b = LedRgbPort[0];
+    assign ledrgb_g = LedRgbPort[1];
+    assign ledrgb_r = LedRgbPort[2];
 
 
     /* Clock */
@@ -193,18 +235,17 @@ module top(
     wire [7:0] mem_o;
     wire [7:0] mem_t;
 
-    genvar i2;
     generate
-        for (i2 = 0; i2 <= 7; i2 = i2 + 1) begin : ram_d_iobuf_loop
+        for (i = 0; i <= 7; i = i + 1) begin : ram_d_iobuf_loop
            IOBUF #(
                 .DRIVE(12),
                 .IOSTANDARD("LVCMOS33"),
                 .SLEW("FAST")
             ) ram_d_iobuf (
-                .I(mem_o[i2]),
-                .O(mem_i[i2]),
-                .T(mem_t[i2]),
-                .IO(MemDB[i2])
+                .I(mem_o[i]),
+                .O(mem_i[i]),
+                .T(mem_t[i]),
+                .IO(MemDB[i])
             );
         end 
     endgenerate
@@ -213,10 +254,21 @@ module top(
     /* AXI Block Design */
     AXI_bd_0 top_axi(
         .AXI_bd_sys_clock(sysclk),
-        .AXI_bd_reset(btn[0]),
         .AXI_bd_clk_100mhz_out(clk_100mhz),
 
-        .AXI_bd_In0(btn[1]),
+        .AXI_bd_btn0(btn[0]),
+        .AXI_bd_btn1(btn[1]),
+
+        .AXI_bd_gpio_led_tri_t(led_tri_t),
+        .AXI_bd_gpio_led_tri_o(led_tri_o),
+        .AXI_bd_gpio_led_tri_i(led_tri_i),
+
+        .AXI_bd_gpio_ledrgb_tri_t(ledrgb_tri_t),
+        .AXI_bd_gpio_ledrgb_tri_o(ledrgb_tri_o),
+        .AXI_bd_gpio_ledrgb_tri_i(ledrgb_tri_i),
+
+        .AXI_bd_pll_i(pio2),
+        .AXI_bd_pll_q(pio4),
 
         .AXI_bd_usb_uart_UART_txd(usb_uart_txd),
         .AXI_bd_usb_uart_UART_rxd(usb_uart_rxd),
@@ -253,41 +305,20 @@ module top(
 
 
 
-    /* 100 MHz - 1 sec counter */
-    c_counter_binary_0 ctr100mhz(
-        .CLK(clk_100mhz),
-        .SCLR(btn[0]),
-
-        .Q(q_100mhz)
-    );
-
-
-    /* led[1:0] <-- RESET-Button, INT-Button */
-    assign led[0] = btn[0];
-    assign led[1] = btn[1];
-
-    /* ledrgb_X <-- LowActive ( counter(clk_100mhz) and 1/2-Dimmed ) */
-    assign ledrgb_r = !(q_100mhz[25]  &&  q_100mhz[0]);
-    assign ledrgb_g = !(q_100mhz[26]  &&  q_100mhz[0]);
-    assign ledrgb_b = !(q_100mhz[27]  &&  q_100mhz[0]);
-
-    assign pio1 = q_100mhz[24];
-    assign pio8 = q_100mhz[23];
-
-
     /* PMOD interface */
     assign ja = 8'bZ;
 
 
     /* PIOs interface */
-    //assign pio1  = 1'bZ;
-    assign pio2  = 1'bZ;
-    assign pio3  = 1'bZ;
-    assign pio4  = 1'bZ;
-    assign pio5  = 1'bZ;
+    assign pio1  = 1'b0;
+    //assign pio2  = 1'bZ;  // PLL_I
+    assign pio3  = 1'b0;
+    //assign pio4  = 1'bZ;  // PLL_Q
+    assign pio5  = 1'b0;
+    
     assign pio6  = 1'bZ;
     assign pio7  = 1'bZ;
-    //assign pio8  = 1'bZ;
+    assign pio8  = 1'bZ;
     assign pio9  = 1'bZ;
     assign pio10 = 1'bZ;
     assign pio11 = 1'bZ;

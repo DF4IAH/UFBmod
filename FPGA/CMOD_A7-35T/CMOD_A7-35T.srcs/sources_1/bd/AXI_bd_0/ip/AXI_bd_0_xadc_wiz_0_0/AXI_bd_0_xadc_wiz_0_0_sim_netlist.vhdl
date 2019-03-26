@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Mon Mar 25 20:43:51 2019
--- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_xadc_wiz_0_0/AXI_bd_0_xadc_wiz_0_0_sim_netlist.vhdl
+-- Date        : Mon Mar 25 09:42:53 2019
+-- Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
+-- Command     : write_vhdl -force -mode funcsim -rename_top AXI_bd_0_xadc_wiz_0_0 -prefix
+--               AXI_bd_0_xadc_wiz_0_0_ AXI_bd_0_xadc_wiz_0_0_sim_netlist.vhdl
 -- Design      : AXI_bd_0_xadc_wiz_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -110,8 +110,6 @@ entity AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_address_decoder is
     s_axi_wdata : in STD_LOGIC_VECTOR ( 1 downto 0 );
     hard_macro_rst_reg : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_address_decoder : entity is "AXI_bd_0_xadc_wiz_0_0_address_decoder";
 end AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_address_decoder;
 
 architecture STRUCTURE of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_address_decoder is
@@ -1784,8 +1782,6 @@ entity AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_interrupt_control is
     s_axi_wstrb : in STD_LOGIC_VECTOR ( 0 to 0 );
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_interrupt_control : entity is "AXI_bd_0_xadc_wiz_0_0_interrupt_control";
 end AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_interrupt_control;
 
 architecture STRUCTURE of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_interrupt_control is
@@ -2773,8 +2769,6 @@ entity AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_soft_reset is
     s_axi_arvalid : in STD_LOGIC;
     s_axi_wdata : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_soft_reset : entity is "AXI_bd_0_xadc_wiz_0_0_soft_reset";
 end AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_soft_reset;
 
 architecture STRUCTURE of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_soft_reset is
@@ -3340,8 +3334,6 @@ entity AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_xadc_core_drp is
     rst_ip2bus_rdack : in STD_LOGIC;
     dummy_intr_reg_rdack : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_xadc_core_drp : entity is "AXI_bd_0_xadc_wiz_0_0_xadc_core_drp";
 end AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_xadc_core_drp;
 
 architecture STRUCTURE of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_xadc_core_drp is
@@ -4271,8 +4263,6 @@ entity AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_slave_attachment is
     hard_macro_rst_reg : in STD_LOGIC;
     \s_axi_rdata_i_reg[31]_0\ : in STD_LOGIC_VECTOR ( 18 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_slave_attachment : entity is "AXI_bd_0_xadc_wiz_0_0_slave_attachment";
 end AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_slave_attachment;
 
 architecture STRUCTURE of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_slave_attachment is
@@ -5138,8 +5128,6 @@ entity AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_axi_lite_ipif is
     hard_macro_rst_reg : in STD_LOGIC;
     \s_axi_rdata_i_reg[31]\ : in STD_LOGIC_VECTOR ( 18 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_axi_lite_ipif : entity is "AXI_bd_0_xadc_wiz_0_0_axi_lite_ipif";
 end AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_axi_lite_ipif;
 
 architecture STRUCTURE of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_axi_lite_ipif is
@@ -5306,8 +5294,6 @@ entity AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_axi_xadc is
   attribute C_S_AXI_ADDR_WIDTH of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_axi_xadc : entity is 11;
   attribute C_S_AXI_DATA_WIDTH : integer;
   attribute C_S_AXI_DATA_WIDTH of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_axi_xadc : entity is 32;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_axi_xadc : entity is "AXI_bd_0_xadc_wiz_0_0_axi_xadc";
   attribute hdl : string;
   attribute hdl of AXI_bd_0_xadc_wiz_0_0_AXI_bd_0_xadc_wiz_0_0_axi_xadc : entity is "VHDL";
   attribute ip_group : string;

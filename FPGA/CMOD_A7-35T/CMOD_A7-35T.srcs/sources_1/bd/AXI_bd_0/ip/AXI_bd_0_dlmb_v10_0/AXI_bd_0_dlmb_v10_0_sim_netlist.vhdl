@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Mon Mar 25 20:50:04 2019
--- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_dlmb_v10_0/AXI_bd_0_dlmb_v10_0_sim_netlist.vhdl
+-- Date        : Mon Mar 25 09:43:55 2019
+-- Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
+-- Command     : write_vhdl -force -mode funcsim -rename_top AXI_bd_0_dlmb_v10_0 -prefix
+--               AXI_bd_0_dlmb_v10_0_ AXI_bd_0_dlmb_v10_0_sim_netlist.vhdl
 -- Design      : AXI_bd_0_dlmb_v10_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -50,8 +50,6 @@ entity AXI_bd_0_dlmb_v10_0_lmb_v10 is
   attribute C_LMB_DWIDTH of AXI_bd_0_dlmb_v10_0_lmb_v10 : entity is 32;
   attribute C_LMB_NUM_SLAVES : integer;
   attribute C_LMB_NUM_SLAVES of AXI_bd_0_dlmb_v10_0_lmb_v10 : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of AXI_bd_0_dlmb_v10_0_lmb_v10 : entity is "lmb_v10";
 end AXI_bd_0_dlmb_v10_0_lmb_v10;
 
 architecture STRUCTURE of AXI_bd_0_dlmb_v10_0_lmb_v10 is
