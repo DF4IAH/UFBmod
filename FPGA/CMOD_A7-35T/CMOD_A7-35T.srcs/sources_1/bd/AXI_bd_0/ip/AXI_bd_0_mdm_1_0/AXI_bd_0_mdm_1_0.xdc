@@ -53,7 +53,11 @@ set_false_path -through [get_pins "Use*.BSCAN*/*/CAPTURE"]
 set_false_path -through [get_pins "Use*.BSCAN*/*/SEL"]
 set_false_path -through [get_pins "Use*.BSCAN*/*/SHIFT"]
 set_false_path -through [get_pins "Use*.BSCAN*/*/TDI"]
-set_clock_groups -logically_exclusive  -group [get_clocks -of_objects [get_pins "Use*.BSCAN*/*/DRCK"]] -group [get_clocks -of_objects [get_pins "Use*.BSCAN*/*/UPDATE"]]
+create_generated_clock -source [get_ports S_AXI_ACLK] -divide_by 4 [get_pins "*/*.DbgReg_DRCK*/Q"]
+create_generated_clock -source [get_ports S_AXI_ACLK] -divide_by 8 [get_pins "*/*.DbgReg_UPDATE*/Q"]
+set_clock_groups -asynchronous -group [get_clocks -of_objects [get_pins "*/*.DbgReg_DRCK*/Q"]]
+set_clock_groups -asynchronous -group [get_clocks -of_objects [get_pins "*/*.DbgReg_UPDATE*/Q"]]
+set_clock_groups -logically_exclusive  -group [get_clocks -of_objects [get_pins "Use*.BSCAN*/*/DRCK"]] -group [get_clocks -of_objects [get_pins "Use*.BSCAN*/*/UPDATE"]] -group [get_clocks -of_objects [get_pins "*/*.DbgReg_DRCK*/Q"]] -group [get_clocks -of_objects [get_pins "*/*.DbgReg_UPDATE*/Q"]]
 
 create_waiver -internal -quiet -user mdm -type CDC -id CDC-10 -description "Debug protocol ensures stable signals" \
   -from [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Debug_SYS_Rst_i_reg/C] -to *PIN
@@ -171,3 +175,67 @@ create_waiver -internal -quiet -user mdm -type CDC -id CDC-15 -description "Debu
   -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/set_Ext_BRK_reg/D]
 create_waiver -internal -quiet -user mdm -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
   -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_BSCAN.command_reg\[*\]/D]
+
+# Waivers for debug register access
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.DbgReg_UPDATE_i_reg/Q] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_Dbg_Reg_Access.*_lock_reg/C] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.reg_data_reg\[*\]/D]
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet Use_Dbg_Reg_Access.*jtag_busy_reg/C] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.dbgreg_CAPTURE_reg/C] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.dbgreg_SHIFT_reg/C] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.jtag_axi_overrun_reg/C] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.DbgReg_DRCK_i_reg/Q] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.jtag_clear_overrun_1_reg/D]
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.reg_data_reg\[*\]/D]
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.selected_reg/C] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_Dbg_Reg_Access.tdo_reg_reg\[*\]/*]
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_Dbg_Reg_Access.dbgreg_access_lock_1_reg/D]
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet Use_Dbg_Reg_Access.*jtag_busy_reg/D]
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_Dbg_Reg_Access.access_lock_reg/CE]
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_Dbg_Reg_Access.force_lock_reg/CE]
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-7 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.selected_reg/C] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-7 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet Use_Dbg_Reg_Access.*jtag_busy_reg/CLR]
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-7 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet Use_Dbg_Reg_Access.*update_reset_reg/PRE]
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-7 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet Use_Dbg_Reg_Access.update_set_reg/CLR]
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-8 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.selected_reg/C] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-10 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.selected_reg/C] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-11 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.selected_reg/C] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-13 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.selected_reg/C] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.dbgreg_CAPTURE_reg/C] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.dbgreg_TDI_reg/C] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.selected_reg/C] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/Use_Dbg_Reg_Access.*lock*reg/C*] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_Dbg_Reg_Access.*lock_reg/C*] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/completion_ctrl_reg\[0\]/C] -to *PIN
+create_waiver -internal -quiet -user mdm -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_Dbg_Reg_Access.*lock_reg/D]

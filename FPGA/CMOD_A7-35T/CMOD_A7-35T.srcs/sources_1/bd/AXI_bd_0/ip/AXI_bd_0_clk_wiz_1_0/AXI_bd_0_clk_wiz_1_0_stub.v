@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Tue Mar 26 12:54:16 2019
-// Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
+// Date        : Wed Mar 27 15:03:54 2019
+// Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
-//               c:/Users/habel/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_clk_wiz_1_0/AXI_bd_0_clk_wiz_1_0_stub.v
+//               C:/Users/espero/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_clk_wiz_1_0/AXI_bd_0_clk_wiz_1_0_stub.v
 // Design      : AXI_bd_0_clk_wiz_1_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a35tcpg236-1

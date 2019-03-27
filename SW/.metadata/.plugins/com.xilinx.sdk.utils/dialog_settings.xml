@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item value="C:\Users\habel\git\UFBmod\SW" key="com.xilinx.sdk.hw.ui.hwspec.last"/>
-	<item value="C:\Users\habel\git\UFBmod\SW\top_hw_platform_0" key="zynq_flash_files_selection"/>
-	<item value="C:\Users\habel\git\UFBmod\SW\top_hw_platform_0" key="last_stored_selection"/>
+	<item value="C:\Users\espero\git\UFBmod\SW\top_hw_platform_0" key="zynq_flash_files_selection"/>
+	<item value="C:\Users\espero\git\UFBmod\SW\top_hw_platform_0" key="last_stored_selection"/>
 </section>

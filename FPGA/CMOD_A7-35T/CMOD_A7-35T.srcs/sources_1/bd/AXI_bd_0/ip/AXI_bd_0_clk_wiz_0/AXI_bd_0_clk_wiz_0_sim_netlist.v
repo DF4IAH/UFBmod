@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Mon Mar 25 09:42:57 2019
-// Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
-// Command     : write_verilog -force -mode funcsim -rename_top AXI_bd_0_clk_wiz_0 -prefix
-//               AXI_bd_0_clk_wiz_0_ AXI_bd_0_clk_wiz_0_sim_netlist.v
+// Date        : Thu Mar 28 00:08:22 2019
+// Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode funcsim
+//               C:/Users/espero/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_clk_wiz_0/AXI_bd_0_clk_wiz_0_sim_netlist.v
 // Design      : AXI_bd_0_clk_wiz_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -16,27 +16,34 @@
 module AXI_bd_0_clk_wiz_0
    (clk_100mhz,
     reset,
+    locked,
     clk_in1);
   output clk_100mhz;
   input reset;
+  output locked;
   input clk_in1;
 
   wire clk_100mhz;
   (* IBUF_LOW_PWR *) wire clk_in1;
+  wire locked;
   wire reset;
 
   AXI_bd_0_clk_wiz_0_AXI_bd_0_clk_wiz_0_clk_wiz inst
        (.clk_100mhz(clk_100mhz),
         .clk_in1(clk_in1),
+        .locked(locked),
         .reset(reset));
 endmodule
 
+(* ORIG_REF_NAME = "AXI_bd_0_clk_wiz_0_clk_wiz" *) 
 module AXI_bd_0_clk_wiz_0_AXI_bd_0_clk_wiz_0_clk_wiz
    (clk_100mhz,
     reset,
+    locked,
     clk_in1);
   output clk_100mhz;
   input reset;
+  output locked;
   input clk_in1;
 
   wire clk_100mhz;
@@ -45,6 +52,7 @@ module AXI_bd_0_clk_wiz_0_AXI_bd_0_clk_wiz_0_clk_wiz
   wire clk_in1_AXI_bd_0_clk_wiz_0;
   wire clkfbout_AXI_bd_0_clk_wiz_0;
   wire clkfbout_buf_AXI_bd_0_clk_wiz_0;
+  wire locked;
   wire reset;
   wire NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED;
@@ -60,7 +68,6 @@ module AXI_bd_0_clk_wiz_0_AXI_bd_0_clk_wiz_0_clk_wiz
   wire NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED;
   wire NLW_mmcm_adv_inst_DRDY_UNCONNECTED;
-  wire NLW_mmcm_adv_inst_LOCKED_UNCONNECTED;
   wire NLW_mmcm_adv_inst_PSDONE_UNCONNECTED;
   wire [15:0]NLW_mmcm_adv_inst_DO_UNCONNECTED;
 
@@ -158,7 +165,7 @@ module AXI_bd_0_clk_wiz_0_AXI_bd_0_clk_wiz_0_clk_wiz
         .DO(NLW_mmcm_adv_inst_DO_UNCONNECTED[15:0]),
         .DRDY(NLW_mmcm_adv_inst_DRDY_UNCONNECTED),
         .DWE(1'b0),
-        .LOCKED(NLW_mmcm_adv_inst_LOCKED_UNCONNECTED),
+        .LOCKED(locked),
         .PSCLK(1'b0),
         .PSDONE(NLW_mmcm_adv_inst_PSDONE_UNCONNECTED),
         .PSEN(1'b0),

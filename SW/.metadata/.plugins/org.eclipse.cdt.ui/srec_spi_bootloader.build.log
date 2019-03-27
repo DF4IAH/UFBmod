@@ -1,47 +1,6 @@
-11:05:33 **** Auto Build of configuration Debug for project srec_spi_bootloader ****
+00:51:23 **** Incremental Build of configuration Debug for project srec_spi_bootloader ****
 make all 
-Building file: ../src/bootloader.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/bootloader.o" -I../../srec_spi_bootloader_bsp/microblaze_0/include -mno-xl-reorder -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/bootloader.d" -MT"src/bootloader.o" -o "src/bootloader.o" "../src/bootloader.c"
-In file included from ../src/bootloader.c:37:0:
-../src/blconfig.h:32:2: warning: #warning "Please provide the correct address value for the definition FLASH_IMAGE_BASEADDR. Please give the flash offset @ which SREC application is programmed" [-Wcpp]
- #warning "Please provide the correct address value for the definition FLASH_IMAGE_BASEADDR. Please give the flash offset @ which SREC application is programmed"
-  ^~~~~~~
-../src/bootloader.c:56:2: warning: #warning "Set your Device ID here, as defined in xparameters.h" [-Wcpp]
- #warning "Set your Device ID here, as defined in xparameters.h"
-  ^~~~~~~
-../src/bootloader.c: In function 'flash_get_srec_line':
-../src/bootloader.c:289:24: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
-      ReadParam.Address = flbuf++;
-                        ^
-../src/bootloader.c:309:13: warning: implicit declaration of function 'IsfWaitForFlashNotBusy' [-Wimplicit-function-declaration]
-    Status = IsfWaitForFlashNotBusy();
-             ^~~~~~~~~~~~~~~~~~~~~~
-../src/bootloader.c:334:28: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
-          ReadParam.Address = flbuf++;
-                            ^
-../src/bootloader.c: At top level:
-../src/bootloader.c:50:13: warning: 'display_progress' declared 'static' but never defined [-Wunused-function]
- static void display_progress (uint32_t lines);
-             ^~~~~~~~~~~~~~~~
-Finished building: ../src/bootloader.c
- 
-Building file: ../src/platform.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -I../../srec_spi_bootloader_bsp/microblaze_0/include -mno-xl-reorder -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
-Finished building: ../src/platform.c
- 
-Building target: srec_spi_bootloader.elf
-Invoking: MicroBlaze gcc linker
-mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../srec_spi_bootloader_bsp/microblaze_0/lib -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -Wl,--gc-sections -o "srec_spi_bootloader.elf"  ./src/bootloader.o ./src/platform.o ./src/srec.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxilisf,-lxil,-lgcc,-lc,--end-group
-Finished building target: srec_spi_bootloader.elf
- 
-Invoking: MicroBlaze Print Size
-mb-size srec_spi_bootloader.elf  |tee "srec_spi_bootloader.elf.size"
-   text	   data	    bss	    dec	    hex	filename
-  12516	    292	   1936	  14744	   3998	srec_spi_bootloader.elf
-Finished building: srec_spi_bootloader.elf.size
- 
+make: Nothing to be done for 'all'.
 
-11:05:35 Build Finished (took 1s.354ms)
+00:51:23 Build Finished (took 221ms)
 

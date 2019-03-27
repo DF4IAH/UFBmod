@@ -1,18 +1,18 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Tue Mar 26 09:35:34 2019
-// Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
+// Date        : Wed Mar 27 15:15:14 2019
+// Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim -rename_top AXI_bd_0_auto_pc_1 -prefix
-//               AXI_bd_0_auto_pc_1_ AXI_bd_0_auto_pc_2_sim_netlist.v
-// Design      : AXI_bd_0_auto_pc_2
+//               AXI_bd_0_auto_pc_1_ AXI_bd_0_auto_pc_1_sim_netlist.v
+// Design      : AXI_bd_0_auto_pc_1
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7a35tcpg236-1
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "AXI_bd_0_auto_pc_2,axi_protocol_converter_v2_1_18_axi_protocol_converter,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "axi_protocol_converter_v2_1_18_axi_protocol_converter,Vivado 2018.3" *) 
+(* CHECK_LICENSE_TYPE = "AXI_bd_0_auto_pc_1,axi_protocol_converter_v2_1_18_axi_protocol_converter,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "axi_protocol_converter_v2_1_18_axi_protocol_converter,Vivado 2018.3" *) 
 (* NotValidForBitStream *)
 module AXI_bd_0_auto_pc_1
    (aclk,
