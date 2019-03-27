@@ -1,11 +1,11 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Mon Mar 25 09:41:54 2019
+-- Date        : Wed Mar 27 09:09:02 2019
 -- Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
--- Command     : write_vhdl -force -mode synth_stub -rename_top AXI_bd_0_dlmb_bram_if_cntlr_0 -prefix
---               AXI_bd_0_dlmb_bram_if_cntlr_0_ AXI_bd_0_ilmb_bram_if_cntlr_0_stub.vhdl
--- Design      : AXI_bd_0_ilmb_bram_if_cntlr_0
+-- Command     : write_vhdl -force -mode synth_stub
+--               C:/Users/habel/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_dlmb_bram_if_cntlr_0/AXI_bd_0_dlmb_bram_if_cntlr_0_stub.vhdl
+-- Design      : AXI_bd_0_dlmb_bram_if_cntlr_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a35tcpg236-1
 -- --------------------------------------------------------------------------------

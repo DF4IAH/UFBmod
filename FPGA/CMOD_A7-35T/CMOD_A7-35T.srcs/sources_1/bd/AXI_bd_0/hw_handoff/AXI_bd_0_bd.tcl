@@ -384,15 +384,16 @@ proc create_root_design { parentCell } {
   # Create instance: microblaze_0, and set properties
   set microblaze_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:microblaze:11.0 microblaze_0 ]
   set_property -dict [ list \
-   CONFIG.C_ADDR_TAG_BITS {11} \
+   CONFIG.C_ADDR_TAG_BITS {13} \
    CONFIG.C_AREA_OPTIMIZED {1} \
-   CONFIG.C_CACHE_BYTE_SIZE {16384} \
-   CONFIG.C_DCACHE_ADDR_TAG {11} \
-   CONFIG.C_DCACHE_BYTE_SIZE {16384} \
+   CONFIG.C_CACHE_BYTE_SIZE {4096} \
+   CONFIG.C_DCACHE_ADDR_TAG {13} \
+   CONFIG.C_DCACHE_BYTE_SIZE {4096} \
    CONFIG.C_DCACHE_LINE_LEN {4} \
    CONFIG.C_DCACHE_USE_WRITEBACK {0} \
    CONFIG.C_DCACHE_VICTIMS {0} \
    CONFIG.C_DEBUG_ENABLED {2} \
+   CONFIG.C_DEBUG_TRACE_SIZE {16384} \
    CONFIG.C_DIV_ZERO_EXCEPTION {0} \
    CONFIG.C_D_AXI {1} \
    CONFIG.C_D_LMB {1} \
@@ -410,8 +411,8 @@ proc create_root_design { parentCell } {
    CONFIG.C_M_AXI_D_BUS_EXCEPTION {0} \
    CONFIG.C_M_AXI_I_BUS_EXCEPTION {0} \
    CONFIG.C_NUMBER_OF_PC_BRK {5} \
-   CONFIG.C_NUMBER_OF_RD_ADDR_BRK {0} \
-   CONFIG.C_NUMBER_OF_WR_ADDR_BRK {0} \
+   CONFIG.C_NUMBER_OF_RD_ADDR_BRK {1} \
+   CONFIG.C_NUMBER_OF_WR_ADDR_BRK {1} \
    CONFIG.C_OPCODE_0x0_ILLEGAL {0} \
    CONFIG.C_PVR {0} \
    CONFIG.C_UNALIGNED_EXCEPTIONS {0} \
@@ -553,8 +554,8 @@ proc create_root_design { parentCell } {
   create_bd_addr_seg -range 0x00010000 -offset 0x44A10000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs axi_uart16550_0/S_AXI/Reg] SEG_axi_uart16550_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x44A30000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs clk_wiz_1/s_axi_lite/Reg] SEG_clk_wiz_1_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x44A30000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs clk_wiz_1/s_axi_lite/Reg] SEG_clk_wiz_1_Reg
-  create_bd_addr_seg -range 0x00002000 -offset 0x00000000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs microblaze_0_local_memory/dlmb_bram_if_cntlr/SLMB/Mem] SEG_dlmb_bram_if_cntlr_Mem
-  create_bd_addr_seg -range 0x00002000 -offset 0x00000000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs microblaze_0_local_memory/ilmb_bram_if_cntlr/SLMB/Mem] SEG_ilmb_bram_if_cntlr_Mem
+  create_bd_addr_seg -range 0x00010000 -offset 0x00000000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs microblaze_0_local_memory/dlmb_bram_if_cntlr/SLMB/Mem] SEG_dlmb_bram_if_cntlr_Mem
+  create_bd_addr_seg -range 0x00010000 -offset 0x00000000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs microblaze_0_local_memory/ilmb_bram_if_cntlr/SLMB/Mem] SEG_ilmb_bram_if_cntlr_Mem
   create_bd_addr_seg -range 0x00010000 -offset 0x41200000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs microblaze_0_axi_intc/S_AXI/Reg] SEG_microblaze_0_axi_intc_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x41200000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs microblaze_0_axi_intc/S_AXI/Reg] SEG_microblaze_0_axi_intc_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x44A20000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs xadc_wiz_0/s_axi_lite/Reg] SEG_xadc_wiz_0_Reg

@@ -1,6 +1,16 @@
-14:37:34 **** Incremental Build of configuration Debug for project CMOD_A7-35-T_FW ****
+11:06:48 **** Auto Build of configuration Debug for project CMOD_A7-35-T_FW ****
 make all 
-make: Nothing to be done for 'all'.
+Building target: CMOD_A7-35-T_FW.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../CMOD_A7-35-T_FW_bsp/microblaze_0/lib -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -Wl,--gc-sections -o "CMOD_A7-35-T_FW.elf"  ./src/freertos_hello_world.o   -Wl,--start-group,-lxil,-lfreertos,-lgcc,-lc,--end-group
+Finished building target: CMOD_A7-35-T_FW.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size CMOD_A7-35-T_FW.elf  |tee "CMOD_A7-35-T_FW.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  31504	   1492	  69588	 102584	  190b8	CMOD_A7-35-T_FW.elf
+Finished building: CMOD_A7-35-T_FW.elf.size
+ 
 
-14:37:34 Build Finished (took 161ms)
+11:06:49 Build Finished (took 542ms)
 

@@ -4,4 +4,5 @@ targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag
 rst -processor
 targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
 dow C:/Users/habel/git/UFBmod/SW/CMOD_A7-35-T_FW/Debug/CMOD_A7-35-T_FW.elf
-bpadd -addr &main
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con

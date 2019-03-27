@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Tue Mar 26 12:53:22 2019
+//Date        : Wed Mar 27 09:08:11 2019
 //Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
 //Command     : generate_target AXI_bd_0.bd
 //Design      : AXI_bd_0
@@ -77,12 +77,12 @@ module AXI_bd_0
   (* X_INTERFACE_INFO = "xilinx.com:interface:emc:1.0 AXI_bd_cellular_ram_EMC_INTF OEN" *) output AXI_bd_cellular_ram_EMC_INTF_oen;
   (* X_INTERFACE_INFO = "xilinx.com:interface:emc:1.0 AXI_bd_cellular_ram_EMC_INTF WEN" *) output AXI_bd_cellular_ram_EMC_INTF_wen;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_BD_CLK_100MHZ_OUT CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_BD_CLK_100MHZ_OUT, CLK_DOMAIN /clk_wiz_0_clk_out1, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.0" *) output AXI_bd_clk_100mhz_out;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_led " *) input [1:0]AXI_bd_gpio_led_tri_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_led " *) output [1:0]AXI_bd_gpio_led_tri_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_led " *) output [1:0]AXI_bd_gpio_led_tri_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_ledrgb " *) input [2:0]AXI_bd_gpio_ledrgb_tri_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_ledrgb " *) output [2:0]AXI_bd_gpio_ledrgb_tri_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_ledrgb " *) output [2:0]AXI_bd_gpio_ledrgb_tri_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_led TRI_I" *) input [1:0]AXI_bd_gpio_led_tri_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_led TRI_O" *) output [1:0]AXI_bd_gpio_led_tri_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_led TRI_T" *) output [1:0]AXI_bd_gpio_led_tri_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_ledrgb TRI_I" *) input [2:0]AXI_bd_gpio_ledrgb_tri_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_ledrgb TRI_O" *) output [2:0]AXI_bd_gpio_ledrgb_tri_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_ledrgb TRI_T" *) output [2:0]AXI_bd_gpio_ledrgb_tri_t;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_BD_PLL_I CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_BD_PLL_I, CLK_DOMAIN /clk_wiz_1_clk_out1, FREQ_HZ 10000000, INSERT_VIP 0, PHASE 0.0" *) output AXI_bd_pll_i;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_BD_PLL_Q CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_BD_PLL_Q, CLK_DOMAIN /clk_wiz_1_clk_out1, FREQ_HZ 10000000, INSERT_VIP 0, PHASE 90.0" *) output AXI_bd_pll_q;
   (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 AXI_bd_qspi_flash_SPI_0 IO0_I" *) input AXI_bd_qspi_flash_SPI_0_io0_i;
