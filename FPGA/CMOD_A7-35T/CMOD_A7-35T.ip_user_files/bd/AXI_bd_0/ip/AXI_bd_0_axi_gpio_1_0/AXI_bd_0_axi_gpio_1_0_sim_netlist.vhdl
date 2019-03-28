@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Thu Mar 28 00:09:18 2019
+-- Date        : Thu Mar 28 20:35:50 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/Users/espero/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_axi_gpio_1_0/AXI_bd_0_axi_gpio_1_0_sim_netlist.vhdl
+--               C:/Users/espero/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_axi_gpio_1_0/AXI_bd_0_axi_gpio_1_0_sim_netlist.vhdl
 -- Design      : AXI_bd_0_axi_gpio_1_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.

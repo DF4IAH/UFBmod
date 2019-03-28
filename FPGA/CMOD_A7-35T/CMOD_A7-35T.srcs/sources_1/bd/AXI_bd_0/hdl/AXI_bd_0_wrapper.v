@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Thu Mar 28 15:50:22 2019
+//Date        : Thu Mar 28 20:49:45 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target AXI_bd_0_wrapper.bd
 //Design      : AXI_bd_0_wrapper
@@ -17,8 +17,8 @@ module AXI_bd_0_wrapper
     AXI_bd_btn0,
     AXI_bd_btn1,
     AXI_bd_clk_100mhz_out,
-    AXI_bd_gpio_led_tri_io,
-    AXI_bd_gpio_ledrgb_tri_io,
+    AXI_bd_gpio_led_tri_o,
+    AXI_bd_gpio_ledrgb_tri_o,
     AXI_bd_pll_i,
     AXI_bd_pll_q,
     AXI_bd_sys_clock,
@@ -53,8 +53,8 @@ module AXI_bd_0_wrapper
   input AXI_bd_btn0;
   input AXI_bd_btn1;
   output AXI_bd_clk_100mhz_out;
-  inout [1:0]AXI_bd_gpio_led_tri_io;
-  inout [2:0]AXI_bd_gpio_ledrgb_tri_io;
+  output [1:0]AXI_bd_gpio_led_tri_o;
+  output [2:0]AXI_bd_gpio_ledrgb_tri_o;
   output AXI_bd_pll_i;
   output AXI_bd_pll_q;
   input AXI_bd_sys_clock;
@@ -90,26 +90,8 @@ module AXI_bd_0_wrapper
   wire AXI_bd_btn0;
   wire AXI_bd_btn1;
   wire AXI_bd_clk_100mhz_out;
-  wire [0:0]AXI_bd_gpio_led_tri_i_0;
-  wire [1:1]AXI_bd_gpio_led_tri_i_1;
-  wire [0:0]AXI_bd_gpio_led_tri_io_0;
-  wire [1:1]AXI_bd_gpio_led_tri_io_1;
-  wire [0:0]AXI_bd_gpio_led_tri_o_0;
-  wire [1:1]AXI_bd_gpio_led_tri_o_1;
-  wire [0:0]AXI_bd_gpio_led_tri_t_0;
-  wire [1:1]AXI_bd_gpio_led_tri_t_1;
-  wire [0:0]AXI_bd_gpio_ledrgb_tri_i_0;
-  wire [1:1]AXI_bd_gpio_ledrgb_tri_i_1;
-  wire [2:2]AXI_bd_gpio_ledrgb_tri_i_2;
-  wire [0:0]AXI_bd_gpio_ledrgb_tri_io_0;
-  wire [1:1]AXI_bd_gpio_ledrgb_tri_io_1;
-  wire [2:2]AXI_bd_gpio_ledrgb_tri_io_2;
-  wire [0:0]AXI_bd_gpio_ledrgb_tri_o_0;
-  wire [1:1]AXI_bd_gpio_ledrgb_tri_o_1;
-  wire [2:2]AXI_bd_gpio_ledrgb_tri_o_2;
-  wire [0:0]AXI_bd_gpio_ledrgb_tri_t_0;
-  wire [1:1]AXI_bd_gpio_ledrgb_tri_t_1;
-  wire [2:2]AXI_bd_gpio_ledrgb_tri_t_2;
+  wire [1:0]AXI_bd_gpio_led_tri_o;
+  wire [2:0]AXI_bd_gpio_ledrgb_tri_o;
   wire AXI_bd_pll_i;
   wire AXI_bd_pll_q;
   wire AXI_bd_sys_clock;
@@ -192,12 +174,8 @@ module AXI_bd_0_wrapper
         .AXI_bd_btn0(AXI_bd_btn0),
         .AXI_bd_btn1(AXI_bd_btn1),
         .AXI_bd_clk_100mhz_out(AXI_bd_clk_100mhz_out),
-        .AXI_bd_gpio_led_tri_i({AXI_bd_gpio_led_tri_i_1,AXI_bd_gpio_led_tri_i_0}),
-        .AXI_bd_gpio_led_tri_o({AXI_bd_gpio_led_tri_o_1,AXI_bd_gpio_led_tri_o_0}),
-        .AXI_bd_gpio_led_tri_t({AXI_bd_gpio_led_tri_t_1,AXI_bd_gpio_led_tri_t_0}),
-        .AXI_bd_gpio_ledrgb_tri_i({AXI_bd_gpio_ledrgb_tri_i_2,AXI_bd_gpio_ledrgb_tri_i_1,AXI_bd_gpio_ledrgb_tri_i_0}),
-        .AXI_bd_gpio_ledrgb_tri_o({AXI_bd_gpio_ledrgb_tri_o_2,AXI_bd_gpio_ledrgb_tri_o_1,AXI_bd_gpio_ledrgb_tri_o_0}),
-        .AXI_bd_gpio_ledrgb_tri_t({AXI_bd_gpio_ledrgb_tri_t_2,AXI_bd_gpio_ledrgb_tri_t_1,AXI_bd_gpio_ledrgb_tri_t_0}),
+        .AXI_bd_gpio_led_tri_o(AXI_bd_gpio_led_tri_o),
+        .AXI_bd_gpio_ledrgb_tri_o(AXI_bd_gpio_ledrgb_tri_o),
         .AXI_bd_pll_i(AXI_bd_pll_i),
         .AXI_bd_pll_q(AXI_bd_pll_q),
         .AXI_bd_sys_clock(AXI_bd_sys_clock),
@@ -237,31 +215,6 @@ module AXI_bd_0_wrapper
         .qspi_flash_ss_i(qspi_flash_ss_i),
         .qspi_flash_ss_o(qspi_flash_ss_o),
         .qspi_flash_ss_t(qspi_flash_ss_t));
-  IOBUF AXI_bd_gpio_led_tri_iobuf_0
-       (.I(AXI_bd_gpio_led_tri_o_0),
-        .IO(AXI_bd_gpio_led_tri_io[0]),
-        .O(AXI_bd_gpio_led_tri_i_0),
-        .T(AXI_bd_gpio_led_tri_t_0));
-  IOBUF AXI_bd_gpio_led_tri_iobuf_1
-       (.I(AXI_bd_gpio_led_tri_o_1),
-        .IO(AXI_bd_gpio_led_tri_io[1]),
-        .O(AXI_bd_gpio_led_tri_i_1),
-        .T(AXI_bd_gpio_led_tri_t_1));
-  IOBUF AXI_bd_gpio_ledrgb_tri_iobuf_0
-       (.I(AXI_bd_gpio_ledrgb_tri_o_0),
-        .IO(AXI_bd_gpio_ledrgb_tri_io[0]),
-        .O(AXI_bd_gpio_ledrgb_tri_i_0),
-        .T(AXI_bd_gpio_ledrgb_tri_t_0));
-  IOBUF AXI_bd_gpio_ledrgb_tri_iobuf_1
-       (.I(AXI_bd_gpio_ledrgb_tri_o_1),
-        .IO(AXI_bd_gpio_ledrgb_tri_io[1]),
-        .O(AXI_bd_gpio_ledrgb_tri_i_1),
-        .T(AXI_bd_gpio_ledrgb_tri_t_1));
-  IOBUF AXI_bd_gpio_ledrgb_tri_iobuf_2
-       (.I(AXI_bd_gpio_ledrgb_tri_o_2),
-        .IO(AXI_bd_gpio_ledrgb_tri_io[2]),
-        .O(AXI_bd_gpio_ledrgb_tri_i_2),
-        .T(AXI_bd_gpio_ledrgb_tri_t_2));
   IOBUF cellular_ram_dq_iobuf_0
        (.I(cellular_ram_dq_o_0),
         .IO(cellular_ram_dq_io[0]),

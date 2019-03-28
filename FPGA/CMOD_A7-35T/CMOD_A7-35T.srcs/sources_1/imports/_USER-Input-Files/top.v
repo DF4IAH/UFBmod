@@ -99,14 +99,14 @@ module top(
 
 
     // Wires
-    wire [1:0] led_tri_t;
+    //wire [1:0] led_tri_t;
     wire [1:0] led_tri_o;
-    wire [1:0] led_tri_i;
+    //wire [1:0] led_tri_i;
     wire [1:0] LedPort;
 
-    wire [2:0] ledrgb_tri_t;
+    //wire [2:0] ledrgb_tri_t;
     wire [2:0] ledrgb_tri_o;
-    wire [2:0] ledrgb_tri_i;
+    //wire [2:0] ledrgb_tri_i;
     wire [2:0] LedRgbPort;
 
 
@@ -119,8 +119,10 @@ module top(
                 .IOSTANDARD("LVCMOS33"),
                 .SLEW("FAST")
             ) led_iobuf (
-                .T(led_tri_t[i]),
-                .O(led_tri_i[i]),
+                //.T(led_tri_t[i]),
+                //.O(led_tri_i[i]),
+                .T(1'b0),
+                .O(),
                 .I(led_tri_o[i]),
                 .IO(LedPort[i])
             );
@@ -134,8 +136,10 @@ module top(
                 .IOSTANDARD("LVCMOS33"),
                 .SLEW("FAST")
             ) ledrgb_iobuf (
-                .T( ledrgb_tri_t[i]),
-                .O( ledrgb_tri_i[i]),
+                //.T( ledrgb_tri_t[i]),
+                //.O( ledrgb_tri_i[i]),
+                .T(1'b0),
+                .O(),
                 .I(!ledrgb_tri_o[i]),
                 .IO(LedRgbPort[i])
             );
@@ -151,10 +155,6 @@ module top(
 
     /* Clock */
     wire clk_100mhz;
-
-    /* Counter output */
-    wire [27:0] q_100mhz;
-
 
 
     /* QSPI Flash */
@@ -259,13 +259,13 @@ module top(
         .AXI_bd_btn0(btn[0]),
         .AXI_bd_btn1(btn[1]),
 
-        .AXI_bd_gpio_led_tri_t(led_tri_t),
+        //.AXI_bd_gpio_led_tri_t(led_tri_t),
         .AXI_bd_gpio_led_tri_o(led_tri_o),
-        .AXI_bd_gpio_led_tri_i(led_tri_i),
+        //.AXI_bd_gpio_led_tri_i(led_tri_i),
 
-        .AXI_bd_gpio_ledrgb_tri_t(ledrgb_tri_t),
+        //.AXI_bd_gpio_ledrgb_tri_t(ledrgb_tri_t),
         .AXI_bd_gpio_ledrgb_tri_o(ledrgb_tri_o),
-        .AXI_bd_gpio_ledrgb_tri_i(ledrgb_tri_i),
+        //.AXI_bd_gpio_ledrgb_tri_i(ledrgb_tri_i),
 
         .AXI_bd_pll_i(pio2),
         .AXI_bd_pll_q(pio4),

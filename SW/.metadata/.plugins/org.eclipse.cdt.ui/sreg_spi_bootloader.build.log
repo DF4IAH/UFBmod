@@ -1,5 +1,73 @@
-10:41:42 **** Auto Build of configuration Debug for project sreg_spi_bootloader ****
+22:00:48 **** Auto Build of configuration Debug for project sreg_spi_bootloader ****
 make all 
+'Building file: ../src/bootloader.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/bootloader.o" -I../../sreg_spi_bootloader_bsp/microblaze_0/include -mno-xl-reorder -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/bootloader.d" -MT"src/bootloader.o" -o "src/bootloader.o" "../src/bootloader.c"
+In file included from ../src/bootloader.c:37:0:
+../src/blconfig.h:32:2: warning: #warning "Please provide the correct address value for the definition FLASH_IMAGE_BASEADDR. Please give the flash offset @ which SREC application is programmed" [-Wcpp]
+ #warning "Please provide the correct address value for the definition FLASH_IMAGE_BASEADDR. Please give the flash offset @ which SREC application is programmed"
+  ^~~~~~~
+../src/bootloader.c:77:2: warning: #warning "Set your Device ID here, as defined in xparameters.h" [-Wcpp]
+ #warning "Set your Device ID here, as defined in xparameters.h"
+  ^~~~~~~
+../src/bootloader.c:156:5: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+     "",
+     ^~
+../src/bootloader.c:156:5: note: (near initialization for 'errors[0]')
+../src/bootloader.c:157:5: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+     "Error while copying executable image into RAM",
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/bootloader.c:157:5: note: (near initialization for 'errors[1]')
+../src/bootloader.c:158:5: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+     "Error while reading an SREC line from flash",
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/bootloader.c:158:5: note: (near initialization for 'errors[2]')
+../src/bootloader.c:159:5: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+     "SREC line is corrupted",
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+../src/bootloader.c:159:5: note: (near initialization for 'errors[3]')
+../src/bootloader.c:160:5: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+     "SREC has invalid checksum."
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/bootloader.c:160:5: note: (near initialization for 'errors[4]')
+../src/bootloader.c: In function 'main':
+../src/bootloader.c:240:16: warning: pointer targets in passing argument 1 of 'print' differ in signedness [-Wpointer-sign]
+         print (errors[ret]);
+                ^~~~~~
+In file included from c:\xilinx\sdk\2018.3\gnu\microblaze\nt\microblaze-xilinx-elf\include\stdio.h:29:0,
+                 from ../src/bootloader.c:34:
+c:\xilinx\sdk\2018.3\gnu\microblaze\nt\microblaze-xilinx-elf\include\stdio.h:231:9: note: expected 'const char *' but argument is of type 'int8_t * {aka signed char *}'
+ void    _EXFUN(print, (const char* ));
+         ^
+../src/bootloader.c:243:16: warning: pointer targets in passing argument 1 of 'print' differ in signedness [-Wpointer-sign]
+         print (errors[ret]);
+                ^~~~~~
+In file included from c:\xilinx\sdk\2018.3\gnu\microblaze\nt\microblaze-xilinx-elf\include\stdio.h:29:0,
+                 from ../src/bootloader.c:34:
+c:\xilinx\sdk\2018.3\gnu\microblaze\nt\microblaze-xilinx-elf\include\stdio.h:231:9: note: expected 'const char *' but argument is of type 'int8_t * {aka signed char *}'
+ void    _EXFUN(print, (const char* ));
+         ^
+../src/bootloader.c: In function 'flash_get_srec_line':
+../src/bootloader.c:327:24: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+      ReadParam.Address = flbuf++;
+                        ^
+../src/bootloader.c:347:13: warning: implicit declaration of function 'IsfWaitForFlashNotBusy' [-Wimplicit-function-declaration]
+    Status = IsfWaitForFlashNotBusy();
+             ^~~~~~~~~~~~~~~~~~~~~~
+../src/bootloader.c:372:28: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+          ReadParam.Address = flbuf++;
+                            ^
+At top level:
+../src/bootloader.c:251:13: warning: 'display_progress' defined but not used [-Wunused-function]
+ static void display_progress (uint32_t count)
+             ^~~~~~~~~~~~~~~~
+'Finished building: ../src/bootloader.c'
+' '
+'Building file: ../src/platform.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -I../../sreg_spi_bootloader_bsp/microblaze_0/include -mno-xl-reorder -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+'Finished building: ../src/platform.c'
+' '
 'Building target: sreg_spi_bootloader.elf'
 'Invoking: MicroBlaze gcc linker'
 mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../sreg_spi_bootloader_bsp/microblaze_0/lib -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -Wl,--gc-sections -o "sreg_spi_bootloader.elf"  ./src/bootloader.o ./src/platform.o ./src/srec.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxilisf,-lxil,-lgcc,-lc,--end-group
@@ -12,5 +80,5 @@ mb-size sreg_spi_bootloader.elf  |tee "sreg_spi_bootloader.elf.size"
 'Finished building: sreg_spi_bootloader.elf.size'
 ' '
 
-10:41:43 Build Finished (took 624ms)
+22:00:49 Build Finished (took 1s.328ms)
 

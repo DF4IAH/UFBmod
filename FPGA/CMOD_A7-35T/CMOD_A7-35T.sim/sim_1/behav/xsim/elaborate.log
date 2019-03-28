@@ -1,9 +1,9 @@
 Vivado Simulator 2018.3
 Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto e3df88b98deb4944bb481896ea97d4f8 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L axi_lite_ipif_v3_0_4 -L lib_cdc_v1_0_2 -L lib_pkg_v1_0_2 -L lib_srl_fifo_v1_0_2 -L axi_uart16550_v2_0_20 -L dist_mem_gen_v8_0_12 -L fifo_generator_v13_2_3 -L lib_fifo_v1_0_12 -L interrupt_control_v3_1_4 -L axi_quad_spi_v3_2_17 -L emc_common_v3_0_5 -L axi_emc_v3_0_18 -L proc_sys_reset_v5_0_13 -L generic_baseblocks_v2_1_0 -L axi_data_fifo_v2_1_17 -L axi_infrastructure_v1_1_0 -L axi_register_slice_v2_1_18 -L axi_protocol_converter_v2_1_18 -L microblaze_v11_0_0 -L lmb_v10_v3_0_9 -L lmb_bram_if_cntlr_v4_0_15 -L blk_mem_gen_v8_4_2 -L axi_crossbar_v2_1_19 -L axi_intc_v4_1_12 -L xlconcat_v2_1_1 -L mdm_v3_2_15 -L axi_gpio_v2_0_20 -L axi_timer_v2_0_20 -L xlconstant_v1_1_5 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot top_behav xil_defaultlib.top xil_defaultlib.glbl -log elaborate.log 
+Running: C:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto e3df88b98deb4944bb481896ea97d4f8 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L axi_lite_ipif_v3_0_4 -L lib_cdc_v1_0_2 -L lib_pkg_v1_0_2 -L lib_srl_fifo_v1_0_2 -L axi_uart16550_v2_0_20 -L dist_mem_gen_v8_0_12 -L fifo_generator_v13_2_3 -L lib_fifo_v1_0_12 -L interrupt_control_v3_1_4 -L axi_quad_spi_v3_2_17 -L emc_common_v3_0_5 -L axi_emc_v3_0_18 -L proc_sys_reset_v5_0_13 -L generic_baseblocks_v2_1_0 -L axi_data_fifo_v2_1_17 -L axi_infrastructure_v1_1_0 -L axi_register_slice_v2_1_18 -L axi_protocol_converter_v2_1_18 -L microblaze_v11_0_0 -L lmb_v10_v3_0_9 -L lmb_bram_if_cntlr_v4_0_15 -L blk_mem_gen_v8_4_2 -L axi_crossbar_v2_1_19 -L axi_intc_v4_1_12 -L xlconcat_v2_1_1 -L mdm_v3_2_15 -L axi_gpio_v2_0_20 -L axi_timer_v2_0_20 -L xlconstant_v1_1_5 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot top_tb_behav xil_defaultlib.top_tb xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
-WARNING: [VRFC 10-3715] size mismatch in mixed language port association, vhdl port 'mem_a' [C:/Users/espero/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.ip_user_files/bd/AXI_bd_0/sim/AXI_bd_0.v:861]
+WARNING: [VRFC 10-3715] size mismatch in mixed language port association, vhdl port 'mem_a' [C:/Users/espero/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.ip_user_files/bd/AXI_bd_0/sim/AXI_bd_0.v:845]
 WARNING: [VRFC 10-2686] null range choice is ignored [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/microblaze_v11_0/hdl/microblaze_v11_0_vh_rfs.vhd:38791]
 WARNING: [VRFC 10-2686] null range choice is ignored [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/microblaze_v11_0/hdl/microblaze_v11_0_vh_rfs.vhd:38892]
 Completed static elaboration
@@ -310,13 +310,13 @@ Compiling architecture srl16e_v of entity unisim.SRL16E [\SRL16E(15,0)\]
 Compiling architecture imp of entity microblaze_v11_0_0.MB_SRL16E [\MB_SRL16E(c_target=artix7,c_use...]
 Compiling architecture srl16e_v of entity unisim.SRL16E [\SRL16E(init="0110000000000000")...]
 Compiling architecture imp of entity microblaze_v11_0_0.MB_SRL16E [\MB_SRL16E(c_target=artix7,c_use...]
-Compiling architecture srl16e_v of entity unisim.SRL16E [\SRL16E(init="0100100010000101")...]
+Compiling architecture srl16e_v of entity unisim.SRL16E [\SRL16E(init="0110100000000000")...]
 Compiling architecture imp of entity microblaze_v11_0_0.MB_SRL16E [\MB_SRL16E(c_target=artix7,c_use...]
-Compiling architecture srl16e_v of entity unisim.SRL16E [\SRL16E(init="1001100101011011")...]
+Compiling architecture srl16e_v of entity unisim.SRL16E [\SRL16E(init="1001100110001011")...]
 Compiling architecture imp of entity microblaze_v11_0_0.MB_SRL16E [\MB_SRL16E(c_target=artix7,c_use...]
 Compiling architecture srl16e_v of entity unisim.SRL16E [\SRL16E(init="0000001101111000")...]
 Compiling architecture imp of entity microblaze_v11_0_0.MB_SRL16E [\MB_SRL16E(c_target=artix7,c_use...]
-Compiling architecture srl16e_v of entity unisim.SRL16E [\SRL16E(init="0011010001100011")...]
+Compiling architecture srl16e_v of entity unisim.SRL16E [\SRL16E(init="1011010001100011")...]
 Compiling architecture imp of entity microblaze_v11_0_0.MB_SRL16E [\MB_SRL16E(c_target=artix7,c_use...]
 Compiling architecture srl16e_v of entity unisim.SRL16E [\SRL16E(init="0010010100000000")...]
 Compiling architecture imp of entity microblaze_v11_0_0.MB_SRL16E [\MB_SRL16E(c_target=artix7,c_use...]
@@ -331,16 +331,9 @@ Compiling architecture imp of entity microblaze_v11_0_0.MB_AND2B1L [\MB_AND2B1L(
 Compiling architecture imp of entity microblaze_v11_0_0.address_hit [\address_hit(c_target=artix7,c_f...]
 Compiling architecture imp of entity microblaze_v11_0_0.address_hit [\address_hit(c_target=artix7,c_t...]
 Compiling architecture imp of entity microblaze_v11_0_0.address_data_hit [\address_data_hit(c_target=artix...]
-Compiling architecture imp of entity microblaze_v11_0_0.mb_sync_vec [\mb_sync_vec(c_width=11)\]
-Compiling architecture imp of entity microblaze_v11_0_0.debug_stat_counter [\debug_stat_counter(c_target=art...]
-Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(alumodereg=0,carryinreg...]
-Compiling architecture imp of entity microblaze_v11_0_0.MB_DSP48E1 [\MB_DSP48E1(c_target=artix7,alum...]
-Compiling architecture imp of entity microblaze_v11_0_0.dsp_module [\dsp_module(c_target=artix7,c_ab...]
-Compiling architecture imp of entity microblaze_v11_0_0.debug_stat_counter [\debug_stat_counter(c_target=art...]
-Compiling architecture imp of entity microblaze_v11_0_0.Debug_Stat [\Debug_Stat(c_target=artix7,c_da...]
 Compiling architecture imp of entity microblaze_v11_0_0.mb_sync_vec [\mb_sync_vec(c_width=9)\]
 Compiling architecture rb36_internal_vhdl_v of entity unisim.RB36_INTERNAL_VHDL [\RB36_INTERNAL_VHDL(init_a="0000...]
-Compiling architecture ramb36e1_v of entity unisim.RAMB36E1 [\RAMB36E1(read_width_a=18,read_w...]
+Compiling architecture ramb36e1_v of entity unisim.RAMB36E1 [\RAMB36E1(read_width_a=9,read_wi...]
 Compiling architecture imp of entity microblaze_v11_0_0.MB_RAMB36 [\MB_RAMB36(c_target=artix7,c_use...]
 Compiling architecture imp of entity microblaze_v11_0_0.RAM_Module [\RAM_Module(c_id=1000,c_target=a...]
 Compiling architecture imp of entity microblaze_v11_0_0.Debug_Trace [\Debug_Trace(c_target=artix7,c_d...]
@@ -499,7 +492,7 @@ Compiling architecture imp of entity microblaze_v11_0_0.Result_Mux_Bit [\Result_
 Compiling architecture imp of entity microblaze_v11_0_0.Result_Mux [\Result_Mux(c_data_size=32,c_tar...]
 Compiling architecture imp of entity microblaze_v11_0_0.Zero_Detect [\Zero_Detect(c_data_size=32,c_ta...]
 Compiling architecture imp of entity microblaze_v11_0_0.MSR_Reg_Bit [\MSR_Reg_Bit(c_target=artix7)\]
-Compiling architecture imp of entity microblaze_v11_0_0.MSR_Reg [\MSR_Reg(c_target=artix7,c_use_d...]
+Compiling architecture imp of entity microblaze_v11_0_0.MSR_Reg [\MSR_Reg(c_target=artix7,c_reset...]
 Compiling architecture lut4_v of entity unisim.LUT4 [\LUT4(init="1111000001100110")(0...]
 Compiling architecture imp of entity microblaze_v11_0_0.MB_LUT4 [\MB_LUT4(c_target=artix7,init="1...]
 Compiling architecture lut4_v of entity unisim.LUT4 [\LUT4(init="1010101011001010")(0...]
@@ -683,6 +676,7 @@ Compiling module xil_defaultlib.AXI_bd_0_xadc_wiz_0_0
 Compiling module xlconstant_v1_1_5.xlconstant_v1_1_5_xlconstant(CON...
 Compiling module xil_defaultlib.AXI_bd_0_xlconstant_0_0
 Compiling module xil_defaultlib.AXI_bd_0
-Compiling module xil_defaultlib.top
+Compiling module xil_defaultlib.top_default
+Compiling module xil_defaultlib.top_tb
 Compiling module xil_defaultlib.glbl
-Built simulation snapshot top_behav
+Built simulation snapshot top_tb_behav

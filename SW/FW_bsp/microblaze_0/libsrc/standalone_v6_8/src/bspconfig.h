@@ -36,7 +36,7 @@
 #ifndef __BSPCONFIG_H_
 #define __BSPCONFIG_H_
 
-#define MICROBLAZE_PVR_NONE
+#define MICROBLAZE_PVR_BASIC
 /*
  * Definition to indicate that current BSP is a FreeRTOS BSP which can be used to
  * distinguish between standalone BSP and FreeRTOS BSP.

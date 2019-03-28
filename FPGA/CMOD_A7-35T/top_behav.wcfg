@@ -3,7 +3,7 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="top_behav.wdb" id="1">
+      <db_ref path="top_tb_behav.wdb" id="1">
          <top_modules>
             <top_module name="axi_bd_0_clk_wiz_1_0_family_support" />
             <top_module name="axi_bd_0_clk_wiz_1_0_ipif_pkg" />
@@ -19,388 +19,254 @@
             <top_module name="lmb_bram_if_funcs" />
             <top_module name="mdm_funcs" />
             <top_module name="tc_types" />
-            <top_module name="top" />
+            <top_module name="top_tb" />
             <top_module name="vcomponents" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="999990325fs"></ZoomStartTime>
-      <ZoomEndTime time="1000001196fs"></ZoomEndTime>
-      <Cursor1Time time="1000000000fs"></Cursor1Time>
+      <ZoomStartTime time="54514200000fs"></ZoomStartTime>
+      <ZoomEndTime time="54625300001fs"></ZoomEndTime>
+      <Cursor1Time time="60000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="175"></NameColumnWidth>
-      <ValueColumnWidth column_width="146"></ValueColumnWidth>
+      <NameColumnWidth column_width="243"></NameColumnWidth>
+      <ValueColumnWidth column_width="138"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="92" />
-   <wvobject fp_name="/top/sysclk" type="logic">
-      <obj_property name="ElementShortName">sysclk</obj_property>
-      <obj_property name="ObjectShortName">sysclk</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/btn" type="array">
-      <obj_property name="ElementShortName">btn[1:0]</obj_property>
-      <obj_property name="ObjectShortName">btn[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/ja" type="array">
-      <obj_property name="ElementShortName">ja[7:0]</obj_property>
-      <obj_property name="ObjectShortName">ja[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio1" type="logic">
-      <obj_property name="ElementShortName">pio1</obj_property>
-      <obj_property name="ObjectShortName">pio1</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio2" type="logic">
-      <obj_property name="ElementShortName">pio2</obj_property>
-      <obj_property name="ObjectShortName">pio2</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio3" type="logic">
-      <obj_property name="ElementShortName">pio3</obj_property>
-      <obj_property name="ObjectShortName">pio3</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio4" type="logic">
-      <obj_property name="ElementShortName">pio4</obj_property>
-      <obj_property name="ObjectShortName">pio4</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio5" type="logic">
-      <obj_property name="ElementShortName">pio5</obj_property>
-      <obj_property name="ObjectShortName">pio5</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio6" type="logic">
-      <obj_property name="ElementShortName">pio6</obj_property>
-      <obj_property name="ObjectShortName">pio6</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio7" type="logic">
-      <obj_property name="ElementShortName">pio7</obj_property>
-      <obj_property name="ObjectShortName">pio7</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio8" type="logic">
-      <obj_property name="ElementShortName">pio8</obj_property>
-      <obj_property name="ObjectShortName">pio8</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio9" type="logic">
-      <obj_property name="ElementShortName">pio9</obj_property>
-      <obj_property name="ObjectShortName">pio9</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio10" type="logic">
-      <obj_property name="ElementShortName">pio10</obj_property>
-      <obj_property name="ObjectShortName">pio10</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio11" type="logic">
-      <obj_property name="ElementShortName">pio11</obj_property>
-      <obj_property name="ObjectShortName">pio11</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio12" type="logic">
-      <obj_property name="ElementShortName">pio12</obj_property>
-      <obj_property name="ObjectShortName">pio12</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio13" type="logic">
-      <obj_property name="ElementShortName">pio13</obj_property>
-      <obj_property name="ObjectShortName">pio13</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio14" type="logic">
-      <obj_property name="ElementShortName">pio14</obj_property>
-      <obj_property name="ObjectShortName">pio14</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/xa_p" type="array">
-      <obj_property name="ElementShortName">xa_p[1:0]</obj_property>
-      <obj_property name="ObjectShortName">xa_p[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/xa_n" type="array">
-      <obj_property name="ElementShortName">xa_n[1:0]</obj_property>
-      <obj_property name="ObjectShortName">xa_n[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio17" type="logic">
-      <obj_property name="ElementShortName">pio17</obj_property>
-      <obj_property name="ObjectShortName">pio17</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio18" type="logic">
-      <obj_property name="ElementShortName">pio18</obj_property>
-      <obj_property name="ObjectShortName">pio18</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio19" type="logic">
-      <obj_property name="ElementShortName">pio19</obj_property>
-      <obj_property name="ObjectShortName">pio19</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio20" type="logic">
-      <obj_property name="ElementShortName">pio20</obj_property>
-      <obj_property name="ObjectShortName">pio20</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio21" type="logic">
-      <obj_property name="ElementShortName">pio21</obj_property>
-      <obj_property name="ObjectShortName">pio21</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio22" type="logic">
-      <obj_property name="ElementShortName">pio22</obj_property>
-      <obj_property name="ObjectShortName">pio22</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio23" type="logic">
-      <obj_property name="ElementShortName">pio23</obj_property>
-      <obj_property name="ObjectShortName">pio23</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio26" type="logic">
-      <obj_property name="ElementShortName">pio26</obj_property>
-      <obj_property name="ObjectShortName">pio26</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio27" type="logic">
-      <obj_property name="ElementShortName">pio27</obj_property>
-      <obj_property name="ObjectShortName">pio27</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio28" type="logic">
-      <obj_property name="ElementShortName">pio28</obj_property>
-      <obj_property name="ObjectShortName">pio28</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio29" type="logic">
-      <obj_property name="ElementShortName">pio29</obj_property>
-      <obj_property name="ObjectShortName">pio29</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio30" type="logic">
-      <obj_property name="ElementShortName">pio30</obj_property>
-      <obj_property name="ObjectShortName">pio30</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio31" type="logic">
-      <obj_property name="ElementShortName">pio31</obj_property>
-      <obj_property name="ObjectShortName">pio31</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio32" type="logic">
-      <obj_property name="ElementShortName">pio32</obj_property>
-      <obj_property name="ObjectShortName">pio32</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio33" type="logic">
-      <obj_property name="ElementShortName">pio33</obj_property>
-      <obj_property name="ObjectShortName">pio33</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio34" type="logic">
-      <obj_property name="ElementShortName">pio34</obj_property>
-      <obj_property name="ObjectShortName">pio34</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio35" type="logic">
-      <obj_property name="ElementShortName">pio35</obj_property>
-      <obj_property name="ObjectShortName">pio35</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio36" type="logic">
-      <obj_property name="ElementShortName">pio36</obj_property>
-      <obj_property name="ObjectShortName">pio36</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio37" type="logic">
-      <obj_property name="ElementShortName">pio37</obj_property>
-      <obj_property name="ObjectShortName">pio37</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio38" type="logic">
-      <obj_property name="ElementShortName">pio38</obj_property>
-      <obj_property name="ObjectShortName">pio38</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio39" type="logic">
-      <obj_property name="ElementShortName">pio39</obj_property>
-      <obj_property name="ObjectShortName">pio39</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio40" type="logic">
-      <obj_property name="ElementShortName">pio40</obj_property>
-      <obj_property name="ObjectShortName">pio40</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio41" type="logic">
-      <obj_property name="ElementShortName">pio41</obj_property>
-      <obj_property name="ObjectShortName">pio41</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio42" type="logic">
-      <obj_property name="ElementShortName">pio42</obj_property>
-      <obj_property name="ObjectShortName">pio42</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio43" type="logic">
-      <obj_property name="ElementShortName">pio43</obj_property>
-      <obj_property name="ObjectShortName">pio43</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio44" type="logic">
-      <obj_property name="ElementShortName">pio44</obj_property>
-      <obj_property name="ObjectShortName">pio44</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio45" type="logic">
-      <obj_property name="ElementShortName">pio45</obj_property>
-      <obj_property name="ObjectShortName">pio45</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio46" type="logic">
-      <obj_property name="ElementShortName">pio46</obj_property>
-      <obj_property name="ObjectShortName">pio46</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio47" type="logic">
-      <obj_property name="ElementShortName">pio47</obj_property>
-      <obj_property name="ObjectShortName">pio47</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/pio48" type="logic">
-      <obj_property name="ElementShortName">pio48</obj_property>
-      <obj_property name="ObjectShortName">pio48</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/led" type="array">
-      <obj_property name="ElementShortName">led[1:0]</obj_property>
-      <obj_property name="ObjectShortName">led[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/ledrgb_r" type="logic">
-      <obj_property name="ElementShortName">ledrgb_r</obj_property>
-      <obj_property name="ObjectShortName">ledrgb_r</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/ledrgb_g" type="logic">
-      <obj_property name="ElementShortName">ledrgb_g</obj_property>
-      <obj_property name="ObjectShortName">ledrgb_g</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/ledrgb_b" type="logic">
-      <obj_property name="ElementShortName">ledrgb_b</obj_property>
-      <obj_property name="ObjectShortName">ledrgb_b</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/usb_uart_txd" type="logic">
-      <obj_property name="ElementShortName">usb_uart_txd</obj_property>
-      <obj_property name="ObjectShortName">usb_uart_txd</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/usb_uart_rxd" type="logic">
-      <obj_property name="ElementShortName">usb_uart_rxd</obj_property>
-      <obj_property name="ObjectShortName">usb_uart_rxd</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/qspi_cs" type="logic">
-      <obj_property name="ElementShortName">qspi_cs</obj_property>
-      <obj_property name="ObjectShortName">qspi_cs</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/qspi_dq" type="array">
-      <obj_property name="ElementShortName">qspi_dq[3:0]</obj_property>
-      <obj_property name="ObjectShortName">qspi_dq[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/crypto_sda" type="logic">
-      <obj_property name="ElementShortName">crypto_sda</obj_property>
-      <obj_property name="ObjectShortName">crypto_sda</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/MemAdr" type="array">
-      <obj_property name="ElementShortName">MemAdr[18:0]</obj_property>
-      <obj_property name="ObjectShortName">MemAdr[18:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/MemDB" type="array">
-      <obj_property name="ElementShortName">MemDB[7:0]</obj_property>
-      <obj_property name="ObjectShortName">MemDB[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/RamCEn" type="logic">
-      <obj_property name="ElementShortName">RamCEn</obj_property>
-      <obj_property name="ObjectShortName">RamCEn</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/RamWEn" type="logic">
-      <obj_property name="ElementShortName">RamWEn</obj_property>
-      <obj_property name="ObjectShortName">RamWEn</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/RamOEn" type="logic">
-      <obj_property name="ElementShortName">RamOEn</obj_property>
-      <obj_property name="ObjectShortName">RamOEn</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/led_tri_t" type="array">
-      <obj_property name="ElementShortName">led_tri_t[1:0]</obj_property>
-      <obj_property name="ObjectShortName">led_tri_t[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/led_tri_o" type="array">
-      <obj_property name="ElementShortName">led_tri_o[1:0]</obj_property>
-      <obj_property name="ObjectShortName">led_tri_o[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/led_tri_i" type="array">
-      <obj_property name="ElementShortName">led_tri_i[1:0]</obj_property>
-      <obj_property name="ObjectShortName">led_tri_i[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/LedPort" type="array">
-      <obj_property name="ElementShortName">LedPort[1:0]</obj_property>
-      <obj_property name="ObjectShortName">LedPort[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/ledrgb_tri_t" type="array">
-      <obj_property name="ElementShortName">ledrgb_tri_t[2:0]</obj_property>
-      <obj_property name="ObjectShortName">ledrgb_tri_t[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/ledrgb_tri_o" type="array">
-      <obj_property name="ElementShortName">ledrgb_tri_o[2:0]</obj_property>
-      <obj_property name="ObjectShortName">ledrgb_tri_o[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/ledrgb_tri_i" type="array">
-      <obj_property name="ElementShortName">ledrgb_tri_i[2:0]</obj_property>
-      <obj_property name="ObjectShortName">ledrgb_tri_i[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/LedRgbPort" type="array">
-      <obj_property name="ElementShortName">LedRgbPort[2:0]</obj_property>
-      <obj_property name="ObjectShortName">LedRgbPort[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/clk_100mhz" type="logic">
-      <obj_property name="ElementShortName">clk_100mhz</obj_property>
-      <obj_property name="ObjectShortName">clk_100mhz</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/q_100mhz" type="array">
-      <obj_property name="ElementShortName">q_100mhz[27:0]</obj_property>
-      <obj_property name="ObjectShortName">q_100mhz[27:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/flash_ss_t" type="logic">
-      <obj_property name="ElementShortName">flash_ss_t</obj_property>
-      <obj_property name="ObjectShortName">flash_ss_t</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/flash_ss_o" type="logic">
-      <obj_property name="ElementShortName">flash_ss_o</obj_property>
-      <obj_property name="ObjectShortName">flash_ss_o</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/flash_ss_i" type="logic">
-      <obj_property name="ElementShortName">flash_ss_i</obj_property>
-      <obj_property name="ObjectShortName">flash_ss_i</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/flash_io0_t" type="logic">
-      <obj_property name="ElementShortName">flash_io0_t</obj_property>
-      <obj_property name="ObjectShortName">flash_io0_t</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/flash_io0_o" type="logic">
-      <obj_property name="ElementShortName">flash_io0_o</obj_property>
-      <obj_property name="ObjectShortName">flash_io0_o</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/flash_io0_i" type="logic">
-      <obj_property name="ElementShortName">flash_io0_i</obj_property>
-      <obj_property name="ObjectShortName">flash_io0_i</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/flash_io1_t" type="logic">
-      <obj_property name="ElementShortName">flash_io1_t</obj_property>
-      <obj_property name="ObjectShortName">flash_io1_t</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/flash_io1_o" type="logic">
-      <obj_property name="ElementShortName">flash_io1_o</obj_property>
-      <obj_property name="ObjectShortName">flash_io1_o</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/flash_io1_i" type="logic">
-      <obj_property name="ElementShortName">flash_io1_i</obj_property>
-      <obj_property name="ObjectShortName">flash_io1_i</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/flash_io2_t" type="logic">
-      <obj_property name="ElementShortName">flash_io2_t</obj_property>
-      <obj_property name="ObjectShortName">flash_io2_t</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/flash_io2_o" type="logic">
-      <obj_property name="ElementShortName">flash_io2_o</obj_property>
-      <obj_property name="ObjectShortName">flash_io2_o</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/flash_io2_i" type="logic">
-      <obj_property name="ElementShortName">flash_io2_i</obj_property>
-      <obj_property name="ObjectShortName">flash_io2_i</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/flash_io3_t" type="logic">
-      <obj_property name="ElementShortName">flash_io3_t</obj_property>
-      <obj_property name="ObjectShortName">flash_io3_t</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/flash_io3_o" type="logic">
-      <obj_property name="ElementShortName">flash_io3_o</obj_property>
-      <obj_property name="ObjectShortName">flash_io3_o</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/flash_io3_i" type="logic">
-      <obj_property name="ElementShortName">flash_io3_i</obj_property>
-      <obj_property name="ObjectShortName">flash_io3_i</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/mem_i" type="array">
-      <obj_property name="ElementShortName">mem_i[7:0]</obj_property>
-      <obj_property name="ObjectShortName">mem_i[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/mem_o" type="array">
-      <obj_property name="ElementShortName">mem_o[7:0]</obj_property>
-      <obj_property name="ObjectShortName">mem_o[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/mem_t" type="array">
-      <obj_property name="ElementShortName">mem_t[7:0]</obj_property>
-      <obj_property name="ObjectShortName">mem_t[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top/top_axi/microblaze_0/Instr_Addr" type="array">
-      <obj_property name="ElementShortName">Instr_Addr[0:31]</obj_property>
-      <obj_property name="ObjectShortName">Instr_Addr[0:31]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+   <WVObjectSize size="5" />
+   <wave_markers>
+      <marker time="0" label="" />
+      <marker time="0" label="" />
+   </wave_markers>
+   <wvobject fp_name="group117" type="group">
+      <obj_property name="label">Clocks</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/dut_sysclk" type="logic">
+         <obj_property name="ElementShortName">dut_sysclk</obj_property>
+         <obj_property name="ObjectShortName">dut_sysclk</obj_property>
+      </wvobject>
+      <wvobject fp_name="group151" type="group">
+         <obj_property name="label">PLL 100MHz</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/top_tb/dut/top_axi/clk_wiz_0/clk_in1" type="logic">
+            <obj_property name="ElementShortName">clk_in1</obj_property>
+            <obj_property name="ObjectShortName">clk_in1</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/dut/clk_100mhz" type="logic">
+            <obj_property name="ElementShortName">clk_100mhz</obj_property>
+            <obj_property name="ObjectShortName">clk_100mhz</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/dut/top_axi/clk_wiz_0/locked" type="logic">
+            <obj_property name="ElementShortName">locked</obj_property>
+            <obj_property name="ObjectShortName">locked</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group150" type="group">
+         <obj_property name="label">PLL prog</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/top_tb/dut/top_axi/clk_wiz_1/clk_out1" type="logic">
+            <obj_property name="ElementShortName">clk_out1</obj_property>
+            <obj_property name="ObjectShortName">clk_out1</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/dut/top_axi/clk_wiz_1/clk_out2" type="logic">
+            <obj_property name="ElementShortName">clk_out2</obj_property>
+            <obj_property name="ObjectShortName">clk_out2</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/dut/top_axi/clk_wiz_1/locked" type="logic">
+            <obj_property name="ElementShortName">locked</obj_property>
+            <obj_property name="ObjectShortName">locked</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group162" type="group">
+      <obj_property name="label">Reset_clk_wiz</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/dut/top_axi/rst_clk_wiz_0_100M/slowest_sync_clk" type="logic">
+         <obj_property name="ElementShortName">slowest_sync_clk</obj_property>
+         <obj_property name="ObjectShortName">slowest_sync_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/rst_clk_wiz_0_100M/ext_reset_in" type="logic">
+         <obj_property name="ElementShortName">ext_reset_in</obj_property>
+         <obj_property name="ObjectShortName">ext_reset_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/rst_clk_wiz_0_100M/aux_reset_in" type="logic">
+         <obj_property name="ElementShortName">aux_reset_in</obj_property>
+         <obj_property name="ObjectShortName">aux_reset_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/rst_clk_wiz_0_100M/mb_debug_sys_rst" type="logic">
+         <obj_property name="ElementShortName">mb_debug_sys_rst</obj_property>
+         <obj_property name="ObjectShortName">mb_debug_sys_rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/rst_clk_wiz_0_100M/dcm_locked" type="logic">
+         <obj_property name="ElementShortName">dcm_locked</obj_property>
+         <obj_property name="ObjectShortName">dcm_locked</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/rst_clk_wiz_0_100M/mb_reset" type="logic">
+         <obj_property name="ElementShortName">mb_reset</obj_property>
+         <obj_property name="ObjectShortName">mb_reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/rst_clk_wiz_0_100M/bus_struct_reset" type="array">
+         <obj_property name="ElementShortName">bus_struct_reset[0:0]</obj_property>
+         <obj_property name="ObjectShortName">bus_struct_reset[0:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/rst_clk_wiz_0_100M/peripheral_reset" type="array">
+         <obj_property name="ElementShortName">peripheral_reset[0:0]</obj_property>
+         <obj_property name="ObjectShortName">peripheral_reset[0:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/rst_clk_wiz_0_100M/interconnect_aresetn" type="array">
+         <obj_property name="ElementShortName">interconnect_aresetn[0:0]</obj_property>
+         <obj_property name="ObjectShortName">interconnect_aresetn[0:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/rst_clk_wiz_0_100M/peripheral_aresetn" type="array">
+         <obj_property name="ElementShortName">peripheral_aresetn[0:0]</obj_property>
+         <obj_property name="ObjectShortName">peripheral_aresetn[0:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group171" type="group">
+      <obj_property name="label">GPIO_LEDs</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/dut/top_axi/axi_gpio_0/s_axi_aclk" type="logic">
+         <obj_property name="ElementShortName">s_axi_aclk</obj_property>
+         <obj_property name="ObjectShortName">s_axi_aclk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/axi_gpio_0/s_axi_aresetn" type="logic">
+         <obj_property name="ElementShortName">s_axi_aresetn</obj_property>
+         <obj_property name="ObjectShortName">s_axi_aresetn</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/axi_gpio_0/gpio_io_i" type="array">
+         <obj_property name="ElementShortName">gpio_io_i[1:0]</obj_property>
+         <obj_property name="ObjectShortName">gpio_io_i[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/axi_gpio_0/gpio_io_o" type="array">
+         <obj_property name="ElementShortName">gpio_io_o[1:0]</obj_property>
+         <obj_property name="ObjectShortName">gpio_io_o[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/axi_gpio_0/gpio_io_t" type="array">
+         <obj_property name="ElementShortName">gpio_io_t[1:0]</obj_property>
+         <obj_property name="ObjectShortName">gpio_io_t[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/axi_gpio_0/gpio2_io_i" type="array">
+         <obj_property name="ElementShortName">gpio2_io_i[2:0]</obj_property>
+         <obj_property name="ObjectShortName">gpio2_io_i[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/axi_gpio_0/gpio2_io_o" type="array">
+         <obj_property name="ElementShortName">gpio2_io_o[2:0]</obj_property>
+         <obj_property name="ObjectShortName">gpio2_io_o[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/axi_gpio_0/gpio2_io_t" type="array">
+         <obj_property name="ElementShortName">gpio2_io_t[2:0]</obj_property>
+         <obj_property name="ObjectShortName">gpio2_io_t[2:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group118" type="group">
+      <obj_property name="label">DUT ports</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/dut_btn" type="array">
+         <obj_property name="ElementShortName">dut_btn[1:0]</obj_property>
+         <obj_property name="ObjectShortName">dut_btn[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut_led" type="array">
+         <obj_property name="ElementShortName">dut_led[1:0]</obj_property>
+         <obj_property name="ObjectShortName">dut_led[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut_ledrgb_r" type="logic">
+         <obj_property name="ElementShortName">dut_ledrgb_r</obj_property>
+         <obj_property name="ObjectShortName">dut_ledrgb_r</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut_ledrgb_g" type="logic">
+         <obj_property name="ElementShortName">dut_ledrgb_g</obj_property>
+         <obj_property name="ObjectShortName">dut_ledrgb_g</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut_ledrgb_b" type="logic">
+         <obj_property name="ElementShortName">dut_ledrgb_b</obj_property>
+         <obj_property name="ObjectShortName">dut_ledrgb_b</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut_txd" type="logic">
+         <obj_property name="ElementShortName">dut_txd</obj_property>
+         <obj_property name="ObjectShortName">dut_txd</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut_rxd" type="logic">
+         <obj_property name="ElementShortName">dut_rxd</obj_property>
+         <obj_property name="ObjectShortName">dut_rxd</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut_mem_addr" type="array">
+         <obj_property name="ElementShortName">dut_mem_addr[18:0]</obj_property>
+         <obj_property name="ObjectShortName">dut_mem_addr[18:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut_mem_cen" type="logic">
+         <obj_property name="ElementShortName">dut_mem_cen</obj_property>
+         <obj_property name="ObjectShortName">dut_mem_cen</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut_mem_wen" type="logic">
+         <obj_property name="ElementShortName">dut_mem_wen</obj_property>
+         <obj_property name="ObjectShortName">dut_mem_wen</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut_mem_oen" type="logic">
+         <obj_property name="ElementShortName">dut_mem_oen</obj_property>
+         <obj_property name="ObjectShortName">dut_mem_oen</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group119" type="group">
+      <obj_property name="label">LEDs</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/dut/led_tri_t" type="array">
+         <obj_property name="ElementShortName">led_tri_t[1:0]</obj_property>
+         <obj_property name="ObjectShortName">led_tri_t[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/led_tri_o" type="array">
+         <obj_property name="ElementShortName">led_tri_o[1:0]</obj_property>
+         <obj_property name="ObjectShortName">led_tri_o[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/led_tri_i" type="array">
+         <obj_property name="ElementShortName">led_tri_i[1:0]</obj_property>
+         <obj_property name="ObjectShortName">led_tri_i[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/LedPort" type="array">
+         <obj_property name="ElementShortName">LedPort[1:0]</obj_property>
+         <obj_property name="ObjectShortName">LedPort[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/ledrgb_tri_t" type="array">
+         <obj_property name="ElementShortName">ledrgb_tri_t[2:0]</obj_property>
+         <obj_property name="ObjectShortName">ledrgb_tri_t[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/ledrgb_tri_o" type="array">
+         <obj_property name="ElementShortName">ledrgb_tri_o[2:0]</obj_property>
+         <obj_property name="ObjectShortName">ledrgb_tri_o[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/ledrgb_tri_i" type="array">
+         <obj_property name="ElementShortName">ledrgb_tri_i[2:0]</obj_property>
+         <obj_property name="ObjectShortName">ledrgb_tri_i[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/LedRgbPort" type="array">
+         <obj_property name="ElementShortName">LedRgbPort[2:0]</obj_property>
+         <obj_property name="ObjectShortName">LedRgbPort[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider176">
+         <obj_property name="label">MicroBlaze</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/microblaze_0/Instr_Addr" type="array">
+         <obj_property name="ElementShortName">Instr_Addr[0:31]</obj_property>
+         <obj_property name="ObjectShortName">Instr_Addr[0:31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/microblaze_0/Data_Addr" type="array">
+         <obj_property name="ElementShortName">Data_Addr[0:31]</obj_property>
+         <obj_property name="ObjectShortName">Data_Addr[0:31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/microblaze_0/Data_Read" type="array">
+         <obj_property name="ElementShortName">Data_Read[0:31]</obj_property>
+         <obj_property name="ObjectShortName">Data_Read[0:31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/dut/top_axi/microblaze_0/Data_Write" type="array">
+         <obj_property name="ElementShortName">Data_Write[0:31]</obj_property>
+         <obj_property name="ObjectShortName">Data_Write[0:31]</obj_property>
+      </wvobject>
    </wvobject>
 </wave_config>

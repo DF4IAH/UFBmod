@@ -1,4 +1,4 @@
-10:48:22 **** Auto Build of configuration Debug for project FW ****
+22:01:49 **** Auto Build of configuration Debug for project FW ****
 make all 
 'Building file: ../src/freertos_hello_world.c'
 'Invoking: MicroBlaze gcc compiler'
@@ -17,5 +17,5 @@ mb-size FW.elf  |tee "FW.elf.size"
 'Finished building: FW.elf.size'
 ' '
 
-10:48:23 Build Finished (took 876ms)
+22:01:50 Build Finished (took 1s.136ms)
 

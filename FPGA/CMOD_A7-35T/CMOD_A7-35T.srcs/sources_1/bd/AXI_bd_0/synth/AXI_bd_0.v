@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Thu Mar 28 15:50:21 2019
+//Date        : Thu Mar 28 20:49:44 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target AXI_bd_0.bd
 //Design      : AXI_bd_0
@@ -18,12 +18,8 @@ module AXI_bd_0
     AXI_bd_btn0,
     AXI_bd_btn1,
     AXI_bd_clk_100mhz_out,
-    AXI_bd_gpio_led_tri_i,
     AXI_bd_gpio_led_tri_o,
-    AXI_bd_gpio_led_tri_t,
-    AXI_bd_gpio_ledrgb_tri_i,
     AXI_bd_gpio_ledrgb_tri_o,
-    AXI_bd_gpio_ledrgb_tri_t,
     AXI_bd_pll_i,
     AXI_bd_pll_q,
     AXI_bd_sys_clock,
@@ -70,12 +66,8 @@ module AXI_bd_0
   input AXI_bd_btn0;
   input AXI_bd_btn1;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_BD_CLK_100MHZ_OUT CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_BD_CLK_100MHZ_OUT, CLK_DOMAIN /clk_wiz_0_clk_out1, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.0" *) output AXI_bd_clk_100mhz_out;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_led TRI_I" *) input [1:0]AXI_bd_gpio_led_tri_i;
   (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_led TRI_O" *) output [1:0]AXI_bd_gpio_led_tri_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_led TRI_T" *) output [1:0]AXI_bd_gpio_led_tri_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_ledrgb TRI_I" *) input [2:0]AXI_bd_gpio_ledrgb_tri_i;
   (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_ledrgb TRI_O" *) output [2:0]AXI_bd_gpio_ledrgb_tri_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_ledrgb TRI_T" *) output [2:0]AXI_bd_gpio_ledrgb_tri_t;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_BD_PLL_I CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_BD_PLL_I, CLK_DOMAIN /clk_wiz_1_clk_out1, FREQ_HZ 10000000, INSERT_VIP 0, PHASE 0.0" *) output AXI_bd_pll_i;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_BD_PLL_Q CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_BD_PLL_Q, CLK_DOMAIN /clk_wiz_1_clk_out1, FREQ_HZ 10000000, INSERT_VIP 0, PHASE 90.0" *) output AXI_bd_pll_q;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_BD_SYS_CLOCK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_BD_SYS_CLOCK, CLK_DOMAIN AXI_bd_0_AXI_bd_sys_clock, FREQ_HZ 12000000, INSERT_VIP 0, PHASE 0.000" *) input AXI_bd_sys_clock;
@@ -128,12 +120,8 @@ module AXI_bd_0
   wire [7:0]axi_emc_0_EMC_INTF_DQ_T;
   wire [0:0]axi_emc_0_EMC_INTF_OEN;
   wire axi_emc_0_EMC_INTF_WEN;
-  wire [2:0]axi_gpio_0_GPIO2_TRI_I;
   wire [2:0]axi_gpio_0_GPIO2_TRI_O;
-  wire [2:0]axi_gpio_0_GPIO2_TRI_T;
-  wire [1:0]axi_gpio_0_GPIO_TRI_I;
   wire [1:0]axi_gpio_0_GPIO_TRI_O;
-  wire [1:0]axi_gpio_0_GPIO_TRI_T;
   wire axi_gpio_1_ip2intc_irpt;
   wire [31:0]axi_protocol_convert_0_M_AXI_ARADDR;
   wire axi_protocol_convert_0_M_AXI_ARREADY;
@@ -809,9 +797,7 @@ module AXI_bd_0
   assign AXI_bd_btn1_1 = AXI_bd_btn1;
   assign AXI_bd_clk_100mhz_out = microblaze_0_Clk;
   assign AXI_bd_gpio_led_tri_o[1:0] = axi_gpio_0_GPIO_TRI_O;
-  assign AXI_bd_gpio_led_tri_t[1:0] = axi_gpio_0_GPIO_TRI_T;
   assign AXI_bd_gpio_ledrgb_tri_o[2:0] = axi_gpio_0_GPIO2_TRI_O;
-  assign AXI_bd_gpio_ledrgb_tri_t[2:0] = axi_gpio_0_GPIO2_TRI_T;
   assign AXI_bd_pll_i = clk_wiz_1_clk_out1;
   assign AXI_bd_pll_q = clk_wiz_1_clk_out2;
   assign AXI_bd_usb_uart_UART_baudoutn = axi_uart16550_0_UART_BAUDOUTn;
@@ -828,8 +814,6 @@ module AXI_bd_0
   assign Vaux4_0_1_V_N = AXI_bd_Vaux4_v_n;
   assign Vaux4_0_1_V_P = AXI_bd_Vaux4_v_p;
   assign axi_emc_0_EMC_INTF_DQ_I = cellular_ram_dq_i[7:0];
-  assign axi_gpio_0_GPIO2_TRI_I = AXI_bd_gpio_ledrgb_tri_i[2:0];
-  assign axi_gpio_0_GPIO_TRI_I = AXI_bd_gpio_led_tri_i[1:0];
   assign axi_quad_spi_0_SPI_0_IO0_I = qspi_flash_io0_i;
   assign axi_quad_spi_0_SPI_0_IO1_I = qspi_flash_io1_i;
   assign axi_quad_spi_0_SPI_0_IO2_I = qspi_flash_io2_i;
@@ -906,12 +890,8 @@ module AXI_bd_0
         .s_axi_mem_wstrb(microblaze_0_axi_periph_M01_AXI_WSTRB),
         .s_axi_mem_wvalid(microblaze_0_axi_periph_M01_AXI_WVALID));
   AXI_bd_0_axi_gpio_0_0 axi_gpio_0
-       (.gpio2_io_i(axi_gpio_0_GPIO2_TRI_I),
-        .gpio2_io_o(axi_gpio_0_GPIO2_TRI_O),
-        .gpio2_io_t(axi_gpio_0_GPIO2_TRI_T),
-        .gpio_io_i(axi_gpio_0_GPIO_TRI_I),
+       (.gpio2_io_o(axi_gpio_0_GPIO2_TRI_O),
         .gpio_io_o(axi_gpio_0_GPIO_TRI_O),
-        .gpio_io_t(axi_gpio_0_GPIO_TRI_T),
         .s_axi_aclk(microblaze_0_Clk),
         .s_axi_araddr(axi_protocol_convert_5_M_AXI_ARADDR[8:0]),
         .s_axi_aresetn(rst_clk_wiz_0_100M_peripheral_aresetn),

@@ -279,14 +279,16 @@ proc create_root_design { parentCell } {
   # Create instance: axi_gpio_0, and set properties
   set axi_gpio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_0 ]
   set_property -dict [ list \
+   CONFIG.C_ALL_OUTPUTS {1} \
+   CONFIG.C_ALL_OUTPUTS_2 {1} \
    CONFIG.C_DOUT_DEFAULT {0x00000003} \
    CONFIG.C_GPIO2_WIDTH {3} \
    CONFIG.C_GPIO_WIDTH {2} \
    CONFIG.C_IS_DUAL {1} \
    CONFIG.C_TRI_DEFAULT {0x00000003} \
    CONFIG.C_TRI_DEFAULT_2 {0x00000007} \
-   CONFIG.GPIO2_BOARD_INTERFACE {rgb_led} \
-   CONFIG.GPIO_BOARD_INTERFACE {led_2bits} \
+   CONFIG.GPIO2_BOARD_INTERFACE {Custom} \
+   CONFIG.GPIO_BOARD_INTERFACE {Custom} \
  ] $axi_gpio_0
 
   # Create instance: axi_gpio_1, and set properties
@@ -295,7 +297,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_ALL_INPUTS {1} \
    CONFIG.C_GPIO_WIDTH {1} \
    CONFIG.C_INTERRUPT_PRESENT {1} \
-   CONFIG.GPIO_BOARD_INTERFACE {push_buttons_1bit} \
+   CONFIG.GPIO_BOARD_INTERFACE {Custom} \
  ] $axi_gpio_1
 
   # Create instance: axi_protocol_convert_0, and set properties
