@@ -13845,7 +13845,7 @@
             </spirit:parameter>
             <spirit:parameter>
               <spirit:name>workflow</spirit:name>
-              <spirit:value spirit:id="ADDRSPACE_ADDRBLOCKPARAM_VALUE.DATA.LOCAL_MEMORY_MAP.MICROBLAZE_0.workflow">simulation</spirit:value>
+              <spirit:value spirit:id="ADDRSPACE_ADDRBLOCKPARAM_VALUE.DATA.LOCAL_MEMORY_MAP.MICROBLAZE_0.workflow">implementation</spirit:value>
             </spirit:parameter>
             <spirit:parameter>
               <spirit:name>controlpaths</spirit:name>
@@ -13853,11 +13853,11 @@
             </spirit:parameter>
             <spirit:parameter>
               <spirit:name>memorytypename</spirit:name>
-              <spirit:value spirit:id="ADDRSPACE_ADDRBLOCKPARAM_VALUE.DATA.LOCAL_MEMORY_MAP.MICROBLAZE_0.memorytypename">microblaze_0_local_memory_lmb_bram_MEM_DEVICE</spirit:value>
+              <spirit:value spirit:id="ADDRSPACE_ADDRBLOCKPARAM_VALUE.DATA.LOCAL_MEMORY_MAP.MICROBLAZE_0.memorytypename"/>
             </spirit:parameter>
             <spirit:parameter>
               <spirit:name>simmemfile</spirit:name>
-              <spirit:value spirit:id="ADDRSPACE_ADDRBLOCKPARAM_VALUE.DATA.LOCAL_MEMORY_MAP.MICROBLAZE_0.simmemfile">AXI_bd_0_lmb_bram_0.mem</spirit:value>
+              <spirit:value spirit:id="ADDRSPACE_ADDRBLOCKPARAM_VALUE.DATA.LOCAL_MEMORY_MAP.MICROBLAZE_0.simmemfile"/>
             </spirit:parameter>
           </spirit:parameters>
         </spirit:addressBlock>
@@ -13877,7 +13877,7 @@
             </spirit:parameter>
             <spirit:parameter>
               <spirit:name>workflow</spirit:name>
-              <spirit:value spirit:id="ADDRSPACE_ADDRBLOCKPARAM_VALUE.DATA.LOCAL_MEMORY_MAP.MICROBLAZE_1.workflow">implementation</spirit:value>
+              <spirit:value spirit:id="ADDRSPACE_ADDRBLOCKPARAM_VALUE.DATA.LOCAL_MEMORY_MAP.MICROBLAZE_1.workflow">simulation</spirit:value>
             </spirit:parameter>
             <spirit:parameter>
               <spirit:name>controlpaths</spirit:name>
@@ -13885,11 +13885,11 @@
             </spirit:parameter>
             <spirit:parameter>
               <spirit:name>memorytypename</spirit:name>
-              <spirit:value spirit:id="ADDRSPACE_ADDRBLOCKPARAM_VALUE.DATA.LOCAL_MEMORY_MAP.MICROBLAZE_1.memorytypename"/>
+              <spirit:value spirit:id="ADDRSPACE_ADDRBLOCKPARAM_VALUE.DATA.LOCAL_MEMORY_MAP.MICROBLAZE_1.memorytypename">microblaze_0_local_memory_lmb_bram_MEM_DEVICE</spirit:value>
             </spirit:parameter>
             <spirit:parameter>
               <spirit:name>simmemfile</spirit:name>
-              <spirit:value spirit:id="ADDRSPACE_ADDRBLOCKPARAM_VALUE.DATA.LOCAL_MEMORY_MAP.MICROBLAZE_1.simmemfile"/>
+              <spirit:value spirit:id="ADDRSPACE_ADDRBLOCKPARAM_VALUE.DATA.LOCAL_MEMORY_MAP.MICROBLAZE_1.simmemfile">AXI_bd_0_lmb_bram_0.mem</spirit:value>
             </spirit:parameter>
           </spirit:parameters>
         </spirit:addressBlock>
@@ -13931,11 +13931,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Mar 25 08:18:51 UTC 2019</spirit:value>
+            <spirit:value>Wed Mar 27 13:54:08 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:5256f5fd</spirit:value>
+            <spirit:value>9:a8f9680c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -13949,11 +13949,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Mar 27 08:08:12 UTC 2019</spirit:value>
+            <spirit:value>Thu Mar 28 14:50:23 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:5256f5fd</spirit:value>
+            <spirit:value>9:a8f9680c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -13969,11 +13969,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Mar 27 08:08:12 UTC 2019</spirit:value>
+            <spirit:value>Thu Mar 28 14:50:23 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:5256f5fd</spirit:value>
+            <spirit:value>9:a8f9680c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -13989,11 +13989,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Mar 25 08:18:51 UTC 2019</spirit:value>
+            <spirit:value>Wed Mar 27 13:54:08 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f17d7768</spirit:value>
+            <spirit:value>9:bc5c6ae8</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -14009,11 +14009,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Mar 27 08:08:13 UTC 2019</spirit:value>
+            <spirit:value>Thu Mar 28 14:50:23 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f17d7768</spirit:value>
+            <spirit:value>9:bc5c6ae8</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -14027,11 +14027,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Mar 27 14:06:23 UTC 2019</spirit:value>
+            <spirit:value>Thu Mar 28 14:53:49 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:5256f5fd</spirit:value>
+            <spirit:value>9:a8f9680c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -24587,7 +24587,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_PVR</spirit:name>
         <spirit:displayName>Specifies Processor Version Register</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_PVR" spirit:choiceRef="choice_pairs_5ab38e91">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_PVR" spirit:choiceRef="choice_pairs_5ab38e91">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="std_logic_vector(0 to 7)">
         <spirit:name>C_PVR_USER1</spirit:name>
@@ -24606,7 +24606,7 @@
       <spirit:modelParameter spirit:dataType="std_logic_vector(0 to 31)">
         <spirit:name>C_RESET_MSR</spirit:name>
         <spirit:displayName>Specify Reset Value for Select MSR Bits</spirit:displayName>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_RESET_MSR" spirit:bitStringLength="32">0x00000000</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_RESET_MSR" spirit:bitStringLength="32">0x00000001</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_OPCODE_0x0_ILLEGAL</spirit:name>
@@ -24626,7 +24626,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_NUMBER_OF_PC_BRK</spirit:name>
         <spirit:displayName>Number of PC Breakpoints</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_NUMBER_OF_PC_BRK" spirit:minimum="0" spirit:maximum="8" spirit:rangeType="long">5</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_NUMBER_OF_PC_BRK" spirit:minimum="0" spirit:maximum="8" spirit:rangeType="long">8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_NUMBER_OF_RD_ADDR_BRK</spirit:name>
@@ -24641,12 +24641,12 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DEBUG_EVENT_COUNTERS</spirit:name>
         <spirit:displayName>Number of Performance Monitor Event Counters</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DEBUG_EVENT_COUNTERS" spirit:minimum="0" spirit:maximum="48" spirit:rangeType="long">5</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DEBUG_EVENT_COUNTERS" spirit:minimum="0" spirit:maximum="48" spirit:rangeType="long">0</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DEBUG_LATENCY_COUNTERS</spirit:name>
         <spirit:displayName>Number of Performance Monitor Latency Counters</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DEBUG_LATENCY_COUNTERS" spirit:minimum="0" spirit:maximum="7" spirit:rangeType="long">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DEBUG_LATENCY_COUNTERS" spirit:minimum="0" spirit:maximum="7" spirit:rangeType="long">0</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DEBUG_COUNTER_WIDTH</spirit:name>
@@ -24656,7 +24656,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DEBUG_TRACE_SIZE</spirit:name>
         <spirit:displayName>Trace Buffer Size</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DEBUG_TRACE_SIZE" spirit:choiceRef="choice_pairs_13d40c7c">16384</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DEBUG_TRACE_SIZE" spirit:choiceRef="choice_pairs_13d40c7c">32768</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DEBUG_EXTERNAL_TRACE</spirit:name>
@@ -26272,7 +26272,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_PVR</spirit:name>
       <spirit:displayName>Specifies Processor Version Register</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_PVR" spirit:choiceRef="choice_pairs_5ab38e91" spirit:order="7000" spirit:configGroups="7 Processor Version Registers">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_PVR" spirit:choiceRef="choice_pairs_5ab38e91" spirit:order="7000" spirit:configGroups="7 Processor Version Registers">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -26288,7 +26288,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_PVR_USER1">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_PVR_USER1">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -26332,7 +26332,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_NUMBER_OF_PC_BRK</spirit:name>
       <spirit:displayName>Number of PC Breakpoints</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_NUMBER_OF_PC_BRK" spirit:order="5100" spirit:configGroups="5 Hardware Breakpoints" spirit:minimum="0" spirit:maximum="8" spirit:rangeType="long">5</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_NUMBER_OF_PC_BRK" spirit:order="5100" spirit:configGroups="5 Hardware Breakpoints" spirit:minimum="0" spirit:maximum="8" spirit:rangeType="long">8</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -26368,7 +26368,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_DEBUG_EVENT_COUNTERS</spirit:name>
       <spirit:displayName>Number of Performance Monitor Event Counters</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_DEBUG_EVENT_COUNTERS" spirit:order="5400" spirit:configGroups="5 Hardware Breakpoints" spirit:minimum="0" spirit:maximum="48" spirit:rangeType="long">5</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_DEBUG_EVENT_COUNTERS" spirit:order="5400" spirit:configGroups="5 Hardware Breakpoints" spirit:minimum="0" spirit:maximum="48" spirit:rangeType="long">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -26380,7 +26380,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_DEBUG_LATENCY_COUNTERS</spirit:name>
       <spirit:displayName>Number of Performance Monitor Latency Counters</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_DEBUG_LATENCY_COUNTERS" spirit:order="5500" spirit:configGroups="5 Hardware Breakpoints" spirit:minimum="0" spirit:maximum="7" spirit:rangeType="long">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_DEBUG_LATENCY_COUNTERS" spirit:order="5500" spirit:configGroups="5 Hardware Breakpoints" spirit:minimum="0" spirit:maximum="7" spirit:rangeType="long">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -26404,7 +26404,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_DEBUG_TRACE_SIZE</spirit:name>
       <spirit:displayName>Trace Buffer Size</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_DEBUG_TRACE_SIZE" spirit:choiceRef="choice_pairs_126baff7" spirit:order="5700" spirit:configGroups="5 Hardware Breakpoints">16384</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_DEBUG_TRACE_SIZE" spirit:choiceRef="choice_pairs_126baff7" spirit:order="5700" spirit:configGroups="5 Hardware Breakpoints">32768</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -26522,7 +26522,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_RESET_MSR_ICE</spirit:name>
       <spirit:displayName>ICE</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_RESET_MSR_ICE" spirit:choiceRef="choice_pairs_4873554b" spirit:order="6203" spirit:configGroups="6 Reset">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_RESET_MSR_ICE" spirit:choiceRef="choice_pairs_4873554b" spirit:order="6203" spirit:configGroups="6 Reset">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -26534,7 +26534,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_RESET_MSR_DCE</spirit:name>
       <spirit:displayName>DCE</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_RESET_MSR_DCE" spirit:choiceRef="choice_pairs_4873554b" spirit:order="6204" spirit:configGroups="6 Reset">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_RESET_MSR_DCE" spirit:choiceRef="choice_pairs_4873554b" spirit:order="6204" spirit:configGroups="6 Reset">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -28047,7 +28047,10 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DCACHE_LINE_LEN" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DCACHE_USE_WRITEBACK" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DCACHE_VICTIMS" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DEBUG_COUNTER_WIDTH" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DEBUG_ENABLED" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DEBUG_EVENT_COUNTERS" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DEBUG_LATENCY_COUNTERS" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DEBUG_TRACE_SIZE" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DIV_ZERO_EXCEPTION" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_D_AXI" xilinx:valueSource="user"/>
@@ -28078,6 +28081,9 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_NUMBER_OF_WR_ADDR_BRK" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_OPCODE_0x0_ILLEGAL" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PVR" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_RESET_MSR_DCE" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_RESET_MSR_ICE" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_TRACE" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_UNALIGNED_EXCEPTIONS" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_BARREL" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_BRANCH_TARGET_CACHE" xilinx:valueSource="user"/>

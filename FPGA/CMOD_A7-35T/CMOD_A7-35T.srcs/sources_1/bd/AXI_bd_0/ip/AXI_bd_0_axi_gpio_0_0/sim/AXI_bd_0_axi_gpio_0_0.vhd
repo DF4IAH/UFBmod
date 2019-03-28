@@ -183,10 +183,10 @@ BEGIN
       C_ALL_OUTPUTS_2 => 0,
       C_INTERRUPT_PRESENT => 0,
       C_DOUT_DEFAULT => X"00000003",
-      C_TRI_DEFAULT => X"FFFFFFFF",
+      C_TRI_DEFAULT => X"00000003",
       C_IS_DUAL => 1,
       C_DOUT_DEFAULT_2 => X"00000000",
-      C_TRI_DEFAULT_2 => X"FFFFFFFF"
+      C_TRI_DEFAULT_2 => X"00000007"
     )
     PORT MAP (
       s_axi_aclk => s_axi_aclk,
