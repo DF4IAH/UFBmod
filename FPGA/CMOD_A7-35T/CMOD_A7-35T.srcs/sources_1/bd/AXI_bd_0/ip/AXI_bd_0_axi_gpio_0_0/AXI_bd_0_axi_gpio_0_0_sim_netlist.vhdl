@@ -1,7 +1,7 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Wed Mar 27 14:58:42 2019
+-- Date        : Thu Mar 28 08:31:26 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               C:/Users/espero/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_axi_gpio_0_0/AXI_bd_0_axi_gpio_0_0_sim_netlist.vhdl
@@ -1269,27 +1269,27 @@ begin
       I3 => \^gpio_io_o\(0),
       O => \Dual.gpio_Data_Out[1]_i_1_n_0\
     );
-\Dual.gpio_Data_Out_reg[0]\: unisim.vcomponents.FDRE
+\Dual.gpio_Data_Out_reg[0]\: unisim.vcomponents.FDSE
     generic map(
-      INIT => '0'
+      INIT => '1'
     )
         port map (
       C => s_axi_aclk,
       CE => '1',
       D => \Dual.gpio_Data_Out[0]_i_1_n_0\,
       Q => \^gpio_io_o\(1),
-      R => bus2ip_reset
+      S => bus2ip_reset
     );
-\Dual.gpio_Data_Out_reg[1]\: unisim.vcomponents.FDRE
+\Dual.gpio_Data_Out_reg[1]\: unisim.vcomponents.FDSE
     generic map(
-      INIT => '0'
+      INIT => '1'
     )
         port map (
       C => s_axi_aclk,
       CE => '1',
       D => \Dual.gpio_Data_Out[1]_i_1_n_0\,
       Q => \^gpio_io_o\(0),
-      R => bus2ip_reset
+      S => bus2ip_reset
     );
 \Dual.gpio_OE[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -2201,7 +2201,7 @@ entity AXI_bd_0_axi_gpio_0_0_axi_gpio is
   attribute C_ALL_OUTPUTS_2 : integer;
   attribute C_ALL_OUTPUTS_2 of AXI_bd_0_axi_gpio_0_0_axi_gpio : entity is 0;
   attribute C_DOUT_DEFAULT : integer;
-  attribute C_DOUT_DEFAULT of AXI_bd_0_axi_gpio_0_0_axi_gpio : entity is 0;
+  attribute C_DOUT_DEFAULT of AXI_bd_0_axi_gpio_0_0_axi_gpio : entity is 3;
   attribute C_DOUT_DEFAULT_2 : integer;
   attribute C_DOUT_DEFAULT_2 of AXI_bd_0_axi_gpio_0_0_axi_gpio : entity is 0;
   attribute C_FAMILY : string;
@@ -2505,7 +2505,7 @@ architecture STRUCTURE of AXI_bd_0_axi_gpio_0_0 is
   attribute C_ALL_OUTPUTS_2 : integer;
   attribute C_ALL_OUTPUTS_2 of U0 : label is 0;
   attribute C_DOUT_DEFAULT : integer;
-  attribute C_DOUT_DEFAULT of U0 : label is 0;
+  attribute C_DOUT_DEFAULT of U0 : label is 3;
   attribute C_DOUT_DEFAULT_2 : integer;
   attribute C_DOUT_DEFAULT_2 of U0 : label is 0;
   attribute C_FAMILY : string;

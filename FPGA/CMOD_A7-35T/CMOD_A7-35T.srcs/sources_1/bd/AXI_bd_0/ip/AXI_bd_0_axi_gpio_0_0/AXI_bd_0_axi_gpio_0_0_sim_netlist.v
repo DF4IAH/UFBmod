@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Wed Mar 27 14:58:42 2019
+// Date        : Thu Mar 28 08:31:26 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               C:/Users/espero/git/UFBmod/FPGA/CMOD_A7-35T/CMOD_A7-35T.srcs/sources_1/bd/AXI_bd_0/ip/AXI_bd_0_axi_gpio_0_0/AXI_bd_0_axi_gpio_0_0_sim_netlist.v
@@ -97,7 +97,7 @@ module AXI_bd_0_axi_gpio_0_0
   (* C_ALL_INPUTS_2 = "0" *) 
   (* C_ALL_OUTPUTS = "0" *) 
   (* C_ALL_OUTPUTS_2 = "0" *) 
-  (* C_DOUT_DEFAULT = "0" *) 
+  (* C_DOUT_DEFAULT = "3" *) 
   (* C_DOUT_DEFAULT_2 = "0" *) 
   (* C_FAMILY = "artix7" *) 
   (* C_GPIO2_WIDTH = "3" *) 
@@ -596,22 +596,22 @@ module AXI_bd_0_axi_gpio_0_0_GPIO_Core
         .I2(p_0_in18_in),
         .I3(gpio_io_o[0]),
         .O(\Dual.gpio_Data_Out[1]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
+  FDSE #(
+    .INIT(1'b1)) 
     \Dual.gpio_Data_Out_reg[0] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(\Dual.gpio_Data_Out[0]_i_1_n_0 ),
         .Q(gpio_io_o[1]),
-        .R(bus2ip_reset));
-  FDRE #(
-    .INIT(1'b0)) 
+        .S(bus2ip_reset));
+  FDSE #(
+    .INIT(1'b1)) 
     \Dual.gpio_Data_Out_reg[1] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(\Dual.gpio_Data_Out[1]_i_1_n_0 ),
         .Q(gpio_io_o[0]),
-        .R(bus2ip_reset));
+        .S(bus2ip_reset));
   (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT4 #(
     .INIT(16'hEF20)) 
@@ -1049,7 +1049,7 @@ module AXI_bd_0_axi_gpio_0_0_address_decoder
 endmodule
 
 (* C_ALL_INPUTS = "0" *) (* C_ALL_INPUTS_2 = "0" *) (* C_ALL_OUTPUTS = "0" *) 
-(* C_ALL_OUTPUTS_2 = "0" *) (* C_DOUT_DEFAULT = "0" *) (* C_DOUT_DEFAULT_2 = "0" *) 
+(* C_ALL_OUTPUTS_2 = "0" *) (* C_DOUT_DEFAULT = "3" *) (* C_DOUT_DEFAULT_2 = "0" *) 
 (* C_FAMILY = "artix7" *) (* C_GPIO2_WIDTH = "3" *) (* C_GPIO_WIDTH = "2" *) 
 (* C_INTERRUPT_PRESENT = "0" *) (* C_IS_DUAL = "1" *) (* C_S_AXI_ADDR_WIDTH = "9" *) 
 (* C_S_AXI_DATA_WIDTH = "32" *) (* C_TRI_DEFAULT = "-1" *) (* C_TRI_DEFAULT_2 = "-1" *) 

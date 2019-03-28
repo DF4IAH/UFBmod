@@ -1,6 +1,0 @@
-00:51:23 **** Incremental Build of configuration Debug for project srec_spi_bootloader ****
-make all 
-make: Nothing to be done for 'all'.
-
-00:51:23 Build Finished (took 221ms)
-

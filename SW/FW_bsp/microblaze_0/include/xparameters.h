@@ -461,19 +461,15 @@
 
 /******************************************************************/
 
+/* Platform specific definitions */
+#define PLATFORM_MB
+ 
+/******************************************************************/
 #define STDIN_BASEADDRESS 0x44A10000
 #define STDOUT_BASEADDRESS 0x44A10000
 
 /******************************************************************/
 
-/* Platform specific definitions */
-#define PLATFORM_MB
- 
-/* Definitions for sleep timer configuration */
-#define XSLEEP_TIMER_IS_DEFAULT_TIMER
- 
- 
-/******************************************************************/
 /* Definitions for driver BRAM */
 #define XPAR_XBRAM_NUM_INSTANCES 2U
 

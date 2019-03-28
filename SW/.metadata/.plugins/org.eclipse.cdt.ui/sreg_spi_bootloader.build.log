@@ -1,0 +1,16 @@
+10:41:42 **** Auto Build of configuration Debug for project sreg_spi_bootloader ****
+make all 
+'Building target: sreg_spi_bootloader.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../sreg_spi_bootloader_bsp/microblaze_0/lib -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -Wl,--gc-sections -o "sreg_spi_bootloader.elf"  ./src/bootloader.o ./src/platform.o ./src/srec.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxilisf,-lxil,-lgcc,-lc,--end-group
+'Finished building target: sreg_spi_bootloader.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size sreg_spi_bootloader.elf  |tee "sreg_spi_bootloader.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  17052	    348	   1952	  19352	   4b98	sreg_spi_bootloader.elf
+'Finished building: sreg_spi_bootloader.elf.size'
+' '
+
+10:41:43 Build Finished (took 624ms)
+
