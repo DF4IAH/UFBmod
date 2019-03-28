@@ -114,3 +114,397 @@ java.lang.InterruptedException
 22:02:55 INFO  : Caching converted image as 'C:\Users\espero\git\UFBmod\SW\top_hw_platform_0\cache\FW.elf.srec'.
 22:03:21 INFO  : Invoking Bootgen: bootgen -arch fpga -image C:/Users/espero/git/UFBmod/SW/top_hw_platform_0/cache/bootimage.bif -w -o C:/Users/espero/git/UFBmod/SW/top_hw_platform_0/cache/BOOT.bin  -interface spi
 22:03:24 INFO  : Bootgen command execution is done.
+22:41:10 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:41:13 INFO  : Converting 'microblaze' ELF file 'C:\Users\espero\git\UFBmod\SW\FW\Debug\FW.elf' into bootable SREC format.
+22:41:13 INFO  : Caching converted image as 'C:\Users\espero\git\UFBmod\SW\top_hw_platform_0\cache\FW.elf.srec'.
+22:41:24 INFO  : Invoking Bootgen: bootgen -arch fpga -image C:/Users/espero/git/UFBmod/SW/top_hw_platform_0/cache/bootimage.bif -w -o C:/Users/espero/git/UFBmod/SW/top_hw_platform_0/cache/BOOT.bin  -interface spi
+22:41:27 INFO  : Bootgen command execution is done.
+22:42:52 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:42:54 INFO  : Converting 'microblaze' ELF file 'C:\Users\espero\git\UFBmod\SW\FW\Debug\FW.elf' into bootable SREC format.
+22:42:54 INFO  : Caching converted image as 'C:\Users\espero\git\UFBmod\SW\top_hw_platform_0\cache\FW.elf.srec'.
+22:42:58 INFO  : Invoking Bootgen: bootgen -arch fpga -image C:/Users/espero/git/UFBmod/SW/top_hw_platform_0/cache/bootimage.bif -w -o C:/Users/espero/git/UFBmod/SW/top_hw_platform_0/cache/BOOT.bin  -interface spi
+22:43:00 INFO  : Bootgen command execution is done.
+22:46:47 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:46:47 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+22:46:48 INFO  : FPGA configured successfully with bitstream "C:/Users/espero/git/UFBmod/SW/top_hw_platform_0/download.bit"
+22:47:02 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:47:21 INFO  : Invoking Bootgen: bootgen -arch fpga -image C:/Users/espero/git/UFBmod/SW/top_hw_platform_0/cache/bootimage.bif -w -o C:/Users/espero/git/UFBmod/SW/top_hw_platform_0/cache/BOOT.bin  -interface spi
+22:47:24 INFO  : Bootgen command execution is done.
+22:50:27 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:50:27 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+22:50:48 ERROR : could not find configuration request.
+22:51:35 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:51:35 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+22:51:36 INFO  : FPGA configured successfully with bitstream "C:/Users/espero/git/UFBmod/SW/top_hw_platform_0/download.bit"
+22:52:02 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:52:09 INFO  : Invoking Bootgen: bootgen -arch fpga -image C:/Users/espero/git/UFBmod/SW/top_hw_platform_0/cache/bootimage.bif -w -o C:/Users/espero/git/UFBmod/SW/top_hw_platform_0/cache/BOOT.bin  -interface spi
+22:52:11 INFO  : Bootgen command execution is done.
+22:55:27 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:55:44 INFO  : Converting 'microblaze' ELF file 'C:\Users\espero\git\UFBmod\SW\FW\Debug\FW.elf' into bootable SREC format.
+22:55:44 INFO  : Caching converted image as 'C:\Users\espero\git\UFBmod\SW\top_hw_platform_0\cache\FW.elf.srec'.
+22:56:30 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:56:31 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+22:56:32 INFO  : FPGA configured successfully with bitstream "C:/Users/espero/git/UFBmod/SW/top_hw_platform_0/download.bit"
+23:11:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+23:11:51 INFO  : 'fpga -state' command is executed.
+23:11:51 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:11:51 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+23:11:51 INFO  : 'jtag frequency' command is executed.
+23:11:51 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+23:11:51 INFO  : Context for processor 'microblaze_0' is selected.
+23:11:51 INFO  : Processor reset is completed for 'microblaze_0'.
+23:11:52 INFO  : Context for processor 'microblaze_0' is selected.
+23:11:52 INFO  : The application 'C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf' is downloaded to processor 'microblaze_0'.
+23:11:52 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf
+----------------End of Script----------------
+
+23:11:52 INFO  : Memory regions updated for context MicroBlaze #0
+23:11:52 INFO  : Memory regions updated for context MicroBlaze #0
+23:11:52 INFO  : Context for processor 'microblaze_0' is selected.
+23:11:52 INFO  : 'con' command is executed.
+23:11:52 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+23:11:52 INFO  : Launch script is exported to file 'C:\Users\espero\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sreg_spi_bootloader.elf_on_local.tcl'
+23:12:11 INFO  : Disconnected from the channel tcfchan#1.
+23:12:25 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+23:12:25 INFO  : 'fpga -state' command is executed.
+23:12:25 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:12:25 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+23:12:25 INFO  : 'jtag frequency' command is executed.
+23:12:25 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+23:12:25 INFO  : Context for processor 'microblaze_0' is selected.
+23:12:25 INFO  : Processor reset is completed for 'microblaze_0'.
+23:12:25 INFO  : Context for processor 'microblaze_0' is selected.
+23:12:26 INFO  : The application 'C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf' is downloaded to processor 'microblaze_0'.
+23:12:26 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf
+----------------End of Script----------------
+
+23:12:26 INFO  : Memory regions updated for context MicroBlaze #0
+23:12:26 INFO  : Memory regions updated for context MicroBlaze #0
+23:12:26 INFO  : Context for processor 'microblaze_0' is selected.
+23:12:26 INFO  : 'con' command is executed.
+23:12:26 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+23:12:26 INFO  : Launch script is exported to file 'C:\Users\espero\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sreg_spi_bootloader.elf_on_local.tcl'
+23:13:10 INFO  : Disconnected from the channel tcfchan#2.
+23:13:17 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+23:13:17 INFO  : 'fpga -state' command is executed.
+23:13:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:13:17 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+23:13:17 INFO  : 'jtag frequency' command is executed.
+23:13:17 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+23:13:17 INFO  : Context for processor 'microblaze_0' is selected.
+23:13:17 INFO  : Processor reset is completed for 'microblaze_0'.
+23:13:17 INFO  : Context for processor 'microblaze_0' is selected.
+23:13:17 INFO  : The application 'C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf' is downloaded to processor 'microblaze_0'.
+23:13:17 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf
+----------------End of Script----------------
+
+23:13:18 INFO  : Memory regions updated for context MicroBlaze #0
+23:13:18 INFO  : Memory regions updated for context MicroBlaze #0
+23:13:18 INFO  : Context for processor 'microblaze_0' is selected.
+23:13:18 INFO  : 'con' command is executed.
+23:13:18 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+23:13:18 INFO  : Launch script is exported to file 'C:\Users\espero\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sreg_spi_bootloader.elf_on_local.tcl'
+23:14:02 INFO  : Disconnected from the channel tcfchan#3.
+23:14:09 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+23:14:09 INFO  : 'fpga -state' command is executed.
+23:14:09 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:14:09 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+23:14:09 INFO  : 'jtag frequency' command is executed.
+23:14:09 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+23:14:09 INFO  : Context for processor 'microblaze_0' is selected.
+23:14:09 INFO  : Processor reset is completed for 'microblaze_0'.
+23:14:09 INFO  : Context for processor 'microblaze_0' is selected.
+23:14:09 INFO  : The application 'C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf' is downloaded to processor 'microblaze_0'.
+23:14:09 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf
+----------------End of Script----------------
+
+23:14:09 INFO  : Memory regions updated for context MicroBlaze #0
+23:14:09 INFO  : Memory regions updated for context MicroBlaze #0
+23:14:10 INFO  : Context for processor 'microblaze_0' is selected.
+23:14:10 INFO  : 'con' command is executed.
+23:14:10 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+23:14:10 INFO  : Launch script is exported to file 'C:\Users\espero\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sreg_spi_bootloader.elf_on_local.tcl'
+23:14:32 INFO  : Disconnected from the channel tcfchan#4.
+23:15:22 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+23:15:22 INFO  : 'fpga -state' command is executed.
+23:15:22 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:15:22 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+23:15:22 INFO  : 'jtag frequency' command is executed.
+23:15:22 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+23:15:22 INFO  : Context for processor 'microblaze_0' is selected.
+23:15:22 INFO  : Processor reset is completed for 'microblaze_0'.
+23:15:22 INFO  : Context for processor 'microblaze_0' is selected.
+23:15:23 INFO  : The application 'C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf' is downloaded to processor 'microblaze_0'.
+23:15:23 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf
+----------------End of Script----------------
+
+23:15:23 INFO  : Memory regions updated for context MicroBlaze #0
+23:15:23 INFO  : Memory regions updated for context MicroBlaze #0
+23:15:23 INFO  : Context for processor 'microblaze_0' is selected.
+23:15:23 INFO  : 'con' command is executed.
+23:15:23 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+23:15:23 INFO  : Launch script is exported to file 'C:\Users\espero\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sreg_spi_bootloader.elf_on_local.tcl'
+23:15:56 INFO  : Disconnected from the channel tcfchan#5.
+23:16:12 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+23:16:12 INFO  : 'fpga -state' command is executed.
+23:16:12 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:16:12 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+23:16:12 INFO  : 'jtag frequency' command is executed.
+23:16:12 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+23:16:12 INFO  : Context for processor 'microblaze_0' is selected.
+23:16:12 INFO  : Processor reset is completed for 'microblaze_0'.
+23:16:12 INFO  : Context for processor 'microblaze_0' is selected.
+23:16:12 INFO  : The application 'C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf' is downloaded to processor 'microblaze_0'.
+23:16:12 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf
+----------------End of Script----------------
+
+23:16:13 INFO  : Memory regions updated for context MicroBlaze #0
+23:16:13 INFO  : Memory regions updated for context MicroBlaze #0
+23:16:13 INFO  : Context for processor 'microblaze_0' is selected.
+23:16:13 INFO  : 'con' command is executed.
+23:16:13 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+23:16:13 INFO  : Launch script is exported to file 'C:\Users\espero\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sreg_spi_bootloader.elf_on_local.tcl'
+23:16:52 INFO  : Disconnected from the channel tcfchan#6.
+23:16:56 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+23:16:56 INFO  : 'fpga -state' command is executed.
+23:16:56 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:16:57 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+23:16:57 INFO  : 'jtag frequency' command is executed.
+23:16:57 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+23:16:57 INFO  : Context for processor 'microblaze_0' is selected.
+23:16:57 INFO  : Processor reset is completed for 'microblaze_0'.
+23:16:57 INFO  : Context for processor 'microblaze_0' is selected.
+23:16:57 INFO  : The application 'C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf' is downloaded to processor 'microblaze_0'.
+23:16:57 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf
+----------------End of Script----------------
+
+23:16:57 INFO  : Memory regions updated for context MicroBlaze #0
+23:16:57 INFO  : Memory regions updated for context MicroBlaze #0
+23:16:57 INFO  : Context for processor 'microblaze_0' is selected.
+23:16:57 INFO  : 'con' command is executed.
+23:16:57 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+23:16:57 INFO  : Launch script is exported to file 'C:\Users\espero\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sreg_spi_bootloader.elf_on_local.tcl'
+23:18:49 INFO  : Disconnected from the channel tcfchan#7.
+23:18:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+23:18:52 INFO  : 'fpga -state' command is executed.
+23:18:52 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:18:52 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+23:18:52 INFO  : 'jtag frequency' command is executed.
+23:18:52 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+23:18:52 INFO  : Context for processor 'microblaze_0' is selected.
+23:18:52 INFO  : Processor reset is completed for 'microblaze_0'.
+23:18:52 INFO  : Context for processor 'microblaze_0' is selected.
+23:18:52 INFO  : The application 'C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf' is downloaded to processor 'microblaze_0'.
+23:18:52 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf
+----------------End of Script----------------
+
+23:18:52 INFO  : Memory regions updated for context MicroBlaze #0
+23:18:52 INFO  : Memory regions updated for context MicroBlaze #0
+23:18:52 INFO  : Context for processor 'microblaze_0' is selected.
+23:18:52 INFO  : 'con' command is executed.
+23:18:52 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+23:18:52 INFO  : Launch script is exported to file 'C:\Users\espero\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sreg_spi_bootloader.elf_on_local.tcl'
+23:23:11 INFO  : Disconnected from the channel tcfchan#8.
+23:28:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:28:11 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+23:28:12 INFO  : FPGA configured successfully with bitstream "C:/Users/espero/git/UFBmod/SW/top_hw_platform_0/download.bit"
+23:28:34 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+23:28:34 INFO  : 'fpga -state' command is executed.
+23:28:34 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:28:34 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+23:28:34 INFO  : 'jtag frequency' command is executed.
+23:28:34 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+23:28:34 INFO  : Context for processor 'microblaze_0' is selected.
+23:28:34 INFO  : Processor reset is completed for 'microblaze_0'.
+23:28:34 INFO  : Context for processor 'microblaze_0' is selected.
+23:28:35 INFO  : The application 'C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf' is downloaded to processor 'microblaze_0'.
+23:28:35 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf
+----------------End of Script----------------
+
+23:28:35 INFO  : Memory regions updated for context MicroBlaze #0
+23:28:35 INFO  : Memory regions updated for context MicroBlaze #0
+23:28:35 INFO  : Context for processor 'microblaze_0' is selected.
+23:28:35 INFO  : 'con' command is executed.
+23:28:35 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+23:28:35 INFO  : Launch script is exported to file 'C:\Users\espero\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sreg_spi_bootloader.elf_on_local.tcl'
+23:29:06 INFO  : Disconnected from the channel tcfchan#9.
+23:29:10 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+23:29:10 INFO  : 'fpga -state' command is executed.
+23:29:10 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:29:10 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+23:29:10 INFO  : 'jtag frequency' command is executed.
+23:29:10 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+23:29:10 INFO  : Context for processor 'microblaze_0' is selected.
+23:29:11 INFO  : Processor reset is completed for 'microblaze_0'.
+23:29:11 INFO  : Context for processor 'microblaze_0' is selected.
+23:29:11 INFO  : The application 'C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf' is downloaded to processor 'microblaze_0'.
+23:29:11 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf
+----------------End of Script----------------
+
+23:29:11 INFO  : Memory regions updated for context MicroBlaze #0
+23:29:11 INFO  : Memory regions updated for context MicroBlaze #0
+23:29:11 INFO  : Context for processor 'microblaze_0' is selected.
+23:29:11 INFO  : 'con' command is executed.
+23:29:11 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+23:29:11 INFO  : Launch script is exported to file 'C:\Users\espero\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sreg_spi_bootloader.elf_on_local.tcl'
+23:30:12 INFO  : Disconnected from the channel tcfchan#10.
+23:30:17 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+23:30:17 INFO  : 'fpga -state' command is executed.
+23:30:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:30:17 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+23:30:17 INFO  : 'jtag frequency' command is executed.
+23:30:17 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+23:30:17 INFO  : Context for processor 'microblaze_0' is selected.
+23:30:17 INFO  : Processor reset is completed for 'microblaze_0'.
+23:30:17 INFO  : Context for processor 'microblaze_0' is selected.
+23:30:17 INFO  : The application 'C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf' is downloaded to processor 'microblaze_0'.
+23:30:17 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf
+----------------End of Script----------------
+
+23:30:17 INFO  : Memory regions updated for context MicroBlaze #0
+23:30:17 INFO  : Memory regions updated for context MicroBlaze #0
+23:30:17 INFO  : Context for processor 'microblaze_0' is selected.
+23:30:17 INFO  : 'con' command is executed.
+23:30:17 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+23:30:17 INFO  : Launch script is exported to file 'C:\Users\espero\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sreg_spi_bootloader.elf_on_local.tcl'
+23:30:55 INFO  : Disconnected from the channel tcfchan#11.
+23:31:02 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA" && level==0} -index 0' command is executed.
+23:31:02 INFO  : 'fpga -state' command is executed.
+23:31:02 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:31:03 INFO  : Jtag cable 'Digilent Cmod A7 - 35T 210328A9FE8BA' is selected.
+23:31:03 INFO  : 'jtag frequency' command is executed.
+23:31:03 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+23:31:03 INFO  : Context for processor 'microblaze_0' is selected.
+23:31:03 INFO  : Processor reset is completed for 'microblaze_0'.
+23:31:03 INFO  : Context for processor 'microblaze_0' is selected.
+23:31:03 INFO  : The application 'C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf' is downloaded to processor 'microblaze_0'.
+23:31:03 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+dow C:/Users/espero/git/UFBmod/SW/sreg_spi_bootloader/Debug/sreg_spi_bootloader.elf
+----------------End of Script----------------
+
+23:31:03 INFO  : Memory regions updated for context MicroBlaze #0
+23:31:03 INFO  : Memory regions updated for context MicroBlaze #0
+23:31:03 INFO  : Context for processor 'microblaze_0' is selected.
+23:31:03 INFO  : 'con' command is executed.
+23:31:03 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && bscan=="USER2"  && jtag_cable_name =~ "Digilent Cmod A7 - 35T 210328A9FE8BA"} -index 0
+con
+----------------End of Script----------------
+
+23:31:03 INFO  : Launch script is exported to file 'C:\Users\espero\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sreg_spi_bootloader.elf_on_local.tcl'
+23:31:25 INFO  : Disconnected from the channel tcfchan#12.
