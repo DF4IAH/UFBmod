@@ -1,0 +1,94 @@
+==============================
+UFBmod  by  DF4IAH	© 2019
+==============================
+
+	Update: 2019-06-20
+
+
+
+A)	Grundideen für UFBmod:
+
+A.01)	Digitale Modulation für 868 MHz und kleiner Leistung, später auch andere ISM Frequenzen zu LoRaWAN vergleichbar.
+
+A.02)	Verwendung von State-of-the-Art Blocksicherung & Faltungskorrekturen, durch CRC32 abgesichert.
+
+A.03)	Keine absolute Frequenzen nötig, Sendecodes sind relativ zueinander angeordnet.
+
+A.04)	Vermeidung von Kollisionen:
+	- Aktiviertes Listen-before-Talk als SSID-Auswertung (Schnellerkennung). Evtl. laufende Präambel-Erkennung nützlich und realisierbar.
+	- Systemintegrativ durch variable Frequenz-Nutzung und Auslastung (freie Offset-Frequenzen nach Zufallsprinzip).
+
+
+B)	UFBmod Konzepte und Realisierung:
+
+B.01)	Datensicherung - vier unterschiedliche Strategien die orthogonal arbeiten um Fehler zu erkennen und zu korrigieren:
+	a. Empfänger addierte Energien der Schleifen auf, dadurch Erhöhung des S/NR.
+	b. Äußere Blocksicherung der Daten (Block-Codierung): BCH-Codes
+	c. Innere Viterbi-Dekodierung (Faltungs-Codierung): Low Density Parity Check (LDPC)
+	d. CRC32 Überprüfung zur Datenfreigabe, kann als Kandidaten-Auswahl genutzt werden.
+
+B.02)	Aufbau der Aussendung:
+	- Alle Daten werden MSB ausgerichtet (mit dem höherwertigen Teil voraus gesendet).
+	- Nach "Präambel" (mehrfach wiederholt) kommt ein "Header"-Teil (gesicherter Block), dann die einkodierten Nutzdaten selbst (gesicherter Block).
+	- Ohne Unterbrechung wird Header- und Nutzdaten-Teil mehrfach wiederholt, um eine Signalaufsummierung zu ermöglichen (S/NR-Verbesserung).
+	- Die Anzahl der Wiederholungen sind immer 2^n bei n = 0 .. max .
+	- Es gibt keine Endkennung. Die Schleifenanzahl wird im Header jedoch bekannt gegeben.
+	- Der Empfänger kann abspringen, sobald seine dekodierten Daten CRC32 verifiziert sind und das Radio frühzeitig freigeben.
+
+B.03)	Sender-Ablauf:
+	- Nutzdaten entgegennehmen.
+	- Komprimierung vornehmen nach automatischem aufbauenden Codebook.
+	- Header und Frame daraus bauen.
+	- Innere Blocksicherung hinzu.
+	- Äußere Faltungssicherung hinzu.
+	- Whitening, außer Präambel und Header.
+	- Sprungmuster-Generierung.
+
+
+C)	Clocking - Taktung:
+
+C.01)	Der Clock-Takt:
+	- Hat 1/32 der genutzten Kanal-Bandbreite (z.B. bei Kanalbreite von 125 kHz wäre das ca. 3,91 kHz Clock-Takt = exakt 256 µs).
+	- Bleibt bei unterschiedlichen Datenraten und S/NR-Verhältnissen konstant.
+
+C.02)	Der Sub-Clock-Takt:
+	- Der Clock-Takt wird in 8 Abschnitte "Sub-Clocks" zu je exakt 32 µs unterteilt.
+	- Während Sub-Clock 0   : neue Zielfrequenz- & Phaseneinstellung, linearer Übergang. Auch Amplituden-Übergang beim Auftasten und Beenden der Aussendung.
+	- Während Sub-Clock 1..7: halten der Zielfrequenz. 
+
+
+D)	Frequenznutzung des Kanals:
+
+D.01)	Sprungmuster:
+	- Der Funkkanal wird in 32 äquidistante Frequenzschritte aufgeteilt.
+	- Es wird eine Frequenzsprungfolge durchgeführt und gemäß der Sub-Clock Definition die Seitenbänder-Energien reduziert.
+	- Frequenzschritt "up"  : 1..15 dedizierte Frequenzschritte aufwärts. Modulo-32: bei Überschreitung  findet Überlauf  statt.
+	- Frequenzschritt "down": 1..15 dedizierte Frequenzschritte abwärts.  Modulo-32: bei Unterschreitung findet Unterlauf statt.
+	- Die absolute Phasenlage bzgl. des Grundtaktes wird dabei beibehalten, um eine Aufsummierung zu erleichtern.
+
+D.02)	Präambel:
+	- Die unwiederholte Teil-Präambel-Zeit beträgt 4 ms.
+	- Diese wird 4x wiederholt und dienst somit als ein einfaches FEC-Verfahren. Gesamte Präambel-Dauer somit 16 ms.
+	- Zufälliger Start bei Frequenz-Index [4..11] (ist niedriger als Mittenfrequenz).
+	- Symmetrische Wiederholung als "32 minus Frequenz-Index" von zuvor (höher als Mittenfrequenz). Frequenzverschiebung des Senders daraus bestimmbar.
+	- Auf- und Ab-Muster während der Präambel immer +2 oder -2 Frequenz-Index Punkte. Über- und Unterlauf gemäß [4..11]-Nutzung. Leichtere Erkennung einer Präambel.
+	- Erster  Teil der Präambel festgelegt: "00111010".
+	- Zweiter Teil der Präambel variabel:   "Sprung-ID" als 8 Bit Wort, Feinaufteilung: 2-Bit für Verwendung, 6-Bit als Zufallswert (pro Aussendung neu bestimmt).
+
+
+E)	Realisierung:
+
+E.01)	SDR-Lösung als FPGA-Ansatz.
+
+E.02)	FPGA: XILINX Artix-7 - DIGILENT 410-328-35, CMOD A7-35T FPGA 48DIP, Xilinx Artix-7-35T FPGA, Digikey-1286-1130-ND
+
+E.03)	ADC&DAC / RF-Frontend: Microchip AT86RF215-ZU‎, TXRX 48VFQFN, 389,5MHz..510MHz 779MHz..1,02GHz, 2,4GHz, Digikey-AT86RF215-ZU-ND
+	- Kommunikation mit FPGA mittels LVDS-Schnittstelle
+
+E.04)	Sende- / EMpfangsumschaltung mittels pSEMI PE4259-63, IC RF SWITCH SPDT 50 OHM SC70-6, HF SPDT 3GHz 50 Ohm SC-70-6, Digikey-1046-1011-1-ND
+
+E.05)	LNA auf Empfangsseite: TBD
+
+
+
+<EOF>
