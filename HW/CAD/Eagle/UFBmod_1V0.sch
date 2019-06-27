@@ -13905,8 +13905,8 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <classes>
 <class number="0" name="default" width="0" drill="0.3">
 </class>
-<class number="1" name="pwr_relay" width="1.5" drill="0">
-<clearance class="1" value="0.5"/>
+<class number="1" name="diff_100R" width="0.3" drill="0">
+<clearance class="1" value="0.15"/>
 </class>
 <class number="2" name="pwr_ttl" width="0.75" drill="0">
 <clearance class="2" value="0.5"/>
@@ -13969,7 +13969,6 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <part name="C408" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="100nF"/>
 <part name="C407" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="100nF"/>
 <part name="C401" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="1uF"/>
-<part name="GND412" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="R413" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="100R"/>
 <part name="C413" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="56pF"/>
 <part name="GND413" library="df4iah_supply" deviceset="GND" device=""/>
@@ -14086,70 +14085,70 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <busses>
 </busses>
 <nets>
-<net name="TRX_RXD24N" class="0">
+<net name="TRX_RXD24_N" class="1">
 <segment>
 <pinref part="U101" gate="G$1" pin="01_8N"/>
 <wire x1="109.22" y1="152.4" x2="45.72" y2="152.4" width="0.1524" layer="91"/>
 <label x="45.72" y="152.4" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_RXD24P" class="0">
+<net name="TRX_RXD24_P" class="1">
 <segment>
 <pinref part="U101" gate="G$1" pin="02_8P"/>
 <wire x1="109.22" y1="147.32" x2="45.72" y2="147.32" width="0.1524" layer="91"/>
 <label x="45.72" y="147.32" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_RXCLKN" class="0">
+<net name="TRX_RXCLK_N" class="1">
 <segment>
 <pinref part="U101" gate="G$1" pin="48_14N"/>
 <wire x1="149.86" y1="152.4" x2="213.36" y2="152.4" width="0.1524" layer="91"/>
 <label x="213.36" y="152.4" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_RXCLKP" class="0">
+<net name="TRX_RXCLK_P" class="1">
 <segment>
 <pinref part="U101" gate="G$1" pin="47_14P"/>
 <wire x1="149.86" y1="147.32" x2="213.36" y2="147.32" width="0.1524" layer="91"/>
 <label x="213.36" y="147.32" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_RXD09P" class="0">
+<net name="TRX_RXD09_P" class="1">
 <segment>
 <pinref part="U101" gate="G$1" pin="38_11P"/>
 <wire x1="149.86" y1="101.6" x2="213.36" y2="101.6" width="0.1524" layer="91"/>
 <label x="213.36" y="101.6" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_RXD09N" class="0">
+<net name="TRX_RXD09_N" class="1">
 <segment>
 <pinref part="U101" gate="G$1" pin="37_11N"/>
 <wire x1="149.86" y1="96.52" x2="213.36" y2="96.52" width="0.1524" layer="91"/>
 <label x="213.36" y="96.52" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_TXDP" class="0">
+<net name="TRX_TXD_P" class="1">
 <segment>
 <pinref part="U101" gate="G$1" pin="35_6P"/>
 <wire x1="149.86" y1="86.36" x2="213.36" y2="86.36" width="0.1524" layer="91"/>
 <label x="213.36" y="86.36" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_TXDN" class="0">
+<net name="TRX_TXD_N" class="1">
 <segment>
 <pinref part="U101" gate="G$1" pin="34_6N"/>
 <wire x1="149.86" y1="81.28" x2="213.36" y2="81.28" width="0.1524" layer="91"/>
 <label x="213.36" y="81.28" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_TXCLKP" class="0">
+<net name="TRX_TXCLK_P" class="1">
 <segment>
 <pinref part="U101" gate="G$1" pin="18_12P"/>
 <wire x1="109.22" y1="66.04" x2="45.72" y2="66.04" width="0.1524" layer="91"/>
 <label x="45.72" y="66.04" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_TXCLKN" class="0">
+<net name="TRX_TXCLK_N" class="1">
 <segment>
 <pinref part="U101" gate="G$1" pin="19_12N"/>
 <wire x1="109.22" y1="60.96" x2="45.72" y2="60.96" width="0.1524" layer="91"/>
@@ -14537,7 +14536,6 @@ I2C addr: 0x38</text>
 <attribute name="VALUE" x="90.424" y="56.261" size="1.778" layer="96"/>
 </instance>
 <instance part="C401" gate="G$1" x="45.72" y="50.8"/>
-<instance part="GND412" gate="1" x="101.6" y="88.9"/>
 <instance part="R413" gate="G$1" x="86.36" y="83.82"/>
 <instance part="C413" gate="G$1" x="73.66" y="81.28"/>
 <instance part="GND413" gate="1" x="73.66" y="73.66"/>
@@ -14600,6 +14598,12 @@ I2C addr: 0x38</text>
 <pinref part="C407" gate="G$1" pin="1"/>
 <wire x1="86.36" y1="58.42" x2="93.98" y2="58.42" width="0.1524" layer="91"/>
 <junction x="86.36" y="58.42"/>
+<wire x1="86.36" y1="63.5" x2="86.36" y2="76.2" width="0.1524" layer="91"/>
+<junction x="86.36" y="63.5"/>
+<wire x1="86.36" y1="76.2" x2="91.44" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="91.44" y1="76.2" x2="91.44" y2="91.44" width="0.1524" layer="91"/>
+<pinref part="U401" gate="G$1" pin="XTAL2"/>
+<wire x1="91.44" y1="91.44" x2="104.14" y2="91.44" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -14615,11 +14619,6 @@ I2C addr: 0x38</text>
 <pinref part="C401" gate="G$1" pin="2"/>
 <wire x1="45.72" y1="43.18" x2="45.72" y2="45.72" width="0.1524" layer="91"/>
 <junction x="45.72" y="43.18"/>
-</segment>
-<segment>
-<pinref part="GND412" gate="1" pin="GND"/>
-<pinref part="U401" gate="G$1" pin="XTAL2"/>
-<wire x1="101.6" y1="91.44" x2="104.14" y2="91.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C413" gate="G$1" pin="2"/>
@@ -14730,70 +14729,70 @@ I2C addr: 0x38</text>
 <label x="45.72" y="83.82" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_RXD24P" class="0">
+<net name="TRX_RXD24_P" class="1">
 <segment>
 <pinref part="U401" gate="G$1" pin="RXD24P"/>
 <wire x1="175.26" y1="149.86" x2="213.36" y2="149.86" width="0.1524" layer="91"/>
 <label x="213.36" y="149.86" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_RXD24N" class="0">
+<net name="TRX_RXD24_N" class="1">
 <segment>
 <pinref part="U401" gate="G$1" pin="RXD24N"/>
 <wire x1="175.26" y1="144.78" x2="213.36" y2="144.78" width="0.1524" layer="91"/>
 <label x="213.36" y="144.78" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_RXCLKP" class="0">
+<net name="TRX_RXCLK_P" class="1">
 <segment>
 <pinref part="U401" gate="G$1" pin="RXCLKP"/>
 <wire x1="175.26" y1="134.62" x2="213.36" y2="134.62" width="0.1524" layer="91"/>
 <label x="213.36" y="134.62" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_RXCLKN" class="0">
+<net name="TRX_RXCLK_N" class="1">
 <segment>
 <pinref part="U401" gate="G$1" pin="RXCLKN"/>
 <wire x1="175.26" y1="129.54" x2="213.36" y2="129.54" width="0.1524" layer="91"/>
 <label x="213.36" y="129.54" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_RXD09P" class="0">
+<net name="TRX_RXD09_P" class="1">
 <segment>
 <pinref part="U401" gate="G$1" pin="RXD09P"/>
 <wire x1="175.26" y1="119.38" x2="213.36" y2="119.38" width="0.1524" layer="91"/>
 <label x="213.36" y="119.38" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_RXD09N" class="0">
+<net name="TRX_RXD09_N" class="1">
 <segment>
 <pinref part="U401" gate="G$1" pin="RXD09N"/>
 <wire x1="175.26" y1="114.3" x2="213.36" y2="114.3" width="0.1524" layer="91"/>
 <label x="213.36" y="114.3" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_TXDP" class="0">
+<net name="TRX_TXD_P" class="1">
 <segment>
 <pinref part="U401" gate="G$1" pin="TXDP"/>
 <wire x1="175.26" y1="104.14" x2="213.36" y2="104.14" width="0.1524" layer="91"/>
 <label x="213.36" y="104.14" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_TXDN" class="0">
+<net name="TRX_TXD_N" class="1">
 <segment>
 <pinref part="U401" gate="G$1" pin="TXDN"/>
 <wire x1="175.26" y1="99.06" x2="213.36" y2="99.06" width="0.1524" layer="91"/>
 <label x="213.36" y="99.06" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_TXCLKP" class="0">
+<net name="TRX_TXCLK_P" class="1">
 <segment>
 <pinref part="U401" gate="G$1" pin="TXCLKP"/>
 <wire x1="175.26" y1="88.9" x2="213.36" y2="88.9" width="0.1524" layer="91"/>
 <label x="213.36" y="88.9" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_TXCLKN" class="0">
+<net name="TRX_TXCLK_N" class="1">
 <segment>
 <pinref part="U401" gate="G$1" pin="TXCLKN"/>
 <wire x1="175.26" y1="83.82" x2="213.36" y2="83.82" width="0.1524" layer="91"/>
@@ -14893,14 +14892,14 @@ I2C addr: 0x38</text>
 <label x="45.72" y="116.84" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_RF24N" class="0">
+<net name="TRX_RF24_N" class="0">
 <segment>
 <pinref part="U401" gate="G$1" pin="RF24N"/>
 <wire x1="104.14" y1="144.78" x2="81.28" y2="144.78" width="0.1524" layer="91"/>
 <pinref part="L422" gate="G$1" pin="B2"/>
 </segment>
 </net>
-<net name="TRX_RF24P" class="0">
+<net name="TRX_RF24_P" class="0">
 <segment>
 <pinref part="U401" gate="G$1" pin="RF24P"/>
 <wire x1="104.14" y1="149.86" x2="81.28" y2="149.86" width="0.1524" layer="91"/>
@@ -14914,14 +14913,14 @@ I2C addr: 0x38</text>
 <pinref part="L422" gate="G$1" pin="UB"/>
 </segment>
 </net>
-<net name="TRX_RF09P" class="0">
+<net name="TRX_RF09_P" class="1">
 <segment>
 <pinref part="U401" gate="G$1" pin="RF09P"/>
 <pinref part="L421" gate="G$1" pin="B1"/>
 <wire x1="104.14" y1="127" x2="81.28" y2="127" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="TRX_RF09N" class="0">
+<net name="TRX_RF09_N" class="1">
 <segment>
 <pinref part="U401" gate="G$1" pin="RF09N"/>
 <pinref part="L421" gate="G$1" pin="B2"/>
