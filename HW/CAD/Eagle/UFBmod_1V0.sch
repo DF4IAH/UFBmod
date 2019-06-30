@@ -15762,6 +15762,20 @@ I2C addr: 0x38</text>
 <label x="137.16" y="96.52" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
+<net name="FPGA_3_34_P" class="1">
+<segment>
+<pinref part="X722" gate="G$1" pin="7"/>
+<wire x1="228.6" y1="99.06" x2="187.96" y2="99.06" width="0.1524" layer="91"/>
+<label x="187.96" y="99.06" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_3_34_N" class="1">
+<segment>
+<pinref part="X722" gate="G$1" pin="8"/>
+<wire x1="228.6" y1="101.6" x2="137.16" y2="101.6" width="0.1524" layer="91"/>
+<label x="137.16" y="101.6" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
