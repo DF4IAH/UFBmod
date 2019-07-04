@@ -46,20 +46,20 @@
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
-<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
-<layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
 <layer number="47" name="Measures" color="13" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="14" fill="1" visible="no" active="yes"/>
-<layer number="52" name="bDocu" color="6" fill="1" visible="no" active="yes"/>
+<layer number="51" name="tDocu" color="14" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
@@ -209,36 +209,6 @@ by DF4IAH</text>
 <vertex x="3.988928125" y="10.297796875" curve="193"/>
 </polygon>
 <text x="20.32" y="20.32" size="1.778" layer="51" font="vector" rot="R90">WDG20..WDG24</text>
-<polygon width="0.1524" layer="42">
-<vertex x="84.455" y="15.875"/>
-<vertex x="84.455" y="32.385"/>
-<vertex x="91.44" y="32.385"/>
-<vertex x="91.44" y="15.875"/>
-</polygon>
-<polygon width="0.1524" layer="42">
-<vertex x="88.3158" y="43.4594"/>
-<vertex x="91.7702" y="43.4594"/>
-<vertex x="91.7702" y="43.2054"/>
-<vertex x="88.3158" y="43.2054"/>
-</polygon>
-<polygon width="0.1524" layer="42">
-<vertex x="88.3412" y="41.6306"/>
-<vertex x="91.7194" y="41.6306"/>
-<vertex x="91.7194" y="41.8846"/>
-<vertex x="88.3412" y="41.8846"/>
-</polygon>
-<polygon width="0.1524" layer="41">
-<vertex x="88.3412" y="43.3578"/>
-<vertex x="91.7194" y="43.3578"/>
-<vertex x="91.7194" y="43.2054"/>
-<vertex x="88.3412" y="43.2054"/>
-</polygon>
-<polygon width="0.1524" layer="41">
-<vertex x="88.3412" y="41.7322"/>
-<vertex x="91.7702" y="41.7322"/>
-<vertex x="91.7702" y="41.8846"/>
-<vertex x="88.3412" y="41.8846"/>
-</polygon>
 <rectangle x1="3.2639" y1="68.1355" x2="3.3147" y2="68.1609" layer="22"/>
 <rectangle x1="3.2639" y1="68.1609" x2="3.3147" y2="68.1863" layer="22"/>
 <rectangle x1="3.2639" y1="68.1863" x2="3.3401" y2="68.2117" layer="22"/>
@@ -1834,8 +1804,6 @@ by DF4IAH</text>
 <rectangle x1="3.3147" y1="79.4893" x2="3.4163" y2="79.5147" layer="22"/>
 <rectangle x1="3.3147" y1="79.5147" x2="3.3909" y2="79.5401" layer="22"/>
 <rectangle x1="3.3147" y1="79.5401" x2="3.3655" y2="79.5655" layer="22"/>
-<rectangle x1="84.2772" y1="15.9258" x2="91.8718" y2="32.258" layer="41"/>
-<rectangle x1="84.2772" y1="15.9258" x2="91.8718" y2="32.258" layer="42"/>
 <wire x1="0" y1="0" x2="0" y2="89.535" width="0.1524" layer="20"/>
 <wire x1="0" y1="89.535" x2="78.105" y2="89.535" width="0.1524" layer="20"/>
 <wire x1="78.105" y1="89.535" x2="78.105" y2="0" width="0.1524" layer="20"/>
