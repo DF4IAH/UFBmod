@@ -14462,9 +14462,9 @@ Marquardt, Siemens, C&amp;K, ITT, and others&lt;p&gt;
 <part name="R735" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="100R"/>
 <part name="R734" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="100R"/>
 <part name="R733" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="100R"/>
-<part name="R141" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="180R"/>
-<part name="R142" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="130R"/>
-<part name="R143" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="130R"/>
+<part name="R141" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="820R"/>
+<part name="R142" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="1kR"/>
+<part name="R143" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="820R"/>
 <part name="D141" library="df4iah_led" deviceset="ASMT-YTB7-0AA02_RGB" device=""/>
 <part name="GND141" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="R151" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="1kR"/>

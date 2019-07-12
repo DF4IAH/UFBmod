@@ -58,8 +58,8 @@
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="14" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="14" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="6" fill="1" visible="no" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
@@ -5700,11 +5700,11 @@ Covered vias can be set in Masks (Limit).
 <attribute name="VALUE" x="44.45" y="73.9775" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="L101" library="df4iah_rcl" package="R1206" value="300R" x="49.53" y="74.93" smashed="yes" rot="MR270">
-<attribute name="NAME" x="51.1175" y="74.295" size="0.6096" layer="26" font="vector" rot="MR90"/>
+<attribute name="NAME" x="51.1175" y="73.9775" size="0.6096" layer="26" font="vector" rot="MR90"/>
 <attribute name="VALUE" x="52.07" y="76.2" size="1.27" layer="28" rot="MR270"/>
 </element>
 <element name="L102" library="df4iah_rcl" package="R1206" value="300R" x="41.91" y="74.93" smashed="yes" rot="MR270">
-<attribute name="NAME" x="43.4975" y="73.9775" size="0.6096" layer="26" font="vector" rot="MR90"/>
+<attribute name="NAME" x="40.005" y="75.8825" size="0.6096" layer="26" font="vector" rot="MR90"/>
 <attribute name="VALUE" x="44.45" y="76.2" size="1.27" layer="28" rot="MR270"/>
 </element>
 <element name="R111" library="df4iah_rcl" package="R0402" value="47R" x="33.02" y="21.59" smashed="yes" rot="R180">
@@ -5728,7 +5728,7 @@ Covered vias can be set in Masks (Limit).
 <attribute name="VALUE" x="28.2575" y="40.64" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R131" library="df4iah_rcl" package="R0402" value="47R" x="48.26" y="62.23" smashed="yes" rot="MR180">
-<attribute name="NAME" x="49.2125" y="63.5" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="49.37125" y="63.1825" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="46.6725" y="63.8175" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="U401" library="df4iah_rf" package="QFN48_7X7-0P5-PAD" value="AT86RF215-ZU" x="19.05" y="40.64" smashed="yes" rot="R270">
@@ -5899,7 +5899,7 @@ Covered vias can be set in Masks (Limit).
 <attribute name="VALUE" x="40.9575" y="83.82" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="PF711" library="rcl" package="M1206" value="1.1A/2.2A" x="49.53" y="80.01" smashed="yes" rot="R90">
-<attribute name="NAME" x="51.7525" y="78.74" size="0.6096" layer="25" font="vector" rot="R90"/>
+<attribute name="NAME" x="47.625" y="78.58125" size="0.6096" layer="25" font="vector" rot="R90"/>
 <attribute name="VALUE" x="52.07" y="78.74" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="X721" library="df4iah_connector" package="PHOENIX_1990067_1X8X2MM50_PTSA-0-5" value="PHOENIX_1990067_1X8X2MM50_PTSA-0-5" x="71.12" y="19.05" smashed="yes" rot="R90">
@@ -5946,15 +5946,15 @@ Covered vias can be set in Masks (Limit).
 <attribute name="NAME" x="58.7375" y="65.56375" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="58.1025" y="63.1825" size="0.6096" layer="27" font="vector" ratio="10"/>
 </element>
-<element name="R141" library="df4iah_rcl" package="R0402" value="180R" x="55.88" y="34.29" smashed="yes" rot="R180">
+<element name="R141" library="df4iah_rcl" package="R0402" value="820R" x="55.88" y="34.29" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.9275" y="35.08375" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="57.4675" y="35.8775" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
-<element name="R142" library="df4iah_rcl" package="R0402" value="130R" x="55.88" y="36.83" smashed="yes" rot="R180">
+<element name="R142" library="df4iah_rcl" package="R0402" value="1kR" x="55.88" y="36.83" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.9275" y="37.62375" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="57.4675" y="38.4175" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
-<element name="R143" library="df4iah_rcl" package="R0402" value="130R" x="55.88" y="39.37" smashed="yes" rot="R180">
+<element name="R143" library="df4iah_rcl" package="R0402" value="820R" x="55.88" y="39.37" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.9275" y="40.16375" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="57.4675" y="40.9575" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
@@ -5962,8 +5962,14 @@ Covered vias can be set in Masks (Limit).
 <attribute name="NAME" x="57.65775" y="32.37455" size="0.6096" layer="25"/>
 <attribute name="VALUE" x="55.594" y="27.3362" size="1.27" layer="27"/>
 </element>
-<element name="R151" library="df4iah_rcl" package="R0402" value="1kR" x="50.8" y="29.21" rot="MR180"/>
-<element name="R152" library="df4iah_rcl" package="R0402" value="1kR" x="50.8" y="44.45" rot="MR180"/>
+<element name="R151" library="df4iah_rcl" package="R0402" value="1kR" x="50.8" y="29.21" smashed="yes" rot="MR180">
+<attribute name="NAME" x="51.59375" y="30.1625" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="VALUE" x="49.2125" y="30.7975" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
+</element>
+<element name="R152" library="df4iah_rcl" package="R0402" value="1kR" x="50.8" y="44.45" smashed="yes" rot="MR180">
+<attribute name="NAME" x="51.59375" y="45.4025" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="VALUE" x="49.2125" y="46.0375" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
+</element>
 <element name="X221" library="df4iah_switch" package="TTE_EN11-HSM" value="TTE_EN11-HSM" x="16.51" y="16.51" smashed="yes" rot="R90">
 <attribute name="NAME" x="24.67" y="9.635" size="0.8128" layer="25" ratio="20"/>
 <attribute name="VALUE" x="19.2" y="24.645" size="0.8128" layer="27" ratio="10" rot="R180"/>
@@ -5977,7 +5983,7 @@ Covered vias can be set in Masks (Limit).
 <attribute name="VALUE" x="23.1775" y="19.05" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="R521" library="df4iah_rcl" package="R0402" value="1kR" x="50.8" y="49.53" smashed="yes" rot="MR180">
-<attribute name="NAME" x="49.8475" y="48.73625" size="0.6096" layer="25" font="vector" ratio="10" rot="R180"/>
+<attribute name="NAME" x="51.59375" y="50.4825" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="49.2125" y="51.1175" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="X595" library="_c2h" package="SMA_UFL_PAD_TINY" value="ANTENNATINY" x="27.94" y="89.535" rot="R90"/>
