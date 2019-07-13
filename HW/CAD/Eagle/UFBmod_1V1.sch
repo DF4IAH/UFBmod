@@ -14950,35 +14950,35 @@ Marquardt, Siemens, C&amp;K, ITT, and others&lt;p&gt;
 <label x="45.72" y="76.2" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="LED_G_R" class="0">
+<net name="LED_G" class="0">
 <segment>
 <pinref part="U101" gate="G$1" pin="10_7P"/>
 <pinref part="R142" gate="G$1" pin="2"/>
 <wire x1="109.22" y1="106.68" x2="104.14" y2="106.68" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="LED_B_R" class="0">
+<net name="LED_B" class="0">
 <segment>
 <pinref part="U101" gate="G$1" pin="11_3N"/>
 <pinref part="R143" gate="G$1" pin="2"/>
 <wire x1="109.22" y1="101.6" x2="104.14" y2="101.6" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="LED_R" class="0">
+<net name="LED_R_R" class="0">
 <segment>
 <pinref part="R141" gate="G$1" pin="1"/>
 <wire x1="93.98" y1="111.76" x2="86.36" y2="111.76" width="0.1524" layer="91"/>
 <pinref part="D141" gate="G$1" pin="RA"/>
 </segment>
 </net>
-<net name="LED_G" class="0">
+<net name="LED_G_R" class="0">
 <segment>
 <pinref part="R142" gate="G$1" pin="1"/>
 <wire x1="93.98" y1="106.68" x2="86.36" y2="106.68" width="0.1524" layer="91"/>
 <pinref part="D141" gate="G$1" pin="GA"/>
 </segment>
 </net>
-<net name="LED_B" class="0">
+<net name="LED_B_R" class="0">
 <segment>
 <pinref part="R143" gate="G$1" pin="1"/>
 <wire x1="93.98" y1="101.6" x2="86.36" y2="101.6" width="0.1524" layer="91"/>
@@ -14992,7 +14992,7 @@ Marquardt, Siemens, C&amp;K, ITT, and others&lt;p&gt;
 <pinref part="R151" gate="G$1" pin="2"/>
 </segment>
 </net>
-<net name="LED_R_R" class="0">
+<net name="LED_R" class="0">
 <segment>
 <pinref part="U101" gate="G$1" pin="09_6P"/>
 <pinref part="R141" gate="G$1" pin="2"/>

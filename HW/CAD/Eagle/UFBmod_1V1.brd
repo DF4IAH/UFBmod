@@ -7483,17 +7483,17 @@ Covered vias can be set in Masks (Limit).
 <wire x1="60.34" y1="64.77" x2="66.08" y2="64.77" width="0.1524" layer="1"/>
 <wire x1="66.08" y1="64.77" x2="66.12" y2="64.81" width="0.1524" layer="1"/>
 </signal>
-<signal name="LED_G_R">
+<signal name="LED_G">
 <contactref element="U101" pad="10"/>
 <contactref element="R142" pad="2"/>
 <wire x1="53.34" y1="36.83" x2="55.23" y2="36.83" width="0.1524" layer="1"/>
 </signal>
-<signal name="LED_B_R">
+<signal name="LED_B">
 <contactref element="U101" pad="11"/>
 <contactref element="R143" pad="2"/>
 <wire x1="53.34" y1="39.37" x2="55.23" y2="39.37" width="0.1524" layer="1"/>
 </signal>
-<signal name="LED_R">
+<signal name="LED_R_R">
 <contactref element="R141" pad="1"/>
 <contactref element="D141" pad="4"/>
 <wire x1="60.12" y1="29.58" x2="58.20875" y2="29.58" width="0.1524" layer="1"/>
@@ -7501,7 +7501,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="57.94375" y1="29.845" x2="57.94375" y2="32.87625" width="0.1524" layer="1"/>
 <wire x1="57.94375" y1="32.87625" x2="56.53" y2="34.29" width="0.1524" layer="1"/>
 </signal>
-<signal name="LED_G">
+<signal name="LED_G_R">
 <contactref element="R142" pad="1"/>
 <contactref element="D141" pad="5"/>
 <wire x1="60.12" y1="30.48" x2="58.7375" y2="30.48" width="0.1524" layer="1"/>
@@ -7509,7 +7509,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="58.42" y1="30.7975" x2="58.42" y2="34.94" width="0.1524" layer="1"/>
 <wire x1="58.42" y1="34.94" x2="56.53" y2="36.83" width="0.1524" layer="1"/>
 </signal>
-<signal name="LED_B">
+<signal name="LED_B_R">
 <contactref element="R143" pad="1"/>
 <contactref element="D141" pad="6"/>
 <wire x1="60.12" y1="31.38" x2="59.26625" y2="31.38" width="0.1524" layer="1"/>
@@ -7522,7 +7522,7 @@ Covered vias can be set in Masks (Limit).
 <contactref element="R151" pad="2"/>
 <wire x1="53.34" y1="29.21" x2="51.45" y2="29.21" width="0.1524" layer="16"/>
 </signal>
-<signal name="LED_R_R">
+<signal name="LED_R">
 <contactref element="U101" pad="9"/>
 <contactref element="R141" pad="2"/>
 <wire x1="53.34" y1="34.29" x2="55.23" y2="34.29" width="0.1524" layer="1"/>
