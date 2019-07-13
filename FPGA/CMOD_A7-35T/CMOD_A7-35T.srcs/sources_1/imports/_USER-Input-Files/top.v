@@ -21,60 +21,81 @@
 
 
 module top(
-    input sysclk,
-    input [1:0] btn,
+    input  sysclk,
+    input  [1:0] btn,
 
-    tri0 [7:0] ja,
+    tri0   [7:0] ja,
 
-    output pio1,
-    output pio2,
-    output pio3,
-    output pio4,
-    output pio5,
-    tri0 pio6,
-    tri0 pio7,
-    tri0 pio8,
-    tri0 pio9,
-    tri0 pio10,
-    tri0 pio11,
-    tri0 pio12,
-    tri0 pio13,
-    tri0 pio14,
+    input  pio1_trx_rxd24_n,
+    input  pio2_trx_rxd24_p,
+
+    tri0   pio3_fpga_12p16,
+    tri0   pio4_fpga_7n35,
+    tri0   pio5_fpga_11_16_p,
+    tri0   pio6_fpga_3p35,
+
+    input  pio7_rot_i,
+
+    tri0   pio8_fpga_11_16_n,
+
+    inout  pio9_led_r,
+    inout  pio10_led_g,
+    inout  pio11_led_b,
+
+    tri0   pio12_fpga_5_35_p,
+
+    input  pio13_rot_q,
+
+    tri0   pio14_fpga_5_35_n,
 
     input [1:0] xa_p,
     input [1:0] xa_n,
 
-    tri0 pio17,
-    tri0 pio18,
-    tri0 pio19,
-    tri0 pio20,
-    tri0 pio21,
-    tri0 pio22,
-    tri0 pio23,
+    tri0   pio17_fpga_9n35,
 
-    tri0 pio26,
-    tri0 pio27,
-    tri0 pio28,
-    tri0 pio29,
-    tri0 pio30,
-    tri0 pio31,
-    tri0 pio32,
-    tri0 pio33,
-    tri0 pio34,
-    tri0 pio35,
-    tri0 pio36,
-    tri0 pio37,
-    tri0 pio38,
-    tri0 pio39,
-    tri0 pio40,
-    tri0 pio41,
-    tri0 pio42,
-    tri0 pio43,
-    tri0 pio44,
-    tri0 pio45,
-    tri0 pio46,
-    tri0 pio47,
-    tri0 pio48,
+    output pio18_trx_txclk_p,
+    output pio19_trx_txclk_n,
+
+    output pio20_fpga_trx_rstn,
+    input  pio21_fpga_trx_clko,
+    tri0   pio22_fpga_10p35,
+
+    output pio23_fe09_mode,
+
+    inout  pio26_fpga_i2c_scl,
+    inout  pio27_fpga_i2c_sda,
+
+    tri0   pio28_fpga_1_34_p,
+    tri0   pio29_fpga_3_34_n,
+    tri0   pio30_fpga_1_34_n,
+    tri0   pio31_fpga_3_34_p,
+    tri0   pio32_fpga_5_34_n,
+    tri0   pio33_fpga_5_34_p,
+
+    output pio34_trx_txd_n,
+    output pio35_trx_txd_p,
+
+    tri0   pio36_fpga_12p34,
+
+    input  pio37_trx_rxd09_n,
+    input  pio38_trx_rxd09_p,
+
+    tri0   pio39_fpga_16_34_n,
+
+    input  pio40_fpga_trx_irq,
+
+    tri0   pio41_fpga_16_34_p,
+
+    input  pio42_fpga_miso,
+    output pio43_fpga_mosi,
+    output pio44_fpga_seln,
+    output pio45_fpga_sclk,
+
+    tri0   pio46_fpga_13p_34,
+
+    input  pio47_trx_rxclk_p,
+    input  pio48_trx_rxclk_n,
+
 
     inout [1:0] led,
     inout ledrgb_r,
@@ -117,7 +138,7 @@ module top(
            IOBUF #(
                 .DRIVE(12),
                 .IOSTANDARD("LVCMOS33"),
-                .SLEW("FAST")
+                .SLEW("SLOW")
             ) led_iobuf (
                 //.T(led_tri_t[i]),
                 //.O(led_tri_i[i]),
@@ -134,7 +155,7 @@ module top(
            IOBUF #(
                 .DRIVE(12),
                 .IOSTANDARD("LVCMOS33"),
-                .SLEW("FAST")
+                .SLEW("SLOW")
             ) ledrgb_iobuf (
                 //.T( ledrgb_tri_t[i]),
                 //.O( ledrgb_tri_i[i]),
@@ -267,8 +288,8 @@ module top(
         .AXI_bd_gpio_ledrgb_tri_o(ledrgb_tri_o),
         //.AXI_bd_gpio_ledrgb_tri_i(ledrgb_tri_i),
 
-        .AXI_bd_pll_i(pio2),
-        .AXI_bd_pll_q(pio4),
+        //.AXI_bd_pll_i(pio2),
+        //.AXI_bd_pll_q(pio4),
 
         .AXI_bd_usb_uart_UART_txd(usb_uart_txd),
         .AXI_bd_usb_uart_UART_rxd(usb_uart_rxd),
@@ -310,53 +331,53 @@ module top(
 
 
     /* PIOs interface */
-    assign pio1  = 1'b0;
-    //assign pio2  = 1'bZ;  // PLL_I
-    assign pio3  = 1'b0;
-    //assign pio4  = 1'bZ;  // PLL_Q
-    assign pio5  = 1'b0;
-    
-    assign pio6  = 1'bZ;
-    assign pio7  = 1'bZ;
-    assign pio8  = 1'bZ;
-    assign pio9  = 1'bZ;
-    assign pio10 = 1'bZ;
-    assign pio11 = 1'bZ;
-    assign pio12 = 1'bZ;
-    assign pio13 = 1'bZ;
-    assign pio14 = 1'bZ;
+    //assign pio1_trx_rxd24_n  = 1'bZ;
+    //assign pio2_trx_rxd24_p  = 1'bZ;
+    assign pio3_fpga_12p16  = 1'bZ;
+    assign pio4_fpga_7n35  = 1'bZ;
+    assign pio5_fpga_11_16_p  = 1'bZ;
+    assign pio6_fpga_3p35  = 1'bZ;
+    //assign pio7_rot_i  = 1'bZ;
+    assign pio8_fpga_11_16_n  = 1'bZ;
+    assign pio9_led_r  = 1'b0;
+    assign pio10_led_g = 1'b0;
+    assign pio11_led_b = 1'b0;
+    assign pio12_fpga_5_35_p = 1'bZ;
+    //assign pio13_rot_q = 1'bZ;
+    assign pio14_fpga_5_35_n = 1'bZ;
 
-    assign pio17 = 1'bZ;
-    assign pio18 = 1'bZ;
-    assign pio19 = 1'bZ;
-    assign pio20 = 1'bZ;
-    assign pio21 = 1'bZ;
-    assign pio22 = 1'bZ;
-    assign pio23 = 1'bZ;
+    assign pio17_fpga_9n35 = 1'bZ;
+    assign pio18_trx_txclk_p = 1'b0;
+    assign pio19_trx_txclk_n = 1'b0;
+    assign pio20_fpga_trx_rstn = 1'b0;
+    //assign pio21_fpga_trx_clko = 1'bZ;
+    assign pio22_fpga_10p35 = 1'bZ;
+    assign pio23_fe09_mode = 1'b0;
 
-    assign pio26 = 1'bZ;
-    assign pio27 = 1'bZ;
-    assign pio28 = 1'bZ;
-    assign pio29 = 1'bZ;
-    assign pio30 = 1'bZ;
-    assign pio31 = 1'bZ;
-    assign pio32 = 1'bZ;
-    assign pio33 = 1'bZ;
-    assign pio34 = 1'bZ;
-    assign pio35 = 1'bZ;
-    assign pio36 = 1'bZ;
-    assign pio37 = 1'bZ;
-    assign pio38 = 1'bZ;
-    assign pio39 = 1'bZ;
-    assign pio40 = 1'bZ;
-    assign pio41 = 1'bZ;
-    assign pio42 = 1'bZ;
-    assign pio43 = 1'bZ;
-    assign pio44 = 1'bZ;
-    assign pio45 = 1'bZ;
-    assign pio46 = 1'bZ;
-    assign pio47 = 1'bZ;
-    assign pio48 = 1'bZ;
+    assign pio26_fpga_i2c_scl = 1'bZ;
+    assign pio27_fpga_i2c_sda = 1'bZ;
+    assign pio28_fpga_1_34_p = 1'bZ;
+    assign pio29_fpga_3_34_n = 1'bZ;
+    assign pio30_fpga_1_34_n = 1'bZ;
+    assign pio31_fpga_3_34_p = 1'bZ;
+    assign pio32_fpga_5_34_n = 1'bZ;
+    assign pio33_fpga_5_34_p = 1'bZ;
+    assign pio34_trx_txd_n = 1'b0;
+    assign pio35_trx_txd_p = 1'b0;
+    assign pio36_fpga_12p34 = 1'bZ;
+    //assign pio37_trx_rxd09_n = 1'bZ;
+    //assign pio38_trx_rxd09_p = 1'bZ;
+    assign pio39_fpga_16_34_n = 1'bZ;
+    //assign pio40_fpga_trx_irq = 1'bZ;
+    assign pio41_fpga_16_34_p = 1'bZ;
+    //assign pio42_fpga_miso = 1'bZ;
+    assign pio43_fpga_mosi = 1'b0;
+    assign pio44_fpga_seln = 1'b1;
+    assign pio45_fpga_sclk = 1'b0;
+    assign pio46_fpga_13p_34 = 1'bZ;
+    //assign pio47_trx_rxclk_p = 1'bZ;
+    //assign pio48_trx_rxclk_n = 1'bZ;
+
 
     assign crypto_sda = 1'bZ;
 

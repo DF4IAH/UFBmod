@@ -3,6 +3,9 @@
 ## - uncomment the lines corresponding to used pins
 ## - rename the used ports (in each line, after get_ports) according to the top level signal names in the project
 
+## DF4IAH: UFBmod expanded
+
+
 ## 12 MHz Clock Signal
 set_property -dict {PACKAGE_PIN L17 IOSTANDARD LVCMOS33} [get_ports sysclk]
 #IO_L12P_T1_MRCC_14 Sch=gclk
@@ -79,138 +82,138 @@ set_property -dict {PACKAGE_PIN H2 IOSTANDARD LVCMOS33} [get_ports {xa_p[1]}]
 
 ## GPIO Pins
 ## Pins 15 and 16 should remain commented if using them as analog inputs
-set_property -dict {PACKAGE_PIN M3 IOSTANDARD LVCMOS33} [get_ports pio1]
+set_property -dict {PACKAGE_PIN M3 IOSTANDARD MINI_LVDS_25} [get_ports pio1_trx_rxd24_n]
 #IO_L8N_T1_AD14N_35 Sch=pio[01]
 
-set_property -dict {PACKAGE_PIN L3 IOSTANDARD LVCMOS33} [get_ports pio2]
+set_property -dict {PACKAGE_PIN L3 IOSTANDARD MINI_LVDS_25} [get_ports pio2_trx_rxd24_p]
 #IO_L8P_T1_AD14P_35 Sch=pio[02]
 
-set_property -dict {PACKAGE_PIN A16 IOSTANDARD LVCMOS33} [get_ports pio3]
+set_property -dict {PACKAGE_PIN A16 IOSTANDARD LVCMOS33} [get_ports pio3_fpga_12p16]
 #IO_L12P_T1_MRCC_16 Sch=pio[03]
 
-set_property -dict {PACKAGE_PIN K3 IOSTANDARD LVCMOS33} [get_ports pio4]
+set_property -dict {PACKAGE_PIN K3 IOSTANDARD LVCMOS33} [get_ports pio4_fpga_7n35]
 #IO_L7N_T1_AD6N_35 Sch=pio[04]
 
-set_property -dict {PACKAGE_PIN C15 IOSTANDARD LVCMOS33} [get_ports pio5]
+set_property -dict {PACKAGE_PIN C15 IOSTANDARD LVCMOS33} [get_ports pio5_fpga_11_16_p]
 #IO_L11P_T1_SRCC_16 Sch=pio[05]
 
-set_property -dict {PACKAGE_PIN H1 IOSTANDARD LVCMOS33} [get_ports pio6]
+set_property -dict {PACKAGE_PIN H1 IOSTANDARD LVCMOS33} [get_ports pio6_fpga_3p35]
 #IO_L3P_T0_DQS_AD5P_35 Sch=pio[06]
 
-set_property -dict {PACKAGE_PIN A15 IOSTANDARD LVCMOS33} [get_ports pio7]
+set_property -dict {PACKAGE_PIN A15 IOSTANDARD LVCMOS33} [get_ports pio7_rot_i]
 #IO_L6N_T0_VREF_16 Sch=pio[07]
 
-set_property -dict {PACKAGE_PIN B15 IOSTANDARD LVCMOS33} [get_ports pio8]
+set_property -dict {PACKAGE_PIN B15 IOSTANDARD LVCMOS33} [get_ports pio8_fpga_11_16_n]
 #IO_L11N_T1_SRCC_16 Sch=pio[08]
 
-set_property -dict {PACKAGE_PIN A14 IOSTANDARD LVCMOS33} [get_ports pio9]
+set_property -dict {PACKAGE_PIN A14 IOSTANDARD LVCMOS33} [get_ports pio9_led_r]
 #IO_L6P_T0_16 Sch=pio[09]
 
-set_property -dict {PACKAGE_PIN J3 IOSTANDARD LVCMOS33} [get_ports pio10]
+set_property -dict {PACKAGE_PIN J3 IOSTANDARD LVCMOS33} [get_ports pio10_led_g]
 #IO_L7P_T1_AD6P_35 Sch=pio[10]
 
-set_property -dict {PACKAGE_PIN J1 IOSTANDARD LVCMOS33} [get_ports pio11]
+set_property -dict {PACKAGE_PIN J1 IOSTANDARD LVCMOS33} [get_ports pio11_led_b]
 #IO_L3N_T0_DQS_AD5N_35 Sch=pio[11]
 
-set_property -dict {PACKAGE_PIN K2 IOSTANDARD LVCMOS33} [get_ports pio12]
+set_property -dict {PACKAGE_PIN K2 IOSTANDARD LVCMOS33} [get_ports pio12_fpga_5_35_p]
 #IO_L5P_T0_AD13P_35 Sch=pio[12]
 
-set_property -dict {PACKAGE_PIN L1 IOSTANDARD LVCMOS33} [get_ports pio13]
+set_property -dict {PACKAGE_PIN L1 IOSTANDARD LVCMOS33} [get_ports pio13_rot_q]
 #IO_L6N_T0_VREF_35 Sch=pio[13]
 
-set_property -dict {PACKAGE_PIN L2 IOSTANDARD LVCMOS33} [get_ports pio14]
+set_property -dict {PACKAGE_PIN L2 IOSTANDARD LVCMOS33} [get_ports pio14_fpga_5_35_n]
 #IO_L5N_T0_AD13N_35 Sch=pio[14]
 
 
-set_property -dict {PACKAGE_PIN M1 IOSTANDARD LVCMOS33} [get_ports pio17]
+set_property -dict {PACKAGE_PIN M1 IOSTANDARD LVCMOS33} [get_ports pio17_fpga_9n35]
 #IO_L9N_T1_DQS_AD7N_35 Sch=pio[17]
 
-set_property -dict {PACKAGE_PIN N3 IOSTANDARD LVCMOS33} [get_ports pio18]
+set_property -dict {PACKAGE_PIN N3 IOSTANDARD MINI_LVDS_25} [get_ports pio18_trx_txclk_p]
 #IO_L12P_T1_MRCC_35 Sch=pio[18]
 
-set_property -dict {PACKAGE_PIN P3 IOSTANDARD LVCMOS33} [get_ports pio19]
+set_property -dict {PACKAGE_PIN P3 IOSTANDARD MINI_LVDS_25} [get_ports pio19_trx_txclk_n]
 #IO_L12N_T1_MRCC_35 Sch=pio[19]
 
-set_property -dict {PACKAGE_PIN M2 IOSTANDARD LVCMOS33} [get_ports pio20]
+set_property -dict {PACKAGE_PIN M2 IOSTANDARD LVCMOS33} [get_ports pio20_fpga_trx_rstn]
 #IO_L9P_T1_DQS_AD7P_35 Sch=pio[20]
 
-set_property -dict {PACKAGE_PIN N1 IOSTANDARD LVCMOS33} [get_ports pio21]
+set_property -dict {PACKAGE_PIN N1 IOSTANDARD LVCMOS33} [get_ports pio21_fpga_trx_clko]
 #IO_L10N_T1_AD15N_35 Sch=pio[21]
 
-set_property -dict {PACKAGE_PIN N2 IOSTANDARD LVCMOS33} [get_ports pio22]
+set_property -dict {PACKAGE_PIN N2 IOSTANDARD LVCMOS33} [get_ports pio22_fpga_10p35]
 #IO_L10P_T1_AD15P_35 Sch=pio[22]
 
-set_property -dict {PACKAGE_PIN P1 IOSTANDARD LVCMOS33} [get_ports pio23]
+set_property -dict {PACKAGE_PIN P1 IOSTANDARD LVCMOS33} [get_ports pio23_fe09_mode]
 #IO_L19N_T3_VREF_35 Sch=pio[23]
 
 
-set_property -dict {PACKAGE_PIN R3 IOSTANDARD LVCMOS33} [get_ports pio26]
+set_property -dict {PACKAGE_PIN R3 IOSTANDARD LVCMOS33} [get_ports pio26_fpga_i2c_scl]
 #IO_L2P_T0_34 Sch=pio[26]
 
-set_property -dict {PACKAGE_PIN T3 IOSTANDARD LVCMOS33} [get_ports pio27]
+set_property -dict {PACKAGE_PIN T3 IOSTANDARD LVCMOS33} [get_ports pio27_fpga_i2c_sda]
 #IO_L2N_T0_34 Sch=pio[27]
 
-set_property -dict {PACKAGE_PIN R2 IOSTANDARD LVCMOS33} [get_ports pio28]
+set_property -dict {PACKAGE_PIN R2 IOSTANDARD LVCMOS33} [get_ports pio28_fpga_1_34_p]
 #IO_L1P_T0_34 Sch=pio[28]
 
-set_property -dict {PACKAGE_PIN T1 IOSTANDARD LVCMOS33} [get_ports pio29]
+set_property -dict {PACKAGE_PIN T1 IOSTANDARD LVCMOS33} [get_ports pio29_fpga_3_34_n]
 #IO_L3P_T0_DQS_34 Sch=pio[29]
 
-set_property -dict {PACKAGE_PIN T2 IOSTANDARD LVCMOS33} [get_ports pio30]
+set_property -dict {PACKAGE_PIN T2 IOSTANDARD LVCMOS33} [get_ports pio30_fpga_1_34_n]
 #IO_L1N_T0_34 Sch=pio[30]
 
-set_property -dict {PACKAGE_PIN U1 IOSTANDARD LVCMOS33} [get_ports pio31]
+set_property -dict {PACKAGE_PIN U1 IOSTANDARD LVCMOS33} [get_ports pio31_fpga_3_34_p]
 #IO_L3N_T0_DQS_34 Sch=pio[31]
 
-set_property -dict {PACKAGE_PIN W2 IOSTANDARD LVCMOS33} [get_ports pio32]
+set_property -dict {PACKAGE_PIN W2 IOSTANDARD LVCMOS33} [get_ports pio32_fpga_5_34_n]
 #IO_L5N_T0_34 Sch=pio[32]
 
-set_property -dict {PACKAGE_PIN V2 IOSTANDARD LVCMOS33} [get_ports pio33]
+set_property -dict {PACKAGE_PIN V2 IOSTANDARD LVCMOS33} [get_ports pio33_fpga_5_34_p]
 #IO_L5P_T0_34 Sch=pio[33]
 
-set_property -dict {PACKAGE_PIN W3 IOSTANDARD LVCMOS33} [get_ports pio34]
+set_property -dict {PACKAGE_PIN W3 IOSTANDARD MINI_LVDS_25} [get_ports pio34_trx_txd_n]
 #IO_L6N_T0_VREF_34 Sch=pio[34]
 
-set_property -dict {PACKAGE_PIN V3 IOSTANDARD LVCMOS33} [get_ports pio35]
+set_property -dict {PACKAGE_PIN V3 IOSTANDARD MINI_LVDS_25} [get_ports pio35_trx_txd_p]
 #IO_L6P_T0_34 Sch=pio[35]
 
-set_property -dict {PACKAGE_PIN W5 IOSTANDARD LVCMOS33} [get_ports pio36]
+set_property -dict {PACKAGE_PIN W5 IOSTANDARD LVCMOS33} [get_ports pio36_fpga_12p34]
 #IO_L12P_T1_MRCC_34 Sch=pio[36]
 
-set_property -dict {PACKAGE_PIN V4 IOSTANDARD LVCMOS33} [get_ports pio37]
+set_property -dict {PACKAGE_PIN V4 IOSTANDARD MINI_LVDS_25} [get_ports pio37_trx_rxd09_n]
 #IO_L11N_T1_SRCC_34 Sch=pio[37]
 
-set_property -dict {PACKAGE_PIN U4 IOSTANDARD LVCMOS33} [get_ports pio38]
+set_property -dict {PACKAGE_PIN U4 IOSTANDARD MINI_LVDS_25} [get_ports pio38_trx_rxd09_p]
 #IO_L11P_T1_SRCC_34 Sch=pio[38]
 
-set_property -dict {PACKAGE_PIN V5 IOSTANDARD LVCMOS33} [get_ports pio39]
+set_property -dict {PACKAGE_PIN V5 IOSTANDARD LVCMOS33} [get_ports pio39_fpga_16_34_n]
 #IO_L16N_T2_34 Sch=pio[39]
 
-set_property -dict {PACKAGE_PIN W4 IOSTANDARD LVCMOS33} [get_ports pio40]
+set_property -dict {PACKAGE_PIN W4 IOSTANDARD LVCMOS33} [get_ports pio40_fpga_trx_irq]
 #IO_L12N_T1_MRCC_34 Sch=pio[40]
 
-set_property -dict {PACKAGE_PIN U5 IOSTANDARD LVCMOS33} [get_ports pio41]
+set_property -dict {PACKAGE_PIN U5 IOSTANDARD LVCMOS33} [get_ports pio41_fpga_16_34_p]
 #IO_L16P_T2_34 Sch=pio[41]
 
-set_property -dict {PACKAGE_PIN U2 IOSTANDARD LVCMOS33} [get_ports pio42]
+set_property -dict {PACKAGE_PIN U2 IOSTANDARD LVCMOS33} [get_ports pio42_fpga_miso]
 #IO_L9N_T1_DQS_34 Sch=pio[42]
 
-set_property -dict {PACKAGE_PIN W6 IOSTANDARD LVCMOS33} [get_ports pio43]
+set_property -dict {PACKAGE_PIN W6 IOSTANDARD LVCMOS33} [get_ports pio43_fpga_mosi]
 #IO_L13N_T2_MRCC_34 Sch=pio[43]
 
-set_property -dict {PACKAGE_PIN U3 IOSTANDARD LVCMOS33} [get_ports pio44]
+set_property -dict {PACKAGE_PIN U3 IOSTANDARD LVCMOS33} [get_ports pio44_fpga_seln]
 #IO_L9P_T1_DQS_34 Sch=pio[44]
 
-set_property -dict {PACKAGE_PIN U7 IOSTANDARD LVCMOS33} [get_ports pio45]
+set_property -dict {PACKAGE_PIN U7 IOSTANDARD LVCMOS33} [get_ports pio45_fpga_sclk]
 #IO_L19P_T3_34 Sch=pio[45]
 
-set_property -dict {PACKAGE_PIN W7 IOSTANDARD LVCMOS33} [get_ports pio46]
+set_property -dict {PACKAGE_PIN W7 IOSTANDARD LVCMOS33} [get_ports pio46_fpga_13p_34]
 #IO_L13P_T2_MRCC_34 Sch=pio[46]
 
-set_property -dict {PACKAGE_PIN U8 IOSTANDARD LVCMOS33} [get_ports pio47]
+set_property -dict {PACKAGE_PIN U8 IOSTANDARD MINI_LVDS_25} [get_ports pio47_trx_rxclk_p]
 #IO_L14P_T2_SRCC_34 Sch=pio[47]
 
-set_property -dict {PACKAGE_PIN V8 IOSTANDARD LVCMOS33} [get_ports pio48]
+set_property -dict {PACKAGE_PIN V8 IOSTANDARD MINI_LVDS_25} [get_ports pio48_trx_rxclk_n]
 #IO_L14N_T2_SRCC_34 Sch=pio[48]
 
 
@@ -351,54 +354,55 @@ set_property DRIVE 4 [get_ports {led[0]}]
 set_property DRIVE 4 [get_ports ledrgb_b]
 set_property DRIVE 4 [get_ports ledrgb_g]
 set_property DRIVE 4 [get_ports ledrgb_r]
+set_property DRIVE 4 [get_ports pio9_led_r]
+set_property DRIVE 4 [get_ports pio10_led_g]
+set_property DRIVE 4 [get_ports pio11_led_b]
 
-set_property DRIVE 4 [get_ports pio1]
-#set_property DRIVE 4 [get_ports pio2]
-#set_property DRIVE 4 [get_ports pio3]
-#set_property DRIVE 4 [get_ports pio4]
-#set_property DRIVE 4 [get_ports pio5]
-#set_property DRIVE 4 [get_ports pio6]
-#set_property DRIVE 4 [get_ports pio7]
-set_property DRIVE 4 [get_ports pio8]
-#set_property DRIVE 4 [get_ports pio9]
-#set_property DRIVE 4 [get_ports pio10]
-#set_property DRIVE 4 [get_ports pio11]
-#set_property DRIVE 4 [get_ports pio12]
-#set_property DRIVE 4 [get_ports pio13]
-#set_property DRIVE 4 [get_ports pio14]
+set_property DRIVE 4 [get_ports pio3_fpga_12p16]
+set_property DRIVE 4 [get_ports pio4_fpga_7n35]
+set_property DRIVE 4 [get_ports pio5_fpga_11_16_p]
+set_property DRIVE 4 [get_ports pio6_fpga_3p35]
+set_property DRIVE 4 [get_ports pio7_rot_i]
+set_property DRIVE 4 [get_ports pio8_fpga_11_16_n]
+set_property DRIVE 4 [get_ports pio12_fpga_5_35_p]
+set_property DRIVE 4 [get_ports pio13_rot_q]
+set_property DRIVE 4 [get_ports pio14_fpga_5_35_n]
+set_property DRIVE 4 [get_ports pio17_fpga_9n35]
+set_property DRIVE 4 [get_ports pio20_fpga_trx_rstn]
+set_property DRIVE 4 [get_ports pio21_fpga_trx_clko]
+set_property DRIVE 4 [get_ports pio22_fpga_10p35]
+set_property DRIVE 4 [get_ports pio23_fe09_mode]
+set_property DRIVE 4 [get_ports pio26_fpga_i2c_scl]
+set_property DRIVE 4 [get_ports pio27_fpga_i2c_sda]
+set_property DRIVE 4 [get_ports pio28_fpga_1_34_p]
+set_property DRIVE 4 [get_ports pio29_fpga_3_34_n]
+set_property DRIVE 4 [get_ports pio30_fpga_1_34_n]
+set_property DRIVE 4 [get_ports pio31_fpga_3_34_p]
+set_property DRIVE 4 [get_ports pio32_fpga_5_34_n]
+set_property DRIVE 4 [get_ports pio33_fpga_5_34_p]
+set_property DRIVE 4 [get_ports pio36_fpga_12p34]
+set_property DRIVE 4 [get_ports pio39_fpga_16_34_n]
+set_property DRIVE 4 [get_ports pio40_fpga_trx_irq]
+set_property DRIVE 4 [get_ports pio41_fpga_16_34_p]
+set_property DRIVE 4 [get_ports pio42_fpga_miso]
+set_property DRIVE 4 [get_ports pio43_fpga_mosi]
+set_property DRIVE 4 [get_ports pio44_fpga_seln]
+set_property DRIVE 4 [get_ports pio45_fpga_sclk]
+set_property DRIVE 4 [get_ports pio46_fpga_13p_34]
 
-#set_property DRIVE 4 [get_ports pio17]
-#set_property DRIVE 4 [get_ports pio18]
-#set_property DRIVE 4 [get_ports pio19]
-#set_property DRIVE 4 [get_ports pio20]
-#set_property DRIVE 4 [get_ports pio21]
-#set_property DRIVE 4 [get_ports pio22]
-#set_property DRIVE 4 [get_ports pio23]
+# LVDS lines to / from the TRX
+set_property DRIVE 12 [get_ports pio1_trx_rxd24_n]
+set_property DRIVE 12 [get_ports pio2_trx_rxd24_p]
+set_property DRIVE 12 [get_ports pio18_trx_txclk_p]
+set_property DRIVE 12 [get_ports pio19_trx_txclk_n]
+set_property DRIVE 12 [get_ports pio34_trx_txd_n]
+set_property DRIVE 12 [get_ports pio35_trx_txd_p]
+set_property DRIVE 12 [get_ports pio37_trx_rxd09_n]
+set_property DRIVE 12 [get_ports pio38_trx_rxd09_p]
+set_property DRIVE 12 [get_ports pio47_trx_rxclk_p]
+set_property DRIVE 12 [get_ports pio48_trx_rxclk_n]
 
-#set_property DRIVE 4 [get_ports pio26]
-#set_property DRIVE 4 [get_ports pio27]
-#set_property DRIVE 4 [get_ports pio28]
-#set_property DRIVE 4 [get_ports pio29]
-#set_property DRIVE 4 [get_ports pio30]
-#set_property DRIVE 4 [get_ports pio31]
-#set_property DRIVE 4 [get_ports pio32]
-#set_property DRIVE 4 [get_ports pio33]
-#set_property DRIVE 4 [get_ports pio34]
-#set_property DRIVE 4 [get_ports pio35]
-#set_property DRIVE 4 [get_ports pio36]
-#set_property DRIVE 4 [get_ports pio37]
-#set_property DRIVE 4 [get_ports pio38]
-#set_property DRIVE 4 [get_ports pio39]
-#set_property DRIVE 4 [get_ports pio40]
-#set_property DRIVE 4 [get_ports pio41]
-#set_property DRIVE 4 [get_ports pio42]
-#set_property DRIVE 4 [get_ports pio43]
-#set_property DRIVE 4 [get_ports pio44]
-#set_property DRIVE 4 [get_ports pio45]
-#set_property DRIVE 4 [get_ports pio46]
-#set_property DRIVE 4 [get_ports pio47]
-#set_property DRIVE 4 [get_ports pio48]
-
+# CmodA7 internals
 set_property DRIVE 12 [get_ports crypto_sda]
 set_property DRIVE 12 [get_ports qspi_cs]
 set_property DRIVE 12 [get_ports {qspi_dq[3]}]
