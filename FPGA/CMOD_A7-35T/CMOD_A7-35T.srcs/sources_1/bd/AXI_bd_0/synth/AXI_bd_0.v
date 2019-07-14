@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Thu Mar 28 20:49:44 2019
+//Date        : Sat Jul 13 21:32:12 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target AXI_bd_0.bd
 //Design      : AXI_bd_0
@@ -18,10 +18,10 @@ module AXI_bd_0
     AXI_bd_btn0,
     AXI_bd_btn1,
     AXI_bd_clk_100mhz_out,
+    AXI_bd_dec_ctr,
     AXI_bd_gpio_led_tri_o,
     AXI_bd_gpio_ledrgb_tri_o,
-    AXI_bd_pll_i,
-    AXI_bd_pll_q,
+    AXI_bd_gpio_pioledrgb_tri_o,
     AXI_bd_sys_clock,
     AXI_bd_usb_uart_UART_baudoutn,
     AXI_bd_usb_uart_UART_ctsn,
@@ -66,10 +66,10 @@ module AXI_bd_0
   input AXI_bd_btn0;
   input AXI_bd_btn1;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_BD_CLK_100MHZ_OUT CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_BD_CLK_100MHZ_OUT, CLK_DOMAIN /clk_wiz_0_clk_out1, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.0" *) output AXI_bd_clk_100mhz_out;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.AXI_BD_DEC_CTR DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.AXI_BD_DEC_CTR, LAYERED_METADATA undef" *) input [31:0]AXI_bd_dec_ctr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_led TRI_O" *) output [1:0]AXI_bd_gpio_led_tri_o;
   (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_ledrgb TRI_O" *) output [2:0]AXI_bd_gpio_ledrgb_tri_o;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_BD_PLL_I CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_BD_PLL_I, CLK_DOMAIN /clk_wiz_1_clk_out1, FREQ_HZ 10000000, INSERT_VIP 0, PHASE 0.0" *) output AXI_bd_pll_i;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_BD_PLL_Q CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_BD_PLL_Q, CLK_DOMAIN /clk_wiz_1_clk_out1, FREQ_HZ 10000000, INSERT_VIP 0, PHASE 90.0" *) output AXI_bd_pll_q;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 AXI_bd_gpio_pioledrgb " *) output [2:0]AXI_bd_gpio_pioledrgb_tri_o;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_BD_SYS_CLOCK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_BD_SYS_CLOCK, CLK_DOMAIN AXI_bd_0_AXI_bd_sys_clock, FREQ_HZ 12000000, INSERT_VIP 0, PHASE 0.000" *) input AXI_bd_sys_clock;
   (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART BAUDOUTn" *) output AXI_bd_usb_uart_UART_baudoutn;
   (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 AXI_bd_usb_uart_UART CTSn" *) input AXI_bd_usb_uart_UART_ctsn;
@@ -109,6 +109,7 @@ module AXI_bd_0
   (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 qspi_flash SS_T" *) output qspi_flash_ss_t;
 
   wire AXI_bd_btn1_1;
+  wire [31:0]AXI_bd_dec_ctr_1;
   wire Vaux12_0_1_V_N;
   wire Vaux12_0_1_V_P;
   wire Vaux4_0_1_V_N;
@@ -123,6 +124,7 @@ module AXI_bd_0
   wire [2:0]axi_gpio_0_GPIO2_TRI_O;
   wire [1:0]axi_gpio_0_GPIO_TRI_O;
   wire axi_gpio_1_ip2intc_irpt;
+  wire [2:0]axi_gpio_2_GPIO_TRI_O;
   wire [31:0]axi_protocol_convert_0_M_AXI_ARADDR;
   wire axi_protocol_convert_0_M_AXI_ARREADY;
   wire axi_protocol_convert_0_M_AXI_ARVALID;
@@ -292,8 +294,6 @@ module AXI_bd_0
   wire axi_uart16550_0_UART_TxD;
   wire axi_uart16550_0_ip2intc_irpt;
   wire clk_wiz_0_locked;
-  wire clk_wiz_1_clk_out1;
-  wire clk_wiz_1_clk_out2;
   wire mdm_1_debug_sys_rst;
   wire microblaze_0_Clk;
   wire [31:0]microblaze_0_M_AXI_DC_ARADDR;
@@ -796,10 +796,10 @@ module AXI_bd_0
 
   assign AXI_bd_btn1_1 = AXI_bd_btn1;
   assign AXI_bd_clk_100mhz_out = microblaze_0_Clk;
+  assign AXI_bd_dec_ctr_1 = AXI_bd_dec_ctr[31:0];
   assign AXI_bd_gpio_led_tri_o[1:0] = axi_gpio_0_GPIO_TRI_O;
   assign AXI_bd_gpio_ledrgb_tri_o[2:0] = axi_gpio_0_GPIO2_TRI_O;
-  assign AXI_bd_pll_i = clk_wiz_1_clk_out1;
-  assign AXI_bd_pll_q = clk_wiz_1_clk_out2;
+  assign AXI_bd_gpio_pioledrgb_tri_o[2:0] = axi_gpio_2_GPIO_TRI_O;
   assign AXI_bd_usb_uart_UART_baudoutn = axi_uart16550_0_UART_BAUDOUTn;
   assign AXI_bd_usb_uart_UART_ddis = axi_uart16550_0_UART_DDIS;
   assign AXI_bd_usb_uart_UART_dtrn = axi_uart16550_0_UART_DTRn;
@@ -933,6 +933,28 @@ module AXI_bd_0
         .s_axi_wready(axi_protocol_convert_7_M_AXI_WREADY),
         .s_axi_wstrb(axi_protocol_convert_7_M_AXI_WSTRB),
         .s_axi_wvalid(axi_protocol_convert_7_M_AXI_WVALID));
+  AXI_bd_0_axi_gpio_2_0 axi_gpio_2
+       (.gpio2_io_i(AXI_bd_dec_ctr_1),
+        .gpio_io_o(axi_gpio_2_GPIO_TRI_O),
+        .s_axi_aclk(microblaze_0_Clk),
+        .s_axi_araddr(axi_protocol_convert_4_M_AXI_ARADDR[8:0]),
+        .s_axi_aresetn(rst_clk_wiz_0_100M_peripheral_aresetn),
+        .s_axi_arready(axi_protocol_convert_4_M_AXI_ARREADY),
+        .s_axi_arvalid(axi_protocol_convert_4_M_AXI_ARVALID),
+        .s_axi_awaddr(axi_protocol_convert_4_M_AXI_AWADDR[8:0]),
+        .s_axi_awready(axi_protocol_convert_4_M_AXI_AWREADY),
+        .s_axi_awvalid(axi_protocol_convert_4_M_AXI_AWVALID),
+        .s_axi_bready(axi_protocol_convert_4_M_AXI_BREADY),
+        .s_axi_bresp(axi_protocol_convert_4_M_AXI_BRESP),
+        .s_axi_bvalid(axi_protocol_convert_4_M_AXI_BVALID),
+        .s_axi_rdata(axi_protocol_convert_4_M_AXI_RDATA),
+        .s_axi_rready(axi_protocol_convert_4_M_AXI_RREADY),
+        .s_axi_rresp(axi_protocol_convert_4_M_AXI_RRESP),
+        .s_axi_rvalid(axi_protocol_convert_4_M_AXI_RVALID),
+        .s_axi_wdata(axi_protocol_convert_4_M_AXI_WDATA),
+        .s_axi_wready(axi_protocol_convert_4_M_AXI_WREADY),
+        .s_axi_wstrb(axi_protocol_convert_4_M_AXI_WSTRB),
+        .s_axi_wvalid(axi_protocol_convert_4_M_AXI_WVALID));
   AXI_bd_0_axi_protocol_convert_0_0 axi_protocol_convert_0
        (.aclk(microblaze_0_Clk),
         .aresetn(rst_clk_wiz_0_100M_interconnect_aresetn),
@@ -1507,29 +1529,6 @@ module AXI_bd_0
         .clk_in1(sys_clock_1),
         .locked(clk_wiz_0_locked),
         .reset(reset_1));
-  AXI_bd_0_clk_wiz_1_0 clk_wiz_1
-       (.clk_in1(microblaze_0_Clk),
-        .clk_out1(clk_wiz_1_clk_out1),
-        .clk_out2(clk_wiz_1_clk_out2),
-        .s_axi_aclk(microblaze_0_Clk),
-        .s_axi_araddr(axi_protocol_convert_4_M_AXI_ARADDR[10:0]),
-        .s_axi_aresetn(rst_clk_wiz_0_100M_peripheral_aresetn),
-        .s_axi_arready(axi_protocol_convert_4_M_AXI_ARREADY),
-        .s_axi_arvalid(axi_protocol_convert_4_M_AXI_ARVALID),
-        .s_axi_awaddr(axi_protocol_convert_4_M_AXI_AWADDR[10:0]),
-        .s_axi_awready(axi_protocol_convert_4_M_AXI_AWREADY),
-        .s_axi_awvalid(axi_protocol_convert_4_M_AXI_AWVALID),
-        .s_axi_bready(axi_protocol_convert_4_M_AXI_BREADY),
-        .s_axi_bresp(axi_protocol_convert_4_M_AXI_BRESP),
-        .s_axi_bvalid(axi_protocol_convert_4_M_AXI_BVALID),
-        .s_axi_rdata(axi_protocol_convert_4_M_AXI_RDATA),
-        .s_axi_rready(axi_protocol_convert_4_M_AXI_RREADY),
-        .s_axi_rresp(axi_protocol_convert_4_M_AXI_RRESP),
-        .s_axi_rvalid(axi_protocol_convert_4_M_AXI_RVALID),
-        .s_axi_wdata(axi_protocol_convert_4_M_AXI_WDATA),
-        .s_axi_wready(axi_protocol_convert_4_M_AXI_WREADY),
-        .s_axi_wstrb(axi_protocol_convert_4_M_AXI_WSTRB),
-        .s_axi_wvalid(axi_protocol_convert_4_M_AXI_WVALID));
   AXI_bd_0_mdm_1_0 mdm_1
        (.Dbg_Capture_0(microblaze_0_debug_CAPTURE),
         .Dbg_Clk_0(microblaze_0_debug_CLK),

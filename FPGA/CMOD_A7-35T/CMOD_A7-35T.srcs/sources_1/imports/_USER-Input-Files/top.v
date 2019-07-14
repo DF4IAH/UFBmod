@@ -130,6 +130,14 @@ module top(
     //wire [2:0] ledrgb_tri_i;
     wire [2:0] LedRgbPort;
 
+    //wire [2:0] pioledrgb_tri_t;
+    wire [2:0] pioledrgb_tri_o;
+    //wire [2:0] pioledrgb_tri_i;
+    wire [2:0] PioLedRgbPort;
+    
+    wire [31:0] dec_ctr;
+    wire dec_up;
+    wire dec_dn;
 
 
     genvar i;
@@ -166,12 +174,32 @@ module top(
             );
         end 
     endgenerate
+
+    generate
+        for (i = 0; i <= 2; i = i + 1) begin : pioledrgb_iobuf_loop
+           IOBUF #(
+                .DRIVE(12),
+                .IOSTANDARD("LVCMOS33"),
+                .SLEW("SLOW")
+            ) pioledrgb_iobuf (
+                //.T( pioledrgb_tri_t[i]),
+                //.O( pioledrgb_tri_i[i]),
+                .T(1'b0),
+                .O(),
+                .I(pioledrgb_tri_o[i]),
+                .IO(PioLedRgbPort[i])
+            );
+        end 
+    endgenerate
     
-    assign led[0]   = LedPort[0];
-    assign led[1]   = LedPort[1];
-    assign ledrgb_b = LedRgbPort[0];
-    assign ledrgb_g = LedRgbPort[1];
-    assign ledrgb_r = LedRgbPort[2];
+    assign led[0]      = LedPort[0];
+    assign led[1]      = LedPort[1];
+    assign ledrgb_b    = LedRgbPort[0];
+    assign ledrgb_g    = LedRgbPort[1];
+    assign ledrgb_r    = LedRgbPort[2];
+    assign pio9_led_r  = PioLedRgbPort[0];
+    assign pio10_led_g = PioLedRgbPort[1];
+    assign pio11_led_b = PioLedRgbPort[2];
 
 
     /* Clock */
@@ -288,8 +316,9 @@ module top(
         .AXI_bd_gpio_ledrgb_tri_o(ledrgb_tri_o),
         //.AXI_bd_gpio_ledrgb_tri_i(ledrgb_tri_i),
 
-        //.AXI_bd_pll_i(pio2),
-        //.AXI_bd_pll_q(pio4),
+        //.AXI_bd_gpio_pioledrgb_tri_t(pioledrgb_tri_t),
+        .AXI_bd_gpio_pioledrgb_tri_o(pioledrgb_tri_o),
+        //.AXI_bd_gpio_pioledrgb_tri_i(pioledrgb_tri_i),
 
         .AXI_bd_usb_uart_UART_txd(usb_uart_txd),
         .AXI_bd_usb_uart_UART_rxd(usb_uart_rxd),
@@ -323,9 +352,21 @@ module top(
         .cellular_ram_wen(RamWEn),
         .cellular_ram_oen(RamOEn)
     );
-
-
-
+    
+    
+    /* I/Q decoder with counter */
+    iq_decoder iq_dec (
+        .clk(clk_100mhz),
+        .reset(btn[0]),
+        .dec_i(pio7_rot_i),
+        .dec_q(pio13_rot_q),
+        .ctr(dec_ctr),
+        .dir_up(dec_up),
+        .dir_dn(dec_dn)
+    );
+    
+    
+    
     /* PMOD interface */
     assign ja = 8'bZ;
 

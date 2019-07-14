@@ -390,18 +390,6 @@ set_property DRIVE 4 [get_ports pio44_fpga_seln]
 set_property DRIVE 4 [get_ports pio45_fpga_sclk]
 set_property DRIVE 4 [get_ports pio46_fpga_13p_34]
 
-# LVDS lines to / from the TRX
-set_property DRIVE 12 [get_ports pio1_trx_rxd24_n]
-set_property DRIVE 12 [get_ports pio2_trx_rxd24_p]
-set_property DRIVE 12 [get_ports pio18_trx_txclk_p]
-set_property DRIVE 12 [get_ports pio19_trx_txclk_n]
-set_property DRIVE 12 [get_ports pio34_trx_txd_n]
-set_property DRIVE 12 [get_ports pio35_trx_txd_p]
-set_property DRIVE 12 [get_ports pio37_trx_rxd09_n]
-set_property DRIVE 12 [get_ports pio38_trx_rxd09_p]
-set_property DRIVE 12 [get_ports pio47_trx_rxclk_p]
-set_property DRIVE 12 [get_ports pio48_trx_rxclk_n]
-
 # CmodA7 internals
 set_property DRIVE 12 [get_ports crypto_sda]
 set_property DRIVE 12 [get_ports qspi_cs]

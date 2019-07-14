@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Thu Mar 28 20:49:45 2019
+//Date        : Sat Jul 13 21:32:13 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target AXI_bd_0_wrapper.bd
 //Design      : AXI_bd_0_wrapper
@@ -17,10 +17,10 @@ module AXI_bd_0_wrapper
     AXI_bd_btn0,
     AXI_bd_btn1,
     AXI_bd_clk_100mhz_out,
+    AXI_bd_dec_ctr,
     AXI_bd_gpio_led_tri_o,
     AXI_bd_gpio_ledrgb_tri_o,
-    AXI_bd_pll_i,
-    AXI_bd_pll_q,
+    AXI_bd_gpio_pioledrgb_tri_o,
     AXI_bd_sys_clock,
     AXI_bd_usb_uart_UART_baudoutn,
     AXI_bd_usb_uart_UART_ctsn,
@@ -53,10 +53,10 @@ module AXI_bd_0_wrapper
   input AXI_bd_btn0;
   input AXI_bd_btn1;
   output AXI_bd_clk_100mhz_out;
+  input [31:0]AXI_bd_dec_ctr;
   output [1:0]AXI_bd_gpio_led_tri_o;
   output [2:0]AXI_bd_gpio_ledrgb_tri_o;
-  output AXI_bd_pll_i;
-  output AXI_bd_pll_q;
+  output [2:0]AXI_bd_gpio_pioledrgb_tri_o;
   input AXI_bd_sys_clock;
   output AXI_bd_usb_uart_UART_baudoutn;
   input AXI_bd_usb_uart_UART_ctsn;
@@ -90,10 +90,10 @@ module AXI_bd_0_wrapper
   wire AXI_bd_btn0;
   wire AXI_bd_btn1;
   wire AXI_bd_clk_100mhz_out;
+  wire [31:0]AXI_bd_dec_ctr;
   wire [1:0]AXI_bd_gpio_led_tri_o;
   wire [2:0]AXI_bd_gpio_ledrgb_tri_o;
-  wire AXI_bd_pll_i;
-  wire AXI_bd_pll_q;
+  wire [2:0]AXI_bd_gpio_pioledrgb_tri_o;
   wire AXI_bd_sys_clock;
   wire AXI_bd_usb_uart_UART_baudoutn;
   wire AXI_bd_usb_uart_UART_ctsn;
@@ -174,10 +174,10 @@ module AXI_bd_0_wrapper
         .AXI_bd_btn0(AXI_bd_btn0),
         .AXI_bd_btn1(AXI_bd_btn1),
         .AXI_bd_clk_100mhz_out(AXI_bd_clk_100mhz_out),
+        .AXI_bd_dec_ctr(AXI_bd_dec_ctr),
         .AXI_bd_gpio_led_tri_o(AXI_bd_gpio_led_tri_o),
         .AXI_bd_gpio_ledrgb_tri_o(AXI_bd_gpio_ledrgb_tri_o),
-        .AXI_bd_pll_i(AXI_bd_pll_i),
-        .AXI_bd_pll_q(AXI_bd_pll_q),
+        .AXI_bd_gpio_pioledrgb_tri_o(AXI_bd_gpio_pioledrgb_tri_o),
         .AXI_bd_sys_clock(AXI_bd_sys_clock),
         .AXI_bd_usb_uart_UART_baudoutn(AXI_bd_usb_uart_UART_baudoutn),
         .AXI_bd_usb_uart_UART_ctsn(AXI_bd_usb_uart_UART_ctsn),

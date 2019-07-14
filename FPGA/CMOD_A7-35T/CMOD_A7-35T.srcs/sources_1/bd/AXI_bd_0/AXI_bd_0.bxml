@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="36">
   <CompositeFile CompositeFileTopName="AXI_bd_0" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1553802587"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1553802587"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1553802587"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1553802587"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1563046337"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1563046337"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1563046337"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1563046337"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\AXI_bd_0_xadc_wiz_0_0\AXI_bd_0_xadc_wiz_0_0.xci" Type="IP">
         <Instance HierarchyPath="xadc_wiz_0"/>
@@ -136,6 +136,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\AXI_bd_0_microblaze_0_axi_periph_0\AXI_bd_0_microblaze_0_axi_periph_0.xci" Type="IP">
+        <Instance HierarchyPath="microblaze_0_axi_periph"/>
         <Properties IsEditable="false" IsVisible="false" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -184,14 +185,6 @@
       </File>
       <File Name="ip\AXI_bd_0_axi_protocol_convert_3_0\AXI_bd_0_axi_protocol_convert_3_0.xci" Type="IP">
         <Instance HierarchyPath="axi_protocol_convert_3"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\AXI_bd_0_clk_wiz_1_0\AXI_bd_0_clk_wiz_1_0.xci" Type="IP">
-        <Instance HierarchyPath="clk_wiz_1"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -251,6 +244,14 @@
       </File>
       <File Name="ip\AXI_bd_0_axi_protocol_convert_7_0\AXI_bd_0_axi_protocol_convert_7_0.xci" Type="IP">
         <Instance HierarchyPath="axi_protocol_convert_7"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\AXI_bd_0_axi_gpio_2_0\AXI_bd_0_axi_gpio_2_0.xci" Type="IP">
+        <Instance HierarchyPath="axi_gpio_2"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
