@@ -1987,6 +1987,226 @@ by DF4IAH</text>
 <text x="-10" y="-0.625" size="0.6096" layer="25" rot="R90">&gt;NAME</text>
 <text x="13.125" y="-2.5" size="0.6096" layer="27" rot="R90">&gt;VALUE</text>
 </package>
+<package name="SAMTEC_LSHM-150-DV">
+<description>&lt;h3&gt;SAMTEC LSHM-150-XX.X-X-DV-A-X-X-TR&lt;/h3&gt;
+&lt;h4&gt;HIGH-SPEED HERMAPHRODITIC STRIP&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;100 Pos&lt;li&gt;
+&lt;li&gt;0.5 mm padding&lt;/li&gt;
+&lt;/ul&gt;</description>
+<smd name="31" x="4.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="33" x="4.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="35" x="3.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="37" x="3.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="39" x="2.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="41" x="2.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="43" x="1.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="45" x="1.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="47" x="0.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="49" x="0.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="51" x="-0.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="53" x="-0.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="55" x="-1.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="57" x="-1.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="59" x="-2.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="61" x="-2.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="63" x="-3.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="65" x="-3.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="67" x="-4.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="69" x="-4.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="71" x="-5.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="73" x="-5.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="75" x="-6.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="77" x="-6.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="79" x="-7.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="81" x="-7.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="83" x="-8.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="85" x="-8.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="87" x="-9.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="89" x="-9.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="91" x="-10.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="93" x="-10.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="95" x="-11.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="97" x="-11.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="99" x="-12.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="29" x="5.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="27" x="5.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="25" x="6.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="23" x="6.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="21" x="7.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="19" x="7.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="17" x="8.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="15" x="8.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="13" x="9.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="11" x="9.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="9" x="10.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="7" x="10.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="5" x="11.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="3" x="11.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="1" x="12.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="32" x="4.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="34" x="4.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="36" x="3.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="38" x="3.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="40" x="2.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="42" x="2.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="44" x="1.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="46" x="1.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="48" x="0.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="50" x="0.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="52" x="-0.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="54" x="-0.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="56" x="-1.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="58" x="-1.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="60" x="-2.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="62" x="-2.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="64" x="-3.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="66" x="-3.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="68" x="-4.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="70" x="-4.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="72" x="-5.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="74" x="-5.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="76" x="-6.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="78" x="-6.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="80" x="-7.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="82" x="-7.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="84" x="-8.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="86" x="-8.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="88" x="-9.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="90" x="-9.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="92" x="-10.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="94" x="-10.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="96" x="-11.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="98" x="-11.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="100" x="-12.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="30" x="5.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="28" x="5.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="26" x="6.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="24" x="6.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="22" x="7.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="20" x="7.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="18" x="8.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="16" x="8.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="14" x="9.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="12" x="9.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="10" x="10.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="8" x="10.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="6" x="11.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="4" x="11.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="2" x="12.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<hole x="13.5" y="0" drill="1.5"/>
+<hole x="-13.5" y="0" drill="1.5"/>
+<pad name="F1" x="14.975" y="2" drill="1" diameter="2.2"/>
+<pad name="F2" x="-14.975" y="2" drill="1" diameter="2.2"/>
+<wire x1="15.075" y1="3.34" x2="15.075" y2="-1.64" width="0.127" layer="21"/>
+<wire x1="-15.075" y1="3.34" x2="-15.075" y2="-1.64" width="0.127" layer="21"/>
+<wire x1="15.075" y1="3.34" x2="15.075" y2="-1.64" width="0.127" layer="51"/>
+<wire x1="-15.075" y1="3.34" x2="-15.075" y2="-1.64" width="0.127" layer="51"/>
+<wire x1="-15.075" y1="3.34" x2="15.075" y2="3.34" width="0.127" layer="51"/>
+<wire x1="-15.075" y1="-1.64" x2="15.075" y2="-1.64" width="0.127" layer="51"/>
+<wire x1="-15.075" y1="3.34" x2="-12.6" y2="3.34" width="0.127" layer="21"/>
+<wire x1="12.6" y1="3.34" x2="15.075" y2="3.34" width="0.127" layer="21"/>
+<wire x1="-15.075" y1="-1.64" x2="-12.6" y2="-1.64" width="0.127" layer="21"/>
+<wire x1="12.6" y1="-1.64" x2="15.075" y2="-1.64" width="0.127" layer="21"/>
+<polygon width="0.127" layer="39">
+<vertex x="-15.075" y="3.34"/>
+<vertex x="15.075" y="3.34"/>
+<vertex x="15.075" y="-1.64"/>
+<vertex x="-15.075" y="-1.64"/>
+</polygon>
+<text x="-15.5" y="-1.75" size="0.6096" layer="25" font="vector" rot="R90">&gt;NAME</text>
+<text x="-12" y="0.5" size="0.6096" layer="27" font="vector">&gt;VALUE</text>
+</package>
+<package name="SAMTEC_LSHM-130-DV">
+<description>&lt;h3&gt;SAMTEC LSHM-130-XX.X-X-DV-A-X-X-TR&lt;/h3&gt;
+&lt;h4&gt;HIGH-SPEED HERMAPHRODITIC STRIP&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;60 Pos&lt;li&gt;
+&lt;li&gt;0.5 mm padding&lt;/li&gt;
+&lt;/ul&gt;</description>
+<smd name="31" x="-0.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="33" x="-0.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="35" x="-1.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="37" x="-1.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="39" x="-2.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="41" x="-2.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="43" x="-3.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="45" x="-3.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="47" x="-4.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="49" x="-4.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="51" x="-5.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="53" x="-5.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="55" x="-6.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="57" x="-6.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="59" x="-7.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="29" x="0.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="27" x="0.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="25" x="1.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="23" x="1.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="21" x="2.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="19" x="2.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="17" x="3.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="15" x="3.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="13" x="4.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="11" x="4.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="9" x="5.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="7" x="5.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="5" x="6.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="3" x="6.75" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="1" x="7.25" y="-1" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="32" x="-0.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="34" x="-0.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="36" x="-1.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="38" x="-1.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="40" x="-2.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="42" x="-2.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="44" x="-3.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="46" x="-3.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="48" x="-4.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="50" x="-4.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="52" x="-5.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="54" x="-5.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="56" x="-6.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="58" x="-6.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="60" x="-7.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="30" x="0.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="28" x="0.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="26" x="1.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="24" x="1.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="22" x="2.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="20" x="2.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="18" x="3.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="16" x="3.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="14" x="4.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="12" x="4.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="10" x="5.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="8" x="5.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="6" x="6.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="4" x="6.75" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<smd name="2" x="7.25" y="2.7" dx="1.5" dy="0.3" layer="1" rot="R90"/>
+<hole x="8.5" y="0" drill="1.5"/>
+<hole x="-8.5" y="0" drill="1.5"/>
+<pad name="F1" x="9.975" y="2" drill="1" diameter="2.2"/>
+<pad name="F2" x="-9.975" y="2" drill="1" diameter="2.2"/>
+<wire x1="10.075" y1="3.34" x2="10.075" y2="-1.64" width="0.127" layer="21"/>
+<wire x1="-10.075" y1="3.34" x2="-10.075" y2="-1.64" width="0.127" layer="21"/>
+<wire x1="10.075" y1="3.34" x2="10.075" y2="-1.64" width="0.127" layer="51"/>
+<wire x1="-10.075" y1="3.34" x2="-10.075" y2="-1.64" width="0.127" layer="51"/>
+<wire x1="-10.075" y1="3.34" x2="10.075" y2="3.34" width="0.127" layer="51"/>
+<wire x1="-10.075" y1="-1.64" x2="10.075" y2="-1.64" width="0.127" layer="51"/>
+<wire x1="-10.075" y1="3.34" x2="-7.6" y2="3.34" width="0.127" layer="21"/>
+<wire x1="7.6" y1="3.34" x2="10.075" y2="3.34" width="0.127" layer="21"/>
+<wire x1="-10.075" y1="-1.64" x2="-7.6" y2="-1.64" width="0.127" layer="21"/>
+<wire x1="7.6" y1="-1.64" x2="10.075" y2="-1.64" width="0.127" layer="21"/>
+<polygon width="0.127" layer="39">
+<vertex x="-10.075" y="3.34"/>
+<vertex x="10.075" y="3.34"/>
+<vertex x="10.075" y="-1.64"/>
+<vertex x="-10.075" y="-1.64"/>
+</polygon>
+<text x="-10.75" y="-1.75" size="0.6096" layer="25" font="vector" rot="R90">&gt;NAME</text>
+<text x="-6.75" y="0.5" size="0.6096" layer="27" font="vector">&gt;VALUE</text>
+</package>
 </packages>
 </library>
 <library name="df4iah_rcl">
@@ -5741,6 +5961,9 @@ Covered vias can be set in Masks (Limit).
 <element name="R6" library="df4iah_rcl" package="R0402" value="10kR" x="-19.05" y="-90.17"/>
 <element name="L1" library="df4iah_rcl" package="L0603" value="6.8nH" x="-19.05" y="-95.25"/>
 <element name="R7" library="df4iah_rcl" package="R0402" value="10kR" x="-19.05" y="-100.33"/>
+<element name="JM1" library="df4iah_connector" package="SAMTEC_LSHM-150-DV" value="LSHM-150-02.5-L-DV-A-S-K-TR" x="5.08" y="-115.57"/>
+<element name="JM2" library="df4iah_connector" package="SAMTEC_LSHM-150-DV" value="LSHM-150-02.5-L-DV-A-S-K-TR" x="5.08" y="-138.43"/>
+<element name="JM3" library="df4iah_connector" package="SAMTEC_LSHM-130-DV" value="LSHM-130-02.5-L-DV-A-S-K-TR" x="0" y="-161.29"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -5975,6 +6198,8 @@ Covered vias can be set in Masks (Limit).
 <contactref element="C3" pad="2"/>
 <contactref element="R6" pad="1"/>
 <contactref element="L521" pad="2"/>
+<contactref element="JM1" pad="F2"/>
+<contactref element="JM1" pad="F1"/>
 <wire x1="44.45" y1="83.76" x2="73.025" y2="84.455" width="0" layer="19" extent="1-1"/>
 <wire x1="43.33875" y1="83.185" x2="43.18" y2="82.55" width="0" layer="19" extent="1-1"/>
 <wire x1="41.91" y1="77.47" x2="41.26" y2="82.55" width="0" layer="19" extent="1-1"/>
@@ -6024,6 +6249,8 @@ Covered vias can be set in Masks (Limit).
 <wire x1="-18.4" y1="-69.85" x2="-14.59" y2="-69.85" width="0" layer="19" extent="1-1"/>
 <wire x1="-18.4" y1="-74.93" x2="-18.4" y2="-69.85" width="0" layer="19" extent="1-1"/>
 <wire x1="-19.7" y1="-90.17" x2="-18.4" y2="-74.93" width="0" layer="19" extent="1-1"/>
+<wire x1="-9.895" y1="-113.57" x2="-19.7" y2="-90.17" width="0" layer="19" extent="1-1"/>
+<wire x1="20.055" y1="-113.57" x2="-9.895" y2="-113.57" width="0" layer="19" extent="1-1"/>
 <wire x1="73.025" y1="5.08" x2="29.21" y2="26.67" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="+3V3">
