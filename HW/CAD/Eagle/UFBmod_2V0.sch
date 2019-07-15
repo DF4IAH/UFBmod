@@ -14034,11 +14034,11 @@ Marquardt, Siemens, C&amp;K, ITT, and others&lt;p&gt;
 <part name="GND522" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="GND553" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="GND523" library="df4iah_supply" deviceset="GND" device=""/>
-<part name="L521" library="df4iah_rcl" deviceset="L-EU" device="L0603" value="? nH"/>
+<part name="L521" library="df4iah_rcl" deviceset="L-EU" device="L0603" value="2.7nH"/>
 <part name="+3V3_553" library="df4iah_supply" deviceset="+3V3" device=""/>
-<part name="C553" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="100nF"/>
-<part name="C552" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="100nF"/>
-<part name="C551" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="100nF"/>
+<part name="C553" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="10nF"/>
+<part name="C552" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="10nF"/>
+<part name="C551" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="10nF"/>
 <part name="+3V3_550" library="df4iah_supply" deviceset="+3V3" device=""/>
 <part name="GND552" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="GND551" library="df4iah_supply" deviceset="GND" device=""/>
@@ -14059,7 +14059,7 @@ Marquardt, Siemens, C&amp;K, ITT, and others&lt;p&gt;
 <part name="X721" library="df4iah_connector" deviceset="PHOENIX_1990067_1X8X2MM50_PTSA-0-5" device=""/>
 <part name="X722" library="df4iah_connector" deviceset="PHOENIX_1990067_1X8X2MM50_PTSA-0-5" device=""/>
 <part name="X723" library="df4iah_connector" deviceset="PHOENIX_1990067_1X8X2MM50_PTSA-0-5" device=""/>
-<part name="R521" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="1kR"/>
+<part name="R521" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="100R"/>
 <part name="X595" library="_c2h" deviceset="ANTENNA" device="TINY"/>
 <part name="GND598" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="C597" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="0pF"/>
@@ -14081,6 +14081,12 @@ Marquardt, Siemens, C&amp;K, ITT, and others&lt;p&gt;
 <part name="GND2" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="C3" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="1nF"/>
 <part name="FRAME_09" library="df4iah_frame" deviceset="A4L-LOC" device="" value="Holes"/>
+<part name="R4" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="10kR"/>
+<part name="R5" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="10kR"/>
+<part name="R6" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="10kR"/>
+<part name="L1" library="df4iah_rcl" deviceset="L-EU" device="L0603" value="6.8nH"/>
+<part name="GND3" library="df4iah_supply" deviceset="GND" device=""/>
+<part name="R7" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="10kR"/>
 </parts>
 <sheets>
 <sheet>
@@ -14089,6 +14095,8 @@ Marquardt, Siemens, C&amp;K, ITT, and others&lt;p&gt;
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">Trenz-Electronic FPGA
 Left</text>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">Trenz-Electronic TE0712-02-100-2C3  Left-Connector</text>
+<text x="101.6" y="104.14" size="1.778" layer="97">SAMTEC LSHM-150-04.0-L-DV-A-S-K-TR
+100 POS</text>
 </plain>
 <instances>
 <instance part="FRAME_01" gate="G$1" x="0" y="0" smashed="yes">
@@ -14108,6 +14116,8 @@ Left</text>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">Trenz-Electronic TE0712-02-100-2C3  Right-Connector</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">Trenz-Electronic FPGA
 Right</text>
+<text x="101.6" y="104.14" size="1.778" layer="97">SAMTEC LSHM-150-04.0-L-DV-A-S-K-TR
+100 POS</text>
 </plain>
 <instances>
 <instance part="FRAME_06" gate="G$1" x="0" y="0" smashed="yes">
@@ -14127,6 +14137,8 @@ Right</text>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">Trenz-Electronic TE0712-02-100-2C3  Top-Connector</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">Trenz-Electronic FPGA
 Top</text>
+<text x="101.6" y="104.14" size="1.778" layer="97">SAMTEC LSHM-130-04.0-L-DV-A-S-K-TR
+60 POS</text>
 </plain>
 <instances>
 <instance part="FRAME_07" gate="G$1" x="0" y="0" smashed="yes">
@@ -14793,8 +14805,11 @@ I2C addr: 0x38</text>
 <instance part="GND553" gate="1" x="96.52" y="134.62"/>
 <instance part="GND523" gate="1" x="127" y="66.04"/>
 <instance part="L521" gate="G$1" x="83.82" y="111.76" rot="R270"/>
-<instance part="+3V3_553" gate="G$1" x="111.76" y="154.94"/>
-<instance part="C553" gate="G$1" x="106.68" y="142.24"/>
+<instance part="+3V3_553" gate="G$1" x="111.76" y="162.56"/>
+<instance part="C553" gate="G$1" x="106.68" y="147.32" smashed="yes">
+<attribute name="NAME" x="101.219" y="143.764" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="103.759" y="143.764" size="1.778" layer="96" rot="R90"/>
+</instance>
 <instance part="C552" gate="G$1" x="106.68" y="76.2"/>
 <instance part="C551" gate="G$1" x="116.84" y="76.2"/>
 <instance part="+3V3_550" gate="G$1" x="96.52" y="86.36"/>
@@ -14820,6 +14835,12 @@ I2C addr: 0x38</text>
 <instance part="L596" gate="G$1" x="27.94" y="35.56" rot="R270"/>
 <instance part="GND597" gate="1" x="20.32" y="17.78"/>
 <instance part="GND595" gate="1" x="35.56" y="17.78"/>
+<instance part="R4" gate="G$1" x="144.78" y="66.04" rot="R90"/>
+<instance part="R5" gate="G$1" x="149.86" y="76.2" rot="R90"/>
+<instance part="R6" gate="G$1" x="149.86" y="129.54" rot="R90"/>
+<instance part="L1" gate="G$1" x="111.76" y="139.7"/>
+<instance part="GND3" gate="1" x="76.2" y="101.6"/>
+<instance part="R7" gate="G$1" x="121.92" y="60.96" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -14833,10 +14854,9 @@ I2C addr: 0x38</text>
 </net>
 <net name="TRX_FEB09" class="0">
 <segment>
-<pinref part="U521" gate="G$1" pin="RXEN"/>
-<wire x1="142.24" y1="101.6" x2="144.78" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="101.6" x2="144.78" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="60.96" x2="144.78" y2="53.34" width="0.1524" layer="91"/>
 <label x="144.78" y="53.34" size="1.778" layer="95" rot="R270" xref="yes"/>
+<pinref part="R4" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -14851,13 +14871,13 @@ I2C addr: 0x38</text>
 </segment>
 <segment>
 <pinref part="+3V3_553" gate="G$1" pin="+3V3"/>
-<pinref part="U521" gate="G$1" pin="VDD3"/>
-<wire x1="111.76" y1="152.4" x2="111.76" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="160.02" x2="111.76" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="C553" gate="G$1" pin="1"/>
-<wire x1="111.76" y1="147.32" x2="111.76" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="106.68" y1="144.78" x2="106.68" y2="147.32" width="0.1524" layer="91"/>
-<wire x1="106.68" y1="147.32" x2="111.76" y2="147.32" width="0.1524" layer="91"/>
-<junction x="111.76" y="147.32"/>
+<wire x1="106.68" y1="149.86" x2="106.68" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="152.4" x2="111.76" y2="152.4" width="0.1524" layer="91"/>
+<pinref part="L1" gate="G$1" pin="1"/>
+<wire x1="111.76" y1="152.4" x2="111.76" y2="144.78" width="0.1524" layer="91"/>
+<junction x="111.76" y="152.4"/>
 </segment>
 <segment>
 <pinref part="C551" gate="G$1" pin="1"/>
@@ -14896,6 +14916,9 @@ I2C addr: 0x38</text>
 <pinref part="GND522" gate="1" pin="GND"/>
 <pinref part="U521" gate="G$1" pin="VSS@4"/>
 <wire x1="149.86" y1="116.84" x2="142.24" y2="116.84" width="0.1524" layer="91"/>
+<pinref part="R6" gate="G$1" pin="1"/>
+<wire x1="149.86" y1="116.84" x2="149.86" y2="124.46" width="0.1524" layer="91"/>
+<junction x="149.86" y="116.84"/>
 </segment>
 <segment>
 <pinref part="C552" gate="G$1" pin="2"/>
@@ -14911,9 +14934,10 @@ I2C addr: 0x38</text>
 <pinref part="U521" gate="G$1" pin="VSS@8"/>
 <pinref part="C553" gate="G$1" pin="2"/>
 <wire x1="106.68" y1="132.08" x2="106.68" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="106.68" y1="137.16" x2="96.52" y2="137.16" width="0.1524" layer="91"/>
-<junction x="106.68" y="137.16"/>
+<wire x1="106.68" y1="137.16" x2="106.68" y2="142.24" width="0.1524" layer="91"/>
 <pinref part="GND553" gate="1" pin="GND"/>
+<wire x1="96.52" y1="137.16" x2="106.68" y2="137.16" width="0.1524" layer="91"/>
+<junction x="106.68" y="137.16"/>
 </segment>
 <segment>
 <pinref part="GND593" gate="1" pin="GND"/>
@@ -14969,6 +14993,12 @@ I2C addr: 0x38</text>
 <pinref part="C595" gate="G$1" pin="2"/>
 <wire x1="35.56" y1="20.32" x2="35.56" y2="22.86" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="L521" gate="G$1" pin="2"/>
+<wire x1="76.2" y1="111.76" x2="78.74" y2="111.76" width="0.1524" layer="91"/>
+<pinref part="GND3" gate="1" pin="GND"/>
+<wire x1="76.2" y1="104.14" x2="76.2" y2="111.76" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="PE09_RFC" class="0">
 <segment>
@@ -15004,10 +15034,9 @@ I2C addr: 0x38</text>
 </net>
 <net name="TRX_FEA09" class="0">
 <segment>
-<pinref part="U521" gate="G$1" pin="TXEN"/>
-<wire x1="142.24" y1="106.68" x2="149.86" y2="106.68" width="0.1524" layer="91"/>
-<wire x1="149.86" y1="106.68" x2="149.86" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="71.12" x2="149.86" y2="53.34" width="0.1524" layer="91"/>
 <label x="149.86" y="53.34" size="1.778" layer="95" rot="R270" xref="yes"/>
+<pinref part="R5" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="U511" gate="G$1" pin="CTRL"/>
@@ -15026,43 +15055,42 @@ I2C addr: 0x38</text>
 <net name="FE09_ANT" class="0">
 <segment>
 <pinref part="U521" gate="G$1" pin="ANT"/>
-<wire x1="91.44" y1="116.84" x2="76.2" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="91.44" y1="116.84" x2="73.66" y2="116.84" width="0.1524" layer="91"/>
 <label x="78.74" y="116.84" size="1.778" layer="95"/>
-<wire x1="76.2" y1="116.84" x2="73.66" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="76.2" y1="116.84" x2="76.2" y2="111.76" width="0.1524" layer="91"/>
-<junction x="76.2" y="116.84"/>
-<pinref part="L521" gate="G$1" pin="2"/>
-<wire x1="76.2" y1="111.76" x2="78.74" y2="111.76" width="0.1524" layer="91"/>
 <pinref part="U581" gate="G$1" pin="IN"/>
 </segment>
 </net>
-<net name="FE09_MODE" class="0">
+<net name="FPGA_RFX_MODE" class="0">
 <segment>
-<pinref part="U521" gate="G$1" pin="MODE"/>
-<wire x1="121.92" y1="86.36" x2="121.92" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="55.88" x2="121.92" y2="53.34" width="0.1524" layer="91"/>
 <label x="121.92" y="53.34" size="1.778" layer="95" rot="R270" xref="yes"/>
+<pinref part="R7" gate="G$1" pin="1"/>
 </segment>
 </net>
-<net name="FE09_IND" class="0">
+<net name="RFX_IND" class="0">
 <segment>
 <pinref part="U521" gate="G$1" pin="IND"/>
 <pinref part="L521" gate="G$1" pin="1"/>
 <wire x1="91.44" y1="111.76" x2="88.9" y2="111.76" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="FE09_DET" class="0">
+<net name="RFX_DET" class="0">
 <segment>
 <pinref part="U521" gate="G$1" pin="DET"/>
 <wire x1="121.92" y1="132.08" x2="121.92" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="137.16" x2="165.1" y2="137.16" width="0.1524" layer="91"/>
-<label x="142.24" y="137.16" size="1.778" layer="95"/>
+<wire x1="121.92" y1="137.16" x2="149.86" y2="137.16" width="0.1524" layer="91"/>
+<label x="152.4" y="137.16" size="1.778" layer="95"/>
 <pinref part="R521" gate="G$1" pin="1"/>
+<pinref part="R6" gate="G$1" pin="2"/>
+<wire x1="149.86" y1="137.16" x2="165.1" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="137.16" x2="149.86" y2="134.62" width="0.1524" layer="91"/>
+<junction x="149.86" y="137.16"/>
 </segment>
 </net>
-<net name="FPGA_FE09_DET" class="0">
+<net name="FPGA_RFX_DET" class="0">
 <segment>
-<wire x1="175.26" y1="137.16" x2="223.52" y2="137.16" width="0.1524" layer="91"/>
-<label x="223.52" y="137.16" size="1.778" layer="95" xref="yes"/>
+<wire x1="175.26" y1="137.16" x2="231.14" y2="137.16" width="0.1524" layer="91"/>
+<label x="231.14" y="137.16" size="1.778" layer="95" xref="yes"/>
 <pinref part="R521" gate="G$1" pin="2"/>
 </segment>
 </net>
@@ -15108,6 +15136,36 @@ I2C addr: 0x38</text>
 <wire x1="35.56" y1="35.56" x2="33.02" y2="35.56" width="0.1524" layer="91"/>
 <wire x1="35.56" y1="35.56" x2="35.56" y2="30.48" width="0.1524" layer="91"/>
 <junction x="35.56" y="35.56"/>
+</segment>
+</net>
+<net name="RFX_RXEN" class="0">
+<segment>
+<pinref part="R4" gate="G$1" pin="2"/>
+<wire x1="144.78" y1="71.12" x2="144.78" y2="101.6" width="0.1524" layer="91"/>
+<pinref part="U521" gate="G$1" pin="RXEN"/>
+<wire x1="144.78" y1="101.6" x2="142.24" y2="101.6" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="RFX_TXEN" class="0">
+<segment>
+<pinref part="R5" gate="G$1" pin="2"/>
+<wire x1="149.86" y1="81.28" x2="149.86" y2="106.68" width="0.1524" layer="91"/>
+<pinref part="U521" gate="G$1" pin="TXEN"/>
+<wire x1="149.86" y1="106.68" x2="142.24" y2="106.68" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="RFX_VDD3" class="0">
+<segment>
+<pinref part="U521" gate="G$1" pin="VDD3"/>
+<pinref part="L1" gate="G$1" pin="2"/>
+<wire x1="111.76" y1="132.08" x2="111.76" y2="134.62" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="RFX_MODE" class="0">
+<segment>
+<pinref part="R7" gate="G$1" pin="2"/>
+<pinref part="U521" gate="G$1" pin="MODE"/>
+<wire x1="121.92" y1="66.04" x2="121.92" y2="86.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
