@@ -767,7 +767,7 @@ DIN A4, landscape with location and doc. field</description>
 <text x="-10.16" y="-5.08" size="1.27" layer="94">1</text>
 <text x="11.684" y="-5.08" size="1.27" layer="94">8</text>
 </symbol>
-<symbol name="SAMTEC_LSHM-150-DV_JM1">
+<symbol name="SAMTEC_LSHM-150-DV_JB1">
 <description>&lt;h3&gt;SAMTEC LSHM-150-XX.X-X-DV-A-X-X-TR&lt;/h3&gt;
 &lt;h4&gt;HIGH-SPEED HERMAPHRODITIC STRIP&lt;/h4&gt;
 &lt;h5&gt;Trenz Electronic TE0712-02-100-2C3 JM1&lt;/h5&gt;
@@ -775,116 +775,116 @@ DIN A4, landscape with location and doc. field</description>
 &lt;li&gt;100 Pos&lt;li&gt;
 &lt;li&gt;0.5 mm padding&lt;/li&gt;
 &lt;/ul&gt;</description>
-<pin name="GND@1" x="25.4" y="60.96" length="middle" direction="pas" rot="R180"/>
-<pin name="VIN@2" x="-25.4" y="60.96" length="middle" direction="pas"/>
-<pin name="ETH_TD_P" x="25.4" y="58.42" length="middle" direction="pas" rot="R180"/>
-<pin name="VIN@4" x="-25.4" y="58.42" length="middle" direction="pas"/>
-<pin name="ETH_TD_N" x="25.4" y="55.88" length="middle" direction="pas" rot="R180"/>
-<pin name="VIN@6" x="-25.4" y="55.88" length="middle" direction="pas"/>
-<pin name="GND@7" x="25.4" y="53.34" length="middle" direction="pas" rot="R180"/>
-<pin name="NOSEQ" x="-25.4" y="53.34" length="middle" direction="pas"/>
-<pin name="ETH_RD_P" x="25.4" y="50.8" length="middle" direction="pas" rot="R180"/>
-<pin name="VCCIO16@10" x="-25.4" y="50.8" length="middle" direction="pas"/>
-<pin name="ETH_RD_N" x="25.4" y="48.26" length="middle" direction="pas" rot="R180"/>
-<pin name="VCCIO16@12" x="-25.4" y="48.26" length="middle" direction="pas"/>
-<pin name="U3V3@13" x="25.4" y="45.72" length="middle" direction="pas" rot="R180"/>
-<pin name="U3V3IN@14" x="-25.4" y="45.72" length="middle" direction="pas"/>
-<pin name="B13_L6_N" x="25.4" y="43.18" length="middle" direction="pas" rot="R180"/>
-<pin name="U3V3IN@16" x="-25.4" y="43.18" length="middle" direction="pas"/>
-<pin name="B13_L6_P" x="25.4" y="40.64" length="middle" direction="pas" rot="R180"/>
-<pin name="B13_L3_P" x="-25.4" y="40.64" length="middle" direction="pas"/>
-<pin name="GND@19" x="25.4" y="38.1" length="middle" direction="pas" rot="R180"/>
-<pin name="B13_L3_N" x="-25.4" y="38.1" length="middle" direction="pas"/>
-<pin name="B13_L5_N" x="25.4" y="35.56" length="middle" direction="pas" rot="R180"/>
-<pin name="B13_L11_N" x="-25.4" y="35.56" length="middle" direction="pas"/>
-<pin name="B13_L5_P" x="25.4" y="33.02" length="middle" direction="pas" rot="R180"/>
-<pin name="B13_L11_P" x="-25.4" y="33.02" length="middle" direction="pas"/>
-<pin name="GND@25" x="25.4" y="30.48" length="middle" direction="pas" rot="R180"/>
-<pin name="B13_L9_N" x="-25.4" y="30.48" length="middle" direction="pas"/>
-<pin name="EN1@27" x="25.4" y="27.94" length="middle" direction="pas" rot="R180"/>
-<pin name="B13_L9_P" x="-25.4" y="27.94" length="middle" direction="pas"/>
-<pin name="PGOOD@29" x="25.4" y="25.4" length="middle" direction="pas" rot="R180"/>
-<pin name="GND@30" x="-25.4" y="25.4" length="middle" direction="pas"/>
-<pin name="MODE@31" x="25.4" y="22.86" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L22_P" x="-25.4" y="22.86" length="middle" direction="pas"/>
-<pin name="GND@33" x="25.4" y="20.32" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L22_N" x="-25.4" y="20.32" length="middle" direction="pas"/>
-<pin name="B16_L16_P" x="25.4" y="17.78" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L24_N" x="-25.4" y="17.78" length="middle" direction="pas"/>
-<pin name="B16_L16_N" x="25.4" y="15.24" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L24_P" x="-25.4" y="15.24" length="middle" direction="pas"/>
-<pin name="B16_L19_N" x="25.4" y="12.7" length="middle" direction="pas" rot="R180"/>
-<pin name="U1V8@40" x="-25.4" y="12.7" length="middle" direction="pas"/>
-<pin name="B16_L19_P" x="25.4" y="10.16" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L23_P" x="-25.4" y="10.16" length="middle" direction="pas"/>
-<pin name="GND@43" x="25.4" y="7.62" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L23_N" x="-25.4" y="7.62" length="middle" direction="pas"/>
-<pin name="B16_L17_N" x="25.4" y="5.08" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L15_P" x="-25.4" y="5.08" length="middle" direction="pas"/>
-<pin name="B16_L17_P" x="25.4" y="2.54" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L15_N" x="-25.4" y="2.54" length="middle" direction="pas"/>
-<pin name="B16_L18_N" x="25.4" y="0" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L20_P" x="-25.4" y="0" length="middle" direction="pas"/>
-<pin name="B16_L18_P" x="25.4" y="-2.54" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L20_N" x="-25.4" y="-2.54" length="middle" direction="pas"/>
-<pin name="GND@53" x="25.4" y="-5.08" length="middle" direction="pas" rot="R180"/>
-<pin name="GND@54" x="-25.4" y="-5.08" length="middle" direction="pas"/>
-<pin name="B16_L9_N" x="25.4" y="-7.62" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L21_P" x="-25.4" y="-7.62" length="middle" direction="pas"/>
-<pin name="B16_L9_P" x="25.4" y="-10.16" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L21_N" x="-25.4" y="-10.16" length="middle" direction="pas"/>
-<pin name="B16_L7_N" x="25.4" y="-12.7" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L13_CLK_P" x="-25.4" y="-12.7" length="middle" direction="pas"/>
-<pin name="B16_L7_P" x="25.4" y="-15.24" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L13_CLK_N" x="-25.4" y="-15.24" length="middle" direction="pas"/>
-<pin name="GND@63" x="25.4" y="-17.78" length="middle" direction="pas" rot="R180"/>
-<pin name="GND@64" x="-25.4" y="-17.78" length="middle" direction="pas"/>
-<pin name="B16_L11_P" x="25.4" y="-20.32" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L14_P" x="-25.4" y="-20.32" length="middle" direction="pas"/>
-<pin name="B16_L11_N" x="25.4" y="-22.86" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L14_N" x="-25.4" y="-22.86" length="middle" direction="pas"/>
-<pin name="B16_L10_N" x="25.4" y="-25.4" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L3_N" x="-25.4" y="-25.4" length="middle" direction="pas"/>
-<pin name="B16_L10_P" x="25.4" y="-27.94" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L3_P" x="-25.4" y="-27.94" length="middle" direction="pas"/>
-<pin name="GND@73" x="25.4" y="-30.48" length="middle" direction="pas" rot="R180"/>
-<pin name="GND@74" x="-25.4" y="-30.48" length="middle" direction="pas"/>
-<pin name="B16_L5_N" x="25.4" y="-33.02" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L12_CLK_P" x="-25.4" y="-33.02" length="middle" direction="pas"/>
-<pin name="B16_L5_P" x="25.4" y="-35.56" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L12_CLK_N" x="-25.4" y="-35.56" length="middle" direction="pas"/>
-<pin name="B16_L2_N" x="25.4" y="-38.1" length="middle" direction="pas" rot="R180"/>
-<pin name="VBAT_IN@80" x="-25.4" y="-38.1" length="middle" direction="pas"/>
-<pin name="B16_L2_P" x="25.4" y="-40.64" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L8_N" x="-25.4" y="-40.64" length="middle" direction="pas"/>
-<pin name="GND@83" x="25.4" y="-43.18" length="middle" direction="pas" rot="R180"/>
-<pin name="B16_L8_P" x="-25.4" y="-43.18" length="middle" direction="pas"/>
-<pin name="B16_L6_N" x="25.4" y="-45.72" length="middle" direction="pas" rot="R180"/>
-<pin name="B14_L18_MIO_N" x="-25.4" y="-45.72" length="middle" direction="pas"/>
-<pin name="B16_L6_P" x="25.4" y="-48.26" length="middle" direction="pas" rot="R180"/>
-<pin name="B14_L18_MIO_P" x="-25.4" y="-48.26" length="middle" direction="pas"/>
-<pin name="GND@89" x="25.4" y="-50.8" length="middle" direction="pas" rot="R180"/>
-<pin name="JTAGEN@90" x="-25.4" y="-50.8" length="middle" direction="pas"/>
-<pin name="B14_L24_MIO_P" x="25.4" y="-53.34" length="middle" direction="pas" rot="R180"/>
-<pin name="B14_L9_MIO_P" x="-25.4" y="-53.34" length="middle" direction="pas"/>
-<pin name="B16_L4_N" x="25.4" y="-55.88" length="middle" direction="pas" rot="R180"/>
-<pin name="B14_L9_MIO_N" x="-25.4" y="-55.88" length="middle" direction="pas"/>
-<pin name="B16_L4_P" x="25.4" y="-58.42" length="middle" direction="pas" rot="R180"/>
-<pin name="B14_L4_MIO_P" x="-25.4" y="-58.42" length="middle" direction="pas"/>
-<pin name="B16_L1_N" x="25.4" y="-60.96" length="middle" direction="pas" rot="R180"/>
-<pin name="B14_L4_MIO_N" x="-25.4" y="-60.96" length="middle" direction="pas"/>
-<pin name="B16_L1_P" x="25.4" y="-63.5" length="middle" direction="pas" rot="R180"/>
-<pin name="B14_L24_MIO_N" x="-25.4" y="-63.5" length="middle" direction="pas"/>
-<text x="-2.54" y="66.04" size="1.9304" layer="95" font="vector" ratio="10">&gt;NAME</text>
+<pin name="GND@1" x="33.02" y="60.96" length="middle" direction="pas" rot="R180"/>
+<pin name="VIN@2" x="-33.02" y="60.96" length="middle" direction="pwr"/>
+<pin name="ETH_TD_P" x="33.02" y="58.42" length="middle" direction="out" rot="R180"/>
+<pin name="VIN@4" x="-33.02" y="58.42" length="middle" direction="pwr"/>
+<pin name="ETH_TD_N" x="33.02" y="55.88" length="middle" direction="out" rot="R180"/>
+<pin name="VIN@6" x="-33.02" y="55.88" length="middle" direction="pwr"/>
+<pin name="GND@7" x="33.02" y="53.34" length="middle" direction="pas" rot="R180"/>
+<pin name="NOSEQ" x="-33.02" y="53.34" length="middle" direction="pas"/>
+<pin name="ETH_RD_P" x="33.02" y="50.8" length="middle" direction="in" rot="R180"/>
+<pin name="VCCIO16@10" x="-33.02" y="50.8" length="middle" direction="pwr"/>
+<pin name="ETH_RD_N" x="33.02" y="48.26" length="middle" direction="in" rot="R180"/>
+<pin name="VCCIO16@12" x="-33.02" y="48.26" length="middle" direction="pwr"/>
+<pin name="U3V3@13" x="33.02" y="45.72" length="middle" direction="sup" rot="R180"/>
+<pin name="U3V3IN@14" x="-33.02" y="45.72" length="middle" direction="pwr"/>
+<pin name="B13_L6_N" x="33.02" y="43.18" length="middle" direction="pas" rot="R180"/>
+<pin name="U3V3IN@16" x="-33.02" y="43.18" length="middle" direction="pwr"/>
+<pin name="B13_L6_P" x="33.02" y="40.64" length="middle" direction="pas" rot="R180"/>
+<pin name="B13_L3_P" x="-33.02" y="40.64" length="middle" direction="pas"/>
+<pin name="GND@19" x="33.02" y="38.1" length="middle" direction="pas" rot="R180"/>
+<pin name="B13_L3_N" x="-33.02" y="38.1" length="middle" direction="pas"/>
+<pin name="B13_L5_N" x="33.02" y="35.56" length="middle" direction="pas" rot="R180"/>
+<pin name="B13_L11_N" x="-33.02" y="35.56" length="middle" direction="pas"/>
+<pin name="B13_L5_P" x="33.02" y="33.02" length="middle" direction="pas" rot="R180"/>
+<pin name="B13_L11_P" x="-33.02" y="33.02" length="middle" direction="pas"/>
+<pin name="GND@25" x="33.02" y="30.48" length="middle" direction="pas" rot="R180"/>
+<pin name="B13_L9_N" x="-33.02" y="30.48" length="middle" direction="pas"/>
+<pin name="EN1@27" x="33.02" y="27.94" length="middle" direction="in" rot="R180"/>
+<pin name="B13_L9_P" x="-33.02" y="27.94" length="middle" direction="pas"/>
+<pin name="PGOOD@29" x="33.02" y="25.4" length="middle" direction="out" rot="R180"/>
+<pin name="GND@30" x="-33.02" y="25.4" length="middle" direction="pas"/>
+<pin name="MODE@31" x="33.02" y="22.86" length="middle" direction="in" rot="R180"/>
+<pin name="B16_L22_P" x="-33.02" y="22.86" length="middle" direction="pas"/>
+<pin name="GND@33" x="33.02" y="20.32" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L22_N" x="-33.02" y="20.32" length="middle" direction="pas"/>
+<pin name="B16_L16_P" x="33.02" y="17.78" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L24_N" x="-33.02" y="17.78" length="middle" direction="pas"/>
+<pin name="B16_L16_N" x="33.02" y="15.24" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L24_P" x="-33.02" y="15.24" length="middle" direction="pas"/>
+<pin name="B16_L19_N" x="33.02" y="12.7" length="middle" direction="pas" rot="R180"/>
+<pin name="U1V8@40" x="-33.02" y="12.7" length="middle" direction="sup"/>
+<pin name="B16_L19_P" x="33.02" y="10.16" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L23_P" x="-33.02" y="10.16" length="middle" direction="pas"/>
+<pin name="GND@43" x="33.02" y="7.62" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L23_N" x="-33.02" y="7.62" length="middle" direction="pas"/>
+<pin name="B16_L17_N" x="33.02" y="5.08" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L15_P" x="-33.02" y="5.08" length="middle" direction="pas"/>
+<pin name="B16_L17_P" x="33.02" y="2.54" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L15_N" x="-33.02" y="2.54" length="middle" direction="pas"/>
+<pin name="B16_L18_N" x="33.02" y="0" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L20_P" x="-33.02" y="0" length="middle" direction="pas"/>
+<pin name="B16_L18_P" x="33.02" y="-2.54" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L20_N" x="-33.02" y="-2.54" length="middle" direction="pas"/>
+<pin name="GND@53" x="33.02" y="-5.08" length="middle" direction="pas" rot="R180"/>
+<pin name="GND@54" x="-33.02" y="-5.08" length="middle" direction="pas"/>
+<pin name="B16_L9_N" x="33.02" y="-7.62" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L21_P" x="-33.02" y="-7.62" length="middle" direction="pas"/>
+<pin name="B16_L9_P" x="33.02" y="-10.16" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L21_N" x="-33.02" y="-10.16" length="middle" direction="pas"/>
+<pin name="B16_L7_N" x="33.02" y="-12.7" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L13_CLK_P" x="-33.02" y="-12.7" length="middle" direction="pas"/>
+<pin name="B16_L7_P" x="33.02" y="-15.24" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L13_CLK_N" x="-33.02" y="-15.24" length="middle" direction="pas"/>
+<pin name="GND@63" x="33.02" y="-17.78" length="middle" direction="pas" rot="R180"/>
+<pin name="GND@64" x="-33.02" y="-17.78" length="middle" direction="pas"/>
+<pin name="B16_L11_P" x="33.02" y="-20.32" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L14_P" x="-33.02" y="-20.32" length="middle" direction="pas"/>
+<pin name="B16_L11_N" x="33.02" y="-22.86" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L14_N" x="-33.02" y="-22.86" length="middle" direction="pas"/>
+<pin name="B16_L10_N" x="33.02" y="-25.4" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L3_N" x="-33.02" y="-25.4" length="middle" direction="pas"/>
+<pin name="B16_L10_P" x="33.02" y="-27.94" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L3_P" x="-33.02" y="-27.94" length="middle" direction="pas"/>
+<pin name="GND@73" x="33.02" y="-30.48" length="middle" direction="pas" rot="R180"/>
+<pin name="GND@74" x="-33.02" y="-30.48" length="middle" direction="pas"/>
+<pin name="B16_L5_N" x="33.02" y="-33.02" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L12_CLK_P" x="-33.02" y="-33.02" length="middle" direction="pas"/>
+<pin name="B16_L5_P" x="33.02" y="-35.56" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L12_CLK_N" x="-33.02" y="-35.56" length="middle" direction="pas"/>
+<pin name="B16_L2_N" x="33.02" y="-38.1" length="middle" direction="pas" rot="R180"/>
+<pin name="VBAT_IN@80" x="-33.02" y="-38.1" length="middle" direction="pwr"/>
+<pin name="B16_L2_P" x="33.02" y="-40.64" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L8_N" x="-33.02" y="-40.64" length="middle" direction="pas"/>
+<pin name="GND@83" x="33.02" y="-43.18" length="middle" direction="pas" rot="R180"/>
+<pin name="B16_L8_P" x="-33.02" y="-43.18" length="middle" direction="pas"/>
+<pin name="B16_L6_N" x="33.02" y="-45.72" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L18_MIO_N" x="-33.02" y="-45.72" length="middle" direction="pas"/>
+<pin name="B16_L6_P" x="33.02" y="-48.26" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L18_MIO_P" x="-33.02" y="-48.26" length="middle" direction="pas"/>
+<pin name="GND@89" x="33.02" y="-50.8" length="middle" direction="pas" rot="R180"/>
+<pin name="JTAGEN@90" x="-33.02" y="-50.8" length="middle" direction="in"/>
+<pin name="B14_L24_MIO_P" x="33.02" y="-53.34" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L9_MIO_P" x="-33.02" y="-53.34" length="middle" direction="pas"/>
+<pin name="B16_L4_N" x="33.02" y="-55.88" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L9_MIO_N" x="-33.02" y="-55.88" length="middle" direction="pas"/>
+<pin name="B16_L4_P" x="33.02" y="-58.42" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L4_MIO_P" x="-33.02" y="-58.42" length="middle" direction="pas"/>
+<pin name="B16_L1_N" x="33.02" y="-60.96" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L4_MIO_N" x="-33.02" y="-60.96" length="middle" direction="pas"/>
+<pin name="B16_L1_P" x="33.02" y="-63.5" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L24_MIO_N" x="-33.02" y="-63.5" length="middle" direction="pas"/>
+<text x="-10.16" y="66.04" size="1.9304" layer="95" font="vector" ratio="10">&gt;NAME</text>
 <text x="-22.86" y="-71.12" size="1.9304" layer="96" font="vector" ratio="10">&gt;VALUE</text>
-<wire x1="-20.32" y1="63.5" x2="20.32" y2="63.5" width="0.254" layer="94"/>
-<wire x1="20.32" y1="63.5" x2="20.32" y2="-66.04" width="0.254" layer="94"/>
-<wire x1="20.32" y1="-66.04" x2="-20.32" y2="-66.04" width="0.254" layer="94"/>
-<wire x1="-20.32" y1="-66.04" x2="-20.32" y2="63.5" width="0.254" layer="94"/>
+<wire x1="-27.94" y1="63.5" x2="27.94" y2="63.5" width="0.254" layer="94"/>
+<wire x1="27.94" y1="63.5" x2="27.94" y2="-66.04" width="0.254" layer="94"/>
+<wire x1="27.94" y1="-66.04" x2="-27.94" y2="-66.04" width="0.254" layer="94"/>
+<wire x1="-27.94" y1="-66.04" x2="-27.94" y2="63.5" width="0.254" layer="94"/>
 <pin name="F1" x="10.16" y="68.58" length="middle" direction="pas" rot="R270"/>
 <pin name="F2" x="10.16" y="-71.12" length="middle" direction="pas" rot="R90"/>
 </symbol>
-<symbol name="SAMTEC_LSHM-150-DV_JM2">
+<symbol name="SAMTEC_LSHM-150-DV_JB2">
 <description>&lt;h3&gt;SAMTEC LSHM-150-XX.X-X-DV-A-X-X-TR&lt;/h3&gt;
 &lt;h4&gt;HIGH-SPEED HERMAPHRODITIC STRIP&lt;/h4&gt;
 &lt;h5&gt;Trenz Electronic TE0712-02-100-2C3 JM2&lt;/h5&gt;
@@ -892,190 +892,191 @@ DIN A4, landscape with location and doc. field</description>
 &lt;li&gt;100 Pos&lt;li&gt;
 &lt;li&gt;0.5 mm padding&lt;/li&gt;
 &lt;/ul&gt;</description>
-<pin name="P$1" x="25.4" y="60.96" length="middle" direction="pas" rot="R180"/>
-<pin name="P$2" x="-25.4" y="60.96" length="middle" direction="pas"/>
-<pin name="P$3" x="25.4" y="58.42" length="middle" direction="pas" rot="R180"/>
-<pin name="P$4" x="-25.4" y="58.42" length="middle" direction="pas"/>
-<pin name="P$5" x="25.4" y="55.88" length="middle" direction="pas" rot="R180"/>
-<pin name="P$6" x="-25.4" y="55.88" length="middle" direction="pas"/>
-<pin name="P$7" x="25.4" y="53.34" length="middle" direction="pas" rot="R180"/>
-<pin name="P$8" x="-25.4" y="53.34" length="middle" direction="pas"/>
-<pin name="P$9" x="25.4" y="50.8" length="middle" direction="pas" rot="R180"/>
-<pin name="P$10" x="-25.4" y="50.8" length="middle" direction="pas"/>
-<pin name="P$11" x="25.4" y="48.26" length="middle" direction="pas" rot="R180"/>
-<pin name="P$12" x="-25.4" y="48.26" length="middle" direction="pas"/>
-<pin name="P$13" x="25.4" y="45.72" length="middle" direction="pas" rot="R180"/>
-<pin name="P$14" x="-25.4" y="45.72" length="middle" direction="pas"/>
-<pin name="P$15" x="25.4" y="43.18" length="middle" direction="pas" rot="R180"/>
-<pin name="P$16" x="-25.4" y="43.18" length="middle" direction="pas"/>
-<pin name="P$17" x="25.4" y="40.64" length="middle" direction="pas" rot="R180"/>
-<pin name="P$18" x="-25.4" y="40.64" length="middle" direction="pas"/>
-<pin name="P$19" x="25.4" y="38.1" length="middle" direction="pas" rot="R180"/>
-<pin name="P$20" x="-25.4" y="38.1" length="middle" direction="pas"/>
-<pin name="P$21" x="25.4" y="35.56" length="middle" direction="pas" rot="R180"/>
-<pin name="P$22" x="-25.4" y="35.56" length="middle" direction="pas"/>
-<pin name="P$23" x="25.4" y="33.02" length="middle" direction="pas" rot="R180"/>
-<pin name="P$24" x="-25.4" y="33.02" length="middle" direction="pas"/>
-<pin name="P$25" x="25.4" y="30.48" length="middle" direction="pas" rot="R180"/>
-<pin name="P$26" x="-25.4" y="30.48" length="middle" direction="pas"/>
-<pin name="P$27" x="25.4" y="27.94" length="middle" direction="pas" rot="R180"/>
-<pin name="P$28" x="-25.4" y="27.94" length="middle" direction="pas"/>
-<pin name="P$29" x="25.4" y="25.4" length="middle" direction="pas" rot="R180"/>
-<pin name="P$30" x="-25.4" y="25.4" length="middle" direction="pas"/>
-<pin name="P$31" x="25.4" y="22.86" length="middle" direction="pas" rot="R180"/>
-<pin name="P$32" x="-25.4" y="22.86" length="middle" direction="pas"/>
-<pin name="P$33" x="25.4" y="20.32" length="middle" direction="pas" rot="R180"/>
-<pin name="P$34" x="-25.4" y="20.32" length="middle" direction="pas"/>
-<pin name="P$35" x="25.4" y="17.78" length="middle" direction="pas" rot="R180"/>
-<pin name="P$36" x="-25.4" y="17.78" length="middle" direction="pas"/>
-<pin name="P$37" x="25.4" y="15.24" length="middle" direction="pas" rot="R180"/>
-<pin name="P$38" x="-25.4" y="15.24" length="middle" direction="pas"/>
-<pin name="P$39" x="25.4" y="12.7" length="middle" direction="pas" rot="R180"/>
-<pin name="P$40" x="-25.4" y="12.7" length="middle" direction="pas"/>
-<pin name="P$41" x="25.4" y="10.16" length="middle" direction="pas" rot="R180"/>
-<pin name="P$42" x="-25.4" y="10.16" length="middle" direction="pas"/>
-<pin name="P$43" x="25.4" y="7.62" length="middle" direction="pas" rot="R180"/>
-<pin name="P$44" x="-25.4" y="7.62" length="middle" direction="pas"/>
-<pin name="P$45" x="25.4" y="5.08" length="middle" direction="pas" rot="R180"/>
-<pin name="P$46" x="-25.4" y="5.08" length="middle" direction="pas"/>
-<pin name="P$47" x="25.4" y="2.54" length="middle" direction="pas" rot="R180"/>
-<pin name="P$48" x="-25.4" y="2.54" length="middle" direction="pas"/>
-<pin name="P$49" x="25.4" y="0" length="middle" direction="pas" rot="R180"/>
-<pin name="P$50" x="-25.4" y="0" length="middle" direction="pas"/>
-<pin name="P$51" x="25.4" y="-2.54" length="middle" direction="pas" rot="R180"/>
-<pin name="P$52" x="-25.4" y="-2.54" length="middle" direction="pas"/>
-<pin name="P$53" x="25.4" y="-5.08" length="middle" direction="pas" rot="R180"/>
-<pin name="P$54" x="-25.4" y="-5.08" length="middle" direction="pas"/>
-<pin name="P$55" x="25.4" y="-7.62" length="middle" direction="pas" rot="R180"/>
-<pin name="P$56" x="-25.4" y="-7.62" length="middle" direction="pas"/>
-<pin name="P$57" x="25.4" y="-10.16" length="middle" direction="pas" rot="R180"/>
-<pin name="P$58" x="-25.4" y="-10.16" length="middle" direction="pas"/>
-<pin name="P$59" x="25.4" y="-12.7" length="middle" direction="pas" rot="R180"/>
-<pin name="P$60" x="-25.4" y="-12.7" length="middle" direction="pas"/>
-<pin name="P$61" x="25.4" y="-15.24" length="middle" direction="pas" rot="R180"/>
-<pin name="P$62" x="-25.4" y="-15.24" length="middle" direction="pas"/>
-<pin name="P$63" x="25.4" y="-17.78" length="middle" direction="pas" rot="R180"/>
-<pin name="P$64" x="-25.4" y="-17.78" length="middle" direction="pas"/>
-<pin name="P$65" x="25.4" y="-20.32" length="middle" direction="pas" rot="R180"/>
-<pin name="P$66" x="-25.4" y="-20.32" length="middle" direction="pas"/>
-<pin name="P$67" x="25.4" y="-22.86" length="middle" direction="pas" rot="R180"/>
-<pin name="P$68" x="-25.4" y="-22.86" length="middle" direction="pas"/>
-<pin name="P$69" x="25.4" y="-25.4" length="middle" direction="pas" rot="R180"/>
-<pin name="P$70" x="-25.4" y="-25.4" length="middle" direction="pas"/>
-<pin name="P$71" x="25.4" y="-27.94" length="middle" direction="pas" rot="R180"/>
-<pin name="P$72" x="-25.4" y="-27.94" length="middle" direction="pas"/>
-<pin name="P$73" x="25.4" y="-30.48" length="middle" direction="pas" rot="R180"/>
-<pin name="P$74" x="-25.4" y="-30.48" length="middle" direction="pas"/>
-<pin name="P$75" x="25.4" y="-33.02" length="middle" direction="pas" rot="R180"/>
-<pin name="P$76" x="-25.4" y="-33.02" length="middle" direction="pas"/>
-<pin name="P$77" x="25.4" y="-35.56" length="middle" direction="pas" rot="R180"/>
-<pin name="P$78" x="-25.4" y="-35.56" length="middle" direction="pas"/>
-<pin name="P$79" x="25.4" y="-38.1" length="middle" direction="pas" rot="R180"/>
-<pin name="P$80" x="-25.4" y="-38.1" length="middle" direction="pas"/>
-<pin name="P$81" x="25.4" y="-40.64" length="middle" direction="pas" rot="R180"/>
-<pin name="P$82" x="-25.4" y="-40.64" length="middle" direction="pas"/>
-<pin name="P$83" x="25.4" y="-43.18" length="middle" direction="pas" rot="R180"/>
-<pin name="P$84" x="-25.4" y="-43.18" length="middle" direction="pas"/>
-<pin name="P$85" x="25.4" y="-45.72" length="middle" direction="pas" rot="R180"/>
-<pin name="P$86" x="-25.4" y="-45.72" length="middle" direction="pas"/>
-<pin name="P$87" x="25.4" y="-48.26" length="middle" direction="pas" rot="R180"/>
-<pin name="P$88" x="-25.4" y="-48.26" length="middle" direction="pas"/>
-<pin name="P$89" x="25.4" y="-50.8" length="middle" direction="pas" rot="R180"/>
-<pin name="P$90" x="-25.4" y="-50.8" length="middle" direction="pas"/>
-<pin name="P$91" x="25.4" y="-53.34" length="middle" direction="pas" rot="R180"/>
-<pin name="P$92" x="-25.4" y="-53.34" length="middle" direction="pas"/>
-<pin name="P$93" x="25.4" y="-55.88" length="middle" direction="pas" rot="R180"/>
-<pin name="P$94" x="-25.4" y="-55.88" length="middle" direction="pas"/>
-<pin name="P$95" x="25.4" y="-58.42" length="middle" direction="pas" rot="R180"/>
-<pin name="P$96" x="-25.4" y="-58.42" length="middle" direction="pas"/>
-<pin name="P$97" x="25.4" y="-60.96" length="middle" direction="pas" rot="R180"/>
-<pin name="P$98" x="-25.4" y="-60.96" length="middle" direction="pas"/>
-<pin name="P$99" x="25.4" y="-63.5" length="middle" direction="pas" rot="R180"/>
-<pin name="P$100" x="-25.4" y="-63.5" length="middle" direction="pas"/>
-<text x="-2.54" y="66.04" size="1.9304" layer="95" font="vector" ratio="10">&gt;NAME</text>
+<pin name="VIN@1" x="33.02" y="60.96" length="middle" direction="pwr" rot="R180"/>
+<pin name="VCCIO13@2" x="-33.02" y="60.96" length="middle" direction="pwr"/>
+<pin name="VIN@3" x="33.02" y="58.42" length="middle" direction="pwr" rot="R180"/>
+<pin name="VCCIO13@4" x="-33.02" y="58.42" length="middle" direction="pwr"/>
+<pin name="VIN@5" x="33.02" y="55.88" length="middle" direction="pwr" rot="R180"/>
+<pin name="NC@6" x="-33.02" y="55.88" length="middle" direction="nc"/>
+<pin name="VIN@7" x="33.02" y="53.34" length="middle" direction="pwr" rot="R180"/>
+<pin name="VCCIO15@8" x="-33.02" y="53.34" length="middle" direction="pwr"/>
+<pin name="U3V3@9" x="33.02" y="50.8" length="middle" direction="sup" rot="R180"/>
+<pin name="VCCIO15@10" x="-33.02" y="50.8" length="middle" direction="pwr"/>
+<pin name="U3V3@11" x="33.02" y="48.26" length="middle" direction="sup" rot="R180"/>
+<pin name="B14_L8_N" x="-33.02" y="48.26" length="middle" direction="pas"/>
+<pin name="B14_L10_N" x="33.02" y="45.72" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L8_P" x="-33.02" y="45.72" length="middle" direction="pas"/>
+<pin name="B14_L10_P" x="33.02" y="43.18" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L17_N" x="-33.02" y="43.18" length="middle" direction="pas"/>
+<pin name="RESIN" x="33.02" y="40.64" length="middle" direction="in" rot="R180"/>
+<pin name="B14_L17_P" x="-33.02" y="40.64" length="middle" direction="pas"/>
+<pin name="GND@19" x="33.02" y="38.1" length="middle" direction="pas" rot="R180"/>
+<pin name="U1V5@20" x="-33.02" y="38.1" length="middle" direction="sup"/>
+<pin name="B14_L12_P" x="33.02" y="35.56" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L14_CLK_P" x="-33.02" y="35.56" length="middle" direction="pas"/>
+<pin name="B14_L12_N" x="33.02" y="33.02" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L14_CLK_N" x="-33.02" y="33.02" length="middle" direction="pas"/>
+<pin name="B14_L11_P" x="33.02" y="30.48" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L13_CLK_P" x="-33.02" y="30.48" length="middle" direction="pas"/>
+<pin name="B14_L11_N" x="33.02" y="27.94" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L13_CLK_N" x="-33.02" y="27.94" length="middle" direction="pas"/>
+<pin name="GND@29" x="33.02" y="25.4" length="middle" direction="pas" rot="R180"/>
+<pin name="NC@30" x="-33.02" y="25.4" length="middle" direction="nc"/>
+<pin name="B15_L9_N" x="33.02" y="22.86" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L16_P" x="-33.02" y="22.86" length="middle" direction="pas"/>
+<pin name="B15_L9_P" x="33.02" y="20.32" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L16_N" x="-33.02" y="20.32" length="middle" direction="pas"/>
+<pin name="B15_L8_N" x="33.02" y="17.78" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L15_P" x="-33.02" y="17.78" length="middle" direction="pas"/>
+<pin name="B15_L8_P" x="33.02" y="15.24" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L15_N" x="-33.02" y="15.24" length="middle" direction="pas"/>
+<pin name="GND@39" x="33.02" y="12.7" length="middle" direction="pas" rot="R180"/>
+<pin name="GND@40" x="-33.02" y="12.7" length="middle" direction="pas"/>
+<pin name="B15_L7_N" x="33.02" y="10.16" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L23_P" x="-33.02" y="10.16" length="middle" direction="pas"/>
+<pin name="B15_L7_P" x="33.02" y="7.62" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L23_N" x="-33.02" y="7.62" length="middle" direction="pas"/>
+<pin name="B15_L13_CLK_P" x="33.02" y="5.08" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L19_P" x="-33.02" y="5.08" length="middle" direction="pas"/>
+<pin name="B15_L13_CLK_N" x="33.02" y="2.54" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L19_N" x="-33.02" y="2.54" length="middle" direction="pas"/>
+<pin name="GND@49" x="33.02" y="0" length="middle" direction="pas" rot="R180"/>
+<pin name="GND@50" x="-33.02" y="0" length="middle" direction="pas"/>
+<pin name="B15_L14_CLK_P" x="33.02" y="-2.54" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L11_CLK_P" x="-33.02" y="-2.54" length="middle" direction="pas"/>
+<pin name="B15_L14_CLK_N" x="33.02" y="-5.08" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L11_CLK_N" x="-33.02" y="-5.08" length="middle" direction="pas"/>
+<pin name="B15_L12_CLK_P" x="33.02" y="-7.62" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L3_P" x="-33.02" y="-7.62" length="middle" direction="pas"/>
+<pin name="B15_L12_CLK_N" x="33.02" y="-10.16" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L3_N" x="-33.02" y="-10.16" length="middle" direction="pas"/>
+<pin name="GND@59" x="33.02" y="-12.7" length="middle" direction="pas" rot="R180"/>
+<pin name="GND@60" x="-33.02" y="-12.7" length="middle" direction="pas"/>
+<pin name="B15_L10_N" x="33.02" y="-15.24" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L17_N" x="-33.02" y="-15.24" length="middle" direction="pas"/>
+<pin name="B15_L10_P" x="33.02" y="-17.78" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L17_P" x="-33.02" y="-17.78" length="middle" direction="pas"/>
+<pin name="B15_L18_P" x="33.02" y="-20.32" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L16_P" x="-33.02" y="-20.32" length="middle" direction="pas"/>
+<pin name="B15_L18_N" x="33.02" y="-22.86" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L16_N" x="-33.02" y="-22.86" length="middle" direction="pas"/>
+<pin name="GND@69" x="33.02" y="-25.4" length="middle" direction="pas" rot="R180"/>
+<pin name="GND@70" x="-33.02" y="-25.4" length="middle" direction="pas"/>
+<pin name="B15_L20_P" x="33.02" y="-27.94" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L1_P" x="-33.02" y="-27.94" length="middle" direction="pas"/>
+<pin name="B15_L20_N" x="33.02" y="-30.48" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L1_N" x="-33.02" y="-30.48" length="middle" direction="pas"/>
+<pin name="B15_L15_P" x="33.02" y="-33.02" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L2_N" x="-33.02" y="-33.02" length="middle" direction="pas"/>
+<pin name="B15_L15_N" x="33.02" y="-35.56" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L2_P" x="-33.02" y="-35.56" length="middle" direction="pas"/>
+<pin name="GND@79" x="33.02" y="-38.1" length="middle" direction="pas" rot="R180"/>
+<pin name="GND@80" x="-33.02" y="-38.1" length="middle" direction="pas"/>
+<pin name="B15_L6_N" x="33.02" y="-40.64" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L4_P" x="-33.02" y="-40.64" length="middle" direction="pas"/>
+<pin name="B15_L6_P" x="33.02" y="-43.18" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L4_N" x="-33.02" y="-43.18" length="middle" direction="pas"/>
+<pin name="B15_L21_P" x="33.02" y="-45.72" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L5_N" x="-33.02" y="-45.72" length="middle" direction="pas"/>
+<pin name="B15_L21_N" x="33.02" y="-48.26" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_L5_P" x="-33.02" y="-48.26" length="middle" direction="pas"/>
+<pin name="GND@89" x="33.02" y="-50.8" length="middle" direction="pas" rot="R180"/>
+<pin name="B15_IO0" x="-33.02" y="-50.8" length="middle" direction="pas"/>
+<pin name="B15_L24_N" x="33.02" y="-53.34" length="middle" direction="pas" rot="R180"/>
+<pin name="U3V3_JTAGREF" x="-33.02" y="-53.34" length="middle" direction="sup"/>
+<pin name="B15_L24_P" x="33.02" y="-55.88" length="middle" direction="pas" rot="R180"/>
+<pin name="TMS" x="-33.02" y="-55.88" length="middle" direction="in"/>
+<pin name="B15_L22_N" x="33.02" y="-58.42" length="middle" direction="pas" rot="R180"/>
+<pin name="TDI" x="-33.02" y="-58.42" length="middle" direction="in"/>
+<pin name="B15_L22_P" x="33.02" y="-60.96" length="middle" direction="pas" rot="R180"/>
+<pin name="TDO" x="-33.02" y="-60.96" length="middle" direction="out"/>
+<pin name="B15_IO25" x="33.02" y="-63.5" length="middle" direction="pas" rot="R180"/>
+<pin name="TCK" x="-33.02" y="-63.5" length="middle" direction="in"/>
+<text x="-10.16" y="66.04" size="1.9304" layer="95" font="vector" ratio="10">&gt;NAME</text>
 <text x="-22.86" y="-71.12" size="1.9304" layer="96" font="vector" ratio="10">&gt;VALUE</text>
-<wire x1="-20.32" y1="63.5" x2="20.32" y2="63.5" width="0.254" layer="94"/>
-<wire x1="20.32" y1="63.5" x2="20.32" y2="-66.04" width="0.254" layer="94"/>
-<wire x1="20.32" y1="-66.04" x2="-20.32" y2="-66.04" width="0.254" layer="94"/>
-<wire x1="-20.32" y1="-66.04" x2="-20.32" y2="63.5" width="0.254" layer="94"/>
-<pin name="PF$1" x="10.16" y="68.58" length="middle" direction="pas" rot="R270"/>
-<pin name="PF$2" x="10.16" y="-71.12" length="middle" direction="pas" rot="R90"/>
+<wire x1="-27.94" y1="63.5" x2="27.94" y2="63.5" width="0.254" layer="94"/>
+<wire x1="27.94" y1="63.5" x2="27.94" y2="-66.04" width="0.254" layer="94"/>
+<wire x1="27.94" y1="-66.04" x2="-27.94" y2="-66.04" width="0.254" layer="94"/>
+<wire x1="-27.94" y1="-66.04" x2="-27.94" y2="63.5" width="0.254" layer="94"/>
+<pin name="F1" x="10.16" y="68.58" length="middle" direction="pas" rot="R270"/>
+<pin name="F2" x="10.16" y="-71.12" length="middle" direction="pas" rot="R90"/>
 </symbol>
-<symbol name="SAMTEC_LSHM-130-DV">
+<symbol name="SAMTEC_LSHM-130-DV_JB3">
 <description>&lt;h3&gt;SAMTEC LSHM-130-XX.X-X-DV-A-X-X-TR&lt;/h3&gt;
 &lt;h4&gt;HIGH-SPEED HERMAPHRODITIC STRIP&lt;/h4&gt;
+&lt;h5&gt;Trenz Electronic TE0712-02-100-2C3 JM3&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;60 Pos&lt;li&gt;
 &lt;li&gt;0.5 mm padding&lt;/li&gt;
 &lt;/ul&gt;</description>
-<pin name="P$1" x="25.4" y="35.56" length="middle" direction="pas" rot="R180"/>
-<pin name="P$2" x="-25.4" y="35.56" length="middle" direction="pas"/>
-<pin name="P$3" x="25.4" y="33.02" length="middle" direction="pas" rot="R180"/>
-<pin name="P$4" x="-25.4" y="33.02" length="middle" direction="pas"/>
-<pin name="P$5" x="25.4" y="30.48" length="middle" direction="pas" rot="R180"/>
-<pin name="P$6" x="-25.4" y="30.48" length="middle" direction="pas"/>
-<pin name="P$7" x="25.4" y="27.94" length="middle" direction="pas" rot="R180"/>
-<pin name="P$8" x="-25.4" y="27.94" length="middle" direction="pas"/>
-<pin name="P$9" x="25.4" y="25.4" length="middle" direction="pas" rot="R180"/>
-<pin name="P$10" x="-25.4" y="25.4" length="middle" direction="pas"/>
-<pin name="P$11" x="25.4" y="22.86" length="middle" direction="pas" rot="R180"/>
-<pin name="P$12" x="-25.4" y="22.86" length="middle" direction="pas"/>
-<pin name="P$13" x="25.4" y="20.32" length="middle" direction="pas" rot="R180"/>
-<pin name="P$14" x="-25.4" y="20.32" length="middle" direction="pas"/>
-<pin name="P$15" x="25.4" y="17.78" length="middle" direction="pas" rot="R180"/>
-<pin name="P$16" x="-25.4" y="17.78" length="middle" direction="pas"/>
-<pin name="P$17" x="25.4" y="15.24" length="middle" direction="pas" rot="R180"/>
-<pin name="P$18" x="-25.4" y="15.24" length="middle" direction="pas"/>
-<pin name="P$19" x="25.4" y="12.7" length="middle" direction="pas" rot="R180"/>
-<pin name="P$20" x="-25.4" y="12.7" length="middle" direction="pas"/>
-<pin name="P$21" x="25.4" y="10.16" length="middle" direction="pas" rot="R180"/>
-<pin name="P$22" x="-25.4" y="10.16" length="middle" direction="pas"/>
-<pin name="P$23" x="25.4" y="7.62" length="middle" direction="pas" rot="R180"/>
-<pin name="P$24" x="-25.4" y="7.62" length="middle" direction="pas"/>
-<pin name="P$25" x="25.4" y="5.08" length="middle" direction="pas" rot="R180"/>
-<pin name="P$26" x="-25.4" y="5.08" length="middle" direction="pas"/>
-<pin name="P$27" x="25.4" y="2.54" length="middle" direction="pas" rot="R180"/>
-<pin name="P$28" x="-25.4" y="2.54" length="middle" direction="pas"/>
-<pin name="P$29" x="25.4" y="0" length="middle" direction="pas" rot="R180"/>
-<pin name="P$30" x="-25.4" y="0" length="middle" direction="pas"/>
-<pin name="P$31" x="25.4" y="-2.54" length="middle" direction="pas" rot="R180"/>
-<pin name="P$32" x="-25.4" y="-2.54" length="middle" direction="pas"/>
-<pin name="P$33" x="25.4" y="-5.08" length="middle" direction="pas" rot="R180"/>
-<pin name="P$34" x="-25.4" y="-5.08" length="middle" direction="pas"/>
-<pin name="P$35" x="25.4" y="-7.62" length="middle" direction="pas" rot="R180"/>
-<pin name="P$36" x="-25.4" y="-7.62" length="middle" direction="pas"/>
-<pin name="P$37" x="25.4" y="-10.16" length="middle" direction="pas" rot="R180"/>
-<pin name="P$38" x="-25.4" y="-10.16" length="middle" direction="pas"/>
-<pin name="P$39" x="25.4" y="-12.7" length="middle" direction="pas" rot="R180"/>
-<pin name="P$40" x="-25.4" y="-12.7" length="middle" direction="pas"/>
-<pin name="P$41" x="25.4" y="-15.24" length="middle" direction="pas" rot="R180"/>
-<pin name="P$42" x="-25.4" y="-15.24" length="middle" direction="pas"/>
-<pin name="P$43" x="25.4" y="-17.78" length="middle" direction="pas" rot="R180"/>
-<pin name="P$44" x="-25.4" y="-17.78" length="middle" direction="pas"/>
-<pin name="P$45" x="25.4" y="-20.32" length="middle" direction="pas" rot="R180"/>
-<pin name="P$46" x="-25.4" y="-20.32" length="middle" direction="pas"/>
-<pin name="P$47" x="25.4" y="-22.86" length="middle" direction="pas" rot="R180"/>
-<pin name="P$48" x="-25.4" y="-22.86" length="middle" direction="pas"/>
-<pin name="P$49" x="25.4" y="-25.4" length="middle" direction="pas" rot="R180"/>
-<pin name="P$50" x="-25.4" y="-25.4" length="middle" direction="pas"/>
-<pin name="P$51" x="25.4" y="-27.94" length="middle" direction="pas" rot="R180"/>
-<pin name="P$52" x="-25.4" y="-27.94" length="middle" direction="pas"/>
-<pin name="P$53" x="25.4" y="-30.48" length="middle" direction="pas" rot="R180"/>
-<pin name="P$54" x="-25.4" y="-30.48" length="middle" direction="pas"/>
-<pin name="P$55" x="25.4" y="-33.02" length="middle" direction="pas" rot="R180"/>
-<pin name="P$56" x="-25.4" y="-33.02" length="middle" direction="pas"/>
-<pin name="P$57" x="25.4" y="-35.56" length="middle" direction="pas" rot="R180"/>
-<pin name="P$58" x="-25.4" y="-35.56" length="middle" direction="pas"/>
-<pin name="P$59" x="25.4" y="-38.1" length="middle" direction="pas" rot="R180"/>
-<pin name="P$60" x="-25.4" y="-38.1" length="middle" direction="pas"/>
-<text x="-2.54" y="40.64" size="1.9304" layer="95" font="vector" ratio="10">&gt;NAME</text>
+<pin name="B13_L14_P" x="33.02" y="35.56" length="middle" direction="pas" rot="R180"/>
+<pin name="B13_L17_P" x="-33.02" y="35.56" length="middle" direction="pas"/>
+<pin name="B13_L14_N" x="33.02" y="33.02" length="middle" direction="pas" rot="R180"/>
+<pin name="B13_L17_N" x="-33.02" y="33.02" length="middle" direction="pas"/>
+<pin name="GND@5" x="33.02" y="30.48" length="middle" direction="pas" rot="R180"/>
+<pin name="GND@6" x="-33.02" y="30.48" length="middle" direction="pas"/>
+<pin name="MGT_RX0_N" x="33.02" y="27.94" length="middle" direction="pas" rot="R180"/>
+<pin name="MGT_TX0_N" x="-33.02" y="27.94" length="middle" direction="pas"/>
+<pin name="MGT_RX0_P" x="33.02" y="25.4" length="middle" direction="pas" rot="R180"/>
+<pin name="MGT_TX0_P" x="-33.02" y="25.4" length="middle" direction="pas"/>
+<pin name="GND@11" x="33.02" y="22.86" length="middle" direction="pas" rot="R180"/>
+<pin name="GND@12" x="-33.02" y="22.86" length="middle" direction="pas"/>
+<pin name="MGT_RX1_N" x="33.02" y="20.32" length="middle" direction="pas" rot="R180"/>
+<pin name="MGT_TX1_N" x="-33.02" y="20.32" length="middle" direction="pas"/>
+<pin name="MGT_RX1_P" x="33.02" y="17.78" length="middle" direction="pas" rot="R180"/>
+<pin name="MGT_TX1_P" x="-33.02" y="17.78" length="middle" direction="pas"/>
+<pin name="GND@17" x="33.02" y="15.24" length="middle" direction="pas" rot="R180"/>
+<pin name="GND@18" x="-33.02" y="15.24" length="middle" direction="pas"/>
+<pin name="MGT_RX2_N" x="33.02" y="12.7" length="middle" direction="pas" rot="R180"/>
+<pin name="MGT_TX2_N" x="-33.02" y="12.7" length="middle" direction="pas"/>
+<pin name="MGT_RX2_P" x="33.02" y="10.16" length="middle" direction="pas" rot="R180"/>
+<pin name="MGT_TX2_P" x="-33.02" y="10.16" length="middle" direction="pas"/>
+<pin name="GND@23" x="33.02" y="7.62" length="middle" direction="pas" rot="R180"/>
+<pin name="GND@24" x="-33.02" y="7.62" length="middle" direction="pas"/>
+<pin name="MGT_RX3_N" x="33.02" y="5.08" length="middle" direction="pas" rot="R180"/>
+<pin name="MGT_TX3_N" x="-33.02" y="5.08" length="middle" direction="pas"/>
+<pin name="MGT_RX3_P" x="33.02" y="2.54" length="middle" direction="pas" rot="R180"/>
+<pin name="MGT_TX3_P" x="-33.02" y="2.54" length="middle" direction="pas"/>
+<pin name="GND@29" x="33.02" y="0" length="middle" direction="pas" rot="R180"/>
+<pin name="GND@30" x="-33.02" y="0" length="middle" direction="pas"/>
+<pin name="CLKIN2_CLK_N" x="33.02" y="-2.54" length="middle" direction="pas" rot="R180"/>
+<pin name="MGT_CLK1_CLK_N" x="-33.02" y="-2.54" length="middle" direction="pas"/>
+<pin name="CLKIN2_CLK_P" x="33.02" y="-5.08" length="middle" direction="pas" rot="R180"/>
+<pin name="MGT_CLK1_CLK_P" x="-33.02" y="-5.08" length="middle" direction="pas"/>
+<pin name="GND@35" x="33.02" y="-7.62" length="middle" direction="pas" rot="R180"/>
+<pin name="GND@36" x="-33.02" y="-7.62" length="middle" direction="pas"/>
+<pin name="B13_L16_P" x="33.02" y="-10.16" length="middle" direction="pas" rot="R180"/>
+<pin name="B13_L10_P" x="-33.02" y="-10.16" length="middle" direction="pas"/>
+<pin name="B13_L16_N" x="33.02" y="-12.7" length="middle" direction="pas" rot="R180"/>
+<pin name="B13_L10_N" x="-33.02" y="-12.7" length="middle" direction="pas"/>
+<pin name="B13_L1_P" x="33.02" y="-15.24" length="middle" direction="pas" rot="R180"/>
+<pin name="B13_L15_P" x="-33.02" y="-15.24" length="middle" direction="pas"/>
+<pin name="B13_L1_N" x="33.02" y="-17.78" length="middle" direction="pas" rot="R180"/>
+<pin name="B13_L15_N" x="-33.02" y="-17.78" length="middle" direction="pas"/>
+<pin name="GND@45" x="33.02" y="-20.32" length="middle" direction="pas" rot="R180"/>
+<pin name="GND@46" x="-33.02" y="-20.32" length="middle" direction="pas"/>
+<pin name="B13_L4_P" x="33.02" y="-22.86" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L5_P" x="-33.02" y="-22.86" length="middle" direction="pas"/>
+<pin name="B13_L4_N" x="33.02" y="-25.4" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L5_N" x="-33.02" y="-25.4" length="middle" direction="pas"/>
+<pin name="B13_L2_N" x="33.02" y="-27.94" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L20_P" x="-33.02" y="-27.94" length="middle" direction="pas"/>
+<pin name="B13_L2_P" x="33.02" y="-30.48" length="middle" direction="pas" rot="R180"/>
+<pin name="B14_L20_N" x="-33.02" y="-30.48" length="middle" direction="pas"/>
+<pin name="DC@55" x="33.02" y="-33.02" length="middle" direction="nc" rot="R180"/>
+<pin name="DC@56" x="-33.02" y="-33.02" length="middle" direction="nc"/>
+<pin name="B13_L12_CLK_P" x="33.02" y="-35.56" length="middle" direction="pas" rot="R180"/>
+<pin name="B13_L13_P" x="-33.02" y="-35.56" length="middle" direction="pas"/>
+<pin name="B13_L12_CLK_N" x="33.02" y="-38.1" length="middle" direction="pas" rot="R180"/>
+<pin name="B13_L13_N" x="-33.02" y="-38.1" length="middle" direction="pas"/>
+<text x="-10.16" y="40.64" size="1.9304" layer="95" font="vector" ratio="10">&gt;NAME</text>
 <text x="-22.86" y="-45.72" size="1.9304" layer="96" font="vector" ratio="10">&gt;VALUE</text>
-<wire x1="-20.32" y1="38.1" x2="20.32" y2="38.1" width="0.254" layer="94"/>
-<wire x1="20.32" y1="38.1" x2="20.32" y2="-40.64" width="0.254" layer="94"/>
-<wire x1="20.32" y1="-40.64" x2="-20.32" y2="-40.64" width="0.254" layer="94"/>
-<wire x1="-20.32" y1="-40.64" x2="-20.32" y2="38.1" width="0.254" layer="94"/>
-<pin name="PF$1" x="10.16" y="43.18" length="middle" direction="pas" rot="R270"/>
-<pin name="PF$2" x="10.16" y="-45.72" length="middle" direction="pas" rot="R90"/>
+<wire x1="-27.94" y1="38.1" x2="27.94" y2="38.1" width="0.254" layer="94"/>
+<wire x1="27.94" y1="38.1" x2="27.94" y2="-40.64" width="0.254" layer="94"/>
+<wire x1="27.94" y1="-40.64" x2="-27.94" y2="-40.64" width="0.254" layer="94"/>
+<wire x1="-27.94" y1="-40.64" x2="-27.94" y2="38.1" width="0.254" layer="94"/>
+<pin name="F1" x="10.16" y="43.18" length="middle" direction="pas" rot="R270"/>
+<pin name="F2" x="10.16" y="-45.72" length="middle" direction="pas" rot="R90"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -1137,7 +1138,7 @@ DIN A4, landscape with location and doc. field</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="SAMTEC_LSHM-150-DV_JM1" prefix="JM" uservalue="yes">
+<deviceset name="SAMTEC_LSHM-150-DV_JB1" prefix="JB" uservalue="yes">
 <description>&lt;h3&gt;SAMTEC LSHM-150-XX.X-X-DV-A-X-X-TR&lt;/h3&gt;
 &lt;h4&gt;HIGH-SPEED HERMAPHRODITIC STRIP&lt;/h4&gt;
 &lt;ul&gt;
@@ -1145,7 +1146,7 @@ DIN A4, landscape with location and doc. field</description>
 &lt;li&gt;0.5 mm padding&lt;/li&gt;
 &lt;/ul&gt;</description>
 <gates>
-<gate name="G$1" symbol="SAMTEC_LSHM-150-DV_JM1" x="0" y="0"/>
+<gate name="G$1" symbol="SAMTEC_LSHM-150-DV_JB1" x="0" y="0"/>
 </gates>
 <devices>
 <device name="" package="SAMTEC_LSHM-150-DV">
@@ -1259,7 +1260,7 @@ DIN A4, landscape with location and doc. field</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="SAMTEC_LSHM-150-DV_JM2" prefix="JM" uservalue="yes">
+<deviceset name="SAMTEC_LSHM-150-DV_JB2" prefix="JB" uservalue="yes">
 <description>&lt;h3&gt;SAMTEC LSHM-150-XX.X-X-DV-A-X-X-TR&lt;/h3&gt;
 &lt;h4&gt;HIGH-SPEED HERMAPHRODITIC STRIP&lt;/h4&gt;
 &lt;ul&gt;
@@ -1267,113 +1268,113 @@ DIN A4, landscape with location and doc. field</description>
 &lt;li&gt;0.5 mm padding&lt;/li&gt;
 &lt;/ul&gt;</description>
 <gates>
-<gate name="G$1" symbol="SAMTEC_LSHM-150-DV_JM2" x="0" y="0"/>
+<gate name="G$1" symbol="SAMTEC_LSHM-150-DV_JB2" x="0" y="0"/>
 </gates>
 <devices>
 <device name="" package="SAMTEC_LSHM-150-DV">
 <connects>
-<connect gate="G$1" pin="P$1" pad="1"/>
-<connect gate="G$1" pin="P$10" pad="10"/>
-<connect gate="G$1" pin="P$100" pad="100"/>
-<connect gate="G$1" pin="P$11" pad="11"/>
-<connect gate="G$1" pin="P$12" pad="12"/>
-<connect gate="G$1" pin="P$13" pad="13"/>
-<connect gate="G$1" pin="P$14" pad="14"/>
-<connect gate="G$1" pin="P$15" pad="15"/>
-<connect gate="G$1" pin="P$16" pad="16"/>
-<connect gate="G$1" pin="P$17" pad="17"/>
-<connect gate="G$1" pin="P$18" pad="18"/>
-<connect gate="G$1" pin="P$19" pad="19"/>
-<connect gate="G$1" pin="P$2" pad="2"/>
-<connect gate="G$1" pin="P$20" pad="20"/>
-<connect gate="G$1" pin="P$21" pad="21"/>
-<connect gate="G$1" pin="P$22" pad="22"/>
-<connect gate="G$1" pin="P$23" pad="23"/>
-<connect gate="G$1" pin="P$24" pad="24"/>
-<connect gate="G$1" pin="P$25" pad="25"/>
-<connect gate="G$1" pin="P$26" pad="26"/>
-<connect gate="G$1" pin="P$27" pad="27"/>
-<connect gate="G$1" pin="P$28" pad="28"/>
-<connect gate="G$1" pin="P$29" pad="29"/>
-<connect gate="G$1" pin="P$3" pad="3"/>
-<connect gate="G$1" pin="P$30" pad="30"/>
-<connect gate="G$1" pin="P$31" pad="31"/>
-<connect gate="G$1" pin="P$32" pad="32"/>
-<connect gate="G$1" pin="P$33" pad="33"/>
-<connect gate="G$1" pin="P$34" pad="34"/>
-<connect gate="G$1" pin="P$35" pad="35"/>
-<connect gate="G$1" pin="P$36" pad="36"/>
-<connect gate="G$1" pin="P$37" pad="37"/>
-<connect gate="G$1" pin="P$38" pad="38"/>
-<connect gate="G$1" pin="P$39" pad="39"/>
-<connect gate="G$1" pin="P$4" pad="4"/>
-<connect gate="G$1" pin="P$40" pad="40"/>
-<connect gate="G$1" pin="P$41" pad="41"/>
-<connect gate="G$1" pin="P$42" pad="42"/>
-<connect gate="G$1" pin="P$43" pad="43"/>
-<connect gate="G$1" pin="P$44" pad="44"/>
-<connect gate="G$1" pin="P$45" pad="45"/>
-<connect gate="G$1" pin="P$46" pad="46"/>
-<connect gate="G$1" pin="P$47" pad="47"/>
-<connect gate="G$1" pin="P$48" pad="48"/>
-<connect gate="G$1" pin="P$49" pad="49"/>
-<connect gate="G$1" pin="P$5" pad="5"/>
-<connect gate="G$1" pin="P$50" pad="50"/>
-<connect gate="G$1" pin="P$51" pad="51"/>
-<connect gate="G$1" pin="P$52" pad="52"/>
-<connect gate="G$1" pin="P$53" pad="53"/>
-<connect gate="G$1" pin="P$54" pad="54"/>
-<connect gate="G$1" pin="P$55" pad="55"/>
-<connect gate="G$1" pin="P$56" pad="56"/>
-<connect gate="G$1" pin="P$57" pad="57"/>
-<connect gate="G$1" pin="P$58" pad="58"/>
-<connect gate="G$1" pin="P$59" pad="59"/>
-<connect gate="G$1" pin="P$6" pad="6"/>
-<connect gate="G$1" pin="P$60" pad="60"/>
-<connect gate="G$1" pin="P$61" pad="61"/>
-<connect gate="G$1" pin="P$62" pad="62"/>
-<connect gate="G$1" pin="P$63" pad="63"/>
-<connect gate="G$1" pin="P$64" pad="64"/>
-<connect gate="G$1" pin="P$65" pad="65"/>
-<connect gate="G$1" pin="P$66" pad="66"/>
-<connect gate="G$1" pin="P$67" pad="67"/>
-<connect gate="G$1" pin="P$68" pad="68"/>
-<connect gate="G$1" pin="P$69" pad="69"/>
-<connect gate="G$1" pin="P$7" pad="7"/>
-<connect gate="G$1" pin="P$70" pad="70"/>
-<connect gate="G$1" pin="P$71" pad="71"/>
-<connect gate="G$1" pin="P$72" pad="72"/>
-<connect gate="G$1" pin="P$73" pad="73"/>
-<connect gate="G$1" pin="P$74" pad="74"/>
-<connect gate="G$1" pin="P$75" pad="75"/>
-<connect gate="G$1" pin="P$76" pad="76"/>
-<connect gate="G$1" pin="P$77" pad="77"/>
-<connect gate="G$1" pin="P$78" pad="78"/>
-<connect gate="G$1" pin="P$79" pad="79"/>
-<connect gate="G$1" pin="P$8" pad="8"/>
-<connect gate="G$1" pin="P$80" pad="80"/>
-<connect gate="G$1" pin="P$81" pad="81"/>
-<connect gate="G$1" pin="P$82" pad="82"/>
-<connect gate="G$1" pin="P$83" pad="83"/>
-<connect gate="G$1" pin="P$84" pad="84"/>
-<connect gate="G$1" pin="P$85" pad="85"/>
-<connect gate="G$1" pin="P$86" pad="86"/>
-<connect gate="G$1" pin="P$87" pad="87"/>
-<connect gate="G$1" pin="P$88" pad="88"/>
-<connect gate="G$1" pin="P$89" pad="89"/>
-<connect gate="G$1" pin="P$9" pad="9"/>
-<connect gate="G$1" pin="P$90" pad="90"/>
-<connect gate="G$1" pin="P$91" pad="91"/>
-<connect gate="G$1" pin="P$92" pad="92"/>
-<connect gate="G$1" pin="P$93" pad="93"/>
-<connect gate="G$1" pin="P$94" pad="94"/>
-<connect gate="G$1" pin="P$95" pad="95"/>
-<connect gate="G$1" pin="P$96" pad="96"/>
-<connect gate="G$1" pin="P$97" pad="97"/>
-<connect gate="G$1" pin="P$98" pad="98"/>
-<connect gate="G$1" pin="P$99" pad="99"/>
-<connect gate="G$1" pin="PF$1" pad="F1"/>
-<connect gate="G$1" pin="PF$2" pad="F2"/>
+<connect gate="G$1" pin="B14_L10_N" pad="13"/>
+<connect gate="G$1" pin="B14_L10_P" pad="15"/>
+<connect gate="G$1" pin="B14_L11_N" pad="27"/>
+<connect gate="G$1" pin="B14_L11_P" pad="25"/>
+<connect gate="G$1" pin="B14_L12_N" pad="23"/>
+<connect gate="G$1" pin="B14_L12_P" pad="21"/>
+<connect gate="G$1" pin="B14_L13_CLK_N" pad="28"/>
+<connect gate="G$1" pin="B14_L13_CLK_P" pad="26"/>
+<connect gate="G$1" pin="B14_L14_CLK_N" pad="24"/>
+<connect gate="G$1" pin="B14_L14_CLK_P" pad="22"/>
+<connect gate="G$1" pin="B14_L15_N" pad="38"/>
+<connect gate="G$1" pin="B14_L15_P" pad="36"/>
+<connect gate="G$1" pin="B14_L16_N" pad="34"/>
+<connect gate="G$1" pin="B14_L16_P" pad="32"/>
+<connect gate="G$1" pin="B14_L17_N" pad="16"/>
+<connect gate="G$1" pin="B14_L17_P" pad="18"/>
+<connect gate="G$1" pin="B14_L8_N" pad="12"/>
+<connect gate="G$1" pin="B14_L8_P" pad="14"/>
+<connect gate="G$1" pin="B15_IO0" pad="90"/>
+<connect gate="G$1" pin="B15_IO25" pad="99"/>
+<connect gate="G$1" pin="B15_L10_N" pad="61"/>
+<connect gate="G$1" pin="B15_L10_P" pad="63"/>
+<connect gate="G$1" pin="B15_L11_CLK_N" pad="54"/>
+<connect gate="G$1" pin="B15_L11_CLK_P" pad="52"/>
+<connect gate="G$1" pin="B15_L12_CLK_N" pad="57"/>
+<connect gate="G$1" pin="B15_L12_CLK_P" pad="55"/>
+<connect gate="G$1" pin="B15_L13_CLK_N" pad="47"/>
+<connect gate="G$1" pin="B15_L13_CLK_P" pad="45"/>
+<connect gate="G$1" pin="B15_L14_CLK_N" pad="53"/>
+<connect gate="G$1" pin="B15_L14_CLK_P" pad="51"/>
+<connect gate="G$1" pin="B15_L15_N" pad="77"/>
+<connect gate="G$1" pin="B15_L15_P" pad="75"/>
+<connect gate="G$1" pin="B15_L16_N" pad="68"/>
+<connect gate="G$1" pin="B15_L16_P" pad="66"/>
+<connect gate="G$1" pin="B15_L17_N" pad="62"/>
+<connect gate="G$1" pin="B15_L17_P" pad="64"/>
+<connect gate="G$1" pin="B15_L18_N" pad="67"/>
+<connect gate="G$1" pin="B15_L18_P" pad="65"/>
+<connect gate="G$1" pin="B15_L19_N" pad="48"/>
+<connect gate="G$1" pin="B15_L19_P" pad="46"/>
+<connect gate="G$1" pin="B15_L1_N" pad="74"/>
+<connect gate="G$1" pin="B15_L1_P" pad="72"/>
+<connect gate="G$1" pin="B15_L20_N" pad="73"/>
+<connect gate="G$1" pin="B15_L20_P" pad="71"/>
+<connect gate="G$1" pin="B15_L21_N" pad="87"/>
+<connect gate="G$1" pin="B15_L21_P" pad="85"/>
+<connect gate="G$1" pin="B15_L22_N" pad="95"/>
+<connect gate="G$1" pin="B15_L22_P" pad="97"/>
+<connect gate="G$1" pin="B15_L23_N" pad="44"/>
+<connect gate="G$1" pin="B15_L23_P" pad="42"/>
+<connect gate="G$1" pin="B15_L24_N" pad="91"/>
+<connect gate="G$1" pin="B15_L24_P" pad="93"/>
+<connect gate="G$1" pin="B15_L2_N" pad="76"/>
+<connect gate="G$1" pin="B15_L2_P" pad="78"/>
+<connect gate="G$1" pin="B15_L3_N" pad="58"/>
+<connect gate="G$1" pin="B15_L3_P" pad="56"/>
+<connect gate="G$1" pin="B15_L4_N" pad="84"/>
+<connect gate="G$1" pin="B15_L4_P" pad="82"/>
+<connect gate="G$1" pin="B15_L5_N" pad="86"/>
+<connect gate="G$1" pin="B15_L5_P" pad="88"/>
+<connect gate="G$1" pin="B15_L6_N" pad="81"/>
+<connect gate="G$1" pin="B15_L6_P" pad="83"/>
+<connect gate="G$1" pin="B15_L7_N" pad="41"/>
+<connect gate="G$1" pin="B15_L7_P" pad="43"/>
+<connect gate="G$1" pin="B15_L8_N" pad="35"/>
+<connect gate="G$1" pin="B15_L8_P" pad="37"/>
+<connect gate="G$1" pin="B15_L9_N" pad="31"/>
+<connect gate="G$1" pin="B15_L9_P" pad="33"/>
+<connect gate="G$1" pin="F1" pad="F1"/>
+<connect gate="G$1" pin="F2" pad="F2"/>
+<connect gate="G$1" pin="GND@19" pad="19"/>
+<connect gate="G$1" pin="GND@29" pad="29"/>
+<connect gate="G$1" pin="GND@39" pad="39"/>
+<connect gate="G$1" pin="GND@40" pad="40"/>
+<connect gate="G$1" pin="GND@49" pad="49"/>
+<connect gate="G$1" pin="GND@50" pad="50"/>
+<connect gate="G$1" pin="GND@59" pad="59"/>
+<connect gate="G$1" pin="GND@60" pad="60"/>
+<connect gate="G$1" pin="GND@69" pad="69"/>
+<connect gate="G$1" pin="GND@70" pad="70"/>
+<connect gate="G$1" pin="GND@79" pad="79"/>
+<connect gate="G$1" pin="GND@80" pad="80"/>
+<connect gate="G$1" pin="GND@89" pad="89"/>
+<connect gate="G$1" pin="NC@30" pad="30"/>
+<connect gate="G$1" pin="NC@6" pad="6"/>
+<connect gate="G$1" pin="RESIN" pad="17"/>
+<connect gate="G$1" pin="TCK" pad="100"/>
+<connect gate="G$1" pin="TDI" pad="96"/>
+<connect gate="G$1" pin="TDO" pad="98"/>
+<connect gate="G$1" pin="TMS" pad="94"/>
+<connect gate="G$1" pin="U1V5@20" pad="20"/>
+<connect gate="G$1" pin="U3V3@11" pad="11"/>
+<connect gate="G$1" pin="U3V3@9" pad="9"/>
+<connect gate="G$1" pin="U3V3_JTAGREF" pad="92"/>
+<connect gate="G$1" pin="VCCIO13@2" pad="2"/>
+<connect gate="G$1" pin="VCCIO13@4" pad="4"/>
+<connect gate="G$1" pin="VCCIO15@10" pad="10"/>
+<connect gate="G$1" pin="VCCIO15@8" pad="8"/>
+<connect gate="G$1" pin="VIN@1" pad="1"/>
+<connect gate="G$1" pin="VIN@3" pad="3"/>
+<connect gate="G$1" pin="VIN@5" pad="5"/>
+<connect gate="G$1" pin="VIN@7" pad="7"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -1381,7 +1382,7 @@ DIN A4, landscape with location and doc. field</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="SAMTEC_LSHM-130-DV_JM3" prefix="JM" uservalue="yes">
+<deviceset name="SAMTEC_LSHM-130-DV_JB3" prefix="JB" uservalue="yes">
 <description>&lt;h3&gt;SAMTEC LSHM-130-XX.X-X-DV-A-X-X-TR&lt;/h3&gt;
 &lt;h4&gt;HIGH-SPEED HERMAPHRODITIC STRIP&lt;/h4&gt;
 &lt;ul&gt;
@@ -1389,73 +1390,73 @@ DIN A4, landscape with location and doc. field</description>
 &lt;li&gt;0.5 mm padding&lt;/li&gt;
 &lt;/ul&gt;</description>
 <gates>
-<gate name="G$1" symbol="SAMTEC_LSHM-130-DV" x="0" y="0"/>
+<gate name="G$1" symbol="SAMTEC_LSHM-130-DV_JB3" x="0" y="0"/>
 </gates>
 <devices>
 <device name="" package="SAMTEC_LSHM-130-DV">
 <connects>
-<connect gate="G$1" pin="P$1" pad="1"/>
-<connect gate="G$1" pin="P$10" pad="10"/>
-<connect gate="G$1" pin="P$11" pad="11"/>
-<connect gate="G$1" pin="P$12" pad="12"/>
-<connect gate="G$1" pin="P$13" pad="13"/>
-<connect gate="G$1" pin="P$14" pad="14"/>
-<connect gate="G$1" pin="P$15" pad="15"/>
-<connect gate="G$1" pin="P$16" pad="16"/>
-<connect gate="G$1" pin="P$17" pad="17"/>
-<connect gate="G$1" pin="P$18" pad="18"/>
-<connect gate="G$1" pin="P$19" pad="19"/>
-<connect gate="G$1" pin="P$2" pad="2"/>
-<connect gate="G$1" pin="P$20" pad="20"/>
-<connect gate="G$1" pin="P$21" pad="21"/>
-<connect gate="G$1" pin="P$22" pad="22"/>
-<connect gate="G$1" pin="P$23" pad="23"/>
-<connect gate="G$1" pin="P$24" pad="24"/>
-<connect gate="G$1" pin="P$25" pad="25"/>
-<connect gate="G$1" pin="P$26" pad="26"/>
-<connect gate="G$1" pin="P$27" pad="27"/>
-<connect gate="G$1" pin="P$28" pad="28"/>
-<connect gate="G$1" pin="P$29" pad="29"/>
-<connect gate="G$1" pin="P$3" pad="3"/>
-<connect gate="G$1" pin="P$30" pad="30"/>
-<connect gate="G$1" pin="P$31" pad="31"/>
-<connect gate="G$1" pin="P$32" pad="32"/>
-<connect gate="G$1" pin="P$33" pad="33"/>
-<connect gate="G$1" pin="P$34" pad="34"/>
-<connect gate="G$1" pin="P$35" pad="35"/>
-<connect gate="G$1" pin="P$36" pad="36"/>
-<connect gate="G$1" pin="P$37" pad="37"/>
-<connect gate="G$1" pin="P$38" pad="38"/>
-<connect gate="G$1" pin="P$39" pad="39"/>
-<connect gate="G$1" pin="P$4" pad="4"/>
-<connect gate="G$1" pin="P$40" pad="40"/>
-<connect gate="G$1" pin="P$41" pad="41"/>
-<connect gate="G$1" pin="P$42" pad="42"/>
-<connect gate="G$1" pin="P$43" pad="43"/>
-<connect gate="G$1" pin="P$44" pad="44"/>
-<connect gate="G$1" pin="P$45" pad="45"/>
-<connect gate="G$1" pin="P$46" pad="46"/>
-<connect gate="G$1" pin="P$47" pad="47"/>
-<connect gate="G$1" pin="P$48" pad="48"/>
-<connect gate="G$1" pin="P$49" pad="49"/>
-<connect gate="G$1" pin="P$5" pad="5"/>
-<connect gate="G$1" pin="P$50" pad="50"/>
-<connect gate="G$1" pin="P$51" pad="51"/>
-<connect gate="G$1" pin="P$52" pad="52"/>
-<connect gate="G$1" pin="P$53" pad="53"/>
-<connect gate="G$1" pin="P$54" pad="54"/>
-<connect gate="G$1" pin="P$55" pad="55"/>
-<connect gate="G$1" pin="P$56" pad="56"/>
-<connect gate="G$1" pin="P$57" pad="57"/>
-<connect gate="G$1" pin="P$58" pad="58"/>
-<connect gate="G$1" pin="P$59" pad="59"/>
-<connect gate="G$1" pin="P$6" pad="6"/>
-<connect gate="G$1" pin="P$60" pad="60"/>
-<connect gate="G$1" pin="P$7" pad="7"/>
-<connect gate="G$1" pin="P$8" pad="8"/>
-<connect gate="G$1" pin="P$9" pad="9"/>
-<connect gate="G$1" pin="PF$1" pad="F1"/>
-<connect gate="G$1" pin="PF$2" pad="F2"/>
+<connect gate="G$1" pin="B13_L10_N" pad="40"/>
+<connect gate="G$1" pin="B13_L10_P" pad="38"/>
+<connect gate="G$1" pin="B13_L12_CLK_N" pad="59"/>
+<connect gate="G$1" pin="B13_L12_CLK_P" pad="57"/>
+<connect gate="G$1" pin="B13_L13_N" pad="60"/>
+<connect gate="G$1" pin="B13_L13_P" pad="58"/>
+<connect gate="G$1" pin="B13_L14_N" pad="3"/>
+<connect gate="G$1" pin="B13_L14_P" pad="1"/>
+<connect gate="G$1" pin="B13_L15_N" pad="44"/>
+<connect gate="G$1" pin="B13_L15_P" pad="42"/>
+<connect gate="G$1" pin="B13_L16_N" pad="39"/>
+<connect gate="G$1" pin="B13_L16_P" pad="37"/>
+<connect gate="G$1" pin="B13_L17_N" pad="4"/>
+<connect gate="G$1" pin="B13_L17_P" pad="2"/>
+<connect gate="G$1" pin="B13_L1_N" pad="43"/>
+<connect gate="G$1" pin="B13_L1_P" pad="41"/>
+<connect gate="G$1" pin="B13_L2_N" pad="51"/>
+<connect gate="G$1" pin="B13_L2_P" pad="53"/>
+<connect gate="G$1" pin="B13_L4_N" pad="49"/>
+<connect gate="G$1" pin="B13_L4_P" pad="47"/>
+<connect gate="G$1" pin="B14_L20_N" pad="54"/>
+<connect gate="G$1" pin="B14_L20_P" pad="52"/>
+<connect gate="G$1" pin="B14_L5_N" pad="50"/>
+<connect gate="G$1" pin="B14_L5_P" pad="48"/>
+<connect gate="G$1" pin="CLKIN2_CLK_N" pad="31"/>
+<connect gate="G$1" pin="CLKIN2_CLK_P" pad="33"/>
+<connect gate="G$1" pin="DC@55" pad="55"/>
+<connect gate="G$1" pin="DC@56" pad="56"/>
+<connect gate="G$1" pin="F1" pad="F1"/>
+<connect gate="G$1" pin="F2" pad="F2"/>
+<connect gate="G$1" pin="GND@11" pad="11"/>
+<connect gate="G$1" pin="GND@12" pad="12"/>
+<connect gate="G$1" pin="GND@17" pad="17"/>
+<connect gate="G$1" pin="GND@18" pad="18"/>
+<connect gate="G$1" pin="GND@23" pad="23"/>
+<connect gate="G$1" pin="GND@24" pad="24"/>
+<connect gate="G$1" pin="GND@29" pad="29"/>
+<connect gate="G$1" pin="GND@30" pad="30"/>
+<connect gate="G$1" pin="GND@35" pad="35"/>
+<connect gate="G$1" pin="GND@36" pad="36"/>
+<connect gate="G$1" pin="GND@45" pad="45"/>
+<connect gate="G$1" pin="GND@46" pad="46"/>
+<connect gate="G$1" pin="GND@5" pad="5"/>
+<connect gate="G$1" pin="GND@6" pad="6"/>
+<connect gate="G$1" pin="MGT_CLK1_CLK_N" pad="32"/>
+<connect gate="G$1" pin="MGT_CLK1_CLK_P" pad="34"/>
+<connect gate="G$1" pin="MGT_RX0_N" pad="7"/>
+<connect gate="G$1" pin="MGT_RX0_P" pad="9"/>
+<connect gate="G$1" pin="MGT_RX1_N" pad="13"/>
+<connect gate="G$1" pin="MGT_RX1_P" pad="15"/>
+<connect gate="G$1" pin="MGT_RX2_N" pad="19"/>
+<connect gate="G$1" pin="MGT_RX2_P" pad="21"/>
+<connect gate="G$1" pin="MGT_RX3_N" pad="25"/>
+<connect gate="G$1" pin="MGT_RX3_P" pad="27"/>
+<connect gate="G$1" pin="MGT_TX0_N" pad="8"/>
+<connect gate="G$1" pin="MGT_TX0_P" pad="10"/>
+<connect gate="G$1" pin="MGT_TX1_N" pad="14"/>
+<connect gate="G$1" pin="MGT_TX1_P" pad="16"/>
+<connect gate="G$1" pin="MGT_TX2_N" pad="20"/>
+<connect gate="G$1" pin="MGT_TX2_P" pad="22"/>
+<connect gate="G$1" pin="MGT_TX3_N" pad="26"/>
+<connect gate="G$1" pin="MGT_TX3_P" pad="28"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -14795,7 +14796,6 @@ Marquardt, Siemens, C&amp;K, ITT, and others&lt;p&gt;
 <attributes>
 </attributes>
 <variantdefs>
-<variantdef name="Max"/>
 <variantdef name="Std"/>
 </variantdefs>
 <classes>
@@ -14943,11 +14943,15 @@ Marquardt, Siemens, C&amp;K, ITT, and others&lt;p&gt;
 <part name="L1" library="df4iah_rcl" deviceset="L-EU" device="L0603" value="6.8nH"/>
 <part name="GND3" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="R7" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="10kR"/>
-<part name="JM1" library="df4iah_connector" deviceset="SAMTEC_LSHM-150-DV_JM1" device="" value="LSHM-150-02.5-L-DV-A-S-K-TR"/>
-<part name="JM2" library="df4iah_connector" deviceset="SAMTEC_LSHM-150-DV_JM2" device="" value="LSHM-150-02.5-L-DV-A-S-K-TR"/>
-<part name="JM3" library="df4iah_connector" deviceset="SAMTEC_LSHM-130-DV_JM3" device="" value="LSHM-130-02.5-L-DV-A-S-K-TR"/>
 <part name="GND4" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="GND5" library="df4iah_supply" deviceset="GND" device=""/>
+<part name="GND6" library="df4iah_supply" deviceset="GND" device=""/>
+<part name="GND7" library="df4iah_supply" deviceset="GND" device=""/>
+<part name="JB1" library="df4iah_connector" deviceset="SAMTEC_LSHM-150-DV_JB1" device=""/>
+<part name="JB2" library="df4iah_connector" deviceset="SAMTEC_LSHM-150-DV_JB2" device=""/>
+<part name="JB3" library="df4iah_connector" deviceset="SAMTEC_LSHM-130-DV_JB3" device=""/>
+<part name="GND8" library="df4iah_supply" deviceset="GND" device=""/>
+<part name="GND9" library="df4iah_supply" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -14963,9 +14967,9 @@ Left</text>
 <attribute name="LAST_DATE_TIME" x="217.17" y="10.16" size="2.286" layer="94" font="vector"/>
 <attribute name="SHEET" x="230.505" y="5.08" size="2.54" layer="94" font="vector"/>
 </instance>
-<instance part="JM1" gate="G$1" x="129.54" y="91.44"/>
 <instance part="GND4" gate="1" x="144.78" y="160.02"/>
 <instance part="GND5" gate="1" x="139.7" y="15.24"/>
+<instance part="JB1" gate="G$1" x="129.54" y="91.44"/>
 </instances>
 <busses>
 </busses>
@@ -14973,14 +14977,14 @@ Left</text>
 <net name="GND" class="0">
 <segment>
 <pinref part="GND5" gate="1" pin="GND"/>
-<pinref part="JM1" gate="G$1" pin="F2"/>
 <wire x1="139.7" y1="17.78" x2="139.7" y2="20.32" width="0.1524" layer="91"/>
+<pinref part="JB1" gate="G$1" pin="F2"/>
 </segment>
 <segment>
 <pinref part="GND4" gate="1" pin="GND"/>
 <wire x1="144.78" y1="162.56" x2="139.7" y2="162.56" width="0.1524" layer="91"/>
-<pinref part="JM1" gate="G$1" pin="F1"/>
 <wire x1="139.7" y1="162.56" x2="139.7" y2="160.02" width="0.1524" layer="91"/>
+<pinref part="JB1" gate="G$1" pin="F1"/>
 </segment>
 </net>
 </nets>
@@ -14998,11 +15002,26 @@ Right</text>
 <attribute name="LAST_DATE_TIME" x="217.17" y="10.16" size="2.286" layer="94" font="vector"/>
 <attribute name="SHEET" x="230.505" y="5.08" size="2.54" layer="94" font="vector"/>
 </instance>
-<instance part="JM2" gate="G$1" x="129.54" y="91.44"/>
+<instance part="GND6" gate="1" x="144.78" y="160.02"/>
+<instance part="GND7" gate="1" x="139.7" y="15.24"/>
+<instance part="JB2" gate="G$1" x="129.54" y="91.44"/>
 </instances>
 <busses>
 </busses>
 <nets>
+<net name="GND" class="0">
+<segment>
+<pinref part="GND6" gate="1" pin="GND"/>
+<wire x1="144.78" y1="162.56" x2="139.7" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="162.56" x2="139.7" y2="160.02" width="0.1524" layer="91"/>
+<pinref part="JB2" gate="G$1" pin="F1"/>
+</segment>
+<segment>
+<pinref part="GND7" gate="1" pin="GND"/>
+<wire x1="139.7" y1="17.78" x2="139.7" y2="20.32" width="0.1524" layer="91"/>
+<pinref part="JB2" gate="G$1" pin="F2"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
@@ -15018,11 +15037,27 @@ Top</text>
 <attribute name="LAST_DATE_TIME" x="217.17" y="10.16" size="2.286" layer="94" font="vector"/>
 <attribute name="SHEET" x="230.505" y="5.08" size="2.54" layer="94" font="vector"/>
 </instance>
-<instance part="JM3" gate="G$1" x="129.54" y="91.44"/>
+<instance part="JB3" gate="G$1" x="129.54" y="91.44" rot="R90"/>
+<instance part="GND8" gate="1" x="83.82" y="96.52"/>
+<instance part="GND9" gate="1" x="177.8" y="96.52"/>
 </instances>
 <busses>
 </busses>
 <nets>
+<net name="GND" class="0">
+<segment>
+<pinref part="GND8" gate="1" pin="GND"/>
+<wire x1="83.82" y1="99.06" x2="83.82" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="101.6" x2="86.36" y2="101.6" width="0.1524" layer="91"/>
+<pinref part="JB3" gate="G$1" pin="F1"/>
+</segment>
+<segment>
+<pinref part="GND9" gate="1" pin="GND"/>
+<wire x1="177.8" y1="99.06" x2="177.8" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="101.6" x2="175.26" y2="101.6" width="0.1524" layer="91"/>
+<pinref part="JB3" gate="G$1" pin="F2"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
