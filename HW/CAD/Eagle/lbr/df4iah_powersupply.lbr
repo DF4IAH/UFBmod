@@ -36,11 +36,11 @@
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
-<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
-<layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
@@ -49,7 +49,7 @@
 <layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
 <layer number="51" name="tDocu" color="14" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="6" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
@@ -1030,6 +1030,111 @@ modified by DF4IAH.</description>
 <pad name="G3" x="0" y="-0.635" drill="0.3" diameter="0.6"/>
 <pad name="G2" x="0" y="0.635" drill="0.3" diameter="0.6"/>
 </package>
+<package name="DQP-22">
+<description>&lt;h3&gt;DQP(24)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Body: 6.00 mm x 5.00 mm&lt;/li&gt;
+&lt;li&gt;Pitch: 0.5 mm&lt;/li&gt;
+&lt;/ul&gt;</description>
+<smd name="1" x="-2.5" y="-2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<wire x1="3" y1="2.5" x2="2.75" y2="2.5" width="0.1524" layer="21"/>
+<wire x1="-3" y1="2.5" x2="-3" y2="-2.5" width="0.1524" layer="21"/>
+<wire x1="2.75" y1="-2.5" x2="3" y2="-2.5" width="0.1524" layer="21"/>
+<wire x1="3" y1="-2.5" x2="3" y2="2.5" width="0.1524" layer="21"/>
+<wire x1="-2.75" y1="2.5" x2="-3" y2="2.5" width="0.1524" layer="21"/>
+<wire x1="3" y1="2.5" x2="-3" y2="2.5" width="0.1524" layer="51"/>
+<wire x1="-3" y1="2.5" x2="-3" y2="-2.5" width="0.1524" layer="51"/>
+<wire x1="-3" y1="-2.5" x2="3" y2="-2.5" width="0.1524" layer="51"/>
+<text x="-3.235" y="-0.9544" size="0.6096" layer="25" font="vector" ratio="10" rot="SR90">&gt;NAME</text>
+<text x="3.775" y="-1.9544" size="0.6096" layer="27" font="vector" ratio="10" rot="SR90">&gt;VALUE</text>
+<circle x="-3.445" y="-2.195" radius="0.15" width="0.3" layer="21"/>
+<smd name="23" x="0" y="0" dx="5.48" dy="3.24" layer="1" roundness="5" rot="R180" thermals="no" cream="no"/>
+<wire x1="3" y1="2.5" x2="3" y2="-2.5" width="0.1524" layer="51"/>
+<wire x1="-3" y1="-2.5" x2="-2.75" y2="-2.5" width="0.1524" layer="21"/>
+<dimension x1="3" y1="-2.5" x2="3" y2="2.5" x3="4.7" y3="0" textsize="0.5" textratio="10" layer="47" width="0.05"/>
+<dimension x1="-2.75" y1="-2.075" x2="-2.75" y2="2.075" x3="-4.25" y3="0" textsize="0.5" textratio="10" layer="47" width="0.05"/>
+<dimension x1="3" y1="-2.5" x2="-3" y2="-2.5" x3="0" y3="-4" textsize="0.5" textratio="10" layer="47" width="0.05"/>
+<smd name="2" x="-2" y="-2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="3" x="-1.5" y="-2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="4" x="-1" y="-2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="5" x="-0.5" y="-2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="6" x="0" y="-2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="7" x="0.5" y="-2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="8" x="1" y="-2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="9" x="1.5" y="-2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="10" x="2" y="-2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="11" x="2.5" y="-2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="12" x="2.5" y="2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="13" x="2" y="2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="14" x="1.5" y="2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="15" x="1" y="2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="16" x="0.5" y="2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="17" x="0" y="2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="18" x="-0.5" y="2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="19" x="-1" y="2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="20" x="-1.5" y="2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="21" x="-2" y="2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="22" x="-2.5" y="2.475" dx="0.28" dy="0.85" layer="1" roundness="10"/>
+<smd name="24" x="0" y="0" dx="5.48" dy="3.24" layer="16" roundness="5" rot="R180" thermals="no" cream="no"/>
+<pad name="P$11" x="0" y="0" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$1" x="-2.25" y="-0.75" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$2" x="-1.5" y="-0.75" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$3" x="-0.75" y="-0.75" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$4" x="0" y="-0.75" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$5" x="0.75" y="-0.75" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$6" x="1.5" y="-0.75" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$7" x="2.25" y="-0.75" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$8" x="-2.25" y="0" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$9" x="-1.5" y="0" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$10" x="-0.75" y="0" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$12" x="0.75" y="0" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$13" x="1.5" y="0" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$14" x="2.25" y="0" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$15" x="-2.25" y="0.75" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$16" x="-1.5" y="0.75" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$17" x="-0.75" y="0.75" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$18" x="0" y="0.75" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$19" x="0.75" y="0.75" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$20" x="1.5" y="0.75" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<pad name="P$21" x="2.25" y="0.75" drill="0.3" diameter="0.6096" rot="R90" stop="no" thermals="no"/>
+<polygon width="0.127" layer="31">
+<vertex x="-0.7" y="-0.15"/>
+<vertex x="0.7" y="-0.15"/>
+<vertex x="0.7" y="-1.45"/>
+<vertex x="-0.7" y="-1.45"/>
+</polygon>
+<polygon width="0.127" layer="31">
+<vertex x="-0.7" y="1.45"/>
+<vertex x="0.7" y="1.45"/>
+<vertex x="0.7" y="0.15"/>
+<vertex x="-0.7" y="0.15"/>
+</polygon>
+<polygon width="0.127" layer="31">
+<vertex x="-2.4" y="1.45"/>
+<vertex x="-1" y="1.45"/>
+<vertex x="-1" y="0.15"/>
+<vertex x="-2.4" y="0.15"/>
+</polygon>
+<polygon width="0.127" layer="31">
+<vertex x="1" y="1.45"/>
+<vertex x="2.4" y="1.45"/>
+<vertex x="2.4" y="0.15"/>
+<vertex x="1" y="0.15"/>
+</polygon>
+<polygon width="0.127" layer="31">
+<vertex x="-2.4" y="-0.15"/>
+<vertex x="-1" y="-0.15"/>
+<vertex x="-1" y="-1.45"/>
+<vertex x="-2.4" y="-1.45"/>
+</polygon>
+<polygon width="0.127" layer="31">
+<vertex x="1" y="-0.15"/>
+<vertex x="2.4" y="-0.15"/>
+<vertex x="2.4" y="-1.45"/>
+<vertex x="1" y="-1.45"/>
+</polygon>
+<dimension x1="-2.75" y1="-2.875" x2="-2.75" y2="2.875" x3="-5.25" y3="0" textsize="0.5" textratio="10" layer="47" width="0.05"/>
+</package>
 </packages>
 <symbols>
 <symbol name="LM2831">
@@ -1421,6 +1526,52 @@ Cuk Switching Regulator IC Negative Adjustable
 <wire x1="12.7" y1="10.16" x2="-12.7" y2="10.16" width="0.3048" layer="94"/>
 <text x="-2.3876" y="10.541" size="2.0828" layer="95" ratio="10" rot="SR0">&gt;NAME</text>
 <text x="-12.7" y="-15.24" size="2.0828" layer="96" ratio="10" rot="SR0">&gt;VALUE</text>
+</symbol>
+<symbol name="TPS53353">
+<description>&lt;h3&gt;TPS53353&lt;/h3&gt;
+&lt;h4&gt;High-Efficiency 20-A Synchronous Buck SWIFT™ Converter With Eco-mode™&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Conversion Input Voltage Range: 1.5 V to 15 V&lt;/li&gt;
+&lt;li&gt;VDD Input Voltage Range: 4.5 V to 25 V&lt;/li&gt;
+&lt;li&gt;92% Efficiency From 12 V to 1.5 V at 20 A&lt;/li&gt;
+&lt;li&gt;Output Voltage Range: 0.6 V to 5.5 V&lt;/li&gt;
+&lt;li&gt;5-V LDO Output&lt;/li&gt;
+&lt;li&gt;Supports Single-Rail Input&lt;/li&gt;
+&lt;li&gt;Integrated Power MOSFETs With 20 A of Continuous Output Current&lt;/li&gt;
+&lt;li&gt;Auto-Skip Eco-mode™ for Light-Load Efficiency&lt;/li&gt;
+&lt;li&gt;&amp;lt;10-μA Shutdown Current&lt;/li&gt;
+&lt;li&gt;Precharged Start-up Capability&lt;/li&gt;
+&lt;li&gt;Overvoltage, Undervoltage, UVLO and Overtemperature Protection&lt;/li&gt;
+&lt;/ul&gt;</description>
+<pin name="VFB" x="-25.4" y="-20.32" length="middle" direction="pas" rot="R90"/>
+<pin name="EN" x="-20.32" y="-20.32" length="middle" direction="in" rot="R90"/>
+<pin name="PGOOD" x="-15.24" y="-20.32" length="middle" direction="oc" rot="R90"/>
+<pin name="VBST" x="-10.16" y="-20.32" length="middle" direction="pas" rot="R90"/>
+<pin name="DC" x="-5.08" y="-20.32" length="middle" direction="nc" rot="R90"/>
+<pin name="LL@6" x="0" y="-20.32" length="middle" direction="pas" rot="R90"/>
+<pin name="LL@7" x="5.08" y="-20.32" length="middle" direction="pas" rot="R90"/>
+<pin name="LL@8" x="10.16" y="-20.32" length="middle" direction="pas" rot="R90"/>
+<pin name="LL@9" x="15.24" y="-20.32" length="middle" direction="pas" rot="R90"/>
+<pin name="LL@10" x="20.32" y="-20.32" length="middle" direction="pas" rot="R90"/>
+<pin name="LL@11" x="25.4" y="-20.32" length="middle" direction="pas" rot="R90"/>
+<pin name="VIN@12" x="25.4" y="20.32" length="middle" direction="pwr" rot="R270"/>
+<pin name="VIN@13" x="20.32" y="20.32" length="middle" direction="pwr" rot="R270"/>
+<pin name="VIN@14" x="15.24" y="20.32" length="middle" direction="pwr" rot="R270"/>
+<pin name="VIN@15" x="10.16" y="20.32" length="middle" direction="pwr" rot="R270"/>
+<pin name="VIN@16" x="5.08" y="20.32" length="middle" direction="pwr" rot="R270"/>
+<pin name="VIN@17" x="0" y="20.32" length="middle" direction="pwr" rot="R270"/>
+<pin name="VREG" x="-5.08" y="20.32" length="middle" direction="sup" rot="R270"/>
+<pin name="VDD" x="-10.16" y="20.32" length="middle" direction="pwr" rot="R270"/>
+<pin name="MODE" x="-15.24" y="20.32" length="middle" direction="pas" rot="R270"/>
+<pin name="TRIP" x="-20.32" y="20.32" length="middle" direction="pas" rot="R270"/>
+<pin name="RF" x="-25.4" y="20.32" length="middle" direction="pas" rot="R270"/>
+<pin name="VSS_PAD" x="33.02" y="0" length="middle" direction="pas" rot="R180"/>
+<wire x1="-27.94" y1="15.24" x2="27.94" y2="15.24" width="0.254" layer="94"/>
+<wire x1="27.94" y1="15.24" x2="27.94" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="27.94" y1="-15.24" x2="-27.94" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="-27.94" y1="-15.24" x2="-27.94" y2="15.24" width="0.254" layer="94"/>
+<text x="-30.48" y="-5.08" size="1.778" layer="95" font="vector" rot="R90">&gt;NAME</text>
+<text x="-25.4" y="-0.762" size="1.778" layer="96" font="vector">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -1996,6 +2147,58 @@ Cuk Switching Regulator IC Negative Adjustable
 <connect gate="G$1" pin="NC@3" pad="3"/>
 <connect gate="G$1" pin="NC@4" pad="4"/>
 <connect gate="G$1" pin="OUT" pad="5"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TPS53353" prefix="U" uservalue="yes">
+<description>&lt;h3&gt;TPS53353&lt;/h3&gt;
+&lt;h4&gt;High-Efficiency 20-A Synchronous Buck SWIFT™ Converter With Eco-mode™&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Conversion Input Voltage Range: 1.5 V to 15 V&lt;/li&gt;
+&lt;li&gt;VDD Input Voltage Range: 4.5 V to 25 V&lt;/li&gt;
+&lt;li&gt;92% Efficiency From 12 V to 1.5 V at 20 A&lt;/li&gt;
+&lt;li&gt;Output Voltage Range: 0.6 V to 5.5 V&lt;/li&gt;
+&lt;li&gt;5-V LDO Output&lt;/li&gt;
+&lt;li&gt;Supports Single-Rail Input&lt;/li&gt;
+&lt;li&gt;Integrated Power MOSFETs With 20 A of Continuous Output Current&lt;/li&gt;
+&lt;li&gt;Auto-Skip Eco-mode™ for Light-Load Efficiency&lt;/li&gt;
+&lt;li&gt;&amp;lt;10-μA Shutdown Current&lt;/li&gt;
+&lt;li&gt;Precharged Start-up Capability&lt;/li&gt;
+&lt;li&gt;Overvoltage, Undervoltage, UVLO and Overtemperature Protection&lt;/li&gt;
+&lt;/ul&gt;</description>
+<gates>
+<gate name="G$1" symbol="TPS53353" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="DQP-22">
+<connects>
+<connect gate="G$1" pin="DC" pad="5"/>
+<connect gate="G$1" pin="EN" pad="2"/>
+<connect gate="G$1" pin="LL@10" pad="10"/>
+<connect gate="G$1" pin="LL@11" pad="11"/>
+<connect gate="G$1" pin="LL@6" pad="6"/>
+<connect gate="G$1" pin="LL@7" pad="7"/>
+<connect gate="G$1" pin="LL@8" pad="8"/>
+<connect gate="G$1" pin="LL@9" pad="9"/>
+<connect gate="G$1" pin="MODE" pad="20"/>
+<connect gate="G$1" pin="PGOOD" pad="3"/>
+<connect gate="G$1" pin="RF" pad="22"/>
+<connect gate="G$1" pin="TRIP" pad="21"/>
+<connect gate="G$1" pin="VBST" pad="4"/>
+<connect gate="G$1" pin="VDD" pad="19"/>
+<connect gate="G$1" pin="VFB" pad="1"/>
+<connect gate="G$1" pin="VIN@12" pad="12"/>
+<connect gate="G$1" pin="VIN@13" pad="13"/>
+<connect gate="G$1" pin="VIN@14" pad="14"/>
+<connect gate="G$1" pin="VIN@15" pad="15"/>
+<connect gate="G$1" pin="VIN@16" pad="16"/>
+<connect gate="G$1" pin="VIN@17" pad="17"/>
+<connect gate="G$1" pin="VREG" pad="18"/>
+<connect gate="G$1" pin="VSS_PAD" pad="23 24 P$1 P$2 P$3 P$4 P$5 P$6 P$7 P$8 P$9 P$10 P$11 P$12 P$13 P$14 P$15 P$16 P$17 P$18 P$19 P$20 P$21"/>
 </connects>
 <technologies>
 <technology name=""/>
