@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -5081,49 +5081,37 @@ Compatible with Cortex 10-pin 0.05" JTAG/SWD Connector</description>
 <text x="7.62" y="-2.12" size="0.508" layer="21">1</text>
 <text x="7.62" y="1.69" size="0.508" layer="21">2</text>
 </package>
-<package name="2X07_SHROUDED_JTAG_XILINX">
-<description>&lt;h3&gt;Header 2X7 2.54mm, shrouded&lt;/h3&gt;
+<package name="2X07_2MM00_SHROUDED_XILINX_JTAG">
+<description>&lt;h3&gt;Header 2X7 2.00mm, shrouded&lt;/h3&gt;
 &lt;h4&gt;This header type is used as XILINX JTAG header for 14 positions.&lt;/h4&gt;</description>
-<wire x1="-8.89" y1="-2.54" x2="-8.89" y2="2.54" width="0.2032" layer="21"/>
-<pad name="1" x="-7.62" y="-1.27" drill="1.016" shape="square"/>
-<pad name="2" x="-7.62" y="1.27" drill="1.016" shape="octagon"/>
-<pad name="3" x="-5.08" y="-1.27" drill="1.016" shape="octagon"/>
-<pad name="4" x="-5.08" y="1.27" drill="1.016" shape="octagon"/>
-<pad name="5" x="-2.54" y="-1.27" drill="1.016" shape="octagon"/>
-<pad name="6" x="-2.54" y="1.27" drill="1.016" shape="octagon"/>
-<pad name="7" x="0" y="-1.27" drill="1.016" shape="octagon"/>
-<pad name="8" x="0" y="1.27" drill="1.016" shape="octagon"/>
-<pad name="9" x="2.54" y="-1.27" drill="1.016" shape="octagon"/>
-<pad name="10" x="2.54" y="1.27" drill="1.016" shape="octagon"/>
-<text x="-8.89" y="3.175" size="0.8128" layer="25" font="vector" ratio="20">&gt;NAME</text>
-<text x="-8.89" y="-4.445" size="0.8128" layer="27" font="vector" ratio="20">&gt;VALUE</text>
-<rectangle x1="-7.874" y1="-1.524" x2="-7.366" y2="-1.016" layer="51"/>
-<rectangle x1="-7.874" y1="1.016" x2="-7.366" y2="1.524" layer="51"/>
-<rectangle x1="-5.334" y1="1.016" x2="-4.826" y2="1.524" layer="51"/>
-<rectangle x1="-5.334" y1="-1.524" x2="-4.826" y2="-1.016" layer="51"/>
-<rectangle x1="-2.794" y1="1.016" x2="-2.286" y2="1.524" layer="51"/>
-<rectangle x1="-2.794" y1="-1.524" x2="-2.286" y2="-1.016" layer="51"/>
-<rectangle x1="-0.254" y1="1.016" x2="0.254" y2="1.524" layer="51"/>
-<rectangle x1="-0.254" y1="-1.524" x2="0.254" y2="-1.016" layer="51"/>
-<rectangle x1="2.286" y1="1.016" x2="2.794" y2="1.524" layer="51"/>
-<rectangle x1="2.286" y1="-1.524" x2="2.794" y2="-1.016" layer="51"/>
-<pad name="11" x="5.08" y="-1.27" drill="1.016" shape="octagon"/>
-<pad name="12" x="5.08" y="1.27" drill="1.016" shape="octagon"/>
-<pad name="14" x="7.62" y="1.27" drill="1.016" shape="octagon"/>
-<pad name="13" x="7.62" y="-1.27" drill="1.016" shape="octagon"/>
-<wire x1="8.89" y1="2.54" x2="8.89" y2="-2.54" width="0.2032" layer="21"/>
-<rectangle x1="4.826" y1="1.016" x2="5.334" y2="1.524" layer="51"/>
-<rectangle x1="7.366" y1="1.016" x2="7.874" y2="1.524" layer="51"/>
-<rectangle x1="4.826" y1="-1.524" x2="5.334" y2="-1.016" layer="51"/>
-<rectangle x1="7.366" y1="-1.524" x2="7.874" y2="-1.016" layer="51"/>
-<wire x1="-8.89" y1="-2.54" x2="-2.54" y2="-2.54" width="0.2032" layer="21"/>
-<wire x1="8.89" y1="2.54" x2="-8.89" y2="2.54" width="0.2032" layer="21"/>
-<wire x1="8.89" y1="-2.54" x2="2.54" y2="-2.54" width="0.2032" layer="21"/>
-<wire x1="-2.54" y1="-2.54" x2="2.54" y2="-2.54" width="0.0635" layer="21"/>
-<wire x1="-2.54" y1="-2.54" x2="2.54" y2="-2.54" width="0.2032" layer="51"/>
-<wire x1="-2.54" y1="-2.54" x2="-2.54" y2="-3.175" width="0.2032" layer="51"/>
-<wire x1="-2.54" y1="-3.175" x2="2.54" y2="-3.175" width="0.2032" layer="51"/>
-<wire x1="2.54" y1="-3.175" x2="2.54" y2="-2.54" width="0.2032" layer="51"/>
+<wire x1="-7.39" y1="-2.54" x2="-7.39" y2="2.54" width="0.2032" layer="21"/>
+<pad name="1" x="-6" y="-1" drill="1.016" shape="square"/>
+<pad name="2" x="-6" y="1" drill="1.016" shape="octagon"/>
+<text x="-6.89" y="3.175" size="0.8128" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="-6.89" y="-4.445" size="0.8128" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<rectangle x1="-6.254" y1="-1.254" x2="-5.746" y2="-0.746" layer="51"/>
+<rectangle x1="-6.254" y1="0.746" x2="-5.746" y2="1.254" layer="51"/>
+<wire x1="7.39" y1="2.54" x2="7.39" y2="-2.54" width="0.2032" layer="21"/>
+<wire x1="-7.39" y1="-2.54" x2="-1.42" y2="-2.54" width="0.2032" layer="21"/>
+<wire x1="7.39" y1="2.54" x2="-7.39" y2="2.54" width="0.2032" layer="21"/>
+<wire x1="7.39" y1="-2.54" x2="1.42" y2="-2.54" width="0.2032" layer="21"/>
+<wire x1="-1.42" y1="-2.54" x2="1.42" y2="-2.54" width="0.0635" layer="21"/>
+<wire x1="-1.42" y1="-2.54" x2="1.42" y2="-2.54" width="0.2032" layer="51"/>
+<wire x1="-1.42" y1="-2.54" x2="-1.42" y2="-3.175" width="0.2032" layer="51"/>
+<wire x1="-1.42" y1="-3.175" x2="1.42" y2="-3.175" width="0.2032" layer="51"/>
+<wire x1="1.42" y1="-3.175" x2="1.42" y2="-2.54" width="0.2032" layer="51"/>
+<pad name="3" x="-4" y="-1" drill="1.016" shape="octagon"/>
+<pad name="4" x="-4" y="1" drill="1.016" shape="octagon"/>
+<pad name="5" x="-2" y="-1" drill="1.016" shape="octagon"/>
+<pad name="6" x="-2" y="1" drill="1.016" shape="octagon"/>
+<pad name="7" x="0" y="-1" drill="1.016" shape="octagon"/>
+<pad name="8" x="0" y="1" drill="1.016" shape="octagon"/>
+<pad name="9" x="2" y="-1" drill="1.016" shape="octagon"/>
+<pad name="10" x="2" y="1" drill="1.016" shape="octagon"/>
+<pad name="11" x="4" y="-1" drill="1.016" shape="octagon"/>
+<pad name="12" x="4" y="1" drill="1.016" shape="octagon"/>
+<pad name="13" x="6" y="-1" drill="1.016" shape="octagon"/>
+<pad name="14" x="6" y="1" drill="1.016" shape="octagon"/>
 </package>
 </packages>
 <symbols>
@@ -7452,6 +7440,7 @@ with dual switch</description>
 <text x="10.16" y="8.128" size="1.143" layer="94" ratio="10">VCCO_0</text>
 <text x="10.16" y="-4.572" size="1.143" layer="94" ratio="10">----</text>
 <text x="10.16" y="-7.112" size="1.143" layer="94" ratio="10">PS_SRST_B</text>
+<text x="-8.382" y="-15.748" size="1.778" layer="96">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -9721,7 +9710,7 @@ Molex 90130 series</description>
 <gate name="G$1" symbol="XILINX-JTAG-14" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="2X07_SHROUDED_JTAG_XILINX">
+<device name="" package="2X07_2MM00_SHROUDED_XILINX_JTAG">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="10" pad="10"/>
