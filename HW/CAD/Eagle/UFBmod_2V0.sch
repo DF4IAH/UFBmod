@@ -16699,6 +16699,83 @@ Right</text>
 <label x="76.2" y="40.64" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
+<net name="FPGA_FT_TXD" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B15_L6_N"/>
+<wire x1="162.56" y1="50.8" x2="182.88" y2="50.8" width="0.1524" layer="91"/>
+<label x="182.88" y="50.8" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_FT_RXD" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B15_L6_P"/>
+<wire x1="162.56" y1="48.26" x2="215.9" y2="48.26" width="0.1524" layer="91"/>
+<label x="215.9" y="48.26" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_FT_DCD" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B15_L22_N"/>
+<wire x1="162.56" y1="33.02" x2="182.88" y2="33.02" width="0.1524" layer="91"/>
+<label x="182.88" y="33.02" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_FT_RI" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B15_L22_P"/>
+<wire x1="162.56" y1="30.48" x2="215.9" y2="30.48" width="0.1524" layer="91"/>
+<label x="215.9" y="30.48" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_FT_12MHZ" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B15_IO25"/>
+<wire x1="162.56" y1="27.94" x2="182.88" y2="27.94" width="0.1524" layer="91"/>
+<label x="182.88" y="27.94" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_FT_RTS" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B15_L21_P"/>
+<wire x1="162.56" y1="45.72" x2="182.88" y2="45.72" width="0.1524" layer="91"/>
+<label x="182.88" y="45.72" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_FT_CTS" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B15_L21_N"/>
+<wire x1="162.56" y1="43.18" x2="215.9" y2="43.18" width="0.1524" layer="91"/>
+<label x="215.9" y="43.18" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_FT_DTR" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B15_L24_N"/>
+<wire x1="162.56" y1="38.1" x2="182.88" y2="38.1" width="0.1524" layer="91"/>
+<label x="182.88" y="38.1" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_FT_DSR" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B15_L24_P"/>
+<wire x1="162.56" y1="35.56" x2="215.9" y2="35.56" width="0.1524" layer="91"/>
+<label x="215.9" y="35.56" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_FT_RESET" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B15_L15_N"/>
+<wire x1="162.56" y1="55.88" x2="215.9" y2="55.88" width="0.1524" layer="91"/>
+<label x="215.9" y="55.88" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_RFX_MODE" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B15_L15_P"/>
+<wire x1="162.56" y1="58.42" x2="182.88" y2="58.42" width="0.1524" layer="91"/>
+<label x="182.88" y="58.42" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
@@ -17855,12 +17932,12 @@ I2C addr: 0x38</text>
 <net name="FE09_RX" class="0">
 <segment>
 <pinref part="U0821" gate="G$1" pin="RX"/>
-<wire x1="137.16" y1="83.82" x2="111.76" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="83.82" x2="111.76" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="83.82" x2="111.76" y2="86.36" width="0.1524" layer="91"/>
-<wire x1="137.16" y1="83.82" x2="137.16" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="83.82" x2="162.56" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="C0832" gate="G$1" pin="1"/>
-<wire x1="137.16" y1="86.36" x2="165.1" y2="86.36" width="0.1524" layer="91"/>
-<label x="154.94" y="86.36" size="1.778" layer="95"/>
+<wire x1="162.56" y1="86.36" x2="165.1" y2="86.36" width="0.1524" layer="91"/>
+<label x="129.54" y="83.82" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="TRX_FEA09" class="0">
@@ -17868,11 +17945,6 @@ I2C addr: 0x38</text>
 <wire x1="149.86" y1="71.12" x2="149.86" y2="53.34" width="0.1524" layer="91"/>
 <label x="149.86" y="53.34" size="1.778" layer="95" rot="R270" xref="yes"/>
 <pinref part="R0863" gate="G$1" pin="1"/>
-</segment>
-<segment>
-<pinref part="U0811" gate="G$1" pin="CTRL"/>
-<wire x1="213.36" y1="86.36" x2="231.14" y2="86.36" width="0.1524" layer="91"/>
-<label x="231.14" y="86.36" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FE09_TX" class="0">
@@ -17983,6 +18055,14 @@ I2C addr: 0x38</text>
 <wire x1="149.86" y1="81.28" x2="149.86" y2="106.68" width="0.1524" layer="91"/>
 <pinref part="U0821" gate="G$1" pin="TXEN"/>
 <wire x1="149.86" y1="106.68" x2="142.24" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="106.68" x2="154.94" y2="106.68" width="0.1524" layer="91"/>
+<junction x="149.86" y="106.68"/>
+<wire x1="154.94" y1="106.68" x2="154.94" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="71.12" x2="228.6" y2="71.12" width="0.1524" layer="91"/>
+<pinref part="U0811" gate="G$1" pin="CTRL"/>
+<wire x1="213.36" y1="86.36" x2="228.6" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="228.6" y1="71.12" x2="228.6" y2="86.36" width="0.1524" layer="91"/>
+<label x="162.56" y="71.12" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="RFX_VDD3" class="0">
@@ -18031,13 +18111,13 @@ FT232H</text>
 <instance part="R0931" gate="G$1" x="91.44" y="88.9" rot="R90"/>
 <instance part="R0941" gate="G$1" x="53.34" y="78.74"/>
 <instance part="R0961" gate="G$1" x="172.72" y="127"/>
-<instance part="R0962" gate="G$1" x="208.28" y="124.46"/>
+<instance part="R0962" gate="G$1" x="205.74" y="124.46"/>
 <instance part="R0963" gate="G$1" x="180.34" y="121.92"/>
-<instance part="R0964" gate="G$1" x="215.9" y="119.38"/>
+<instance part="R0964" gate="G$1" x="213.36" y="119.38"/>
 <instance part="R0965" gate="G$1" x="187.96" y="116.84"/>
-<instance part="R0966" gate="G$1" x="223.52" y="114.3"/>
-<instance part="R0967" gate="G$1" x="208.28" y="111.76"/>
-<instance part="R0968" gate="G$1" x="215.9" y="109.22"/>
+<instance part="R0966" gate="G$1" x="220.98" y="114.3"/>
+<instance part="R0967" gate="G$1" x="205.74" y="111.76"/>
+<instance part="R0968" gate="G$1" x="213.36" y="109.22"/>
 <instance part="R0971" gate="G$1" x="175.26" y="96.52"/>
 <instance part="R0972" gate="G$1" x="182.88" y="93.98"/>
 <instance part="D0972" gate="1" x="193.04" y="86.36"/>
@@ -18298,15 +18378,15 @@ FT232H</text>
 <net name="FPGA_FT_TXD" class="0">
 <segment>
 <pinref part="R0961" gate="G$1" pin="2"/>
-<wire x1="177.8" y1="127" x2="231.14" y2="127" width="0.1524" layer="91"/>
-<label x="231.14" y="127" size="1.778" layer="95" xref="yes"/>
+<wire x1="177.8" y1="127" x2="228.6" y2="127" width="0.1524" layer="91"/>
+<label x="228.6" y="127" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FT_RXD" class="0">
 <segment>
 <pinref part="U0911" gate="G$1" pin="ADBUS1"/>
 <pinref part="R0962" gate="G$1" pin="1"/>
-<wire x1="154.94" y1="124.46" x2="203.2" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="124.46" x2="200.66" y2="124.46" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="FT_RTS" class="0">
@@ -18320,28 +18400,28 @@ FT232H</text>
 <segment>
 <pinref part="U0911" gate="G$1" pin="ADBUS3"/>
 <pinref part="R0964" gate="G$1" pin="1"/>
-<wire x1="154.94" y1="119.38" x2="210.82" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="119.38" x2="208.28" y2="119.38" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="FPGA_FT_RXD" class="0">
 <segment>
 <pinref part="R0962" gate="G$1" pin="2"/>
-<wire x1="213.36" y1="124.46" x2="231.14" y2="124.46" width="0.1524" layer="91"/>
-<label x="231.14" y="124.46" size="1.778" layer="95" xref="yes"/>
+<wire x1="210.82" y1="124.46" x2="228.6" y2="124.46" width="0.1524" layer="91"/>
+<label x="228.6" y="124.46" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FPGA_FT_RTS" class="0">
 <segment>
 <pinref part="R0963" gate="G$1" pin="2"/>
-<wire x1="185.42" y1="121.92" x2="231.14" y2="121.92" width="0.1524" layer="91"/>
-<label x="231.14" y="121.92" size="1.778" layer="95" xref="yes"/>
+<wire x1="185.42" y1="121.92" x2="228.6" y2="121.92" width="0.1524" layer="91"/>
+<label x="228.6" y="121.92" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FPGA_FT_CTS" class="0">
 <segment>
 <pinref part="R0964" gate="G$1" pin="2"/>
-<wire x1="220.98" y1="119.38" x2="231.14" y2="119.38" width="0.1524" layer="91"/>
-<label x="231.14" y="119.38" size="1.778" layer="95" xref="yes"/>
+<wire x1="218.44" y1="119.38" x2="228.6" y2="119.38" width="0.1524" layer="91"/>
+<label x="228.6" y="119.38" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FT_DTR" class="0">
@@ -18355,49 +18435,49 @@ FT232H</text>
 <segment>
 <pinref part="U0911" gate="G$1" pin="ADBUS5"/>
 <pinref part="R0966" gate="G$1" pin="1"/>
-<wire x1="154.94" y1="114.3" x2="218.44" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="114.3" x2="215.9" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="FT_DCD" class="0">
 <segment>
 <pinref part="U0911" gate="G$1" pin="ADBUS6"/>
 <pinref part="R0967" gate="G$1" pin="1"/>
-<wire x1="154.94" y1="111.76" x2="203.2" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="111.76" x2="200.66" y2="111.76" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="FT_RI" class="0">
 <segment>
 <pinref part="U0911" gate="G$1" pin="ADBUS7"/>
 <pinref part="R0968" gate="G$1" pin="1"/>
-<wire x1="154.94" y1="109.22" x2="210.82" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="109.22" x2="208.28" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="FPGA_FT_DSR" class="0">
 <segment>
 <pinref part="R0966" gate="G$1" pin="2"/>
-<wire x1="228.6" y1="114.3" x2="231.14" y2="114.3" width="0.1524" layer="91"/>
-<label x="231.14" y="114.3" size="1.778" layer="95" xref="yes"/>
+<wire x1="226.06" y1="114.3" x2="228.6" y2="114.3" width="0.1524" layer="91"/>
+<label x="228.6" y="114.3" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FPGA_FT_DTR" class="0">
 <segment>
 <pinref part="R0965" gate="G$1" pin="2"/>
-<wire x1="193.04" y1="116.84" x2="231.14" y2="116.84" width="0.1524" layer="91"/>
-<label x="231.14" y="116.84" size="1.778" layer="95" xref="yes"/>
+<wire x1="193.04" y1="116.84" x2="228.6" y2="116.84" width="0.1524" layer="91"/>
+<label x="228.6" y="116.84" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FPGA_FT_DCD" class="0">
 <segment>
 <pinref part="R0967" gate="G$1" pin="2"/>
-<wire x1="213.36" y1="111.76" x2="231.14" y2="111.76" width="0.1524" layer="91"/>
-<label x="231.14" y="111.76" size="1.778" layer="95" xref="yes"/>
+<wire x1="210.82" y1="111.76" x2="228.6" y2="111.76" width="0.1524" layer="91"/>
+<label x="228.6" y="111.76" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FPGA_FT_RI" class="0">
 <segment>
 <pinref part="R0968" gate="G$1" pin="2"/>
-<wire x1="220.98" y1="109.22" x2="231.14" y2="109.22" width="0.1524" layer="91"/>
-<label x="231.14" y="109.22" size="1.778" layer="95" xref="yes"/>
+<wire x1="218.44" y1="109.22" x2="228.6" y2="109.22" width="0.1524" layer="91"/>
+<label x="228.6" y="109.22" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FT_TXDEN" class="0">
