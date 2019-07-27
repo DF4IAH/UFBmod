@@ -27,11 +27,11 @@ set_property -dict {PACKAGE_PIN AB17 IOSTANDARD LVCMOS25} [get_ports {b13_l2_n}]
 #IO_L2N_T0_13 sch:B13_L2_N
 
 
-set_property -dict {PACKAGE_PIN AA13 IOSTANDARD LVCMOS25} [get_ports {b13_l3_p}]
-#IO_L3P_T0_DQS_13 sch:B13_L3_P
+set_property -dict {PACKAGE_PIN AA13 IOSTANDARD LVDS} [get_ports {ufb_trx_rxd09_p}]
+#IO_L3P_T0_DQS_13 sch:B13_L3_P --> UFB_TRX_RXD09_P
 
-set_property -dict {PACKAGE_PIN AB13 IOSTANDARD LVCMOS25} [get_ports {b13_l3_n}]
-#IO_L3N_T0_DQS_13 sch:B13_L3_N
+set_property -dict {PACKAGE_PIN AB13 IOSTANDARD LVDS} [get_ports {ufb_trx_rxd09_n}]
+#IO_L3N_T0_DQS_13 sch:B13_L3_N --> UFB_TRX_RXD09_N
 
 
 set_property -dict {PACKAGE_PIN AA15 IOSTANDARD LVCMOS25} [get_ports {b13_l4_p}]
@@ -41,18 +41,18 @@ set_property -dict {PACKAGE_PIN AB15 IOSTANDARD LVCMOS25} [get_ports {b13_l4_n}]
 #IO_L4N_T0_13 sch:B13_L4_N
 
 
-set_property -dict {PACKAGE_PIN Y13 IOSTANDARD LVCMOS25} [get_ports {b13_l5_p}]
-#IO_L5P_T0_13 sch:B13_L5_P
+set_property -dict {PACKAGE_PIN Y13 IOSTANDARD LVCMOS25} [get_ports {ufb_trx_txd_p}]
+#IO_L5P_T0_13 sch:B13_L5_P --> UFB_TRX_TXD_P
 
-set_property -dict {PACKAGE_PIN AA14 IOSTANDARD LVCMOS25} [get_ports {b13_l5_n}]
-#IO_L5N_T0_13 sch:B13_L5_N
+set_property -dict {PACKAGE_PIN AA14 IOSTANDARD LVCMOS25} [get_ports {ufb_trx_txd_n}]
+#IO_L5N_T0_13 sch:B13_L5_N --> UFB_TRX_TXD_N
 
 
-set_property -dict {PACKAGE_PIN W14 IOSTANDARD LVCMOS25} [get_ports {b13_l6_p}]
-#IO_L6P_T0_13 sch:B13_L6_P
+set_property -dict {PACKAGE_PIN W14 IOSTANDARD LVCMOS25} [get_ports {ufb_trx_txclk_p}]
+#IO_L6P_T0_13 sch:B13_L6_P --> UFB_TRX_TXCLK_P
 
-set_property -dict {PACKAGE_PIN Y14 IOSTANDARD LVCMOS25} [get_ports {b13_l6_n}]
-#IO_L6N_T0_VREF_13 sch:B13_L6_N
+set_property -dict {PACKAGE_PIN Y14 IOSTANDARD LVCMOS25} [get_ports {ufb_trx_txclk_n}]
+#IO_L6N_T0_VREF_13 sch:B13_L6_N --> UFB_TRX_TXCLK_N
 
 
 set_property -dict {PACKAGE_PIN AB11 IOSTANDARD LVCMOS25} [get_ports {io_l7p_t1_13}]
@@ -69,11 +69,11 @@ set_property -dict {PACKAGE_PIN AB10 IOSTANDARD LVCMOS25} [get_ports {io_l8n_t1_
 #IO_L8N_T1_13 sch:-
 
 
-set_property -dict {PACKAGE_PIN AA10 IOSTANDARD LVCMOS25} [get_ports {b13_l9_p}]
-#IO_L9P_T1_DQS_13 sch:B13_L9_P
+set_property -dict {PACKAGE_PIN AA10 IOSTANDARD LVDS} [get_ports {ufb_trx_rxd24_p}]
+#IO_L9P_T1_DQS_13 sch:B13_L9_P --> UFB_TRX_RXD24_P
 
-set_property -dict {PACKAGE_PIN AA11 IOSTANDARD LVCMOS25} [get_ports {b13_l9_n}]
-#IO_L9N_T1_DQS_13 sch:B13_L9_N
+set_property -dict {PACKAGE_PIN AA11 IOSTANDARD LVDS} [get_ports {ufb_trx_rxd24_n}]
+#IO_L9N_T1_DQS_13 sch:B13_L9_N --> UFB_TRX_RXD24_N
 
 
 set_property -dict {PACKAGE_PIN V10 IOSTANDARD LVCMOS25} [get_ports {b13_l10_p}]
@@ -83,11 +83,11 @@ set_property -dict {PACKAGE_PIN W10 IOSTANDARD LVCMOS25} [get_ports {b13_l10_n}]
 #IO_L10N_T1_13 sch:B13_L10_N
 
 
-set_property -dict {PACKAGE_PIN Y11 IOSTANDARD LVCMOS25} [get_ports {b13_l11_p}]
-#IO_L11P_T1_SRCC_13 sch:B13_L11_P
+set_property -dict {PACKAGE_PIN Y11 IOSTANDARD LVDS} [get_ports {ufb_trx_rxclk_p}]
+#IO_L11P_T1_SRCC_13 sch:B13_L11_P --> UFB_TRX_RXCLK_P
 
-set_property -dict {PACKAGE_PIN Y12 IOSTANDARD LVCMOS25} [get_ports {b13_l11_n}]
-#IO_L11N_T1_SRCC_13 sch:B13_L11_N
+set_property -dict {PACKAGE_PIN Y12 IOSTANDARD LVDS} [get_ports {ufb_trx_rxclk_n}]
+#IO_L11N_T1_SRCC_13 sch:B13_L11_N --> UFB_TRX_RXCLK_N
 
 
 set_property -dict {PACKAGE_PIN W11 IOSTANDARD LVCMOS25} [get_ports {b13_l12_p}]
@@ -318,22 +318,22 @@ set_property CONFIG VCCOSENSEMODE15 ALWAYSACTIVE;
 set_property -dict {PACKAGE_PIN J16 IOSTANDARD LVCMOS33} [get_ports {b15_io0}]
 #IO_0_15 sch:B15_IO0
 
-set_property -dict {PACKAGE_PIN M17 IOSTANDARD LVCMOS33} [get_ports {b15_io25}]
-#IO_25_15 sch:B15_IO25
+set_property -dict {PACKAGE_PIN M17 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_ft_12mhz}]
+#IO_25_15 sch:B15_IO25 --> UFB_FPGA_FT_12MHZ
 
 
-set_property -dict {PACKAGE_PIN H13 IOSTANDARD LVCMOS33} [get_ports {b15_l1_p}]
-#IO_L1P_T0_AD0P_15 sch:B15_L1_P
+set_property -dict {PACKAGE_PIN H13 IOSTANDARD LVCMOS33} [get_ports {ufb_trx_sclk}]
+#IO_L1P_T0_AD0P_15 sch:B15_L1_P --> UFB_TRX_SCLK
 
-set_property -dict {PACKAGE_PIN G13 IOSTANDARD LVCMOS33} [get_ports {b15_l1_n}]
-#IO_L1N_T0_AD0N_15 sch:B15_L1_N
+set_property -dict {PACKAGE_PIN G13 IOSTANDARD LVCMOS33} [get_ports {ufb_trx_seln}]
+#IO_L1N_T0_AD0N_15 sch:B15_L1_N --> UFB_TRX_SELN
 
 
-set_property -dict {PACKAGE_PIN G15 IOSTANDARD LVCMOS33} [get_ports {b15_l2_p}]
-#IO_L2P_T0_AD8P_15 sch:B15_L2_P
+set_property -dict {PACKAGE_PIN G15 IOSTANDARD LVCMOS33} [get_ports {ufb_trx_miso}]
+#IO_L2P_T0_AD8P_15 sch:B15_L2_P --> UFB_TRX_MISO
 
-set_property -dict {PACKAGE_PIN G16 IOSTANDARD LVCMOS33} [get_ports {b15_l2_n}]
-#IO_L2N_T0_AD8N_15 sch:B15_L2_N
+set_property -dict {PACKAGE_PIN G16 IOSTANDARD LVCMOS33} [get_ports {ufb_trx_mosi}]
+#IO_L2N_T0_AD8N_15 sch:B15_L2_N --> UFB_TRX_MOSI
 
 
 set_property -dict {PACKAGE_PIN J14 IOSTANDARD LVCMOS33} [get_ports {b15_l3_p}]
@@ -357,11 +357,11 @@ set_property -dict {PACKAGE_PIN H15 IOSTANDARD LVCMOS33} [get_ports {b15_l5_n}]
 #IO_L5N_T0_AD9N_15 sch:B15_L5_N
 
 
-set_property -dict {PACKAGE_PIN H17 IOSTANDARD LVCMOS33} [get_ports {b15_l6_p}]
-#IO_L6P_T0_15 sch:B15_L6_P
+set_property -dict {PACKAGE_PIN H17 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_ft_rxd}]
+#IO_L6P_T0_15 sch:B15_L6_P --> UFB_FPGA_FT_RXD
 
-set_property -dict {PACKAGE_PIN H18 IOSTANDARD LVCMOS33} [get_ports {b15_l6_n}]
-#IO_L6N_T0_VREF_15 sch:B15_L6_N
+set_property -dict {PACKAGE_PIN H18 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_ft_txd}]
+#IO_L6N_T0_VREF_15 sch:B15_L6_N --> UFB_FPGA_FT_TXD
 
 
 set_property -dict {PACKAGE_PIN J22 IOSTANDARD LVCMOS33} [get_ports {b15_l7_p}]
@@ -420,18 +420,18 @@ set_property -dict {PACKAGE_PIN L20 IOSTANDARD LVCMOS33} [get_ports {b15_l14_n}]
 #IO_L14N_T2_SRCC_15 sch:B15_L14_N
 
 
-set_property -dict {PACKAGE_PIN N22 IOSTANDARD LVCMOS33} [get_ports {b15_l15_p}]
-#IO_L15P_T2_DQS_15 sch:B15_L15_P
+set_property -dict {PACKAGE_PIN N22 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_rfx_mode}]
+#IO_L15P_T2_DQS_15 sch:B15_L15_P --> UFB_FPGA_RFX_MODE
 
-set_property -dict {PACKAGE_PIN M22 IOSTANDARD LVCMOS33} [get_ports {b15_l15_n}]
-#IO_L15N_T2_DQS_ADV_B_15 sch:B15_L15_N
+set_property -dict {PACKAGE_PIN M22 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_ft_reset}]
+#IO_L15N_T2_DQS_ADV_B_15 sch:B15_L15_N --> UFB_FPGA_FT_RESET
 
 
-set_property -dict {PACKAGE_PIN M18 IOSTANDARD LVCMOS33} [get_ports {b15_l16_p}]
-#IO_L16P_T2_A28_15 sch:B15_L16_P
+set_property -dict {PACKAGE_PIN M18 IOSTANDARD LVCMOS33} [get_ports {ufb_trx_rstn}]
+#IO_L16P_T2_A28_15 sch:B15_L16_P --> UFB_TRX_RSTN
 
-set_property -dict {PACKAGE_PIN L18 IOSTANDARD LVCMOS33} [get_ports {b15_l16_n}]
-#IO_L16N_T2_A27_15 sch:B15_L16_N
+set_property -dict {PACKAGE_PIN L18 IOSTANDARD LVCMOS33} [get_ports {ufb_trx_irq}]
+#IO_L16N_T2_A27_15 sch:B15_L16_N --> UFB_TRX_IRQ
 
 
 set_property -dict {PACKAGE_PIN N18 IOSTANDARD LVCMOS33} [get_ports {b15_l17_p}]
@@ -462,18 +462,18 @@ set_property -dict {PACKAGE_PIN L13 IOSTANDARD LVCMOS33} [get_ports {b15_l20_n}]
 #IO_L20N_T3_A19_15 sch:B15_L20_N
 
 
-set_property -dict {PACKAGE_PIN K17 IOSTANDARD LVCMOS33} [get_ports {b15_l21_p}]
-#IO_L21P_T3_DQS_15 sch:B15_L21_P
+set_property -dict {PACKAGE_PIN K17 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_ft_rts}]
+#IO_L21P_T3_DQS_15 sch:B15_L21_P --> UFB_FPGA_FT_RTS
 
-set_property -dict {PACKAGE_PIN J17 IOSTANDARD LVCMOS33} [get_ports {b15_l21_n}]
-#IO_L21N_T3_DQS_A18_15 sch:B15_L21_N
+set_property -dict {PACKAGE_PIN J17 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_ft_cts}]
+#IO_L21N_T3_DQS_A18_15 sch:B15_L21_N --> UFB_FPGA_FT_CTS
 
 
-set_property -dict {PACKAGE_PIN L14 IOSTANDARD LVCMOS33} [get_ports {b15_l22_p}]
-#IO_L22P_T3_A17_15 sch:B15_L22_P
+set_property -dict {PACKAGE_PIN L14 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_ft_ri}]
+#IO_L22P_T3_A17_15 sch:B15_L22_P --> UFB_FPGA_FT_RI
 
-set_property -dict {PACKAGE_PIN L15 IOSTANDARD LVCMOS33} [get_ports {b15_l22_n}]
-#IO_L22N_T3_A16_15 sch:B15_L22_N
+set_property -dict {PACKAGE_PIN L15 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_ft_dcd}]
+#IO_L22N_T3_A16_15 sch:B15_L22_N --> UFB_FPGA_FT_DCD
 
 
 set_property -dict {PACKAGE_PIN L16 IOSTANDARD LVCMOS33} [get_ports {b15_l23_p}]
@@ -483,11 +483,11 @@ set_property -dict {PACKAGE_PIN K16 IOSTANDARD LVCMOS33} [get_ports {b15_l23_n}]
 #IO_L23N_T3_FWE_B_15 sch:B15_L23_N
 
 
-set_property -dict {PACKAGE_PIN M15 IOSTANDARD LVCMOS33} [get_ports {b15_l24_p}]
-#IO_L24P_T3_RS1_15 sch:B15_L24_P
+set_property -dict {PACKAGE_PIN M15 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_ft_dsr}]
+#IO_L24P_T3_RS1_15 sch:B15_L24_P --> UFB_FPGA_FT_DSR
 
-set_property -dict {PACKAGE_PIN M16 IOSTANDARD LVCMOS33} [get_ports {b15_l24_n}]
-#IO_L24N_T3_RS0_15 sch:B15_L24_N
+set_property -dict {PACKAGE_PIN M16 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_ft_dtr}]
+#IO_L24N_T3_RS0_15 sch:B15_L24_N --> UFB_FPGA_FT_DTR
 
 
 
@@ -577,8 +577,8 @@ set_property -dict {PACKAGE_PIN B18 IOSTANDARD LVCMOS33} [get_ports {b16_l11_n}]
 #IO_L11N_T1_SRCC_16 sch:B16_L11_N
 
 
-set_property -dict {PACKAGE_PIN D17 IOSTANDARD LVCMOS33} [get_ports {b16_l12_p}]
-#IO_L12P_T1_MRCC_16 sch:B16_L12_P
+set_property -dict {PACKAGE_PIN D17 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_trx_clk0}]
+#IO_L12P_T1_MRCC_16 sch:B16_L12_P --> UFB_FPGA_TRX_CLK0  32.0 MHz
 
 set_property -dict {PACKAGE_PIN C17 IOSTANDARD LVCMOS33} [get_ports {b16_l12_n}]
 #IO_L12N_T1_MRCC_16 sch:B16_L12_N
@@ -934,10 +934,10 @@ set_property -dict {PACKAGE_PIN G3 IOSTANDARD LVCMOS15} [get_ports {b35_l11_n}]
 
 
 set_property -dict {PACKAGE_PIN H4 IOSTANDARD LVCMOS15} [get_ports {pll_clk_p}]
-#IO_L12P_T1_MRCC_35 sch:PLL_CLK_P
+#IO_L12P_T1_MRCC_35 sch:PLL_CLK_P --> 50.0 MHz
 
 set_property -dict {PACKAGE_PIN G4 IOSTANDARD LVCMOS15} [get_ports {pll_clk_n}]
-#IO_L12N_T1_MRCC_35 sch:PLL_CLK_N
+#IO_L12N_T1_MRCC_35 sch:PLL_CLK_N --> 50.0 MHz
 
 
 set_property -dict {PACKAGE_PIN K4 IOSTANDARD LVCMOS15} [get_ports {clk0_p}]
@@ -990,10 +990,10 @@ set_property -dict {PACKAGE_PIN N3 IOSTANDARD LVCMOS15} [get_ports {ddr3_a3}]
 
 
 set_property -dict {PACKAGE_PIN R1 IOSTANDARD LVCMOS15} [get_ports {ddr3_clk0_p}]
-#IO_L20P_T3_35 sch:DDR3-CLK0_P
+#IO_L20P_T3_35 sch:DDR3-CLK0_P --> xxx.x MHz - To be defined by the MIG tool and speed grade of FPGA
 
 set_property -dict {PACKAGE_PIN P1 IOSTANDARD LVCMOS15} [get_ports {ddr3_clk0_n}]
-#IO_L20N_T3_35 sch:DDR3-CLK0_N
+#IO_L20N_T3_35 sch:DDR3-CLK0_N --> xxx.x MHz - To be defined by the MIG tool and speed grade of FPGA
 
 
 set_property -dict {PACKAGE_PIN P5 IOSTANDARD LVCMOS15} [get_ports {ddr3_a11}]
@@ -1027,71 +1027,74 @@ set_property -dict {PACKAGE_PIN N5 IOSTANDARD LVCMOS15} [get_ports {ddr3_a2}]
 
 ## Bank MGT / 1.0 V & 1.2 V
 
-set_property -dict {PACKAGE_PIN F6 IOSTANDARD LVCMOS15} [get_ports {mgt_clk0_p}]
-#MGTREFCLK0P_216 sch:MGT_CLK0_P
+set_property -dict {PACKAGE_PIN F6 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_clk0_p}]
+#MGTREFCLK0P_216 sch:MGT_CLK0_P --> 120.0 MHz
 
-set_property -dict {PACKAGE_PIN E6 IOSTANDARD LVCMOS15} [get_ports {mgt_clk0_n}]
-#MGTREFCLK0N_216 sch:MGT_CLK0_N
+set_property -dict {PACKAGE_PIN E6 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_clk0_n}]
+#MGTREFCLK0N_216 sch:MGT_CLK0_N --> 120.0 MHz
 
 
-set_property -dict {PACKAGE_PIN F10 IOSTANDARD LVCMOS15} [get_ports {mgt_clk1_p}]
+set_property -dict {PACKAGE_PIN F10 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_clk1_p}]
 #MGTREFCLK1P_216 sch:MGT_CLK1_P
 
-set_property -dict {PACKAGE_PIN E10 IOSTANDARD LVCMOS15} [get_ports {mgt_clk1_n}]
+set_property -dict {PACKAGE_PIN E10 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_clk1_n}]
 #MGTREFCLK1N_216 sch:MGT_CLK1_N
 
 
-set_property -dict {PACKAGE_PIN B8 IOSTANDARD LVCMOS15} [get_ports {mgt_rx0_p}]
+set_property -dict {PACKAGE_PIN B8 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx0_p}]
 #MGTPRXP0_216 sch:MGT_RX0_P
 
-set_property -dict {PACKAGE_PIN A8 IOSTANDARD LVCMOS15} [get_ports {mgt_rx0_n}]
+set_property -dict {PACKAGE_PIN A8 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx0_n}]
 #MGTPRXN0_216 sch:MGT_RX0_N
 
 
-set_property -dict {PACKAGE_PIN D11 IOSTANDARD LVCMOS15} [get_ports {mgt_rx1_p}]
+set_property -dict {PACKAGE_PIN D11 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx1_p}]
 #MGTPRXP1_216 sch:MGT_RX1_P
 
-set_property -dict {PACKAGE_PIN C11 IOSTANDARD LVCMOS15} [get_ports {mgt_rx1_n}]
+set_property -dict {PACKAGE_PIN C11 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx1_n}]
 #MGTPRXN1_216 sch:MGT_RX1_N
 
 
-set_property -dict {PACKAGE_PIN B10 IOSTANDARD LVCMOS15} [get_ports {mgt_rx2_p}]
+set_property -dict {PACKAGE_PIN B10 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx2_p}]
 #MGTPRXP2_216 sch:MGT_RX2_P
 
-set_property -dict {PACKAGE_PIN A10 IOSTANDARD LVCMOS15} [get_ports {mgt_rx2_n}]
+set_property -dict {PACKAGE_PIN A10 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx2_n}]
 #MGTPRXN2_216 sch:MGT_RX2_N
 
 
-set_property -dict {PACKAGE_PIN D9 IOSTANDARD LVCMOS15} [get_ports {mgt_rx3_p}]
+set_property -dict {PACKAGE_PIN D9 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx3_p}]
 #MGTPRXP3_216 sch:MGT_RX3_P
 
-set_property -dict {PACKAGE_PIN C9 IOSTANDARD LVCMOS15} [get_ports {mgt_rx3_n}]
+set_property -dict {PACKAGE_PIN C9 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx3_n}]
 #MGTPRXN3_216 sch:MGT_RX3_N
 
 
-set_property -dict {PACKAGE_PIN B4 IOSTANDARD LVCMOS15} [get_ports {mgt_tx0_p}]
+set_property -dict {PACKAGE_PIN B4 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx0_p}]
 #MGTPTXP0_216 sch:MGT_TX0_P
 
-set_property -dict {PACKAGE_PIN A4 IOSTANDARD LVCMOS15} [get_ports {mgt_tx0_n}]
+set_property -dict {PACKAGE_PIN A4 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx0_n}]
 #MGTPTXN0_216 sch:MGT_TX0_N
 
 
-set_property -dict {PACKAGE_PIN D5 IOSTANDARD LVCMOS15} [get_ports {mgt_tx1_p}]
+set_property -dict {PACKAGE_PIN D5 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx1_p}]
 #MGTPTXP1_216 sch:MGT_TX1_P
 
-set_property -dict {PACKAGE_PIN C5 IOSTANDARD LVCMOS15} [get_ports {mgt_tx1_n}]
+set_property -dict {PACKAGE_PIN C5 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx1_n}]
 #MGTPTXN1_216 sch:MGT_TX1_N
 
 
-set_property -dict {PACKAGE_PIN B6 IOSTANDARD LVCMOS15} [get_ports {mgt_tx2_p}]
+set_property -dict {PACKAGE_PIN B6 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx2_p}]
 #MGTPTXP2_216 sch:MGT_TX2_P
 
-set_property -dict {PACKAGE_PIN A6 IOSTANDARD LVCMOS15} [get_ports {mgt_tx2_n}]
+set_property -dict {PACKAGE_PIN A6 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx2_n}]
 #MGTPTXN2_216 sch:MGT_TX2_N
 
 
-set_property -dict {PACKAGE_PIN D7 IOSTANDARD LVCMOS15} [get_ports {mgt_tx3_p}]
+set_property -dict {PACKAGE_PIN D7 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx3_p}]
 #MGTPTXP3_216 sch:MGT_TX3_P
 
-set_property -dict {PACKAGE_PIN C7 IOSTANDARD LVCMOS15} [get_ports {mgt_tx3_n}]
+set_property -dict {PACKAGE_PIN C7 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx3_n}]
 #MGTPTXN3_216 sch:MGT_TX3_N
+
+
+# <EOF>

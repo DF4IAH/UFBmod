@@ -21,21 +21,27 @@
 
 
 module top(
-    //input reset,
-
-
     // Clocks
-    input  clk0_p,       // 1.5 V
-    input  clk0_n,       // 1.5 V
+
+    input  pll_clk_p,           // 1.5 V    PLL          50.0 MHz
+    input  pll_clk_n,           // 1.5 V    PLL          50.0 MHz
+
+    input  mgt_clk0_p,          // 1.8 V    GTP         120.0 MHz
+    input  mgt_clk0_n,          // 1.8 V    GTP         120.0 MHz
+
+    output ddr3_clk0_p,         // 1.5 V    DDR3        xxx.x MHz
+    output ddr3_clk0_n,         // 1.5 V    DDR3        xxx.x MHz
     
-    input  pll_clk_p,    // 1.5 V
-    input  pll_clk_n,    // 1.5 V
+    input  ufb_fpga_trx_clk0,   // 3.3 V    TRX          32.0 MHz
 
-    input  clk50m2,      // 1.5 V   DDR3
 
-    output ddr3_clk0_p,  // 1.5 V   DDR3
-    output ddr3_clk0_n,  // 1.5 V   DDR3
+    // Out of order clocks
 
+    input  clk0_p,              // 1.5 V    PLL         xxx.x MHz   REV02: none
+    input  clk0_n,              // 1.5 V    PLL         xxx.x MHz   REV02: none
+    
+    input  clk50m2,             // 1.5 V    PLL-DDR3    xxx.x MHz   REV02: none
+    
     
     // FPGA Config
     inout  fpga_io,
@@ -164,7 +170,59 @@ module top(
     input  eth_rx_d1,
     input  eth_rx_dv,
 
-    input  link_led
+    input  link_led,
+    
+    
+    
+    // UFBmod special signals
+    
+    // TRX LVDS lanes
+    input  ufb_trx_rxclk_p,
+    input  ufb_trx_rxclk_n,
+    
+    input  ufb_trx_rxd09_p,
+    input  ufb_trx_rxd09_n,
+    
+    input  ufb_trx_rxd24_p,
+    input  ufb_trx_rxd24_n,
+    
+    output ufb_trx_txclk_p,
+    output ufb_trx_txclk_n,
+    
+    output ufb_trx_txd_p,
+    output ufb_trx_txd_n,
+    
+    
+    // TRX SPI
+    output ufb_trx_rstn,
+
+    output ufb_trx_seln,
+    output ufb_trx_sclk,
+    output ufb_trx_mosi,
+    input  ufb_trx_miso,
+
+    input  ufb_trx_irq,
+    
+    
+    // RFX
+    output ufb_fpga_rfx_mode,
+    
+    
+    // FTDI serial <--> USB
+    output ufb_fpga_ft_reset,
+    output ufb_fpga_ft_12mhz,
+    
+    output ufb_fpga_ft_rxd,
+    input  ufb_fpga_ft_txd,
+    
+    output ufb_fpga_ft_cts,
+    input  ufb_fpga_ft_rts,
+
+    output ufb_fpga_ft_dsr,
+    input  ufb_fpga_ft_dtr,
+    
+    output ufb_fpga_ft_dcd,
+    output ufb_fpga_ft_ri
     
     );
     
