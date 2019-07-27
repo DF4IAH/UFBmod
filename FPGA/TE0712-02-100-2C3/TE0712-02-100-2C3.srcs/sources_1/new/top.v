@@ -31,11 +31,11 @@ module top(
     input  pll_clk_p,    // 1.5 V
     input  pll_clk_n,    // 1.5 V
 
-    output ddr3_clk0_p,  // 1.5 V
-    output ddr3_clk0_n,  // 1.5 V
+    input  clk50m2,      // 1.5 V   DDR3
 
-    input  clk50m2,      // 1.5 V
-    
+    output ddr3_clk0_p,  // 1.5 V   DDR3
+    output ddr3_clk0_n,  // 1.5 V   DDR3
+
     
     // FPGA Config
     inout  fpga_io,
@@ -142,6 +142,11 @@ module top(
     output ddr3_cas,
 
     output ddr3_cke0,
+    
+    output ddr3_loop1_p,
+    output ddr3_loop1_n,
+    input  ddr3_loop2_p,
+    input  ddr3_loop2_n,
 
     output ddr3_reset,
         
