@@ -485,6 +485,180 @@ set_property -dict {PACKAGE_PIN M16 IOSTANDARD LVCMOS33} [get_ports {b15_l24_n}]
 
 ## Bank 16
 
+set_property -dict {PACKAGE_PIN F15 IOSTANDARD LVCMOS33} [get_ports {b16_io0}]
+#IO_0_16 sch:B16_IO0
+
+set_property -dict {PACKAGE_PIN F21 IOSTANDARD LVCMOS33} [get_ports {b16_io25}]
+#IO_25_16 sch:B16_IO25
+
+
+set_property -dict {PACKAGE_PIN F13 IOSTANDARD LVCMOS33} [get_ports {b16_l1_p}]
+#IO_L1P_T0_16 sch:B16_L1_P
+
+set_property -dict {PACKAGE_PIN F14 IOSTANDARD LVCMOS33} [get_ports {b16_l1_n}]
+#IO_L1N_T0_16 sch:B16_L1_N
+
+
+set_property -dict {PACKAGE_PIN F16 IOSTANDARD LVCMOS33} [get_ports {b16_l2_p}]
+#IO_L2P_T0_16 sch:B16_L2_P
+
+set_property -dict {PACKAGE_PIN E17 IOSTANDARD LVCMOS33} [get_ports {b16_l2_n}]
+#IO_L2N_T0_16 sch:B16_L2_N
+
+
+set_property -dict {PACKAGE_PIN C14 IOSTANDARD LVCMOS33} [get_ports {b16_l3_p}]
+#IO_L3P_T0_DQS_16 sch:B16_L3_P
+
+set_property -dict {PACKAGE_PIN C15 IOSTANDARD LVCMOS33} [get_ports {b16_l3_n}]
+#IO_L3N_T0_DQS_16 sch:B16_L3_N
+
+
+set_property -dict {PACKAGE_PIN E13 IOSTANDARD LVCMOS33} [get_ports {b16_l4_p}]
+#IO_L4P_T0_16 sch:B16_L4_P
+
+set_property -dict {PACKAGE_PIN E14 IOSTANDARD LVCMOS33} [get_ports {b16_l4_n}]
+#IO_L4N_T0_16 sch:B16_L4_N
+
+
+set_property -dict {PACKAGE_PIN E16 IOSTANDARD LVCMOS33} [get_ports {b16_l5_p}]
+#IO_L5P_T0_16 sch:B16_L5_P
+
+set_property -dict {PACKAGE_PIN D16 IOSTANDARD LVCMOS33} [get_ports {b16_l5_n}]
+#IO_L5N_T0_16 sch:B16_L5_N
+
+
+set_property -dict {PACKAGE_PIN D14 IOSTANDARD LVCMOS33} [get_ports {b16_l6_p}]
+#IO_L6P_T0_16 sch:B16_L6_P
+
+set_property -dict {PACKAGE_PIN D15 IOSTANDARD LVCMOS33} [get_ports {b16_l6_n}]
+#IO_L6N_T0_VREF_16 sch:B16_L6_N
+
+
+set_property -dict {PACKAGE_PIN B15 IOSTANDARD LVCMOS33} [get_ports {b16_l7_p}]
+#IO_L7P_T1_16 sch:B16_L7_P
+
+set_property -dict {PACKAGE_PIN B16 IOSTANDARD LVCMOS33} [get_ports {b16_l7_n}]
+#IO_L7N_T1_16 sch:B16_L7_N
+
+
+set_property -dict {PACKAGE_PIN C13 IOSTANDARD LVCMOS33} [get_ports {b16_l8_p}]
+#IO_L8P_T1_16 sch:B16_L8_P
+
+set_property -dict {PACKAGE_PIN B13 IOSTANDARD LVCMOS33} [get_ports {b16_l8_n}]
+#IO_L8N_T1_16 sch:B16_L8_N
+
+
+set_property -dict {PACKAGE_PIN A15 IOSTANDARD LVCMOS33} [get_ports {b16_l9_p}]
+#IO_L9P_T1_DQS_16 sch:B16_L9_P
+
+set_property -dict {PACKAGE_PIN A16 IOSTANDARD LVCMOS33} [get_ports {b16_l9_n}]
+#IO_L9N_T1_DQS_16 sch:B16_L9_N
+
+
+set_property -dict {PACKAGE_PIN A13 IOSTANDARD LVCMOS33} [get_ports {b16_l10_p}]
+#IO_L10P_T1_16 sch:B16_L10_P
+
+set_property -dict {PACKAGE_PIN A14 IOSTANDARD LVCMOS33} [get_ports {b16_l10_n}]
+#IO_L10N_T1_16 sch:B16_L10_N
+
+
+set_property -dict {PACKAGE_PIN B17 IOSTANDARD LVCMOS33} [get_ports {b16_l11_p}]
+#IO_L11P_T1_SRCC_16 sch:B16_L11_P
+
+set_property -dict {PACKAGE_PIN B18 IOSTANDARD LVCMOS33} [get_ports {b16_l11_n}]
+#IO_L11N_T1_SRCC_16 sch:B16_L11_N
+
+
+set_property -dict {PACKAGE_PIN D17 IOSTANDARD LVCMOS33} [get_ports {b16_l12_p}]
+#IO_L12P_T1_MRCC_16 sch:B16_L12_P
+
+set_property -dict {PACKAGE_PIN C17 IOSTANDARD LVCMOS33} [get_ports {b16_l12_n}]
+#IO_L12N_T1_MRCC_16 sch:B16_L12_N
+
+
+set_property -dict {PACKAGE_PIN C18 IOSTANDARD LVCMOS33} [get_ports {b16_l13_p}]
+#IO_L13P_T2_MRCC_16 sch:B16_L13_P
+
+set_property -dict {PACKAGE_PIN C19 IOSTANDARD LVCMOS33} [get_ports {b16_l13_n}]
+#IO_L13N_T2_MRCC_16 sch:B16_L13_N
+
+
+set_property -dict {PACKAGE_PIN E19 IOSTANDARD LVCMOS33} [get_ports {b16_l14_p}]
+#IO_L14P_T2_SRCC_16 sch:B16_L14_P
+
+set_property -dict {PACKAGE_PIN D19 IOSTANDARD LVCMOS33} [get_ports {b16_l14_n}]
+#IO_L14N_T2_SRCC_16 sch:B16_L14_N
+
+
+set_property -dict {PACKAGE_PIN F18 IOSTANDARD LVCMOS33} [get_ports {b16_l15_p}]
+#IO_L15P_T2_DQS_16 sch:B16_L15_P
+
+set_property -dict {PACKAGE_PIN E18 IOSTANDARD LVCMOS33} [get_ports {b16_l15_n}]
+#IO_L15N_T2_DQS_16 sch:B16_L15_N
+
+
+set_property -dict {PACKAGE_PIN B20 IOSTANDARD LVCMOS33} [get_ports {b16_l16_p}]
+#IO_L16P_T2_16 sch:B16_L16_P
+
+set_property -dict {PACKAGE_PIN A20 IOSTANDARD LVCMOS33} [get_ports {b16_l16_n}]
+#IO_L16N_T2_16 sch:B16_L16_N
+
+
+set_property -dict {PACKAGE_PIN A18 IOSTANDARD LVCMOS33} [get_ports {b16_l17_p}]
+#IO_L17P_T2_16 sch:B16_L17_P
+
+set_property -dict {PACKAGE_PIN A19 IOSTANDARD LVCMOS33} [get_ports {b16_l17_n}]
+#IO_L17N_T2_16 sch:B16_L17_N
+
+
+set_property -dict {PACKAGE_PIN F19 IOSTANDARD LVCMOS33} [get_ports {b16_l18_p}]
+#IO_L18P_T2_16 sch:B16_L18_P
+
+set_property -dict {PACKAGE_PIN F20 IOSTANDARD LVCMOS33} [get_ports {b16_l18_n}]
+#IO_L18N_T2_16 sch:B16_L18_N
+
+
+set_property -dict {PACKAGE_PIN D20 IOSTANDARD LVCMOS33} [get_ports {b16_l19_p}]
+#IO_L19P_T3_16 sch:B16_L19_P
+
+set_property -dict {PACKAGE_PIN C20 IOSTANDARD LVCMOS33} [get_ports {b16_l19_n}]
+#IO_L19N_T3_VREF_16 sch:B16_L19_N
+
+
+set_property -dict {PACKAGE_PIN C22 IOSTANDARD LVCMOS33} [get_ports {b16_l20_p}]
+#IO_L20P_T3_16 sch:B16_L20_P
+
+set_property -dict {PACKAGE_PIN B22 IOSTANDARD LVCMOS33} [get_ports {b16_l20_n}]
+#IO_L20N_T3_16 sch:B16_L20_N
+
+
+set_property -dict {PACKAGE_PIN B21 IOSTANDARD LVCMOS33} [get_ports {b16_l21_p}]
+#IO_L21P_T3_DQS_16 sch:B16_L21_P
+
+set_property -dict {PACKAGE_PIN A21 IOSTANDARD LVCMOS33} [get_ports {b16_l21_n}]
+#IO_L21N_T3_DQS_16 sch:B16_L21_N
+
+
+set_property -dict {PACKAGE_PIN E22 IOSTANDARD LVCMOS33} [get_ports {b16_l22_p}]
+#IO_L22P_T3_16 sch:B16_L22_P
+
+set_property -dict {PACKAGE_PIN D22 IOSTANDARD LVCMOS33} [get_ports {b16_l22_n}]
+#IO_L22N_T3_16 sch:B16_L22_N
+
+
+set_property -dict {PACKAGE_PIN E21 IOSTANDARD LVCMOS33} [get_ports {b16_l23_p}]
+#IO_L23P_T3_16 sch:B16_L23_P
+
+set_property -dict {PACKAGE_PIN D21 IOSTANDARD LVCMOS33} [get_ports {b16_l23_n}]
+#IO_L23N_T3_16 sch:B16_L23_N
+
+
+set_property -dict {PACKAGE_PIN G21 IOSTANDARD LVCMOS33} [get_ports {b16_l24_p}]
+#IO_L24P_T3_16 sch:B16_L24_P
+
+set_property -dict {PACKAGE_PIN G22 IOSTANDARD LVCMOS33} [get_ports {b16_l24_n}]
+#IO_L24N_T3_16 sch:B16_L24_N
+
 
 
 ## Bank 34
