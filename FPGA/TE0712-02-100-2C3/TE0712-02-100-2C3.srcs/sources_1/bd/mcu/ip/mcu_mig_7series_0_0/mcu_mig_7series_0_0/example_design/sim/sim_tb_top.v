@@ -152,7 +152,7 @@ module sim_tb_top;
    //***************************************************************************
    // IODELAY and PHY related parameters
    //***************************************************************************
-   parameter RST_ACT_LOW           = 1;
+   parameter RST_ACT_LOW           = 0;
                                      // =1 for active low reset,
                                      // =0 for active high.
 
@@ -174,7 +174,7 @@ module sim_tb_top;
    //***************************************************************************
    // AXI4 Shim parameters
    //***************************************************************************
-   parameter C_S_AXI_ID_WIDTH              = 4;
+   parameter C_S_AXI_ID_WIDTH              = 2;
                                              // Width of all master and slave ID signals.
                                              // # = >= 1.
    parameter C_S_AXI_ADDR_WIDTH            = 30;

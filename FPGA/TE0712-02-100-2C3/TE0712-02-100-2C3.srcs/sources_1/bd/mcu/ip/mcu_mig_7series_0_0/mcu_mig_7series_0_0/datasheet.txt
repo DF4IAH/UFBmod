@@ -72,7 +72,7 @@ AXI Parameters :
 
    Narrow Burst Support          : 0
 
-   ID Width                      : 4
+   ID Width                      : 2
 
 
 
@@ -116,7 +116,7 @@ System_Clock:
 
 System_Control: 
 	SignalName: sys_rst
-		PadLocation: AA20  Bank: 14
+		PadLocation: Y16  Bank: 13
 	SignalName: init_calib_complete
 		PadLocation: AA21  Bank: 14
 	SignalName: tg_compare_error

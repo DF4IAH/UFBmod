@@ -23,7 +23,7 @@
 
   <ReferenceClock>No Buffer</ReferenceClock>
 
-  <SysResetPolarity>ACTIVE LOW</SysResetPolarity>
+  <SysResetPolarity>ACTIVE HIGH</SysResetPolarity>
 
   <BankSelectionFlag>FALSE</BankSelectionFlag>
 
@@ -141,7 +141,7 @@
       <Pin Bank="35" PADName="H4/G4(CC_P/N)" name="sys_clk_p/n"/>
     </System_Clock>
     <System_Control>
-      <Pin Bank="14" PADName="AA20" name="sys_rst"/>
+      <Pin Bank="13" PADName="Y16" name="sys_rst"/>
       <Pin Bank="14" PADName="AA21" name="init_calib_complete"/>
       <Pin Bank="14" PADName="Y21" name="tg_compare_error"/>
     </System_Control>
@@ -173,7 +173,7 @@
       <C0_C_RD_WR_ARB_ALGORITHM>RD_PRI_REG</C0_C_RD_WR_ARB_ALGORITHM>
       <C0_S_AXI_ADDR_WIDTH>30</C0_S_AXI_ADDR_WIDTH>
       <C0_S_AXI_DATA_WIDTH>32</C0_S_AXI_DATA_WIDTH>
-      <C0_S_AXI_ID_WIDTH>4</C0_S_AXI_ID_WIDTH>
+      <C0_S_AXI_ID_WIDTH>2</C0_S_AXI_ID_WIDTH>
       <C0_S_AXI_SUPPORTS_NARROW_BURST>0</C0_S_AXI_SUPPORTS_NARROW_BURST>
     </AXIParameters>
   </Controller>

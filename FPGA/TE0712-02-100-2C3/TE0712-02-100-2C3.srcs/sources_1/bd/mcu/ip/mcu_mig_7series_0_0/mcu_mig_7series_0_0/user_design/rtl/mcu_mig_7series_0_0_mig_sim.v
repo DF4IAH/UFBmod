@@ -502,7 +502,7 @@ module mcu_mig_7series_0_0_mig #
                                      // 1/2, 1/4 and 1/8 of fabrick clock.
                                      // Valid for DDR2/DDR3 AXI interfaces
                                      // based on GUI selection
-   parameter C_S_AXI_ID_WIDTH              = 4,
+   parameter C_S_AXI_ID_WIDTH              = 2,
                                              // Width of all master and slave ID signals.
                                              // # = >= 1.
    parameter C_S_AXI_MEM_SIZE              = "1073741824",
@@ -590,7 +590,7 @@ module mcu_mig_7series_0_0_mig #
                                      // # = "L", "N". When FPGA VccINT is 0.9v,
                                      // the value is "L", else it is "N"
       
-   parameter RST_ACT_LOW           = 1
+   parameter RST_ACT_LOW           = 0
                                      // =1 for active low reset,
                                      // =0 for active high.
    )
