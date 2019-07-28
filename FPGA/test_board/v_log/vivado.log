@@ -1,0 +1,510 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sun Jul 28 09:49:22 2019
+# Process ID: 9124
+# Current directory: C:/Users/espero/git/UFBmod/FPGA/test_board/v_log
+# Command line: vivado.exe -source ../scripts/script_main.tcl -mode batch -notrace -tclargs --run 1 --gui 1 --clean 2 --boardpart LAST_ID
+# Log file: C:/Users/espero/git/UFBmod/FPGA/test_board/v_log/vivado.log
+# Journal file: C:/Users/espero/git/UFBmod/FPGA/test_board/v_log\vivado.jou
+#-----------------------------------------------------------
+source ../scripts/script_main.tcl -notrace
+-----------------------------------------------------------------------
+INFO:(TE) Load Settings Script finished
+INFO:(TE) Load environment script finished
+INFO:(TE) Load Vivado script finished
+INFO:(TE) Load Utilities script finished
+INFO:(TE) Load Vivado script finished
+INFO:(TE) Load Designs script finished
+INFO:(TE) Load User Command scripts finished
+INFO:(TE) Load SDSoC script finished
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+INFO: [TE_INIT-3] Initial project names and paths:
+  TE::VPROJ_NAME:           test_board 
+  TE::VPROJ_PATH:           C:/Users/espero/git/UFBmod/FPGA/test_board/vivado 
+  TE::VLABPROJ_PATH:        C:/Users/espero/git/UFBmod/FPGA/test_board/vivado_lab 
+  TE::BOARDDEF_PATH:        C:/Users/espero/git/UFBmod/FPGA/test_board/board_files 
+  TE::FIRMWARE_PATH:        C:/Users/espero/git/UFBmod/FPGA/test_board/firmware 
+  TE::IP_PATH:              C:/Users/espero/git/UFBmod/FPGA/test_board/ip_lib 
+  TE::BD_PATH:              C:/Users/espero/git/UFBmod/FPGA/test_board/block_design 
+  TE::XDC_PATH:             C:/Users/espero/git/UFBmod/FPGA/test_board/constraints 
+  TE::HDL_PATH:             C:/Users/espero/git/UFBmod/FPGA/test_board/hdl 
+  TE::SET_PATH:             C:/Users/espero/git/UFBmod/FPGA/test_board/settings 
+  TE::WORKSPACE_HSI_PATH:   C:/Users/espero/git/UFBmod/FPGA/test_board/workspace/hsi 
+  TE::WORKSPACE_SDK_PATH:   C:/Users/espero/git/UFBmod/FPGA/test_board/workspace/sdk 
+  TE::LIB_PATH:             C:/Users/espero/git/UFBmod/FPGA/test_board/sw_lib 
+  TE::SCRIPT_PATH:          C:/Users/espero/git/UFBmod/FPGA/test_board/scripts 
+  TE::DOC_PATH:             C:/Users/espero/git/UFBmod/FPGA/test_board/doc 
+  TE::PREBUILT_BI_PATH:     C:/Users/espero/git/UFBmod/FPGA/test_board/prebuilt/boot_images 
+  TE::PREBUILT_HW_PATH:     C:/Users/espero/git/UFBmod/FPGA/test_board/prebuilt/hardware 
+  TE::PREBUILT_SW_PATH:     C:/Users/espero/git/UFBmod/FPGA/test_board/prebuilt/software 
+  TE::PREBUILT_OS_PATH:     C:/Users/espero/git/UFBmod/FPGA/test_board/prebuilt/os 
+  TE::PREBUILT_EXPORT_PATH: C:/Users/espero/git/UFBmod/FPGA/test_board/../export 
+  TE::LOG_PATH:             C:/Users/espero/git/UFBmod/FPGA/test_board/v_log 
+  TE::BACKUP_PATH:          C:/Users/espero/git/UFBmod/FPGA/test_board/backup 
+  TE::ZIP_PATH:             C:/Program Files/7-Zip/7z.exe 
+  TE::SDSOC_PATH:           C:/Users/espero/git/UFBmod/FPGA/test_board/../SDSoC_PFM 
+  TE::TMP_PATH:             C:/Users/espero/git/UFBmod/FPGA/test_board/tmp 
+  TE::XILINXGIT_DEVICETREE: B:/xilinx_git/device-tree-xlnx 
+  TE::XILINXGIT_UBOOT:       
+  TE::XILINXGIT_LINUX:       
+  ------
+-----------------------------------------------------------------------
+INFO:(TE) Parameter Index: 0
+INFO:(TE) Parameter Option: --run
+INFO:(TE) Parameter Option Value: 1
+INFO:(TE) Parameter Index: 2
+INFO:(TE) Parameter Option: --gui
+INFO:(TE) Parameter Option Value: 1
+INFO:(TE) Parameter Index: 4
+INFO:(TE) Parameter Option: --clean
+INFO:(TE) Parameter Option Value: 2
+INFO:(TE) Parameter Index: 6
+INFO:(TE) Parameter Option: --boardpart
+INFO:(TE) Parameter Option Value: LAST_ID
+-----------------------------------------------------------------------
+INFO: [TE_INIT-129] Run TE::INIT::run_project LAST_ID 1 1 2
+INFO: [TE_INIT-182] Source C:/Users/espero/git/UFBmod/FPGA/test_board/settings/design_settings.tcl.
+INFO: [TE_INIT-0] Script Info:
+  Vivado Version:                             Vivado v2018.3 (64-bit)
+  TE Script Version:                          2018.3.05
+  Board Part (Definition Files) CSV Version:  1.4
+  Software IP CSV Version:                    2.2
+  Board Design Modify CSV Version:            1.1
+  ZIP ignore CSV Version:                     1.0
+  ---
+  Start project with:                         vivado_create_project_guimode
+  ------
+INFO: [TE_INIT-1] Script Environment:
+  Vivado Setting:     1 
+  LabTools Setting:   0 
+  SDK Setting:        1 
+  SDSOC Setting:      0 
+  ------
+INFO: [TE_INIT-3] Initial project names and paths:
+  TE::VPROJ_NAME:           test_board 
+  TE::VPROJ_PATH:           C:/Users/espero/git/UFBmod/FPGA/test_board/vivado 
+  TE::VLABPROJ_PATH:        C:/Users/espero/git/UFBmod/FPGA/test_board/vivado_lab 
+  TE::BOARDDEF_PATH:        C:/Users/espero/git/UFBmod/FPGA/test_board/board_files 
+  TE::FIRMWARE_PATH:        C:/Users/espero/git/UFBmod/FPGA/test_board/firmware 
+  TE::IP_PATH:              C:/Users/espero/git/UFBmod/FPGA/test_board/ip_lib 
+  TE::BD_PATH:              C:/Users/espero/git/UFBmod/FPGA/test_board/block_design 
+  TE::XDC_PATH:             C:/Users/espero/git/UFBmod/FPGA/test_board/constraints 
+  TE::HDL_PATH:             C:/Users/espero/git/UFBmod/FPGA/test_board/hdl 
+  TE::SET_PATH:             C:/Users/espero/git/UFBmod/FPGA/test_board/settings 
+  TE::WORKSPACE_HSI_PATH:   C:/Users/espero/git/UFBmod/FPGA/test_board/workspace/hsi 
+  TE::WORKSPACE_SDK_PATH:   C:/Users/espero/git/UFBmod/FPGA/test_board/workspace/sdk 
+  TE::LIB_PATH:             C:/Users/espero/git/UFBmod/FPGA/test_board/sw_lib 
+  TE::SCRIPT_PATH:          C:/Users/espero/git/UFBmod/FPGA/test_board/scripts 
+  TE::DOC_PATH:             C:/Users/espero/git/UFBmod/FPGA/test_board/doc 
+  TE::PREBUILT_BI_PATH:     C:/Users/espero/git/UFBmod/FPGA/test_board/prebuilt/boot_images 
+  TE::PREBUILT_HW_PATH:     C:/Users/espero/git/UFBmod/FPGA/test_board/prebuilt/hardware 
+  TE::PREBUILT_SW_PATH:     C:/Users/espero/git/UFBmod/FPGA/test_board/prebuilt/software 
+  TE::PREBUILT_OS_PATH:     C:/Users/espero/git/UFBmod/FPGA/test_board/prebuilt/os 
+  TE::PREBUILT_EXPORT_PATH: C:/Users/espero/git/UFBmod/FPGA/test_board/../export 
+  TE::LOG_PATH:             C:/Users/espero/git/UFBmod/FPGA/test_board/v_log 
+  TE::BACKUP_PATH:          C:/Users/espero/git/UFBmod/FPGA/test_board/backup 
+  TE::ZIP_PATH:             C:/Program Files/7-Zip/7z.exe 
+  TE::SDSOC_PATH:           C:/Users/espero/git/UFBmod/FPGA/test_board/../SDSoC_PFM 
+  TE::TMP_PATH:             C:/Users/espero/git/UFBmod/FPGA/test_board/tmp 
+  TE::XILINXGIT_DEVICETREE: B:/xilinx_git/device-tree-xlnx 
+  TE::XILINXGIT_UBOOT:       
+  TE::XILINXGIT_LINUX:       
+  ------
+INFO: [TE_INIT-16] Read board part definition list (File C:/Users/espero/git/UFBmod/FPGA/test_board/board_files/TE0712_board_files.csv).
+INFO: [TE_INIT-18] Read Software list (File: C:/Users/espero/git/UFBmod/FPGA/test_board/sw_lib/apps_list.csv).
+INFO: [TE_INIT-22] Read ZIP ignore list (File: C:/Users/espero/git/UFBmod/FPGA/test_board/sw_lib/apps_list.csv).
+Found ID: 17
+Board part csv name check:  17 is unique on position 0.
+INFO: [TE_INIT-4] Board Part definition:
+  TE::ID:             17 
+  TE::PRODID:         TE0712-02-100-2CA 
+  TE::PARTNAME:       xc7a100tfgg484-2 
+  TE::BOARDPART:      trenz.biz:te0712_100_2c:part0:2.0 
+  TE::SHORTDIR:       100_2ca_1gb 
+  TE::ZYNQFLASHTYP:   NA 
+  TE::FPGAFLASHTYP:   mt25ql256-spi-x1_x2_x4 
+  TE::PCB_REV:        REV02 
+  TE::DDR_SIZE:       1GB 
+  TE::FLASH_SIZE:     32MB 
+  TE::EMMC_SIZE:      NA 
+  TE::OTHERS:         NA 
+  TE::NOTES:          Micron QSPI Flash 
+  ------
+Generate new project (Path: C:/Users/espero/git/UFBmod/FPGA/test_board/vivado).
+INFO: [TE_INIT-69] Set Board Definition path: C:/Users/espero/git/UFBmod/FPGA/test_board/board_files
+INFO: [TE_INIT-70] Set IP path : C:/Users/espero/git/UFBmod/FPGA/test_board/ip_lib
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/espero/git/UFBmod/FPGA/test_board/ip_lib'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2018.3/data/ip'.
+Start import design
+INFO: [TE_UTIL-8] Following xdc files were found: 
+   C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/vivado_target.xdc 
+ C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/_i_bitgen.xdc 
+ C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/_i_bitgen_common.xdc 
+ C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/_i_io.xdc 
+ C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/_i_reset.xdc 
+ C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/_i_timing.xdc 
+  ------
+Set processing order normal for C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/vivado_target.xdc
+Set use for synthesis and implementation for C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/vivado_target.xdc
+Set processing order normal for C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/_i_bitgen.xdc
+Set use for implementation only for C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/_i_bitgen.xdc
+Set processing order normal for C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/_i_bitgen_common.xdc
+Set use for implementation only for C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/_i_bitgen_common.xdc
+Set processing order normal for C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/_i_io.xdc
+Set use for implementation only for C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/_i_io.xdc
+Set processing order normal for C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/_i_reset.xdc
+Set use for implementation only for C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/_i_reset.xdc
+Set processing order normal for C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/_i_timing.xdc
+Set use for implementation only for C:/Users/espero/git/UFBmod/FPGA/test_board/constraints/_i_timing.xdc
+INFO: [TE_UTIL-2] Following block designs were found: 
+   C:/Users/espero/git/UFBmod/FPGA/test_board/block_design/msys_bd.tcl 
+  ------
+INFO: [TE_INIT-8] Found BD-Design:
+  TE::BD_TCLNAME:       msys_bd 
+  TE::PR_TOPLEVELNAME: msys_wrapper 
+  ------
+  TE::IS_MSYS:         true
+INFO: [TE_UTIL-2] Following block designs were found: 
+   C:/Users/espero/git/UFBmod/FPGA/test_board/block_design/msys_bd.tcl 
+  ------
+INFO: [TE_BD-0] This block design tcl-file was generate with Trenz Electronic GmbH Board Part:trenz.biz:te0712_35_2i:part0:1.0, FPGA: xc7a35tfgg484-2 at 2019-04-17T08:14:47.
+INFO: [TE_BD-1] This block design tcl-file was modified by TE-Scripts. Modifications are labelled with comment tag  # #TE_MOD# on the Block-Design tcl-file.
+INFO: [BD_TCL-3] Currently there is no design <msys> in project, so creating one...
+Wrote  : <C:\Users\espero\git\UFBmod\FPGA\test_board\vivado\test_board.srcs\sources_1\bd\msys\msys.bd> 
+create_bd_design: Time (s): cpu = 00:00:17 ; elapsed = 00:00:10 . Memory (MB): peak = 828.832 ; gain = 111.828
+INFO: [BD_TCL-4] Making design <msys> as current_bd_design.
+INFO: [BD_TCL-5] Currently the variable <design_name> is equal to "msys".
+INFO: [BD_TCL-6] Checking if the following IPs exist in the project's IP catalog:  
+trenz.biz:user:SC0712:1.0 xilinx.com:ip:axi_ethernetlite:3.0 xilinx.com:ip:axi_iic:2.0 xilinx.com:ip:axi_quad_spi:3.2 xilinx.com:ip:axi_timer:2.0 xilinx.com:ip:axi_uartlite:2.0 trenz.biz:user:labtools_fmeter:1.0 xilinx.com:ip:mdm:3.2 xilinx.com:ip:microblaze:11.0 xilinx.com:ip:axi_intc:4.1 xilinx.com:ip:xlconcat:2.1 xilinx.com:ip:microblaze_mcs:3.0 xilinx.com:ip:mig_7series:4.2 xilinx.com:ip:mii_to_rmii:2.0 trenz.biz:user:mii_y_adapater:1.0 xilinx.com:ip:proc_sys_reset:5.0 xilinx.com:ip:util_ds_buf:2.1 xilinx.com:ip:vio:3.0 xilinx.com:ip:lmb_bram_if_cntlr:4.0 xilinx.com:ip:lmb_v10:3.0 xilinx.com:ip:blk_mem_gen:8.4  .
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-07s:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-07s/B.0/board.xml as part xc7z007sclg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-10/B.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zedboard:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zedboard/1.3/board.xml as part xc7z020clg484-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo/B.3/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-07s:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-07s/B.0/board.xml as part xc7z007sclg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-10/B.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zedboard:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zedboard/1.3/board.xml as part xc7z020clg484-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo/B.3/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-07s:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-07s/B.0/board.xml as part xc7z007sclg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-10/B.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zedboard:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zedboard/1.3/board.xml as part xc7z020clg484-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo/B.3/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-07s:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-07s/B.0/board.xml as part xc7z007sclg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-10/B.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zedboard:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zedboard/1.3/board.xml as part xc7z020clg484-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo/B.3/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-07s:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-07s/B.0/board.xml as part xc7z007sclg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-10/B.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zedboard:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zedboard/1.3/board.xml as part xc7z020clg484-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo/B.3/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-07s:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-07s/B.0/board.xml as part xc7z007sclg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-10/B.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zedboard:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zedboard/1.3/board.xml as part xc7z020clg484-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo/B.3/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-07s:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-07s/B.0/board.xml as part xc7z007sclg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-10/B.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zedboard:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zedboard/1.3/board.xml as part xc7z020clg484-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo/B.3/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-07s:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-07s/B.0/board.xml as part xc7z007sclg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-10/B.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zedboard:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zedboard/1.3/board.xml as part xc7z020clg484-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo/B.3/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+INFO: [Device 21-403] Loading part xc7a100tfgg484-2
+create_bd_cell: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1152.266 ; gain = 238.145
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-07s:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-07s/B.0/board.xml as part xc7z007sclg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-10/B.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zedboard:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zedboard/1.3/board.xml as part xc7z020clg484-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo/B.3/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:arty-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/arty-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-07s:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-07s/B.0/board.xml as part xc7z007sclg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:cora-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/cora-z7-10/B.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:genesys2:part0:1.1 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/genesys2/H/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:sword:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/sword/C.0/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zedboard:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zedboard/1.3/board.xml as part xc7z020clg484-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-10:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-10/A.0/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo-z7-20:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo-z7-20/A.0/board.xml as part xc7z020clg400-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part digilentinc.com:zybo:part0:1.0 available at C:/Xilinx/Vivado/2018.3/data/boards/board_files/zybo/B.3/board.xml as part xc7z010clg400-1 specified in board_part file is either invalid or not available
+INFO: [Common 17-14] Message 'Board 49-26' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+create_bd_cell: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1166.566 ; gain = 3.191
+WARNING: [BD 41-1731] Type mismatch between connected pins: /SC0712_0/reset_out(rst) and /vio_0/probe_in7(undef)
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [xilinx.com:ip:microblaze:11.0-25] /microblaze_I: Use Interrupt manual value (2) does not match computed value (0). Please review the manual value or consider using Auto instead.
+INFO: [xilinx.com:ip:axi_quad_spi:3.2-1] /axi_quad_spi_0 
+                   #######################################################################################
+                   INFO: AXI Quad SPI core's AXI Lite Clock and EXT SPI CLK are synchronous to each other.
+                   ########################################################################################
+INFO: [xilinx.com:ip:axi_quad_spi:3.2-1] /axi_quad_spi_0 
+                   #######################################################################################
+                   INFO: AXI Quad SPI core's AXI Lite Clock and EXT SPI CLK are synchronous to each other.
+                   ########################################################################################
+INFO: [xilinx.com:ip:microblaze:11.0-16] /microblaze_0: Setting D-cache cacheable area base address C_DCACHE_BASEADDR to 0x80000000 and high address C_DCACHE_HIGHADDR to 0xBFFFFFFF.
+INFO: [xilinx.com:ip:microblaze:11.0-16] /microblaze_0: Setting I-cache cacheable area base address C_ICACHE_BASEADDR to 0x80000000 and high address C_ICACHE_HIGHADDR to 0xBFFFFFFF.
+INFO: [xilinx.com:ip:axi_intc:4.1-1] /microblaze_0_axi_intc: The AXI INTC core has been configured to operate with synchronous clocks.
+INFO: [xilinx.com:ip:axi_intc:4.1-1] /microblaze_0_axi_intc: The AXI INTC core has been configured to operate with synchronous clocks.
+WARNING: [BD 41-927] Following properties on pin /SC0712_0/mcs_clk_out have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=msys_SC0712_0_0_mcs_clk_out 
+WARNING: [BD 41-927] Following properties on pin /labtools_fmeter_0/refclk have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=msys_mig_7series_0_0_ui_clk 
+validate_bd_design: Time (s): cpu = 00:00:10 ; elapsed = 00:00:14 . Memory (MB): peak = 1333.707 ; gain = 1.719
+Wrote  : <C:\Users\espero\git\UFBmod\FPGA\test_board\vivado\test_board.srcs\sources_1\bd\msys\msys.bd> 
+Wrote  : <C:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/ui/bd_2a9cc240.ui> 
+Adding cell -- trenz.biz:user:SC0712:1.0 - SC0712_0
+Adding cell -- xilinx.com:ip:axi_ethernetlite:3.0 - axi_ethernetlite_0
+Adding cell -- xilinx.com:ip:axi_iic:2.0 - axi_iic_0
+Adding cell -- xilinx.com:ip:axi_interconnect:2.1 - axi_interconnect_0
+Adding cell -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding cell -- xilinx.com:ip:axi_quad_spi:3.2 - axi_quad_spi_0
+Adding cell -- xilinx.com:ip:axi_timer:2.0 - axi_timer_0
+Adding cell -- xilinx.com:ip:axi_uartlite:2.0 - axi_uartlite_0
+Adding cell -- trenz.biz:user:labtools_fmeter:1.0 - labtools_fmeter_0
+Adding cell -- xilinx.com:ip:mdm:3.2 - mdm_1
+Adding cell -- xilinx.com:ip:microblaze:11.0 - microblaze_0
+Adding cell -- xilinx.com:ip:axi_intc:4.1 - microblaze_0_axi_intc
+Adding cell -- xilinx.com:ip:axi_interconnect:2.1 - microblaze_0_axi_periph
+Adding cell -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:ip:axi_data_fifo:2.1 - m03_data_fifo
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:ip:lmb_bram_if_cntlr:4.0 - dlmb_bram_if_cntlr
+Adding cell -- xilinx.com:ip:lmb_v10:3.0 - dlmb_v10
+Adding cell -- xilinx.com:ip:lmb_bram_if_cntlr:4.0 - ilmb_bram_if_cntlr
+Adding cell -- xilinx.com:ip:lmb_v10:3.0 - ilmb_v10
+Adding cell -- xilinx.com:ip:blk_mem_gen:8.4 - lmb_bram
+Adding cell -- xilinx.com:ip:xlconcat:2.1 - microblaze_0_xlconcat
+Adding cell -- xilinx.com:ip:microblaze_mcs:3.0 - microblaze_mcs_0
+Adding cell -- xilinx.com:ip:mig_7series:4.2 - mig_7series_0
+Adding cell -- xilinx.com:ip:mii_to_rmii:2.0 - mii_to_rmii_0
+Adding cell -- trenz.biz:user:mii_y_adapater:1.0 - mii_y_adapater_0
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_0
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_1
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_50M
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - rst_mig_7series_0_100M
+Adding cell -- xilinx.com:ip:util_ds_buf:2.1 - util_ds_buf_0
+Adding cell -- xilinx.com:ip:util_ds_buf:2.1 - util_ds_buf_1
+Adding cell -- xilinx.com:ip:util_ds_buf:2.1 - util_ds_buf_2
+Adding cell -- xilinx.com:ip:vio:3.0 - vio_0
+Adding cell -- xilinx.com:ip:xlconcat:2.1 - xlconcat_0
+WARNING: [BD 41-1731] Type mismatch between connected pins: /SC0712_0/reset_out(rst) and /vio_0/probe_in7(undef)
+Successfully read diagram <msys> from BD file <C:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/msys.bd>
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [BD 41-1284] Cannot set parameter SUGGESTED_PRIORITY on port /microblaze_0_axi_intc/intr
+WARNING: [xilinx.com:ip:microblaze:11.0-25] /microblaze_I: Use Interrupt manual value (2) does not match computed value (0). Please review the manual value or consider using Auto instead.
+INFO: [xilinx.com:ip:axi_quad_spi:3.2-1] /axi_quad_spi_0 
+                   #######################################################################################
+                   INFO: AXI Quad SPI core's AXI Lite Clock and EXT SPI CLK are synchronous to each other.
+                   ########################################################################################
+INFO: [xilinx.com:ip:axi_quad_spi:3.2-1] /axi_quad_spi_0 
+                   #######################################################################################
+                   INFO: AXI Quad SPI core's AXI Lite Clock and EXT SPI CLK are synchronous to each other.
+                   ########################################################################################
+INFO: [xilinx.com:ip:microblaze:11.0-16] /microblaze_0: Setting D-cache cacheable area base address C_DCACHE_BASEADDR to 0x80000000 and high address C_DCACHE_HIGHADDR to 0xBFFFFFFF.
+INFO: [xilinx.com:ip:microblaze:11.0-16] /microblaze_0: Setting I-cache cacheable area base address C_ICACHE_BASEADDR to 0x80000000 and high address C_ICACHE_HIGHADDR to 0xBFFFFFFF.
+INFO: [xilinx.com:ip:axi_intc:4.1-1] /microblaze_0_axi_intc: The AXI INTC core has been configured to operate with synchronous clocks.
+INFO: [xilinx.com:ip:axi_intc:4.1-1] /microblaze_0_axi_intc: The AXI INTC core has been configured to operate with synchronous clocks.
+WARNING: [BD 41-927] Following properties on pin /SC0712_0/mcs_clk_out have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=msys_SC0712_0_0_mcs_clk_out 
+WARNING: [BD 41-927] Following properties on pin /labtools_fmeter_0/refclk have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=msys_mig_7series_0_0_ui_clk 
+validate_bd_design: Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1380.023 ; gain = 0.668
+INFO: [BD 41-1662] The design 'msys.bd' is already validated. Therefore parameter propagation will not be re-run.
+Wrote  : <C:\Users\espero\git\UFBmod\FPGA\test_board\vivado\test_board.srcs\sources_1\bd\msys\msys.bd> 
+Wrote  : <C:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/ui/bd_2a9cc240.ui> 
+VHDL Output written to : C:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/synth/msys.vhd
+VHDL Output written to : C:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/sim/msys.vhd
+VHDL Output written to : C:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/hdl/msys_wrapper.vhd
+INFO: [BD 41-1029] Generation completed for the IP Integrator block SC0712_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_ethernetlite_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_iic_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_quad_spi_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_timer_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_uartlite_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block labtools_fmeter_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block mdm_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0_axi_intc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0_axi_periph/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0_local_memory/dlmb_bram_if_cntlr .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0_local_memory/dlmb_v10 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0_local_memory/ilmb_bram_if_cntlr .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0_local_memory/ilmb_v10 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0_local_memory/lmb_bram .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0_xlconcat .
+Exporting to file c:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/ip/msys_microblaze_mcs_0_0/bd_0/hw_handoff/msys_microblaze_mcs_0_0.hwh
+Generated Block Design Tcl file c:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/ip/msys_microblaze_mcs_0_0/bd_0/hw_handoff/msys_microblaze_mcs_0_0_bd.tcl
+Generated Hardware Definition File c:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/ip/msys_microblaze_mcs_0_0/bd_0/synth/msys_microblaze_mcs_0_0.hwdef
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_mcs_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block mig_7series_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block mii_to_rmii_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block mii_y_adapater_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_50M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block rst_mig_7series_0_100M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block util_ds_buf_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block util_ds_buf_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block util_ds_buf_2 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vio_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block xlconcat_0 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/ip/msys_auto_cc_0/msys_auto_cc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0_axi_periph/m00_couplers/auto_cc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/ip/msys_auto_cc_1/msys_auto_cc_1_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0_axi_periph/m01_couplers/auto_cc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/ip/msys_auto_cc_2/msys_auto_cc_2_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0_axi_periph/m02_couplers/auto_cc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/ip/msys_m03_data_fifo_0/msys_m03_data_fifo_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0_axi_periph/m03_couplers/m03_data_fifo .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/ip/msys_auto_cc_3/msys_auto_cc_3_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0_axi_periph/m03_couplers/auto_cc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/ip/msys_auto_cc_4/msys_auto_cc_4_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0_axi_periph/m04_couplers/auto_cc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'c:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/ip/msys_auto_cc_5/msys_auto_cc_5_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block microblaze_0_axi_periph/m05_couplers/auto_cc .
+Exporting to file C:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/hw_handoff/msys.hwh
+Generated Block Design Tcl file C:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/hw_handoff/msys_bd.tcl
+Generated Hardware Definition File C:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/synth/msys.hwdef
+generate_target: Time (s): cpu = 00:00:57 ; elapsed = 00:01:13 . Memory (MB): peak = 1717.719 ; gain = 337.695
+INFO: [TE_HW-34] Generate top level wrapper
+INFO: [TE_UTIL-10] Following elf files were found: 
+   C:/Users/espero/git/UFBmod/FPGA/test_board/firmware/microblaze_0/srec_spi_bootloader.elf 
+ C:/Users/espero/git/UFBmod/FPGA/test_board/firmware/microblaze_mcs_0/scu.elf 
+  ------
+INFO: [TE_INIT-139] Run project finished without Error. 
+  ------
+-----------------------------------------------------------------------
+update_compile_order -fileset sources_1
+report_ip_status -name ip_status 
+open_bd_design {C:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/msys.bd}
+Adding cell -- trenz.biz:user:SC0712:1.0 - SC0712_0
+Adding cell -- xilinx.com:ip:axi_ethernetlite:3.0 - axi_ethernetlite_0
+Adding cell -- xilinx.com:ip:axi_iic:2.0 - axi_iic_0
+Adding cell -- xilinx.com:ip:axi_interconnect:2.1 - axi_interconnect_0
+Adding cell -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding cell -- xilinx.com:ip:axi_quad_spi:3.2 - axi_quad_spi_0
+Adding cell -- xilinx.com:ip:axi_timer:2.0 - axi_timer_0
+Adding cell -- xilinx.com:ip:axi_uartlite:2.0 - axi_uartlite_0
+Adding cell -- trenz.biz:user:labtools_fmeter:1.0 - labtools_fmeter_0
+Adding cell -- xilinx.com:ip:mdm:3.2 - mdm_1
+Adding cell -- xilinx.com:ip:microblaze:11.0 - microblaze_0
+Adding cell -- xilinx.com:ip:axi_intc:4.1 - microblaze_0_axi_intc
+Adding cell -- xilinx.com:ip:axi_interconnect:2.1 - microblaze_0_axi_periph
+Adding cell -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:ip:axi_data_fifo:2.1 - m03_data_fifo
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:ip:lmb_bram_if_cntlr:4.0 - dlmb_bram_if_cntlr
+Adding cell -- xilinx.com:ip:lmb_v10:3.0 - dlmb_v10
+Adding cell -- xilinx.com:ip:lmb_bram_if_cntlr:4.0 - ilmb_bram_if_cntlr
+Adding cell -- xilinx.com:ip:lmb_v10:3.0 - ilmb_v10
+Adding cell -- xilinx.com:ip:blk_mem_gen:8.4 - lmb_bram
+Adding cell -- xilinx.com:ip:xlconcat:2.1 - microblaze_0_xlconcat
+Adding cell -- xilinx.com:ip:microblaze_mcs:3.0 - microblaze_mcs_0
+Adding cell -- xilinx.com:ip:mig_7series:4.2 - mig_7series_0
+Adding cell -- xilinx.com:ip:mii_to_rmii:2.0 - mii_to_rmii_0
+Adding cell -- trenz.biz:user:mii_y_adapater:1.0 - mii_y_adapater_0
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_0
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_1
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_50M
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - rst_mig_7series_0_100M
+Adding cell -- xilinx.com:ip:util_ds_buf:2.1 - util_ds_buf_0
+Adding cell -- xilinx.com:ip:util_ds_buf:2.1 - util_ds_buf_1
+Adding cell -- xilinx.com:ip:util_ds_buf:2.1 - util_ds_buf_2
+Adding cell -- xilinx.com:ip:vio:3.0 - vio_0
+Adding cell -- xilinx.com:ip:xlconcat:2.1 - xlconcat_0
+WARNING: [BD 41-1731] Type mismatch between connected pins: /SC0712_0/reset_out(rst) and /vio_0/probe_in7(undef)
+Successfully read diagram <msys> from BD file <C:/Users/espero/git/UFBmod/FPGA/test_board/vivado/test_board.srcs/sources_1/bd/msys/msys.bd>
+write_bd_layout -format pdf -orientation landscape C:/Users/espero/git/UFBmod/FPGA/msys.pdf
+C:/Users/espero/git/UFBmod/FPGA/msys.pdf
