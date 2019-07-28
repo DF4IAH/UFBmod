@@ -9,6 +9,7 @@
 
 set_property CONFIG VCCOSENSEMODE13 ALWAYSACTIVE;
 
+
 set_property -dict {PACKAGE_PIN Y17 IOSTANDARD LVCMOS25} [get_ports {io_0_13}]
 #IO_0_13 sch:-
 
@@ -315,6 +316,7 @@ set_property -dict {PACKAGE_PIN R17 IOSTANDARD LVCMOS33} [get_ports {b14_l24_n}]
 
 set_property CONFIG VCCOSENSEMODE15 ALWAYSACTIVE;
 
+
 set_property -dict {PACKAGE_PIN J16 IOSTANDARD LVCMOS33} [get_ports {b15_io0}]
 #IO_0_15 sch:B15_IO0
 
@@ -492,6 +494,9 @@ set_property -dict {PACKAGE_PIN M16 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_ft
 
 
 ## Bank 16 / VCCIO16 (3.3 V)
+
+set_property CONFIG VCCOSENSEMODE16 ALWAYSACTIVE;
+
 
 set_property -dict {PACKAGE_PIN F15 IOSTANDARD LVCMOS33} [get_ports {b16_io0}]
 #IO_0_16 sch:-
