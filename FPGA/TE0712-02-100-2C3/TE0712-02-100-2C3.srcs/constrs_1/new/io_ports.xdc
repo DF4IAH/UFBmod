@@ -7,9 +7,6 @@
 
 ## Bank 13 / VCCIO13 (2.5 V)
 
-set_property CONFIG VCCOSENSEMODE13 ALWAYSACTIVE;
-
-
 set_property -dict {PACKAGE_PIN Y17 IOSTANDARD LVCMOS25} [get_ports {io_0_13}]
 #IO_0_13 sch:-
 
@@ -314,9 +311,6 @@ set_property -dict {PACKAGE_PIN R17 IOSTANDARD LVCMOS33} [get_ports {b14_l24_n}]
 
 ## Bank 15 / VCCIO15 (3.3 V)
 
-set_property CONFIG VCCOSENSEMODE15 ALWAYSACTIVE;
-
-
 set_property -dict {PACKAGE_PIN J16 IOSTANDARD LVCMOS33} [get_ports {b15_io0}]
 #IO_0_15 sch:B15_IO0
 
@@ -494,9 +488,6 @@ set_property -dict {PACKAGE_PIN M16 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_ft
 
 
 ## Bank 16 / VCCIO16 (3.3 V)
-
-set_property CONFIG VCCOSENSEMODE16 ALWAYSACTIVE;
-
 
 set_property -dict {PACKAGE_PIN F15 IOSTANDARD LVCMOS33} [get_ports {b16_io0}]
 #IO_0_16 sch:-
@@ -995,10 +986,10 @@ set_property -dict {PACKAGE_PIN N3 IOSTANDARD SSTL15} [get_ports {ddr3_a3}]
 
 
 set_property -dict {PACKAGE_PIN R1 IOSTANDARD DIFF_SSTL15} [get_ports {ddr3_clk0_p}]
-#IO_L20P_T3_35 sch:DDR3-CLK0_P --> xxx.x MHz - To be defined by the MIG tool and speed grade of FPGA
+#IO_L20P_T3_35 sch:DDR3-CLK0_P --> 400.0 MHz - To be defined by the MIG tool and speed grade of FPGA
 
 set_property -dict {PACKAGE_PIN P1 IOSTANDARD DIFF_SSTL15} [get_ports {ddr3_clk0_n}]
-#IO_L20N_T3_35 sch:DDR3-CLK0_N --> xxx.x MHz - To be defined by the MIG tool and speed grade of FPGA
+#IO_L20N_T3_35 sch:DDR3-CLK0_N --> 400.0 MHz - To be defined by the MIG tool and speed grade of FPGA
 
 
 set_property -dict {PACKAGE_PIN P5 IOSTANDARD SSTL15} [get_ports {ddr3_a11}]
@@ -1032,73 +1023,73 @@ set_property -dict {PACKAGE_PIN N5 IOSTANDARD SSTL15} [get_ports {ddr3_a2}]
 
 ## Bank MGT / 1.0 V & 1.2 V
 
-set_property -dict {PACKAGE_PIN F6 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_clk0_p}]
+set_property -dict {PACKAGE_PIN F6} [get_ports {mgt_clk0_p}]
 #MGTREFCLK0P_216 sch:MGT_CLK0_P --> 120.0 MHz
 
-set_property -dict {PACKAGE_PIN E6 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_clk0_n}]
+set_property -dict {PACKAGE_PIN E6} [get_ports {mgt_clk0_n}]
 #MGTREFCLK0N_216 sch:MGT_CLK0_N --> 120.0 MHz
 
 
-set_property -dict {PACKAGE_PIN F10 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_clk1_p}]
+set_property -dict {PACKAGE_PIN F10} [get_ports {mgt_clk1_p}]
 #MGTREFCLK1P_216 sch:MGT_CLK1_P
 
-set_property -dict {PACKAGE_PIN E10 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_clk1_n}]
+set_property -dict {PACKAGE_PIN E10} [get_ports {mgt_clk1_n}]
 #MGTREFCLK1N_216 sch:MGT_CLK1_N
 
 
-set_property -dict {PACKAGE_PIN B8 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx0_p}]
+set_property -dict {PACKAGE_PIN B8} [get_ports {mgt_rx0_p}]
 #MGTPRXP0_216 sch:MGT_RX0_P
 
-set_property -dict {PACKAGE_PIN A8 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx0_n}]
+set_property -dict {PACKAGE_PIN A8} [get_ports {mgt_rx0_n}]
 #MGTPRXN0_216 sch:MGT_RX0_N
 
 
-set_property -dict {PACKAGE_PIN D11 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx1_p}]
+set_property -dict {PACKAGE_PIN D11} [get_ports {mgt_rx1_p}]
 #MGTPRXP1_216 sch:MGT_RX1_P
 
-set_property -dict {PACKAGE_PIN C11 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx1_n}]
+set_property -dict {PACKAGE_PIN C11} [get_ports {mgt_rx1_n}]
 #MGTPRXN1_216 sch:MGT_RX1_N
 
 
-set_property -dict {PACKAGE_PIN B10 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx2_p}]
+set_property -dict {PACKAGE_PIN B10} [get_ports {mgt_rx2_p}]
 #MGTPRXP2_216 sch:MGT_RX2_P
 
-set_property -dict {PACKAGE_PIN A10 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx2_n}]
+set_property -dict {PACKAGE_PIN A10} [get_ports {mgt_rx2_n}]
 #MGTPRXN2_216 sch:MGT_RX2_N
 
 
-set_property -dict {PACKAGE_PIN D9 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx3_p}]
+set_property -dict {PACKAGE_PIN D9} [get_ports {mgt_rx3_p}]
 #MGTPRXP3_216 sch:MGT_RX3_P
 
-set_property -dict {PACKAGE_PIN C9 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_rx3_n}]
+set_property -dict {PACKAGE_PIN C9} [get_ports {mgt_rx3_n}]
 #MGTPRXN3_216 sch:MGT_RX3_N
 
 
-set_property -dict {PACKAGE_PIN B4 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx0_p}]
+set_property -dict {PACKAGE_PIN B4} [get_ports {mgt_tx0_p}]
 #MGTPTXP0_216 sch:MGT_TX0_P
 
-set_property -dict {PACKAGE_PIN A4 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx0_n}]
+set_property -dict {PACKAGE_PIN A4} [get_ports {mgt_tx0_n}]
 #MGTPTXN0_216 sch:MGT_TX0_N
 
 
-set_property -dict {PACKAGE_PIN D5 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx1_p}]
+set_property -dict {PACKAGE_PIN D5} [get_ports {mgt_tx1_p}]
 #MGTPTXP1_216 sch:MGT_TX1_P
 
-set_property -dict {PACKAGE_PIN C5 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx1_n}]
+set_property -dict {PACKAGE_PIN C5} [get_ports {mgt_tx1_n}]
 #MGTPTXN1_216 sch:MGT_TX1_N
 
 
-set_property -dict {PACKAGE_PIN B6 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx2_p}]
+set_property -dict {PACKAGE_PIN B6} [get_ports {mgt_tx2_p}]
 #MGTPTXP2_216 sch:MGT_TX2_P
 
-set_property -dict {PACKAGE_PIN A6 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx2_n}]
+set_property -dict {PACKAGE_PIN A6} [get_ports {mgt_tx2_n}]
 #MGTPTXN2_216 sch:MGT_TX2_N
 
 
-set_property -dict {PACKAGE_PIN D7 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx3_p}]
+set_property -dict {PACKAGE_PIN D7} [get_ports {mgt_tx3_p}]
 #MGTPTXP3_216 sch:MGT_TX3_P
 
-set_property -dict {PACKAGE_PIN C7 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx3_n}]
+set_property -dict {PACKAGE_PIN C7} [get_ports {mgt_tx3_n}]
 #MGTPTXN3_216 sch:MGT_TX3_N
 
 

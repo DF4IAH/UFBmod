@@ -308,8 +308,8 @@ module top(
 
         .DDR3_SDRAM_reset_n(ddr3_reset),
         .DDR3_SDRAM_cke(ddr3_cke),
-        .DDR3_SDRAM_ck_n(ddr3_clk0_p),
-        .DDR3_SDRAM_ck_p(ddr3_clk0_n),
+        .DDR3_SDRAM_ck_p(ddr3_clk0_p),
+        .DDR3_SDRAM_ck_n(ddr3_clk0_n),
 
         .DDR3_SDRAM_cs_n(ddr3_s),
         .DDR3_SDRAM_we_n(ddr3_we),

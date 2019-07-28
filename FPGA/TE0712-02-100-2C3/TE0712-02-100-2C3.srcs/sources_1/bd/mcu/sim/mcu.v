@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Sun Jul 28 21:48:36 2019
+//Date        : Sun Jul 28 23:24:38 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -879,11 +879,11 @@ module mcu
   wire mig_7series_0_mmcm_locked;
   wire mig_7series_0_ui_addn_clk_0;
   wire mig_7series_0_ui_clk_sync_rst;
+  wire pll_clk_n_1;
+  wire pll_clk_p_1;
   wire [0:0]rst_clk_wiz_1_100M_bus_struct_reset;
   wire rst_clk_wiz_1_100M_mb_reset;
   wire [0:0]rst_clk_wiz_1_100M_peripheral_aresetn;
-  wire sys_clk_n_1;
-  wire sys_clk_p_1;
   wire sys_rst_0_1;
 
   assign DDR3_SDRAM_addr[14:0] = mig_7series_0_DDR3_ADDR;
@@ -899,8 +899,8 @@ module mcu
   assign DDR3_SDRAM_reset_n = mig_7series_0_DDR3_RESET_N;
   assign DDR3_SDRAM_we_n = mig_7series_0_DDR3_WE_N;
   assign init_calib_complete = mig_7series_0_init_calib_complete;
-  assign sys_clk_n_1 = pll_clk_n;
-  assign sys_clk_p_1 = pll_clk_p;
+  assign pll_clk_n_1 = pll_clk_n;
+  assign pll_clk_p_1 = pll_clk_p;
   assign sys_rst_0_1 = reset;
   mcu_mdm_1_0 mdm_1
        (.Dbg_Capture_0(microblaze_0_debug_CAPTURE),
@@ -1432,8 +1432,8 @@ module mcu
         .s_axi_wready(microblaze_0_axi_periph_M01_AXI_WREADY),
         .s_axi_wstrb(microblaze_0_axi_periph_M01_AXI_WSTRB),
         .s_axi_wvalid(microblaze_0_axi_periph_M01_AXI_WVALID),
-        .sys_clk_n(sys_clk_n_1),
-        .sys_clk_p(sys_clk_p_1),
+        .sys_clk_n(pll_clk_n_1),
+        .sys_clk_p(pll_clk_p_1),
         .sys_rst(sys_rst_0_1),
         .ui_addn_clk_0(mig_7series_0_ui_addn_clk_0),
         .ui_clk(microblaze_0_Clk),
