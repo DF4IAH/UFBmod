@@ -207,8 +207,8 @@ module top(
     output ddr3_clk0_n;         // 1.5 V    DDR3        xxx.x MHz
     
     output [0:0]ddr3_s;
-    output [3:0]ddr3_dqs_p;
-    output [3:0]ddr3_dqs_n;
+    inout  [3:0]ddr3_dqs_p;
+    inout  [3:0]ddr3_dqs_n;
     output [3:0]ddr3_dm;
 
     inout  [31:0]ddr3_d;

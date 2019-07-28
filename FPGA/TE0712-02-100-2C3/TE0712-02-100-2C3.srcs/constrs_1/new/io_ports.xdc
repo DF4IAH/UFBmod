@@ -845,6 +845,8 @@ set_property -dict {PACKAGE_PIN Y9 IOSTANDARD SSTL15} [get_ports {ddr3_d15}]
 
 ## Bank 35 / 1.5 V
 
+set_property INTERNAL_VREF 0.75 [get_iobanks 35]
+
 set_property -dict {PACKAGE_PIN F4 IOSTANDARD SSTL15} [get_ports {bv0}]
 #IO_0_35 sch:BV0
 
