@@ -22,208 +22,279 @@
 
 module top(
     // Clocks
+    pll_clk_p,           // 1.5 V    PLL          50.0 MHz
+    pll_clk_n,           // 1.5 V    PLL          50.0 MHz
 
-    input  pll_clk_p,           // 1.5 V    PLL          50.0 MHz
-    input  pll_clk_n,           // 1.5 V    PLL          50.0 MHz
+    mgt_clk0_p,          // 1.8 V    GTP         120.0 MHz
+    mgt_clk0_n,          // 1.8 V    GTP         120.0 MHz
 
-    input  mgt_clk0_p,          // 1.8 V    GTP         120.0 MHz
-    input  mgt_clk0_n,          // 1.8 V    GTP         120.0 MHz
-
-    output ddr3_clk0_p,         // 1.5 V    DDR3        xxx.x MHz
-    output ddr3_clk0_n,         // 1.5 V    DDR3        xxx.x MHz
-    
-    input  ufb_fpga_trx_clk0,   // 3.3 V    TRX          32.0 MHz
-
+    ufb_fpga_trx_clk0,   // 3.3 V    TRX          32.0 MHz
 
     // Out of order clocks
-
-    input  clk0_p,              // 1.5 V    PLL         xxx.x MHz   REV02: none
-    input  clk0_n,              // 1.5 V    PLL         xxx.x MHz   REV02: none
-    
-    input  clk50m2,             // 1.5 V    PLL-DDR3    xxx.x MHz   REV02: none
+    //clk0_p,            // 1.5 V    PLL         xxx.x MHz   REV02: none
+    //clk0_n,            // 1.5 V    PLL         xxx.x MHz   REV02: none
+    //clk50m2,           // 1.5 V    PLL-DDR3    xxx.x MHz   REV02: none
     
     
     // FPGA Config
-    inout  fpga_io,
+    fpga_io,
     
     
     // ULI System (Trenz-Electronic CPLD)
-    inout  uli_system,
+    uli_system,
 
 
     // SPI-QUAD
-    output spi_sck,
-    inout  spi_dq0,
-    inout  spi_dq1,
-    inout  spi_dq2,
-    inout  spi_dq3,
+    spi_sck,
+    spi_dq,
 
     
     // Onewire
-    inout  onewire,
+    onewire,
 
     
     // PLL - I2C & Int (VTTREF)
-    inout  pll_scl,
-    inout  pll_sda,
+    pll_scl,
+    pll_sda,
 
-    input  pll_int,
+    pll_int,
     
     
     // DDR3 Lanes 0-3
-    output ddr3_dqs0_p,
-    output ddr3_dqs0_n,
-    output ddr3_dm0,
-
-    output ddr3_dqs1_p,
-    output ddr3_dqs1_n,
-    output ddr3_dm1,
-
-    output ddr3_dqs2_p,
-    output ddr3_dqs2_n,
-    output ddr3_dm2,
-
-    output ddr3_dqs3_p,
-    output ddr3_dqs3_n,
-    output ddr3_dm3,
-
-    inout  ddr3_d0,
-    inout  ddr3_d1,
-    inout  ddr3_d2,
-    inout  ddr3_d3,
-    inout  ddr3_d4,
-    inout  ddr3_d5,
-    inout  ddr3_d6,
-    inout  ddr3_d7,
-    inout  ddr3_d8,
-    inout  ddr3_d9,
-    inout  ddr3_d10,
-    inout  ddr3_d11,
-    inout  ddr3_d12,
-    inout  ddr3_d13,
-    inout  ddr3_d14,
-    inout  ddr3_d15,
-    inout  ddr3_d16,
-    inout  ddr3_d17,
-    inout  ddr3_d18,
-    inout  ddr3_d19,
-    inout  ddr3_d20,
-    inout  ddr3_d21,
-    inout  ddr3_d22,
-    inout  ddr3_d23,
-    inout  ddr3_d24,
-    inout  ddr3_d25,
-    inout  ddr3_d26,
-    inout  ddr3_d27,
-    inout  ddr3_d28,
-    inout  ddr3_d29,
-    inout  ddr3_d30,
-    inout  ddr3_d31,
+    ddr3_clk0_p,         // 1.5 V    DDR3        xxx.x MHz
+    ddr3_clk0_n,         // 1.5 V    DDR3        xxx.x MHz
     
-    output ddr3_a0,
-    output ddr3_a1,
-    output ddr3_a2,
-    output ddr3_a3,
-    output ddr3_a4,
-    output ddr3_a5,
-    output ddr3_a6,
-    output ddr3_a7,
-    output ddr3_a8,
-    output ddr3_a9,
-    output ddr3_a10,
-    output ddr3_a11,
-    output ddr3_a12,
-    output ddr3_a13,
-    output ddr3_a14,
+    ddr3_dqs_p,
+    ddr3_dqs_n,
+    ddr3_dm,
+    ddr3_d,
     
-    output ddr3_ba0,
-    output ddr3_ba1,
-    output ddr3_ba2,
+    ddr3_a,
+    ddr3_ba,
     
-    output ddr3_we,
+    ddr3_we,
+    ddr3_odt,
 
-    output ddr3_odt0,
+    ddr3_ras,
+    ddr3_cas,
 
-    output ddr3_ras,
-    output ddr3_cas,
-
-    output ddr3_cke0,
+    ddr3_cke,
     
-    output ddr3_loop1_p,
-    output ddr3_loop1_n,
-    input  ddr3_loop2_p,
-    input  ddr3_loop2_n,
+    //ddr3_loop1_p,
+    //ddr3_loop1_n,
+    //ddr3_loop2_p,
+    //ddr3_loop2_n,
 
-    output ddr3_reset,
+    ddr3_reset,
         
     
     // Ethernet
-    output eth_rst,
+    eth_rst,
 
-    output mdc,
-    inout  mdio,
+    mdc,
+    mdio,
     
-    output eth_tx_d0,
-    output eth_tx_d1,
+    eth_tx_d,
 
-    input  eth_rx_d0,
-    input  eth_rx_d1,
-    input  eth_rx_dv,
+    eth_rx_d,
+    eth_rx_dv,
 
-    input  link_led,
+    link_led,
+    
+    
+    // UFBmod special signals
+    
+    // TRX LVDS lanes
+    ufb_trx_rxclk_p,
+    ufb_trx_rxclk_n,
+    
+    ufb_trx_rxd09_p,
+    ufb_trx_rxd09_n,
+    
+    ufb_trx_rxd24_p,
+    ufb_trx_rxd24_n,
+    
+    ufb_trx_txclk_p,
+    ufb_trx_txclk_n,
+    
+    ufb_trx_txd_p,
+    ufb_trx_txd_n,
+    
+    
+    // TRX SPI
+    ufb_trx_rstn,
+
+    ufb_trx_seln,
+    ufb_trx_sclk,
+    ufb_trx_mosi,
+    ufb_trx_miso,
+
+    ufb_trx_irq,
+    
+    
+    // RFX
+    ufb_fpga_rfx_mode,
+    
+    
+    // FTDI serial <--> USB
+    ufb_fpga_ft_reset,
+    ufb_fpga_ft_12mhz,
+    
+    ufb_fpga_ft_rxd,
+    ufb_fpga_ft_txd,
+    
+    ufb_fpga_ft_cts,
+    ufb_fpga_ft_rts,
+
+    ufb_fpga_ft_dsr,
+    ufb_fpga_ft_dtr,
+    
+    ufb_fpga_ft_dcd,
+    ufb_fpga_ft_ri
+    
+    );
+    
+    // Clocks
+    input  pll_clk_p;           // 1.5 V    PLL          50.0 MHz
+    input  pll_clk_n;           // 1.5 V    PLL          50.0 MHz
+
+    input  mgt_clk0_p;          // 1.8 V    GTP         120.0 MHz
+    input  mgt_clk0_n;          // 1.8 V    GTP         120.0 MHz
+
+    input  ufb_fpga_trx_clk0;   // 3.3 V    TRX          32.0 MHz
+
+
+    // Out of order clocks
+    //input  clk0_p;              // 1.5 V    PLL         xxx.x MHz   REV02: none
+    //input  clk0_n;              // 1.5 V    PLL         xxx.x MHz   REV02: none
+    
+    //input  clk50m2;             // 1.5 V    PLL-DDR3    xxx.x MHz   REV02: none
+    
+    
+    // FPGA Config
+    inout  fpga_io;
+    
+    
+    // ULI System (Trenz-Electronic CPLD)
+    inout  uli_system;
+
+
+    // SPI-QUAD
+    output spi_sck;
+    inout  [3:0]spi_dq;
+
+    
+    // Onewire
+    inout  onewire;
+
+    
+    // PLL - I2C & Int (VTTREF)
+    inout  pll_scl;
+    inout  pll_sda;
+
+    input  pll_int;
+    
+    
+    // DDR3 Lanes 0-3
+    output ddr3_clk0_p;         // 1.5 V    DDR3        xxx.x MHz
+    output ddr3_clk0_n;         // 1.5 V    DDR3        xxx.x MHz
+    
+    output [3:0]ddr3_dqs_p;
+    output [3:0]ddr3_dqs_n;
+    output [3:0]ddr3_dm;
+
+    inout  [31:0]ddr3_d;
+    
+    output [14:0]ddr3_a;
+    
+    output [2:0]ddr3_ba;
+    
+    output ddr3_we;
+
+    output [0:0]ddr3_odt;
+
+    output ddr3_ras;
+    output ddr3_cas;
+
+    output [0:0]ddr3_cke;
+    
+    //output ddr3_loop1_p;
+    //output ddr3_loop1_n;
+    //input  ddr3_loop2_p;
+    //input  ddr3_loop2_n;
+
+    output ddr3_reset;
+        
+    
+    // Ethernet
+    output eth_rst;
+
+    output mdc;
+    inout  mdio;
+    
+    output [1:0]eth_tx_d;
+
+    input  [1:0]eth_rx_d;
+    input  eth_rx_dv;
+
+    input  link_led;
     
     
     
     // UFBmod special signals
     
     // TRX LVDS lanes
-    input  ufb_trx_rxclk_p,
-    input  ufb_trx_rxclk_n,
+    input  ufb_trx_rxclk_p;
+    input  ufb_trx_rxclk_n;
     
-    input  ufb_trx_rxd09_p,
-    input  ufb_trx_rxd09_n,
+    input  ufb_trx_rxd09_p;
+    input  ufb_trx_rxd09_n;
     
-    input  ufb_trx_rxd24_p,
-    input  ufb_trx_rxd24_n,
+    input  ufb_trx_rxd24_p;
+    input  ufb_trx_rxd24_n;
     
-    output ufb_trx_txclk_p,
-    output ufb_trx_txclk_n,
+    output ufb_trx_txclk_p;
+    output ufb_trx_txclk_n;
     
-    output ufb_trx_txd_p,
-    output ufb_trx_txd_n,
+    output ufb_trx_txd_p;
+    output ufb_trx_txd_n;
     
     
     // TRX SPI
-    output ufb_trx_rstn,
+    output ufb_trx_rstn;
 
-    output ufb_trx_seln,
-    output ufb_trx_sclk,
-    output ufb_trx_mosi,
-    input  ufb_trx_miso,
+    output ufb_trx_seln;
+    output ufb_trx_sclk;
+    output ufb_trx_mosi;
+    input  ufb_trx_miso;
 
-    input  ufb_trx_irq,
+    input  ufb_trx_irq;
     
     
     // RFX
-    output ufb_fpga_rfx_mode,
+    output ufb_fpga_rfx_mode;
     
     
     // FTDI serial <--> USB
-    output ufb_fpga_ft_reset,
-    output ufb_fpga_ft_12mhz,
+    output ufb_fpga_ft_reset;
+    output ufb_fpga_ft_12mhz;
     
-    output ufb_fpga_ft_rxd,
-    input  ufb_fpga_ft_txd,
+    output ufb_fpga_ft_rxd;
+    input  ufb_fpga_ft_txd;
     
-    output ufb_fpga_ft_cts,
-    input  ufb_fpga_ft_rts,
+    output ufb_fpga_ft_cts;
+    input  ufb_fpga_ft_rts;
 
-    output ufb_fpga_ft_dsr,
-    input  ufb_fpga_ft_dtr,
+    output ufb_fpga_ft_dsr;
+    input  ufb_fpga_ft_dtr;
     
-    output ufb_fpga_ft_dcd,
-    output ufb_fpga_ft_ri
-    
-    );
-    
+    output ufb_fpga_ft_dcd;
+    output ufb_fpga_ft_ri;
+
+
+
+
+    // Block-Design MCU
+
+
 endmodule
