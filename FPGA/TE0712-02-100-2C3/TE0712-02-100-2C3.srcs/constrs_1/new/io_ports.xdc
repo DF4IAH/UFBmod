@@ -1097,4 +1097,26 @@ set_property -dict {PACKAGE_PIN C7 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx3_
 #MGTPTXN3_216 sch:MGT_TX3_N
 
 
+#-------- test_board ------------
+
+##I2C
+##set_property PACKAGE_PIN W21 [get_ports PLL_I2C_scl_io]
+##set_property IOSTANDARD LVCMOS33 [get_ports PLL_I2C_scl_io]
+
+##set_property PACKAGE_PIN T20 [get_ports PLL_I2C_sda_io]
+##set_property IOSTANDARD LVCMOS33 [get_ports PLL_I2C_sda_io]
+
+#set_property PACKAGE_PIN W21 [get_ports PLL_I2C_ext_scl_o]
+#set_property IOSTANDARD LVCMOS33 [get_ports PLL_I2C_ext_scl_o]
+
+#set_property PACKAGE_PIN T20 [get_ports PLL_I2C_ext_sda]
+#set_property IOSTANDARD LVCMOS33 [get_ports PLL_I2C_ext_sda]
+
+
+##Reset  ??? No connection to TE0712 board made ???
+set_property -dict {PACKAGE_PIN T3 IOSTANDARD LVCMOS15} [get_ports {reset}]
+set_property PULLDOWN true [get_ports {reset}]
+
+
+
 # <EOF>
