@@ -14,8 +14,8 @@ set_property -dict {PACKAGE_PIN Y17 IOSTANDARD LVCMOS25} [get_ports {io_0_13}]
 #IO_0_13 sch:-
 
 
-set_property -dict {PACKAGE_PIN Y16 IOSTANDARD LVCMOS25} [get_ports {b13_l1_p}]
-#IO_L1P_T0_13 sch:B13_L1_P
+set_property -dict {PACKAGE_PIN Y16 IOSTANDARD LVCMOS25} [get_ports {reset}]
+#IO_L1P_T0_13 sch:B13_L1_P --> reset
 
 set_property -dict {PACKAGE_PIN AA16 IOSTANDARD LVCMOS25} [get_ports {b13_l1_n}]
 #IO_L1N_T0_13 sch:B13_L1_N
@@ -28,10 +28,10 @@ set_property -dict {PACKAGE_PIN AB17 IOSTANDARD LVCMOS25} [get_ports {b13_l2_n}]
 #IO_L2N_T0_13 sch:B13_L2_N
 
 
-set_property -dict {PACKAGE_PIN AA13 IOSTANDARD LVDS} [get_ports {ufb_trx_rxd09_p}]
+set_property -dict {PACKAGE_PIN AA13 IOSTANDARD LVDS_25} [get_ports {ufb_trx_rxd09_p}]
 #IO_L3P_T0_DQS_13 sch:B13_L3_P --> UFB_TRX_RXD09_P
 
-set_property -dict {PACKAGE_PIN AB13 IOSTANDARD LVDS} [get_ports {ufb_trx_rxd09_n}]
+set_property -dict {PACKAGE_PIN AB13 IOSTANDARD LVDS_25} [get_ports {ufb_trx_rxd09_n}]
 #IO_L3N_T0_DQS_13 sch:B13_L3_N --> UFB_TRX_RXD09_N
 
 
@@ -42,17 +42,17 @@ set_property -dict {PACKAGE_PIN AB15 IOSTANDARD LVCMOS25} [get_ports {b13_l4_n}]
 #IO_L4N_T0_13 sch:B13_L4_N
 
 
-set_property -dict {PACKAGE_PIN Y13 IOSTANDARD LVCMOS25} [get_ports {ufb_trx_txd_p}]
+set_property -dict {PACKAGE_PIN Y13 IOSTANDARD LVDS_25} [get_ports {ufb_trx_txd_p}]
 #IO_L5P_T0_13 sch:B13_L5_P --> UFB_TRX_TXD_P
 
-set_property -dict {PACKAGE_PIN AA14 IOSTANDARD LVCMOS25} [get_ports {ufb_trx_txd_n}]
+set_property -dict {PACKAGE_PIN AA14 IOSTANDARD LVDS_25} [get_ports {ufb_trx_txd_n}]
 #IO_L5N_T0_13 sch:B13_L5_N --> UFB_TRX_TXD_N
 
 
-set_property -dict {PACKAGE_PIN W14 IOSTANDARD LVCMOS25} [get_ports {ufb_trx_txclk_p}]
+set_property -dict {PACKAGE_PIN W14 IOSTANDARD LVDS_25} [get_ports {ufb_trx_txclk_p}]
 #IO_L6P_T0_13 sch:B13_L6_P --> UFB_TRX_TXCLK_P
 
-set_property -dict {PACKAGE_PIN Y14 IOSTANDARD LVCMOS25} [get_ports {ufb_trx_txclk_n}]
+set_property -dict {PACKAGE_PIN Y14 IOSTANDARD LVDS_25} [get_ports {ufb_trx_txclk_n}]
 #IO_L6N_T0_VREF_13 sch:B13_L6_N --> UFB_TRX_TXCLK_N
 
 
@@ -70,10 +70,10 @@ set_property -dict {PACKAGE_PIN AB10 IOSTANDARD LVCMOS25} [get_ports {io_l8n_t1_
 #IO_L8N_T1_13 sch:-
 
 
-set_property -dict {PACKAGE_PIN AA10 IOSTANDARD LVDS} [get_ports {ufb_trx_rxd24_p}]
+set_property -dict {PACKAGE_PIN AA10 IOSTANDARD LVDS_25} [get_ports {ufb_trx_rxd24_p}]
 #IO_L9P_T1_DQS_13 sch:B13_L9_P --> UFB_TRX_RXD24_P
 
-set_property -dict {PACKAGE_PIN AA11 IOSTANDARD LVDS} [get_ports {ufb_trx_rxd24_n}]
+set_property -dict {PACKAGE_PIN AA11 IOSTANDARD LVDS_25} [get_ports {ufb_trx_rxd24_n}]
 #IO_L9N_T1_DQS_13 sch:B13_L9_N --> UFB_TRX_RXD24_N
 
 
@@ -84,10 +84,10 @@ set_property -dict {PACKAGE_PIN W10 IOSTANDARD LVCMOS25} [get_ports {b13_l10_n}]
 #IO_L10N_T1_13 sch:B13_L10_N
 
 
-set_property -dict {PACKAGE_PIN Y11 IOSTANDARD LVDS} [get_ports {ufb_trx_rxclk_p}]
+set_property -dict {PACKAGE_PIN Y11 IOSTANDARD LVDS_25} [get_ports {ufb_trx_rxclk_p}]
 #IO_L11P_T1_SRCC_13 sch:B13_L11_P --> UFB_TRX_RXCLK_P
 
-set_property -dict {PACKAGE_PIN Y12 IOSTANDARD LVDS} [get_ports {ufb_trx_rxclk_n}]
+set_property -dict {PACKAGE_PIN Y12 IOSTANDARD LVDS_25} [get_ports {ufb_trx_rxclk_n}]
 #IO_L11N_T1_SRCC_13 sch:B13_L11_N --> UFB_TRX_RXCLK_N
 
 
@@ -195,12 +195,12 @@ set_property -dict {PACKAGE_PIN W22 IOSTANDARD LVCMOS33} [get_ports {uli_system}
 set_property -dict {PACKAGE_PIN AA20 IOSTANDARD LVCMOS33} [get_ports {b14_l8_p}]
 #IO_L8P_T1_D11_14 sch:B14_L8_P
 
-set_property -dict {PACKAGE_PIN AA21 IOSTANDARD LVCMOS33} [get_ports {b14_l8_n}]
-#IO_L8N_T1_D12_14 sch:B14_L8_N
+set_property -dict {PACKAGE_PIN AA21 IOSTANDARD LVCMOS33} [get_ports {init_calib_complete}]
+#IO_L8N_T1_D12_14 sch:B14_L8_N --> init_calib_complete
 
 
-set_property -dict {PACKAGE_PIN Y21 IOSTANDARD LVCMOS33} [get_ports {b14_l9_p}]
-#IO_L9P_T1_DQS_14 sch:B14_L9_P
+set_property -dict {PACKAGE_PIN Y21 IOSTANDARD LVCMOS33} [get_ports {tg_compare_error}]
+#IO_L9P_T1_DQS_14 sch:B14_L9_P --> tg_compare_error
 
 set_property -dict {PACKAGE_PIN Y22 IOSTANDARD LVCMOS33} [get_ports {b14_l9_n}]
 #IO_L9N_T1_DQS_D13_14 sch:B14_L9_N
@@ -1118,8 +1118,6 @@ set_property -dict {PACKAGE_PIN C7 IOSTANDARD DIFF_HSUL_12} [get_ports {mgt_tx3_
 #set_property IOSTANDARD LVCMOS33 [get_ports PLL_I2C_ext_sda]
 
 
-##Reset  ??? No connection to TE0712 board made ???
-set_property -dict {PACKAGE_PIN T3 IOSTANDARD LVCMOS15} [get_ports {reset}]
 set_property PULLDOWN true [get_ports {reset}]
 
 

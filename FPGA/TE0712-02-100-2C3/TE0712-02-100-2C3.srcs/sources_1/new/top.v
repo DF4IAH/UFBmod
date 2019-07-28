@@ -21,6 +21,10 @@
 
 
 module top(
+    // Reset
+    reset,
+    
+    
     // Clocks
     pll_clk_p,           // 1.5 V    PLL          50.0 MHz
     pll_clk_n,           // 1.5 V    PLL          50.0 MHz
@@ -64,6 +68,7 @@ module top(
     ddr3_clk0_p,         // 1.5 V    DDR3        xxx.x MHz
     ddr3_clk0_n,         // 1.5 V    DDR3        xxx.x MHz
     
+    ddr3_s,
     ddr3_dqs_p,
     ddr3_dqs_n,
     ddr3_dm,
@@ -153,6 +158,9 @@ module top(
     ufb_fpga_ft_ri
     
     );
+    // Reset
+    input  reset;
+    
     
     // Clocks
     input  pll_clk_p;           // 1.5 V    PLL          50.0 MHz
@@ -167,7 +175,6 @@ module top(
     // Out of order clocks
     //input  clk0_p;              // 1.5 V    PLL         xxx.x MHz   REV02: none
     //input  clk0_n;              // 1.5 V    PLL         xxx.x MHz   REV02: none
-    
     //input  clk50m2;             // 1.5 V    PLL-DDR3    xxx.x MHz   REV02: none
     
     
@@ -199,6 +206,7 @@ module top(
     output ddr3_clk0_p;         // 1.5 V    DDR3        xxx.x MHz
     output ddr3_clk0_n;         // 1.5 V    DDR3        xxx.x MHz
     
+    output [0:0]ddr3_s;
     output [3:0]ddr3_dqs_p;
     output [3:0]ddr3_dqs_n;
     output [3:0]ddr3_dm;
@@ -293,8 +301,30 @@ module top(
 
 
 
-
     // Block-Design MCU
+ mcu_wrapper mcu_wrapper_i (
+         .sys_clk_p(pll_clk_p),
+         .sys_clk_n(pll_clk_n),
 
+        .DDR3_SDRAM_reset_n(ddr3_reset),
+        .DDR3_SDRAM_cke(ddr3_cke),
+        .DDR3_SDRAM_ck_n(ddr3_clk0_p),
+        .DDR3_SDRAM_ck_p(ddr3_clk0_n),
+
+        .DDR3_SDRAM_cs_n(ddr3_s),
+        .DDR3_SDRAM_we_n(ddr3_we),
+        .DDR3_SDRAM_odt(ddr3_odt),
+
+        .DDR3_SDRAM_dqs_p(ddr3_dqs_p),
+        .DDR3_SDRAM_dqs_n(ddr3_dqs_n),
+        .DDR3_SDRAM_dm(ddr3_dm),
+        .DDR3_SDRAM_dq(ddr3_d),
+
+        .DDR3_SDRAM_ba(ddr3_ba),
+        .DDR3_SDRAM_addr(ddr3_a),
+
+        .DDR3_SDRAM_cas_n(ddr3_cas),
+        .DDR3_SDRAM_ras_n(ddr3_ras)
+        );
 
 endmodule
