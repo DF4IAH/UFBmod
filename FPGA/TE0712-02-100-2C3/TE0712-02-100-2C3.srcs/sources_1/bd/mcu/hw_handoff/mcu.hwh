@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Jul 28 23:24:53 2019" VIVADOVERSION="2018.3">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Jul 29 00:10:19 2019" VIVADOVERSION="2018.3">
 
   <SYSTEMINFO ARCH="artix7" DEVICE="7a100t" NAME="mcu" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -19,7 +19,7 @@
         <CONNECTION INSTANCE="mig_7series_0" PORT="init_calib_complete"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" NAME="reset" SIGIS="rst" SIGNAME="External_Ports_reset">
+    <PORT DIR="I" NAME="sys_rst" SIGIS="rst" SIGNAME="External_Ports_sys_rst">
       <CONNECTIONS>
         <CONNECTION INSTANCE="mig_7series_0" PORT="sys_rst"/>
         <CONNECTION INSTANCE="rst_clk_wiz_1_50M" PORT="aux_reset_in"/>
@@ -9154,9 +9154,9 @@
         <PARAMETER NAME="C_HIGHADDR" VALUE="0xBFFFFFFF"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="sys_rst" SIGIS="rst" SIGNAME="External_Ports_reset">
+        <PORT DIR="I" NAME="sys_rst" SIGIS="rst" SIGNAME="External_Ports_sys_rst">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="reset"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="sys_rst"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="200000000" DIR="I" NAME="clk_ref_i" SIGIS="clk" SIGNAME="mig_7series_0_ui_addn_clk_0">
@@ -9630,9 +9630,9 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk_sync_rst"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="aux_reset_in" SIGIS="rst" SIGNAME="External_Ports_reset">
+        <PORT DIR="I" NAME="aux_reset_in" SIGIS="rst" SIGNAME="External_Ports_sys_rst">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="reset"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="sys_rst"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="mb_debug_sys_rst" SIGIS="rst" SIGNAME="mdm_1_Debug_SYS_Rst">

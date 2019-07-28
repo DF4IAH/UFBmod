@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Sun Jul 28 23:24:38 2019
+//Date        : Mon Jul 29 00:10:06 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu_wrapper.bd
 //Design      : mcu_wrapper
@@ -28,7 +28,7 @@ module mcu_wrapper
     init_calib_complete,
     pll_clk_n,
     pll_clk_p,
-    reset);
+    sys_rst);
   output [14:0]DDR3_SDRAM_addr;
   output [2:0]DDR3_SDRAM_ba;
   output DDR3_SDRAM_cas_n;
@@ -47,7 +47,7 @@ module mcu_wrapper
   output init_calib_complete;
   input pll_clk_n;
   input pll_clk_p;
-  input reset;
+  input sys_rst;
 
   wire [14:0]DDR3_SDRAM_addr;
   wire [2:0]DDR3_SDRAM_ba;
@@ -67,7 +67,7 @@ module mcu_wrapper
   wire init_calib_complete;
   wire pll_clk_n;
   wire pll_clk_p;
-  wire reset;
+  wire sys_rst;
 
   mcu mcu_i
        (.DDR3_SDRAM_addr(DDR3_SDRAM_addr),
@@ -88,5 +88,5 @@ module mcu_wrapper
         .init_calib_complete(init_calib_complete),
         .pll_clk_n(pll_clk_n),
         .pll_clk_p(pll_clk_p),
-        .reset(reset));
+        .sys_rst(sys_rst));
 endmodule

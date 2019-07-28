@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Sun Jul 28 23:24:38 2019
+//Date        : Mon Jul 29 00:10:06 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -601,7 +601,7 @@ module mcu
     init_calib_complete,
     pll_clk_n,
     pll_clk_p,
-    reset);
+    sys_rst);
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ADDR" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DDR3_SDRAM, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250" *) output [14:0]DDR3_SDRAM_addr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM BA" *) output [2:0]DDR3_SDRAM_ba;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CAS_N" *) output DDR3_SDRAM_cas_n;
@@ -620,7 +620,7 @@ module mcu
   output init_calib_complete;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PLL_CLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PLL_CLK_N, CLK_DOMAIN mcu_clk_ref_n_0, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input pll_clk_n;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PLL_CLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PLL_CLK_P, CLK_DOMAIN mcu_clk_ref_p_0, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input pll_clk_p;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input reset;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.SYS_RST RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.SYS_RST, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input sys_rst;
 
   wire [0:0]ARESETN_1;
   wire [31:0]mdm_1_M_AXI_ARADDR;
@@ -901,7 +901,7 @@ module mcu
   assign init_calib_complete = mig_7series_0_init_calib_complete;
   assign pll_clk_n_1 = pll_clk_n;
   assign pll_clk_p_1 = pll_clk_p;
-  assign sys_rst_0_1 = reset;
+  assign sys_rst_0_1 = sys_rst;
   mcu_mdm_1_0 mdm_1
        (.Dbg_Capture_0(microblaze_0_debug_CAPTURE),
         .Dbg_Clk_0(microblaze_0_debug_CLK),

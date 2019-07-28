@@ -66,6 +66,9 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_auto_pc_0/mcu_auto_pc_0.xci">
+          <Proxy FileSetName="mcu_auto_pc_0"/>
+        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_microblaze_0_0/mcu_microblaze_0_0.xci">
           <Proxy FileSetName="mcu_microblaze_0_0"/>
         </CompFileExtendedInfo>
@@ -107,9 +110,6 @@
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_auto_pc_1/mcu_auto_pc_1.xci">
           <Proxy FileSetName="mcu_auto_pc_1"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_auto_pc_0/mcu_auto_pc_0.xci">
-          <Proxy FileSetName="mcu_auto_pc_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/mcu/hdl/mcu_wrapper.v">

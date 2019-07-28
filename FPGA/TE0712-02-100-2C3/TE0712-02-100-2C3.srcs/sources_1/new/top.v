@@ -22,7 +22,7 @@
 
 module top(
     // Reset
-    reset,
+    sys_rst,
     
     
     // Clocks
@@ -159,7 +159,7 @@ module top(
     
     );
     // Reset
-    input  reset;
+    input  sys_rst;
     
     
     // Clocks
@@ -303,8 +303,10 @@ module top(
 
     // Block-Design MCU
  mcu_wrapper mcu_wrapper_i (
-         .pll_clk_p(pll_clk_p),
-         .pll_clk_n(pll_clk_n),
+        .sys_rst(sys_rst),
+
+        .pll_clk_p(pll_clk_p),
+        .pll_clk_n(pll_clk_n),
 
         .DDR3_SDRAM_reset_n(ddr3_reset),
         .DDR3_SDRAM_cke(ddr3_cke),

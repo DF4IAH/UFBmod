@@ -436,10 +436,10 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.FREQ_HZ {50000000} \
  ] $pll_clk_p
-  set reset [ create_bd_port -dir I -type rst reset ]
+  set sys_rst [ create_bd_port -dir I -type rst sys_rst ]
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_HIGH} \
- ] $reset
+ ] $sys_rst
 
   # Create instance: mdm_1, and set properties
   set mdm_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:mdm:3.2 mdm_1 ]
@@ -590,7 +590,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net rst_clk_wiz_1_100M_bus_struct_reset [get_bd_pins microblaze_0_local_memory/SYS_Rst] [get_bd_pins rst_clk_wiz_1_50M/bus_struct_reset]
   connect_bd_net -net rst_clk_wiz_1_100M_mb_reset [get_bd_pins microblaze_0/Reset] [get_bd_pins microblaze_0_axi_intc/processor_rst] [get_bd_pins microblaze_mcs_0/Reset] [get_bd_pins rst_clk_wiz_1_50M/mb_reset]
   connect_bd_net -net rst_clk_wiz_1_100M_peripheral_aresetn [get_bd_pins mdm_1/M_AXI_ARESETN] [get_bd_pins microblaze_0_axi_intc/s_axi_aresetn] [get_bd_pins mig_7series_0/aresetn] [get_bd_pins rst_clk_wiz_1_50M/peripheral_aresetn]
-  connect_bd_net -net sys_rst_0_1 [get_bd_ports reset] [get_bd_pins mig_7series_0/sys_rst] [get_bd_pins rst_clk_wiz_1_50M/aux_reset_in]
+  connect_bd_net -net sys_rst_0_1 [get_bd_ports sys_rst] [get_bd_pins mig_7series_0/sys_rst] [get_bd_pins rst_clk_wiz_1_50M/aux_reset_in]
 
   # Create address segments
   create_bd_addr_seg -range 0x00002000 -offset 0x00000000 [get_bd_addr_spaces mdm_1/Data] [get_bd_addr_segs microblaze_0_local_memory/dlmb_bram_if_cntlr/SLMB1/Mem] SEG_dlmb_bram_if_cntlr_Mem
