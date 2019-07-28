@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Sun Jul 28 15:10:10 2019
+//Date        : Sun Jul 28 21:48:36 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -598,25 +598,29 @@ module mcu
     DDR3_SDRAM_ras_n,
     DDR3_SDRAM_reset_n,
     DDR3_SDRAM_we_n,
-    sys_clk_n,
-    sys_clk_p);
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM " *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DDR3_SDRAM, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250" *) output [14:0]DDR3_SDRAM_addr;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM " *) output [2:0]DDR3_SDRAM_ba;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM " *) output DDR3_SDRAM_cas_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM " *) output [0:0]DDR3_SDRAM_ck_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM " *) output [0:0]DDR3_SDRAM_ck_p;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM " *) output [0:0]DDR3_SDRAM_cke;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM " *) output [0:0]DDR3_SDRAM_cs_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM " *) output [3:0]DDR3_SDRAM_dm;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM " *) inout [31:0]DDR3_SDRAM_dq;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM " *) inout [3:0]DDR3_SDRAM_dqs_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM " *) inout [3:0]DDR3_SDRAM_dqs_p;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM " *) output [0:0]DDR3_SDRAM_odt;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM " *) output DDR3_SDRAM_ras_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM " *) output DDR3_SDRAM_reset_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM " *) output DDR3_SDRAM_we_n;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.SYS_CLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.SYS_CLK_N, CLK_DOMAIN mcu_clk_ref_n_0, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input sys_clk_n;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.SYS_CLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.SYS_CLK_P, CLK_DOMAIN mcu_clk_ref_p_0, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input sys_clk_p;
+    init_calib_complete,
+    pll_clk_n,
+    pll_clk_p,
+    reset);
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ADDR" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DDR3_SDRAM, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250" *) output [14:0]DDR3_SDRAM_addr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM BA" *) output [2:0]DDR3_SDRAM_ba;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CAS_N" *) output DDR3_SDRAM_cas_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CK_N" *) output [0:0]DDR3_SDRAM_ck_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CK_P" *) output [0:0]DDR3_SDRAM_ck_p;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CKE" *) output [0:0]DDR3_SDRAM_cke;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CS_N" *) output [0:0]DDR3_SDRAM_cs_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DM" *) output [3:0]DDR3_SDRAM_dm;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQ" *) inout [31:0]DDR3_SDRAM_dq;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_N" *) inout [3:0]DDR3_SDRAM_dqs_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_P" *) inout [3:0]DDR3_SDRAM_dqs_p;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ODT" *) output [0:0]DDR3_SDRAM_odt;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM RAS_N" *) output DDR3_SDRAM_ras_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM RESET_N" *) output DDR3_SDRAM_reset_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM WE_N" *) output DDR3_SDRAM_we_n;
+  output init_calib_complete;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PLL_CLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PLL_CLK_N, CLK_DOMAIN mcu_clk_ref_n_0, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input pll_clk_n;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PLL_CLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PLL_CLK_P, CLK_DOMAIN mcu_clk_ref_p_0, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input pll_clk_p;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input reset;
 
   wire [0:0]ARESETN_1;
   wire [31:0]mdm_1_M_AXI_ARADDR;
@@ -871,15 +875,16 @@ module mcu
   wire mig_7series_0_DDR3_RAS_N;
   wire mig_7series_0_DDR3_RESET_N;
   wire mig_7series_0_DDR3_WE_N;
+  wire mig_7series_0_init_calib_complete;
   wire mig_7series_0_mmcm_locked;
   wire mig_7series_0_ui_addn_clk_0;
   wire mig_7series_0_ui_clk_sync_rst;
   wire [0:0]rst_clk_wiz_1_100M_bus_struct_reset;
   wire rst_clk_wiz_1_100M_mb_reset;
   wire [0:0]rst_clk_wiz_1_100M_peripheral_aresetn;
-  wire [0:0]rst_clk_wiz_1_50M_peripheral_reset;
   wire sys_clk_n_1;
   wire sys_clk_p_1;
+  wire sys_rst_0_1;
 
   assign DDR3_SDRAM_addr[14:0] = mig_7series_0_DDR3_ADDR;
   assign DDR3_SDRAM_ba[2:0] = mig_7series_0_DDR3_BA;
@@ -893,8 +898,10 @@ module mcu
   assign DDR3_SDRAM_ras_n = mig_7series_0_DDR3_RAS_N;
   assign DDR3_SDRAM_reset_n = mig_7series_0_DDR3_RESET_N;
   assign DDR3_SDRAM_we_n = mig_7series_0_DDR3_WE_N;
-  assign sys_clk_n_1 = sys_clk_n;
-  assign sys_clk_p_1 = sys_clk_p;
+  assign init_calib_complete = mig_7series_0_init_calib_complete;
+  assign sys_clk_n_1 = pll_clk_n;
+  assign sys_clk_p_1 = pll_clk_p;
+  assign sys_rst_0_1 = reset;
   mcu_mdm_1_0 mdm_1
        (.Dbg_Capture_0(microblaze_0_debug_CAPTURE),
         .Dbg_Clk_0(microblaze_0_debug_CLK),
@@ -1144,7 +1151,7 @@ module mcu
         .M00_AXI_wstrb(microblaze_0_intc_axi_WSTRB),
         .M00_AXI_wvalid(microblaze_0_intc_axi_WVALID),
         .M01_ACLK(microblaze_0_Clk),
-        .M01_ARESETN(rst_clk_wiz_1_100M_peripheral_aresetn),
+        .M01_ARESETN(ARESETN_1),
         .M01_AXI_araddr(microblaze_0_axi_periph_M01_AXI_ARADDR),
         .M01_AXI_arburst(microblaze_0_axi_periph_M01_AXI_ARBURST),
         .M01_AXI_arcache(microblaze_0_axi_periph_M01_AXI_ARCACHE),
@@ -1243,7 +1250,7 @@ module mcu
         .S01_AXI_wstrb(mdm_1_M_AXI_WSTRB),
         .S01_AXI_wvalid(mdm_1_M_AXI_WVALID),
         .S02_ACLK(microblaze_0_Clk),
-        .S02_ARESETN(rst_clk_wiz_1_100M_peripheral_aresetn),
+        .S02_ARESETN(ARESETN_1),
         .S02_AXI_araddr(microblaze_0_M_AXI_DC_ARADDR),
         .S02_AXI_arburst(microblaze_0_M_AXI_DC_ARBURST),
         .S02_AXI_arcache(microblaze_0_M_AXI_DC_ARCACHE),
@@ -1282,7 +1289,7 @@ module mcu
         .S02_AXI_wstrb(microblaze_0_M_AXI_DC_WSTRB),
         .S02_AXI_wvalid(microblaze_0_M_AXI_DC_WVALID),
         .S03_ACLK(microblaze_0_Clk),
-        .S03_ARESETN(rst_clk_wiz_1_100M_peripheral_aresetn),
+        .S03_ARESETN(ARESETN_1),
         .S03_AXI_araddr(microblaze_0_M_AXI_IC_ARADDR),
         .S03_AXI_arburst(microblaze_0_M_AXI_IC_ARBURST),
         .S03_AXI_arcache(microblaze_0_M_AXI_IC_ARCACHE),
@@ -1386,6 +1393,7 @@ module mcu
         .ddr3_ras_n(mig_7series_0_DDR3_RAS_N),
         .ddr3_reset_n(mig_7series_0_DDR3_RESET_N),
         .ddr3_we_n(mig_7series_0_DDR3_WE_N),
+        .init_calib_complete(mig_7series_0_init_calib_complete),
         .mmcm_locked(mig_7series_0_mmcm_locked),
         .s_axi_araddr(microblaze_0_axi_periph_M01_AXI_ARADDR[29:0]),
         .s_axi_arburst(microblaze_0_axi_periph_M01_AXI_ARBURST),
@@ -1426,12 +1434,12 @@ module mcu
         .s_axi_wvalid(microblaze_0_axi_periph_M01_AXI_WVALID),
         .sys_clk_n(sys_clk_n_1),
         .sys_clk_p(sys_clk_p_1),
-        .sys_rst(rst_clk_wiz_1_50M_peripheral_reset),
+        .sys_rst(sys_rst_0_1),
         .ui_addn_clk_0(mig_7series_0_ui_addn_clk_0),
         .ui_clk(microblaze_0_Clk),
         .ui_clk_sync_rst(mig_7series_0_ui_clk_sync_rst));
   mcu_rst_clk_wiz_1_100M_0 rst_clk_wiz_1_50M
-       (.aux_reset_in(1'b1),
+       (.aux_reset_in(sys_rst_0_1),
         .bus_struct_reset(rst_clk_wiz_1_100M_bus_struct_reset),
         .dcm_locked(mig_7series_0_mmcm_locked),
         .ext_reset_in(mig_7series_0_ui_clk_sync_rst),
@@ -1439,7 +1447,6 @@ module mcu
         .mb_debug_sys_rst(mdm_1_debug_sys_rst),
         .mb_reset(rst_clk_wiz_1_100M_mb_reset),
         .peripheral_aresetn(rst_clk_wiz_1_100M_peripheral_aresetn),
-        .peripheral_reset(rst_clk_wiz_1_50M_peripheral_reset),
         .slowest_sync_clk(microblaze_0_Clk));
 endmodule
 
@@ -1841,18 +1848,6 @@ module mcu_microblaze_0_axi_periph_0
   input [3:0]S03_AXI_wstrb;
   input [0:0]S03_AXI_wvalid;
 
-  wire M00_ACLK_1;
-  wire M00_ARESETN_1;
-  wire M01_ACLK_1;
-  wire M01_ARESETN_1;
-  wire S00_ACLK_1;
-  wire S00_ARESETN_1;
-  wire S01_ACLK_1;
-  wire S01_ARESETN_1;
-  wire S02_ACLK_1;
-  wire S02_ARESETN_1;
-  wire S03_ACLK_1;
-  wire S03_ARESETN_1;
   wire [31:0]m00_couplers_to_microblaze_0_axi_periph_ARADDR;
   wire m00_couplers_to_microblaze_0_axi_periph_ARREADY;
   wire m00_couplers_to_microblaze_0_axi_periph_ARVALID;
@@ -2262,8 +2257,6 @@ module mcu_microblaze_0_axi_periph_0
   wire [7:0]NLW_xbar_s_axi_bid_UNCONNECTED;
   wire [7:0]NLW_xbar_s_axi_rid_UNCONNECTED;
 
-  assign M00_ACLK_1 = M00_ACLK;
-  assign M00_ARESETN_1 = M00_ARESETN;
   assign M00_AXI_araddr[31:0] = m00_couplers_to_microblaze_0_axi_periph_ARADDR;
   assign M00_AXI_arvalid = m00_couplers_to_microblaze_0_axi_periph_ARVALID;
   assign M00_AXI_awaddr[31:0] = m00_couplers_to_microblaze_0_axi_periph_AWADDR;
@@ -2273,8 +2266,6 @@ module mcu_microblaze_0_axi_periph_0
   assign M00_AXI_wdata[31:0] = m00_couplers_to_microblaze_0_axi_periph_WDATA;
   assign M00_AXI_wstrb[3:0] = m00_couplers_to_microblaze_0_axi_periph_WSTRB;
   assign M00_AXI_wvalid = m00_couplers_to_microblaze_0_axi_periph_WVALID;
-  assign M01_ACLK_1 = M01_ACLK;
-  assign M01_ARESETN_1 = M01_ARESETN;
   assign M01_AXI_araddr[31:0] = m01_couplers_to_microblaze_0_axi_periph_ARADDR;
   assign M01_AXI_arburst[1:0] = m01_couplers_to_microblaze_0_axi_periph_ARBURST;
   assign M01_AXI_arcache[3:0] = m01_couplers_to_microblaze_0_axi_periph_ARCACHE;
@@ -2301,8 +2292,6 @@ module mcu_microblaze_0_axi_periph_0
   assign M01_AXI_wlast = m01_couplers_to_microblaze_0_axi_periph_WLAST;
   assign M01_AXI_wstrb[3:0] = m01_couplers_to_microblaze_0_axi_periph_WSTRB;
   assign M01_AXI_wvalid = m01_couplers_to_microblaze_0_axi_periph_WVALID;
-  assign S00_ACLK_1 = S00_ACLK;
-  assign S00_ARESETN_1 = S00_ARESETN;
   assign S00_AXI_arready = microblaze_0_axi_periph_to_s00_couplers_ARREADY;
   assign S00_AXI_awready = microblaze_0_axi_periph_to_s00_couplers_AWREADY;
   assign S00_AXI_bresp[1:0] = microblaze_0_axi_periph_to_s00_couplers_BRESP;
@@ -2311,8 +2300,6 @@ module mcu_microblaze_0_axi_periph_0
   assign S00_AXI_rresp[1:0] = microblaze_0_axi_periph_to_s00_couplers_RRESP;
   assign S00_AXI_rvalid = microblaze_0_axi_periph_to_s00_couplers_RVALID;
   assign S00_AXI_wready = microblaze_0_axi_periph_to_s00_couplers_WREADY;
-  assign S01_ACLK_1 = S01_ACLK;
-  assign S01_ARESETN_1 = S01_ARESETN;
   assign S01_AXI_arready = microblaze_0_axi_periph_to_s01_couplers_ARREADY;
   assign S01_AXI_awready = microblaze_0_axi_periph_to_s01_couplers_AWREADY;
   assign S01_AXI_bid[1:0] = microblaze_0_axi_periph_to_s01_couplers_BID;
@@ -2324,8 +2311,6 @@ module mcu_microblaze_0_axi_periph_0
   assign S01_AXI_rresp[1:0] = microblaze_0_axi_periph_to_s01_couplers_RRESP;
   assign S01_AXI_rvalid = microblaze_0_axi_periph_to_s01_couplers_RVALID;
   assign S01_AXI_wready = microblaze_0_axi_periph_to_s01_couplers_WREADY;
-  assign S02_ACLK_1 = S02_ACLK;
-  assign S02_ARESETN_1 = S02_ARESETN;
   assign S02_AXI_arready[0] = microblaze_0_axi_periph_to_s02_couplers_ARREADY;
   assign S02_AXI_awready[0] = microblaze_0_axi_periph_to_s02_couplers_AWREADY;
   assign S02_AXI_bid[1:0] = microblaze_0_axi_periph_to_s02_couplers_BID;
@@ -2337,8 +2322,6 @@ module mcu_microblaze_0_axi_periph_0
   assign S02_AXI_rresp[1:0] = microblaze_0_axi_periph_to_s02_couplers_RRESP;
   assign S02_AXI_rvalid[0] = microblaze_0_axi_periph_to_s02_couplers_RVALID;
   assign S02_AXI_wready[0] = microblaze_0_axi_periph_to_s02_couplers_WREADY;
-  assign S03_ACLK_1 = S03_ACLK;
-  assign S03_ARESETN_1 = S03_ARESETN;
   assign S03_AXI_arready[0] = microblaze_0_axi_periph_to_s03_couplers_ARREADY;
   assign S03_AXI_awready[0] = microblaze_0_axi_periph_to_s03_couplers_AWREADY;
   assign S03_AXI_bid[1:0] = microblaze_0_axi_periph_to_s03_couplers_BID;
@@ -2461,8 +2444,8 @@ module mcu_microblaze_0_axi_periph_0
   assign microblaze_0_axi_periph_to_s03_couplers_WSTRB = S03_AXI_wstrb[3:0];
   assign microblaze_0_axi_periph_to_s03_couplers_WVALID = S03_AXI_wvalid[0];
   m00_couplers_imp_1WVAA8A m00_couplers
-       (.M_ACLK(M00_ACLK_1),
-        .M_ARESETN(M00_ARESETN_1),
+       (.M_ACLK(microblaze_0_axi_periph_ACLK_net),
+        .M_ARESETN(microblaze_0_axi_periph_ARESETN_net),
         .M_AXI_araddr(m00_couplers_to_microblaze_0_axi_periph_ARADDR),
         .M_AXI_arready(m00_couplers_to_microblaze_0_axi_periph_ARREADY),
         .M_AXI_arvalid(m00_couplers_to_microblaze_0_axi_periph_ARVALID),
@@ -2522,8 +2505,8 @@ module mcu_microblaze_0_axi_periph_0
         .S_AXI_wstrb(xbar_to_m00_couplers_WSTRB),
         .S_AXI_wvalid(xbar_to_m00_couplers_WVALID));
   m01_couplers_imp_AFYY8F m01_couplers
-       (.M_ACLK(M01_ACLK_1),
-        .M_ARESETN(M01_ARESETN_1),
+       (.M_ACLK(microblaze_0_axi_periph_ACLK_net),
+        .M_ARESETN(microblaze_0_axi_periph_ARESETN_net),
         .M_AXI_araddr(m01_couplers_to_microblaze_0_axi_periph_ARADDR),
         .M_AXI_arburst(m01_couplers_to_microblaze_0_axi_periph_ARBURST),
         .M_AXI_arcache(m01_couplers_to_microblaze_0_axi_periph_ARCACHE),
@@ -2636,8 +2619,8 @@ module mcu_microblaze_0_axi_periph_0
         .M_AXI_wready(s00_couplers_to_xbar_WREADY),
         .M_AXI_wstrb(s00_couplers_to_xbar_WSTRB),
         .M_AXI_wvalid(s00_couplers_to_xbar_WVALID),
-        .S_ACLK(S00_ACLK_1),
-        .S_ARESETN(S00_ARESETN_1),
+        .S_ACLK(microblaze_0_axi_periph_ACLK_net),
+        .S_ARESETN(microblaze_0_axi_periph_ARESETN_net),
         .S_AXI_araddr(microblaze_0_axi_periph_to_s00_couplers_ARADDR),
         .S_AXI_arprot(microblaze_0_axi_periph_to_s00_couplers_ARPROT),
         .S_AXI_arready(microblaze_0_axi_periph_to_s00_couplers_ARREADY),
@@ -2697,8 +2680,8 @@ module mcu_microblaze_0_axi_periph_0
         .M_AXI_wready(s01_couplers_to_xbar_WREADY),
         .M_AXI_wstrb(s01_couplers_to_xbar_WSTRB),
         .M_AXI_wvalid(s01_couplers_to_xbar_WVALID),
-        .S_ACLK(S01_ACLK_1),
-        .S_ARESETN(S01_ARESETN_1),
+        .S_ACLK(microblaze_0_axi_periph_ACLK_net),
+        .S_ARESETN(microblaze_0_axi_periph_ARESETN_net),
         .S_AXI_araddr(microblaze_0_axi_periph_to_s01_couplers_ARADDR),
         .S_AXI_arburst(microblaze_0_axi_periph_to_s01_couplers_ARBURST),
         .S_AXI_arcache(microblaze_0_axi_periph_to_s01_couplers_ARCACHE),
@@ -2776,8 +2759,8 @@ module mcu_microblaze_0_axi_periph_0
         .M_AXI_wready(s02_couplers_to_xbar_WREADY),
         .M_AXI_wstrb(s02_couplers_to_xbar_WSTRB),
         .M_AXI_wvalid(s02_couplers_to_xbar_WVALID),
-        .S_ACLK(S02_ACLK_1),
-        .S_ARESETN(S02_ARESETN_1),
+        .S_ACLK(microblaze_0_axi_periph_ACLK_net),
+        .S_ARESETN(microblaze_0_axi_periph_ARESETN_net),
         .S_AXI_araddr(microblaze_0_axi_periph_to_s02_couplers_ARADDR),
         .S_AXI_arburst(microblaze_0_axi_periph_to_s02_couplers_ARBURST),
         .S_AXI_arcache(microblaze_0_axi_periph_to_s02_couplers_ARCACHE),
@@ -2855,8 +2838,8 @@ module mcu_microblaze_0_axi_periph_0
         .M_AXI_wready(s03_couplers_to_xbar_WREADY),
         .M_AXI_wstrb(s03_couplers_to_xbar_WSTRB),
         .M_AXI_wvalid(s03_couplers_to_xbar_WVALID),
-        .S_ACLK(S03_ACLK_1),
-        .S_ARESETN(S03_ARESETN_1),
+        .S_ACLK(microblaze_0_axi_periph_ACLK_net),
+        .S_ARESETN(microblaze_0_axi_periph_ARESETN_net),
         .S_AXI_araddr(microblaze_0_axi_periph_to_s03_couplers_ARADDR),
         .S_AXI_arburst(microblaze_0_axi_periph_to_s03_couplers_ARBURST),
         .S_AXI_arcache(microblaze_0_axi_periph_to_s03_couplers_ARCACHE),

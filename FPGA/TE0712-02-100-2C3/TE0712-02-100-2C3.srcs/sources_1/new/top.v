@@ -303,8 +303,8 @@ module top(
 
     // Block-Design MCU
  mcu_wrapper mcu_wrapper_i (
-         .sys_clk_p(pll_clk_p),
-         .sys_clk_n(pll_clk_n),
+         .pll_clk_p(pll_clk_p),
+         .pll_clk_n(pll_clk_n),
 
         .DDR3_SDRAM_reset_n(ddr3_reset),
         .DDR3_SDRAM_cke(ddr3_cke),

@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Sun Jul 28 15:10:10 2019
+//Date        : Sun Jul 28 21:48:36 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu_wrapper.bd
 //Design      : mcu_wrapper
@@ -25,8 +25,10 @@ module mcu_wrapper
     DDR3_SDRAM_ras_n,
     DDR3_SDRAM_reset_n,
     DDR3_SDRAM_we_n,
-    sys_clk_n,
-    sys_clk_p);
+    init_calib_complete,
+    pll_clk_n,
+    pll_clk_p,
+    reset);
   output [14:0]DDR3_SDRAM_addr;
   output [2:0]DDR3_SDRAM_ba;
   output DDR3_SDRAM_cas_n;
@@ -42,8 +44,10 @@ module mcu_wrapper
   output DDR3_SDRAM_ras_n;
   output DDR3_SDRAM_reset_n;
   output DDR3_SDRAM_we_n;
-  input sys_clk_n;
-  input sys_clk_p;
+  output init_calib_complete;
+  input pll_clk_n;
+  input pll_clk_p;
+  input reset;
 
   wire [14:0]DDR3_SDRAM_addr;
   wire [2:0]DDR3_SDRAM_ba;
@@ -60,8 +64,10 @@ module mcu_wrapper
   wire DDR3_SDRAM_ras_n;
   wire DDR3_SDRAM_reset_n;
   wire DDR3_SDRAM_we_n;
-  wire sys_clk_n;
-  wire sys_clk_p;
+  wire init_calib_complete;
+  wire pll_clk_n;
+  wire pll_clk_p;
+  wire reset;
 
   mcu mcu_i
        (.DDR3_SDRAM_addr(DDR3_SDRAM_addr),
@@ -79,6 +85,8 @@ module mcu_wrapper
         .DDR3_SDRAM_ras_n(DDR3_SDRAM_ras_n),
         .DDR3_SDRAM_reset_n(DDR3_SDRAM_reset_n),
         .DDR3_SDRAM_we_n(DDR3_SDRAM_we_n),
-        .sys_clk_n(sys_clk_n),
-        .sys_clk_p(sys_clk_p));
+        .init_calib_complete(init_calib_complete),
+        .pll_clk_n(pll_clk_n),
+        .pll_clk_p(pll_clk_p),
+        .reset(reset));
 endmodule
