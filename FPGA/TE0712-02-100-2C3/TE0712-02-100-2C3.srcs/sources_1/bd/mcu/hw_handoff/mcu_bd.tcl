@@ -453,6 +453,8 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.FREQ_HZ {32000000} \
  ] $ufb_trx_rxclk_p
+  set ufb_trx_rxd09_n [ create_bd_port -dir I -from 0 -to 0 ufb_trx_rxd09_n ]
+  set ufb_trx_rxd09_p [ create_bd_port -dir I -from 0 -to 0 ufb_trx_rxd09_p ]
   set ufb_trx_txclk_n [ create_bd_port -dir O -type clk ufb_trx_txclk_n ]
   set ufb_trx_txclk_p [ create_bd_port -dir O -type clk ufb_trx_txclk_p ]
   set ufb_trx_txd_n [ create_bd_port -dir O -from 0 -to 0 ufb_trx_txd_n ]
@@ -537,6 +539,8 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.FIT1_INTERRUPT {1} \
    CONFIG.FIT1_No_CLOCKS {100000} \
+   CONFIG.GPI1_INTERRUPT {0} \
+   CONFIG.GPI1_SIZE {8} \
    CONFIG.GPO1_INIT {0x00000000} \
    CONFIG.GPO1_SIZE {8} \
    CONFIG.INTC_USE_EXT_INTR {0} \
@@ -547,7 +551,7 @@ proc create_root_design { parentCell } {
    CONFIG.UART_RX_INTERRUPT {1} \
    CONFIG.UART_TX_INTERRUPT {1} \
    CONFIG.USE_FIT1 {1} \
-   CONFIG.USE_GPI1 {0} \
+   CONFIG.USE_GPI1 {1} \
    CONFIG.USE_GPO1 {1} \
    CONFIG.USE_PIT1 {1} \
    CONFIG.USE_UART_RX {1} \
@@ -598,6 +602,23 @@ proc create_root_design { parentCell } {
    CONFIG.USE_TEMPLATE {Custom} \
  ] $selectio_wiz_0
 
+  # Create instance: selectio_wiz_1, and set properties
+  set selectio_wiz_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:selectio_wiz:5.1 selectio_wiz_1 ]
+  set_property -dict [ list \
+   CONFIG.BUS_IO_STD {LVDS_25} \
+   CONFIG.BUS_SIG_TYPE {DIFF} \
+   CONFIG.CLK_FWD_IO_STD {LVDS_25} \
+   CONFIG.CLK_FWD_SIG_TYPE {DIFF} \
+   CONFIG.SELIO_ACTIVE_EDGE {DDR} \
+   CONFIG.SELIO_CLK_BUF {BUFIO} \
+   CONFIG.SELIO_CLK_IO_STD {LVDS_25} \
+   CONFIG.SELIO_CLK_SIG_TYPE {DIFF} \
+   CONFIG.SELIO_INTERFACE_TYPE {NETWORKING} \
+   CONFIG.SERIALIZATION_FACTOR {8} \
+   CONFIG.SYSTEM_DATA_WIDTH {1} \
+   CONFIG.USE_SERIALIZATION {true} \
+ ] $selectio_wiz_1
+
   # Create interface connections
   connect_bd_intf_net -intf_net mdm_1_M_AXI [get_bd_intf_pins mdm_1/M_AXI] [get_bd_intf_pins microblaze_0_axi_periph/S01_AXI]
   connect_bd_intf_net -intf_net microblaze_0_M_AXI_DC [get_bd_intf_pins microblaze_0/M_AXI_DC] [get_bd_intf_pins microblaze_0_axi_periph/S02_AXI]
@@ -615,8 +636,10 @@ proc create_root_design { parentCell } {
   # Create port connections
   connect_bd_net -net ARESETN_1 [get_bd_pins microblaze_0_axi_periph/ARESETN] [get_bd_pins microblaze_0_axi_periph/M00_ARESETN] [get_bd_pins microblaze_0_axi_periph/M01_ARESETN] [get_bd_pins microblaze_0_axi_periph/S00_ARESETN] [get_bd_pins microblaze_0_axi_periph/S01_ARESETN] [get_bd_pins microblaze_0_axi_periph/S02_ARESETN] [get_bd_pins microblaze_0_axi_periph/S03_ARESETN] [get_bd_pins rst_clk_wiz_1_50M/interconnect_aresetn]
   connect_bd_net -net aux_reset_in_0_1 [get_bd_ports reset] [get_bd_pins rst_clk_wiz_1_50M/aux_reset_in]
-  connect_bd_net -net clk_in_n_0_1 [get_bd_ports ufb_trx_rxclk_n] [get_bd_pins selectio_wiz_0/clk_in_n]
-  connect_bd_net -net clk_in_p_0_1 [get_bd_ports ufb_trx_rxclk_p] [get_bd_pins selectio_wiz_0/clk_in_p]
+  connect_bd_net -net clk_in_n_0_1 [get_bd_ports ufb_trx_rxclk_n] [get_bd_pins selectio_wiz_0/clk_in_n] [get_bd_pins selectio_wiz_1/clk_in_n]
+  connect_bd_net -net clk_in_p_0_1 [get_bd_ports ufb_trx_rxclk_p] [get_bd_pins selectio_wiz_0/clk_in_p] [get_bd_pins selectio_wiz_1/clk_in_p]
+  connect_bd_net -net data_in_from_pins_n_0_1 [get_bd_ports ufb_trx_rxd09_n] [get_bd_pins selectio_wiz_1/data_in_from_pins_n]
+  connect_bd_net -net data_in_from_pins_p_0_1 [get_bd_ports ufb_trx_rxd09_p] [get_bd_pins selectio_wiz_1/data_in_from_pins_p]
   connect_bd_net -net mdm_1_debug_sys_rst [get_bd_pins mdm_1/Debug_SYS_Rst] [get_bd_pins rst_clk_wiz_1_50M/mb_debug_sys_rst]
   connect_bd_net -net microblaze_0_Clk [get_bd_pins mdm_1/M_AXI_ACLK] [get_bd_pins microblaze_0/Clk] [get_bd_pins microblaze_0_axi_intc/processor_clk] [get_bd_pins microblaze_0_axi_intc/s_axi_aclk] [get_bd_pins microblaze_0_axi_periph/ACLK] [get_bd_pins microblaze_0_axi_periph/M00_ACLK] [get_bd_pins microblaze_0_axi_periph/M01_ACLK] [get_bd_pins microblaze_0_axi_periph/S00_ACLK] [get_bd_pins microblaze_0_axi_periph/S01_ACLK] [get_bd_pins microblaze_0_axi_periph/S02_ACLK] [get_bd_pins microblaze_0_axi_periph/S03_ACLK] [get_bd_pins microblaze_0_local_memory/LMB_Clk] [get_bd_pins microblaze_mcs_0/Clk] [get_bd_pins mig_7series_0/ui_clk] [get_bd_pins rst_clk_wiz_1_50M/slowest_sync_clk]
   connect_bd_net -net microblaze_0_intr [get_bd_pins microblaze_0_axi_intc/intr] [get_bd_pins microblaze_0_xlconcat/dout]
@@ -634,11 +657,12 @@ proc create_root_design { parentCell } {
   connect_bd_net -net rst_clk_wiz_1_100M_bus_struct_reset [get_bd_pins microblaze_0_local_memory/SYS_Rst] [get_bd_pins rst_clk_wiz_1_50M/bus_struct_reset]
   connect_bd_net -net rst_clk_wiz_1_100M_mb_reset [get_bd_pins microblaze_0/Reset] [get_bd_pins microblaze_0_axi_intc/processor_rst] [get_bd_pins microblaze_mcs_0/Reset] [get_bd_pins rst_clk_wiz_1_50M/mb_reset]
   connect_bd_net -net rst_clk_wiz_1_100M_peripheral_aresetn [get_bd_pins mdm_1/M_AXI_ARESETN] [get_bd_pins microblaze_0_axi_intc/s_axi_aresetn] [get_bd_pins mig_7series_0/aresetn] [get_bd_pins rst_clk_wiz_1_50M/peripheral_aresetn]
-  connect_bd_net -net rst_clk_wiz_1_50M_peripheral_reset [get_bd_pins rst_clk_wiz_1_50M/peripheral_reset] [get_bd_pins selectio_wiz_0/clk_reset] [get_bd_pins selectio_wiz_0/io_reset]
+  connect_bd_net -net rst_clk_wiz_1_50M_peripheral_reset [get_bd_pins rst_clk_wiz_1_50M/peripheral_reset] [get_bd_pins selectio_wiz_0/clk_reset] [get_bd_pins selectio_wiz_0/io_reset] [get_bd_pins selectio_wiz_1/clk_reset] [get_bd_pins selectio_wiz_1/io_reset]
   connect_bd_net -net selectio_wiz_0_clk_to_pins_n [get_bd_ports ufb_trx_txclk_n] [get_bd_pins selectio_wiz_0/clk_to_pins_n]
   connect_bd_net -net selectio_wiz_0_clk_to_pins_p [get_bd_ports ufb_trx_txclk_p] [get_bd_pins selectio_wiz_0/clk_to_pins_p]
   connect_bd_net -net selectio_wiz_0_data_out_to_pins_n [get_bd_ports ufb_trx_txd_n] [get_bd_pins selectio_wiz_0/data_out_to_pins_n]
   connect_bd_net -net selectio_wiz_0_data_out_to_pins_p [get_bd_ports ufb_trx_txd_p] [get_bd_pins selectio_wiz_0/data_out_to_pins_p]
+  connect_bd_net -net selectio_wiz_1_data_in_to_device [get_bd_pins microblaze_mcs_0/GPIO1_tri_i] [get_bd_pins selectio_wiz_1/data_in_to_device]
   connect_bd_net -net sys_rst_0_1 [get_bd_ports sys_rst] [get_bd_pins mig_7series_0/sys_rst]
 
   # Create address segments

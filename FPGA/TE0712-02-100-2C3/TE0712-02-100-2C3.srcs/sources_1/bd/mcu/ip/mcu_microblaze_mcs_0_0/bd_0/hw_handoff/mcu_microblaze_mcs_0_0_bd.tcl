@@ -158,10 +158,10 @@ proc create_root_design { parentCell } {
   set GPIO1 [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 GPIO1 ]
   set_property -dict [ list \
    CONFIG.C_GPI1_INTERRUPT {0} \
-   CONFIG.C_GPI1_SIZE {32} \
+   CONFIG.C_GPI1_SIZE {8} \
    CONFIG.C_GPO1_INIT {0x00000000} \
    CONFIG.C_GPO1_SIZE {8} \
-   CONFIG.C_USE_GPI1 {0} \
+   CONFIG.C_USE_GPI1 {1} \
    CONFIG.C_USE_GPO1 {1} \
    ] $GPIO1
   set UART [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:uart_rtl:1.0 UART ]
@@ -214,6 +214,7 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.C_FIT1_INTERRUPT {1} \
    CONFIG.C_FIT1_No_CLOCKS {100000} \
+   CONFIG.C_GPI1_SIZE {8} \
    CONFIG.C_GPO1_SIZE {8} \
    CONFIG.C_INSTANCE {iomodule} \
    CONFIG.C_INTC_ADDR_WIDTH {15} \
@@ -227,6 +228,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_UART_RX_INTERRUPT {1} \
    CONFIG.C_UART_TX_INTERRUPT {1} \
    CONFIG.C_USE_FIT1 {1} \
+   CONFIG.C_USE_GPI1 {1} \
    CONFIG.C_USE_GPO1 {1} \
    CONFIG.C_USE_PIT1 {1} \
    CONFIG.C_USE_UART_RX {1} \

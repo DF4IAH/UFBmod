@@ -64,6 +64,7 @@ module mcu_microblaze_mcs_0_0 (
   INTC_IRQ,
   UART_rxd,
   UART_txd,
+  GPIO1_tri_i,
   GPIO1_tri_o
 );
 
@@ -92,7 +93,9 @@ input wire UART_rxd;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME UART, BOARD.ASSOCIATED_PARAM UART_BOARD_INTERFACE" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART TxD" *)
 output wire UART_txd;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME GPIO1, C_USE_GPO1 1, C_GPO1_SIZE 8, C_GPO1_INIT 0x00000000, C_USE_GPI1 0, C_GPI1_SIZE 32, C_GPI1_INTERRUPT 0, BOARD.ASSOCIATED_PARAM GPIO1_BOARD_INTERFACE" *)
+(* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_I" *)
+input wire [7 : 0] GPIO1_tri_i;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME GPIO1, C_USE_GPO1 1, C_GPO1_SIZE 8, C_GPO1_INIT 0x00000000, C_USE_GPI1 1, C_GPI1_SIZE 8, C_GPI1_INTERRUPT 0, BOARD.ASSOCIATED_PARAM GPIO1_BOARD_INTERFACE" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O" *)
 output wire [7 : 0] GPIO1_tri_o;
 
@@ -107,6 +110,7 @@ output wire [7 : 0] GPIO1_tri_o;
     .INTC_IRQ(INTC_IRQ),
     .UART_rxd(UART_rxd),
     .UART_txd(UART_txd),
+    .GPIO1_tri_i(GPIO1_tri_i),
     .GPIO1_tri_o(GPIO1_tri_o)
   );
 endmodule

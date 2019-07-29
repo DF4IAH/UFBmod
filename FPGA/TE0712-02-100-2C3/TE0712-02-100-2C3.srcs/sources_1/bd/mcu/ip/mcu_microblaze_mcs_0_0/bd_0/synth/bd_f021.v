@@ -11,6 +11,7 @@ module bd_f021
    (Clk,
     FIT1_Interrupt,
     FIT1_Toggle,
+    GPIO1_tri_i,
     GPIO1_tri_o,
     INTC_IRQ,
     PIT1_Interrupt,
@@ -22,7 +23,8 @@ module bd_f021
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_ASYNC_RESET Reset, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0" *) input Clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.FIT1_INTERRUPT INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.FIT1_INTERRUPT, PortWidth 1, SENSITIVITY EDGE_RISING" *) output FIT1_Interrupt;
   output FIT1_Toggle;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME GPIO1, C_GPI1_INTERRUPT 0, C_GPI1_SIZE 32, C_GPO1_INIT 0x00000000, C_GPO1_SIZE 8, C_USE_GPI1 0, C_USE_GPO1 1" *) output [7:0]GPIO1_tri_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_I" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME GPIO1, C_GPI1_INTERRUPT 0, C_GPI1_SIZE 8, C_GPO1_INIT 0x00000000, C_GPO1_SIZE 8, C_USE_GPI1 1, C_USE_GPO1 1" *) input [7:0]GPIO1_tri_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O" *) output [7:0]GPIO1_tri_o;
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.INTC_IRQ INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.INTC_IRQ, PortWidth 1, SENSITIVITY LEVEL_HIGH" *) output INTC_IRQ;
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.PIT1_INTERRUPT INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.PIT1_INTERRUPT, PortWidth 1, SENSITIVITY EDGE_RISING" *) output PIT1_Interrupt;
   output PIT1_Toggle;
@@ -102,6 +104,7 @@ module bd_f021
   wire ilmb_sl_0_WAIT;
   wire [0:31]ilmb_sl_0_WRITEDBUS;
   wire ilmb_sl_0_WRITESTROBE;
+  wire [7:0]iomodule_0_GPIO1_TRI_I;
   wire [7:0]iomodule_0_GPIO1_TRI_O;
   wire [0:1]iomodule_0_INTC_Irq_ACK;
   wire [31:0]iomodule_0_INTC_Irq_ADDRESS;
@@ -113,6 +116,7 @@ module bd_f021
   assign GPIO1_tri_o[7:0] = iomodule_0_GPIO1_TRI_O;
   assign INTC_IRQ = INTC_Irq_Out;
   assign UART_txd = iomodule_0_UART_TxD;
+  assign iomodule_0_GPIO1_TRI_I = GPIO1_tri_i[7:0];
   assign iomodule_0_UART_RxD = UART_rxd;
   bd_f021_dlmb_0 dlmb
        (.LMB_ABus(dlmb_sl_0_ABUS),
@@ -212,6 +216,7 @@ module bd_f021
        (.Clk(Clk1),
         .FIT1_Interrupt(FIT1_Interrupt),
         .FIT1_Toggle(FIT1_Toggle),
+        .GPI1(iomodule_0_GPIO1_TRI_I),
         .GPO1(iomodule_0_GPIO1_TRI_O),
         .INTC_IRQ(iomodule_0_INTC_Irq_INTERRUPT),
         .INTC_IRQ_OUT(INTC_Irq_Out),

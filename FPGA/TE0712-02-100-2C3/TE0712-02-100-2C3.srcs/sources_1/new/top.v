@@ -329,7 +329,21 @@ module top(
         .DDR3_SDRAM_addr(ddr3_a),
 
         .DDR3_SDRAM_cas_n(ddr3_cas),
-        .DDR3_SDRAM_ras_n(ddr3_ras)
+        .DDR3_SDRAM_ras_n(ddr3_ras),
+
+        
+        .ufb_trx_rxclk_p(ufb_trx_rxclk_p),
+        .ufb_trx_rxclk_n(ufb_trx_rxclk_n),
+        
+        .ufb_trx_rxd09_p(ufb_trx_rxd09_p),
+        .ufb_trx_rxd09_n(ufb_trx_rxd09_n),
+        
+        .ufb_trx_txclk_p(ufb_trx_txclk_p),
+        .ufb_trx_txclk_n(ufb_trx_txclk_n),
+        
+        .ufb_trx_txd_p(ufb_trx_txd_p),
+        .ufb_trx_txd_n(ufb_trx_txd_n)
+        
         );
 
 endmodule
