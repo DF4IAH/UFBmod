@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="iomodule_funcs" />
+            <top_module name="iomodule_vote_pkg" />
+            <top_module name="ipif_pkg" />
+            <top_module name="lmb_bram_if_funcs" />
+            <top_module name="mdm_funcs" />
+            <top_module name="top_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="59900001fs"></ZoomEndTime>
+      <Cursor1Time time="0fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
+      <ValueColumnWidth column_width="138"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="5" />
+   <wave_markers>
+      <marker time="3374563938" label="" />
+   </wave_markers>
+   <wvobject fp_name="group137" type="group">
+      <obj_property name="label">Resets</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/reset" type="logic">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/sys_rst" type="logic">
+         <obj_property name="ElementShortName">sys_rst</obj_property>
+         <obj_property name="ObjectShortName">sys_rst</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group138" type="group">
+      <obj_property name="label">Clocks</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/pll_clk_p" type="logic">
+         <obj_property name="ElementShortName">pll_clk_p</obj_property>
+         <obj_property name="ObjectShortName">pll_clk_p</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/pll_clk_n" type="logic">
+         <obj_property name="ElementShortName">pll_clk_n</obj_property>
+         <obj_property name="ObjectShortName">pll_clk_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/mgt_clk0_p" type="logic">
+         <obj_property name="ElementShortName">mgt_clk0_p</obj_property>
+         <obj_property name="ObjectShortName">mgt_clk0_p</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/mgt_clk0_n" type="logic">
+         <obj_property name="ElementShortName">mgt_clk0_n</obj_property>
+         <obj_property name="ObjectShortName">mgt_clk0_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ufb_fpga_trx_clk0" type="logic">
+         <obj_property name="ElementShortName">ufb_fpga_trx_clk0</obj_property>
+         <obj_property name="ObjectShortName">ufb_fpga_trx_clk0</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group163" type="group">
+      <obj_property name="label">DDR3_SRAM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/top_tb/ddr3_reset" type="logic">
+         <obj_property name="ElementShortName">ddr3_reset</obj_property>
+         <obj_property name="ObjectShortName">ddr3_reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ddr3_cke" type="array">
+         <obj_property name="ElementShortName">ddr3_cke[0:0]</obj_property>
+         <obj_property name="ObjectShortName">ddr3_cke[0:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ddr3_clk0_p" type="array">
+         <obj_property name="ElementShortName">ddr3_clk0_p[0:0]</obj_property>
+         <obj_property name="ObjectShortName">ddr3_clk0_p[0:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ddr3_clk0_n" type="array">
+         <obj_property name="ElementShortName">ddr3_clk0_n[0:0]</obj_property>
+         <obj_property name="ObjectShortName">ddr3_clk0_n[0:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ddr3_s" type="array">
+         <obj_property name="ElementShortName">ddr3_s[0:0]</obj_property>
+         <obj_property name="ObjectShortName">ddr3_s[0:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ddr3_we" type="logic">
+         <obj_property name="ElementShortName">ddr3_we</obj_property>
+         <obj_property name="ObjectShortName">ddr3_we</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ddr3_odt" type="array">
+         <obj_property name="ElementShortName">ddr3_odt[0:0]</obj_property>
+         <obj_property name="ObjectShortName">ddr3_odt[0:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ddr3_ba" type="array">
+         <obj_property name="ElementShortName">ddr3_ba[2:0]</obj_property>
+         <obj_property name="ObjectShortName">ddr3_ba[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ddr3_a" type="array">
+         <obj_property name="ElementShortName">ddr3_a[14:0]</obj_property>
+         <obj_property name="ObjectShortName">ddr3_a[14:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ddr3_dqs_p" type="array">
+         <obj_property name="ElementShortName">ddr3_dqs_p[3:0]</obj_property>
+         <obj_property name="ObjectShortName">ddr3_dqs_p[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ddr3_dqs_n" type="array">
+         <obj_property name="ElementShortName">ddr3_dqs_n[3:0]</obj_property>
+         <obj_property name="ObjectShortName">ddr3_dqs_n[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ddr3_dm" type="array">
+         <obj_property name="ElementShortName">ddr3_dm[3:0]</obj_property>
+         <obj_property name="ObjectShortName">ddr3_dm[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ddr3_d" type="array">
+         <obj_property name="ElementShortName">ddr3_d[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ddr3_d[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ddr3_ras" type="logic">
+         <obj_property name="ElementShortName">ddr3_ras</obj_property>
+         <obj_property name="ObjectShortName">ddr3_ras</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ddr3_cas" type="logic">
+         <obj_property name="ElementShortName">ddr3_cas</obj_property>
+         <obj_property name="ObjectShortName">ddr3_cas</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider167">
+      <obj_property name="label">Internals</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group166" type="group">
+      <obj_property name="label">Microblaze</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/microblaze_0/Instr_Addr" type="array">
+         <obj_property name="ElementShortName">Instr_Addr[0:31]</obj_property>
+         <obj_property name="ObjectShortName">Instr_Addr[0:31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/microblaze_0/Data_Addr" type="array">
+         <obj_property name="ElementShortName">Data_Addr[0:31]</obj_property>
+         <obj_property name="ObjectShortName">Data_Addr[0:31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/microblaze_0/Data_Read" type="array">
+         <obj_property name="ElementShortName">Data_Read[0:31]</obj_property>
+         <obj_property name="ObjectShortName">Data_Read[0:31]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>
