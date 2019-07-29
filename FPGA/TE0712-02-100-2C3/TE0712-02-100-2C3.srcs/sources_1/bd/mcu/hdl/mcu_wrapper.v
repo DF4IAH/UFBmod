@@ -119,10 +119,10 @@ module mcu_wrapper
         .sys_rst(sys_rst),
         .ufb_trx_rxclk_n(ufb_trx_rxclk_n),
         .ufb_trx_rxclk_p(ufb_trx_rxclk_p),
-        .ufb_trx_rxd09_n(ufb_trx_rxd09_n),
-        .ufb_trx_rxd09_p(ufb_trx_rxd09_p),
+        .ufb_trx_rxd09_n(ufb_trx_rxd09_n[0]),
+        .ufb_trx_rxd09_p(ufb_trx_rxd09_p[0]),
         .ufb_trx_txclk_n(ufb_trx_txclk_n),
         .ufb_trx_txclk_p(ufb_trx_txclk_p),
-        .ufb_trx_txd_n(ufb_trx_txd_n),
-        .ufb_trx_txd_p(ufb_trx_txd_p));
+        .ufb_trx_txd_n(ufb_trx_txd_n[0]),
+        .ufb_trx_txd_p(ufb_trx_txd_p[0]));
 endmodule

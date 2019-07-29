@@ -765,7 +765,7 @@ set_property -dict {PACKAGE_PIN W4 IOSTANDARD SSTL15} [get_ports {ddr3_d[23]}]
 #IO_L12N_T1_MRCC_34 sch:DDR3-D23
 
 
-set_property -dict {PACKAGE_PIN R4 IOSTANDARD SSTL15} [get_ports {clk50m[2]}]
+#set_property -dict {PACKAGE_PIN R4 IOSTANDARD SSTL15} [get_ports {clk50m2}]
 #IO_L13P_T2_MRCC_34 sch:CLK50M2
 
 set_property -dict {PACKAGE_PIN T4 IOSTANDARD SSTL15} [get_ports {ddr3_d[24]}]
@@ -889,52 +889,52 @@ set_property -dict {PACKAGE_PIN B2 IOSTANDARD LVCMOS15} [get_ports pll_int]
 #IO_L4N_T0_35 sch:DDR3_LOOP_N
 
 
-set_property -dict {PACKAGE_PIN G1 IOSTANDARD SSTL15} [get_ports {ddr3_a4}]
+set_property -dict {PACKAGE_PIN G1 IOSTANDARD SSTL15} [get_ports {ddr3_a[4]}]
 #IO_L5P_T0_AD13P_35 sch:DDR3-A4
 
-set_property -dict {PACKAGE_PIN F1 IOSTANDARD SSTL15} [get_ports {b35_l5_n}]
+#set_property -dict {PACKAGE_PIN F1 IOSTANDARD SSTL15} [get_ports {b35_l5_n}]
 #IO_L5N_T0_AD13N_35 sch:-
 
 
-set_property -dict {PACKAGE_PIN F3 IOSTANDARD SSTL15} [get_ports {b35_l6_p}]
+#set_property -dict {PACKAGE_PIN F3 IOSTANDARD SSTL15} [get_ports {b35_l6_p}]
 #IO_L6P_T0_35 sch:-
 
-set_property -dict {PACKAGE_PIN E3 IOSTANDARD SSTL15} [get_ports {b35_l6_n}]
+#set_property -dict {PACKAGE_PIN E3 IOSTANDARD SSTL15} [get_ports {b35_l6_n}]
 #IO_L6N_T0_VREF_35 sch:-
 
 
-set_property -dict {PACKAGE_PIN K1 IOSTANDARD SSTL15} [get_ports {ddr3_s0}]
+set_property -dict {PACKAGE_PIN K1 IOSTANDARD SSTL15} [get_ports {ddr3_s[0]}]
 #IO_L7P_T1_AD6P_35 sch:DDR3-S0
 
-set_property -dict {PACKAGE_PIN J1 IOSTANDARD SSTL15} [get_ports {ddr3_a0}]
+set_property -dict {PACKAGE_PIN J1 IOSTANDARD SSTL15} [get_ports {ddr3_a[0]}]
 #IO_L7N_T1_AD6N_35 sch:DDR3-A0
 
 
-set_property -dict {PACKAGE_PIN H2 IOSTANDARD SSTL15} [get_ports {ddr3_ba2}]
+set_property -dict {PACKAGE_PIN H2 IOSTANDARD SSTL15} [get_ports {ddr3_ba[2]}]
 #IO_L8P_T1_AD14P_35 sch:DDR3-BA2
 
-set_property -dict {PACKAGE_PIN G2 IOSTANDARD SSTL15} [get_ports {b35_l8_n}]
+#set_property -dict {PACKAGE_PIN G2 IOSTANDARD SSTL15} [get_ports {b35_l8_n}]
 #IO_L8N_T1_AD14N_35 sch:-
 
 
-set_property -dict {PACKAGE_PIN K2 IOSTANDARD SSTL15} [get_ports {ddr3_a12}]
+set_property -dict {PACKAGE_PIN K2 IOSTANDARD SSTL15} [get_ports {ddr3_a[12]}]
 #IO_L9P_T1_DQS_AD7P_35 sch:DDR3-A12
 
 set_property -dict {PACKAGE_PIN J2 IOSTANDARD SSTL15} [get_ports ddr3_we]
 #IO_L9N_T1_DQS_AD7N_35 sch:DDR3-WE
 
 
-set_property -dict {PACKAGE_PIN J5 IOSTANDARD SSTL15} [get_ports {ddr3_a7}]
+set_property -dict {PACKAGE_PIN J5 IOSTANDARD SSTL15} [get_ports {ddr3_a[7]}]
 #IO_L10P_T1_AD15P_35 sch:DDR3-A7
 
-set_property -dict {PACKAGE_PIN H5 IOSTANDARD SSTL15} [get_ports {ddr3_ba1}]
+set_property -dict {PACKAGE_PIN H5 IOSTANDARD SSTL15} [get_ports {ddr3_ba[1]}]
 #IO_L10N_T1_AD15N_35 sch:DDR3-BA1
 
 
 set_property -dict {PACKAGE_PIN H3 IOSTANDARD LVCMOS15} [get_ports ddr3_reset]
 #IO_L11P_T1_SRCC_35 sch:DDR3-RESET
 
-set_property -dict {PACKAGE_PIN G3 IOSTANDARD SSTL15} [get_ports {b35_l11_n}]
+#set_property -dict {PACKAGE_PIN G3 IOSTANDARD SSTL15} [get_ports {b35_l11_n}]
 #IO_L11N_T1_SRCC_35 sch:-
 
 
@@ -945,28 +945,28 @@ set_property -dict {PACKAGE_PIN G4 IOSTANDARD DIFF_SSTL15} [get_ports pll_clk_n]
 #IO_L12N_T1_MRCC_35 sch:PLL_CLK_N --> 50.0 MHz
 
 
-set_property -dict {PACKAGE_PIN K4 IOSTANDARD DIFF_SSTL15} [get_ports {clk0_p}]
+#set_property -dict {PACKAGE_PIN K4 IOSTANDARD DIFF_SSTL15} [get_ports {clk0_p}]
 #IO_L13P_T2_MRCC_35 sch:CLK0_P
 
-set_property -dict {PACKAGE_PIN J4 IOSTANDARD DIFF_SSTL15} [get_ports {clk0_n}]
+#set_property -dict {PACKAGE_PIN J4 IOSTANDARD DIFF_SSTL15} [get_ports {clk0_n}]
 #IO_L13N_T2_MRCC_35 sch:CLK0_N
 
 
-set_property -dict {PACKAGE_PIN L3 IOSTANDARD SSTL15} [get_ports {ddr3_cke0}]
+set_property -dict {PACKAGE_PIN L3 IOSTANDARD SSTL15} [get_ports {ddr3_cke[0]}]
 #IO_L14P_T2_SRCC_35 sch:DDR3-CKE0
 
-set_property -dict {PACKAGE_PIN K3 IOSTANDARD SSTL15} [get_ports {ddr3_odt0}]
+set_property -dict {PACKAGE_PIN K3 IOSTANDARD SSTL15} [get_ports {ddr3_odt[0]}]
 #IO_L14N_T2_SRCC_35 sch:DDR3-ODT0
 
 
-set_property -dict {PACKAGE_PIN M1 IOSTANDARD SSTL15} [get_ports {ddr3_a13}]
+set_property -dict {PACKAGE_PIN M1 IOSTANDARD SSTL15} [get_ports {ddr3_a[13]}]
 #IO_L15P_T2_DQS_35 sch:DDR3-A13
 
-set_property -dict {PACKAGE_PIN L1 IOSTANDARD SSTL15} [get_ports {ddr3_a8}]
+set_property -dict {PACKAGE_PIN L1 IOSTANDARD SSTL15} [get_ports {ddr3_a[8]}]
 #IO_L15N_T2_DQS_35 sch:DDR3-A8
 
 
-set_property -dict {PACKAGE_PIN M3 IOSTANDARD SSTL15} [get_ports {ddr3_a5}]
+set_property -dict {PACKAGE_PIN M3 IOSTANDARD SSTL15} [get_ports {ddr3_a[5]}]
 #IO_L16P_T2_35 sch:DDR3-A5
 
 set_property -dict {PACKAGE_PIN M2 IOSTANDARD SSTL15} [get_ports ddr3_cas]
@@ -983,14 +983,14 @@ set_property -dict {PACKAGE_PIN M2 IOSTANDARD SSTL15} [get_ports ddr3_cas]
 #set_property -dict {PACKAGE_PIN L5 IOSTANDARD SSTL15} [get_ports {b35_l18_p}]
 #IO_L18P_T2_35 sch:-
 
-set_property -dict {PACKAGE_PIN L4 IOSTANDARD SSTL15} [get_ports {ddr3_a10}]
+set_property -dict {PACKAGE_PIN L4 IOSTANDARD SSTL15} [get_ports {ddr3_a[10]}]
 #IO_L18N_T2_35 sch:DDR3-A10
 
 
 #set_property -dict {PACKAGE_PIN N4 IOSTANDARD SSTL15} [get_ports {b35_l19_p}]
 #IO_L19P_T3_35 sch:-
 
-set_property -dict {PACKAGE_PIN N3 IOSTANDARD SSTL15} [get_ports {ddr3_a3}]
+set_property -dict {PACKAGE_PIN N3 IOSTANDARD SSTL15} [get_ports {ddr3_a[3]}]
 #IO_L19N_T3_VREF_35 sch:DDR3-A3
 
 
@@ -1001,31 +1001,31 @@ set_property -dict {PACKAGE_PIN P1 IOSTANDARD DIFF_SSTL15} [get_ports ddr3_clk0_
 #IO_L20N_T3_35 sch:DDR3-CLK0_N --> 400.0 MHz - To be defined by the MIG tool and speed grade of FPGA
 
 
-set_property -dict {PACKAGE_PIN P5 IOSTANDARD SSTL15} [get_ports {ddr3_a11}]
+set_property -dict {PACKAGE_PIN P5 IOSTANDARD SSTL15} [get_ports {ddr3_a[11]}]
 #IO_L21P_T3_DQS_35 sch:DDR3-A11
 
-set_property -dict {PACKAGE_PIN P4 IOSTANDARD SSTL15} [get_ports {ddr3_ba0}]
+set_property -dict {PACKAGE_PIN P4 IOSTANDARD SSTL15} [get_ports {ddr3_ba[0]}]
 #IO_L21N_T3_DQS_35 sch:DDR3-BA0
 
 
-set_property -dict {PACKAGE_PIN P2 IOSTANDARD SSTL15} [get_ports {ddr3_a9}]
+set_property -dict {PACKAGE_PIN P2 IOSTANDARD SSTL15} [get_ports {ddr3_a[9]}]
 #IO_L22P_T3_35 sch:DDR3-A9
 
-set_property -dict {PACKAGE_PIN N2 IOSTANDARD SSTL15} [get_ports {ddr3_a6}]
+set_property -dict {PACKAGE_PIN N2 IOSTANDARD SSTL15} [get_ports {ddr3_a[6]}]
 #IO_L22N_T3_35 sch:DDR3-A6
 
 
 set_property -dict {PACKAGE_PIN M6 IOSTANDARD SSTL15} [get_ports ddr3_ras]
 #IO_L23P_T3_35 sch:DDR3-RAS
 
-set_property -dict {PACKAGE_PIN M5 IOSTANDARD SSTL15} [get_ports {ddr3_a14}]
+set_property -dict {PACKAGE_PIN M5 IOSTANDARD SSTL15} [get_ports {ddr3_a[14]}]
 #IO_L23N_T3_35 sch:DDR3-A14
 
 
-set_property -dict {PACKAGE_PIN P6 IOSTANDARD SSTL15} [get_ports {ddr3_a1}]
+set_property -dict {PACKAGE_PIN P6 IOSTANDARD SSTL15} [get_ports {ddr3_a[1]}]
 #IO_L24P_T3_35 sch:DDR3-A1
 
-set_property -dict {PACKAGE_PIN N5 IOSTANDARD SSTL15} [get_ports {ddr3_a2}]
+set_property -dict {PACKAGE_PIN N5 IOSTANDARD SSTL15} [get_ports {ddr3_a[2]}]
 #IO_L24N_T3_35 sch:DDR3-A2
 
 

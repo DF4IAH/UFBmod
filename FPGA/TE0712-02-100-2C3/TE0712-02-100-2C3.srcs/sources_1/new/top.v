@@ -257,17 +257,17 @@ module top(
     input  ufb_trx_rxclk_p;
     input  ufb_trx_rxclk_n;
     
-    input  ufb_trx_rxd09_p;
-    input  ufb_trx_rxd09_n;
+    input  [0:0]ufb_trx_rxd09_p;
+    input  [0:0]ufb_trx_rxd09_n;
     
-    input  ufb_trx_rxd24_p;
-    input  ufb_trx_rxd24_n;
+    input  [0:0]ufb_trx_rxd24_p;
+    input  [0:0]ufb_trx_rxd24_n;
     
     output ufb_trx_txclk_p;
     output ufb_trx_txclk_n;
     
-    output ufb_trx_txd_p;
-    output ufb_trx_txd_n;
+    output [0:0]ufb_trx_txd_p;
+    output [0:0]ufb_trx_txd_n;
     
     
     // TRX SPI
