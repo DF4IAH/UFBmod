@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xBC0ECAFAF564AB85",
+      "boundary_crc": "0x3AAFAA05C36A4567",
       "design_src": "SBD",
       "device": "xc7a100tfgg484-2",
       "name": "bd_f021",
@@ -39,10 +39,10 @@
             "value": "0x00000000"
           },
           "C_GPO1_SIZE": {
-            "value": "32"
+            "value": "8"
           },
           "C_USE_GPI1": {
-            "value": "1"
+            "value": "0"
           },
           "C_USE_GPO1": {
             "value": "1"
@@ -276,6 +276,9 @@
           "C_FIT1_No_CLOCKS": {
             "value": "100000"
           },
+          "C_GPO1_SIZE": {
+            "value": "8"
+          },
           "C_HIGHADDR": {
             "value": "0x000000008000FFFF"
           },
@@ -321,9 +324,6 @@
           "C_USE_FIT1": {
             "value": "1"
           },
-          "C_USE_GPI1": {
-            "value": "1"
-          },
           "C_USE_GPO1": {
             "value": "1"
           },
@@ -340,6 +340,24 @@
       }
     },
     "interface_nets": {
+      "ilmb": {
+        "interface_ports": [
+          "microblaze_I/ILMB",
+          "ilmb/LMB_M"
+        ]
+      },
+      "dlmb": {
+        "interface_ports": [
+          "microblaze_I/DLMB",
+          "dlmb/LMB_M"
+        ]
+      },
+      "dlmb_sl_0": {
+        "interface_ports": [
+          "dlmb/LMB_Sl_0",
+          "dlmb_cntlr/SLMB"
+        ]
+      },
       "dlmb_port": {
         "interface_ports": [
           "dlmb_cntlr/BRAM_PORT",
@@ -352,16 +370,10 @@
           "iomodule_0/UART"
         ]
       },
-      "ilmb": {
+      "dlmb_sl_1": {
         "interface_ports": [
-          "microblaze_I/ILMB",
-          "ilmb/LMB_M"
-        ]
-      },
-      "ilmb_sl_0": {
-        "interface_ports": [
-          "ilmb/LMB_Sl_0",
-          "ilmb_cntlr/SLMB"
+          "dlmb/LMB_Sl_1",
+          "iomodule_0/SLMB"
         ]
       },
       "ilmb_port": {
@@ -370,16 +382,10 @@
           "lmb_bram_I/BRAM_PORTB"
         ]
       },
-      "dlmb": {
+      "ilmb_sl_0": {
         "interface_ports": [
-          "microblaze_I/DLMB",
-          "dlmb/LMB_M"
-        ]
-      },
-      "iomodule_0_INTC_Irq": {
-        "interface_ports": [
-          "iomodule_0/INTC_Irq",
-          "microblaze_I/INTERRUPT"
+          "ilmb/LMB_Sl_0",
+          "ilmb_cntlr/SLMB"
         ]
       },
       "iomodule_0_GPIO1": {
@@ -388,16 +394,10 @@
           "iomodule_0/GPIO1"
         ]
       },
-      "dlmb_sl_1": {
+      "iomodule_0_INTC_Irq": {
         "interface_ports": [
-          "dlmb/LMB_Sl_1",
-          "iomodule_0/SLMB"
-        ]
-      },
-      "dlmb_sl_0": {
-        "interface_ports": [
-          "dlmb/LMB_Sl_0",
-          "dlmb_cntlr/SLMB"
+          "iomodule_0/INTC_Irq",
+          "microblaze_I/INTERRUPT"
         ]
       }
     },

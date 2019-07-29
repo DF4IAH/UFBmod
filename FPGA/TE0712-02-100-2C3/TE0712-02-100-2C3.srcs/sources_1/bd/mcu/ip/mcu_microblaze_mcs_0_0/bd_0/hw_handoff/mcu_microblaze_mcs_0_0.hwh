@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Jul 29 10:07:57 2019" VIVADOVERSION="2018.3">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Jul 29 15:59:44 2019" VIVADOVERSION="2018.3">
 
   <SYSTEMINFO ARCH="artix7" DEVICE="7a100t" NAME="bd_f021" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -60,12 +60,7 @@
         <CONNECTION INSTANCE="iomodule_0" PORT="UART_Tx"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" LEFT="31" NAME="GPIO1_tri_i" RIGHT="0" SIGIS="undef" SIGNAME="iomodule_0_GPI1">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="iomodule_0" PORT="GPI1"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="31" NAME="GPIO1_tri_o" RIGHT="0" SIGIS="undef" SIGNAME="iomodule_0_GPO1">
+    <PORT DIR="O" LEFT="7" NAME="GPIO1_tri_o" RIGHT="0" SIGIS="undef" SIGNAME="iomodule_0_GPO1">
       <CONNECTIONS>
         <CONNECTION INSTANCE="iomodule_0" PORT="GPO1"/>
       </CONNECTIONS>
@@ -83,11 +78,10 @@
       <PARAMETER NAME="C_GPI1_INTERRUPT" VALUE="0"/>
       <PARAMETER NAME="C_GPI1_SIZE" VALUE="32"/>
       <PARAMETER NAME="C_GPO1_INIT" VALUE="0x00000000"/>
-      <PARAMETER NAME="C_GPO1_SIZE" VALUE="32"/>
-      <PARAMETER NAME="C_USE_GPI1" VALUE="1"/>
+      <PARAMETER NAME="C_GPO1_SIZE" VALUE="8"/>
+      <PARAMETER NAME="C_USE_GPI1" VALUE="0"/>
       <PARAMETER NAME="C_USE_GPO1" VALUE="1"/>
       <PORTMAPS>
-        <PORTMAP LOGICAL="TRI_I" PHYSICAL="GPIO1_tri_i"/>
         <PORTMAP LOGICAL="TRI_O" PHYSICAL="GPIO1_tri_o"/>
       </PORTMAPS>
     </BUSINTERFACE>
@@ -967,7 +961,7 @@
             <REGISTER NAME="GPO 1">
               <PROPERTY NAME="DESCRIPTION" VALUE="General Purpose Output 1 Register"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x10"/>
-              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="SIZE" VALUE="8"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0"/>
@@ -980,7 +974,7 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="8"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
@@ -1049,7 +1043,7 @@
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x20"/>
               <PROPERTY NAME="SIZE" VALUE="32"/>
               <PROPERTY NAME="ACCESS" VALUE="read-only"/>
-              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0"/>
               <FIELDS>
                 <FIELD NAME="GPI">
@@ -3255,7 +3249,7 @@
         <PARAMETER NAME="C_PIT4_PRESCALER" VALUE="0"/>
         <PARAMETER NAME="C_PIT4_INTERRUPT" VALUE="0"/>
         <PARAMETER NAME="C_USE_GPO1" VALUE="1"/>
-        <PARAMETER NAME="C_GPO1_SIZE" VALUE="32"/>
+        <PARAMETER NAME="C_GPO1_SIZE" VALUE="8"/>
         <PARAMETER NAME="C_GPO1_INIT" VALUE="0x00000000"/>
         <PARAMETER NAME="C_USE_GPO2" VALUE="0"/>
         <PARAMETER NAME="C_GPO2_SIZE" VALUE="32"/>
@@ -3266,7 +3260,7 @@
         <PARAMETER NAME="C_USE_GPO4" VALUE="0"/>
         <PARAMETER NAME="C_GPO4_SIZE" VALUE="32"/>
         <PARAMETER NAME="C_GPO4_INIT" VALUE="0x00000000"/>
-        <PARAMETER NAME="C_USE_GPI1" VALUE="1"/>
+        <PARAMETER NAME="C_USE_GPI1" VALUE="0"/>
         <PARAMETER NAME="C_GPI1_SIZE" VALUE="32"/>
         <PARAMETER NAME="C_GPI1_INTERRUPT" VALUE="0"/>
         <PARAMETER NAME="C_USE_GPI2" VALUE="0"/>
@@ -3347,14 +3341,9 @@
             <CONNECTION INSTANCE="External_Ports" PORT="PIT1_Toggle"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="GPO1" RIGHT="0" SIGIS="undef" SIGNAME="iomodule_0_GPO1">
+        <PORT DIR="O" LEFT="7" NAME="GPO1" RIGHT="0" SIGIS="undef" SIGNAME="iomodule_0_GPO1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="bd_f021_imp" PORT="GPIO1_tri_o"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="GPI1" RIGHT="0" SIGIS="undef" SIGNAME="iomodule_0_GPI1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="bd_f021_imp" PORT="GPIO1_tri_i"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="INTC_IRQ" SIGIS="undef" SIGNAME="iomodule_0_INTC_IRQ">
@@ -3469,13 +3458,12 @@
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="iomodule_0_GPIO1" NAME="GPIO1" TYPE="INITIATOR" VLNV="xilinx.com:interface:gpio:1.0">
           <PARAMETER NAME="C_USE_GPO1" VALUE="1"/>
-          <PARAMETER NAME="C_GPO1_SIZE" VALUE="32"/>
+          <PARAMETER NAME="C_GPO1_SIZE" VALUE="8"/>
           <PARAMETER NAME="C_GPO1_INIT" VALUE="0x00000000"/>
-          <PARAMETER NAME="C_USE_GPI1" VALUE="1"/>
+          <PARAMETER NAME="C_USE_GPI1" VALUE="0"/>
           <PARAMETER NAME="C_GPI1_SIZE" VALUE="32"/>
           <PARAMETER NAME="C_GPI1_INTERRUPT" VALUE="0"/>
           <PORTMAPS>
-            <PORTMAP LOGICAL="TRI_I" PHYSICAL="GPI1"/>
             <PORTMAP LOGICAL="TRI_O" PHYSICAL="GPO1"/>
           </PORTMAPS>
         </BUSINTERFACE>

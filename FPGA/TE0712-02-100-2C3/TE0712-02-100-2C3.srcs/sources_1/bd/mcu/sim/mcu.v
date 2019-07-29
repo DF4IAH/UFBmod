@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Mon Jul 29 10:07:57 2019
+//Date        : Mon Jul 29 16:02:10 2019
 //Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -581,7 +581,7 @@ module m01_couplers_imp_AFYY8F
   assign m01_couplers_to_m01_couplers_WVALID = S_AXI_wvalid;
 endmodule
 
-(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=24,numReposBlks=16,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_mb_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
+(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=25,numReposBlks=17,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_mb_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
 module mcu
    (DDR3_SDRAM_addr,
     DDR3_SDRAM_ba,
@@ -602,7 +602,13 @@ module mcu
     pll_clk_n,
     pll_clk_p,
     reset,
-    sys_rst);
+    sys_rst,
+    ufb_trx_rxclk_n,
+    ufb_trx_rxclk_p,
+    ufb_trx_txclk_n,
+    ufb_trx_txclk_p,
+    ufb_trx_txd_n,
+    ufb_trx_txd_p);
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ADDR" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DDR3_SDRAM, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250" *) output [14:0]DDR3_SDRAM_addr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM BA" *) output [2:0]DDR3_SDRAM_ba;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CAS_N" *) output DDR3_SDRAM_cas_n;
@@ -623,9 +629,17 @@ module mcu
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PLL_CLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PLL_CLK_P, ASSOCIATED_RESET sys_rst, CLK_DOMAIN mcu_clk_ref_p_0, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input pll_clk_p;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input reset;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.SYS_RST RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.SYS_RST, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input sys_rst;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_TRX_RXCLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_TRX_RXCLK_N, CLK_DOMAIN mcu_clk_in_n_0, FREQ_HZ 32000000, INSERT_VIP 0, PHASE 0.000" *) input ufb_trx_rxclk_n;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_TRX_RXCLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_TRX_RXCLK_P, CLK_DOMAIN mcu_clk_in_p_0, FREQ_HZ 32000000, INSERT_VIP 0, PHASE 0.000" *) input ufb_trx_rxclk_p;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_TRX_TXCLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_TRX_TXCLK_N, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.000" *) output ufb_trx_txclk_n;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_TRX_TXCLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_TRX_TXCLK_P, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.000" *) output ufb_trx_txclk_p;
+  output [0:0]ufb_trx_txd_n;
+  output [0:0]ufb_trx_txd_p;
 
   wire [0:0]ARESETN_1;
   wire aux_reset_in_0_1;
+  wire clk_in_n_0_1;
+  wire clk_in_p_0_1;
   wire [31:0]mdm_1_M_AXI_ARADDR;
   wire [1:0]mdm_1_M_AXI_ARBURST;
   wire [3:0]mdm_1_M_AXI_ARCACHE;
@@ -860,6 +874,7 @@ module mcu
   wire [0:31]microblaze_0_lmb_WRITEDBUS;
   wire microblaze_0_lmb_WRITESTROBE;
   wire microblaze_mcs_0_FIT1_Interrupt;
+  wire [7:0]microblaze_mcs_0_GPIO1_tri_o;
   wire microblaze_mcs_0_INTC_IRQ;
   wire microblaze_mcs_0_PIT1_Interrupt;
   wire microblaze_mcs_0_UART_Interrupt;
@@ -887,6 +902,11 @@ module mcu
   wire [0:0]rst_clk_wiz_1_100M_bus_struct_reset;
   wire rst_clk_wiz_1_100M_mb_reset;
   wire [0:0]rst_clk_wiz_1_100M_peripheral_aresetn;
+  wire [0:0]rst_clk_wiz_1_50M_peripheral_reset;
+  wire selectio_wiz_0_clk_to_pins_n;
+  wire selectio_wiz_0_clk_to_pins_p;
+  wire [0:0]selectio_wiz_0_data_out_to_pins_n;
+  wire [0:0]selectio_wiz_0_data_out_to_pins_p;
   wire sys_rst_0_1;
 
   assign DDR3_SDRAM_addr[14:0] = mig_7series_0_DDR3_ADDR;
@@ -902,10 +922,16 @@ module mcu
   assign DDR3_SDRAM_reset_n = mig_7series_0_DDR3_RESET_N;
   assign DDR3_SDRAM_we_n = mig_7series_0_DDR3_WE_N;
   assign aux_reset_in_0_1 = reset;
+  assign clk_in_n_0_1 = ufb_trx_rxclk_n;
+  assign clk_in_p_0_1 = ufb_trx_rxclk_p;
   assign init_calib_complete = mig_7series_0_init_calib_complete;
   assign pll_clk_n_1 = pll_clk_n;
   assign pll_clk_p_1 = pll_clk_p;
   assign sys_rst_0_1 = sys_rst;
+  assign ufb_trx_txclk_n = selectio_wiz_0_clk_to_pins_n;
+  assign ufb_trx_txclk_p = selectio_wiz_0_clk_to_pins_p;
+  assign ufb_trx_txd_n[0] = selectio_wiz_0_data_out_to_pins_n;
+  assign ufb_trx_txd_p[0] = selectio_wiz_0_data_out_to_pins_p;
   mcu_mdm_1_0 mdm_1
        (.Dbg_Capture_0(microblaze_0_debug_CAPTURE),
         .Dbg_Clk_0(microblaze_0_debug_CLK),
@@ -1373,7 +1399,7 @@ module mcu
   mcu_microblaze_mcs_0_0 microblaze_mcs_0
        (.Clk(microblaze_0_Clk),
         .FIT1_Interrupt(microblaze_mcs_0_FIT1_Interrupt),
-        .GPIO1_tri_i({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .GPIO1_tri_o(microblaze_mcs_0_GPIO1_tri_o),
         .INTC_IRQ(microblaze_mcs_0_INTC_IRQ),
         .PIT1_Interrupt(microblaze_mcs_0_PIT1_Interrupt),
         .Reset(rst_clk_wiz_1_100M_mb_reset),
@@ -1451,7 +1477,18 @@ module mcu
         .mb_debug_sys_rst(mdm_1_debug_sys_rst),
         .mb_reset(rst_clk_wiz_1_100M_mb_reset),
         .peripheral_aresetn(rst_clk_wiz_1_100M_peripheral_aresetn),
+        .peripheral_reset(rst_clk_wiz_1_50M_peripheral_reset),
         .slowest_sync_clk(microblaze_0_Clk));
+  mcu_selectio_wiz_0_0 selectio_wiz_0
+       (.clk_in_n(clk_in_n_0_1),
+        .clk_in_p(clk_in_p_0_1),
+        .clk_reset(rst_clk_wiz_1_50M_peripheral_reset),
+        .clk_to_pins_n(selectio_wiz_0_clk_to_pins_n),
+        .clk_to_pins_p(selectio_wiz_0_clk_to_pins_p),
+        .data_out_from_device(microblaze_mcs_0_GPIO1_tri_o),
+        .data_out_to_pins_n(selectio_wiz_0_data_out_to_pins_n),
+        .data_out_to_pins_p(selectio_wiz_0_data_out_to_pins_p),
+        .io_reset(rst_clk_wiz_1_50M_peripheral_reset));
 endmodule
 
 module mcu_microblaze_0_axi_periph_0
