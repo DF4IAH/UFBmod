@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Mon Jul 29 15:50:58 2019
+// Date        : Mon Jul 29 17:20:00 2019
 // Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
 // Command     : write_verilog -force -mode funcsim
-//               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_selectio_wiz_0_0/mcu_selectio_wiz_0_0_sim_netlist.v
+//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_selectio_wiz_0_0/mcu_selectio_wiz_0_0_sim_netlist.v
 // Design      : mcu_selectio_wiz_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -20,9 +20,8 @@ module mcu_selectio_wiz_0_0
     data_out_to_pins_n,
     clk_to_pins_p,
     clk_to_pins_n,
-    clk_in_p,
-    clk_in_n,
-    clk_div_out,
+    clk_in,
+    clk_div_in,
     clk_reset,
     io_reset);
   input [7:0]data_out_from_device;
@@ -30,15 +29,13 @@ module mcu_selectio_wiz_0_0
   output [0:0]data_out_to_pins_n;
   output clk_to_pins_p;
   output clk_to_pins_n;
-  input clk_in_p;
-  input clk_in_n;
-  output clk_div_out;
+  input clk_in;
+  input clk_div_in;
   input clk_reset;
   input io_reset;
 
-  wire clk_div_out;
-  (* DIFF_TERM = 0 *) (* IBUF_LOW_PWR *) (* IOSTANDARD = "LVDS_25" *) wire clk_in_n;
-  (* DIFF_TERM = 0 *) (* IBUF_LOW_PWR *) (* IOSTANDARD = "LVDS_25" *) wire clk_in_p;
+  wire clk_div_in;
+  wire clk_in;
   wire clk_reset;
   (* IOSTANDARD = "LVDS_25" *) (* SLEW = "SLOW" *) wire clk_to_pins_n;
   (* IOSTANDARD = "LVDS_25" *) (* SLEW = "SLOW" *) wire clk_to_pins_p;
@@ -51,9 +48,8 @@ module mcu_selectio_wiz_0_0
   (* SYS_W = "1" *) 
   (* num_serial_bits = "8" *) 
   mcu_selectio_wiz_0_0_mcu_selectio_wiz_0_0_selectio_wiz inst
-       (.clk_div_out(clk_div_out),
-        .clk_in_n(clk_in_n),
-        .clk_in_p(clk_in_p),
+       (.clk_div_in(clk_div_in),
+        .clk_in(clk_in),
         .clk_reset(clk_reset),
         .clk_to_pins_n(clk_to_pins_n),
         .clk_to_pins_p(clk_to_pins_p),
@@ -71,9 +67,8 @@ module mcu_selectio_wiz_0_0_mcu_selectio_wiz_0_0_selectio_wiz
     data_out_to_pins_n,
     clk_to_pins_p,
     clk_to_pins_n,
-    clk_in_p,
-    clk_in_n,
-    clk_div_out,
+    clk_in,
+    clk_div_in,
     clk_reset,
     io_reset);
   input [7:0]data_out_from_device;
@@ -81,19 +76,14 @@ module mcu_selectio_wiz_0_0_mcu_selectio_wiz_0_0_selectio_wiz
   output [0:0]data_out_to_pins_n;
   output clk_to_pins_p;
   output clk_to_pins_n;
-  input clk_in_p;
-  input clk_in_n;
-  output clk_div_out;
+  input clk_in;
+  input clk_div_in;
   input clk_reset;
   input io_reset;
 
-  wire clk_div_out;
+  wire clk_div_in;
   wire clk_fwd_out;
-  wire clk_in_int;
-  wire clk_in_int_buf;
-  wire clk_in_n;
-  wire clk_in_p;
-  wire clk_reset;
+  wire clk_in;
   wire clk_to_pins_n;
   wire clk_to_pins_p;
   wire [7:0]data_out_from_device;
@@ -114,10 +104,6 @@ module mcu_selectio_wiz_0_0_mcu_selectio_wiz_0_0_selectio_wiz
   wire \NLW_pins[0].oserdese2_master_TFB_UNCONNECTED ;
   wire \NLW_pins[0].oserdese2_master_TQ_UNCONNECTED ;
 
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFIO bufio_inst
-       (.I(clk_in_int),
-        .O(clk_in_int_buf));
   (* BOX_TYPE = "PRIMITIVE" *) 
   OSERDESE2 #(
     .DATA_RATE_OQ("DDR"),
@@ -146,8 +132,8 @@ module mcu_selectio_wiz_0_0_mcu_selectio_wiz_0_0_selectio_wiz
     .TBYTE_SRC("FALSE"),
     .TRISTATE_WIDTH(1)) 
     clk_fwd
-       (.CLK(clk_in_int_buf),
-        .CLKDIV(clk_div_out),
+       (.CLK(clk_in),
+        .CLKDIV(clk_div_in),
         .D1(1'b1),
         .D2(1'b0),
         .D3(1'b1),
@@ -173,23 +159,6 @@ module mcu_selectio_wiz_0_0_mcu_selectio_wiz_0_0_selectio_wiz
         .TCE(1'b0),
         .TFB(NLW_clk_fwd_TFB_UNCONNECTED),
         .TQ(NLW_clk_fwd_TQ_UNCONNECTED));
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFR #(
-    .BUFR_DIVIDE("4"),
-    .SIM_DEVICE("7SERIES")) 
-    clkout_buf_inst
-       (.CE(1'b1),
-        .CLR(clk_reset),
-        .I(clk_in_int),
-        .O(clk_div_out));
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  (* CAPACITANCE = "DONT_CARE" *) 
-  (* IBUF_DELAY_VALUE = "0" *) 
-  (* IFD_DELAY_VALUE = "AUTO" *) 
-  IBUFDS ibufds_clk_inst
-       (.I(clk_in_p),
-        .IB(clk_in_n),
-        .O(clk_in_int));
   (* BOX_TYPE = "PRIMITIVE" *) 
   (* CAPACITANCE = "DONT_CARE" *) 
   OBUFDS obufds_inst
@@ -230,8 +199,8 @@ module mcu_selectio_wiz_0_0_mcu_selectio_wiz_0_0_selectio_wiz
     .TBYTE_SRC("FALSE"),
     .TRISTATE_WIDTH(1)) 
     \pins[0].oserdese2_master 
-       (.CLK(clk_in_int_buf),
-        .CLKDIV(clk_div_out),
+       (.CLK(clk_in),
+        .CLKDIV(clk_div_in),
         .D1(data_out_from_device[0]),
         .D2(data_out_from_device[1]),
         .D3(data_out_from_device[2]),

@@ -65,9 +65,8 @@ module mcu_selectio_wiz_0_0_selectio_wiz
   output [SYS_W-1:0] data_out_to_pins_n,
   output  clk_to_pins_p,
   output  clk_to_pins_n,
-  input              clk_in_p,      // Differential clock from IOB
-  input              clk_in_n,
-  output             clk_div_out,   // Slow clock output
+  input              clk_in,        // Fast clock input from PLL/MMCM
+  input              clk_div_in,    // Slow clock input from PLL/MMCM
   input              clk_reset,
   input              io_reset);
   localparam         num_serial_bits = DEV_W/SYS_W;
@@ -84,30 +83,6 @@ module mcu_selectio_wiz_0_0_selectio_wiz
   wire [SYS_W-1:0]  oserdes_d[0:13];   // fills in starting with 13
   // Create the clock logic
 
-  IBUFDS
-    #(.IOSTANDARD ("LVDS_25"))
-   ibufds_clk_inst
-     (.I          (clk_in_p),
-      .IB         (clk_in_n),
-      .O          (clk_in_int));
-
-// High Speed BUFIO clock buffer
- BUFIO bufio_inst
-   (.O(clk_in_int_buf),
-    .I(clk_in_int));
-
-  
-   // BUFR generates the slow clock
-   BUFR
-    #(.SIM_DEVICE("7SERIES"),
-    .BUFR_DIVIDE("4"))
-    clkout_buf_inst
-    (.O (clk_div),
-     .CE(1'b1),
-     .CLR(clk_reset),
-     .I (clk_in_int));
-
-   assign clk_div_out = clk_div; // This is regional clock
 
   // We have multiple bits- step over every bit, instantiating the required elements
   genvar pin_count;
@@ -156,8 +131,8 @@ module mcu_selectio_wiz_0_0_selectio_wiz
          .SHIFTOUT1      (),
          .SHIFTOUT2      (),
          .OCE            (clock_enable),
-         .CLK            (clk_in_int_buf),
-         .CLKDIV         (clk_div),
+         .CLK            (clk_in),
+         .CLKDIV         (clk_div_in),
          .OQ             (data_out_to_pins_predelay[pin_count]),
          .TQ             (),
          .OFB            (),
@@ -184,7 +159,6 @@ module mcu_selectio_wiz_0_0_selectio_wiz
   end
   endgenerate
 
-   // clock forwarding logic
 
      // declare the oserdes
      OSERDESE2
@@ -212,8 +186,8 @@ module mcu_selectio_wiz_0_0_selectio_wiz
          .SHIFTOUT1      (),
          .SHIFTOUT2      (),
          .OCE            (clock_enable),
-         .CLK            (clk_in_int_buf),
-         .CLKDIV         (clk_div),
+         .CLK            (clk_in),
+         .CLKDIV         (clk_div_in),
          .OQ             (clk_fwd_out),
          .TQ             (),
          .OFB            (),

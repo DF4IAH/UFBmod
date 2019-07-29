@@ -1,7 +1,7 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Mon Jul 29 16:37:01 2019
+-- Date        : Mon Jul 29 17:20:32 2019
 -- Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
 -- Command     : write_vhdl -force -mode funcsim
 --               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_selectio_wiz_1_0/mcu_selectio_wiz_1_0_sim_netlist.vhdl
@@ -20,10 +20,8 @@ entity mcu_selectio_wiz_1_0_mcu_selectio_wiz_1_0_selectio_wiz is
     data_in_from_pins_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     data_in_to_device : out STD_LOGIC_VECTOR ( 7 downto 0 );
     bitslip : in STD_LOGIC_VECTOR ( 0 to 0 );
-    clk_in_p : in STD_LOGIC;
-    clk_in_n : in STD_LOGIC;
-    clk_div_out : out STD_LOGIC;
-    clk_reset : in STD_LOGIC;
+    clk_in : in STD_LOGIC;
+    clk_div_in : in STD_LOGIC;
     io_reset : in STD_LOGIC
   );
   attribute DEV_W : integer;
@@ -37,54 +35,22 @@ entity mcu_selectio_wiz_1_0_mcu_selectio_wiz_1_0_selectio_wiz is
 end mcu_selectio_wiz_1_0_mcu_selectio_wiz_1_0_selectio_wiz;
 
 architecture STRUCTURE of mcu_selectio_wiz_1_0_mcu_selectio_wiz_1_0_selectio_wiz is
-  signal \^clk_div_out\ : STD_LOGIC;
-  signal clk_in_int : STD_LOGIC;
-  signal clk_in_int_buf : STD_LOGIC;
   signal data_in_from_pins_delay : STD_LOGIC;
   signal \NLW_pins[0].iserdese2_master_O_UNCONNECTED\ : STD_LOGIC;
   signal \NLW_pins[0].iserdese2_master_SHIFTOUT1_UNCONNECTED\ : STD_LOGIC;
   signal \NLW_pins[0].iserdese2_master_SHIFTOUT2_UNCONNECTED\ : STD_LOGIC;
   attribute BOX_TYPE : string;
-  attribute BOX_TYPE of bufio_inst : label is "PRIMITIVE";
-  attribute BOX_TYPE of clkout_buf_inst : label is "PRIMITIVE";
-  attribute BOX_TYPE of ibufds_clk_inst : label is "PRIMITIVE";
-  attribute CAPACITANCE : string;
-  attribute CAPACITANCE of ibufds_clk_inst : label is "DONT_CARE";
-  attribute IBUF_DELAY_VALUE : string;
-  attribute IBUF_DELAY_VALUE of ibufds_clk_inst : label is "0";
-  attribute IFD_DELAY_VALUE : string;
-  attribute IFD_DELAY_VALUE of ibufds_clk_inst : label is "AUTO";
   attribute BOX_TYPE of \pins[0].ibufds_inst\ : label is "PRIMITIVE";
+  attribute CAPACITANCE : string;
   attribute CAPACITANCE of \pins[0].ibufds_inst\ : label is "DONT_CARE";
+  attribute IBUF_DELAY_VALUE : string;
   attribute IBUF_DELAY_VALUE of \pins[0].ibufds_inst\ : label is "0";
+  attribute IFD_DELAY_VALUE : string;
   attribute IFD_DELAY_VALUE of \pins[0].ibufds_inst\ : label is "AUTO";
   attribute BOX_TYPE of \pins[0].iserdese2_master\ : label is "PRIMITIVE";
   attribute OPT_MODIFIED : string;
   attribute OPT_MODIFIED of \pins[0].iserdese2_master\ : label is "MLO ";
 begin
-  clk_div_out <= \^clk_div_out\;
-bufio_inst: unisim.vcomponents.BUFIO
-     port map (
-      I => clk_in_int,
-      O => clk_in_int_buf
-    );
-clkout_buf_inst: unisim.vcomponents.BUFR
-    generic map(
-      BUFR_DIVIDE => "4",
-      SIM_DEVICE => "7SERIES"
-    )
-        port map (
-      CE => '1',
-      CLR => clk_reset,
-      I => clk_in_int,
-      O => \^clk_div_out\
-    );
-ibufds_clk_inst: unisim.vcomponents.IBUFDS
-     port map (
-      I => clk_in_p,
-      IB => clk_in_n,
-      O => clk_in_int
-    );
 \pins[0].ibufds_inst\: unisim.vcomponents.IBUFDS
      port map (
       I => data_in_from_pins_p(0),
@@ -122,9 +88,9 @@ ibufds_clk_inst: unisim.vcomponents.IBUFDS
       BITSLIP => bitslip(0),
       CE1 => '1',
       CE2 => '1',
-      CLK => clk_in_int_buf,
-      CLKB => clk_in_int_buf,
-      CLKDIV => \^clk_div_out\,
+      CLK => clk_in,
+      CLKB => clk_in,
+      CLKDIV => clk_div_in,
       CLKDIVP => '0',
       D => data_in_from_pins_delay,
       DDLY => '0',
@@ -159,10 +125,8 @@ entity mcu_selectio_wiz_1_0 is
     data_in_from_pins_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     data_in_to_device : out STD_LOGIC_VECTOR ( 7 downto 0 );
     bitslip : in STD_LOGIC_VECTOR ( 0 to 0 );
-    clk_in_p : in STD_LOGIC;
-    clk_in_n : in STD_LOGIC;
-    clk_div_out : out STD_LOGIC;
-    clk_reset : in STD_LOGIC;
+    clk_in : in STD_LOGIC;
+    clk_div_in : in STD_LOGIC;
     io_reset : in STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
@@ -182,10 +146,8 @@ begin
 inst: entity work.mcu_selectio_wiz_1_0_mcu_selectio_wiz_1_0_selectio_wiz
      port map (
       bitslip(0) => bitslip(0),
-      clk_div_out => clk_div_out,
-      clk_in_n => clk_in_n,
-      clk_in_p => clk_in_p,
-      clk_reset => clk_reset,
+      clk_div_in => clk_div_in,
+      clk_in => clk_in,
       data_in_from_pins_n(0) => data_in_from_pins_n(0),
       data_in_from_pins_p(0) => data_in_from_pins_p(0),
       data_in_to_device(7 downto 0) => data_in_to_device(7 downto 0),

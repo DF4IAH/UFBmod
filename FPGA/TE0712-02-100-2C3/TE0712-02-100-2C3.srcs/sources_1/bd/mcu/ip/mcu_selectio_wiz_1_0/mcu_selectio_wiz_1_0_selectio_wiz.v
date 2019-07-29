@@ -65,10 +65,8 @@ module mcu_selectio_wiz_1_0_selectio_wiz
   output [DEV_W-1:0] data_in_to_device,
   input  [SYS_W-1:0]             bitslip,       // Bitslip module is enabled in NETWORKING mode
                                     // User should tie it to '0' if not needed
-  input              clk_in_p,      // Differential clock from IOB
-  input              clk_in_n,
-  output             clk_div_out,   // Slow clock output
-  input              clk_reset,
+  input              clk_in,        // Fast clock input from PLL/MMCM
+  input              clk_div_in,    // Slow clock input from PLL/MMCM
   input              io_reset);
   localparam         num_serial_bits = DEV_W/SYS_W;
   wire clock_enable = 1'b1;
@@ -83,30 +81,6 @@ module mcu_selectio_wiz_1_0_selectio_wiz
   wire [SYS_W-1:0]  iserdes_q[0:13];   // fills in starting with 0
   // Create the clock logic
 
-  IBUFDS
-    #(.IOSTANDARD ("LVDS_25"))
-   ibufds_clk_inst
-     (.I          (clk_in_p),
-      .IB         (clk_in_n),
-      .O          (clk_in_int));
-
-// High Speed BUFIO clock buffer
- BUFIO bufio_inst
-   (.O(clk_in_int_buf),
-    .I(clk_in_int));
-
-  
-   // BUFR generates the slow clock
-   BUFR
-    #(.SIM_DEVICE("7SERIES"),
-    .BUFR_DIVIDE("4"))
-    clkout_buf_inst
-    (.O (clk_div),
-     .CE(1'b1),
-     .CLR(clk_reset),
-     .I (clk_in_int));
-
-   assign clk_div_out = clk_div; // This is regional clock
 
   // We have multiple bits- step over every bit, instantiating the required elements
   genvar pin_count;
@@ -136,7 +110,7 @@ module mcu_selectio_wiz_1_0_selectio_wiz
      wire [SYS_W-1:0] icascade2;
      wire clk_in_int_inv;
 
-     assign clk_in_int_inv = ~ (clk_in_int_buf);    
+     assign clk_in_int_inv = ~ clk_in;
 
      // declare the iserdes
      ISERDESE2
@@ -165,9 +139,9 @@ module mcu_selectio_wiz_1_0_selectio_wiz
                                                                    // The amount of BITSLIP is fixed by the DATA_WIDTH selection.
          .CE1               (clock_enable),                        // 1-bit Clock enable input
          .CE2               (clock_enable),                        // 1-bit Clock enable input
-         .CLK               (clk_in_int_buf),                      // Fast source synchronous clock driven by BUFIO
+         .CLK               (clk_in),                              // Fast clock driven by MMCM
          .CLKB              (clk_in_int_inv),                      // Locally inverted fast 
-         .CLKDIV            (clk_div),                             // Slow clock from BUFR.
+         .CLKDIV            (clk_div_in),                          // Slow clock from MMCM
          .CLKDIVP           (1'b0),
          .D                 (data_in_from_pins_delay[pin_count]),  // 1-bit Input signal from IOB 
          .DDLY              (1'b0),                                // 1-bit Input from Input Delay component 

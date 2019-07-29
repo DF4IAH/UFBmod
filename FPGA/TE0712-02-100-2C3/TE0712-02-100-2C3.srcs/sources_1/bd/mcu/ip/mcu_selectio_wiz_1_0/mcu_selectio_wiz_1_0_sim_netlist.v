@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Mon Jul 29 16:37:01 2019
+// Date        : Mon Jul 29 17:20:32 2019
 // Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
 // Command     : write_verilog -force -mode funcsim
 //               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_selectio_wiz_1_0/mcu_selectio_wiz_1_0_sim_netlist.v
@@ -19,26 +19,20 @@ module mcu_selectio_wiz_1_0
     data_in_from_pins_n,
     data_in_to_device,
     bitslip,
-    clk_in_p,
-    clk_in_n,
-    clk_div_out,
-    clk_reset,
+    clk_in,
+    clk_div_in,
     io_reset);
   input [0:0]data_in_from_pins_p;
   input [0:0]data_in_from_pins_n;
   output [7:0]data_in_to_device;
   input [0:0]bitslip;
-  input clk_in_p;
-  input clk_in_n;
-  output clk_div_out;
-  input clk_reset;
+  input clk_in;
+  input clk_div_in;
   input io_reset;
 
   wire [0:0]bitslip;
-  wire clk_div_out;
-  (* DIFF_TERM = 0 *) (* IBUF_LOW_PWR *) (* IOSTANDARD = "LVDS_25" *) wire clk_in_n;
-  (* DIFF_TERM = 0 *) (* IBUF_LOW_PWR *) (* IOSTANDARD = "LVDS_25" *) wire clk_in_p;
-  wire clk_reset;
+  wire clk_div_in;
+  wire clk_in;
   (* DIFF_TERM = 0 *) (* IBUF_LOW_PWR *) (* IOSTANDARD = "LVDS_25" *) wire [0:0]data_in_from_pins_n;
   (* DIFF_TERM = 0 *) (* IBUF_LOW_PWR *) (* IOSTANDARD = "LVDS_25" *) wire [0:0]data_in_from_pins_p;
   wire [7:0]data_in_to_device;
@@ -49,10 +43,8 @@ module mcu_selectio_wiz_1_0
   (* num_serial_bits = "8" *) 
   mcu_selectio_wiz_1_0_mcu_selectio_wiz_1_0_selectio_wiz inst
        (.bitslip(bitslip),
-        .clk_div_out(clk_div_out),
-        .clk_in_n(clk_in_n),
-        .clk_in_p(clk_in_p),
-        .clk_reset(clk_reset),
+        .clk_div_in(clk_div_in),
+        .clk_in(clk_in),
         .data_in_from_pins_n(data_in_from_pins_n),
         .data_in_from_pins_p(data_in_from_pins_p),
         .data_in_to_device(data_in_to_device),
@@ -66,28 +58,20 @@ module mcu_selectio_wiz_1_0_mcu_selectio_wiz_1_0_selectio_wiz
     data_in_from_pins_n,
     data_in_to_device,
     bitslip,
-    clk_in_p,
-    clk_in_n,
-    clk_div_out,
-    clk_reset,
+    clk_in,
+    clk_div_in,
     io_reset);
   input [0:0]data_in_from_pins_p;
   input [0:0]data_in_from_pins_n;
   output [7:0]data_in_to_device;
   input [0:0]bitslip;
-  input clk_in_p;
-  input clk_in_n;
-  output clk_div_out;
-  input clk_reset;
+  input clk_in;
+  input clk_div_in;
   input io_reset;
 
   wire [0:0]bitslip;
-  wire clk_div_out;
-  wire clk_in_int;
-  wire clk_in_int_buf;
-  wire clk_in_n;
-  wire clk_in_p;
-  wire clk_reset;
+  wire clk_div_in;
+  wire clk_in;
   wire data_in_from_pins_delay;
   wire [0:0]data_in_from_pins_n;
   wire [0:0]data_in_from_pins_p;
@@ -97,27 +81,6 @@ module mcu_selectio_wiz_1_0_mcu_selectio_wiz_1_0_selectio_wiz
   wire \NLW_pins[0].iserdese2_master_SHIFTOUT1_UNCONNECTED ;
   wire \NLW_pins[0].iserdese2_master_SHIFTOUT2_UNCONNECTED ;
 
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFIO bufio_inst
-       (.I(clk_in_int),
-        .O(clk_in_int_buf));
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFR #(
-    .BUFR_DIVIDE("4"),
-    .SIM_DEVICE("7SERIES")) 
-    clkout_buf_inst
-       (.CE(1'b1),
-        .CLR(clk_reset),
-        .I(clk_in_int),
-        .O(clk_div_out));
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  (* CAPACITANCE = "DONT_CARE" *) 
-  (* IBUF_DELAY_VALUE = "0" *) 
-  (* IFD_DELAY_VALUE = "AUTO" *) 
-  IBUFDS ibufds_clk_inst
-       (.I(clk_in_p),
-        .IB(clk_in_n),
-        .O(clk_in_int));
   (* BOX_TYPE = "PRIMITIVE" *) 
   (* CAPACITANCE = "DONT_CARE" *) 
   (* IBUF_DELAY_VALUE = "0" *) 
@@ -157,9 +120,9 @@ module mcu_selectio_wiz_1_0_mcu_selectio_wiz_1_0_selectio_wiz
        (.BITSLIP(bitslip),
         .CE1(1'b1),
         .CE2(1'b1),
-        .CLK(clk_in_int_buf),
-        .CLKB(clk_in_int_buf),
-        .CLKDIV(clk_div_out),
+        .CLK(clk_in),
+        .CLKB(clk_in),
+        .CLKDIV(clk_div_in),
         .CLKDIVP(1'b0),
         .D(data_in_from_pins_delay),
         .DDLY(1'b0),

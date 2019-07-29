@@ -52,6 +52,6 @@
 ############################################################
 # Clock Period Constraints                                 #
 ############################################################
-create_clock -period 10 [get_ports clk_in_p]
-set_input_jitter [get_clocks -of_objects [get_ports clk_in_p]] 0.1
+create_clock -period 10 [get_ports clk_in]
+set_input_jitter [get_clocks -of_objects [get_ports clk_in]] 0.1
 
