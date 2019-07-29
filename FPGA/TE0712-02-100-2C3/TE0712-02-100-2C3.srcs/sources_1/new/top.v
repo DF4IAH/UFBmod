@@ -22,6 +22,7 @@
 
 module top(
     // Reset
+    reset,
     sys_rst,
     
     
@@ -159,6 +160,7 @@ module top(
     
     );
     // Reset
+    input  reset;
     input  sys_rst;
     
     
@@ -298,11 +300,12 @@ module top(
     
     output ufb_fpga_ft_dcd;
     output ufb_fpga_ft_ri;
-
-
+    
+    
 
     // Block-Design MCU
  mcu_wrapper mcu_wrapper_i (
+        .reset(reset),
         .sys_rst(sys_rst),
 
         .pll_clk_p(pll_clk_p),

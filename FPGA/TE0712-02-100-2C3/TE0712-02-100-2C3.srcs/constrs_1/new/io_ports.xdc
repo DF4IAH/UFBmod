@@ -14,8 +14,8 @@ set_property -dict {PACKAGE_PIN Y17 IOSTANDARD LVCMOS25} [get_ports {io_0_13}]
 set_property -dict {PACKAGE_PIN Y16 IOSTANDARD LVCMOS25} [get_ports {sys_rst}]
 #IO_L1P_T0_13 sch:B13_L1_P --> sys_rst
 
-set_property -dict {PACKAGE_PIN AA16 IOSTANDARD LVCMOS25} [get_ports {b13_l1_n}]
-#IO_L1N_T0_13 sch:B13_L1_N
+set_property -dict {PACKAGE_PIN AA16 IOSTANDARD LVCMOS25} [get_ports {reset}]
+#IO_L1N_T0_13 sch:B13_L1_N --> reset
 
 
 set_property -dict {PACKAGE_PIN AB16 IOSTANDARD LVCMOS25} [get_ports {b13_l2_p}]
@@ -1112,6 +1112,7 @@ set_property -dict {PACKAGE_PIN C7} [get_ports {mgt_tx3_n}]
 
 
 set_property PULLDOWN true [get_ports {reset}]
+set_property PULLDOWN true [get_ports {sys_rst}]
 
 
 

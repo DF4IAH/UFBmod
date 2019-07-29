@@ -1,8 +1,8 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Mon Jul 29 00:10:06 2019
-//Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
+//Date        : Mon Jul 29 10:07:57 2019
+//Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
 //Command     : generate_target mcu_wrapper.bd
 //Design      : mcu_wrapper
 //Purpose     : IP block netlist
@@ -28,6 +28,7 @@ module mcu_wrapper
     init_calib_complete,
     pll_clk_n,
     pll_clk_p,
+    reset,
     sys_rst);
   output [14:0]DDR3_SDRAM_addr;
   output [2:0]DDR3_SDRAM_ba;
@@ -47,6 +48,7 @@ module mcu_wrapper
   output init_calib_complete;
   input pll_clk_n;
   input pll_clk_p;
+  input reset;
   input sys_rst;
 
   wire [14:0]DDR3_SDRAM_addr;
@@ -67,6 +69,7 @@ module mcu_wrapper
   wire init_calib_complete;
   wire pll_clk_n;
   wire pll_clk_p;
+  wire reset;
   wire sys_rst;
 
   mcu mcu_i
@@ -88,5 +91,6 @@ module mcu_wrapper
         .init_calib_complete(init_calib_complete),
         .pll_clk_n(pll_clk_n),
         .pll_clk_p(pll_clk_p),
+        .reset(reset),
         .sys_rst(sys_rst));
 endmodule
