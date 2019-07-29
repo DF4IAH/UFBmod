@@ -50,7 +50,7 @@ module top(
 
 
     // SPI-QUAD
-    spi_sck,
+    //spi_sck,
     spi_dq,
 
     
@@ -189,7 +189,7 @@ module top(
 
 
     // SPI-QUAD
-    output spi_sck;
+    //output spi_sck;
     inout  [3:0]spi_dq;
 
     
