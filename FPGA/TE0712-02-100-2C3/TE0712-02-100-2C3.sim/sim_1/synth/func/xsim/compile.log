@@ -1,4 +1,4 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.sim/sim_1/synth/func/xsim/top_tb_func_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "F:/TE0712-02-100-2C3/TE0712-02-100-2C3.sim/sim_1/synth/func/xsim/top_tb_func_synth.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module m00_couplers_imp_1WVAA8A
 INFO: [VRFC 10-311] analyzing module mcu
 INFO: [VRFC 10-311] analyzing module mcu_auto_pc_0
@@ -3195,3 +3195,5 @@ INFO: [VRFC 10-311] analyzing module mcu_microblaze_mcs_0_0_microblaze_v11_0_0_m
 INFO: [VRFC 10-311] analyzing module mcu_microblaze_mcs_0_0_microblaze_v11_0_0_mb_sync_bit_2
 INFO: [VRFC 10-311] analyzing module mcu_microblaze_mcs_0_0_mux4_8
 INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sim_1/new/top_tb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb

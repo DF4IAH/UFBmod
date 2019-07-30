@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jul 30 11:15:33 2019" VIVADOVERSION="2018.3">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jul 30 14:08:00 2019" VIVADOVERSION="2018.3">
 
   <SYSTEMINFO ARCH="artix7" DEVICE="7a100t" NAME="mcu" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -203,8 +203,8 @@
         <PARAMETER NAME="C_Enable_PLL1" VALUE="0"/>
         <PARAMETER NAME="C_REF_CLK_FREQ" VALUE="100.0"/>
         <PARAMETER NAME="C_PRECISION" VALUE="1"/>
-        <PARAMETER NAME="C_CLKOUT3_USED" VALUE="1"/>
-        <PARAMETER NAME="C_CLKOUT4_USED" VALUE="1"/>
+        <PARAMETER NAME="C_CLKOUT3_USED" VALUE="0"/>
+        <PARAMETER NAME="C_CLKOUT4_USED" VALUE="0"/>
         <PARAMETER NAME="C_CLKOUT5_USED" VALUE="0"/>
         <PARAMETER NAME="C_CLKOUT6_USED" VALUE="0"/>
         <PARAMETER NAME="C_CLKOUT7_USED" VALUE="0"/>
@@ -247,7 +247,7 @@
         <PARAMETER NAME="C_USE_POWER_DOWN" VALUE="0"/>
         <PARAMETER NAME="C_USE_STATUS" VALUE="0"/>
         <PARAMETER NAME="C_USE_FREEZE" VALUE="0"/>
-        <PARAMETER NAME="C_NUM_OUT_CLKS" VALUE="4"/>
+        <PARAMETER NAME="C_NUM_OUT_CLKS" VALUE="2"/>
         <PARAMETER NAME="C_CLKOUT1_DRIVES" VALUE="BUFG"/>
         <PARAMETER NAME="C_CLKOUT2_DRIVES" VALUE="BUFG"/>
         <PARAMETER NAME="C_CLKOUT3_DRIVES" VALUE="BUFG"/>
@@ -260,14 +260,14 @@
         <PARAMETER NAME="C_INCLK_SUM_ROW2" VALUE="no_secondary_input_clock"/>
         <PARAMETER NAME="C_OUTCLK_SUM_ROW0A" VALUE="Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase"/>
         <PARAMETER NAME="C_OUTCLK_SUM_ROW0B" VALUE="Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)"/>
-        <PARAMETER NAME="C_OUTCLK_SUM_ROW1" VALUE="clk_64_0____64.000______0.000______50.0______225.122____198.711"/>
-        <PARAMETER NAME="C_OUTCLK_SUM_ROW2" VALUE="clk_32_0____32.000______0.000______50.0______281.219____198.711"/>
-        <PARAMETER NAME="C_OUTCLK_SUM_ROW3" VALUE="clk_64_1____64.000______0.000______50.0______225.122____198.711"/>
-        <PARAMETER NAME="C_OUTCLK_SUM_ROW4" VALUE="clk_32_1____32.000______0.000______50.0______281.219____198.711"/>
+        <PARAMETER NAME="C_OUTCLK_SUM_ROW1" VALUE="clk_32_lvds_in____32.000______0.000______50.0______291.105____203.212"/>
+        <PARAMETER NAME="C_OUTCLK_SUM_ROW2" VALUE="clk_32_lvds_out____32.000______0.000______50.0______291.105____203.212"/>
+        <PARAMETER NAME="C_OUTCLK_SUM_ROW3" VALUE="no_CLK_OUT3_output"/>
+        <PARAMETER NAME="C_OUTCLK_SUM_ROW4" VALUE="no_CLK_OUT4_output"/>
         <PARAMETER NAME="C_OUTCLK_SUM_ROW5" VALUE="no_CLK_OUT5_output"/>
         <PARAMETER NAME="C_OUTCLK_SUM_ROW6" VALUE="no_CLK_OUT6_output"/>
         <PARAMETER NAME="C_OUTCLK_SUM_ROW7" VALUE="no_CLK_OUT7_output"/>
-        <PARAMETER NAME="C_CLKOUT1_REQUESTED_OUT_FREQ" VALUE="64"/>
+        <PARAMETER NAME="C_CLKOUT1_REQUESTED_OUT_FREQ" VALUE="32"/>
         <PARAMETER NAME="C_CLKOUT2_REQUESTED_OUT_FREQ" VALUE="32"/>
         <PARAMETER NAME="C_CLKOUT3_REQUESTED_OUT_FREQ" VALUE="64"/>
         <PARAMETER NAME="C_CLKOUT4_REQUESTED_OUT_FREQ" VALUE="32"/>
@@ -288,7 +288,7 @@
         <PARAMETER NAME="C_CLKOUT5_REQUESTED_DUTY_CYCLE" VALUE="50.000"/>
         <PARAMETER NAME="C_CLKOUT6_REQUESTED_DUTY_CYCLE" VALUE="50.000"/>
         <PARAMETER NAME="C_CLKOUT7_REQUESTED_DUTY_CYCLE" VALUE="50.000"/>
-        <PARAMETER NAME="C_CLKOUT1_OUT_FREQ" VALUE="64.000"/>
+        <PARAMETER NAME="C_CLKOUT1_OUT_FREQ" VALUE="32.000"/>
         <PARAMETER NAME="C_CLKOUT2_OUT_FREQ" VALUE="32.000"/>
         <PARAMETER NAME="C_CLKOUT3_OUT_FREQ" VALUE="64.000"/>
         <PARAMETER NAME="C_CLKOUT4_OUT_FREQ" VALUE="32.000"/>
@@ -320,7 +320,7 @@
         <PARAMETER NAME="C_CLKOUT7_SEQUENCE_NUMBER" VALUE="1"/>
         <PARAMETER NAME="C_MMCM_NOTES" VALUE="None"/>
         <PARAMETER NAME="C_MMCM_BANDWIDTH" VALUE="OPTIMIZED"/>
-        <PARAMETER NAME="C_MMCM_CLKFBOUT_MULT_F" VALUE="32.000"/>
+        <PARAMETER NAME="C_MMCM_CLKFBOUT_MULT_F" VALUE="31.000"/>
         <PARAMETER NAME="C_MMCM_CLKIN1_PERIOD" VALUE="31.250"/>
         <PARAMETER NAME="C_MMCM_CLKIN2_PERIOD" VALUE="10.0"/>
         <PARAMETER NAME="C_MMCM_CLKOUT4_CASCADE" VALUE="FALSE"/>
@@ -330,10 +330,10 @@
         <PARAMETER NAME="C_MMCM_REF_JITTER1" VALUE="0.010"/>
         <PARAMETER NAME="C_MMCM_REF_JITTER2" VALUE="0.010"/>
         <PARAMETER NAME="C_MMCM_STARTUP_WAIT" VALUE="FALSE"/>
-        <PARAMETER NAME="C_MMCM_CLKOUT0_DIVIDE_F" VALUE="16.000"/>
-        <PARAMETER NAME="C_MMCM_CLKOUT1_DIVIDE" VALUE="32"/>
-        <PARAMETER NAME="C_MMCM_CLKOUT2_DIVIDE" VALUE="16"/>
-        <PARAMETER NAME="C_MMCM_CLKOUT3_DIVIDE" VALUE="32"/>
+        <PARAMETER NAME="C_MMCM_CLKOUT0_DIVIDE_F" VALUE="31.000"/>
+        <PARAMETER NAME="C_MMCM_CLKOUT1_DIVIDE" VALUE="31"/>
+        <PARAMETER NAME="C_MMCM_CLKOUT2_DIVIDE" VALUE="1"/>
+        <PARAMETER NAME="C_MMCM_CLKOUT3_DIVIDE" VALUE="1"/>
         <PARAMETER NAME="C_MMCM_CLKOUT4_DIVIDE" VALUE="1"/>
         <PARAMETER NAME="C_MMCM_CLKOUT5_DIVIDE" VALUE="1"/>
         <PARAMETER NAME="C_MMCM_CLKOUT6_DIVIDE" VALUE="1"/>
@@ -392,8 +392,8 @@
         <PARAMETER NAME="C_OVERRIDE_PLL" VALUE="0"/>
         <PARAMETER NAME="C_PRIMARY_PORT" VALUE="clk_in1"/>
         <PARAMETER NAME="C_SECONDARY_PORT" VALUE="clk_in2"/>
-        <PARAMETER NAME="C_CLK_OUT1_PORT" VALUE="clk_64_0"/>
-        <PARAMETER NAME="C_CLK_OUT2_PORT" VALUE="clk_32_0"/>
+        <PARAMETER NAME="C_CLK_OUT1_PORT" VALUE="clk_32_lvds_in"/>
+        <PARAMETER NAME="C_CLK_OUT2_PORT" VALUE="clk_32_lvds_out"/>
         <PARAMETER NAME="C_CLK_OUT3_PORT" VALUE="clk_64_1"/>
         <PARAMETER NAME="C_CLK_OUT4_PORT" VALUE="clk_32_1"/>
         <PARAMETER NAME="C_CLK_OUT5_PORT" VALUE="clk_out5"/>
@@ -462,12 +462,12 @@
         <PARAMETER NAME="C_FILTER_1" VALUE="0000"/>
         <PARAMETER NAME="C_FILTER_2" VALUE="0000"/>
         <PARAMETER NAME="C_DIVIDE1_AUTO" VALUE="1"/>
-        <PARAMETER NAME="C_DIVIDE2_AUTO" VALUE="2.0"/>
-        <PARAMETER NAME="C_DIVIDE3_AUTO" VALUE="1.0"/>
-        <PARAMETER NAME="C_DIVIDE4_AUTO" VALUE="2.0"/>
-        <PARAMETER NAME="C_DIVIDE5_AUTO" VALUE="0.64"/>
-        <PARAMETER NAME="C_DIVIDE6_AUTO" VALUE="0.64"/>
-        <PARAMETER NAME="C_DIVIDE7_AUTO" VALUE="0.64"/>
+        <PARAMETER NAME="C_DIVIDE2_AUTO" VALUE="1.0"/>
+        <PARAMETER NAME="C_DIVIDE3_AUTO" VALUE="0.5"/>
+        <PARAMETER NAME="C_DIVIDE4_AUTO" VALUE="1.0"/>
+        <PARAMETER NAME="C_DIVIDE5_AUTO" VALUE="0.32"/>
+        <PARAMETER NAME="C_DIVIDE6_AUTO" VALUE="0.32"/>
+        <PARAMETER NAME="C_DIVIDE7_AUTO" VALUE="0.32"/>
         <PARAMETER NAME="C_PLLBUFGCEDIV" VALUE="false"/>
         <PARAMETER NAME="C_MMCMBUFGCEDIV" VALUE="false"/>
         <PARAMETER NAME="C_PLLBUFGCEDIV1" VALUE="false"/>
@@ -488,7 +488,7 @@
         <PARAMETER NAME="C_CLKOUT5_MATCHED_ROUTING" VALUE="false"/>
         <PARAMETER NAME="C_CLKOUT6_MATCHED_ROUTING" VALUE="false"/>
         <PARAMETER NAME="C_CLKOUT7_MATCHED_ROUTING" VALUE="false"/>
-        <PARAMETER NAME="C_CLKOUT0_ACTUAL_FREQ" VALUE="64.000"/>
+        <PARAMETER NAME="C_CLKOUT0_ACTUAL_FREQ" VALUE="32.000"/>
         <PARAMETER NAME="C_CLKOUT1_ACTUAL_FREQ" VALUE="32.000"/>
         <PARAMETER NAME="C_CLKOUT2_ACTUAL_FREQ" VALUE="64.000"/>
         <PARAMETER NAME="C_CLKOUT3_ACTUAL_FREQ" VALUE="32.000"/>
@@ -539,12 +539,12 @@
         <PARAMETER NAME="CLKIN2_JITTER_PS" VALUE="100.0"/>
         <PARAMETER NAME="CLKOUT1_USED" VALUE="true"/>
         <PARAMETER NAME="CLKOUT2_USED" VALUE="true"/>
-        <PARAMETER NAME="CLKOUT3_USED" VALUE="true"/>
-        <PARAMETER NAME="CLKOUT4_USED" VALUE="true"/>
+        <PARAMETER NAME="CLKOUT3_USED" VALUE="false"/>
+        <PARAMETER NAME="CLKOUT4_USED" VALUE="false"/>
         <PARAMETER NAME="CLKOUT5_USED" VALUE="false"/>
         <PARAMETER NAME="CLKOUT6_USED" VALUE="false"/>
         <PARAMETER NAME="CLKOUT7_USED" VALUE="false"/>
-        <PARAMETER NAME="NUM_OUT_CLKS" VALUE="4"/>
+        <PARAMETER NAME="NUM_OUT_CLKS" VALUE="2"/>
         <PARAMETER NAME="CLK_OUT1_USE_FINE_PS_GUI" VALUE="false"/>
         <PARAMETER NAME="CLK_OUT2_USE_FINE_PS_GUI" VALUE="false"/>
         <PARAMETER NAME="CLK_OUT3_USE_FINE_PS_GUI" VALUE="false"/>
@@ -553,8 +553,8 @@
         <PARAMETER NAME="CLK_OUT6_USE_FINE_PS_GUI" VALUE="false"/>
         <PARAMETER NAME="CLK_OUT7_USE_FINE_PS_GUI" VALUE="false"/>
         <PARAMETER NAME="PRIMARY_PORT" VALUE="clk_in1"/>
-        <PARAMETER NAME="CLK_OUT1_PORT" VALUE="clk_64_0"/>
-        <PARAMETER NAME="CLK_OUT2_PORT" VALUE="clk_32_0"/>
+        <PARAMETER NAME="CLK_OUT1_PORT" VALUE="clk_32_lvds_in"/>
+        <PARAMETER NAME="CLK_OUT2_PORT" VALUE="clk_32_lvds_out"/>
         <PARAMETER NAME="CLK_OUT3_PORT" VALUE="clk_64_1"/>
         <PARAMETER NAME="CLK_OUT4_PORT" VALUE="clk_32_1"/>
         <PARAMETER NAME="CLK_OUT5_PORT" VALUE="clk_out5"/>
@@ -571,7 +571,7 @@
         <PARAMETER NAME="PSEN_PORT" VALUE="psen"/>
         <PARAMETER NAME="PSINCDEC_PORT" VALUE="psincdec"/>
         <PARAMETER NAME="PSDONE_PORT" VALUE="psdone"/>
-        <PARAMETER NAME="CLKOUT1_REQUESTED_OUT_FREQ" VALUE="64"/>
+        <PARAMETER NAME="CLKOUT1_REQUESTED_OUT_FREQ" VALUE="32"/>
         <PARAMETER NAME="CLKOUT1_REQUESTED_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="CLKOUT1_REQUESTED_DUTY_CYCLE" VALUE="50.000"/>
         <PARAMETER NAME="CLKOUT2_REQUESTED_OUT_FREQ" VALUE="32"/>
@@ -643,7 +643,7 @@
         <PARAMETER NAME="MMCM_NOTES" VALUE="None"/>
         <PARAMETER NAME="MMCM_DIVCLK_DIVIDE" VALUE="1"/>
         <PARAMETER NAME="MMCM_BANDWIDTH" VALUE="OPTIMIZED"/>
-        <PARAMETER NAME="MMCM_CLKFBOUT_MULT_F" VALUE="32.000"/>
+        <PARAMETER NAME="MMCM_CLKFBOUT_MULT_F" VALUE="31.000"/>
         <PARAMETER NAME="MMCM_CLKFBOUT_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="MMCM_CLKFBOUT_USE_FINE_PS" VALUE="false"/>
         <PARAMETER NAME="MMCM_CLKIN1_PERIOD" VALUE="31.250"/>
@@ -654,19 +654,19 @@
         <PARAMETER NAME="MMCM_REF_JITTER1" VALUE="0.010"/>
         <PARAMETER NAME="MMCM_REF_JITTER2" VALUE="0.010"/>
         <PARAMETER NAME="MMCM_STARTUP_WAIT" VALUE="false"/>
-        <PARAMETER NAME="MMCM_CLKOUT0_DIVIDE_F" VALUE="16.000"/>
+        <PARAMETER NAME="MMCM_CLKOUT0_DIVIDE_F" VALUE="31.000"/>
         <PARAMETER NAME="MMCM_CLKOUT0_DUTY_CYCLE" VALUE="0.500"/>
         <PARAMETER NAME="MMCM_CLKOUT0_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="MMCM_CLKOUT0_USE_FINE_PS" VALUE="false"/>
-        <PARAMETER NAME="MMCM_CLKOUT1_DIVIDE" VALUE="32"/>
+        <PARAMETER NAME="MMCM_CLKOUT1_DIVIDE" VALUE="31"/>
         <PARAMETER NAME="MMCM_CLKOUT1_DUTY_CYCLE" VALUE="0.500"/>
         <PARAMETER NAME="MMCM_CLKOUT1_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="MMCM_CLKOUT1_USE_FINE_PS" VALUE="false"/>
-        <PARAMETER NAME="MMCM_CLKOUT2_DIVIDE" VALUE="16"/>
+        <PARAMETER NAME="MMCM_CLKOUT2_DIVIDE" VALUE="1"/>
         <PARAMETER NAME="MMCM_CLKOUT2_DUTY_CYCLE" VALUE="0.500"/>
         <PARAMETER NAME="MMCM_CLKOUT2_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="MMCM_CLKOUT2_USE_FINE_PS" VALUE="false"/>
-        <PARAMETER NAME="MMCM_CLKOUT3_DIVIDE" VALUE="32"/>
+        <PARAMETER NAME="MMCM_CLKOUT3_DIVIDE" VALUE="1"/>
         <PARAMETER NAME="MMCM_CLKOUT3_DUTY_CYCLE" VALUE="0.500"/>
         <PARAMETER NAME="MMCM_CLKOUT3_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="MMCM_CLKOUT3_USE_FINE_PS" VALUE="false"/>
@@ -732,10 +732,10 @@
         <PARAMETER NAME="CDDCREQ_PORT" VALUE="cddcreq"/>
         <PARAMETER NAME="ENABLE_CLKOUTPHY" VALUE="false"/>
         <PARAMETER NAME="CLKOUTPHY_REQUESTED_FREQ" VALUE="600.000"/>
-        <PARAMETER NAME="CLKOUT1_JITTER" VALUE="225.122"/>
-        <PARAMETER NAME="CLKOUT1_PHASE_ERROR" VALUE="198.711"/>
-        <PARAMETER NAME="CLKOUT2_JITTER" VALUE="281.219"/>
-        <PARAMETER NAME="CLKOUT2_PHASE_ERROR" VALUE="198.711"/>
+        <PARAMETER NAME="CLKOUT1_JITTER" VALUE="291.105"/>
+        <PARAMETER NAME="CLKOUT1_PHASE_ERROR" VALUE="203.212"/>
+        <PARAMETER NAME="CLKOUT2_JITTER" VALUE="291.105"/>
+        <PARAMETER NAME="CLKOUT2_PHASE_ERROR" VALUE="203.212"/>
         <PARAMETER NAME="CLKOUT3_JITTER" VALUE="225.122"/>
         <PARAMETER NAME="CLKOUT3_PHASE_ERROR" VALUE="198.711"/>
         <PARAMETER NAME="CLKOUT4_JITTER" VALUE="281.219"/>
@@ -768,24 +768,16 @@
             <CONNECTION INSTANCE="rst_clk_wiz_1_50M" PORT="bus_struct_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="64000000" DIR="O" NAME="clk_64_0" SIGIS="clk" SIGNAME="clk_wiz_0_clk_64_0">
+        <PORT CLKFREQUENCY="32000000" DIR="O" NAME="clk_32_lvds_in" SIGIS="clk" SIGNAME="clk_wiz_0_clk_32_lvds_in">
           <CONNECTIONS>
             <CONNECTION INSTANCE="selectio_wiz_lvds_in" PORT="clk_in"/>
+            <CONNECTION INSTANCE="dist_mem_gen_lvds_in" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="32000000" DIR="O" NAME="clk_32_0" SIGIS="clk" SIGNAME="clk_wiz_0_clk_32_0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="selectio_wiz_lvds_in" PORT="clk_div_in"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="64000000" DIR="O" NAME="clk_64_1" SIGIS="clk" SIGNAME="clk_wiz_0_clk_64_1">
+        <PORT CLKFREQUENCY="32000000" DIR="O" NAME="clk_32_lvds_out" SIGIS="clk" SIGNAME="clk_wiz_0_clk_32_lvds_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="selectio_wiz_lvds_out" PORT="clk_in"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="32000000" DIR="O" NAME="clk_32_1" SIGIS="clk" SIGNAME="clk_wiz_0_clk_32_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="selectio_wiz_lvds_out" PORT="clk_div_in"/>
+            <CONNECTION INSTANCE="dist_mem_gen_lvds_out" PORT="qdpo_clk"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -799,6 +791,214 @@
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="12" FULLNAME="/dist_mem_gen_lvds_in" HWVERSION="8.0" INSTANCE="dist_mem_gen_lvds_in" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="dist_mem_gen" VLNV="xilinx.com:ip:dist_mem_gen:8.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=dist_mem_gen;v=v8_0;d=pg063-dist-mem-gen.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_FAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="16"/>
+        <PARAMETER NAME="C_HAS_CLK" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_D" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_DPO" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_DPRA" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_I_CE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QDPO" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_QDPO_CE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QDPO_CLK" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_QDPO_RST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QDPO_SRST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QSPO" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QSPO_CE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QSPO_RST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QSPO_SRST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SPO" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_WE" VALUE="1"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_MEM_TYPE" VALUE="4"/>
+        <PARAMETER NAME="C_PIPELINE_STAGES" VALUE="0"/>
+        <PARAMETER NAME="C_QCE_JOINED" VALUE="0"/>
+        <PARAMETER NAME="C_QUALIFY_WE" VALUE="0"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_REG_A_D_INPUTS" VALUE="1"/>
+        <PARAMETER NAME="C_REG_DPRA_INPUT" VALUE="0"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="1"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="1"/>
+        <PARAMETER NAME="depth" VALUE="16"/>
+        <PARAMETER NAME="data_width" VALUE="8"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_dist_mem_gen_0_0"/>
+        <PARAMETER NAME="memory_type" VALUE="simple_dual_port_ram"/>
+        <PARAMETER NAME="input_options" VALUE="registered"/>
+        <PARAMETER NAME="input_clock_enable" VALUE="false"/>
+        <PARAMETER NAME="qualify_we_with_i_ce" VALUE="false"/>
+        <PARAMETER NAME="dual_port_address" VALUE="non_registered"/>
+        <PARAMETER NAME="simple_dual_port_address" VALUE="non_registered"/>
+        <PARAMETER NAME="output_options" VALUE="registered"/>
+        <PARAMETER NAME="Pipeline_Stages" VALUE="0"/>
+        <PARAMETER NAME="common_output_clk" VALUE="false"/>
+        <PARAMETER NAME="single_port_output_clock_enable" VALUE="false"/>
+        <PARAMETER NAME="common_output_ce" VALUE="false"/>
+        <PARAMETER NAME="dual_port_output_clock_enable" VALUE="false"/>
+        <PARAMETER NAME="simple_dual_port_output_clock_enable" VALUE="false"/>
+        <PARAMETER NAME="coefficient_file" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="default_data_radix" VALUE="16"/>
+        <PARAMETER NAME="default_data" VALUE="0"/>
+        <PARAMETER NAME="reset_qspo" VALUE="false"/>
+        <PARAMETER NAME="reset_qdpo" VALUE="false"/>
+        <PARAMETER NAME="reset_qsdpo" VALUE="false"/>
+        <PARAMETER NAME="sync_reset_qspo" VALUE="false"/>
+        <PARAMETER NAME="sync_reset_qdpo" VALUE="false"/>
+        <PARAMETER NAME="sync_reset_qsdpo" VALUE="false"/>
+        <PARAMETER NAME="ce_overrides" VALUE="ce_overrides_sync_controls"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="3" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_val0000_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xlconstant_val0000" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="d" RIGHT="0" SIGIS="undef" SIGNAME="selectio_wiz_lvds_in_data_in_to_device">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="selectio_wiz_lvds_in" PORT="data_in_to_device"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="dpra" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_val0000_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xlconstant_val0000" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="clk" SIGIS="undef" SIGNAME="clk_wiz_0_clk_32_lvds_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_32_lvds_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="we" SIGIS="undef" SIGNAME="xlconstant_val1_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xlconstant_val1" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="qdpo_clk" SIGIS="undef" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="qdpo" RIGHT="0" SIGIS="undef" SIGNAME="dist_mem_gen_lvds_in_qdpo">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_mcs_0" PORT="GPIO1_tri_i"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="12" FULLNAME="/dist_mem_gen_lvds_out" HWVERSION="8.0" INSTANCE="dist_mem_gen_lvds_out" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="dist_mem_gen" VLNV="xilinx.com:ip:dist_mem_gen:8.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=dist_mem_gen;v=v8_0;d=pg063-dist-mem-gen.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_FAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="16"/>
+        <PARAMETER NAME="C_HAS_CLK" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_D" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_DPO" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_DPRA" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_I_CE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QDPO" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_QDPO_CE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QDPO_CLK" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_QDPO_RST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QDPO_SRST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QSPO" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QSPO_CE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QSPO_RST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QSPO_SRST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SPO" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_WE" VALUE="1"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_MEM_TYPE" VALUE="4"/>
+        <PARAMETER NAME="C_PIPELINE_STAGES" VALUE="0"/>
+        <PARAMETER NAME="C_QCE_JOINED" VALUE="0"/>
+        <PARAMETER NAME="C_QUALIFY_WE" VALUE="0"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_REG_A_D_INPUTS" VALUE="1"/>
+        <PARAMETER NAME="C_REG_DPRA_INPUT" VALUE="0"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="1"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="1"/>
+        <PARAMETER NAME="depth" VALUE="16"/>
+        <PARAMETER NAME="data_width" VALUE="8"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_dist_mem_gen_lvds_in_0"/>
+        <PARAMETER NAME="memory_type" VALUE="simple_dual_port_ram"/>
+        <PARAMETER NAME="input_options" VALUE="registered"/>
+        <PARAMETER NAME="input_clock_enable" VALUE="false"/>
+        <PARAMETER NAME="qualify_we_with_i_ce" VALUE="false"/>
+        <PARAMETER NAME="dual_port_address" VALUE="non_registered"/>
+        <PARAMETER NAME="simple_dual_port_address" VALUE="non_registered"/>
+        <PARAMETER NAME="output_options" VALUE="registered"/>
+        <PARAMETER NAME="Pipeline_Stages" VALUE="0"/>
+        <PARAMETER NAME="common_output_clk" VALUE="false"/>
+        <PARAMETER NAME="single_port_output_clock_enable" VALUE="false"/>
+        <PARAMETER NAME="common_output_ce" VALUE="false"/>
+        <PARAMETER NAME="dual_port_output_clock_enable" VALUE="false"/>
+        <PARAMETER NAME="simple_dual_port_output_clock_enable" VALUE="false"/>
+        <PARAMETER NAME="coefficient_file" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="default_data_radix" VALUE="16"/>
+        <PARAMETER NAME="default_data" VALUE="0"/>
+        <PARAMETER NAME="reset_qspo" VALUE="false"/>
+        <PARAMETER NAME="reset_qdpo" VALUE="false"/>
+        <PARAMETER NAME="reset_qsdpo" VALUE="false"/>
+        <PARAMETER NAME="sync_reset_qspo" VALUE="false"/>
+        <PARAMETER NAME="sync_reset_qdpo" VALUE="false"/>
+        <PARAMETER NAME="sync_reset_qsdpo" VALUE="false"/>
+        <PARAMETER NAME="ce_overrides" VALUE="ce_overrides_sync_controls"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="3" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_val0000_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xlconstant_val0000" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="d" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_mcs_0_GPIO1_tri_o">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_mcs_0" PORT="GPIO1_tri_o"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="dpra" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_val0000_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xlconstant_val0000" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="clk" SIGIS="undef" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="we" SIGIS="undef" SIGNAME="xlconstant_val1_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xlconstant_val1" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="qdpo_clk" SIGIS="undef" SIGNAME="clk_wiz_0_clk_32_lvds_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_32_lvds_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="qdpo" RIGHT="0" SIGIS="undef" SIGNAME="dist_mem_gen_lvds_out_qdpo">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="selectio_wiz_lvds_out" PORT="data_out_from_device"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
     </MODULE>
     <MODULE COREREVISION="15" FULLNAME="/mdm_1" HWVERSION="3.2" INSTANCE="mdm_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="DEBUG" MODTYPE="mdm" VLNV="xilinx.com:ip:mdm:3.2">
       <DOCUMENTS>
@@ -6260,6 +6460,191 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S02_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S02_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWADDR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWADDR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="S02_AXI_awlen" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWLEN">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWLEN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S02_AXI_awsize" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWSIZE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWSIZE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="S02_AXI_awburst" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWBURST">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWBURST"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S02_AXI_awlock" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWLOCK">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWLOCK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S02_AXI_awcache" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWCACHE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWCACHE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S02_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWPROT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWPROT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S02_AXI_awqos" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWQOS">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWQOS"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S02_AXI_awvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="S02_AXI_awready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S02_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_WDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_WDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S02_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_WSTRB">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_WSTRB"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S02_AXI_wlast" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_WLAST">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_WLAST"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S02_AXI_wvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_WVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_WVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="S02_AXI_wready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_WREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_WREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="S02_AXI_bid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_BID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_BID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="S02_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_BRESP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_BRESP"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="S02_AXI_bvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_BVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_BVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S02_AXI_bready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_BREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_BREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S02_AXI_arid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S02_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARADDR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARADDR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="S02_AXI_arlen" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARLEN">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARLEN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S02_AXI_arsize" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARSIZE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARSIZE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="S02_AXI_arburst" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARBURST">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARBURST"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S02_AXI_arlock" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARLOCK">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARLOCK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S02_AXI_arcache" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARCACHE">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARCACHE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S02_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARPROT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARPROT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S02_AXI_arqos" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARQOS">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARQOS"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S02_AXI_arvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="S02_AXI_arready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="S02_AXI_rid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_RID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_RID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="S02_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_RDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_RDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="S02_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_RRESP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_RRESP"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="S02_AXI_rlast" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_RLAST">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_RLAST"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="S02_AXI_rvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_RVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_RVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S02_AXI_rready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_RREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_RREADY"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="31" NAME="M00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_axi_intc_s_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="microblaze_0_axi_intc" PORT="s_axi_awaddr"/>
@@ -6345,286 +6730,6 @@
         <PORT DIR="O" NAME="M00_AXI_rready" SIGIS="undef" SIGNAME="microblaze_0_axi_intc_s_axi_rready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="microblaze_0_axi_intc" PORT="s_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWADDR">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWADDR"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S00_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWPROT">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWPROT"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S00_AXI_awvalid" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWVALID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S00_AXI_awready" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWREADY">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S00_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WDATA">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WDATA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S00_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WSTRB">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WSTRB"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S00_AXI_wvalid" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WVALID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S00_AXI_wready" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WREADY">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S00_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_BRESP">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_BRESP"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S00_AXI_bvalid" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_BVALID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_BVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S00_AXI_bready" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_BREADY">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_BREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARADDR">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARADDR"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S00_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARPROT">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARPROT"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S00_AXI_arvalid" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARVALID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S00_AXI_arready" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARREADY">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="S00_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RDATA">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RDATA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S00_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RRESP">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RRESP"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S00_AXI_rvalid" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RVALID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S00_AXI_rready" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RREADY">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S03_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S03_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWADDR">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWADDR"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="7" NAME="S03_AXI_awlen" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWLEN">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWLEN"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S03_AXI_awsize" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWSIZE">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWSIZE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="S03_AXI_awburst" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWBURST">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWBURST"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S03_AXI_awlock" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWLOCK">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWLOCK"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S03_AXI_awcache" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWCACHE">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWCACHE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S03_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWPROT">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWPROT"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S03_AXI_awqos" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWQOS">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWQOS"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S03_AXI_awvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWVALID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S03_AXI_awready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWREADY">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S03_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_WDATA">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WDATA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S03_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_WSTRB">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WSTRB"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S03_AXI_wlast" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_WLAST">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WLAST"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S03_AXI_wvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_WVALID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S03_AXI_wready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_WREADY">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S03_AXI_bid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_BID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S03_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_BRESP">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BRESP"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S03_AXI_bvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_BVALID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S03_AXI_bready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_BREADY">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S03_AXI_arid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S03_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARADDR">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARADDR"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="7" NAME="S03_AXI_arlen" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARLEN">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARLEN"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S03_AXI_arsize" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARSIZE">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARSIZE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="S03_AXI_arburst" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARBURST">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARBURST"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S03_AXI_arlock" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARLOCK">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARLOCK"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S03_AXI_arcache" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARCACHE">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARCACHE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S03_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARPROT">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARPROT"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S03_AXI_arqos" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARQOS">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARQOS"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S03_AXI_arvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARVALID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S03_AXI_arready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARREADY">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S03_AXI_rid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_RID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="S03_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_RDATA">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RDATA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S03_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_RRESP">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RRESP"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S03_AXI_rlast" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_RLAST">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RLAST"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S03_AXI_rvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_RVALID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S03_AXI_rready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_RREADY">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RREADY"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="S01_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="mdm_1_M_AXI_AWID">
@@ -6812,189 +6917,284 @@
             <CONNECTION INSTANCE="mdm_1" PORT="M_AXI_RREADY"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S02_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWID">
+        <PORT DIR="I" LEFT="0" NAME="S03_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWID">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWID"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWID"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S02_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWADDR">
+        <PORT DIR="I" LEFT="31" NAME="S03_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWADDR">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWADDR"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWADDR"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="S02_AXI_awlen" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWLEN">
+        <PORT DIR="I" LEFT="7" NAME="S03_AXI_awlen" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWLEN">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWLEN"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWLEN"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S02_AXI_awsize" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWSIZE">
+        <PORT DIR="I" LEFT="2" NAME="S03_AXI_awsize" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWSIZE">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWSIZE"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWSIZE"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="S02_AXI_awburst" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWBURST">
+        <PORT DIR="I" LEFT="1" NAME="S03_AXI_awburst" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWBURST">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWBURST"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWBURST"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S02_AXI_awlock" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWLOCK">
+        <PORT DIR="I" LEFT="0" NAME="S03_AXI_awlock" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWLOCK">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWLOCK"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWLOCK"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S02_AXI_awcache" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWCACHE">
+        <PORT DIR="I" LEFT="3" NAME="S03_AXI_awcache" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWCACHE">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWCACHE"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWCACHE"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S02_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWPROT">
+        <PORT DIR="I" LEFT="2" NAME="S03_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWPROT">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWPROT"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWPROT"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S02_AXI_awqos" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWQOS">
+        <PORT DIR="I" LEFT="3" NAME="S03_AXI_awqos" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWQOS">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWQOS"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWQOS"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S02_AXI_awvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWVALID">
+        <PORT DIR="I" LEFT="0" NAME="S03_AXI_awvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWVALID">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWVALID"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWVALID"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S02_AXI_awready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_AWREADY">
+        <PORT DIR="O" LEFT="0" NAME="S03_AXI_awready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_AWREADY">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_AWREADY"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWREADY"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S02_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_WDATA">
+        <PORT DIR="I" LEFT="31" NAME="S03_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_WDATA">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_WDATA"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WDATA"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S02_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_WSTRB">
+        <PORT DIR="I" LEFT="3" NAME="S03_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_WSTRB">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_WSTRB"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WSTRB"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S02_AXI_wlast" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_WLAST">
+        <PORT DIR="I" LEFT="0" NAME="S03_AXI_wlast" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_WLAST">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_WLAST"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WLAST"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S02_AXI_wvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_WVALID">
+        <PORT DIR="I" LEFT="0" NAME="S03_AXI_wvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_WVALID">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_WVALID"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WVALID"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S02_AXI_wready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_WREADY">
+        <PORT DIR="O" LEFT="0" NAME="S03_AXI_wready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_WREADY">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_WREADY"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WREADY"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S02_AXI_bid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_BID">
+        <PORT DIR="O" LEFT="1" NAME="S03_AXI_bid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_BID">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_BID"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BID"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S02_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_BRESP">
+        <PORT DIR="O" LEFT="1" NAME="S03_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_BRESP">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_BRESP"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BRESP"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S02_AXI_bvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_BVALID">
+        <PORT DIR="O" LEFT="0" NAME="S03_AXI_bvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_BVALID">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_BVALID"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BVALID"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S02_AXI_bready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_BREADY">
+        <PORT DIR="I" LEFT="0" NAME="S03_AXI_bready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_BREADY">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_BREADY"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BREADY"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S02_AXI_arid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARID">
+        <PORT DIR="I" LEFT="0" NAME="S03_AXI_arid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARID">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARID"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARID"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S02_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARADDR">
+        <PORT DIR="I" LEFT="31" NAME="S03_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARADDR">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARADDR"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARADDR"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="S02_AXI_arlen" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARLEN">
+        <PORT DIR="I" LEFT="7" NAME="S03_AXI_arlen" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARLEN">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARLEN"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARLEN"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S02_AXI_arsize" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARSIZE">
+        <PORT DIR="I" LEFT="2" NAME="S03_AXI_arsize" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARSIZE">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARSIZE"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARSIZE"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="S02_AXI_arburst" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARBURST">
+        <PORT DIR="I" LEFT="1" NAME="S03_AXI_arburst" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARBURST">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARBURST"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARBURST"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S02_AXI_arlock" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARLOCK">
+        <PORT DIR="I" LEFT="0" NAME="S03_AXI_arlock" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARLOCK">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARLOCK"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARLOCK"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S02_AXI_arcache" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARCACHE">
+        <PORT DIR="I" LEFT="3" NAME="S03_AXI_arcache" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARCACHE">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARCACHE"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARCACHE"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S02_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARPROT">
+        <PORT DIR="I" LEFT="2" NAME="S03_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARPROT">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARPROT"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARPROT"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S02_AXI_arqos" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARQOS">
+        <PORT DIR="I" LEFT="3" NAME="S03_AXI_arqos" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARQOS">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARQOS"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARQOS"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S02_AXI_arvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARVALID">
+        <PORT DIR="I" LEFT="0" NAME="S03_AXI_arvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARVALID">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARVALID"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARVALID"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S02_AXI_arready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_ARREADY">
+        <PORT DIR="O" LEFT="0" NAME="S03_AXI_arready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_ARREADY">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_ARREADY"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARREADY"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S02_AXI_rid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_RID">
+        <PORT DIR="O" LEFT="1" NAME="S03_AXI_rid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_RID">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_RID"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RID"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="S02_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_RDATA">
+        <PORT DIR="O" LEFT="31" NAME="S03_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_RDATA">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_RDATA"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RDATA"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S02_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_RRESP">
+        <PORT DIR="O" LEFT="1" NAME="S03_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_RRESP">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_RRESP"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RRESP"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S02_AXI_rlast" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_RLAST">
+        <PORT DIR="O" LEFT="0" NAME="S03_AXI_rlast" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_RLAST">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_RLAST"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RLAST"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S02_AXI_rvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_RVALID">
+        <PORT DIR="O" LEFT="0" NAME="S03_AXI_rvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_RVALID">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_RVALID"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RVALID"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S02_AXI_rready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DC_RREADY">
+        <PORT DIR="I" LEFT="0" NAME="S03_AXI_rready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_IC_RREADY">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_RREADY"/>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWADDR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWADDR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S00_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWPROT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWPROT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S00_AXI_awvalid" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S00_AXI_awready" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S00_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S00_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WSTRB">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WSTRB"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S00_AXI_wvalid" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S00_AXI_wready" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="S00_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_BRESP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_BRESP"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S00_AXI_bvalid" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_BVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_BVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S00_AXI_bready" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_BREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_BREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARADDR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARADDR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S00_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARPROT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARPROT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S00_AXI_arvalid" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S00_AXI_arready" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="S00_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="S00_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RRESP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RRESP"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S00_AXI_rvalid" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S00_AXI_rready" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RREADY"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -8624,14 +8824,14 @@
         </PORT>
         <PORT DIR="I" NAME="UART_rxd" SIGIS="undef"/>
         <PORT DIR="O" NAME="UART_txd" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="7" NAME="GPIO1_tri_i" RIGHT="0" SIGIS="undef" SIGNAME="selectio_wiz_lvds_in_data_in_to_device">
+        <PORT DIR="I" LEFT="7" NAME="GPIO1_tri_i" RIGHT="0" SIGIS="undef" SIGNAME="dist_mem_gen_lvds_in_qdpo">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="selectio_wiz_lvds_in" PORT="data_in_to_device"/>
+            <CONNECTION INSTANCE="dist_mem_gen_lvds_in" PORT="qdpo"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="7" NAME="GPIO1_tri_o" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_mcs_0_GPIO1_tri_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="selectio_wiz_lvds_out" PORT="data_out_from_device"/>
+            <CONNECTION INSTANCE="dist_mem_gen_lvds_out" PORT="d"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -9933,6 +10133,8 @@
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="S02_ACLK"/>
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="S03_ACLK"/>
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M01_ACLK"/>
+            <CONNECTION INSTANCE="dist_mem_gen_lvds_in" PORT="qdpo_clk"/>
+            <CONNECTION INSTANCE="dist_mem_gen_lvds_out" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="200000000" DIR="O" NAME="ui_addn_clk_0" SIGIS="clk" SIGNAME="mig_7series_0_ui_addn_clk_0">
@@ -10481,14 +10683,14 @@
             <CONNECTION INSTANCE="External_Ports" PORT="ufb_trx_rxd09_n"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="64000000" DIR="I" NAME="clk_in" SIGIS="clk" SIGNAME="clk_wiz_0_clk_64_0">
+        <PORT CLKFREQUENCY="32000000" DIR="I" NAME="clk_in" SIGIS="clk" SIGNAME="clk_wiz_0_clk_32_lvds_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_64_0"/>
+            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_32_lvds_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clk_div_in" SIGIS="undef" SIGNAME="clk_wiz_0_clk_32_0">
+        <PORT DIR="I" NAME="clk_div_in" SIGIS="undef" SIGNAME="xlconstant_val0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_32_0"/>
+            <CONNECTION INSTANCE="xlconstant_val0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="io_reset" SIGIS="rst" SIGNAME="rst_clk_wiz_1_50M_peripheral_reset">
@@ -10496,10 +10698,14 @@
             <CONNECTION INSTANCE="rst_clk_wiz_1_50M" PORT="peripheral_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="bitslip" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="0" NAME="bitslip" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_val0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xlconstant_val0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="7" NAME="data_in_to_device" RIGHT="0" SIGIS="data" SIGNAME="selectio_wiz_lvds_in_data_in_to_device">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_mcs_0" PORT="GPIO1_tri_i"/>
+            <CONNECTION INSTANCE="dist_mem_gen_lvds_in" PORT="d"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -10627,19 +10833,19 @@
             <CONNECTION INSTANCE="External_Ports" PORT="ufb_trx_txd_n"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="64000000" DIR="I" NAME="clk_in" SIGIS="clk" SIGNAME="clk_wiz_0_clk_64_1">
+        <PORT CLKFREQUENCY="32000000" DIR="I" NAME="clk_in" SIGIS="clk" SIGNAME="clk_wiz_0_clk_32_lvds_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_64_1"/>
+            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_32_lvds_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clk_div_in" SIGIS="undef" SIGNAME="clk_wiz_0_clk_32_1">
+        <PORT DIR="I" NAME="clk_div_in" SIGIS="undef" SIGNAME="xlconstant_val0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_32_1"/>
+            <CONNECTION INSTANCE="xlconstant_val0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="data_out_from_device" RIGHT="0" SIGIS="data" SIGNAME="microblaze_mcs_0_GPIO1_tri_o">
+        <PORT DIR="I" LEFT="7" NAME="data_out_from_device" RIGHT="0" SIGIS="data" SIGNAME="dist_mem_gen_lvds_out_qdpo">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_mcs_0" PORT="GPIO1_tri_o"/>
+            <CONNECTION INSTANCE="dist_mem_gen_lvds_out" PORT="qdpo"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="clk_reset" SIGIS="rst" SIGNAME="rst_clk_wiz_1_50M_peripheral_reset">
@@ -10666,13 +10872,70 @@
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="diff_clk_to_pins" TYPE="INITIATOR" VLNV="xilinx.com:interface:diff_clock:1.0">
           <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="64000000"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="32000000"/>
           <PORTMAPS>
             <PORTMAP LOGICAL="CLK_N" PHYSICAL="clk_to_pins_n"/>
             <PORTMAP LOGICAL="CLK_P" PHYSICAL="clk_to_pins_p"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/xlconstant_val0" HWVERSION="1.1" INSTANCE="xlconstant_val0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x0"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_xlconstant_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_val0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="selectio_wiz_lvds_in" PORT="clk_div_in"/>
+            <CONNECTION INSTANCE="selectio_wiz_lvds_out" PORT="clk_div_in"/>
+            <CONNECTION INSTANCE="selectio_wiz_lvds_in" PORT="bitslip"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/xlconstant_val0000" HWVERSION="1.1" INSTANCE="xlconstant_val0000" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x0"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_xlconstant_val0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="3" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_val0000_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dist_mem_gen_lvds_in" PORT="dpra"/>
+            <CONNECTION INSTANCE="dist_mem_gen_lvds_out" PORT="dpra"/>
+            <CONNECTION INSTANCE="dist_mem_gen_lvds_in" PORT="a"/>
+            <CONNECTION INSTANCE="dist_mem_gen_lvds_out" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/xlconstant_val1" HWVERSION="1.1" INSTANCE="xlconstant_val1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x1"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_xlconstant_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_val1_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dist_mem_gen_lvds_in" PORT="we"/>
+            <CONNECTION INSTANCE="dist_mem_gen_lvds_out" PORT="we"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
     </MODULE>
   </MODULES>
 

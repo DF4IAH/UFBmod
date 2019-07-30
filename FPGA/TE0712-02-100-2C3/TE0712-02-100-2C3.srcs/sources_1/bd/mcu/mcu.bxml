@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="36">
   <CompositeFile CompositeFileTopName="mcu" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1564478132"/>
-    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1564478132"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1564478133"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1564478133"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1564488480"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1564488480"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1564488480"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1564488480"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\mcu_microblaze_0_0\mcu_microblaze_0_0.xci" Type="IP">
         <Instance HierarchyPath="microblaze_0"/>
@@ -64,7 +64,6 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\mcu_microblaze_0_axi_periph_0\mcu_microblaze_0_axi_periph_0.xci" Type="IP">
-        <Instance HierarchyPath="microblaze_0_axi_periph"/>
         <Properties IsEditable="false" IsVisible="false" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -156,6 +155,46 @@
       </File>
       <File Name="ip\mcu_clk_wiz_0_0\mcu_clk_wiz_0_0.xci" Type="IP">
         <Instance HierarchyPath="clk_wiz_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\mcu_xlconstant_0_0\mcu_xlconstant_0_0.xci" Type="IP">
+        <Instance HierarchyPath="xlconstant_val0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\mcu_dist_mem_gen_0_0\mcu_dist_mem_gen_0_0.xci" Type="IP">
+        <Instance HierarchyPath="dist_mem_gen_lvds_in"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\mcu_xlconstant_0_1\mcu_xlconstant_0_1.xci" Type="IP">
+        <Instance HierarchyPath="xlconstant_val1"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\mcu_dist_mem_gen_lvds_in_0\mcu_dist_mem_gen_lvds_in_0.xci" Type="IP">
+        <Instance HierarchyPath="dist_mem_gen_lvds_out"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\mcu_xlconstant_val0_0\mcu_xlconstant_val0_0.xci" Type="IP">
+        <Instance HierarchyPath="xlconstant_val0000"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

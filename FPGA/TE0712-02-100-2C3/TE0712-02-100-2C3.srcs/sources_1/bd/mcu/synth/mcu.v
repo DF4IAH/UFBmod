@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Tue Jul 30 11:15:31 2019
+//Date        : Tue Jul 30 14:07:46 2019
 //Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -581,7 +581,7 @@ module m01_couplers_imp_AFYY8F
   assign m01_couplers_to_m01_couplers_WVALID = S_AXI_wvalid;
 endmodule
 
-(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=27,numReposBlks=19,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_mb_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
+(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=32,numReposBlks=24,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_mb_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
 module mcu
    (DDR3_SDRAM_addr,
     DDR3_SDRAM_ba,
@@ -642,10 +642,10 @@ module mcu
 
   wire [0:0]ARESETN_1;
   wire aux_reset_in_0_1;
-  wire clk_wiz_0_clk_32_0;
-  wire clk_wiz_0_clk_32_1;
-  wire clk_wiz_0_clk_64_0;
-  wire clk_wiz_0_clk_64_1;
+  wire clk_wiz_0_clk_32_lvds_in;
+  wire clk_wiz_0_clk_32_lvds_out;
+  wire [7:0]dist_mem_gen_lvds_in_qdpo;
+  wire [7:0]dist_mem_gen_lvds_out_qdpo;
   wire [31:0]mdm_1_M_AXI_ARADDR;
   wire [1:0]mdm_1_M_AXI_ARBURST;
   wire [3:0]mdm_1_M_AXI_ARCACHE;
@@ -909,7 +909,7 @@ module mcu
   wire rst_clk_wiz_1_100M_mb_reset;
   wire [0:0]rst_clk_wiz_1_100M_peripheral_aresetn;
   wire [0:0]rst_clk_wiz_1_50M_peripheral_reset;
-  wire [7:0]selectio_wiz_1_data_in_to_device;
+  wire [7:0]selectio_wiz_lvds_in_data_in_to_device;
   wire selectio_wiz_lvds_out_clk_to_pins_n;
   wire selectio_wiz_lvds_out_clk_to_pins_p;
   wire [0:0]selectio_wiz_lvds_out_data_out_to_pins_n;
@@ -919,6 +919,9 @@ module mcu
   wire ufb_trx_rxclk_p_1;
   wire [0:0]ufb_trx_rxd09_n_1;
   wire [0:0]ufb_trx_rxd09_p_1;
+  wire [3:0]xlconstant_val000_dout;
+  wire [0:0]xlconstant_val0_dout;
+  wire [0:0]xlconstant_val1_dout;
 
   assign DDR3_SDRAM_addr[14:0] = mig_7series_0_DDR3_ADDR;
   assign DDR3_SDRAM_ba[2:0] = mig_7series_0_DDR3_BA;
@@ -946,13 +949,27 @@ module mcu
   assign ufb_trx_txd_n[0] = selectio_wiz_lvds_out_data_out_to_pins_n;
   assign ufb_trx_txd_p[0] = selectio_wiz_lvds_out_data_out_to_pins_p;
   mcu_clk_wiz_0_0 clk_wiz_0
-       (.clk_32_0(clk_wiz_0_clk_32_0),
-        .clk_32_1(clk_wiz_0_clk_32_1),
-        .clk_64_0(clk_wiz_0_clk_64_0),
-        .clk_64_1(clk_wiz_0_clk_64_1),
+       (.clk_32_lvds_in(clk_wiz_0_clk_32_lvds_in),
+        .clk_32_lvds_out(clk_wiz_0_clk_32_lvds_out),
         .clk_in1_n(ufb_trx_rxclk_n_1),
         .clk_in1_p(ufb_trx_rxclk_p_1),
         .reset(rst_clk_wiz_1_100M_bus_struct_reset));
+  mcu_dist_mem_gen_0_0 dist_mem_gen_lvds_in
+       (.a(xlconstant_val000_dout),
+        .clk(clk_wiz_0_clk_32_lvds_in),
+        .d(selectio_wiz_lvds_in_data_in_to_device),
+        .dpra(xlconstant_val000_dout),
+        .qdpo(dist_mem_gen_lvds_in_qdpo),
+        .qdpo_clk(microblaze_0_Clk),
+        .we(xlconstant_val1_dout));
+  mcu_dist_mem_gen_lvds_in_0 dist_mem_gen_lvds_out
+       (.a(xlconstant_val000_dout),
+        .clk(microblaze_0_Clk),
+        .d(microblaze_mcs_0_GPIO1_tri_o),
+        .dpra(xlconstant_val000_dout),
+        .qdpo(dist_mem_gen_lvds_out_qdpo),
+        .qdpo_clk(clk_wiz_0_clk_32_lvds_out),
+        .we(xlconstant_val1_dout));
   mcu_mdm_1_0 mdm_1
        (.Dbg_Capture_0(microblaze_0_debug_CAPTURE),
         .Dbg_Clk_0(microblaze_0_debug_CLK),
@@ -1420,7 +1437,7 @@ module mcu
   mcu_microblaze_mcs_0_0 microblaze_mcs_0
        (.Clk(microblaze_0_Clk),
         .FIT1_Interrupt(microblaze_mcs_0_FIT1_Interrupt),
-        .GPIO1_tri_i(selectio_wiz_1_data_in_to_device),
+        .GPIO1_tri_i(dist_mem_gen_lvds_in_qdpo),
         .GPIO1_tri_o(microblaze_mcs_0_GPIO1_tri_o),
         .INTC_IRQ(microblaze_mcs_0_INTC_IRQ),
         .PIT1_Interrupt(microblaze_mcs_0_PIT1_Interrupt),
@@ -1502,23 +1519,29 @@ module mcu
         .peripheral_reset(rst_clk_wiz_1_50M_peripheral_reset),
         .slowest_sync_clk(microblaze_0_Clk));
   mcu_selectio_wiz_1_0 selectio_wiz_lvds_in
-       (.bitslip(1'b0),
-        .clk_div_in(clk_wiz_0_clk_32_0),
-        .clk_in(clk_wiz_0_clk_64_0),
+       (.bitslip(xlconstant_val0_dout),
+        .clk_div_in(xlconstant_val0_dout),
+        .clk_in(clk_wiz_0_clk_32_lvds_in),
         .data_in_from_pins_n(ufb_trx_rxd09_n_1),
         .data_in_from_pins_p(ufb_trx_rxd09_p_1),
-        .data_in_to_device(selectio_wiz_1_data_in_to_device),
+        .data_in_to_device(selectio_wiz_lvds_in_data_in_to_device),
         .io_reset(rst_clk_wiz_1_50M_peripheral_reset));
   mcu_selectio_wiz_0_0 selectio_wiz_lvds_out
-       (.clk_div_in(clk_wiz_0_clk_32_1),
-        .clk_in(clk_wiz_0_clk_64_1),
+       (.clk_div_in(xlconstant_val0_dout),
+        .clk_in(clk_wiz_0_clk_32_lvds_out),
         .clk_reset(rst_clk_wiz_1_50M_peripheral_reset),
         .clk_to_pins_n(selectio_wiz_lvds_out_clk_to_pins_n),
         .clk_to_pins_p(selectio_wiz_lvds_out_clk_to_pins_p),
-        .data_out_from_device(microblaze_mcs_0_GPIO1_tri_o),
+        .data_out_from_device(dist_mem_gen_lvds_out_qdpo),
         .data_out_to_pins_n(selectio_wiz_lvds_out_data_out_to_pins_n),
         .data_out_to_pins_p(selectio_wiz_lvds_out_data_out_to_pins_p),
         .io_reset(rst_clk_wiz_1_50M_peripheral_reset));
+  mcu_xlconstant_0_0 xlconstant_val0
+       (.dout(xlconstant_val0_dout));
+  mcu_xlconstant_val0_0 xlconstant_val0000
+       (.dout(xlconstant_val000_dout));
+  mcu_xlconstant_0_1 xlconstant_val1
+       (.dout(xlconstant_val1_dout));
 endmodule
 
 module mcu_microblaze_0_axi_periph_0
