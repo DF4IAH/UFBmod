@@ -302,7 +302,18 @@ module top(
     output ufb_fpga_ft_ri;
     
     
-
+    
+    // Assignments
+    assign ufb_fpga_rfx_mode = 0;
+    
+    assign ufb_fpga_ft_reset = 1;
+    assign ufb_fpga_ft_cts = 1;
+    assign ufb_fpga_ft_dsr = 1;
+    assign ufb_fpga_ft_dcd = 1;
+    assign ufb_fpga_ft_ri = 0;
+    
+    
+    
     // Block-Design MCU
  mcu_wrapper mcu_wrapper_i (
         .reset(reset),
@@ -330,6 +341,11 @@ module top(
 
         .DDR3_SDRAM_cas_n(ddr3_cas),
         .DDR3_SDRAM_ras_n(ddr3_ras),
+        
+        
+        .ufb_fpga_ft_12mhz(ufb_fpga_ft_12mhz),
+        .ufb_fpga_ft_rxd(ufb_fpga_ft_rxd),
+        .ufb_fpga_ft_txd(ufb_fpga_ft_txd),
 
         
         .ufb_trx_rxclk_p(ufb_trx_rxclk_p),

@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Tue Jul 30 14:07:46 2019
+//Date        : Tue Jul 30 17:27:00 2019
 //Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
 //Command     : generate_target mcu_wrapper.bd
 //Design      : mcu_wrapper
@@ -30,6 +30,9 @@ module mcu_wrapper
     pll_clk_p,
     reset,
     sys_rst,
+    ufb_fpga_ft_12mhz,
+    ufb_fpga_ft_rxd,
+    ufb_fpga_ft_txd,
     ufb_trx_rxclk_n,
     ufb_trx_rxclk_p,
     ufb_trx_rxd09_n,
@@ -58,6 +61,9 @@ module mcu_wrapper
   input pll_clk_p;
   input reset;
   input sys_rst;
+  output ufb_fpga_ft_12mhz;
+  output ufb_fpga_ft_rxd;
+  input ufb_fpga_ft_txd;
   input ufb_trx_rxclk_n;
   input ufb_trx_rxclk_p;
   input [0:0]ufb_trx_rxd09_n;
@@ -87,6 +93,9 @@ module mcu_wrapper
   wire pll_clk_p;
   wire reset;
   wire sys_rst;
+  wire ufb_fpga_ft_12mhz;
+  wire ufb_fpga_ft_rxd;
+  wire ufb_fpga_ft_txd;
   wire ufb_trx_rxclk_n;
   wire ufb_trx_rxclk_p;
   wire [0:0]ufb_trx_rxd09_n;
@@ -117,6 +126,9 @@ module mcu_wrapper
         .pll_clk_p(pll_clk_p),
         .reset(reset),
         .sys_rst(sys_rst),
+        .ufb_fpga_ft_12mhz(ufb_fpga_ft_12mhz),
+        .ufb_fpga_ft_rxd(ufb_fpga_ft_rxd),
+        .ufb_fpga_ft_txd(ufb_fpga_ft_txd),
         .ufb_trx_rxclk_n(ufb_trx_rxclk_n),
         .ufb_trx_rxclk_p(ufb_trx_rxclk_p),
         .ufb_trx_rxd09_n(ufb_trx_rxd09_n),

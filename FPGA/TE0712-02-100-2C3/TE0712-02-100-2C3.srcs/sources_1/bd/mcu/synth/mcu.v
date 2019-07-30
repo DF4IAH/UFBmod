@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Tue Jul 30 14:07:46 2019
+//Date        : Tue Jul 30 17:27:00 2019
 //Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -581,7 +581,7 @@ module m01_couplers_imp_AFYY8F
   assign m01_couplers_to_m01_couplers_WVALID = S_AXI_wvalid;
 endmodule
 
-(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=32,numReposBlks=24,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_mb_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
+(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=33,numReposBlks=25,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_mb_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
 module mcu
    (DDR3_SDRAM_addr,
     DDR3_SDRAM_ba,
@@ -603,6 +603,9 @@ module mcu
     pll_clk_p,
     reset,
     sys_rst,
+    ufb_fpga_ft_12mhz,
+    ufb_fpga_ft_rxd,
+    ufb_fpga_ft_txd,
     ufb_trx_rxclk_n,
     ufb_trx_rxclk_p,
     ufb_trx_rxd09_n,
@@ -631,6 +634,9 @@ module mcu
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PLL_CLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PLL_CLK_P, ASSOCIATED_RESET sys_rst, CLK_DOMAIN mcu_clk_ref_p_0, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input pll_clk_p;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input reset;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.SYS_RST RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.SYS_RST, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input sys_rst;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_FPGA_FT_12MHZ CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_FPGA_FT_12MHZ, CLK_DOMAIN /clk_wiz_ftdi_12mhz_clk_out1, FREQ_HZ 12000000, INSERT_VIP 0, PHASE 0.0" *) output ufb_fpga_ft_12mhz;
+  output ufb_fpga_ft_rxd;
+  input ufb_fpga_ft_txd;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_TRX_RXCLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_TRX_RXCLK_N, CLK_DOMAIN mcu_clk_in_n_0, FREQ_HZ 32000000, INSERT_VIP 0, PHASE 0.000" *) input ufb_trx_rxclk_n;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_TRX_RXCLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_TRX_RXCLK_P, CLK_DOMAIN mcu_clk_in_p_0, FREQ_HZ 32000000, INSERT_VIP 0, PHASE 0.000" *) input ufb_trx_rxclk_p;
   input [0:0]ufb_trx_rxd09_n;
@@ -641,9 +647,11 @@ module mcu
   output [0:0]ufb_trx_txd_p;
 
   wire [0:0]ARESETN_1;
+  wire UART_rxd_0_1;
   wire aux_reset_in_0_1;
   wire clk_wiz_0_clk_32_lvds_in;
   wire clk_wiz_0_clk_32_lvds_out;
+  wire clk_wiz_ftdi_12mhz_clk_12mhz;
   wire [7:0]dist_mem_gen_lvds_in_qdpo;
   wire [7:0]dist_mem_gen_lvds_out_qdpo;
   wire [31:0]mdm_1_M_AXI_ARADDR;
@@ -884,6 +892,7 @@ module mcu
   wire microblaze_mcs_0_INTC_IRQ;
   wire microblaze_mcs_0_PIT1_Interrupt;
   wire microblaze_mcs_0_UART_Interrupt;
+  wire microblaze_mcs_0_UART_txd;
   wire [14:0]mig_7series_0_DDR3_ADDR;
   wire [2:0]mig_7series_0_DDR3_BA;
   wire mig_7series_0_DDR3_CAS_N;
@@ -935,11 +944,14 @@ module mcu
   assign DDR3_SDRAM_ras_n = mig_7series_0_DDR3_RAS_N;
   assign DDR3_SDRAM_reset_n = mig_7series_0_DDR3_RESET_N;
   assign DDR3_SDRAM_we_n = mig_7series_0_DDR3_WE_N;
+  assign UART_rxd_0_1 = ufb_fpga_ft_txd;
   assign aux_reset_in_0_1 = reset;
   assign init_calib_complete = mig_7series_0_init_calib_complete;
   assign pll_clk_n_1 = pll_clk_n;
   assign pll_clk_p_1 = pll_clk_p;
   assign sys_rst_0_1 = sys_rst;
+  assign ufb_fpga_ft_12mhz = clk_wiz_ftdi_12mhz_clk_12mhz;
+  assign ufb_fpga_ft_rxd = microblaze_mcs_0_UART_txd;
   assign ufb_trx_rxclk_n_1 = ufb_trx_rxclk_n;
   assign ufb_trx_rxclk_p_1 = ufb_trx_rxclk_p;
   assign ufb_trx_rxd09_n_1 = ufb_trx_rxd09_n[0];
@@ -953,6 +965,10 @@ module mcu
         .clk_32_lvds_out(clk_wiz_0_clk_32_lvds_out),
         .clk_in1_n(ufb_trx_rxclk_n_1),
         .clk_in1_p(ufb_trx_rxclk_p_1),
+        .reset(rst_clk_wiz_1_100M_bus_struct_reset));
+  mcu_clk_wiz_1_0 clk_wiz_ftdi_12mhz
+       (.clk_12mhz(clk_wiz_ftdi_12mhz_clk_12mhz),
+        .clk_in1(microblaze_0_Clk),
         .reset(rst_clk_wiz_1_100M_bus_struct_reset));
   mcu_dist_mem_gen_0_0 dist_mem_gen_lvds_in
        (.a(xlconstant_val000_dout),
@@ -1443,7 +1459,8 @@ module mcu
         .PIT1_Interrupt(microblaze_mcs_0_PIT1_Interrupt),
         .Reset(rst_clk_wiz_1_100M_mb_reset),
         .UART_Interrupt(microblaze_mcs_0_UART_Interrupt),
-        .UART_rxd(1'b0));
+        .UART_rxd(UART_rxd_0_1),
+        .UART_txd(microblaze_mcs_0_UART_txd));
   mcu_mig_7series_0_0 mig_7series_0
        (.aresetn(rst_clk_wiz_1_100M_peripheral_aresetn),
         .clk_ref_i(mig_7series_0_ui_addn_clk_0),
@@ -1507,7 +1524,7 @@ module mcu
         .ui_addn_clk_0(mig_7series_0_ui_addn_clk_0),
         .ui_clk(microblaze_0_Clk),
         .ui_clk_sync_rst(mig_7series_0_ui_clk_sync_rst));
-  mcu_rst_clk_wiz_1_100M_0 rst_clk_wiz_1_50M
+  mcu_rst_clk_wiz_1_100M_0 rst_clk_wiz_1_50mhz
        (.aux_reset_in(aux_reset_in_0_1),
         .bus_struct_reset(rst_clk_wiz_1_100M_bus_struct_reset),
         .dcm_locked(mig_7series_0_mmcm_locked),
