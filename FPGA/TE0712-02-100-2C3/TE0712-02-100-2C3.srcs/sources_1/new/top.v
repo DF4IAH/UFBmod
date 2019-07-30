@@ -33,7 +33,7 @@ module top(
     mgt_clk0_p,          // 1.8 V    GTP         120.0 MHz
     mgt_clk0_n,          // 1.8 V    GTP         120.0 MHz
 
-    ufb_fpga_trx_clk0,   // 3.3 V    TRX          32.0 MHz
+    ufb_fpga_trx_clk,    // 3.3 V    TRX          32.0 MHz
 
     // Out of order clocks
     //clk0_p,            // 1.5 V    PLL         xxx.x MHz   REV02: none
@@ -171,7 +171,7 @@ module top(
     input  mgt_clk0_p;          // 1.8 V    GTP         120.0 MHz
     input  mgt_clk0_n;          // 1.8 V    GTP         120.0 MHz
 
-    input  ufb_fpga_trx_clk0;   // 3.3 V    TRX          32.0 MHz
+    input  ufb_fpga_trx_clk;    // 3.3 V    TRX          32.0 MHz
 
 
     // Out of order clocks
@@ -257,17 +257,17 @@ module top(
     input  ufb_trx_rxclk_p;
     input  ufb_trx_rxclk_n;
     
-    input  [0:0]ufb_trx_rxd09_p;
-    input  [0:0]ufb_trx_rxd09_n;
+    input  ufb_trx_rxd09_p;
+    input  ufb_trx_rxd09_n;
     
-    input  [0:0]ufb_trx_rxd24_p;
-    input  [0:0]ufb_trx_rxd24_n;
+    input  ufb_trx_rxd24_p;
+    input  ufb_trx_rxd24_n;
     
     output ufb_trx_txclk_p;
     output ufb_trx_txclk_n;
     
-    output [0:0]ufb_trx_txd_p;
-    output [0:0]ufb_trx_txd_n;
+    output ufb_trx_txd_p;
+    output ufb_trx_txd_n;
     
     
     // TRX SPI

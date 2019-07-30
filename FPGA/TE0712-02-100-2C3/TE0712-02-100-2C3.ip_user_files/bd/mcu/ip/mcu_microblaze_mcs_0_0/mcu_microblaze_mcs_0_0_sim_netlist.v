@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Mon Jul 29 09:09:33 2019
-// Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
+// Date        : Mon Jul 29 19:31:46 2019
+// Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_microblaze_mcs_0_0/mcu_microblaze_mcs_0_0_sim_netlist.v
+//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_microblaze_mcs_0_0/mcu_microblaze_mcs_0_0_sim_netlist.v
 // Design      : mcu_microblaze_mcs_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -37,14 +37,14 @@ module mcu_microblaze_mcs_0_0
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.INTC_IRQ INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.INTC_IRQ, SENSITIVITY LEVEL_HIGH, PortWidth 1" *) output INTC_IRQ;
   (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART RxD" *) input UART_rxd;
   (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART TxD" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME UART, BOARD.ASSOCIATED_PARAM UART_BOARD_INTERFACE" *) output UART_txd;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_I" *) input [31:0]GPIO1_tri_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME GPIO1, C_USE_GPO1 1, C_GPO1_SIZE 32, C_GPO1_INIT 0x00000000, C_USE_GPI1 1, C_GPI1_SIZE 32, C_GPI1_INTERRUPT 0, BOARD.ASSOCIATED_PARAM GPIO1_BOARD_INTERFACE" *) output [31:0]GPIO1_tri_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_I" *) input [7:0]GPIO1_tri_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME GPIO1, C_USE_GPO1 1, C_GPO1_SIZE 8, C_GPO1_INIT 0x00000000, C_USE_GPI1 1, C_GPI1_SIZE 8, C_GPI1_INTERRUPT 0, BOARD.ASSOCIATED_PARAM GPIO1_BOARD_INTERFACE" *) output [7:0]GPIO1_tri_o;
 
   wire Clk;
   wire FIT1_Interrupt;
   wire FIT1_Toggle;
-  wire [31:0]GPIO1_tri_i;
-  wire [31:0]GPIO1_tri_o;
+  wire [7:0]GPIO1_tri_i;
+  wire [7:0]GPIO1_tri_o;
   wire INTC_IRQ;
   wire PIT1_Interrupt;
   wire PIT1_Toggle;
@@ -362,226 +362,82 @@ endmodule
 
 (* ORIG_REF_NAME = "GPI_Module" *) 
 module mcu_microblaze_mcs_0_0_GPI_Module
-   (\Using_GPI.GPI_In_reg[31]_0 ,
+   (\Using_GPI.GPI_In_reg[7]_0 ,
     Q,
     \Using_GPI.GPI_In_reg[0]_0 ,
     GPI1,
     Clk);
-  output [31:0]\Using_GPI.GPI_In_reg[31]_0 ;
+  output [7:0]\Using_GPI.GPI_In_reg[7]_0 ;
   input [4:0]Q;
   input \Using_GPI.GPI_In_reg[0]_0 ;
-  input [31:0]GPI1;
+  input [7:0]GPI1;
   input Clk;
 
   wire Clk;
-  wire [31:0]GPI1;
+  wire [7:0]GPI1;
   wire [4:0]Q;
-  wire \Using_GPI.GPI_In[31]_i_1_n_0 ;
+  wire \Using_GPI.GPI_In[7]_i_1_n_0 ;
   wire \Using_GPI.GPI_In_reg[0]_0 ;
-  wire [31:0]\Using_GPI.GPI_In_reg[31]_0 ;
+  wire [7:0]\Using_GPI.GPI_In_reg[7]_0 ;
 
   LUT6 #(
     .INIT(64'hFFFFFFFFFFFFEFFF)) 
-    \Using_GPI.GPI_In[31]_i_1 
+    \Using_GPI.GPI_In[7]_i_1 
        (.I0(Q[2]),
         .I1(Q[1]),
         .I2(Q[3]),
         .I3(\Using_GPI.GPI_In_reg[0]_0 ),
         .I4(Q[0]),
         .I5(Q[4]),
-        .O(\Using_GPI.GPI_In[31]_i_1_n_0 ));
+        .O(\Using_GPI.GPI_In[7]_i_1_n_0 ));
   FDRE \Using_GPI.GPI_In_reg[0] 
        (.C(Clk),
         .CE(1'b1),
         .D(GPI1[0]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [0]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[10] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[10]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [10]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[11] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[11]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [11]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[12] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[12]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [12]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[13] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[13]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [13]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[14] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[14]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [14]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[15] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[15]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [15]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[16] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[16]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [16]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[17] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[17]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [17]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[18] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[18]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [18]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[19] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[19]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [19]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
+        .Q(\Using_GPI.GPI_In_reg[7]_0 [0]),
+        .R(\Using_GPI.GPI_In[7]_i_1_n_0 ));
   FDRE \Using_GPI.GPI_In_reg[1] 
        (.C(Clk),
         .CE(1'b1),
         .D(GPI1[1]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [1]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[20] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[20]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [20]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[21] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[21]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [21]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[22] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[22]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [22]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[23] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[23]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [23]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[24] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[24]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [24]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[25] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[25]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [25]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[26] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[26]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [26]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[27] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[27]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [27]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[28] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[28]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [28]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[29] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[29]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [29]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
+        .Q(\Using_GPI.GPI_In_reg[7]_0 [1]),
+        .R(\Using_GPI.GPI_In[7]_i_1_n_0 ));
   FDRE \Using_GPI.GPI_In_reg[2] 
        (.C(Clk),
         .CE(1'b1),
         .D(GPI1[2]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [2]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[30] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[30]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [30]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[31] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[31]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [31]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
+        .Q(\Using_GPI.GPI_In_reg[7]_0 [2]),
+        .R(\Using_GPI.GPI_In[7]_i_1_n_0 ));
   FDRE \Using_GPI.GPI_In_reg[3] 
        (.C(Clk),
         .CE(1'b1),
         .D(GPI1[3]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [3]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
+        .Q(\Using_GPI.GPI_In_reg[7]_0 [3]),
+        .R(\Using_GPI.GPI_In[7]_i_1_n_0 ));
   FDRE \Using_GPI.GPI_In_reg[4] 
        (.C(Clk),
         .CE(1'b1),
         .D(GPI1[4]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [4]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
+        .Q(\Using_GPI.GPI_In_reg[7]_0 [4]),
+        .R(\Using_GPI.GPI_In[7]_i_1_n_0 ));
   FDRE \Using_GPI.GPI_In_reg[5] 
        (.C(Clk),
         .CE(1'b1),
         .D(GPI1[5]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [5]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
+        .Q(\Using_GPI.GPI_In_reg[7]_0 [5]),
+        .R(\Using_GPI.GPI_In[7]_i_1_n_0 ));
   FDRE \Using_GPI.GPI_In_reg[6] 
        (.C(Clk),
         .CE(1'b1),
         .D(GPI1[6]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [6]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
+        .Q(\Using_GPI.GPI_In_reg[7]_0 [6]),
+        .R(\Using_GPI.GPI_In[7]_i_1_n_0 ));
   FDRE \Using_GPI.GPI_In_reg[7] 
        (.C(Clk),
         .CE(1'b1),
         .D(GPI1[7]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [7]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[8] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[8]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [8]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
-  FDRE \Using_GPI.GPI_In_reg[9] 
-       (.C(Clk),
-        .CE(1'b1),
-        .D(GPI1[9]),
-        .Q(\Using_GPI.GPI_In_reg[31]_0 [9]),
-        .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
+        .Q(\Using_GPI.GPI_In_reg[7]_0 [7]),
+        .R(\Using_GPI.GPI_In[7]_i_1_n_0 ));
 endmodule
 
 (* ORIG_REF_NAME = "GPO_Module" *) 
@@ -592,24 +448,24 @@ module mcu_microblaze_mcs_0_0_GPO_Module
     Rst,
     out,
     Clk);
-  output [31:0]GPO1;
+  output [7:0]GPO1;
   input [4:0]Q;
   input \TMR_No.gpo_io_i_reg[0]_0 ;
   input Rst;
-  input [31:0]out;
+  input [7:0]out;
   input Clk;
 
   wire Clk;
-  wire [31:0]GPO1;
+  wire [7:0]GPO1;
   wire [4:0]Q;
   wire Rst;
   wire \TMR_No.gpo_io_i_reg[0]_0 ;
   wire gpo1_write;
-  wire [31:0]out;
+  wire [7:0]out;
 
   LUT6 #(
     .INIT(64'h0000000000100000)) 
-    \TMR_No.gpo_io_i[31]_i_1 
+    \TMR_No.gpo_io_i[7]_i_1 
        (.I0(Q[0]),
         .I1(Q[4]),
         .I2(\TMR_No.gpo_io_i_reg[0]_0 ),
@@ -623,149 +479,17 @@ module mcu_microblaze_mcs_0_0_GPO_Module
         .D(out[0]),
         .Q(GPO1[0]),
         .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[10] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[10]),
-        .Q(GPO1[10]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[11] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[11]),
-        .Q(GPO1[11]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[12] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[12]),
-        .Q(GPO1[12]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[13] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[13]),
-        .Q(GPO1[13]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[14] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[14]),
-        .Q(GPO1[14]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[15] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[15]),
-        .Q(GPO1[15]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[16] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[16]),
-        .Q(GPO1[16]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[17] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[17]),
-        .Q(GPO1[17]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[18] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[18]),
-        .Q(GPO1[18]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[19] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[19]),
-        .Q(GPO1[19]),
-        .R(Rst));
   FDRE \TMR_No.gpo_io_i_reg[1] 
        (.C(Clk),
         .CE(gpo1_write),
         .D(out[1]),
         .Q(GPO1[1]),
         .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[20] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[20]),
-        .Q(GPO1[20]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[21] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[21]),
-        .Q(GPO1[21]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[22] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[22]),
-        .Q(GPO1[22]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[23] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[23]),
-        .Q(GPO1[23]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[24] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[24]),
-        .Q(GPO1[24]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[25] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[25]),
-        .Q(GPO1[25]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[26] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[26]),
-        .Q(GPO1[26]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[27] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[27]),
-        .Q(GPO1[27]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[28] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[28]),
-        .Q(GPO1[28]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[29] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[29]),
-        .Q(GPO1[29]),
-        .R(Rst));
   FDRE \TMR_No.gpo_io_i_reg[2] 
        (.C(Clk),
         .CE(gpo1_write),
         .D(out[2]),
         .Q(GPO1[2]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[30] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[30]),
-        .Q(GPO1[30]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[31] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[31]),
-        .Q(GPO1[31]),
         .R(Rst));
   FDRE \TMR_No.gpo_io_i_reg[3] 
        (.C(Clk),
@@ -796,18 +520,6 @@ module mcu_microblaze_mcs_0_0_GPO_Module
         .CE(gpo1_write),
         .D(out[7]),
         .Q(GPO1[7]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[8] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[8]),
-        .Q(GPO1[8]),
-        .R(Rst));
-  FDRE \TMR_No.gpo_io_i_reg[9] 
-       (.C(Clk),
-        .CE(gpo1_write),
-        .D(out[9]),
-        .Q(GPO1[9]),
         .R(Rst));
 endmodule
 
@@ -843,7 +555,7 @@ module mcu_microblaze_mcs_0_0_Iomodule_core
   output \lmb_abus_Q_reg[3] ;
   output UART_Interrupt;
   output [0:31]Sl_DBus;
-  output [31:0]GPO1;
+  output [7:0]GPO1;
   output [12:0]INTC_Interrupt_Address;
   input Clk;
   input Rst;
@@ -854,21 +566,21 @@ module mcu_microblaze_mcs_0_0_Iomodule_core
   input \Using_FPGA.Native ;
   input [0:0]E;
   input [1:0]INTC_Processor_Ack;
-  input [31:0]GPI1;
+  input [7:0]GPI1;
 
   wire Clk;
   wire [0:0]E;
   wire FIT1_Toggle;
-  wire [31:0]GPI1;
-  wire [31:0]GPI_In;
-  wire [31:0]GPO1;
+  wire [7:0]GPI1;
+  wire [7:0]GPI_In;
+  wire [7:0]GPO1;
   wire [7:0]INTC_CIPR;
   wire [7:0]INTC_CISR;
   wire INTC_IRQ;
   wire [12:0]INTC_Interrupt_Address;
   wire [1:0]INTC_Processor_Ack;
   wire PIT1_Toggle;
-  wire [31:0]PIT_Data;
+  wire [7:0]PIT_Data;
   wire PIT_I1_n_3;
   wire [5:0]Q;
   wire [7:0]RX_Data;
@@ -960,122 +672,26 @@ module mcu_microblaze_mcs_0_0_Iomodule_core
         .GPI1(GPI1),
         .Q(Q[4:0]),
         .\Using_GPI.GPI_In_reg[0]_0 (\Using_FPGA.Native ),
-        .\Using_GPI.GPI_In_reg[31]_0 (GPI_In));
+        .\Using_GPI.GPI_In_reg[7]_0 (GPI_In));
   mcu_microblaze_mcs_0_0_GPO_Module GPO_I1
        (.Clk(Clk),
         .GPO1(GPO1),
         .Q(Q[4:0]),
         .Rst(Rst),
         .\TMR_No.gpo_io_i_reg[0]_0 (PIT_I1_n_3),
-        .out(out));
+        .out(out[7:0]));
   mcu_microblaze_mcs_0_0_PIT_Module PIT_I1
        (.Clk(Clk),
         .PIT1_Toggle(PIT1_Toggle),
         .Q(Q),
         .Rst(Rst),
         .\Using_PIT.Readable_Counter.PIT_Data_reg[0]_0 (\Using_FPGA.Native ),
-        .\Using_PIT.Readable_Counter.PIT_Data_reg[31]_0 (PIT_Data),
+        .\Using_PIT.Readable_Counter.PIT_Data_reg[31]_0 ({Sl_DBus[0],Sl_DBus[1],Sl_DBus[2],Sl_DBus[3],Sl_DBus[4],Sl_DBus[5],Sl_DBus[6],Sl_DBus[7],Sl_DBus[8],Sl_DBus[9],Sl_DBus[10],Sl_DBus[11],Sl_DBus[12],Sl_DBus[13],Sl_DBus[14],Sl_DBus[15],Sl_DBus[16],Sl_DBus[17],Sl_DBus[18],Sl_DBus[19],Sl_DBus[20],Sl_DBus[21],Sl_DBus[22],Sl_DBus[23],PIT_Data}),
         .\Using_PIT.TMR_No.pit_interrupt_i_reg_0 (\Using_PIT.TMR_No.pit_interrupt_i_reg ),
         .\lmb_abus_Q_reg[3] (\lmb_abus_Q_reg[3] ),
         .lmb_reg_write(lmb_reg_write),
         .lmb_reg_write_reg(PIT_I1_n_3),
         .out(out));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[0]_INST_0 
-       (.I0(PIT_Data[31]),
-        .I1(GPI_In[31]),
-        .O(Sl_DBus[0]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[10]_INST_0 
-       (.I0(PIT_Data[21]),
-        .I1(GPI_In[21]),
-        .O(Sl_DBus[10]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[11]_INST_0 
-       (.I0(PIT_Data[20]),
-        .I1(GPI_In[20]),
-        .O(Sl_DBus[11]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[12]_INST_0 
-       (.I0(PIT_Data[19]),
-        .I1(GPI_In[19]),
-        .O(Sl_DBus[12]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[13]_INST_0 
-       (.I0(PIT_Data[18]),
-        .I1(GPI_In[18]),
-        .O(Sl_DBus[13]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[14]_INST_0 
-       (.I0(PIT_Data[17]),
-        .I1(GPI_In[17]),
-        .O(Sl_DBus[14]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[15]_INST_0 
-       (.I0(PIT_Data[16]),
-        .I1(GPI_In[16]),
-        .O(Sl_DBus[15]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[16]_INST_0 
-       (.I0(PIT_Data[15]),
-        .I1(GPI_In[15]),
-        .O(Sl_DBus[16]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[17]_INST_0 
-       (.I0(PIT_Data[14]),
-        .I1(GPI_In[14]),
-        .O(Sl_DBus[17]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[18]_INST_0 
-       (.I0(PIT_Data[13]),
-        .I1(GPI_In[13]),
-        .O(Sl_DBus[18]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[19]_INST_0 
-       (.I0(PIT_Data[12]),
-        .I1(GPI_In[12]),
-        .O(Sl_DBus[19]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[1]_INST_0 
-       (.I0(PIT_Data[30]),
-        .I1(GPI_In[30]),
-        .O(Sl_DBus[1]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[20]_INST_0 
-       (.I0(PIT_Data[11]),
-        .I1(GPI_In[11]),
-        .O(Sl_DBus[20]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[21]_INST_0 
-       (.I0(PIT_Data[10]),
-        .I1(GPI_In[10]),
-        .O(Sl_DBus[21]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[22]_INST_0 
-       (.I0(PIT_Data[9]),
-        .I1(GPI_In[9]),
-        .O(Sl_DBus[22]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[23]_INST_0 
-       (.I0(PIT_Data[8]),
-        .I1(GPI_In[8]),
-        .O(Sl_DBus[23]));
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
     \Sl_DBus[24]_INST_0 
@@ -1127,12 +743,6 @@ module mcu_microblaze_mcs_0_0_Iomodule_core
         .I3(INTC_CISR[2]),
         .I4(PIT_Data[2]),
         .O(Sl_DBus[29]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[2]_INST_0 
-       (.I0(PIT_Data[29]),
-        .I1(GPI_In[29]),
-        .O(Sl_DBus[2]));
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
     \Sl_DBus[30]_INST_0 
@@ -1152,48 +762,6 @@ module mcu_microblaze_mcs_0_0_Iomodule_core
         .I4(INTC_CISR[0]),
         .I5(PIT_Data[0]),
         .O(Sl_DBus[31]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[3]_INST_0 
-       (.I0(PIT_Data[28]),
-        .I1(GPI_In[28]),
-        .O(Sl_DBus[3]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[4]_INST_0 
-       (.I0(PIT_Data[27]),
-        .I1(GPI_In[27]),
-        .O(Sl_DBus[4]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[5]_INST_0 
-       (.I0(PIT_Data[26]),
-        .I1(GPI_In[26]),
-        .O(Sl_DBus[5]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[6]_INST_0 
-       (.I0(PIT_Data[25]),
-        .I1(GPI_In[25]),
-        .O(Sl_DBus[6]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[7]_INST_0 
-       (.I0(PIT_Data[24]),
-        .I1(GPI_In[24]),
-        .O(Sl_DBus[7]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[8]_INST_0 
-       (.I0(PIT_Data[23]),
-        .I1(GPI_In[23]),
-        .O(Sl_DBus[8]));
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Sl_DBus[9]_INST_0 
-       (.I0(PIT_Data[22]),
-        .I1(GPI_In[22]),
-        .O(Sl_DBus[9]));
   (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT3 #(
     .INIT(8'h74)) 
@@ -1210,7 +778,7 @@ module mcu_microblaze_mcs_0_0_Iomodule_core
         .I1(\Using_UART.Programmable_BaudRate_TMR_No.baudrate_cnt[19]_i_3_n_0 ),
         .I2(baudrate_reg[10]),
         .O(baudrate_cnt_0[10]));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Using_UART.Programmable_BaudRate_TMR_No.baudrate_cnt[11]_i_1 
@@ -1226,7 +794,7 @@ module mcu_microblaze_mcs_0_0_Iomodule_core
         .I1(\Using_UART.Programmable_BaudRate_TMR_No.baudrate_cnt[19]_i_3_n_0 ),
         .I2(baudrate_reg[12]),
         .O(baudrate_cnt_0[12]));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Using_UART.Programmable_BaudRate_TMR_No.baudrate_cnt[13]_i_1 
@@ -1357,7 +925,7 @@ module mcu_microblaze_mcs_0_0_Iomodule_core
         .I1(\Using_UART.Programmable_BaudRate_TMR_No.baudrate_cnt[19]_i_3_n_0 ),
         .I2(baudrate_reg[2]),
         .O(baudrate_cnt_0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Using_UART.Programmable_BaudRate_TMR_No.baudrate_cnt[3]_i_1 
@@ -1365,7 +933,7 @@ module mcu_microblaze_mcs_0_0_Iomodule_core
         .I1(\Using_UART.Programmable_BaudRate_TMR_No.baudrate_cnt[19]_i_3_n_0 ),
         .I2(baudrate_reg[3]),
         .O(baudrate_cnt_0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Using_UART.Programmable_BaudRate_TMR_No.baudrate_cnt[4]_i_1 
@@ -1373,7 +941,7 @@ module mcu_microblaze_mcs_0_0_Iomodule_core
         .I1(\Using_UART.Programmable_BaudRate_TMR_No.baudrate_cnt[19]_i_3_n_0 ),
         .I2(baudrate_reg[4]),
         .O(baudrate_cnt_0[4]));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Using_UART.Programmable_BaudRate_TMR_No.baudrate_cnt[5]_i_1 
@@ -1381,7 +949,7 @@ module mcu_microblaze_mcs_0_0_Iomodule_core
         .I1(\Using_UART.Programmable_BaudRate_TMR_No.baudrate_cnt[19]_i_3_n_0 ),
         .I2(baudrate_reg[5]),
         .O(baudrate_cnt_0[5]));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Using_UART.Programmable_BaudRate_TMR_No.baudrate_cnt[6]_i_1 
@@ -1405,7 +973,7 @@ module mcu_microblaze_mcs_0_0_Iomodule_core
         .I1(\Using_UART.Programmable_BaudRate_TMR_No.baudrate_cnt[19]_i_3_n_0 ),
         .I2(baudrate_reg[8]),
         .O(baudrate_cnt_0[8]));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Using_UART.Programmable_BaudRate_TMR_No.baudrate_cnt[9]_i_1 
@@ -2240,7 +1808,7 @@ module mcu_microblaze_mcs_0_0_PIT_Module
   (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT2 #(
     .INIT(4'h2)) 
-    \TMR_No.gpo_io_i[31]_i_2 
+    \TMR_No.gpo_io_i[7]_i_2 
        (.I0(lmb_reg_write),
         .I1(Q[5]),
         .O(lmb_reg_write_reg));
@@ -4720,8 +4288,8 @@ module mcu_microblaze_mcs_0_0_bd_f021
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_ASYNC_RESET Reset, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0" *) input Clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.FIT1_INTERRUPT INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.FIT1_INTERRUPT, PortWidth 1, SENSITIVITY EDGE_RISING" *) output FIT1_Interrupt;
   output FIT1_Toggle;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_I" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME GPIO1, C_GPI1_INTERRUPT 0, C_GPI1_SIZE 32, C_GPO1_INIT 0x00000000, C_GPO1_SIZE 32, C_USE_GPI1 1, C_USE_GPO1 1" *) input [31:0]GPIO1_tri_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O" *) output [31:0]GPIO1_tri_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_I" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME GPIO1, C_GPI1_INTERRUPT 0, C_GPI1_SIZE 8, C_GPO1_INIT 0x00000000, C_GPO1_SIZE 8, C_USE_GPI1 1, C_USE_GPO1 1" *) input [7:0]GPIO1_tri_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O" *) output [7:0]GPIO1_tri_o;
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.INTC_IRQ INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.INTC_IRQ, PortWidth 1, SENSITIVITY LEVEL_HIGH" *) output INTC_IRQ;
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.PIT1_INTERRUPT INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.PIT1_INTERRUPT, PortWidth 1, SENSITIVITY EDGE_RISING" *) output PIT1_Interrupt;
   output PIT1_Toggle;
@@ -4733,8 +4301,8 @@ module mcu_microblaze_mcs_0_0_bd_f021
   wire Clk;
   wire FIT1_Interrupt;
   wire FIT1_Toggle;
-  wire [31:0]GPIO1_tri_i;
-  wire [31:0]GPIO1_tri_o;
+  wire [7:0]GPIO1_tri_i;
+  wire [7:0]GPIO1_tri_o;
   wire INTC_IRQ;
   wire IO_Rst;
   wire LMB_Rst1;
@@ -4763,22 +4331,22 @@ module mcu_microblaze_mcs_0_0_bd_f021
   wire dlmb_port_EN;
   wire dlmb_port_RST;
   wire [0:3]dlmb_port_WE;
+  wire [0:31]dlmb_sl_0_ABUS;
+  wire dlmb_sl_0_ADDRSTROBE;
+  wire [0:3]dlmb_sl_0_BE;
   wire dlmb_sl_0_CE;
   wire [0:31]dlmb_sl_0_READDBUS;
+  wire dlmb_sl_0_READSTROBE;
   wire dlmb_sl_0_READY;
   wire dlmb_sl_0_UE;
   wire dlmb_sl_0_WAIT;
-  wire [0:31]dlmb_sl_1_ABUS;
-  wire dlmb_sl_1_ADDRSTROBE;
-  wire [0:3]dlmb_sl_1_BE;
+  wire [0:31]dlmb_sl_0_WRITEDBUS;
+  wire dlmb_sl_0_WRITESTROBE;
   wire dlmb_sl_1_CE;
   wire [0:31]dlmb_sl_1_READDBUS;
-  wire dlmb_sl_1_READSTROBE;
   wire dlmb_sl_1_READY;
   wire dlmb_sl_1_UE;
   wire dlmb_sl_1_WAIT;
-  wire [0:31]dlmb_sl_1_WRITEDBUS;
-  wire dlmb_sl_1_WRITESTROBE;
   wire [0:31]ilmb_ABUS;
   wire ilmb_ADDRSTROBE;
   wire ilmb_CE;
@@ -4819,19 +4387,19 @@ module mcu_microblaze_mcs_0_0_bd_f021
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "lmb_v10,Vivado 2018.3" *) 
   mcu_microblaze_mcs_0_0_bd_f021_dlmb_0 dlmb
-       (.LMB_ABus(dlmb_sl_1_ABUS),
-        .LMB_AddrStrobe(dlmb_sl_1_ADDRSTROBE),
-        .LMB_BE(dlmb_sl_1_BE),
+       (.LMB_ABus(dlmb_sl_0_ABUS),
+        .LMB_AddrStrobe(dlmb_sl_0_ADDRSTROBE),
+        .LMB_BE(dlmb_sl_0_BE),
         .LMB_CE(dlmb_CE),
         .LMB_Clk(Clk),
         .LMB_ReadDBus(dlmb_READDBUS),
-        .LMB_ReadStrobe(dlmb_sl_1_READSTROBE),
+        .LMB_ReadStrobe(dlmb_sl_0_READSTROBE),
         .LMB_Ready(dlmb_READY),
         .LMB_Rst(NLW_dlmb_LMB_Rst_UNCONNECTED),
         .LMB_UE(dlmb_UE),
         .LMB_Wait(dlmb_WAIT),
-        .LMB_WriteDBus(dlmb_sl_1_WRITEDBUS),
-        .LMB_WriteStrobe(dlmb_sl_1_WRITESTROBE),
+        .LMB_WriteDBus(dlmb_sl_0_WRITEDBUS),
+        .LMB_WriteStrobe(dlmb_sl_0_WRITESTROBE),
         .M_ABus(dlmb_ABUS),
         .M_AddrStrobe(dlmb_ADDRSTROBE),
         .M_BE(dlmb_BE),
@@ -4856,14 +4424,14 @@ module mcu_microblaze_mcs_0_0_bd_f021
         .BRAM_EN_A(dlmb_port_EN),
         .BRAM_Rst_A(dlmb_port_RST),
         .BRAM_WEN_A(dlmb_port_WE),
-        .LMB_ABus(dlmb_sl_1_ABUS),
-        .LMB_AddrStrobe(dlmb_sl_1_ADDRSTROBE),
-        .LMB_BE(dlmb_sl_1_BE),
+        .LMB_ABus(dlmb_sl_0_ABUS),
+        .LMB_AddrStrobe(dlmb_sl_0_ADDRSTROBE),
+        .LMB_BE(dlmb_sl_0_BE),
         .LMB_Clk(Clk),
-        .LMB_ReadStrobe(dlmb_sl_1_READSTROBE),
+        .LMB_ReadStrobe(dlmb_sl_0_READSTROBE),
         .LMB_Rst(LMB_Rst1),
-        .LMB_WriteDBus(dlmb_sl_1_WRITEDBUS),
-        .LMB_WriteStrobe(dlmb_sl_1_WRITESTROBE),
+        .LMB_WriteDBus(dlmb_sl_0_WRITEDBUS),
+        .LMB_WriteStrobe(dlmb_sl_0_WRITESTROBE),
         .Sl_CE(dlmb_sl_0_CE),
         .Sl_DBus(dlmb_sl_0_READDBUS),
         .Sl_Ready(dlmb_sl_0_READY),
@@ -4935,12 +4503,12 @@ module mcu_microblaze_mcs_0_0_bd_f021
         .INTC_IRQ_OUT(INTC_IRQ),
         .INTC_Interrupt_Address(iomodule_0_INTC_Irq_ADDRESS),
         .INTC_Processor_Ack({iomodule_0_INTC_Irq_ACK[0],iomodule_0_INTC_Irq_ACK[1]}),
-        .LMB_ABus(dlmb_sl_1_ABUS),
-        .LMB_AddrStrobe(dlmb_sl_1_ADDRSTROBE),
-        .LMB_BE(dlmb_sl_1_BE),
-        .LMB_ReadStrobe(dlmb_sl_1_READSTROBE),
-        .LMB_WriteDBus(dlmb_sl_1_WRITEDBUS),
-        .LMB_WriteStrobe(dlmb_sl_1_WRITESTROBE),
+        .LMB_ABus(dlmb_sl_0_ABUS),
+        .LMB_AddrStrobe(dlmb_sl_0_ADDRSTROBE),
+        .LMB_BE(dlmb_sl_0_BE),
+        .LMB_ReadStrobe(dlmb_sl_0_READSTROBE),
+        .LMB_WriteDBus(dlmb_sl_0_WRITEDBUS),
+        .LMB_WriteStrobe(dlmb_sl_0_WRITESTROBE),
         .PIT1_Interrupt(PIT1_Interrupt),
         .PIT1_Toggle(PIT1_Toggle),
         .Rst(IO_Rst),
@@ -5435,8 +5003,8 @@ module mcu_microblaze_mcs_0_0_bd_f021_iomodule_0_0
   output FIT1_Toggle;
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTERRUPT.PIT1_Interrupt INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTERRUPT.PIT1_Interrupt, SENSITIVITY EDGE_RISING, PortWidth 1" *) output PIT1_Interrupt;
   output PIT1_Toggle;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME GPIO1, C_USE_GPO1 1, C_GPO1_SIZE 32, C_GPO1_INIT 0x00000000, C_USE_GPI1 1, C_GPI1_SIZE 32, C_GPI1_INTERRUPT 0, BOARD.ASSOCIATED_PARAM GPIO1_BOARD_INTERFACE" *) output [31:0]GPO1;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_I" *) input [31:0]GPI1;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME GPIO1, C_USE_GPO1 1, C_GPO1_SIZE 8, C_GPO1_INIT 0x00000000, C_USE_GPI1 1, C_GPI1_SIZE 8, C_GPI1_INTERRUPT 0, BOARD.ASSOCIATED_PARAM GPIO1_BOARD_INTERFACE" *) output [7:0]GPO1;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_I" *) input [7:0]GPI1;
   (* X_INTERFACE_INFO = "xilinx.com:interface:mbinterrupt:1.0 INTC_Irq INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTC_Irq, SENSITIVITY LEVEL_HIGH, LOW_LATENCY 1" *) output INTC_IRQ;
   (* X_INTERFACE_INFO = "xilinx.com:interface:mbinterrupt:1.0 INTC_Irq ACK" *) input [1:0]INTC_Processor_Ack;
   (* X_INTERFACE_INFO = "xilinx.com:interface:mbinterrupt:1.0 INTC_Irq ADDRESS" *) output [31:0]INTC_Interrupt_Address;
@@ -5456,8 +5024,8 @@ module mcu_microblaze_mcs_0_0_bd_f021_iomodule_0_0
   wire Clk;
   wire FIT1_Interrupt;
   wire FIT1_Toggle;
-  wire [31:0]GPI1;
-  wire [31:0]GPO1;
+  wire [7:0]GPI1;
+  wire [7:0]GPO1;
   wire INTC_IRQ;
   wire INTC_IRQ_OUT;
   wire [31:0]INTC_Interrupt_Address;
@@ -5519,7 +5087,7 @@ module mcu_microblaze_mcs_0_0_bd_f021_iomodule_0_0
   (* C_FIT4_No_CLOCKS = "6216" *) 
   (* C_FREQ = "100000000" *) 
   (* C_GPI1_INTERRUPT = "0" *) 
-  (* C_GPI1_SIZE = "32" *) 
+  (* C_GPI1_SIZE = "8" *) 
   (* C_GPI2_INTERRUPT = "0" *) 
   (* C_GPI2_SIZE = "32" *) 
   (* C_GPI3_INTERRUPT = "0" *) 
@@ -5527,7 +5095,7 @@ module mcu_microblaze_mcs_0_0_bd_f021_iomodule_0_0
   (* C_GPI4_INTERRUPT = "0" *) 
   (* C_GPI4_SIZE = "32" *) 
   (* C_GPO1_INIT = "0" *) 
-  (* C_GPO1_SIZE = "32" *) 
+  (* C_GPO1_SIZE = "8" *) 
   (* C_GPO2_INIT = "0" *) 
   (* C_GPO2_SIZE = "32" *) 
   (* C_GPO3_INIT = "0" *) 
@@ -7807,10 +7375,10 @@ endmodule
 (* C_FIT1_INTERRUPT = "1" *) (* C_FIT1_No_CLOCKS = "100000" *) (* C_FIT2_INTERRUPT = "0" *) 
 (* C_FIT2_No_CLOCKS = "6216" *) (* C_FIT3_INTERRUPT = "0" *) (* C_FIT3_No_CLOCKS = "6216" *) 
 (* C_FIT4_INTERRUPT = "0" *) (* C_FIT4_No_CLOCKS = "6216" *) (* C_FREQ = "100000000" *) 
-(* C_GPI1_INTERRUPT = "0" *) (* C_GPI1_SIZE = "32" *) (* C_GPI2_INTERRUPT = "0" *) 
+(* C_GPI1_INTERRUPT = "0" *) (* C_GPI1_SIZE = "8" *) (* C_GPI2_INTERRUPT = "0" *) 
 (* C_GPI2_SIZE = "32" *) (* C_GPI3_INTERRUPT = "0" *) (* C_GPI3_SIZE = "32" *) 
 (* C_GPI4_INTERRUPT = "0" *) (* C_GPI4_SIZE = "32" *) (* C_GPO1_INIT = "0" *) 
-(* C_GPO1_SIZE = "32" *) (* C_GPO2_INIT = "0" *) (* C_GPO2_SIZE = "32" *) 
+(* C_GPO1_SIZE = "8" *) (* C_GPO2_INIT = "0" *) (* C_GPO2_SIZE = "32" *) 
 (* C_GPO3_INIT = "0" *) (* C_GPO3_SIZE = "32" *) (* C_GPO4_INIT = "0" *) 
 (* C_GPO4_SIZE = "32" *) (* C_HIGHADDR = "64'b0000000000000000000000000000000010000000000000001111111111111111" *) (* C_INSTANCE = "iomodule" *) 
 (* C_INTC_ADDR_WIDTH = "15" *) (* C_INTC_ASYNC_INTR = "16'b1111111111111111" *) (* C_INTC_BASE_VECTORS = "64'b0000000000000000000000000000000000000000000000000000000000000000" *) 
@@ -7941,11 +7509,11 @@ module mcu_microblaze_mcs_0_0_iomodule
   input PIT4_Enable;
   output PIT4_Interrupt;
   output PIT4_Toggle;
-  output [31:0]GPO1;
+  output [7:0]GPO1;
   output [31:0]GPO2;
   output [31:0]GPO3;
   output [31:0]GPO4;
-  input [31:0]GPI1;
+  input [7:0]GPI1;
   output GPI1_Interrupt;
   input [31:0]GPI2;
   output GPI2_Interrupt;
@@ -7974,8 +7542,8 @@ module mcu_microblaze_mcs_0_0_iomodule
   wire Clk;
   wire FIT1_Interrupt;
   wire FIT1_Toggle;
-  wire [31:0]GPI1;
-  wire [31:0]GPO1;
+  wire [7:0]GPI1;
+  wire [7:0]GPO1;
   wire INTC_IRQ;
   wire [14:2]\^INTC_Interrupt_Address ;
   wire [1:0]INTC_Processor_Ack;

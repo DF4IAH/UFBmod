@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Mon Jul 29 17:20:35 2019
+//Date        : Tue Jul 30 11:15:32 2019
 //Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
 //Command     : generate_target mcu_wrapper.bd
 //Design      : mcu_wrapper
@@ -119,10 +119,10 @@ module mcu_wrapper
         .sys_rst(sys_rst),
         .ufb_trx_rxclk_n(ufb_trx_rxclk_n),
         .ufb_trx_rxclk_p(ufb_trx_rxclk_p),
-        .ufb_trx_rxd09_n(ufb_trx_rxd09_n[0]),
-        .ufb_trx_rxd09_p(ufb_trx_rxd09_p[0]),
+        .ufb_trx_rxd09_n(ufb_trx_rxd09_n),
+        .ufb_trx_rxd09_p(ufb_trx_rxd09_p),
         .ufb_trx_txclk_n(ufb_trx_txclk_n),
         .ufb_trx_txclk_p(ufb_trx_txclk_p),
-        .ufb_trx_txd_n(ufb_trx_txd_n[0]),
-        .ufb_trx_txd_p(ufb_trx_txd_p[0]));
+        .ufb_trx_txd_n(ufb_trx_txd_n),
+        .ufb_trx_txd_p(ufb_trx_txd_p));
 endmodule

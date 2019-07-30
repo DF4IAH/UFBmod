@@ -31,8 +31,10 @@ module top_tb;
     reg mgt_clk0_p;
     reg mgt_clk0_n;
     
-    reg ufb_fpga_trx_clk0;
+    reg ufb_fpga_trx_clk;
     
+    reg ufb_trx_rxclk_p;
+    reg ufb_trx_rxclk_n;
     
     
     wire ddr3_reset;
@@ -65,7 +67,7 @@ module top_tb;
     .pll_clk_n(pll_clk_n),
     .mgt_clk0_p(mgt_clk0_p),
     .mgt_clk0_n(mgt_clk0_n),
-    .ufb_fpga_trx_clk0(ufb_fpga_trx_clk0),
+    .ufb_fpga_trx_clk(ufb_fpga_trx_clk),
     
     
     .ddr3_reset(ddr3_reset),
@@ -86,7 +88,10 @@ module top_tb;
     .ddr3_a(ddr3_a),
 
     .ddr3_ras(ddr3_ras),
-    .ddr3_cas(ddr3_cas)
+    .ddr3_cas(ddr3_cas),
+    
+    .ufb_trx_rxclk_p(ufb_trx_rxclk_p),
+    .ufb_trx_rxclk_n(ufb_trx_rxclk_n)
 
     );
     
@@ -95,11 +100,17 @@ module top_tb;
     begin
     reset = 1;
     sys_rst = 1;
+    
     pll_clk_p = 0;
     pll_clk_n = 1;
+    
     mgt_clk0_p = 0;
     mgt_clk0_n = 1;
-    ufb_fpga_trx_clk0 = 0;
+    
+    ufb_fpga_trx_clk = 0;
+    
+    ufb_trx_rxclk_p = 0;
+    ufb_trx_rxclk_n = 1;
     end
     
     initial
@@ -117,6 +128,13 @@ module top_tb;
 
 
     always
+    #15.625 ufb_trx_rxclk_p = !ufb_trx_rxclk_p;
+
+    always
+    #15.625 ufb_trx_rxclk_n = !ufb_trx_rxclk_n;
+
+
+    always
     #4.16666666 mgt_clk0_p = !mgt_clk0_p;
 
     always
@@ -124,7 +142,7 @@ module top_tb;
 
 
     always
-    #15.625 ufb_fpga_trx_clk0 = !ufb_fpga_trx_clk0;
+    #15.625 ufb_fpga_trx_clk = !ufb_fpga_trx_clk;
 
     
 endmodule

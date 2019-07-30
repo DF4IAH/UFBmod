@@ -1,8 +1,8 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Sun Jul 28 22:00:50 2019
--- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
+-- Date        : Mon Jul 29 08:52:25 2019
+-- Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
 -- Command     : write_vhdl -force -mode synth_stub -rename_top mcu_mig_7series_0_0 -prefix
 --               mcu_mig_7series_0_0_ mcu_mig_7series_0_0_stub.vhdl
 -- Design      : mcu_mig_7series_0_0

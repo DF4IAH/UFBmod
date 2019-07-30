@@ -94,10 +94,10 @@ input wire UART_rxd;
 (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART TxD" *)
 output wire UART_txd;
 (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_I" *)
-input wire [31 : 0] GPIO1_tri_i;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME GPIO1, C_USE_GPO1 1, C_GPO1_SIZE 32, C_GPO1_INIT 0x00000000, C_USE_GPI1 1, C_GPI1_SIZE 32, C_GPI1_INTERRUPT 0, BOARD.ASSOCIATED_PARAM GPIO1_BOARD_INTERFACE" *)
+input wire [7 : 0] GPIO1_tri_i;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME GPIO1, C_USE_GPO1 1, C_GPO1_SIZE 8, C_GPO1_INIT 0x00000000, C_USE_GPI1 1, C_GPI1_SIZE 8, C_GPI1_INTERRUPT 0, BOARD.ASSOCIATED_PARAM GPIO1_BOARD_INTERFACE" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O" *)
-output wire [31 : 0] GPIO1_tri_o;
+output wire [7 : 0] GPIO1_tri_o;
 
   bd_f021 inst (
     .Clk(Clk),

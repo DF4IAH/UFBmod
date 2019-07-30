@@ -3,21 +3,26 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="top_tb_func_synth.wdb" id="1">
+      <db_ref path="top_tb_behav.wdb" id="1">
          <top_modules>
             <top_module name="glbl" />
+            <top_module name="iomodule_funcs" />
+            <top_module name="iomodule_vote_pkg" />
+            <top_module name="ipif_pkg" />
+            <top_module name="lmb_bram_if_funcs" />
+            <top_module name="mdm_funcs" />
             <top_module name="top_tb" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2066019999fs"></ZoomStartTime>
-      <ZoomEndTime time="2658020000fs"></ZoomEndTime>
-      <Cursor1Time time="11000000000fs"></Cursor1Time>
+      <ZoomStartTime time="4547160000fs"></ZoomStartTime>
+      <ZoomEndTime time="5108663032fs"></ZoomEndTime>
+      <Cursor1Time time="6000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="219"></NameColumnWidth>
-      <ValueColumnWidth column_width="134"></ValueColumnWidth>
+      <ValueColumnWidth column_width="130"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="6" />
    <wave_markers>
@@ -56,9 +61,17 @@
          <obj_property name="ElementShortName">mgt_clk0_n</obj_property>
          <obj_property name="ObjectShortName">mgt_clk0_n</obj_property>
       </wvobject>
-      <wvobject fp_name="/top_tb/ufb_fpga_trx_clk0" type="logic">
-         <obj_property name="ElementShortName">ufb_fpga_trx_clk0</obj_property>
-         <obj_property name="ObjectShortName">ufb_fpga_trx_clk0</obj_property>
+      <wvobject fp_name="/top_tb/ufb_trx_rxclk_p" type="logic">
+         <obj_property name="ElementShortName">ufb_trx_rxclk_p</obj_property>
+         <obj_property name="ObjectShortName">ufb_trx_rxclk_p</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ufb_trx_rxclk_n" type="logic">
+         <obj_property name="ElementShortName">ufb_trx_rxclk_n</obj_property>
+         <obj_property name="ObjectShortName">ufb_trx_rxclk_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ufb_fpga_trx_clk" type="logic">
+         <obj_property name="ElementShortName">ufb_fpga_trx_clk</obj_property>
+         <obj_property name="ObjectShortName">ufb_fpga_trx_clk</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group163" type="group">
