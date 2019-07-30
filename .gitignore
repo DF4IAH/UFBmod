@@ -36,5 +36,7 @@
 *.cache/
 *.hw/
 *.runs/
+*.sdb
+*.log
 
 
