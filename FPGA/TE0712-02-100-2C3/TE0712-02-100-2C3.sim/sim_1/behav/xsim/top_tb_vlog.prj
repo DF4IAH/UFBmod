@@ -114,6 +114,13 @@ verilog xil_defaultlib  --include "../../../../TE0712-02-100-2C3.srcs/sources_1/
 "../../../../TE0712-02-100-2C3.ip_user_files/bd/mcu/ip/mcu_selectio_wiz_1_0/mcu_selectio_wiz_1_0.v" \
 "../../../../TE0712-02-100-2C3.ip_user_files/bd/mcu/ip/mcu_clk_wiz_0_0/mcu_clk_wiz_0_0_clk_wiz.v" \
 "../../../../TE0712-02-100-2C3.ip_user_files/bd/mcu/ip/mcu_clk_wiz_0_0/mcu_clk_wiz_0_0.v" \
+"../../../../TE0712-02-100-2C3.ip_user_files/bd/mcu/ip/mcu_xlconstant_0_0/sim/mcu_xlconstant_0_0.v" \
+"../../../../TE0712-02-100-2C3.ip_user_files/bd/mcu/ip/mcu_dist_mem_gen_0_0/sim/mcu_dist_mem_gen_0_0.v" \
+"../../../../TE0712-02-100-2C3.ip_user_files/bd/mcu/ip/mcu_xlconstant_0_1/sim/mcu_xlconstant_0_1.v" \
+"../../../../TE0712-02-100-2C3.ip_user_files/bd/mcu/ip/mcu_dist_mem_gen_lvds_in_0/sim/mcu_dist_mem_gen_lvds_in_0.v" \
+"../../../../TE0712-02-100-2C3.ip_user_files/bd/mcu/ip/mcu_xlconstant_val0_0/sim/mcu_xlconstant_val0_0.v" \
+"../../../../TE0712-02-100-2C3.ip_user_files/bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0_clk_wiz.v" \
+"../../../../TE0712-02-100-2C3.ip_user_files/bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0.v" \
 "../../../../TE0712-02-100-2C3.ip_user_files/bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
 "../../../../TE0712-02-100-2C3.ip_user_files/bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
 "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/hdl/mcu_wrapper.v" \
