@@ -56,10 +56,8 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_64_0____64.000______0.000______50.0______225.122____198.711
-// clk_32_0____32.000______0.000______50.0______281.219____198.711
-// clk_64_1____64.000______0.000______50.0______225.122____198.711
-// clk_32_1____32.000______0.000______50.0______281.219____198.711
+// clk_32_lvds_in____32.000______0.000______50.0______291.105____203.212
+// clk_32_lvds_out____32.000______0.000______50.0______291.105____203.212
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -72,10 +70,8 @@ module mcu_clk_wiz_0_0_clk_wiz
 
  (// Clock in ports
   // Clock out ports
-  output        clk_64_0,
-  output        clk_32_0,
-  output        clk_64_1,
-  output        clk_32_1,
+  output        clk_32_lvds_in,
+  output        clk_32_lvds_out,
   // Status and control signals
   input         reset,
   input         clk_in1_p,
@@ -100,8 +96,8 @@ wire clk_in2_mcu_clk_wiz_0_0;
   //    * Unused inputs are tied off
   //    * Unused outputs are labeled unused
 
-  wire        clk_64_0_mcu_clk_wiz_0_0;
-  wire        clk_32_0_mcu_clk_wiz_0_0;
+  wire        clk_32_lvds_in_mcu_clk_wiz_0_0;
+  wire        clk_32_lvds_out_mcu_clk_wiz_0_0;
   wire        clk_64_1_mcu_clk_wiz_0_0;
   wire        clk_32_1_mcu_clk_wiz_0_0;
   wire        clk_out5_mcu_clk_wiz_0_0;
@@ -117,7 +113,9 @@ wire clk_in2_mcu_clk_wiz_0_0;
   wire        clkfboutb_unused;
     wire clkout0b_unused;
    wire clkout1b_unused;
+   wire clkout2_unused;
    wire clkout2b_unused;
+   wire clkout3_unused;
    wire clkout3b_unused;
    wire clkout4_unused;
   wire        clkout5_unused;
@@ -132,38 +130,30 @@ wire clk_in2_mcu_clk_wiz_0_0;
     .COMPENSATION         ("ZHOLD"),
     .STARTUP_WAIT         ("FALSE"),
     .DIVCLK_DIVIDE        (1),
-    .CLKFBOUT_MULT_F      (32.000),
+    .CLKFBOUT_MULT_F      (31.000),
     .CLKFBOUT_PHASE       (0.000),
     .CLKFBOUT_USE_FINE_PS ("FALSE"),
-    .CLKOUT0_DIVIDE_F     (16.000),
+    .CLKOUT0_DIVIDE_F     (31.000),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
     .CLKOUT0_USE_FINE_PS  ("FALSE"),
-    .CLKOUT1_DIVIDE       (32),
+    .CLKOUT1_DIVIDE       (31),
     .CLKOUT1_PHASE        (0.000),
     .CLKOUT1_DUTY_CYCLE   (0.500),
     .CLKOUT1_USE_FINE_PS  ("FALSE"),
-    .CLKOUT2_DIVIDE       (16),
-    .CLKOUT2_PHASE        (0.000),
-    .CLKOUT2_DUTY_CYCLE   (0.500),
-    .CLKOUT2_USE_FINE_PS  ("FALSE"),
-    .CLKOUT3_DIVIDE       (32),
-    .CLKOUT3_PHASE        (0.000),
-    .CLKOUT3_DUTY_CYCLE   (0.500),
-    .CLKOUT3_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (31.250))
   mmcm_adv_inst
     // Output clocks
    (
     .CLKFBOUT            (clkfbout_mcu_clk_wiz_0_0),
     .CLKFBOUTB           (clkfboutb_unused),
-    .CLKOUT0             (clk_64_0_mcu_clk_wiz_0_0),
+    .CLKOUT0             (clk_32_lvds_in_mcu_clk_wiz_0_0),
     .CLKOUT0B            (clkout0b_unused),
-    .CLKOUT1             (clk_32_0_mcu_clk_wiz_0_0),
+    .CLKOUT1             (clk_32_lvds_out_mcu_clk_wiz_0_0),
     .CLKOUT1B            (clkout1b_unused),
-    .CLKOUT2             (clk_64_1_mcu_clk_wiz_0_0),
+    .CLKOUT2             (clkout2_unused),
     .CLKOUT2B            (clkout2b_unused),
-    .CLKOUT3             (clk_32_1_mcu_clk_wiz_0_0),
+    .CLKOUT3             (clkout3_unused),
     .CLKOUT3B            (clkout3b_unused),
     .CLKOUT4             (clkout4_unused),
     .CLKOUT5             (clkout5_unused),
@@ -210,21 +200,13 @@ wire clk_in2_mcu_clk_wiz_0_0;
 
 
   BUFG clkout1_buf
-   (.O   (clk_64_0),
-    .I   (clk_64_0_mcu_clk_wiz_0_0));
+   (.O   (clk_32_lvds_in),
+    .I   (clk_32_lvds_in_mcu_clk_wiz_0_0));
 
 
   BUFG clkout2_buf
-   (.O   (clk_32_0),
-    .I   (clk_32_0_mcu_clk_wiz_0_0));
-
-  BUFG clkout3_buf
-   (.O   (clk_64_1),
-    .I   (clk_64_1_mcu_clk_wiz_0_0));
-
-  BUFG clkout4_buf
-   (.O   (clk_32_1),
-    .I   (clk_32_1_mcu_clk_wiz_0_0));
+   (.O   (clk_32_lvds_out),
+    .I   (clk_32_lvds_out_mcu_clk_wiz_0_0));
 
 
 

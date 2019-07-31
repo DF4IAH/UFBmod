@@ -20,6 +20,8 @@ vlib questa_lib/msim/fifo_generator_v13_2_3
 vlib questa_lib/msim/axi_data_fifo_v2_1_17
 vlib questa_lib/msim/axi_crossbar_v2_1_19
 vlib questa_lib/msim/iomodule_v3_1_4
+vlib questa_lib/msim/xlconstant_v1_1_5
+vlib questa_lib/msim/dist_mem_gen_v8_0_12
 vlib questa_lib/msim/axi_protocol_converter_v2_1_18
 
 vmap xil_defaultlib questa_lib/msim/xil_defaultlib
@@ -41,6 +43,8 @@ vmap fifo_generator_v13_2_3 questa_lib/msim/fifo_generator_v13_2_3
 vmap axi_data_fifo_v2_1_17 questa_lib/msim/axi_data_fifo_v2_1_17
 vmap axi_crossbar_v2_1_19 questa_lib/msim/axi_crossbar_v2_1_19
 vmap iomodule_v3_1_4 questa_lib/msim/iomodule_v3_1_4
+vmap xlconstant_v1_1_5 questa_lib/msim/xlconstant_v1_1_5
+vmap dist_mem_gen_v8_0_12 questa_lib/msim/dist_mem_gen_v8_0_12
 vmap axi_protocol_converter_v2_1_18 questa_lib/msim/axi_protocol_converter_v2_1_18
 
 vlog -work xil_defaultlib -64 -sv "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/85a3" \
@@ -264,6 +268,23 @@ vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/source
 "../../../bd/mcu/ip/mcu_selectio_wiz_1_0/mcu_selectio_wiz_1_0.v" \
 "../../../bd/mcu/ip/mcu_clk_wiz_0_0/mcu_clk_wiz_0_0_clk_wiz.v" \
 "../../../bd/mcu/ip/mcu_clk_wiz_0_0/mcu_clk_wiz_0_0.v" \
+
+vlog -work xlconstant_v1_1_5 -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/85a3" \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/4649/hdl/xlconstant_v1_1_vl_rfs.v" \
+
+vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/85a3" \
+"../../../bd/mcu/ip/mcu_xlconstant_0_0/sim/mcu_xlconstant_0_0.v" \
+
+vlog -work dist_mem_gen_v8_0_12 -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/85a3" \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/d46a/simulation/dist_mem_gen_v8_0.v" \
+
+vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/85a3" \
+"../../../bd/mcu/ip/mcu_dist_mem_gen_0_0/sim/mcu_dist_mem_gen_0_0.v" \
+"../../../bd/mcu/ip/mcu_xlconstant_0_1/sim/mcu_xlconstant_0_1.v" \
+"../../../bd/mcu/ip/mcu_dist_mem_gen_lvds_in_0/sim/mcu_dist_mem_gen_lvds_in_0.v" \
+"../../../bd/mcu/ip/mcu_xlconstant_val0_0/sim/mcu_xlconstant_val0_0.v" \
+"../../../bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0_clk_wiz.v" \
+"../../../bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0.v" \
 
 vlog -work axi_protocol_converter_v2_1_18 -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/85a3" \
 "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/7a04/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \

@@ -220,6 +220,23 @@
   "../../../bd/mcu/ip/mcu_clk_wiz_0_0/mcu_clk_wiz_0_0_clk_wiz.v" \
   "../../../bd/mcu/ip/mcu_clk_wiz_0_0/mcu_clk_wiz_0_0.v" \
 -endlib
+-makelib ies_lib/xlconstant_v1_1_5 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/4649/hdl/xlconstant_v1_1_vl_rfs.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_xlconstant_0_0/sim/mcu_xlconstant_0_0.v" \
+-endlib
+-makelib ies_lib/dist_mem_gen_v8_0_12 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/d46a/simulation/dist_mem_gen_v8_0.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_dist_mem_gen_0_0/sim/mcu_dist_mem_gen_0_0.v" \
+  "../../../bd/mcu/ip/mcu_xlconstant_0_1/sim/mcu_xlconstant_0_1.v" \
+  "../../../bd/mcu/ip/mcu_dist_mem_gen_lvds_in_0/sim/mcu_dist_mem_gen_lvds_in_0.v" \
+  "../../../bd/mcu/ip/mcu_xlconstant_val0_0/sim/mcu_xlconstant_val0_0.v" \
+  "../../../bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0_clk_wiz.v" \
+  "../../../bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0.v" \
+-endlib
 -makelib ies_lib/axi_protocol_converter_v2_1_18 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/7a04/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 -endlib

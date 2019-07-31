@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Mon Jul 29 19:34:34 2019
+-- Date        : Tue Jul 30 19:31:35 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_clk_wiz_0_0/mcu_clk_wiz_0_0_sim_netlist.vhdl
+--               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_clk_wiz_0_0/mcu_clk_wiz_0_0_sim_netlist.vhdl
 -- Design      : mcu_clk_wiz_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -16,10 +16,8 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz is
   port (
-    clk_64_0 : out STD_LOGIC;
-    clk_32_0 : out STD_LOGIC;
-    clk_64_1 : out STD_LOGIC;
-    clk_32_1 : out STD_LOGIC;
+    clk_32_lvds_in : out STD_LOGIC;
+    clk_32_lvds_out : out STD_LOGIC;
     reset : in STD_LOGIC;
     clk_in1_p : in STD_LOGIC;
     clk_in1_n : in STD_LOGIC
@@ -29,10 +27,8 @@ entity mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz is
 end mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz;
 
 architecture STRUCTURE of mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz is
-  signal clk_32_0_mcu_clk_wiz_0_0 : STD_LOGIC;
-  signal clk_32_1_mcu_clk_wiz_0_0 : STD_LOGIC;
-  signal clk_64_0_mcu_clk_wiz_0_0 : STD_LOGIC;
-  signal clk_64_1_mcu_clk_wiz_0_0 : STD_LOGIC;
+  signal clk_32_lvds_in_mcu_clk_wiz_0_0 : STD_LOGIC;
+  signal clk_32_lvds_out_mcu_clk_wiz_0_0 : STD_LOGIC;
   signal clk_in1_mcu_clk_wiz_0_0 : STD_LOGIC;
   signal clkfbout_buf_mcu_clk_wiz_0_0 : STD_LOGIC;
   signal clkfbout_mcu_clk_wiz_0_0 : STD_LOGIC;
@@ -41,7 +37,9 @@ architecture STRUCTURE of mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz is
   signal NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED : STD_LOGIC;
+  signal NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED : STD_LOGIC;
+  signal NLW_mmcm_adv_inst_CLKOUT3_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED : STD_LOGIC;
@@ -61,8 +59,6 @@ architecture STRUCTURE of mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz is
   attribute IFD_DELAY_VALUE of clkin1_ibufgds : label is "AUTO";
   attribute BOX_TYPE of clkout1_buf : label is "PRIMITIVE";
   attribute BOX_TYPE of clkout2_buf : label is "PRIMITIVE";
-  attribute BOX_TYPE of clkout3_buf : label is "PRIMITIVE";
-  attribute BOX_TYPE of clkout4_buf : label is "PRIMITIVE";
   attribute BOX_TYPE of mmcm_adv_inst : label is "PRIMITIVE";
 begin
 clkf_buf: unisim.vcomponents.BUFG
@@ -81,45 +77,35 @@ clkin1_ibufgds: unisim.vcomponents.IBUFDS
     );
 clkout1_buf: unisim.vcomponents.BUFG
      port map (
-      I => clk_64_0_mcu_clk_wiz_0_0,
-      O => clk_64_0
+      I => clk_32_lvds_in_mcu_clk_wiz_0_0,
+      O => clk_32_lvds_in
     );
 clkout2_buf: unisim.vcomponents.BUFG
      port map (
-      I => clk_32_0_mcu_clk_wiz_0_0,
-      O => clk_32_0
-    );
-clkout3_buf: unisim.vcomponents.BUFG
-     port map (
-      I => clk_64_1_mcu_clk_wiz_0_0,
-      O => clk_64_1
-    );
-clkout4_buf: unisim.vcomponents.BUFG
-     port map (
-      I => clk_32_1_mcu_clk_wiz_0_0,
-      O => clk_32_1
+      I => clk_32_lvds_out_mcu_clk_wiz_0_0,
+      O => clk_32_lvds_out
     );
 mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
     generic map(
       BANDWIDTH => "OPTIMIZED",
-      CLKFBOUT_MULT_F => 32.000000,
+      CLKFBOUT_MULT_F => 31.000000,
       CLKFBOUT_PHASE => 0.000000,
       CLKFBOUT_USE_FINE_PS => false,
       CLKIN1_PERIOD => 31.250000,
       CLKIN2_PERIOD => 0.000000,
-      CLKOUT0_DIVIDE_F => 16.000000,
+      CLKOUT0_DIVIDE_F => 31.000000,
       CLKOUT0_DUTY_CYCLE => 0.500000,
       CLKOUT0_PHASE => 0.000000,
       CLKOUT0_USE_FINE_PS => false,
-      CLKOUT1_DIVIDE => 32,
+      CLKOUT1_DIVIDE => 31,
       CLKOUT1_DUTY_CYCLE => 0.500000,
       CLKOUT1_PHASE => 0.000000,
       CLKOUT1_USE_FINE_PS => false,
-      CLKOUT2_DIVIDE => 16,
+      CLKOUT2_DIVIDE => 1,
       CLKOUT2_DUTY_CYCLE => 0.500000,
       CLKOUT2_PHASE => 0.000000,
       CLKOUT2_USE_FINE_PS => false,
-      CLKOUT3_DIVIDE => 32,
+      CLKOUT3_DIVIDE => 1,
       CLKOUT3_DUTY_CYCLE => 0.500000,
       CLKOUT3_PHASE => 0.000000,
       CLKOUT3_USE_FINE_PS => false,
@@ -159,13 +145,13 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKIN2 => '0',
       CLKINSEL => '1',
       CLKINSTOPPED => NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED,
-      CLKOUT0 => clk_64_0_mcu_clk_wiz_0_0,
+      CLKOUT0 => clk_32_lvds_in_mcu_clk_wiz_0_0,
       CLKOUT0B => NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED,
-      CLKOUT1 => clk_32_0_mcu_clk_wiz_0_0,
+      CLKOUT1 => clk_32_lvds_out_mcu_clk_wiz_0_0,
       CLKOUT1B => NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED,
-      CLKOUT2 => clk_64_1_mcu_clk_wiz_0_0,
+      CLKOUT2 => NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED,
       CLKOUT2B => NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED,
-      CLKOUT3 => clk_32_1_mcu_clk_wiz_0_0,
+      CLKOUT3 => NLW_mmcm_adv_inst_CLKOUT3_UNCONNECTED,
       CLKOUT3B => NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED,
       CLKOUT4 => NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED,
       CLKOUT5 => NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED,
@@ -192,10 +178,8 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity mcu_clk_wiz_0_0 is
   port (
-    clk_64_0 : out STD_LOGIC;
-    clk_32_0 : out STD_LOGIC;
-    clk_64_1 : out STD_LOGIC;
-    clk_32_1 : out STD_LOGIC;
+    clk_32_lvds_in : out STD_LOGIC;
+    clk_32_lvds_out : out STD_LOGIC;
     reset : in STD_LOGIC;
     clk_in1_p : in STD_LOGIC;
     clk_in1_n : in STD_LOGIC
@@ -208,10 +192,8 @@ architecture STRUCTURE of mcu_clk_wiz_0_0 is
 begin
 inst: entity work.mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz
      port map (
-      clk_32_0 => clk_32_0,
-      clk_32_1 => clk_32_1,
-      clk_64_0 => clk_64_0,
-      clk_64_1 => clk_64_1,
+      clk_32_lvds_in => clk_32_lvds_in,
+      clk_32_lvds_out => clk_32_lvds_out,
       clk_in1_n => clk_in1_n,
       clk_in1_p => clk_in1_p,
       reset => reset
