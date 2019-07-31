@@ -1,238 +1,16 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Mon Jul 29 09:02:08 2019
-// Host        : Hft-W-Habel running 64-bit Service Pack 1  (build 7601)
-// Command     : write_verilog -force -mode funcsim
-//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_dlmb_bram_if_cntlr_0/mcu_dlmb_bram_if_cntlr_0_sim_netlist.v
+// Date        : Sun Jul 28 18:12:52 2019
+// Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode funcsim -rename_top mcu_dlmb_bram_if_cntlr_0 -prefix
+//               mcu_dlmb_bram_if_cntlr_0_ mcu_dlmb_bram_if_cntlr_0_sim_netlist.v
 // Design      : mcu_dlmb_bram_if_cntlr_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7a100tfgg484-2
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
-
-(* CHECK_LICENSE_TYPE = "mcu_dlmb_bram_if_cntlr_0,lmb_bram_if_cntlr,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "lmb_bram_if_cntlr,Vivado 2018.3" *) 
-(* NotValidForBitStream *)
-module mcu_dlmb_bram_if_cntlr_0
-   (LMB_Clk,
-    LMB_Rst,
-    LMB_ABus,
-    LMB_WriteDBus,
-    LMB_AddrStrobe,
-    LMB_ReadStrobe,
-    LMB_WriteStrobe,
-    LMB_BE,
-    Sl_DBus,
-    Sl_Ready,
-    Sl_Wait,
-    Sl_UE,
-    Sl_CE,
-    LMB1_ABus,
-    LMB1_WriteDBus,
-    LMB1_AddrStrobe,
-    LMB1_ReadStrobe,
-    LMB1_WriteStrobe,
-    LMB1_BE,
-    Sl1_DBus,
-    Sl1_Ready,
-    Sl1_Wait,
-    Sl1_UE,
-    Sl1_CE,
-    BRAM_Rst_A,
-    BRAM_Clk_A,
-    BRAM_Addr_A,
-    BRAM_EN_A,
-    BRAM_WEN_A,
-    BRAM_Dout_A,
-    BRAM_Din_A);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 CLK.LMB_Clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME CLK.LMB_Clk, ASSOCIATED_BUSIF SLMB:SLMB1:SLMB2:SLMB3, ASSOCIATED_RESET LMB_Rst, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) input LMB_Clk;
-  (* x_interface_info = "xilinx.com:signal:reset:1.0 RST.LMB_Rst RST" *) (* x_interface_parameter = "XIL_INTERFACENAME RST.LMB_Rst, POLARITY ACTIVE_HIGH, TYPE INTERCONNECT, INSERT_VIP 0" *) input LMB_Rst;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB ABUS" *) (* x_interface_parameter = "XIL_INTERFACENAME SLMB, ADDR_WIDTH 32, DATA_WIDTH 32, READ_WRITE_MODE READ_WRITE" *) input [0:31]LMB_ABus;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB WRITEDBUS" *) input [0:31]LMB_WriteDBus;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB ADDRSTROBE" *) input LMB_AddrStrobe;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB READSTROBE" *) input LMB_ReadStrobe;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB WRITESTROBE" *) input LMB_WriteStrobe;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB BE" *) input [0:3]LMB_BE;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB READDBUS" *) output [0:31]Sl_DBus;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB READY" *) output Sl_Ready;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB WAIT" *) output Sl_Wait;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB UE" *) output Sl_UE;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB CE" *) output Sl_CE;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 ABUS" *) (* x_interface_parameter = "XIL_INTERFACENAME SLMB1, ADDR_WIDTH 32, DATA_WIDTH 32, READ_WRITE_MODE READ_WRITE" *) input [0:31]LMB1_ABus;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 WRITEDBUS" *) input [0:31]LMB1_WriteDBus;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 ADDRSTROBE" *) input LMB1_AddrStrobe;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 READSTROBE" *) input LMB1_ReadStrobe;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 WRITESTROBE" *) input LMB1_WriteStrobe;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 BE" *) input [0:3]LMB1_BE;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 READDBUS" *) output [0:31]Sl1_DBus;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 READY" *) output Sl1_Ready;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 WAIT" *) output Sl1_Wait;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 UE" *) output Sl1_UE;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 CE" *) output Sl1_CE;
-  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORT RST" *) (* x_interface_parameter = "XIL_INTERFACENAME BRAM_PORT, MEM_SIZE 8192, MASTER_TYPE BRAM_CTRL, MEM_WIDTH 32, MEM_ECC NONE, READ_LATENCY 1" *) output BRAM_Rst_A;
-  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORT CLK" *) output BRAM_Clk_A;
-  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORT ADDR" *) output [0:31]BRAM_Addr_A;
-  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORT EN" *) output BRAM_EN_A;
-  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORT WE" *) output [0:3]BRAM_WEN_A;
-  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORT DIN" *) output [0:31]BRAM_Dout_A;
-  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORT DOUT" *) input [0:31]BRAM_Din_A;
-
-  wire [0:31]BRAM_Addr_A;
-  wire BRAM_Clk_A;
-  wire [0:31]BRAM_Din_A;
-  wire [0:31]BRAM_Dout_A;
-  wire BRAM_EN_A;
-  wire BRAM_Rst_A;
-  wire [0:3]BRAM_WEN_A;
-  wire [0:31]LMB1_ABus;
-  wire LMB1_AddrStrobe;
-  wire [0:3]LMB1_BE;
-  wire LMB1_ReadStrobe;
-  wire [0:31]LMB1_WriteDBus;
-  wire LMB1_WriteStrobe;
-  wire [0:31]LMB_ABus;
-  wire LMB_AddrStrobe;
-  wire [0:3]LMB_BE;
-  wire LMB_Clk;
-  wire LMB_ReadStrobe;
-  wire LMB_Rst;
-  wire [0:31]LMB_WriteDBus;
-  wire LMB_WriteStrobe;
-  wire Sl1_CE;
-  wire [0:31]Sl1_DBus;
-  wire Sl1_Ready;
-  wire Sl1_UE;
-  wire Sl1_Wait;
-  wire Sl_CE;
-  wire [0:31]Sl_DBus;
-  wire Sl_Ready;
-  wire Sl_UE;
-  wire Sl_Wait;
-  wire NLW_U0_CE_UNCONNECTED;
-  wire NLW_U0_Interrupt_UNCONNECTED;
-  wire NLW_U0_S_AXI_CTRL_ARREADY_UNCONNECTED;
-  wire NLW_U0_S_AXI_CTRL_AWREADY_UNCONNECTED;
-  wire NLW_U0_S_AXI_CTRL_BVALID_UNCONNECTED;
-  wire NLW_U0_S_AXI_CTRL_RVALID_UNCONNECTED;
-  wire NLW_U0_S_AXI_CTRL_WREADY_UNCONNECTED;
-  wire NLW_U0_Sl2_CE_UNCONNECTED;
-  wire NLW_U0_Sl2_Ready_UNCONNECTED;
-  wire NLW_U0_Sl2_UE_UNCONNECTED;
-  wire NLW_U0_Sl2_Wait_UNCONNECTED;
-  wire NLW_U0_Sl3_CE_UNCONNECTED;
-  wire NLW_U0_Sl3_Ready_UNCONNECTED;
-  wire NLW_U0_Sl3_UE_UNCONNECTED;
-  wire NLW_U0_Sl3_Wait_UNCONNECTED;
-  wire NLW_U0_UE_UNCONNECTED;
-  wire [1:0]NLW_U0_S_AXI_CTRL_BRESP_UNCONNECTED;
-  wire [31:0]NLW_U0_S_AXI_CTRL_RDATA_UNCONNECTED;
-  wire [1:0]NLW_U0_S_AXI_CTRL_RRESP_UNCONNECTED;
-  wire [0:31]NLW_U0_Sl2_DBus_UNCONNECTED;
-  wire [0:31]NLW_U0_Sl3_DBus_UNCONNECTED;
-
-  (* C_BASEADDR = "64'b0000000000000000000000000000000000000000000000000000000000000000" *) 
-  (* C_BRAM_AWIDTH = "32" *) 
-  (* C_CE_COUNTER_WIDTH = "0" *) 
-  (* C_CE_FAILING_REGISTERS = "0" *) 
-  (* C_ECC = "0" *) 
-  (* C_ECC_ONOFF_REGISTER = "0" *) 
-  (* C_ECC_ONOFF_RESET_VALUE = "1" *) 
-  (* C_ECC_STATUS_REGISTERS = "0" *) 
-  (* C_FAMILY = "artix7" *) 
-  (* C_FAULT_INJECT = "0" *) 
-  (* C_HIGHADDR = "64'b0000000000000000000000000000000000000000000000000001111111111111" *) 
-  (* C_INTERCONNECT = "0" *) 
-  (* C_LMB_AWIDTH = "32" *) 
-  (* C_LMB_DWIDTH = "32" *) 
-  (* C_MASK = "64'b0000000000000000000000000000000010000000001000000000000000000000" *) 
-  (* C_MASK1 = "64'b0000000000000000000000000000000010000000001000000000000000000000" *) 
-  (* C_MASK2 = "64'b0000000000000000000000000000000000000000100000000000000000000000" *) 
-  (* C_MASK3 = "64'b0000000000000000000000000000000000000000100000000000000000000000" *) 
-  (* C_NUM_LMB = "2" *) 
-  (* C_S_AXI_CTRL_ADDR_WIDTH = "32" *) 
-  (* C_S_AXI_CTRL_BASEADDR = "32'b11111111111111111111111111111111" *) 
-  (* C_S_AXI_CTRL_DATA_WIDTH = "32" *) 
-  (* C_S_AXI_CTRL_HIGHADDR = "32'b00000000000000000000000000000000" *) 
-  (* C_UE_FAILING_REGISTERS = "0" *) 
-  (* C_WRITE_ACCESS = "2" *) 
-  mcu_dlmb_bram_if_cntlr_0_lmb_bram_if_cntlr U0
-       (.BRAM_Addr_A(BRAM_Addr_A),
-        .BRAM_Clk_A(BRAM_Clk_A),
-        .BRAM_Din_A(BRAM_Din_A),
-        .BRAM_Dout_A(BRAM_Dout_A),
-        .BRAM_EN_A(BRAM_EN_A),
-        .BRAM_Rst_A(BRAM_Rst_A),
-        .BRAM_WEN_A(BRAM_WEN_A),
-        .CE(NLW_U0_CE_UNCONNECTED),
-        .Interrupt(NLW_U0_Interrupt_UNCONNECTED),
-        .LMB1_ABus(LMB1_ABus),
-        .LMB1_AddrStrobe(LMB1_AddrStrobe),
-        .LMB1_BE(LMB1_BE),
-        .LMB1_ReadStrobe(LMB1_ReadStrobe),
-        .LMB1_WriteDBus(LMB1_WriteDBus),
-        .LMB1_WriteStrobe(LMB1_WriteStrobe),
-        .LMB2_ABus({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB2_AddrStrobe(1'b0),
-        .LMB2_BE({1'b0,1'b0,1'b0,1'b0}),
-        .LMB2_ReadStrobe(1'b0),
-        .LMB2_WriteDBus({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB2_WriteStrobe(1'b0),
-        .LMB3_ABus({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB3_AddrStrobe(1'b0),
-        .LMB3_BE({1'b0,1'b0,1'b0,1'b0}),
-        .LMB3_ReadStrobe(1'b0),
-        .LMB3_WriteDBus({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB3_WriteStrobe(1'b0),
-        .LMB_ABus(LMB_ABus),
-        .LMB_AddrStrobe(LMB_AddrStrobe),
-        .LMB_BE(LMB_BE),
-        .LMB_Clk(LMB_Clk),
-        .LMB_ReadStrobe(LMB_ReadStrobe),
-        .LMB_Rst(LMB_Rst),
-        .LMB_WriteDBus(LMB_WriteDBus),
-        .LMB_WriteStrobe(LMB_WriteStrobe),
-        .S_AXI_CTRL_ACLK(1'b0),
-        .S_AXI_CTRL_ARADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .S_AXI_CTRL_ARESETN(1'b0),
-        .S_AXI_CTRL_ARREADY(NLW_U0_S_AXI_CTRL_ARREADY_UNCONNECTED),
-        .S_AXI_CTRL_ARVALID(1'b0),
-        .S_AXI_CTRL_AWADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .S_AXI_CTRL_AWREADY(NLW_U0_S_AXI_CTRL_AWREADY_UNCONNECTED),
-        .S_AXI_CTRL_AWVALID(1'b0),
-        .S_AXI_CTRL_BREADY(1'b0),
-        .S_AXI_CTRL_BRESP(NLW_U0_S_AXI_CTRL_BRESP_UNCONNECTED[1:0]),
-        .S_AXI_CTRL_BVALID(NLW_U0_S_AXI_CTRL_BVALID_UNCONNECTED),
-        .S_AXI_CTRL_RDATA(NLW_U0_S_AXI_CTRL_RDATA_UNCONNECTED[31:0]),
-        .S_AXI_CTRL_RREADY(1'b0),
-        .S_AXI_CTRL_RRESP(NLW_U0_S_AXI_CTRL_RRESP_UNCONNECTED[1:0]),
-        .S_AXI_CTRL_RVALID(NLW_U0_S_AXI_CTRL_RVALID_UNCONNECTED),
-        .S_AXI_CTRL_WDATA({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .S_AXI_CTRL_WREADY(NLW_U0_S_AXI_CTRL_WREADY_UNCONNECTED),
-        .S_AXI_CTRL_WSTRB({1'b0,1'b0,1'b0,1'b0}),
-        .S_AXI_CTRL_WVALID(1'b0),
-        .Sl1_CE(Sl1_CE),
-        .Sl1_DBus(Sl1_DBus),
-        .Sl1_Ready(Sl1_Ready),
-        .Sl1_UE(Sl1_UE),
-        .Sl1_Wait(Sl1_Wait),
-        .Sl2_CE(NLW_U0_Sl2_CE_UNCONNECTED),
-        .Sl2_DBus(NLW_U0_Sl2_DBus_UNCONNECTED[0:31]),
-        .Sl2_Ready(NLW_U0_Sl2_Ready_UNCONNECTED),
-        .Sl2_UE(NLW_U0_Sl2_UE_UNCONNECTED),
-        .Sl2_Wait(NLW_U0_Sl2_Wait_UNCONNECTED),
-        .Sl3_CE(NLW_U0_Sl3_CE_UNCONNECTED),
-        .Sl3_DBus(NLW_U0_Sl3_DBus_UNCONNECTED[0:31]),
-        .Sl3_Ready(NLW_U0_Sl3_Ready_UNCONNECTED),
-        .Sl3_UE(NLW_U0_Sl3_UE_UNCONNECTED),
-        .Sl3_Wait(NLW_U0_Sl3_Wait_UNCONNECTED),
-        .Sl_CE(Sl_CE),
-        .Sl_DBus(Sl_DBus),
-        .Sl_Ready(Sl_Ready),
-        .Sl_UE(Sl_UE),
-        .Sl_Wait(Sl_Wait),
-        .UE(NLW_U0_UE_UNCONNECTED));
-endmodule
 
 (* C_BASEADDR = "64'b0000000000000000000000000000000000000000000000000000000000000000" *) (* C_BRAM_AWIDTH = "32" *) (* C_CE_COUNTER_WIDTH = "0" *) 
 (* C_CE_FAILING_REGISTERS = "0" *) (* C_ECC = "0" *) (* C_ECC_ONOFF_REGISTER = "0" *) 
@@ -242,7 +20,7 @@ endmodule
 (* C_MASK1 = "64'b0000000000000000000000000000000010000000001000000000000000000000" *) (* C_MASK2 = "64'b0000000000000000000000000000000000000000100000000000000000000000" *) (* C_MASK3 = "64'b0000000000000000000000000000000000000000100000000000000000000000" *) 
 (* C_NUM_LMB = "2" *) (* C_S_AXI_CTRL_ADDR_WIDTH = "32" *) (* C_S_AXI_CTRL_BASEADDR = "32'b11111111111111111111111111111111" *) 
 (* C_S_AXI_CTRL_DATA_WIDTH = "32" *) (* C_S_AXI_CTRL_HIGHADDR = "32'b00000000000000000000000000000000" *) (* C_UE_FAILING_REGISTERS = "0" *) 
-(* C_WRITE_ACCESS = "2" *) (* ORIG_REF_NAME = "lmb_bram_if_cntlr" *) 
+(* C_WRITE_ACCESS = "2" *) 
 module mcu_dlmb_bram_if_cntlr_0_lmb_bram_if_cntlr
    (LMB_Clk,
     LMB_Rst,
@@ -593,7 +371,6 @@ module mcu_dlmb_bram_if_cntlr_0_lmb_bram_if_cntlr
         .lmb_select(lmb_select));
 endmodule
 
-(* ORIG_REF_NAME = "lmb_mux" *) 
 module mcu_dlmb_bram_if_cntlr_0_lmb_mux
    (BRAM_WEN_A,
     BRAM_Dout_A,
@@ -1930,6 +1707,228 @@ module mcu_dlmb_bram_if_cntlr_0_lmb_mux
         .D(ongoing_new),
         .Q(ongoing_Q),
         .R(LMB_Rst));
+endmodule
+
+(* CHECK_LICENSE_TYPE = "mcu_dlmb_bram_if_cntlr_0,lmb_bram_if_cntlr,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "lmb_bram_if_cntlr,Vivado 2018.3" *) 
+(* NotValidForBitStream *)
+module mcu_dlmb_bram_if_cntlr_0
+   (LMB_Clk,
+    LMB_Rst,
+    LMB_ABus,
+    LMB_WriteDBus,
+    LMB_AddrStrobe,
+    LMB_ReadStrobe,
+    LMB_WriteStrobe,
+    LMB_BE,
+    Sl_DBus,
+    Sl_Ready,
+    Sl_Wait,
+    Sl_UE,
+    Sl_CE,
+    LMB1_ABus,
+    LMB1_WriteDBus,
+    LMB1_AddrStrobe,
+    LMB1_ReadStrobe,
+    LMB1_WriteStrobe,
+    LMB1_BE,
+    Sl1_DBus,
+    Sl1_Ready,
+    Sl1_Wait,
+    Sl1_UE,
+    Sl1_CE,
+    BRAM_Rst_A,
+    BRAM_Clk_A,
+    BRAM_Addr_A,
+    BRAM_EN_A,
+    BRAM_WEN_A,
+    BRAM_Dout_A,
+    BRAM_Din_A);
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 CLK.LMB_Clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME CLK.LMB_Clk, ASSOCIATED_BUSIF SLMB:SLMB1:SLMB2:SLMB3, ASSOCIATED_RESET LMB_Rst, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) input LMB_Clk;
+  (* x_interface_info = "xilinx.com:signal:reset:1.0 RST.LMB_Rst RST" *) (* x_interface_parameter = "XIL_INTERFACENAME RST.LMB_Rst, POLARITY ACTIVE_HIGH, TYPE INTERCONNECT, INSERT_VIP 0" *) input LMB_Rst;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB ABUS" *) (* x_interface_parameter = "XIL_INTERFACENAME SLMB, ADDR_WIDTH 32, DATA_WIDTH 32, READ_WRITE_MODE READ_WRITE" *) input [0:31]LMB_ABus;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB WRITEDBUS" *) input [0:31]LMB_WriteDBus;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB ADDRSTROBE" *) input LMB_AddrStrobe;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB READSTROBE" *) input LMB_ReadStrobe;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB WRITESTROBE" *) input LMB_WriteStrobe;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB BE" *) input [0:3]LMB_BE;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB READDBUS" *) output [0:31]Sl_DBus;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB READY" *) output Sl_Ready;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB WAIT" *) output Sl_Wait;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB UE" *) output Sl_UE;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB CE" *) output Sl_CE;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 ABUS" *) (* x_interface_parameter = "XIL_INTERFACENAME SLMB1, ADDR_WIDTH 32, DATA_WIDTH 32, READ_WRITE_MODE READ_WRITE" *) input [0:31]LMB1_ABus;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 WRITEDBUS" *) input [0:31]LMB1_WriteDBus;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 ADDRSTROBE" *) input LMB1_AddrStrobe;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 READSTROBE" *) input LMB1_ReadStrobe;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 WRITESTROBE" *) input LMB1_WriteStrobe;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 BE" *) input [0:3]LMB1_BE;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 READDBUS" *) output [0:31]Sl1_DBus;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 READY" *) output Sl1_Ready;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 WAIT" *) output Sl1_Wait;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 UE" *) output Sl1_UE;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 SLMB1 CE" *) output Sl1_CE;
+  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORT RST" *) (* x_interface_parameter = "XIL_INTERFACENAME BRAM_PORT, MEM_SIZE 8192, MASTER_TYPE BRAM_CTRL, MEM_WIDTH 32, MEM_ECC NONE, READ_LATENCY 1" *) output BRAM_Rst_A;
+  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORT CLK" *) output BRAM_Clk_A;
+  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORT ADDR" *) output [0:31]BRAM_Addr_A;
+  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORT EN" *) output BRAM_EN_A;
+  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORT WE" *) output [0:3]BRAM_WEN_A;
+  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORT DIN" *) output [0:31]BRAM_Dout_A;
+  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORT DOUT" *) input [0:31]BRAM_Din_A;
+
+  wire [0:31]BRAM_Addr_A;
+  wire BRAM_Clk_A;
+  wire [0:31]BRAM_Din_A;
+  wire [0:31]BRAM_Dout_A;
+  wire BRAM_EN_A;
+  wire BRAM_Rst_A;
+  wire [0:3]BRAM_WEN_A;
+  wire [0:31]LMB1_ABus;
+  wire LMB1_AddrStrobe;
+  wire [0:3]LMB1_BE;
+  wire LMB1_ReadStrobe;
+  wire [0:31]LMB1_WriteDBus;
+  wire LMB1_WriteStrobe;
+  wire [0:31]LMB_ABus;
+  wire LMB_AddrStrobe;
+  wire [0:3]LMB_BE;
+  wire LMB_Clk;
+  wire LMB_ReadStrobe;
+  wire LMB_Rst;
+  wire [0:31]LMB_WriteDBus;
+  wire LMB_WriteStrobe;
+  wire Sl1_CE;
+  wire [0:31]Sl1_DBus;
+  wire Sl1_Ready;
+  wire Sl1_UE;
+  wire Sl1_Wait;
+  wire Sl_CE;
+  wire [0:31]Sl_DBus;
+  wire Sl_Ready;
+  wire Sl_UE;
+  wire Sl_Wait;
+  wire NLW_U0_CE_UNCONNECTED;
+  wire NLW_U0_Interrupt_UNCONNECTED;
+  wire NLW_U0_S_AXI_CTRL_ARREADY_UNCONNECTED;
+  wire NLW_U0_S_AXI_CTRL_AWREADY_UNCONNECTED;
+  wire NLW_U0_S_AXI_CTRL_BVALID_UNCONNECTED;
+  wire NLW_U0_S_AXI_CTRL_RVALID_UNCONNECTED;
+  wire NLW_U0_S_AXI_CTRL_WREADY_UNCONNECTED;
+  wire NLW_U0_Sl2_CE_UNCONNECTED;
+  wire NLW_U0_Sl2_Ready_UNCONNECTED;
+  wire NLW_U0_Sl2_UE_UNCONNECTED;
+  wire NLW_U0_Sl2_Wait_UNCONNECTED;
+  wire NLW_U0_Sl3_CE_UNCONNECTED;
+  wire NLW_U0_Sl3_Ready_UNCONNECTED;
+  wire NLW_U0_Sl3_UE_UNCONNECTED;
+  wire NLW_U0_Sl3_Wait_UNCONNECTED;
+  wire NLW_U0_UE_UNCONNECTED;
+  wire [1:0]NLW_U0_S_AXI_CTRL_BRESP_UNCONNECTED;
+  wire [31:0]NLW_U0_S_AXI_CTRL_RDATA_UNCONNECTED;
+  wire [1:0]NLW_U0_S_AXI_CTRL_RRESP_UNCONNECTED;
+  wire [0:31]NLW_U0_Sl2_DBus_UNCONNECTED;
+  wire [0:31]NLW_U0_Sl3_DBus_UNCONNECTED;
+
+  (* C_BASEADDR = "64'b0000000000000000000000000000000000000000000000000000000000000000" *) 
+  (* C_BRAM_AWIDTH = "32" *) 
+  (* C_CE_COUNTER_WIDTH = "0" *) 
+  (* C_CE_FAILING_REGISTERS = "0" *) 
+  (* C_ECC = "0" *) 
+  (* C_ECC_ONOFF_REGISTER = "0" *) 
+  (* C_ECC_ONOFF_RESET_VALUE = "1" *) 
+  (* C_ECC_STATUS_REGISTERS = "0" *) 
+  (* C_FAMILY = "artix7" *) 
+  (* C_FAULT_INJECT = "0" *) 
+  (* C_HIGHADDR = "64'b0000000000000000000000000000000000000000000000000001111111111111" *) 
+  (* C_INTERCONNECT = "0" *) 
+  (* C_LMB_AWIDTH = "32" *) 
+  (* C_LMB_DWIDTH = "32" *) 
+  (* C_MASK = "64'b0000000000000000000000000000000010000000001000000000000000000000" *) 
+  (* C_MASK1 = "64'b0000000000000000000000000000000010000000001000000000000000000000" *) 
+  (* C_MASK2 = "64'b0000000000000000000000000000000000000000100000000000000000000000" *) 
+  (* C_MASK3 = "64'b0000000000000000000000000000000000000000100000000000000000000000" *) 
+  (* C_NUM_LMB = "2" *) 
+  (* C_S_AXI_CTRL_ADDR_WIDTH = "32" *) 
+  (* C_S_AXI_CTRL_BASEADDR = "32'b11111111111111111111111111111111" *) 
+  (* C_S_AXI_CTRL_DATA_WIDTH = "32" *) 
+  (* C_S_AXI_CTRL_HIGHADDR = "32'b00000000000000000000000000000000" *) 
+  (* C_UE_FAILING_REGISTERS = "0" *) 
+  (* C_WRITE_ACCESS = "2" *) 
+  mcu_dlmb_bram_if_cntlr_0_lmb_bram_if_cntlr U0
+       (.BRAM_Addr_A(BRAM_Addr_A),
+        .BRAM_Clk_A(BRAM_Clk_A),
+        .BRAM_Din_A(BRAM_Din_A),
+        .BRAM_Dout_A(BRAM_Dout_A),
+        .BRAM_EN_A(BRAM_EN_A),
+        .BRAM_Rst_A(BRAM_Rst_A),
+        .BRAM_WEN_A(BRAM_WEN_A),
+        .CE(NLW_U0_CE_UNCONNECTED),
+        .Interrupt(NLW_U0_Interrupt_UNCONNECTED),
+        .LMB1_ABus(LMB1_ABus),
+        .LMB1_AddrStrobe(LMB1_AddrStrobe),
+        .LMB1_BE(LMB1_BE),
+        .LMB1_ReadStrobe(LMB1_ReadStrobe),
+        .LMB1_WriteDBus(LMB1_WriteDBus),
+        .LMB1_WriteStrobe(LMB1_WriteStrobe),
+        .LMB2_ABus({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB2_AddrStrobe(1'b0),
+        .LMB2_BE({1'b0,1'b0,1'b0,1'b0}),
+        .LMB2_ReadStrobe(1'b0),
+        .LMB2_WriteDBus({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB2_WriteStrobe(1'b0),
+        .LMB3_ABus({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB3_AddrStrobe(1'b0),
+        .LMB3_BE({1'b0,1'b0,1'b0,1'b0}),
+        .LMB3_ReadStrobe(1'b0),
+        .LMB3_WriteDBus({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB3_WriteStrobe(1'b0),
+        .LMB_ABus(LMB_ABus),
+        .LMB_AddrStrobe(LMB_AddrStrobe),
+        .LMB_BE(LMB_BE),
+        .LMB_Clk(LMB_Clk),
+        .LMB_ReadStrobe(LMB_ReadStrobe),
+        .LMB_Rst(LMB_Rst),
+        .LMB_WriteDBus(LMB_WriteDBus),
+        .LMB_WriteStrobe(LMB_WriteStrobe),
+        .S_AXI_CTRL_ACLK(1'b0),
+        .S_AXI_CTRL_ARADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .S_AXI_CTRL_ARESETN(1'b0),
+        .S_AXI_CTRL_ARREADY(NLW_U0_S_AXI_CTRL_ARREADY_UNCONNECTED),
+        .S_AXI_CTRL_ARVALID(1'b0),
+        .S_AXI_CTRL_AWADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .S_AXI_CTRL_AWREADY(NLW_U0_S_AXI_CTRL_AWREADY_UNCONNECTED),
+        .S_AXI_CTRL_AWVALID(1'b0),
+        .S_AXI_CTRL_BREADY(1'b0),
+        .S_AXI_CTRL_BRESP(NLW_U0_S_AXI_CTRL_BRESP_UNCONNECTED[1:0]),
+        .S_AXI_CTRL_BVALID(NLW_U0_S_AXI_CTRL_BVALID_UNCONNECTED),
+        .S_AXI_CTRL_RDATA(NLW_U0_S_AXI_CTRL_RDATA_UNCONNECTED[31:0]),
+        .S_AXI_CTRL_RREADY(1'b0),
+        .S_AXI_CTRL_RRESP(NLW_U0_S_AXI_CTRL_RRESP_UNCONNECTED[1:0]),
+        .S_AXI_CTRL_RVALID(NLW_U0_S_AXI_CTRL_RVALID_UNCONNECTED),
+        .S_AXI_CTRL_WDATA({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .S_AXI_CTRL_WREADY(NLW_U0_S_AXI_CTRL_WREADY_UNCONNECTED),
+        .S_AXI_CTRL_WSTRB({1'b0,1'b0,1'b0,1'b0}),
+        .S_AXI_CTRL_WVALID(1'b0),
+        .Sl1_CE(Sl1_CE),
+        .Sl1_DBus(Sl1_DBus),
+        .Sl1_Ready(Sl1_Ready),
+        .Sl1_UE(Sl1_UE),
+        .Sl1_Wait(Sl1_Wait),
+        .Sl2_CE(NLW_U0_Sl2_CE_UNCONNECTED),
+        .Sl2_DBus(NLW_U0_Sl2_DBus_UNCONNECTED[0:31]),
+        .Sl2_Ready(NLW_U0_Sl2_Ready_UNCONNECTED),
+        .Sl2_UE(NLW_U0_Sl2_UE_UNCONNECTED),
+        .Sl2_Wait(NLW_U0_Sl2_Wait_UNCONNECTED),
+        .Sl3_CE(NLW_U0_Sl3_CE_UNCONNECTED),
+        .Sl3_DBus(NLW_U0_Sl3_DBus_UNCONNECTED[0:31]),
+        .Sl3_Ready(NLW_U0_Sl3_Ready_UNCONNECTED),
+        .Sl3_UE(NLW_U0_Sl3_UE_UNCONNECTED),
+        .Sl3_Wait(NLW_U0_Sl3_Wait_UNCONNECTED),
+        .Sl_CE(Sl_CE),
+        .Sl_DBus(Sl_DBus),
+        .Sl_Ready(Sl_Ready),
+        .Sl_UE(Sl_UE),
+        .Sl_Wait(Sl_Wait),
+        .UE(NLW_U0_UE_UNCONNECTED));
 endmodule
 `ifndef GLBL
 `define GLBL

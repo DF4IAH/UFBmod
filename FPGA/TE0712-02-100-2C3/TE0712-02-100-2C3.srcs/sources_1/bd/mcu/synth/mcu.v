@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Wed Jul 31 18:03:35 2019
+//Date        : Wed Jul 31 23:31:54 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -960,7 +960,7 @@ module mcu
   assign ufb_trx_txclk_p = selectio_wiz_lvds_out_clk_to_pins_p;
   assign ufb_trx_txd_n[0] = selectio_wiz_lvds_out_data_out_to_pins_n;
   assign ufb_trx_txd_p[0] = selectio_wiz_lvds_out_data_out_to_pins_p;
-  mcu_clk_wiz_0_0 clk_wiz_0
+  mcu_clk_wiz_0_0 clk_wiz_0_32mhz
        (.clk_32_lvds_in(clk_wiz_0_clk_32_lvds_in),
         .clk_32_lvds_out(clk_wiz_0_clk_32_lvds_out),
         .clk_in1_n(ufb_trx_rxclk_n_1),

@@ -35,108 +35,15 @@ set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay 0.400 [get_p
 set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 6.000 [get_ports ufb_trx_rxd09_p]
 
 
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {clkfbout_mcu_clk_wiz_1_0}] -group [get_clocks -include_generated_clocks {clkfbout_mcu_clk_wiz_1_0_1}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {clk_12mhz_mcu_clk_wiz_1_0}] -group [get_clocks -include_generated_clocks {clk_12mhz_mcu_clk_wiz_1_0_1}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {clk_pll_i}] -group [get_clocks -include_generated_clocks {clk_pll_i_1}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {mmcm_clkout0}] -group [get_clocks -include_generated_clocks {mmcm_clkout0_1}]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {mmcm_clkout1}] -group [get_clocks -include_generated_clocks {mmcm_clkout1_1}]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {mmcm_clkout2}] -group [get_clocks -include_generated_clocks {mmcm_clkout2_1}]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {mmcm_clkout3}] -group [get_clocks -include_generated_clocks {mmcm_clkout3_1}]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {mmcm_clkout4}] -group [get_clocks -include_generated_clocks {mmcm_clkout4_1}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {mmcm_ps_clk_bufg_in}] -group [get_clocks -include_generated_clocks {mmcm_ps_clk_bufg_in_1}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {clk_div2_bufg_in}] -group [get_clocks -include_generated_clocks {clk_div2_bufg_in_1}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {pll_clkfbout}] -group [get_clocks -include_generated_clocks {pll_clkfbout_1}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {freq_refclk}] -group [get_clocks -include_generated_clocks {freq_refclk_1}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {mem_refclk}] -group [get_clocks -include_generated_clocks {mem_refclk_1}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {sync_pulse}] -group [get_clocks -include_generated_clocks {sync_pulse_1}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {pll_clk3_out}] -group [get_clocks -include_generated_clocks {pll_clk3_out_1}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clk}] -group [get_clocks -include_generated_clocks {oserdes_clk_8}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clkdiv}] -group [get_clocks -include_generated_clocks {oserdes_clkdiv_8}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clk_1}] -group [get_clocks -include_generated_clocks {oserdes_clk_9}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clkdiv_1}] -group [get_clocks -include_generated_clocks {oserdes_clkdiv_9}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clk_2}] -group [get_clocks -include_generated_clocks {oserdes_clk_10}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clkdiv_2}] -group [get_clocks -include_generated_clocks {oserdes_clkdiv_10}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clk_3}] -group [get_clocks -include_generated_clocks {oserdes_clk_11}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clkdiv_3}] -group [get_clocks -include_generated_clocks {oserdes_clkdiv_11}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_A.ddr_byte_lane_A/iserdes_clk}] -group [get_clocks -include_generated_clocks {u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_A.ddr_byte_lane_A/iserdes_clk_1}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {iserdes_clkdiv}] -group [get_clocks -include_generated_clocks {iserdes_clkdiv_4}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clk_4}] -group [get_clocks -include_generated_clocks {oserdes_clk_12}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clkdiv_4}] -group [get_clocks -include_generated_clocks {oserdes_clkdiv_12}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_B.ddr_byte_lane_B/iserdes_clk}] -group [get_clocks -include_generated_clocks {u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_B.ddr_byte_lane_B/iserdes_clk_1}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {iserdes_clkdiv_1}] -group [get_clocks -include_generated_clocks {iserdes_clkdiv_5}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clk_5}] -group [get_clocks -include_generated_clocks {oserdes_clk_13}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clkdiv_5}] -group [get_clocks -include_generated_clocks {oserdes_clkdiv_13}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/iserdes_clk}] -group [get_clocks -include_generated_clocks {u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/iserdes_clk_1}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {iserdes_clkdiv_2}] -group [get_clocks -include_generated_clocks {iserdes_clkdiv_6}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clk_6}] -group [get_clocks -include_generated_clocks {oserdes_clk_14}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clkdiv_6}] -group [get_clocks -include_generated_clocks {oserdes_clkdiv_14}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/iserdes_clk}] -group [get_clocks -include_generated_clocks {u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/iserdes_clk_1}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {iserdes_clkdiv_3}] -group [get_clocks -include_generated_clocks {iserdes_clkdiv_7}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clk_7}] -group [get_clocks -include_generated_clocks {oserdes_clk_15}]
-
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks {oserdes_clkdiv_7}] -group [get_clocks -include_generated_clocks {oserdes_clkdiv_15}]
+set_false_path -from [get_clocks ufb_trx_rxclk_p] -to [get_pins {mcu_wrapper_i/mcu_i/dist_mem_gen_lvds_out/U0/synth_options.dist_mem_inst/gen_sdp_ram.sdpram_inst/qsdpo_int_reg[0]/D}]
+set_false_path -from [get_clocks ufb_trx_rxclk_p] -to [get_pins {mcu_wrapper_i/mcu_i/dist_mem_gen_lvds_out/U0/synth_options.dist_mem_inst/gen_sdp_ram.sdpram_inst/qsdpo_int_reg[1]/D}]
+set_false_path -from [get_clocks ufb_trx_rxclk_p] -to [get_pins {mcu_wrapper_i/mcu_i/dist_mem_gen_lvds_out/U0/synth_options.dist_mem_inst/gen_sdp_ram.sdpram_inst/qsdpo_int_reg[2]/D}]
+set_false_path -from [get_clocks ufb_trx_rxclk_p] -to [get_pins {mcu_wrapper_i/mcu_i/dist_mem_gen_lvds_out/U0/synth_options.dist_mem_inst/gen_sdp_ram.sdpram_inst/qsdpo_int_reg[3]/D}]
+set_false_path -from [get_clocks ufb_trx_rxclk_p] -to [get_pins {mcu_wrapper_i/mcu_i/dist_mem_gen_lvds_out/U0/synth_options.dist_mem_inst/gen_sdp_ram.sdpram_inst/qsdpo_int_reg[4]/D}]
+set_false_path -from [get_clocks ufb_trx_rxclk_p] -to [get_pins {mcu_wrapper_i/mcu_i/dist_mem_gen_lvds_out/U0/synth_options.dist_mem_inst/gen_sdp_ram.sdpram_inst/qsdpo_int_reg[5]/D}]
+set_false_path -from [get_clocks ufb_trx_rxclk_p] -to [get_pins {mcu_wrapper_i/mcu_i/dist_mem_gen_lvds_out/U0/synth_options.dist_mem_inst/gen_sdp_ram.sdpram_inst/qsdpo_int_reg[6]/D}]
+set_false_path -from [get_clocks ufb_trx_rxclk_p] -to [get_pins {mcu_wrapper_i/mcu_i/dist_mem_gen_lvds_out/U0/synth_options.dist_mem_inst/gen_sdp_ram.sdpram_inst/qsdpo_int_reg[7]/D}]
 
 
-set_clock_groups -logically_exclusive -group [get_clocks -include_generated_clocks {freq_refclk_1 mem_refclk_1 pll_clk3_out_1 pll_clkfbout_1 sync_pulse_1}] -group [get_clocks -include_generated_clocks {freq_refclk mem_refclk pll_clk3_out pll_clkfbout sync_pulse}]
-
-
-
-set_clock_groups -asynchronous -group [get_clocks {clk_pll_i}] -group [get_clocks {clk_32_lvds_out_mcu_clk_wiz_0_0}]
-
-set_clock_groups -asynchronous -group [get_clocks {clk_pll_i_1}] -group [get_clocks {clk_32_lvds_out_mcu_clk_wiz_0_0}]
-
-set_clock_groups -asynchronous -group [get_clocks {clk_32_lvds_in_mcu_clk_wiz_0_0}] -group [get_clocks {clk_pll_i}]
-
-set_clock_groups -asynchronous -group [get_clocks {clk_32_lvds_in_mcu_clk_wiz_0_0}] -group [get_clocks {clk_pll_i_1}]
-
-
-
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[0].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[1].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[2].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[3].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[4].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[5].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[6].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[7].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[8].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[9].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[10].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[11].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[12].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[13].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[14].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
-set_multicycle_path -from [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/phaser_out/OCLK] -to [get_pins {mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_0.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/ddr_byte_group_io/output_[15].oserdes_dq_.sdr.oserdes_dq_i/RST}] 1
+#set_false_path -from [get_clocks -of_objects [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT]] -to [get_clocks -of_objects [get_pins mcu_wrapper_i/mcu_i/clk_wiz_0/inst/mmcm_adv_inst/CLKOUT1]]
+#set_false_path -from [get_clocks -of_objects [get_pins mcu_wrapper_i/mcu_i/clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0]] -to [get_clocks -of_objects [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT]]
