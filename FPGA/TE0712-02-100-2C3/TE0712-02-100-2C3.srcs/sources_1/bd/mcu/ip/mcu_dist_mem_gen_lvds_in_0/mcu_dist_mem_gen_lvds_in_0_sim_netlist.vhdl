@@ -1,11 +1,11 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Tue Jul 30 19:31:39 2019
+-- Date        : Thu Aug  1 23:45:23 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim -rename_top mcu_dist_mem_gen_lvds_in_0 -prefix
---               mcu_dist_mem_gen_lvds_in_0_ mcu_dist_mem_gen_lvds_in_0_sim_netlist.vhdl
--- Design      : mcu_dist_mem_gen_lvds_in_0
+--               mcu_dist_mem_gen_lvds_in_0_ mcu_dist_mem_gen_0_0_sim_netlist.vhdl
+-- Design      : mcu_dist_mem_gen_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
 -- Device      : xc7a100tfgg484-2
@@ -29,6 +29,7 @@ end mcu_dist_mem_gen_lvds_in_0_sdpram;
 architecture STRUCTURE of mcu_dist_mem_gen_lvds_in_0_sdpram is
   signal a_reg : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal d_reg : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal qsdpo_int : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute RTL_KEEP : string;
   attribute RTL_KEEP of qsdpo_int : signal is "true";
@@ -181,7 +182,7 @@ begin
       Q => d_reg(7),
       R => '0'
     );
-\qsdpo_int_reg[0]\: unisim.vcomponents.FDRE
+\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][0]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -189,6 +190,94 @@ begin
       C => qdpo_clk,
       CE => '1',
       D => sdpo_int(0),
+      Q => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(0),
+      R => '0'
+    );
+\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][1]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => qdpo_clk,
+      CE => '1',
+      D => sdpo_int(1),
+      Q => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(1),
+      R => '0'
+    );
+\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][2]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => qdpo_clk,
+      CE => '1',
+      D => sdpo_int(2),
+      Q => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(2),
+      R => '0'
+    );
+\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][3]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => qdpo_clk,
+      CE => '1',
+      D => sdpo_int(3),
+      Q => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(3),
+      R => '0'
+    );
+\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][4]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => qdpo_clk,
+      CE => '1',
+      D => sdpo_int(4),
+      Q => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(4),
+      R => '0'
+    );
+\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][5]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => qdpo_clk,
+      CE => '1',
+      D => sdpo_int(5),
+      Q => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(5),
+      R => '0'
+    );
+\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][6]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => qdpo_clk,
+      CE => '1',
+      D => sdpo_int(6),
+      Q => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(6),
+      R => '0'
+    );
+\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][7]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => qdpo_clk,
+      CE => '1',
+      D => sdpo_int(7),
+      Q => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(7),
+      R => '0'
+    );
+\qsdpo_int_reg[0]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => qdpo_clk,
+      CE => '1',
+      D => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(0),
       Q => qsdpo_int(0),
       R => '0'
     );
@@ -199,7 +288,7 @@ begin
         port map (
       C => qdpo_clk,
       CE => '1',
-      D => sdpo_int(1),
+      D => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(1),
       Q => qsdpo_int(1),
       R => '0'
     );
@@ -210,7 +299,7 @@ begin
         port map (
       C => qdpo_clk,
       CE => '1',
-      D => sdpo_int(2),
+      D => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(2),
       Q => qsdpo_int(2),
       R => '0'
     );
@@ -221,7 +310,7 @@ begin
         port map (
       C => qdpo_clk,
       CE => '1',
-      D => sdpo_int(3),
+      D => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(3),
       Q => qsdpo_int(3),
       R => '0'
     );
@@ -232,7 +321,7 @@ begin
         port map (
       C => qdpo_clk,
       CE => '1',
-      D => sdpo_int(4),
+      D => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(4),
       Q => qsdpo_int(4),
       R => '0'
     );
@@ -243,7 +332,7 @@ begin
         port map (
       C => qdpo_clk,
       CE => '1',
-      D => sdpo_int(5),
+      D => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(5),
       Q => qsdpo_int(5),
       R => '0'
     );
@@ -254,7 +343,7 @@ begin
         port map (
       C => qdpo_clk,
       CE => '1',
-      D => sdpo_int(6),
+      D => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(6),
       Q => qsdpo_int(6),
       R => '0'
     );
@@ -265,7 +354,7 @@ begin
         port map (
       C => qdpo_clk,
       CE => '1',
-      D => sdpo_int(7),
+      D => \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1]\(7),
       Q => qsdpo_int(7),
       R => '0'
     );
@@ -434,7 +523,7 @@ entity mcu_dist_mem_gen_lvds_in_0_dist_mem_gen_v8_0_12 is
   attribute C_PARSER_TYPE : integer;
   attribute C_PARSER_TYPE of mcu_dist_mem_gen_lvds_in_0_dist_mem_gen_v8_0_12 : entity is 1;
   attribute C_PIPELINE_STAGES : integer;
-  attribute C_PIPELINE_STAGES of mcu_dist_mem_gen_lvds_in_0_dist_mem_gen_v8_0_12 : entity is 0;
+  attribute C_PIPELINE_STAGES of mcu_dist_mem_gen_lvds_in_0_dist_mem_gen_v8_0_12 : entity is 1;
   attribute C_QCE_JOINED : integer;
   attribute C_QCE_JOINED of mcu_dist_mem_gen_lvds_in_0_dist_mem_gen_v8_0_12 : entity is 0;
   attribute C_QUALIFY_WE : integer;
@@ -510,7 +599,7 @@ entity mcu_dist_mem_gen_lvds_in_0 is
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of mcu_dist_mem_gen_lvds_in_0 : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of mcu_dist_mem_gen_lvds_in_0 : entity is "mcu_dist_mem_gen_lvds_in_0,dist_mem_gen_v8_0_12,{}";
+  attribute CHECK_LICENSE_TYPE of mcu_dist_mem_gen_lvds_in_0 : entity is "mcu_dist_mem_gen_0_0,dist_mem_gen_v8_0_12,{}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mcu_dist_mem_gen_lvds_in_0 : entity is "yes";
   attribute x_core_info : string;
@@ -572,7 +661,7 @@ architecture STRUCTURE of mcu_dist_mem_gen_lvds_in_0 is
   attribute c_parser_type : integer;
   attribute c_parser_type of U0 : label is 1;
   attribute c_pipeline_stages : integer;
-  attribute c_pipeline_stages of U0 : label is 0;
+  attribute c_pipeline_stages of U0 : label is 1;
   attribute c_qce_joined : integer;
   attribute c_qce_joined of U0 : label is 0;
   attribute c_qualify_we : integer;

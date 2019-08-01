@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Wed Jul 31 23:31:54 2019
+//Date        : Thu Aug  1 23:43:48 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -581,7 +581,7 @@ module m01_couplers_imp_AFYY8F
   assign m01_couplers_to_m01_couplers_WVALID = S_AXI_wvalid;
 endmodule
 
-(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=33,numReposBlks=25,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_mb_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
+(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=38,numReposBlks=30,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_mb_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
 module mcu
    (DDR3_SDRAM_addr,
     DDR3_SDRAM_ba,
@@ -647,8 +647,14 @@ module mcu
   output [0:0]ufb_trx_txd_p;
 
   wire [0:0]ARESETN_1;
+  wire [1:0]LVDS_rst_delay_inv1_S;
+  wire [1:0]LVDS_rst_delay_inv_S;
+  wire [0:0]LVDS_slice_inv1_Dout;
   wire UART_rxd_0_1;
   wire aux_reset_in_0_1;
+  wire [0:0]c_counter_binary_0_THRESH0;
+  wire c_counter_binary_0_THRESH1;
+  wire clk_wiz_0_32mhz_locked;
   wire clk_wiz_0_clk_32_lvds_in;
   wire clk_wiz_0_clk_32_lvds_out;
   wire clk_wiz_ftdi_12mhz_clk_12mhz;
@@ -960,32 +966,56 @@ module mcu
   assign ufb_trx_txclk_p = selectio_wiz_lvds_out_clk_to_pins_p;
   assign ufb_trx_txd_n[0] = selectio_wiz_lvds_out_data_out_to_pins_n;
   assign ufb_trx_txd_p[0] = selectio_wiz_lvds_out_data_out_to_pins_p;
-  mcu_clk_wiz_0_0 clk_wiz_0_32mhz
+  mcu_selectio_wiz_1_0 LVDS_in
+       (.bitslip(xlconstant_val0_dout),
+        .clk_div_in(xlconstant_val0_dout),
+        .clk_in(clk_wiz_0_clk_32_lvds_in),
+        .data_in_from_pins_n(ufb_trx_rxd09_n_1),
+        .data_in_from_pins_p(ufb_trx_rxd09_p_1),
+        .data_in_to_device(selectio_wiz_lvds_in_data_in_to_device),
+        .io_reset(c_counter_binary_0_THRESH0));
+  mcu_selectio_wiz_0_0 LVDS_out
+       (.clk_div_in(xlconstant_val0_dout),
+        .clk_in(clk_wiz_0_clk_32_lvds_out),
+        .clk_reset(rst_clk_wiz_1_50M_peripheral_reset),
+        .clk_to_pins_n(selectio_wiz_lvds_out_clk_to_pins_n),
+        .clk_to_pins_p(selectio_wiz_lvds_out_clk_to_pins_p),
+        .data_out_from_device(dist_mem_gen_lvds_out_qdpo),
+        .data_out_to_pins_n(selectio_wiz_lvds_out_data_out_to_pins_n),
+        .data_out_to_pins_p(selectio_wiz_lvds_out_data_out_to_pins_p),
+        .io_reset(c_counter_binary_0_THRESH0));
+  mcu_clk_wiz_0_0 clk_32mhz_LVDS
        (.clk_32_lvds_in(clk_wiz_0_clk_32_lvds_in),
         .clk_32_lvds_out(clk_wiz_0_clk_32_lvds_out),
         .clk_in1_n(ufb_trx_rxclk_n_1),
         .clk_in1_p(ufb_trx_rxclk_p_1),
+        .locked(clk_wiz_0_32mhz_locked),
         .reset(rst_clk_wiz_1_100M_bus_struct_reset));
+  mcu_LVDS_rst_delay_inv_0 clk_32mhz_locked_add_inv
+       (.A(clk_wiz_0_32mhz_locked),
+        .CLK(microblaze_0_Clk),
+        .S(LVDS_rst_delay_inv1_S),
+        .SCLR(rst_clk_wiz_1_100M_bus_struct_reset));
+  mcu_c_counter_binary_0_0 clk_32mhz_locked_delay
+       (.CE(LVDS_rst_delay_inv_S[0]),
+        .CLK(microblaze_0_Clk),
+        .SCLR(LVDS_slice_inv1_Dout),
+        .THRESH0(c_counter_binary_0_THRESH1));
+  mcu_c_addsub_0_0 clk_32mhz_locked_delay_add
+       (.A(c_counter_binary_0_THRESH1),
+        .CLK(microblaze_0_Clk),
+        .S(LVDS_rst_delay_inv_S),
+        .SCLR(rst_clk_wiz_1_100M_bus_struct_reset));
+  mcu_xlslice_0_0 clk_32mhz_locked_delay_slice
+       (.Din(LVDS_rst_delay_inv_S),
+        .Dout(c_counter_binary_0_THRESH0));
+  mcu_LVDS_slice_inv_0 clk_32mhz_locked_slice_inv
+       (.Din(LVDS_rst_delay_inv1_S),
+        .Dout(LVDS_slice_inv1_Dout));
   mcu_clk_wiz_1_0 clk_wiz_ftdi_12mhz
        (.clk_12mhz(clk_wiz_ftdi_12mhz_clk_12mhz),
         .clk_in1(microblaze_0_Clk),
         .reset(rst_clk_wiz_1_100M_bus_struct_reset));
-  mcu_dist_mem_gen_0_0 dist_mem_gen_lvds_in
-       (.a(xlconstant_val000_dout),
-        .clk(clk_wiz_0_clk_32_lvds_in),
-        .d(selectio_wiz_lvds_in_data_in_to_device),
-        .dpra(xlconstant_val000_dout),
-        .qdpo(dist_mem_gen_lvds_in_qdpo),
-        .qdpo_clk(microblaze_0_Clk),
-        .we(xlconstant_val1_dout));
-  mcu_dist_mem_gen_lvds_in_0 dist_mem_gen_lvds_out
-       (.a(xlconstant_val000_dout),
-        .clk(microblaze_0_Clk),
-        .d(microblaze_mcs_0_GPIO1_tri_o),
-        .dpra(xlconstant_val000_dout),
-        .qdpo(dist_mem_gen_lvds_out_qdpo),
-        .qdpo_clk(clk_wiz_0_clk_32_lvds_out),
-        .we(xlconstant_val1_dout));
   mcu_mdm_1_0 mdm_1
        (.Dbg_Capture_0(microblaze_0_debug_CAPTURE),
         .Dbg_Clk_0(microblaze_0_debug_CLK),
@@ -1535,24 +1565,22 @@ module mcu
         .peripheral_aresetn(rst_clk_wiz_1_100M_peripheral_aresetn),
         .peripheral_reset(rst_clk_wiz_1_50M_peripheral_reset),
         .slowest_sync_clk(microblaze_0_Clk));
-  mcu_selectio_wiz_1_0 selectio_wiz_lvds_in
-       (.bitslip(xlconstant_val0_dout),
-        .clk_div_in(xlconstant_val0_dout),
-        .clk_in(clk_wiz_0_clk_32_lvds_in),
-        .data_in_from_pins_n(ufb_trx_rxd09_n_1),
-        .data_in_from_pins_p(ufb_trx_rxd09_p_1),
-        .data_in_to_device(selectio_wiz_lvds_in_data_in_to_device),
-        .io_reset(rst_clk_wiz_1_50M_peripheral_reset));
-  mcu_selectio_wiz_0_0 selectio_wiz_lvds_out
-       (.clk_div_in(xlconstant_val0_dout),
-        .clk_in(clk_wiz_0_clk_32_lvds_out),
-        .clk_reset(rst_clk_wiz_1_50M_peripheral_reset),
-        .clk_to_pins_n(selectio_wiz_lvds_out_clk_to_pins_n),
-        .clk_to_pins_p(selectio_wiz_lvds_out_clk_to_pins_p),
-        .data_out_from_device(dist_mem_gen_lvds_out_qdpo),
-        .data_out_to_pins_n(selectio_wiz_lvds_out_data_out_to_pins_n),
-        .data_out_to_pins_p(selectio_wiz_lvds_out_data_out_to_pins_p),
-        .io_reset(rst_clk_wiz_1_50M_peripheral_reset));
+  mcu_dist_mem_gen_0_0 sync_LVDS_in
+       (.a(xlconstant_val000_dout),
+        .clk(clk_wiz_0_clk_32_lvds_in),
+        .d(selectio_wiz_lvds_in_data_in_to_device),
+        .dpra(xlconstant_val000_dout),
+        .qdpo(dist_mem_gen_lvds_in_qdpo),
+        .qdpo_clk(microblaze_0_Clk),
+        .we(xlconstant_val1_dout));
+  mcu_dist_mem_gen_lvds_in_0 sync_LVDS_out
+       (.a(xlconstant_val000_dout),
+        .clk(microblaze_0_Clk),
+        .d(microblaze_mcs_0_GPIO1_tri_o),
+        .dpra(xlconstant_val000_dout),
+        .qdpo(dist_mem_gen_lvds_out_qdpo),
+        .qdpo_clk(clk_wiz_0_clk_32_lvds_out),
+        .we(xlconstant_val1_dout));
   mcu_xlconstant_0_0 xlconstant_val0
        (.dout(xlconstant_val0_dout));
   mcu_xlconstant_val0_0 xlconstant_val0000

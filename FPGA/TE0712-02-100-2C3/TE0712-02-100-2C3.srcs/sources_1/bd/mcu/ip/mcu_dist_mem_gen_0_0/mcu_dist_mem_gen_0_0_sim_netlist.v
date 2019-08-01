@@ -1,18 +1,18 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Tue Jul 30 19:31:39 2019
+// Date        : Thu Aug  1 23:45:23 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top mcu_dist_mem_gen_0_0 -prefix
-//               mcu_dist_mem_gen_0_0_ mcu_dist_mem_gen_lvds_in_0_sim_netlist.v
-// Design      : mcu_dist_mem_gen_lvds_in_0
+// Command     : write_verilog -force -mode funcsim
+//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_dist_mem_gen_0_0/mcu_dist_mem_gen_0_0_sim_netlist.v
+// Design      : mcu_dist_mem_gen_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7a100tfgg484-2
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "mcu_dist_mem_gen_lvds_in_0,dist_mem_gen_v8_0_12,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "dist_mem_gen_v8_0_12,Vivado 2018.3" *) 
+(* CHECK_LICENSE_TYPE = "mcu_dist_mem_gen_0_0,dist_mem_gen_v8_0_12,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "dist_mem_gen_v8_0_12,Vivado 2018.3" *) 
 (* NotValidForBitStream *)
 module mcu_dist_mem_gen_0_0
    (a,
@@ -66,7 +66,7 @@ module mcu_dist_mem_gen_0_0
   (* c_has_qspo_ce = "0" *) 
   (* c_mem_init_file = "no_coe_file_loaded" *) 
   (* c_parser_type = "1" *) 
-  (* c_pipeline_stages = "0" *) 
+  (* c_pipeline_stages = "1" *) 
   (* c_qce_joined = "0" *) 
   (* c_qualify_we = "0" *) 
   (* c_read_mif = "0" *) 
@@ -101,9 +101,9 @@ endmodule
 (* C_HAS_QSPO = "0" *) (* C_HAS_QSPO_CE = "0" *) (* C_HAS_QSPO_RST = "0" *) 
 (* C_HAS_QSPO_SRST = "0" *) (* C_HAS_SPO = "0" *) (* C_HAS_WE = "1" *) 
 (* C_MEM_INIT_FILE = "no_coe_file_loaded" *) (* C_MEM_TYPE = "4" *) (* C_PARSER_TYPE = "1" *) 
-(* C_PIPELINE_STAGES = "0" *) (* C_QCE_JOINED = "0" *) (* C_QUALIFY_WE = "0" *) 
+(* C_PIPELINE_STAGES = "1" *) (* C_QCE_JOINED = "0" *) (* C_QUALIFY_WE = "0" *) 
 (* C_READ_MIF = "0" *) (* C_REG_A_D_INPUTS = "1" *) (* C_REG_DPRA_INPUT = "0" *) 
-(* C_SYNC_ENABLE = "1" *) (* C_WIDTH = "8" *) 
+(* C_SYNC_ENABLE = "1" *) (* C_WIDTH = "8" *) (* ORIG_REF_NAME = "dist_mem_gen_v8_0_12" *) 
 module mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_12
    (a,
     d,
@@ -185,6 +185,7 @@ module mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_12
         .we(we));
 endmodule
 
+(* ORIG_REF_NAME = "dist_mem_gen_v8_0_12_synth" *) 
 module mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_12_synth
    (qdpo,
     a,
@@ -219,6 +220,7 @@ module mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_12_synth
         .we(we));
 endmodule
 
+(* ORIG_REF_NAME = "sdpram" *) 
 module mcu_dist_mem_gen_0_0_sdpram
    (qdpo,
     a,
@@ -241,6 +243,7 @@ module mcu_dist_mem_gen_0_0_sdpram
   wire [7:0]d;
   wire [7:0]d_reg;
   wire [3:0]dpra;
+  wire [7:0]\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] ;
   wire qdpo_clk;
   (* RTL_KEEP = "true" *) wire [7:0]qsdpo_int;
   wire [7:0]sdpo_int;
@@ -332,6 +335,70 @@ module mcu_dist_mem_gen_0_0_sdpram
         .D(d[7]),
         .Q(d_reg[7]),
         .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][0] 
+       (.C(qdpo_clk),
+        .CE(1'b1),
+        .D(sdpo_int[0]),
+        .Q(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [0]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][1] 
+       (.C(qdpo_clk),
+        .CE(1'b1),
+        .D(sdpo_int[1]),
+        .Q(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [1]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][2] 
+       (.C(qdpo_clk),
+        .CE(1'b1),
+        .D(sdpo_int[2]),
+        .Q(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [2]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][3] 
+       (.C(qdpo_clk),
+        .CE(1'b1),
+        .D(sdpo_int[3]),
+        .Q(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [3]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][4] 
+       (.C(qdpo_clk),
+        .CE(1'b1),
+        .D(sdpo_int[4]),
+        .Q(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [4]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][5] 
+       (.C(qdpo_clk),
+        .CE(1'b1),
+        .D(sdpo_int[5]),
+        .Q(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [5]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][6] 
+       (.C(qdpo_clk),
+        .CE(1'b1),
+        .D(sdpo_int[6]),
+        .Q(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [6]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1][7] 
+       (.C(qdpo_clk),
+        .CE(1'b1),
+        .D(sdpo_int[7]),
+        .Q(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [7]),
+        .R(1'b0));
   (* KEEP = "yes" *) 
   (* equivalent_register_removal = "no" *) 
   FDRE #(
@@ -339,7 +406,7 @@ module mcu_dist_mem_gen_0_0_sdpram
     \qsdpo_int_reg[0] 
        (.C(qdpo_clk),
         .CE(1'b1),
-        .D(sdpo_int[0]),
+        .D(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [0]),
         .Q(qsdpo_int[0]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -349,7 +416,7 @@ module mcu_dist_mem_gen_0_0_sdpram
     \qsdpo_int_reg[1] 
        (.C(qdpo_clk),
         .CE(1'b1),
-        .D(sdpo_int[1]),
+        .D(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [1]),
         .Q(qsdpo_int[1]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -359,7 +426,7 @@ module mcu_dist_mem_gen_0_0_sdpram
     \qsdpo_int_reg[2] 
        (.C(qdpo_clk),
         .CE(1'b1),
-        .D(sdpo_int[2]),
+        .D(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [2]),
         .Q(qsdpo_int[2]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -369,7 +436,7 @@ module mcu_dist_mem_gen_0_0_sdpram
     \qsdpo_int_reg[3] 
        (.C(qdpo_clk),
         .CE(1'b1),
-        .D(sdpo_int[3]),
+        .D(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [3]),
         .Q(qsdpo_int[3]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -379,7 +446,7 @@ module mcu_dist_mem_gen_0_0_sdpram
     \qsdpo_int_reg[4] 
        (.C(qdpo_clk),
         .CE(1'b1),
-        .D(sdpo_int[4]),
+        .D(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [4]),
         .Q(qsdpo_int[4]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -389,7 +456,7 @@ module mcu_dist_mem_gen_0_0_sdpram
     \qsdpo_int_reg[5] 
        (.C(qdpo_clk),
         .CE(1'b1),
-        .D(sdpo_int[5]),
+        .D(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [5]),
         .Q(qsdpo_int[5]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -399,7 +466,7 @@ module mcu_dist_mem_gen_0_0_sdpram
     \qsdpo_int_reg[6] 
        (.C(qdpo_clk),
         .CE(1'b1),
-        .D(sdpo_int[6]),
+        .D(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [6]),
         .Q(qsdpo_int[6]),
         .R(1'b0));
   (* KEEP = "yes" *) 
@@ -409,7 +476,7 @@ module mcu_dist_mem_gen_0_0_sdpram
     \qsdpo_int_reg[7] 
        (.C(qdpo_clk),
         .CE(1'b1),
-        .D(sdpo_int[7]),
+        .D(\g_pipeline.g_pipe_registers[1].qsdpo_pipe_reg[1] [7]),
         .Q(qsdpo_int[7]),
         .R(1'b0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
