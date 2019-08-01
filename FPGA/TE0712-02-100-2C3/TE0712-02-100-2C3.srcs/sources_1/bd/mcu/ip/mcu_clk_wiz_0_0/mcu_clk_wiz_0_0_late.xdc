@@ -1,5 +1,5 @@
 
-# file: mcu_clk_wiz_0_0.xdc
+# file: mcu_clk_wiz_0_0_late.xdc
 # 
 # (c) Copyright 2008 - 2013 Xilinx, Inc. All rights reserved.
 # 
@@ -48,14 +48,7 @@
 # PART OF THIS FILE AT ALL TIMES.
 # 
 
-# Input clock periods. These duplicate the values entered for the
-# input clocks. You can use these to time your system. If required
-# commented constraints can be used in the top level xdc 
-#----------------------------------------------------------------
-# Differential clock only needs one constraint
-create_clock -period 31.250 [get_ports clk_in1_p]
-set_input_jitter [get_clocks -of_objects [get_ports clk_in1_p]] 0.3125
-
-
 set_false_path -to [get_cells  -hier {*seq_reg*[0]} -filter {is_sequential}]
-set_property PHASESHIFT_MODE WAVEFORM [get_cells -hierarchical *adv*]
+
+
+
