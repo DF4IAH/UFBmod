@@ -33,13 +33,13 @@ set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 6.000 [get_p
 
 
 # From Transeiver LVDS RX (DDR 32 MHz) to FPGA fabric (100 MHz)
-set_false_path -from [get_clocks clk_32_lvds_in_mcu_clk_wiz_0_0] -to [get_clocks clk_pll_i]
-set_false_path -from [get_clocks clk_32_lvds_in_mcu_clk_wiz_0_0] -to [get_clocks clk_pll_i_1]
+#set_false_path -from [get_clocks clk_32_lvds_in_mcu_clk_wiz_0_0] -to [get_clocks clk_pll_i]
+#set_false_path -from [get_clocks clk_32_lvds_in_mcu_clk_wiz_0_0] -to [get_clocks clk_pll_i_1]
 
 
 # From FPGA fabric (100 MHz) to LVDS of Transceiver (DDR 32 MHz)
-set_false_path -from [get_clocks clk_pll_i] -to [get_clocks clk_32_lvds_out_mcu_clk_wiz_0_0]
-set_false_path -from [get_clocks clk_pll_i_1] -to [get_clocks clk_32_lvds_out_mcu_clk_wiz_0_0]
+#set_false_path -from [get_clocks clk_pll_i] -to [get_clocks clk_32_lvds_out_mcu_clk_wiz_0_0]
+#set_false_path -from [get_clocks clk_pll_i_1] -to [get_clocks clk_32_lvds_out_mcu_clk_wiz_0_0]
 
 
 set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks clkfbout_mcu_clk_wiz_1_0] -group [get_clocks -include_generated_clocks clkfbout_mcu_clk_wiz_1_0_1]
@@ -83,3 +83,9 @@ set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clo
 set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_7] -group [get_clocks -include_generated_clocks oserdes_clkdiv_15]
 
 set_clock_groups -logically_exclusive -group [get_clocks -include_generated_clocks {freq_refclk_1 mem_refclk_1 pll_clk3_out_1 pll_clkfbout_1 sync_pulse_1}] -group [get_clocks -include_generated_clocks {freq_refclk mem_refclk pll_clk3_out pll_clkfbout sync_pulse}]
+
+set_clock_groups -asynchronous -group [get_clocks clk_pll_i] -group [get_clocks clk_32_lvds_mcu_clk_wiz_0_0]
+set_clock_groups -asynchronous -group [get_clocks clk_pll_i_1] -group [get_clocks clk_32_lvds_mcu_clk_wiz_0_0]
+set_clock_groups -asynchronous -group [get_clocks clk_32_lvds_mcu_clk_wiz_0_0] -group [get_clocks clk_pll_i]
+set_clock_groups -asynchronous -group [get_clocks clk_32_lvds_mcu_clk_wiz_0_0] -group [get_clocks clk_pll_i_1]
+
