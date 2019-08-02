@@ -243,6 +243,16 @@
 -makelib xcelium_lib/c_reg_fd_v12_0_5 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/cbdd/hdl/c_reg_fd_v12_0_vh_rfs.vhd" \
 -endlib
+-makelib xcelium_lib/c_mux_bit_v12_0_5 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/512a/hdl/c_mux_bit_v12_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/c_shift_ram_v12_0_12 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/a9d0/hdl/c_shift_ram_v12_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_c_shift_ram_0_0/sim/mcu_c_shift_ram_0_0.vhd" \
+  "../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_0/sim/mcu_clk_32mhz_locked_sr_0.vhd" \
+-endlib
 -makelib xcelium_lib/xbip_dsp48_wrapper_v3_0_4 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/cdbf/hdl/xbip_dsp48_wrapper_v3_0_vh_rfs.vhd" \
 -endlib
@@ -259,18 +269,6 @@
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/6b5f/hdl/c_addsub_v12_0_vh_rfs.vhd" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_LVDS_rst_delay_inv_0/sim/mcu_LVDS_rst_delay_inv_0.vhd" \
--endlib
--makelib xcelium_lib/c_mux_bit_v12_0_5 \
-  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/512a/hdl/c_mux_bit_v12_0_vh_rfs.vhd" \
--endlib
--makelib xcelium_lib/c_shift_ram_v12_0_12 \
-  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/a9d0/hdl/c_shift_ram_v12_0_vh_rfs.vhd" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_c_shift_ram_0_0/sim/mcu_c_shift_ram_0_0.vhd" \
-  "../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_inv_0/sim/mcu_clk_32mhz_locked_sr_inv_0.vhd" \
-  "../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_0/sim/mcu_clk_32mhz_locked_sr_0.vhd" \
   "../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_clkReset_inv_0/sim/mcu_clk_32mhz_locked_sr_clkReset_inv_0.vhd" \
 -endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_18 \

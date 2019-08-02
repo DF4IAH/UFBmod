@@ -509,41 +509,41 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.CLKIN1_JITTER_PS {312.5} \
    CONFIG.CLKOUT1_DRIVES {BUFGCE} \
-   CONFIG.CLKOUT1_JITTER {291.105} \
-   CONFIG.CLKOUT1_PHASE_ERROR {203.212} \
+   CONFIG.CLKOUT1_JITTER {287.722} \
+   CONFIG.CLKOUT1_PHASE_ERROR {201.345} \
    CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {32} \
    CONFIG.CLKOUT2_DRIVES {BUFGCE} \
-   CONFIG.CLKOUT2_JITTER {429.931} \
-   CONFIG.CLKOUT2_PHASE_ERROR {203.212} \
+   CONFIG.CLKOUT2_JITTER {427.738} \
+   CONFIG.CLKOUT2_PHASE_ERROR {201.345} \
    CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {8} \
    CONFIG.CLKOUT2_USED {true} \
    CONFIG.CLKOUT3_DRIVES {BUFGCE} \
    CONFIG.CLKOUT3_JITTER {291.105} \
    CONFIG.CLKOUT3_PHASE_ERROR {203.212} \
    CONFIG.CLKOUT3_REQUESTED_OUT_FREQ {32} \
-   CONFIG.CLKOUT3_USED {true} \
+   CONFIG.CLKOUT3_USED {false} \
    CONFIG.CLKOUT4_DRIVES {BUFGCE} \
    CONFIG.CLKOUT4_JITTER {429.931} \
    CONFIG.CLKOUT4_PHASE_ERROR {203.212} \
    CONFIG.CLKOUT4_REQUESTED_OUT_FREQ {8} \
-   CONFIG.CLKOUT4_USED {true} \
+   CONFIG.CLKOUT4_USED {false} \
    CONFIG.CLKOUT5_DRIVES {BUFGCE} \
    CONFIG.CLKOUT6_DRIVES {BUFGCE} \
    CONFIG.CLKOUT7_DRIVES {BUFGCE} \
-   CONFIG.CLK_OUT1_PORT {clk_32_lvds_in} \
-   CONFIG.CLK_OUT2_PORT {clk_8_lvds_in} \
+   CONFIG.CLK_OUT1_PORT {clk_32_lvds} \
+   CONFIG.CLK_OUT2_PORT {clk_div_8_lvds} \
    CONFIG.CLK_OUT3_PORT {clk_32_lvds_out} \
    CONFIG.CLK_OUT4_PORT {clk_8_lvds_out} \
    CONFIG.FEEDBACK_SOURCE {FDBK_AUTO} \
-   CONFIG.MMCM_CLKFBOUT_MULT_F {31.000} \
+   CONFIG.MMCM_CLKFBOUT_MULT_F {31.250} \
    CONFIG.MMCM_CLKIN1_PERIOD {31.250} \
    CONFIG.MMCM_CLKIN2_PERIOD {10.0} \
-   CONFIG.MMCM_CLKOUT0_DIVIDE_F {31.000} \
-   CONFIG.MMCM_CLKOUT1_DIVIDE {124} \
-   CONFIG.MMCM_CLKOUT2_DIVIDE {31} \
-   CONFIG.MMCM_CLKOUT3_DIVIDE {124} \
+   CONFIG.MMCM_CLKOUT0_DIVIDE_F {31.250} \
+   CONFIG.MMCM_CLKOUT1_DIVIDE {125} \
+   CONFIG.MMCM_CLKOUT2_DIVIDE {1} \
+   CONFIG.MMCM_CLKOUT3_DIVIDE {1} \
    CONFIG.MMCM_DIVCLK_DIVIDE {1} \
-   CONFIG.NUM_OUT_CLKS {4} \
+   CONFIG.NUM_OUT_CLKS {2} \
    CONFIG.PRIM_IN_FREQ {32} \
    CONFIG.PRIM_SOURCE {Differential_clock_capable_pin} \
    CONFIG.USE_LOCKED {true} \
@@ -568,63 +568,27 @@ proc create_root_design { parentCell } {
    CONFIG.SSET {false} \
  ] $clk_32mhz_locked_inv
 
-  # Create instance: clk_32mhz_locked_sr_clkReset, and set properties
-  set clk_32mhz_locked_sr_clkReset [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 clk_32mhz_locked_sr_clkReset ]
+  # Create instance: clk_32mhz_locked_inv_sr_clkReset, and set properties
+  set clk_32mhz_locked_inv_sr_clkReset [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 clk_32mhz_locked_inv_sr_clkReset ]
   set_property -dict [ list \
-   CONFIG.AsyncInitVal {0} \
-   CONFIG.DefaultData {0} \
-   CONFIG.Depth {34} \
-   CONFIG.SSET {false} \
+   CONFIG.AsyncInitVal {1} \
+   CONFIG.DefaultData {1} \
+   CONFIG.Depth {6} \
+   CONFIG.SSET {true} \
    CONFIG.SyncInitVal {0} \
    CONFIG.Width {1} \
- ] $clk_32mhz_locked_sr_clkReset
+ ] $clk_32mhz_locked_inv_sr_clkReset
 
-  # Create instance: clk_32mhz_locked_sr_clkReset_inv, and set properties
-  set clk_32mhz_locked_sr_clkReset_inv [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_addsub:12.0 clk_32mhz_locked_sr_clkReset_inv ]
+  # Create instance: clk_32mhz_locked_inv_sr_ioReset, and set properties
+  set clk_32mhz_locked_inv_sr_ioReset [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 clk_32mhz_locked_inv_sr_ioReset ]
   set_property -dict [ list \
-   CONFIG.A_Type {Unsigned} \
-   CONFIG.A_Width {1} \
-   CONFIG.Add_Mode {Add} \
-   CONFIG.B_Constant {true} \
-   CONFIG.B_Type {Unsigned} \
-   CONFIG.B_Value {1} \
-   CONFIG.B_Width {1} \
-   CONFIG.CE {false} \
-   CONFIG.Latency {1} \
-   CONFIG.Latency_Configuration {Automatic} \
-   CONFIG.Out_Width {1} \
-   CONFIG.SCLR {false} \
+   CONFIG.AsyncInitVal {1} \
+   CONFIG.DefaultData {1} \
+   CONFIG.Depth {24} \
    CONFIG.SSET {true} \
- ] $clk_32mhz_locked_sr_clkReset_inv
-
-  # Create instance: clk_32mhz_locked_sr_ioReset, and set properties
-  set clk_32mhz_locked_sr_ioReset [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 clk_32mhz_locked_sr_ioReset ]
-  set_property -dict [ list \
-   CONFIG.AsyncInitVal {0} \
-   CONFIG.DefaultData {0} \
-   CONFIG.Depth {84} \
-   CONFIG.SSET {false} \
    CONFIG.SyncInitVal {0} \
    CONFIG.Width {1} \
- ] $clk_32mhz_locked_sr_ioReset
-
-  # Create instance: clk_32mhz_locked_sr_ioReset_inv, and set properties
-  set clk_32mhz_locked_sr_ioReset_inv [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_addsub:12.0 clk_32mhz_locked_sr_ioReset_inv ]
-  set_property -dict [ list \
-   CONFIG.A_Type {Unsigned} \
-   CONFIG.A_Width {1} \
-   CONFIG.Add_Mode {Add} \
-   CONFIG.B_Constant {true} \
-   CONFIG.B_Type {Unsigned} \
-   CONFIG.B_Value {1} \
-   CONFIG.B_Width {1} \
-   CONFIG.CE {false} \
-   CONFIG.Latency {1} \
-   CONFIG.Latency_Configuration {Automatic} \
-   CONFIG.Out_Width {1} \
-   CONFIG.SCLR {false} \
-   CONFIG.SSET {true} \
- ] $clk_32mhz_locked_sr_ioReset_inv
+ ] $clk_32mhz_locked_inv_sr_ioReset
 
   # Create instance: clk_wiz_ftdi_12mhz, and set properties
   set clk_wiz_ftdi_12mhz [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_ftdi_12mhz ]
@@ -839,21 +803,17 @@ proc create_root_design { parentCell } {
   connect_bd_net -net ARESETN_1 [get_bd_pins microblaze_0_axi_periph/ARESETN] [get_bd_pins microblaze_0_axi_periph/M00_ARESETN] [get_bd_pins microblaze_0_axi_periph/M01_ARESETN] [get_bd_pins microblaze_0_axi_periph/S00_ARESETN] [get_bd_pins microblaze_0_axi_periph/S01_ARESETN] [get_bd_pins microblaze_0_axi_periph/S02_ARESETN] [get_bd_pins microblaze_0_axi_periph/S03_ARESETN] [get_bd_pins rst_clk_wiz_1_50mhz/interconnect_aresetn]
   connect_bd_net -net UART_rxd_0_1 [get_bd_ports ufb_fpga_ft_txd] [get_bd_pins microblaze_mcs_0/UART_rxd]
   connect_bd_net -net aux_reset_in_0_1 [get_bd_ports reset] [get_bd_pins rst_clk_wiz_1_50mhz/aux_reset_in]
-  connect_bd_net -net c_counter_binary_0_THRESH0 [get_bd_pins LVDS_in/io_reset] [get_bd_pins LVDS_out/io_reset] [get_bd_pins clk_32mhz_locked_sr_ioReset_inv/S]
-  connect_bd_net -net c_shift_ram_0_Q [get_bd_pins clk_32mhz_locked_sr_ioReset/Q] [get_bd_pins clk_32mhz_locked_sr_ioReset_inv/A]
-  connect_bd_net -net clk_32mhz_LVDS_clk_8_lvds_in [get_bd_pins LVDS_in/clk_div_in] [get_bd_pins clk_32mhz_LVDS/clk_8_lvds_in]
-  connect_bd_net -net clk_32mhz_LVDS_clk_8_lvds_out [get_bd_pins LVDS_out/clk_div_in] [get_bd_pins clk_32mhz_LVDS/clk_8_lvds_out]
-  connect_bd_net -net clk_32mhz_locked_inv_S [get_bd_pins LVDS_out/clk_reset] [get_bd_pins clk_32mhz_locked_sr_clkReset_inv/S]
-  connect_bd_net -net clk_32mhz_locked_inv_S1 [get_bd_pins clk_32mhz_locked_inv/S] [get_bd_pins clk_32mhz_locked_sr_clkReset_inv/SSET] [get_bd_pins clk_32mhz_locked_sr_ioReset_inv/SSET]
-  connect_bd_net -net clk_32mhz_locked_sr_clkReset_Q [get_bd_pins clk_32mhz_locked_sr_clkReset/Q] [get_bd_pins clk_32mhz_locked_sr_clkReset_inv/A]
-  connect_bd_net -net clk_wiz_0_32mhz_locked [get_bd_pins clk_32mhz_LVDS/locked] [get_bd_pins clk_32mhz_locked_inv/A] [get_bd_pins clk_32mhz_locked_sr_clkReset/D] [get_bd_pins clk_32mhz_locked_sr_ioReset/D]
-  connect_bd_net -net clk_wiz_0_clk_32_lvds_in [get_bd_pins LVDS_in/clk_in] [get_bd_pins clk_32mhz_LVDS/clk_32_lvds_in] [get_bd_pins sync_LVDS_in/clk]
-  connect_bd_net -net clk_wiz_0_clk_32_lvds_out [get_bd_pins LVDS_out/clk_in] [get_bd_pins clk_32mhz_LVDS/clk_32_lvds_out] [get_bd_pins sync_LVDS_out/qdpo_clk]
+  connect_bd_net -net c_counter_binary_0_THRESH0 [get_bd_pins LVDS_in/io_reset] [get_bd_pins LVDS_out/io_reset] [get_bd_pins clk_32mhz_locked_inv_sr_ioReset/Q]
+  connect_bd_net -net clk_32mhz_LVDS_clk_div_8_lvds [get_bd_pins LVDS_in/clk_div_in] [get_bd_pins LVDS_out/clk_div_in] [get_bd_pins clk_32mhz_LVDS/clk_div_8_lvds] [get_bd_pins clk_32mhz_locked_inv_sr_clkReset/CLK] [get_bd_pins clk_32mhz_locked_inv_sr_ioReset/CLK]
+  connect_bd_net -net clk_32mhz_locked_inv_S [get_bd_pins clk_32mhz_locked_inv/S] [get_bd_pins clk_32mhz_locked_inv_sr_clkReset/D] [get_bd_pins clk_32mhz_locked_inv_sr_clkReset/SSET] [get_bd_pins clk_32mhz_locked_inv_sr_ioReset/D] [get_bd_pins clk_32mhz_locked_inv_sr_ioReset/SSET]
+  connect_bd_net -net clk_32mhz_locked_inv_sr_clkReset_Q [get_bd_pins LVDS_out/clk_reset] [get_bd_pins clk_32mhz_locked_inv_sr_clkReset/Q]
+  connect_bd_net -net clk_wiz_0_32mhz_locked [get_bd_pins clk_32mhz_LVDS/locked] [get_bd_pins clk_32mhz_locked_inv/A]
+  connect_bd_net -net clk_wiz_0_clk_32_lvds_out [get_bd_pins LVDS_in/clk_in] [get_bd_pins LVDS_out/clk_in] [get_bd_pins clk_32mhz_LVDS/clk_32_lvds] [get_bd_pins clk_32mhz_locked_inv/CLK] [get_bd_pins sync_LVDS_in/clk] [get_bd_pins sync_LVDS_out/qdpo_clk]
   connect_bd_net -net clk_wiz_ftdi_12mhz_clk_12mhz [get_bd_ports ufb_fpga_ft_12mhz] [get_bd_pins clk_wiz_ftdi_12mhz/clk_12mhz]
   connect_bd_net -net dist_mem_gen_lvds_in_qdpo [get_bd_pins microblaze_mcs_0/GPIO1_tri_i] [get_bd_pins sync_LVDS_in/qdpo]
   connect_bd_net -net dist_mem_gen_lvds_out_qdpo [get_bd_pins LVDS_out/data_out_from_device] [get_bd_pins sync_LVDS_out/qdpo]
   connect_bd_net -net mdm_1_debug_sys_rst [get_bd_pins mdm_1/Debug_SYS_Rst] [get_bd_pins rst_clk_wiz_1_50mhz/mb_debug_sys_rst]
-  connect_bd_net -net microblaze_0_Clk [get_bd_pins clk_32mhz_locked_inv/CLK] [get_bd_pins clk_32mhz_locked_sr_clkReset/CLK] [get_bd_pins clk_32mhz_locked_sr_clkReset_inv/CLK] [get_bd_pins clk_32mhz_locked_sr_ioReset/CLK] [get_bd_pins clk_32mhz_locked_sr_ioReset_inv/CLK] [get_bd_pins clk_wiz_ftdi_12mhz/clk_in1] [get_bd_pins mdm_1/M_AXI_ACLK] [get_bd_pins microblaze_0/Clk] [get_bd_pins microblaze_0_axi_intc/processor_clk] [get_bd_pins microblaze_0_axi_intc/s_axi_aclk] [get_bd_pins microblaze_0_axi_periph/ACLK] [get_bd_pins microblaze_0_axi_periph/M00_ACLK] [get_bd_pins microblaze_0_axi_periph/M01_ACLK] [get_bd_pins microblaze_0_axi_periph/S00_ACLK] [get_bd_pins microblaze_0_axi_periph/S01_ACLK] [get_bd_pins microblaze_0_axi_periph/S02_ACLK] [get_bd_pins microblaze_0_axi_periph/S03_ACLK] [get_bd_pins microblaze_0_local_memory/LMB_Clk] [get_bd_pins microblaze_mcs_0/Clk] [get_bd_pins mig_7series_0/ui_clk] [get_bd_pins rst_clk_wiz_1_50mhz/slowest_sync_clk] [get_bd_pins sync_LVDS_in/qdpo_clk] [get_bd_pins sync_LVDS_out/clk]
+  connect_bd_net -net microblaze_0_Clk [get_bd_pins clk_wiz_ftdi_12mhz/clk_in1] [get_bd_pins mdm_1/M_AXI_ACLK] [get_bd_pins microblaze_0/Clk] [get_bd_pins microblaze_0_axi_intc/processor_clk] [get_bd_pins microblaze_0_axi_intc/s_axi_aclk] [get_bd_pins microblaze_0_axi_periph/ACLK] [get_bd_pins microblaze_0_axi_periph/M00_ACLK] [get_bd_pins microblaze_0_axi_periph/M01_ACLK] [get_bd_pins microblaze_0_axi_periph/S00_ACLK] [get_bd_pins microblaze_0_axi_periph/S01_ACLK] [get_bd_pins microblaze_0_axi_periph/S02_ACLK] [get_bd_pins microblaze_0_axi_periph/S03_ACLK] [get_bd_pins microblaze_0_local_memory/LMB_Clk] [get_bd_pins microblaze_mcs_0/Clk] [get_bd_pins mig_7series_0/ui_clk] [get_bd_pins rst_clk_wiz_1_50mhz/slowest_sync_clk] [get_bd_pins sync_LVDS_in/qdpo_clk] [get_bd_pins sync_LVDS_out/clk]
   connect_bd_net -net microblaze_0_intr [get_bd_pins microblaze_0_axi_intc/intr] [get_bd_pins microblaze_0_xlconcat/dout]
   connect_bd_net -net microblaze_mcs_0_FIT1_Interrupt [get_bd_pins microblaze_0_xlconcat/In2] [get_bd_pins microblaze_mcs_0/FIT1_Interrupt]
   connect_bd_net -net microblaze_mcs_0_GPIO1_tri_o [get_bd_pins microblaze_mcs_0/GPIO1_tri_o] [get_bd_pins sync_LVDS_out/d]

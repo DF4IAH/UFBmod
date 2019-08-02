@@ -24,13 +24,13 @@ vlib modelsim_lib/msim/xlconstant_v1_1_5
 vlib modelsim_lib/msim/dist_mem_gen_v8_0_12
 vlib modelsim_lib/msim/xbip_utils_v3_0_9
 vlib modelsim_lib/msim/c_reg_fd_v12_0_5
+vlib modelsim_lib/msim/c_mux_bit_v12_0_5
+vlib modelsim_lib/msim/c_shift_ram_v12_0_12
 vlib modelsim_lib/msim/xbip_dsp48_wrapper_v3_0_4
 vlib modelsim_lib/msim/xbip_pipe_v3_0_5
 vlib modelsim_lib/msim/xbip_dsp48_addsub_v3_0_5
 vlib modelsim_lib/msim/xbip_addsub_v3_0_5
 vlib modelsim_lib/msim/c_addsub_v12_0_12
-vlib modelsim_lib/msim/c_mux_bit_v12_0_5
-vlib modelsim_lib/msim/c_shift_ram_v12_0_12
 vlib modelsim_lib/msim/axi_protocol_converter_v2_1_18
 
 vmap xil_defaultlib modelsim_lib/msim/xil_defaultlib
@@ -56,13 +56,13 @@ vmap xlconstant_v1_1_5 modelsim_lib/msim/xlconstant_v1_1_5
 vmap dist_mem_gen_v8_0_12 modelsim_lib/msim/dist_mem_gen_v8_0_12
 vmap xbip_utils_v3_0_9 modelsim_lib/msim/xbip_utils_v3_0_9
 vmap c_reg_fd_v12_0_5 modelsim_lib/msim/c_reg_fd_v12_0_5
+vmap c_mux_bit_v12_0_5 modelsim_lib/msim/c_mux_bit_v12_0_5
+vmap c_shift_ram_v12_0_12 modelsim_lib/msim/c_shift_ram_v12_0_12
 vmap xbip_dsp48_wrapper_v3_0_4 modelsim_lib/msim/xbip_dsp48_wrapper_v3_0_4
 vmap xbip_pipe_v3_0_5 modelsim_lib/msim/xbip_pipe_v3_0_5
 vmap xbip_dsp48_addsub_v3_0_5 modelsim_lib/msim/xbip_dsp48_addsub_v3_0_5
 vmap xbip_addsub_v3_0_5 modelsim_lib/msim/xbip_addsub_v3_0_5
 vmap c_addsub_v12_0_12 modelsim_lib/msim/c_addsub_v12_0_12
-vmap c_mux_bit_v12_0_5 modelsim_lib/msim/c_mux_bit_v12_0_5
-vmap c_shift_ram_v12_0_12 modelsim_lib/msim/c_shift_ram_v12_0_12
 vmap axi_protocol_converter_v2_1_18 modelsim_lib/msim/axi_protocol_converter_v2_1_18
 
 vlog -work xil_defaultlib -64 -incr -sv "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/85a3" \
@@ -310,6 +310,16 @@ vcom -work xbip_utils_v3_0_9 -64 -93 \
 vcom -work c_reg_fd_v12_0_5 -64 -93 \
 "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/cbdd/hdl/c_reg_fd_v12_0_vh_rfs.vhd" \
 
+vcom -work c_mux_bit_v12_0_5 -64 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/512a/hdl/c_mux_bit_v12_0_vh_rfs.vhd" \
+
+vcom -work c_shift_ram_v12_0_12 -64 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/a9d0/hdl/c_shift_ram_v12_0_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/mcu/ip/mcu_c_shift_ram_0_0/sim/mcu_c_shift_ram_0_0.vhd" \
+"../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_0/sim/mcu_clk_32mhz_locked_sr_0.vhd" \
+
 vcom -work xbip_dsp48_wrapper_v3_0_4 -64 -93 \
 "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/cdbf/hdl/xbip_dsp48_wrapper_v3_0_vh_rfs.vhd" \
 
@@ -326,18 +336,6 @@ vcom -work c_addsub_v12_0_12 -64 -93 \
 "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/6b5f/hdl/c_addsub_v12_0_vh_rfs.vhd" \
 
 vcom -work xil_defaultlib -64 -93 \
-"../../../bd/mcu/ip/mcu_LVDS_rst_delay_inv_0/sim/mcu_LVDS_rst_delay_inv_0.vhd" \
-
-vcom -work c_mux_bit_v12_0_5 -64 -93 \
-"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/512a/hdl/c_mux_bit_v12_0_vh_rfs.vhd" \
-
-vcom -work c_shift_ram_v12_0_12 -64 -93 \
-"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/a9d0/hdl/c_shift_ram_v12_0_vh_rfs.vhd" \
-
-vcom -work xil_defaultlib -64 -93 \
-"../../../bd/mcu/ip/mcu_c_shift_ram_0_0/sim/mcu_c_shift_ram_0_0.vhd" \
-"../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_inv_0/sim/mcu_clk_32mhz_locked_sr_inv_0.vhd" \
-"../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_0/sim/mcu_clk_32mhz_locked_sr_0.vhd" \
 "../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_clkReset_inv_0/sim/mcu_clk_32mhz_locked_sr_clkReset_inv_0.vhd" \
 
 vlog -work axi_protocol_converter_v2_1_18 -64 -incr "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/85a3" \

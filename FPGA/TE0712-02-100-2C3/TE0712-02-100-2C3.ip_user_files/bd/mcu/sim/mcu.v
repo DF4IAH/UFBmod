@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Fri Aug  2 19:46:12 2019
+//Date        : Fri Aug  2 23:08:35 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -581,7 +581,7 @@ module m01_couplers_imp_AFYY8F
   assign m01_couplers_to_m01_couplers_WVALID = S_AXI_wvalid;
 endmodule
 
-(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=38,numReposBlks=30,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_mb_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
+(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=36,numReposBlks=28,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_mb_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
 module mcu
    (DDR3_SDRAM_addr,
     DDR3_SDRAM_ba,
@@ -630,15 +630,15 @@ module mcu
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM RESET_N" *) output DDR3_SDRAM_reset_n;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM WE_N" *) output DDR3_SDRAM_we_n;
   output init_calib_complete;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PLL_CLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PLL_CLK_N, CLK_DOMAIN mcu_clk_ref_n_0, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input pll_clk_n;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PLL_CLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PLL_CLK_P, ASSOCIATED_RESET sys_rst, CLK_DOMAIN mcu_clk_ref_p_0, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input pll_clk_p;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PLL_CLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PLL_CLK_N, CLK_DOMAIN mcu_pll_clk_n, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input pll_clk_n;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PLL_CLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PLL_CLK_P, ASSOCIATED_RESET sys_rst, CLK_DOMAIN mcu_pll_clk_p, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input pll_clk_p;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input reset;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.SYS_RST RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.SYS_RST, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input sys_rst;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_FPGA_FT_12MHZ CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_FPGA_FT_12MHZ, CLK_DOMAIN /clk_wiz_ftdi_12mhz_clk_out1, FREQ_HZ 12000000, INSERT_VIP 0, PHASE 0.0" *) output ufb_fpga_ft_12mhz;
   output ufb_fpga_ft_rxd;
   input ufb_fpga_ft_txd;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_TRX_RXCLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_TRX_RXCLK_N, CLK_DOMAIN mcu_clk_in_n_0, FREQ_HZ 32000000, INSERT_VIP 0, PHASE 0.000" *) input ufb_trx_rxclk_n;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_TRX_RXCLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_TRX_RXCLK_P, CLK_DOMAIN mcu_clk_in_p_0, FREQ_HZ 32000000, INSERT_VIP 0, PHASE 0.000" *) input ufb_trx_rxclk_p;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_TRX_RXCLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_TRX_RXCLK_N, CLK_DOMAIN mcu_ufb_trx_rxclk_n, FREQ_HZ 32000000, INSERT_VIP 0, PHASE 0.000" *) input ufb_trx_rxclk_n;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_TRX_RXCLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_TRX_RXCLK_P, CLK_DOMAIN mcu_ufb_trx_rxclk_p, FREQ_HZ 32000000, INSERT_VIP 0, PHASE 0.000" *) input ufb_trx_rxclk_p;
   input [0:0]ufb_trx_rxd09_n;
   input [0:0]ufb_trx_rxd09_p;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_TRX_TXCLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_TRX_TXCLK_N, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.000" *) output ufb_trx_txclk_n;
@@ -650,14 +650,10 @@ module mcu
   wire UART_rxd_0_1;
   wire aux_reset_in_0_1;
   wire [0:0]c_counter_binary_0_THRESH0;
-  wire [0:0]c_shift_ram_0_Q;
-  wire clk_32mhz_LVDS_clk_8_lvds_in;
-  wire clk_32mhz_LVDS_clk_8_lvds_out;
+  wire clk_32mhz_LVDS_clk_div_8_lvds;
   wire [0:0]clk_32mhz_locked_inv_S;
-  wire [0:0]clk_32mhz_locked_inv_S1;
-  wire [0:0]clk_32mhz_locked_sr_clkReset_Q;
+  wire [0:0]clk_32mhz_locked_inv_sr_clkReset_Q;
   wire clk_wiz_0_32mhz_locked;
-  wire clk_wiz_0_clk_32_lvds_in;
   wire clk_wiz_0_clk_32_lvds_out;
   wire clk_wiz_ftdi_12mhz_clk_12mhz;
   wire [7:0]dist_mem_gen_lvds_in_qdpo;
@@ -969,16 +965,16 @@ module mcu
   assign ufb_trx_txd_p[0] = selectio_wiz_lvds_out_data_out_to_pins_p;
   mcu_selectio_wiz_1_0 LVDS_in
        (.bitslip(xlconstant_val0_dout),
-        .clk_div_in(clk_32mhz_LVDS_clk_8_lvds_in),
-        .clk_in(clk_wiz_0_clk_32_lvds_in),
+        .clk_div_in(clk_32mhz_LVDS_clk_div_8_lvds),
+        .clk_in(clk_wiz_0_clk_32_lvds_out),
         .data_in_from_pins_n(ufb_trx_rxd09_n_1),
         .data_in_from_pins_p(ufb_trx_rxd09_p_1),
         .data_in_to_device(selectio_wiz_lvds_in_data_in_to_device),
         .io_reset(c_counter_binary_0_THRESH0));
   mcu_selectio_wiz_0_0 LVDS_out
-       (.clk_div_in(clk_32mhz_LVDS_clk_8_lvds_out),
+       (.clk_div_in(clk_32mhz_LVDS_clk_div_8_lvds),
         .clk_in(clk_wiz_0_clk_32_lvds_out),
-        .clk_reset(clk_32mhz_locked_inv_S),
+        .clk_reset(clk_32mhz_locked_inv_sr_clkReset_Q),
         .clk_to_pins_n(selectio_wiz_lvds_out_clk_to_pins_n),
         .clk_to_pins_p(selectio_wiz_lvds_out_clk_to_pins_p),
         .data_out_from_device(dist_mem_gen_lvds_out_qdpo),
@@ -986,36 +982,26 @@ module mcu
         .data_out_to_pins_p(selectio_wiz_lvds_out_data_out_to_pins_p),
         .io_reset(c_counter_binary_0_THRESH0));
   mcu_clk_wiz_0_0 clk_32mhz_LVDS
-       (.clk_32_lvds_in(clk_wiz_0_clk_32_lvds_in),
-        .clk_32_lvds_out(clk_wiz_0_clk_32_lvds_out),
-        .clk_8_lvds_in(clk_32mhz_LVDS_clk_8_lvds_in),
-        .clk_8_lvds_out(clk_32mhz_LVDS_clk_8_lvds_out),
+       (.clk_32_lvds(clk_wiz_0_clk_32_lvds_out),
+        .clk_div_8_lvds(clk_32mhz_LVDS_clk_div_8_lvds),
         .clk_in1_n(ufb_trx_rxclk_n_1),
         .clk_in1_p(ufb_trx_rxclk_p_1),
         .locked(clk_wiz_0_32mhz_locked),
         .reset(rst_clk_wiz_1_100M_bus_struct_reset));
   mcu_clk_32mhz_locked_sr_clkReset_inv_0 clk_32mhz_locked_inv
        (.A(clk_wiz_0_32mhz_locked),
-        .CLK(microblaze_0_Clk),
-        .S(clk_32mhz_locked_inv_S1));
-  mcu_clk_32mhz_locked_sr_0 clk_32mhz_locked_sr_clkReset
-       (.CLK(microblaze_0_Clk),
-        .D(clk_wiz_0_32mhz_locked),
-        .Q(clk_32mhz_locked_sr_clkReset_Q));
-  mcu_clk_32mhz_locked_sr_inv_0 clk_32mhz_locked_sr_clkReset_inv
-       (.A(clk_32mhz_locked_sr_clkReset_Q),
-        .CLK(microblaze_0_Clk),
-        .S(clk_32mhz_locked_inv_S),
-        .SSET(clk_32mhz_locked_inv_S1));
-  mcu_c_shift_ram_0_0 clk_32mhz_locked_sr_ioReset
-       (.CLK(microblaze_0_Clk),
-        .D(clk_wiz_0_32mhz_locked),
-        .Q(c_shift_ram_0_Q));
-  mcu_LVDS_rst_delay_inv_0 clk_32mhz_locked_sr_ioReset_inv
-       (.A(c_shift_ram_0_Q),
-        .CLK(microblaze_0_Clk),
-        .S(c_counter_binary_0_THRESH0),
-        .SSET(clk_32mhz_locked_inv_S1));
+        .CLK(clk_wiz_0_clk_32_lvds_out),
+        .S(clk_32mhz_locked_inv_S));
+  mcu_clk_32mhz_locked_sr_0 clk_32mhz_locked_inv_sr_clkReset
+       (.CLK(clk_32mhz_LVDS_clk_div_8_lvds),
+        .D(clk_32mhz_locked_inv_S),
+        .Q(clk_32mhz_locked_inv_sr_clkReset_Q),
+        .SSET(clk_32mhz_locked_inv_S));
+  mcu_c_shift_ram_0_0 clk_32mhz_locked_inv_sr_ioReset
+       (.CLK(clk_32mhz_LVDS_clk_div_8_lvds),
+        .D(clk_32mhz_locked_inv_S),
+        .Q(c_counter_binary_0_THRESH0),
+        .SSET(clk_32mhz_locked_inv_S));
   mcu_clk_wiz_1_0 clk_wiz_ftdi_12mhz
        (.clk_12mhz(clk_wiz_ftdi_12mhz_clk_12mhz),
         .clk_in1(microblaze_0_Clk),
@@ -1570,7 +1556,7 @@ module mcu
         .slowest_sync_clk(microblaze_0_Clk));
   mcu_dist_mem_gen_0_0 sync_LVDS_in
        (.a(xlconstant_val000_dout),
-        .clk(clk_wiz_0_clk_32_lvds_in),
+        .clk(clk_wiz_0_clk_32_lvds_out),
         .d(selectio_wiz_lvds_in_data_in_to_device),
         .dpra(xlconstant_val000_dout),
         .qdpo(dist_mem_gen_lvds_in_qdpo),

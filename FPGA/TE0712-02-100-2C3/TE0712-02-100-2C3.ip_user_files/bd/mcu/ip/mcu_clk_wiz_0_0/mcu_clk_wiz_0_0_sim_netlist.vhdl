@@ -1,7 +1,7 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Thu Aug  1 21:26:14 2019
+-- Date        : Fri Aug  2 22:05:59 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_clk_wiz_0_0/mcu_clk_wiz_0_0_sim_netlist.vhdl
@@ -16,8 +16,8 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz is
   port (
-    clk_32_lvds_in : out STD_LOGIC;
-    clk_32_lvds_out : out STD_LOGIC;
+    clk_32_lvds : out STD_LOGIC;
+    clk_div_8_lvds : out STD_LOGIC;
     reset : in STD_LOGIC;
     locked : out STD_LOGIC;
     clk_in1_p : in STD_LOGIC;
@@ -28,10 +28,10 @@ entity mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz is
 end mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz;
 
 architecture STRUCTURE of mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz is
-  signal clk_32_lvds_in_mcu_clk_wiz_0_0 : STD_LOGIC;
-  signal clk_32_lvds_in_mcu_clk_wiz_0_0_en_clk : STD_LOGIC;
-  signal clk_32_lvds_out_mcu_clk_wiz_0_0 : STD_LOGIC;
-  signal clk_32_lvds_out_mcu_clk_wiz_0_0_en_clk : STD_LOGIC;
+  signal clk_32_lvds_mcu_clk_wiz_0_0 : STD_LOGIC;
+  signal clk_32_lvds_mcu_clk_wiz_0_0_en_clk : STD_LOGIC;
+  signal clk_div_8_lvds_mcu_clk_wiz_0_0 : STD_LOGIC;
+  signal clk_div_8_lvds_mcu_clk_wiz_0_0_en_clk : STD_LOGIC;
   signal clk_in1_mcu_clk_wiz_0_0 : STD_LOGIC;
   signal clkfbout_buf_mcu_clk_wiz_0_0 : STD_LOGIC;
   signal clkfbout_mcu_clk_wiz_0_0 : STD_LOGIC;
@@ -138,18 +138,18 @@ clkout1_buf: unisim.vcomponents.BUFGCTRL
         port map (
       CE0 => seq_reg1(7),
       CE1 => '0',
-      I0 => clk_32_lvds_in_mcu_clk_wiz_0_0,
+      I0 => clk_32_lvds_mcu_clk_wiz_0_0,
       I1 => '1',
       IGNORE0 => '0',
       IGNORE1 => '1',
-      O => clk_32_lvds_in,
+      O => clk_32_lvds,
       S0 => '1',
       S1 => '0'
     );
 clkout1_buf_en: unisim.vcomponents.BUFH
      port map (
-      I => clk_32_lvds_in_mcu_clk_wiz_0_0,
-      O => clk_32_lvds_in_mcu_clk_wiz_0_0_en_clk
+      I => clk_32_lvds_mcu_clk_wiz_0_0,
+      O => clk_32_lvds_mcu_clk_wiz_0_0_en_clk
     );
 clkout2_buf: unisim.vcomponents.BUFGCTRL
     generic map(
@@ -160,32 +160,32 @@ clkout2_buf: unisim.vcomponents.BUFGCTRL
         port map (
       CE0 => seq_reg2(7),
       CE1 => '0',
-      I0 => clk_32_lvds_out_mcu_clk_wiz_0_0,
+      I0 => clk_div_8_lvds_mcu_clk_wiz_0_0,
       I1 => '1',
       IGNORE0 => '0',
       IGNORE1 => '1',
-      O => clk_32_lvds_out,
+      O => clk_div_8_lvds,
       S0 => '1',
       S1 => '0'
     );
 clkout2_buf_en: unisim.vcomponents.BUFH
      port map (
-      I => clk_32_lvds_out_mcu_clk_wiz_0_0,
-      O => clk_32_lvds_out_mcu_clk_wiz_0_0_en_clk
+      I => clk_div_8_lvds_mcu_clk_wiz_0_0,
+      O => clk_div_8_lvds_mcu_clk_wiz_0_0_en_clk
     );
 mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
     generic map(
       BANDWIDTH => "OPTIMIZED",
-      CLKFBOUT_MULT_F => 31.000000,
+      CLKFBOUT_MULT_F => 31.250000,
       CLKFBOUT_PHASE => 0.000000,
       CLKFBOUT_USE_FINE_PS => false,
       CLKIN1_PERIOD => 31.250000,
       CLKIN2_PERIOD => 0.000000,
-      CLKOUT0_DIVIDE_F => 31.000000,
+      CLKOUT0_DIVIDE_F => 31.250000,
       CLKOUT0_DUTY_CYCLE => 0.500000,
       CLKOUT0_PHASE => 0.000000,
       CLKOUT0_USE_FINE_PS => false,
-      CLKOUT1_DIVIDE => 31,
+      CLKOUT1_DIVIDE => 125,
       CLKOUT1_DUTY_CYCLE => 0.500000,
       CLKOUT1_PHASE => 0.000000,
       CLKOUT1_USE_FINE_PS => false,
@@ -233,9 +233,9 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKIN2 => '0',
       CLKINSEL => '1',
       CLKINSTOPPED => NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED,
-      CLKOUT0 => clk_32_lvds_in_mcu_clk_wiz_0_0,
+      CLKOUT0 => clk_32_lvds_mcu_clk_wiz_0_0,
       CLKOUT0B => NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED,
-      CLKOUT1 => clk_32_lvds_out_mcu_clk_wiz_0_0,
+      CLKOUT1 => clk_div_8_lvds_mcu_clk_wiz_0_0,
       CLKOUT1B => NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED,
       CLKOUT2 => NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED,
       CLKOUT2B => NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED,
@@ -264,7 +264,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_in_mcu_clk_wiz_0_0_en_clk,
+      C => clk_32_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => \^locked\,
@@ -275,7 +275,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_in_mcu_clk_wiz_0_0_en_clk,
+      C => clk_32_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => seq_reg1(0),
@@ -286,7 +286,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_in_mcu_clk_wiz_0_0_en_clk,
+      C => clk_32_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => seq_reg1(1),
@@ -297,7 +297,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_in_mcu_clk_wiz_0_0_en_clk,
+      C => clk_32_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => seq_reg1(2),
@@ -308,7 +308,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_in_mcu_clk_wiz_0_0_en_clk,
+      C => clk_32_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => seq_reg1(3),
@@ -319,7 +319,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_in_mcu_clk_wiz_0_0_en_clk,
+      C => clk_32_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => seq_reg1(4),
@@ -330,7 +330,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_in_mcu_clk_wiz_0_0_en_clk,
+      C => clk_32_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => seq_reg1(5),
@@ -341,7 +341,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_in_mcu_clk_wiz_0_0_en_clk,
+      C => clk_32_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => seq_reg1(6),
@@ -352,7 +352,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_out_mcu_clk_wiz_0_0_en_clk,
+      C => clk_div_8_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => \^locked\,
@@ -363,7 +363,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_out_mcu_clk_wiz_0_0_en_clk,
+      C => clk_div_8_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => seq_reg2(0),
@@ -374,7 +374,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_out_mcu_clk_wiz_0_0_en_clk,
+      C => clk_div_8_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => seq_reg2(1),
@@ -385,7 +385,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_out_mcu_clk_wiz_0_0_en_clk,
+      C => clk_div_8_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => seq_reg2(2),
@@ -396,7 +396,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_out_mcu_clk_wiz_0_0_en_clk,
+      C => clk_div_8_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => seq_reg2(3),
@@ -407,7 +407,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_out_mcu_clk_wiz_0_0_en_clk,
+      C => clk_div_8_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => seq_reg2(4),
@@ -418,7 +418,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_out_mcu_clk_wiz_0_0_en_clk,
+      C => clk_div_8_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => seq_reg2(5),
@@ -429,7 +429,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       INIT => '0'
     )
         port map (
-      C => clk_32_lvds_out_mcu_clk_wiz_0_0_en_clk,
+      C => clk_div_8_lvds_mcu_clk_wiz_0_0_en_clk,
       CE => '1',
       CLR => reset,
       D => seq_reg2(6),
@@ -442,8 +442,8 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity mcu_clk_wiz_0_0 is
   port (
-    clk_32_lvds_in : out STD_LOGIC;
-    clk_32_lvds_out : out STD_LOGIC;
+    clk_32_lvds : out STD_LOGIC;
+    clk_div_8_lvds : out STD_LOGIC;
     reset : in STD_LOGIC;
     locked : out STD_LOGIC;
     clk_in1_p : in STD_LOGIC;
@@ -457,8 +457,8 @@ architecture STRUCTURE of mcu_clk_wiz_0_0 is
 begin
 inst: entity work.mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz
      port map (
-      clk_32_lvds_in => clk_32_lvds_in,
-      clk_32_lvds_out => clk_32_lvds_out,
+      clk_32_lvds => clk_32_lvds,
+      clk_div_8_lvds => clk_div_8_lvds,
       clk_in1_n => clk_in1_n,
       clk_in1_p => clk_in1_p,
       locked => locked,
