@@ -108,7 +108,7 @@ ARCHITECTURE mcu_c_shift_ram_0_0_arch OF mcu_c_shift_ram_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF mcu_c_shift_ram_0_0_arch : ARCHITECTURE IS "mcu_c_shift_ram_0_0,c_shift_ram_v12_0_12,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF mcu_c_shift_ram_0_0_arch: ARCHITECTURE IS "mcu_c_shift_ram_0_0,c_shift_ram_v12_0_12,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=c_shift_ram,x_ipVersion=12.0,x_ipCoreRevision=12,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=artix7,C_VERBOSITY=0,C_WIDTH=1,C_DEPTH=64,C_ADDR_WIDTH=4,C_SHIFT_TYPE=0,C_OPT_GOAL=0,C_AINIT_VAL=0,C_SINIT_VAL=0,C_DEFAULT_DATA=0,C_HAS_A=0,C_HAS_CE=0,C_REG_LAST_BIT=1,C_SYNC_PRIORITY=1,C_SYNC_ENABLE=0,C_HAS_SCLR=0,C_HAS_SSET=0,C_HAS_SINIT=0,C_MEM_INIT_FILE=no_coe_file_loaded,C" & 
+  ATTRIBUTE CORE_GENERATION_INFO OF mcu_c_shift_ram_0_0_arch: ARCHITECTURE IS "mcu_c_shift_ram_0_0,c_shift_ram_v12_0_12,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=c_shift_ram,x_ipVersion=12.0,x_ipCoreRevision=12,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=artix7,C_VERBOSITY=0,C_WIDTH=1,C_DEPTH=84,C_ADDR_WIDTH=4,C_SHIFT_TYPE=0,C_OPT_GOAL=0,C_AINIT_VAL=0,C_SINIT_VAL=0,C_DEFAULT_DATA=0,C_HAS_A=0,C_HAS_CE=0,C_REG_LAST_BIT=1,C_SYNC_PRIORITY=1,C_SYNC_ENABLE=0,C_HAS_SCLR=0,C_HAS_SSET=0,C_HAS_SINIT=0,C_MEM_INIT_FILE=no_coe_file_loaded,C" & 
 "_ELABORATION_DIR=./,C_READ_MIF=0,C_PARSER_TYPE=0}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
@@ -124,7 +124,7 @@ BEGIN
       C_XDEVICEFAMILY => "artix7",
       C_VERBOSITY => 0,
       C_WIDTH => 1,
-      C_DEPTH => 64,
+      C_DEPTH => 84,
       C_ADDR_WIDTH => 4,
       C_SHIFT_TYPE => 0,
       C_OPT_GOAL => 0,

@@ -60,6 +60,7 @@ ENTITY mcu_clk_32mhz_locked_sr_inv_0 IS
   PORT (
     A : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     CLK : IN STD_LOGIC;
+    SSET : IN STD_LOGIC;
     S : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
   );
 END mcu_clk_32mhz_locked_sr_inv_0;
@@ -117,15 +118,18 @@ ARCHITECTURE mcu_clk_32mhz_locked_sr_inv_0_arch OF mcu_clk_32mhz_locked_sr_inv_0
   ATTRIBUTE CHECK_LICENSE_TYPE OF mcu_clk_32mhz_locked_sr_inv_0_arch : ARCHITECTURE IS "mcu_clk_32mhz_locked_sr_inv_0,c_addsub_v12_0_12,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
   ATTRIBUTE CORE_GENERATION_INFO OF mcu_clk_32mhz_locked_sr_inv_0_arch: ARCHITECTURE IS "mcu_clk_32mhz_locked_sr_inv_0,c_addsub_v12_0_12,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=c_addsub,x_ipVersion=12.0,x_ipCoreRevision=12,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_VERBOSITY=0,C_XDEVICEFAMILY=artix7,C_IMPLEMENTATION=0,C_A_WIDTH=1,C_B_WIDTH=1,C_OUT_WIDTH=1,C_CE_OVERRIDES_SCLR=0,C_A_TYPE=1,C_B_TYPE=1,C_LATENCY=1,C_ADD_MODE=0,C_B_CONSTANT=1,C_B_VALUE=1,C_AINIT_VAL=0,C_SINIT_VAL=0,C_CE_OVERRIDES_BYPASS=1,C_BYPASS_LOW=0,C_SCLR_OVERRIDES_SSET=1,C_HAS_C_I" & 
-"N=0,C_HAS_C_OUT=0,C_BORROW_LOW=1,C_HAS_CE=0,C_HAS_BYPASS=0,C_HAS_SCLR=0,C_HAS_SSET=0,C_HAS_SINIT=0}";
+"N=0,C_HAS_C_OUT=0,C_BORROW_LOW=1,C_HAS_CE=0,C_HAS_BYPASS=0,C_HAS_SCLR=0,C_HAS_SSET=1,C_HAS_SINIT=0}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF S: SIGNAL IS "XIL_INTERFACENAME s_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency bitwidth format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type generated dependency signed format bool minimum {} maximum" & 
 " {}} value FALSE}}}} DATA_WIDTH 1}";
   ATTRIBUTE X_INTERFACE_INFO OF S: SIGNAL IS "xilinx.com:signal:data:1.0 s_intf DATA";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF SSET: SIGNAL IS "XIL_INTERFACENAME sset_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency bitwidth format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type generated dependency signed format bool minimum {} maxi" & 
+"mum {}} value FALSE}}}} DATA_WIDTH 1}, POLARITY ACTIVE_HIGH";
+  ATTRIBUTE X_INTERFACE_INFO OF SSET: SIGNAL IS "xilinx.com:signal:data:1.0 sset_intf DATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF CLK: SIGNAL IS "XIL_INTERFACENAME clk_intf, ASSOCIATED_BUSIF s_intf:c_out_intf:sinit_intf:sset_intf:bypass_intf:c_in_intf:add_intf:b_intf:a_intf, ASSOCIATED_RESET SCLR, ASSOCIATED_CLKEN CE, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF CLK: SIGNAL IS "xilinx.com:signal:clock:1.0 clk_intf CLK";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF A: SIGNAL IS "XIL_INTERFACENAME a_intf, LAYERED_METADATA undef";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF A: SIGNAL IS "XIL_INTERFACENAME a_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency data_bitwidth format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} DATA_WIDTH 1}";
   ATTRIBUTE X_INTERFACE_INFO OF A: SIGNAL IS "xilinx.com:signal:data:1.0 a_intf DATA";
 BEGIN
   U0 : c_addsub_v12_0_12
@@ -154,7 +158,7 @@ BEGIN
       C_HAS_CE => 0,
       C_HAS_BYPASS => 0,
       C_HAS_SCLR => 0,
-      C_HAS_SSET => 0,
+      C_HAS_SSET => 1,
       C_HAS_SINIT => 0
     )
     PORT MAP (
@@ -166,7 +170,7 @@ BEGIN
       CE => '1',
       BYPASS => '0',
       SCLR => '0',
-      SSET => '0',
+      SSET => SSET,
       SINIT => '0',
       S => S
     );

@@ -38,4 +38,5 @@
 *.runs/
 *.sdb
 *.log
+._mcu.pdf
 FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.sim/
