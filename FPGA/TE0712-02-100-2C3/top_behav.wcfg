@@ -3,26 +3,21 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="top_tb_behav.wdb" id="1">
+      <db_ref path="top_tb_func_synth.wdb" id="1">
          <top_modules>
             <top_module name="glbl" />
-            <top_module name="iomodule_funcs" />
-            <top_module name="iomodule_vote_pkg" />
-            <top_module name="ipif_pkg" />
-            <top_module name="lmb_bram_if_funcs" />
-            <top_module name="mdm_funcs" />
             <top_module name="top_tb" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="16643147063fs"></ZoomStartTime>
-      <ZoomEndTime time="18631147064fs"></ZoomEndTime>
-      <Cursor1Time time="17453125000fs"></Cursor1Time>
+      <ZoomStartTime time="14405100000fs"></ZoomStartTime>
+      <ZoomEndTime time="19395100001fs"></ZoomEndTime>
+      <Cursor1Time time="18560100000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="281"></NameColumnWidth>
-      <ValueColumnWidth column_width="214"></ValueColumnWidth>
+      <ValueColumnWidth column_width="210"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="6" />
    <wave_markers>
@@ -189,10 +184,6 @@
          <obj_property name="ElementShortName">ufb_trx_rxd24_n</obj_property>
          <obj_property name="ObjectShortName">ufb_trx_rxd24_n</obj_property>
       </wvobject>
-      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/LVDS_out/inst/clock_enable" type="logic">
-         <obj_property name="ElementShortName">clock_enable</obj_property>
-         <obj_property name="ObjectShortName">clock_enable</obj_property>
-      </wvobject>
       <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/LVDS_out/inst/clk_fwd_out" type="logic">
          <obj_property name="ElementShortName">clk_fwd_out</obj_property>
          <obj_property name="ObjectShortName">clk_fwd_out</obj_property>
@@ -200,18 +191,18 @@
       <wvobject fp_name="/top_tb/topi/ufb_trx_txclk_p" type="logic">
          <obj_property name="ElementShortName">ufb_trx_txclk_p</obj_property>
          <obj_property name="ObjectShortName">ufb_trx_txclk_p</obj_property>
+         <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/topi/ufb_trx_txclk_n" type="logic">
          <obj_property name="ElementShortName">ufb_trx_txclk_n</obj_property>
          <obj_property name="ObjectShortName">ufb_trx_txclk_n</obj_property>
+         <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/LVDS_out/inst/data_out_from_device" type="array">
          <obj_property name="ElementShortName">data_out_from_device[7:0]</obj_property>
          <obj_property name="ObjectShortName">data_out_from_device[7:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/LVDS_out/inst/oserdes_d" type="array">
-         <obj_property name="ElementShortName">oserdes_d[0:13][0:0]</obj_property>
-         <obj_property name="ObjectShortName">oserdes_d[0:13][0:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/topi/ufb_trx_txd_p" type="logic">
          <obj_property name="ElementShortName">ufb_trx_txd_p</obj_property>
