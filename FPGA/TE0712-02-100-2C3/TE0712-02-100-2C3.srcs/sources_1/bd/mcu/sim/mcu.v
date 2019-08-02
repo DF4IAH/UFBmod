@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Thu Aug  1 23:43:49 2019
+//Date        : Fri Aug  2 19:47:14 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -647,13 +647,15 @@ module mcu
   output [0:0]ufb_trx_txd_p;
 
   wire [0:0]ARESETN_1;
-  wire [1:0]LVDS_rst_delay_inv1_S;
-  wire [1:0]LVDS_rst_delay_inv_S;
-  wire [0:0]LVDS_slice_inv1_Dout;
   wire UART_rxd_0_1;
   wire aux_reset_in_0_1;
   wire [0:0]c_counter_binary_0_THRESH0;
-  wire c_counter_binary_0_THRESH1;
+  wire [0:0]c_shift_ram_0_Q;
+  wire clk_32mhz_LVDS_clk_8_lvds_in;
+  wire clk_32mhz_LVDS_clk_8_lvds_out;
+  wire [0:0]clk_32mhz_locked_inv_S;
+  wire [0:0]clk_32mhz_locked_inv_S1;
+  wire [0:0]clk_32mhz_locked_sr_clkReset_Q;
   wire clk_wiz_0_32mhz_locked;
   wire clk_wiz_0_clk_32_lvds_in;
   wire clk_wiz_0_clk_32_lvds_out;
@@ -923,7 +925,6 @@ module mcu
   wire [0:0]rst_clk_wiz_1_100M_bus_struct_reset;
   wire rst_clk_wiz_1_100M_mb_reset;
   wire [0:0]rst_clk_wiz_1_100M_peripheral_aresetn;
-  wire [0:0]rst_clk_wiz_1_50M_peripheral_reset;
   wire [7:0]selectio_wiz_lvds_in_data_in_to_device;
   wire selectio_wiz_lvds_out_clk_to_pins_n;
   wire selectio_wiz_lvds_out_clk_to_pins_p;
@@ -968,16 +969,16 @@ module mcu
   assign ufb_trx_txd_p[0] = selectio_wiz_lvds_out_data_out_to_pins_p;
   mcu_selectio_wiz_1_0 LVDS_in
        (.bitslip(xlconstant_val0_dout),
-        .clk_div_in(xlconstant_val0_dout),
+        .clk_div_in(clk_32mhz_LVDS_clk_8_lvds_in),
         .clk_in(clk_wiz_0_clk_32_lvds_in),
         .data_in_from_pins_n(ufb_trx_rxd09_n_1),
         .data_in_from_pins_p(ufb_trx_rxd09_p_1),
         .data_in_to_device(selectio_wiz_lvds_in_data_in_to_device),
         .io_reset(c_counter_binary_0_THRESH0));
   mcu_selectio_wiz_0_0 LVDS_out
-       (.clk_div_in(xlconstant_val0_dout),
+       (.clk_div_in(clk_32mhz_LVDS_clk_8_lvds_out),
         .clk_in(clk_wiz_0_clk_32_lvds_out),
-        .clk_reset(rst_clk_wiz_1_50M_peripheral_reset),
+        .clk_reset(clk_32mhz_locked_inv_S),
         .clk_to_pins_n(selectio_wiz_lvds_out_clk_to_pins_n),
         .clk_to_pins_p(selectio_wiz_lvds_out_clk_to_pins_p),
         .data_out_from_device(dist_mem_gen_lvds_out_qdpo),
@@ -987,31 +988,34 @@ module mcu
   mcu_clk_wiz_0_0 clk_32mhz_LVDS
        (.clk_32_lvds_in(clk_wiz_0_clk_32_lvds_in),
         .clk_32_lvds_out(clk_wiz_0_clk_32_lvds_out),
+        .clk_8_lvds_in(clk_32mhz_LVDS_clk_8_lvds_in),
+        .clk_8_lvds_out(clk_32mhz_LVDS_clk_8_lvds_out),
         .clk_in1_n(ufb_trx_rxclk_n_1),
         .clk_in1_p(ufb_trx_rxclk_p_1),
         .locked(clk_wiz_0_32mhz_locked),
         .reset(rst_clk_wiz_1_100M_bus_struct_reset));
-  mcu_LVDS_rst_delay_inv_0 clk_32mhz_locked_add_inv
+  mcu_clk_32mhz_locked_sr_clkReset_inv_0 clk_32mhz_locked_inv
        (.A(clk_wiz_0_32mhz_locked),
         .CLK(microblaze_0_Clk),
-        .S(LVDS_rst_delay_inv1_S),
-        .SCLR(rst_clk_wiz_1_100M_bus_struct_reset));
-  mcu_c_counter_binary_0_0 clk_32mhz_locked_delay
-       (.CE(LVDS_rst_delay_inv_S[0]),
+        .S(clk_32mhz_locked_inv_S1));
+  mcu_clk_32mhz_locked_sr_0 clk_32mhz_locked_sr_clkReset
+       (.CLK(microblaze_0_Clk),
+        .D(clk_wiz_0_32mhz_locked),
+        .Q(clk_32mhz_locked_sr_clkReset_Q));
+  mcu_clk_32mhz_locked_sr_inv_0 clk_32mhz_locked_sr_clkReset_inv
+       (.A(clk_32mhz_locked_sr_clkReset_Q),
         .CLK(microblaze_0_Clk),
-        .SCLR(LVDS_slice_inv1_Dout),
-        .THRESH0(c_counter_binary_0_THRESH1));
-  mcu_c_addsub_0_0 clk_32mhz_locked_delay_add
-       (.A(c_counter_binary_0_THRESH1),
+        .S(clk_32mhz_locked_inv_S),
+        .SSET(clk_32mhz_locked_inv_S1));
+  mcu_c_shift_ram_0_0 clk_32mhz_locked_sr_ioReset
+       (.CLK(microblaze_0_Clk),
+        .D(clk_wiz_0_32mhz_locked),
+        .Q(c_shift_ram_0_Q));
+  mcu_LVDS_rst_delay_inv_0 clk_32mhz_locked_sr_ioReset_inv
+       (.A(c_shift_ram_0_Q),
         .CLK(microblaze_0_Clk),
-        .S(LVDS_rst_delay_inv_S),
-        .SCLR(rst_clk_wiz_1_100M_bus_struct_reset));
-  mcu_xlslice_0_0 clk_32mhz_locked_delay_slice
-       (.Din(LVDS_rst_delay_inv_S),
-        .Dout(c_counter_binary_0_THRESH0));
-  mcu_LVDS_slice_inv_0 clk_32mhz_locked_slice_inv
-       (.Din(LVDS_rst_delay_inv1_S),
-        .Dout(LVDS_slice_inv1_Dout));
+        .S(c_counter_binary_0_THRESH0),
+        .SSET(clk_32mhz_locked_inv_S1));
   mcu_clk_wiz_1_0 clk_wiz_ftdi_12mhz
        (.clk_12mhz(clk_wiz_ftdi_12mhz_clk_12mhz),
         .clk_in1(microblaze_0_Clk),
@@ -1563,7 +1567,6 @@ module mcu
         .mb_debug_sys_rst(mdm_1_debug_sys_rst),
         .mb_reset(rst_clk_wiz_1_100M_mb_reset),
         .peripheral_aresetn(rst_clk_wiz_1_100M_peripheral_aresetn),
-        .peripheral_reset(rst_clk_wiz_1_50M_peripheral_reset),
         .slowest_sync_clk(microblaze_0_Clk));
   mcu_dist_mem_gen_0_0 sync_LVDS_in
        (.a(xlconstant_val000_dout),

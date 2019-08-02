@@ -258,30 +258,20 @@
 -makelib xcelium_lib/c_addsub_v12_0_12 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/6b5f/hdl/c_addsub_v12_0_vh_rfs.vhd" \
 -endlib
--makelib xcelium_lib/c_gate_bit_v12_0_5 \
-  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/693f/hdl/c_gate_bit_v12_0_vh_rfs.vhd" \
--endlib
--makelib xcelium_lib/xbip_counter_v3_0_5 \
-  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/0952/hdl/xbip_counter_v3_0_vh_rfs.vhd" \
--endlib
--makelib xcelium_lib/c_counter_binary_v12_0_12 \
-  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c366/hdl/c_counter_binary_v12_0_vh_rfs.vhd" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_c_counter_binary_0_0/sim/mcu_c_counter_binary_0_0.vhd" \
-  "../../../bd/mcu/ip/mcu_c_addsub_0_0/sim/mcu_c_addsub_0_0.vhd" \
--endlib
--makelib xcelium_lib/xlslice_v1_0_1 \
-  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/f3db/hdl/xlslice_v1_0_vl_rfs.v" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_xlslice_0_0/sim/mcu_xlslice_0_0.v" \
--endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/mcu/ip/mcu_LVDS_rst_delay_inv_0/sim/mcu_LVDS_rst_delay_inv_0.vhd" \
 -endlib
+-makelib xcelium_lib/c_mux_bit_v12_0_5 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/512a/hdl/c_mux_bit_v12_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/c_shift_ram_v12_0_12 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/a9d0/hdl/c_shift_ram_v12_0_vh_rfs.vhd" \
+-endlib
 -makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_LVDS_slice_inv_0/sim/mcu_LVDS_slice_inv_0.v" \
+  "../../../bd/mcu/ip/mcu_c_shift_ram_0_0/sim/mcu_c_shift_ram_0_0.vhd" \
+  "../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_inv_0/sim/mcu_clk_32mhz_locked_sr_inv_0.vhd" \
+  "../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_0/sim/mcu_clk_32mhz_locked_sr_0.vhd" \
+  "../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_clkReset_inv_0/sim/mcu_clk_32mhz_locked_sr_clkReset_inv_0.vhd" \
 -endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_18 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/7a04/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \

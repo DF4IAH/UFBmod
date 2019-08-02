@@ -15,8 +15,10 @@ vhdl xil_defaultlib  \
 "../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_4/sim/bd_f021_dlmb_cntlr_0.vhd" \
 "../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_5/sim/bd_f021_ilmb_cntlr_0.vhd" \
 "../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_7/sim/bd_f021_iomodule_0_0.vhd" \
-"../../../bd/mcu/ip/mcu_c_counter_binary_0_0/sim/mcu_c_counter_binary_0_0.vhd" \
-"../../../bd/mcu/ip/mcu_c_addsub_0_0/sim/mcu_c_addsub_0_0.vhd" \
 "../../../bd/mcu/ip/mcu_LVDS_rst_delay_inv_0/sim/mcu_LVDS_rst_delay_inv_0.vhd" \
+"../../../bd/mcu/ip/mcu_c_shift_ram_0_0/sim/mcu_c_shift_ram_0_0.vhd" \
+"../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_inv_0/sim/mcu_clk_32mhz_locked_sr_inv_0.vhd" \
+"../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_0/sim/mcu_clk_32mhz_locked_sr_0.vhd" \
+"../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_clkReset_inv_0/sim/mcu_clk_32mhz_locked_sr_clkReset_inv_0.vhd" \
 
 nosort
