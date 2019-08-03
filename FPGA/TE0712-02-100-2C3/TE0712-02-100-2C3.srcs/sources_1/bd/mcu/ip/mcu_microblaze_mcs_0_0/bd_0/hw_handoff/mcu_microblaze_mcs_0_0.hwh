@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Aug  2 22:56:05 2019" VIVADOVERSION="2018.3">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Aug  3 02:05:44 2019" VIVADOVERSION="2018.3">
 
   <SYSTEMINFO ARCH="artix7" DEVICE="7a100t" NAME="bd_f021" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -20,11 +20,7 @@
         <CONNECTION INSTANCE="rst_0" PORT="ext_reset_in"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="UART_Interrupt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="iomodule_0_UART_Interrupt">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="iomodule_0" PORT="UART_Interrupt"/>
-      </CONNECTIONS>
-    </PORT>
+    <PORT DIR="O" NAME="UART_Interrupt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT"/>
     <PORT DIR="O" NAME="FIT1_Interrupt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="iomodule_0_FIT1_Interrupt">
       <CONNECTIONS>
         <CONNECTION INSTANCE="iomodule_0" PORT="FIT1_Interrupt"/>
@@ -50,16 +46,6 @@
         <CONNECTION INSTANCE="iomodule_0" PORT="INTC_IRQ_OUT"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" NAME="UART_rxd" SIGIS="undef" SIGNAME="iomodule_0_UART_Rx">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="iomodule_0" PORT="UART_Rx"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="UART_txd" SIGIS="undef" SIGNAME="iomodule_0_UART_Tx">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="iomodule_0" PORT="UART_Tx"/>
-      </CONNECTIONS>
-    </PORT>
     <PORT DIR="I" LEFT="7" NAME="GPIO1_tri_i" RIGHT="0" SIGIS="undef" SIGNAME="iomodule_0_GPI1">
       <CONNECTIONS>
         <CONNECTION INSTANCE="iomodule_0" PORT="GPI1"/>
@@ -73,12 +59,6 @@
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES>
-    <BUSINTERFACE BUSNAME="iomodule_0_UART" NAME="UART" TYPE="INITIATOR">
-      <PORTMAPS>
-        <PORTMAP LOGICAL="RxD" PHYSICAL="UART_rxd"/>
-        <PORTMAP LOGICAL="TxD" PHYSICAL="UART_txd"/>
-      </PORTMAPS>
-    </BUSINTERFACE>
     <BUSINTERFACE BUSNAME="iomodule_0_GPIO1" NAME="GPIO1" TYPE="INITIATOR">
       <PARAMETER NAME="C_GPI1_INTERRUPT" VALUE="0"/>
       <PARAMETER NAME="C_GPI1_SIZE" VALUE="8"/>
@@ -849,7 +829,7 @@
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x0"/>
               <PROPERTY NAME="SIZE" VALUE="8"/>
               <PROPERTY NAME="ACCESS" VALUE="read-only"/>
-              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
               <FIELDS>
                 <FIELD NAME="UART RX">
@@ -869,7 +849,7 @@
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x4"/>
               <PROPERTY NAME="SIZE" VALUE="8"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
-              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
               <FIELDS>
                 <FIELD NAME="UART TX">
@@ -889,7 +869,7 @@
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x8"/>
               <PROPERTY NAME="SIZE" VALUE="8"/>
               <PROPERTY NAME="ACCESS" VALUE="read-only"/>
-              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
               <FIELDS>
                 <FIELD NAME="Rx Valid Data">
@@ -1729,7 +1709,7 @@
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x4C"/>
               <PROPERTY NAME="SIZE" VALUE="8"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
-              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
               <FIELDS>
                 <FIELD NAME="UART BAUD">
@@ -3212,16 +3192,16 @@
         <PARAMETER NAME="C_LMB_AWIDTH" VALUE="32"/>
         <PARAMETER NAME="C_LMB_DWIDTH" VALUE="32"/>
         <PARAMETER NAME="C_USE_IO_BUS" VALUE="0"/>
-        <PARAMETER NAME="C_USE_UART_RX" VALUE="1"/>
-        <PARAMETER NAME="C_USE_UART_TX" VALUE="1"/>
+        <PARAMETER NAME="C_USE_UART_RX" VALUE="0"/>
+        <PARAMETER NAME="C_USE_UART_TX" VALUE="0"/>
         <PARAMETER NAME="C_UART_BAUDRATE" VALUE="9600"/>
         <PARAMETER NAME="C_UART_DATA_BITS" VALUE="8"/>
         <PARAMETER NAME="C_UART_USE_PARITY" VALUE="0"/>
         <PARAMETER NAME="C_UART_ODD_PARITY" VALUE="0"/>
-        <PARAMETER NAME="C_UART_RX_INTERRUPT" VALUE="1"/>
-        <PARAMETER NAME="C_UART_TX_INTERRUPT" VALUE="1"/>
-        <PARAMETER NAME="C_UART_ERROR_INTERRUPT" VALUE="1"/>
-        <PARAMETER NAME="C_UART_PROG_BAUDRATE" VALUE="1"/>
+        <PARAMETER NAME="C_UART_RX_INTERRUPT" VALUE="0"/>
+        <PARAMETER NAME="C_UART_TX_INTERRUPT" VALUE="0"/>
+        <PARAMETER NAME="C_UART_ERROR_INTERRUPT" VALUE="0"/>
+        <PARAMETER NAME="C_UART_PROG_BAUDRATE" VALUE="0"/>
         <PARAMETER NAME="C_USE_FIT1" VALUE="1"/>
         <PARAMETER NAME="C_FIT1_No_CLOCKS" VALUE="100000"/>
         <PARAMETER NAME="C_FIT1_INTERRUPT" VALUE="1"/>
@@ -3310,21 +3290,6 @@
         <PORT DIR="I" NAME="Rst" SIGIS="rst" SIGNAME="rst_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_0" PORT="peripheral_reset"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="UART_Rx" SIGIS="undef" SIGNAME="iomodule_0_UART_Rx">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="bd_f021_imp" PORT="UART_rxd"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="UART_Tx" SIGIS="undef" SIGNAME="iomodule_0_UART_Tx">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="bd_f021_imp" PORT="UART_txd"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="UART_Interrupt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="iomodule_0_UART_Interrupt">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="UART_Interrupt"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FIT1_Interrupt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="iomodule_0_FIT1_Interrupt">
@@ -3459,12 +3424,6 @@
             <PORTMAP LOGICAL="ACK" PHYSICAL="INTC_Processor_Ack"/>
             <PORTMAP LOGICAL="ADDRESS" PHYSICAL="INTC_Interrupt_Address"/>
             <PORTMAP LOGICAL="INTERRUPT" PHYSICAL="INTC_IRQ"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="iomodule_0_UART" NAME="UART" TYPE="INITIATOR" VLNV="xilinx.com:interface:uart:1.0">
-          <PORTMAPS>
-            <PORTMAP LOGICAL="RxD" PHYSICAL="UART_Rx"/>
-            <PORTMAP LOGICAL="TxD" PHYSICAL="UART_Tx"/>
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="iomodule_0_GPIO1" NAME="GPIO1" TYPE="INITIATOR" VLNV="xilinx.com:interface:gpio:1.0">

@@ -383,7 +383,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.INTERRUPT.UART_Interrupt" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_RX_INTERRUPT&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_TX_INTERRUPT&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_ERROR_INTERRUPT&apos;)) = 1)">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.INTERRUPT.UART_Interrupt" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_RX_INTERRUPT&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_TX_INTERRUPT&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_ERROR_INTERRUPT&apos;)) = 1)">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -1069,7 +1069,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.UART" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.UART" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -1575,7 +1575,7 @@
           <spirit:vendorExtensions>
             <xilinx:registerInfo>
               <xilinx:enablement>
-                <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="REGISTER_ENABLEMENT.SLMB.REG.UART RX" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1)">true</xilinx:isEnabled>
+                <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="REGISTER_ENABLEMENT.SLMB.REG.UART RX" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1)">false</xilinx:isEnabled>
               </xilinx:enablement>
             </xilinx:registerInfo>
           </spirit:vendorExtensions>
@@ -1608,7 +1608,7 @@
           <spirit:vendorExtensions>
             <xilinx:registerInfo>
               <xilinx:enablement>
-                <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="REGISTER_ENABLEMENT.SLMB.REG.UART TX" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">true</xilinx:isEnabled>
+                <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="REGISTER_ENABLEMENT.SLMB.REG.UART TX" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">false</xilinx:isEnabled>
               </xilinx:enablement>
             </xilinx:registerInfo>
           </spirit:vendorExtensions>
@@ -1712,7 +1712,7 @@
           <spirit:vendorExtensions>
             <xilinx:registerInfo>
               <xilinx:enablement>
-                <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="REGISTER_ENABLEMENT.SLMB.REG.UART Status" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">true</xilinx:isEnabled>
+                <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="REGISTER_ENABLEMENT.SLMB.REG.UART Status" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">false</xilinx:isEnabled>
               </xilinx:enablement>
             </xilinx:registerInfo>
           </spirit:vendorExtensions>
@@ -2965,7 +2965,7 @@ The period is the value + 2.
           <spirit:vendorExtensions>
             <xilinx:registerInfo>
               <xilinx:enablement>
-                <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="REGISTER_ENABLEMENT.SLMB.REG.UART BAUD" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_PROG_BAUDRATE&apos;)) = 1)">true</xilinx:isEnabled>
+                <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="REGISTER_ENABLEMENT.SLMB.REG.UART BAUD" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_PROG_BAUDRATE&apos;)) = 1)">false</xilinx:isEnabled>
               </xilinx:enablement>
             </xilinx:registerInfo>
           </spirit:vendorExtensions>
@@ -5483,11 +5483,11 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 31 21:32:05 UTC 2019</spirit:value>
+            <spirit:value>Sat Aug 03 00:05:43 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:a3525fd5</spirit:value>
+            <spirit:value>9:fd450311</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5498,7 +5498,7 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:a3525fd5</spirit:value>
+            <spirit:value>9:fd450311</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5514,11 +5514,11 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 31 21:32:05 UTC 2019</spirit:value>
+            <spirit:value>Sat Aug 03 00:05:43 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:a3525fd5</spirit:value>
+            <spirit:value>9:fd450311</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5534,11 +5534,11 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 31 21:32:05 UTC 2019</spirit:value>
+            <spirit:value>Sat Aug 03 00:05:43 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0219a519</spirit:value>
+            <spirit:value>9:0ac05c32</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5554,11 +5554,11 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 31 21:32:05 UTC 2019</spirit:value>
+            <spirit:value>Sat Aug 03 00:05:43 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0219a519</spirit:value>
+            <spirit:value>9:0ac05c32</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5572,11 +5572,11 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 31 21:32:06 UTC 2019</spirit:value>
+            <spirit:value>Sat Aug 03 00:05:44 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:a3525fd5</spirit:value>
+            <spirit:value>9:fd450311</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5956,7 +5956,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.UART_Rx" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.UART_Rx" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -5977,7 +5977,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.UART_Tx" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.UART_Tx" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -5997,7 +5997,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.UART_Interrupt" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_RX_INTERRUPT&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_TX_INTERRUPT&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_ERROR_INTERRUPT&apos;)) = 1)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.UART_Interrupt" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_RX_INTERRUPT&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_TX_INTERRUPT&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_ERROR_INTERRUPT&apos;)) = 1)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -7069,11 +7069,11 @@ The period is the value + 2.
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_USE_UART_RX</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_UART_RX">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_UART_RX">0</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_USE_UART_TX</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_UART_TX">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_UART_TX">0</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_UART_BAUDRATE</spirit:name>
@@ -7081,7 +7081,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_UART_BAUDRATE" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_UART_BAUDRATE" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -7092,7 +7092,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_UART_DATA_BITS" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_UART_DATA_BITS" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -7103,7 +7103,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_UART_USE_PARITY" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_UART_USE_PARITY" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -7121,44 +7121,44 @@ The period is the value + 2.
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_UART_RX_INTERRUPT</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_UART_RX_INTERRUPT">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_UART_RX_INTERRUPT">0</spirit:value>
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_UART_RX_INTERRUPT" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_UART_RX_INTERRUPT" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_UART_TX_INTERRUPT</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_UART_TX_INTERRUPT">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_UART_TX_INTERRUPT">0</spirit:value>
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_UART_TX_INTERRUPT" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_UART_TX_INTERRUPT" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_UART_ERROR_INTERRUPT</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_UART_ERROR_INTERRUPT">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_UART_ERROR_INTERRUPT">0</spirit:value>
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_UART_ERROR_INTERRUPT" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_UART_ERROR_INTERRUPT" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_UART_PROG_BAUDRATE</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_UART_PROG_BAUDRATE">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_UART_PROG_BAUDRATE">0</spirit:value>
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_UART_PROG_BAUDRATE" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_UART_PROG_BAUDRATE" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -7977,12 +7977,12 @@ The period is the value + 2.
     <spirit:parameter>
       <spirit:name>C_USE_UART_RX</spirit:name>
       <spirit:displayName>Enable Receiver</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_UART_RX" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2000" spirit:configGroups="2 UART">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_UART_RX" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2000" spirit:configGroups="2 UART">0</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_USE_UART_TX</spirit:name>
       <spirit:displayName>Enable Transmitter</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_UART_TX" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2100" spirit:configGroups="2 UART">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_UART_TX" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2100" spirit:configGroups="2 UART">0</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_UART_BAUDRATE</spirit:name>
@@ -7991,7 +7991,7 @@ The period is the value + 2.
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_UART_BAUDRATE" xilinx:dependency="true">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_UART_BAUDRATE" xilinx:dependency="true">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -7999,11 +7999,11 @@ The period is the value + 2.
     <spirit:parameter>
       <spirit:name>C_UART_PROG_BAUDRATE</spirit:name>
       <spirit:displayName>Programmable Baud Rate</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_UART_PROG_BAUDRATE" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2300" spirit:configGroups="2 UART">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_UART_PROG_BAUDRATE" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2300" spirit:configGroups="2 UART">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_UART_PROG_BAUDRATE" xilinx:dependency="true">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_UART_PROG_BAUDRATE" xilinx:dependency="true">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -8015,7 +8015,7 @@ The period is the value + 2.
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_UART_DATA_BITS" xilinx:dependency="true">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_UART_DATA_BITS" xilinx:dependency="true">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -8027,7 +8027,7 @@ The period is the value + 2.
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_UART_USE_PARITY" xilinx:dependency="true">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_UART_USE_PARITY" xilinx:dependency="true">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -8047,11 +8047,11 @@ The period is the value + 2.
     <spirit:parameter>
       <spirit:name>C_UART_RX_INTERRUPT</spirit:name>
       <spirit:displayName>Implement Receive Interrupt</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_UART_RX_INTERRUPT" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2700" spirit:configGroups="2 UART">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_UART_RX_INTERRUPT" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2700" spirit:configGroups="2 UART">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_UART_RX_INTERRUPT" xilinx:dependency="true">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_UART_RX_INTERRUPT" xilinx:dependency="true">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -8059,11 +8059,11 @@ The period is the value + 2.
     <spirit:parameter>
       <spirit:name>C_UART_TX_INTERRUPT</spirit:name>
       <spirit:displayName>Implement Transmit Interrupt</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_UART_TX_INTERRUPT" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2800" spirit:configGroups="2 UART">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_UART_TX_INTERRUPT" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2800" spirit:configGroups="2 UART">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_UART_TX_INTERRUPT" xilinx:dependency="true">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_UART_TX_INTERRUPT" xilinx:dependency="true">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -8071,11 +8071,11 @@ The period is the value + 2.
     <spirit:parameter>
       <spirit:name>C_UART_ERROR_INTERRUPT</spirit:name>
       <spirit:displayName>Implement Error Interrupt</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_UART_ERROR_INTERRUPT" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2900" spirit:configGroups="2 UART">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_UART_ERROR_INTERRUPT" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2900" spirit:configGroups="2 UART">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_UART_ERROR_INTERRUPT" xilinx:dependency="true">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_UART_ERROR_INTERRUPT" xilinx:dependency="true">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -8770,27 +8770,26 @@ The period is the value + 2.
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.INTERRUPT.FIT1_INTERRUPT.PortWidth" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.INTERRUPT.INTC_IRQ_OUT.PortWidth" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.INTERRUPT.PIT1_INTERRUPT.PortWidth" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.INTERRUPT.UART_INTERRUPT.PortWidth" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SLMB.ADDR_WIDTH" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SLMB.DATA_WIDTH" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_BASEADDR" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_BASEADDR" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_FIT1_INTERRUPT" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_FIT1_No_CLOCKS" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_FREQ" xilinx:valueSource="propagated"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_GPI1_SIZE" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_GPO1_SIZE" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_HIGHADDR" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_HIGHADDR" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_INSTANCE" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_INTC_ADDR_WIDTH" xilinx:valueSource="user" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_INTC_ADDR_WIDTH" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_INTC_BASE_VECTORS" xilinx:valueSource="propagated"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_INTC_HAS_FAST" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_INTC_USE_IRQ_OUT" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_IO_BASEADDR" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_IO_HIGHADDR" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_IO_MASK" xilinx:valueSource="user" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_IO_BASEADDR" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_IO_HIGHADDR" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_IO_MASK" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_LMB_AWIDTH" xilinx:valueSource="propagated" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_LMB_DWIDTH" xilinx:valueSource="propagated"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_MASK" xilinx:valueSource="user" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_MASK" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PIT1_INTERRUPT" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_UART_ERROR_INTERRUPT" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_UART_PROG_BAUDRATE" xilinx:valueSource="user"/>
@@ -8800,8 +8799,6 @@ The period is the value + 2.
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_GPI1" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_GPO1" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_PIT1" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_UART_RX" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_UART_TX" xilinx:valueSource="user"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>

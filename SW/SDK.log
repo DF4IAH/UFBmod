@@ -508,3 +508,13 @@ con
 
 23:31:03 INFO  : Launch script is exported to file 'C:\Users\espero\git\UFBmod\SW\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sreg_spi_bootloader.elf_on_local.tcl'
 23:31:25 INFO  : Disconnected from the channel tcfchan#12.
+01:37:28 INFO  : Registering command handlers for SDK TCF services
+01:37:29 INFO  : Launching XSCT server: xsct.bat -interactive G:\temp_xsdb_launch_script.tcl
+01:37:35 INFO  : XSCT server has started successfully.
+01:37:36 INFO  : Successfully done setting XSCT server connection channel  
+01:37:36 INFO  : Successfully done setting SDK workspace  
+01:37:36 INFO  : Processing command line option -hwspec G://top.hdf.
+01:37:41 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1564787822863,  Project:1553806571340
+01:37:41 INFO  : Project top_hw_platform_0's source hardware specification located at C:/Users/espero/git/UFBmod/SW/top.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+01:37:54 INFO  : Project top_hw_platform_0's source hardware specification location will not be monitored anymore.

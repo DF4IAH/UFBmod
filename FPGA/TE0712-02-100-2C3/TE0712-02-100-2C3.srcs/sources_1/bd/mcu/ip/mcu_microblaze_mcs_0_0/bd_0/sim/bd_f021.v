@@ -6,7 +6,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "bd_f021,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_f021,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=8,numReposBlks=8,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=Global}" *) (* HW_HANDOFF = "mcu_microblaze_mcs_0_0.hwdef" *) 
+(* CORE_GENERATION_INFO = "bd_f021,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_f021,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=8,numReposBlks=8,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu_microblaze_mcs_0_0.hwdef" *) 
 module bd_f021
    (Clk,
     FIT1_Interrupt,
@@ -17,9 +17,7 @@ module bd_f021
     PIT1_Interrupt,
     PIT1_Toggle,
     Reset,
-    UART_Interrupt,
-    UART_rxd,
-    UART_txd);
+    UART_Interrupt);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_ASYNC_RESET Reset, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0" *) input Clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.FIT1_INTERRUPT INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.FIT1_INTERRUPT, PortWidth 1, SENSITIVITY EDGE_RISING" *) output FIT1_Interrupt;
   output FIT1_Toggle;
@@ -30,8 +28,6 @@ module bd_f021
   output PIT1_Toggle;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input Reset;
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.UART_INTERRUPT INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.UART_INTERRUPT, PortWidth 1, SENSITIVITY EDGE_RISING" *) output UART_Interrupt;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART RxD" *) input UART_rxd;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART TxD" *) output UART_txd;
 
   wire Clk1;
   wire FIT1_Interrupt;
@@ -43,7 +39,6 @@ module bd_f021
   wire PIT1_Interrupt;
   wire PIT1_Toggle;
   wire Reset;
-  wire UART_Interrupt;
   wire [0:31]dlmb_ABUS;
   wire dlmb_ADDRSTROBE;
   wire [0:3]dlmb_BE;
@@ -109,15 +104,11 @@ module bd_f021
   wire [0:1]iomodule_0_INTC_Irq_ACK;
   wire [31:0]iomodule_0_INTC_Irq_ADDRESS;
   wire iomodule_0_INTC_Irq_INTERRUPT;
-  wire iomodule_0_UART_RxD;
-  wire iomodule_0_UART_TxD;
 
   assign Clk1 = Clk;
   assign GPIO1_tri_o[7:0] = iomodule_0_GPIO1_TRI_O;
   assign INTC_IRQ = INTC_Irq_Out;
-  assign UART_txd = iomodule_0_UART_TxD;
   assign iomodule_0_GPIO1_TRI_I = GPIO1_tri_i[7:0];
-  assign iomodule_0_UART_RxD = UART_rxd;
   bd_f021_dlmb_0 dlmb
        (.LMB_ABus(dlmb_sl_1_ABUS),
         .LMB_AddrStrobe(dlmb_sl_1_ADDRSTROBE),
@@ -235,10 +226,7 @@ module bd_f021
         .Sl_DBus(dlmb_sl_1_READDBUS),
         .Sl_Ready(dlmb_sl_1_READY),
         .Sl_UE(dlmb_sl_1_UE),
-        .Sl_Wait(dlmb_sl_1_WAIT),
-        .UART_Interrupt(UART_Interrupt),
-        .UART_Rx(iomodule_0_UART_RxD),
-        .UART_Tx(iomodule_0_UART_TxD));
+        .Sl_Wait(dlmb_sl_1_WAIT));
   bd_f021_lmb_bram_I_0 lmb_bram_I
        (.addra({dlmb_port_ADDR[0],dlmb_port_ADDR[1],dlmb_port_ADDR[2],dlmb_port_ADDR[3],dlmb_port_ADDR[4],dlmb_port_ADDR[5],dlmb_port_ADDR[6],dlmb_port_ADDR[7],dlmb_port_ADDR[8],dlmb_port_ADDR[9],dlmb_port_ADDR[10],dlmb_port_ADDR[11],dlmb_port_ADDR[12],dlmb_port_ADDR[13],dlmb_port_ADDR[14],dlmb_port_ADDR[15],dlmb_port_ADDR[16],dlmb_port_ADDR[17],dlmb_port_ADDR[18],dlmb_port_ADDR[19],dlmb_port_ADDR[20],dlmb_port_ADDR[21],dlmb_port_ADDR[22],dlmb_port_ADDR[23],dlmb_port_ADDR[24],dlmb_port_ADDR[25],dlmb_port_ADDR[26],dlmb_port_ADDR[27],dlmb_port_ADDR[28],dlmb_port_ADDR[29],dlmb_port_ADDR[30],dlmb_port_ADDR[31]}),
         .addrb({ilmb_port_ADDR[0],ilmb_port_ADDR[1],ilmb_port_ADDR[2],ilmb_port_ADDR[3],ilmb_port_ADDR[4],ilmb_port_ADDR[5],ilmb_port_ADDR[6],ilmb_port_ADDR[7],ilmb_port_ADDR[8],ilmb_port_ADDR[9],ilmb_port_ADDR[10],ilmb_port_ADDR[11],ilmb_port_ADDR[12],ilmb_port_ADDR[13],ilmb_port_ADDR[14],ilmb_port_ADDR[15],ilmb_port_ADDR[16],ilmb_port_ADDR[17],ilmb_port_ADDR[18],ilmb_port_ADDR[19],ilmb_port_ADDR[20],ilmb_port_ADDR[21],ilmb_port_ADDR[22],ilmb_port_ADDR[23],ilmb_port_ADDR[24],ilmb_port_ADDR[25],ilmb_port_ADDR[26],ilmb_port_ADDR[27],ilmb_port_ADDR[28],ilmb_port_ADDR[29],ilmb_port_ADDR[30],ilmb_port_ADDR[31]}),

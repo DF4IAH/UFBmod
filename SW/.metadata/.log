@@ -8005,3 +8005,6 @@ For each bit:
 "microblaze_0_local_memory_ilmb_bram_if_cntlr": {},
 "xadc_wiz_0": {},
 }]. Thread: main
+
+!ENTRY com.xilinx.sdk.utils 1 0 2019-08-03 01:56:33.340
+!MESSAGE Executed Webtalk command

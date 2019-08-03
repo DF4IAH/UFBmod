@@ -16,9 +16,7 @@ module bd_f021_wrapper
     PIT1_Interrupt,
     PIT1_Toggle,
     Reset,
-    UART_Interrupt,
-    UART_rxd,
-    UART_txd);
+    UART_Interrupt);
   input Clk;
   output FIT1_Interrupt;
   output FIT1_Toggle;
@@ -29,8 +27,6 @@ module bd_f021_wrapper
   output PIT1_Toggle;
   input Reset;
   output UART_Interrupt;
-  input UART_rxd;
-  output UART_txd;
 
   wire Clk;
   wire FIT1_Interrupt;
@@ -42,8 +38,6 @@ module bd_f021_wrapper
   wire PIT1_Toggle;
   wire Reset;
   wire UART_Interrupt;
-  wire UART_rxd;
-  wire UART_txd;
 
   bd_f021 bd_f021_i
        (.Clk(Clk),
@@ -55,7 +49,5 @@ module bd_f021_wrapper
         .PIT1_Interrupt(PIT1_Interrupt),
         .PIT1_Toggle(PIT1_Toggle),
         .Reset(Reset),
-        .UART_Interrupt(UART_Interrupt),
-        .UART_rxd(UART_rxd),
-        .UART_txd(UART_txd));
+        .UART_Interrupt(UART_Interrupt));
 endmodule

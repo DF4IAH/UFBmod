@@ -164,7 +164,6 @@ proc create_root_design { parentCell } {
    CONFIG.C_USE_GPI1 {1} \
    CONFIG.C_USE_GPO1 {1} \
    ] $GPIO1
-  set UART [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:uart_rtl:1.0 UART ]
 
   # Create ports
   set Clk [ create_bd_port -dir I -type clk Clk ]
@@ -223,16 +222,14 @@ proc create_root_design { parentCell } {
    CONFIG.C_IO_MASK {0x00000000C0000000} \
    CONFIG.C_MASK {0x00000000C0000000} \
    CONFIG.C_PIT1_INTERRUPT {1} \
-   CONFIG.C_UART_ERROR_INTERRUPT {1} \
-   CONFIG.C_UART_PROG_BAUDRATE {1} \
-   CONFIG.C_UART_RX_INTERRUPT {1} \
-   CONFIG.C_UART_TX_INTERRUPT {1} \
+   CONFIG.C_UART_ERROR_INTERRUPT {0} \
+   CONFIG.C_UART_PROG_BAUDRATE {0} \
+   CONFIG.C_UART_RX_INTERRUPT {0} \
+   CONFIG.C_UART_TX_INTERRUPT {0} \
    CONFIG.C_USE_FIT1 {1} \
    CONFIG.C_USE_GPI1 {1} \
    CONFIG.C_USE_GPO1 {1} \
    CONFIG.C_USE_PIT1 {1} \
-   CONFIG.C_USE_UART_RX {1} \
-   CONFIG.C_USE_UART_TX {1} \
  ] $iomodule_0
 
   # Create instance: lmb_bram_I, and set properties
@@ -270,7 +267,6 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net ilmb_sl_0 [get_bd_intf_pins ilmb/LMB_Sl_0] [get_bd_intf_pins ilmb_cntlr/SLMB]
   connect_bd_intf_net -intf_net iomodule_0_GPIO1 [get_bd_intf_ports GPIO1] [get_bd_intf_pins iomodule_0/GPIO1]
   connect_bd_intf_net -intf_net iomodule_0_INTC_Irq [get_bd_intf_pins iomodule_0/INTC_Irq] [get_bd_intf_pins microblaze_I/INTERRUPT]
-  connect_bd_intf_net -intf_net iomodule_0_UART [get_bd_intf_ports UART] [get_bd_intf_pins iomodule_0/UART]
 
   # Create port connections
   connect_bd_net -net Clk1 [get_bd_ports Clk] [get_bd_pins dlmb/LMB_Clk] [get_bd_pins dlmb_cntlr/LMB_Clk] [get_bd_pins ilmb/LMB_Clk] [get_bd_pins ilmb_cntlr/LMB_Clk] [get_bd_pins iomodule_0/Clk] [get_bd_pins microblaze_I/Clk] [get_bd_pins rst_0/slowest_sync_clk]
@@ -283,7 +279,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net PIT1_Interrupt [get_bd_ports PIT1_Interrupt] [get_bd_pins iomodule_0/PIT1_Interrupt]
   connect_bd_net -net PIT1_Toggle [get_bd_ports PIT1_Toggle] [get_bd_pins iomodule_0/PIT1_Toggle]
   connect_bd_net -net Reset [get_bd_ports Reset] [get_bd_pins rst_0/ext_reset_in]
-  connect_bd_net -net UART_Interrupt [get_bd_ports UART_Interrupt] [get_bd_pins iomodule_0/UART_Interrupt]
+  connect_bd_net -net UART_Interrupt [get_bd_ports UART_Interrupt]
 
   # Create address segments
   create_bd_addr_seg -range 0x00008000 -offset 0x00000000 [get_bd_addr_spaces microblaze_I/Data] [get_bd_addr_segs dlmb_cntlr/SLMB/Mem] SEG_dlmb_cntlr_Mem
