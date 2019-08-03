@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Tue Jul 30 19:31:35 2019
+// Date        : Sat Aug  3 16:54:07 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top mcu_clk_wiz_1_0 -prefix
-//               mcu_clk_wiz_1_0_ mcu_clk_wiz_1_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim
+//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0_sim_netlist.v
 // Design      : mcu_clk_wiz_1_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -16,27 +16,34 @@
 module mcu_clk_wiz_1_0
    (clk_12mhz,
     reset,
+    locked,
     clk_in1);
   output clk_12mhz;
   input reset;
+  output locked;
   input clk_in1;
 
   wire clk_12mhz;
   wire clk_in1;
+  wire locked;
   wire reset;
 
   mcu_clk_wiz_1_0_mcu_clk_wiz_1_0_clk_wiz inst
        (.clk_12mhz(clk_12mhz),
         .clk_in1(clk_in1),
+        .locked(locked),
         .reset(reset));
 endmodule
 
+(* ORIG_REF_NAME = "mcu_clk_wiz_1_0_clk_wiz" *) 
 module mcu_clk_wiz_1_0_mcu_clk_wiz_1_0_clk_wiz
    (clk_12mhz,
     reset,
+    locked,
     clk_in1);
   output clk_12mhz;
   input reset;
+  output locked;
   input clk_in1;
 
   wire clk_12mhz;
@@ -45,6 +52,7 @@ module mcu_clk_wiz_1_0_mcu_clk_wiz_1_0_clk_wiz
   wire clk_in1_mcu_clk_wiz_1_0;
   wire clkfbout_buf_mcu_clk_wiz_1_0;
   wire clkfbout_mcu_clk_wiz_1_0;
+  wire locked;
   wire reset;
   wire NLW_plle2_adv_inst_CLKOUT1_UNCONNECTED;
   wire NLW_plle2_adv_inst_CLKOUT2_UNCONNECTED;
@@ -52,7 +60,6 @@ module mcu_clk_wiz_1_0_mcu_clk_wiz_1_0_clk_wiz
   wire NLW_plle2_adv_inst_CLKOUT4_UNCONNECTED;
   wire NLW_plle2_adv_inst_CLKOUT5_UNCONNECTED;
   wire NLW_plle2_adv_inst_DRDY_UNCONNECTED;
-  wire NLW_plle2_adv_inst_LOCKED_UNCONNECTED;
   wire [15:0]NLW_plle2_adv_inst_DO_UNCONNECTED;
 
   (* BOX_TYPE = "PRIMITIVE" *) 
@@ -119,7 +126,7 @@ module mcu_clk_wiz_1_0_mcu_clk_wiz_1_0_clk_wiz
         .DO(NLW_plle2_adv_inst_DO_UNCONNECTED[15:0]),
         .DRDY(NLW_plle2_adv_inst_DRDY_UNCONNECTED),
         .DWE(1'b0),
-        .LOCKED(NLW_plle2_adv_inst_LOCKED_UNCONNECTED),
+        .LOCKED(locked),
         .PWRDWN(1'b0),
         .RST(reset));
 endmodule

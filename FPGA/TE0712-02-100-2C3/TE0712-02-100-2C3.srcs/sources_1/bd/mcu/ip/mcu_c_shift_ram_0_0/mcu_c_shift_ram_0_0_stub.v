@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Fri Aug  2 23:15:10 2019
+// Date        : Fri Aug  2 23:15:08 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_c_shift_ram_0_0/mcu_c_shift_ram_0_0_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top mcu_c_shift_ram_0_0 -prefix
+//               mcu_c_shift_ram_0_0_ mcu_c_shift_ram_0_0_stub.v
 // Design      : mcu_c_shift_ram_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tfgg484-2

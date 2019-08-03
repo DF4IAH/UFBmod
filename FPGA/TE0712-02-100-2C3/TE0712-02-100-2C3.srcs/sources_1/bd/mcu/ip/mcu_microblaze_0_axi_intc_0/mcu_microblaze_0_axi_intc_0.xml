@@ -761,7 +761,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>SENSITIVITY</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.INTERRUPT_INPUT.SENSITIVITY">EDGE_RISING:EDGE_RISING:EDGE_RISING:LEVEL_HIGH</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.INTERRUPT_INPUT.SENSITIVITY">EDGE_RISING:LEVEL_HIGH:LEVEL_HIGH:LEVEL_HIGH</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -3411,11 +3411,11 @@ For each bit:
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 31 21:31:59 UTC 2019</spirit:value>
+            <spirit:value>Sat Aug 03 09:17:16 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2f6a33c4</spirit:value>
+            <spirit:value>9:57a79059</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3431,11 +3431,11 @@ For each bit:
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 31 21:31:59 UTC 2019</spirit:value>
+            <spirit:value>Sat Aug 03 19:55:43 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2f6a33c4</spirit:value>
+            <spirit:value>9:57a79059</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3454,11 +3454,11 @@ For each bit:
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 31 21:31:59 UTC 2019</spirit:value>
+            <spirit:value>Sat Aug 03 09:17:16 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:79640385</spirit:value>
+            <spirit:value>9:975d2b8e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3474,11 +3474,11 @@ For each bit:
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 31 21:31:59 UTC 2019</spirit:value>
+            <spirit:value>Sat Aug 03 19:55:43 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:79640385</spirit:value>
+            <spirit:value>9:975d2b8e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3492,11 +3492,11 @@ For each bit:
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 31 21:32:36 UTC 2019</spirit:value>
+            <spirit:value>Sat Aug 03 19:57:11 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2f6a33c4</spirit:value>
+            <spirit:value>9:57a79059</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -4010,7 +4010,7 @@ For each bit:
       <spirit:modelParameter spirit:dataType="std_logic_vector(31 downto 0)">
         <spirit:name>C_KIND_OF_INTR</spirit:name>
         <spirit:displayName>Interrupts type (Level or Edge)</spirit:displayName>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_KIND_OF_INTR" spirit:bitStringLength="32">0xfffffffe</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_KIND_OF_INTR" spirit:bitStringLength="32">0xfffffff8</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="std_logic_vector(31 downto 0)">
         <spirit:name>C_KIND_OF_EDGE</spirit:name>
@@ -4218,6 +4218,18 @@ For each bit:
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
       <spirit:file>
+        <spirit:name>mcu_microblaze_0_axi_intc_0_stub.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>mcu_microblaze_0_axi_intc_0_stub.vhdl</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
         <spirit:name>mcu_microblaze_0_axi_intc_0_sim_netlist.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
@@ -4229,18 +4241,6 @@ For each bit:
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
         <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>mcu_microblaze_0_axi_intc_0_stub.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>mcu_microblaze_0_axi_intc_0_stub.vhdl</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
     </spirit:fileSet>
@@ -4287,7 +4287,7 @@ For each bit:
       <spirit:name>C_KIND_OF_INTR</spirit:name>
       <spirit:displayName>Interrupts type - Edge or Level</spirit:displayName>
       <spirit:description>The setting of each bit in this option indicates the type of incoming interrupt for each bit. 0 = Level, 1 = Edge. Updates of these settings will affect C_KIND_OF_INTR parameter values.</spirit:description>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.C_KIND_OF_INTR" spirit:order="1900" spirit:bitStringLength="32">0xFFFFFFFE</spirit:value>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.C_KIND_OF_INTR" spirit:order="1900" spirit:bitStringLength="32">0xFFFFFFF8</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_NUM_INTR_INPUTS</spirit:name>

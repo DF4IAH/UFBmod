@@ -72,6 +72,7 @@ module mcu_clk_wiz_1_0_clk_wiz
   output        clk_12mhz,
   // Status and control signals
   input         reset,
+  output        locked,
   input         clk_in1
  );
   // Input buffering
@@ -158,6 +159,7 @@ wire clk_in2_mcu_clk_wiz_1_0;
     .RST                 (reset_high));
   assign reset_high = reset; 
 
+  assign locked = locked_int;
 // Clock Monitor clock assigning
 //--------------------------------------
  // Output buffering

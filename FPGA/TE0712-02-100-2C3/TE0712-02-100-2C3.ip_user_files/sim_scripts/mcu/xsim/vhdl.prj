@@ -18,5 +18,9 @@ vhdl xil_defaultlib  \
 "../../../bd/mcu/ip/mcu_c_shift_ram_0_0/sim/mcu_c_shift_ram_0_0.vhd" \
 "../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_0/sim/mcu_clk_32mhz_locked_sr_0.vhd" \
 "../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_clkReset_inv_0/sim/mcu_clk_32mhz_locked_sr_clkReset_inv_0.vhd" \
+"../../../bd/mcu/ip/mcu_axi_uart16550_0_0/sim/mcu_axi_uart16550_0_0.vhd" \
+"../../../bd/mcu/ip/mcu_axi_gpio_0_0/sim/mcu_axi_gpio_0_0.vhd" \
+"../../../bd/mcu/ip/mcu_axi_quad_spi_0_0/sim/mcu_axi_quad_spi_0_0.vhd" \
+"../../../bd/mcu/ip/mcu_axi_timer_0_0/sim/mcu_axi_timer_0_0.vhd" \
 
 nosort

@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
 -- Date        : Thu Aug  1 23:45:23 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_dist_mem_gen_0_0/mcu_dist_mem_gen_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top mcu_dist_mem_gen_0_0 -prefix
+--               mcu_dist_mem_gen_0_0_ mcu_dist_mem_gen_0_0_sim_netlist.vhdl
 -- Design      : mcu_dist_mem_gen_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -24,8 +24,6 @@ entity mcu_dist_mem_gen_0_0_sdpram is
     dpra : in STD_LOGIC_VECTOR ( 3 downto 0 );
     qdpo_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_dist_mem_gen_0_0_sdpram : entity is "sdpram";
 end mcu_dist_mem_gen_0_0_sdpram;
 
 architecture STRUCTURE of mcu_dist_mem_gen_0_0_sdpram is
@@ -437,8 +435,6 @@ entity mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_12_synth is
     dpra : in STD_LOGIC_VECTOR ( 3 downto 0 );
     qdpo_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_12_synth : entity is "dist_mem_gen_v8_0_12_synth";
 end mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_12_synth;
 
 architecture STRUCTURE of mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_12_synth is
@@ -542,8 +538,6 @@ entity mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_12 is
   attribute C_SYNC_ENABLE of mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_12 : entity is 1;
   attribute C_WIDTH : integer;
   attribute C_WIDTH of mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_12 : entity is 8;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_12 : entity is "dist_mem_gen_v8_0_12";
 end mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_12;
 
 architecture STRUCTURE of mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_12 is

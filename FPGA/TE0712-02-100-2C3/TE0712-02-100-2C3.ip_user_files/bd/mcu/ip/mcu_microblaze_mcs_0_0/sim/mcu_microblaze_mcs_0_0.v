@@ -62,8 +62,6 @@ module mcu_microblaze_mcs_0_0 (
   PIT1_Interrupt,
   PIT1_Toggle,
   INTC_IRQ,
-  UART_rxd,
-  UART_txd,
   GPIO1_tri_i,
   GPIO1_tri_o
 );
@@ -88,11 +86,6 @@ output wire PIT1_Toggle;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.INTC_IRQ, SENSITIVITY LEVEL_HIGH, PortWidth 1" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.INTC_IRQ INTERRUPT" *)
 output wire INTC_IRQ;
-(* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART RxD" *)
-input wire UART_rxd;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME UART, BOARD.ASSOCIATED_PARAM UART_BOARD_INTERFACE" *)
-(* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART TxD" *)
-output wire UART_txd;
 (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_I" *)
 input wire [7 : 0] GPIO1_tri_i;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME GPIO1, C_USE_GPO1 1, C_GPO1_SIZE 8, C_GPO1_INIT 0x00000000, C_USE_GPI1 1, C_GPI1_SIZE 8, C_GPI1_INTERRUPT 0, BOARD.ASSOCIATED_PARAM GPIO1_BOARD_INTERFACE" *)
@@ -108,8 +101,6 @@ output wire [7 : 0] GPIO1_tri_o;
     .PIT1_Interrupt(PIT1_Interrupt),
     .PIT1_Toggle(PIT1_Toggle),
     .INTC_IRQ(INTC_IRQ),
-    .UART_rxd(UART_rxd),
-    .UART_txd(UART_txd),
     .GPIO1_tri_i(GPIO1_tri_i),
     .GPIO1_tri_o(GPIO1_tri_o)
   );

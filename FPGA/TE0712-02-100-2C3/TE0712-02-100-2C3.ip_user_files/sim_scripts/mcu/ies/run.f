@@ -1,5 +1,6 @@
 -makelib ies_lib/xil_defaultlib -sv \
   "C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
+  "C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv" \
   "C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 -endlib
 -makelib ies_lib/xpm \
@@ -235,7 +236,6 @@
   "../../../bd/mcu/ip/mcu_xlconstant_val0_0/sim/mcu_xlconstant_val0_0.v" \
   "../../../bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0_clk_wiz.v" \
   "../../../bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0.v" \
-  "../../../bd/mcu/sim/mcu.v" \
 -endlib
 -makelib ies_lib/xbip_utils_v3_0_9 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/0da8/hdl/xbip_utils_v3_0_vh_rfs.vhd" \
@@ -271,12 +271,55 @@
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_clkReset_inv_0/sim/mcu_clk_32mhz_locked_sr_clkReset_inv_0.vhd" \
 -endlib
+-makelib ies_lib/lib_pkg_v1_0_2 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/0513/hdl/lib_pkg_v1_0_rfs.vhd" \
+-endlib
+-makelib ies_lib/lib_srl_fifo_v1_0_2 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd" \
+-endlib
+-makelib ies_lib/axi_uart16550_v2_0_20 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/07cf/hdl/axi_uart16550_v2_0_vh_rfs.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_axi_uart16550_0_0/sim/mcu_axi_uart16550_0_0.vhd" \
+-endlib
+-makelib ies_lib/interrupt_control_v3_1_4 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/a040/hdl/interrupt_control_v3_1_vh_rfs.vhd" \
+-endlib
+-makelib ies_lib/axi_gpio_v2_0_20 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/a7c9/hdl/axi_gpio_v2_0_vh_rfs.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_axi_gpio_0_0/sim/mcu_axi_gpio_0_0.vhd" \
+-endlib
+-makelib ies_lib/lib_fifo_v1_0_12 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/544a/hdl/lib_fifo_v1_0_rfs.vhd" \
+-endlib
+-makelib ies_lib/axi_quad_spi_v3_2_17 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c3d3/hdl/axi_quad_spi_v3_2_rfs.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_axi_quad_spi_0_0/sim/mcu_axi_quad_spi_0_0.vhd" \
+-endlib
+-makelib ies_lib/axi_timer_v2_0_20 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/e9c1/hdl/axi_timer_v2_0_vh_rfs.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_axi_timer_0_0/sim/mcu_axi_timer_0_0.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/sim/mcu.v" \
+-endlib
 -makelib ies_lib/axi_protocol_converter_v2_1_18 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/7a04/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_5/sim/mcu_auto_pc_5.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_3/sim/mcu_auto_pc_3.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_4/sim/mcu_auto_pc_4.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   glbl.v

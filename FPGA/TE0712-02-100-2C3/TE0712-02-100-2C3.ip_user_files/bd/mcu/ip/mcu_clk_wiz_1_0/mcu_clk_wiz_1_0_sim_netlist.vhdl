@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Tue Jul 30 19:31:35 2019
+-- Date        : Sat Aug  3 16:54:07 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top mcu_clk_wiz_1_0 -prefix
---               mcu_clk_wiz_1_0_ mcu_clk_wiz_1_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0_sim_netlist.vhdl
 -- Design      : mcu_clk_wiz_1_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -18,8 +18,11 @@ entity mcu_clk_wiz_1_0_mcu_clk_wiz_1_0_clk_wiz is
   port (
     clk_12mhz : out STD_LOGIC;
     reset : in STD_LOGIC;
+    locked : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_clk_wiz_1_0_mcu_clk_wiz_1_0_clk_wiz : entity is "mcu_clk_wiz_1_0_clk_wiz";
 end mcu_clk_wiz_1_0_mcu_clk_wiz_1_0_clk_wiz;
 
 architecture STRUCTURE of mcu_clk_wiz_1_0_mcu_clk_wiz_1_0_clk_wiz is
@@ -33,7 +36,6 @@ architecture STRUCTURE of mcu_clk_wiz_1_0_mcu_clk_wiz_1_0_clk_wiz is
   signal NLW_plle2_adv_inst_CLKOUT4_UNCONNECTED : STD_LOGIC;
   signal NLW_plle2_adv_inst_CLKOUT5_UNCONNECTED : STD_LOGIC;
   signal NLW_plle2_adv_inst_DRDY_UNCONNECTED : STD_LOGIC;
-  signal NLW_plle2_adv_inst_LOCKED_UNCONNECTED : STD_LOGIC;
   signal NLW_plle2_adv_inst_DO_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute BOX_TYPE : string;
   attribute BOX_TYPE of clkf_buf : label is "PRIMITIVE";
@@ -109,7 +111,7 @@ plle2_adv_inst: unisim.vcomponents.PLLE2_ADV
       DO(15 downto 0) => NLW_plle2_adv_inst_DO_UNCONNECTED(15 downto 0),
       DRDY => NLW_plle2_adv_inst_DRDY_UNCONNECTED,
       DWE => '0',
-      LOCKED => NLW_plle2_adv_inst_LOCKED_UNCONNECTED,
+      LOCKED => locked,
       PWRDWN => '0',
       RST => reset
     );
@@ -122,6 +124,7 @@ entity mcu_clk_wiz_1_0 is
   port (
     clk_12mhz : out STD_LOGIC;
     reset : in STD_LOGIC;
+    locked : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
@@ -134,6 +137,7 @@ inst: entity work.mcu_clk_wiz_1_0_mcu_clk_wiz_1_0_clk_wiz
      port map (
       clk_12mhz => clk_12mhz,
       clk_in1 => clk_in1,
+      locked => locked,
       reset => reset
     );
 end STRUCTURE;

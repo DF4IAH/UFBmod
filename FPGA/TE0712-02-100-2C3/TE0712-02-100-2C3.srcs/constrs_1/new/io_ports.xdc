@@ -7,7 +7,7 @@
 
 ## Bank 0 / 3.3 V
 
-#set_property -dict {IOSTANDARD LVCMOS33} [get_ports {spi_sck}]
+#set_property -dict {PACKAGE_PIN L12 IOSTANDARD LVCMOS33} [get_ports {spi_sck}]
 #CCLK_0 sch:SPI-SCK (PACKAGE_PIN L12)
 
 
@@ -182,7 +182,7 @@ set_property -dict {PACKAGE_PIN V22 IOSTANDARD LVCMOS33} [get_ports onewire]
 #IO_L5N_T0_D07_14 sch:B14_L5_N
 
 
-#set_property -dict {PACKAGE_PIN T19 IOSTANDARD LVCMOS33} [get_ports {spi_cs}]
+set_property -dict {PACKAGE_PIN T19 IOSTANDARD LVCMOS33} [get_ports {spi_cs}]
 #IO_L6P_T0_FCS_B_14 sch:SPI-CS
 
 set_property -dict {PACKAGE_PIN T20 IOSTANDARD LVCMOS33} [get_ports pll_sda]
@@ -552,8 +552,8 @@ set_property -dict {PACKAGE_PIN M16 IOSTANDARD LVCMOS33} [get_ports ufb_fpga_ft_
 #IO_L7N_T1_16 sch:B16_L7_N
 
 
-#set_property -dict {PACKAGE_PIN C13 IOSTANDARD LVCMOS33} [get_ports {b16_l8_p}]
-#IO_L8P_T1_16 sch:B16_L8_P
+set_property -dict {PACKAGE_PIN C13 IOSTANDARD LVCMOS33} [get_ports {fpga_lcd_bl_pwm}]
+#IO_L8P_T1_16 sch:B16_L8_P --> FPGA_LCD_BL_PWM
 
 #set_property -dict {PACKAGE_PIN B13 IOSTANDARD LVCMOS33} [get_ports {b16_l8_n}]
 #IO_L8N_T1_16 sch:B16_L8_N
@@ -650,15 +650,15 @@ set_property -dict {PACKAGE_PIN D17 IOSTANDARD LVCMOS33} [get_ports ufb_fpga_trx
 #IO_L21N_T3_DQS_16 sch:B16_L21_N
 
 
-#set_property -dict {PACKAGE_PIN E22 IOSTANDARD LVCMOS33} [get_ports {b16_l22_p}]
-#IO_L22P_T3_16 sch:B16_L22_P
+set_property -dict {PACKAGE_PIN E22 IOSTANDARD LVCMOS33} [get_ports {fpga_led_rgb_red}]
+#IO_L22P_T3_16 sch:B16_L22_P --> FPGA_LED_RGB_RED
 
-#set_property -dict {PACKAGE_PIN D22 IOSTANDARD LVCMOS33} [get_ports {b16_l22_n}]
-#IO_L22N_T3_16 sch:B16_L22_N
+set_property -dict {PACKAGE_PIN D22 IOSTANDARD LVCMOS33} [get_ports {fpga_led_rgb_green}]
+#IO_L22N_T3_16 sch:B16_L22_N --> FPGA_LED_RGB_GREEN
 
 
-#set_property -dict {PACKAGE_PIN E21 IOSTANDARD LVCMOS33} [get_ports {b16_l23_p}]
-#IO_L23P_T3_16 sch:B16_L23_P
+set_property -dict {PACKAGE_PIN E21 IOSTANDARD LVCMOS33} [get_ports {fpga_led_rgb_blue}]
+#IO_L23P_T3_16 sch:B16_L23_P --> FPGA_LED_RGB_BLUE
 
 #set_property -dict {PACKAGE_PIN D21 IOSTANDARD LVCMOS33} [get_ports {b16_l23_n}]
 #IO_L23N_T3_16 sch:B16_L23_N

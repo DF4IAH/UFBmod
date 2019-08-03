@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
 -- Date        : Wed Jul 31 23:33:36 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_selectio_wiz_1_0/mcu_selectio_wiz_1_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top mcu_selectio_wiz_1_0 -prefix
+--               mcu_selectio_wiz_1_0_ mcu_selectio_wiz_1_0_stub.vhdl
 -- Design      : mcu_selectio_wiz_1_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tfgg484-2

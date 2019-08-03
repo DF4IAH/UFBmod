@@ -31,6 +31,14 @@ vlib activehdl/xbip_pipe_v3_0_5
 vlib activehdl/xbip_dsp48_addsub_v3_0_5
 vlib activehdl/xbip_addsub_v3_0_5
 vlib activehdl/c_addsub_v12_0_12
+vlib activehdl/lib_pkg_v1_0_2
+vlib activehdl/lib_srl_fifo_v1_0_2
+vlib activehdl/axi_uart16550_v2_0_20
+vlib activehdl/interrupt_control_v3_1_4
+vlib activehdl/axi_gpio_v2_0_20
+vlib activehdl/lib_fifo_v1_0_12
+vlib activehdl/axi_quad_spi_v3_2_17
+vlib activehdl/axi_timer_v2_0_20
 vlib activehdl/axi_protocol_converter_v2_1_18
 
 vmap xil_defaultlib activehdl/xil_defaultlib
@@ -63,10 +71,19 @@ vmap xbip_pipe_v3_0_5 activehdl/xbip_pipe_v3_0_5
 vmap xbip_dsp48_addsub_v3_0_5 activehdl/xbip_dsp48_addsub_v3_0_5
 vmap xbip_addsub_v3_0_5 activehdl/xbip_addsub_v3_0_5
 vmap c_addsub_v12_0_12 activehdl/c_addsub_v12_0_12
+vmap lib_pkg_v1_0_2 activehdl/lib_pkg_v1_0_2
+vmap lib_srl_fifo_v1_0_2 activehdl/lib_srl_fifo_v1_0_2
+vmap axi_uart16550_v2_0_20 activehdl/axi_uart16550_v2_0_20
+vmap interrupt_control_v3_1_4 activehdl/interrupt_control_v3_1_4
+vmap axi_gpio_v2_0_20 activehdl/axi_gpio_v2_0_20
+vmap lib_fifo_v1_0_12 activehdl/lib_fifo_v1_0_12
+vmap axi_quad_spi_v3_2_17 activehdl/axi_quad_spi_v3_2_17
+vmap axi_timer_v2_0_20 activehdl/axi_timer_v2_0_20
 vmap axi_protocol_converter_v2_1_18 activehdl/axi_protocol_converter_v2_1_18
 
 vlog -work xil_defaultlib  -sv2k12 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/85a3" \
 "C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
+"C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv" \
 "C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm -93 \
@@ -302,7 +319,6 @@ vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sou
 "../../../bd/mcu/ip/mcu_xlconstant_val0_0/sim/mcu_xlconstant_val0_0.v" \
 "../../../bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0_clk_wiz.v" \
 "../../../bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0.v" \
-"../../../bd/mcu/sim/mcu.v" \
 
 vcom -work xbip_utils_v3_0_9 -93 \
 "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/0da8/hdl/xbip_utils_v3_0_vh_rfs.vhd" \
@@ -338,12 +354,55 @@ vcom -work c_addsub_v12_0_12 -93 \
 vcom -work xil_defaultlib -93 \
 "../../../bd/mcu/ip/mcu_clk_32mhz_locked_sr_clkReset_inv_0/sim/mcu_clk_32mhz_locked_sr_clkReset_inv_0.vhd" \
 
+vcom -work lib_pkg_v1_0_2 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/0513/hdl/lib_pkg_v1_0_rfs.vhd" \
+
+vcom -work lib_srl_fifo_v1_0_2 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd" \
+
+vcom -work axi_uart16550_v2_0_20 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/07cf/hdl/axi_uart16550_v2_0_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib -93 \
+"../../../bd/mcu/ip/mcu_axi_uart16550_0_0/sim/mcu_axi_uart16550_0_0.vhd" \
+
+vcom -work interrupt_control_v3_1_4 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/a040/hdl/interrupt_control_v3_1_vh_rfs.vhd" \
+
+vcom -work axi_gpio_v2_0_20 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/a7c9/hdl/axi_gpio_v2_0_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib -93 \
+"../../../bd/mcu/ip/mcu_axi_gpio_0_0/sim/mcu_axi_gpio_0_0.vhd" \
+
+vcom -work lib_fifo_v1_0_12 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/544a/hdl/lib_fifo_v1_0_rfs.vhd" \
+
+vcom -work axi_quad_spi_v3_2_17 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c3d3/hdl/axi_quad_spi_v3_2_rfs.vhd" \
+
+vcom -work xil_defaultlib -93 \
+"../../../bd/mcu/ip/mcu_axi_quad_spi_0_0/sim/mcu_axi_quad_spi_0_0.vhd" \
+
+vcom -work axi_timer_v2_0_20 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/e9c1/hdl/axi_timer_v2_0_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib -93 \
+"../../../bd/mcu/ip/mcu_axi_timer_0_0/sim/mcu_axi_timer_0_0.vhd" \
+
+vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/85a3" \
+"../../../bd/mcu/sim/mcu.v" \
+
 vlog -work axi_protocol_converter_v2_1_18  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/85a3" \
 "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/7a04/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/85a3" \
-"../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_5/sim/mcu_auto_pc_5.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_3/sim/mcu_auto_pc_3.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_4/sim/mcu_auto_pc_4.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"
