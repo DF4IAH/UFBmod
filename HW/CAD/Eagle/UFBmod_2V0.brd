@@ -8724,9 +8724,13 @@ Covered vias can be set in Masks (Limit).
 </signal>
 <signal name="FPGA_LED_RGB_GREEN">
 <contactref element="R1022" pad="2"/>
+<contactref element="JB1" pad="34"/>
+<wire x1="26.035" y1="20.97" x2="51.63" y2="27.11" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="FPGA_LED_RGB_BLUE">
 <contactref element="R1023" pad="2"/>
+<contactref element="JB1" pad="36"/>
+<wire x1="27.305" y1="20.97" x2="52.13" y2="27.11" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="LED_RGB_RED">
 <contactref element="R1021" pad="1"/>
@@ -8753,6 +8757,8 @@ Covered vias can be set in Masks (Limit).
 </signal>
 <signal name="FPGA_LED_RGB_RED">
 <contactref element="R1021" pad="2"/>
+<contactref element="JB1" pad="32"/>
+<wire x1="24.765" y1="20.97" x2="51.13" y2="27.11" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="ROT_P">
 <contactref element="X1011" pad="E"/>
@@ -8844,6 +8850,8 @@ Covered vias can be set in Masks (Limit).
 </signal>
 <signal name="FPGA_LCD_BL_PWM">
 <contactref element="R0552" pad="2"/>
+<contactref element="JB1" pad="84"/>
+<wire x1="72.39" y1="17.16" x2="64.13" y2="27.11" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="+5V_USB">
 <contactref element="PF1311" pad="1"/>

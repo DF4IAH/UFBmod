@@ -18604,6 +18604,34 @@ Left</text>
 <label x="40.64" y="142.24" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
+<net name="FPGA_LED_RGB_RED" class="0">
+<segment>
+<pinref part="JB1" gate="G$1" pin="B16_L22_P"/>
+<wire x1="96.52" y1="114.3" x2="40.64" y2="114.3" width="0.1524" layer="91"/>
+<label x="40.64" y="114.3" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_LED_RGB_GREEN" class="0">
+<segment>
+<pinref part="JB1" gate="G$1" pin="B16_L22_N"/>
+<wire x1="96.52" y1="111.76" x2="76.2" y2="111.76" width="0.1524" layer="91"/>
+<label x="76.2" y="111.76" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_LED_RGB_BLUE" class="0">
+<segment>
+<pinref part="JB1" gate="G$1" pin="B16_L24_N"/>
+<wire x1="96.52" y1="109.22" x2="40.64" y2="109.22" width="0.1524" layer="91"/>
+<label x="40.64" y="109.22" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_LCD_BL_PWM" class="0">
+<segment>
+<pinref part="JB1" gate="G$1" pin="B16_L8_P"/>
+<wire x1="96.52" y1="48.26" x2="40.64" y2="48.26" width="0.1524" layer="91"/>
+<label x="40.64" y="48.26" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
