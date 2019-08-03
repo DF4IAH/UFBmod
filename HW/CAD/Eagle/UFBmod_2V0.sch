@@ -21564,6 +21564,8 @@ FT232H</text>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">JTAG-Connector</text>
 <text x="22.86" y="73.66" size="2.54" layer="97" ratio="15">USB-Connector</text>
 <text x="50.8" y="154.94" size="1.778" layer="97">JTAG CPLD EN</text>
+<text x="15.24" y="96.52" size="1.778" layer="97">Programmer:
+Digilent JTAG HS3</text>
 </plain>
 <instances>
 <instance part="FRAME_13" gate="G$1" x="0" y="0" smashed="yes">
