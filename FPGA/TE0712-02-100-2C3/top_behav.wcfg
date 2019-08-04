@@ -3,28 +3,30 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="top_tb_func_synth.wdb" id="1">
+      <db_ref path="top_tb_behav.wdb" id="1">
          <top_modules>
+            <top_module name="comp_defs" />
             <top_module name="glbl" />
+            <top_module name="ipif_pkg" />
+            <top_module name="lib_pkg" />
+            <top_module name="lmb_bram_if_funcs" />
+            <top_module name="mdm_funcs" />
+            <top_module name="tc_types" />
             <top_module name="top_tb" />
+            <top_module name="vcomponents" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="14405100000fs"></ZoomStartTime>
-      <ZoomEndTime time="19395100001fs"></ZoomEndTime>
-      <Cursor1Time time="18560100000fs"></Cursor1Time>
+      <ZoomStartTime time="15515370325fs"></ZoomStartTime>
+      <ZoomEndTime time="15621970326fs"></ZoomEndTime>
+      <Cursor1Time time="15340000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="281"></NameColumnWidth>
-      <ValueColumnWidth column_width="210"></ValueColumnWidth>
+      <ValueColumnWidth column_width="198"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="6" />
-   <wave_markers>
-      <marker time="6640725000" label="" />
-      <marker time="3240100000" label="" />
-      <marker time="13617188000" label="" />
-   </wave_markers>
+   <WVObjectSize size="7" />
    <wvobject fp_name="group137" type="group">
       <obj_property name="label">Resets</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -41,7 +43,6 @@
    <wvobject fp_name="group138" type="group">
       <obj_property name="label">Clocks</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/top_tb/pll_clk_p" type="logic">
          <obj_property name="ElementShortName">pll_clk_p</obj_property>
          <obj_property name="ObjectShortName">pll_clk_p</obj_property>
@@ -139,27 +140,57 @@
       <obj_property name="label">Internals</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject fp_name="group166" type="group">
+   <wvobject fp_name="group374" type="group">
       <obj_property name="label">Microblaze</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/microblaze_0/Instr_Addr" type="array">
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/mb_0/Reset" type="logic">
+         <obj_property name="ElementShortName">Reset</obj_property>
+         <obj_property name="ObjectShortName">Reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/mb_0/Instr_Addr" type="array">
          <obj_property name="ElementShortName">Instr_Addr[0:31]</obj_property>
          <obj_property name="ObjectShortName">Instr_Addr[0:31]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/microblaze_0/Data_Addr" type="array">
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/mb_0/Instr" type="array">
+         <obj_property name="ElementShortName">Instr[0:31]</obj_property>
+         <obj_property name="ObjectShortName">Instr[0:31]</obj_property>
+         <obj_property name="CustomSignalColor">#808080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/mb_0/Data_Addr" type="array">
          <obj_property name="ElementShortName">Data_Addr[0:31]</obj_property>
          <obj_property name="ObjectShortName">Data_Addr[0:31]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/microblaze_0/Data_Read" type="array">
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/mb_0/Data_Read" type="array">
          <obj_property name="ElementShortName">Data_Read[0:31]</obj_property>
          <obj_property name="ObjectShortName">Data_Read[0:31]</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/mb_0/Data_Write" type="array">
+         <obj_property name="ElementShortName">Data_Write[0:31]</obj_property>
+         <obj_property name="ObjectShortName">Data_Write[0:31]</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group660" type="group">
+      <obj_property name="label">Microblaze_MDM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/mb_0_mdm/Dbg_TDO_0" type="logic">
+         <obj_property name="ElementShortName">Dbg_TDO_0</obj_property>
+         <obj_property name="ObjectShortName">Dbg_TDO_0</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group70" type="group">
       <obj_property name="label">LVDS</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/top_tb/topi/ufb_trx_rxclk_p" type="logic">
          <obj_property name="ElementShortName">ufb_trx_rxclk_p</obj_property>
          <obj_property name="ObjectShortName">ufb_trx_rxclk_p</obj_property>
@@ -220,37 +251,23 @@
          <obj_property name="label">clk_32mhz_LVDS</obj_property>
          <obj_property name="DisplayName">label</obj_property>
       </wvobject>
-      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/reset" type="logic">
-         <obj_property name="ElementShortName">reset</obj_property>
-         <obj_property name="ObjectShortName">reset</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/clk_in1_p" type="logic">
-         <obj_property name="ElementShortName">clk_in1_p</obj_property>
-         <obj_property name="ObjectShortName">clk_in1_p</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/clk_in1_n" type="logic">
-         <obj_property name="ElementShortName">clk_in1_n</obj_property>
-         <obj_property name="ObjectShortName">clk_in1_n</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/locked" type="logic">
-         <obj_property name="ElementShortName">locked</obj_property>
-         <obj_property name="ObjectShortName">locked</obj_property>
-         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/clk_32_lvds" type="logic">
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_lvds/inst/clk_32_lvds" type="logic">
          <obj_property name="ElementShortName">clk_32_lvds</obj_property>
          <obj_property name="ObjectShortName">clk_32_lvds</obj_property>
       </wvobject>
-      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/clk_div_8_lvds" type="logic">
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_lvds/inst/clk_div_8_lvds" type="logic">
          <obj_property name="ElementShortName">clk_div_8_lvds</obj_property>
          <obj_property name="ObjectShortName">clk_div_8_lvds</obj_property>
       </wvobject>
-      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/inst/seq_reg1" type="array">
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_lvds/inst/locked" type="logic">
+         <obj_property name="ElementShortName">locked</obj_property>
+         <obj_property name="ObjectShortName">locked</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_lvds/inst/seq_reg1" type="array">
          <obj_property name="ElementShortName">seq_reg1[7:0]</obj_property>
          <obj_property name="ObjectShortName">seq_reg1[7:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/inst/seq_reg2" type="array">
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_lvds/inst/seq_reg2" type="array">
          <obj_property name="ElementShortName">seq_reg2[7:0]</obj_property>
          <obj_property name="ObjectShortName">seq_reg2[7:0]</obj_property>
       </wvobject>
@@ -261,7 +278,6 @@
       <wvobject fp_name="group75" type="group">
          <obj_property name="label">clk_32mhz_locked_inv</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_locked_inv/A" type="array">
             <obj_property name="ElementShortName">A[0:0]</obj_property>
             <obj_property name="ObjectShortName">A[0:0]</obj_property>
@@ -278,7 +294,6 @@
       <wvobject fp_name="group67" type="group">
          <obj_property name="label">clk_32mhz_locked_inv_sr_clkReset</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_locked_inv_sr_clkReset/D" type="array">
             <obj_property name="ElementShortName">D[0:0]</obj_property>
             <obj_property name="ObjectShortName">D[0:0]</obj_property>
@@ -303,7 +318,6 @@
       <wvobject fp_name="group71" type="group">
          <obj_property name="label">clk_32mhz_locked_inv_sr_ioReset</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/clk_32mhz_locked_inv_sr_ioReset/D" type="array">
             <obj_property name="ElementShortName">D[0:0]</obj_property>
             <obj_property name="ObjectShortName">D[0:0]</obj_property>

@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-//Date        : Sun Aug  4 02:53:34 2019
+//Date        : Sun Aug  4 22:20:52 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu_wrapper.bd
 //Design      : mcu_wrapper
@@ -25,6 +25,8 @@ module mcu_wrapper
     DDR3_SDRAM_ras_n,
     DDR3_SDRAM_reset_n,
     DDR3_SDRAM_we_n,
+    Dbg_TDI_0_0,
+    Dbg_TDO_0_0,
     gpio_rtl_0_tri_o,
     init_calib_complete,
     pll_clk_n,
@@ -76,6 +78,8 @@ module mcu_wrapper
   output DDR3_SDRAM_ras_n;
   output DDR3_SDRAM_reset_n;
   output DDR3_SDRAM_we_n;
+  output Dbg_TDI_0_0;
+  input Dbg_TDO_0_0;
   output [7:0]gpio_rtl_0_tri_o;
   output init_calib_complete;
   input pll_clk_n;
@@ -128,6 +132,8 @@ module mcu_wrapper
   wire DDR3_SDRAM_ras_n;
   wire DDR3_SDRAM_reset_n;
   wire DDR3_SDRAM_we_n;
+  wire Dbg_TDI_0_0;
+  wire Dbg_TDO_0_0;
   wire [7:0]gpio_rtl_0_tri_o;
   wire init_calib_complete;
   wire pll_clk_n;
@@ -196,6 +202,8 @@ module mcu_wrapper
         .DDR3_SDRAM_ras_n(DDR3_SDRAM_ras_n),
         .DDR3_SDRAM_reset_n(DDR3_SDRAM_reset_n),
         .DDR3_SDRAM_we_n(DDR3_SDRAM_we_n),
+        .Dbg_TDI_0_0(Dbg_TDI_0_0),
+        .Dbg_TDO_0_0(Dbg_TDO_0_0),
         .gpio_rtl_0_tri_o(gpio_rtl_0_tri_o),
         .init_calib_complete(init_calib_complete),
         .pll_clk_n(pll_clk_n),

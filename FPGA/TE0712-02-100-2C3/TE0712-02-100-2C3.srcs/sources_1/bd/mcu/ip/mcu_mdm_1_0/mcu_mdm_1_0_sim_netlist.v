@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-// Date        : Sun Aug  4 01:55:57 2019
+// Date        : Sun Aug  4 21:37:32 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_mdm_1_0/mcu_mdm_1_0_sim_netlist.v
@@ -15,13 +15,33 @@
 (* CHECK_LICENSE_TYPE = "mcu_mdm_1_0,MDM,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "MDM,Vivado 2019.1" *) 
 (* NotValidForBitStream *)
 module mcu_mdm_1_0
-   (M_AXI_ACLK,
+   (S_AXI_ACLK,
+    S_AXI_ARESETN,
+    M_AXI_ACLK,
     M_AXI_ARESETN,
+    Interrupt,
     Debug_SYS_Rst,
     Trig_In_0,
     Trig_Ack_In_0,
     Trig_Out_0,
     Trig_Ack_Out_0,
+    S_AXI_AWADDR,
+    S_AXI_AWVALID,
+    S_AXI_AWREADY,
+    S_AXI_WDATA,
+    S_AXI_WSTRB,
+    S_AXI_WVALID,
+    S_AXI_WREADY,
+    S_AXI_BRESP,
+    S_AXI_BVALID,
+    S_AXI_BREADY,
+    S_AXI_ARADDR,
+    S_AXI_ARVALID,
+    S_AXI_ARREADY,
+    S_AXI_RDATA,
+    S_AXI_RRESP,
+    S_AXI_RVALID,
+    S_AXI_RREADY,
     M_AXI_AWID,
     M_AXI_AWADDR,
     M_AXI_AWLEN,
@@ -83,13 +103,33 @@ module mcu_mdm_1_0
     Dbg_Trig_Out_0,
     Dbg_Trig_Ack_Out_0,
     Dbg_Disable_0);
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 CLK.S_AXI_ACLK CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME CLK.S_AXI_ACLK, ASSOCIATED_BUSIF S_AXI:MBDEBUG_AXI_0:MBDEBUG_AXI_1:MBDEBUG_AXI_2:MBDEBUG_AXI_3:MBDEBUG_AXI_4:MBDEBUG_AXI_5:MBDEBUG_AXI_6:MBDEBUG_AXI_7:MBDEBUG_AXI_8:MBDEBUG_AXI_9:MBDEBUG_AXI_10:MBDEBUG_AXI_11:MBDEBUG_AXI_12:MBDEBUG_AXI_13:MBDEBUG_AXI_14:MBDEBUG_AXI_15:MBDEBUG_AXI_16:MBDEBUG_AXI_17:MBDEBUG_AXI_18:MBDEBUG_AXI_19:MBDEBUG_AXI_20:MBDEBUG_AXI_21:MBDEBUG_AXI_22:MBDEBUG_AXI_23:MBDEBUG_AXI_24:MBDEBUG_AXI_25:MBDEBUG_AXI_26:MBDEBUG_AXI_27:MBDEBUG_AXI_28:MBDEBUG_AXI_29:MBDEBUG_AXI_30:MBDEBUG_AXI_31, ASSOCIATED_RESET S_AXI_ARESETN, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) input S_AXI_ACLK;
+  (* x_interface_info = "xilinx.com:signal:reset:1.0 RST.S_AXI_ARESETN RST" *) (* x_interface_parameter = "XIL_INTERFACENAME RST.S_AXI_ARESETN, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input S_AXI_ARESETN;
   (* x_interface_info = "xilinx.com:signal:clock:1.0 CLK.M_AXI_ACLK CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME CLK.M_AXI_ACLK, ASSOCIATED_BUSIF M_AXI:LMB_0:LMB_1:LMB_2:LMB_3:LMB_4:LMB_5:LMB_6:LMB_7:LMB_8:LMB_9:LMB_10:LMB_11:LMB_12:LMB_13:LMB_14:LMB_15:LMB_16:LMB_17:LMB_18:LMB_19:LMB_20:LMB_21:LMB_22:LMB_23:LMB_24:LMB_25:LMB_26:LMB_27:LMB_28:LMB_29:LMB_30:LMB_31, ASSOCIATED_RESET M_AXI_ARESETN, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) input M_AXI_ACLK;
   (* x_interface_info = "xilinx.com:signal:reset:1.0 RST.M_AXI_ARESETN RST" *) (* x_interface_parameter = "XIL_INTERFACENAME RST.M_AXI_ARESETN, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input M_AXI_ARESETN;
+  (* x_interface_info = "xilinx.com:signal:interrupt:1.0 INTERRUPT.INTERRUPT INTERRUPT" *) (* x_interface_parameter = "XIL_INTERFACENAME INTERRUPT.INTERRUPT, SENSITIVITY EDGE_RISING, SUGGESTED_PRIORITY HIGH, PortWidth 1" *) output Interrupt;
   (* x_interface_info = "xilinx.com:signal:reset:1.0 RST.Debug_SYS_Rst RST" *) (* x_interface_parameter = "XIL_INTERFACENAME RST.Debug_SYS_Rst, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) output Debug_SYS_Rst;
   (* x_interface_info = "xilinx.com:interface:trigger:1.0 TRIG_IN_0 TRIG" *) input Trig_In_0;
   (* x_interface_info = "xilinx.com:interface:trigger:1.0 TRIG_IN_0 ACK" *) output Trig_Ack_In_0;
   (* x_interface_info = "xilinx.com:interface:trigger:1.0 TRIG_OUT_0 TRIG" *) output Trig_Out_0;
   (* x_interface_info = "xilinx.com:interface:trigger:1.0 TRIG_OUT_0 ACK" *) input Trig_Ack_Out_0;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI AWADDR" *) (* x_interface_parameter = "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 4, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 0, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 32, MAX_BURST_LENGTH 1, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *) input [3:0]S_AXI_AWADDR;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI AWVALID" *) input S_AXI_AWVALID;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI AWREADY" *) output S_AXI_AWREADY;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI WDATA" *) input [31:0]S_AXI_WDATA;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI WSTRB" *) input [3:0]S_AXI_WSTRB;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI WVALID" *) input S_AXI_WVALID;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI WREADY" *) output S_AXI_WREADY;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI BRESP" *) output [1:0]S_AXI_BRESP;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI BVALID" *) output S_AXI_BVALID;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI BREADY" *) input S_AXI_BREADY;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI ARADDR" *) input [3:0]S_AXI_ARADDR;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI ARVALID" *) input S_AXI_ARVALID;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI ARREADY" *) output S_AXI_ARREADY;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI RDATA" *) output [31:0]S_AXI_RDATA;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI RRESP" *) output [1:0]S_AXI_RRESP;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI RVALID" *) output S_AXI_RVALID;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 S_AXI RREADY" *) input S_AXI_RREADY;
   (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWID" *) (* x_interface_parameter = "XIL_INTERFACENAME M_AXI, ID_WIDTH 0, READ_WRITE_MODE READ_WRITE, SUPPORTS_NARROW_BURST 0, ADDR_WIDTH 32, PROTOCOL AXI4, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, WUSER_BITS_PER_BYTE 0, RUSER_WIDTH 0, RUSER_BITS_PER_BYTE 0, BUSER_WIDTH 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, DATA_WIDTH 32, MAX_BURST_LENGTH 32, HAS_BURST 1, FREQ_HZ 100000000, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) output [0:0]M_AXI_AWID;
   (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWADDR" *) output [31:0]M_AXI_AWADDR;
   (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWLEN" *) output [7:0]M_AXI_AWLEN;
@@ -166,6 +206,7 @@ module mcu_mdm_1_0
   wire [0:7]Dbg_Trig_Out_0;
   wire Dbg_Update_0;
   wire Debug_SYS_Rst;
+  wire Interrupt;
   wire LMB_Addr_Strobe_0;
   wire [0:3]LMB_Byte_Enable_0;
   wire LMB_CE_0;
@@ -216,6 +257,25 @@ module mcu_mdm_1_0
   wire M_AXI_WREADY;
   wire [3:0]M_AXI_WSTRB;
   wire M_AXI_WVALID;
+  wire S_AXI_ACLK;
+  wire [3:0]S_AXI_ARADDR;
+  wire S_AXI_ARESETN;
+  wire S_AXI_ARREADY;
+  wire S_AXI_ARVALID;
+  wire [3:0]S_AXI_AWADDR;
+  wire S_AXI_AWREADY;
+  wire S_AXI_AWVALID;
+  wire S_AXI_BREADY;
+  wire [1:0]S_AXI_BRESP;
+  wire S_AXI_BVALID;
+  wire [31:0]S_AXI_RDATA;
+  wire S_AXI_RREADY;
+  wire [1:0]S_AXI_RRESP;
+  wire S_AXI_RVALID;
+  wire [31:0]S_AXI_WDATA;
+  wire S_AXI_WREADY;
+  wire [3:0]S_AXI_WSTRB;
+  wire S_AXI_WVALID;
   wire Trig_Ack_In_0;
   wire Trig_Ack_Out_0;
   wire Trig_In_0;
@@ -670,7 +730,6 @@ module mcu_mdm_1_0
   wire NLW_U0_Ext_JTAG_TDI_UNCONNECTED;
   wire NLW_U0_Ext_JTAG_UPDATE_UNCONNECTED;
   wire NLW_U0_Ext_NM_BRK_UNCONNECTED;
-  wire NLW_U0_Interrupt_UNCONNECTED;
   wire NLW_U0_LMB_Addr_Strobe_1_UNCONNECTED;
   wire NLW_U0_LMB_Addr_Strobe_10_UNCONNECTED;
   wire NLW_U0_LMB_Addr_Strobe_11_UNCONNECTED;
@@ -765,11 +824,6 @@ module mcu_mdm_1_0
   wire NLW_U0_LMB_Write_Strobe_8_UNCONNECTED;
   wire NLW_U0_LMB_Write_Strobe_9_UNCONNECTED;
   wire NLW_U0_M_AXIS_TVALID_UNCONNECTED;
-  wire NLW_U0_S_AXI_ARREADY_UNCONNECTED;
-  wire NLW_U0_S_AXI_AWREADY_UNCONNECTED;
-  wire NLW_U0_S_AXI_BVALID_UNCONNECTED;
-  wire NLW_U0_S_AXI_RVALID_UNCONNECTED;
-  wire NLW_U0_S_AXI_WREADY_UNCONNECTED;
   wire NLW_U0_TRACE_CLK_OUT_UNCONNECTED;
   wire NLW_U0_TRACE_CTL_UNCONNECTED;
   wire NLW_U0_Trig_Ack_In_1_UNCONNECTED;
@@ -1063,9 +1117,6 @@ module mcu_mdm_1_0
   wire [0:31]NLW_U0_LMB_Data_Write_9_UNCONNECTED;
   wire [31:0]NLW_U0_M_AXIS_TDATA_UNCONNECTED;
   wire [6:0]NLW_U0_M_AXIS_TID_UNCONNECTED;
-  wire [1:0]NLW_U0_S_AXI_BRESP_UNCONNECTED;
-  wire [31:0]NLW_U0_S_AXI_RDATA_UNCONNECTED;
-  wire [1:0]NLW_U0_S_AXI_RRESP_UNCONNECTED;
   wire [31:0]NLW_U0_TRACE_DATA_UNCONNECTED;
 
   (* C_ADDR_SIZE = "32" *) 
@@ -1098,7 +1149,7 @@ module mcu_mdm_1_0
   (* C_USE_BSCAN = "0" *) 
   (* C_USE_CONFIG_RESET = "0" *) 
   (* C_USE_CROSS_TRIGGER = "1" *) 
-  (* C_USE_UART = "0" *) 
+  (* C_USE_UART = "1" *) 
   mcu_mdm_1_0_MDM U0
        (.Config_Reset(1'b0),
         .Dbg_ARADDR_0(NLW_U0_Dbg_ARADDR_0_UNCONNECTED[14:2]),
@@ -2168,7 +2219,7 @@ module mcu_mdm_1_0
         .Ext_JTAG_TDO(1'b0),
         .Ext_JTAG_UPDATE(NLW_U0_Ext_JTAG_UPDATE_UNCONNECTED),
         .Ext_NM_BRK(NLW_U0_Ext_NM_BRK_UNCONNECTED),
-        .Interrupt(NLW_U0_Interrupt_UNCONNECTED),
+        .Interrupt(Interrupt),
         .LMB_Addr_Strobe_0(LMB_Addr_Strobe_0),
         .LMB_Addr_Strobe_1(NLW_U0_LMB_Addr_Strobe_1_UNCONNECTED),
         .LMB_Addr_Strobe_10(NLW_U0_LMB_Addr_Strobe_10_UNCONNECTED),
@@ -2566,25 +2617,25 @@ module mcu_mdm_1_0
         .M_AXI_WREADY(M_AXI_WREADY),
         .M_AXI_WSTRB(M_AXI_WSTRB),
         .M_AXI_WVALID(M_AXI_WVALID),
-        .S_AXI_ACLK(1'b0),
-        .S_AXI_ARADDR({1'b0,1'b0,1'b0,1'b0}),
-        .S_AXI_ARESETN(1'b0),
-        .S_AXI_ARREADY(NLW_U0_S_AXI_ARREADY_UNCONNECTED),
-        .S_AXI_ARVALID(1'b0),
-        .S_AXI_AWADDR({1'b0,1'b0,1'b0,1'b0}),
-        .S_AXI_AWREADY(NLW_U0_S_AXI_AWREADY_UNCONNECTED),
-        .S_AXI_AWVALID(1'b0),
-        .S_AXI_BREADY(1'b0),
-        .S_AXI_BRESP(NLW_U0_S_AXI_BRESP_UNCONNECTED[1:0]),
-        .S_AXI_BVALID(NLW_U0_S_AXI_BVALID_UNCONNECTED),
-        .S_AXI_RDATA(NLW_U0_S_AXI_RDATA_UNCONNECTED[31:0]),
-        .S_AXI_RREADY(1'b0),
-        .S_AXI_RRESP(NLW_U0_S_AXI_RRESP_UNCONNECTED[1:0]),
-        .S_AXI_RVALID(NLW_U0_S_AXI_RVALID_UNCONNECTED),
-        .S_AXI_WDATA({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .S_AXI_WREADY(NLW_U0_S_AXI_WREADY_UNCONNECTED),
-        .S_AXI_WSTRB({1'b0,1'b0,1'b0,1'b0}),
-        .S_AXI_WVALID(1'b0),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_ARADDR(S_AXI_ARADDR),
+        .S_AXI_ARESETN(S_AXI_ARESETN),
+        .S_AXI_ARREADY(S_AXI_ARREADY),
+        .S_AXI_ARVALID(S_AXI_ARVALID),
+        .S_AXI_AWADDR(S_AXI_AWADDR),
+        .S_AXI_AWREADY(S_AXI_AWREADY),
+        .S_AXI_AWVALID(S_AXI_AWVALID),
+        .S_AXI_BREADY(S_AXI_BREADY),
+        .S_AXI_BRESP(S_AXI_BRESP),
+        .S_AXI_BVALID(S_AXI_BVALID),
+        .S_AXI_RDATA(S_AXI_RDATA),
+        .S_AXI_RREADY(S_AXI_RREADY),
+        .S_AXI_RRESP(S_AXI_RRESP),
+        .S_AXI_RVALID(S_AXI_RVALID),
+        .S_AXI_WDATA(S_AXI_WDATA),
+        .S_AXI_WREADY(S_AXI_WREADY),
+        .S_AXI_WSTRB(S_AXI_WSTRB),
+        .S_AXI_WVALID(S_AXI_WVALID),
         .Scan_En(1'b0),
         .Scan_Reset(1'b0),
         .Scan_Reset_Sel(1'b0),
@@ -2623,30 +2674,37 @@ endmodule
 (* ORIG_REF_NAME = "JTAG_CONTROL" *) 
 module mcu_mdm_1_0_JTAG_CONTROL
    (Q,
+    data_Exists_I_reg,
+    RX_Data,
+    data_Exists_I_reg_0,
     out,
+    \Use_UART.tx_buffered_2_reg_0 ,
     execute_3,
     rd_resp_zero,
     wr_resp_zero,
-    master_rd_start,
+    Ext_NM_BRK,
     AR,
+    Debug_SYS_Rst,
+    Dbg_Rst_0,
+    master_rd_start,
     master_data_rd,
     master_data_wr,
     rd_wr_excl,
-    Ext_NM_BRK,
-    Debug_SYS_Rst,
-    Dbg_Rst_0,
+    Ext_BRK,
     master_wr_start,
     Dbg_Reg_En_0,
-    \Use_BSCAN.command_reg[7]_0 ,
-    p_101_out__0,
     \Using_FPGA.Native ,
-    Dbg_Shift_0,
+    E,
+    p_113_out__0,
     tdo,
+    \Use_BSCAN.command_reg[4]_0 ,
+    tx_Buffer_Full,
+    RX_Buffer_Full,
     \Use_Serial_Unified_Completion.sample_1_reg[15]_0 ,
-    \Use_BSCAN.command_reg[6]_0 ,
     \Use_Dbg_Mem_Access.rd_wr_len_reg[3]_0 ,
     \Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 ,
     \Use_Serial_Unified_Completion.count_reg[5]_0 ,
+    tx_Buffer_Empty,
     Trig_Ack_In_3,
     Trig_Out_3,
     Trig_Out_0,
@@ -2657,6 +2715,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     Trig_Ack_In_1,
     Trig_Ack_In_0,
     Dbg_Trig_Ack_In_0,
+    Interrupt,
     \Use_Dbg_Mem_Access.Master_wr_start_reg_0 ,
     \Use_Dbg_Mem_Access.output_reg[23]_0 ,
     \Use_Cross_Trigger.tdo_reg_reg[7]_0 ,
@@ -2664,28 +2723,36 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_Dbg_Mem_Access.rd_wr_size_reg[0]_0 ,
     \Using_FPGA.Native_0 ,
     \Using_FPGA.Native_1 ,
+    \Using_FPGA.Native_2 ,
+    S_AXI_ACLK,
+    \Using_FPGA.Native_3 ,
+    S_AXI_WDATA,
     Reset,
     M_AXI_ACLK,
     \Use_Dbg_Mem_Access.rd_resp_zero_reg_0 ,
     \Use_Dbg_Mem_Access.wr_resp_zero_reg_0 ,
-    p_92_out,
+    p_97_out,
     sel_n_reg_0,
+    \Using_FPGA.Native_4 ,
     Scan_Reset_Sel,
     Scan_Reset,
     Scan_En,
-    Dbg_Shift_0_0,
+    \Use_UART.fifo_Din_reg[7]_0 ,
     \command_1_reg[7]_0 ,
     SEL,
     sel_n_reg_1,
-    \Use_Dbg_Mem_Access.Master_wr_start_reg_1 ,
     wdata_exists,
     M_AXI_ARESETN,
-    Dbg_TDO_0,
     \Use_Dbg_Mem_Access.master_overrun_reg_0 ,
     \Use_Dbg_Mem_Access.output_reg[29]_0 ,
     master_data_out,
     \Use_Dbg_Mem_Access.output_reg[27]_0 ,
+    Dbg_TDO_0,
+    FIFO_Write,
+    Bus_RNW_reg,
+    \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ,
     wr_state,
+    bus2ip_rdce,
     Trig_Ack_Out_3,
     Dbg_Trig_Ack_Out_0,
     Trig_Ack_Out_0,
@@ -2696,9 +2763,12 @@ module mcu_mdm_1_0_JTAG_CONTROL
     Trig_In_1,
     Trig_In_2,
     Trig_In_0,
+    Q_0,
+    enable_interrupts,
     p_20_out,
-    Ext_JTAG_TDI,
-    E,
+    \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ,
+    Dbg_TDI_0,
+    \Use_Cross_Trigger.tdo_reg_reg[23]_0 ,
     \Use_Dbg_Mem_Access.output_reg[0]_0 ,
     \Use_Serial_Unified_Completion.completion_status_reg[10]_0 ,
     \Use_Serial_Unified_Completion.completion_status_reg[15]_0 ,
@@ -2707,30 +2777,37 @@ module mcu_mdm_1_0_JTAG_CONTROL
     D,
     \shift_Count_reg[0]_0 );
   output [0:0]Q;
+  output data_Exists_I_reg;
+  output [0:7]RX_Data;
+  output data_Exists_I_reg_0;
   output out;
+  output \Use_UART.tx_buffered_2_reg_0 ;
   output execute_3;
   output rd_resp_zero;
   output wr_resp_zero;
-  output master_rd_start;
+  output Ext_NM_BRK;
   output [0:0]AR;
+  output Debug_SYS_Rst;
+  output Dbg_Rst_0;
+  output master_rd_start;
   output master_data_rd;
   output master_data_wr;
   output rd_wr_excl;
-  output Ext_NM_BRK;
-  output Debug_SYS_Rst;
-  output Dbg_Rst_0;
+  output Ext_BRK;
   output master_wr_start;
   output [0:7]Dbg_Reg_En_0;
-  output [0:0]\Use_BSCAN.command_reg[7]_0 ;
-  output p_101_out__0;
   output \Using_FPGA.Native ;
-  output Dbg_Shift_0;
+  output [0:0]E;
+  output p_113_out__0;
   output tdo;
+  output \Use_BSCAN.command_reg[4]_0 ;
+  output tx_Buffer_Full;
+  output RX_Buffer_Full;
   output [0:0]\Use_Serial_Unified_Completion.sample_1_reg[15]_0 ;
-  output \Use_BSCAN.command_reg[6]_0 ;
   output \Use_Dbg_Mem_Access.rd_wr_len_reg[3]_0 ;
   output [4:0]\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 ;
   output [0:0]\Use_Serial_Unified_Completion.count_reg[5]_0 ;
+  output tx_Buffer_Empty;
   output Trig_Ack_In_3;
   output Trig_Out_3;
   output Trig_Out_0;
@@ -2741,6 +2818,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
   output Trig_Ack_In_1;
   output Trig_Ack_In_0;
   output [0:7]Dbg_Trig_Ack_In_0;
+  output Interrupt;
   output \Use_Dbg_Mem_Access.Master_wr_start_reg_0 ;
   output [3:0]\Use_Dbg_Mem_Access.output_reg[23]_0 ;
   output [11:0]\Use_Cross_Trigger.tdo_reg_reg[7]_0 ;
@@ -2748,28 +2826,36 @@ module mcu_mdm_1_0_JTAG_CONTROL
   output [1:0]\Use_Dbg_Mem_Access.rd_wr_size_reg[0]_0 ;
   input \Using_FPGA.Native_0 ;
   input \Using_FPGA.Native_1 ;
+  input \Using_FPGA.Native_2 ;
+  input S_AXI_ACLK;
+  input \Using_FPGA.Native_3 ;
+  input [7:0]S_AXI_WDATA;
   input Reset;
   input M_AXI_ACLK;
   input \Use_Dbg_Mem_Access.rd_resp_zero_reg_0 ;
   input \Use_Dbg_Mem_Access.wr_resp_zero_reg_0 ;
-  input p_92_out;
+  input p_97_out;
   input sel_n_reg_0;
+  input \Using_FPGA.Native_4 ;
   input Scan_Reset_Sel;
   input Scan_Reset;
   input Scan_En;
-  input Dbg_Shift_0_0;
+  input \Use_UART.fifo_Din_reg[7]_0 ;
   input [3:0]\command_1_reg[7]_0 ;
   input SEL;
   input sel_n_reg_1;
-  input \Use_Dbg_Mem_Access.Master_wr_start_reg_1 ;
   input wdata_exists;
   input M_AXI_ARESETN;
-  input Dbg_TDO_0;
   input \Use_Dbg_Mem_Access.master_overrun_reg_0 ;
   input \Use_Dbg_Mem_Access.output_reg[29]_0 ;
   input [26:0]master_data_out;
   input \Use_Dbg_Mem_Access.output_reg[27]_0 ;
+  input Dbg_TDO_0;
+  input FIFO_Write;
+  input Bus_RNW_reg;
+  input \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ;
   input [0:0]wr_state;
+  input [0:0]bus2ip_rdce;
   input Trig_Ack_Out_3;
   input [0:7]Dbg_Trig_Ack_Out_0;
   input Trig_Ack_Out_0;
@@ -2780,9 +2866,12 @@ module mcu_mdm_1_0_JTAG_CONTROL
   input Trig_In_1;
   input Trig_In_2;
   input Trig_In_0;
+  input Q_0;
+  input enable_interrupts;
   input p_20_out;
-  input Ext_JTAG_TDI;
-  input [0:0]E;
+  input \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ;
+  input Dbg_TDI_0;
+  input [0:0]\Use_Cross_Trigger.tdo_reg_reg[23]_0 ;
   input [4:0]\Use_Dbg_Mem_Access.output_reg[0]_0 ;
   input [0:0]\Use_Serial_Unified_Completion.completion_status_reg[10]_0 ;
   input [0:0]\Use_Serial_Unified_Completion.completion_status_reg[15]_0 ;
@@ -2795,15 +2884,16 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire A2;
   wire A3;
   wire [0:0]AR;
+  wire Bus_RNW_reg;
   wire CE;
   wire [0:0]D;
-  wire D_1;
+  wire D_4;
+  wire [4:5]Data_Out;
   wire [0:7]Dbg_Reg_En_0;
   wire Dbg_Rst_0;
-  wire Dbg_Shift_0;
-  wire Dbg_Shift_0_0;
   wire Dbg_Shift_31_INST_0_i_1_n_0;
   wire Dbg_Shift_31_INST_0_i_3_n_0;
+  wire Dbg_TDI_0;
   wire Dbg_TDO_0;
   wire [0:7]Dbg_Trig_Ack_In_0;
   wire \Dbg_Trig_Ack_In_0[0]_INST_0_i_1_n_0 ;
@@ -2871,10 +2961,15 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Dbg_Trig_Out_0[7]_INST_0_i_2_n_0 ;
   wire \Dbg_Trig_Out_0[7]_INST_0_i_3_n_0 ;
   wire \Dbg_Trig_Out_0[7]_INST_0_i_4_n_0 ;
+  wire Debug_Rst_i0;
   wire Debug_SYS_Rst;
   wire [0:0]E;
-  wire Ext_JTAG_TDI;
+  wire Ext_BRK;
   wire Ext_NM_BRK;
+  wire FIFO_Write;
+  wire \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ;
+  wire \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ;
+  wire Interrupt;
   wire M_AXI_ACLK;
   wire M_AXI_ARESETN;
   wire Master_data_rd5_out;
@@ -2883,8 +2978,13 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire [0:0]Q;
   wire Q0_out;
   wire Q1_out;
+  wire Q_0;
+  wire RX_Buffer_Full;
+  wire [0:7]RX_Data;
   wire Reset;
   wire SEL;
+  wire S_AXI_ACLK;
+  wire [7:0]S_AXI_WDATA;
   wire Scan_En;
   wire Scan_Reset;
   wire Scan_Reset_Sel;
@@ -2936,8 +3036,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire Trig_Out_3_INST_0_i_2_n_0;
   wire Trig_Out_3_INST_0_i_3_n_0;
   wire Trig_Out_3_INST_0_i_4_n_0;
-  wire \Use_BSCAN.FDC_I_n_10 ;
-  wire \Use_BSCAN.FDC_I_n_12 ;
+  wire \Use_BSCAN.FDC_I_n_13 ;
+  wire \Use_BSCAN.FDC_I_n_14 ;
+  wire \Use_BSCAN.FDC_I_n_15 ;
   wire \Use_BSCAN.FDC_I_n_16 ;
   wire \Use_BSCAN.FDC_I_n_17 ;
   wire \Use_BSCAN.FDC_I_n_18 ;
@@ -2950,10 +3051,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_BSCAN.FDC_I_n_25 ;
   wire \Use_BSCAN.FDC_I_n_26 ;
   wire \Use_BSCAN.FDC_I_n_27 ;
-  wire \Use_BSCAN.FDC_I_n_28 ;
-  wire \Use_BSCAN.FDC_I_n_29 ;
-  wire \Use_BSCAN.FDC_I_n_31 ;
-  wire \Use_BSCAN.FDC_I_n_33 ;
+  wire \Use_BSCAN.FDC_I_n_32 ;
   wire \Use_BSCAN.FDC_I_n_34 ;
   wire \Use_BSCAN.FDC_I_n_35 ;
   wire \Use_BSCAN.FDC_I_n_36 ;
@@ -2966,7 +3064,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_BSCAN.FDC_I_n_43 ;
   wire \Use_BSCAN.FDC_I_n_44 ;
   wire \Use_BSCAN.FDC_I_n_45 ;
-  wire \Use_BSCAN.FDC_I_n_47 ;
+  wire \Use_BSCAN.FDC_I_n_46 ;
   wire \Use_BSCAN.FDC_I_n_48 ;
   wire \Use_BSCAN.FDC_I_n_49 ;
   wire \Use_BSCAN.FDC_I_n_50 ;
@@ -2974,19 +3072,11 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_BSCAN.FDC_I_n_52 ;
   wire \Use_BSCAN.FDC_I_n_53 ;
   wire \Use_BSCAN.FDC_I_n_54 ;
-  wire \Use_BSCAN.FDC_I_n_55 ;
+  wire \Use_BSCAN.FDC_I_n_9 ;
   wire \Use_BSCAN.SYNC_FDRE_n_1 ;
   wire \Use_BSCAN.SYNC_FDRE_n_2 ;
   wire \Use_BSCAN.command[0]_i_1_n_0 ;
-  wire \Use_BSCAN.command_reg[6]_0 ;
-  wire [0:0]\Use_BSCAN.command_reg[7]_0 ;
-  wire \Use_BSCAN.command_reg_n_0_[0] ;
-  wire \Use_BSCAN.command_reg_n_0_[1] ;
-  wire \Use_BSCAN.command_reg_n_0_[2] ;
-  wire \Use_BSCAN.command_reg_n_0_[3] ;
-  wire \Use_BSCAN.command_reg_n_0_[4] ;
-  wire \Use_BSCAN.command_reg_n_0_[5] ;
-  wire \Use_BSCAN.command_reg_n_0_[6] ;
+  wire \Use_BSCAN.command_reg[4]_0 ;
   wire \Use_Config_SRL16E.SRL16E_2_n_0 ;
   wire \Use_Config_SRL16E.Use_Ext_Config.SRL16E_3_n_0 ;
   wire \Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ;
@@ -3048,15 +3138,31 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_Cross_Trigger.tdo_reg[5]_i_1_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[6]_i_1_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[7]_i_1_n_0 ;
+  wire [0:0]\Use_Cross_Trigger.tdo_reg_reg[23]_0 ;
   wire [11:0]\Use_Cross_Trigger.tdo_reg_reg[7]_0 ;
   wire [11:0]\Use_Cross_Trigger.tdo_reg_reg[8]_0 ;
-  wire \Use_Dbg_Mem_Access.Master_rd_start_i_2_n_0 ;
+  wire \Use_Cross_Trigger.tdo_reg_reg_n_0_[0] ;
+  wire \Use_Cross_Trigger.tdo_reg_reg_n_0_[15] ;
+  wire \Use_Cross_Trigger.tdo_reg_reg_n_0_[16] ;
+  wire \Use_Cross_Trigger.tdo_reg_reg_n_0_[17] ;
+  wire \Use_Cross_Trigger.tdo_reg_reg_n_0_[18] ;
+  wire \Use_Cross_Trigger.tdo_reg_reg_n_0_[1] ;
+  wire \Use_Cross_Trigger.tdo_reg_reg_n_0_[23] ;
+  wire \Use_Cross_Trigger.tdo_reg_reg_n_0_[2] ;
+  wire \Use_Cross_Trigger.tdo_reg_reg_n_0_[3] ;
+  wire \Use_Cross_Trigger.tdo_reg_reg_n_0_[4] ;
+  wire \Use_Cross_Trigger.tdo_reg_reg_n_0_[5] ;
+  wire \Use_Cross_Trigger.tdo_reg_reg_n_0_[6] ;
+  wire \Use_Dbg_Mem_Access.Master_data_rd_i_2_n_0 ;
+  wire \Use_Dbg_Mem_Access.Master_data_rd_i_3_n_0 ;
+  wire \Use_Dbg_Mem_Access.Master_data_wr_i_2_n_0 ;
+  wire \Use_Dbg_Mem_Access.Master_rd_start_i_3_n_0 ;
+  wire \Use_Dbg_Mem_Access.Master_rd_start_i_4_n_0 ;
   wire \Use_Dbg_Mem_Access.Master_wr_start_i_1_n_0 ;
   wire \Use_Dbg_Mem_Access.Master_wr_start_i_2_n_0 ;
-  wire \Use_Dbg_Mem_Access.Master_wr_start_i_3_n_0 ;
   wire \Use_Dbg_Mem_Access.Master_wr_start_reg_0 ;
-  wire \Use_Dbg_Mem_Access.Master_wr_start_reg_1 ;
   wire \Use_Dbg_Mem_Access.execute_i_3_n_0 ;
+  wire \Use_Dbg_Mem_Access.execute_i_4_n_0 ;
   wire \Use_Dbg_Mem_Access.input[0]_i_2_n_0 ;
   wire [31:0]\Use_Dbg_Mem_Access.input_reg[0]_0 ;
   wire \Use_Dbg_Mem_Access.master_error_i_1_n_0 ;
@@ -3065,7 +3171,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_Dbg_Mem_Access.master_overrun_i_1_n_0 ;
   wire \Use_Dbg_Mem_Access.master_overrun_reg_0 ;
   wire \Use_Dbg_Mem_Access.master_overrun_reg_n_0 ;
-  wire \Use_Dbg_Mem_Access.output[0]_i_4_n_0 ;
+  wire \Use_Dbg_Mem_Access.output[0]_i_3_n_0 ;
   wire \Use_Dbg_Mem_Access.output[10]_i_1_n_0 ;
   wire \Use_Dbg_Mem_Access.output[11]_i_1_n_0 ;
   wire \Use_Dbg_Mem_Access.output[12]_i_1_n_0 ;
@@ -3104,6 +3210,8 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_Dbg_Mem_Access.wr_resp_zero_reg_0 ;
   wire \Use_E2.BSCANE2_I_i_10_n_0 ;
   wire \Use_E2.BSCANE2_I_i_11_n_0 ;
+  wire \Use_E2.BSCANE2_I_i_12_n_0 ;
+  wire \Use_E2.BSCANE2_I_i_13_n_0 ;
   wire \Use_E2.BSCANE2_I_i_3_n_0 ;
   wire \Use_E2.BSCANE2_I_i_5_n_0 ;
   wire \Use_E2.BSCANE2_I_i_8_n_0 ;
@@ -3142,24 +3250,56 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_Serial_Unified_Completion.sample_1_reg_n_0_[12] ;
   wire \Use_Serial_Unified_Completion.sample_1_reg_n_0_[13] ;
   wire \Use_Serial_Unified_Completion.sample_1_reg_n_0_[14] ;
+  wire \Use_UART.RX_FIFO_I_n_10 ;
+  wire \Use_UART.RX_FIFO_I_n_9 ;
+  wire \Use_UART.TX_FIFO_I_n_3 ;
+  wire \Use_UART.TX_FIFO_I_n_4 ;
+  wire \Use_UART.TX_FIFO_I_n_5 ;
+  wire \Use_UART.TX_FIFO_I_n_6 ;
+  wire \Use_UART.TX_FIFO_I_n_7 ;
+  wire \Use_UART.TX_FIFO_I_n_8 ;
+  wire \Use_UART.execute_3_reg_n_0 ;
+  wire \Use_UART.execute_i_2_n_0 ;
+  wire \Use_UART.fifo_Din_reg[7]_0 ;
+  wire \Use_UART.fifo_Read_i_1_n_0 ;
+  wire \Use_UART.fifo_Read_reg_n_0 ;
+  wire \Use_UART.fifo_Write_i_1_n_0 ;
+  wire \Use_UART.fifo_Write_i_2_n_0 ;
+  wire \Use_UART.fifo_Write_reg_n_0 ;
+  wire \Use_UART.tdo_reg[0]_i_3_n_0 ;
+  wire \Use_UART.tdo_reg[0]_i_4_n_0 ;
+  wire \Use_UART.tdo_reg[4]_i_2_n_0 ;
+  wire \Use_UART.tx_buffered_i_2_n_0 ;
   wire \Using_FPGA.Native ;
   wire \Using_FPGA.Native_0 ;
   wire \Using_FPGA.Native_1 ;
+  wire \Using_FPGA.Native_2 ;
+  wire \Using_FPGA.Native_3 ;
+  wire \Using_FPGA.Native_4 ;
   (* async_reg = "true" *) wire access_idle_1;
   (* async_reg = "true" *) wire access_idle_2;
+  wire [0:0]bus2ip_rdce;
   wire clear_overrun;
   (* async_reg = "true" *) wire clear_overrun_1;
   (* async_reg = "true" *) wire clear_overrun_2;
+  wire [0:7]command;
   wire [0:7]command_1;
   wire command_10;
   wire [3:0]\command_1_reg[7]_0 ;
   wire completion_ctrl;
   wire [15:0]completion_status;
-  wire data_cmd_reset23_out;
+  wire data_Exists_I_reg;
+  wire data_Exists_I_reg_0;
+  wire data_cmd_reset27_out;
+  wire enable_interrupts;
   wire execute;
   (* async_reg = "true" *) wire execute_1;
-  (* async_reg = "true" *) wire execute_2;
+  (* async_reg = "true" *) wire execute_1__0;
+  wire execute_2;
+  (* async_reg = "true" *) wire execute_2_3;
+  (* async_reg = "true" *) wire execute_2__0;
   wire execute_3;
+  wire [0:7]fifo_Din;
   wire in_andor_ctrl;
   wire [26:0]master_data_out;
   wire master_data_rd;
@@ -3169,26 +3309,27 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire mb_instr_overrun;
   wire [0:31]\output ;
   wire [5:1]p_0_in;
-  wire p_0_in57_in;
-  wire p_0_in60_in;
-  wire p_0_in63_in;
-  wire [7:0]p_0_in_2;
+  wire p_0_in61_in;
+  wire p_0_in64_in;
+  wire p_0_in67_in;
+  wire [7:0]p_0_in_5;
   wire [5:1]p_0_in__0;
-  wire p_101_out__0;
+  wire p_103_out;
+  wire p_113_out__0;
   wire [14:3]p_1_in;
   wire p_20_out;
   wire p_22_out;
-  wire p_23_out__10;
-  wire p_3_in38_in;
-  wire p_4_in41_in;
+  wire p_25_out;
+  wire p_26_out__10;
+  wire p_3_in42_in;
+  wire p_4_in45_in;
   wire p_5_in;
-  wire p_6_in46_in;
-  wire p_7_in49_in;
-  wire p_87_out;
+  wire p_6_in50_in;
+  wire p_7_in53_in;
   wire p_8_in;
   wire p_92_out;
-  wire p_98_out;
-  wire p_9_in54_in;
+  wire p_97_out;
+  wire p_9_in58_in;
   wire [3:0]p_9_out;
   wire rd_resp_zero;
   wire rd_wr_excl;
@@ -3198,7 +3339,8 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire sel_n0;
   wire sel_n_reg_0;
   wire sel_n_reg_1;
-  wire sel_with_scan_reset36_out;
+  wire sel_with_scan_reset40_out;
+  wire set_Ext_BRK;
   wire \shift_Count[5]_i_2_n_0 ;
   wire [5:4]shift_Count_reg;
   wire [0:0]\shift_Count_reg[0]_0 ;
@@ -3210,28 +3352,34 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \tdi_shifter_reg_n_0_[14] ;
   wire \tdi_shifter_reg_n_0_[15] ;
   wire tdo;
-  wire [0:23]tdo_reg;
+  wire [0:7]tdo_reg;
+  wire tx_Buffer_Empty;
+  wire tx_Buffer_Full;
+  wire tx_buffered;
+  (* async_reg = "true" *) wire tx_buffered_1;
+  (* async_reg = "true" *) wire tx_buffered_2;
   wire wdata_exists;
   wire wr_resp_zero;
   wire [0:0]wr_state;
 
-  assign out = execute_2;
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  assign \Use_UART.tx_buffered_2_reg_0  = tx_buffered_2;
+  assign out = execute_2__0;
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT3 #(
     .INIT(8'hFD)) 
     Dbg_Shift_31_INST_0_i_1
-       (.I0(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I1(\Use_BSCAN.command_reg[7]_0 ),
-        .I2(\Use_BSCAN.command_reg_n_0_[4] ),
+       (.I0(command[5]),
+        .I1(command[7]),
+        .I2(command[4]),
         .O(Dbg_Shift_31_INST_0_i_1_n_0));
   (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT4 #(
     .INIT(16'h0001)) 
     Dbg_Shift_31_INST_0_i_3
-       (.I0(\Use_BSCAN.command_reg_n_0_[1] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[3] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[0] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[2] ),
+       (.I0(command[0]),
+        .I1(command[1]),
+        .I2(command[3]),
+        .I3(command[2]),
         .O(Dbg_Shift_31_INST_0_i_3_n_0));
   LUT6 #(
     .INIT(64'hFFFF0A0C00000000)) 
@@ -3241,7 +3389,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(\Use_Cross_Trigger.out_ctrl_reg[0][0] [2]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][0] [3]),
         .I4(\Dbg_Trig_Ack_In_0[0]_INST_0_i_3_n_0 ),
-        .I5(p_9_in54_in),
+        .I5(p_9_in58_in),
         .O(Dbg_Trig_Ack_In_0[0]));
   LUT6 #(
     .INIT(64'hCFAFCFA0C0AFC0A0)) 
@@ -3253,7 +3401,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I4(Dbg_Trig_Ack_Out_0[7]),
         .I5(Trig_Ack_Out_1),
         .O(\Dbg_Trig_Ack_In_0[0]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair27" *) 
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
   LUT5 #(
     .INIT(32'hF0CCAA00)) 
     \Dbg_Trig_Ack_In_0[0]_INST_0_i_2 
@@ -3340,7 +3488,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(\Use_Cross_Trigger.out_ctrl_reg[0][2] [2]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][2] [3]),
         .I4(\Dbg_Trig_Ack_In_0[2]_INST_0_i_3_n_0 ),
-        .I5(p_7_in49_in),
+        .I5(p_7_in53_in),
         .O(Dbg_Trig_Ack_In_0[2]));
   LUT6 #(
     .INIT(64'hCFAFCFA0C0AFC0A0)) 
@@ -3389,7 +3537,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(\Use_Cross_Trigger.out_ctrl_reg[0][3] [2]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][3] [3]),
         .I4(\Dbg_Trig_Ack_In_0[3]_INST_0_i_3_n_0 ),
-        .I5(p_6_in46_in),
+        .I5(p_6_in50_in),
         .O(Dbg_Trig_Ack_In_0[3]));
   LUT6 #(
     .INIT(64'hCFAFCFA0C0AFC0A0)) 
@@ -3487,7 +3635,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(\Use_Cross_Trigger.out_ctrl_reg[0][5] [2]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][5] [3]),
         .I4(\Dbg_Trig_Ack_In_0[5]_INST_0_i_3_n_0 ),
-        .I5(p_4_in41_in),
+        .I5(p_4_in45_in),
         .O(Dbg_Trig_Ack_In_0[5]));
   LUT6 #(
     .INIT(64'hCFAFCFA0C0AFC0A0)) 
@@ -3536,7 +3684,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(\Use_Cross_Trigger.out_ctrl_reg[0][6] [2]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][6] [3]),
         .I4(\Dbg_Trig_Ack_In_0[6]_INST_0_i_3_n_0 ),
-        .I5(p_3_in38_in),
+        .I5(p_3_in42_in),
         .O(Dbg_Trig_Ack_In_0[6]));
   LUT6 #(
     .INIT(64'hCFAFCFA0C0AFC0A0)) 
@@ -3652,7 +3800,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.I0(Trig_In_3),
         .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
         .O(p_1_in[3]));
-  (* SOFT_HLUTNM = "soft_lutpair27" *) 
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \Dbg_Trig_Out_0[0]_INST_0_i_3 
@@ -3673,7 +3821,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(32'h000088F0)) 
     \Dbg_Trig_Out_0[1]_INST_0_i_1 
        (.I0(Trig_In_1),
-        .I1(p_0_in60_in),
+        .I1(p_0_in64_in),
         .I2(in_andor_ctrl),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]),
@@ -3682,9 +3830,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h88880000F0000000)) 
     \Dbg_Trig_Out_0[1]_INST_0_i_2 
        (.I0(Trig_In_2),
-        .I1(p_0_in57_in),
+        .I1(p_0_in61_in),
         .I2(Trig_In_0),
-        .I3(p_0_in63_in),
+        .I3(p_0_in67_in),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]),
         .I5(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]),
         .O(\Dbg_Trig_Out_0[1]_INST_0_i_2_n_0 ));
@@ -3721,7 +3869,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(32'h000088F0)) 
     \Dbg_Trig_Out_0[2]_INST_0_i_1 
        (.I0(Trig_In_1),
-        .I1(p_0_in60_in),
+        .I1(p_0_in64_in),
         .I2(in_andor_ctrl),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]),
@@ -3730,9 +3878,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h88880000F0000000)) 
     \Dbg_Trig_Out_0[2]_INST_0_i_2 
        (.I0(Trig_In_2),
-        .I1(p_0_in57_in),
+        .I1(p_0_in61_in),
         .I2(Trig_In_0),
-        .I3(p_0_in63_in),
+        .I3(p_0_in67_in),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]),
         .I5(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]),
         .O(\Dbg_Trig_Out_0[2]_INST_0_i_2_n_0 ));
@@ -3769,7 +3917,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(32'h000088F0)) 
     \Dbg_Trig_Out_0[3]_INST_0_i_1 
        (.I0(Trig_In_1),
-        .I1(p_0_in60_in),
+        .I1(p_0_in64_in),
         .I2(in_andor_ctrl),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]),
@@ -3778,9 +3926,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h88880000F0000000)) 
     \Dbg_Trig_Out_0[3]_INST_0_i_2 
        (.I0(Trig_In_2),
-        .I1(p_0_in57_in),
+        .I1(p_0_in61_in),
         .I2(Trig_In_0),
-        .I3(p_0_in63_in),
+        .I3(p_0_in67_in),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]),
         .I5(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]),
         .O(\Dbg_Trig_Out_0[3]_INST_0_i_2_n_0 ));
@@ -3813,12 +3961,11 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I4(\Dbg_Trig_Out_0[4]_INST_0_i_3_n_0 ),
         .I5(\Dbg_Trig_Out_0[4]_INST_0_i_4_n_0 ),
         .O(Dbg_Trig_Out_0[4]));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT5 #(
     .INIT(32'h000088F0)) 
     \Dbg_Trig_Out_0[4]_INST_0_i_1 
        (.I0(Trig_In_1),
-        .I1(p_0_in60_in),
+        .I1(p_0_in64_in),
         .I2(in_andor_ctrl),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][4] [1]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]),
@@ -3827,9 +3974,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h88880000F0000000)) 
     \Dbg_Trig_Out_0[4]_INST_0_i_2 
        (.I0(Trig_In_2),
-        .I1(p_0_in57_in),
+        .I1(p_0_in61_in),
         .I2(Trig_In_0),
-        .I3(p_0_in63_in),
+        .I3(p_0_in67_in),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]),
         .I5(\Use_Cross_Trigger.out_ctrl_reg[0][4] [1]),
         .O(\Dbg_Trig_Out_0[4]_INST_0_i_2_n_0 ));
@@ -3862,11 +4009,12 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I4(\Dbg_Trig_Out_0[5]_INST_0_i_3_n_0 ),
         .I5(\Dbg_Trig_Out_0[5]_INST_0_i_4_n_0 ),
         .O(Dbg_Trig_Out_0[5]));
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT5 #(
     .INIT(32'h000088F0)) 
     \Dbg_Trig_Out_0[5]_INST_0_i_1 
        (.I0(Trig_In_1),
-        .I1(p_0_in60_in),
+        .I1(p_0_in64_in),
         .I2(in_andor_ctrl),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][5] [1]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]),
@@ -3875,9 +4023,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h88880000F0000000)) 
     \Dbg_Trig_Out_0[5]_INST_0_i_2 
        (.I0(Trig_In_2),
-        .I1(p_0_in57_in),
+        .I1(p_0_in61_in),
         .I2(Trig_In_0),
-        .I3(p_0_in63_in),
+        .I3(p_0_in67_in),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]),
         .I5(\Use_Cross_Trigger.out_ctrl_reg[0][5] [1]),
         .O(\Dbg_Trig_Out_0[5]_INST_0_i_2_n_0 ));
@@ -3914,7 +4062,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(32'h000088F0)) 
     \Dbg_Trig_Out_0[6]_INST_0_i_1 
        (.I0(Trig_In_1),
-        .I1(p_0_in60_in),
+        .I1(p_0_in64_in),
         .I2(in_andor_ctrl),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]),
@@ -3923,9 +4071,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h88880000F0000000)) 
     \Dbg_Trig_Out_0[6]_INST_0_i_2 
        (.I0(Trig_In_2),
-        .I1(p_0_in57_in),
+        .I1(p_0_in61_in),
         .I2(Trig_In_0),
-        .I3(p_0_in63_in),
+        .I3(p_0_in67_in),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]),
         .I5(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]),
         .O(\Dbg_Trig_Out_0[6]_INST_0_i_2_n_0 ));
@@ -3962,7 +4110,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(32'h000088F0)) 
     \Dbg_Trig_Out_0[7]_INST_0_i_1 
        (.I0(Trig_In_1),
-        .I1(p_0_in60_in),
+        .I1(p_0_in64_in),
         .I2(in_andor_ctrl),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]),
@@ -3971,9 +4119,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h88880000F0000000)) 
     \Dbg_Trig_Out_0[7]_INST_0_i_2 
        (.I0(Trig_In_2),
-        .I1(p_0_in57_in),
+        .I1(p_0_in61_in),
         .I2(Trig_In_0),
-        .I3(p_0_in63_in),
+        .I3(p_0_in67_in),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]),
         .I5(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]),
         .O(\Dbg_Trig_Out_0[7]_INST_0_i_2_n_0 ));
@@ -4000,17 +4148,17 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     Debug_Rst_i_reg
        (.C(\Using_FPGA.Native_0 ),
-        .CE(1'b1),
+        .CE(Debug_Rst_i0),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_52 ),
+        .D(p_0_in_5[7]),
         .Q(Dbg_Rst_0));
   FDCE #(
     .INIT(1'b0)) 
     Debug_SYS_Rst_i_reg
        (.C(\Using_FPGA.Native_0 ),
-        .CE(1'b1),
+        .CE(Debug_Rst_i0),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_53 ),
+        .D(p_0_in_5[6]),
         .Q(Debug_SYS_Rst));
   LUT3 #(
     .INIT(8'h08)) 
@@ -4023,9 +4171,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     Ext_NM_BRK_i_reg
        (.C(\Using_FPGA.Native_0 ),
-        .CE(1'b1),
+        .CE(Debug_Rst_i0),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_54 ),
+        .D(p_0_in_5[4]),
         .Q(Ext_NM_BRK));
   LUT2 #(
     .INIT(4'hE)) 
@@ -4051,7 +4199,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [3]),
         .I4(Trig_Ack_In_0_INST_0_i_3_n_0),
-        .I5(p_0_in63_in),
+        .I5(p_0_in67_in),
         .O(Trig_Ack_In_0));
   LUT6 #(
     .INIT(64'hCFAFCFA0C0AFC0A0)) 
@@ -4063,7 +4211,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I4(Dbg_Trig_Ack_Out_0[7]),
         .I5(Trig_Ack_Out_1),
         .O(Trig_Ack_In_0_INST_0_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
   LUT5 #(
     .INIT(32'hF0CCAA00)) 
     Trig_Ack_In_0_INST_0_i_2
@@ -4101,7 +4249,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [3]),
         .I4(Trig_Ack_In_1_INST_0_i_3_n_0),
-        .I5(p_0_in60_in),
+        .I5(p_0_in64_in),
         .O(Trig_Ack_In_1));
   LUT6 #(
     .INIT(64'hCFAFCFA0C0AFC0A0)) 
@@ -4113,7 +4261,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I4(Dbg_Trig_Ack_Out_0[7]),
         .I5(Trig_Ack_Out_1),
         .O(Trig_Ack_In_1_INST_0_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
   LUT5 #(
     .INIT(32'hF0CCAA00)) 
     Trig_Ack_In_1_INST_0_i_2
@@ -4151,7 +4299,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [3]),
         .I4(Trig_Ack_In_2_INST_0_i_3_n_0),
-        .I5(p_0_in57_in),
+        .I5(p_0_in61_in),
         .O(Trig_Ack_In_2));
   LUT6 #(
     .INIT(64'hCFAFCFA0C0AFC0A0)) 
@@ -4163,7 +4311,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I4(Dbg_Trig_Ack_Out_0[7]),
         .I5(Trig_Ack_Out_1),
         .O(Trig_Ack_In_2_INST_0_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
   LUT5 #(
     .INIT(32'hF0CCAA00)) 
     Trig_Ack_In_2_INST_0_i_2
@@ -4213,7 +4361,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I4(Dbg_Trig_Ack_Out_0[7]),
         .I5(Trig_Ack_Out_1),
         .O(Trig_Ack_In_3_INST_0_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT5 #(
     .INIT(32'hF0CCAA00)) 
     Trig_Ack_In_3_INST_0_i_2
@@ -4267,19 +4415,19 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_10
        (.I0(Dbg_Trig_In_0[0]),
-        .I1(p_9_in54_in),
+        .I1(p_9_in58_in),
         .O(p_1_in[14]));
   LUT2 #(
     .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_11
        (.I0(Trig_In_0),
-        .I1(p_0_in63_in),
+        .I1(p_0_in67_in),
         .O(p_1_in[6]));
   LUT2 #(
     .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_12
        (.I0(Trig_In_2),
-        .I1(p_0_in57_in),
+        .I1(p_0_in61_in),
         .O(p_1_in[4]));
   LUT2 #(
     .INIT(4'h8)) 
@@ -4287,12 +4435,12 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.I0(Dbg_Trig_In_0[7]),
         .I1(\Use_Cross_Trigger.in_ctrl_reg_n_0_[0][7] ),
         .O(p_1_in[7]));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT2 #(
     .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_14
        (.I0(Trig_In_1),
-        .I1(p_0_in60_in),
+        .I1(p_0_in64_in),
         .O(p_1_in[5]));
   LUT6 #(
     .INIT(64'h0000000000008000)) 
@@ -4308,7 +4456,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'hC0FFAAFFC000AAFF)) 
     Trig_Out_0_INST_0_i_3
        (.I0(p_1_in[13]),
-        .I1(p_7_in49_in),
+        .I1(p_7_in53_in),
         .I2(Dbg_Trig_In_0[2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
@@ -4334,19 +4482,19 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_6
        (.I0(Dbg_Trig_In_0[6]),
-        .I1(p_3_in38_in),
+        .I1(p_3_in42_in),
         .O(p_1_in[8]));
   LUT2 #(
     .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_7
        (.I0(Dbg_Trig_In_0[3]),
-        .I1(p_6_in46_in),
+        .I1(p_6_in50_in),
         .O(p_1_in[11]));
   LUT2 #(
     .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_8
        (.I0(Dbg_Trig_In_0[5]),
-        .I1(p_4_in41_in),
+        .I1(p_4_in45_in),
         .O(p_1_in[9]));
   LUT2 #(
     .INIT(4'h8)) 
@@ -4388,7 +4536,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'hC0FFAAFFC000AAFF)) 
     Trig_Out_1_INST_0_i_3
        (.I0(p_1_in[13]),
-        .I1(p_7_in49_in),
+        .I1(p_7_in53_in),
         .I2(Dbg_Trig_In_0[2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
@@ -4438,7 +4586,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'hC0FFAAFFC000AAFF)) 
     Trig_Out_2_INST_0_i_3
        (.I0(p_1_in[13]),
-        .I1(p_7_in49_in),
+        .I1(p_7_in53_in),
         .I2(Dbg_Trig_In_0[2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
@@ -4488,7 +4636,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'hC0FFAAFFC000AAFF)) 
     Trig_Out_3_INST_0_i_3
        (.I0(p_1_in[13]),
-        .I1(p_7_in49_in),
+        .I1(p_7_in53_in),
         .I2(Dbg_Trig_In_0[2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
@@ -4506,99 +4654,95 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .O(Trig_Out_3_INST_0_i_4_n_0));
   mcu_mdm_1_0_MB_FDC_1 \Use_BSCAN.FDC_I 
        (.CE(CE),
-        .D({\Use_BSCAN.FDC_I_n_33 ,\Use_BSCAN.FDC_I_n_34 ,\Use_BSCAN.FDC_I_n_35 ,\Use_BSCAN.FDC_I_n_36 ,\Use_BSCAN.FDC_I_n_37 ,\Use_BSCAN.FDC_I_n_38 ,\Use_BSCAN.FDC_I_n_39 ,\Use_BSCAN.FDC_I_n_40 ,\Use_BSCAN.FDC_I_n_41 ,\Use_BSCAN.FDC_I_n_42 }),
-        .D_1(D_1),
+        .D({\Use_BSCAN.FDC_I_n_34 ,\Use_BSCAN.FDC_I_n_35 ,\Use_BSCAN.FDC_I_n_36 ,\Use_BSCAN.FDC_I_n_37 ,\Use_BSCAN.FDC_I_n_38 ,\Use_BSCAN.FDC_I_n_39 ,\Use_BSCAN.FDC_I_n_40 ,\Use_BSCAN.FDC_I_n_41 ,\Use_BSCAN.FDC_I_n_42 ,\Use_BSCAN.FDC_I_n_43 }),
+        .D_4(D_4),
         .Dbg_Reg_En_0(Dbg_Reg_En_0),
-        .Dbg_Rst_0(Dbg_Rst_0),
-        .Dbg_Shift_0(Dbg_Shift_0),
         .Dbg_TDO_0(Dbg_TDO_0),
-        .Dbg_TDO_0_0(\Use_BSCAN.FDC_I_n_47 ),
-        .Dbg_TDO_0_1(\Use_BSCAN.FDC_I_n_48 ),
-        .Dbg_TDO_0_2(\Use_BSCAN.FDC_I_n_49 ),
-        .Debug_Rst_i_reg({p_0_in_2,p_9_out[3:2],\tdi_shifter_reg_n_0_[13] ,\tdi_shifter_reg_n_0_[14] ,\tdi_shifter_reg_n_0_[15] }),
-        .Debug_SYS_Rst(Debug_SYS_Rst),
-        .E(p_98_out),
-        .Ext_NM_BRK(Ext_NM_BRK),
-        .Q({\Use_BSCAN.command_reg_n_0_[0] ,\Use_BSCAN.command_reg_n_0_[1] ,\Use_BSCAN.command_reg_n_0_[2] ,\Use_BSCAN.command_reg_n_0_[3] ,\Use_BSCAN.command_reg_n_0_[4] ,\Use_BSCAN.command_reg_n_0_[5] ,\Use_BSCAN.command_reg_n_0_[6] ,\Use_BSCAN.command_reg[7]_0 }),
+        .Dbg_TDO_0_0(\Use_BSCAN.FDC_I_n_48 ),
+        .Dbg_TDO_0_1(\Use_BSCAN.FDC_I_n_49 ),
+        .Dbg_TDO_0_2(\Use_BSCAN.FDC_I_n_50 ),
+        .Debug_Rst_i0(Debug_Rst_i0),
+        .E(\Use_BSCAN.FDC_I_n_9 ),
+        .Q({command[0],command[1],command[2],command[3],command[4],command[5],command[6],command[7]}),
         .SEL(SEL),
         .Scan_En(Scan_En),
         .Scan_Reset(Scan_Reset),
         .Scan_Reset_Sel(Scan_Reset_Sel),
         .\Use_BSCAN.PORT_Selector_reg[2] (command_10),
-        .\Use_BSCAN.command_reg[1] (\Use_BSCAN.FDC_I_n_20 ),
-        .\Use_BSCAN.command_reg[1]_0 (\Use_BSCAN.FDC_I_n_21 ),
-        .\Use_BSCAN.command_reg[6] (p_87_out),
-        .\Use_BSCAN.command_reg[6]_0 (\Use_BSCAN.FDC_I_n_31 ),
+        .\Use_BSCAN.command_reg[1] (\Use_BSCAN.FDC_I_n_18 ),
+        .\Use_BSCAN.command_reg[1]_0 (\Use_BSCAN.FDC_I_n_19 ),
+        .\Use_BSCAN.command_reg[6] (p_92_out),
+        .\Use_BSCAN.command_reg[6]_0 (\Use_BSCAN.FDC_I_n_32 ),
+        .\Use_BSCAN.command_reg[7] (p_103_out),
         .\Use_Cross_Trigger.ext_in_ctrl_reg[3] (\Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ),
         .\Use_Cross_Trigger.ext_out_ctrl_reg[3][3] (\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_3_n_0 ),
         .\Use_Cross_Trigger.out_ctrl_reg[0][5][3] (\Use_Cross_Trigger.out_ctrl[0][7][0]_i_3_n_0 ),
-        .\Use_Dbg_Mem_Access.rd_wr_excl_reg (\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
-        .\Use_Serial_Unified_Completion.clear_overrun_reg (\Use_BSCAN.FDC_I_n_51 ),
+        .\Use_Dbg_Mem_Access.input_reg[31] (\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .\Use_Dbg_Mem_Access.input_reg[31]_0 (E),
+        .\Use_Serial_Unified_Completion.clear_overrun_reg (\Use_BSCAN.FDC_I_n_52 ),
         .\Use_Serial_Unified_Completion.completion_block_reg (\Use_Serial_Unified_Completion.completion_block_reg_n_0 ),
-        .\Use_Serial_Unified_Completion.completion_status_reg[0] (Dbg_Shift_0_0),
+        .\Use_Serial_Unified_Completion.completion_status_reg[0] (\Use_UART.fifo_Din_reg[7]_0 ),
         .\Use_Serial_Unified_Completion.completion_status_reg[3] (\Use_Serial_Unified_Completion.completion_status[3]_i_2_n_0 ),
         .\Use_Serial_Unified_Completion.completion_status_reg[4] (\Use_Serial_Unified_Completion.completion_status[4]_i_2_n_0 ),
         .\Use_Serial_Unified_Completion.completion_status_reg[5] (\Use_Serial_Unified_Completion.completion_status[5]_i_2_n_0 ),
         .\Use_Serial_Unified_Completion.completion_status_reg[6] (\Use_Serial_Unified_Completion.completion_status[7]_i_2_n_0 ),
         .\Use_Serial_Unified_Completion.completion_status_reg[8] (\Use_Serial_Unified_Completion.completion_status[9]_i_4_n_0 ),
         .\Use_Serial_Unified_Completion.completion_status_reg[9] (completion_status[10:0]),
-        .\Use_Serial_Unified_Completion.mb_data_overrun_reg (Dbg_Shift_31_INST_0_i_3_n_0),
-        .\Use_Serial_Unified_Completion.mb_data_overrun_reg_0 (\Use_Serial_Unified_Completion.mb_data_overrun_i_2_n_0 ),
+        .\Use_Serial_Unified_Completion.mb_data_overrun_reg (\Use_Serial_Unified_Completion.mb_data_overrun_i_2_n_0 ),
         .\Use_Serial_Unified_Completion.mb_instr_error_reg (\Use_BSCAN.SYNC_FDRE_n_1 ),
         .\Use_Serial_Unified_Completion.mb_instr_overrun_reg (sel_n_reg_0),
         .\Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 (\Use_BSCAN.SYNC_FDRE_n_2 ),
         .\Use_Serial_Unified_Completion.sample_1_reg[10] (\Use_Serial_Unified_Completion.sample_1[15]_i_3_n_0 ),
         .\Use_Serial_Unified_Completion.sample_reg[13] (\Use_Dbg_Mem_Access.master_overrun_reg_n_0 ),
         .\Use_Serial_Unified_Completion.sample_reg[14] (\Use_Dbg_Mem_Access.master_error_reg_n_0 ),
-        .\Use_Serial_Unified_Completion.sample_reg[15] ({\Use_BSCAN.FDC_I_n_43 ,\Use_BSCAN.FDC_I_n_44 ,\Use_BSCAN.FDC_I_n_45 }),
+        .\Use_Serial_Unified_Completion.sample_reg[15] ({\Use_BSCAN.FDC_I_n_44 ,\Use_BSCAN.FDC_I_n_45 ,\Use_BSCAN.FDC_I_n_46 }),
         .\Use_Serial_Unified_Completion.sample_reg[15]_0 ({sample,\Use_Serial_Unified_Completion.mb_data_overrun_reg_n_0 ,\Use_Serial_Unified_Completion.mb_instr_error_reg_n_0 ,mb_instr_overrun}),
-        .\Using_FPGA.Native_0 (\Use_BSCAN.FDC_I_n_10 ),
-        .\Using_FPGA.Native_1 (\Use_BSCAN.FDC_I_n_12 ),
-        .\Using_FPGA.Native_2 (\Using_FPGA.Native ),
-        .\Using_FPGA.Native_3 (sample_1),
-        .\Using_FPGA.Native_4 (\Using_FPGA.Native_0 ),
+        .\Use_UART.tx_buffered_reg ({p_0_in_5,p_9_out[3:2],\tdi_shifter_reg_n_0_[13] ,\tdi_shifter_reg_n_0_[14] ,\tdi_shifter_reg_n_0_[15] }),
+        .\Use_UART.tx_buffered_reg_0 (Dbg_Shift_31_INST_0_i_3_n_0),
+        .\Use_UART.tx_buffered_reg_1 (\Use_UART.tx_buffered_i_2_n_0 ),
+        .\Using_FPGA.Native_0 (\Using_FPGA.Native ),
+        .\Using_FPGA.Native_1 (\Use_BSCAN.FDC_I_n_13 ),
+        .\Using_FPGA.Native_2 (sample_1),
+        .\Using_FPGA.Native_3 (\Using_FPGA.Native_0 ),
         .clear_overrun(clear_overrun),
         .\command_1_reg[7] (\command_1_reg[7]_0 ),
         .completion_ctrl(completion_ctrl),
-        .\completion_ctrl_reg[0] (\Use_BSCAN.FDC_I_n_50 ),
-        .\completion_ctrl_reg[0]_0 (\Use_Dbg_Mem_Access.Master_wr_start_i_2_n_0 ),
-        .\completion_ctrl_reg[0]_1 (\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
-        .data_cmd_reset23_out(data_cmd_reset23_out),
+        .\completion_ctrl_reg[0] (\Use_BSCAN.FDC_I_n_51 ),
+        .data_cmd_reset27_out(data_cmd_reset27_out),
+        .in0(tx_buffered),
         .out(access_idle_2),
-        .p_101_out__0(p_101_out__0),
-        .p_23_out__10(p_23_out__10),
+        .p_113_out__0(p_113_out__0),
+        .p_26_out__10(p_26_out__10),
         .sel_n(sel_n),
         .shifting_Data1__0(shifting_Data1__0),
-        .\tdi_shifter_reg[0] (\Use_BSCAN.FDC_I_n_52 ),
-        .\tdi_shifter_reg[0]_0 (\Use_BSCAN.FDC_I_n_55 ),
-        .\tdi_shifter_reg[13] (\Use_BSCAN.FDC_I_n_22 ),
-        .\tdi_shifter_reg[13]_0 (\Use_BSCAN.FDC_I_n_23 ),
-        .\tdi_shifter_reg[13]_1 (\Use_BSCAN.FDC_I_n_25 ),
-        .\tdi_shifter_reg[13]_2 (\Use_BSCAN.FDC_I_n_26 ),
-        .\tdi_shifter_reg[13]_3 (\Use_BSCAN.FDC_I_n_27 ),
-        .\tdi_shifter_reg[13]_4 (\Use_BSCAN.FDC_I_n_29 ),
-        .\tdi_shifter_reg[15] (\Use_BSCAN.FDC_I_n_24 ),
-        .\tdi_shifter_reg[15]_0 (\Use_BSCAN.FDC_I_n_28 ),
-        .\tdi_shifter_reg[1] (\Use_BSCAN.FDC_I_n_53 ),
-        .\tdi_shifter_reg[3] (\Use_BSCAN.FDC_I_n_54 ),
-        .\tdi_shifter_reg[8] (\Use_BSCAN.FDC_I_n_16 ),
-        .\tdi_shifter_reg[8]_0 (\Use_BSCAN.FDC_I_n_17 ),
-        .\tdi_shifter_reg[8]_1 (\Use_BSCAN.FDC_I_n_19 ),
-        .\tdi_shifter_reg[9] (\Use_BSCAN.FDC_I_n_18 ));
-  mcu_mdm_1_0_MB_FDRE_1_81 \Use_BSCAN.SYNC_FDRE 
+        .\tdi_shifter_reg[0] (\Use_BSCAN.FDC_I_n_53 ),
+        .\tdi_shifter_reg[0]_0 (\Use_BSCAN.FDC_I_n_54 ),
+        .\tdi_shifter_reg[13] (\Use_BSCAN.FDC_I_n_20 ),
+        .\tdi_shifter_reg[13]_0 (\Use_BSCAN.FDC_I_n_21 ),
+        .\tdi_shifter_reg[13]_1 (\Use_BSCAN.FDC_I_n_23 ),
+        .\tdi_shifter_reg[13]_2 (\Use_BSCAN.FDC_I_n_24 ),
+        .\tdi_shifter_reg[13]_3 (\Use_BSCAN.FDC_I_n_25 ),
+        .\tdi_shifter_reg[13]_4 (\Use_BSCAN.FDC_I_n_27 ),
+        .\tdi_shifter_reg[15] (\Use_BSCAN.FDC_I_n_22 ),
+        .\tdi_shifter_reg[15]_0 (\Use_BSCAN.FDC_I_n_26 ),
+        .\tdi_shifter_reg[8] (\Use_BSCAN.FDC_I_n_14 ),
+        .\tdi_shifter_reg[8]_0 (\Use_BSCAN.FDC_I_n_15 ),
+        .\tdi_shifter_reg[8]_1 (\Use_BSCAN.FDC_I_n_17 ),
+        .\tdi_shifter_reg[9] (\Use_BSCAN.FDC_I_n_16 ));
+  mcu_mdm_1_0_MB_FDRE_1_82 \Use_BSCAN.SYNC_FDRE 
        (.CE(CE),
-        .D_1(D_1),
-        .Dbg_Shift_0(Dbg_Shift_0),
-        .Dbg_Shift_0_0(Dbg_Shift_31_INST_0_i_3_n_0),
-        .Dbg_Shift_0_1(Dbg_Shift_0_0),
-        .Dbg_Shift_0_2(Dbg_Shift_31_INST_0_i_1_n_0),
-        .Dbg_Shift_0_3(\Use_BSCAN.FDC_I_n_10 ),
-        .Q(\Use_BSCAN.command_reg_n_0_[6] ),
+        .D_4(D_4),
+        .E(E),
+        .Q(command[6]),
         .\Use_Serial_Unified_Completion.count_reg[1] (\Use_BSCAN.SYNC_FDRE_n_1 ),
         .\Use_Serial_Unified_Completion.count_reg[1]_0 (\Use_BSCAN.SYNC_FDRE_n_2 ),
         .\Use_Serial_Unified_Completion.mb_instr_error_reg (\Use_Serial_Unified_Completion.count_reg_n_0_[1] ),
         .\Use_Serial_Unified_Completion.mb_instr_error_reg_0 (\Use_Serial_Unified_Completion.count_reg_n_0_[0] ),
-        .\Use_Serial_Unified_Completion.mb_instr_error_reg_1 (\Use_BSCAN.FDC_I_n_31 ),
+        .\Use_Serial_Unified_Completion.mb_instr_error_reg_1 (\Use_BSCAN.FDC_I_n_32 ),
+        .\Use_UART.fifo_Din_reg[7] (Dbg_Shift_31_INST_0_i_3_n_0),
+        .\Use_UART.fifo_Din_reg[7]_0 (\Use_UART.fifo_Din_reg[7]_0 ),
+        .\Use_UART.fifo_Din_reg[7]_1 (Dbg_Shift_31_INST_0_i_1_n_0),
+        .\Use_UART.fifo_Din_reg[7]_2 (\Use_BSCAN.FDC_I_n_13 ),
         .\Using_FPGA.Native_0 (\Using_FPGA.Native_1 ),
         .sync(sync));
   LUT5 #(
@@ -4618,7 +4762,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
         .CLR(AR),
         .D(command_1[0]),
-        .Q(\Use_BSCAN.command_reg_n_0_[0] ));
+        .Q(command[0]));
   FDCE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
@@ -4627,7 +4771,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
         .CLR(AR),
         .D(command_1[1]),
-        .Q(\Use_BSCAN.command_reg_n_0_[1] ));
+        .Q(command[1]));
   FDCE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
@@ -4636,7 +4780,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
         .CLR(AR),
         .D(command_1[2]),
-        .Q(\Use_BSCAN.command_reg_n_0_[2] ));
+        .Q(command[2]));
   FDCE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
@@ -4645,7 +4789,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
         .CLR(AR),
         .D(command_1[3]),
-        .Q(\Use_BSCAN.command_reg_n_0_[3] ));
+        .Q(command[3]));
   FDCE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
@@ -4654,7 +4798,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
         .CLR(AR),
         .D(command_1[4]),
-        .Q(\Use_BSCAN.command_reg_n_0_[4] ));
+        .Q(command[4]));
   FDCE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
@@ -4663,7 +4807,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
         .CLR(AR),
         .D(command_1[5]),
-        .Q(\Use_BSCAN.command_reg_n_0_[5] ));
+        .Q(command[5]));
   FDCE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
@@ -4672,7 +4816,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
         .CLR(AR),
         .D(command_1[6]),
-        .Q(\Use_BSCAN.command_reg_n_0_[6] ));
+        .Q(command[6]));
   FDCE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
@@ -4681,7 +4825,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
         .CLR(AR),
         .D(command_1[7]),
-        .Q(\Use_BSCAN.command_reg[7]_0 ));
+        .Q(command[7]));
   mcu_mdm_1_0_MB_SRL16E \Use_Config_SRL16E.SRL16E_1 
        (.Q({A3,A2,A1,Q}),
         .Q1_out(Q1_out),
@@ -4694,193 +4838,193 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.Q({shift_Count_reg,A3,A2,A1,Q}),
         .Q1_out(Q1_out),
         .\Use_E2.BSCANE2_I_i_4 (\Use_Config_SRL16E.SRL16E_2_n_0 ),
-        .\Use_E2.BSCANE2_I_i_4_0 (\Use_BSCAN.command_reg_n_0_[5] ),
+        .\Use_E2.BSCANE2_I_i_4_0 (command[5]),
         .\Use_E2.BSCANE2_I_i_7_0 (\Using_FPGA.Native_1 ),
         .\shift_Count_reg[5] (\Use_Config_SRL16E.Use_Ext_Config.SRL16E_3_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \Use_Cross_Trigger.ext_in_ctrl[0]_i_2 
-       (.I0(\Use_BSCAN.command_reg_n_0_[3] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[0] ),
-        .I2(\Use_BSCAN.command_reg[7]_0 ),
-        .I3(\Use_BSCAN.command_reg_n_0_[2] ),
+       (.I0(command[3]),
+        .I1(command[2]),
+        .I2(command[0]),
+        .I3(command[7]),
         .O(\Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_in_ctrl_reg[0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_20 ),
-        .D(p_0_in_2[3]),
+        .CE(\Use_BSCAN.FDC_I_n_18 ),
+        .D(p_0_in_5[3]),
         .PRE(AR),
-        .Q(p_0_in63_in));
+        .Q(p_0_in67_in));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_in_ctrl_reg[1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_20 ),
-        .D(p_0_in_2[2]),
+        .CE(\Use_BSCAN.FDC_I_n_18 ),
+        .D(p_0_in_5[2]),
         .PRE(AR),
-        .Q(p_0_in60_in));
+        .Q(p_0_in64_in));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_in_ctrl_reg[2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_20 ),
-        .D(p_0_in_2[1]),
+        .CE(\Use_BSCAN.FDC_I_n_18 ),
+        .D(p_0_in_5[1]),
         .PRE(AR),
-        .Q(p_0_in57_in));
+        .Q(p_0_in61_in));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_in_ctrl_reg[3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_20 ),
-        .D(p_0_in_2[0]),
+        .CE(\Use_BSCAN.FDC_I_n_18 ),
+        .D(p_0_in_5[0]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ));
   LUT6 #(
     .INIT(64'h0000000000000001)) 
     \Use_Cross_Trigger.ext_out_ctrl[3][0]_i_3 
-       (.I0(\Use_BSCAN.command_reg_n_0_[0] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[6] ),
-        .I2(\Use_BSCAN.command_reg[7]_0 ),
-        .I3(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I4(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I5(\Use_BSCAN.command_reg_n_0_[3] ),
+       (.I0(command[7]),
+        .I1(command[0]),
+        .I2(command[2]),
+        .I3(command[6]),
+        .I4(command[4]),
+        .I5(command[3]),
         .O(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_3_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[0][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_16 ),
+        .CE(\Use_BSCAN.FDC_I_n_14 ),
         .CLR(AR),
-        .D(p_0_in_2[7]),
+        .D(p_0_in_5[7]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [3]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[0][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_16 ),
+        .CE(\Use_BSCAN.FDC_I_n_14 ),
         .CLR(AR),
-        .D(p_0_in_2[6]),
+        .D(p_0_in_5[6]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [2]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[0][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_16 ),
+        .CE(\Use_BSCAN.FDC_I_n_14 ),
         .CLR(AR),
-        .D(p_0_in_2[5]),
+        .D(p_0_in_5[5]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[0][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_16 ),
-        .D(p_0_in_2[4]),
+        .CE(\Use_BSCAN.FDC_I_n_14 ),
+        .D(p_0_in_5[4]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[1][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_17 ),
+        .CE(\Use_BSCAN.FDC_I_n_15 ),
         .CLR(AR),
-        .D(p_0_in_2[7]),
+        .D(p_0_in_5[7]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [3]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[1][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_17 ),
+        .CE(\Use_BSCAN.FDC_I_n_15 ),
         .CLR(AR),
-        .D(p_0_in_2[6]),
+        .D(p_0_in_5[6]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[1][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_17 ),
-        .D(p_0_in_2[5]),
+        .CE(\Use_BSCAN.FDC_I_n_15 ),
+        .D(p_0_in_5[5]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[1][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_17 ),
+        .CE(\Use_BSCAN.FDC_I_n_15 ),
         .CLR(AR),
-        .D(p_0_in_2[4]),
+        .D(p_0_in_5[4]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[2][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_18 ),
+        .CE(\Use_BSCAN.FDC_I_n_16 ),
         .CLR(AR),
-        .D(p_0_in_2[7]),
+        .D(p_0_in_5[7]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [3]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[2][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_18 ),
+        .CE(\Use_BSCAN.FDC_I_n_16 ),
         .CLR(AR),
-        .D(p_0_in_2[6]),
+        .D(p_0_in_5[6]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [2]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[2][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_18 ),
-        .D(p_0_in_2[5]),
+        .CE(\Use_BSCAN.FDC_I_n_16 ),
+        .D(p_0_in_5[5]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[2][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_18 ),
-        .D(p_0_in_2[4]),
+        .CE(\Use_BSCAN.FDC_I_n_16 ),
+        .D(p_0_in_5[4]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[3][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_19 ),
+        .CE(\Use_BSCAN.FDC_I_n_17 ),
         .CLR(AR),
-        .D(p_0_in_2[7]),
+        .D(p_0_in_5[7]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [3]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[3][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_19 ),
-        .D(p_0_in_2[6]),
+        .CE(\Use_BSCAN.FDC_I_n_17 ),
+        .D(p_0_in_5[6]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [2]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[3][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_19 ),
+        .CE(\Use_BSCAN.FDC_I_n_17 ),
         .CLR(AR),
-        .D(p_0_in_2[5]),
+        .D(p_0_in_5[5]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[3][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_19 ),
+        .CE(\Use_BSCAN.FDC_I_n_17 ),
         .CLR(AR),
-        .D(p_0_in_2[4]),
+        .D(p_0_in_5[4]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.in_andor_ctrl_reg 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_21 ),
+        .CE(\Use_BSCAN.FDC_I_n_19 ),
         .CLR(AR),
         .D(\tdi_shifter_reg_n_0_[12] ),
         .Q(in_andor_ctrl));
@@ -4888,39 +5032,39 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b1)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_21 ),
-        .D(p_0_in_2[3]),
+        .CE(\Use_BSCAN.FDC_I_n_19 ),
+        .D(p_0_in_5[3]),
         .PRE(AR),
-        .Q(p_9_in54_in));
+        .Q(p_9_in58_in));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_21 ),
-        .D(p_0_in_2[2]),
+        .CE(\Use_BSCAN.FDC_I_n_19 ),
+        .D(p_0_in_5[2]),
         .PRE(AR),
         .Q(p_8_in));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_21 ),
-        .D(p_0_in_2[1]),
+        .CE(\Use_BSCAN.FDC_I_n_19 ),
+        .D(p_0_in_5[1]),
         .PRE(AR),
-        .Q(p_7_in49_in));
+        .Q(p_7_in53_in));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_21 ),
-        .D(p_0_in_2[0]),
+        .CE(\Use_BSCAN.FDC_I_n_19 ),
+        .D(p_0_in_5[0]),
         .PRE(AR),
-        .Q(p_6_in46_in));
+        .Q(p_6_in50_in));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][4] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_21 ),
+        .CE(\Use_BSCAN.FDC_I_n_19 ),
         .CLR(AR),
         .D(p_9_out[3]),
         .Q(p_5_in));
@@ -4928,290 +5072,290 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][5] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_21 ),
+        .CE(\Use_BSCAN.FDC_I_n_19 ),
         .CLR(AR),
         .D(p_9_out[2]),
-        .Q(p_4_in41_in));
+        .Q(p_4_in45_in));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][6] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_21 ),
+        .CE(\Use_BSCAN.FDC_I_n_19 ),
         .CLR(AR),
         .D(p_9_out[1]),
-        .Q(p_3_in38_in));
+        .Q(p_3_in42_in));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][7] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_21 ),
+        .CE(\Use_BSCAN.FDC_I_n_19 ),
         .CLR(AR),
         .D(p_9_out[0]),
         .Q(\Use_Cross_Trigger.in_ctrl_reg_n_0_[0][7] ));
   LUT6 #(
     .INIT(64'h0000000000000008)) 
     \Use_Cross_Trigger.out_ctrl[0][7][0]_i_3 
-       (.I0(\Use_BSCAN.command_reg_n_0_[6] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I2(\Use_BSCAN.command_reg[7]_0 ),
-        .I3(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I4(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I5(\Use_BSCAN.command_reg_n_0_[3] ),
+       (.I0(command[6]),
+        .I1(command[5]),
+        .I2(command[7]),
+        .I3(command[2]),
+        .I4(command[3]),
+        .I5(command[4]),
         .O(\Use_Cross_Trigger.out_ctrl[0][7][0]_i_3_n_0 ));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][0][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_22 ),
-        .D(p_0_in_2[7]),
+        .CE(\Use_BSCAN.FDC_I_n_20 ),
+        .D(p_0_in_5[7]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][0] [3]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][0][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_22 ),
+        .CE(\Use_BSCAN.FDC_I_n_20 ),
         .CLR(AR),
-        .D(p_0_in_2[6]),
+        .D(p_0_in_5[6]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][0] [2]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][0][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_22 ),
+        .CE(\Use_BSCAN.FDC_I_n_20 ),
         .CLR(AR),
-        .D(p_0_in_2[5]),
+        .D(p_0_in_5[5]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][0][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_22 ),
-        .D(p_0_in_2[4]),
+        .CE(\Use_BSCAN.FDC_I_n_20 ),
+        .D(p_0_in_5[4]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][1][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_23 ),
-        .D(p_0_in_2[7]),
+        .CE(\Use_BSCAN.FDC_I_n_21 ),
+        .D(p_0_in_5[7]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][1] [3]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][1][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_23 ),
+        .CE(\Use_BSCAN.FDC_I_n_21 ),
         .CLR(AR),
-        .D(p_0_in_2[6]),
+        .D(p_0_in_5[6]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][1] [2]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][1][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_23 ),
-        .D(p_0_in_2[5]),
+        .CE(\Use_BSCAN.FDC_I_n_21 ),
+        .D(p_0_in_5[5]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][1][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_23 ),
+        .CE(\Use_BSCAN.FDC_I_n_21 ),
         .CLR(AR),
-        .D(p_0_in_2[4]),
+        .D(p_0_in_5[4]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][2][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_26 ),
-        .D(p_0_in_2[7]),
+        .CE(\Use_BSCAN.FDC_I_n_24 ),
+        .D(p_0_in_5[7]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][2] [3]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][2][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_26 ),
+        .CE(\Use_BSCAN.FDC_I_n_24 ),
         .CLR(AR),
-        .D(p_0_in_2[6]),
+        .D(p_0_in_5[6]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][2] [2]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][2][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_26 ),
-        .D(p_0_in_2[5]),
+        .CE(\Use_BSCAN.FDC_I_n_24 ),
+        .D(p_0_in_5[5]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][2][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_26 ),
-        .D(p_0_in_2[4]),
+        .CE(\Use_BSCAN.FDC_I_n_24 ),
+        .D(p_0_in_5[4]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][3][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_27 ),
-        .D(p_0_in_2[7]),
+        .CE(\Use_BSCAN.FDC_I_n_25 ),
+        .D(p_0_in_5[7]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][3] [3]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][3][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_27 ),
-        .D(p_0_in_2[6]),
+        .CE(\Use_BSCAN.FDC_I_n_25 ),
+        .D(p_0_in_5[6]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][3] [2]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][3][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_27 ),
+        .CE(\Use_BSCAN.FDC_I_n_25 ),
         .CLR(AR),
-        .D(p_0_in_2[5]),
+        .D(p_0_in_5[5]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][3][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_27 ),
+        .CE(\Use_BSCAN.FDC_I_n_25 ),
         .CLR(AR),
-        .D(p_0_in_2[4]),
+        .D(p_0_in_5[4]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][4][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_24 ),
-        .D(p_0_in_2[7]),
+        .CE(\Use_BSCAN.FDC_I_n_22 ),
+        .D(p_0_in_5[7]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][4] [3]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][4][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_24 ),
-        .D(p_0_in_2[6]),
+        .CE(\Use_BSCAN.FDC_I_n_22 ),
+        .D(p_0_in_5[6]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][4] [2]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][4][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_24 ),
+        .CE(\Use_BSCAN.FDC_I_n_22 ),
         .CLR(AR),
-        .D(p_0_in_2[5]),
+        .D(p_0_in_5[5]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][4] [1]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][4][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_24 ),
-        .D(p_0_in_2[4]),
+        .CE(\Use_BSCAN.FDC_I_n_22 ),
+        .D(p_0_in_5[4]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][5][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_25 ),
-        .D(p_0_in_2[7]),
+        .CE(\Use_BSCAN.FDC_I_n_23 ),
+        .D(p_0_in_5[7]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][5] [3]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][5][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_25 ),
-        .D(p_0_in_2[6]),
+        .CE(\Use_BSCAN.FDC_I_n_23 ),
+        .D(p_0_in_5[6]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][5] [2]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][5][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_25 ),
+        .CE(\Use_BSCAN.FDC_I_n_23 ),
         .CLR(AR),
-        .D(p_0_in_2[5]),
+        .D(p_0_in_5[5]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][5] [1]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][5][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_25 ),
-        .D(p_0_in_2[4]),
+        .CE(\Use_BSCAN.FDC_I_n_23 ),
+        .D(p_0_in_5[4]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][6][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_28 ),
-        .D(p_0_in_2[7]),
+        .CE(\Use_BSCAN.FDC_I_n_26 ),
+        .D(p_0_in_5[7]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][6] [3]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][6][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_28 ),
-        .D(p_0_in_2[6]),
+        .CE(\Use_BSCAN.FDC_I_n_26 ),
+        .D(p_0_in_5[6]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][6] [2]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][6][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_28 ),
+        .CE(\Use_BSCAN.FDC_I_n_26 ),
         .CLR(AR),
-        .D(p_0_in_2[5]),
+        .D(p_0_in_5[5]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][6][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_28 ),
-        .D(p_0_in_2[4]),
+        .CE(\Use_BSCAN.FDC_I_n_26 ),
+        .D(p_0_in_5[4]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][7][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_29 ),
-        .D(p_0_in_2[7]),
+        .CE(\Use_BSCAN.FDC_I_n_27 ),
+        .D(p_0_in_5[7]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][7] [3]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][7][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_29 ),
-        .D(p_0_in_2[6]),
+        .CE(\Use_BSCAN.FDC_I_n_27 ),
+        .D(p_0_in_5[6]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][7] [2]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][7][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_29 ),
+        .CE(\Use_BSCAN.FDC_I_n_27 ),
         .CLR(AR),
-        .D(p_0_in_2[5]),
+        .D(p_0_in_5[5]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][7][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_29 ),
-        .D(p_0_in_2[4]),
+        .CE(\Use_BSCAN.FDC_I_n_27 ),
+        .D(p_0_in_5[4]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]));
   LUT6 #(
@@ -5251,7 +5395,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(\Use_Cross_Trigger.tdo_reg[16]_i_4_n_0 ),
         .I3(Trig_Out_0_INST_0_i_4_n_0),
         .I4(sel_n_reg_0),
-        .I5(tdo_reg[15]),
+        .I5(\Use_Cross_Trigger.tdo_reg_reg_n_0_[15] ),
         .O(\Use_Cross_Trigger.tdo_reg[16]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h88880000FFF00000)) 
@@ -5279,7 +5423,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [3]),
         .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [2]),
         .O(\Use_Cross_Trigger.tdo_reg[16]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \Use_Cross_Trigger.tdo_reg[16]_i_5 
@@ -5290,7 +5434,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h88880000F0000000)) 
     \Use_Cross_Trigger.tdo_reg[16]_i_6 
        (.I0(Dbg_Trig_In_0[6]),
-        .I1(p_3_in38_in),
+        .I1(p_3_in42_in),
         .I2(Dbg_Trig_In_0[4]),
         .I3(p_5_in),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
@@ -5300,9 +5444,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h000000008888F000)) 
     \Use_Cross_Trigger.tdo_reg[16]_i_7 
        (.I0(Dbg_Trig_In_0[5]),
-        .I1(p_4_in41_in),
+        .I1(p_4_in45_in),
         .I2(Dbg_Trig_In_0[3]),
-        .I3(p_6_in46_in),
+        .I3(p_6_in50_in),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
         .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
         .O(\Use_Cross_Trigger.tdo_reg[16]_i_7_n_0 ));
@@ -5310,7 +5454,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h80FF800080008000)) 
     \Use_Cross_Trigger.tdo_reg[16]_i_8 
        (.I0(Dbg_Trig_In_0[2]),
-        .I1(p_7_in49_in),
+        .I1(p_7_in53_in),
         .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
         .I4(Dbg_Trig_In_0[1]),
@@ -5324,7 +5468,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(\Use_Cross_Trigger.tdo_reg[17]_i_4_n_0 ),
         .I3(Trig_Out_1_INST_0_i_4_n_0),
         .I4(sel_n_reg_0),
-        .I5(tdo_reg[16]),
+        .I5(\Use_Cross_Trigger.tdo_reg_reg_n_0_[16] ),
         .O(\Use_Cross_Trigger.tdo_reg[17]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h88880000FFF00000)) 
@@ -5352,7 +5496,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [3]),
         .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]),
         .O(\Use_Cross_Trigger.tdo_reg[17]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \Use_Cross_Trigger.tdo_reg[17]_i_5 
@@ -5363,7 +5507,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h88880000F0000000)) 
     \Use_Cross_Trigger.tdo_reg[17]_i_6 
        (.I0(Dbg_Trig_In_0[6]),
-        .I1(p_3_in38_in),
+        .I1(p_3_in42_in),
         .I2(Dbg_Trig_In_0[4]),
         .I3(p_5_in),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
@@ -5373,9 +5517,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h000000008888F000)) 
     \Use_Cross_Trigger.tdo_reg[17]_i_7 
        (.I0(Dbg_Trig_In_0[5]),
-        .I1(p_4_in41_in),
+        .I1(p_4_in45_in),
         .I2(Dbg_Trig_In_0[3]),
-        .I3(p_6_in46_in),
+        .I3(p_6_in50_in),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
         .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
         .O(\Use_Cross_Trigger.tdo_reg[17]_i_7_n_0 ));
@@ -5383,7 +5527,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h80FF800080008000)) 
     \Use_Cross_Trigger.tdo_reg[17]_i_8 
        (.I0(Dbg_Trig_In_0[2]),
-        .I1(p_7_in49_in),
+        .I1(p_7_in53_in),
         .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
         .I4(Dbg_Trig_In_0[1]),
@@ -5397,7 +5541,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(\Use_Cross_Trigger.tdo_reg[18]_i_4_n_0 ),
         .I3(Trig_Out_2_INST_0_i_4_n_0),
         .I4(sel_n_reg_0),
-        .I5(tdo_reg[17]),
+        .I5(\Use_Cross_Trigger.tdo_reg_reg_n_0_[17] ),
         .O(\Use_Cross_Trigger.tdo_reg[18]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h88880000FFF00000)) 
@@ -5425,7 +5569,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [3]),
         .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [2]),
         .O(\Use_Cross_Trigger.tdo_reg[18]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \Use_Cross_Trigger.tdo_reg[18]_i_5 
@@ -5436,7 +5580,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h88880000F0000000)) 
     \Use_Cross_Trigger.tdo_reg[18]_i_6 
        (.I0(Dbg_Trig_In_0[6]),
-        .I1(p_3_in38_in),
+        .I1(p_3_in42_in),
         .I2(Dbg_Trig_In_0[4]),
         .I3(p_5_in),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
@@ -5446,9 +5590,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h000000008888F000)) 
     \Use_Cross_Trigger.tdo_reg[18]_i_7 
        (.I0(Dbg_Trig_In_0[5]),
-        .I1(p_4_in41_in),
+        .I1(p_4_in45_in),
         .I2(Dbg_Trig_In_0[3]),
-        .I3(p_6_in46_in),
+        .I3(p_6_in50_in),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
         .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
         .O(\Use_Cross_Trigger.tdo_reg[18]_i_7_n_0 ));
@@ -5456,7 +5600,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h80FF800080008000)) 
     \Use_Cross_Trigger.tdo_reg[18]_i_8 
        (.I0(Dbg_Trig_In_0[2]),
-        .I1(p_7_in49_in),
+        .I1(p_7_in53_in),
         .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
         .I4(Dbg_Trig_In_0[1]),
@@ -5470,7 +5614,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(\Use_Cross_Trigger.tdo_reg[19]_i_4_n_0 ),
         .I3(Trig_Out_3_INST_0_i_4_n_0),
         .I4(sel_n_reg_0),
-        .I5(tdo_reg[18]),
+        .I5(\Use_Cross_Trigger.tdo_reg_reg_n_0_[18] ),
         .O(\Use_Cross_Trigger.tdo_reg[19]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h88880000FFF00000)) 
@@ -5498,7 +5642,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [3]),
         .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [2]),
         .O(\Use_Cross_Trigger.tdo_reg[19]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \Use_Cross_Trigger.tdo_reg[19]_i_5 
@@ -5509,7 +5653,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h88880000F0000000)) 
     \Use_Cross_Trigger.tdo_reg[19]_i_6 
        (.I0(Dbg_Trig_In_0[6]),
-        .I1(p_3_in38_in),
+        .I1(p_3_in42_in),
         .I2(Dbg_Trig_In_0[4]),
         .I3(p_5_in),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
@@ -5519,9 +5663,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h000000008888F000)) 
     \Use_Cross_Trigger.tdo_reg[19]_i_7 
        (.I0(Dbg_Trig_In_0[5]),
-        .I1(p_4_in41_in),
+        .I1(p_4_in45_in),
         .I2(Dbg_Trig_In_0[3]),
-        .I3(p_6_in46_in),
+        .I3(p_6_in50_in),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
         .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
         .O(\Use_Cross_Trigger.tdo_reg[19]_i_7_n_0 ));
@@ -5529,80 +5673,80 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h80FF800080008000)) 
     \Use_Cross_Trigger.tdo_reg[19]_i_8 
        (.I0(Dbg_Trig_In_0[2]),
-        .I1(p_7_in49_in),
+        .I1(p_7_in53_in),
         .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
         .I4(Dbg_Trig_In_0[1]),
         .I5(p_8_in),
         .O(\Use_Cross_Trigger.tdo_reg[19]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[1]_i_1 
        (.I0(Dbg_Trig_Out_0[1]),
         .I1(sel_n_reg_0),
-        .I2(tdo_reg[0]),
+        .I2(\Use_Cross_Trigger.tdo_reg_reg_n_0_[0] ),
         .O(\Use_Cross_Trigger.tdo_reg[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair40" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[2]_i_1 
        (.I0(Dbg_Trig_Out_0[2]),
         .I1(sel_n_reg_0),
-        .I2(tdo_reg[1]),
+        .I2(\Use_Cross_Trigger.tdo_reg_reg_n_0_[1] ),
         .O(\Use_Cross_Trigger.tdo_reg[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  (* SOFT_HLUTNM = "soft_lutpair40" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[3]_i_1 
        (.I0(Dbg_Trig_Out_0[3]),
         .I1(sel_n_reg_0),
-        .I2(tdo_reg[2]),
+        .I2(\Use_Cross_Trigger.tdo_reg_reg_n_0_[2] ),
         .O(\Use_Cross_Trigger.tdo_reg[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[4]_i_1 
        (.I0(Dbg_Trig_Out_0[4]),
         .I1(sel_n_reg_0),
-        .I2(tdo_reg[3]),
+        .I2(\Use_Cross_Trigger.tdo_reg_reg_n_0_[3] ),
         .O(\Use_Cross_Trigger.tdo_reg[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[5]_i_1 
        (.I0(Dbg_Trig_Out_0[5]),
         .I1(sel_n_reg_0),
-        .I2(tdo_reg[4]),
+        .I2(\Use_Cross_Trigger.tdo_reg_reg_n_0_[4] ),
         .O(\Use_Cross_Trigger.tdo_reg[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair37" *) 
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[6]_i_1 
        (.I0(Dbg_Trig_Out_0[6]),
         .I1(sel_n_reg_0),
-        .I2(tdo_reg[5]),
+        .I2(\Use_Cross_Trigger.tdo_reg_reg_n_0_[5] ),
         .O(\Use_Cross_Trigger.tdo_reg[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[7]_i_1 
        (.I0(Dbg_Trig_Out_0[7]),
         .I1(sel_n_reg_0),
-        .I2(tdo_reg[6]),
+        .I2(\Use_Cross_Trigger.tdo_reg_reg_n_0_[6] ),
         .O(\Use_Cross_Trigger.tdo_reg[7]_i_1_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[0] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[0]_i_1_n_0 ),
-        .Q(tdo_reg[0]));
+        .Q(\Use_Cross_Trigger.tdo_reg_reg_n_0_[0] ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[10] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg_reg[8]_0 [9]),
         .Q(\Use_Cross_Trigger.tdo_reg_reg[7]_0 [8]));
@@ -5610,7 +5754,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[11] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg_reg[8]_0 [8]),
         .Q(\Use_Cross_Trigger.tdo_reg_reg[7]_0 [7]));
@@ -5618,7 +5762,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[12] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg_reg[8]_0 [7]),
         .Q(\Use_Cross_Trigger.tdo_reg_reg[7]_0 [6]));
@@ -5626,7 +5770,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[13] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg_reg[8]_0 [6]),
         .Q(\Use_Cross_Trigger.tdo_reg_reg[7]_0 [5]));
@@ -5634,7 +5778,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[14] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg_reg[8]_0 [5]),
         .Q(\Use_Cross_Trigger.tdo_reg_reg[7]_0 [4]));
@@ -5642,39 +5786,39 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[15] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg_reg[8]_0 [4]),
-        .Q(tdo_reg[15]));
+        .Q(\Use_Cross_Trigger.tdo_reg_reg_n_0_[15] ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[16] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[16]_i_1_n_0 ),
-        .Q(tdo_reg[16]));
+        .Q(\Use_Cross_Trigger.tdo_reg_reg_n_0_[16] ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[17] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[17]_i_1_n_0 ),
-        .Q(tdo_reg[17]));
+        .Q(\Use_Cross_Trigger.tdo_reg_reg_n_0_[17] ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[18] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[18]_i_1_n_0 ),
-        .Q(tdo_reg[18]));
+        .Q(\Use_Cross_Trigger.tdo_reg_reg_n_0_[18] ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[19] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[19]_i_1_n_0 ),
         .Q(\Use_Cross_Trigger.tdo_reg_reg[7]_0 [3]));
@@ -5682,15 +5826,15 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[1] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[1]_i_1_n_0 ),
-        .Q(tdo_reg[1]));
+        .Q(\Use_Cross_Trigger.tdo_reg_reg_n_0_[1] ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[20] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg_reg[8]_0 [3]),
         .Q(\Use_Cross_Trigger.tdo_reg_reg[7]_0 [2]));
@@ -5698,7 +5842,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[21] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg_reg[8]_0 [2]),
         .Q(\Use_Cross_Trigger.tdo_reg_reg[7]_0 [1]));
@@ -5706,7 +5850,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[22] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg_reg[8]_0 [1]),
         .Q(\Use_Cross_Trigger.tdo_reg_reg[7]_0 [0]));
@@ -5714,55 +5858,55 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[23] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg_reg[8]_0 [0]),
-        .Q(tdo_reg[23]));
+        .Q(\Use_Cross_Trigger.tdo_reg_reg_n_0_[23] ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[2] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[2]_i_1_n_0 ),
-        .Q(tdo_reg[2]));
+        .Q(\Use_Cross_Trigger.tdo_reg_reg_n_0_[2] ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[3] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[3]_i_1_n_0 ),
-        .Q(tdo_reg[3]));
+        .Q(\Use_Cross_Trigger.tdo_reg_reg_n_0_[3] ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[4] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[4]_i_1_n_0 ),
-        .Q(tdo_reg[4]));
+        .Q(\Use_Cross_Trigger.tdo_reg_reg_n_0_[4] ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[5] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[5]_i_1_n_0 ),
-        .Q(tdo_reg[5]));
+        .Q(\Use_Cross_Trigger.tdo_reg_reg_n_0_[5] ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[6] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[6]_i_1_n_0 ),
-        .Q(tdo_reg[6]));
+        .Q(\Use_Cross_Trigger.tdo_reg_reg_n_0_[6] ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[7] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[7]_i_1_n_0 ),
         .Q(\Use_Cross_Trigger.tdo_reg_reg[7]_0 [11]));
@@ -5770,7 +5914,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[8] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg_reg[8]_0 [11]),
         .Q(\Use_Cross_Trigger.tdo_reg_reg[7]_0 [10]));
@@ -5778,20 +5922,34 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.tdo_reg_reg[9] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg_reg[8]_0 [10]),
         .Q(\Use_Cross_Trigger.tdo_reg_reg[7]_0 [9]));
   LUT6 #(
-    .INIT(64'h0000100000000000)) 
+    .INIT(64'h0000000200000000)) 
     \Use_Dbg_Mem_Access.Master_data_rd_i_1 
-       (.I0(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
-        .I1(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[6] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I4(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I5(\Use_Dbg_Mem_Access.Master_wr_start_reg_1 ),
+       (.I0(\Use_Dbg_Mem_Access.Master_data_rd_i_2_n_0 ),
+        .I1(command[3]),
+        .I2(command[5]),
+        .I3(\Use_Dbg_Mem_Access.Master_data_rd_i_3_n_0 ),
+        .I4(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
+        .I5(\Use_Dbg_Mem_Access.master_overrun_reg_0 ),
         .O(Master_data_rd5_out));
+  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \Use_Dbg_Mem_Access.Master_data_rd_i_2 
+       (.I0(command[7]),
+        .I1(command[6]),
+        .O(\Use_Dbg_Mem_Access.Master_data_rd_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+  LUT2 #(
+    .INIT(4'hE)) 
+    \Use_Dbg_Mem_Access.Master_data_rd_i_3 
+       (.I0(command[1]),
+        .I1(command[0]),
+        .O(\Use_Dbg_Mem_Access.Master_data_rd_i_3_n_0 ));
   FDRE \Use_Dbg_Mem_Access.Master_data_rd_reg 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
@@ -5799,41 +5957,57 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .Q(master_data_rd),
         .R(Reset));
   LUT6 #(
-    .INIT(64'h0000000000000008)) 
+    .INIT(64'h0000000000000080)) 
     \Use_Dbg_Mem_Access.Master_data_wr_i_1 
-       (.I0(\Use_Dbg_Mem_Access.Master_wr_start_reg_1 ),
-        .I1(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I4(\Use_BSCAN.command_reg_n_0_[6] ),
-        .I5(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
+       (.I0(\Use_Dbg_Mem_Access.master_overrun_reg_0 ),
+        .I1(command[2]),
+        .I2(command[7]),
+        .I3(command[5]),
+        .I4(command[4]),
+        .I5(\Use_Dbg_Mem_Access.Master_data_wr_i_2_n_0 ),
         .O(Master_data_wr2_out));
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    \Use_Dbg_Mem_Access.Master_data_wr_i_2 
+       (.I0(command[3]),
+        .I1(command[6]),
+        .I2(command[0]),
+        .I3(command[1]),
+        .O(\Use_Dbg_Mem_Access.Master_data_wr_i_2_n_0 ));
   FDRE \Use_Dbg_Mem_Access.Master_data_wr_reg 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
         .D(Master_data_wr2_out),
         .Q(master_data_wr),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT5 #(
-    .INIT(32'h8C000000)) 
+    .INIT(32'h80A00000)) 
     \Use_Dbg_Mem_Access.Master_rd_start_i_1 
-       (.I0(\Use_BSCAN.command_reg_n_0_[3] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I3(\Use_Dbg_Mem_Access.Master_rd_start_i_2_n_0 ),
-        .I4(\Use_Dbg_Mem_Access.Master_wr_start_reg_1 ),
+       (.I0(\Use_Dbg_Mem_Access.master_overrun_reg_0 ),
+        .I1(command[3]),
+        .I2(command[2]),
+        .I3(command[4]),
+        .I4(\Use_Dbg_Mem_Access.Master_rd_start_i_3_n_0 ),
         .O(Master_rd_start8_out));
-  (* SOFT_HLUTNM = "soft_lutpair20" *) 
-  LUT5 #(
-    .INIT(32'h00000020)) 
-    \Use_Dbg_Mem_Access.Master_rd_start_i_2 
-       (.I0(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[6] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I3(wdata_exists),
-        .I4(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
-        .O(\Use_Dbg_Mem_Access.Master_rd_start_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000000800000)) 
+    \Use_Dbg_Mem_Access.Master_rd_start_i_3 
+       (.I0(\Use_Dbg_Mem_Access.execute_i_4_n_0 ),
+        .I1(\Use_Dbg_Mem_Access.Master_rd_start_i_4_n_0 ),
+        .I2(command[2]),
+        .I3(command[0]),
+        .I4(command[5]),
+        .I5(wdata_exists),
+        .O(\Use_Dbg_Mem_Access.Master_rd_start_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \Use_Dbg_Mem_Access.Master_rd_start_i_4 
+       (.I0(command[7]),
+        .I1(command[6]),
+        .O(\Use_Dbg_Mem_Access.Master_rd_start_i_4_n_0 ));
   FDRE \Use_Dbg_Mem_Access.Master_rd_start_reg 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
@@ -5841,29 +6015,25 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .Q(master_rd_start),
         .R(Reset));
   LUT6 #(
-    .INIT(64'h0000400000000000)) 
+    .INIT(64'h0800000000000000)) 
     \Use_Dbg_Mem_Access.Master_wr_start_i_1 
-       (.I0(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
-        .I1(\Use_Dbg_Mem_Access.Master_wr_start_i_2_n_0 ),
-        .I2(wdata_exists),
+       (.I0(command[5]),
+        .I1(wdata_exists),
+        .I2(command[0]),
         .I3(M_AXI_ARESETN),
-        .I4(\Use_Dbg_Mem_Access.Master_wr_start_i_3_n_0 ),
-        .I5(\Use_Dbg_Mem_Access.Master_wr_start_reg_1 ),
+        .I4(\Use_Dbg_Mem_Access.master_overrun_reg_0 ),
+        .I5(\Use_Dbg_Mem_Access.Master_wr_start_i_2_n_0 ),
         .O(\Use_Dbg_Mem_Access.Master_wr_start_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair20" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
+  LUT6 #(
+    .INIT(64'h0000000000100000)) 
     \Use_Dbg_Mem_Access.Master_wr_start_i_2 
-       (.I0(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[6] ),
+       (.I0(command[1]),
+        .I1(command[3]),
+        .I2(command[7]),
+        .I3(command[6]),
+        .I4(command[2]),
+        .I5(command[4]),
         .O(\Use_Dbg_Mem_Access.Master_wr_start_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
-  LUT2 #(
-    .INIT(4'hB)) 
-    \Use_Dbg_Mem_Access.Master_wr_start_i_3 
-       (.I0(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[2] ),
-        .O(\Use_Dbg_Mem_Access.Master_wr_start_i_3_n_0 ));
   FDRE \Use_Dbg_Mem_Access.Master_wr_start_reg 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
@@ -5878,7 +6048,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
         .CLR(AR),
-        .D(p_92_out),
+        .D(p_97_out),
         .Q(access_idle_1));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
@@ -5918,7 +6088,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(M_AXI_ACLK),
         .CE(1'b1),
         .D(execute),
-        .Q(execute_1),
+        .Q(execute_1__0),
         .R(Reset));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
@@ -5927,264 +6097,268 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_Dbg_Mem_Access.execute_2_reg 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
-        .D(execute_1),
-        .Q(execute_2),
+        .D(execute_1__0),
+        .Q(execute_2__0),
         .R(Reset));
   FDRE #(
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.execute_3_reg 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
-        .D(execute_2),
+        .D(execute_2__0),
         .Q(execute_3),
         .R(Reset));
   LUT6 #(
-    .INIT(64'h00040000000C0000)) 
+    .INIT(64'h0100000003000000)) 
     \Use_Dbg_Mem_Access.execute_i_1 
-       (.I0(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I3(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
-        .I4(\Use_BSCAN.command_reg[7]_0 ),
-        .I5(\Use_BSCAN.command_reg_n_0_[6] ),
+       (.I0(command[5]),
+        .I1(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
+        .I2(command[0]),
+        .I3(\Use_Dbg_Mem_Access.execute_i_4_n_0 ),
+        .I4(command[7]),
+        .I5(command[6]),
         .O(p_22_out));
-  (* SOFT_HLUTNM = "soft_lutpair39" *) 
-  LUT3 #(
-    .INIT(8'hFE)) 
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  LUT2 #(
+    .INIT(4'hB)) 
     \Use_Dbg_Mem_Access.execute_i_3 
-       (.I0(\Use_BSCAN.command_reg_n_0_[0] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[3] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[1] ),
+       (.I0(command[4]),
+        .I1(command[2]),
         .O(\Use_Dbg_Mem_Access.execute_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
+    \Use_Dbg_Mem_Access.execute_i_4 
+       (.I0(command[1]),
+        .I1(command[3]),
+        .O(\Use_Dbg_Mem_Access.execute_i_4_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.execute_reg 
        (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
-        .CLR(data_cmd_reset23_out),
+        .CLR(data_cmd_reset27_out),
         .D(p_22_out),
         .Q(execute));
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT5 #(
     .INIT(32'hFFFFFFFD)) 
     \Use_Dbg_Mem_Access.input[0]_i_2 
-       (.I0(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[1] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[3] ),
-        .I4(\Use_BSCAN.command_reg_n_0_[0] ),
+       (.I0(command[2]),
+        .I1(command[4]),
+        .I2(command[0]),
+        .I3(command[1]),
+        .I4(command[3]),
         .O(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ));
   FDCE \Use_Dbg_Mem_Access.input_reg[0] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
-        .D(Ext_JTAG_TDI),
+        .D(Dbg_TDI_0),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [31]));
   FDCE \Use_Dbg_Mem_Access.input_reg[10] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [22]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [21]));
   FDCE \Use_Dbg_Mem_Access.input_reg[11] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [21]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [20]));
   FDCE \Use_Dbg_Mem_Access.input_reg[12] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [20]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [19]));
   FDCE \Use_Dbg_Mem_Access.input_reg[13] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [19]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [18]));
   FDCE \Use_Dbg_Mem_Access.input_reg[14] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [18]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [17]));
   FDCE \Use_Dbg_Mem_Access.input_reg[15] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [17]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [16]));
   FDCE \Use_Dbg_Mem_Access.input_reg[16] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [16]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [15]));
   FDCE \Use_Dbg_Mem_Access.input_reg[17] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [15]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [14]));
   FDCE \Use_Dbg_Mem_Access.input_reg[18] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [14]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [13]));
   FDCE \Use_Dbg_Mem_Access.input_reg[19] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [13]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [12]));
   FDCE \Use_Dbg_Mem_Access.input_reg[1] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [31]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [30]));
   FDCE \Use_Dbg_Mem_Access.input_reg[20] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [12]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [11]));
   FDCE \Use_Dbg_Mem_Access.input_reg[21] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [11]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [10]));
   FDCE \Use_Dbg_Mem_Access.input_reg[22] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [10]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [9]));
   FDCE \Use_Dbg_Mem_Access.input_reg[23] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [9]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [8]));
   FDCE \Use_Dbg_Mem_Access.input_reg[24] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [8]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [7]));
   FDCE \Use_Dbg_Mem_Access.input_reg[25] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [7]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [6]));
   FDCE \Use_Dbg_Mem_Access.input_reg[26] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [6]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [5]));
   FDCE \Use_Dbg_Mem_Access.input_reg[27] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [5]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [4]));
   FDCE \Use_Dbg_Mem_Access.input_reg[28] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [4]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [3]));
   FDCE \Use_Dbg_Mem_Access.input_reg[29] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [3]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [2]));
   FDCE \Use_Dbg_Mem_Access.input_reg[2] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [30]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [29]));
   FDCE \Use_Dbg_Mem_Access.input_reg[30] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [2]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [1]));
   FDCE \Use_Dbg_Mem_Access.input_reg[31] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [1]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [0]));
   FDCE \Use_Dbg_Mem_Access.input_reg[3] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [29]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [28]));
   FDCE \Use_Dbg_Mem_Access.input_reg[4] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [28]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [27]));
   FDCE \Use_Dbg_Mem_Access.input_reg[5] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [27]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [26]));
   FDCE \Use_Dbg_Mem_Access.input_reg[6] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [26]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [25]));
   FDCE \Use_Dbg_Mem_Access.input_reg[7] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [25]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [24]));
   FDCE \Use_Dbg_Mem_Access.input_reg[8] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [24]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [23]));
   FDCE \Use_Dbg_Mem_Access.input_reg[9] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_87_out),
+        .CE(p_92_out),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [23]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [22]));
-  LUT6 #(
-    .INIT(64'hDDDCDDDDCCCCCCCC)) 
+  LUT4 #(
+    .INIT(16'hCDCC)) 
     \Use_Dbg_Mem_Access.master_error_i_1 
        (.I0(clear_overrun_2),
         .I1(p_20_out),
-        .I2(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
-        .I3(\Use_BSCAN.command_reg_n_0_[6] ),
-        .I4(\Use_Dbg_Mem_Access.master_error_i_3_n_0 ),
-        .I5(\Use_Dbg_Mem_Access.master_error_reg_n_0 ),
+        .I2(\Use_Dbg_Mem_Access.master_error_i_3_n_0 ),
+        .I3(\Use_Dbg_Mem_Access.master_error_reg_n_0 ),
         .O(\Use_Dbg_Mem_Access.master_error_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
-  LUT5 #(
-    .INIT(32'h40000000)) 
+  LUT6 #(
+    .INIT(64'h0000000000008000)) 
     \Use_Dbg_Mem_Access.master_error_i_3 
-       (.I0(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I3(\Use_BSCAN.command_reg[7]_0 ),
-        .I4(\Use_Dbg_Mem_Access.master_overrun_reg_0 ),
+       (.I0(\Use_Dbg_Mem_Access.master_overrun_reg_0 ),
+        .I1(command[5]),
+        .I2(command[7]),
+        .I3(command[2]),
+        .I4(command[4]),
+        .I5(\Use_Dbg_Mem_Access.Master_data_wr_i_2_n_0 ),
         .O(\Use_Dbg_Mem_Access.master_error_i_3_n_0 ));
   FDRE \Use_Dbg_Mem_Access.master_error_reg 
        (.C(M_AXI_ACLK),
@@ -6196,7 +6370,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h000000AE00000000)) 
     \Use_Dbg_Mem_Access.master_overrun_i_1 
        (.I0(\Use_Dbg_Mem_Access.master_overrun_reg_n_0 ),
-        .I1(execute_2),
+        .I1(execute_2__0),
         .I2(execute_3),
         .I3(\Use_Dbg_Mem_Access.master_overrun_reg_0 ),
         .I4(clear_overrun_2),
@@ -6209,28 +6383,27 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .Q(\Use_Dbg_Mem_Access.master_overrun_reg_n_0 ),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFF7F)) 
+    .INIT(64'hFFFFFFFFEFFFFFFF)) 
+    \Use_Dbg_Mem_Access.output[0]_i_2 
+       (.I0(command[4]),
+        .I1(command[5]),
+        .I2(command[6]),
+        .I3(command[2]),
+        .I4(\Use_Dbg_Mem_Access.execute_i_4_n_0 ),
+        .I5(\Use_Dbg_Mem_Access.output[0]_i_3_n_0 ),
+        .O(\Use_BSCAN.command_reg[4]_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  LUT2 #(
+    .INIT(4'hE)) 
     \Use_Dbg_Mem_Access.output[0]_i_3 
-       (.I0(\Use_Dbg_Mem_Access.output[0]_i_4_n_0 ),
-        .I1(\Use_BSCAN.command_reg_n_0_[6] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[0] ),
-        .I4(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I5(\Use_BSCAN.command_reg_n_0_[5] ),
-        .O(\Use_BSCAN.command_reg[6]_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair39" *) 
-  LUT3 #(
-    .INIT(8'h01)) 
-    \Use_Dbg_Mem_Access.output[0]_i_4 
-       (.I0(\Use_BSCAN.command_reg_n_0_[1] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[3] ),
-        .I2(\Use_BSCAN.command_reg[7]_0 ),
-        .O(\Use_Dbg_Mem_Access.output[0]_i_4_n_0 ));
+       (.I0(command[7]),
+        .I1(command[0]),
+        .O(\Use_Dbg_Mem_Access.output[0]_i_3_n_0 ));
   LUT4 #(
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[10]_i_1 
        (.I0(master_data_out[17]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [9]),
         .O(\Use_Dbg_Mem_Access.output[10]_i_1_n_0 ));
@@ -6238,7 +6411,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[11]_i_1 
        (.I0(master_data_out[16]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [10]),
         .O(\Use_Dbg_Mem_Access.output[11]_i_1_n_0 ));
@@ -6246,7 +6419,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[12]_i_1 
        (.I0(master_data_out[15]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [11]),
         .O(\Use_Dbg_Mem_Access.output[12]_i_1_n_0 ));
@@ -6254,7 +6427,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[13]_i_1 
        (.I0(master_data_out[14]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [12]),
         .O(\Use_Dbg_Mem_Access.output[13]_i_1_n_0 ));
@@ -6262,7 +6435,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[14]_i_1 
        (.I0(master_data_out[13]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [13]),
         .O(\Use_Dbg_Mem_Access.output[14]_i_1_n_0 ));
@@ -6270,7 +6443,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[15]_i_1 
        (.I0(master_data_out[12]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [14]),
         .O(\Use_Dbg_Mem_Access.output[15]_i_1_n_0 ));
@@ -6278,7 +6451,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[16]_i_1 
        (.I0(master_data_out[11]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [15]),
         .O(\Use_Dbg_Mem_Access.output[16]_i_1_n_0 ));
@@ -6286,7 +6459,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[17]_i_1 
        (.I0(master_data_out[10]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [16]),
         .O(\Use_Dbg_Mem_Access.output[17]_i_1_n_0 ));
@@ -6294,7 +6467,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[18]_i_1 
        (.I0(master_data_out[9]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [17]),
         .O(\Use_Dbg_Mem_Access.output[18]_i_1_n_0 ));
@@ -6302,7 +6475,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[19]_i_1 
        (.I0(master_data_out[8]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [18]),
         .O(\Use_Dbg_Mem_Access.output[19]_i_1_n_0 ));
@@ -6310,7 +6483,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[1]_i_1 
        (.I0(master_data_out[26]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [0]),
         .O(\Use_Dbg_Mem_Access.output[1]_i_1_n_0 ));
@@ -6318,7 +6491,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[20]_i_1 
        (.I0(master_data_out[7]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [19]),
         .O(\Use_Dbg_Mem_Access.output[20]_i_1_n_0 ));
@@ -6326,7 +6499,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[21]_i_1 
        (.I0(master_data_out[6]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [20]),
         .O(\Use_Dbg_Mem_Access.output[21]_i_1_n_0 ));
@@ -6334,7 +6507,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[22]_i_1 
        (.I0(master_data_out[5]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [21]),
         .O(\Use_Dbg_Mem_Access.output[22]_i_1_n_0 ));
@@ -6342,7 +6515,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[23]_i_1 
        (.I0(master_data_out[4]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [22]),
         .O(\Use_Dbg_Mem_Access.output[23]_i_1_n_0 ));
@@ -6352,7 +6525,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.I0(\output [26]),
         .I1(\Use_Dbg_Mem_Access.output_reg[27]_0 ),
         .I2(master_data_out[3]),
-        .I3(\Use_BSCAN.command_reg[6]_0 ),
+        .I3(\Use_BSCAN.command_reg[4]_0 ),
         .I4(sel_n_reg_0),
         .O(\Use_Dbg_Mem_Access.output[27]_i_1_n_0 ));
   LUT5 #(
@@ -6361,14 +6534,14 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.I0(\output [28]),
         .I1(\Use_Dbg_Mem_Access.output_reg[29]_0 ),
         .I2(master_data_out[2]),
-        .I3(\Use_BSCAN.command_reg[6]_0 ),
+        .I3(\Use_BSCAN.command_reg[4]_0 ),
         .I4(sel_n_reg_0),
         .O(\Use_Dbg_Mem_Access.output[29]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[2]_i_1 
        (.I0(master_data_out[25]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [1]),
         .O(\Use_Dbg_Mem_Access.output[2]_i_1_n_0 ));
@@ -6376,7 +6549,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[30]_i_1 
        (.I0(master_data_out[1]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [29]),
         .O(\Use_Dbg_Mem_Access.output[30]_i_1_n_0 ));
@@ -6384,7 +6557,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[31]_i_1 
        (.I0(master_data_out[0]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [30]),
         .O(\Use_Dbg_Mem_Access.output[31]_i_1_n_0 ));
@@ -6392,7 +6565,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[3]_i_1 
        (.I0(master_data_out[24]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [2]),
         .O(\Use_Dbg_Mem_Access.output[3]_i_1_n_0 ));
@@ -6400,7 +6573,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[4]_i_1 
        (.I0(master_data_out[23]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [3]),
         .O(\Use_Dbg_Mem_Access.output[4]_i_1_n_0 ));
@@ -6408,7 +6581,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[5]_i_1 
        (.I0(master_data_out[22]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [4]),
         .O(\Use_Dbg_Mem_Access.output[5]_i_1_n_0 ));
@@ -6416,7 +6589,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[6]_i_1 
        (.I0(master_data_out[21]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [5]),
         .O(\Use_Dbg_Mem_Access.output[6]_i_1_n_0 ));
@@ -6424,7 +6597,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[7]_i_1 
        (.I0(master_data_out[20]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [6]),
         .O(\Use_Dbg_Mem_Access.output[7]_i_1_n_0 ));
@@ -6432,7 +6605,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[8]_i_1 
        (.I0(master_data_out[19]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [7]),
         .O(\Use_Dbg_Mem_Access.output[8]_i_1_n_0 ));
@@ -6440,199 +6613,199 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[9]_i_1 
        (.I0(master_data_out[18]),
-        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I1(\Use_BSCAN.command_reg[4]_0 ),
         .I2(sel_n_reg_0),
         .I3(\output [8]),
         .O(\Use_Dbg_Mem_Access.output[9]_i_1_n_0 ));
   FDCE \Use_Dbg_Mem_Access.output_reg[0] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output_reg[0]_0 [4]),
         .Q(\output [0]));
   FDCE \Use_Dbg_Mem_Access.output_reg[10] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[10]_i_1_n_0 ),
         .Q(\output [10]));
   FDCE \Use_Dbg_Mem_Access.output_reg[11] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[11]_i_1_n_0 ),
         .Q(\output [11]));
   FDCE \Use_Dbg_Mem_Access.output_reg[12] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[12]_i_1_n_0 ),
         .Q(\output [12]));
   FDCE \Use_Dbg_Mem_Access.output_reg[13] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[13]_i_1_n_0 ),
         .Q(\output [13]));
   FDCE \Use_Dbg_Mem_Access.output_reg[14] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[14]_i_1_n_0 ),
         .Q(\output [14]));
   FDCE \Use_Dbg_Mem_Access.output_reg[15] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[15]_i_1_n_0 ),
         .Q(\output [15]));
   FDCE \Use_Dbg_Mem_Access.output_reg[16] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[16]_i_1_n_0 ),
         .Q(\output [16]));
   FDCE \Use_Dbg_Mem_Access.output_reg[17] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[17]_i_1_n_0 ),
         .Q(\output [17]));
   FDCE \Use_Dbg_Mem_Access.output_reg[18] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[18]_i_1_n_0 ),
         .Q(\output [18]));
   FDCE \Use_Dbg_Mem_Access.output_reg[19] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[19]_i_1_n_0 ),
         .Q(\output [19]));
   FDCE \Use_Dbg_Mem_Access.output_reg[1] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[1]_i_1_n_0 ),
         .Q(\output [1]));
   FDCE \Use_Dbg_Mem_Access.output_reg[20] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[20]_i_1_n_0 ),
         .Q(\output [20]));
   FDCE \Use_Dbg_Mem_Access.output_reg[21] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[21]_i_1_n_0 ),
         .Q(\output [21]));
   FDCE \Use_Dbg_Mem_Access.output_reg[22] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[22]_i_1_n_0 ),
         .Q(\output [22]));
   FDCE \Use_Dbg_Mem_Access.output_reg[23] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[23]_i_1_n_0 ),
         .Q(\Use_Dbg_Mem_Access.output_reg[23]_0 [3]));
   FDCE \Use_Dbg_Mem_Access.output_reg[24] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output_reg[0]_0 [3]),
         .Q(\Use_Dbg_Mem_Access.output_reg[23]_0 [2]));
   FDCE \Use_Dbg_Mem_Access.output_reg[25] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output_reg[0]_0 [2]),
         .Q(\Use_Dbg_Mem_Access.output_reg[23]_0 [1]));
   FDCE \Use_Dbg_Mem_Access.output_reg[26] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output_reg[0]_0 [1]),
         .Q(\output [26]));
   FDCE \Use_Dbg_Mem_Access.output_reg[27] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[27]_i_1_n_0 ),
         .Q(\Use_Dbg_Mem_Access.output_reg[23]_0 [0]));
   FDCE \Use_Dbg_Mem_Access.output_reg[28] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output_reg[0]_0 [0]),
         .Q(\output [28]));
   FDCE \Use_Dbg_Mem_Access.output_reg[29] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[29]_i_1_n_0 ),
         .Q(\output [29]));
   FDCE \Use_Dbg_Mem_Access.output_reg[2] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[2]_i_1_n_0 ),
         .Q(\output [2]));
   FDCE \Use_Dbg_Mem_Access.output_reg[30] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[30]_i_1_n_0 ),
         .Q(\output [30]));
   FDCE \Use_Dbg_Mem_Access.output_reg[31] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[31]_i_1_n_0 ),
         .Q(\output [31]));
   FDCE \Use_Dbg_Mem_Access.output_reg[3] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[3]_i_1_n_0 ),
         .Q(\output [3]));
   FDCE \Use_Dbg_Mem_Access.output_reg[4] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[4]_i_1_n_0 ),
         .Q(\output [4]));
   FDCE \Use_Dbg_Mem_Access.output_reg[5] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[5]_i_1_n_0 ),
         .Q(\output [5]));
   FDCE \Use_Dbg_Mem_Access.output_reg[6] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[6]_i_1_n_0 ),
         .Q(\output [6]));
   FDCE \Use_Dbg_Mem_Access.output_reg[7] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[7]_i_1_n_0 ),
         .Q(\output [7]));
   FDCE \Use_Dbg_Mem_Access.output_reg[8] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[8]_i_1_n_0 ),
         .Q(\output [8]));
   FDCE \Use_Dbg_Mem_Access.output_reg[9] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(E),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
         .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[9]_i_1_n_0 ),
         .Q(\output [9]));
@@ -6646,65 +6819,65 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_excl_reg 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_98_out),
+        .CE(p_103_out),
         .CLR(AR),
-        .D(p_0_in_2[7]),
+        .D(p_0_in_5[7]),
         .Q(rd_wr_excl));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_len_reg[0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_98_out),
+        .CE(p_103_out),
         .CLR(AR),
-        .D(p_0_in_2[4]),
+        .D(p_0_in_5[4]),
         .Q(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [4]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_len_reg[1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_98_out),
+        .CE(p_103_out),
         .CLR(AR),
-        .D(p_0_in_2[3]),
+        .D(p_0_in_5[3]),
         .Q(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [3]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_len_reg[2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_98_out),
+        .CE(p_103_out),
         .CLR(AR),
-        .D(p_0_in_2[2]),
+        .D(p_0_in_5[2]),
         .Q(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [2]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_len_reg[3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_98_out),
+        .CE(p_103_out),
         .CLR(AR),
-        .D(p_0_in_2[1]),
+        .D(p_0_in_5[1]),
         .Q(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [1]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_len_reg[4] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_98_out),
+        .CE(p_103_out),
         .CLR(AR),
-        .D(p_0_in_2[0]),
+        .D(p_0_in_5[0]),
         .Q(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [0]));
   FDPE #(
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_size_reg[0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_98_out),
-        .D(p_0_in_2[6]),
+        .CE(p_103_out),
+        .D(p_0_in_5[6]),
         .PRE(AR),
         .Q(\Use_Dbg_Mem_Access.rd_wr_size_reg[0]_0 [1]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_size_reg[1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_98_out),
+        .CE(p_103_out),
         .CLR(AR),
-        .D(p_0_in_2[5]),
+        .D(p_0_in_5[5]),
         .Q(\Use_Dbg_Mem_Access.rd_wr_size_reg[0]_0 [0]));
   FDSE \Use_Dbg_Mem_Access.wr_resp_zero_reg 
        (.C(M_AXI_ACLK),
@@ -6712,60 +6885,83 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .D(\Use_Dbg_Mem_Access.wr_resp_zero_reg_0 ),
         .Q(wr_resp_zero),
         .S(Reset));
-  LUT5 #(
-    .INIT(32'hAAAAAAAB)) 
+  LUT6 #(
+    .INIT(64'hFFFF000100000000)) 
     \Use_E2.BSCANE2_I_i_10 
-       (.I0(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[1] ),
-        .I4(\Use_BSCAN.command_reg_n_0_[3] ),
+       (.I0(command[2]),
+        .I1(command[3]),
+        .I2(command[1]),
+        .I3(command[4]),
+        .I4(command[5]),
+        .I5(Dbg_TDO_0),
         .O(\Use_E2.BSCANE2_I_i_10_n_0 ));
   LUT6 #(
-    .INIT(64'h000000008F838C80)) 
+    .INIT(64'h0000000000000020)) 
     \Use_E2.BSCANE2_I_i_11 
-       (.I0(completion_status[0]),
-        .I1(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I3(\output [31]),
-        .I4(tdo_reg[23]),
-        .I5(\Use_BSCAN.command_reg_n_0_[3] ),
+       (.I0(tdo_reg[7]),
+        .I1(command[5]),
+        .I2(command[4]),
+        .I3(command[1]),
+        .I4(command[3]),
+        .I5(command[2]),
         .O(\Use_E2.BSCANE2_I_i_11_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  LUT5 #(
+    .INIT(32'h0000FFFE)) 
+    \Use_E2.BSCANE2_I_i_12 
+       (.I0(command[2]),
+        .I1(command[3]),
+        .I2(command[1]),
+        .I3(command[4]),
+        .I4(command[5]),
+        .O(\Use_E2.BSCANE2_I_i_12_n_0 ));
+  LUT6 #(
+    .INIT(64'h000000008F838C80)) 
+    \Use_E2.BSCANE2_I_i_13 
+       (.I0(completion_status[0]),
+        .I1(command[2]),
+        .I2(command[4]),
+        .I3(\output [31]),
+        .I4(\Use_Cross_Trigger.tdo_reg_reg_n_0_[23] ),
+        .I5(command[3]),
+        .O(\Use_E2.BSCANE2_I_i_13_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair41" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \Use_E2.BSCANE2_I_i_3 
-       (.I0(\Use_BSCAN.command_reg_n_0_[0] ),
+       (.I0(command[0]),
         .I1(Dbg_TDO_0),
         .I2(\command_1_reg[7]_0 [1]),
         .O(\Use_E2.BSCANE2_I_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'hD8000000)) 
+  LUT6 #(
+    .INIT(64'hFEEE000000000000)) 
     \Use_E2.BSCANE2_I_i_5 
        (.I0(\Use_E2.BSCANE2_I_i_10_n_0 ),
-        .I1(Dbg_TDO_0),
-        .I2(\Use_E2.BSCANE2_I_i_11_n_0 ),
-        .I3(\Use_E2.BSCANE2_I_i_8_n_0 ),
-        .I4(\Use_BSCAN.command_reg_n_0_[6] ),
+        .I1(\Use_E2.BSCANE2_I_i_11_n_0 ),
+        .I2(\Use_E2.BSCANE2_I_i_12_n_0 ),
+        .I3(\Use_E2.BSCANE2_I_i_13_n_0 ),
+        .I4(\Use_E2.BSCANE2_I_i_9_n_0 ),
+        .I5(command[6]),
         .O(\Use_E2.BSCANE2_I_i_5_n_0 ));
   LUT6 #(
-    .INIT(64'h00001104AAAEBFBF)) 
+    .INIT(64'hFFFFFFFFFFFFFFF6)) 
     \Use_E2.BSCANE2_I_i_8 
-       (.I0(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[1] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I4(\Use_BSCAN.command_reg_n_0_[3] ),
-        .I5(\Use_BSCAN.command_reg[7]_0 ),
+       (.I0(command[5]),
+        .I1(command[4]),
+        .I2(command[2]),
+        .I3(command[3]),
+        .I4(command[1]),
+        .I5(command[7]),
         .O(\Use_E2.BSCANE2_I_i_8_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFEFFFFFFFFFFFE)) 
+    .INIT(64'h00001104AAAEBFBF)) 
     \Use_E2.BSCANE2_I_i_9 
-       (.I0(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[1] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[3] ),
-        .I3(\Use_BSCAN.command_reg[7]_0 ),
-        .I4(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I5(\Use_BSCAN.command_reg_n_0_[5] ),
+       (.I0(command[5]),
+        .I1(command[2]),
+        .I2(command[1]),
+        .I3(command[4]),
+        .I4(command[3]),
+        .I5(command[7]),
         .O(\Use_E2.BSCANE2_I_i_9_n_0 ));
   mcu_mdm_1_0_MB_SRL16E__parameterized5 \Use_ID_SRL16E.SRL16E_ID_1 
        (.Q({A3,A2,A1,Q}),
@@ -6782,7 +6978,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .sel_n_reg(sel_n_reg_1),
         .sel_n_reg_0(\command_1_reg[7]_0 [0]),
         .sel_n_reg_1(\Use_E2.BSCANE2_I_i_3_n_0 ),
-        .sel_n_reg_2({\Use_BSCAN.command_reg_n_0_[0] ,\Use_BSCAN.command_reg_n_0_[5] ,\Use_BSCAN.command_reg_n_0_[6] }),
+        .sel_n_reg_2({command[0],command[5],command[6]}),
         .sel_n_reg_3(\Use_E2.BSCANE2_I_i_5_n_0 ),
         .tdo(tdo));
   FDCE #(
@@ -6791,7 +6987,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_51 ),
+        .D(\Use_BSCAN.FDC_I_n_52 ),
         .Q(clear_overrun));
   LUT6 #(
     .INIT(64'hFFFFFFFFBAFFBABA)) 
@@ -6802,7 +6998,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I3(\Use_Serial_Unified_Completion.sample_1_reg_n_0_[10] ),
         .I4(mb_instr_overrun),
         .I5(\Use_Serial_Unified_Completion.completion_block_i_4_n_0 ),
-        .O(p_23_out__10));
+        .O(p_26_out__10));
   LUT4 #(
     .INIT(16'h4F44)) 
     \Use_Serial_Unified_Completion.completion_block_i_3 
@@ -6825,9 +7021,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_50 ),
+        .D(\Use_BSCAN.FDC_I_n_51 ),
         .Q(\Use_Serial_Unified_Completion.completion_block_reg_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Serial_Unified_Completion.completion_status[10]_i_1 
@@ -6842,7 +7038,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I1(sel_n_reg_0),
         .I2(completion_status[12]),
         .O(\Use_Serial_Unified_Completion.completion_status[11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Serial_Unified_Completion.completion_status[12]_i_1 
@@ -6850,7 +7046,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I1(sel_n_reg_0),
         .I2(completion_status[13]),
         .O(\Use_Serial_Unified_Completion.completion_status[12]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Serial_Unified_Completion.completion_status[13]_i_1 
@@ -6858,7 +7054,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I1(sel_n_reg_0),
         .I2(completion_status[14]),
         .O(\Use_Serial_Unified_Completion.completion_status[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Serial_Unified_Completion.completion_status[14]_i_1 
@@ -6873,7 +7069,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I1(completion_status[0]),
         .I2(completion_status[1]),
         .O(\Use_Serial_Unified_Completion.completion_status[3]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
   LUT4 #(
     .INIT(16'h8000)) 
     \Use_Serial_Unified_Completion.completion_status[4]_i_2 
@@ -6882,7 +7078,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(completion_status[0]),
         .I3(completion_status[2]),
         .O(\Use_Serial_Unified_Completion.completion_status[4]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
   LUT5 #(
     .INIT(32'h80000000)) 
     \Use_Serial_Unified_Completion.completion_status[5]_i_2 
@@ -6913,9 +7109,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[0] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CE(\Use_BSCAN.FDC_I_n_9 ),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_42 ),
+        .D(\Use_BSCAN.FDC_I_n_43 ),
         .Q(completion_status[0]));
   FDCE #(
     .INIT(1'b0)) 
@@ -6969,73 +7165,73 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[1] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CE(\Use_BSCAN.FDC_I_n_9 ),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_41 ),
+        .D(\Use_BSCAN.FDC_I_n_42 ),
         .Q(completion_status[1]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[2] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CE(\Use_BSCAN.FDC_I_n_9 ),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_40 ),
+        .D(\Use_BSCAN.FDC_I_n_41 ),
         .Q(completion_status[2]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[3] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CE(\Use_BSCAN.FDC_I_n_9 ),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_39 ),
+        .D(\Use_BSCAN.FDC_I_n_40 ),
         .Q(completion_status[3]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[4] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CE(\Use_BSCAN.FDC_I_n_9 ),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_38 ),
+        .D(\Use_BSCAN.FDC_I_n_39 ),
         .Q(completion_status[4]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[5] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CE(\Use_BSCAN.FDC_I_n_9 ),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_37 ),
+        .D(\Use_BSCAN.FDC_I_n_38 ),
         .Q(completion_status[5]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[6] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CE(\Use_BSCAN.FDC_I_n_9 ),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_36 ),
+        .D(\Use_BSCAN.FDC_I_n_37 ),
         .Q(completion_status[6]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[7] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CE(\Use_BSCAN.FDC_I_n_9 ),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_35 ),
+        .D(\Use_BSCAN.FDC_I_n_36 ),
         .Q(completion_status[7]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[8] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CE(\Use_BSCAN.FDC_I_n_9 ),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_34 ),
+        .D(\Use_BSCAN.FDC_I_n_35 ),
         .Q(completion_status[8]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[9] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CE(\Use_BSCAN.FDC_I_n_9 ),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_33 ),
+        .D(\Use_BSCAN.FDC_I_n_34 ),
         .Q(completion_status[9]));
   LUT4 #(
     .INIT(16'h0078)) 
@@ -7045,7 +7241,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(\Use_Serial_Unified_Completion.count_reg [0]),
         .I3(sel_n_reg_0),
         .O(p_0_in[5]));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT4 #(
     .INIT(16'h8000)) 
     \Use_Serial_Unified_Completion.count[0]__0_i_4 
@@ -7058,7 +7254,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(64'h0000FF80FF00FF00)) 
     \Use_Serial_Unified_Completion.count[0]_i_1 
        (.I0(\Use_Serial_Unified_Completion.count_reg_n_0_[1] ),
-        .I1(Dbg_Shift_0_0),
+        .I1(\Use_UART.fifo_Din_reg[7]_0 ),
         .I2(sync),
         .I3(\Use_Serial_Unified_Completion.count_reg_n_0_[0] ),
         .I4(sel_n_reg_0),
@@ -7077,14 +7273,14 @@ module mcu_mdm_1_0_JTAG_CONTROL
   LUT6 #(
     .INIT(64'h00F7FFFF00080000)) 
     \Use_Serial_Unified_Completion.count[1]_i_1 
-       (.I0(Dbg_Shift_0_0),
+       (.I0(\Use_UART.fifo_Din_reg[7]_0 ),
         .I1(sync),
         .I2(\Use_Serial_Unified_Completion.count_reg_n_0_[0] ),
         .I3(sel_n_reg_0),
         .I4(shifting_Data1__0),
         .I5(\Use_Serial_Unified_Completion.count_reg_n_0_[1] ),
         .O(\Use_Serial_Unified_Completion.count[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT5 #(
     .INIT(32'h00007F80)) 
     \Use_Serial_Unified_Completion.count[2]_i_1 
@@ -7094,7 +7290,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I3(\Use_Serial_Unified_Completion.count_reg [2]),
         .I4(sel_n_reg_0),
         .O(p_0_in[3]));
-  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT4 #(
     .INIT(16'h0078)) 
     \Use_Serial_Unified_Completion.count[3]_i_1 
@@ -7174,7 +7370,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .CLR(AR),
         .D(D),
         .Q(\Use_Serial_Unified_Completion.count_reg[5]_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \Use_Serial_Unified_Completion.mb_data_overrun_i_2 
@@ -7186,7 +7382,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
   LUT4 #(
     .INIT(16'h0008)) 
     \Use_Serial_Unified_Completion.mb_data_overrun_i_3 
-       (.I0(Dbg_Shift_0_0),
+       (.I0(\Use_UART.fifo_Din_reg[7]_0 ),
         .I1(\Use_Serial_Unified_Completion.count_reg [0]),
         .I2(\Use_Serial_Unified_Completion.count_reg [1]),
         .I3(\Use_Serial_Unified_Completion.count_reg [2]),
@@ -7197,7 +7393,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_49 ),
+        .D(\Use_BSCAN.FDC_I_n_50 ),
         .Q(\Use_Serial_Unified_Completion.mb_data_overrun_reg_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
@@ -7205,7 +7401,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_48 ),
+        .D(\Use_BSCAN.FDC_I_n_49 ),
         .Q(\Use_Serial_Unified_Completion.mb_instr_error_reg_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
@@ -7213,17 +7409,17 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_47 ),
+        .D(\Use_BSCAN.FDC_I_n_48 ),
         .Q(mb_instr_overrun));
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT5 #(
     .INIT(32'h00000008)) 
     \Use_Serial_Unified_Completion.sample_1[15]_i_3 
-       (.I0(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[1] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[3] ),
-        .I4(\Use_BSCAN.command_reg_n_0_[0] ),
+       (.I0(command[2]),
+        .I1(command[4]),
+        .I2(command[0]),
+        .I3(command[1]),
+        .I4(command[3]),
         .O(\Use_Serial_Unified_Completion.sample_1[15]_i_3_n_0 ));
   FDCE \Use_Serial_Unified_Completion.sample_1_reg[10] 
        (.C(\Using_FPGA.Native_1 ),
@@ -7267,7 +7463,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_45 ),
+        .D(\Use_BSCAN.FDC_I_n_46 ),
         .Q(sample[13]));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
@@ -7275,7 +7471,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_44 ),
+        .D(\Use_BSCAN.FDC_I_n_45 ),
         .Q(sample[14]));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
@@ -7283,15 +7479,331 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_43 ),
+        .D(\Use_BSCAN.FDC_I_n_44 ),
         .Q(sample[15]));
+  mcu_mdm_1_0_MB_FDRSE \Use_UART.Ext_BRK_FDRSE 
+       (.Ext_BRK(Ext_BRK),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .\Using_FPGA.Native_0 (\Using_FPGA.Native_4 ),
+        .set_Ext_BRK(set_Ext_BRK));
+  mcu_mdm_1_0_SRL_FIFO \Use_UART.RX_FIFO_I 
+       (.Bus_RNW_reg(Bus_RNW_reg),
+        .D({\Use_UART.RX_FIFO_I_n_9 ,\Use_UART.RX_FIFO_I_n_10 }),
+        .Data_Out({Data_Out[4],Data_Out[5]}),
+        .\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg (\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ),
+        .Q({fifo_Din[0],fifo_Din[1],fifo_Din[2],fifo_Din[3],fifo_Din[4],fifo_Din[5],fifo_Din[6],fifo_Din[7]}),
+        .RX_Buffer_Full(RX_Buffer_Full),
+        .RX_Data(RX_Data),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .\Use_UART.tdo_reg_reg[4] ({tdo_reg[3],tdo_reg[4]}),
+        .\Use_UART.tdo_reg_reg[4]_0 (sel_n_reg_0),
+        .\Use_UART.tdo_reg_reg[4]_1 (\Use_UART.tdo_reg[4]_i_2_n_0 ),
+        .\Use_UART.tdo_reg_reg[4]_2 (\Use_UART.tdo_reg[0]_i_3_n_0 ),
+        .\Using_FPGA.Native (\Using_FPGA.Native_2 ),
+        .bus2ip_rdce(bus2ip_rdce),
+        .data_Exists_I_reg_0(data_Exists_I_reg),
+        .data_Exists_I_reg_1(\Use_UART.fifo_Write_reg_n_0 ));
+  mcu_mdm_1_0_SRL_FIFO_83 \Use_UART.TX_FIFO_I 
+       (.Bus_RNW_reg(Bus_RNW_reg),
+        .D({\Use_UART.TX_FIFO_I_n_3 ,\Use_UART.TX_FIFO_I_n_4 ,\Use_UART.TX_FIFO_I_n_5 ,\Use_UART.TX_FIFO_I_n_6 ,\Use_UART.TX_FIFO_I_n_7 ,\Use_UART.TX_FIFO_I_n_8 }),
+        .FIFO_Write(FIFO_Write),
+        .\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg (\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ),
+        .Interrupt(Interrupt),
+        .Interrupt_0(data_Exists_I_reg),
+        .Q({tdo_reg[0],tdo_reg[1],tdo_reg[2],tdo_reg[5],tdo_reg[6]}),
+        .Q_0(Q_0),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_WDATA(S_AXI_WDATA),
+        .\S_AXI_WDATA[3] ({Data_Out[4],Data_Out[5]}),
+        .\Use_UART.tdo_reg_reg[7] (sel_n_reg_0),
+        .\Use_UART.tdo_reg_reg[7]_0 (\Use_UART.tdo_reg[4]_i_2_n_0 ),
+        .\Use_UART.tdo_reg_reg[7]_1 (\Use_UART.tdo_reg[0]_i_3_n_0 ),
+        .\Using_FPGA.Native (\Using_FPGA.Native_3 ),
+        .\Using_FPGA.Native_0 (tx_buffered_2),
+        .data_Exists_I_reg_0(data_Exists_I_reg_0),
+        .data_Exists_I_reg_1(\Use_UART.fifo_Read_reg_n_0 ),
+        .enable_interrupts(enable_interrupts),
+        .tx_Buffer_Empty(tx_Buffer_Empty),
+        .tx_Buffer_Full(tx_Buffer_Full));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \Use_UART.execute_1_reg 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(execute_2),
+        .Q(execute_1),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \Use_UART.execute_2_reg 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(execute_1),
+        .Q(execute_2_3),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \Use_UART.execute_3_reg 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(execute_2_3),
+        .Q(\Use_UART.execute_3_reg_n_0 ),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'h0000000000000002)) 
+    \Use_UART.execute_i_1 
+       (.I0(command[7]),
+        .I1(\Use_UART.execute_i_2_n_0 ),
+        .I2(command[0]),
+        .I3(command[1]),
+        .I4(command[3]),
+        .I5(command[2]),
+        .O(p_25_out));
+  LUT2 #(
+    .INIT(4'hB)) 
+    \Use_UART.execute_i_2 
+       (.I0(command[5]),
+        .I1(command[4]),
+        .O(\Use_UART.execute_i_2_n_0 ));
+  FDCE #(
+    .INIT(1'b0)) 
+    \Use_UART.execute_reg 
+       (.C(\Using_FPGA.Native_0 ),
+        .CE(1'b1),
+        .CLR(data_cmd_reset27_out),
+        .D(p_25_out),
+        .Q(execute_2));
+  FDCE \Use_UART.fifo_Din_reg[0] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(E),
+        .CLR(AR),
+        .D(Dbg_TDI_0),
+        .Q(fifo_Din[0]));
+  FDCE \Use_UART.fifo_Din_reg[1] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(E),
+        .CLR(AR),
+        .D(fifo_Din[0]),
+        .Q(fifo_Din[1]));
+  FDCE \Use_UART.fifo_Din_reg[2] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(E),
+        .CLR(AR),
+        .D(fifo_Din[1]),
+        .Q(fifo_Din[2]));
+  FDCE \Use_UART.fifo_Din_reg[3] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(E),
+        .CLR(AR),
+        .D(fifo_Din[2]),
+        .Q(fifo_Din[3]));
+  FDCE \Use_UART.fifo_Din_reg[4] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(E),
+        .CLR(AR),
+        .D(fifo_Din[3]),
+        .Q(fifo_Din[4]));
+  FDCE \Use_UART.fifo_Din_reg[5] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(E),
+        .CLR(AR),
+        .D(fifo_Din[4]),
+        .Q(fifo_Din[5]));
+  FDCE \Use_UART.fifo_Din_reg[6] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(E),
+        .CLR(AR),
+        .D(fifo_Din[5]),
+        .Q(fifo_Din[6]));
+  FDCE \Use_UART.fifo_Din_reg[7] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(E),
+        .CLR(AR),
+        .D(fifo_Din[6]),
+        .Q(fifo_Din[7]));
+  LUT6 #(
+    .INIT(64'h0000000010000000)) 
+    \Use_UART.fifo_Read_i_1 
+       (.I0(\Use_UART.execute_i_2_n_0 ),
+        .I1(\Use_UART.execute_3_reg_n_0 ),
+        .I2(execute_2_3),
+        .I3(command[6]),
+        .I4(command[7]),
+        .I5(\Use_UART.fifo_Write_i_2_n_0 ),
+        .O(\Use_UART.fifo_Read_i_1_n_0 ));
+  FDRE #(
+    .INIT(1'b0)) 
+    \Use_UART.fifo_Read_reg 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(\Use_UART.fifo_Read_i_1_n_0 ),
+        .Q(\Use_UART.fifo_Read_reg_n_0 ),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'h0000000000100000)) 
+    \Use_UART.fifo_Write_i_1 
+       (.I0(\Use_UART.execute_i_2_n_0 ),
+        .I1(\Use_UART.execute_3_reg_n_0 ),
+        .I2(execute_2_3),
+        .I3(command[6]),
+        .I4(command[7]),
+        .I5(\Use_UART.fifo_Write_i_2_n_0 ),
+        .O(\Use_UART.fifo_Write_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    \Use_UART.fifo_Write_i_2 
+       (.I0(command[3]),
+        .I1(command[2]),
+        .I2(command[0]),
+        .I3(command[1]),
+        .O(\Use_UART.fifo_Write_i_2_n_0 ));
+  FDRE #(
+    .INIT(1'b0)) 
+    \Use_UART.fifo_Write_reg 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(\Use_UART.fifo_Write_i_1_n_0 ),
+        .Q(\Use_UART.fifo_Write_reg_n_0 ),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'hFFFFFFFB00000000)) 
+    \Use_UART.tdo_reg[0]_i_3 
+       (.I0(\Use_UART.tdo_reg[0]_i_4_n_0 ),
+        .I1(command[6]),
+        .I2(\Use_UART.execute_i_2_n_0 ),
+        .I3(command[0]),
+        .I4(command[7]),
+        .I5(sel_n_reg_0),
+        .O(\Use_UART.tdo_reg[0]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  LUT3 #(
+    .INIT(8'hFE)) 
+    \Use_UART.tdo_reg[0]_i_4 
+       (.I0(command[2]),
+        .I1(command[3]),
+        .I2(command[1]),
+        .O(\Use_UART.tdo_reg[0]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000000000020)) 
+    \Use_UART.tdo_reg[4]_i_2 
+       (.I0(sel_n_reg_0),
+        .I1(\Use_UART.tdo_reg[0]_i_4_n_0 ),
+        .I2(command[6]),
+        .I3(\Use_UART.execute_i_2_n_0 ),
+        .I4(command[0]),
+        .I5(command[7]),
+        .O(\Use_UART.tdo_reg[4]_i_2_n_0 ));
+  FDCE #(
+    .INIT(1'b0)) 
+    \Use_UART.tdo_reg_reg[0] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
+        .CLR(AR),
+        .D(\Use_UART.TX_FIFO_I_n_3 ),
+        .Q(tdo_reg[0]));
+  FDCE #(
+    .INIT(1'b0)) 
+    \Use_UART.tdo_reg_reg[1] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
+        .CLR(AR),
+        .D(\Use_UART.TX_FIFO_I_n_4 ),
+        .Q(tdo_reg[1]));
+  FDCE #(
+    .INIT(1'b0)) 
+    \Use_UART.tdo_reg_reg[2] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
+        .CLR(AR),
+        .D(\Use_UART.TX_FIFO_I_n_5 ),
+        .Q(tdo_reg[2]));
+  FDCE #(
+    .INIT(1'b0)) 
+    \Use_UART.tdo_reg_reg[3] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
+        .CLR(AR),
+        .D(\Use_UART.TX_FIFO_I_n_6 ),
+        .Q(tdo_reg[3]));
+  FDCE #(
+    .INIT(1'b0)) 
+    \Use_UART.tdo_reg_reg[4] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
+        .CLR(AR),
+        .D(\Use_UART.RX_FIFO_I_n_9 ),
+        .Q(tdo_reg[4]));
+  FDCE #(
+    .INIT(1'b0)) 
+    \Use_UART.tdo_reg_reg[5] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
+        .CLR(AR),
+        .D(\Use_UART.RX_FIFO_I_n_10 ),
+        .Q(tdo_reg[5]));
+  FDCE #(
+    .INIT(1'b0)) 
+    \Use_UART.tdo_reg_reg[6] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
+        .CLR(AR),
+        .D(\Use_UART.TX_FIFO_I_n_7 ),
+        .Q(tdo_reg[6]));
+  FDCE #(
+    .INIT(1'b0)) 
+    \Use_UART.tdo_reg_reg[7] 
+       (.C(\Using_FPGA.Native_1 ),
+        .CE(\Use_Cross_Trigger.tdo_reg_reg[23]_0 ),
+        .CLR(AR),
+        .D(\Use_UART.TX_FIFO_I_n_8 ),
+        .Q(tdo_reg[7]));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \Use_UART.tx_buffered_1_reg 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(tx_buffered),
+        .Q(tx_buffered_1),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \Use_UART.tx_buffered_2_reg 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(tx_buffered_1),
+        .Q(tx_buffered_2),
+        .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
+  LUT2 #(
+    .INIT(4'hB)) 
+    \Use_UART.tx_buffered_i_2 
+       (.I0(command[7]),
+        .I1(command[5]),
+        .O(\Use_UART.tx_buffered_i_2_n_0 ));
+  FDCE #(
+    .INIT(1'b0)) 
+    \Use_UART.tx_buffered_reg 
+       (.C(\Using_FPGA.Native_0 ),
+        .CE(1'b1),
+        .CLR(AR),
+        .D(\Use_BSCAN.FDC_I_n_53 ),
+        .Q(tx_buffered));
   FDCE #(
     .INIT(1'b0)) 
     \command_1_reg[0] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
         .CLR(AR),
-        .D(p_0_in_2[7]),
+        .D(p_0_in_5[7]),
         .Q(command_1[0]));
   FDCE #(
     .INIT(1'b0)) 
@@ -7299,7 +7811,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
         .CLR(AR),
-        .D(p_0_in_2[6]),
+        .D(p_0_in_5[6]),
         .Q(command_1[1]));
   FDCE #(
     .INIT(1'b0)) 
@@ -7307,7 +7819,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
         .CLR(AR),
-        .D(p_0_in_2[5]),
+        .D(p_0_in_5[5]),
         .Q(command_1[2]));
   FDCE #(
     .INIT(1'b0)) 
@@ -7315,7 +7827,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
         .CLR(AR),
-        .D(p_0_in_2[4]),
+        .D(p_0_in_5[4]),
         .Q(command_1[3]));
   FDCE #(
     .INIT(1'b0)) 
@@ -7323,7 +7835,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
         .CLR(AR),
-        .D(p_0_in_2[3]),
+        .D(p_0_in_5[3]),
         .Q(command_1[4]));
   FDCE #(
     .INIT(1'b0)) 
@@ -7331,7 +7843,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
         .CLR(AR),
-        .D(p_0_in_2[2]),
+        .D(p_0_in_5[2]),
         .Q(command_1[5]));
   FDCE #(
     .INIT(1'b0)) 
@@ -7339,7 +7851,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
         .CLR(AR),
-        .D(p_0_in_2[1]),
+        .D(p_0_in_5[1]),
         .Q(command_1[6]));
   FDCE #(
     .INIT(1'b0)) 
@@ -7347,7 +7859,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
         .CLR(AR),
-        .D(p_0_in_2[0]),
+        .D(p_0_in_5[0]),
         .Q(command_1[7]));
   FDCE #(
     .INIT(1'b0)) 
@@ -7355,7 +7867,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_55 ),
+        .D(\Use_BSCAN.FDC_I_n_54 ),
         .Q(completion_ctrl));
   LUT5 #(
     .INIT(32'hFEFFFFFF)) 
@@ -7374,40 +7886,48 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(Scan_En),
         .I3(\Use_BSCAN.command[0]_i_1_n_0 ),
         .I4(\Using_FPGA.Native_0 ),
-        .O(sel_with_scan_reset36_out));
+        .O(sel_with_scan_reset40_out));
   FDPE #(
     .INIT(1'b1)) 
     sel_n_reg
        (.C(\Using_FPGA.Native_1 ),
         .CE(sel_n_reg_0),
         .D(sel_n0),
-        .PRE(sel_with_scan_reset36_out),
+        .PRE(sel_with_scan_reset40_out),
         .Q(sel_n));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    set_Ext_BRK_reg
+       (.C(\Using_FPGA.Native_0 ),
+        .CE(Debug_Rst_i0),
+        .CLR(AR),
+        .D(p_0_in_5[5]),
+        .Q(set_Ext_BRK));
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT3 #(
     .INIT(8'h48)) 
     \shift_Count[1]_i_1 
        (.I0(Q),
-        .I1(Dbg_Shift_0_0),
+        .I1(\Use_UART.fifo_Din_reg[7]_0 ),
         .I2(A1),
         .O(p_0_in__0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT4 #(
     .INIT(16'h7080)) 
     \shift_Count[2]_i_1 
        (.I0(A1),
         .I1(Q),
-        .I2(Dbg_Shift_0_0),
+        .I2(\Use_UART.fifo_Din_reg[7]_0 ),
         .I3(A2),
         .O(p_0_in__0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT5 #(
     .INIT(32'h7F008000)) 
     \shift_Count[3]_i_1 
        (.I0(A2),
         .I1(Q),
         .I2(A1),
-        .I3(Dbg_Shift_0_0),
+        .I3(\Use_UART.fifo_Din_reg[7]_0 ),
         .I4(A3),
         .O(p_0_in__0[3]));
   LUT6 #(
@@ -7417,7 +7937,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I1(A1),
         .I2(Q),
         .I3(A2),
-        .I4(Dbg_Shift_0_0),
+        .I4(\Use_UART.fifo_Din_reg[7]_0 ),
         .I5(shift_Count_reg[4]),
         .O(p_0_in__0[4]));
   LUT4 #(
@@ -7425,10 +7945,10 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \shift_Count[5]_i_1 
        (.I0(shift_Count_reg[4]),
         .I1(\shift_Count[5]_i_2_n_0 ),
-        .I2(Dbg_Shift_0_0),
+        .I2(\Use_UART.fifo_Din_reg[7]_0 ),
         .I3(shift_Count_reg[5]),
         .O(p_0_in__0[5]));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT4 #(
     .INIT(16'h8000)) 
     \shift_Count[5]_i_2 
@@ -7493,7 +8013,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(\command_1_reg[7]_0 [1]),
         .I3(\command_1_reg[7]_0 [0]),
         .I4(SEL),
-        .I5(Dbg_Shift_0_0),
+        .I5(\Use_UART.fifo_Din_reg[7]_0 ),
         .O(tdi_shifter0));
   FDCE #(
     .INIT(1'b0)) 
@@ -7501,8 +8021,8 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_1 ),
         .CE(tdi_shifter0),
         .CLR(AR),
-        .D(Ext_JTAG_TDI),
-        .Q(p_0_in_2[7]));
+        .D(Dbg_TDI_0),
+        .Q(p_0_in_5[7]));
   FDCE #(
     .INIT(1'b0)) 
     \tdi_shifter_reg[10] 
@@ -7557,63 +8077,63 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_1 ),
         .CE(tdi_shifter0),
         .CLR(AR),
-        .D(p_0_in_2[7]),
-        .Q(p_0_in_2[6]));
+        .D(p_0_in_5[7]),
+        .Q(p_0_in_5[6]));
   FDCE #(
     .INIT(1'b0)) 
     \tdi_shifter_reg[2] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(tdi_shifter0),
         .CLR(AR),
-        .D(p_0_in_2[6]),
-        .Q(p_0_in_2[5]));
+        .D(p_0_in_5[6]),
+        .Q(p_0_in_5[5]));
   FDCE #(
     .INIT(1'b0)) 
     \tdi_shifter_reg[3] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(tdi_shifter0),
         .CLR(AR),
-        .D(p_0_in_2[5]),
-        .Q(p_0_in_2[4]));
+        .D(p_0_in_5[5]),
+        .Q(p_0_in_5[4]));
   FDCE #(
     .INIT(1'b0)) 
     \tdi_shifter_reg[4] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(tdi_shifter0),
         .CLR(AR),
-        .D(p_0_in_2[4]),
-        .Q(p_0_in_2[3]));
+        .D(p_0_in_5[4]),
+        .Q(p_0_in_5[3]));
   FDCE #(
     .INIT(1'b0)) 
     \tdi_shifter_reg[5] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(tdi_shifter0),
         .CLR(AR),
-        .D(p_0_in_2[3]),
-        .Q(p_0_in_2[2]));
+        .D(p_0_in_5[3]),
+        .Q(p_0_in_5[2]));
   FDCE #(
     .INIT(1'b0)) 
     \tdi_shifter_reg[6] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(tdi_shifter0),
         .CLR(AR),
-        .D(p_0_in_2[2]),
-        .Q(p_0_in_2[1]));
+        .D(p_0_in_5[2]),
+        .Q(p_0_in_5[1]));
   FDCE #(
     .INIT(1'b0)) 
     \tdi_shifter_reg[7] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(tdi_shifter0),
         .CLR(AR),
-        .D(p_0_in_2[1]),
-        .Q(p_0_in_2[0]));
+        .D(p_0_in_5[1]),
+        .Q(p_0_in_5[0]));
   FDCE #(
     .INIT(1'b0)) 
     \tdi_shifter_reg[8] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(tdi_shifter0),
         .CLR(AR),
-        .D(p_0_in_2[0]),
+        .D(p_0_in_5[0]),
         .Q(p_9_out[3]));
   FDCE #(
     .INIT(1'b0)) 
@@ -7632,12 +8152,12 @@ module mcu_mdm_1_0_MB_BSCANE2
     Ext_JTAG_RESET,
     SEL,
     \Use_BSCAN.PORT_Selector_reg[0]_0 ,
-    Ext_JTAG_TDI,
-    Ext_JTAG_UPDATE,
+    Dbg_TDI_0,
+    Dbg_Update_0,
     \Use_BSCAN.command_reg[5] ,
     \Using_FPGA.Native ,
-    E,
-    \Use_BSCAN.command_reg[6] ,
+    \Use_BSCAN.command_reg[4] ,
+    \Use_E2.BSCANE2_I_0 ,
     D,
     \shift_Count_reg[0] ,
     \Use_Serial_Unified_Completion.sample_1_reg[15] ,
@@ -7645,8 +8165,8 @@ module mcu_mdm_1_0_MB_BSCANE2
     shift_n_reset1_out,
     AR,
     tdo,
-    p_101_out__0,
-    p_125_out__0,
+    p_113_out__0,
+    p_137_out__0,
     \Use_Dbg_Mem_Access.output_reg[0] ,
     \Use_Dbg_Mem_Access.output_reg[0]_0 ,
     \Use_Serial_Unified_Completion.count_reg[5] ,
@@ -7666,12 +8186,12 @@ module mcu_mdm_1_0_MB_BSCANE2
   output Ext_JTAG_RESET;
   output SEL;
   output \Use_BSCAN.PORT_Selector_reg[0]_0 ;
-  output Ext_JTAG_TDI;
-  output Ext_JTAG_UPDATE;
+  output Dbg_TDI_0;
+  output Dbg_Update_0;
   output [0:0]\Use_BSCAN.command_reg[5] ;
   output [0:0]\Using_FPGA.Native ;
-  output [0:0]E;
-  output [0:0]\Use_BSCAN.command_reg[6] ;
+  output [0:0]\Use_BSCAN.command_reg[4] ;
+  output [0:0]\Use_E2.BSCANE2_I_0 ;
   output [0:0]D;
   output [0:0]\shift_Count_reg[0] ;
   output [0:0]\Use_Serial_Unified_Completion.sample_1_reg[15] ;
@@ -7679,8 +8199,8 @@ module mcu_mdm_1_0_MB_BSCANE2
   output shift_n_reset1_out;
   output [0:0]AR;
   input tdo;
-  input p_101_out__0;
-  input p_125_out__0;
+  input p_113_out__0;
+  input p_137_out__0;
   input \Use_Dbg_Mem_Access.output_reg[0] ;
   input [0:0]\Use_Dbg_Mem_Access.output_reg[0]_0 ;
   input [0:0]\Use_Serial_Unified_Completion.count_reg[5] ;
@@ -7699,12 +8219,11 @@ module mcu_mdm_1_0_MB_BSCANE2
   wire [0:0]AR;
   wire [0:0]D;
   wire DRCK;
+  wire Dbg_TDI_0;
   wire [0:7]Dbg_Trig_In_0;
   wire [11:0]\Dbg_Trig_In_0[0] ;
-  wire [0:0]E;
+  wire Dbg_Update_0;
   wire Ext_JTAG_RESET;
-  wire Ext_JTAG_TDI;
-  wire Ext_JTAG_UPDATE;
   wire [0:0]Q;
   wire SEL;
   wire Scan_En;
@@ -7716,11 +8235,12 @@ module mcu_mdm_1_0_MB_BSCANE2
   wire Trig_In_3;
   wire \Use_BSCAN.PORT_Selector_reg[0] ;
   wire \Use_BSCAN.PORT_Selector_reg[0]_0 ;
+  wire [0:0]\Use_BSCAN.command_reg[4] ;
   wire [0:0]\Use_BSCAN.command_reg[5] ;
-  wire [0:0]\Use_BSCAN.command_reg[6] ;
   wire [11:0]\Use_Cross_Trigger.tdo_reg_reg[8] ;
   wire \Use_Dbg_Mem_Access.output_reg[0] ;
   wire [0:0]\Use_Dbg_Mem_Access.output_reg[0]_0 ;
+  wire [0:0]\Use_E2.BSCANE2_I_0 ;
   wire \Use_E2.BSCANE2_I_n_3 ;
   wire \Use_E2.BSCANE2_I_n_6 ;
   wire \Use_E2.BSCANE2_I_n_8 ;
@@ -7728,13 +8248,13 @@ module mcu_mdm_1_0_MB_BSCANE2
   wire [0:0]\Use_Serial_Unified_Completion.count_reg[5] ;
   wire [0:0]\Use_Serial_Unified_Completion.sample_1_reg[15] ;
   wire [0:0]\Using_FPGA.Native ;
-  wire p_101_out__0;
-  wire p_125_out__0;
+  wire p_113_out__0;
+  wire p_137_out__0;
   wire [0:0]\shift_Count_reg[0] ;
   wire shift_n_reset1_out;
   wire tdo;
 
-  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  (* SOFT_HLUTNM = "soft_lutpair72" *) 
   LUT4 #(
     .INIT(16'h080D)) 
     \Use_BSCAN.Config_Reg[30]_i_1 
@@ -7743,7 +8263,7 @@ module mcu_mdm_1_0_MB_BSCANE2
         .I2(Scan_En),
         .I3(\Use_BSCAN.PORT_Selector_reg[0]_0 ),
         .O(shift_n_reset1_out));
-  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  (* SOFT_HLUTNM = "soft_lutpair72" *) 
   LUT4 #(
     .INIT(16'h080D)) 
     \Use_BSCAN.TDI_Shifter[3]_i_2 
@@ -7752,7 +8272,7 @@ module mcu_mdm_1_0_MB_BSCANE2
         .I2(Scan_En),
         .I3(SEL),
         .O(AR));
-  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  (* SOFT_HLUTNM = "soft_lutpair76" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[10]_i_1 
@@ -7760,7 +8280,7 @@ module mcu_mdm_1_0_MB_BSCANE2
         .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [9]),
         .O(\Dbg_Trig_In_0[0] [9]));
-  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  (* SOFT_HLUTNM = "soft_lutpair76" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[11]_i_1 
@@ -7768,7 +8288,7 @@ module mcu_mdm_1_0_MB_BSCANE2
         .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [8]),
         .O(\Dbg_Trig_In_0[0] [8]));
-  (* SOFT_HLUTNM = "soft_lutpair64" *) 
+  (* SOFT_HLUTNM = "soft_lutpair77" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[12]_i_1 
@@ -7776,7 +8296,7 @@ module mcu_mdm_1_0_MB_BSCANE2
         .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [7]),
         .O(\Dbg_Trig_In_0[0] [7]));
-  (* SOFT_HLUTNM = "soft_lutpair64" *) 
+  (* SOFT_HLUTNM = "soft_lutpair77" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[13]_i_1 
@@ -7784,7 +8304,7 @@ module mcu_mdm_1_0_MB_BSCANE2
         .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [6]),
         .O(\Dbg_Trig_In_0[0] [6]));
-  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  (* SOFT_HLUTNM = "soft_lutpair73" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[14]_i_1 
@@ -7792,7 +8312,7 @@ module mcu_mdm_1_0_MB_BSCANE2
         .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [5]),
         .O(\Dbg_Trig_In_0[0] [5]));
-  (* SOFT_HLUTNM = "soft_lutpair65" *) 
+  (* SOFT_HLUTNM = "soft_lutpair78" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[15]_i_1 
@@ -7800,7 +8320,7 @@ module mcu_mdm_1_0_MB_BSCANE2
         .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [4]),
         .O(\Dbg_Trig_In_0[0] [4]));
-  (* SOFT_HLUTNM = "soft_lutpair65" *) 
+  (* SOFT_HLUTNM = "soft_lutpair78" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[20]_i_1 
@@ -7808,7 +8328,7 @@ module mcu_mdm_1_0_MB_BSCANE2
         .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [3]),
         .O(\Dbg_Trig_In_0[0] [3]));
-  (* SOFT_HLUTNM = "soft_lutpair67" *) 
+  (* SOFT_HLUTNM = "soft_lutpair80" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[21]_i_1 
@@ -7816,7 +8336,7 @@ module mcu_mdm_1_0_MB_BSCANE2
         .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [2]),
         .O(\Dbg_Trig_In_0[0] [2]));
-  (* SOFT_HLUTNM = "soft_lutpair67" *) 
+  (* SOFT_HLUTNM = "soft_lutpair80" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[22]_i_1 
@@ -7824,7 +8344,7 @@ module mcu_mdm_1_0_MB_BSCANE2
         .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [1]),
         .O(\Dbg_Trig_In_0[0] [1]));
-  (* SOFT_HLUTNM = "soft_lutpair68" *) 
+  (* SOFT_HLUTNM = "soft_lutpair81" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[23]_i_1 
@@ -7832,7 +8352,7 @@ module mcu_mdm_1_0_MB_BSCANE2
         .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [0]),
         .O(\Dbg_Trig_In_0[0] [0]));
-  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  (* SOFT_HLUTNM = "soft_lutpair74" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[8]_i_1 
@@ -7840,7 +8360,7 @@ module mcu_mdm_1_0_MB_BSCANE2
         .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [11]),
         .O(\Dbg_Trig_In_0[0] [11]));
-  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  (* SOFT_HLUTNM = "soft_lutpair75" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[9]_i_1 
@@ -7848,21 +8368,14 @@ module mcu_mdm_1_0_MB_BSCANE2
         .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [10]),
         .O(\Dbg_Trig_In_0[0] [10]));
-  (* SOFT_HLUTNM = "soft_lutpair66" *) 
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Use_Dbg_Mem_Access.output[0]_i_1 
-       (.I0(\Use_BSCAN.PORT_Selector_reg[0] ),
-        .I1(\Use_BSCAN.PORT_Selector_reg[0]_0 ),
-        .O(E));
-  (* SOFT_HLUTNM = "soft_lutpair68" *) 
+  (* SOFT_HLUTNM = "soft_lutpair81" *) 
   LUT3 #(
     .INIT(8'h80)) 
-    \Use_Dbg_Mem_Access.output[0]_i_2 
+    \Use_Dbg_Mem_Access.output[0]_i_1 
        (.I0(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I1(\Use_Dbg_Mem_Access.output_reg[0] ),
         .I2(\Use_Dbg_Mem_Access.output_reg[0]_0 ),
-        .O(\Use_BSCAN.command_reg[6] ));
+        .O(\Use_BSCAN.command_reg[4] ));
   (* box_type = "PRIMITIVE" *) 
   BSCANE2 #(
     .DISABLE_JTAG("FALSE"),
@@ -7875,40 +8388,47 @@ module mcu_mdm_1_0_MB_BSCANE2
         .SEL(SEL),
         .SHIFT(\Use_BSCAN.PORT_Selector_reg[0]_0 ),
         .TCK(\Use_E2.BSCANE2_I_n_6 ),
-        .TDI(Ext_JTAG_TDI),
+        .TDI(Dbg_TDI_0),
         .TDO(tdo),
         .TMS(\Use_E2.BSCANE2_I_n_8 ),
-        .UPDATE(Ext_JTAG_UPDATE));
-  (* SOFT_HLUTNM = "soft_lutpair66" *) 
+        .UPDATE(Dbg_Update_0));
+  (* SOFT_HLUTNM = "soft_lutpair79" *) 
   LUT3 #(
     .INIT(8'hE0)) 
     \Use_Serial_Unified_Completion.completion_status[15]_i_1 
        (.I0(\Use_BSCAN.PORT_Selector_reg[0]_0 ),
         .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
-        .I2(p_125_out__0),
+        .I2(p_137_out__0),
         .O(\Using_FPGA.Native ));
-  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  (* SOFT_HLUTNM = "soft_lutpair75" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \Use_Serial_Unified_Completion.completion_status[15]_i_2 
        (.I0(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I1(\Use_Serial_Unified_Completion.completion_status_reg[15] ),
         .O(\Use_Serial_Unified_Completion.sample_1_reg[15] ));
-  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  (* SOFT_HLUTNM = "soft_lutpair73" *) 
   LUT3 #(
     .INIT(8'hA8)) 
     \Use_Serial_Unified_Completion.count[0]__0_i_1 
-       (.I0(p_101_out__0),
+       (.I0(p_113_out__0),
         .I1(\Use_BSCAN.PORT_Selector_reg[0]_0 ),
         .I2(\Use_BSCAN.PORT_Selector_reg[0] ),
         .O(\Use_BSCAN.command_reg[5] ));
-  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  (* SOFT_HLUTNM = "soft_lutpair74" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \Use_Serial_Unified_Completion.count[5]_i_1 
        (.I0(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I1(\Use_Serial_Unified_Completion.count_reg[5] ),
         .O(D));
+  (* SOFT_HLUTNM = "soft_lutpair79" *) 
+  LUT2 #(
+    .INIT(4'hE)) 
+    \Use_UART.tdo_reg[0]_i_1 
+       (.I0(\Use_BSCAN.PORT_Selector_reg[0] ),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0]_0 ),
+        .O(\Use_E2.BSCANE2_I_0 ));
   LUT2 #(
     .INIT(4'h2)) 
     \shift_Count[0]_i_1 
@@ -7935,15 +8455,13 @@ endmodule
 
 (* ORIG_REF_NAME = "MB_FDC_1" *) 
 module mcu_mdm_1_0_MB_FDC_1
-   (D_1,
+   (D_4,
     Dbg_Reg_En_0,
-    p_101_out__0,
-    \Using_FPGA.Native_0 ,
     E,
-    \Using_FPGA.Native_1 ,
-    \Using_FPGA.Native_2 ,
+    \Using_FPGA.Native_0 ,
     CE,
     \Use_BSCAN.command_reg[6] ,
+    \Using_FPGA.Native_1 ,
     \tdi_shifter_reg[8] ,
     \tdi_shifter_reg[8]_0 ,
     \tdi_shifter_reg[9] ,
@@ -7958,36 +8476,37 @@ module mcu_mdm_1_0_MB_FDC_1
     \tdi_shifter_reg[13]_3 ,
     \tdi_shifter_reg[15]_0 ,
     \tdi_shifter_reg[13]_4 ,
+    Debug_Rst_i0,
+    p_113_out__0,
+    \Use_BSCAN.command_reg[7] ,
     shifting_Data1__0,
     \Use_BSCAN.command_reg[6]_0 ,
     \Use_BSCAN.PORT_Selector_reg[2] ,
     D,
     \Use_Serial_Unified_Completion.sample_reg[15] ,
-    \Using_FPGA.Native_3 ,
+    \Using_FPGA.Native_2 ,
     Dbg_TDO_0_0,
     Dbg_TDO_0_1,
     Dbg_TDO_0_2,
     \completion_ctrl_reg[0] ,
     \Use_Serial_Unified_Completion.clear_overrun_reg ,
     \tdi_shifter_reg[0] ,
-    \tdi_shifter_reg[1] ,
-    \tdi_shifter_reg[3] ,
     \tdi_shifter_reg[0]_0 ,
-    data_cmd_reset23_out,
-    \Using_FPGA.Native_4 ,
+    data_cmd_reset27_out,
+    \Using_FPGA.Native_3 ,
     sel_n,
     \Use_Serial_Unified_Completion.completion_block_reg ,
     Q,
-    \Use_Serial_Unified_Completion.mb_data_overrun_reg ,
-    \Use_Dbg_Mem_Access.rd_wr_excl_reg ,
     \Use_Serial_Unified_Completion.completion_status_reg[0] ,
     \Use_Serial_Unified_Completion.mb_instr_overrun_reg ,
-    Debug_Rst_i_reg,
+    \Use_UART.tx_buffered_reg ,
+    \Use_Dbg_Mem_Access.input_reg[31] ,
     out,
-    Dbg_Shift_0,
+    \Use_Dbg_Mem_Access.input_reg[31]_0 ,
     \Use_Cross_Trigger.ext_out_ctrl_reg[3][3] ,
     \Use_Cross_Trigger.ext_in_ctrl_reg[3] ,
     \Use_Cross_Trigger.out_ctrl_reg[0][5][3] ,
+    \Use_UART.tx_buffered_reg_0 ,
     \command_1_reg[7] ,
     SEL,
     \Use_Serial_Unified_Completion.completion_status_reg[9] ,
@@ -8000,30 +8519,25 @@ module mcu_mdm_1_0_MB_FDC_1
     \Use_Serial_Unified_Completion.sample_reg[13] ,
     \Use_Serial_Unified_Completion.sample_reg[14] ,
     \Use_Serial_Unified_Completion.sample_1_reg[10] ,
-    \completion_ctrl_reg[0]_0 ,
-    \completion_ctrl_reg[0]_1 ,
     Dbg_TDO_0,
     \Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 ,
     \Use_Serial_Unified_Completion.mb_instr_error_reg ,
-    \Use_Serial_Unified_Completion.mb_data_overrun_reg_0 ,
-    p_23_out__10,
+    \Use_Serial_Unified_Completion.mb_data_overrun_reg ,
+    p_26_out__10,
     completion_ctrl,
     clear_overrun,
-    Dbg_Rst_0,
-    Debug_SYS_Rst,
-    Ext_NM_BRK,
+    \Use_UART.tx_buffered_reg_1 ,
+    in0,
     Scan_Reset_Sel,
     Scan_Reset,
     Scan_En);
-  output D_1;
+  output D_4;
   output [0:7]Dbg_Reg_En_0;
-  output p_101_out__0;
-  output \Using_FPGA.Native_0 ;
   output [0:0]E;
-  output [0:0]\Using_FPGA.Native_1 ;
-  output \Using_FPGA.Native_2 ;
+  output \Using_FPGA.Native_0 ;
   output CE;
   output [0:0]\Use_BSCAN.command_reg[6] ;
+  output \Using_FPGA.Native_1 ;
   output [0:0]\tdi_shifter_reg[8] ;
   output [0:0]\tdi_shifter_reg[8]_0 ;
   output [0:0]\tdi_shifter_reg[9] ;
@@ -8038,36 +8552,37 @@ module mcu_mdm_1_0_MB_FDC_1
   output [0:0]\tdi_shifter_reg[13]_3 ;
   output [0:0]\tdi_shifter_reg[15]_0 ;
   output [0:0]\tdi_shifter_reg[13]_4 ;
+  output Debug_Rst_i0;
+  output p_113_out__0;
+  output [0:0]\Use_BSCAN.command_reg[7] ;
   output shifting_Data1__0;
   output \Use_BSCAN.command_reg[6]_0 ;
   output [0:0]\Use_BSCAN.PORT_Selector_reg[2] ;
   output [9:0]D;
   output [2:0]\Use_Serial_Unified_Completion.sample_reg[15] ;
-  output [0:0]\Using_FPGA.Native_3 ;
+  output [0:0]\Using_FPGA.Native_2 ;
   output Dbg_TDO_0_0;
   output Dbg_TDO_0_1;
   output Dbg_TDO_0_2;
   output \completion_ctrl_reg[0] ;
   output \Use_Serial_Unified_Completion.clear_overrun_reg ;
   output \tdi_shifter_reg[0] ;
-  output \tdi_shifter_reg[1] ;
-  output \tdi_shifter_reg[3] ;
   output \tdi_shifter_reg[0]_0 ;
-  output data_cmd_reset23_out;
-  input \Using_FPGA.Native_4 ;
+  output data_cmd_reset27_out;
+  input \Using_FPGA.Native_3 ;
   input sel_n;
   input \Use_Serial_Unified_Completion.completion_block_reg ;
   input [7:0]Q;
-  input \Use_Serial_Unified_Completion.mb_data_overrun_reg ;
-  input \Use_Dbg_Mem_Access.rd_wr_excl_reg ;
   input \Use_Serial_Unified_Completion.completion_status_reg[0] ;
   input \Use_Serial_Unified_Completion.mb_instr_overrun_reg ;
-  input [12:0]Debug_Rst_i_reg;
+  input [12:0]\Use_UART.tx_buffered_reg ;
+  input \Use_Dbg_Mem_Access.input_reg[31] ;
   input out;
-  input Dbg_Shift_0;
+  input [0:0]\Use_Dbg_Mem_Access.input_reg[31]_0 ;
   input \Use_Cross_Trigger.ext_out_ctrl_reg[3][3] ;
   input \Use_Cross_Trigger.ext_in_ctrl_reg[3] ;
   input \Use_Cross_Trigger.out_ctrl_reg[0][5][3] ;
+  input \Use_UART.tx_buffered_reg_0 ;
   input [3:0]\command_1_reg[7] ;
   input SEL;
   input [10:0]\Use_Serial_Unified_Completion.completion_status_reg[9] ;
@@ -8080,39 +8595,31 @@ module mcu_mdm_1_0_MB_FDC_1
   input \Use_Serial_Unified_Completion.sample_reg[13] ;
   input \Use_Serial_Unified_Completion.sample_reg[14] ;
   input \Use_Serial_Unified_Completion.sample_1_reg[10] ;
-  input \completion_ctrl_reg[0]_0 ;
-  input \completion_ctrl_reg[0]_1 ;
   input Dbg_TDO_0;
   input \Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 ;
   input \Use_Serial_Unified_Completion.mb_instr_error_reg ;
-  input \Use_Serial_Unified_Completion.mb_data_overrun_reg_0 ;
-  input p_23_out__10;
+  input \Use_Serial_Unified_Completion.mb_data_overrun_reg ;
+  input p_26_out__10;
   input completion_ctrl;
   input clear_overrun;
-  input Dbg_Rst_0;
-  input Debug_SYS_Rst;
-  input Ext_NM_BRK;
+  input \Use_UART.tx_buffered_reg_1 ;
+  input in0;
   input Scan_Reset_Sel;
   input Scan_Reset;
   input Scan_En;
 
   wire CE;
   wire [9:0]D;
-  wire D_1;
+  wire D_4;
   wire [0:7]Dbg_Reg_En_0;
-  wire Dbg_Rst_0;
-  wire Dbg_Shift_0;
   wire Dbg_TDO_0;
   wire Dbg_TDO_0_0;
   wire Dbg_TDO_0_1;
   wire Dbg_TDO_0_2;
   wire Debug_Rst_i0;
-  wire [12:0]Debug_Rst_i_reg;
-  wire Debug_SYS_Rst;
   wire [0:0]E;
-  wire Ext_NM_BRK;
   wire [7:0]Q;
-  wire Q_0;
+  wire Q_1;
   wire SEL;
   wire Scan_En;
   wire Scan_Reset;
@@ -8122,13 +8629,15 @@ module mcu_mdm_1_0_MB_FDC_1
   wire [0:0]\Use_BSCAN.command_reg[1]_0 ;
   wire [0:0]\Use_BSCAN.command_reg[6] ;
   wire \Use_BSCAN.command_reg[6]_0 ;
+  wire [0:0]\Use_BSCAN.command_reg[7] ;
   wire \Use_Cross_Trigger.ext_in_ctrl_reg[3] ;
   wire \Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2_n_0 ;
   wire \Use_Cross_Trigger.ext_out_ctrl_reg[3][3] ;
   wire \Use_Cross_Trigger.out_ctrl[0][5][0]_i_2_n_0 ;
   wire \Use_Cross_Trigger.out_ctrl[0][7][0]_i_2_n_0 ;
   wire \Use_Cross_Trigger.out_ctrl_reg[0][5][3] ;
-  wire \Use_Dbg_Mem_Access.rd_wr_excl_reg ;
+  wire \Use_Dbg_Mem_Access.input_reg[31] ;
+  wire [0:0]\Use_Dbg_Mem_Access.input_reg[31]_0 ;
   wire \Use_Serial_Unified_Completion.clear_overrun_reg ;
   wire \Use_Serial_Unified_Completion.completion_block_reg ;
   wire \Use_Serial_Unified_Completion.completion_status_reg[0] ;
@@ -8139,7 +8648,6 @@ module mcu_mdm_1_0_MB_FDC_1
   wire \Use_Serial_Unified_Completion.completion_status_reg[8] ;
   wire [10:0]\Use_Serial_Unified_Completion.completion_status_reg[9] ;
   wire \Use_Serial_Unified_Completion.mb_data_overrun_reg ;
-  wire \Use_Serial_Unified_Completion.mb_data_overrun_reg_0 ;
   wire \Use_Serial_Unified_Completion.mb_instr_error_reg ;
   wire \Use_Serial_Unified_Completion.mb_instr_overrun_reg ;
   wire \Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 ;
@@ -8149,23 +8657,24 @@ module mcu_mdm_1_0_MB_FDC_1
   wire \Use_Serial_Unified_Completion.sample_reg[14] ;
   wire [2:0]\Use_Serial_Unified_Completion.sample_reg[15] ;
   wire [5:0]\Use_Serial_Unified_Completion.sample_reg[15]_0 ;
+  wire [12:0]\Use_UART.tx_buffered_reg ;
+  wire \Use_UART.tx_buffered_reg_0 ;
+  wire \Use_UART.tx_buffered_reg_1 ;
   wire \Using_FPGA.Native_0 ;
-  wire [0:0]\Using_FPGA.Native_1 ;
-  wire \Using_FPGA.Native_2 ;
-  wire [0:0]\Using_FPGA.Native_3 ;
-  wire \Using_FPGA.Native_4 ;
+  wire \Using_FPGA.Native_1 ;
+  wire [0:0]\Using_FPGA.Native_2 ;
+  wire \Using_FPGA.Native_3 ;
   wire \Using_FPGA.Native_i_2_n_0 ;
   wire clear_overrun;
   wire [3:0]\command_1_reg[7] ;
   wire completion_ctrl;
   wire completion_ctrl0;
   wire \completion_ctrl_reg[0] ;
-  wire \completion_ctrl_reg[0]_0 ;
-  wire \completion_ctrl_reg[0]_1 ;
-  wire data_cmd_reset23_out;
+  wire data_cmd_reset27_out;
+  wire in0;
   wire out;
-  wire p_101_out__0;
-  wire p_23_out__10;
+  wire p_113_out__0;
+  wire p_26_out__10;
   wire sel_n;
   wire shifting_Data1__0;
   wire \tdi_shifter_reg[0] ;
@@ -8178,35 +8687,32 @@ module mcu_mdm_1_0_MB_FDC_1
   wire [0:0]\tdi_shifter_reg[13]_4 ;
   wire [0:0]\tdi_shifter_reg[15] ;
   wire [0:0]\tdi_shifter_reg[15]_0 ;
-  wire \tdi_shifter_reg[1] ;
-  wire \tdi_shifter_reg[3] ;
   wire [0:0]\tdi_shifter_reg[8] ;
   wire [0:0]\tdi_shifter_reg[8]_0 ;
   wire [0:0]\tdi_shifter_reg[8]_1 ;
   wire [0:0]\tdi_shifter_reg[9] ;
 
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \Dbg_Reg_En_0[0]_INST_0 
        (.I0(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I1(Q_0),
+        .I1(Q_1),
         .I2(Q[7]),
         .O(Dbg_Reg_En_0[0]));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT3 #(
     .INIT(8'h20)) 
     \Dbg_Reg_En_0[1]_INST_0 
        (.I0(Q[6]),
         .I1(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I2(Q_0),
+        .I2(Q_1),
         .O(Dbg_Reg_En_0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \Dbg_Reg_En_0[2]_INST_0 
        (.I0(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I1(Q_0),
+        .I1(Q_1),
         .I2(Q[5]),
         .O(Dbg_Reg_En_0[2]));
   (* SOFT_HLUTNM = "soft_lutpair15" *) 
@@ -8214,15 +8720,15 @@ module mcu_mdm_1_0_MB_FDC_1
     .INIT(8'h40)) 
     \Dbg_Reg_En_0[3]_INST_0 
        (.I0(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I1(Q_0),
+        .I1(Q_1),
         .I2(Q[4]),
         .O(Dbg_Reg_En_0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \Dbg_Reg_En_0[4]_INST_0 
        (.I0(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I1(Q_0),
+        .I1(Q_1),
         .I2(Q[3]),
         .O(Dbg_Reg_En_0[4]));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
@@ -8230,71 +8736,47 @@ module mcu_mdm_1_0_MB_FDC_1
     .INIT(8'h40)) 
     \Dbg_Reg_En_0[5]_INST_0 
        (.I0(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I1(Q_0),
+        .I1(Q_1),
         .I2(Q[2]),
         .O(Dbg_Reg_En_0[5]));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT3 #(
-    .INIT(8'h40)) 
+    .INIT(8'h20)) 
     \Dbg_Reg_En_0[6]_INST_0 
-       (.I0(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I1(Q_0),
-        .I2(Q[1]),
+       (.I0(Q[1]),
+        .I1(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I2(Q_1),
         .O(Dbg_Reg_En_0[6]));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \Dbg_Reg_En_0[7]_INST_0 
        (.I0(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I1(Q_0),
+        .I1(Q_1),
         .I2(Q[0]),
         .O(Dbg_Reg_En_0[7]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT2 #(
     .INIT(4'h2)) 
     Dbg_Shift_31_INST_0_i_2
-       (.I0(Q_0),
+       (.I0(Q_1),
         .I1(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .O(\Using_FPGA.Native_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
-  LUT3 #(
-    .INIT(8'hB8)) 
-    Debug_Rst_i_i_1
-       (.I0(Debug_Rst_i_reg[12]),
-        .I1(Debug_Rst_i0),
-        .I2(Dbg_Rst_0),
-        .O(\tdi_shifter_reg[0] ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
-  LUT3 #(
-    .INIT(8'hB8)) 
-    Debug_SYS_Rst_i_i_1
-       (.I0(Debug_Rst_i_reg[11]),
-        .I1(Debug_Rst_i0),
-        .I2(Debug_SYS_Rst),
-        .O(\tdi_shifter_reg[1] ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
-  LUT3 #(
-    .INIT(8'hB8)) 
-    Ext_NM_BRK_i_i_1
-       (.I0(Debug_Rst_i_reg[9]),
-        .I1(Debug_Rst_i0),
-        .I2(Ext_NM_BRK),
-        .O(\tdi_shifter_reg[3] ));
+        .O(\Using_FPGA.Native_1 ));
   LUT6 #(
     .INIT(64'h0002000000000000)) 
-    Ext_NM_BRK_i_i_3
-       (.I0(\Using_FPGA.Native_0 ),
-        .I1(Q[1]),
-        .I2(Q[0]),
+    Ext_NM_BRK_i_i_1
+       (.I0(\Using_FPGA.Native_1 ),
+        .I1(Q[0]),
+        .I2(Q[1]),
         .I3(Q[2]),
         .I4(Q[3]),
-        .I5(\Use_Serial_Unified_Completion.mb_data_overrun_reg ),
+        .I5(\Use_UART.tx_buffered_reg_0 ),
         .O(Debug_Rst_i0));
   LUT6 #(
     .INIT(64'h0000000000000008)) 
     \Use_Cross_Trigger.ext_in_ctrl[0]_i_1 
        (.I0(Q[6]),
-        .I1(\Using_FPGA.Native_0 ),
+        .I1(\Using_FPGA.Native_1 ),
         .I2(Q[2]),
         .I3(Q[3]),
         .I4(Q[1]),
@@ -8304,32 +8786,32 @@ module mcu_mdm_1_0_MB_FDC_1
   LUT3 #(
     .INIT(8'h10)) 
     \Use_Cross_Trigger.ext_out_ctrl[0][0]_i_1 
-       (.I0(Debug_Rst_i_reg[4]),
-        .I1(Debug_Rst_i_reg[3]),
+       (.I0(\Use_UART.tx_buffered_reg [4]),
+        .I1(\Use_UART.tx_buffered_reg [3]),
         .I2(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2_n_0 ),
         .O(\tdi_shifter_reg[8] ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \Use_Cross_Trigger.ext_out_ctrl[1][0]_i_1 
-       (.I0(Debug_Rst_i_reg[4]),
-        .I1(Debug_Rst_i_reg[3]),
+       (.I0(\Use_UART.tx_buffered_reg [4]),
+        .I1(\Use_UART.tx_buffered_reg [3]),
         .I2(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2_n_0 ),
         .O(\tdi_shifter_reg[8]_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \Use_Cross_Trigger.ext_out_ctrl[2][0]_i_1 
-       (.I0(Debug_Rst_i_reg[3]),
-        .I1(Debug_Rst_i_reg[4]),
+       (.I0(\Use_UART.tx_buffered_reg [3]),
+        .I1(\Use_UART.tx_buffered_reg [4]),
         .I2(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2_n_0 ),
         .O(\tdi_shifter_reg[9] ));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \Use_Cross_Trigger.ext_out_ctrl[3][0]_i_1 
-       (.I0(Debug_Rst_i_reg[4]),
-        .I1(Debug_Rst_i_reg[3]),
+       (.I0(\Use_UART.tx_buffered_reg [4]),
+        .I1(\Use_UART.tx_buffered_reg [3]),
         .I2(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2_n_0 ),
         .O(\tdi_shifter_reg[8]_1 ));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
@@ -8339,148 +8821,148 @@ module mcu_mdm_1_0_MB_FDC_1
        (.I0(Q[2]),
         .I1(Q[6]),
         .I2(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I3(Q_0),
+        .I3(Q_1),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3][3] ),
         .O(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h0000000008000000)) 
     \Use_Cross_Trigger.in_ctrl[0][0]_i_1 
        (.I0(Q[6]),
-        .I1(\Using_FPGA.Native_0 ),
+        .I1(\Using_FPGA.Native_1 ),
         .I2(Q[3]),
         .I3(Q[2]),
         .I4(Q[1]),
         .I5(\Use_Cross_Trigger.ext_in_ctrl_reg[3] ),
         .O(\Use_BSCAN.command_reg[1]_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT3 #(
     .INIT(8'h10)) 
     \Use_Cross_Trigger.out_ctrl[0][0][0]_i_1 
-       (.I0(Debug_Rst_i_reg[2]),
-        .I1(Debug_Rst_i_reg[0]),
+       (.I0(\Use_UART.tx_buffered_reg [2]),
+        .I1(\Use_UART.tx_buffered_reg [0]),
         .I2(\Use_Cross_Trigger.out_ctrl[0][5][0]_i_2_n_0 ),
         .O(\tdi_shifter_reg[13] ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \Use_Cross_Trigger.out_ctrl[0][1][0]_i_1 
-       (.I0(Debug_Rst_i_reg[2]),
-        .I1(Debug_Rst_i_reg[0]),
+       (.I0(\Use_UART.tx_buffered_reg [2]),
+        .I1(\Use_UART.tx_buffered_reg [0]),
         .I2(\Use_Cross_Trigger.out_ctrl[0][5][0]_i_2_n_0 ),
         .O(\tdi_shifter_reg[13]_0 ));
   (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT3 #(
     .INIT(8'h10)) 
     \Use_Cross_Trigger.out_ctrl[0][2][0]_i_1 
-       (.I0(Debug_Rst_i_reg[2]),
-        .I1(Debug_Rst_i_reg[0]),
+       (.I0(\Use_UART.tx_buffered_reg [2]),
+        .I1(\Use_UART.tx_buffered_reg [0]),
         .I2(\Use_Cross_Trigger.out_ctrl[0][7][0]_i_2_n_0 ),
         .O(\tdi_shifter_reg[13]_2 ));
   (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \Use_Cross_Trigger.out_ctrl[0][3][0]_i_1 
-       (.I0(Debug_Rst_i_reg[2]),
-        .I1(Debug_Rst_i_reg[0]),
+       (.I0(\Use_UART.tx_buffered_reg [2]),
+        .I1(\Use_UART.tx_buffered_reg [0]),
         .I2(\Use_Cross_Trigger.out_ctrl[0][7][0]_i_2_n_0 ),
         .O(\tdi_shifter_reg[13]_3 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \Use_Cross_Trigger.out_ctrl[0][4][0]_i_1 
-       (.I0(Debug_Rst_i_reg[0]),
-        .I1(Debug_Rst_i_reg[2]),
+       (.I0(\Use_UART.tx_buffered_reg [0]),
+        .I1(\Use_UART.tx_buffered_reg [2]),
         .I2(\Use_Cross_Trigger.out_ctrl[0][5][0]_i_2_n_0 ),
         .O(\tdi_shifter_reg[15] ));
   (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \Use_Cross_Trigger.out_ctrl[0][5][0]_i_1 
-       (.I0(Debug_Rst_i_reg[2]),
-        .I1(Debug_Rst_i_reg[0]),
+       (.I0(\Use_UART.tx_buffered_reg [2]),
+        .I1(\Use_UART.tx_buffered_reg [0]),
         .I2(\Use_Cross_Trigger.out_ctrl[0][5][0]_i_2_n_0 ),
         .O(\tdi_shifter_reg[13]_1 ));
   LUT6 #(
     .INIT(64'h0000000000200000)) 
     \Use_Cross_Trigger.out_ctrl[0][5][0]_i_2 
-       (.I0(Q_0),
+       (.I0(Q_1),
         .I1(\Use_Serial_Unified_Completion.completion_block_reg ),
         .I2(Q[6]),
         .I3(Q[7]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5][3] ),
-        .I5(Debug_Rst_i_reg[1]),
+        .I5(\Use_UART.tx_buffered_reg [1]),
         .O(\Use_Cross_Trigger.out_ctrl[0][5][0]_i_2_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \Use_Cross_Trigger.out_ctrl[0][6][0]_i_1 
-       (.I0(Debug_Rst_i_reg[0]),
-        .I1(Debug_Rst_i_reg[2]),
+       (.I0(\Use_UART.tx_buffered_reg [0]),
+        .I1(\Use_UART.tx_buffered_reg [2]),
         .I2(\Use_Cross_Trigger.out_ctrl[0][7][0]_i_2_n_0 ),
         .O(\tdi_shifter_reg[15]_0 ));
   (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \Use_Cross_Trigger.out_ctrl[0][7][0]_i_1 
-       (.I0(Debug_Rst_i_reg[2]),
-        .I1(Debug_Rst_i_reg[0]),
+       (.I0(\Use_UART.tx_buffered_reg [2]),
+        .I1(\Use_UART.tx_buffered_reg [0]),
         .I2(\Use_Cross_Trigger.out_ctrl[0][7][0]_i_2_n_0 ),
         .O(\tdi_shifter_reg[13]_4 ));
   LUT6 #(
     .INIT(64'h0020000000000000)) 
     \Use_Cross_Trigger.out_ctrl[0][7][0]_i_2 
-       (.I0(Q_0),
+       (.I0(Q_1),
         .I1(\Use_Serial_Unified_Completion.completion_block_reg ),
         .I2(Q[6]),
         .I3(Q[7]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5][3] ),
-        .I5(Debug_Rst_i_reg[1]),
+        .I5(\Use_UART.tx_buffered_reg [1]),
         .O(\Use_Cross_Trigger.out_ctrl[0][7][0]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
     .INIT(32'h0D0D080D)) 
     \Use_Dbg_Mem_Access.execute_i_2 
        (.I0(Scan_Reset_Sel),
         .I1(Scan_Reset),
         .I2(Scan_En),
-        .I3(Q_0),
+        .I3(Q_1),
         .I4(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .O(data_cmd_reset23_out));
+        .O(data_cmd_reset27_out));
   LUT6 #(
     .INIT(64'h0400000000000000)) 
     \Use_Dbg_Mem_Access.input[0]_i_1 
        (.I0(Q[1]),
         .I1(Q[0]),
-        .I2(\Use_Dbg_Mem_Access.rd_wr_excl_reg ),
-        .I3(\Using_FPGA.Native_0 ),
+        .I2(\Use_Dbg_Mem_Access.input_reg[31] ),
+        .I3(\Using_FPGA.Native_1 ),
         .I4(out),
-        .I5(Dbg_Shift_0),
+        .I5(\Use_Dbg_Mem_Access.input_reg[31]_0 ),
         .O(\Use_BSCAN.command_reg[6] ));
   LUT6 #(
-    .INIT(64'h0000000004000000)) 
+    .INIT(64'h0000000000400000)) 
     \Use_Dbg_Mem_Access.rd_wr_len[0]_i_1 
        (.I0(Q[0]),
         .I1(Q[2]),
-        .I2(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I3(Q_0),
-        .I4(Q[1]),
-        .I5(\Use_Dbg_Mem_Access.rd_wr_excl_reg ),
-        .O(E));
+        .I2(Q[1]),
+        .I3(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I4(Q_1),
+        .I5(\Use_Dbg_Mem_Access.input_reg[31] ),
+        .O(\Use_BSCAN.command_reg[7] ));
   LUT4 #(
     .INIT(16'hFB08)) 
     \Use_Serial_Unified_Completion.clear_overrun_i_1 
        (.I0(completion_ctrl0),
         .I1(\Use_Serial_Unified_Completion.mb_instr_overrun_reg ),
-        .I2(\Using_FPGA.Native_2 ),
+        .I2(\Using_FPGA.Native_0 ),
         .I3(clear_overrun),
         .O(\Use_Serial_Unified_Completion.clear_overrun_reg ));
   LUT6 #(
     .INIT(64'hDFDFDFDF03000000)) 
     \Use_Serial_Unified_Completion.completion_block_i_1 
        (.I0(\Use_Serial_Unified_Completion.mb_instr_overrun_reg ),
-        .I1(\Using_FPGA.Native_2 ),
+        .I1(\Using_FPGA.Native_0 ),
         .I2(completion_ctrl0),
-        .I3(p_23_out__10),
+        .I3(p_26_out__10),
         .I4(completion_ctrl),
         .I5(\Use_Serial_Unified_Completion.completion_block_reg ),
         .O(\completion_ctrl_reg[0] ));
@@ -8488,21 +8970,21 @@ module mcu_mdm_1_0_MB_FDC_1
   LUT4 #(
     .INIT(16'h888F)) 
     \Use_Serial_Unified_Completion.completion_status[0]_i_1 
-       (.I0(\Using_FPGA.Native_2 ),
+       (.I0(\Using_FPGA.Native_0 ),
         .I1(\Use_Serial_Unified_Completion.completion_status_reg[9] [1]),
         .I2(\Use_Serial_Unified_Completion.completion_status_reg[9] [0]),
         .I3(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
         .O(D[0]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT5 #(
     .INIT(32'h00200000)) 
     \Use_Serial_Unified_Completion.completion_status[15]_i_3 
-       (.I0(Q_0),
+       (.I0(Q_1),
         .I1(Q[2]),
         .I2(Q[1]),
         .I3(Q[0]),
         .I4(\Use_Serial_Unified_Completion.sample_1_reg[10] ),
-        .O(\Using_FPGA.Native_2 ));
+        .O(\Using_FPGA.Native_0 ));
   (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT5 #(
     .INIT(32'hFF060606)) 
@@ -8510,7 +8992,7 @@ module mcu_mdm_1_0_MB_FDC_1
        (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9] [1]),
         .I1(\Use_Serial_Unified_Completion.completion_status_reg[9] [0]),
         .I2(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
-        .I3(\Using_FPGA.Native_2 ),
+        .I3(\Using_FPGA.Native_0 ),
         .I4(\Use_Serial_Unified_Completion.completion_status_reg[9] [2]),
         .O(D[1]));
   LUT6 #(
@@ -8520,7 +9002,7 @@ module mcu_mdm_1_0_MB_FDC_1
         .I1(\Use_Serial_Unified_Completion.completion_status_reg[9] [1]),
         .I2(\Use_Serial_Unified_Completion.completion_status_reg[9] [0]),
         .I3(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
-        .I4(\Using_FPGA.Native_2 ),
+        .I4(\Using_FPGA.Native_0 ),
         .I5(\Use_Serial_Unified_Completion.completion_status_reg[9] [3]),
         .O(D[2]));
   LUT5 #(
@@ -8529,7 +9011,7 @@ module mcu_mdm_1_0_MB_FDC_1
        (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9] [3]),
         .I1(\Use_Serial_Unified_Completion.completion_status_reg[3] ),
         .I2(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
-        .I3(\Using_FPGA.Native_2 ),
+        .I3(\Using_FPGA.Native_0 ),
         .I4(\Use_Serial_Unified_Completion.completion_status_reg[9] [4]),
         .O(D[3]));
   LUT5 #(
@@ -8538,7 +9020,7 @@ module mcu_mdm_1_0_MB_FDC_1
        (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9] [4]),
         .I1(\Use_Serial_Unified_Completion.completion_status_reg[4] ),
         .I2(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
-        .I3(\Using_FPGA.Native_2 ),
+        .I3(\Using_FPGA.Native_0 ),
         .I4(\Use_Serial_Unified_Completion.completion_status_reg[9] [5]),
         .O(D[4]));
   LUT5 #(
@@ -8547,17 +9029,17 @@ module mcu_mdm_1_0_MB_FDC_1
        (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9] [5]),
         .I1(\Use_Serial_Unified_Completion.completion_status_reg[5] ),
         .I2(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
-        .I3(\Using_FPGA.Native_2 ),
+        .I3(\Using_FPGA.Native_0 ),
         .I4(\Use_Serial_Unified_Completion.completion_status_reg[9] [6]),
         .O(D[5]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT5 #(
-    .INIT(32'hFF060606)) 
+    .INIT(32'hFF121212)) 
     \Use_Serial_Unified_Completion.completion_status[6]_i_1 
        (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9] [6]),
-        .I1(\Use_Serial_Unified_Completion.completion_status_reg[6] ),
-        .I2(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
-        .I3(\Using_FPGA.Native_2 ),
+        .I1(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
+        .I2(\Use_Serial_Unified_Completion.completion_status_reg[6] ),
+        .I3(\Using_FPGA.Native_0 ),
         .I4(\Use_Serial_Unified_Completion.completion_status_reg[9] [7]),
         .O(D[6]));
   LUT6 #(
@@ -8567,7 +9049,7 @@ module mcu_mdm_1_0_MB_FDC_1
         .I1(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
         .I2(\Use_Serial_Unified_Completion.completion_status_reg[6] ),
         .I3(\Use_Serial_Unified_Completion.completion_status_reg[9] [6]),
-        .I4(\Using_FPGA.Native_2 ),
+        .I4(\Using_FPGA.Native_0 ),
         .I5(\Use_Serial_Unified_Completion.completion_status_reg[9] [8]),
         .O(D[7]));
   LUT5 #(
@@ -8576,7 +9058,7 @@ module mcu_mdm_1_0_MB_FDC_1
        (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9] [8]),
         .I1(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
         .I2(\Use_Serial_Unified_Completion.completion_status_reg[8] ),
-        .I3(\Using_FPGA.Native_2 ),
+        .I3(\Using_FPGA.Native_0 ),
         .I4(\Use_Serial_Unified_Completion.completion_status_reg[9] [9]),
         .O(D[8]));
   LUT6 #(
@@ -8585,10 +9067,10 @@ module mcu_mdm_1_0_MB_FDC_1
        (.I0(\Use_Serial_Unified_Completion.completion_status_reg[0] ),
         .I1(completion_ctrl0),
         .I2(\Use_Serial_Unified_Completion.mb_instr_overrun_reg ),
-        .I3(\Using_FPGA.Native_2 ),
-        .I4(Q_0),
+        .I3(\Using_FPGA.Native_0 ),
+        .I4(Q_1),
         .I5(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .O(\Using_FPGA.Native_1 ));
+        .O(E));
   LUT6 #(
     .INIT(64'hFFFF122212221222)) 
     \Use_Serial_Unified_Completion.completion_status[9]_i_2 
@@ -8596,18 +9078,18 @@ module mcu_mdm_1_0_MB_FDC_1
         .I1(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
         .I2(\Use_Serial_Unified_Completion.completion_status_reg[8] ),
         .I3(\Use_Serial_Unified_Completion.completion_status_reg[9] [8]),
-        .I4(\Using_FPGA.Native_2 ),
+        .I4(\Using_FPGA.Native_0 ),
         .I5(\Use_Serial_Unified_Completion.completion_status_reg[9] [10]),
         .O(D[9]));
-  LUT6 #(
-    .INIT(64'h0080000000000000)) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h20000000)) 
     \Use_Serial_Unified_Completion.completion_status[9]_i_3 
-       (.I0(\completion_ctrl_reg[0]_0 ),
-        .I1(Q[0]),
-        .I2(Q_0),
-        .I3(\completion_ctrl_reg[0]_1 ),
-        .I4(Q[3]),
-        .I5(Q[5]),
+       (.I0(Q[0]),
+        .I1(Q[1]),
+        .I2(Q[2]),
+        .I3(Q_1),
+        .I4(\Use_Serial_Unified_Completion.sample_1_reg[10] ),
         .O(completion_ctrl0));
   LUT6 #(
     .INIT(64'h0200000000000000)) 
@@ -8615,19 +9097,19 @@ module mcu_mdm_1_0_MB_FDC_1
        (.I0(Q[2]),
         .I1(Q[0]),
         .I2(Q[3]),
-        .I3(\Using_FPGA.Native_0 ),
-        .I4(Q[1]),
-        .I5(\Use_Serial_Unified_Completion.mb_data_overrun_reg ),
-        .O(p_101_out__0));
+        .I3(Q[1]),
+        .I4(\Using_FPGA.Native_1 ),
+        .I5(\Use_UART.tx_buffered_reg_0 ),
+        .O(p_113_out__0));
   LUT6 #(
     .INIT(64'h0000020000000000)) 
     \Use_Serial_Unified_Completion.count[0]_i_2 
        (.I0(Q[2]),
         .I1(Q[0]),
         .I2(Q[3]),
-        .I3(\Using_FPGA.Native_0 ),
+        .I3(\Using_FPGA.Native_1 ),
         .I4(Q[1]),
-        .I5(\Use_Serial_Unified_Completion.mb_data_overrun_reg ),
+        .I5(\Use_UART.tx_buffered_reg_0 ),
         .O(shifting_Data1__0));
   LUT6 #(
     .INIT(64'h053F0F3F05000000)) 
@@ -8635,8 +9117,8 @@ module mcu_mdm_1_0_MB_FDC_1
        (.I0(Dbg_TDO_0),
         .I1(completion_ctrl0),
         .I2(\Use_Serial_Unified_Completion.mb_instr_overrun_reg ),
-        .I3(p_101_out__0),
-        .I4(\Use_Serial_Unified_Completion.mb_data_overrun_reg_0 ),
+        .I3(p_113_out__0),
+        .I4(\Use_Serial_Unified_Completion.mb_data_overrun_reg ),
         .I5(\Use_Serial_Unified_Completion.sample_reg[15]_0 [2]),
         .O(Dbg_TDO_0_2));
   LUT6 #(
@@ -8663,7 +9145,7 @@ module mcu_mdm_1_0_MB_FDC_1
     .INIT(64'h0000000400000000)) 
     \Use_Serial_Unified_Completion.mb_instr_overrun_i_3 
        (.I0(Q[1]),
-        .I1(Q_0),
+        .I1(Q_1),
         .I2(\Use_Serial_Unified_Completion.completion_block_reg ),
         .I3(Q[3]),
         .I4(Q[0]),
@@ -8691,57 +9173,67 @@ module mcu_mdm_1_0_MB_FDC_1
        (.I0(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
         .I1(\Use_Serial_Unified_Completion.sample_reg[15]_0 [5]),
         .O(\Use_Serial_Unified_Completion.sample_reg[15] [2]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \Use_Serial_Unified_Completion.sample_1[15]_i_1 
        (.I0(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
-        .O(\Using_FPGA.Native_3 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+        .O(\Using_FPGA.Native_2 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT5 #(
     .INIT(32'h00800800)) 
     \Use_Serial_Unified_Completion.sample_1[15]_i_2 
        (.I0(\Use_Serial_Unified_Completion.sample_1_reg[10] ),
-        .I1(Q_0),
-        .I2(Q[0]),
+        .I1(Q_1),
+        .I2(Q[2]),
         .I3(Q[1]),
-        .I4(Q[2]),
+        .I4(Q[0]),
         .O(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFBFFFFF00800000)) 
+    \Use_UART.tx_buffered_i_1 
+       (.I0(\Use_UART.tx_buffered_reg [12]),
+        .I1(Dbg_Reg_En_0[6]),
+        .I2(Q[3]),
+        .I3(\Use_UART.tx_buffered_reg_1 ),
+        .I4(\Use_UART.tx_buffered_reg_0 ),
+        .I5(in0),
+        .O(\tdi_shifter_reg[0] ));
   (* XILINX_LEGACY_PRIM = "FDC_1" *) 
   (* box_type = "PRIMITIVE" *) 
   FDCE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \Using_FPGA.Native 
-       (.C(\Using_FPGA.Native_4 ),
+       (.C(\Using_FPGA.Native_3 ),
         .CE(1'b1),
         .CLR(sel_n),
-        .D(D_1),
-        .Q(Q_0));
+        .D(D_4),
+        .Q(Q_1));
   LUT5 #(
     .INIT(32'h00000800)) 
     \Using_FPGA.Native_i_1 
        (.I0(\Using_FPGA.Native_i_2_n_0 ),
-        .I1(Debug_Rst_i_reg[8]),
-        .I2(Debug_Rst_i_reg[7]),
-        .I3(Debug_Rst_i_reg[5]),
-        .I4(Debug_Rst_i_reg[6]),
+        .I1(\Use_UART.tx_buffered_reg [8]),
+        .I2(\Use_UART.tx_buffered_reg [7]),
+        .I3(\Use_UART.tx_buffered_reg [5]),
+        .I4(\Use_UART.tx_buffered_reg [6]),
         .O(CE));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT1 #(
     .INIT(2'h1)) 
-    \Using_FPGA.Native_i_1__0 
-       (.I0(Q_0),
-        .O(D_1));
+    \Using_FPGA.Native_i_1__3 
+       (.I0(Q_1),
+        .O(D_4));
   LUT6 #(
     .INIT(64'h0000002000000000)) 
     \Using_FPGA.Native_i_2 
-       (.I0(Debug_Rst_i_reg[10]),
-        .I1(Debug_Rst_i_reg[9]),
-        .I2(Debug_Rst_i_reg[11]),
-        .I3(Debug_Rst_i_reg[12]),
+       (.I0(\Use_UART.tx_buffered_reg [10]),
+        .I1(\Use_UART.tx_buffered_reg [9]),
+        .I2(\Use_UART.tx_buffered_reg [11]),
+        .I3(\Use_UART.tx_buffered_reg [12]),
         .I4(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I5(Q_0),
+        .I5(Q_1),
         .O(\Using_FPGA.Native_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h0000000001000000)) 
@@ -8751,13 +9243,12 @@ module mcu_mdm_1_0_MB_FDC_1
         .I2(\command_1_reg[7] [1]),
         .I3(\command_1_reg[7] [0]),
         .I4(SEL),
-        .I5(\Using_FPGA.Native_0 ),
+        .I5(\Using_FPGA.Native_1 ),
         .O(\Use_BSCAN.PORT_Selector_reg[2] ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \completion_ctrl[0]_i_1 
-       (.I0(Debug_Rst_i_reg[12]),
+       (.I0(\Use_UART.tx_buffered_reg [12]),
         .I1(completion_ctrl0),
         .I2(completion_ctrl),
         .O(\tdi_shifter_reg[0]_0 ));
@@ -8827,7 +9318,7 @@ module mcu_mdm_1_0_MB_FDRE
         .R(\Using_FPGA.Native_0 ));
   LUT6 #(
     .INIT(64'h4444884888488848)) 
-    \Using_FPGA.Native_I1_i_1__3 
+    \Using_FPGA.Native_I1_i_1__9 
        (.I0(Addr),
         .I1(hsum_A_40__0),
         .I2(lmb_ready_vec_q),
@@ -8845,7 +9336,7 @@ module mcu_mdm_1_0_MB_FDRE
         .O(next_Data_Exists));
   LUT5 #(
     .INIT(32'h00000001)) 
-    data_Exists_I_i_2
+    data_Exists_I_i_2__1
        (.I0(Addr),
         .I1(data_Exists_I_reg[3]),
         .I2(data_Exists_I_reg[2]),
@@ -8905,7 +9396,7 @@ module mcu_mdm_1_0_MB_FDRE_1
         .R(\Using_FPGA.Native_1 ));
   LUT6 #(
     .INIT(64'h4444884888488848)) 
-    \Using_FPGA.Native_I1_i_1__4 
+    \Using_FPGA.Native_I1_i_1__10 
        (.I0(\Using_FPGA.Native_0 ),
         .I1(hsum_A_40__0),
         .I2(lmb_ready_vec_q),
@@ -8916,51 +9407,298 @@ module mcu_mdm_1_0_MB_FDRE_1
 endmodule
 
 (* ORIG_REF_NAME = "MB_FDRE" *) 
-module mcu_mdm_1_0_MB_FDRE_1_81
+module mcu_mdm_1_0_MB_FDRE_101
+   (\Using_FPGA.Native_0 ,
+    S,
+    \Using_FPGA.Native_1 ,
+    \Using_FPGA.Native_2 ,
+    O,
+    S_AXI_ACLK,
+    Addr,
+    \Using_FPGA.Native_3 ,
+    bus2ip_rdce);
+  output [0:0]\Using_FPGA.Native_0 ;
+  output S;
+  input \Using_FPGA.Native_1 ;
+  input \Using_FPGA.Native_2 ;
+  input O;
+  input S_AXI_ACLK;
+  input [2:0]Addr;
+  input \Using_FPGA.Native_3 ;
+  input [0:0]bus2ip_rdce;
+
+  wire [2:0]Addr;
+  wire O;
+  wire S;
+  wire S_AXI_ACLK;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_1 ;
+  wire \Using_FPGA.Native_2 ;
+  wire \Using_FPGA.Native_3 ;
+  wire [0:0]bus2ip_rdce;
+
+  (* box_type = "PRIMITIVE" *) 
+  FDRE #(
+    .INIT(1'b0),
+    .IS_C_INVERTED(1'b0),
+    .IS_D_INVERTED(1'b0),
+    .IS_R_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.C(S_AXI_ACLK),
+        .CE(\Using_FPGA.Native_2 ),
+        .D(O),
+        .Q(\Using_FPGA.Native_0 ),
+        .R(\Using_FPGA.Native_1 ));
+  LUT6 #(
+    .INIT(64'h55555554AAAAAAAA)) 
+    \Using_FPGA.Native_I1_i_1__3 
+       (.I0(\Using_FPGA.Native_0 ),
+        .I1(Addr[1]),
+        .I2(Addr[0]),
+        .I3(Addr[2]),
+        .I4(\Using_FPGA.Native_3 ),
+        .I5(bus2ip_rdce),
+        .O(S));
+endmodule
+
+(* ORIG_REF_NAME = "MB_FDRE" *) 
+module mcu_mdm_1_0_MB_FDRE_103
+   (Addr,
+    D,
+    RX_Buffer_Full,
+    S,
+    CI,
+    data_Exists_I_reg,
+    \Using_FPGA.Native_0 ,
+    \Using_FPGA.Native_1 ,
+    O,
+    S_AXI_ACLK,
+    \Use_UART.tdo_reg_reg[4] ,
+    \Use_UART.tdo_reg_reg[4]_0 ,
+    \Use_UART.tdo_reg_reg[4]_1 ,
+    Data_Out,
+    \Use_UART.tdo_reg_reg[4]_2 ,
+    \Using_FPGA.Native_2 ,
+    data_Exists_I_reg_0,
+    bus2ip_rdce,
+    Bus_RNW_reg,
+    \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg );
+  output [0:0]Addr;
+  output [0:0]D;
+  output RX_Buffer_Full;
+  output S;
+  output CI;
+  output data_Exists_I_reg;
+  input \Using_FPGA.Native_0 ;
+  input \Using_FPGA.Native_1 ;
+  input O;
+  input S_AXI_ACLK;
+  input [0:0]\Use_UART.tdo_reg_reg[4] ;
+  input \Use_UART.tdo_reg_reg[4]_0 ;
+  input \Use_UART.tdo_reg_reg[4]_1 ;
+  input [0:0]Data_Out;
+  input \Use_UART.tdo_reg_reg[4]_2 ;
+  input [2:0]\Using_FPGA.Native_2 ;
+  input data_Exists_I_reg_0;
+  input [0:0]bus2ip_rdce;
+  input Bus_RNW_reg;
+  input \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ;
+
+  wire [0:0]Addr;
+  wire Bus_RNW_reg;
+  wire CI;
+  wire [0:0]D;
+  wire [0:0]Data_Out;
+  wire \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ;
+  wire O;
+  wire RX_Buffer_Full;
+  wire S;
+  wire S_AXI_ACLK;
+  wire [0:0]\Use_UART.tdo_reg_reg[4] ;
+  wire \Use_UART.tdo_reg_reg[4]_0 ;
+  wire \Use_UART.tdo_reg_reg[4]_1 ;
+  wire \Use_UART.tdo_reg_reg[4]_2 ;
+  wire \Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_1 ;
+  wire [2:0]\Using_FPGA.Native_2 ;
+  wire buffer_Empty__2;
+  wire [0:0]bus2ip_rdce;
+  wire data_Exists_I_reg;
+  wire data_Exists_I_reg_0;
+
+  LUT6 #(
+    .INIT(64'hFFFFF222F222F222)) 
+    \Use_UART.tdo_reg[4]_i_1 
+       (.I0(\Use_UART.tdo_reg_reg[4] ),
+        .I1(\Use_UART.tdo_reg_reg[4]_0 ),
+        .I2(\Use_UART.tdo_reg_reg[4]_1 ),
+        .I3(RX_Buffer_Full),
+        .I4(Data_Out),
+        .I5(\Use_UART.tdo_reg_reg[4]_2 ),
+        .O(D));
+  (* box_type = "PRIMITIVE" *) 
+  FDRE #(
+    .INIT(1'b0),
+    .IS_C_INVERTED(1'b0),
+    .IS_D_INVERTED(1'b0),
+    .IS_R_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.C(S_AXI_ACLK),
+        .CE(\Using_FPGA.Native_1 ),
+        .D(O),
+        .Q(Addr),
+        .R(\Using_FPGA.Native_0 ));
+  LUT6 #(
+    .INIT(64'h55555554AAAAAAAA)) 
+    \Using_FPGA.Native_I1_i_1__4 
+       (.I0(Addr),
+        .I1(\Using_FPGA.Native_2 [0]),
+        .I2(\Using_FPGA.Native_2 [2]),
+        .I3(\Using_FPGA.Native_2 [1]),
+        .I4(data_Exists_I_reg_0),
+        .I5(bus2ip_rdce),
+        .O(S));
+  LUT6 #(
+    .INIT(64'hBFFFFFFF00000000)) 
+    \Using_FPGA.Native_I1_i_2__0 
+       (.I0(bus2ip_rdce),
+        .I1(Addr),
+        .I2(\Using_FPGA.Native_2 [0]),
+        .I3(\Using_FPGA.Native_2 [2]),
+        .I4(\Using_FPGA.Native_2 [1]),
+        .I5(data_Exists_I_reg_0),
+        .O(CI));
+  LUT6 #(
+    .INIT(64'h00000000FF2AAAAA)) 
+    data_Exists_I_i_1__2
+       (.I0(\Using_FPGA.Native_1 ),
+        .I1(Bus_RNW_reg),
+        .I2(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ),
+        .I3(data_Exists_I_reg_0),
+        .I4(buffer_Empty__2),
+        .I5(\Using_FPGA.Native_0 ),
+        .O(data_Exists_I_reg));
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  LUT4 #(
+    .INIT(16'h0001)) 
+    data_Exists_I_i_2
+       (.I0(Addr),
+        .I1(\Using_FPGA.Native_2 [0]),
+        .I2(\Using_FPGA.Native_2 [2]),
+        .I3(\Using_FPGA.Native_2 [1]),
+        .O(buffer_Empty__2));
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  LUT4 #(
+    .INIT(16'h8000)) 
+    \s_axi_rdata_i[1]_i_2 
+       (.I0(Addr),
+        .I1(\Using_FPGA.Native_2 [0]),
+        .I2(\Using_FPGA.Native_2 [2]),
+        .I3(\Using_FPGA.Native_2 [1]),
+        .O(RX_Buffer_Full));
+endmodule
+
+(* ORIG_REF_NAME = "MB_FDRE" *) 
+module mcu_mdm_1_0_MB_FDRE_105
+   (\Using_FPGA.Native_0 ,
+    LI,
+    \Using_FPGA.Native_1 ,
+    \Using_FPGA.Native_2 ,
+    sum_A_0,
+    S_AXI_ACLK,
+    Addr,
+    \Using_FPGA.Native_3 ,
+    bus2ip_rdce);
+  output [0:0]\Using_FPGA.Native_0 ;
+  output LI;
+  input \Using_FPGA.Native_1 ;
+  input \Using_FPGA.Native_2 ;
+  input sum_A_0;
+  input S_AXI_ACLK;
+  input [2:0]Addr;
+  input \Using_FPGA.Native_3 ;
+  input [0:0]bus2ip_rdce;
+
+  wire [2:0]Addr;
+  wire LI;
+  wire S_AXI_ACLK;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_1 ;
+  wire \Using_FPGA.Native_2 ;
+  wire \Using_FPGA.Native_3 ;
+  wire [0:0]bus2ip_rdce;
+  wire sum_A_0;
+
+  (* box_type = "PRIMITIVE" *) 
+  FDRE #(
+    .INIT(1'b0),
+    .IS_C_INVERTED(1'b0),
+    .IS_D_INVERTED(1'b0),
+    .IS_R_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.C(S_AXI_ACLK),
+        .CE(\Using_FPGA.Native_2 ),
+        .D(sum_A_0),
+        .Q(\Using_FPGA.Native_0 ),
+        .R(\Using_FPGA.Native_1 ));
+  LUT6 #(
+    .INIT(64'h55555554AAAAAAAA)) 
+    \Using_FPGA.Native_i_1__2 
+       (.I0(\Using_FPGA.Native_0 ),
+        .I1(Addr[0]),
+        .I2(Addr[2]),
+        .I3(Addr[1]),
+        .I4(\Using_FPGA.Native_3 ),
+        .I5(bus2ip_rdce),
+        .O(LI));
+endmodule
+
+(* ORIG_REF_NAME = "MB_FDRE" *) 
+module mcu_mdm_1_0_MB_FDRE_1_82
    (sync,
     \Use_Serial_Unified_Completion.count_reg[1] ,
     \Use_Serial_Unified_Completion.count_reg[1]_0 ,
-    Dbg_Shift_0,
-    D_1,
+    E,
+    D_4,
     CE,
     \Using_FPGA.Native_0 ,
     \Use_Serial_Unified_Completion.mb_instr_error_reg ,
     \Use_Serial_Unified_Completion.mb_instr_error_reg_0 ,
     \Use_Serial_Unified_Completion.mb_instr_error_reg_1 ,
-    Dbg_Shift_0_0,
-    Dbg_Shift_0_1,
-    Dbg_Shift_0_2,
-    Dbg_Shift_0_3,
+    \Use_UART.fifo_Din_reg[7] ,
+    \Use_UART.fifo_Din_reg[7]_0 ,
+    \Use_UART.fifo_Din_reg[7]_1 ,
+    \Use_UART.fifo_Din_reg[7]_2 ,
     Q);
   output sync;
   output \Use_Serial_Unified_Completion.count_reg[1] ;
   output \Use_Serial_Unified_Completion.count_reg[1]_0 ;
-  output Dbg_Shift_0;
-  input D_1;
+  output [0:0]E;
+  input D_4;
   input CE;
   input \Using_FPGA.Native_0 ;
   input \Use_Serial_Unified_Completion.mb_instr_error_reg ;
   input \Use_Serial_Unified_Completion.mb_instr_error_reg_0 ;
   input \Use_Serial_Unified_Completion.mb_instr_error_reg_1 ;
-  input Dbg_Shift_0_0;
-  input Dbg_Shift_0_1;
-  input Dbg_Shift_0_2;
-  input Dbg_Shift_0_3;
+  input \Use_UART.fifo_Din_reg[7] ;
+  input \Use_UART.fifo_Din_reg[7]_0 ;
+  input \Use_UART.fifo_Din_reg[7]_1 ;
+  input \Use_UART.fifo_Din_reg[7]_2 ;
   input [0:0]Q;
 
   wire CE;
-  wire D_1;
-  wire Dbg_Shift_0;
-  wire Dbg_Shift_0_0;
-  wire Dbg_Shift_0_1;
-  wire Dbg_Shift_0_2;
-  wire Dbg_Shift_0_3;
+  wire D_4;
+  wire [0:0]E;
   wire [0:0]Q;
   wire \Use_Serial_Unified_Completion.count_reg[1] ;
   wire \Use_Serial_Unified_Completion.count_reg[1]_0 ;
   wire \Use_Serial_Unified_Completion.mb_instr_error_reg ;
   wire \Use_Serial_Unified_Completion.mb_instr_error_reg_0 ;
   wire \Use_Serial_Unified_Completion.mb_instr_error_reg_1 ;
+  wire \Use_UART.fifo_Din_reg[7] ;
+  wire \Use_UART.fifo_Din_reg[7]_0 ;
+  wire \Use_UART.fifo_Din_reg[7]_1 ;
+  wire \Use_UART.fifo_Din_reg[7]_2 ;
   wire \Using_FPGA.Native_0 ;
   wire sync;
 
@@ -8968,12 +9706,12 @@ module mcu_mdm_1_0_MB_FDRE_1_81
     .INIT(64'hFFEFFFFF00000000)) 
     Dbg_Shift_31_INST_0
        (.I0(sync),
-        .I1(Dbg_Shift_0_2),
-        .I2(Dbg_Shift_0_3),
+        .I1(\Use_UART.fifo_Din_reg[7]_1 ),
+        .I2(\Use_UART.fifo_Din_reg[7]_2 ),
         .I3(Q),
-        .I4(Dbg_Shift_0_0),
-        .I5(Dbg_Shift_0_1),
-        .O(Dbg_Shift_0));
+        .I4(\Use_UART.fifo_Din_reg[7] ),
+        .I5(\Use_UART.fifo_Din_reg[7]_0 ),
+        .O(E));
   LUT6 #(
     .INIT(64'h2000000000000000)) 
     \Use_Serial_Unified_Completion.mb_instr_error_i_2 
@@ -8981,8 +9719,8 @@ module mcu_mdm_1_0_MB_FDRE_1_81
         .I1(\Use_Serial_Unified_Completion.mb_instr_error_reg_0 ),
         .I2(sync),
         .I3(\Use_Serial_Unified_Completion.mb_instr_error_reg_1 ),
-        .I4(Dbg_Shift_0_0),
-        .I5(Dbg_Shift_0_1),
+        .I4(\Use_UART.fifo_Din_reg[7] ),
+        .I5(\Use_UART.fifo_Din_reg[7]_0 ),
         .O(\Use_Serial_Unified_Completion.count_reg[1] ));
   LUT6 #(
     .INIT(64'h1000000000000000)) 
@@ -8991,8 +9729,8 @@ module mcu_mdm_1_0_MB_FDRE_1_81
         .I1(\Use_Serial_Unified_Completion.mb_instr_error_reg_0 ),
         .I2(sync),
         .I3(\Use_Serial_Unified_Completion.mb_instr_error_reg_1 ),
-        .I4(Dbg_Shift_0_0),
-        .I5(Dbg_Shift_0_1),
+        .I4(\Use_UART.fifo_Din_reg[7] ),
+        .I5(\Use_UART.fifo_Din_reg[7]_0 ),
         .O(\Use_Serial_Unified_Completion.count_reg[1]_0 ));
   (* XILINX_LEGACY_PRIM = "FDRE_1" *) 
   (* box_type = "PRIMITIVE" *) 
@@ -9004,7 +9742,7 @@ module mcu_mdm_1_0_MB_FDRE_1_81
         .CE(CE),
         .D(1'b1),
         .Q(sync),
-        .R(D_1));
+        .R(D_4));
 endmodule
 
 (* ORIG_REF_NAME = "MB_FDRE" *) 
@@ -9070,7 +9808,7 @@ module mcu_mdm_1_0_MB_FDRE_3
         .R(\Using_FPGA.Native_1 ));
   LUT6 #(
     .INIT(64'h4444884888488848)) 
-    \Using_FPGA.Native_I1_i_1__5 
+    \Using_FPGA.Native_I1_i_1__11 
        (.I0(\Using_FPGA.Native_0 ),
         .I1(hsum_A_40__0),
         .I2(lmb_ready_vec_q),
@@ -9080,7 +9818,7 @@ module mcu_mdm_1_0_MB_FDRE_3
         .O(S));
   LUT5 #(
     .INIT(32'hAAAA2AAA)) 
-    \Using_FPGA.Native_i_1__35 
+    \Using_FPGA.Native_i_1__38 
        (.I0(master_data_wr),
         .I1(\Using_FPGA.Native_0 ),
         .I2(Addr[1]),
@@ -9156,7 +9894,7 @@ module mcu_mdm_1_0_MB_FDRE_39
         .R(\Using_FPGA.Native_0 ));
   LUT6 #(
     .INIT(64'h55555111AAAAA222)) 
-    \Using_FPGA.Native_I1_i_1 
+    \Using_FPGA.Native_I1_i_1__5 
        (.I0(Addr),
         .I1(buffer_Empty__3),
         .I2(M_AXI_RVALID),
@@ -9166,7 +9904,7 @@ module mcu_mdm_1_0_MB_FDRE_39
         .O(S));
   LUT5 #(
     .INIT(32'hF2220000)) 
-    \Using_FPGA.Native_I1_i_2 
+    \Using_FPGA.Native_I1_i_2__1 
        (.I0(lmb_ready_vec_q),
         .I1(lmb_rd_idle),
         .I2(data_Exists_I_reg_0),
@@ -9175,7 +9913,7 @@ module mcu_mdm_1_0_MB_FDRE_39
         .O(CI));
   LUT5 #(
     .INIT(32'h00000001)) 
-    \Using_FPGA.Native_I1_i_3 
+    \Using_FPGA.Native_I1_i_3__1 
        (.I0(Addr),
         .I1(data_Exists_I_reg_1[3]),
         .I2(data_Exists_I_reg_1[2]),
@@ -9255,7 +9993,7 @@ module mcu_mdm_1_0_MB_FDRE_41
         .R(\Using_FPGA.Native_1 ));
   LUT6 #(
     .INIT(64'h55555111AAAAA222)) 
-    \Using_FPGA.Native_I1_i_1__0 
+    \Using_FPGA.Native_I1_i_1__6 
        (.I0(\Using_FPGA.Native_0 ),
         .I1(buffer_Empty__3),
         .I2(M_AXI_RVALID),
@@ -9316,7 +10054,7 @@ module mcu_mdm_1_0_MB_FDRE_43
         .R(\Using_FPGA.Native_1 ));
   LUT6 #(
     .INIT(64'h55555111AAAAA222)) 
-    \Using_FPGA.Native_I1_i_1__1 
+    \Using_FPGA.Native_I1_i_1__7 
        (.I0(\Using_FPGA.Native_0 ),
         .I1(buffer_Empty__3),
         .I2(M_AXI_RVALID),
@@ -9377,7 +10115,7 @@ module mcu_mdm_1_0_MB_FDRE_45
         .R(\Using_FPGA.Native_1 ));
   LUT6 #(
     .INIT(64'h55555111AAAAA222)) 
-    \Using_FPGA.Native_I1_i_1__2 
+    \Using_FPGA.Native_I1_i_1__8 
        (.I0(\Using_FPGA.Native_0 ),
         .I1(buffer_Empty__3),
         .I2(M_AXI_RVALID),
@@ -9446,7 +10184,7 @@ module mcu_mdm_1_0_MB_FDRE_47
         .R(M_AXI_ARESETN_0));
   LUT6 #(
     .INIT(64'h55555111AAAAA222)) 
-    \Using_FPGA.Native_i_1__1 
+    \Using_FPGA.Native_i_1__4 
        (.I0(\Using_FPGA.Native_0 ),
         .I1(buffer_Empty__3),
         .I2(M_AXI_RVALID),
@@ -9513,7 +10251,7 @@ module mcu_mdm_1_0_MB_FDRE_5
         .R(\Using_FPGA.Native_1 ));
   LUT6 #(
     .INIT(64'h4444884888488848)) 
-    \Using_FPGA.Native_I1_i_1__6 
+    \Using_FPGA.Native_I1_i_1__12 
        (.I0(\Using_FPGA.Native_0 ),
         .I1(hsum_A_40__0),
         .I2(lmb_ready_vec_q),
@@ -9523,7 +10261,7 @@ module mcu_mdm_1_0_MB_FDRE_5
         .O(S));
   LUT6 #(
     .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    \Using_FPGA.Native_I1_i_2__0 
+    \Using_FPGA.Native_I1_i_2__2 
        (.I0(master_data_wr),
         .I1(\Using_FPGA.Native_0 ),
         .I2(Addr[0]),
@@ -9547,7 +10285,7 @@ module mcu_mdm_1_0_MB_FDRE_7
     \Using_FPGA.Native_3 ,
     \Using_FPGA.Native_4 ,
     M_AXI_WREADY,
-    \Using_FPGA.Native_i_1__35 );
+    \Using_FPGA.Native_i_1__38 );
   output [0:0]Addr;
   output LI;
   output \Using_FPGA.Native_0 ;
@@ -9560,7 +10298,7 @@ module mcu_mdm_1_0_MB_FDRE_7
   input \Using_FPGA.Native_3 ;
   input \Using_FPGA.Native_4 ;
   input M_AXI_WREADY;
-  input [0:0]\Using_FPGA.Native_i_1__35 ;
+  input [0:0]\Using_FPGA.Native_i_1__38 ;
 
   wire [0:0]Addr;
   wire LI;
@@ -9571,7 +10309,7 @@ module mcu_mdm_1_0_MB_FDRE_7
   wire \Using_FPGA.Native_2 ;
   wire \Using_FPGA.Native_3 ;
   wire \Using_FPGA.Native_4 ;
-  wire [0:0]\Using_FPGA.Native_i_1__35 ;
+  wire [0:0]\Using_FPGA.Native_i_1__38 ;
   wire hsum_A_40__0;
   wire lmb_ready_vec_q;
   wire sum_A_0;
@@ -9590,7 +10328,7 @@ module mcu_mdm_1_0_MB_FDRE_7
         .R(\Using_FPGA.Native_1 ));
   LUT6 #(
     .INIT(64'h4444884888488848)) 
-    \Using_FPGA.Native_i_1__34 
+    \Using_FPGA.Native_i_1__37 
        (.I0(Addr),
         .I1(hsum_A_40__0),
         .I2(lmb_ready_vec_q),
@@ -9600,14 +10338,441 @@ module mcu_mdm_1_0_MB_FDRE_7
         .O(LI));
   LUT6 #(
     .INIT(64'hFFFF77F777F777F7)) 
-    \Using_FPGA.Native_i_2__0 
+    \Using_FPGA.Native_i_2__1 
        (.I0(Addr),
-        .I1(\Using_FPGA.Native_i_1__35 ),
+        .I1(\Using_FPGA.Native_i_1__38 ),
         .I2(lmb_ready_vec_q),
         .I3(\Using_FPGA.Native_3 ),
         .I4(\Using_FPGA.Native_4 ),
         .I5(M_AXI_WREADY),
         .O(\Using_FPGA.Native_0 ));
+endmodule
+
+(* ORIG_REF_NAME = "MB_FDRE" *) 
+module mcu_mdm_1_0_MB_FDRE_81
+   (Q_0,
+    bus2ip_wrce,
+    tx_Buffer_Empty,
+    S_AXI_ACLK);
+  output Q_0;
+  input [0:0]bus2ip_wrce;
+  input tx_Buffer_Empty;
+  input S_AXI_ACLK;
+
+  wire Q_0;
+  wire S_AXI_ACLK;
+  wire [0:0]bus2ip_wrce;
+  wire tx_Buffer_Empty;
+
+  (* box_type = "PRIMITIVE" *) 
+  FDRE #(
+    .INIT(1'b0),
+    .IS_C_INVERTED(1'b0),
+    .IS_D_INVERTED(1'b0),
+    .IS_R_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(tx_Buffer_Empty),
+        .Q(Q_0),
+        .R(bus2ip_wrce));
+endmodule
+
+(* ORIG_REF_NAME = "MB_FDRE" *) 
+module mcu_mdm_1_0_MB_FDRE_84
+   (Addr,
+    S,
+    \Using_FPGA.Native_0 ,
+    \Using_FPGA.Native_1 ,
+    O,
+    S_AXI_ACLK,
+    \Using_FPGA.Native_2 ,
+    FIFO_Write,
+    \Using_FPGA.Native_3 );
+  output [0:0]Addr;
+  output S;
+  input \Using_FPGA.Native_0 ;
+  input \Using_FPGA.Native_1 ;
+  input O;
+  input S_AXI_ACLK;
+  input [2:0]\Using_FPGA.Native_2 ;
+  input FIFO_Write;
+  input \Using_FPGA.Native_3 ;
+
+  wire [0:0]Addr;
+  wire FIFO_Write;
+  wire O;
+  wire S;
+  wire S_AXI_ACLK;
+  wire \Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_1 ;
+  wire [2:0]\Using_FPGA.Native_2 ;
+  wire \Using_FPGA.Native_3 ;
+
+  (* box_type = "PRIMITIVE" *) 
+  FDRE #(
+    .INIT(1'b0),
+    .IS_C_INVERTED(1'b0),
+    .IS_D_INVERTED(1'b0),
+    .IS_R_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.C(S_AXI_ACLK),
+        .CE(\Using_FPGA.Native_1 ),
+        .D(O),
+        .Q(Addr),
+        .R(\Using_FPGA.Native_0 ));
+  LUT6 #(
+    .INIT(64'h55555554AAAAAAAA)) 
+    \Using_FPGA.Native_I1_i_1 
+       (.I0(Addr),
+        .I1(\Using_FPGA.Native_2 [1]),
+        .I2(\Using_FPGA.Native_2 [0]),
+        .I3(\Using_FPGA.Native_2 [2]),
+        .I4(FIFO_Write),
+        .I5(\Using_FPGA.Native_3 ),
+        .O(S));
+endmodule
+
+(* ORIG_REF_NAME = "MB_FDRE" *) 
+module mcu_mdm_1_0_MB_FDRE_86
+   (\Using_FPGA.Native_0 ,
+    S,
+    \Using_FPGA.Native_1 ,
+    \Using_FPGA.Native_2 ,
+    O,
+    S_AXI_ACLK,
+    Addr,
+    FIFO_Write,
+    \Using_FPGA.Native_3 );
+  output [0:0]\Using_FPGA.Native_0 ;
+  output S;
+  input \Using_FPGA.Native_1 ;
+  input \Using_FPGA.Native_2 ;
+  input O;
+  input S_AXI_ACLK;
+  input [2:0]Addr;
+  input FIFO_Write;
+  input \Using_FPGA.Native_3 ;
+
+  wire [2:0]Addr;
+  wire FIFO_Write;
+  wire O;
+  wire S;
+  wire S_AXI_ACLK;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_1 ;
+  wire \Using_FPGA.Native_2 ;
+  wire \Using_FPGA.Native_3 ;
+
+  (* box_type = "PRIMITIVE" *) 
+  FDRE #(
+    .INIT(1'b0),
+    .IS_C_INVERTED(1'b0),
+    .IS_D_INVERTED(1'b0),
+    .IS_R_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.C(S_AXI_ACLK),
+        .CE(\Using_FPGA.Native_2 ),
+        .D(O),
+        .Q(\Using_FPGA.Native_0 ),
+        .R(\Using_FPGA.Native_1 ));
+  LUT6 #(
+    .INIT(64'h55555554AAAAAAAA)) 
+    \Using_FPGA.Native_I1_i_1__0 
+       (.I0(\Using_FPGA.Native_0 ),
+        .I1(Addr[1]),
+        .I2(Addr[0]),
+        .I3(Addr[2]),
+        .I4(FIFO_Write),
+        .I5(\Using_FPGA.Native_3 ),
+        .O(S));
+endmodule
+
+(* ORIG_REF_NAME = "MB_FDRE" *) 
+module mcu_mdm_1_0_MB_FDRE_88
+   (Addr,
+    D,
+    tx_Buffer_Full,
+    S,
+    CI,
+    data_Exists_I_reg,
+    \Using_FPGA.Native_0 ,
+    \Using_FPGA.Native_1 ,
+    O,
+    S_AXI_ACLK,
+    Q,
+    \Use_UART.tdo_reg_reg[6] ,
+    \Use_UART.tdo_reg_reg[6]_0 ,
+    Data_Out,
+    \Use_UART.tdo_reg_reg[6]_1 ,
+    \Using_FPGA.Native_2 ,
+    FIFO_Write,
+    data_Exists_I_reg_0,
+    Bus_RNW_reg,
+    \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ,
+    \Using_FPGA.Native_3 );
+  output [0:0]Addr;
+  output [0:0]D;
+  output tx_Buffer_Full;
+  output S;
+  output CI;
+  output data_Exists_I_reg;
+  input \Using_FPGA.Native_0 ;
+  input \Using_FPGA.Native_1 ;
+  input O;
+  input S_AXI_ACLK;
+  input [0:0]Q;
+  input \Use_UART.tdo_reg_reg[6] ;
+  input \Use_UART.tdo_reg_reg[6]_0 ;
+  input [0:0]Data_Out;
+  input \Use_UART.tdo_reg_reg[6]_1 ;
+  input [2:0]\Using_FPGA.Native_2 ;
+  input FIFO_Write;
+  input data_Exists_I_reg_0;
+  input Bus_RNW_reg;
+  input \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ;
+  input \Using_FPGA.Native_3 ;
+
+  wire [0:0]Addr;
+  wire Bus_RNW_reg;
+  wire CI;
+  wire [0:0]D;
+  wire [0:0]Data_Out;
+  wire FIFO_Write;
+  wire \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ;
+  wire O;
+  wire [0:0]Q;
+  wire S;
+  wire S_AXI_ACLK;
+  wire \Use_UART.tdo_reg_reg[6] ;
+  wire \Use_UART.tdo_reg_reg[6]_0 ;
+  wire \Use_UART.tdo_reg_reg[6]_1 ;
+  wire \Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_1 ;
+  wire [2:0]\Using_FPGA.Native_2 ;
+  wire \Using_FPGA.Native_3 ;
+  wire buffer_Empty__2;
+  wire data_Exists_I_reg;
+  wire data_Exists_I_reg_0;
+  wire tx_Buffer_Full;
+
+  LUT6 #(
+    .INIT(64'hFFFFF222F222F222)) 
+    \Use_UART.tdo_reg[6]_i_1 
+       (.I0(Q),
+        .I1(\Use_UART.tdo_reg_reg[6] ),
+        .I2(\Use_UART.tdo_reg_reg[6]_0 ),
+        .I3(tx_Buffer_Full),
+        .I4(Data_Out),
+        .I5(\Use_UART.tdo_reg_reg[6]_1 ),
+        .O(D));
+  (* box_type = "PRIMITIVE" *) 
+  FDRE #(
+    .INIT(1'b0),
+    .IS_C_INVERTED(1'b0),
+    .IS_D_INVERTED(1'b0),
+    .IS_R_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.C(S_AXI_ACLK),
+        .CE(\Using_FPGA.Native_1 ),
+        .D(O),
+        .Q(Addr),
+        .R(\Using_FPGA.Native_0 ));
+  LUT6 #(
+    .INIT(64'h55555554AAAAAAAA)) 
+    \Using_FPGA.Native_I1_i_1__1 
+       (.I0(Addr),
+        .I1(\Using_FPGA.Native_2 [0]),
+        .I2(\Using_FPGA.Native_2 [2]),
+        .I3(\Using_FPGA.Native_2 [1]),
+        .I4(FIFO_Write),
+        .I5(data_Exists_I_reg_0),
+        .O(S));
+  LUT5 #(
+    .INIT(32'h0B000000)) 
+    \Using_FPGA.Native_I1_i_2 
+       (.I0(data_Exists_I_reg_0),
+        .I1(tx_Buffer_Full),
+        .I2(Bus_RNW_reg),
+        .I3(\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ),
+        .I4(\Using_FPGA.Native_3 ),
+        .O(CI));
+  LUT5 #(
+    .INIT(32'h0000F2AA)) 
+    data_Exists_I_i_1__1
+       (.I0(\Using_FPGA.Native_1 ),
+        .I1(data_Exists_I_reg_0),
+        .I2(FIFO_Write),
+        .I3(buffer_Empty__2),
+        .I4(\Using_FPGA.Native_0 ),
+        .O(data_Exists_I_reg));
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  LUT4 #(
+    .INIT(16'h0001)) 
+    data_Exists_I_i_2__0
+       (.I0(Addr),
+        .I1(\Using_FPGA.Native_2 [0]),
+        .I2(\Using_FPGA.Native_2 [2]),
+        .I3(\Using_FPGA.Native_2 [1]),
+        .O(buffer_Empty__2));
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  LUT4 #(
+    .INIT(16'h8000)) 
+    \s_axi_rdata_i[3]_i_2 
+       (.I0(Addr),
+        .I1(\Using_FPGA.Native_2 [0]),
+        .I2(\Using_FPGA.Native_2 [2]),
+        .I3(\Using_FPGA.Native_2 [1]),
+        .O(tx_Buffer_Full));
+endmodule
+
+(* ORIG_REF_NAME = "MB_FDRE" *) 
+module mcu_mdm_1_0_MB_FDRE_90
+   (\Using_FPGA.Native_0 ,
+    LI,
+    \Using_FPGA.Native_1 ,
+    \Using_FPGA.Native_2 ,
+    sum_A_0,
+    S_AXI_ACLK,
+    Addr,
+    FIFO_Write,
+    \Using_FPGA.Native_3 );
+  output [0:0]\Using_FPGA.Native_0 ;
+  output LI;
+  input \Using_FPGA.Native_1 ;
+  input \Using_FPGA.Native_2 ;
+  input sum_A_0;
+  input S_AXI_ACLK;
+  input [2:0]Addr;
+  input FIFO_Write;
+  input \Using_FPGA.Native_3 ;
+
+  wire [2:0]Addr;
+  wire FIFO_Write;
+  wire LI;
+  wire S_AXI_ACLK;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_1 ;
+  wire \Using_FPGA.Native_2 ;
+  wire \Using_FPGA.Native_3 ;
+  wire sum_A_0;
+
+  (* box_type = "PRIMITIVE" *) 
+  FDRE #(
+    .INIT(1'b0),
+    .IS_C_INVERTED(1'b0),
+    .IS_D_INVERTED(1'b0),
+    .IS_R_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.C(S_AXI_ACLK),
+        .CE(\Using_FPGA.Native_2 ),
+        .D(sum_A_0),
+        .Q(\Using_FPGA.Native_0 ),
+        .R(\Using_FPGA.Native_1 ));
+  LUT6 #(
+    .INIT(64'h55555554AAAAAAAA)) 
+    \Using_FPGA.Native_i_1__0 
+       (.I0(\Using_FPGA.Native_0 ),
+        .I1(Addr[0]),
+        .I2(Addr[2]),
+        .I3(Addr[1]),
+        .I4(FIFO_Write),
+        .I5(\Using_FPGA.Native_3 ),
+        .O(LI));
+endmodule
+
+(* ORIG_REF_NAME = "MB_FDRE" *) 
+module mcu_mdm_1_0_MB_FDRE_99
+   (Addr,
+    S,
+    \Using_FPGA.Native_0 ,
+    \Using_FPGA.Native_1 ,
+    O,
+    S_AXI_ACLK,
+    \Using_FPGA.Native_2 ,
+    \Using_FPGA.Native_3 ,
+    bus2ip_rdce);
+  output [0:0]Addr;
+  output S;
+  input \Using_FPGA.Native_0 ;
+  input \Using_FPGA.Native_1 ;
+  input O;
+  input S_AXI_ACLK;
+  input [2:0]\Using_FPGA.Native_2 ;
+  input \Using_FPGA.Native_3 ;
+  input [0:0]bus2ip_rdce;
+
+  wire [0:0]Addr;
+  wire O;
+  wire S;
+  wire S_AXI_ACLK;
+  wire \Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_1 ;
+  wire [2:0]\Using_FPGA.Native_2 ;
+  wire \Using_FPGA.Native_3 ;
+  wire [0:0]bus2ip_rdce;
+
+  (* box_type = "PRIMITIVE" *) 
+  FDRE #(
+    .INIT(1'b0),
+    .IS_C_INVERTED(1'b0),
+    .IS_D_INVERTED(1'b0),
+    .IS_R_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.C(S_AXI_ACLK),
+        .CE(\Using_FPGA.Native_1 ),
+        .D(O),
+        .Q(Addr),
+        .R(\Using_FPGA.Native_0 ));
+  LUT6 #(
+    .INIT(64'h55555554AAAAAAAA)) 
+    \Using_FPGA.Native_I1_i_1__2 
+       (.I0(Addr),
+        .I1(\Using_FPGA.Native_2 [1]),
+        .I2(\Using_FPGA.Native_2 [0]),
+        .I3(\Using_FPGA.Native_2 [2]),
+        .I4(\Using_FPGA.Native_3 ),
+        .I5(bus2ip_rdce),
+        .O(S));
+endmodule
+
+(* ORIG_REF_NAME = "MB_FDRSE" *) 
+module mcu_mdm_1_0_MB_FDRSE
+   (Ext_BRK,
+    \Using_FPGA.Native_0 ,
+    S_AXI_ACLK,
+    set_Ext_BRK);
+  output Ext_BRK;
+  input \Using_FPGA.Native_0 ;
+  input S_AXI_ACLK;
+  input set_Ext_BRK;
+
+  wire Ext_BRK;
+  wire S_AXI_ACLK;
+  wire \Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_i_1__39_n_0 ;
+  wire set_Ext_BRK;
+
+  (* IS_CE_INVERTED = "1'b0" *) 
+  (* IS_S_INVERTED = "1'b0" *) 
+  (* box_type = "PRIMITIVE" *) 
+  FDRE #(
+    .INIT(1'b0),
+    .IS_C_INVERTED(1'b0),
+    .IS_D_INVERTED(1'b0),
+    .IS_R_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(\Using_FPGA.Native_i_1__39_n_0 ),
+        .Q(Ext_BRK),
+        .R(\Using_FPGA.Native_0 ));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \Using_FPGA.Native_i_1__39 
+       (.I0(set_Ext_BRK),
+        .I1(Ext_BRK),
+        .O(\Using_FPGA.Native_i_1__39_n_0 ));
 endmodule
 
 (* ORIG_REF_NAME = "MB_MUXCY_XORCY" *) 
@@ -9688,6 +10853,134 @@ module mcu_mdm_1_0_MB_MUXCY_XORCY
         .DI({\^lopt_8 ,\^lopt_5 ,\^lopt_2 ,Addr}),
         .O({lopt_12,\^lopt_11 ,\^lopt_10 ,O}),
         .S({\^lopt_9 ,\^lopt_6 ,\^lopt_3 ,S}));
+endmodule
+
+(* ORIG_REF_NAME = "MB_MUXCY_XORCY" *) 
+module mcu_mdm_1_0_MB_MUXCY_XORCY_100
+   (LO,
+    O,
+    S,
+    Addr,
+    CI,
+    lopt,
+    lopt_1,
+    lopt_2,
+    lopt_3,
+    lopt_4,
+    lopt_5,
+    lopt_6,
+    lopt_7,
+    lopt_8,
+    lopt_9);
+  output LO;
+  output O;
+  input S;
+  input [0:0]Addr;
+  input CI;
+  output lopt;
+  input lopt_1;
+  input lopt_2;
+  output lopt_3;
+  input lopt_4;
+  input lopt_5;
+  output lopt_6;
+  output lopt_7;
+  output lopt_8;
+  input lopt_9;
+
+  wire [0:0]Addr;
+  wire CI;
+  wire LO;
+  wire O;
+  wire S;
+  wire \^lopt_1 ;
+  wire lopt_10;
+  wire \^lopt_2 ;
+  wire \^lopt_3 ;
+  wire \^lopt_4 ;
+  wire \^lopt_5 ;
+  wire \^lopt_6 ;
+  wire \^lopt_7 ;
+  wire \^lopt_8 ;
+  wire \^lopt_9 ;
+  wire [3:3]\NLW_Using_FPGA.Native_I1_CARRY4_CO_UNCONNECTED ;
+  wire [3:3]\NLW_Using_FPGA.Native_I1_CARRY4_DI_UNCONNECTED ;
+
+  assign \^lopt_2  = lopt_1;
+  assign \^lopt_3  = lopt_2;
+  assign \^lopt_5  = lopt_4;
+  assign \^lopt_6  = lopt_5;
+  assign lopt = \^lopt_1 ;
+  assign lopt_10 = lopt_9;
+  assign lopt_3 = \^lopt_4 ;
+  assign lopt_6 = \^lopt_7 ;
+  assign lopt_7 = \^lopt_8 ;
+  assign lopt_8 = \^lopt_9 ;
+  (* OPT_MODIFIED = "MLO" *) 
+  (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
+  (* XILINX_TRANSFORM_PINMAP = "LO:O" *) 
+  (* box_type = "PRIMITIVE" *) 
+  CARRY4 \Using_FPGA.Native_I1_CARRY4 
+       (.CI(1'b0),
+        .CO({\NLW_Using_FPGA.Native_I1_CARRY4_CO_UNCONNECTED [3],\^lopt_4 ,\^lopt_1 ,LO}),
+        .CYINIT(CI),
+        .DI({\NLW_Using_FPGA.Native_I1_CARRY4_DI_UNCONNECTED [3],\^lopt_5 ,\^lopt_2 ,Addr}),
+        .O({\^lopt_9 ,\^lopt_8 ,\^lopt_7 ,O}),
+        .S({lopt_10,\^lopt_6 ,\^lopt_3 ,S}));
+endmodule
+
+(* ORIG_REF_NAME = "MB_MUXCY_XORCY" *) 
+module mcu_mdm_1_0_MB_MUXCY_XORCY_102
+   (LO,
+    O,
+    S,
+    \Using_FPGA.Native ,
+    CI,
+    lopt,
+    lopt_1);
+  output LO;
+  output O;
+  input S;
+  input [0:0]\Using_FPGA.Native ;
+  input CI;
+  input lopt;
+  input lopt_1;
+
+  wire CI;
+  wire LO;
+  wire O;
+  wire S;
+  wire [0:0]\Using_FPGA.Native ;
+
+  assign LO = lopt;
+  assign O = lopt_1;
+endmodule
+
+(* ORIG_REF_NAME = "MB_MUXCY_XORCY" *) 
+module mcu_mdm_1_0_MB_MUXCY_XORCY_104
+   (LO,
+    O,
+    S,
+    Addr,
+    CI,
+    lopt,
+    lopt_1);
+  output LO;
+  output O;
+  input S;
+  input [0:0]Addr;
+  input CI;
+  input lopt;
+  input lopt_1;
+
+  wire [0:0]Addr;
+  wire CI;
+  wire LO;
+  wire O;
+  wire S;
+
+  assign LO = lopt;
+  assign O = lopt_1;
 endmodule
 
 (* ORIG_REF_NAME = "MB_MUXCY_XORCY" *) 
@@ -9932,6 +11225,134 @@ module mcu_mdm_1_0_MB_MUXCY_XORCY_6
   assign O = lopt_1;
 endmodule
 
+(* ORIG_REF_NAME = "MB_MUXCY_XORCY" *) 
+module mcu_mdm_1_0_MB_MUXCY_XORCY_85
+   (LO,
+    O,
+    S,
+    Addr,
+    CI,
+    lopt,
+    lopt_1,
+    lopt_2,
+    lopt_3,
+    lopt_4,
+    lopt_5,
+    lopt_6,
+    lopt_7,
+    lopt_8,
+    lopt_9);
+  output LO;
+  output O;
+  input S;
+  input [0:0]Addr;
+  input CI;
+  output lopt;
+  input lopt_1;
+  input lopt_2;
+  output lopt_3;
+  input lopt_4;
+  input lopt_5;
+  output lopt_6;
+  output lopt_7;
+  output lopt_8;
+  input lopt_9;
+
+  wire [0:0]Addr;
+  wire CI;
+  wire LO;
+  wire O;
+  wire S;
+  wire \^lopt_1 ;
+  wire lopt_10;
+  wire \^lopt_2 ;
+  wire \^lopt_3 ;
+  wire \^lopt_4 ;
+  wire \^lopt_5 ;
+  wire \^lopt_6 ;
+  wire \^lopt_7 ;
+  wire \^lopt_8 ;
+  wire \^lopt_9 ;
+  wire [3:3]\NLW_Using_FPGA.Native_I1_CARRY4_CO_UNCONNECTED ;
+  wire [3:3]\NLW_Using_FPGA.Native_I1_CARRY4_DI_UNCONNECTED ;
+
+  assign \^lopt_2  = lopt_1;
+  assign \^lopt_3  = lopt_2;
+  assign \^lopt_5  = lopt_4;
+  assign \^lopt_6  = lopt_5;
+  assign lopt = \^lopt_1 ;
+  assign lopt_10 = lopt_9;
+  assign lopt_3 = \^lopt_4 ;
+  assign lopt_6 = \^lopt_7 ;
+  assign lopt_7 = \^lopt_8 ;
+  assign lopt_8 = \^lopt_9 ;
+  (* OPT_MODIFIED = "MLO" *) 
+  (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
+  (* XILINX_TRANSFORM_PINMAP = "LO:O" *) 
+  (* box_type = "PRIMITIVE" *) 
+  CARRY4 \Using_FPGA.Native_I1_CARRY4 
+       (.CI(1'b0),
+        .CO({\NLW_Using_FPGA.Native_I1_CARRY4_CO_UNCONNECTED [3],\^lopt_4 ,\^lopt_1 ,LO}),
+        .CYINIT(CI),
+        .DI({\NLW_Using_FPGA.Native_I1_CARRY4_DI_UNCONNECTED [3],\^lopt_5 ,\^lopt_2 ,Addr}),
+        .O({\^lopt_9 ,\^lopt_8 ,\^lopt_7 ,O}),
+        .S({lopt_10,\^lopt_6 ,\^lopt_3 ,S}));
+endmodule
+
+(* ORIG_REF_NAME = "MB_MUXCY_XORCY" *) 
+module mcu_mdm_1_0_MB_MUXCY_XORCY_87
+   (LO,
+    O,
+    S,
+    \Using_FPGA.Native ,
+    CI,
+    lopt,
+    lopt_1);
+  output LO;
+  output O;
+  input S;
+  input [0:0]\Using_FPGA.Native ;
+  input CI;
+  input lopt;
+  input lopt_1;
+
+  wire CI;
+  wire LO;
+  wire O;
+  wire S;
+  wire [0:0]\Using_FPGA.Native ;
+
+  assign LO = lopt;
+  assign O = lopt_1;
+endmodule
+
+(* ORIG_REF_NAME = "MB_MUXCY_XORCY" *) 
+module mcu_mdm_1_0_MB_MUXCY_XORCY_89
+   (LO,
+    O,
+    S,
+    Addr,
+    CI,
+    lopt,
+    lopt_1);
+  output LO;
+  output O;
+  input S;
+  input [0:0]Addr;
+  input CI;
+  input lopt;
+  input lopt_1;
+
+  wire [0:0]Addr;
+  wire CI;
+  wire LO;
+  wire O;
+  wire S;
+
+  assign LO = lopt;
+  assign O = lopt_1;
+endmodule
+
 (* ORIG_REF_NAME = "MB_SRL16E" *) 
 module mcu_mdm_1_0_MB_SRL16E
    (Q1_out,
@@ -9977,7 +11398,7 @@ module mcu_mdm_1_0_MB_SRL16E__parameterized1
   (* box_type = "PRIMITIVE" *) 
   (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_Config_SRL16E.SRL16E_2/Use_unisim.MB_SRL16E_I1 " *) 
   SRL16E #(
-    .INIT(16'h42C7),
+    .INIT(16'h42E7),
     .IS_CLK_INVERTED(1'b0)) 
     \Use_unisim.MB_SRL16E_I1 
        (.A0(Q[0]),
@@ -10125,14 +11546,14 @@ module mcu_mdm_1_0_MB_SRL16E__parameterized7
         .I5(sel_n_reg_3),
         .O(tdo));
   LUT6 #(
-    .INIT(64'h00AAAAAA00FCFCFC)) 
+    .INIT(64'h0000AAFCAAFCAAFC)) 
     \Use_E2.BSCANE2_I_i_4 
        (.I0(Dbg_TDO_0),
         .I1(\Use_E2.BSCANE2_I_i_6_n_0 ),
         .I2(\Use_E2.BSCANE2_I_i_1_0 ),
         .I3(\Use_E2.BSCANE2_I_i_1_1 ),
-        .I4(sel_n_reg_2[0]),
-        .I5(\Use_E2.BSCANE2_I_i_1_2 ),
+        .I4(\Use_E2.BSCANE2_I_i_1_2 ),
+        .I5(sel_n_reg_2[0]),
         .O(\Use_E2.BSCANE2_I_i_4_n_0 ));
   LUT4 #(
     .INIT(16'h2230)) 
@@ -10156,6 +11577,672 @@ module mcu_mdm_1_0_MB_SRL16E__parameterized7
         .CLK(\Use_E2.BSCANE2_I_i_6_0 ),
         .D(1'b0),
         .Q(ID_TDO_2));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9
+   (D,
+    CI,
+    S_AXI_WDATA,
+    Addr,
+    S_AXI_ACLK,
+    \Use_UART.tdo_reg_reg[0] );
+  output [0:0]D;
+  input CI;
+  input [0:0]S_AXI_WDATA;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+  input \Use_UART.tdo_reg_reg[0] ;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire [0:0]D;
+  wire [0:0]Data_Out;
+  wire S_AXI_ACLK;
+  wire [0:0]S_AXI_WDATA;
+  wire \Use_UART.tdo_reg_reg[0] ;
+
+  LUT2 #(
+    .INIT(4'h8)) 
+    \Use_UART.tdo_reg[0]_i_2 
+       (.I0(\Use_UART.tdo_reg_reg[0] ),
+        .I1(Data_Out),
+        .O(D));
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM[0].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(S_AXI_WDATA),
+        .Q(Data_Out));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9_107
+   (RX_Data,
+    CI,
+    Q,
+    Addr,
+    S_AXI_ACLK);
+  output [0:0]RX_Data;
+  input CI;
+  input [0:0]Q;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire [0:0]Q;
+  wire [0:0]RX_Data;
+  wire S_AXI_ACLK;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM[0].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(Q),
+        .Q(RX_Data));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9_108
+   (RX_Data,
+    CI,
+    Q,
+    Addr,
+    S_AXI_ACLK);
+  output [0:0]RX_Data;
+  input CI;
+  input [0:0]Q;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire [0:0]Q;
+  wire [0:0]RX_Data;
+  wire S_AXI_ACLK;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM[1].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(Q),
+        .Q(RX_Data));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9_109
+   (RX_Data,
+    CI,
+    Q,
+    Addr,
+    S_AXI_ACLK);
+  output [0:0]RX_Data;
+  input CI;
+  input [0:0]Q;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire [0:0]Q;
+  wire [0:0]RX_Data;
+  wire S_AXI_ACLK;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM[2].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(Q),
+        .Q(RX_Data));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9_110
+   (RX_Data,
+    CI,
+    Q,
+    Addr,
+    S_AXI_ACLK);
+  output [0:0]RX_Data;
+  input CI;
+  input [0:0]Q;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire [0:0]Q;
+  wire [0:0]RX_Data;
+  wire S_AXI_ACLK;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM[3].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(Q),
+        .Q(RX_Data));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9_111
+   (RX_Data,
+    CI,
+    Q,
+    Addr,
+    S_AXI_ACLK);
+  output [0:0]RX_Data;
+  input CI;
+  input [0:0]Q;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire [0:0]Q;
+  wire [0:0]RX_Data;
+  wire S_AXI_ACLK;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM[4].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(Q),
+        .Q(RX_Data));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9_112
+   (RX_Data,
+    CI,
+    Q,
+    Addr,
+    S_AXI_ACLK);
+  output [0:0]RX_Data;
+  input CI;
+  input [0:0]Q;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire [0:0]Q;
+  wire [0:0]RX_Data;
+  wire S_AXI_ACLK;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM[5].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(Q),
+        .Q(RX_Data));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9_113
+   (RX_Data,
+    CI,
+    Q,
+    Addr,
+    S_AXI_ACLK);
+  output [0:0]RX_Data;
+  input CI;
+  input [0:0]Q;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire [0:0]Q;
+  wire [0:0]RX_Data;
+  wire S_AXI_ACLK;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM[6].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(Q),
+        .Q(RX_Data));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9_114
+   (RX_Data,
+    CI,
+    Q,
+    Addr,
+    S_AXI_ACLK);
+  output [0:0]RX_Data;
+  input CI;
+  input [0:0]Q;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire [0:0]Q;
+  wire [0:0]RX_Data;
+  wire S_AXI_ACLK;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/FIFO_RAM[7].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(Q),
+        .Q(RX_Data));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9_92
+   (D,
+    CI,
+    S_AXI_WDATA,
+    Addr,
+    S_AXI_ACLK,
+    \Use_UART.tdo_reg_reg[1] ,
+    \Use_UART.tdo_reg_reg[1]_0 ,
+    Q);
+  output [0:0]D;
+  input CI;
+  input [0:0]S_AXI_WDATA;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+  input \Use_UART.tdo_reg_reg[1] ;
+  input \Use_UART.tdo_reg_reg[1]_0 ;
+  input [0:0]Q;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire [0:0]D;
+  wire [1:1]Data_Out;
+  wire [0:0]Q;
+  wire S_AXI_ACLK;
+  wire [0:0]S_AXI_WDATA;
+  wire \Use_UART.tdo_reg_reg[1] ;
+  wire \Use_UART.tdo_reg_reg[1]_0 ;
+
+  LUT4 #(
+    .INIT(16'h8F88)) 
+    \Use_UART.tdo_reg[1]_i_1 
+       (.I0(Data_Out),
+        .I1(\Use_UART.tdo_reg_reg[1] ),
+        .I2(\Use_UART.tdo_reg_reg[1]_0 ),
+        .I3(Q),
+        .O(D));
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM[1].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(S_AXI_WDATA),
+        .Q(Data_Out));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9_93
+   (D,
+    CI,
+    S_AXI_WDATA,
+    Addr,
+    S_AXI_ACLK,
+    \Use_UART.tdo_reg_reg[2] ,
+    \Use_UART.tdo_reg_reg[2]_0 ,
+    Q);
+  output [0:0]D;
+  input CI;
+  input [0:0]S_AXI_WDATA;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+  input \Use_UART.tdo_reg_reg[2] ;
+  input \Use_UART.tdo_reg_reg[2]_0 ;
+  input [0:0]Q;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire [0:0]D;
+  wire [2:2]Data_Out;
+  wire [0:0]Q;
+  wire S_AXI_ACLK;
+  wire [0:0]S_AXI_WDATA;
+  wire \Use_UART.tdo_reg_reg[2] ;
+  wire \Use_UART.tdo_reg_reg[2]_0 ;
+
+  LUT4 #(
+    .INIT(16'h8F88)) 
+    \Use_UART.tdo_reg[2]_i_1 
+       (.I0(Data_Out),
+        .I1(\Use_UART.tdo_reg_reg[2] ),
+        .I2(\Use_UART.tdo_reg_reg[2]_0 ),
+        .I3(Q),
+        .O(D));
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM[2].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(S_AXI_WDATA),
+        .Q(Data_Out));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9_94
+   (D,
+    CI,
+    S_AXI_WDATA,
+    Addr,
+    S_AXI_ACLK,
+    \Use_UART.tdo_reg_reg[3] ,
+    \Use_UART.tdo_reg_reg[3]_0 ,
+    Q);
+  output [0:0]D;
+  input CI;
+  input [0:0]S_AXI_WDATA;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+  input \Use_UART.tdo_reg_reg[3] ;
+  input \Use_UART.tdo_reg_reg[3]_0 ;
+  input [0:0]Q;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire [0:0]D;
+  wire [3:3]Data_Out;
+  wire [0:0]Q;
+  wire S_AXI_ACLK;
+  wire [0:0]S_AXI_WDATA;
+  wire \Use_UART.tdo_reg_reg[3] ;
+  wire \Use_UART.tdo_reg_reg[3]_0 ;
+
+  LUT4 #(
+    .INIT(16'h8F88)) 
+    \Use_UART.tdo_reg[3]_i_1 
+       (.I0(Data_Out),
+        .I1(\Use_UART.tdo_reg_reg[3] ),
+        .I2(\Use_UART.tdo_reg_reg[3]_0 ),
+        .I3(Q),
+        .O(D));
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM[3].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(S_AXI_WDATA),
+        .Q(Data_Out));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9_95
+   (\S_AXI_WDATA[3] ,
+    CI,
+    S_AXI_WDATA,
+    Addr,
+    S_AXI_ACLK);
+  output [0:0]\S_AXI_WDATA[3] ;
+  input CI;
+  input [0:0]S_AXI_WDATA;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire S_AXI_ACLK;
+  wire [0:0]S_AXI_WDATA;
+  wire [0:0]\S_AXI_WDATA[3] ;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM[4].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(S_AXI_WDATA),
+        .Q(\S_AXI_WDATA[3] ));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9_96
+   (\S_AXI_WDATA[2] ,
+    CI,
+    S_AXI_WDATA,
+    Addr,
+    S_AXI_ACLK);
+  output [0:0]\S_AXI_WDATA[2] ;
+  input CI;
+  input [0:0]S_AXI_WDATA;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire S_AXI_ACLK;
+  wire [0:0]S_AXI_WDATA;
+  wire [0:0]\S_AXI_WDATA[2] ;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM[5].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(S_AXI_WDATA),
+        .Q(\S_AXI_WDATA[2] ));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9_97
+   (Data_Out,
+    CI,
+    S_AXI_WDATA,
+    Addr,
+    S_AXI_ACLK);
+  output [0:0]Data_Out;
+  input CI;
+  input [0:0]S_AXI_WDATA;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire [0:0]Data_Out;
+  wire S_AXI_ACLK;
+  wire [0:0]S_AXI_WDATA;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM[6].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(S_AXI_WDATA),
+        .Q(Data_Out));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
+module mcu_mdm_1_0_MB_SRL16E__parameterized9_98
+   (D,
+    CI,
+    S_AXI_WDATA,
+    Addr,
+    S_AXI_ACLK,
+    Q,
+    \Use_UART.tdo_reg_reg[7] ,
+    \Use_UART.tdo_reg_reg[7]_0 ,
+    \Use_UART.tdo_reg_reg[7]_1 ,
+    \Use_UART.tdo_reg_reg[7]_2 );
+  output [0:0]D;
+  input CI;
+  input [0:0]S_AXI_WDATA;
+  input [0:3]Addr;
+  input S_AXI_ACLK;
+  input [0:0]Q;
+  input \Use_UART.tdo_reg_reg[7] ;
+  input \Use_UART.tdo_reg_reg[7]_0 ;
+  input \Use_UART.tdo_reg_reg[7]_1 ;
+  input \Use_UART.tdo_reg_reg[7]_2 ;
+
+  wire [0:3]Addr;
+  wire CI;
+  wire [0:0]D;
+  wire [7:7]Data_Out;
+  wire [0:0]Q;
+  wire S_AXI_ACLK;
+  wire [0:0]S_AXI_WDATA;
+  wire \Use_UART.tdo_reg_reg[7] ;
+  wire \Use_UART.tdo_reg_reg[7]_0 ;
+  wire \Use_UART.tdo_reg_reg[7]_1 ;
+  wire \Use_UART.tdo_reg_reg[7]_2 ;
+
+  LUT6 #(
+    .INIT(64'hFFFFF222F222F222)) 
+    \Use_UART.tdo_reg[7]_i_1 
+       (.I0(Q),
+        .I1(\Use_UART.tdo_reg_reg[7] ),
+        .I2(\Use_UART.tdo_reg_reg[7]_0 ),
+        .I3(\Use_UART.tdo_reg_reg[7]_1 ),
+        .I4(Data_Out),
+        .I5(\Use_UART.tdo_reg_reg[7]_2 ),
+        .O(D));
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM " *) 
+  (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_UART.TX_FIFO_I/FIFO_RAM[7].D16.SRL16E_I/Use_unisim.MB_SRL16E_I1 " *) 
+  SRL16E #(
+    .INIT(16'h0000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Use_unisim.MB_SRL16E_I1 
+       (.A0(Addr[0]),
+        .A1(Addr[1]),
+        .A2(Addr[2]),
+        .A3(Addr[3]),
+        .CE(CI),
+        .CLK(S_AXI_ACLK),
+        .D(S_AXI_WDATA),
+        .Q(Data_Out));
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
@@ -11233,7 +13320,7 @@ module mcu_mdm_1_0_MB_SRLC32E_49
   wire [0:0]M_AXI_RDATA;
   wire [0:0]Q;
   wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_i_1__33_n_0 ;
+  wire \Using_FPGA.Native_i_1__36_n_0 ;
   wire \Using_FPGA.Native_n_1 ;
   wire lmb_rd_idle;
   wire lmb_ready_vec_q;
@@ -11248,21 +13335,180 @@ module mcu_mdm_1_0_MB_SRLC32E_49
        (.A(A),
         .CE(CI),
         .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__33_n_0 ),
+        .D(\Using_FPGA.Native_i_1__36_n_0 ),
         .Q(\Using_FPGA.Native_0 ),
         .Q31(\Using_FPGA.Native_n_1 ));
   LUT4 #(
     .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__33 
+    \Using_FPGA.Native_i_1__36 
        (.I0(Q),
         .I1(lmb_ready_vec_q),
         .I2(lmb_rd_idle),
         .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__33_n_0 ));
+        .O(\Using_FPGA.Native_i_1__36_n_0 ));
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
 module mcu_mdm_1_0_MB_SRLC32E_50
+   (\Using_FPGA.Native_0 ,
+    CI,
+    A,
+    M_AXI_ACLK,
+    Q,
+    lmb_ready_vec_q,
+    lmb_rd_idle,
+    M_AXI_RDATA);
+  output [0:0]\Using_FPGA.Native_0 ;
+  input CI;
+  input [4:0]A;
+  input M_AXI_ACLK;
+  input [0:0]Q;
+  input lmb_ready_vec_q;
+  input lmb_rd_idle;
+  input [0:0]M_AXI_RDATA;
+
+  wire [4:0]A;
+  wire CI;
+  wire M_AXI_ACLK;
+  wire [0:0]M_AXI_RDATA;
+  wire [0:0]Q;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_i_1__26_n_0 ;
+  wire \Using_FPGA.Native_n_1 ;
+  wire lmb_rd_idle;
+  wire lmb_ready_vec_q;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[10].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  SRLC32E #(
+    .INIT(32'h00000000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.A(A),
+        .CE(CI),
+        .CLK(M_AXI_ACLK),
+        .D(\Using_FPGA.Native_i_1__26_n_0 ),
+        .Q(\Using_FPGA.Native_0 ),
+        .Q31(\Using_FPGA.Native_n_1 ));
+  LUT4 #(
+    .INIT(16'hFB08)) 
+    \Using_FPGA.Native_i_1__26 
+       (.I0(Q),
+        .I1(lmb_ready_vec_q),
+        .I2(lmb_rd_idle),
+        .I3(M_AXI_RDATA),
+        .O(\Using_FPGA.Native_i_1__26_n_0 ));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRLC32E" *) 
+module mcu_mdm_1_0_MB_SRLC32E_51
+   (\Using_FPGA.Native_0 ,
+    CI,
+    A,
+    M_AXI_ACLK,
+    Q,
+    lmb_ready_vec_q,
+    lmb_rd_idle,
+    M_AXI_RDATA);
+  output [0:0]\Using_FPGA.Native_0 ;
+  input CI;
+  input [4:0]A;
+  input M_AXI_ACLK;
+  input [0:0]Q;
+  input lmb_ready_vec_q;
+  input lmb_rd_idle;
+  input [0:0]M_AXI_RDATA;
+
+  wire [4:0]A;
+  wire CI;
+  wire M_AXI_ACLK;
+  wire [0:0]M_AXI_RDATA;
+  wire [0:0]Q;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_i_1__25_n_0 ;
+  wire \Using_FPGA.Native_n_1 ;
+  wire lmb_rd_idle;
+  wire lmb_ready_vec_q;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[11].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  SRLC32E #(
+    .INIT(32'h00000000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.A(A),
+        .CE(CI),
+        .CLK(M_AXI_ACLK),
+        .D(\Using_FPGA.Native_i_1__25_n_0 ),
+        .Q(\Using_FPGA.Native_0 ),
+        .Q31(\Using_FPGA.Native_n_1 ));
+  LUT4 #(
+    .INIT(16'hFB08)) 
+    \Using_FPGA.Native_i_1__25 
+       (.I0(Q),
+        .I1(lmb_ready_vec_q),
+        .I2(lmb_rd_idle),
+        .I3(M_AXI_RDATA),
+        .O(\Using_FPGA.Native_i_1__25_n_0 ));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRLC32E" *) 
+module mcu_mdm_1_0_MB_SRLC32E_52
+   (\Using_FPGA.Native_0 ,
+    CI,
+    A,
+    M_AXI_ACLK,
+    Q,
+    lmb_ready_vec_q,
+    lmb_rd_idle,
+    M_AXI_RDATA);
+  output [0:0]\Using_FPGA.Native_0 ;
+  input CI;
+  input [4:0]A;
+  input M_AXI_ACLK;
+  input [0:0]Q;
+  input lmb_ready_vec_q;
+  input lmb_rd_idle;
+  input [0:0]M_AXI_RDATA;
+
+  wire [4:0]A;
+  wire CI;
+  wire M_AXI_ACLK;
+  wire [0:0]M_AXI_RDATA;
+  wire [0:0]Q;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_i_1__24_n_0 ;
+  wire \Using_FPGA.Native_n_1 ;
+  wire lmb_rd_idle;
+  wire lmb_ready_vec_q;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[12].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  SRLC32E #(
+    .INIT(32'h00000000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.A(A),
+        .CE(CI),
+        .CLK(M_AXI_ACLK),
+        .D(\Using_FPGA.Native_i_1__24_n_0 ),
+        .Q(\Using_FPGA.Native_0 ),
+        .Q31(\Using_FPGA.Native_n_1 ));
+  LUT4 #(
+    .INIT(16'hFB08)) 
+    \Using_FPGA.Native_i_1__24 
+       (.I0(Q),
+        .I1(lmb_ready_vec_q),
+        .I2(lmb_rd_idle),
+        .I3(M_AXI_RDATA),
+        .O(\Using_FPGA.Native_i_1__24_n_0 ));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRLC32E" *) 
+module mcu_mdm_1_0_MB_SRLC32E_53
    (\Using_FPGA.Native_0 ,
     CI,
     A,
@@ -11293,7 +13539,7 @@ module mcu_mdm_1_0_MB_SRLC32E_50
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[10].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[13].D32.SRLC32E_I/Using_FPGA.Native " *) 
   SRLC32E #(
     .INIT(32'h00000000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -11315,7 +13561,7 @@ module mcu_mdm_1_0_MB_SRLC32E_50
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_51
+module mcu_mdm_1_0_MB_SRLC32E_54
    (\Using_FPGA.Native_0 ,
     CI,
     A,
@@ -11346,7 +13592,7 @@ module mcu_mdm_1_0_MB_SRLC32E_51
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[11].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[14].D32.SRLC32E_I/Using_FPGA.Native " *) 
   SRLC32E #(
     .INIT(32'h00000000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -11368,7 +13614,7 @@ module mcu_mdm_1_0_MB_SRLC32E_51
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_52
+module mcu_mdm_1_0_MB_SRLC32E_55
    (\Using_FPGA.Native_0 ,
     CI,
     A,
@@ -11399,7 +13645,7 @@ module mcu_mdm_1_0_MB_SRLC32E_52
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[12].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[15].D32.SRLC32E_I/Using_FPGA.Native " *) 
   SRLC32E #(
     .INIT(32'h00000000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -11421,7 +13667,7 @@ module mcu_mdm_1_0_MB_SRLC32E_52
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_53
+module mcu_mdm_1_0_MB_SRLC32E_56
    (\Using_FPGA.Native_0 ,
     CI,
     A,
@@ -11452,7 +13698,7 @@ module mcu_mdm_1_0_MB_SRLC32E_53
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[13].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[16].D32.SRLC32E_I/Using_FPGA.Native " *) 
   SRLC32E #(
     .INIT(32'h00000000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -11474,7 +13720,7 @@ module mcu_mdm_1_0_MB_SRLC32E_53
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_54
+module mcu_mdm_1_0_MB_SRLC32E_57
    (\Using_FPGA.Native_0 ,
     CI,
     A,
@@ -11505,7 +13751,7 @@ module mcu_mdm_1_0_MB_SRLC32E_54
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[14].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[17].D32.SRLC32E_I/Using_FPGA.Native " *) 
   SRLC32E #(
     .INIT(32'h00000000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -11527,7 +13773,7 @@ module mcu_mdm_1_0_MB_SRLC32E_54
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_55
+module mcu_mdm_1_0_MB_SRLC32E_58
    (\Using_FPGA.Native_0 ,
     CI,
     A,
@@ -11558,7 +13804,7 @@ module mcu_mdm_1_0_MB_SRLC32E_55
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[15].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[18].D32.SRLC32E_I/Using_FPGA.Native " *) 
   SRLC32E #(
     .INIT(32'h00000000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -11580,7 +13826,7 @@ module mcu_mdm_1_0_MB_SRLC32E_55
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_56
+module mcu_mdm_1_0_MB_SRLC32E_59
    (\Using_FPGA.Native_0 ,
     CI,
     A,
@@ -11611,7 +13857,7 @@ module mcu_mdm_1_0_MB_SRLC32E_56
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[16].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[19].D32.SRLC32E_I/Using_FPGA.Native " *) 
   SRLC32E #(
     .INIT(32'h00000000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -11633,7 +13879,60 @@ module mcu_mdm_1_0_MB_SRLC32E_56
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_57
+module mcu_mdm_1_0_MB_SRLC32E_60
+   (\Using_FPGA.Native_0 ,
+    CI,
+    A,
+    M_AXI_ACLK,
+    Q,
+    lmb_ready_vec_q,
+    lmb_rd_idle,
+    M_AXI_RDATA);
+  output [0:0]\Using_FPGA.Native_0 ;
+  input CI;
+  input [4:0]A;
+  input M_AXI_ACLK;
+  input [0:0]Q;
+  input lmb_ready_vec_q;
+  input lmb_rd_idle;
+  input [0:0]M_AXI_RDATA;
+
+  wire [4:0]A;
+  wire CI;
+  wire M_AXI_ACLK;
+  wire [0:0]M_AXI_RDATA;
+  wire [0:0]Q;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_i_1__35_n_0 ;
+  wire \Using_FPGA.Native_n_1 ;
+  wire lmb_rd_idle;
+  wire lmb_ready_vec_q;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[1].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  SRLC32E #(
+    .INIT(32'h00000000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.A(A),
+        .CE(CI),
+        .CLK(M_AXI_ACLK),
+        .D(\Using_FPGA.Native_i_1__35_n_0 ),
+        .Q(\Using_FPGA.Native_0 ),
+        .Q31(\Using_FPGA.Native_n_1 ));
+  LUT4 #(
+    .INIT(16'hFB08)) 
+    \Using_FPGA.Native_i_1__35 
+       (.I0(Q),
+        .I1(lmb_ready_vec_q),
+        .I2(lmb_rd_idle),
+        .I3(M_AXI_RDATA),
+        .O(\Using_FPGA.Native_i_1__35_n_0 ));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRLC32E" *) 
+module mcu_mdm_1_0_MB_SRLC32E_61
    (\Using_FPGA.Native_0 ,
     CI,
     A,
@@ -11664,7 +13963,7 @@ module mcu_mdm_1_0_MB_SRLC32E_57
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[17].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[20].D32.SRLC32E_I/Using_FPGA.Native " *) 
   SRLC32E #(
     .INIT(32'h00000000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -11686,7 +13985,7 @@ module mcu_mdm_1_0_MB_SRLC32E_57
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_58
+module mcu_mdm_1_0_MB_SRLC32E_62
    (\Using_FPGA.Native_0 ,
     CI,
     A,
@@ -11717,7 +14016,7 @@ module mcu_mdm_1_0_MB_SRLC32E_58
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[18].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[21].D32.SRLC32E_I/Using_FPGA.Native " *) 
   SRLC32E #(
     .INIT(32'h00000000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -11739,7 +14038,7 @@ module mcu_mdm_1_0_MB_SRLC32E_58
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_59
+module mcu_mdm_1_0_MB_SRLC32E_63
    (\Using_FPGA.Native_0 ,
     CI,
     A,
@@ -11770,7 +14069,7 @@ module mcu_mdm_1_0_MB_SRLC32E_59
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[19].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[22].D32.SRLC32E_I/Using_FPGA.Native " *) 
   SRLC32E #(
     .INIT(32'h00000000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -11792,60 +14091,7 @@ module mcu_mdm_1_0_MB_SRLC32E_59
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_60
-   (\Using_FPGA.Native_0 ,
-    CI,
-    A,
-    M_AXI_ACLK,
-    Q,
-    lmb_ready_vec_q,
-    lmb_rd_idle,
-    M_AXI_RDATA);
-  output [0:0]\Using_FPGA.Native_0 ;
-  input CI;
-  input [4:0]A;
-  input M_AXI_ACLK;
-  input [0:0]Q;
-  input lmb_ready_vec_q;
-  input lmb_rd_idle;
-  input [0:0]M_AXI_RDATA;
-
-  wire [4:0]A;
-  wire CI;
-  wire M_AXI_ACLK;
-  wire [0:0]M_AXI_RDATA;
-  wire [0:0]Q;
-  wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_i_1__32_n_0 ;
-  wire \Using_FPGA.Native_n_1 ;
-  wire lmb_rd_idle;
-  wire lmb_ready_vec_q;
-
-  (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[1].D32.SRLC32E_I/Using_FPGA.Native " *) 
-  SRLC32E #(
-    .INIT(32'h00000000),
-    .IS_CLK_INVERTED(1'b0)) 
-    \Using_FPGA.Native 
-       (.A(A),
-        .CE(CI),
-        .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__32_n_0 ),
-        .Q(\Using_FPGA.Native_0 ),
-        .Q31(\Using_FPGA.Native_n_1 ));
-  LUT4 #(
-    .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__32 
-       (.I0(Q),
-        .I1(lmb_ready_vec_q),
-        .I2(lmb_rd_idle),
-        .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__32_n_0 ));
-endmodule
-
-(* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_61
+module mcu_mdm_1_0_MB_SRLC32E_64
    (\Using_FPGA.Native_0 ,
     CI,
     A,
@@ -11876,7 +14122,7 @@ module mcu_mdm_1_0_MB_SRLC32E_61
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[20].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[23].D32.SRLC32E_I/Using_FPGA.Native " *) 
   SRLC32E #(
     .INIT(32'h00000000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -11895,165 +14141,6 @@ module mcu_mdm_1_0_MB_SRLC32E_61
         .I2(lmb_rd_idle),
         .I3(M_AXI_RDATA),
         .O(\Using_FPGA.Native_i_1__13_n_0 ));
-endmodule
-
-(* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_62
-   (\Using_FPGA.Native_0 ,
-    CI,
-    A,
-    M_AXI_ACLK,
-    Q,
-    lmb_ready_vec_q,
-    lmb_rd_idle,
-    M_AXI_RDATA);
-  output [0:0]\Using_FPGA.Native_0 ;
-  input CI;
-  input [4:0]A;
-  input M_AXI_ACLK;
-  input [0:0]Q;
-  input lmb_ready_vec_q;
-  input lmb_rd_idle;
-  input [0:0]M_AXI_RDATA;
-
-  wire [4:0]A;
-  wire CI;
-  wire M_AXI_ACLK;
-  wire [0:0]M_AXI_RDATA;
-  wire [0:0]Q;
-  wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_i_1__12_n_0 ;
-  wire \Using_FPGA.Native_n_1 ;
-  wire lmb_rd_idle;
-  wire lmb_ready_vec_q;
-
-  (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[21].D32.SRLC32E_I/Using_FPGA.Native " *) 
-  SRLC32E #(
-    .INIT(32'h00000000),
-    .IS_CLK_INVERTED(1'b0)) 
-    \Using_FPGA.Native 
-       (.A(A),
-        .CE(CI),
-        .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__12_n_0 ),
-        .Q(\Using_FPGA.Native_0 ),
-        .Q31(\Using_FPGA.Native_n_1 ));
-  LUT4 #(
-    .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__12 
-       (.I0(Q),
-        .I1(lmb_ready_vec_q),
-        .I2(lmb_rd_idle),
-        .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__12_n_0 ));
-endmodule
-
-(* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_63
-   (\Using_FPGA.Native_0 ,
-    CI,
-    A,
-    M_AXI_ACLK,
-    Q,
-    lmb_ready_vec_q,
-    lmb_rd_idle,
-    M_AXI_RDATA);
-  output [0:0]\Using_FPGA.Native_0 ;
-  input CI;
-  input [4:0]A;
-  input M_AXI_ACLK;
-  input [0:0]Q;
-  input lmb_ready_vec_q;
-  input lmb_rd_idle;
-  input [0:0]M_AXI_RDATA;
-
-  wire [4:0]A;
-  wire CI;
-  wire M_AXI_ACLK;
-  wire [0:0]M_AXI_RDATA;
-  wire [0:0]Q;
-  wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_i_1__11_n_0 ;
-  wire \Using_FPGA.Native_n_1 ;
-  wire lmb_rd_idle;
-  wire lmb_ready_vec_q;
-
-  (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[22].D32.SRLC32E_I/Using_FPGA.Native " *) 
-  SRLC32E #(
-    .INIT(32'h00000000),
-    .IS_CLK_INVERTED(1'b0)) 
-    \Using_FPGA.Native 
-       (.A(A),
-        .CE(CI),
-        .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__11_n_0 ),
-        .Q(\Using_FPGA.Native_0 ),
-        .Q31(\Using_FPGA.Native_n_1 ));
-  LUT4 #(
-    .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__11 
-       (.I0(Q),
-        .I1(lmb_ready_vec_q),
-        .I2(lmb_rd_idle),
-        .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__11_n_0 ));
-endmodule
-
-(* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_64
-   (\Using_FPGA.Native_0 ,
-    CI,
-    A,
-    M_AXI_ACLK,
-    Q,
-    lmb_ready_vec_q,
-    lmb_rd_idle,
-    M_AXI_RDATA);
-  output [0:0]\Using_FPGA.Native_0 ;
-  input CI;
-  input [4:0]A;
-  input M_AXI_ACLK;
-  input [0:0]Q;
-  input lmb_ready_vec_q;
-  input lmb_rd_idle;
-  input [0:0]M_AXI_RDATA;
-
-  wire [4:0]A;
-  wire CI;
-  wire M_AXI_ACLK;
-  wire [0:0]M_AXI_RDATA;
-  wire [0:0]Q;
-  wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_i_1__10_n_0 ;
-  wire \Using_FPGA.Native_n_1 ;
-  wire lmb_rd_idle;
-  wire lmb_ready_vec_q;
-
-  (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[23].D32.SRLC32E_I/Using_FPGA.Native " *) 
-  SRLC32E #(
-    .INIT(32'h00000000),
-    .IS_CLK_INVERTED(1'b0)) 
-    \Using_FPGA.Native 
-       (.A(A),
-        .CE(CI),
-        .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__10_n_0 ),
-        .Q(\Using_FPGA.Native_0 ),
-        .Q31(\Using_FPGA.Native_n_1 ));
-  LUT4 #(
-    .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__10 
-       (.I0(Q),
-        .I1(lmb_ready_vec_q),
-        .I2(lmb_rd_idle),
-        .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__10_n_0 ));
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
@@ -12096,7 +14183,7 @@ module mcu_mdm_1_0_MB_SRLC32E_65
   wire \Use_Dbg_Mem_Access.output_reg[24]_1 ;
   wire \Use_Dbg_Mem_Access.output_reg[24]_2 ;
   wire \Use_Dbg_Mem_Access.output_reg[24]_3 ;
-  wire \Using_FPGA.Native_i_1__9_n_0 ;
+  wire \Using_FPGA.Native_i_1__12_n_0 ;
   wire \Using_FPGA.Native_n_1 ;
   wire lmb_rd_idle;
   wire lmb_ready_vec_q;
@@ -12122,17 +14209,17 @@ module mcu_mdm_1_0_MB_SRLC32E_65
        (.A(A),
         .CE(CI),
         .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__9_n_0 ),
+        .D(\Using_FPGA.Native_i_1__12_n_0 ),
         .Q(master_data_out),
         .Q31(\Using_FPGA.Native_n_1 ));
   LUT4 #(
     .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__9 
+    \Using_FPGA.Native_i_1__12 
        (.I0(Q),
         .I1(lmb_ready_vec_q),
         .I2(lmb_rd_idle),
         .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__9_n_0 ));
+        .O(\Using_FPGA.Native_i_1__12_n_0 ));
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
@@ -12172,7 +14259,7 @@ module mcu_mdm_1_0_MB_SRLC32E_66
   wire \Use_Dbg_Mem_Access.output_reg[25]_0 ;
   wire \Use_Dbg_Mem_Access.output_reg[25]_1 ;
   wire \Use_Dbg_Mem_Access.output_reg[25]_2 ;
-  wire \Using_FPGA.Native_i_1__8_n_0 ;
+  wire \Using_FPGA.Native_i_1__11_n_0 ;
   wire \Using_FPGA.Native_n_1 ;
   wire lmb_rd_idle;
   wire lmb_ready_vec_q;
@@ -12198,17 +14285,17 @@ module mcu_mdm_1_0_MB_SRLC32E_66
        (.A(A),
         .CE(CI),
         .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__8_n_0 ),
+        .D(\Using_FPGA.Native_i_1__11_n_0 ),
         .Q(master_data_out),
         .Q31(\Using_FPGA.Native_n_1 ));
   LUT4 #(
     .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__8 
+    \Using_FPGA.Native_i_1__11 
        (.I0(Q),
         .I1(lmb_ready_vec_q),
         .I2(lmb_rd_idle),
         .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__8_n_0 ));
+        .O(\Using_FPGA.Native_i_1__11_n_0 ));
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
@@ -12250,7 +14337,7 @@ module mcu_mdm_1_0_MB_SRLC32E_67
   wire \Use_Dbg_Mem_Access.output_reg[26]_0 ;
   wire \Use_Dbg_Mem_Access.output_reg[26]_1 ;
   wire \Use_Dbg_Mem_Access.output_reg[26]_2 ;
-  wire \Using_FPGA.Native_i_1__7_n_0 ;
+  wire \Using_FPGA.Native_i_1__10_n_0 ;
   wire \Using_FPGA.Native_n_1 ;
   wire lmb_rd_idle;
   wire lmb_ready_vec_q;
@@ -12277,17 +14364,17 @@ module mcu_mdm_1_0_MB_SRLC32E_67
        (.A(A),
         .CE(CI),
         .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__7_n_0 ),
+        .D(\Using_FPGA.Native_i_1__10_n_0 ),
         .Q(master_data_out),
         .Q31(\Using_FPGA.Native_n_1 ));
   LUT4 #(
     .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__7 
+    \Using_FPGA.Native_i_1__10 
        (.I0(Q),
         .I1(lmb_ready_vec_q),
         .I2(lmb_rd_idle),
         .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__7_n_0 ));
+        .O(\Using_FPGA.Native_i_1__10_n_0 ));
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
@@ -12315,7 +14402,7 @@ module mcu_mdm_1_0_MB_SRLC32E_68
   wire [0:0]M_AXI_RDATA;
   wire [0:0]Q;
   wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_i_1__6_n_0 ;
+  wire \Using_FPGA.Native_i_1__9_n_0 ;
   wire \Using_FPGA.Native_n_1 ;
   wire lmb_rd_idle;
   wire lmb_ready_vec_q;
@@ -12330,17 +14417,17 @@ module mcu_mdm_1_0_MB_SRLC32E_68
        (.A(A),
         .CE(CI),
         .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__6_n_0 ),
+        .D(\Using_FPGA.Native_i_1__9_n_0 ),
         .Q(\Using_FPGA.Native_0 ),
         .Q31(\Using_FPGA.Native_n_1 ));
   LUT4 #(
     .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__6 
+    \Using_FPGA.Native_i_1__9 
        (.I0(Q),
         .I1(lmb_ready_vec_q),
         .I2(lmb_rd_idle),
         .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__6_n_0 ));
+        .O(\Using_FPGA.Native_i_1__9_n_0 ));
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
@@ -12382,7 +14469,7 @@ module mcu_mdm_1_0_MB_SRLC32E_69
   wire \Use_Dbg_Mem_Access.output_reg[28]_0 ;
   wire \Use_Dbg_Mem_Access.output_reg[28]_1 ;
   wire \Use_Dbg_Mem_Access.output_reg[28]_2 ;
-  wire \Using_FPGA.Native_i_1__5_n_0 ;
+  wire \Using_FPGA.Native_i_1__8_n_0 ;
   wire \Using_FPGA.Native_n_1 ;
   wire lmb_rd_idle;
   wire [0:0]lmb_rd_resp;
@@ -12409,17 +14496,17 @@ module mcu_mdm_1_0_MB_SRLC32E_69
        (.A(A),
         .CE(CI),
         .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__5_n_0 ),
+        .D(\Using_FPGA.Native_i_1__8_n_0 ),
         .Q(master_data_out),
         .Q31(\Using_FPGA.Native_n_1 ));
   LUT4 #(
     .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__5 
+    \Using_FPGA.Native_i_1__8 
        (.I0(Q),
         .I1(lmb_ready_vec_q),
         .I2(lmb_rd_idle),
         .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__5_n_0 ));
+        .O(\Using_FPGA.Native_i_1__8_n_0 ));
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
@@ -12447,7 +14534,7 @@ module mcu_mdm_1_0_MB_SRLC32E_70
   wire [0:0]M_AXI_RDATA;
   wire [0:0]Q;
   wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_i_1__4_n_0 ;
+  wire \Using_FPGA.Native_i_1__7_n_0 ;
   wire \Using_FPGA.Native_n_1 ;
   wire lmb_rd_idle;
   wire lmb_ready_vec_q;
@@ -12462,21 +14549,286 @@ module mcu_mdm_1_0_MB_SRLC32E_70
        (.A(A),
         .CE(CI),
         .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__4_n_0 ),
+        .D(\Using_FPGA.Native_i_1__7_n_0 ),
         .Q(\Using_FPGA.Native_0 ),
         .Q31(\Using_FPGA.Native_n_1 ));
   LUT4 #(
     .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__4 
+    \Using_FPGA.Native_i_1__7 
        (.I0(Q),
         .I1(lmb_ready_vec_q),
         .I2(lmb_rd_idle),
         .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__4_n_0 ));
+        .O(\Using_FPGA.Native_i_1__7_n_0 ));
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
 module mcu_mdm_1_0_MB_SRLC32E_71
+   (\Using_FPGA.Native_0 ,
+    CI,
+    A,
+    M_AXI_ACLK,
+    Q,
+    lmb_ready_vec_q,
+    lmb_rd_idle,
+    M_AXI_RDATA);
+  output [0:0]\Using_FPGA.Native_0 ;
+  input CI;
+  input [4:0]A;
+  input M_AXI_ACLK;
+  input [0:0]Q;
+  input lmb_ready_vec_q;
+  input lmb_rd_idle;
+  input [0:0]M_AXI_RDATA;
+
+  wire [4:0]A;
+  wire CI;
+  wire M_AXI_ACLK;
+  wire [0:0]M_AXI_RDATA;
+  wire [0:0]Q;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_i_1__34_n_0 ;
+  wire \Using_FPGA.Native_n_1 ;
+  wire lmb_rd_idle;
+  wire lmb_ready_vec_q;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[2].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  SRLC32E #(
+    .INIT(32'h00000000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.A(A),
+        .CE(CI),
+        .CLK(M_AXI_ACLK),
+        .D(\Using_FPGA.Native_i_1__34_n_0 ),
+        .Q(\Using_FPGA.Native_0 ),
+        .Q31(\Using_FPGA.Native_n_1 ));
+  LUT4 #(
+    .INIT(16'hFB08)) 
+    \Using_FPGA.Native_i_1__34 
+       (.I0(Q),
+        .I1(lmb_ready_vec_q),
+        .I2(lmb_rd_idle),
+        .I3(M_AXI_RDATA),
+        .O(\Using_FPGA.Native_i_1__34_n_0 ));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRLC32E" *) 
+module mcu_mdm_1_0_MB_SRLC32E_72
+   (\Using_FPGA.Native_0 ,
+    CI,
+    A,
+    M_AXI_ACLK,
+    Q,
+    lmb_ready_vec_q,
+    lmb_rd_idle,
+    M_AXI_RDATA);
+  output [0:0]\Using_FPGA.Native_0 ;
+  input CI;
+  input [4:0]A;
+  input M_AXI_ACLK;
+  input [0:0]Q;
+  input lmb_ready_vec_q;
+  input lmb_rd_idle;
+  input [0:0]M_AXI_RDATA;
+
+  wire [4:0]A;
+  wire CI;
+  wire M_AXI_ACLK;
+  wire [0:0]M_AXI_RDATA;
+  wire [0:0]Q;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_i_1__6_n_0 ;
+  wire \Using_FPGA.Native_n_1 ;
+  wire lmb_rd_idle;
+  wire lmb_ready_vec_q;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[30].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  SRLC32E #(
+    .INIT(32'h00000000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.A(A),
+        .CE(CI),
+        .CLK(M_AXI_ACLK),
+        .D(\Using_FPGA.Native_i_1__6_n_0 ),
+        .Q(\Using_FPGA.Native_0 ),
+        .Q31(\Using_FPGA.Native_n_1 ));
+  LUT4 #(
+    .INIT(16'hFB08)) 
+    \Using_FPGA.Native_i_1__6 
+       (.I0(Q),
+        .I1(lmb_ready_vec_q),
+        .I2(lmb_rd_idle),
+        .I3(M_AXI_RDATA),
+        .O(\Using_FPGA.Native_i_1__6_n_0 ));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRLC32E" *) 
+module mcu_mdm_1_0_MB_SRLC32E_73
+   (\Using_FPGA.Native_0 ,
+    CI,
+    A,
+    M_AXI_ACLK,
+    Q,
+    lmb_ready_vec_q,
+    lmb_rd_idle,
+    M_AXI_RDATA);
+  output [0:0]\Using_FPGA.Native_0 ;
+  input CI;
+  input [4:0]A;
+  input M_AXI_ACLK;
+  input [0:0]Q;
+  input lmb_ready_vec_q;
+  input lmb_rd_idle;
+  input [0:0]M_AXI_RDATA;
+
+  wire [4:0]A;
+  wire CI;
+  wire M_AXI_ACLK;
+  wire [0:0]M_AXI_RDATA;
+  wire [0:0]Q;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_i_1__5_n_0 ;
+  wire \Using_FPGA.Native_n_1 ;
+  wire lmb_rd_idle;
+  wire lmb_ready_vec_q;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[31].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  SRLC32E #(
+    .INIT(32'h00000000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.A(A),
+        .CE(CI),
+        .CLK(M_AXI_ACLK),
+        .D(\Using_FPGA.Native_i_1__5_n_0 ),
+        .Q(\Using_FPGA.Native_0 ),
+        .Q31(\Using_FPGA.Native_n_1 ));
+  LUT4 #(
+    .INIT(16'hFB08)) 
+    \Using_FPGA.Native_i_1__5 
+       (.I0(Q),
+        .I1(lmb_ready_vec_q),
+        .I2(lmb_rd_idle),
+        .I3(M_AXI_RDATA),
+        .O(\Using_FPGA.Native_i_1__5_n_0 ));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRLC32E" *) 
+module mcu_mdm_1_0_MB_SRLC32E_74
+   (\Using_FPGA.Native_0 ,
+    CI,
+    A,
+    M_AXI_ACLK,
+    Q,
+    lmb_ready_vec_q,
+    lmb_rd_idle,
+    M_AXI_RDATA);
+  output [0:0]\Using_FPGA.Native_0 ;
+  input CI;
+  input [4:0]A;
+  input M_AXI_ACLK;
+  input [0:0]Q;
+  input lmb_ready_vec_q;
+  input lmb_rd_idle;
+  input [0:0]M_AXI_RDATA;
+
+  wire [4:0]A;
+  wire CI;
+  wire M_AXI_ACLK;
+  wire [0:0]M_AXI_RDATA;
+  wire [0:0]Q;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_i_1__33_n_0 ;
+  wire \Using_FPGA.Native_n_1 ;
+  wire lmb_rd_idle;
+  wire lmb_ready_vec_q;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[3].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  SRLC32E #(
+    .INIT(32'h00000000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.A(A),
+        .CE(CI),
+        .CLK(M_AXI_ACLK),
+        .D(\Using_FPGA.Native_i_1__33_n_0 ),
+        .Q(\Using_FPGA.Native_0 ),
+        .Q31(\Using_FPGA.Native_n_1 ));
+  LUT4 #(
+    .INIT(16'hFB08)) 
+    \Using_FPGA.Native_i_1__33 
+       (.I0(Q),
+        .I1(lmb_ready_vec_q),
+        .I2(lmb_rd_idle),
+        .I3(M_AXI_RDATA),
+        .O(\Using_FPGA.Native_i_1__33_n_0 ));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRLC32E" *) 
+module mcu_mdm_1_0_MB_SRLC32E_75
+   (\Using_FPGA.Native_0 ,
+    CI,
+    A,
+    M_AXI_ACLK,
+    Q,
+    lmb_ready_vec_q,
+    lmb_rd_idle,
+    M_AXI_RDATA);
+  output [0:0]\Using_FPGA.Native_0 ;
+  input CI;
+  input [4:0]A;
+  input M_AXI_ACLK;
+  input [0:0]Q;
+  input lmb_ready_vec_q;
+  input lmb_rd_idle;
+  input [0:0]M_AXI_RDATA;
+
+  wire [4:0]A;
+  wire CI;
+  wire M_AXI_ACLK;
+  wire [0:0]M_AXI_RDATA;
+  wire [0:0]Q;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_i_1__32_n_0 ;
+  wire \Using_FPGA.Native_n_1 ;
+  wire lmb_rd_idle;
+  wire lmb_ready_vec_q;
+
+  (* box_type = "PRIMITIVE" *) 
+  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[4].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  SRLC32E #(
+    .INIT(32'h00000000),
+    .IS_CLK_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.A(A),
+        .CE(CI),
+        .CLK(M_AXI_ACLK),
+        .D(\Using_FPGA.Native_i_1__32_n_0 ),
+        .Q(\Using_FPGA.Native_0 ),
+        .Q31(\Using_FPGA.Native_n_1 ));
+  LUT4 #(
+    .INIT(16'hFB08)) 
+    \Using_FPGA.Native_i_1__32 
+       (.I0(Q),
+        .I1(lmb_ready_vec_q),
+        .I2(lmb_rd_idle),
+        .I3(M_AXI_RDATA),
+        .O(\Using_FPGA.Native_i_1__32_n_0 ));
+endmodule
+
+(* ORIG_REF_NAME = "MB_SRLC32E" *) 
+module mcu_mdm_1_0_MB_SRLC32E_76
    (\Using_FPGA.Native_0 ,
     CI,
     A,
@@ -12507,7 +14859,7 @@ module mcu_mdm_1_0_MB_SRLC32E_71
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[2].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[5].D32.SRLC32E_I/Using_FPGA.Native " *) 
   SRLC32E #(
     .INIT(32'h00000000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -12529,113 +14881,7 @@ module mcu_mdm_1_0_MB_SRLC32E_71
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_72
-   (\Using_FPGA.Native_0 ,
-    CI,
-    A,
-    M_AXI_ACLK,
-    Q,
-    lmb_ready_vec_q,
-    lmb_rd_idle,
-    M_AXI_RDATA);
-  output [0:0]\Using_FPGA.Native_0 ;
-  input CI;
-  input [4:0]A;
-  input M_AXI_ACLK;
-  input [0:0]Q;
-  input lmb_ready_vec_q;
-  input lmb_rd_idle;
-  input [0:0]M_AXI_RDATA;
-
-  wire [4:0]A;
-  wire CI;
-  wire M_AXI_ACLK;
-  wire [0:0]M_AXI_RDATA;
-  wire [0:0]Q;
-  wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_i_1__3_n_0 ;
-  wire \Using_FPGA.Native_n_1 ;
-  wire lmb_rd_idle;
-  wire lmb_ready_vec_q;
-
-  (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[30].D32.SRLC32E_I/Using_FPGA.Native " *) 
-  SRLC32E #(
-    .INIT(32'h00000000),
-    .IS_CLK_INVERTED(1'b0)) 
-    \Using_FPGA.Native 
-       (.A(A),
-        .CE(CI),
-        .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__3_n_0 ),
-        .Q(\Using_FPGA.Native_0 ),
-        .Q31(\Using_FPGA.Native_n_1 ));
-  LUT4 #(
-    .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__3 
-       (.I0(Q),
-        .I1(lmb_ready_vec_q),
-        .I2(lmb_rd_idle),
-        .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__3_n_0 ));
-endmodule
-
-(* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_73
-   (\Using_FPGA.Native_0 ,
-    CI,
-    A,
-    M_AXI_ACLK,
-    Q,
-    lmb_ready_vec_q,
-    lmb_rd_idle,
-    M_AXI_RDATA);
-  output [0:0]\Using_FPGA.Native_0 ;
-  input CI;
-  input [4:0]A;
-  input M_AXI_ACLK;
-  input [0:0]Q;
-  input lmb_ready_vec_q;
-  input lmb_rd_idle;
-  input [0:0]M_AXI_RDATA;
-
-  wire [4:0]A;
-  wire CI;
-  wire M_AXI_ACLK;
-  wire [0:0]M_AXI_RDATA;
-  wire [0:0]Q;
-  wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_i_1__2_n_0 ;
-  wire \Using_FPGA.Native_n_1 ;
-  wire lmb_rd_idle;
-  wire lmb_ready_vec_q;
-
-  (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[31].D32.SRLC32E_I/Using_FPGA.Native " *) 
-  SRLC32E #(
-    .INIT(32'h00000000),
-    .IS_CLK_INVERTED(1'b0)) 
-    \Using_FPGA.Native 
-       (.A(A),
-        .CE(CI),
-        .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__2_n_0 ),
-        .Q(\Using_FPGA.Native_0 ),
-        .Q31(\Using_FPGA.Native_n_1 ));
-  LUT4 #(
-    .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__2 
-       (.I0(Q),
-        .I1(lmb_ready_vec_q),
-        .I2(lmb_rd_idle),
-        .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__2_n_0 ));
-endmodule
-
-(* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_74
+module mcu_mdm_1_0_MB_SRLC32E_77
    (\Using_FPGA.Native_0 ,
     CI,
     A,
@@ -12666,7 +14912,7 @@ module mcu_mdm_1_0_MB_SRLC32E_74
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[3].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[6].D32.SRLC32E_I/Using_FPGA.Native " *) 
   SRLC32E #(
     .INIT(32'h00000000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -12688,7 +14934,7 @@ module mcu_mdm_1_0_MB_SRLC32E_74
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_75
+module mcu_mdm_1_0_MB_SRLC32E_78
    (\Using_FPGA.Native_0 ,
     CI,
     A,
@@ -12719,7 +14965,7 @@ module mcu_mdm_1_0_MB_SRLC32E_75
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[4].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[7].D32.SRLC32E_I/Using_FPGA.Native " *) 
   SRLC32E #(
     .INIT(32'h00000000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -12741,7 +14987,7 @@ module mcu_mdm_1_0_MB_SRLC32E_75
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_76
+module mcu_mdm_1_0_MB_SRLC32E_79
    (\Using_FPGA.Native_0 ,
     CI,
     A,
@@ -12772,7 +15018,7 @@ module mcu_mdm_1_0_MB_SRLC32E_76
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[5].D32.SRLC32E_I/Using_FPGA.Native " *) 
+  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[8].D32.SRLC32E_I/Using_FPGA.Native " *) 
   SRLC32E #(
     .INIT(32'h00000000),
     .IS_CLK_INVERTED(1'b0)) 
@@ -12791,165 +15037,6 @@ module mcu_mdm_1_0_MB_SRLC32E_76
         .I2(lmb_rd_idle),
         .I3(M_AXI_RDATA),
         .O(\Using_FPGA.Native_i_1__28_n_0 ));
-endmodule
-
-(* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_77
-   (\Using_FPGA.Native_0 ,
-    CI,
-    A,
-    M_AXI_ACLK,
-    Q,
-    lmb_ready_vec_q,
-    lmb_rd_idle,
-    M_AXI_RDATA);
-  output [0:0]\Using_FPGA.Native_0 ;
-  input CI;
-  input [4:0]A;
-  input M_AXI_ACLK;
-  input [0:0]Q;
-  input lmb_ready_vec_q;
-  input lmb_rd_idle;
-  input [0:0]M_AXI_RDATA;
-
-  wire [4:0]A;
-  wire CI;
-  wire M_AXI_ACLK;
-  wire [0:0]M_AXI_RDATA;
-  wire [0:0]Q;
-  wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_i_1__27_n_0 ;
-  wire \Using_FPGA.Native_n_1 ;
-  wire lmb_rd_idle;
-  wire lmb_ready_vec_q;
-
-  (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[6].D32.SRLC32E_I/Using_FPGA.Native " *) 
-  SRLC32E #(
-    .INIT(32'h00000000),
-    .IS_CLK_INVERTED(1'b0)) 
-    \Using_FPGA.Native 
-       (.A(A),
-        .CE(CI),
-        .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__27_n_0 ),
-        .Q(\Using_FPGA.Native_0 ),
-        .Q31(\Using_FPGA.Native_n_1 ));
-  LUT4 #(
-    .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__27 
-       (.I0(Q),
-        .I1(lmb_ready_vec_q),
-        .I2(lmb_rd_idle),
-        .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__27_n_0 ));
-endmodule
-
-(* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_78
-   (\Using_FPGA.Native_0 ,
-    CI,
-    A,
-    M_AXI_ACLK,
-    Q,
-    lmb_ready_vec_q,
-    lmb_rd_idle,
-    M_AXI_RDATA);
-  output [0:0]\Using_FPGA.Native_0 ;
-  input CI;
-  input [4:0]A;
-  input M_AXI_ACLK;
-  input [0:0]Q;
-  input lmb_ready_vec_q;
-  input lmb_rd_idle;
-  input [0:0]M_AXI_RDATA;
-
-  wire [4:0]A;
-  wire CI;
-  wire M_AXI_ACLK;
-  wire [0:0]M_AXI_RDATA;
-  wire [0:0]Q;
-  wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_i_1__26_n_0 ;
-  wire \Using_FPGA.Native_n_1 ;
-  wire lmb_rd_idle;
-  wire lmb_ready_vec_q;
-
-  (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[7].D32.SRLC32E_I/Using_FPGA.Native " *) 
-  SRLC32E #(
-    .INIT(32'h00000000),
-    .IS_CLK_INVERTED(1'b0)) 
-    \Using_FPGA.Native 
-       (.A(A),
-        .CE(CI),
-        .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__26_n_0 ),
-        .Q(\Using_FPGA.Native_0 ),
-        .Q31(\Using_FPGA.Native_n_1 ));
-  LUT4 #(
-    .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__26 
-       (.I0(Q),
-        .I1(lmb_ready_vec_q),
-        .I2(lmb_rd_idle),
-        .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__26_n_0 ));
-endmodule
-
-(* ORIG_REF_NAME = "MB_SRLC32E" *) 
-module mcu_mdm_1_0_MB_SRLC32E_79
-   (\Using_FPGA.Native_0 ,
-    CI,
-    A,
-    M_AXI_ACLK,
-    Q,
-    lmb_ready_vec_q,
-    lmb_rd_idle,
-    M_AXI_RDATA);
-  output [0:0]\Using_FPGA.Native_0 ;
-  input CI;
-  input [4:0]A;
-  input M_AXI_ACLK;
-  input [0:0]Q;
-  input lmb_ready_vec_q;
-  input lmb_rd_idle;
-  input [0:0]M_AXI_RDATA;
-
-  wire [4:0]A;
-  wire CI;
-  wire M_AXI_ACLK;
-  wire [0:0]M_AXI_RDATA;
-  wire [0:0]Q;
-  wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_i_1__25_n_0 ;
-  wire \Using_FPGA.Native_n_1 ;
-  wire lmb_rd_idle;
-  wire lmb_ready_vec_q;
-
-  (* box_type = "PRIMITIVE" *) 
-  (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
-  (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[8].D32.SRLC32E_I/Using_FPGA.Native " *) 
-  SRLC32E #(
-    .INIT(32'h00000000),
-    .IS_CLK_INVERTED(1'b0)) 
-    \Using_FPGA.Native 
-       (.A(A),
-        .CE(CI),
-        .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__25_n_0 ),
-        .Q(\Using_FPGA.Native_0 ),
-        .Q31(\Using_FPGA.Native_n_1 ));
-  LUT4 #(
-    .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__25 
-       (.I0(Q),
-        .I1(lmb_ready_vec_q),
-        .I2(lmb_rd_idle),
-        .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__25_n_0 ));
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
@@ -13012,7 +15099,7 @@ module mcu_mdm_1_0_MB_SRLC32E_80
   wire [0:0]M_AXI_RDATA;
   wire [0:0]Q;
   wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_i_1__24_n_0 ;
+  wire \Using_FPGA.Native_i_1__27_n_0 ;
   wire \Using_FPGA.Native_n_1 ;
   wire lmb_rd_idle;
   wire lmb_ready_vec_q;
@@ -13027,17 +15114,17 @@ module mcu_mdm_1_0_MB_SRLC32E_80
        (.A(A),
         .CE(CI),
         .CLK(M_AXI_ACLK),
-        .D(\Using_FPGA.Native_i_1__24_n_0 ),
+        .D(\Using_FPGA.Native_i_1__27_n_0 ),
         .Q(\Using_FPGA.Native_0 ),
         .Q31(\Using_FPGA.Native_n_1 ));
   LUT4 #(
     .INIT(16'hFB08)) 
-    \Using_FPGA.Native_i_1__24 
+    \Using_FPGA.Native_i_1__27 
        (.I0(Q),
         .I1(lmb_ready_vec_q),
         .I2(lmb_rd_idle),
         .I3(M_AXI_RDATA),
-        .O(\Using_FPGA.Native_i_1__24_n_0 ));
+        .O(\Using_FPGA.Native_i_1__27_n_0 ));
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
@@ -13105,6 +15192,24 @@ module mcu_mdm_1_0_MB_XORCY
 endmodule
 
 (* ORIG_REF_NAME = "MB_XORCY" *) 
+module mcu_mdm_1_0_MB_XORCY_106
+   (sum_A_0,
+    LI,
+    LO,
+    lopt);
+  output sum_A_0;
+  input LI;
+  input LO;
+  input lopt;
+
+  wire LI;
+  wire LO;
+  wire sum_A_0;
+
+  assign sum_A_0 = lopt;
+endmodule
+
+(* ORIG_REF_NAME = "MB_XORCY" *) 
 module mcu_mdm_1_0_MB_XORCY_48
    (sum_A_0,
     \Use_Bus_MASTER.lmb_ready_vec_q_reg[0] ,
@@ -13148,6 +15253,24 @@ module mcu_mdm_1_0_MB_XORCY_48
         .O(\Use_Bus_MASTER.lmb_ready_vec_q_reg[0] ));
 endmodule
 
+(* ORIG_REF_NAME = "MB_XORCY" *) 
+module mcu_mdm_1_0_MB_XORCY_91
+   (sum_A_0,
+    LI,
+    LO,
+    lopt);
+  output sum_A_0;
+  input LI;
+  input LO;
+  input lopt;
+
+  wire LI;
+  wire LO;
+  wire sum_A_0;
+
+  assign sum_A_0 = lopt;
+endmodule
+
 (* C_ADDR_SIZE = "32" *) (* C_AVOID_PRIMITIVES = "0" *) (* C_BSCANID = "76547328" *) 
 (* C_DATA_SIZE = "32" *) (* C_DBG_MEM_ACCESS = "1" *) (* C_DBG_REG_ACCESS = "0" *) 
 (* C_DEBUG_INTERFACE = "0" *) (* C_EXT_TRIG_RESET_VALUE = "20'b11110001001000110100" *) (* C_FAMILY = "artix7" *) 
@@ -13158,7 +15281,7 @@ endmodule
 (* C_TRACE_CLK_FREQ_HZ = "200000000" *) (* C_TRACE_CLK_OUT_PHASE = "90" *) (* C_TRACE_DATA_WIDTH = "32" *) 
 (* C_TRACE_ID = "110" *) (* C_TRACE_OUTPUT = "0" *) (* C_TRACE_PROTOCOL = "1" *) 
 (* C_USE_BSCAN = "0" *) (* C_USE_CONFIG_RESET = "0" *) (* C_USE_CROSS_TRIGGER = "1" *) 
-(* C_USE_UART = "0" *) (* ORIG_REF_NAME = "MDM" *) 
+(* C_USE_UART = "1" *) (* ORIG_REF_NAME = "MDM" *) 
 module mcu_mdm_1_0_MDM
    (Config_Reset,
     Scan_Reset_Sel,
@@ -16205,30 +18328,37 @@ module mcu_mdm_1_0_MDM
   wire [0:7]Dbg_Reg_En_0;
   wire Dbg_Rst_0;
   wire Dbg_Shift_0;
+  wire Dbg_TDI_0;
   wire Dbg_TDO_0;
   wire [0:7]Dbg_Trig_Ack_In_0;
   wire [0:7]Dbg_Trig_Ack_Out_0;
   wire [0:7]Dbg_Trig_In_0;
   wire [0:7]Dbg_Trig_Out_0;
+  wire Dbg_Update_0;
   wire Debug_SYS_Rst;
+  wire Ext_BRK;
   wire Ext_JTAG_DRCK;
   wire Ext_JTAG_RESET;
   wire Ext_JTAG_SEL;
   wire Ext_JTAG_SHIFT;
-  wire Ext_JTAG_TDI;
   wire Ext_JTAG_TDO;
-  wire Ext_JTAG_UPDATE;
   wire Ext_NM_BRK;
+  wire \I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg ;
+  wire \I_SLAVE_ATTACHMENT/I_DECODER/GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ;
+  wire \I_SLAVE_ATTACHMENT/I_DECODER/GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ;
+  wire Interrupt;
+  wire \JTAG_CONTROL_I/FIFO_Write ;
   wire [5:5]\JTAG_CONTROL_I/Use_Serial_Unified_Completion.count_reg ;
   wire \JTAG_CONTROL_I/execute_3 ;
-  wire \JTAG_CONTROL_I/p_0_in93_in ;
-  wire \JTAG_CONTROL_I/p_101_out__0 ;
-  wire \JTAG_CONTROL_I/p_125_out__0 ;
+  wire \JTAG_CONTROL_I/fifo_Data_Present ;
+  wire \JTAG_CONTROL_I/p_0_in110_in ;
+  wire \JTAG_CONTROL_I/p_0_in98_in ;
+  wire \JTAG_CONTROL_I/p_113_out__0 ;
+  wire \JTAG_CONTROL_I/p_137_out__0 ;
   wire \JTAG_CONTROL_I/p_20_out ;
-  wire \JTAG_CONTROL_I/p_92_out ;
+  wire \JTAG_CONTROL_I/p_97_out ;
   wire \JTAG_CONTROL_I/rd_resp_zero ;
   wire \JTAG_CONTROL_I/sel ;
-  wire \JTAG_CONTROL_I/tdo_reg ;
   wire \JTAG_CONTROL_I/wr_resp_zero ;
   wire LMB_Addr_Strobe_0;
   wire [0:3]LMB_Byte_Enable_31;
@@ -16241,11 +18371,23 @@ module mcu_mdm_1_0_MDM
   wire LMB_Wait_0;
   wire LMB_Write_Strobe_0;
   wire MDM_Core_I1_n_0;
-  wire MDM_Core_I1_n_22;
-  wire MDM_Core_I1_n_28;
+  wire MDM_Core_I1_n_13;
   wire MDM_Core_I1_n_45;
-  wire MDM_Core_I1_n_46;
-  wire MDM_Core_I1_n_77;
+  wire MDM_Core_I1_n_48;
+  wire MDM_Core_I1_n_49;
+  wire MDM_Core_I1_n_81;
+  wire MDM_Core_I1_n_82;
+  wire MDM_Core_I1_n_83;
+  wire MDM_Core_I1_n_84;
+  wire MDM_Core_I1_n_85;
+  wire MDM_Core_I1_n_86;
+  wire MDM_Core_I1_n_87;
+  wire MDM_Core_I1_n_88;
+  wire MDM_Core_I1_n_89;
+  wire MDM_Core_I1_n_90;
+  wire MDM_Core_I1_n_91;
+  wire MDM_Core_I1_n_92;
+  wire MDM_Core_I1_n_93;
   wire M_AXI_ACLK;
   wire [31:0]M_AXI_ARADDR;
   wire M_AXI_ARESETN;
@@ -16272,8 +18414,27 @@ module mcu_mdm_1_0_MDM
   wire M_AXI_WREADY;
   wire [3:0]M_AXI_WSTRB;
   wire M_AXI_WVALID;
+  wire RX_Buffer_Full;
+  wire [0:7]RX_Data;
   wire Reset;
   wire SEL;
+  wire S_AXI_ACLK;
+  wire [3:0]S_AXI_ARADDR;
+  wire S_AXI_ARESETN;
+  wire S_AXI_ARREADY;
+  wire S_AXI_ARVALID;
+  wire [3:0]S_AXI_AWADDR;
+  wire S_AXI_AWVALID;
+  wire S_AXI_BREADY;
+  wire [1:1]\^S_AXI_BRESP ;
+  wire S_AXI_BVALID;
+  wire [7:0]\^S_AXI_RDATA ;
+  wire S_AXI_RREADY;
+  wire [1:1]\^S_AXI_RRESP ;
+  wire S_AXI_RVALID;
+  wire [31:0]S_AXI_WDATA;
+  wire S_AXI_WREADY;
+  wire S_AXI_WVALID;
   wire Scan_En;
   wire Scan_Reset;
   wire Scan_Reset_Sel;
@@ -16293,16 +18454,16 @@ module mcu_mdm_1_0_MDM
   wire Trig_Out_1;
   wire Trig_Out_2;
   wire Trig_Out_3;
+  wire \Use_AXI_IPIF.AXI_LITE_IPIF_I_n_15 ;
   wire \Use_Bus_MASTER.bus_master_I_n_71 ;
   wire \Use_Bus_MASTER.bus_master_I_n_72 ;
   wire \Use_Bus_MASTER.bus_master_I_n_73 ;
   wire \Use_Bus_MASTER.bus_master_I_n_74 ;
   wire \Use_Bus_MASTER.bus_master_I_n_75 ;
-  wire \Use_Bus_MASTER.bus_master_I_n_76 ;
+  wire \Use_Bus_MASTER.bus_master_I_n_80 ;
   wire \Use_Bus_MASTER.bus_master_I_n_81 ;
   wire \Use_Bus_MASTER.bus_master_I_n_82 ;
   wire \Use_Bus_MASTER.bus_master_I_n_83 ;
-  wire \Use_Bus_MASTER.bus_master_I_n_84 ;
   wire \Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][0] ;
   wire \Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][10] ;
   wire \Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][11] ;
@@ -16350,6 +18511,11 @@ module mcu_mdm_1_0_MDM
   wire \Use_E2.BSCAN_I_n_24 ;
   wire \Use_E2.BSCAN_I_n_25 ;
   wire \Use_E2.BSCAN_I_n_8 ;
+  wire \Use_E2.BSCAN_I_n_9 ;
+  wire [3:3]bus2ip_rdce;
+  wire [2:2]bus2ip_wrce;
+  wire clear_Ext_BRK;
+  wire enable_interrupts;
   wire lmb_ready_vec_q;
   wire lmb_ue_vec_q;
   wire lmb_wait_vec_q;
@@ -16365,10 +18531,13 @@ module mcu_mdm_1_0_MDM
   wire [0:0]p_0_in;
   wire [0:0]p_0_in__0;
   wire rd_wr_excl;
-  wire sel_n_reset2_out;
+  wire reset_RX_FIFO;
+  wire reset_TX_FIFO;
+  wire rx_Data_Present;
+  wire sel_n_reset3_out;
   wire shift_n_reset1_out;
   wire tdo;
-  wire [7:22]tdo_reg;
+  wire tx_Buffer_Full;
   wire wdata_exists;
   wire [1:1]wr_state;
 
@@ -17736,38 +19905,37 @@ module mcu_mdm_1_0_MDM
   assign Dbg_Shift_7 = Dbg_Shift_0;
   assign Dbg_Shift_8 = Dbg_Shift_0;
   assign Dbg_Shift_9 = Dbg_Shift_0;
-  assign Dbg_TDI_0 = Ext_JTAG_TDI;
-  assign Dbg_TDI_1 = Ext_JTAG_TDI;
-  assign Dbg_TDI_10 = Ext_JTAG_TDI;
-  assign Dbg_TDI_11 = Ext_JTAG_TDI;
-  assign Dbg_TDI_12 = Ext_JTAG_TDI;
-  assign Dbg_TDI_13 = Ext_JTAG_TDI;
-  assign Dbg_TDI_14 = Ext_JTAG_TDI;
-  assign Dbg_TDI_15 = Ext_JTAG_TDI;
-  assign Dbg_TDI_16 = Ext_JTAG_TDI;
-  assign Dbg_TDI_17 = Ext_JTAG_TDI;
-  assign Dbg_TDI_18 = Ext_JTAG_TDI;
-  assign Dbg_TDI_19 = Ext_JTAG_TDI;
-  assign Dbg_TDI_2 = Ext_JTAG_TDI;
-  assign Dbg_TDI_20 = Ext_JTAG_TDI;
-  assign Dbg_TDI_21 = Ext_JTAG_TDI;
-  assign Dbg_TDI_22 = Ext_JTAG_TDI;
-  assign Dbg_TDI_23 = Ext_JTAG_TDI;
-  assign Dbg_TDI_24 = Ext_JTAG_TDI;
-  assign Dbg_TDI_25 = Ext_JTAG_TDI;
-  assign Dbg_TDI_26 = Ext_JTAG_TDI;
-  assign Dbg_TDI_27 = Ext_JTAG_TDI;
-  assign Dbg_TDI_28 = Ext_JTAG_TDI;
-  assign Dbg_TDI_29 = Ext_JTAG_TDI;
-  assign Dbg_TDI_3 = Ext_JTAG_TDI;
-  assign Dbg_TDI_30 = Ext_JTAG_TDI;
-  assign Dbg_TDI_31 = Ext_JTAG_TDI;
-  assign Dbg_TDI_4 = Ext_JTAG_TDI;
-  assign Dbg_TDI_5 = Ext_JTAG_TDI;
-  assign Dbg_TDI_6 = Ext_JTAG_TDI;
-  assign Dbg_TDI_7 = Ext_JTAG_TDI;
-  assign Dbg_TDI_8 = Ext_JTAG_TDI;
-  assign Dbg_TDI_9 = Ext_JTAG_TDI;
+  assign Dbg_TDI_1 = Dbg_TDI_0;
+  assign Dbg_TDI_10 = Dbg_TDI_0;
+  assign Dbg_TDI_11 = Dbg_TDI_0;
+  assign Dbg_TDI_12 = Dbg_TDI_0;
+  assign Dbg_TDI_13 = Dbg_TDI_0;
+  assign Dbg_TDI_14 = Dbg_TDI_0;
+  assign Dbg_TDI_15 = Dbg_TDI_0;
+  assign Dbg_TDI_16 = Dbg_TDI_0;
+  assign Dbg_TDI_17 = Dbg_TDI_0;
+  assign Dbg_TDI_18 = Dbg_TDI_0;
+  assign Dbg_TDI_19 = Dbg_TDI_0;
+  assign Dbg_TDI_2 = Dbg_TDI_0;
+  assign Dbg_TDI_20 = Dbg_TDI_0;
+  assign Dbg_TDI_21 = Dbg_TDI_0;
+  assign Dbg_TDI_22 = Dbg_TDI_0;
+  assign Dbg_TDI_23 = Dbg_TDI_0;
+  assign Dbg_TDI_24 = Dbg_TDI_0;
+  assign Dbg_TDI_25 = Dbg_TDI_0;
+  assign Dbg_TDI_26 = Dbg_TDI_0;
+  assign Dbg_TDI_27 = Dbg_TDI_0;
+  assign Dbg_TDI_28 = Dbg_TDI_0;
+  assign Dbg_TDI_29 = Dbg_TDI_0;
+  assign Dbg_TDI_3 = Dbg_TDI_0;
+  assign Dbg_TDI_30 = Dbg_TDI_0;
+  assign Dbg_TDI_31 = Dbg_TDI_0;
+  assign Dbg_TDI_4 = Dbg_TDI_0;
+  assign Dbg_TDI_5 = Dbg_TDI_0;
+  assign Dbg_TDI_6 = Dbg_TDI_0;
+  assign Dbg_TDI_7 = Dbg_TDI_0;
+  assign Dbg_TDI_8 = Dbg_TDI_0;
+  assign Dbg_TDI_9 = Dbg_TDI_0;
   assign Dbg_TrClk_0 = \<const0> ;
   assign Dbg_TrClk_1 = \<const0> ;
   assign Dbg_TrClk_10 = \<const0> ;
@@ -18328,38 +20496,37 @@ module mcu_mdm_1_0_MDM
   assign Dbg_Trig_Out_9[5] = \<const0> ;
   assign Dbg_Trig_Out_9[6] = \<const0> ;
   assign Dbg_Trig_Out_9[7] = \<const0> ;
-  assign Dbg_Update_0 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_1 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_10 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_11 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_12 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_13 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_14 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_15 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_16 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_17 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_18 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_19 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_2 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_20 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_21 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_22 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_23 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_24 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_25 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_26 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_27 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_28 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_29 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_3 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_30 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_31 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_4 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_5 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_6 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_7 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_8 = Ext_JTAG_UPDATE;
-  assign Dbg_Update_9 = Ext_JTAG_UPDATE;
+  assign Dbg_Update_1 = Dbg_Update_0;
+  assign Dbg_Update_10 = Dbg_Update_0;
+  assign Dbg_Update_11 = Dbg_Update_0;
+  assign Dbg_Update_12 = Dbg_Update_0;
+  assign Dbg_Update_13 = Dbg_Update_0;
+  assign Dbg_Update_14 = Dbg_Update_0;
+  assign Dbg_Update_15 = Dbg_Update_0;
+  assign Dbg_Update_16 = Dbg_Update_0;
+  assign Dbg_Update_17 = Dbg_Update_0;
+  assign Dbg_Update_18 = Dbg_Update_0;
+  assign Dbg_Update_19 = Dbg_Update_0;
+  assign Dbg_Update_2 = Dbg_Update_0;
+  assign Dbg_Update_20 = Dbg_Update_0;
+  assign Dbg_Update_21 = Dbg_Update_0;
+  assign Dbg_Update_22 = Dbg_Update_0;
+  assign Dbg_Update_23 = Dbg_Update_0;
+  assign Dbg_Update_24 = Dbg_Update_0;
+  assign Dbg_Update_25 = Dbg_Update_0;
+  assign Dbg_Update_26 = Dbg_Update_0;
+  assign Dbg_Update_27 = Dbg_Update_0;
+  assign Dbg_Update_28 = Dbg_Update_0;
+  assign Dbg_Update_29 = Dbg_Update_0;
+  assign Dbg_Update_3 = Dbg_Update_0;
+  assign Dbg_Update_30 = Dbg_Update_0;
+  assign Dbg_Update_31 = Dbg_Update_0;
+  assign Dbg_Update_4 = Dbg_Update_0;
+  assign Dbg_Update_5 = Dbg_Update_0;
+  assign Dbg_Update_6 = Dbg_Update_0;
+  assign Dbg_Update_7 = Dbg_Update_0;
+  assign Dbg_Update_8 = Dbg_Update_0;
+  assign Dbg_Update_9 = Dbg_Update_0;
   assign Dbg_WDATA_0[31] = \<const0> ;
   assign Dbg_WDATA_0[30] = \<const0> ;
   assign Dbg_WDATA_0[29] = \<const0> ;
@@ -19416,9 +21583,9 @@ module mcu_mdm_1_0_MDM
   assign Dbg_WVALID_7 = \<const0> ;
   assign Dbg_WVALID_8 = \<const0> ;
   assign Dbg_WVALID_9 = \<const0> ;
-  assign Ext_BRK = \<const0> ;
   assign Ext_JTAG_CAPTURE = Dbg_Capture_0;
-  assign Interrupt = \<const0> ;
+  assign Ext_JTAG_TDI = Dbg_TDI_0;
+  assign Ext_JTAG_UPDATE = Dbg_Update_0;
   assign LMB_Addr_Strobe_1 = \<const0> ;
   assign LMB_Addr_Strobe_10 = \<const0> ;
   assign LMB_Addr_Strobe_11 = \<const0> ;
@@ -20744,11 +22911,9 @@ module mcu_mdm_1_0_MDM
   assign M_AXI_AWSIZE[2] = \<const0> ;
   assign M_AXI_AWSIZE[1:0] = \^M_AXI_AWSIZE [1:0];
   assign M_AXI_RREADY = \<const1> ;
-  assign S_AXI_ARREADY = \<const0> ;
-  assign S_AXI_AWREADY = \<const0> ;
-  assign S_AXI_BRESP[1] = \<const0> ;
+  assign S_AXI_AWREADY = S_AXI_WREADY;
+  assign S_AXI_BRESP[1] = \^S_AXI_BRESP [1];
   assign S_AXI_BRESP[0] = \<const0> ;
-  assign S_AXI_BVALID = \<const0> ;
   assign S_AXI_RDATA[31] = \<const0> ;
   assign S_AXI_RDATA[30] = \<const0> ;
   assign S_AXI_RDATA[29] = \<const0> ;
@@ -20773,18 +22938,9 @@ module mcu_mdm_1_0_MDM
   assign S_AXI_RDATA[10] = \<const0> ;
   assign S_AXI_RDATA[9] = \<const0> ;
   assign S_AXI_RDATA[8] = \<const0> ;
-  assign S_AXI_RDATA[7] = \<const0> ;
-  assign S_AXI_RDATA[6] = \<const0> ;
-  assign S_AXI_RDATA[5] = \<const0> ;
-  assign S_AXI_RDATA[4] = \<const0> ;
-  assign S_AXI_RDATA[3] = \<const0> ;
-  assign S_AXI_RDATA[2] = \<const0> ;
-  assign S_AXI_RDATA[1] = \<const0> ;
-  assign S_AXI_RDATA[0] = \<const0> ;
-  assign S_AXI_RRESP[1] = \<const0> ;
+  assign S_AXI_RDATA[7:0] = \^S_AXI_RDATA [7:0];
+  assign S_AXI_RRESP[1] = \^S_AXI_RRESP [1];
   assign S_AXI_RRESP[0] = \<const0> ;
-  assign S_AXI_RVALID = \<const0> ;
-  assign S_AXI_WREADY = \<const0> ;
   assign TRACE_CLK_OUT = \<const0> ;
   assign TRACE_CTL = \<const1> ;
   assign TRACE_DATA[31] = \<const0> ;
@@ -20823,29 +22979,39 @@ module mcu_mdm_1_0_MDM
   GND GND
        (.G(\<const0> ));
   mcu_mdm_1_0_MDM_Core MDM_Core_I1
-       (.AR(sel_n_reset2_out),
+       (.AR(sel_n_reset3_out),
+        .Bus_RNW_reg(\I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg ),
         .D(p_0_in),
         .Dbg_Disable_0(Dbg_Disable_0),
         .Dbg_Reg_En_0(Dbg_Reg_En_0),
         .Dbg_Rst_0(Dbg_Rst_0),
-        .Dbg_Shift_0(Dbg_Shift_0),
-        .Dbg_Shift_0_0(Ext_JTAG_SHIFT),
+        .Dbg_TDI_0(Dbg_TDI_0),
         .Dbg_TDO_0(Dbg_TDO_0),
         .Dbg_Trig_Ack_In_0(Dbg_Trig_Ack_In_0),
         .Dbg_Trig_Ack_Out_0(Dbg_Trig_Ack_Out_0),
         .Dbg_Trig_In_0(Dbg_Trig_In_0),
         .Dbg_Trig_Out_0(Dbg_Trig_Out_0),
         .Debug_SYS_Rst(Debug_SYS_Rst),
-        .E(\JTAG_CONTROL_I/tdo_reg ),
+        .E(Dbg_Shift_0),
+        .Ext_BRK(Ext_BRK),
         .Ext_JTAG_SEL(Ext_JTAG_SEL),
-        .Ext_JTAG_TDI(Ext_JTAG_TDI),
         .Ext_JTAG_TDO(Ext_JTAG_TDO),
         .Ext_NM_BRK(Ext_NM_BRK),
+        .FIFO_Write(\JTAG_CONTROL_I/FIFO_Write ),
+        .\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg (\I_SLAVE_ATTACHMENT/I_DECODER/GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ),
+        .\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg (\I_SLAVE_ATTACHMENT/I_DECODER/GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ),
+        .Interrupt(Interrupt),
         .M_AXI_ACLK(M_AXI_ACLK),
         .M_AXI_ARESETN(M_AXI_ARESETN),
         .Q(MDM_Core_I1_n_0),
+        .RX_Buffer_Full(RX_Buffer_Full),
+        .RX_Data(RX_Data),
         .Reset(Reset),
         .SEL(SEL),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_ARESETN(S_AXI_ARESETN),
+        .S_AXI_ARESETN_0(MDM_Core_I1_n_13),
+        .S_AXI_WDATA(S_AXI_WDATA[7:0]),
         .Scan_En(Scan_En),
         .Scan_Reset(Scan_Reset),
         .Scan_Reset_Sel(Scan_Reset_Sel),
@@ -20865,62 +23031,109 @@ module mcu_mdm_1_0_MDM
         .Trig_Out_1(Trig_Out_1),
         .Trig_Out_2(Trig_Out_2),
         .Trig_Out_3(Trig_Out_3),
-        .\Use_BSCAN.command_reg[6] (MDM_Core_I1_n_45),
-        .\Use_BSCAN.command_reg[7] (MDM_Core_I1_n_22),
-        .\Use_Cross_Trigger.tdo_reg_reg[7] ({tdo_reg[7],tdo_reg[8],tdo_reg[9],tdo_reg[10],tdo_reg[11],tdo_reg[12],tdo_reg[13],tdo_reg[14],tdo_reg[19],tdo_reg[20],tdo_reg[21],tdo_reg[22]}),
+        .\Use_BSCAN.command_reg[4] (MDM_Core_I1_n_45),
+        .\Use_Cross_Trigger.tdo_reg_reg[23] (\Use_E2.BSCAN_I_n_10 ),
+        .\Use_Cross_Trigger.tdo_reg_reg[7] ({MDM_Core_I1_n_82,MDM_Core_I1_n_83,MDM_Core_I1_n_84,MDM_Core_I1_n_85,MDM_Core_I1_n_86,MDM_Core_I1_n_87,MDM_Core_I1_n_88,MDM_Core_I1_n_89,MDM_Core_I1_n_90,MDM_Core_I1_n_91,MDM_Core_I1_n_92,MDM_Core_I1_n_93}),
         .\Use_Cross_Trigger.tdo_reg_reg[8] ({\Use_E2.BSCAN_I_n_14 ,\Use_E2.BSCAN_I_n_15 ,\Use_E2.BSCAN_I_n_16 ,\Use_E2.BSCAN_I_n_17 ,\Use_E2.BSCAN_I_n_18 ,\Use_E2.BSCAN_I_n_19 ,\Use_E2.BSCAN_I_n_20 ,\Use_E2.BSCAN_I_n_21 ,\Use_E2.BSCAN_I_n_22 ,\Use_E2.BSCAN_I_n_23 ,\Use_E2.BSCAN_I_n_24 ,\Use_E2.BSCAN_I_n_25 }),
-        .\Use_Dbg_Mem_Access.Master_wr_start_reg (MDM_Core_I1_n_77),
-        .\Use_Dbg_Mem_Access.Master_wr_start_reg_0 (\Use_Bus_MASTER.bus_master_I_n_71 ),
+        .\Use_Dbg_Mem_Access.Master_wr_start_reg (MDM_Core_I1_n_81),
         .\Use_Dbg_Mem_Access.input_reg[0] ({\^LMB_Data_Addr_31 [0],\^LMB_Data_Addr_31 [1],\^LMB_Data_Addr_31 [2],\^LMB_Data_Addr_31 [3],\^LMB_Data_Addr_31 [4],\^LMB_Data_Addr_31 [5],\^LMB_Data_Addr_31 [6],\^LMB_Data_Addr_31 [7],\^LMB_Data_Addr_31 [8],\^LMB_Data_Addr_31 [9],\^LMB_Data_Addr_31 [10],\^LMB_Data_Addr_31 [11],\^LMB_Data_Addr_31 [12],\^LMB_Data_Addr_31 [13],\^LMB_Data_Addr_31 [14],\^LMB_Data_Addr_31 [15],\^LMB_Data_Addr_31 [16],\^LMB_Data_Addr_31 [17],\^LMB_Data_Addr_31 [18],\^LMB_Data_Addr_31 [19],\^LMB_Data_Addr_31 [20],\^LMB_Data_Addr_31 [21],\^LMB_Data_Addr_31 [22],\^LMB_Data_Addr_31 [23],\^LMB_Data_Addr_31 [24],master_data_in,\^LMB_Data_Addr_0 ,\^LMB_Data_Addr_31 [31]}),
-        .\Use_Dbg_Mem_Access.master_overrun_reg (\Use_Bus_MASTER.bus_master_I_n_72 ),
-        .\Use_Dbg_Mem_Access.output_reg[0] ({\Use_E2.BSCAN_I_n_10 ,\Use_Bus_MASTER.bus_master_I_n_73 ,\Use_Bus_MASTER.bus_master_I_n_74 ,\Use_Bus_MASTER.bus_master_I_n_75 ,\Use_Bus_MASTER.bus_master_I_n_76 }),
+        .\Use_Dbg_Mem_Access.master_overrun_reg (\Use_Bus_MASTER.bus_master_I_n_75 ),
+        .\Use_Dbg_Mem_Access.output_reg[0] ({\Use_E2.BSCAN_I_n_9 ,\Use_Bus_MASTER.bus_master_I_n_71 ,\Use_Bus_MASTER.bus_master_I_n_72 ,\Use_Bus_MASTER.bus_master_I_n_73 ,\Use_Bus_MASTER.bus_master_I_n_74 }),
         .\Use_Dbg_Mem_Access.output_reg[23] ({\output [23],\output [24],\output [25],\output [27]}),
-        .\Use_Dbg_Mem_Access.output_reg[27] (\Use_Bus_MASTER.bus_master_I_n_84 ),
-        .\Use_Dbg_Mem_Access.output_reg[29] (\Use_Bus_MASTER.bus_master_I_n_81 ),
-        .\Use_Dbg_Mem_Access.rd_resp_zero_reg (\Use_Bus_MASTER.bus_master_I_n_82 ),
+        .\Use_Dbg_Mem_Access.output_reg[27] (\Use_Bus_MASTER.bus_master_I_n_83 ),
+        .\Use_Dbg_Mem_Access.output_reg[29] (\Use_Bus_MASTER.bus_master_I_n_80 ),
+        .\Use_Dbg_Mem_Access.rd_resp_zero_reg (\Use_Bus_MASTER.bus_master_I_n_81 ),
         .\Use_Dbg_Mem_Access.rd_wr_len_reg[0] (master_wr_len),
-        .\Use_Dbg_Mem_Access.rd_wr_len_reg[3] (MDM_Core_I1_n_46),
+        .\Use_Dbg_Mem_Access.rd_wr_len_reg[3] (MDM_Core_I1_n_49),
         .\Use_Dbg_Mem_Access.rd_wr_size_reg[0] (master_wr_size),
-        .\Use_Dbg_Mem_Access.wr_resp_zero_reg (\Use_Bus_MASTER.bus_master_I_n_83 ),
+        .\Use_Dbg_Mem_Access.wr_resp_zero_reg (\Use_Bus_MASTER.bus_master_I_n_82 ),
         .\Use_Serial_Unified_Completion.completion_status_reg[10] (\Use_E2.BSCAN_I_n_8 ),
         .\Use_Serial_Unified_Completion.completion_status_reg[15] (\Use_E2.BSCAN_I_n_13 ),
         .\Use_Serial_Unified_Completion.count_reg[5] (\JTAG_CONTROL_I/Use_Serial_Unified_Completion.count_reg ),
         .\Use_Serial_Unified_Completion.count_reg[5]_0 (\JTAG_CONTROL_I/sel ),
-        .\Use_Serial_Unified_Completion.sample_1_reg[15] (MDM_Core_I1_n_28),
-        .\Using_FPGA.Native (Ext_JTAG_UPDATE),
+        .\Use_Serial_Unified_Completion.sample_1_reg[15] (MDM_Core_I1_n_48),
+        .\Use_UART.fifo_Din_reg[7] (Ext_JTAG_SHIFT),
+        .\Use_UART.tx_buffered_2_reg (\JTAG_CONTROL_I/p_0_in110_in ),
+        .\Use_Uart.enable_interrupts_reg_0 (\Use_AXI_IPIF.AXI_LITE_IPIF_I_n_15 ),
+        .\Using_FPGA.Native (Dbg_Update_0),
         .\Using_FPGA.Native_0 (Ext_JTAG_DRCK),
+        .bus2ip_rdce(bus2ip_rdce),
+        .bus2ip_wrce(bus2ip_wrce),
+        .clear_Ext_BRK(clear_Ext_BRK),
+        .enable_interrupts(enable_interrupts),
         .execute_3(\JTAG_CONTROL_I/execute_3 ),
+        .fifo_Data_Present(\JTAG_CONTROL_I/fifo_Data_Present ),
         .master_data_out({master_data_out[30:8],master_data_out[4],master_data_out[2:0]}),
         .master_data_rd(master_data_rd),
         .master_data_wr(master_data_wr),
         .master_rd_start(master_rd_start),
         .master_wr_start(master_wr_start),
-        .out(\JTAG_CONTROL_I/p_0_in93_in ),
-        .p_101_out__0(\JTAG_CONTROL_I/p_101_out__0 ),
-        .p_125_out__0(\JTAG_CONTROL_I/p_125_out__0 ),
+        .out(\JTAG_CONTROL_I/p_0_in98_in ),
+        .p_113_out__0(\JTAG_CONTROL_I/p_113_out__0 ),
+        .p_137_out__0(\JTAG_CONTROL_I/p_137_out__0 ),
         .p_20_out(\JTAG_CONTROL_I/p_20_out ),
-        .p_92_out(\JTAG_CONTROL_I/p_92_out ),
+        .p_97_out(\JTAG_CONTROL_I/p_97_out ),
         .rd_resp_zero(\JTAG_CONTROL_I/rd_resp_zero ),
         .rd_wr_excl(rd_wr_excl),
+        .reset_RX_FIFO(reset_RX_FIFO),
+        .reset_TX_FIFO(reset_TX_FIFO),
+        .rx_Data_Present(rx_Data_Present),
         .sel_n_reg(Dbg_Capture_0),
         .\shift_Count_reg[0] (p_0_in__0),
         .shift_n_reset1_out(shift_n_reset1_out),
         .tdo(tdo),
+        .tx_Buffer_Full(tx_Buffer_Full),
         .wdata_exists(wdata_exists),
         .wr_resp_zero(\JTAG_CONTROL_I/wr_resp_zero ),
         .wr_state(wr_state));
   mcu_mdm_1_0_MB_BUFG \No_Dbg_Reg_Access.BUFG_DRCK 
        (.DRCK(DRCK),
         .Ext_JTAG_DRCK(Ext_JTAG_DRCK));
+  mcu_mdm_1_0_axi_lite_ipif \Use_AXI_IPIF.AXI_LITE_IPIF_I 
+       (.Bus_RNW_reg(\I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg ),
+        .FIFO_Write(\JTAG_CONTROL_I/FIFO_Write ),
+        .\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg (\I_SLAVE_ATTACHMENT/I_DECODER/GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ),
+        .\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg (\I_SLAVE_ATTACHMENT/I_DECODER/GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ),
+        .\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] (S_AXI_WREADY),
+        .\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3] (S_AXI_ARREADY),
+        .RX_Buffer_Full(RX_Buffer_Full),
+        .RX_Data(RX_Data),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_ARADDR(S_AXI_ARADDR[3:2]),
+        .S_AXI_ARESETN(S_AXI_ARESETN),
+        .S_AXI_ARVALID(S_AXI_ARVALID),
+        .S_AXI_AWADDR(S_AXI_AWADDR[3:2]),
+        .S_AXI_AWVALID(S_AXI_AWVALID),
+        .S_AXI_BREADY(S_AXI_BREADY),
+        .S_AXI_BRESP(\^S_AXI_BRESP ),
+        .S_AXI_BVALID(S_AXI_BVALID),
+        .S_AXI_RDATA(\^S_AXI_RDATA ),
+        .S_AXI_RREADY(S_AXI_RREADY),
+        .S_AXI_RRESP(\^S_AXI_RRESP ),
+        .S_AXI_RVALID(S_AXI_RVALID),
+        .S_AXI_WDATA({S_AXI_WDATA[4],S_AXI_WDATA[2:0]}),
+        .\S_AXI_WDATA[4] (\Use_AXI_IPIF.AXI_LITE_IPIF_I_n_15 ),
+        .S_AXI_WVALID(S_AXI_WVALID),
+        .bus2ip_rdce(bus2ip_rdce),
+        .bus2ip_wrce(bus2ip_wrce),
+        .clear_Ext_BRK(clear_Ext_BRK),
+        .data_Exists_I_reg(\JTAG_CONTROL_I/p_0_in110_in ),
+        .enable_interrupts(enable_interrupts),
+        .fifo_Data_Present(\JTAG_CONTROL_I/fifo_Data_Present ),
+        .reset_RX_FIFO(reset_RX_FIFO),
+        .reset_TX_FIFO(reset_TX_FIFO),
+        .rst_reg(MDM_Core_I1_n_13),
+        .rx_Data_Present(rx_Data_Present),
+        .tx_Buffer_Full(tx_Buffer_Full));
   mcu_mdm_1_0_bus_master \Use_Bus_MASTER.bus_master_I 
        (.D({\^LMB_Data_Addr_31 [0],\^LMB_Data_Addr_31 [1],\^LMB_Data_Addr_31 [2],\^LMB_Data_Addr_31 [3],\^LMB_Data_Addr_31 [4],\^LMB_Data_Addr_31 [5],\^LMB_Data_Addr_31 [6],\^LMB_Data_Addr_31 [7],\^LMB_Data_Addr_31 [8],\^LMB_Data_Addr_31 [9],\^LMB_Data_Addr_31 [10],\^LMB_Data_Addr_31 [11],\^LMB_Data_Addr_31 [12],\^LMB_Data_Addr_31 [13],\^LMB_Data_Addr_31 [14],\^LMB_Data_Addr_31 [15],\^LMB_Data_Addr_31 [16],\^LMB_Data_Addr_31 [17],\^LMB_Data_Addr_31 [18],\^LMB_Data_Addr_31 [19],\^LMB_Data_Addr_31 [20],\^LMB_Data_Addr_31 [21],\^LMB_Data_Addr_31 [22],\^LMB_Data_Addr_31 [23],\^LMB_Data_Addr_31 [24],master_data_in,\^LMB_Data_Addr_0 ,\^LMB_Data_Addr_31 [31]}),
         .\FSM_sequential_wr_state_reg[1]_0 (wr_state),
-        .\Has_FIFO.axi_rd_resp_reg[0]_0 (\Use_Bus_MASTER.bus_master_I_n_81 ),
+        .\Has_FIFO.axi_rd_resp_reg[0]_0 (\Use_Bus_MASTER.bus_master_I_n_80 ),
         .\Has_FIFO.lmb_addr_reg[4]_0 ({\^LMB_Data_Addr_31 [25],\^LMB_Data_Addr_31 [26],\^LMB_Data_Addr_31 [27],\^LMB_Data_Addr_31 [28],\^LMB_Data_Addr_31 [29]}),
-        .\Has_FIFO.lmb_rd_idle_reg_0 (\Use_Bus_MASTER.bus_master_I_n_72 ),
-        .\Has_FIFO.lmb_rd_resp_reg[1]_0 (\Use_Bus_MASTER.bus_master_I_n_82 ),
-        .\Has_FIFO.lmb_state_reg[0]_0 (MDM_Core_I1_n_77),
-        .\Has_FIFO.lmb_wr_resp_reg[1]_0 (\Use_Bus_MASTER.bus_master_I_n_83 ),
+        .\Has_FIFO.lmb_rd_idle_reg_0 (\Use_Bus_MASTER.bus_master_I_n_75 ),
+        .\Has_FIFO.lmb_rd_resp_reg[1]_0 (\Use_Bus_MASTER.bus_master_I_n_81 ),
+        .\Has_FIFO.lmb_state_reg[0]_0 (MDM_Core_I1_n_81),
+        .\Has_FIFO.lmb_wr_resp_reg[1]_0 (\Use_Bus_MASTER.bus_master_I_n_82 ),
         .LMB_Addr_Strobe_0(LMB_Addr_Strobe_0),
         .LMB_Byte_Enable_31(LMB_Byte_Enable_31),
         .LMB_Read_Strobe_0(LMB_Read_Strobe_0),
@@ -20950,19 +23163,17 @@ module mcu_mdm_1_0_MDM
         .M_AXI_RVALID(M_AXI_RVALID),
         .M_AXI_WDATA(M_AXI_WDATA),
         .M_AXI_WLAST(M_AXI_WLAST),
-        .M_AXI_WLAST_reg_0(MDM_Core_I1_n_46),
+        .M_AXI_WLAST_reg_0(MDM_Core_I1_n_49),
         .M_AXI_WREADY(M_AXI_WREADY),
         .M_AXI_WSTRB(M_AXI_WSTRB),
         .Q({\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][0] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][1] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][2] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][3] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][4] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][5] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][6] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][7] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][8] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][9] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][10] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][11] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][12] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][13] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][14] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][15] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][16] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][17] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][18] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][19] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][20] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][21] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][22] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][23] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][24] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][25] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][26] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][27] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][28] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][29] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][30] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][31] }),
         .Reset(Reset),
-        .\Use_BSCAN.command_reg[7] (\Use_Bus_MASTER.bus_master_I_n_71 ),
-        .\Use_Dbg_Mem_Access.Master_wr_start_reg (MDM_Core_I1_n_22),
-        .\Use_Dbg_Mem_Access.output_reg[23] ({\Use_Bus_MASTER.bus_master_I_n_73 ,\Use_Bus_MASTER.bus_master_I_n_74 ,\Use_Bus_MASTER.bus_master_I_n_75 ,\Use_Bus_MASTER.bus_master_I_n_76 }),
+        .\Use_Dbg_Mem_Access.output_reg[23] ({\Use_Bus_MASTER.bus_master_I_n_71 ,\Use_Bus_MASTER.bus_master_I_n_72 ,\Use_Bus_MASTER.bus_master_I_n_73 ,\Use_Bus_MASTER.bus_master_I_n_74 }),
         .\Use_Dbg_Mem_Access.output_reg[24] ({\output [23],\output [24],\output [25],\output [27]}),
         .\Use_Dbg_Mem_Access.output_reg[28] (MDM_Core_I1_n_45),
         .\Use_Dbg_Mem_Access.output_reg[28]_0 (Dbg_Capture_0),
         .\Using_FPGA.Native ({master_data_out[31:8],master_data_out[4],master_data_out[2:0]}),
-        .\axi_wr_resp_reg[0]_0 (\Use_Bus_MASTER.bus_master_I_n_84 ),
+        .\axi_wr_resp_reg[0]_0 (\Use_Bus_MASTER.bus_master_I_n_83 ),
         .axi_wvalid_reg_0(M_AXI_WVALID),
         .execute_3(\JTAG_CONTROL_I/execute_3 ),
         .lmb_ready_vec_q(lmb_ready_vec_q),
@@ -20972,9 +23183,9 @@ module mcu_mdm_1_0_MDM
         .master_data_wr(master_data_wr),
         .master_rd_start(master_rd_start),
         .master_wr_start(master_wr_start),
-        .out(\JTAG_CONTROL_I/p_0_in93_in ),
+        .out(\JTAG_CONTROL_I/p_0_in98_in ),
         .p_20_out(\JTAG_CONTROL_I/p_20_out ),
-        .p_92_out(\JTAG_CONTROL_I/p_92_out ),
+        .p_97_out(\JTAG_CONTROL_I/p_97_out ),
         .rd_resp_zero(\JTAG_CONTROL_I/rd_resp_zero ),
         .rd_wr_excl(rd_wr_excl),
         .wdata_exists(wdata_exists),
@@ -21190,15 +23401,14 @@ module mcu_mdm_1_0_MDM
         .Q(lmb_wait_vec_q),
         .R(1'b0));
   mcu_mdm_1_0_MB_BSCANE2 \Use_E2.BSCAN_I 
-       (.AR(sel_n_reset2_out),
+       (.AR(sel_n_reset3_out),
         .D(p_0_in),
         .DRCK(DRCK),
+        .Dbg_TDI_0(Dbg_TDI_0),
         .Dbg_Trig_In_0(Dbg_Trig_In_0),
         .\Dbg_Trig_In_0[0] ({\Use_E2.BSCAN_I_n_14 ,\Use_E2.BSCAN_I_n_15 ,\Use_E2.BSCAN_I_n_16 ,\Use_E2.BSCAN_I_n_17 ,\Use_E2.BSCAN_I_n_18 ,\Use_E2.BSCAN_I_n_19 ,\Use_E2.BSCAN_I_n_20 ,\Use_E2.BSCAN_I_n_21 ,\Use_E2.BSCAN_I_n_22 ,\Use_E2.BSCAN_I_n_23 ,\Use_E2.BSCAN_I_n_24 ,\Use_E2.BSCAN_I_n_25 }),
-        .E(\JTAG_CONTROL_I/tdo_reg ),
+        .Dbg_Update_0(Dbg_Update_0),
         .Ext_JTAG_RESET(Ext_JTAG_RESET),
-        .Ext_JTAG_TDI(Ext_JTAG_TDI),
-        .Ext_JTAG_UPDATE(Ext_JTAG_UPDATE),
         .Q(MDM_Core_I1_n_0),
         .SEL(SEL),
         .Scan_En(Scan_En),
@@ -21210,17 +23420,18 @@ module mcu_mdm_1_0_MDM
         .Trig_In_3(Trig_In_3),
         .\Use_BSCAN.PORT_Selector_reg[0] (Dbg_Capture_0),
         .\Use_BSCAN.PORT_Selector_reg[0]_0 (Ext_JTAG_SHIFT),
+        .\Use_BSCAN.command_reg[4] (\Use_E2.BSCAN_I_n_9 ),
         .\Use_BSCAN.command_reg[5] (\JTAG_CONTROL_I/sel ),
-        .\Use_BSCAN.command_reg[6] (\Use_E2.BSCAN_I_n_10 ),
-        .\Use_Cross_Trigger.tdo_reg_reg[8] ({tdo_reg[7],tdo_reg[8],tdo_reg[9],tdo_reg[10],tdo_reg[11],tdo_reg[12],tdo_reg[13],tdo_reg[14],tdo_reg[19],tdo_reg[20],tdo_reg[21],tdo_reg[22]}),
+        .\Use_Cross_Trigger.tdo_reg_reg[8] ({MDM_Core_I1_n_82,MDM_Core_I1_n_83,MDM_Core_I1_n_84,MDM_Core_I1_n_85,MDM_Core_I1_n_86,MDM_Core_I1_n_87,MDM_Core_I1_n_88,MDM_Core_I1_n_89,MDM_Core_I1_n_90,MDM_Core_I1_n_91,MDM_Core_I1_n_92,MDM_Core_I1_n_93}),
         .\Use_Dbg_Mem_Access.output_reg[0] (MDM_Core_I1_n_45),
         .\Use_Dbg_Mem_Access.output_reg[0]_0 (master_data_out[31]),
-        .\Use_Serial_Unified_Completion.completion_status_reg[15] (MDM_Core_I1_n_28),
+        .\Use_E2.BSCANE2_I_0 (\Use_E2.BSCAN_I_n_10 ),
+        .\Use_Serial_Unified_Completion.completion_status_reg[15] (MDM_Core_I1_n_48),
         .\Use_Serial_Unified_Completion.count_reg[5] (\JTAG_CONTROL_I/Use_Serial_Unified_Completion.count_reg ),
         .\Use_Serial_Unified_Completion.sample_1_reg[15] (\Use_E2.BSCAN_I_n_13 ),
         .\Using_FPGA.Native (\Use_E2.BSCAN_I_n_8 ),
-        .p_101_out__0(\JTAG_CONTROL_I/p_101_out__0 ),
-        .p_125_out__0(\JTAG_CONTROL_I/p_125_out__0 ),
+        .p_113_out__0(\JTAG_CONTROL_I/p_113_out__0 ),
+        .p_137_out__0(\JTAG_CONTROL_I/p_137_out__0 ),
         .\shift_Count_reg[0] (p_0_in__0),
         .shift_n_reset1_out(shift_n_reset1_out),
         .tdo(tdo));
@@ -21231,30 +23442,37 @@ endmodule
 (* ORIG_REF_NAME = "MDM_Core" *) 
 module mcu_mdm_1_0_MDM_Core
    (Q,
+    rx_Data_Present,
+    RX_Data,
+    fifo_Data_Present,
     out,
+    \Use_UART.tx_buffered_2_reg ,
+    S_AXI_ARESETN_0,
     execute_3,
     rd_resp_zero,
     wr_resp_zero,
+    Ext_NM_BRK,
+    Debug_SYS_Rst,
+    Dbg_Rst_0,
     master_rd_start,
     master_data_rd,
     master_data_wr,
     Dbg_Disable_0,
     rd_wr_excl,
-    Ext_NM_BRK,
-    Debug_SYS_Rst,
-    Dbg_Rst_0,
+    Ext_BRK,
+    enable_interrupts,
     master_wr_start,
     Dbg_Reg_En_0,
-    \Use_BSCAN.command_reg[7] ,
-    p_101_out__0,
-    p_125_out__0,
-    Dbg_Shift_0,
+    p_137_out__0,
+    E,
+    p_113_out__0,
     Ext_JTAG_SEL,
     tdo,
-    \Use_Serial_Unified_Completion.sample_1_reg[15] ,
     \Use_Dbg_Mem_Access.output_reg[23] ,
-    \Use_Cross_Trigger.tdo_reg_reg[7] ,
-    \Use_BSCAN.command_reg[6] ,
+    \Use_BSCAN.command_reg[4] ,
+    tx_Buffer_Full,
+    RX_Buffer_Full,
+    \Use_Serial_Unified_Completion.sample_1_reg[15] ,
     \Use_Dbg_Mem_Access.rd_wr_len_reg[3] ,
     \Use_Dbg_Mem_Access.rd_wr_len_reg[0] ,
     \Use_Serial_Unified_Completion.count_reg[5] ,
@@ -21268,33 +23486,46 @@ module mcu_mdm_1_0_MDM_Core
     Trig_Ack_In_1,
     Trig_Ack_In_0,
     Dbg_Trig_Ack_In_0,
+    Interrupt,
     \Use_Dbg_Mem_Access.Master_wr_start_reg ,
+    \Use_Cross_Trigger.tdo_reg_reg[7] ,
     \Use_Dbg_Mem_Access.input_reg[0] ,
     \Use_Dbg_Mem_Access.rd_wr_size_reg[0] ,
     \Using_FPGA.Native ,
     \Using_FPGA.Native_0 ,
+    S_AXI_ACLK,
+    S_AXI_WDATA,
+    bus2ip_wrce,
+    reset_RX_FIFO,
+    reset_TX_FIFO,
     Reset,
     M_AXI_ACLK,
     \Use_Dbg_Mem_Access.rd_resp_zero_reg ,
     \Use_Dbg_Mem_Access.wr_resp_zero_reg ,
-    p_92_out,
+    p_97_out,
     sel_n_reg,
+    clear_Ext_BRK,
+    \Use_Uart.enable_interrupts_reg_0 ,
     shift_n_reset1_out,
     Scan_Reset_Sel,
     Scan_Reset,
     Scan_En,
-    Dbg_Shift_0_0,
+    \Use_UART.fifo_Din_reg[7] ,
     SEL,
     Ext_JTAG_TDO,
-    \Use_Dbg_Mem_Access.Master_wr_start_reg_0 ,
     wdata_exists,
     M_AXI_ARESETN,
-    Dbg_TDO_0,
     \Use_Dbg_Mem_Access.master_overrun_reg ,
     \Use_Dbg_Mem_Access.output_reg[29] ,
     master_data_out,
     \Use_Dbg_Mem_Access.output_reg[27] ,
+    Dbg_TDO_0,
+    FIFO_Write,
+    Bus_RNW_reg,
+    \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ,
     wr_state,
+    bus2ip_rdce,
+    S_AXI_ARESETN,
     D,
     \shift_Count_reg[0] ,
     Trig_Ack_Out_3,
@@ -21308,8 +23539,9 @@ module mcu_mdm_1_0_MDM_Core
     Trig_In_2,
     Trig_In_0,
     p_20_out,
-    Ext_JTAG_TDI,
-    E,
+    \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ,
+    Dbg_TDI_0,
+    \Use_Cross_Trigger.tdo_reg_reg[23] ,
     \Use_Dbg_Mem_Access.output_reg[0] ,
     \Use_Serial_Unified_Completion.completion_status_reg[10] ,
     \Use_Serial_Unified_Completion.completion_status_reg[15] ,
@@ -21317,30 +23549,37 @@ module mcu_mdm_1_0_MDM_Core
     AR,
     \Use_Serial_Unified_Completion.count_reg[5]_0 );
   output [0:0]Q;
+  output rx_Data_Present;
+  output [0:7]RX_Data;
+  output fifo_Data_Present;
   output out;
+  output \Use_UART.tx_buffered_2_reg ;
+  output S_AXI_ARESETN_0;
   output execute_3;
   output rd_resp_zero;
   output wr_resp_zero;
+  output Ext_NM_BRK;
+  output Debug_SYS_Rst;
+  output Dbg_Rst_0;
   output master_rd_start;
   output master_data_rd;
   output master_data_wr;
   output Dbg_Disable_0;
   output rd_wr_excl;
-  output Ext_NM_BRK;
-  output Debug_SYS_Rst;
-  output Dbg_Rst_0;
+  output Ext_BRK;
+  output enable_interrupts;
   output master_wr_start;
   output [0:7]Dbg_Reg_En_0;
-  output [0:0]\Use_BSCAN.command_reg[7] ;
-  output p_101_out__0;
-  output p_125_out__0;
-  output Dbg_Shift_0;
+  output p_137_out__0;
+  output [0:0]E;
+  output p_113_out__0;
   output Ext_JTAG_SEL;
   output tdo;
-  output [0:0]\Use_Serial_Unified_Completion.sample_1_reg[15] ;
   output [3:0]\Use_Dbg_Mem_Access.output_reg[23] ;
-  output [11:0]\Use_Cross_Trigger.tdo_reg_reg[7] ;
-  output \Use_BSCAN.command_reg[6] ;
+  output \Use_BSCAN.command_reg[4] ;
+  output tx_Buffer_Full;
+  output RX_Buffer_Full;
+  output [0:0]\Use_Serial_Unified_Completion.sample_1_reg[15] ;
   output \Use_Dbg_Mem_Access.rd_wr_len_reg[3] ;
   output [4:0]\Use_Dbg_Mem_Access.rd_wr_len_reg[0] ;
   output [0:0]\Use_Serial_Unified_Completion.count_reg[5] ;
@@ -21354,33 +23593,46 @@ module mcu_mdm_1_0_MDM_Core
   output Trig_Ack_In_1;
   output Trig_Ack_In_0;
   output [0:7]Dbg_Trig_Ack_In_0;
+  output Interrupt;
   output \Use_Dbg_Mem_Access.Master_wr_start_reg ;
+  output [11:0]\Use_Cross_Trigger.tdo_reg_reg[7] ;
   output [31:0]\Use_Dbg_Mem_Access.input_reg[0] ;
   output [1:0]\Use_Dbg_Mem_Access.rd_wr_size_reg[0] ;
   input \Using_FPGA.Native ;
   input \Using_FPGA.Native_0 ;
+  input S_AXI_ACLK;
+  input [7:0]S_AXI_WDATA;
+  input [0:0]bus2ip_wrce;
+  input reset_RX_FIFO;
+  input reset_TX_FIFO;
   input Reset;
   input M_AXI_ACLK;
   input \Use_Dbg_Mem_Access.rd_resp_zero_reg ;
   input \Use_Dbg_Mem_Access.wr_resp_zero_reg ;
-  input p_92_out;
+  input p_97_out;
   input sel_n_reg;
+  input clear_Ext_BRK;
+  input \Use_Uart.enable_interrupts_reg_0 ;
   input shift_n_reset1_out;
   input Scan_Reset_Sel;
   input Scan_Reset;
   input Scan_En;
-  input Dbg_Shift_0_0;
+  input \Use_UART.fifo_Din_reg[7] ;
   input SEL;
   input Ext_JTAG_TDO;
-  input \Use_Dbg_Mem_Access.Master_wr_start_reg_0 ;
   input wdata_exists;
   input M_AXI_ARESETN;
-  input Dbg_TDO_0;
   input \Use_Dbg_Mem_Access.master_overrun_reg ;
   input \Use_Dbg_Mem_Access.output_reg[29] ;
   input [26:0]master_data_out;
   input \Use_Dbg_Mem_Access.output_reg[27] ;
+  input Dbg_TDO_0;
+  input FIFO_Write;
+  input Bus_RNW_reg;
+  input \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ;
   input [0:0]wr_state;
+  input [0:0]bus2ip_rdce;
+  input S_AXI_ARESETN;
   input [0:0]D;
   input [0:0]\shift_Count_reg[0] ;
   input Trig_Ack_Out_3;
@@ -21394,8 +23646,9 @@ module mcu_mdm_1_0_MDM_Core
   input Trig_In_2;
   input Trig_In_0;
   input p_20_out;
-  input Ext_JTAG_TDI;
-  input [0:0]E;
+  input \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ;
+  input Dbg_TDI_0;
+  input [0:0]\Use_Cross_Trigger.tdo_reg_reg[23] ;
   input [4:0]\Use_Dbg_Mem_Access.output_reg[0] ;
   input [0:0]\Use_Serial_Unified_Completion.completion_status_reg[10] ;
   input [0:0]\Use_Serial_Unified_Completion.completion_status_reg[15] ;
@@ -21404,13 +23657,13 @@ module mcu_mdm_1_0_MDM_Core
   input [0:0]\Use_Serial_Unified_Completion.count_reg[5]_0 ;
 
   wire [0:0]AR;
+  wire Bus_RNW_reg;
   wire [0:0]Config_Reg;
   wire [0:0]D;
   wire Dbg_Disable_0;
   wire [0:7]Dbg_Reg_En_0;
   wire Dbg_Rst_0;
-  wire Dbg_Shift_0;
-  wire Dbg_Shift_0_0;
+  wire Dbg_TDI_0;
   wire Dbg_TDO_0;
   wire [0:7]Dbg_Trig_Ack_In_0;
   wire [0:7]Dbg_Trig_Ack_Out_0;
@@ -21418,18 +23671,29 @@ module mcu_mdm_1_0_MDM_Core
   wire [0:7]Dbg_Trig_Out_0;
   wire Debug_SYS_Rst;
   wire [0:0]E;
+  wire Ext_BRK;
   wire Ext_JTAG_SEL;
-  wire Ext_JTAG_TDI;
   wire Ext_JTAG_TDO;
   wire Ext_NM_BRK;
+  wire FIFO_Write;
+  wire \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ;
+  wire \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ;
+  wire Interrupt;
   wire MDM_SEL;
   wire M_AXI_ACLK;
   wire M_AXI_ARESETN;
   wire [3:0]PORT_Selector;
   wire [3:0]PORT_Selector_1;
   wire [0:0]Q;
+  wire Q_0;
+  wire RX_Buffer_Full;
+  wire [0:7]RX_Data;
   wire Reset;
   wire SEL;
+  wire S_AXI_ACLK;
+  wire S_AXI_ARESETN;
+  wire S_AXI_ARESETN_0;
+  wire [7:0]S_AXI_WDATA;
   wire Scan_En;
   wire Scan_Reset;
   wire Scan_Reset_Sel;
@@ -21481,12 +23745,11 @@ module mcu_mdm_1_0_MDM_Core
   wire \Use_BSCAN.Config_Reg_reg_n_0_[30] ;
   wire \Use_BSCAN.Config_Reg_reg_n_0_[3] ;
   wire \Use_BSCAN.Config_Reg_reg_n_0_[9] ;
-  wire \Use_BSCAN.command_reg[6] ;
-  wire [0:0]\Use_BSCAN.command_reg[7] ;
+  wire \Use_BSCAN.command_reg[4] ;
+  wire [0:0]\Use_Cross_Trigger.tdo_reg_reg[23] ;
   wire [11:0]\Use_Cross_Trigger.tdo_reg_reg[7] ;
   wire [11:0]\Use_Cross_Trigger.tdo_reg_reg[8] ;
   wire \Use_Dbg_Mem_Access.Master_wr_start_reg ;
-  wire \Use_Dbg_Mem_Access.Master_wr_start_reg_0 ;
   wire [31:0]\Use_Dbg_Mem_Access.input_reg[0] ;
   wire \Use_Dbg_Mem_Access.master_overrun_reg ;
   wire [4:0]\Use_Dbg_Mem_Access.output_reg[0] ;
@@ -21504,27 +23767,43 @@ module mcu_mdm_1_0_MDM_Core
   wire [0:0]\Use_Serial_Unified_Completion.count_reg[5] ;
   wire [0:0]\Use_Serial_Unified_Completion.count_reg[5]_0 ;
   wire [0:0]\Use_Serial_Unified_Completion.sample_1_reg[15] ;
+  wire \Use_UART.fifo_Din_reg[7] ;
+  wire \Use_UART.tx_buffered_2_reg ;
+  wire \Use_Uart.clear_Ext_BRK_reg_n_0 ;
+  wire \Use_Uart.enable_interrupts_reg_0 ;
+  wire \Use_Uart.reset_RX_FIFO_reg_n_0 ;
+  wire \Use_Uart.reset_TX_FIFO_reg_n_0 ;
   wire \Using_FPGA.Native ;
   wire \Using_FPGA.Native_0 ;
+  wire [0:0]bus2ip_rdce;
+  wire [0:0]bus2ip_wrce;
   wire clear;
+  wire clear_Ext_BRK;
+  wire enable_interrupts;
   wire execute_3;
+  wire fifo_Data_Present;
   wire [26:0]master_data_out;
   wire master_data_rd;
   wire master_data_wr;
   wire master_rd_start;
   wire master_wr_start;
   wire out;
-  wire p_101_out__0;
-  wire p_125_out__0;
+  wire p_113_out__0;
+  wire p_137_out__0;
   wire p_20_out;
-  wire p_3_out;
-  wire p_92_out;
+  wire p_5_out;
+  wire p_97_out;
   wire rd_resp_zero;
   wire rd_wr_excl;
+  wire reset_RX_FIFO;
+  wire reset_TX_FIFO;
+  wire rx_Data_Present;
   wire sel_n_reg;
   wire [0:0]\shift_Count_reg[0] ;
   wire shift_n_reset1_out;
   wire tdo;
+  wire tx_Buffer_Empty;
+  wire tx_Buffer_Full;
   wire wdata_exists;
   wire wr_resp_zero;
   wire [0:0]wr_state;
@@ -21540,11 +23819,11 @@ module mcu_mdm_1_0_MDM_Core
         .O(Ext_JTAG_SEL));
   mcu_mdm_1_0_JTAG_CONTROL JTAG_CONTROL_I
        (.AR(clear),
+        .Bus_RNW_reg(Bus_RNW_reg),
         .D(D),
         .Dbg_Reg_En_0(Dbg_Reg_En_0),
         .Dbg_Rst_0(Dbg_Rst_0),
-        .Dbg_Shift_0(Dbg_Shift_0),
-        .Dbg_Shift_0_0(Dbg_Shift_0_0),
+        .Dbg_TDI_0(Dbg_TDI_0),
         .Dbg_TDO_0(Dbg_TDO_0),
         .Dbg_Trig_Ack_In_0(Dbg_Trig_Ack_In_0),
         .Dbg_Trig_Ack_Out_0(Dbg_Trig_Ack_Out_0),
@@ -21552,13 +23831,22 @@ module mcu_mdm_1_0_MDM_Core
         .Dbg_Trig_Out_0(Dbg_Trig_Out_0),
         .Debug_SYS_Rst(Debug_SYS_Rst),
         .E(E),
-        .Ext_JTAG_TDI(Ext_JTAG_TDI),
+        .Ext_BRK(Ext_BRK),
         .Ext_NM_BRK(Ext_NM_BRK),
+        .FIFO_Write(FIFO_Write),
+        .\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg (\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ),
+        .\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg (\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ),
+        .Interrupt(Interrupt),
         .M_AXI_ACLK(M_AXI_ACLK),
         .M_AXI_ARESETN(M_AXI_ARESETN),
         .Q(Q),
+        .Q_0(Q_0),
+        .RX_Buffer_Full(RX_Buffer_Full),
+        .RX_Data(RX_Data),
         .Reset(Reset),
         .SEL(SEL),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_WDATA(S_AXI_WDATA),
         .Scan_En(Scan_En),
         .Scan_Reset(Scan_Reset),
         .Scan_Reset_Sel(Scan_Reset_Sel),
@@ -21578,12 +23866,11 @@ module mcu_mdm_1_0_MDM_Core
         .Trig_Out_1(Trig_Out_1),
         .Trig_Out_2(Trig_Out_2),
         .Trig_Out_3(Trig_Out_3),
-        .\Use_BSCAN.command_reg[6]_0 (\Use_BSCAN.command_reg[6] ),
-        .\Use_BSCAN.command_reg[7]_0 (\Use_BSCAN.command_reg[7] ),
+        .\Use_BSCAN.command_reg[4]_0 (\Use_BSCAN.command_reg[4] ),
+        .\Use_Cross_Trigger.tdo_reg_reg[23]_0 (\Use_Cross_Trigger.tdo_reg_reg[23] ),
         .\Use_Cross_Trigger.tdo_reg_reg[7]_0 (\Use_Cross_Trigger.tdo_reg_reg[7] ),
         .\Use_Cross_Trigger.tdo_reg_reg[8]_0 (\Use_Cross_Trigger.tdo_reg_reg[8] ),
         .\Use_Dbg_Mem_Access.Master_wr_start_reg_0 (\Use_Dbg_Mem_Access.Master_wr_start_reg ),
-        .\Use_Dbg_Mem_Access.Master_wr_start_reg_1 (\Use_Dbg_Mem_Access.Master_wr_start_reg_0 ),
         .\Use_Dbg_Mem_Access.input_reg[0]_0 (\Use_Dbg_Mem_Access.input_reg[0] ),
         .\Use_Dbg_Mem_Access.master_overrun_reg_0 (\Use_Dbg_Mem_Access.master_overrun_reg ),
         .\Use_Dbg_Mem_Access.output_reg[0]_0 (\Use_Dbg_Mem_Access.output_reg[0] ),
@@ -21600,10 +23887,19 @@ module mcu_mdm_1_0_MDM_Core
         .\Use_Serial_Unified_Completion.count_reg[5]_0 (\Use_Serial_Unified_Completion.count_reg[5] ),
         .\Use_Serial_Unified_Completion.count_reg[5]_1 (\Use_Serial_Unified_Completion.count_reg[5]_0 ),
         .\Use_Serial_Unified_Completion.sample_1_reg[15]_0 (\Use_Serial_Unified_Completion.sample_1_reg[15] ),
-        .\Using_FPGA.Native (p_125_out__0),
+        .\Use_UART.fifo_Din_reg[7]_0 (\Use_UART.fifo_Din_reg[7] ),
+        .\Use_UART.tx_buffered_2_reg_0 (\Use_UART.tx_buffered_2_reg ),
+        .\Using_FPGA.Native (p_137_out__0),
         .\Using_FPGA.Native_0 (\Using_FPGA.Native ),
         .\Using_FPGA.Native_1 (\Using_FPGA.Native_0 ),
+        .\Using_FPGA.Native_2 (\Use_Uart.reset_RX_FIFO_reg_n_0 ),
+        .\Using_FPGA.Native_3 (\Use_Uart.reset_TX_FIFO_reg_n_0 ),
+        .\Using_FPGA.Native_4 (\Use_Uart.clear_Ext_BRK_reg_n_0 ),
+        .bus2ip_rdce(bus2ip_rdce),
         .\command_1_reg[7]_0 (PORT_Selector),
+        .data_Exists_I_reg(rx_Data_Present),
+        .data_Exists_I_reg_0(fifo_Data_Present),
+        .enable_interrupts(enable_interrupts),
         .execute_3(execute_3),
         .master_data_out(master_data_out),
         .master_data_rd(master_data_rd),
@@ -21611,15 +23907,17 @@ module mcu_mdm_1_0_MDM_Core
         .master_rd_start(master_rd_start),
         .master_wr_start(master_wr_start),
         .out(out),
-        .p_101_out__0(p_101_out__0),
+        .p_113_out__0(p_113_out__0),
         .p_20_out(p_20_out),
-        .p_92_out(p_92_out),
+        .p_97_out(p_97_out),
         .rd_resp_zero(rd_resp_zero),
         .rd_wr_excl(rd_wr_excl),
         .sel_n_reg_0(sel_n_reg),
         .sel_n_reg_1(\Use_E2.BSCANE2_I_i_2_n_0 ),
         .\shift_Count_reg[0]_0 (\shift_Count_reg[0] ),
         .tdo(tdo),
+        .tx_Buffer_Empty(tx_Buffer_Empty),
+        .tx_Buffer_Full(tx_Buffer_Full),
         .wdata_exists(wdata_exists),
         .wr_resp_zero(wr_resp_zero),
         .wr_state(wr_state));
@@ -21939,13 +24237,13 @@ module mcu_mdm_1_0_MDM_Core
         .I2(PORT_Selector[1]),
         .I3(PORT_Selector[0]),
         .I4(SEL),
-        .I5(Dbg_Shift_0_0),
-        .O(p_3_out));
+        .I5(\Use_UART.fifo_Din_reg[7] ),
+        .O(p_5_out));
   FDCE #(
     .INIT(1'b0)) 
     \Use_BSCAN.TDI_Shifter_reg[0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_3_out),
+        .CE(p_5_out),
         .CLR(AR),
         .D(TDI_Shifter[1]),
         .Q(TDI_Shifter[0]));
@@ -21953,7 +24251,7 @@ module mcu_mdm_1_0_MDM_Core
     .INIT(1'b0)) 
     \Use_BSCAN.TDI_Shifter_reg[1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_3_out),
+        .CE(p_5_out),
         .CLR(AR),
         .D(TDI_Shifter[2]),
         .Q(TDI_Shifter[1]));
@@ -21961,7 +24259,7 @@ module mcu_mdm_1_0_MDM_Core
     .INIT(1'b0)) 
     \Use_BSCAN.TDI_Shifter_reg[2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_3_out),
+        .CE(p_5_out),
         .CLR(AR),
         .D(TDI_Shifter[3]),
         .Q(TDI_Shifter[2]));
@@ -21969,9 +24267,9 @@ module mcu_mdm_1_0_MDM_Core
     .INIT(1'b0)) 
     \Use_BSCAN.TDI_Shifter_reg[3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_3_out),
+        .CE(p_5_out),
         .CLR(AR),
-        .D(Ext_JTAG_TDI),
+        .D(Dbg_TDI_0),
         .Q(TDI_Shifter[3]));
   FDPE #(
     .INIT(1'b1)) 
@@ -21991,25 +24289,550 @@ module mcu_mdm_1_0_MDM_Core
         .I4(Config_Reg),
         .I5(PORT_Selector[1]),
         .O(\Use_E2.BSCANE2_I_i_2_n_0 ));
+  mcu_mdm_1_0_MB_FDRE_81 \Use_Uart.TX_Buffer_Empty_FDRE 
+       (.Q_0(Q_0),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .bus2ip_wrce(bus2ip_wrce),
+        .tx_Buffer_Empty(tx_Buffer_Empty));
+  FDRE \Use_Uart.clear_Ext_BRK_reg 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(clear_Ext_BRK),
+        .Q(\Use_Uart.clear_Ext_BRK_reg_n_0 ),
+        .R(S_AXI_ARESETN_0));
+  FDRE \Use_Uart.enable_interrupts_reg 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(\Use_Uart.enable_interrupts_reg_0 ),
+        .Q(enable_interrupts),
+        .R(S_AXI_ARESETN_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \Use_Uart.reset_RX_FIFO_i_1 
+       (.I0(S_AXI_ARESETN),
+        .O(S_AXI_ARESETN_0));
+  FDSE \Use_Uart.reset_RX_FIFO_reg 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(reset_RX_FIFO),
+        .Q(\Use_Uart.reset_RX_FIFO_reg_n_0 ),
+        .S(S_AXI_ARESETN_0));
+  FDSE \Use_Uart.reset_TX_FIFO_reg 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(reset_TX_FIFO),
+        .Q(\Use_Uart.reset_TX_FIFO_reg_n_0 ),
+        .S(S_AXI_ARESETN_0));
 endmodule
 
 (* ORIG_REF_NAME = "SRL_FIFO" *) 
 module mcu_mdm_1_0_SRL_FIFO
+   (data_Exists_I_reg_0,
+    RX_Data,
+    D,
+    RX_Buffer_Full,
+    \Using_FPGA.Native ,
+    S_AXI_ACLK,
+    Q,
+    \Use_UART.tdo_reg_reg[4] ,
+    \Use_UART.tdo_reg_reg[4]_0 ,
+    \Use_UART.tdo_reg_reg[4]_1 ,
+    Data_Out,
+    \Use_UART.tdo_reg_reg[4]_2 ,
+    data_Exists_I_reg_1,
+    bus2ip_rdce,
+    Bus_RNW_reg,
+    \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg );
+  output data_Exists_I_reg_0;
+  output [0:7]RX_Data;
+  output [1:0]D;
+  output RX_Buffer_Full;
+  input \Using_FPGA.Native ;
+  input S_AXI_ACLK;
+  input [7:0]Q;
+  input [1:0]\Use_UART.tdo_reg_reg[4] ;
+  input \Use_UART.tdo_reg_reg[4]_0 ;
+  input \Use_UART.tdo_reg_reg[4]_1 ;
+  input [1:0]Data_Out;
+  input \Use_UART.tdo_reg_reg[4]_2 ;
+  input data_Exists_I_reg_1;
+  input [0:0]bus2ip_rdce;
+  input Bus_RNW_reg;
+  input \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ;
+
+  wire [0:3]Addr;
+  wire \Addr_Counters[2].FDRE_I_n_5 ;
+  wire Bus_RNW_reg;
+  wire CI;
+  wire [1:0]D;
+  wire [1:0]Data_Out;
+  wire \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ;
+  wire LI;
+  wire [7:0]Q;
+  wire RX_Buffer_Full;
+  wire [0:7]RX_Data;
+  wire S;
+  wire S1_out;
+  wire S2_out;
+  wire S_AXI_ACLK;
+  wire [1:0]\Use_UART.tdo_reg_reg[4] ;
+  wire \Use_UART.tdo_reg_reg[4]_0 ;
+  wire \Use_UART.tdo_reg_reg[4]_1 ;
+  wire \Use_UART.tdo_reg_reg[4]_2 ;
+  wire \Using_FPGA.Native ;
+  wire addr_cy_0;
+  wire addr_cy_1;
+  wire addr_cy_2;
+  wire [0:0]bus2ip_rdce;
+  wire data_Exists_I_reg_0;
+  wire data_Exists_I_reg_1;
+  wire lopt;
+  wire lopt_1;
+  wire lopt_2;
+  wire lopt_3;
+  wire lopt_4;
+  wire sum_A_0;
+  wire sum_A_1;
+  wire sum_A_2;
+  wire sum_A_3;
+
+  mcu_mdm_1_0_MB_FDRE_99 \Addr_Counters[0].FDRE_I 
+       (.Addr(Addr[0]),
+        .O(sum_A_3),
+        .S(S),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .\Using_FPGA.Native_0 (\Using_FPGA.Native ),
+        .\Using_FPGA.Native_1 (data_Exists_I_reg_0),
+        .\Using_FPGA.Native_2 ({Addr[1],Addr[2],Addr[3]}),
+        .\Using_FPGA.Native_3 (data_Exists_I_reg_1),
+        .bus2ip_rdce(bus2ip_rdce));
+  mcu_mdm_1_0_MB_MUXCY_XORCY_100 \Addr_Counters[0].Used_MuxCY.MUXCY_L_I 
+       (.Addr(Addr[0]),
+        .CI(CI),
+        .LO(addr_cy_2),
+        .O(sum_A_3),
+        .S(S),
+        .lopt(lopt),
+        .lopt_1(Addr[1]),
+        .lopt_2(S2_out),
+        .lopt_3(lopt_1),
+        .lopt_4(Addr[2]),
+        .lopt_5(S1_out),
+        .lopt_6(lopt_2),
+        .lopt_7(lopt_3),
+        .lopt_8(lopt_4),
+        .lopt_9(LI));
+  mcu_mdm_1_0_MB_FDRE_101 \Addr_Counters[1].FDRE_I 
+       (.Addr({Addr[0],Addr[2],Addr[3]}),
+        .O(sum_A_2),
+        .S(S2_out),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .\Using_FPGA.Native_0 (Addr[1]),
+        .\Using_FPGA.Native_1 (\Using_FPGA.Native ),
+        .\Using_FPGA.Native_2 (data_Exists_I_reg_0),
+        .\Using_FPGA.Native_3 (data_Exists_I_reg_1),
+        .bus2ip_rdce(bus2ip_rdce));
+  mcu_mdm_1_0_MB_MUXCY_XORCY_102 \Addr_Counters[1].Used_MuxCY.MUXCY_L_I 
+       (.CI(addr_cy_2),
+        .LO(addr_cy_1),
+        .O(sum_A_2),
+        .S(S2_out),
+        .\Using_FPGA.Native (Addr[1]),
+        .lopt(lopt),
+        .lopt_1(lopt_2));
+  mcu_mdm_1_0_MB_FDRE_103 \Addr_Counters[2].FDRE_I 
+       (.Addr(Addr[2]),
+        .Bus_RNW_reg(Bus_RNW_reg),
+        .CI(CI),
+        .D(D[1]),
+        .Data_Out(Data_Out[1]),
+        .\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg (\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ),
+        .O(sum_A_1),
+        .RX_Buffer_Full(RX_Buffer_Full),
+        .S(S1_out),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .\Use_UART.tdo_reg_reg[4] (\Use_UART.tdo_reg_reg[4] [1]),
+        .\Use_UART.tdo_reg_reg[4]_0 (\Use_UART.tdo_reg_reg[4]_0 ),
+        .\Use_UART.tdo_reg_reg[4]_1 (\Use_UART.tdo_reg_reg[4]_1 ),
+        .\Use_UART.tdo_reg_reg[4]_2 (\Use_UART.tdo_reg_reg[4]_2 ),
+        .\Using_FPGA.Native_0 (\Using_FPGA.Native ),
+        .\Using_FPGA.Native_1 (data_Exists_I_reg_0),
+        .\Using_FPGA.Native_2 ({Addr[0],Addr[1],Addr[3]}),
+        .bus2ip_rdce(bus2ip_rdce),
+        .data_Exists_I_reg(\Addr_Counters[2].FDRE_I_n_5 ),
+        .data_Exists_I_reg_0(data_Exists_I_reg_1));
+  mcu_mdm_1_0_MB_MUXCY_XORCY_104 \Addr_Counters[2].Used_MuxCY.MUXCY_L_I 
+       (.Addr(Addr[2]),
+        .CI(addr_cy_1),
+        .LO(addr_cy_0),
+        .O(sum_A_1),
+        .S(S1_out),
+        .lopt(lopt_1),
+        .lopt_1(lopt_3));
+  mcu_mdm_1_0_MB_FDRE_105 \Addr_Counters[3].FDRE_I 
+       (.Addr({Addr[0],Addr[1],Addr[2]}),
+        .LI(LI),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .\Using_FPGA.Native_0 (Addr[3]),
+        .\Using_FPGA.Native_1 (\Using_FPGA.Native ),
+        .\Using_FPGA.Native_2 (data_Exists_I_reg_0),
+        .\Using_FPGA.Native_3 (data_Exists_I_reg_1),
+        .bus2ip_rdce(bus2ip_rdce),
+        .sum_A_0(sum_A_0));
+  mcu_mdm_1_0_MB_XORCY_106 \Addr_Counters[3].No_MuxCY.XORCY_I 
+       (.LI(LI),
+        .LO(addr_cy_0),
+        .lopt(lopt_4),
+        .sum_A_0(sum_A_0));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9_107 \FIFO_RAM[0].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .Q(Q[7]),
+        .RX_Data(RX_Data[0]),
+        .S_AXI_ACLK(S_AXI_ACLK));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9_108 \FIFO_RAM[1].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .Q(Q[6]),
+        .RX_Data(RX_Data[1]),
+        .S_AXI_ACLK(S_AXI_ACLK));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9_109 \FIFO_RAM[2].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .Q(Q[5]),
+        .RX_Data(RX_Data[2]),
+        .S_AXI_ACLK(S_AXI_ACLK));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9_110 \FIFO_RAM[3].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .Q(Q[4]),
+        .RX_Data(RX_Data[3]),
+        .S_AXI_ACLK(S_AXI_ACLK));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9_111 \FIFO_RAM[4].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .Q(Q[3]),
+        .RX_Data(RX_Data[4]),
+        .S_AXI_ACLK(S_AXI_ACLK));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9_112 \FIFO_RAM[5].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .Q(Q[2]),
+        .RX_Data(RX_Data[5]),
+        .S_AXI_ACLK(S_AXI_ACLK));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9_113 \FIFO_RAM[6].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .Q(Q[1]),
+        .RX_Data(RX_Data[6]),
+        .S_AXI_ACLK(S_AXI_ACLK));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9_114 \FIFO_RAM[7].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .Q(Q[0]),
+        .RX_Data(RX_Data[7]),
+        .S_AXI_ACLK(S_AXI_ACLK));
+  LUT6 #(
+    .INIT(64'hFFFF22F222F222F2)) 
+    \Use_UART.tdo_reg[5]_i_1 
+       (.I0(\Use_UART.tdo_reg_reg[4] [0]),
+        .I1(\Use_UART.tdo_reg_reg[4]_0 ),
+        .I2(\Use_UART.tdo_reg_reg[4]_1 ),
+        .I3(data_Exists_I_reg_0),
+        .I4(Data_Out[0]),
+        .I5(\Use_UART.tdo_reg_reg[4]_2 ),
+        .O(D[0]));
+  FDRE #(
+    .INIT(1'b0)) 
+    data_Exists_I_reg
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(\Addr_Counters[2].FDRE_I_n_5 ),
+        .Q(data_Exists_I_reg_0),
+        .R(1'b0));
+endmodule
+
+(* ORIG_REF_NAME = "SRL_FIFO" *) 
+module mcu_mdm_1_0_SRL_FIFO_83
+   (data_Exists_I_reg_0,
+    \S_AXI_WDATA[3] ,
+    D,
+    tx_Buffer_Full,
+    tx_Buffer_Empty,
+    Interrupt,
+    \Using_FPGA.Native ,
+    S_AXI_ACLK,
+    S_AXI_WDATA,
+    Q,
+    \Use_UART.tdo_reg_reg[7] ,
+    \Use_UART.tdo_reg_reg[7]_0 ,
+    \Use_UART.tdo_reg_reg[7]_1 ,
+    FIFO_Write,
+    data_Exists_I_reg_1,
+    Bus_RNW_reg,
+    \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ,
+    \Using_FPGA.Native_0 ,
+    Q_0,
+    Interrupt_0,
+    enable_interrupts);
+  output data_Exists_I_reg_0;
+  output [1:0]\S_AXI_WDATA[3] ;
+  output [5:0]D;
+  output tx_Buffer_Full;
+  output tx_Buffer_Empty;
+  output Interrupt;
+  input \Using_FPGA.Native ;
+  input S_AXI_ACLK;
+  input [7:0]S_AXI_WDATA;
+  input [4:0]Q;
+  input \Use_UART.tdo_reg_reg[7] ;
+  input \Use_UART.tdo_reg_reg[7]_0 ;
+  input \Use_UART.tdo_reg_reg[7]_1 ;
+  input FIFO_Write;
+  input data_Exists_I_reg_1;
+  input Bus_RNW_reg;
+  input \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ;
+  input \Using_FPGA.Native_0 ;
+  input Q_0;
+  input Interrupt_0;
+  input enable_interrupts;
+
+  wire [0:3]Addr;
+  wire \Addr_Counters[2].FDRE_I_n_5 ;
+  wire Bus_RNW_reg;
+  wire CI;
+  wire [5:0]D;
+  wire [6:6]Data_Out;
+  wire FIFO_Write;
+  wire \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ;
+  wire Interrupt;
+  wire Interrupt_0;
+  wire LI;
+  wire [4:0]Q;
+  wire Q_0;
+  wire S;
+  wire S1_out;
+  wire S2_out;
+  wire S_AXI_ACLK;
+  wire [7:0]S_AXI_WDATA;
+  wire [1:0]\S_AXI_WDATA[3] ;
+  wire \Use_UART.tdo_reg_reg[7] ;
+  wire \Use_UART.tdo_reg_reg[7]_0 ;
+  wire \Use_UART.tdo_reg_reg[7]_1 ;
+  wire \Using_FPGA.Native ;
+  wire \Using_FPGA.Native_0 ;
+  wire addr_cy_0;
+  wire addr_cy_1;
+  wire addr_cy_2;
+  wire data_Exists_I_reg_0;
+  wire data_Exists_I_reg_1;
+  wire enable_interrupts;
+  wire lopt;
+  wire lopt_1;
+  wire lopt_2;
+  wire lopt_3;
+  wire lopt_4;
+  wire sum_A_0;
+  wire sum_A_1;
+  wire sum_A_2;
+  wire sum_A_3;
+  wire tx_Buffer_Empty;
+  wire tx_Buffer_Full;
+
+  mcu_mdm_1_0_MB_FDRE_84 \Addr_Counters[0].FDRE_I 
+       (.Addr(Addr[0]),
+        .FIFO_Write(FIFO_Write),
+        .O(sum_A_3),
+        .S(S),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .\Using_FPGA.Native_0 (\Using_FPGA.Native ),
+        .\Using_FPGA.Native_1 (data_Exists_I_reg_0),
+        .\Using_FPGA.Native_2 ({Addr[1],Addr[2],Addr[3]}),
+        .\Using_FPGA.Native_3 (data_Exists_I_reg_1));
+  mcu_mdm_1_0_MB_MUXCY_XORCY_85 \Addr_Counters[0].Used_MuxCY.MUXCY_L_I 
+       (.Addr(Addr[0]),
+        .CI(CI),
+        .LO(addr_cy_2),
+        .O(sum_A_3),
+        .S(S),
+        .lopt(lopt),
+        .lopt_1(Addr[1]),
+        .lopt_2(S2_out),
+        .lopt_3(lopt_1),
+        .lopt_4(Addr[2]),
+        .lopt_5(S1_out),
+        .lopt_6(lopt_2),
+        .lopt_7(lopt_3),
+        .lopt_8(lopt_4),
+        .lopt_9(LI));
+  mcu_mdm_1_0_MB_FDRE_86 \Addr_Counters[1].FDRE_I 
+       (.Addr({Addr[0],Addr[2],Addr[3]}),
+        .FIFO_Write(FIFO_Write),
+        .O(sum_A_2),
+        .S(S2_out),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .\Using_FPGA.Native_0 (Addr[1]),
+        .\Using_FPGA.Native_1 (\Using_FPGA.Native ),
+        .\Using_FPGA.Native_2 (data_Exists_I_reg_0),
+        .\Using_FPGA.Native_3 (data_Exists_I_reg_1));
+  mcu_mdm_1_0_MB_MUXCY_XORCY_87 \Addr_Counters[1].Used_MuxCY.MUXCY_L_I 
+       (.CI(addr_cy_2),
+        .LO(addr_cy_1),
+        .O(sum_A_2),
+        .S(S2_out),
+        .\Using_FPGA.Native (Addr[1]),
+        .lopt(lopt),
+        .lopt_1(lopt_2));
+  mcu_mdm_1_0_MB_FDRE_88 \Addr_Counters[2].FDRE_I 
+       (.Addr(Addr[2]),
+        .Bus_RNW_reg(Bus_RNW_reg),
+        .CI(CI),
+        .D(D[1]),
+        .Data_Out(Data_Out),
+        .FIFO_Write(FIFO_Write),
+        .\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg (\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ),
+        .O(sum_A_1),
+        .Q(Q[1]),
+        .S(S1_out),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .\Use_UART.tdo_reg_reg[6] (\Use_UART.tdo_reg_reg[7] ),
+        .\Use_UART.tdo_reg_reg[6]_0 (\Use_UART.tdo_reg_reg[7]_0 ),
+        .\Use_UART.tdo_reg_reg[6]_1 (\Use_UART.tdo_reg_reg[7]_1 ),
+        .\Using_FPGA.Native_0 (\Using_FPGA.Native ),
+        .\Using_FPGA.Native_1 (data_Exists_I_reg_0),
+        .\Using_FPGA.Native_2 ({Addr[0],Addr[1],Addr[3]}),
+        .\Using_FPGA.Native_3 (\Using_FPGA.Native_0 ),
+        .data_Exists_I_reg(\Addr_Counters[2].FDRE_I_n_5 ),
+        .data_Exists_I_reg_0(data_Exists_I_reg_1),
+        .tx_Buffer_Full(tx_Buffer_Full));
+  mcu_mdm_1_0_MB_MUXCY_XORCY_89 \Addr_Counters[2].Used_MuxCY.MUXCY_L_I 
+       (.Addr(Addr[2]),
+        .CI(addr_cy_1),
+        .LO(addr_cy_0),
+        .O(sum_A_1),
+        .S(S1_out),
+        .lopt(lopt_1),
+        .lopt_1(lopt_3));
+  mcu_mdm_1_0_MB_FDRE_90 \Addr_Counters[3].FDRE_I 
+       (.Addr({Addr[0],Addr[1],Addr[2]}),
+        .FIFO_Write(FIFO_Write),
+        .LI(LI),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .\Using_FPGA.Native_0 (Addr[3]),
+        .\Using_FPGA.Native_1 (\Using_FPGA.Native ),
+        .\Using_FPGA.Native_2 (data_Exists_I_reg_0),
+        .\Using_FPGA.Native_3 (data_Exists_I_reg_1),
+        .sum_A_0(sum_A_0));
+  mcu_mdm_1_0_MB_XORCY_91 \Addr_Counters[3].No_MuxCY.XORCY_I 
+       (.LI(LI),
+        .LO(addr_cy_0),
+        .lopt(lopt_4),
+        .sum_A_0(sum_A_0));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9 \FIFO_RAM[0].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .D(D[5]),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_WDATA(S_AXI_WDATA[7]),
+        .\Use_UART.tdo_reg_reg[0] (\Use_UART.tdo_reg_reg[7]_1 ));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9_92 \FIFO_RAM[1].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .D(D[4]),
+        .Q(Q[4]),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_WDATA(S_AXI_WDATA[6]),
+        .\Use_UART.tdo_reg_reg[1] (\Use_UART.tdo_reg_reg[7]_1 ),
+        .\Use_UART.tdo_reg_reg[1]_0 (\Use_UART.tdo_reg_reg[7] ));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9_93 \FIFO_RAM[2].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .D(D[3]),
+        .Q(Q[3]),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_WDATA(S_AXI_WDATA[5]),
+        .\Use_UART.tdo_reg_reg[2] (\Use_UART.tdo_reg_reg[7]_1 ),
+        .\Use_UART.tdo_reg_reg[2]_0 (\Use_UART.tdo_reg_reg[7] ));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9_94 \FIFO_RAM[3].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .D(D[2]),
+        .Q(Q[2]),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_WDATA(S_AXI_WDATA[4]),
+        .\Use_UART.tdo_reg_reg[3] (\Use_UART.tdo_reg_reg[7]_1 ),
+        .\Use_UART.tdo_reg_reg[3]_0 (\Use_UART.tdo_reg_reg[7] ));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9_95 \FIFO_RAM[4].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_WDATA(S_AXI_WDATA[3]),
+        .\S_AXI_WDATA[3] (\S_AXI_WDATA[3] [1]));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9_96 \FIFO_RAM[5].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_WDATA(S_AXI_WDATA[2]),
+        .\S_AXI_WDATA[2] (\S_AXI_WDATA[3] [0]));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9_97 \FIFO_RAM[6].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .Data_Out(Data_Out),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_WDATA(S_AXI_WDATA[1]));
+  mcu_mdm_1_0_MB_SRL16E__parameterized9_98 \FIFO_RAM[7].D16.SRL16E_I 
+       (.Addr(Addr),
+        .CI(CI),
+        .D(D[0]),
+        .Q(Q[0]),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_WDATA(S_AXI_WDATA[0]),
+        .\Use_UART.tdo_reg_reg[7] (\Use_UART.tdo_reg_reg[7] ),
+        .\Use_UART.tdo_reg_reg[7]_0 (\Use_UART.tdo_reg_reg[7]_0 ),
+        .\Use_UART.tdo_reg_reg[7]_1 (data_Exists_I_reg_0),
+        .\Use_UART.tdo_reg_reg[7]_2 (\Use_UART.tdo_reg_reg[7]_1 ));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  LUT4 #(
+    .INIT(16'hF100)) 
+    Interrupt_INST_0
+       (.I0(Q_0),
+        .I1(data_Exists_I_reg_0),
+        .I2(Interrupt_0),
+        .I3(enable_interrupts),
+        .O(Interrupt));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  LUT1 #(
+    .INIT(2'h1)) 
+    \Using_FPGA.Native_i_2__0 
+       (.I0(data_Exists_I_reg_0),
+        .O(tx_Buffer_Empty));
+  FDRE #(
+    .INIT(1'b0)) 
+    data_Exists_I_reg
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(\Addr_Counters[2].FDRE_I_n_5 ),
+        .Q(data_Exists_I_reg_0),
+        .R(1'b0));
+endmodule
+
+(* ORIG_REF_NAME = "SRL_FIFO" *) 
+module mcu_mdm_1_0_SRL_FIFO__parameterized2
    (M_AXI_ARESETN_0,
     \Using_FPGA.Native ,
     \Use_Dbg_Mem_Access.output_reg[23] ,
     M_AXI_ACLK,
     \Use_Dbg_Mem_Access.output_reg[24] ,
-    \Use_Dbg_Mem_Access.output_reg[25] ,
-    lmb_rd_idle,
     \Use_Dbg_Mem_Access.output_reg[28] ,
-    \Use_Dbg_Mem_Access.output_reg[28]_0 ,
-    \Use_Dbg_Mem_Access.output_reg[24]_0 ,
-    \Use_Dbg_Mem_Access.output_reg[24]_1 ,
-    \Use_Dbg_Mem_Access.output_reg[28]_1 ,
     lmb_rd_resp,
+    \Use_Dbg_Mem_Access.output_reg[28]_0 ,
+    \Use_Dbg_Mem_Access.output_reg[28]_1 ,
     \Use_Dbg_Mem_Access.output_reg[26] ,
     lmb_wr_resp,
+    \Use_Dbg_Mem_Access.output_reg[25] ,
+    lmb_rd_idle,
+    \Use_Dbg_Mem_Access.output_reg[24]_0 ,
+    \Use_Dbg_Mem_Access.output_reg[24]_1 ,
     M_AXI_ARESETN,
     data_Exists_I_reg_0,
     M_AXI_RVALID,
@@ -22022,16 +24845,16 @@ module mcu_mdm_1_0_SRL_FIFO
   output [3:0]\Use_Dbg_Mem_Access.output_reg[23] ;
   input M_AXI_ACLK;
   input [3:0]\Use_Dbg_Mem_Access.output_reg[24] ;
-  input \Use_Dbg_Mem_Access.output_reg[25] ;
-  input lmb_rd_idle;
   input \Use_Dbg_Mem_Access.output_reg[28] ;
-  input \Use_Dbg_Mem_Access.output_reg[28]_0 ;
-  input \Use_Dbg_Mem_Access.output_reg[24]_0 ;
-  input \Use_Dbg_Mem_Access.output_reg[24]_1 ;
-  input \Use_Dbg_Mem_Access.output_reg[28]_1 ;
   input [0:0]lmb_rd_resp;
+  input \Use_Dbg_Mem_Access.output_reg[28]_0 ;
+  input \Use_Dbg_Mem_Access.output_reg[28]_1 ;
   input \Use_Dbg_Mem_Access.output_reg[26] ;
   input [0:0]lmb_wr_resp;
+  input \Use_Dbg_Mem_Access.output_reg[25] ;
+  input lmb_rd_idle;
+  input \Use_Dbg_Mem_Access.output_reg[24]_0 ;
+  input \Use_Dbg_Mem_Access.output_reg[24]_1 ;
   input M_AXI_ARESETN;
   input data_Exists_I_reg_0;
   input M_AXI_RVALID;
@@ -22358,8 +25181,8 @@ module mcu_mdm_1_0_SRL_FIFO
         .\Use_Dbg_Mem_Access.output_reg[24] (\Use_Dbg_Mem_Access.output_reg[24] [3]),
         .\Use_Dbg_Mem_Access.output_reg[24]_0 (\Use_Dbg_Mem_Access.output_reg[24]_0 ),
         .\Use_Dbg_Mem_Access.output_reg[24]_1 (\Use_Dbg_Mem_Access.output_reg[24]_1 ),
-        .\Use_Dbg_Mem_Access.output_reg[24]_2 (\Use_Dbg_Mem_Access.output_reg[28] ),
-        .\Use_Dbg_Mem_Access.output_reg[24]_3 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
+        .\Use_Dbg_Mem_Access.output_reg[24]_2 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
+        .\Use_Dbg_Mem_Access.output_reg[24]_3 (\Use_Dbg_Mem_Access.output_reg[28]_1 ),
         .lmb_rd_idle(lmb_rd_idle),
         .lmb_ready_vec_q(lmb_ready_vec_q));
   mcu_mdm_1_0_MB_SRLC32E_66 \FIFO_RAM[25].D32.SRLC32E_I 
@@ -22371,8 +25194,8 @@ module mcu_mdm_1_0_SRL_FIFO
         .\Use_Dbg_Mem_Access.output_reg[24] (\Use_Dbg_Mem_Access.output_reg[23] [2]),
         .\Use_Dbg_Mem_Access.output_reg[25] (\Use_Dbg_Mem_Access.output_reg[24] [2]),
         .\Use_Dbg_Mem_Access.output_reg[25]_0 (\Use_Dbg_Mem_Access.output_reg[25] ),
-        .\Use_Dbg_Mem_Access.output_reg[25]_1 (\Use_Dbg_Mem_Access.output_reg[28] ),
-        .\Use_Dbg_Mem_Access.output_reg[25]_2 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
+        .\Use_Dbg_Mem_Access.output_reg[25]_1 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
+        .\Use_Dbg_Mem_Access.output_reg[25]_2 (\Use_Dbg_Mem_Access.output_reg[28]_1 ),
         .lmb_rd_idle(lmb_rd_idle),
         .lmb_ready_vec_q(lmb_ready_vec_q));
   mcu_mdm_1_0_MB_SRLC32E_67 \FIFO_RAM[26].D32.SRLC32E_I 
@@ -22384,8 +25207,8 @@ module mcu_mdm_1_0_SRL_FIFO
         .\Use_Dbg_Mem_Access.output_reg[25] (\Use_Dbg_Mem_Access.output_reg[23] [1]),
         .\Use_Dbg_Mem_Access.output_reg[26] (\Use_Dbg_Mem_Access.output_reg[24] [1]),
         .\Use_Dbg_Mem_Access.output_reg[26]_0 (\Use_Dbg_Mem_Access.output_reg[26] ),
-        .\Use_Dbg_Mem_Access.output_reg[26]_1 (\Use_Dbg_Mem_Access.output_reg[28] ),
-        .\Use_Dbg_Mem_Access.output_reg[26]_2 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
+        .\Use_Dbg_Mem_Access.output_reg[26]_1 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
+        .\Use_Dbg_Mem_Access.output_reg[26]_2 (\Use_Dbg_Mem_Access.output_reg[28]_1 ),
         .lmb_rd_idle(lmb_rd_idle),
         .lmb_ready_vec_q(lmb_ready_vec_q),
         .lmb_wr_resp(lmb_wr_resp));
@@ -22406,9 +25229,9 @@ module mcu_mdm_1_0_SRL_FIFO
         .Q(Q[3]),
         .\Use_Dbg_Mem_Access.output_reg[27] (\Use_Dbg_Mem_Access.output_reg[23] [0]),
         .\Use_Dbg_Mem_Access.output_reg[28] (\Use_Dbg_Mem_Access.output_reg[24] [0]),
-        .\Use_Dbg_Mem_Access.output_reg[28]_0 (\Use_Dbg_Mem_Access.output_reg[28]_1 ),
-        .\Use_Dbg_Mem_Access.output_reg[28]_1 (\Use_Dbg_Mem_Access.output_reg[28] ),
-        .\Use_Dbg_Mem_Access.output_reg[28]_2 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
+        .\Use_Dbg_Mem_Access.output_reg[28]_0 (\Use_Dbg_Mem_Access.output_reg[28] ),
+        .\Use_Dbg_Mem_Access.output_reg[28]_1 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
+        .\Use_Dbg_Mem_Access.output_reg[28]_2 (\Use_Dbg_Mem_Access.output_reg[28]_1 ),
         .lmb_rd_idle(lmb_rd_idle),
         .lmb_rd_resp(lmb_rd_resp),
         .lmb_ready_vec_q(lmb_ready_vec_q));
@@ -22522,7 +25345,7 @@ module mcu_mdm_1_0_SRL_FIFO
 endmodule
 
 (* ORIG_REF_NAME = "SRL_FIFO" *) 
-module mcu_mdm_1_0_SRL_FIFO_0
+module mcu_mdm_1_0_SRL_FIFO__parameterized2_0
    (data_Exists_I_reg_0,
     M_AXI_WDATA,
     \Using_FPGA.Native ,
@@ -22691,7 +25514,7 @@ module mcu_mdm_1_0_SRL_FIFO_0
         .\Using_FPGA.Native_2 (data_Exists_I_reg_0),
         .\Using_FPGA.Native_3 (\Using_FPGA.Native_0 ),
         .\Using_FPGA.Native_4 (\Using_FPGA.Native_1 ),
-        .\Using_FPGA.Native_i_1__35 (Addr[3]),
+        .\Using_FPGA.Native_i_1__38 (Addr[3]),
         .hsum_A_40__0(hsum_A_40__0),
         .lmb_ready_vec_q(lmb_ready_vec_q),
         .sum_A_0(sum_A_0));
@@ -22909,6 +25732,570 @@ module mcu_mdm_1_0_SRL_FIFO_0
         .R(\Using_FPGA.Native ));
 endmodule
 
+(* ORIG_REF_NAME = "address_decoder" *) 
+module mcu_mdm_1_0_address_decoder
+   (\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1]_0 ,
+    \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ,
+    Bus_RNW_reg_reg_0,
+    D,
+    \GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3]_0 ,
+    \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_0 ,
+    FIFO_Write,
+    ip2bus_error,
+    bus2ip_wrce,
+    clear_Ext_BRK,
+    reset_RX_FIFO,
+    reset_TX_FIFO,
+    \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_1 ,
+    bus2ip_rdce,
+    \S_AXI_WDATA[4] ,
+    \FSM_onehot_state_reg[3] ,
+    \FSM_onehot_state_reg[2] ,
+    \FSM_onehot_state_reg[2]_0 ,
+    start2,
+    S_AXI_ACLK,
+    Q,
+    state1__2,
+    S_AXI_AWVALID,
+    S_AXI_WVALID,
+    S_AXI_ARVALID,
+    data_Exists_I_reg,
+    tx_Buffer_Full,
+    rx_Data_Present,
+    S_AXI_WDATA,
+    RX_Data,
+    RX_Buffer_Full,
+    fifo_Data_Present,
+    enable_interrupts,
+    S_AXI_ARESETN,
+    S_AXI_RREADY,
+    S_AXI_RVALID,
+    S_AXI_BREADY,
+    S_AXI_BVALID,
+    S_AXI_BRESP,
+    bus2ip_rnw_i,
+    \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_2 ,
+    \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_3 );
+  output \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1]_0 ;
+  output \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ;
+  output Bus_RNW_reg_reg_0;
+  output [2:0]D;
+  output \GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3]_0 ;
+  output \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_0 ;
+  output FIFO_Write;
+  output ip2bus_error;
+  output [0:0]bus2ip_wrce;
+  output clear_Ext_BRK;
+  output reset_RX_FIFO;
+  output reset_TX_FIFO;
+  output [7:0]\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_1 ;
+  output [0:0]bus2ip_rdce;
+  output \S_AXI_WDATA[4] ;
+  output \FSM_onehot_state_reg[3] ;
+  output \FSM_onehot_state_reg[2] ;
+  output \FSM_onehot_state_reg[2]_0 ;
+  input start2;
+  input S_AXI_ACLK;
+  input [3:0]Q;
+  input state1__2;
+  input S_AXI_AWVALID;
+  input S_AXI_WVALID;
+  input S_AXI_ARVALID;
+  input data_Exists_I_reg;
+  input tx_Buffer_Full;
+  input rx_Data_Present;
+  input [3:0]S_AXI_WDATA;
+  input [0:7]RX_Data;
+  input RX_Buffer_Full;
+  input fifo_Data_Present;
+  input enable_interrupts;
+  input S_AXI_ARESETN;
+  input S_AXI_RREADY;
+  input S_AXI_RVALID;
+  input S_AXI_BREADY;
+  input S_AXI_BVALID;
+  input [0:0]S_AXI_BRESP;
+  input bus2ip_rnw_i;
+  input \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_2 ;
+  input \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_3 ;
+
+  wire Bus_RNW_reg_i_1_n_0;
+  wire Bus_RNW_reg_reg_0;
+  wire [2:0]D;
+  wire FIFO_Write;
+  wire \FSM_onehot_state_reg[2] ;
+  wire \FSM_onehot_state_reg[2]_0 ;
+  wire \FSM_onehot_state_reg[3] ;
+  wire \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ;
+  wire \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1]_0 ;
+  wire \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg ;
+  wire \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_0 ;
+  wire [7:0]\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_1 ;
+  wire \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_2 ;
+  wire \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_3 ;
+  wire \GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg ;
+  wire \GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3]_0 ;
+  wire [3:0]Q;
+  wire RX_Buffer_Full;
+  wire [0:7]RX_Data;
+  wire S_AXI_ACLK;
+  wire S_AXI_ARESETN;
+  wire S_AXI_ARVALID;
+  wire S_AXI_AWVALID;
+  wire S_AXI_BREADY;
+  wire [0:0]S_AXI_BRESP;
+  wire S_AXI_BVALID;
+  wire S_AXI_RREADY;
+  wire S_AXI_RVALID;
+  wire [3:0]S_AXI_WDATA;
+  wire \S_AXI_WDATA[4] ;
+  wire S_AXI_WVALID;
+  wire [0:0]bus2ip_rdce;
+  wire bus2ip_rnw_i;
+  wire [0:0]bus2ip_wrce;
+  wire ce_expnd_i_0;
+  wire ce_expnd_i_1;
+  wire ce_expnd_i_2;
+  wire ce_expnd_i_3;
+  wire clear_Ext_BRK;
+  wire cs_ce_clr;
+  wire data_Exists_I_reg;
+  wire enable_interrupts;
+  wire fifo_Data_Present;
+  wire ip2bus_error;
+  wire reset_RX_FIFO;
+  wire reset_TX_FIFO;
+  wire rx_Data_Present;
+  wire start2;
+  wire state1__2;
+  wire tx_Buffer_Full;
+
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
+    Bus_RNW_reg_i_1
+       (.I0(bus2ip_rnw_i),
+        .I1(start2),
+        .I2(Bus_RNW_reg_reg_0),
+        .O(Bus_RNW_reg_i_1_n_0));
+  FDRE Bus_RNW_reg_reg
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(Bus_RNW_reg_i_1_n_0),
+        .Q(Bus_RNW_reg_reg_0),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'hF888FFFFF888F888)) 
+    \FSM_onehot_state[0]_i_1 
+       (.I0(Q[3]),
+        .I1(\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3]_0 ),
+        .I2(Q[2]),
+        .I3(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_0 ),
+        .I4(state1__2),
+        .I5(Q[0]),
+        .O(D[0]));
+  LUT6 #(
+    .INIT(64'h0080FFFF00800080)) 
+    \FSM_onehot_state[2]_i_1 
+       (.I0(S_AXI_AWVALID),
+        .I1(S_AXI_WVALID),
+        .I2(Q[1]),
+        .I3(S_AXI_ARVALID),
+        .I4(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_0 ),
+        .I5(Q[2]),
+        .O(D[1]));
+  LUT4 #(
+    .INIT(16'hF444)) 
+    \FSM_onehot_state[3]_i_1 
+       (.I0(\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3]_0 ),
+        .I1(Q[3]),
+        .I2(S_AXI_ARVALID),
+        .I3(Q[1]),
+        .O(D[2]));
+  FDRE \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0] 
+       (.C(S_AXI_ACLK),
+        .CE(start2),
+        .D(ce_expnd_i_3),
+        .Q(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ),
+        .R(cs_ce_clr));
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \GEN_BKEND_CE_REGISTERS[1].ce_out_i[1]_i_1 
+       (.I0(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_3 ),
+        .I1(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_2 ),
+        .O(ce_expnd_i_2));
+  FDRE \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1] 
+       (.C(S_AXI_ACLK),
+        .CE(start2),
+        .D(ce_expnd_i_2),
+        .Q(\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1]_0 ),
+        .R(cs_ce_clr));
+  FDRE \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] 
+       (.C(S_AXI_ACLK),
+        .CE(start2),
+        .D(ce_expnd_i_1),
+        .Q(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg ),
+        .R(cs_ce_clr));
+  LUT5 #(
+    .INIT(32'hFFFEFFFF)) 
+    \GEN_BKEND_CE_REGISTERS[3].ce_out_i[3]_i_1 
+       (.I0(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg ),
+        .I1(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ),
+        .I2(\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1]_0 ),
+        .I3(\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg ),
+        .I4(S_AXI_ARESETN),
+        .O(cs_ce_clr));
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \GEN_BKEND_CE_REGISTERS[3].ce_out_i[3]_i_2 
+       (.I0(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_2 ),
+        .I1(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_3 ),
+        .O(ce_expnd_i_0));
+  FDRE \GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3] 
+       (.C(S_AXI_ACLK),
+        .CE(start2),
+        .D(ce_expnd_i_0),
+        .Q(\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg ),
+        .R(cs_ce_clr));
+  mcu_mdm_1_0_pselect_f \MEM_DECODE_GEN[0].PER_CE_GEN[0].MULTIPLE_CES_THIS_CS_GEN.CE_I 
+       (.\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0] (\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_3 ),
+        .\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 (\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_2 ),
+        .ce_expnd_i_3(ce_expnd_i_3));
+  mcu_mdm_1_0_pselect_f__parameterized1 \MEM_DECODE_GEN[0].PER_CE_GEN[2].MULTIPLE_CES_THIS_CS_GEN.CE_I 
+       (.\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] (\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_2 ),
+        .\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_0 (\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_3 ),
+        .ce_expnd_i_1(ce_expnd_i_1));
+  (* SOFT_HLUTNM = "soft_lutpair46" *) 
+  LUT5 #(
+    .INIT(32'hFF00FE00)) 
+    S_AXI_ARREADY_INST_0
+       (.I0(\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg ),
+        .I1(\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1]_0 ),
+        .I2(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ),
+        .I3(Bus_RNW_reg_reg_0),
+        .I4(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg ),
+        .O(\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3]_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair46" *) 
+  LUT5 #(
+    .INIT(32'h00FF00FE)) 
+    S_AXI_WREADY_INST_0
+       (.I0(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg ),
+        .I1(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ),
+        .I2(\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1]_0 ),
+        .I3(Bus_RNW_reg_reg_0),
+        .I4(\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg ),
+        .O(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  LUT3 #(
+    .INIT(8'h40)) 
+    \Use_Uart.clear_Ext_BRK_i_1 
+       (.I0(Bus_RNW_reg_reg_0),
+        .I1(\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg ),
+        .I2(S_AXI_WDATA[2]),
+        .O(clear_Ext_BRK));
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  LUT4 #(
+    .INIT(16'hFB08)) 
+    \Use_Uart.enable_interrupts_i_1 
+       (.I0(S_AXI_WDATA[3]),
+        .I1(\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg ),
+        .I2(Bus_RNW_reg_reg_0),
+        .I3(enable_interrupts),
+        .O(\S_AXI_WDATA[4] ));
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  LUT3 #(
+    .INIT(8'h40)) 
+    \Use_Uart.reset_RX_FIFO_i_2 
+       (.I0(Bus_RNW_reg_reg_0),
+        .I1(\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg ),
+        .I2(S_AXI_WDATA[1]),
+        .O(reset_RX_FIFO));
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  LUT3 #(
+    .INIT(8'h40)) 
+    \Use_Uart.reset_TX_FIFO_i_1 
+       (.I0(Bus_RNW_reg_reg_0),
+        .I1(\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg ),
+        .I2(S_AXI_WDATA[0]),
+        .O(reset_TX_FIFO));
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  LUT3 #(
+    .INIT(8'h40)) 
+    \Using_FPGA.Native_I1_i_3 
+       (.I0(Bus_RNW_reg_reg_0),
+        .I1(\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1]_0 ),
+        .I2(data_Exists_I_reg),
+        .O(FIFO_Write));
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \Using_FPGA.Native_I1_i_3__0 
+       (.I0(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ),
+        .I1(Bus_RNW_reg_reg_0),
+        .O(bus2ip_rdce));
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \Using_FPGA.Native_i_1__1 
+       (.I0(\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1]_0 ),
+        .I1(Bus_RNW_reg_reg_0),
+        .O(bus2ip_wrce));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \s_axi_bresp_i[1]_i_1 
+       (.I0(ip2bus_error),
+        .I1(Q[2]),
+        .I2(S_AXI_BRESP),
+        .O(\FSM_onehot_state_reg[2]_0 ));
+  LUT4 #(
+    .INIT(16'h8F88)) 
+    s_axi_bvalid_i_i_1
+       (.I0(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_0 ),
+        .I1(Q[2]),
+        .I2(S_AXI_BREADY),
+        .I3(S_AXI_BVALID),
+        .O(\FSM_onehot_state_reg[2] ));
+  LUT5 #(
+    .INIT(32'hAA00C000)) 
+    \s_axi_rdata_i[0]_i_1 
+       (.I0(rx_Data_Present),
+        .I1(RX_Data[7]),
+        .I2(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ),
+        .I3(Bus_RNW_reg_reg_0),
+        .I4(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg ),
+        .O(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_1 [0]));
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  LUT5 #(
+    .INIT(32'hAA00C000)) 
+    \s_axi_rdata_i[1]_i_1 
+       (.I0(RX_Buffer_Full),
+        .I1(RX_Data[6]),
+        .I2(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ),
+        .I3(Bus_RNW_reg_reg_0),
+        .I4(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg ),
+        .O(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_1 [1]));
+  LUT5 #(
+    .INIT(32'h5500C000)) 
+    \s_axi_rdata_i[2]_i_1 
+       (.I0(fifo_Data_Present),
+        .I1(RX_Data[5]),
+        .I2(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ),
+        .I3(Bus_RNW_reg_reg_0),
+        .I4(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg ),
+        .O(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_1 [2]));
+  LUT5 #(
+    .INIT(32'hAA00C000)) 
+    \s_axi_rdata_i[3]_i_1 
+       (.I0(tx_Buffer_Full),
+        .I1(RX_Data[4]),
+        .I2(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ),
+        .I3(Bus_RNW_reg_reg_0),
+        .I4(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg ),
+        .O(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_1 [3]));
+  LUT5 #(
+    .INIT(32'hAA00C000)) 
+    \s_axi_rdata_i[4]_i_1 
+       (.I0(enable_interrupts),
+        .I1(RX_Data[3]),
+        .I2(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ),
+        .I3(Bus_RNW_reg_reg_0),
+        .I4(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg ),
+        .O(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_1 [4]));
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  LUT4 #(
+    .INIT(16'h4000)) 
+    \s_axi_rdata_i[5]_i_1 
+       (.I0(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg ),
+        .I1(Bus_RNW_reg_reg_0),
+        .I2(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ),
+        .I3(RX_Data[2]),
+        .O(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_1 [5]));
+  LUT4 #(
+    .INIT(16'h4000)) 
+    \s_axi_rdata_i[6]_i_1 
+       (.I0(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg ),
+        .I1(Bus_RNW_reg_reg_0),
+        .I2(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ),
+        .I3(RX_Data[1]),
+        .O(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_1 [6]));
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  LUT4 #(
+    .INIT(16'h4000)) 
+    \s_axi_rdata_i[7]_i_1 
+       (.I0(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg ),
+        .I1(Bus_RNW_reg_reg_0),
+        .I2(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ),
+        .I3(RX_Data[0]),
+        .O(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_1 [7]));
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  LUT5 #(
+    .INIT(32'h0F008888)) 
+    \s_axi_rresp_i[1]_i_1 
+       (.I0(tx_Buffer_Full),
+        .I1(\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1]_0 ),
+        .I2(rx_Data_Present),
+        .I3(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ),
+        .I4(Bus_RNW_reg_reg_0),
+        .O(ip2bus_error));
+  LUT4 #(
+    .INIT(16'h8F88)) 
+    s_axi_rvalid_i_i_1
+       (.I0(\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3]_0 ),
+        .I1(Q[3]),
+        .I2(S_AXI_RREADY),
+        .I3(S_AXI_RVALID),
+        .O(\FSM_onehot_state_reg[3] ));
+endmodule
+
+(* ORIG_REF_NAME = "axi_lite_ipif" *) 
+module mcu_mdm_1_0_axi_lite_ipif
+   (\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ,
+    \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ,
+    S_AXI_RRESP,
+    Bus_RNW_reg,
+    S_AXI_RVALID,
+    S_AXI_BVALID,
+    S_AXI_BRESP,
+    \GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3] ,
+    \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] ,
+    FIFO_Write,
+    bus2ip_wrce,
+    clear_Ext_BRK,
+    reset_RX_FIFO,
+    reset_TX_FIFO,
+    bus2ip_rdce,
+    \S_AXI_WDATA[4] ,
+    S_AXI_RDATA,
+    rst_reg,
+    S_AXI_ACLK,
+    S_AXI_AWVALID,
+    S_AXI_WVALID,
+    S_AXI_ARVALID,
+    data_Exists_I_reg,
+    tx_Buffer_Full,
+    rx_Data_Present,
+    S_AXI_WDATA,
+    RX_Data,
+    RX_Buffer_Full,
+    fifo_Data_Present,
+    enable_interrupts,
+    S_AXI_RREADY,
+    S_AXI_BREADY,
+    S_AXI_ARESETN,
+    S_AXI_ARADDR,
+    S_AXI_AWADDR);
+  output \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ;
+  output \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ;
+  output [0:0]S_AXI_RRESP;
+  output Bus_RNW_reg;
+  output S_AXI_RVALID;
+  output S_AXI_BVALID;
+  output [0:0]S_AXI_BRESP;
+  output \GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3] ;
+  output \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] ;
+  output FIFO_Write;
+  output [0:0]bus2ip_wrce;
+  output clear_Ext_BRK;
+  output reset_RX_FIFO;
+  output reset_TX_FIFO;
+  output [0:0]bus2ip_rdce;
+  output \S_AXI_WDATA[4] ;
+  output [7:0]S_AXI_RDATA;
+  input rst_reg;
+  input S_AXI_ACLK;
+  input S_AXI_AWVALID;
+  input S_AXI_WVALID;
+  input S_AXI_ARVALID;
+  input data_Exists_I_reg;
+  input tx_Buffer_Full;
+  input rx_Data_Present;
+  input [3:0]S_AXI_WDATA;
+  input [0:7]RX_Data;
+  input RX_Buffer_Full;
+  input fifo_Data_Present;
+  input enable_interrupts;
+  input S_AXI_RREADY;
+  input S_AXI_BREADY;
+  input S_AXI_ARESETN;
+  input [1:0]S_AXI_ARADDR;
+  input [1:0]S_AXI_AWADDR;
+
+  wire Bus_RNW_reg;
+  wire FIFO_Write;
+  wire \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ;
+  wire \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ;
+  wire \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] ;
+  wire \GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3] ;
+  wire RX_Buffer_Full;
+  wire [0:7]RX_Data;
+  wire S_AXI_ACLK;
+  wire [1:0]S_AXI_ARADDR;
+  wire S_AXI_ARESETN;
+  wire S_AXI_ARVALID;
+  wire [1:0]S_AXI_AWADDR;
+  wire S_AXI_AWVALID;
+  wire S_AXI_BREADY;
+  wire [0:0]S_AXI_BRESP;
+  wire S_AXI_BVALID;
+  wire [7:0]S_AXI_RDATA;
+  wire S_AXI_RREADY;
+  wire [0:0]S_AXI_RRESP;
+  wire S_AXI_RVALID;
+  wire [3:0]S_AXI_WDATA;
+  wire \S_AXI_WDATA[4] ;
+  wire S_AXI_WVALID;
+  wire [0:0]bus2ip_rdce;
+  wire [0:0]bus2ip_wrce;
+  wire clear_Ext_BRK;
+  wire data_Exists_I_reg;
+  wire enable_interrupts;
+  wire fifo_Data_Present;
+  wire reset_RX_FIFO;
+  wire reset_TX_FIFO;
+  wire rst_reg;
+  wire rx_Data_Present;
+  wire tx_Buffer_Full;
+
+  mcu_mdm_1_0_slave_attachment I_SLAVE_ATTACHMENT
+       (.Bus_RNW_reg_reg(Bus_RNW_reg),
+        .FIFO_Write(FIFO_Write),
+        .\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0] (\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg ),
+        .\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1] (\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ),
+        .\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] (\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] ),
+        .\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3] (\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3] ),
+        .RX_Buffer_Full(RX_Buffer_Full),
+        .RX_Data(RX_Data),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_ARADDR(S_AXI_ARADDR),
+        .S_AXI_ARESETN(S_AXI_ARESETN),
+        .S_AXI_ARVALID(S_AXI_ARVALID),
+        .S_AXI_AWADDR(S_AXI_AWADDR),
+        .S_AXI_AWVALID(S_AXI_AWVALID),
+        .S_AXI_BREADY(S_AXI_BREADY),
+        .S_AXI_BRESP(S_AXI_BRESP),
+        .S_AXI_BVALID(S_AXI_BVALID),
+        .S_AXI_RDATA(S_AXI_RDATA),
+        .S_AXI_RREADY(S_AXI_RREADY),
+        .S_AXI_RRESP(S_AXI_RRESP),
+        .S_AXI_RVALID(S_AXI_RVALID),
+        .S_AXI_WDATA(S_AXI_WDATA),
+        .\S_AXI_WDATA[4] (\S_AXI_WDATA[4] ),
+        .S_AXI_WVALID(S_AXI_WVALID),
+        .bus2ip_rdce(bus2ip_rdce),
+        .bus2ip_wrce(bus2ip_wrce),
+        .clear_Ext_BRK(clear_Ext_BRK),
+        .data_Exists_I_reg(data_Exists_I_reg),
+        .enable_interrupts(enable_interrupts),
+        .fifo_Data_Present(fifo_Data_Present),
+        .reset_RX_FIFO(reset_RX_FIFO),
+        .reset_TX_FIFO(reset_TX_FIFO),
+        .rst_reg_0(rst_reg),
+        .rx_Data_Present(rx_Data_Present),
+        .tx_Buffer_Full(tx_Buffer_Full));
+endmodule
+
 (* ORIG_REF_NAME = "bus_master" *) 
 module mcu_mdm_1_0_bus_master
    (Reset,
@@ -22924,10 +26311,9 @@ module mcu_mdm_1_0_bus_master
     M_AXI_WLAST,
     axi_wvalid_reg_0,
     M_AXI_ARVALID,
-    \Use_BSCAN.command_reg[7] ,
-    \Has_FIFO.lmb_rd_idle_reg_0 ,
     \Use_Dbg_Mem_Access.output_reg[23] ,
-    p_92_out,
+    \Has_FIFO.lmb_rd_idle_reg_0 ,
+    p_97_out,
     M_AXI_BREADY,
     \FSM_sequential_wr_state_reg[1]_0 ,
     p_20_out,
@@ -22947,12 +26333,11 @@ module mcu_mdm_1_0_bus_master
     M_AXI_ACLK,
     D,
     rd_wr_excl,
-    \Use_Dbg_Mem_Access.Master_wr_start_reg ,
-    execute_3,
-    out,
     \Use_Dbg_Mem_Access.output_reg[24] ,
     \Use_Dbg_Mem_Access.output_reg[28] ,
     \Use_Dbg_Mem_Access.output_reg[28]_0 ,
+    execute_3,
+    out,
     M_AXI_AWREADY,
     M_AXI_WREADY,
     \M_AXI_AWLEN_reg[4]_0 ,
@@ -22990,10 +26375,9 @@ module mcu_mdm_1_0_bus_master
   output M_AXI_WLAST;
   output axi_wvalid_reg_0;
   output M_AXI_ARVALID;
-  output \Use_BSCAN.command_reg[7] ;
-  output \Has_FIFO.lmb_rd_idle_reg_0 ;
   output [3:0]\Use_Dbg_Mem_Access.output_reg[23] ;
-  output p_92_out;
+  output \Has_FIFO.lmb_rd_idle_reg_0 ;
+  output p_97_out;
   output M_AXI_BREADY;
   output [0:0]\FSM_sequential_wr_state_reg[1]_0 ;
   output p_20_out;
@@ -23013,12 +26397,11 @@ module mcu_mdm_1_0_bus_master
   input M_AXI_ACLK;
   input [31:0]D;
   input rd_wr_excl;
-  input [0:0]\Use_Dbg_Mem_Access.Master_wr_start_reg ;
-  input execute_3;
-  input out;
   input [3:0]\Use_Dbg_Mem_Access.output_reg[24] ;
   input \Use_Dbg_Mem_Access.output_reg[28] ;
   input \Use_Dbg_Mem_Access.output_reg[28]_0 ;
+  input execute_3;
+  input out;
   input M_AXI_AWREADY;
   input M_AXI_WREADY;
   input [4:0]\M_AXI_AWLEN_reg[4]_0 ;
@@ -23157,8 +26540,6 @@ module mcu_mdm_1_0_bus_master
   wire [3:0]M_AXI_WSTRB;
   wire [31:0]Q;
   wire Reset;
-  wire \Use_BSCAN.command_reg[7] ;
-  wire [0:0]\Use_Dbg_Mem_Access.Master_wr_start_reg ;
   wire [3:0]\Use_Dbg_Mem_Access.output_reg[23] ;
   wire [3:0]\Use_Dbg_Mem_Access.output_reg[24] ;
   wire \Use_Dbg_Mem_Access.output_reg[28] ;
@@ -23206,9 +26587,9 @@ module mcu_mdm_1_0_bus_master
   wire master_wr_start;
   wire out;
   wire p_20_out;
-  wire p_88_in;
   wire p_8_out__2;
-  wire p_92_out;
+  wire p_93_in;
+  wire p_97_out;
   wire rd_resp_zero;
   wire [1:0]rd_state;
   wire rd_wr_excl;
@@ -23227,7 +26608,7 @@ module mcu_mdm_1_0_bus_master
         .I4(M_AXI_RVALID),
         .I5(M_AXI_RLAST),
         .O(\FSM_sequential_Has_FIFO.rd_state[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT4 #(
     .INIT(16'h6EEE)) 
     \FSM_sequential_Has_FIFO.rd_state[1]_i_1 
@@ -23250,7 +26631,7 @@ module mcu_mdm_1_0_bus_master
         .D(\FSM_sequential_Has_FIFO.rd_state[1]_i_1_n_0 ),
         .Q(rd_state[1]),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
   LUT5 #(
     .INIT(32'h00B8CCB8)) 
     \FSM_sequential_wr_state[0]_i_1 
@@ -23269,7 +26650,7 @@ module mcu_mdm_1_0_bus_master
         .I3(M_AXI_WREADY),
         .I4(axi_wvalid_i_2_n_0),
         .O(\FSM_sequential_wr_state[0]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
   LUT3 #(
     .INIT(8'h6E)) 
     \FSM_sequential_wr_state[1]_i_1 
@@ -23311,7 +26692,7 @@ module mcu_mdm_1_0_bus_master
         .I4(lmb_ready_vec_q),
         .I5(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .O(\Has_FIFO.LMB_Addr_Strobe_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair40" *) 
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
     \Has_FIFO.LMB_Addr_Strobe_i_3 
@@ -23321,7 +26702,7 @@ module mcu_mdm_1_0_bus_master
         .I3(\Has_FIFO.lmb_len_reg_n_0_[1] ),
         .I4(\Has_FIFO.lmb_len_reg_n_0_[2] ),
         .O(\Has_FIFO.LMB_Addr_Strobe_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT5 #(
     .INIT(32'h0FF0FF0E)) 
     \Has_FIFO.LMB_Addr_Strobe_i_4 
@@ -23649,7 +27030,7 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.M_AXI_ARVALID_i_1_n_0 ),
         .Q(M_AXI_ARVALID),
         .R(Reset));
-  mcu_mdm_1_0_SRL_FIFO \Has_FIFO.Read_FIFO 
+  mcu_mdm_1_0_SRL_FIFO__parameterized2 \Has_FIFO.Read_FIFO 
        (.M_AXI_ACLK(M_AXI_ACLK),
         .M_AXI_ARESETN(M_AXI_ARESETN),
         .M_AXI_ARESETN_0(Reset),
@@ -23662,9 +27043,9 @@ module mcu_mdm_1_0_bus_master
         .\Use_Dbg_Mem_Access.output_reg[24]_1 (\Has_FIFO.lmb_wr_idle_reg_n_0 ),
         .\Use_Dbg_Mem_Access.output_reg[25] (\Has_FIFO.axi_rd_idle_reg_n_0 ),
         .\Use_Dbg_Mem_Access.output_reg[26] (\axi_wr_resp_reg_n_0_[1] ),
-        .\Use_Dbg_Mem_Access.output_reg[28] (\Use_Dbg_Mem_Access.output_reg[28] ),
-        .\Use_Dbg_Mem_Access.output_reg[28]_0 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
-        .\Use_Dbg_Mem_Access.output_reg[28]_1 (\Has_FIFO.axi_rd_resp_reg_n_0_[1] ),
+        .\Use_Dbg_Mem_Access.output_reg[28] (\Has_FIFO.axi_rd_resp_reg_n_0_[1] ),
+        .\Use_Dbg_Mem_Access.output_reg[28]_0 (\Use_Dbg_Mem_Access.output_reg[28] ),
+        .\Use_Dbg_Mem_Access.output_reg[28]_1 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
         .\Using_FPGA.Native (\Using_FPGA.Native ),
         .data_Exists_I_reg_0(\Has_FIFO.axi_rready_reg_n_0 ),
         .lmb_rd_idle(lmb_rd_idle),
@@ -23672,7 +27053,7 @@ module mcu_mdm_1_0_bus_master
         .lmb_ready_vec_q(lmb_ready_vec_q),
         .lmb_wr_resp(lmb_wr_resp),
         .master_data_rd(master_data_rd));
-  mcu_mdm_1_0_SRL_FIFO_0 \Has_FIFO.Write_FIFO 
+  mcu_mdm_1_0_SRL_FIFO__parameterized2_0 \Has_FIFO.Write_FIFO 
        (.D(D),
         .M_AXI_ACLK(M_AXI_ACLK),
         .M_AXI_WDATA(M_AXI_WDATA),
@@ -23717,7 +27098,7 @@ module mcu_mdm_1_0_bus_master
         .I4(axi_rd_resp),
         .I5(\Has_FIFO.axi_rd_resp_reg_n_0_[1] ),
         .O(\Has_FIFO.axi_rd_resp[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT5 #(
     .INIT(32'h880000F0)) 
     \Has_FIFO.axi_rd_resp[1]_i_2 
@@ -23739,7 +27120,7 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.axi_rd_resp[1]_i_1_n_0 ),
         .Q(\Has_FIFO.axi_rd_resp_reg_n_0_[1] ),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
   LUT5 #(
     .INIT(32'h00040000)) 
     \Has_FIFO.axi_rd_start_i_1 
@@ -23771,7 +27152,7 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.axi_rready_i_1_n_0 ),
         .Q(\Has_FIFO.axi_rready_reg_n_0 ),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
   LUT5 #(
     .INIT(32'h00040000)) 
     \Has_FIFO.axi_wr_start_i_1 
@@ -23787,7 +27168,7 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.axi_wr_start_i_1_n_0 ),
         .Q(axi_wr_start),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
   LUT3 #(
     .INIT(8'h74)) 
     \Has_FIFO.lmb_addr[0]_i_1 
@@ -23795,7 +27176,7 @@ module mcu_mdm_1_0_bus_master
         .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .I2(D[2]),
         .O(\Has_FIFO.lmb_addr[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
   LUT4 #(
     .INIT(16'h2EE2)) 
     \Has_FIFO.lmb_addr[1]_i_1 
@@ -23804,7 +27185,7 @@ module mcu_mdm_1_0_bus_master
         .I2(\Has_FIFO.lmb_addr_reg[4]_0 [1]),
         .I3(\Has_FIFO.lmb_addr_reg[4]_0 [0]),
         .O(\Has_FIFO.lmb_addr[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
   LUT5 #(
     .INIT(32'h3FAAC0AA)) 
     \Has_FIFO.lmb_addr[2]_i_1 
@@ -23841,7 +27222,7 @@ module mcu_mdm_1_0_bus_master
         .I3(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .I4(\Has_FIFO.lmb_addr_reg[4]_0 [4]),
         .O(\Has_FIFO.lmb_addr[4]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \Has_FIFO.lmb_addr[4]_i_3 
@@ -23879,7 +27260,7 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.lmb_addr[4]_i_2_n_0 ),
         .Q(\Has_FIFO.lmb_addr_reg[4]_0 [4]),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
   LUT3 #(
     .INIT(8'h74)) 
     \Has_FIFO.lmb_len[0]_i_1 
@@ -23887,7 +27268,7 @@ module mcu_mdm_1_0_bus_master
         .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .I2(\M_AXI_AWLEN_reg[4]_0 [0]),
         .O(\Has_FIFO.lmb_len[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
   LUT4 #(
     .INIT(16'hE22E)) 
     \Has_FIFO.lmb_len[1]_i_1 
@@ -23924,7 +27305,7 @@ module mcu_mdm_1_0_bus_master
         .I3(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .I4(\Has_FIFO.lmb_len_reg_n_0_[4] ),
         .O(\Has_FIFO.lmb_len[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair40" *) 
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     \Has_FIFO.lmb_len[4]_i_2 
@@ -23987,21 +27368,21 @@ module mcu_mdm_1_0_bus_master
         .I4(lmb_wr_idle),
         .I5(lmb_rd_resp),
         .O(\Has_FIFO.lmb_rd_resp[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair70" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \Has_FIFO.lmb_rd_resp[1]_i_2 
        (.I0(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .I1(lmb_ready_vec_q),
         .O(\Has_FIFO.lmb_rd_resp[1]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \Has_FIFO.lmb_rd_resp[1]_i_3 
        (.I0(\Has_FIFO.lmb_state_reg_n_0_[0] ),
         .I1(\Has_FIFO.lmb_state_reg_n_0_[1] ),
         .O(\Has_FIFO.lmb_rd_resp[1]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT3 #(
     .INIT(8'h01)) 
     \Has_FIFO.lmb_rd_resp[1]_i_4 
@@ -24015,7 +27396,7 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.lmb_rd_resp[1]_i_1_n_0 ),
         .Q(lmb_rd_resp),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
   LUT5 #(
     .INIT(32'hAAFFEA00)) 
     \Has_FIFO.lmb_state[0]_i_1 
@@ -24035,7 +27416,7 @@ module mcu_mdm_1_0_bus_master
         .I4(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .I5(\Has_FIFO.lmb_state_reg_n_0_[0] ),
         .O(\Has_FIFO.lmb_state[0]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
   LUT5 #(
     .INIT(32'hFEFEFF00)) 
     \Has_FIFO.lmb_state[0]_i_3 
@@ -24095,7 +27476,7 @@ module mcu_mdm_1_0_bus_master
         .I4(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .I5(\Has_FIFO.lmb_state_reg[0]_0 ),
         .O(\Has_FIFO.lmb_state[2]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \Has_FIFO.lmb_state[2]_i_3 
@@ -24120,7 +27501,7 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.lmb_state[2]_i_1_n_0 ),
         .Q(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
   LUT5 #(
     .INIT(32'hFFFD0001)) 
     \Has_FIFO.lmb_wr_idle_i_1 
@@ -24146,7 +27527,7 @@ module mcu_mdm_1_0_bus_master
         .I4(lmb_wr_idle),
         .I5(lmb_wr_resp),
         .O(\Has_FIFO.lmb_wr_resp[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \Has_FIFO.lmb_wr_resp[1]_i_2 
@@ -24199,7 +27580,7 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.rd_resp[1]_i_1_n_0 ),
         .Q(\Has_FIFO.rd_resp_reg_n_0_[1] ),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair70" *) 
   LUT3 #(
     .INIT(8'hE0)) 
     \Has_FIFO.ue_i_1 
@@ -24213,7 +27594,7 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.ue_i_1_n_0 ),
         .Q(ue),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  (* SOFT_HLUTNM = "soft_lutpair67" *) 
   LUT4 #(
     .INIT(16'hFECC)) 
     \LMB_Byte_Enable_31[0]_INST_0 
@@ -24222,7 +27603,7 @@ module mcu_mdm_1_0_bus_master
         .I2(D[0]),
         .I3(D[1]),
         .O(LMB_Byte_Enable_31[0]));
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  (* SOFT_HLUTNM = "soft_lutpair68" *) 
   LUT4 #(
     .INIT(16'hECFC)) 
     \LMB_Byte_Enable_31[1]_INST_0 
@@ -24231,7 +27612,7 @@ module mcu_mdm_1_0_bus_master
         .I2(D[1]),
         .I3(D[0]),
         .O(LMB_Byte_Enable_31[1]));
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  (* SOFT_HLUTNM = "soft_lutpair68" *) 
   LUT4 #(
     .INIT(16'hCCFE)) 
     \LMB_Byte_Enable_31[2]_INST_0 
@@ -24240,7 +27621,7 @@ module mcu_mdm_1_0_bus_master
         .I2(D[0]),
         .I3(D[1]),
         .O(LMB_Byte_Enable_31[2]));
-  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  (* SOFT_HLUTNM = "soft_lutpair67" *) 
   LUT4 #(
     .INIT(16'hCCEF)) 
     \LMB_Byte_Enable_31[3]_INST_0 
@@ -24495,7 +27876,7 @@ module mcu_mdm_1_0_bus_master
         .D(\M_AXI_AWSIZE_reg[1]_0 [1]),
         .Q(M_AXI_AWSIZE[1]),
         .S(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  (* SOFT_HLUTNM = "soft_lutpair69" *) 
   LUT4 #(
     .INIT(16'hF730)) 
     M_AXI_AWVALID_i_1
@@ -24510,7 +27891,7 @@ module mcu_mdm_1_0_bus_master
         .D(M_AXI_AWVALID_i_1_n_0),
         .Q(M_AXI_AWVALID),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
   LUT2 #(
     .INIT(4'h8)) 
     M_AXI_BREADY_INST_0
@@ -24536,7 +27917,7 @@ module mcu_mdm_1_0_bus_master
         .I4(\FSM_sequential_wr_state_reg[1]_0 ),
         .I5(wr_state),
         .O(M_AXI_WLAST_i_3_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair46" *) 
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     M_AXI_WLAST_i_4
@@ -24574,12 +27955,16 @@ module mcu_mdm_1_0_bus_master
         .D(LMB_Byte_Enable_31[0]),
         .Q(M_AXI_WSTRB[3]),
         .R(Reset));
-  LUT2 #(
-    .INIT(4'h8)) 
-    \Use_Dbg_Mem_Access.Master_rd_start_i_3 
-       (.I0(\Has_FIFO.lmb_rd_idle_reg_0 ),
-        .I1(\Use_Dbg_Mem_Access.Master_wr_start_reg ),
-        .O(\Use_BSCAN.command_reg[7] ));
+  LUT6 #(
+    .INIT(64'h0000800000000000)) 
+    \Use_Dbg_Mem_Access.Master_rd_start_i_2 
+       (.I0(lmb_rd_idle),
+        .I1(\Has_FIFO.axi_rd_idle_reg_n_0 ),
+        .I2(\Has_FIFO.lmb_wr_idle_reg_n_0 ),
+        .I3(axi_wr_idle_reg_n_0),
+        .I4(execute_3),
+        .I5(out),
+        .O(\Has_FIFO.lmb_rd_idle_reg_0 ));
   LUT4 #(
     .INIT(16'h8000)) 
     \Use_Dbg_Mem_Access.access_idle_1_i_1 
@@ -24587,7 +27972,7 @@ module mcu_mdm_1_0_bus_master
         .I1(\Has_FIFO.lmb_wr_idle_reg_n_0 ),
         .I2(\Has_FIFO.axi_rd_idle_reg_n_0 ),
         .I3(lmb_rd_idle),
-        .O(p_92_out));
+        .O(p_97_out));
   LUT6 #(
     .INIT(64'hFFFFAAA8AAA8AAA8)) 
     \Use_Dbg_Mem_Access.master_error_i_2 
@@ -24596,26 +27981,16 @@ module mcu_mdm_1_0_bus_master
         .I2(\Has_FIFO.axi_rd_resp_reg_n_0_[1] ),
         .I3(lmb_rd_resp),
         .I4(wr_resp_zero),
-        .I5(p_88_in),
+        .I5(p_93_in),
         .O(p_20_out));
-  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  (* SOFT_HLUTNM = "soft_lutpair71" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     \Use_Dbg_Mem_Access.master_error_i_4 
        (.I0(\axi_wr_resp_reg[0]_0 ),
         .I1(\axi_wr_resp_reg_n_0_[1] ),
         .I2(lmb_wr_resp),
-        .O(p_88_in));
-  LUT6 #(
-    .INIT(64'h0000800000000000)) 
-    \Use_Dbg_Mem_Access.master_overrun_i_2 
-       (.I0(lmb_rd_idle),
-        .I1(\Has_FIFO.axi_rd_idle_reg_n_0 ),
-        .I2(\Has_FIFO.lmb_wr_idle_reg_n_0 ),
-        .I3(axi_wr_idle_reg_n_0),
-        .I4(execute_3),
-        .I5(out),
-        .O(\Has_FIFO.lmb_rd_idle_reg_0 ));
+        .O(p_93_in));
   LUT3 #(
     .INIT(8'h01)) 
     \Use_Dbg_Mem_Access.rd_resp_zero_i_1 
@@ -24623,7 +27998,7 @@ module mcu_mdm_1_0_bus_master
         .I1(\Has_FIFO.axi_rd_resp_reg_n_0_[1] ),
         .I2(\Has_FIFO.axi_rd_resp_reg[0]_0 ),
         .O(\Has_FIFO.lmb_rd_resp_reg[1]_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  (* SOFT_HLUTNM = "soft_lutpair71" *) 
   LUT3 #(
     .INIT(8'h01)) 
     \Use_Dbg_Mem_Access.wr_resp_zero_i_1 
@@ -24631,7 +28006,7 @@ module mcu_mdm_1_0_bus_master
         .I1(\axi_wr_resp_reg_n_0_[1] ),
         .I2(\axi_wr_resp_reg[0]_0 ),
         .O(\Has_FIFO.lmb_wr_resp_reg[1]_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  (* SOFT_HLUTNM = "soft_lutpair69" *) 
   LUT4 #(
     .INIT(16'hFA08)) 
     address_done_i_1
@@ -24706,7 +28081,7 @@ module mcu_mdm_1_0_bus_master
         .D(\axi_wr_resp[1]_i_1_n_0 ),
         .Q(\axi_wr_resp_reg_n_0_[1] ),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
   LUT5 #(
     .INIT(32'hFF7F0F00)) 
     axi_wvalid_i_1
@@ -24716,7 +28091,7 @@ module mcu_mdm_1_0_bus_master
         .I3(wr_state),
         .I4(axi_wvalid_reg_0),
         .O(axi_wvalid_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair46" *) 
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
   LUT5 #(
     .INIT(32'h00000001)) 
     axi_wvalid_i_2
@@ -24755,7 +28130,7 @@ module mcu_mdm_1_0_bus_master
         .I2(\M_AXI_AWLEN_reg[4]_0 [0]),
         .I3(wr_state),
         .O(len[0]));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
   LUT5 #(
     .INIT(32'hF88888F8)) 
     \len[1]_i_1 
@@ -24785,7 +28160,7 @@ module mcu_mdm_1_0_bus_master
         .I4(\FSM_sequential_wr_state_reg[1]_0 ),
         .I5(\len_reg_n_0_[3] ),
         .O(len[3]));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \len[3]_i_2 
@@ -24847,6 +28222,444 @@ module mcu_mdm_1_0_bus_master
         .D(len[4]),
         .Q(\len_reg_n_0_[4] ),
         .R(Reset));
+endmodule
+
+(* ORIG_REF_NAME = "pselect_f" *) 
+module mcu_mdm_1_0_pselect_f
+   (ce_expnd_i_3,
+    \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0] ,
+    \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 );
+  output ce_expnd_i_3;
+  input \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0] ;
+  input \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ;
+
+  wire \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0] ;
+  wire \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ;
+  wire ce_expnd_i_3;
+
+  LUT2 #(
+    .INIT(4'h1)) 
+    CS
+       (.I0(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0] ),
+        .I1(\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 ),
+        .O(ce_expnd_i_3));
+endmodule
+
+(* ORIG_REF_NAME = "pselect_f" *) 
+module mcu_mdm_1_0_pselect_f__parameterized1
+   (ce_expnd_i_1,
+    \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] ,
+    \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_0 );
+  output ce_expnd_i_1;
+  input \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] ;
+  input \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_0 ;
+
+  wire \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] ;
+  wire \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_0 ;
+  wire ce_expnd_i_1;
+
+  LUT2 #(
+    .INIT(4'h2)) 
+    CS
+       (.I0(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] ),
+        .I1(\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_0 ),
+        .O(ce_expnd_i_1));
+endmodule
+
+(* ORIG_REF_NAME = "slave_attachment" *) 
+module mcu_mdm_1_0_slave_attachment
+   (\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1] ,
+    \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0] ,
+    S_AXI_RRESP,
+    Bus_RNW_reg_reg,
+    S_AXI_RVALID,
+    S_AXI_BVALID,
+    S_AXI_BRESP,
+    \GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3] ,
+    \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] ,
+    FIFO_Write,
+    bus2ip_wrce,
+    clear_Ext_BRK,
+    reset_RX_FIFO,
+    reset_TX_FIFO,
+    bus2ip_rdce,
+    \S_AXI_WDATA[4] ,
+    S_AXI_RDATA,
+    rst_reg_0,
+    S_AXI_ACLK,
+    S_AXI_AWVALID,
+    S_AXI_WVALID,
+    S_AXI_ARVALID,
+    data_Exists_I_reg,
+    tx_Buffer_Full,
+    rx_Data_Present,
+    S_AXI_WDATA,
+    RX_Data,
+    RX_Buffer_Full,
+    fifo_Data_Present,
+    enable_interrupts,
+    S_AXI_RREADY,
+    S_AXI_BREADY,
+    S_AXI_ARESETN,
+    S_AXI_ARADDR,
+    S_AXI_AWADDR);
+  output \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1] ;
+  output \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0] ;
+  output [0:0]S_AXI_RRESP;
+  output Bus_RNW_reg_reg;
+  output S_AXI_RVALID;
+  output S_AXI_BVALID;
+  output [0:0]S_AXI_BRESP;
+  output \GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3] ;
+  output \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] ;
+  output FIFO_Write;
+  output [0:0]bus2ip_wrce;
+  output clear_Ext_BRK;
+  output reset_RX_FIFO;
+  output reset_TX_FIFO;
+  output [0:0]bus2ip_rdce;
+  output \S_AXI_WDATA[4] ;
+  output [7:0]S_AXI_RDATA;
+  input rst_reg_0;
+  input S_AXI_ACLK;
+  input S_AXI_AWVALID;
+  input S_AXI_WVALID;
+  input S_AXI_ARVALID;
+  input data_Exists_I_reg;
+  input tx_Buffer_Full;
+  input rx_Data_Present;
+  input [3:0]S_AXI_WDATA;
+  input [0:7]RX_Data;
+  input RX_Buffer_Full;
+  input fifo_Data_Present;
+  input enable_interrupts;
+  input S_AXI_RREADY;
+  input S_AXI_BREADY;
+  input S_AXI_ARESETN;
+  input [1:0]S_AXI_ARADDR;
+  input [1:0]S_AXI_AWADDR;
+
+  wire Bus_RNW_reg_reg;
+  wire FIFO_Write;
+  wire \FSM_onehot_state[1]_i_1_n_0 ;
+  wire \FSM_onehot_state_reg_n_0_[0] ;
+  wire \FSM_onehot_state_reg_n_0_[1] ;
+  wire \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0] ;
+  wire \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1] ;
+  wire \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] ;
+  wire \GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3] ;
+  wire I_DECODER_n_24;
+  wire I_DECODER_n_25;
+  wire I_DECODER_n_26;
+  wire I_DECODER_n_3;
+  wire I_DECODER_n_4;
+  wire I_DECODER_n_5;
+  wire RX_Buffer_Full;
+  wire [0:7]RX_Data;
+  wire S_AXI_ACLK;
+  wire [1:0]S_AXI_ARADDR;
+  wire S_AXI_ARESETN;
+  wire S_AXI_ARVALID;
+  wire [1:0]S_AXI_AWADDR;
+  wire S_AXI_AWVALID;
+  wire S_AXI_BREADY;
+  wire [0:0]S_AXI_BRESP;
+  wire S_AXI_BVALID;
+  wire [7:0]S_AXI_RDATA;
+  wire S_AXI_RREADY;
+  wire [0:0]S_AXI_RRESP;
+  wire S_AXI_RVALID;
+  wire [3:0]S_AXI_WDATA;
+  wire \S_AXI_WDATA[4] ;
+  wire S_AXI_WVALID;
+  wire \bus2ip_addr_i[2]_i_1_n_0 ;
+  wire \bus2ip_addr_i[3]_i_1_n_0 ;
+  wire \bus2ip_addr_i_reg_n_0_[2] ;
+  wire \bus2ip_addr_i_reg_n_0_[3] ;
+  wire [0:0]bus2ip_rdce;
+  wire bus2ip_rnw_i;
+  wire bus2ip_rnw_i_i_1_n_0;
+  wire [0:0]bus2ip_wrce;
+  wire clear_Ext_BRK;
+  wire data_Exists_I_reg;
+  wire enable_interrupts;
+  wire fifo_Data_Present;
+  wire ip2bus_error;
+  wire reset_RX_FIFO;
+  wire reset_TX_FIFO;
+  wire rst;
+  wire rst_reg_0;
+  wire rx_Data_Present;
+  wire s_axi_bresp_i;
+  wire s_axi_rresp_i;
+  wire start2;
+  wire start2_i_1_n_0;
+  wire state1__2;
+  wire tx_Buffer_Full;
+  wire [7:0]uart_ip2bus_data;
+
+  LUT6 #(
+    .INIT(64'hFFFF007000700070)) 
+    \FSM_onehot_state[1]_i_1 
+       (.I0(S_AXI_AWVALID),
+        .I1(S_AXI_WVALID),
+        .I2(\FSM_onehot_state_reg_n_0_[1] ),
+        .I3(S_AXI_ARVALID),
+        .I4(state1__2),
+        .I5(\FSM_onehot_state_reg_n_0_[0] ),
+        .O(\FSM_onehot_state[1]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'hF888)) 
+    \FSM_onehot_state[1]_i_2 
+       (.I0(S_AXI_RREADY),
+        .I1(S_AXI_RVALID),
+        .I2(S_AXI_BREADY),
+        .I3(S_AXI_BVALID),
+        .O(state1__2));
+  (* FSM_ENCODED_STATES = "sm_read:1000,sm_write:0100,sm_resp:0001,sm_idle:0010" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \FSM_onehot_state_reg[0] 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(I_DECODER_n_5),
+        .Q(\FSM_onehot_state_reg_n_0_[0] ),
+        .R(rst));
+  (* FSM_ENCODED_STATES = "sm_read:1000,sm_write:0100,sm_resp:0001,sm_idle:0010" *) 
+  FDSE #(
+    .INIT(1'b1)) 
+    \FSM_onehot_state_reg[1] 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(\FSM_onehot_state[1]_i_1_n_0 ),
+        .Q(\FSM_onehot_state_reg_n_0_[1] ),
+        .S(rst));
+  (* FSM_ENCODED_STATES = "sm_read:1000,sm_write:0100,sm_resp:0001,sm_idle:0010" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \FSM_onehot_state_reg[2] 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(I_DECODER_n_4),
+        .Q(s_axi_bresp_i),
+        .R(rst));
+  (* FSM_ENCODED_STATES = "sm_read:1000,sm_write:0100,sm_resp:0001,sm_idle:0010" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \FSM_onehot_state_reg[3] 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(I_DECODER_n_3),
+        .Q(s_axi_rresp_i),
+        .R(rst));
+  mcu_mdm_1_0_address_decoder I_DECODER
+       (.Bus_RNW_reg_reg_0(Bus_RNW_reg_reg),
+        .D({I_DECODER_n_3,I_DECODER_n_4,I_DECODER_n_5}),
+        .FIFO_Write(FIFO_Write),
+        .\FSM_onehot_state_reg[2] (I_DECODER_n_25),
+        .\FSM_onehot_state_reg[2]_0 (I_DECODER_n_26),
+        .\FSM_onehot_state_reg[3] (I_DECODER_n_24),
+        .\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0 (\GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0] ),
+        .\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1]_0 (\GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg[1] ),
+        .\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_0 (\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2] ),
+        .\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_1 (uart_ip2bus_data),
+        .\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_2 (\bus2ip_addr_i_reg_n_0_[3] ),
+        .\GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_3 (\bus2ip_addr_i_reg_n_0_[2] ),
+        .\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3]_0 (\GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3] ),
+        .Q({s_axi_rresp_i,s_axi_bresp_i,\FSM_onehot_state_reg_n_0_[1] ,\FSM_onehot_state_reg_n_0_[0] }),
+        .RX_Buffer_Full(RX_Buffer_Full),
+        .RX_Data(RX_Data),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_ARESETN(S_AXI_ARESETN),
+        .S_AXI_ARVALID(S_AXI_ARVALID),
+        .S_AXI_AWVALID(S_AXI_AWVALID),
+        .S_AXI_BREADY(S_AXI_BREADY),
+        .S_AXI_BRESP(S_AXI_BRESP),
+        .S_AXI_BVALID(S_AXI_BVALID),
+        .S_AXI_RREADY(S_AXI_RREADY),
+        .S_AXI_RVALID(S_AXI_RVALID),
+        .S_AXI_WDATA(S_AXI_WDATA),
+        .\S_AXI_WDATA[4] (\S_AXI_WDATA[4] ),
+        .S_AXI_WVALID(S_AXI_WVALID),
+        .bus2ip_rdce(bus2ip_rdce),
+        .bus2ip_rnw_i(bus2ip_rnw_i),
+        .bus2ip_wrce(bus2ip_wrce),
+        .clear_Ext_BRK(clear_Ext_BRK),
+        .data_Exists_I_reg(data_Exists_I_reg),
+        .enable_interrupts(enable_interrupts),
+        .fifo_Data_Present(fifo_Data_Present),
+        .ip2bus_error(ip2bus_error),
+        .reset_RX_FIFO(reset_RX_FIFO),
+        .reset_TX_FIFO(reset_TX_FIFO),
+        .rx_Data_Present(rx_Data_Present),
+        .start2(start2),
+        .state1__2(state1__2),
+        .tx_Buffer_Full(tx_Buffer_Full));
+  LUT6 #(
+    .INIT(64'hBF80FFFFBF800000)) 
+    \bus2ip_addr_i[2]_i_1 
+       (.I0(S_AXI_ARADDR[0]),
+        .I1(\FSM_onehot_state_reg_n_0_[1] ),
+        .I2(S_AXI_ARVALID),
+        .I3(S_AXI_AWADDR[0]),
+        .I4(start2_i_1_n_0),
+        .I5(\bus2ip_addr_i_reg_n_0_[2] ),
+        .O(\bus2ip_addr_i[2]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hBF80FFFFBF800000)) 
+    \bus2ip_addr_i[3]_i_1 
+       (.I0(S_AXI_ARADDR[1]),
+        .I1(\FSM_onehot_state_reg_n_0_[1] ),
+        .I2(S_AXI_ARVALID),
+        .I3(S_AXI_AWADDR[1]),
+        .I4(start2_i_1_n_0),
+        .I5(\bus2ip_addr_i_reg_n_0_[3] ),
+        .O(\bus2ip_addr_i[3]_i_1_n_0 ));
+  FDRE \bus2ip_addr_i_reg[2] 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(\bus2ip_addr_i[2]_i_1_n_0 ),
+        .Q(\bus2ip_addr_i_reg_n_0_[2] ),
+        .R(rst));
+  FDRE \bus2ip_addr_i_reg[3] 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(\bus2ip_addr_i[3]_i_1_n_0 ),
+        .Q(\bus2ip_addr_i_reg_n_0_[3] ),
+        .R(rst));
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  LUT5 #(
+    .INIT(32'hF7FFF000)) 
+    bus2ip_rnw_i_i_1
+       (.I0(S_AXI_AWVALID),
+        .I1(S_AXI_WVALID),
+        .I2(S_AXI_ARVALID),
+        .I3(\FSM_onehot_state_reg_n_0_[1] ),
+        .I4(bus2ip_rnw_i),
+        .O(bus2ip_rnw_i_i_1_n_0));
+  FDRE bus2ip_rnw_i_reg
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(bus2ip_rnw_i_i_1_n_0),
+        .Q(bus2ip_rnw_i),
+        .R(rst));
+  FDRE rst_reg
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(rst_reg_0),
+        .Q(rst),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \s_axi_bresp_i_reg[1] 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(I_DECODER_n_26),
+        .Q(S_AXI_BRESP),
+        .R(rst));
+  FDRE #(
+    .INIT(1'b0)) 
+    s_axi_bvalid_i_reg
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(I_DECODER_n_25),
+        .Q(S_AXI_BVALID),
+        .R(rst));
+  FDRE #(
+    .INIT(1'b0)) 
+    \s_axi_rdata_i_reg[0] 
+       (.C(S_AXI_ACLK),
+        .CE(s_axi_rresp_i),
+        .D(uart_ip2bus_data[0]),
+        .Q(S_AXI_RDATA[0]),
+        .R(rst));
+  FDRE #(
+    .INIT(1'b0)) 
+    \s_axi_rdata_i_reg[1] 
+       (.C(S_AXI_ACLK),
+        .CE(s_axi_rresp_i),
+        .D(uart_ip2bus_data[1]),
+        .Q(S_AXI_RDATA[1]),
+        .R(rst));
+  FDRE #(
+    .INIT(1'b0)) 
+    \s_axi_rdata_i_reg[2] 
+       (.C(S_AXI_ACLK),
+        .CE(s_axi_rresp_i),
+        .D(uart_ip2bus_data[2]),
+        .Q(S_AXI_RDATA[2]),
+        .R(rst));
+  FDRE #(
+    .INIT(1'b0)) 
+    \s_axi_rdata_i_reg[3] 
+       (.C(S_AXI_ACLK),
+        .CE(s_axi_rresp_i),
+        .D(uart_ip2bus_data[3]),
+        .Q(S_AXI_RDATA[3]),
+        .R(rst));
+  FDRE #(
+    .INIT(1'b0)) 
+    \s_axi_rdata_i_reg[4] 
+       (.C(S_AXI_ACLK),
+        .CE(s_axi_rresp_i),
+        .D(uart_ip2bus_data[4]),
+        .Q(S_AXI_RDATA[4]),
+        .R(rst));
+  FDRE #(
+    .INIT(1'b0)) 
+    \s_axi_rdata_i_reg[5] 
+       (.C(S_AXI_ACLK),
+        .CE(s_axi_rresp_i),
+        .D(uart_ip2bus_data[5]),
+        .Q(S_AXI_RDATA[5]),
+        .R(rst));
+  FDRE #(
+    .INIT(1'b0)) 
+    \s_axi_rdata_i_reg[6] 
+       (.C(S_AXI_ACLK),
+        .CE(s_axi_rresp_i),
+        .D(uart_ip2bus_data[6]),
+        .Q(S_AXI_RDATA[6]),
+        .R(rst));
+  FDRE #(
+    .INIT(1'b0)) 
+    \s_axi_rdata_i_reg[7] 
+       (.C(S_AXI_ACLK),
+        .CE(s_axi_rresp_i),
+        .D(uart_ip2bus_data[7]),
+        .Q(S_AXI_RDATA[7]),
+        .R(rst));
+  FDRE #(
+    .INIT(1'b0)) 
+    \s_axi_rresp_i_reg[1] 
+       (.C(S_AXI_ACLK),
+        .CE(s_axi_rresp_i),
+        .D(ip2bus_error),
+        .Q(S_AXI_RRESP),
+        .R(rst));
+  FDRE #(
+    .INIT(1'b0)) 
+    s_axi_rvalid_i_reg
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(I_DECODER_n_24),
+        .Q(S_AXI_RVALID),
+        .R(rst));
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  LUT4 #(
+    .INIT(16'hF800)) 
+    start2_i_1
+       (.I0(S_AXI_AWVALID),
+        .I1(S_AXI_WVALID),
+        .I2(S_AXI_ARVALID),
+        .I3(\FSM_onehot_state_reg_n_0_[1] ),
+        .O(start2_i_1_n_0));
+  FDRE start2_reg
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(start2_i_1_n_0),
+        .Q(start2),
+        .R(rst));
 endmodule
 `ifndef GLBL
 `define GLBL

@@ -1,9 +1,6 @@
 verilog xil_defaultlib --include "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" --include "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
 "../../../bd/mcu/ip/mcu_lmb_bram_0/sim/mcu_lmb_bram_0.v" \
 "../../../bd/mcu/ip/mcu_microblaze_0_xlconcat_0/sim/mcu_microblaze_0_xlconcat_0.v" \
-"../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_6/sim/bd_f021_lmb_bram_I_0.v" \
-"../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/sim/bd_f021.v" \
-"../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/sim/mcu_microblaze_mcs_0_0.v" \
 "../../../bd/mcu/ip/mcu_mig_7series_0_0/mcu_mig_7series_0_0/user_design/rtl/axi/mig_7series_v4_2_axi_ctrl_addr_decode.v" \
 "../../../bd/mcu/ip/mcu_mig_7series_0_0/mcu_mig_7series_0_0/user_design/rtl/axi/mig_7series_v4_2_axi_ctrl_read.v" \
 "../../../bd/mcu/ip/mcu_mig_7series_0_0/mcu_mig_7series_0_0/user_design/rtl/axi/mig_7series_v4_2_axi_ctrl_reg.v" \
@@ -120,12 +117,14 @@ verilog xil_defaultlib --include "../../../../TE0712-02-100-2C3.srcs/sources_1/b
 "../../../bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0.v" \
 "../../../bd/mcu/ip/mcu_xbar_0/sim/mcu_xbar_0.v" \
 "../../../bd/mcu/sim/mcu.v" \
-"../../../bd/mcu/ip/mcu_auto_pc_5/sim/mcu_auto_pc_5.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_7/sim/mcu_auto_pc_7.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_3/sim/mcu_auto_pc_3.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_4/sim/mcu_auto_pc_4.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_5/sim/mcu_auto_pc_5.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_6/sim/mcu_auto_pc_6.v" \
 
 verilog xil_defaultlib "glbl.v"
 

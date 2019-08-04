@@ -13,7 +13,6 @@ vlib questa_lib/msim/xlconcat_v2_1_3
 vlib questa_lib/msim/mdm_v3_2_16
 vlib questa_lib/msim/lib_cdc_v1_0_2
 vlib questa_lib/msim/proc_sys_reset_v5_0_13
-vlib questa_lib/msim/iomodule_v3_1_4
 vlib questa_lib/msim/xlconstant_v1_1_6
 vlib questa_lib/msim/dist_mem_gen_v8_0_13
 vlib questa_lib/msim/xbip_utils_v3_0_10
@@ -53,7 +52,6 @@ vmap xlconcat_v2_1_3 questa_lib/msim/xlconcat_v2_1_3
 vmap mdm_v3_2_16 questa_lib/msim/mdm_v3_2_16
 vmap lib_cdc_v1_0_2 questa_lib/msim/lib_cdc_v1_0_2
 vmap proc_sys_reset_v5_0_13 questa_lib/msim/proc_sys_reset_v5_0_13
-vmap iomodule_v3_1_4 questa_lib/msim/iomodule_v3_1_4
 vmap xlconstant_v1_1_6 questa_lib/msim/xlconstant_v1_1_6
 vmap dist_mem_gen_v8_0_13 questa_lib/msim/dist_mem_gen_v8_0_13
 vmap xbip_utils_v3_0_10 questa_lib/msim/xbip_utils_v3_0_10
@@ -147,25 +145,8 @@ vcom -work proc_sys_reset_v5_0_13 -64 -93 \
 
 vcom -work xil_defaultlib -64 -93 \
 "../../../bd/mcu/ip/mcu_rst_clk_wiz_1_100M_0/sim/mcu_rst_clk_wiz_1_100M_0.vhd" \
-"../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_0/sim/bd_f021_microblaze_I_0.vhd" \
-"../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_1/sim/bd_f021_rst_0_0.vhd" \
-"../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_2/sim/bd_f021_ilmb_0.vhd" \
-"../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_3/sim/bd_f021_dlmb_0.vhd" \
-"../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_4/sim/bd_f021_dlmb_cntlr_0.vhd" \
-"../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_5/sim/bd_f021_ilmb_cntlr_0.vhd" \
 
 vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
-"../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_6/sim/bd_f021_lmb_bram_I_0.v" \
-
-vcom -work iomodule_v3_1_4 -64 -93 \
-"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/18fc/hdl/iomodule_v3_1_vh_rfs.vhd" \
-
-vcom -work xil_defaultlib -64 -93 \
-"../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_7/sim/bd_f021_iomodule_0_0.vhd" \
-
-vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
-"../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/sim/bd_f021.v" \
-"../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/sim/mcu_microblaze_mcs_0_0.v" \
 "../../../bd/mcu/ip/mcu_mig_7series_0_0/mcu_mig_7series_0_0/user_design/rtl/axi/mig_7series_v4_2_axi_ctrl_addr_decode.v" \
 "../../../bd/mcu/ip/mcu_mig_7series_0_0/mcu_mig_7series_0_0/user_design/rtl/axi/mig_7series_v4_2_axi_ctrl_read.v" \
 "../../../bd/mcu/ip/mcu_mig_7series_0_0/mcu_mig_7series_0_0/user_design/rtl/axi/mig_7series_v4_2_axi_ctrl_reg.v" \
@@ -389,16 +370,22 @@ vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/source
 "../../../bd/mcu/ip/mcu_xbar_0/sim/mcu_xbar_0.v" \
 "../../../bd/mcu/sim/mcu.v" \
 
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/mcu/ip/mcu_clk_32mhz_locked_inv_0/sim/mcu_clk_32mhz_locked_inv_0.vhd" \
+"../../../bd/mcu/ip/mcu_axi_gpio_0_1/sim/mcu_axi_gpio_0_1.vhd" \
+
 vlog -work axi_protocol_converter_v2_1_19 -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
 "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 
 vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
-"../../../bd/mcu/ip/mcu_auto_pc_5/sim/mcu_auto_pc_5.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_7/sim/mcu_auto_pc_7.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_3/sim/mcu_auto_pc_3.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_4/sim/mcu_auto_pc_4.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_5/sim/mcu_auto_pc_5.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_6/sim/mcu_auto_pc_6.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

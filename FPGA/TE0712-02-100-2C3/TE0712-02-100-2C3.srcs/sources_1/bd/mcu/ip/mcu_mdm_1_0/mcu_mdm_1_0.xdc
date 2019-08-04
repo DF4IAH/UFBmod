@@ -172,6 +172,30 @@ create_waiver -internal -quiet -user mdm -tags 12436 -type CDC -id CDC-15 -descr
 create_waiver -internal -quiet -user mdm -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
   -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_BSCAN.command_reg\[*\]/D]
 
+# Waivers for UART
+create_waiver -internal -quiet -user mdm -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_UART.tdo_reg_reg\[*\]/*]
+create_waiver -internal -quiet -user mdm -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_UART.fifo*reg\[*\]/*]
+create_waiver -internal -quiet -user mdm -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_UART.Ext_BRK_FDRSE/*/D]
+create_waiver -internal -quiet -user mdm -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_UART.tx_buffered_reg/D]
+create_waiver -internal -quiet -user mdm -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_UART.execute_reg/D]
+create_waiver -internal -quiet -user mdm -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_UART.fifo_*_reg/D]
+create_waiver -internal -quiet -user mdm -tags 12436 -type CDC -id CDC-7 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_UART.execute_reg/CLR]
+create_waiver -internal -quiet -user mdm -tags 12436 -type CDC -id CDC-13 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_UART.fifo_Din_reg\[*\]/CE]
+create_waiver -internal -quiet -user mdm -tags 12436 -type CDC -id CDC-13 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_UART.fifo_Din_reg\[*\]/C] -to *PIN
+create_waiver -internal -quiet -user mdm -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_UART.fifo*reg\[*\]/D]
+create_waiver -internal -quiet -user mdm -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_UART.tx_buffered_reg/D]
+
 # Waivers for memory access from debug
 create_waiver -internal -quiet -user mdm -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
   -from *PIN -to [get_pins -quiet MDM_Core_I1/JTAG_CONTROL_I/Use_Dbg_Mem_Access.output_reg\[*\]/D]

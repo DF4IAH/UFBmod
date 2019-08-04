@@ -1,5 +1,5 @@
 #include "xparameters.h"
-#include "xuartns550_l.h"
+#include "xuartlite_l.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -11,5 +11,5 @@ void outbyte(char c);
 #endif 
 
 void outbyte(char c) {
-	 XUartNs550_SendByte(STDOUT_BASEADDRESS, c);
+	 XUartLite_SendByte(STDOUT_BASEADDRESS, c);
 }

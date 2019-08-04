@@ -6,8 +6,8 @@ BEGIN OS
  PARAMETER OS_NAME = standalone
  PARAMETER OS_VER = 7.0
  PARAMETER PROC_INSTANCE = mb_0
- PARAMETER stdin = axi_uart16550_0
- PARAMETER stdout = axi_uart16550_0
+ PARAMETER stdin = mb_0_mdm
+ PARAMETER stdout = mb_0_mdm
 END
 
 
@@ -15,7 +15,7 @@ BEGIN PROCESSOR
  PARAMETER DRIVER_NAME = cpu
  PARAMETER DRIVER_VER = 2.9
  PARAMETER HW_INSTANCE = mb_0
- PARAMETER compiler_flags =  -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mno-xl-soft-div -mcpu=v11.0
+ PARAMETER compiler_flags =  -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-mul -mno-xl-soft-div -mcpu=v11.0
 END
 
 
@@ -65,6 +65,18 @@ BEGIN DRIVER
  PARAMETER DRIVER_NAME = mig_7series
  PARAMETER DRIVER_VER = 2.1
  PARAMETER HW_INSTANCE = mig_7series_0
+END
+
+BEGIN DRIVER
+ PARAMETER DRIVER_NAME = gpio
+ PARAMETER DRIVER_VER = 4.4
+ PARAMETER HW_INSTANCE = axi_gpio_1
+END
+
+BEGIN DRIVER
+ PARAMETER DRIVER_NAME = uartlite
+ PARAMETER DRIVER_VER = 3.2
+ PARAMETER HW_INSTANCE = mb_0_mdm
 END
 
 

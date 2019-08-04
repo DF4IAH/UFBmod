@@ -32,20 +32,20 @@
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSAVendor" Val="xilinx"/>
     <Option Name="DSANumComputeUnits" Val="60"/>
-    <Option Name="WTXSimLaunchSim" Val="54"/>
+    <Option Name="WTXSimLaunchSim" Val="62"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="21"/>
-    <Option Name="WTModelSimExportSim" Val="21"/>
-    <Option Name="WTQuestaExportSim" Val="21"/>
-    <Option Name="WTIesExportSim" Val="21"/>
-    <Option Name="WTVcsExportSim" Val="21"/>
-    <Option Name="WTRivieraExportSim" Val="21"/>
-    <Option Name="WTActivehdlExportSim" Val="21"/>
+    <Option Name="WTXSimExportSim" Val="27"/>
+    <Option Name="WTModelSimExportSim" Val="27"/>
+    <Option Name="WTQuestaExportSim" Val="27"/>
+    <Option Name="WTIesExportSim" Val="27"/>
+    <Option Name="WTVcsExportSim" Val="27"/>
+    <Option Name="WTRivieraExportSim" Val="27"/>
+    <Option Name="WTActivehdlExportSim" Val="27"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -96,9 +96,6 @@
         <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_dlmb_bram_if_cntlr_0/mcu_dlmb_bram_if_cntlr_0.xci">
           <Proxy FileSetName="mcu_dlmb_bram_if_cntlr_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_microblaze_mcs_0_0/mcu_microblaze_mcs_0_0.xci">
-          <Proxy FileSetName="mcu_microblaze_mcs_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_microblaze_0_axi_intc_0/mcu_microblaze_0_axi_intc_0.xci">
           <Proxy FileSetName="mcu_microblaze_0_axi_intc_0"/>
         </CompFileExtendedInfo>
@@ -144,6 +141,9 @@
         <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_clk_32mhz_locked_inv_0/mcu_clk_32mhz_locked_inv_0.xci">
           <Proxy FileSetName="mcu_clk_32mhz_locked_inv_0"/>
         </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_gpio_0_1/mcu_axi_gpio_0_1.xci">
+          <Proxy FileSetName="mcu_axi_gpio_0_1"/>
+        </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/mcu/hdl/mcu_wrapper.v">
         <FileInfo>
@@ -174,15 +174,14 @@
       <File Path="$PSDKDIR/PeriphTest/Debug/PeriphTest.elf">
         <FileInfo>
           <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="ScopedToRef" Val="mcu"/>
-          <Attr Name="ScopedToCell" Val="mb_0"/>
-          <Attr Name="ScopedToCell" Val="mb_0_mcs/inst/microblaze_I"/>
           <Attr Name="IsVisible" Val="1"/>
         </FileInfo>
       </File>
       <File Path="$PSDKDIR/SREC-BootLoader/Debug/SREC-BootLoader.elf">
         <FileInfo>
           <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="ScopedToRef" Val="mcu"/>
+          <Attr Name="ScopedToCell" Val="mb_0"/>
           <Attr Name="IsVisible" Val="1"/>
         </FileInfo>
       </File>
@@ -246,15 +245,14 @@
       <File Path="$PSDKDIR/PeriphTest/Debug/PeriphTest.elf">
         <FileInfo>
           <Attr Name="UsedIn" Val="simulation"/>
-          <Attr Name="ScopedToRef" Val="mcu"/>
-          <Attr Name="ScopedToCell" Val="mb_0"/>
-          <Attr Name="ScopedToCell" Val="mb_0_mcs/inst/microblaze_I"/>
           <Attr Name="IsVisible" Val="1"/>
         </FileInfo>
       </File>
       <File Path="$PSDKDIR/SREC-BootLoader/Debug/SREC-BootLoader.elf">
         <FileInfo>
           <Attr Name="UsedIn" Val="simulation"/>
+          <Attr Name="ScopedToRef" Val="mcu"/>
+          <Attr Name="ScopedToCell" Val="mb_0"/>
           <Attr Name="IsVisible" Val="1"/>
         </FileInfo>
       </File>
@@ -264,7 +262,6 @@
         <Option Name="TopLib" Val="xil_defaultlib"/>
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
-        <Option Name="SimMode" Val="post-implementation"/>
         <Option Name="SrcSet" Val="sources_1"/>
         <Option Name="XSimWcfgFile" Val="$PPRDIR/top_behav.wcfg"/>
         <Option Name="NLNetlistMode" Val="funcsim"/>
@@ -275,7 +272,7 @@
       <File Path="$PSRCDIR/utils_1/imports/impl_1/top_routed.dcp">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PRUNDIR/impl_1/top_routed.dcp"/>
-          <Attr Name="ImportTime" Val="1564862137"/>
+          <Attr Name="ImportTime" Val="1564953403"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedInSteps" Val="impl_1"/>
@@ -343,12 +340,6 @@
     <FileSet Name="mcu_rst_clk_wiz_1_100M_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_rst_clk_wiz_1_100M_0">
       <Config>
         <Option Name="TopModule" Val="mcu_rst_clk_wiz_1_100M_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_microblaze_mcs_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_microblaze_mcs_0_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_microblaze_mcs_0_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -439,6 +430,12 @@
     <FileSet Name="mcu_clk_32mhz_locked_inv_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_clk_32mhz_locked_inv_0">
       <Config>
         <Option Name="TopModule" Val="mcu_clk_32mhz_locked_inv_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="mcu_axi_gpio_0_1" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_axi_gpio_0_1">
+      <Config>
+        <Option Name="TopModule" Val="mcu_axi_gpio_0_1"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -553,15 +550,6 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
     <Run Id="mcu_rst_clk_wiz_1_100M_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_rst_clk_wiz_1_100M_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_rst_clk_wiz_1_100M_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_rst_clk_wiz_1_100M_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_microblaze_mcs_0_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_microblaze_mcs_0_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_microblaze_mcs_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_microblaze_mcs_0_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
@@ -699,6 +687,17 @@
     <Run Id="mcu_clk_32mhz_locked_inv_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_clk_32mhz_locked_inv_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_clk_32mhz_locked_inv_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_clk_32mhz_locked_inv_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="mcu_axi_gpio_0_1_synth_1" Type="Ft3:Synth" SrcSet="mcu_axi_gpio_0_1" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_gpio_0_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_axi_gpio_0_1_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -867,22 +866,6 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
     <Run Id="mcu_rst_clk_wiz_1_100M_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_rst_clk_wiz_1_100M_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_rst_clk_wiz_1_100M_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_microblaze_mcs_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_microblaze_mcs_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_microblaze_mcs_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
         <Step Id="init_design"/>
@@ -1138,6 +1121,24 @@
       <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
+    <Run Id="mcu_axi_gpio_0_1_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_gpio_0_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_axi_gpio_0_1_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
   </Runs>
   <MsgRule>
     <MsgAttr Name="RuleType" Val="0"/>
@@ -1148,7 +1149,7 @@
     <MsgAttr Name="ShowRule" Val="1"/>
     <MsgAttr Name="RuleSource" Val="2"/>
     <MsgAttr Name="StringIsRegExp" Val="0"/>
-    <MsgAttr Name="RuleId" Val="3"/>
+    <MsgAttr Name="RuleId" Val="1"/>
     <MsgAttr Name="Note" Val=""/>
     <MsgAttr Name="Author" Val=""/>
     <MsgAttr Name="CreatedTimestamp" Val=""/>
@@ -1162,7 +1163,7 @@
     <MsgAttr Name="ShowRule" Val="1"/>
     <MsgAttr Name="RuleSource" Val="2"/>
     <MsgAttr Name="StringIsRegExp" Val="0"/>
-    <MsgAttr Name="RuleId" Val="4"/>
+    <MsgAttr Name="RuleId" Val="2"/>
     <MsgAttr Name="Note" Val=""/>
     <MsgAttr Name="Author" Val=""/>
     <MsgAttr Name="CreatedTimestamp" Val=""/>

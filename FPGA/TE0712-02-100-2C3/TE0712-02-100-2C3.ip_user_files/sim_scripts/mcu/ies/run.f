@@ -64,25 +64,8 @@
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/mcu/ip/mcu_rst_clk_wiz_1_100M_0/sim/mcu_rst_clk_wiz_1_100M_0.vhd" \
-  "../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_0/sim/bd_f021_microblaze_I_0.vhd" \
-  "../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_1/sim/bd_f021_rst_0_0.vhd" \
-  "../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_2/sim/bd_f021_ilmb_0.vhd" \
-  "../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_3/sim/bd_f021_dlmb_0.vhd" \
-  "../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_4/sim/bd_f021_dlmb_cntlr_0.vhd" \
-  "../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_5/sim/bd_f021_ilmb_cntlr_0.vhd" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_6/sim/bd_f021_lmb_bram_I_0.v" \
--endlib
--makelib ies_lib/iomodule_v3_1_4 \
-  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/18fc/hdl/iomodule_v3_1_vh_rfs.vhd" \
--endlib
--makelib ies_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/ip/ip_7/sim/bd_f021_iomodule_0_0.vhd" \
--endlib
--makelib ies_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/bd_0/sim/bd_f021.v" \
-  "../../../bd/mcu/ip/mcu_microblaze_mcs_0_0/sim/mcu_microblaze_mcs_0_0.v" \
   "../../../bd/mcu/ip/mcu_mig_7series_0_0/mcu_mig_7series_0_0/user_design/rtl/axi/mig_7series_v4_2_axi_ctrl_addr_decode.v" \
   "../../../bd/mcu/ip/mcu_mig_7series_0_0/mcu_mig_7series_0_0/user_design/rtl/axi/mig_7series_v4_2_axi_ctrl_read.v" \
   "../../../bd/mcu/ip/mcu_mig_7series_0_0/mcu_mig_7series_0_0/user_design/rtl/axi/mig_7series_v4_2_axi_ctrl_reg.v" \
@@ -306,16 +289,22 @@
   "../../../bd/mcu/ip/mcu_xbar_0/sim/mcu_xbar_0.v" \
   "../../../bd/mcu/sim/mcu.v" \
 -endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_clk_32mhz_locked_inv_0/sim/mcu_clk_32mhz_locked_inv_0.vhd" \
+  "../../../bd/mcu/ip/mcu_axi_gpio_0_1/sim/mcu_axi_gpio_0_1.vhd" \
+-endlib
 -makelib ies_lib/axi_protocol_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_auto_pc_5/sim/mcu_auto_pc_5.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_7/sim/mcu_auto_pc_7.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_3/sim/mcu_auto_pc_3.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_4/sim/mcu_auto_pc_4.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_5/sim/mcu_auto_pc_5.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_6/sim/mcu_auto_pc_6.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   glbl.v
