@@ -1,10 +1,10 @@
-// Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+// Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Sat Aug  3 11:21:54 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Aug  4 02:04:28 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_axi_timer_0_0/mcu_axi_timer_0_0_sim_netlist.v
+//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_axi_timer_0_0/mcu_axi_timer_0_0_sim_netlist.v
 // Design      : mcu_axi_timer_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,7 +12,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "mcu_axi_timer_0_0,axi_timer,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "axi_timer,Vivado 2018.3" *) 
+(* CHECK_LICENSE_TYPE = "mcu_axi_timer_0_0,axi_timer,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "axi_timer,Vivado 2019.1" *) 
 (* NotValidForBitStream *)
 module mcu_axi_timer_0_0
    (capturetrig0,
@@ -6915,7 +6915,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
   wire [3:2]\NLW_GEN.DATA_WIDTH_GEN[9].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED ;
 
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[0].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -6925,7 +6925,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[0].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[0].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[31]_0 ,\s_axi_rdata_i_reg[31] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[10].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -6935,7 +6935,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[10].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[10].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[21]_0 ,\s_axi_rdata_i_reg[21] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[11].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -6945,7 +6945,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[11].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[11].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[20]_0 ,\s_axi_rdata_i_reg[20] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[12].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -6955,7 +6955,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[12].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[12].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[19]_0 ,\s_axi_rdata_i_reg[19] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[13].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -6965,7 +6965,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[13].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[13].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[18]_0 ,\s_axi_rdata_i_reg[18] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[14].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -6975,7 +6975,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[14].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[14].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[17]_0 ,\s_axi_rdata_i_reg[17] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[15].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -6985,7 +6985,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[15].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[15].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[16]_0 ,\s_axi_rdata_i_reg[16] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[16].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -6995,7 +6995,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[16].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[16].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[15]_0 ,\s_axi_rdata_i_reg[15] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[17].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7005,7 +7005,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[17].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[17].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[14]_0 ,\s_axi_rdata_i_reg[14] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[18].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7015,7 +7015,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[18].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[18].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[13]_0 ,\s_axi_rdata_i_reg[13] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[19].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7025,7 +7025,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[19].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[19].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[12]_0 ,\s_axi_rdata_i_reg[12] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[1].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7035,7 +7035,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[1].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[1].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[30]_0 ,\s_axi_rdata_i_reg[30] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[20].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7045,7 +7045,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[20].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[20].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[11]_0 ,\s_axi_rdata_i_reg[11] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[21].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7055,7 +7055,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[21].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[21].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[10]_0 ,\s_axi_rdata_i_reg[10] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[22].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7065,7 +7065,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[22].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[22].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[9]_0 ,\s_axi_rdata_i_reg[9] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[23].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7075,7 +7075,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[23].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[23].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[8]_0 ,\s_axi_rdata_i_reg[8] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[24].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7085,7 +7085,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[24].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[24].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[7]_0 ,\s_axi_rdata_i_reg[7] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[25].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7095,7 +7095,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[25].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[25].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[6]_0 ,\s_axi_rdata_i_reg[6] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[26].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7105,7 +7105,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[26].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[26].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[5]_0 ,\s_axi_rdata_i_reg[5] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[27].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7115,7 +7115,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[27].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[27].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[4]_0 ,\s_axi_rdata_i_reg[4] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[28].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7125,7 +7125,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[28].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[28].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[3]_0 ,\s_axi_rdata_i_reg[3] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[29].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7135,7 +7135,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[29].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[29].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[2]_0 ,\s_axi_rdata_i_reg[2] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[2].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7145,7 +7145,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[2].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[2].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[29]_0 ,\s_axi_rdata_i_reg[29] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[30].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7155,7 +7155,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[30].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[30].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[1]_0 ,\s_axi_rdata_i_reg[1] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[31].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7165,7 +7165,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[31].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[31].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[0]_0 ,\s_axi_rdata_i_reg[0] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[3].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7175,7 +7175,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[3].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[3].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[28]_0 ,\s_axi_rdata_i_reg[28] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[4].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7185,7 +7185,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[4].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[4].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[27]_0 ,\s_axi_rdata_i_reg[27] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[5].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7195,7 +7195,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[5].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[5].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[26]_0 ,\s_axi_rdata_i_reg[26] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[6].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7205,7 +7205,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[6].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[6].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[25]_0 ,\s_axi_rdata_i_reg[25] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[7].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7215,7 +7215,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[7].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[7].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[24]_0 ,\s_axi_rdata_i_reg[24] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[8].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7225,7 +7225,7 @@ module mcu_axi_timer_0_0_mux_onehot_f
         .O(\NLW_GEN.DATA_WIDTH_GEN[8].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_O_UNCONNECTED [3:0]),
         .S({\NLW_GEN.DATA_WIDTH_GEN[8].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4_S_UNCONNECTED [3:2],\s_axi_rdata_i_reg[23]_0 ,\s_axi_rdata_i_reg[23] }));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   CARRY4 \GEN.DATA_WIDTH_GEN[9].NUM_BUSES_GEN[0].MUXCY_GEN.MUXCY_I_CARRY4 
        (.CI(1'b0),
@@ -7647,7 +7647,7 @@ module mcu_axi_timer_0_0_slave_attachment
   wire \GEN_BKEND_CE_REGISTERS[5].ce_out_i_reg[5] ;
   wire \GEN_BKEND_CE_REGISTERS[5].ce_out_i_reg[5]_0 ;
   wire \INCLUDE_DPHASE_TIMER.dpto_cnt[5]_i_1_n_0 ;
-  wire [5:0]\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 ;
+  wire [5:0]\INCLUDE_DPHASE_TIMER.dpto_cnt_reg ;
   wire I_DECODER_n_106;
   wire I_DECODER_n_107;
   wire I_DECODER_n_4;
@@ -7852,41 +7852,41 @@ module mcu_axi_timer_0_0_slave_attachment
   LUT1 #(
     .INIT(2'h1)) 
     \INCLUDE_DPHASE_TIMER.dpto_cnt[0]_i_1 
-       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [0]),
+       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [0]),
         .O(plusOp[0]));
   (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \INCLUDE_DPHASE_TIMER.dpto_cnt[1]_i_1 
-       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [0]),
-        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [1]),
+       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [0]),
+        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [1]),
         .O(plusOp[1]));
   (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT3 #(
     .INIT(8'h6A)) 
     \INCLUDE_DPHASE_TIMER.dpto_cnt[2]_i_1 
-       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [2]),
-        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [0]),
-        .I2(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [1]),
+       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [2]),
+        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [0]),
+        .I2(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [1]),
         .O(plusOp[2]));
   (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \INCLUDE_DPHASE_TIMER.dpto_cnt[3]_i_1 
-       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [1]),
-        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [0]),
-        .I2(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [2]),
-        .I3(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [3]),
+       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [1]),
+        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [0]),
+        .I2(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [2]),
+        .I3(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [3]),
         .O(plusOp[3]));
   (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT5 #(
     .INIT(32'h6AAAAAAA)) 
     \INCLUDE_DPHASE_TIMER.dpto_cnt[4]_i_1 
-       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [4]),
-        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [1]),
-        .I2(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [0]),
-        .I3(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [2]),
-        .I4(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [3]),
+       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [4]),
+        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [1]),
+        .I2(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [0]),
+        .I3(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [2]),
+        .I4(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [3]),
         .O(plusOp[4]));
   LUT2 #(
     .INIT(4'h9)) 
@@ -7897,48 +7897,48 @@ module mcu_axi_timer_0_0_slave_attachment
   LUT6 #(
     .INIT(64'h6AAAAAAAAAAAAAAA)) 
     \INCLUDE_DPHASE_TIMER.dpto_cnt[5]_i_2 
-       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [5]),
-        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [3]),
-        .I2(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [2]),
-        .I3(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [0]),
-        .I4(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [1]),
-        .I5(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [4]),
+       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [5]),
+        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [3]),
+        .I2(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [2]),
+        .I3(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [0]),
+        .I4(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [1]),
+        .I5(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [4]),
         .O(plusOp[5]));
   FDRE \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[0] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(plusOp[0]),
-        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [0]),
+        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [0]),
         .R(\INCLUDE_DPHASE_TIMER.dpto_cnt[5]_i_1_n_0 ));
   FDRE \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[1] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(plusOp[1]),
-        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [1]),
+        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [1]),
         .R(\INCLUDE_DPHASE_TIMER.dpto_cnt[5]_i_1_n_0 ));
   FDRE \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[2] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(plusOp[2]),
-        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [2]),
+        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [2]),
         .R(\INCLUDE_DPHASE_TIMER.dpto_cnt[5]_i_1_n_0 ));
   FDRE \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[3] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(plusOp[3]),
-        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [3]),
+        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [3]),
         .R(\INCLUDE_DPHASE_TIMER.dpto_cnt[5]_i_1_n_0 ));
   FDRE \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[4] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(plusOp[4]),
-        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [4]),
+        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [4]),
         .R(\INCLUDE_DPHASE_TIMER.dpto_cnt[5]_i_1_n_0 ));
   FDRE \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[5] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(plusOp[5]),
-        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [5]),
+        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [5]),
         .R(\INCLUDE_DPHASE_TIMER.dpto_cnt[5]_i_1_n_0 ));
   mcu_axi_timer_0_0_address_decoder I_DECODER
        (.Bus_RNW_reg_reg_0(Bus_RNW_reg_reg),
@@ -7995,7 +7995,7 @@ module mcu_axi_timer_0_0_slave_attachment
         .s_axi_aclk(s_axi_aclk),
         .s_axi_aresetn(s_axi_aresetn),
         .s_axi_arready(is_read_reg_n_0),
-        .s_axi_arready_0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 ),
+        .s_axi_arready_0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg ),
         .s_axi_arvalid(s_axi_arvalid),
         .s_axi_awvalid(s_axi_awvalid),
         .s_axi_bready(s_axi_bready),

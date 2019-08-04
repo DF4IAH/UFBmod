@@ -1,7 +1,7 @@
-//Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+//Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Sat Aug  3 23:22:28 2019
+//Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+//Date        : Sun Aug  4 02:53:34 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu_wrapper.bd
 //Design      : mcu_wrapper
@@ -52,7 +52,7 @@ module mcu_wrapper
     uart_rtl_0_txd,
     uart_rtl_0_txrdyn,
     ufb_fpga_ft_12mhz,
-    ufb_fpga_ft_locked,
+    ufb_fpga_ft_reset,
     ufb_trx_rxclk_n,
     ufb_trx_rxclk_p,
     ufb_trx_rxd09_n,
@@ -103,7 +103,7 @@ module mcu_wrapper
   output uart_rtl_0_txd;
   output uart_rtl_0_txrdyn;
   output ufb_fpga_ft_12mhz;
-  output ufb_fpga_ft_locked;
+  output [0:0]ufb_fpga_ft_reset;
   input ufb_trx_rxclk_n;
   input ufb_trx_rxclk_p;
   input [0:0]ufb_trx_rxd09_n;
@@ -170,7 +170,7 @@ module mcu_wrapper
   wire uart_rtl_0_txd;
   wire uart_rtl_0_txrdyn;
   wire ufb_fpga_ft_12mhz;
-  wire ufb_fpga_ft_locked;
+  wire [0:0]ufb_fpga_ft_reset;
   wire ufb_trx_rxclk_n;
   wire ufb_trx_rxclk_p;
   wire [0:0]ufb_trx_rxd09_n;
@@ -233,7 +233,7 @@ module mcu_wrapper
         .uart_rtl_0_txd(uart_rtl_0_txd),
         .uart_rtl_0_txrdyn(uart_rtl_0_txrdyn),
         .ufb_fpga_ft_12mhz(ufb_fpga_ft_12mhz),
-        .ufb_fpga_ft_locked(ufb_fpga_ft_locked),
+        .ufb_fpga_ft_reset(ufb_fpga_ft_reset),
         .ufb_trx_rxclk_n(ufb_trx_rxclk_n),
         .ufb_trx_rxclk_p(ufb_trx_rxclk_p),
         .ufb_trx_rxd09_n(ufb_trx_rxd09_n),

@@ -47,14 +47,14 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:ip:axi_quad_spi:3.2
--- IP Revision: 17
+-- IP Revision: 18
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-LIBRARY axi_quad_spi_v3_2_17;
-USE axi_quad_spi_v3_2_17.axi_quad_spi;
+LIBRARY axi_quad_spi_v3_2_18;
+USE axi_quad_spi_v3_2_18.axi_quad_spi;
 
 ENTITY mcu_axi_quad_spi_0_0 IS
   PORT (
@@ -120,6 +120,7 @@ ARCHITECTURE mcu_axi_quad_spi_0_0_arch OF mcu_axi_quad_spi_0_0 IS
       C_DUAL_QUAD_MODE : INTEGER;
       C_NUM_SS_BITS : INTEGER;
       C_NUM_TRANSFER_BITS : INTEGER;
+      C_NEW_SEQ_EN : INTEGER;
       C_SPI_MODE : INTEGER;
       C_USE_STARTUP : INTEGER;
       C_USE_STARTUP_EXT : INTEGER;
@@ -288,12 +289,12 @@ ARCHITECTURE mcu_axi_quad_spi_0_0_arch OF mcu_axi_quad_spi_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_aresetn: SIGNAL IS "xilinx.com:signal:reset:1.0 lite_reset RST";
   ATTRIBUTE X_INTERFACE_PARAMETER OF s_axi_aclk: SIGNAL IS "XIL_INTERFACENAME lite_clk, ASSOCIATED_BUSIF AXI_LITE, ASSOCIATED_RESET s_axi_aresetn, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 lite_clk CLK";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF ext_spi_clk: SIGNAL IS "XIL_INTERFACENAME spi_clk, ASSOCIATED_BUSIF SPI_0, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF ext_spi_clk: SIGNAL IS "XIL_INTERFACENAME spi_clk, ASSOCIATED_BUSIF SPI_0, FREQ_HZ 50000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF ext_spi_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 spi_clk CLK";
 BEGIN
   U0 : axi_quad_spi
     GENERIC MAP (
-      Async_Clk => 0,
+      Async_Clk => 1,
       C_FAMILY => "artix7",
       C_SELECT_XPM => 1,
       C_SUB_FAMILY => "artix7",
@@ -307,6 +308,7 @@ BEGIN
       C_DUAL_QUAD_MODE => 0,
       C_NUM_SS_BITS => 1,
       C_NUM_TRANSFER_BITS => 8,
+      C_NEW_SEQ_EN => 1,
       C_SPI_MODE => 2,
       C_USE_STARTUP => 1,
       C_USE_STARTUP_EXT => 0,

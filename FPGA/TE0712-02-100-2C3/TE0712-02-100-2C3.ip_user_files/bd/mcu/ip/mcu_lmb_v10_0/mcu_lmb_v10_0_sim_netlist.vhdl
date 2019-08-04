@@ -1,7 +1,7 @@
--- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+-- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Sun Jul 28 18:05:55 2019
+-- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+-- Date        : Sun Aug  4 01:52:46 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim -rename_top mcu_lmb_v10_0 -prefix
 --               mcu_lmb_v10_0_ mcu_dlmb_v10_0_sim_netlist.vhdl
@@ -142,7 +142,7 @@ entity mcu_lmb_v10_0 is
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mcu_lmb_v10_0 : entity is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of mcu_lmb_v10_0 : entity is "lmb_v10,Vivado 2018.3";
+  attribute x_core_info of mcu_lmb_v10_0 : entity is "lmb_v10,Vivado 2019.1";
 end mcu_lmb_v10_0;
 
 architecture STRUCTURE of mcu_lmb_v10_0 is

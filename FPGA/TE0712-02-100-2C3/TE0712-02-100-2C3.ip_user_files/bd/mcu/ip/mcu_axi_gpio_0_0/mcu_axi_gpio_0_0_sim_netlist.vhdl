@@ -1,10 +1,10 @@
--- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+-- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Sat Aug  3 11:20:31 2019
+-- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+-- Date        : Sun Aug  4 02:03:32 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_axi_gpio_0_0/mcu_axi_gpio_0_0_sim_netlist.vhdl
+--               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_axi_gpio_0_0/mcu_axi_gpio_0_0_sim_netlist.vhdl
 -- Design      : mcu_axi_gpio_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -863,7 +863,7 @@ architecture STRUCTURE of mcu_axi_gpio_0_0_slave_attachment is
   signal \FSM_onehot_state[3]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_onehot_state_reg_n_0_[0]\ : STD_LOGIC;
   signal \FSM_onehot_state_reg_n_0_[3]\ : STD_LOGIC;
-  signal \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \^sr\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal bus2ip_addr : STD_LOGIC_VECTOR ( 0 to 6 );
   signal \bus2ip_addr_i[2]_i_1_n_0\ : STD_LOGIC;
@@ -1024,7 +1024,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(0),
+      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(0),
       O => plusOp(0)
     );
 \INCLUDE_DPHASE_TIMER.dpto_cnt[1]_i_1\: unisim.vcomponents.LUT2
@@ -1032,8 +1032,8 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(0),
-      I1 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(1),
+      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(0),
+      I1 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(1),
       O => plusOp(1)
     );
 \INCLUDE_DPHASE_TIMER.dpto_cnt[2]_i_1\: unisim.vcomponents.LUT3
@@ -1041,9 +1041,9 @@ begin
       INIT => X"78"
     )
         port map (
-      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(0),
-      I1 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(1),
-      I2 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(2),
+      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(0),
+      I1 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(1),
+      I2 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(2),
       O => plusOp(2)
     );
 \INCLUDE_DPHASE_TIMER.dpto_cnt[3]_i_1\: unisim.vcomponents.LUT2
@@ -1060,10 +1060,10 @@ begin
       INIT => X"7F80"
     )
         port map (
-      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(1),
-      I1 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(0),
-      I2 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(2),
-      I3 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(3),
+      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(1),
+      I1 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(0),
+      I2 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(2),
+      I3 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(3),
       O => plusOp(3)
     );
 \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[0]\: unisim.vcomponents.FDRE
@@ -1071,7 +1071,7 @@ begin
       C => s_axi_aclk,
       CE => '1',
       D => plusOp(0),
-      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(0),
+      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(0),
       R => clear
     );
 \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[1]\: unisim.vcomponents.FDRE
@@ -1079,7 +1079,7 @@ begin
       C => s_axi_aclk,
       CE => '1',
       D => plusOp(1),
-      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(1),
+      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(1),
       R => clear
     );
 \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[2]\: unisim.vcomponents.FDRE
@@ -1087,7 +1087,7 @@ begin
       C => s_axi_aclk,
       CE => '1',
       D => plusOp(2),
-      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(2),
+      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(2),
       R => clear
     );
 \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[3]\: unisim.vcomponents.FDRE
@@ -1095,7 +1095,7 @@ begin
       C => s_axi_aclk,
       CE => '1',
       D => plusOp(3),
-      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(3),
+      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(3),
       R => clear
     );
 I_DECODER: entity work.mcu_axi_gpio_0_0_address_decoder
@@ -1121,7 +1121,7 @@ I_DECODER: entity work.mcu_axi_gpio_0_0_address_decoder
       s_axi_aclk => s_axi_aclk,
       s_axi_aresetn => s_axi_aresetn,
       s_axi_arready => is_read_reg_n_0,
-      s_axi_arready_0(3 downto 0) => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(3 downto 0),
+      s_axi_arready_0(3 downto 0) => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(3 downto 0),
       s_axi_wdata(15 downto 0) => s_axi_wdata(15 downto 0),
       s_axi_wready => is_write_reg_n_0
     );
@@ -1971,7 +1971,7 @@ entity mcu_axi_gpio_0_0 is
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mcu_axi_gpio_0_0 : entity is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of mcu_axi_gpio_0_0 : entity is "axi_gpio,Vivado 2018.3";
+  attribute x_core_info of mcu_axi_gpio_0_0 : entity is "axi_gpio,Vivado 2019.1";
 end mcu_axi_gpio_0_0;
 
 architecture STRUCTURE of mcu_axi_gpio_0_0 is

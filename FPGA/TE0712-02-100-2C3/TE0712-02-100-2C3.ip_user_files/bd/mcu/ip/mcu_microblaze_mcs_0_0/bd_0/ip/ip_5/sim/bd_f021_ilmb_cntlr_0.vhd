@@ -47,14 +47,14 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:ip:lmb_bram_if_cntlr:4.0
--- IP Revision: 15
+-- IP Revision: 16
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-LIBRARY lmb_bram_if_cntlr_v4_0_15;
-USE lmb_bram_if_cntlr_v4_0_15.lmb_bram_if_cntlr;
+LIBRARY lmb_bram_if_cntlr_v4_0_16;
+USE lmb_bram_if_cntlr_v4_0_16.lmb_bram_if_cntlr;
 
 ENTITY bd_f021_ilmb_cntlr_0 IS
   PORT (
@@ -196,7 +196,7 @@ ARCHITECTURE bd_f021_ilmb_cntlr_0_arch OF bd_f021_ilmb_cntlr_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF BRAM_EN_A: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT EN";
   ATTRIBUTE X_INTERFACE_INFO OF BRAM_Addr_A: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT ADDR";
   ATTRIBUTE X_INTERFACE_INFO OF BRAM_Clk_A: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT CLK";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF BRAM_Rst_A: SIGNAL IS "XIL_INTERFACENAME BRAM_PORT, MEM_SIZE 32768, MASTER_TYPE BRAM_CTRL, MEM_WIDTH 32, MEM_ECC NONE, READ_LATENCY 1";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF BRAM_Rst_A: SIGNAL IS "XIL_INTERFACENAME BRAM_PORT, MEM_SIZE 131072, MASTER_TYPE BRAM_CTRL, MEM_WIDTH 32, MEM_ECC NONE, READ_LATENCY 1";
   ATTRIBUTE X_INTERFACE_INFO OF BRAM_Rst_A: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORT RST";
   ATTRIBUTE X_INTERFACE_INFO OF Sl_CE: SIGNAL IS "xilinx.com:interface:lmb:1.0 SLMB CE";
   ATTRIBUTE X_INTERFACE_INFO OF Sl_UE: SIGNAL IS "xilinx.com:interface:lmb:1.0 SLMB UE";
@@ -218,7 +218,7 @@ BEGIN
   U0 : lmb_bram_if_cntlr
     GENERIC MAP (
       C_FAMILY => "artix7",
-      C_HIGHADDR => X"0000000000007FFF",
+      C_HIGHADDR => X"000000000001FFFF",
       C_BASEADDR => X"0000000000000000",
       C_NUM_LMB => 1,
       C_MASK => X"0000000080000000",

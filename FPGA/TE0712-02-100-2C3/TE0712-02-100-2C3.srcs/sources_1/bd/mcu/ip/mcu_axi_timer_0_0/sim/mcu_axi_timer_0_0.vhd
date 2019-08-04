@@ -47,14 +47,14 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:ip:axi_timer:2.0
--- IP Revision: 20
+-- IP Revision: 21
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-LIBRARY axi_timer_v2_0_20;
-USE axi_timer_v2_0_20.axi_timer;
+LIBRARY axi_timer_v2_0_21;
+USE axi_timer_v2_0_21.axi_timer;
 
 ENTITY mcu_axi_timer_0_0 IS
   PORT (

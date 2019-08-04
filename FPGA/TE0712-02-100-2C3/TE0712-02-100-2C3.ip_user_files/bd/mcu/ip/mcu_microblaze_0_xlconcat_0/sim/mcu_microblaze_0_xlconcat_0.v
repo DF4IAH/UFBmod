@@ -48,7 +48,7 @@
 
 
 // IP VLNV: xilinx.com:ip:xlconcat:2.1
-// IP Revision: 1
+// IP Revision: 3
 
 `timescale 1ns/1ps
 
@@ -67,7 +67,7 @@ input wire [0 : 0] In2;
 input wire [0 : 0] In3;
 output wire [3 : 0] dout;
 
-  xlconcat_v2_1_1_xlconcat #(
+  xlconcat_v2_1_3_xlconcat #(
     .IN0_WIDTH(1),
     .IN1_WIDTH(1),
     .IN2_WIDTH(1),

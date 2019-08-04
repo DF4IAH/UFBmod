@@ -1,7 +1,7 @@
-// Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+// Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Thu Aug  1 23:45:23 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Aug  4 02:00:50 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim -rename_top mcu_dist_mem_gen_lvds_in_0 -prefix
 //               mcu_dist_mem_gen_lvds_in_0_ mcu_dist_mem_gen_0_0_sim_netlist.v
@@ -12,7 +12,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "mcu_dist_mem_gen_0_0,dist_mem_gen_v8_0_12,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "dist_mem_gen_v8_0_12,Vivado 2018.3" *) 
+(* CHECK_LICENSE_TYPE = "mcu_dist_mem_gen_0_0,dist_mem_gen_v8_0_13,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "dist_mem_gen_v8_0_13,Vivado 2019.1" *) 
 (* NotValidForBitStream *)
 module mcu_dist_mem_gen_lvds_in_0
    (a,
@@ -73,7 +73,7 @@ module mcu_dist_mem_gen_lvds_in_0
   (* c_reg_a_d_inputs = "1" *) 
   (* c_sync_enable = "1" *) 
   (* c_width = "8" *) 
-  mcu_dist_mem_gen_lvds_in_0_dist_mem_gen_v8_0_12 U0
+  mcu_dist_mem_gen_lvds_in_0_dist_mem_gen_v8_0_13 U0
        (.a(a),
         .clk(clk),
         .d(d),
@@ -104,7 +104,7 @@ endmodule
 (* C_PIPELINE_STAGES = "1" *) (* C_QCE_JOINED = "0" *) (* C_QUALIFY_WE = "0" *) 
 (* C_READ_MIF = "0" *) (* C_REG_A_D_INPUTS = "1" *) (* C_REG_DPRA_INPUT = "0" *) 
 (* C_SYNC_ENABLE = "1" *) (* C_WIDTH = "8" *) 
-module mcu_dist_mem_gen_lvds_in_0_dist_mem_gen_v8_0_12
+module mcu_dist_mem_gen_lvds_in_0_dist_mem_gen_v8_0_13
    (a,
     d,
     dpra,
@@ -175,7 +175,7 @@ module mcu_dist_mem_gen_lvds_in_0_dist_mem_gen_v8_0_12
   assign spo[0] = \<const0> ;
   GND GND
        (.G(\<const0> ));
-  mcu_dist_mem_gen_lvds_in_0_dist_mem_gen_v8_0_12_synth \synth_options.dist_mem_inst 
+  mcu_dist_mem_gen_lvds_in_0_dist_mem_gen_v8_0_13_synth \synth_options.dist_mem_inst 
        (.a(a),
         .clk(clk),
         .d(d),
@@ -185,7 +185,7 @@ module mcu_dist_mem_gen_lvds_in_0_dist_mem_gen_v8_0_12
         .we(we));
 endmodule
 
-module mcu_dist_mem_gen_lvds_in_0_dist_mem_gen_v8_0_12_synth
+module mcu_dist_mem_gen_lvds_in_0_dist_mem_gen_v8_0_13_synth
    (qdpo,
     a,
     clk,
@@ -478,8 +478,11 @@ module mcu_dist_mem_gen_lvds_in_0_sdpram
         .Q(qsdpo_int[7]),
         .R(1'b0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
+  (* RTL_RAM_BITS = "128" *) 
+  (* RTL_RAM_NAME = "synth_options.dist_mem_inst/gen_sdp_ram.sdpram_inst/ram" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "0" *) 
   (* ram_slice_end = "5" *) 
   RAM32M #(
@@ -503,8 +506,11 @@ module mcu_dist_mem_gen_lvds_in_0_sdpram
         .WCLK(clk),
         .WE(we_reg));
   (* METHODOLOGY_DRC_VIOS = "" *) 
+  (* RTL_RAM_BITS = "128" *) 
+  (* RTL_RAM_NAME = "synth_options.dist_mem_inst/gen_sdp_ram.sdpram_inst/ram" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "6" *) 
   (* ram_slice_end = "7" *) 
   RAM32M #(

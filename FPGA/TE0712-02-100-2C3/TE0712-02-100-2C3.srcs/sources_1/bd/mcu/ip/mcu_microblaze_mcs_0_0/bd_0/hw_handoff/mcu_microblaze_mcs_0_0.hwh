@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Aug  3 23:22:28 2019" VIVADOVERSION="2018.3">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Aug  4 02:53:35 2019" VIVADOVERSION="2019.1">
 
   <SYSTEMINFO ARCH="artix7" DEVICE="7a100t" NAME="bd_f021" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -18,27 +18,6 @@
     <PORT DIR="I" NAME="Reset" SIGIS="rst" SIGNAME="External_Ports_Reset">
       <CONNECTIONS>
         <CONNECTION INSTANCE="rst_0" PORT="ext_reset_in"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="UART_Interrupt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT"/>
-    <PORT DIR="O" NAME="FIT1_Interrupt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="iomodule_0_FIT1_Interrupt">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="iomodule_0" PORT="FIT1_Interrupt"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="FIT1_Toggle" SIGIS="undef" SIGNAME="iomodule_0_FIT1_Toggle">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="iomodule_0" PORT="FIT1_Toggle"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="PIT1_Interrupt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="iomodule_0_PIT1_Interrupt">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="iomodule_0" PORT="PIT1_Interrupt"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="PIT1_Toggle" SIGIS="undef" SIGNAME="iomodule_0_PIT1_Toggle">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="iomodule_0" PORT="PIT1_Toggle"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" NAME="INTC_IRQ" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="iomodule_0_INTC_IRQ_OUT">
@@ -302,7 +281,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="15" FULLNAME="/dlmb_cntlr" HWVERSION="4.0" INSTANCE="dlmb_cntlr" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY_CNTLR" MODTYPE="lmb_bram_if_cntlr" VLNV="xilinx.com:ip:lmb_bram_if_cntlr:4.0">
+    <MODULE COREREVISION="16" FULLNAME="/dlmb_cntlr" HWVERSION="4.0" INSTANCE="dlmb_cntlr" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY_CNTLR" MODTYPE="lmb_bram_if_cntlr" VLNV="xilinx.com:ip:lmb_bram_if_cntlr:4.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=lmb_bram_if_cntlr;v=v4_0;d=pg112-lmb-bram-if-cntlr.pdf"/>
       </DOCUMENTS>
@@ -337,7 +316,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="EDK_SPECIAL" VALUE="BRAM_CTRL"/>
         <PARAMETER NAME="C_BASEADDR" VALUE="0x00000000"/>
-        <PARAMETER NAME="C_HIGHADDR" VALUE="0x00007FFF"/>
+        <PARAMETER NAME="C_HIGHADDR" VALUE="0x0001FFFF"/>
       </PARAMETERS>
       <PORTS>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="LMB_Clk" SIGIS="clk" SIGNAME="External_Ports_Clk">
@@ -461,7 +440,7 @@
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="dlmb_cntlr_BRAM_PORT" NAME="BRAM_PORT" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="MEM_SIZE" VALUE="32768"/>
+          <PARAMETER NAME="MEM_SIZE" VALUE="131072"/>
           <PARAMETER NAME="MASTER_TYPE" VALUE="BRAM_CTRL"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
@@ -643,7 +622,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="15" FULLNAME="/ilmb_cntlr" HWVERSION="4.0" INSTANCE="ilmb_cntlr" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY_CNTLR" MODTYPE="lmb_bram_if_cntlr" VLNV="xilinx.com:ip:lmb_bram_if_cntlr:4.0">
+    <MODULE COREREVISION="16" FULLNAME="/ilmb_cntlr" HWVERSION="4.0" INSTANCE="ilmb_cntlr" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY_CNTLR" MODTYPE="lmb_bram_if_cntlr" VLNV="xilinx.com:ip:lmb_bram_if_cntlr:4.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=lmb_bram_if_cntlr;v=v4_0;d=pg112-lmb-bram-if-cntlr.pdf"/>
       </DOCUMENTS>
@@ -675,7 +654,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="EDK_SPECIAL" VALUE="BRAM_CTRL"/>
         <PARAMETER NAME="C_BASEADDR" VALUE="0x00000000"/>
-        <PARAMETER NAME="C_HIGHADDR" VALUE="0x00007FFF"/>
+        <PARAMETER NAME="C_HIGHADDR" VALUE="0x0001FFFF"/>
       </PARAMETERS>
       <PORTS>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="LMB_Clk" SIGIS="clk" SIGNAME="External_Ports_Clk">
@@ -799,7 +778,7 @@
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="ilmb_cntlr_BRAM_PORT" NAME="BRAM_PORT" TYPE="INITIATOR" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="MEM_SIZE" VALUE="32768"/>
+          <PARAMETER NAME="MEM_SIZE" VALUE="131072"/>
           <PARAMETER NAME="MASTER_TYPE" VALUE="BRAM_CTRL"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
@@ -1937,7 +1916,7 @@
             <REGISTER NAME="IRQ VECTOR 0">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 0"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x80"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -1950,14 +1929,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 1">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 1"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x84"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -1970,14 +1949,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 2">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 2"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x88"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -1990,14 +1969,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 3">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 3"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x8C"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2010,14 +1989,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 4">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 4"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x90"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2030,14 +2009,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 5">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 5"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x94"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2050,14 +2029,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 6">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 6"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x98"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2070,14 +2049,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 7">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 7"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x9C"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2090,14 +2069,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 8">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 8"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xA0"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2110,14 +2089,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 9">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 9"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xA4"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2130,14 +2109,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 10">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 10"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xA8"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2150,14 +2129,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 11">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 11"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xAC"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2170,14 +2149,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 12">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 12"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xB0"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2190,14 +2169,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 13">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 13"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xB4"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2210,14 +2189,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 14">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 14"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xB8"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2230,14 +2209,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 16">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 16"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xC0"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2250,14 +2229,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 17">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 17"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xC4"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2270,14 +2249,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 18">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 18"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xC8"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2290,14 +2269,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 19">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 19"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xCC"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2310,14 +2289,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 20">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 20"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xD0"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2330,14 +2309,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 21">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 21"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xD4"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2350,14 +2329,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 22">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 22"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xD8"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2370,14 +2349,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 23">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 23"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xDC"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2390,14 +2369,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 24">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 24"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xE0"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2410,14 +2389,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 25">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 25"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xE4"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2430,14 +2409,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 26">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 26"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xE8"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2450,14 +2429,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 27">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 27"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xEC"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2470,14 +2449,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 28">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 28"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xF0"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2490,14 +2469,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 29">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 29"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xF4"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2510,14 +2489,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 30">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 30"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xF8"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2530,14 +2509,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ VECTOR 31">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Register 31"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xFC"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000010"/>
@@ -2550,14 +2529,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 0">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 0"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x100"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2570,14 +2549,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 1">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 1"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x108"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2590,14 +2569,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 2">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 2"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x110"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2610,14 +2589,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 3">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 3"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x118"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2630,14 +2609,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 4">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 4"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x120"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2650,14 +2629,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 5">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 5"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x128"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2670,14 +2649,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 6">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 6"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x130"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2690,14 +2669,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 7">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 7"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x138"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2710,14 +2689,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 8">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 8"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x140"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2730,14 +2709,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 9">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 9"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x148"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2750,14 +2729,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 10">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 10"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x150"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2770,14 +2749,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 11">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 11"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x158"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2790,14 +2769,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 12">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 12"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x160"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2810,14 +2789,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 13">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 13"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x168"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2830,14 +2809,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 14">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 14"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x170"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2850,14 +2829,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 16">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 16"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x180"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2870,14 +2849,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 17">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 17"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x188"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2890,14 +2869,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 18">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 18"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x190"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2910,14 +2889,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 19">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 19"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x198"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2930,14 +2909,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 20">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 20"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x1A0"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2950,14 +2929,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 21">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 21"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x1A8"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2970,14 +2949,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 22">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 22"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x1B0"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -2990,14 +2969,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 23">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 23"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x1B8"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -3010,14 +2989,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 24">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 24"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x1C0"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -3030,14 +3009,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 25">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 25"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x1C8"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -3050,14 +3029,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 26">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 26"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x1D0"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -3070,14 +3049,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 27">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 27"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x1D8"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -3090,14 +3069,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 28">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 28"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x1E0"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -3110,14 +3089,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 29">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 29"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x1E8"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -3130,14 +3109,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 30">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 30"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x1F0"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -3150,14 +3129,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="IRQ EA VECTOR 31">
               <PROPERTY NAME="DESCRIPTION" VALUE="Interrupt Vector Address Register 31"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x1F8"/>
-              <PROPERTY NAME="SIZE" VALUE="15"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="write-only"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="false"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0000000000000000"/>
@@ -3170,7 +3149,7 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="15"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
@@ -3202,7 +3181,7 @@
         <PARAMETER NAME="C_UART_TX_INTERRUPT" VALUE="0"/>
         <PARAMETER NAME="C_UART_ERROR_INTERRUPT" VALUE="0"/>
         <PARAMETER NAME="C_UART_PROG_BAUDRATE" VALUE="0"/>
-        <PARAMETER NAME="C_USE_FIT1" VALUE="1"/>
+        <PARAMETER NAME="C_USE_FIT1" VALUE="0"/>
         <PARAMETER NAME="C_FIT1_No_CLOCKS" VALUE="100000"/>
         <PARAMETER NAME="C_FIT1_INTERRUPT" VALUE="1"/>
         <PARAMETER NAME="C_USE_FIT2" VALUE="0"/>
@@ -3214,7 +3193,7 @@
         <PARAMETER NAME="C_USE_FIT4" VALUE="0"/>
         <PARAMETER NAME="C_FIT4_No_CLOCKS" VALUE="6216"/>
         <PARAMETER NAME="C_FIT4_INTERRUPT" VALUE="0"/>
-        <PARAMETER NAME="C_USE_PIT1" VALUE="1"/>
+        <PARAMETER NAME="C_USE_PIT1" VALUE="0"/>
         <PARAMETER NAME="C_PIT1_SIZE" VALUE="32"/>
         <PARAMETER NAME="C_PIT1_READABLE" VALUE="1"/>
         <PARAMETER NAME="C_PIT1_PRESCALER" VALUE="0"/>
@@ -3263,7 +3242,7 @@
         <PARAMETER NAME="C_INTC_LEVEL_EDGE" VALUE="0x0000"/>
         <PARAMETER NAME="C_INTC_POSITIVE" VALUE="0xFFFF"/>
         <PARAMETER NAME="C_INTC_HAS_FAST" VALUE="1"/>
-        <PARAMETER NAME="C_INTC_ADDR_WIDTH" VALUE="15"/>
+        <PARAMETER NAME="C_INTC_ADDR_WIDTH" VALUE="17"/>
         <PARAMETER NAME="C_INTC_BASE_VECTORS" VALUE="0x0000000000000000"/>
         <PARAMETER NAME="C_INTC_ASYNC_INTR" VALUE="0xFFFF"/>
         <PARAMETER NAME="C_INTC_NUM_SYNC_FF" VALUE="2"/>
@@ -3290,26 +3269,6 @@
         <PORT DIR="I" NAME="Rst" SIGIS="rst" SIGNAME="rst_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_0" PORT="peripheral_reset"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="FIT1_Interrupt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="iomodule_0_FIT1_Interrupt">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="FIT1_Interrupt"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="FIT1_Toggle" SIGIS="undef" SIGNAME="iomodule_0_FIT1_Toggle">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="FIT1_Toggle"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="PIT1_Interrupt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="iomodule_0_PIT1_Interrupt">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="PIT1_Interrupt"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="PIT1_Toggle" SIGIS="undef" SIGNAME="iomodule_0_PIT1_Toggle">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="PIT1_Toggle"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="7" NAME="GPO1" RIGHT="0" SIGIS="undef" SIGNAME="iomodule_0_GPO1">
@@ -3440,7 +3399,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/lmb_bram_I" HWVERSION="8.4" INSTANCE="lmb_bram_I" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY" MODTYPE="blk_mem_gen" VLNV="xilinx.com:ip:blk_mem_gen:8.4">
+    <MODULE COREREVISION="3" FULLNAME="/lmb_bram_I" HWVERSION="8.4" INSTANCE="lmb_bram_I" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY" MODTYPE="blk_mem_gen" VLNV="xilinx.com:ip:blk_mem_gen:8.4">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=blk_mem_gen;v=v8_4;d=pg058-blk-mem-gen.pdf"/>
       </DOCUMENTS>
@@ -3476,8 +3435,8 @@
         <PARAMETER NAME="C_WRITE_MODE_A" VALUE="WRITE_FIRST"/>
         <PARAMETER NAME="C_WRITE_WIDTH_A" VALUE="32"/>
         <PARAMETER NAME="C_READ_WIDTH_A" VALUE="32"/>
-        <PARAMETER NAME="C_WRITE_DEPTH_A" VALUE="8192"/>
-        <PARAMETER NAME="C_READ_DEPTH_A" VALUE="8192"/>
+        <PARAMETER NAME="C_WRITE_DEPTH_A" VALUE="32768"/>
+        <PARAMETER NAME="C_READ_DEPTH_A" VALUE="32768"/>
         <PARAMETER NAME="C_ADDRA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_HAS_RSTB" VALUE="1"/>
         <PARAMETER NAME="C_RST_PRIORITY_B" VALUE="CE"/>
@@ -3490,8 +3449,8 @@
         <PARAMETER NAME="C_WRITE_MODE_B" VALUE="WRITE_FIRST"/>
         <PARAMETER NAME="C_WRITE_WIDTH_B" VALUE="32"/>
         <PARAMETER NAME="C_READ_WIDTH_B" VALUE="32"/>
-        <PARAMETER NAME="C_WRITE_DEPTH_B" VALUE="8192"/>
-        <PARAMETER NAME="C_READ_DEPTH_B" VALUE="8192"/>
+        <PARAMETER NAME="C_WRITE_DEPTH_B" VALUE="32768"/>
+        <PARAMETER NAME="C_READ_DEPTH_B" VALUE="32768"/>
         <PARAMETER NAME="C_ADDRB_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_HAS_MEM_OUTPUT_REGS_A" VALUE="0"/>
         <PARAMETER NAME="C_HAS_MEM_OUTPUT_REGS_B" VALUE="0"/>
@@ -3517,7 +3476,7 @@
         <PARAMETER NAME="C_EN_SHUTDOWN_PIN" VALUE="0"/>
         <PARAMETER NAME="C_EN_SAFETY_CKT" VALUE="1"/>
         <PARAMETER NAME="C_DISABLE_WARN_BHV_RANGE" VALUE="0"/>
-        <PARAMETER NAME="C_COUNT_36K_BRAM" VALUE="8"/>
+        <PARAMETER NAME="C_COUNT_36K_BRAM" VALUE="32"/>
         <PARAMETER NAME="C_COUNT_18K_BRAM" VALUE="0"/>
         <PARAMETER NAME="C_EST_POWER_SUMMARY" VALUE="Estimated Power for IP     :     20.388 mW"/>
         <PARAMETER NAME="Component_Name" VALUE="bd_f021_lmb_bram_I_0"/>
@@ -3546,7 +3505,7 @@
         <PARAMETER NAME="Primitive" VALUE="8kx2"/>
         <PARAMETER NAME="Assume_Synchronous_Clk" VALUE="false"/>
         <PARAMETER NAME="Write_Width_A" VALUE="32"/>
-        <PARAMETER NAME="Write_Depth_A" VALUE="8192"/>
+        <PARAMETER NAME="Write_Depth_A" VALUE="32768"/>
         <PARAMETER NAME="Read_Width_A" VALUE="32"/>
         <PARAMETER NAME="Operating_Mode_A" VALUE="WRITE_FIRST"/>
         <PARAMETER NAME="Enable_A" VALUE="Use_ENA_Pin"/>
@@ -3670,7 +3629,7 @@
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="dlmb_cntlr_BRAM_PORT" NAME="BRAM_PORTA" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="MEM_SIZE" VALUE="32768"/>
+          <PARAMETER NAME="MEM_SIZE" VALUE="131072"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
           <PARAMETER NAME="MASTER_TYPE" VALUE="BRAM_CTRL"/>
@@ -3687,7 +3646,7 @@
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="ilmb_cntlr_BRAM_PORT" NAME="BRAM_PORTB" TYPE="TARGET" VLNV="xilinx.com:interface:bram:1.0">
-          <PARAMETER NAME="MEM_SIZE" VALUE="32768"/>
+          <PARAMETER NAME="MEM_SIZE" VALUE="131072"/>
           <PARAMETER NAME="MEM_WIDTH" VALUE="32"/>
           <PARAMETER NAME="MEM_ECC" VALUE="NONE"/>
           <PARAMETER NAME="MASTER_TYPE" VALUE="BRAM_CTRL"/>
@@ -3705,7 +3664,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="0" FULLNAME="/microblaze_I" HWVERSION="11.0" INSTANCE="microblaze_I" IPTYPE="PROCESSOR" IS_ENABLE="1" MODCLASS="PROCESSOR" MODTYPE="microblaze" PROCTYPE="microblaze" VLNV="xilinx.com:ip:microblaze:11.0">
+    <MODULE COREREVISION="1" FULLNAME="/microblaze_I" HWVERSION="11.0" INSTANCE="microblaze_I" IPTYPE="PROCESSOR" IS_ENABLE="1" MODCLASS="PROCESSOR" MODTYPE="microblaze" PROCTYPE="microblaze" VLNV="xilinx.com:ip:microblaze:11.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/rdoc?v=2018.3;d=ug984-vivado-microblaze-ref.pdf"/>
       </DOCUMENTS>
@@ -3776,7 +3735,7 @@
         <PARAMETER NAME="C_MMU_PRIVILEGED_INSTR" VALUE="0"/>
         <PARAMETER NAME="C_USE_BRANCH_TARGET_CACHE" VALUE="0"/>
         <PARAMETER NAME="C_BRANCH_TARGET_CACHE_SIZE" VALUE="0"/>
-        <PARAMETER NAME="C_PC_WIDTH" VALUE="15"/>
+        <PARAMETER NAME="C_PC_WIDTH" VALUE="17"/>
         <PARAMETER NAME="C_PVR" VALUE="0"/>
         <PARAMETER NAME="C_PVR_USER1" VALUE="0x00"/>
         <PARAMETER NAME="C_PVR_USER2" VALUE="0x00000000"/>
@@ -4099,8 +4058,8 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
       <MEMORYMAP>
-        <MEMRANGE ADDRESSBLOCK="Mem" BASENAME="C_BASEADDR" BASEVALUE="0x00000000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x00007FFF" INSTANCE="dlmb_cntlr" IS_DATA="TRUE" IS_INSTRUCTION="FALSE" MASTERBUSINTERFACE="DLMB" MEMTYPE="MEMORY" SLAVEBUSINTERFACE="SLMB"/>
-        <MEMRANGE ADDRESSBLOCK="Mem" BASENAME="C_BASEADDR" BASEVALUE="0x00000000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x00007FFF" INSTANCE="ilmb_cntlr" IS_DATA="FALSE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="ILMB" MEMTYPE="MEMORY" SLAVEBUSINTERFACE="SLMB"/>
+        <MEMRANGE ADDRESSBLOCK="Mem" BASENAME="C_BASEADDR" BASEVALUE="0x00000000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x0001FFFF" INSTANCE="dlmb_cntlr" IS_DATA="TRUE" IS_INSTRUCTION="FALSE" MASTERBUSINTERFACE="DLMB" MEMTYPE="MEMORY" SLAVEBUSINTERFACE="SLMB"/>
+        <MEMRANGE ADDRESSBLOCK="Mem" BASENAME="C_BASEADDR" BASEVALUE="0x00000000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x0001FFFF" INSTANCE="ilmb_cntlr" IS_DATA="FALSE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="ILMB" MEMTYPE="MEMORY" SLAVEBUSINTERFACE="SLMB"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x80000000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x8000FFFF" INSTANCE="iomodule_0" IS_DATA="TRUE" IS_INSTRUCTION="FALSE" MASTERBUSINTERFACE="DLMB" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="SLMB"/>
       </MEMORYMAP>
       <PERIPHERALS>

@@ -94,7 +94,7 @@ wire clk_in2_mcu_clk_wiz_1_0;
   //    * Unused outputs are labeled unused
 
   wire        clk_12mhz_mcu_clk_wiz_1_0;
-  wire        clk_50mhz_mcu_clk_wiz_1_0;
+  wire        clk_out2_mcu_clk_wiz_1_0;
   wire        clk_out3_mcu_clk_wiz_1_0;
   wire        clk_out4_mcu_clk_wiz_1_0;
   wire        clk_out5_mcu_clk_wiz_1_0;

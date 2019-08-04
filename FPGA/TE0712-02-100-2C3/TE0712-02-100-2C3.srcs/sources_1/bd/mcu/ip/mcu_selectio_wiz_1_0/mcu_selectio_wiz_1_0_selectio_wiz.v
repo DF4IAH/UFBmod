@@ -172,5 +172,7 @@ module mcu_selectio_wiz_1_0_selectio_wiz
      end
   end
   endgenerate
+  
+//// NO ODELAY
 
 endmodule

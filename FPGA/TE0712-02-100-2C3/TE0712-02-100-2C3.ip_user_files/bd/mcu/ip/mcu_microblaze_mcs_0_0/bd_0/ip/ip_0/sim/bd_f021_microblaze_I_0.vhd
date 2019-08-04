@@ -47,14 +47,14 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:ip:microblaze:11.0
--- IP Revision: 0
+-- IP Revision: 1
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-LIBRARY microblaze_v11_0_0;
-USE microblaze_v11_0_0.MicroBlaze;
+LIBRARY microblaze_v11_0_1;
+USE microblaze_v11_0_1.MicroBlaze;
 
 ENTITY bd_f021_microblaze_I_0 IS
   PORT (
@@ -802,7 +802,7 @@ BEGIN
       C_MMU_PRIVILEGED_INSTR => 0,
       C_USE_BRANCH_TARGET_CACHE => 0,
       C_BRANCH_TARGET_CACHE_SIZE => 0,
-      C_PC_WIDTH => 15,
+      C_PC_WIDTH => 17,
       C_PVR => 0,
       C_PVR_USER1 => X"00",
       C_PVR_USER2 => X"00000000",

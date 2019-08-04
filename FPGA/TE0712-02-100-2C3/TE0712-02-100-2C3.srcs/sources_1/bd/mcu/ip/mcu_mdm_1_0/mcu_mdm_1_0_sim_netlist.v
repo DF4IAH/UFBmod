@@ -1,10 +1,10 @@
-// Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+// Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Sun Jul 28 18:10:59 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Aug  4 01:55:57 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top mcu_mdm_1_0 -prefix
-//               mcu_mdm_1_0_ mcu_mdm_1_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim
+//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_mdm_1_0/mcu_mdm_1_0_sim_netlist.v
 // Design      : mcu_mdm_1_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,6 +12,2615 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
+(* CHECK_LICENSE_TYPE = "mcu_mdm_1_0,MDM,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "MDM,Vivado 2019.1" *) 
+(* NotValidForBitStream *)
+module mcu_mdm_1_0
+   (M_AXI_ACLK,
+    M_AXI_ARESETN,
+    Debug_SYS_Rst,
+    Trig_In_0,
+    Trig_Ack_In_0,
+    Trig_Out_0,
+    Trig_Ack_Out_0,
+    M_AXI_AWID,
+    M_AXI_AWADDR,
+    M_AXI_AWLEN,
+    M_AXI_AWSIZE,
+    M_AXI_AWBURST,
+    M_AXI_AWLOCK,
+    M_AXI_AWCACHE,
+    M_AXI_AWPROT,
+    M_AXI_AWQOS,
+    M_AXI_AWVALID,
+    M_AXI_AWREADY,
+    M_AXI_WDATA,
+    M_AXI_WSTRB,
+    M_AXI_WLAST,
+    M_AXI_WVALID,
+    M_AXI_WREADY,
+    M_AXI_BRESP,
+    M_AXI_BID,
+    M_AXI_BVALID,
+    M_AXI_BREADY,
+    M_AXI_ARID,
+    M_AXI_ARADDR,
+    M_AXI_ARLEN,
+    M_AXI_ARSIZE,
+    M_AXI_ARBURST,
+    M_AXI_ARLOCK,
+    M_AXI_ARCACHE,
+    M_AXI_ARPROT,
+    M_AXI_ARQOS,
+    M_AXI_ARVALID,
+    M_AXI_ARREADY,
+    M_AXI_RID,
+    M_AXI_RDATA,
+    M_AXI_RRESP,
+    M_AXI_RLAST,
+    M_AXI_RVALID,
+    M_AXI_RREADY,
+    LMB_Data_Addr_0,
+    LMB_Addr_Strobe_0,
+    LMB_Ready_0,
+    LMB_Byte_Enable_0,
+    LMB_Data_Read_0,
+    LMB_Data_Write_0,
+    LMB_Read_Strobe_0,
+    LMB_Write_Strobe_0,
+    LMB_CE_0,
+    LMB_UE_0,
+    LMB_Wait_0,
+    Dbg_Clk_0,
+    Dbg_TDI_0,
+    Dbg_TDO_0,
+    Dbg_Reg_En_0,
+    Dbg_Capture_0,
+    Dbg_Shift_0,
+    Dbg_Update_0,
+    Dbg_Rst_0,
+    Dbg_Trig_In_0,
+    Dbg_Trig_Ack_In_0,
+    Dbg_Trig_Out_0,
+    Dbg_Trig_Ack_Out_0,
+    Dbg_Disable_0);
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 CLK.M_AXI_ACLK CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME CLK.M_AXI_ACLK, ASSOCIATED_BUSIF M_AXI:LMB_0:LMB_1:LMB_2:LMB_3:LMB_4:LMB_5:LMB_6:LMB_7:LMB_8:LMB_9:LMB_10:LMB_11:LMB_12:LMB_13:LMB_14:LMB_15:LMB_16:LMB_17:LMB_18:LMB_19:LMB_20:LMB_21:LMB_22:LMB_23:LMB_24:LMB_25:LMB_26:LMB_27:LMB_28:LMB_29:LMB_30:LMB_31, ASSOCIATED_RESET M_AXI_ARESETN, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) input M_AXI_ACLK;
+  (* x_interface_info = "xilinx.com:signal:reset:1.0 RST.M_AXI_ARESETN RST" *) (* x_interface_parameter = "XIL_INTERFACENAME RST.M_AXI_ARESETN, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input M_AXI_ARESETN;
+  (* x_interface_info = "xilinx.com:signal:reset:1.0 RST.Debug_SYS_Rst RST" *) (* x_interface_parameter = "XIL_INTERFACENAME RST.Debug_SYS_Rst, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) output Debug_SYS_Rst;
+  (* x_interface_info = "xilinx.com:interface:trigger:1.0 TRIG_IN_0 TRIG" *) input Trig_In_0;
+  (* x_interface_info = "xilinx.com:interface:trigger:1.0 TRIG_IN_0 ACK" *) output Trig_Ack_In_0;
+  (* x_interface_info = "xilinx.com:interface:trigger:1.0 TRIG_OUT_0 TRIG" *) output Trig_Out_0;
+  (* x_interface_info = "xilinx.com:interface:trigger:1.0 TRIG_OUT_0 ACK" *) input Trig_Ack_Out_0;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWID" *) (* x_interface_parameter = "XIL_INTERFACENAME M_AXI, ID_WIDTH 0, READ_WRITE_MODE READ_WRITE, SUPPORTS_NARROW_BURST 0, ADDR_WIDTH 32, PROTOCOL AXI4, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, WUSER_BITS_PER_BYTE 0, RUSER_WIDTH 0, RUSER_BITS_PER_BYTE 0, BUSER_WIDTH 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, DATA_WIDTH 32, MAX_BURST_LENGTH 32, HAS_BURST 1, FREQ_HZ 100000000, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) output [0:0]M_AXI_AWID;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWADDR" *) output [31:0]M_AXI_AWADDR;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWLEN" *) output [7:0]M_AXI_AWLEN;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWSIZE" *) output [2:0]M_AXI_AWSIZE;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWBURST" *) output [1:0]M_AXI_AWBURST;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWLOCK" *) output M_AXI_AWLOCK;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWCACHE" *) output [3:0]M_AXI_AWCACHE;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWPROT" *) output [2:0]M_AXI_AWPROT;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWQOS" *) output [3:0]M_AXI_AWQOS;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWVALID" *) output M_AXI_AWVALID;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWREADY" *) input M_AXI_AWREADY;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI WDATA" *) output [31:0]M_AXI_WDATA;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI WSTRB" *) output [3:0]M_AXI_WSTRB;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI WLAST" *) output M_AXI_WLAST;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI WVALID" *) output M_AXI_WVALID;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI WREADY" *) input M_AXI_WREADY;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI BRESP" *) input [1:0]M_AXI_BRESP;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI BID" *) input [0:0]M_AXI_BID;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI BVALID" *) input M_AXI_BVALID;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI BREADY" *) output M_AXI_BREADY;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARID" *) output [0:0]M_AXI_ARID;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARADDR" *) output [31:0]M_AXI_ARADDR;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARLEN" *) output [7:0]M_AXI_ARLEN;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARSIZE" *) output [2:0]M_AXI_ARSIZE;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARBURST" *) output [1:0]M_AXI_ARBURST;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARLOCK" *) output M_AXI_ARLOCK;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARCACHE" *) output [3:0]M_AXI_ARCACHE;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARPROT" *) output [2:0]M_AXI_ARPROT;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARQOS" *) output [3:0]M_AXI_ARQOS;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARVALID" *) output M_AXI_ARVALID;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARREADY" *) input M_AXI_ARREADY;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI RID" *) input [0:0]M_AXI_RID;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI RDATA" *) input [31:0]M_AXI_RDATA;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI RRESP" *) input [1:0]M_AXI_RRESP;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI RLAST" *) input M_AXI_RLAST;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI RVALID" *) input M_AXI_RVALID;
+  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI RREADY" *) output M_AXI_RREADY;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 ABUS" *) (* x_interface_parameter = "XIL_INTERFACENAME LMB_0, ADDR_WIDTH 32, DATA_WIDTH 32, READ_WRITE_MODE READ_WRITE" *) output [0:31]LMB_Data_Addr_0;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 ADDRSTROBE" *) output LMB_Addr_Strobe_0;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 READY" *) input LMB_Ready_0;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 BE" *) output [0:3]LMB_Byte_Enable_0;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 READDBUS" *) input [0:31]LMB_Data_Read_0;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 WRITEDBUS" *) output [0:31]LMB_Data_Write_0;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 READSTROBE" *) output LMB_Read_Strobe_0;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 WRITESTROBE" *) output LMB_Write_Strobe_0;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 CE" *) input LMB_CE_0;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 UE" *) input LMB_UE_0;
+  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 WAIT" *) input LMB_Wait_0;
+  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 CLK" *) output Dbg_Clk_0;
+  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 TDI" *) output Dbg_TDI_0;
+  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 TDO" *) input Dbg_TDO_0;
+  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 REG_EN" *) output [0:7]Dbg_Reg_En_0;
+  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 CAPTURE" *) output Dbg_Capture_0;
+  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 SHIFT" *) output Dbg_Shift_0;
+  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 UPDATE" *) output Dbg_Update_0;
+  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 RST" *) output Dbg_Rst_0;
+  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 TRIG_IN" *) input [0:7]Dbg_Trig_In_0;
+  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 TRIG_ACK_IN" *) output [0:7]Dbg_Trig_Ack_In_0;
+  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 TRIG_OUT" *) output [0:7]Dbg_Trig_Out_0;
+  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 TRIG_ACK_OUT" *) input [0:7]Dbg_Trig_Ack_Out_0;
+  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 DISABLE" *) output Dbg_Disable_0;
+
+  wire Dbg_Capture_0;
+  wire Dbg_Clk_0;
+  wire Dbg_Disable_0;
+  wire [0:7]Dbg_Reg_En_0;
+  wire Dbg_Rst_0;
+  wire Dbg_Shift_0;
+  wire Dbg_TDI_0;
+  wire Dbg_TDO_0;
+  wire [0:7]Dbg_Trig_Ack_In_0;
+  wire [0:7]Dbg_Trig_Ack_Out_0;
+  wire [0:7]Dbg_Trig_In_0;
+  wire [0:7]Dbg_Trig_Out_0;
+  wire Dbg_Update_0;
+  wire Debug_SYS_Rst;
+  wire LMB_Addr_Strobe_0;
+  wire [0:3]LMB_Byte_Enable_0;
+  wire LMB_CE_0;
+  wire [0:31]LMB_Data_Addr_0;
+  wire [0:31]LMB_Data_Read_0;
+  wire [0:31]LMB_Data_Write_0;
+  wire LMB_Read_Strobe_0;
+  wire LMB_Ready_0;
+  wire LMB_UE_0;
+  wire LMB_Wait_0;
+  wire LMB_Write_Strobe_0;
+  wire M_AXI_ACLK;
+  wire [31:0]M_AXI_ARADDR;
+  wire [1:0]M_AXI_ARBURST;
+  wire [3:0]M_AXI_ARCACHE;
+  wire M_AXI_ARESETN;
+  wire [0:0]M_AXI_ARID;
+  wire [7:0]M_AXI_ARLEN;
+  wire M_AXI_ARLOCK;
+  wire [2:0]M_AXI_ARPROT;
+  wire [3:0]M_AXI_ARQOS;
+  wire M_AXI_ARREADY;
+  wire [2:0]M_AXI_ARSIZE;
+  wire M_AXI_ARVALID;
+  wire [31:0]M_AXI_AWADDR;
+  wire [1:0]M_AXI_AWBURST;
+  wire [3:0]M_AXI_AWCACHE;
+  wire [0:0]M_AXI_AWID;
+  wire [7:0]M_AXI_AWLEN;
+  wire M_AXI_AWLOCK;
+  wire [2:0]M_AXI_AWPROT;
+  wire [3:0]M_AXI_AWQOS;
+  wire M_AXI_AWREADY;
+  wire [2:0]M_AXI_AWSIZE;
+  wire M_AXI_AWVALID;
+  wire [0:0]M_AXI_BID;
+  wire M_AXI_BREADY;
+  wire [1:0]M_AXI_BRESP;
+  wire M_AXI_BVALID;
+  wire [31:0]M_AXI_RDATA;
+  wire [0:0]M_AXI_RID;
+  wire M_AXI_RLAST;
+  wire M_AXI_RREADY;
+  wire [1:0]M_AXI_RRESP;
+  wire M_AXI_RVALID;
+  wire [31:0]M_AXI_WDATA;
+  wire M_AXI_WLAST;
+  wire M_AXI_WREADY;
+  wire [3:0]M_AXI_WSTRB;
+  wire M_AXI_WVALID;
+  wire Trig_Ack_In_0;
+  wire Trig_Ack_Out_0;
+  wire Trig_In_0;
+  wire Trig_Out_0;
+  wire NLW_U0_Dbg_ARVALID_0_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_1_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_10_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_11_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_12_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_13_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_14_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_15_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_16_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_17_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_18_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_19_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_2_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_20_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_21_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_22_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_23_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_24_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_25_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_26_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_27_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_28_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_29_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_3_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_30_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_31_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_4_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_5_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_6_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_7_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_8_UNCONNECTED;
+  wire NLW_U0_Dbg_ARVALID_9_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_0_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_1_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_10_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_11_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_12_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_13_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_14_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_15_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_16_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_17_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_18_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_19_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_2_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_20_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_21_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_22_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_23_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_24_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_25_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_26_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_27_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_28_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_29_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_3_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_30_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_31_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_4_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_5_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_6_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_7_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_8_UNCONNECTED;
+  wire NLW_U0_Dbg_AWVALID_9_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_0_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_1_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_10_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_11_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_12_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_13_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_14_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_15_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_16_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_17_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_18_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_19_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_2_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_20_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_21_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_22_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_23_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_24_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_25_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_26_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_27_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_28_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_29_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_3_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_30_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_31_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_4_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_5_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_6_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_7_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_8_UNCONNECTED;
+  wire NLW_U0_Dbg_BREADY_9_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_1_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_10_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_11_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_12_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_13_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_14_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_15_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_16_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_17_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_18_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_19_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_2_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_20_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_21_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_22_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_23_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_24_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_25_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_26_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_27_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_28_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_29_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_3_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_30_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_31_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_4_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_5_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_6_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_7_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_8_UNCONNECTED;
+  wire NLW_U0_Dbg_Capture_9_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_1_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_10_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_11_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_12_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_13_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_14_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_15_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_16_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_17_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_18_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_19_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_2_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_20_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_21_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_22_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_23_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_24_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_25_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_26_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_27_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_28_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_29_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_3_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_30_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_31_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_4_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_5_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_6_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_7_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_8_UNCONNECTED;
+  wire NLW_U0_Dbg_Clk_9_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_1_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_10_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_11_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_12_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_13_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_14_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_15_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_16_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_17_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_18_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_19_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_2_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_20_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_21_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_22_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_23_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_24_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_25_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_26_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_27_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_28_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_29_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_3_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_30_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_31_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_4_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_5_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_6_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_7_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_8_UNCONNECTED;
+  wire NLW_U0_Dbg_Disable_9_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_0_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_1_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_10_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_11_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_12_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_13_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_14_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_15_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_16_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_17_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_18_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_19_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_2_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_20_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_21_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_22_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_23_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_24_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_25_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_26_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_27_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_28_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_29_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_3_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_30_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_31_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_4_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_5_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_6_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_7_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_8_UNCONNECTED;
+  wire NLW_U0_Dbg_RREADY_9_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_1_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_10_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_11_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_12_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_13_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_14_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_15_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_16_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_17_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_18_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_19_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_2_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_20_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_21_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_22_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_23_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_24_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_25_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_26_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_27_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_28_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_29_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_3_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_30_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_31_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_4_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_5_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_6_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_7_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_8_UNCONNECTED;
+  wire NLW_U0_Dbg_Rst_9_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_1_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_10_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_11_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_12_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_13_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_14_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_15_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_16_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_17_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_18_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_19_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_2_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_20_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_21_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_22_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_23_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_24_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_25_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_26_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_27_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_28_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_29_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_3_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_30_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_31_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_4_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_5_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_6_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_7_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_8_UNCONNECTED;
+  wire NLW_U0_Dbg_Shift_9_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_1_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_10_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_11_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_12_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_13_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_14_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_15_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_16_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_17_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_18_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_19_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_2_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_20_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_21_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_22_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_23_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_24_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_25_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_26_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_27_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_28_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_29_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_3_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_30_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_31_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_4_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_5_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_6_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_7_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_8_UNCONNECTED;
+  wire NLW_U0_Dbg_TDI_9_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_0_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_1_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_10_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_11_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_12_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_13_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_14_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_15_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_16_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_17_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_18_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_19_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_2_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_20_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_21_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_22_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_23_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_24_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_25_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_26_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_27_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_28_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_29_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_3_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_30_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_31_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_4_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_5_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_6_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_7_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_8_UNCONNECTED;
+  wire NLW_U0_Dbg_TrClk_9_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_0_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_1_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_10_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_11_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_12_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_13_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_14_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_15_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_16_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_17_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_18_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_19_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_2_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_20_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_21_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_22_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_23_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_24_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_25_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_26_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_27_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_28_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_29_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_3_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_30_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_31_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_4_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_5_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_6_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_7_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_8_UNCONNECTED;
+  wire NLW_U0_Dbg_TrReady_9_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_1_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_10_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_11_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_12_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_13_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_14_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_15_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_16_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_17_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_18_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_19_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_2_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_20_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_21_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_22_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_23_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_24_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_25_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_26_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_27_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_28_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_29_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_3_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_30_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_31_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_4_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_5_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_6_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_7_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_8_UNCONNECTED;
+  wire NLW_U0_Dbg_Update_9_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_0_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_1_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_10_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_11_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_12_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_13_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_14_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_15_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_16_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_17_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_18_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_19_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_2_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_20_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_21_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_22_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_23_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_24_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_25_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_26_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_27_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_28_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_29_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_3_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_30_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_31_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_4_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_5_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_6_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_7_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_8_UNCONNECTED;
+  wire NLW_U0_Dbg_WVALID_9_UNCONNECTED;
+  wire NLW_U0_Ext_BRK_UNCONNECTED;
+  wire NLW_U0_Ext_JTAG_CAPTURE_UNCONNECTED;
+  wire NLW_U0_Ext_JTAG_DRCK_UNCONNECTED;
+  wire NLW_U0_Ext_JTAG_RESET_UNCONNECTED;
+  wire NLW_U0_Ext_JTAG_SEL_UNCONNECTED;
+  wire NLW_U0_Ext_JTAG_SHIFT_UNCONNECTED;
+  wire NLW_U0_Ext_JTAG_TDI_UNCONNECTED;
+  wire NLW_U0_Ext_JTAG_UPDATE_UNCONNECTED;
+  wire NLW_U0_Ext_NM_BRK_UNCONNECTED;
+  wire NLW_U0_Interrupt_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_1_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_10_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_11_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_12_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_13_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_14_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_15_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_16_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_17_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_18_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_19_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_2_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_20_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_21_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_22_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_23_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_24_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_25_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_26_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_27_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_28_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_29_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_3_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_30_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_31_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_4_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_5_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_6_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_7_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_8_UNCONNECTED;
+  wire NLW_U0_LMB_Addr_Strobe_9_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_1_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_10_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_11_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_12_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_13_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_14_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_15_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_16_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_17_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_18_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_19_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_2_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_20_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_21_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_22_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_23_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_24_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_25_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_26_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_27_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_28_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_29_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_3_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_30_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_31_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_4_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_5_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_6_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_7_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_8_UNCONNECTED;
+  wire NLW_U0_LMB_Read_Strobe_9_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_1_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_10_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_11_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_12_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_13_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_14_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_15_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_16_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_17_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_18_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_19_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_2_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_20_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_21_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_22_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_23_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_24_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_25_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_26_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_27_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_28_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_29_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_3_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_30_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_31_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_4_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_5_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_6_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_7_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_8_UNCONNECTED;
+  wire NLW_U0_LMB_Write_Strobe_9_UNCONNECTED;
+  wire NLW_U0_M_AXIS_TVALID_UNCONNECTED;
+  wire NLW_U0_S_AXI_ARREADY_UNCONNECTED;
+  wire NLW_U0_S_AXI_AWREADY_UNCONNECTED;
+  wire NLW_U0_S_AXI_BVALID_UNCONNECTED;
+  wire NLW_U0_S_AXI_RVALID_UNCONNECTED;
+  wire NLW_U0_S_AXI_WREADY_UNCONNECTED;
+  wire NLW_U0_TRACE_CLK_OUT_UNCONNECTED;
+  wire NLW_U0_TRACE_CTL_UNCONNECTED;
+  wire NLW_U0_Trig_Ack_In_1_UNCONNECTED;
+  wire NLW_U0_Trig_Ack_In_2_UNCONNECTED;
+  wire NLW_U0_Trig_Ack_In_3_UNCONNECTED;
+  wire NLW_U0_Trig_Out_1_UNCONNECTED;
+  wire NLW_U0_Trig_Out_2_UNCONNECTED;
+  wire NLW_U0_Trig_Out_3_UNCONNECTED;
+  wire NLW_U0_bscan_ext_tdo_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_0_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_1_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_10_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_11_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_12_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_13_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_14_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_15_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_16_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_17_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_18_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_19_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_2_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_20_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_21_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_22_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_23_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_24_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_25_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_26_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_27_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_28_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_29_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_3_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_30_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_31_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_4_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_5_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_6_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_7_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_8_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_ARADDR_9_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_0_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_1_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_10_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_11_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_12_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_13_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_14_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_15_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_16_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_17_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_18_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_19_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_2_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_20_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_21_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_22_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_23_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_24_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_25_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_26_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_27_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_28_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_29_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_3_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_30_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_31_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_4_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_5_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_6_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_7_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_8_UNCONNECTED;
+  wire [14:2]NLW_U0_Dbg_AWADDR_9_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_1_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_10_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_11_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_12_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_13_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_14_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_15_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_16_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_17_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_18_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_19_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_2_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_20_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_21_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_22_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_23_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_24_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_25_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_26_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_27_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_28_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_29_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_3_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_30_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_31_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_4_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_5_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_6_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_7_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_8_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Reg_En_9_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_1_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_10_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_11_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_12_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_13_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_14_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_15_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_16_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_17_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_18_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_19_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_2_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_20_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_21_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_22_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_23_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_24_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_25_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_26_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_27_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_28_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_29_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_3_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_30_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_31_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_4_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_5_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_6_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_7_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_8_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_9_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_1_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_10_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_11_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_12_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_13_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_14_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_15_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_16_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_17_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_18_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_19_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_2_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_20_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_21_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_22_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_23_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_24_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_25_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_26_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_27_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_28_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_29_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_3_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_30_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_31_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_4_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_5_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_6_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_7_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_8_UNCONNECTED;
+  wire [0:7]NLW_U0_Dbg_Trig_Out_9_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_0_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_1_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_10_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_11_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_12_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_13_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_14_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_15_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_16_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_17_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_18_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_19_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_2_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_20_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_21_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_22_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_23_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_24_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_25_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_26_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_27_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_28_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_29_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_3_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_30_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_31_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_4_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_5_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_6_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_7_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_8_UNCONNECTED;
+  wire [31:0]NLW_U0_Dbg_WDATA_9_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_1_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_10_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_11_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_12_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_13_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_14_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_15_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_16_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_17_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_18_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_19_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_2_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_20_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_21_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_22_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_23_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_24_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_25_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_26_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_27_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_28_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_29_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_3_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_30_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_31_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_4_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_5_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_6_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_7_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_8_UNCONNECTED;
+  wire [0:3]NLW_U0_LMB_Byte_Enable_9_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_1_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_10_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_11_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_12_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_13_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_14_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_15_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_16_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_17_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_18_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_19_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_2_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_20_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_21_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_22_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_23_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_24_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_25_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_26_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_27_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_28_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_29_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_3_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_30_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_31_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_4_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_5_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_6_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_7_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_8_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Addr_9_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_1_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_10_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_11_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_12_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_13_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_14_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_15_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_16_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_17_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_18_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_19_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_2_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_20_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_21_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_22_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_23_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_24_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_25_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_26_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_27_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_28_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_29_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_3_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_30_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_31_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_4_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_5_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_6_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_7_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_8_UNCONNECTED;
+  wire [0:31]NLW_U0_LMB_Data_Write_9_UNCONNECTED;
+  wire [31:0]NLW_U0_M_AXIS_TDATA_UNCONNECTED;
+  wire [6:0]NLW_U0_M_AXIS_TID_UNCONNECTED;
+  wire [1:0]NLW_U0_S_AXI_BRESP_UNCONNECTED;
+  wire [31:0]NLW_U0_S_AXI_RDATA_UNCONNECTED;
+  wire [1:0]NLW_U0_S_AXI_RRESP_UNCONNECTED;
+  wire [31:0]NLW_U0_TRACE_DATA_UNCONNECTED;
+
+  (* C_ADDR_SIZE = "32" *) 
+  (* C_AVOID_PRIMITIVES = "0" *) 
+  (* C_BSCANID = "76547328" *) 
+  (* C_DATA_SIZE = "32" *) 
+  (* C_DBG_MEM_ACCESS = "1" *) 
+  (* C_DBG_REG_ACCESS = "0" *) 
+  (* C_DEBUG_INTERFACE = "0" *) 
+  (* C_EXT_TRIG_RESET_VALUE = "20'b11110001001000110100" *) 
+  (* C_FAMILY = "artix7" *) 
+  (* C_INTERCONNECT = "2" *) 
+  (* C_JTAG_CHAIN = "2" *) 
+  (* C_MB_DBG_PORTS = "1" *) 
+  (* C_M_AXIS_DATA_WIDTH = "32" *) 
+  (* C_M_AXIS_ID_WIDTH = "7" *) 
+  (* C_M_AXI_ADDR_WIDTH = "32" *) 
+  (* C_M_AXI_DATA_WIDTH = "32" *) 
+  (* C_M_AXI_THREAD_ID_WIDTH = "1" *) 
+  (* C_S_AXI_ACLK_FREQ_HZ = "100000000" *) 
+  (* C_S_AXI_ADDR_WIDTH = "4" *) 
+  (* C_S_AXI_DATA_WIDTH = "32" *) 
+  (* C_TRACE_ASYNC_RESET = "0" *) 
+  (* C_TRACE_CLK_FREQ_HZ = "200000000" *) 
+  (* C_TRACE_CLK_OUT_PHASE = "90" *) 
+  (* C_TRACE_DATA_WIDTH = "32" *) 
+  (* C_TRACE_ID = "110" *) 
+  (* C_TRACE_OUTPUT = "0" *) 
+  (* C_TRACE_PROTOCOL = "1" *) 
+  (* C_USE_BSCAN = "0" *) 
+  (* C_USE_CONFIG_RESET = "0" *) 
+  (* C_USE_CROSS_TRIGGER = "1" *) 
+  (* C_USE_UART = "0" *) 
+  mcu_mdm_1_0_MDM U0
+       (.Config_Reset(1'b0),
+        .Dbg_ARADDR_0(NLW_U0_Dbg_ARADDR_0_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_1(NLW_U0_Dbg_ARADDR_1_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_10(NLW_U0_Dbg_ARADDR_10_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_11(NLW_U0_Dbg_ARADDR_11_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_12(NLW_U0_Dbg_ARADDR_12_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_13(NLW_U0_Dbg_ARADDR_13_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_14(NLW_U0_Dbg_ARADDR_14_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_15(NLW_U0_Dbg_ARADDR_15_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_16(NLW_U0_Dbg_ARADDR_16_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_17(NLW_U0_Dbg_ARADDR_17_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_18(NLW_U0_Dbg_ARADDR_18_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_19(NLW_U0_Dbg_ARADDR_19_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_2(NLW_U0_Dbg_ARADDR_2_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_20(NLW_U0_Dbg_ARADDR_20_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_21(NLW_U0_Dbg_ARADDR_21_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_22(NLW_U0_Dbg_ARADDR_22_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_23(NLW_U0_Dbg_ARADDR_23_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_24(NLW_U0_Dbg_ARADDR_24_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_25(NLW_U0_Dbg_ARADDR_25_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_26(NLW_U0_Dbg_ARADDR_26_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_27(NLW_U0_Dbg_ARADDR_27_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_28(NLW_U0_Dbg_ARADDR_28_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_29(NLW_U0_Dbg_ARADDR_29_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_3(NLW_U0_Dbg_ARADDR_3_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_30(NLW_U0_Dbg_ARADDR_30_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_31(NLW_U0_Dbg_ARADDR_31_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_4(NLW_U0_Dbg_ARADDR_4_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_5(NLW_U0_Dbg_ARADDR_5_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_6(NLW_U0_Dbg_ARADDR_6_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_7(NLW_U0_Dbg_ARADDR_7_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_8(NLW_U0_Dbg_ARADDR_8_UNCONNECTED[14:2]),
+        .Dbg_ARADDR_9(NLW_U0_Dbg_ARADDR_9_UNCONNECTED[14:2]),
+        .Dbg_ARREADY_0(1'b0),
+        .Dbg_ARREADY_1(1'b0),
+        .Dbg_ARREADY_10(1'b0),
+        .Dbg_ARREADY_11(1'b0),
+        .Dbg_ARREADY_12(1'b0),
+        .Dbg_ARREADY_13(1'b0),
+        .Dbg_ARREADY_14(1'b0),
+        .Dbg_ARREADY_15(1'b0),
+        .Dbg_ARREADY_16(1'b0),
+        .Dbg_ARREADY_17(1'b0),
+        .Dbg_ARREADY_18(1'b0),
+        .Dbg_ARREADY_19(1'b0),
+        .Dbg_ARREADY_2(1'b0),
+        .Dbg_ARREADY_20(1'b0),
+        .Dbg_ARREADY_21(1'b0),
+        .Dbg_ARREADY_22(1'b0),
+        .Dbg_ARREADY_23(1'b0),
+        .Dbg_ARREADY_24(1'b0),
+        .Dbg_ARREADY_25(1'b0),
+        .Dbg_ARREADY_26(1'b0),
+        .Dbg_ARREADY_27(1'b0),
+        .Dbg_ARREADY_28(1'b0),
+        .Dbg_ARREADY_29(1'b0),
+        .Dbg_ARREADY_3(1'b0),
+        .Dbg_ARREADY_30(1'b0),
+        .Dbg_ARREADY_31(1'b0),
+        .Dbg_ARREADY_4(1'b0),
+        .Dbg_ARREADY_5(1'b0),
+        .Dbg_ARREADY_6(1'b0),
+        .Dbg_ARREADY_7(1'b0),
+        .Dbg_ARREADY_8(1'b0),
+        .Dbg_ARREADY_9(1'b0),
+        .Dbg_ARVALID_0(NLW_U0_Dbg_ARVALID_0_UNCONNECTED),
+        .Dbg_ARVALID_1(NLW_U0_Dbg_ARVALID_1_UNCONNECTED),
+        .Dbg_ARVALID_10(NLW_U0_Dbg_ARVALID_10_UNCONNECTED),
+        .Dbg_ARVALID_11(NLW_U0_Dbg_ARVALID_11_UNCONNECTED),
+        .Dbg_ARVALID_12(NLW_U0_Dbg_ARVALID_12_UNCONNECTED),
+        .Dbg_ARVALID_13(NLW_U0_Dbg_ARVALID_13_UNCONNECTED),
+        .Dbg_ARVALID_14(NLW_U0_Dbg_ARVALID_14_UNCONNECTED),
+        .Dbg_ARVALID_15(NLW_U0_Dbg_ARVALID_15_UNCONNECTED),
+        .Dbg_ARVALID_16(NLW_U0_Dbg_ARVALID_16_UNCONNECTED),
+        .Dbg_ARVALID_17(NLW_U0_Dbg_ARVALID_17_UNCONNECTED),
+        .Dbg_ARVALID_18(NLW_U0_Dbg_ARVALID_18_UNCONNECTED),
+        .Dbg_ARVALID_19(NLW_U0_Dbg_ARVALID_19_UNCONNECTED),
+        .Dbg_ARVALID_2(NLW_U0_Dbg_ARVALID_2_UNCONNECTED),
+        .Dbg_ARVALID_20(NLW_U0_Dbg_ARVALID_20_UNCONNECTED),
+        .Dbg_ARVALID_21(NLW_U0_Dbg_ARVALID_21_UNCONNECTED),
+        .Dbg_ARVALID_22(NLW_U0_Dbg_ARVALID_22_UNCONNECTED),
+        .Dbg_ARVALID_23(NLW_U0_Dbg_ARVALID_23_UNCONNECTED),
+        .Dbg_ARVALID_24(NLW_U0_Dbg_ARVALID_24_UNCONNECTED),
+        .Dbg_ARVALID_25(NLW_U0_Dbg_ARVALID_25_UNCONNECTED),
+        .Dbg_ARVALID_26(NLW_U0_Dbg_ARVALID_26_UNCONNECTED),
+        .Dbg_ARVALID_27(NLW_U0_Dbg_ARVALID_27_UNCONNECTED),
+        .Dbg_ARVALID_28(NLW_U0_Dbg_ARVALID_28_UNCONNECTED),
+        .Dbg_ARVALID_29(NLW_U0_Dbg_ARVALID_29_UNCONNECTED),
+        .Dbg_ARVALID_3(NLW_U0_Dbg_ARVALID_3_UNCONNECTED),
+        .Dbg_ARVALID_30(NLW_U0_Dbg_ARVALID_30_UNCONNECTED),
+        .Dbg_ARVALID_31(NLW_U0_Dbg_ARVALID_31_UNCONNECTED),
+        .Dbg_ARVALID_4(NLW_U0_Dbg_ARVALID_4_UNCONNECTED),
+        .Dbg_ARVALID_5(NLW_U0_Dbg_ARVALID_5_UNCONNECTED),
+        .Dbg_ARVALID_6(NLW_U0_Dbg_ARVALID_6_UNCONNECTED),
+        .Dbg_ARVALID_7(NLW_U0_Dbg_ARVALID_7_UNCONNECTED),
+        .Dbg_ARVALID_8(NLW_U0_Dbg_ARVALID_8_UNCONNECTED),
+        .Dbg_ARVALID_9(NLW_U0_Dbg_ARVALID_9_UNCONNECTED),
+        .Dbg_AWADDR_0(NLW_U0_Dbg_AWADDR_0_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_1(NLW_U0_Dbg_AWADDR_1_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_10(NLW_U0_Dbg_AWADDR_10_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_11(NLW_U0_Dbg_AWADDR_11_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_12(NLW_U0_Dbg_AWADDR_12_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_13(NLW_U0_Dbg_AWADDR_13_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_14(NLW_U0_Dbg_AWADDR_14_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_15(NLW_U0_Dbg_AWADDR_15_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_16(NLW_U0_Dbg_AWADDR_16_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_17(NLW_U0_Dbg_AWADDR_17_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_18(NLW_U0_Dbg_AWADDR_18_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_19(NLW_U0_Dbg_AWADDR_19_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_2(NLW_U0_Dbg_AWADDR_2_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_20(NLW_U0_Dbg_AWADDR_20_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_21(NLW_U0_Dbg_AWADDR_21_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_22(NLW_U0_Dbg_AWADDR_22_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_23(NLW_U0_Dbg_AWADDR_23_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_24(NLW_U0_Dbg_AWADDR_24_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_25(NLW_U0_Dbg_AWADDR_25_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_26(NLW_U0_Dbg_AWADDR_26_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_27(NLW_U0_Dbg_AWADDR_27_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_28(NLW_U0_Dbg_AWADDR_28_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_29(NLW_U0_Dbg_AWADDR_29_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_3(NLW_U0_Dbg_AWADDR_3_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_30(NLW_U0_Dbg_AWADDR_30_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_31(NLW_U0_Dbg_AWADDR_31_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_4(NLW_U0_Dbg_AWADDR_4_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_5(NLW_U0_Dbg_AWADDR_5_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_6(NLW_U0_Dbg_AWADDR_6_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_7(NLW_U0_Dbg_AWADDR_7_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_8(NLW_U0_Dbg_AWADDR_8_UNCONNECTED[14:2]),
+        .Dbg_AWADDR_9(NLW_U0_Dbg_AWADDR_9_UNCONNECTED[14:2]),
+        .Dbg_AWREADY_0(1'b0),
+        .Dbg_AWREADY_1(1'b0),
+        .Dbg_AWREADY_10(1'b0),
+        .Dbg_AWREADY_11(1'b0),
+        .Dbg_AWREADY_12(1'b0),
+        .Dbg_AWREADY_13(1'b0),
+        .Dbg_AWREADY_14(1'b0),
+        .Dbg_AWREADY_15(1'b0),
+        .Dbg_AWREADY_16(1'b0),
+        .Dbg_AWREADY_17(1'b0),
+        .Dbg_AWREADY_18(1'b0),
+        .Dbg_AWREADY_19(1'b0),
+        .Dbg_AWREADY_2(1'b0),
+        .Dbg_AWREADY_20(1'b0),
+        .Dbg_AWREADY_21(1'b0),
+        .Dbg_AWREADY_22(1'b0),
+        .Dbg_AWREADY_23(1'b0),
+        .Dbg_AWREADY_24(1'b0),
+        .Dbg_AWREADY_25(1'b0),
+        .Dbg_AWREADY_26(1'b0),
+        .Dbg_AWREADY_27(1'b0),
+        .Dbg_AWREADY_28(1'b0),
+        .Dbg_AWREADY_29(1'b0),
+        .Dbg_AWREADY_3(1'b0),
+        .Dbg_AWREADY_30(1'b0),
+        .Dbg_AWREADY_31(1'b0),
+        .Dbg_AWREADY_4(1'b0),
+        .Dbg_AWREADY_5(1'b0),
+        .Dbg_AWREADY_6(1'b0),
+        .Dbg_AWREADY_7(1'b0),
+        .Dbg_AWREADY_8(1'b0),
+        .Dbg_AWREADY_9(1'b0),
+        .Dbg_AWVALID_0(NLW_U0_Dbg_AWVALID_0_UNCONNECTED),
+        .Dbg_AWVALID_1(NLW_U0_Dbg_AWVALID_1_UNCONNECTED),
+        .Dbg_AWVALID_10(NLW_U0_Dbg_AWVALID_10_UNCONNECTED),
+        .Dbg_AWVALID_11(NLW_U0_Dbg_AWVALID_11_UNCONNECTED),
+        .Dbg_AWVALID_12(NLW_U0_Dbg_AWVALID_12_UNCONNECTED),
+        .Dbg_AWVALID_13(NLW_U0_Dbg_AWVALID_13_UNCONNECTED),
+        .Dbg_AWVALID_14(NLW_U0_Dbg_AWVALID_14_UNCONNECTED),
+        .Dbg_AWVALID_15(NLW_U0_Dbg_AWVALID_15_UNCONNECTED),
+        .Dbg_AWVALID_16(NLW_U0_Dbg_AWVALID_16_UNCONNECTED),
+        .Dbg_AWVALID_17(NLW_U0_Dbg_AWVALID_17_UNCONNECTED),
+        .Dbg_AWVALID_18(NLW_U0_Dbg_AWVALID_18_UNCONNECTED),
+        .Dbg_AWVALID_19(NLW_U0_Dbg_AWVALID_19_UNCONNECTED),
+        .Dbg_AWVALID_2(NLW_U0_Dbg_AWVALID_2_UNCONNECTED),
+        .Dbg_AWVALID_20(NLW_U0_Dbg_AWVALID_20_UNCONNECTED),
+        .Dbg_AWVALID_21(NLW_U0_Dbg_AWVALID_21_UNCONNECTED),
+        .Dbg_AWVALID_22(NLW_U0_Dbg_AWVALID_22_UNCONNECTED),
+        .Dbg_AWVALID_23(NLW_U0_Dbg_AWVALID_23_UNCONNECTED),
+        .Dbg_AWVALID_24(NLW_U0_Dbg_AWVALID_24_UNCONNECTED),
+        .Dbg_AWVALID_25(NLW_U0_Dbg_AWVALID_25_UNCONNECTED),
+        .Dbg_AWVALID_26(NLW_U0_Dbg_AWVALID_26_UNCONNECTED),
+        .Dbg_AWVALID_27(NLW_U0_Dbg_AWVALID_27_UNCONNECTED),
+        .Dbg_AWVALID_28(NLW_U0_Dbg_AWVALID_28_UNCONNECTED),
+        .Dbg_AWVALID_29(NLW_U0_Dbg_AWVALID_29_UNCONNECTED),
+        .Dbg_AWVALID_3(NLW_U0_Dbg_AWVALID_3_UNCONNECTED),
+        .Dbg_AWVALID_30(NLW_U0_Dbg_AWVALID_30_UNCONNECTED),
+        .Dbg_AWVALID_31(NLW_U0_Dbg_AWVALID_31_UNCONNECTED),
+        .Dbg_AWVALID_4(NLW_U0_Dbg_AWVALID_4_UNCONNECTED),
+        .Dbg_AWVALID_5(NLW_U0_Dbg_AWVALID_5_UNCONNECTED),
+        .Dbg_AWVALID_6(NLW_U0_Dbg_AWVALID_6_UNCONNECTED),
+        .Dbg_AWVALID_7(NLW_U0_Dbg_AWVALID_7_UNCONNECTED),
+        .Dbg_AWVALID_8(NLW_U0_Dbg_AWVALID_8_UNCONNECTED),
+        .Dbg_AWVALID_9(NLW_U0_Dbg_AWVALID_9_UNCONNECTED),
+        .Dbg_BREADY_0(NLW_U0_Dbg_BREADY_0_UNCONNECTED),
+        .Dbg_BREADY_1(NLW_U0_Dbg_BREADY_1_UNCONNECTED),
+        .Dbg_BREADY_10(NLW_U0_Dbg_BREADY_10_UNCONNECTED),
+        .Dbg_BREADY_11(NLW_U0_Dbg_BREADY_11_UNCONNECTED),
+        .Dbg_BREADY_12(NLW_U0_Dbg_BREADY_12_UNCONNECTED),
+        .Dbg_BREADY_13(NLW_U0_Dbg_BREADY_13_UNCONNECTED),
+        .Dbg_BREADY_14(NLW_U0_Dbg_BREADY_14_UNCONNECTED),
+        .Dbg_BREADY_15(NLW_U0_Dbg_BREADY_15_UNCONNECTED),
+        .Dbg_BREADY_16(NLW_U0_Dbg_BREADY_16_UNCONNECTED),
+        .Dbg_BREADY_17(NLW_U0_Dbg_BREADY_17_UNCONNECTED),
+        .Dbg_BREADY_18(NLW_U0_Dbg_BREADY_18_UNCONNECTED),
+        .Dbg_BREADY_19(NLW_U0_Dbg_BREADY_19_UNCONNECTED),
+        .Dbg_BREADY_2(NLW_U0_Dbg_BREADY_2_UNCONNECTED),
+        .Dbg_BREADY_20(NLW_U0_Dbg_BREADY_20_UNCONNECTED),
+        .Dbg_BREADY_21(NLW_U0_Dbg_BREADY_21_UNCONNECTED),
+        .Dbg_BREADY_22(NLW_U0_Dbg_BREADY_22_UNCONNECTED),
+        .Dbg_BREADY_23(NLW_U0_Dbg_BREADY_23_UNCONNECTED),
+        .Dbg_BREADY_24(NLW_U0_Dbg_BREADY_24_UNCONNECTED),
+        .Dbg_BREADY_25(NLW_U0_Dbg_BREADY_25_UNCONNECTED),
+        .Dbg_BREADY_26(NLW_U0_Dbg_BREADY_26_UNCONNECTED),
+        .Dbg_BREADY_27(NLW_U0_Dbg_BREADY_27_UNCONNECTED),
+        .Dbg_BREADY_28(NLW_U0_Dbg_BREADY_28_UNCONNECTED),
+        .Dbg_BREADY_29(NLW_U0_Dbg_BREADY_29_UNCONNECTED),
+        .Dbg_BREADY_3(NLW_U0_Dbg_BREADY_3_UNCONNECTED),
+        .Dbg_BREADY_30(NLW_U0_Dbg_BREADY_30_UNCONNECTED),
+        .Dbg_BREADY_31(NLW_U0_Dbg_BREADY_31_UNCONNECTED),
+        .Dbg_BREADY_4(NLW_U0_Dbg_BREADY_4_UNCONNECTED),
+        .Dbg_BREADY_5(NLW_U0_Dbg_BREADY_5_UNCONNECTED),
+        .Dbg_BREADY_6(NLW_U0_Dbg_BREADY_6_UNCONNECTED),
+        .Dbg_BREADY_7(NLW_U0_Dbg_BREADY_7_UNCONNECTED),
+        .Dbg_BREADY_8(NLW_U0_Dbg_BREADY_8_UNCONNECTED),
+        .Dbg_BREADY_9(NLW_U0_Dbg_BREADY_9_UNCONNECTED),
+        .Dbg_BRESP_0({1'b0,1'b0}),
+        .Dbg_BRESP_1({1'b0,1'b0}),
+        .Dbg_BRESP_10({1'b0,1'b0}),
+        .Dbg_BRESP_11({1'b0,1'b0}),
+        .Dbg_BRESP_12({1'b0,1'b0}),
+        .Dbg_BRESP_13({1'b0,1'b0}),
+        .Dbg_BRESP_14({1'b0,1'b0}),
+        .Dbg_BRESP_15({1'b0,1'b0}),
+        .Dbg_BRESP_16({1'b0,1'b0}),
+        .Dbg_BRESP_17({1'b0,1'b0}),
+        .Dbg_BRESP_18({1'b0,1'b0}),
+        .Dbg_BRESP_19({1'b0,1'b0}),
+        .Dbg_BRESP_2({1'b0,1'b0}),
+        .Dbg_BRESP_20({1'b0,1'b0}),
+        .Dbg_BRESP_21({1'b0,1'b0}),
+        .Dbg_BRESP_22({1'b0,1'b0}),
+        .Dbg_BRESP_23({1'b0,1'b0}),
+        .Dbg_BRESP_24({1'b0,1'b0}),
+        .Dbg_BRESP_25({1'b0,1'b0}),
+        .Dbg_BRESP_26({1'b0,1'b0}),
+        .Dbg_BRESP_27({1'b0,1'b0}),
+        .Dbg_BRESP_28({1'b0,1'b0}),
+        .Dbg_BRESP_29({1'b0,1'b0}),
+        .Dbg_BRESP_3({1'b0,1'b0}),
+        .Dbg_BRESP_30({1'b0,1'b0}),
+        .Dbg_BRESP_31({1'b0,1'b0}),
+        .Dbg_BRESP_4({1'b0,1'b0}),
+        .Dbg_BRESP_5({1'b0,1'b0}),
+        .Dbg_BRESP_6({1'b0,1'b0}),
+        .Dbg_BRESP_7({1'b0,1'b0}),
+        .Dbg_BRESP_8({1'b0,1'b0}),
+        .Dbg_BRESP_9({1'b0,1'b0}),
+        .Dbg_BVALID_0(1'b0),
+        .Dbg_BVALID_1(1'b0),
+        .Dbg_BVALID_10(1'b0),
+        .Dbg_BVALID_11(1'b0),
+        .Dbg_BVALID_12(1'b0),
+        .Dbg_BVALID_13(1'b0),
+        .Dbg_BVALID_14(1'b0),
+        .Dbg_BVALID_15(1'b0),
+        .Dbg_BVALID_16(1'b0),
+        .Dbg_BVALID_17(1'b0),
+        .Dbg_BVALID_18(1'b0),
+        .Dbg_BVALID_19(1'b0),
+        .Dbg_BVALID_2(1'b0),
+        .Dbg_BVALID_20(1'b0),
+        .Dbg_BVALID_21(1'b0),
+        .Dbg_BVALID_22(1'b0),
+        .Dbg_BVALID_23(1'b0),
+        .Dbg_BVALID_24(1'b0),
+        .Dbg_BVALID_25(1'b0),
+        .Dbg_BVALID_26(1'b0),
+        .Dbg_BVALID_27(1'b0),
+        .Dbg_BVALID_28(1'b0),
+        .Dbg_BVALID_29(1'b0),
+        .Dbg_BVALID_3(1'b0),
+        .Dbg_BVALID_30(1'b0),
+        .Dbg_BVALID_31(1'b0),
+        .Dbg_BVALID_4(1'b0),
+        .Dbg_BVALID_5(1'b0),
+        .Dbg_BVALID_6(1'b0),
+        .Dbg_BVALID_7(1'b0),
+        .Dbg_BVALID_8(1'b0),
+        .Dbg_BVALID_9(1'b0),
+        .Dbg_Capture_0(Dbg_Capture_0),
+        .Dbg_Capture_1(NLW_U0_Dbg_Capture_1_UNCONNECTED),
+        .Dbg_Capture_10(NLW_U0_Dbg_Capture_10_UNCONNECTED),
+        .Dbg_Capture_11(NLW_U0_Dbg_Capture_11_UNCONNECTED),
+        .Dbg_Capture_12(NLW_U0_Dbg_Capture_12_UNCONNECTED),
+        .Dbg_Capture_13(NLW_U0_Dbg_Capture_13_UNCONNECTED),
+        .Dbg_Capture_14(NLW_U0_Dbg_Capture_14_UNCONNECTED),
+        .Dbg_Capture_15(NLW_U0_Dbg_Capture_15_UNCONNECTED),
+        .Dbg_Capture_16(NLW_U0_Dbg_Capture_16_UNCONNECTED),
+        .Dbg_Capture_17(NLW_U0_Dbg_Capture_17_UNCONNECTED),
+        .Dbg_Capture_18(NLW_U0_Dbg_Capture_18_UNCONNECTED),
+        .Dbg_Capture_19(NLW_U0_Dbg_Capture_19_UNCONNECTED),
+        .Dbg_Capture_2(NLW_U0_Dbg_Capture_2_UNCONNECTED),
+        .Dbg_Capture_20(NLW_U0_Dbg_Capture_20_UNCONNECTED),
+        .Dbg_Capture_21(NLW_U0_Dbg_Capture_21_UNCONNECTED),
+        .Dbg_Capture_22(NLW_U0_Dbg_Capture_22_UNCONNECTED),
+        .Dbg_Capture_23(NLW_U0_Dbg_Capture_23_UNCONNECTED),
+        .Dbg_Capture_24(NLW_U0_Dbg_Capture_24_UNCONNECTED),
+        .Dbg_Capture_25(NLW_U0_Dbg_Capture_25_UNCONNECTED),
+        .Dbg_Capture_26(NLW_U0_Dbg_Capture_26_UNCONNECTED),
+        .Dbg_Capture_27(NLW_U0_Dbg_Capture_27_UNCONNECTED),
+        .Dbg_Capture_28(NLW_U0_Dbg_Capture_28_UNCONNECTED),
+        .Dbg_Capture_29(NLW_U0_Dbg_Capture_29_UNCONNECTED),
+        .Dbg_Capture_3(NLW_U0_Dbg_Capture_3_UNCONNECTED),
+        .Dbg_Capture_30(NLW_U0_Dbg_Capture_30_UNCONNECTED),
+        .Dbg_Capture_31(NLW_U0_Dbg_Capture_31_UNCONNECTED),
+        .Dbg_Capture_4(NLW_U0_Dbg_Capture_4_UNCONNECTED),
+        .Dbg_Capture_5(NLW_U0_Dbg_Capture_5_UNCONNECTED),
+        .Dbg_Capture_6(NLW_U0_Dbg_Capture_6_UNCONNECTED),
+        .Dbg_Capture_7(NLW_U0_Dbg_Capture_7_UNCONNECTED),
+        .Dbg_Capture_8(NLW_U0_Dbg_Capture_8_UNCONNECTED),
+        .Dbg_Capture_9(NLW_U0_Dbg_Capture_9_UNCONNECTED),
+        .Dbg_Clk_0(Dbg_Clk_0),
+        .Dbg_Clk_1(NLW_U0_Dbg_Clk_1_UNCONNECTED),
+        .Dbg_Clk_10(NLW_U0_Dbg_Clk_10_UNCONNECTED),
+        .Dbg_Clk_11(NLW_U0_Dbg_Clk_11_UNCONNECTED),
+        .Dbg_Clk_12(NLW_U0_Dbg_Clk_12_UNCONNECTED),
+        .Dbg_Clk_13(NLW_U0_Dbg_Clk_13_UNCONNECTED),
+        .Dbg_Clk_14(NLW_U0_Dbg_Clk_14_UNCONNECTED),
+        .Dbg_Clk_15(NLW_U0_Dbg_Clk_15_UNCONNECTED),
+        .Dbg_Clk_16(NLW_U0_Dbg_Clk_16_UNCONNECTED),
+        .Dbg_Clk_17(NLW_U0_Dbg_Clk_17_UNCONNECTED),
+        .Dbg_Clk_18(NLW_U0_Dbg_Clk_18_UNCONNECTED),
+        .Dbg_Clk_19(NLW_U0_Dbg_Clk_19_UNCONNECTED),
+        .Dbg_Clk_2(NLW_U0_Dbg_Clk_2_UNCONNECTED),
+        .Dbg_Clk_20(NLW_U0_Dbg_Clk_20_UNCONNECTED),
+        .Dbg_Clk_21(NLW_U0_Dbg_Clk_21_UNCONNECTED),
+        .Dbg_Clk_22(NLW_U0_Dbg_Clk_22_UNCONNECTED),
+        .Dbg_Clk_23(NLW_U0_Dbg_Clk_23_UNCONNECTED),
+        .Dbg_Clk_24(NLW_U0_Dbg_Clk_24_UNCONNECTED),
+        .Dbg_Clk_25(NLW_U0_Dbg_Clk_25_UNCONNECTED),
+        .Dbg_Clk_26(NLW_U0_Dbg_Clk_26_UNCONNECTED),
+        .Dbg_Clk_27(NLW_U0_Dbg_Clk_27_UNCONNECTED),
+        .Dbg_Clk_28(NLW_U0_Dbg_Clk_28_UNCONNECTED),
+        .Dbg_Clk_29(NLW_U0_Dbg_Clk_29_UNCONNECTED),
+        .Dbg_Clk_3(NLW_U0_Dbg_Clk_3_UNCONNECTED),
+        .Dbg_Clk_30(NLW_U0_Dbg_Clk_30_UNCONNECTED),
+        .Dbg_Clk_31(NLW_U0_Dbg_Clk_31_UNCONNECTED),
+        .Dbg_Clk_4(NLW_U0_Dbg_Clk_4_UNCONNECTED),
+        .Dbg_Clk_5(NLW_U0_Dbg_Clk_5_UNCONNECTED),
+        .Dbg_Clk_6(NLW_U0_Dbg_Clk_6_UNCONNECTED),
+        .Dbg_Clk_7(NLW_U0_Dbg_Clk_7_UNCONNECTED),
+        .Dbg_Clk_8(NLW_U0_Dbg_Clk_8_UNCONNECTED),
+        .Dbg_Clk_9(NLW_U0_Dbg_Clk_9_UNCONNECTED),
+        .Dbg_Disable_0(Dbg_Disable_0),
+        .Dbg_Disable_1(NLW_U0_Dbg_Disable_1_UNCONNECTED),
+        .Dbg_Disable_10(NLW_U0_Dbg_Disable_10_UNCONNECTED),
+        .Dbg_Disable_11(NLW_U0_Dbg_Disable_11_UNCONNECTED),
+        .Dbg_Disable_12(NLW_U0_Dbg_Disable_12_UNCONNECTED),
+        .Dbg_Disable_13(NLW_U0_Dbg_Disable_13_UNCONNECTED),
+        .Dbg_Disable_14(NLW_U0_Dbg_Disable_14_UNCONNECTED),
+        .Dbg_Disable_15(NLW_U0_Dbg_Disable_15_UNCONNECTED),
+        .Dbg_Disable_16(NLW_U0_Dbg_Disable_16_UNCONNECTED),
+        .Dbg_Disable_17(NLW_U0_Dbg_Disable_17_UNCONNECTED),
+        .Dbg_Disable_18(NLW_U0_Dbg_Disable_18_UNCONNECTED),
+        .Dbg_Disable_19(NLW_U0_Dbg_Disable_19_UNCONNECTED),
+        .Dbg_Disable_2(NLW_U0_Dbg_Disable_2_UNCONNECTED),
+        .Dbg_Disable_20(NLW_U0_Dbg_Disable_20_UNCONNECTED),
+        .Dbg_Disable_21(NLW_U0_Dbg_Disable_21_UNCONNECTED),
+        .Dbg_Disable_22(NLW_U0_Dbg_Disable_22_UNCONNECTED),
+        .Dbg_Disable_23(NLW_U0_Dbg_Disable_23_UNCONNECTED),
+        .Dbg_Disable_24(NLW_U0_Dbg_Disable_24_UNCONNECTED),
+        .Dbg_Disable_25(NLW_U0_Dbg_Disable_25_UNCONNECTED),
+        .Dbg_Disable_26(NLW_U0_Dbg_Disable_26_UNCONNECTED),
+        .Dbg_Disable_27(NLW_U0_Dbg_Disable_27_UNCONNECTED),
+        .Dbg_Disable_28(NLW_U0_Dbg_Disable_28_UNCONNECTED),
+        .Dbg_Disable_29(NLW_U0_Dbg_Disable_29_UNCONNECTED),
+        .Dbg_Disable_3(NLW_U0_Dbg_Disable_3_UNCONNECTED),
+        .Dbg_Disable_30(NLW_U0_Dbg_Disable_30_UNCONNECTED),
+        .Dbg_Disable_31(NLW_U0_Dbg_Disable_31_UNCONNECTED),
+        .Dbg_Disable_4(NLW_U0_Dbg_Disable_4_UNCONNECTED),
+        .Dbg_Disable_5(NLW_U0_Dbg_Disable_5_UNCONNECTED),
+        .Dbg_Disable_6(NLW_U0_Dbg_Disable_6_UNCONNECTED),
+        .Dbg_Disable_7(NLW_U0_Dbg_Disable_7_UNCONNECTED),
+        .Dbg_Disable_8(NLW_U0_Dbg_Disable_8_UNCONNECTED),
+        .Dbg_Disable_9(NLW_U0_Dbg_Disable_9_UNCONNECTED),
+        .Dbg_RDATA_0({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_1({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_10({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_11({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_12({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_13({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_14({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_15({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_16({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_17({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_18({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_19({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_2({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_20({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_21({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_22({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_23({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_24({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_25({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_26({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_27({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_28({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_29({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_3({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_30({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_31({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_4({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_5({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_6({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_7({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_8({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RDATA_9({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_RREADY_0(NLW_U0_Dbg_RREADY_0_UNCONNECTED),
+        .Dbg_RREADY_1(NLW_U0_Dbg_RREADY_1_UNCONNECTED),
+        .Dbg_RREADY_10(NLW_U0_Dbg_RREADY_10_UNCONNECTED),
+        .Dbg_RREADY_11(NLW_U0_Dbg_RREADY_11_UNCONNECTED),
+        .Dbg_RREADY_12(NLW_U0_Dbg_RREADY_12_UNCONNECTED),
+        .Dbg_RREADY_13(NLW_U0_Dbg_RREADY_13_UNCONNECTED),
+        .Dbg_RREADY_14(NLW_U0_Dbg_RREADY_14_UNCONNECTED),
+        .Dbg_RREADY_15(NLW_U0_Dbg_RREADY_15_UNCONNECTED),
+        .Dbg_RREADY_16(NLW_U0_Dbg_RREADY_16_UNCONNECTED),
+        .Dbg_RREADY_17(NLW_U0_Dbg_RREADY_17_UNCONNECTED),
+        .Dbg_RREADY_18(NLW_U0_Dbg_RREADY_18_UNCONNECTED),
+        .Dbg_RREADY_19(NLW_U0_Dbg_RREADY_19_UNCONNECTED),
+        .Dbg_RREADY_2(NLW_U0_Dbg_RREADY_2_UNCONNECTED),
+        .Dbg_RREADY_20(NLW_U0_Dbg_RREADY_20_UNCONNECTED),
+        .Dbg_RREADY_21(NLW_U0_Dbg_RREADY_21_UNCONNECTED),
+        .Dbg_RREADY_22(NLW_U0_Dbg_RREADY_22_UNCONNECTED),
+        .Dbg_RREADY_23(NLW_U0_Dbg_RREADY_23_UNCONNECTED),
+        .Dbg_RREADY_24(NLW_U0_Dbg_RREADY_24_UNCONNECTED),
+        .Dbg_RREADY_25(NLW_U0_Dbg_RREADY_25_UNCONNECTED),
+        .Dbg_RREADY_26(NLW_U0_Dbg_RREADY_26_UNCONNECTED),
+        .Dbg_RREADY_27(NLW_U0_Dbg_RREADY_27_UNCONNECTED),
+        .Dbg_RREADY_28(NLW_U0_Dbg_RREADY_28_UNCONNECTED),
+        .Dbg_RREADY_29(NLW_U0_Dbg_RREADY_29_UNCONNECTED),
+        .Dbg_RREADY_3(NLW_U0_Dbg_RREADY_3_UNCONNECTED),
+        .Dbg_RREADY_30(NLW_U0_Dbg_RREADY_30_UNCONNECTED),
+        .Dbg_RREADY_31(NLW_U0_Dbg_RREADY_31_UNCONNECTED),
+        .Dbg_RREADY_4(NLW_U0_Dbg_RREADY_4_UNCONNECTED),
+        .Dbg_RREADY_5(NLW_U0_Dbg_RREADY_5_UNCONNECTED),
+        .Dbg_RREADY_6(NLW_U0_Dbg_RREADY_6_UNCONNECTED),
+        .Dbg_RREADY_7(NLW_U0_Dbg_RREADY_7_UNCONNECTED),
+        .Dbg_RREADY_8(NLW_U0_Dbg_RREADY_8_UNCONNECTED),
+        .Dbg_RREADY_9(NLW_U0_Dbg_RREADY_9_UNCONNECTED),
+        .Dbg_RRESP_0({1'b0,1'b0}),
+        .Dbg_RRESP_1({1'b0,1'b0}),
+        .Dbg_RRESP_10({1'b0,1'b0}),
+        .Dbg_RRESP_11({1'b0,1'b0}),
+        .Dbg_RRESP_12({1'b0,1'b0}),
+        .Dbg_RRESP_13({1'b0,1'b0}),
+        .Dbg_RRESP_14({1'b0,1'b0}),
+        .Dbg_RRESP_15({1'b0,1'b0}),
+        .Dbg_RRESP_16({1'b0,1'b0}),
+        .Dbg_RRESP_17({1'b0,1'b0}),
+        .Dbg_RRESP_18({1'b0,1'b0}),
+        .Dbg_RRESP_19({1'b0,1'b0}),
+        .Dbg_RRESP_2({1'b0,1'b0}),
+        .Dbg_RRESP_20({1'b0,1'b0}),
+        .Dbg_RRESP_21({1'b0,1'b0}),
+        .Dbg_RRESP_22({1'b0,1'b0}),
+        .Dbg_RRESP_23({1'b0,1'b0}),
+        .Dbg_RRESP_24({1'b0,1'b0}),
+        .Dbg_RRESP_25({1'b0,1'b0}),
+        .Dbg_RRESP_26({1'b0,1'b0}),
+        .Dbg_RRESP_27({1'b0,1'b0}),
+        .Dbg_RRESP_28({1'b0,1'b0}),
+        .Dbg_RRESP_29({1'b0,1'b0}),
+        .Dbg_RRESP_3({1'b0,1'b0}),
+        .Dbg_RRESP_30({1'b0,1'b0}),
+        .Dbg_RRESP_31({1'b0,1'b0}),
+        .Dbg_RRESP_4({1'b0,1'b0}),
+        .Dbg_RRESP_5({1'b0,1'b0}),
+        .Dbg_RRESP_6({1'b0,1'b0}),
+        .Dbg_RRESP_7({1'b0,1'b0}),
+        .Dbg_RRESP_8({1'b0,1'b0}),
+        .Dbg_RRESP_9({1'b0,1'b0}),
+        .Dbg_RVALID_0(1'b0),
+        .Dbg_RVALID_1(1'b0),
+        .Dbg_RVALID_10(1'b0),
+        .Dbg_RVALID_11(1'b0),
+        .Dbg_RVALID_12(1'b0),
+        .Dbg_RVALID_13(1'b0),
+        .Dbg_RVALID_14(1'b0),
+        .Dbg_RVALID_15(1'b0),
+        .Dbg_RVALID_16(1'b0),
+        .Dbg_RVALID_17(1'b0),
+        .Dbg_RVALID_18(1'b0),
+        .Dbg_RVALID_19(1'b0),
+        .Dbg_RVALID_2(1'b0),
+        .Dbg_RVALID_20(1'b0),
+        .Dbg_RVALID_21(1'b0),
+        .Dbg_RVALID_22(1'b0),
+        .Dbg_RVALID_23(1'b0),
+        .Dbg_RVALID_24(1'b0),
+        .Dbg_RVALID_25(1'b0),
+        .Dbg_RVALID_26(1'b0),
+        .Dbg_RVALID_27(1'b0),
+        .Dbg_RVALID_28(1'b0),
+        .Dbg_RVALID_29(1'b0),
+        .Dbg_RVALID_3(1'b0),
+        .Dbg_RVALID_30(1'b0),
+        .Dbg_RVALID_31(1'b0),
+        .Dbg_RVALID_4(1'b0),
+        .Dbg_RVALID_5(1'b0),
+        .Dbg_RVALID_6(1'b0),
+        .Dbg_RVALID_7(1'b0),
+        .Dbg_RVALID_8(1'b0),
+        .Dbg_RVALID_9(1'b0),
+        .Dbg_Reg_En_0(Dbg_Reg_En_0),
+        .Dbg_Reg_En_1(NLW_U0_Dbg_Reg_En_1_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_10(NLW_U0_Dbg_Reg_En_10_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_11(NLW_U0_Dbg_Reg_En_11_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_12(NLW_U0_Dbg_Reg_En_12_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_13(NLW_U0_Dbg_Reg_En_13_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_14(NLW_U0_Dbg_Reg_En_14_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_15(NLW_U0_Dbg_Reg_En_15_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_16(NLW_U0_Dbg_Reg_En_16_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_17(NLW_U0_Dbg_Reg_En_17_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_18(NLW_U0_Dbg_Reg_En_18_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_19(NLW_U0_Dbg_Reg_En_19_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_2(NLW_U0_Dbg_Reg_En_2_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_20(NLW_U0_Dbg_Reg_En_20_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_21(NLW_U0_Dbg_Reg_En_21_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_22(NLW_U0_Dbg_Reg_En_22_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_23(NLW_U0_Dbg_Reg_En_23_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_24(NLW_U0_Dbg_Reg_En_24_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_25(NLW_U0_Dbg_Reg_En_25_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_26(NLW_U0_Dbg_Reg_En_26_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_27(NLW_U0_Dbg_Reg_En_27_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_28(NLW_U0_Dbg_Reg_En_28_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_29(NLW_U0_Dbg_Reg_En_29_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_3(NLW_U0_Dbg_Reg_En_3_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_30(NLW_U0_Dbg_Reg_En_30_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_31(NLW_U0_Dbg_Reg_En_31_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_4(NLW_U0_Dbg_Reg_En_4_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_5(NLW_U0_Dbg_Reg_En_5_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_6(NLW_U0_Dbg_Reg_En_6_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_7(NLW_U0_Dbg_Reg_En_7_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_8(NLW_U0_Dbg_Reg_En_8_UNCONNECTED[0:7]),
+        .Dbg_Reg_En_9(NLW_U0_Dbg_Reg_En_9_UNCONNECTED[0:7]),
+        .Dbg_Rst_0(Dbg_Rst_0),
+        .Dbg_Rst_1(NLW_U0_Dbg_Rst_1_UNCONNECTED),
+        .Dbg_Rst_10(NLW_U0_Dbg_Rst_10_UNCONNECTED),
+        .Dbg_Rst_11(NLW_U0_Dbg_Rst_11_UNCONNECTED),
+        .Dbg_Rst_12(NLW_U0_Dbg_Rst_12_UNCONNECTED),
+        .Dbg_Rst_13(NLW_U0_Dbg_Rst_13_UNCONNECTED),
+        .Dbg_Rst_14(NLW_U0_Dbg_Rst_14_UNCONNECTED),
+        .Dbg_Rst_15(NLW_U0_Dbg_Rst_15_UNCONNECTED),
+        .Dbg_Rst_16(NLW_U0_Dbg_Rst_16_UNCONNECTED),
+        .Dbg_Rst_17(NLW_U0_Dbg_Rst_17_UNCONNECTED),
+        .Dbg_Rst_18(NLW_U0_Dbg_Rst_18_UNCONNECTED),
+        .Dbg_Rst_19(NLW_U0_Dbg_Rst_19_UNCONNECTED),
+        .Dbg_Rst_2(NLW_U0_Dbg_Rst_2_UNCONNECTED),
+        .Dbg_Rst_20(NLW_U0_Dbg_Rst_20_UNCONNECTED),
+        .Dbg_Rst_21(NLW_U0_Dbg_Rst_21_UNCONNECTED),
+        .Dbg_Rst_22(NLW_U0_Dbg_Rst_22_UNCONNECTED),
+        .Dbg_Rst_23(NLW_U0_Dbg_Rst_23_UNCONNECTED),
+        .Dbg_Rst_24(NLW_U0_Dbg_Rst_24_UNCONNECTED),
+        .Dbg_Rst_25(NLW_U0_Dbg_Rst_25_UNCONNECTED),
+        .Dbg_Rst_26(NLW_U0_Dbg_Rst_26_UNCONNECTED),
+        .Dbg_Rst_27(NLW_U0_Dbg_Rst_27_UNCONNECTED),
+        .Dbg_Rst_28(NLW_U0_Dbg_Rst_28_UNCONNECTED),
+        .Dbg_Rst_29(NLW_U0_Dbg_Rst_29_UNCONNECTED),
+        .Dbg_Rst_3(NLW_U0_Dbg_Rst_3_UNCONNECTED),
+        .Dbg_Rst_30(NLW_U0_Dbg_Rst_30_UNCONNECTED),
+        .Dbg_Rst_31(NLW_U0_Dbg_Rst_31_UNCONNECTED),
+        .Dbg_Rst_4(NLW_U0_Dbg_Rst_4_UNCONNECTED),
+        .Dbg_Rst_5(NLW_U0_Dbg_Rst_5_UNCONNECTED),
+        .Dbg_Rst_6(NLW_U0_Dbg_Rst_6_UNCONNECTED),
+        .Dbg_Rst_7(NLW_U0_Dbg_Rst_7_UNCONNECTED),
+        .Dbg_Rst_8(NLW_U0_Dbg_Rst_8_UNCONNECTED),
+        .Dbg_Rst_9(NLW_U0_Dbg_Rst_9_UNCONNECTED),
+        .Dbg_Shift_0(Dbg_Shift_0),
+        .Dbg_Shift_1(NLW_U0_Dbg_Shift_1_UNCONNECTED),
+        .Dbg_Shift_10(NLW_U0_Dbg_Shift_10_UNCONNECTED),
+        .Dbg_Shift_11(NLW_U0_Dbg_Shift_11_UNCONNECTED),
+        .Dbg_Shift_12(NLW_U0_Dbg_Shift_12_UNCONNECTED),
+        .Dbg_Shift_13(NLW_U0_Dbg_Shift_13_UNCONNECTED),
+        .Dbg_Shift_14(NLW_U0_Dbg_Shift_14_UNCONNECTED),
+        .Dbg_Shift_15(NLW_U0_Dbg_Shift_15_UNCONNECTED),
+        .Dbg_Shift_16(NLW_U0_Dbg_Shift_16_UNCONNECTED),
+        .Dbg_Shift_17(NLW_U0_Dbg_Shift_17_UNCONNECTED),
+        .Dbg_Shift_18(NLW_U0_Dbg_Shift_18_UNCONNECTED),
+        .Dbg_Shift_19(NLW_U0_Dbg_Shift_19_UNCONNECTED),
+        .Dbg_Shift_2(NLW_U0_Dbg_Shift_2_UNCONNECTED),
+        .Dbg_Shift_20(NLW_U0_Dbg_Shift_20_UNCONNECTED),
+        .Dbg_Shift_21(NLW_U0_Dbg_Shift_21_UNCONNECTED),
+        .Dbg_Shift_22(NLW_U0_Dbg_Shift_22_UNCONNECTED),
+        .Dbg_Shift_23(NLW_U0_Dbg_Shift_23_UNCONNECTED),
+        .Dbg_Shift_24(NLW_U0_Dbg_Shift_24_UNCONNECTED),
+        .Dbg_Shift_25(NLW_U0_Dbg_Shift_25_UNCONNECTED),
+        .Dbg_Shift_26(NLW_U0_Dbg_Shift_26_UNCONNECTED),
+        .Dbg_Shift_27(NLW_U0_Dbg_Shift_27_UNCONNECTED),
+        .Dbg_Shift_28(NLW_U0_Dbg_Shift_28_UNCONNECTED),
+        .Dbg_Shift_29(NLW_U0_Dbg_Shift_29_UNCONNECTED),
+        .Dbg_Shift_3(NLW_U0_Dbg_Shift_3_UNCONNECTED),
+        .Dbg_Shift_30(NLW_U0_Dbg_Shift_30_UNCONNECTED),
+        .Dbg_Shift_31(NLW_U0_Dbg_Shift_31_UNCONNECTED),
+        .Dbg_Shift_4(NLW_U0_Dbg_Shift_4_UNCONNECTED),
+        .Dbg_Shift_5(NLW_U0_Dbg_Shift_5_UNCONNECTED),
+        .Dbg_Shift_6(NLW_U0_Dbg_Shift_6_UNCONNECTED),
+        .Dbg_Shift_7(NLW_U0_Dbg_Shift_7_UNCONNECTED),
+        .Dbg_Shift_8(NLW_U0_Dbg_Shift_8_UNCONNECTED),
+        .Dbg_Shift_9(NLW_U0_Dbg_Shift_9_UNCONNECTED),
+        .Dbg_TDI_0(Dbg_TDI_0),
+        .Dbg_TDI_1(NLW_U0_Dbg_TDI_1_UNCONNECTED),
+        .Dbg_TDI_10(NLW_U0_Dbg_TDI_10_UNCONNECTED),
+        .Dbg_TDI_11(NLW_U0_Dbg_TDI_11_UNCONNECTED),
+        .Dbg_TDI_12(NLW_U0_Dbg_TDI_12_UNCONNECTED),
+        .Dbg_TDI_13(NLW_U0_Dbg_TDI_13_UNCONNECTED),
+        .Dbg_TDI_14(NLW_U0_Dbg_TDI_14_UNCONNECTED),
+        .Dbg_TDI_15(NLW_U0_Dbg_TDI_15_UNCONNECTED),
+        .Dbg_TDI_16(NLW_U0_Dbg_TDI_16_UNCONNECTED),
+        .Dbg_TDI_17(NLW_U0_Dbg_TDI_17_UNCONNECTED),
+        .Dbg_TDI_18(NLW_U0_Dbg_TDI_18_UNCONNECTED),
+        .Dbg_TDI_19(NLW_U0_Dbg_TDI_19_UNCONNECTED),
+        .Dbg_TDI_2(NLW_U0_Dbg_TDI_2_UNCONNECTED),
+        .Dbg_TDI_20(NLW_U0_Dbg_TDI_20_UNCONNECTED),
+        .Dbg_TDI_21(NLW_U0_Dbg_TDI_21_UNCONNECTED),
+        .Dbg_TDI_22(NLW_U0_Dbg_TDI_22_UNCONNECTED),
+        .Dbg_TDI_23(NLW_U0_Dbg_TDI_23_UNCONNECTED),
+        .Dbg_TDI_24(NLW_U0_Dbg_TDI_24_UNCONNECTED),
+        .Dbg_TDI_25(NLW_U0_Dbg_TDI_25_UNCONNECTED),
+        .Dbg_TDI_26(NLW_U0_Dbg_TDI_26_UNCONNECTED),
+        .Dbg_TDI_27(NLW_U0_Dbg_TDI_27_UNCONNECTED),
+        .Dbg_TDI_28(NLW_U0_Dbg_TDI_28_UNCONNECTED),
+        .Dbg_TDI_29(NLW_U0_Dbg_TDI_29_UNCONNECTED),
+        .Dbg_TDI_3(NLW_U0_Dbg_TDI_3_UNCONNECTED),
+        .Dbg_TDI_30(NLW_U0_Dbg_TDI_30_UNCONNECTED),
+        .Dbg_TDI_31(NLW_U0_Dbg_TDI_31_UNCONNECTED),
+        .Dbg_TDI_4(NLW_U0_Dbg_TDI_4_UNCONNECTED),
+        .Dbg_TDI_5(NLW_U0_Dbg_TDI_5_UNCONNECTED),
+        .Dbg_TDI_6(NLW_U0_Dbg_TDI_6_UNCONNECTED),
+        .Dbg_TDI_7(NLW_U0_Dbg_TDI_7_UNCONNECTED),
+        .Dbg_TDI_8(NLW_U0_Dbg_TDI_8_UNCONNECTED),
+        .Dbg_TDI_9(NLW_U0_Dbg_TDI_9_UNCONNECTED),
+        .Dbg_TDO_0(Dbg_TDO_0),
+        .Dbg_TDO_1(1'b0),
+        .Dbg_TDO_10(1'b0),
+        .Dbg_TDO_11(1'b0),
+        .Dbg_TDO_12(1'b0),
+        .Dbg_TDO_13(1'b0),
+        .Dbg_TDO_14(1'b0),
+        .Dbg_TDO_15(1'b0),
+        .Dbg_TDO_16(1'b0),
+        .Dbg_TDO_17(1'b0),
+        .Dbg_TDO_18(1'b0),
+        .Dbg_TDO_19(1'b0),
+        .Dbg_TDO_2(1'b0),
+        .Dbg_TDO_20(1'b0),
+        .Dbg_TDO_21(1'b0),
+        .Dbg_TDO_22(1'b0),
+        .Dbg_TDO_23(1'b0),
+        .Dbg_TDO_24(1'b0),
+        .Dbg_TDO_25(1'b0),
+        .Dbg_TDO_26(1'b0),
+        .Dbg_TDO_27(1'b0),
+        .Dbg_TDO_28(1'b0),
+        .Dbg_TDO_29(1'b0),
+        .Dbg_TDO_3(1'b0),
+        .Dbg_TDO_30(1'b0),
+        .Dbg_TDO_31(1'b0),
+        .Dbg_TDO_4(1'b0),
+        .Dbg_TDO_5(1'b0),
+        .Dbg_TDO_6(1'b0),
+        .Dbg_TDO_7(1'b0),
+        .Dbg_TDO_8(1'b0),
+        .Dbg_TDO_9(1'b0),
+        .Dbg_TrClk_0(NLW_U0_Dbg_TrClk_0_UNCONNECTED),
+        .Dbg_TrClk_1(NLW_U0_Dbg_TrClk_1_UNCONNECTED),
+        .Dbg_TrClk_10(NLW_U0_Dbg_TrClk_10_UNCONNECTED),
+        .Dbg_TrClk_11(NLW_U0_Dbg_TrClk_11_UNCONNECTED),
+        .Dbg_TrClk_12(NLW_U0_Dbg_TrClk_12_UNCONNECTED),
+        .Dbg_TrClk_13(NLW_U0_Dbg_TrClk_13_UNCONNECTED),
+        .Dbg_TrClk_14(NLW_U0_Dbg_TrClk_14_UNCONNECTED),
+        .Dbg_TrClk_15(NLW_U0_Dbg_TrClk_15_UNCONNECTED),
+        .Dbg_TrClk_16(NLW_U0_Dbg_TrClk_16_UNCONNECTED),
+        .Dbg_TrClk_17(NLW_U0_Dbg_TrClk_17_UNCONNECTED),
+        .Dbg_TrClk_18(NLW_U0_Dbg_TrClk_18_UNCONNECTED),
+        .Dbg_TrClk_19(NLW_U0_Dbg_TrClk_19_UNCONNECTED),
+        .Dbg_TrClk_2(NLW_U0_Dbg_TrClk_2_UNCONNECTED),
+        .Dbg_TrClk_20(NLW_U0_Dbg_TrClk_20_UNCONNECTED),
+        .Dbg_TrClk_21(NLW_U0_Dbg_TrClk_21_UNCONNECTED),
+        .Dbg_TrClk_22(NLW_U0_Dbg_TrClk_22_UNCONNECTED),
+        .Dbg_TrClk_23(NLW_U0_Dbg_TrClk_23_UNCONNECTED),
+        .Dbg_TrClk_24(NLW_U0_Dbg_TrClk_24_UNCONNECTED),
+        .Dbg_TrClk_25(NLW_U0_Dbg_TrClk_25_UNCONNECTED),
+        .Dbg_TrClk_26(NLW_U0_Dbg_TrClk_26_UNCONNECTED),
+        .Dbg_TrClk_27(NLW_U0_Dbg_TrClk_27_UNCONNECTED),
+        .Dbg_TrClk_28(NLW_U0_Dbg_TrClk_28_UNCONNECTED),
+        .Dbg_TrClk_29(NLW_U0_Dbg_TrClk_29_UNCONNECTED),
+        .Dbg_TrClk_3(NLW_U0_Dbg_TrClk_3_UNCONNECTED),
+        .Dbg_TrClk_30(NLW_U0_Dbg_TrClk_30_UNCONNECTED),
+        .Dbg_TrClk_31(NLW_U0_Dbg_TrClk_31_UNCONNECTED),
+        .Dbg_TrClk_4(NLW_U0_Dbg_TrClk_4_UNCONNECTED),
+        .Dbg_TrClk_5(NLW_U0_Dbg_TrClk_5_UNCONNECTED),
+        .Dbg_TrClk_6(NLW_U0_Dbg_TrClk_6_UNCONNECTED),
+        .Dbg_TrClk_7(NLW_U0_Dbg_TrClk_7_UNCONNECTED),
+        .Dbg_TrClk_8(NLW_U0_Dbg_TrClk_8_UNCONNECTED),
+        .Dbg_TrClk_9(NLW_U0_Dbg_TrClk_9_UNCONNECTED),
+        .Dbg_TrData_0({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_1({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_10({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_11({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_12({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_13({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_14({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_15({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_16({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_17({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_18({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_19({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_2({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_20({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_21({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_22({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_23({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_24({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_25({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_26({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_27({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_28({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_29({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_3({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_30({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_31({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_4({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_5({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_6({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_7({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_8({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrData_9({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_TrReady_0(NLW_U0_Dbg_TrReady_0_UNCONNECTED),
+        .Dbg_TrReady_1(NLW_U0_Dbg_TrReady_1_UNCONNECTED),
+        .Dbg_TrReady_10(NLW_U0_Dbg_TrReady_10_UNCONNECTED),
+        .Dbg_TrReady_11(NLW_U0_Dbg_TrReady_11_UNCONNECTED),
+        .Dbg_TrReady_12(NLW_U0_Dbg_TrReady_12_UNCONNECTED),
+        .Dbg_TrReady_13(NLW_U0_Dbg_TrReady_13_UNCONNECTED),
+        .Dbg_TrReady_14(NLW_U0_Dbg_TrReady_14_UNCONNECTED),
+        .Dbg_TrReady_15(NLW_U0_Dbg_TrReady_15_UNCONNECTED),
+        .Dbg_TrReady_16(NLW_U0_Dbg_TrReady_16_UNCONNECTED),
+        .Dbg_TrReady_17(NLW_U0_Dbg_TrReady_17_UNCONNECTED),
+        .Dbg_TrReady_18(NLW_U0_Dbg_TrReady_18_UNCONNECTED),
+        .Dbg_TrReady_19(NLW_U0_Dbg_TrReady_19_UNCONNECTED),
+        .Dbg_TrReady_2(NLW_U0_Dbg_TrReady_2_UNCONNECTED),
+        .Dbg_TrReady_20(NLW_U0_Dbg_TrReady_20_UNCONNECTED),
+        .Dbg_TrReady_21(NLW_U0_Dbg_TrReady_21_UNCONNECTED),
+        .Dbg_TrReady_22(NLW_U0_Dbg_TrReady_22_UNCONNECTED),
+        .Dbg_TrReady_23(NLW_U0_Dbg_TrReady_23_UNCONNECTED),
+        .Dbg_TrReady_24(NLW_U0_Dbg_TrReady_24_UNCONNECTED),
+        .Dbg_TrReady_25(NLW_U0_Dbg_TrReady_25_UNCONNECTED),
+        .Dbg_TrReady_26(NLW_U0_Dbg_TrReady_26_UNCONNECTED),
+        .Dbg_TrReady_27(NLW_U0_Dbg_TrReady_27_UNCONNECTED),
+        .Dbg_TrReady_28(NLW_U0_Dbg_TrReady_28_UNCONNECTED),
+        .Dbg_TrReady_29(NLW_U0_Dbg_TrReady_29_UNCONNECTED),
+        .Dbg_TrReady_3(NLW_U0_Dbg_TrReady_3_UNCONNECTED),
+        .Dbg_TrReady_30(NLW_U0_Dbg_TrReady_30_UNCONNECTED),
+        .Dbg_TrReady_31(NLW_U0_Dbg_TrReady_31_UNCONNECTED),
+        .Dbg_TrReady_4(NLW_U0_Dbg_TrReady_4_UNCONNECTED),
+        .Dbg_TrReady_5(NLW_U0_Dbg_TrReady_5_UNCONNECTED),
+        .Dbg_TrReady_6(NLW_U0_Dbg_TrReady_6_UNCONNECTED),
+        .Dbg_TrReady_7(NLW_U0_Dbg_TrReady_7_UNCONNECTED),
+        .Dbg_TrReady_8(NLW_U0_Dbg_TrReady_8_UNCONNECTED),
+        .Dbg_TrReady_9(NLW_U0_Dbg_TrReady_9_UNCONNECTED),
+        .Dbg_TrValid_0(1'b0),
+        .Dbg_TrValid_1(1'b0),
+        .Dbg_TrValid_10(1'b0),
+        .Dbg_TrValid_11(1'b0),
+        .Dbg_TrValid_12(1'b0),
+        .Dbg_TrValid_13(1'b0),
+        .Dbg_TrValid_14(1'b0),
+        .Dbg_TrValid_15(1'b0),
+        .Dbg_TrValid_16(1'b0),
+        .Dbg_TrValid_17(1'b0),
+        .Dbg_TrValid_18(1'b0),
+        .Dbg_TrValid_19(1'b0),
+        .Dbg_TrValid_2(1'b0),
+        .Dbg_TrValid_20(1'b0),
+        .Dbg_TrValid_21(1'b0),
+        .Dbg_TrValid_22(1'b0),
+        .Dbg_TrValid_23(1'b0),
+        .Dbg_TrValid_24(1'b0),
+        .Dbg_TrValid_25(1'b0),
+        .Dbg_TrValid_26(1'b0),
+        .Dbg_TrValid_27(1'b0),
+        .Dbg_TrValid_28(1'b0),
+        .Dbg_TrValid_29(1'b0),
+        .Dbg_TrValid_3(1'b0),
+        .Dbg_TrValid_30(1'b0),
+        .Dbg_TrValid_31(1'b0),
+        .Dbg_TrValid_4(1'b0),
+        .Dbg_TrValid_5(1'b0),
+        .Dbg_TrValid_6(1'b0),
+        .Dbg_TrValid_7(1'b0),
+        .Dbg_TrValid_8(1'b0),
+        .Dbg_TrValid_9(1'b0),
+        .Dbg_Trig_Ack_In_0(Dbg_Trig_Ack_In_0),
+        .Dbg_Trig_Ack_In_1(NLW_U0_Dbg_Trig_Ack_In_1_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_10(NLW_U0_Dbg_Trig_Ack_In_10_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_11(NLW_U0_Dbg_Trig_Ack_In_11_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_12(NLW_U0_Dbg_Trig_Ack_In_12_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_13(NLW_U0_Dbg_Trig_Ack_In_13_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_14(NLW_U0_Dbg_Trig_Ack_In_14_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_15(NLW_U0_Dbg_Trig_Ack_In_15_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_16(NLW_U0_Dbg_Trig_Ack_In_16_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_17(NLW_U0_Dbg_Trig_Ack_In_17_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_18(NLW_U0_Dbg_Trig_Ack_In_18_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_19(NLW_U0_Dbg_Trig_Ack_In_19_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_2(NLW_U0_Dbg_Trig_Ack_In_2_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_20(NLW_U0_Dbg_Trig_Ack_In_20_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_21(NLW_U0_Dbg_Trig_Ack_In_21_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_22(NLW_U0_Dbg_Trig_Ack_In_22_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_23(NLW_U0_Dbg_Trig_Ack_In_23_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_24(NLW_U0_Dbg_Trig_Ack_In_24_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_25(NLW_U0_Dbg_Trig_Ack_In_25_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_26(NLW_U0_Dbg_Trig_Ack_In_26_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_27(NLW_U0_Dbg_Trig_Ack_In_27_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_28(NLW_U0_Dbg_Trig_Ack_In_28_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_29(NLW_U0_Dbg_Trig_Ack_In_29_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_3(NLW_U0_Dbg_Trig_Ack_In_3_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_30(NLW_U0_Dbg_Trig_Ack_In_30_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_31(NLW_U0_Dbg_Trig_Ack_In_31_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_4(NLW_U0_Dbg_Trig_Ack_In_4_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_5(NLW_U0_Dbg_Trig_Ack_In_5_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_6(NLW_U0_Dbg_Trig_Ack_In_6_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_7(NLW_U0_Dbg_Trig_Ack_In_7_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_8(NLW_U0_Dbg_Trig_Ack_In_8_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_In_9(NLW_U0_Dbg_Trig_Ack_In_9_UNCONNECTED[0:7]),
+        .Dbg_Trig_Ack_Out_0(Dbg_Trig_Ack_Out_0),
+        .Dbg_Trig_Ack_Out_1({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_10({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_11({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_12({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_13({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_14({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_15({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_16({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_17({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_18({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_19({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_2({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_20({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_21({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_22({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_23({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_24({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_25({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_26({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_27({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_28({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_29({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_3({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_30({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_31({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_4({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_5({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_6({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_7({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_8({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Ack_Out_9({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_0(Dbg_Trig_In_0),
+        .Dbg_Trig_In_1({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_10({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_11({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_12({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_13({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_14({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_15({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_16({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_17({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_18({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_19({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_2({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_20({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_21({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_22({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_23({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_24({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_25({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_26({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_27({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_28({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_29({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_3({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_30({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_31({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_4({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_5({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_6({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_7({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_8({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_In_9({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .Dbg_Trig_Out_0(Dbg_Trig_Out_0),
+        .Dbg_Trig_Out_1(NLW_U0_Dbg_Trig_Out_1_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_10(NLW_U0_Dbg_Trig_Out_10_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_11(NLW_U0_Dbg_Trig_Out_11_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_12(NLW_U0_Dbg_Trig_Out_12_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_13(NLW_U0_Dbg_Trig_Out_13_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_14(NLW_U0_Dbg_Trig_Out_14_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_15(NLW_U0_Dbg_Trig_Out_15_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_16(NLW_U0_Dbg_Trig_Out_16_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_17(NLW_U0_Dbg_Trig_Out_17_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_18(NLW_U0_Dbg_Trig_Out_18_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_19(NLW_U0_Dbg_Trig_Out_19_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_2(NLW_U0_Dbg_Trig_Out_2_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_20(NLW_U0_Dbg_Trig_Out_20_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_21(NLW_U0_Dbg_Trig_Out_21_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_22(NLW_U0_Dbg_Trig_Out_22_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_23(NLW_U0_Dbg_Trig_Out_23_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_24(NLW_U0_Dbg_Trig_Out_24_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_25(NLW_U0_Dbg_Trig_Out_25_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_26(NLW_U0_Dbg_Trig_Out_26_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_27(NLW_U0_Dbg_Trig_Out_27_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_28(NLW_U0_Dbg_Trig_Out_28_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_29(NLW_U0_Dbg_Trig_Out_29_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_3(NLW_U0_Dbg_Trig_Out_3_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_30(NLW_U0_Dbg_Trig_Out_30_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_31(NLW_U0_Dbg_Trig_Out_31_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_4(NLW_U0_Dbg_Trig_Out_4_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_5(NLW_U0_Dbg_Trig_Out_5_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_6(NLW_U0_Dbg_Trig_Out_6_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_7(NLW_U0_Dbg_Trig_Out_7_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_8(NLW_U0_Dbg_Trig_Out_8_UNCONNECTED[0:7]),
+        .Dbg_Trig_Out_9(NLW_U0_Dbg_Trig_Out_9_UNCONNECTED[0:7]),
+        .Dbg_Update_0(Dbg_Update_0),
+        .Dbg_Update_1(NLW_U0_Dbg_Update_1_UNCONNECTED),
+        .Dbg_Update_10(NLW_U0_Dbg_Update_10_UNCONNECTED),
+        .Dbg_Update_11(NLW_U0_Dbg_Update_11_UNCONNECTED),
+        .Dbg_Update_12(NLW_U0_Dbg_Update_12_UNCONNECTED),
+        .Dbg_Update_13(NLW_U0_Dbg_Update_13_UNCONNECTED),
+        .Dbg_Update_14(NLW_U0_Dbg_Update_14_UNCONNECTED),
+        .Dbg_Update_15(NLW_U0_Dbg_Update_15_UNCONNECTED),
+        .Dbg_Update_16(NLW_U0_Dbg_Update_16_UNCONNECTED),
+        .Dbg_Update_17(NLW_U0_Dbg_Update_17_UNCONNECTED),
+        .Dbg_Update_18(NLW_U0_Dbg_Update_18_UNCONNECTED),
+        .Dbg_Update_19(NLW_U0_Dbg_Update_19_UNCONNECTED),
+        .Dbg_Update_2(NLW_U0_Dbg_Update_2_UNCONNECTED),
+        .Dbg_Update_20(NLW_U0_Dbg_Update_20_UNCONNECTED),
+        .Dbg_Update_21(NLW_U0_Dbg_Update_21_UNCONNECTED),
+        .Dbg_Update_22(NLW_U0_Dbg_Update_22_UNCONNECTED),
+        .Dbg_Update_23(NLW_U0_Dbg_Update_23_UNCONNECTED),
+        .Dbg_Update_24(NLW_U0_Dbg_Update_24_UNCONNECTED),
+        .Dbg_Update_25(NLW_U0_Dbg_Update_25_UNCONNECTED),
+        .Dbg_Update_26(NLW_U0_Dbg_Update_26_UNCONNECTED),
+        .Dbg_Update_27(NLW_U0_Dbg_Update_27_UNCONNECTED),
+        .Dbg_Update_28(NLW_U0_Dbg_Update_28_UNCONNECTED),
+        .Dbg_Update_29(NLW_U0_Dbg_Update_29_UNCONNECTED),
+        .Dbg_Update_3(NLW_U0_Dbg_Update_3_UNCONNECTED),
+        .Dbg_Update_30(NLW_U0_Dbg_Update_30_UNCONNECTED),
+        .Dbg_Update_31(NLW_U0_Dbg_Update_31_UNCONNECTED),
+        .Dbg_Update_4(NLW_U0_Dbg_Update_4_UNCONNECTED),
+        .Dbg_Update_5(NLW_U0_Dbg_Update_5_UNCONNECTED),
+        .Dbg_Update_6(NLW_U0_Dbg_Update_6_UNCONNECTED),
+        .Dbg_Update_7(NLW_U0_Dbg_Update_7_UNCONNECTED),
+        .Dbg_Update_8(NLW_U0_Dbg_Update_8_UNCONNECTED),
+        .Dbg_Update_9(NLW_U0_Dbg_Update_9_UNCONNECTED),
+        .Dbg_WDATA_0(NLW_U0_Dbg_WDATA_0_UNCONNECTED[31:0]),
+        .Dbg_WDATA_1(NLW_U0_Dbg_WDATA_1_UNCONNECTED[31:0]),
+        .Dbg_WDATA_10(NLW_U0_Dbg_WDATA_10_UNCONNECTED[31:0]),
+        .Dbg_WDATA_11(NLW_U0_Dbg_WDATA_11_UNCONNECTED[31:0]),
+        .Dbg_WDATA_12(NLW_U0_Dbg_WDATA_12_UNCONNECTED[31:0]),
+        .Dbg_WDATA_13(NLW_U0_Dbg_WDATA_13_UNCONNECTED[31:0]),
+        .Dbg_WDATA_14(NLW_U0_Dbg_WDATA_14_UNCONNECTED[31:0]),
+        .Dbg_WDATA_15(NLW_U0_Dbg_WDATA_15_UNCONNECTED[31:0]),
+        .Dbg_WDATA_16(NLW_U0_Dbg_WDATA_16_UNCONNECTED[31:0]),
+        .Dbg_WDATA_17(NLW_U0_Dbg_WDATA_17_UNCONNECTED[31:0]),
+        .Dbg_WDATA_18(NLW_U0_Dbg_WDATA_18_UNCONNECTED[31:0]),
+        .Dbg_WDATA_19(NLW_U0_Dbg_WDATA_19_UNCONNECTED[31:0]),
+        .Dbg_WDATA_2(NLW_U0_Dbg_WDATA_2_UNCONNECTED[31:0]),
+        .Dbg_WDATA_20(NLW_U0_Dbg_WDATA_20_UNCONNECTED[31:0]),
+        .Dbg_WDATA_21(NLW_U0_Dbg_WDATA_21_UNCONNECTED[31:0]),
+        .Dbg_WDATA_22(NLW_U0_Dbg_WDATA_22_UNCONNECTED[31:0]),
+        .Dbg_WDATA_23(NLW_U0_Dbg_WDATA_23_UNCONNECTED[31:0]),
+        .Dbg_WDATA_24(NLW_U0_Dbg_WDATA_24_UNCONNECTED[31:0]),
+        .Dbg_WDATA_25(NLW_U0_Dbg_WDATA_25_UNCONNECTED[31:0]),
+        .Dbg_WDATA_26(NLW_U0_Dbg_WDATA_26_UNCONNECTED[31:0]),
+        .Dbg_WDATA_27(NLW_U0_Dbg_WDATA_27_UNCONNECTED[31:0]),
+        .Dbg_WDATA_28(NLW_U0_Dbg_WDATA_28_UNCONNECTED[31:0]),
+        .Dbg_WDATA_29(NLW_U0_Dbg_WDATA_29_UNCONNECTED[31:0]),
+        .Dbg_WDATA_3(NLW_U0_Dbg_WDATA_3_UNCONNECTED[31:0]),
+        .Dbg_WDATA_30(NLW_U0_Dbg_WDATA_30_UNCONNECTED[31:0]),
+        .Dbg_WDATA_31(NLW_U0_Dbg_WDATA_31_UNCONNECTED[31:0]),
+        .Dbg_WDATA_4(NLW_U0_Dbg_WDATA_4_UNCONNECTED[31:0]),
+        .Dbg_WDATA_5(NLW_U0_Dbg_WDATA_5_UNCONNECTED[31:0]),
+        .Dbg_WDATA_6(NLW_U0_Dbg_WDATA_6_UNCONNECTED[31:0]),
+        .Dbg_WDATA_7(NLW_U0_Dbg_WDATA_7_UNCONNECTED[31:0]),
+        .Dbg_WDATA_8(NLW_U0_Dbg_WDATA_8_UNCONNECTED[31:0]),
+        .Dbg_WDATA_9(NLW_U0_Dbg_WDATA_9_UNCONNECTED[31:0]),
+        .Dbg_WREADY_0(1'b0),
+        .Dbg_WREADY_1(1'b0),
+        .Dbg_WREADY_10(1'b0),
+        .Dbg_WREADY_11(1'b0),
+        .Dbg_WREADY_12(1'b0),
+        .Dbg_WREADY_13(1'b0),
+        .Dbg_WREADY_14(1'b0),
+        .Dbg_WREADY_15(1'b0),
+        .Dbg_WREADY_16(1'b0),
+        .Dbg_WREADY_17(1'b0),
+        .Dbg_WREADY_18(1'b0),
+        .Dbg_WREADY_19(1'b0),
+        .Dbg_WREADY_2(1'b0),
+        .Dbg_WREADY_20(1'b0),
+        .Dbg_WREADY_21(1'b0),
+        .Dbg_WREADY_22(1'b0),
+        .Dbg_WREADY_23(1'b0),
+        .Dbg_WREADY_24(1'b0),
+        .Dbg_WREADY_25(1'b0),
+        .Dbg_WREADY_26(1'b0),
+        .Dbg_WREADY_27(1'b0),
+        .Dbg_WREADY_28(1'b0),
+        .Dbg_WREADY_29(1'b0),
+        .Dbg_WREADY_3(1'b0),
+        .Dbg_WREADY_30(1'b0),
+        .Dbg_WREADY_31(1'b0),
+        .Dbg_WREADY_4(1'b0),
+        .Dbg_WREADY_5(1'b0),
+        .Dbg_WREADY_6(1'b0),
+        .Dbg_WREADY_7(1'b0),
+        .Dbg_WREADY_8(1'b0),
+        .Dbg_WREADY_9(1'b0),
+        .Dbg_WVALID_0(NLW_U0_Dbg_WVALID_0_UNCONNECTED),
+        .Dbg_WVALID_1(NLW_U0_Dbg_WVALID_1_UNCONNECTED),
+        .Dbg_WVALID_10(NLW_U0_Dbg_WVALID_10_UNCONNECTED),
+        .Dbg_WVALID_11(NLW_U0_Dbg_WVALID_11_UNCONNECTED),
+        .Dbg_WVALID_12(NLW_U0_Dbg_WVALID_12_UNCONNECTED),
+        .Dbg_WVALID_13(NLW_U0_Dbg_WVALID_13_UNCONNECTED),
+        .Dbg_WVALID_14(NLW_U0_Dbg_WVALID_14_UNCONNECTED),
+        .Dbg_WVALID_15(NLW_U0_Dbg_WVALID_15_UNCONNECTED),
+        .Dbg_WVALID_16(NLW_U0_Dbg_WVALID_16_UNCONNECTED),
+        .Dbg_WVALID_17(NLW_U0_Dbg_WVALID_17_UNCONNECTED),
+        .Dbg_WVALID_18(NLW_U0_Dbg_WVALID_18_UNCONNECTED),
+        .Dbg_WVALID_19(NLW_U0_Dbg_WVALID_19_UNCONNECTED),
+        .Dbg_WVALID_2(NLW_U0_Dbg_WVALID_2_UNCONNECTED),
+        .Dbg_WVALID_20(NLW_U0_Dbg_WVALID_20_UNCONNECTED),
+        .Dbg_WVALID_21(NLW_U0_Dbg_WVALID_21_UNCONNECTED),
+        .Dbg_WVALID_22(NLW_U0_Dbg_WVALID_22_UNCONNECTED),
+        .Dbg_WVALID_23(NLW_U0_Dbg_WVALID_23_UNCONNECTED),
+        .Dbg_WVALID_24(NLW_U0_Dbg_WVALID_24_UNCONNECTED),
+        .Dbg_WVALID_25(NLW_U0_Dbg_WVALID_25_UNCONNECTED),
+        .Dbg_WVALID_26(NLW_U0_Dbg_WVALID_26_UNCONNECTED),
+        .Dbg_WVALID_27(NLW_U0_Dbg_WVALID_27_UNCONNECTED),
+        .Dbg_WVALID_28(NLW_U0_Dbg_WVALID_28_UNCONNECTED),
+        .Dbg_WVALID_29(NLW_U0_Dbg_WVALID_29_UNCONNECTED),
+        .Dbg_WVALID_3(NLW_U0_Dbg_WVALID_3_UNCONNECTED),
+        .Dbg_WVALID_30(NLW_U0_Dbg_WVALID_30_UNCONNECTED),
+        .Dbg_WVALID_31(NLW_U0_Dbg_WVALID_31_UNCONNECTED),
+        .Dbg_WVALID_4(NLW_U0_Dbg_WVALID_4_UNCONNECTED),
+        .Dbg_WVALID_5(NLW_U0_Dbg_WVALID_5_UNCONNECTED),
+        .Dbg_WVALID_6(NLW_U0_Dbg_WVALID_6_UNCONNECTED),
+        .Dbg_WVALID_7(NLW_U0_Dbg_WVALID_7_UNCONNECTED),
+        .Dbg_WVALID_8(NLW_U0_Dbg_WVALID_8_UNCONNECTED),
+        .Dbg_WVALID_9(NLW_U0_Dbg_WVALID_9_UNCONNECTED),
+        .Debug_SYS_Rst(Debug_SYS_Rst),
+        .Ext_BRK(NLW_U0_Ext_BRK_UNCONNECTED),
+        .Ext_JTAG_CAPTURE(NLW_U0_Ext_JTAG_CAPTURE_UNCONNECTED),
+        .Ext_JTAG_DRCK(NLW_U0_Ext_JTAG_DRCK_UNCONNECTED),
+        .Ext_JTAG_RESET(NLW_U0_Ext_JTAG_RESET_UNCONNECTED),
+        .Ext_JTAG_SEL(NLW_U0_Ext_JTAG_SEL_UNCONNECTED),
+        .Ext_JTAG_SHIFT(NLW_U0_Ext_JTAG_SHIFT_UNCONNECTED),
+        .Ext_JTAG_TDI(NLW_U0_Ext_JTAG_TDI_UNCONNECTED),
+        .Ext_JTAG_TDO(1'b0),
+        .Ext_JTAG_UPDATE(NLW_U0_Ext_JTAG_UPDATE_UNCONNECTED),
+        .Ext_NM_BRK(NLW_U0_Ext_NM_BRK_UNCONNECTED),
+        .Interrupt(NLW_U0_Interrupt_UNCONNECTED),
+        .LMB_Addr_Strobe_0(LMB_Addr_Strobe_0),
+        .LMB_Addr_Strobe_1(NLW_U0_LMB_Addr_Strobe_1_UNCONNECTED),
+        .LMB_Addr_Strobe_10(NLW_U0_LMB_Addr_Strobe_10_UNCONNECTED),
+        .LMB_Addr_Strobe_11(NLW_U0_LMB_Addr_Strobe_11_UNCONNECTED),
+        .LMB_Addr_Strobe_12(NLW_U0_LMB_Addr_Strobe_12_UNCONNECTED),
+        .LMB_Addr_Strobe_13(NLW_U0_LMB_Addr_Strobe_13_UNCONNECTED),
+        .LMB_Addr_Strobe_14(NLW_U0_LMB_Addr_Strobe_14_UNCONNECTED),
+        .LMB_Addr_Strobe_15(NLW_U0_LMB_Addr_Strobe_15_UNCONNECTED),
+        .LMB_Addr_Strobe_16(NLW_U0_LMB_Addr_Strobe_16_UNCONNECTED),
+        .LMB_Addr_Strobe_17(NLW_U0_LMB_Addr_Strobe_17_UNCONNECTED),
+        .LMB_Addr_Strobe_18(NLW_U0_LMB_Addr_Strobe_18_UNCONNECTED),
+        .LMB_Addr_Strobe_19(NLW_U0_LMB_Addr_Strobe_19_UNCONNECTED),
+        .LMB_Addr_Strobe_2(NLW_U0_LMB_Addr_Strobe_2_UNCONNECTED),
+        .LMB_Addr_Strobe_20(NLW_U0_LMB_Addr_Strobe_20_UNCONNECTED),
+        .LMB_Addr_Strobe_21(NLW_U0_LMB_Addr_Strobe_21_UNCONNECTED),
+        .LMB_Addr_Strobe_22(NLW_U0_LMB_Addr_Strobe_22_UNCONNECTED),
+        .LMB_Addr_Strobe_23(NLW_U0_LMB_Addr_Strobe_23_UNCONNECTED),
+        .LMB_Addr_Strobe_24(NLW_U0_LMB_Addr_Strobe_24_UNCONNECTED),
+        .LMB_Addr_Strobe_25(NLW_U0_LMB_Addr_Strobe_25_UNCONNECTED),
+        .LMB_Addr_Strobe_26(NLW_U0_LMB_Addr_Strobe_26_UNCONNECTED),
+        .LMB_Addr_Strobe_27(NLW_U0_LMB_Addr_Strobe_27_UNCONNECTED),
+        .LMB_Addr_Strobe_28(NLW_U0_LMB_Addr_Strobe_28_UNCONNECTED),
+        .LMB_Addr_Strobe_29(NLW_U0_LMB_Addr_Strobe_29_UNCONNECTED),
+        .LMB_Addr_Strobe_3(NLW_U0_LMB_Addr_Strobe_3_UNCONNECTED),
+        .LMB_Addr_Strobe_30(NLW_U0_LMB_Addr_Strobe_30_UNCONNECTED),
+        .LMB_Addr_Strobe_31(NLW_U0_LMB_Addr_Strobe_31_UNCONNECTED),
+        .LMB_Addr_Strobe_4(NLW_U0_LMB_Addr_Strobe_4_UNCONNECTED),
+        .LMB_Addr_Strobe_5(NLW_U0_LMB_Addr_Strobe_5_UNCONNECTED),
+        .LMB_Addr_Strobe_6(NLW_U0_LMB_Addr_Strobe_6_UNCONNECTED),
+        .LMB_Addr_Strobe_7(NLW_U0_LMB_Addr_Strobe_7_UNCONNECTED),
+        .LMB_Addr_Strobe_8(NLW_U0_LMB_Addr_Strobe_8_UNCONNECTED),
+        .LMB_Addr_Strobe_9(NLW_U0_LMB_Addr_Strobe_9_UNCONNECTED),
+        .LMB_Byte_Enable_0(LMB_Byte_Enable_0),
+        .LMB_Byte_Enable_1(NLW_U0_LMB_Byte_Enable_1_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_10(NLW_U0_LMB_Byte_Enable_10_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_11(NLW_U0_LMB_Byte_Enable_11_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_12(NLW_U0_LMB_Byte_Enable_12_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_13(NLW_U0_LMB_Byte_Enable_13_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_14(NLW_U0_LMB_Byte_Enable_14_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_15(NLW_U0_LMB_Byte_Enable_15_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_16(NLW_U0_LMB_Byte_Enable_16_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_17(NLW_U0_LMB_Byte_Enable_17_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_18(NLW_U0_LMB_Byte_Enable_18_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_19(NLW_U0_LMB_Byte_Enable_19_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_2(NLW_U0_LMB_Byte_Enable_2_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_20(NLW_U0_LMB_Byte_Enable_20_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_21(NLW_U0_LMB_Byte_Enable_21_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_22(NLW_U0_LMB_Byte_Enable_22_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_23(NLW_U0_LMB_Byte_Enable_23_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_24(NLW_U0_LMB_Byte_Enable_24_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_25(NLW_U0_LMB_Byte_Enable_25_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_26(NLW_U0_LMB_Byte_Enable_26_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_27(NLW_U0_LMB_Byte_Enable_27_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_28(NLW_U0_LMB_Byte_Enable_28_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_29(NLW_U0_LMB_Byte_Enable_29_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_3(NLW_U0_LMB_Byte_Enable_3_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_30(NLW_U0_LMB_Byte_Enable_30_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_31(NLW_U0_LMB_Byte_Enable_31_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_4(NLW_U0_LMB_Byte_Enable_4_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_5(NLW_U0_LMB_Byte_Enable_5_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_6(NLW_U0_LMB_Byte_Enable_6_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_7(NLW_U0_LMB_Byte_Enable_7_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_8(NLW_U0_LMB_Byte_Enable_8_UNCONNECTED[0:3]),
+        .LMB_Byte_Enable_9(NLW_U0_LMB_Byte_Enable_9_UNCONNECTED[0:3]),
+        .LMB_CE_0(LMB_CE_0),
+        .LMB_CE_1(1'b0),
+        .LMB_CE_10(1'b0),
+        .LMB_CE_11(1'b0),
+        .LMB_CE_12(1'b0),
+        .LMB_CE_13(1'b0),
+        .LMB_CE_14(1'b0),
+        .LMB_CE_15(1'b0),
+        .LMB_CE_16(1'b0),
+        .LMB_CE_17(1'b0),
+        .LMB_CE_18(1'b0),
+        .LMB_CE_19(1'b0),
+        .LMB_CE_2(1'b0),
+        .LMB_CE_20(1'b0),
+        .LMB_CE_21(1'b0),
+        .LMB_CE_22(1'b0),
+        .LMB_CE_23(1'b0),
+        .LMB_CE_24(1'b0),
+        .LMB_CE_25(1'b0),
+        .LMB_CE_26(1'b0),
+        .LMB_CE_27(1'b0),
+        .LMB_CE_28(1'b0),
+        .LMB_CE_29(1'b0),
+        .LMB_CE_3(1'b0),
+        .LMB_CE_30(1'b0),
+        .LMB_CE_31(1'b0),
+        .LMB_CE_4(1'b0),
+        .LMB_CE_5(1'b0),
+        .LMB_CE_6(1'b0),
+        .LMB_CE_7(1'b0),
+        .LMB_CE_8(1'b0),
+        .LMB_CE_9(1'b0),
+        .LMB_Data_Addr_0(LMB_Data_Addr_0),
+        .LMB_Data_Addr_1(NLW_U0_LMB_Data_Addr_1_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_10(NLW_U0_LMB_Data_Addr_10_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_11(NLW_U0_LMB_Data_Addr_11_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_12(NLW_U0_LMB_Data_Addr_12_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_13(NLW_U0_LMB_Data_Addr_13_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_14(NLW_U0_LMB_Data_Addr_14_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_15(NLW_U0_LMB_Data_Addr_15_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_16(NLW_U0_LMB_Data_Addr_16_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_17(NLW_U0_LMB_Data_Addr_17_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_18(NLW_U0_LMB_Data_Addr_18_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_19(NLW_U0_LMB_Data_Addr_19_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_2(NLW_U0_LMB_Data_Addr_2_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_20(NLW_U0_LMB_Data_Addr_20_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_21(NLW_U0_LMB_Data_Addr_21_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_22(NLW_U0_LMB_Data_Addr_22_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_23(NLW_U0_LMB_Data_Addr_23_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_24(NLW_U0_LMB_Data_Addr_24_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_25(NLW_U0_LMB_Data_Addr_25_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_26(NLW_U0_LMB_Data_Addr_26_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_27(NLW_U0_LMB_Data_Addr_27_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_28(NLW_U0_LMB_Data_Addr_28_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_29(NLW_U0_LMB_Data_Addr_29_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_3(NLW_U0_LMB_Data_Addr_3_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_30(NLW_U0_LMB_Data_Addr_30_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_31(NLW_U0_LMB_Data_Addr_31_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_4(NLW_U0_LMB_Data_Addr_4_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_5(NLW_U0_LMB_Data_Addr_5_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_6(NLW_U0_LMB_Data_Addr_6_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_7(NLW_U0_LMB_Data_Addr_7_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_8(NLW_U0_LMB_Data_Addr_8_UNCONNECTED[0:31]),
+        .LMB_Data_Addr_9(NLW_U0_LMB_Data_Addr_9_UNCONNECTED[0:31]),
+        .LMB_Data_Read_0(LMB_Data_Read_0),
+        .LMB_Data_Read_1({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_10({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_11({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_12({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_13({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_14({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_15({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_16({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_17({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_18({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_19({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_2({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_20({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_21({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_22({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_23({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_24({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_25({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_26({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_27({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_28({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_29({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_3({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_30({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_31({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_4({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_5({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_6({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_7({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_8({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Read_9({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .LMB_Data_Write_0(LMB_Data_Write_0),
+        .LMB_Data_Write_1(NLW_U0_LMB_Data_Write_1_UNCONNECTED[0:31]),
+        .LMB_Data_Write_10(NLW_U0_LMB_Data_Write_10_UNCONNECTED[0:31]),
+        .LMB_Data_Write_11(NLW_U0_LMB_Data_Write_11_UNCONNECTED[0:31]),
+        .LMB_Data_Write_12(NLW_U0_LMB_Data_Write_12_UNCONNECTED[0:31]),
+        .LMB_Data_Write_13(NLW_U0_LMB_Data_Write_13_UNCONNECTED[0:31]),
+        .LMB_Data_Write_14(NLW_U0_LMB_Data_Write_14_UNCONNECTED[0:31]),
+        .LMB_Data_Write_15(NLW_U0_LMB_Data_Write_15_UNCONNECTED[0:31]),
+        .LMB_Data_Write_16(NLW_U0_LMB_Data_Write_16_UNCONNECTED[0:31]),
+        .LMB_Data_Write_17(NLW_U0_LMB_Data_Write_17_UNCONNECTED[0:31]),
+        .LMB_Data_Write_18(NLW_U0_LMB_Data_Write_18_UNCONNECTED[0:31]),
+        .LMB_Data_Write_19(NLW_U0_LMB_Data_Write_19_UNCONNECTED[0:31]),
+        .LMB_Data_Write_2(NLW_U0_LMB_Data_Write_2_UNCONNECTED[0:31]),
+        .LMB_Data_Write_20(NLW_U0_LMB_Data_Write_20_UNCONNECTED[0:31]),
+        .LMB_Data_Write_21(NLW_U0_LMB_Data_Write_21_UNCONNECTED[0:31]),
+        .LMB_Data_Write_22(NLW_U0_LMB_Data_Write_22_UNCONNECTED[0:31]),
+        .LMB_Data_Write_23(NLW_U0_LMB_Data_Write_23_UNCONNECTED[0:31]),
+        .LMB_Data_Write_24(NLW_U0_LMB_Data_Write_24_UNCONNECTED[0:31]),
+        .LMB_Data_Write_25(NLW_U0_LMB_Data_Write_25_UNCONNECTED[0:31]),
+        .LMB_Data_Write_26(NLW_U0_LMB_Data_Write_26_UNCONNECTED[0:31]),
+        .LMB_Data_Write_27(NLW_U0_LMB_Data_Write_27_UNCONNECTED[0:31]),
+        .LMB_Data_Write_28(NLW_U0_LMB_Data_Write_28_UNCONNECTED[0:31]),
+        .LMB_Data_Write_29(NLW_U0_LMB_Data_Write_29_UNCONNECTED[0:31]),
+        .LMB_Data_Write_3(NLW_U0_LMB_Data_Write_3_UNCONNECTED[0:31]),
+        .LMB_Data_Write_30(NLW_U0_LMB_Data_Write_30_UNCONNECTED[0:31]),
+        .LMB_Data_Write_31(NLW_U0_LMB_Data_Write_31_UNCONNECTED[0:31]),
+        .LMB_Data_Write_4(NLW_U0_LMB_Data_Write_4_UNCONNECTED[0:31]),
+        .LMB_Data_Write_5(NLW_U0_LMB_Data_Write_5_UNCONNECTED[0:31]),
+        .LMB_Data_Write_6(NLW_U0_LMB_Data_Write_6_UNCONNECTED[0:31]),
+        .LMB_Data_Write_7(NLW_U0_LMB_Data_Write_7_UNCONNECTED[0:31]),
+        .LMB_Data_Write_8(NLW_U0_LMB_Data_Write_8_UNCONNECTED[0:31]),
+        .LMB_Data_Write_9(NLW_U0_LMB_Data_Write_9_UNCONNECTED[0:31]),
+        .LMB_Read_Strobe_0(LMB_Read_Strobe_0),
+        .LMB_Read_Strobe_1(NLW_U0_LMB_Read_Strobe_1_UNCONNECTED),
+        .LMB_Read_Strobe_10(NLW_U0_LMB_Read_Strobe_10_UNCONNECTED),
+        .LMB_Read_Strobe_11(NLW_U0_LMB_Read_Strobe_11_UNCONNECTED),
+        .LMB_Read_Strobe_12(NLW_U0_LMB_Read_Strobe_12_UNCONNECTED),
+        .LMB_Read_Strobe_13(NLW_U0_LMB_Read_Strobe_13_UNCONNECTED),
+        .LMB_Read_Strobe_14(NLW_U0_LMB_Read_Strobe_14_UNCONNECTED),
+        .LMB_Read_Strobe_15(NLW_U0_LMB_Read_Strobe_15_UNCONNECTED),
+        .LMB_Read_Strobe_16(NLW_U0_LMB_Read_Strobe_16_UNCONNECTED),
+        .LMB_Read_Strobe_17(NLW_U0_LMB_Read_Strobe_17_UNCONNECTED),
+        .LMB_Read_Strobe_18(NLW_U0_LMB_Read_Strobe_18_UNCONNECTED),
+        .LMB_Read_Strobe_19(NLW_U0_LMB_Read_Strobe_19_UNCONNECTED),
+        .LMB_Read_Strobe_2(NLW_U0_LMB_Read_Strobe_2_UNCONNECTED),
+        .LMB_Read_Strobe_20(NLW_U0_LMB_Read_Strobe_20_UNCONNECTED),
+        .LMB_Read_Strobe_21(NLW_U0_LMB_Read_Strobe_21_UNCONNECTED),
+        .LMB_Read_Strobe_22(NLW_U0_LMB_Read_Strobe_22_UNCONNECTED),
+        .LMB_Read_Strobe_23(NLW_U0_LMB_Read_Strobe_23_UNCONNECTED),
+        .LMB_Read_Strobe_24(NLW_U0_LMB_Read_Strobe_24_UNCONNECTED),
+        .LMB_Read_Strobe_25(NLW_U0_LMB_Read_Strobe_25_UNCONNECTED),
+        .LMB_Read_Strobe_26(NLW_U0_LMB_Read_Strobe_26_UNCONNECTED),
+        .LMB_Read_Strobe_27(NLW_U0_LMB_Read_Strobe_27_UNCONNECTED),
+        .LMB_Read_Strobe_28(NLW_U0_LMB_Read_Strobe_28_UNCONNECTED),
+        .LMB_Read_Strobe_29(NLW_U0_LMB_Read_Strobe_29_UNCONNECTED),
+        .LMB_Read_Strobe_3(NLW_U0_LMB_Read_Strobe_3_UNCONNECTED),
+        .LMB_Read_Strobe_30(NLW_U0_LMB_Read_Strobe_30_UNCONNECTED),
+        .LMB_Read_Strobe_31(NLW_U0_LMB_Read_Strobe_31_UNCONNECTED),
+        .LMB_Read_Strobe_4(NLW_U0_LMB_Read_Strobe_4_UNCONNECTED),
+        .LMB_Read_Strobe_5(NLW_U0_LMB_Read_Strobe_5_UNCONNECTED),
+        .LMB_Read_Strobe_6(NLW_U0_LMB_Read_Strobe_6_UNCONNECTED),
+        .LMB_Read_Strobe_7(NLW_U0_LMB_Read_Strobe_7_UNCONNECTED),
+        .LMB_Read_Strobe_8(NLW_U0_LMB_Read_Strobe_8_UNCONNECTED),
+        .LMB_Read_Strobe_9(NLW_U0_LMB_Read_Strobe_9_UNCONNECTED),
+        .LMB_Ready_0(LMB_Ready_0),
+        .LMB_Ready_1(1'b0),
+        .LMB_Ready_10(1'b0),
+        .LMB_Ready_11(1'b0),
+        .LMB_Ready_12(1'b0),
+        .LMB_Ready_13(1'b0),
+        .LMB_Ready_14(1'b0),
+        .LMB_Ready_15(1'b0),
+        .LMB_Ready_16(1'b0),
+        .LMB_Ready_17(1'b0),
+        .LMB_Ready_18(1'b0),
+        .LMB_Ready_19(1'b0),
+        .LMB_Ready_2(1'b0),
+        .LMB_Ready_20(1'b0),
+        .LMB_Ready_21(1'b0),
+        .LMB_Ready_22(1'b0),
+        .LMB_Ready_23(1'b0),
+        .LMB_Ready_24(1'b0),
+        .LMB_Ready_25(1'b0),
+        .LMB_Ready_26(1'b0),
+        .LMB_Ready_27(1'b0),
+        .LMB_Ready_28(1'b0),
+        .LMB_Ready_29(1'b0),
+        .LMB_Ready_3(1'b0),
+        .LMB_Ready_30(1'b0),
+        .LMB_Ready_31(1'b0),
+        .LMB_Ready_4(1'b0),
+        .LMB_Ready_5(1'b0),
+        .LMB_Ready_6(1'b0),
+        .LMB_Ready_7(1'b0),
+        .LMB_Ready_8(1'b0),
+        .LMB_Ready_9(1'b0),
+        .LMB_UE_0(LMB_UE_0),
+        .LMB_UE_1(1'b0),
+        .LMB_UE_10(1'b0),
+        .LMB_UE_11(1'b0),
+        .LMB_UE_12(1'b0),
+        .LMB_UE_13(1'b0),
+        .LMB_UE_14(1'b0),
+        .LMB_UE_15(1'b0),
+        .LMB_UE_16(1'b0),
+        .LMB_UE_17(1'b0),
+        .LMB_UE_18(1'b0),
+        .LMB_UE_19(1'b0),
+        .LMB_UE_2(1'b0),
+        .LMB_UE_20(1'b0),
+        .LMB_UE_21(1'b0),
+        .LMB_UE_22(1'b0),
+        .LMB_UE_23(1'b0),
+        .LMB_UE_24(1'b0),
+        .LMB_UE_25(1'b0),
+        .LMB_UE_26(1'b0),
+        .LMB_UE_27(1'b0),
+        .LMB_UE_28(1'b0),
+        .LMB_UE_29(1'b0),
+        .LMB_UE_3(1'b0),
+        .LMB_UE_30(1'b0),
+        .LMB_UE_31(1'b0),
+        .LMB_UE_4(1'b0),
+        .LMB_UE_5(1'b0),
+        .LMB_UE_6(1'b0),
+        .LMB_UE_7(1'b0),
+        .LMB_UE_8(1'b0),
+        .LMB_UE_9(1'b0),
+        .LMB_Wait_0(LMB_Wait_0),
+        .LMB_Wait_1(1'b0),
+        .LMB_Wait_10(1'b0),
+        .LMB_Wait_11(1'b0),
+        .LMB_Wait_12(1'b0),
+        .LMB_Wait_13(1'b0),
+        .LMB_Wait_14(1'b0),
+        .LMB_Wait_15(1'b0),
+        .LMB_Wait_16(1'b0),
+        .LMB_Wait_17(1'b0),
+        .LMB_Wait_18(1'b0),
+        .LMB_Wait_19(1'b0),
+        .LMB_Wait_2(1'b0),
+        .LMB_Wait_20(1'b0),
+        .LMB_Wait_21(1'b0),
+        .LMB_Wait_22(1'b0),
+        .LMB_Wait_23(1'b0),
+        .LMB_Wait_24(1'b0),
+        .LMB_Wait_25(1'b0),
+        .LMB_Wait_26(1'b0),
+        .LMB_Wait_27(1'b0),
+        .LMB_Wait_28(1'b0),
+        .LMB_Wait_29(1'b0),
+        .LMB_Wait_3(1'b0),
+        .LMB_Wait_30(1'b0),
+        .LMB_Wait_31(1'b0),
+        .LMB_Wait_4(1'b0),
+        .LMB_Wait_5(1'b0),
+        .LMB_Wait_6(1'b0),
+        .LMB_Wait_7(1'b0),
+        .LMB_Wait_8(1'b0),
+        .LMB_Wait_9(1'b0),
+        .LMB_Write_Strobe_0(LMB_Write_Strobe_0),
+        .LMB_Write_Strobe_1(NLW_U0_LMB_Write_Strobe_1_UNCONNECTED),
+        .LMB_Write_Strobe_10(NLW_U0_LMB_Write_Strobe_10_UNCONNECTED),
+        .LMB_Write_Strobe_11(NLW_U0_LMB_Write_Strobe_11_UNCONNECTED),
+        .LMB_Write_Strobe_12(NLW_U0_LMB_Write_Strobe_12_UNCONNECTED),
+        .LMB_Write_Strobe_13(NLW_U0_LMB_Write_Strobe_13_UNCONNECTED),
+        .LMB_Write_Strobe_14(NLW_U0_LMB_Write_Strobe_14_UNCONNECTED),
+        .LMB_Write_Strobe_15(NLW_U0_LMB_Write_Strobe_15_UNCONNECTED),
+        .LMB_Write_Strobe_16(NLW_U0_LMB_Write_Strobe_16_UNCONNECTED),
+        .LMB_Write_Strobe_17(NLW_U0_LMB_Write_Strobe_17_UNCONNECTED),
+        .LMB_Write_Strobe_18(NLW_U0_LMB_Write_Strobe_18_UNCONNECTED),
+        .LMB_Write_Strobe_19(NLW_U0_LMB_Write_Strobe_19_UNCONNECTED),
+        .LMB_Write_Strobe_2(NLW_U0_LMB_Write_Strobe_2_UNCONNECTED),
+        .LMB_Write_Strobe_20(NLW_U0_LMB_Write_Strobe_20_UNCONNECTED),
+        .LMB_Write_Strobe_21(NLW_U0_LMB_Write_Strobe_21_UNCONNECTED),
+        .LMB_Write_Strobe_22(NLW_U0_LMB_Write_Strobe_22_UNCONNECTED),
+        .LMB_Write_Strobe_23(NLW_U0_LMB_Write_Strobe_23_UNCONNECTED),
+        .LMB_Write_Strobe_24(NLW_U0_LMB_Write_Strobe_24_UNCONNECTED),
+        .LMB_Write_Strobe_25(NLW_U0_LMB_Write_Strobe_25_UNCONNECTED),
+        .LMB_Write_Strobe_26(NLW_U0_LMB_Write_Strobe_26_UNCONNECTED),
+        .LMB_Write_Strobe_27(NLW_U0_LMB_Write_Strobe_27_UNCONNECTED),
+        .LMB_Write_Strobe_28(NLW_U0_LMB_Write_Strobe_28_UNCONNECTED),
+        .LMB_Write_Strobe_29(NLW_U0_LMB_Write_Strobe_29_UNCONNECTED),
+        .LMB_Write_Strobe_3(NLW_U0_LMB_Write_Strobe_3_UNCONNECTED),
+        .LMB_Write_Strobe_30(NLW_U0_LMB_Write_Strobe_30_UNCONNECTED),
+        .LMB_Write_Strobe_31(NLW_U0_LMB_Write_Strobe_31_UNCONNECTED),
+        .LMB_Write_Strobe_4(NLW_U0_LMB_Write_Strobe_4_UNCONNECTED),
+        .LMB_Write_Strobe_5(NLW_U0_LMB_Write_Strobe_5_UNCONNECTED),
+        .LMB_Write_Strobe_6(NLW_U0_LMB_Write_Strobe_6_UNCONNECTED),
+        .LMB_Write_Strobe_7(NLW_U0_LMB_Write_Strobe_7_UNCONNECTED),
+        .LMB_Write_Strobe_8(NLW_U0_LMB_Write_Strobe_8_UNCONNECTED),
+        .LMB_Write_Strobe_9(NLW_U0_LMB_Write_Strobe_9_UNCONNECTED),
+        .M_AXIS_ACLK(1'b0),
+        .M_AXIS_ARESETN(1'b0),
+        .M_AXIS_TDATA(NLW_U0_M_AXIS_TDATA_UNCONNECTED[31:0]),
+        .M_AXIS_TID(NLW_U0_M_AXIS_TID_UNCONNECTED[6:0]),
+        .M_AXIS_TREADY(1'b1),
+        .M_AXIS_TVALID(NLW_U0_M_AXIS_TVALID_UNCONNECTED),
+        .M_AXI_ACLK(M_AXI_ACLK),
+        .M_AXI_ARADDR(M_AXI_ARADDR),
+        .M_AXI_ARBURST(M_AXI_ARBURST),
+        .M_AXI_ARCACHE(M_AXI_ARCACHE),
+        .M_AXI_ARESETN(M_AXI_ARESETN),
+        .M_AXI_ARID(M_AXI_ARID),
+        .M_AXI_ARLEN(M_AXI_ARLEN),
+        .M_AXI_ARLOCK(M_AXI_ARLOCK),
+        .M_AXI_ARPROT(M_AXI_ARPROT),
+        .M_AXI_ARQOS(M_AXI_ARQOS),
+        .M_AXI_ARREADY(M_AXI_ARREADY),
+        .M_AXI_ARSIZE(M_AXI_ARSIZE),
+        .M_AXI_ARVALID(M_AXI_ARVALID),
+        .M_AXI_AWADDR(M_AXI_AWADDR),
+        .M_AXI_AWBURST(M_AXI_AWBURST),
+        .M_AXI_AWCACHE(M_AXI_AWCACHE),
+        .M_AXI_AWID(M_AXI_AWID),
+        .M_AXI_AWLEN(M_AXI_AWLEN),
+        .M_AXI_AWLOCK(M_AXI_AWLOCK),
+        .M_AXI_AWPROT(M_AXI_AWPROT),
+        .M_AXI_AWQOS(M_AXI_AWQOS),
+        .M_AXI_AWREADY(M_AXI_AWREADY),
+        .M_AXI_AWSIZE(M_AXI_AWSIZE),
+        .M_AXI_AWVALID(M_AXI_AWVALID),
+        .M_AXI_BID(M_AXI_BID),
+        .M_AXI_BREADY(M_AXI_BREADY),
+        .M_AXI_BRESP(M_AXI_BRESP),
+        .M_AXI_BVALID(M_AXI_BVALID),
+        .M_AXI_RDATA(M_AXI_RDATA),
+        .M_AXI_RID(M_AXI_RID),
+        .M_AXI_RLAST(M_AXI_RLAST),
+        .M_AXI_RREADY(M_AXI_RREADY),
+        .M_AXI_RRESP(M_AXI_RRESP),
+        .M_AXI_RVALID(M_AXI_RVALID),
+        .M_AXI_WDATA(M_AXI_WDATA),
+        .M_AXI_WLAST(M_AXI_WLAST),
+        .M_AXI_WREADY(M_AXI_WREADY),
+        .M_AXI_WSTRB(M_AXI_WSTRB),
+        .M_AXI_WVALID(M_AXI_WVALID),
+        .S_AXI_ACLK(1'b0),
+        .S_AXI_ARADDR({1'b0,1'b0,1'b0,1'b0}),
+        .S_AXI_ARESETN(1'b0),
+        .S_AXI_ARREADY(NLW_U0_S_AXI_ARREADY_UNCONNECTED),
+        .S_AXI_ARVALID(1'b0),
+        .S_AXI_AWADDR({1'b0,1'b0,1'b0,1'b0}),
+        .S_AXI_AWREADY(NLW_U0_S_AXI_AWREADY_UNCONNECTED),
+        .S_AXI_AWVALID(1'b0),
+        .S_AXI_BREADY(1'b0),
+        .S_AXI_BRESP(NLW_U0_S_AXI_BRESP_UNCONNECTED[1:0]),
+        .S_AXI_BVALID(NLW_U0_S_AXI_BVALID_UNCONNECTED),
+        .S_AXI_RDATA(NLW_U0_S_AXI_RDATA_UNCONNECTED[31:0]),
+        .S_AXI_RREADY(1'b0),
+        .S_AXI_RRESP(NLW_U0_S_AXI_RRESP_UNCONNECTED[1:0]),
+        .S_AXI_RVALID(NLW_U0_S_AXI_RVALID_UNCONNECTED),
+        .S_AXI_WDATA({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .S_AXI_WREADY(NLW_U0_S_AXI_WREADY_UNCONNECTED),
+        .S_AXI_WSTRB({1'b0,1'b0,1'b0,1'b0}),
+        .S_AXI_WVALID(1'b0),
+        .Scan_En(1'b0),
+        .Scan_Reset(1'b0),
+        .Scan_Reset_Sel(1'b0),
+        .TRACE_CLK(1'b0),
+        .TRACE_CLK_OUT(NLW_U0_TRACE_CLK_OUT_UNCONNECTED),
+        .TRACE_CTL(NLW_U0_TRACE_CTL_UNCONNECTED),
+        .TRACE_DATA(NLW_U0_TRACE_DATA_UNCONNECTED[31:0]),
+        .Trig_Ack_In_0(Trig_Ack_In_0),
+        .Trig_Ack_In_1(NLW_U0_Trig_Ack_In_1_UNCONNECTED),
+        .Trig_Ack_In_2(NLW_U0_Trig_Ack_In_2_UNCONNECTED),
+        .Trig_Ack_In_3(NLW_U0_Trig_Ack_In_3_UNCONNECTED),
+        .Trig_Ack_Out_0(Trig_Ack_Out_0),
+        .Trig_Ack_Out_1(1'b0),
+        .Trig_Ack_Out_2(1'b0),
+        .Trig_Ack_Out_3(1'b0),
+        .Trig_In_0(Trig_In_0),
+        .Trig_In_1(1'b0),
+        .Trig_In_2(1'b0),
+        .Trig_In_3(1'b0),
+        .Trig_Out_0(Trig_Out_0),
+        .Trig_Out_1(NLW_U0_Trig_Out_1_UNCONNECTED),
+        .Trig_Out_2(NLW_U0_Trig_Out_2_UNCONNECTED),
+        .Trig_Out_3(NLW_U0_Trig_Out_3_UNCONNECTED),
+        .bscan_ext_bscanid_en(1'b0),
+        .bscan_ext_capture(1'b0),
+        .bscan_ext_drck(1'b0),
+        .bscan_ext_reset(1'b0),
+        .bscan_ext_sel(1'b0),
+        .bscan_ext_shift(1'b0),
+        .bscan_ext_tck(1'b0),
+        .bscan_ext_tdi(1'b0),
+        .bscan_ext_tdo(NLW_U0_bscan_ext_tdo_UNCONNECTED),
+        .bscan_ext_update(1'b0));
+endmodule
+
+(* ORIG_REF_NAME = "JTAG_CONTROL" *) 
 module mcu_mdm_1_0_JTAG_CONTROL
    (Q,
     out,
@@ -19,36 +2628,36 @@ module mcu_mdm_1_0_JTAG_CONTROL
     rd_resp_zero,
     wr_resp_zero,
     master_rd_start,
+    AR,
     master_data_rd,
     master_data_wr,
     rd_wr_excl,
-    AR,
     Ext_NM_BRK,
     Debug_SYS_Rst,
     Dbg_Rst_0,
     master_wr_start,
-    tdo,
-    Dbg_Shift_0,
     Dbg_Reg_En_0,
     \Use_BSCAN.command_reg[7]_0 ,
+    p_101_out__0,
     \Using_FPGA.Native ,
-    \Use_BSCAN.command_reg[5]_0 ,
-    \Use_BSCAN.command_reg[7]_1 ,
+    Dbg_Shift_0,
+    tdo,
     \Use_Serial_Unified_Completion.sample_1_reg[15]_0 ,
-    \Use_Dbg_Mem_Access.rd_wr_len_reg[4]_0 ,
+    \Use_BSCAN.command_reg[6]_0 ,
+    \Use_Dbg_Mem_Access.rd_wr_len_reg[3]_0 ,
     \Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 ,
     \Use_Serial_Unified_Completion.count_reg[5]_0 ,
+    Trig_Ack_In_3,
+    Trig_Out_3,
     Trig_Out_0,
     Trig_Out_1,
     Trig_Out_2,
-    Trig_Out_3,
-    Trig_Ack_In_3,
     Dbg_Trig_Out_0,
     Trig_Ack_In_2,
     Trig_Ack_In_1,
     Trig_Ack_In_0,
     Dbg_Trig_Ack_In_0,
-    \Use_Dbg_Mem_Access.Master_rd_start_reg_0 ,
+    \Use_Dbg_Mem_Access.Master_wr_start_reg_0 ,
     \Use_Dbg_Mem_Access.output_reg[23]_0 ,
     \Use_Cross_Trigger.tdo_reg_reg[7]_0 ,
     \Use_Dbg_Mem_Access.input_reg[0]_0 ,
@@ -59,32 +2668,33 @@ module mcu_mdm_1_0_JTAG_CONTROL
     M_AXI_ACLK,
     \Use_Dbg_Mem_Access.rd_resp_zero_reg_0 ,
     \Use_Dbg_Mem_Access.wr_resp_zero_reg_0 ,
-    p_93_out,
+    p_92_out,
     sel_n_reg_0,
-    Scan_Reset,
     Scan_Reset_Sel,
+    Scan_Reset,
     Scan_En,
-    \command_1_reg[7]_0 ,
-    sel_n_reg_1,
-    SEL,
-    Dbg_TDO_0,
     Dbg_Shift_0_0,
-    master_data_out,
-    \Use_Dbg_Mem_Access.output_reg[27]_0 ,
-    \Use_Dbg_Mem_Access.output_reg[29]_0 ,
-    \Use_Dbg_Mem_Access.master_overrun_reg_0 ,
+    \command_1_reg[7]_0 ,
+    SEL,
+    sel_n_reg_1,
+    \Use_Dbg_Mem_Access.Master_wr_start_reg_1 ,
     wdata_exists,
     M_AXI_ARESETN,
+    Dbg_TDO_0,
+    \Use_Dbg_Mem_Access.master_overrun_reg_0 ,
+    \Use_Dbg_Mem_Access.output_reg[29]_0 ,
+    master_data_out,
+    \Use_Dbg_Mem_Access.output_reg[27]_0 ,
     wr_state,
-    Dbg_Trig_In_0,
-    Dbg_Trig_Ack_Out_0,
     Trig_Ack_Out_3,
-    Trig_Ack_Out_1,
-    Trig_Ack_Out_2,
+    Dbg_Trig_Ack_Out_0,
     Trig_Ack_Out_0,
-    Trig_In_2,
-    Trig_In_1,
+    Trig_Ack_Out_2,
+    Trig_Ack_Out_1,
     Trig_In_3,
+    Dbg_Trig_In_0,
+    Trig_In_1,
+    Trig_In_2,
     Trig_In_0,
     p_20_out,
     Ext_JTAG_TDI,
@@ -93,7 +2703,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_Serial_Unified_Completion.completion_status_reg[10]_0 ,
     \Use_Serial_Unified_Completion.completion_status_reg[15]_0 ,
     \Use_Cross_Trigger.tdo_reg_reg[8]_0 ,
-    \Use_Serial_Unified_Completion.count_reg[0]__0_0 ,
+    \Use_Serial_Unified_Completion.count_reg[5]_1 ,
     D,
     \shift_Count_reg[0]_0 );
   output [0:0]Q;
@@ -102,36 +2712,36 @@ module mcu_mdm_1_0_JTAG_CONTROL
   output rd_resp_zero;
   output wr_resp_zero;
   output master_rd_start;
+  output [0:0]AR;
   output master_data_rd;
   output master_data_wr;
   output rd_wr_excl;
-  output [0:0]AR;
   output Ext_NM_BRK;
   output Debug_SYS_Rst;
   output Dbg_Rst_0;
   output master_wr_start;
-  output tdo;
-  output Dbg_Shift_0;
   output [0:7]Dbg_Reg_En_0;
-  output \Use_BSCAN.command_reg[7]_0 ;
+  output [0:0]\Use_BSCAN.command_reg[7]_0 ;
+  output p_101_out__0;
   output \Using_FPGA.Native ;
-  output \Use_BSCAN.command_reg[5]_0 ;
-  output \Use_BSCAN.command_reg[7]_1 ;
+  output Dbg_Shift_0;
+  output tdo;
   output [0:0]\Use_Serial_Unified_Completion.sample_1_reg[15]_0 ;
-  output \Use_Dbg_Mem_Access.rd_wr_len_reg[4]_0 ;
+  output \Use_BSCAN.command_reg[6]_0 ;
+  output \Use_Dbg_Mem_Access.rd_wr_len_reg[3]_0 ;
   output [4:0]\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 ;
   output [0:0]\Use_Serial_Unified_Completion.count_reg[5]_0 ;
+  output Trig_Ack_In_3;
+  output Trig_Out_3;
   output Trig_Out_0;
   output Trig_Out_1;
   output Trig_Out_2;
-  output Trig_Out_3;
-  output Trig_Ack_In_3;
   output [0:7]Dbg_Trig_Out_0;
   output Trig_Ack_In_2;
   output Trig_Ack_In_1;
   output Trig_Ack_In_0;
   output [0:7]Dbg_Trig_Ack_In_0;
-  output \Use_Dbg_Mem_Access.Master_rd_start_reg_0 ;
+  output \Use_Dbg_Mem_Access.Master_wr_start_reg_0 ;
   output [3:0]\Use_Dbg_Mem_Access.output_reg[23]_0 ;
   output [11:0]\Use_Cross_Trigger.tdo_reg_reg[7]_0 ;
   output [31:0]\Use_Dbg_Mem_Access.input_reg[0]_0 ;
@@ -142,32 +2752,33 @@ module mcu_mdm_1_0_JTAG_CONTROL
   input M_AXI_ACLK;
   input \Use_Dbg_Mem_Access.rd_resp_zero_reg_0 ;
   input \Use_Dbg_Mem_Access.wr_resp_zero_reg_0 ;
-  input p_93_out;
+  input p_92_out;
   input sel_n_reg_0;
-  input Scan_Reset;
   input Scan_Reset_Sel;
+  input Scan_Reset;
   input Scan_En;
-  input [3:0]\command_1_reg[7]_0 ;
-  input sel_n_reg_1;
-  input SEL;
-  input Dbg_TDO_0;
   input Dbg_Shift_0_0;
-  input [26:0]master_data_out;
-  input \Use_Dbg_Mem_Access.output_reg[27]_0 ;
-  input \Use_Dbg_Mem_Access.output_reg[29]_0 ;
-  input \Use_Dbg_Mem_Access.master_overrun_reg_0 ;
+  input [3:0]\command_1_reg[7]_0 ;
+  input SEL;
+  input sel_n_reg_1;
+  input \Use_Dbg_Mem_Access.Master_wr_start_reg_1 ;
   input wdata_exists;
   input M_AXI_ARESETN;
+  input Dbg_TDO_0;
+  input \Use_Dbg_Mem_Access.master_overrun_reg_0 ;
+  input \Use_Dbg_Mem_Access.output_reg[29]_0 ;
+  input [26:0]master_data_out;
+  input \Use_Dbg_Mem_Access.output_reg[27]_0 ;
   input [0:0]wr_state;
-  input [0:7]Dbg_Trig_In_0;
-  input [0:7]Dbg_Trig_Ack_Out_0;
   input Trig_Ack_Out_3;
-  input Trig_Ack_Out_1;
-  input Trig_Ack_Out_2;
+  input [0:7]Dbg_Trig_Ack_Out_0;
   input Trig_Ack_Out_0;
-  input Trig_In_2;
-  input Trig_In_1;
+  input Trig_Ack_Out_2;
+  input Trig_Ack_Out_1;
   input Trig_In_3;
+  input [0:7]Dbg_Trig_In_0;
+  input Trig_In_1;
+  input Trig_In_2;
   input Trig_In_0;
   input p_20_out;
   input Ext_JTAG_TDI;
@@ -176,7 +2787,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
   input [0:0]\Use_Serial_Unified_Completion.completion_status_reg[10]_0 ;
   input [0:0]\Use_Serial_Unified_Completion.completion_status_reg[15]_0 ;
   input [11:0]\Use_Cross_Trigger.tdo_reg_reg[8]_0 ;
-  input [0:0]\Use_Serial_Unified_Completion.count_reg[0]__0_0 ;
+  input [0:0]\Use_Serial_Unified_Completion.count_reg[5]_1 ;
   input [0:0]D;
   input [0:0]\shift_Count_reg[0]_0 ;
 
@@ -191,7 +2802,8 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire Dbg_Rst_0;
   wire Dbg_Shift_0;
   wire Dbg_Shift_0_0;
-  wire Dbg_Shift_31_INST_0_i_2_n_0;
+  wire Dbg_Shift_31_INST_0_i_1_n_0;
+  wire Dbg_Shift_31_INST_0_i_3_n_0;
   wire Dbg_TDO_0;
   wire [0:7]Dbg_Trig_Ack_In_0;
   wire \Dbg_Trig_Ack_In_0[0]_INST_0_i_1_n_0 ;
@@ -230,25 +2842,35 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire [0:7]Dbg_Trig_In_0;
   wire [0:7]Dbg_Trig_Out_0;
   wire \Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ;
-  wire \Dbg_Trig_Out_0[0]_INST_0_i_2_n_0 ;
   wire \Dbg_Trig_Out_0[0]_INST_0_i_3_n_0 ;
   wire \Dbg_Trig_Out_0[1]_INST_0_i_1_n_0 ;
   wire \Dbg_Trig_Out_0[1]_INST_0_i_2_n_0 ;
+  wire \Dbg_Trig_Out_0[1]_INST_0_i_3_n_0 ;
+  wire \Dbg_Trig_Out_0[1]_INST_0_i_4_n_0 ;
   wire \Dbg_Trig_Out_0[2]_INST_0_i_1_n_0 ;
   wire \Dbg_Trig_Out_0[2]_INST_0_i_2_n_0 ;
   wire \Dbg_Trig_Out_0[2]_INST_0_i_3_n_0 ;
+  wire \Dbg_Trig_Out_0[2]_INST_0_i_4_n_0 ;
   wire \Dbg_Trig_Out_0[3]_INST_0_i_1_n_0 ;
   wire \Dbg_Trig_Out_0[3]_INST_0_i_2_n_0 ;
+  wire \Dbg_Trig_Out_0[3]_INST_0_i_3_n_0 ;
+  wire \Dbg_Trig_Out_0[3]_INST_0_i_4_n_0 ;
   wire \Dbg_Trig_Out_0[4]_INST_0_i_1_n_0 ;
   wire \Dbg_Trig_Out_0[4]_INST_0_i_2_n_0 ;
+  wire \Dbg_Trig_Out_0[4]_INST_0_i_3_n_0 ;
+  wire \Dbg_Trig_Out_0[4]_INST_0_i_4_n_0 ;
   wire \Dbg_Trig_Out_0[5]_INST_0_i_1_n_0 ;
   wire \Dbg_Trig_Out_0[5]_INST_0_i_2_n_0 ;
+  wire \Dbg_Trig_Out_0[5]_INST_0_i_3_n_0 ;
+  wire \Dbg_Trig_Out_0[5]_INST_0_i_4_n_0 ;
   wire \Dbg_Trig_Out_0[6]_INST_0_i_1_n_0 ;
   wire \Dbg_Trig_Out_0[6]_INST_0_i_2_n_0 ;
   wire \Dbg_Trig_Out_0[6]_INST_0_i_3_n_0 ;
+  wire \Dbg_Trig_Out_0[6]_INST_0_i_4_n_0 ;
   wire \Dbg_Trig_Out_0[7]_INST_0_i_1_n_0 ;
   wire \Dbg_Trig_Out_0[7]_INST_0_i_2_n_0 ;
   wire \Dbg_Trig_Out_0[7]_INST_0_i_3_n_0 ;
+  wire \Dbg_Trig_Out_0[7]_INST_0_i_4_n_0 ;
   wire Debug_SYS_Rst;
   wire [0:0]E;
   wire Ext_JTAG_TDI;
@@ -295,20 +2917,10 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire Trig_In_2;
   wire Trig_In_3;
   wire Trig_Out_0;
-  wire Trig_Out_0_INST_0_i_10_n_0;
-  wire Trig_Out_0_INST_0_i_11_n_0;
-  wire Trig_Out_0_INST_0_i_12_n_0;
-  wire Trig_Out_0_INST_0_i_13_n_0;
-  wire Trig_Out_0_INST_0_i_14_n_0;
   wire Trig_Out_0_INST_0_i_1_n_0;
   wire Trig_Out_0_INST_0_i_2_n_0;
   wire Trig_Out_0_INST_0_i_3_n_0;
   wire Trig_Out_0_INST_0_i_4_n_0;
-  wire Trig_Out_0_INST_0_i_5_n_0;
-  wire Trig_Out_0_INST_0_i_6_n_0;
-  wire Trig_Out_0_INST_0_i_7_n_0;
-  wire Trig_Out_0_INST_0_i_8_n_0;
-  wire Trig_Out_0_INST_0_i_9_n_0;
   wire Trig_Out_1;
   wire Trig_Out_1_INST_0_i_1_n_0;
   wire Trig_Out_1_INST_0_i_2_n_0;
@@ -319,13 +2931,13 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire Trig_Out_2_INST_0_i_2_n_0;
   wire Trig_Out_2_INST_0_i_3_n_0;
   wire Trig_Out_2_INST_0_i_4_n_0;
-  wire Trig_Out_2_INST_0_i_5_n_0;
   wire Trig_Out_3;
   wire Trig_Out_3_INST_0_i_1_n_0;
   wire Trig_Out_3_INST_0_i_2_n_0;
   wire Trig_Out_3_INST_0_i_3_n_0;
   wire Trig_Out_3_INST_0_i_4_n_0;
-  wire \Use_BSCAN.FDC_I_n_15 ;
+  wire \Use_BSCAN.FDC_I_n_10 ;
+  wire \Use_BSCAN.FDC_I_n_12 ;
   wire \Use_BSCAN.FDC_I_n_16 ;
   wire \Use_BSCAN.FDC_I_n_17 ;
   wire \Use_BSCAN.FDC_I_n_18 ;
@@ -340,7 +2952,6 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_BSCAN.FDC_I_n_27 ;
   wire \Use_BSCAN.FDC_I_n_28 ;
   wire \Use_BSCAN.FDC_I_n_29 ;
-  wire \Use_BSCAN.FDC_I_n_30 ;
   wire \Use_BSCAN.FDC_I_n_31 ;
   wire \Use_BSCAN.FDC_I_n_33 ;
   wire \Use_BSCAN.FDC_I_n_34 ;
@@ -352,9 +2963,9 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_BSCAN.FDC_I_n_40 ;
   wire \Use_BSCAN.FDC_I_n_41 ;
   wire \Use_BSCAN.FDC_I_n_42 ;
+  wire \Use_BSCAN.FDC_I_n_43 ;
   wire \Use_BSCAN.FDC_I_n_44 ;
   wire \Use_BSCAN.FDC_I_n_45 ;
-  wire \Use_BSCAN.FDC_I_n_46 ;
   wire \Use_BSCAN.FDC_I_n_47 ;
   wire \Use_BSCAN.FDC_I_n_48 ;
   wire \Use_BSCAN.FDC_I_n_49 ;
@@ -365,10 +2976,10 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_BSCAN.FDC_I_n_54 ;
   wire \Use_BSCAN.FDC_I_n_55 ;
   wire \Use_BSCAN.SYNC_FDRE_n_1 ;
+  wire \Use_BSCAN.SYNC_FDRE_n_2 ;
   wire \Use_BSCAN.command[0]_i_1_n_0 ;
-  wire \Use_BSCAN.command_reg[5]_0 ;
-  wire \Use_BSCAN.command_reg[7]_0 ;
-  wire \Use_BSCAN.command_reg[7]_1 ;
+  wire \Use_BSCAN.command_reg[6]_0 ;
+  wire [0:0]\Use_BSCAN.command_reg[7]_0 ;
   wire \Use_BSCAN.command_reg_n_0_[0] ;
   wire \Use_BSCAN.command_reg_n_0_[1] ;
   wire \Use_BSCAN.command_reg_n_0_[2] ;
@@ -376,16 +2987,17 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_BSCAN.command_reg_n_0_[4] ;
   wire \Use_BSCAN.command_reg_n_0_[5] ;
   wire \Use_BSCAN.command_reg_n_0_[6] ;
-  wire \Use_BSCAN.command_reg_n_0_[7] ;
   wire \Use_Config_SRL16E.SRL16E_2_n_0 ;
+  wire \Use_Config_SRL16E.Use_Ext_Config.SRL16E_3_n_0 ;
+  wire \Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ;
   wire \Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ;
   wire \Use_Cross_Trigger.ext_out_ctrl[3][0]_i_3_n_0 ;
-  wire \Use_Cross_Trigger.ext_out_ctrl[3][0]_i_4_n_0 ;
   wire [3:0]\Use_Cross_Trigger.ext_out_ctrl_reg[0] ;
   wire [3:0]\Use_Cross_Trigger.ext_out_ctrl_reg[1] ;
   wire [3:0]\Use_Cross_Trigger.ext_out_ctrl_reg[2] ;
   wire [3:0]\Use_Cross_Trigger.ext_out_ctrl_reg[3] ;
   wire \Use_Cross_Trigger.in_ctrl_reg_n_0_[0][7] ;
+  wire \Use_Cross_Trigger.out_ctrl[0][7][0]_i_3_n_0 ;
   wire [3:0]\Use_Cross_Trigger.out_ctrl_reg[0][0] ;
   wire [3:0]\Use_Cross_Trigger.out_ctrl_reg[0][1] ;
   wire [3:0]\Use_Cross_Trigger.out_ctrl_reg[0][2] ;
@@ -396,6 +3008,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire [3:0]\Use_Cross_Trigger.out_ctrl_reg[0][7] ;
   wire \Use_Cross_Trigger.tdo_reg[0]_i_1_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[0]_i_2_n_0 ;
+  wire \Use_Cross_Trigger.tdo_reg[0]_i_3_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[16]_i_1_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[16]_i_2_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[16]_i_3_n_0 ;
@@ -404,7 +3017,6 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_Cross_Trigger.tdo_reg[16]_i_6_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[16]_i_7_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[16]_i_8_n_0 ;
-  wire \Use_Cross_Trigger.tdo_reg[16]_i_9_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[17]_i_1_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[17]_i_2_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[17]_i_3_n_0 ;
@@ -412,6 +3024,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_Cross_Trigger.tdo_reg[17]_i_5_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[17]_i_6_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[17]_i_7_n_0 ;
+  wire \Use_Cross_Trigger.tdo_reg[17]_i_8_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[18]_i_1_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[18]_i_2_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[18]_i_3_n_0 ;
@@ -420,7 +3033,6 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_Cross_Trigger.tdo_reg[18]_i_6_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[18]_i_7_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[18]_i_8_n_0 ;
-  wire \Use_Cross_Trigger.tdo_reg[18]_i_9_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[19]_i_1_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[19]_i_2_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[19]_i_3_n_0 ;
@@ -429,33 +3041,31 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_Cross_Trigger.tdo_reg[19]_i_6_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[19]_i_7_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[19]_i_8_n_0 ;
-  wire \Use_Cross_Trigger.tdo_reg[19]_i_9_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[1]_i_1_n_0 ;
-  wire \Use_Cross_Trigger.tdo_reg[1]_i_2_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[2]_i_1_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[3]_i_1_n_0 ;
-  wire \Use_Cross_Trigger.tdo_reg[3]_i_2_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[4]_i_1_n_0 ;
-  wire \Use_Cross_Trigger.tdo_reg[4]_i_2_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[5]_i_1_n_0 ;
-  wire \Use_Cross_Trigger.tdo_reg[5]_i_2_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[6]_i_1_n_0 ;
   wire \Use_Cross_Trigger.tdo_reg[7]_i_1_n_0 ;
   wire [11:0]\Use_Cross_Trigger.tdo_reg_reg[7]_0 ;
   wire [11:0]\Use_Cross_Trigger.tdo_reg_reg[8]_0 ;
-  wire \Use_Dbg_Mem_Access.Master_data_rd_i_2_n_0 ;
   wire \Use_Dbg_Mem_Access.Master_rd_start_i_2_n_0 ;
-  wire \Use_Dbg_Mem_Access.Master_rd_start_reg_0 ;
   wire \Use_Dbg_Mem_Access.Master_wr_start_i_1_n_0 ;
+  wire \Use_Dbg_Mem_Access.Master_wr_start_i_2_n_0 ;
+  wire \Use_Dbg_Mem_Access.Master_wr_start_i_3_n_0 ;
+  wire \Use_Dbg_Mem_Access.Master_wr_start_reg_0 ;
+  wire \Use_Dbg_Mem_Access.Master_wr_start_reg_1 ;
   wire \Use_Dbg_Mem_Access.execute_i_3_n_0 ;
   wire \Use_Dbg_Mem_Access.input[0]_i_2_n_0 ;
-  wire \Use_Dbg_Mem_Access.input[0]_i_4_n_0 ;
   wire [31:0]\Use_Dbg_Mem_Access.input_reg[0]_0 ;
   wire \Use_Dbg_Mem_Access.master_error_i_1_n_0 ;
+  wire \Use_Dbg_Mem_Access.master_error_i_3_n_0 ;
   wire \Use_Dbg_Mem_Access.master_error_reg_n_0 ;
   wire \Use_Dbg_Mem_Access.master_overrun_i_1_n_0 ;
   wire \Use_Dbg_Mem_Access.master_overrun_reg_0 ;
   wire \Use_Dbg_Mem_Access.master_overrun_reg_n_0 ;
+  wire \Use_Dbg_Mem_Access.output[0]_i_4_n_0 ;
   wire \Use_Dbg_Mem_Access.output[10]_i_1_n_0 ;
   wire \Use_Dbg_Mem_Access.output[11]_i_1_n_0 ;
   wire \Use_Dbg_Mem_Access.output[12]_i_1_n_0 ;
@@ -472,7 +3082,6 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_Dbg_Mem_Access.output[22]_i_1_n_0 ;
   wire \Use_Dbg_Mem_Access.output[23]_i_1_n_0 ;
   wire \Use_Dbg_Mem_Access.output[27]_i_1_n_0 ;
-  wire \Use_Dbg_Mem_Access.output[27]_i_2_n_0 ;
   wire \Use_Dbg_Mem_Access.output[29]_i_1_n_0 ;
   wire \Use_Dbg_Mem_Access.output[2]_i_1_n_0 ;
   wire \Use_Dbg_Mem_Access.output[30]_i_1_n_0 ;
@@ -490,18 +3099,17 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_Dbg_Mem_Access.output_reg[29]_0 ;
   wire \Use_Dbg_Mem_Access.rd_resp_zero_reg_0 ;
   wire [4:0]\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 ;
-  wire \Use_Dbg_Mem_Access.rd_wr_len_reg[4]_0 ;
+  wire \Use_Dbg_Mem_Access.rd_wr_len_reg[3]_0 ;
   wire [1:0]\Use_Dbg_Mem_Access.rd_wr_size_reg[0]_0 ;
   wire \Use_Dbg_Mem_Access.wr_resp_zero_reg_0 ;
   wire \Use_E2.BSCANE2_I_i_10_n_0 ;
   wire \Use_E2.BSCANE2_I_i_11_n_0 ;
   wire \Use_E2.BSCANE2_I_i_3_n_0 ;
-  wire \Use_E2.BSCANE2_I_i_4_n_0 ;
-  wire \Use_E2.BSCANE2_I_i_6_n_0 ;
+  wire \Use_E2.BSCANE2_I_i_5_n_0 ;
+  wire \Use_E2.BSCANE2_I_i_8_n_0 ;
   wire \Use_E2.BSCANE2_I_i_9_n_0 ;
   wire \Use_Serial_Unified_Completion.completion_block_i_3_n_0 ;
   wire \Use_Serial_Unified_Completion.completion_block_i_4_n_0 ;
-  wire \Use_Serial_Unified_Completion.completion_block_i_5_n_0 ;
   wire \Use_Serial_Unified_Completion.completion_block_reg_n_0 ;
   wire \Use_Serial_Unified_Completion.completion_status[10]_i_1_n_0 ;
   wire \Use_Serial_Unified_Completion.completion_status[11]_i_1_n_0 ;
@@ -512,25 +3120,22 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire \Use_Serial_Unified_Completion.completion_status[4]_i_2_n_0 ;
   wire \Use_Serial_Unified_Completion.completion_status[5]_i_2_n_0 ;
   wire \Use_Serial_Unified_Completion.completion_status[7]_i_2_n_0 ;
-  wire \Use_Serial_Unified_Completion.completion_status[9]_i_3_n_0 ;
+  wire \Use_Serial_Unified_Completion.completion_status[9]_i_4_n_0 ;
   wire [0:0]\Use_Serial_Unified_Completion.completion_status_reg[10]_0 ;
   wire [0:0]\Use_Serial_Unified_Completion.completion_status_reg[15]_0 ;
   wire \Use_Serial_Unified_Completion.count[0]__0_i_4_n_0 ;
   wire \Use_Serial_Unified_Completion.count[0]_i_1_n_0 ;
   wire \Use_Serial_Unified_Completion.count[1]_i_1_n_0 ;
-  wire [0:0]\Use_Serial_Unified_Completion.count_reg[0]__0_0 ;
+  wire [0:4]\Use_Serial_Unified_Completion.count_reg ;
   wire [0:0]\Use_Serial_Unified_Completion.count_reg[5]_0 ;
-  wire [0:4]\Use_Serial_Unified_Completion.count_reg__1 ;
+  wire [0:0]\Use_Serial_Unified_Completion.count_reg[5]_1 ;
   wire \Use_Serial_Unified_Completion.count_reg_n_0_[0] ;
   wire \Use_Serial_Unified_Completion.count_reg_n_0_[1] ;
   wire \Use_Serial_Unified_Completion.mb_data_overrun_i_2_n_0 ;
   wire \Use_Serial_Unified_Completion.mb_data_overrun_i_3_n_0 ;
   wire \Use_Serial_Unified_Completion.mb_data_overrun_reg_n_0 ;
   wire \Use_Serial_Unified_Completion.mb_instr_error_reg_n_0 ;
-  wire \Use_Serial_Unified_Completion.mb_instr_overrun_i_7_n_0 ;
-  wire \Use_Serial_Unified_Completion.mb_instr_overrun_i_8_n_0 ;
-  wire \Use_Serial_Unified_Completion.sample_1[15]_i_4_n_0 ;
-  wire \Use_Serial_Unified_Completion.sample_1[15]_i_5_n_0 ;
+  wire \Use_Serial_Unified_Completion.sample_1[15]_i_3_n_0 ;
   wire [0:0]\Use_Serial_Unified_Completion.sample_1_reg[15]_0 ;
   wire \Use_Serial_Unified_Completion.sample_1_reg_n_0_[10] ;
   wire \Use_Serial_Unified_Completion.sample_1_reg_n_0_[11] ;
@@ -550,7 +3155,6 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire [3:0]\command_1_reg[7]_0 ;
   wire completion_ctrl;
   wire [15:0]completion_status;
-  wire config_TDO_3;
   wire data_cmd_reset23_out;
   wire execute;
   (* async_reg = "true" *) wire execute_1;
@@ -565,22 +3169,25 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire mb_instr_overrun;
   wire [0:31]\output ;
   wire [5:1]p_0_in;
-  wire p_0_in71_in;
-  wire p_0_in74_in;
-  wire p_0_in77_in;
+  wire p_0_in57_in;
+  wire p_0_in60_in;
+  wire p_0_in63_in;
   wire [7:0]p_0_in_2;
   wire [5:1]p_0_in__0;
+  wire p_101_out__0;
+  wire [14:3]p_1_in;
   wire p_20_out;
   wire p_22_out;
+  wire p_23_out__10;
   wire p_3_in38_in;
   wire p_4_in41_in;
   wire p_5_in;
   wire p_6_in46_in;
   wire p_7_in49_in;
-  wire p_88_out;
+  wire p_87_out;
   wire p_8_in;
-  wire p_93_out;
-  wire p_99_out;
+  wire p_92_out;
+  wire p_98_out;
   wire p_9_in54_in;
   wire [3:0]p_9_out;
   wire rd_resp_zero;
@@ -593,10 +3200,11 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire sel_n_reg_1;
   wire sel_with_scan_reset36_out;
   wire \shift_Count[5]_i_2_n_0 ;
+  wire [5:4]shift_Count_reg;
   wire [0:0]\shift_Count_reg[0]_0 ;
-  wire [5:4]shift_Count_reg__0;
+  wire shifting_Data1__0;
   wire sync;
-  wire \tdi_shifter[0]_i_1_n_0 ;
+  wire tdi_shifter0;
   wire \tdi_shifter_reg_n_0_[12] ;
   wire \tdi_shifter_reg_n_0_[13] ;
   wire \tdi_shifter_reg_n_0_[14] ;
@@ -608,678 +3216,792 @@ module mcu_mdm_1_0_JTAG_CONTROL
   wire [0:0]wr_state;
 
   assign out = execute_2;
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  LUT3 #(
+    .INIT(8'hFD)) 
+    Dbg_Shift_31_INST_0_i_1
+       (.I0(\Use_BSCAN.command_reg_n_0_[5] ),
+        .I1(\Use_BSCAN.command_reg[7]_0 ),
+        .I2(\Use_BSCAN.command_reg_n_0_[4] ),
+        .O(Dbg_Shift_31_INST_0_i_1_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT4 #(
-    .INIT(16'hFFFE)) 
-    Dbg_Shift_31_INST_0_i_2
-       (.I0(\Use_BSCAN.command_reg_n_0_[6] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[0] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[3] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[1] ),
-        .O(Dbg_Shift_31_INST_0_i_2_n_0));
+    .INIT(16'h0001)) 
+    Dbg_Shift_31_INST_0_i_3
+       (.I0(\Use_BSCAN.command_reg_n_0_[1] ),
+        .I1(\Use_BSCAN.command_reg_n_0_[3] ),
+        .I2(\Use_BSCAN.command_reg_n_0_[0] ),
+        .I3(\Use_BSCAN.command_reg_n_0_[2] ),
+        .O(Dbg_Shift_31_INST_0_i_3_n_0));
   LUT6 #(
-    .INIT(64'h888888AA88888A8A)) 
+    .INIT(64'hFFFF0A0C00000000)) 
     \Dbg_Trig_Ack_In_0[0]_INST_0 
-       (.I0(p_9_in54_in),
-        .I1(\Dbg_Trig_Ack_In_0[0]_INST_0_i_1_n_0 ),
-        .I2(\Dbg_Trig_Ack_In_0[0]_INST_0_i_2_n_0 ),
-        .I3(\Dbg_Trig_Ack_In_0[0]_INST_0_i_3_n_0 ),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][0] [2]),
-        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][0] [3]),
+       (.I0(\Dbg_Trig_Ack_In_0[0]_INST_0_i_1_n_0 ),
+        .I1(\Dbg_Trig_Ack_In_0[0]_INST_0_i_2_n_0 ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][0] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][0] [3]),
+        .I4(\Dbg_Trig_Ack_In_0[0]_INST_0_i_3_n_0 ),
+        .I5(p_9_in54_in),
         .O(Dbg_Trig_Ack_In_0[0]));
   LUT6 #(
-    .INIT(64'h0300AA000000AA00)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[0]_INST_0_i_1 
-       (.I0(\Dbg_Trig_Ack_In_0[0]_INST_0_i_4_n_0 ),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]),
+       (.I0(Trig_Ack_Out_0),
+        .I1(Trig_Ack_Out_2),
         .I2(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][0] [2]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][0] [3]),
-        .I5(Trig_Ack_Out_3),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]),
+        .I4(Dbg_Trig_Ack_Out_0[7]),
+        .I5(Trig_Ack_Out_1),
         .O(\Dbg_Trig_Ack_In_0[0]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
   LUT5 #(
-    .INIT(32'h053FF53F)) 
+    .INIT(32'hF0CCAA00)) 
     \Dbg_Trig_Ack_In_0[0]_INST_0_i_2 
-       (.I0(Dbg_Trig_Ack_Out_0[0]),
-        .I1(Dbg_Trig_Ack_Out_0[1]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]),
-        .I4(Dbg_Trig_Ack_Out_0[2]),
+       (.I0(Dbg_Trig_Ack_Out_0[1]),
+        .I1(Dbg_Trig_Ack_Out_0[0]),
+        .I2(Dbg_Trig_Ack_Out_0[2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]),
         .O(\Dbg_Trig_Ack_In_0[0]_INST_0_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h0F0055330FFF5533)) 
+    .INIT(64'h10100000FF000000)) 
     \Dbg_Trig_Ack_In_0[0]_INST_0_i_3 
-       (.I0(Trig_Ack_Out_1),
-        .I1(Dbg_Trig_Ack_Out_0[7]),
-        .I2(Trig_Ack_Out_2),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]),
-        .I5(Trig_Ack_Out_0),
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]),
+        .I2(Trig_Ack_Out_3),
+        .I3(\Dbg_Trig_Ack_In_0[0]_INST_0_i_4_n_0 ),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][0] [2]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][0] [3]),
         .O(\Dbg_Trig_Ack_In_0[0]_INST_0_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hF0FFAACCF000AACC)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[0]_INST_0_i_4 
-       (.I0(Dbg_Trig_Ack_Out_0[5]),
-        .I1(Dbg_Trig_Ack_Out_0[3]),
-        .I2(Dbg_Trig_Ack_Out_0[6]),
+       (.I0(Dbg_Trig_Ack_Out_0[4]),
+        .I1(Dbg_Trig_Ack_Out_0[6]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]),
-        .I5(Dbg_Trig_Ack_Out_0[4]),
+        .I4(Dbg_Trig_Ack_Out_0[3]),
+        .I5(Dbg_Trig_Ack_Out_0[5]),
         .O(\Dbg_Trig_Ack_In_0[0]_INST_0_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'h88888888A8A888AA)) 
+    .INIT(64'hFFFF0A0C00000000)) 
     \Dbg_Trig_Ack_In_0[1]_INST_0 
-       (.I0(p_8_in),
-        .I1(\Dbg_Trig_Ack_In_0[1]_INST_0_i_1_n_0 ),
-        .I2(\Dbg_Trig_Ack_In_0[1]_INST_0_i_2_n_0 ),
-        .I3(\Dbg_Trig_Ack_In_0[1]_INST_0_i_3_n_0 ),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][1] [3]),
-        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][1] [2]),
+       (.I0(\Dbg_Trig_Ack_In_0[1]_INST_0_i_1_n_0 ),
+        .I1(\Dbg_Trig_Ack_In_0[1]_INST_0_i_2_n_0 ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][1] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][1] [3]),
+        .I4(\Dbg_Trig_Ack_In_0[1]_INST_0_i_3_n_0 ),
+        .I5(p_8_in),
         .O(Dbg_Trig_Ack_In_0[1]));
   LUT6 #(
-    .INIT(64'h10FF000010000000)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[1]_INST_0_i_1 
+       (.I0(Trig_Ack_Out_0),
+        .I1(Trig_Ack_Out_2),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]),
+        .I4(Dbg_Trig_Ack_Out_0[7]),
+        .I5(Trig_Ack_Out_1),
+        .O(\Dbg_Trig_Ack_In_0[1]_INST_0_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hF0CCAA00)) 
+    \Dbg_Trig_Ack_In_0[1]_INST_0_i_2 
+       (.I0(Dbg_Trig_Ack_Out_0[1]),
+        .I1(Dbg_Trig_Ack_Out_0[0]),
+        .I2(Dbg_Trig_Ack_Out_0[2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]),
+        .O(\Dbg_Trig_Ack_In_0[1]_INST_0_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h10100000FF000000)) 
+    \Dbg_Trig_Ack_In_0[1]_INST_0_i_3 
        (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]),
         .I1(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]),
         .I2(Trig_Ack_Out_3),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][1] [3]),
+        .I3(\Dbg_Trig_Ack_In_0[1]_INST_0_i_4_n_0 ),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][1] [2]),
-        .I5(\Dbg_Trig_Ack_In_0[1]_INST_0_i_4_n_0 ),
-        .O(\Dbg_Trig_Ack_In_0[1]_INST_0_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFCCF0AA00CCF0AA)) 
-    \Dbg_Trig_Ack_In_0[1]_INST_0_i_2 
-       (.I0(Dbg_Trig_Ack_Out_0[7]),
-        .I1(Trig_Ack_Out_0),
-        .I2(Trig_Ack_Out_1),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]),
-        .I5(Trig_Ack_Out_2),
-        .O(\Dbg_Trig_Ack_In_0[1]_INST_0_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
-  LUT5 #(
-    .INIT(32'h350F35FF)) 
-    \Dbg_Trig_Ack_In_0[1]_INST_0_i_3 
-       (.I0(Dbg_Trig_Ack_Out_0[0]),
-        .I1(Dbg_Trig_Ack_Out_0[2]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]),
-        .I4(Dbg_Trig_Ack_Out_0[1]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][1] [3]),
         .O(\Dbg_Trig_Ack_In_0[1]_INST_0_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hCCAAFFF0CCAA00F0)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[1]_INST_0_i_4 
        (.I0(Dbg_Trig_Ack_Out_0[4]),
         .I1(Dbg_Trig_Ack_Out_0[6]),
-        .I2(Dbg_Trig_Ack_Out_0[3]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]),
+        .I4(Dbg_Trig_Ack_Out_0[3]),
         .I5(Dbg_Trig_Ack_Out_0[5]),
         .O(\Dbg_Trig_Ack_In_0[1]_INST_0_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'h888888888A8A88AA)) 
+    .INIT(64'hFFFF0A0C00000000)) 
     \Dbg_Trig_Ack_In_0[2]_INST_0 
-       (.I0(p_7_in49_in),
-        .I1(\Dbg_Trig_Ack_In_0[2]_INST_0_i_1_n_0 ),
-        .I2(\Dbg_Trig_Ack_In_0[2]_INST_0_i_2_n_0 ),
-        .I3(\Dbg_Trig_Ack_In_0[2]_INST_0_i_3_n_0 ),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][2] [3]),
-        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][2] [2]),
+       (.I0(\Dbg_Trig_Ack_In_0[2]_INST_0_i_1_n_0 ),
+        .I1(\Dbg_Trig_Ack_In_0[2]_INST_0_i_2_n_0 ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][2] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][2] [3]),
+        .I4(\Dbg_Trig_Ack_In_0[2]_INST_0_i_3_n_0 ),
+        .I5(p_7_in49_in),
         .O(Dbg_Trig_Ack_In_0[2]));
   LUT6 #(
-    .INIT(64'h0300AA000000AA00)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[2]_INST_0_i_1 
-       (.I0(\Dbg_Trig_Ack_In_0[2]_INST_0_i_4_n_0 ),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]),
+       (.I0(Trig_Ack_Out_0),
+        .I1(Trig_Ack_Out_2),
         .I2(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][2] [2]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][2] [3]),
-        .I5(Trig_Ack_Out_3),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]),
+        .I4(Dbg_Trig_Ack_Out_0[7]),
+        .I5(Trig_Ack_Out_1),
         .O(\Dbg_Trig_Ack_In_0[2]_INST_0_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0F0055330FFF5533)) 
+  LUT5 #(
+    .INIT(32'hF0CCAA00)) 
     \Dbg_Trig_Ack_In_0[2]_INST_0_i_2 
-       (.I0(Trig_Ack_Out_1),
-        .I1(Dbg_Trig_Ack_Out_0[7]),
-        .I2(Trig_Ack_Out_2),
+       (.I0(Dbg_Trig_Ack_Out_0[1]),
+        .I1(Dbg_Trig_Ack_Out_0[0]),
+        .I2(Dbg_Trig_Ack_Out_0[2]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]),
-        .I5(Trig_Ack_Out_0),
         .O(\Dbg_Trig_Ack_In_0[2]_INST_0_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'h503F5F3F)) 
+  LUT6 #(
+    .INIT(64'h10100000FF000000)) 
     \Dbg_Trig_Ack_In_0[2]_INST_0_i_3 
-       (.I0(Dbg_Trig_Ack_Out_0[2]),
-        .I1(Dbg_Trig_Ack_Out_0[0]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]),
-        .I4(Dbg_Trig_Ack_Out_0[1]),
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]),
+        .I2(Trig_Ack_Out_3),
+        .I3(\Dbg_Trig_Ack_In_0[2]_INST_0_i_4_n_0 ),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][2] [2]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][2] [3]),
         .O(\Dbg_Trig_Ack_In_0[2]_INST_0_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hF0FFAACCF000AACC)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[2]_INST_0_i_4 
-       (.I0(Dbg_Trig_Ack_Out_0[5]),
-        .I1(Dbg_Trig_Ack_Out_0[3]),
-        .I2(Dbg_Trig_Ack_Out_0[6]),
+       (.I0(Dbg_Trig_Ack_Out_0[4]),
+        .I1(Dbg_Trig_Ack_Out_0[6]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]),
-        .I5(Dbg_Trig_Ack_Out_0[4]),
+        .I4(Dbg_Trig_Ack_Out_0[3]),
+        .I5(Dbg_Trig_Ack_Out_0[5]),
         .O(\Dbg_Trig_Ack_In_0[2]_INST_0_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'h88888888A8A888AA)) 
+    .INIT(64'hFFFF0A0C00000000)) 
     \Dbg_Trig_Ack_In_0[3]_INST_0 
-       (.I0(p_6_in46_in),
-        .I1(\Dbg_Trig_Ack_In_0[3]_INST_0_i_1_n_0 ),
-        .I2(\Dbg_Trig_Ack_In_0[3]_INST_0_i_2_n_0 ),
-        .I3(\Dbg_Trig_Ack_In_0[3]_INST_0_i_3_n_0 ),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][3] [3]),
-        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][3] [2]),
+       (.I0(\Dbg_Trig_Ack_In_0[3]_INST_0_i_1_n_0 ),
+        .I1(\Dbg_Trig_Ack_In_0[3]_INST_0_i_2_n_0 ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][3] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][3] [3]),
+        .I4(\Dbg_Trig_Ack_In_0[3]_INST_0_i_3_n_0 ),
+        .I5(p_6_in46_in),
         .O(Dbg_Trig_Ack_In_0[3]));
   LUT6 #(
-    .INIT(64'h10FF000010000000)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[3]_INST_0_i_1 
+       (.I0(Trig_Ack_Out_0),
+        .I1(Trig_Ack_Out_2),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]),
+        .I4(Dbg_Trig_Ack_Out_0[7]),
+        .I5(Trig_Ack_Out_1),
+        .O(\Dbg_Trig_Ack_In_0[3]_INST_0_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hF0CCAA00)) 
+    \Dbg_Trig_Ack_In_0[3]_INST_0_i_2 
+       (.I0(Dbg_Trig_Ack_Out_0[1]),
+        .I1(Dbg_Trig_Ack_Out_0[0]),
+        .I2(Dbg_Trig_Ack_Out_0[2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]),
+        .O(\Dbg_Trig_Ack_In_0[3]_INST_0_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h10100000FF000000)) 
+    \Dbg_Trig_Ack_In_0[3]_INST_0_i_3 
        (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]),
         .I1(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]),
         .I2(Trig_Ack_Out_3),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][3] [3]),
+        .I3(\Dbg_Trig_Ack_In_0[3]_INST_0_i_4_n_0 ),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][3] [2]),
-        .I5(\Dbg_Trig_Ack_In_0[3]_INST_0_i_4_n_0 ),
-        .O(\Dbg_Trig_Ack_In_0[3]_INST_0_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hCCFFF0AACC00F0AA)) 
-    \Dbg_Trig_Ack_In_0[3]_INST_0_i_2 
-       (.I0(Dbg_Trig_Ack_Out_0[7]),
-        .I1(Trig_Ack_Out_2),
-        .I2(Trig_Ack_Out_1),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]),
-        .I5(Trig_Ack_Out_0),
-        .O(\Dbg_Trig_Ack_In_0[3]_INST_0_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
-  LUT5 #(
-    .INIT(32'h350F35FF)) 
-    \Dbg_Trig_Ack_In_0[3]_INST_0_i_3 
-       (.I0(Dbg_Trig_Ack_Out_0[0]),
-        .I1(Dbg_Trig_Ack_Out_0[2]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]),
-        .I4(Dbg_Trig_Ack_Out_0[1]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][3] [3]),
         .O(\Dbg_Trig_Ack_In_0[3]_INST_0_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hCCAAFFF0CCAA00F0)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[3]_INST_0_i_4 
        (.I0(Dbg_Trig_Ack_Out_0[4]),
         .I1(Dbg_Trig_Ack_Out_0[6]),
-        .I2(Dbg_Trig_Ack_Out_0[3]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]),
+        .I4(Dbg_Trig_Ack_Out_0[3]),
         .I5(Dbg_Trig_Ack_Out_0[5]),
         .O(\Dbg_Trig_Ack_In_0[3]_INST_0_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'h88888888A8A888AA)) 
+    .INIT(64'hFFFF0A0C00000000)) 
     \Dbg_Trig_Ack_In_0[4]_INST_0 
-       (.I0(p_5_in),
-        .I1(\Dbg_Trig_Ack_In_0[4]_INST_0_i_1_n_0 ),
-        .I2(\Dbg_Trig_Ack_In_0[4]_INST_0_i_2_n_0 ),
-        .I3(\Dbg_Trig_Ack_In_0[4]_INST_0_i_3_n_0 ),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][4] [3]),
-        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][4] [2]),
+       (.I0(\Dbg_Trig_Ack_In_0[4]_INST_0_i_1_n_0 ),
+        .I1(\Dbg_Trig_Ack_In_0[4]_INST_0_i_2_n_0 ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][4] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][4] [3]),
+        .I4(\Dbg_Trig_Ack_In_0[4]_INST_0_i_3_n_0 ),
+        .I5(p_5_in),
         .O(Dbg_Trig_Ack_In_0[4]));
   LUT6 #(
-    .INIT(64'h10FF000010000000)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[4]_INST_0_i_1 
+       (.I0(Trig_Ack_Out_0),
+        .I1(Trig_Ack_Out_2),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][4] [1]),
+        .I4(Dbg_Trig_Ack_Out_0[7]),
+        .I5(Trig_Ack_Out_1),
+        .O(\Dbg_Trig_Ack_In_0[4]_INST_0_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hF0CCAA00)) 
+    \Dbg_Trig_Ack_In_0[4]_INST_0_i_2 
+       (.I0(Dbg_Trig_Ack_Out_0[1]),
+        .I1(Dbg_Trig_Ack_Out_0[0]),
+        .I2(Dbg_Trig_Ack_Out_0[2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][4] [1]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]),
+        .O(\Dbg_Trig_Ack_In_0[4]_INST_0_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h10100000FF000000)) 
+    \Dbg_Trig_Ack_In_0[4]_INST_0_i_3 
        (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][4] [1]),
         .I1(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]),
         .I2(Trig_Ack_Out_3),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][4] [3]),
+        .I3(\Dbg_Trig_Ack_In_0[4]_INST_0_i_4_n_0 ),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][4] [2]),
-        .I5(\Dbg_Trig_Ack_In_0[4]_INST_0_i_4_n_0 ),
-        .O(\Dbg_Trig_Ack_In_0[4]_INST_0_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFCCF0AA00CCF0AA)) 
-    \Dbg_Trig_Ack_In_0[4]_INST_0_i_2 
-       (.I0(Dbg_Trig_Ack_Out_0[7]),
-        .I1(Trig_Ack_Out_0),
-        .I2(Trig_Ack_Out_1),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][4] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]),
-        .I5(Trig_Ack_Out_2),
-        .O(\Dbg_Trig_Ack_In_0[4]_INST_0_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
-  LUT5 #(
-    .INIT(32'h350F35FF)) 
-    \Dbg_Trig_Ack_In_0[4]_INST_0_i_3 
-       (.I0(Dbg_Trig_Ack_Out_0[0]),
-        .I1(Dbg_Trig_Ack_Out_0[2]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][4] [1]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]),
-        .I4(Dbg_Trig_Ack_Out_0[1]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][4] [3]),
         .O(\Dbg_Trig_Ack_In_0[4]_INST_0_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hCCAAFFF0CCAA00F0)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[4]_INST_0_i_4 
        (.I0(Dbg_Trig_Ack_Out_0[4]),
         .I1(Dbg_Trig_Ack_Out_0[6]),
-        .I2(Dbg_Trig_Ack_Out_0[3]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][4] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]),
+        .I4(Dbg_Trig_Ack_Out_0[3]),
         .I5(Dbg_Trig_Ack_Out_0[5]),
         .O(\Dbg_Trig_Ack_In_0[4]_INST_0_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'h88888888A8A888AA)) 
+    .INIT(64'hFFFF0A0C00000000)) 
     \Dbg_Trig_Ack_In_0[5]_INST_0 
-       (.I0(p_4_in41_in),
-        .I1(\Dbg_Trig_Ack_In_0[5]_INST_0_i_1_n_0 ),
-        .I2(\Dbg_Trig_Ack_In_0[5]_INST_0_i_2_n_0 ),
-        .I3(\Dbg_Trig_Ack_In_0[5]_INST_0_i_3_n_0 ),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5] [3]),
-        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][5] [2]),
+       (.I0(\Dbg_Trig_Ack_In_0[5]_INST_0_i_1_n_0 ),
+        .I1(\Dbg_Trig_Ack_In_0[5]_INST_0_i_2_n_0 ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][5] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][5] [3]),
+        .I4(\Dbg_Trig_Ack_In_0[5]_INST_0_i_3_n_0 ),
+        .I5(p_4_in41_in),
         .O(Dbg_Trig_Ack_In_0[5]));
   LUT6 #(
-    .INIT(64'h10FF000010000000)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[5]_INST_0_i_1 
+       (.I0(Trig_Ack_Out_0),
+        .I1(Trig_Ack_Out_2),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][5] [1]),
+        .I4(Dbg_Trig_Ack_Out_0[7]),
+        .I5(Trig_Ack_Out_1),
+        .O(\Dbg_Trig_Ack_In_0[5]_INST_0_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hF0CCAA00)) 
+    \Dbg_Trig_Ack_In_0[5]_INST_0_i_2 
+       (.I0(Dbg_Trig_Ack_Out_0[1]),
+        .I1(Dbg_Trig_Ack_Out_0[0]),
+        .I2(Dbg_Trig_Ack_Out_0[2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][5] [1]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]),
+        .O(\Dbg_Trig_Ack_In_0[5]_INST_0_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h10100000FF000000)) 
+    \Dbg_Trig_Ack_In_0[5]_INST_0_i_3 
        (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][5] [1]),
         .I1(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]),
         .I2(Trig_Ack_Out_3),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][5] [3]),
+        .I3(\Dbg_Trig_Ack_In_0[5]_INST_0_i_4_n_0 ),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5] [2]),
-        .I5(\Dbg_Trig_Ack_In_0[5]_INST_0_i_4_n_0 ),
-        .O(\Dbg_Trig_Ack_In_0[5]_INST_0_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFCCAAF000CCAAF0)) 
-    \Dbg_Trig_Ack_In_0[5]_INST_0_i_2 
-       (.I0(Trig_Ack_Out_1),
-        .I1(Trig_Ack_Out_0),
-        .I2(Dbg_Trig_Ack_Out_0[7]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][5] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]),
-        .I5(Trig_Ack_Out_2),
-        .O(\Dbg_Trig_Ack_In_0[5]_INST_0_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
-  LUT5 #(
-    .INIT(32'h350F35FF)) 
-    \Dbg_Trig_Ack_In_0[5]_INST_0_i_3 
-       (.I0(Dbg_Trig_Ack_Out_0[0]),
-        .I1(Dbg_Trig_Ack_Out_0[2]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][5] [1]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]),
-        .I4(Dbg_Trig_Ack_Out_0[1]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][5] [3]),
         .O(\Dbg_Trig_Ack_In_0[5]_INST_0_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hCCAAFFF0CCAA00F0)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[5]_INST_0_i_4 
        (.I0(Dbg_Trig_Ack_Out_0[4]),
         .I1(Dbg_Trig_Ack_Out_0[6]),
-        .I2(Dbg_Trig_Ack_Out_0[3]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][5] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]),
+        .I4(Dbg_Trig_Ack_Out_0[3]),
         .I5(Dbg_Trig_Ack_Out_0[5]),
         .O(\Dbg_Trig_Ack_In_0[5]_INST_0_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'h888888888A8A88AA)) 
+    .INIT(64'hFFFF0A0C00000000)) 
     \Dbg_Trig_Ack_In_0[6]_INST_0 
-       (.I0(p_3_in38_in),
-        .I1(\Dbg_Trig_Ack_In_0[6]_INST_0_i_1_n_0 ),
-        .I2(\Dbg_Trig_Ack_In_0[6]_INST_0_i_2_n_0 ),
-        .I3(\Dbg_Trig_Ack_In_0[6]_INST_0_i_3_n_0 ),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][6] [3]),
-        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][6] [2]),
+       (.I0(\Dbg_Trig_Ack_In_0[6]_INST_0_i_1_n_0 ),
+        .I1(\Dbg_Trig_Ack_In_0[6]_INST_0_i_2_n_0 ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][6] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][6] [3]),
+        .I4(\Dbg_Trig_Ack_In_0[6]_INST_0_i_3_n_0 ),
+        .I5(p_3_in38_in),
         .O(Dbg_Trig_Ack_In_0[6]));
   LUT6 #(
-    .INIT(64'h0300AA000000AA00)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[6]_INST_0_i_1 
-       (.I0(\Dbg_Trig_Ack_In_0[6]_INST_0_i_4_n_0 ),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]),
+       (.I0(Trig_Ack_Out_0),
+        .I1(Trig_Ack_Out_2),
         .I2(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][6] [2]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][6] [3]),
-        .I5(Trig_Ack_Out_3),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]),
+        .I4(Dbg_Trig_Ack_Out_0[7]),
+        .I5(Trig_Ack_Out_1),
         .O(\Dbg_Trig_Ack_In_0[6]_INST_0_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0F0055330FFF5533)) 
+  LUT5 #(
+    .INIT(32'hF0CCAA00)) 
     \Dbg_Trig_Ack_In_0[6]_INST_0_i_2 
-       (.I0(Trig_Ack_Out_1),
-        .I1(Dbg_Trig_Ack_Out_0[7]),
-        .I2(Trig_Ack_Out_2),
+       (.I0(Dbg_Trig_Ack_Out_0[1]),
+        .I1(Dbg_Trig_Ack_Out_0[0]),
+        .I2(Dbg_Trig_Ack_Out_0[2]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]),
-        .I5(Trig_Ack_Out_0),
         .O(\Dbg_Trig_Ack_In_0[6]_INST_0_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'h503F5F3F)) 
+  LUT6 #(
+    .INIT(64'h10100000FF000000)) 
     \Dbg_Trig_Ack_In_0[6]_INST_0_i_3 
-       (.I0(Dbg_Trig_Ack_Out_0[2]),
-        .I1(Dbg_Trig_Ack_Out_0[1]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]),
-        .I4(Dbg_Trig_Ack_Out_0[0]),
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]),
+        .I2(Trig_Ack_Out_3),
+        .I3(\Dbg_Trig_Ack_In_0[6]_INST_0_i_4_n_0 ),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][6] [2]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][6] [3]),
         .O(\Dbg_Trig_Ack_In_0[6]_INST_0_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hF0FFAACCF000AACC)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[6]_INST_0_i_4 
-       (.I0(Dbg_Trig_Ack_Out_0[5]),
-        .I1(Dbg_Trig_Ack_Out_0[3]),
-        .I2(Dbg_Trig_Ack_Out_0[6]),
+       (.I0(Dbg_Trig_Ack_Out_0[4]),
+        .I1(Dbg_Trig_Ack_Out_0[6]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]),
-        .I5(Dbg_Trig_Ack_Out_0[4]),
+        .I4(Dbg_Trig_Ack_Out_0[3]),
+        .I5(Dbg_Trig_Ack_Out_0[5]),
         .O(\Dbg_Trig_Ack_In_0[6]_INST_0_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'h888888888A8A88AA)) 
+    .INIT(64'hFFFF0A0C00000000)) 
     \Dbg_Trig_Ack_In_0[7]_INST_0 
-       (.I0(\Use_Cross_Trigger.in_ctrl_reg_n_0_[0][7] ),
-        .I1(\Dbg_Trig_Ack_In_0[7]_INST_0_i_1_n_0 ),
-        .I2(\Dbg_Trig_Ack_In_0[7]_INST_0_i_2_n_0 ),
-        .I3(\Dbg_Trig_Ack_In_0[7]_INST_0_i_3_n_0 ),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][7] [3]),
-        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][7] [2]),
+       (.I0(\Dbg_Trig_Ack_In_0[7]_INST_0_i_1_n_0 ),
+        .I1(\Dbg_Trig_Ack_In_0[7]_INST_0_i_2_n_0 ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][7] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][7] [3]),
+        .I4(\Dbg_Trig_Ack_In_0[7]_INST_0_i_3_n_0 ),
+        .I5(\Use_Cross_Trigger.in_ctrl_reg_n_0_[0][7] ),
         .O(Dbg_Trig_Ack_In_0[7]));
   LUT6 #(
-    .INIT(64'h0300AA000000AA00)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[7]_INST_0_i_1 
-       (.I0(\Dbg_Trig_Ack_In_0[7]_INST_0_i_4_n_0 ),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]),
+       (.I0(Trig_Ack_Out_0),
+        .I1(Trig_Ack_Out_2),
         .I2(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][7] [2]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][7] [3]),
-        .I5(Trig_Ack_Out_3),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]),
+        .I4(Dbg_Trig_Ack_Out_0[7]),
+        .I5(Trig_Ack_Out_1),
         .O(\Dbg_Trig_Ack_In_0[7]_INST_0_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0F0055330FFF5533)) 
+  LUT5 #(
+    .INIT(32'hF0CCAA00)) 
     \Dbg_Trig_Ack_In_0[7]_INST_0_i_2 
-       (.I0(Trig_Ack_Out_1),
-        .I1(Dbg_Trig_Ack_Out_0[7]),
-        .I2(Trig_Ack_Out_2),
+       (.I0(Dbg_Trig_Ack_Out_0[1]),
+        .I1(Dbg_Trig_Ack_Out_0[0]),
+        .I2(Dbg_Trig_Ack_Out_0[2]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]),
-        .I5(Trig_Ack_Out_0),
         .O(\Dbg_Trig_Ack_In_0[7]_INST_0_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'h503F5F3F)) 
+  LUT6 #(
+    .INIT(64'h10100000FF000000)) 
     \Dbg_Trig_Ack_In_0[7]_INST_0_i_3 
-       (.I0(Dbg_Trig_Ack_Out_0[2]),
-        .I1(Dbg_Trig_Ack_Out_0[1]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]),
-        .I4(Dbg_Trig_Ack_Out_0[0]),
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]),
+        .I2(Trig_Ack_Out_3),
+        .I3(\Dbg_Trig_Ack_In_0[7]_INST_0_i_4_n_0 ),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][7] [2]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][7] [3]),
         .O(\Dbg_Trig_Ack_In_0[7]_INST_0_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'hF0FFAACCF000AACC)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     \Dbg_Trig_Ack_In_0[7]_INST_0_i_4 
-       (.I0(Dbg_Trig_Ack_Out_0[5]),
-        .I1(Dbg_Trig_Ack_Out_0[3]),
-        .I2(Dbg_Trig_Ack_Out_0[6]),
+       (.I0(Dbg_Trig_Ack_Out_0[4]),
+        .I1(Dbg_Trig_Ack_Out_0[6]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]),
-        .I5(Dbg_Trig_Ack_Out_0[4]),
+        .I4(Dbg_Trig_Ack_Out_0[3]),
+        .I5(Dbg_Trig_Ack_Out_0[5]),
         .O(\Dbg_Trig_Ack_In_0[7]_INST_0_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'h0CAC0C0F0CACFCFF)) 
+    .INIT(64'hCCF0AAFF00F0AAF0)) 
     \Dbg_Trig_Out_0[0]_INST_0 
        (.I0(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ),
-        .I1(in_andor_ctrl),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][0] [3]),
-        .I3(\Dbg_Trig_Out_0[0]_INST_0_i_2_n_0 ),
+        .I1(p_1_in[3]),
+        .I2(in_andor_ctrl),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][0] [3]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][0] [2]),
         .I5(\Dbg_Trig_Out_0[0]_INST_0_i_3_n_0 ),
         .O(Dbg_Trig_Out_0[0]));
+  LUT6 #(
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
+    \Dbg_Trig_Out_0[0]_INST_0_i_1 
+       (.I0(p_1_in[6]),
+        .I1(p_1_in[4]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]),
+        .I4(in_andor_ctrl),
+        .I5(p_1_in[5]),
+        .O(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ));
   LUT2 #(
     .INIT(4'h8)) 
-    \Dbg_Trig_Out_0[0]_INST_0_i_1 
-       (.I0(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
-        .I1(Trig_In_3),
-        .O(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
-  LUT2 #(
-    .INIT(4'hE)) 
     \Dbg_Trig_Out_0[0]_INST_0_i_2 
-       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]),
-        .O(\Dbg_Trig_Out_0[0]_INST_0_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0F55CC000F55CCFF)) 
+       (.I0(Trig_In_3),
+        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
+        .O(p_1_in[3]));
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
     \Dbg_Trig_Out_0[0]_INST_0_i_3 
-       (.I0(Trig_Out_0_INST_0_i_11_n_0),
-        .I1(Trig_Out_0_INST_0_i_12_n_0),
-        .I2(Trig_Out_0_INST_0_i_13_n_0),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]),
-        .I5(in_andor_ctrl),
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]),
         .O(\Dbg_Trig_Out_0[0]_INST_0_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h0FCC55CF00CC55CF)) 
+    .INIT(64'hFFFFFFFFFFFF4440)) 
     \Dbg_Trig_Out_0[1]_INST_0 
-       (.I0(\Dbg_Trig_Out_0[1]_INST_0_i_1_n_0 ),
-        .I1(in_andor_ctrl),
-        .I2(\Dbg_Trig_Out_0[1]_INST_0_i_2_n_0 ),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][1] [3]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][1] [2]),
-        .I5(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ),
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][1] [2]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][1] [3]),
+        .I2(\Dbg_Trig_Out_0[1]_INST_0_i_1_n_0 ),
+        .I3(\Dbg_Trig_Out_0[1]_INST_0_i_2_n_0 ),
+        .I4(\Dbg_Trig_Out_0[1]_INST_0_i_3_n_0 ),
+        .I5(\Dbg_Trig_Out_0[1]_INST_0_i_4_n_0 ),
         .O(Dbg_Trig_Out_0[1]));
-  LUT6 #(
-    .INIT(64'h3355F0003355F0FF)) 
+  LUT5 #(
+    .INIT(32'h000088F0)) 
     \Dbg_Trig_Out_0[1]_INST_0_i_1 
-       (.I0(Trig_Out_0_INST_0_i_11_n_0),
-        .I1(Trig_Out_0_INST_0_i_13_n_0),
-        .I2(Trig_Out_0_INST_0_i_12_n_0),
+       (.I0(Trig_In_1),
+        .I1(p_0_in60_in),
+        .I2(in_andor_ctrl),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]),
-        .I5(in_andor_ctrl),
         .O(\Dbg_Trig_Out_0[1]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT6 #(
+    .INIT(64'h88880000F0000000)) 
     \Dbg_Trig_Out_0[1]_INST_0_i_2 
-       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]),
+       (.I0(Trig_In_2),
+        .I1(p_0_in57_in),
+        .I2(Trig_In_0),
+        .I3(p_0_in63_in),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]),
         .O(\Dbg_Trig_Out_0[1]_INST_0_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFF54FF54FFFFFF00)) 
+    .INIT(64'h0000000000008000)) 
+    \Dbg_Trig_Out_0[1]_INST_0_i_3 
+       (.I0(Trig_In_3),
+        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][1] [3]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][1] [2]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]),
+        .O(\Dbg_Trig_Out_0[1]_INST_0_i_3_n_0 ));
+  LUT5 #(
+    .INIT(32'h00FF0001)) 
+    \Dbg_Trig_Out_0[1]_INST_0_i_4 
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][1] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][1] [3]),
+        .I4(in_andor_ctrl),
+        .O(\Dbg_Trig_Out_0[1]_INST_0_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFF4440)) 
     \Dbg_Trig_Out_0[2]_INST_0 
        (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][2] [2]),
-        .I1(\Dbg_Trig_Out_0[2]_INST_0_i_1_n_0 ),
-        .I2(\Dbg_Trig_Out_0[2]_INST_0_i_2_n_0 ),
-        .I3(\Dbg_Trig_Out_0[2]_INST_0_i_3_n_0 ),
-        .I4(in_andor_ctrl),
-        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][2] [3]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][2] [3]),
+        .I2(\Dbg_Trig_Out_0[2]_INST_0_i_1_n_0 ),
+        .I3(\Dbg_Trig_Out_0[2]_INST_0_i_2_n_0 ),
+        .I4(\Dbg_Trig_Out_0[2]_INST_0_i_3_n_0 ),
+        .I5(\Dbg_Trig_Out_0[2]_INST_0_i_4_n_0 ),
         .O(Dbg_Trig_Out_0[2]));
-  LUT6 #(
-    .INIT(64'hF080008000800080)) 
-    \Dbg_Trig_Out_0[2]_INST_0_i_1 
-       (.I0(p_0_in77_in),
-        .I1(Trig_In_0),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]),
-        .I4(p_0_in71_in),
-        .I5(Trig_In_2),
-        .O(\Dbg_Trig_Out_0[2]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair20" *) 
   LUT5 #(
-    .INIT(32'h32020202)) 
+    .INIT(32'h000088F0)) 
+    \Dbg_Trig_Out_0[2]_INST_0_i_1 
+       (.I0(Trig_In_1),
+        .I1(p_0_in60_in),
+        .I2(in_andor_ctrl),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]),
+        .O(\Dbg_Trig_Out_0[2]_INST_0_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h88880000F0000000)) 
     \Dbg_Trig_Out_0[2]_INST_0_i_2 
-       (.I0(in_andor_ctrl),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]),
-        .I3(p_0_in74_in),
-        .I4(Trig_In_1),
+       (.I0(Trig_In_2),
+        .I1(p_0_in57_in),
+        .I2(Trig_In_0),
+        .I3(p_0_in63_in),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]),
         .O(\Dbg_Trig_Out_0[2]_INST_0_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000000009111)) 
+    .INIT(64'h0000000000008000)) 
     \Dbg_Trig_Out_0[2]_INST_0_i_3 
-       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][2] [2]),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][2] [3]),
-        .I2(Trig_In_3),
-        .I3(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]),
-        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]),
+       (.I0(Trig_In_3),
+        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][2] [3]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][2] [2]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]),
         .O(\Dbg_Trig_Out_0[2]_INST_0_i_3_n_0 ));
+  LUT5 #(
+    .INIT(32'h00FF0001)) 
+    \Dbg_Trig_Out_0[2]_INST_0_i_4 
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][2] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][2] [3]),
+        .I4(in_andor_ctrl),
+        .O(\Dbg_Trig_Out_0[2]_INST_0_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'h0FCC55CF00CC55CF)) 
+    .INIT(64'hFFFFFFFFFFFF4440)) 
     \Dbg_Trig_Out_0[3]_INST_0 
-       (.I0(\Dbg_Trig_Out_0[3]_INST_0_i_1_n_0 ),
-        .I1(in_andor_ctrl),
-        .I2(\Dbg_Trig_Out_0[3]_INST_0_i_2_n_0 ),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][3] [3]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][3] [2]),
-        .I5(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ),
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][3] [2]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][3] [3]),
+        .I2(\Dbg_Trig_Out_0[3]_INST_0_i_1_n_0 ),
+        .I3(\Dbg_Trig_Out_0[3]_INST_0_i_2_n_0 ),
+        .I4(\Dbg_Trig_Out_0[3]_INST_0_i_3_n_0 ),
+        .I5(\Dbg_Trig_Out_0[3]_INST_0_i_4_n_0 ),
         .O(Dbg_Trig_Out_0[3]));
-  LUT6 #(
-    .INIT(64'h3355F0003355F0FF)) 
+  LUT5 #(
+    .INIT(32'h000088F0)) 
     \Dbg_Trig_Out_0[3]_INST_0_i_1 
-       (.I0(Trig_Out_0_INST_0_i_11_n_0),
-        .I1(Trig_Out_0_INST_0_i_13_n_0),
-        .I2(Trig_Out_0_INST_0_i_12_n_0),
+       (.I0(Trig_In_1),
+        .I1(p_0_in60_in),
+        .I2(in_andor_ctrl),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]),
-        .I5(in_andor_ctrl),
         .O(\Dbg_Trig_Out_0[3]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT6 #(
+    .INIT(64'h88880000F0000000)) 
     \Dbg_Trig_Out_0[3]_INST_0_i_2 
-       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]),
+       (.I0(Trig_In_2),
+        .I1(p_0_in57_in),
+        .I2(Trig_In_0),
+        .I3(p_0_in63_in),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]),
         .O(\Dbg_Trig_Out_0[3]_INST_0_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h0FCC55CF00CC55CF)) 
-    \Dbg_Trig_Out_0[4]_INST_0 
-       (.I0(\Dbg_Trig_Out_0[4]_INST_0_i_1_n_0 ),
-        .I1(in_andor_ctrl),
-        .I2(\Dbg_Trig_Out_0[4]_INST_0_i_2_n_0 ),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][4] [3]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][4] [2]),
-        .I5(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ),
-        .O(Dbg_Trig_Out_0[4]));
+    .INIT(64'h0000000000008000)) 
+    \Dbg_Trig_Out_0[3]_INST_0_i_3 
+       (.I0(Trig_In_3),
+        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][3] [3]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][3] [2]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]),
+        .O(\Dbg_Trig_Out_0[3]_INST_0_i_3_n_0 ));
+  LUT5 #(
+    .INIT(32'h00FF0001)) 
+    \Dbg_Trig_Out_0[3]_INST_0_i_4 
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][3] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][3] [3]),
+        .I4(in_andor_ctrl),
+        .O(\Dbg_Trig_Out_0[3]_INST_0_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'h3300AA0F33FFAA0F)) 
+    .INIT(64'hFFFFFFFFFFFF4440)) 
+    \Dbg_Trig_Out_0[4]_INST_0 
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][4] [2]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][4] [3]),
+        .I2(\Dbg_Trig_Out_0[4]_INST_0_i_1_n_0 ),
+        .I3(\Dbg_Trig_Out_0[4]_INST_0_i_2_n_0 ),
+        .I4(\Dbg_Trig_Out_0[4]_INST_0_i_3_n_0 ),
+        .I5(\Dbg_Trig_Out_0[4]_INST_0_i_4_n_0 ),
+        .O(Dbg_Trig_Out_0[4]));
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  LUT5 #(
+    .INIT(32'h000088F0)) 
     \Dbg_Trig_Out_0[4]_INST_0_i_1 
-       (.I0(Trig_Out_0_INST_0_i_12_n_0),
-        .I1(Trig_Out_0_INST_0_i_13_n_0),
+       (.I0(Trig_In_1),
+        .I1(p_0_in60_in),
         .I2(in_andor_ctrl),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][4] [1]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]),
-        .I5(Trig_Out_0_INST_0_i_11_n_0),
         .O(\Dbg_Trig_Out_0[4]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT6 #(
+    .INIT(64'h88880000F0000000)) 
     \Dbg_Trig_Out_0[4]_INST_0_i_2 
-       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][4] [1]),
+       (.I0(Trig_In_2),
+        .I1(p_0_in57_in),
+        .I2(Trig_In_0),
+        .I3(p_0_in63_in),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][4] [1]),
         .O(\Dbg_Trig_Out_0[4]_INST_0_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h0FCC55CF00CC55CF)) 
-    \Dbg_Trig_Out_0[5]_INST_0 
-       (.I0(\Dbg_Trig_Out_0[5]_INST_0_i_1_n_0 ),
-        .I1(in_andor_ctrl),
-        .I2(\Dbg_Trig_Out_0[5]_INST_0_i_2_n_0 ),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][5] [3]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5] [2]),
-        .I5(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ),
-        .O(Dbg_Trig_Out_0[5]));
+    .INIT(64'h0000000000008000)) 
+    \Dbg_Trig_Out_0[4]_INST_0_i_3 
+       (.I0(Trig_In_3),
+        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][4] [3]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][4] [2]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][4] [1]),
+        .O(\Dbg_Trig_Out_0[4]_INST_0_i_3_n_0 ));
+  LUT5 #(
+    .INIT(32'h00FF0001)) 
+    \Dbg_Trig_Out_0[4]_INST_0_i_4 
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][4] [1]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][4] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][4] [3]),
+        .I4(in_andor_ctrl),
+        .O(\Dbg_Trig_Out_0[4]_INST_0_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'h3355F0003355F0FF)) 
+    .INIT(64'hFFFFFFFFFFFF4440)) 
+    \Dbg_Trig_Out_0[5]_INST_0 
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][5] [2]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][5] [3]),
+        .I2(\Dbg_Trig_Out_0[5]_INST_0_i_1_n_0 ),
+        .I3(\Dbg_Trig_Out_0[5]_INST_0_i_2_n_0 ),
+        .I4(\Dbg_Trig_Out_0[5]_INST_0_i_3_n_0 ),
+        .I5(\Dbg_Trig_Out_0[5]_INST_0_i_4_n_0 ),
+        .O(Dbg_Trig_Out_0[5]));
+  LUT5 #(
+    .INIT(32'h000088F0)) 
     \Dbg_Trig_Out_0[5]_INST_0_i_1 
-       (.I0(Trig_Out_0_INST_0_i_11_n_0),
-        .I1(Trig_Out_0_INST_0_i_13_n_0),
-        .I2(Trig_Out_0_INST_0_i_12_n_0),
+       (.I0(Trig_In_1),
+        .I1(p_0_in60_in),
+        .I2(in_andor_ctrl),
         .I3(\Use_Cross_Trigger.out_ctrl_reg[0][5] [1]),
         .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]),
-        .I5(in_andor_ctrl),
         .O(\Dbg_Trig_Out_0[5]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT6 #(
+    .INIT(64'h88880000F0000000)) 
     \Dbg_Trig_Out_0[5]_INST_0_i_2 
-       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][5] [1]),
+       (.I0(Trig_In_2),
+        .I1(p_0_in57_in),
+        .I2(Trig_In_0),
+        .I3(p_0_in63_in),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][5] [1]),
         .O(\Dbg_Trig_Out_0[5]_INST_0_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFF54FF54FFFFFF00)) 
+    .INIT(64'h0000000000008000)) 
+    \Dbg_Trig_Out_0[5]_INST_0_i_3 
+       (.I0(Trig_In_3),
+        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][5] [3]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][5] [2]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][5] [1]),
+        .O(\Dbg_Trig_Out_0[5]_INST_0_i_3_n_0 ));
+  LUT5 #(
+    .INIT(32'h00FF0001)) 
+    \Dbg_Trig_Out_0[5]_INST_0_i_4 
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][5] [1]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][5] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][5] [3]),
+        .I4(in_andor_ctrl),
+        .O(\Dbg_Trig_Out_0[5]_INST_0_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFF4440)) 
     \Dbg_Trig_Out_0[6]_INST_0 
        (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][6] [2]),
-        .I1(\Dbg_Trig_Out_0[6]_INST_0_i_1_n_0 ),
-        .I2(\Dbg_Trig_Out_0[6]_INST_0_i_2_n_0 ),
-        .I3(\Dbg_Trig_Out_0[6]_INST_0_i_3_n_0 ),
-        .I4(in_andor_ctrl),
-        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][6] [3]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][6] [3]),
+        .I2(\Dbg_Trig_Out_0[6]_INST_0_i_1_n_0 ),
+        .I3(\Dbg_Trig_Out_0[6]_INST_0_i_2_n_0 ),
+        .I4(\Dbg_Trig_Out_0[6]_INST_0_i_3_n_0 ),
+        .I5(\Dbg_Trig_Out_0[6]_INST_0_i_4_n_0 ),
         .O(Dbg_Trig_Out_0[6]));
-  LUT6 #(
-    .INIT(64'h0F80008000800080)) 
-    \Dbg_Trig_Out_0[6]_INST_0_i_1 
-       (.I0(p_0_in74_in),
-        .I1(Trig_In_1),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]),
-        .I4(p_0_in77_in),
-        .I5(Trig_In_0),
-        .O(\Dbg_Trig_Out_0[6]_INST_0_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hC2020202)) 
+    .INIT(32'h000088F0)) 
+    \Dbg_Trig_Out_0[6]_INST_0_i_1 
+       (.I0(Trig_In_1),
+        .I1(p_0_in60_in),
+        .I2(in_andor_ctrl),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]),
+        .O(\Dbg_Trig_Out_0[6]_INST_0_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h88880000F0000000)) 
     \Dbg_Trig_Out_0[6]_INST_0_i_2 
-       (.I0(in_andor_ctrl),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]),
-        .I3(p_0_in71_in),
-        .I4(Trig_In_2),
+       (.I0(Trig_In_2),
+        .I1(p_0_in57_in),
+        .I2(Trig_In_0),
+        .I3(p_0_in63_in),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]),
         .O(\Dbg_Trig_Out_0[6]_INST_0_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000000009111)) 
+    .INIT(64'h0000000000008000)) 
     \Dbg_Trig_Out_0[6]_INST_0_i_3 
-       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][6] [2]),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][6] [3]),
-        .I2(Trig_In_3),
-        .I3(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]),
-        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]),
+       (.I0(Trig_In_3),
+        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][6] [3]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][6] [2]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]),
         .O(\Dbg_Trig_Out_0[6]_INST_0_i_3_n_0 ));
+  LUT5 #(
+    .INIT(32'h00FF0001)) 
+    \Dbg_Trig_Out_0[6]_INST_0_i_4 
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][6] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][6] [3]),
+        .I4(in_andor_ctrl),
+        .O(\Dbg_Trig_Out_0[6]_INST_0_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'hFF54FF54FFFFFF00)) 
+    .INIT(64'hFFFFFFFFFFFF4440)) 
     \Dbg_Trig_Out_0[7]_INST_0 
        (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][7] [2]),
-        .I1(\Dbg_Trig_Out_0[7]_INST_0_i_1_n_0 ),
-        .I2(\Dbg_Trig_Out_0[7]_INST_0_i_2_n_0 ),
-        .I3(\Dbg_Trig_Out_0[7]_INST_0_i_3_n_0 ),
-        .I4(in_andor_ctrl),
-        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][7] [3]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][7] [3]),
+        .I2(\Dbg_Trig_Out_0[7]_INST_0_i_1_n_0 ),
+        .I3(\Dbg_Trig_Out_0[7]_INST_0_i_2_n_0 ),
+        .I4(\Dbg_Trig_Out_0[7]_INST_0_i_3_n_0 ),
+        .I5(\Dbg_Trig_Out_0[7]_INST_0_i_4_n_0 ),
         .O(Dbg_Trig_Out_0[7]));
-  LUT6 #(
-    .INIT(64'h0F80008000800080)) 
-    \Dbg_Trig_Out_0[7]_INST_0_i_1 
-       (.I0(p_0_in74_in),
-        .I1(Trig_In_1),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]),
-        .I4(p_0_in77_in),
-        .I5(Trig_In_0),
-        .O(\Dbg_Trig_Out_0[7]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT5 #(
-    .INIT(32'hC2020202)) 
+    .INIT(32'h000088F0)) 
+    \Dbg_Trig_Out_0[7]_INST_0_i_1 
+       (.I0(Trig_In_1),
+        .I1(p_0_in60_in),
+        .I2(in_andor_ctrl),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]),
+        .O(\Dbg_Trig_Out_0[7]_INST_0_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h88880000F0000000)) 
     \Dbg_Trig_Out_0[7]_INST_0_i_2 
-       (.I0(in_andor_ctrl),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]),
-        .I3(p_0_in71_in),
-        .I4(Trig_In_2),
+       (.I0(Trig_In_2),
+        .I1(p_0_in57_in),
+        .I2(Trig_In_0),
+        .I3(p_0_in63_in),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]),
         .O(\Dbg_Trig_Out_0[7]_INST_0_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000000009111)) 
+    .INIT(64'h0000000000008000)) 
     \Dbg_Trig_Out_0[7]_INST_0_i_3 
-       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][7] [2]),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][7] [3]),
-        .I2(Trig_In_3),
-        .I3(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]),
-        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]),
+       (.I0(Trig_In_3),
+        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][7] [3]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][7] [2]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]),
         .O(\Dbg_Trig_Out_0[7]_INST_0_i_3_n_0 ));
+  LUT5 #(
+    .INIT(32'h00FF0001)) 
+    \Dbg_Trig_Out_0[7]_INST_0_i_4 
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][7] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][7] [3]),
+        .I4(in_andor_ctrl),
+        .O(\Dbg_Trig_Out_0[7]_INST_0_i_4_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
     Debug_Rst_i_reg
        (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(\Use_BSCAN.FDC_I_n_52 ),
         .Q(Dbg_Rst_0));
   FDCE #(
@@ -1293,8 +4015,8 @@ module mcu_mdm_1_0_JTAG_CONTROL
   LUT3 #(
     .INIT(8'h08)) 
     Ext_NM_BRK_i_i_2
-       (.I0(Scan_Reset),
-        .I1(Scan_Reset_Sel),
+       (.I0(Scan_Reset_Sel),
+        .I1(Scan_Reset),
         .I2(Scan_En),
         .O(AR));
   FDCE #(
@@ -1306,219 +4028,223 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .D(\Use_BSCAN.FDC_I_n_54 ),
         .Q(Ext_NM_BRK));
   LUT2 #(
-    .INIT(4'h1)) 
-    \Has_FIFO.LMB_Addr_Strobe_i_3 
-       (.I0(master_rd_start),
-        .I1(master_wr_start),
-        .O(\Use_Dbg_Mem_Access.Master_rd_start_reg_0 ));
+    .INIT(4'hE)) 
+    \Has_FIFO.lmb_state[2]_i_4 
+       (.I0(master_wr_start),
+        .I1(master_rd_start),
+        .O(\Use_Dbg_Mem_Access.Master_wr_start_reg_0 ));
   LUT6 #(
     .INIT(64'h0000000000000001)) 
     M_AXI_WLAST_i_2
-       (.I0(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [0]),
-        .I1(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [1]),
+       (.I0(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [1]),
+        .I1(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [2]),
         .I2(wr_state),
-        .I3(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [2]),
+        .I3(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [0]),
         .I4(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [4]),
         .I5(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [3]),
-        .O(\Use_Dbg_Mem_Access.rd_wr_len_reg[4]_0 ));
+        .O(\Use_Dbg_Mem_Access.rd_wr_len_reg[3]_0 ));
   LUT6 #(
-    .INIT(64'h00000A22AAAAAAAA)) 
+    .INIT(64'hFFFF0A0C00000000)) 
     Trig_Ack_In_0_INST_0
-       (.I0(p_0_in77_in),
-        .I1(Trig_Ack_In_0_INST_0_i_1_n_0),
-        .I2(Trig_Ack_In_0_INST_0_i_2_n_0),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [2]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [3]),
-        .I5(Trig_Ack_In_0_INST_0_i_3_n_0),
+       (.I0(Trig_Ack_In_0_INST_0_i_1_n_0),
+        .I1(Trig_Ack_In_0_INST_0_i_2_n_0),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [2]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [3]),
+        .I4(Trig_Ack_In_0_INST_0_i_3_n_0),
+        .I5(p_0_in63_in),
         .O(Trig_Ack_In_0));
-  LUT5 #(
-    .INIT(32'h053FF53F)) 
-    Trig_Ack_In_0_INST_0_i_1
-       (.I0(Dbg_Trig_Ack_Out_0[0]),
-        .I1(Dbg_Trig_Ack_Out_0[1]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
-        .I4(Dbg_Trig_Ack_Out_0[2]),
-        .O(Trig_Ack_In_0_INST_0_i_1_n_0));
   LUT6 #(
-    .INIT(64'h0F0055330FFF5533)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
+    Trig_Ack_In_0_INST_0_i_1
+       (.I0(Trig_Ack_Out_0),
+        .I1(Trig_Ack_Out_2),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
+        .I4(Dbg_Trig_Ack_Out_0[7]),
+        .I5(Trig_Ack_Out_1),
+        .O(Trig_Ack_In_0_INST_0_i_1_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+  LUT5 #(
+    .INIT(32'hF0CCAA00)) 
     Trig_Ack_In_0_INST_0_i_2
-       (.I0(Dbg_Trig_Ack_Out_0[5]),
-        .I1(Dbg_Trig_Ack_Out_0[3]),
-        .I2(Dbg_Trig_Ack_Out_0[6]),
+       (.I0(Dbg_Trig_Ack_Out_0[1]),
+        .I1(Dbg_Trig_Ack_Out_0[0]),
+        .I2(Dbg_Trig_Ack_Out_0[2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
-        .I5(Dbg_Trig_Ack_Out_0[4]),
         .O(Trig_Ack_In_0_INST_0_i_2_n_0));
   LUT6 #(
-    .INIT(64'hFDFDFFFFFF00FFFF)) 
+    .INIT(64'h10100000FF000000)) 
     Trig_Ack_In_0_INST_0_i_3
-       (.I0(Trig_Ack_Out_3),
-        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
+       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
+        .I2(Trig_Ack_Out_3),
         .I3(Trig_Ack_In_0_INST_0_i_4_n_0),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [3]),
-        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [2]),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [2]),
+        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [3]),
         .O(Trig_Ack_In_0_INST_0_i_3_n_0));
   LUT6 #(
-    .INIT(64'h0F0055330FFF5533)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     Trig_Ack_In_0_INST_0_i_4
-       (.I0(Trig_Ack_Out_1),
-        .I1(Dbg_Trig_Ack_Out_0[7]),
-        .I2(Trig_Ack_Out_2),
+       (.I0(Dbg_Trig_Ack_Out_0[4]),
+        .I1(Dbg_Trig_Ack_Out_0[6]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
-        .I5(Trig_Ack_Out_0),
+        .I4(Dbg_Trig_Ack_Out_0[3]),
+        .I5(Dbg_Trig_Ack_Out_0[5]),
         .O(Trig_Ack_In_0_INST_0_i_4_n_0));
   LUT6 #(
-    .INIT(64'h00000A22AAAAAAAA)) 
+    .INIT(64'hFFFF0A0C00000000)) 
     Trig_Ack_In_1_INST_0
-       (.I0(p_0_in74_in),
-        .I1(Trig_Ack_In_1_INST_0_i_1_n_0),
-        .I2(Trig_Ack_In_1_INST_0_i_2_n_0),
+       (.I0(Trig_Ack_In_1_INST_0_i_1_n_0),
+        .I1(Trig_Ack_In_1_INST_0_i_2_n_0),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [3]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]),
-        .I5(Trig_Ack_In_1_INST_0_i_3_n_0),
+        .I4(Trig_Ack_In_1_INST_0_i_3_n_0),
+        .I5(p_0_in60_in),
         .O(Trig_Ack_In_1));
-  LUT5 #(
-    .INIT(32'h053FF53F)) 
-    Trig_Ack_In_1_INST_0_i_1
-       (.I0(Dbg_Trig_Ack_Out_0[0]),
-        .I1(Dbg_Trig_Ack_Out_0[1]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
-        .I4(Dbg_Trig_Ack_Out_0[2]),
-        .O(Trig_Ack_In_1_INST_0_i_1_n_0));
   LUT6 #(
-    .INIT(64'h0F0055330FFF5533)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
+    Trig_Ack_In_1_INST_0_i_1
+       (.I0(Trig_Ack_Out_0),
+        .I1(Trig_Ack_Out_2),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
+        .I4(Dbg_Trig_Ack_Out_0[7]),
+        .I5(Trig_Ack_Out_1),
+        .O(Trig_Ack_In_1_INST_0_i_1_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  LUT5 #(
+    .INIT(32'hF0CCAA00)) 
     Trig_Ack_In_1_INST_0_i_2
-       (.I0(Trig_Ack_Out_1),
-        .I1(Dbg_Trig_Ack_Out_0[7]),
-        .I2(Trig_Ack_Out_2),
+       (.I0(Dbg_Trig_Ack_Out_0[1]),
+        .I1(Dbg_Trig_Ack_Out_0[0]),
+        .I2(Dbg_Trig_Ack_Out_0[2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
-        .I5(Trig_Ack_Out_0),
         .O(Trig_Ack_In_1_INST_0_i_2_n_0));
   LUT6 #(
-    .INIT(64'hFDFDFFFFFF00FFFF)) 
+    .INIT(64'h10100000FF000000)) 
     Trig_Ack_In_1_INST_0_i_3
-       (.I0(Trig_Ack_Out_3),
-        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
+       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
+        .I2(Trig_Ack_Out_3),
         .I3(Trig_Ack_In_1_INST_0_i_4_n_0),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]),
         .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [3]),
         .O(Trig_Ack_In_1_INST_0_i_3_n_0));
   LUT6 #(
-    .INIT(64'h0F0055330FFF5533)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     Trig_Ack_In_1_INST_0_i_4
-       (.I0(Dbg_Trig_Ack_Out_0[5]),
-        .I1(Dbg_Trig_Ack_Out_0[3]),
-        .I2(Dbg_Trig_Ack_Out_0[6]),
+       (.I0(Dbg_Trig_Ack_Out_0[4]),
+        .I1(Dbg_Trig_Ack_Out_0[6]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
-        .I5(Dbg_Trig_Ack_Out_0[4]),
+        .I4(Dbg_Trig_Ack_Out_0[3]),
+        .I5(Dbg_Trig_Ack_Out_0[5]),
         .O(Trig_Ack_In_1_INST_0_i_4_n_0));
   LUT6 #(
-    .INIT(64'h00000A22AAAAAAAA)) 
+    .INIT(64'hFFFF0A0C00000000)) 
     Trig_Ack_In_2_INST_0
-       (.I0(p_0_in71_in),
-        .I1(Trig_Ack_In_2_INST_0_i_1_n_0),
-        .I2(Trig_Ack_In_2_INST_0_i_2_n_0),
+       (.I0(Trig_Ack_In_2_INST_0_i_1_n_0),
+        .I1(Trig_Ack_In_2_INST_0_i_2_n_0),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [3]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [2]),
-        .I5(Trig_Ack_In_2_INST_0_i_3_n_0),
+        .I4(Trig_Ack_In_2_INST_0_i_3_n_0),
+        .I5(p_0_in57_in),
         .O(Trig_Ack_In_2));
-  LUT5 #(
-    .INIT(32'h053FF53F)) 
-    Trig_Ack_In_2_INST_0_i_1
-       (.I0(Dbg_Trig_Ack_Out_0[0]),
-        .I1(Dbg_Trig_Ack_Out_0[1]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
-        .I4(Dbg_Trig_Ack_Out_0[2]),
-        .O(Trig_Ack_In_2_INST_0_i_1_n_0));
   LUT6 #(
-    .INIT(64'h0F0055330FFF5533)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
+    Trig_Ack_In_2_INST_0_i_1
+       (.I0(Trig_Ack_Out_0),
+        .I1(Trig_Ack_Out_2),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
+        .I4(Dbg_Trig_Ack_Out_0[7]),
+        .I5(Trig_Ack_Out_1),
+        .O(Trig_Ack_In_2_INST_0_i_1_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  LUT5 #(
+    .INIT(32'hF0CCAA00)) 
     Trig_Ack_In_2_INST_0_i_2
-       (.I0(Trig_Ack_Out_1),
-        .I1(Dbg_Trig_Ack_Out_0[7]),
-        .I2(Trig_Ack_Out_2),
+       (.I0(Dbg_Trig_Ack_Out_0[1]),
+        .I1(Dbg_Trig_Ack_Out_0[0]),
+        .I2(Dbg_Trig_Ack_Out_0[2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
-        .I5(Trig_Ack_Out_0),
         .O(Trig_Ack_In_2_INST_0_i_2_n_0));
   LUT6 #(
-    .INIT(64'hFDFDFFFFFF00FFFF)) 
+    .INIT(64'h10100000FF000000)) 
     Trig_Ack_In_2_INST_0_i_3
-       (.I0(Trig_Ack_Out_3),
-        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
+       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
+        .I2(Trig_Ack_Out_3),
         .I3(Trig_Ack_In_2_INST_0_i_4_n_0),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [2]),
         .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [3]),
         .O(Trig_Ack_In_2_INST_0_i_3_n_0));
   LUT6 #(
-    .INIT(64'h0F0055330FFF5533)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     Trig_Ack_In_2_INST_0_i_4
-       (.I0(Dbg_Trig_Ack_Out_0[5]),
-        .I1(Dbg_Trig_Ack_Out_0[3]),
-        .I2(Dbg_Trig_Ack_Out_0[6]),
+       (.I0(Dbg_Trig_Ack_Out_0[4]),
+        .I1(Dbg_Trig_Ack_Out_0[6]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
-        .I5(Dbg_Trig_Ack_Out_0[4]),
+        .I4(Dbg_Trig_Ack_Out_0[3]),
+        .I5(Dbg_Trig_Ack_Out_0[5]),
         .O(Trig_Ack_In_2_INST_0_i_4_n_0));
   LUT6 #(
-    .INIT(64'h00000A22AAAAAAAA)) 
+    .INIT(64'hFFFF0A0C00000000)) 
     Trig_Ack_In_3_INST_0
-       (.I0(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
-        .I1(Trig_Ack_In_3_INST_0_i_1_n_0),
-        .I2(Trig_Ack_In_3_INST_0_i_2_n_0),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [2]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [3]),
-        .I5(Trig_Ack_In_3_INST_0_i_3_n_0),
+       (.I0(Trig_Ack_In_3_INST_0_i_1_n_0),
+        .I1(Trig_Ack_In_3_INST_0_i_2_n_0),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [2]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [3]),
+        .I4(Trig_Ack_In_3_INST_0_i_3_n_0),
+        .I5(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
         .O(Trig_Ack_In_3));
-  LUT5 #(
-    .INIT(32'h053FF53F)) 
-    Trig_Ack_In_3_INST_0_i_1
-       (.I0(Dbg_Trig_Ack_Out_0[0]),
-        .I1(Dbg_Trig_Ack_Out_0[1]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
-        .I4(Dbg_Trig_Ack_Out_0[2]),
-        .O(Trig_Ack_In_3_INST_0_i_1_n_0));
   LUT6 #(
-    .INIT(64'h0F0055330FFF5533)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
+    Trig_Ack_In_3_INST_0_i_1
+       (.I0(Trig_Ack_Out_0),
+        .I1(Trig_Ack_Out_2),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
+        .I4(Dbg_Trig_Ack_Out_0[7]),
+        .I5(Trig_Ack_Out_1),
+        .O(Trig_Ack_In_3_INST_0_i_1_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  LUT5 #(
+    .INIT(32'hF0CCAA00)) 
     Trig_Ack_In_3_INST_0_i_2
-       (.I0(Dbg_Trig_Ack_Out_0[5]),
-        .I1(Dbg_Trig_Ack_Out_0[3]),
-        .I2(Dbg_Trig_Ack_Out_0[6]),
+       (.I0(Dbg_Trig_Ack_Out_0[1]),
+        .I1(Dbg_Trig_Ack_Out_0[0]),
+        .I2(Dbg_Trig_Ack_Out_0[2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
-        .I5(Dbg_Trig_Ack_Out_0[4]),
         .O(Trig_Ack_In_3_INST_0_i_2_n_0));
   LUT6 #(
-    .INIT(64'hFDFDFFFFFF00FFFF)) 
+    .INIT(64'h10100000FF000000)) 
     Trig_Ack_In_3_INST_0_i_3
-       (.I0(Trig_Ack_Out_3),
-        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
+       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
+        .I2(Trig_Ack_Out_3),
         .I3(Trig_Ack_In_3_INST_0_i_4_n_0),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [3]),
-        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [2]),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [2]),
+        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [3]),
         .O(Trig_Ack_In_3_INST_0_i_3_n_0));
   LUT6 #(
-    .INIT(64'h0053F0530F53FF53)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     Trig_Ack_In_3_INST_0_i_4
-       (.I0(Trig_Ack_Out_1),
-        .I1(Dbg_Trig_Ack_Out_0[7]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
-        .I4(Trig_Ack_Out_2),
-        .I5(Trig_Ack_Out_0),
+       (.I0(Dbg_Trig_Ack_Out_0[4]),
+        .I1(Dbg_Trig_Ack_Out_0[6]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
+        .I4(Dbg_Trig_Ack_Out_0[3]),
+        .I5(Dbg_Trig_Ack_Out_0[5]),
         .O(Trig_Ack_In_3_INST_0_i_4_n_0));
   LUT6 #(
-    .INIT(64'hAAABAFABAAFBAFFB)) 
+    .INIT(64'hCEFFCEFCCECFCECC)) 
     Trig_Out_0_INST_0
        (.I0(Trig_Out_0_INST_0_i_1_n_0),
         .I1(Trig_Out_0_INST_0_i_2_n_0),
@@ -1528,159 +4254,158 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I5(Trig_Out_0_INST_0_i_4_n_0),
         .O(Trig_Out_0));
   LUT6 #(
-    .INIT(64'h0000000000008000)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     Trig_Out_0_INST_0_i_1
-       (.I0(Trig_In_3),
-        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [3]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [2]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
-        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
+       (.I0(p_1_in[10]),
+        .I1(p_1_in[8]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
+        .I4(p_1_in[11]),
+        .I5(p_1_in[9]),
         .O(Trig_Out_0_INST_0_i_1_n_0));
   LUT2 #(
     .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_10
-       (.I0(p_6_in46_in),
-        .I1(Dbg_Trig_In_0[3]),
-        .O(Trig_Out_0_INST_0_i_10_n_0));
+       (.I0(Dbg_Trig_In_0[0]),
+        .I1(p_9_in54_in),
+        .O(p_1_in[14]));
   LUT2 #(
     .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_11
-       (.I0(p_0_in77_in),
-        .I1(Trig_In_0),
-        .O(Trig_Out_0_INST_0_i_11_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+       (.I0(Trig_In_0),
+        .I1(p_0_in63_in),
+        .O(p_1_in[6]));
   LUT2 #(
-    .INIT(4'h7)) 
+    .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_12
-       (.I0(p_0_in74_in),
-        .I1(Trig_In_1),
-        .O(Trig_Out_0_INST_0_i_12_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+       (.I0(Trig_In_2),
+        .I1(p_0_in57_in),
+        .O(p_1_in[4]));
   LUT2 #(
     .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_13
-       (.I0(p_0_in71_in),
-        .I1(Trig_In_2),
-        .O(Trig_Out_0_INST_0_i_13_n_0));
+       (.I0(Dbg_Trig_In_0[7]),
+        .I1(\Use_Cross_Trigger.in_ctrl_reg_n_0_[0][7] ),
+        .O(p_1_in[7]));
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT2 #(
     .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_14
-       (.I0(\Use_Cross_Trigger.in_ctrl_reg_n_0_[0][7] ),
-        .I1(Dbg_Trig_In_0[7]),
-        .O(Trig_Out_0_INST_0_i_14_n_0));
+       (.I0(Trig_In_1),
+        .I1(p_0_in60_in),
+        .O(p_1_in[5]));
   LUT6 #(
-    .INIT(64'h0FFF77000F007700)) 
+    .INIT(64'h0000000000008000)) 
     Trig_Out_0_INST_0_i_2
-       (.I0(Dbg_Trig_In_0[1]),
-        .I1(p_8_in),
-        .I2(Trig_Out_0_INST_0_i_5_n_0),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
+       (.I0(Trig_In_3),
+        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [2]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [3]),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
-        .I5(Trig_Out_0_INST_0_i_6_n_0),
+        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
         .O(Trig_Out_0_INST_0_i_2_n_0));
   LUT6 #(
-    .INIT(64'h0F55CC000F55CCFF)) 
+    .INIT(64'hC0FFAAFFC000AAFF)) 
     Trig_Out_0_INST_0_i_3
-       (.I0(Trig_Out_0_INST_0_i_7_n_0),
-        .I1(Trig_Out_0_INST_0_i_8_n_0),
-        .I2(Trig_Out_0_INST_0_i_9_n_0),
+       (.I0(p_1_in[13]),
+        .I1(p_7_in49_in),
+        .I2(Dbg_Trig_In_0[2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
-        .I5(Trig_Out_0_INST_0_i_10_n_0),
+        .I5(p_1_in[14]),
         .O(Trig_Out_0_INST_0_i_3_n_0));
   LUT6 #(
-    .INIT(64'h0F55CC000F55CCFF)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     Trig_Out_0_INST_0_i_4
-       (.I0(Trig_Out_0_INST_0_i_11_n_0),
-        .I1(Trig_Out_0_INST_0_i_12_n_0),
-        .I2(Trig_Out_0_INST_0_i_13_n_0),
+       (.I0(p_1_in[6]),
+        .I1(p_1_in[4]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
-        .I5(Trig_Out_0_INST_0_i_14_n_0),
+        .I4(p_1_in[7]),
+        .I5(p_1_in[5]),
         .O(Trig_Out_0_INST_0_i_4_n_0));
   LUT2 #(
     .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_5
-       (.I0(p_7_in49_in),
-        .I1(Dbg_Trig_In_0[2]),
-        .O(Trig_Out_0_INST_0_i_5_n_0));
+       (.I0(Dbg_Trig_In_0[4]),
+        .I1(p_5_in),
+        .O(p_1_in[10]));
   LUT2 #(
-    .INIT(4'h7)) 
+    .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_6
-       (.I0(p_9_in54_in),
-        .I1(Dbg_Trig_In_0[0]),
-        .O(Trig_Out_0_INST_0_i_6_n_0));
+       (.I0(Dbg_Trig_In_0[6]),
+        .I1(p_3_in38_in),
+        .O(p_1_in[8]));
   LUT2 #(
     .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_7
-       (.I0(p_5_in),
-        .I1(Dbg_Trig_In_0[4]),
-        .O(Trig_Out_0_INST_0_i_7_n_0));
+       (.I0(Dbg_Trig_In_0[3]),
+        .I1(p_6_in46_in),
+        .O(p_1_in[11]));
   LUT2 #(
-    .INIT(4'h7)) 
+    .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_8
-       (.I0(p_4_in41_in),
-        .I1(Dbg_Trig_In_0[5]),
-        .O(Trig_Out_0_INST_0_i_8_n_0));
+       (.I0(Dbg_Trig_In_0[5]),
+        .I1(p_4_in41_in),
+        .O(p_1_in[9]));
   LUT2 #(
     .INIT(4'h8)) 
     Trig_Out_0_INST_0_i_9
-       (.I0(p_3_in38_in),
-        .I1(Dbg_Trig_In_0[6]),
-        .O(Trig_Out_0_INST_0_i_9_n_0));
+       (.I0(Dbg_Trig_In_0[1]),
+        .I1(p_8_in),
+        .O(p_1_in[13]));
   LUT6 #(
-    .INIT(64'hABAAABAFABFAABFF)) 
+    .INIT(64'hCEFFCEFCCECFCECC)) 
     Trig_Out_1_INST_0
        (.I0(Trig_Out_1_INST_0_i_1_n_0),
         .I1(Trig_Out_1_INST_0_i_2_n_0),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [3]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [3]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]),
         .I4(Trig_Out_1_INST_0_i_3_n_0),
         .I5(Trig_Out_1_INST_0_i_4_n_0),
         .O(Trig_Out_1));
   LUT6 #(
-    .INIT(64'h0000000000008000)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     Trig_Out_1_INST_0_i_1
-       (.I0(Trig_In_3),
-        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [3]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
-        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
+       (.I0(p_1_in[10]),
+        .I1(p_1_in[8]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
+        .I4(p_1_in[11]),
+        .I5(p_1_in[9]),
         .O(Trig_Out_1_INST_0_i_1_n_0));
   LUT6 #(
-    .INIT(64'h0F55CC000F55CCFF)) 
+    .INIT(64'h0000000000008000)) 
     Trig_Out_1_INST_0_i_2
-       (.I0(Trig_Out_0_INST_0_i_11_n_0),
-        .I1(Trig_Out_0_INST_0_i_12_n_0),
-        .I2(Trig_Out_0_INST_0_i_13_n_0),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
+       (.I0(Trig_In_3),
+        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [3]),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
-        .I5(Trig_Out_0_INST_0_i_14_n_0),
+        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
         .O(Trig_Out_1_INST_0_i_2_n_0));
   LUT6 #(
-    .INIT(64'h0FFF77000F007700)) 
+    .INIT(64'hC0FFAAFFC000AAFF)) 
     Trig_Out_1_INST_0_i_3
-       (.I0(Dbg_Trig_In_0[1]),
-        .I1(p_8_in),
-        .I2(Trig_Out_0_INST_0_i_5_n_0),
+       (.I0(p_1_in[13]),
+        .I1(p_7_in49_in),
+        .I2(Dbg_Trig_In_0[2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
-        .I5(Trig_Out_0_INST_0_i_6_n_0),
+        .I5(p_1_in[14]),
         .O(Trig_Out_1_INST_0_i_3_n_0));
   LUT6 #(
-    .INIT(64'h0F55CC000F55CCFF)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     Trig_Out_1_INST_0_i_4
-       (.I0(Trig_Out_0_INST_0_i_7_n_0),
-        .I1(Trig_Out_0_INST_0_i_8_n_0),
-        .I2(Trig_Out_0_INST_0_i_9_n_0),
+       (.I0(p_1_in[6]),
+        .I1(p_1_in[4]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
-        .I5(Trig_Out_0_INST_0_i_10_n_0),
+        .I4(p_1_in[7]),
+        .I5(p_1_in[5]),
         .O(Trig_Out_1_INST_0_i_4_n_0));
   LUT6 #(
-    .INIT(64'hAAABAFABAAFBAFFB)) 
+    .INIT(64'hCEFFCEFCCECFCECC)) 
     Trig_Out_2_INST_0
        (.I0(Trig_Out_2_INST_0_i_1_n_0),
         .I1(Trig_Out_2_INST_0_i_2_n_0),
@@ -1690,54 +4415,47 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I5(Trig_Out_2_INST_0_i_4_n_0),
         .O(Trig_Out_2));
   LUT6 #(
-    .INIT(64'h0000000000008000)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     Trig_Out_2_INST_0_i_1
-       (.I0(Trig_In_3),
-        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [3]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [2]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
-        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
+       (.I0(p_1_in[10]),
+        .I1(p_1_in[8]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
+        .I4(p_1_in[11]),
+        .I5(p_1_in[9]),
         .O(Trig_Out_2_INST_0_i_1_n_0));
   LUT6 #(
-    .INIT(64'h0F00FFF070707070)) 
+    .INIT(64'h0000000000008000)) 
     Trig_Out_2_INST_0_i_2
-       (.I0(Dbg_Trig_In_0[0]),
-        .I1(p_9_in54_in),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
-        .I3(Trig_Out_2_INST_0_i_5_n_0),
-        .I4(Trig_Out_0_INST_0_i_5_n_0),
+       (.I0(Trig_In_3),
+        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [2]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [3]),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
         .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
         .O(Trig_Out_2_INST_0_i_2_n_0));
   LUT6 #(
-    .INIT(64'h0F55CC000F55CCFF)) 
+    .INIT(64'hC0FFAAFFC000AAFF)) 
     Trig_Out_2_INST_0_i_3
-       (.I0(Trig_Out_0_INST_0_i_7_n_0),
-        .I1(Trig_Out_0_INST_0_i_8_n_0),
-        .I2(Trig_Out_0_INST_0_i_9_n_0),
+       (.I0(p_1_in[13]),
+        .I1(p_7_in49_in),
+        .I2(Dbg_Trig_In_0[2]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
-        .I5(Trig_Out_0_INST_0_i_10_n_0),
+        .I5(p_1_in[14]),
         .O(Trig_Out_2_INST_0_i_3_n_0));
   LUT6 #(
-    .INIT(64'h0F55CC000F55CCFF)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     Trig_Out_2_INST_0_i_4
-       (.I0(Trig_Out_0_INST_0_i_11_n_0),
-        .I1(Trig_Out_0_INST_0_i_12_n_0),
-        .I2(Trig_Out_0_INST_0_i_13_n_0),
+       (.I0(p_1_in[6]),
+        .I1(p_1_in[4]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
-        .I5(Trig_Out_0_INST_0_i_14_n_0),
+        .I4(p_1_in[7]),
+        .I5(p_1_in[5]),
         .O(Trig_Out_2_INST_0_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair27" *) 
-  LUT2 #(
-    .INIT(4'h7)) 
-    Trig_Out_2_INST_0_i_5
-       (.I0(p_8_in),
-        .I1(Dbg_Trig_In_0[1]),
-        .O(Trig_Out_2_INST_0_i_5_n_0));
   LUT6 #(
-    .INIT(64'hAAABAFABAAFBAFFB)) 
+    .INIT(64'hCEFFCEFCCECFCECC)) 
     Trig_Out_3_INST_0
        (.I0(Trig_Out_3_INST_0_i_1_n_0),
         .I1(Trig_Out_3_INST_0_i_2_n_0),
@@ -1747,147 +4465,150 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I5(Trig_Out_3_INST_0_i_4_n_0),
         .O(Trig_Out_3));
   LUT6 #(
-    .INIT(64'h0000000000008000)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     Trig_Out_3_INST_0_i_1
-       (.I0(Trig_In_3),
-        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [3]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [2]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
-        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
+       (.I0(p_1_in[10]),
+        .I1(p_1_in[8]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
+        .I4(p_1_in[11]),
+        .I5(p_1_in[9]),
         .O(Trig_Out_3_INST_0_i_1_n_0));
   LUT6 #(
-    .INIT(64'h3FFF3F00AA00AA00)) 
+    .INIT(64'h1000000000000000)) 
     Trig_Out_3_INST_0_i_2
-       (.I0(Trig_Out_2_INST_0_i_5_n_0),
-        .I1(Dbg_Trig_In_0[2]),
-        .I2(p_7_in49_in),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
-        .I4(Trig_Out_0_INST_0_i_6_n_0),
-        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
+       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [2]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [3]),
+        .I4(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
+        .I5(Trig_In_3),
         .O(Trig_Out_3_INST_0_i_2_n_0));
   LUT6 #(
-    .INIT(64'h05C0F5C005CFF5CF)) 
+    .INIT(64'hC0FFAAFFC000AAFF)) 
     Trig_Out_3_INST_0_i_3
-       (.I0(Trig_Out_0_INST_0_i_7_n_0),
-        .I1(Trig_Out_0_INST_0_i_8_n_0),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
-        .I4(Trig_Out_0_INST_0_i_9_n_0),
-        .I5(Trig_Out_0_INST_0_i_10_n_0),
+       (.I0(p_1_in[13]),
+        .I1(p_7_in49_in),
+        .I2(Dbg_Trig_In_0[2]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
+        .I5(p_1_in[14]),
         .O(Trig_Out_3_INST_0_i_3_n_0));
   LUT6 #(
-    .INIT(64'h33AA0F0033AA0FFF)) 
+    .INIT(64'hCFAFCFA0C0AFC0A0)) 
     Trig_Out_3_INST_0_i_4
-       (.I0(Trig_Out_0_INST_0_i_12_n_0),
-        .I1(Trig_Out_0_INST_0_i_13_n_0),
-        .I2(Trig_Out_0_INST_0_i_11_n_0),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
-        .I5(Trig_Out_0_INST_0_i_14_n_0),
+       (.I0(p_1_in[6]),
+        .I1(p_1_in[4]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
+        .I4(p_1_in[7]),
+        .I5(p_1_in[5]),
         .O(Trig_Out_3_INST_0_i_4_n_0));
   mcu_mdm_1_0_MB_FDC_1 \Use_BSCAN.FDC_I 
        (.CE(CE),
-        .D({\Use_BSCAN.FDC_I_n_29 ,\Use_BSCAN.FDC_I_n_30 ,\Use_BSCAN.FDC_I_n_31 }),
+        .D({\Use_BSCAN.FDC_I_n_33 ,\Use_BSCAN.FDC_I_n_34 ,\Use_BSCAN.FDC_I_n_35 ,\Use_BSCAN.FDC_I_n_36 ,\Use_BSCAN.FDC_I_n_37 ,\Use_BSCAN.FDC_I_n_38 ,\Use_BSCAN.FDC_I_n_39 ,\Use_BSCAN.FDC_I_n_40 ,\Use_BSCAN.FDC_I_n_41 ,\Use_BSCAN.FDC_I_n_42 }),
         .D_1(D_1),
         .Dbg_Reg_En_0(Dbg_Reg_En_0),
-        .\Dbg_Reg_En_0[0] ({\Use_BSCAN.command_reg_n_0_[0] ,\Use_BSCAN.command_reg_n_0_[1] ,\Use_BSCAN.command_reg_n_0_[2] ,\Use_BSCAN.command_reg_n_0_[3] ,\Use_BSCAN.command_reg_n_0_[4] ,\Use_BSCAN.command_reg_n_0_[5] ,\Use_BSCAN.command_reg_n_0_[6] ,\Use_BSCAN.command_reg_n_0_[7] }),
         .Dbg_Rst_0(Dbg_Rst_0),
         .Dbg_Shift_0(Dbg_Shift_0),
-        .Dbg_Shift_0_0(Dbg_Shift_31_INST_0_i_2_n_0),
-        .Dbg_Shift_0_1(Dbg_Shift_0_0),
         .Dbg_TDO_0(Dbg_TDO_0),
         .Dbg_TDO_0_0(\Use_BSCAN.FDC_I_n_47 ),
+        .Dbg_TDO_0_1(\Use_BSCAN.FDC_I_n_48 ),
+        .Dbg_TDO_0_2(\Use_BSCAN.FDC_I_n_49 ),
+        .Debug_Rst_i_reg({p_0_in_2,p_9_out[3:2],\tdi_shifter_reg_n_0_[13] ,\tdi_shifter_reg_n_0_[14] ,\tdi_shifter_reg_n_0_[15] }),
         .Debug_SYS_Rst(Debug_SYS_Rst),
-        .E(command_10),
+        .E(p_98_out),
         .Ext_NM_BRK(Ext_NM_BRK),
-        .Q({p_0_in_2,p_9_out[3:2],\tdi_shifter_reg_n_0_[13] ,\tdi_shifter_reg_n_0_[14] ,\tdi_shifter_reg_n_0_[15] }),
+        .Q({\Use_BSCAN.command_reg_n_0_[0] ,\Use_BSCAN.command_reg_n_0_[1] ,\Use_BSCAN.command_reg_n_0_[2] ,\Use_BSCAN.command_reg_n_0_[3] ,\Use_BSCAN.command_reg_n_0_[4] ,\Use_BSCAN.command_reg_n_0_[5] ,\Use_BSCAN.command_reg_n_0_[6] ,\Use_BSCAN.command_reg[7]_0 }),
         .SEL(SEL),
         .Scan_En(Scan_En),
         .Scan_Reset(Scan_Reset),
         .Scan_Reset_Sel(Scan_Reset_Sel),
-        .\Use_BSCAN.command_reg[4] (sample_1),
-        .\Use_BSCAN.command_reg[5] (\Use_BSCAN.FDC_I_n_28 ),
-        .\Use_BSCAN.command_reg[6] (\Use_BSCAN.FDC_I_n_17 ),
-        .\Use_BSCAN.command_reg[6]_0 (\Use_BSCAN.FDC_I_n_18 ),
-        .\Use_BSCAN.command_reg[6]_1 (\Use_BSCAN.FDC_I_n_19 ),
-        .\Use_BSCAN.command_reg[6]_2 (\Use_BSCAN.FDC_I_n_20 ),
-        .\Use_BSCAN.command_reg[6]_3 (\Use_BSCAN.FDC_I_n_21 ),
-        .\Use_BSCAN.command_reg[6]_4 (\Use_BSCAN.FDC_I_n_26 ),
-        .\Use_BSCAN.command_reg[7] (p_99_out),
-        .\Use_BSCAN.command_reg[7]_0 (\Use_BSCAN.command_reg[7]_0 ),
-        .\Use_Cross_Trigger.ext_out_ctrl_reg[1][3] (\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_3_n_0 ),
-        .\Use_Dbg_Mem_Access.access_idle_2_reg (p_88_out),
-        .\Use_Dbg_Mem_Access.input_reg[31] (\Use_Dbg_Mem_Access.input[0]_i_4_n_0 ),
-        .\Use_Serial_Unified_Completion.clear_overrun_reg (\Use_BSCAN.FDC_I_n_49 ),
+        .\Use_BSCAN.PORT_Selector_reg[2] (command_10),
+        .\Use_BSCAN.command_reg[1] (\Use_BSCAN.FDC_I_n_20 ),
+        .\Use_BSCAN.command_reg[1]_0 (\Use_BSCAN.FDC_I_n_21 ),
+        .\Use_BSCAN.command_reg[6] (p_87_out),
+        .\Use_BSCAN.command_reg[6]_0 (\Use_BSCAN.FDC_I_n_31 ),
+        .\Use_Cross_Trigger.ext_in_ctrl_reg[3] (\Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ),
+        .\Use_Cross_Trigger.ext_out_ctrl_reg[3][3] (\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_3_n_0 ),
+        .\Use_Cross_Trigger.out_ctrl_reg[0][5][3] (\Use_Cross_Trigger.out_ctrl[0][7][0]_i_3_n_0 ),
+        .\Use_Dbg_Mem_Access.rd_wr_excl_reg (\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .\Use_Serial_Unified_Completion.clear_overrun_reg (\Use_BSCAN.FDC_I_n_51 ),
         .\Use_Serial_Unified_Completion.completion_block_reg (\Use_Serial_Unified_Completion.completion_block_reg_n_0 ),
-        .\Use_Serial_Unified_Completion.completion_block_reg_0 (\Use_Serial_Unified_Completion.sample_1[15]_i_4_n_0 ),
-        .\Use_Serial_Unified_Completion.completion_block_reg_1 (\Use_Serial_Unified_Completion.completion_block_i_3_n_0 ),
-        .\Use_Serial_Unified_Completion.completion_block_reg_2 (\Use_Serial_Unified_Completion.completion_block_i_4_n_0 ),
-        .\Use_Serial_Unified_Completion.completion_block_reg_3 (\Use_Serial_Unified_Completion.completion_block_i_5_n_0 ),
+        .\Use_Serial_Unified_Completion.completion_status_reg[0] (Dbg_Shift_0_0),
         .\Use_Serial_Unified_Completion.completion_status_reg[3] (\Use_Serial_Unified_Completion.completion_status[3]_i_2_n_0 ),
         .\Use_Serial_Unified_Completion.completion_status_reg[4] (\Use_Serial_Unified_Completion.completion_status[4]_i_2_n_0 ),
         .\Use_Serial_Unified_Completion.completion_status_reg[5] (\Use_Serial_Unified_Completion.completion_status[5]_i_2_n_0 ),
         .\Use_Serial_Unified_Completion.completion_status_reg[6] (\Use_Serial_Unified_Completion.completion_status[7]_i_2_n_0 ),
-        .\Use_Serial_Unified_Completion.completion_status_reg[8] (\Use_Serial_Unified_Completion.completion_status[9]_i_3_n_0 ),
-        .\Use_Serial_Unified_Completion.completion_status_reg[9] ({\Use_BSCAN.FDC_I_n_33 ,\Use_BSCAN.FDC_I_n_34 ,\Use_BSCAN.FDC_I_n_35 ,\Use_BSCAN.FDC_I_n_36 ,\Use_BSCAN.FDC_I_n_37 ,\Use_BSCAN.FDC_I_n_38 ,\Use_BSCAN.FDC_I_n_39 ,\Use_BSCAN.FDC_I_n_40 ,\Use_BSCAN.FDC_I_n_41 ,\Use_BSCAN.FDC_I_n_42 }),
-        .\Use_Serial_Unified_Completion.completion_status_reg[9]_0 (completion_status[10:0]),
-        .\Use_Serial_Unified_Completion.count_reg[1] (\Use_BSCAN.FDC_I_n_45 ),
-        .\Use_Serial_Unified_Completion.count_reg[1]_0 (\Use_BSCAN.FDC_I_n_46 ),
-        .\Use_Serial_Unified_Completion.mb_data_overrun_reg (\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_4_n_0 ),
-        .\Use_Serial_Unified_Completion.mb_data_overrun_reg_0 (\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
-        .\Use_Serial_Unified_Completion.mb_data_overrun_reg_1 (sel_n_reg_0),
-        .\Use_Serial_Unified_Completion.mb_data_overrun_reg_2 (\Use_Serial_Unified_Completion.mb_data_overrun_i_2_n_0 ),
-        .\Use_Serial_Unified_Completion.mb_instr_error_reg (\Use_Serial_Unified_Completion.mb_instr_overrun_i_7_n_0 ),
-        .\Use_Serial_Unified_Completion.mb_instr_overrun_reg (\Use_BSCAN.SYNC_FDRE_n_1 ),
-        .\Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 (\Use_Serial_Unified_Completion.count_reg_n_0_[1] ),
+        .\Use_Serial_Unified_Completion.completion_status_reg[8] (\Use_Serial_Unified_Completion.completion_status[9]_i_4_n_0 ),
+        .\Use_Serial_Unified_Completion.completion_status_reg[9] (completion_status[10:0]),
+        .\Use_Serial_Unified_Completion.mb_data_overrun_reg (Dbg_Shift_31_INST_0_i_3_n_0),
+        .\Use_Serial_Unified_Completion.mb_data_overrun_reg_0 (\Use_Serial_Unified_Completion.mb_data_overrun_i_2_n_0 ),
+        .\Use_Serial_Unified_Completion.mb_instr_error_reg (\Use_BSCAN.SYNC_FDRE_n_1 ),
+        .\Use_Serial_Unified_Completion.mb_instr_overrun_reg (sel_n_reg_0),
+        .\Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 (\Use_BSCAN.SYNC_FDRE_n_2 ),
+        .\Use_Serial_Unified_Completion.sample_1_reg[10] (\Use_Serial_Unified_Completion.sample_1[15]_i_3_n_0 ),
         .\Use_Serial_Unified_Completion.sample_reg[13] (\Use_Dbg_Mem_Access.master_overrun_reg_n_0 ),
         .\Use_Serial_Unified_Completion.sample_reg[14] (\Use_Dbg_Mem_Access.master_error_reg_n_0 ),
-        .\Use_Serial_Unified_Completion.sample_reg[14]_0 (\Use_Serial_Unified_Completion.sample_1[15]_i_5_n_0 ),
-        .\Use_Serial_Unified_Completion.sample_reg[15] ({sample,\Use_Serial_Unified_Completion.mb_data_overrun_reg_n_0 ,\Use_Serial_Unified_Completion.mb_instr_error_reg_n_0 ,mb_instr_overrun}),
-        .\Using_FPGA.Native_0 (\Use_BSCAN.FDC_I_n_27 ),
-        .\Using_FPGA.Native_1 (\Using_FPGA.Native ),
-        .\Using_FPGA.Native_2 (\Use_BSCAN.FDC_I_n_44 ),
-        .\Using_FPGA.Native_3 (\Using_FPGA.Native_0 ),
+        .\Use_Serial_Unified_Completion.sample_reg[15] ({\Use_BSCAN.FDC_I_n_43 ,\Use_BSCAN.FDC_I_n_44 ,\Use_BSCAN.FDC_I_n_45 }),
+        .\Use_Serial_Unified_Completion.sample_reg[15]_0 ({sample,\Use_Serial_Unified_Completion.mb_data_overrun_reg_n_0 ,\Use_Serial_Unified_Completion.mb_instr_error_reg_n_0 ,mb_instr_overrun}),
+        .\Using_FPGA.Native_0 (\Use_BSCAN.FDC_I_n_10 ),
+        .\Using_FPGA.Native_1 (\Use_BSCAN.FDC_I_n_12 ),
+        .\Using_FPGA.Native_2 (\Using_FPGA.Native ),
+        .\Using_FPGA.Native_3 (sample_1),
+        .\Using_FPGA.Native_4 (\Using_FPGA.Native_0 ),
         .clear_overrun(clear_overrun),
         .\command_1_reg[7] (\command_1_reg[7]_0 ),
         .completion_ctrl(completion_ctrl),
-        .\completion_ctrl_reg[0] (\Use_BSCAN.FDC_I_n_48 ),
+        .\completion_ctrl_reg[0] (\Use_BSCAN.FDC_I_n_50 ),
+        .\completion_ctrl_reg[0]_0 (\Use_Dbg_Mem_Access.Master_wr_start_i_2_n_0 ),
+        .\completion_ctrl_reg[0]_1 (\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
         .data_cmd_reset23_out(data_cmd_reset23_out),
         .out(access_idle_2),
+        .p_101_out__0(p_101_out__0),
+        .p_23_out__10(p_23_out__10),
         .sel_n(sel_n),
-        .sync(sync),
+        .shifting_Data1__0(shifting_Data1__0),
         .\tdi_shifter_reg[0] (\Use_BSCAN.FDC_I_n_52 ),
         .\tdi_shifter_reg[0]_0 (\Use_BSCAN.FDC_I_n_55 ),
-        .\tdi_shifter_reg[14] (\Use_BSCAN.FDC_I_n_22 ),
-        .\tdi_shifter_reg[14]_0 (\Use_BSCAN.FDC_I_n_23 ),
+        .\tdi_shifter_reg[13] (\Use_BSCAN.FDC_I_n_22 ),
+        .\tdi_shifter_reg[13]_0 (\Use_BSCAN.FDC_I_n_23 ),
+        .\tdi_shifter_reg[13]_1 (\Use_BSCAN.FDC_I_n_25 ),
+        .\tdi_shifter_reg[13]_2 (\Use_BSCAN.FDC_I_n_26 ),
+        .\tdi_shifter_reg[13]_3 (\Use_BSCAN.FDC_I_n_27 ),
+        .\tdi_shifter_reg[13]_4 (\Use_BSCAN.FDC_I_n_29 ),
         .\tdi_shifter_reg[15] (\Use_BSCAN.FDC_I_n_24 ),
-        .\tdi_shifter_reg[15]_0 (\Use_BSCAN.FDC_I_n_25 ),
+        .\tdi_shifter_reg[15]_0 (\Use_BSCAN.FDC_I_n_28 ),
         .\tdi_shifter_reg[1] (\Use_BSCAN.FDC_I_n_53 ),
         .\tdi_shifter_reg[3] (\Use_BSCAN.FDC_I_n_54 ),
-        .\tdi_shifter_reg[9] (\Use_BSCAN.FDC_I_n_15 ),
-        .\tdi_shifter_reg[9]_0 (\Use_BSCAN.FDC_I_n_16 ),
-        .\tdi_shifter_reg[9]_1 (\Use_BSCAN.FDC_I_n_50 ),
-        .\tdi_shifter_reg[9]_2 (\Use_BSCAN.FDC_I_n_51 ));
+        .\tdi_shifter_reg[8] (\Use_BSCAN.FDC_I_n_16 ),
+        .\tdi_shifter_reg[8]_0 (\Use_BSCAN.FDC_I_n_17 ),
+        .\tdi_shifter_reg[8]_1 (\Use_BSCAN.FDC_I_n_19 ),
+        .\tdi_shifter_reg[9] (\Use_BSCAN.FDC_I_n_18 ));
   mcu_mdm_1_0_MB_FDRE_1_81 \Use_BSCAN.SYNC_FDRE 
        (.CE(CE),
         .D_1(D_1),
-        .\Use_Serial_Unified_Completion.count_reg[0] (\Use_BSCAN.SYNC_FDRE_n_1 ),
-        .\Use_Serial_Unified_Completion.mb_instr_overrun_reg (\Use_Serial_Unified_Completion.count_reg_n_0_[0] ),
-        .\Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 (Dbg_Shift_31_INST_0_i_2_n_0),
-        .\Use_Serial_Unified_Completion.mb_instr_overrun_reg_1 (\Use_BSCAN.FDC_I_n_27 ),
-        .\Use_Serial_Unified_Completion.mb_instr_overrun_reg_2 (\Use_Serial_Unified_Completion.mb_instr_overrun_i_8_n_0 ),
-        .\Use_Serial_Unified_Completion.mb_instr_overrun_reg_3 (Dbg_Shift_0_0),
+        .Dbg_Shift_0(Dbg_Shift_0),
+        .Dbg_Shift_0_0(Dbg_Shift_31_INST_0_i_3_n_0),
+        .Dbg_Shift_0_1(Dbg_Shift_0_0),
+        .Dbg_Shift_0_2(Dbg_Shift_31_INST_0_i_1_n_0),
+        .Dbg_Shift_0_3(\Use_BSCAN.FDC_I_n_10 ),
+        .Q(\Use_BSCAN.command_reg_n_0_[6] ),
+        .\Use_Serial_Unified_Completion.count_reg[1] (\Use_BSCAN.SYNC_FDRE_n_1 ),
+        .\Use_Serial_Unified_Completion.count_reg[1]_0 (\Use_BSCAN.SYNC_FDRE_n_2 ),
+        .\Use_Serial_Unified_Completion.mb_instr_error_reg (\Use_Serial_Unified_Completion.count_reg_n_0_[1] ),
+        .\Use_Serial_Unified_Completion.mb_instr_error_reg_0 (\Use_Serial_Unified_Completion.count_reg_n_0_[0] ),
+        .\Use_Serial_Unified_Completion.mb_instr_error_reg_1 (\Use_BSCAN.FDC_I_n_31 ),
         .\Using_FPGA.Native_0 (\Using_FPGA.Native_1 ),
         .sync(sync));
   LUT5 #(
-    .INIT(32'h00040000)) 
+    .INIT(32'h00000008)) 
     \Use_BSCAN.command[0]_i_1 
-       (.I0(\command_1_reg[7]_0 [1]),
+       (.I0(SEL),
         .I1(\command_1_reg[7]_0 [0]),
-        .I2(\command_1_reg[7]_0 [3]),
-        .I3(\command_1_reg[7]_0 [2]),
-        .I4(SEL),
+        .I2(\command_1_reg[7]_0 [1]),
+        .I3(\command_1_reg[7]_0 [3]),
+        .I4(\command_1_reg[7]_0 [2]),
         .O(\Use_BSCAN.command[0]_i_1_n_0 ));
   FDCE #(
     .INIT(1'b0),
@@ -1895,7 +4616,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_BSCAN.command_reg[0] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(command_1[0]),
         .Q(\Use_BSCAN.command_reg_n_0_[0] ));
   FDCE #(
@@ -1904,7 +4625,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_BSCAN.command_reg[1] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(command_1[1]),
         .Q(\Use_BSCAN.command_reg_n_0_[1] ));
   FDCE #(
@@ -1913,7 +4634,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_BSCAN.command_reg[2] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(command_1[2]),
         .Q(\Use_BSCAN.command_reg_n_0_[2] ));
   FDCE #(
@@ -1922,7 +4643,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_BSCAN.command_reg[3] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(command_1[3]),
         .Q(\Use_BSCAN.command_reg_n_0_[3] ));
   FDCE #(
@@ -1931,7 +4652,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_BSCAN.command_reg[4] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(command_1[4]),
         .Q(\Use_BSCAN.command_reg_n_0_[4] ));
   FDCE #(
@@ -1940,7 +4661,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_BSCAN.command_reg[5] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(command_1[5]),
         .Q(\Use_BSCAN.command_reg_n_0_[5] ));
   FDCE #(
@@ -1949,7 +4670,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_BSCAN.command_reg[6] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(command_1[6]),
         .Q(\Use_BSCAN.command_reg_n_0_[6] ));
   FDCE #(
@@ -1958,171 +4679,176 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_BSCAN.command_reg[7] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.command[0]_i_1_n_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(command_1[7]),
-        .Q(\Use_BSCAN.command_reg_n_0_[7] ));
+        .Q(\Use_BSCAN.command_reg[7]_0 ));
   mcu_mdm_1_0_MB_SRL16E \Use_Config_SRL16E.SRL16E_1 
        (.Q({A3,A2,A1,Q}),
         .Q1_out(Q1_out),
-        .\Use_E2.BSCANE2_I_i_8 (\Using_FPGA.Native_1 ));
+        .\Use_E2.BSCANE2_I_i_7 (\Using_FPGA.Native_1 ));
   mcu_mdm_1_0_MB_SRL16E__parameterized1 \Use_Config_SRL16E.SRL16E_2 
-       (.Q({shift_Count_reg__0,A3,A2,A1,Q}),
-        .Q1_out(Q1_out),
-        .\Use_E2.BSCANE2_I_i_2 (\Use_BSCAN.command_reg_n_0_[5] ),
-        .\Use_E2.BSCANE2_I_i_8_0 (\Using_FPGA.Native_1 ),
-        .config_TDO_3(config_TDO_3),
-        .\shift_Count_reg[4] (\Use_Config_SRL16E.SRL16E_2_n_0 ));
-  mcu_mdm_1_0_MB_SRL16E__parameterized3 \Use_Config_SRL16E.Use_Ext_Config.SRL16E_3 
        (.Q({A3,A2,A1,Q}),
-        .\Use_E2.BSCANE2_I_i_8 (\Using_FPGA.Native_1 ),
-        .config_TDO_3(config_TDO_3));
+        .\Use_E2.BSCANE2_I_i_7 (\Using_FPGA.Native_1 ),
+        .\shift_Count_reg[0] (\Use_Config_SRL16E.SRL16E_2_n_0 ));
+  mcu_mdm_1_0_MB_SRL16E__parameterized3 \Use_Config_SRL16E.Use_Ext_Config.SRL16E_3 
+       (.Q({shift_Count_reg,A3,A2,A1,Q}),
+        .Q1_out(Q1_out),
+        .\Use_E2.BSCANE2_I_i_4 (\Use_Config_SRL16E.SRL16E_2_n_0 ),
+        .\Use_E2.BSCANE2_I_i_4_0 (\Use_BSCAN.command_reg_n_0_[5] ),
+        .\Use_E2.BSCANE2_I_i_7_0 (\Using_FPGA.Native_1 ),
+        .\shift_Count_reg[5] (\Use_Config_SRL16E.Use_Ext_Config.SRL16E_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    \Use_Cross_Trigger.ext_in_ctrl[0]_i_2 
+       (.I0(\Use_BSCAN.command_reg_n_0_[3] ),
+        .I1(\Use_BSCAN.command_reg_n_0_[0] ),
+        .I2(\Use_BSCAN.command_reg[7]_0 ),
+        .I3(\Use_BSCAN.command_reg_n_0_[2] ),
+        .O(\Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_in_ctrl_reg[0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_17 ),
+        .CE(\Use_BSCAN.FDC_I_n_20 ),
         .D(p_0_in_2[3]),
         .PRE(AR),
-        .Q(p_0_in77_in));
+        .Q(p_0_in63_in));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_in_ctrl_reg[1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_17 ),
+        .CE(\Use_BSCAN.FDC_I_n_20 ),
         .D(p_0_in_2[2]),
         .PRE(AR),
-        .Q(p_0_in74_in));
+        .Q(p_0_in60_in));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_in_ctrl_reg[2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_17 ),
+        .CE(\Use_BSCAN.FDC_I_n_20 ),
         .D(p_0_in_2[1]),
         .PRE(AR),
-        .Q(p_0_in71_in));
+        .Q(p_0_in57_in));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_in_ctrl_reg[3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_17 ),
+        .CE(\Use_BSCAN.FDC_I_n_20 ),
         .D(p_0_in_2[0]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ));
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT6 #(
+    .INIT(64'h0000000000000001)) 
     \Use_Cross_Trigger.ext_out_ctrl[3][0]_i_3 
        (.I0(\Use_BSCAN.command_reg_n_0_[0] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[3] ),
+        .I1(\Use_BSCAN.command_reg_n_0_[6] ),
+        .I2(\Use_BSCAN.command_reg[7]_0 ),
+        .I3(\Use_BSCAN.command_reg_n_0_[2] ),
+        .I4(\Use_BSCAN.command_reg_n_0_[4] ),
+        .I5(\Use_BSCAN.command_reg_n_0_[3] ),
         .O(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Use_Cross_Trigger.ext_out_ctrl[3][0]_i_4 
-       (.I0(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[4] ),
-        .O(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_4_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[0][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_51 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_16 ),
+        .CLR(AR),
         .D(p_0_in_2[7]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [3]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[0][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_51 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_16 ),
+        .CLR(AR),
         .D(p_0_in_2[6]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [2]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[0][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_51 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_16 ),
+        .CLR(AR),
         .D(p_0_in_2[5]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[0][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_51 ),
+        .CE(\Use_BSCAN.FDC_I_n_16 ),
         .D(p_0_in_2[4]),
-        .PRE(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .PRE(AR),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[1][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_16 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_17 ),
+        .CLR(AR),
         .D(p_0_in_2[7]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [3]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[1][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_16 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_17 ),
+        .CLR(AR),
         .D(p_0_in_2[6]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[1][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_16 ),
+        .CE(\Use_BSCAN.FDC_I_n_17 ),
         .D(p_0_in_2[5]),
-        .PRE(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .PRE(AR),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[1][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_16 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_17 ),
+        .CLR(AR),
         .D(p_0_in_2[4]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[2][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_50 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_18 ),
+        .CLR(AR),
         .D(p_0_in_2[7]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [3]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[2][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_50 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_18 ),
+        .CLR(AR),
         .D(p_0_in_2[6]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [2]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[2][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_50 ),
+        .CE(\Use_BSCAN.FDC_I_n_18 ),
         .D(p_0_in_2[5]),
-        .PRE(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .PRE(AR),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[2][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_50 ),
+        .CE(\Use_BSCAN.FDC_I_n_18 ),
         .D(p_0_in_2[4]),
-        .PRE(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .PRE(AR),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[3][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_15 ),
+        .CE(\Use_BSCAN.FDC_I_n_19 ),
         .CLR(AR),
         .D(p_0_in_2[7]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [3]));
@@ -2130,7 +4856,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b1)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[3][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_15 ),
+        .CE(\Use_BSCAN.FDC_I_n_19 ),
         .D(p_0_in_2[6]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [2]));
@@ -2138,7 +4864,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[3][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_15 ),
+        .CE(\Use_BSCAN.FDC_I_n_19 ),
         .CLR(AR),
         .D(p_0_in_2[5]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]));
@@ -2146,7 +4872,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.ext_out_ctrl_reg[3][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_15 ),
+        .CE(\Use_BSCAN.FDC_I_n_19 ),
         .CLR(AR),
         .D(p_0_in_2[4]),
         .Q(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]));
@@ -2154,15 +4880,15 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.in_andor_ctrl_reg 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_26 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_21 ),
+        .CLR(AR),
         .D(\tdi_shifter_reg_n_0_[12] ),
         .Q(in_andor_ctrl));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_26 ),
+        .CE(\Use_BSCAN.FDC_I_n_21 ),
         .D(p_0_in_2[3]),
         .PRE(AR),
         .Q(p_9_in54_in));
@@ -2170,7 +4896,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b1)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_26 ),
+        .CE(\Use_BSCAN.FDC_I_n_21 ),
         .D(p_0_in_2[2]),
         .PRE(AR),
         .Q(p_8_in));
@@ -2178,7 +4904,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b1)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_26 ),
+        .CE(\Use_BSCAN.FDC_I_n_21 ),
         .D(p_0_in_2[1]),
         .PRE(AR),
         .Q(p_7_in49_in));
@@ -2186,7 +4912,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b1)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_26 ),
+        .CE(\Use_BSCAN.FDC_I_n_21 ),
         .D(p_0_in_2[0]),
         .PRE(AR),
         .Q(p_6_in46_in));
@@ -2194,7 +4920,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][4] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_26 ),
+        .CE(\Use_BSCAN.FDC_I_n_21 ),
         .CLR(AR),
         .D(p_9_out[3]),
         .Q(p_5_in));
@@ -2202,7 +4928,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][5] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_26 ),
+        .CE(\Use_BSCAN.FDC_I_n_21 ),
         .CLR(AR),
         .D(p_9_out[2]),
         .Q(p_4_in41_in));
@@ -2210,7 +4936,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][6] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_26 ),
+        .CE(\Use_BSCAN.FDC_I_n_21 ),
         .CLR(AR),
         .D(p_9_out[1]),
         .Q(p_3_in38_in));
@@ -2218,24 +4944,34 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.in_ctrl_reg[0][7] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_26 ),
+        .CE(\Use_BSCAN.FDC_I_n_21 ),
         .CLR(AR),
         .D(p_9_out[0]),
         .Q(\Use_Cross_Trigger.in_ctrl_reg_n_0_[0][7] ));
+  LUT6 #(
+    .INIT(64'h0000000000000008)) 
+    \Use_Cross_Trigger.out_ctrl[0][7][0]_i_3 
+       (.I0(\Use_BSCAN.command_reg_n_0_[6] ),
+        .I1(\Use_BSCAN.command_reg_n_0_[5] ),
+        .I2(\Use_BSCAN.command_reg[7]_0 ),
+        .I3(\Use_BSCAN.command_reg_n_0_[4] ),
+        .I4(\Use_BSCAN.command_reg_n_0_[2] ),
+        .I5(\Use_BSCAN.command_reg_n_0_[3] ),
+        .O(\Use_Cross_Trigger.out_ctrl[0][7][0]_i_3_n_0 ));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][0][0] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.FDC_I_n_22 ),
         .D(p_0_in_2[7]),
-        .PRE(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][0] [3]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][0][1] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.FDC_I_n_22 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in_2[6]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][0] [2]));
   FDCE #(
@@ -2243,7 +4979,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_Cross_Trigger.out_ctrl_reg[0][0][2] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.FDC_I_n_22 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in_2[5]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]));
   FDPE #(
@@ -2252,7 +4988,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.FDC_I_n_22 ),
         .D(p_0_in_2[4]),
-        .PRE(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]));
   FDPE #(
     .INIT(1'b1)) 
@@ -2260,14 +4996,14 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.FDC_I_n_23 ),
         .D(p_0_in_2[7]),
-        .PRE(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][1] [3]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][1][1] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.FDC_I_n_23 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in_2[6]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][1] [2]));
   FDPE #(
@@ -2276,21 +5012,21 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.FDC_I_n_23 ),
         .D(p_0_in_2[5]),
-        .PRE(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][1][3] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(\Use_BSCAN.FDC_I_n_23 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in_2[4]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][2][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_18 ),
+        .CE(\Use_BSCAN.FDC_I_n_26 ),
         .D(p_0_in_2[7]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][2] [3]));
@@ -2298,31 +5034,31 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][2][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_18 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_26 ),
+        .CLR(AR),
         .D(p_0_in_2[6]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][2] [2]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][2][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_18 ),
+        .CE(\Use_BSCAN.FDC_I_n_26 ),
         .D(p_0_in_2[5]),
-        .PRE(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][2] [1]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][2][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_18 ),
+        .CE(\Use_BSCAN.FDC_I_n_26 ),
         .D(p_0_in_2[4]),
-        .PRE(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][2] [0]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][3][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_19 ),
+        .CE(\Use_BSCAN.FDC_I_n_27 ),
         .D(p_0_in_2[7]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][3] [3]));
@@ -2330,7 +5066,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][3][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_19 ),
+        .CE(\Use_BSCAN.FDC_I_n_27 ),
         .D(p_0_in_2[6]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][3] [2]));
@@ -2338,7 +5074,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][3][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_19 ),
+        .CE(\Use_BSCAN.FDC_I_n_27 ),
         .CLR(AR),
         .D(p_0_in_2[5]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]));
@@ -2346,7 +5082,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][3][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_19 ),
+        .CE(\Use_BSCAN.FDC_I_n_27 ),
         .CLR(AR),
         .D(p_0_in_2[4]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]));
@@ -2418,7 +5154,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][6][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_20 ),
+        .CE(\Use_BSCAN.FDC_I_n_28 ),
         .D(p_0_in_2[7]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][6] [3]));
@@ -2426,7 +5162,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][6][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_20 ),
+        .CE(\Use_BSCAN.FDC_I_n_28 ),
         .D(p_0_in_2[6]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][6] [2]));
@@ -2434,7 +5170,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][6][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_20 ),
+        .CE(\Use_BSCAN.FDC_I_n_28 ),
         .CLR(AR),
         .D(p_0_in_2[5]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][6] [1]));
@@ -2442,7 +5178,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][6][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_20 ),
+        .CE(\Use_BSCAN.FDC_I_n_28 ),
         .D(p_0_in_2[4]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][6] [0]));
@@ -2450,7 +5186,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][7][0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_21 ),
+        .CE(\Use_BSCAN.FDC_I_n_29 ),
         .D(p_0_in_2[7]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][7] [3]));
@@ -2458,7 +5194,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][7][1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_21 ),
+        .CE(\Use_BSCAN.FDC_I_n_29 ),
         .D(p_0_in_2[6]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][7] [2]));
@@ -2466,7 +5202,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][7][2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_21 ),
+        .CE(\Use_BSCAN.FDC_I_n_29 ),
         .CLR(AR),
         .D(p_0_in_2[5]),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][7] [1]));
@@ -2474,378 +5210,339 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b1)) 
     \Use_Cross_Trigger.out_ctrl_reg[0][7][3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(\Use_BSCAN.FDC_I_n_21 ),
+        .CE(\Use_BSCAN.FDC_I_n_29 ),
         .D(p_0_in_2[4]),
         .PRE(AR),
         .Q(\Use_Cross_Trigger.out_ctrl_reg[0][7] [0]));
-  LUT5 #(
-    .INIT(32'h88888A88)) 
+  LUT6 #(
+    .INIT(64'hA8A8A8A8AAA8A8A8)) 
     \Use_Cross_Trigger.tdo_reg[0]_i_1 
        (.I0(sel_n_reg_0),
         .I1(\Use_Cross_Trigger.tdo_reg[0]_i_2_n_0 ),
-        .I2(\Dbg_Trig_Out_0[0]_INST_0_i_3_n_0 ),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][0] [3]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][0] [2]),
-        .O(\Use_Cross_Trigger.tdo_reg[0]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0C0C0CAC0C0C0C0F)) 
-    \Use_Cross_Trigger.tdo_reg[0]_i_2 
-       (.I0(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ),
-        .I1(in_andor_ctrl),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][0] [3]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]),
+        .I2(\Use_Cross_Trigger.tdo_reg[0]_i_3_n_0 ),
+        .I3(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][0] [3]),
         .I5(\Use_Cross_Trigger.out_ctrl_reg[0][0] [2]),
+        .O(\Use_Cross_Trigger.tdo_reg[0]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h00FF0001)) 
+    \Use_Cross_Trigger.tdo_reg[0]_i_2 
+       (.I0(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]),
+        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][0] [2]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][0] [3]),
+        .I4(in_andor_ctrl),
         .O(\Use_Cross_Trigger.tdo_reg[0]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFF2FFFFFFF20000)) 
+    .INIT(64'h0000000000008000)) 
+    \Use_Cross_Trigger.tdo_reg[0]_i_3 
+       (.I0(Trig_In_3),
+        .I1(\Use_Cross_Trigger.ext_in_ctrl_reg_n_0_[3] ),
+        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][0] [3]),
+        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][0] [2]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][0] [0]),
+        .I5(\Use_Cross_Trigger.out_ctrl_reg[0][0] [1]),
+        .O(\Use_Cross_Trigger.tdo_reg[0]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hFEEEFFFFFEEE0000)) 
     \Use_Cross_Trigger.tdo_reg[16]_i_1 
-       (.I0(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ),
-        .I1(\Use_Cross_Trigger.tdo_reg[16]_i_2_n_0 ),
-        .I2(\Use_Cross_Trigger.tdo_reg[16]_i_3_n_0 ),
-        .I3(\Use_Cross_Trigger.tdo_reg[16]_i_4_n_0 ),
+       (.I0(\Use_Cross_Trigger.tdo_reg[16]_i_2_n_0 ),
+        .I1(\Use_Cross_Trigger.tdo_reg[16]_i_3_n_0 ),
+        .I2(\Use_Cross_Trigger.tdo_reg[16]_i_4_n_0 ),
+        .I3(Trig_Out_0_INST_0_i_4_n_0),
         .I4(sel_n_reg_0),
         .I5(tdo_reg[15]),
         .O(\Use_Cross_Trigger.tdo_reg[16]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEFFF)) 
+  LUT6 #(
+    .INIT(64'h88880000FFF00000)) 
     \Use_Cross_Trigger.tdo_reg[16]_i_2 
-       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
-        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [2]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [3]),
-        .O(\Use_Cross_Trigger.tdo_reg[16]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h1010101010111111)) 
-    \Use_Cross_Trigger.tdo_reg[16]_i_3 
-       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [2]),
-        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [3]),
-        .I2(\Use_Cross_Trigger.tdo_reg[16]_i_5_n_0 ),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
-        .I4(Trig_Out_2_INST_0_i_5_n_0),
-        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
-        .O(\Use_Cross_Trigger.tdo_reg[16]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000DDDDFF0F0000)) 
-    \Use_Cross_Trigger.tdo_reg[16]_i_4 
-       (.I0(\Use_Cross_Trigger.tdo_reg[16]_i_6_n_0 ),
-        .I1(\Use_Cross_Trigger.tdo_reg[16]_i_7_n_0 ),
-        .I2(\Use_Cross_Trigger.tdo_reg[16]_i_8_n_0 ),
-        .I3(\Use_Cross_Trigger.tdo_reg[16]_i_9_n_0 ),
+       (.I0(\Use_Cross_Trigger.tdo_reg[16]_i_5_n_0 ),
+        .I1(p_1_in[3]),
+        .I2(\Use_Cross_Trigger.tdo_reg[16]_i_6_n_0 ),
+        .I3(\Use_Cross_Trigger.tdo_reg[16]_i_7_n_0 ),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [2]),
         .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [3]),
-        .O(\Use_Cross_Trigger.tdo_reg[16]_i_4_n_0 ));
+        .O(\Use_Cross_Trigger.tdo_reg[16]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hF088008800880088)) 
+    .INIT(64'h1111111100001011)) 
+    \Use_Cross_Trigger.tdo_reg[16]_i_3 
+       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [3]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [2]),
+        .I2(p_1_in[14]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
+        .I5(\Use_Cross_Trigger.tdo_reg[16]_i_8_n_0 ),
+        .O(\Use_Cross_Trigger.tdo_reg[16]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \Use_Cross_Trigger.tdo_reg[16]_i_4 
+       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [3]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [2]),
+        .O(\Use_Cross_Trigger.tdo_reg[16]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
     \Use_Cross_Trigger.tdo_reg[16]_i_5 
-       (.I0(p_9_in54_in),
-        .I1(Dbg_Trig_In_0[0]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
-        .I4(p_7_in49_in),
-        .I5(Dbg_Trig_In_0[2]),
+       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
         .O(\Use_Cross_Trigger.tdo_reg[16]_i_5_n_0 ));
   LUT6 #(
-    .INIT(64'hF07FFF7FFF7FFF7F)) 
+    .INIT(64'h88880000F0000000)) 
     \Use_Cross_Trigger.tdo_reg[16]_i_6 
-       (.I0(p_0_in74_in),
-        .I1(Trig_In_1),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
-        .I4(p_0_in77_in),
-        .I5(Trig_In_0),
+       (.I0(Dbg_Trig_In_0[6]),
+        .I1(p_3_in38_in),
+        .I2(Dbg_Trig_In_0[4]),
+        .I3(p_5_in),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
+        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
         .O(\Use_Cross_Trigger.tdo_reg[16]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'hF008000800080008)) 
+    .INIT(64'h000000008888F000)) 
     \Use_Cross_Trigger.tdo_reg[16]_i_7 
-       (.I0(\Use_Cross_Trigger.in_ctrl_reg_n_0_[0][7] ),
-        .I1(Dbg_Trig_In_0[7]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
-        .I4(p_0_in71_in),
-        .I5(Trig_In_2),
+       (.I0(Dbg_Trig_In_0[5]),
+        .I1(p_4_in41_in),
+        .I2(Dbg_Trig_In_0[3]),
+        .I3(p_6_in46_in),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
+        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
         .O(\Use_Cross_Trigger.tdo_reg[16]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hF07FFF7FFF7FFF7F)) 
+    .INIT(64'h80FF800080008000)) 
     \Use_Cross_Trigger.tdo_reg[16]_i_8 
-       (.I0(p_4_in41_in),
-        .I1(Dbg_Trig_In_0[5]),
+       (.I0(Dbg_Trig_In_0[2]),
+        .I1(p_7_in49_in),
         .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
-        .I4(p_5_in),
-        .I5(Dbg_Trig_In_0[4]),
+        .I4(Dbg_Trig_In_0[1]),
+        .I5(p_8_in),
         .O(\Use_Cross_Trigger.tdo_reg[16]_i_8_n_0 ));
   LUT6 #(
-    .INIT(64'hF008000800080008)) 
-    \Use_Cross_Trigger.tdo_reg[16]_i_9 
-       (.I0(p_6_in46_in),
-        .I1(Dbg_Trig_In_0[3]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [0]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[0] [1]),
-        .I4(p_3_in38_in),
-        .I5(Dbg_Trig_In_0[6]),
-        .O(\Use_Cross_Trigger.tdo_reg[16]_i_9_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFAEFFFFFFAE0000)) 
+    .INIT(64'hFEEEFFFFFEEE0000)) 
     \Use_Cross_Trigger.tdo_reg[17]_i_1 
-       (.I0(Trig_Out_1_INST_0_i_1_n_0),
-        .I1(\Use_Cross_Trigger.tdo_reg[17]_i_2_n_0 ),
-        .I2(Trig_Out_1_INST_0_i_2_n_0),
-        .I3(\Use_Cross_Trigger.tdo_reg[17]_i_3_n_0 ),
+       (.I0(\Use_Cross_Trigger.tdo_reg[17]_i_2_n_0 ),
+        .I1(\Use_Cross_Trigger.tdo_reg[17]_i_3_n_0 ),
+        .I2(\Use_Cross_Trigger.tdo_reg[17]_i_4_n_0 ),
+        .I3(Trig_Out_1_INST_0_i_4_n_0),
         .I4(sel_n_reg_0),
         .I5(tdo_reg[16]),
         .O(\Use_Cross_Trigger.tdo_reg[17]_i_1_n_0 ));
-  LUT2 #(
-    .INIT(4'h2)) 
-    \Use_Cross_Trigger.tdo_reg[17]_i_2 
-       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [3]),
-        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]),
-        .O(\Use_Cross_Trigger.tdo_reg[17]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h0000DDDD0000FF0F)) 
-    \Use_Cross_Trigger.tdo_reg[17]_i_3 
-       (.I0(\Use_Cross_Trigger.tdo_reg[17]_i_4_n_0 ),
-        .I1(\Use_Cross_Trigger.tdo_reg[17]_i_5_n_0 ),
+    .INIT(64'h88880000FFF00000)) 
+    \Use_Cross_Trigger.tdo_reg[17]_i_2 
+       (.I0(\Use_Cross_Trigger.tdo_reg[17]_i_5_n_0 ),
+        .I1(p_1_in[3]),
         .I2(\Use_Cross_Trigger.tdo_reg[17]_i_6_n_0 ),
         .I3(\Use_Cross_Trigger.tdo_reg[17]_i_7_n_0 ),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [3]),
-        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]),
+        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [3]),
+        .O(\Use_Cross_Trigger.tdo_reg[17]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h1111111100001011)) 
+    \Use_Cross_Trigger.tdo_reg[17]_i_3 
+       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [3]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]),
+        .I2(p_1_in[14]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
+        .I5(\Use_Cross_Trigger.tdo_reg[17]_i_8_n_0 ),
         .O(\Use_Cross_Trigger.tdo_reg[17]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hF07FFF7FFF7FFF7F)) 
+  LUT2 #(
+    .INIT(4'h2)) 
     \Use_Cross_Trigger.tdo_reg[17]_i_4 
-       (.I0(p_4_in41_in),
-        .I1(Dbg_Trig_In_0[5]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
-        .I4(p_5_in),
-        .I5(Dbg_Trig_In_0[4]),
+       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [3]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [2]),
         .O(\Use_Cross_Trigger.tdo_reg[17]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'hF008000800080008)) 
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
     \Use_Cross_Trigger.tdo_reg[17]_i_5 
-       (.I0(p_6_in46_in),
-        .I1(Dbg_Trig_In_0[3]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
-        .I4(p_3_in38_in),
-        .I5(Dbg_Trig_In_0[6]),
-        .O(\Use_Cross_Trigger.tdo_reg[17]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair27" *) 
-  LUT4 #(
-    .INIT(16'hFF2A)) 
-    \Use_Cross_Trigger.tdo_reg[17]_i_6 
        (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
-        .I1(p_8_in),
-        .I2(Dbg_Trig_In_0[1]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
+        .O(\Use_Cross_Trigger.tdo_reg[17]_i_5_n_0 ));
+  LUT6 #(
+    .INIT(64'h88880000F0000000)) 
+    \Use_Cross_Trigger.tdo_reg[17]_i_6 
+       (.I0(Dbg_Trig_In_0[6]),
+        .I1(p_3_in38_in),
+        .I2(Dbg_Trig_In_0[4]),
+        .I3(p_5_in),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
+        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
         .O(\Use_Cross_Trigger.tdo_reg[17]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'hF088008800880088)) 
+    .INIT(64'h000000008888F000)) 
     \Use_Cross_Trigger.tdo_reg[17]_i_7 
-       (.I0(p_9_in54_in),
-        .I1(Dbg_Trig_In_0[0]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
-        .I4(p_7_in49_in),
-        .I5(Dbg_Trig_In_0[2]),
+       (.I0(Dbg_Trig_In_0[5]),
+        .I1(p_4_in41_in),
+        .I2(Dbg_Trig_In_0[3]),
+        .I3(p_6_in46_in),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
+        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
         .O(\Use_Cross_Trigger.tdo_reg[17]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hFFF2FFFFFFF20000)) 
+    .INIT(64'h80FF800080008000)) 
+    \Use_Cross_Trigger.tdo_reg[17]_i_8 
+       (.I0(Dbg_Trig_In_0[2]),
+        .I1(p_7_in49_in),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [1]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[1] [0]),
+        .I4(Dbg_Trig_In_0[1]),
+        .I5(p_8_in),
+        .O(\Use_Cross_Trigger.tdo_reg[17]_i_8_n_0 ));
+  LUT6 #(
+    .INIT(64'hFEEEFFFFFEEE0000)) 
     \Use_Cross_Trigger.tdo_reg[18]_i_1 
-       (.I0(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ),
-        .I1(\Use_Cross_Trigger.tdo_reg[18]_i_2_n_0 ),
-        .I2(\Use_Cross_Trigger.tdo_reg[18]_i_3_n_0 ),
-        .I3(\Use_Cross_Trigger.tdo_reg[18]_i_4_n_0 ),
+       (.I0(\Use_Cross_Trigger.tdo_reg[18]_i_2_n_0 ),
+        .I1(\Use_Cross_Trigger.tdo_reg[18]_i_3_n_0 ),
+        .I2(\Use_Cross_Trigger.tdo_reg[18]_i_4_n_0 ),
+        .I3(Trig_Out_2_INST_0_i_4_n_0),
         .I4(sel_n_reg_0),
         .I5(tdo_reg[17]),
         .O(\Use_Cross_Trigger.tdo_reg[18]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEFFF)) 
+  LUT6 #(
+    .INIT(64'h88880000FFF00000)) 
     \Use_Cross_Trigger.tdo_reg[18]_i_2 
-       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
-        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [2]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [3]),
-        .O(\Use_Cross_Trigger.tdo_reg[18]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h1010101010111111)) 
-    \Use_Cross_Trigger.tdo_reg[18]_i_3 
-       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [2]),
-        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [3]),
-        .I2(\Use_Cross_Trigger.tdo_reg[18]_i_5_n_0 ),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
-        .I4(Trig_Out_0_INST_0_i_6_n_0),
-        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
-        .O(\Use_Cross_Trigger.tdo_reg[18]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000DDDDFF0F0000)) 
-    \Use_Cross_Trigger.tdo_reg[18]_i_4 
-       (.I0(\Use_Cross_Trigger.tdo_reg[18]_i_6_n_0 ),
-        .I1(\Use_Cross_Trigger.tdo_reg[18]_i_7_n_0 ),
-        .I2(\Use_Cross_Trigger.tdo_reg[18]_i_8_n_0 ),
-        .I3(\Use_Cross_Trigger.tdo_reg[18]_i_9_n_0 ),
+       (.I0(\Use_Cross_Trigger.tdo_reg[18]_i_5_n_0 ),
+        .I1(p_1_in[3]),
+        .I2(\Use_Cross_Trigger.tdo_reg[18]_i_6_n_0 ),
+        .I3(\Use_Cross_Trigger.tdo_reg[18]_i_7_n_0 ),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [2]),
         .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [3]),
-        .O(\Use_Cross_Trigger.tdo_reg[18]_i_4_n_0 ));
+        .O(\Use_Cross_Trigger.tdo_reg[18]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h80808080FF000000)) 
+    .INIT(64'h1111111100001011)) 
+    \Use_Cross_Trigger.tdo_reg[18]_i_3 
+       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [3]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [2]),
+        .I2(p_1_in[14]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
+        .I5(\Use_Cross_Trigger.tdo_reg[18]_i_8_n_0 ),
+        .O(\Use_Cross_Trigger.tdo_reg[18]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \Use_Cross_Trigger.tdo_reg[18]_i_4 
+       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [3]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [2]),
+        .O(\Use_Cross_Trigger.tdo_reg[18]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
     \Use_Cross_Trigger.tdo_reg[18]_i_5 
        (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
-        .I1(p_7_in49_in),
-        .I2(Dbg_Trig_In_0[2]),
-        .I3(p_8_in),
-        .I4(Dbg_Trig_In_0[1]),
-        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
         .O(\Use_Cross_Trigger.tdo_reg[18]_i_5_n_0 ));
   LUT6 #(
-    .INIT(64'hF07FFF7FFF7FFF7F)) 
+    .INIT(64'h88880000F0000000)) 
     \Use_Cross_Trigger.tdo_reg[18]_i_6 
-       (.I0(p_0_in74_in),
-        .I1(Trig_In_1),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
-        .I4(p_0_in77_in),
-        .I5(Trig_In_0),
+       (.I0(Dbg_Trig_In_0[6]),
+        .I1(p_3_in38_in),
+        .I2(Dbg_Trig_In_0[4]),
+        .I3(p_5_in),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
+        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
         .O(\Use_Cross_Trigger.tdo_reg[18]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'hF008000800080008)) 
+    .INIT(64'h000000008888F000)) 
     \Use_Cross_Trigger.tdo_reg[18]_i_7 
-       (.I0(\Use_Cross_Trigger.in_ctrl_reg_n_0_[0][7] ),
-        .I1(Dbg_Trig_In_0[7]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
-        .I4(p_0_in71_in),
-        .I5(Trig_In_2),
+       (.I0(Dbg_Trig_In_0[5]),
+        .I1(p_4_in41_in),
+        .I2(Dbg_Trig_In_0[3]),
+        .I3(p_6_in46_in),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
+        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
         .O(\Use_Cross_Trigger.tdo_reg[18]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hF07FFF7FFF7FFF7F)) 
+    .INIT(64'h80FF800080008000)) 
     \Use_Cross_Trigger.tdo_reg[18]_i_8 
-       (.I0(p_4_in41_in),
-        .I1(Dbg_Trig_In_0[5]),
+       (.I0(Dbg_Trig_In_0[2]),
+        .I1(p_7_in49_in),
         .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
-        .I4(p_5_in),
-        .I5(Dbg_Trig_In_0[4]),
+        .I4(Dbg_Trig_In_0[1]),
+        .I5(p_8_in),
         .O(\Use_Cross_Trigger.tdo_reg[18]_i_8_n_0 ));
   LUT6 #(
-    .INIT(64'hF008000800080008)) 
-    \Use_Cross_Trigger.tdo_reg[18]_i_9 
-       (.I0(p_6_in46_in),
-        .I1(Dbg_Trig_In_0[3]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [0]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[2] [1]),
-        .I4(p_3_in38_in),
-        .I5(Dbg_Trig_In_0[6]),
-        .O(\Use_Cross_Trigger.tdo_reg[18]_i_9_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFF2FFFFFFF20000)) 
+    .INIT(64'hFEEEFFFFFEEE0000)) 
     \Use_Cross_Trigger.tdo_reg[19]_i_1 
-       (.I0(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ),
-        .I1(\Use_Cross_Trigger.tdo_reg[19]_i_2_n_0 ),
-        .I2(\Use_Cross_Trigger.tdo_reg[19]_i_3_n_0 ),
-        .I3(\Use_Cross_Trigger.tdo_reg[19]_i_4_n_0 ),
+       (.I0(\Use_Cross_Trigger.tdo_reg[19]_i_2_n_0 ),
+        .I1(\Use_Cross_Trigger.tdo_reg[19]_i_3_n_0 ),
+        .I2(\Use_Cross_Trigger.tdo_reg[19]_i_4_n_0 ),
+        .I3(Trig_Out_3_INST_0_i_4_n_0),
         .I4(sel_n_reg_0),
         .I5(tdo_reg[18]),
         .O(\Use_Cross_Trigger.tdo_reg[19]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEFFF)) 
+  LUT6 #(
+    .INIT(64'h88880000FFF00000)) 
     \Use_Cross_Trigger.tdo_reg[19]_i_2 
-       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
-        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [2]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [3]),
-        .O(\Use_Cross_Trigger.tdo_reg[19]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000011111111111)) 
-    \Use_Cross_Trigger.tdo_reg[19]_i_3 
-       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [2]),
-        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [3]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
-        .I3(Trig_Out_0_INST_0_i_6_n_0),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
-        .I5(\Use_Cross_Trigger.tdo_reg[19]_i_5_n_0 ),
-        .O(\Use_Cross_Trigger.tdo_reg[19]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000DDDDFF0F0000)) 
-    \Use_Cross_Trigger.tdo_reg[19]_i_4 
-       (.I0(\Use_Cross_Trigger.tdo_reg[19]_i_6_n_0 ),
-        .I1(\Use_Cross_Trigger.tdo_reg[19]_i_7_n_0 ),
-        .I2(\Use_Cross_Trigger.tdo_reg[19]_i_8_n_0 ),
-        .I3(\Use_Cross_Trigger.tdo_reg[19]_i_9_n_0 ),
+       (.I0(p_1_in[3]),
+        .I1(\Use_Cross_Trigger.tdo_reg[19]_i_5_n_0 ),
+        .I2(\Use_Cross_Trigger.tdo_reg[19]_i_6_n_0 ),
+        .I3(\Use_Cross_Trigger.tdo_reg[19]_i_7_n_0 ),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [2]),
         .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [3]),
-        .O(\Use_Cross_Trigger.tdo_reg[19]_i_4_n_0 ));
+        .O(\Use_Cross_Trigger.tdo_reg[19]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h7F7F7F7F00FFFFFF)) 
+    .INIT(64'h1111111100001011)) 
+    \Use_Cross_Trigger.tdo_reg[19]_i_3 
+       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [3]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [2]),
+        .I2(p_1_in[14]),
+        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
+        .I5(\Use_Cross_Trigger.tdo_reg[19]_i_8_n_0 ),
+        .O(\Use_Cross_Trigger.tdo_reg[19]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \Use_Cross_Trigger.tdo_reg[19]_i_4 
+       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [3]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [2]),
+        .O(\Use_Cross_Trigger.tdo_reg[19]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
     \Use_Cross_Trigger.tdo_reg[19]_i_5 
-       (.I0(p_7_in49_in),
-        .I1(Dbg_Trig_In_0[2]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
-        .I3(p_8_in),
-        .I4(Dbg_Trig_In_0[1]),
-        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
+       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
+        .I1(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
         .O(\Use_Cross_Trigger.tdo_reg[19]_i_5_n_0 ));
   LUT6 #(
-    .INIT(64'h77770FFFFFFFFFFF)) 
+    .INIT(64'h88880000F0000000)) 
     \Use_Cross_Trigger.tdo_reg[19]_i_6 
-       (.I0(p_0_in71_in),
-        .I1(Trig_In_2),
-        .I2(p_0_in74_in),
-        .I3(Trig_In_1),
+       (.I0(Dbg_Trig_In_0[6]),
+        .I1(p_3_in38_in),
+        .I2(Dbg_Trig_In_0[4]),
+        .I3(p_5_in),
         .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
         .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
         .O(\Use_Cross_Trigger.tdo_reg[19]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'h0F08000800080008)) 
+    .INIT(64'h000000008888F000)) 
     \Use_Cross_Trigger.tdo_reg[19]_i_7 
-       (.I0(\Use_Cross_Trigger.in_ctrl_reg_n_0_[0][7] ),
-        .I1(Dbg_Trig_In_0[7]),
-        .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
-        .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
-        .I4(p_0_in77_in),
-        .I5(Trig_In_0),
+       (.I0(Dbg_Trig_In_0[5]),
+        .I1(p_4_in41_in),
+        .I2(Dbg_Trig_In_0[3]),
+        .I3(p_6_in46_in),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
+        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
         .O(\Use_Cross_Trigger.tdo_reg[19]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hF07FFF7FFF7FFF7F)) 
+    .INIT(64'h80FF800080008000)) 
     \Use_Cross_Trigger.tdo_reg[19]_i_8 
-       (.I0(p_4_in41_in),
-        .I1(Dbg_Trig_In_0[5]),
+       (.I0(Dbg_Trig_In_0[2]),
+        .I1(p_7_in49_in),
         .I2(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
         .I3(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
-        .I4(p_5_in),
-        .I5(Dbg_Trig_In_0[4]),
+        .I4(Dbg_Trig_In_0[1]),
+        .I5(p_8_in),
         .O(\Use_Cross_Trigger.tdo_reg[19]_i_8_n_0 ));
-  LUT6 #(
-    .INIT(64'hF000000000008888)) 
-    \Use_Cross_Trigger.tdo_reg[19]_i_9 
-       (.I0(p_6_in46_in),
-        .I1(Dbg_Trig_In_0[3]),
-        .I2(p_3_in38_in),
-        .I3(Dbg_Trig_In_0[6]),
-        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [0]),
-        .I5(\Use_Cross_Trigger.ext_out_ctrl_reg[3] [1]),
-        .O(\Use_Cross_Trigger.tdo_reg[19]_i_9_n_0 ));
-  LUT6 #(
-    .INIT(64'hFF04FFFFFF040000)) 
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[1]_i_1 
-       (.I0(\Dbg_Trig_Out_0[1]_INST_0_i_1_n_0 ),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][1] [3]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][1] [2]),
-        .I3(\Use_Cross_Trigger.tdo_reg[1]_i_2_n_0 ),
-        .I4(sel_n_reg_0),
-        .I5(tdo_reg[0]),
+       (.I0(Dbg_Trig_Out_0[1]),
+        .I1(sel_n_reg_0),
+        .I2(tdo_reg[0]),
         .O(\Use_Cross_Trigger.tdo_reg[1]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0F0F0F8F00000083)) 
-    \Use_Cross_Trigger.tdo_reg[1]_i_2 
-       (.I0(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][1] [2]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][1] [3]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][1] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][1] [0]),
-        .I5(in_andor_ctrl),
-        .O(\Use_Cross_Trigger.tdo_reg[1]_i_2_n_0 ));
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[2]_i_1 
@@ -2853,67 +5550,31 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I1(sel_n_reg_0),
         .I2(tdo_reg[1]),
         .O(\Use_Cross_Trigger.tdo_reg[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFF04FFFFFF040000)) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[3]_i_1 
-       (.I0(\Dbg_Trig_Out_0[3]_INST_0_i_1_n_0 ),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][3] [3]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][3] [2]),
-        .I3(\Use_Cross_Trigger.tdo_reg[3]_i_2_n_0 ),
-        .I4(sel_n_reg_0),
-        .I5(tdo_reg[2]),
+       (.I0(Dbg_Trig_Out_0[3]),
+        .I1(sel_n_reg_0),
+        .I2(tdo_reg[2]),
         .O(\Use_Cross_Trigger.tdo_reg[3]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0F0F0F8F00000083)) 
-    \Use_Cross_Trigger.tdo_reg[3]_i_2 
-       (.I0(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][3] [2]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][3] [3]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][3] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][3] [0]),
-        .I5(in_andor_ctrl),
-        .O(\Use_Cross_Trigger.tdo_reg[3]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hFF04FFFFFF040000)) 
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[4]_i_1 
-       (.I0(\Dbg_Trig_Out_0[4]_INST_0_i_1_n_0 ),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][4] [3]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][4] [2]),
-        .I3(\Use_Cross_Trigger.tdo_reg[4]_i_2_n_0 ),
-        .I4(sel_n_reg_0),
-        .I5(tdo_reg[3]),
+       (.I0(Dbg_Trig_Out_0[4]),
+        .I1(sel_n_reg_0),
+        .I2(tdo_reg[3]),
         .O(\Use_Cross_Trigger.tdo_reg[4]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0F0F0F8F00000083)) 
-    \Use_Cross_Trigger.tdo_reg[4]_i_2 
-       (.I0(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][4] [2]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][4] [3]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][4] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][4] [0]),
-        .I5(in_andor_ctrl),
-        .O(\Use_Cross_Trigger.tdo_reg[4]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hFF04FFFFFF040000)) 
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[5]_i_1 
-       (.I0(\Dbg_Trig_Out_0[5]_INST_0_i_1_n_0 ),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][5] [3]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][5] [2]),
-        .I3(\Use_Cross_Trigger.tdo_reg[5]_i_2_n_0 ),
-        .I4(sel_n_reg_0),
-        .I5(tdo_reg[4]),
+       (.I0(Dbg_Trig_Out_0[5]),
+        .I1(sel_n_reg_0),
+        .I2(tdo_reg[4]),
         .O(\Use_Cross_Trigger.tdo_reg[5]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0F0F0F8F00000083)) 
-    \Use_Cross_Trigger.tdo_reg[5]_i_2 
-       (.I0(\Dbg_Trig_Out_0[0]_INST_0_i_1_n_0 ),
-        .I1(\Use_Cross_Trigger.out_ctrl_reg[0][5] [2]),
-        .I2(\Use_Cross_Trigger.out_ctrl_reg[0][5] [3]),
-        .I3(\Use_Cross_Trigger.out_ctrl_reg[0][5] [1]),
-        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5] [0]),
-        .I5(in_andor_ctrl),
-        .O(\Use_Cross_Trigger.tdo_reg[5]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[6]_i_1 
@@ -2921,7 +5582,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I1(sel_n_reg_0),
         .I2(tdo_reg[5]),
         .O(\Use_Cross_Trigger.tdo_reg[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[7]_i_1 
@@ -2934,7 +5595,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_Cross_Trigger.tdo_reg_reg[0] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(E),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[0]_i_1_n_0 ),
         .Q(tdo_reg[0]));
   FDCE #(
@@ -3054,7 +5715,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_Cross_Trigger.tdo_reg_reg[23] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(E),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg_reg[8]_0 [0]),
         .Q(tdo_reg[23]));
   FDCE #(
@@ -3062,7 +5723,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_Cross_Trigger.tdo_reg_reg[2] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(E),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[2]_i_1_n_0 ),
         .Q(tdo_reg[2]));
   FDCE #(
@@ -3070,7 +5731,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_Cross_Trigger.tdo_reg_reg[3] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(E),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[3]_i_1_n_0 ),
         .Q(tdo_reg[3]));
   FDCE #(
@@ -3078,7 +5739,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_Cross_Trigger.tdo_reg_reg[4] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(E),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(\Use_Cross_Trigger.tdo_reg[4]_i_1_n_0 ),
         .Q(tdo_reg[4]));
   FDCE #(
@@ -3122,22 +5783,15 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .D(\Use_Cross_Trigger.tdo_reg_reg[8]_0 [10]),
         .Q(\Use_Cross_Trigger.tdo_reg_reg[7]_0 [9]));
   LUT6 #(
-    .INIT(64'h0000000400000000)) 
+    .INIT(64'h0000100000000000)) 
     \Use_Dbg_Mem_Access.Master_data_rd_i_1 
-       (.I0(\Use_Dbg_Mem_Access.Master_data_rd_i_2_n_0 ),
-        .I1(\Use_BSCAN.command_reg_n_0_[7] ),
-        .I2(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
-        .I3(\Use_Dbg_Mem_Access.master_overrun_reg_0 ),
-        .I4(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I5(\Use_BSCAN.command_reg_n_0_[6] ),
+       (.I0(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
+        .I1(\Use_BSCAN.command_reg_n_0_[5] ),
+        .I2(\Use_BSCAN.command_reg_n_0_[6] ),
+        .I3(\Use_BSCAN.command_reg_n_0_[2] ),
+        .I4(\Use_BSCAN.command_reg_n_0_[4] ),
+        .I5(\Use_Dbg_Mem_Access.Master_wr_start_reg_1 ),
         .O(Master_data_rd5_out));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
-  LUT2 #(
-    .INIT(4'hB)) 
-    \Use_Dbg_Mem_Access.Master_data_rd_i_2 
-       (.I0(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[2] ),
-        .O(\Use_Dbg_Mem_Access.Master_data_rd_i_2_n_0 ));
   FDRE \Use_Dbg_Mem_Access.Master_data_rd_reg 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
@@ -3145,14 +5799,14 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .Q(master_data_rd),
         .R(Reset));
   LUT6 #(
-    .INIT(64'h0000000000000400)) 
+    .INIT(64'h0000000000000008)) 
     \Use_Dbg_Mem_Access.Master_data_wr_i_1 
-       (.I0(\Use_Dbg_Mem_Access.master_overrun_reg_0 ),
+       (.I0(\Use_Dbg_Mem_Access.Master_wr_start_reg_1 ),
         .I1(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[7] ),
-        .I4(Dbg_Shift_31_INST_0_i_2_n_0),
-        .I5(\Use_BSCAN.command_reg_n_0_[5] ),
+        .I2(\Use_BSCAN.command_reg_n_0_[5] ),
+        .I3(\Use_BSCAN.command_reg_n_0_[4] ),
+        .I4(\Use_BSCAN.command_reg_n_0_[6] ),
+        .I5(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
         .O(Master_data_wr2_out));
   FDRE \Use_Dbg_Mem_Access.Master_data_wr_reg 
        (.C(M_AXI_ACLK),
@@ -3160,21 +5814,25 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .D(Master_data_wr2_out),
         .Q(master_data_wr),
         .R(Reset));
-  LUT2 #(
-    .INIT(4'h2)) 
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  LUT5 #(
+    .INIT(32'h8C000000)) 
     \Use_Dbg_Mem_Access.Master_rd_start_i_1 
-       (.I0(\Use_Dbg_Mem_Access.Master_rd_start_i_2_n_0 ),
-        .I1(wdata_exists),
-        .O(Master_rd_start8_out));
-  LUT6 #(
-    .INIT(64'h0000000004000000)) 
-    \Use_Dbg_Mem_Access.Master_rd_start_i_2 
-       (.I0(\Use_Dbg_Mem_Access.master_overrun_reg_0 ),
+       (.I0(\Use_BSCAN.command_reg_n_0_[3] ),
         .I1(\Use_BSCAN.command_reg_n_0_[2] ),
         .I2(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[7] ),
-        .I4(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I5(Dbg_Shift_31_INST_0_i_2_n_0),
+        .I3(\Use_Dbg_Mem_Access.Master_rd_start_i_2_n_0 ),
+        .I4(\Use_Dbg_Mem_Access.Master_wr_start_reg_1 ),
+        .O(Master_rd_start8_out));
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  LUT5 #(
+    .INIT(32'h00000020)) 
+    \Use_Dbg_Mem_Access.Master_rd_start_i_2 
+       (.I0(\Use_BSCAN.command_reg_n_0_[5] ),
+        .I1(\Use_BSCAN.command_reg_n_0_[6] ),
+        .I2(\Use_BSCAN.command_reg_n_0_[2] ),
+        .I3(wdata_exists),
+        .I4(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
         .O(\Use_Dbg_Mem_Access.Master_rd_start_i_2_n_0 ));
   FDRE \Use_Dbg_Mem_Access.Master_rd_start_reg 
        (.C(M_AXI_ACLK),
@@ -3182,13 +5840,30 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .D(Master_rd_start8_out),
         .Q(master_rd_start),
         .R(Reset));
-  LUT3 #(
-    .INIT(8'h80)) 
+  LUT6 #(
+    .INIT(64'h0000400000000000)) 
     \Use_Dbg_Mem_Access.Master_wr_start_i_1 
-       (.I0(\Use_Dbg_Mem_Access.Master_rd_start_i_2_n_0 ),
-        .I1(wdata_exists),
-        .I2(M_AXI_ARESETN),
+       (.I0(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
+        .I1(\Use_Dbg_Mem_Access.Master_wr_start_i_2_n_0 ),
+        .I2(wdata_exists),
+        .I3(M_AXI_ARESETN),
+        .I4(\Use_Dbg_Mem_Access.Master_wr_start_i_3_n_0 ),
+        .I5(\Use_Dbg_Mem_Access.Master_wr_start_reg_1 ),
         .O(\Use_Dbg_Mem_Access.Master_wr_start_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \Use_Dbg_Mem_Access.Master_wr_start_i_2 
+       (.I0(\Use_BSCAN.command_reg_n_0_[5] ),
+        .I1(\Use_BSCAN.command_reg_n_0_[6] ),
+        .O(\Use_Dbg_Mem_Access.Master_wr_start_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  LUT2 #(
+    .INIT(4'hB)) 
+    \Use_Dbg_Mem_Access.Master_wr_start_i_3 
+       (.I0(\Use_BSCAN.command_reg_n_0_[4] ),
+        .I1(\Use_BSCAN.command_reg_n_0_[2] ),
+        .O(\Use_Dbg_Mem_Access.Master_wr_start_i_3_n_0 ));
   FDRE \Use_Dbg_Mem_Access.Master_wr_start_reg 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
@@ -3202,8 +5877,8 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_Dbg_Mem_Access.access_idle_1_reg 
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
-        .D(p_93_out),
+        .CLR(AR),
+        .D(p_92_out),
         .Q(access_idle_1));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
@@ -3212,7 +5887,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_Dbg_Mem_Access.access_idle_2_reg 
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(access_idle_1),
         .Q(access_idle_2));
   (* ASYNC_REG *) 
@@ -3264,22 +5939,22 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .Q(execute_3),
         .R(Reset));
   LUT6 #(
-    .INIT(64'h0000000000700000)) 
+    .INIT(64'h00040000000C0000)) 
     \Use_Dbg_Mem_Access.execute_i_1 
-       (.I0(\Use_BSCAN.command_reg_n_0_[6] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I4(\Use_BSCAN.command_reg_n_0_[7] ),
-        .I5(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
+       (.I0(\Use_BSCAN.command_reg_n_0_[5] ),
+        .I1(\Use_BSCAN.command_reg_n_0_[2] ),
+        .I2(\Use_BSCAN.command_reg_n_0_[4] ),
+        .I3(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
+        .I4(\Use_BSCAN.command_reg[7]_0 ),
+        .I5(\Use_BSCAN.command_reg_n_0_[6] ),
         .O(p_22_out));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     \Use_Dbg_Mem_Access.execute_i_3 
-       (.I0(\Use_BSCAN.command_reg_n_0_[1] ),
+       (.I0(\Use_BSCAN.command_reg_n_0_[0] ),
         .I1(\Use_BSCAN.command_reg_n_0_[3] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[0] ),
+        .I2(\Use_BSCAN.command_reg_n_0_[1] ),
         .O(\Use_Dbg_Mem_Access.execute_i_3_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
@@ -3289,223 +5964,228 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .CLR(data_cmd_reset23_out),
         .D(p_22_out),
         .Q(execute));
-  LUT3 #(
-    .INIT(8'h08)) 
-    \Use_Dbg_Mem_Access.input[0]_i_2 
-       (.I0(Scan_Reset),
-        .I1(Scan_Reset_Sel),
-        .I2(Scan_En),
-        .O(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT5 #(
-    .INIT(32'hFFFFFEFF)) 
-    \Use_Dbg_Mem_Access.input[0]_i_4 
-       (.I0(\Use_BSCAN.command_reg_n_0_[0] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[3] ),
+    .INIT(32'hFFFFFFFD)) 
+    \Use_Dbg_Mem_Access.input[0]_i_2 
+       (.I0(\Use_BSCAN.command_reg_n_0_[2] ),
+        .I1(\Use_BSCAN.command_reg_n_0_[4] ),
         .I2(\Use_BSCAN.command_reg_n_0_[1] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I4(\Use_BSCAN.command_reg_n_0_[4] ),
-        .O(\Use_Dbg_Mem_Access.input[0]_i_4_n_0 ));
+        .I3(\Use_BSCAN.command_reg_n_0_[3] ),
+        .I4(\Use_BSCAN.command_reg_n_0_[0] ),
+        .O(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ));
   FDCE \Use_Dbg_Mem_Access.input_reg[0] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(Ext_JTAG_TDI),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [31]));
   FDCE \Use_Dbg_Mem_Access.input_reg[10] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [22]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [21]));
   FDCE \Use_Dbg_Mem_Access.input_reg[11] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [21]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [20]));
   FDCE \Use_Dbg_Mem_Access.input_reg[12] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [20]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [19]));
   FDCE \Use_Dbg_Mem_Access.input_reg[13] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [19]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [18]));
   FDCE \Use_Dbg_Mem_Access.input_reg[14] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [18]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [17]));
   FDCE \Use_Dbg_Mem_Access.input_reg[15] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [17]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [16]));
   FDCE \Use_Dbg_Mem_Access.input_reg[16] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [16]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [15]));
   FDCE \Use_Dbg_Mem_Access.input_reg[17] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [15]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [14]));
   FDCE \Use_Dbg_Mem_Access.input_reg[18] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [14]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [13]));
   FDCE \Use_Dbg_Mem_Access.input_reg[19] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [13]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [12]));
   FDCE \Use_Dbg_Mem_Access.input_reg[1] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [31]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [30]));
   FDCE \Use_Dbg_Mem_Access.input_reg[20] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [12]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [11]));
   FDCE \Use_Dbg_Mem_Access.input_reg[21] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [11]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [10]));
   FDCE \Use_Dbg_Mem_Access.input_reg[22] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [10]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [9]));
   FDCE \Use_Dbg_Mem_Access.input_reg[23] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [9]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [8]));
   FDCE \Use_Dbg_Mem_Access.input_reg[24] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [8]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [7]));
   FDCE \Use_Dbg_Mem_Access.input_reg[25] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [7]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [6]));
   FDCE \Use_Dbg_Mem_Access.input_reg[26] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [6]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [5]));
   FDCE \Use_Dbg_Mem_Access.input_reg[27] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [5]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [4]));
   FDCE \Use_Dbg_Mem_Access.input_reg[28] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [4]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [3]));
   FDCE \Use_Dbg_Mem_Access.input_reg[29] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [3]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [2]));
   FDCE \Use_Dbg_Mem_Access.input_reg[2] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [30]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [29]));
   FDCE \Use_Dbg_Mem_Access.input_reg[30] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [2]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [1]));
   FDCE \Use_Dbg_Mem_Access.input_reg[31] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [1]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [0]));
   FDCE \Use_Dbg_Mem_Access.input_reg[3] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [29]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [28]));
   FDCE \Use_Dbg_Mem_Access.input_reg[4] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [28]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [27]));
   FDCE \Use_Dbg_Mem_Access.input_reg[5] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [27]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [26]));
   FDCE \Use_Dbg_Mem_Access.input_reg[6] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [26]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [25]));
   FDCE \Use_Dbg_Mem_Access.input_reg[7] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [25]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [24]));
   FDCE \Use_Dbg_Mem_Access.input_reg[8] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [24]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [23]));
   FDCE \Use_Dbg_Mem_Access.input_reg[9] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(p_88_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_87_out),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.input_reg[0]_0 [23]),
         .Q(\Use_Dbg_Mem_Access.input_reg[0]_0 [22]));
-  LUT4 #(
-    .INIT(16'hCDCC)) 
+  LUT6 #(
+    .INIT(64'hDDDCDDDDCCCCCCCC)) 
     \Use_Dbg_Mem_Access.master_error_i_1 
-       (.I0(\Use_Dbg_Mem_Access.Master_rd_start_i_2_n_0 ),
+       (.I0(clear_overrun_2),
         .I1(p_20_out),
-        .I2(clear_overrun_2),
-        .I3(\Use_Dbg_Mem_Access.master_error_reg_n_0 ),
+        .I2(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
+        .I3(\Use_BSCAN.command_reg_n_0_[6] ),
+        .I4(\Use_Dbg_Mem_Access.master_error_i_3_n_0 ),
+        .I5(\Use_Dbg_Mem_Access.master_error_reg_n_0 ),
         .O(\Use_Dbg_Mem_Access.master_error_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  LUT5 #(
+    .INIT(32'h40000000)) 
+    \Use_Dbg_Mem_Access.master_error_i_3 
+       (.I0(\Use_BSCAN.command_reg_n_0_[4] ),
+        .I1(\Use_BSCAN.command_reg_n_0_[2] ),
+        .I2(\Use_BSCAN.command_reg_n_0_[5] ),
+        .I3(\Use_BSCAN.command_reg[7]_0 ),
+        .I4(\Use_Dbg_Mem_Access.master_overrun_reg_0 ),
+        .O(\Use_Dbg_Mem_Access.master_error_i_3_n_0 ));
   FDRE \Use_Dbg_Mem_Access.master_error_reg 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
@@ -3513,14 +6193,14 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .Q(\Use_Dbg_Mem_Access.master_error_reg_n_0 ),
         .R(Reset));
   LUT6 #(
-    .INIT(64'h0808080800080000)) 
+    .INIT(64'h000000AE00000000)) 
     \Use_Dbg_Mem_Access.master_overrun_i_1 
-       (.I0(\Use_Dbg_Mem_Access.master_overrun_reg_0 ),
-        .I1(M_AXI_ARESETN),
-        .I2(clear_overrun_2),
-        .I3(execute_3),
-        .I4(execute_2),
-        .I5(\Use_Dbg_Mem_Access.master_overrun_reg_n_0 ),
+       (.I0(\Use_Dbg_Mem_Access.master_overrun_reg_n_0 ),
+        .I1(execute_2),
+        .I2(execute_3),
+        .I3(\Use_Dbg_Mem_Access.master_overrun_reg_0 ),
+        .I4(clear_overrun_2),
+        .I5(M_AXI_ARESETN),
         .O(\Use_Dbg_Mem_Access.master_overrun_i_1_n_0 ));
   FDRE \Use_Dbg_Mem_Access.master_overrun_reg 
        (.C(M_AXI_ACLK),
@@ -3528,255 +6208,241 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .D(\Use_Dbg_Mem_Access.master_overrun_i_1_n_0 ),
         .Q(\Use_Dbg_Mem_Access.master_overrun_reg_n_0 ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
-  LUT5 #(
-    .INIT(32'h55555755)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFF7F)) 
     \Use_Dbg_Mem_Access.output[0]_i_3 
-       (.I0(sel_n_reg_0),
-        .I1(\Use_Dbg_Mem_Access.input[0]_i_4_n_0 ),
-        .I2(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[6] ),
-        .I4(\Use_BSCAN.command_reg_n_0_[7] ),
-        .O(\Use_BSCAN.command_reg[5]_0 ));
+       (.I0(\Use_Dbg_Mem_Access.output[0]_i_4_n_0 ),
+        .I1(\Use_BSCAN.command_reg_n_0_[6] ),
+        .I2(\Use_BSCAN.command_reg_n_0_[2] ),
+        .I3(\Use_BSCAN.command_reg_n_0_[0] ),
+        .I4(\Use_BSCAN.command_reg_n_0_[4] ),
+        .I5(\Use_BSCAN.command_reg_n_0_[5] ),
+        .O(\Use_BSCAN.command_reg[6]_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
+  LUT3 #(
+    .INIT(8'h01)) 
+    \Use_Dbg_Mem_Access.output[0]_i_4 
+       (.I0(\Use_BSCAN.command_reg_n_0_[1] ),
+        .I1(\Use_BSCAN.command_reg_n_0_[3] ),
+        .I2(\Use_BSCAN.command_reg[7]_0 ),
+        .O(\Use_Dbg_Mem_Access.output[0]_i_4_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[10]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [9]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[17]),
+       (.I0(master_data_out[17]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [9]),
         .O(\Use_Dbg_Mem_Access.output[10]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[11]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [10]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[16]),
+       (.I0(master_data_out[16]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [10]),
         .O(\Use_Dbg_Mem_Access.output[11]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[12]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [11]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[15]),
+       (.I0(master_data_out[15]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [11]),
         .O(\Use_Dbg_Mem_Access.output[12]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[13]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [12]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[14]),
+       (.I0(master_data_out[14]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [12]),
         .O(\Use_Dbg_Mem_Access.output[13]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[14]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [13]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[13]),
+       (.I0(master_data_out[13]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [13]),
         .O(\Use_Dbg_Mem_Access.output[14]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[15]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [14]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[12]),
+       (.I0(master_data_out[12]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [14]),
         .O(\Use_Dbg_Mem_Access.output[15]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[16]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [15]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[11]),
+       (.I0(master_data_out[11]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [15]),
         .O(\Use_Dbg_Mem_Access.output[16]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[17]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [16]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[10]),
+       (.I0(master_data_out[10]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [16]),
         .O(\Use_Dbg_Mem_Access.output[17]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[18]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [17]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[9]),
+       (.I0(master_data_out[9]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [17]),
         .O(\Use_Dbg_Mem_Access.output[18]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[19]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [18]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[8]),
+       (.I0(master_data_out[8]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [18]),
         .O(\Use_Dbg_Mem_Access.output[19]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[1]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [0]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[26]),
+       (.I0(master_data_out[26]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [0]),
         .O(\Use_Dbg_Mem_Access.output[1]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[20]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [19]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[7]),
+       (.I0(master_data_out[7]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [19]),
         .O(\Use_Dbg_Mem_Access.output[20]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[21]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [20]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[6]),
+       (.I0(master_data_out[6]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [20]),
         .O(\Use_Dbg_Mem_Access.output[21]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[22]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [21]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[5]),
+       (.I0(master_data_out[5]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [21]),
         .O(\Use_Dbg_Mem_Access.output[22]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[23]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [22]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[4]),
+       (.I0(master_data_out[4]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [22]),
         .O(\Use_Dbg_Mem_Access.output[23]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFBFFFF)) 
-    \Use_Dbg_Mem_Access.output[24]_i_2 
-       (.I0(\Use_BSCAN.command_reg_n_0_[7] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[6] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I4(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I5(\Use_Dbg_Mem_Access.execute_i_3_n_0 ),
-        .O(\Use_BSCAN.command_reg[7]_1 ));
-  LUT6 #(
-    .INIT(64'h44F444F4FFFF44F4)) 
-    \Use_Dbg_Mem_Access.output[27]_i_1 
-       (.I0(\Use_BSCAN.command_reg[5]_0 ),
-        .I1(master_data_out[3]),
-        .I2(\output [26]),
-        .I3(sel_n_reg_0),
-        .I4(\Use_Dbg_Mem_Access.output_reg[27]_0 ),
-        .I5(\Use_Dbg_Mem_Access.output[27]_i_2_n_0 ),
-        .O(\Use_Dbg_Mem_Access.output[27]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT5 #(
-    .INIT(32'hFFEFFFFF)) 
-    \Use_Dbg_Mem_Access.output[27]_i_2 
-       (.I0(\Use_Dbg_Mem_Access.input[0]_i_4_n_0 ),
-        .I1(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[6] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[7] ),
+    .INIT(32'hF0CCAAAA)) 
+    \Use_Dbg_Mem_Access.output[27]_i_1 
+       (.I0(\output [26]),
+        .I1(\Use_Dbg_Mem_Access.output_reg[27]_0 ),
+        .I2(master_data_out[3]),
+        .I3(\Use_BSCAN.command_reg[6]_0 ),
         .I4(sel_n_reg_0),
-        .O(\Use_Dbg_Mem_Access.output[27]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h44F444F4FFFF44F4)) 
+        .O(\Use_Dbg_Mem_Access.output[27]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hF0CCAAAA)) 
     \Use_Dbg_Mem_Access.output[29]_i_1 
-       (.I0(\Use_Dbg_Mem_Access.output[27]_i_2_n_0 ),
+       (.I0(\output [28]),
         .I1(\Use_Dbg_Mem_Access.output_reg[29]_0 ),
-        .I2(\output [28]),
-        .I3(sel_n_reg_0),
-        .I4(master_data_out[2]),
-        .I5(\Use_BSCAN.command_reg[5]_0 ),
+        .I2(master_data_out[2]),
+        .I3(\Use_BSCAN.command_reg[6]_0 ),
+        .I4(sel_n_reg_0),
         .O(\Use_Dbg_Mem_Access.output[29]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[2]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [1]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[25]),
+       (.I0(master_data_out[25]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [1]),
         .O(\Use_Dbg_Mem_Access.output[2]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[30]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [29]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[1]),
+       (.I0(master_data_out[1]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [29]),
         .O(\Use_Dbg_Mem_Access.output[30]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[31]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [30]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[0]),
+       (.I0(master_data_out[0]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [30]),
         .O(\Use_Dbg_Mem_Access.output[31]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[3]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [2]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[24]),
+       (.I0(master_data_out[24]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [2]),
         .O(\Use_Dbg_Mem_Access.output[3]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[4]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [3]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[23]),
+       (.I0(master_data_out[23]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [3]),
         .O(\Use_Dbg_Mem_Access.output[4]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[5]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [4]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[22]),
+       (.I0(master_data_out[22]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [4]),
         .O(\Use_Dbg_Mem_Access.output[5]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[6]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [5]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[21]),
+       (.I0(master_data_out[21]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [5]),
         .O(\Use_Dbg_Mem_Access.output[6]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[7]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [6]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[20]),
+       (.I0(master_data_out[20]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [6]),
         .O(\Use_Dbg_Mem_Access.output[7]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[8]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [7]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[19]),
+       (.I0(master_data_out[19]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [7]),
         .O(\Use_Dbg_Mem_Access.output[8]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h4F44)) 
+    .INIT(16'h8F80)) 
     \Use_Dbg_Mem_Access.output[9]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\output [8]),
-        .I2(\Use_BSCAN.command_reg[5]_0 ),
-        .I3(master_data_out[18]),
+       (.I0(master_data_out[18]),
+        .I1(\Use_BSCAN.command_reg[6]_0 ),
+        .I2(sel_n_reg_0),
+        .I3(\output [8]),
         .O(\Use_Dbg_Mem_Access.output[9]_i_1_n_0 ));
   FDCE \Use_Dbg_Mem_Access.output_reg[0] 
        (.C(\Using_FPGA.Native_1 ),
@@ -3925,7 +6591,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
   FDCE \Use_Dbg_Mem_Access.output_reg[31] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(E),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(\Use_Dbg_Mem_Access.output[31]_i_1_n_0 ),
         .Q(\output [31]));
   FDCE \Use_Dbg_Mem_Access.output_reg[3] 
@@ -3980,15 +6646,15 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_excl_reg 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_99_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_98_out),
+        .CLR(AR),
         .D(p_0_in_2[7]),
         .Q(rd_wr_excl));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_len_reg[0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_99_out),
+        .CE(p_98_out),
         .CLR(AR),
         .D(p_0_in_2[4]),
         .Q(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [4]));
@@ -3996,7 +6662,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_len_reg[1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_99_out),
+        .CE(p_98_out),
         .CLR(AR),
         .D(p_0_in_2[3]),
         .Q(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [3]));
@@ -4004,7 +6670,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_len_reg[2] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_99_out),
+        .CE(p_98_out),
         .CLR(AR),
         .D(p_0_in_2[2]),
         .Q(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [2]));
@@ -4012,7 +6678,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_len_reg[3] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_99_out),
+        .CE(p_98_out),
         .CLR(AR),
         .D(p_0_in_2[1]),
         .Q(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [1]));
@@ -4020,7 +6686,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_len_reg[4] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_99_out),
+        .CE(p_98_out),
         .CLR(AR),
         .D(p_0_in_2[0]),
         .Q(\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 [0]));
@@ -4028,16 +6694,16 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_size_reg[0] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_99_out),
+        .CE(p_98_out),
         .D(p_0_in_2[6]),
-        .PRE(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .PRE(AR),
         .Q(\Use_Dbg_Mem_Access.rd_wr_size_reg[0]_0 [1]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Dbg_Mem_Access.rd_wr_size_reg[1] 
        (.C(\Using_FPGA.Native_0 ),
-        .CE(p_99_out),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(p_98_out),
+        .CLR(AR),
         .D(p_0_in_2[5]),
         .Q(\Use_Dbg_Mem_Access.rd_wr_size_reg[0]_0 [0]));
   FDSE \Use_Dbg_Mem_Access.wr_resp_zero_reg 
@@ -4046,79 +6712,78 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .D(\Use_Dbg_Mem_Access.wr_resp_zero_reg_0 ),
         .Q(wr_resp_zero),
         .S(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT5 #(
-    .INIT(32'h55555554)) 
+    .INIT(32'hAAAAAAAB)) 
     \Use_E2.BSCANE2_I_i_10 
        (.I0(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[3] ),
-        .I4(\Use_BSCAN.command_reg_n_0_[1] ),
+        .I1(\Use_BSCAN.command_reg_n_0_[4] ),
+        .I2(\Use_BSCAN.command_reg_n_0_[2] ),
+        .I3(\Use_BSCAN.command_reg_n_0_[1] ),
+        .I4(\Use_BSCAN.command_reg_n_0_[3] ),
         .O(\Use_E2.BSCANE2_I_i_10_n_0 ));
   LUT6 #(
-    .INIT(64'h00000000D591C480)) 
+    .INIT(64'h000000008F838C80)) 
     \Use_E2.BSCANE2_I_i_11 
-       (.I0(\Use_BSCAN.command_reg_n_0_[4] ),
+       (.I0(completion_status[0]),
         .I1(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I2(completion_status[0]),
+        .I2(\Use_BSCAN.command_reg_n_0_[4] ),
         .I3(\output [31]),
         .I4(tdo_reg[23]),
         .I5(\Use_BSCAN.command_reg_n_0_[3] ),
         .O(\Use_E2.BSCANE2_I_i_11_n_0 ));
-  LUT5 #(
-    .INIT(32'h00022202)) 
-    \Use_E2.BSCANE2_I_i_3 
-       (.I0(\Use_BSCAN.command_reg_n_0_[6] ),
-        .I1(\Use_E2.BSCANE2_I_i_6_n_0 ),
-        .I2(Dbg_TDO_0),
-        .I3(\Use_E2.BSCANE2_I_i_10_n_0 ),
-        .I4(\Use_E2.BSCANE2_I_i_11_n_0 ),
-        .O(\Use_E2.BSCANE2_I_i_3_n_0 ));
   LUT3 #(
-    .INIT(8'hEA)) 
-    \Use_E2.BSCANE2_I_i_4 
-       (.I0(\command_1_reg[7]_0 [1]),
+    .INIT(8'hF8)) 
+    \Use_E2.BSCANE2_I_i_3 
+       (.I0(\Use_BSCAN.command_reg_n_0_[0] ),
         .I1(Dbg_TDO_0),
-        .I2(\Use_BSCAN.command_reg_n_0_[0] ),
-        .O(\Use_E2.BSCANE2_I_i_4_n_0 ));
+        .I2(\command_1_reg[7]_0 [1]),
+        .O(\Use_E2.BSCANE2_I_i_3_n_0 ));
+  LUT5 #(
+    .INIT(32'hD8000000)) 
+    \Use_E2.BSCANE2_I_i_5 
+       (.I0(\Use_E2.BSCANE2_I_i_10_n_0 ),
+        .I1(Dbg_TDO_0),
+        .I2(\Use_E2.BSCANE2_I_i_11_n_0 ),
+        .I3(\Use_E2.BSCANE2_I_i_8_n_0 ),
+        .I4(\Use_BSCAN.command_reg_n_0_[6] ),
+        .O(\Use_E2.BSCANE2_I_i_5_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFDF90F0B0C00)) 
-    \Use_E2.BSCANE2_I_i_6 
-       (.I0(\Use_BSCAN.command_reg_n_0_[4] ),
+    .INIT(64'h00001104AAAEBFBF)) 
+    \Use_E2.BSCANE2_I_i_8 
+       (.I0(\Use_BSCAN.command_reg_n_0_[5] ),
         .I1(\Use_BSCAN.command_reg_n_0_[2] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[5] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[1] ),
+        .I2(\Use_BSCAN.command_reg_n_0_[1] ),
+        .I3(\Use_BSCAN.command_reg_n_0_[4] ),
         .I4(\Use_BSCAN.command_reg_n_0_[3] ),
-        .I5(\Use_BSCAN.command_reg_n_0_[7] ),
-        .O(\Use_E2.BSCANE2_I_i_6_n_0 ));
+        .I5(\Use_BSCAN.command_reg[7]_0 ),
+        .O(\Use_E2.BSCANE2_I_i_8_n_0 ));
   LUT6 #(
     .INIT(64'hFFFEFFFFFFFFFFFE)) 
     \Use_E2.BSCANE2_I_i_9 
-       (.I0(\Use_BSCAN.command_reg_n_0_[3] ),
+       (.I0(\Use_BSCAN.command_reg_n_0_[2] ),
         .I1(\Use_BSCAN.command_reg_n_0_[1] ),
-        .I2(\Use_BSCAN.command_reg_n_0_[7] ),
-        .I3(\Use_BSCAN.command_reg_n_0_[2] ),
+        .I2(\Use_BSCAN.command_reg_n_0_[3] ),
+        .I3(\Use_BSCAN.command_reg[7]_0 ),
         .I4(\Use_BSCAN.command_reg_n_0_[4] ),
         .I5(\Use_BSCAN.command_reg_n_0_[5] ),
         .O(\Use_E2.BSCANE2_I_i_9_n_0 ));
   mcu_mdm_1_0_MB_SRL16E__parameterized5 \Use_ID_SRL16E.SRL16E_ID_1 
        (.Q({A3,A2,A1,Q}),
         .Q0_out(Q0_out),
-        .\Use_E2.BSCANE2_I_i_7 (\Using_FPGA.Native_1 ));
+        .\Use_E2.BSCANE2_I_i_6 (\Using_FPGA.Native_1 ));
   mcu_mdm_1_0_MB_SRL16E__parameterized7 \Use_ID_SRL16E.SRL16E_ID_2 
        (.Dbg_TDO_0(Dbg_TDO_0),
-        .Q({shift_Count_reg__0[4],A3,A2,A1,Q}),
+        .Q({shift_Count_reg[4],A3,A2,A1,Q}),
         .Q0_out(Q0_out),
-        .\Use_E2.BSCANE2_I_i_1_0 (\Use_E2.BSCANE2_I_i_6_n_0 ),
-        .\Use_E2.BSCANE2_I_i_1_1 (\Use_Config_SRL16E.SRL16E_2_n_0 ),
+        .\Use_E2.BSCANE2_I_i_1_0 (\Use_Config_SRL16E.Use_Ext_Config.SRL16E_3_n_0 ),
+        .\Use_E2.BSCANE2_I_i_1_1 (\Use_E2.BSCANE2_I_i_8_n_0 ),
         .\Use_E2.BSCANE2_I_i_1_2 (\Use_E2.BSCANE2_I_i_9_n_0 ),
-        .\Use_E2.BSCANE2_I_i_7_0 (\Using_FPGA.Native_1 ),
-        .sel_n_reg({\Use_BSCAN.command_reg_n_0_[0] ,\Use_BSCAN.command_reg_n_0_[5] ,\Use_BSCAN.command_reg_n_0_[6] }),
-        .sel_n_reg_0(\Use_E2.BSCANE2_I_i_3_n_0 ),
-        .sel_n_reg_1(\Use_E2.BSCANE2_I_i_4_n_0 ),
-        .sel_n_reg_2(\command_1_reg[7]_0 [0]),
-        .sel_n_reg_3(sel_n_reg_1),
+        .\Use_E2.BSCANE2_I_i_6_0 (\Using_FPGA.Native_1 ),
+        .sel_n_reg(sel_n_reg_1),
+        .sel_n_reg_0(\command_1_reg[7]_0 [0]),
+        .sel_n_reg_1(\Use_E2.BSCANE2_I_i_3_n_0 ),
+        .sel_n_reg_2({\Use_BSCAN.command_reg_n_0_[0] ,\Use_BSCAN.command_reg_n_0_[5] ,\Use_BSCAN.command_reg_n_0_[6] }),
+        .sel_n_reg_3(\Use_E2.BSCANE2_I_i_5_n_0 ),
         .tdo(tdo));
   FDCE #(
     .INIT(1'b0)) 
@@ -4126,40 +6791,43 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_49 ),
+        .D(\Use_BSCAN.FDC_I_n_51 ),
         .Q(clear_overrun));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFBAFFBABA)) 
+    \Use_Serial_Unified_Completion.completion_block_i_2 
+       (.I0(\Use_Serial_Unified_Completion.completion_block_i_3_n_0 ),
+        .I1(\Use_Serial_Unified_Completion.sample_1_reg_n_0_[13] ),
+        .I2(sample[13]),
+        .I3(\Use_Serial_Unified_Completion.sample_1_reg_n_0_[10] ),
+        .I4(mb_instr_overrun),
+        .I5(\Use_Serial_Unified_Completion.completion_block_i_4_n_0 ),
+        .O(p_23_out__10));
   LUT4 #(
     .INIT(16'h4F44)) 
     \Use_Serial_Unified_Completion.completion_block_i_3 
-       (.I0(\Use_Serial_Unified_Completion.sample_1_reg_n_0_[10] ),
-        .I1(mb_instr_overrun),
+       (.I0(\Use_Serial_Unified_Completion.sample_1_reg_n_0_[14] ),
+        .I1(sample[14]),
         .I2(\Use_Serial_Unified_Completion.sample_1_reg[15]_0 ),
         .I3(sample[15]),
         .O(\Use_Serial_Unified_Completion.completion_block_i_3_n_0 ));
   LUT4 #(
     .INIT(16'h4F44)) 
     \Use_Serial_Unified_Completion.completion_block_i_4 
-       (.I0(\Use_Serial_Unified_Completion.sample_1_reg_n_0_[13] ),
-        .I1(sample[13]),
-        .I2(\Use_Serial_Unified_Completion.sample_1_reg_n_0_[11] ),
-        .I3(\Use_Serial_Unified_Completion.mb_instr_error_reg_n_0 ),
+       (.I0(\Use_Serial_Unified_Completion.sample_1_reg_n_0_[11] ),
+        .I1(\Use_Serial_Unified_Completion.mb_instr_error_reg_n_0 ),
+        .I2(\Use_Serial_Unified_Completion.sample_1_reg_n_0_[12] ),
+        .I3(\Use_Serial_Unified_Completion.mb_data_overrun_reg_n_0 ),
         .O(\Use_Serial_Unified_Completion.completion_block_i_4_n_0 ));
-  LUT4 #(
-    .INIT(16'hD0DD)) 
-    \Use_Serial_Unified_Completion.completion_block_i_5 
-       (.I0(\Use_Serial_Unified_Completion.mb_data_overrun_reg_n_0 ),
-        .I1(\Use_Serial_Unified_Completion.sample_1_reg_n_0_[12] ),
-        .I2(\Use_Serial_Unified_Completion.sample_1_reg_n_0_[14] ),
-        .I3(sample[14]),
-        .O(\Use_Serial_Unified_Completion.completion_block_i_5_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_block_reg 
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
-        .D(\Use_BSCAN.FDC_I_n_48 ),
+        .CLR(AR),
+        .D(\Use_BSCAN.FDC_I_n_50 ),
         .Q(\Use_Serial_Unified_Completion.completion_block_reg_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Serial_Unified_Completion.completion_status[10]_i_1 
@@ -4167,7 +6835,6 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I1(sel_n_reg_0),
         .I2(completion_status[11]),
         .O(\Use_Serial_Unified_Completion.completion_status[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Serial_Unified_Completion.completion_status[11]_i_1 
@@ -4175,7 +6842,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I1(sel_n_reg_0),
         .I2(completion_status[12]),
         .O(\Use_Serial_Unified_Completion.completion_status[11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Serial_Unified_Completion.completion_status[12]_i_1 
@@ -4183,7 +6850,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I1(sel_n_reg_0),
         .I2(completion_status[13]),
         .O(\Use_Serial_Unified_Completion.completion_status[12]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Serial_Unified_Completion.completion_status[13]_i_1 
@@ -4191,7 +6858,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I1(sel_n_reg_0),
         .I2(completion_status[14]),
         .O(\Use_Serial_Unified_Completion.completion_status[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Serial_Unified_Completion.completion_status[14]_i_1 
@@ -4200,54 +6867,54 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .I2(completion_status[15]),
         .O(\Use_Serial_Unified_Completion.completion_status[14]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'h7F)) 
+    .INIT(8'h80)) 
     \Use_Serial_Unified_Completion.completion_status[3]_i_2 
-       (.I0(completion_status[1]),
-        .I1(completion_status[0]),
-        .I2(completion_status[2]),
-        .O(\Use_Serial_Unified_Completion.completion_status[3]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
-  LUT4 #(
-    .INIT(16'h7FFF)) 
-    \Use_Serial_Unified_Completion.completion_status[4]_i_2 
        (.I0(completion_status[2]),
         .I1(completion_status[0]),
         .I2(completion_status[1]),
-        .I3(completion_status[3]),
-        .O(\Use_Serial_Unified_Completion.completion_status[4]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
-  LUT5 #(
-    .INIT(32'h7FFFFFFF)) 
-    \Use_Serial_Unified_Completion.completion_status[5]_i_2 
+        .O(\Use_Serial_Unified_Completion.completion_status[3]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  LUT4 #(
+    .INIT(16'h8000)) 
+    \Use_Serial_Unified_Completion.completion_status[4]_i_2 
        (.I0(completion_status[3]),
         .I1(completion_status[1]),
         .I2(completion_status[0]),
         .I3(completion_status[2]),
-        .I4(completion_status[4]),
-        .O(\Use_Serial_Unified_Completion.completion_status[5]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h7FFFFFFFFFFFFFFF)) 
-    \Use_Serial_Unified_Completion.completion_status[7]_i_2 
+        .O(\Use_Serial_Unified_Completion.completion_status[4]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  LUT5 #(
+    .INIT(32'h80000000)) 
+    \Use_Serial_Unified_Completion.completion_status[5]_i_2 
        (.I0(completion_status[4]),
         .I1(completion_status[2]),
         .I2(completion_status[0]),
         .I3(completion_status[1]),
         .I4(completion_status[3]),
-        .I5(completion_status[5]),
+        .O(\Use_Serial_Unified_Completion.completion_status[5]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h8000000000000000)) 
+    \Use_Serial_Unified_Completion.completion_status[7]_i_2 
+       (.I0(completion_status[5]),
+        .I1(completion_status[3]),
+        .I2(completion_status[1]),
+        .I3(completion_status[0]),
+        .I4(completion_status[2]),
+        .I5(completion_status[4]),
         .O(\Use_Serial_Unified_Completion.completion_status[7]_i_2_n_0 ));
   LUT3 #(
-    .INIT(8'hDF)) 
-    \Use_Serial_Unified_Completion.completion_status[9]_i_3 
-       (.I0(completion_status[6]),
+    .INIT(8'h80)) 
+    \Use_Serial_Unified_Completion.completion_status[9]_i_4 
+       (.I0(completion_status[7]),
         .I1(\Use_Serial_Unified_Completion.completion_status[7]_i_2_n_0 ),
-        .I2(completion_status[7]),
-        .O(\Use_Serial_Unified_Completion.completion_status[9]_i_3_n_0 ));
+        .I2(completion_status[6]),
+        .O(\Use_Serial_Unified_Completion.completion_status[9]_i_4_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[0] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_44 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CLR(AR),
         .D(\Use_BSCAN.FDC_I_n_42 ),
         .Q(completion_status[0]));
   FDCE #(
@@ -4255,7 +6922,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_Serial_Unified_Completion.completion_status_reg[10] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(\Use_Serial_Unified_Completion.completion_status_reg[10]_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(\Use_Serial_Unified_Completion.completion_status[10]_i_1_n_0 ),
         .Q(completion_status[10]));
   FDCE #(
@@ -4279,7 +6946,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_Serial_Unified_Completion.completion_status_reg[13] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(\Use_Serial_Unified_Completion.completion_status_reg[10]_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(\Use_Serial_Unified_Completion.completion_status[13]_i_1_n_0 ),
         .Q(completion_status[13]));
   FDCE #(
@@ -4287,7 +6954,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_Serial_Unified_Completion.completion_status_reg[14] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(\Use_Serial_Unified_Completion.completion_status_reg[10]_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(\Use_Serial_Unified_Completion.completion_status[14]_i_1_n_0 ),
         .Q(completion_status[14]));
   FDCE #(
@@ -4295,153 +6962,153 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \Use_Serial_Unified_Completion.completion_status_reg[15] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(\Use_Serial_Unified_Completion.completion_status_reg[10]_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(\Use_Serial_Unified_Completion.completion_status_reg[15]_0 ),
         .Q(completion_status[15]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[1] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_44 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CLR(AR),
         .D(\Use_BSCAN.FDC_I_n_41 ),
         .Q(completion_status[1]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[2] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_44 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CLR(AR),
         .D(\Use_BSCAN.FDC_I_n_40 ),
         .Q(completion_status[2]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[3] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_44 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CLR(AR),
         .D(\Use_BSCAN.FDC_I_n_39 ),
         .Q(completion_status[3]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[4] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_44 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CLR(AR),
         .D(\Use_BSCAN.FDC_I_n_38 ),
         .Q(completion_status[4]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[5] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_44 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CLR(AR),
         .D(\Use_BSCAN.FDC_I_n_37 ),
         .Q(completion_status[5]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[6] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_44 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CLR(AR),
         .D(\Use_BSCAN.FDC_I_n_36 ),
         .Q(completion_status[6]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[7] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_44 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CLR(AR),
         .D(\Use_BSCAN.FDC_I_n_35 ),
         .Q(completion_status[7]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[8] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_44 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CLR(AR),
         .D(\Use_BSCAN.FDC_I_n_34 ),
         .Q(completion_status[8]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.completion_status_reg[9] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.FDC_I_n_44 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_BSCAN.FDC_I_n_12 ),
+        .CLR(AR),
         .D(\Use_BSCAN.FDC_I_n_33 ),
         .Q(completion_status[9]));
   LUT4 #(
     .INIT(16'h0078)) 
     \Use_Serial_Unified_Completion.count[0]__0_i_2 
-       (.I0(\Use_Serial_Unified_Completion.count_reg__1 [1]),
+       (.I0(\Use_Serial_Unified_Completion.count_reg [1]),
         .I1(\Use_Serial_Unified_Completion.count[0]__0_i_4_n_0 ),
-        .I2(\Use_Serial_Unified_Completion.count_reg__1 [0]),
+        .I2(\Use_Serial_Unified_Completion.count_reg [0]),
         .I3(sel_n_reg_0),
         .O(p_0_in[5]));
-  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT4 #(
     .INIT(16'h8000)) 
     \Use_Serial_Unified_Completion.count[0]__0_i_4 
-       (.I0(\Use_Serial_Unified_Completion.count_reg__1 [2]),
-        .I1(\Use_Serial_Unified_Completion.count_reg[5]_0 ),
-        .I2(\Use_Serial_Unified_Completion.count_reg__1 [4]),
-        .I3(\Use_Serial_Unified_Completion.count_reg__1 [3]),
+       (.I0(\Use_Serial_Unified_Completion.count_reg [2]),
+        .I1(\Use_Serial_Unified_Completion.count_reg [4]),
+        .I2(\Use_Serial_Unified_Completion.count_reg[5]_0 ),
+        .I3(\Use_Serial_Unified_Completion.count_reg [3]),
         .O(\Use_Serial_Unified_Completion.count[0]__0_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'hFF33FF3300200000)) 
+    .INIT(64'h0000FF80FF00FF00)) 
     \Use_Serial_Unified_Completion.count[0]_i_1 
        (.I0(\Use_Serial_Unified_Completion.count_reg_n_0_[1] ),
-        .I1(sel_n_reg_0),
-        .I2(Dbg_Shift_0_0),
-        .I3(\Use_BSCAN.FDC_I_n_28 ),
-        .I4(sync),
-        .I5(\Use_Serial_Unified_Completion.count_reg_n_0_[0] ),
+        .I1(Dbg_Shift_0_0),
+        .I2(sync),
+        .I3(\Use_Serial_Unified_Completion.count_reg_n_0_[0] ),
+        .I4(sel_n_reg_0),
+        .I5(shifting_Data1__0),
         .O(\Use_Serial_Unified_Completion.count[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h1555555540000000)) 
+    .INIT(64'h000000007FFF8000)) 
     \Use_Serial_Unified_Completion.count[1]__0_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\Use_Serial_Unified_Completion.count_reg__1 [2]),
+       (.I0(\Use_Serial_Unified_Completion.count_reg [2]),
+        .I1(\Use_Serial_Unified_Completion.count_reg [4]),
         .I2(\Use_Serial_Unified_Completion.count_reg[5]_0 ),
-        .I3(\Use_Serial_Unified_Completion.count_reg__1 [4]),
-        .I4(\Use_Serial_Unified_Completion.count_reg__1 [3]),
-        .I5(\Use_Serial_Unified_Completion.count_reg__1 [1]),
+        .I3(\Use_Serial_Unified_Completion.count_reg [3]),
+        .I4(\Use_Serial_Unified_Completion.count_reg [1]),
+        .I5(sel_n_reg_0),
         .O(p_0_in[4]));
   LUT6 #(
-    .INIT(64'hF5F5F1F500000400)) 
+    .INIT(64'h00F7FFFF00080000)) 
     \Use_Serial_Unified_Completion.count[1]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(Dbg_Shift_0_0),
-        .I2(\Use_BSCAN.FDC_I_n_28 ),
-        .I3(sync),
-        .I4(\Use_Serial_Unified_Completion.count_reg_n_0_[0] ),
+       (.I0(Dbg_Shift_0_0),
+        .I1(sync),
+        .I2(\Use_Serial_Unified_Completion.count_reg_n_0_[0] ),
+        .I3(sel_n_reg_0),
+        .I4(shifting_Data1__0),
         .I5(\Use_Serial_Unified_Completion.count_reg_n_0_[1] ),
         .O(\Use_Serial_Unified_Completion.count[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT5 #(
-    .INIT(32'h15554000)) 
+    .INIT(32'h00007F80)) 
     \Use_Serial_Unified_Completion.count[2]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\Use_Serial_Unified_Completion.count_reg__1 [3]),
-        .I2(\Use_Serial_Unified_Completion.count_reg__1 [4]),
-        .I3(\Use_Serial_Unified_Completion.count_reg[5]_0 ),
-        .I4(\Use_Serial_Unified_Completion.count_reg__1 [2]),
-        .O(p_0_in[3]));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
-  LUT4 #(
-    .INIT(16'h1540)) 
-    \Use_Serial_Unified_Completion.count[3]_i_1 
-       (.I0(sel_n_reg_0),
+       (.I0(\Use_Serial_Unified_Completion.count_reg [3]),
         .I1(\Use_Serial_Unified_Completion.count_reg[5]_0 ),
-        .I2(\Use_Serial_Unified_Completion.count_reg__1 [4]),
-        .I3(\Use_Serial_Unified_Completion.count_reg__1 [3]),
+        .I2(\Use_Serial_Unified_Completion.count_reg [4]),
+        .I3(\Use_Serial_Unified_Completion.count_reg [2]),
+        .I4(sel_n_reg_0),
+        .O(p_0_in[3]));
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  LUT4 #(
+    .INIT(16'h0078)) 
+    \Use_Serial_Unified_Completion.count[3]_i_1 
+       (.I0(\Use_Serial_Unified_Completion.count_reg [4]),
+        .I1(\Use_Serial_Unified_Completion.count_reg[5]_0 ),
+        .I2(\Use_Serial_Unified_Completion.count_reg [3]),
+        .I3(sel_n_reg_0),
         .O(p_0_in[2]));
   LUT3 #(
-    .INIT(8'h14)) 
+    .INIT(8'h06)) 
     \Use_Serial_Unified_Completion.count[4]_i_1 
-       (.I0(sel_n_reg_0),
-        .I1(\Use_Serial_Unified_Completion.count_reg__1 [4]),
-        .I2(\Use_Serial_Unified_Completion.count_reg[5]_0 ),
+       (.I0(\Use_Serial_Unified_Completion.count_reg[5]_0 ),
+        .I1(\Use_Serial_Unified_Completion.count_reg [4]),
+        .I2(sel_n_reg_0),
         .O(p_0_in[1]));
   FDCE #(
     .INIT(1'b0)) 
@@ -4455,10 +7122,10 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.count_reg[0]__0 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_Serial_Unified_Completion.count_reg[0]__0_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_Serial_Unified_Completion.count_reg[5]_1 ),
+        .CLR(AR),
         .D(p_0_in[5]),
-        .Q(\Use_Serial_Unified_Completion.count_reg__1 [0]));
+        .Q(\Use_Serial_Unified_Completion.count_reg [0]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.count_reg[1] 
@@ -4471,66 +7138,66 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.count_reg[1]__0 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_Serial_Unified_Completion.count_reg[0]__0_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_Serial_Unified_Completion.count_reg[5]_1 ),
+        .CLR(AR),
         .D(p_0_in[4]),
-        .Q(\Use_Serial_Unified_Completion.count_reg__1 [1]));
+        .Q(\Use_Serial_Unified_Completion.count_reg [1]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.count_reg[2] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_Serial_Unified_Completion.count_reg[0]__0_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_Serial_Unified_Completion.count_reg[5]_1 ),
+        .CLR(AR),
         .D(p_0_in[3]),
-        .Q(\Use_Serial_Unified_Completion.count_reg__1 [2]));
+        .Q(\Use_Serial_Unified_Completion.count_reg [2]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.count_reg[3] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_Serial_Unified_Completion.count_reg[0]__0_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_Serial_Unified_Completion.count_reg[5]_1 ),
+        .CLR(AR),
         .D(p_0_in[2]),
-        .Q(\Use_Serial_Unified_Completion.count_reg__1 [3]));
+        .Q(\Use_Serial_Unified_Completion.count_reg [3]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.count_reg[4] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_Serial_Unified_Completion.count_reg[0]__0_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_Serial_Unified_Completion.count_reg[5]_1 ),
+        .CLR(AR),
         .D(p_0_in[1]),
-        .Q(\Use_Serial_Unified_Completion.count_reg__1 [4]));
+        .Q(\Use_Serial_Unified_Completion.count_reg [4]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.count_reg[5] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_Serial_Unified_Completion.count_reg[0]__0_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(\Use_Serial_Unified_Completion.count_reg[5]_1 ),
+        .CLR(AR),
         .D(D),
         .Q(\Use_Serial_Unified_Completion.count_reg[5]_0 ));
-  LUT6 #(
-    .INIT(64'h0000004000000000)) 
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  LUT4 #(
+    .INIT(16'h0002)) 
     \Use_Serial_Unified_Completion.mb_data_overrun_i_2 
-       (.I0(\Use_Serial_Unified_Completion.count_reg__1 [1]),
-        .I1(\Use_Serial_Unified_Completion.count_reg__1 [0]),
-        .I2(Dbg_Shift_0_0),
-        .I3(\Use_Serial_Unified_Completion.count_reg__1 [3]),
-        .I4(\Use_Serial_Unified_Completion.count_reg__1 [2]),
-        .I5(\Use_Serial_Unified_Completion.mb_data_overrun_i_3_n_0 ),
+       (.I0(\Use_Serial_Unified_Completion.mb_data_overrun_i_3_n_0 ),
+        .I1(\Use_Serial_Unified_Completion.count_reg[5]_0 ),
+        .I2(\Use_Serial_Unified_Completion.count_reg [4]),
+        .I3(\Use_Serial_Unified_Completion.count_reg [3]),
         .O(\Use_Serial_Unified_Completion.mb_data_overrun_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair28" *) 
-  LUT2 #(
-    .INIT(4'h1)) 
+  LUT4 #(
+    .INIT(16'h0008)) 
     \Use_Serial_Unified_Completion.mb_data_overrun_i_3 
-       (.I0(\Use_Serial_Unified_Completion.count_reg[5]_0 ),
-        .I1(\Use_Serial_Unified_Completion.count_reg__1 [4]),
+       (.I0(Dbg_Shift_0_0),
+        .I1(\Use_Serial_Unified_Completion.count_reg [0]),
+        .I2(\Use_Serial_Unified_Completion.count_reg [1]),
+        .I3(\Use_Serial_Unified_Completion.count_reg [2]),
         .O(\Use_Serial_Unified_Completion.mb_data_overrun_i_3_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.mb_data_overrun_reg 
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
-        .D(\Use_BSCAN.FDC_I_n_47 ),
+        .CLR(AR),
+        .D(\Use_BSCAN.FDC_I_n_49 ),
         .Q(\Use_Serial_Unified_Completion.mb_data_overrun_reg_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
@@ -4538,43 +7205,26 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_46 ),
+        .D(\Use_BSCAN.FDC_I_n_48 ),
         .Q(\Use_Serial_Unified_Completion.mb_instr_error_reg_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
-  LUT2 #(
-    .INIT(4'hE)) 
-    \Use_Serial_Unified_Completion.mb_instr_overrun_i_7 
-       (.I0(\Use_BSCAN.command_reg_n_0_[7] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[2] ),
-        .O(\Use_Serial_Unified_Completion.mb_instr_overrun_i_7_n_0 ));
-  LUT2 #(
-    .INIT(4'hB)) 
-    \Use_Serial_Unified_Completion.mb_instr_overrun_i_8 
-       (.I0(\Use_BSCAN.command_reg_n_0_[4] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[5] ),
-        .O(\Use_Serial_Unified_Completion.mb_instr_overrun_i_8_n_0 ));
   FDCE #(
     .INIT(1'b0)) 
     \Use_Serial_Unified_Completion.mb_instr_overrun_reg 
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_45 ),
+        .D(\Use_BSCAN.FDC_I_n_47 ),
         .Q(mb_instr_overrun));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
-  LUT2 #(
-    .INIT(4'hB)) 
-    \Use_Serial_Unified_Completion.sample_1[15]_i_4 
-       (.I0(\Use_BSCAN.command_reg_n_0_[6] ),
-        .I1(\Use_BSCAN.command_reg_n_0_[7] ),
-        .O(\Use_Serial_Unified_Completion.sample_1[15]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
-  LUT2 #(
-    .INIT(4'h7)) 
-    \Use_Serial_Unified_Completion.sample_1[15]_i_5 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  LUT5 #(
+    .INIT(32'h00000008)) 
+    \Use_Serial_Unified_Completion.sample_1[15]_i_3 
        (.I0(\Use_BSCAN.command_reg_n_0_[2] ),
         .I1(\Use_BSCAN.command_reg_n_0_[4] ),
-        .O(\Use_Serial_Unified_Completion.sample_1[15]_i_5_n_0 ));
+        .I2(\Use_BSCAN.command_reg_n_0_[1] ),
+        .I3(\Use_BSCAN.command_reg_n_0_[3] ),
+        .I4(\Use_BSCAN.command_reg_n_0_[0] ),
+        .O(\Use_Serial_Unified_Completion.sample_1[15]_i_3_n_0 ));
   FDCE \Use_Serial_Unified_Completion.sample_1_reg[10] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(sample_1),
@@ -4590,7 +7240,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
   FDCE \Use_Serial_Unified_Completion.sample_1_reg[12] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(sample_1),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(\Use_Serial_Unified_Completion.mb_data_overrun_reg_n_0 ),
         .Q(\Use_Serial_Unified_Completion.sample_1_reg_n_0_[12] ));
   FDCE \Use_Serial_Unified_Completion.sample_1_reg[13] 
@@ -4602,7 +7252,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
   FDCE \Use_Serial_Unified_Completion.sample_1_reg[14] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(sample_1),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(sample[14]),
         .Q(\Use_Serial_Unified_Completion.sample_1_reg_n_0_[14] ));
   FDCE \Use_Serial_Unified_Completion.sample_1_reg[15] 
@@ -4617,15 +7267,15 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_31 ),
+        .D(\Use_BSCAN.FDC_I_n_45 ),
         .Q(sample[13]));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
   FDCE \Use_Serial_Unified_Completion.sample_reg[14] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
-        .D(\Use_BSCAN.FDC_I_n_30 ),
+        .CLR(AR),
+        .D(\Use_BSCAN.FDC_I_n_44 ),
         .Q(sample[14]));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
@@ -4633,14 +7283,14 @@ module mcu_mdm_1_0_JTAG_CONTROL
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
         .CLR(AR),
-        .D(\Use_BSCAN.FDC_I_n_29 ),
+        .D(\Use_BSCAN.FDC_I_n_43 ),
         .Q(sample[15]));
   FDCE #(
     .INIT(1'b0)) 
     \command_1_reg[0] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in_2[7]),
         .Q(command_1[0]));
   FDCE #(
@@ -4648,7 +7298,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \command_1_reg[1] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in_2[6]),
         .Q(command_1[1]));
   FDCE #(
@@ -4656,7 +7306,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \command_1_reg[2] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in_2[5]),
         .Q(command_1[2]));
   FDCE #(
@@ -4664,7 +7314,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \command_1_reg[3] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in_2[4]),
         .Q(command_1[3]));
   FDCE #(
@@ -4672,7 +7322,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \command_1_reg[4] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in_2[3]),
         .Q(command_1[4]));
   FDCE #(
@@ -4680,7 +7330,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \command_1_reg[5] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in_2[2]),
         .Q(command_1[5]));
   FDCE #(
@@ -4688,7 +7338,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \command_1_reg[6] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in_2[1]),
         .Q(command_1[6]));
   FDCE #(
@@ -4696,7 +7346,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \command_1_reg[7] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(command_10),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in_2[0]),
         .Q(command_1[7]));
   FDCE #(
@@ -4704,23 +7354,23 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \completion_ctrl_reg[0] 
        (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(\Use_BSCAN.FDC_I_n_55 ),
         .Q(completion_ctrl));
   LUT5 #(
-    .INIT(32'hFFFFFDFF)) 
+    .INIT(32'hFEFFFFFF)) 
     sel_n_i_1
-       (.I0(SEL),
-        .I1(\command_1_reg[7]_0 [2]),
-        .I2(\command_1_reg[7]_0 [3]),
+       (.I0(\command_1_reg[7]_0 [2]),
+        .I1(\command_1_reg[7]_0 [3]),
+        .I2(\command_1_reg[7]_0 [1]),
         .I3(\command_1_reg[7]_0 [0]),
-        .I4(\command_1_reg[7]_0 [1]),
+        .I4(SEL),
         .O(sel_n0));
   LUT5 #(
-    .INIT(32'h080B0808)) 
+    .INIT(32'h080D0808)) 
     sel_n_i_2
-       (.I0(Scan_Reset),
-        .I1(Scan_Reset_Sel),
+       (.I0(Scan_Reset_Sel),
+        .I1(Scan_Reset),
         .I2(Scan_En),
         .I3(\Use_BSCAN.command[0]_i_1_n_0 ),
         .I4(\Using_FPGA.Native_0 ),
@@ -4733,58 +7383,58 @@ module mcu_mdm_1_0_JTAG_CONTROL
         .D(sel_n0),
         .PRE(sel_with_scan_reset36_out),
         .Q(sel_n));
-  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT3 #(
-    .INIT(8'h28)) 
+    .INIT(8'h48)) 
     \shift_Count[1]_i_1 
-       (.I0(Dbg_Shift_0_0),
-        .I1(A1),
-        .I2(Q),
-        .O(p_0_in__0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
-  LUT4 #(
-    .INIT(16'h2A80)) 
-    \shift_Count[2]_i_1 
-       (.I0(Dbg_Shift_0_0),
-        .I1(Q),
+       (.I0(Q),
+        .I1(Dbg_Shift_0_0),
         .I2(A1),
+        .O(p_0_in__0[1]));
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  LUT4 #(
+    .INIT(16'h7080)) 
+    \shift_Count[2]_i_1 
+       (.I0(A1),
+        .I1(Q),
+        .I2(Dbg_Shift_0_0),
         .I3(A2),
         .O(p_0_in__0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT5 #(
-    .INIT(32'h2AAA8000)) 
+    .INIT(32'h7F008000)) 
     \shift_Count[3]_i_1 
-       (.I0(Dbg_Shift_0_0),
-        .I1(A2),
+       (.I0(A2),
+        .I1(Q),
         .I2(A1),
-        .I3(Q),
+        .I3(Dbg_Shift_0_0),
         .I4(A3),
         .O(p_0_in__0[3]));
   LUT6 #(
-    .INIT(64'h2AAAAAAA80000000)) 
+    .INIT(64'h7FFF000080000000)) 
     \shift_Count[4]_i_1 
-       (.I0(Dbg_Shift_0_0),
-        .I1(A3),
+       (.I0(A3),
+        .I1(A1),
         .I2(Q),
-        .I3(A1),
-        .I4(A2),
-        .I5(shift_Count_reg__0[4]),
+        .I3(A2),
+        .I4(Dbg_Shift_0_0),
+        .I5(shift_Count_reg[4]),
         .O(p_0_in__0[4]));
   LUT4 #(
     .INIT(16'h7080)) 
     \shift_Count[5]_i_1 
-       (.I0(shift_Count_reg__0[4]),
+       (.I0(shift_Count_reg[4]),
         .I1(\shift_Count[5]_i_2_n_0 ),
         .I2(Dbg_Shift_0_0),
-        .I3(shift_Count_reg__0[5]),
+        .I3(shift_Count_reg[5]),
         .O(p_0_in__0[5]));
-  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT4 #(
     .INIT(16'h8000)) 
     \shift_Count[5]_i_2 
        (.I0(A3),
-        .I1(Q),
-        .I2(A1),
+        .I1(A1),
+        .I2(Q),
         .I3(A2),
         .O(\shift_Count[5]_i_2_n_0 ));
   FDCE #(
@@ -4792,7 +7442,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \shift_Count_reg[0] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(\shift_Count_reg[0]_0 ),
         .Q(Q));
   FDCE #(
@@ -4800,7 +7450,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \shift_Count_reg[1] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in__0[1]),
         .Q(A1));
   FDCE #(
@@ -4808,7 +7458,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \shift_Count_reg[2] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in__0[2]),
         .Q(A2));
   FDCE #(
@@ -4816,7 +7466,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \shift_Count_reg[3] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in__0[3]),
         .Q(A3));
   FDCE #(
@@ -4824,32 +7474,32 @@ module mcu_mdm_1_0_JTAG_CONTROL
     \shift_Count_reg[4] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in__0[4]),
-        .Q(shift_Count_reg__0[4]));
+        .Q(shift_Count_reg[4]));
   FDCE #(
     .INIT(1'b0)) 
     \shift_Count_reg[5] 
        (.C(\Using_FPGA.Native_1 ),
         .CE(1'b1),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CLR(AR),
         .D(p_0_in__0[5]),
-        .Q(shift_Count_reg__0[5]));
+        .Q(shift_Count_reg[5]));
   LUT6 #(
-    .INIT(64'h0000020000000000)) 
+    .INIT(64'h0100000000000000)) 
     \tdi_shifter[0]_i_1 
-       (.I0(SEL),
-        .I1(\command_1_reg[7]_0 [2]),
-        .I2(\command_1_reg[7]_0 [3]),
+       (.I0(\command_1_reg[7]_0 [2]),
+        .I1(\command_1_reg[7]_0 [3]),
+        .I2(\command_1_reg[7]_0 [1]),
         .I3(\command_1_reg[7]_0 [0]),
-        .I4(\command_1_reg[7]_0 [1]),
+        .I4(SEL),
         .I5(Dbg_Shift_0_0),
-        .O(\tdi_shifter[0]_i_1_n_0 ));
+        .O(tdi_shifter0));
   FDCE #(
     .INIT(1'b0)) 
     \tdi_shifter_reg[0] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
+        .CE(tdi_shifter0),
         .CLR(AR),
         .D(Ext_JTAG_TDI),
         .Q(p_0_in_2[7]));
@@ -4857,7 +7507,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \tdi_shifter_reg[10] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
+        .CE(tdi_shifter0),
         .CLR(AR),
         .D(p_9_out[2]),
         .Q(p_9_out[1]));
@@ -4865,7 +7515,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \tdi_shifter_reg[11] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
+        .CE(tdi_shifter0),
         .CLR(AR),
         .D(p_9_out[1]),
         .Q(p_9_out[0]));
@@ -4873,7 +7523,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \tdi_shifter_reg[12] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
+        .CE(tdi_shifter0),
         .CLR(AR),
         .D(p_9_out[0]),
         .Q(\tdi_shifter_reg_n_0_[12] ));
@@ -4881,31 +7531,31 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \tdi_shifter_reg[13] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(tdi_shifter0),
+        .CLR(AR),
         .D(\tdi_shifter_reg_n_0_[12] ),
         .Q(\tdi_shifter_reg_n_0_[13] ));
   FDCE #(
     .INIT(1'b0)) 
     \tdi_shifter_reg[14] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(tdi_shifter0),
+        .CLR(AR),
         .D(\tdi_shifter_reg_n_0_[13] ),
         .Q(\tdi_shifter_reg_n_0_[14] ));
   FDCE #(
     .INIT(1'b0)) 
     \tdi_shifter_reg[15] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
-        .CLR(\Use_Dbg_Mem_Access.input[0]_i_2_n_0 ),
+        .CE(tdi_shifter0),
+        .CLR(AR),
         .D(\tdi_shifter_reg_n_0_[14] ),
         .Q(\tdi_shifter_reg_n_0_[15] ));
   FDCE #(
     .INIT(1'b0)) 
     \tdi_shifter_reg[1] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
+        .CE(tdi_shifter0),
         .CLR(AR),
         .D(p_0_in_2[7]),
         .Q(p_0_in_2[6]));
@@ -4913,7 +7563,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \tdi_shifter_reg[2] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
+        .CE(tdi_shifter0),
         .CLR(AR),
         .D(p_0_in_2[6]),
         .Q(p_0_in_2[5]));
@@ -4921,7 +7571,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \tdi_shifter_reg[3] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
+        .CE(tdi_shifter0),
         .CLR(AR),
         .D(p_0_in_2[5]),
         .Q(p_0_in_2[4]));
@@ -4929,7 +7579,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \tdi_shifter_reg[4] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
+        .CE(tdi_shifter0),
         .CLR(AR),
         .D(p_0_in_2[4]),
         .Q(p_0_in_2[3]));
@@ -4937,7 +7587,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \tdi_shifter_reg[5] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
+        .CE(tdi_shifter0),
         .CLR(AR),
         .D(p_0_in_2[3]),
         .Q(p_0_in_2[2]));
@@ -4945,7 +7595,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \tdi_shifter_reg[6] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
+        .CE(tdi_shifter0),
         .CLR(AR),
         .D(p_0_in_2[2]),
         .Q(p_0_in_2[1]));
@@ -4953,7 +7603,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \tdi_shifter_reg[7] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
+        .CE(tdi_shifter0),
         .CLR(AR),
         .D(p_0_in_2[1]),
         .Q(p_0_in_2[0]));
@@ -4961,7 +7611,7 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \tdi_shifter_reg[8] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
+        .CE(tdi_shifter0),
         .CLR(AR),
         .D(p_0_in_2[0]),
         .Q(p_9_out[3]));
@@ -4969,31 +7619,36 @@ module mcu_mdm_1_0_JTAG_CONTROL
     .INIT(1'b0)) 
     \tdi_shifter_reg[9] 
        (.C(\Using_FPGA.Native_1 ),
-        .CE(\tdi_shifter[0]_i_1_n_0 ),
+        .CE(tdi_shifter0),
         .CLR(AR),
         .D(p_9_out[3]),
         .Q(p_9_out[2]));
 endmodule
 
+(* ORIG_REF_NAME = "MB_BSCANE2" *) 
 module mcu_mdm_1_0_MB_BSCANE2
-   (\Use_BSCAN.command_reg[0] ,
+   (\Use_BSCAN.PORT_Selector_reg[0] ,
     DRCK,
     Ext_JTAG_RESET,
     SEL,
-    \Use_BSCAN.command_reg[0]_0 ,
+    \Use_BSCAN.PORT_Selector_reg[0]_0 ,
     Ext_JTAG_TDI,
     Ext_JTAG_UPDATE,
+    \Use_BSCAN.command_reg[5] ,
     \Using_FPGA.Native ,
     E,
+    \Use_BSCAN.command_reg[6] ,
     D,
     \shift_Count_reg[0] ,
     \Use_Serial_Unified_Completion.sample_1_reg[15] ,
     \Dbg_Trig_In_0[0] ,
-    \Use_BSCAN.command_reg[7] ,
     shift_n_reset1_out,
     AR,
     tdo,
-    \Use_Serial_Unified_Completion.completion_status_reg[10] ,
+    p_101_out__0,
+    p_125_out__0,
+    \Use_Dbg_Mem_Access.output_reg[0] ,
+    \Use_Dbg_Mem_Access.output_reg[0]_0 ,
     \Use_Serial_Unified_Completion.count_reg[5] ,
     Q,
     \Use_Serial_Unified_Completion.completion_status_reg[15] ,
@@ -5003,28 +7658,31 @@ module mcu_mdm_1_0_MB_BSCANE2
     Trig_In_1,
     Trig_In_2,
     Trig_In_3,
-    \Use_Serial_Unified_Completion.count_reg[0]__0 ,
-    Scan_Reset,
     Scan_Reset_Sel,
+    Scan_Reset,
     Scan_En);
-  output \Use_BSCAN.command_reg[0] ;
+  output \Use_BSCAN.PORT_Selector_reg[0] ;
   output DRCK;
   output Ext_JTAG_RESET;
   output SEL;
-  output \Use_BSCAN.command_reg[0]_0 ;
+  output \Use_BSCAN.PORT_Selector_reg[0]_0 ;
   output Ext_JTAG_TDI;
   output Ext_JTAG_UPDATE;
+  output [0:0]\Use_BSCAN.command_reg[5] ;
   output [0:0]\Using_FPGA.Native ;
   output [0:0]E;
+  output [0:0]\Use_BSCAN.command_reg[6] ;
   output [0:0]D;
   output [0:0]\shift_Count_reg[0] ;
   output [0:0]\Use_Serial_Unified_Completion.sample_1_reg[15] ;
   output [11:0]\Dbg_Trig_In_0[0] ;
-  output [0:0]\Use_BSCAN.command_reg[7] ;
   output shift_n_reset1_out;
   output [0:0]AR;
   input tdo;
-  input \Use_Serial_Unified_Completion.completion_status_reg[10] ;
+  input p_101_out__0;
+  input p_125_out__0;
+  input \Use_Dbg_Mem_Access.output_reg[0] ;
+  input [0:0]\Use_Dbg_Mem_Access.output_reg[0]_0 ;
   input [0:0]\Use_Serial_Unified_Completion.count_reg[5] ;
   input [0:0]Q;
   input [0:0]\Use_Serial_Unified_Completion.completion_status_reg[15] ;
@@ -5034,9 +7692,8 @@ module mcu_mdm_1_0_MB_BSCANE2
   input Trig_In_1;
   input Trig_In_2;
   input Trig_In_3;
-  input \Use_Serial_Unified_Completion.count_reg[0]__0 ;
-  input Scan_Reset;
   input Scan_Reset_Sel;
+  input Scan_Reset;
   input Scan_En;
 
   wire [0:0]AR;
@@ -5057,199 +7714,210 @@ module mcu_mdm_1_0_MB_BSCANE2
   wire Trig_In_1;
   wire Trig_In_2;
   wire Trig_In_3;
-  wire \Use_BSCAN.command_reg[0] ;
-  wire \Use_BSCAN.command_reg[0]_0 ;
-  wire [0:0]\Use_BSCAN.command_reg[7] ;
+  wire \Use_BSCAN.PORT_Selector_reg[0] ;
+  wire \Use_BSCAN.PORT_Selector_reg[0]_0 ;
+  wire [0:0]\Use_BSCAN.command_reg[5] ;
+  wire [0:0]\Use_BSCAN.command_reg[6] ;
   wire [11:0]\Use_Cross_Trigger.tdo_reg_reg[8] ;
+  wire \Use_Dbg_Mem_Access.output_reg[0] ;
+  wire [0:0]\Use_Dbg_Mem_Access.output_reg[0]_0 ;
   wire \Use_E2.BSCANE2_I_n_3 ;
   wire \Use_E2.BSCANE2_I_n_6 ;
   wire \Use_E2.BSCANE2_I_n_8 ;
-  wire \Use_Serial_Unified_Completion.completion_status_reg[10] ;
   wire [0:0]\Use_Serial_Unified_Completion.completion_status_reg[15] ;
-  wire \Use_Serial_Unified_Completion.count_reg[0]__0 ;
   wire [0:0]\Use_Serial_Unified_Completion.count_reg[5] ;
   wire [0:0]\Use_Serial_Unified_Completion.sample_1_reg[15] ;
   wire [0:0]\Using_FPGA.Native ;
+  wire p_101_out__0;
+  wire p_125_out__0;
   wire [0:0]\shift_Count_reg[0] ;
   wire shift_n_reset1_out;
   wire tdo;
 
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
   LUT4 #(
-    .INIT(16'h080B)) 
+    .INIT(16'h080D)) 
     \Use_BSCAN.Config_Reg[30]_i_1 
-       (.I0(Scan_Reset),
-        .I1(Scan_Reset_Sel),
+       (.I0(Scan_Reset_Sel),
+        .I1(Scan_Reset),
         .I2(Scan_En),
-        .I3(\Use_BSCAN.command_reg[0]_0 ),
+        .I3(\Use_BSCAN.PORT_Selector_reg[0]_0 ),
         .O(shift_n_reset1_out));
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
   LUT4 #(
-    .INIT(16'h080B)) 
+    .INIT(16'h080D)) 
     \Use_BSCAN.TDI_Shifter[3]_i_2 
-       (.I0(Scan_Reset),
-        .I1(Scan_Reset_Sel),
+       (.I0(Scan_Reset_Sel),
+        .I1(Scan_Reset),
         .I2(Scan_En),
         .I3(SEL),
         .O(AR));
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[10]_i_1 
        (.I0(Dbg_Trig_In_0[2]),
-        .I1(\Use_BSCAN.command_reg[0] ),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [9]),
         .O(\Dbg_Trig_In_0[0] [9]));
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[11]_i_1 
        (.I0(Dbg_Trig_In_0[3]),
-        .I1(\Use_BSCAN.command_reg[0] ),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [8]),
         .O(\Dbg_Trig_In_0[0] [8]));
-  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[12]_i_1 
        (.I0(Dbg_Trig_In_0[4]),
-        .I1(\Use_BSCAN.command_reg[0] ),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [7]),
         .O(\Dbg_Trig_In_0[0] [7]));
-  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[13]_i_1 
        (.I0(Dbg_Trig_In_0[5]),
-        .I1(\Use_BSCAN.command_reg[0] ),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [6]),
         .O(\Dbg_Trig_In_0[0] [6]));
-  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[14]_i_1 
        (.I0(Dbg_Trig_In_0[6]),
-        .I1(\Use_BSCAN.command_reg[0] ),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [5]),
         .O(\Dbg_Trig_In_0[0] [5]));
-  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[15]_i_1 
        (.I0(Dbg_Trig_In_0[7]),
-        .I1(\Use_BSCAN.command_reg[0] ),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [4]),
         .O(\Dbg_Trig_In_0[0] [4]));
-  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[20]_i_1 
        (.I0(Trig_In_0),
-        .I1(\Use_BSCAN.command_reg[0] ),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [3]),
         .O(\Dbg_Trig_In_0[0] [3]));
-  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  (* SOFT_HLUTNM = "soft_lutpair67" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[21]_i_1 
        (.I0(Trig_In_1),
-        .I1(\Use_BSCAN.command_reg[0] ),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [2]),
         .O(\Dbg_Trig_In_0[0] [2]));
-  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  (* SOFT_HLUTNM = "soft_lutpair67" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[22]_i_1 
        (.I0(Trig_In_2),
-        .I1(\Use_BSCAN.command_reg[0] ),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [1]),
         .O(\Dbg_Trig_In_0[0] [1]));
-  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  (* SOFT_HLUTNM = "soft_lutpair68" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[23]_i_1 
        (.I0(Trig_In_3),
-        .I1(\Use_BSCAN.command_reg[0] ),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [0]),
         .O(\Dbg_Trig_In_0[0] [0]));
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[8]_i_1 
        (.I0(Dbg_Trig_In_0[0]),
-        .I1(\Use_BSCAN.command_reg[0] ),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [11]),
         .O(\Dbg_Trig_In_0[0] [11]));
-  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Cross_Trigger.tdo_reg[9]_i_1 
        (.I0(Dbg_Trig_In_0[1]),
-        .I1(\Use_BSCAN.command_reg[0] ),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I2(\Use_Cross_Trigger.tdo_reg_reg[8] [10]),
         .O(\Dbg_Trig_In_0[0] [10]));
-  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \Use_Dbg_Mem_Access.output[0]_i_1 
-       (.I0(\Use_BSCAN.command_reg[0] ),
-        .I1(\Use_BSCAN.command_reg[0]_0 ),
+       (.I0(\Use_BSCAN.PORT_Selector_reg[0] ),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0]_0 ),
         .O(E));
+  (* SOFT_HLUTNM = "soft_lutpair68" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \Use_Dbg_Mem_Access.output[0]_i_2 
+       (.I0(\Use_BSCAN.PORT_Selector_reg[0] ),
+        .I1(\Use_Dbg_Mem_Access.output_reg[0] ),
+        .I2(\Use_Dbg_Mem_Access.output_reg[0]_0 ),
+        .O(\Use_BSCAN.command_reg[6] ));
   (* box_type = "PRIMITIVE" *) 
   BSCANE2 #(
     .DISABLE_JTAG("FALSE"),
     .JTAG_CHAIN(2)) 
     \Use_E2.BSCANE2_I 
-       (.CAPTURE(\Use_BSCAN.command_reg[0] ),
+       (.CAPTURE(\Use_BSCAN.PORT_Selector_reg[0] ),
         .DRCK(DRCK),
         .RESET(Ext_JTAG_RESET),
         .RUNTEST(\Use_E2.BSCANE2_I_n_3 ),
         .SEL(SEL),
-        .SHIFT(\Use_BSCAN.command_reg[0]_0 ),
+        .SHIFT(\Use_BSCAN.PORT_Selector_reg[0]_0 ),
         .TCK(\Use_E2.BSCANE2_I_n_6 ),
         .TDI(Ext_JTAG_TDI),
         .TDO(tdo),
         .TMS(\Use_E2.BSCANE2_I_n_8 ),
         .UPDATE(Ext_JTAG_UPDATE));
-  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
   LUT3 #(
-    .INIT(8'hA8)) 
+    .INIT(8'hE0)) 
     \Use_Serial_Unified_Completion.completion_status[15]_i_1 
-       (.I0(\Use_Serial_Unified_Completion.completion_status_reg[10] ),
-        .I1(\Use_BSCAN.command_reg[0] ),
-        .I2(\Use_BSCAN.command_reg[0]_0 ),
+       (.I0(\Use_BSCAN.PORT_Selector_reg[0]_0 ),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0] ),
+        .I2(p_125_out__0),
         .O(\Using_FPGA.Native ));
-  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \Use_Serial_Unified_Completion.completion_status[15]_i_2 
-       (.I0(\Use_BSCAN.command_reg[0] ),
+       (.I0(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I1(\Use_Serial_Unified_Completion.completion_status_reg[15] ),
         .O(\Use_Serial_Unified_Completion.sample_1_reg[15] ));
-  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
   LUT3 #(
-    .INIT(8'h0E)) 
+    .INIT(8'hA8)) 
     \Use_Serial_Unified_Completion.count[0]__0_i_1 
-       (.I0(\Use_BSCAN.command_reg[0] ),
-        .I1(\Use_BSCAN.command_reg[0]_0 ),
-        .I2(\Use_Serial_Unified_Completion.count_reg[0]__0 ),
-        .O(\Use_BSCAN.command_reg[7] ));
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+       (.I0(p_101_out__0),
+        .I1(\Use_BSCAN.PORT_Selector_reg[0]_0 ),
+        .I2(\Use_BSCAN.PORT_Selector_reg[0] ),
+        .O(\Use_BSCAN.command_reg[5] ));
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \Use_Serial_Unified_Completion.count[5]_i_1 
-       (.I0(\Use_BSCAN.command_reg[0] ),
+       (.I0(\Use_BSCAN.PORT_Selector_reg[0] ),
         .I1(\Use_Serial_Unified_Completion.count_reg[5] ),
         .O(D));
-  (* SOFT_HLUTNM = "soft_lutpair63" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \shift_Count[0]_i_1 
-       (.I0(\Use_BSCAN.command_reg[0]_0 ),
+       (.I0(\Use_BSCAN.PORT_Selector_reg[0]_0 ),
         .I1(Q),
         .O(\shift_Count_reg[0] ));
 endmodule
 
+(* ORIG_REF_NAME = "MB_BUFG" *) 
 module mcu_mdm_1_0_MB_BUFG
    (Ext_JTAG_DRCK,
     DRCK);
@@ -5265,951 +7933,885 @@ module mcu_mdm_1_0_MB_BUFG
         .O(Ext_JTAG_DRCK));
 endmodule
 
+(* ORIG_REF_NAME = "MB_FDC_1" *) 
 module mcu_mdm_1_0_MB_FDC_1
    (D_1,
-    E,
-    CE,
-    \Use_Dbg_Mem_Access.access_idle_2_reg ,
-    Dbg_Shift_0,
     Dbg_Reg_En_0,
-    \Use_BSCAN.command_reg[7] ,
-    \Use_BSCAN.command_reg[7]_0 ,
-    \tdi_shifter_reg[9] ,
-    \tdi_shifter_reg[9]_0 ,
-    \Use_BSCAN.command_reg[6] ,
-    \Use_BSCAN.command_reg[6]_0 ,
-    \Use_BSCAN.command_reg[6]_1 ,
-    \Use_BSCAN.command_reg[6]_2 ,
-    \Use_BSCAN.command_reg[6]_3 ,
-    \tdi_shifter_reg[14] ,
-    \tdi_shifter_reg[14]_0 ,
-    \tdi_shifter_reg[15] ,
-    \tdi_shifter_reg[15]_0 ,
-    \Use_BSCAN.command_reg[6]_4 ,
+    p_101_out__0,
     \Using_FPGA.Native_0 ,
-    \Use_BSCAN.command_reg[5] ,
-    D,
+    E,
     \Using_FPGA.Native_1 ,
-    \Use_Serial_Unified_Completion.completion_status_reg[9] ,
-    \Use_BSCAN.command_reg[4] ,
     \Using_FPGA.Native_2 ,
-    \Use_Serial_Unified_Completion.count_reg[1] ,
-    \Use_Serial_Unified_Completion.count_reg[1]_0 ,
+    CE,
+    \Use_BSCAN.command_reg[6] ,
+    \tdi_shifter_reg[8] ,
+    \tdi_shifter_reg[8]_0 ,
+    \tdi_shifter_reg[9] ,
+    \tdi_shifter_reg[8]_1 ,
+    \Use_BSCAN.command_reg[1] ,
+    \Use_BSCAN.command_reg[1]_0 ,
+    \tdi_shifter_reg[13] ,
+    \tdi_shifter_reg[13]_0 ,
+    \tdi_shifter_reg[15] ,
+    \tdi_shifter_reg[13]_1 ,
+    \tdi_shifter_reg[13]_2 ,
+    \tdi_shifter_reg[13]_3 ,
+    \tdi_shifter_reg[15]_0 ,
+    \tdi_shifter_reg[13]_4 ,
+    shifting_Data1__0,
+    \Use_BSCAN.command_reg[6]_0 ,
+    \Use_BSCAN.PORT_Selector_reg[2] ,
+    D,
+    \Use_Serial_Unified_Completion.sample_reg[15] ,
+    \Using_FPGA.Native_3 ,
     Dbg_TDO_0_0,
+    Dbg_TDO_0_1,
+    Dbg_TDO_0_2,
     \completion_ctrl_reg[0] ,
     \Use_Serial_Unified_Completion.clear_overrun_reg ,
-    \tdi_shifter_reg[9]_1 ,
-    \tdi_shifter_reg[9]_2 ,
     \tdi_shifter_reg[0] ,
     \tdi_shifter_reg[1] ,
     \tdi_shifter_reg[3] ,
     \tdi_shifter_reg[0]_0 ,
     data_cmd_reset23_out,
-    \Using_FPGA.Native_3 ,
+    \Using_FPGA.Native_4 ,
     sel_n,
-    SEL,
-    \command_1_reg[7] ,
-    Q,
     \Use_Serial_Unified_Completion.completion_block_reg ,
-    out,
-    \Dbg_Reg_En_0[0] ,
-    \Use_Dbg_Mem_Access.input_reg[31] ,
+    Q,
     \Use_Serial_Unified_Completion.mb_data_overrun_reg ,
-    \Use_Serial_Unified_Completion.mb_data_overrun_reg_0 ,
-    Dbg_Shift_0_0,
-    Dbg_TDO_0,
-    \Use_Serial_Unified_Completion.mb_data_overrun_reg_1 ,
-    \Use_Serial_Unified_Completion.mb_instr_error_reg ,
-    Dbg_Shift_0_1,
-    sync,
-    \Use_Serial_Unified_Completion.sample_reg[15] ,
-    \Use_Serial_Unified_Completion.completion_status_reg[9]_0 ,
-    \Use_Serial_Unified_Completion.completion_status_reg[5] ,
-    \Use_Serial_Unified_Completion.completion_status_reg[4] ,
+    \Use_Dbg_Mem_Access.rd_wr_excl_reg ,
+    \Use_Serial_Unified_Completion.completion_status_reg[0] ,
+    \Use_Serial_Unified_Completion.mb_instr_overrun_reg ,
+    Debug_Rst_i_reg,
+    out,
+    Dbg_Shift_0,
+    \Use_Cross_Trigger.ext_out_ctrl_reg[3][3] ,
+    \Use_Cross_Trigger.ext_in_ctrl_reg[3] ,
+    \Use_Cross_Trigger.out_ctrl_reg[0][5][3] ,
+    \command_1_reg[7] ,
+    SEL,
+    \Use_Serial_Unified_Completion.completion_status_reg[9] ,
     \Use_Serial_Unified_Completion.completion_status_reg[3] ,
-    \Use_Serial_Unified_Completion.completion_block_reg_0 ,
-    \Use_Serial_Unified_Completion.completion_block_reg_1 ,
-    \Use_Serial_Unified_Completion.completion_block_reg_2 ,
-    \Use_Serial_Unified_Completion.completion_block_reg_3 ,
+    \Use_Serial_Unified_Completion.completion_status_reg[4] ,
+    \Use_Serial_Unified_Completion.completion_status_reg[5] ,
     \Use_Serial_Unified_Completion.completion_status_reg[6] ,
     \Use_Serial_Unified_Completion.completion_status_reg[8] ,
+    \Use_Serial_Unified_Completion.sample_reg[15]_0 ,
     \Use_Serial_Unified_Completion.sample_reg[13] ,
     \Use_Serial_Unified_Completion.sample_reg[14] ,
-    \Use_Serial_Unified_Completion.sample_reg[14]_0 ,
-    \Use_Serial_Unified_Completion.mb_instr_overrun_reg ,
+    \Use_Serial_Unified_Completion.sample_1_reg[10] ,
+    \completion_ctrl_reg[0]_0 ,
+    \completion_ctrl_reg[0]_1 ,
+    Dbg_TDO_0,
     \Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 ,
-    \Use_Serial_Unified_Completion.mb_data_overrun_reg_2 ,
+    \Use_Serial_Unified_Completion.mb_instr_error_reg ,
+    \Use_Serial_Unified_Completion.mb_data_overrun_reg_0 ,
+    p_23_out__10,
     completion_ctrl,
     clear_overrun,
-    \Use_Cross_Trigger.ext_out_ctrl_reg[1][3] ,
     Dbg_Rst_0,
     Debug_SYS_Rst,
     Ext_NM_BRK,
-    Scan_Reset,
     Scan_Reset_Sel,
+    Scan_Reset,
     Scan_En);
   output D_1;
-  output [0:0]E;
-  output CE;
-  output [0:0]\Use_Dbg_Mem_Access.access_idle_2_reg ;
-  output Dbg_Shift_0;
   output [0:7]Dbg_Reg_En_0;
-  output [0:0]\Use_BSCAN.command_reg[7] ;
-  output \Use_BSCAN.command_reg[7]_0 ;
-  output [0:0]\tdi_shifter_reg[9] ;
-  output [0:0]\tdi_shifter_reg[9]_0 ;
-  output [0:0]\Use_BSCAN.command_reg[6] ;
-  output [0:0]\Use_BSCAN.command_reg[6]_0 ;
-  output [0:0]\Use_BSCAN.command_reg[6]_1 ;
-  output [0:0]\Use_BSCAN.command_reg[6]_2 ;
-  output [0:0]\Use_BSCAN.command_reg[6]_3 ;
-  output [0:0]\tdi_shifter_reg[14] ;
-  output [0:0]\tdi_shifter_reg[14]_0 ;
-  output [0:0]\tdi_shifter_reg[15] ;
-  output [0:0]\tdi_shifter_reg[15]_0 ;
-  output [0:0]\Use_BSCAN.command_reg[6]_4 ;
+  output p_101_out__0;
   output \Using_FPGA.Native_0 ;
-  output \Use_BSCAN.command_reg[5] ;
-  output [2:0]D;
-  output \Using_FPGA.Native_1 ;
-  output [9:0]\Use_Serial_Unified_Completion.completion_status_reg[9] ;
-  output [0:0]\Use_BSCAN.command_reg[4] ;
-  output [0:0]\Using_FPGA.Native_2 ;
-  output \Use_Serial_Unified_Completion.count_reg[1] ;
-  output \Use_Serial_Unified_Completion.count_reg[1]_0 ;
+  output [0:0]E;
+  output [0:0]\Using_FPGA.Native_1 ;
+  output \Using_FPGA.Native_2 ;
+  output CE;
+  output [0:0]\Use_BSCAN.command_reg[6] ;
+  output [0:0]\tdi_shifter_reg[8] ;
+  output [0:0]\tdi_shifter_reg[8]_0 ;
+  output [0:0]\tdi_shifter_reg[9] ;
+  output [0:0]\tdi_shifter_reg[8]_1 ;
+  output [0:0]\Use_BSCAN.command_reg[1] ;
+  output [0:0]\Use_BSCAN.command_reg[1]_0 ;
+  output [0:0]\tdi_shifter_reg[13] ;
+  output [0:0]\tdi_shifter_reg[13]_0 ;
+  output [0:0]\tdi_shifter_reg[15] ;
+  output [0:0]\tdi_shifter_reg[13]_1 ;
+  output [0:0]\tdi_shifter_reg[13]_2 ;
+  output [0:0]\tdi_shifter_reg[13]_3 ;
+  output [0:0]\tdi_shifter_reg[15]_0 ;
+  output [0:0]\tdi_shifter_reg[13]_4 ;
+  output shifting_Data1__0;
+  output \Use_BSCAN.command_reg[6]_0 ;
+  output [0:0]\Use_BSCAN.PORT_Selector_reg[2] ;
+  output [9:0]D;
+  output [2:0]\Use_Serial_Unified_Completion.sample_reg[15] ;
+  output [0:0]\Using_FPGA.Native_3 ;
   output Dbg_TDO_0_0;
+  output Dbg_TDO_0_1;
+  output Dbg_TDO_0_2;
   output \completion_ctrl_reg[0] ;
   output \Use_Serial_Unified_Completion.clear_overrun_reg ;
-  output [0:0]\tdi_shifter_reg[9]_1 ;
-  output [0:0]\tdi_shifter_reg[9]_2 ;
   output \tdi_shifter_reg[0] ;
   output \tdi_shifter_reg[1] ;
   output \tdi_shifter_reg[3] ;
   output \tdi_shifter_reg[0]_0 ;
   output data_cmd_reset23_out;
-  input \Using_FPGA.Native_3 ;
+  input \Using_FPGA.Native_4 ;
   input sel_n;
-  input SEL;
-  input [3:0]\command_1_reg[7] ;
-  input [12:0]Q;
   input \Use_Serial_Unified_Completion.completion_block_reg ;
-  input out;
-  input [7:0]\Dbg_Reg_En_0[0] ;
-  input \Use_Dbg_Mem_Access.input_reg[31] ;
+  input [7:0]Q;
   input \Use_Serial_Unified_Completion.mb_data_overrun_reg ;
-  input \Use_Serial_Unified_Completion.mb_data_overrun_reg_0 ;
-  input Dbg_Shift_0_0;
-  input Dbg_TDO_0;
-  input \Use_Serial_Unified_Completion.mb_data_overrun_reg_1 ;
-  input \Use_Serial_Unified_Completion.mb_instr_error_reg ;
-  input Dbg_Shift_0_1;
-  input sync;
-  input [5:0]\Use_Serial_Unified_Completion.sample_reg[15] ;
-  input [10:0]\Use_Serial_Unified_Completion.completion_status_reg[9]_0 ;
-  input \Use_Serial_Unified_Completion.completion_status_reg[5] ;
-  input \Use_Serial_Unified_Completion.completion_status_reg[4] ;
+  input \Use_Dbg_Mem_Access.rd_wr_excl_reg ;
+  input \Use_Serial_Unified_Completion.completion_status_reg[0] ;
+  input \Use_Serial_Unified_Completion.mb_instr_overrun_reg ;
+  input [12:0]Debug_Rst_i_reg;
+  input out;
+  input Dbg_Shift_0;
+  input \Use_Cross_Trigger.ext_out_ctrl_reg[3][3] ;
+  input \Use_Cross_Trigger.ext_in_ctrl_reg[3] ;
+  input \Use_Cross_Trigger.out_ctrl_reg[0][5][3] ;
+  input [3:0]\command_1_reg[7] ;
+  input SEL;
+  input [10:0]\Use_Serial_Unified_Completion.completion_status_reg[9] ;
   input \Use_Serial_Unified_Completion.completion_status_reg[3] ;
-  input \Use_Serial_Unified_Completion.completion_block_reg_0 ;
-  input \Use_Serial_Unified_Completion.completion_block_reg_1 ;
-  input \Use_Serial_Unified_Completion.completion_block_reg_2 ;
-  input \Use_Serial_Unified_Completion.completion_block_reg_3 ;
+  input \Use_Serial_Unified_Completion.completion_status_reg[4] ;
+  input \Use_Serial_Unified_Completion.completion_status_reg[5] ;
   input \Use_Serial_Unified_Completion.completion_status_reg[6] ;
   input \Use_Serial_Unified_Completion.completion_status_reg[8] ;
+  input [5:0]\Use_Serial_Unified_Completion.sample_reg[15]_0 ;
   input \Use_Serial_Unified_Completion.sample_reg[13] ;
   input \Use_Serial_Unified_Completion.sample_reg[14] ;
-  input \Use_Serial_Unified_Completion.sample_reg[14]_0 ;
-  input \Use_Serial_Unified_Completion.mb_instr_overrun_reg ;
+  input \Use_Serial_Unified_Completion.sample_1_reg[10] ;
+  input \completion_ctrl_reg[0]_0 ;
+  input \completion_ctrl_reg[0]_1 ;
+  input Dbg_TDO_0;
   input \Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 ;
-  input \Use_Serial_Unified_Completion.mb_data_overrun_reg_2 ;
+  input \Use_Serial_Unified_Completion.mb_instr_error_reg ;
+  input \Use_Serial_Unified_Completion.mb_data_overrun_reg_0 ;
+  input p_23_out__10;
   input completion_ctrl;
   input clear_overrun;
-  input \Use_Cross_Trigger.ext_out_ctrl_reg[1][3] ;
   input Dbg_Rst_0;
   input Debug_SYS_Rst;
   input Ext_NM_BRK;
-  input Scan_Reset;
   input Scan_Reset_Sel;
+  input Scan_Reset;
   input Scan_En;
 
   wire CE;
-  wire [2:0]D;
+  wire [9:0]D;
   wire D_1;
   wire [0:7]Dbg_Reg_En_0;
-  wire [7:0]\Dbg_Reg_En_0[0] ;
   wire Dbg_Rst_0;
   wire Dbg_Shift_0;
-  wire Dbg_Shift_0_0;
-  wire Dbg_Shift_0_1;
   wire Dbg_TDO_0;
   wire Dbg_TDO_0_0;
+  wire Dbg_TDO_0_1;
+  wire Dbg_TDO_0_2;
   wire Debug_Rst_i0;
+  wire [12:0]Debug_Rst_i_reg;
   wire Debug_SYS_Rst;
   wire [0:0]E;
   wire Ext_NM_BRK;
-  wire [12:0]Q;
+  wire [7:0]Q;
   wire Q_0;
   wire SEL;
   wire Scan_En;
   wire Scan_Reset;
   wire Scan_Reset_Sel;
-  wire [0:0]\Use_BSCAN.command_reg[4] ;
-  wire \Use_BSCAN.command_reg[5] ;
+  wire [0:0]\Use_BSCAN.PORT_Selector_reg[2] ;
+  wire [0:0]\Use_BSCAN.command_reg[1] ;
+  wire [0:0]\Use_BSCAN.command_reg[1]_0 ;
   wire [0:0]\Use_BSCAN.command_reg[6] ;
-  wire [0:0]\Use_BSCAN.command_reg[6]_0 ;
-  wire [0:0]\Use_BSCAN.command_reg[6]_1 ;
-  wire [0:0]\Use_BSCAN.command_reg[6]_2 ;
-  wire [0:0]\Use_BSCAN.command_reg[6]_3 ;
-  wire [0:0]\Use_BSCAN.command_reg[6]_4 ;
-  wire [0:0]\Use_BSCAN.command_reg[7] ;
-  wire \Use_BSCAN.command_reg[7]_0 ;
-  wire \Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ;
+  wire \Use_BSCAN.command_reg[6]_0 ;
+  wire \Use_Cross_Trigger.ext_in_ctrl_reg[3] ;
   wire \Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2_n_0 ;
-  wire \Use_Cross_Trigger.ext_out_ctrl_reg[1][3] ;
-  wire [0:0]\Use_Dbg_Mem_Access.access_idle_2_reg ;
-  wire \Use_Dbg_Mem_Access.input[0]_i_3_n_0 ;
-  wire \Use_Dbg_Mem_Access.input_reg[31] ;
+  wire \Use_Cross_Trigger.ext_out_ctrl_reg[3][3] ;
+  wire \Use_Cross_Trigger.out_ctrl[0][5][0]_i_2_n_0 ;
+  wire \Use_Cross_Trigger.out_ctrl[0][7][0]_i_2_n_0 ;
+  wire \Use_Cross_Trigger.out_ctrl_reg[0][5][3] ;
+  wire \Use_Dbg_Mem_Access.rd_wr_excl_reg ;
   wire \Use_Serial_Unified_Completion.clear_overrun_reg ;
-  wire \Use_Serial_Unified_Completion.completion_block_i_2_n_0 ;
   wire \Use_Serial_Unified_Completion.completion_block_reg ;
-  wire \Use_Serial_Unified_Completion.completion_block_reg_0 ;
-  wire \Use_Serial_Unified_Completion.completion_block_reg_1 ;
-  wire \Use_Serial_Unified_Completion.completion_block_reg_2 ;
-  wire \Use_Serial_Unified_Completion.completion_block_reg_3 ;
+  wire \Use_Serial_Unified_Completion.completion_status_reg[0] ;
   wire \Use_Serial_Unified_Completion.completion_status_reg[3] ;
   wire \Use_Serial_Unified_Completion.completion_status_reg[4] ;
   wire \Use_Serial_Unified_Completion.completion_status_reg[5] ;
   wire \Use_Serial_Unified_Completion.completion_status_reg[6] ;
   wire \Use_Serial_Unified_Completion.completion_status_reg[8] ;
-  wire [9:0]\Use_Serial_Unified_Completion.completion_status_reg[9] ;
-  wire [10:0]\Use_Serial_Unified_Completion.completion_status_reg[9]_0 ;
-  wire \Use_Serial_Unified_Completion.count_reg[1] ;
-  wire \Use_Serial_Unified_Completion.count_reg[1]_0 ;
+  wire [10:0]\Use_Serial_Unified_Completion.completion_status_reg[9] ;
   wire \Use_Serial_Unified_Completion.mb_data_overrun_reg ;
   wire \Use_Serial_Unified_Completion.mb_data_overrun_reg_0 ;
-  wire \Use_Serial_Unified_Completion.mb_data_overrun_reg_1 ;
-  wire \Use_Serial_Unified_Completion.mb_data_overrun_reg_2 ;
   wire \Use_Serial_Unified_Completion.mb_instr_error_reg ;
-  wire \Use_Serial_Unified_Completion.mb_instr_overrun_i_3_n_0 ;
-  wire \Use_Serial_Unified_Completion.mb_instr_overrun_i_4_n_0 ;
-  wire \Use_Serial_Unified_Completion.mb_instr_overrun_i_6_n_0 ;
   wire \Use_Serial_Unified_Completion.mb_instr_overrun_reg ;
   wire \Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 ;
-  wire \Use_Serial_Unified_Completion.sample[14]_i_2_n_0 ;
+  wire \Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ;
+  wire \Use_Serial_Unified_Completion.sample_1_reg[10] ;
   wire \Use_Serial_Unified_Completion.sample_reg[13] ;
   wire \Use_Serial_Unified_Completion.sample_reg[14] ;
-  wire \Use_Serial_Unified_Completion.sample_reg[14]_0 ;
-  wire [5:0]\Use_Serial_Unified_Completion.sample_reg[15] ;
+  wire [2:0]\Use_Serial_Unified_Completion.sample_reg[15] ;
+  wire [5:0]\Use_Serial_Unified_Completion.sample_reg[15]_0 ;
   wire \Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_1 ;
-  wire [0:0]\Using_FPGA.Native_2 ;
-  wire \Using_FPGA.Native_3 ;
+  wire [0:0]\Using_FPGA.Native_1 ;
+  wire \Using_FPGA.Native_2 ;
+  wire [0:0]\Using_FPGA.Native_3 ;
+  wire \Using_FPGA.Native_4 ;
   wire \Using_FPGA.Native_i_2_n_0 ;
   wire clear_overrun;
   wire [3:0]\command_1_reg[7] ;
   wire completion_ctrl;
   wire completion_ctrl0;
   wire \completion_ctrl_reg[0] ;
+  wire \completion_ctrl_reg[0]_0 ;
+  wire \completion_ctrl_reg[0]_1 ;
   wire data_cmd_reset23_out;
-  wire mb_instr_overrun32_out;
   wire out;
+  wire p_101_out__0;
+  wire p_23_out__10;
   wire sel_n;
-  wire sync;
+  wire shifting_Data1__0;
   wire \tdi_shifter_reg[0] ;
   wire \tdi_shifter_reg[0]_0 ;
-  wire [0:0]\tdi_shifter_reg[14] ;
-  wire [0:0]\tdi_shifter_reg[14]_0 ;
+  wire [0:0]\tdi_shifter_reg[13] ;
+  wire [0:0]\tdi_shifter_reg[13]_0 ;
+  wire [0:0]\tdi_shifter_reg[13]_1 ;
+  wire [0:0]\tdi_shifter_reg[13]_2 ;
+  wire [0:0]\tdi_shifter_reg[13]_3 ;
+  wire [0:0]\tdi_shifter_reg[13]_4 ;
   wire [0:0]\tdi_shifter_reg[15] ;
   wire [0:0]\tdi_shifter_reg[15]_0 ;
   wire \tdi_shifter_reg[1] ;
   wire \tdi_shifter_reg[3] ;
+  wire [0:0]\tdi_shifter_reg[8] ;
+  wire [0:0]\tdi_shifter_reg[8]_0 ;
+  wire [0:0]\tdi_shifter_reg[8]_1 ;
   wire [0:0]\tdi_shifter_reg[9] ;
-  wire [0:0]\tdi_shifter_reg[9]_0 ;
-  wire [0:0]\tdi_shifter_reg[9]_1 ;
-  wire [0:0]\tdi_shifter_reg[9]_2 ;
 
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT3 #(
-    .INIT(8'h08)) 
+    .INIT(8'h40)) 
     \Dbg_Reg_En_0[0]_INST_0 
-       (.I0(\Dbg_Reg_En_0[0] [7]),
+       (.I0(\Use_Serial_Unified_Completion.completion_block_reg ),
         .I1(Q_0),
-        .I2(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I2(Q[7]),
         .O(Dbg_Reg_En_0[0]));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT3 #(
-    .INIT(8'h08)) 
+    .INIT(8'h20)) 
     \Dbg_Reg_En_0[1]_INST_0 
-       (.I0(\Dbg_Reg_En_0[0] [6]),
-        .I1(Q_0),
-        .I2(\Use_Serial_Unified_Completion.completion_block_reg ),
+       (.I0(Q[6]),
+        .I1(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I2(Q_0),
         .O(Dbg_Reg_En_0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT3 #(
-    .INIT(8'h08)) 
+    .INIT(8'h40)) 
     \Dbg_Reg_En_0[2]_INST_0 
-       (.I0(\Dbg_Reg_En_0[0] [5]),
+       (.I0(\Use_Serial_Unified_Completion.completion_block_reg ),
         .I1(Q_0),
-        .I2(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I2(Q[5]),
         .O(Dbg_Reg_En_0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT3 #(
-    .INIT(8'h08)) 
+    .INIT(8'h40)) 
     \Dbg_Reg_En_0[3]_INST_0 
-       (.I0(\Dbg_Reg_En_0[0] [4]),
+       (.I0(\Use_Serial_Unified_Completion.completion_block_reg ),
         .I1(Q_0),
-        .I2(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I2(Q[4]),
         .O(Dbg_Reg_En_0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT3 #(
-    .INIT(8'h08)) 
+    .INIT(8'h40)) 
     \Dbg_Reg_En_0[4]_INST_0 
-       (.I0(\Dbg_Reg_En_0[0] [3]),
+       (.I0(\Use_Serial_Unified_Completion.completion_block_reg ),
         .I1(Q_0),
-        .I2(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I2(Q[3]),
         .O(Dbg_Reg_En_0[4]));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT3 #(
-    .INIT(8'h08)) 
+    .INIT(8'h40)) 
     \Dbg_Reg_En_0[5]_INST_0 
-       (.I0(\Dbg_Reg_En_0[0] [2]),
+       (.I0(\Use_Serial_Unified_Completion.completion_block_reg ),
         .I1(Q_0),
-        .I2(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I2(Q[2]),
         .O(Dbg_Reg_En_0[5]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT3 #(
-    .INIT(8'h08)) 
+    .INIT(8'h40)) 
     \Dbg_Reg_En_0[6]_INST_0 
-       (.I0(\Dbg_Reg_En_0[0] [1]),
+       (.I0(\Use_Serial_Unified_Completion.completion_block_reg ),
         .I1(Q_0),
-        .I2(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I2(Q[1]),
         .O(Dbg_Reg_En_0[6]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT3 #(
-    .INIT(8'h08)) 
+    .INIT(8'h40)) 
     \Dbg_Reg_En_0[7]_INST_0 
-       (.I0(\Dbg_Reg_En_0[0] [0]),
+       (.I0(\Use_Serial_Unified_Completion.completion_block_reg ),
         .I1(Q_0),
-        .I2(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I2(Q[0]),
         .O(Dbg_Reg_En_0[7]));
-  LUT6 #(
-    .INIT(64'hAAAAAAAAAAAAAAA2)) 
-    Dbg_Shift_31_INST_0
-       (.I0(Dbg_Shift_0_1),
-        .I1(\Dbg_Reg_En_0[0] [2]),
-        .I2(\Dbg_Reg_En_0[0] [3]),
-        .I3(\Using_FPGA.Native_0 ),
-        .I4(Dbg_Shift_0_0),
-        .I5(sync),
-        .O(Dbg_Shift_0));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT4 #(
-    .INIT(16'hFFFD)) 
-    Dbg_Shift_31_INST_0_i_1
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    Dbg_Shift_31_INST_0_i_2
        (.I0(Q_0),
         .I1(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I2(\Dbg_Reg_En_0[0] [5]),
-        .I3(\Dbg_Reg_En_0[0] [0]),
         .O(\Using_FPGA.Native_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     Debug_Rst_i_i_1
-       (.I0(Q[12]),
+       (.I0(Debug_Rst_i_reg[12]),
         .I1(Debug_Rst_i0),
         .I2(Dbg_Rst_0),
         .O(\tdi_shifter_reg[0] ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     Debug_SYS_Rst_i_i_1
-       (.I0(Q[11]),
+       (.I0(Debug_Rst_i_reg[11]),
         .I1(Debug_Rst_i0),
         .I2(Debug_SYS_Rst),
         .O(\tdi_shifter_reg[1] ));
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     Ext_NM_BRK_i_i_1
-       (.I0(Q[9]),
+       (.I0(Debug_Rst_i_reg[9]),
         .I1(Debug_Rst_i0),
         .I2(Ext_NM_BRK),
         .O(\tdi_shifter_reg[3] ));
   LUT6 #(
-    .INIT(64'h0000000000000004)) 
+    .INIT(64'h0002000000000000)) 
     Ext_NM_BRK_i_i_3
-       (.I0(\Dbg_Reg_En_0[0] [2]),
-        .I1(\Dbg_Reg_En_0[0] [3]),
-        .I2(\Use_Dbg_Mem_Access.input[0]_i_3_n_0 ),
-        .I3(\Dbg_Reg_En_0[0] [5]),
-        .I4(\Dbg_Reg_En_0[0] [0]),
-        .I5(Dbg_Shift_0_0),
+       (.I0(\Using_FPGA.Native_0 ),
+        .I1(Q[1]),
+        .I2(Q[0]),
+        .I3(Q[2]),
+        .I4(Q[3]),
+        .I5(\Use_Serial_Unified_Completion.mb_data_overrun_reg ),
         .O(Debug_Rst_i0));
+  LUT6 #(
+    .INIT(64'h0000000000000008)) 
+    \Use_Cross_Trigger.ext_in_ctrl[0]_i_1 
+       (.I0(Q[6]),
+        .I1(\Using_FPGA.Native_0 ),
+        .I2(Q[2]),
+        .I3(Q[3]),
+        .I4(Q[1]),
+        .I5(\Use_Cross_Trigger.ext_in_ctrl_reg[3] ),
+        .O(\Use_BSCAN.command_reg[1] ));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT3 #(
+    .INIT(8'h10)) 
+    \Use_Cross_Trigger.ext_out_ctrl[0][0]_i_1 
+       (.I0(Debug_Rst_i_reg[4]),
+        .I1(Debug_Rst_i_reg[3]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2_n_0 ),
+        .O(\tdi_shifter_reg[8] ));
   (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT3 #(
-    .INIT(8'h01)) 
-    \Use_Cross_Trigger.ext_in_ctrl[0]_i_1 
-       (.I0(\Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ),
-        .I1(\Dbg_Reg_En_0[0] [1]),
-        .I2(\Dbg_Reg_En_0[0] [2]),
-        .O(\Use_BSCAN.command_reg[6] ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFEFFFFFFFF)) 
-    \Use_Cross_Trigger.ext_in_ctrl[0]_i_2 
-       (.I0(\Dbg_Reg_En_0[0] [3]),
-        .I1(\Dbg_Reg_En_0[0] [4]),
-        .I2(\Dbg_Reg_En_0[0] [7]),
-        .I3(\Dbg_Reg_En_0[0] [0]),
-        .I4(\Dbg_Reg_En_0[0] [5]),
-        .I5(Dbg_Reg_En_0[1]),
-        .O(\Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT3 #(
-    .INIT(8'h01)) 
-    \Use_Cross_Trigger.ext_out_ctrl[0][0]_i_1 
-       (.I0(Q[3]),
-        .I1(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2_n_0 ),
-        .I2(Q[4]),
-        .O(\tdi_shifter_reg[9]_2 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
-  LUT3 #(
-    .INIT(8'h02)) 
+    .INIT(8'h40)) 
     \Use_Cross_Trigger.ext_out_ctrl[1][0]_i_1 
-       (.I0(Q[3]),
-        .I1(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2_n_0 ),
-        .I2(Q[4]),
-        .O(\tdi_shifter_reg[9]_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
-  LUT3 #(
-    .INIT(8'h04)) 
-    \Use_Cross_Trigger.ext_out_ctrl[2][0]_i_1 
-       (.I0(Q[3]),
-        .I1(Q[4]),
+       (.I0(Debug_Rst_i_reg[4]),
+        .I1(Debug_Rst_i_reg[3]),
         .I2(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2_n_0 ),
-        .O(\tdi_shifter_reg[9]_1 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+        .O(\tdi_shifter_reg[8]_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT3 #(
-    .INIT(8'h08)) 
-    \Use_Cross_Trigger.ext_out_ctrl[3][0]_i_1 
-       (.I0(Q[3]),
-        .I1(Q[4]),
+    .INIT(8'h40)) 
+    \Use_Cross_Trigger.ext_out_ctrl[2][0]_i_1 
+       (.I0(Debug_Rst_i_reg[3]),
+        .I1(Debug_Rst_i_reg[4]),
         .I2(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2_n_0 ),
         .O(\tdi_shifter_reg[9] ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFEFFFFFFFF)) 
-    \Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2 
-       (.I0(\Use_Cross_Trigger.ext_out_ctrl_reg[1][3] ),
-        .I1(\Use_Serial_Unified_Completion.mb_data_overrun_reg ),
-        .I2(\Dbg_Reg_En_0[0] [1]),
-        .I3(\Dbg_Reg_En_0[0] [0]),
-        .I4(\Dbg_Reg_En_0[0] [2]),
-        .I5(Dbg_Reg_En_0[1]),
-        .O(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT3 #(
-    .INIT(8'h08)) 
-    \Use_Cross_Trigger.in_ctrl[0][0]_i_1 
-       (.I0(\Dbg_Reg_En_0[0] [1]),
-        .I1(\Dbg_Reg_En_0[0] [2]),
-        .I2(\Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ),
-        .O(\Use_BSCAN.command_reg[6]_4 ));
-  LUT6 #(
-    .INIT(64'h0000000000000040)) 
-    \Use_Cross_Trigger.out_ctrl[0][0][0]_i_1 
-       (.I0(Q[1]),
-        .I1(\Dbg_Reg_En_0[0] [1]),
-        .I2(\Dbg_Reg_En_0[0] [2]),
-        .I3(\Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ),
-        .I4(Q[0]),
-        .I5(Q[2]),
-        .O(\tdi_shifter_reg[14] ));
-  LUT6 #(
-    .INIT(64'h0000000000400000)) 
-    \Use_Cross_Trigger.out_ctrl[0][1][0]_i_1 
-       (.I0(Q[1]),
-        .I1(\Dbg_Reg_En_0[0] [1]),
-        .I2(\Dbg_Reg_En_0[0] [2]),
-        .I3(\Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ),
-        .I4(Q[0]),
-        .I5(Q[2]),
-        .O(\tdi_shifter_reg[14]_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000800)) 
-    \Use_Cross_Trigger.out_ctrl[0][2][0]_i_1 
-       (.I0(\Dbg_Reg_En_0[0] [1]),
-        .I1(\Dbg_Reg_En_0[0] [2]),
-        .I2(\Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ),
-        .I3(Q[1]),
-        .I4(Q[0]),
-        .I5(Q[2]),
-        .O(\Use_BSCAN.command_reg[6]_0 ));
-  LUT6 #(
-    .INIT(64'h0000000008000000)) 
-    \Use_Cross_Trigger.out_ctrl[0][3][0]_i_1 
-       (.I0(\Dbg_Reg_En_0[0] [1]),
-        .I1(\Dbg_Reg_En_0[0] [2]),
-        .I2(\Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ),
-        .I3(Q[1]),
-        .I4(Q[0]),
-        .I5(Q[2]),
-        .O(\Use_BSCAN.command_reg[6]_1 ));
-  LUT6 #(
-    .INIT(64'h0000000004000000)) 
-    \Use_Cross_Trigger.out_ctrl[0][4][0]_i_1 
-       (.I0(Q[0]),
-        .I1(Q[2]),
-        .I2(Q[1]),
-        .I3(\Dbg_Reg_En_0[0] [1]),
-        .I4(\Dbg_Reg_En_0[0] [2]),
-        .I5(\Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ),
-        .O(\tdi_shifter_reg[15] ));
-  LUT6 #(
-    .INIT(64'h0000000008000000)) 
-    \Use_Cross_Trigger.out_ctrl[0][5][0]_i_1 
-       (.I0(Q[0]),
-        .I1(Q[2]),
-        .I2(Q[1]),
-        .I3(\Dbg_Reg_En_0[0] [1]),
-        .I4(\Dbg_Reg_En_0[0] [2]),
-        .I5(\Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ),
-        .O(\tdi_shifter_reg[15]_0 ));
-  LUT6 #(
-    .INIT(64'h0000080000000000)) 
-    \Use_Cross_Trigger.out_ctrl[0][6][0]_i_1 
-       (.I0(\Dbg_Reg_En_0[0] [1]),
-        .I1(\Dbg_Reg_En_0[0] [2]),
-        .I2(\Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ),
-        .I3(Q[1]),
-        .I4(Q[0]),
-        .I5(Q[2]),
-        .O(\Use_BSCAN.command_reg[6]_2 ));
-  LUT6 #(
-    .INIT(64'h0800000000000000)) 
-    \Use_Cross_Trigger.out_ctrl[0][7][0]_i_1 
-       (.I0(\Dbg_Reg_En_0[0] [1]),
-        .I1(\Dbg_Reg_En_0[0] [2]),
-        .I2(\Use_Cross_Trigger.ext_in_ctrl[0]_i_2_n_0 ),
-        .I3(Q[1]),
-        .I4(Q[0]),
-        .I5(Q[2]),
-        .O(\Use_BSCAN.command_reg[6]_3 ));
+    .INIT(8'h80)) 
+    \Use_Cross_Trigger.ext_out_ctrl[3][0]_i_1 
+       (.I0(Debug_Rst_i_reg[4]),
+        .I1(Debug_Rst_i_reg[3]),
+        .I2(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2_n_0 ),
+        .O(\tdi_shifter_reg[8]_1 ));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
-    .INIT(32'h0B080B0B)) 
-    \Use_Dbg_Mem_Access.execute_i_2 
-       (.I0(Scan_Reset),
-        .I1(Scan_Reset_Sel),
-        .I2(Scan_En),
-        .I3(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I4(Q_0),
-        .O(data_cmd_reset23_out));
+    .INIT(32'h04000000)) 
+    \Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2 
+       (.I0(Q[2]),
+        .I1(Q[6]),
+        .I2(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I3(Q_0),
+        .I4(\Use_Cross_Trigger.ext_out_ctrl_reg[3][3] ),
+        .O(\Use_Cross_Trigger.ext_out_ctrl[3][0]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000008000000)) 
+    \Use_Cross_Trigger.in_ctrl[0][0]_i_1 
+       (.I0(Q[6]),
+        .I1(\Using_FPGA.Native_0 ),
+        .I2(Q[3]),
+        .I3(Q[2]),
+        .I4(Q[1]),
+        .I5(\Use_Cross_Trigger.ext_in_ctrl_reg[3] ),
+        .O(\Use_BSCAN.command_reg[1]_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT3 #(
+    .INIT(8'h10)) 
+    \Use_Cross_Trigger.out_ctrl[0][0][0]_i_1 
+       (.I0(Debug_Rst_i_reg[2]),
+        .I1(Debug_Rst_i_reg[0]),
+        .I2(\Use_Cross_Trigger.out_ctrl[0][5][0]_i_2_n_0 ),
+        .O(\tdi_shifter_reg[13] ));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT3 #(
+    .INIT(8'h40)) 
+    \Use_Cross_Trigger.out_ctrl[0][1][0]_i_1 
+       (.I0(Debug_Rst_i_reg[2]),
+        .I1(Debug_Rst_i_reg[0]),
+        .I2(\Use_Cross_Trigger.out_ctrl[0][5][0]_i_2_n_0 ),
+        .O(\tdi_shifter_reg[13]_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  LUT3 #(
+    .INIT(8'h10)) 
+    \Use_Cross_Trigger.out_ctrl[0][2][0]_i_1 
+       (.I0(Debug_Rst_i_reg[2]),
+        .I1(Debug_Rst_i_reg[0]),
+        .I2(\Use_Cross_Trigger.out_ctrl[0][7][0]_i_2_n_0 ),
+        .O(\tdi_shifter_reg[13]_2 ));
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  LUT3 #(
+    .INIT(8'h40)) 
+    \Use_Cross_Trigger.out_ctrl[0][3][0]_i_1 
+       (.I0(Debug_Rst_i_reg[2]),
+        .I1(Debug_Rst_i_reg[0]),
+        .I2(\Use_Cross_Trigger.out_ctrl[0][7][0]_i_2_n_0 ),
+        .O(\tdi_shifter_reg[13]_3 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT3 #(
+    .INIT(8'h40)) 
+    \Use_Cross_Trigger.out_ctrl[0][4][0]_i_1 
+       (.I0(Debug_Rst_i_reg[0]),
+        .I1(Debug_Rst_i_reg[2]),
+        .I2(\Use_Cross_Trigger.out_ctrl[0][5][0]_i_2_n_0 ),
+        .O(\tdi_shifter_reg[15] ));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \Use_Cross_Trigger.out_ctrl[0][5][0]_i_1 
+       (.I0(Debug_Rst_i_reg[2]),
+        .I1(Debug_Rst_i_reg[0]),
+        .I2(\Use_Cross_Trigger.out_ctrl[0][5][0]_i_2_n_0 ),
+        .O(\tdi_shifter_reg[13]_1 ));
   LUT6 #(
     .INIT(64'h0000000000200000)) 
-    \Use_Dbg_Mem_Access.input[0]_i_1 
-       (.I0(Dbg_Shift_0),
-        .I1(\Use_Dbg_Mem_Access.input[0]_i_3_n_0 ),
-        .I2(out),
-        .I3(\Dbg_Reg_En_0[0] [1]),
-        .I4(\Dbg_Reg_En_0[0] [0]),
-        .I5(\Use_Dbg_Mem_Access.input_reg[31] ),
-        .O(\Use_Dbg_Mem_Access.access_idle_2_reg ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT2 #(
-    .INIT(4'hB)) 
-    \Use_Dbg_Mem_Access.input[0]_i_3 
-       (.I0(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I1(Q_0),
-        .O(\Use_Dbg_Mem_Access.input[0]_i_3_n_0 ));
+    \Use_Cross_Trigger.out_ctrl[0][5][0]_i_2 
+       (.I0(Q_0),
+        .I1(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I2(Q[6]),
+        .I3(Q[7]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5][3] ),
+        .I5(Debug_Rst_i_reg[1]),
+        .O(\Use_Cross_Trigger.out_ctrl[0][5][0]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT3 #(
+    .INIT(8'h40)) 
+    \Use_Cross_Trigger.out_ctrl[0][6][0]_i_1 
+       (.I0(Debug_Rst_i_reg[0]),
+        .I1(Debug_Rst_i_reg[2]),
+        .I2(\Use_Cross_Trigger.out_ctrl[0][7][0]_i_2_n_0 ),
+        .O(\tdi_shifter_reg[15]_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \Use_Cross_Trigger.out_ctrl[0][7][0]_i_1 
+       (.I0(Debug_Rst_i_reg[2]),
+        .I1(Debug_Rst_i_reg[0]),
+        .I2(\Use_Cross_Trigger.out_ctrl[0][7][0]_i_2_n_0 ),
+        .O(\tdi_shifter_reg[13]_4 ));
   LUT6 #(
-    .INIT(64'h0000000000004000)) 
-    \Use_Dbg_Mem_Access.rd_wr_len[0]_i_1 
-       (.I0(\Dbg_Reg_En_0[0] [0]),
-        .I1(\Dbg_Reg_En_0[0] [1]),
-        .I2(\Dbg_Reg_En_0[0] [2]),
+    .INIT(64'h0020000000000000)) 
+    \Use_Cross_Trigger.out_ctrl[0][7][0]_i_2 
+       (.I0(Q_0),
+        .I1(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I2(Q[6]),
+        .I3(Q[7]),
+        .I4(\Use_Cross_Trigger.out_ctrl_reg[0][5][3] ),
+        .I5(Debug_Rst_i_reg[1]),
+        .O(\Use_Cross_Trigger.out_ctrl[0][7][0]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h0D0D080D)) 
+    \Use_Dbg_Mem_Access.execute_i_2 
+       (.I0(Scan_Reset_Sel),
+        .I1(Scan_Reset),
+        .I2(Scan_En),
         .I3(Q_0),
         .I4(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I5(\Use_Dbg_Mem_Access.input_reg[31] ),
-        .O(\Use_BSCAN.command_reg[7] ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+        .O(data_cmd_reset23_out));
+  LUT6 #(
+    .INIT(64'h0400000000000000)) 
+    \Use_Dbg_Mem_Access.input[0]_i_1 
+       (.I0(Q[1]),
+        .I1(Q[0]),
+        .I2(\Use_Dbg_Mem_Access.rd_wr_excl_reg ),
+        .I3(\Using_FPGA.Native_0 ),
+        .I4(out),
+        .I5(Dbg_Shift_0),
+        .O(\Use_BSCAN.command_reg[6] ));
+  LUT6 #(
+    .INIT(64'h0000000004000000)) 
+    \Use_Dbg_Mem_Access.rd_wr_len[0]_i_1 
+       (.I0(Q[0]),
+        .I1(Q[2]),
+        .I2(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I3(Q_0),
+        .I4(Q[1]),
+        .I5(\Use_Dbg_Mem_Access.rd_wr_excl_reg ),
+        .O(E));
   LUT4 #(
     .INIT(16'hFB08)) 
     \Use_Serial_Unified_Completion.clear_overrun_i_1 
        (.I0(completion_ctrl0),
-        .I1(\Use_Serial_Unified_Completion.mb_data_overrun_reg_1 ),
-        .I2(\Using_FPGA.Native_1 ),
+        .I1(\Use_Serial_Unified_Completion.mb_instr_overrun_reg ),
+        .I2(\Using_FPGA.Native_2 ),
         .I3(clear_overrun),
         .O(\Use_Serial_Unified_Completion.clear_overrun_reg ));
   LUT6 #(
-    .INIT(64'hFFFF5FFF00005444)) 
+    .INIT(64'hDFDFDFDF03000000)) 
     \Use_Serial_Unified_Completion.completion_block_i_1 
-       (.I0(\Use_Serial_Unified_Completion.completion_block_i_2_n_0 ),
-        .I1(completion_ctrl),
+       (.I0(\Use_Serial_Unified_Completion.mb_instr_overrun_reg ),
+        .I1(\Using_FPGA.Native_2 ),
         .I2(completion_ctrl0),
-        .I3(\Use_Serial_Unified_Completion.mb_data_overrun_reg_1 ),
-        .I4(\Using_FPGA.Native_1 ),
+        .I3(p_23_out__10),
+        .I4(completion_ctrl),
         .I5(\Use_Serial_Unified_Completion.completion_block_reg ),
         .O(\completion_ctrl_reg[0] ));
-  LUT6 #(
-    .INIT(64'h404040FF40404040)) 
-    \Use_Serial_Unified_Completion.completion_block_i_2 
-       (.I0(\Use_Serial_Unified_Completion.completion_block_reg_0 ),
-        .I1(\Dbg_Reg_En_0[0] [2]),
-        .I2(\Use_Serial_Unified_Completion.mb_instr_overrun_i_6_n_0 ),
-        .I3(\Use_Serial_Unified_Completion.completion_block_reg_1 ),
-        .I4(\Use_Serial_Unified_Completion.completion_block_reg_2 ),
-        .I5(\Use_Serial_Unified_Completion.completion_block_reg_3 ),
-        .O(\Use_Serial_Unified_Completion.completion_block_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT4 #(
-    .INIT(16'hF111)) 
+    .INIT(16'h888F)) 
     \Use_Serial_Unified_Completion.completion_status[0]_i_1 
-       (.I0(\Use_Serial_Unified_Completion.sample[14]_i_2_n_0 ),
-        .I1(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [0]),
-        .I2(\Using_FPGA.Native_1 ),
-        .I3(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [1]),
-        .O(\Use_Serial_Unified_Completion.completion_status_reg[9] [0]));
+       (.I0(\Using_FPGA.Native_2 ),
+        .I1(\Use_Serial_Unified_Completion.completion_status_reg[9] [1]),
+        .I2(\Use_Serial_Unified_Completion.completion_status_reg[9] [0]),
+        .I3(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
+        .O(D[0]));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
-    .INIT(32'hFF000606)) 
-    \Use_Serial_Unified_Completion.completion_status[1]_i_1 
-       (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [0]),
-        .I1(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [1]),
-        .I2(completion_ctrl0),
-        .I3(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [2]),
-        .I4(\Using_FPGA.Native_1 ),
-        .O(\Use_Serial_Unified_Completion.completion_status_reg[9] [1]));
-  LUT6 #(
-    .INIT(64'hFFFF0000006A006A)) 
-    \Use_Serial_Unified_Completion.completion_status[2]_i_1 
-       (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [2]),
-        .I1(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [1]),
-        .I2(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [0]),
-        .I3(completion_ctrl0),
-        .I4(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [3]),
-        .I5(\Using_FPGA.Native_1 ),
-        .O(\Use_Serial_Unified_Completion.completion_status_reg[9] [2]));
-  LUT5 #(
-    .INIT(32'hFF000909)) 
-    \Use_Serial_Unified_Completion.completion_status[3]_i_1 
-       (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [3]),
-        .I1(\Use_Serial_Unified_Completion.completion_status_reg[3] ),
-        .I2(completion_ctrl0),
-        .I3(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [4]),
-        .I4(\Using_FPGA.Native_1 ),
-        .O(\Use_Serial_Unified_Completion.completion_status_reg[9] [3]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT5 #(
-    .INIT(32'hFF090009)) 
-    \Use_Serial_Unified_Completion.completion_status[4]_i_1 
-       (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [4]),
-        .I1(\Use_Serial_Unified_Completion.completion_status_reg[4] ),
-        .I2(completion_ctrl0),
-        .I3(\Using_FPGA.Native_1 ),
-        .I4(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [5]),
-        .O(\Use_Serial_Unified_Completion.completion_status_reg[9] [4]));
-  LUT5 #(
-    .INIT(32'hFF004141)) 
-    \Use_Serial_Unified_Completion.completion_status[5]_i_1 
-       (.I0(completion_ctrl0),
-        .I1(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [5]),
-        .I2(\Use_Serial_Unified_Completion.completion_status_reg[5] ),
-        .I3(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [6]),
-        .I4(\Using_FPGA.Native_1 ),
-        .O(\Use_Serial_Unified_Completion.completion_status_reg[9] [5]));
-  LUT5 #(
-    .INIT(32'hFF414141)) 
-    \Use_Serial_Unified_Completion.completion_status[6]_i_1 
-       (.I0(\Use_Serial_Unified_Completion.sample[14]_i_2_n_0 ),
-        .I1(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [6]),
-        .I2(\Use_Serial_Unified_Completion.completion_status_reg[6] ),
-        .I3(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [7]),
-        .I4(\Using_FPGA.Native_1 ),
-        .O(\Use_Serial_Unified_Completion.completion_status_reg[9] [6]));
-  LUT6 #(
-    .INIT(64'hFFFF414441444144)) 
-    \Use_Serial_Unified_Completion.completion_status[7]_i_1 
-       (.I0(\Use_Serial_Unified_Completion.sample[14]_i_2_n_0 ),
-        .I1(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [7]),
-        .I2(\Use_Serial_Unified_Completion.completion_status_reg[6] ),
-        .I3(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [6]),
-        .I4(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [8]),
-        .I5(\Using_FPGA.Native_1 ),
-        .O(\Use_Serial_Unified_Completion.completion_status_reg[9] [7]));
-  LUT5 #(
-    .INIT(32'hFF414141)) 
-    \Use_Serial_Unified_Completion.completion_status[8]_i_1 
-       (.I0(\Use_Serial_Unified_Completion.sample[14]_i_2_n_0 ),
-        .I1(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [8]),
-        .I2(\Use_Serial_Unified_Completion.completion_status_reg[8] ),
-        .I3(\Using_FPGA.Native_1 ),
-        .I4(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [9]),
-        .O(\Use_Serial_Unified_Completion.completion_status_reg[9] [8]));
-  LUT6 #(
-    .INIT(64'h00FF0000F100F100)) 
-    \Use_Serial_Unified_Completion.completion_status[9]_i_1 
+    .INIT(32'h00200000)) 
+    \Use_Serial_Unified_Completion.completion_status[15]_i_3 
        (.I0(Q_0),
-        .I1(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I2(completion_ctrl0),
-        .I3(\Use_Serial_Unified_Completion.mb_data_overrun_reg_1 ),
-        .I4(Dbg_Shift_0_1),
-        .I5(\Using_FPGA.Native_1 ),
+        .I1(Q[2]),
+        .I2(Q[1]),
+        .I3(Q[0]),
+        .I4(\Use_Serial_Unified_Completion.sample_1_reg[10] ),
         .O(\Using_FPGA.Native_2 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT5 #(
+    .INIT(32'hFF060606)) 
+    \Use_Serial_Unified_Completion.completion_status[1]_i_1 
+       (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9] [1]),
+        .I1(\Use_Serial_Unified_Completion.completion_status_reg[9] [0]),
+        .I2(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
+        .I3(\Using_FPGA.Native_2 ),
+        .I4(\Use_Serial_Unified_Completion.completion_status_reg[9] [2]),
+        .O(D[1]));
   LUT6 #(
-    .INIT(64'hFFFF441444144414)) 
+    .INIT(64'hFFFF006A006A006A)) 
+    \Use_Serial_Unified_Completion.completion_status[2]_i_1 
+       (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9] [2]),
+        .I1(\Use_Serial_Unified_Completion.completion_status_reg[9] [1]),
+        .I2(\Use_Serial_Unified_Completion.completion_status_reg[9] [0]),
+        .I3(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
+        .I4(\Using_FPGA.Native_2 ),
+        .I5(\Use_Serial_Unified_Completion.completion_status_reg[9] [3]),
+        .O(D[2]));
+  LUT5 #(
+    .INIT(32'hFF060606)) 
+    \Use_Serial_Unified_Completion.completion_status[3]_i_1 
+       (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9] [3]),
+        .I1(\Use_Serial_Unified_Completion.completion_status_reg[3] ),
+        .I2(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
+        .I3(\Using_FPGA.Native_2 ),
+        .I4(\Use_Serial_Unified_Completion.completion_status_reg[9] [4]),
+        .O(D[3]));
+  LUT5 #(
+    .INIT(32'hFF060606)) 
+    \Use_Serial_Unified_Completion.completion_status[4]_i_1 
+       (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9] [4]),
+        .I1(\Use_Serial_Unified_Completion.completion_status_reg[4] ),
+        .I2(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
+        .I3(\Using_FPGA.Native_2 ),
+        .I4(\Use_Serial_Unified_Completion.completion_status_reg[9] [5]),
+        .O(D[4]));
+  LUT5 #(
+    .INIT(32'hFF060606)) 
+    \Use_Serial_Unified_Completion.completion_status[5]_i_1 
+       (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9] [5]),
+        .I1(\Use_Serial_Unified_Completion.completion_status_reg[5] ),
+        .I2(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
+        .I3(\Using_FPGA.Native_2 ),
+        .I4(\Use_Serial_Unified_Completion.completion_status_reg[9] [6]),
+        .O(D[5]));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT5 #(
+    .INIT(32'hFF060606)) 
+    \Use_Serial_Unified_Completion.completion_status[6]_i_1 
+       (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9] [6]),
+        .I1(\Use_Serial_Unified_Completion.completion_status_reg[6] ),
+        .I2(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
+        .I3(\Using_FPGA.Native_2 ),
+        .I4(\Use_Serial_Unified_Completion.completion_status_reg[9] [7]),
+        .O(D[6]));
+  LUT6 #(
+    .INIT(64'hFFFF122212221222)) 
+    \Use_Serial_Unified_Completion.completion_status[7]_i_1 
+       (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9] [7]),
+        .I1(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
+        .I2(\Use_Serial_Unified_Completion.completion_status_reg[6] ),
+        .I3(\Use_Serial_Unified_Completion.completion_status_reg[9] [6]),
+        .I4(\Using_FPGA.Native_2 ),
+        .I5(\Use_Serial_Unified_Completion.completion_status_reg[9] [8]),
+        .O(D[7]));
+  LUT5 #(
+    .INIT(32'hFF121212)) 
+    \Use_Serial_Unified_Completion.completion_status[8]_i_1 
+       (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9] [8]),
+        .I1(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
+        .I2(\Use_Serial_Unified_Completion.completion_status_reg[8] ),
+        .I3(\Using_FPGA.Native_2 ),
+        .I4(\Use_Serial_Unified_Completion.completion_status_reg[9] [9]),
+        .O(D[8]));
+  LUT6 #(
+    .INIT(64'h0AC00AC00AC00AF0)) 
+    \Use_Serial_Unified_Completion.completion_status[9]_i_1 
+       (.I0(\Use_Serial_Unified_Completion.completion_status_reg[0] ),
+        .I1(completion_ctrl0),
+        .I2(\Use_Serial_Unified_Completion.mb_instr_overrun_reg ),
+        .I3(\Using_FPGA.Native_2 ),
+        .I4(Q_0),
+        .I5(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .O(\Using_FPGA.Native_1 ));
+  LUT6 #(
+    .INIT(64'hFFFF122212221222)) 
     \Use_Serial_Unified_Completion.completion_status[9]_i_2 
-       (.I0(\Use_Serial_Unified_Completion.sample[14]_i_2_n_0 ),
-        .I1(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [9]),
-        .I2(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [8]),
-        .I3(\Use_Serial_Unified_Completion.completion_status_reg[8] ),
-        .I4(\Using_FPGA.Native_1 ),
-        .I5(\Use_Serial_Unified_Completion.completion_status_reg[9]_0 [10]),
-        .O(\Use_Serial_Unified_Completion.completion_status_reg[9] [9]));
+       (.I0(\Use_Serial_Unified_Completion.completion_status_reg[9] [9]),
+        .I1(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
+        .I2(\Use_Serial_Unified_Completion.completion_status_reg[8] ),
+        .I3(\Use_Serial_Unified_Completion.completion_status_reg[9] [8]),
+        .I4(\Using_FPGA.Native_2 ),
+        .I5(\Use_Serial_Unified_Completion.completion_status_reg[9] [10]),
+        .O(D[9]));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFEFFFFFF)) 
+    .INIT(64'h0080000000000000)) 
+    \Use_Serial_Unified_Completion.completion_status[9]_i_3 
+       (.I0(\completion_ctrl_reg[0]_0 ),
+        .I1(Q[0]),
+        .I2(Q_0),
+        .I3(\completion_ctrl_reg[0]_1 ),
+        .I4(Q[3]),
+        .I5(Q[5]),
+        .O(completion_ctrl0));
+  LUT6 #(
+    .INIT(64'h0200000000000000)) 
     \Use_Serial_Unified_Completion.count[0]__0_i_3 
-       (.I0(\Use_Serial_Unified_Completion.mb_data_overrun_reg ),
-        .I1(\Use_Serial_Unified_Completion.mb_data_overrun_reg_0 ),
-        .I2(\Dbg_Reg_En_0[0] [0]),
-        .I3(\Dbg_Reg_En_0[0] [1]),
-        .I4(\Dbg_Reg_En_0[0] [2]),
-        .I5(\Use_Dbg_Mem_Access.input[0]_i_3_n_0 ),
-        .O(\Use_BSCAN.command_reg[7]_0 ));
+       (.I0(Q[2]),
+        .I1(Q[0]),
+        .I2(Q[3]),
+        .I3(\Using_FPGA.Native_0 ),
+        .I4(Q[1]),
+        .I5(\Use_Serial_Unified_Completion.mb_data_overrun_reg ),
+        .O(p_101_out__0));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFD)) 
+    .INIT(64'h0000020000000000)) 
     \Use_Serial_Unified_Completion.count[0]_i_2 
-       (.I0(\Dbg_Reg_En_0[0] [2]),
-        .I1(\Dbg_Reg_En_0[0] [3]),
-        .I2(\Use_Dbg_Mem_Access.input[0]_i_3_n_0 ),
-        .I3(\Dbg_Reg_En_0[0] [5]),
-        .I4(\Dbg_Reg_En_0[0] [0]),
-        .I5(Dbg_Shift_0_0),
-        .O(\Use_BSCAN.command_reg[5] ));
+       (.I0(Q[2]),
+        .I1(Q[0]),
+        .I2(Q[3]),
+        .I3(\Using_FPGA.Native_0 ),
+        .I4(Q[1]),
+        .I5(\Use_Serial_Unified_Completion.mb_data_overrun_reg ),
+        .O(shifting_Data1__0));
   LUT6 #(
-    .INIT(64'h0FFF007700000044)) 
+    .INIT(64'h053F0F3F05000000)) 
     \Use_Serial_Unified_Completion.mb_data_overrun_i_1 
        (.I0(Dbg_TDO_0),
-        .I1(\Use_Serial_Unified_Completion.mb_data_overrun_reg_2 ),
+        .I1(completion_ctrl0),
+        .I2(\Use_Serial_Unified_Completion.mb_instr_overrun_reg ),
+        .I3(p_101_out__0),
+        .I4(\Use_Serial_Unified_Completion.mb_data_overrun_reg_0 ),
+        .I5(\Use_Serial_Unified_Completion.sample_reg[15]_0 [2]),
+        .O(Dbg_TDO_0_2));
+  LUT6 #(
+    .INIT(64'h00BB033300880000)) 
+    \Use_Serial_Unified_Completion.mb_instr_error_i_1 
+       (.I0(Dbg_TDO_0),
+        .I1(\Use_Serial_Unified_Completion.mb_instr_error_reg ),
         .I2(completion_ctrl0),
-        .I3(\Use_Serial_Unified_Completion.mb_data_overrun_reg_1 ),
-        .I4(\Use_BSCAN.command_reg[7]_0 ),
-        .I5(\Use_Serial_Unified_Completion.sample_reg[15] [2]),
+        .I3(\Use_Serial_Unified_Completion.mb_instr_overrun_reg ),
+        .I4(shifting_Data1__0),
+        .I5(\Use_Serial_Unified_Completion.sample_reg[15]_0 [1]),
+        .O(Dbg_TDO_0_1));
+  LUT6 #(
+    .INIT(64'h00BB033300880000)) 
+    \Use_Serial_Unified_Completion.mb_instr_overrun_i_1 
+       (.I0(Dbg_TDO_0),
+        .I1(\Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 ),
+        .I2(completion_ctrl0),
+        .I3(\Use_Serial_Unified_Completion.mb_instr_overrun_reg ),
+        .I4(shifting_Data1__0),
+        .I5(\Use_Serial_Unified_Completion.sample_reg[15]_0 [0]),
         .O(Dbg_TDO_0_0));
   LUT6 #(
-    .INIT(64'hABAAABABA8AAA8A8)) 
-    \Use_Serial_Unified_Completion.mb_instr_error_i_1 
-       (.I0(mb_instr_overrun32_out),
-        .I1(\Use_Serial_Unified_Completion.mb_instr_overrun_i_3_n_0 ),
-        .I2(\Use_Serial_Unified_Completion.mb_instr_overrun_i_4_n_0 ),
-        .I3(\Use_Serial_Unified_Completion.mb_instr_overrun_reg ),
-        .I4(\Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 ),
-        .I5(\Use_Serial_Unified_Completion.sample_reg[15] [1]),
-        .O(\Use_Serial_Unified_Completion.count_reg[1]_0 ));
-  LUT6 #(
-    .INIT(64'hABABABAAA8A8A8AA)) 
-    \Use_Serial_Unified_Completion.mb_instr_overrun_i_1 
-       (.I0(mb_instr_overrun32_out),
-        .I1(\Use_Serial_Unified_Completion.mb_instr_overrun_i_3_n_0 ),
-        .I2(\Use_Serial_Unified_Completion.mb_instr_overrun_i_4_n_0 ),
-        .I3(\Use_Serial_Unified_Completion.mb_instr_overrun_reg ),
-        .I4(\Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 ),
-        .I5(\Use_Serial_Unified_Completion.sample_reg[15] [0]),
-        .O(\Use_Serial_Unified_Completion.count_reg[1] ));
-  LUT6 #(
-    .INIT(64'h0000000001000000)) 
-    \Use_Serial_Unified_Completion.mb_instr_overrun_i_2 
-       (.I0(Dbg_Shift_0_0),
-        .I1(\Using_FPGA.Native_0 ),
-        .I2(\Dbg_Reg_En_0[0] [3]),
-        .I3(\Dbg_Reg_En_0[0] [2]),
-        .I4(Dbg_TDO_0),
-        .I5(\Use_Serial_Unified_Completion.mb_data_overrun_reg_1 ),
-        .O(mb_instr_overrun32_out));
-  LUT5 #(
-    .INIT(32'h20000000)) 
+    .INIT(64'h0000000400000000)) 
     \Use_Serial_Unified_Completion.mb_instr_overrun_i_3 
-       (.I0(\Dbg_Reg_En_0[0] [0]),
-        .I1(\Dbg_Reg_En_0[0] [1]),
-        .I2(\Dbg_Reg_En_0[0] [2]),
-        .I3(\Use_Serial_Unified_Completion.mb_instr_overrun_i_6_n_0 ),
-        .I4(\Use_Serial_Unified_Completion.mb_data_overrun_reg_1 ),
-        .O(\Use_Serial_Unified_Completion.mb_instr_overrun_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000200000000)) 
-    \Use_Serial_Unified_Completion.mb_instr_overrun_i_4 
-       (.I0(\Use_Serial_Unified_Completion.mb_data_overrun_reg_1 ),
-        .I1(Dbg_Shift_0_0),
-        .I2(\Use_Serial_Unified_Completion.mb_instr_error_reg ),
-        .I3(\Use_Dbg_Mem_Access.input[0]_i_3_n_0 ),
-        .I4(\Dbg_Reg_En_0[0] [3]),
-        .I5(\Dbg_Reg_En_0[0] [2]),
-        .O(\Use_Serial_Unified_Completion.mb_instr_overrun_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'h0100000000000000)) 
-    \Use_Serial_Unified_Completion.mb_instr_overrun_i_6 
-       (.I0(\Dbg_Reg_En_0[0] [7]),
-        .I1(\Dbg_Reg_En_0[0] [4]),
-        .I2(\Dbg_Reg_En_0[0] [6]),
-        .I3(Q_0),
-        .I4(\Dbg_Reg_En_0[0] [5]),
-        .I5(\Dbg_Reg_En_0[0] [3]),
-        .O(\Use_Serial_Unified_Completion.mb_instr_overrun_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+       (.I0(Q[1]),
+        .I1(Q_0),
+        .I2(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I3(Q[3]),
+        .I4(Q[0]),
+        .I5(Q[2]),
+        .O(\Use_BSCAN.command_reg[6]_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Serial_Unified_Completion.sample[13]_i_1 
-       (.I0(\Use_Serial_Unified_Completion.sample_reg[15] [3]),
-        .I1(\Use_Serial_Unified_Completion.sample[14]_i_2_n_0 ),
+       (.I0(\Use_Serial_Unified_Completion.sample_reg[15]_0 [3]),
+        .I1(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
         .I2(\Use_Serial_Unified_Completion.sample_reg[13] ),
-        .O(D[0]));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+        .O(\Use_Serial_Unified_Completion.sample_reg[15] [0]));
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \Use_Serial_Unified_Completion.sample[14]_i_1 
-       (.I0(\Use_Serial_Unified_Completion.sample_reg[15] [4]),
-        .I1(\Use_Serial_Unified_Completion.sample[14]_i_2_n_0 ),
+       (.I0(\Use_Serial_Unified_Completion.sample_reg[15]_0 [4]),
+        .I1(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
         .I2(\Use_Serial_Unified_Completion.sample_reg[14] ),
-        .O(D[1]));
-  LUT6 #(
-    .INIT(64'h0000000000004020)) 
-    \Use_Serial_Unified_Completion.sample[14]_i_2 
-       (.I0(\Dbg_Reg_En_0[0] [1]),
-        .I1(\Dbg_Reg_En_0[0] [2]),
-        .I2(Q_0),
-        .I3(\Dbg_Reg_En_0[0] [0]),
-        .I4(\Use_Serial_Unified_Completion.mb_data_overrun_reg_0 ),
-        .I5(\Use_Serial_Unified_Completion.sample_reg[14]_0 ),
-        .O(\Use_Serial_Unified_Completion.sample[14]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT3 #(
-    .INIT(8'hA8)) 
-    \Use_Serial_Unified_Completion.sample[15]_i_1 
-       (.I0(\Use_Serial_Unified_Completion.sample_reg[15] [5]),
-        .I1(\Using_FPGA.Native_1 ),
-        .I2(completion_ctrl0),
-        .O(D[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+        .O(\Use_Serial_Unified_Completion.sample_reg[15] [1]));
   LUT2 #(
-    .INIT(4'h1)) 
+    .INIT(4'h8)) 
+    \Use_Serial_Unified_Completion.sample[15]_i_1 
+       (.I0(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
+        .I1(\Use_Serial_Unified_Completion.sample_reg[15]_0 [5]),
+        .O(\Use_Serial_Unified_Completion.sample_reg[15] [2]));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT1 #(
+    .INIT(2'h1)) 
     \Use_Serial_Unified_Completion.sample_1[15]_i_1 
-       (.I0(completion_ctrl0),
-        .I1(\Using_FPGA.Native_1 ),
-        .O(\Use_BSCAN.command_reg[4] ));
-  LUT6 #(
-    .INIT(64'h0000000000800000)) 
+       (.I0(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ),
+        .O(\Using_FPGA.Native_3 ));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT5 #(
+    .INIT(32'h00800800)) 
     \Use_Serial_Unified_Completion.sample_1[15]_i_2 
-       (.I0(\Dbg_Reg_En_0[0] [3]),
-        .I1(\Dbg_Reg_En_0[0] [5]),
-        .I2(Q_0),
-        .I3(\Use_Serial_Unified_Completion.mb_data_overrun_reg_0 ),
-        .I4(\Dbg_Reg_En_0[0] [2]),
-        .I5(\Use_Serial_Unified_Completion.completion_block_reg_0 ),
-        .O(completion_ctrl0));
-  LUT6 #(
-    .INIT(64'h0000000000040000)) 
-    \Use_Serial_Unified_Completion.sample_1[15]_i_3 
-       (.I0(\Use_Serial_Unified_Completion.sample_reg[14]_0 ),
+       (.I0(\Use_Serial_Unified_Completion.sample_1_reg[10] ),
         .I1(Q_0),
-        .I2(\Use_Serial_Unified_Completion.mb_data_overrun_reg_0 ),
-        .I3(\Dbg_Reg_En_0[0] [0]),
-        .I4(\Dbg_Reg_En_0[0] [1]),
-        .I5(\Dbg_Reg_En_0[0] [2]),
-        .O(\Using_FPGA.Native_1 ));
+        .I2(Q[0]),
+        .I3(Q[1]),
+        .I4(Q[2]),
+        .O(\Use_Serial_Unified_Completion.sample_1[15]_i_2_n_0 ));
   (* XILINX_LEGACY_PRIM = "FDC_1" *) 
   (* box_type = "PRIMITIVE" *) 
   FDCE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \Using_FPGA.Native 
-       (.C(\Using_FPGA.Native_3 ),
+       (.C(\Using_FPGA.Native_4 ),
         .CE(1'b1),
         .CLR(sel_n),
         .D(D_1),
         .Q(Q_0));
   LUT5 #(
-    .INIT(32'h00000040)) 
+    .INIT(32'h00000800)) 
     \Using_FPGA.Native_i_1 
-       (.I0(Q[7]),
-        .I1(Q[11]),
-        .I2(Q[5]),
-        .I3(Q[12]),
-        .I4(\Using_FPGA.Native_i_2_n_0 ),
+       (.I0(\Using_FPGA.Native_i_2_n_0 ),
+        .I1(Debug_Rst_i_reg[8]),
+        .I2(Debug_Rst_i_reg[7]),
+        .I3(Debug_Rst_i_reg[5]),
+        .I4(Debug_Rst_i_reg[6]),
         .O(CE));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \Using_FPGA.Native_i_1__0 
        (.I0(Q_0),
         .O(D_1));
   LUT6 #(
-    .INIT(64'hFFFDFFFFFFFFFFFF)) 
+    .INIT(64'h0000002000000000)) 
     \Using_FPGA.Native_i_2 
-       (.I0(Q_0),
-        .I1(\Use_Serial_Unified_Completion.completion_block_reg ),
-        .I2(Q[6]),
-        .I3(Q[9]),
-        .I4(Q[8]),
-        .I5(Q[10]),
+       (.I0(Debug_Rst_i_reg[10]),
+        .I1(Debug_Rst_i_reg[9]),
+        .I2(Debug_Rst_i_reg[11]),
+        .I3(Debug_Rst_i_reg[12]),
+        .I4(\Use_Serial_Unified_Completion.completion_block_reg ),
+        .I5(Q_0),
         .O(\Using_FPGA.Native_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000000080000)) 
+    .INIT(64'h0000000001000000)) 
     \command_1[0]_i_1 
-       (.I0(\Use_Dbg_Mem_Access.input[0]_i_3_n_0 ),
-        .I1(SEL),
-        .I2(\command_1_reg[7] [2]),
-        .I3(\command_1_reg[7] [3]),
-        .I4(\command_1_reg[7] [0]),
-        .I5(\command_1_reg[7] [1]),
-        .O(E));
+       (.I0(\command_1_reg[7] [2]),
+        .I1(\command_1_reg[7] [3]),
+        .I2(\command_1_reg[7] [1]),
+        .I3(\command_1_reg[7] [0]),
+        .I4(SEL),
+        .I5(\Using_FPGA.Native_0 ),
+        .O(\Use_BSCAN.PORT_Selector_reg[2] ));
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \completion_ctrl[0]_i_1 
-       (.I0(Q[12]),
+       (.I0(Debug_Rst_i_reg[12]),
         .I1(completion_ctrl0),
         .I2(completion_ctrl),
         .O(\tdi_shifter_reg[0]_0 ));
 endmodule
 
+(* ORIG_REF_NAME = "MB_FDRE" *) 
 module mcu_mdm_1_0_MB_FDRE
    (Addr,
     S,
-    \Use_Dbg_Mem_Access.Master_data_wr_reg ,
-    CI,
+    next_Data_Exists,
     \Using_FPGA.Native_0 ,
     \Using_FPGA.Native_1 ,
     O,
     M_AXI_ACLK,
-    M_AXI_WREADY,
-    \Using_FPGA.Native_2 ,
+    hsum_A_40__0,
     lmb_ready_vec_q,
-    \M_AXI_WDATA[22] ,
+    \Using_FPGA.Native_2 ,
+    \Using_FPGA.Native_3 ,
+    M_AXI_WREADY,
     master_data_wr,
-    \Using_FPGA.Native_i_1__35_0 );
+    FIFO_Read,
+    data_Exists_I_reg);
   output [0:0]Addr;
   output S;
-  output \Use_Dbg_Mem_Access.Master_data_wr_reg ;
-  output CI;
+  output next_Data_Exists;
   input \Using_FPGA.Native_0 ;
   input \Using_FPGA.Native_1 ;
   input O;
   input M_AXI_ACLK;
-  input M_AXI_WREADY;
-  input \Using_FPGA.Native_2 ;
+  input hsum_A_40__0;
   input lmb_ready_vec_q;
-  input \M_AXI_WDATA[22] ;
+  input \Using_FPGA.Native_2 ;
+  input \Using_FPGA.Native_3 ;
+  input M_AXI_WREADY;
   input master_data_wr;
-  input [3:0]\Using_FPGA.Native_i_1__35_0 ;
+  input FIFO_Read;
+  input [3:0]data_Exists_I_reg;
 
   wire [0:0]Addr;
-  wire CI;
+  wire FIFO_Read;
   wire M_AXI_ACLK;
-  wire \M_AXI_WDATA[22] ;
   wire M_AXI_WREADY;
   wire O;
   wire S;
-  wire \Use_Dbg_Mem_Access.Master_data_wr_reg ;
   wire \Using_FPGA.Native_0 ;
   wire \Using_FPGA.Native_1 ;
   wire \Using_FPGA.Native_2 ;
-  wire [3:0]\Using_FPGA.Native_i_1__35_0 ;
-  wire \Using_FPGA.Native_i_2__0_n_0 ;
+  wire \Using_FPGA.Native_3 ;
+  wire buffer_Empty__3;
+  wire [3:0]data_Exists_I_reg;
+  wire hsum_A_40__0;
   wire lmb_ready_vec_q;
   wire master_data_wr;
+  wire next_Data_Exists;
 
   (* box_type = "PRIMITIVE" *) 
   FDRE #(
@@ -6224,44 +8826,32 @@ module mcu_mdm_1_0_MB_FDRE
         .Q(Addr),
         .R(\Using_FPGA.Native_0 ));
   LUT6 #(
-    .INIT(64'h000000006A6A556A)) 
+    .INIT(64'h4444884888488848)) 
     \Using_FPGA.Native_I1_i_1__3 
        (.I0(Addr),
-        .I1(M_AXI_WREADY),
-        .I2(\Using_FPGA.Native_2 ),
-        .I3(lmb_ready_vec_q),
-        .I4(\M_AXI_WDATA[22] ),
-        .I5(\Use_Dbg_Mem_Access.Master_data_wr_reg ),
-        .O(S));
-  LUT6 #(
-    .INIT(64'h0000000000000001)) 
-    \Using_FPGA.Native_I1_i_2__0 
-       (.I0(master_data_wr),
-        .I1(Addr),
-        .I2(\Using_FPGA.Native_i_1__35_0 [3]),
-        .I3(\Using_FPGA.Native_i_1__35_0 [2]),
-        .I4(\Using_FPGA.Native_i_1__35_0 [0]),
-        .I5(\Using_FPGA.Native_i_1__35_0 [1]),
-        .O(\Use_Dbg_Mem_Access.Master_data_wr_reg ));
-  LUT6 #(
-    .INIT(64'hAAAA8A888A888A88)) 
-    \Using_FPGA.Native_i_1__35 
-       (.I0(master_data_wr),
-        .I1(\Using_FPGA.Native_i_2__0_n_0 ),
-        .I2(\M_AXI_WDATA[22] ),
-        .I3(lmb_ready_vec_q),
-        .I4(\Using_FPGA.Native_2 ),
+        .I1(hsum_A_40__0),
+        .I2(lmb_ready_vec_q),
+        .I3(\Using_FPGA.Native_2 ),
+        .I4(\Using_FPGA.Native_3 ),
         .I5(M_AXI_WREADY),
-        .O(CI));
+        .O(S));
+  LUT4 #(
+    .INIT(16'hDF88)) 
+    data_Exists_I_i_1__0
+       (.I0(buffer_Empty__3),
+        .I1(master_data_wr),
+        .I2(FIFO_Read),
+        .I3(\Using_FPGA.Native_1 ),
+        .O(next_Data_Exists));
   LUT5 #(
-    .INIT(32'h7FFFFFFF)) 
-    \Using_FPGA.Native_i_2__0 
+    .INIT(32'h00000001)) 
+    data_Exists_I_i_2
        (.I0(Addr),
-        .I1(\Using_FPGA.Native_i_1__35_0 [3]),
-        .I2(\Using_FPGA.Native_i_1__35_0 [0]),
-        .I3(\Using_FPGA.Native_i_1__35_0 [2]),
-        .I4(\Using_FPGA.Native_i_1__35_0 [1]),
-        .O(\Using_FPGA.Native_i_2__0_n_0 ));
+        .I1(data_Exists_I_reg[3]),
+        .I2(data_Exists_I_reg[2]),
+        .I3(data_Exists_I_reg[0]),
+        .I4(data_Exists_I_reg[1]),
+        .O(buffer_Empty__3));
 endmodule
 
 (* ORIG_REF_NAME = "MB_FDRE" *) 
@@ -6272,22 +8862,22 @@ module mcu_mdm_1_0_MB_FDRE_1
     \Using_FPGA.Native_2 ,
     O,
     M_AXI_ACLK,
-    M_AXI_WREADY,
-    \Using_FPGA.Native_3 ,
+    hsum_A_40__0,
     lmb_ready_vec_q,
+    \Using_FPGA.Native_3 ,
     \Using_FPGA.Native_4 ,
-    \Using_FPGA.Native_5 );
+    M_AXI_WREADY);
   output [0:0]\Using_FPGA.Native_0 ;
   output S;
   input \Using_FPGA.Native_1 ;
   input \Using_FPGA.Native_2 ;
   input O;
   input M_AXI_ACLK;
-  input M_AXI_WREADY;
-  input \Using_FPGA.Native_3 ;
+  input hsum_A_40__0;
   input lmb_ready_vec_q;
+  input \Using_FPGA.Native_3 ;
   input \Using_FPGA.Native_4 ;
-  input \Using_FPGA.Native_5 ;
+  input M_AXI_WREADY;
 
   wire M_AXI_ACLK;
   wire M_AXI_WREADY;
@@ -6298,7 +8888,7 @@ module mcu_mdm_1_0_MB_FDRE_1
   wire \Using_FPGA.Native_2 ;
   wire \Using_FPGA.Native_3 ;
   wire \Using_FPGA.Native_4 ;
-  wire \Using_FPGA.Native_5 ;
+  wire hsum_A_40__0;
   wire lmb_ready_vec_q;
 
   (* box_type = "PRIMITIVE" *) 
@@ -6314,61 +8904,96 @@ module mcu_mdm_1_0_MB_FDRE_1
         .Q(\Using_FPGA.Native_0 ),
         .R(\Using_FPGA.Native_1 ));
   LUT6 #(
-    .INIT(64'h000000006A6A556A)) 
+    .INIT(64'h4444884888488848)) 
     \Using_FPGA.Native_I1_i_1__4 
        (.I0(\Using_FPGA.Native_0 ),
-        .I1(M_AXI_WREADY),
-        .I2(\Using_FPGA.Native_3 ),
-        .I3(lmb_ready_vec_q),
+        .I1(hsum_A_40__0),
+        .I2(lmb_ready_vec_q),
+        .I3(\Using_FPGA.Native_3 ),
         .I4(\Using_FPGA.Native_4 ),
-        .I5(\Using_FPGA.Native_5 ),
+        .I5(M_AXI_WREADY),
         .O(S));
 endmodule
 
 (* ORIG_REF_NAME = "MB_FDRE" *) 
 module mcu_mdm_1_0_MB_FDRE_1_81
    (sync,
-    \Use_Serial_Unified_Completion.count_reg[0] ,
+    \Use_Serial_Unified_Completion.count_reg[1] ,
+    \Use_Serial_Unified_Completion.count_reg[1]_0 ,
+    Dbg_Shift_0,
     D_1,
     CE,
     \Using_FPGA.Native_0 ,
-    \Use_Serial_Unified_Completion.mb_instr_overrun_reg ,
-    \Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 ,
-    \Use_Serial_Unified_Completion.mb_instr_overrun_reg_1 ,
-    \Use_Serial_Unified_Completion.mb_instr_overrun_reg_2 ,
-    \Use_Serial_Unified_Completion.mb_instr_overrun_reg_3 );
+    \Use_Serial_Unified_Completion.mb_instr_error_reg ,
+    \Use_Serial_Unified_Completion.mb_instr_error_reg_0 ,
+    \Use_Serial_Unified_Completion.mb_instr_error_reg_1 ,
+    Dbg_Shift_0_0,
+    Dbg_Shift_0_1,
+    Dbg_Shift_0_2,
+    Dbg_Shift_0_3,
+    Q);
   output sync;
-  output \Use_Serial_Unified_Completion.count_reg[0] ;
+  output \Use_Serial_Unified_Completion.count_reg[1] ;
+  output \Use_Serial_Unified_Completion.count_reg[1]_0 ;
+  output Dbg_Shift_0;
   input D_1;
   input CE;
   input \Using_FPGA.Native_0 ;
-  input \Use_Serial_Unified_Completion.mb_instr_overrun_reg ;
-  input \Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 ;
-  input \Use_Serial_Unified_Completion.mb_instr_overrun_reg_1 ;
-  input \Use_Serial_Unified_Completion.mb_instr_overrun_reg_2 ;
-  input \Use_Serial_Unified_Completion.mb_instr_overrun_reg_3 ;
+  input \Use_Serial_Unified_Completion.mb_instr_error_reg ;
+  input \Use_Serial_Unified_Completion.mb_instr_error_reg_0 ;
+  input \Use_Serial_Unified_Completion.mb_instr_error_reg_1 ;
+  input Dbg_Shift_0_0;
+  input Dbg_Shift_0_1;
+  input Dbg_Shift_0_2;
+  input Dbg_Shift_0_3;
+  input [0:0]Q;
 
   wire CE;
   wire D_1;
-  wire \Use_Serial_Unified_Completion.count_reg[0] ;
-  wire \Use_Serial_Unified_Completion.mb_instr_overrun_reg ;
-  wire \Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 ;
-  wire \Use_Serial_Unified_Completion.mb_instr_overrun_reg_1 ;
-  wire \Use_Serial_Unified_Completion.mb_instr_overrun_reg_2 ;
-  wire \Use_Serial_Unified_Completion.mb_instr_overrun_reg_3 ;
+  wire Dbg_Shift_0;
+  wire Dbg_Shift_0_0;
+  wire Dbg_Shift_0_1;
+  wire Dbg_Shift_0_2;
+  wire Dbg_Shift_0_3;
+  wire [0:0]Q;
+  wire \Use_Serial_Unified_Completion.count_reg[1] ;
+  wire \Use_Serial_Unified_Completion.count_reg[1]_0 ;
+  wire \Use_Serial_Unified_Completion.mb_instr_error_reg ;
+  wire \Use_Serial_Unified_Completion.mb_instr_error_reg_0 ;
+  wire \Use_Serial_Unified_Completion.mb_instr_error_reg_1 ;
   wire \Using_FPGA.Native_0 ;
   wire sync;
 
   LUT6 #(
-    .INIT(64'hFFFFFFFBFFFFFFFF)) 
-    \Use_Serial_Unified_Completion.mb_instr_overrun_i_5 
-       (.I0(\Use_Serial_Unified_Completion.mb_instr_overrun_reg ),
-        .I1(sync),
-        .I2(\Use_Serial_Unified_Completion.mb_instr_overrun_reg_0 ),
-        .I3(\Use_Serial_Unified_Completion.mb_instr_overrun_reg_1 ),
-        .I4(\Use_Serial_Unified_Completion.mb_instr_overrun_reg_2 ),
-        .I5(\Use_Serial_Unified_Completion.mb_instr_overrun_reg_3 ),
-        .O(\Use_Serial_Unified_Completion.count_reg[0] ));
+    .INIT(64'hFFEFFFFF00000000)) 
+    Dbg_Shift_31_INST_0
+       (.I0(sync),
+        .I1(Dbg_Shift_0_2),
+        .I2(Dbg_Shift_0_3),
+        .I3(Q),
+        .I4(Dbg_Shift_0_0),
+        .I5(Dbg_Shift_0_1),
+        .O(Dbg_Shift_0));
+  LUT6 #(
+    .INIT(64'h2000000000000000)) 
+    \Use_Serial_Unified_Completion.mb_instr_error_i_2 
+       (.I0(\Use_Serial_Unified_Completion.mb_instr_error_reg ),
+        .I1(\Use_Serial_Unified_Completion.mb_instr_error_reg_0 ),
+        .I2(sync),
+        .I3(\Use_Serial_Unified_Completion.mb_instr_error_reg_1 ),
+        .I4(Dbg_Shift_0_0),
+        .I5(Dbg_Shift_0_1),
+        .O(\Use_Serial_Unified_Completion.count_reg[1] ));
+  LUT6 #(
+    .INIT(64'h1000000000000000)) 
+    \Use_Serial_Unified_Completion.mb_instr_overrun_i_2 
+       (.I0(\Use_Serial_Unified_Completion.mb_instr_error_reg ),
+        .I1(\Use_Serial_Unified_Completion.mb_instr_error_reg_0 ),
+        .I2(sync),
+        .I3(\Use_Serial_Unified_Completion.mb_instr_error_reg_1 ),
+        .I4(Dbg_Shift_0_0),
+        .I5(Dbg_Shift_0_1),
+        .O(\Use_Serial_Unified_Completion.count_reg[1]_0 ));
   (* XILINX_LEGACY_PRIM = "FDRE_1" *) 
   (* box_type = "PRIMITIVE" *) 
   FDRE #(
@@ -6386,28 +9011,39 @@ endmodule
 module mcu_mdm_1_0_MB_FDRE_3
    (\Using_FPGA.Native_0 ,
     S,
+    CI,
     \Using_FPGA.Native_1 ,
     \Using_FPGA.Native_2 ,
     O,
     M_AXI_ACLK,
-    M_AXI_WREADY,
-    \Using_FPGA.Native_3 ,
+    hsum_A_40__0,
     lmb_ready_vec_q,
+    \Using_FPGA.Native_3 ,
     \Using_FPGA.Native_4 ,
-    \Using_FPGA.Native_5 );
+    M_AXI_WREADY,
+    master_data_wr,
+    Addr,
+    \M_AXI_WDATA[22] );
   output [0:0]\Using_FPGA.Native_0 ;
   output S;
+  output CI;
   input \Using_FPGA.Native_1 ;
   input \Using_FPGA.Native_2 ;
   input O;
   input M_AXI_ACLK;
-  input M_AXI_WREADY;
-  input \Using_FPGA.Native_3 ;
+  input hsum_A_40__0;
   input lmb_ready_vec_q;
+  input \Using_FPGA.Native_3 ;
   input \Using_FPGA.Native_4 ;
-  input \Using_FPGA.Native_5 ;
+  input M_AXI_WREADY;
+  input master_data_wr;
+  input [1:0]Addr;
+  input \M_AXI_WDATA[22] ;
 
+  wire [1:0]Addr;
+  wire CI;
   wire M_AXI_ACLK;
+  wire \M_AXI_WDATA[22] ;
   wire M_AXI_WREADY;
   wire O;
   wire S;
@@ -6416,8 +9052,9 @@ module mcu_mdm_1_0_MB_FDRE_3
   wire \Using_FPGA.Native_2 ;
   wire \Using_FPGA.Native_3 ;
   wire \Using_FPGA.Native_4 ;
-  wire \Using_FPGA.Native_5 ;
+  wire hsum_A_40__0;
   wire lmb_ready_vec_q;
+  wire master_data_wr;
 
   (* box_type = "PRIMITIVE" *) 
   FDRE #(
@@ -6432,47 +9069,58 @@ module mcu_mdm_1_0_MB_FDRE_3
         .Q(\Using_FPGA.Native_0 ),
         .R(\Using_FPGA.Native_1 ));
   LUT6 #(
-    .INIT(64'h000000006A6A556A)) 
+    .INIT(64'h4444884888488848)) 
     \Using_FPGA.Native_I1_i_1__5 
        (.I0(\Using_FPGA.Native_0 ),
-        .I1(M_AXI_WREADY),
-        .I2(\Using_FPGA.Native_3 ),
-        .I3(lmb_ready_vec_q),
+        .I1(hsum_A_40__0),
+        .I2(lmb_ready_vec_q),
+        .I3(\Using_FPGA.Native_3 ),
         .I4(\Using_FPGA.Native_4 ),
-        .I5(\Using_FPGA.Native_5 ),
+        .I5(M_AXI_WREADY),
         .O(S));
+  LUT5 #(
+    .INIT(32'hAAAA2AAA)) 
+    \Using_FPGA.Native_i_1__35 
+       (.I0(master_data_wr),
+        .I1(\Using_FPGA.Native_0 ),
+        .I2(Addr[1]),
+        .I3(Addr[0]),
+        .I4(\M_AXI_WDATA[22] ),
+        .O(CI));
 endmodule
 
 (* ORIG_REF_NAME = "MB_FDRE" *) 
 module mcu_mdm_1_0_MB_FDRE_39
    (Addr,
+    next_Data_Exists,
+    buffer_Empty__3,
     S,
-    \Using_FPGA.Native_0 ,
     CI,
-    \Using_FPGA.Native_1 ,
+    \Using_FPGA.Native_0 ,
     master_data_exists,
     O,
     M_AXI_ACLK,
-    master_data_rd,
-    \Using_FPGA.Native_I1_i_2_0 ,
-    \Using_FPGA.Native_I1_i_1__2 ,
+    data_Exists_I_reg,
+    data_Exists_I_reg_0,
     M_AXI_RVALID,
-    \Using_FPGA.Native_2 ,
+    master_data_rd,
+    data_Exists_I_reg_1,
     lmb_ready_vec_q,
     lmb_rd_idle);
   output [0:0]Addr;
+  output next_Data_Exists;
+  output buffer_Empty__3;
   output S;
-  output \Using_FPGA.Native_0 ;
   output CI;
-  input \Using_FPGA.Native_1 ;
+  input \Using_FPGA.Native_0 ;
   input master_data_exists;
   input O;
   input M_AXI_ACLK;
-  input master_data_rd;
-  input [3:0]\Using_FPGA.Native_I1_i_2_0 ;
-  input \Using_FPGA.Native_I1_i_1__2 ;
+  input data_Exists_I_reg;
+  input data_Exists_I_reg_0;
   input M_AXI_RVALID;
-  input \Using_FPGA.Native_2 ;
+  input master_data_rd;
+  input [3:0]data_Exists_I_reg_1;
   input lmb_ready_vec_q;
   input lmb_rd_idle;
 
@@ -6483,204 +9131,13 @@ module mcu_mdm_1_0_MB_FDRE_39
   wire O;
   wire S;
   wire \Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_1 ;
-  wire \Using_FPGA.Native_2 ;
-  wire \Using_FPGA.Native_I1_i_1__2 ;
-  wire [3:0]\Using_FPGA.Native_I1_i_2_0 ;
-  wire \Using_FPGA.Native_I1_i_4_n_0 ;
-  wire lmb_rd_idle;
-  wire lmb_ready_vec_q;
-  wire master_data_exists;
-  wire master_data_rd;
-
-  (* box_type = "PRIMITIVE" *) 
-  FDRE #(
-    .INIT(1'b0),
-    .IS_C_INVERTED(1'b0),
-    .IS_D_INVERTED(1'b0),
-    .IS_R_INVERTED(1'b0)) 
-    \Using_FPGA.Native 
-       (.C(M_AXI_ACLK),
-        .CE(master_data_exists),
-        .D(O),
-        .Q(Addr),
-        .R(\Using_FPGA.Native_1 ));
-  LUT3 #(
-    .INIT(8'h06)) 
-    \Using_FPGA.Native_I1_i_1__1 
-       (.I0(Addr),
-        .I1(master_data_rd),
-        .I2(\Using_FPGA.Native_0 ),
-        .O(S));
-  LUT5 #(
-    .INIT(32'h000088F8)) 
-    \Using_FPGA.Native_I1_i_2 
-       (.I0(M_AXI_RVALID),
-        .I1(\Using_FPGA.Native_2 ),
-        .I2(lmb_ready_vec_q),
-        .I3(lmb_rd_idle),
-        .I4(\Using_FPGA.Native_I1_i_4_n_0 ),
-        .O(CI));
-  LUT6 #(
-    .INIT(64'h0000000000000001)) 
-    \Using_FPGA.Native_I1_i_3 
-       (.I0(Addr),
-        .I1(\Using_FPGA.Native_I1_i_2_0 [3]),
-        .I2(\Using_FPGA.Native_I1_i_2_0 [2]),
-        .I3(\Using_FPGA.Native_I1_i_2_0 [0]),
-        .I4(\Using_FPGA.Native_I1_i_2_0 [1]),
-        .I5(\Using_FPGA.Native_I1_i_1__2 ),
-        .O(\Using_FPGA.Native_0 ));
-  LUT6 #(
-    .INIT(64'h4000000000000000)) 
-    \Using_FPGA.Native_I1_i_4 
-       (.I0(master_data_rd),
-        .I1(Addr),
-        .I2(\Using_FPGA.Native_I1_i_2_0 [1]),
-        .I3(\Using_FPGA.Native_I1_i_2_0 [2]),
-        .I4(\Using_FPGA.Native_I1_i_2_0 [0]),
-        .I5(\Using_FPGA.Native_I1_i_2_0 [3]),
-        .O(\Using_FPGA.Native_I1_i_4_n_0 ));
-endmodule
-
-(* ORIG_REF_NAME = "MB_FDRE" *) 
-module mcu_mdm_1_0_MB_FDRE_41
-   (\Using_FPGA.Native_0 ,
-    S,
-    \Using_FPGA.Native_1 ,
-    master_data_exists,
-    O,
-    M_AXI_ACLK,
-    master_data_rd,
-    \Using_FPGA.Native_2 );
-  output [0:0]\Using_FPGA.Native_0 ;
-  output S;
-  input \Using_FPGA.Native_1 ;
-  input master_data_exists;
-  input O;
-  input M_AXI_ACLK;
-  input master_data_rd;
-  input \Using_FPGA.Native_2 ;
-
-  wire M_AXI_ACLK;
-  wire O;
-  wire S;
-  wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_1 ;
-  wire \Using_FPGA.Native_2 ;
-  wire master_data_exists;
-  wire master_data_rd;
-
-  (* box_type = "PRIMITIVE" *) 
-  FDRE #(
-    .INIT(1'b0),
-    .IS_C_INVERTED(1'b0),
-    .IS_D_INVERTED(1'b0),
-    .IS_R_INVERTED(1'b0)) 
-    \Using_FPGA.Native 
-       (.C(M_AXI_ACLK),
-        .CE(master_data_exists),
-        .D(O),
-        .Q(\Using_FPGA.Native_0 ),
-        .R(\Using_FPGA.Native_1 ));
-  LUT3 #(
-    .INIT(8'h26)) 
-    \Using_FPGA.Native_I1_i_1__2 
-       (.I0(\Using_FPGA.Native_0 ),
-        .I1(master_data_rd),
-        .I2(\Using_FPGA.Native_2 ),
-        .O(S));
-endmodule
-
-(* ORIG_REF_NAME = "MB_FDRE" *) 
-module mcu_mdm_1_0_MB_FDRE_43
-   (\Using_FPGA.Native_0 ,
-    S,
-    \Using_FPGA.Native_1 ,
-    master_data_exists,
-    O,
-    M_AXI_ACLK,
-    master_data_rd,
-    \Using_FPGA.Native_2 );
-  output [0:0]\Using_FPGA.Native_0 ;
-  output S;
-  input \Using_FPGA.Native_1 ;
-  input master_data_exists;
-  input O;
-  input M_AXI_ACLK;
-  input master_data_rd;
-  input \Using_FPGA.Native_2 ;
-
-  wire M_AXI_ACLK;
-  wire O;
-  wire S;
-  wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_1 ;
-  wire \Using_FPGA.Native_2 ;
-  wire master_data_exists;
-  wire master_data_rd;
-
-  (* box_type = "PRIMITIVE" *) 
-  FDRE #(
-    .INIT(1'b0),
-    .IS_C_INVERTED(1'b0),
-    .IS_D_INVERTED(1'b0),
-    .IS_R_INVERTED(1'b0)) 
-    \Using_FPGA.Native 
-       (.C(M_AXI_ACLK),
-        .CE(master_data_exists),
-        .D(O),
-        .Q(\Using_FPGA.Native_0 ),
-        .R(\Using_FPGA.Native_1 ));
-  LUT3 #(
-    .INIT(8'h06)) 
-    \Using_FPGA.Native_I1_i_1__0 
-       (.I0(\Using_FPGA.Native_0 ),
-        .I1(master_data_rd),
-        .I2(\Using_FPGA.Native_2 ),
-        .O(S));
-endmodule
-
-(* ORIG_REF_NAME = "MB_FDRE" *) 
-module mcu_mdm_1_0_MB_FDRE_45
-   (\Using_FPGA.Native_0 ,
-    S,
-    next_Data_Exists,
-    \Using_FPGA.Native_1 ,
-    master_data_exists,
-    O,
-    M_AXI_ACLK,
-    master_data_rd,
-    \Using_FPGA.Native_2 ,
-    M_AXI_RVALID,
-    data_Exists_I_reg,
-    data_Exists_I_reg_0,
-    Addr);
-  output [0:0]\Using_FPGA.Native_0 ;
-  output S;
-  output next_Data_Exists;
-  input \Using_FPGA.Native_1 ;
-  input master_data_exists;
-  input O;
-  input M_AXI_ACLK;
-  input master_data_rd;
-  input \Using_FPGA.Native_2 ;
-  input M_AXI_RVALID;
-  input data_Exists_I_reg;
-  input data_Exists_I_reg_0;
-  input [3:0]Addr;
-
-  wire [3:0]Addr;
-  wire M_AXI_ACLK;
-  wire M_AXI_RVALID;
-  wire O;
-  wire S;
-  wire [0:0]\Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_1 ;
-  wire \Using_FPGA.Native_2 ;
-  wire data_Exists_I_i_3_n_0;
+  wire \Using_FPGA.Native_I1_i_5_n_0 ;
+  wire buffer_Empty__3;
   wire data_Exists_I_reg;
   wire data_Exists_I_reg_0;
+  wire [3:0]data_Exists_I_reg_1;
+  wire lmb_rd_idle;
+  wire lmb_ready_vec_q;
   wire master_data_exists;
   wire master_data_rd;
   wire next_Data_Exists;
@@ -6695,63 +9152,277 @@ module mcu_mdm_1_0_MB_FDRE_45
        (.C(M_AXI_ACLK),
         .CE(master_data_exists),
         .D(O),
-        .Q(\Using_FPGA.Native_0 ),
-        .R(\Using_FPGA.Native_1 ));
-  LUT3 #(
-    .INIT(8'h06)) 
-    \Using_FPGA.Native_I1_i_1 
-       (.I0(\Using_FPGA.Native_0 ),
-        .I1(master_data_rd),
-        .I2(\Using_FPGA.Native_2 ),
-        .O(S));
+        .Q(Addr),
+        .R(\Using_FPGA.Native_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFD50000FFC0)) 
-    data_Exists_I_i_1
-       (.I0(master_data_rd),
-        .I1(M_AXI_RVALID),
-        .I2(data_Exists_I_reg),
+    .INIT(64'h55555111AAAAA222)) 
+    \Using_FPGA.Native_I1_i_1 
+       (.I0(Addr),
+        .I1(buffer_Empty__3),
+        .I2(M_AXI_RVALID),
         .I3(data_Exists_I_reg_0),
-        .I4(data_Exists_I_i_3_n_0),
+        .I4(data_Exists_I_reg),
+        .I5(master_data_rd),
+        .O(S));
+  LUT5 #(
+    .INIT(32'hF2220000)) 
+    \Using_FPGA.Native_I1_i_2 
+       (.I0(lmb_ready_vec_q),
+        .I1(lmb_rd_idle),
+        .I2(data_Exists_I_reg_0),
+        .I3(M_AXI_RVALID),
+        .I4(\Using_FPGA.Native_I1_i_5_n_0 ),
+        .O(CI));
+  LUT5 #(
+    .INIT(32'h00000001)) 
+    \Using_FPGA.Native_I1_i_3 
+       (.I0(Addr),
+        .I1(data_Exists_I_reg_1[3]),
+        .I2(data_Exists_I_reg_1[2]),
+        .I3(data_Exists_I_reg_1[0]),
+        .I4(data_Exists_I_reg_1[1]),
+        .O(buffer_Empty__3));
+  LUT6 #(
+    .INIT(64'hFFFFFFFF7FFFFFFF)) 
+    \Using_FPGA.Native_I1_i_5 
+       (.I0(Addr),
+        .I1(data_Exists_I_reg_1[2]),
+        .I2(data_Exists_I_reg_1[1]),
+        .I3(data_Exists_I_reg_1[0]),
+        .I4(data_Exists_I_reg_1[3]),
+        .I5(master_data_rd),
+        .O(\Using_FPGA.Native_I1_i_5_n_0 ));
+  LUT6 #(
+    .INIT(64'hFDDDFFFFA888A888)) 
+    data_Exists_I_i_1
+       (.I0(buffer_Empty__3),
+        .I1(data_Exists_I_reg),
+        .I2(data_Exists_I_reg_0),
+        .I3(M_AXI_RVALID),
+        .I4(master_data_rd),
         .I5(master_data_exists),
         .O(next_Data_Exists));
-  LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
-    data_Exists_I_i_3
+endmodule
+
+(* ORIG_REF_NAME = "MB_FDRE" *) 
+module mcu_mdm_1_0_MB_FDRE_41
+   (\Using_FPGA.Native_0 ,
+    S,
+    \Using_FPGA.Native_1 ,
+    master_data_exists,
+    O,
+    M_AXI_ACLK,
+    buffer_Empty__3,
+    M_AXI_RVALID,
+    \Using_FPGA.Native_2 ,
+    \Using_FPGA.Native_3 ,
+    master_data_rd);
+  output [0:0]\Using_FPGA.Native_0 ;
+  output S;
+  input \Using_FPGA.Native_1 ;
+  input master_data_exists;
+  input O;
+  input M_AXI_ACLK;
+  input buffer_Empty__3;
+  input M_AXI_RVALID;
+  input \Using_FPGA.Native_2 ;
+  input \Using_FPGA.Native_3 ;
+  input master_data_rd;
+
+  wire M_AXI_ACLK;
+  wire M_AXI_RVALID;
+  wire O;
+  wire S;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_1 ;
+  wire \Using_FPGA.Native_2 ;
+  wire \Using_FPGA.Native_3 ;
+  wire buffer_Empty__3;
+  wire master_data_exists;
+  wire master_data_rd;
+
+  (* box_type = "PRIMITIVE" *) 
+  FDRE #(
+    .INIT(1'b0),
+    .IS_C_INVERTED(1'b0),
+    .IS_D_INVERTED(1'b0),
+    .IS_R_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.C(M_AXI_ACLK),
+        .CE(master_data_exists),
+        .D(O),
+        .Q(\Using_FPGA.Native_0 ),
+        .R(\Using_FPGA.Native_1 ));
+  LUT6 #(
+    .INIT(64'h55555111AAAAA222)) 
+    \Using_FPGA.Native_I1_i_1__0 
        (.I0(\Using_FPGA.Native_0 ),
-        .I1(Addr[0]),
-        .I2(Addr[1]),
-        .I3(Addr[2]),
-        .I4(Addr[3]),
-        .O(data_Exists_I_i_3_n_0));
+        .I1(buffer_Empty__3),
+        .I2(M_AXI_RVALID),
+        .I3(\Using_FPGA.Native_2 ),
+        .I4(\Using_FPGA.Native_3 ),
+        .I5(master_data_rd),
+        .O(S));
+endmodule
+
+(* ORIG_REF_NAME = "MB_FDRE" *) 
+module mcu_mdm_1_0_MB_FDRE_43
+   (\Using_FPGA.Native_0 ,
+    S,
+    \Using_FPGA.Native_1 ,
+    master_data_exists,
+    O,
+    M_AXI_ACLK,
+    buffer_Empty__3,
+    M_AXI_RVALID,
+    \Using_FPGA.Native_2 ,
+    \Using_FPGA.Native_3 ,
+    master_data_rd);
+  output [0:0]\Using_FPGA.Native_0 ;
+  output S;
+  input \Using_FPGA.Native_1 ;
+  input master_data_exists;
+  input O;
+  input M_AXI_ACLK;
+  input buffer_Empty__3;
+  input M_AXI_RVALID;
+  input \Using_FPGA.Native_2 ;
+  input \Using_FPGA.Native_3 ;
+  input master_data_rd;
+
+  wire M_AXI_ACLK;
+  wire M_AXI_RVALID;
+  wire O;
+  wire S;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_1 ;
+  wire \Using_FPGA.Native_2 ;
+  wire \Using_FPGA.Native_3 ;
+  wire buffer_Empty__3;
+  wire master_data_exists;
+  wire master_data_rd;
+
+  (* box_type = "PRIMITIVE" *) 
+  FDRE #(
+    .INIT(1'b0),
+    .IS_C_INVERTED(1'b0),
+    .IS_D_INVERTED(1'b0),
+    .IS_R_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.C(M_AXI_ACLK),
+        .CE(master_data_exists),
+        .D(O),
+        .Q(\Using_FPGA.Native_0 ),
+        .R(\Using_FPGA.Native_1 ));
+  LUT6 #(
+    .INIT(64'h55555111AAAAA222)) 
+    \Using_FPGA.Native_I1_i_1__1 
+       (.I0(\Using_FPGA.Native_0 ),
+        .I1(buffer_Empty__3),
+        .I2(M_AXI_RVALID),
+        .I3(\Using_FPGA.Native_2 ),
+        .I4(\Using_FPGA.Native_3 ),
+        .I5(master_data_rd),
+        .O(S));
+endmodule
+
+(* ORIG_REF_NAME = "MB_FDRE" *) 
+module mcu_mdm_1_0_MB_FDRE_45
+   (\Using_FPGA.Native_0 ,
+    S,
+    \Using_FPGA.Native_1 ,
+    master_data_exists,
+    O,
+    M_AXI_ACLK,
+    buffer_Empty__3,
+    M_AXI_RVALID,
+    \Using_FPGA.Native_2 ,
+    \Using_FPGA.Native_3 ,
+    master_data_rd);
+  output [0:0]\Using_FPGA.Native_0 ;
+  output S;
+  input \Using_FPGA.Native_1 ;
+  input master_data_exists;
+  input O;
+  input M_AXI_ACLK;
+  input buffer_Empty__3;
+  input M_AXI_RVALID;
+  input \Using_FPGA.Native_2 ;
+  input \Using_FPGA.Native_3 ;
+  input master_data_rd;
+
+  wire M_AXI_ACLK;
+  wire M_AXI_RVALID;
+  wire O;
+  wire S;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_1 ;
+  wire \Using_FPGA.Native_2 ;
+  wire \Using_FPGA.Native_3 ;
+  wire buffer_Empty__3;
+  wire master_data_exists;
+  wire master_data_rd;
+
+  (* box_type = "PRIMITIVE" *) 
+  FDRE #(
+    .INIT(1'b0),
+    .IS_C_INVERTED(1'b0),
+    .IS_D_INVERTED(1'b0),
+    .IS_R_INVERTED(1'b0)) 
+    \Using_FPGA.Native 
+       (.C(M_AXI_ACLK),
+        .CE(master_data_exists),
+        .D(O),
+        .Q(\Using_FPGA.Native_0 ),
+        .R(\Using_FPGA.Native_1 ));
+  LUT6 #(
+    .INIT(64'h55555111AAAAA222)) 
+    \Using_FPGA.Native_I1_i_1__2 
+       (.I0(\Using_FPGA.Native_0 ),
+        .I1(buffer_Empty__3),
+        .I2(M_AXI_RVALID),
+        .I3(\Using_FPGA.Native_2 ),
+        .I4(\Using_FPGA.Native_3 ),
+        .I5(master_data_rd),
+        .O(S));
 endmodule
 
 (* ORIG_REF_NAME = "MB_FDRE" *) 
 module mcu_mdm_1_0_MB_FDRE_47
-   (Addr,
+   (\Using_FPGA.Native_0 ,
     M_AXI_ARESETN_0,
     LI,
     master_data_exists,
     sum_A_0,
     M_AXI_ACLK,
     M_AXI_ARESETN,
-    master_data_rd,
-    \Using_FPGA.Native_0 );
-  output [0:0]Addr;
+    buffer_Empty__3,
+    M_AXI_RVALID,
+    \Using_FPGA.Native_1 ,
+    \Using_FPGA.Native_2 ,
+    master_data_rd);
+  output [0:0]\Using_FPGA.Native_0 ;
   output M_AXI_ARESETN_0;
   output LI;
   input master_data_exists;
   input sum_A_0;
   input M_AXI_ACLK;
   input M_AXI_ARESETN;
+  input buffer_Empty__3;
+  input M_AXI_RVALID;
+  input \Using_FPGA.Native_1 ;
+  input \Using_FPGA.Native_2 ;
   input master_data_rd;
-  input \Using_FPGA.Native_0 ;
 
-  wire [0:0]Addr;
   wire LI;
   wire M_AXI_ACLK;
   wire M_AXI_ARESETN;
   wire M_AXI_ARESETN_0;
-  wire \Using_FPGA.Native_0 ;
+  wire M_AXI_RVALID;
+  wire [0:0]\Using_FPGA.Native_0 ;
+  wire \Using_FPGA.Native_1 ;
+  wire \Using_FPGA.Native_2 ;
+  wire buffer_Empty__3;
   wire master_data_exists;
   wire master_data_rd;
   wire sum_A_0;
@@ -6771,14 +9442,17 @@ module mcu_mdm_1_0_MB_FDRE_47
        (.C(M_AXI_ACLK),
         .CE(master_data_exists),
         .D(sum_A_0),
-        .Q(Addr),
+        .Q(\Using_FPGA.Native_0 ),
         .R(M_AXI_ARESETN_0));
-  LUT3 #(
-    .INIT(8'h06)) 
+  LUT6 #(
+    .INIT(64'h55555111AAAAA222)) 
     \Using_FPGA.Native_i_1__1 
-       (.I0(Addr),
-        .I1(master_data_rd),
-        .I2(\Using_FPGA.Native_0 ),
+       (.I0(\Using_FPGA.Native_0 ),
+        .I1(buffer_Empty__3),
+        .I2(M_AXI_RVALID),
+        .I3(\Using_FPGA.Native_1 ),
+        .I4(\Using_FPGA.Native_2 ),
+        .I5(master_data_rd),
         .O(LI));
 endmodule
 
@@ -6786,32 +9460,28 @@ endmodule
 module mcu_mdm_1_0_MB_FDRE_5
    (\Using_FPGA.Native_0 ,
     S,
-    next_Data_Exists,
+    hsum_A_40__0,
     \Using_FPGA.Native_1 ,
     \Using_FPGA.Native_2 ,
     O,
     M_AXI_ACLK,
-    M_AXI_WREADY,
-    \Using_FPGA.Native_3 ,
     lmb_ready_vec_q,
+    \Using_FPGA.Native_3 ,
     \Using_FPGA.Native_4 ,
-    \Using_FPGA.Native_5 ,
-    data_Exists_I_reg,
+    M_AXI_WREADY,
     master_data_wr,
     Addr);
   output [0:0]\Using_FPGA.Native_0 ;
   output S;
-  output next_Data_Exists;
+  output hsum_A_40__0;
   input \Using_FPGA.Native_1 ;
   input \Using_FPGA.Native_2 ;
   input O;
   input M_AXI_ACLK;
-  input M_AXI_WREADY;
-  input \Using_FPGA.Native_3 ;
   input lmb_ready_vec_q;
+  input \Using_FPGA.Native_3 ;
   input \Using_FPGA.Native_4 ;
-  input \Using_FPGA.Native_5 ;
-  input data_Exists_I_reg;
+  input M_AXI_WREADY;
   input master_data_wr;
   input [3:0]Addr;
 
@@ -6825,12 +9495,9 @@ module mcu_mdm_1_0_MB_FDRE_5
   wire \Using_FPGA.Native_2 ;
   wire \Using_FPGA.Native_3 ;
   wire \Using_FPGA.Native_4 ;
-  wire \Using_FPGA.Native_5 ;
-  wire data_Exists_I_i_3__0_n_0;
-  wire data_Exists_I_reg;
+  wire hsum_A_40__0;
   wire lmb_ready_vec_q;
   wire master_data_wr;
-  wire next_Data_Exists;
 
   (* box_type = "PRIMITIVE" *) 
   FDRE #(
@@ -6845,32 +9512,25 @@ module mcu_mdm_1_0_MB_FDRE_5
         .Q(\Using_FPGA.Native_0 ),
         .R(\Using_FPGA.Native_1 ));
   LUT6 #(
-    .INIT(64'h000000006A6A556A)) 
+    .INIT(64'h4444884888488848)) 
     \Using_FPGA.Native_I1_i_1__6 
        (.I0(\Using_FPGA.Native_0 ),
-        .I1(M_AXI_WREADY),
-        .I2(\Using_FPGA.Native_3 ),
-        .I3(lmb_ready_vec_q),
+        .I1(hsum_A_40__0),
+        .I2(lmb_ready_vec_q),
+        .I3(\Using_FPGA.Native_3 ),
         .I4(\Using_FPGA.Native_4 ),
-        .I5(\Using_FPGA.Native_5 ),
+        .I5(M_AXI_WREADY),
         .O(S));
-  LUT4 #(
-    .INIT(16'hFE0C)) 
-    data_Exists_I_i_1__0
-       (.I0(data_Exists_I_reg),
-        .I1(master_data_wr),
-        .I2(data_Exists_I_i_3__0_n_0),
-        .I3(\Using_FPGA.Native_2 ),
-        .O(next_Data_Exists));
-  LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
-    data_Exists_I_i_3__0
-       (.I0(\Using_FPGA.Native_0 ),
-        .I1(Addr[0]),
-        .I2(Addr[1]),
-        .I3(Addr[2]),
-        .I4(Addr[3]),
-        .O(data_Exists_I_i_3__0_n_0));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \Using_FPGA.Native_I1_i_2__0 
+       (.I0(master_data_wr),
+        .I1(\Using_FPGA.Native_0 ),
+        .I2(Addr[0]),
+        .I3(Addr[1]),
+        .I4(Addr[2]),
+        .I5(Addr[3]),
+        .O(hsum_A_40__0));
 endmodule
 
 (* ORIG_REF_NAME = "MB_FDRE" *) 
@@ -6879,24 +9539,28 @@ module mcu_mdm_1_0_MB_FDRE_7
     LI,
     \Using_FPGA.Native_0 ,
     \Using_FPGA.Native_1 ,
+    \Using_FPGA.Native_2 ,
     sum_A_0,
     M_AXI_ACLK,
-    M_AXI_WREADY,
-    \Using_FPGA.Native_2 ,
+    hsum_A_40__0,
     lmb_ready_vec_q,
     \Using_FPGA.Native_3 ,
-    \Using_FPGA.Native_4 );
+    \Using_FPGA.Native_4 ,
+    M_AXI_WREADY,
+    \Using_FPGA.Native_i_1__35 );
   output [0:0]Addr;
   output LI;
-  input \Using_FPGA.Native_0 ;
+  output \Using_FPGA.Native_0 ;
   input \Using_FPGA.Native_1 ;
+  input \Using_FPGA.Native_2 ;
   input sum_A_0;
   input M_AXI_ACLK;
-  input M_AXI_WREADY;
-  input \Using_FPGA.Native_2 ;
+  input hsum_A_40__0;
   input lmb_ready_vec_q;
   input \Using_FPGA.Native_3 ;
   input \Using_FPGA.Native_4 ;
+  input M_AXI_WREADY;
+  input [0:0]\Using_FPGA.Native_i_1__35 ;
 
   wire [0:0]Addr;
   wire LI;
@@ -6907,6 +9571,8 @@ module mcu_mdm_1_0_MB_FDRE_7
   wire \Using_FPGA.Native_2 ;
   wire \Using_FPGA.Native_3 ;
   wire \Using_FPGA.Native_4 ;
+  wire [0:0]\Using_FPGA.Native_i_1__35 ;
+  wire hsum_A_40__0;
   wire lmb_ready_vec_q;
   wire sum_A_0;
 
@@ -6918,22 +9584,33 @@ module mcu_mdm_1_0_MB_FDRE_7
     .IS_R_INVERTED(1'b0)) 
     \Using_FPGA.Native 
        (.C(M_AXI_ACLK),
-        .CE(\Using_FPGA.Native_1 ),
+        .CE(\Using_FPGA.Native_2 ),
         .D(sum_A_0),
         .Q(Addr),
-        .R(\Using_FPGA.Native_0 ));
+        .R(\Using_FPGA.Native_1 ));
   LUT6 #(
-    .INIT(64'h000000006A6A556A)) 
+    .INIT(64'h4444884888488848)) 
     \Using_FPGA.Native_i_1__34 
        (.I0(Addr),
-        .I1(M_AXI_WREADY),
-        .I2(\Using_FPGA.Native_2 ),
-        .I3(lmb_ready_vec_q),
-        .I4(\Using_FPGA.Native_3 ),
-        .I5(\Using_FPGA.Native_4 ),
+        .I1(hsum_A_40__0),
+        .I2(lmb_ready_vec_q),
+        .I3(\Using_FPGA.Native_3 ),
+        .I4(\Using_FPGA.Native_4 ),
+        .I5(M_AXI_WREADY),
         .O(LI));
+  LUT6 #(
+    .INIT(64'hFFFF77F777F777F7)) 
+    \Using_FPGA.Native_i_2__0 
+       (.I0(Addr),
+        .I1(\Using_FPGA.Native_i_1__35 ),
+        .I2(lmb_ready_vec_q),
+        .I3(\Using_FPGA.Native_3 ),
+        .I4(\Using_FPGA.Native_4 ),
+        .I5(M_AXI_WREADY),
+        .O(\Using_FPGA.Native_0 ));
 endmodule
 
+(* ORIG_REF_NAME = "MB_MUXCY_XORCY" *) 
 module mcu_mdm_1_0_MB_MUXCY_XORCY
    (LO,
     O,
@@ -7000,7 +9677,7 @@ module mcu_mdm_1_0_MB_MUXCY_XORCY
   assign lopt_3 = \^lopt_4 ;
   assign lopt_6 = \^lopt_7 ;
   assign lopt_9 = \^lopt_10 ;
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   (* XILINX_TRANSFORM_PINMAP = "LO:O" *) 
   (* box_type = "PRIMITIVE" *) 
@@ -7134,7 +9811,7 @@ module mcu_mdm_1_0_MB_MUXCY_XORCY_40
   assign lopt_3 = \^lopt_4 ;
   assign lopt_6 = \^lopt_7 ;
   assign lopt_9 = \^lopt_10 ;
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   (* XILINX_TRANSFORM_PINMAP = "LO:O" *) 
   (* box_type = "PRIMITIVE" *) 
@@ -7149,25 +9826,15 @@ endmodule
 
 (* ORIG_REF_NAME = "MB_MUXCY_XORCY" *) 
 module mcu_mdm_1_0_MB_MUXCY_XORCY_42
-   (\Has_FIFO.lmb_rd_idle_reg ,
-    LO,
+   (LO,
     O,
-    lmb_rd_idle,
-    lmb_ready_vec_q,
-    \Using_FPGA.Native_I1_i_3 ,
-    M_AXI_RVALID,
     S,
     \Using_FPGA.Native ,
     CI,
     lopt,
     lopt_1);
-  output \Has_FIFO.lmb_rd_idle_reg ;
   output LO;
   output O;
-  input lmb_rd_idle;
-  input lmb_ready_vec_q;
-  input \Using_FPGA.Native_I1_i_3 ;
-  input M_AXI_RVALID;
   input S;
   input [0:0]\Using_FPGA.Native ;
   input CI;
@@ -7175,26 +9842,13 @@ module mcu_mdm_1_0_MB_MUXCY_XORCY_42
   input lopt_1;
 
   wire CI;
-  wire \Has_FIFO.lmb_rd_idle_reg ;
   wire LO;
-  wire M_AXI_RVALID;
   wire O;
   wire S;
   wire [0:0]\Using_FPGA.Native ;
-  wire \Using_FPGA.Native_I1_i_3 ;
-  wire lmb_rd_idle;
-  wire lmb_ready_vec_q;
 
   assign LO = lopt;
   assign O = lopt_1;
-  LUT4 #(
-    .INIT(16'hF444)) 
-    \Using_FPGA.Native_I1_i_5 
-       (.I0(lmb_rd_idle),
-        .I1(lmb_ready_vec_q),
-        .I2(\Using_FPGA.Native_I1_i_3 ),
-        .I3(M_AXI_RVALID),
-        .O(\Has_FIFO.lmb_rd_idle_reg ));
 endmodule
 
 (* ORIG_REF_NAME = "MB_MUXCY_XORCY" *) 
@@ -7278,17 +9932,18 @@ module mcu_mdm_1_0_MB_MUXCY_XORCY_6
   assign O = lopt_1;
 endmodule
 
+(* ORIG_REF_NAME = "MB_SRL16E" *) 
 module mcu_mdm_1_0_MB_SRL16E
    (Q1_out,
     Q,
-    \Use_E2.BSCANE2_I_i_8 );
+    \Use_E2.BSCANE2_I_i_7 );
   output Q1_out;
   input [3:0]Q;
-  input \Use_E2.BSCANE2_I_i_8 ;
+  input \Use_E2.BSCANE2_I_i_7 ;
 
   wire [3:0]Q;
   wire Q1_out;
-  wire \Use_E2.BSCANE2_I_i_8 ;
+  wire \Use_E2.BSCANE2_I_i_7 ;
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_Config_SRL16E.SRL16E_1/Use_unisim.MB_SRL16E_I1 " *) 
@@ -7301,44 +9956,24 @@ module mcu_mdm_1_0_MB_SRL16E
         .A2(Q[2]),
         .A3(Q[3]),
         .CE(1'b0),
-        .CLK(\Use_E2.BSCANE2_I_i_8 ),
+        .CLK(\Use_E2.BSCANE2_I_i_7 ),
         .D(1'b0),
         .Q(Q1_out));
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRL16E" *) 
 module mcu_mdm_1_0_MB_SRL16E__parameterized1
-   (\shift_Count_reg[4] ,
+   (\shift_Count_reg[0] ,
     Q,
-    \Use_E2.BSCANE2_I_i_8_0 ,
-    Q1_out,
-    \Use_E2.BSCANE2_I_i_2 ,
-    config_TDO_3);
-  output \shift_Count_reg[4] ;
-  input [5:0]Q;
-  input \Use_E2.BSCANE2_I_i_8_0 ;
-  input Q1_out;
-  input [0:0]\Use_E2.BSCANE2_I_i_2 ;
-  input config_TDO_3;
+    \Use_E2.BSCANE2_I_i_7 );
+  output \shift_Count_reg[0] ;
+  input [3:0]Q;
+  input \Use_E2.BSCANE2_I_i_7 ;
 
-  wire [5:0]Q;
-  wire Q1_out;
-  wire [0:0]\Use_E2.BSCANE2_I_i_2 ;
-  wire \Use_E2.BSCANE2_I_i_8_0 ;
-  wire \Use_unisim.MB_SRL16E_I1_n_0 ;
-  wire config_TDO_3;
-  wire \shift_Count_reg[4] ;
+  wire [3:0]Q;
+  wire \Use_E2.BSCANE2_I_i_7 ;
+  wire \shift_Count_reg[0] ;
 
-  LUT6 #(
-    .INIT(64'hFF00B8000000B800)) 
-    \Use_E2.BSCANE2_I_i_8 
-       (.I0(\Use_unisim.MB_SRL16E_I1_n_0 ),
-        .I1(Q[4]),
-        .I2(Q1_out),
-        .I3(\Use_E2.BSCANE2_I_i_2 ),
-        .I4(Q[5]),
-        .I5(config_TDO_3),
-        .O(\shift_Count_reg[4] ));
   (* box_type = "PRIMITIVE" *) 
   (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_Config_SRL16E.SRL16E_2/Use_unisim.MB_SRL16E_I1 " *) 
   SRL16E #(
@@ -7350,24 +9985,44 @@ module mcu_mdm_1_0_MB_SRL16E__parameterized1
         .A2(Q[2]),
         .A3(Q[3]),
         .CE(1'b0),
-        .CLK(\Use_E2.BSCANE2_I_i_8_0 ),
+        .CLK(\Use_E2.BSCANE2_I_i_7 ),
         .D(1'b0),
-        .Q(\Use_unisim.MB_SRL16E_I1_n_0 ));
+        .Q(\shift_Count_reg[0] ));
 endmodule
 
 (* ORIG_REF_NAME = "MB_SRL16E" *) 
 module mcu_mdm_1_0_MB_SRL16E__parameterized3
-   (config_TDO_3,
+   (\shift_Count_reg[5] ,
     Q,
-    \Use_E2.BSCANE2_I_i_8 );
-  output config_TDO_3;
-  input [3:0]Q;
-  input \Use_E2.BSCANE2_I_i_8 ;
+    \Use_E2.BSCANE2_I_i_7_0 ,
+    \Use_E2.BSCANE2_I_i_4 ,
+    Q1_out,
+    \Use_E2.BSCANE2_I_i_4_0 );
+  output \shift_Count_reg[5] ;
+  input [5:0]Q;
+  input \Use_E2.BSCANE2_I_i_7_0 ;
+  input \Use_E2.BSCANE2_I_i_4 ;
+  input Q1_out;
+  input [0:0]\Use_E2.BSCANE2_I_i_4_0 ;
 
-  wire [3:0]Q;
-  wire \Use_E2.BSCANE2_I_i_8 ;
+  wire [5:0]Q;
+  wire Q1_out;
+  wire \Use_E2.BSCANE2_I_i_4 ;
+  wire [0:0]\Use_E2.BSCANE2_I_i_4_0 ;
+  wire \Use_E2.BSCANE2_I_i_7_0 ;
   wire config_TDO_3;
+  wire \shift_Count_reg[5] ;
 
+  LUT6 #(
+    .INIT(64'hB8B8BB8800000000)) 
+    \Use_E2.BSCANE2_I_i_7 
+       (.I0(config_TDO_3),
+        .I1(Q[5]),
+        .I2(\Use_E2.BSCANE2_I_i_4 ),
+        .I3(Q1_out),
+        .I4(Q[4]),
+        .I5(\Use_E2.BSCANE2_I_i_4_0 ),
+        .O(\shift_Count_reg[5] ));
   (* box_type = "PRIMITIVE" *) 
   (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_Config_SRL16E.Use_Ext_Config.SRL16E_3/Use_unisim.MB_SRL16E_I1 " *) 
   SRL16E #(
@@ -7379,7 +10034,7 @@ module mcu_mdm_1_0_MB_SRL16E__parameterized3
         .A2(Q[2]),
         .A3(Q[3]),
         .CE(1'b0),
-        .CLK(\Use_E2.BSCANE2_I_i_8 ),
+        .CLK(\Use_E2.BSCANE2_I_i_7_0 ),
         .D(1'b0),
         .Q(config_TDO_3));
 endmodule
@@ -7388,14 +10043,14 @@ endmodule
 module mcu_mdm_1_0_MB_SRL16E__parameterized5
    (Q0_out,
     Q,
-    \Use_E2.BSCANE2_I_i_7 );
+    \Use_E2.BSCANE2_I_i_6 );
   output Q0_out;
   input [3:0]Q;
-  input \Use_E2.BSCANE2_I_i_7 ;
+  input \Use_E2.BSCANE2_I_i_6 ;
 
   wire [3:0]Q;
   wire Q0_out;
-  wire \Use_E2.BSCANE2_I_i_7 ;
+  wire \Use_E2.BSCANE2_I_i_6 ;
 
   (* box_type = "PRIMITIVE" *) 
   (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_ID_SRL16E.SRL16E_ID_1/Use_unisim.MB_SRL16E_I1 " *) 
@@ -7408,7 +10063,7 @@ module mcu_mdm_1_0_MB_SRL16E__parameterized5
         .A2(Q[2]),
         .A3(Q[3]),
         .CE(1'b0),
-        .CLK(\Use_E2.BSCANE2_I_i_7 ),
+        .CLK(\Use_E2.BSCANE2_I_i_6 ),
         .D(1'b0),
         .Q(Q0_out));
 endmodule
@@ -7417,29 +10072,29 @@ endmodule
 module mcu_mdm_1_0_MB_SRL16E__parameterized7
    (tdo,
     Q,
-    \Use_E2.BSCANE2_I_i_7_0 ,
+    \Use_E2.BSCANE2_I_i_6_0 ,
     sel_n_reg,
     sel_n_reg_0,
     sel_n_reg_1,
     sel_n_reg_2,
     sel_n_reg_3,
+    Dbg_TDO_0,
     \Use_E2.BSCANE2_I_i_1_0 ,
     \Use_E2.BSCANE2_I_i_1_1 ,
     \Use_E2.BSCANE2_I_i_1_2 ,
-    Dbg_TDO_0,
     Q0_out);
   output tdo;
   input [4:0]Q;
-  input \Use_E2.BSCANE2_I_i_7_0 ;
-  input [2:0]sel_n_reg;
-  input sel_n_reg_0;
+  input \Use_E2.BSCANE2_I_i_6_0 ;
+  input sel_n_reg;
+  input [0:0]sel_n_reg_0;
   input sel_n_reg_1;
-  input [0:0]sel_n_reg_2;
+  input [2:0]sel_n_reg_2;
   input sel_n_reg_3;
+  input Dbg_TDO_0;
   input \Use_E2.BSCANE2_I_i_1_0 ;
   input \Use_E2.BSCANE2_I_i_1_1 ;
   input \Use_E2.BSCANE2_I_i_1_2 ;
-  input Dbg_TDO_0;
   input Q0_out;
 
   wire Dbg_TDO_0;
@@ -7449,44 +10104,44 @@ module mcu_mdm_1_0_MB_SRL16E__parameterized7
   wire \Use_E2.BSCANE2_I_i_1_0 ;
   wire \Use_E2.BSCANE2_I_i_1_1 ;
   wire \Use_E2.BSCANE2_I_i_1_2 ;
-  wire \Use_E2.BSCANE2_I_i_2_n_0 ;
-  wire \Use_E2.BSCANE2_I_i_7_0 ;
-  wire \Use_E2.BSCANE2_I_i_7_n_0 ;
-  wire [2:0]sel_n_reg;
-  wire sel_n_reg_0;
+  wire \Use_E2.BSCANE2_I_i_4_n_0 ;
+  wire \Use_E2.BSCANE2_I_i_6_0 ;
+  wire \Use_E2.BSCANE2_I_i_6_n_0 ;
+  wire sel_n_reg;
+  wire [0:0]sel_n_reg_0;
   wire sel_n_reg_1;
-  wire [0:0]sel_n_reg_2;
+  wire [2:0]sel_n_reg_2;
   wire sel_n_reg_3;
   wire tdo;
 
   LUT6 #(
-    .INIT(64'hFFFFFFFFFF010000)) 
+    .INIT(64'hEAEEEAEEEAEEEAEA)) 
     \Use_E2.BSCANE2_I_i_1 
-       (.I0(sel_n_reg[2]),
-        .I1(\Use_E2.BSCANE2_I_i_2_n_0 ),
-        .I2(sel_n_reg_0),
-        .I3(sel_n_reg_1),
-        .I4(sel_n_reg_2),
+       (.I0(sel_n_reg),
+        .I1(sel_n_reg_0),
+        .I2(sel_n_reg_1),
+        .I3(sel_n_reg_2[2]),
+        .I4(\Use_E2.BSCANE2_I_i_4_n_0 ),
         .I5(sel_n_reg_3),
         .O(tdo));
   LUT6 #(
-    .INIT(64'h000000D0DDDD00D0)) 
-    \Use_E2.BSCANE2_I_i_2 
-       (.I0(sel_n_reg[0]),
-        .I1(\Use_E2.BSCANE2_I_i_1_0 ),
-        .I2(\Use_E2.BSCANE2_I_i_7_n_0 ),
+    .INIT(64'h00AAAAAA00FCFCFC)) 
+    \Use_E2.BSCANE2_I_i_4 
+       (.I0(Dbg_TDO_0),
+        .I1(\Use_E2.BSCANE2_I_i_6_n_0 ),
+        .I2(\Use_E2.BSCANE2_I_i_1_0 ),
         .I3(\Use_E2.BSCANE2_I_i_1_1 ),
-        .I4(\Use_E2.BSCANE2_I_i_1_2 ),
-        .I5(Dbg_TDO_0),
-        .O(\Use_E2.BSCANE2_I_i_2_n_0 ));
+        .I4(sel_n_reg_2[0]),
+        .I5(\Use_E2.BSCANE2_I_i_1_2 ),
+        .O(\Use_E2.BSCANE2_I_i_4_n_0 ));
   LUT4 #(
-    .INIT(16'hDDCF)) 
-    \Use_E2.BSCANE2_I_i_7 
+    .INIT(16'h2230)) 
+    \Use_E2.BSCANE2_I_i_6 
        (.I0(ID_TDO_2),
-        .I1(sel_n_reg[1]),
+        .I1(sel_n_reg_2[1]),
         .I2(Q0_out),
         .I3(Q[4]),
-        .O(\Use_E2.BSCANE2_I_i_7_n_0 ));
+        .O(\Use_E2.BSCANE2_I_i_6_n_0 ));
   (* box_type = "PRIMITIVE" *) 
   (* srl_name = "U0/\MDM_Core_I1/JTAG_CONTROL_I/Use_ID_SRL16E.SRL16E_ID_2/Use_unisim.MB_SRL16E_I1 " *) 
   SRL16E #(
@@ -7498,11 +10153,12 @@ module mcu_mdm_1_0_MB_SRL16E__parameterized7
         .A2(Q[2]),
         .A3(Q[3]),
         .CE(1'b0),
-        .CLK(\Use_E2.BSCANE2_I_i_7_0 ),
+        .CLK(\Use_E2.BSCANE2_I_i_6_0 ),
         .D(1'b0),
         .Q(ID_TDO_2));
 endmodule
 
+(* ORIG_REF_NAME = "MB_SRLC32E" *) 
 module mcu_mdm_1_0_MB_SRLC32E
    (M_AXI_WDATA,
     CI,
@@ -8558,7 +11214,6 @@ module mcu_mdm_1_0_MB_SRLC32E_49
     CI,
     A,
     M_AXI_ACLK,
-    \Use_Dbg_Mem_Access.output_reg[0] ,
     Q,
     lmb_ready_vec_q,
     lmb_rd_idle,
@@ -8567,7 +11222,6 @@ module mcu_mdm_1_0_MB_SRLC32E_49
   input CI;
   input [4:0]A;
   input M_AXI_ACLK;
-  input \Use_Dbg_Mem_Access.output_reg[0] ;
   input [0:0]Q;
   input lmb_ready_vec_q;
   input lmb_rd_idle;
@@ -8578,20 +11232,12 @@ module mcu_mdm_1_0_MB_SRLC32E_49
   wire M_AXI_ACLK;
   wire [0:0]M_AXI_RDATA;
   wire [0:0]Q;
-  wire \Use_Dbg_Mem_Access.output_reg[0] ;
   wire [0:0]\Using_FPGA.Native_0 ;
   wire \Using_FPGA.Native_i_1__33_n_0 ;
   wire \Using_FPGA.Native_n_1 ;
   wire lmb_rd_idle;
   wire lmb_ready_vec_q;
-  wire [31:31]master_data_out;
 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \Use_Dbg_Mem_Access.output[0]_i_2 
-       (.I0(master_data_out),
-        .I1(\Use_Dbg_Mem_Access.output_reg[0] ),
-        .O(\Using_FPGA.Native_0 ));
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
   (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[0].D32.SRLC32E_I/Using_FPGA.Native " *) 
@@ -8603,7 +11249,7 @@ module mcu_mdm_1_0_MB_SRLC32E_49
         .CE(CI),
         .CLK(M_AXI_ACLK),
         .D(\Using_FPGA.Native_i_1__33_n_0 ),
-        .Q(master_data_out),
+        .Q(\Using_FPGA.Native_0 ),
         .Q31(\Using_FPGA.Native_n_1 ));
   LUT4 #(
     .INIT(16'hFB08)) 
@@ -9412,7 +12058,7 @@ endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
 module mcu_mdm_1_0_MB_SRLC32E_65
-   (axi_wr_idle_reg,
+   (\Use_Dbg_Mem_Access.output_reg[23] ,
     CI,
     A,
     M_AXI_ACLK,
@@ -9425,13 +12071,13 @@ module mcu_mdm_1_0_MB_SRLC32E_65
     lmb_ready_vec_q,
     lmb_rd_idle,
     M_AXI_RDATA);
-  output [0:0]axi_wr_idle_reg;
+  output [0:0]\Use_Dbg_Mem_Access.output_reg[23] ;
   input CI;
   input [4:0]A;
   input M_AXI_ACLK;
-  input \Use_Dbg_Mem_Access.output_reg[24] ;
+  input [0:0]\Use_Dbg_Mem_Access.output_reg[24] ;
   input \Use_Dbg_Mem_Access.output_reg[24]_0 ;
-  input [0:0]\Use_Dbg_Mem_Access.output_reg[24]_1 ;
+  input \Use_Dbg_Mem_Access.output_reg[24]_1 ;
   input \Use_Dbg_Mem_Access.output_reg[24]_2 ;
   input \Use_Dbg_Mem_Access.output_reg[24]_3 ;
   input [0:0]Q;
@@ -9444,28 +12090,28 @@ module mcu_mdm_1_0_MB_SRLC32E_65
   wire M_AXI_ACLK;
   wire [0:0]M_AXI_RDATA;
   wire [0:0]Q;
-  wire \Use_Dbg_Mem_Access.output_reg[24] ;
+  wire [0:0]\Use_Dbg_Mem_Access.output_reg[23] ;
+  wire [0:0]\Use_Dbg_Mem_Access.output_reg[24] ;
   wire \Use_Dbg_Mem_Access.output_reg[24]_0 ;
-  wire [0:0]\Use_Dbg_Mem_Access.output_reg[24]_1 ;
+  wire \Use_Dbg_Mem_Access.output_reg[24]_1 ;
   wire \Use_Dbg_Mem_Access.output_reg[24]_2 ;
   wire \Use_Dbg_Mem_Access.output_reg[24]_3 ;
   wire \Using_FPGA.Native_i_1__9_n_0 ;
   wire \Using_FPGA.Native_n_1 ;
-  wire [0:0]axi_wr_idle_reg;
   wire lmb_rd_idle;
   wire lmb_ready_vec_q;
   wire [7:7]master_data_out;
 
   LUT6 #(
-    .INIT(64'hFFF000F088F088F0)) 
+    .INIT(64'hFF00C0C0AAAAAAAA)) 
     \Use_Dbg_Mem_Access.output[24]_i_1 
        (.I0(\Use_Dbg_Mem_Access.output_reg[24] ),
         .I1(\Use_Dbg_Mem_Access.output_reg[24]_0 ),
         .I2(\Use_Dbg_Mem_Access.output_reg[24]_1 ),
-        .I3(\Use_Dbg_Mem_Access.output_reg[24]_2 ),
-        .I4(master_data_out),
+        .I3(master_data_out),
+        .I4(\Use_Dbg_Mem_Access.output_reg[24]_2 ),
         .I5(\Use_Dbg_Mem_Access.output_reg[24]_3 ),
-        .O(axi_wr_idle_reg));
+        .O(\Use_Dbg_Mem_Access.output_reg[23] ));
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
   (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[24].D32.SRLC32E_I/Using_FPGA.Native " *) 
@@ -9491,41 +12137,41 @@ endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
 module mcu_mdm_1_0_MB_SRLC32E_66
-   (\Has_FIFO.lmb_rd_idle_reg ,
+   (\Use_Dbg_Mem_Access.output_reg[24] ,
     CI,
     A,
     M_AXI_ACLK,
-    lmb_rd_idle,
     \Use_Dbg_Mem_Access.output_reg[25] ,
     \Use_Dbg_Mem_Access.output_reg[25]_0 ,
+    lmb_rd_idle,
     \Use_Dbg_Mem_Access.output_reg[25]_1 ,
     \Use_Dbg_Mem_Access.output_reg[25]_2 ,
     Q,
     lmb_ready_vec_q,
     M_AXI_RDATA);
-  output [0:0]\Has_FIFO.lmb_rd_idle_reg ;
+  output [0:0]\Use_Dbg_Mem_Access.output_reg[24] ;
   input CI;
   input [4:0]A;
   input M_AXI_ACLK;
-  input lmb_rd_idle;
-  input \Use_Dbg_Mem_Access.output_reg[25] ;
+  input [0:0]\Use_Dbg_Mem_Access.output_reg[25] ;
   input \Use_Dbg_Mem_Access.output_reg[25]_0 ;
+  input lmb_rd_idle;
   input \Use_Dbg_Mem_Access.output_reg[25]_1 ;
-  input [0:0]\Use_Dbg_Mem_Access.output_reg[25]_2 ;
+  input \Use_Dbg_Mem_Access.output_reg[25]_2 ;
   input [0:0]Q;
   input lmb_ready_vec_q;
   input [0:0]M_AXI_RDATA;
 
   wire [4:0]A;
   wire CI;
-  wire [0:0]\Has_FIFO.lmb_rd_idle_reg ;
   wire M_AXI_ACLK;
   wire [0:0]M_AXI_RDATA;
   wire [0:0]Q;
-  wire \Use_Dbg_Mem_Access.output_reg[25] ;
+  wire [0:0]\Use_Dbg_Mem_Access.output_reg[24] ;
+  wire [0:0]\Use_Dbg_Mem_Access.output_reg[25] ;
   wire \Use_Dbg_Mem_Access.output_reg[25]_0 ;
   wire \Use_Dbg_Mem_Access.output_reg[25]_1 ;
-  wire [0:0]\Use_Dbg_Mem_Access.output_reg[25]_2 ;
+  wire \Use_Dbg_Mem_Access.output_reg[25]_2 ;
   wire \Using_FPGA.Native_i_1__8_n_0 ;
   wire \Using_FPGA.Native_n_1 ;
   wire lmb_rd_idle;
@@ -9533,15 +12179,15 @@ module mcu_mdm_1_0_MB_SRLC32E_66
   wire [6:6]master_data_out;
 
   LUT6 #(
-    .INIT(64'hAAFFC0FFAA00C000)) 
+    .INIT(64'hFF00C0C0AAAAAAAA)) 
     \Use_Dbg_Mem_Access.output[25]_i_1 
-       (.I0(master_data_out),
-        .I1(lmb_rd_idle),
-        .I2(\Use_Dbg_Mem_Access.output_reg[25] ),
-        .I3(\Use_Dbg_Mem_Access.output_reg[25]_0 ),
+       (.I0(\Use_Dbg_Mem_Access.output_reg[25] ),
+        .I1(\Use_Dbg_Mem_Access.output_reg[25]_0 ),
+        .I2(lmb_rd_idle),
+        .I3(master_data_out),
         .I4(\Use_Dbg_Mem_Access.output_reg[25]_1 ),
         .I5(\Use_Dbg_Mem_Access.output_reg[25]_2 ),
-        .O(\Has_FIFO.lmb_rd_idle_reg ));
+        .O(\Use_Dbg_Mem_Access.output_reg[24] ));
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
   (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[25].D32.SRLC32E_I/Using_FPGA.Native " *) 
@@ -9567,28 +12213,28 @@ endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
 module mcu_mdm_1_0_MB_SRLC32E_67
-   (\axi_wr_resp_reg[1] ,
+   (\Use_Dbg_Mem_Access.output_reg[25] ,
     CI,
     A,
     M_AXI_ACLK,
     \Use_Dbg_Mem_Access.output_reg[26] ,
-    lmb_wr_resp,
     \Use_Dbg_Mem_Access.output_reg[26]_0 ,
+    lmb_wr_resp,
     \Use_Dbg_Mem_Access.output_reg[26]_1 ,
     \Use_Dbg_Mem_Access.output_reg[26]_2 ,
     Q,
     lmb_ready_vec_q,
     lmb_rd_idle,
     M_AXI_RDATA);
-  output [0:0]\axi_wr_resp_reg[1] ;
+  output [0:0]\Use_Dbg_Mem_Access.output_reg[25] ;
   input CI;
   input [4:0]A;
   input M_AXI_ACLK;
-  input \Use_Dbg_Mem_Access.output_reg[26] ;
-  input [0:0]lmb_wr_resp;
+  input [0:0]\Use_Dbg_Mem_Access.output_reg[26] ;
   input \Use_Dbg_Mem_Access.output_reg[26]_0 ;
+  input [0:0]lmb_wr_resp;
   input \Use_Dbg_Mem_Access.output_reg[26]_1 ;
-  input [0:0]\Use_Dbg_Mem_Access.output_reg[26]_2 ;
+  input \Use_Dbg_Mem_Access.output_reg[26]_2 ;
   input [0:0]Q;
   input lmb_ready_vec_q;
   input lmb_rd_idle;
@@ -9599,28 +12245,28 @@ module mcu_mdm_1_0_MB_SRLC32E_67
   wire M_AXI_ACLK;
   wire [0:0]M_AXI_RDATA;
   wire [0:0]Q;
-  wire \Use_Dbg_Mem_Access.output_reg[26] ;
+  wire [0:0]\Use_Dbg_Mem_Access.output_reg[25] ;
+  wire [0:0]\Use_Dbg_Mem_Access.output_reg[26] ;
   wire \Use_Dbg_Mem_Access.output_reg[26]_0 ;
   wire \Use_Dbg_Mem_Access.output_reg[26]_1 ;
-  wire [0:0]\Use_Dbg_Mem_Access.output_reg[26]_2 ;
+  wire \Use_Dbg_Mem_Access.output_reg[26]_2 ;
   wire \Using_FPGA.Native_i_1__7_n_0 ;
   wire \Using_FPGA.Native_n_1 ;
-  wire [0:0]\axi_wr_resp_reg[1] ;
   wire lmb_rd_idle;
   wire lmb_ready_vec_q;
   wire [0:0]lmb_wr_resp;
   wire [5:5]master_data_out;
 
   LUT6 #(
-    .INIT(64'hF0EEFFFFF0EE0000)) 
+    .INIT(64'hFF00FCFCAAAAAAAA)) 
     \Use_Dbg_Mem_Access.output[26]_i_1 
        (.I0(\Use_Dbg_Mem_Access.output_reg[26] ),
-        .I1(lmb_wr_resp),
-        .I2(master_data_out),
-        .I3(\Use_Dbg_Mem_Access.output_reg[26]_0 ),
+        .I1(\Use_Dbg_Mem_Access.output_reg[26]_0 ),
+        .I2(lmb_wr_resp),
+        .I3(master_data_out),
         .I4(\Use_Dbg_Mem_Access.output_reg[26]_1 ),
         .I5(\Use_Dbg_Mem_Access.output_reg[26]_2 ),
-        .O(\axi_wr_resp_reg[1] ));
+        .O(\Use_Dbg_Mem_Access.output_reg[25] ));
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
   (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[26].D32.SRLC32E_I/Using_FPGA.Native " *) 
@@ -9699,28 +12345,28 @@ endmodule
 
 (* ORIG_REF_NAME = "MB_SRLC32E" *) 
 module mcu_mdm_1_0_MB_SRLC32E_69
-   (\Has_FIFO.lmb_rd_resp_reg[1] ,
+   (\Use_Dbg_Mem_Access.output_reg[27] ,
     CI,
     A,
     M_AXI_ACLK,
-    lmb_rd_resp,
     \Use_Dbg_Mem_Access.output_reg[28] ,
     \Use_Dbg_Mem_Access.output_reg[28]_0 ,
+    lmb_rd_resp,
     \Use_Dbg_Mem_Access.output_reg[28]_1 ,
     \Use_Dbg_Mem_Access.output_reg[28]_2 ,
     Q,
     lmb_ready_vec_q,
     lmb_rd_idle,
     M_AXI_RDATA);
-  output [0:0]\Has_FIFO.lmb_rd_resp_reg[1] ;
+  output [0:0]\Use_Dbg_Mem_Access.output_reg[27] ;
   input CI;
   input [4:0]A;
   input M_AXI_ACLK;
-  input [0:0]lmb_rd_resp;
-  input \Use_Dbg_Mem_Access.output_reg[28] ;
+  input [0:0]\Use_Dbg_Mem_Access.output_reg[28] ;
   input \Use_Dbg_Mem_Access.output_reg[28]_0 ;
+  input [0:0]lmb_rd_resp;
   input \Use_Dbg_Mem_Access.output_reg[28]_1 ;
-  input [0:0]\Use_Dbg_Mem_Access.output_reg[28]_2 ;
+  input \Use_Dbg_Mem_Access.output_reg[28]_2 ;
   input [0:0]Q;
   input lmb_ready_vec_q;
   input lmb_rd_idle;
@@ -9728,14 +12374,14 @@ module mcu_mdm_1_0_MB_SRLC32E_69
 
   wire [4:0]A;
   wire CI;
-  wire [0:0]\Has_FIFO.lmb_rd_resp_reg[1] ;
   wire M_AXI_ACLK;
   wire [0:0]M_AXI_RDATA;
   wire [0:0]Q;
-  wire \Use_Dbg_Mem_Access.output_reg[28] ;
+  wire [0:0]\Use_Dbg_Mem_Access.output_reg[27] ;
+  wire [0:0]\Use_Dbg_Mem_Access.output_reg[28] ;
   wire \Use_Dbg_Mem_Access.output_reg[28]_0 ;
   wire \Use_Dbg_Mem_Access.output_reg[28]_1 ;
-  wire [0:0]\Use_Dbg_Mem_Access.output_reg[28]_2 ;
+  wire \Use_Dbg_Mem_Access.output_reg[28]_2 ;
   wire \Using_FPGA.Native_i_1__5_n_0 ;
   wire \Using_FPGA.Native_n_1 ;
   wire lmb_rd_idle;
@@ -9744,15 +12390,15 @@ module mcu_mdm_1_0_MB_SRLC32E_69
   wire [3:3]master_data_out;
 
   LUT6 #(
-    .INIT(64'hAAFFFCFFAA00FC00)) 
+    .INIT(64'hFF00FCFCAAAAAAAA)) 
     \Use_Dbg_Mem_Access.output[28]_i_1 
-       (.I0(master_data_out),
-        .I1(lmb_rd_resp),
-        .I2(\Use_Dbg_Mem_Access.output_reg[28] ),
-        .I3(\Use_Dbg_Mem_Access.output_reg[28]_0 ),
+       (.I0(\Use_Dbg_Mem_Access.output_reg[28] ),
+        .I1(\Use_Dbg_Mem_Access.output_reg[28]_0 ),
+        .I2(lmb_rd_resp),
+        .I3(master_data_out),
         .I4(\Use_Dbg_Mem_Access.output_reg[28]_1 ),
         .I5(\Use_Dbg_Mem_Access.output_reg[28]_2 ),
-        .O(\Has_FIFO.lmb_rd_resp_reg[1] ));
+        .O(\Use_Dbg_Mem_Access.output_reg[27] ));
   (* box_type = "PRIMITIVE" *) 
   (* srl_bus_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM " *) 
   (* srl_name = "U0/\Use_Bus_MASTER.bus_master_I/Has_FIFO.Read_FIFO/FIFO_RAM[28].D32.SRLC32E_I/Using_FPGA.Native " *) 
@@ -10429,6 +13075,7 @@ module mcu_mdm_1_0_MB_SRLC32E_9
         .Q31(\Using_FPGA.Native_n_1 ));
 endmodule
 
+(* ORIG_REF_NAME = "MB_XORCY" *) 
 module mcu_mdm_1_0_MB_XORCY
    (sum_A_0,
     LI,
@@ -10445,7 +13092,7 @@ module mcu_mdm_1_0_MB_XORCY
   wire [3:1]\NLW_Using_FPGA.Native_CARRY4_O_UNCONNECTED ;
   wire [3:1]\NLW_Using_FPGA.Native_CARRY4_S_UNCONNECTED ;
 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   (* box_type = "PRIMITIVE" *) 
   CARRY4 \Using_FPGA.Native_CARRY4 
@@ -10460,21 +13107,30 @@ endmodule
 (* ORIG_REF_NAME = "MB_XORCY" *) 
 module mcu_mdm_1_0_MB_XORCY_48
    (sum_A_0,
+    \Use_Bus_MASTER.lmb_ready_vec_q_reg[0] ,
     LI,
-    LO);
+    LO,
+    lmb_ready_vec_q,
+    lmb_rd_idle);
   output sum_A_0;
+  output \Use_Bus_MASTER.lmb_ready_vec_q_reg[0] ;
   input LI;
   input LO;
+  input lmb_ready_vec_q;
+  input lmb_rd_idle;
 
   wire LI;
   wire LO;
+  wire \Use_Bus_MASTER.lmb_ready_vec_q_reg[0] ;
+  wire lmb_rd_idle;
+  wire lmb_ready_vec_q;
   wire sum_A_0;
   wire [3:0]\NLW_Using_FPGA.Native_CARRY4_CO_UNCONNECTED ;
   wire [3:0]\NLW_Using_FPGA.Native_CARRY4_DI_UNCONNECTED ;
   wire [3:1]\NLW_Using_FPGA.Native_CARRY4_O_UNCONNECTED ;
   wire [3:1]\NLW_Using_FPGA.Native_CARRY4_S_UNCONNECTED ;
 
-  (* OPT_MODIFIED = "MLO " *) 
+  (* OPT_MODIFIED = "MLO" *) 
   (* XILINX_LEGACY_PRIM = "(MUXCY,XORCY)" *) 
   (* box_type = "PRIMITIVE" *) 
   CARRY4 \Using_FPGA.Native_CARRY4 
@@ -10484,6 +13140,12 @@ module mcu_mdm_1_0_MB_XORCY_48
         .DI(\NLW_Using_FPGA.Native_CARRY4_DI_UNCONNECTED [3:0]),
         .O({\NLW_Using_FPGA.Native_CARRY4_O_UNCONNECTED [3:1],sum_A_0}),
         .S({\NLW_Using_FPGA.Native_CARRY4_S_UNCONNECTED [3:1],LI}));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \Using_FPGA.Native_I1_i_4 
+       (.I0(lmb_ready_vec_q),
+        .I1(lmb_rd_idle),
+        .O(\Use_Bus_MASTER.lmb_ready_vec_q_reg[0] ));
 endmodule
 
 (* C_ADDR_SIZE = "32" *) (* C_AVOID_PRIMITIVES = "0" *) (* C_BSCANID = "76547328" *) 
@@ -10496,7 +13158,7 @@ endmodule
 (* C_TRACE_CLK_FREQ_HZ = "200000000" *) (* C_TRACE_CLK_OUT_PHASE = "90" *) (* C_TRACE_DATA_WIDTH = "32" *) 
 (* C_TRACE_ID = "110" *) (* C_TRACE_OUTPUT = "0" *) (* C_TRACE_PROTOCOL = "1" *) 
 (* C_USE_BSCAN = "0" *) (* C_USE_CONFIG_RESET = "0" *) (* C_USE_CROSS_TRIGGER = "1" *) 
-(* C_USE_UART = "0" *) 
+(* C_USE_UART = "0" *) (* ORIG_REF_NAME = "MDM" *) 
 module mcu_mdm_1_0_MDM
    (Config_Reset,
     Scan_Reset_Sel,
@@ -13559,10 +16221,13 @@ module mcu_mdm_1_0_MDM
   wire Ext_NM_BRK;
   wire [5:5]\JTAG_CONTROL_I/Use_Serial_Unified_Completion.count_reg ;
   wire \JTAG_CONTROL_I/execute_3 ;
-  wire \JTAG_CONTROL_I/p_0_in94_in ;
+  wire \JTAG_CONTROL_I/p_0_in93_in ;
+  wire \JTAG_CONTROL_I/p_101_out__0 ;
+  wire \JTAG_CONTROL_I/p_125_out__0 ;
   wire \JTAG_CONTROL_I/p_20_out ;
-  wire \JTAG_CONTROL_I/p_93_out ;
+  wire \JTAG_CONTROL_I/p_92_out ;
   wire \JTAG_CONTROL_I/rd_resp_zero ;
+  wire \JTAG_CONTROL_I/sel ;
   wire \JTAG_CONTROL_I/tdo_reg ;
   wire \JTAG_CONTROL_I/wr_resp_zero ;
   wire LMB_Addr_Strobe_0;
@@ -13576,10 +16241,8 @@ module mcu_mdm_1_0_MDM
   wire LMB_Wait_0;
   wire LMB_Write_Strobe_0;
   wire MDM_Core_I1_n_0;
-  wire MDM_Core_I1_n_25;
-  wire MDM_Core_I1_n_26;
-  wire MDM_Core_I1_n_43;
-  wire MDM_Core_I1_n_44;
+  wire MDM_Core_I1_n_22;
+  wire MDM_Core_I1_n_28;
   wire MDM_Core_I1_n_45;
   wire MDM_Core_I1_n_46;
   wire MDM_Core_I1_n_77;
@@ -13630,16 +16293,16 @@ module mcu_mdm_1_0_MDM
   wire Trig_Out_1;
   wire Trig_Out_2;
   wire Trig_Out_3;
-  wire \Use_Bus_MASTER.bus_master_I_n_70 ;
   wire \Use_Bus_MASTER.bus_master_I_n_71 ;
   wire \Use_Bus_MASTER.bus_master_I_n_72 ;
   wire \Use_Bus_MASTER.bus_master_I_n_73 ;
   wire \Use_Bus_MASTER.bus_master_I_n_74 ;
   wire \Use_Bus_MASTER.bus_master_I_n_75 ;
-  wire \Use_Bus_MASTER.bus_master_I_n_80 ;
+  wire \Use_Bus_MASTER.bus_master_I_n_76 ;
   wire \Use_Bus_MASTER.bus_master_I_n_81 ;
   wire \Use_Bus_MASTER.bus_master_I_n_82 ;
   wire \Use_Bus_MASTER.bus_master_I_n_83 ;
+  wire \Use_Bus_MASTER.bus_master_I_n_84 ;
   wire \Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][0] ;
   wire \Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][10] ;
   wire \Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][11] ;
@@ -13672,8 +16335,7 @@ module mcu_mdm_1_0_MDM
   wire \Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][7] ;
   wire \Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][8] ;
   wire \Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][9] ;
-  wire \Use_E2.BSCAN_I_n_11 ;
-  wire \Use_E2.BSCAN_I_n_12 ;
+  wire \Use_E2.BSCAN_I_n_10 ;
   wire \Use_E2.BSCAN_I_n_13 ;
   wire \Use_E2.BSCAN_I_n_14 ;
   wire \Use_E2.BSCAN_I_n_15 ;
@@ -13686,12 +16348,13 @@ module mcu_mdm_1_0_MDM
   wire \Use_E2.BSCAN_I_n_22 ;
   wire \Use_E2.BSCAN_I_n_23 ;
   wire \Use_E2.BSCAN_I_n_24 ;
-  wire \Use_E2.BSCAN_I_n_7 ;
+  wire \Use_E2.BSCAN_I_n_25 ;
+  wire \Use_E2.BSCAN_I_n_8 ;
   wire lmb_ready_vec_q;
   wire lmb_ue_vec_q;
   wire lmb_wait_vec_q;
   wire [6:2]master_data_in;
-  wire [30:0]master_data_out;
+  wire [31:0]master_data_out;
   wire master_data_rd;
   wire master_data_wr;
   wire master_rd_start;
@@ -18202,40 +20865,41 @@ module mcu_mdm_1_0_MDM
         .Trig_Out_1(Trig_Out_1),
         .Trig_Out_2(Trig_Out_2),
         .Trig_Out_3(Trig_Out_3),
-        .\Use_BSCAN.command_reg[5] (MDM_Core_I1_n_43),
-        .\Use_BSCAN.command_reg[7] (MDM_Core_I1_n_25),
-        .\Use_BSCAN.command_reg[7]_0 (MDM_Core_I1_n_44),
+        .\Use_BSCAN.command_reg[6] (MDM_Core_I1_n_45),
+        .\Use_BSCAN.command_reg[7] (MDM_Core_I1_n_22),
         .\Use_Cross_Trigger.tdo_reg_reg[7] ({tdo_reg[7],tdo_reg[8],tdo_reg[9],tdo_reg[10],tdo_reg[11],tdo_reg[12],tdo_reg[13],tdo_reg[14],tdo_reg[19],tdo_reg[20],tdo_reg[21],tdo_reg[22]}),
-        .\Use_Cross_Trigger.tdo_reg_reg[8] ({\Use_E2.BSCAN_I_n_12 ,\Use_E2.BSCAN_I_n_13 ,\Use_E2.BSCAN_I_n_14 ,\Use_E2.BSCAN_I_n_15 ,\Use_E2.BSCAN_I_n_16 ,\Use_E2.BSCAN_I_n_17 ,\Use_E2.BSCAN_I_n_18 ,\Use_E2.BSCAN_I_n_19 ,\Use_E2.BSCAN_I_n_20 ,\Use_E2.BSCAN_I_n_21 ,\Use_E2.BSCAN_I_n_22 ,\Use_E2.BSCAN_I_n_23 }),
-        .\Use_Dbg_Mem_Access.Master_rd_start_reg (MDM_Core_I1_n_77),
+        .\Use_Cross_Trigger.tdo_reg_reg[8] ({\Use_E2.BSCAN_I_n_14 ,\Use_E2.BSCAN_I_n_15 ,\Use_E2.BSCAN_I_n_16 ,\Use_E2.BSCAN_I_n_17 ,\Use_E2.BSCAN_I_n_18 ,\Use_E2.BSCAN_I_n_19 ,\Use_E2.BSCAN_I_n_20 ,\Use_E2.BSCAN_I_n_21 ,\Use_E2.BSCAN_I_n_22 ,\Use_E2.BSCAN_I_n_23 ,\Use_E2.BSCAN_I_n_24 ,\Use_E2.BSCAN_I_n_25 }),
+        .\Use_Dbg_Mem_Access.Master_wr_start_reg (MDM_Core_I1_n_77),
+        .\Use_Dbg_Mem_Access.Master_wr_start_reg_0 (\Use_Bus_MASTER.bus_master_I_n_71 ),
         .\Use_Dbg_Mem_Access.input_reg[0] ({\^LMB_Data_Addr_31 [0],\^LMB_Data_Addr_31 [1],\^LMB_Data_Addr_31 [2],\^LMB_Data_Addr_31 [3],\^LMB_Data_Addr_31 [4],\^LMB_Data_Addr_31 [5],\^LMB_Data_Addr_31 [6],\^LMB_Data_Addr_31 [7],\^LMB_Data_Addr_31 [8],\^LMB_Data_Addr_31 [9],\^LMB_Data_Addr_31 [10],\^LMB_Data_Addr_31 [11],\^LMB_Data_Addr_31 [12],\^LMB_Data_Addr_31 [13],\^LMB_Data_Addr_31 [14],\^LMB_Data_Addr_31 [15],\^LMB_Data_Addr_31 [16],\^LMB_Data_Addr_31 [17],\^LMB_Data_Addr_31 [18],\^LMB_Data_Addr_31 [19],\^LMB_Data_Addr_31 [20],\^LMB_Data_Addr_31 [21],\^LMB_Data_Addr_31 [22],\^LMB_Data_Addr_31 [23],\^LMB_Data_Addr_31 [24],master_data_in,\^LMB_Data_Addr_0 ,\^LMB_Data_Addr_31 [31]}),
-        .\Use_Dbg_Mem_Access.master_overrun_reg (\Use_Bus_MASTER.bus_master_I_n_75 ),
-        .\Use_Dbg_Mem_Access.output_reg[0] ({\Use_Bus_MASTER.bus_master_I_n_70 ,\Use_Bus_MASTER.bus_master_I_n_71 ,\Use_Bus_MASTER.bus_master_I_n_72 ,\Use_Bus_MASTER.bus_master_I_n_73 ,\Use_Bus_MASTER.bus_master_I_n_74 }),
+        .\Use_Dbg_Mem_Access.master_overrun_reg (\Use_Bus_MASTER.bus_master_I_n_72 ),
+        .\Use_Dbg_Mem_Access.output_reg[0] ({\Use_E2.BSCAN_I_n_10 ,\Use_Bus_MASTER.bus_master_I_n_73 ,\Use_Bus_MASTER.bus_master_I_n_74 ,\Use_Bus_MASTER.bus_master_I_n_75 ,\Use_Bus_MASTER.bus_master_I_n_76 }),
         .\Use_Dbg_Mem_Access.output_reg[23] ({\output [23],\output [24],\output [25],\output [27]}),
-        .\Use_Dbg_Mem_Access.output_reg[27] (\Use_Bus_MASTER.bus_master_I_n_80 ),
-        .\Use_Dbg_Mem_Access.output_reg[29] (\Use_Bus_MASTER.bus_master_I_n_82 ),
-        .\Use_Dbg_Mem_Access.rd_resp_zero_reg (\Use_Bus_MASTER.bus_master_I_n_81 ),
+        .\Use_Dbg_Mem_Access.output_reg[27] (\Use_Bus_MASTER.bus_master_I_n_84 ),
+        .\Use_Dbg_Mem_Access.output_reg[29] (\Use_Bus_MASTER.bus_master_I_n_81 ),
+        .\Use_Dbg_Mem_Access.rd_resp_zero_reg (\Use_Bus_MASTER.bus_master_I_n_82 ),
         .\Use_Dbg_Mem_Access.rd_wr_len_reg[0] (master_wr_len),
-        .\Use_Dbg_Mem_Access.rd_wr_len_reg[4] (MDM_Core_I1_n_46),
+        .\Use_Dbg_Mem_Access.rd_wr_len_reg[3] (MDM_Core_I1_n_46),
         .\Use_Dbg_Mem_Access.rd_wr_size_reg[0] (master_wr_size),
         .\Use_Dbg_Mem_Access.wr_resp_zero_reg (\Use_Bus_MASTER.bus_master_I_n_83 ),
-        .\Use_Serial_Unified_Completion.completion_status_reg[10] (\Use_E2.BSCAN_I_n_7 ),
-        .\Use_Serial_Unified_Completion.completion_status_reg[15] (\Use_E2.BSCAN_I_n_11 ),
-        .\Use_Serial_Unified_Completion.count_reg[0]__0 (\Use_E2.BSCAN_I_n_24 ),
+        .\Use_Serial_Unified_Completion.completion_status_reg[10] (\Use_E2.BSCAN_I_n_8 ),
+        .\Use_Serial_Unified_Completion.completion_status_reg[15] (\Use_E2.BSCAN_I_n_13 ),
         .\Use_Serial_Unified_Completion.count_reg[5] (\JTAG_CONTROL_I/Use_Serial_Unified_Completion.count_reg ),
-        .\Use_Serial_Unified_Completion.sample_1_reg[15] (MDM_Core_I1_n_45),
-        .\Using_FPGA.Native (MDM_Core_I1_n_26),
-        .\Using_FPGA.Native_0 (Ext_JTAG_UPDATE),
-        .\Using_FPGA.Native_1 (Ext_JTAG_DRCK),
+        .\Use_Serial_Unified_Completion.count_reg[5]_0 (\JTAG_CONTROL_I/sel ),
+        .\Use_Serial_Unified_Completion.sample_1_reg[15] (MDM_Core_I1_n_28),
+        .\Using_FPGA.Native (Ext_JTAG_UPDATE),
+        .\Using_FPGA.Native_0 (Ext_JTAG_DRCK),
         .execute_3(\JTAG_CONTROL_I/execute_3 ),
         .master_data_out({master_data_out[30:8],master_data_out[4],master_data_out[2:0]}),
         .master_data_rd(master_data_rd),
         .master_data_wr(master_data_wr),
         .master_rd_start(master_rd_start),
         .master_wr_start(master_wr_start),
-        .out(\JTAG_CONTROL_I/p_0_in94_in ),
+        .out(\JTAG_CONTROL_I/p_0_in93_in ),
+        .p_101_out__0(\JTAG_CONTROL_I/p_101_out__0 ),
+        .p_125_out__0(\JTAG_CONTROL_I/p_125_out__0 ),
         .p_20_out(\JTAG_CONTROL_I/p_20_out ),
-        .p_93_out(\JTAG_CONTROL_I/p_93_out ),
+        .p_92_out(\JTAG_CONTROL_I/p_92_out ),
         .rd_resp_zero(\JTAG_CONTROL_I/rd_resp_zero ),
         .rd_wr_excl(rd_wr_excl),
         .sel_n_reg(Dbg_Capture_0),
@@ -18251,10 +20915,12 @@ module mcu_mdm_1_0_MDM
   mcu_mdm_1_0_bus_master \Use_Bus_MASTER.bus_master_I 
        (.D({\^LMB_Data_Addr_31 [0],\^LMB_Data_Addr_31 [1],\^LMB_Data_Addr_31 [2],\^LMB_Data_Addr_31 [3],\^LMB_Data_Addr_31 [4],\^LMB_Data_Addr_31 [5],\^LMB_Data_Addr_31 [6],\^LMB_Data_Addr_31 [7],\^LMB_Data_Addr_31 [8],\^LMB_Data_Addr_31 [9],\^LMB_Data_Addr_31 [10],\^LMB_Data_Addr_31 [11],\^LMB_Data_Addr_31 [12],\^LMB_Data_Addr_31 [13],\^LMB_Data_Addr_31 [14],\^LMB_Data_Addr_31 [15],\^LMB_Data_Addr_31 [16],\^LMB_Data_Addr_31 [17],\^LMB_Data_Addr_31 [18],\^LMB_Data_Addr_31 [19],\^LMB_Data_Addr_31 [20],\^LMB_Data_Addr_31 [21],\^LMB_Data_Addr_31 [22],\^LMB_Data_Addr_31 [23],\^LMB_Data_Addr_31 [24],master_data_in,\^LMB_Data_Addr_0 ,\^LMB_Data_Addr_31 [31]}),
         .\FSM_sequential_wr_state_reg[1]_0 (wr_state),
-        .\Has_FIFO.LMB_Addr_Strobe_reg_0 (MDM_Core_I1_n_77),
         .\Has_FIFO.axi_rd_resp_reg[0]_0 (\Use_Bus_MASTER.bus_master_I_n_81 ),
-        .\Has_FIFO.axi_rd_resp_reg[0]_1 (\Use_Bus_MASTER.bus_master_I_n_82 ),
         .\Has_FIFO.lmb_addr_reg[4]_0 ({\^LMB_Data_Addr_31 [25],\^LMB_Data_Addr_31 [26],\^LMB_Data_Addr_31 [27],\^LMB_Data_Addr_31 [28],\^LMB_Data_Addr_31 [29]}),
+        .\Has_FIFO.lmb_rd_idle_reg_0 (\Use_Bus_MASTER.bus_master_I_n_72 ),
+        .\Has_FIFO.lmb_rd_resp_reg[1]_0 (\Use_Bus_MASTER.bus_master_I_n_82 ),
+        .\Has_FIFO.lmb_state_reg[0]_0 (MDM_Core_I1_n_77),
+        .\Has_FIFO.lmb_wr_resp_reg[1]_0 (\Use_Bus_MASTER.bus_master_I_n_83 ),
         .LMB_Addr_Strobe_0(LMB_Addr_Strobe_0),
         .LMB_Byte_Enable_31(LMB_Byte_Enable_31),
         .LMB_Read_Strobe_0(LMB_Read_Strobe_0),
@@ -18289,15 +20955,14 @@ module mcu_mdm_1_0_MDM
         .M_AXI_WSTRB(M_AXI_WSTRB),
         .Q({\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][0] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][1] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][2] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][3] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][4] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][5] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][6] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][7] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][8] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][9] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][10] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][11] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][12] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][13] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][14] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][15] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][16] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][17] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][18] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][19] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][20] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][21] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][22] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][23] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][24] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][25] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][26] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][27] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][28] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][29] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][30] ,\Use_Bus_MASTER.lmb_data_read_vec_q_reg_n_0_[0][31] }),
         .Reset(Reset),
-        .\Use_Dbg_Mem_Access.execute_3_reg (\Use_Bus_MASTER.bus_master_I_n_75 ),
-        .\Use_Dbg_Mem_Access.output_reg[0] (MDM_Core_I1_n_43),
+        .\Use_BSCAN.command_reg[7] (\Use_Bus_MASTER.bus_master_I_n_71 ),
+        .\Use_Dbg_Mem_Access.Master_wr_start_reg (MDM_Core_I1_n_22),
+        .\Use_Dbg_Mem_Access.output_reg[23] ({\Use_Bus_MASTER.bus_master_I_n_73 ,\Use_Bus_MASTER.bus_master_I_n_74 ,\Use_Bus_MASTER.bus_master_I_n_75 ,\Use_Bus_MASTER.bus_master_I_n_76 }),
         .\Use_Dbg_Mem_Access.output_reg[24] ({\output [23],\output [24],\output [25],\output [27]}),
-        .\Use_Dbg_Mem_Access.output_reg[28] (Dbg_Capture_0),
-        .\Use_Dbg_Mem_Access.output_reg[28]_0 (MDM_Core_I1_n_44),
-        .\Using_FPGA.Native ({master_data_out[30:8],master_data_out[4],master_data_out[2:0]}),
-        .\Using_FPGA.Native_0 ({\Use_Bus_MASTER.bus_master_I_n_70 ,\Use_Bus_MASTER.bus_master_I_n_71 ,\Use_Bus_MASTER.bus_master_I_n_72 ,\Use_Bus_MASTER.bus_master_I_n_73 ,\Use_Bus_MASTER.bus_master_I_n_74 }),
-        .\axi_wr_resp_reg[0]_0 (\Use_Bus_MASTER.bus_master_I_n_80 ),
-        .\axi_wr_resp_reg[0]_1 (\Use_Bus_MASTER.bus_master_I_n_83 ),
+        .\Use_Dbg_Mem_Access.output_reg[28] (MDM_Core_I1_n_45),
+        .\Use_Dbg_Mem_Access.output_reg[28]_0 (Dbg_Capture_0),
+        .\Using_FPGA.Native ({master_data_out[31:8],master_data_out[4],master_data_out[2:0]}),
+        .\axi_wr_resp_reg[0]_0 (\Use_Bus_MASTER.bus_master_I_n_84 ),
         .axi_wvalid_reg_0(M_AXI_WVALID),
         .execute_3(\JTAG_CONTROL_I/execute_3 ),
         .lmb_ready_vec_q(lmb_ready_vec_q),
@@ -18307,9 +20972,9 @@ module mcu_mdm_1_0_MDM
         .master_data_wr(master_data_wr),
         .master_rd_start(master_rd_start),
         .master_wr_start(master_wr_start),
-        .out(\JTAG_CONTROL_I/p_0_in94_in ),
+        .out(\JTAG_CONTROL_I/p_0_in93_in ),
         .p_20_out(\JTAG_CONTROL_I/p_20_out ),
-        .p_93_out(\JTAG_CONTROL_I/p_93_out ),
+        .p_92_out(\JTAG_CONTROL_I/p_92_out ),
         .rd_resp_zero(\JTAG_CONTROL_I/rd_resp_zero ),
         .rd_wr_excl(rd_wr_excl),
         .wdata_exists(wdata_exists),
@@ -18529,7 +21194,7 @@ module mcu_mdm_1_0_MDM
         .D(p_0_in),
         .DRCK(DRCK),
         .Dbg_Trig_In_0(Dbg_Trig_In_0),
-        .\Dbg_Trig_In_0[0] ({\Use_E2.BSCAN_I_n_12 ,\Use_E2.BSCAN_I_n_13 ,\Use_E2.BSCAN_I_n_14 ,\Use_E2.BSCAN_I_n_15 ,\Use_E2.BSCAN_I_n_16 ,\Use_E2.BSCAN_I_n_17 ,\Use_E2.BSCAN_I_n_18 ,\Use_E2.BSCAN_I_n_19 ,\Use_E2.BSCAN_I_n_20 ,\Use_E2.BSCAN_I_n_21 ,\Use_E2.BSCAN_I_n_22 ,\Use_E2.BSCAN_I_n_23 }),
+        .\Dbg_Trig_In_0[0] ({\Use_E2.BSCAN_I_n_14 ,\Use_E2.BSCAN_I_n_15 ,\Use_E2.BSCAN_I_n_16 ,\Use_E2.BSCAN_I_n_17 ,\Use_E2.BSCAN_I_n_18 ,\Use_E2.BSCAN_I_n_19 ,\Use_E2.BSCAN_I_n_20 ,\Use_E2.BSCAN_I_n_21 ,\Use_E2.BSCAN_I_n_22 ,\Use_E2.BSCAN_I_n_23 ,\Use_E2.BSCAN_I_n_24 ,\Use_E2.BSCAN_I_n_25 }),
         .E(\JTAG_CONTROL_I/tdo_reg ),
         .Ext_JTAG_RESET(Ext_JTAG_RESET),
         .Ext_JTAG_TDI(Ext_JTAG_TDI),
@@ -18543,16 +21208,19 @@ module mcu_mdm_1_0_MDM
         .Trig_In_1(Trig_In_1),
         .Trig_In_2(Trig_In_2),
         .Trig_In_3(Trig_In_3),
-        .\Use_BSCAN.command_reg[0] (Dbg_Capture_0),
-        .\Use_BSCAN.command_reg[0]_0 (Ext_JTAG_SHIFT),
-        .\Use_BSCAN.command_reg[7] (\Use_E2.BSCAN_I_n_24 ),
+        .\Use_BSCAN.PORT_Selector_reg[0] (Dbg_Capture_0),
+        .\Use_BSCAN.PORT_Selector_reg[0]_0 (Ext_JTAG_SHIFT),
+        .\Use_BSCAN.command_reg[5] (\JTAG_CONTROL_I/sel ),
+        .\Use_BSCAN.command_reg[6] (\Use_E2.BSCAN_I_n_10 ),
         .\Use_Cross_Trigger.tdo_reg_reg[8] ({tdo_reg[7],tdo_reg[8],tdo_reg[9],tdo_reg[10],tdo_reg[11],tdo_reg[12],tdo_reg[13],tdo_reg[14],tdo_reg[19],tdo_reg[20],tdo_reg[21],tdo_reg[22]}),
-        .\Use_Serial_Unified_Completion.completion_status_reg[10] (MDM_Core_I1_n_26),
-        .\Use_Serial_Unified_Completion.completion_status_reg[15] (MDM_Core_I1_n_45),
-        .\Use_Serial_Unified_Completion.count_reg[0]__0 (MDM_Core_I1_n_25),
+        .\Use_Dbg_Mem_Access.output_reg[0] (MDM_Core_I1_n_45),
+        .\Use_Dbg_Mem_Access.output_reg[0]_0 (master_data_out[31]),
+        .\Use_Serial_Unified_Completion.completion_status_reg[15] (MDM_Core_I1_n_28),
         .\Use_Serial_Unified_Completion.count_reg[5] (\JTAG_CONTROL_I/Use_Serial_Unified_Completion.count_reg ),
-        .\Use_Serial_Unified_Completion.sample_1_reg[15] (\Use_E2.BSCAN_I_n_11 ),
-        .\Using_FPGA.Native (\Use_E2.BSCAN_I_n_7 ),
+        .\Use_Serial_Unified_Completion.sample_1_reg[15] (\Use_E2.BSCAN_I_n_13 ),
+        .\Using_FPGA.Native (\Use_E2.BSCAN_I_n_8 ),
+        .p_101_out__0(\JTAG_CONTROL_I/p_101_out__0 ),
+        .p_125_out__0(\JTAG_CONTROL_I/p_125_out__0 ),
         .\shift_Count_reg[0] (p_0_in__0),
         .shift_n_reset1_out(shift_n_reset1_out),
         .tdo(tdo));
@@ -18560,6 +21228,7 @@ module mcu_mdm_1_0_MDM
        (.P(\<const1> ));
 endmodule
 
+(* ORIG_REF_NAME = "MDM_Core" *) 
 module mcu_mdm_1_0_MDM_Core
    (Q,
     out,
@@ -18575,67 +21244,68 @@ module mcu_mdm_1_0_MDM_Core
     Debug_SYS_Rst,
     Dbg_Rst_0,
     master_wr_start,
-    tdo,
-    Ext_JTAG_SEL,
-    Dbg_Shift_0,
     Dbg_Reg_En_0,
     \Use_BSCAN.command_reg[7] ,
-    \Using_FPGA.Native ,
+    p_101_out__0,
+    p_125_out__0,
+    Dbg_Shift_0,
+    Ext_JTAG_SEL,
+    tdo,
+    \Use_Serial_Unified_Completion.sample_1_reg[15] ,
     \Use_Dbg_Mem_Access.output_reg[23] ,
     \Use_Cross_Trigger.tdo_reg_reg[7] ,
-    \Use_BSCAN.command_reg[5] ,
-    \Use_BSCAN.command_reg[7]_0 ,
-    \Use_Serial_Unified_Completion.sample_1_reg[15] ,
-    \Use_Dbg_Mem_Access.rd_wr_len_reg[4] ,
+    \Use_BSCAN.command_reg[6] ,
+    \Use_Dbg_Mem_Access.rd_wr_len_reg[3] ,
     \Use_Dbg_Mem_Access.rd_wr_len_reg[0] ,
     \Use_Serial_Unified_Completion.count_reg[5] ,
+    Trig_Ack_In_3,
+    Trig_Out_3,
     Trig_Out_0,
     Trig_Out_1,
     Trig_Out_2,
-    Trig_Out_3,
-    Trig_Ack_In_3,
     Dbg_Trig_Out_0,
     Trig_Ack_In_2,
     Trig_Ack_In_1,
     Trig_Ack_In_0,
     Dbg_Trig_Ack_In_0,
-    \Use_Dbg_Mem_Access.Master_rd_start_reg ,
+    \Use_Dbg_Mem_Access.Master_wr_start_reg ,
     \Use_Dbg_Mem_Access.input_reg[0] ,
     \Use_Dbg_Mem_Access.rd_wr_size_reg[0] ,
+    \Using_FPGA.Native ,
     \Using_FPGA.Native_0 ,
-    \Using_FPGA.Native_1 ,
     Reset,
     M_AXI_ACLK,
     \Use_Dbg_Mem_Access.rd_resp_zero_reg ,
     \Use_Dbg_Mem_Access.wr_resp_zero_reg ,
-    p_93_out,
+    p_92_out,
     sel_n_reg,
     shift_n_reset1_out,
-    Scan_Reset,
     Scan_Reset_Sel,
+    Scan_Reset,
     Scan_En,
-    Ext_JTAG_TDO,
-    SEL,
-    Dbg_TDO_0,
     Dbg_Shift_0_0,
-    master_data_out,
-    \Use_Dbg_Mem_Access.output_reg[27] ,
-    \Use_Dbg_Mem_Access.output_reg[29] ,
-    \Use_Dbg_Mem_Access.master_overrun_reg ,
+    SEL,
+    Ext_JTAG_TDO,
+    \Use_Dbg_Mem_Access.Master_wr_start_reg_0 ,
     wdata_exists,
     M_AXI_ARESETN,
+    Dbg_TDO_0,
+    \Use_Dbg_Mem_Access.master_overrun_reg ,
+    \Use_Dbg_Mem_Access.output_reg[29] ,
+    master_data_out,
+    \Use_Dbg_Mem_Access.output_reg[27] ,
     wr_state,
     D,
     \shift_Count_reg[0] ,
-    Dbg_Trig_In_0,
-    Dbg_Trig_Ack_Out_0,
     Trig_Ack_Out_3,
-    Trig_Ack_Out_1,
-    Trig_Ack_Out_2,
+    Dbg_Trig_Ack_Out_0,
     Trig_Ack_Out_0,
-    Trig_In_2,
-    Trig_In_1,
+    Trig_Ack_Out_2,
+    Trig_Ack_Out_1,
     Trig_In_3,
+    Dbg_Trig_In_0,
+    Trig_In_1,
+    Trig_In_2,
     Trig_In_0,
     p_20_out,
     Ext_JTAG_TDI,
@@ -18645,7 +21315,7 @@ module mcu_mdm_1_0_MDM_Core
     \Use_Serial_Unified_Completion.completion_status_reg[15] ,
     \Use_Cross_Trigger.tdo_reg_reg[8] ,
     AR,
-    \Use_Serial_Unified_Completion.count_reg[0]__0 );
+    \Use_Serial_Unified_Completion.count_reg[5]_0 );
   output [0:0]Q;
   output out;
   output execute_3;
@@ -18660,67 +21330,68 @@ module mcu_mdm_1_0_MDM_Core
   output Debug_SYS_Rst;
   output Dbg_Rst_0;
   output master_wr_start;
-  output tdo;
-  output Ext_JTAG_SEL;
-  output Dbg_Shift_0;
   output [0:7]Dbg_Reg_En_0;
-  output \Use_BSCAN.command_reg[7] ;
-  output \Using_FPGA.Native ;
+  output [0:0]\Use_BSCAN.command_reg[7] ;
+  output p_101_out__0;
+  output p_125_out__0;
+  output Dbg_Shift_0;
+  output Ext_JTAG_SEL;
+  output tdo;
+  output [0:0]\Use_Serial_Unified_Completion.sample_1_reg[15] ;
   output [3:0]\Use_Dbg_Mem_Access.output_reg[23] ;
   output [11:0]\Use_Cross_Trigger.tdo_reg_reg[7] ;
-  output \Use_BSCAN.command_reg[5] ;
-  output \Use_BSCAN.command_reg[7]_0 ;
-  output [0:0]\Use_Serial_Unified_Completion.sample_1_reg[15] ;
-  output \Use_Dbg_Mem_Access.rd_wr_len_reg[4] ;
+  output \Use_BSCAN.command_reg[6] ;
+  output \Use_Dbg_Mem_Access.rd_wr_len_reg[3] ;
   output [4:0]\Use_Dbg_Mem_Access.rd_wr_len_reg[0] ;
   output [0:0]\Use_Serial_Unified_Completion.count_reg[5] ;
+  output Trig_Ack_In_3;
+  output Trig_Out_3;
   output Trig_Out_0;
   output Trig_Out_1;
   output Trig_Out_2;
-  output Trig_Out_3;
-  output Trig_Ack_In_3;
   output [0:7]Dbg_Trig_Out_0;
   output Trig_Ack_In_2;
   output Trig_Ack_In_1;
   output Trig_Ack_In_0;
   output [0:7]Dbg_Trig_Ack_In_0;
-  output \Use_Dbg_Mem_Access.Master_rd_start_reg ;
+  output \Use_Dbg_Mem_Access.Master_wr_start_reg ;
   output [31:0]\Use_Dbg_Mem_Access.input_reg[0] ;
   output [1:0]\Use_Dbg_Mem_Access.rd_wr_size_reg[0] ;
+  input \Using_FPGA.Native ;
   input \Using_FPGA.Native_0 ;
-  input \Using_FPGA.Native_1 ;
   input Reset;
   input M_AXI_ACLK;
   input \Use_Dbg_Mem_Access.rd_resp_zero_reg ;
   input \Use_Dbg_Mem_Access.wr_resp_zero_reg ;
-  input p_93_out;
+  input p_92_out;
   input sel_n_reg;
   input shift_n_reset1_out;
-  input Scan_Reset;
   input Scan_Reset_Sel;
+  input Scan_Reset;
   input Scan_En;
-  input Ext_JTAG_TDO;
-  input SEL;
-  input Dbg_TDO_0;
   input Dbg_Shift_0_0;
-  input [26:0]master_data_out;
-  input \Use_Dbg_Mem_Access.output_reg[27] ;
-  input \Use_Dbg_Mem_Access.output_reg[29] ;
-  input \Use_Dbg_Mem_Access.master_overrun_reg ;
+  input SEL;
+  input Ext_JTAG_TDO;
+  input \Use_Dbg_Mem_Access.Master_wr_start_reg_0 ;
   input wdata_exists;
   input M_AXI_ARESETN;
+  input Dbg_TDO_0;
+  input \Use_Dbg_Mem_Access.master_overrun_reg ;
+  input \Use_Dbg_Mem_Access.output_reg[29] ;
+  input [26:0]master_data_out;
+  input \Use_Dbg_Mem_Access.output_reg[27] ;
   input [0:0]wr_state;
   input [0:0]D;
   input [0:0]\shift_Count_reg[0] ;
-  input [0:7]Dbg_Trig_In_0;
-  input [0:7]Dbg_Trig_Ack_Out_0;
   input Trig_Ack_Out_3;
-  input Trig_Ack_Out_1;
-  input Trig_Ack_Out_2;
+  input [0:7]Dbg_Trig_Ack_Out_0;
   input Trig_Ack_Out_0;
-  input Trig_In_2;
-  input Trig_In_1;
+  input Trig_Ack_Out_2;
+  input Trig_Ack_Out_1;
   input Trig_In_3;
+  input [0:7]Dbg_Trig_In_0;
+  input Trig_In_1;
+  input Trig_In_2;
   input Trig_In_0;
   input p_20_out;
   input Ext_JTAG_TDI;
@@ -18730,7 +21401,7 @@ module mcu_mdm_1_0_MDM_Core
   input [0:0]\Use_Serial_Unified_Completion.completion_status_reg[15] ;
   input [11:0]\Use_Cross_Trigger.tdo_reg_reg[8] ;
   input [0:0]AR;
-  input [0:0]\Use_Serial_Unified_Completion.count_reg[0]__0 ;
+  input [0:0]\Use_Serial_Unified_Completion.count_reg[5]_0 ;
 
   wire [0:0]AR;
   wire [0:0]Config_Reg;
@@ -18810,13 +21481,12 @@ module mcu_mdm_1_0_MDM_Core
   wire \Use_BSCAN.Config_Reg_reg_n_0_[30] ;
   wire \Use_BSCAN.Config_Reg_reg_n_0_[3] ;
   wire \Use_BSCAN.Config_Reg_reg_n_0_[9] ;
-  wire \Use_BSCAN.TDI_Shifter[3]_i_1_n_0 ;
-  wire \Use_BSCAN.command_reg[5] ;
-  wire \Use_BSCAN.command_reg[7] ;
-  wire \Use_BSCAN.command_reg[7]_0 ;
+  wire \Use_BSCAN.command_reg[6] ;
+  wire [0:0]\Use_BSCAN.command_reg[7] ;
   wire [11:0]\Use_Cross_Trigger.tdo_reg_reg[7] ;
   wire [11:0]\Use_Cross_Trigger.tdo_reg_reg[8] ;
-  wire \Use_Dbg_Mem_Access.Master_rd_start_reg ;
+  wire \Use_Dbg_Mem_Access.Master_wr_start_reg ;
+  wire \Use_Dbg_Mem_Access.Master_wr_start_reg_0 ;
   wire [31:0]\Use_Dbg_Mem_Access.input_reg[0] ;
   wire \Use_Dbg_Mem_Access.master_overrun_reg ;
   wire [4:0]\Use_Dbg_Mem_Access.output_reg[0] ;
@@ -18825,18 +21495,17 @@ module mcu_mdm_1_0_MDM_Core
   wire \Use_Dbg_Mem_Access.output_reg[29] ;
   wire \Use_Dbg_Mem_Access.rd_resp_zero_reg ;
   wire [4:0]\Use_Dbg_Mem_Access.rd_wr_len_reg[0] ;
-  wire \Use_Dbg_Mem_Access.rd_wr_len_reg[4] ;
+  wire \Use_Dbg_Mem_Access.rd_wr_len_reg[3] ;
   wire [1:0]\Use_Dbg_Mem_Access.rd_wr_size_reg[0] ;
   wire \Use_Dbg_Mem_Access.wr_resp_zero_reg ;
-  wire \Use_E2.BSCANE2_I_i_5_n_0 ;
+  wire \Use_E2.BSCANE2_I_i_2_n_0 ;
   wire [0:0]\Use_Serial_Unified_Completion.completion_status_reg[10] ;
   wire [0:0]\Use_Serial_Unified_Completion.completion_status_reg[15] ;
-  wire [0:0]\Use_Serial_Unified_Completion.count_reg[0]__0 ;
   wire [0:0]\Use_Serial_Unified_Completion.count_reg[5] ;
+  wire [0:0]\Use_Serial_Unified_Completion.count_reg[5]_0 ;
   wire [0:0]\Use_Serial_Unified_Completion.sample_1_reg[15] ;
   wire \Using_FPGA.Native ;
   wire \Using_FPGA.Native_0 ;
-  wire \Using_FPGA.Native_1 ;
   wire clear;
   wire execute_3;
   wire [26:0]master_data_out;
@@ -18845,8 +21514,11 @@ module mcu_mdm_1_0_MDM_Core
   wire master_rd_start;
   wire master_wr_start;
   wire out;
+  wire p_101_out__0;
+  wire p_125_out__0;
   wire p_20_out;
-  wire p_93_out;
+  wire p_3_out;
+  wire p_92_out;
   wire rd_resp_zero;
   wire rd_wr_excl;
   wire sel_n_reg;
@@ -18858,13 +21530,13 @@ module mcu_mdm_1_0_MDM_Core
   wire [0:0]wr_state;
 
   LUT5 #(
-    .INIT(32'h00001000)) 
+    .INIT(32'h00000008)) 
     Ext_JTAG_SEL_INST_0
-       (.I0(PORT_Selector[3]),
-        .I1(PORT_Selector[2]),
-        .I2(SEL),
-        .I3(PORT_Selector[1]),
-        .I4(PORT_Selector[0]),
+       (.I0(SEL),
+        .I1(PORT_Selector[1]),
+        .I2(PORT_Selector[0]),
+        .I3(PORT_Selector[3]),
+        .I4(PORT_Selector[2]),
         .O(Ext_JTAG_SEL));
   mcu_mdm_1_0_JTAG_CONTROL JTAG_CONTROL_I
        (.AR(clear),
@@ -18906,12 +21578,12 @@ module mcu_mdm_1_0_MDM_Core
         .Trig_Out_1(Trig_Out_1),
         .Trig_Out_2(Trig_Out_2),
         .Trig_Out_3(Trig_Out_3),
-        .\Use_BSCAN.command_reg[5]_0 (\Use_BSCAN.command_reg[5] ),
+        .\Use_BSCAN.command_reg[6]_0 (\Use_BSCAN.command_reg[6] ),
         .\Use_BSCAN.command_reg[7]_0 (\Use_BSCAN.command_reg[7] ),
-        .\Use_BSCAN.command_reg[7]_1 (\Use_BSCAN.command_reg[7]_0 ),
         .\Use_Cross_Trigger.tdo_reg_reg[7]_0 (\Use_Cross_Trigger.tdo_reg_reg[7] ),
         .\Use_Cross_Trigger.tdo_reg_reg[8]_0 (\Use_Cross_Trigger.tdo_reg_reg[8] ),
-        .\Use_Dbg_Mem_Access.Master_rd_start_reg_0 (\Use_Dbg_Mem_Access.Master_rd_start_reg ),
+        .\Use_Dbg_Mem_Access.Master_wr_start_reg_0 (\Use_Dbg_Mem_Access.Master_wr_start_reg ),
+        .\Use_Dbg_Mem_Access.Master_wr_start_reg_1 (\Use_Dbg_Mem_Access.Master_wr_start_reg_0 ),
         .\Use_Dbg_Mem_Access.input_reg[0]_0 (\Use_Dbg_Mem_Access.input_reg[0] ),
         .\Use_Dbg_Mem_Access.master_overrun_reg_0 (\Use_Dbg_Mem_Access.master_overrun_reg ),
         .\Use_Dbg_Mem_Access.output_reg[0]_0 (\Use_Dbg_Mem_Access.output_reg[0] ),
@@ -18920,17 +21592,17 @@ module mcu_mdm_1_0_MDM_Core
         .\Use_Dbg_Mem_Access.output_reg[29]_0 (\Use_Dbg_Mem_Access.output_reg[29] ),
         .\Use_Dbg_Mem_Access.rd_resp_zero_reg_0 (\Use_Dbg_Mem_Access.rd_resp_zero_reg ),
         .\Use_Dbg_Mem_Access.rd_wr_len_reg[0]_0 (\Use_Dbg_Mem_Access.rd_wr_len_reg[0] ),
-        .\Use_Dbg_Mem_Access.rd_wr_len_reg[4]_0 (\Use_Dbg_Mem_Access.rd_wr_len_reg[4] ),
+        .\Use_Dbg_Mem_Access.rd_wr_len_reg[3]_0 (\Use_Dbg_Mem_Access.rd_wr_len_reg[3] ),
         .\Use_Dbg_Mem_Access.rd_wr_size_reg[0]_0 (\Use_Dbg_Mem_Access.rd_wr_size_reg[0] ),
         .\Use_Dbg_Mem_Access.wr_resp_zero_reg_0 (\Use_Dbg_Mem_Access.wr_resp_zero_reg ),
         .\Use_Serial_Unified_Completion.completion_status_reg[10]_0 (\Use_Serial_Unified_Completion.completion_status_reg[10] ),
         .\Use_Serial_Unified_Completion.completion_status_reg[15]_0 (\Use_Serial_Unified_Completion.completion_status_reg[15] ),
-        .\Use_Serial_Unified_Completion.count_reg[0]__0_0 (\Use_Serial_Unified_Completion.count_reg[0]__0 ),
         .\Use_Serial_Unified_Completion.count_reg[5]_0 (\Use_Serial_Unified_Completion.count_reg[5] ),
+        .\Use_Serial_Unified_Completion.count_reg[5]_1 (\Use_Serial_Unified_Completion.count_reg[5]_0 ),
         .\Use_Serial_Unified_Completion.sample_1_reg[15]_0 (\Use_Serial_Unified_Completion.sample_1_reg[15] ),
-        .\Using_FPGA.Native (\Using_FPGA.Native ),
-        .\Using_FPGA.Native_0 (\Using_FPGA.Native_0 ),
-        .\Using_FPGA.Native_1 (\Using_FPGA.Native_1 ),
+        .\Using_FPGA.Native (p_125_out__0),
+        .\Using_FPGA.Native_0 (\Using_FPGA.Native ),
+        .\Using_FPGA.Native_1 (\Using_FPGA.Native_0 ),
         .\command_1_reg[7]_0 (PORT_Selector),
         .execute_3(execute_3),
         .master_data_out(master_data_out),
@@ -18939,12 +21611,13 @@ module mcu_mdm_1_0_MDM_Core
         .master_rd_start(master_rd_start),
         .master_wr_start(master_wr_start),
         .out(out),
+        .p_101_out__0(p_101_out__0),
         .p_20_out(p_20_out),
-        .p_93_out(p_93_out),
+        .p_92_out(p_92_out),
         .rd_resp_zero(rd_resp_zero),
         .rd_wr_excl(rd_wr_excl),
         .sel_n_reg_0(sel_n_reg),
-        .sel_n_reg_1(\Use_E2.BSCANE2_I_i_5_n_0 ),
+        .sel_n_reg_1(\Use_E2.BSCANE2_I_i_2_n_0 ),
         .\shift_Count_reg[0]_0 (\shift_Count_reg[0] ),
         .tdo(tdo),
         .wdata_exists(wdata_exists),
@@ -18954,19 +21627,19 @@ module mcu_mdm_1_0_MDM_Core
   FDCE #(
     .INIT(1'b0)) 
     \Use_BSCAN.Config_Reg_reg[0] 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_n_0_[1] ),
         .Q(Config_Reg));
   FDCE \Use_BSCAN.Config_Reg_reg[10] 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_gate__0_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg_n_0_[10] ));
   FDRE \Use_BSCAN.Config_Reg_reg[11]_MDM_Core_I1_Use_BSCAN.Config_Reg_reg_c_12 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .D(\Use_BSCAN.Config_Reg_reg[12]_srl13_MDM_Core_I1_Use_BSCAN.Config_Reg_reg_c_11_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg[11]_MDM_Core_I1_Use_BSCAN.Config_Reg_reg_c_12_n_0 ),
@@ -18981,14 +21654,14 @@ module mcu_mdm_1_0_MDM_Core
         .A2(1'b1),
         .A3(1'b1),
         .CE(1'b1),
-        .CLK(\Using_FPGA.Native_1 ),
+        .CLK(\Using_FPGA.Native_0 ),
         .D(\Use_BSCAN.Config_Reg_reg_n_0_[25] ),
         .Q(\Use_BSCAN.Config_Reg_reg[12]_srl13_MDM_Core_I1_Use_BSCAN.Config_Reg_reg_c_11_n_0 ));
   (* SHREG_EXTRACT = "yes" *) 
   FDPE #(
     .INIT(1'b1)) 
     \Use_BSCAN.Config_Reg_reg[1] 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .D(\Use_BSCAN.Config_Reg_reg_n_0_[2] ),
         .PRE(shift_n_reset1_out),
@@ -18997,19 +21670,19 @@ module mcu_mdm_1_0_MDM_Core
   FDPE #(
     .INIT(1'b1)) 
     \Use_BSCAN.Config_Reg_reg[25] 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .D(\Use_BSCAN.Config_Reg_reg_n_0_[26] ),
         .PRE(shift_n_reset1_out),
         .Q(\Use_BSCAN.Config_Reg_reg_n_0_[25] ));
   FDCE \Use_BSCAN.Config_Reg_reg[26] 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_gate_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg_n_0_[26] ));
   FDRE \Use_BSCAN.Config_Reg_reg[27]_MDM_Core_I1_Use_BSCAN.Config_Reg_reg_c_1 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .D(\Use_BSCAN.Config_Reg_reg[28]_srl2_MDM_Core_I1_Use_BSCAN.Config_Reg_reg_c_0_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg[27]_MDM_Core_I1_Use_BSCAN.Config_Reg_reg_c_1_n_0 ),
@@ -19024,14 +21697,14 @@ module mcu_mdm_1_0_MDM_Core
         .A2(1'b0),
         .A3(1'b0),
         .CE(1'b1),
-        .CLK(\Using_FPGA.Native_1 ),
+        .CLK(\Using_FPGA.Native_0 ),
         .D(\Use_BSCAN.Config_Reg_reg_n_0_[30] ),
         .Q(\Use_BSCAN.Config_Reg_reg[28]_srl2_MDM_Core_I1_Use_BSCAN.Config_Reg_reg_c_0_n_0 ));
   (* SHREG_EXTRACT = "yes" *) 
   FDPE #(
     .INIT(1'b1)) 
     \Use_BSCAN.Config_Reg_reg[2] 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .D(\Use_BSCAN.Config_Reg_reg_n_0_[3] ),
         .PRE(shift_n_reset1_out),
@@ -19040,19 +21713,19 @@ module mcu_mdm_1_0_MDM_Core
   FDPE #(
     .INIT(1'b1)) 
     \Use_BSCAN.Config_Reg_reg[30] 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .D(1'b0),
         .PRE(shift_n_reset1_out),
         .Q(\Use_BSCAN.Config_Reg_reg_n_0_[30] ));
   FDCE \Use_BSCAN.Config_Reg_reg[3] 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_gate__1_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg_n_0_[3] ));
   FDRE \Use_BSCAN.Config_Reg_reg[4]_MDM_Core_I1_Use_BSCAN.Config_Reg_reg_c_3 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .D(\Use_BSCAN.Config_Reg_reg[5]_srl4_MDM_Core_I1_Use_BSCAN.Config_Reg_reg_c_2_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg[4]_MDM_Core_I1_Use_BSCAN.Config_Reg_reg_c_3_n_0 ),
@@ -19067,98 +21740,98 @@ module mcu_mdm_1_0_MDM_Core
         .A2(1'b0),
         .A3(1'b0),
         .CE(1'b1),
-        .CLK(\Using_FPGA.Native_1 ),
+        .CLK(\Using_FPGA.Native_0 ),
         .D(\Use_BSCAN.Config_Reg_reg_n_0_[9] ),
         .Q(\Use_BSCAN.Config_Reg_reg[5]_srl4_MDM_Core_I1_Use_BSCAN.Config_Reg_reg_c_2_n_0 ));
   (* SHREG_EXTRACT = "yes" *) 
   FDPE #(
     .INIT(1'b1)) 
     \Use_BSCAN.Config_Reg_reg[9] 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .D(\Use_BSCAN.Config_Reg_reg_n_0_[10] ),
         .PRE(shift_n_reset1_out),
         .Q(\Use_BSCAN.Config_Reg_reg_n_0_[9] ));
   FDCE \Use_BSCAN.Config_Reg_reg_c 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(1'b1),
         .Q(\Use_BSCAN.Config_Reg_reg_c_n_0 ));
   FDCE \Use_BSCAN.Config_Reg_reg_c_0 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_c_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg_c_0_n_0 ));
   FDCE \Use_BSCAN.Config_Reg_reg_c_1 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_c_0_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg_c_1_n_0 ));
   FDCE \Use_BSCAN.Config_Reg_reg_c_10 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_c_9_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg_c_10_n_0 ));
   FDCE \Use_BSCAN.Config_Reg_reg_c_11 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_c_10_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg_c_11_n_0 ));
   FDCE \Use_BSCAN.Config_Reg_reg_c_12 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_c_11_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg_c_12_n_0 ));
   FDCE \Use_BSCAN.Config_Reg_reg_c_2 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_c_1_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg_c_2_n_0 ));
   FDCE \Use_BSCAN.Config_Reg_reg_c_3 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_c_2_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg_c_3_n_0 ));
   FDCE \Use_BSCAN.Config_Reg_reg_c_4 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_c_3_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg_c_4_n_0 ));
   FDCE \Use_BSCAN.Config_Reg_reg_c_5 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_c_4_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg_c_5_n_0 ));
   FDCE \Use_BSCAN.Config_Reg_reg_c_6 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_c_5_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg_c_6_n_0 ));
   FDCE \Use_BSCAN.Config_Reg_reg_c_7 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_c_6_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg_c_7_n_0 ));
   FDCE \Use_BSCAN.Config_Reg_reg_c_8 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_c_7_n_0 ),
         .Q(\Use_BSCAN.Config_Reg_reg_c_8_n_0 ));
   FDCE \Use_BSCAN.Config_Reg_reg_c_9 
-       (.C(\Using_FPGA.Native_1 ),
+       (.C(\Using_FPGA.Native_0 ),
         .CE(1'b1),
         .CLR(shift_n_reset1_out),
         .D(\Use_BSCAN.Config_Reg_reg_c_8_n_0 ),
@@ -19182,18 +21855,18 @@ module mcu_mdm_1_0_MDM_Core
         .I1(\Use_BSCAN.Config_Reg_reg_c_3_n_0 ),
         .O(\Use_BSCAN.Config_Reg_reg_gate__1_n_0 ));
   LUT5 #(
-    .INIT(32'h00000010)) 
+    .INIT(32'h00000002)) 
     \Use_BSCAN.PORT_Selector_1[3]_i_1 
-       (.I0(PORT_Selector[3]),
-        .I1(PORT_Selector[2]),
-        .I2(SEL),
-        .I3(PORT_Selector[0]),
-        .I4(PORT_Selector[1]),
+       (.I0(SEL),
+        .I1(PORT_Selector[0]),
+        .I2(PORT_Selector[1]),
+        .I3(PORT_Selector[3]),
+        .I4(PORT_Selector[2]),
         .O(MDM_SEL));
   FDCE #(
     .INIT(1'b0)) 
     \Use_BSCAN.PORT_Selector_1_reg[0] 
-       (.C(\Using_FPGA.Native_0 ),
+       (.C(\Using_FPGA.Native ),
         .CE(MDM_SEL),
         .CLR(AR),
         .D(TDI_Shifter[0]),
@@ -19201,7 +21874,7 @@ module mcu_mdm_1_0_MDM_Core
   FDCE #(
     .INIT(1'b0)) 
     \Use_BSCAN.PORT_Selector_1_reg[1] 
-       (.C(\Using_FPGA.Native_0 ),
+       (.C(\Using_FPGA.Native ),
         .CE(MDM_SEL),
         .CLR(AR),
         .D(TDI_Shifter[1]),
@@ -19209,7 +21882,7 @@ module mcu_mdm_1_0_MDM_Core
   FDCE #(
     .INIT(1'b0)) 
     \Use_BSCAN.PORT_Selector_1_reg[2] 
-       (.C(\Using_FPGA.Native_0 ),
+       (.C(\Using_FPGA.Native ),
         .CE(MDM_SEL),
         .CLR(AR),
         .D(TDI_Shifter[2]),
@@ -19217,7 +21890,7 @@ module mcu_mdm_1_0_MDM_Core
   FDCE #(
     .INIT(1'b0)) 
     \Use_BSCAN.PORT_Selector_1_reg[3] 
-       (.C(\Using_FPGA.Native_0 ),
+       (.C(\Using_FPGA.Native ),
         .CE(MDM_SEL),
         .CLR(AR),
         .D(TDI_Shifter[3]),
@@ -19226,7 +21899,7 @@ module mcu_mdm_1_0_MDM_Core
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \Use_BSCAN.PORT_Selector_reg[0] 
-       (.C(\Using_FPGA.Native_0 ),
+       (.C(\Using_FPGA.Native ),
         .CE(1'b1),
         .CLR(AR),
         .D(PORT_Selector_1[0]),
@@ -19235,7 +21908,7 @@ module mcu_mdm_1_0_MDM_Core
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \Use_BSCAN.PORT_Selector_reg[1] 
-       (.C(\Using_FPGA.Native_0 ),
+       (.C(\Using_FPGA.Native ),
         .CE(1'b1),
         .CLR(AR),
         .D(PORT_Selector_1[1]),
@@ -19244,7 +21917,7 @@ module mcu_mdm_1_0_MDM_Core
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \Use_BSCAN.PORT_Selector_reg[2] 
-       (.C(\Using_FPGA.Native_0 ),
+       (.C(\Using_FPGA.Native ),
         .CE(1'b1),
         .CLR(AR),
         .D(PORT_Selector_1[2]),
@@ -19253,124 +21926,122 @@ module mcu_mdm_1_0_MDM_Core
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \Use_BSCAN.PORT_Selector_reg[3] 
-       (.C(\Using_FPGA.Native_0 ),
+       (.C(\Using_FPGA.Native ),
         .CE(1'b1),
         .CLR(AR),
         .D(PORT_Selector_1[3]),
         .Q(PORT_Selector[3]));
   LUT6 #(
-    .INIT(64'h0000001000000000)) 
+    .INIT(64'h0001000000000000)) 
     \Use_BSCAN.TDI_Shifter[3]_i_1 
-       (.I0(PORT_Selector[1]),
-        .I1(PORT_Selector[0]),
-        .I2(SEL),
-        .I3(PORT_Selector[2]),
-        .I4(PORT_Selector[3]),
+       (.I0(PORT_Selector[2]),
+        .I1(PORT_Selector[3]),
+        .I2(PORT_Selector[1]),
+        .I3(PORT_Selector[0]),
+        .I4(SEL),
         .I5(Dbg_Shift_0_0),
-        .O(\Use_BSCAN.TDI_Shifter[3]_i_1_n_0 ));
+        .O(p_3_out));
   FDCE #(
     .INIT(1'b0)) 
     \Use_BSCAN.TDI_Shifter_reg[0] 
-       (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.TDI_Shifter[3]_i_1_n_0 ),
+       (.C(\Using_FPGA.Native_0 ),
+        .CE(p_3_out),
         .CLR(AR),
         .D(TDI_Shifter[1]),
         .Q(TDI_Shifter[0]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_BSCAN.TDI_Shifter_reg[1] 
-       (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.TDI_Shifter[3]_i_1_n_0 ),
+       (.C(\Using_FPGA.Native_0 ),
+        .CE(p_3_out),
         .CLR(AR),
         .D(TDI_Shifter[2]),
         .Q(TDI_Shifter[1]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_BSCAN.TDI_Shifter_reg[2] 
-       (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.TDI_Shifter[3]_i_1_n_0 ),
+       (.C(\Using_FPGA.Native_0 ),
+        .CE(p_3_out),
         .CLR(AR),
         .D(TDI_Shifter[3]),
         .Q(TDI_Shifter[2]));
   FDCE #(
     .INIT(1'b0)) 
     \Use_BSCAN.TDI_Shifter_reg[3] 
-       (.C(\Using_FPGA.Native_1 ),
-        .CE(\Use_BSCAN.TDI_Shifter[3]_i_1_n_0 ),
+       (.C(\Using_FPGA.Native_0 ),
+        .CE(p_3_out),
         .CLR(AR),
         .D(Ext_JTAG_TDI),
         .Q(TDI_Shifter[3]));
   FDPE #(
     .INIT(1'b1)) 
     \Use_BSCAN.jtag_disable_reg 
-       (.C(\Using_FPGA.Native_0 ),
+       (.C(\Using_FPGA.Native ),
         .CE(1'b1),
         .D(1'b0),
         .PRE(clear),
         .Q(Dbg_Disable_0));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFF404)) 
-    \Use_E2.BSCANE2_I_i_5 
-       (.I0(PORT_Selector[0]),
-        .I1(Config_Reg),
-        .I2(PORT_Selector[1]),
-        .I3(Ext_JTAG_TDO),
-        .I4(PORT_Selector[3]),
-        .I5(PORT_Selector[2]),
-        .O(\Use_E2.BSCANE2_I_i_5_n_0 ));
+    .INIT(64'hFEFEFEFEEEFFEEEE)) 
+    \Use_E2.BSCANE2_I_i_2 
+       (.I0(PORT_Selector[2]),
+        .I1(PORT_Selector[3]),
+        .I2(Ext_JTAG_TDO),
+        .I3(PORT_Selector[0]),
+        .I4(Config_Reg),
+        .I5(PORT_Selector[1]),
+        .O(\Use_E2.BSCANE2_I_i_2_n_0 ));
 endmodule
 
+(* ORIG_REF_NAME = "SRL_FIFO" *) 
 module mcu_mdm_1_0_SRL_FIFO
    (M_AXI_ARESETN_0,
     \Using_FPGA.Native ,
-    \Using_FPGA.Native_0 ,
+    \Use_Dbg_Mem_Access.output_reg[23] ,
     M_AXI_ACLK,
     \Use_Dbg_Mem_Access.output_reg[24] ,
-    \Use_Dbg_Mem_Access.output_reg[24]_0 ,
-    \Use_Dbg_Mem_Access.output_reg[24]_1 ,
+    \Use_Dbg_Mem_Access.output_reg[25] ,
+    lmb_rd_idle,
     \Use_Dbg_Mem_Access.output_reg[28] ,
     \Use_Dbg_Mem_Access.output_reg[28]_0 ,
-    lmb_rd_idle,
-    \Use_Dbg_Mem_Access.output_reg[25] ,
+    \Use_Dbg_Mem_Access.output_reg[24]_0 ,
+    \Use_Dbg_Mem_Access.output_reg[24]_1 ,
+    \Use_Dbg_Mem_Access.output_reg[28]_1 ,
+    lmb_rd_resp,
     \Use_Dbg_Mem_Access.output_reg[26] ,
     lmb_wr_resp,
-    lmb_rd_resp,
-    \Use_Dbg_Mem_Access.output_reg[28]_1 ,
-    \Use_Dbg_Mem_Access.output_reg[0] ,
     M_AXI_ARESETN,
-    master_data_rd,
-    M_AXI_RVALID,
     data_Exists_I_reg_0,
-    lmb_ready_vec_q,
+    M_AXI_RVALID,
+    master_data_rd,
     Q,
+    lmb_ready_vec_q,
     M_AXI_RDATA);
   output M_AXI_ARESETN_0;
-  output [26:0]\Using_FPGA.Native ;
-  output [4:0]\Using_FPGA.Native_0 ;
+  output [27:0]\Using_FPGA.Native ;
+  output [3:0]\Use_Dbg_Mem_Access.output_reg[23] ;
   input M_AXI_ACLK;
-  input \Use_Dbg_Mem_Access.output_reg[24] ;
-  input \Use_Dbg_Mem_Access.output_reg[24]_0 ;
-  input [3:0]\Use_Dbg_Mem_Access.output_reg[24]_1 ;
+  input [3:0]\Use_Dbg_Mem_Access.output_reg[24] ;
+  input \Use_Dbg_Mem_Access.output_reg[25] ;
+  input lmb_rd_idle;
   input \Use_Dbg_Mem_Access.output_reg[28] ;
   input \Use_Dbg_Mem_Access.output_reg[28]_0 ;
-  input lmb_rd_idle;
-  input \Use_Dbg_Mem_Access.output_reg[25] ;
+  input \Use_Dbg_Mem_Access.output_reg[24]_0 ;
+  input \Use_Dbg_Mem_Access.output_reg[24]_1 ;
+  input \Use_Dbg_Mem_Access.output_reg[28]_1 ;
+  input [0:0]lmb_rd_resp;
   input \Use_Dbg_Mem_Access.output_reg[26] ;
   input [0:0]lmb_wr_resp;
-  input [0:0]lmb_rd_resp;
-  input \Use_Dbg_Mem_Access.output_reg[28]_1 ;
-  input \Use_Dbg_Mem_Access.output_reg[0] ;
   input M_AXI_ARESETN;
-  input master_data_rd;
-  input M_AXI_RVALID;
   input data_Exists_I_reg_0;
-  input lmb_ready_vec_q;
+  input M_AXI_RVALID;
+  input master_data_rd;
   input [31:0]Q;
+  input lmb_ready_vec_q;
   input [31:0]M_AXI_RDATA;
 
   wire [0:4]Addr;
-  wire \Addr_Counters[0].FDRE_I_n_2 ;
-  wire \Addr_Counters[1].Used_MuxCY.MUXCY_L_I_n_0 ;
+  wire \Addr_Counters[4].No_MuxCY.XORCY_I_n_1 ;
   wire CI;
   wire LI;
   wire M_AXI_ACLK;
@@ -19383,22 +22054,21 @@ module mcu_mdm_1_0_SRL_FIFO
   wire S0_out;
   wire S1_out;
   wire S3_out;
-  wire \Use_Dbg_Mem_Access.output_reg[0] ;
-  wire \Use_Dbg_Mem_Access.output_reg[24] ;
+  wire [3:0]\Use_Dbg_Mem_Access.output_reg[23] ;
+  wire [3:0]\Use_Dbg_Mem_Access.output_reg[24] ;
   wire \Use_Dbg_Mem_Access.output_reg[24]_0 ;
-  wire [3:0]\Use_Dbg_Mem_Access.output_reg[24]_1 ;
+  wire \Use_Dbg_Mem_Access.output_reg[24]_1 ;
   wire \Use_Dbg_Mem_Access.output_reg[25] ;
   wire \Use_Dbg_Mem_Access.output_reg[26] ;
   wire \Use_Dbg_Mem_Access.output_reg[28] ;
   wire \Use_Dbg_Mem_Access.output_reg[28]_0 ;
   wire \Use_Dbg_Mem_Access.output_reg[28]_1 ;
-  wire [26:0]\Using_FPGA.Native ;
-  wire [4:0]\Using_FPGA.Native_0 ;
+  wire [27:0]\Using_FPGA.Native ;
   wire addr_cy_0;
   wire addr_cy_1;
   wire addr_cy_2;
   wire addr_cy_3;
-  wire data_Exists_I_i_2_n_0;
+  wire buffer_Empty__3;
   wire data_Exists_I_reg_0;
   wire lmb_rd_idle;
   wire [0:0]lmb_rd_resp;
@@ -19426,15 +22096,16 @@ module mcu_mdm_1_0_SRL_FIFO
         .M_AXI_RVALID(M_AXI_RVALID),
         .O(sum_A_4),
         .S(S3_out),
-        .\Using_FPGA.Native_0 (\Addr_Counters[0].FDRE_I_n_2 ),
-        .\Using_FPGA.Native_1 (M_AXI_ARESETN_0),
-        .\Using_FPGA.Native_2 (data_Exists_I_reg_0),
-        .\Using_FPGA.Native_I1_i_1__2 (\Addr_Counters[1].Used_MuxCY.MUXCY_L_I_n_0 ),
-        .\Using_FPGA.Native_I1_i_2_0 ({Addr[1],Addr[2],Addr[3],Addr[4]}),
+        .\Using_FPGA.Native_0 (M_AXI_ARESETN_0),
+        .buffer_Empty__3(buffer_Empty__3),
+        .data_Exists_I_reg(\Addr_Counters[4].No_MuxCY.XORCY_I_n_1 ),
+        .data_Exists_I_reg_0(data_Exists_I_reg_0),
+        .data_Exists_I_reg_1({Addr[1],Addr[2],Addr[3],Addr[4]}),
         .lmb_rd_idle(lmb_rd_idle),
         .lmb_ready_vec_q(lmb_ready_vec_q),
         .master_data_exists(master_data_exists),
-        .master_data_rd(master_data_rd));
+        .master_data_rd(master_data_rd),
+        .next_Data_Exists(next_Data_Exists));
   mcu_mdm_1_0_MB_MUXCY_XORCY_40 \Addr_Counters[0].Used_MuxCY.MUXCY_L_I 
        (.Addr(Addr[0]),
         .CI(CI),
@@ -19455,33 +22126,34 @@ module mcu_mdm_1_0_SRL_FIFO
         .lopt_9(lopt_3));
   mcu_mdm_1_0_MB_FDRE_41 \Addr_Counters[1].FDRE_I 
        (.M_AXI_ACLK(M_AXI_ACLK),
+        .M_AXI_RVALID(M_AXI_RVALID),
         .O(sum_A_3),
         .S(S1_out),
         .\Using_FPGA.Native_0 (Addr[1]),
         .\Using_FPGA.Native_1 (M_AXI_ARESETN_0),
-        .\Using_FPGA.Native_2 (\Addr_Counters[0].FDRE_I_n_2 ),
+        .\Using_FPGA.Native_2 (data_Exists_I_reg_0),
+        .\Using_FPGA.Native_3 (\Addr_Counters[4].No_MuxCY.XORCY_I_n_1 ),
+        .buffer_Empty__3(buffer_Empty__3),
         .master_data_exists(master_data_exists),
         .master_data_rd(master_data_rd));
   mcu_mdm_1_0_MB_MUXCY_XORCY_42 \Addr_Counters[1].Used_MuxCY.MUXCY_L_I 
        (.CI(addr_cy_3),
-        .\Has_FIFO.lmb_rd_idle_reg (\Addr_Counters[1].Used_MuxCY.MUXCY_L_I_n_0 ),
         .LO(addr_cy_2),
-        .M_AXI_RVALID(M_AXI_RVALID),
         .O(sum_A_3),
         .S(S1_out),
         .\Using_FPGA.Native (Addr[1]),
-        .\Using_FPGA.Native_I1_i_3 (data_Exists_I_reg_0),
-        .lmb_rd_idle(lmb_rd_idle),
-        .lmb_ready_vec_q(lmb_ready_vec_q),
         .lopt(lopt),
         .lopt_1(lopt_3));
   mcu_mdm_1_0_MB_FDRE_43 \Addr_Counters[2].FDRE_I 
        (.M_AXI_ACLK(M_AXI_ACLK),
+        .M_AXI_RVALID(M_AXI_RVALID),
         .O(sum_A_2),
         .S(S0_out),
         .\Using_FPGA.Native_0 (Addr[2]),
         .\Using_FPGA.Native_1 (M_AXI_ARESETN_0),
-        .\Using_FPGA.Native_2 (\Addr_Counters[0].FDRE_I_n_2 ),
+        .\Using_FPGA.Native_2 (data_Exists_I_reg_0),
+        .\Using_FPGA.Native_3 (\Addr_Counters[4].No_MuxCY.XORCY_I_n_1 ),
+        .buffer_Empty__3(buffer_Empty__3),
         .master_data_exists(master_data_exists),
         .master_data_rd(master_data_rd));
   mcu_mdm_1_0_MB_MUXCY_XORCY_44 \Addr_Counters[2].Used_MuxCY.MUXCY_L_I 
@@ -19493,19 +22165,17 @@ module mcu_mdm_1_0_SRL_FIFO
         .lopt(lopt_1),
         .lopt_1(lopt_4));
   mcu_mdm_1_0_MB_FDRE_45 \Addr_Counters[3].FDRE_I 
-       (.Addr({Addr[0],Addr[1],Addr[2],Addr[4]}),
-        .M_AXI_ACLK(M_AXI_ACLK),
+       (.M_AXI_ACLK(M_AXI_ACLK),
         .M_AXI_RVALID(M_AXI_RVALID),
         .O(sum_A_1),
         .S(S),
         .\Using_FPGA.Native_0 (Addr[3]),
         .\Using_FPGA.Native_1 (M_AXI_ARESETN_0),
-        .\Using_FPGA.Native_2 (\Addr_Counters[0].FDRE_I_n_2 ),
-        .data_Exists_I_reg(data_Exists_I_reg_0),
-        .data_Exists_I_reg_0(data_Exists_I_i_2_n_0),
+        .\Using_FPGA.Native_2 (data_Exists_I_reg_0),
+        .\Using_FPGA.Native_3 (\Addr_Counters[4].No_MuxCY.XORCY_I_n_1 ),
+        .buffer_Empty__3(buffer_Empty__3),
         .master_data_exists(master_data_exists),
-        .master_data_rd(master_data_rd),
-        .next_Data_Exists(next_Data_Exists));
+        .master_data_rd(master_data_rd));
   mcu_mdm_1_0_MB_MUXCY_XORCY_46 \Addr_Counters[3].Used_MuxCY.MUXCY_L_I 
        (.CI(addr_cy_1),
         .LO(addr_cy_0),
@@ -19515,18 +22185,24 @@ module mcu_mdm_1_0_SRL_FIFO
         .lopt(lopt_2),
         .lopt_1(lopt_5));
   mcu_mdm_1_0_MB_FDRE_47 \Addr_Counters[4].FDRE_I 
-       (.Addr(Addr[4]),
-        .LI(LI),
+       (.LI(LI),
         .M_AXI_ACLK(M_AXI_ACLK),
         .M_AXI_ARESETN(M_AXI_ARESETN),
         .M_AXI_ARESETN_0(M_AXI_ARESETN_0),
-        .\Using_FPGA.Native_0 (\Addr_Counters[0].FDRE_I_n_2 ),
+        .M_AXI_RVALID(M_AXI_RVALID),
+        .\Using_FPGA.Native_0 (Addr[4]),
+        .\Using_FPGA.Native_1 (data_Exists_I_reg_0),
+        .\Using_FPGA.Native_2 (\Addr_Counters[4].No_MuxCY.XORCY_I_n_1 ),
+        .buffer_Empty__3(buffer_Empty__3),
         .master_data_exists(master_data_exists),
         .master_data_rd(master_data_rd),
         .sum_A_0(sum_A_0));
   mcu_mdm_1_0_MB_XORCY_48 \Addr_Counters[4].No_MuxCY.XORCY_I 
        (.LI(LI),
         .LO(addr_cy_0),
+        .\Use_Bus_MASTER.lmb_ready_vec_q_reg[0] (\Addr_Counters[4].No_MuxCY.XORCY_I_n_1 ),
+        .lmb_rd_idle(lmb_rd_idle),
+        .lmb_ready_vec_q(lmb_ready_vec_q),
         .sum_A_0(sum_A_0));
   mcu_mdm_1_0_MB_SRLC32E_49 \FIFO_RAM[0].D32.SRLC32E_I 
        (.A({Addr[4],Addr[3],Addr[2],Addr[1],Addr[0]}),
@@ -19534,8 +22210,7 @@ module mcu_mdm_1_0_SRL_FIFO
         .M_AXI_ACLK(M_AXI_ACLK),
         .M_AXI_RDATA(M_AXI_RDATA[31]),
         .Q(Q[31]),
-        .\Use_Dbg_Mem_Access.output_reg[0] (\Use_Dbg_Mem_Access.output_reg[0] ),
-        .\Using_FPGA.Native_0 (\Using_FPGA.Native_0 [4]),
+        .\Using_FPGA.Native_0 (\Using_FPGA.Native [27]),
         .lmb_rd_idle(lmb_rd_idle),
         .lmb_ready_vec_q(lmb_ready_vec_q));
   mcu_mdm_1_0_MB_SRLC32E_50 \FIFO_RAM[10].D32.SRLC32E_I 
@@ -19679,25 +22354,25 @@ module mcu_mdm_1_0_SRL_FIFO
         .M_AXI_ACLK(M_AXI_ACLK),
         .M_AXI_RDATA(M_AXI_RDATA[7]),
         .Q(Q[7]),
-        .\Use_Dbg_Mem_Access.output_reg[24] (\Use_Dbg_Mem_Access.output_reg[24] ),
+        .\Use_Dbg_Mem_Access.output_reg[23] (\Use_Dbg_Mem_Access.output_reg[23] [3]),
+        .\Use_Dbg_Mem_Access.output_reg[24] (\Use_Dbg_Mem_Access.output_reg[24] [3]),
         .\Use_Dbg_Mem_Access.output_reg[24]_0 (\Use_Dbg_Mem_Access.output_reg[24]_0 ),
-        .\Use_Dbg_Mem_Access.output_reg[24]_1 (\Use_Dbg_Mem_Access.output_reg[24]_1 [3]),
+        .\Use_Dbg_Mem_Access.output_reg[24]_1 (\Use_Dbg_Mem_Access.output_reg[24]_1 ),
         .\Use_Dbg_Mem_Access.output_reg[24]_2 (\Use_Dbg_Mem_Access.output_reg[28] ),
         .\Use_Dbg_Mem_Access.output_reg[24]_3 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
-        .axi_wr_idle_reg(\Using_FPGA.Native_0 [3]),
         .lmb_rd_idle(lmb_rd_idle),
         .lmb_ready_vec_q(lmb_ready_vec_q));
   mcu_mdm_1_0_MB_SRLC32E_66 \FIFO_RAM[25].D32.SRLC32E_I 
        (.A({Addr[4],Addr[3],Addr[2],Addr[1],Addr[0]}),
         .CI(CI),
-        .\Has_FIFO.lmb_rd_idle_reg (\Using_FPGA.Native_0 [2]),
         .M_AXI_ACLK(M_AXI_ACLK),
         .M_AXI_RDATA(M_AXI_RDATA[6]),
         .Q(Q[6]),
-        .\Use_Dbg_Mem_Access.output_reg[25] (\Use_Dbg_Mem_Access.output_reg[25] ),
-        .\Use_Dbg_Mem_Access.output_reg[25]_0 (\Use_Dbg_Mem_Access.output_reg[28] ),
-        .\Use_Dbg_Mem_Access.output_reg[25]_1 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
-        .\Use_Dbg_Mem_Access.output_reg[25]_2 (\Use_Dbg_Mem_Access.output_reg[24]_1 [2]),
+        .\Use_Dbg_Mem_Access.output_reg[24] (\Use_Dbg_Mem_Access.output_reg[23] [2]),
+        .\Use_Dbg_Mem_Access.output_reg[25] (\Use_Dbg_Mem_Access.output_reg[24] [2]),
+        .\Use_Dbg_Mem_Access.output_reg[25]_0 (\Use_Dbg_Mem_Access.output_reg[25] ),
+        .\Use_Dbg_Mem_Access.output_reg[25]_1 (\Use_Dbg_Mem_Access.output_reg[28] ),
+        .\Use_Dbg_Mem_Access.output_reg[25]_2 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
         .lmb_rd_idle(lmb_rd_idle),
         .lmb_ready_vec_q(lmb_ready_vec_q));
   mcu_mdm_1_0_MB_SRLC32E_67 \FIFO_RAM[26].D32.SRLC32E_I 
@@ -19706,11 +22381,11 @@ module mcu_mdm_1_0_SRL_FIFO
         .M_AXI_ACLK(M_AXI_ACLK),
         .M_AXI_RDATA(M_AXI_RDATA[5]),
         .Q(Q[5]),
-        .\Use_Dbg_Mem_Access.output_reg[26] (\Use_Dbg_Mem_Access.output_reg[26] ),
-        .\Use_Dbg_Mem_Access.output_reg[26]_0 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
+        .\Use_Dbg_Mem_Access.output_reg[25] (\Use_Dbg_Mem_Access.output_reg[23] [1]),
+        .\Use_Dbg_Mem_Access.output_reg[26] (\Use_Dbg_Mem_Access.output_reg[24] [1]),
+        .\Use_Dbg_Mem_Access.output_reg[26]_0 (\Use_Dbg_Mem_Access.output_reg[26] ),
         .\Use_Dbg_Mem_Access.output_reg[26]_1 (\Use_Dbg_Mem_Access.output_reg[28] ),
-        .\Use_Dbg_Mem_Access.output_reg[26]_2 (\Use_Dbg_Mem_Access.output_reg[24]_1 [1]),
-        .\axi_wr_resp_reg[1] (\Using_FPGA.Native_0 [1]),
+        .\Use_Dbg_Mem_Access.output_reg[26]_2 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
         .lmb_rd_idle(lmb_rd_idle),
         .lmb_ready_vec_q(lmb_ready_vec_q),
         .lmb_wr_resp(lmb_wr_resp));
@@ -19726,14 +22401,14 @@ module mcu_mdm_1_0_SRL_FIFO
   mcu_mdm_1_0_MB_SRLC32E_69 \FIFO_RAM[28].D32.SRLC32E_I 
        (.A({Addr[4],Addr[3],Addr[2],Addr[1],Addr[0]}),
         .CI(CI),
-        .\Has_FIFO.lmb_rd_resp_reg[1] (\Using_FPGA.Native_0 [0]),
         .M_AXI_ACLK(M_AXI_ACLK),
         .M_AXI_RDATA(M_AXI_RDATA[3]),
         .Q(Q[3]),
-        .\Use_Dbg_Mem_Access.output_reg[28] (\Use_Dbg_Mem_Access.output_reg[28]_1 ),
-        .\Use_Dbg_Mem_Access.output_reg[28]_0 (\Use_Dbg_Mem_Access.output_reg[28] ),
-        .\Use_Dbg_Mem_Access.output_reg[28]_1 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
-        .\Use_Dbg_Mem_Access.output_reg[28]_2 (\Use_Dbg_Mem_Access.output_reg[24]_1 [0]),
+        .\Use_Dbg_Mem_Access.output_reg[27] (\Use_Dbg_Mem_Access.output_reg[23] [0]),
+        .\Use_Dbg_Mem_Access.output_reg[28] (\Use_Dbg_Mem_Access.output_reg[24] [0]),
+        .\Use_Dbg_Mem_Access.output_reg[28]_0 (\Use_Dbg_Mem_Access.output_reg[28]_1 ),
+        .\Use_Dbg_Mem_Access.output_reg[28]_1 (\Use_Dbg_Mem_Access.output_reg[28] ),
+        .\Use_Dbg_Mem_Access.output_reg[28]_2 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
         .lmb_rd_idle(lmb_rd_idle),
         .lmb_rd_resp(lmb_rd_resp),
         .lmb_ready_vec_q(lmb_ready_vec_q));
@@ -19836,12 +22511,6 @@ module mcu_mdm_1_0_SRL_FIFO
         .\Using_FPGA.Native_0 (\Using_FPGA.Native [18]),
         .lmb_rd_idle(lmb_rd_idle),
         .lmb_ready_vec_q(lmb_ready_vec_q));
-  LUT2 #(
-    .INIT(4'h2)) 
-    data_Exists_I_i_2
-       (.I0(lmb_ready_vec_q),
-        .I1(lmb_rd_idle),
-        .O(data_Exists_I_i_2_n_0));
   FDRE #(
     .INIT(1'b0)) 
     data_Exists_I_reg
@@ -19859,26 +22528,27 @@ module mcu_mdm_1_0_SRL_FIFO_0
     \Using_FPGA.Native ,
     M_AXI_ACLK,
     D,
-    M_AXI_WREADY,
-    \Using_FPGA.Native_0 ,
     lmb_ready_vec_q,
+    \Using_FPGA.Native_0 ,
     \Using_FPGA.Native_1 ,
+    M_AXI_WREADY,
     master_data_wr);
   output data_Exists_I_reg_0;
   output [31:0]M_AXI_WDATA;
   input \Using_FPGA.Native ;
   input M_AXI_ACLK;
   input [31:0]D;
-  input M_AXI_WREADY;
-  input \Using_FPGA.Native_0 ;
   input lmb_ready_vec_q;
+  input \Using_FPGA.Native_0 ;
   input \Using_FPGA.Native_1 ;
+  input M_AXI_WREADY;
   input master_data_wr;
 
   wire [0:4]Addr;
-  wire \Addr_Counters[0].FDRE_I_n_2 ;
+  wire \Addr_Counters[4].FDRE_I_n_2 ;
   wire CI;
   wire [31:0]D;
+  wire FIFO_Read;
   wire LI;
   wire M_AXI_ACLK;
   wire [31:0]M_AXI_WDATA;
@@ -19894,8 +22564,8 @@ module mcu_mdm_1_0_SRL_FIFO_0
   wire addr_cy_1;
   wire addr_cy_2;
   wire addr_cy_3;
-  wire data_Exists_I_i_2__0_n_0;
   wire data_Exists_I_reg_0;
+  wire hsum_A_40__0;
   wire lmb_ready_vec_q;
   wire lopt;
   wire lopt_1;
@@ -19913,19 +22583,20 @@ module mcu_mdm_1_0_SRL_FIFO_0
 
   mcu_mdm_1_0_MB_FDRE \Addr_Counters[0].FDRE_I 
        (.Addr(Addr[0]),
-        .CI(CI),
+        .FIFO_Read(FIFO_Read),
         .M_AXI_ACLK(M_AXI_ACLK),
-        .\M_AXI_WDATA[22] (\Using_FPGA.Native_1 ),
         .M_AXI_WREADY(M_AXI_WREADY),
         .O(sum_A_4),
         .S(S3_out),
-        .\Use_Dbg_Mem_Access.Master_data_wr_reg (\Addr_Counters[0].FDRE_I_n_2 ),
         .\Using_FPGA.Native_0 (\Using_FPGA.Native ),
         .\Using_FPGA.Native_1 (data_Exists_I_reg_0),
         .\Using_FPGA.Native_2 (\Using_FPGA.Native_0 ),
-        .\Using_FPGA.Native_i_1__35_0 ({Addr[1],Addr[2],Addr[3],Addr[4]}),
+        .\Using_FPGA.Native_3 (\Using_FPGA.Native_1 ),
+        .data_Exists_I_reg({Addr[1],Addr[2],Addr[3],Addr[4]}),
+        .hsum_A_40__0(hsum_A_40__0),
         .lmb_ready_vec_q(lmb_ready_vec_q),
-        .master_data_wr(master_data_wr));
+        .master_data_wr(master_data_wr),
+        .next_Data_Exists(next_Data_Exists));
   mcu_mdm_1_0_MB_MUXCY_XORCY \Addr_Counters[0].Used_MuxCY.MUXCY_L_I 
        (.Addr(Addr[0]),
         .CI(CI),
@@ -19954,7 +22625,7 @@ module mcu_mdm_1_0_SRL_FIFO_0
         .\Using_FPGA.Native_2 (data_Exists_I_reg_0),
         .\Using_FPGA.Native_3 (\Using_FPGA.Native_0 ),
         .\Using_FPGA.Native_4 (\Using_FPGA.Native_1 ),
-        .\Using_FPGA.Native_5 (\Addr_Counters[0].FDRE_I_n_2 ),
+        .hsum_A_40__0(hsum_A_40__0),
         .lmb_ready_vec_q(lmb_ready_vec_q));
   mcu_mdm_1_0_MB_MUXCY_XORCY_2 \Addr_Counters[1].Used_MuxCY.MUXCY_L_I 
        (.CI(addr_cy_3),
@@ -19965,7 +22636,10 @@ module mcu_mdm_1_0_SRL_FIFO_0
         .lopt(lopt),
         .lopt_1(lopt_3));
   mcu_mdm_1_0_MB_FDRE_3 \Addr_Counters[2].FDRE_I 
-       (.M_AXI_ACLK(M_AXI_ACLK),
+       (.Addr({Addr[0],Addr[1]}),
+        .CI(CI),
+        .M_AXI_ACLK(M_AXI_ACLK),
+        .\M_AXI_WDATA[22] (\Addr_Counters[4].FDRE_I_n_2 ),
         .M_AXI_WREADY(M_AXI_WREADY),
         .O(sum_A_2),
         .S(S0_out),
@@ -19974,8 +22648,9 @@ module mcu_mdm_1_0_SRL_FIFO_0
         .\Using_FPGA.Native_2 (data_Exists_I_reg_0),
         .\Using_FPGA.Native_3 (\Using_FPGA.Native_0 ),
         .\Using_FPGA.Native_4 (\Using_FPGA.Native_1 ),
-        .\Using_FPGA.Native_5 (\Addr_Counters[0].FDRE_I_n_2 ),
-        .lmb_ready_vec_q(lmb_ready_vec_q));
+        .hsum_A_40__0(hsum_A_40__0),
+        .lmb_ready_vec_q(lmb_ready_vec_q),
+        .master_data_wr(master_data_wr));
   mcu_mdm_1_0_MB_MUXCY_XORCY_4 \Addr_Counters[2].Used_MuxCY.MUXCY_L_I 
        (.CI(addr_cy_2),
         .LO(addr_cy_1),
@@ -19995,11 +22670,9 @@ module mcu_mdm_1_0_SRL_FIFO_0
         .\Using_FPGA.Native_2 (data_Exists_I_reg_0),
         .\Using_FPGA.Native_3 (\Using_FPGA.Native_0 ),
         .\Using_FPGA.Native_4 (\Using_FPGA.Native_1 ),
-        .\Using_FPGA.Native_5 (\Addr_Counters[0].FDRE_I_n_2 ),
-        .data_Exists_I_reg(data_Exists_I_i_2__0_n_0),
+        .hsum_A_40__0(hsum_A_40__0),
         .lmb_ready_vec_q(lmb_ready_vec_q),
-        .master_data_wr(master_data_wr),
-        .next_Data_Exists(next_Data_Exists));
+        .master_data_wr(master_data_wr));
   mcu_mdm_1_0_MB_MUXCY_XORCY_6 \Addr_Counters[3].Used_MuxCY.MUXCY_L_I 
        (.CI(addr_cy_1),
         .LO(addr_cy_0),
@@ -20013,11 +22686,13 @@ module mcu_mdm_1_0_SRL_FIFO_0
         .LI(LI),
         .M_AXI_ACLK(M_AXI_ACLK),
         .M_AXI_WREADY(M_AXI_WREADY),
-        .\Using_FPGA.Native_0 (\Using_FPGA.Native ),
-        .\Using_FPGA.Native_1 (data_Exists_I_reg_0),
-        .\Using_FPGA.Native_2 (\Using_FPGA.Native_0 ),
-        .\Using_FPGA.Native_3 (\Using_FPGA.Native_1 ),
-        .\Using_FPGA.Native_4 (\Addr_Counters[0].FDRE_I_n_2 ),
+        .\Using_FPGA.Native_0 (\Addr_Counters[4].FDRE_I_n_2 ),
+        .\Using_FPGA.Native_1 (\Using_FPGA.Native ),
+        .\Using_FPGA.Native_2 (data_Exists_I_reg_0),
+        .\Using_FPGA.Native_3 (\Using_FPGA.Native_0 ),
+        .\Using_FPGA.Native_4 (\Using_FPGA.Native_1 ),
+        .\Using_FPGA.Native_i_1__35 (Addr[3]),
+        .hsum_A_40__0(hsum_A_40__0),
         .lmb_ready_vec_q(lmb_ready_vec_q),
         .sum_A_0(sum_A_0));
   mcu_mdm_1_0_MB_XORCY \Addr_Counters[4].No_MuxCY.XORCY_I 
@@ -20217,13 +22892,13 @@ module mcu_mdm_1_0_SRL_FIFO_0
         .M_AXI_ACLK(M_AXI_ACLK),
         .M_AXI_WDATA(M_AXI_WDATA[22]));
   LUT4 #(
-    .INIT(16'h0BBB)) 
-    data_Exists_I_i_2__0
-       (.I0(\Using_FPGA.Native_1 ),
-        .I1(lmb_ready_vec_q),
+    .INIT(16'h8F88)) 
+    data_Exists_I_i_3
+       (.I0(M_AXI_WREADY),
+        .I1(\Using_FPGA.Native_1 ),
         .I2(\Using_FPGA.Native_0 ),
-        .I3(M_AXI_WREADY),
-        .O(data_Exists_I_i_2__0_n_0));
+        .I3(lmb_ready_vec_q),
+        .O(FIFO_Read));
   FDRE #(
     .INIT(1'b0)) 
     data_Exists_I_reg
@@ -20234,6 +22909,7 @@ module mcu_mdm_1_0_SRL_FIFO_0
         .R(\Using_FPGA.Native ));
 endmodule
 
+(* ORIG_REF_NAME = "bus_master" *) 
 module mcu_mdm_1_0_bus_master
    (Reset,
     \Using_FPGA.Native ,
@@ -20248,16 +22924,17 @@ module mcu_mdm_1_0_bus_master
     M_AXI_WLAST,
     axi_wvalid_reg_0,
     M_AXI_ARVALID,
-    \Using_FPGA.Native_0 ,
-    \Use_Dbg_Mem_Access.execute_3_reg ,
-    p_93_out,
+    \Use_BSCAN.command_reg[7] ,
+    \Has_FIFO.lmb_rd_idle_reg_0 ,
+    \Use_Dbg_Mem_Access.output_reg[23] ,
+    p_92_out,
     M_AXI_BREADY,
     \FSM_sequential_wr_state_reg[1]_0 ,
     p_20_out,
-    \axi_wr_resp_reg[0]_0 ,
     \Has_FIFO.axi_rd_resp_reg[0]_0 ,
-    \Has_FIFO.axi_rd_resp_reg[0]_1 ,
-    \axi_wr_resp_reg[0]_1 ,
+    \Has_FIFO.lmb_rd_resp_reg[1]_0 ,
+    \Has_FIFO.lmb_wr_resp_reg[1]_0 ,
+    \axi_wr_resp_reg[0]_0 ,
     \Has_FIFO.lmb_addr_reg[4]_0 ,
     LMB_Byte_Enable_31,
     M_AXI_AWADDR,
@@ -20270,38 +22947,38 @@ module mcu_mdm_1_0_bus_master
     M_AXI_ACLK,
     D,
     rd_wr_excl,
+    \Use_Dbg_Mem_Access.Master_wr_start_reg ,
+    execute_3,
+    out,
     \Use_Dbg_Mem_Access.output_reg[24] ,
     \Use_Dbg_Mem_Access.output_reg[28] ,
     \Use_Dbg_Mem_Access.output_reg[28]_0 ,
-    \Use_Dbg_Mem_Access.output_reg[0] ,
-    execute_3,
-    out,
     M_AXI_AWREADY,
     M_AXI_WREADY,
     \M_AXI_AWLEN_reg[4]_0 ,
+    M_AXI_RVALID,
+    M_AXI_RLAST,
     lmb_ue_vec_q,
     M_AXI_ARESETN,
-    M_AXI_RLAST,
-    M_AXI_RVALID,
-    master_rd_start,
-    lmb_ready_vec_q,
     master_wr_start,
+    lmb_ready_vec_q,
+    master_rd_start,
     lmb_wait_vec_q,
-    wr_resp_zero,
+    \Has_FIFO.lmb_state_reg[0]_0 ,
+    M_AXI_RRESP,
     rd_resp_zero,
+    wr_resp_zero,
     master_data_rd,
     Q,
     M_AXI_RDATA,
     master_data_wr,
-    \Has_FIFO.LMB_Addr_Strobe_reg_0 ,
     M_AXI_BVALID,
     M_AXI_WLAST_reg_0,
     M_AXI_ARREADY,
     \M_AXI_AWSIZE_reg[1]_0 ,
-    M_AXI_RRESP,
     M_AXI_BRESP);
   output Reset;
-  output [26:0]\Using_FPGA.Native ;
+  output [27:0]\Using_FPGA.Native ;
   output wdata_exists;
   output [31:0]M_AXI_WDATA;
   output M_AXI_AWLOCK;
@@ -20313,16 +22990,17 @@ module mcu_mdm_1_0_bus_master
   output M_AXI_WLAST;
   output axi_wvalid_reg_0;
   output M_AXI_ARVALID;
-  output [4:0]\Using_FPGA.Native_0 ;
-  output \Use_Dbg_Mem_Access.execute_3_reg ;
-  output p_93_out;
+  output \Use_BSCAN.command_reg[7] ;
+  output \Has_FIFO.lmb_rd_idle_reg_0 ;
+  output [3:0]\Use_Dbg_Mem_Access.output_reg[23] ;
+  output p_92_out;
   output M_AXI_BREADY;
   output [0:0]\FSM_sequential_wr_state_reg[1]_0 ;
   output p_20_out;
-  output \axi_wr_resp_reg[0]_0 ;
   output \Has_FIFO.axi_rd_resp_reg[0]_0 ;
-  output \Has_FIFO.axi_rd_resp_reg[0]_1 ;
-  output \axi_wr_resp_reg[0]_1 ;
+  output \Has_FIFO.lmb_rd_resp_reg[1]_0 ;
+  output \Has_FIFO.lmb_wr_resp_reg[1]_0 ;
+  output \axi_wr_resp_reg[0]_0 ;
   output [4:0]\Has_FIFO.lmb_addr_reg[4]_0 ;
   output [0:3]LMB_Byte_Enable_31;
   output [31:0]M_AXI_AWADDR;
@@ -20335,35 +23013,35 @@ module mcu_mdm_1_0_bus_master
   input M_AXI_ACLK;
   input [31:0]D;
   input rd_wr_excl;
+  input [0:0]\Use_Dbg_Mem_Access.Master_wr_start_reg ;
+  input execute_3;
+  input out;
   input [3:0]\Use_Dbg_Mem_Access.output_reg[24] ;
   input \Use_Dbg_Mem_Access.output_reg[28] ;
   input \Use_Dbg_Mem_Access.output_reg[28]_0 ;
-  input \Use_Dbg_Mem_Access.output_reg[0] ;
-  input execute_3;
-  input out;
   input M_AXI_AWREADY;
   input M_AXI_WREADY;
   input [4:0]\M_AXI_AWLEN_reg[4]_0 ;
+  input M_AXI_RVALID;
+  input M_AXI_RLAST;
   input lmb_ue_vec_q;
   input M_AXI_ARESETN;
-  input M_AXI_RLAST;
-  input M_AXI_RVALID;
-  input master_rd_start;
-  input lmb_ready_vec_q;
   input master_wr_start;
+  input lmb_ready_vec_q;
+  input master_rd_start;
   input lmb_wait_vec_q;
-  input wr_resp_zero;
+  input \Has_FIFO.lmb_state_reg[0]_0 ;
+  input [1:0]M_AXI_RRESP;
   input rd_resp_zero;
+  input wr_resp_zero;
   input master_data_rd;
   input [31:0]Q;
   input [31:0]M_AXI_RDATA;
   input master_data_wr;
-  input \Has_FIFO.LMB_Addr_Strobe_reg_0 ;
   input M_AXI_BVALID;
   input M_AXI_WLAST_reg_0;
   input M_AXI_ARREADY;
   input [1:0]\M_AXI_AWSIZE_reg[1]_0 ;
-  input [1:0]M_AXI_RRESP;
   input [1:0]M_AXI_BRESP;
 
   wire [31:0]D;
@@ -20372,16 +23050,13 @@ module mcu_mdm_1_0_bus_master
   wire \FSM_sequential_wr_state[0]_i_1_n_0 ;
   wire \FSM_sequential_wr_state[0]_i_2_n_0 ;
   wire \FSM_sequential_wr_state[1]_i_1_n_0 ;
-  wire \FSM_sequential_wr_state[1]_i_2_n_0 ;
   wire [0:0]\FSM_sequential_wr_state_reg[1]_0 ;
   wire \Has_FIFO.LMB_Addr_Strobe_i_1_n_0 ;
   wire \Has_FIFO.LMB_Addr_Strobe_i_2_n_0 ;
+  wire \Has_FIFO.LMB_Addr_Strobe_i_3_n_0 ;
   wire \Has_FIFO.LMB_Addr_Strobe_i_4_n_0 ;
-  wire \Has_FIFO.LMB_Addr_Strobe_i_5_n_0 ;
-  wire \Has_FIFO.LMB_Addr_Strobe_reg_0 ;
   wire \Has_FIFO.LMB_Read_Strobe_i_1_n_0 ;
   wire \Has_FIFO.LMB_Read_Strobe_i_2_n_0 ;
-  wire \Has_FIFO.LMB_Read_Strobe_i_3_n_0 ;
   wire \Has_FIFO.LMB_Write_Strobe_i_1_n_0 ;
   wire \Has_FIFO.LMB_Write_Strobe_i_2_n_0 ;
   wire \Has_FIFO.M_AXI_ARADDR[31]_i_1_n_0 ;
@@ -20391,7 +23066,6 @@ module mcu_mdm_1_0_bus_master
   wire \Has_FIFO.axi_rd_resp[0]_i_1_n_0 ;
   wire \Has_FIFO.axi_rd_resp[1]_i_1_n_0 ;
   wire \Has_FIFO.axi_rd_resp_reg[0]_0 ;
-  wire \Has_FIFO.axi_rd_resp_reg[0]_1 ;
   wire \Has_FIFO.axi_rd_resp_reg_n_0_[1] ;
   wire \Has_FIFO.axi_rd_start_i_1_n_0 ;
   wire \Has_FIFO.axi_rd_start_reg_n_0 ;
@@ -20417,15 +23091,20 @@ module mcu_mdm_1_0_bus_master
   wire \Has_FIFO.lmb_len_reg_n_0_[3] ;
   wire \Has_FIFO.lmb_len_reg_n_0_[4] ;
   wire \Has_FIFO.lmb_rd_idle_i_1_n_0 ;
+  wire \Has_FIFO.lmb_rd_idle_reg_0 ;
   wire \Has_FIFO.lmb_rd_resp[1]_i_1_n_0 ;
   wire \Has_FIFO.lmb_rd_resp[1]_i_2_n_0 ;
+  wire \Has_FIFO.lmb_rd_resp[1]_i_3_n_0 ;
+  wire \Has_FIFO.lmb_rd_resp_reg[1]_0 ;
   wire \Has_FIFO.lmb_state[0]_i_1_n_0 ;
   wire \Has_FIFO.lmb_state[0]_i_2_n_0 ;
+  wire \Has_FIFO.lmb_state[0]_i_3_n_0 ;
   wire \Has_FIFO.lmb_state[1]_i_1_n_0 ;
   wire \Has_FIFO.lmb_state[1]_i_2_n_0 ;
+  wire \Has_FIFO.lmb_state[1]_i_3_n_0 ;
   wire \Has_FIFO.lmb_state[2]_i_1_n_0 ;
   wire \Has_FIFO.lmb_state[2]_i_2_n_0 ;
-  wire \Has_FIFO.lmb_state[2]_i_3_n_0 ;
+  wire \Has_FIFO.lmb_state_reg[0]_0 ;
   wire \Has_FIFO.lmb_state_reg_n_0_[0] ;
   wire \Has_FIFO.lmb_state_reg_n_0_[1] ;
   wire \Has_FIFO.lmb_state_reg_n_0_[2] ;
@@ -20433,7 +23112,7 @@ module mcu_mdm_1_0_bus_master
   wire \Has_FIFO.lmb_wr_idle_reg_n_0 ;
   wire \Has_FIFO.lmb_wr_resp[1]_i_1_n_0 ;
   wire \Has_FIFO.lmb_wr_resp[1]_i_2_n_0 ;
-  wire \Has_FIFO.lmb_wr_resp[1]_i_3_n_0 ;
+  wire \Has_FIFO.lmb_wr_resp_reg[1]_0 ;
   wire \Has_FIFO.rd_resp[0]_i_1_n_0 ;
   wire \Has_FIFO.rd_resp[1]_i_1_n_0 ;
   wire \Has_FIFO.rd_resp_reg_n_0_[0] ;
@@ -20473,19 +23152,18 @@ module mcu_mdm_1_0_bus_master
   wire M_AXI_WLAST_i_1_n_0;
   wire M_AXI_WLAST_i_3_n_0;
   wire M_AXI_WLAST_i_4_n_0;
-  wire M_AXI_WLAST_i_5_n_0;
   wire M_AXI_WLAST_reg_0;
   wire M_AXI_WREADY;
   wire [3:0]M_AXI_WSTRB;
   wire [31:0]Q;
   wire Reset;
-  wire \Use_Dbg_Mem_Access.execute_3_reg ;
-  wire \Use_Dbg_Mem_Access.output_reg[0] ;
+  wire \Use_BSCAN.command_reg[7] ;
+  wire [0:0]\Use_Dbg_Mem_Access.Master_wr_start_reg ;
+  wire [3:0]\Use_Dbg_Mem_Access.output_reg[23] ;
   wire [3:0]\Use_Dbg_Mem_Access.output_reg[24] ;
   wire \Use_Dbg_Mem_Access.output_reg[28] ;
   wire \Use_Dbg_Mem_Access.output_reg[28]_0 ;
-  wire [26:0]\Using_FPGA.Native ;
-  wire [4:0]\Using_FPGA.Native_0 ;
+  wire [27:0]\Using_FPGA.Native ;
   wire address_done_i_1_n_0;
   wire address_done_reg_n_0;
   wire axi_dwr_done_i_1_n_0;
@@ -20496,7 +23174,6 @@ module mcu_mdm_1_0_bus_master
   wire \axi_wr_resp[0]_i_1_n_0 ;
   wire \axi_wr_resp[1]_i_1_n_0 ;
   wire \axi_wr_resp_reg[0]_0 ;
-  wire \axi_wr_resp_reg[0]_1 ;
   wire \axi_wr_resp_reg_n_0_[1] ;
   wire axi_wr_start;
   wire axi_wvalid_i_1_n_0;
@@ -20509,7 +23186,6 @@ module mcu_mdm_1_0_bus_master
   wire \len[3]_i_2_n_0 ;
   wire \len[4]_i_1_n_0 ;
   wire \len[4]_i_3_n_0 ;
-  wire \len[4]_i_4_n_0 ;
   wire \len_reg_n_0_[0] ;
   wire \len_reg_n_0_[1] ;
   wire \len_reg_n_0_[2] ;
@@ -20519,8 +23195,10 @@ module mcu_mdm_1_0_bus_master
   wire lmb_rd_idle;
   wire [1:1]lmb_rd_resp;
   wire lmb_ready_vec_q;
+  wire lmb_state__4;
   wire lmb_ue_vec_q;
   wire lmb_wait_vec_q;
+  wire lmb_wr_idle;
   wire [1:1]lmb_wr_resp;
   wire master_data_rd;
   wire master_data_wr;
@@ -20528,7 +23206,9 @@ module mcu_mdm_1_0_bus_master
   wire master_wr_start;
   wire out;
   wire p_20_out;
-  wire p_93_out;
+  wire p_88_in;
+  wire p_8_out__2;
+  wire p_92_out;
   wire rd_resp_zero;
   wire [1:0]rd_state;
   wire rd_wr_excl;
@@ -20538,23 +23218,23 @@ module mcu_mdm_1_0_bus_master
   wire [0:0]wr_state;
 
   LUT6 #(
-    .INIT(64'h00F0F0F0ACACACAC)) 
+    .INIT(64'h00B8CCB8CCB8CCB8)) 
     \FSM_sequential_Has_FIFO.rd_state[0]_i_1 
        (.I0(M_AXI_ARREADY),
-        .I1(\Has_FIFO.axi_rd_start_reg_n_0 ),
-        .I2(rd_state[1]),
-        .I3(M_AXI_RLAST),
+        .I1(rd_state[1]),
+        .I2(\Has_FIFO.axi_rd_start_reg_n_0 ),
+        .I3(rd_state[0]),
         .I4(M_AXI_RVALID),
-        .I5(rd_state[0]),
+        .I5(M_AXI_RLAST),
         .O(\FSM_sequential_Has_FIFO.rd_state[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair37" *) 
+  (* SOFT_HLUTNM = "soft_lutpair42" *) 
   LUT4 #(
-    .INIT(16'h7FAA)) 
+    .INIT(16'h6EEE)) 
     \FSM_sequential_Has_FIFO.rd_state[1]_i_1 
        (.I0(rd_state[1]),
-        .I1(M_AXI_RLAST),
+        .I1(rd_state[0]),
         .I2(M_AXI_RVALID),
-        .I3(rd_state[0]),
+        .I3(M_AXI_RLAST),
         .O(\FSM_sequential_Has_FIFO.rd_state[1]_i_1_n_0 ));
   (* FSM_ENCODED_STATES = "start:01,wait_on_ready:10,idle:00,wait_on_data:11" *) 
   FDRE \FSM_sequential_Has_FIFO.rd_state_reg[0] 
@@ -20570,43 +23250,33 @@ module mcu_mdm_1_0_bus_master
         .D(\FSM_sequential_Has_FIFO.rd_state[1]_i_1_n_0 ),
         .Q(rd_state[1]),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
   LUT5 #(
-    .INIT(32'h00ACF0AC)) 
+    .INIT(32'h00B8CCB8)) 
     \FSM_sequential_wr_state[0]_i_1 
        (.I0(\FSM_sequential_wr_state[0]_i_2_n_0 ),
-        .I1(axi_wr_start),
-        .I2(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I1(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I2(axi_wr_start),
         .I3(wr_state),
         .I4(M_AXI_BVALID),
         .O(\FSM_sequential_wr_state[0]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'hEEE0)) 
+  LUT5 #(
+    .INIT(32'hEEE0E0E0)) 
     \FSM_sequential_wr_state[0]_i_2 
-       (.I0(M_AXI_AWREADY),
-        .I1(address_done_reg_n_0),
-        .I2(axi_wvalid_i_2_n_0),
-        .I3(data_done_reg_n_0),
+       (.I0(address_done_reg_n_0),
+        .I1(M_AXI_AWREADY),
+        .I2(data_done_reg_n_0),
+        .I3(M_AXI_WREADY),
+        .I4(axi_wvalid_i_2_n_0),
         .O(\FSM_sequential_wr_state[0]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
-  LUT4 #(
-    .INIT(16'hAEEE)) 
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  LUT3 #(
+    .INIT(8'h6E)) 
     \FSM_sequential_wr_state[1]_i_1 
-       (.I0(\FSM_sequential_wr_state[1]_i_2_n_0 ),
-        .I1(\FSM_sequential_wr_state_reg[1]_0 ),
-        .I2(wr_state),
-        .I3(M_AXI_BVALID),
-        .O(\FSM_sequential_wr_state[1]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h6664666466644444)) 
-    \FSM_sequential_wr_state[1]_i_2 
        (.I0(\FSM_sequential_wr_state_reg[1]_0 ),
         .I1(wr_state),
-        .I2(M_AXI_AWREADY),
-        .I3(address_done_reg_n_0),
-        .I4(axi_wvalid_i_2_n_0),
-        .I5(data_done_reg_n_0),
-        .O(\FSM_sequential_wr_state[1]_i_2_n_0 ));
+        .I2(M_AXI_BVALID),
+        .O(\FSM_sequential_wr_state[1]_i_1_n_0 ));
   (* FSM_ENCODED_STATES = "start:01,wait_on_ready:10,idle:00,wait_on_bchan:11" *) 
   FDRE \FSM_sequential_wr_state_reg[0] 
        (.C(M_AXI_ACLK),
@@ -20622,42 +23292,45 @@ module mcu_mdm_1_0_bus_master
         .Q(\FSM_sequential_wr_state_reg[1]_0 ),
         .R(Reset));
   LUT6 #(
-    .INIT(64'hAAABFFFFAAAB0000)) 
+    .INIT(64'hAEEEFFFFA2220000)) 
     \Has_FIFO.LMB_Addr_Strobe_i_1 
        (.I0(\Has_FIFO.LMB_Addr_Strobe_i_2_n_0 ),
-        .I1(\Has_FIFO.LMB_Addr_Strobe_reg_0 ),
-        .I2(\Has_FIFO.lmb_state_reg_n_0_[0] ),
-        .I3(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .I2(lmb_ready_vec_q),
+        .I3(\Has_FIFO.LMB_Addr_Strobe_i_3_n_0 ),
         .I4(\Has_FIFO.LMB_Addr_Strobe_i_4_n_0 ),
         .I5(LMB_Addr_Strobe_0),
         .O(\Has_FIFO.LMB_Addr_Strobe_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair45" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
+  LUT6 #(
+    .INIT(64'hFFFF111011101110)) 
     \Has_FIFO.LMB_Addr_Strobe_i_2 
-       (.I0(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I1(lmb_ready_vec_q),
-        .O(\Has_FIFO.LMB_Addr_Strobe_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h66660000DDDCDDDC)) 
-    \Has_FIFO.LMB_Addr_Strobe_i_4 
-       (.I0(\Has_FIFO.lmb_state_reg_n_0_[1] ),
-        .I1(\Has_FIFO.lmb_state_reg_n_0_[0] ),
-        .I2(master_rd_start),
-        .I3(master_wr_start),
-        .I4(\Has_FIFO.LMB_Addr_Strobe_i_5_n_0 ),
+       (.I0(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+        .I1(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I2(master_wr_start),
+        .I3(master_rd_start),
+        .I4(lmb_ready_vec_q),
         .I5(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .O(\Has_FIFO.LMB_Addr_Strobe_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'hAAAAAAAAAAAAAAA8)) 
-    \Has_FIFO.LMB_Addr_Strobe_i_5 
-       (.I0(lmb_ready_vec_q),
-        .I1(\Has_FIFO.lmb_len_reg_n_0_[3] ),
-        .I2(\Has_FIFO.lmb_len_reg_n_0_[1] ),
-        .I3(\Has_FIFO.lmb_len_reg_n_0_[0] ),
+        .O(\Has_FIFO.LMB_Addr_Strobe_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair40" *) 
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    \Has_FIFO.LMB_Addr_Strobe_i_3 
+       (.I0(\Has_FIFO.lmb_len_reg_n_0_[3] ),
+        .I1(\Has_FIFO.lmb_len_reg_n_0_[4] ),
+        .I2(\Has_FIFO.lmb_len_reg_n_0_[0] ),
+        .I3(\Has_FIFO.lmb_len_reg_n_0_[1] ),
         .I4(\Has_FIFO.lmb_len_reg_n_0_[2] ),
-        .I5(\Has_FIFO.lmb_len_reg_n_0_[4] ),
-        .O(\Has_FIFO.LMB_Addr_Strobe_i_5_n_0 ));
+        .O(\Has_FIFO.LMB_Addr_Strobe_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  LUT5 #(
+    .INIT(32'h0FF0FF0E)) 
+    \Has_FIFO.LMB_Addr_Strobe_i_4 
+       (.I0(master_rd_start),
+        .I1(master_wr_start),
+        .I2(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I3(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+        .I4(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .O(\Has_FIFO.LMB_Addr_Strobe_i_4_n_0 ));
   FDRE \Has_FIFO.LMB_Addr_Strobe_reg 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
@@ -20665,35 +23338,25 @@ module mcu_mdm_1_0_bus_master
         .Q(LMB_Addr_Strobe_0),
         .R(Reset));
   LUT6 #(
-    .INIT(64'h8F88FFFF8F880000)) 
+    .INIT(64'hF444FFFFF4440000)) 
     \Has_FIFO.LMB_Read_Strobe_i_1 
-       (.I0(lmb_ready_vec_q),
-        .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I2(\Has_FIFO.lmb_state_reg_n_0_[0] ),
-        .I3(master_rd_start),
+       (.I0(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+        .I1(master_rd_start),
+        .I2(lmb_ready_vec_q),
+        .I3(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .I4(\Has_FIFO.LMB_Read_Strobe_i_2_n_0 ),
         .I5(LMB_Read_Strobe_0),
         .O(\Has_FIFO.LMB_Read_Strobe_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h000000003F332222)) 
+    .INIT(64'h000080800000FFF0)) 
     \Has_FIFO.LMB_Read_Strobe_i_2 
-       (.I0(master_rd_start),
-        .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I2(\Has_FIFO.LMB_Read_Strobe_i_3_n_0 ),
-        .I3(lmb_ready_vec_q),
-        .I4(\Has_FIFO.lmb_state_reg_n_0_[0] ),
-        .I5(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+       (.I0(\Has_FIFO.LMB_Addr_Strobe_i_3_n_0 ),
+        .I1(lmb_ready_vec_q),
+        .I2(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+        .I3(master_rd_start),
+        .I4(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I5(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .O(\Has_FIFO.LMB_Read_Strobe_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair39" *) 
-  LUT5 #(
-    .INIT(32'h00000001)) 
-    \Has_FIFO.LMB_Read_Strobe_i_3 
-       (.I0(\Has_FIFO.lmb_len_reg_n_0_[4] ),
-        .I1(\Has_FIFO.lmb_len_reg_n_0_[2] ),
-        .I2(\Has_FIFO.lmb_len_reg_n_0_[0] ),
-        .I3(\Has_FIFO.lmb_len_reg_n_0_[1] ),
-        .I4(\Has_FIFO.lmb_len_reg_n_0_[3] ),
-        .O(\Has_FIFO.LMB_Read_Strobe_i_3_n_0 ));
   FDRE \Has_FIFO.LMB_Read_Strobe_reg 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
@@ -20701,24 +23364,24 @@ module mcu_mdm_1_0_bus_master
         .Q(LMB_Read_Strobe_0),
         .R(Reset));
   LUT6 #(
-    .INIT(64'h8F88FFFF8F880000)) 
+    .INIT(64'hF444FFFFF4440000)) 
     \Has_FIFO.LMB_Write_Strobe_i_1 
-       (.I0(lmb_ready_vec_q),
-        .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I2(\Has_FIFO.lmb_state_reg_n_0_[1] ),
-        .I3(master_wr_start),
+       (.I0(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I1(master_wr_start),
+        .I2(lmb_ready_vec_q),
+        .I3(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .I4(\Has_FIFO.LMB_Write_Strobe_i_2_n_0 ),
         .I5(LMB_Write_Strobe_0),
         .O(\Has_FIFO.LMB_Write_Strobe_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h0040F00F0040F000)) 
+    .INIT(64'h00FFC000000000AA)) 
     \Has_FIFO.LMB_Write_Strobe_i_2 
-       (.I0(\Has_FIFO.LMB_Read_Strobe_i_3_n_0 ),
-        .I1(lmb_ready_vec_q),
-        .I2(\Has_FIFO.lmb_state_reg_n_0_[1] ),
-        .I3(\Has_FIFO.lmb_state_reg_n_0_[0] ),
-        .I4(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I5(master_wr_start),
+       (.I0(master_wr_start),
+        .I1(\Has_FIFO.LMB_Addr_Strobe_i_3_n_0 ),
+        .I2(lmb_ready_vec_q),
+        .I3(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .I4(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+        .I5(\Has_FIFO.lmb_state_reg_n_0_[1] ),
         .O(\Has_FIFO.LMB_Write_Strobe_i_2_n_0 ));
   FDRE \Has_FIFO.LMB_Write_Strobe_reg 
        (.C(M_AXI_ACLK),
@@ -20973,10 +23636,10 @@ module mcu_mdm_1_0_bus_master
         .Q(M_AXI_ARSIZE[1]),
         .S(Reset));
   LUT4 #(
-    .INIT(16'hF750)) 
+    .INIT(16'hF730)) 
     \Has_FIFO.M_AXI_ARVALID_i_1 
-       (.I0(rd_state[1]),
-        .I1(M_AXI_ARREADY),
+       (.I0(M_AXI_ARREADY),
+        .I1(rd_state[1]),
         .I2(rd_state[0]),
         .I3(M_AXI_ARVALID),
         .O(\Has_FIFO.M_AXI_ARVALID_i_1_n_0 ));
@@ -20993,17 +23656,16 @@ module mcu_mdm_1_0_bus_master
         .M_AXI_RDATA(M_AXI_RDATA),
         .M_AXI_RVALID(M_AXI_RVALID),
         .Q(Q),
-        .\Use_Dbg_Mem_Access.output_reg[0] (\Use_Dbg_Mem_Access.output_reg[0] ),
-        .\Use_Dbg_Mem_Access.output_reg[24] (axi_wr_idle_reg_n_0),
-        .\Use_Dbg_Mem_Access.output_reg[24]_0 (\Has_FIFO.lmb_wr_idle_reg_n_0 ),
-        .\Use_Dbg_Mem_Access.output_reg[24]_1 (\Use_Dbg_Mem_Access.output_reg[24] ),
+        .\Use_Dbg_Mem_Access.output_reg[23] (\Use_Dbg_Mem_Access.output_reg[23] ),
+        .\Use_Dbg_Mem_Access.output_reg[24] (\Use_Dbg_Mem_Access.output_reg[24] ),
+        .\Use_Dbg_Mem_Access.output_reg[24]_0 (axi_wr_idle_reg_n_0),
+        .\Use_Dbg_Mem_Access.output_reg[24]_1 (\Has_FIFO.lmb_wr_idle_reg_n_0 ),
         .\Use_Dbg_Mem_Access.output_reg[25] (\Has_FIFO.axi_rd_idle_reg_n_0 ),
         .\Use_Dbg_Mem_Access.output_reg[26] (\axi_wr_resp_reg_n_0_[1] ),
         .\Use_Dbg_Mem_Access.output_reg[28] (\Use_Dbg_Mem_Access.output_reg[28] ),
         .\Use_Dbg_Mem_Access.output_reg[28]_0 (\Use_Dbg_Mem_Access.output_reg[28]_0 ),
         .\Use_Dbg_Mem_Access.output_reg[28]_1 (\Has_FIFO.axi_rd_resp_reg_n_0_[1] ),
         .\Using_FPGA.Native (\Using_FPGA.Native ),
-        .\Using_FPGA.Native_0 (\Using_FPGA.Native_0 ),
         .data_Exists_I_reg_0(\Has_FIFO.axi_rready_reg_n_0 ),
         .lmb_rd_idle(lmb_rd_idle),
         .lmb_rd_resp(lmb_rd_resp),
@@ -21016,8 +23678,8 @@ module mcu_mdm_1_0_bus_master
         .M_AXI_WDATA(M_AXI_WDATA),
         .M_AXI_WREADY(M_AXI_WREADY),
         .\Using_FPGA.Native (Reset),
-        .\Using_FPGA.Native_0 (axi_wvalid_reg_0),
-        .\Using_FPGA.Native_1 (\Has_FIFO.lmb_wr_idle_reg_n_0 ),
+        .\Using_FPGA.Native_0 (\Has_FIFO.lmb_wr_idle_reg_n_0 ),
+        .\Using_FPGA.Native_1 (axi_wvalid_reg_0),
         .data_Exists_I_reg_0(wdata_exists),
         .lmb_ready_vec_q(lmb_ready_vec_q),
         .master_data_wr(master_data_wr));
@@ -21025,8 +23687,8 @@ module mcu_mdm_1_0_bus_master
     .INIT(16'hFD01)) 
     \Has_FIFO.axi_rd_idle_i_1 
        (.I0(\Has_FIFO.axi_rd_start_reg_n_0 ),
-        .I1(rd_state[1]),
-        .I2(rd_state[0]),
+        .I1(rd_state[0]),
+        .I2(rd_state[1]),
         .I3(\Has_FIFO.axi_rd_idle_reg_n_0 ),
         .O(\Has_FIFO.axi_rd_idle_i_1_n_0 ));
   FDSE \Has_FIFO.axi_rd_idle_reg 
@@ -21036,40 +23698,40 @@ module mcu_mdm_1_0_bus_master
         .Q(\Has_FIFO.axi_rd_idle_reg_n_0 ),
         .S(Reset));
   LUT6 #(
-    .INIT(64'h8A88FFFF8A880000)) 
+    .INIT(64'hB080FFFFB0800000)) 
     \Has_FIFO.axi_rd_resp[0]_i_1 
-       (.I0(rd_state[1]),
-        .I1(\Has_FIFO.rd_resp_reg_n_0_[0] ),
-        .I2(\Has_FIFO.rd_resp_reg_n_0_[1] ),
-        .I3(M_AXI_RRESP[0]),
+       (.I0(M_AXI_RRESP[0]),
+        .I1(p_8_out__2),
+        .I2(rd_state[1]),
+        .I3(\Has_FIFO.rd_resp_reg_n_0_[0] ),
         .I4(axi_rd_resp),
-        .I5(\Has_FIFO.axi_rd_resp_reg[0]_1 ),
+        .I5(\Has_FIFO.axi_rd_resp_reg[0]_0 ),
         .O(\Has_FIFO.axi_rd_resp[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h8A88FFFF8A880000)) 
+    .INIT(64'hB080FFFFB0800000)) 
     \Has_FIFO.axi_rd_resp[1]_i_1 
-       (.I0(rd_state[1]),
-        .I1(\Has_FIFO.rd_resp_reg_n_0_[1] ),
-        .I2(\Has_FIFO.rd_resp_reg_n_0_[0] ),
-        .I3(M_AXI_RRESP[1]),
+       (.I0(M_AXI_RRESP[1]),
+        .I1(p_8_out__2),
+        .I2(rd_state[1]),
+        .I3(\Has_FIFO.rd_resp_reg_n_0_[1] ),
         .I4(axi_rd_resp),
         .I5(\Has_FIFO.axi_rd_resp_reg_n_0_[1] ),
         .O(\Has_FIFO.axi_rd_resp[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair37" *) 
+  (* SOFT_HLUTNM = "soft_lutpair42" *) 
   LUT5 #(
-    .INIT(32'hC0002222)) 
+    .INIT(32'h880000F0)) 
     \Has_FIFO.axi_rd_resp[1]_i_2 
-       (.I0(\Has_FIFO.axi_rd_start_reg_n_0 ),
-        .I1(rd_state[1]),
-        .I2(M_AXI_RLAST),
-        .I3(M_AXI_RVALID),
-        .I4(rd_state[0]),
+       (.I0(M_AXI_RVALID),
+        .I1(M_AXI_RLAST),
+        .I2(\Has_FIFO.axi_rd_start_reg_n_0 ),
+        .I3(rd_state[0]),
+        .I4(rd_state[1]),
         .O(axi_rd_resp));
   FDRE \Has_FIFO.axi_rd_resp_reg[0] 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
         .D(\Has_FIFO.axi_rd_resp[0]_i_1_n_0 ),
-        .Q(\Has_FIFO.axi_rd_resp_reg[0]_1 ),
+        .Q(\Has_FIFO.axi_rd_resp_reg[0]_0 ),
         .R(Reset));
   FDRE \Has_FIFO.axi_rd_resp_reg[1] 
        (.C(M_AXI_ACLK),
@@ -21077,15 +23739,15 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.axi_rd_resp[1]_i_1_n_0 ),
         .Q(\Has_FIFO.axi_rd_resp_reg_n_0_[1] ),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
   LUT5 #(
-    .INIT(32'h00000400)) 
+    .INIT(32'h00040000)) 
     \Has_FIFO.axi_rd_start_i_1 
-       (.I0(\Has_FIFO.lmb_state_reg_n_0_[1] ),
-        .I1(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+       (.I0(lmb_wait_vec_q),
+        .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .I2(lmb_ready_vec_q),
-        .I3(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I4(lmb_wait_vec_q),
+        .I3(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I4(\Has_FIFO.lmb_state_reg_n_0_[0] ),
         .O(\Has_FIFO.axi_rd_start_i_1_n_0 ));
   FDRE \Has_FIFO.axi_rd_start_reg 
        (.C(M_AXI_ACLK),
@@ -21094,13 +23756,13 @@ module mcu_mdm_1_0_bus_master
         .Q(\Has_FIFO.axi_rd_start_reg_n_0 ),
         .R(Reset));
   LUT6 #(
-    .INIT(64'h3FFFFFFF0A000A00)) 
+    .INIT(64'h7FFF7FFF0F000000)) 
     \Has_FIFO.axi_rready_i_1 
-       (.I0(M_AXI_ARREADY),
-        .I1(M_AXI_RVALID),
+       (.I0(M_AXI_RVALID),
+        .I1(M_AXI_RLAST),
         .I2(rd_state[0]),
         .I3(rd_state[1]),
-        .I4(M_AXI_RLAST),
+        .I4(M_AXI_ARREADY),
         .I5(\Has_FIFO.axi_rready_reg_n_0 ),
         .O(\Has_FIFO.axi_rready_i_1_n_0 ));
   FDRE \Has_FIFO.axi_rready_reg 
@@ -21109,15 +23771,15 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.axi_rready_i_1_n_0 ),
         .Q(\Has_FIFO.axi_rready_reg_n_0 ),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
   LUT5 #(
-    .INIT(32'h00000400)) 
+    .INIT(32'h00040000)) 
     \Has_FIFO.axi_wr_start_i_1 
-       (.I0(\Has_FIFO.lmb_state_reg_n_0_[0] ),
-        .I1(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+       (.I0(lmb_wait_vec_q),
+        .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .I2(lmb_ready_vec_q),
-        .I3(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I4(lmb_wait_vec_q),
+        .I3(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+        .I4(\Has_FIFO.lmb_state_reg_n_0_[1] ),
         .O(\Has_FIFO.axi_wr_start_i_1_n_0 ));
   FDRE \Has_FIFO.axi_wr_start_reg 
        (.C(M_AXI_ACLK),
@@ -21125,67 +23787,67 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.axi_wr_start_i_1_n_0 ),
         .Q(axi_wr_start),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
   LUT3 #(
-    .INIT(8'h3A)) 
+    .INIT(8'h74)) 
     \Has_FIFO.lmb_addr[0]_i_1 
-       (.I0(D[2]),
-        .I1(\Has_FIFO.lmb_addr_reg[4]_0 [0]),
-        .I2(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+       (.I0(\Has_FIFO.lmb_addr_reg[4]_0 [0]),
+        .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .I2(D[2]),
         .O(\Has_FIFO.lmb_addr[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
   LUT4 #(
-    .INIT(16'h3CAA)) 
+    .INIT(16'h2EE2)) 
     \Has_FIFO.lmb_addr[1]_i_1 
        (.I0(D[3]),
-        .I1(\Has_FIFO.lmb_addr_reg[4]_0 [0]),
+        .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .I2(\Has_FIFO.lmb_addr_reg[4]_0 [1]),
-        .I3(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .I3(\Has_FIFO.lmb_addr_reg[4]_0 [0]),
         .O(\Has_FIFO.lmb_addr[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
   LUT5 #(
-    .INIT(32'h6AFF6A00)) 
+    .INIT(32'h3FAAC0AA)) 
     \Has_FIFO.lmb_addr[2]_i_1 
-       (.I0(\Has_FIFO.lmb_addr_reg[4]_0 [2]),
+       (.I0(D[4]),
         .I1(\Has_FIFO.lmb_addr_reg[4]_0 [1]),
         .I2(\Has_FIFO.lmb_addr_reg[4]_0 [0]),
         .I3(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I4(D[4]),
+        .I4(\Has_FIFO.lmb_addr_reg[4]_0 [2]),
         .O(\Has_FIFO.lmb_addr[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h6AAAFFFF6AAA0000)) 
+    .INIT(64'h3FFFAAAAC000AAAA)) 
     \Has_FIFO.lmb_addr[3]_i_1 
-       (.I0(\Has_FIFO.lmb_addr_reg[4]_0 [3]),
-        .I1(\Has_FIFO.lmb_addr_reg[4]_0 [0]),
-        .I2(\Has_FIFO.lmb_addr_reg[4]_0 [1]),
-        .I3(\Has_FIFO.lmb_addr_reg[4]_0 [2]),
+       (.I0(D[5]),
+        .I1(\Has_FIFO.lmb_addr_reg[4]_0 [2]),
+        .I2(\Has_FIFO.lmb_addr_reg[4]_0 [0]),
+        .I3(\Has_FIFO.lmb_addr_reg[4]_0 [1]),
         .I4(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I5(D[5]),
+        .I5(\Has_FIFO.lmb_addr_reg[4]_0 [3]),
         .O(\Has_FIFO.lmb_addr[3]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'h0883)) 
+    .INIT(16'h0885)) 
     \Has_FIFO.lmb_addr[4]_i_1 
-       (.I0(lmb_ready_vec_q),
-        .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+       (.I0(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .I1(lmb_ready_vec_q),
         .I2(\Has_FIFO.lmb_state_reg_n_0_[1] ),
         .I3(\Has_FIFO.lmb_state_reg_n_0_[0] ),
         .O(lmb_len));
-  LUT6 #(
-    .INIT(64'h6AAAFFFF6AAA0000)) 
+  LUT5 #(
+    .INIT(32'h3FAAC0AA)) 
     \Has_FIFO.lmb_addr[4]_i_2 
-       (.I0(\Has_FIFO.lmb_addr_reg[4]_0 [4]),
-        .I1(\Has_FIFO.lmb_addr_reg[4]_0 [2]),
+       (.I0(D[6]),
+        .I1(\Has_FIFO.lmb_addr_reg[4]_0 [3]),
         .I2(\Has_FIFO.lmb_addr[4]_i_3_n_0 ),
-        .I3(\Has_FIFO.lmb_addr_reg[4]_0 [3]),
-        .I4(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I5(D[6]),
+        .I3(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .I4(\Has_FIFO.lmb_addr_reg[4]_0 [4]),
         .O(\Has_FIFO.lmb_addr[4]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair42" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
     \Has_FIFO.lmb_addr[4]_i_3 
-       (.I0(\Has_FIFO.lmb_addr_reg[4]_0 [0]),
-        .I1(\Has_FIFO.lmb_addr_reg[4]_0 [1]),
+       (.I0(\Has_FIFO.lmb_addr_reg[4]_0 [2]),
+        .I1(\Has_FIFO.lmb_addr_reg[4]_0 [0]),
+        .I2(\Has_FIFO.lmb_addr_reg[4]_0 [1]),
         .O(\Has_FIFO.lmb_addr[4]_i_3_n_0 ));
   FDRE \Has_FIFO.lmb_addr_reg[0] 
        (.C(M_AXI_ACLK),
@@ -21217,7 +23879,7 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.lmb_addr[4]_i_2_n_0 ),
         .Q(\Has_FIFO.lmb_addr_reg[4]_0 [4]),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT3 #(
     .INIT(8'h74)) 
     \Has_FIFO.lmb_len[0]_i_1 
@@ -21225,51 +23887,50 @@ module mcu_mdm_1_0_bus_master
         .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .I2(\M_AXI_AWLEN_reg[4]_0 [0]),
         .O(\Has_FIFO.lmb_len[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT4 #(
-    .INIT(16'h9F90)) 
+    .INIT(16'hE22E)) 
     \Has_FIFO.lmb_len[1]_i_1 
-       (.I0(\Has_FIFO.lmb_len_reg_n_0_[1] ),
-        .I1(\Has_FIFO.lmb_len_reg_n_0_[0] ),
-        .I2(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I3(\M_AXI_AWLEN_reg[4]_0 [1]),
+       (.I0(\M_AXI_AWLEN_reg[4]_0 [1]),
+        .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .I2(\Has_FIFO.lmb_len_reg_n_0_[0] ),
+        .I3(\Has_FIFO.lmb_len_reg_n_0_[1] ),
         .O(\Has_FIFO.lmb_len[1]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hE1FFE100)) 
+    .INIT(32'hFC03AAAA)) 
     \Has_FIFO.lmb_len[2]_i_1 
-       (.I0(\Has_FIFO.lmb_len_reg_n_0_[1] ),
-        .I1(\Has_FIFO.lmb_len_reg_n_0_[0] ),
-        .I2(\Has_FIFO.lmb_len_reg_n_0_[2] ),
-        .I3(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I4(\M_AXI_AWLEN_reg[4]_0 [2]),
-        .O(\Has_FIFO.lmb_len[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hFE01FFFFFE010000)) 
-    \Has_FIFO.lmb_len[3]_i_1 
-       (.I0(\Has_FIFO.lmb_len_reg_n_0_[2] ),
-        .I1(\Has_FIFO.lmb_len_reg_n_0_[0] ),
-        .I2(\Has_FIFO.lmb_len_reg_n_0_[1] ),
-        .I3(\Has_FIFO.lmb_len_reg_n_0_[3] ),
-        .I4(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I5(\M_AXI_AWLEN_reg[4]_0 [3]),
-        .O(\Has_FIFO.lmb_len[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair45" *) 
-  LUT4 #(
-    .INIT(16'h9F90)) 
-    \Has_FIFO.lmb_len[4]_i_1 
-       (.I0(\Has_FIFO.lmb_len[4]_i_2_n_0 ),
-        .I1(\Has_FIFO.lmb_len_reg_n_0_[4] ),
-        .I2(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I3(\M_AXI_AWLEN_reg[4]_0 [4]),
-        .O(\Has_FIFO.lmb_len[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair39" *) 
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \Has_FIFO.lmb_len[4]_i_2 
-       (.I0(\Has_FIFO.lmb_len_reg_n_0_[3] ),
+       (.I0(\M_AXI_AWLEN_reg[4]_0 [2]),
         .I1(\Has_FIFO.lmb_len_reg_n_0_[1] ),
         .I2(\Has_FIFO.lmb_len_reg_n_0_[0] ),
         .I3(\Has_FIFO.lmb_len_reg_n_0_[2] ),
+        .I4(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .O(\Has_FIFO.lmb_len[2]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFCAAAA0003AAAA)) 
+    \Has_FIFO.lmb_len[3]_i_1 
+       (.I0(\M_AXI_AWLEN_reg[4]_0 [3]),
+        .I1(\Has_FIFO.lmb_len_reg_n_0_[1] ),
+        .I2(\Has_FIFO.lmb_len_reg_n_0_[0] ),
+        .I3(\Has_FIFO.lmb_len_reg_n_0_[2] ),
+        .I4(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .I5(\Has_FIFO.lmb_len_reg_n_0_[3] ),
+        .O(\Has_FIFO.lmb_len[3]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hFCAA03AA)) 
+    \Has_FIFO.lmb_len[4]_i_1 
+       (.I0(\M_AXI_AWLEN_reg[4]_0 [4]),
+        .I1(\Has_FIFO.lmb_len[4]_i_2_n_0 ),
+        .I2(\Has_FIFO.lmb_len_reg_n_0_[3] ),
+        .I3(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .I4(\Has_FIFO.lmb_len_reg_n_0_[4] ),
+        .O(\Has_FIFO.lmb_len[4]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair40" *) 
+  LUT3 #(
+    .INIT(8'hFE)) 
+    \Has_FIFO.lmb_len[4]_i_2 
+       (.I0(\Has_FIFO.lmb_len_reg_n_0_[1] ),
+        .I1(\Has_FIFO.lmb_len_reg_n_0_[0] ),
+        .I2(\Has_FIFO.lmb_len_reg_n_0_[2] ),
         .O(\Has_FIFO.lmb_len[4]_i_2_n_0 ));
   FDRE \Has_FIFO.lmb_len_reg[0] 
        (.C(M_AXI_ACLK),
@@ -21305,9 +23966,9 @@ module mcu_mdm_1_0_bus_master
     .INIT(32'hFFFD0001)) 
     \Has_FIFO.lmb_rd_idle_i_1 
        (.I0(master_rd_start),
-        .I1(\Has_FIFO.lmb_state_reg_n_0_[0] ),
-        .I2(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I3(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I1(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I2(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+        .I3(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .I4(lmb_rd_idle),
         .O(\Has_FIFO.lmb_rd_idle_i_1_n_0 ));
   FDSE \Has_FIFO.lmb_rd_idle_reg 
@@ -21316,94 +23977,131 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.lmb_rd_idle_i_1_n_0 ),
         .Q(lmb_rd_idle),
         .S(Reset));
-  LUT5 #(
-    .INIT(32'hA8FFA800)) 
+  LUT6 #(
+    .INIT(64'hAABFBFBFAA808080)) 
     \Has_FIFO.lmb_rd_resp[1]_i_1 
-       (.I0(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I1(lmb_ue_vec_q),
-        .I2(ue),
-        .I3(\Has_FIFO.lmb_rd_resp[1]_i_2_n_0 ),
-        .I4(lmb_rd_resp),
+       (.I0(\Has_FIFO.ue_i_1_n_0 ),
+        .I1(\Has_FIFO.lmb_rd_resp[1]_i_2_n_0 ),
+        .I2(\Has_FIFO.lmb_rd_resp[1]_i_3_n_0 ),
+        .I3(master_rd_start),
+        .I4(lmb_wr_idle),
+        .I5(lmb_rd_resp),
         .O(\Has_FIFO.lmb_rd_resp[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
-  LUT5 #(
-    .INIT(32'h00880030)) 
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
     \Has_FIFO.lmb_rd_resp[1]_i_2 
-       (.I0(lmb_ready_vec_q),
-        .I1(\Has_FIFO.lmb_state_reg_n_0_[0] ),
-        .I2(master_rd_start),
-        .I3(\Has_FIFO.lmb_state_reg_n_0_[1] ),
-        .I4(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+       (.I0(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .I1(lmb_ready_vec_q),
         .O(\Has_FIFO.lmb_rd_resp[1]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \Has_FIFO.lmb_rd_resp[1]_i_3 
+       (.I0(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+        .I1(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .O(\Has_FIFO.lmb_rd_resp[1]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  LUT3 #(
+    .INIT(8'h01)) 
+    \Has_FIFO.lmb_rd_resp[1]_i_4 
+       (.I0(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I1(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+        .I2(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .O(lmb_wr_idle));
   FDRE \Has_FIFO.lmb_rd_resp_reg[1] 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
         .D(\Has_FIFO.lmb_rd_resp[1]_i_1_n_0 ),
         .Q(lmb_rd_resp),
         .R(Reset));
+  (* SOFT_HLUTNM = "soft_lutpair41" *) 
   LUT5 #(
-    .INIT(32'h20FFD500)) 
+    .INIT(32'hAAFFEA00)) 
     \Has_FIFO.lmb_state[0]_i_1 
-       (.I0(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I1(\Has_FIFO.lmb_state_reg_n_0_[1] ),
-        .I2(\Has_FIFO.lmb_state[0]_i_2_n_0 ),
+       (.I0(\Has_FIFO.lmb_state[0]_i_2_n_0 ),
+        .I1(\Has_FIFO.lmb_state[0]_i_3_n_0 ),
+        .I2(\Has_FIFO.lmb_state_reg_n_0_[1] ),
         .I3(\Has_FIFO.lmb_state[2]_i_2_n_0 ),
         .I4(\Has_FIFO.lmb_state_reg_n_0_[0] ),
         .O(\Has_FIFO.lmb_state[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
-  LUT3 #(
-    .INIT(8'h3A)) 
+  LUT6 #(
+    .INIT(64'h00CA00000000FFFF)) 
     \Has_FIFO.lmb_state[0]_i_2 
        (.I0(lmb_wait_vec_q),
-        .I1(\Has_FIFO.LMB_Read_Strobe_i_3_n_0 ),
+        .I1(\Has_FIFO.LMB_Addr_Strobe_i_3_n_0 ),
         .I2(lmb_ready_vec_q),
+        .I3(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I4(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .I5(\Has_FIFO.lmb_state_reg_n_0_[0] ),
         .O(\Has_FIFO.lmb_state[0]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair43" *) 
   LUT5 #(
-    .INIT(32'h0FFF2F00)) 
-    \Has_FIFO.lmb_state[1]_i_1 
-       (.I0(master_wr_start),
-        .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I2(\Has_FIFO.lmb_state[1]_i_2_n_0 ),
-        .I3(\Has_FIFO.lmb_state[2]_i_2_n_0 ),
-        .I4(\Has_FIFO.lmb_state_reg_n_0_[1] ),
-        .O(\Has_FIFO.lmb_state[1]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hF8F8C0FCCFCFCFCF)) 
-    \Has_FIFO.lmb_state[1]_i_2 
-       (.I0(\Has_FIFO.LMB_Read_Strobe_i_3_n_0 ),
-        .I1(\Has_FIFO.lmb_state_reg_n_0_[1] ),
-        .I2(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+    .INIT(32'hFEFEFF00)) 
+    \Has_FIFO.lmb_state[0]_i_3 
+       (.I0(\Has_FIFO.lmb_len[4]_i_2_n_0 ),
+        .I1(\Has_FIFO.lmb_len_reg_n_0_[4] ),
+        .I2(\Has_FIFO.lmb_len_reg_n_0_[3] ),
         .I3(lmb_wait_vec_q),
         .I4(lmb_ready_vec_q),
-        .I5(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .O(\Has_FIFO.lmb_state[0]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hAAAAFFFFBBFE0000)) 
+    \Has_FIFO.lmb_state[1]_i_1 
+       (.I0(\Has_FIFO.lmb_state[1]_i_2_n_0 ),
+        .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .I2(master_wr_start),
+        .I3(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+        .I4(\Has_FIFO.lmb_state[2]_i_2_n_0 ),
+        .I5(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .O(\Has_FIFO.lmb_state[1]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h00500000CCFC0000)) 
+    \Has_FIFO.lmb_state[1]_i_2 
+       (.I0(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I1(\Has_FIFO.lmb_state[1]_i_3_n_0 ),
+        .I2(lmb_wait_vec_q),
+        .I3(lmb_ready_vec_q),
+        .I4(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .I5(\Has_FIFO.lmb_state_reg_n_0_[0] ),
         .O(\Has_FIFO.lmb_state[1]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h044FFFFFF0F00000)) 
+    .INIT(64'hFFFFFFFE00000000)) 
+    \Has_FIFO.lmb_state[1]_i_3 
+       (.I0(\Has_FIFO.lmb_len_reg_n_0_[3] ),
+        .I1(\Has_FIFO.lmb_len_reg_n_0_[4] ),
+        .I2(\Has_FIFO.lmb_len_reg_n_0_[2] ),
+        .I3(\Has_FIFO.lmb_len_reg_n_0_[0] ),
+        .I4(\Has_FIFO.lmb_len_reg_n_0_[1] ),
+        .I5(lmb_ready_vec_q),
+        .O(\Has_FIFO.lmb_state[1]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h1171FFFFAAAA0000)) 
     \Has_FIFO.lmb_state[2]_i_1 
-       (.I0(lmb_ready_vec_q),
-        .I1(lmb_wait_vec_q),
-        .I2(\Has_FIFO.lmb_state_reg_n_0_[1] ),
-        .I3(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+       (.I0(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I1(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+        .I2(lmb_wait_vec_q),
+        .I3(lmb_ready_vec_q),
         .I4(\Has_FIFO.lmb_state[2]_i_2_n_0 ),
         .I5(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .O(\Has_FIFO.lmb_state[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFF3F3FF50F3F3FF5)) 
+    .INIT(64'hCAAFFFFFCAAFFFF0)) 
     \Has_FIFO.lmb_state[2]_i_2 
-       (.I0(\Has_FIFO.LMB_Addr_Strobe_reg_0 ),
-        .I1(\Has_FIFO.lmb_state[2]_i_3_n_0 ),
-        .I2(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I3(\Has_FIFO.lmb_state_reg_n_0_[1] ),
-        .I4(\Has_FIFO.lmb_state_reg_n_0_[0] ),
-        .I5(axi_dwr_done_reg_n_0),
+       (.I0(lmb_state__4),
+        .I1(axi_dwr_done_reg_n_0),
+        .I2(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I3(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+        .I4(\Has_FIFO.lmb_state_reg_n_0_[2] ),
+        .I5(\Has_FIFO.lmb_state_reg[0]_0 ),
         .O(\Has_FIFO.lmb_state[2]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  (* SOFT_HLUTNM = "soft_lutpair43" *) 
   LUT2 #(
-    .INIT(4'h2)) 
+    .INIT(4'hB)) 
     \Has_FIFO.lmb_state[2]_i_3 
-       (.I0(lmb_wait_vec_q),
-        .I1(lmb_ready_vec_q),
-        .O(\Has_FIFO.lmb_state[2]_i_3_n_0 ));
+       (.I0(lmb_ready_vec_q),
+        .I1(lmb_wait_vec_q),
+        .O(lmb_state__4));
   FDRE \Has_FIFO.lmb_state_reg[0] 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
@@ -21422,14 +24120,14 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.lmb_state[2]_i_1_n_0 ),
         .Q(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
   LUT5 #(
     .INIT(32'hFFFD0001)) 
     \Has_FIFO.lmb_wr_idle_i_1 
        (.I0(master_wr_start),
-        .I1(\Has_FIFO.lmb_state_reg_n_0_[0] ),
-        .I2(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I3(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I1(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I2(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+        .I3(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .I4(\Has_FIFO.lmb_wr_idle_reg_n_0 ),
         .O(\Has_FIFO.lmb_wr_idle_i_1_n_0 ));
   FDSE \Has_FIFO.lmb_wr_idle_reg 
@@ -21439,33 +24137,22 @@ module mcu_mdm_1_0_bus_master
         .Q(\Has_FIFO.lmb_wr_idle_reg_n_0 ),
         .S(Reset));
   LUT6 #(
-    .INIT(64'hA8A8A8FFA8A8A800)) 
+    .INIT(64'hAABFBFBFAA808080)) 
     \Has_FIFO.lmb_wr_resp[1]_i_1 
-       (.I0(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I1(lmb_ue_vec_q),
-        .I2(ue),
-        .I3(\Has_FIFO.lmb_wr_resp[1]_i_2_n_0 ),
-        .I4(\Has_FIFO.lmb_wr_resp[1]_i_3_n_0 ),
+       (.I0(\Has_FIFO.ue_i_1_n_0 ),
+        .I1(\Has_FIFO.lmb_rd_resp[1]_i_2_n_0 ),
+        .I2(\Has_FIFO.lmb_wr_resp[1]_i_2_n_0 ),
+        .I3(master_wr_start),
+        .I4(lmb_wr_idle),
         .I5(lmb_wr_resp),
         .O(\Has_FIFO.lmb_wr_resp[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
-  LUT4 #(
-    .INIT(16'h0800)) 
-    \Has_FIFO.lmb_wr_resp[1]_i_2 
-       (.I0(lmb_ready_vec_q),
-        .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I2(\Has_FIFO.lmb_state_reg_n_0_[0] ),
-        .I3(\Has_FIFO.lmb_state_reg_n_0_[1] ),
-        .O(\Has_FIFO.lmb_wr_resp[1]_i_2_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair41" *) 
-  LUT4 #(
-    .INIT(16'h0100)) 
-    \Has_FIFO.lmb_wr_resp[1]_i_3 
-       (.I0(\Has_FIFO.lmb_state_reg_n_0_[0] ),
-        .I1(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I2(\Has_FIFO.lmb_state_reg_n_0_[1] ),
-        .I3(master_wr_start),
-        .O(\Has_FIFO.lmb_wr_resp[1]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h2)) 
+    \Has_FIFO.lmb_wr_resp[1]_i_2 
+       (.I0(\Has_FIFO.lmb_state_reg_n_0_[1] ),
+        .I1(\Has_FIFO.lmb_state_reg_n_0_[0] ),
+        .O(\Has_FIFO.lmb_wr_resp[1]_i_2_n_0 ));
   FDRE \Has_FIFO.lmb_wr_resp_reg[1] 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
@@ -21473,25 +24160,33 @@ module mcu_mdm_1_0_bus_master
         .Q(lmb_wr_resp),
         .R(Reset));
   LUT6 #(
-    .INIT(64'hFFF0FFF040000000)) 
+    .INIT(64'hBFFFFF0080000000)) 
     \Has_FIFO.rd_resp[0]_i_1 
-       (.I0(\Has_FIFO.rd_resp_reg_n_0_[1] ),
-        .I1(M_AXI_RRESP[0]),
-        .I2(rd_state[1]),
-        .I3(rd_state[0]),
-        .I4(M_AXI_RVALID),
+       (.I0(M_AXI_RRESP[0]),
+        .I1(p_8_out__2),
+        .I2(M_AXI_RVALID),
+        .I3(rd_state[1]),
+        .I4(rd_state[0]),
         .I5(\Has_FIFO.rd_resp_reg_n_0_[0] ),
         .O(\Has_FIFO.rd_resp[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFF0FFF040000000)) 
+    .INIT(64'hBFFFFF0080000000)) 
     \Has_FIFO.rd_resp[1]_i_1 
-       (.I0(\Has_FIFO.rd_resp_reg_n_0_[0] ),
-        .I1(M_AXI_RRESP[1]),
-        .I2(rd_state[1]),
-        .I3(rd_state[0]),
-        .I4(M_AXI_RVALID),
+       (.I0(M_AXI_RRESP[1]),
+        .I1(p_8_out__2),
+        .I2(M_AXI_RVALID),
+        .I3(rd_state[1]),
+        .I4(rd_state[0]),
         .I5(\Has_FIFO.rd_resp_reg_n_0_[1] ),
         .O(\Has_FIFO.rd_resp[1]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h1110)) 
+    \Has_FIFO.rd_resp[1]_i_2 
+       (.I0(\Has_FIFO.rd_resp_reg_n_0_[1] ),
+        .I1(\Has_FIFO.rd_resp_reg_n_0_[0] ),
+        .I2(M_AXI_RRESP[1]),
+        .I3(M_AXI_RRESP[0]),
+        .O(p_8_out__2));
   FDRE \Has_FIFO.rd_resp_reg[0] 
        (.C(M_AXI_ACLK),
         .CE(1'b1),
@@ -21504,12 +24199,13 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.rd_resp[1]_i_1_n_0 ),
         .Q(\Has_FIFO.rd_resp_reg_n_0_[1] ),
         .R(Reset));
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
   LUT3 #(
-    .INIT(8'hA8)) 
+    .INIT(8'hE0)) 
     \Has_FIFO.ue_i_1 
-       (.I0(\Has_FIFO.lmb_state_reg_n_0_[2] ),
-        .I1(lmb_ue_vec_q),
-        .I2(ue),
+       (.I0(lmb_ue_vec_q),
+        .I1(ue),
+        .I2(\Has_FIFO.lmb_state_reg_n_0_[2] ),
         .O(\Has_FIFO.ue_i_1_n_0 ));
   FDRE \Has_FIFO.ue_reg 
        (.C(M_AXI_ACLK),
@@ -21517,7 +24213,7 @@ module mcu_mdm_1_0_bus_master
         .D(\Has_FIFO.ue_i_1_n_0 ),
         .Q(ue),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
   LUT4 #(
     .INIT(16'hFECC)) 
     \LMB_Byte_Enable_31[0]_INST_0 
@@ -21526,7 +24222,7 @@ module mcu_mdm_1_0_bus_master
         .I2(D[0]),
         .I3(D[1]),
         .O(LMB_Byte_Enable_31[0]));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT4 #(
     .INIT(16'hECFC)) 
     \LMB_Byte_Enable_31[1]_INST_0 
@@ -21535,7 +24231,7 @@ module mcu_mdm_1_0_bus_master
         .I2(D[1]),
         .I3(D[0]),
         .O(LMB_Byte_Enable_31[1]));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT4 #(
     .INIT(16'hCCFE)) 
     \LMB_Byte_Enable_31[2]_INST_0 
@@ -21544,7 +24240,7 @@ module mcu_mdm_1_0_bus_master
         .I2(D[0]),
         .I3(D[1]),
         .O(LMB_Byte_Enable_31[2]));
-  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
   LUT4 #(
     .INIT(16'hCCEF)) 
     \LMB_Byte_Enable_31[3]_INST_0 
@@ -21799,13 +24495,13 @@ module mcu_mdm_1_0_bus_master
         .D(\M_AXI_AWSIZE_reg[1]_0 [1]),
         .Q(M_AXI_AWSIZE[1]),
         .S(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT4 #(
-    .INIT(16'hDF44)) 
+    .INIT(16'hF730)) 
     M_AXI_AWVALID_i_1
-       (.I0(\FSM_sequential_wr_state_reg[1]_0 ),
-        .I1(wr_state),
-        .I2(M_AXI_AWREADY),
+       (.I0(M_AXI_AWREADY),
+        .I1(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I2(wr_state),
         .I3(M_AXI_AWVALID),
         .O(M_AXI_AWVALID_i_1_n_0));
   FDRE M_AXI_AWVALID_reg
@@ -21814,46 +24510,40 @@ module mcu_mdm_1_0_bus_master
         .D(M_AXI_AWVALID_i_1_n_0),
         .Q(M_AXI_AWVALID),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
   LUT2 #(
     .INIT(4'h8)) 
     M_AXI_BREADY_INST_0
-       (.I0(\FSM_sequential_wr_state_reg[1]_0 ),
-        .I1(wr_state),
+       (.I0(wr_state),
+        .I1(\FSM_sequential_wr_state_reg[1]_0 ),
         .O(M_AXI_BREADY));
-  LUT6 #(
-    .INIT(64'hECECFCFFECEC0C00)) 
+  LUT5 #(
+    .INIT(32'hF8FFF800)) 
     M_AXI_WLAST_i_1
-       (.I0(M_AXI_WREADY),
-        .I1(M_AXI_WLAST_reg_0),
-        .I2(\FSM_sequential_wr_state_reg[1]_0 ),
-        .I3(wr_state),
-        .I4(M_AXI_WLAST_i_3_n_0),
-        .I5(M_AXI_WLAST),
+       (.I0(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I1(M_AXI_WREADY),
+        .I2(M_AXI_WLAST_reg_0),
+        .I3(M_AXI_WLAST_i_3_n_0),
+        .I4(M_AXI_WLAST),
         .O(M_AXI_WLAST_i_1_n_0));
   LUT6 #(
-    .INIT(64'h0000400000000000)) 
+    .INIT(64'h0000FFFF00400000)) 
     M_AXI_WLAST_i_3
-       (.I0(\len_reg_n_0_[4] ),
-        .I1(M_AXI_WREADY),
-        .I2(M_AXI_WLAST_i_4_n_0),
-        .I3(\len_reg_n_0_[0] ),
-        .I4(\len_reg_n_0_[1] ),
-        .I5(M_AXI_WLAST_i_5_n_0),
+       (.I0(M_AXI_WLAST_i_4_n_0),
+        .I1(\len_reg_n_0_[0] ),
+        .I2(M_AXI_WREADY),
+        .I3(\len_reg_n_0_[1] ),
+        .I4(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I5(wr_state),
         .O(M_AXI_WLAST_i_3_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
+  (* SOFT_HLUTNM = "soft_lutpair46" *) 
+  LUT3 #(
+    .INIT(8'hFE)) 
     M_AXI_WLAST_i_4
        (.I0(\len_reg_n_0_[2] ),
-        .I1(\len_reg_n_0_[3] ),
+        .I1(\len_reg_n_0_[4] ),
+        .I2(\len_reg_n_0_[3] ),
         .O(M_AXI_WLAST_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    M_AXI_WLAST_i_5
-       (.I0(\FSM_sequential_wr_state_reg[1]_0 ),
-        .I1(wr_state),
-        .O(M_AXI_WLAST_i_5_n_0));
   FDRE M_AXI_WLAST_reg
        (.C(M_AXI_ACLK),
         .CE(1'b1),
@@ -21884,49 +24574,64 @@ module mcu_mdm_1_0_bus_master
         .D(LMB_Byte_Enable_31[0]),
         .Q(M_AXI_WSTRB[3]),
         .R(Reset));
-  LUT6 #(
-    .INIT(64'hBFFFFFFFFFFFFFFF)) 
-    \Use_Dbg_Mem_Access.Master_data_rd_i_3 
-       (.I0(execute_3),
-        .I1(out),
-        .I2(axi_wr_idle_reg_n_0),
-        .I3(\Has_FIFO.lmb_wr_idle_reg_n_0 ),
-        .I4(\Has_FIFO.axi_rd_idle_reg_n_0 ),
-        .I5(lmb_rd_idle),
-        .O(\Use_Dbg_Mem_Access.execute_3_reg ));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \Use_Dbg_Mem_Access.Master_rd_start_i_3 
+       (.I0(\Has_FIFO.lmb_rd_idle_reg_0 ),
+        .I1(\Use_Dbg_Mem_Access.Master_wr_start_reg ),
+        .O(\Use_BSCAN.command_reg[7] ));
   LUT4 #(
     .INIT(16'h8000)) 
     \Use_Dbg_Mem_Access.access_idle_1_i_1 
+       (.I0(axi_wr_idle_reg_n_0),
+        .I1(\Has_FIFO.lmb_wr_idle_reg_n_0 ),
+        .I2(\Has_FIFO.axi_rd_idle_reg_n_0 ),
+        .I3(lmb_rd_idle),
+        .O(p_92_out));
+  LUT6 #(
+    .INIT(64'hFFFFAAA8AAA8AAA8)) 
+    \Use_Dbg_Mem_Access.master_error_i_2 
+       (.I0(rd_resp_zero),
+        .I1(\Has_FIFO.axi_rd_resp_reg[0]_0 ),
+        .I2(\Has_FIFO.axi_rd_resp_reg_n_0_[1] ),
+        .I3(lmb_rd_resp),
+        .I4(wr_resp_zero),
+        .I5(p_88_in),
+        .O(p_20_out));
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  LUT3 #(
+    .INIT(8'hFE)) 
+    \Use_Dbg_Mem_Access.master_error_i_4 
+       (.I0(\axi_wr_resp_reg[0]_0 ),
+        .I1(\axi_wr_resp_reg_n_0_[1] ),
+        .I2(lmb_wr_resp),
+        .O(p_88_in));
+  LUT6 #(
+    .INIT(64'h0000800000000000)) 
+    \Use_Dbg_Mem_Access.master_overrun_i_2 
        (.I0(lmb_rd_idle),
         .I1(\Has_FIFO.axi_rd_idle_reg_n_0 ),
         .I2(\Has_FIFO.lmb_wr_idle_reg_n_0 ),
         .I3(axi_wr_idle_reg_n_0),
-        .O(p_93_out));
-  LUT6 #(
-    .INIT(64'hFE00FFFFFE00FE00)) 
-    \Use_Dbg_Mem_Access.master_error_i_2 
-       (.I0(\axi_wr_resp_reg[0]_0 ),
-        .I1(lmb_wr_resp),
-        .I2(\axi_wr_resp_reg_n_0_[1] ),
-        .I3(wr_resp_zero),
-        .I4(\Has_FIFO.axi_rd_resp_reg[0]_0 ),
-        .I5(rd_resp_zero),
-        .O(p_20_out));
+        .I4(execute_3),
+        .I5(out),
+        .O(\Has_FIFO.lmb_rd_idle_reg_0 ));
   LUT3 #(
     .INIT(8'h01)) 
     \Use_Dbg_Mem_Access.rd_resp_zero_i_1 
-       (.I0(\Has_FIFO.axi_rd_resp_reg[0]_1 ),
-        .I1(lmb_rd_resp),
-        .I2(\Has_FIFO.axi_rd_resp_reg_n_0_[1] ),
-        .O(\Has_FIFO.axi_rd_resp_reg[0]_0 ));
+       (.I0(lmb_rd_resp),
+        .I1(\Has_FIFO.axi_rd_resp_reg_n_0_[1] ),
+        .I2(\Has_FIFO.axi_rd_resp_reg[0]_0 ),
+        .O(\Has_FIFO.lmb_rd_resp_reg[1]_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
   LUT3 #(
     .INIT(8'h01)) 
     \Use_Dbg_Mem_Access.wr_resp_zero_i_1 
-       (.I0(\axi_wr_resp_reg[0]_0 ),
-        .I1(lmb_wr_resp),
-        .I2(\axi_wr_resp_reg_n_0_[1] ),
-        .O(\axi_wr_resp_reg[0]_1 ));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+       (.I0(lmb_wr_resp),
+        .I1(\axi_wr_resp_reg_n_0_[1] ),
+        .I2(\axi_wr_resp_reg[0]_0 ),
+        .O(\Has_FIFO.lmb_wr_resp_reg[1]_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT4 #(
     .INIT(16'hFA08)) 
     address_done_i_1
@@ -21941,13 +24646,12 @@ module mcu_mdm_1_0_bus_master
         .D(address_done_i_1_n_0),
         .Q(address_done_reg_n_0),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
   LUT4 #(
     .INIT(16'hFC80)) 
     axi_dwr_done_i_1
        (.I0(M_AXI_BVALID),
-        .I1(wr_state),
-        .I2(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I1(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I2(wr_state),
         .I3(axi_dwr_done_reg_n_0),
         .O(axi_dwr_done_i_1_n_0));
   FDRE axi_dwr_done_reg
@@ -21960,8 +24664,8 @@ module mcu_mdm_1_0_bus_master
     .INIT(16'hFD01)) 
     axi_wr_idle_i_1
        (.I0(axi_wr_start),
-        .I1(\FSM_sequential_wr_state_reg[1]_0 ),
-        .I2(wr_state),
+        .I1(wr_state),
+        .I2(\FSM_sequential_wr_state_reg[1]_0 ),
         .I3(axi_wr_idle_reg_n_0),
         .O(axi_wr_idle_i_1_n_0));
   FDSE axi_wr_idle_reg
@@ -21971,23 +24675,23 @@ module mcu_mdm_1_0_bus_master
         .Q(axi_wr_idle_reg_n_0),
         .S(Reset));
   LUT6 #(
-    .INIT(64'hAFF3FFF3A0000000)) 
+    .INIT(64'hBBFFFF0F88000000)) 
     \axi_wr_resp[0]_i_1 
        (.I0(M_AXI_BRESP[0]),
-        .I1(axi_wr_start),
-        .I2(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I1(M_AXI_BVALID),
+        .I2(axi_wr_start),
         .I3(wr_state),
-        .I4(M_AXI_BVALID),
+        .I4(\FSM_sequential_wr_state_reg[1]_0 ),
         .I5(\axi_wr_resp_reg[0]_0 ),
         .O(\axi_wr_resp[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hAFF3FFF3A0000000)) 
+    .INIT(64'hBBFFFF0F88000000)) 
     \axi_wr_resp[1]_i_1 
        (.I0(M_AXI_BRESP[1]),
-        .I1(axi_wr_start),
-        .I2(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I1(M_AXI_BVALID),
+        .I2(axi_wr_start),
         .I3(wr_state),
-        .I4(M_AXI_BVALID),
+        .I4(\FSM_sequential_wr_state_reg[1]_0 ),
         .I5(\axi_wr_resp_reg_n_0_[1] ),
         .O(\axi_wr_resp[1]_i_1_n_0 ));
   FDRE \axi_wr_resp_reg[0] 
@@ -22002,24 +24706,25 @@ module mcu_mdm_1_0_bus_master
         .D(\axi_wr_resp[1]_i_1_n_0 ),
         .Q(\axi_wr_resp_reg_n_0_[1] ),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair46" *) 
-  LUT4 #(
-    .INIT(16'hDF44)) 
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  LUT5 #(
+    .INIT(32'hFF7F0F00)) 
     axi_wvalid_i_1
-       (.I0(\FSM_sequential_wr_state_reg[1]_0 ),
-        .I1(wr_state),
-        .I2(axi_wvalid_i_2_n_0),
-        .I3(axi_wvalid_reg_0),
+       (.I0(axi_wvalid_i_2_n_0),
+        .I1(M_AXI_WREADY),
+        .I2(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I3(wr_state),
+        .I4(axi_wvalid_reg_0),
         .O(axi_wvalid_i_1_n_0));
-  LUT6 #(
-    .INIT(64'h0000000000000002)) 
+  (* SOFT_HLUTNM = "soft_lutpair46" *) 
+  LUT5 #(
+    .INIT(32'h00000001)) 
     axi_wvalid_i_2
-       (.I0(M_AXI_WREADY),
-        .I1(\len_reg_n_0_[1] ),
-        .I2(\len_reg_n_0_[0] ),
-        .I3(\len_reg_n_0_[3] ),
-        .I4(\len_reg_n_0_[2] ),
-        .I5(\len_reg_n_0_[4] ),
+       (.I0(\len_reg_n_0_[3] ),
+        .I1(\len_reg_n_0_[4] ),
+        .I2(\len_reg_n_0_[2] ),
+        .I3(\len_reg_n_0_[0] ),
+        .I4(\len_reg_n_0_[1] ),
         .O(axi_wvalid_i_2_n_0));
   FDRE axi_wvalid_reg
        (.C(M_AXI_ACLK),
@@ -22027,14 +24732,14 @@ module mcu_mdm_1_0_bus_master
         .D(axi_wvalid_i_1_n_0),
         .Q(axi_wvalid_reg_0),
         .R(Reset));
-  (* SOFT_HLUTNM = "soft_lutpair46" *) 
-  LUT4 #(
-    .INIT(16'hFA08)) 
+  LUT5 #(
+    .INIT(32'hFFAA0080)) 
     data_done_i_1
        (.I0(\FSM_sequential_wr_state_reg[1]_0 ),
-        .I1(axi_wvalid_i_2_n_0),
-        .I2(wr_state),
-        .I3(data_done_reg_n_0),
+        .I1(M_AXI_WREADY),
+        .I2(axi_wvalid_i_2_n_0),
+        .I3(wr_state),
+        .I4(data_done_reg_n_0),
         .O(data_done_i_1_n_0));
   FDRE data_done_reg
        (.C(M_AXI_ACLK),
@@ -22043,87 +24748,75 @@ module mcu_mdm_1_0_bus_master
         .Q(data_done_reg_n_0),
         .R(Reset));
   LUT4 #(
-    .INIT(16'h8F88)) 
+    .INIT(16'hF444)) 
     \len[0]_i_1 
-       (.I0(\M_AXI_AWLEN_reg[4]_0 [0]),
-        .I1(wr_state),
-        .I2(\len_reg_n_0_[0] ),
-        .I3(\FSM_sequential_wr_state_reg[1]_0 ),
+       (.I0(\len_reg_n_0_[0] ),
+        .I1(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I2(\M_AXI_AWLEN_reg[4]_0 [0]),
+        .I3(wr_state),
         .O(len[0]));
-  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
   LUT5 #(
-    .INIT(32'hF88F8888)) 
+    .INIT(32'hF88888F8)) 
     \len[1]_i_1 
        (.I0(\M_AXI_AWLEN_reg[4]_0 [1]),
         .I1(wr_state),
-        .I2(\len_reg_n_0_[0] ),
-        .I3(\len_reg_n_0_[1] ),
-        .I4(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I2(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I3(\len_reg_n_0_[0] ),
+        .I4(\len_reg_n_0_[1] ),
         .O(len[1]));
   LUT6 #(
-    .INIT(64'hF8F8F88F88888888)) 
+    .INIT(64'hFFF88888888F8888)) 
     \len[2]_i_1 
-       (.I0(\M_AXI_AWLEN_reg[4]_0 [2]),
-        .I1(wr_state),
-        .I2(\len_reg_n_0_[2] ),
-        .I3(\len_reg_n_0_[1] ),
-        .I4(\len_reg_n_0_[0] ),
-        .I5(\FSM_sequential_wr_state_reg[1]_0 ),
+       (.I0(wr_state),
+        .I1(\M_AXI_AWLEN_reg[4]_0 [2]),
+        .I2(\len_reg_n_0_[1] ),
+        .I3(\len_reg_n_0_[0] ),
+        .I4(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I5(\len_reg_n_0_[2] ),
         .O(len[2]));
   LUT6 #(
-    .INIT(64'hF8F8F88F88888888)) 
+    .INIT(64'hFFF88888888F8888)) 
     \len[3]_i_1 
-       (.I0(\M_AXI_AWLEN_reg[4]_0 [3]),
-        .I1(wr_state),
-        .I2(\len_reg_n_0_[3] ),
-        .I3(\len[3]_i_2_n_0 ),
-        .I4(\len_reg_n_0_[2] ),
-        .I5(\FSM_sequential_wr_state_reg[1]_0 ),
+       (.I0(wr_state),
+        .I1(\M_AXI_AWLEN_reg[4]_0 [3]),
+        .I2(\len[3]_i_2_n_0 ),
+        .I3(\len_reg_n_0_[2] ),
+        .I4(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I5(\len_reg_n_0_[3] ),
         .O(len[3]));
-  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \len[3]_i_2 
-       (.I0(\len_reg_n_0_[0] ),
-        .I1(\len_reg_n_0_[1] ),
-        .O(\len[3]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'h40FF)) 
-    \len[4]_i_1 
-       (.I0(wr_state),
-        .I1(M_AXI_WREADY),
-        .I2(\len[4]_i_3_n_0 ),
-        .I3(\FSM_sequential_wr_state_reg[1]_0 ),
-        .O(\len[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair38" *) 
-  LUT5 #(
-    .INIT(32'hF88F8888)) 
-    \len[4]_i_2 
-       (.I0(\M_AXI_AWLEN_reg[4]_0 [4]),
-        .I1(wr_state),
-        .I2(\len_reg_n_0_[4] ),
-        .I3(\len[4]_i_4_n_0 ),
-        .I4(\FSM_sequential_wr_state_reg[1]_0 ),
-        .O(len[4]));
-  (* SOFT_HLUTNM = "soft_lutpair40" *) 
-  LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
-    \len[4]_i_3 
-       (.I0(\len_reg_n_0_[4] ),
-        .I1(\len_reg_n_0_[2] ),
-        .I2(\len_reg_n_0_[3] ),
-        .I3(\len_reg_n_0_[0] ),
-        .I4(\len_reg_n_0_[1] ),
-        .O(\len[4]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair40" *) 
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \len[4]_i_4 
        (.I0(\len_reg_n_0_[1] ),
         .I1(\len_reg_n_0_[0] ),
-        .I2(\len_reg_n_0_[3] ),
-        .I3(\len_reg_n_0_[2] ),
-        .O(\len[4]_i_4_n_0 ));
+        .O(\len[3]_i_2_n_0 ));
+  LUT4 #(
+    .INIT(16'h04FF)) 
+    \len[4]_i_1 
+       (.I0(axi_wvalid_i_2_n_0),
+        .I1(M_AXI_WREADY),
+        .I2(wr_state),
+        .I3(\FSM_sequential_wr_state_reg[1]_0 ),
+        .O(\len[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFF88888888F8888)) 
+    \len[4]_i_2 
+       (.I0(wr_state),
+        .I1(\M_AXI_AWLEN_reg[4]_0 [4]),
+        .I2(\len[4]_i_3_n_0 ),
+        .I3(\len_reg_n_0_[3] ),
+        .I4(\FSM_sequential_wr_state_reg[1]_0 ),
+        .I5(\len_reg_n_0_[4] ),
+        .O(len[4]));
+  LUT3 #(
+    .INIT(8'hFE)) 
+    \len[4]_i_3 
+       (.I0(\len_reg_n_0_[0] ),
+        .I1(\len_reg_n_0_[1] ),
+        .I2(\len_reg_n_0_[2] ),
+        .O(\len[4]_i_3_n_0 ));
   FDRE \len_reg[0] 
        (.C(M_AXI_ACLK),
         .CE(\len[4]_i_1_n_0 ),
@@ -22154,2614 +24847,6 @@ module mcu_mdm_1_0_bus_master
         .D(len[4]),
         .Q(\len_reg_n_0_[4] ),
         .R(Reset));
-endmodule
-
-(* CHECK_LICENSE_TYPE = "mcu_mdm_1_0,MDM,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "MDM,Vivado 2018.3" *) 
-(* NotValidForBitStream *)
-module mcu_mdm_1_0
-   (M_AXI_ACLK,
-    M_AXI_ARESETN,
-    Debug_SYS_Rst,
-    Trig_In_0,
-    Trig_Ack_In_0,
-    Trig_Out_0,
-    Trig_Ack_Out_0,
-    M_AXI_AWID,
-    M_AXI_AWADDR,
-    M_AXI_AWLEN,
-    M_AXI_AWSIZE,
-    M_AXI_AWBURST,
-    M_AXI_AWLOCK,
-    M_AXI_AWCACHE,
-    M_AXI_AWPROT,
-    M_AXI_AWQOS,
-    M_AXI_AWVALID,
-    M_AXI_AWREADY,
-    M_AXI_WDATA,
-    M_AXI_WSTRB,
-    M_AXI_WLAST,
-    M_AXI_WVALID,
-    M_AXI_WREADY,
-    M_AXI_BRESP,
-    M_AXI_BID,
-    M_AXI_BVALID,
-    M_AXI_BREADY,
-    M_AXI_ARID,
-    M_AXI_ARADDR,
-    M_AXI_ARLEN,
-    M_AXI_ARSIZE,
-    M_AXI_ARBURST,
-    M_AXI_ARLOCK,
-    M_AXI_ARCACHE,
-    M_AXI_ARPROT,
-    M_AXI_ARQOS,
-    M_AXI_ARVALID,
-    M_AXI_ARREADY,
-    M_AXI_RID,
-    M_AXI_RDATA,
-    M_AXI_RRESP,
-    M_AXI_RLAST,
-    M_AXI_RVALID,
-    M_AXI_RREADY,
-    LMB_Data_Addr_0,
-    LMB_Addr_Strobe_0,
-    LMB_Ready_0,
-    LMB_Byte_Enable_0,
-    LMB_Data_Read_0,
-    LMB_Data_Write_0,
-    LMB_Read_Strobe_0,
-    LMB_Write_Strobe_0,
-    LMB_CE_0,
-    LMB_UE_0,
-    LMB_Wait_0,
-    Dbg_Clk_0,
-    Dbg_TDI_0,
-    Dbg_TDO_0,
-    Dbg_Reg_En_0,
-    Dbg_Capture_0,
-    Dbg_Shift_0,
-    Dbg_Update_0,
-    Dbg_Rst_0,
-    Dbg_Trig_In_0,
-    Dbg_Trig_Ack_In_0,
-    Dbg_Trig_Out_0,
-    Dbg_Trig_Ack_Out_0,
-    Dbg_Disable_0);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 CLK.M_AXI_ACLK CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME CLK.M_AXI_ACLK, ASSOCIATED_BUSIF M_AXI:LMB_0:LMB_1:LMB_2:LMB_3:LMB_4:LMB_5:LMB_6:LMB_7:LMB_8:LMB_9:LMB_10:LMB_11:LMB_12:LMB_13:LMB_14:LMB_15:LMB_16:LMB_17:LMB_18:LMB_19:LMB_20:LMB_21:LMB_22:LMB_23:LMB_24:LMB_25:LMB_26:LMB_27:LMB_28:LMB_29:LMB_30:LMB_31, ASSOCIATED_RESET M_AXI_ARESETN, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) input M_AXI_ACLK;
-  (* x_interface_info = "xilinx.com:signal:reset:1.0 RST.M_AXI_ARESETN RST" *) (* x_interface_parameter = "XIL_INTERFACENAME RST.M_AXI_ARESETN, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input M_AXI_ARESETN;
-  (* x_interface_info = "xilinx.com:signal:reset:1.0 RST.Debug_SYS_Rst RST" *) (* x_interface_parameter = "XIL_INTERFACENAME RST.Debug_SYS_Rst, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) output Debug_SYS_Rst;
-  (* x_interface_info = "xilinx.com:interface:trigger:1.0 TRIG_IN_0 TRIG" *) input Trig_In_0;
-  (* x_interface_info = "xilinx.com:interface:trigger:1.0 TRIG_IN_0 ACK" *) output Trig_Ack_In_0;
-  (* x_interface_info = "xilinx.com:interface:trigger:1.0 TRIG_OUT_0 TRIG" *) output Trig_Out_0;
-  (* x_interface_info = "xilinx.com:interface:trigger:1.0 TRIG_OUT_0 ACK" *) input Trig_Ack_Out_0;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWID" *) (* x_interface_parameter = "XIL_INTERFACENAME M_AXI, ID_WIDTH 0, READ_WRITE_MODE READ_WRITE, SUPPORTS_NARROW_BURST 0, ADDR_WIDTH 32, PROTOCOL AXI4, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, WUSER_BITS_PER_BYTE 0, RUSER_WIDTH 0, RUSER_BITS_PER_BYTE 0, BUSER_WIDTH 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, DATA_WIDTH 32, MAX_BURST_LENGTH 32, HAS_BURST 1, FREQ_HZ 100000000, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) output [0:0]M_AXI_AWID;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWADDR" *) output [31:0]M_AXI_AWADDR;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWLEN" *) output [7:0]M_AXI_AWLEN;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWSIZE" *) output [2:0]M_AXI_AWSIZE;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWBURST" *) output [1:0]M_AXI_AWBURST;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWLOCK" *) output M_AXI_AWLOCK;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWCACHE" *) output [3:0]M_AXI_AWCACHE;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWPROT" *) output [2:0]M_AXI_AWPROT;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWQOS" *) output [3:0]M_AXI_AWQOS;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWVALID" *) output M_AXI_AWVALID;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI AWREADY" *) input M_AXI_AWREADY;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI WDATA" *) output [31:0]M_AXI_WDATA;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI WSTRB" *) output [3:0]M_AXI_WSTRB;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI WLAST" *) output M_AXI_WLAST;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI WVALID" *) output M_AXI_WVALID;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI WREADY" *) input M_AXI_WREADY;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI BRESP" *) input [1:0]M_AXI_BRESP;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI BID" *) input [0:0]M_AXI_BID;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI BVALID" *) input M_AXI_BVALID;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI BREADY" *) output M_AXI_BREADY;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARID" *) output [0:0]M_AXI_ARID;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARADDR" *) output [31:0]M_AXI_ARADDR;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARLEN" *) output [7:0]M_AXI_ARLEN;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARSIZE" *) output [2:0]M_AXI_ARSIZE;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARBURST" *) output [1:0]M_AXI_ARBURST;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARLOCK" *) output M_AXI_ARLOCK;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARCACHE" *) output [3:0]M_AXI_ARCACHE;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARPROT" *) output [2:0]M_AXI_ARPROT;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARQOS" *) output [3:0]M_AXI_ARQOS;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARVALID" *) output M_AXI_ARVALID;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI ARREADY" *) input M_AXI_ARREADY;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI RID" *) input [0:0]M_AXI_RID;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI RDATA" *) input [31:0]M_AXI_RDATA;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI RRESP" *) input [1:0]M_AXI_RRESP;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI RLAST" *) input M_AXI_RLAST;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI RVALID" *) input M_AXI_RVALID;
-  (* x_interface_info = "xilinx.com:interface:aximm:1.0 M_AXI RREADY" *) output M_AXI_RREADY;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 ABUS" *) (* x_interface_parameter = "XIL_INTERFACENAME LMB_0, ADDR_WIDTH 32, DATA_WIDTH 32, READ_WRITE_MODE READ_WRITE" *) output [0:31]LMB_Data_Addr_0;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 ADDRSTROBE" *) output LMB_Addr_Strobe_0;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 READY" *) input LMB_Ready_0;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 BE" *) output [0:3]LMB_Byte_Enable_0;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 READDBUS" *) input [0:31]LMB_Data_Read_0;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 WRITEDBUS" *) output [0:31]LMB_Data_Write_0;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 READSTROBE" *) output LMB_Read_Strobe_0;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 WRITESTROBE" *) output LMB_Write_Strobe_0;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 CE" *) input LMB_CE_0;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 UE" *) input LMB_UE_0;
-  (* x_interface_info = "xilinx.com:interface:lmb:1.0 LMB_0 WAIT" *) input LMB_Wait_0;
-  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 CLK" *) output Dbg_Clk_0;
-  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 TDI" *) output Dbg_TDI_0;
-  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 TDO" *) input Dbg_TDO_0;
-  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 REG_EN" *) output [0:7]Dbg_Reg_En_0;
-  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 CAPTURE" *) output Dbg_Capture_0;
-  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 SHIFT" *) output Dbg_Shift_0;
-  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 UPDATE" *) output Dbg_Update_0;
-  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 RST" *) output Dbg_Rst_0;
-  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 TRIG_IN" *) input [0:7]Dbg_Trig_In_0;
-  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 TRIG_ACK_IN" *) output [0:7]Dbg_Trig_Ack_In_0;
-  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 TRIG_OUT" *) output [0:7]Dbg_Trig_Out_0;
-  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 TRIG_ACK_OUT" *) input [0:7]Dbg_Trig_Ack_Out_0;
-  (* x_interface_info = "xilinx.com:interface:mbdebug:3.0 MBDEBUG_0 DISABLE" *) output Dbg_Disable_0;
-
-  wire Dbg_Capture_0;
-  wire Dbg_Clk_0;
-  wire Dbg_Disable_0;
-  wire [0:7]Dbg_Reg_En_0;
-  wire Dbg_Rst_0;
-  wire Dbg_Shift_0;
-  wire Dbg_TDI_0;
-  wire Dbg_TDO_0;
-  wire [0:7]Dbg_Trig_Ack_In_0;
-  wire [0:7]Dbg_Trig_Ack_Out_0;
-  wire [0:7]Dbg_Trig_In_0;
-  wire [0:7]Dbg_Trig_Out_0;
-  wire Dbg_Update_0;
-  wire Debug_SYS_Rst;
-  wire LMB_Addr_Strobe_0;
-  wire [0:3]LMB_Byte_Enable_0;
-  wire LMB_CE_0;
-  wire [0:31]LMB_Data_Addr_0;
-  wire [0:31]LMB_Data_Read_0;
-  wire [0:31]LMB_Data_Write_0;
-  wire LMB_Read_Strobe_0;
-  wire LMB_Ready_0;
-  wire LMB_UE_0;
-  wire LMB_Wait_0;
-  wire LMB_Write_Strobe_0;
-  wire M_AXI_ACLK;
-  wire [31:0]M_AXI_ARADDR;
-  wire [1:0]M_AXI_ARBURST;
-  wire [3:0]M_AXI_ARCACHE;
-  wire M_AXI_ARESETN;
-  wire [0:0]M_AXI_ARID;
-  wire [7:0]M_AXI_ARLEN;
-  wire M_AXI_ARLOCK;
-  wire [2:0]M_AXI_ARPROT;
-  wire [3:0]M_AXI_ARQOS;
-  wire M_AXI_ARREADY;
-  wire [2:0]M_AXI_ARSIZE;
-  wire M_AXI_ARVALID;
-  wire [31:0]M_AXI_AWADDR;
-  wire [1:0]M_AXI_AWBURST;
-  wire [3:0]M_AXI_AWCACHE;
-  wire [0:0]M_AXI_AWID;
-  wire [7:0]M_AXI_AWLEN;
-  wire M_AXI_AWLOCK;
-  wire [2:0]M_AXI_AWPROT;
-  wire [3:0]M_AXI_AWQOS;
-  wire M_AXI_AWREADY;
-  wire [2:0]M_AXI_AWSIZE;
-  wire M_AXI_AWVALID;
-  wire [0:0]M_AXI_BID;
-  wire M_AXI_BREADY;
-  wire [1:0]M_AXI_BRESP;
-  wire M_AXI_BVALID;
-  wire [31:0]M_AXI_RDATA;
-  wire [0:0]M_AXI_RID;
-  wire M_AXI_RLAST;
-  wire M_AXI_RREADY;
-  wire [1:0]M_AXI_RRESP;
-  wire M_AXI_RVALID;
-  wire [31:0]M_AXI_WDATA;
-  wire M_AXI_WLAST;
-  wire M_AXI_WREADY;
-  wire [3:0]M_AXI_WSTRB;
-  wire M_AXI_WVALID;
-  wire Trig_Ack_In_0;
-  wire Trig_Ack_Out_0;
-  wire Trig_In_0;
-  wire Trig_Out_0;
-  wire NLW_U0_Dbg_ARVALID_0_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_1_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_10_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_11_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_12_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_13_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_14_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_15_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_16_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_17_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_18_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_19_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_2_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_20_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_21_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_22_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_23_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_24_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_25_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_26_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_27_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_28_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_29_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_3_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_30_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_31_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_4_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_5_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_6_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_7_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_8_UNCONNECTED;
-  wire NLW_U0_Dbg_ARVALID_9_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_0_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_1_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_10_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_11_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_12_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_13_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_14_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_15_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_16_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_17_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_18_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_19_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_2_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_20_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_21_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_22_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_23_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_24_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_25_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_26_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_27_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_28_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_29_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_3_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_30_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_31_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_4_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_5_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_6_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_7_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_8_UNCONNECTED;
-  wire NLW_U0_Dbg_AWVALID_9_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_0_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_1_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_10_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_11_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_12_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_13_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_14_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_15_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_16_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_17_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_18_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_19_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_2_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_20_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_21_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_22_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_23_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_24_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_25_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_26_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_27_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_28_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_29_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_3_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_30_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_31_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_4_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_5_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_6_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_7_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_8_UNCONNECTED;
-  wire NLW_U0_Dbg_BREADY_9_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_1_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_10_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_11_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_12_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_13_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_14_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_15_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_16_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_17_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_18_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_19_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_2_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_20_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_21_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_22_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_23_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_24_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_25_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_26_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_27_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_28_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_29_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_3_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_30_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_31_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_4_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_5_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_6_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_7_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_8_UNCONNECTED;
-  wire NLW_U0_Dbg_Capture_9_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_1_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_10_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_11_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_12_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_13_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_14_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_15_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_16_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_17_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_18_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_19_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_2_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_20_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_21_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_22_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_23_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_24_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_25_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_26_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_27_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_28_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_29_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_3_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_30_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_31_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_4_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_5_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_6_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_7_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_8_UNCONNECTED;
-  wire NLW_U0_Dbg_Clk_9_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_1_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_10_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_11_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_12_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_13_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_14_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_15_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_16_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_17_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_18_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_19_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_2_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_20_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_21_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_22_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_23_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_24_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_25_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_26_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_27_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_28_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_29_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_3_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_30_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_31_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_4_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_5_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_6_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_7_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_8_UNCONNECTED;
-  wire NLW_U0_Dbg_Disable_9_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_0_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_1_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_10_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_11_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_12_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_13_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_14_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_15_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_16_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_17_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_18_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_19_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_2_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_20_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_21_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_22_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_23_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_24_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_25_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_26_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_27_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_28_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_29_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_3_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_30_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_31_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_4_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_5_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_6_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_7_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_8_UNCONNECTED;
-  wire NLW_U0_Dbg_RREADY_9_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_1_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_10_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_11_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_12_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_13_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_14_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_15_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_16_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_17_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_18_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_19_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_2_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_20_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_21_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_22_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_23_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_24_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_25_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_26_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_27_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_28_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_29_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_3_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_30_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_31_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_4_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_5_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_6_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_7_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_8_UNCONNECTED;
-  wire NLW_U0_Dbg_Rst_9_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_1_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_10_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_11_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_12_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_13_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_14_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_15_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_16_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_17_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_18_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_19_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_2_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_20_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_21_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_22_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_23_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_24_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_25_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_26_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_27_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_28_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_29_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_3_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_30_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_31_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_4_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_5_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_6_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_7_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_8_UNCONNECTED;
-  wire NLW_U0_Dbg_Shift_9_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_1_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_10_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_11_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_12_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_13_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_14_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_15_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_16_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_17_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_18_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_19_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_2_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_20_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_21_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_22_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_23_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_24_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_25_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_26_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_27_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_28_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_29_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_3_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_30_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_31_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_4_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_5_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_6_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_7_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_8_UNCONNECTED;
-  wire NLW_U0_Dbg_TDI_9_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_0_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_1_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_10_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_11_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_12_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_13_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_14_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_15_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_16_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_17_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_18_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_19_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_2_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_20_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_21_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_22_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_23_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_24_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_25_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_26_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_27_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_28_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_29_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_3_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_30_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_31_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_4_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_5_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_6_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_7_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_8_UNCONNECTED;
-  wire NLW_U0_Dbg_TrClk_9_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_0_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_1_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_10_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_11_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_12_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_13_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_14_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_15_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_16_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_17_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_18_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_19_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_2_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_20_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_21_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_22_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_23_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_24_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_25_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_26_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_27_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_28_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_29_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_3_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_30_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_31_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_4_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_5_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_6_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_7_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_8_UNCONNECTED;
-  wire NLW_U0_Dbg_TrReady_9_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_1_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_10_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_11_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_12_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_13_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_14_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_15_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_16_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_17_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_18_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_19_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_2_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_20_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_21_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_22_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_23_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_24_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_25_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_26_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_27_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_28_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_29_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_3_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_30_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_31_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_4_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_5_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_6_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_7_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_8_UNCONNECTED;
-  wire NLW_U0_Dbg_Update_9_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_0_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_1_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_10_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_11_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_12_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_13_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_14_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_15_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_16_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_17_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_18_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_19_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_2_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_20_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_21_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_22_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_23_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_24_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_25_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_26_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_27_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_28_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_29_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_3_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_30_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_31_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_4_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_5_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_6_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_7_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_8_UNCONNECTED;
-  wire NLW_U0_Dbg_WVALID_9_UNCONNECTED;
-  wire NLW_U0_Ext_BRK_UNCONNECTED;
-  wire NLW_U0_Ext_JTAG_CAPTURE_UNCONNECTED;
-  wire NLW_U0_Ext_JTAG_DRCK_UNCONNECTED;
-  wire NLW_U0_Ext_JTAG_RESET_UNCONNECTED;
-  wire NLW_U0_Ext_JTAG_SEL_UNCONNECTED;
-  wire NLW_U0_Ext_JTAG_SHIFT_UNCONNECTED;
-  wire NLW_U0_Ext_JTAG_TDI_UNCONNECTED;
-  wire NLW_U0_Ext_JTAG_UPDATE_UNCONNECTED;
-  wire NLW_U0_Ext_NM_BRK_UNCONNECTED;
-  wire NLW_U0_Interrupt_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_1_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_10_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_11_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_12_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_13_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_14_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_15_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_16_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_17_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_18_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_19_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_2_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_20_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_21_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_22_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_23_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_24_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_25_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_26_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_27_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_28_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_29_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_3_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_30_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_31_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_4_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_5_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_6_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_7_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_8_UNCONNECTED;
-  wire NLW_U0_LMB_Addr_Strobe_9_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_1_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_10_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_11_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_12_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_13_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_14_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_15_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_16_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_17_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_18_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_19_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_2_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_20_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_21_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_22_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_23_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_24_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_25_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_26_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_27_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_28_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_29_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_3_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_30_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_31_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_4_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_5_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_6_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_7_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_8_UNCONNECTED;
-  wire NLW_U0_LMB_Read_Strobe_9_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_1_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_10_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_11_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_12_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_13_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_14_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_15_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_16_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_17_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_18_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_19_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_2_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_20_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_21_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_22_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_23_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_24_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_25_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_26_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_27_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_28_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_29_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_3_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_30_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_31_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_4_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_5_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_6_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_7_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_8_UNCONNECTED;
-  wire NLW_U0_LMB_Write_Strobe_9_UNCONNECTED;
-  wire NLW_U0_M_AXIS_TVALID_UNCONNECTED;
-  wire NLW_U0_S_AXI_ARREADY_UNCONNECTED;
-  wire NLW_U0_S_AXI_AWREADY_UNCONNECTED;
-  wire NLW_U0_S_AXI_BVALID_UNCONNECTED;
-  wire NLW_U0_S_AXI_RVALID_UNCONNECTED;
-  wire NLW_U0_S_AXI_WREADY_UNCONNECTED;
-  wire NLW_U0_TRACE_CLK_OUT_UNCONNECTED;
-  wire NLW_U0_TRACE_CTL_UNCONNECTED;
-  wire NLW_U0_Trig_Ack_In_1_UNCONNECTED;
-  wire NLW_U0_Trig_Ack_In_2_UNCONNECTED;
-  wire NLW_U0_Trig_Ack_In_3_UNCONNECTED;
-  wire NLW_U0_Trig_Out_1_UNCONNECTED;
-  wire NLW_U0_Trig_Out_2_UNCONNECTED;
-  wire NLW_U0_Trig_Out_3_UNCONNECTED;
-  wire NLW_U0_bscan_ext_tdo_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_0_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_1_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_10_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_11_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_12_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_13_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_14_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_15_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_16_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_17_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_18_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_19_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_2_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_20_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_21_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_22_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_23_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_24_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_25_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_26_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_27_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_28_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_29_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_3_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_30_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_31_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_4_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_5_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_6_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_7_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_8_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_ARADDR_9_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_0_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_1_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_10_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_11_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_12_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_13_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_14_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_15_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_16_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_17_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_18_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_19_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_2_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_20_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_21_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_22_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_23_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_24_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_25_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_26_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_27_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_28_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_29_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_3_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_30_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_31_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_4_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_5_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_6_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_7_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_8_UNCONNECTED;
-  wire [14:2]NLW_U0_Dbg_AWADDR_9_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_1_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_10_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_11_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_12_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_13_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_14_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_15_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_16_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_17_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_18_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_19_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_2_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_20_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_21_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_22_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_23_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_24_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_25_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_26_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_27_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_28_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_29_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_3_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_30_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_31_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_4_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_5_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_6_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_7_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_8_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Reg_En_9_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_1_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_10_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_11_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_12_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_13_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_14_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_15_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_16_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_17_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_18_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_19_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_2_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_20_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_21_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_22_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_23_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_24_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_25_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_26_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_27_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_28_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_29_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_3_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_30_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_31_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_4_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_5_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_6_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_7_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_8_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Ack_In_9_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_1_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_10_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_11_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_12_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_13_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_14_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_15_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_16_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_17_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_18_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_19_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_2_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_20_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_21_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_22_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_23_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_24_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_25_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_26_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_27_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_28_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_29_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_3_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_30_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_31_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_4_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_5_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_6_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_7_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_8_UNCONNECTED;
-  wire [0:7]NLW_U0_Dbg_Trig_Out_9_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_0_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_1_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_10_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_11_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_12_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_13_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_14_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_15_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_16_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_17_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_18_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_19_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_2_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_20_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_21_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_22_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_23_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_24_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_25_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_26_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_27_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_28_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_29_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_3_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_30_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_31_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_4_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_5_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_6_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_7_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_8_UNCONNECTED;
-  wire [31:0]NLW_U0_Dbg_WDATA_9_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_1_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_10_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_11_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_12_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_13_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_14_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_15_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_16_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_17_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_18_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_19_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_2_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_20_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_21_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_22_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_23_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_24_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_25_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_26_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_27_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_28_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_29_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_3_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_30_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_31_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_4_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_5_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_6_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_7_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_8_UNCONNECTED;
-  wire [0:3]NLW_U0_LMB_Byte_Enable_9_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_1_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_10_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_11_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_12_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_13_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_14_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_15_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_16_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_17_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_18_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_19_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_2_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_20_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_21_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_22_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_23_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_24_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_25_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_26_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_27_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_28_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_29_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_3_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_30_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_31_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_4_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_5_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_6_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_7_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_8_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Addr_9_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_1_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_10_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_11_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_12_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_13_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_14_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_15_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_16_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_17_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_18_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_19_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_2_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_20_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_21_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_22_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_23_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_24_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_25_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_26_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_27_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_28_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_29_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_3_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_30_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_31_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_4_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_5_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_6_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_7_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_8_UNCONNECTED;
-  wire [0:31]NLW_U0_LMB_Data_Write_9_UNCONNECTED;
-  wire [31:0]NLW_U0_M_AXIS_TDATA_UNCONNECTED;
-  wire [6:0]NLW_U0_M_AXIS_TID_UNCONNECTED;
-  wire [1:0]NLW_U0_S_AXI_BRESP_UNCONNECTED;
-  wire [31:0]NLW_U0_S_AXI_RDATA_UNCONNECTED;
-  wire [1:0]NLW_U0_S_AXI_RRESP_UNCONNECTED;
-  wire [31:0]NLW_U0_TRACE_DATA_UNCONNECTED;
-
-  (* C_ADDR_SIZE = "32" *) 
-  (* C_AVOID_PRIMITIVES = "0" *) 
-  (* C_BSCANID = "76547328" *) 
-  (* C_DATA_SIZE = "32" *) 
-  (* C_DBG_MEM_ACCESS = "1" *) 
-  (* C_DBG_REG_ACCESS = "0" *) 
-  (* C_DEBUG_INTERFACE = "0" *) 
-  (* C_EXT_TRIG_RESET_VALUE = "20'b11110001001000110100" *) 
-  (* C_FAMILY = "artix7" *) 
-  (* C_INTERCONNECT = "2" *) 
-  (* C_JTAG_CHAIN = "2" *) 
-  (* C_MB_DBG_PORTS = "1" *) 
-  (* C_M_AXIS_DATA_WIDTH = "32" *) 
-  (* C_M_AXIS_ID_WIDTH = "7" *) 
-  (* C_M_AXI_ADDR_WIDTH = "32" *) 
-  (* C_M_AXI_DATA_WIDTH = "32" *) 
-  (* C_M_AXI_THREAD_ID_WIDTH = "1" *) 
-  (* C_S_AXI_ACLK_FREQ_HZ = "100000000" *) 
-  (* C_S_AXI_ADDR_WIDTH = "4" *) 
-  (* C_S_AXI_DATA_WIDTH = "32" *) 
-  (* C_TRACE_ASYNC_RESET = "0" *) 
-  (* C_TRACE_CLK_FREQ_HZ = "200000000" *) 
-  (* C_TRACE_CLK_OUT_PHASE = "90" *) 
-  (* C_TRACE_DATA_WIDTH = "32" *) 
-  (* C_TRACE_ID = "110" *) 
-  (* C_TRACE_OUTPUT = "0" *) 
-  (* C_TRACE_PROTOCOL = "1" *) 
-  (* C_USE_BSCAN = "0" *) 
-  (* C_USE_CONFIG_RESET = "0" *) 
-  (* C_USE_CROSS_TRIGGER = "1" *) 
-  (* C_USE_UART = "0" *) 
-  mcu_mdm_1_0_MDM U0
-       (.Config_Reset(1'b0),
-        .Dbg_ARADDR_0(NLW_U0_Dbg_ARADDR_0_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_1(NLW_U0_Dbg_ARADDR_1_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_10(NLW_U0_Dbg_ARADDR_10_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_11(NLW_U0_Dbg_ARADDR_11_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_12(NLW_U0_Dbg_ARADDR_12_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_13(NLW_U0_Dbg_ARADDR_13_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_14(NLW_U0_Dbg_ARADDR_14_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_15(NLW_U0_Dbg_ARADDR_15_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_16(NLW_U0_Dbg_ARADDR_16_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_17(NLW_U0_Dbg_ARADDR_17_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_18(NLW_U0_Dbg_ARADDR_18_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_19(NLW_U0_Dbg_ARADDR_19_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_2(NLW_U0_Dbg_ARADDR_2_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_20(NLW_U0_Dbg_ARADDR_20_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_21(NLW_U0_Dbg_ARADDR_21_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_22(NLW_U0_Dbg_ARADDR_22_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_23(NLW_U0_Dbg_ARADDR_23_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_24(NLW_U0_Dbg_ARADDR_24_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_25(NLW_U0_Dbg_ARADDR_25_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_26(NLW_U0_Dbg_ARADDR_26_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_27(NLW_U0_Dbg_ARADDR_27_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_28(NLW_U0_Dbg_ARADDR_28_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_29(NLW_U0_Dbg_ARADDR_29_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_3(NLW_U0_Dbg_ARADDR_3_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_30(NLW_U0_Dbg_ARADDR_30_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_31(NLW_U0_Dbg_ARADDR_31_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_4(NLW_U0_Dbg_ARADDR_4_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_5(NLW_U0_Dbg_ARADDR_5_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_6(NLW_U0_Dbg_ARADDR_6_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_7(NLW_U0_Dbg_ARADDR_7_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_8(NLW_U0_Dbg_ARADDR_8_UNCONNECTED[14:2]),
-        .Dbg_ARADDR_9(NLW_U0_Dbg_ARADDR_9_UNCONNECTED[14:2]),
-        .Dbg_ARREADY_0(1'b0),
-        .Dbg_ARREADY_1(1'b0),
-        .Dbg_ARREADY_10(1'b0),
-        .Dbg_ARREADY_11(1'b0),
-        .Dbg_ARREADY_12(1'b0),
-        .Dbg_ARREADY_13(1'b0),
-        .Dbg_ARREADY_14(1'b0),
-        .Dbg_ARREADY_15(1'b0),
-        .Dbg_ARREADY_16(1'b0),
-        .Dbg_ARREADY_17(1'b0),
-        .Dbg_ARREADY_18(1'b0),
-        .Dbg_ARREADY_19(1'b0),
-        .Dbg_ARREADY_2(1'b0),
-        .Dbg_ARREADY_20(1'b0),
-        .Dbg_ARREADY_21(1'b0),
-        .Dbg_ARREADY_22(1'b0),
-        .Dbg_ARREADY_23(1'b0),
-        .Dbg_ARREADY_24(1'b0),
-        .Dbg_ARREADY_25(1'b0),
-        .Dbg_ARREADY_26(1'b0),
-        .Dbg_ARREADY_27(1'b0),
-        .Dbg_ARREADY_28(1'b0),
-        .Dbg_ARREADY_29(1'b0),
-        .Dbg_ARREADY_3(1'b0),
-        .Dbg_ARREADY_30(1'b0),
-        .Dbg_ARREADY_31(1'b0),
-        .Dbg_ARREADY_4(1'b0),
-        .Dbg_ARREADY_5(1'b0),
-        .Dbg_ARREADY_6(1'b0),
-        .Dbg_ARREADY_7(1'b0),
-        .Dbg_ARREADY_8(1'b0),
-        .Dbg_ARREADY_9(1'b0),
-        .Dbg_ARVALID_0(NLW_U0_Dbg_ARVALID_0_UNCONNECTED),
-        .Dbg_ARVALID_1(NLW_U0_Dbg_ARVALID_1_UNCONNECTED),
-        .Dbg_ARVALID_10(NLW_U0_Dbg_ARVALID_10_UNCONNECTED),
-        .Dbg_ARVALID_11(NLW_U0_Dbg_ARVALID_11_UNCONNECTED),
-        .Dbg_ARVALID_12(NLW_U0_Dbg_ARVALID_12_UNCONNECTED),
-        .Dbg_ARVALID_13(NLW_U0_Dbg_ARVALID_13_UNCONNECTED),
-        .Dbg_ARVALID_14(NLW_U0_Dbg_ARVALID_14_UNCONNECTED),
-        .Dbg_ARVALID_15(NLW_U0_Dbg_ARVALID_15_UNCONNECTED),
-        .Dbg_ARVALID_16(NLW_U0_Dbg_ARVALID_16_UNCONNECTED),
-        .Dbg_ARVALID_17(NLW_U0_Dbg_ARVALID_17_UNCONNECTED),
-        .Dbg_ARVALID_18(NLW_U0_Dbg_ARVALID_18_UNCONNECTED),
-        .Dbg_ARVALID_19(NLW_U0_Dbg_ARVALID_19_UNCONNECTED),
-        .Dbg_ARVALID_2(NLW_U0_Dbg_ARVALID_2_UNCONNECTED),
-        .Dbg_ARVALID_20(NLW_U0_Dbg_ARVALID_20_UNCONNECTED),
-        .Dbg_ARVALID_21(NLW_U0_Dbg_ARVALID_21_UNCONNECTED),
-        .Dbg_ARVALID_22(NLW_U0_Dbg_ARVALID_22_UNCONNECTED),
-        .Dbg_ARVALID_23(NLW_U0_Dbg_ARVALID_23_UNCONNECTED),
-        .Dbg_ARVALID_24(NLW_U0_Dbg_ARVALID_24_UNCONNECTED),
-        .Dbg_ARVALID_25(NLW_U0_Dbg_ARVALID_25_UNCONNECTED),
-        .Dbg_ARVALID_26(NLW_U0_Dbg_ARVALID_26_UNCONNECTED),
-        .Dbg_ARVALID_27(NLW_U0_Dbg_ARVALID_27_UNCONNECTED),
-        .Dbg_ARVALID_28(NLW_U0_Dbg_ARVALID_28_UNCONNECTED),
-        .Dbg_ARVALID_29(NLW_U0_Dbg_ARVALID_29_UNCONNECTED),
-        .Dbg_ARVALID_3(NLW_U0_Dbg_ARVALID_3_UNCONNECTED),
-        .Dbg_ARVALID_30(NLW_U0_Dbg_ARVALID_30_UNCONNECTED),
-        .Dbg_ARVALID_31(NLW_U0_Dbg_ARVALID_31_UNCONNECTED),
-        .Dbg_ARVALID_4(NLW_U0_Dbg_ARVALID_4_UNCONNECTED),
-        .Dbg_ARVALID_5(NLW_U0_Dbg_ARVALID_5_UNCONNECTED),
-        .Dbg_ARVALID_6(NLW_U0_Dbg_ARVALID_6_UNCONNECTED),
-        .Dbg_ARVALID_7(NLW_U0_Dbg_ARVALID_7_UNCONNECTED),
-        .Dbg_ARVALID_8(NLW_U0_Dbg_ARVALID_8_UNCONNECTED),
-        .Dbg_ARVALID_9(NLW_U0_Dbg_ARVALID_9_UNCONNECTED),
-        .Dbg_AWADDR_0(NLW_U0_Dbg_AWADDR_0_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_1(NLW_U0_Dbg_AWADDR_1_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_10(NLW_U0_Dbg_AWADDR_10_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_11(NLW_U0_Dbg_AWADDR_11_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_12(NLW_U0_Dbg_AWADDR_12_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_13(NLW_U0_Dbg_AWADDR_13_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_14(NLW_U0_Dbg_AWADDR_14_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_15(NLW_U0_Dbg_AWADDR_15_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_16(NLW_U0_Dbg_AWADDR_16_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_17(NLW_U0_Dbg_AWADDR_17_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_18(NLW_U0_Dbg_AWADDR_18_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_19(NLW_U0_Dbg_AWADDR_19_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_2(NLW_U0_Dbg_AWADDR_2_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_20(NLW_U0_Dbg_AWADDR_20_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_21(NLW_U0_Dbg_AWADDR_21_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_22(NLW_U0_Dbg_AWADDR_22_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_23(NLW_U0_Dbg_AWADDR_23_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_24(NLW_U0_Dbg_AWADDR_24_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_25(NLW_U0_Dbg_AWADDR_25_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_26(NLW_U0_Dbg_AWADDR_26_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_27(NLW_U0_Dbg_AWADDR_27_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_28(NLW_U0_Dbg_AWADDR_28_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_29(NLW_U0_Dbg_AWADDR_29_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_3(NLW_U0_Dbg_AWADDR_3_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_30(NLW_U0_Dbg_AWADDR_30_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_31(NLW_U0_Dbg_AWADDR_31_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_4(NLW_U0_Dbg_AWADDR_4_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_5(NLW_U0_Dbg_AWADDR_5_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_6(NLW_U0_Dbg_AWADDR_6_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_7(NLW_U0_Dbg_AWADDR_7_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_8(NLW_U0_Dbg_AWADDR_8_UNCONNECTED[14:2]),
-        .Dbg_AWADDR_9(NLW_U0_Dbg_AWADDR_9_UNCONNECTED[14:2]),
-        .Dbg_AWREADY_0(1'b0),
-        .Dbg_AWREADY_1(1'b0),
-        .Dbg_AWREADY_10(1'b0),
-        .Dbg_AWREADY_11(1'b0),
-        .Dbg_AWREADY_12(1'b0),
-        .Dbg_AWREADY_13(1'b0),
-        .Dbg_AWREADY_14(1'b0),
-        .Dbg_AWREADY_15(1'b0),
-        .Dbg_AWREADY_16(1'b0),
-        .Dbg_AWREADY_17(1'b0),
-        .Dbg_AWREADY_18(1'b0),
-        .Dbg_AWREADY_19(1'b0),
-        .Dbg_AWREADY_2(1'b0),
-        .Dbg_AWREADY_20(1'b0),
-        .Dbg_AWREADY_21(1'b0),
-        .Dbg_AWREADY_22(1'b0),
-        .Dbg_AWREADY_23(1'b0),
-        .Dbg_AWREADY_24(1'b0),
-        .Dbg_AWREADY_25(1'b0),
-        .Dbg_AWREADY_26(1'b0),
-        .Dbg_AWREADY_27(1'b0),
-        .Dbg_AWREADY_28(1'b0),
-        .Dbg_AWREADY_29(1'b0),
-        .Dbg_AWREADY_3(1'b0),
-        .Dbg_AWREADY_30(1'b0),
-        .Dbg_AWREADY_31(1'b0),
-        .Dbg_AWREADY_4(1'b0),
-        .Dbg_AWREADY_5(1'b0),
-        .Dbg_AWREADY_6(1'b0),
-        .Dbg_AWREADY_7(1'b0),
-        .Dbg_AWREADY_8(1'b0),
-        .Dbg_AWREADY_9(1'b0),
-        .Dbg_AWVALID_0(NLW_U0_Dbg_AWVALID_0_UNCONNECTED),
-        .Dbg_AWVALID_1(NLW_U0_Dbg_AWVALID_1_UNCONNECTED),
-        .Dbg_AWVALID_10(NLW_U0_Dbg_AWVALID_10_UNCONNECTED),
-        .Dbg_AWVALID_11(NLW_U0_Dbg_AWVALID_11_UNCONNECTED),
-        .Dbg_AWVALID_12(NLW_U0_Dbg_AWVALID_12_UNCONNECTED),
-        .Dbg_AWVALID_13(NLW_U0_Dbg_AWVALID_13_UNCONNECTED),
-        .Dbg_AWVALID_14(NLW_U0_Dbg_AWVALID_14_UNCONNECTED),
-        .Dbg_AWVALID_15(NLW_U0_Dbg_AWVALID_15_UNCONNECTED),
-        .Dbg_AWVALID_16(NLW_U0_Dbg_AWVALID_16_UNCONNECTED),
-        .Dbg_AWVALID_17(NLW_U0_Dbg_AWVALID_17_UNCONNECTED),
-        .Dbg_AWVALID_18(NLW_U0_Dbg_AWVALID_18_UNCONNECTED),
-        .Dbg_AWVALID_19(NLW_U0_Dbg_AWVALID_19_UNCONNECTED),
-        .Dbg_AWVALID_2(NLW_U0_Dbg_AWVALID_2_UNCONNECTED),
-        .Dbg_AWVALID_20(NLW_U0_Dbg_AWVALID_20_UNCONNECTED),
-        .Dbg_AWVALID_21(NLW_U0_Dbg_AWVALID_21_UNCONNECTED),
-        .Dbg_AWVALID_22(NLW_U0_Dbg_AWVALID_22_UNCONNECTED),
-        .Dbg_AWVALID_23(NLW_U0_Dbg_AWVALID_23_UNCONNECTED),
-        .Dbg_AWVALID_24(NLW_U0_Dbg_AWVALID_24_UNCONNECTED),
-        .Dbg_AWVALID_25(NLW_U0_Dbg_AWVALID_25_UNCONNECTED),
-        .Dbg_AWVALID_26(NLW_U0_Dbg_AWVALID_26_UNCONNECTED),
-        .Dbg_AWVALID_27(NLW_U0_Dbg_AWVALID_27_UNCONNECTED),
-        .Dbg_AWVALID_28(NLW_U0_Dbg_AWVALID_28_UNCONNECTED),
-        .Dbg_AWVALID_29(NLW_U0_Dbg_AWVALID_29_UNCONNECTED),
-        .Dbg_AWVALID_3(NLW_U0_Dbg_AWVALID_3_UNCONNECTED),
-        .Dbg_AWVALID_30(NLW_U0_Dbg_AWVALID_30_UNCONNECTED),
-        .Dbg_AWVALID_31(NLW_U0_Dbg_AWVALID_31_UNCONNECTED),
-        .Dbg_AWVALID_4(NLW_U0_Dbg_AWVALID_4_UNCONNECTED),
-        .Dbg_AWVALID_5(NLW_U0_Dbg_AWVALID_5_UNCONNECTED),
-        .Dbg_AWVALID_6(NLW_U0_Dbg_AWVALID_6_UNCONNECTED),
-        .Dbg_AWVALID_7(NLW_U0_Dbg_AWVALID_7_UNCONNECTED),
-        .Dbg_AWVALID_8(NLW_U0_Dbg_AWVALID_8_UNCONNECTED),
-        .Dbg_AWVALID_9(NLW_U0_Dbg_AWVALID_9_UNCONNECTED),
-        .Dbg_BREADY_0(NLW_U0_Dbg_BREADY_0_UNCONNECTED),
-        .Dbg_BREADY_1(NLW_U0_Dbg_BREADY_1_UNCONNECTED),
-        .Dbg_BREADY_10(NLW_U0_Dbg_BREADY_10_UNCONNECTED),
-        .Dbg_BREADY_11(NLW_U0_Dbg_BREADY_11_UNCONNECTED),
-        .Dbg_BREADY_12(NLW_U0_Dbg_BREADY_12_UNCONNECTED),
-        .Dbg_BREADY_13(NLW_U0_Dbg_BREADY_13_UNCONNECTED),
-        .Dbg_BREADY_14(NLW_U0_Dbg_BREADY_14_UNCONNECTED),
-        .Dbg_BREADY_15(NLW_U0_Dbg_BREADY_15_UNCONNECTED),
-        .Dbg_BREADY_16(NLW_U0_Dbg_BREADY_16_UNCONNECTED),
-        .Dbg_BREADY_17(NLW_U0_Dbg_BREADY_17_UNCONNECTED),
-        .Dbg_BREADY_18(NLW_U0_Dbg_BREADY_18_UNCONNECTED),
-        .Dbg_BREADY_19(NLW_U0_Dbg_BREADY_19_UNCONNECTED),
-        .Dbg_BREADY_2(NLW_U0_Dbg_BREADY_2_UNCONNECTED),
-        .Dbg_BREADY_20(NLW_U0_Dbg_BREADY_20_UNCONNECTED),
-        .Dbg_BREADY_21(NLW_U0_Dbg_BREADY_21_UNCONNECTED),
-        .Dbg_BREADY_22(NLW_U0_Dbg_BREADY_22_UNCONNECTED),
-        .Dbg_BREADY_23(NLW_U0_Dbg_BREADY_23_UNCONNECTED),
-        .Dbg_BREADY_24(NLW_U0_Dbg_BREADY_24_UNCONNECTED),
-        .Dbg_BREADY_25(NLW_U0_Dbg_BREADY_25_UNCONNECTED),
-        .Dbg_BREADY_26(NLW_U0_Dbg_BREADY_26_UNCONNECTED),
-        .Dbg_BREADY_27(NLW_U0_Dbg_BREADY_27_UNCONNECTED),
-        .Dbg_BREADY_28(NLW_U0_Dbg_BREADY_28_UNCONNECTED),
-        .Dbg_BREADY_29(NLW_U0_Dbg_BREADY_29_UNCONNECTED),
-        .Dbg_BREADY_3(NLW_U0_Dbg_BREADY_3_UNCONNECTED),
-        .Dbg_BREADY_30(NLW_U0_Dbg_BREADY_30_UNCONNECTED),
-        .Dbg_BREADY_31(NLW_U0_Dbg_BREADY_31_UNCONNECTED),
-        .Dbg_BREADY_4(NLW_U0_Dbg_BREADY_4_UNCONNECTED),
-        .Dbg_BREADY_5(NLW_U0_Dbg_BREADY_5_UNCONNECTED),
-        .Dbg_BREADY_6(NLW_U0_Dbg_BREADY_6_UNCONNECTED),
-        .Dbg_BREADY_7(NLW_U0_Dbg_BREADY_7_UNCONNECTED),
-        .Dbg_BREADY_8(NLW_U0_Dbg_BREADY_8_UNCONNECTED),
-        .Dbg_BREADY_9(NLW_U0_Dbg_BREADY_9_UNCONNECTED),
-        .Dbg_BRESP_0({1'b0,1'b0}),
-        .Dbg_BRESP_1({1'b0,1'b0}),
-        .Dbg_BRESP_10({1'b0,1'b0}),
-        .Dbg_BRESP_11({1'b0,1'b0}),
-        .Dbg_BRESP_12({1'b0,1'b0}),
-        .Dbg_BRESP_13({1'b0,1'b0}),
-        .Dbg_BRESP_14({1'b0,1'b0}),
-        .Dbg_BRESP_15({1'b0,1'b0}),
-        .Dbg_BRESP_16({1'b0,1'b0}),
-        .Dbg_BRESP_17({1'b0,1'b0}),
-        .Dbg_BRESP_18({1'b0,1'b0}),
-        .Dbg_BRESP_19({1'b0,1'b0}),
-        .Dbg_BRESP_2({1'b0,1'b0}),
-        .Dbg_BRESP_20({1'b0,1'b0}),
-        .Dbg_BRESP_21({1'b0,1'b0}),
-        .Dbg_BRESP_22({1'b0,1'b0}),
-        .Dbg_BRESP_23({1'b0,1'b0}),
-        .Dbg_BRESP_24({1'b0,1'b0}),
-        .Dbg_BRESP_25({1'b0,1'b0}),
-        .Dbg_BRESP_26({1'b0,1'b0}),
-        .Dbg_BRESP_27({1'b0,1'b0}),
-        .Dbg_BRESP_28({1'b0,1'b0}),
-        .Dbg_BRESP_29({1'b0,1'b0}),
-        .Dbg_BRESP_3({1'b0,1'b0}),
-        .Dbg_BRESP_30({1'b0,1'b0}),
-        .Dbg_BRESP_31({1'b0,1'b0}),
-        .Dbg_BRESP_4({1'b0,1'b0}),
-        .Dbg_BRESP_5({1'b0,1'b0}),
-        .Dbg_BRESP_6({1'b0,1'b0}),
-        .Dbg_BRESP_7({1'b0,1'b0}),
-        .Dbg_BRESP_8({1'b0,1'b0}),
-        .Dbg_BRESP_9({1'b0,1'b0}),
-        .Dbg_BVALID_0(1'b0),
-        .Dbg_BVALID_1(1'b0),
-        .Dbg_BVALID_10(1'b0),
-        .Dbg_BVALID_11(1'b0),
-        .Dbg_BVALID_12(1'b0),
-        .Dbg_BVALID_13(1'b0),
-        .Dbg_BVALID_14(1'b0),
-        .Dbg_BVALID_15(1'b0),
-        .Dbg_BVALID_16(1'b0),
-        .Dbg_BVALID_17(1'b0),
-        .Dbg_BVALID_18(1'b0),
-        .Dbg_BVALID_19(1'b0),
-        .Dbg_BVALID_2(1'b0),
-        .Dbg_BVALID_20(1'b0),
-        .Dbg_BVALID_21(1'b0),
-        .Dbg_BVALID_22(1'b0),
-        .Dbg_BVALID_23(1'b0),
-        .Dbg_BVALID_24(1'b0),
-        .Dbg_BVALID_25(1'b0),
-        .Dbg_BVALID_26(1'b0),
-        .Dbg_BVALID_27(1'b0),
-        .Dbg_BVALID_28(1'b0),
-        .Dbg_BVALID_29(1'b0),
-        .Dbg_BVALID_3(1'b0),
-        .Dbg_BVALID_30(1'b0),
-        .Dbg_BVALID_31(1'b0),
-        .Dbg_BVALID_4(1'b0),
-        .Dbg_BVALID_5(1'b0),
-        .Dbg_BVALID_6(1'b0),
-        .Dbg_BVALID_7(1'b0),
-        .Dbg_BVALID_8(1'b0),
-        .Dbg_BVALID_9(1'b0),
-        .Dbg_Capture_0(Dbg_Capture_0),
-        .Dbg_Capture_1(NLW_U0_Dbg_Capture_1_UNCONNECTED),
-        .Dbg_Capture_10(NLW_U0_Dbg_Capture_10_UNCONNECTED),
-        .Dbg_Capture_11(NLW_U0_Dbg_Capture_11_UNCONNECTED),
-        .Dbg_Capture_12(NLW_U0_Dbg_Capture_12_UNCONNECTED),
-        .Dbg_Capture_13(NLW_U0_Dbg_Capture_13_UNCONNECTED),
-        .Dbg_Capture_14(NLW_U0_Dbg_Capture_14_UNCONNECTED),
-        .Dbg_Capture_15(NLW_U0_Dbg_Capture_15_UNCONNECTED),
-        .Dbg_Capture_16(NLW_U0_Dbg_Capture_16_UNCONNECTED),
-        .Dbg_Capture_17(NLW_U0_Dbg_Capture_17_UNCONNECTED),
-        .Dbg_Capture_18(NLW_U0_Dbg_Capture_18_UNCONNECTED),
-        .Dbg_Capture_19(NLW_U0_Dbg_Capture_19_UNCONNECTED),
-        .Dbg_Capture_2(NLW_U0_Dbg_Capture_2_UNCONNECTED),
-        .Dbg_Capture_20(NLW_U0_Dbg_Capture_20_UNCONNECTED),
-        .Dbg_Capture_21(NLW_U0_Dbg_Capture_21_UNCONNECTED),
-        .Dbg_Capture_22(NLW_U0_Dbg_Capture_22_UNCONNECTED),
-        .Dbg_Capture_23(NLW_U0_Dbg_Capture_23_UNCONNECTED),
-        .Dbg_Capture_24(NLW_U0_Dbg_Capture_24_UNCONNECTED),
-        .Dbg_Capture_25(NLW_U0_Dbg_Capture_25_UNCONNECTED),
-        .Dbg_Capture_26(NLW_U0_Dbg_Capture_26_UNCONNECTED),
-        .Dbg_Capture_27(NLW_U0_Dbg_Capture_27_UNCONNECTED),
-        .Dbg_Capture_28(NLW_U0_Dbg_Capture_28_UNCONNECTED),
-        .Dbg_Capture_29(NLW_U0_Dbg_Capture_29_UNCONNECTED),
-        .Dbg_Capture_3(NLW_U0_Dbg_Capture_3_UNCONNECTED),
-        .Dbg_Capture_30(NLW_U0_Dbg_Capture_30_UNCONNECTED),
-        .Dbg_Capture_31(NLW_U0_Dbg_Capture_31_UNCONNECTED),
-        .Dbg_Capture_4(NLW_U0_Dbg_Capture_4_UNCONNECTED),
-        .Dbg_Capture_5(NLW_U0_Dbg_Capture_5_UNCONNECTED),
-        .Dbg_Capture_6(NLW_U0_Dbg_Capture_6_UNCONNECTED),
-        .Dbg_Capture_7(NLW_U0_Dbg_Capture_7_UNCONNECTED),
-        .Dbg_Capture_8(NLW_U0_Dbg_Capture_8_UNCONNECTED),
-        .Dbg_Capture_9(NLW_U0_Dbg_Capture_9_UNCONNECTED),
-        .Dbg_Clk_0(Dbg_Clk_0),
-        .Dbg_Clk_1(NLW_U0_Dbg_Clk_1_UNCONNECTED),
-        .Dbg_Clk_10(NLW_U0_Dbg_Clk_10_UNCONNECTED),
-        .Dbg_Clk_11(NLW_U0_Dbg_Clk_11_UNCONNECTED),
-        .Dbg_Clk_12(NLW_U0_Dbg_Clk_12_UNCONNECTED),
-        .Dbg_Clk_13(NLW_U0_Dbg_Clk_13_UNCONNECTED),
-        .Dbg_Clk_14(NLW_U0_Dbg_Clk_14_UNCONNECTED),
-        .Dbg_Clk_15(NLW_U0_Dbg_Clk_15_UNCONNECTED),
-        .Dbg_Clk_16(NLW_U0_Dbg_Clk_16_UNCONNECTED),
-        .Dbg_Clk_17(NLW_U0_Dbg_Clk_17_UNCONNECTED),
-        .Dbg_Clk_18(NLW_U0_Dbg_Clk_18_UNCONNECTED),
-        .Dbg_Clk_19(NLW_U0_Dbg_Clk_19_UNCONNECTED),
-        .Dbg_Clk_2(NLW_U0_Dbg_Clk_2_UNCONNECTED),
-        .Dbg_Clk_20(NLW_U0_Dbg_Clk_20_UNCONNECTED),
-        .Dbg_Clk_21(NLW_U0_Dbg_Clk_21_UNCONNECTED),
-        .Dbg_Clk_22(NLW_U0_Dbg_Clk_22_UNCONNECTED),
-        .Dbg_Clk_23(NLW_U0_Dbg_Clk_23_UNCONNECTED),
-        .Dbg_Clk_24(NLW_U0_Dbg_Clk_24_UNCONNECTED),
-        .Dbg_Clk_25(NLW_U0_Dbg_Clk_25_UNCONNECTED),
-        .Dbg_Clk_26(NLW_U0_Dbg_Clk_26_UNCONNECTED),
-        .Dbg_Clk_27(NLW_U0_Dbg_Clk_27_UNCONNECTED),
-        .Dbg_Clk_28(NLW_U0_Dbg_Clk_28_UNCONNECTED),
-        .Dbg_Clk_29(NLW_U0_Dbg_Clk_29_UNCONNECTED),
-        .Dbg_Clk_3(NLW_U0_Dbg_Clk_3_UNCONNECTED),
-        .Dbg_Clk_30(NLW_U0_Dbg_Clk_30_UNCONNECTED),
-        .Dbg_Clk_31(NLW_U0_Dbg_Clk_31_UNCONNECTED),
-        .Dbg_Clk_4(NLW_U0_Dbg_Clk_4_UNCONNECTED),
-        .Dbg_Clk_5(NLW_U0_Dbg_Clk_5_UNCONNECTED),
-        .Dbg_Clk_6(NLW_U0_Dbg_Clk_6_UNCONNECTED),
-        .Dbg_Clk_7(NLW_U0_Dbg_Clk_7_UNCONNECTED),
-        .Dbg_Clk_8(NLW_U0_Dbg_Clk_8_UNCONNECTED),
-        .Dbg_Clk_9(NLW_U0_Dbg_Clk_9_UNCONNECTED),
-        .Dbg_Disable_0(Dbg_Disable_0),
-        .Dbg_Disable_1(NLW_U0_Dbg_Disable_1_UNCONNECTED),
-        .Dbg_Disable_10(NLW_U0_Dbg_Disable_10_UNCONNECTED),
-        .Dbg_Disable_11(NLW_U0_Dbg_Disable_11_UNCONNECTED),
-        .Dbg_Disable_12(NLW_U0_Dbg_Disable_12_UNCONNECTED),
-        .Dbg_Disable_13(NLW_U0_Dbg_Disable_13_UNCONNECTED),
-        .Dbg_Disable_14(NLW_U0_Dbg_Disable_14_UNCONNECTED),
-        .Dbg_Disable_15(NLW_U0_Dbg_Disable_15_UNCONNECTED),
-        .Dbg_Disable_16(NLW_U0_Dbg_Disable_16_UNCONNECTED),
-        .Dbg_Disable_17(NLW_U0_Dbg_Disable_17_UNCONNECTED),
-        .Dbg_Disable_18(NLW_U0_Dbg_Disable_18_UNCONNECTED),
-        .Dbg_Disable_19(NLW_U0_Dbg_Disable_19_UNCONNECTED),
-        .Dbg_Disable_2(NLW_U0_Dbg_Disable_2_UNCONNECTED),
-        .Dbg_Disable_20(NLW_U0_Dbg_Disable_20_UNCONNECTED),
-        .Dbg_Disable_21(NLW_U0_Dbg_Disable_21_UNCONNECTED),
-        .Dbg_Disable_22(NLW_U0_Dbg_Disable_22_UNCONNECTED),
-        .Dbg_Disable_23(NLW_U0_Dbg_Disable_23_UNCONNECTED),
-        .Dbg_Disable_24(NLW_U0_Dbg_Disable_24_UNCONNECTED),
-        .Dbg_Disable_25(NLW_U0_Dbg_Disable_25_UNCONNECTED),
-        .Dbg_Disable_26(NLW_U0_Dbg_Disable_26_UNCONNECTED),
-        .Dbg_Disable_27(NLW_U0_Dbg_Disable_27_UNCONNECTED),
-        .Dbg_Disable_28(NLW_U0_Dbg_Disable_28_UNCONNECTED),
-        .Dbg_Disable_29(NLW_U0_Dbg_Disable_29_UNCONNECTED),
-        .Dbg_Disable_3(NLW_U0_Dbg_Disable_3_UNCONNECTED),
-        .Dbg_Disable_30(NLW_U0_Dbg_Disable_30_UNCONNECTED),
-        .Dbg_Disable_31(NLW_U0_Dbg_Disable_31_UNCONNECTED),
-        .Dbg_Disable_4(NLW_U0_Dbg_Disable_4_UNCONNECTED),
-        .Dbg_Disable_5(NLW_U0_Dbg_Disable_5_UNCONNECTED),
-        .Dbg_Disable_6(NLW_U0_Dbg_Disable_6_UNCONNECTED),
-        .Dbg_Disable_7(NLW_U0_Dbg_Disable_7_UNCONNECTED),
-        .Dbg_Disable_8(NLW_U0_Dbg_Disable_8_UNCONNECTED),
-        .Dbg_Disable_9(NLW_U0_Dbg_Disable_9_UNCONNECTED),
-        .Dbg_RDATA_0({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_1({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_10({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_11({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_12({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_13({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_14({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_15({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_16({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_17({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_18({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_19({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_2({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_20({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_21({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_22({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_23({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_24({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_25({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_26({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_27({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_28({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_29({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_3({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_30({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_31({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_4({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_5({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_6({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_7({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_8({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RDATA_9({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_RREADY_0(NLW_U0_Dbg_RREADY_0_UNCONNECTED),
-        .Dbg_RREADY_1(NLW_U0_Dbg_RREADY_1_UNCONNECTED),
-        .Dbg_RREADY_10(NLW_U0_Dbg_RREADY_10_UNCONNECTED),
-        .Dbg_RREADY_11(NLW_U0_Dbg_RREADY_11_UNCONNECTED),
-        .Dbg_RREADY_12(NLW_U0_Dbg_RREADY_12_UNCONNECTED),
-        .Dbg_RREADY_13(NLW_U0_Dbg_RREADY_13_UNCONNECTED),
-        .Dbg_RREADY_14(NLW_U0_Dbg_RREADY_14_UNCONNECTED),
-        .Dbg_RREADY_15(NLW_U0_Dbg_RREADY_15_UNCONNECTED),
-        .Dbg_RREADY_16(NLW_U0_Dbg_RREADY_16_UNCONNECTED),
-        .Dbg_RREADY_17(NLW_U0_Dbg_RREADY_17_UNCONNECTED),
-        .Dbg_RREADY_18(NLW_U0_Dbg_RREADY_18_UNCONNECTED),
-        .Dbg_RREADY_19(NLW_U0_Dbg_RREADY_19_UNCONNECTED),
-        .Dbg_RREADY_2(NLW_U0_Dbg_RREADY_2_UNCONNECTED),
-        .Dbg_RREADY_20(NLW_U0_Dbg_RREADY_20_UNCONNECTED),
-        .Dbg_RREADY_21(NLW_U0_Dbg_RREADY_21_UNCONNECTED),
-        .Dbg_RREADY_22(NLW_U0_Dbg_RREADY_22_UNCONNECTED),
-        .Dbg_RREADY_23(NLW_U0_Dbg_RREADY_23_UNCONNECTED),
-        .Dbg_RREADY_24(NLW_U0_Dbg_RREADY_24_UNCONNECTED),
-        .Dbg_RREADY_25(NLW_U0_Dbg_RREADY_25_UNCONNECTED),
-        .Dbg_RREADY_26(NLW_U0_Dbg_RREADY_26_UNCONNECTED),
-        .Dbg_RREADY_27(NLW_U0_Dbg_RREADY_27_UNCONNECTED),
-        .Dbg_RREADY_28(NLW_U0_Dbg_RREADY_28_UNCONNECTED),
-        .Dbg_RREADY_29(NLW_U0_Dbg_RREADY_29_UNCONNECTED),
-        .Dbg_RREADY_3(NLW_U0_Dbg_RREADY_3_UNCONNECTED),
-        .Dbg_RREADY_30(NLW_U0_Dbg_RREADY_30_UNCONNECTED),
-        .Dbg_RREADY_31(NLW_U0_Dbg_RREADY_31_UNCONNECTED),
-        .Dbg_RREADY_4(NLW_U0_Dbg_RREADY_4_UNCONNECTED),
-        .Dbg_RREADY_5(NLW_U0_Dbg_RREADY_5_UNCONNECTED),
-        .Dbg_RREADY_6(NLW_U0_Dbg_RREADY_6_UNCONNECTED),
-        .Dbg_RREADY_7(NLW_U0_Dbg_RREADY_7_UNCONNECTED),
-        .Dbg_RREADY_8(NLW_U0_Dbg_RREADY_8_UNCONNECTED),
-        .Dbg_RREADY_9(NLW_U0_Dbg_RREADY_9_UNCONNECTED),
-        .Dbg_RRESP_0({1'b0,1'b0}),
-        .Dbg_RRESP_1({1'b0,1'b0}),
-        .Dbg_RRESP_10({1'b0,1'b0}),
-        .Dbg_RRESP_11({1'b0,1'b0}),
-        .Dbg_RRESP_12({1'b0,1'b0}),
-        .Dbg_RRESP_13({1'b0,1'b0}),
-        .Dbg_RRESP_14({1'b0,1'b0}),
-        .Dbg_RRESP_15({1'b0,1'b0}),
-        .Dbg_RRESP_16({1'b0,1'b0}),
-        .Dbg_RRESP_17({1'b0,1'b0}),
-        .Dbg_RRESP_18({1'b0,1'b0}),
-        .Dbg_RRESP_19({1'b0,1'b0}),
-        .Dbg_RRESP_2({1'b0,1'b0}),
-        .Dbg_RRESP_20({1'b0,1'b0}),
-        .Dbg_RRESP_21({1'b0,1'b0}),
-        .Dbg_RRESP_22({1'b0,1'b0}),
-        .Dbg_RRESP_23({1'b0,1'b0}),
-        .Dbg_RRESP_24({1'b0,1'b0}),
-        .Dbg_RRESP_25({1'b0,1'b0}),
-        .Dbg_RRESP_26({1'b0,1'b0}),
-        .Dbg_RRESP_27({1'b0,1'b0}),
-        .Dbg_RRESP_28({1'b0,1'b0}),
-        .Dbg_RRESP_29({1'b0,1'b0}),
-        .Dbg_RRESP_3({1'b0,1'b0}),
-        .Dbg_RRESP_30({1'b0,1'b0}),
-        .Dbg_RRESP_31({1'b0,1'b0}),
-        .Dbg_RRESP_4({1'b0,1'b0}),
-        .Dbg_RRESP_5({1'b0,1'b0}),
-        .Dbg_RRESP_6({1'b0,1'b0}),
-        .Dbg_RRESP_7({1'b0,1'b0}),
-        .Dbg_RRESP_8({1'b0,1'b0}),
-        .Dbg_RRESP_9({1'b0,1'b0}),
-        .Dbg_RVALID_0(1'b0),
-        .Dbg_RVALID_1(1'b0),
-        .Dbg_RVALID_10(1'b0),
-        .Dbg_RVALID_11(1'b0),
-        .Dbg_RVALID_12(1'b0),
-        .Dbg_RVALID_13(1'b0),
-        .Dbg_RVALID_14(1'b0),
-        .Dbg_RVALID_15(1'b0),
-        .Dbg_RVALID_16(1'b0),
-        .Dbg_RVALID_17(1'b0),
-        .Dbg_RVALID_18(1'b0),
-        .Dbg_RVALID_19(1'b0),
-        .Dbg_RVALID_2(1'b0),
-        .Dbg_RVALID_20(1'b0),
-        .Dbg_RVALID_21(1'b0),
-        .Dbg_RVALID_22(1'b0),
-        .Dbg_RVALID_23(1'b0),
-        .Dbg_RVALID_24(1'b0),
-        .Dbg_RVALID_25(1'b0),
-        .Dbg_RVALID_26(1'b0),
-        .Dbg_RVALID_27(1'b0),
-        .Dbg_RVALID_28(1'b0),
-        .Dbg_RVALID_29(1'b0),
-        .Dbg_RVALID_3(1'b0),
-        .Dbg_RVALID_30(1'b0),
-        .Dbg_RVALID_31(1'b0),
-        .Dbg_RVALID_4(1'b0),
-        .Dbg_RVALID_5(1'b0),
-        .Dbg_RVALID_6(1'b0),
-        .Dbg_RVALID_7(1'b0),
-        .Dbg_RVALID_8(1'b0),
-        .Dbg_RVALID_9(1'b0),
-        .Dbg_Reg_En_0(Dbg_Reg_En_0),
-        .Dbg_Reg_En_1(NLW_U0_Dbg_Reg_En_1_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_10(NLW_U0_Dbg_Reg_En_10_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_11(NLW_U0_Dbg_Reg_En_11_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_12(NLW_U0_Dbg_Reg_En_12_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_13(NLW_U0_Dbg_Reg_En_13_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_14(NLW_U0_Dbg_Reg_En_14_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_15(NLW_U0_Dbg_Reg_En_15_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_16(NLW_U0_Dbg_Reg_En_16_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_17(NLW_U0_Dbg_Reg_En_17_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_18(NLW_U0_Dbg_Reg_En_18_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_19(NLW_U0_Dbg_Reg_En_19_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_2(NLW_U0_Dbg_Reg_En_2_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_20(NLW_U0_Dbg_Reg_En_20_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_21(NLW_U0_Dbg_Reg_En_21_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_22(NLW_U0_Dbg_Reg_En_22_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_23(NLW_U0_Dbg_Reg_En_23_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_24(NLW_U0_Dbg_Reg_En_24_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_25(NLW_U0_Dbg_Reg_En_25_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_26(NLW_U0_Dbg_Reg_En_26_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_27(NLW_U0_Dbg_Reg_En_27_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_28(NLW_U0_Dbg_Reg_En_28_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_29(NLW_U0_Dbg_Reg_En_29_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_3(NLW_U0_Dbg_Reg_En_3_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_30(NLW_U0_Dbg_Reg_En_30_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_31(NLW_U0_Dbg_Reg_En_31_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_4(NLW_U0_Dbg_Reg_En_4_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_5(NLW_U0_Dbg_Reg_En_5_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_6(NLW_U0_Dbg_Reg_En_6_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_7(NLW_U0_Dbg_Reg_En_7_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_8(NLW_U0_Dbg_Reg_En_8_UNCONNECTED[0:7]),
-        .Dbg_Reg_En_9(NLW_U0_Dbg_Reg_En_9_UNCONNECTED[0:7]),
-        .Dbg_Rst_0(Dbg_Rst_0),
-        .Dbg_Rst_1(NLW_U0_Dbg_Rst_1_UNCONNECTED),
-        .Dbg_Rst_10(NLW_U0_Dbg_Rst_10_UNCONNECTED),
-        .Dbg_Rst_11(NLW_U0_Dbg_Rst_11_UNCONNECTED),
-        .Dbg_Rst_12(NLW_U0_Dbg_Rst_12_UNCONNECTED),
-        .Dbg_Rst_13(NLW_U0_Dbg_Rst_13_UNCONNECTED),
-        .Dbg_Rst_14(NLW_U0_Dbg_Rst_14_UNCONNECTED),
-        .Dbg_Rst_15(NLW_U0_Dbg_Rst_15_UNCONNECTED),
-        .Dbg_Rst_16(NLW_U0_Dbg_Rst_16_UNCONNECTED),
-        .Dbg_Rst_17(NLW_U0_Dbg_Rst_17_UNCONNECTED),
-        .Dbg_Rst_18(NLW_U0_Dbg_Rst_18_UNCONNECTED),
-        .Dbg_Rst_19(NLW_U0_Dbg_Rst_19_UNCONNECTED),
-        .Dbg_Rst_2(NLW_U0_Dbg_Rst_2_UNCONNECTED),
-        .Dbg_Rst_20(NLW_U0_Dbg_Rst_20_UNCONNECTED),
-        .Dbg_Rst_21(NLW_U0_Dbg_Rst_21_UNCONNECTED),
-        .Dbg_Rst_22(NLW_U0_Dbg_Rst_22_UNCONNECTED),
-        .Dbg_Rst_23(NLW_U0_Dbg_Rst_23_UNCONNECTED),
-        .Dbg_Rst_24(NLW_U0_Dbg_Rst_24_UNCONNECTED),
-        .Dbg_Rst_25(NLW_U0_Dbg_Rst_25_UNCONNECTED),
-        .Dbg_Rst_26(NLW_U0_Dbg_Rst_26_UNCONNECTED),
-        .Dbg_Rst_27(NLW_U0_Dbg_Rst_27_UNCONNECTED),
-        .Dbg_Rst_28(NLW_U0_Dbg_Rst_28_UNCONNECTED),
-        .Dbg_Rst_29(NLW_U0_Dbg_Rst_29_UNCONNECTED),
-        .Dbg_Rst_3(NLW_U0_Dbg_Rst_3_UNCONNECTED),
-        .Dbg_Rst_30(NLW_U0_Dbg_Rst_30_UNCONNECTED),
-        .Dbg_Rst_31(NLW_U0_Dbg_Rst_31_UNCONNECTED),
-        .Dbg_Rst_4(NLW_U0_Dbg_Rst_4_UNCONNECTED),
-        .Dbg_Rst_5(NLW_U0_Dbg_Rst_5_UNCONNECTED),
-        .Dbg_Rst_6(NLW_U0_Dbg_Rst_6_UNCONNECTED),
-        .Dbg_Rst_7(NLW_U0_Dbg_Rst_7_UNCONNECTED),
-        .Dbg_Rst_8(NLW_U0_Dbg_Rst_8_UNCONNECTED),
-        .Dbg_Rst_9(NLW_U0_Dbg_Rst_9_UNCONNECTED),
-        .Dbg_Shift_0(Dbg_Shift_0),
-        .Dbg_Shift_1(NLW_U0_Dbg_Shift_1_UNCONNECTED),
-        .Dbg_Shift_10(NLW_U0_Dbg_Shift_10_UNCONNECTED),
-        .Dbg_Shift_11(NLW_U0_Dbg_Shift_11_UNCONNECTED),
-        .Dbg_Shift_12(NLW_U0_Dbg_Shift_12_UNCONNECTED),
-        .Dbg_Shift_13(NLW_U0_Dbg_Shift_13_UNCONNECTED),
-        .Dbg_Shift_14(NLW_U0_Dbg_Shift_14_UNCONNECTED),
-        .Dbg_Shift_15(NLW_U0_Dbg_Shift_15_UNCONNECTED),
-        .Dbg_Shift_16(NLW_U0_Dbg_Shift_16_UNCONNECTED),
-        .Dbg_Shift_17(NLW_U0_Dbg_Shift_17_UNCONNECTED),
-        .Dbg_Shift_18(NLW_U0_Dbg_Shift_18_UNCONNECTED),
-        .Dbg_Shift_19(NLW_U0_Dbg_Shift_19_UNCONNECTED),
-        .Dbg_Shift_2(NLW_U0_Dbg_Shift_2_UNCONNECTED),
-        .Dbg_Shift_20(NLW_U0_Dbg_Shift_20_UNCONNECTED),
-        .Dbg_Shift_21(NLW_U0_Dbg_Shift_21_UNCONNECTED),
-        .Dbg_Shift_22(NLW_U0_Dbg_Shift_22_UNCONNECTED),
-        .Dbg_Shift_23(NLW_U0_Dbg_Shift_23_UNCONNECTED),
-        .Dbg_Shift_24(NLW_U0_Dbg_Shift_24_UNCONNECTED),
-        .Dbg_Shift_25(NLW_U0_Dbg_Shift_25_UNCONNECTED),
-        .Dbg_Shift_26(NLW_U0_Dbg_Shift_26_UNCONNECTED),
-        .Dbg_Shift_27(NLW_U0_Dbg_Shift_27_UNCONNECTED),
-        .Dbg_Shift_28(NLW_U0_Dbg_Shift_28_UNCONNECTED),
-        .Dbg_Shift_29(NLW_U0_Dbg_Shift_29_UNCONNECTED),
-        .Dbg_Shift_3(NLW_U0_Dbg_Shift_3_UNCONNECTED),
-        .Dbg_Shift_30(NLW_U0_Dbg_Shift_30_UNCONNECTED),
-        .Dbg_Shift_31(NLW_U0_Dbg_Shift_31_UNCONNECTED),
-        .Dbg_Shift_4(NLW_U0_Dbg_Shift_4_UNCONNECTED),
-        .Dbg_Shift_5(NLW_U0_Dbg_Shift_5_UNCONNECTED),
-        .Dbg_Shift_6(NLW_U0_Dbg_Shift_6_UNCONNECTED),
-        .Dbg_Shift_7(NLW_U0_Dbg_Shift_7_UNCONNECTED),
-        .Dbg_Shift_8(NLW_U0_Dbg_Shift_8_UNCONNECTED),
-        .Dbg_Shift_9(NLW_U0_Dbg_Shift_9_UNCONNECTED),
-        .Dbg_TDI_0(Dbg_TDI_0),
-        .Dbg_TDI_1(NLW_U0_Dbg_TDI_1_UNCONNECTED),
-        .Dbg_TDI_10(NLW_U0_Dbg_TDI_10_UNCONNECTED),
-        .Dbg_TDI_11(NLW_U0_Dbg_TDI_11_UNCONNECTED),
-        .Dbg_TDI_12(NLW_U0_Dbg_TDI_12_UNCONNECTED),
-        .Dbg_TDI_13(NLW_U0_Dbg_TDI_13_UNCONNECTED),
-        .Dbg_TDI_14(NLW_U0_Dbg_TDI_14_UNCONNECTED),
-        .Dbg_TDI_15(NLW_U0_Dbg_TDI_15_UNCONNECTED),
-        .Dbg_TDI_16(NLW_U0_Dbg_TDI_16_UNCONNECTED),
-        .Dbg_TDI_17(NLW_U0_Dbg_TDI_17_UNCONNECTED),
-        .Dbg_TDI_18(NLW_U0_Dbg_TDI_18_UNCONNECTED),
-        .Dbg_TDI_19(NLW_U0_Dbg_TDI_19_UNCONNECTED),
-        .Dbg_TDI_2(NLW_U0_Dbg_TDI_2_UNCONNECTED),
-        .Dbg_TDI_20(NLW_U0_Dbg_TDI_20_UNCONNECTED),
-        .Dbg_TDI_21(NLW_U0_Dbg_TDI_21_UNCONNECTED),
-        .Dbg_TDI_22(NLW_U0_Dbg_TDI_22_UNCONNECTED),
-        .Dbg_TDI_23(NLW_U0_Dbg_TDI_23_UNCONNECTED),
-        .Dbg_TDI_24(NLW_U0_Dbg_TDI_24_UNCONNECTED),
-        .Dbg_TDI_25(NLW_U0_Dbg_TDI_25_UNCONNECTED),
-        .Dbg_TDI_26(NLW_U0_Dbg_TDI_26_UNCONNECTED),
-        .Dbg_TDI_27(NLW_U0_Dbg_TDI_27_UNCONNECTED),
-        .Dbg_TDI_28(NLW_U0_Dbg_TDI_28_UNCONNECTED),
-        .Dbg_TDI_29(NLW_U0_Dbg_TDI_29_UNCONNECTED),
-        .Dbg_TDI_3(NLW_U0_Dbg_TDI_3_UNCONNECTED),
-        .Dbg_TDI_30(NLW_U0_Dbg_TDI_30_UNCONNECTED),
-        .Dbg_TDI_31(NLW_U0_Dbg_TDI_31_UNCONNECTED),
-        .Dbg_TDI_4(NLW_U0_Dbg_TDI_4_UNCONNECTED),
-        .Dbg_TDI_5(NLW_U0_Dbg_TDI_5_UNCONNECTED),
-        .Dbg_TDI_6(NLW_U0_Dbg_TDI_6_UNCONNECTED),
-        .Dbg_TDI_7(NLW_U0_Dbg_TDI_7_UNCONNECTED),
-        .Dbg_TDI_8(NLW_U0_Dbg_TDI_8_UNCONNECTED),
-        .Dbg_TDI_9(NLW_U0_Dbg_TDI_9_UNCONNECTED),
-        .Dbg_TDO_0(Dbg_TDO_0),
-        .Dbg_TDO_1(1'b0),
-        .Dbg_TDO_10(1'b0),
-        .Dbg_TDO_11(1'b0),
-        .Dbg_TDO_12(1'b0),
-        .Dbg_TDO_13(1'b0),
-        .Dbg_TDO_14(1'b0),
-        .Dbg_TDO_15(1'b0),
-        .Dbg_TDO_16(1'b0),
-        .Dbg_TDO_17(1'b0),
-        .Dbg_TDO_18(1'b0),
-        .Dbg_TDO_19(1'b0),
-        .Dbg_TDO_2(1'b0),
-        .Dbg_TDO_20(1'b0),
-        .Dbg_TDO_21(1'b0),
-        .Dbg_TDO_22(1'b0),
-        .Dbg_TDO_23(1'b0),
-        .Dbg_TDO_24(1'b0),
-        .Dbg_TDO_25(1'b0),
-        .Dbg_TDO_26(1'b0),
-        .Dbg_TDO_27(1'b0),
-        .Dbg_TDO_28(1'b0),
-        .Dbg_TDO_29(1'b0),
-        .Dbg_TDO_3(1'b0),
-        .Dbg_TDO_30(1'b0),
-        .Dbg_TDO_31(1'b0),
-        .Dbg_TDO_4(1'b0),
-        .Dbg_TDO_5(1'b0),
-        .Dbg_TDO_6(1'b0),
-        .Dbg_TDO_7(1'b0),
-        .Dbg_TDO_8(1'b0),
-        .Dbg_TDO_9(1'b0),
-        .Dbg_TrClk_0(NLW_U0_Dbg_TrClk_0_UNCONNECTED),
-        .Dbg_TrClk_1(NLW_U0_Dbg_TrClk_1_UNCONNECTED),
-        .Dbg_TrClk_10(NLW_U0_Dbg_TrClk_10_UNCONNECTED),
-        .Dbg_TrClk_11(NLW_U0_Dbg_TrClk_11_UNCONNECTED),
-        .Dbg_TrClk_12(NLW_U0_Dbg_TrClk_12_UNCONNECTED),
-        .Dbg_TrClk_13(NLW_U0_Dbg_TrClk_13_UNCONNECTED),
-        .Dbg_TrClk_14(NLW_U0_Dbg_TrClk_14_UNCONNECTED),
-        .Dbg_TrClk_15(NLW_U0_Dbg_TrClk_15_UNCONNECTED),
-        .Dbg_TrClk_16(NLW_U0_Dbg_TrClk_16_UNCONNECTED),
-        .Dbg_TrClk_17(NLW_U0_Dbg_TrClk_17_UNCONNECTED),
-        .Dbg_TrClk_18(NLW_U0_Dbg_TrClk_18_UNCONNECTED),
-        .Dbg_TrClk_19(NLW_U0_Dbg_TrClk_19_UNCONNECTED),
-        .Dbg_TrClk_2(NLW_U0_Dbg_TrClk_2_UNCONNECTED),
-        .Dbg_TrClk_20(NLW_U0_Dbg_TrClk_20_UNCONNECTED),
-        .Dbg_TrClk_21(NLW_U0_Dbg_TrClk_21_UNCONNECTED),
-        .Dbg_TrClk_22(NLW_U0_Dbg_TrClk_22_UNCONNECTED),
-        .Dbg_TrClk_23(NLW_U0_Dbg_TrClk_23_UNCONNECTED),
-        .Dbg_TrClk_24(NLW_U0_Dbg_TrClk_24_UNCONNECTED),
-        .Dbg_TrClk_25(NLW_U0_Dbg_TrClk_25_UNCONNECTED),
-        .Dbg_TrClk_26(NLW_U0_Dbg_TrClk_26_UNCONNECTED),
-        .Dbg_TrClk_27(NLW_U0_Dbg_TrClk_27_UNCONNECTED),
-        .Dbg_TrClk_28(NLW_U0_Dbg_TrClk_28_UNCONNECTED),
-        .Dbg_TrClk_29(NLW_U0_Dbg_TrClk_29_UNCONNECTED),
-        .Dbg_TrClk_3(NLW_U0_Dbg_TrClk_3_UNCONNECTED),
-        .Dbg_TrClk_30(NLW_U0_Dbg_TrClk_30_UNCONNECTED),
-        .Dbg_TrClk_31(NLW_U0_Dbg_TrClk_31_UNCONNECTED),
-        .Dbg_TrClk_4(NLW_U0_Dbg_TrClk_4_UNCONNECTED),
-        .Dbg_TrClk_5(NLW_U0_Dbg_TrClk_5_UNCONNECTED),
-        .Dbg_TrClk_6(NLW_U0_Dbg_TrClk_6_UNCONNECTED),
-        .Dbg_TrClk_7(NLW_U0_Dbg_TrClk_7_UNCONNECTED),
-        .Dbg_TrClk_8(NLW_U0_Dbg_TrClk_8_UNCONNECTED),
-        .Dbg_TrClk_9(NLW_U0_Dbg_TrClk_9_UNCONNECTED),
-        .Dbg_TrData_0({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_1({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_10({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_11({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_12({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_13({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_14({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_15({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_16({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_17({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_18({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_19({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_2({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_20({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_21({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_22({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_23({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_24({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_25({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_26({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_27({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_28({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_29({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_3({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_30({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_31({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_4({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_5({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_6({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_7({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_8({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrData_9({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_TrReady_0(NLW_U0_Dbg_TrReady_0_UNCONNECTED),
-        .Dbg_TrReady_1(NLW_U0_Dbg_TrReady_1_UNCONNECTED),
-        .Dbg_TrReady_10(NLW_U0_Dbg_TrReady_10_UNCONNECTED),
-        .Dbg_TrReady_11(NLW_U0_Dbg_TrReady_11_UNCONNECTED),
-        .Dbg_TrReady_12(NLW_U0_Dbg_TrReady_12_UNCONNECTED),
-        .Dbg_TrReady_13(NLW_U0_Dbg_TrReady_13_UNCONNECTED),
-        .Dbg_TrReady_14(NLW_U0_Dbg_TrReady_14_UNCONNECTED),
-        .Dbg_TrReady_15(NLW_U0_Dbg_TrReady_15_UNCONNECTED),
-        .Dbg_TrReady_16(NLW_U0_Dbg_TrReady_16_UNCONNECTED),
-        .Dbg_TrReady_17(NLW_U0_Dbg_TrReady_17_UNCONNECTED),
-        .Dbg_TrReady_18(NLW_U0_Dbg_TrReady_18_UNCONNECTED),
-        .Dbg_TrReady_19(NLW_U0_Dbg_TrReady_19_UNCONNECTED),
-        .Dbg_TrReady_2(NLW_U0_Dbg_TrReady_2_UNCONNECTED),
-        .Dbg_TrReady_20(NLW_U0_Dbg_TrReady_20_UNCONNECTED),
-        .Dbg_TrReady_21(NLW_U0_Dbg_TrReady_21_UNCONNECTED),
-        .Dbg_TrReady_22(NLW_U0_Dbg_TrReady_22_UNCONNECTED),
-        .Dbg_TrReady_23(NLW_U0_Dbg_TrReady_23_UNCONNECTED),
-        .Dbg_TrReady_24(NLW_U0_Dbg_TrReady_24_UNCONNECTED),
-        .Dbg_TrReady_25(NLW_U0_Dbg_TrReady_25_UNCONNECTED),
-        .Dbg_TrReady_26(NLW_U0_Dbg_TrReady_26_UNCONNECTED),
-        .Dbg_TrReady_27(NLW_U0_Dbg_TrReady_27_UNCONNECTED),
-        .Dbg_TrReady_28(NLW_U0_Dbg_TrReady_28_UNCONNECTED),
-        .Dbg_TrReady_29(NLW_U0_Dbg_TrReady_29_UNCONNECTED),
-        .Dbg_TrReady_3(NLW_U0_Dbg_TrReady_3_UNCONNECTED),
-        .Dbg_TrReady_30(NLW_U0_Dbg_TrReady_30_UNCONNECTED),
-        .Dbg_TrReady_31(NLW_U0_Dbg_TrReady_31_UNCONNECTED),
-        .Dbg_TrReady_4(NLW_U0_Dbg_TrReady_4_UNCONNECTED),
-        .Dbg_TrReady_5(NLW_U0_Dbg_TrReady_5_UNCONNECTED),
-        .Dbg_TrReady_6(NLW_U0_Dbg_TrReady_6_UNCONNECTED),
-        .Dbg_TrReady_7(NLW_U0_Dbg_TrReady_7_UNCONNECTED),
-        .Dbg_TrReady_8(NLW_U0_Dbg_TrReady_8_UNCONNECTED),
-        .Dbg_TrReady_9(NLW_U0_Dbg_TrReady_9_UNCONNECTED),
-        .Dbg_TrValid_0(1'b0),
-        .Dbg_TrValid_1(1'b0),
-        .Dbg_TrValid_10(1'b0),
-        .Dbg_TrValid_11(1'b0),
-        .Dbg_TrValid_12(1'b0),
-        .Dbg_TrValid_13(1'b0),
-        .Dbg_TrValid_14(1'b0),
-        .Dbg_TrValid_15(1'b0),
-        .Dbg_TrValid_16(1'b0),
-        .Dbg_TrValid_17(1'b0),
-        .Dbg_TrValid_18(1'b0),
-        .Dbg_TrValid_19(1'b0),
-        .Dbg_TrValid_2(1'b0),
-        .Dbg_TrValid_20(1'b0),
-        .Dbg_TrValid_21(1'b0),
-        .Dbg_TrValid_22(1'b0),
-        .Dbg_TrValid_23(1'b0),
-        .Dbg_TrValid_24(1'b0),
-        .Dbg_TrValid_25(1'b0),
-        .Dbg_TrValid_26(1'b0),
-        .Dbg_TrValid_27(1'b0),
-        .Dbg_TrValid_28(1'b0),
-        .Dbg_TrValid_29(1'b0),
-        .Dbg_TrValid_3(1'b0),
-        .Dbg_TrValid_30(1'b0),
-        .Dbg_TrValid_31(1'b0),
-        .Dbg_TrValid_4(1'b0),
-        .Dbg_TrValid_5(1'b0),
-        .Dbg_TrValid_6(1'b0),
-        .Dbg_TrValid_7(1'b0),
-        .Dbg_TrValid_8(1'b0),
-        .Dbg_TrValid_9(1'b0),
-        .Dbg_Trig_Ack_In_0(Dbg_Trig_Ack_In_0),
-        .Dbg_Trig_Ack_In_1(NLW_U0_Dbg_Trig_Ack_In_1_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_10(NLW_U0_Dbg_Trig_Ack_In_10_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_11(NLW_U0_Dbg_Trig_Ack_In_11_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_12(NLW_U0_Dbg_Trig_Ack_In_12_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_13(NLW_U0_Dbg_Trig_Ack_In_13_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_14(NLW_U0_Dbg_Trig_Ack_In_14_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_15(NLW_U0_Dbg_Trig_Ack_In_15_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_16(NLW_U0_Dbg_Trig_Ack_In_16_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_17(NLW_U0_Dbg_Trig_Ack_In_17_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_18(NLW_U0_Dbg_Trig_Ack_In_18_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_19(NLW_U0_Dbg_Trig_Ack_In_19_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_2(NLW_U0_Dbg_Trig_Ack_In_2_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_20(NLW_U0_Dbg_Trig_Ack_In_20_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_21(NLW_U0_Dbg_Trig_Ack_In_21_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_22(NLW_U0_Dbg_Trig_Ack_In_22_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_23(NLW_U0_Dbg_Trig_Ack_In_23_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_24(NLW_U0_Dbg_Trig_Ack_In_24_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_25(NLW_U0_Dbg_Trig_Ack_In_25_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_26(NLW_U0_Dbg_Trig_Ack_In_26_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_27(NLW_U0_Dbg_Trig_Ack_In_27_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_28(NLW_U0_Dbg_Trig_Ack_In_28_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_29(NLW_U0_Dbg_Trig_Ack_In_29_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_3(NLW_U0_Dbg_Trig_Ack_In_3_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_30(NLW_U0_Dbg_Trig_Ack_In_30_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_31(NLW_U0_Dbg_Trig_Ack_In_31_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_4(NLW_U0_Dbg_Trig_Ack_In_4_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_5(NLW_U0_Dbg_Trig_Ack_In_5_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_6(NLW_U0_Dbg_Trig_Ack_In_6_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_7(NLW_U0_Dbg_Trig_Ack_In_7_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_8(NLW_U0_Dbg_Trig_Ack_In_8_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_In_9(NLW_U0_Dbg_Trig_Ack_In_9_UNCONNECTED[0:7]),
-        .Dbg_Trig_Ack_Out_0(Dbg_Trig_Ack_Out_0),
-        .Dbg_Trig_Ack_Out_1({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_10({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_11({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_12({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_13({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_14({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_15({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_16({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_17({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_18({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_19({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_2({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_20({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_21({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_22({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_23({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_24({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_25({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_26({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_27({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_28({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_29({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_3({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_30({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_31({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_4({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_5({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_6({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_7({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_8({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Ack_Out_9({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_0(Dbg_Trig_In_0),
-        .Dbg_Trig_In_1({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_10({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_11({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_12({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_13({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_14({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_15({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_16({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_17({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_18({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_19({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_2({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_20({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_21({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_22({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_23({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_24({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_25({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_26({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_27({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_28({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_29({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_3({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_30({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_31({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_4({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_5({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_6({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_7({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_8({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_In_9({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .Dbg_Trig_Out_0(Dbg_Trig_Out_0),
-        .Dbg_Trig_Out_1(NLW_U0_Dbg_Trig_Out_1_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_10(NLW_U0_Dbg_Trig_Out_10_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_11(NLW_U0_Dbg_Trig_Out_11_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_12(NLW_U0_Dbg_Trig_Out_12_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_13(NLW_U0_Dbg_Trig_Out_13_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_14(NLW_U0_Dbg_Trig_Out_14_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_15(NLW_U0_Dbg_Trig_Out_15_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_16(NLW_U0_Dbg_Trig_Out_16_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_17(NLW_U0_Dbg_Trig_Out_17_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_18(NLW_U0_Dbg_Trig_Out_18_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_19(NLW_U0_Dbg_Trig_Out_19_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_2(NLW_U0_Dbg_Trig_Out_2_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_20(NLW_U0_Dbg_Trig_Out_20_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_21(NLW_U0_Dbg_Trig_Out_21_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_22(NLW_U0_Dbg_Trig_Out_22_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_23(NLW_U0_Dbg_Trig_Out_23_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_24(NLW_U0_Dbg_Trig_Out_24_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_25(NLW_U0_Dbg_Trig_Out_25_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_26(NLW_U0_Dbg_Trig_Out_26_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_27(NLW_U0_Dbg_Trig_Out_27_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_28(NLW_U0_Dbg_Trig_Out_28_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_29(NLW_U0_Dbg_Trig_Out_29_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_3(NLW_U0_Dbg_Trig_Out_3_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_30(NLW_U0_Dbg_Trig_Out_30_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_31(NLW_U0_Dbg_Trig_Out_31_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_4(NLW_U0_Dbg_Trig_Out_4_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_5(NLW_U0_Dbg_Trig_Out_5_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_6(NLW_U0_Dbg_Trig_Out_6_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_7(NLW_U0_Dbg_Trig_Out_7_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_8(NLW_U0_Dbg_Trig_Out_8_UNCONNECTED[0:7]),
-        .Dbg_Trig_Out_9(NLW_U0_Dbg_Trig_Out_9_UNCONNECTED[0:7]),
-        .Dbg_Update_0(Dbg_Update_0),
-        .Dbg_Update_1(NLW_U0_Dbg_Update_1_UNCONNECTED),
-        .Dbg_Update_10(NLW_U0_Dbg_Update_10_UNCONNECTED),
-        .Dbg_Update_11(NLW_U0_Dbg_Update_11_UNCONNECTED),
-        .Dbg_Update_12(NLW_U0_Dbg_Update_12_UNCONNECTED),
-        .Dbg_Update_13(NLW_U0_Dbg_Update_13_UNCONNECTED),
-        .Dbg_Update_14(NLW_U0_Dbg_Update_14_UNCONNECTED),
-        .Dbg_Update_15(NLW_U0_Dbg_Update_15_UNCONNECTED),
-        .Dbg_Update_16(NLW_U0_Dbg_Update_16_UNCONNECTED),
-        .Dbg_Update_17(NLW_U0_Dbg_Update_17_UNCONNECTED),
-        .Dbg_Update_18(NLW_U0_Dbg_Update_18_UNCONNECTED),
-        .Dbg_Update_19(NLW_U0_Dbg_Update_19_UNCONNECTED),
-        .Dbg_Update_2(NLW_U0_Dbg_Update_2_UNCONNECTED),
-        .Dbg_Update_20(NLW_U0_Dbg_Update_20_UNCONNECTED),
-        .Dbg_Update_21(NLW_U0_Dbg_Update_21_UNCONNECTED),
-        .Dbg_Update_22(NLW_U0_Dbg_Update_22_UNCONNECTED),
-        .Dbg_Update_23(NLW_U0_Dbg_Update_23_UNCONNECTED),
-        .Dbg_Update_24(NLW_U0_Dbg_Update_24_UNCONNECTED),
-        .Dbg_Update_25(NLW_U0_Dbg_Update_25_UNCONNECTED),
-        .Dbg_Update_26(NLW_U0_Dbg_Update_26_UNCONNECTED),
-        .Dbg_Update_27(NLW_U0_Dbg_Update_27_UNCONNECTED),
-        .Dbg_Update_28(NLW_U0_Dbg_Update_28_UNCONNECTED),
-        .Dbg_Update_29(NLW_U0_Dbg_Update_29_UNCONNECTED),
-        .Dbg_Update_3(NLW_U0_Dbg_Update_3_UNCONNECTED),
-        .Dbg_Update_30(NLW_U0_Dbg_Update_30_UNCONNECTED),
-        .Dbg_Update_31(NLW_U0_Dbg_Update_31_UNCONNECTED),
-        .Dbg_Update_4(NLW_U0_Dbg_Update_4_UNCONNECTED),
-        .Dbg_Update_5(NLW_U0_Dbg_Update_5_UNCONNECTED),
-        .Dbg_Update_6(NLW_U0_Dbg_Update_6_UNCONNECTED),
-        .Dbg_Update_7(NLW_U0_Dbg_Update_7_UNCONNECTED),
-        .Dbg_Update_8(NLW_U0_Dbg_Update_8_UNCONNECTED),
-        .Dbg_Update_9(NLW_U0_Dbg_Update_9_UNCONNECTED),
-        .Dbg_WDATA_0(NLW_U0_Dbg_WDATA_0_UNCONNECTED[31:0]),
-        .Dbg_WDATA_1(NLW_U0_Dbg_WDATA_1_UNCONNECTED[31:0]),
-        .Dbg_WDATA_10(NLW_U0_Dbg_WDATA_10_UNCONNECTED[31:0]),
-        .Dbg_WDATA_11(NLW_U0_Dbg_WDATA_11_UNCONNECTED[31:0]),
-        .Dbg_WDATA_12(NLW_U0_Dbg_WDATA_12_UNCONNECTED[31:0]),
-        .Dbg_WDATA_13(NLW_U0_Dbg_WDATA_13_UNCONNECTED[31:0]),
-        .Dbg_WDATA_14(NLW_U0_Dbg_WDATA_14_UNCONNECTED[31:0]),
-        .Dbg_WDATA_15(NLW_U0_Dbg_WDATA_15_UNCONNECTED[31:0]),
-        .Dbg_WDATA_16(NLW_U0_Dbg_WDATA_16_UNCONNECTED[31:0]),
-        .Dbg_WDATA_17(NLW_U0_Dbg_WDATA_17_UNCONNECTED[31:0]),
-        .Dbg_WDATA_18(NLW_U0_Dbg_WDATA_18_UNCONNECTED[31:0]),
-        .Dbg_WDATA_19(NLW_U0_Dbg_WDATA_19_UNCONNECTED[31:0]),
-        .Dbg_WDATA_2(NLW_U0_Dbg_WDATA_2_UNCONNECTED[31:0]),
-        .Dbg_WDATA_20(NLW_U0_Dbg_WDATA_20_UNCONNECTED[31:0]),
-        .Dbg_WDATA_21(NLW_U0_Dbg_WDATA_21_UNCONNECTED[31:0]),
-        .Dbg_WDATA_22(NLW_U0_Dbg_WDATA_22_UNCONNECTED[31:0]),
-        .Dbg_WDATA_23(NLW_U0_Dbg_WDATA_23_UNCONNECTED[31:0]),
-        .Dbg_WDATA_24(NLW_U0_Dbg_WDATA_24_UNCONNECTED[31:0]),
-        .Dbg_WDATA_25(NLW_U0_Dbg_WDATA_25_UNCONNECTED[31:0]),
-        .Dbg_WDATA_26(NLW_U0_Dbg_WDATA_26_UNCONNECTED[31:0]),
-        .Dbg_WDATA_27(NLW_U0_Dbg_WDATA_27_UNCONNECTED[31:0]),
-        .Dbg_WDATA_28(NLW_U0_Dbg_WDATA_28_UNCONNECTED[31:0]),
-        .Dbg_WDATA_29(NLW_U0_Dbg_WDATA_29_UNCONNECTED[31:0]),
-        .Dbg_WDATA_3(NLW_U0_Dbg_WDATA_3_UNCONNECTED[31:0]),
-        .Dbg_WDATA_30(NLW_U0_Dbg_WDATA_30_UNCONNECTED[31:0]),
-        .Dbg_WDATA_31(NLW_U0_Dbg_WDATA_31_UNCONNECTED[31:0]),
-        .Dbg_WDATA_4(NLW_U0_Dbg_WDATA_4_UNCONNECTED[31:0]),
-        .Dbg_WDATA_5(NLW_U0_Dbg_WDATA_5_UNCONNECTED[31:0]),
-        .Dbg_WDATA_6(NLW_U0_Dbg_WDATA_6_UNCONNECTED[31:0]),
-        .Dbg_WDATA_7(NLW_U0_Dbg_WDATA_7_UNCONNECTED[31:0]),
-        .Dbg_WDATA_8(NLW_U0_Dbg_WDATA_8_UNCONNECTED[31:0]),
-        .Dbg_WDATA_9(NLW_U0_Dbg_WDATA_9_UNCONNECTED[31:0]),
-        .Dbg_WREADY_0(1'b0),
-        .Dbg_WREADY_1(1'b0),
-        .Dbg_WREADY_10(1'b0),
-        .Dbg_WREADY_11(1'b0),
-        .Dbg_WREADY_12(1'b0),
-        .Dbg_WREADY_13(1'b0),
-        .Dbg_WREADY_14(1'b0),
-        .Dbg_WREADY_15(1'b0),
-        .Dbg_WREADY_16(1'b0),
-        .Dbg_WREADY_17(1'b0),
-        .Dbg_WREADY_18(1'b0),
-        .Dbg_WREADY_19(1'b0),
-        .Dbg_WREADY_2(1'b0),
-        .Dbg_WREADY_20(1'b0),
-        .Dbg_WREADY_21(1'b0),
-        .Dbg_WREADY_22(1'b0),
-        .Dbg_WREADY_23(1'b0),
-        .Dbg_WREADY_24(1'b0),
-        .Dbg_WREADY_25(1'b0),
-        .Dbg_WREADY_26(1'b0),
-        .Dbg_WREADY_27(1'b0),
-        .Dbg_WREADY_28(1'b0),
-        .Dbg_WREADY_29(1'b0),
-        .Dbg_WREADY_3(1'b0),
-        .Dbg_WREADY_30(1'b0),
-        .Dbg_WREADY_31(1'b0),
-        .Dbg_WREADY_4(1'b0),
-        .Dbg_WREADY_5(1'b0),
-        .Dbg_WREADY_6(1'b0),
-        .Dbg_WREADY_7(1'b0),
-        .Dbg_WREADY_8(1'b0),
-        .Dbg_WREADY_9(1'b0),
-        .Dbg_WVALID_0(NLW_U0_Dbg_WVALID_0_UNCONNECTED),
-        .Dbg_WVALID_1(NLW_U0_Dbg_WVALID_1_UNCONNECTED),
-        .Dbg_WVALID_10(NLW_U0_Dbg_WVALID_10_UNCONNECTED),
-        .Dbg_WVALID_11(NLW_U0_Dbg_WVALID_11_UNCONNECTED),
-        .Dbg_WVALID_12(NLW_U0_Dbg_WVALID_12_UNCONNECTED),
-        .Dbg_WVALID_13(NLW_U0_Dbg_WVALID_13_UNCONNECTED),
-        .Dbg_WVALID_14(NLW_U0_Dbg_WVALID_14_UNCONNECTED),
-        .Dbg_WVALID_15(NLW_U0_Dbg_WVALID_15_UNCONNECTED),
-        .Dbg_WVALID_16(NLW_U0_Dbg_WVALID_16_UNCONNECTED),
-        .Dbg_WVALID_17(NLW_U0_Dbg_WVALID_17_UNCONNECTED),
-        .Dbg_WVALID_18(NLW_U0_Dbg_WVALID_18_UNCONNECTED),
-        .Dbg_WVALID_19(NLW_U0_Dbg_WVALID_19_UNCONNECTED),
-        .Dbg_WVALID_2(NLW_U0_Dbg_WVALID_2_UNCONNECTED),
-        .Dbg_WVALID_20(NLW_U0_Dbg_WVALID_20_UNCONNECTED),
-        .Dbg_WVALID_21(NLW_U0_Dbg_WVALID_21_UNCONNECTED),
-        .Dbg_WVALID_22(NLW_U0_Dbg_WVALID_22_UNCONNECTED),
-        .Dbg_WVALID_23(NLW_U0_Dbg_WVALID_23_UNCONNECTED),
-        .Dbg_WVALID_24(NLW_U0_Dbg_WVALID_24_UNCONNECTED),
-        .Dbg_WVALID_25(NLW_U0_Dbg_WVALID_25_UNCONNECTED),
-        .Dbg_WVALID_26(NLW_U0_Dbg_WVALID_26_UNCONNECTED),
-        .Dbg_WVALID_27(NLW_U0_Dbg_WVALID_27_UNCONNECTED),
-        .Dbg_WVALID_28(NLW_U0_Dbg_WVALID_28_UNCONNECTED),
-        .Dbg_WVALID_29(NLW_U0_Dbg_WVALID_29_UNCONNECTED),
-        .Dbg_WVALID_3(NLW_U0_Dbg_WVALID_3_UNCONNECTED),
-        .Dbg_WVALID_30(NLW_U0_Dbg_WVALID_30_UNCONNECTED),
-        .Dbg_WVALID_31(NLW_U0_Dbg_WVALID_31_UNCONNECTED),
-        .Dbg_WVALID_4(NLW_U0_Dbg_WVALID_4_UNCONNECTED),
-        .Dbg_WVALID_5(NLW_U0_Dbg_WVALID_5_UNCONNECTED),
-        .Dbg_WVALID_6(NLW_U0_Dbg_WVALID_6_UNCONNECTED),
-        .Dbg_WVALID_7(NLW_U0_Dbg_WVALID_7_UNCONNECTED),
-        .Dbg_WVALID_8(NLW_U0_Dbg_WVALID_8_UNCONNECTED),
-        .Dbg_WVALID_9(NLW_U0_Dbg_WVALID_9_UNCONNECTED),
-        .Debug_SYS_Rst(Debug_SYS_Rst),
-        .Ext_BRK(NLW_U0_Ext_BRK_UNCONNECTED),
-        .Ext_JTAG_CAPTURE(NLW_U0_Ext_JTAG_CAPTURE_UNCONNECTED),
-        .Ext_JTAG_DRCK(NLW_U0_Ext_JTAG_DRCK_UNCONNECTED),
-        .Ext_JTAG_RESET(NLW_U0_Ext_JTAG_RESET_UNCONNECTED),
-        .Ext_JTAG_SEL(NLW_U0_Ext_JTAG_SEL_UNCONNECTED),
-        .Ext_JTAG_SHIFT(NLW_U0_Ext_JTAG_SHIFT_UNCONNECTED),
-        .Ext_JTAG_TDI(NLW_U0_Ext_JTAG_TDI_UNCONNECTED),
-        .Ext_JTAG_TDO(1'b0),
-        .Ext_JTAG_UPDATE(NLW_U0_Ext_JTAG_UPDATE_UNCONNECTED),
-        .Ext_NM_BRK(NLW_U0_Ext_NM_BRK_UNCONNECTED),
-        .Interrupt(NLW_U0_Interrupt_UNCONNECTED),
-        .LMB_Addr_Strobe_0(LMB_Addr_Strobe_0),
-        .LMB_Addr_Strobe_1(NLW_U0_LMB_Addr_Strobe_1_UNCONNECTED),
-        .LMB_Addr_Strobe_10(NLW_U0_LMB_Addr_Strobe_10_UNCONNECTED),
-        .LMB_Addr_Strobe_11(NLW_U0_LMB_Addr_Strobe_11_UNCONNECTED),
-        .LMB_Addr_Strobe_12(NLW_U0_LMB_Addr_Strobe_12_UNCONNECTED),
-        .LMB_Addr_Strobe_13(NLW_U0_LMB_Addr_Strobe_13_UNCONNECTED),
-        .LMB_Addr_Strobe_14(NLW_U0_LMB_Addr_Strobe_14_UNCONNECTED),
-        .LMB_Addr_Strobe_15(NLW_U0_LMB_Addr_Strobe_15_UNCONNECTED),
-        .LMB_Addr_Strobe_16(NLW_U0_LMB_Addr_Strobe_16_UNCONNECTED),
-        .LMB_Addr_Strobe_17(NLW_U0_LMB_Addr_Strobe_17_UNCONNECTED),
-        .LMB_Addr_Strobe_18(NLW_U0_LMB_Addr_Strobe_18_UNCONNECTED),
-        .LMB_Addr_Strobe_19(NLW_U0_LMB_Addr_Strobe_19_UNCONNECTED),
-        .LMB_Addr_Strobe_2(NLW_U0_LMB_Addr_Strobe_2_UNCONNECTED),
-        .LMB_Addr_Strobe_20(NLW_U0_LMB_Addr_Strobe_20_UNCONNECTED),
-        .LMB_Addr_Strobe_21(NLW_U0_LMB_Addr_Strobe_21_UNCONNECTED),
-        .LMB_Addr_Strobe_22(NLW_U0_LMB_Addr_Strobe_22_UNCONNECTED),
-        .LMB_Addr_Strobe_23(NLW_U0_LMB_Addr_Strobe_23_UNCONNECTED),
-        .LMB_Addr_Strobe_24(NLW_U0_LMB_Addr_Strobe_24_UNCONNECTED),
-        .LMB_Addr_Strobe_25(NLW_U0_LMB_Addr_Strobe_25_UNCONNECTED),
-        .LMB_Addr_Strobe_26(NLW_U0_LMB_Addr_Strobe_26_UNCONNECTED),
-        .LMB_Addr_Strobe_27(NLW_U0_LMB_Addr_Strobe_27_UNCONNECTED),
-        .LMB_Addr_Strobe_28(NLW_U0_LMB_Addr_Strobe_28_UNCONNECTED),
-        .LMB_Addr_Strobe_29(NLW_U0_LMB_Addr_Strobe_29_UNCONNECTED),
-        .LMB_Addr_Strobe_3(NLW_U0_LMB_Addr_Strobe_3_UNCONNECTED),
-        .LMB_Addr_Strobe_30(NLW_U0_LMB_Addr_Strobe_30_UNCONNECTED),
-        .LMB_Addr_Strobe_31(NLW_U0_LMB_Addr_Strobe_31_UNCONNECTED),
-        .LMB_Addr_Strobe_4(NLW_U0_LMB_Addr_Strobe_4_UNCONNECTED),
-        .LMB_Addr_Strobe_5(NLW_U0_LMB_Addr_Strobe_5_UNCONNECTED),
-        .LMB_Addr_Strobe_6(NLW_U0_LMB_Addr_Strobe_6_UNCONNECTED),
-        .LMB_Addr_Strobe_7(NLW_U0_LMB_Addr_Strobe_7_UNCONNECTED),
-        .LMB_Addr_Strobe_8(NLW_U0_LMB_Addr_Strobe_8_UNCONNECTED),
-        .LMB_Addr_Strobe_9(NLW_U0_LMB_Addr_Strobe_9_UNCONNECTED),
-        .LMB_Byte_Enable_0(LMB_Byte_Enable_0),
-        .LMB_Byte_Enable_1(NLW_U0_LMB_Byte_Enable_1_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_10(NLW_U0_LMB_Byte_Enable_10_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_11(NLW_U0_LMB_Byte_Enable_11_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_12(NLW_U0_LMB_Byte_Enable_12_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_13(NLW_U0_LMB_Byte_Enable_13_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_14(NLW_U0_LMB_Byte_Enable_14_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_15(NLW_U0_LMB_Byte_Enable_15_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_16(NLW_U0_LMB_Byte_Enable_16_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_17(NLW_U0_LMB_Byte_Enable_17_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_18(NLW_U0_LMB_Byte_Enable_18_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_19(NLW_U0_LMB_Byte_Enable_19_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_2(NLW_U0_LMB_Byte_Enable_2_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_20(NLW_U0_LMB_Byte_Enable_20_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_21(NLW_U0_LMB_Byte_Enable_21_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_22(NLW_U0_LMB_Byte_Enable_22_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_23(NLW_U0_LMB_Byte_Enable_23_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_24(NLW_U0_LMB_Byte_Enable_24_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_25(NLW_U0_LMB_Byte_Enable_25_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_26(NLW_U0_LMB_Byte_Enable_26_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_27(NLW_U0_LMB_Byte_Enable_27_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_28(NLW_U0_LMB_Byte_Enable_28_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_29(NLW_U0_LMB_Byte_Enable_29_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_3(NLW_U0_LMB_Byte_Enable_3_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_30(NLW_U0_LMB_Byte_Enable_30_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_31(NLW_U0_LMB_Byte_Enable_31_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_4(NLW_U0_LMB_Byte_Enable_4_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_5(NLW_U0_LMB_Byte_Enable_5_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_6(NLW_U0_LMB_Byte_Enable_6_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_7(NLW_U0_LMB_Byte_Enable_7_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_8(NLW_U0_LMB_Byte_Enable_8_UNCONNECTED[0:3]),
-        .LMB_Byte_Enable_9(NLW_U0_LMB_Byte_Enable_9_UNCONNECTED[0:3]),
-        .LMB_CE_0(LMB_CE_0),
-        .LMB_CE_1(1'b0),
-        .LMB_CE_10(1'b0),
-        .LMB_CE_11(1'b0),
-        .LMB_CE_12(1'b0),
-        .LMB_CE_13(1'b0),
-        .LMB_CE_14(1'b0),
-        .LMB_CE_15(1'b0),
-        .LMB_CE_16(1'b0),
-        .LMB_CE_17(1'b0),
-        .LMB_CE_18(1'b0),
-        .LMB_CE_19(1'b0),
-        .LMB_CE_2(1'b0),
-        .LMB_CE_20(1'b0),
-        .LMB_CE_21(1'b0),
-        .LMB_CE_22(1'b0),
-        .LMB_CE_23(1'b0),
-        .LMB_CE_24(1'b0),
-        .LMB_CE_25(1'b0),
-        .LMB_CE_26(1'b0),
-        .LMB_CE_27(1'b0),
-        .LMB_CE_28(1'b0),
-        .LMB_CE_29(1'b0),
-        .LMB_CE_3(1'b0),
-        .LMB_CE_30(1'b0),
-        .LMB_CE_31(1'b0),
-        .LMB_CE_4(1'b0),
-        .LMB_CE_5(1'b0),
-        .LMB_CE_6(1'b0),
-        .LMB_CE_7(1'b0),
-        .LMB_CE_8(1'b0),
-        .LMB_CE_9(1'b0),
-        .LMB_Data_Addr_0(LMB_Data_Addr_0),
-        .LMB_Data_Addr_1(NLW_U0_LMB_Data_Addr_1_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_10(NLW_U0_LMB_Data_Addr_10_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_11(NLW_U0_LMB_Data_Addr_11_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_12(NLW_U0_LMB_Data_Addr_12_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_13(NLW_U0_LMB_Data_Addr_13_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_14(NLW_U0_LMB_Data_Addr_14_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_15(NLW_U0_LMB_Data_Addr_15_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_16(NLW_U0_LMB_Data_Addr_16_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_17(NLW_U0_LMB_Data_Addr_17_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_18(NLW_U0_LMB_Data_Addr_18_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_19(NLW_U0_LMB_Data_Addr_19_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_2(NLW_U0_LMB_Data_Addr_2_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_20(NLW_U0_LMB_Data_Addr_20_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_21(NLW_U0_LMB_Data_Addr_21_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_22(NLW_U0_LMB_Data_Addr_22_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_23(NLW_U0_LMB_Data_Addr_23_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_24(NLW_U0_LMB_Data_Addr_24_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_25(NLW_U0_LMB_Data_Addr_25_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_26(NLW_U0_LMB_Data_Addr_26_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_27(NLW_U0_LMB_Data_Addr_27_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_28(NLW_U0_LMB_Data_Addr_28_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_29(NLW_U0_LMB_Data_Addr_29_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_3(NLW_U0_LMB_Data_Addr_3_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_30(NLW_U0_LMB_Data_Addr_30_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_31(NLW_U0_LMB_Data_Addr_31_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_4(NLW_U0_LMB_Data_Addr_4_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_5(NLW_U0_LMB_Data_Addr_5_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_6(NLW_U0_LMB_Data_Addr_6_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_7(NLW_U0_LMB_Data_Addr_7_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_8(NLW_U0_LMB_Data_Addr_8_UNCONNECTED[0:31]),
-        .LMB_Data_Addr_9(NLW_U0_LMB_Data_Addr_9_UNCONNECTED[0:31]),
-        .LMB_Data_Read_0(LMB_Data_Read_0),
-        .LMB_Data_Read_1({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_10({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_11({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_12({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_13({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_14({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_15({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_16({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_17({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_18({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_19({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_2({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_20({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_21({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_22({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_23({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_24({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_25({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_26({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_27({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_28({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_29({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_3({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_30({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_31({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_4({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_5({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_6({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_7({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_8({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Read_9({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .LMB_Data_Write_0(LMB_Data_Write_0),
-        .LMB_Data_Write_1(NLW_U0_LMB_Data_Write_1_UNCONNECTED[0:31]),
-        .LMB_Data_Write_10(NLW_U0_LMB_Data_Write_10_UNCONNECTED[0:31]),
-        .LMB_Data_Write_11(NLW_U0_LMB_Data_Write_11_UNCONNECTED[0:31]),
-        .LMB_Data_Write_12(NLW_U0_LMB_Data_Write_12_UNCONNECTED[0:31]),
-        .LMB_Data_Write_13(NLW_U0_LMB_Data_Write_13_UNCONNECTED[0:31]),
-        .LMB_Data_Write_14(NLW_U0_LMB_Data_Write_14_UNCONNECTED[0:31]),
-        .LMB_Data_Write_15(NLW_U0_LMB_Data_Write_15_UNCONNECTED[0:31]),
-        .LMB_Data_Write_16(NLW_U0_LMB_Data_Write_16_UNCONNECTED[0:31]),
-        .LMB_Data_Write_17(NLW_U0_LMB_Data_Write_17_UNCONNECTED[0:31]),
-        .LMB_Data_Write_18(NLW_U0_LMB_Data_Write_18_UNCONNECTED[0:31]),
-        .LMB_Data_Write_19(NLW_U0_LMB_Data_Write_19_UNCONNECTED[0:31]),
-        .LMB_Data_Write_2(NLW_U0_LMB_Data_Write_2_UNCONNECTED[0:31]),
-        .LMB_Data_Write_20(NLW_U0_LMB_Data_Write_20_UNCONNECTED[0:31]),
-        .LMB_Data_Write_21(NLW_U0_LMB_Data_Write_21_UNCONNECTED[0:31]),
-        .LMB_Data_Write_22(NLW_U0_LMB_Data_Write_22_UNCONNECTED[0:31]),
-        .LMB_Data_Write_23(NLW_U0_LMB_Data_Write_23_UNCONNECTED[0:31]),
-        .LMB_Data_Write_24(NLW_U0_LMB_Data_Write_24_UNCONNECTED[0:31]),
-        .LMB_Data_Write_25(NLW_U0_LMB_Data_Write_25_UNCONNECTED[0:31]),
-        .LMB_Data_Write_26(NLW_U0_LMB_Data_Write_26_UNCONNECTED[0:31]),
-        .LMB_Data_Write_27(NLW_U0_LMB_Data_Write_27_UNCONNECTED[0:31]),
-        .LMB_Data_Write_28(NLW_U0_LMB_Data_Write_28_UNCONNECTED[0:31]),
-        .LMB_Data_Write_29(NLW_U0_LMB_Data_Write_29_UNCONNECTED[0:31]),
-        .LMB_Data_Write_3(NLW_U0_LMB_Data_Write_3_UNCONNECTED[0:31]),
-        .LMB_Data_Write_30(NLW_U0_LMB_Data_Write_30_UNCONNECTED[0:31]),
-        .LMB_Data_Write_31(NLW_U0_LMB_Data_Write_31_UNCONNECTED[0:31]),
-        .LMB_Data_Write_4(NLW_U0_LMB_Data_Write_4_UNCONNECTED[0:31]),
-        .LMB_Data_Write_5(NLW_U0_LMB_Data_Write_5_UNCONNECTED[0:31]),
-        .LMB_Data_Write_6(NLW_U0_LMB_Data_Write_6_UNCONNECTED[0:31]),
-        .LMB_Data_Write_7(NLW_U0_LMB_Data_Write_7_UNCONNECTED[0:31]),
-        .LMB_Data_Write_8(NLW_U0_LMB_Data_Write_8_UNCONNECTED[0:31]),
-        .LMB_Data_Write_9(NLW_U0_LMB_Data_Write_9_UNCONNECTED[0:31]),
-        .LMB_Read_Strobe_0(LMB_Read_Strobe_0),
-        .LMB_Read_Strobe_1(NLW_U0_LMB_Read_Strobe_1_UNCONNECTED),
-        .LMB_Read_Strobe_10(NLW_U0_LMB_Read_Strobe_10_UNCONNECTED),
-        .LMB_Read_Strobe_11(NLW_U0_LMB_Read_Strobe_11_UNCONNECTED),
-        .LMB_Read_Strobe_12(NLW_U0_LMB_Read_Strobe_12_UNCONNECTED),
-        .LMB_Read_Strobe_13(NLW_U0_LMB_Read_Strobe_13_UNCONNECTED),
-        .LMB_Read_Strobe_14(NLW_U0_LMB_Read_Strobe_14_UNCONNECTED),
-        .LMB_Read_Strobe_15(NLW_U0_LMB_Read_Strobe_15_UNCONNECTED),
-        .LMB_Read_Strobe_16(NLW_U0_LMB_Read_Strobe_16_UNCONNECTED),
-        .LMB_Read_Strobe_17(NLW_U0_LMB_Read_Strobe_17_UNCONNECTED),
-        .LMB_Read_Strobe_18(NLW_U0_LMB_Read_Strobe_18_UNCONNECTED),
-        .LMB_Read_Strobe_19(NLW_U0_LMB_Read_Strobe_19_UNCONNECTED),
-        .LMB_Read_Strobe_2(NLW_U0_LMB_Read_Strobe_2_UNCONNECTED),
-        .LMB_Read_Strobe_20(NLW_U0_LMB_Read_Strobe_20_UNCONNECTED),
-        .LMB_Read_Strobe_21(NLW_U0_LMB_Read_Strobe_21_UNCONNECTED),
-        .LMB_Read_Strobe_22(NLW_U0_LMB_Read_Strobe_22_UNCONNECTED),
-        .LMB_Read_Strobe_23(NLW_U0_LMB_Read_Strobe_23_UNCONNECTED),
-        .LMB_Read_Strobe_24(NLW_U0_LMB_Read_Strobe_24_UNCONNECTED),
-        .LMB_Read_Strobe_25(NLW_U0_LMB_Read_Strobe_25_UNCONNECTED),
-        .LMB_Read_Strobe_26(NLW_U0_LMB_Read_Strobe_26_UNCONNECTED),
-        .LMB_Read_Strobe_27(NLW_U0_LMB_Read_Strobe_27_UNCONNECTED),
-        .LMB_Read_Strobe_28(NLW_U0_LMB_Read_Strobe_28_UNCONNECTED),
-        .LMB_Read_Strobe_29(NLW_U0_LMB_Read_Strobe_29_UNCONNECTED),
-        .LMB_Read_Strobe_3(NLW_U0_LMB_Read_Strobe_3_UNCONNECTED),
-        .LMB_Read_Strobe_30(NLW_U0_LMB_Read_Strobe_30_UNCONNECTED),
-        .LMB_Read_Strobe_31(NLW_U0_LMB_Read_Strobe_31_UNCONNECTED),
-        .LMB_Read_Strobe_4(NLW_U0_LMB_Read_Strobe_4_UNCONNECTED),
-        .LMB_Read_Strobe_5(NLW_U0_LMB_Read_Strobe_5_UNCONNECTED),
-        .LMB_Read_Strobe_6(NLW_U0_LMB_Read_Strobe_6_UNCONNECTED),
-        .LMB_Read_Strobe_7(NLW_U0_LMB_Read_Strobe_7_UNCONNECTED),
-        .LMB_Read_Strobe_8(NLW_U0_LMB_Read_Strobe_8_UNCONNECTED),
-        .LMB_Read_Strobe_9(NLW_U0_LMB_Read_Strobe_9_UNCONNECTED),
-        .LMB_Ready_0(LMB_Ready_0),
-        .LMB_Ready_1(1'b0),
-        .LMB_Ready_10(1'b0),
-        .LMB_Ready_11(1'b0),
-        .LMB_Ready_12(1'b0),
-        .LMB_Ready_13(1'b0),
-        .LMB_Ready_14(1'b0),
-        .LMB_Ready_15(1'b0),
-        .LMB_Ready_16(1'b0),
-        .LMB_Ready_17(1'b0),
-        .LMB_Ready_18(1'b0),
-        .LMB_Ready_19(1'b0),
-        .LMB_Ready_2(1'b0),
-        .LMB_Ready_20(1'b0),
-        .LMB_Ready_21(1'b0),
-        .LMB_Ready_22(1'b0),
-        .LMB_Ready_23(1'b0),
-        .LMB_Ready_24(1'b0),
-        .LMB_Ready_25(1'b0),
-        .LMB_Ready_26(1'b0),
-        .LMB_Ready_27(1'b0),
-        .LMB_Ready_28(1'b0),
-        .LMB_Ready_29(1'b0),
-        .LMB_Ready_3(1'b0),
-        .LMB_Ready_30(1'b0),
-        .LMB_Ready_31(1'b0),
-        .LMB_Ready_4(1'b0),
-        .LMB_Ready_5(1'b0),
-        .LMB_Ready_6(1'b0),
-        .LMB_Ready_7(1'b0),
-        .LMB_Ready_8(1'b0),
-        .LMB_Ready_9(1'b0),
-        .LMB_UE_0(LMB_UE_0),
-        .LMB_UE_1(1'b0),
-        .LMB_UE_10(1'b0),
-        .LMB_UE_11(1'b0),
-        .LMB_UE_12(1'b0),
-        .LMB_UE_13(1'b0),
-        .LMB_UE_14(1'b0),
-        .LMB_UE_15(1'b0),
-        .LMB_UE_16(1'b0),
-        .LMB_UE_17(1'b0),
-        .LMB_UE_18(1'b0),
-        .LMB_UE_19(1'b0),
-        .LMB_UE_2(1'b0),
-        .LMB_UE_20(1'b0),
-        .LMB_UE_21(1'b0),
-        .LMB_UE_22(1'b0),
-        .LMB_UE_23(1'b0),
-        .LMB_UE_24(1'b0),
-        .LMB_UE_25(1'b0),
-        .LMB_UE_26(1'b0),
-        .LMB_UE_27(1'b0),
-        .LMB_UE_28(1'b0),
-        .LMB_UE_29(1'b0),
-        .LMB_UE_3(1'b0),
-        .LMB_UE_30(1'b0),
-        .LMB_UE_31(1'b0),
-        .LMB_UE_4(1'b0),
-        .LMB_UE_5(1'b0),
-        .LMB_UE_6(1'b0),
-        .LMB_UE_7(1'b0),
-        .LMB_UE_8(1'b0),
-        .LMB_UE_9(1'b0),
-        .LMB_Wait_0(LMB_Wait_0),
-        .LMB_Wait_1(1'b0),
-        .LMB_Wait_10(1'b0),
-        .LMB_Wait_11(1'b0),
-        .LMB_Wait_12(1'b0),
-        .LMB_Wait_13(1'b0),
-        .LMB_Wait_14(1'b0),
-        .LMB_Wait_15(1'b0),
-        .LMB_Wait_16(1'b0),
-        .LMB_Wait_17(1'b0),
-        .LMB_Wait_18(1'b0),
-        .LMB_Wait_19(1'b0),
-        .LMB_Wait_2(1'b0),
-        .LMB_Wait_20(1'b0),
-        .LMB_Wait_21(1'b0),
-        .LMB_Wait_22(1'b0),
-        .LMB_Wait_23(1'b0),
-        .LMB_Wait_24(1'b0),
-        .LMB_Wait_25(1'b0),
-        .LMB_Wait_26(1'b0),
-        .LMB_Wait_27(1'b0),
-        .LMB_Wait_28(1'b0),
-        .LMB_Wait_29(1'b0),
-        .LMB_Wait_3(1'b0),
-        .LMB_Wait_30(1'b0),
-        .LMB_Wait_31(1'b0),
-        .LMB_Wait_4(1'b0),
-        .LMB_Wait_5(1'b0),
-        .LMB_Wait_6(1'b0),
-        .LMB_Wait_7(1'b0),
-        .LMB_Wait_8(1'b0),
-        .LMB_Wait_9(1'b0),
-        .LMB_Write_Strobe_0(LMB_Write_Strobe_0),
-        .LMB_Write_Strobe_1(NLW_U0_LMB_Write_Strobe_1_UNCONNECTED),
-        .LMB_Write_Strobe_10(NLW_U0_LMB_Write_Strobe_10_UNCONNECTED),
-        .LMB_Write_Strobe_11(NLW_U0_LMB_Write_Strobe_11_UNCONNECTED),
-        .LMB_Write_Strobe_12(NLW_U0_LMB_Write_Strobe_12_UNCONNECTED),
-        .LMB_Write_Strobe_13(NLW_U0_LMB_Write_Strobe_13_UNCONNECTED),
-        .LMB_Write_Strobe_14(NLW_U0_LMB_Write_Strobe_14_UNCONNECTED),
-        .LMB_Write_Strobe_15(NLW_U0_LMB_Write_Strobe_15_UNCONNECTED),
-        .LMB_Write_Strobe_16(NLW_U0_LMB_Write_Strobe_16_UNCONNECTED),
-        .LMB_Write_Strobe_17(NLW_U0_LMB_Write_Strobe_17_UNCONNECTED),
-        .LMB_Write_Strobe_18(NLW_U0_LMB_Write_Strobe_18_UNCONNECTED),
-        .LMB_Write_Strobe_19(NLW_U0_LMB_Write_Strobe_19_UNCONNECTED),
-        .LMB_Write_Strobe_2(NLW_U0_LMB_Write_Strobe_2_UNCONNECTED),
-        .LMB_Write_Strobe_20(NLW_U0_LMB_Write_Strobe_20_UNCONNECTED),
-        .LMB_Write_Strobe_21(NLW_U0_LMB_Write_Strobe_21_UNCONNECTED),
-        .LMB_Write_Strobe_22(NLW_U0_LMB_Write_Strobe_22_UNCONNECTED),
-        .LMB_Write_Strobe_23(NLW_U0_LMB_Write_Strobe_23_UNCONNECTED),
-        .LMB_Write_Strobe_24(NLW_U0_LMB_Write_Strobe_24_UNCONNECTED),
-        .LMB_Write_Strobe_25(NLW_U0_LMB_Write_Strobe_25_UNCONNECTED),
-        .LMB_Write_Strobe_26(NLW_U0_LMB_Write_Strobe_26_UNCONNECTED),
-        .LMB_Write_Strobe_27(NLW_U0_LMB_Write_Strobe_27_UNCONNECTED),
-        .LMB_Write_Strobe_28(NLW_U0_LMB_Write_Strobe_28_UNCONNECTED),
-        .LMB_Write_Strobe_29(NLW_U0_LMB_Write_Strobe_29_UNCONNECTED),
-        .LMB_Write_Strobe_3(NLW_U0_LMB_Write_Strobe_3_UNCONNECTED),
-        .LMB_Write_Strobe_30(NLW_U0_LMB_Write_Strobe_30_UNCONNECTED),
-        .LMB_Write_Strobe_31(NLW_U0_LMB_Write_Strobe_31_UNCONNECTED),
-        .LMB_Write_Strobe_4(NLW_U0_LMB_Write_Strobe_4_UNCONNECTED),
-        .LMB_Write_Strobe_5(NLW_U0_LMB_Write_Strobe_5_UNCONNECTED),
-        .LMB_Write_Strobe_6(NLW_U0_LMB_Write_Strobe_6_UNCONNECTED),
-        .LMB_Write_Strobe_7(NLW_U0_LMB_Write_Strobe_7_UNCONNECTED),
-        .LMB_Write_Strobe_8(NLW_U0_LMB_Write_Strobe_8_UNCONNECTED),
-        .LMB_Write_Strobe_9(NLW_U0_LMB_Write_Strobe_9_UNCONNECTED),
-        .M_AXIS_ACLK(1'b0),
-        .M_AXIS_ARESETN(1'b0),
-        .M_AXIS_TDATA(NLW_U0_M_AXIS_TDATA_UNCONNECTED[31:0]),
-        .M_AXIS_TID(NLW_U0_M_AXIS_TID_UNCONNECTED[6:0]),
-        .M_AXIS_TREADY(1'b1),
-        .M_AXIS_TVALID(NLW_U0_M_AXIS_TVALID_UNCONNECTED),
-        .M_AXI_ACLK(M_AXI_ACLK),
-        .M_AXI_ARADDR(M_AXI_ARADDR),
-        .M_AXI_ARBURST(M_AXI_ARBURST),
-        .M_AXI_ARCACHE(M_AXI_ARCACHE),
-        .M_AXI_ARESETN(M_AXI_ARESETN),
-        .M_AXI_ARID(M_AXI_ARID),
-        .M_AXI_ARLEN(M_AXI_ARLEN),
-        .M_AXI_ARLOCK(M_AXI_ARLOCK),
-        .M_AXI_ARPROT(M_AXI_ARPROT),
-        .M_AXI_ARQOS(M_AXI_ARQOS),
-        .M_AXI_ARREADY(M_AXI_ARREADY),
-        .M_AXI_ARSIZE(M_AXI_ARSIZE),
-        .M_AXI_ARVALID(M_AXI_ARVALID),
-        .M_AXI_AWADDR(M_AXI_AWADDR),
-        .M_AXI_AWBURST(M_AXI_AWBURST),
-        .M_AXI_AWCACHE(M_AXI_AWCACHE),
-        .M_AXI_AWID(M_AXI_AWID),
-        .M_AXI_AWLEN(M_AXI_AWLEN),
-        .M_AXI_AWLOCK(M_AXI_AWLOCK),
-        .M_AXI_AWPROT(M_AXI_AWPROT),
-        .M_AXI_AWQOS(M_AXI_AWQOS),
-        .M_AXI_AWREADY(M_AXI_AWREADY),
-        .M_AXI_AWSIZE(M_AXI_AWSIZE),
-        .M_AXI_AWVALID(M_AXI_AWVALID),
-        .M_AXI_BID(M_AXI_BID),
-        .M_AXI_BREADY(M_AXI_BREADY),
-        .M_AXI_BRESP(M_AXI_BRESP),
-        .M_AXI_BVALID(M_AXI_BVALID),
-        .M_AXI_RDATA(M_AXI_RDATA),
-        .M_AXI_RID(M_AXI_RID),
-        .M_AXI_RLAST(M_AXI_RLAST),
-        .M_AXI_RREADY(M_AXI_RREADY),
-        .M_AXI_RRESP(M_AXI_RRESP),
-        .M_AXI_RVALID(M_AXI_RVALID),
-        .M_AXI_WDATA(M_AXI_WDATA),
-        .M_AXI_WLAST(M_AXI_WLAST),
-        .M_AXI_WREADY(M_AXI_WREADY),
-        .M_AXI_WSTRB(M_AXI_WSTRB),
-        .M_AXI_WVALID(M_AXI_WVALID),
-        .S_AXI_ACLK(1'b0),
-        .S_AXI_ARADDR({1'b0,1'b0,1'b0,1'b0}),
-        .S_AXI_ARESETN(1'b0),
-        .S_AXI_ARREADY(NLW_U0_S_AXI_ARREADY_UNCONNECTED),
-        .S_AXI_ARVALID(1'b0),
-        .S_AXI_AWADDR({1'b0,1'b0,1'b0,1'b0}),
-        .S_AXI_AWREADY(NLW_U0_S_AXI_AWREADY_UNCONNECTED),
-        .S_AXI_AWVALID(1'b0),
-        .S_AXI_BREADY(1'b0),
-        .S_AXI_BRESP(NLW_U0_S_AXI_BRESP_UNCONNECTED[1:0]),
-        .S_AXI_BVALID(NLW_U0_S_AXI_BVALID_UNCONNECTED),
-        .S_AXI_RDATA(NLW_U0_S_AXI_RDATA_UNCONNECTED[31:0]),
-        .S_AXI_RREADY(1'b0),
-        .S_AXI_RRESP(NLW_U0_S_AXI_RRESP_UNCONNECTED[1:0]),
-        .S_AXI_RVALID(NLW_U0_S_AXI_RVALID_UNCONNECTED),
-        .S_AXI_WDATA({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .S_AXI_WREADY(NLW_U0_S_AXI_WREADY_UNCONNECTED),
-        .S_AXI_WSTRB({1'b0,1'b0,1'b0,1'b0}),
-        .S_AXI_WVALID(1'b0),
-        .Scan_En(1'b0),
-        .Scan_Reset(1'b0),
-        .Scan_Reset_Sel(1'b0),
-        .TRACE_CLK(1'b0),
-        .TRACE_CLK_OUT(NLW_U0_TRACE_CLK_OUT_UNCONNECTED),
-        .TRACE_CTL(NLW_U0_TRACE_CTL_UNCONNECTED),
-        .TRACE_DATA(NLW_U0_TRACE_DATA_UNCONNECTED[31:0]),
-        .Trig_Ack_In_0(Trig_Ack_In_0),
-        .Trig_Ack_In_1(NLW_U0_Trig_Ack_In_1_UNCONNECTED),
-        .Trig_Ack_In_2(NLW_U0_Trig_Ack_In_2_UNCONNECTED),
-        .Trig_Ack_In_3(NLW_U0_Trig_Ack_In_3_UNCONNECTED),
-        .Trig_Ack_Out_0(Trig_Ack_Out_0),
-        .Trig_Ack_Out_1(1'b0),
-        .Trig_Ack_Out_2(1'b0),
-        .Trig_Ack_Out_3(1'b0),
-        .Trig_In_0(Trig_In_0),
-        .Trig_In_1(1'b0),
-        .Trig_In_2(1'b0),
-        .Trig_In_3(1'b0),
-        .Trig_Out_0(Trig_Out_0),
-        .Trig_Out_1(NLW_U0_Trig_Out_1_UNCONNECTED),
-        .Trig_Out_2(NLW_U0_Trig_Out_2_UNCONNECTED),
-        .Trig_Out_3(NLW_U0_Trig_Out_3_UNCONNECTED),
-        .bscan_ext_bscanid_en(1'b0),
-        .bscan_ext_capture(1'b0),
-        .bscan_ext_drck(1'b0),
-        .bscan_ext_reset(1'b0),
-        .bscan_ext_sel(1'b0),
-        .bscan_ext_shift(1'b0),
-        .bscan_ext_tck(1'b0),
-        .bscan_ext_tdi(1'b0),
-        .bscan_ext_tdo(NLW_U0_bscan_ext_tdo_UNCONNECTED),
-        .bscan_ext_update(1'b0));
 endmodule
 `ifndef GLBL
 `define GLBL

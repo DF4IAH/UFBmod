@@ -422,7 +422,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.INTERRUPT.FIT1_Interrupt" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_FIT1&apos;)) = 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FIT1_INTERRUPT&apos;)) = 1)">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.INTERRUPT.FIT1_Interrupt" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_FIT1&apos;)) = 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FIT1_INTERRUPT&apos;)) = 1)">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -578,7 +578,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.INTERRUPT.PIT1_Interrupt" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_PIT1&apos;)) = 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_PIT1_INTERRUPT&apos;)) = 1)">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.INTERRUPT.PIT1_Interrupt" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_PIT1&apos;)) = 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_PIT1_INTERRUPT&apos;)) = 1)">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -3338,7 +3338,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 0</spirit:displayName>
           <spirit:description>Interrupt Vector Register 0</spirit:description>
           <spirit:addressOffset>0x80</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3350,7 +3350,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 0 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3372,7 +3372,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 1</spirit:displayName>
           <spirit:description>Interrupt Vector Register 1</spirit:description>
           <spirit:addressOffset>0x84</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3384,7 +3384,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 1 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3406,7 +3406,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 2</spirit:displayName>
           <spirit:description>Interrupt Vector Register 2</spirit:description>
           <spirit:addressOffset>0x88</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3418,7 +3418,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 2 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3440,7 +3440,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 3</spirit:displayName>
           <spirit:description>Interrupt Vector Register 3</spirit:description>
           <spirit:addressOffset>0x8C</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3452,7 +3452,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 3 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3474,7 +3474,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 4</spirit:displayName>
           <spirit:description>Interrupt Vector Register 4</spirit:description>
           <spirit:addressOffset>0x90</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3486,7 +3486,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 4 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3508,7 +3508,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 5</spirit:displayName>
           <spirit:description>Interrupt Vector Register 5</spirit:description>
           <spirit:addressOffset>0x94</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3520,7 +3520,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 5 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3542,7 +3542,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 6</spirit:displayName>
           <spirit:description>Interrupt Vector Register 6</spirit:description>
           <spirit:addressOffset>0x98</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3554,7 +3554,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 6 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3576,7 +3576,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 7</spirit:displayName>
           <spirit:description>Interrupt Vector Register 7</spirit:description>
           <spirit:addressOffset>0x9C</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3588,7 +3588,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 7 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3610,7 +3610,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 8</spirit:displayName>
           <spirit:description>Interrupt Vector Register 8</spirit:description>
           <spirit:addressOffset>0xA0</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3622,7 +3622,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 8 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3644,7 +3644,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 9</spirit:displayName>
           <spirit:description>Interrupt Vector Register 9</spirit:description>
           <spirit:addressOffset>0xA4</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3656,7 +3656,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 9 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3678,7 +3678,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 10</spirit:displayName>
           <spirit:description>Interrupt Vector Register 10</spirit:description>
           <spirit:addressOffset>0xA8</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3690,7 +3690,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 10 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3712,7 +3712,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 11</spirit:displayName>
           <spirit:description>Interrupt Vector Register 11</spirit:description>
           <spirit:addressOffset>0xAC</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3724,7 +3724,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 11 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3746,7 +3746,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 12</spirit:displayName>
           <spirit:description>Interrupt Vector Register 12</spirit:description>
           <spirit:addressOffset>0xB0</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3758,7 +3758,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 12 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3780,7 +3780,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 13</spirit:displayName>
           <spirit:description>Interrupt Vector Register 13</spirit:description>
           <spirit:addressOffset>0xB4</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3792,7 +3792,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 13 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3814,7 +3814,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 14</spirit:displayName>
           <spirit:description>Interrupt Vector Register 14</spirit:description>
           <spirit:addressOffset>0xB8</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3826,7 +3826,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 14 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3848,7 +3848,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 16</spirit:displayName>
           <spirit:description>Interrupt Vector Register 16</spirit:description>
           <spirit:addressOffset>0xC0</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3860,7 +3860,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 16 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3882,7 +3882,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 17</spirit:displayName>
           <spirit:description>Interrupt Vector Register 17</spirit:description>
           <spirit:addressOffset>0xC4</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3894,7 +3894,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 17 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3916,7 +3916,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 18</spirit:displayName>
           <spirit:description>Interrupt Vector Register 18</spirit:description>
           <spirit:addressOffset>0xC8</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3928,7 +3928,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 18 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3950,7 +3950,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 19</spirit:displayName>
           <spirit:description>Interrupt Vector Register 19</spirit:description>
           <spirit:addressOffset>0xCC</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3962,7 +3962,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 19 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -3984,7 +3984,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 20</spirit:displayName>
           <spirit:description>Interrupt Vector Register 20</spirit:description>
           <spirit:addressOffset>0xD0</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -3996,7 +3996,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 20 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4018,7 +4018,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 21</spirit:displayName>
           <spirit:description>Interrupt Vector Register 21</spirit:description>
           <spirit:addressOffset>0xD4</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4030,7 +4030,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 21 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4052,7 +4052,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 22</spirit:displayName>
           <spirit:description>Interrupt Vector Register 22</spirit:description>
           <spirit:addressOffset>0xD8</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4064,7 +4064,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 22 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4086,7 +4086,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 23</spirit:displayName>
           <spirit:description>Interrupt Vector Register 23</spirit:description>
           <spirit:addressOffset>0xDC</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4098,7 +4098,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 23 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4120,7 +4120,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 24</spirit:displayName>
           <spirit:description>Interrupt Vector Register 24</spirit:description>
           <spirit:addressOffset>0xE0</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4132,7 +4132,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 24 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4154,7 +4154,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 25</spirit:displayName>
           <spirit:description>Interrupt Vector Register 25</spirit:description>
           <spirit:addressOffset>0xE4</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4166,7 +4166,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 25 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4188,7 +4188,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 26</spirit:displayName>
           <spirit:description>Interrupt Vector Register 26</spirit:description>
           <spirit:addressOffset>0xE8</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4200,7 +4200,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 26 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4222,7 +4222,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 27</spirit:displayName>
           <spirit:description>Interrupt Vector Register 27</spirit:description>
           <spirit:addressOffset>0xEC</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4234,7 +4234,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 27 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4256,7 +4256,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 28</spirit:displayName>
           <spirit:description>Interrupt Vector Register 28</spirit:description>
           <spirit:addressOffset>0xF0</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4268,7 +4268,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 28 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4290,7 +4290,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 29</spirit:displayName>
           <spirit:description>Interrupt Vector Register 29</spirit:description>
           <spirit:addressOffset>0xF4</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4302,7 +4302,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 29 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4324,7 +4324,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 30</spirit:displayName>
           <spirit:description>Interrupt Vector Register 30</spirit:description>
           <spirit:addressOffset>0xF8</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4336,7 +4336,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 30 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4358,7 +4358,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Register 31</spirit:displayName>
           <spirit:description>Interrupt Vector Register 31</spirit:description>
           <spirit:addressOffset>0xFC</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4370,7 +4370,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 31 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) &lt;= 32)) + 32 * number((spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;)) > 32)))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4392,7 +4392,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 0</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 0</spirit:description>
           <spirit:addressOffset>0x100</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4404,7 +4404,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 0 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4426,7 +4426,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 1</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 1</spirit:description>
           <spirit:addressOffset>0x108</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4438,7 +4438,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 1 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4460,7 +4460,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 2</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 2</spirit:description>
           <spirit:addressOffset>0x110</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4472,7 +4472,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 2 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4494,7 +4494,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 3</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 3</spirit:description>
           <spirit:addressOffset>0x118</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4506,7 +4506,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 3 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4528,7 +4528,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 4</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 4</spirit:description>
           <spirit:addressOffset>0x120</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4540,7 +4540,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 4 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4562,7 +4562,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 5</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 5</spirit:description>
           <spirit:addressOffset>0x128</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4574,7 +4574,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 5 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4596,7 +4596,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 6</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 6</spirit:description>
           <spirit:addressOffset>0x130</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4608,7 +4608,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 6 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4630,7 +4630,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 7</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 7</spirit:description>
           <spirit:addressOffset>0x138</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4642,7 +4642,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 7 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4664,7 +4664,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 8</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 8</spirit:description>
           <spirit:addressOffset>0x140</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4676,7 +4676,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 8 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4698,7 +4698,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 9</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 9</spirit:description>
           <spirit:addressOffset>0x148</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4710,7 +4710,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 9 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4732,7 +4732,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 10</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 10</spirit:description>
           <spirit:addressOffset>0x150</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4744,7 +4744,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 10 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4766,7 +4766,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 11</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 11</spirit:description>
           <spirit:addressOffset>0x158</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4778,7 +4778,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 11 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4800,7 +4800,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 12</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 12</spirit:description>
           <spirit:addressOffset>0x160</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4812,7 +4812,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 12 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4834,7 +4834,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 13</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 13</spirit:description>
           <spirit:addressOffset>0x168</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4846,7 +4846,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 13 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4868,7 +4868,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 14</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 14</spirit:description>
           <spirit:addressOffset>0x170</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4880,7 +4880,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 14 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4902,7 +4902,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 16</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 16</spirit:description>
           <spirit:addressOffset>0x180</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4914,7 +4914,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 16 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4936,7 +4936,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 17</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 17</spirit:description>
           <spirit:addressOffset>0x188</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4948,7 +4948,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 17 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -4970,7 +4970,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 18</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 18</spirit:description>
           <spirit:addressOffset>0x190</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -4982,7 +4982,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 18 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -5004,7 +5004,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 19</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 19</spirit:description>
           <spirit:addressOffset>0x198</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -5016,7 +5016,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 19 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -5038,7 +5038,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 20</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 20</spirit:description>
           <spirit:addressOffset>0x1A0</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -5050,7 +5050,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 20 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -5072,7 +5072,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 21</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 21</spirit:description>
           <spirit:addressOffset>0x1A8</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -5084,7 +5084,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 21 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -5106,7 +5106,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 22</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 22</spirit:description>
           <spirit:addressOffset>0x1B0</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -5118,7 +5118,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 22 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -5140,7 +5140,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 23</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 23</spirit:description>
           <spirit:addressOffset>0x1B8</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -5152,7 +5152,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 23 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -5174,7 +5174,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 24</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 24</spirit:description>
           <spirit:addressOffset>0x1C0</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -5186,7 +5186,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 24 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -5208,7 +5208,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 25</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 25</spirit:description>
           <spirit:addressOffset>0x1C8</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -5220,7 +5220,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 25 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -5242,7 +5242,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 26</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 26</spirit:description>
           <spirit:addressOffset>0x1D0</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -5254,7 +5254,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 26 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -5276,7 +5276,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 27</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 27</spirit:description>
           <spirit:addressOffset>0x1D8</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -5288,7 +5288,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 27 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -5310,7 +5310,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 28</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 28</spirit:description>
           <spirit:addressOffset>0x1E0</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -5322,7 +5322,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 28 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -5344,7 +5344,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 29</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 29</spirit:description>
           <spirit:addressOffset>0x1E8</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -5356,7 +5356,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 29 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -5378,7 +5378,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 30</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 30</spirit:description>
           <spirit:addressOffset>0x1F0</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -5390,7 +5390,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 30 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -5412,7 +5412,7 @@ The period is the value + 2.
           <spirit:displayName>Interrupt Vector Address Register 31</spirit:displayName>
           <spirit:description>Interrupt Vector Address Register 31</spirit:description>
           <spirit:addressOffset>0x1F8</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>write-only</spirit:access>
           <spirit:reset>
@@ -5424,7 +5424,7 @@ The period is the value + 2.
             <spirit:description>Interrupt vector address of active interrupt 31 with highest priority.
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">15</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTC_ADDR_WIDTH&apos;))">17</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>write-only</spirit:access>
             <spirit:writeValueConstraint>
@@ -5483,11 +5483,11 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Aug 03 09:17:25 UTC 2019</spirit:value>
+            <spirit:value>Sat Aug 03 23:50:20 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:fd450311</spirit:value>
+            <spirit:value>9:027b7098</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5498,7 +5498,7 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:fd450311</spirit:value>
+            <spirit:value>9:027b7098</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5514,11 +5514,11 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Aug 03 09:17:25 UTC 2019</spirit:value>
+            <spirit:value>Sat Aug 03 23:50:20 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:fd450311</spirit:value>
+            <spirit:value>9:027b7098</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5534,11 +5534,11 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Aug 03 09:17:25 UTC 2019</spirit:value>
+            <spirit:value>Sat Aug 03 23:50:20 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0ac05c32</spirit:value>
+            <spirit:value>9:0ada44dd</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5554,11 +5554,11 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Aug 03 09:17:25 UTC 2019</spirit:value>
+            <spirit:value>Sat Aug 03 23:50:20 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0ac05c32</spirit:value>
+            <spirit:value>9:0ada44dd</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5572,11 +5572,11 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Aug 03 09:17:25 UTC 2019</spirit:value>
+            <spirit:value>Sat Aug 03 23:50:20 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:fd450311</spirit:value>
+            <spirit:value>9:027b7098</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -6017,7 +6017,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.FIT1_Interrupt" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_FIT1&apos;)) = 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FIT1_INTERRUPT&apos;)) = 1)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.FIT1_Interrupt" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_FIT1&apos;)) = 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FIT1_INTERRUPT&apos;)) = 1)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -6037,7 +6037,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.FIT1_Toggle" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_FIT1&apos;)) = 1)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.FIT1_Toggle" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_FIT1&apos;)) = 1)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -6200,7 +6200,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.PIT1_Interrupt" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_PIT1&apos;)) = 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_PIT1_INTERRUPT&apos;)) = 1)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.PIT1_Interrupt" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_PIT1&apos;)) = 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_PIT1_INTERRUPT&apos;)) = 1)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -6220,7 +6220,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.PIT1_Toggle" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_PIT1&apos;)) = 1)">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.PIT1_Toggle" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_PIT1&apos;)) = 1)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -7165,7 +7165,7 @@ The period is the value + 2.
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_USE_FIT1</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_FIT1">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_FIT1">0</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_FIT1_No_CLOCKS</spirit:name>
@@ -7173,7 +7173,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_FIT1_No_CLOCKS" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_FIT1&apos;)) = 1">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_FIT1_No_CLOCKS" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_FIT1&apos;)) = 1">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -7184,7 +7184,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_FIT1_INTERRUPT" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_FIT1&apos;)) = 1">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_FIT1_INTERRUPT" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_FIT1&apos;)) = 1">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -7269,7 +7269,7 @@ The period is the value + 2.
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_USE_PIT1</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_PIT1">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_PIT1">0</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_PIT1_SIZE</spirit:name>
@@ -7277,7 +7277,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_PIT1_SIZE" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_PIT1&apos;)) = 1">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_PIT1_SIZE" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_PIT1&apos;)) = 1">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -7288,7 +7288,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_PIT1_READABLE" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_PIT1&apos;)) = 1">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_PIT1_READABLE" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_PIT1&apos;)) = 1">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -7299,7 +7299,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_PIT1_PRESCALER" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_PIT1&apos;)) = 1">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_PIT1_PRESCALER" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_PIT1&apos;)) = 1">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -7310,7 +7310,7 @@ The period is the value + 2.
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_PIT1_INTERRUPT" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_PIT1&apos;)) = 1">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_PIT1_INTERRUPT" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_PIT1&apos;)) = 1">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -7710,7 +7710,7 @@ The period is the value + 2.
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_INTC_ADDR_WIDTH</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_INTC_ADDR_WIDTH" spirit:minimum="5" spirit:maximum="64" spirit:rangeType="long">15</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_INTC_ADDR_WIDTH" spirit:minimum="5" spirit:maximum="64" spirit:rangeType="long">17</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="std_logic_vector">
         <spirit:name>C_INTC_BASE_VECTORS</spirit:name>
@@ -8083,7 +8083,7 @@ The period is the value + 2.
     <spirit:parameter>
       <spirit:name>C_USE_FIT1</spirit:name>
       <spirit:displayName>Use FIT</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_FIT1" spirit:choiceRef="choice_pairs_4873554b" spirit:order="3010" spirit:configGroups="3 FIT">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_FIT1" spirit:choiceRef="choice_pairs_4873554b" spirit:order="3010" spirit:configGroups="3 FIT">0</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_FIT1_No_CLOCKS</spirit:name>
@@ -8199,7 +8199,7 @@ The period is the value + 2.
     <spirit:parameter>
       <spirit:name>C_USE_PIT1</spirit:name>
       <spirit:displayName>Use PIT</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_PIT1" spirit:choiceRef="choice_pairs_4873554b" spirit:order="4010" spirit:configGroups="4 PIT">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_PIT1" spirit:choiceRef="choice_pairs_4873554b" spirit:order="4010" spirit:configGroups="4 PIT">0</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_PIT1_SIZE</spirit:name>
@@ -8707,7 +8707,7 @@ The period is the value + 2.
       <spirit:name>C_INTC_ADDR_WIDTH</spirit:name>
       <spirit:displayName>Interrupt Address Width</spirit:displayName>
       <spirit:description>Interrupt address width with Fast Mode Interrupt.</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_INTC_ADDR_WIDTH" spirit:order="7600" spirit:configGroups="7 Interrupt" spirit:minimum="5" spirit:maximum="64" spirit:rangeType="long">15</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_INTC_ADDR_WIDTH" spirit:order="7600" spirit:configGroups="7 Interrupt" spirit:minimum="5" spirit:maximum="64" spirit:rangeType="long">17</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -8767,42 +8767,34 @@ The period is the value + 2.
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK.PHASE" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.INTC_IRQ.LOW_LATENCY" xilinx:valueSource="propagated" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.INTERRUPT.FIT1_INTERRUPT.PortWidth" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.INTERRUPT.INTC_IRQ_OUT.PortWidth" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.INTERRUPT.PIT1_INTERRUPT.PortWidth" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SLMB.ADDR_WIDTH" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SLMB.DATA_WIDTH" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_BASEADDR" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_BASEADDR" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_FIT1_INTERRUPT" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_FIT1_No_CLOCKS" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_FREQ" xilinx:valueSource="propagated"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_GPI1_SIZE" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_GPO1_SIZE" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_HIGHADDR" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_HIGHADDR" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_INSTANCE" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_INTC_ADDR_WIDTH" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_INTC_ADDR_WIDTH" xilinx:valueSource="user" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_INTC_BASE_VECTORS" xilinx:valueSource="propagated"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_INTC_HAS_FAST" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_INTC_USE_IRQ_OUT" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_IO_BASEADDR" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_IO_HIGHADDR" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_IO_MASK" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_IO_BASEADDR" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_IO_HIGHADDR" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_IO_MASK" xilinx:valueSource="user" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_LMB_AWIDTH" xilinx:valueSource="propagated" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_LMB_DWIDTH" xilinx:valueSource="propagated"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_MASK" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_MASK" xilinx:valueSource="user" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PIT1_INTERRUPT" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_UART_ERROR_INTERRUPT" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_UART_PROG_BAUDRATE" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_UART_RX_INTERRUPT" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_UART_TX_INTERRUPT" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_FIT1" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_GPI1" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_GPO1" xilinx:valueSource="user"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_PIT1" xilinx:valueSource="user"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
-      <xilinx:xilinxVersion>2018.3</xilinx:xilinxVersion>
+      <xilinx:xilinxVersion>2019.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="83b4a0e9"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="00000000"/>
       <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="69a1205b"/>

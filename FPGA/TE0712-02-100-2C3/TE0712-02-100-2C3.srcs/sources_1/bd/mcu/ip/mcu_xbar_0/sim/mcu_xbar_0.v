@@ -48,7 +48,7 @@
 
 
 // IP VLNV: xilinx.com:ip:axi_crossbar:2.1
-// IP Revision: 19
+// IP Revision: 20
 
 `timescale 1ns/1ps
 
@@ -305,7 +305,7 @@ USER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, H
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI RREADY [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI RREADY [0:0] [1:1], xilinx.com:interface:aximm:1.0 M02_AXI RREADY [0:0] [2:2], xilinx.com:interface:aximm:1.0 M03_AXI RREADY [0:0] [3:3], xilinx.com:interface:aximm:1.0 M04_AXI RREADY [0:0] [4:4], xilinx.com:interface:aximm:1.0 M05_AXI RREADY [0:0] [5:5]" *)
 output wire [5 : 0] m_axi_rready;
 
-  axi_crossbar_v2_1_19_axi_crossbar #(
+  axi_crossbar_v2_1_20_axi_crossbar #(
     .C_FAMILY("artix7"),
     .C_NUM_SLAVE_SLOTS(4),
     .C_NUM_MASTER_SLOTS(6),

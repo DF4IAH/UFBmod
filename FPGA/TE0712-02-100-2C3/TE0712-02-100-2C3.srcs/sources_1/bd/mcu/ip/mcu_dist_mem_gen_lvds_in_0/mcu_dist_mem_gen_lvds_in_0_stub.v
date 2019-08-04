@@ -1,7 +1,7 @@
-// Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+// Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Thu Aug  1 23:45:23 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Aug  4 02:00:50 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub -rename_top mcu_dist_mem_gen_lvds_in_0 -prefix
 //               mcu_dist_mem_gen_lvds_in_0_ mcu_dist_mem_gen_0_0_stub.v
@@ -13,7 +13,7 @@
 // This empty module with port declaration file causes synthesis tools to infer a black box for IP.
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
-(* x_core_info = "dist_mem_gen_v8_0_12,Vivado 2018.3" *)
+(* x_core_info = "dist_mem_gen_v8_0_13,Vivado 2019.1" *)
 module mcu_dist_mem_gen_lvds_in_0(a, d, dpra, clk, we, qdpo_clk, qdpo)
 /* synthesis syn_black_box black_box_pad_pin="a[3:0],d[7:0],dpra[3:0],clk,we,qdpo_clk,qdpo[7:0]" */;
   input [3:0]a;

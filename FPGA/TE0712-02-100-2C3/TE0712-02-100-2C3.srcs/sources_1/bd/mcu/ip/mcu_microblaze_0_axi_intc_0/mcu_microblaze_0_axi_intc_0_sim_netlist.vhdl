@@ -1,7 +1,7 @@
--- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+-- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Sat Aug  3 21:57:11 2019
+-- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+-- Date        : Sun Aug  4 01:54:23 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_microblaze_0_axi_intc_0/mcu_microblaze_0_axi_intc_0_sim_netlist.vhdl
@@ -291,9 +291,9 @@ Bus_RNW_reg_reg: unisim.vcomponents.FDRE
     )
         port map (
       I0 => \GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0\(3),
-      I1 => \GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0\(0),
-      I2 => \GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0\(1),
-      I3 => \GEN_BKEND_CE_REGISTERS[11].ce_out_i[11]_i_2_n_0\,
+      I1 => \GEN_BKEND_CE_REGISTERS[11].ce_out_i[11]_i_2_n_0\,
+      I2 => \GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0\(0),
+      I3 => \GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0\(1),
       O => p_4_out
     );
 \GEN_BKEND_CE_REGISTERS[11].ce_out_i[11]_i_2\: unisim.vcomponents.LUT5
@@ -510,9 +510,9 @@ Bus_RNW_reg_reg: unisim.vcomponents.FDRE
     )
         port map (
       I0 => \GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0\(3),
-      I1 => \GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0\(0),
-      I2 => \GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0\(1),
-      I3 => \GEN_BKEND_CE_REGISTERS[11].ce_out_i[11]_i_2_n_0\,
+      I1 => \GEN_BKEND_CE_REGISTERS[11].ce_out_i[11]_i_2_n_0\,
+      I2 => \GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0\(0),
+      I3 => \GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0\(1),
       O => \GEN_BKEND_CE_REGISTERS[3].ce_out_i[3]_i_1_n_0\
     );
 \GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3]\: unisim.vcomponents.FDRE
@@ -1422,6 +1422,8 @@ architecture STRUCTURE of mcu_microblaze_0_axi_intc_0_shared_ram_ivar is
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_0_0\ : label is 0;
   attribute ram_addr_end : integer;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_0_0\ : label is 15;
+  attribute ram_offset : integer;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_0_0\ : label is 0;
   attribute ram_slice_begin : integer;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_0_0\ : label is 0;
   attribute ram_slice_end : integer;
@@ -1429,156 +1431,187 @@ architecture STRUCTURE of mcu_microblaze_0_axi_intc_0_shared_ram_ivar is
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_10_10\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_10_10\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_10_10\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_10_10\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_10_10\ : label is 10;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_10_10\ : label is 10;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_11_11\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_11_11\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_11_11\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_11_11\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_11_11\ : label is 11;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_11_11\ : label is 11;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_12_12\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_12_12\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_12_12\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_12_12\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_12_12\ : label is 12;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_12_12\ : label is 12;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_13_13\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_13_13\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_13_13\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_13_13\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_13_13\ : label is 13;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_13_13\ : label is 13;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_14_14\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_14_14\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_14_14\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_14_14\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_14_14\ : label is 14;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_14_14\ : label is 14;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_15_15\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_15_15\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_15_15\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_15_15\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_15_15\ : label is 15;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_15_15\ : label is 15;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_16_16\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_16_16\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_16_16\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_16_16\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_16_16\ : label is 16;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_16_16\ : label is 16;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_17_17\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_17_17\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_17_17\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_17_17\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_17_17\ : label is 17;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_17_17\ : label is 17;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_18_18\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_18_18\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_18_18\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_18_18\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_18_18\ : label is 18;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_18_18\ : label is 18;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_19_19\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_19_19\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_19_19\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_19_19\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_19_19\ : label is 19;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_19_19\ : label is 19;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_1_1\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_1_1\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_1_1\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_1_1\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_1_1\ : label is 1;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_1_1\ : label is 1;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_20_20\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_20_20\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_20_20\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_20_20\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_20_20\ : label is 20;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_20_20\ : label is 20;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_21_21\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_21_21\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_21_21\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_21_21\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_21_21\ : label is 21;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_21_21\ : label is 21;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_22_22\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_22_22\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_22_22\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_22_22\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_22_22\ : label is 22;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_22_22\ : label is 22;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_23_23\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_23_23\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_23_23\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_23_23\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_23_23\ : label is 23;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_23_23\ : label is 23;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_24_24\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_24_24\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_24_24\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_24_24\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_24_24\ : label is 24;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_24_24\ : label is 24;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_25_25\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_25_25\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_25_25\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_25_25\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_25_25\ : label is 25;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_25_25\ : label is 25;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_26_26\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_26_26\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_26_26\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_26_26\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_26_26\ : label is 26;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_26_26\ : label is 26;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_27_27\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_27_27\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_27_27\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_27_27\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_27_27\ : label is 27;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_27_27\ : label is 27;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_28_28\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_28_28\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_28_28\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_28_28\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_28_28\ : label is 28;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_28_28\ : label is 28;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_29_29\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_29_29\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_29_29\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_29_29\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_29_29\ : label is 29;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_29_29\ : label is 29;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_2_2\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_2_2\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_2_2\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_2_2\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_2_2\ : label is 2;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_2_2\ : label is 2;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_30_30\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_30_30\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_30_30\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_30_30\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_30_30\ : label is 30;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_30_30\ : label is 30;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_31_31\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_31_31\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_31_31\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_31_31\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_31_31\ : label is 31;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_31_31\ : label is 31;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_3_3\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_3_3\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_3_3\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_3_3\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_3_3\ : label is 3;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_3_3\ : label is 3;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_4_4\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_4_4\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_4_4\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_4_4\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_4_4\ : label is 4;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_4_4\ : label is 4;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_5_5\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_5_5\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_5_5\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_5_5\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_5_5\ : label is 5;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_5_5\ : label is 5;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_6_6\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_6_6\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_6_6\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_6_6\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_6_6\ : label is 6;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_6_6\ : label is 6;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_7_7\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_7_7\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_7_7\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_7_7\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_7_7\ : label is 7;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_7_7\ : label is 7;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_8_8\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_8_8\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_8_8\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_8_8\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_8_8\ : label is 8;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_8_8\ : label is 8;
   attribute XILINX_LEGACY_PRIM of \ram_i[0].ram_reg_0_15_9_9\ : label is "RAM16X1D";
   attribute ram_addr_begin of \ram_i[0].ram_reg_0_15_9_9\ : label is 0;
   attribute ram_addr_end of \ram_i[0].ram_reg_0_15_9_9\ : label is 15;
+  attribute ram_offset of \ram_i[0].ram_reg_0_15_9_9\ : label is 0;
   attribute ram_slice_begin of \ram_i[0].ram_reg_0_15_9_9\ : label is 9;
   attribute ram_slice_end of \ram_i[0].ram_reg_0_15_9_9\ : label is 9;
 begin
@@ -2848,7 +2881,6 @@ architecture STRUCTURE of mcu_microblaze_0_axi_intc_0_intc_core is
   signal \IVAR_INDEX_SYNC_ON_AXI_CLK_GEN.ivar_index_axi_clk[2]_i_1_n_0\ : STD_LOGIC;
   signal \IVR_GEN.ivr[0]_i_1_n_0\ : STD_LOGIC;
   signal \IVR_GEN.ivr[1]_i_1_n_0\ : STD_LOGIC;
-  signal \IVR_GEN.ivr[2]_i_1_n_0\ : STD_LOGIC;
   signal \^ivr_gen.ivr_reg[0]_0\ : STD_LOGIC;
   signal \^ivr_gen.ivr_reg[1]_0\ : STD_LOGIC;
   signal \^ivr_gen.ivr_reg[2]_0\ : STD_LOGIC;
@@ -2896,6 +2928,7 @@ architecture STRUCTURE of mcu_microblaze_0_axi_intc_0_intc_core is
   signal ivar_index_axi_clk : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ivar_index_sample_en : STD_LOGIC;
   signal ivar_index_sample_en_i : STD_LOGIC;
+  signal ivr_in : STD_LOGIC_VECTOR ( 2 to 2 );
   signal \^mer_int_reg[0]_0\ : STD_LOGIC;
   signal \^p_0_in\ : STD_LOGIC;
   signal \^p_0_in10_in\ : STD_LOGIC;
@@ -2913,8 +2946,8 @@ architecture STRUCTURE of mcu_microblaze_0_axi_intc_0_intc_core is
   signal \^p_1_in\ : STD_LOGIC;
   signal \^p_1_in12_in\ : STD_LOGIC;
   signal p_1_in14_in : STD_LOGIC;
-  signal p_29_out : STD_LOGIC;
   signal p_2_in : STD_LOGIC;
+  signal p_35_out : STD_LOGIC;
   signal p_3_in : STD_LOGIC;
   signal p_8_out : STD_LOGIC;
   signal p_9_out : STD_LOGIC;
@@ -2928,19 +2961,19 @@ architecture STRUCTURE of mcu_microblaze_0_axi_intc_0_intc_core is
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \FSM_sequential_IRQ_EDGE_GEN.IRQ_EDGE_FAST_ON_AXI_CLK_GEN.current_state_reg[0]\ : label is "gen_pulse:01,wait_ack:10,idle:00";
   attribute FSM_ENCODED_STATES of \FSM_sequential_IRQ_EDGE_GEN.IRQ_EDGE_FAST_ON_AXI_CLK_GEN.current_state_reg[1]\ : label is "gen_pulse:01,wait_ack:10,idle:00";
-  attribute SOFT_HLUTNM of \INTR_DETECT_GEN[0].LVL_DETECT_GEN.hw_intr[0]_i_1\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \INTR_DETECT_GEN[2].LVL_DETECT_GEN.hw_intr[2]_i_1\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \INTR_DETECT_GEN[0].LVL_DETECT_GEN.hw_intr[0]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \INTR_DETECT_GEN[1].LVL_DETECT_GEN.hw_intr[1]_i_1\ : label is "soft_lutpair31";
   attribute SOFT_HLUTNM of \INTR_DETECT_GEN[3].EDGE_DETECT_GEN.hw_intr[3]_i_1\ : label is "soft_lutpair28";
   attribute SOFT_HLUTNM of \IPR_GEN.ipr[3]_i_1\ : label is "soft_lutpair27";
   attribute SOFT_HLUTNM of \IRQ_EDGE_GEN.IRQ_EDGE_FAST_ON_AXI_CLK_GEN.in_idle_i_1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \IVAR_INDEX_SYNC_ON_AXI_CLK_GEN.idle_and_irq_d1_i_1\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \IVAR_INDEX_SYNC_ON_AXI_CLK_GEN.ivar_index_sample_en_i_1\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \IVAR_INDEX_SYNC_ON_AXI_CLK_GEN.idle_and_irq_d1_i_1\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \IVAR_INDEX_SYNC_ON_AXI_CLK_GEN.ivar_index_sample_en_i_1\ : label is "soft_lutpair33";
   attribute SOFT_HLUTNM of \IVR_GEN.ivr[1]_i_1\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \REG_GEN[0].isr[0]_i_3\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \REG_GEN[1].isr[1]_i_2\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \REG_GEN[2].isr[2]_i_2\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \REG_GEN[0].isr[0]_i_3\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \REG_GEN[1].isr[1]_i_2\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \REG_GEN[2].isr[2]_i_2\ : label is "soft_lutpair32";
   attribute SOFT_HLUTNM of \REG_GEN[3].isr[3]_i_2\ : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of ack_or_i_1 : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of ack_or_i_1 : label is "soft_lutpair30";
   attribute SOFT_HLUTNM of irq_gen_i_1 : label is "soft_lutpair27";
   attribute SOFT_HLUTNM of irq_gen_i_2 : label is "soft_lutpair29";
 begin
@@ -3008,13 +3041,13 @@ begin
         port map (
       I0 => first_ack_active,
       I1 => processor_ack(1),
-      O => p_29_out
+      O => p_35_out
     );
 \ACK_EN_SYNC_ON_AXI_CLK_GEN.NO_CASCADE_MASTER.second_ack_reg\: unisim.vcomponents.FDRE
      port map (
       C => s_axi_aclk,
       CE => '1',
-      D => p_29_out,
+      D => p_35_out,
       Q => second_ack,
       R => \^sr\(0)
     );
@@ -3440,27 +3473,27 @@ begin
     );
 \IVR_GEN.ivr[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"557F7F7F"
+      INIT => X"0777FFFF"
     )
         port map (
-      I0 => s_axi_aresetn,
-      I1 => \REG_GEN[0].ier_reg_n_0_[0]\,
-      I2 => \REG_GEN[0].isr_reg_n_0_[0]\,
-      I3 => p_0_in13_in,
-      I4 => p_1_in14_in,
+      I0 => \REG_GEN[0].ier_reg_n_0_[0]\,
+      I1 => \REG_GEN[0].isr_reg_n_0_[0]\,
+      I2 => p_0_in13_in,
+      I3 => p_1_in14_in,
+      I4 => s_axi_aresetn,
       O => \IVR_GEN.ivr[1]_i_1_n_0\
     );
 \IVR_GEN.ivr[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"00151515"
+      INIT => X"00707070"
     )
         port map (
-      I0 => irq_gen_i_2_n_0,
-      I1 => \^p_0_in11_in\,
-      I2 => \^p_1_in12_in\,
+      I0 => \^p_0_in11_in\,
+      I1 => \^p_1_in12_in\,
+      I2 => irq_gen_i_2_n_0,
       I3 => \^p_1_in\,
       I4 => \^p_0_in10_in\,
-      O => \IVR_GEN.ivr[2]_i_1_n_0\
+      O => ivr_in(2)
     );
 \IVR_GEN.ivr_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -3482,7 +3515,7 @@ begin
      port map (
       C => s_axi_aclk,
       CE => '1',
-      D => \IVR_GEN.ivr[2]_i_1_n_0\,
+      D => ivr_in(2),
       Q => \^ivr_gen.ivr_reg[2]_0\,
       S => \^sr\(0)
     );
@@ -3907,19 +3940,19 @@ ack_or_reg: unisim.vcomponents.FDRE
     );
 irq_gen_i_1: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFF888"
+      INIT => X"FF8F8F8F"
     )
         port map (
       I0 => \^p_0_in10_in\,
       I1 => \^p_1_in\,
-      I2 => \^p_1_in12_in\,
-      I3 => \^p_0_in11_in\,
-      I4 => irq_gen_i_2_n_0,
+      I2 => irq_gen_i_2_n_0,
+      I3 => \^p_1_in12_in\,
+      I4 => \^p_0_in11_in\,
       O => irq_gen_i
     );
 irq_gen_i_2: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"F888"
+      INIT => X"0777"
     )
         port map (
       I0 => p_1_in14_in,
@@ -4030,8 +4063,8 @@ entity mcu_microblaze_0_axi_intc_0_slave_attachment is
     ip2bus_rdack : in STD_LOGIC;
     \s_axi_rdata_i_reg[31]_0\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
     ip2bus_rdack_int_d1 : in STD_LOGIC;
-    \mer_int_reg[0]\ : in STD_LOGIC;
     \s_axi_rdata_i_reg[3]_0\ : in STD_LOGIC;
+    \mer_int_reg[0]\ : in STD_LOGIC;
     \s_axi_rdata_i_reg[0]_0\ : in STD_LOGIC;
     \REG_GEN[0].IAR_FAST_MODE_GEN.iar_reg[0]\ : in STD_LOGIC;
     \s_axi_rdata_i_reg[3]_1\ : in STD_LOGIC;
@@ -4068,7 +4101,7 @@ architecture STRUCTURE of mcu_microblaze_0_axi_intc_0_slave_attachment is
   signal \FSM_onehot_state_reg_n_0_[0]\ : STD_LOGIC;
   signal \FSM_onehot_state_reg_n_0_[3]\ : STD_LOGIC;
   signal \INCLUDE_DPHASE_TIMER.dpto_cnt[3]_i_1_n_0\ : STD_LOGIC;
-  signal \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal IP2Bus_Data : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal \^q\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal bus2ip_addr : STD_LOGIC_VECTOR ( 8 downto 6 );
@@ -4195,12 +4228,12 @@ begin
       INIT => X"FFFFF888F888F888"
     )
         port map (
-      I0 => \^ip2bus_rdack_reg\,
-      I1 => s_axi_rresp_i,
-      I2 => \FSM_onehot_state_reg_n_0_[3]\,
-      I3 => \FSM_onehot_state[3]_i_2_n_0\,
-      I4 => s_axi_bresp_i,
-      I5 => \^ip2bus_wrack_reg\,
+      I0 => \^ip2bus_wrack_reg\,
+      I1 => s_axi_bresp_i,
+      I2 => s_axi_rresp_i,
+      I3 => \^ip2bus_rdack_reg\,
+      I4 => \FSM_onehot_state_reg_n_0_[3]\,
+      I5 => \FSM_onehot_state[3]_i_2_n_0\,
       O => \FSM_onehot_state[3]_i_1_n_0\
     );
 \FSM_onehot_state[3]_i_2\: unisim.vcomponents.LUT4
@@ -4263,7 +4296,7 @@ begin
       INIT => X"1"
     )
         port map (
-      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(0),
+      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(0),
       O => plusOp(0)
     );
 \INCLUDE_DPHASE_TIMER.dpto_cnt[1]_i_1\: unisim.vcomponents.LUT2
@@ -4271,8 +4304,8 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(0),
-      I1 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(1),
+      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(0),
+      I1 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(1),
       O => plusOp(1)
     );
 \INCLUDE_DPHASE_TIMER.dpto_cnt[2]_i_1\: unisim.vcomponents.LUT3
@@ -4280,9 +4313,9 @@ begin
       INIT => X"6A"
     )
         port map (
-      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(2),
-      I1 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(1),
-      I2 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(0),
+      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(2),
+      I1 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(1),
+      I2 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(0),
       O => plusOp(2)
     );
 \INCLUDE_DPHASE_TIMER.dpto_cnt[3]_i_1\: unisim.vcomponents.LUT2
@@ -4299,10 +4332,10 @@ begin
       INIT => X"6AAA"
     )
         port map (
-      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(3),
-      I1 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(0),
-      I2 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(1),
-      I3 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(2),
+      I0 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(3),
+      I1 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(0),
+      I2 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(1),
+      I3 => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(2),
       O => plusOp(3)
     );
 \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[0]\: unisim.vcomponents.FDRE
@@ -4310,7 +4343,7 @@ begin
       C => s_axi_aclk,
       CE => '1',
       D => plusOp(0),
-      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(0),
+      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(0),
       R => \INCLUDE_DPHASE_TIMER.dpto_cnt[3]_i_1_n_0\
     );
 \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[1]\: unisim.vcomponents.FDRE
@@ -4318,7 +4351,7 @@ begin
       C => s_axi_aclk,
       CE => '1',
       D => plusOp(1),
-      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(1),
+      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(1),
       R => \INCLUDE_DPHASE_TIMER.dpto_cnt[3]_i_1_n_0\
     );
 \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[2]\: unisim.vcomponents.FDRE
@@ -4326,7 +4359,7 @@ begin
       C => s_axi_aclk,
       CE => '1',
       D => plusOp(2),
-      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(2),
+      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(2),
       R => \INCLUDE_DPHASE_TIMER.dpto_cnt[3]_i_1_n_0\
     );
 \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[3]\: unisim.vcomponents.FDRE
@@ -4334,7 +4367,7 @@ begin
       C => s_axi_aclk,
       CE => '1',
       D => plusOp(3),
-      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(3),
+      Q => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(3),
       R => \INCLUDE_DPHASE_TIMER.dpto_cnt[3]_i_1_n_0\
     );
 I_DECODER: entity work.mcu_microblaze_0_axi_intc_0_address_decoder
@@ -4399,7 +4432,7 @@ I_DECODER: entity work.mcu_microblaze_0_axi_intc_0_address_decoder
       s_axi_wdata(3 downto 0) => s_axi_wdata(3 downto 0),
       s_axi_wdata_0_sp_1 => s_axi_wdata_0_sn_1,
       s_axi_wdata_1_sp_1 => s_axi_wdata_1_sn_1,
-      s_axi_wready(3 downto 0) => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0\(3 downto 0),
+      s_axi_wready(3 downto 0) => \INCLUDE_DPHASE_TIMER.dpto_cnt_reg\(3 downto 0),
       s_axi_wready_0 => is_write_reg_n_0
     );
 \bus2ip_addr_i[2]_i_1\: unisim.vcomponents.LUT3
@@ -4667,14 +4700,14 @@ s_axi_bvalid_i_reg: unisim.vcomponents.FDRE
     );
 \s_axi_rdata_i[0]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"000000007F777FFF"
+      INIT => X"00000000777FFF7F"
     )
         port map (
       I0 => \^q\(1),
       I1 => \^q\(2),
-      I2 => \mer_int_reg[0]\,
+      I2 => \s_axi_rdata_i_reg[3]_0\,
       I3 => \^q\(0),
-      I4 => \s_axi_rdata_i_reg[3]_0\,
+      I4 => \mer_int_reg[0]\,
       I5 => \s_axi_rdata_i_reg[0]_0\,
       O => \s_axi_rdata_i[0]_i_3_n_0\
     );
@@ -5325,8 +5358,8 @@ entity mcu_microblaze_0_axi_intc_0_axi_lite_ipif is
     ip2bus_rdack : in STD_LOGIC;
     \s_axi_rdata_i_reg[31]\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
     ip2bus_rdack_int_d1 : in STD_LOGIC;
-    \mer_int_reg[0]\ : in STD_LOGIC;
     \s_axi_rdata_i_reg[3]\ : in STD_LOGIC;
+    \mer_int_reg[0]\ : in STD_LOGIC;
     \s_axi_rdata_i_reg[0]\ : in STD_LOGIC;
     \REG_GEN[0].IAR_FAST_MODE_GEN.iar_reg[0]\ : in STD_LOGIC;
     \s_axi_rdata_i_reg[3]_0\ : in STD_LOGIC;
@@ -5475,7 +5508,7 @@ entity mcu_microblaze_0_axi_intc_0_axi_intc is
   attribute C_CASCADE_MASTER : integer;
   attribute C_CASCADE_MASTER of mcu_microblaze_0_axi_intc_0_axi_intc : entity is 0;
   attribute C_DISABLE_SYNCHRONIZERS : integer;
-  attribute C_DISABLE_SYNCHRONIZERS of mcu_microblaze_0_axi_intc_0_axi_intc : entity is 0;
+  attribute C_DISABLE_SYNCHRONIZERS of mcu_microblaze_0_axi_intc_0_axi_intc : entity is 1;
   attribute C_ENABLE_ASYNC : integer;
   attribute C_ENABLE_ASYNC of mcu_microblaze_0_axi_intc_0_axi_intc : entity is 0;
   attribute C_EN_CASCADE_MODE : integer;
@@ -5811,7 +5844,7 @@ entity mcu_microblaze_0_axi_intc_0 is
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mcu_microblaze_0_axi_intc_0 : entity is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of mcu_microblaze_0_axi_intc_0 : entity is "axi_intc,Vivado 2018.3";
+  attribute x_core_info of mcu_microblaze_0_axi_intc_0 : entity is "axi_intc,Vivado 2019.1";
 end mcu_microblaze_0_axi_intc_0;
 
 architecture STRUCTURE of mcu_microblaze_0_axi_intc_0 is
@@ -5823,7 +5856,7 @@ architecture STRUCTURE of mcu_microblaze_0_axi_intc_0 is
   attribute C_CASCADE_MASTER : integer;
   attribute C_CASCADE_MASTER of U0 : label is 0;
   attribute C_DISABLE_SYNCHRONIZERS : integer;
-  attribute C_DISABLE_SYNCHRONIZERS of U0 : label is 0;
+  attribute C_DISABLE_SYNCHRONIZERS of U0 : label is 1;
   attribute C_ENABLE_ASYNC : integer;
   attribute C_ENABLE_ASYNC of U0 : label is 0;
   attribute C_EN_CASCADE_MODE : integer;

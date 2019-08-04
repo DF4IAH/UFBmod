@@ -47,14 +47,14 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:ip:axi_quad_spi:3.2
--- IP Revision: 17
+-- IP Revision: 18
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-LIBRARY axi_quad_spi_v3_2_17;
-USE axi_quad_spi_v3_2_17.axi_quad_spi;
+LIBRARY axi_quad_spi_v3_2_18;
+USE axi_quad_spi_v3_2_18.axi_quad_spi;
 
 ENTITY mcu_axi_quad_spi_0_0 IS
   PORT (
@@ -120,6 +120,7 @@ ARCHITECTURE mcu_axi_quad_spi_0_0_arch OF mcu_axi_quad_spi_0_0 IS
       C_DUAL_QUAD_MODE : INTEGER;
       C_NUM_SS_BITS : INTEGER;
       C_NUM_TRANSFER_BITS : INTEGER;
+      C_NEW_SEQ_EN : INTEGER;
       C_SPI_MODE : INTEGER;
       C_USE_STARTUP : INTEGER;
       C_USE_STARTUP_EXT : INTEGER;
@@ -242,12 +243,12 @@ ARCHITECTURE mcu_axi_quad_spi_0_0_arch OF mcu_axi_quad_spi_0_0 IS
     );
   END COMPONENT axi_quad_spi;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF mcu_axi_quad_spi_0_0_arch: ARCHITECTURE IS "axi_quad_spi,Vivado 2018.3";
+  ATTRIBUTE X_CORE_INFO OF mcu_axi_quad_spi_0_0_arch: ARCHITECTURE IS "axi_quad_spi,Vivado 2019.1";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF mcu_axi_quad_spi_0_0_arch : ARCHITECTURE IS "mcu_axi_quad_spi_0_0,axi_quad_spi,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF mcu_axi_quad_spi_0_0_arch: ARCHITECTURE IS "mcu_axi_quad_spi_0_0,axi_quad_spi,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_quad_spi,x_ipVersion=3.2,x_ipCoreRevision=17,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,Async_Clk=0,C_FAMILY=artix7,C_SELECT_XPM=1,C_SUB_FAMILY=artix7,C_INSTANCE=axi_quad_spi_inst,C_SPI_MEM_ADDR_BITS=24,C_TYPE_OF_AXI4_INTERFACE=0,C_XIP_MODE=0,C_UC_FAMILY=0,C_FIFO_DEPTH=256,C_SCK_RATIO=2,C_DUAL_QUAD_MODE=0,C_NUM_SS_BITS=1,C_NUM_TRANSFER_BITS=8,C_SPI_MODE=2,C_USE_STARTUP=1,C_USE_STARTUP_E" & 
-"XT=0,C_SPI_MEMORY=3,C_S_AXI_ADDR_WIDTH=7,C_S_AXI_DATA_WIDTH=32,C_S_AXI4_ADDR_WIDTH=24,C_S_AXI4_DATA_WIDTH=32,C_S_AXI4_ID_WIDTH=1,C_SHARED_STARTUP=0,C_S_AXI4_BASEADDR=0xFFFFFFFF,C_S_AXI4_HIGHADDR=0x00000000,C_LSB_STUP=0}";
+  ATTRIBUTE CORE_GENERATION_INFO OF mcu_axi_quad_spi_0_0_arch: ARCHITECTURE IS "mcu_axi_quad_spi_0_0,axi_quad_spi,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_quad_spi,x_ipVersion=3.2,x_ipCoreRevision=18,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,Async_Clk=1,C_FAMILY=artix7,C_SELECT_XPM=1,C_SUB_FAMILY=artix7,C_INSTANCE=axi_quad_spi_inst,C_SPI_MEM_ADDR_BITS=24,C_TYPE_OF_AXI4_INTERFACE=0,C_XIP_MODE=0,C_UC_FAMILY=0,C_FIFO_DEPTH=256,C_SCK_RATIO=2,C_DUAL_QUAD_MODE=0,C_NUM_SS_BITS=1,C_NUM_TRANSFER_BITS=8,C_NEW_SEQ_EN=1,C_SPI_MODE=2,C_USE_STARTUP=1," & 
+"C_USE_STARTUP_EXT=0,C_SPI_MEMORY=3,C_S_AXI_ADDR_WIDTH=7,C_S_AXI_DATA_WIDTH=32,C_S_AXI4_ADDR_WIDTH=24,C_S_AXI4_DATA_WIDTH=32,C_S_AXI4_ID_WIDTH=1,C_SHARED_STARTUP=0,C_S_AXI4_BASEADDR=0xFFFFFFFF,C_S_AXI4_HIGHADDR=0x00000000,C_LSB_STUP=0}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF ip2intc_irpt: SIGNAL IS "XIL_INTERFACENAME interrupt, SENSITIVITY EDGE_RISING, PortWidth 1";
@@ -295,12 +296,12 @@ ARCHITECTURE mcu_axi_quad_spi_0_0_arch OF mcu_axi_quad_spi_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_aresetn: SIGNAL IS "xilinx.com:signal:reset:1.0 lite_reset RST";
   ATTRIBUTE X_INTERFACE_PARAMETER OF s_axi_aclk: SIGNAL IS "XIL_INTERFACENAME lite_clk, ASSOCIATED_BUSIF AXI_LITE, ASSOCIATED_RESET s_axi_aresetn, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 lite_clk CLK";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF ext_spi_clk: SIGNAL IS "XIL_INTERFACENAME spi_clk, ASSOCIATED_BUSIF SPI_0, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF ext_spi_clk: SIGNAL IS "XIL_INTERFACENAME spi_clk, ASSOCIATED_BUSIF SPI_0, FREQ_HZ 50000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF ext_spi_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 spi_clk CLK";
 BEGIN
   U0 : axi_quad_spi
     GENERIC MAP (
-      Async_Clk => 0,
+      Async_Clk => 1,
       C_FAMILY => "artix7",
       C_SELECT_XPM => 1,
       C_SUB_FAMILY => "artix7",
@@ -314,6 +315,7 @@ BEGIN
       C_DUAL_QUAD_MODE => 0,
       C_NUM_SS_BITS => 1,
       C_NUM_TRANSFER_BITS => 8,
+      C_NEW_SEQ_EN => 1,
       C_SPI_MODE => 2,
       C_USE_STARTUP => 1,
       C_USE_STARTUP_EXT => 0,

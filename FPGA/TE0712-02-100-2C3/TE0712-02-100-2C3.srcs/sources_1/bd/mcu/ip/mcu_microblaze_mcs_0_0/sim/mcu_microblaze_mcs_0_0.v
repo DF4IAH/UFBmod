@@ -48,7 +48,7 @@
 
 
 // IP VLNV: xilinx.com:ip:microblaze_mcs:3.0
-// IP Revision: 10
+// IP Revision: 11
 
 `timescale 1ns/1ps
 
@@ -56,11 +56,6 @@
 module mcu_microblaze_mcs_0_0 (
   Clk,
   Reset,
-  UART_Interrupt,
-  FIT1_Interrupt,
-  FIT1_Toggle,
-  PIT1_Interrupt,
-  PIT1_Toggle,
   INTC_IRQ,
   GPIO1_tri_i,
   GPIO1_tri_o
@@ -72,17 +67,6 @@ input wire Clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.Reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0, BOARD.ASSOCIATED_PARAM RESET_BOARD_INTERFACE" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.Reset RST" *)
 input wire Reset;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.UART_Interrupt, SENSITIVITY EDGE_RISING, PortWidth 1" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.UART_Interrupt INTERRUPT" *)
-output wire UART_Interrupt;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.FIT1_Interrupt, SENSITIVITY EDGE_RISING, PortWidth 1" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.FIT1_Interrupt INTERRUPT" *)
-output wire FIT1_Interrupt;
-output wire FIT1_Toggle;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.PIT1_Interrupt, SENSITIVITY EDGE_RISING, PortWidth 1" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.PIT1_Interrupt INTERRUPT" *)
-output wire PIT1_Interrupt;
-output wire PIT1_Toggle;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.INTC_IRQ, SENSITIVITY LEVEL_HIGH, PortWidth 1" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.INTC_IRQ INTERRUPT" *)
 output wire INTC_IRQ;
@@ -95,11 +79,6 @@ output wire [7 : 0] GPIO1_tri_o;
   bd_f021 inst (
     .Clk(Clk),
     .Reset(Reset),
-    .UART_Interrupt(UART_Interrupt),
-    .FIT1_Interrupt(FIT1_Interrupt),
-    .FIT1_Toggle(FIT1_Toggle),
-    .PIT1_Interrupt(PIT1_Interrupt),
-    .PIT1_Toggle(PIT1_Toggle),
     .INTC_IRQ(INTC_IRQ),
     .GPIO1_tri_i(GPIO1_tri_i),
     .GPIO1_tri_o(GPIO1_tri_o)

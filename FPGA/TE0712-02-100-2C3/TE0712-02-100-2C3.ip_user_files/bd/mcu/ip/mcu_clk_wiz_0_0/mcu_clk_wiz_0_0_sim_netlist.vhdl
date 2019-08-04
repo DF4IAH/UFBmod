@@ -1,10 +1,10 @@
--- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+-- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Fri Aug  2 22:05:59 2019
+-- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+-- Date        : Sun Aug  4 02:00:18 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top mcu_clk_wiz_0_0 -prefix
---               mcu_clk_wiz_0_0_ mcu_clk_wiz_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_clk_wiz_0_0/mcu_clk_wiz_0_0_sim_netlist.vhdl
 -- Design      : mcu_clk_wiz_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -23,6 +23,8 @@ entity mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz is
     clk_in1_p : in STD_LOGIC;
     clk_in1_n : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz : entity is "mcu_clk_wiz_0_0_clk_wiz";
 end mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz;
 
 architecture STRUCTURE of mcu_clk_wiz_0_0_mcu_clk_wiz_0_0_clk_wiz is
@@ -131,7 +133,8 @@ clkout1_buf: unisim.vcomponents.BUFGCTRL
     generic map(
       INIT_OUT => 0,
       PRESELECT_I0 => true,
-      PRESELECT_I1 => false
+      PRESELECT_I1 => false,
+      SIM_DEVICE => "7SERIES"
     )
         port map (
       CE0 => seq_reg1(7),
@@ -153,7 +156,8 @@ clkout2_buf: unisim.vcomponents.BUFGCTRL
     generic map(
       INIT_OUT => 0,
       PRESELECT_I0 => true,
-      PRESELECT_I1 => false
+      PRESELECT_I1 => false,
+      SIM_DEVICE => "7SERIES"
     )
         port map (
       CE0 => seq_reg2(7),

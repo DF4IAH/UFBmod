@@ -1,13 +1,13 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x3CAD312A954E125C",
+      "boundary_crc": "0xAC801877AC98605A",
       "design_src": "SBD",
       "device": "xc7a100tfgg484-2",
       "name": "bd_f021",
       "scoped": "true",
       "synth_flow_mode": "None",
-      "tool_version": "2018.3",
+      "tool_version": "2019.1",
       "validated": "true"
     },
     "design_tree": {
@@ -86,51 +86,6 @@
           }
         }
       },
-      "UART_Interrupt": {
-        "type": "intr",
-        "direction": "O",
-        "parameters": {
-          "PortWidth": {
-            "value": "1",
-            "value_src": "default_prop"
-          },
-          "SENSITIVITY": {
-            "value": "EDGE_RISING"
-          }
-        }
-      },
-      "FIT1_Interrupt": {
-        "type": "intr",
-        "direction": "O",
-        "parameters": {
-          "PortWidth": {
-            "value": "1",
-            "value_src": "default_prop"
-          },
-          "SENSITIVITY": {
-            "value": "EDGE_RISING"
-          }
-        }
-      },
-      "FIT1_Toggle": {
-        "direction": "O"
-      },
-      "PIT1_Interrupt": {
-        "type": "intr",
-        "direction": "O",
-        "parameters": {
-          "PortWidth": {
-            "value": "1",
-            "value_src": "default_prop"
-          },
-          "SENSITIVITY": {
-            "value": "EDGE_RISING"
-          }
-        }
-      },
-      "PIT1_Toggle": {
-        "direction": "O"
-      },
       "INTC_IRQ": {
         "type": "intr",
         "direction": "O",
@@ -167,7 +122,7 @@
             "value": "mb_microblaze_0"
           },
           "C_PC_WIDTH": {
-            "value": "15"
+            "value": "17"
           },
           "C_USE_EXT_BRK": {
             "value": "0"
@@ -218,7 +173,7 @@
             "value": "0x0000000000000000"
           },
           "C_HIGHADDR": {
-            "value": "0x0000000000007FFF"
+            "value": "0x000000000001FFFF"
           },
           "C_MASK": {
             "value": "0x00000000C0000000"
@@ -243,7 +198,7 @@
             "value": "0x0000000000000000"
           },
           "C_HIGHADDR": {
-            "value": "0x0000000000007FFF"
+            "value": "0x000000000001FFFF"
           },
           "C_MASK": {
             "value": "0x0000000080000000"
@@ -285,7 +240,7 @@
             "value": "iomodule"
           },
           "C_INTC_ADDR_WIDTH": {
-            "value": "15"
+            "value": "17"
           },
           "C_INTC_HAS_FAST": {
             "value": "1"
@@ -308,16 +263,10 @@
           "C_PIT1_INTERRUPT": {
             "value": "1"
           },
-          "C_USE_FIT1": {
-            "value": "1"
-          },
           "C_USE_GPI1": {
             "value": "1"
           },
           "C_USE_GPO1": {
-            "value": "1"
-          },
-          "C_USE_PIT1": {
             "value": "1"
           }
         }
@@ -328,6 +277,12 @@
         "interface_ports": [
           "ilmb/LMB_Sl_0",
           "ilmb_cntlr/SLMB"
+        ]
+      },
+      "iomodule_0_INTC_Irq": {
+        "interface_ports": [
+          "iomodule_0/INTC_Irq",
+          "microblaze_I/INTERRUPT"
         ]
       },
       "dlmb_sl_1": {
@@ -342,6 +297,12 @@
           "dlmb/LMB_M"
         ]
       },
+      "dlmb_sl_0": {
+        "interface_ports": [
+          "dlmb/LMB_Sl_0",
+          "dlmb_cntlr/SLMB"
+        ]
+      },
       "dlmb_port": {
         "interface_ports": [
           "dlmb_cntlr/BRAM_PORT",
@@ -352,18 +313,6 @@
         "interface_ports": [
           "ilmb_cntlr/BRAM_PORT",
           "lmb_bram_I/BRAM_PORTB"
-        ]
-      },
-      "iomodule_0_INTC_Irq": {
-        "interface_ports": [
-          "iomodule_0/INTC_Irq",
-          "microblaze_I/INTERRUPT"
-        ]
-      },
-      "dlmb_sl_0": {
-        "interface_ports": [
-          "dlmb/LMB_Sl_0",
-          "dlmb_cntlr/SLMB"
         ]
       },
       "ilmb": {
@@ -419,35 +368,6 @@
           "iomodule_0/Rst"
         ]
       },
-      "UART_Interrupt": {
-        "ports": [
-          "UART_Interrupt"
-        ]
-      },
-      "FIT1_Interrupt": {
-        "ports": [
-          "iomodule_0/FIT1_Interrupt",
-          "FIT1_Interrupt"
-        ]
-      },
-      "FIT1_Toggle": {
-        "ports": [
-          "iomodule_0/FIT1_Toggle",
-          "FIT1_Toggle"
-        ]
-      },
-      "PIT1_Interrupt": {
-        "ports": [
-          "iomodule_0/PIT1_Interrupt",
-          "PIT1_Interrupt"
-        ]
-      },
-      "PIT1_Toggle": {
-        "ports": [
-          "iomodule_0/PIT1_Toggle",
-          "PIT1_Toggle"
-        ]
-      },
       "INTC_Irq_Out": {
         "ports": [
           "iomodule_0/INTC_IRQ_OUT",
@@ -465,7 +385,7 @@
               "SEG_dlmb_cntlr_Mem": {
                 "address_block": "/dlmb_cntlr/SLMB/Mem",
                 "offset": "0x00000000",
-                "range": "32K"
+                "range": "128K"
               },
               "SEG_iomodule_0_Reg": {
                 "address_block": "/iomodule_0/SLMB/Reg",
@@ -481,7 +401,7 @@
               "SEG_ilmb_cntlr_Mem": {
                 "address_block": "/ilmb_cntlr/SLMB/Mem",
                 "offset": "0x00000000",
-                "range": "32K"
+                "range": "128K"
               }
             }
           }

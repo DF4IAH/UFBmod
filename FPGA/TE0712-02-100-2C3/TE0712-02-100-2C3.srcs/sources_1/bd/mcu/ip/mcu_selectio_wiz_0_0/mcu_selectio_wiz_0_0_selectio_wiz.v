@@ -158,7 +158,12 @@ module mcu_selectio_wiz_0_0_selectio_wiz
      end
   end
   endgenerate
+  
+//// NO ODELAY
 
+//// clk fwd
+///fuji
+//// NO ODELAY
 
      // declare the oserdes
      OSERDESE2

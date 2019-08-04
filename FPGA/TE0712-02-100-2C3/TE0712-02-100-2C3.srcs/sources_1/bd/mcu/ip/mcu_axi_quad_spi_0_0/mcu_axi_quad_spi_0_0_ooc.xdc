@@ -61,11 +61,12 @@
 
 #list of all the clock needed for AXI Quad SPI core
 
-	create_clock -name all_clock -period 20 [get_ports {s_axi_aclk ext_spi_clk}] 
+	create_clock -name axi_lite_clk -period 10 [get_ports s_axi_aclk] 
 ##			 set_property HD.CLK_SRC BUFGCTRL_X0Y0 [get_ports s_axi_aclk]
 
-##			 set_property HD.CLK_SRC BUFGCTRL_X0Y1 [get_ports ext_spi_clk]
-
+	create_clock -name ext_spi_clk -period 20 [get_ports ext_spi_clk]
+##		 set_property HD.CLK_SRC BUFGCTRL_X0Y1 [get_ports ext_spi_clk]
+	
 	
 
 

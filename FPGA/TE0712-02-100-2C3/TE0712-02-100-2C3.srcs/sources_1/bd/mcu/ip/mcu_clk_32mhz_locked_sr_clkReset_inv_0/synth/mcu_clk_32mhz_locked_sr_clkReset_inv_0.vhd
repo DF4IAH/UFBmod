@@ -47,14 +47,14 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:ip:c_addsub:12.0
--- IP Revision: 12
+-- IP Revision: 13
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-LIBRARY c_addsub_v12_0_12;
-USE c_addsub_v12_0_12.c_addsub_v12_0_12;
+LIBRARY c_addsub_v12_0_13;
+USE c_addsub_v12_0_13.c_addsub_v12_0_13;
 
 ENTITY mcu_clk_32mhz_locked_sr_clkReset_inv_0 IS
   PORT (
@@ -67,7 +67,7 @@ END mcu_clk_32mhz_locked_sr_clkReset_inv_0;
 ARCHITECTURE mcu_clk_32mhz_locked_sr_clkReset_inv_0_arch OF mcu_clk_32mhz_locked_sr_clkReset_inv_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
   ATTRIBUTE DowngradeIPIdentifiedWarnings OF mcu_clk_32mhz_locked_sr_clkReset_inv_0_arch: ARCHITECTURE IS "yes";
-  COMPONENT c_addsub_v12_0_12 IS
+  COMPONENT c_addsub_v12_0_13 IS
     GENERIC (
       C_VERBOSITY : INTEGER;
       C_XDEVICEFAMILY : STRING;
@@ -110,13 +110,13 @@ ARCHITECTURE mcu_clk_32mhz_locked_sr_clkReset_inv_0_arch OF mcu_clk_32mhz_locked
       C_OUT : OUT STD_LOGIC;
       S : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
     );
-  END COMPONENT c_addsub_v12_0_12;
+  END COMPONENT c_addsub_v12_0_13;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF mcu_clk_32mhz_locked_sr_clkReset_inv_0_arch: ARCHITECTURE IS "c_addsub_v12_0_12,Vivado 2018.3";
+  ATTRIBUTE X_CORE_INFO OF mcu_clk_32mhz_locked_sr_clkReset_inv_0_arch: ARCHITECTURE IS "c_addsub_v12_0_13,Vivado 2019.1";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
-  ATTRIBUTE CHECK_LICENSE_TYPE OF mcu_clk_32mhz_locked_sr_clkReset_inv_0_arch : ARCHITECTURE IS "mcu_clk_32mhz_locked_sr_clkReset_inv_0,c_addsub_v12_0_12,{}";
+  ATTRIBUTE CHECK_LICENSE_TYPE OF mcu_clk_32mhz_locked_sr_clkReset_inv_0_arch : ARCHITECTURE IS "mcu_clk_32mhz_locked_sr_clkReset_inv_0,c_addsub_v12_0_13,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF mcu_clk_32mhz_locked_sr_clkReset_inv_0_arch: ARCHITECTURE IS "mcu_clk_32mhz_locked_sr_clkReset_inv_0,c_addsub_v12_0_12,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=c_addsub,x_ipVersion=12.0,x_ipCoreRevision=12,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_VERBOSITY=0,C_XDEVICEFAMILY=artix7,C_IMPLEMENTATION=0,C_A_WIDTH=1,C_B_WIDTH=1,C_OUT_WIDTH=1,C_CE_OVERRIDES_SCLR=0,C_A_TYPE=1,C_B_TYPE=1,C_LATENCY=1,C_ADD_MODE=0,C_B_CONSTANT=1,C_B_VALUE=1,C_AINIT_VAL=0,C_SINIT_VAL=0,C_CE_OVERRIDES_BYPASS=1,C_BYPASS_LOW=0,C_SCLR_OVERRIDES_SSET=1," & 
+  ATTRIBUTE CORE_GENERATION_INFO OF mcu_clk_32mhz_locked_sr_clkReset_inv_0_arch: ARCHITECTURE IS "mcu_clk_32mhz_locked_sr_clkReset_inv_0,c_addsub_v12_0_13,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=c_addsub,x_ipVersion=12.0,x_ipCoreRevision=13,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_VERBOSITY=0,C_XDEVICEFAMILY=artix7,C_IMPLEMENTATION=0,C_A_WIDTH=1,C_B_WIDTH=1,C_OUT_WIDTH=1,C_CE_OVERRIDES_SCLR=0,C_A_TYPE=1,C_B_TYPE=1,C_LATENCY=1,C_ADD_MODE=0,C_B_CONSTANT=1,C_B_VALUE=1,C_AINIT_VAL=0,C_SINIT_VAL=0,C_CE_OVERRIDES_BYPASS=1,C_BYPASS_LOW=0,C_SCLR_OVERRIDES_SSET=1," & 
 "C_HAS_C_IN=0,C_HAS_C_OUT=0,C_BORROW_LOW=1,C_HAS_CE=0,C_HAS_BYPASS=0,C_HAS_SCLR=0,C_HAS_SSET=0,C_HAS_SINIT=0}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
@@ -128,7 +128,7 @@ ARCHITECTURE mcu_clk_32mhz_locked_sr_clkReset_inv_0_arch OF mcu_clk_32mhz_locked
   ATTRIBUTE X_INTERFACE_PARAMETER OF A: SIGNAL IS "XIL_INTERFACENAME a_intf, LAYERED_METADATA undef";
   ATTRIBUTE X_INTERFACE_INFO OF A: SIGNAL IS "xilinx.com:signal:data:1.0 a_intf DATA";
 BEGIN
-  U0 : c_addsub_v12_0_12
+  U0 : c_addsub_v12_0_13
     GENERIC MAP (
       C_VERBOSITY => 0,
       C_XDEVICEFAMILY => "artix7",

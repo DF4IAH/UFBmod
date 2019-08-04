@@ -53,11 +53,11 @@
 #ifndef _mcu_xlconstant_val0_0_H_
 #define _mcu_xlconstant_val0_0_H_
 
-#include "xlconstant_v1_1_5.h"
+#include "xlconstant_v1_1_6.h"
 #include "systemc.h"
 class mcu_xlconstant_val0_0 : public sc_module {
   public:
-xlconstant_v1_1_5<4,0> mod;
+xlconstant_v1_1_6<4,0> mod;
   sc_out< sc_bv<4> > dout;
 mcu_xlconstant_val0_0 (sc_core::sc_module_name name) :sc_module(name), mod("mod") {
     mod.dout(dout);

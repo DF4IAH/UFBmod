@@ -99,8 +99,8 @@ wire clk_in2_mcu_clk_wiz_0_0;
 
   wire        clk_32_lvds_mcu_clk_wiz_0_0;
   wire        clk_div_8_lvds_mcu_clk_wiz_0_0;
-  wire        clk_32_lvds_out_mcu_clk_wiz_0_0;
-  wire        clk_8_lvds_out_mcu_clk_wiz_0_0;
+  wire        clk_out3_mcu_clk_wiz_0_0;
+  wire        clk_out4_mcu_clk_wiz_0_0;
   wire        clk_out5_mcu_clk_wiz_0_0;
   wire        clk_out6_mcu_clk_wiz_0_0;
   wire        clk_out7_mcu_clk_wiz_0_0;

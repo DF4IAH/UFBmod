@@ -1,7 +1,7 @@
-// Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+// Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Sat Aug  3 21:57:11 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Aug  4 01:54:22 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_microblaze_0_axi_intc_0/mcu_microblaze_0_axi_intc_0_sim_netlist.v
@@ -12,7 +12,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "mcu_microblaze_0_axi_intc_0,axi_intc,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "axi_intc,Vivado 2018.3" *) 
+(* CHECK_LICENSE_TYPE = "mcu_microblaze_0_axi_intc_0,axi_intc,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "axi_intc,Vivado 2019.1" *) 
 (* NotValidForBitStream *)
 module mcu_microblaze_0_axi_intc_0
    (s_axi_aclk,
@@ -96,7 +96,7 @@ module mcu_microblaze_0_axi_intc_0
   (* C_ADDR_WIDTH = "32" *) 
   (* C_ASYNC_INTR = "-16" *) 
   (* C_CASCADE_MASTER = "0" *) 
-  (* C_DISABLE_SYNCHRONIZERS = "0" *) 
+  (* C_DISABLE_SYNCHRONIZERS = "1" *) 
   (* C_ENABLE_ASYNC = "0" *) 
   (* C_EN_CASCADE_MODE = "0" *) 
   (* C_FAMILY = "artix7" *) 
@@ -483,9 +483,9 @@ module mcu_microblaze_0_axi_intc_0_address_decoder
     .INIT(16'h8000)) 
     \GEN_BKEND_CE_REGISTERS[11].ce_out_i[11]_i_1 
        (.I0(\GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0 [3]),
-        .I1(\GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0 [0]),
-        .I2(\GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0 [1]),
-        .I3(\GEN_BKEND_CE_REGISTERS[11].ce_out_i[11]_i_2_n_0 ),
+        .I1(\GEN_BKEND_CE_REGISTERS[11].ce_out_i[11]_i_2_n_0 ),
+        .I2(\GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0 [0]),
+        .I3(\GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0 [1]),
         .O(p_4_out));
   (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
@@ -655,9 +655,9 @@ module mcu_microblaze_0_axi_intc_0_address_decoder
     .INIT(16'h4000)) 
     \GEN_BKEND_CE_REGISTERS[3].ce_out_i[3]_i_1 
        (.I0(\GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0 [3]),
-        .I1(\GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0 [0]),
-        .I2(\GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0 [1]),
-        .I3(\GEN_BKEND_CE_REGISTERS[11].ce_out_i[11]_i_2_n_0 ),
+        .I1(\GEN_BKEND_CE_REGISTERS[11].ce_out_i[11]_i_2_n_0 ),
+        .I2(\GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0 [0]),
+        .I3(\GEN_BKEND_CE_REGISTERS[18].ce_out_i_reg[18]_0 [1]),
         .O(\GEN_BKEND_CE_REGISTERS[3].ce_out_i[3]_i_1_n_0 ));
   FDRE \GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg[3] 
        (.C(s_axi_aclk),
@@ -1342,7 +1342,7 @@ module mcu_microblaze_0_axi_intc_0_address_decoder
 endmodule
 
 (* C_ADDR_WIDTH = "32" *) (* C_ASYNC_INTR = "-16" *) (* C_CASCADE_MASTER = "0" *) 
-(* C_DISABLE_SYNCHRONIZERS = "0" *) (* C_ENABLE_ASYNC = "0" *) (* C_EN_CASCADE_MODE = "0" *) 
+(* C_DISABLE_SYNCHRONIZERS = "1" *) (* C_ENABLE_ASYNC = "0" *) (* C_EN_CASCADE_MODE = "0" *) 
 (* C_FAMILY = "artix7" *) (* C_HAS_CIE = "1" *) (* C_HAS_FAST = "1" *) 
 (* C_HAS_ILR = "0" *) (* C_HAS_IPR = "1" *) (* C_HAS_IVR = "1" *) 
 (* C_HAS_SIE = "1" *) (* C_INSTANCE = "mcu_microblaze_0_axi_intc_0" *) (* C_IRQ_ACTIVE = "1'b1" *) 
@@ -1688,8 +1688,8 @@ module mcu_microblaze_0_axi_intc_0_axi_lite_ipif
     ip2bus_rdack,
     \s_axi_rdata_i_reg[31] ,
     ip2bus_rdack_int_d1,
-    \mer_int_reg[0] ,
     \s_axi_rdata_i_reg[3] ,
+    \mer_int_reg[0] ,
     \s_axi_rdata_i_reg[0] ,
     \REG_GEN[0].IAR_FAST_MODE_GEN.iar_reg[0] ,
     \s_axi_rdata_i_reg[3]_0 ,
@@ -1757,8 +1757,8 @@ module mcu_microblaze_0_axi_intc_0_axi_lite_ipif
   input ip2bus_rdack;
   input [31:0]\s_axi_rdata_i_reg[31] ;
   input ip2bus_rdack_int_d1;
-  input \mer_int_reg[0] ;
   input \s_axi_rdata_i_reg[3] ;
+  input \mer_int_reg[0] ;
   input \s_axi_rdata_i_reg[0] ;
   input \REG_GEN[0].IAR_FAST_MODE_GEN.iar_reg[0] ;
   input \s_axi_rdata_i_reg[3]_0 ;
@@ -2054,7 +2054,6 @@ module mcu_microblaze_0_axi_intc_0_intc_core
   wire \IVAR_INDEX_SYNC_ON_AXI_CLK_GEN.ivar_index_axi_clk[2]_i_1_n_0 ;
   wire \IVR_GEN.ivr[0]_i_1_n_0 ;
   wire \IVR_GEN.ivr[1]_i_1_n_0 ;
-  wire \IVR_GEN.ivr[2]_i_1_n_0 ;
   wire \IVR_GEN.ivr_reg[0]_0 ;
   wire \IVR_GEN.ivr_reg[1]_0 ;
   wire \IVR_GEN.ivr_reg[2]_0 ;
@@ -2118,6 +2117,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
   wire [2:0]ivar_index_axi_clk;
   wire ivar_index_sample_en;
   wire ivar_index_sample_en_i;
+  wire [2:2]ivr_in;
   wire \mer_int_reg[0]_0 ;
   wire \mer_int_reg[0]_1 ;
   wire \mer_int_reg[1]_0 ;
@@ -2137,8 +2137,8 @@ module mcu_microblaze_0_axi_intc_0_intc_core
   wire p_1_in;
   wire p_1_in12_in;
   wire p_1_in14_in;
-  wire p_29_out;
   wire p_2_in;
+  wire p_35_out;
   wire p_3_in;
   wire p_8_out;
   wire p_9_out;
@@ -2182,11 +2182,11 @@ module mcu_microblaze_0_axi_intc_0_intc_core
     \ACK_EN_SYNC_ON_AXI_CLK_GEN.NO_CASCADE_MASTER.second_ack_i_1 
        (.I0(first_ack_active),
         .I1(processor_ack[1]),
-        .O(p_29_out));
+        .O(p_35_out));
   FDRE \ACK_EN_SYNC_ON_AXI_CLK_GEN.NO_CASCADE_MASTER.second_ack_reg 
        (.C(s_axi_aclk),
         .CE(1'b1),
-        .D(p_29_out),
+        .D(p_35_out),
         .Q(second_ack),
         .R(SR));
   FDRE \ACK_EN_SYNC_ON_AXI_CLK_GEN.NO_CASCADE_MASTER.second_ack_sync_d1_reg 
@@ -2269,7 +2269,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .D(\FSM_sequential_IRQ_EDGE_GEN.IRQ_EDGE_FAST_ON_AXI_CLK_GEN.current_state[1]_i_1_n_0 ),
         .Q(current_state[1]),
         .R(SR));
-  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
   LUT4 #(
     .INIT(16'h00E0)) 
     \INTR_DETECT_GEN[0].LVL_DETECT_GEN.hw_intr[0]_i_1 
@@ -2284,6 +2284,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .D(\INTR_DETECT_GEN[0].LVL_DETECT_GEN.hw_intr[0]_i_1_n_0 ),
         .Q(hw_intr[0]),
         .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT4 #(
     .INIT(16'h00E0)) 
     \INTR_DETECT_GEN[1].LVL_DETECT_GEN.hw_intr[1]_i_1 
@@ -2298,7 +2299,6 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .D(\INTR_DETECT_GEN[1].LVL_DETECT_GEN.hw_intr[1]_i_1_n_0 ),
         .Q(hw_intr[1]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT4 #(
     .INIT(16'h00E0)) 
     \INTR_DETECT_GEN[2].LVL_DETECT_GEN.hw_intr[2]_i_1 
@@ -2422,7 +2422,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .ivar_index_axi_clk(ivar_index_axi_clk),
         .s_axi_aclk(s_axi_aclk),
         .s_axi_wdata(s_axi_wdata));
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT3 #(
     .INIT(8'h80)) 
     \IVAR_INDEX_SYNC_ON_AXI_CLK_GEN.idle_and_irq_d1_i_1 
@@ -2484,7 +2484,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .D(\IVAR_INDEX_SYNC_ON_AXI_CLK_GEN.ivar_index_axi_clk[2]_i_1_n_0 ),
         .Q(ivar_index_axi_clk[2]),
         .R(SR));
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT4 #(
     .INIT(16'h0080)) 
     \IVAR_INDEX_SYNC_ON_AXI_CLK_GEN.ivar_index_sample_en_i_1 
@@ -2511,23 +2511,23 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .O(\IVR_GEN.ivr[0]_i_1_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair29" *) 
   LUT5 #(
-    .INIT(32'h557F7F7F)) 
+    .INIT(32'h0777FFFF)) 
     \IVR_GEN.ivr[1]_i_1 
-       (.I0(s_axi_aresetn),
-        .I1(\REG_GEN[0].ier_reg_n_0_[0] ),
-        .I2(\REG_GEN[0].isr_reg_n_0_[0] ),
-        .I3(p_0_in13_in),
-        .I4(p_1_in14_in),
+       (.I0(\REG_GEN[0].ier_reg_n_0_[0] ),
+        .I1(\REG_GEN[0].isr_reg_n_0_[0] ),
+        .I2(p_0_in13_in),
+        .I3(p_1_in14_in),
+        .I4(s_axi_aresetn),
         .O(\IVR_GEN.ivr[1]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'h00151515)) 
+    .INIT(32'h00707070)) 
     \IVR_GEN.ivr[2]_i_1 
-       (.I0(irq_gen_i_2_n_0),
-        .I1(p_0_in11_in),
-        .I2(p_1_in12_in),
+       (.I0(p_0_in11_in),
+        .I1(p_1_in12_in),
+        .I2(irq_gen_i_2_n_0),
         .I3(p_1_in),
         .I4(p_0_in10_in),
-        .O(\IVR_GEN.ivr[2]_i_1_n_0 ));
+        .O(ivr_in));
   FDRE \IVR_GEN.ivr_reg[0] 
        (.C(s_axi_aclk),
         .CE(1'b1),
@@ -2543,7 +2543,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
   FDSE \IVR_GEN.ivr_reg[2] 
        (.C(s_axi_aclk),
         .CE(1'b1),
-        .D(\IVR_GEN.ivr[2]_i_1_n_0 ),
+        .D(ivr_in),
         .Q(\IVR_GEN.ivr_reg[2]_0 ),
         .S(SR));
   LUT6 #(
@@ -2603,7 +2603,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(hw_intr[0]),
         .I5(p_11_out),
         .O(\REG_GEN[0].isr[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \REG_GEN[0].isr[0]_i_3 
@@ -2673,7 +2673,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(hw_intr[1]),
         .I5(p_10_out),
         .O(\REG_GEN[1].isr[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \REG_GEN[1].isr[1]_i_2 
@@ -2743,7 +2743,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(hw_intr[2]),
         .I5(p_9_out),
         .O(\REG_GEN[2].isr[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \REG_GEN[2].isr[2]_i_2 
@@ -2850,7 +2850,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .D(\SIE_GEN.SIE_BIT_GEN[3].sie_reg[3]_0 ),
         .Q(p_0_in1_in),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     ack_or_i_1
@@ -2867,17 +2867,17 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .R(SR));
   (* SOFT_HLUTNM = "soft_lutpair27" *) 
   LUT5 #(
-    .INIT(32'hFFFFF888)) 
+    .INIT(32'hFF8F8F8F)) 
     irq_gen_i_1
        (.I0(p_0_in10_in),
         .I1(p_1_in),
-        .I2(p_1_in12_in),
-        .I3(p_0_in11_in),
-        .I4(irq_gen_i_2_n_0),
+        .I2(irq_gen_i_2_n_0),
+        .I3(p_1_in12_in),
+        .I4(p_0_in11_in),
         .O(irq_gen_i));
   (* SOFT_HLUTNM = "soft_lutpair29" *) 
   LUT4 #(
-    .INIT(16'hF888)) 
+    .INIT(16'h0777)) 
     irq_gen_i_2
        (.I0(p_1_in14_in),
         .I1(p_0_in13_in),
@@ -3338,6 +3338,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "0" *) 
   (* ram_slice_end = "0" *) 
   RAM32X1D #(
@@ -3361,6 +3362,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "10" *) 
   (* ram_slice_end = "10" *) 
   RAM32X1D #(
@@ -3384,6 +3386,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "11" *) 
   (* ram_slice_end = "11" *) 
   RAM32X1D #(
@@ -3407,6 +3410,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "12" *) 
   (* ram_slice_end = "12" *) 
   RAM32X1D #(
@@ -3430,6 +3434,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "13" *) 
   (* ram_slice_end = "13" *) 
   RAM32X1D #(
@@ -3453,6 +3458,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "14" *) 
   (* ram_slice_end = "14" *) 
   RAM32X1D #(
@@ -3476,6 +3482,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "15" *) 
   (* ram_slice_end = "15" *) 
   RAM32X1D #(
@@ -3499,6 +3506,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "16" *) 
   (* ram_slice_end = "16" *) 
   RAM32X1D #(
@@ -3522,6 +3530,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "17" *) 
   (* ram_slice_end = "17" *) 
   RAM32X1D #(
@@ -3545,6 +3554,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "18" *) 
   (* ram_slice_end = "18" *) 
   RAM32X1D #(
@@ -3568,6 +3578,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "19" *) 
   (* ram_slice_end = "19" *) 
   RAM32X1D #(
@@ -3591,6 +3602,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "1" *) 
   (* ram_slice_end = "1" *) 
   RAM32X1D #(
@@ -3614,6 +3626,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "20" *) 
   (* ram_slice_end = "20" *) 
   RAM32X1D #(
@@ -3637,6 +3650,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "21" *) 
   (* ram_slice_end = "21" *) 
   RAM32X1D #(
@@ -3660,6 +3674,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "22" *) 
   (* ram_slice_end = "22" *) 
   RAM32X1D #(
@@ -3683,6 +3698,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "23" *) 
   (* ram_slice_end = "23" *) 
   RAM32X1D #(
@@ -3706,6 +3722,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "24" *) 
   (* ram_slice_end = "24" *) 
   RAM32X1D #(
@@ -3729,6 +3746,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "25" *) 
   (* ram_slice_end = "25" *) 
   RAM32X1D #(
@@ -3752,6 +3770,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "26" *) 
   (* ram_slice_end = "26" *) 
   RAM32X1D #(
@@ -3775,6 +3794,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "27" *) 
   (* ram_slice_end = "27" *) 
   RAM32X1D #(
@@ -3798,6 +3818,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "28" *) 
   (* ram_slice_end = "28" *) 
   RAM32X1D #(
@@ -3821,6 +3842,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "29" *) 
   (* ram_slice_end = "29" *) 
   RAM32X1D #(
@@ -3844,6 +3866,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "2" *) 
   (* ram_slice_end = "2" *) 
   RAM32X1D #(
@@ -3867,6 +3890,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "30" *) 
   (* ram_slice_end = "30" *) 
   RAM32X1D #(
@@ -3890,6 +3914,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "31" *) 
   (* ram_slice_end = "31" *) 
   RAM32X1D #(
@@ -3913,6 +3938,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "3" *) 
   (* ram_slice_end = "3" *) 
   RAM32X1D #(
@@ -3936,6 +3962,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "4" *) 
   (* ram_slice_end = "4" *) 
   RAM32X1D #(
@@ -3959,6 +3986,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "5" *) 
   (* ram_slice_end = "5" *) 
   RAM32X1D #(
@@ -3982,6 +4010,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "6" *) 
   (* ram_slice_end = "6" *) 
   RAM32X1D #(
@@ -4005,6 +4034,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "7" *) 
   (* ram_slice_end = "7" *) 
   RAM32X1D #(
@@ -4028,6 +4058,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "8" *) 
   (* ram_slice_end = "8" *) 
   RAM32X1D #(
@@ -4051,6 +4082,7 @@ module mcu_microblaze_0_axi_intc_0_shared_ram_ivar
   (* XILINX_LEGACY_PRIM = "RAM16X1D" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "15" *) 
+  (* ram_offset = "0" *) 
   (* ram_slice_begin = "9" *) 
   (* ram_slice_end = "9" *) 
   RAM32X1D #(
@@ -4120,8 +4152,8 @@ module mcu_microblaze_0_axi_intc_0_slave_attachment
     ip2bus_rdack,
     \s_axi_rdata_i_reg[31]_0 ,
     ip2bus_rdack_int_d1,
-    \mer_int_reg[0] ,
     \s_axi_rdata_i_reg[3]_0 ,
+    \mer_int_reg[0] ,
     \s_axi_rdata_i_reg[0]_0 ,
     \REG_GEN[0].IAR_FAST_MODE_GEN.iar_reg[0] ,
     \s_axi_rdata_i_reg[3]_1 ,
@@ -4189,8 +4221,8 @@ module mcu_microblaze_0_axi_intc_0_slave_attachment
   input ip2bus_rdack;
   input [31:0]\s_axi_rdata_i_reg[31]_0 ;
   input ip2bus_rdack_int_d1;
-  input \mer_int_reg[0] ;
   input \s_axi_rdata_i_reg[3]_0 ;
+  input \mer_int_reg[0] ;
   input \s_axi_rdata_i_reg[0]_0 ;
   input \REG_GEN[0].IAR_FAST_MODE_GEN.iar_reg[0] ;
   input \s_axi_rdata_i_reg[3]_1 ;
@@ -4231,7 +4263,7 @@ module mcu_microblaze_0_axi_intc_0_slave_attachment
   wire \FSM_onehot_state_reg_n_0_[0] ;
   wire \FSM_onehot_state_reg_n_0_[3] ;
   wire \INCLUDE_DPHASE_TIMER.dpto_cnt[3]_i_1_n_0 ;
-  wire [3:0]\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 ;
+  wire [3:0]\INCLUDE_DPHASE_TIMER.dpto_cnt_reg ;
   wire [31:0]IP2Bus_Data;
   wire Or128_vec2stdlogic;
   wire Or128_vec2stdlogic19_out;
@@ -4369,12 +4401,12 @@ module mcu_microblaze_0_axi_intc_0_slave_attachment
   LUT6 #(
     .INIT(64'hFFFFF888F888F888)) 
     \FSM_onehot_state[3]_i_1 
-       (.I0(ip2bus_rdack_reg),
-        .I1(s_axi_rresp_i),
-        .I2(\FSM_onehot_state_reg_n_0_[3] ),
-        .I3(\FSM_onehot_state[3]_i_2_n_0 ),
-        .I4(s_axi_bresp_i),
-        .I5(ip2bus_wrack_reg),
+       (.I0(ip2bus_wrack_reg),
+        .I1(s_axi_bresp_i),
+        .I2(s_axi_rresp_i),
+        .I3(ip2bus_rdack_reg),
+        .I4(\FSM_onehot_state_reg_n_0_[3] ),
+        .I5(\FSM_onehot_state[3]_i_2_n_0 ),
         .O(\FSM_onehot_state[3]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'h0777)) 
@@ -4424,22 +4456,22 @@ module mcu_microblaze_0_axi_intc_0_slave_attachment
   LUT1 #(
     .INIT(2'h1)) 
     \INCLUDE_DPHASE_TIMER.dpto_cnt[0]_i_1 
-       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [0]),
+       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [0]),
         .O(plusOp[0]));
   (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \INCLUDE_DPHASE_TIMER.dpto_cnt[1]_i_1 
-       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [0]),
-        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [1]),
+       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [0]),
+        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [1]),
         .O(plusOp[1]));
   (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT3 #(
     .INIT(8'h6A)) 
     \INCLUDE_DPHASE_TIMER.dpto_cnt[2]_i_1 
-       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [2]),
-        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [1]),
-        .I2(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [0]),
+       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [2]),
+        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [1]),
+        .I2(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [0]),
         .O(plusOp[2]));
   LUT2 #(
     .INIT(4'h9)) 
@@ -4451,34 +4483,34 @@ module mcu_microblaze_0_axi_intc_0_slave_attachment
   LUT4 #(
     .INIT(16'h6AAA)) 
     \INCLUDE_DPHASE_TIMER.dpto_cnt[3]_i_2 
-       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [3]),
-        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [0]),
-        .I2(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [1]),
-        .I3(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [2]),
+       (.I0(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [3]),
+        .I1(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [0]),
+        .I2(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [1]),
+        .I3(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [2]),
         .O(plusOp[3]));
   FDRE \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[0] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(plusOp[0]),
-        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [0]),
+        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [0]),
         .R(\INCLUDE_DPHASE_TIMER.dpto_cnt[3]_i_1_n_0 ));
   FDRE \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[1] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(plusOp[1]),
-        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [1]),
+        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [1]),
         .R(\INCLUDE_DPHASE_TIMER.dpto_cnt[3]_i_1_n_0 ));
   FDRE \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[2] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(plusOp[2]),
-        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [2]),
+        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [2]),
         .R(\INCLUDE_DPHASE_TIMER.dpto_cnt[3]_i_1_n_0 ));
   FDRE \INCLUDE_DPHASE_TIMER.dpto_cnt_reg[3] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(plusOp[3]),
-        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 [3]),
+        .Q(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg [3]),
         .R(\INCLUDE_DPHASE_TIMER.dpto_cnt[3]_i_1_n_0 ));
   mcu_microblaze_0_axi_intc_0_address_decoder I_DECODER
        (.Bus_RNW_reg_reg_0(Bus_RNW_reg_reg),
@@ -4540,7 +4572,7 @@ module mcu_microblaze_0_axi_intc_0_slave_attachment
         .s_axi_wdata(s_axi_wdata),
         .s_axi_wdata_0_sp_1(s_axi_wdata_0_sn_1),
         .s_axi_wdata_1_sp_1(s_axi_wdata_1_sn_1),
-        .s_axi_wready(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg__0 ),
+        .s_axi_wready(\INCLUDE_DPHASE_TIMER.dpto_cnt_reg ),
         .s_axi_wready_0(is_write_reg_n_0));
   (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT3 #(
@@ -4743,13 +4775,13 @@ module mcu_microblaze_0_axi_intc_0_slave_attachment
         .I3(\REG_GEN[0].IAR_FAST_MODE_GEN.iar_reg[0] ),
         .O(\s_axi_rdata_i[0]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h000000007F777FFF)) 
+    .INIT(64'h00000000777FFF7F)) 
     \s_axi_rdata_i[0]_i_3 
        (.I0(Q[1]),
         .I1(Q[2]),
-        .I2(\mer_int_reg[0] ),
+        .I2(\s_axi_rdata_i_reg[3]_0 ),
         .I3(Q[0]),
-        .I4(\s_axi_rdata_i_reg[3]_0 ),
+        .I4(\mer_int_reg[0] ),
         .I5(\s_axi_rdata_i_reg[0]_0 ),
         .O(\s_axi_rdata_i[0]_i_3_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair20" *) 

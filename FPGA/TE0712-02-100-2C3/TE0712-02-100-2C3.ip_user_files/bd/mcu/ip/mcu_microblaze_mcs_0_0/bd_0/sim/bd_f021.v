@@ -1,4 +1,4 @@
-//Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+//Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Command: generate_target bd_f021.bd
 //Design : bd_f021
@@ -6,38 +6,24 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "bd_f021,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_f021,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=8,numReposBlks=8,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=Global}" *) (* HW_HANDOFF = "mcu_microblaze_mcs_0_0.hwdef" *) 
+(* CORE_GENERATION_INFO = "bd_f021,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_f021,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=8,numReposBlks=8,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu_microblaze_mcs_0_0.hwdef" *) 
 module bd_f021
    (Clk,
-    FIT1_Interrupt,
-    FIT1_Toggle,
     GPIO1_tri_i,
     GPIO1_tri_o,
     INTC_IRQ,
-    PIT1_Interrupt,
-    PIT1_Toggle,
-    Reset,
-    UART_Interrupt);
+    Reset);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_ASYNC_RESET Reset, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0" *) input Clk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.FIT1_INTERRUPT INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.FIT1_INTERRUPT, PortWidth 1, SENSITIVITY EDGE_RISING" *) output FIT1_Interrupt;
-  output FIT1_Toggle;
   (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_I" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME GPIO1, C_GPI1_INTERRUPT 0, C_GPI1_SIZE 8, C_GPO1_INIT 0x00000000, C_GPO1_SIZE 8, C_USE_GPI1 1, C_USE_GPO1 1" *) input [7:0]GPIO1_tri_i;
   (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O" *) output [7:0]GPIO1_tri_o;
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.INTC_IRQ INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.INTC_IRQ, PortWidth 1, SENSITIVITY LEVEL_HIGH" *) output INTC_IRQ;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.PIT1_INTERRUPT INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.PIT1_INTERRUPT, PortWidth 1, SENSITIVITY EDGE_RISING" *) output PIT1_Interrupt;
-  output PIT1_Toggle;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input Reset;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.UART_INTERRUPT INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.UART_INTERRUPT, PortWidth 1, SENSITIVITY EDGE_RISING" *) output UART_Interrupt;
 
   wire Clk1;
-  wire FIT1_Interrupt;
-  wire FIT1_Toggle;
   wire INTC_Irq_Out;
   wire [0:0]IO_Rst;
   wire [0:0]LMB_Rst1;
   wire MB_Reset;
-  wire PIT1_Interrupt;
-  wire PIT1_Toggle;
   wire Reset;
   wire [0:31]dlmb_ABUS;
   wire dlmb_ADDRSTROBE;
@@ -57,22 +43,22 @@ module bd_f021
   wire dlmb_port_EN;
   wire dlmb_port_RST;
   wire [0:3]dlmb_port_WE;
+  wire [0:31]dlmb_sl_0_ABUS;
+  wire dlmb_sl_0_ADDRSTROBE;
+  wire [0:3]dlmb_sl_0_BE;
   wire dlmb_sl_0_CE;
   wire [0:31]dlmb_sl_0_READDBUS;
+  wire dlmb_sl_0_READSTROBE;
   wire dlmb_sl_0_READY;
   wire dlmb_sl_0_UE;
   wire dlmb_sl_0_WAIT;
-  wire [0:31]dlmb_sl_1_ABUS;
-  wire dlmb_sl_1_ADDRSTROBE;
-  wire [0:3]dlmb_sl_1_BE;
+  wire [0:31]dlmb_sl_0_WRITEDBUS;
+  wire dlmb_sl_0_WRITESTROBE;
   wire dlmb_sl_1_CE;
   wire [0:31]dlmb_sl_1_READDBUS;
-  wire dlmb_sl_1_READSTROBE;
   wire dlmb_sl_1_READY;
   wire dlmb_sl_1_UE;
   wire dlmb_sl_1_WAIT;
-  wire [0:31]dlmb_sl_1_WRITEDBUS;
-  wire dlmb_sl_1_WRITESTROBE;
   wire [0:31]ilmb_ABUS;
   wire ilmb_ADDRSTROBE;
   wire ilmb_CE;
@@ -110,18 +96,18 @@ module bd_f021
   assign INTC_IRQ = INTC_Irq_Out;
   assign iomodule_0_GPIO1_TRI_I = GPIO1_tri_i[7:0];
   bd_f021_dlmb_0 dlmb
-       (.LMB_ABus(dlmb_sl_1_ABUS),
-        .LMB_AddrStrobe(dlmb_sl_1_ADDRSTROBE),
-        .LMB_BE(dlmb_sl_1_BE),
+       (.LMB_ABus(dlmb_sl_0_ABUS),
+        .LMB_AddrStrobe(dlmb_sl_0_ADDRSTROBE),
+        .LMB_BE(dlmb_sl_0_BE),
         .LMB_CE(dlmb_CE),
         .LMB_Clk(Clk1),
         .LMB_ReadDBus(dlmb_READDBUS),
-        .LMB_ReadStrobe(dlmb_sl_1_READSTROBE),
+        .LMB_ReadStrobe(dlmb_sl_0_READSTROBE),
         .LMB_Ready(dlmb_READY),
         .LMB_UE(dlmb_UE),
         .LMB_Wait(dlmb_WAIT),
-        .LMB_WriteDBus(dlmb_sl_1_WRITEDBUS),
-        .LMB_WriteStrobe(dlmb_sl_1_WRITESTROBE),
+        .LMB_WriteDBus(dlmb_sl_0_WRITEDBUS),
+        .LMB_WriteStrobe(dlmb_sl_0_WRITESTROBE),
         .M_ABus(dlmb_ABUS),
         .M_AddrStrobe(dlmb_ADDRSTROBE),
         .M_BE(dlmb_BE),
@@ -144,14 +130,14 @@ module bd_f021
         .BRAM_EN_A(dlmb_port_EN),
         .BRAM_Rst_A(dlmb_port_RST),
         .BRAM_WEN_A(dlmb_port_WE),
-        .LMB_ABus(dlmb_sl_1_ABUS),
-        .LMB_AddrStrobe(dlmb_sl_1_ADDRSTROBE),
-        .LMB_BE(dlmb_sl_1_BE),
+        .LMB_ABus(dlmb_sl_0_ABUS),
+        .LMB_AddrStrobe(dlmb_sl_0_ADDRSTROBE),
+        .LMB_BE(dlmb_sl_0_BE),
         .LMB_Clk(Clk1),
-        .LMB_ReadStrobe(dlmb_sl_1_READSTROBE),
+        .LMB_ReadStrobe(dlmb_sl_0_READSTROBE),
         .LMB_Rst(LMB_Rst1),
-        .LMB_WriteDBus(dlmb_sl_1_WRITEDBUS),
-        .LMB_WriteStrobe(dlmb_sl_1_WRITESTROBE),
+        .LMB_WriteDBus(dlmb_sl_0_WRITEDBUS),
+        .LMB_WriteStrobe(dlmb_sl_0_WRITESTROBE),
         .Sl_CE(dlmb_sl_0_CE),
         .Sl_DBus(dlmb_sl_0_READDBUS),
         .Sl_Ready(dlmb_sl_0_READY),
@@ -205,22 +191,18 @@ module bd_f021
         .Sl_Wait(ilmb_sl_0_WAIT));
   bd_f021_iomodule_0_0 iomodule_0
        (.Clk(Clk1),
-        .FIT1_Interrupt(FIT1_Interrupt),
-        .FIT1_Toggle(FIT1_Toggle),
         .GPI1(iomodule_0_GPIO1_TRI_I),
         .GPO1(iomodule_0_GPIO1_TRI_O),
         .INTC_IRQ(iomodule_0_INTC_Irq_INTERRUPT),
         .INTC_IRQ_OUT(INTC_Irq_Out),
         .INTC_Interrupt_Address(iomodule_0_INTC_Irq_ADDRESS),
         .INTC_Processor_Ack({iomodule_0_INTC_Irq_ACK[0],iomodule_0_INTC_Irq_ACK[1]}),
-        .LMB_ABus(dlmb_sl_1_ABUS),
-        .LMB_AddrStrobe(dlmb_sl_1_ADDRSTROBE),
-        .LMB_BE(dlmb_sl_1_BE),
-        .LMB_ReadStrobe(dlmb_sl_1_READSTROBE),
-        .LMB_WriteDBus(dlmb_sl_1_WRITEDBUS),
-        .LMB_WriteStrobe(dlmb_sl_1_WRITESTROBE),
-        .PIT1_Interrupt(PIT1_Interrupt),
-        .PIT1_Toggle(PIT1_Toggle),
+        .LMB_ABus(dlmb_sl_0_ABUS),
+        .LMB_AddrStrobe(dlmb_sl_0_ADDRSTROBE),
+        .LMB_BE(dlmb_sl_0_BE),
+        .LMB_ReadStrobe(dlmb_sl_0_READSTROBE),
+        .LMB_WriteDBus(dlmb_sl_0_WRITEDBUS),
+        .LMB_WriteStrobe(dlmb_sl_0_WRITESTROBE),
         .Rst(IO_Rst),
         .Sl_CE(dlmb_sl_1_CE),
         .Sl_DBus(dlmb_sl_1_READDBUS),

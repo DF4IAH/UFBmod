@@ -20,7 +20,7 @@ set script_folder [_tcl::get_script_folder]
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2018.3
+set scripts_vivado_version 2019.1
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
@@ -165,27 +165,14 @@ proc create_root_design { parentCell } {
    CONFIG.C_USE_GPO1 {1} \
    ] $GPIO1
 
+
   # Create ports
   set Clk [ create_bd_port -dir I -type clk Clk ]
   set_property -dict [ list \
    CONFIG.ASSOCIATED_ASYNC_RESET {Reset} \
  ] $Clk
-  set FIT1_Interrupt [ create_bd_port -dir O -type intr FIT1_Interrupt ]
-  set_property -dict [ list \
-   CONFIG.SENSITIVITY {EDGE_RISING} \
- ] $FIT1_Interrupt
-  set FIT1_Toggle [ create_bd_port -dir O FIT1_Toggle ]
   set INTC_IRQ [ create_bd_port -dir O -type intr INTC_IRQ ]
-  set PIT1_Interrupt [ create_bd_port -dir O -type intr PIT1_Interrupt ]
-  set_property -dict [ list \
-   CONFIG.SENSITIVITY {EDGE_RISING} \
- ] $PIT1_Interrupt
-  set PIT1_Toggle [ create_bd_port -dir O PIT1_Toggle ]
   set Reset [ create_bd_port -dir I -type rst Reset ]
-  set UART_Interrupt [ create_bd_port -dir O -type intr UART_Interrupt ]
-  set_property -dict [ list \
-   CONFIG.SENSITIVITY {EDGE_RISING} \
- ] $UART_Interrupt
 
   # Create instance: dlmb, and set properties
   set dlmb [ create_bd_cell -type ip -vlnv xilinx.com:ip:lmb_v10:3.0 dlmb ]
@@ -216,20 +203,14 @@ proc create_root_design { parentCell } {
    CONFIG.C_GPI1_SIZE {8} \
    CONFIG.C_GPO1_SIZE {8} \
    CONFIG.C_INSTANCE {iomodule} \
-   CONFIG.C_INTC_ADDR_WIDTH {15} \
+   CONFIG.C_INTC_ADDR_WIDTH {17} \
    CONFIG.C_INTC_HAS_FAST {1} \
    CONFIG.C_INTC_USE_IRQ_OUT {1} \
    CONFIG.C_IO_MASK {0x00000000C0000000} \
    CONFIG.C_MASK {0x00000000C0000000} \
    CONFIG.C_PIT1_INTERRUPT {1} \
-   CONFIG.C_UART_ERROR_INTERRUPT {0} \
-   CONFIG.C_UART_PROG_BAUDRATE {0} \
-   CONFIG.C_UART_RX_INTERRUPT {0} \
-   CONFIG.C_UART_TX_INTERRUPT {0} \
-   CONFIG.C_USE_FIT1 {1} \
    CONFIG.C_USE_GPI1 {1} \
    CONFIG.C_USE_GPO1 {1} \
-   CONFIG.C_USE_PIT1 {1} \
  ] $iomodule_0
 
   # Create instance: lmb_bram_I, and set properties
@@ -247,7 +228,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_FAULT_TOLERANT {0} \
    CONFIG.C_INSTANCE {mb_microblaze_0} \
    CONFIG.C_NUMBER_OF_PC_BRK {1} \
-   CONFIG.C_PC_WIDTH {15} \
+   CONFIG.C_PC_WIDTH {17} \
    CONFIG.C_USE_EXT_BRK {0} \
    CONFIG.C_USE_EXT_NM_BRK {0} \
    CONFIG.C_USE_INTERRUPT {2} \
@@ -270,20 +251,15 @@ proc create_root_design { parentCell } {
 
   # Create port connections
   connect_bd_net -net Clk1 [get_bd_ports Clk] [get_bd_pins dlmb/LMB_Clk] [get_bd_pins dlmb_cntlr/LMB_Clk] [get_bd_pins ilmb/LMB_Clk] [get_bd_pins ilmb_cntlr/LMB_Clk] [get_bd_pins iomodule_0/Clk] [get_bd_pins microblaze_I/Clk] [get_bd_pins rst_0/slowest_sync_clk]
-  connect_bd_net -net FIT1_Interrupt [get_bd_ports FIT1_Interrupt] [get_bd_pins iomodule_0/FIT1_Interrupt]
-  connect_bd_net -net FIT1_Toggle [get_bd_ports FIT1_Toggle] [get_bd_pins iomodule_0/FIT1_Toggle]
   connect_bd_net -net INTC_Irq_Out [get_bd_ports INTC_IRQ] [get_bd_pins iomodule_0/INTC_IRQ_OUT]
   connect_bd_net -net IO_Rst [get_bd_pins iomodule_0/Rst] [get_bd_pins rst_0/peripheral_reset]
   connect_bd_net -net LMB_Rst1 [get_bd_pins dlmb/SYS_Rst] [get_bd_pins dlmb_cntlr/LMB_Rst] [get_bd_pins ilmb/SYS_Rst] [get_bd_pins ilmb_cntlr/LMB_Rst] [get_bd_pins rst_0/bus_struct_reset]
   connect_bd_net -net MB_Reset [get_bd_pins microblaze_I/Reset] [get_bd_pins rst_0/mb_reset]
-  connect_bd_net -net PIT1_Interrupt [get_bd_ports PIT1_Interrupt] [get_bd_pins iomodule_0/PIT1_Interrupt]
-  connect_bd_net -net PIT1_Toggle [get_bd_ports PIT1_Toggle] [get_bd_pins iomodule_0/PIT1_Toggle]
   connect_bd_net -net Reset [get_bd_ports Reset] [get_bd_pins rst_0/ext_reset_in]
-  connect_bd_net -net UART_Interrupt [get_bd_ports UART_Interrupt]
 
   # Create address segments
-  create_bd_addr_seg -range 0x00008000 -offset 0x00000000 [get_bd_addr_spaces microblaze_I/Data] [get_bd_addr_segs dlmb_cntlr/SLMB/Mem] SEG_dlmb_cntlr_Mem
-  create_bd_addr_seg -range 0x00008000 -offset 0x00000000 [get_bd_addr_spaces microblaze_I/Instruction] [get_bd_addr_segs ilmb_cntlr/SLMB/Mem] SEG_ilmb_cntlr_Mem
+  create_bd_addr_seg -range 0x00020000 -offset 0x00000000 [get_bd_addr_spaces microblaze_I/Data] [get_bd_addr_segs dlmb_cntlr/SLMB/Mem] SEG_dlmb_cntlr_Mem
+  create_bd_addr_seg -range 0x00020000 -offset 0x00000000 [get_bd_addr_spaces microblaze_I/Instruction] [get_bd_addr_segs ilmb_cntlr/SLMB/Mem] SEG_ilmb_cntlr_Mem
   create_bd_addr_seg -range 0x00010000 -offset 0x80000000 [get_bd_addr_spaces microblaze_I/Data] [get_bd_addr_segs iomodule_0/SLMB/Reg] SEG_iomodule_0_Reg
 
 
