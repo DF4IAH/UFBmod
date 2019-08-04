@@ -171,6 +171,21 @@
           <Attr Name="ScopedToCell" Val="mcu_mig_7series_0_0"/>
         </FileInfo>
       </File>
+      <File Path="$PSDKDIR/PeriphTest/Debug/PeriphTest.elf">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="ScopedToRef" Val="mcu"/>
+          <Attr Name="ScopedToCell" Val="mb_0"/>
+          <Attr Name="ScopedToCell" Val="mb_0_mcs/inst/microblaze_I"/>
+          <Attr Name="IsVisible" Val="1"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSDKDIR/SREC-BootLoader/Debug/SREC-BootLoader.elf">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="IsVisible" Val="1"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="top"/>
@@ -226,6 +241,21 @@
       <File Path="$PPRDIR/top_behav.wcfg">
         <FileInfo>
           <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSDKDIR/PeriphTest/Debug/PeriphTest.elf">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="simulation"/>
+          <Attr Name="ScopedToRef" Val="mcu"/>
+          <Attr Name="ScopedToCell" Val="mb_0"/>
+          <Attr Name="ScopedToCell" Val="mb_0_mcs/inst/microblaze_I"/>
+          <Attr Name="IsVisible" Val="1"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSDKDIR/SREC-BootLoader/Debug/SREC-BootLoader.elf">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="simulation"/>
+          <Attr Name="IsVisible" Val="1"/>
         </FileInfo>
       </File>
       <Config>
