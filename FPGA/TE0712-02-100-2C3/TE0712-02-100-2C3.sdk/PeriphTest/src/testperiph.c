@@ -41,6 +41,9 @@
 #include "xuartns550_l.h"
 #include "xgpio.h"
 #include "gpio_header.h"
+
+#define STDOUT_BASEADDR STDOUT_BASEADDRESS
+
 int main () 
 {
    static XIntc intc;
@@ -48,8 +51,8 @@ int main ()
    static XTmrCtr axi_timer_0_Timer;
 
    /* Initialize axi_uart16550_0 - Set baudrate and number of stop bits */
-   XUartNs550_SetBaud(XPAR_AXI_UART16550_0_BASEADDR, XPAR_XUARTNS550_CLOCK_HZ, 19200);
-   XUartNs550_SetLineControlReg(XPAR_AXI_UART16550_0_BASEADDR, XUN_LCR_8_DATA_BITS);
+   XUartNs550_SetBaud(STDOUT_BASEADDRESS, XPAR_XUARTNS550_CLOCK_HZ, 19200);
+   XUartNs550_SetLineControlReg(STDOUT_BASEADDRESS, XUN_LCR_8_DATA_BITS);
    Xil_ICacheEnable();
    Xil_DCacheEnable();
    print("---Entering main---\n\r");
@@ -89,7 +92,7 @@ int main ()
       
       print("\r\n Runnning SpiSelfTestExample() for axi_quad_spi_0...\r\n");
       
-      status = SpiSelfTestExample(XPAR_AXI_QUAD_SPI_0_DEVICE_ID);
+      status = SpiSelfTestExample(XPAR_AXI_QUAD_SPI_0_CONFIG_DEVICE_ID);
       
       if (status == 0) {
          print("SpiSelfTestExample PASSED\r\n");
@@ -104,8 +107,8 @@ int main ()
        print("\r\n Running Interrupt Test for axi_quad_spi_0...\r\n");
 
        Status = SpiIntrExample(&intc, &axi_quad_spi_0_Spi, \
-                                XPAR_AXI_QUAD_SPI_0_DEVICE_ID, \
-                                XPAR_MB_0_AXI_INTC_AXI_QUAD_SPI_0_IP2INTC_IRPT_INTR);
+    		   XPAR_AXI_QUAD_SPI_0_CONFIG_DEVICE_ID, \
+			   XPAR_MB_0_AXI_INTC_AXI_QUAD_SPI_0_CONFIG_IP2INTC_IRPT_INTR);
       if (Status == 0) {
          print("Spi Interrupt Test PASSED\r\n");
       } 
@@ -163,7 +166,7 @@ int main ()
       
       print("\r\nRunning GpioOutputExample() for axi_gpio_0...\r\n");
 
-      status = GpioOutputExample(XPAR_AXI_GPIO_0_DEVICE_ID,8);
+      status = GpioOutputExample(XPAR_AXI_GPIO_0_MULTI_DEVICE_ID,8);
       
       if (status == 0) {
          print("GpioOutputExample PASSED.\r\n");

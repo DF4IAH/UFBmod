@@ -185,11 +185,11 @@ set_property -dict {PACKAGE_PIN R21 IOSTANDARD LVCMOS33} [get_ports {spi_dq[3]}]
 set_property -dict {PACKAGE_PIN T19 IOSTANDARD LVCMOS33} [get_ports {spi_cs}]
 #IO_L6P_T0_FCS_B_14 sch:SPI-CS
 
-#set_property -dict {PACKAGE_PIN T20 IOSTANDARD LVCMOS33} [get_ports pll_sda]
+set_property -dict {PACKAGE_PIN T20 IOSTANDARD LVCMOS33} [get_ports pll_sda]
 #IO_L6N_T0_D08_VREF_14 sch:PLL_SDA
 
 
-#set_property -dict {PACKAGE_PIN W21 IOSTANDARD LVCMOS33} [get_ports pll_scl]
+set_property -dict {PACKAGE_PIN W21 IOSTANDARD LVCMOS33} [get_ports pll_scl]
 #IO_L7P_T1_D09_14 sch:PLL_SCL
 
 #set_property -dict {PACKAGE_PIN W22 IOSTANDARD LVCMOS33} [get_ports uli_system]
@@ -325,17 +325,17 @@ set_property -dict {PACKAGE_PIN M17 IOSTANDARD LVCMOS33} [get_ports ufb_fpga_ft_
 #IO_25_15 sch:B15_IO25 --> UFB_FPGA_FT_12MHZ
 
 
-#set_property -dict {PACKAGE_PIN H13 IOSTANDARD LVCMOS33} [get_ports ufb_trx_sclk]
+set_property -dict {PACKAGE_PIN H13 IOSTANDARD LVCMOS33} [get_ports ufb_trx_sclk]
 #IO_L1P_T0_AD0P_15 sch:B15_L1_P --> UFB_TRX_SCLK
 
-#set_property -dict {PACKAGE_PIN G13 IOSTANDARD LVCMOS33} [get_ports ufb_trx_seln]
+set_property -dict {PACKAGE_PIN G13 IOSTANDARD LVCMOS33} [get_ports ufb_trx_seln]
 #IO_L1N_T0_AD0N_15 sch:B15_L1_N --> UFB_TRX_SELN
 
 
-#set_property -dict {PACKAGE_PIN G15 IOSTANDARD LVCMOS33} [get_ports ufb_trx_miso]
+set_property -dict {PACKAGE_PIN G15 IOSTANDARD LVCMOS33} [get_ports ufb_trx_miso]
 #IO_L2P_T0_AD8P_15 sch:B15_L2_P --> UFB_TRX_MISO
 
-#set_property -dict {PACKAGE_PIN G16 IOSTANDARD LVCMOS33} [get_ports ufb_trx_mosi]
+set_property -dict {PACKAGE_PIN G16 IOSTANDARD LVCMOS33} [get_ports ufb_trx_mosi]
 #IO_L2N_T0_AD8N_15 sch:B15_L2_N --> UFB_TRX_MOSI
 
 
@@ -430,10 +430,10 @@ set_property -dict {PACKAGE_PIN M22 IOSTANDARD LVCMOS33} [get_ports ufb_fpga_ft_
 #IO_L15N_T2_DQS_ADV_B_15 sch:B15_L15_N --> UFB_FPGA_FT_RESET
 
 
-#set_property -dict {PACKAGE_PIN M18 IOSTANDARD LVCMOS33} [get_ports ufb_trx_rstn]
+set_property -dict {PACKAGE_PIN M18 IOSTANDARD LVCMOS33} [get_ports ufb_trx_rstn]
 #IO_L16P_T2_A28_15 sch:B15_L16_P --> UFB_TRX_RSTN
 
-#set_property -dict {PACKAGE_PIN L18 IOSTANDARD LVCMOS33} [get_ports ufb_trx_irq]
+set_property -dict {PACKAGE_PIN L18 IOSTANDARD LVCMOS33} [get_ports ufb_trx_irq]
 #IO_L16N_T2_A27_15 sch:B15_L16_N --> UFB_TRX_IRQ
 
 

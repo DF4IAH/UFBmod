@@ -38,6 +38,7 @@ vlib modelsim_lib/msim/axi_infrastructure_v1_1_0
 vlib modelsim_lib/msim/axi_register_slice_v2_1_19
 vlib modelsim_lib/msim/axi_data_fifo_v2_1_18
 vlib modelsim_lib/msim/axi_crossbar_v2_1_20
+vlib modelsim_lib/msim/axi_iic_v2_0_22
 vlib modelsim_lib/msim/axi_protocol_converter_v2_1_19
 
 vmap xil_defaultlib modelsim_lib/msim/xil_defaultlib
@@ -77,6 +78,7 @@ vmap axi_infrastructure_v1_1_0 modelsim_lib/msim/axi_infrastructure_v1_1_0
 vmap axi_register_slice_v2_1_19 modelsim_lib/msim/axi_register_slice_v2_1_19
 vmap axi_data_fifo_v2_1_18 modelsim_lib/msim/axi_data_fifo_v2_1_18
 vmap axi_crossbar_v2_1_20 modelsim_lib/msim/axi_crossbar_v2_1_20
+vmap axi_iic_v2_0_22 modelsim_lib/msim/axi_iic_v2_0_22
 vmap axi_protocol_converter_v2_1_19 modelsim_lib/msim/axi_protocol_converter_v2_1_19
 
 vlog -work xil_defaultlib -64 -incr -sv "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
@@ -374,11 +376,18 @@ vcom -work xil_defaultlib -64 -93 \
 "../../../bd/mcu/ip/mcu_clk_32mhz_locked_inv_0/sim/mcu_clk_32mhz_locked_inv_0.vhd" \
 "../../../bd/mcu/ip/mcu_axi_gpio_0_1/sim/mcu_axi_gpio_0_1.vhd" \
 
+vcom -work axi_iic_v2_0_22 -64 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/d5df/hdl/axi_iic_v2_0_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/mcu/ip/mcu_axi_iic_0_0/sim/mcu_axi_iic_0_0.vhd" \
+"../../../bd/mcu/ip/mcu_axi_quad_spi_1_0/sim/mcu_axi_quad_spi_1_0.vhd" \
+
 vlog -work axi_protocol_converter_v2_1_19 -64 -incr "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
 "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 
 vlog -work xil_defaultlib -64 -incr "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
-"../../../bd/mcu/ip/mcu_auto_pc_7/sim/mcu_auto_pc_7.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_9/sim/mcu_auto_pc_9.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
@@ -386,6 +395,8 @@ vlog -work xil_defaultlib -64 -incr "+incdir+../../../../TE0712-02-100-2C3.srcs/
 "../../../bd/mcu/ip/mcu_auto_pc_4/sim/mcu_auto_pc_4.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_5/sim/mcu_auto_pc_5.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_6/sim/mcu_auto_pc_6.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_7/sim/mcu_auto_pc_7.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_8/sim/mcu_auto_pc_8.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

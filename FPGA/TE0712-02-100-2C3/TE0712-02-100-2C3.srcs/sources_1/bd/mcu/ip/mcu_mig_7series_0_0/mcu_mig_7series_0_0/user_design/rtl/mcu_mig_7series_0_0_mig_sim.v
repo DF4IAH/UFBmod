@@ -256,10 +256,10 @@ module mcu_mig_7series_0_0_mig #
    parameter MMCM_CLKOUT1_EN       = "TRUE",
                                      // "TRUE" - MMCM output clock (CLKOUT1) is enabled
                                      // "FALSE" - MMCM output clock (CLKOUT1) is disabled
-   parameter MMCM_CLKOUT2_EN       = "FALSE",
+   parameter MMCM_CLKOUT2_EN       = "TRUE",
                                      // "TRUE" - MMCM output clock (CLKOUT2) is enabled
                                      // "FALSE" - MMCM output clock (CLKOUT2) is disabled
-   parameter MMCM_CLKOUT3_EN       = "FALSE",
+   parameter MMCM_CLKOUT3_EN       = "TRUE",
                                      // "TRUE" - MMCM output clock (CLKOUT3) is enabled
                                      // "FALSE" - MMCM output clock (CLKOUT3) is disabled
    parameter MMCM_CLKOUT4_EN       = "FALSE",
@@ -269,9 +269,9 @@ module mcu_mig_7series_0_0_mig #
                                      // VCO output divisor for MMCM output clock (CLKOUT0)
    parameter MMCM_CLKOUT1_DIVIDE   = 16,
                                      // VCO output divisor for MMCM output clock (CLKOUT1)
-   parameter MMCM_CLKOUT2_DIVIDE   = 1,
+   parameter MMCM_CLKOUT2_DIVIDE   = 32,
                                      // VCO output divisor for MMCM output clock (CLKOUT2)
-   parameter MMCM_CLKOUT3_DIVIDE   = 1,
+   parameter MMCM_CLKOUT3_DIVIDE   = 80,
                                      // VCO output divisor for MMCM output clock (CLKOUT3)
    parameter MMCM_CLKOUT4_DIVIDE   = 1,
                                      // VCO output divisor for MMCM output clock (CLKOUT4)

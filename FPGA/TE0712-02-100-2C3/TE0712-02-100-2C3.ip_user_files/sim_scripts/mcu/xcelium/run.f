@@ -293,11 +293,18 @@
   "../../../bd/mcu/ip/mcu_clk_32mhz_locked_inv_0/sim/mcu_clk_32mhz_locked_inv_0.vhd" \
   "../../../bd/mcu/ip/mcu_axi_gpio_0_1/sim/mcu_axi_gpio_0_1.vhd" \
 -endlib
+-makelib xcelium_lib/axi_iic_v2_0_22 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/d5df/hdl/axi_iic_v2_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_axi_iic_0_0/sim/mcu_axi_iic_0_0.vhd" \
+  "../../../bd/mcu/ip/mcu_axi_quad_spi_1_0/sim/mcu_axi_quad_spi_1_0.vhd" \
+-endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_auto_pc_7/sim/mcu_auto_pc_7.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_9/sim/mcu_auto_pc_9.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
@@ -305,6 +312,8 @@
   "../../../bd/mcu/ip/mcu_auto_pc_4/sim/mcu_auto_pc_4.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_5/sim/mcu_auto_pc_5.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_6/sim/mcu_auto_pc_6.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_7/sim/mcu_auto_pc_7.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_8/sim/mcu_auto_pc_8.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   glbl.v
