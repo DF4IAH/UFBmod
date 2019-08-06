@@ -8985,14 +8985,20 @@ Covered vias can be set in Masks (Limit).
 <via x="71.12" y="87.63" extent="1-16" drill="0.3"/>
 <wire x1="71.12" y1="87.63" x2="71.12" y2="86.375" width="0.1524" layer="1"/>
 </signal>
-<signal name="FPGA_ROT_I">
+<signal name="BOARD_ROTENC_I">
 <contactref element="R1011" pad="2"/>
+<contactref element="JB2" pad="22"/>
+<wire x1="33.67" y1="5.08" x2="48.63" y2="59.11" width="0" layer="19" extent="1-16"/>
 </signal>
-<signal name="FPGA_ROT_Q">
+<signal name="BOARD_ROTENC_Q">
 <contactref element="R1012" pad="2"/>
+<contactref element="JB2" pad="24"/>
+<wire x1="33.67" y1="10.16" x2="49.13" y2="59.11" width="0" layer="19" extent="1-16"/>
 </signal>
-<signal name="FPGA_ROT_P">
+<signal name="BOARD_ROTENC_PUSH">
 <contactref element="R1013" pad="2"/>
+<contactref element="JB2" pad="26"/>
+<wire x1="15.89" y1="10.16" x2="49.63" y2="59.11" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="FPGA_ETH_TD_P" class="3">
 <contactref element="JB1" pad="3"/>

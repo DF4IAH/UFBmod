@@ -19657,6 +19657,27 @@ Right</text>
 <label x="76.2" y="137.16" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
+<net name="BOARD_ROTENC_I" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B14_L14_CLK_P"/>
+<wire x1="96.52" y1="127" x2="40.64" y2="127" width="0.1524" layer="91"/>
+<label x="40.64" y="127" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="BOARD_ROTENC_Q" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B14_L14_CLK_N"/>
+<wire x1="96.52" y1="124.46" x2="76.2" y2="124.46" width="0.1524" layer="91"/>
+<label x="76.2" y="124.46" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="BOARD_ROTENC_PUSH" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B14_L13_CLK_P"/>
+<wire x1="96.52" y1="121.92" x2="40.64" y2="121.92" width="0.1524" layer="91"/>
+<label x="40.64" y="121.92" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
@@ -21430,6 +21451,7 @@ FT232H</text>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">Rotary encoder</text>
 <text x="182.88" y="162.56" size="2.54" layer="97" ratio="15">RGB LEDs</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">User Control</text>
+<text x="101.6" y="139.7" size="1.778" layer="97">PULLUP in FPGA to be enabled !</text>
 </plain>
 <instances>
 <instance part="FRAME_10" gate="G$1" x="0" y="0" smashed="yes">
@@ -21589,21 +21611,21 @@ FT232H</text>
 <pinref part="R1013" gate="G$1" pin="1"/>
 </segment>
 </net>
-<net name="FPGA_ROT_I" class="0">
+<net name="BOARD_ROTENC_I" class="0">
 <segment>
 <pinref part="R1011" gate="G$1" pin="2"/>
 <wire x1="93.98" y1="134.62" x2="101.6" y2="134.62" width="0.1524" layer="91"/>
 <label x="101.6" y="134.62" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_ROT_Q" class="0">
+<net name="BOARD_ROTENC_Q" class="0">
 <segment>
 <pinref part="R1012" gate="G$1" pin="2"/>
 <wire x1="93.98" y1="129.54" x2="101.6" y2="129.54" width="0.1524" layer="91"/>
 <label x="101.6" y="129.54" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_ROT_P" class="0">
+<net name="BOARD_ROTENC_PUSH" class="0">
 <segment>
 <pinref part="R1013" gate="G$1" pin="2"/>
 <wire x1="93.98" y1="111.76" x2="101.6" y2="111.76" width="0.1524" layer="91"/>
