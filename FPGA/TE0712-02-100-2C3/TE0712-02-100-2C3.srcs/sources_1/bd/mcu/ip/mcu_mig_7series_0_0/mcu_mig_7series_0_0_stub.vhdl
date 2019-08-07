@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
--- Date        : Mon Aug  5 02:12:38 2019
+-- Tool Version: Vivado v.2019.1.1 (win64) Build 2580384 Sat Jun 29 08:12:21 MDT 2019
+-- Date        : Tue Aug  6 19:49:34 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_mig_7series_0_0/mcu_mig_7series_0_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top mcu_mig_7series_0_0 -prefix
+--               mcu_mig_7series_0_0_ mcu_mig_7series_0_0_stub.vhdl
 -- Design      : mcu_mig_7series_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tfgg484-2

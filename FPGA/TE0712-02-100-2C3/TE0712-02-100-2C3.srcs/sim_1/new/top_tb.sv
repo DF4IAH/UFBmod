@@ -31,10 +31,13 @@ module top_tb;
     reg mgt_clk0_p;
     reg mgt_clk0_n;
     
-    reg ufb_fpga_trx_clk;
-    
     reg ufb_trx_rxclk_p;
     reg ufb_trx_rxclk_n;
+    
+    
+    reg board_rotenc_push;
+    reg board_rotenc_i;
+    reg board_rotenc_q;
     
     
     wire ddr3_reset;
@@ -67,7 +70,11 @@ module top_tb;
     .pll_clk_n(pll_clk_n),
     .mgt_clk0_p(mgt_clk0_p),
     .mgt_clk0_n(mgt_clk0_n),
-    .ufb_fpga_trx_clk(ufb_fpga_trx_clk),
+    
+    
+    .board_rotenc_push(board_rotenc_push),
+    .board_rotenc_i(board_rotenc_i),
+    .board_rotenc_q(board_rotenc_q),
     
     
     .ddr3_reset(ddr3_reset),
@@ -107,11 +114,14 @@ module top_tb;
     mgt_clk0_p = 0;
     mgt_clk0_n = 1;
     
-    ufb_fpga_trx_clk = 0;
-    
     ufb_trx_rxclk_p = 0;
     ufb_trx_rxclk_n = 1;
+    
+    board_rotenc_push = 1;
+    board_rotenc_i    = 1;
+    board_rotenc_q    = 1;
     end
+    
     
     initial
     #1000 reset = 0;
@@ -142,7 +152,9 @@ module top_tb;
 
 
     always
-    #15.625 ufb_fpga_trx_clk = !ufb_fpga_trx_clk;
+    #1000  board_rotenc_i = !board_rotenc_i;
 
+    always
+    #1200  board_rotenc_q = !board_rotenc_q;
     
 endmodule

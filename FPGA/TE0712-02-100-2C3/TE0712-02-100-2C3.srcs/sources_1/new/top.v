@@ -33,8 +33,6 @@ module top(
     mgt_clk0_p,          // 1.8 V    GTP         120.0 MHz
     mgt_clk0_n,          // 1.8 V    GTP         120.0 MHz
     
-    ufb_fpga_trx_clk,    // 3.3 V    TRX          32.0 MHz
-    
     // Out of order clocks
     //clk0_p,            // 1.5 V    PLL         xxx.x MHz   REV02: none
     //clk0_n,            // 1.5 V    PLL         xxx.x MHz   REV02: none
@@ -63,9 +61,22 @@ module top(
     pll_scl,
     pll_sda,
     
-    //pll_int,
+    pll_int,
     
     
+    // Board - I2C
+    board_scl,
+    board_sda,
+    
+    board_lcd_resetn,
+    
+    
+    // Rotary encoder
+    board_rotenc_push,
+    board_rotenc_i,
+    board_rotenc_q,
+
+
     // DDR3 Lanes 0-3
     ddr3_clk0_p,         // 1.5 V    DDR3        xxx.x MHz
     ddr3_clk0_n,         // 1.5 V    DDR3        xxx.x MHz
@@ -93,6 +104,8 @@ module top(
     //ddr3_loop2_n,
     
     ddr3_reset,
+    
+    init_calib_complete,
     
     
     // Ethernet
@@ -167,7 +180,12 @@ module top(
     // RGB-LEDs
     fpga_led_rgb_red,
     fpga_led_rgb_green,
-    fpga_led_rgb_blue
+    fpga_led_rgb_blue,
+    
+    
+    // Unused BV0/BV1
+    bv0,
+    bv1
     
     );
     // Reset
@@ -181,8 +199,6 @@ module top(
     
     input  mgt_clk0_p;          // 1.8 V    GTP         120.0 MHz
     input  mgt_clk0_n;          // 1.8 V    GTP         120.0 MHz
-    
-    input  ufb_fpga_trx_clk;    // 3.3 V    TRX          32.0 MHz
     
     
     // Out of order clocks
@@ -213,9 +229,22 @@ module top(
     inout  pll_scl;
     inout  pll_sda;
     
-    //input  pll_int;
+    input  pll_int;
     
     
+    // Board - I2C
+    inout  board_scl;
+    inout  board_sda;
+    
+    output board_lcd_resetn;
+    
+    
+    // Rotary encoder
+    input  board_rotenc_push;
+    input  board_rotenc_i;
+    input  board_rotenc_q;
+    
+
     // DDR3 Lanes 0-3
     output ddr3_clk0_p;         // 1.5 V    DDR3        xxx.x MHz
     output ddr3_clk0_n;         // 1.5 V    DDR3        xxx.x MHz
@@ -241,6 +270,8 @@ module top(
     output [0:0]ddr3_cke;
     
     output ddr3_reset;
+    
+    output init_calib_complete;
     
     
     //output ddr3_loop1_p;
@@ -323,8 +354,14 @@ module top(
     output fpga_led_rgb_blue;
     
     
+    input  bv0;
+    output bv1;
     
-    wire [7:0]gpio_rtl_0_MULTI_tri_o;  
+    
+    
+    wire mb_axi_clk_100mhz;
+    wire [7:0]gpio_rtl_0_MULTI_tri_o;
+    wire board_lcd_resetn;
     wire init_calib_complete;
     
     
@@ -332,6 +369,60 @@ module top(
     // RFX
     assign ufb_fpga_rfx_mode = 0;
     
+        
+    // BOARD-I2C
+    assign board_lcd_resetn = gpio_rtl_0_MULTI_tri_o[6];
+    
+    
+    // Rotary encoder
+    reg board_rotenc_pulse;
+    reg board_rotenc_up;
+    
+    reg board_rotenc_pulse_r;
+    reg board_rotenc_push_r;
+    reg board_rotenc_i_r;
+    reg board_rotenc_i_rr;
+    reg board_rotenc_q_r;
+    reg board_rotenc_q_rr;
+
+    always @ (posedge mb_axi_clk_100mhz)
+    if (reset)  begin
+        board_rotenc_pulse   <= 0;
+        board_rotenc_pulse_r <= 0;
+        board_rotenc_up      <= 0;
+        board_rotenc_push_r  <= 0;
+        board_rotenc_i_r     <= 0;
+        board_rotenc_i_rr    <= 0;
+        board_rotenc_q_r     <= 0;
+        board_rotenc_q_rr    <= 0;
+    end else begin
+        // Sync
+        board_rotenc_push_r <= !board_rotenc_push;
+        board_rotenc_i_r    <= !board_rotenc_i;
+        board_rotenc_q_r    <= !board_rotenc_q;
+        
+        if ((board_rotenc_i_r == board_rotenc_i_rr)  &&  (board_rotenc_q_r == board_rotenc_q_rr)) begin
+            // No change
+            board_rotenc_pulse_r <= 0;
+        end else begin 
+            // Change of position
+            board_rotenc_pulse_r <= 1;
+            
+            if (( board_rotenc_i_r && !board_rotenc_i_rr && !board_rotenc_q_r && !board_rotenc_q_rr) ||
+                ( board_rotenc_i_r &&  board_rotenc_i_rr &&  board_rotenc_q_r && !board_rotenc_q_rr) ||
+                (!board_rotenc_i_r &&  board_rotenc_i_rr &&  board_rotenc_q_r &&  board_rotenc_q_rr) ||
+                (!board_rotenc_i_r && !board_rotenc_i_rr && !board_rotenc_q_r &&  board_rotenc_q_rr)) begin
+                board_rotenc_up <= 1;
+            end else begin
+                board_rotenc_up <= 0;
+            end
+        end
+        
+        // Update
+        board_rotenc_pulse <= board_rotenc_pulse_r;
+        board_rotenc_i_rr  <= board_rotenc_i_r;
+        board_rotenc_q_rr  <= board_rotenc_q_r;
+    end
     
     
     // FTDI
@@ -353,8 +444,7 @@ module top(
     assign ufb_fpga_ft_dsr = ufb_fpga_ft_dsr_r;
     assign ufb_fpga_ft_dcd = 1;
     assign ufb_fpga_ft_ri  = 0;
-    
-    
+        
     
     // RGB-LED
     assign fpga_led_rgb_red   = gpio_rtl_0_MULTI_tri_o[0];
@@ -364,6 +454,10 @@ module top(
     
     // TRX
     assign ufb_trx_rstn = gpio_rtl_0_MULTI_tri_o[7];
+    
+    
+    // Unused - BV0/BV1
+    assign bv1 = bv0;
     
     
     // Block-Design MCU
@@ -376,12 +470,16 @@ module top(
         .pll_clk_n(pll_clk_n),
         
         
-     // FPGA Config
-                                                    //inout  fpga_io;
+    // MB Clock (100 MHz) 
+        .mb_axi_clk_100mhz(mb_axi_clk_100mhz),      //output mb_axi_clk_100mhz
+        
+        
+    // FPGA Config
+                                                    //inout  fpga_io
         
         
     // ULI System (Trenz-Electronic CPLD)
-                                                    //inout  uli_system;
+                                                    //inout  uli_system
         
         
     // SPI-QUAD
@@ -393,14 +491,25 @@ module top(
         
         
     // Onewire
-                                                    //inout  onewire;
+                                                    //inout  onewire
         
         
     // PLL - I2C & Int (VTTREF)
-        .iic_rtl_0_PLL_scl_io(pll_scl),             //inout  pll_scl;
-        .iic_rtl_0_PLL_sda_io(pll_sda),             //inout  pll_sda;
+        .iic_rtl_0_PLL_scl_io(pll_scl),             //inout  pll_scl
+        .iic_rtl_0_PLL_sda_io(pll_sda),             //inout  pll_sda
         
-                                                    //input  pll_int;
+        .PLL_int(!pll_int),                         //input  pll_int
+        
+        
+    // Board - I2C
+                                                    //output board_lcd_resetn  <--  gpio_rtl_0_MULTI_tri_o[6]
+        .iic_rtl_1_BOARD_scl_io(board_scl),         //inout  board_scl
+        .iic_rtl_1_BOARD_sda_io(board_sda),         //inout  board_sda
+        
+        
+        .board_rotenc_push(board_rotenc_push_r),    //input  board_rotenc_push
+        .board_rotenc_pulse(board_rotenc_pulse),    //input  board_rotenc_pulse
+        .board_rotenc_up(board_rotenc_up),          //input  board_rotenc_up
         
         
     // DDR3 Lanes 0-3
@@ -428,17 +537,17 @@ module top(
         
         
     // Ethernet
-                                                    //output eth_rst;
+                                                    //output eth_rst
         
-                                                    //output mdc;
-                                                    //inout  mdio;
+                                                    //output mdc
+                                                    //inout  mdio
         
-                                                    //output [1:0]eth_tx_d;
+                                                    //output [1:0]eth_tx_d
         
-                                                    //input  [1:0]eth_rx_d;
-                                                    //input  eth_rx_dv;
+                                                    //input  [1:0]eth_rx_d
+                                                    //input  eth_rx_dv
         
-                                                    //input  link_led;
+                                                    //input  link_led
         
         
     // UFBmod special signals
@@ -467,11 +576,11 @@ module top(
         .spi_rtl_1_TRX_sck_io(ufb_trx_sclk),        //inout  ufb_trx_sclk
         .spi_rtl_1_TRX_ss_io(ufb_trx_seln),         //inout  ufb_trx_seln
         
-        .TRX_int(ufb_trx_irq),                      //input  ufb_trx_irq;
+        .TRX_int(ufb_trx_irq),                      //input  ufb_trx_irq
         
         
     // RFX
-                                                    //output ufb_fpga_rfx_mode;
+                                                    //output ufb_fpga_rfx_mode
         
         
     // FTDI serial <--> USB

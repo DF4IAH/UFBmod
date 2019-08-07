@@ -39,6 +39,9 @@ vlib riviera/axi_register_slice_v2_1_19
 vlib riviera/axi_data_fifo_v2_1_18
 vlib riviera/axi_crossbar_v2_1_20
 vlib riviera/axi_iic_v2_0_22
+vlib riviera/xbip_dsp48_acc_v3_0_6
+vlib riviera/xbip_accum_v3_0_6
+vlib riviera/c_accum_v12_0_13
 vlib riviera/axi_protocol_converter_v2_1_19
 
 vmap xil_defaultlib riviera/xil_defaultlib
@@ -79,6 +82,9 @@ vmap axi_register_slice_v2_1_19 riviera/axi_register_slice_v2_1_19
 vmap axi_data_fifo_v2_1_18 riviera/axi_data_fifo_v2_1_18
 vmap axi_crossbar_v2_1_20 riviera/axi_crossbar_v2_1_20
 vmap axi_iic_v2_0_22 riviera/axi_iic_v2_0_22
+vmap xbip_dsp48_acc_v3_0_6 riviera/xbip_dsp48_acc_v3_0_6
+vmap xbip_accum_v3_0_6 riviera/xbip_accum_v3_0_6
+vmap c_accum_v12_0_13 riviera/c_accum_v12_0_13
 vmap axi_protocol_converter_v2_1_19 riviera/axi_protocol_converter_v2_1_19
 
 vlog -work xil_defaultlib  -sv2k12 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
@@ -382,12 +388,34 @@ vcom -work axi_iic_v2_0_22 -93 \
 vcom -work xil_defaultlib -93 \
 "../../../bd/mcu/ip/mcu_axi_iic_0_0/sim/mcu_axi_iic_0_0.vhd" \
 "../../../bd/mcu/ip/mcu_axi_quad_spi_1_0/sim/mcu_axi_quad_spi_1_0.vhd" \
+"../../../bd/mcu/ip/mcu_axi_iic_0_1/sim/mcu_axi_iic_0_1.vhd" \
+
+vcom -work xbip_dsp48_acc_v3_0_6 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/9f2d/hdl/xbip_dsp48_acc_v3_0_vh_rfs.vhd" \
+
+vcom -work xbip_accum_v3_0_6 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ad2e/hdl/xbip_accum_v3_0_vh_rfs.vhd" \
+
+vcom -work c_accum_v12_0_13 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/f9c9/hdl/c_accum_v12_0_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib -93 \
+"../../../bd/mcu/ip/mcu_c_accum_0_0/sim/mcu_c_accum_0_0.vhd" \
+
+vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
+"../../../bd/mcu/ip/mcu_xlconstant_0_2/sim/mcu_xlconstant_0_2.v" \
+
+vcom -work xil_defaultlib -93 \
+"../../../bd/mcu/ip/mcu_axi_gpio_0_2/sim/mcu_axi_gpio_0_2.vhd" \
+
+vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
+"../../../bd/mcu/ip/mcu_xlconcat_0_0/sim/mcu_xlconcat_0_0.v" \
 
 vlog -work axi_protocol_converter_v2_1_19  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
 "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
-"../../../bd/mcu/ip/mcu_auto_pc_9/sim/mcu_auto_pc_9.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_11/sim/mcu_auto_pc_11.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
@@ -397,6 +425,8 @@ vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sou
 "../../../bd/mcu/ip/mcu_auto_pc_6/sim/mcu_auto_pc_6.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_7/sim/mcu_auto_pc_7.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_8/sim/mcu_auto_pc_8.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_9/sim/mcu_auto_pc_9.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_10/sim/mcu_auto_pc_10.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

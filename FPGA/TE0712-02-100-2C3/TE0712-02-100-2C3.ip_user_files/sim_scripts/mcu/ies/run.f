@@ -299,12 +299,34 @@
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/mcu/ip/mcu_axi_iic_0_0/sim/mcu_axi_iic_0_0.vhd" \
   "../../../bd/mcu/ip/mcu_axi_quad_spi_1_0/sim/mcu_axi_quad_spi_1_0.vhd" \
+  "../../../bd/mcu/ip/mcu_axi_iic_0_1/sim/mcu_axi_iic_0_1.vhd" \
+-endlib
+-makelib ies_lib/xbip_dsp48_acc_v3_0_6 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/9f2d/hdl/xbip_dsp48_acc_v3_0_vh_rfs.vhd" \
+-endlib
+-makelib ies_lib/xbip_accum_v3_0_6 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ad2e/hdl/xbip_accum_v3_0_vh_rfs.vhd" \
+-endlib
+-makelib ies_lib/c_accum_v12_0_13 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/f9c9/hdl/c_accum_v12_0_vh_rfs.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_c_accum_0_0/sim/mcu_c_accum_0_0.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_xlconstant_0_2/sim/mcu_xlconstant_0_2.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_axi_gpio_0_2/sim/mcu_axi_gpio_0_2.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_xlconcat_0_0/sim/mcu_xlconcat_0_0.v" \
 -endlib
 -makelib ies_lib/axi_protocol_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_auto_pc_9/sim/mcu_auto_pc_9.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_11/sim/mcu_auto_pc_11.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
@@ -314,6 +336,8 @@
   "../../../bd/mcu/ip/mcu_auto_pc_6/sim/mcu_auto_pc_6.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_7/sim/mcu_auto_pc_7.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_8/sim/mcu_auto_pc_8.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_9/sim/mcu_auto_pc_9.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_10/sim/mcu_auto_pc_10.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   glbl.v

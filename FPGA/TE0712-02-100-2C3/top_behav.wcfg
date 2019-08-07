@@ -7,6 +7,7 @@
          <top_modules>
             <top_module name="comp_defs" />
             <top_module name="glbl" />
+            <top_module name="iic_pkg" />
             <top_module name="ipif_pkg" />
             <top_module name="lib_pkg" />
             <top_module name="lmb_bram_if_funcs" />
@@ -18,15 +19,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="15515370325fs"></ZoomStartTime>
-      <ZoomEndTime time="15621970326fs"></ZoomEndTime>
-      <Cursor1Time time="15340000000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="5390000001fs"></ZoomEndTime>
+      <Cursor1Time time="0fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="281"></NameColumnWidth>
-      <ValueColumnWidth column_width="198"></ValueColumnWidth>
+      <ValueColumnWidth column_width="186"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="7" />
+   <WVObjectSize size="11" />
    <wvobject fp_name="group137" type="group">
       <obj_property name="label">Resets</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -43,6 +44,7 @@
    <wvobject fp_name="group138" type="group">
       <obj_property name="label">Clocks</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/top_tb/pll_clk_p" type="logic">
          <obj_property name="ElementShortName">pll_clk_p</obj_property>
          <obj_property name="ObjectShortName">pll_clk_p</obj_property>
@@ -66,10 +68,6 @@
       <wvobject fp_name="/top_tb/ufb_trx_rxclk_n" type="logic">
          <obj_property name="ElementShortName">ufb_trx_rxclk_n</obj_property>
          <obj_property name="ObjectShortName">ufb_trx_rxclk_n</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/ufb_fpga_trx_clk" type="logic">
-         <obj_property name="ElementShortName">ufb_fpga_trx_clk</obj_property>
-         <obj_property name="ObjectShortName">ufb_fpga_trx_clk</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group163" type="group">
@@ -134,6 +132,91 @@
       <wvobject fp_name="/top_tb/ddr3_cas" type="logic">
          <obj_property name="ElementShortName">ddr3_cas</obj_property>
          <obj_property name="ObjectShortName">ddr3_cas</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider78">
+      <obj_property name="label">Rotary Encoder</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group79" type="group">
+      <obj_property name="label">Stimulus</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/top_tb/board_rotenc_push" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_push</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_push</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/board_rotenc_i" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_i</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/board_rotenc_q" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_q</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_q</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group88" type="group">
+      <obj_property name="label">Decoder</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/topi/board_rotenc_push" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_push</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_push</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/topi/board_rotenc_push_r" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_push_r</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_push_r</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/topi/board_rotenc_i" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_i</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/topi/board_rotenc_i_r" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_i_r</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_i_r</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/topi/board_rotenc_i_rr" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_i_rr</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_i_rr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/topi/board_rotenc_q" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_q</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_q</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/topi/board_rotenc_q_r" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_q_r</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_q_r</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/topi/board_rotenc_q_rr" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_q_rr</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_q_rr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/topi/board_rotenc_ce" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_ce</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_ce</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/topi/board_rotenc_up" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_up</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_up</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group271" type="group">
+      <obj_property name="label">Accu</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/topi/mcu_wrapper_i/mcu_i/c_accum_0_ROTENC/Q" type="array">
+         <obj_property name="ElementShortName">Q[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Q[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
    </wvobject>
    <wvobject type="divider" fp_name="divider167">

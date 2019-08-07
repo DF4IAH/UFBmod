@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="37">
   <CompositeFile CompositeFileTopName="mcu" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1565033896"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1565033896"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1565033896"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1565033896"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1565135328"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1565135328"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1565135328"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1565135328"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\mcu_microblaze_0_0\mcu_microblaze_0_0.xci" Type="IP">
         <Instance HierarchyPath="mb_0"/>
@@ -266,7 +266,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\mcu_axi_gpio_0_1\mcu_axi_gpio_0_1.xci" Type="IP">
-        <Instance HierarchyPath="axi_gpio_1"/>
+        <Instance HierarchyPath="axi_gpio_2_LVDS_test"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -289,7 +289,47 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip\mcu_auto_pc_9\mcu_auto_pc_9.xci" Type="IP">
+      <File Name="ip\mcu_axi_iic_0_1\mcu_axi_iic_0_1.xci" Type="IP">
+        <Instance HierarchyPath="axi_iic_1_BOARD"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\mcu_c_accum_0_0\mcu_c_accum_0_0.xci" Type="IP">
+        <Instance HierarchyPath="c_accum_0_ROTENC"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\mcu_xlconstant_0_2\mcu_xlconstant_0_2.xci" Type="IP">
+        <Instance HierarchyPath="xlconstant_31bit_val0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\mcu_axi_gpio_0_2\mcu_axi_gpio_0_2.xci" Type="IP">
+        <Instance HierarchyPath="axi_gpio_1_ROTENC"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\mcu_xlconcat_0_0\mcu_xlconcat_0_0.xci" Type="IP">
+        <Instance HierarchyPath="xlconcat_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\mcu_auto_pc_11\mcu_auto_pc_11.xci" Type="IP">
         <Instance HierarchyPath="mb_0_axi_periph/s00_couplers/auto_pc"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
@@ -363,6 +403,22 @@
       </File>
       <File Name="ip\mcu_auto_pc_8\mcu_auto_pc_8.xci" Type="IP">
         <Instance HierarchyPath="mb_0_axi_periph/m09_couplers/auto_pc"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\mcu_auto_pc_9\mcu_auto_pc_9.xci" Type="IP">
+        <Instance HierarchyPath="mb_0_axi_periph/m10_couplers/auto_pc"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\mcu_auto_pc_10\mcu_auto_pc_10.xci" Type="IP">
+        <Instance HierarchyPath="mb_0_axi_periph/m11_couplers/auto_pc"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
