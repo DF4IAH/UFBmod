@@ -17616,6 +17616,27 @@ Marquardt, Siemens, C&amp;K, ITT, and others&lt;p&gt;
 <wire x1="5.5" y1="-1.2" x2="3.8" y2="-1.2" width="1.25" layer="30"/>
 <pad name="P$1" x="0" y="0" drill="2.8" diameter="2.8" stop="no" thermals="no"/>
 </package>
+<package name="KSR223G_SMD_1POL">
+<description>&lt;h4&gt;KSR223G&lt;/h4&gt;
+KSR Series&lt;br/&gt;
+Subminiature Tact Switch for SMT</description>
+<wire x1="3" y1="1.9" x2="3" y2="0.5" width="0.1016" layer="21"/>
+<wire x1="3" y1="-0.5" x2="3" y2="-1.9" width="0.1016" layer="21"/>
+<wire x1="3" y1="-1.9" x2="-3" y2="-1.9" width="0.1016" layer="21"/>
+<wire x1="-3" y1="-1.9" x2="-3" y2="-0.5" width="0.1016" layer="21"/>
+<wire x1="-3" y1="0.5" x2="-3" y2="1.9" width="0.1016" layer="21"/>
+<wire x1="3" y1="1.9" x2="-3" y2="1.9" width="0.1016" layer="21"/>
+<circle x="0" y="0" radius="0.7" width="0.1016" layer="21"/>
+<circle x="0" y="0" radius="0.95" width="0.1016" layer="21"/>
+<smd name="2" x="3.5" y="0" dx="1" dy="1.4" layer="1"/>
+<smd name="1" x="-3.5" y="0" dx="1" dy="1.4" layer="1"/>
+<text x="-2.54" y="2.54" size="1.27" layer="25">&gt;NAME</text>
+<text x="-2.54" y="-3.81" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-3.65" y1="-0.5" x2="-2.5" y2="0.5" layer="51"/>
+<rectangle x1="2.5" y1="-0.5" x2="3.65" y2="0.5" layer="51"/>
+<rectangle x1="-3" y1="-0.5" x2="-2.5" y2="0.5" layer="21"/>
+<rectangle x1="2.5" y1="-0.5" x2="3" y2="0.5" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="TTE_EN11-HSM">
@@ -17666,6 +17687,15 @@ Marquardt, Siemens, C&amp;K, ITT, and others&lt;p&gt;
 <text x="-5.08" y="17.78" size="2.1844" layer="95" ratio="10">&gt;NAME</text>
 <text x="-10.16" y="-22.86" size="2.1844" layer="96" ratio="10">&gt;VALUE</text>
 </symbol>
+<symbol name="S">
+<wire x1="0" y1="-3.175" x2="0" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="0" y1="-1.905" x2="-1.27" y2="1.905" width="0.254" layer="94"/>
+<wire x1="0" y1="1.905" x2="0" y2="3.175" width="0.254" layer="94"/>
+<text x="-2.54" y="-3.81" size="1.778" layer="95" rot="R90">&gt;NAME</text>
+<text x="3.81" y="-3.81" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+<pin name="P" x="0" y="-5.08" visible="pad" length="short" direction="pas" rot="R90"/>
+<pin name="S" x="0" y="5.08" visible="pad" length="short" direction="pas" rot="R270"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="TTE_EN11-HSM" prefix="X">
@@ -17681,6 +17711,25 @@ Marquardt, Siemens, C&amp;K, ITT, and others&lt;p&gt;
 <connect gate="G$1" pin="C" pad="C"/>
 <connect gate="G$1" pin="D" pad="D"/>
 <connect gate="G$1" pin="E" pad="E"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="KSR223G_SMD_1POL" prefix="S">
+<description>&lt;h4&gt;KSR223G&lt;/h4&gt;
+KSR Series&lt;br/&gt;
+Subminiature Tact Switch for SMT</description>
+<gates>
+<gate name="G$1" symbol="S" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="KSR223G_SMD_1POL">
+<connects>
+<connect gate="G$1" pin="P" pad="1"/>
+<connect gate="G$1" pin="S" pad="2"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -18866,6 +18915,8 @@ Marquardt, Siemens, C&amp;K, ITT, and others&lt;p&gt;
 <part name="R0753" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="100R"/>
 <part name="R0754" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="100R"/>
 <part name="TP1371" library="df4iah_connector" deviceset="TP" device="B1,27"/>
+<part name="S1321" library="df4iah_switch" deviceset="KSR223G_SMD_1POL" device=""/>
+<part name="R1321" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="100R"/>
 </parts>
 <sheets>
 <sheet>
@@ -19791,6 +19842,18 @@ Top</text>
 <junction x="45.72" y="15.24"/>
 <wire x1="45.72" y1="10.16" x2="48.26" y2="10.16" width="0.1524" layer="91"/>
 <pinref part="HB_354" gate="G$1" pin="MOUNT"/>
+</segment>
+</net>
+<net name="FPGA_RESET" class="0">
+<segment>
+<pinref part="JB3" gate="G$1" pin="B13_L1_P"/>
+<wire x1="144.78" y1="124.46" x2="144.78" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="137.16" x2="147.32" y2="137.16" width="0.1524" layer="91"/>
+<pinref part="JB3" gate="G$1" pin="B13_L1_N"/>
+<wire x1="147.32" y1="137.16" x2="147.32" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="137.16" x2="50.8" y2="137.16" width="0.1524" layer="91"/>
+<junction x="144.78" y="137.16"/>
+<label x="50.8" y="137.16" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
@@ -22324,6 +22387,8 @@ Digilent JTAG HS3</text>
 </instance>
 <instance part="GND1381" gate="1" x="198.12" y="60.96"/>
 <instance part="TP1371" gate="G$1" x="220.98" y="81.28"/>
+<instance part="S1321" gate="G$1" x="114.3" y="53.34"/>
+<instance part="R1321" gate="G$1" x="114.3" y="40.64" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -22806,6 +22871,28 @@ Digilent JTAG HS3</text>
 <label x="177.8" y="76.2" size="1.778" layer="95" rot="R180" xref="yes"/>
 <pinref part="TP1371" gate="G$1" pin="TP"/>
 <wire x1="220.98" y1="76.2" x2="220.98" y2="78.74" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="VCCIO13" class="0">
+<segment>
+<pinref part="S1321" gate="G$1" pin="S"/>
+<wire x1="114.3" y1="58.42" x2="114.3" y2="66.04" width="0.1524" layer="91"/>
+<label x="114.3" y="66.04" size="1.778" layer="95" rot="R90" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_RESET" class="0">
+<segment>
+<pinref part="R1321" gate="G$1" pin="1"/>
+<wire x1="114.3" y1="35.56" x2="114.3" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="33.02" x2="129.54" y2="33.02" width="0.1524" layer="91"/>
+<label x="129.54" y="33.02" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_RESET_R" class="0">
+<segment>
+<pinref part="R1321" gate="G$1" pin="2"/>
+<pinref part="S1321" gate="G$1" pin="P"/>
+<wire x1="114.3" y1="45.72" x2="114.3" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
