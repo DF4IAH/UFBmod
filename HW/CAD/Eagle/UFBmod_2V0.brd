@@ -9882,7 +9882,7 @@ Covered vias can be set in Masks (Limit).
 <signal name="BOARD_LCD_RESETN">
 <contactref element="R0532" pad="1"/>
 </signal>
-<signal name="INIT_CALIB_COMPLETE">
+<signal name="DDR3_INIT_CALIB_COMPLETE">
 <contactref element="TP1371" pad="TP"/>
 </signal>
 <signal name="FPGA_RESET">

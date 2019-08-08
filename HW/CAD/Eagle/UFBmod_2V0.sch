@@ -19702,7 +19702,7 @@ Right</text>
 <label x="76.2" y="71.12" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="INIT_CALIB_COMPLETE" class="0">
+<net name="DDR3_INIT_CALIB_COMPLETE" class="0">
 <segment>
 <wire x1="96.52" y1="137.16" x2="76.2" y2="137.16" width="0.1524" layer="91"/>
 <label x="76.2" y="137.16" size="1.778" layer="95" rot="R180" xref="yes"/>
@@ -22865,7 +22865,7 @@ Digilent JTAG HS3</text>
 <pinref part="+2V5_1350" gate="G$2" pin="+2V5"/>
 </segment>
 </net>
-<net name="INIT_CALIB_COMPLETE" class="0">
+<net name="DDR3_INIT_CALIB_COMPLETE" class="0">
 <segment>
 <wire x1="220.98" y1="76.2" x2="177.8" y2="76.2" width="0.1524" layer="91"/>
 <label x="177.8" y="76.2" size="1.778" layer="95" rot="R180" xref="yes"/>
