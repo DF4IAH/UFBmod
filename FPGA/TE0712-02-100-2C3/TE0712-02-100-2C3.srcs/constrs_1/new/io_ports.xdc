@@ -161,10 +161,10 @@ set_property -dict {PACKAGE_PIN R21 IOSTANDARD LVCMOS33} [get_ports {spi_dq[3]}]
 #IO_L2N_T0_D03_14 sch:SPI-DQ3
 
 
-#set_property -dict {PACKAGE_PIN U22 IOSTANDARD LVCMOS33} [get_ports {fpga_io}]
+set_property -dict {PACKAGE_PIN U22 IOSTANDARD LVCMOS33} [get_ports {fpga_io}]
 #IO_L3P_T0_DQS_PUDC_B_14 sch:FPGA_IO
 
-#set_property -dict {PACKAGE_PIN V22 IOSTANDARD LVCMOS33} [get_ports {onewire}]
+set_property -dict {PACKAGE_PIN V22 IOSTANDARD LVCMOS33} [get_ports {onewire}]
 #IO_L3N_T0_DQS_EMCCLK_14 sch:ONEWIRE
 
 
@@ -192,12 +192,12 @@ set_property -dict {PACKAGE_PIN T20 IOSTANDARD LVCMOS33} [get_ports {pll_sda}]
 set_property -dict {PACKAGE_PIN W21 IOSTANDARD LVCMOS33} [get_ports {pll_scl}]
 #IO_L7P_T1_D09_14 sch:PLL_SCL
 
-#set_property -dict {PACKAGE_PIN W22 IOSTANDARD LVCMOS33} [get_ports {uli_system}]
+set_property -dict {PACKAGE_PIN W22 IOSTANDARD LVCMOS33} [get_ports {uli_system}]
 #IO_L7N_T1_D10_14 sch:ULI_SYSTEM
 
 
-set_property -dict {PACKAGE_PIN AA20 IOSTANDARD LVCMOS33} [get_ports {init_calib_complete}]
-#IO_L8P_T1_D11_14 sch:B14_L8_P --> init_calib_complete
+set_property -dict {PACKAGE_PIN AA20 IOSTANDARD LVCMOS33} [get_ports {ddr3_init_calib_complete}]
+#IO_L8P_T1_D11_14 sch:B14_L8_P --> ddr3_init_calib_complete
 
 #set_property -dict {PACKAGE_PIN AA21 IOSTANDARD LVCMOS33} [get_ports {b14_l8_n}]
 #IO_L8N_T1_D12_14 sch:B14_L8_N
@@ -426,7 +426,7 @@ set_property -dict {PACKAGE_PIN H18 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_ft
 set_property -dict {PACKAGE_PIN N22 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_rfx_mode}]
 #IO_L15P_T2_DQS_15 sch:B15_L15_P --> UFB_FPGA_RFX_MODE
 
-set_property -dict {PACKAGE_PIN M22 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_ft_reset}]
+set_property -dict {PACKAGE_PIN M22 IOSTANDARD LVCMOS33} [get_ports {ufb_fpga_ft_resetn}]
 #IO_L15N_T2_DQS_ADV_B_15 sch:B15_L15_N --> UFB_FPGA_FT_RESET
 
 
@@ -1102,8 +1102,13 @@ set_property -dict {PACKAGE_PIN E6} [get_ports {mgt_clk0_n}]
 #MGTPTXN3_216 sch:MGT_TX3_N
 
 
-set_property PULLDOWN true [get_ports reset]
-set_property PULLDOWN true [get_ports sys_rst]
+set_property PULLDOWN true [get_ports {reset}]
+set_property PULLDOWN true [get_ports {sys_rst}]
+set_property PULLUP   true [get_ports {onewire}]
+
+# Not implemented yet
+set_property PULLDOWN true [get_ports {fpga_io}]
+set_property PULLDOWN true [get_ports {uli_system}]
 
 
 

@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1.1 (win64) Build 2580384 Sat Jun 29 08:12:21 MDT 2019
-//Date        : Wed Aug  7 01:48:34 2019
+//Date        : Thu Aug  8 23:25:01 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu_wrapper.bd
 //Design      : mcu_wrapper
@@ -25,17 +25,20 @@ module mcu_wrapper
     DDR3_SDRAM_ras_n,
     DDR3_SDRAM_reset_n,
     DDR3_SDRAM_we_n,
+    DDR3_init_calib_complete,
     PLL_int,
     TRX_int,
     board_rotenc_pulse,
     board_rotenc_push,
     board_rotenc_up,
     gpio_rtl_0_MULTI_tri_o,
+    gpio_rtl_1_ONEWIRE_addr_out_tri_o,
+    gpio_rtl_2_ONEWIRE_data_in_tri_i,
+    gpio_rtl_2_ONEWIRE_data_out_tri_o,
     iic_rtl_0_PLL_scl_io,
     iic_rtl_0_PLL_sda_io,
     iic_rtl_1_BOARD_scl_io,
     iic_rtl_1_BOARD_sda_io,
-    init_calib_complete,
     mb_axi_clk_100mhz,
     pll_clk_n,
     pll_clk_p,
@@ -66,7 +69,7 @@ module mcu_wrapper
     uart_rtl_0_FTDI_txd,
     uart_rtl_0_FTDI_txrdyn,
     ufb_fpga_ft_12mhz,
-    ufb_fpga_ft_reset,
+    ufb_fpga_ft_resetn,
     ufb_trx_rxclk_n,
     ufb_trx_rxclk_p,
     ufb_trx_rxd09_n,
@@ -90,17 +93,20 @@ module mcu_wrapper
   output DDR3_SDRAM_ras_n;
   output DDR3_SDRAM_reset_n;
   output DDR3_SDRAM_we_n;
+  output DDR3_init_calib_complete;
   input [0:0]PLL_int;
   input [0:0]TRX_int;
   input board_rotenc_pulse;
   input [0:0]board_rotenc_push;
   input board_rotenc_up;
   output [7:0]gpio_rtl_0_MULTI_tri_o;
+  output [14:0]gpio_rtl_1_ONEWIRE_addr_out_tri_o;
+  input [7:0]gpio_rtl_2_ONEWIRE_data_in_tri_i;
+  output [15:0]gpio_rtl_2_ONEWIRE_data_out_tri_o;
   inout iic_rtl_0_PLL_scl_io;
   inout iic_rtl_0_PLL_sda_io;
   inout iic_rtl_1_BOARD_scl_io;
   inout iic_rtl_1_BOARD_sda_io;
-  output init_calib_complete;
   output mb_axi_clk_100mhz;
   input pll_clk_n;
   input pll_clk_p;
@@ -131,7 +137,7 @@ module mcu_wrapper
   output uart_rtl_0_FTDI_txd;
   output uart_rtl_0_FTDI_txrdyn;
   output ufb_fpga_ft_12mhz;
-  output [0:0]ufb_fpga_ft_reset;
+  output ufb_fpga_ft_resetn;
   input ufb_trx_rxclk_n;
   input ufb_trx_rxclk_p;
   input [0:0]ufb_trx_rxd09_n;
@@ -156,12 +162,16 @@ module mcu_wrapper
   wire DDR3_SDRAM_ras_n;
   wire DDR3_SDRAM_reset_n;
   wire DDR3_SDRAM_we_n;
+  wire DDR3_init_calib_complete;
   wire [0:0]PLL_int;
   wire [0:0]TRX_int;
   wire board_rotenc_pulse;
   wire [0:0]board_rotenc_push;
   wire board_rotenc_up;
   wire [7:0]gpio_rtl_0_MULTI_tri_o;
+  wire [14:0]gpio_rtl_1_ONEWIRE_addr_out_tri_o;
+  wire [7:0]gpio_rtl_2_ONEWIRE_data_in_tri_i;
+  wire [15:0]gpio_rtl_2_ONEWIRE_data_out_tri_o;
   wire iic_rtl_0_PLL_scl_i;
   wire iic_rtl_0_PLL_scl_io;
   wire iic_rtl_0_PLL_scl_o;
@@ -178,7 +188,6 @@ module mcu_wrapper
   wire iic_rtl_1_BOARD_sda_io;
   wire iic_rtl_1_BOARD_sda_o;
   wire iic_rtl_1_BOARD_sda_t;
-  wire init_calib_complete;
   wire mb_axi_clk_100mhz;
   wire pll_clk_n;
   wire pll_clk_p;
@@ -236,7 +245,7 @@ module mcu_wrapper
   wire uart_rtl_0_FTDI_txd;
   wire uart_rtl_0_FTDI_txrdyn;
   wire ufb_fpga_ft_12mhz;
-  wire [0:0]ufb_fpga_ft_reset;
+  wire ufb_fpga_ft_resetn;
   wire ufb_trx_rxclk_n;
   wire ufb_trx_rxclk_p;
   wire [0:0]ufb_trx_rxd09_n;
@@ -282,12 +291,16 @@ module mcu_wrapper
         .DDR3_SDRAM_ras_n(DDR3_SDRAM_ras_n),
         .DDR3_SDRAM_reset_n(DDR3_SDRAM_reset_n),
         .DDR3_SDRAM_we_n(DDR3_SDRAM_we_n),
+        .DDR3_init_calib_complete(DDR3_init_calib_complete),
         .PLL_int(PLL_int),
         .TRX_int(TRX_int),
         .board_rotenc_pulse(board_rotenc_pulse),
         .board_rotenc_push(board_rotenc_push),
         .board_rotenc_up(board_rotenc_up),
         .gpio_rtl_0_MULTI_tri_o(gpio_rtl_0_MULTI_tri_o),
+        .gpio_rtl_1_ONEWIRE_addr_out_tri_o(gpio_rtl_1_ONEWIRE_addr_out_tri_o),
+        .gpio_rtl_2_ONEWIRE_data_in_tri_i(gpio_rtl_2_ONEWIRE_data_in_tri_i),
+        .gpio_rtl_2_ONEWIRE_data_out_tri_o(gpio_rtl_2_ONEWIRE_data_out_tri_o),
         .iic_rtl_0_PLL_scl_i(iic_rtl_0_PLL_scl_i),
         .iic_rtl_0_PLL_scl_o(iic_rtl_0_PLL_scl_o),
         .iic_rtl_0_PLL_scl_t(iic_rtl_0_PLL_scl_t),
@@ -300,7 +313,6 @@ module mcu_wrapper
         .iic_rtl_1_BOARD_sda_i(iic_rtl_1_BOARD_sda_i),
         .iic_rtl_1_BOARD_sda_o(iic_rtl_1_BOARD_sda_o),
         .iic_rtl_1_BOARD_sda_t(iic_rtl_1_BOARD_sda_t),
-        .init_calib_complete(init_calib_complete),
         .mb_axi_clk_100mhz(mb_axi_clk_100mhz),
         .pll_clk_n(pll_clk_n),
         .pll_clk_p(pll_clk_p),
@@ -349,7 +361,7 @@ module mcu_wrapper
         .uart_rtl_0_FTDI_txd(uart_rtl_0_FTDI_txd),
         .uart_rtl_0_FTDI_txrdyn(uart_rtl_0_FTDI_txrdyn),
         .ufb_fpga_ft_12mhz(ufb_fpga_ft_12mhz),
-        .ufb_fpga_ft_reset(ufb_fpga_ft_reset),
+        .ufb_fpga_ft_resetn(ufb_fpga_ft_resetn),
         .ufb_trx_rxclk_n(ufb_trx_rxclk_n),
         .ufb_trx_rxclk_p(ufb_trx_rxclk_p),
         .ufb_trx_rxd09_n(ufb_trx_rxd09_n),

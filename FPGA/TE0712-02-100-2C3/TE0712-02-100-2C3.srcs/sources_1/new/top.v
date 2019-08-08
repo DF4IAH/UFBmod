@@ -40,11 +40,10 @@ module top(
     
     
     // FPGA Config
-    //fpga_io,
-    
+    fpga_io,
     
     // ULI System (Trenz-Electronic CPLD)
-    //uli_system,
+    uli_system,
     
     
     // SPI-QUAD
@@ -54,7 +53,7 @@ module top(
     
     
     // Onewire
-    //onewire,
+    onewire,
     
     
     // PLL - I2C & Int (VTTREF)
@@ -105,7 +104,7 @@ module top(
     
     ddr3_reset,
     
-    init_calib_complete,
+    ddr3_init_calib_complete,
     
     
     // Ethernet
@@ -157,7 +156,7 @@ module top(
     
     
     // FTDI serial <--> USB
-    ufb_fpga_ft_reset,
+    ufb_fpga_ft_resetn,
     ufb_fpga_ft_12mhz,
     
     ufb_fpga_ft_rxd,
@@ -209,10 +208,12 @@ module top(
     
     // FPGA Config
     //inout  fpga_io;
+    input  fpga_io;
     
     
     // ULI System (Trenz-Electronic CPLD)
     //inout  uli_system;
+    input  uli_system;
     
     
     // SPI-QUAD
@@ -222,7 +223,7 @@ module top(
     
     
     // Onewire
-    //inout  onewire;
+    inout  onewire;
     
     
     // PLL - I2C & Int (VTTREF)
@@ -271,7 +272,7 @@ module top(
     
     output ddr3_reset;
     
-    output init_calib_complete;
+    output ddr3_init_calib_complete;
     
     
     //output ddr3_loop1_p;
@@ -330,7 +331,7 @@ module top(
     
     
     // FTDI serial <--> USB
-    output ufb_fpga_ft_reset;
+    output ufb_fpga_ft_resetn;
     output ufb_fpga_ft_12mhz;
     
     output ufb_fpga_ft_rxd;
@@ -359,10 +360,11 @@ module top(
     
     
     
+    // Wires
     wire mb_axi_clk_100mhz;
     wire [7:0]gpio_rtl_0_MULTI_tri_o;
     wire board_lcd_resetn;
-    wire init_calib_complete;
+    wire ddr3_init_calib_complete;
     
     
     
@@ -371,7 +373,7 @@ module top(
     
         
     // BOARD-I2C
-    assign board_lcd_resetn = gpio_rtl_0_MULTI_tri_o[6];
+    assign board_lcd_resetn = !gpio_rtl_0_MULTI_tri_o[6];
     
     
     // Rotary encoder
@@ -425,6 +427,28 @@ module top(
     end
     
     
+    // Ethernet / ONEWIRE
+    wire [15:0]ow_addr;
+    wire [15:0]ow_data_i;
+    wire [ 7:0]ow_data_o;
+    wire ow_stb_i;
+    wire ow_wr_i;
+    
+    onewire onewire_i(
+        .rst_i(reset),
+        .clk_i(mb_axi_clk_100mhz),
+  
+        .onewire_io(onewire),
+
+        .addr_i(ow_addr),
+        .data_i(ow_data_i[7:0]),
+        .data_o(ow_data_o),
+        
+        .wr_i(ow_data_i[14]),
+        .stb_i(ow_data_i[15])
+    );
+
+
     // FTDI
     wire ufb_fpga_ft_cts_n;
     wire ufb_fpga_ft_dsr_n;
@@ -449,11 +473,11 @@ module top(
     // RGB-LED
     assign fpga_led_rgb_red   = gpio_rtl_0_MULTI_tri_o[0];
     assign fpga_led_rgb_green = gpio_rtl_0_MULTI_tri_o[1];
-    assign fpga_led_rgb_blue  = init_calib_complete;
+    assign fpga_led_rgb_blue  = ddr3_init_calib_complete;
     
     
     // TRX
-    assign ufb_trx_rstn = gpio_rtl_0_MULTI_tri_o[7];
+    assign ufb_trx_rstn = !gpio_rtl_0_MULTI_tri_o[7];
     
     
     // Unused - BV0/BV1
@@ -471,45 +495,42 @@ module top(
         
         
     // MB Clock (100 MHz) 
-        .mb_axi_clk_100mhz(mb_axi_clk_100mhz),      //output mb_axi_clk_100mhz
+        .mb_axi_clk_100mhz(mb_axi_clk_100mhz),          //output mb_axi_clk_100mhz
         
         
     // FPGA Config
-                                                    //inout  fpga_io
+                                                        //inout  fpga_io
         
         
     // ULI System (Trenz-Electronic CPLD)
-                                                    //inout  uli_system
+                                                        //inout  uli_system
         
         
     // SPI-QUAD
-        .spi_rtl_0_CONFIG_ss_io(spi_cs),            //inout spi_cs
-        .spi_rtl_0_CONFIG_io0_io(spi_dq[0]),        //inout spi_dq[0]
-        .spi_rtl_0_CONFIG_io1_io(spi_dq[1]),        //inout spi_dq[1]
-        .spi_rtl_0_CONFIG_io2_io(spi_dq[2]),        //inout spi_dq[2]
-        .spi_rtl_0_CONFIG_io3_io(spi_dq[3]),        //inout spi_dq[3]
-        
-        
-    // Onewire
-                                                    //inout  onewire
+        .spi_rtl_0_CONFIG_ss_io(spi_cs),                //inout spi_cs
+        .spi_rtl_0_CONFIG_io0_io(spi_dq[0]),            //inout spi_dq[0]
+        .spi_rtl_0_CONFIG_io1_io(spi_dq[1]),            //inout spi_dq[1]
+        .spi_rtl_0_CONFIG_io2_io(spi_dq[2]),            //inout spi_dq[2]
+        .spi_rtl_0_CONFIG_io3_io(spi_dq[3]),            //inout spi_dq[3]
         
         
     // PLL - I2C & Int (VTTREF)
-        .iic_rtl_0_PLL_scl_io(pll_scl),             //inout  pll_scl
-        .iic_rtl_0_PLL_sda_io(pll_sda),             //inout  pll_sda
+        .iic_rtl_0_PLL_scl_io(pll_scl),                 //inout  pll_scl
+        .iic_rtl_0_PLL_sda_io(pll_sda),                 //inout  pll_sda
         
-        .PLL_int(!pll_int),                         //input  pll_int
+        .PLL_int(!pll_int),                             //input  pll_int
         
         
     // Board - I2C
-                                                    //output board_lcd_resetn  <--  gpio_rtl_0_MULTI_tri_o[6]
-        .iic_rtl_1_BOARD_scl_io(board_scl),         //inout  board_scl
-        .iic_rtl_1_BOARD_sda_io(board_sda),         //inout  board_sda
+                                                        //output board_lcd_resetn  <--  !gpio_rtl_0_MULTI_tri_o[6]
+        .iic_rtl_1_BOARD_scl_io(board_scl),             //inout  board_scl
+        .iic_rtl_1_BOARD_sda_io(board_sda),             //inout  board_sda
         
         
-        .board_rotenc_push(board_rotenc_push_r),    //input  board_rotenc_push
-        .board_rotenc_pulse(board_rotenc_pulse),    //input  board_rotenc_pulse
-        .board_rotenc_up(board_rotenc_up),          //input  board_rotenc_up
+    // Rotary encoder
+        .board_rotenc_push(board_rotenc_push_r),        //input  board_rotenc_push
+        .board_rotenc_pulse(board_rotenc_pulse),        //input  board_rotenc_pulse
+        .board_rotenc_up(board_rotenc_up),              //input  board_rotenc_up
         
         
     // DDR3 Lanes 0-3
@@ -533,25 +554,30 @@ module top(
         .DDR3_SDRAM_cas_n(ddr3_cas),
         .DDR3_SDRAM_ras_n(ddr3_ras),
         
-        .init_calib_complete(init_calib_complete),
+        .DDR3_init_calib_complete(ddr3_init_calib_complete),
         
         
     // Ethernet
-                                                    //output eth_rst
+                                                        //output eth_rst
         
-                                                    //output mdc
-                                                    //inout  mdio
+                                                        //output mdc
+                                                        //inout  mdio
         
-                                                    //output [1:0]eth_tx_d
+                                                        //output [1:0]eth_tx_d
         
-                                                    //input  [1:0]eth_rx_d
-                                                    //input  eth_rx_dv
+                                                        //input  [1:0]eth_rx_d
+                                                        //input  eth_rx_dv
         
-                                                    //input  link_led
+                                                        //input  link_led
         
         
+    // Onewire
+        .gpio_rtl_1_ONEWIRE_addr_out_tri_o(ow_addr),    //output ow_addr
+        .gpio_rtl_2_ONEWIRE_data_out_tri_o(ow_data_o),  //output ow_data_o
+        .gpio_rtl_2_ONEWIRE_data_in_tri_i(ow_data_i),   //input  ow_data_i
+
+
     // UFBmod special signals
-        
     // TRX LVDS lanes
         .ufb_trx_rxclk_p(ufb_trx_rxclk_p),
         .ufb_trx_rxclk_n(ufb_trx_rxclk_n),
@@ -569,39 +595,39 @@ module top(
         
         
    // TRX SPI
-                                                    //output ufb_trx_rstn  <--  gpio_rtl_0_MULTI_tri_o[7]
+                                                        //output ufb_trx_rstn  <--  !gpio_rtl_0_MULTI_tri_o[7]
         
-        .spi_rtl_1_TRX_io0_io(ufb_trx_mosi),        //inout  ufb_trx_mosi
-        .spi_rtl_1_TRX_io1_io(ufb_trx_miso),        //inout  ufb_trx_miso
-        .spi_rtl_1_TRX_sck_io(ufb_trx_sclk),        //inout  ufb_trx_sclk
-        .spi_rtl_1_TRX_ss_io(ufb_trx_seln),         //inout  ufb_trx_seln
+        .spi_rtl_1_TRX_io0_io(ufb_trx_mosi),            //inout  ufb_trx_mosi
+        .spi_rtl_1_TRX_io1_io(ufb_trx_miso),            //inout  ufb_trx_miso
+        .spi_rtl_1_TRX_sck_io(ufb_trx_sclk),            //inout  ufb_trx_sclk
+        .spi_rtl_1_TRX_ss_io(ufb_trx_seln),             //inout  ufb_trx_seln
         
-        .TRX_int(ufb_trx_irq),                      //input  ufb_trx_irq
+        .TRX_int(ufb_trx_irq),                          //input  ufb_trx_irq
         
         
     // RFX
-                                                    //output ufb_fpga_rfx_mode
+                                                        //output ufb_fpga_rfx_mode
         
         
     // FTDI serial <--> USB
-        .ufb_fpga_ft_12mhz(ufb_fpga_ft_12mhz),      //output ufb_fpga_ft_12mhz
-        .ufb_fpga_ft_reset(ufb_fpga_ft_reset),      //output ufb_fpga_ft_reset
+        .ufb_fpga_ft_12mhz(ufb_fpga_ft_12mhz),          //output ufb_fpga_ft_12mhz
+        .ufb_fpga_ft_resetn(ufb_fpga_ft_resetn),        //output ufb_fpga_ft_resetn
         
-        .uart_rtl_0_FTDI_txd(ufb_fpga_ft_rxd),      //output FTDI:ufb_fpga_ft_rxd
-        .uart_rtl_0_FTDI_rxd(ufb_fpga_ft_txd),      //input  FTDI:ufb_fpga_ft_txd
+        .uart_rtl_0_FTDI_txd(ufb_fpga_ft_rxd),          //output FTDI:ufb_fpga_ft_rxd
+        .uart_rtl_0_FTDI_rxd(ufb_fpga_ft_txd),          //input  FTDI:ufb_fpga_ft_txd
         
-        .uart_rtl_0_FTDI_rtsn(ufb_fpga_ft_cts_n),   //output FTDI:ufb_fpga_ft_cts
-        .uart_rtl_0_FTDI_ctsn(!ufb_fpga_ft_rts),    //input  FTDI:ufb_fpga_ft_rts  
+        .uart_rtl_0_FTDI_rtsn(ufb_fpga_ft_cts_n),       //output FTDI:ufb_fpga_ft_cts
+        .uart_rtl_0_FTDI_ctsn(!ufb_fpga_ft_rts),        //input  FTDI:ufb_fpga_ft_rts  
         
-        .uart_rtl_0_FTDI_dtrn(ufb_fpga_ft_dsr_n),   //output FTDI:ufb_fpga_ft_dsr
-        .uart_rtl_0_FTDI_dsrn(!ufb_fpga_ft_dtr),    //input  FTDI:ufb_fpga_ft_dtr
+        .uart_rtl_0_FTDI_dtrn(ufb_fpga_ft_dsr_n),       //output FTDI:ufb_fpga_ft_dsr
+        .uart_rtl_0_FTDI_dsrn(!ufb_fpga_ft_dtr),        //input  FTDI:ufb_fpga_ft_dtr
         
-        .uart_rtl_0_FTDI_dcdn(1'b0),                //output FTDI:ufb_fpga_ft_dcd := 1
-        .uart_rtl_0_FTDI_ri(1'b0),                  //output FTDI:ufb_fpga_ft_ri  := 0
+        .uart_rtl_0_FTDI_dcdn(1'b0),                    //output FTDI:ufb_fpga_ft_dcd := 1
+        .uart_rtl_0_FTDI_ri(1'b0),                      //output FTDI:ufb_fpga_ft_ri  := 0
         
         
     // LCD backlight
-        .pwm0_lcd_bl(fpga_lcd_bl_pwm),              //output fpga_lcd_bl_pwm
+        .pwm0_lcd_bl(fpga_lcd_bl_pwm),                  //output fpga_lcd_bl_pwm
         
         
     // GPIO
