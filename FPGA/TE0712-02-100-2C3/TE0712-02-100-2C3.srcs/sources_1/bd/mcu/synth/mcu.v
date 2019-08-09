@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1.1 (win64) Build 2580384 Sat Jun 29 08:12:21 MDT 2019
-//Date        : Thu Aug  8 23:24:59 2019
+//Date        : Fri Aug  9 18:50:40 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -4624,9 +4624,9 @@ module mcu
   input [0:0]board_rotenc_push;
   (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.BOARD_ROTENC_UP DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.BOARD_ROTENC_UP, LAYERED_METADATA undef" *) input board_rotenc_up;
   (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_0_MULTI TRI_O" *) output [7:0]gpio_rtl_0_MULTI_tri_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_1_ONEWIRE_addr_out " *) output [14:0]gpio_rtl_1_ONEWIRE_addr_out_tri_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_2_ONEWIRE_data_in " *) input [7:0]gpio_rtl_2_ONEWIRE_data_in_tri_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_2_ONEWIRE_data_out " *) output [15:0]gpio_rtl_2_ONEWIRE_data_out_tri_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_1_ONEWIRE_addr_out TRI_O" *) output [14:0]gpio_rtl_1_ONEWIRE_addr_out_tri_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_2_ONEWIRE_data_in TRI_I" *) input [7:0]gpio_rtl_2_ONEWIRE_data_in_tri_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_2_ONEWIRE_data_out TRI_O" *) output [15:0]gpio_rtl_2_ONEWIRE_data_out_tri_o;
   (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_PLL SCL_I" *) input iic_rtl_0_PLL_scl_i;
   (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_PLL SCL_O" *) output iic_rtl_0_PLL_scl_o;
   (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_PLL SCL_T" *) output iic_rtl_0_PLL_scl_t;

@@ -150,9 +150,6 @@ assign rdy_o  = rdy_o_r;
 // FSM - the protocol master
 always @(posedge clk_i) begin
   if (rst_i) begin
-    onewire_o_r         <=  1'b0;
-    onewire_t_r         <=  1'b0;
-    
     sm1_send_r          <=  8'h00;
     sm1_send_stb        <=  1'b0;
     sm1_data_r          <=  8'h00;
@@ -169,9 +166,6 @@ always @(posedge clk_i) begin
         if (stb_i_r) begin
             sm1_data_r      <= 8'h00;
             sm1_send_stb    <= 1'b0;
-            
-            onewire_o_r     <= 1'b1;
-            onewire_t_r     <= 1'b1;
             
             sm1_send_r      <= 8'h00;
             sm1_send_stb    <= 1'b0;
@@ -300,6 +294,9 @@ always @(posedge clk_i) begin
         
         sm2_10ns_timer_val      <=  9'd0;
         
+        onewire_o_r             <=  1'b0;
+        onewire_t_r             <=  1'b0;
+        
         sm2_state               <=  4'h0;
     end 
     else begin
@@ -363,11 +360,16 @@ always @(posedge clk_i) begin
             
         // Wait until T_HDR has elapsed
         4'h1:
-            // Write mode
-            if (!sm2_10ns_timer_val) begin
-                sm2_bittrain_ctr    <= 5'd20;
-                sm2_10ns_timer_val  <= c_TE_half_10ns;
-                sm2_state           <= 4'h2;
+            begin
+                // Write mode
+                onewire_o_r     <= 1'b1;
+                onewire_t_r     <= 1'b1;
+    
+                if (!sm2_10ns_timer_val) begin
+                    sm2_bittrain_ctr    <= 5'd20;
+                    sm2_10ns_timer_val  <= c_TE_half_10ns;
+                    sm2_state           <= 4'h2;
+                end
             end
             
         // Send and read bits

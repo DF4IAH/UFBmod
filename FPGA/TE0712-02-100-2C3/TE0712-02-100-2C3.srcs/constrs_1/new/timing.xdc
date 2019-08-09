@@ -17,8 +17,8 @@ create_clock -period 8.333 -name mgt_clk0_n -waveform {4.167 8.333} [get_ports m
 set_input_jitter [get_clocks -of_objects [get_ports mgt_clk0_n]] 0.100
 
 
-create_clock -period 31.250 -name ufb_fpga_trx_clk -waveform {0.000 15.625} [get_ports ufb_fpga_trx_clk]
-set_input_jitter [get_clocks -of_objects [get_ports ufb_fpga_trx_clk]] 0.100
+#create_clock -period 31.250 -name ufb_fpga_trx_clk -waveform {0.000 15.625} [get_ports ufb_fpga_trx_clk]
+#set_input_jitter [get_clocks -of_objects [get_ports ufb_fpga_trx_clk]] 0.100
 
 
 set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -clock_fall -min -add_delay 0.400 [get_ports ufb_trx_rxd09_n]
@@ -31,15 +31,17 @@ set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -clock_fall -max -add_delay 
 set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay 0.400 [get_ports ufb_trx_rxd09_p]
 set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 6.000 [get_ports ufb_trx_rxd09_p]
 
+# Unused wires
+create_clock -period 1000 -name virtual_clock_bv
+set_input_delay -clock [get_clocks virtual_clock_bv] -min -add_delay 1.000 [get_ports bv0]
+set_input_delay -clock [get_clocks virtual_clock_bv] -max -add_delay 990.000 [get_ports bv0]
+set_output_delay -clock [get_clocks virtual_clock_bv] -min -add_delay 0.100 [get_ports bv1]
+set_output_delay -clock [get_clocks virtual_clock_bv] -max -add_delay 2.000 [get_ports bv1]
 
-# From Transeiver LVDS RX (DDR 32 MHz) to FPGA fabric (100 MHz)
-#set_false_path -from [get_clocks clk_32_lvds_in_mcu_clk_wiz_0_0] -to [get_clocks clk_pll_i]
-#set_false_path -from [get_clocks clk_32_lvds_in_mcu_clk_wiz_0_0] -to [get_clocks clk_pll_i_1]
 
-
-# From FPGA fabric (100 MHz) to LVDS of Transceiver (DDR 32 MHz)
-#set_false_path -from [get_clocks clk_pll_i] -to [get_clocks clk_32_lvds_out_mcu_clk_wiz_0_0]
-#set_false_path -from [get_clocks clk_pll_i_1] -to [get_clocks clk_32_lvds_out_mcu_clk_wiz_0_0]
+# From clk_pll_i* to clk_12mhz_mcu_clk_wiz_1_0*
+set_false_path -from [get_clocks -include_generated_clocks clk_pll_i]   -to [get_clocks -include_generated_clocks clk_12mhz_mcu_clk_wiz_1_0_1]
+set_false_path -from [get_clocks -include_generated_clocks clk_pll_i_1] -to [get_clocks -include_generated_clocks clk_12mhz_mcu_clk_wiz_1_0]
 
 
 set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks clkfbout_mcu_clk_wiz_1_0] -group [get_clocks -include_generated_clocks clkfbout_mcu_clk_wiz_1_0_1]
@@ -89,10 +91,10 @@ set_clock_groups -asynchronous -group [get_clocks clk_pll_i_1] -group [get_clock
 set_clock_groups -asynchronous -group [get_clocks clk_32_lvds_mcu_clk_wiz_0_0] -group [get_clocks clk_pll_i]
 set_clock_groups -asynchronous -group [get_clocks clk_32_lvds_mcu_clk_wiz_0_0] -group [get_clocks clk_pll_i_1]
 
-set_false_path -from [get_pins {mcu_wrapper_i/mcu_i/mb_0_reset/U0/BSR_OUT_DFF[0].FDRE_BSR/C}] -to [get_pins {mcu_wrapper_i/mcu_i/clk_32mhz_lvds/inst/seq_reg2_reg[1]/CLR}]
-set_false_path -from [get_pins {mcu_wrapper_i/mcu_i/mb_0_reset/U0/BSR_OUT_DFF[0].FDRE_BSR/C}] -to [get_pins {mcu_wrapper_i/mcu_i/clk_32mhz_lvds/inst/seq_reg2_reg[2]/CLR}]
-set_false_path -from [get_pins {mcu_wrapper_i/mcu_i/mb_0_reset/U0/BSR_OUT_DFF[0].FDRE_BSR/C}] -to [get_pins {mcu_wrapper_i/mcu_i/clk_32mhz_lvds/inst/seq_reg2_reg[3]/CLR}]
-set_false_path -from [get_pins {mcu_wrapper_i/mcu_i/mb_0_reset/U0/BSR_OUT_DFF[0].FDRE_BSR/C}] -to [get_pins {mcu_wrapper_i/mcu_i/clk_32mhz_lvds/inst/seq_reg2_reg[4]/CLR}]
-set_false_path -from [get_pins {mcu_wrapper_i/mcu_i/mb_0_reset/U0/BSR_OUT_DFF[0].FDRE_BSR/C}] -to [get_pins {mcu_wrapper_i/mcu_i/clk_32mhz_lvds/inst/seq_reg2_reg[5]/CLR}]
-set_false_path -from [get_pins {mcu_wrapper_i/mcu_i/mb_0_reset/U0/BSR_OUT_DFF[0].FDRE_BSR/C}] -to [get_pins {mcu_wrapper_i/mcu_i/clk_32mhz_lvds/inst/seq_reg2_reg[6]/CLR}]
-set_false_path -from [get_pins {mcu_wrapper_i/mcu_i/mb_0_reset/U0/BSR_OUT_DFF[0].FDRE_BSR/C}] -to [get_pins {mcu_wrapper_i/mcu_i/clk_32mhz_lvds/inst/seq_reg2_reg[7]/CLR}]
+set_false_path -from [get_pins {mcu_wrapper_i/mcu_i/mb_0_reset/U0/BSR_OUT_DFF[0].FDRE_BSR/C}] -to [get_pins {mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/inst/seq_reg2_reg[1]/CLR}]
+set_false_path -from [get_pins {mcu_wrapper_i/mcu_i/mb_0_reset/U0/BSR_OUT_DFF[0].FDRE_BSR/C}] -to [get_pins {mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/inst/seq_reg2_reg[2]/CLR}]
+set_false_path -from [get_pins {mcu_wrapper_i/mcu_i/mb_0_reset/U0/BSR_OUT_DFF[0].FDRE_BSR/C}] -to [get_pins {mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/inst/seq_reg2_reg[3]/CLR}]
+set_false_path -from [get_pins {mcu_wrapper_i/mcu_i/mb_0_reset/U0/BSR_OUT_DFF[0].FDRE_BSR/C}] -to [get_pins {mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/inst/seq_reg2_reg[4]/CLR}]
+set_false_path -from [get_pins {mcu_wrapper_i/mcu_i/mb_0_reset/U0/BSR_OUT_DFF[0].FDRE_BSR/C}] -to [get_pins {mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/inst/seq_reg2_reg[5]/CLR}]
+set_false_path -from [get_pins {mcu_wrapper_i/mcu_i/mb_0_reset/U0/BSR_OUT_DFF[0].FDRE_BSR/C}] -to [get_pins {mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/inst/seq_reg2_reg[6]/CLR}]
+set_false_path -from [get_pins {mcu_wrapper_i/mcu_i/mb_0_reset/U0/BSR_OUT_DFF[0].FDRE_BSR/C}] -to [get_pins {mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/inst/seq_reg2_reg[7]/CLR}]
