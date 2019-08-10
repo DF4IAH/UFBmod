@@ -452,7 +452,7 @@ proc create_root_design { parentCell } {
 
 
   # Create ports
-  set DDR3_init_calib_complete [ create_bd_port -dir O DDR3_init_calib_complete ]
+  set DDR3_init_calib_complete_OBUF [ create_bd_port -dir O DDR3_init_calib_complete_OBUF ]
   set PLL_int [ create_bd_port -dir I -from 0 -to 0 PLL_int ]
   set TRX_int [ create_bd_port -dir I -from 0 -to 0 TRX_int ]
   set board_rotenc_pulse [ create_bd_port -dir I -type ce board_rotenc_pulse ]
@@ -468,7 +468,7 @@ proc create_root_design { parentCell } {
    CONFIG.ASSOCIATED_RESET {sys_rst} \
    CONFIG.FREQ_HZ {50000000} \
  ] $pll_clk_p
-  set pwm0_lcd_bl [ create_bd_port -dir O pwm0_lcd_bl ]
+  set pwm0_lcd_bl_OBUF [ create_bd_port -dir O pwm0_lcd_bl_OBUF ]
   set reset [ create_bd_port -dir I -type rst reset ]
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_HIGH} \
@@ -477,11 +477,11 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_HIGH} \
  ] $sys_rst
-  set ufb_fpga_ft_12mhz [ create_bd_port -dir O -type clk ufb_fpga_ft_12mhz ]
+  set ufb_fpga_ft_12mhz_OBUF [ create_bd_port -dir O -type clk ufb_fpga_ft_12mhz_OBUF ]
   set_property -dict [ list \
    CONFIG.FREQ_HZ {12000000} \
- ] $ufb_fpga_ft_12mhz
-  set ufb_fpga_ft_resetn [ create_bd_port -dir O ufb_fpga_ft_resetn ]
+ ] $ufb_fpga_ft_12mhz_OBUF
+  set ufb_fpga_ft_resetn_OBUF [ create_bd_port -dir O ufb_fpga_ft_resetn_OBUF ]
   set ufb_trx_rxclk_n [ create_bd_port -dir I -type clk ufb_trx_rxclk_n ]
   set_property -dict [ list \
    CONFIG.FREQ_HZ {32000000} \
@@ -970,14 +970,14 @@ proc create_root_design { parentCell } {
   connect_bd_net -net axi_iic_1_BOARD_iic2intc_irpt [get_bd_pins axi_iic_1_BOARD/iic2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In7]
   connect_bd_net -net axi_quad_spi_0_CONFIG_ip2intc_irpt [get_bd_pins axi_quad_spi_0_CONFIG/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In3]
   connect_bd_net -net axi_quad_spi_1_TRX_ip2intc_irpt [get_bd_pins axi_quad_spi_1_TRX/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In5]
-  connect_bd_net -net axi_timer_0_LCD_pwm0 [get_bd_ports pwm0_lcd_bl] [get_bd_pins axi_timer_0/pwm0]
+  connect_bd_net -net axi_timer_0_LCD_pwm0 [get_bd_ports pwm0_lcd_bl_OBUF] [get_bd_pins axi_timer_0/pwm0]
   connect_bd_net -net axi_timer_0_irpt [get_bd_pins axi_timer_0/interrupt] [get_bd_pins mb_0_axi_intc_concat/In1]
   connect_bd_net -net axi_uart16550_0_FTDI_ip2intc_irpt [get_bd_pins axi_uart16550_0_FTDI/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In2]
   connect_bd_net -net c_accum_0_ROTENC_ADD [get_bd_ports board_rotenc_up] [get_bd_pins c_accum_0_ROTENC/ADD]
   connect_bd_net -net c_accum_0_ROTENC_Q [get_bd_pins axi_gpio_3_ROTENC/gpio_io_i] [get_bd_pins c_accum_0_ROTENC/Q]
   connect_bd_net -net c_counter_binary_0_LVDS_reset_Q [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_ioReset/Q] [get_bd_pins selectio_LVDS_in/io_reset] [get_bd_pins selectio_LVDS_out/io_reset]
-  connect_bd_net -net clk_12mhz_FTDI_clk [get_bd_ports ufb_fpga_ft_12mhz] [get_bd_pins clk_12mhz_FTDI/clk_12mhz]
-  connect_bd_net -net clk_12mhz_FTDI_locked [get_bd_ports ufb_fpga_ft_resetn] [get_bd_pins clk_12mhz_FTDI/locked]
+  connect_bd_net -net clk_12mhz_FTDI_clk [get_bd_ports ufb_fpga_ft_12mhz_OBUF] [get_bd_pins clk_12mhz_FTDI/clk_12mhz]
+  connect_bd_net -net clk_12mhz_FTDI_locked [get_bd_ports ufb_fpga_ft_resetn_OBUF] [get_bd_pins clk_12mhz_FTDI/locked]
   connect_bd_net -net clk_32mhz_LVDS_clk [get_bd_pins CDC_LVDS_in/clk] [get_bd_pins CDC_LVDS_out/qdpo_clk] [get_bd_pins clk_32mhz_LVDS/clk_32_lvds] [get_bd_pins clk_32mhz_LVDS_locked_inv/CLK] [get_bd_pins selectio_LVDS_in/clk_in] [get_bd_pins selectio_LVDS_out/clk_in]
   connect_bd_net -net clk_32mhz_LVDS_clk_div_8 [get_bd_pins clk_32mhz_LVDS/clk_div_8_lvds] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_clkReset/CLK] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_ioReset/CLK] [get_bd_pins selectio_LVDS_in/clk_div_in] [get_bd_pins selectio_LVDS_out/clk_div_in]
   connect_bd_net -net clk_32mhz_LVDS_locked [get_bd_pins clk_32mhz_LVDS/locked] [get_bd_pins clk_32mhz_LVDS_locked_inv/A]
@@ -993,7 +993,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net mb_0_reset_mb_reset [get_bd_pins mb_0/Reset] [get_bd_pins mb_0_axi_intc/processor_rst] [get_bd_pins mb_0_reset/mb_reset]
   connect_bd_net -net mb_0_reset_peripheral_aresetn [get_bd_pins axi_gpio_0_MULTI/s_axi_aresetn] [get_bd_pins axi_gpio_1_ONEWIRE_addr/s_axi_aresetn] [get_bd_pins axi_gpio_2_ONEWIRE_data/s_axi_aresetn] [get_bd_pins axi_gpio_3_ROTENC/s_axi_aresetn] [get_bd_pins axi_gpio_7_LVDS/s_axi_aresetn] [get_bd_pins axi_iic_0_PLL/s_axi_aresetn] [get_bd_pins axi_iic_1_BOARD/s_axi_aresetn] [get_bd_pins axi_quad_spi_0_CONFIG/s_axi_aresetn] [get_bd_pins axi_quad_spi_1_TRX/s_axi_aresetn] [get_bd_pins axi_timer_0/s_axi_aresetn] [get_bd_pins axi_uart16550_0_FTDI/s_axi_aresetn] [get_bd_pins mb_0_axi_intc/s_axi_aresetn] [get_bd_pins mb_0_axi_interconnect/M00_ARESETN] [get_bd_pins mb_0_axi_interconnect/M01_ARESETN] [get_bd_pins mb_0_axi_interconnect/M02_ARESETN] [get_bd_pins mb_0_axi_interconnect/M03_ARESETN] [get_bd_pins mb_0_axi_interconnect/M04_ARESETN] [get_bd_pins mb_0_axi_interconnect/M05_ARESETN] [get_bd_pins mb_0_axi_interconnect/M06_ARESETN] [get_bd_pins mb_0_axi_interconnect/M07_ARESETN] [get_bd_pins mb_0_axi_interconnect/M08_ARESETN] [get_bd_pins mb_0_axi_interconnect/M09_ARESETN] [get_bd_pins mb_0_axi_interconnect/M10_ARESETN] [get_bd_pins mb_0_axi_interconnect/M11_ARESETN] [get_bd_pins mb_0_axi_interconnect/M12_ARESETN] [get_bd_pins mb_0_axi_interconnect/M13_ARESETN] [get_bd_pins mb_0_axi_interconnect/S00_ARESETN] [get_bd_pins mb_0_axi_interconnect/S01_ARESETN] [get_bd_pins mb_0_axi_interconnect/S02_ARESETN] [get_bd_pins mb_0_axi_interconnect/S03_ARESETN] [get_bd_pins mb_0_mdm/M_AXI_ARESETN] [get_bd_pins mb_0_mdm/S_AXI_ARESETN] [get_bd_pins mb_0_reset/peripheral_aresetn] [get_bd_pins mig_7series_0/aresetn]
   connect_bd_net -net mb_0_reset_peripheral_reset [get_bd_pins c_accum_0_ROTENC/SCLR] [get_bd_pins mb_0_reset/peripheral_reset]
-  connect_bd_net -net mig_7series_0_init_calib_complete [get_bd_ports DDR3_init_calib_complete] [get_bd_pins mig_7series_0/init_calib_complete]
+  connect_bd_net -net mig_7series_0_init_calib_complete [get_bd_ports DDR3_init_calib_complete_OBUF] [get_bd_pins mig_7series_0/init_calib_complete]
   connect_bd_net -net mig_7series_0_mmcm_locked [get_bd_pins mb_0_reset/dcm_locked] [get_bd_pins mig_7series_0/mmcm_locked]
   connect_bd_net -net mig_7series_0_sys_rst [get_bd_ports sys_rst] [get_bd_pins mig_7series_0/sys_rst]
   connect_bd_net -net mig_7series_0_ui_addn_clk_0 [get_bd_pins mig_7series_0/clk_ref_i] [get_bd_pins mig_7series_0/ui_addn_clk_0]

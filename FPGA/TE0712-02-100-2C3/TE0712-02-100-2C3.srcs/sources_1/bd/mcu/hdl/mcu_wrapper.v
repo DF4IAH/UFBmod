@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1.1 (win64) Build 2580384 Sat Jun 29 08:12:21 MDT 2019
-//Date        : Fri Aug  9 18:50:43 2019
+//Date        : Sat Aug 10 15:54:28 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu_wrapper.bd
 //Design      : mcu_wrapper
@@ -25,7 +25,7 @@ module mcu_wrapper
     DDR3_SDRAM_ras_n,
     DDR3_SDRAM_reset_n,
     DDR3_SDRAM_we_n,
-    DDR3_init_calib_complete,
+    DDR3_init_calib_complete_OBUF,
     PLL_int,
     TRX_int,
     board_rotenc_pulse,
@@ -42,7 +42,7 @@ module mcu_wrapper
     mb_axi_clk_100mhz,
     pll_clk_n,
     pll_clk_p,
-    pwm0_lcd_bl,
+    pwm0_lcd_bl_OBUF,
     reset,
     spi_rtl_0_CONFIG_io0_io,
     spi_rtl_0_CONFIG_io1_io,
@@ -68,8 +68,8 @@ module mcu_wrapper
     uart_rtl_0_FTDI_rxrdyn,
     uart_rtl_0_FTDI_txd,
     uart_rtl_0_FTDI_txrdyn,
-    ufb_fpga_ft_12mhz,
-    ufb_fpga_ft_resetn,
+    ufb_fpga_ft_12mhz_OBUF,
+    ufb_fpga_ft_resetn_OBUF,
     ufb_trx_rxclk_n,
     ufb_trx_rxclk_p,
     ufb_trx_rxd09_n,
@@ -93,7 +93,7 @@ module mcu_wrapper
   output DDR3_SDRAM_ras_n;
   output DDR3_SDRAM_reset_n;
   output DDR3_SDRAM_we_n;
-  output DDR3_init_calib_complete;
+  output DDR3_init_calib_complete_OBUF;
   input [0:0]PLL_int;
   input [0:0]TRX_int;
   input board_rotenc_pulse;
@@ -110,7 +110,7 @@ module mcu_wrapper
   output mb_axi_clk_100mhz;
   input pll_clk_n;
   input pll_clk_p;
-  output pwm0_lcd_bl;
+  output pwm0_lcd_bl_OBUF;
   input reset;
   inout spi_rtl_0_CONFIG_io0_io;
   inout spi_rtl_0_CONFIG_io1_io;
@@ -136,8 +136,8 @@ module mcu_wrapper
   output uart_rtl_0_FTDI_rxrdyn;
   output uart_rtl_0_FTDI_txd;
   output uart_rtl_0_FTDI_txrdyn;
-  output ufb_fpga_ft_12mhz;
-  output ufb_fpga_ft_resetn;
+  output ufb_fpga_ft_12mhz_OBUF;
+  output ufb_fpga_ft_resetn_OBUF;
   input ufb_trx_rxclk_n;
   input ufb_trx_rxclk_p;
   input [0:0]ufb_trx_rxd09_n;
@@ -162,7 +162,7 @@ module mcu_wrapper
   wire DDR3_SDRAM_ras_n;
   wire DDR3_SDRAM_reset_n;
   wire DDR3_SDRAM_we_n;
-  wire DDR3_init_calib_complete;
+  wire DDR3_init_calib_complete_OBUF;
   wire [0:0]PLL_int;
   wire [0:0]TRX_int;
   wire board_rotenc_pulse;
@@ -191,7 +191,7 @@ module mcu_wrapper
   wire mb_axi_clk_100mhz;
   wire pll_clk_n;
   wire pll_clk_p;
-  wire pwm0_lcd_bl;
+  wire pwm0_lcd_bl_OBUF;
   wire reset;
   wire spi_rtl_0_CONFIG_io0_i;
   wire spi_rtl_0_CONFIG_io0_io;
@@ -244,8 +244,8 @@ module mcu_wrapper
   wire uart_rtl_0_FTDI_rxrdyn;
   wire uart_rtl_0_FTDI_txd;
   wire uart_rtl_0_FTDI_txrdyn;
-  wire ufb_fpga_ft_12mhz;
-  wire ufb_fpga_ft_resetn;
+  wire ufb_fpga_ft_12mhz_OBUF;
+  wire ufb_fpga_ft_resetn_OBUF;
   wire ufb_trx_rxclk_n;
   wire ufb_trx_rxclk_p;
   wire [0:0]ufb_trx_rxd09_n;
@@ -291,7 +291,7 @@ module mcu_wrapper
         .DDR3_SDRAM_ras_n(DDR3_SDRAM_ras_n),
         .DDR3_SDRAM_reset_n(DDR3_SDRAM_reset_n),
         .DDR3_SDRAM_we_n(DDR3_SDRAM_we_n),
-        .DDR3_init_calib_complete(DDR3_init_calib_complete),
+        .DDR3_init_calib_complete_OBUF(DDR3_init_calib_complete_OBUF),
         .PLL_int(PLL_int),
         .TRX_int(TRX_int),
         .board_rotenc_pulse(board_rotenc_pulse),
@@ -316,7 +316,7 @@ module mcu_wrapper
         .mb_axi_clk_100mhz(mb_axi_clk_100mhz),
         .pll_clk_n(pll_clk_n),
         .pll_clk_p(pll_clk_p),
-        .pwm0_lcd_bl(pwm0_lcd_bl),
+        .pwm0_lcd_bl_OBUF(pwm0_lcd_bl_OBUF),
         .reset(reset),
         .spi_rtl_0_CONFIG_io0_i(spi_rtl_0_CONFIG_io0_i),
         .spi_rtl_0_CONFIG_io0_o(spi_rtl_0_CONFIG_io0_o),
@@ -360,8 +360,8 @@ module mcu_wrapper
         .uart_rtl_0_FTDI_rxrdyn(uart_rtl_0_FTDI_rxrdyn),
         .uart_rtl_0_FTDI_txd(uart_rtl_0_FTDI_txd),
         .uart_rtl_0_FTDI_txrdyn(uart_rtl_0_FTDI_txrdyn),
-        .ufb_fpga_ft_12mhz(ufb_fpga_ft_12mhz),
-        .ufb_fpga_ft_resetn(ufb_fpga_ft_resetn),
+        .ufb_fpga_ft_12mhz_OBUF(ufb_fpga_ft_12mhz_OBUF),
+        .ufb_fpga_ft_resetn_OBUF(ufb_fpga_ft_resetn_OBUF),
         .ufb_trx_rxclk_n(ufb_trx_rxclk_n),
         .ufb_trx_rxclk_p(ufb_trx_rxclk_p),
         .ufb_trx_rxd09_n(ufb_trx_rxd09_n),

@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1.1 (win64) Build 2580384 Sat Jun 29 08:12:21 MDT 2019
-//Date        : Fri Aug  9 18:50:42 2019
+//Date        : Sat Aug 10 15:54:28 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -4523,7 +4523,7 @@ module mcu
     DDR3_SDRAM_ras_n,
     DDR3_SDRAM_reset_n,
     DDR3_SDRAM_we_n,
-    DDR3_init_calib_complete,
+    DDR3_init_calib_complete_OBUF,
     PLL_int,
     TRX_int,
     board_rotenc_pulse,
@@ -4548,7 +4548,7 @@ module mcu
     mb_axi_clk_100mhz,
     pll_clk_n,
     pll_clk_p,
-    pwm0_lcd_bl,
+    pwm0_lcd_bl_OBUF,
     reset,
     spi_rtl_0_CONFIG_io0_i,
     spi_rtl_0_CONFIG_io0_o,
@@ -4592,8 +4592,8 @@ module mcu
     uart_rtl_0_FTDI_rxrdyn,
     uart_rtl_0_FTDI_txd,
     uart_rtl_0_FTDI_txrdyn,
-    ufb_fpga_ft_12mhz,
-    ufb_fpga_ft_resetn,
+    ufb_fpga_ft_12mhz_OBUF,
+    ufb_fpga_ft_resetn_OBUF,
     ufb_trx_rxclk_n,
     ufb_trx_rxclk_p,
     ufb_trx_rxd09_n,
@@ -4617,7 +4617,7 @@ module mcu
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM RAS_N" *) output DDR3_SDRAM_ras_n;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM RESET_N" *) output DDR3_SDRAM_reset_n;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM WE_N" *) output DDR3_SDRAM_we_n;
-  output DDR3_init_calib_complete;
+  output DDR3_init_calib_complete_OBUF;
   input [0:0]PLL_int;
   input [0:0]TRX_int;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clockenable:1.0 CE.BOARD_ROTENC_PULSE CE" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CE.BOARD_ROTENC_PULSE, POLARITY ACTIVE_LOW" *) input board_rotenc_pulse;
@@ -4642,7 +4642,7 @@ module mcu
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.MB_AXI_CLK_100MHZ CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.MB_AXI_CLK_100MHZ, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0" *) output mb_axi_clk_100mhz;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PLL_CLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PLL_CLK_N, CLK_DOMAIN mcu_pll_clk_n, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input pll_clk_n;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PLL_CLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PLL_CLK_P, ASSOCIATED_RESET sys_rst, CLK_DOMAIN mcu_pll_clk_p, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input pll_clk_p;
-  output pwm0_lcd_bl;
+  output pwm0_lcd_bl_OBUF;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input reset;
   (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG IO0_I" *) input spi_rtl_0_CONFIG_io0_i;
   (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG IO0_O" *) output spi_rtl_0_CONFIG_io0_o;
@@ -4686,8 +4686,8 @@ module mcu
   (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI RXRDYn" *) output uart_rtl_0_FTDI_rxrdyn;
   (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI TxD" *) output uart_rtl_0_FTDI_txd;
   (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI TXRDYn" *) output uart_rtl_0_FTDI_txrdyn;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_FPGA_FT_12MHZ CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_FPGA_FT_12MHZ, CLK_DOMAIN /clk_12mhz_FTDI_clk_out1, FREQ_HZ 12000000, INSERT_VIP 0, PHASE 0.0" *) output ufb_fpga_ft_12mhz;
-  output ufb_fpga_ft_resetn;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_FPGA_FT_12MHZ_OBUF CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_FPGA_FT_12MHZ_OBUF, CLK_DOMAIN /clk_12mhz_FTDI_clk_out1, FREQ_HZ 12000000, INSERT_VIP 0, PHASE 0.0" *) output ufb_fpga_ft_12mhz_OBUF;
+  output ufb_fpga_ft_resetn_OBUF;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_TRX_RXCLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_TRX_RXCLK_N, CLK_DOMAIN mcu_ufb_trx_rxclk_n, FREQ_HZ 32000000, INSERT_VIP 0, PHASE 0.000" *) input ufb_trx_rxclk_n;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_TRX_RXCLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_TRX_RXCLK_P, CLK_DOMAIN mcu_ufb_trx_rxclk_p, FREQ_HZ 32000000, INSERT_VIP 0, PHASE 0.000" *) input ufb_trx_rxclk_p;
   input [0:0]ufb_trx_rxd09_n;
@@ -5275,7 +5275,7 @@ module mcu
   assign DDR3_SDRAM_ras_n = mig_7series_0_DDR3_RAS_N;
   assign DDR3_SDRAM_reset_n = mig_7series_0_DDR3_RESET_N;
   assign DDR3_SDRAM_we_n = mig_7series_0_DDR3_WE_N;
-  assign DDR3_init_calib_complete = mig_7series_0_init_calib_complete;
+  assign DDR3_init_calib_complete_OBUF = mig_7series_0_init_calib_complete;
   assign PLL_iic2intc_irpt = PLL_int[0];
   assign TRX_iic2intc_irpt = TRX_int[0];
   assign axi_gpio_2_ONEWIRE_data_in_TRI_I = gpio_rtl_2_ONEWIRE_data_in_tri_i[7:0];
@@ -5315,7 +5315,7 @@ module mcu
   assign mig_7series_0_sys_rst = sys_rst;
   assign pll_clk_n_1 = pll_clk_n;
   assign pll_clk_p_1 = pll_clk_p;
-  assign pwm0_lcd_bl = axi_timer_0_LCD_pwm0;
+  assign pwm0_lcd_bl_OBUF = axi_timer_0_LCD_pwm0;
   assign spi_rtl_0_CONFIG_io0_o = axi_quad_spi_0_SPI_0_IO0_O;
   assign spi_rtl_0_CONFIG_io0_t = axi_quad_spi_0_SPI_0_IO0_T;
   assign spi_rtl_0_CONFIG_io1_o = axi_quad_spi_0_SPI_0_IO1_O;
@@ -5343,8 +5343,8 @@ module mcu
   assign uart_rtl_0_FTDI_rxrdyn = axi_uart16550_0_UART_RXRDYn;
   assign uart_rtl_0_FTDI_txd = axi_uart16550_0_UART_TxD;
   assign uart_rtl_0_FTDI_txrdyn = axi_uart16550_0_UART_TXRDYn;
-  assign ufb_fpga_ft_12mhz = clk_12mhz_FTDI_clk;
-  assign ufb_fpga_ft_resetn = clk_12mhz_FTDI_locked;
+  assign ufb_fpga_ft_12mhz_OBUF = clk_12mhz_FTDI_clk;
+  assign ufb_fpga_ft_resetn_OBUF = clk_12mhz_FTDI_locked;
   assign ufb_trx_rxclk_n_1 = ufb_trx_rxclk_n;
   assign ufb_trx_rxclk_p_1 = ufb_trx_rxclk_p;
   assign ufb_trx_rxd09_n_1 = ufb_trx_rxd09_n[0];

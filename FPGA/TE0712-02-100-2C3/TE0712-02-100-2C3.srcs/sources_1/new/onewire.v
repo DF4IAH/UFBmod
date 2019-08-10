@@ -1,4 +1,22 @@
-`timescale 1 ns / 1 ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: DF4IAH Solutions
+// Engineer: Ulrich E. Habel
+// 
+// Create Date: 08.08.2019 20:50:12
+// Design Name: UFBmod
+// Module Name: onewire
+// Project Name: UFBmod V2.x - TE0712-02-100-2C3 mounted on UFBmod PCB
+// Target Devices: 
+// Tool Versions: 
+// Description: UFBmod is a transceiver for digital signals.
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
 
 
 module onewire(
@@ -8,8 +26,8 @@ module onewire(
   onewire_io,
 
   addr_i,
-  data_i,
-  data_o,
+  gpio_rtl_2_ONEWIRE_data_out,
+  gpio_rtl_2_ONEWIRE_data_in,
         
   wr_i,
   stb_i,
@@ -23,8 +41,8 @@ module onewire(
   inout  onewire_io;
   
   input  [15:0]addr_i;
-  input  [ 7:0]data_i;
-  output [ 7:0]data_o;
+  input  [ 7:0]gpio_rtl_2_ONEWIRE_data_out;
+  output [ 7:0]gpio_rtl_2_ONEWIRE_data_in;
   
   input  wr_i;
   input  stb_i;
@@ -126,7 +144,7 @@ always @(posedge clk_i) begin
         rdy_o_r         <= 1'b0;
         
         if (wr_i) begin
-            data_r <= data_i;
+            data_r <= gpio_rtl_2_ONEWIRE_data_out;
         end 
         else begin
             data_r <= 8'h00;
@@ -142,8 +160,8 @@ always @(posedge clk_i) begin
   end
 end
 
-assign data_o = data_r;
-assign rdy_o  = rdy_o_r;
+assign gpio_rtl_2_ONEWIRE_data_in   = data_r;
+assign rdy_o                        = rdy_o_r;
 
 
 
