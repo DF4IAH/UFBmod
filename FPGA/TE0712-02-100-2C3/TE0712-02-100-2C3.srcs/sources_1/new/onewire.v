@@ -175,8 +175,9 @@ always @(posedge clk_i) begin
             sm1_send_r      <= 8'h00;
             sm1_send_stb    <= 1'b0;
 
+            sm1_send_r      <= c_startHeader;
+
             if (stb_i_r) begin
-                sm1_send_r      <= c_startHeader;
                 sm1_send_stb    <= 1'b1;
                 sm1_state       <= 5'h01;
             end
@@ -187,13 +188,13 @@ always @(posedge clk_i) begin
         if (sm2_send_busy) begin
             // Release strobe
             sm1_send_stb    <= 1'b0;
+            sm1_send_r      <= c_deviceAddr;
             sm1_state       <= 5'h02;
         end
     
     // Wait for sync pattern done    
     5'h02:
         if (!sm2_send_busy) begin
-            sm1_send_r      <= c_deviceAddr;
             sm1_send_stb    <= 1'b1;
             sm1_state       <= 5'h03;
         end
@@ -206,10 +207,12 @@ always @(posedge clk_i) begin
             
             if (!wr_i_r) begin
                 // READ access
+                sm1_send_r      <= c_cmdRead;
                 sm1_state <= 5'h04;
             end
             else begin
                 // WRITE access
+                sm1_send_r      <= c_cmdWrite;
                 sm1_state <= 5'h10;
             end
         end
@@ -217,7 +220,6 @@ always @(posedge clk_i) begin
     // READ - Wait for device address done
     5'h04:
         if (!sm2_send_busy) begin
-            sm1_send_r      <= c_cmdRead;
             sm1_send_stb    <= 1'b1;
             sm1_state       <= 5'h05;
         end
@@ -227,13 +229,13 @@ always @(posedge clk_i) begin
         if (sm2_send_busy) begin
             // Release strobe
             sm1_send_stb    <= 1'b0;
+            sm1_send_r      <= addr_r[15:8];
             sm1_state       <= 5'h06;
         end
     
     // READ - Wait for command done
     5'h06:
         if (!sm2_send_busy) begin
-            sm1_send_r      <= addr_r[15:8];
             sm1_send_stb    <= 1'b1;
             sm1_state       <= 5'h07;
         end
@@ -243,13 +245,13 @@ always @(posedge clk_i) begin
         if (sm2_send_busy) begin
             // Release strobe
             sm1_send_stb    <= 1'b0;
+            sm1_send_r      <= addr_r[7:0];
             sm1_state       <= 5'h08;
         end
     
     // READ - Wait for address MSB done
     5'h08:
         if (!sm2_send_busy) begin
-            sm1_send_r      <= addr_r[7:0];
             sm1_send_stb    <= 1'b1;
             sm1_state       <= 5'h09;
         end
@@ -287,9 +289,9 @@ always @(posedge clk_i) begin
     
     // WRITE - Wait for device address done
     5'h10:
-        begin
+        if (!sm2_send_busy) begin
             // Not implemented yet
-            sm1_state <= 5'h10;
+            sm1_state <= 5'h00;
         end
     
     endcase
@@ -427,6 +429,7 @@ always @(posedge clk_i) begin
         // Read data
         4'h8:
             begin
+            // TODO: coding here
                 sm2_receive_busy <= 1'b1;
                 sm2_state <= 4'hF;
             end
