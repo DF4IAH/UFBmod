@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1.1 (win64) Build 2580384 Sat Jun 29 08:12:21 MDT 2019
-//Date        : Sat Aug 10 21:18:08 2019
+//Date        : Sun Aug 11 23:29:19 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu_wrapper.bd
 //Design      : mcu_wrapper
@@ -38,12 +38,27 @@ module mcu_wrapper
     iic_rtl_1_board_scl_io,
     iic_rtl_1_board_sda_io,
     mb_axi_clk_100mhz,
+    mdio_rtl_0_ethernet_mdc,
+    mdio_rtl_0_ethernet_mdio_io,
+    onewire_s_axi_tdata,
+    onewire_s_axi_tdest,
+    onewire_s_axi_tid,
+    onewire_s_axi_tkeep,
+    onewire_s_axi_tlast,
+    onewire_s_axi_tready,
+    onewire_s_axi_tuser,
+    onewire_s_axi_tvalid,
     peripheral_reset,
     pll_clk_n,
     pll_clk_p,
     pll_int,
     pwm0_lcd_bl_obuf,
     reset,
+    rmii_rtl_0_crs_dv,
+    rmii_rtl_0_rx_er,
+    rmii_rtl_0_rxd,
+    rmii_rtl_0_tx_en,
+    rmii_rtl_0_txd,
     spi_rtl_0_config_io0_io,
     spi_rtl_0_config_io1_io,
     spi_rtl_0_config_io2_io,
@@ -107,12 +122,27 @@ module mcu_wrapper
   inout iic_rtl_1_board_scl_io;
   inout iic_rtl_1_board_sda_io;
   output mb_axi_clk_100mhz;
+  output mdio_rtl_0_ethernet_mdc;
+  inout mdio_rtl_0_ethernet_mdio_io;
+  input [31:0]onewire_s_axi_tdata;
+  input [3:0]onewire_s_axi_tdest;
+  input [7:0]onewire_s_axi_tid;
+  input [3:0]onewire_s_axi_tkeep;
+  input onewire_s_axi_tlast;
+  output onewire_s_axi_tready;
+  input [15:0]onewire_s_axi_tuser;
+  input onewire_s_axi_tvalid;
   output [0:0]peripheral_reset;
   input pll_clk_n;
   input pll_clk_p;
   input [0:0]pll_int;
   output pwm0_lcd_bl_obuf;
   input reset;
+  input rmii_rtl_0_crs_dv;
+  input rmii_rtl_0_rx_er;
+  input [1:0]rmii_rtl_0_rxd;
+  output rmii_rtl_0_tx_en;
+  output [1:0]rmii_rtl_0_txd;
   inout spi_rtl_0_config_io0_io;
   inout spi_rtl_0_config_io1_io;
   inout spi_rtl_0_config_io2_io;
@@ -139,7 +169,7 @@ module mcu_wrapper
   output uart_rtl_0_ftdi_txd;
   output uart_rtl_0_ftdi_txrdyn;
   output ufb_fpga_ft_12mhz_obuf;
-  output ufb_fpga_ft_resetn_obuf;
+  output [0:0]ufb_fpga_ft_resetn_obuf;
   input ufb_trx_rxclk_n;
   input ufb_trx_rxclk_p;
   input [0:0]ufb_trx_rxd09_n;
@@ -189,12 +219,30 @@ module mcu_wrapper
   wire iic_rtl_1_board_sda_o;
   wire iic_rtl_1_board_sda_t;
   wire mb_axi_clk_100mhz;
+  wire mdio_rtl_0_ethernet_mdc;
+  wire mdio_rtl_0_ethernet_mdio_i;
+  wire mdio_rtl_0_ethernet_mdio_io;
+  wire mdio_rtl_0_ethernet_mdio_o;
+  wire mdio_rtl_0_ethernet_mdio_t;
+  wire [31:0]onewire_s_axi_tdata;
+  wire [3:0]onewire_s_axi_tdest;
+  wire [7:0]onewire_s_axi_tid;
+  wire [3:0]onewire_s_axi_tkeep;
+  wire onewire_s_axi_tlast;
+  wire onewire_s_axi_tready;
+  wire [15:0]onewire_s_axi_tuser;
+  wire onewire_s_axi_tvalid;
   wire [0:0]peripheral_reset;
   wire pll_clk_n;
   wire pll_clk_p;
   wire [0:0]pll_int;
   wire pwm0_lcd_bl_obuf;
   wire reset;
+  wire rmii_rtl_0_crs_dv;
+  wire rmii_rtl_0_rx_er;
+  wire [1:0]rmii_rtl_0_rxd;
+  wire rmii_rtl_0_tx_en;
+  wire [1:0]rmii_rtl_0_txd;
   wire spi_rtl_0_config_io0_i;
   wire spi_rtl_0_config_io0_io;
   wire spi_rtl_0_config_io0_o;
@@ -248,7 +296,7 @@ module mcu_wrapper
   wire uart_rtl_0_ftdi_txd;
   wire uart_rtl_0_ftdi_txrdyn;
   wire ufb_fpga_ft_12mhz_obuf;
-  wire ufb_fpga_ft_resetn_obuf;
+  wire [0:0]ufb_fpga_ft_resetn_obuf;
   wire ufb_trx_rxclk_n;
   wire ufb_trx_rxclk_p;
   wire [0:0]ufb_trx_rxd09_n;
@@ -315,12 +363,29 @@ module mcu_wrapper
         .iic_rtl_1_board_sda_o(iic_rtl_1_board_sda_o),
         .iic_rtl_1_board_sda_t(iic_rtl_1_board_sda_t),
         .mb_axi_clk_100mhz(mb_axi_clk_100mhz),
+        .mdio_rtl_0_ethernet_mdc(mdio_rtl_0_ethernet_mdc),
+        .mdio_rtl_0_ethernet_mdio_i(mdio_rtl_0_ethernet_mdio_i),
+        .mdio_rtl_0_ethernet_mdio_o(mdio_rtl_0_ethernet_mdio_o),
+        .mdio_rtl_0_ethernet_mdio_t(mdio_rtl_0_ethernet_mdio_t),
+        .onewire_s_axi_tdata(onewire_s_axi_tdata),
+        .onewire_s_axi_tdest(onewire_s_axi_tdest),
+        .onewire_s_axi_tid(onewire_s_axi_tid),
+        .onewire_s_axi_tkeep(onewire_s_axi_tkeep),
+        .onewire_s_axi_tlast(onewire_s_axi_tlast),
+        .onewire_s_axi_tready(onewire_s_axi_tready),
+        .onewire_s_axi_tuser(onewire_s_axi_tuser),
+        .onewire_s_axi_tvalid(onewire_s_axi_tvalid),
         .peripheral_reset(peripheral_reset),
         .pll_clk_n(pll_clk_n),
         .pll_clk_p(pll_clk_p),
         .pll_int(pll_int),
         .pwm0_lcd_bl_obuf(pwm0_lcd_bl_obuf),
         .reset(reset),
+        .rmii_rtl_0_crs_dv(rmii_rtl_0_crs_dv),
+        .rmii_rtl_0_rx_er(rmii_rtl_0_rx_er),
+        .rmii_rtl_0_rxd(rmii_rtl_0_rxd),
+        .rmii_rtl_0_tx_en(rmii_rtl_0_tx_en),
+        .rmii_rtl_0_txd(rmii_rtl_0_txd),
         .spi_rtl_0_config_io0_i(spi_rtl_0_config_io0_i),
         .spi_rtl_0_config_io0_o(spi_rtl_0_config_io0_o),
         .spi_rtl_0_config_io0_t(spi_rtl_0_config_io0_t),
@@ -374,6 +439,11 @@ module mcu_wrapper
         .ufb_trx_txclk_p(ufb_trx_txclk_p),
         .ufb_trx_txd_n(ufb_trx_txd_n),
         .ufb_trx_txd_p(ufb_trx_txd_p));
+  IOBUF mdio_rtl_0_ethernet_mdio_iobuf
+       (.I(mdio_rtl_0_ethernet_mdio_o),
+        .IO(mdio_rtl_0_ethernet_mdio_io),
+        .O(mdio_rtl_0_ethernet_mdio_i),
+        .T(mdio_rtl_0_ethernet_mdio_t));
   IOBUF spi_rtl_0_config_io0_iobuf
        (.I(spi_rtl_0_config_io0_o),
         .IO(spi_rtl_0_config_io0_io),

@@ -325,11 +325,44 @@
   "../../../bd/mcu/ip/mcu_axi_gpio_0_3/sim/mcu_axi_gpio_0_3.vhd" \
   "../../../bd/mcu/ip/mcu_axi_gpio_0_4/sim/mcu_axi_gpio_0_4.vhd" \
 -endlib
+-makelib xcelium_lib/axi_datamover_v5_1_21 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/e644/hdl/axi_datamover_v5_1_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/axi_msg_v1_0_5 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/94bb/hdl/axi_msg_v1_0_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/axi_mcdma_v1_1_0 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/2497/hdl/axi_mcdma_v1_1_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_axi_mcdma_0_0/sim/mcu_axi_mcdma_0_0.vhd" \
+-endlib
+-makelib xcelium_lib/mii_to_rmii_v2_0_21 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/25d7/hdl/mii_to_rmii_v2_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_mii_to_rmii_0_0/sim/mcu_mii_to_rmii_0_0.vhd" \
+-endlib
+-makelib xcelium_lib/lib_bmg_v1_0_12 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/7268/hdl/lib_bmg_v1_0_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/axi_ethernetlite_v3_0_17 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/0e64/hdl/axi_ethernetlite_v3_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_axi_ethernetlite_0_0/sim/mcu_axi_ethernetlite_0_0.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_xbar_1/sim/mcu_xbar_1.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_rst_clk_12mhz_FTDI_12M_0/sim/mcu_rst_clk_12mhz_FTDI_12M_0.vhd" \
+-endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_auto_pc_13/sim/mcu_auto_pc_13.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_14/sim/mcu_auto_pc_14.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
@@ -343,6 +376,7 @@
   "../../../bd/mcu/ip/mcu_auto_pc_10/sim/mcu_auto_pc_10.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_11/sim/mcu_auto_pc_11.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_12/sim/mcu_auto_pc_12.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_13/sim/mcu_auto_pc_13.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   glbl.v

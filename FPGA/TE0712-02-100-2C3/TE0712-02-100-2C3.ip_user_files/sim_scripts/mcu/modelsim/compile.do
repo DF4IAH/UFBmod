@@ -42,6 +42,12 @@ vlib modelsim_lib/msim/axi_iic_v2_0_22
 vlib modelsim_lib/msim/xbip_dsp48_acc_v3_0_6
 vlib modelsim_lib/msim/xbip_accum_v3_0_6
 vlib modelsim_lib/msim/c_accum_v12_0_13
+vlib modelsim_lib/msim/axi_datamover_v5_1_21
+vlib modelsim_lib/msim/axi_msg_v1_0_5
+vlib modelsim_lib/msim/axi_mcdma_v1_1_0
+vlib modelsim_lib/msim/mii_to_rmii_v2_0_21
+vlib modelsim_lib/msim/lib_bmg_v1_0_12
+vlib modelsim_lib/msim/axi_ethernetlite_v3_0_17
 vlib modelsim_lib/msim/axi_protocol_converter_v2_1_19
 
 vmap xil_defaultlib modelsim_lib/msim/xil_defaultlib
@@ -85,6 +91,12 @@ vmap axi_iic_v2_0_22 modelsim_lib/msim/axi_iic_v2_0_22
 vmap xbip_dsp48_acc_v3_0_6 modelsim_lib/msim/xbip_dsp48_acc_v3_0_6
 vmap xbip_accum_v3_0_6 modelsim_lib/msim/xbip_accum_v3_0_6
 vmap c_accum_v12_0_13 modelsim_lib/msim/c_accum_v12_0_13
+vmap axi_datamover_v5_1_21 modelsim_lib/msim/axi_datamover_v5_1_21
+vmap axi_msg_v1_0_5 modelsim_lib/msim/axi_msg_v1_0_5
+vmap axi_mcdma_v1_1_0 modelsim_lib/msim/axi_mcdma_v1_1_0
+vmap mii_to_rmii_v2_0_21 modelsim_lib/msim/mii_to_rmii_v2_0_21
+vmap lib_bmg_v1_0_12 modelsim_lib/msim/lib_bmg_v1_0_12
+vmap axi_ethernetlite_v3_0_17 modelsim_lib/msim/axi_ethernetlite_v3_0_17
 vmap axi_protocol_converter_v2_1_19 modelsim_lib/msim/axi_protocol_converter_v2_1_19
 
 vlog -work xil_defaultlib -64 -incr -sv "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
@@ -414,11 +426,44 @@ vcom -work xil_defaultlib -64 -93 \
 "../../../bd/mcu/ip/mcu_axi_gpio_0_3/sim/mcu_axi_gpio_0_3.vhd" \
 "../../../bd/mcu/ip/mcu_axi_gpio_0_4/sim/mcu_axi_gpio_0_4.vhd" \
 
+vcom -work axi_datamover_v5_1_21 -64 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/e644/hdl/axi_datamover_v5_1_vh_rfs.vhd" \
+
+vcom -work axi_msg_v1_0_5 -64 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/94bb/hdl/axi_msg_v1_0_rfs.vhd" \
+
+vcom -work axi_mcdma_v1_1_0 -64 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/2497/hdl/axi_mcdma_v1_1_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/mcu/ip/mcu_axi_mcdma_0_0/sim/mcu_axi_mcdma_0_0.vhd" \
+
+vcom -work mii_to_rmii_v2_0_21 -64 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/25d7/hdl/mii_to_rmii_v2_0_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/mcu/ip/mcu_mii_to_rmii_0_0/sim/mcu_mii_to_rmii_0_0.vhd" \
+
+vcom -work lib_bmg_v1_0_12 -64 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/7268/hdl/lib_bmg_v1_0_rfs.vhd" \
+
+vcom -work axi_ethernetlite_v3_0_17 -64 -93 \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/0e64/hdl/axi_ethernetlite_v3_0_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/mcu/ip/mcu_axi_ethernetlite_0_0/sim/mcu_axi_ethernetlite_0_0.vhd" \
+
+vlog -work xil_defaultlib -64 -incr "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
+"../../../bd/mcu/ip/mcu_xbar_1/sim/mcu_xbar_1.v" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/mcu/ip/mcu_rst_clk_12mhz_FTDI_12M_0/sim/mcu_rst_clk_12mhz_FTDI_12M_0.vhd" \
+
 vlog -work axi_protocol_converter_v2_1_19 -64 -incr "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
 "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 
 vlog -work xil_defaultlib -64 -incr "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
-"../../../bd/mcu/ip/mcu_auto_pc_13/sim/mcu_auto_pc_13.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_14/sim/mcu_auto_pc_14.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
@@ -432,6 +477,7 @@ vlog -work xil_defaultlib -64 -incr "+incdir+../../../../TE0712-02-100-2C3.srcs/
 "../../../bd/mcu/ip/mcu_auto_pc_10/sim/mcu_auto_pc_10.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_11/sim/mcu_auto_pc_11.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_12/sim/mcu_auto_pc_12.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_13/sim/mcu_auto_pc_13.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

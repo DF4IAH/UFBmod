@@ -23,5 +23,9 @@ vhdl xil_defaultlib  \
 "../../../bd/mcu/ip/mcu_axi_gpio_0_2/sim/mcu_axi_gpio_0_2.vhd" \
 "../../../bd/mcu/ip/mcu_axi_gpio_0_3/sim/mcu_axi_gpio_0_3.vhd" \
 "../../../bd/mcu/ip/mcu_axi_gpio_0_4/sim/mcu_axi_gpio_0_4.vhd" \
+"../../../bd/mcu/ip/mcu_axi_mcdma_0_0/sim/mcu_axi_mcdma_0_0.vhd" \
+"../../../bd/mcu/ip/mcu_mii_to_rmii_0_0/sim/mcu_mii_to_rmii_0_0.vhd" \
+"../../../bd/mcu/ip/mcu_axi_ethernetlite_0_0/sim/mcu_axi_ethernetlite_0_0.vhd" \
+"../../../bd/mcu/ip/mcu_rst_clk_12mhz_FTDI_12M_0/sim/mcu_rst_clk_12mhz_FTDI_12M_0.vhd" \
 
 nosort

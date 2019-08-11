@@ -217,7 +217,7 @@ module example_top #
    //***************************************************************************
    // AXI4 Shim parameters
    //***************************************************************************
-   parameter C_S_AXI_ID_WIDTH              = 2,
+   parameter C_S_AXI_ID_WIDTH              = 3,
                                              // Width of all master and slave ID signals.
                                              // # = >= 1.
    parameter C_S_AXI_ADDR_WIDTH            = 30,

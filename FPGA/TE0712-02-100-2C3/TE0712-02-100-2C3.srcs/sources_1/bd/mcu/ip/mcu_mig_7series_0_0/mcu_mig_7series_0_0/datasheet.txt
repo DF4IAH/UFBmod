@@ -72,7 +72,7 @@ AXI Parameters :
 
    Narrow Burst Support          : 0
 
-   ID Width                      : 2
+   ID Width                      : 3
 
 
 
