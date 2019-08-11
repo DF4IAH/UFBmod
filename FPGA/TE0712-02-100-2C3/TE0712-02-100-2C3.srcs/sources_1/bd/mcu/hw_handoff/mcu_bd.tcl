@@ -430,35 +430,34 @@ proc create_root_design { parentCell } {
 
 
   # Create interface ports
-  set DDR3_SDRAM [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:ddrx_rtl:1.0 DDR3_SDRAM ]
+  set ddr3_sdram [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:ddrx_rtl:1.0 ddr3_sdram ]
 
-  set gpio_rtl_0_MULTI [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 gpio_rtl_0_MULTI ]
+  set gpio_rtl_0_multi [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 gpio_rtl_0_multi ]
 
-  set gpio_rtl_1_ONEWIRE_addr_out [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 gpio_rtl_1_ONEWIRE_addr_out ]
+  set gpio_rtl_1_onewire_addr_out [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 gpio_rtl_1_onewire_addr_out ]
 
-  set gpio_rtl_2_ONEWIRE_data_in [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 gpio_rtl_2_ONEWIRE_data_in ]
+  set gpio_rtl_2_onewire_data_in [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 gpio_rtl_2_onewire_data_in ]
 
-  set gpio_rtl_2_ONEWIRE_data_out [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 gpio_rtl_2_ONEWIRE_data_out ]
+  set gpio_rtl_2_onewire_data_out [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 gpio_rtl_2_onewire_data_out ]
 
-  set iic_rtl_0_PLL [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:iic_rtl:1.0 iic_rtl_0_PLL ]
+  set iic_rtl_0_pll [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:iic_rtl:1.0 iic_rtl_0_pll ]
 
-  set iic_rtl_1_BOARD [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:iic_rtl:1.0 iic_rtl_1_BOARD ]
+  set iic_rtl_1_board [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:iic_rtl:1.0 iic_rtl_1_board ]
 
-  set spi_rtl_0_CONFIG [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:spi_rtl:1.0 spi_rtl_0_CONFIG ]
+  set spi_rtl_0_config [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:spi_rtl:1.0 spi_rtl_0_config ]
 
-  set spi_rtl_1_TRX [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:spi_rtl:1.0 spi_rtl_1_TRX ]
+  set spi_rtl_1_trx [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:spi_rtl:1.0 spi_rtl_1_trx ]
 
-  set uart_rtl_0_FTDI [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:uart_rtl:1.0 uart_rtl_0_FTDI ]
+  set uart_rtl_0_ftdi [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:uart_rtl:1.0 uart_rtl_0_ftdi ]
 
 
   # Create ports
-  set DDR3_init_calib_complete_OBUF [ create_bd_port -dir O DDR3_init_calib_complete_OBUF ]
-  set PLL_int [ create_bd_port -dir I -from 0 -to 0 PLL_int ]
-  set TRX_int [ create_bd_port -dir I -from 0 -to 0 TRX_int ]
   set board_rotenc_pulse [ create_bd_port -dir I -type ce board_rotenc_pulse ]
   set board_rotenc_push [ create_bd_port -dir I -from 0 -to 0 board_rotenc_push ]
   set board_rotenc_up [ create_bd_port -dir I -type data board_rotenc_up ]
+  set ddr3_init_calib_complete_obuf [ create_bd_port -dir O ddr3_init_calib_complete_obuf ]
   set mb_axi_clk_100mhz [ create_bd_port -dir O -type clk mb_axi_clk_100mhz ]
+  set peripheral_reset [ create_bd_port -dir O -from 0 -to 0 -type rst peripheral_reset ]
   set pll_clk_n [ create_bd_port -dir I -type clk pll_clk_n ]
   set_property -dict [ list \
    CONFIG.FREQ_HZ {50000000} \
@@ -468,7 +467,8 @@ proc create_root_design { parentCell } {
    CONFIG.ASSOCIATED_RESET {sys_rst} \
    CONFIG.FREQ_HZ {50000000} \
  ] $pll_clk_p
-  set pwm0_lcd_bl_OBUF [ create_bd_port -dir O pwm0_lcd_bl_OBUF ]
+  set pll_int [ create_bd_port -dir I -from 0 -to 0 pll_int ]
+  set pwm0_lcd_bl_obuf [ create_bd_port -dir O pwm0_lcd_bl_obuf ]
   set reset [ create_bd_port -dir I -type rst reset ]
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_HIGH} \
@@ -477,11 +477,12 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_HIGH} \
  ] $sys_rst
-  set ufb_fpga_ft_12mhz_OBUF [ create_bd_port -dir O -type clk ufb_fpga_ft_12mhz_OBUF ]
+  set trx_int [ create_bd_port -dir I -from 0 -to 0 trx_int ]
+  set ufb_fpga_ft_12mhz_obuf [ create_bd_port -dir O -type clk ufb_fpga_ft_12mhz_obuf ]
   set_property -dict [ list \
    CONFIG.FREQ_HZ {12000000} \
- ] $ufb_fpga_ft_12mhz_OBUF
-  set ufb_fpga_ft_resetn_OBUF [ create_bd_port -dir O ufb_fpga_ft_resetn_OBUF ]
+ ] $ufb_fpga_ft_12mhz_obuf
+  set ufb_fpga_ft_resetn_obuf [ create_bd_port -dir O ufb_fpga_ft_resetn_obuf ]
   set ufb_trx_rxclk_n [ create_bd_port -dir I -type clk ufb_trx_rxclk_n ]
   set_property -dict [ list \
    CONFIG.FREQ_HZ {32000000} \
@@ -922,15 +923,15 @@ proc create_root_design { parentCell } {
  ] $xlconstant_ROTENC_31bit_val0
 
   # Create interface connections
-  connect_bd_intf_net -intf_net axi_gpio_0_GPIO [get_bd_intf_ports gpio_rtl_0_MULTI] [get_bd_intf_pins axi_gpio_0_MULTI/GPIO]
-  connect_bd_intf_net -intf_net axi_gpio_1_ONEWIRE_addr_out [get_bd_intf_ports gpio_rtl_1_ONEWIRE_addr_out] [get_bd_intf_pins axi_gpio_1_ONEWIRE_addr/GPIO]
-  connect_bd_intf_net -intf_net axi_gpio_2_ONEWIRE_data_in [get_bd_intf_ports gpio_rtl_2_ONEWIRE_data_in] [get_bd_intf_pins axi_gpio_2_ONEWIRE_data/GPIO]
-  connect_bd_intf_net -intf_net axi_gpio_2_ONEWIRE_data_out [get_bd_intf_ports gpio_rtl_2_ONEWIRE_data_out] [get_bd_intf_pins axi_gpio_2_ONEWIRE_data/GPIO2]
-  connect_bd_intf_net -intf_net axi_iic_0_IIC [get_bd_intf_ports iic_rtl_0_PLL] [get_bd_intf_pins axi_iic_0_PLL/IIC]
-  connect_bd_intf_net -intf_net axi_iic_0_IIC1 [get_bd_intf_ports iic_rtl_1_BOARD] [get_bd_intf_pins axi_iic_1_BOARD/IIC]
-  connect_bd_intf_net -intf_net axi_quad_spi_0_SPI_0 [get_bd_intf_ports spi_rtl_0_CONFIG] [get_bd_intf_pins axi_quad_spi_0_CONFIG/SPI_0]
-  connect_bd_intf_net -intf_net axi_quad_spi_1_SPI_0 [get_bd_intf_ports spi_rtl_1_TRX] [get_bd_intf_pins axi_quad_spi_1_TRX/SPI_0]
-  connect_bd_intf_net -intf_net axi_uart16550_0_UART [get_bd_intf_ports uart_rtl_0_FTDI] [get_bd_intf_pins axi_uart16550_0_FTDI/UART]
+  connect_bd_intf_net -intf_net axi_gpio_0_gpio [get_bd_intf_ports gpio_rtl_0_multi] [get_bd_intf_pins axi_gpio_0_MULTI/GPIO]
+  connect_bd_intf_net -intf_net axi_gpio_1_onewire_addr_out [get_bd_intf_ports gpio_rtl_1_onewire_addr_out] [get_bd_intf_pins axi_gpio_1_ONEWIRE_addr/GPIO]
+  connect_bd_intf_net -intf_net axi_gpio_2_onewire_data_in [get_bd_intf_ports gpio_rtl_2_onewire_data_in] [get_bd_intf_pins axi_gpio_2_ONEWIRE_data/GPIO]
+  connect_bd_intf_net -intf_net axi_gpio_2_onewire_data_out [get_bd_intf_ports gpio_rtl_2_onewire_data_out] [get_bd_intf_pins axi_gpio_2_ONEWIRE_data/GPIO2]
+  connect_bd_intf_net -intf_net axi_iic_0_iic [get_bd_intf_ports iic_rtl_0_pll] [get_bd_intf_pins axi_iic_0_PLL/IIC]
+  connect_bd_intf_net -intf_net axi_iic_0_iic1 [get_bd_intf_ports iic_rtl_1_board] [get_bd_intf_pins axi_iic_1_BOARD/IIC]
+  connect_bd_intf_net -intf_net axi_quad_spi_0_spi [get_bd_intf_ports spi_rtl_0_config] [get_bd_intf_pins axi_quad_spi_0_CONFIG/SPI_0]
+  connect_bd_intf_net -intf_net axi_quad_spi_1_spi [get_bd_intf_ports spi_rtl_1_trx] [get_bd_intf_pins axi_quad_spi_1_TRX/SPI_0]
+  connect_bd_intf_net -intf_net axi_uart16550_0_uart [get_bd_intf_ports uart_rtl_0_ftdi] [get_bd_intf_pins axi_uart16550_0_FTDI/UART]
   connect_bd_intf_net -intf_net mb_0_DLMB [get_bd_intf_pins mb_0/DLMB] [get_bd_intf_pins mb_0_local_memory/DLMB]
   connect_bd_intf_net -intf_net mb_0_ILMB [get_bd_intf_pins mb_0/ILMB] [get_bd_intf_pins mb_0_local_memory/ILMB]
   connect_bd_intf_net -intf_net mb_0_INTERRUPT [get_bd_intf_pins mb_0/INTERRUPT] [get_bd_intf_pins mb_0_axi_intc/interrupt]
@@ -954,64 +955,64 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net mb_0_mdm_LMB_0 [get_bd_intf_pins mb_0_local_memory/LMB_M] [get_bd_intf_pins mb_0_mdm/LMB_0]
   connect_bd_intf_net -intf_net mb_0_mdm_MDEBUG_0 [get_bd_intf_pins mb_0/DEBUG] [get_bd_intf_pins mb_0_mdm/MBDEBUG_0]
   connect_bd_intf_net -intf_net mb_0_mdm_M_AXI [get_bd_intf_pins mb_0_axi_interconnect/S01_AXI] [get_bd_intf_pins mb_0_mdm/M_AXI]
-  connect_bd_intf_net -intf_net mig_7series_0_DDR3 [get_bd_intf_ports DDR3_SDRAM] [get_bd_intf_pins mig_7series_0/DDR3]
+  connect_bd_intf_net -intf_net mig_7series_0_ddr3 [get_bd_intf_ports ddr3_sdram] [get_bd_intf_pins mig_7series_0/DDR3]
 
   # Create port connections
-  connect_bd_net -net CDC_LVDS_in_data [get_bd_pins CDC_LVDS_in/d] [get_bd_pins selectio_LVDS_in/data_in_to_device]
-  connect_bd_net -net CDC_LVDS_in_qdpo [get_bd_pins CDC_LVDS_in/qdpo] [get_bd_pins axi_gpio_7_LVDS/gpio2_io_i]
-  connect_bd_net -net CDC_LVDS_out_data [get_bd_pins CDC_LVDS_out/d] [get_bd_pins axi_gpio_7_LVDS/gpio_io_o]
-  connect_bd_net -net CDC_LVDS_out_qdpo [get_bd_pins CDC_LVDS_out/qdpo] [get_bd_pins selectio_LVDS_out/data_out_from_device]
-  connect_bd_net -net PLL_iic2intc_irpt [get_bd_ports PLL_int] [get_bd_pins mb_0_axi_intc_concat/In8]
-  connect_bd_net -net TRX_iic2intc_irpt [get_bd_ports TRX_int] [get_bd_pins mb_0_axi_intc_concat/In6]
-  connect_bd_net -net axi_gpio_2_ONEWIRE_ip2intc_irpt [get_bd_pins axi_gpio_2_ONEWIRE_data/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In10]
-  connect_bd_net -net axi_gpio_3_ROTENC_ip2intc_irpt [get_bd_pins axi_gpio_3_ROTENC/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In9]
-  connect_bd_net -net axi_gpio_3_ROTENC_push [get_bd_ports board_rotenc_push] [get_bd_pins axi_gpio_3_ROTENC/gpio2_io_i]
-  connect_bd_net -net axi_iic_0_PLL_iic2intc_irpt [get_bd_pins axi_iic_0_PLL/iic2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In4]
-  connect_bd_net -net axi_iic_1_BOARD_iic2intc_irpt [get_bd_pins axi_iic_1_BOARD/iic2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In7]
-  connect_bd_net -net axi_quad_spi_0_CONFIG_ip2intc_irpt [get_bd_pins axi_quad_spi_0_CONFIG/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In3]
-  connect_bd_net -net axi_quad_spi_1_TRX_ip2intc_irpt [get_bd_pins axi_quad_spi_1_TRX/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In5]
-  connect_bd_net -net axi_timer_0_LCD_pwm0 [get_bd_ports pwm0_lcd_bl_OBUF] [get_bd_pins axi_timer_0/pwm0]
+  connect_bd_net -net axi_gpio_2_onewire_ip2intc_irpt [get_bd_pins axi_gpio_2_ONEWIRE_data/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In10]
+  connect_bd_net -net axi_gpio_3_rotenc_ip2intc_irpt [get_bd_pins axi_gpio_3_ROTENC/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In9]
+  connect_bd_net -net axi_gpio_3_rotenc_push [get_bd_ports board_rotenc_push] [get_bd_pins axi_gpio_3_ROTENC/gpio2_io_i]
+  connect_bd_net -net axi_iic_0_pll_iic2intc_irpt [get_bd_pins axi_iic_0_PLL/iic2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In4]
+  connect_bd_net -net axi_iic_1_board_iic2intc_irpt [get_bd_pins axi_iic_1_BOARD/iic2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In7]
+  connect_bd_net -net axi_quad_spi_0_config_ip2intc_irpt [get_bd_pins axi_quad_spi_0_CONFIG/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In3]
+  connect_bd_net -net axi_quad_spi_1_trx_ip2intc_irpt [get_bd_pins axi_quad_spi_1_TRX/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In5]
   connect_bd_net -net axi_timer_0_irpt [get_bd_pins axi_timer_0/interrupt] [get_bd_pins mb_0_axi_intc_concat/In1]
-  connect_bd_net -net axi_uart16550_0_FTDI_ip2intc_irpt [get_bd_pins axi_uart16550_0_FTDI/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In2]
-  connect_bd_net -net c_accum_0_ROTENC_ADD [get_bd_ports board_rotenc_up] [get_bd_pins c_accum_0_ROTENC/ADD]
-  connect_bd_net -net c_accum_0_ROTENC_Q [get_bd_pins axi_gpio_3_ROTENC/gpio_io_i] [get_bd_pins c_accum_0_ROTENC/Q]
-  connect_bd_net -net c_counter_binary_0_LVDS_reset_Q [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_ioReset/Q] [get_bd_pins selectio_LVDS_in/io_reset] [get_bd_pins selectio_LVDS_out/io_reset]
-  connect_bd_net -net clk_12mhz_FTDI_clk [get_bd_ports ufb_fpga_ft_12mhz_OBUF] [get_bd_pins clk_12mhz_FTDI/clk_12mhz]
-  connect_bd_net -net clk_12mhz_FTDI_locked [get_bd_ports ufb_fpga_ft_resetn_OBUF] [get_bd_pins clk_12mhz_FTDI/locked]
-  connect_bd_net -net clk_32mhz_LVDS_clk [get_bd_pins CDC_LVDS_in/clk] [get_bd_pins CDC_LVDS_out/qdpo_clk] [get_bd_pins clk_32mhz_LVDS/clk_32_lvds] [get_bd_pins clk_32mhz_LVDS_locked_inv/CLK] [get_bd_pins selectio_LVDS_in/clk_in] [get_bd_pins selectio_LVDS_out/clk_in]
-  connect_bd_net -net clk_32mhz_LVDS_clk_div_8 [get_bd_pins clk_32mhz_LVDS/clk_div_8_lvds] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_clkReset/CLK] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_ioReset/CLK] [get_bd_pins selectio_LVDS_in/clk_div_in] [get_bd_pins selectio_LVDS_out/clk_div_in]
-  connect_bd_net -net clk_32mhz_LVDS_locked [get_bd_pins clk_32mhz_LVDS/locked] [get_bd_pins clk_32mhz_LVDS_locked_inv/A]
-  connect_bd_net -net clk_32mhz_LVDS_locked_inv [get_bd_pins clk_32mhz_LVDS_locked_inv/S] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_clkReset/D] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_clkReset/SSET] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_ioReset/D] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_ioReset/SSET]
-  connect_bd_net -net clk_32mhz_LVDS_locked_inv_sr_Q [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_clkReset/Q] [get_bd_pins selectio_LVDS_out/clk_reset]
+  connect_bd_net -net axi_timer_0_lcd_pwm0 [get_bd_ports pwm0_lcd_bl_obuf] [get_bd_pins axi_timer_0/pwm0]
+  connect_bd_net -net axi_uart16550_0_ftdi_ip2intc_irpt [get_bd_pins axi_uart16550_0_FTDI/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In2]
+  connect_bd_net -net c_accum_0_rotenc_add [get_bd_ports board_rotenc_up] [get_bd_pins c_accum_0_ROTENC/ADD]
+  connect_bd_net -net c_accum_0_rotenc_q [get_bd_pins axi_gpio_3_ROTENC/gpio_io_i] [get_bd_pins c_accum_0_ROTENC/Q]
+  connect_bd_net -net c_counter_binary_0_lvds_reset_q [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_ioReset/Q] [get_bd_pins selectio_LVDS_in/io_reset] [get_bd_pins selectio_LVDS_out/io_reset]
+  connect_bd_net -net cdc_lvds_in_data [get_bd_pins CDC_LVDS_in/d] [get_bd_pins selectio_LVDS_in/data_in_to_device]
+  connect_bd_net -net cdc_lvds_in_qdpo [get_bd_pins CDC_LVDS_in/qdpo] [get_bd_pins axi_gpio_7_LVDS/gpio2_io_i]
+  connect_bd_net -net cdc_lvds_out_data [get_bd_pins CDC_LVDS_out/d] [get_bd_pins axi_gpio_7_LVDS/gpio_io_o]
+  connect_bd_net -net cdc_lvds_out_qdpo [get_bd_pins CDC_LVDS_out/qdpo] [get_bd_pins selectio_LVDS_out/data_out_from_device]
+  connect_bd_net -net clk_12mhz_ftdi_clk [get_bd_ports ufb_fpga_ft_12mhz_obuf] [get_bd_pins clk_12mhz_FTDI/clk_12mhz]
+  connect_bd_net -net clk_12mhz_ftdi_locked [get_bd_ports ufb_fpga_ft_resetn_obuf] [get_bd_pins clk_12mhz_FTDI/locked]
+  connect_bd_net -net clk_32mhz_lvds_clk [get_bd_pins CDC_LVDS_in/clk] [get_bd_pins CDC_LVDS_out/qdpo_clk] [get_bd_pins clk_32mhz_LVDS/clk_32_lvds] [get_bd_pins clk_32mhz_LVDS_locked_inv/CLK] [get_bd_pins selectio_LVDS_in/clk_in] [get_bd_pins selectio_LVDS_out/clk_in]
+  connect_bd_net -net clk_32mhz_lvds_clk_div_8 [get_bd_pins clk_32mhz_LVDS/clk_div_8_lvds] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_clkReset/CLK] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_ioReset/CLK] [get_bd_pins selectio_LVDS_in/clk_div_in] [get_bd_pins selectio_LVDS_out/clk_div_in]
+  connect_bd_net -net clk_32mhz_lvds_locked [get_bd_pins clk_32mhz_LVDS/locked] [get_bd_pins clk_32mhz_LVDS_locked_inv/A]
+  connect_bd_net -net clk_32mhz_lvds_locked_inv [get_bd_pins clk_32mhz_LVDS_locked_inv/S] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_clkReset/D] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_clkReset/SSET] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_ioReset/D] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_ioReset/SSET]
+  connect_bd_net -net clk_32mhz_lvds_locked_inv_sr_q [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_clkReset/Q] [get_bd_pins selectio_LVDS_out/clk_reset]
   connect_bd_net -net mb_0_clk [get_bd_ports mb_axi_clk_100mhz] [get_bd_pins CDC_LVDS_in/qdpo_clk] [get_bd_pins CDC_LVDS_out/clk] [get_bd_pins axi_gpio_0_MULTI/s_axi_aclk] [get_bd_pins axi_gpio_1_ONEWIRE_addr/s_axi_aclk] [get_bd_pins axi_gpio_2_ONEWIRE_data/s_axi_aclk] [get_bd_pins axi_gpio_3_ROTENC/s_axi_aclk] [get_bd_pins axi_gpio_7_LVDS/s_axi_aclk] [get_bd_pins axi_iic_0_PLL/s_axi_aclk] [get_bd_pins axi_iic_1_BOARD/s_axi_aclk] [get_bd_pins axi_quad_spi_0_CONFIG/s_axi_aclk] [get_bd_pins axi_quad_spi_1_TRX/s_axi_aclk] [get_bd_pins axi_timer_0/s_axi_aclk] [get_bd_pins axi_uart16550_0_FTDI/s_axi_aclk] [get_bd_pins c_accum_0_ROTENC/CLK] [get_bd_pins clk_12mhz_FTDI/clk_in1] [get_bd_pins mb_0/Clk] [get_bd_pins mb_0_axi_intc/processor_clk] [get_bd_pins mb_0_axi_intc/s_axi_aclk] [get_bd_pins mb_0_axi_interconnect/ACLK] [get_bd_pins mb_0_axi_interconnect/M00_ACLK] [get_bd_pins mb_0_axi_interconnect/M01_ACLK] [get_bd_pins mb_0_axi_interconnect/M02_ACLK] [get_bd_pins mb_0_axi_interconnect/M03_ACLK] [get_bd_pins mb_0_axi_interconnect/M04_ACLK] [get_bd_pins mb_0_axi_interconnect/M05_ACLK] [get_bd_pins mb_0_axi_interconnect/M06_ACLK] [get_bd_pins mb_0_axi_interconnect/M07_ACLK] [get_bd_pins mb_0_axi_interconnect/M08_ACLK] [get_bd_pins mb_0_axi_interconnect/M09_ACLK] [get_bd_pins mb_0_axi_interconnect/M10_ACLK] [get_bd_pins mb_0_axi_interconnect/M11_ACLK] [get_bd_pins mb_0_axi_interconnect/M12_ACLK] [get_bd_pins mb_0_axi_interconnect/M13_ACLK] [get_bd_pins mb_0_axi_interconnect/S00_ACLK] [get_bd_pins mb_0_axi_interconnect/S01_ACLK] [get_bd_pins mb_0_axi_interconnect/S02_ACLK] [get_bd_pins mb_0_axi_interconnect/S03_ACLK] [get_bd_pins mb_0_local_memory/LMB_Clk] [get_bd_pins mb_0_mdm/M_AXI_ACLK] [get_bd_pins mb_0_mdm/S_AXI_ACLK] [get_bd_pins mb_0_reset/slowest_sync_clk] [get_bd_pins mig_7series_0/ui_clk]
   connect_bd_net -net mb_0_intr_in [get_bd_pins mb_0_axi_intc/intr] [get_bd_pins mb_0_axi_intc_concat/dout]
-  connect_bd_net -net mb_0_mdm_Debug_SYS_Rst [get_bd_pins mb_0_mdm/Debug_SYS_Rst] [get_bd_pins mb_0_reset/mb_debug_sys_rst]
   connect_bd_net -net mb_0_mdm_Interrupt [get_bd_pins mb_0_axi_intc_concat/In0] [get_bd_pins mb_0_mdm/Interrupt]
+  connect_bd_net -net mb_0_mdm_debug_sys_rst [get_bd_pins mb_0_mdm/Debug_SYS_Rst] [get_bd_pins mb_0_reset/mb_debug_sys_rst]
   connect_bd_net -net mb_0_reset_aux_reset_in [get_bd_ports reset] [get_bd_pins mb_0_reset/aux_reset_in]
   connect_bd_net -net mb_0_reset_bus_struct_reset [get_bd_pins clk_12mhz_FTDI/reset] [get_bd_pins clk_32mhz_LVDS/reset] [get_bd_pins mb_0_local_memory/SYS_Rst] [get_bd_pins mb_0_reset/bus_struct_reset]
   connect_bd_net -net mb_0_reset_interconnect_aresetn [get_bd_pins mb_0_axi_interconnect/ARESETN] [get_bd_pins mb_0_reset/interconnect_aresetn]
   connect_bd_net -net mb_0_reset_mb_reset [get_bd_pins mb_0/Reset] [get_bd_pins mb_0_axi_intc/processor_rst] [get_bd_pins mb_0_reset/mb_reset]
   connect_bd_net -net mb_0_reset_peripheral_aresetn [get_bd_pins axi_gpio_0_MULTI/s_axi_aresetn] [get_bd_pins axi_gpio_1_ONEWIRE_addr/s_axi_aresetn] [get_bd_pins axi_gpio_2_ONEWIRE_data/s_axi_aresetn] [get_bd_pins axi_gpio_3_ROTENC/s_axi_aresetn] [get_bd_pins axi_gpio_7_LVDS/s_axi_aresetn] [get_bd_pins axi_iic_0_PLL/s_axi_aresetn] [get_bd_pins axi_iic_1_BOARD/s_axi_aresetn] [get_bd_pins axi_quad_spi_0_CONFIG/s_axi_aresetn] [get_bd_pins axi_quad_spi_1_TRX/s_axi_aresetn] [get_bd_pins axi_timer_0/s_axi_aresetn] [get_bd_pins axi_uart16550_0_FTDI/s_axi_aresetn] [get_bd_pins mb_0_axi_intc/s_axi_aresetn] [get_bd_pins mb_0_axi_interconnect/M00_ARESETN] [get_bd_pins mb_0_axi_interconnect/M01_ARESETN] [get_bd_pins mb_0_axi_interconnect/M02_ARESETN] [get_bd_pins mb_0_axi_interconnect/M03_ARESETN] [get_bd_pins mb_0_axi_interconnect/M04_ARESETN] [get_bd_pins mb_0_axi_interconnect/M05_ARESETN] [get_bd_pins mb_0_axi_interconnect/M06_ARESETN] [get_bd_pins mb_0_axi_interconnect/M07_ARESETN] [get_bd_pins mb_0_axi_interconnect/M08_ARESETN] [get_bd_pins mb_0_axi_interconnect/M09_ARESETN] [get_bd_pins mb_0_axi_interconnect/M10_ARESETN] [get_bd_pins mb_0_axi_interconnect/M11_ARESETN] [get_bd_pins mb_0_axi_interconnect/M12_ARESETN] [get_bd_pins mb_0_axi_interconnect/M13_ARESETN] [get_bd_pins mb_0_axi_interconnect/S00_ARESETN] [get_bd_pins mb_0_axi_interconnect/S01_ARESETN] [get_bd_pins mb_0_axi_interconnect/S02_ARESETN] [get_bd_pins mb_0_axi_interconnect/S03_ARESETN] [get_bd_pins mb_0_mdm/M_AXI_ARESETN] [get_bd_pins mb_0_mdm/S_AXI_ARESETN] [get_bd_pins mb_0_reset/peripheral_aresetn] [get_bd_pins mig_7series_0/aresetn]
-  connect_bd_net -net mb_0_reset_peripheral_reset [get_bd_pins c_accum_0_ROTENC/SCLR] [get_bd_pins mb_0_reset/peripheral_reset]
-  connect_bd_net -net mig_7series_0_init_calib_complete [get_bd_ports DDR3_init_calib_complete_OBUF] [get_bd_pins mig_7series_0/init_calib_complete]
+  connect_bd_net -net mb_0_reset_peripheral_reset [get_bd_ports peripheral_reset] [get_bd_pins c_accum_0_ROTENC/SCLR] [get_bd_pins mb_0_reset/peripheral_reset]
+  connect_bd_net -net mig_7series_0_init_calib_complete [get_bd_ports ddr3_init_calib_complete_obuf] [get_bd_pins mig_7series_0/init_calib_complete]
   connect_bd_net -net mig_7series_0_mmcm_locked [get_bd_pins mb_0_reset/dcm_locked] [get_bd_pins mig_7series_0/mmcm_locked]
   connect_bd_net -net mig_7series_0_sys_rst [get_bd_ports sys_rst] [get_bd_pins mig_7series_0/sys_rst]
   connect_bd_net -net mig_7series_0_ui_addn_clk_0 [get_bd_pins mig_7series_0/clk_ref_i] [get_bd_pins mig_7series_0/ui_addn_clk_0]
   connect_bd_net -net mig_7series_0_ui_addn_clk_1 [get_bd_pins axi_quad_spi_0_CONFIG/ext_spi_clk] [get_bd_pins mig_7series_0/ui_addn_clk_1]
   connect_bd_net -net mig_7series_0_ui_addn_clk_3 [get_bd_pins axi_quad_spi_1_TRX/ext_spi_clk] [get_bd_pins mig_7series_0/ui_addn_clk_3]
   connect_bd_net -net mig_7series_0_ui_clk_sync_rst [get_bd_pins mb_0_reset/ext_reset_in] [get_bd_pins mig_7series_0/ui_clk_sync_rst]
-  connect_bd_net -net pll_clk_n_1 [get_bd_ports pll_clk_n] [get_bd_pins mig_7series_0/sys_clk_n]
-  connect_bd_net -net pll_clk_p_1 [get_bd_ports pll_clk_p] [get_bd_pins mig_7series_0/sys_clk_p]
+  connect_bd_net -net pll_clk_n [get_bd_ports pll_clk_n] [get_bd_pins mig_7series_0/sys_clk_n]
+  connect_bd_net -net pll_clk_p [get_bd_ports pll_clk_p] [get_bd_pins mig_7series_0/sys_clk_p]
+  connect_bd_net -net pll_iic2intc_irpt [get_bd_ports pll_int] [get_bd_pins mb_0_axi_intc_concat/In8]
   connect_bd_net -net selectio_wiz_lvds_out_clk_to_pins_n [get_bd_ports ufb_trx_txclk_n] [get_bd_pins selectio_LVDS_out/clk_to_pins_n]
   connect_bd_net -net selectio_wiz_lvds_out_clk_to_pins_p [get_bd_ports ufb_trx_txclk_p] [get_bd_pins selectio_LVDS_out/clk_to_pins_p]
   connect_bd_net -net selectio_wiz_lvds_out_data_out_to_pins_n [get_bd_ports ufb_trx_txd_n] [get_bd_pins selectio_LVDS_out/data_out_to_pins_n]
   connect_bd_net -net selectio_wiz_lvds_out_data_out_to_pins_p [get_bd_ports ufb_trx_txd_p] [get_bd_pins selectio_LVDS_out/data_out_to_pins_p]
-  connect_bd_net -net ufb_trx_rxclk_n_1 [get_bd_ports ufb_trx_rxclk_n] [get_bd_pins clk_32mhz_LVDS/clk_in1_n]
-  connect_bd_net -net ufb_trx_rxclk_p_1 [get_bd_ports ufb_trx_rxclk_p] [get_bd_pins clk_32mhz_LVDS/clk_in1_p]
-  connect_bd_net -net ufb_trx_rxd09_n_1 [get_bd_ports ufb_trx_rxd09_n] [get_bd_pins selectio_LVDS_in/data_in_from_pins_n]
-  connect_bd_net -net ufb_trx_rxd09_p_1 [get_bd_ports ufb_trx_rxd09_p] [get_bd_pins selectio_LVDS_in/data_in_from_pins_p]
+  connect_bd_net -net trx_iic2intc_irpt [get_bd_ports trx_int] [get_bd_pins mb_0_axi_intc_concat/In6]
+  connect_bd_net -net ufb_trx_rxclk_n [get_bd_ports ufb_trx_rxclk_n] [get_bd_pins clk_32mhz_LVDS/clk_in1_n]
+  connect_bd_net -net ufb_trx_rxclk_p [get_bd_ports ufb_trx_rxclk_p] [get_bd_pins clk_32mhz_LVDS/clk_in1_p]
+  connect_bd_net -net ufb_trx_rxd09_n [get_bd_ports ufb_trx_rxd09_n] [get_bd_pins selectio_LVDS_in/data_in_from_pins_n]
+  connect_bd_net -net ufb_trx_rxd09_p [get_bd_ports ufb_trx_rxd09_p] [get_bd_pins selectio_LVDS_in/data_in_from_pins_p]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins c_accum_0_ROTENC/B] [get_bd_pins xlconcat_ROTENC/dout]
-  connect_bd_net -net xlconcat_ROTENC_pulse [get_bd_ports board_rotenc_pulse] [get_bd_pins xlconcat_ROTENC/In0]
+  connect_bd_net -net xlconcat_rotenc_pulse [get_bd_ports board_rotenc_pulse] [get_bd_pins xlconcat_ROTENC/In0]
   connect_bd_net -net xlconstant_31bit_val0_dout [get_bd_pins xlconcat_ROTENC/In1] [get_bd_pins xlconstant_ROTENC_31bit_val0/dout]
   connect_bd_net -net xlconstant_val000_dout [get_bd_pins CDC_LVDS_in/a] [get_bd_pins CDC_LVDS_in/dpra] [get_bd_pins CDC_LVDS_out/a] [get_bd_pins CDC_LVDS_out/dpra] [get_bd_pins xlconstant_LVDS_val0000/dout]
   connect_bd_net -net xlconstant_val0_dout [get_bd_pins selectio_LVDS_in/bitslip] [get_bd_pins xlconstant_LVDS_val0/dout]

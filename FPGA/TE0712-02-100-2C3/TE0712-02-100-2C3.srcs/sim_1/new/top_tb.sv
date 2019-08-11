@@ -95,6 +95,7 @@ module top_tb;
     wire ufb_trx_seln;
     wire ufb_trx_sclk;
     wire ufb_trx_mosi;
+    wire ufb_trx_miso;
 
 
     wire ufb_fpga_rfx_mode;
@@ -249,7 +250,7 @@ module top_tb;
     .ufb_trx_seln(ufb_trx_seln),
     .ufb_trx_sclk(ufb_trx_sclk),
     .ufb_trx_mosi(ufb_trx_mosi),
-    .ufb_trx_miso(1'b0),
+    .ufb_trx_miso(ufb_trx_miso),
     
     .ufb_trx_irq(),
     

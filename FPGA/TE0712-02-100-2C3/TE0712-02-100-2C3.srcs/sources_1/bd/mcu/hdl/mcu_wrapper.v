@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1.1 (win64) Build 2580384 Sat Jun 29 08:12:21 MDT 2019
-//Date        : Sat Aug 10 15:54:28 2019
+//Date        : Sat Aug 10 21:18:08 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu_wrapper.bd
 //Design      : mcu_wrapper
@@ -10,66 +10,67 @@
 `timescale 1 ps / 1 ps
 
 module mcu_wrapper
-   (DDR3_SDRAM_addr,
-    DDR3_SDRAM_ba,
-    DDR3_SDRAM_cas_n,
-    DDR3_SDRAM_ck_n,
-    DDR3_SDRAM_ck_p,
-    DDR3_SDRAM_cke,
-    DDR3_SDRAM_cs_n,
-    DDR3_SDRAM_dm,
-    DDR3_SDRAM_dq,
-    DDR3_SDRAM_dqs_n,
-    DDR3_SDRAM_dqs_p,
-    DDR3_SDRAM_odt,
-    DDR3_SDRAM_ras_n,
-    DDR3_SDRAM_reset_n,
-    DDR3_SDRAM_we_n,
-    DDR3_init_calib_complete_OBUF,
-    PLL_int,
-    TRX_int,
-    board_rotenc_pulse,
+   (board_rotenc_pulse,
     board_rotenc_push,
     board_rotenc_up,
-    gpio_rtl_0_MULTI_tri_o,
-    gpio_rtl_1_ONEWIRE_addr_out_tri_o,
-    gpio_rtl_2_ONEWIRE_data_in_tri_i,
-    gpio_rtl_2_ONEWIRE_data_out_tri_o,
-    iic_rtl_0_PLL_scl_io,
-    iic_rtl_0_PLL_sda_io,
-    iic_rtl_1_BOARD_scl_io,
-    iic_rtl_1_BOARD_sda_io,
+    ddr3_init_calib_complete_obuf,
+    ddr3_sdram_addr,
+    ddr3_sdram_ba,
+    ddr3_sdram_cas_n,
+    ddr3_sdram_ck_n,
+    ddr3_sdram_ck_p,
+    ddr3_sdram_cke,
+    ddr3_sdram_cs_n,
+    ddr3_sdram_dm,
+    ddr3_sdram_dq,
+    ddr3_sdram_dqs_n,
+    ddr3_sdram_dqs_p,
+    ddr3_sdram_odt,
+    ddr3_sdram_ras_n,
+    ddr3_sdram_reset_n,
+    ddr3_sdram_we_n,
+    gpio_rtl_0_multi_tri_o,
+    gpio_rtl_1_onewire_addr_out_tri_o,
+    gpio_rtl_2_onewire_data_in_tri_i,
+    gpio_rtl_2_onewire_data_out_tri_o,
+    iic_rtl_0_pll_scl_io,
+    iic_rtl_0_pll_sda_io,
+    iic_rtl_1_board_scl_io,
+    iic_rtl_1_board_sda_io,
     mb_axi_clk_100mhz,
+    peripheral_reset,
     pll_clk_n,
     pll_clk_p,
-    pwm0_lcd_bl_OBUF,
+    pll_int,
+    pwm0_lcd_bl_obuf,
     reset,
-    spi_rtl_0_CONFIG_io0_io,
-    spi_rtl_0_CONFIG_io1_io,
-    spi_rtl_0_CONFIG_io2_io,
-    spi_rtl_0_CONFIG_io3_io,
-    spi_rtl_0_CONFIG_ss_io,
-    spi_rtl_1_TRX_io0_io,
-    spi_rtl_1_TRX_io1_io,
-    spi_rtl_1_TRX_sck_io,
-    spi_rtl_1_TRX_ss_io,
+    spi_rtl_0_config_io0_io,
+    spi_rtl_0_config_io1_io,
+    spi_rtl_0_config_io2_io,
+    spi_rtl_0_config_io3_io,
+    spi_rtl_0_config_ss_io,
+    spi_rtl_1_trx_io0_io,
+    spi_rtl_1_trx_io1_io,
+    spi_rtl_1_trx_sck_io,
+    spi_rtl_1_trx_ss_io,
     sys_rst,
-    uart_rtl_0_FTDI_baudoutn,
-    uart_rtl_0_FTDI_ctsn,
-    uart_rtl_0_FTDI_dcdn,
-    uart_rtl_0_FTDI_ddis,
-    uart_rtl_0_FTDI_dsrn,
-    uart_rtl_0_FTDI_dtrn,
-    uart_rtl_0_FTDI_out1n,
-    uart_rtl_0_FTDI_out2n,
-    uart_rtl_0_FTDI_ri,
-    uart_rtl_0_FTDI_rtsn,
-    uart_rtl_0_FTDI_rxd,
-    uart_rtl_0_FTDI_rxrdyn,
-    uart_rtl_0_FTDI_txd,
-    uart_rtl_0_FTDI_txrdyn,
-    ufb_fpga_ft_12mhz_OBUF,
-    ufb_fpga_ft_resetn_OBUF,
+    trx_int,
+    uart_rtl_0_ftdi_baudoutn,
+    uart_rtl_0_ftdi_ctsn,
+    uart_rtl_0_ftdi_dcdn,
+    uart_rtl_0_ftdi_ddis,
+    uart_rtl_0_ftdi_dsrn,
+    uart_rtl_0_ftdi_dtrn,
+    uart_rtl_0_ftdi_out1n,
+    uart_rtl_0_ftdi_out2n,
+    uart_rtl_0_ftdi_ri,
+    uart_rtl_0_ftdi_rtsn,
+    uart_rtl_0_ftdi_rxd,
+    uart_rtl_0_ftdi_rxrdyn,
+    uart_rtl_0_ftdi_txd,
+    uart_rtl_0_ftdi_txrdyn,
+    ufb_fpga_ft_12mhz_obuf,
+    ufb_fpga_ft_resetn_obuf,
     ufb_trx_rxclk_n,
     ufb_trx_rxclk_p,
     ufb_trx_rxd09_n,
@@ -78,66 +79,67 @@ module mcu_wrapper
     ufb_trx_txclk_p,
     ufb_trx_txd_n,
     ufb_trx_txd_p);
-  output [14:0]DDR3_SDRAM_addr;
-  output [2:0]DDR3_SDRAM_ba;
-  output DDR3_SDRAM_cas_n;
-  output [0:0]DDR3_SDRAM_ck_n;
-  output [0:0]DDR3_SDRAM_ck_p;
-  output [0:0]DDR3_SDRAM_cke;
-  output [0:0]DDR3_SDRAM_cs_n;
-  output [3:0]DDR3_SDRAM_dm;
-  inout [31:0]DDR3_SDRAM_dq;
-  inout [3:0]DDR3_SDRAM_dqs_n;
-  inout [3:0]DDR3_SDRAM_dqs_p;
-  output [0:0]DDR3_SDRAM_odt;
-  output DDR3_SDRAM_ras_n;
-  output DDR3_SDRAM_reset_n;
-  output DDR3_SDRAM_we_n;
-  output DDR3_init_calib_complete_OBUF;
-  input [0:0]PLL_int;
-  input [0:0]TRX_int;
   input board_rotenc_pulse;
   input [0:0]board_rotenc_push;
   input board_rotenc_up;
-  output [7:0]gpio_rtl_0_MULTI_tri_o;
-  output [14:0]gpio_rtl_1_ONEWIRE_addr_out_tri_o;
-  input [7:0]gpio_rtl_2_ONEWIRE_data_in_tri_i;
-  output [15:0]gpio_rtl_2_ONEWIRE_data_out_tri_o;
-  inout iic_rtl_0_PLL_scl_io;
-  inout iic_rtl_0_PLL_sda_io;
-  inout iic_rtl_1_BOARD_scl_io;
-  inout iic_rtl_1_BOARD_sda_io;
+  output ddr3_init_calib_complete_obuf;
+  output [14:0]ddr3_sdram_addr;
+  output [2:0]ddr3_sdram_ba;
+  output ddr3_sdram_cas_n;
+  output [0:0]ddr3_sdram_ck_n;
+  output [0:0]ddr3_sdram_ck_p;
+  output [0:0]ddr3_sdram_cke;
+  output [0:0]ddr3_sdram_cs_n;
+  output [3:0]ddr3_sdram_dm;
+  inout [31:0]ddr3_sdram_dq;
+  inout [3:0]ddr3_sdram_dqs_n;
+  inout [3:0]ddr3_sdram_dqs_p;
+  output [0:0]ddr3_sdram_odt;
+  output ddr3_sdram_ras_n;
+  output ddr3_sdram_reset_n;
+  output ddr3_sdram_we_n;
+  output [7:0]gpio_rtl_0_multi_tri_o;
+  output [14:0]gpio_rtl_1_onewire_addr_out_tri_o;
+  input [7:0]gpio_rtl_2_onewire_data_in_tri_i;
+  output [15:0]gpio_rtl_2_onewire_data_out_tri_o;
+  inout iic_rtl_0_pll_scl_io;
+  inout iic_rtl_0_pll_sda_io;
+  inout iic_rtl_1_board_scl_io;
+  inout iic_rtl_1_board_sda_io;
   output mb_axi_clk_100mhz;
+  output [0:0]peripheral_reset;
   input pll_clk_n;
   input pll_clk_p;
-  output pwm0_lcd_bl_OBUF;
+  input [0:0]pll_int;
+  output pwm0_lcd_bl_obuf;
   input reset;
-  inout spi_rtl_0_CONFIG_io0_io;
-  inout spi_rtl_0_CONFIG_io1_io;
-  inout spi_rtl_0_CONFIG_io2_io;
-  inout spi_rtl_0_CONFIG_io3_io;
-  inout [0:0]spi_rtl_0_CONFIG_ss_io;
-  inout spi_rtl_1_TRX_io0_io;
-  inout spi_rtl_1_TRX_io1_io;
-  inout spi_rtl_1_TRX_sck_io;
-  inout [0:0]spi_rtl_1_TRX_ss_io;
+  inout spi_rtl_0_config_io0_io;
+  inout spi_rtl_0_config_io1_io;
+  inout spi_rtl_0_config_io2_io;
+  inout spi_rtl_0_config_io3_io;
+  inout [0:0]spi_rtl_0_config_ss_io;
+  inout spi_rtl_1_trx_io0_io;
+  inout spi_rtl_1_trx_io1_io;
+  inout spi_rtl_1_trx_sck_io;
+  inout [0:0]spi_rtl_1_trx_ss_io;
   input sys_rst;
-  output uart_rtl_0_FTDI_baudoutn;
-  input uart_rtl_0_FTDI_ctsn;
-  input uart_rtl_0_FTDI_dcdn;
-  output uart_rtl_0_FTDI_ddis;
-  input uart_rtl_0_FTDI_dsrn;
-  output uart_rtl_0_FTDI_dtrn;
-  output uart_rtl_0_FTDI_out1n;
-  output uart_rtl_0_FTDI_out2n;
-  input uart_rtl_0_FTDI_ri;
-  output uart_rtl_0_FTDI_rtsn;
-  input uart_rtl_0_FTDI_rxd;
-  output uart_rtl_0_FTDI_rxrdyn;
-  output uart_rtl_0_FTDI_txd;
-  output uart_rtl_0_FTDI_txrdyn;
-  output ufb_fpga_ft_12mhz_OBUF;
-  output ufb_fpga_ft_resetn_OBUF;
+  input [0:0]trx_int;
+  output uart_rtl_0_ftdi_baudoutn;
+  input uart_rtl_0_ftdi_ctsn;
+  input uart_rtl_0_ftdi_dcdn;
+  output uart_rtl_0_ftdi_ddis;
+  input uart_rtl_0_ftdi_dsrn;
+  output uart_rtl_0_ftdi_dtrn;
+  output uart_rtl_0_ftdi_out1n;
+  output uart_rtl_0_ftdi_out2n;
+  input uart_rtl_0_ftdi_ri;
+  output uart_rtl_0_ftdi_rtsn;
+  input uart_rtl_0_ftdi_rxd;
+  output uart_rtl_0_ftdi_rxrdyn;
+  output uart_rtl_0_ftdi_txd;
+  output uart_rtl_0_ftdi_txrdyn;
+  output ufb_fpga_ft_12mhz_obuf;
+  output ufb_fpga_ft_resetn_obuf;
   input ufb_trx_rxclk_n;
   input ufb_trx_rxclk_p;
   input [0:0]ufb_trx_rxd09_n;
@@ -147,105 +149,106 @@ module mcu_wrapper
   output [0:0]ufb_trx_txd_n;
   output [0:0]ufb_trx_txd_p;
 
-  wire [14:0]DDR3_SDRAM_addr;
-  wire [2:0]DDR3_SDRAM_ba;
-  wire DDR3_SDRAM_cas_n;
-  wire [0:0]DDR3_SDRAM_ck_n;
-  wire [0:0]DDR3_SDRAM_ck_p;
-  wire [0:0]DDR3_SDRAM_cke;
-  wire [0:0]DDR3_SDRAM_cs_n;
-  wire [3:0]DDR3_SDRAM_dm;
-  wire [31:0]DDR3_SDRAM_dq;
-  wire [3:0]DDR3_SDRAM_dqs_n;
-  wire [3:0]DDR3_SDRAM_dqs_p;
-  wire [0:0]DDR3_SDRAM_odt;
-  wire DDR3_SDRAM_ras_n;
-  wire DDR3_SDRAM_reset_n;
-  wire DDR3_SDRAM_we_n;
-  wire DDR3_init_calib_complete_OBUF;
-  wire [0:0]PLL_int;
-  wire [0:0]TRX_int;
   wire board_rotenc_pulse;
   wire [0:0]board_rotenc_push;
   wire board_rotenc_up;
-  wire [7:0]gpio_rtl_0_MULTI_tri_o;
-  wire [14:0]gpio_rtl_1_ONEWIRE_addr_out_tri_o;
-  wire [7:0]gpio_rtl_2_ONEWIRE_data_in_tri_i;
-  wire [15:0]gpio_rtl_2_ONEWIRE_data_out_tri_o;
-  wire iic_rtl_0_PLL_scl_i;
-  wire iic_rtl_0_PLL_scl_io;
-  wire iic_rtl_0_PLL_scl_o;
-  wire iic_rtl_0_PLL_scl_t;
-  wire iic_rtl_0_PLL_sda_i;
-  wire iic_rtl_0_PLL_sda_io;
-  wire iic_rtl_0_PLL_sda_o;
-  wire iic_rtl_0_PLL_sda_t;
-  wire iic_rtl_1_BOARD_scl_i;
-  wire iic_rtl_1_BOARD_scl_io;
-  wire iic_rtl_1_BOARD_scl_o;
-  wire iic_rtl_1_BOARD_scl_t;
-  wire iic_rtl_1_BOARD_sda_i;
-  wire iic_rtl_1_BOARD_sda_io;
-  wire iic_rtl_1_BOARD_sda_o;
-  wire iic_rtl_1_BOARD_sda_t;
+  wire ddr3_init_calib_complete_obuf;
+  wire [14:0]ddr3_sdram_addr;
+  wire [2:0]ddr3_sdram_ba;
+  wire ddr3_sdram_cas_n;
+  wire [0:0]ddr3_sdram_ck_n;
+  wire [0:0]ddr3_sdram_ck_p;
+  wire [0:0]ddr3_sdram_cke;
+  wire [0:0]ddr3_sdram_cs_n;
+  wire [3:0]ddr3_sdram_dm;
+  wire [31:0]ddr3_sdram_dq;
+  wire [3:0]ddr3_sdram_dqs_n;
+  wire [3:0]ddr3_sdram_dqs_p;
+  wire [0:0]ddr3_sdram_odt;
+  wire ddr3_sdram_ras_n;
+  wire ddr3_sdram_reset_n;
+  wire ddr3_sdram_we_n;
+  wire [7:0]gpio_rtl_0_multi_tri_o;
+  wire [14:0]gpio_rtl_1_onewire_addr_out_tri_o;
+  wire [7:0]gpio_rtl_2_onewire_data_in_tri_i;
+  wire [15:0]gpio_rtl_2_onewire_data_out_tri_o;
+  wire iic_rtl_0_pll_scl_i;
+  wire iic_rtl_0_pll_scl_io;
+  wire iic_rtl_0_pll_scl_o;
+  wire iic_rtl_0_pll_scl_t;
+  wire iic_rtl_0_pll_sda_i;
+  wire iic_rtl_0_pll_sda_io;
+  wire iic_rtl_0_pll_sda_o;
+  wire iic_rtl_0_pll_sda_t;
+  wire iic_rtl_1_board_scl_i;
+  wire iic_rtl_1_board_scl_io;
+  wire iic_rtl_1_board_scl_o;
+  wire iic_rtl_1_board_scl_t;
+  wire iic_rtl_1_board_sda_i;
+  wire iic_rtl_1_board_sda_io;
+  wire iic_rtl_1_board_sda_o;
+  wire iic_rtl_1_board_sda_t;
   wire mb_axi_clk_100mhz;
+  wire [0:0]peripheral_reset;
   wire pll_clk_n;
   wire pll_clk_p;
-  wire pwm0_lcd_bl_OBUF;
+  wire [0:0]pll_int;
+  wire pwm0_lcd_bl_obuf;
   wire reset;
-  wire spi_rtl_0_CONFIG_io0_i;
-  wire spi_rtl_0_CONFIG_io0_io;
-  wire spi_rtl_0_CONFIG_io0_o;
-  wire spi_rtl_0_CONFIG_io0_t;
-  wire spi_rtl_0_CONFIG_io1_i;
-  wire spi_rtl_0_CONFIG_io1_io;
-  wire spi_rtl_0_CONFIG_io1_o;
-  wire spi_rtl_0_CONFIG_io1_t;
-  wire spi_rtl_0_CONFIG_io2_i;
-  wire spi_rtl_0_CONFIG_io2_io;
-  wire spi_rtl_0_CONFIG_io2_o;
-  wire spi_rtl_0_CONFIG_io2_t;
-  wire spi_rtl_0_CONFIG_io3_i;
-  wire spi_rtl_0_CONFIG_io3_io;
-  wire spi_rtl_0_CONFIG_io3_o;
-  wire spi_rtl_0_CONFIG_io3_t;
-  wire [0:0]spi_rtl_0_CONFIG_ss_i_0;
-  wire [0:0]spi_rtl_0_CONFIG_ss_io_0;
-  wire [0:0]spi_rtl_0_CONFIG_ss_o_0;
-  wire spi_rtl_0_CONFIG_ss_t;
-  wire spi_rtl_1_TRX_io0_i;
-  wire spi_rtl_1_TRX_io0_io;
-  wire spi_rtl_1_TRX_io0_o;
-  wire spi_rtl_1_TRX_io0_t;
-  wire spi_rtl_1_TRX_io1_i;
-  wire spi_rtl_1_TRX_io1_io;
-  wire spi_rtl_1_TRX_io1_o;
-  wire spi_rtl_1_TRX_io1_t;
-  wire spi_rtl_1_TRX_sck_i;
-  wire spi_rtl_1_TRX_sck_io;
-  wire spi_rtl_1_TRX_sck_o;
-  wire spi_rtl_1_TRX_sck_t;
-  wire [0:0]spi_rtl_1_TRX_ss_i_0;
-  wire [0:0]spi_rtl_1_TRX_ss_io_0;
-  wire [0:0]spi_rtl_1_TRX_ss_o_0;
-  wire spi_rtl_1_TRX_ss_t;
+  wire spi_rtl_0_config_io0_i;
+  wire spi_rtl_0_config_io0_io;
+  wire spi_rtl_0_config_io0_o;
+  wire spi_rtl_0_config_io0_t;
+  wire spi_rtl_0_config_io1_i;
+  wire spi_rtl_0_config_io1_io;
+  wire spi_rtl_0_config_io1_o;
+  wire spi_rtl_0_config_io1_t;
+  wire spi_rtl_0_config_io2_i;
+  wire spi_rtl_0_config_io2_io;
+  wire spi_rtl_0_config_io2_o;
+  wire spi_rtl_0_config_io2_t;
+  wire spi_rtl_0_config_io3_i;
+  wire spi_rtl_0_config_io3_io;
+  wire spi_rtl_0_config_io3_o;
+  wire spi_rtl_0_config_io3_t;
+  wire [0:0]spi_rtl_0_config_ss_i_0;
+  wire [0:0]spi_rtl_0_config_ss_io_0;
+  wire [0:0]spi_rtl_0_config_ss_o_0;
+  wire spi_rtl_0_config_ss_t;
+  wire spi_rtl_1_trx_io0_i;
+  wire spi_rtl_1_trx_io0_io;
+  wire spi_rtl_1_trx_io0_o;
+  wire spi_rtl_1_trx_io0_t;
+  wire spi_rtl_1_trx_io1_i;
+  wire spi_rtl_1_trx_io1_io;
+  wire spi_rtl_1_trx_io1_o;
+  wire spi_rtl_1_trx_io1_t;
+  wire spi_rtl_1_trx_sck_i;
+  wire spi_rtl_1_trx_sck_io;
+  wire spi_rtl_1_trx_sck_o;
+  wire spi_rtl_1_trx_sck_t;
+  wire [0:0]spi_rtl_1_trx_ss_i_0;
+  wire [0:0]spi_rtl_1_trx_ss_io_0;
+  wire [0:0]spi_rtl_1_trx_ss_o_0;
+  wire spi_rtl_1_trx_ss_t;
   wire sys_rst;
-  wire uart_rtl_0_FTDI_baudoutn;
-  wire uart_rtl_0_FTDI_ctsn;
-  wire uart_rtl_0_FTDI_dcdn;
-  wire uart_rtl_0_FTDI_ddis;
-  wire uart_rtl_0_FTDI_dsrn;
-  wire uart_rtl_0_FTDI_dtrn;
-  wire uart_rtl_0_FTDI_out1n;
-  wire uart_rtl_0_FTDI_out2n;
-  wire uart_rtl_0_FTDI_ri;
-  wire uart_rtl_0_FTDI_rtsn;
-  wire uart_rtl_0_FTDI_rxd;
-  wire uart_rtl_0_FTDI_rxrdyn;
-  wire uart_rtl_0_FTDI_txd;
-  wire uart_rtl_0_FTDI_txrdyn;
-  wire ufb_fpga_ft_12mhz_OBUF;
-  wire ufb_fpga_ft_resetn_OBUF;
+  wire [0:0]trx_int;
+  wire uart_rtl_0_ftdi_baudoutn;
+  wire uart_rtl_0_ftdi_ctsn;
+  wire uart_rtl_0_ftdi_dcdn;
+  wire uart_rtl_0_ftdi_ddis;
+  wire uart_rtl_0_ftdi_dsrn;
+  wire uart_rtl_0_ftdi_dtrn;
+  wire uart_rtl_0_ftdi_out1n;
+  wire uart_rtl_0_ftdi_out2n;
+  wire uart_rtl_0_ftdi_ri;
+  wire uart_rtl_0_ftdi_rtsn;
+  wire uart_rtl_0_ftdi_rxd;
+  wire uart_rtl_0_ftdi_rxrdyn;
+  wire uart_rtl_0_ftdi_txd;
+  wire uart_rtl_0_ftdi_txrdyn;
+  wire ufb_fpga_ft_12mhz_obuf;
+  wire ufb_fpga_ft_resetn_obuf;
   wire ufb_trx_rxclk_n;
   wire ufb_trx_rxclk_p;
   wire [0:0]ufb_trx_rxd09_n;
@@ -255,113 +258,114 @@ module mcu_wrapper
   wire [0:0]ufb_trx_txd_n;
   wire [0:0]ufb_trx_txd_p;
 
-  IOBUF iic_rtl_0_PLL_scl_iobuf
-       (.I(iic_rtl_0_PLL_scl_o),
-        .IO(iic_rtl_0_PLL_scl_io),
-        .O(iic_rtl_0_PLL_scl_i),
-        .T(iic_rtl_0_PLL_scl_t));
-  IOBUF iic_rtl_0_PLL_sda_iobuf
-       (.I(iic_rtl_0_PLL_sda_o),
-        .IO(iic_rtl_0_PLL_sda_io),
-        .O(iic_rtl_0_PLL_sda_i),
-        .T(iic_rtl_0_PLL_sda_t));
-  IOBUF iic_rtl_1_BOARD_scl_iobuf
-       (.I(iic_rtl_1_BOARD_scl_o),
-        .IO(iic_rtl_1_BOARD_scl_io),
-        .O(iic_rtl_1_BOARD_scl_i),
-        .T(iic_rtl_1_BOARD_scl_t));
-  IOBUF iic_rtl_1_BOARD_sda_iobuf
-       (.I(iic_rtl_1_BOARD_sda_o),
-        .IO(iic_rtl_1_BOARD_sda_io),
-        .O(iic_rtl_1_BOARD_sda_i),
-        .T(iic_rtl_1_BOARD_sda_t));
+  IOBUF iic_rtl_0_pll_scl_iobuf
+       (.I(iic_rtl_0_pll_scl_o),
+        .IO(iic_rtl_0_pll_scl_io),
+        .O(iic_rtl_0_pll_scl_i),
+        .T(iic_rtl_0_pll_scl_t));
+  IOBUF iic_rtl_0_pll_sda_iobuf
+       (.I(iic_rtl_0_pll_sda_o),
+        .IO(iic_rtl_0_pll_sda_io),
+        .O(iic_rtl_0_pll_sda_i),
+        .T(iic_rtl_0_pll_sda_t));
+  IOBUF iic_rtl_1_board_scl_iobuf
+       (.I(iic_rtl_1_board_scl_o),
+        .IO(iic_rtl_1_board_scl_io),
+        .O(iic_rtl_1_board_scl_i),
+        .T(iic_rtl_1_board_scl_t));
+  IOBUF iic_rtl_1_board_sda_iobuf
+       (.I(iic_rtl_1_board_sda_o),
+        .IO(iic_rtl_1_board_sda_io),
+        .O(iic_rtl_1_board_sda_i),
+        .T(iic_rtl_1_board_sda_t));
   mcu mcu_i
-       (.DDR3_SDRAM_addr(DDR3_SDRAM_addr),
-        .DDR3_SDRAM_ba(DDR3_SDRAM_ba),
-        .DDR3_SDRAM_cas_n(DDR3_SDRAM_cas_n),
-        .DDR3_SDRAM_ck_n(DDR3_SDRAM_ck_n),
-        .DDR3_SDRAM_ck_p(DDR3_SDRAM_ck_p),
-        .DDR3_SDRAM_cke(DDR3_SDRAM_cke),
-        .DDR3_SDRAM_cs_n(DDR3_SDRAM_cs_n),
-        .DDR3_SDRAM_dm(DDR3_SDRAM_dm),
-        .DDR3_SDRAM_dq(DDR3_SDRAM_dq),
-        .DDR3_SDRAM_dqs_n(DDR3_SDRAM_dqs_n),
-        .DDR3_SDRAM_dqs_p(DDR3_SDRAM_dqs_p),
-        .DDR3_SDRAM_odt(DDR3_SDRAM_odt),
-        .DDR3_SDRAM_ras_n(DDR3_SDRAM_ras_n),
-        .DDR3_SDRAM_reset_n(DDR3_SDRAM_reset_n),
-        .DDR3_SDRAM_we_n(DDR3_SDRAM_we_n),
-        .DDR3_init_calib_complete_OBUF(DDR3_init_calib_complete_OBUF),
-        .PLL_int(PLL_int),
-        .TRX_int(TRX_int),
-        .board_rotenc_pulse(board_rotenc_pulse),
+       (.board_rotenc_pulse(board_rotenc_pulse),
         .board_rotenc_push(board_rotenc_push),
         .board_rotenc_up(board_rotenc_up),
-        .gpio_rtl_0_MULTI_tri_o(gpio_rtl_0_MULTI_tri_o),
-        .gpio_rtl_1_ONEWIRE_addr_out_tri_o(gpio_rtl_1_ONEWIRE_addr_out_tri_o),
-        .gpio_rtl_2_ONEWIRE_data_in_tri_i(gpio_rtl_2_ONEWIRE_data_in_tri_i),
-        .gpio_rtl_2_ONEWIRE_data_out_tri_o(gpio_rtl_2_ONEWIRE_data_out_tri_o),
-        .iic_rtl_0_PLL_scl_i(iic_rtl_0_PLL_scl_i),
-        .iic_rtl_0_PLL_scl_o(iic_rtl_0_PLL_scl_o),
-        .iic_rtl_0_PLL_scl_t(iic_rtl_0_PLL_scl_t),
-        .iic_rtl_0_PLL_sda_i(iic_rtl_0_PLL_sda_i),
-        .iic_rtl_0_PLL_sda_o(iic_rtl_0_PLL_sda_o),
-        .iic_rtl_0_PLL_sda_t(iic_rtl_0_PLL_sda_t),
-        .iic_rtl_1_BOARD_scl_i(iic_rtl_1_BOARD_scl_i),
-        .iic_rtl_1_BOARD_scl_o(iic_rtl_1_BOARD_scl_o),
-        .iic_rtl_1_BOARD_scl_t(iic_rtl_1_BOARD_scl_t),
-        .iic_rtl_1_BOARD_sda_i(iic_rtl_1_BOARD_sda_i),
-        .iic_rtl_1_BOARD_sda_o(iic_rtl_1_BOARD_sda_o),
-        .iic_rtl_1_BOARD_sda_t(iic_rtl_1_BOARD_sda_t),
+        .ddr3_init_calib_complete_obuf(ddr3_init_calib_complete_obuf),
+        .ddr3_sdram_addr(ddr3_sdram_addr),
+        .ddr3_sdram_ba(ddr3_sdram_ba),
+        .ddr3_sdram_cas_n(ddr3_sdram_cas_n),
+        .ddr3_sdram_ck_n(ddr3_sdram_ck_n),
+        .ddr3_sdram_ck_p(ddr3_sdram_ck_p),
+        .ddr3_sdram_cke(ddr3_sdram_cke),
+        .ddr3_sdram_cs_n(ddr3_sdram_cs_n),
+        .ddr3_sdram_dm(ddr3_sdram_dm),
+        .ddr3_sdram_dq(ddr3_sdram_dq),
+        .ddr3_sdram_dqs_n(ddr3_sdram_dqs_n),
+        .ddr3_sdram_dqs_p(ddr3_sdram_dqs_p),
+        .ddr3_sdram_odt(ddr3_sdram_odt),
+        .ddr3_sdram_ras_n(ddr3_sdram_ras_n),
+        .ddr3_sdram_reset_n(ddr3_sdram_reset_n),
+        .ddr3_sdram_we_n(ddr3_sdram_we_n),
+        .gpio_rtl_0_multi_tri_o(gpio_rtl_0_multi_tri_o),
+        .gpio_rtl_1_onewire_addr_out_tri_o(gpio_rtl_1_onewire_addr_out_tri_o),
+        .gpio_rtl_2_onewire_data_in_tri_i(gpio_rtl_2_onewire_data_in_tri_i),
+        .gpio_rtl_2_onewire_data_out_tri_o(gpio_rtl_2_onewire_data_out_tri_o),
+        .iic_rtl_0_pll_scl_i(iic_rtl_0_pll_scl_i),
+        .iic_rtl_0_pll_scl_o(iic_rtl_0_pll_scl_o),
+        .iic_rtl_0_pll_scl_t(iic_rtl_0_pll_scl_t),
+        .iic_rtl_0_pll_sda_i(iic_rtl_0_pll_sda_i),
+        .iic_rtl_0_pll_sda_o(iic_rtl_0_pll_sda_o),
+        .iic_rtl_0_pll_sda_t(iic_rtl_0_pll_sda_t),
+        .iic_rtl_1_board_scl_i(iic_rtl_1_board_scl_i),
+        .iic_rtl_1_board_scl_o(iic_rtl_1_board_scl_o),
+        .iic_rtl_1_board_scl_t(iic_rtl_1_board_scl_t),
+        .iic_rtl_1_board_sda_i(iic_rtl_1_board_sda_i),
+        .iic_rtl_1_board_sda_o(iic_rtl_1_board_sda_o),
+        .iic_rtl_1_board_sda_t(iic_rtl_1_board_sda_t),
         .mb_axi_clk_100mhz(mb_axi_clk_100mhz),
+        .peripheral_reset(peripheral_reset),
         .pll_clk_n(pll_clk_n),
         .pll_clk_p(pll_clk_p),
-        .pwm0_lcd_bl_OBUF(pwm0_lcd_bl_OBUF),
+        .pll_int(pll_int),
+        .pwm0_lcd_bl_obuf(pwm0_lcd_bl_obuf),
         .reset(reset),
-        .spi_rtl_0_CONFIG_io0_i(spi_rtl_0_CONFIG_io0_i),
-        .spi_rtl_0_CONFIG_io0_o(spi_rtl_0_CONFIG_io0_o),
-        .spi_rtl_0_CONFIG_io0_t(spi_rtl_0_CONFIG_io0_t),
-        .spi_rtl_0_CONFIG_io1_i(spi_rtl_0_CONFIG_io1_i),
-        .spi_rtl_0_CONFIG_io1_o(spi_rtl_0_CONFIG_io1_o),
-        .spi_rtl_0_CONFIG_io1_t(spi_rtl_0_CONFIG_io1_t),
-        .spi_rtl_0_CONFIG_io2_i(spi_rtl_0_CONFIG_io2_i),
-        .spi_rtl_0_CONFIG_io2_o(spi_rtl_0_CONFIG_io2_o),
-        .spi_rtl_0_CONFIG_io2_t(spi_rtl_0_CONFIG_io2_t),
-        .spi_rtl_0_CONFIG_io3_i(spi_rtl_0_CONFIG_io3_i),
-        .spi_rtl_0_CONFIG_io3_o(spi_rtl_0_CONFIG_io3_o),
-        .spi_rtl_0_CONFIG_io3_t(spi_rtl_0_CONFIG_io3_t),
-        .spi_rtl_0_CONFIG_ss_i(spi_rtl_0_CONFIG_ss_i_0),
-        .spi_rtl_0_CONFIG_ss_o(spi_rtl_0_CONFIG_ss_o_0),
-        .spi_rtl_0_CONFIG_ss_t(spi_rtl_0_CONFIG_ss_t),
-        .spi_rtl_1_TRX_io0_i(spi_rtl_1_TRX_io0_i),
-        .spi_rtl_1_TRX_io0_o(spi_rtl_1_TRX_io0_o),
-        .spi_rtl_1_TRX_io0_t(spi_rtl_1_TRX_io0_t),
-        .spi_rtl_1_TRX_io1_i(spi_rtl_1_TRX_io1_i),
-        .spi_rtl_1_TRX_io1_o(spi_rtl_1_TRX_io1_o),
-        .spi_rtl_1_TRX_io1_t(spi_rtl_1_TRX_io1_t),
-        .spi_rtl_1_TRX_sck_i(spi_rtl_1_TRX_sck_i),
-        .spi_rtl_1_TRX_sck_o(spi_rtl_1_TRX_sck_o),
-        .spi_rtl_1_TRX_sck_t(spi_rtl_1_TRX_sck_t),
-        .spi_rtl_1_TRX_ss_i(spi_rtl_1_TRX_ss_i_0),
-        .spi_rtl_1_TRX_ss_o(spi_rtl_1_TRX_ss_o_0),
-        .spi_rtl_1_TRX_ss_t(spi_rtl_1_TRX_ss_t),
+        .spi_rtl_0_config_io0_i(spi_rtl_0_config_io0_i),
+        .spi_rtl_0_config_io0_o(spi_rtl_0_config_io0_o),
+        .spi_rtl_0_config_io0_t(spi_rtl_0_config_io0_t),
+        .spi_rtl_0_config_io1_i(spi_rtl_0_config_io1_i),
+        .spi_rtl_0_config_io1_o(spi_rtl_0_config_io1_o),
+        .spi_rtl_0_config_io1_t(spi_rtl_0_config_io1_t),
+        .spi_rtl_0_config_io2_i(spi_rtl_0_config_io2_i),
+        .spi_rtl_0_config_io2_o(spi_rtl_0_config_io2_o),
+        .spi_rtl_0_config_io2_t(spi_rtl_0_config_io2_t),
+        .spi_rtl_0_config_io3_i(spi_rtl_0_config_io3_i),
+        .spi_rtl_0_config_io3_o(spi_rtl_0_config_io3_o),
+        .spi_rtl_0_config_io3_t(spi_rtl_0_config_io3_t),
+        .spi_rtl_0_config_ss_i(spi_rtl_0_config_ss_i_0),
+        .spi_rtl_0_config_ss_o(spi_rtl_0_config_ss_o_0),
+        .spi_rtl_0_config_ss_t(spi_rtl_0_config_ss_t),
+        .spi_rtl_1_trx_io0_i(spi_rtl_1_trx_io0_i),
+        .spi_rtl_1_trx_io0_o(spi_rtl_1_trx_io0_o),
+        .spi_rtl_1_trx_io0_t(spi_rtl_1_trx_io0_t),
+        .spi_rtl_1_trx_io1_i(spi_rtl_1_trx_io1_i),
+        .spi_rtl_1_trx_io1_o(spi_rtl_1_trx_io1_o),
+        .spi_rtl_1_trx_io1_t(spi_rtl_1_trx_io1_t),
+        .spi_rtl_1_trx_sck_i(spi_rtl_1_trx_sck_i),
+        .spi_rtl_1_trx_sck_o(spi_rtl_1_trx_sck_o),
+        .spi_rtl_1_trx_sck_t(spi_rtl_1_trx_sck_t),
+        .spi_rtl_1_trx_ss_i(spi_rtl_1_trx_ss_i_0),
+        .spi_rtl_1_trx_ss_o(spi_rtl_1_trx_ss_o_0),
+        .spi_rtl_1_trx_ss_t(spi_rtl_1_trx_ss_t),
         .sys_rst(sys_rst),
-        .uart_rtl_0_FTDI_baudoutn(uart_rtl_0_FTDI_baudoutn),
-        .uart_rtl_0_FTDI_ctsn(uart_rtl_0_FTDI_ctsn),
-        .uart_rtl_0_FTDI_dcdn(uart_rtl_0_FTDI_dcdn),
-        .uart_rtl_0_FTDI_ddis(uart_rtl_0_FTDI_ddis),
-        .uart_rtl_0_FTDI_dsrn(uart_rtl_0_FTDI_dsrn),
-        .uart_rtl_0_FTDI_dtrn(uart_rtl_0_FTDI_dtrn),
-        .uart_rtl_0_FTDI_out1n(uart_rtl_0_FTDI_out1n),
-        .uart_rtl_0_FTDI_out2n(uart_rtl_0_FTDI_out2n),
-        .uart_rtl_0_FTDI_ri(uart_rtl_0_FTDI_ri),
-        .uart_rtl_0_FTDI_rtsn(uart_rtl_0_FTDI_rtsn),
-        .uart_rtl_0_FTDI_rxd(uart_rtl_0_FTDI_rxd),
-        .uart_rtl_0_FTDI_rxrdyn(uart_rtl_0_FTDI_rxrdyn),
-        .uart_rtl_0_FTDI_txd(uart_rtl_0_FTDI_txd),
-        .uart_rtl_0_FTDI_txrdyn(uart_rtl_0_FTDI_txrdyn),
-        .ufb_fpga_ft_12mhz_OBUF(ufb_fpga_ft_12mhz_OBUF),
-        .ufb_fpga_ft_resetn_OBUF(ufb_fpga_ft_resetn_OBUF),
+        .trx_int(trx_int),
+        .uart_rtl_0_ftdi_baudoutn(uart_rtl_0_ftdi_baudoutn),
+        .uart_rtl_0_ftdi_ctsn(uart_rtl_0_ftdi_ctsn),
+        .uart_rtl_0_ftdi_dcdn(uart_rtl_0_ftdi_dcdn),
+        .uart_rtl_0_ftdi_ddis(uart_rtl_0_ftdi_ddis),
+        .uart_rtl_0_ftdi_dsrn(uart_rtl_0_ftdi_dsrn),
+        .uart_rtl_0_ftdi_dtrn(uart_rtl_0_ftdi_dtrn),
+        .uart_rtl_0_ftdi_out1n(uart_rtl_0_ftdi_out1n),
+        .uart_rtl_0_ftdi_out2n(uart_rtl_0_ftdi_out2n),
+        .uart_rtl_0_ftdi_ri(uart_rtl_0_ftdi_ri),
+        .uart_rtl_0_ftdi_rtsn(uart_rtl_0_ftdi_rtsn),
+        .uart_rtl_0_ftdi_rxd(uart_rtl_0_ftdi_rxd),
+        .uart_rtl_0_ftdi_rxrdyn(uart_rtl_0_ftdi_rxrdyn),
+        .uart_rtl_0_ftdi_txd(uart_rtl_0_ftdi_txd),
+        .uart_rtl_0_ftdi_txrdyn(uart_rtl_0_ftdi_txrdyn),
+        .ufb_fpga_ft_12mhz_obuf(ufb_fpga_ft_12mhz_obuf),
+        .ufb_fpga_ft_resetn_obuf(ufb_fpga_ft_resetn_obuf),
         .ufb_trx_rxclk_n(ufb_trx_rxclk_n),
         .ufb_trx_rxclk_p(ufb_trx_rxclk_p),
         .ufb_trx_rxd09_n(ufb_trx_rxd09_n),
@@ -370,49 +374,49 @@ module mcu_wrapper
         .ufb_trx_txclk_p(ufb_trx_txclk_p),
         .ufb_trx_txd_n(ufb_trx_txd_n),
         .ufb_trx_txd_p(ufb_trx_txd_p));
-  IOBUF spi_rtl_0_CONFIG_io0_iobuf
-       (.I(spi_rtl_0_CONFIG_io0_o),
-        .IO(spi_rtl_0_CONFIG_io0_io),
-        .O(spi_rtl_0_CONFIG_io0_i),
-        .T(spi_rtl_0_CONFIG_io0_t));
-  IOBUF spi_rtl_0_CONFIG_io1_iobuf
-       (.I(spi_rtl_0_CONFIG_io1_o),
-        .IO(spi_rtl_0_CONFIG_io1_io),
-        .O(spi_rtl_0_CONFIG_io1_i),
-        .T(spi_rtl_0_CONFIG_io1_t));
-  IOBUF spi_rtl_0_CONFIG_io2_iobuf
-       (.I(spi_rtl_0_CONFIG_io2_o),
-        .IO(spi_rtl_0_CONFIG_io2_io),
-        .O(spi_rtl_0_CONFIG_io2_i),
-        .T(spi_rtl_0_CONFIG_io2_t));
-  IOBUF spi_rtl_0_CONFIG_io3_iobuf
-       (.I(spi_rtl_0_CONFIG_io3_o),
-        .IO(spi_rtl_0_CONFIG_io3_io),
-        .O(spi_rtl_0_CONFIG_io3_i),
-        .T(spi_rtl_0_CONFIG_io3_t));
-  IOBUF spi_rtl_0_CONFIG_ss_iobuf_0
-       (.I(spi_rtl_0_CONFIG_ss_o_0),
-        .IO(spi_rtl_0_CONFIG_ss_io[0]),
-        .O(spi_rtl_0_CONFIG_ss_i_0),
-        .T(spi_rtl_0_CONFIG_ss_t));
-  IOBUF spi_rtl_1_TRX_io0_iobuf
-       (.I(spi_rtl_1_TRX_io0_o),
-        .IO(spi_rtl_1_TRX_io0_io),
-        .O(spi_rtl_1_TRX_io0_i),
-        .T(spi_rtl_1_TRX_io0_t));
-  IOBUF spi_rtl_1_TRX_io1_iobuf
-       (.I(spi_rtl_1_TRX_io1_o),
-        .IO(spi_rtl_1_TRX_io1_io),
-        .O(spi_rtl_1_TRX_io1_i),
-        .T(spi_rtl_1_TRX_io1_t));
-  IOBUF spi_rtl_1_TRX_sck_iobuf
-       (.I(spi_rtl_1_TRX_sck_o),
-        .IO(spi_rtl_1_TRX_sck_io),
-        .O(spi_rtl_1_TRX_sck_i),
-        .T(spi_rtl_1_TRX_sck_t));
-  IOBUF spi_rtl_1_TRX_ss_iobuf_0
-       (.I(spi_rtl_1_TRX_ss_o_0),
-        .IO(spi_rtl_1_TRX_ss_io[0]),
-        .O(spi_rtl_1_TRX_ss_i_0),
-        .T(spi_rtl_1_TRX_ss_t));
+  IOBUF spi_rtl_0_config_io0_iobuf
+       (.I(spi_rtl_0_config_io0_o),
+        .IO(spi_rtl_0_config_io0_io),
+        .O(spi_rtl_0_config_io0_i),
+        .T(spi_rtl_0_config_io0_t));
+  IOBUF spi_rtl_0_config_io1_iobuf
+       (.I(spi_rtl_0_config_io1_o),
+        .IO(spi_rtl_0_config_io1_io),
+        .O(spi_rtl_0_config_io1_i),
+        .T(spi_rtl_0_config_io1_t));
+  IOBUF spi_rtl_0_config_io2_iobuf
+       (.I(spi_rtl_0_config_io2_o),
+        .IO(spi_rtl_0_config_io2_io),
+        .O(spi_rtl_0_config_io2_i),
+        .T(spi_rtl_0_config_io2_t));
+  IOBUF spi_rtl_0_config_io3_iobuf
+       (.I(spi_rtl_0_config_io3_o),
+        .IO(spi_rtl_0_config_io3_io),
+        .O(spi_rtl_0_config_io3_i),
+        .T(spi_rtl_0_config_io3_t));
+  IOBUF spi_rtl_0_config_ss_iobuf_0
+       (.I(spi_rtl_0_config_ss_o_0),
+        .IO(spi_rtl_0_config_ss_io[0]),
+        .O(spi_rtl_0_config_ss_i_0),
+        .T(spi_rtl_0_config_ss_t));
+  IOBUF spi_rtl_1_trx_io0_iobuf
+       (.I(spi_rtl_1_trx_io0_o),
+        .IO(spi_rtl_1_trx_io0_io),
+        .O(spi_rtl_1_trx_io0_i),
+        .T(spi_rtl_1_trx_io0_t));
+  IOBUF spi_rtl_1_trx_io1_iobuf
+       (.I(spi_rtl_1_trx_io1_o),
+        .IO(spi_rtl_1_trx_io1_io),
+        .O(spi_rtl_1_trx_io1_i),
+        .T(spi_rtl_1_trx_io1_t));
+  IOBUF spi_rtl_1_trx_sck_iobuf
+       (.I(spi_rtl_1_trx_sck_o),
+        .IO(spi_rtl_1_trx_sck_io),
+        .O(spi_rtl_1_trx_sck_i),
+        .T(spi_rtl_1_trx_sck_t));
+  IOBUF spi_rtl_1_trx_ss_iobuf_0
+       (.I(spi_rtl_1_trx_ss_o_0),
+        .IO(spi_rtl_1_trx_ss_io[0]),
+        .O(spi_rtl_1_trx_ss_i_0),
+        .T(spi_rtl_1_trx_ss_t));
 endmodule

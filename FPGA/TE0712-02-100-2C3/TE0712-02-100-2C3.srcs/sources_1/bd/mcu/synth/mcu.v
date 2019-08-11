@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1.1 (win64) Build 2580384 Sat Jun 29 08:12:21 MDT 2019
-//Date        : Sat Aug 10 15:54:27 2019
+//Date        : Sat Aug 10 21:18:06 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -4508,92 +4508,93 @@ endmodule
 
 (* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=73,numReposBlks=53,numNonXlnxBlks=0,numHierBlks=20,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=16,da_board_cnt=8,da_bram_cntlr_cnt=2,da_clkrst_cnt=2,da_mb_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
 module mcu
-   (DDR3_SDRAM_addr,
-    DDR3_SDRAM_ba,
-    DDR3_SDRAM_cas_n,
-    DDR3_SDRAM_ck_n,
-    DDR3_SDRAM_ck_p,
-    DDR3_SDRAM_cke,
-    DDR3_SDRAM_cs_n,
-    DDR3_SDRAM_dm,
-    DDR3_SDRAM_dq,
-    DDR3_SDRAM_dqs_n,
-    DDR3_SDRAM_dqs_p,
-    DDR3_SDRAM_odt,
-    DDR3_SDRAM_ras_n,
-    DDR3_SDRAM_reset_n,
-    DDR3_SDRAM_we_n,
-    DDR3_init_calib_complete_OBUF,
-    PLL_int,
-    TRX_int,
-    board_rotenc_pulse,
+   (board_rotenc_pulse,
     board_rotenc_push,
     board_rotenc_up,
-    gpio_rtl_0_MULTI_tri_o,
-    gpio_rtl_1_ONEWIRE_addr_out_tri_o,
-    gpio_rtl_2_ONEWIRE_data_in_tri_i,
-    gpio_rtl_2_ONEWIRE_data_out_tri_o,
-    iic_rtl_0_PLL_scl_i,
-    iic_rtl_0_PLL_scl_o,
-    iic_rtl_0_PLL_scl_t,
-    iic_rtl_0_PLL_sda_i,
-    iic_rtl_0_PLL_sda_o,
-    iic_rtl_0_PLL_sda_t,
-    iic_rtl_1_BOARD_scl_i,
-    iic_rtl_1_BOARD_scl_o,
-    iic_rtl_1_BOARD_scl_t,
-    iic_rtl_1_BOARD_sda_i,
-    iic_rtl_1_BOARD_sda_o,
-    iic_rtl_1_BOARD_sda_t,
+    ddr3_init_calib_complete_obuf,
+    ddr3_sdram_addr,
+    ddr3_sdram_ba,
+    ddr3_sdram_cas_n,
+    ddr3_sdram_ck_n,
+    ddr3_sdram_ck_p,
+    ddr3_sdram_cke,
+    ddr3_sdram_cs_n,
+    ddr3_sdram_dm,
+    ddr3_sdram_dq,
+    ddr3_sdram_dqs_n,
+    ddr3_sdram_dqs_p,
+    ddr3_sdram_odt,
+    ddr3_sdram_ras_n,
+    ddr3_sdram_reset_n,
+    ddr3_sdram_we_n,
+    gpio_rtl_0_multi_tri_o,
+    gpio_rtl_1_onewire_addr_out_tri_o,
+    gpio_rtl_2_onewire_data_in_tri_i,
+    gpio_rtl_2_onewire_data_out_tri_o,
+    iic_rtl_0_pll_scl_i,
+    iic_rtl_0_pll_scl_o,
+    iic_rtl_0_pll_scl_t,
+    iic_rtl_0_pll_sda_i,
+    iic_rtl_0_pll_sda_o,
+    iic_rtl_0_pll_sda_t,
+    iic_rtl_1_board_scl_i,
+    iic_rtl_1_board_scl_o,
+    iic_rtl_1_board_scl_t,
+    iic_rtl_1_board_sda_i,
+    iic_rtl_1_board_sda_o,
+    iic_rtl_1_board_sda_t,
     mb_axi_clk_100mhz,
+    peripheral_reset,
     pll_clk_n,
     pll_clk_p,
-    pwm0_lcd_bl_OBUF,
+    pll_int,
+    pwm0_lcd_bl_obuf,
     reset,
-    spi_rtl_0_CONFIG_io0_i,
-    spi_rtl_0_CONFIG_io0_o,
-    spi_rtl_0_CONFIG_io0_t,
-    spi_rtl_0_CONFIG_io1_i,
-    spi_rtl_0_CONFIG_io1_o,
-    spi_rtl_0_CONFIG_io1_t,
-    spi_rtl_0_CONFIG_io2_i,
-    spi_rtl_0_CONFIG_io2_o,
-    spi_rtl_0_CONFIG_io2_t,
-    spi_rtl_0_CONFIG_io3_i,
-    spi_rtl_0_CONFIG_io3_o,
-    spi_rtl_0_CONFIG_io3_t,
-    spi_rtl_0_CONFIG_ss_i,
-    spi_rtl_0_CONFIG_ss_o,
-    spi_rtl_0_CONFIG_ss_t,
-    spi_rtl_1_TRX_io0_i,
-    spi_rtl_1_TRX_io0_o,
-    spi_rtl_1_TRX_io0_t,
-    spi_rtl_1_TRX_io1_i,
-    spi_rtl_1_TRX_io1_o,
-    spi_rtl_1_TRX_io1_t,
-    spi_rtl_1_TRX_sck_i,
-    spi_rtl_1_TRX_sck_o,
-    spi_rtl_1_TRX_sck_t,
-    spi_rtl_1_TRX_ss_i,
-    spi_rtl_1_TRX_ss_o,
-    spi_rtl_1_TRX_ss_t,
+    spi_rtl_0_config_io0_i,
+    spi_rtl_0_config_io0_o,
+    spi_rtl_0_config_io0_t,
+    spi_rtl_0_config_io1_i,
+    spi_rtl_0_config_io1_o,
+    spi_rtl_0_config_io1_t,
+    spi_rtl_0_config_io2_i,
+    spi_rtl_0_config_io2_o,
+    spi_rtl_0_config_io2_t,
+    spi_rtl_0_config_io3_i,
+    spi_rtl_0_config_io3_o,
+    spi_rtl_0_config_io3_t,
+    spi_rtl_0_config_ss_i,
+    spi_rtl_0_config_ss_o,
+    spi_rtl_0_config_ss_t,
+    spi_rtl_1_trx_io0_i,
+    spi_rtl_1_trx_io0_o,
+    spi_rtl_1_trx_io0_t,
+    spi_rtl_1_trx_io1_i,
+    spi_rtl_1_trx_io1_o,
+    spi_rtl_1_trx_io1_t,
+    spi_rtl_1_trx_sck_i,
+    spi_rtl_1_trx_sck_o,
+    spi_rtl_1_trx_sck_t,
+    spi_rtl_1_trx_ss_i,
+    spi_rtl_1_trx_ss_o,
+    spi_rtl_1_trx_ss_t,
     sys_rst,
-    uart_rtl_0_FTDI_baudoutn,
-    uart_rtl_0_FTDI_ctsn,
-    uart_rtl_0_FTDI_dcdn,
-    uart_rtl_0_FTDI_ddis,
-    uart_rtl_0_FTDI_dsrn,
-    uart_rtl_0_FTDI_dtrn,
-    uart_rtl_0_FTDI_out1n,
-    uart_rtl_0_FTDI_out2n,
-    uart_rtl_0_FTDI_ri,
-    uart_rtl_0_FTDI_rtsn,
-    uart_rtl_0_FTDI_rxd,
-    uart_rtl_0_FTDI_rxrdyn,
-    uart_rtl_0_FTDI_txd,
-    uart_rtl_0_FTDI_txrdyn,
-    ufb_fpga_ft_12mhz_OBUF,
-    ufb_fpga_ft_resetn_OBUF,
+    trx_int,
+    uart_rtl_0_ftdi_baudoutn,
+    uart_rtl_0_ftdi_ctsn,
+    uart_rtl_0_ftdi_dcdn,
+    uart_rtl_0_ftdi_ddis,
+    uart_rtl_0_ftdi_dsrn,
+    uart_rtl_0_ftdi_dtrn,
+    uart_rtl_0_ftdi_out1n,
+    uart_rtl_0_ftdi_out2n,
+    uart_rtl_0_ftdi_ri,
+    uart_rtl_0_ftdi_rtsn,
+    uart_rtl_0_ftdi_rxd,
+    uart_rtl_0_ftdi_rxrdyn,
+    uart_rtl_0_ftdi_txd,
+    uart_rtl_0_ftdi_txrdyn,
+    ufb_fpga_ft_12mhz_obuf,
+    ufb_fpga_ft_resetn_obuf,
     ufb_trx_rxclk_n,
     ufb_trx_rxclk_p,
     ufb_trx_rxd09_n,
@@ -4602,92 +4603,93 @@ module mcu
     ufb_trx_txclk_p,
     ufb_trx_txd_n,
     ufb_trx_txd_p);
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ADDR" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DDR3_SDRAM, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250" *) output [14:0]DDR3_SDRAM_addr;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM BA" *) output [2:0]DDR3_SDRAM_ba;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CAS_N" *) output DDR3_SDRAM_cas_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CK_N" *) output [0:0]DDR3_SDRAM_ck_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CK_P" *) output [0:0]DDR3_SDRAM_ck_p;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CKE" *) output [0:0]DDR3_SDRAM_cke;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CS_N" *) output [0:0]DDR3_SDRAM_cs_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DM" *) output [3:0]DDR3_SDRAM_dm;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQ" *) inout [31:0]DDR3_SDRAM_dq;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_N" *) inout [3:0]DDR3_SDRAM_dqs_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_P" *) inout [3:0]DDR3_SDRAM_dqs_p;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ODT" *) output [0:0]DDR3_SDRAM_odt;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM RAS_N" *) output DDR3_SDRAM_ras_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM RESET_N" *) output DDR3_SDRAM_reset_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM WE_N" *) output DDR3_SDRAM_we_n;
-  output DDR3_init_calib_complete_OBUF;
-  input [0:0]PLL_int;
-  input [0:0]TRX_int;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clockenable:1.0 CE.BOARD_ROTENC_PULSE CE" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CE.BOARD_ROTENC_PULSE, POLARITY ACTIVE_LOW" *) input board_rotenc_pulse;
   input [0:0]board_rotenc_push;
   (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.BOARD_ROTENC_UP DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.BOARD_ROTENC_UP, LAYERED_METADATA undef" *) input board_rotenc_up;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_0_MULTI TRI_O" *) output [7:0]gpio_rtl_0_MULTI_tri_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_1_ONEWIRE_addr_out TRI_O" *) output [14:0]gpio_rtl_1_ONEWIRE_addr_out_tri_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_2_ONEWIRE_data_in TRI_I" *) input [7:0]gpio_rtl_2_ONEWIRE_data_in_tri_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_2_ONEWIRE_data_out TRI_O" *) output [15:0]gpio_rtl_2_ONEWIRE_data_out_tri_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_PLL SCL_I" *) input iic_rtl_0_PLL_scl_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_PLL SCL_O" *) output iic_rtl_0_PLL_scl_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_PLL SCL_T" *) output iic_rtl_0_PLL_scl_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_PLL SDA_I" *) input iic_rtl_0_PLL_sda_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_PLL SDA_O" *) output iic_rtl_0_PLL_sda_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_PLL SDA_T" *) output iic_rtl_0_PLL_sda_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_1_BOARD SCL_I" *) input iic_rtl_1_BOARD_scl_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_1_BOARD SCL_O" *) output iic_rtl_1_BOARD_scl_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_1_BOARD SCL_T" *) output iic_rtl_1_BOARD_scl_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_1_BOARD SDA_I" *) input iic_rtl_1_BOARD_sda_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_1_BOARD SDA_O" *) output iic_rtl_1_BOARD_sda_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_1_BOARD SDA_T" *) output iic_rtl_1_BOARD_sda_t;
+  output ddr3_init_calib_complete_obuf;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr3_sdram ADDR" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ddr3_sdram, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250" *) output [14:0]ddr3_sdram_addr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr3_sdram BA" *) output [2:0]ddr3_sdram_ba;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr3_sdram CAS_N" *) output ddr3_sdram_cas_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr3_sdram CK_N" *) output [0:0]ddr3_sdram_ck_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr3_sdram CK_P" *) output [0:0]ddr3_sdram_ck_p;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr3_sdram CKE" *) output [0:0]ddr3_sdram_cke;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr3_sdram CS_N" *) output [0:0]ddr3_sdram_cs_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr3_sdram DM" *) output [3:0]ddr3_sdram_dm;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr3_sdram DQ" *) inout [31:0]ddr3_sdram_dq;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr3_sdram DQS_N" *) inout [3:0]ddr3_sdram_dqs_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr3_sdram DQS_P" *) inout [3:0]ddr3_sdram_dqs_p;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr3_sdram ODT" *) output [0:0]ddr3_sdram_odt;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr3_sdram RAS_N" *) output ddr3_sdram_ras_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr3_sdram RESET_N" *) output ddr3_sdram_reset_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 ddr3_sdram WE_N" *) output ddr3_sdram_we_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_0_multi TRI_O" *) output [7:0]gpio_rtl_0_multi_tri_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_1_onewire_addr_out TRI_O" *) output [14:0]gpio_rtl_1_onewire_addr_out_tri_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_2_onewire_data_in TRI_I" *) input [7:0]gpio_rtl_2_onewire_data_in_tri_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_2_onewire_data_out TRI_O" *) output [15:0]gpio_rtl_2_onewire_data_out_tri_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_pll SCL_I" *) input iic_rtl_0_pll_scl_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_pll SCL_O" *) output iic_rtl_0_pll_scl_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_pll SCL_T" *) output iic_rtl_0_pll_scl_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_pll SDA_I" *) input iic_rtl_0_pll_sda_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_pll SDA_O" *) output iic_rtl_0_pll_sda_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_pll SDA_T" *) output iic_rtl_0_pll_sda_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_1_board SCL_I" *) input iic_rtl_1_board_scl_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_1_board SCL_O" *) output iic_rtl_1_board_scl_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_1_board SCL_T" *) output iic_rtl_1_board_scl_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_1_board SDA_I" *) input iic_rtl_1_board_sda_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_1_board SDA_O" *) output iic_rtl_1_board_sda_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_1_board SDA_T" *) output iic_rtl_1_board_sda_t;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.MB_AXI_CLK_100MHZ CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.MB_AXI_CLK_100MHZ, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0" *) output mb_axi_clk_100mhz;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.PERIPHERAL_RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.PERIPHERAL_RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) output [0:0]peripheral_reset;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PLL_CLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PLL_CLK_N, CLK_DOMAIN mcu_pll_clk_n, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input pll_clk_n;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.PLL_CLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.PLL_CLK_P, ASSOCIATED_RESET sys_rst, CLK_DOMAIN mcu_pll_clk_p, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000" *) input pll_clk_p;
-  output pwm0_lcd_bl_OBUF;
+  input [0:0]pll_int;
+  output pwm0_lcd_bl_obuf;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input reset;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG IO0_I" *) input spi_rtl_0_CONFIG_io0_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG IO0_O" *) output spi_rtl_0_CONFIG_io0_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG IO0_T" *) output spi_rtl_0_CONFIG_io0_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG IO1_I" *) input spi_rtl_0_CONFIG_io1_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG IO1_O" *) output spi_rtl_0_CONFIG_io1_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG IO1_T" *) output spi_rtl_0_CONFIG_io1_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG IO2_I" *) input spi_rtl_0_CONFIG_io2_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG IO2_O" *) output spi_rtl_0_CONFIG_io2_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG IO2_T" *) output spi_rtl_0_CONFIG_io2_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG IO3_I" *) input spi_rtl_0_CONFIG_io3_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG IO3_O" *) output spi_rtl_0_CONFIG_io3_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG IO3_T" *) output spi_rtl_0_CONFIG_io3_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG SS_I" *) input [0:0]spi_rtl_0_CONFIG_ss_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG SS_O" *) output [0:0]spi_rtl_0_CONFIG_ss_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_CONFIG SS_T" *) output spi_rtl_0_CONFIG_ss_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_TRX IO0_I" *) input spi_rtl_1_TRX_io0_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_TRX IO0_O" *) output spi_rtl_1_TRX_io0_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_TRX IO0_T" *) output spi_rtl_1_TRX_io0_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_TRX IO1_I" *) input spi_rtl_1_TRX_io1_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_TRX IO1_O" *) output spi_rtl_1_TRX_io1_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_TRX IO1_T" *) output spi_rtl_1_TRX_io1_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_TRX SCK_I" *) input spi_rtl_1_TRX_sck_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_TRX SCK_O" *) output spi_rtl_1_TRX_sck_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_TRX SCK_T" *) output spi_rtl_1_TRX_sck_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_TRX SS_I" *) input [0:0]spi_rtl_1_TRX_ss_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_TRX SS_O" *) output [0:0]spi_rtl_1_TRX_ss_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_TRX SS_T" *) output spi_rtl_1_TRX_ss_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config IO0_I" *) input spi_rtl_0_config_io0_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config IO0_O" *) output spi_rtl_0_config_io0_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config IO0_T" *) output spi_rtl_0_config_io0_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config IO1_I" *) input spi_rtl_0_config_io1_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config IO1_O" *) output spi_rtl_0_config_io1_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config IO1_T" *) output spi_rtl_0_config_io1_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config IO2_I" *) input spi_rtl_0_config_io2_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config IO2_O" *) output spi_rtl_0_config_io2_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config IO2_T" *) output spi_rtl_0_config_io2_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config IO3_I" *) input spi_rtl_0_config_io3_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config IO3_O" *) output spi_rtl_0_config_io3_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config IO3_T" *) output spi_rtl_0_config_io3_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config SS_I" *) input [0:0]spi_rtl_0_config_ss_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config SS_O" *) output [0:0]spi_rtl_0_config_ss_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config SS_T" *) output spi_rtl_0_config_ss_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_trx IO0_I" *) input spi_rtl_1_trx_io0_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_trx IO0_O" *) output spi_rtl_1_trx_io0_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_trx IO0_T" *) output spi_rtl_1_trx_io0_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_trx IO1_I" *) input spi_rtl_1_trx_io1_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_trx IO1_O" *) output spi_rtl_1_trx_io1_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_trx IO1_T" *) output spi_rtl_1_trx_io1_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_trx SCK_I" *) input spi_rtl_1_trx_sck_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_trx SCK_O" *) output spi_rtl_1_trx_sck_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_trx SCK_T" *) output spi_rtl_1_trx_sck_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_trx SS_I" *) input [0:0]spi_rtl_1_trx_ss_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_trx SS_O" *) output [0:0]spi_rtl_1_trx_ss_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_1_trx SS_T" *) output spi_rtl_1_trx_ss_t;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.SYS_RST RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.SYS_RST, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input sys_rst;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI BAUDOUTn" *) output uart_rtl_0_FTDI_baudoutn;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI CTSn" *) input uart_rtl_0_FTDI_ctsn;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI DCDn" *) input uart_rtl_0_FTDI_dcdn;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI DDIS" *) output uart_rtl_0_FTDI_ddis;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI DSRn" *) input uart_rtl_0_FTDI_dsrn;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI DTRn" *) output uart_rtl_0_FTDI_dtrn;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI OUT1n" *) output uart_rtl_0_FTDI_out1n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI OUT2n" *) output uart_rtl_0_FTDI_out2n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI RI" *) input uart_rtl_0_FTDI_ri;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI RTSn" *) output uart_rtl_0_FTDI_rtsn;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI RxD" *) input uart_rtl_0_FTDI_rxd;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI RXRDYn" *) output uart_rtl_0_FTDI_rxrdyn;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI TxD" *) output uart_rtl_0_FTDI_txd;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_FTDI TXRDYn" *) output uart_rtl_0_FTDI_txrdyn;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_FPGA_FT_12MHZ_OBUF CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_FPGA_FT_12MHZ_OBUF, CLK_DOMAIN /clk_12mhz_FTDI_clk_out1, FREQ_HZ 12000000, INSERT_VIP 0, PHASE 0.0" *) output ufb_fpga_ft_12mhz_OBUF;
-  output ufb_fpga_ft_resetn_OBUF;
+  input [0:0]trx_int;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_ftdi BAUDOUTn" *) output uart_rtl_0_ftdi_baudoutn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_ftdi CTSn" *) input uart_rtl_0_ftdi_ctsn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_ftdi DCDn" *) input uart_rtl_0_ftdi_dcdn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_ftdi DDIS" *) output uart_rtl_0_ftdi_ddis;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_ftdi DSRn" *) input uart_rtl_0_ftdi_dsrn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_ftdi DTRn" *) output uart_rtl_0_ftdi_dtrn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_ftdi OUT1n" *) output uart_rtl_0_ftdi_out1n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_ftdi OUT2n" *) output uart_rtl_0_ftdi_out2n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_ftdi RI" *) input uart_rtl_0_ftdi_ri;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_ftdi RTSn" *) output uart_rtl_0_ftdi_rtsn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_ftdi RxD" *) input uart_rtl_0_ftdi_rxd;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_ftdi RXRDYn" *) output uart_rtl_0_ftdi_rxrdyn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_ftdi TxD" *) output uart_rtl_0_ftdi_txd;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 uart_rtl_0_ftdi TXRDYn" *) output uart_rtl_0_ftdi_txrdyn;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_FPGA_FT_12MHZ_OBUF CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_FPGA_FT_12MHZ_OBUF, CLK_DOMAIN /clk_12mhz_FTDI_clk_out1, FREQ_HZ 12000000, INSERT_VIP 0, PHASE 0.0" *) output ufb_fpga_ft_12mhz_obuf;
+  output ufb_fpga_ft_resetn_obuf;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_TRX_RXCLK_N CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_TRX_RXCLK_N, CLK_DOMAIN mcu_ufb_trx_rxclk_n, FREQ_HZ 32000000, INSERT_VIP 0, PHASE 0.000" *) input ufb_trx_rxclk_n;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.UFB_TRX_RXCLK_P CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.UFB_TRX_RXCLK_P, CLK_DOMAIN mcu_ufb_trx_rxclk_p, FREQ_HZ 32000000, INSERT_VIP 0, PHASE 0.000" *) input ufb_trx_rxclk_p;
   input [0:0]ufb_trx_rxd09_n;
@@ -4697,89 +4699,87 @@ module mcu
   output [0:0]ufb_trx_txd_n;
   output [0:0]ufb_trx_txd_p;
 
-  wire [7:0]CDC_LVDS_in_data;
-  wire [7:0]CDC_LVDS_in_qdpo;
-  wire [7:0]CDC_LVDS_out_data;
-  wire [7:0]CDC_LVDS_out_qdpo;
-  wire [0:0]PLL_iic2intc_irpt;
-  wire [0:0]TRX_iic2intc_irpt;
-  wire [7:0]axi_gpio_0_GPIO_TRI_O;
-  wire [14:0]axi_gpio_1_ONEWIRE_addr_out_TRI_O;
-  wire [7:0]axi_gpio_2_ONEWIRE_data_in_TRI_I;
-  wire [15:0]axi_gpio_2_ONEWIRE_data_out_TRI_O;
-  wire axi_gpio_2_ONEWIRE_ip2intc_irpt;
-  wire axi_gpio_3_ROTENC_ip2intc_irpt;
-  wire [0:0]axi_gpio_3_ROTENC_push;
-  wire axi_iic_0_IIC1_SCL_I;
-  wire axi_iic_0_IIC1_SCL_O;
-  wire axi_iic_0_IIC1_SCL_T;
-  wire axi_iic_0_IIC1_SDA_I;
-  wire axi_iic_0_IIC1_SDA_O;
-  wire axi_iic_0_IIC1_SDA_T;
-  wire axi_iic_0_IIC_SCL_I;
-  wire axi_iic_0_IIC_SCL_O;
-  wire axi_iic_0_IIC_SCL_T;
-  wire axi_iic_0_IIC_SDA_I;
-  wire axi_iic_0_IIC_SDA_O;
-  wire axi_iic_0_IIC_SDA_T;
-  wire axi_iic_0_PLL_iic2intc_irpt;
-  wire axi_iic_1_BOARD_iic2intc_irpt;
-  wire axi_quad_spi_0_CONFIG_ip2intc_irpt;
-  wire axi_quad_spi_0_SPI_0_IO0_I;
-  wire axi_quad_spi_0_SPI_0_IO0_O;
-  wire axi_quad_spi_0_SPI_0_IO0_T;
-  wire axi_quad_spi_0_SPI_0_IO1_I;
-  wire axi_quad_spi_0_SPI_0_IO1_O;
-  wire axi_quad_spi_0_SPI_0_IO1_T;
-  wire axi_quad_spi_0_SPI_0_IO2_I;
-  wire axi_quad_spi_0_SPI_0_IO2_O;
-  wire axi_quad_spi_0_SPI_0_IO2_T;
-  wire axi_quad_spi_0_SPI_0_IO3_I;
-  wire axi_quad_spi_0_SPI_0_IO3_O;
-  wire axi_quad_spi_0_SPI_0_IO3_T;
-  wire [0:0]axi_quad_spi_0_SPI_0_SS_I;
-  wire [0:0]axi_quad_spi_0_SPI_0_SS_O;
-  wire axi_quad_spi_0_SPI_0_SS_T;
-  wire axi_quad_spi_1_SPI_0_IO0_I;
-  wire axi_quad_spi_1_SPI_0_IO0_O;
-  wire axi_quad_spi_1_SPI_0_IO0_T;
-  wire axi_quad_spi_1_SPI_0_IO1_I;
-  wire axi_quad_spi_1_SPI_0_IO1_O;
-  wire axi_quad_spi_1_SPI_0_IO1_T;
-  wire axi_quad_spi_1_SPI_0_SCK_I;
-  wire axi_quad_spi_1_SPI_0_SCK_O;
-  wire axi_quad_spi_1_SPI_0_SCK_T;
-  wire [0:0]axi_quad_spi_1_SPI_0_SS_I;
-  wire [0:0]axi_quad_spi_1_SPI_0_SS_O;
-  wire axi_quad_spi_1_SPI_0_SS_T;
-  wire axi_quad_spi_1_TRX_ip2intc_irpt;
-  wire axi_timer_0_LCD_pwm0;
+  wire [7:0]axi_gpio_0_gpio_TRI_O;
+  wire [14:0]axi_gpio_1_onewire_addr_out_TRI_O;
+  wire [7:0]axi_gpio_2_onewire_data_in_TRI_I;
+  wire [15:0]axi_gpio_2_onewire_data_out_TRI_O;
+  wire axi_gpio_2_onewire_ip2intc_irpt;
+  wire axi_gpio_3_rotenc_ip2intc_irpt;
+  wire [0:0]axi_gpio_3_rotenc_push;
+  wire axi_iic_0_iic1_SCL_I;
+  wire axi_iic_0_iic1_SCL_O;
+  wire axi_iic_0_iic1_SCL_T;
+  wire axi_iic_0_iic1_SDA_I;
+  wire axi_iic_0_iic1_SDA_O;
+  wire axi_iic_0_iic1_SDA_T;
+  wire axi_iic_0_iic_SCL_I;
+  wire axi_iic_0_iic_SCL_O;
+  wire axi_iic_0_iic_SCL_T;
+  wire axi_iic_0_iic_SDA_I;
+  wire axi_iic_0_iic_SDA_O;
+  wire axi_iic_0_iic_SDA_T;
+  wire axi_iic_0_pll_iic2intc_irpt;
+  wire axi_iic_1_board_iic2intc_irpt;
+  wire axi_quad_spi_0_config_ip2intc_irpt;
+  wire axi_quad_spi_0_spi_IO0_I;
+  wire axi_quad_spi_0_spi_IO0_O;
+  wire axi_quad_spi_0_spi_IO0_T;
+  wire axi_quad_spi_0_spi_IO1_I;
+  wire axi_quad_spi_0_spi_IO1_O;
+  wire axi_quad_spi_0_spi_IO1_T;
+  wire axi_quad_spi_0_spi_IO2_I;
+  wire axi_quad_spi_0_spi_IO2_O;
+  wire axi_quad_spi_0_spi_IO2_T;
+  wire axi_quad_spi_0_spi_IO3_I;
+  wire axi_quad_spi_0_spi_IO3_O;
+  wire axi_quad_spi_0_spi_IO3_T;
+  wire [0:0]axi_quad_spi_0_spi_SS_I;
+  wire [0:0]axi_quad_spi_0_spi_SS_O;
+  wire axi_quad_spi_0_spi_SS_T;
+  wire axi_quad_spi_1_spi_IO0_I;
+  wire axi_quad_spi_1_spi_IO0_O;
+  wire axi_quad_spi_1_spi_IO0_T;
+  wire axi_quad_spi_1_spi_IO1_I;
+  wire axi_quad_spi_1_spi_IO1_O;
+  wire axi_quad_spi_1_spi_IO1_T;
+  wire axi_quad_spi_1_spi_SCK_I;
+  wire axi_quad_spi_1_spi_SCK_O;
+  wire axi_quad_spi_1_spi_SCK_T;
+  wire [0:0]axi_quad_spi_1_spi_SS_I;
+  wire [0:0]axi_quad_spi_1_spi_SS_O;
+  wire axi_quad_spi_1_spi_SS_T;
+  wire axi_quad_spi_1_trx_ip2intc_irpt;
   wire axi_timer_0_irpt;
-  wire axi_uart16550_0_FTDI_ip2intc_irpt;
-  wire axi_uart16550_0_UART_BAUDOUTn;
-  wire axi_uart16550_0_UART_CTSn;
-  wire axi_uart16550_0_UART_DCDn;
-  wire axi_uart16550_0_UART_DDIS;
-  wire axi_uart16550_0_UART_DSRn;
-  wire axi_uart16550_0_UART_DTRn;
-  wire axi_uart16550_0_UART_OUT1n;
-  wire axi_uart16550_0_UART_OUT2n;
-  wire axi_uart16550_0_UART_RI;
-  wire axi_uart16550_0_UART_RTSn;
-  wire axi_uart16550_0_UART_RXRDYn;
-  wire axi_uart16550_0_UART_RxD;
-  wire axi_uart16550_0_UART_TXRDYn;
-  wire axi_uart16550_0_UART_TxD;
-  wire c_accum_0_ROTENC_ADD;
-  wire [31:0]c_accum_0_ROTENC_Q;
-  wire [0:0]c_counter_binary_0_LVDS_reset_Q;
-  wire clk_12mhz_FTDI_clk;
-  wire clk_12mhz_FTDI_locked;
-  wire clk_32mhz_LVDS_clk;
-  wire clk_32mhz_LVDS_clk_div_8;
-  wire clk_32mhz_LVDS_locked;
-  wire [0:0]\^clk_32mhz_LVDS_locked_inv ;
-  wire [0:0]clk_32mhz_LVDS_locked_inv_sr_Q;
+  wire axi_timer_0_lcd_pwm0;
+  wire axi_uart16550_0_ftdi_ip2intc_irpt;
+  wire axi_uart16550_0_uart_BAUDOUTn;
+  wire axi_uart16550_0_uart_CTSn;
+  wire axi_uart16550_0_uart_DCDn;
+  wire axi_uart16550_0_uart_DDIS;
+  wire axi_uart16550_0_uart_DSRn;
+  wire axi_uart16550_0_uart_DTRn;
+  wire axi_uart16550_0_uart_OUT1n;
+  wire axi_uart16550_0_uart_OUT2n;
+  wire axi_uart16550_0_uart_RI;
+  wire axi_uart16550_0_uart_RTSn;
+  wire axi_uart16550_0_uart_RXRDYn;
+  wire axi_uart16550_0_uart_RxD;
+  wire axi_uart16550_0_uart_TXRDYn;
+  wire axi_uart16550_0_uart_TxD;
+  wire c_accum_0_rotenc_add;
+  wire [31:0]c_accum_0_rotenc_q;
+  wire [0:0]c_counter_binary_0_lvds_reset_q;
+  wire [7:0]cdc_lvds_in_data;
+  wire [7:0]cdc_lvds_in_qdpo;
+  wire [7:0]cdc_lvds_out_data;
+  wire [7:0]cdc_lvds_out_qdpo;
+  wire clk_12mhz_ftdi_clk;
+  wire clk_12mhz_ftdi_locked;
+  wire clk_32mhz_lvds_clk;
+  wire clk_32mhz_lvds_clk_div_8;
+  wire clk_32mhz_lvds_locked;
+  wire [0:0]clk_32mhz_lvds_locked_inv;
+  wire [0:0]clk_32mhz_lvds_locked_inv_sr_q;
   wire [0:31]mb_0_DLMB_ABUS;
   wire mb_0_DLMB_ADDRSTROBE;
   wire [0:3]mb_0_DLMB_BE;
@@ -5155,7 +5155,6 @@ module mcu
   wire mb_0_axi_interconnect_M13_AXI_WVALID;
   wire mb_0_clk;
   wire [10:0]mb_0_intr_in;
-  wire mb_0_mdm_Debug_SYS_Rst;
   wire mb_0_mdm_Interrupt;
   wire [0:31]mb_0_mdm_LMB_0_ABUS;
   wire mb_0_mdm_LMB_0_ADDRSTROBE;
@@ -5218,27 +5217,28 @@ module mcu
   wire [0:0]mb_0_mdm_M_AXI_WREADY;
   wire [3:0]mb_0_mdm_M_AXI_WSTRB;
   wire mb_0_mdm_M_AXI_WVALID;
+  wire mb_0_mdm_debug_sys_rst;
   wire mb_0_reset_aux_reset_in;
   wire [0:0]mb_0_reset_bus_struct_reset;
   wire [0:0]mb_0_reset_interconnect_aresetn;
   wire mb_0_reset_mb_reset;
   wire [0:0]mb_0_reset_peripheral_aresetn;
   wire [0:0]mb_0_reset_peripheral_reset;
-  wire [14:0]mig_7series_0_DDR3_ADDR;
-  wire [2:0]mig_7series_0_DDR3_BA;
-  wire mig_7series_0_DDR3_CAS_N;
-  wire [0:0]mig_7series_0_DDR3_CKE;
-  wire [0:0]mig_7series_0_DDR3_CK_N;
-  wire [0:0]mig_7series_0_DDR3_CK_P;
-  wire [0:0]mig_7series_0_DDR3_CS_N;
-  wire [3:0]mig_7series_0_DDR3_DM;
-  wire [31:0]mig_7series_0_DDR3_DQ;
-  wire [3:0]mig_7series_0_DDR3_DQS_N;
-  wire [3:0]mig_7series_0_DDR3_DQS_P;
-  wire [0:0]mig_7series_0_DDR3_ODT;
-  wire mig_7series_0_DDR3_RAS_N;
-  wire mig_7series_0_DDR3_RESET_N;
-  wire mig_7series_0_DDR3_WE_N;
+  wire [14:0]mig_7series_0_ddr3_ADDR;
+  wire [2:0]mig_7series_0_ddr3_BA;
+  wire mig_7series_0_ddr3_CAS_N;
+  wire [0:0]mig_7series_0_ddr3_CKE;
+  wire [0:0]mig_7series_0_ddr3_CK_N;
+  wire [0:0]mig_7series_0_ddr3_CK_P;
+  wire [0:0]mig_7series_0_ddr3_CS_N;
+  wire [3:0]mig_7series_0_ddr3_DM;
+  wire [31:0]mig_7series_0_ddr3_DQ;
+  wire [3:0]mig_7series_0_ddr3_DQS_N;
+  wire [3:0]mig_7series_0_ddr3_DQS_P;
+  wire [0:0]mig_7series_0_ddr3_ODT;
+  wire mig_7series_0_ddr3_RAS_N;
+  wire mig_7series_0_ddr3_RESET_N;
+  wire mig_7series_0_ddr3_WE_N;
   wire mig_7series_0_init_calib_complete;
   wire mig_7series_0_mmcm_locked;
   wire mig_7series_0_sys_rst;
@@ -5246,132 +5246,129 @@ module mcu
   wire mig_7series_0_ui_addn_clk_1;
   wire mig_7series_0_ui_addn_clk_3;
   wire mig_7series_0_ui_clk_sync_rst;
-  wire pll_clk_n_1;
-  wire pll_clk_p_1;
+  wire pll_clk_n;
+  wire pll_clk_p;
+  wire [0:0]pll_iic2intc_irpt;
   wire selectio_wiz_lvds_out_clk_to_pins_n;
   wire selectio_wiz_lvds_out_clk_to_pins_p;
   wire [0:0]selectio_wiz_lvds_out_data_out_to_pins_n;
   wire [0:0]selectio_wiz_lvds_out_data_out_to_pins_p;
-  wire ufb_trx_rxclk_n_1;
-  wire ufb_trx_rxclk_p_1;
-  wire [0:0]ufb_trx_rxd09_n_1;
-  wire [0:0]ufb_trx_rxd09_p_1;
+  wire [0:0]trx_iic2intc_irpt;
+  wire ufb_trx_rxclk_n;
+  wire ufb_trx_rxclk_p;
+  wire [0:0]ufb_trx_rxd09_n;
+  wire [0:0]ufb_trx_rxd09_p;
   wire [31:0]xlconcat_0_dout;
-  wire xlconcat_ROTENC_pulse;
+  wire xlconcat_rotenc_pulse;
   wire [30:0]xlconstant_31bit_val0_dout;
   wire [3:0]xlconstant_val000_dout;
   wire [0:0]xlconstant_val0_dout;
   wire [0:0]xlconstant_val1_dout;
 
-  assign DDR3_SDRAM_addr[14:0] = mig_7series_0_DDR3_ADDR;
-  assign DDR3_SDRAM_ba[2:0] = mig_7series_0_DDR3_BA;
-  assign DDR3_SDRAM_cas_n = mig_7series_0_DDR3_CAS_N;
-  assign DDR3_SDRAM_ck_n[0] = mig_7series_0_DDR3_CK_N;
-  assign DDR3_SDRAM_ck_p[0] = mig_7series_0_DDR3_CK_P;
-  assign DDR3_SDRAM_cke[0] = mig_7series_0_DDR3_CKE;
-  assign DDR3_SDRAM_cs_n[0] = mig_7series_0_DDR3_CS_N;
-  assign DDR3_SDRAM_dm[3:0] = mig_7series_0_DDR3_DM;
-  assign DDR3_SDRAM_odt[0] = mig_7series_0_DDR3_ODT;
-  assign DDR3_SDRAM_ras_n = mig_7series_0_DDR3_RAS_N;
-  assign DDR3_SDRAM_reset_n = mig_7series_0_DDR3_RESET_N;
-  assign DDR3_SDRAM_we_n = mig_7series_0_DDR3_WE_N;
-  assign DDR3_init_calib_complete_OBUF = mig_7series_0_init_calib_complete;
-  assign PLL_iic2intc_irpt = PLL_int[0];
-  assign TRX_iic2intc_irpt = TRX_int[0];
-  assign axi_gpio_2_ONEWIRE_data_in_TRI_I = gpio_rtl_2_ONEWIRE_data_in_tri_i[7:0];
-  assign axi_gpio_3_ROTENC_push = board_rotenc_push[0];
-  assign axi_iic_0_IIC1_SCL_I = iic_rtl_1_BOARD_scl_i;
-  assign axi_iic_0_IIC1_SDA_I = iic_rtl_1_BOARD_sda_i;
-  assign axi_iic_0_IIC_SCL_I = iic_rtl_0_PLL_scl_i;
-  assign axi_iic_0_IIC_SDA_I = iic_rtl_0_PLL_sda_i;
-  assign axi_quad_spi_0_SPI_0_IO0_I = spi_rtl_0_CONFIG_io0_i;
-  assign axi_quad_spi_0_SPI_0_IO1_I = spi_rtl_0_CONFIG_io1_i;
-  assign axi_quad_spi_0_SPI_0_IO2_I = spi_rtl_0_CONFIG_io2_i;
-  assign axi_quad_spi_0_SPI_0_IO3_I = spi_rtl_0_CONFIG_io3_i;
-  assign axi_quad_spi_0_SPI_0_SS_I = spi_rtl_0_CONFIG_ss_i[0];
-  assign axi_quad_spi_1_SPI_0_IO0_I = spi_rtl_1_TRX_io0_i;
-  assign axi_quad_spi_1_SPI_0_IO1_I = spi_rtl_1_TRX_io1_i;
-  assign axi_quad_spi_1_SPI_0_SCK_I = spi_rtl_1_TRX_sck_i;
-  assign axi_quad_spi_1_SPI_0_SS_I = spi_rtl_1_TRX_ss_i[0];
-  assign axi_uart16550_0_UART_CTSn = uart_rtl_0_FTDI_ctsn;
-  assign axi_uart16550_0_UART_DCDn = uart_rtl_0_FTDI_dcdn;
-  assign axi_uart16550_0_UART_DSRn = uart_rtl_0_FTDI_dsrn;
-  assign axi_uart16550_0_UART_RI = uart_rtl_0_FTDI_ri;
-  assign axi_uart16550_0_UART_RxD = uart_rtl_0_FTDI_rxd;
-  assign c_accum_0_ROTENC_ADD = board_rotenc_up;
-  assign gpio_rtl_0_MULTI_tri_o[7:0] = axi_gpio_0_GPIO_TRI_O;
-  assign gpio_rtl_1_ONEWIRE_addr_out_tri_o[14:0] = axi_gpio_1_ONEWIRE_addr_out_TRI_O;
-  assign gpio_rtl_2_ONEWIRE_data_out_tri_o[15:0] = axi_gpio_2_ONEWIRE_data_out_TRI_O;
-  assign iic_rtl_0_PLL_scl_o = axi_iic_0_IIC_SCL_O;
-  assign iic_rtl_0_PLL_scl_t = axi_iic_0_IIC_SCL_T;
-  assign iic_rtl_0_PLL_sda_o = axi_iic_0_IIC_SDA_O;
-  assign iic_rtl_0_PLL_sda_t = axi_iic_0_IIC_SDA_T;
-  assign iic_rtl_1_BOARD_scl_o = axi_iic_0_IIC1_SCL_O;
-  assign iic_rtl_1_BOARD_scl_t = axi_iic_0_IIC1_SCL_T;
-  assign iic_rtl_1_BOARD_sda_o = axi_iic_0_IIC1_SDA_O;
-  assign iic_rtl_1_BOARD_sda_t = axi_iic_0_IIC1_SDA_T;
+  assign axi_gpio_2_onewire_data_in_TRI_I = gpio_rtl_2_onewire_data_in_tri_i[7:0];
+  assign axi_gpio_3_rotenc_push = board_rotenc_push[0];
+  assign axi_iic_0_iic1_SCL_I = iic_rtl_1_board_scl_i;
+  assign axi_iic_0_iic1_SDA_I = iic_rtl_1_board_sda_i;
+  assign axi_iic_0_iic_SCL_I = iic_rtl_0_pll_scl_i;
+  assign axi_iic_0_iic_SDA_I = iic_rtl_0_pll_sda_i;
+  assign axi_quad_spi_0_spi_IO0_I = spi_rtl_0_config_io0_i;
+  assign axi_quad_spi_0_spi_IO1_I = spi_rtl_0_config_io1_i;
+  assign axi_quad_spi_0_spi_IO2_I = spi_rtl_0_config_io2_i;
+  assign axi_quad_spi_0_spi_IO3_I = spi_rtl_0_config_io3_i;
+  assign axi_quad_spi_0_spi_SS_I = spi_rtl_0_config_ss_i[0];
+  assign axi_quad_spi_1_spi_IO0_I = spi_rtl_1_trx_io0_i;
+  assign axi_quad_spi_1_spi_IO1_I = spi_rtl_1_trx_io1_i;
+  assign axi_quad_spi_1_spi_SCK_I = spi_rtl_1_trx_sck_i;
+  assign axi_quad_spi_1_spi_SS_I = spi_rtl_1_trx_ss_i[0];
+  assign axi_uart16550_0_uart_CTSn = uart_rtl_0_ftdi_ctsn;
+  assign axi_uart16550_0_uart_DCDn = uart_rtl_0_ftdi_dcdn;
+  assign axi_uart16550_0_uart_DSRn = uart_rtl_0_ftdi_dsrn;
+  assign axi_uart16550_0_uart_RI = uart_rtl_0_ftdi_ri;
+  assign axi_uart16550_0_uart_RxD = uart_rtl_0_ftdi_rxd;
+  assign c_accum_0_rotenc_add = board_rotenc_up;
+  assign ddr3_init_calib_complete_obuf = mig_7series_0_init_calib_complete;
+  assign ddr3_sdram_addr[14:0] = mig_7series_0_ddr3_ADDR;
+  assign ddr3_sdram_ba[2:0] = mig_7series_0_ddr3_BA;
+  assign ddr3_sdram_cas_n = mig_7series_0_ddr3_CAS_N;
+  assign ddr3_sdram_ck_n[0] = mig_7series_0_ddr3_CK_N;
+  assign ddr3_sdram_ck_p[0] = mig_7series_0_ddr3_CK_P;
+  assign ddr3_sdram_cke[0] = mig_7series_0_ddr3_CKE;
+  assign ddr3_sdram_cs_n[0] = mig_7series_0_ddr3_CS_N;
+  assign ddr3_sdram_dm[3:0] = mig_7series_0_ddr3_DM;
+  assign ddr3_sdram_odt[0] = mig_7series_0_ddr3_ODT;
+  assign ddr3_sdram_ras_n = mig_7series_0_ddr3_RAS_N;
+  assign ddr3_sdram_reset_n = mig_7series_0_ddr3_RESET_N;
+  assign ddr3_sdram_we_n = mig_7series_0_ddr3_WE_N;
+  assign gpio_rtl_0_multi_tri_o[7:0] = axi_gpio_0_gpio_TRI_O;
+  assign gpio_rtl_1_onewire_addr_out_tri_o[14:0] = axi_gpio_1_onewire_addr_out_TRI_O;
+  assign gpio_rtl_2_onewire_data_out_tri_o[15:0] = axi_gpio_2_onewire_data_out_TRI_O;
+  assign iic_rtl_0_pll_scl_o = axi_iic_0_iic_SCL_O;
+  assign iic_rtl_0_pll_scl_t = axi_iic_0_iic_SCL_T;
+  assign iic_rtl_0_pll_sda_o = axi_iic_0_iic_SDA_O;
+  assign iic_rtl_0_pll_sda_t = axi_iic_0_iic_SDA_T;
+  assign iic_rtl_1_board_scl_o = axi_iic_0_iic1_SCL_O;
+  assign iic_rtl_1_board_scl_t = axi_iic_0_iic1_SCL_T;
+  assign iic_rtl_1_board_sda_o = axi_iic_0_iic1_SDA_O;
+  assign iic_rtl_1_board_sda_t = axi_iic_0_iic1_SDA_T;
   assign mb_0_reset_aux_reset_in = reset;
   assign mb_axi_clk_100mhz = mb_0_clk;
   assign mig_7series_0_sys_rst = sys_rst;
-  assign pll_clk_n_1 = pll_clk_n;
-  assign pll_clk_p_1 = pll_clk_p;
-  assign pwm0_lcd_bl_OBUF = axi_timer_0_LCD_pwm0;
-  assign spi_rtl_0_CONFIG_io0_o = axi_quad_spi_0_SPI_0_IO0_O;
-  assign spi_rtl_0_CONFIG_io0_t = axi_quad_spi_0_SPI_0_IO0_T;
-  assign spi_rtl_0_CONFIG_io1_o = axi_quad_spi_0_SPI_0_IO1_O;
-  assign spi_rtl_0_CONFIG_io1_t = axi_quad_spi_0_SPI_0_IO1_T;
-  assign spi_rtl_0_CONFIG_io2_o = axi_quad_spi_0_SPI_0_IO2_O;
-  assign spi_rtl_0_CONFIG_io2_t = axi_quad_spi_0_SPI_0_IO2_T;
-  assign spi_rtl_0_CONFIG_io3_o = axi_quad_spi_0_SPI_0_IO3_O;
-  assign spi_rtl_0_CONFIG_io3_t = axi_quad_spi_0_SPI_0_IO3_T;
-  assign spi_rtl_0_CONFIG_ss_o[0] = axi_quad_spi_0_SPI_0_SS_O;
-  assign spi_rtl_0_CONFIG_ss_t = axi_quad_spi_0_SPI_0_SS_T;
-  assign spi_rtl_1_TRX_io0_o = axi_quad_spi_1_SPI_0_IO0_O;
-  assign spi_rtl_1_TRX_io0_t = axi_quad_spi_1_SPI_0_IO0_T;
-  assign spi_rtl_1_TRX_io1_o = axi_quad_spi_1_SPI_0_IO1_O;
-  assign spi_rtl_1_TRX_io1_t = axi_quad_spi_1_SPI_0_IO1_T;
-  assign spi_rtl_1_TRX_sck_o = axi_quad_spi_1_SPI_0_SCK_O;
-  assign spi_rtl_1_TRX_sck_t = axi_quad_spi_1_SPI_0_SCK_T;
-  assign spi_rtl_1_TRX_ss_o[0] = axi_quad_spi_1_SPI_0_SS_O;
-  assign spi_rtl_1_TRX_ss_t = axi_quad_spi_1_SPI_0_SS_T;
-  assign uart_rtl_0_FTDI_baudoutn = axi_uart16550_0_UART_BAUDOUTn;
-  assign uart_rtl_0_FTDI_ddis = axi_uart16550_0_UART_DDIS;
-  assign uart_rtl_0_FTDI_dtrn = axi_uart16550_0_UART_DTRn;
-  assign uart_rtl_0_FTDI_out1n = axi_uart16550_0_UART_OUT1n;
-  assign uart_rtl_0_FTDI_out2n = axi_uart16550_0_UART_OUT2n;
-  assign uart_rtl_0_FTDI_rtsn = axi_uart16550_0_UART_RTSn;
-  assign uart_rtl_0_FTDI_rxrdyn = axi_uart16550_0_UART_RXRDYn;
-  assign uart_rtl_0_FTDI_txd = axi_uart16550_0_UART_TxD;
-  assign uart_rtl_0_FTDI_txrdyn = axi_uart16550_0_UART_TXRDYn;
-  assign ufb_fpga_ft_12mhz_OBUF = clk_12mhz_FTDI_clk;
-  assign ufb_fpga_ft_resetn_OBUF = clk_12mhz_FTDI_locked;
-  assign ufb_trx_rxclk_n_1 = ufb_trx_rxclk_n;
-  assign ufb_trx_rxclk_p_1 = ufb_trx_rxclk_p;
-  assign ufb_trx_rxd09_n_1 = ufb_trx_rxd09_n[0];
-  assign ufb_trx_rxd09_p_1 = ufb_trx_rxd09_p[0];
+  assign peripheral_reset[0] = mb_0_reset_peripheral_reset;
+  assign pll_iic2intc_irpt = pll_int[0];
+  assign pwm0_lcd_bl_obuf = axi_timer_0_lcd_pwm0;
+  assign spi_rtl_0_config_io0_o = axi_quad_spi_0_spi_IO0_O;
+  assign spi_rtl_0_config_io0_t = axi_quad_spi_0_spi_IO0_T;
+  assign spi_rtl_0_config_io1_o = axi_quad_spi_0_spi_IO1_O;
+  assign spi_rtl_0_config_io1_t = axi_quad_spi_0_spi_IO1_T;
+  assign spi_rtl_0_config_io2_o = axi_quad_spi_0_spi_IO2_O;
+  assign spi_rtl_0_config_io2_t = axi_quad_spi_0_spi_IO2_T;
+  assign spi_rtl_0_config_io3_o = axi_quad_spi_0_spi_IO3_O;
+  assign spi_rtl_0_config_io3_t = axi_quad_spi_0_spi_IO3_T;
+  assign spi_rtl_0_config_ss_o[0] = axi_quad_spi_0_spi_SS_O;
+  assign spi_rtl_0_config_ss_t = axi_quad_spi_0_spi_SS_T;
+  assign spi_rtl_1_trx_io0_o = axi_quad_spi_1_spi_IO0_O;
+  assign spi_rtl_1_trx_io0_t = axi_quad_spi_1_spi_IO0_T;
+  assign spi_rtl_1_trx_io1_o = axi_quad_spi_1_spi_IO1_O;
+  assign spi_rtl_1_trx_io1_t = axi_quad_spi_1_spi_IO1_T;
+  assign spi_rtl_1_trx_sck_o = axi_quad_spi_1_spi_SCK_O;
+  assign spi_rtl_1_trx_sck_t = axi_quad_spi_1_spi_SCK_T;
+  assign spi_rtl_1_trx_ss_o[0] = axi_quad_spi_1_spi_SS_O;
+  assign spi_rtl_1_trx_ss_t = axi_quad_spi_1_spi_SS_T;
+  assign trx_iic2intc_irpt = trx_int[0];
+  assign uart_rtl_0_ftdi_baudoutn = axi_uart16550_0_uart_BAUDOUTn;
+  assign uart_rtl_0_ftdi_ddis = axi_uart16550_0_uart_DDIS;
+  assign uart_rtl_0_ftdi_dtrn = axi_uart16550_0_uart_DTRn;
+  assign uart_rtl_0_ftdi_out1n = axi_uart16550_0_uart_OUT1n;
+  assign uart_rtl_0_ftdi_out2n = axi_uart16550_0_uart_OUT2n;
+  assign uart_rtl_0_ftdi_rtsn = axi_uart16550_0_uart_RTSn;
+  assign uart_rtl_0_ftdi_rxrdyn = axi_uart16550_0_uart_RXRDYn;
+  assign uart_rtl_0_ftdi_txd = axi_uart16550_0_uart_TxD;
+  assign uart_rtl_0_ftdi_txrdyn = axi_uart16550_0_uart_TXRDYn;
+  assign ufb_fpga_ft_12mhz_obuf = clk_12mhz_ftdi_clk;
+  assign ufb_fpga_ft_resetn_obuf = clk_12mhz_ftdi_locked;
   assign ufb_trx_txclk_n = selectio_wiz_lvds_out_clk_to_pins_n;
   assign ufb_trx_txclk_p = selectio_wiz_lvds_out_clk_to_pins_p;
   assign ufb_trx_txd_n[0] = selectio_wiz_lvds_out_data_out_to_pins_n;
   assign ufb_trx_txd_p[0] = selectio_wiz_lvds_out_data_out_to_pins_p;
-  assign xlconcat_ROTENC_pulse = board_rotenc_pulse;
+  assign xlconcat_rotenc_pulse = board_rotenc_pulse;
   mcu_dist_mem_gen_0_0 CDC_LVDS_in
        (.a(xlconstant_val000_dout),
-        .clk(clk_32mhz_LVDS_clk),
-        .d(CDC_LVDS_in_data),
+        .clk(clk_32mhz_lvds_clk),
+        .d(cdc_lvds_in_data),
         .dpra(xlconstant_val000_dout),
-        .qdpo(CDC_LVDS_in_qdpo),
+        .qdpo(cdc_lvds_in_qdpo),
         .qdpo_clk(mb_0_clk),
         .we(xlconstant_val1_dout));
   mcu_dist_mem_gen_lvds_in_0 CDC_LVDS_out
        (.a(xlconstant_val000_dout),
         .clk(mb_0_clk),
-        .d(CDC_LVDS_out_data),
+        .d(cdc_lvds_out_data),
         .dpra(xlconstant_val000_dout),
-        .qdpo(CDC_LVDS_out_qdpo),
-        .qdpo_clk(clk_32mhz_LVDS_clk),
+        .qdpo(cdc_lvds_out_qdpo),
+        .qdpo_clk(clk_32mhz_lvds_clk),
         .we(xlconstant_val1_dout));
   mcu_axi_gpio_0_0 axi_gpio_0_MULTI
-       (.gpio_io_o(axi_gpio_0_GPIO_TRI_O),
+       (.gpio_io_o(axi_gpio_0_gpio_TRI_O),
         .s_axi_aclk(mb_0_clk),
         .s_axi_araddr(mb_0_axi_interconnect_M03_AXI_ARADDR[8:0]),
         .s_axi_aresetn(mb_0_reset_peripheral_aresetn),
@@ -5392,7 +5389,7 @@ module mcu
         .s_axi_wstrb(mb_0_axi_interconnect_M03_AXI_WSTRB),
         .s_axi_wvalid(mb_0_axi_interconnect_M03_AXI_WVALID));
   mcu_axi_gpio_0_4 axi_gpio_1_ONEWIRE_addr
-       (.gpio_io_o(axi_gpio_1_ONEWIRE_addr_out_TRI_O),
+       (.gpio_io_o(axi_gpio_1_onewire_addr_out_TRI_O),
         .s_axi_aclk(mb_0_clk),
         .s_axi_araddr(mb_0_axi_interconnect_M13_AXI_ARADDR[8:0]),
         .s_axi_aresetn(mb_0_reset_peripheral_aresetn),
@@ -5413,9 +5410,9 @@ module mcu
         .s_axi_wstrb(mb_0_axi_interconnect_M13_AXI_WSTRB),
         .s_axi_wvalid(mb_0_axi_interconnect_M13_AXI_WVALID));
   mcu_axi_gpio_0_3 axi_gpio_2_ONEWIRE_data
-       (.gpio2_io_o(axi_gpio_2_ONEWIRE_data_out_TRI_O),
-        .gpio_io_i(axi_gpio_2_ONEWIRE_data_in_TRI_I),
-        .ip2intc_irpt(axi_gpio_2_ONEWIRE_ip2intc_irpt),
+       (.gpio2_io_o(axi_gpio_2_onewire_data_out_TRI_O),
+        .gpio_io_i(axi_gpio_2_onewire_data_in_TRI_I),
+        .ip2intc_irpt(axi_gpio_2_onewire_ip2intc_irpt),
         .s_axi_aclk(mb_0_clk),
         .s_axi_araddr(mb_0_axi_interconnect_M12_AXI_ARADDR[8:0]),
         .s_axi_aresetn(mb_0_reset_peripheral_aresetn),
@@ -5436,9 +5433,9 @@ module mcu
         .s_axi_wstrb(mb_0_axi_interconnect_M12_AXI_WSTRB),
         .s_axi_wvalid(mb_0_axi_interconnect_M12_AXI_WVALID));
   mcu_axi_gpio_0_2 axi_gpio_3_ROTENC
-       (.gpio2_io_i(axi_gpio_3_ROTENC_push),
-        .gpio_io_i(c_accum_0_ROTENC_Q),
-        .ip2intc_irpt(axi_gpio_3_ROTENC_ip2intc_irpt),
+       (.gpio2_io_i(axi_gpio_3_rotenc_push),
+        .gpio_io_i(c_accum_0_rotenc_q),
+        .ip2intc_irpt(axi_gpio_3_rotenc_ip2intc_irpt),
         .s_axi_aclk(mb_0_clk),
         .s_axi_araddr(mb_0_axi_interconnect_M11_AXI_ARADDR[8:0]),
         .s_axi_aresetn(mb_0_reset_peripheral_aresetn),
@@ -5459,8 +5456,8 @@ module mcu
         .s_axi_wstrb(mb_0_axi_interconnect_M11_AXI_WSTRB),
         .s_axi_wvalid(mb_0_axi_interconnect_M11_AXI_WVALID));
   mcu_axi_gpio_0_1 axi_gpio_7_LVDS
-       (.gpio2_io_i(CDC_LVDS_in_qdpo),
-        .gpio_io_o(CDC_LVDS_out_data),
+       (.gpio2_io_i(cdc_lvds_in_qdpo),
+        .gpio_io_o(cdc_lvds_out_data),
         .s_axi_aclk(mb_0_clk),
         .s_axi_araddr(mb_0_axi_interconnect_M08_AXI_ARADDR[8:0]),
         .s_axi_aresetn(mb_0_reset_peripheral_aresetn),
@@ -5481,7 +5478,7 @@ module mcu
         .s_axi_wstrb(mb_0_axi_interconnect_M08_AXI_WSTRB),
         .s_axi_wvalid(mb_0_axi_interconnect_M08_AXI_WVALID));
   mcu_axi_iic_0_0 axi_iic_0_PLL
-       (.iic2intc_irpt(axi_iic_0_PLL_iic2intc_irpt),
+       (.iic2intc_irpt(axi_iic_0_pll_iic2intc_irpt),
         .s_axi_aclk(mb_0_clk),
         .s_axi_araddr(mb_0_axi_interconnect_M06_AXI_ARADDR[8:0]),
         .s_axi_aresetn(mb_0_reset_peripheral_aresetn),
@@ -5501,14 +5498,14 @@ module mcu
         .s_axi_wready(mb_0_axi_interconnect_M06_AXI_WREADY),
         .s_axi_wstrb(mb_0_axi_interconnect_M06_AXI_WSTRB),
         .s_axi_wvalid(mb_0_axi_interconnect_M06_AXI_WVALID),
-        .scl_i(axi_iic_0_IIC_SCL_I),
-        .scl_o(axi_iic_0_IIC_SCL_O),
-        .scl_t(axi_iic_0_IIC_SCL_T),
-        .sda_i(axi_iic_0_IIC_SDA_I),
-        .sda_o(axi_iic_0_IIC_SDA_O),
-        .sda_t(axi_iic_0_IIC_SDA_T));
+        .scl_i(axi_iic_0_iic_SCL_I),
+        .scl_o(axi_iic_0_iic_SCL_O),
+        .scl_t(axi_iic_0_iic_SCL_T),
+        .sda_i(axi_iic_0_iic_SDA_I),
+        .sda_o(axi_iic_0_iic_SDA_O),
+        .sda_t(axi_iic_0_iic_SDA_T));
   mcu_axi_iic_0_1 axi_iic_1_BOARD
-       (.iic2intc_irpt(axi_iic_1_BOARD_iic2intc_irpt),
+       (.iic2intc_irpt(axi_iic_1_board_iic2intc_irpt),
         .s_axi_aclk(mb_0_clk),
         .s_axi_araddr(mb_0_axi_interconnect_M10_AXI_ARADDR[8:0]),
         .s_axi_aresetn(mb_0_reset_peripheral_aresetn),
@@ -5528,27 +5525,27 @@ module mcu
         .s_axi_wready(mb_0_axi_interconnect_M10_AXI_WREADY),
         .s_axi_wstrb(mb_0_axi_interconnect_M10_AXI_WSTRB),
         .s_axi_wvalid(mb_0_axi_interconnect_M10_AXI_WVALID),
-        .scl_i(axi_iic_0_IIC1_SCL_I),
-        .scl_o(axi_iic_0_IIC1_SCL_O),
-        .scl_t(axi_iic_0_IIC1_SCL_T),
-        .sda_i(axi_iic_0_IIC1_SDA_I),
-        .sda_o(axi_iic_0_IIC1_SDA_O),
-        .sda_t(axi_iic_0_IIC1_SDA_T));
+        .scl_i(axi_iic_0_iic1_SCL_I),
+        .scl_o(axi_iic_0_iic1_SCL_O),
+        .scl_t(axi_iic_0_iic1_SCL_T),
+        .sda_i(axi_iic_0_iic1_SDA_I),
+        .sda_o(axi_iic_0_iic1_SDA_O),
+        .sda_t(axi_iic_0_iic1_SDA_T));
   mcu_axi_quad_spi_0_0 axi_quad_spi_0_CONFIG
        (.ext_spi_clk(mig_7series_0_ui_addn_clk_1),
-        .io0_i(axi_quad_spi_0_SPI_0_IO0_I),
-        .io0_o(axi_quad_spi_0_SPI_0_IO0_O),
-        .io0_t(axi_quad_spi_0_SPI_0_IO0_T),
-        .io1_i(axi_quad_spi_0_SPI_0_IO1_I),
-        .io1_o(axi_quad_spi_0_SPI_0_IO1_O),
-        .io1_t(axi_quad_spi_0_SPI_0_IO1_T),
-        .io2_i(axi_quad_spi_0_SPI_0_IO2_I),
-        .io2_o(axi_quad_spi_0_SPI_0_IO2_O),
-        .io2_t(axi_quad_spi_0_SPI_0_IO2_T),
-        .io3_i(axi_quad_spi_0_SPI_0_IO3_I),
-        .io3_o(axi_quad_spi_0_SPI_0_IO3_O),
-        .io3_t(axi_quad_spi_0_SPI_0_IO3_T),
-        .ip2intc_irpt(axi_quad_spi_0_CONFIG_ip2intc_irpt),
+        .io0_i(axi_quad_spi_0_spi_IO0_I),
+        .io0_o(axi_quad_spi_0_spi_IO0_O),
+        .io0_t(axi_quad_spi_0_spi_IO0_T),
+        .io1_i(axi_quad_spi_0_spi_IO1_I),
+        .io1_o(axi_quad_spi_0_spi_IO1_O),
+        .io1_t(axi_quad_spi_0_spi_IO1_T),
+        .io2_i(axi_quad_spi_0_spi_IO2_I),
+        .io2_o(axi_quad_spi_0_spi_IO2_O),
+        .io2_t(axi_quad_spi_0_spi_IO2_T),
+        .io3_i(axi_quad_spi_0_spi_IO3_I),
+        .io3_o(axi_quad_spi_0_spi_IO3_O),
+        .io3_t(axi_quad_spi_0_spi_IO3_T),
+        .ip2intc_irpt(axi_quad_spi_0_config_ip2intc_irpt),
         .s_axi_aclk(mb_0_clk),
         .s_axi_araddr(mb_0_axi_interconnect_M04_AXI_ARADDR[6:0]),
         .s_axi_aresetn(mb_0_reset_peripheral_aresetn),
@@ -5568,18 +5565,18 @@ module mcu
         .s_axi_wready(mb_0_axi_interconnect_M04_AXI_WREADY),
         .s_axi_wstrb(mb_0_axi_interconnect_M04_AXI_WSTRB),
         .s_axi_wvalid(mb_0_axi_interconnect_M04_AXI_WVALID),
-        .ss_i(axi_quad_spi_0_SPI_0_SS_I),
-        .ss_o(axi_quad_spi_0_SPI_0_SS_O),
-        .ss_t(axi_quad_spi_0_SPI_0_SS_T));
+        .ss_i(axi_quad_spi_0_spi_SS_I),
+        .ss_o(axi_quad_spi_0_spi_SS_O),
+        .ss_t(axi_quad_spi_0_spi_SS_T));
   mcu_axi_quad_spi_1_0 axi_quad_spi_1_TRX
        (.ext_spi_clk(mig_7series_0_ui_addn_clk_3),
-        .io0_i(axi_quad_spi_1_SPI_0_IO0_I),
-        .io0_o(axi_quad_spi_1_SPI_0_IO0_O),
-        .io0_t(axi_quad_spi_1_SPI_0_IO0_T),
-        .io1_i(axi_quad_spi_1_SPI_0_IO1_I),
-        .io1_o(axi_quad_spi_1_SPI_0_IO1_O),
-        .io1_t(axi_quad_spi_1_SPI_0_IO1_T),
-        .ip2intc_irpt(axi_quad_spi_1_TRX_ip2intc_irpt),
+        .io0_i(axi_quad_spi_1_spi_IO0_I),
+        .io0_o(axi_quad_spi_1_spi_IO0_O),
+        .io0_t(axi_quad_spi_1_spi_IO0_T),
+        .io1_i(axi_quad_spi_1_spi_IO1_I),
+        .io1_o(axi_quad_spi_1_spi_IO1_O),
+        .io1_t(axi_quad_spi_1_spi_IO1_T),
+        .ip2intc_irpt(axi_quad_spi_1_trx_ip2intc_irpt),
         .s_axi_aclk(mb_0_clk),
         .s_axi_araddr(mb_0_axi_interconnect_M09_AXI_ARADDR[6:0]),
         .s_axi_aresetn(mb_0_reset_peripheral_aresetn),
@@ -5599,18 +5596,18 @@ module mcu
         .s_axi_wready(mb_0_axi_interconnect_M09_AXI_WREADY),
         .s_axi_wstrb(mb_0_axi_interconnect_M09_AXI_WSTRB),
         .s_axi_wvalid(mb_0_axi_interconnect_M09_AXI_WVALID),
-        .sck_i(axi_quad_spi_1_SPI_0_SCK_I),
-        .sck_o(axi_quad_spi_1_SPI_0_SCK_O),
-        .sck_t(axi_quad_spi_1_SPI_0_SCK_T),
-        .ss_i(axi_quad_spi_1_SPI_0_SS_I),
-        .ss_o(axi_quad_spi_1_SPI_0_SS_O),
-        .ss_t(axi_quad_spi_1_SPI_0_SS_T));
+        .sck_i(axi_quad_spi_1_spi_SCK_I),
+        .sck_o(axi_quad_spi_1_spi_SCK_O),
+        .sck_t(axi_quad_spi_1_spi_SCK_T),
+        .ss_i(axi_quad_spi_1_spi_SS_I),
+        .ss_o(axi_quad_spi_1_spi_SS_O),
+        .ss_t(axi_quad_spi_1_spi_SS_T));
   mcu_axi_timer_0_0 axi_timer_0
        (.capturetrig0(1'b0),
         .capturetrig1(1'b0),
         .freeze(1'b0),
         .interrupt(axi_timer_0_irpt),
-        .pwm0(axi_timer_0_LCD_pwm0),
+        .pwm0(axi_timer_0_lcd_pwm0),
         .s_axi_aclk(mb_0_clk),
         .s_axi_araddr(mb_0_axi_interconnect_M05_AXI_ARADDR[4:0]),
         .s_axi_aresetn(mb_0_reset_peripheral_aresetn),
@@ -5631,19 +5628,19 @@ module mcu
         .s_axi_wstrb(mb_0_axi_interconnect_M05_AXI_WSTRB),
         .s_axi_wvalid(mb_0_axi_interconnect_M05_AXI_WVALID));
   mcu_axi_uart16550_0_0 axi_uart16550_0_FTDI
-       (.baudoutn(axi_uart16550_0_UART_BAUDOUTn),
-        .ctsn(axi_uart16550_0_UART_CTSn),
-        .dcdn(axi_uart16550_0_UART_DCDn),
-        .ddis(axi_uart16550_0_UART_DDIS),
-        .dsrn(axi_uart16550_0_UART_DSRn),
-        .dtrn(axi_uart16550_0_UART_DTRn),
+       (.baudoutn(axi_uart16550_0_uart_BAUDOUTn),
+        .ctsn(axi_uart16550_0_uart_CTSn),
+        .dcdn(axi_uart16550_0_uart_DCDn),
+        .ddis(axi_uart16550_0_uart_DDIS),
+        .dsrn(axi_uart16550_0_uart_DSRn),
+        .dtrn(axi_uart16550_0_uart_DTRn),
         .freeze(1'b0),
-        .ip2intc_irpt(axi_uart16550_0_FTDI_ip2intc_irpt),
-        .out1n(axi_uart16550_0_UART_OUT1n),
-        .out2n(axi_uart16550_0_UART_OUT2n),
-        .rin(axi_uart16550_0_UART_RI),
-        .rtsn(axi_uart16550_0_UART_RTSn),
-        .rxrdyn(axi_uart16550_0_UART_RXRDYn),
+        .ip2intc_irpt(axi_uart16550_0_ftdi_ip2intc_irpt),
+        .out1n(axi_uart16550_0_uart_OUT1n),
+        .out2n(axi_uart16550_0_uart_OUT2n),
+        .rin(axi_uart16550_0_uart_RI),
+        .rtsn(axi_uart16550_0_uart_RTSn),
+        .rxrdyn(axi_uart16550_0_uart_RXRDYn),
         .s_axi_aclk(mb_0_clk),
         .s_axi_araddr(mb_0_axi_interconnect_M02_AXI_ARADDR),
         .s_axi_aresetn(mb_0_reset_peripheral_aresetn),
@@ -5663,41 +5660,41 @@ module mcu
         .s_axi_wready(mb_0_axi_interconnect_M02_AXI_WREADY),
         .s_axi_wstrb(mb_0_axi_interconnect_M02_AXI_WSTRB),
         .s_axi_wvalid(mb_0_axi_interconnect_M02_AXI_WVALID),
-        .sin(axi_uart16550_0_UART_RxD),
-        .sout(axi_uart16550_0_UART_TxD),
-        .txrdyn(axi_uart16550_0_UART_TXRDYn));
+        .sin(axi_uart16550_0_uart_RxD),
+        .sout(axi_uart16550_0_uart_TxD),
+        .txrdyn(axi_uart16550_0_uart_TXRDYn));
   mcu_c_accum_0_0 c_accum_0_ROTENC
-       (.ADD(c_accum_0_ROTENC_ADD),
+       (.ADD(c_accum_0_rotenc_add),
         .B(xlconcat_0_dout),
         .CLK(mb_0_clk),
-        .Q(c_accum_0_ROTENC_Q),
+        .Q(c_accum_0_rotenc_q),
         .SCLR(mb_0_reset_peripheral_reset));
   mcu_clk_wiz_1_0 clk_12mhz_FTDI
-       (.clk_12mhz(clk_12mhz_FTDI_clk),
+       (.clk_12mhz(clk_12mhz_ftdi_clk),
         .clk_in1(mb_0_clk),
-        .locked(clk_12mhz_FTDI_locked),
+        .locked(clk_12mhz_ftdi_locked),
         .reset(mb_0_reset_bus_struct_reset));
   mcu_clk_wiz_0_0 clk_32mhz_LVDS
-       (.clk_32_lvds(clk_32mhz_LVDS_clk),
-        .clk_div_8_lvds(clk_32mhz_LVDS_clk_div_8),
-        .clk_in1_n(ufb_trx_rxclk_n_1),
-        .clk_in1_p(ufb_trx_rxclk_p_1),
-        .locked(clk_32mhz_LVDS_locked),
+       (.clk_32_lvds(clk_32mhz_lvds_clk),
+        .clk_div_8_lvds(clk_32mhz_lvds_clk_div_8),
+        .clk_in1_n(ufb_trx_rxclk_n),
+        .clk_in1_p(ufb_trx_rxclk_p),
+        .locked(clk_32mhz_lvds_locked),
         .reset(mb_0_reset_bus_struct_reset));
   mcu_clk_32mhz_locked_sr_clkReset_inv_0 clk_32mhz_LVDS_locked_inv
-       (.A(clk_32mhz_LVDS_locked),
-        .CLK(clk_32mhz_LVDS_clk),
-        .S(\^clk_32mhz_LVDS_locked_inv ));
+       (.A(clk_32mhz_lvds_locked),
+        .CLK(clk_32mhz_lvds_clk),
+        .S(clk_32mhz_lvds_locked_inv));
   mcu_clk_32mhz_locked_sr_0 clk_32mhz_LVDS_locked_inv_sr_clkReset
-       (.CLK(clk_32mhz_LVDS_clk_div_8),
-        .D(\^clk_32mhz_LVDS_locked_inv ),
-        .Q(clk_32mhz_LVDS_locked_inv_sr_Q),
-        .SSET(\^clk_32mhz_LVDS_locked_inv ));
+       (.CLK(clk_32mhz_lvds_clk_div_8),
+        .D(clk_32mhz_lvds_locked_inv),
+        .Q(clk_32mhz_lvds_locked_inv_sr_q),
+        .SSET(clk_32mhz_lvds_locked_inv));
   mcu_c_shift_ram_0_0 clk_32mhz_LVDS_locked_inv_sr_ioReset
-       (.CLK(clk_32mhz_LVDS_clk_div_8),
-        .D(\^clk_32mhz_LVDS_locked_inv ),
-        .Q(c_counter_binary_0_LVDS_reset_Q),
-        .SSET(\^clk_32mhz_LVDS_locked_inv ));
+       (.CLK(clk_32mhz_lvds_clk_div_8),
+        .D(clk_32mhz_lvds_locked_inv),
+        .Q(c_counter_binary_0_lvds_reset_q),
+        .SSET(clk_32mhz_lvds_locked_inv));
   (* BMM_INFO_PROCESSOR = "microblaze-le > mcu mb_0_local_memory/dlmb_bram_if_cntlr" *) 
   (* KEEP_HIERARCHY = "yes" *) 
   mcu_microblaze_0_0 mb_0
@@ -5860,15 +5857,15 @@ module mcu
   mcu_microblaze_0_xlconcat_0 mb_0_axi_intc_concat
        (.In0(mb_0_mdm_Interrupt),
         .In1(axi_timer_0_irpt),
-        .In10(axi_gpio_2_ONEWIRE_ip2intc_irpt),
-        .In2(axi_uart16550_0_FTDI_ip2intc_irpt),
-        .In3(axi_quad_spi_0_CONFIG_ip2intc_irpt),
-        .In4(axi_iic_0_PLL_iic2intc_irpt),
-        .In5(axi_quad_spi_1_TRX_ip2intc_irpt),
-        .In6(TRX_iic2intc_irpt),
-        .In7(axi_iic_1_BOARD_iic2intc_irpt),
-        .In8(PLL_iic2intc_irpt),
-        .In9(axi_gpio_3_ROTENC_ip2intc_irpt),
+        .In10(axi_gpio_2_onewire_ip2intc_irpt),
+        .In2(axi_uart16550_0_ftdi_ip2intc_irpt),
+        .In3(axi_quad_spi_0_config_ip2intc_irpt),
+        .In4(axi_iic_0_pll_iic2intc_irpt),
+        .In5(axi_quad_spi_1_trx_ip2intc_irpt),
+        .In6(trx_iic2intc_irpt),
+        .In7(axi_iic_1_board_iic2intc_irpt),
+        .In8(pll_iic2intc_irpt),
+        .In9(axi_gpio_3_rotenc_ip2intc_irpt),
         .dout(mb_0_intr_in));
   mcu_microblaze_0_axi_periph_0 mb_0_axi_interconnect
        (.ACLK(mb_0_clk),
@@ -6344,7 +6341,7 @@ module mcu
         .Dbg_Trig_In_0(mb_0_mdm_MDEBUG_0_TRIG_IN),
         .Dbg_Trig_Out_0(mb_0_mdm_MDEBUG_0_TRIG_OUT),
         .Dbg_Update_0(mb_0_mdm_MDEBUG_0_UPDATE),
-        .Debug_SYS_Rst(mb_0_mdm_Debug_SYS_Rst),
+        .Debug_SYS_Rst(mb_0_mdm_debug_sys_rst),
         .Interrupt(mb_0_mdm_Interrupt),
         .LMB_Addr_Strobe_0(mb_0_mdm_LMB_0_ADDRSTROBE),
         .LMB_Byte_Enable_0(mb_0_mdm_LMB_0_BE),
@@ -6423,7 +6420,7 @@ module mcu
         .dcm_locked(mig_7series_0_mmcm_locked),
         .ext_reset_in(mig_7series_0_ui_clk_sync_rst),
         .interconnect_aresetn(mb_0_reset_interconnect_aresetn),
-        .mb_debug_sys_rst(mb_0_mdm_Debug_SYS_Rst),
+        .mb_debug_sys_rst(mb_0_mdm_debug_sys_rst),
         .mb_reset(mb_0_reset_mb_reset),
         .peripheral_aresetn(mb_0_reset_peripheral_aresetn),
         .peripheral_reset(mb_0_reset_peripheral_reset),
@@ -6431,21 +6428,21 @@ module mcu
   mcu_mig_7series_0_0 mig_7series_0
        (.aresetn(mb_0_reset_peripheral_aresetn),
         .clk_ref_i(mig_7series_0_ui_addn_clk_0),
-        .ddr3_addr(mig_7series_0_DDR3_ADDR),
-        .ddr3_ba(mig_7series_0_DDR3_BA),
-        .ddr3_cas_n(mig_7series_0_DDR3_CAS_N),
-        .ddr3_ck_n(mig_7series_0_DDR3_CK_N),
-        .ddr3_ck_p(mig_7series_0_DDR3_CK_P),
-        .ddr3_cke(mig_7series_0_DDR3_CKE),
-        .ddr3_cs_n(mig_7series_0_DDR3_CS_N),
-        .ddr3_dm(mig_7series_0_DDR3_DM),
-        .ddr3_dq(DDR3_SDRAM_dq[31:0]),
-        .ddr3_dqs_n(DDR3_SDRAM_dqs_n[3:0]),
-        .ddr3_dqs_p(DDR3_SDRAM_dqs_p[3:0]),
-        .ddr3_odt(mig_7series_0_DDR3_ODT),
-        .ddr3_ras_n(mig_7series_0_DDR3_RAS_N),
-        .ddr3_reset_n(mig_7series_0_DDR3_RESET_N),
-        .ddr3_we_n(mig_7series_0_DDR3_WE_N),
+        .ddr3_addr(mig_7series_0_ddr3_ADDR),
+        .ddr3_ba(mig_7series_0_ddr3_BA),
+        .ddr3_cas_n(mig_7series_0_ddr3_CAS_N),
+        .ddr3_ck_n(mig_7series_0_ddr3_CK_N),
+        .ddr3_ck_p(mig_7series_0_ddr3_CK_P),
+        .ddr3_cke(mig_7series_0_ddr3_CKE),
+        .ddr3_cs_n(mig_7series_0_ddr3_CS_N),
+        .ddr3_dm(mig_7series_0_ddr3_DM),
+        .ddr3_dq(ddr3_sdram_dq[31:0]),
+        .ddr3_dqs_n(ddr3_sdram_dqs_n[3:0]),
+        .ddr3_dqs_p(ddr3_sdram_dqs_p[3:0]),
+        .ddr3_odt(mig_7series_0_ddr3_ODT),
+        .ddr3_ras_n(mig_7series_0_ddr3_RAS_N),
+        .ddr3_reset_n(mig_7series_0_ddr3_RESET_N),
+        .ddr3_we_n(mig_7series_0_ddr3_WE_N),
         .init_calib_complete(mig_7series_0_init_calib_complete),
         .mmcm_locked(mig_7series_0_mmcm_locked),
         .s_axi_araddr(mb_0_axi_interconnect_M01_AXI_ARADDR[29:0]),
@@ -6485,8 +6482,8 @@ module mcu
         .s_axi_wready(mb_0_axi_interconnect_M01_AXI_WREADY),
         .s_axi_wstrb(mb_0_axi_interconnect_M01_AXI_WSTRB),
         .s_axi_wvalid(mb_0_axi_interconnect_M01_AXI_WVALID),
-        .sys_clk_n(pll_clk_n_1),
-        .sys_clk_p(pll_clk_p_1),
+        .sys_clk_n(pll_clk_n),
+        .sys_clk_p(pll_clk_p),
         .sys_rst(mig_7series_0_sys_rst),
         .ui_addn_clk_0(mig_7series_0_ui_addn_clk_0),
         .ui_addn_clk_1(mig_7series_0_ui_addn_clk_1),
@@ -6495,24 +6492,24 @@ module mcu
         .ui_clk_sync_rst(mig_7series_0_ui_clk_sync_rst));
   mcu_selectio_wiz_1_0 selectio_LVDS_in
        (.bitslip(xlconstant_val0_dout),
-        .clk_div_in(clk_32mhz_LVDS_clk_div_8),
-        .clk_in(clk_32mhz_LVDS_clk),
-        .data_in_from_pins_n(ufb_trx_rxd09_n_1),
-        .data_in_from_pins_p(ufb_trx_rxd09_p_1),
-        .data_in_to_device(CDC_LVDS_in_data),
-        .io_reset(c_counter_binary_0_LVDS_reset_Q));
+        .clk_div_in(clk_32mhz_lvds_clk_div_8),
+        .clk_in(clk_32mhz_lvds_clk),
+        .data_in_from_pins_n(ufb_trx_rxd09_n),
+        .data_in_from_pins_p(ufb_trx_rxd09_p),
+        .data_in_to_device(cdc_lvds_in_data),
+        .io_reset(c_counter_binary_0_lvds_reset_q));
   mcu_selectio_wiz_0_0 selectio_LVDS_out
-       (.clk_div_in(clk_32mhz_LVDS_clk_div_8),
-        .clk_in(clk_32mhz_LVDS_clk),
-        .clk_reset(clk_32mhz_LVDS_locked_inv_sr_Q),
+       (.clk_div_in(clk_32mhz_lvds_clk_div_8),
+        .clk_in(clk_32mhz_lvds_clk),
+        .clk_reset(clk_32mhz_lvds_locked_inv_sr_q),
         .clk_to_pins_n(selectio_wiz_lvds_out_clk_to_pins_n),
         .clk_to_pins_p(selectio_wiz_lvds_out_clk_to_pins_p),
-        .data_out_from_device(CDC_LVDS_out_qdpo),
+        .data_out_from_device(cdc_lvds_out_qdpo),
         .data_out_to_pins_n(selectio_wiz_lvds_out_data_out_to_pins_n),
         .data_out_to_pins_p(selectio_wiz_lvds_out_data_out_to_pins_p),
-        .io_reset(c_counter_binary_0_LVDS_reset_Q));
+        .io_reset(c_counter_binary_0_lvds_reset_q));
   mcu_xlconcat_0_0 xlconcat_ROTENC
-       (.In0(xlconcat_ROTENC_pulse),
+       (.In0(xlconcat_rotenc_pulse),
         .In1(xlconstant_31bit_val0_dout),
         .dout(xlconcat_0_dout));
   mcu_xlconstant_0_0 xlconstant_LVDS_val0

@@ -15,12 +15,13 @@ vhdl xil_defaultlib  \
 "../../../bd/mcu/ip/mcu_axi_gpio_0_0/sim/mcu_axi_gpio_0_0.vhd" \
 "../../../bd/mcu/ip/mcu_axi_quad_spi_0_0/sim/mcu_axi_quad_spi_0_0.vhd" \
 "../../../bd/mcu/ip/mcu_axi_timer_0_0/sim/mcu_axi_timer_0_0.vhd" \
-"../../../bd/mcu/ip/mcu_clk_32mhz_locked_inv_0/sim/mcu_clk_32mhz_locked_inv_0.vhd" \
 "../../../bd/mcu/ip/mcu_axi_gpio_0_1/sim/mcu_axi_gpio_0_1.vhd" \
 "../../../bd/mcu/ip/mcu_axi_iic_0_0/sim/mcu_axi_iic_0_0.vhd" \
 "../../../bd/mcu/ip/mcu_axi_quad_spi_1_0/sim/mcu_axi_quad_spi_1_0.vhd" \
 "../../../bd/mcu/ip/mcu_axi_iic_0_1/sim/mcu_axi_iic_0_1.vhd" \
 "../../../bd/mcu/ip/mcu_c_accum_0_0/sim/mcu_c_accum_0_0.vhd" \
 "../../../bd/mcu/ip/mcu_axi_gpio_0_2/sim/mcu_axi_gpio_0_2.vhd" \
+"../../../bd/mcu/ip/mcu_axi_gpio_0_3/sim/mcu_axi_gpio_0_3.vhd" \
+"../../../bd/mcu/ip/mcu_axi_gpio_0_4/sim/mcu_axi_gpio_0_4.vhd" \
 
 nosort

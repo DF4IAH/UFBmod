@@ -379,7 +379,6 @@ vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sou
 "../../../bd/mcu/sim/mcu.v" \
 
 vcom -work xil_defaultlib -93 \
-"../../../bd/mcu/ip/mcu_clk_32mhz_locked_inv_0/sim/mcu_clk_32mhz_locked_inv_0.vhd" \
 "../../../bd/mcu/ip/mcu_axi_gpio_0_1/sim/mcu_axi_gpio_0_1.vhd" \
 
 vcom -work axi_iic_v2_0_22 -93 \
@@ -411,11 +410,15 @@ vcom -work xil_defaultlib -93 \
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
 "../../../bd/mcu/ip/mcu_xlconcat_0_0/sim/mcu_xlconcat_0_0.v" \
 
+vcom -work xil_defaultlib -93 \
+"../../../bd/mcu/ip/mcu_axi_gpio_0_3/sim/mcu_axi_gpio_0_3.vhd" \
+"../../../bd/mcu/ip/mcu_axi_gpio_0_4/sim/mcu_axi_gpio_0_4.vhd" \
+
 vlog -work axi_protocol_converter_v2_1_19  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
 "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
-"../../../bd/mcu/ip/mcu_auto_pc_11/sim/mcu_auto_pc_11.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_13/sim/mcu_auto_pc_13.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
@@ -427,6 +430,8 @@ vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sou
 "../../../bd/mcu/ip/mcu_auto_pc_8/sim/mcu_auto_pc_8.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_9/sim/mcu_auto_pc_9.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_10/sim/mcu_auto_pc_10.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_11/sim/mcu_auto_pc_11.v" \
+"../../../bd/mcu/ip/mcu_auto_pc_12/sim/mcu_auto_pc_12.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

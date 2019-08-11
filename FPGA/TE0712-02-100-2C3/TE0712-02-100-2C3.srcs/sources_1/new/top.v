@@ -361,73 +361,67 @@ module top(
     
     
     // Wires
-    wire board_lcd_resetn_OBUF;
-    wire DDR3_init_calib_complete_OBUF;
-    wire fpga_led_rgb_red_OBUF;
-    wire fpga_led_rgb_green_OBUF;
-    wire fpga_led_rgb_blue_OBUF;
-    wire [7:0]gpio_rtl_0_MULTI_tri_o;
+    
+    wire board_lcd_resetn_obuf;
+    wire ddr3_init_calib_complete_obuf;
+    wire fpga_led_rgb_red_obuf;
+    wire fpga_led_rgb_green_obuf;
+    wire fpga_led_rgb_blue_obuf;
+    wire [7:0]gpio_rtl_0_multi_tri_o;
     wire mb_axi_clk_100mhz;
-    wire pwm0_lcd_bl_OBUF;
-    wire ufb_fpga_ft_12mhz_OBUF;
-    wire ufb_fpga_ft_resetn_OBUF;
-    
-    
-    
+    wire peripheral_reset;
+    wire pwm0_lcd_bl_obuf;
+    wire ufb_fpga_ft_12mhz_obuf;
+    wire ufb_fpga_ft_resetn_obuf;
+    wire ufb_trx_rstn_obuf;
+ 
+
+
     // RFX
     assign ufb_fpga_rfx_mode = 0;
     
-        
+    
     // BOARD-I2C
-    assign board_lcd_resetn_OBUF = !gpio_rtl_0_MULTI_tri_o[6];
-
+    assign board_lcd_resetn_obuf = !gpio_rtl_0_multi_tri_o[6];
+    
     
     
     // OBUFs
-
+    
     OBUF board_lcd_resetn_obuf_inst (
-        .I(board_lcd_resetn_OBUF),
+        .I(board_lcd_resetn_obuf),
         .O(board_lcd_resetn)
     );
     
-    OBUF DDR3_init_calib_complete_obuf_inst (
-        .I(DDR3_init_calib_complete_OBUF),
+    OBUF ddr3_init_calib_complete_obuf_inst (
+        .I(ddr3_init_calib_complete_obuf),
         .O(ddr3_init_calib_complete)
     );
     
-    OBUF fpga_led_rgb_red_obuf_inst (
-        .I(fpga_led_rgb_red_OBUF),
-        .O(fpga_led_rgb_red)
-    );
-    
-    OBUF fpga_led_rgb_green_obuf_inst (
-        .I(fpga_led_rgb_green_OBUF),
-        .O(fpga_led_rgb_green)
-    );
-    
-    OBUF fpga_led_rgb_blue_obuf_inst (
-        .I(fpga_led_rgb_blue_OBUF),
-        .O(fpga_led_rgb_blue)
-    );
-    
     OBUF pwm0_lcd_bl_obuf_inst (
-        .I(pwm0_lcd_bl_OBUF),
+        .I(pwm0_lcd_bl_obuf),
         .O(fpga_lcd_bl_pwm)
     );
-
+    
     OBUF ufb_fpga_ft_12mhz_obuf_inst (
-        .I(ufb_fpga_ft_12mhz_OBUF),
+        .I(ufb_fpga_ft_12mhz_obuf),
         .O(ufb_fpga_ft_12mhz)
     );
     
     OBUF ufb_fpga_ft_resetn_obuf_inst (
-        .I(ufb_fpga_ft_resetn_OBUF),
+        .I(ufb_fpga_ft_resetn_obuf),
         .O(ufb_fpga_ft_resetn)
     );
     
+    OBUF ufb_trx_rstn_obuf_inst (
+        .I(ufb_trx_rstn_obuf),
+        .O(ufb_trx_rstn)
+    );
+
 
 
     // Rotary encoder
+    
     reg board_rotenc_pulse;
     reg board_rotenc_up;
     
@@ -439,7 +433,7 @@ module top(
     reg board_rotenc_q_rr;
 
     always @ (posedge mb_axi_clk_100mhz)
-    if (reset)  begin
+    if (peripheral_reset)  begin
         board_rotenc_pulse   <= 0;
         board_rotenc_pulse_r <= 0;
         board_rotenc_up      <= 0;
@@ -479,27 +473,27 @@ module top(
     
     
     // Ethernet / ONEWIRE
-    wire [15:0]ow_addr;
-    wire [15:0]gpio_rtl_2_ONEWIRE_data_in;
-    wire [ 7:0]gpio_rtl_2_ONEWIRE_data_out;
+    wire [14:0]gpio_rtl_1_onewire_addr_out;
+    wire [ 7:0]gpio_rtl_2_onewire_data_in;
+    wire [15:0]gpio_rtl_2_onewire_data_out;
     wire ow_stb_i;
     wire ow_wr_i;
     
     onewire onewire_i(
-        .rst_i(reset),
+        .rst_i(peripheral_reset),
         .clk_i(mb_axi_clk_100mhz),
   
         .onewire_io(onewire),
 
-        .addr_i(ow_addr),
-        .gpio_rtl_2_ONEWIRE_data_in(gpio_rtl_2_ONEWIRE_data_in[7:0]),
-        .gpio_rtl_2_ONEWIRE_data_out(gpio_rtl_2_ONEWIRE_data_out),
+        .gpio_rtl_1_onewire_addr_out(gpio_rtl_1_onewire_addr_out),
+        .gpio_rtl_2_onewire_data_in(gpio_rtl_2_onewire_data_in),
+        .gpio_rtl_2_onewire_data_out(gpio_rtl_2_onewire_data_out[7:0]),
         
-        .wr_i(gpio_rtl_2_ONEWIRE_data_in[14]),
-        .stb_i(gpio_rtl_2_ONEWIRE_data_in[15])
+        .wr_i(gpio_rtl_2_onewire_data_out[14]),
+        .stb_i(gpio_rtl_2_onewire_data_out[15])
     );
-
-
+    
+    
     // FTDI
     wire ufb_fpga_ft_cts_n;
     wire ufb_fpga_ft_dsr_n;
@@ -507,7 +501,7 @@ module top(
     reg ufb_fpga_ft_dsr_r;
     
     always @ (posedge ufb_fpga_ft_12mhz)
-    if (reset)  begin
+    if (peripheral_reset)  begin
         ufb_fpga_ft_cts_r <= 0;
         ufb_fpga_ft_dsr_r <= 0;
     end else begin   
@@ -519,16 +513,16 @@ module top(
     assign ufb_fpga_ft_dsr = ufb_fpga_ft_dsr_r;
     assign ufb_fpga_ft_dcd = 1;
     assign ufb_fpga_ft_ri  = 0;
-        
+    
     
     // RGB-LED
-    assign fpga_led_rgb_red_OBUF   = gpio_rtl_0_MULTI_tri_o[0];
-    assign fpga_led_rgb_green_OBUF = gpio_rtl_0_MULTI_tri_o[1];
-    assign fpga_led_rgb_blue_OBUF  = DDR3_init_calib_complete_OBUF;
+    assign fpga_led_rgb_red_obuf   = gpio_rtl_0_multi_tri_o[0];
+    assign fpga_led_rgb_green_obuf = gpio_rtl_0_multi_tri_o[1];
+    assign fpga_led_rgb_blue_obuf  = ddr3_init_calib_complete_obuf;
     
     
     // TRX
-    assign ufb_trx_rstn = !gpio_rtl_0_MULTI_tri_o[7];
+    assign ufb_trx_rstn_obuf = !gpio_rtl_0_multi_tri_o[7];
     
     
     // Unused - BV0/BV1
@@ -539,6 +533,8 @@ module top(
  mcu_wrapper mcu_wrapper_i (
         .reset(reset),
         .sys_rst(sys_rst),
+        
+        .peripheral_reset(peripheral_reset),
         
         
         .pll_clk_p(pll_clk_p),
@@ -558,24 +554,24 @@ module top(
         
         
     // SPI-QUAD
-        .spi_rtl_0_CONFIG_ss_io(spi_cs),
-        .spi_rtl_0_CONFIG_io0_io(spi_dq[0]),
-        .spi_rtl_0_CONFIG_io1_io(spi_dq[1]),
-        .spi_rtl_0_CONFIG_io2_io(spi_dq[2]),
-        .spi_rtl_0_CONFIG_io3_io(spi_dq[3]),
+        .spi_rtl_0_config_ss_io(spi_cs),
+        .spi_rtl_0_config_io0_io(spi_dq[0]),
+        .spi_rtl_0_config_io1_io(spi_dq[1]),
+        .spi_rtl_0_config_io2_io(spi_dq[2]),
+        .spi_rtl_0_config_io3_io(spi_dq[3]),
         
         
     // PLL - I2C & Int (VTTREF)
-        .iic_rtl_0_PLL_scl_io(pll_scl),
-        .iic_rtl_0_PLL_sda_io(pll_sda),
+        .iic_rtl_0_pll_scl_io(pll_scl),
+        .iic_rtl_0_pll_sda_io(pll_sda),
         
-        .PLL_int(!pll_int),
+        .pll_int(!pll_int),
         
         
     // Board - I2C
-                                                        //output board_lcd_resetn  <--  !gpio_rtl_0_MULTI_tri_o[6]
-        .iic_rtl_1_BOARD_scl_io(board_scl),
-        .iic_rtl_1_BOARD_sda_io(board_sda),
+                                                        //output board_lcd_resetn  <--  !gpio_rtl_0_multi_tri_o[6]
+        .iic_rtl_1_board_scl_io(board_scl),
+        .iic_rtl_1_board_sda_io(board_sda),
         
         
     // Rotary encoder
@@ -585,27 +581,27 @@ module top(
         
         
     // DDR3 Lanes 0-3
-        .DDR3_SDRAM_reset_n(ddr3_reset),
-        .DDR3_SDRAM_cke(ddr3_cke),
-        .DDR3_SDRAM_ck_p(ddr3_clk0_p),
-        .DDR3_SDRAM_ck_n(ddr3_clk0_n),
+        .ddr3_sdram_reset_n(ddr3_reset),
+        .ddr3_sdram_cke(ddr3_cke),
+        .ddr3_sdram_ck_p(ddr3_clk0_p),
+        .ddr3_sdram_ck_n(ddr3_clk0_n),
         
-        .DDR3_SDRAM_cs_n(ddr3_s),
-        .DDR3_SDRAM_we_n(ddr3_we),
-        .DDR3_SDRAM_odt(ddr3_odt),
+        .ddr3_sdram_cs_n(ddr3_s),
+        .ddr3_sdram_we_n(ddr3_we),
+        .ddr3_sdram_odt(ddr3_odt),
         
-        .DDR3_SDRAM_dqs_p(ddr3_dqs_p),
-        .DDR3_SDRAM_dqs_n(ddr3_dqs_n),
-        .DDR3_SDRAM_dm(ddr3_dm),
-        .DDR3_SDRAM_dq(ddr3_d),
+        .ddr3_sdram_dqs_p(ddr3_dqs_p),
+        .ddr3_sdram_dqs_n(ddr3_dqs_n),
+        .ddr3_sdram_dm(ddr3_dm),
+        .ddr3_sdram_dq(ddr3_d),
         
-        .DDR3_SDRAM_ba(ddr3_ba),
-        .DDR3_SDRAM_addr(ddr3_a),
+        .ddr3_sdram_ba(ddr3_ba),
+        .ddr3_sdram_addr(ddr3_a),
         
-        .DDR3_SDRAM_cas_n(ddr3_cas),
-        .DDR3_SDRAM_ras_n(ddr3_ras),
+        .ddr3_sdram_cas_n(ddr3_cas),
+        .ddr3_sdram_ras_n(ddr3_ras),
         
-        .DDR3_init_calib_complete_OBUF(DDR3_init_calib_complete_OBUF),
+        .ddr3_init_calib_complete_obuf(ddr3_init_calib_complete_obuf),
         
         
     // Ethernet
@@ -623,9 +619,9 @@ module top(
         
         
     // Onewire
-        .gpio_rtl_1_ONEWIRE_addr_out_tri_o(ow_addr),
-        .gpio_rtl_2_ONEWIRE_data_out_tri_o(gpio_rtl_2_ONEWIRE_data_out),
-        .gpio_rtl_2_ONEWIRE_data_in_tri_i(gpio_rtl_2_ONEWIRE_data_in),
+        .gpio_rtl_1_onewire_addr_out_tri_o(gpio_rtl_1_onewire_addr_out),
+        .gpio_rtl_2_onewire_data_out_tri_o(gpio_rtl_2_onewire_data_out),
+        .gpio_rtl_2_onewire_data_in_tri_i(gpio_rtl_2_onewire_data_in),
 
 
     // UFBmod special signals
@@ -642,18 +638,16 @@ module top(
         .ufb_trx_txd_p(ufb_trx_txd_p),
         .ufb_trx_txd_n(ufb_trx_txd_n),
         
-        
-        
-        
+                        
    // TRX SPI
-                                                        //output ufb_trx_rstn  <--  !gpio_rtl_0_MULTI_tri_o[7]
+                                                        //output ufb_trx_rstn  <--  !gpio_rtl_0_multi_tri_o[7]
         
-        .spi_rtl_1_TRX_io0_io(ufb_trx_mosi),
-        .spi_rtl_1_TRX_io1_io(ufb_trx_miso),
-        .spi_rtl_1_TRX_sck_io(ufb_trx_sclk),
-        .spi_rtl_1_TRX_ss_io(ufb_trx_seln),
+        .spi_rtl_1_trx_io0_io(ufb_trx_mosi),
+        .spi_rtl_1_trx_io1_io(ufb_trx_miso),
+        .spi_rtl_1_trx_sck_io(ufb_trx_sclk),
+        .spi_rtl_1_trx_ss_io(ufb_trx_seln),
         
-        .TRX_int(ufb_trx_irq),
+        .trx_int(ufb_trx_irq),
         
         
     // RFX
@@ -661,28 +655,28 @@ module top(
         
         
     // FTDI serial <--> USB
-        .ufb_fpga_ft_12mhz_OBUF(ufb_fpga_ft_12mhz_OBUF),
-        .ufb_fpga_ft_resetn_OBUF(ufb_fpga_ft_resetn_OBUF),
+        .ufb_fpga_ft_12mhz_obuf(ufb_fpga_ft_12mhz_obuf),
+        .ufb_fpga_ft_resetn_obuf(ufb_fpga_ft_resetn_obuf),
 
-        .uart_rtl_0_FTDI_txd(ufb_fpga_ft_rxd),
-        .uart_rtl_0_FTDI_rxd(ufb_fpga_ft_txd),
+        .uart_rtl_0_ftdi_txd(ufb_fpga_ft_rxd),
+        .uart_rtl_0_ftdi_rxd(ufb_fpga_ft_txd),
         
-        .uart_rtl_0_FTDI_rtsn(ufb_fpga_ft_cts_n),
-        .uart_rtl_0_FTDI_ctsn(!ufb_fpga_ft_rts),
+        .uart_rtl_0_ftdi_rtsn(ufb_fpga_ft_cts_n),
+        .uart_rtl_0_ftdi_ctsn(!ufb_fpga_ft_rts),
         
-        .uart_rtl_0_FTDI_dtrn(ufb_fpga_ft_dsr_n),
-        .uart_rtl_0_FTDI_dsrn(!ufb_fpga_ft_dtr),
+        .uart_rtl_0_ftdi_dtrn(ufb_fpga_ft_dsr_n),
+        .uart_rtl_0_ftdi_dsrn(!ufb_fpga_ft_dtr),
         
-        .uart_rtl_0_FTDI_dcdn(1'b0),
-        .uart_rtl_0_FTDI_ri(1'b0),
+        .uart_rtl_0_ftdi_dcdn(1'b0),
+        .uart_rtl_0_ftdi_ri(1'b0),
         
         
     // LCD backlight
-        .pwm0_lcd_bl_OBUF(pwm0_lcd_bl_OBUF),
+        .pwm0_lcd_bl_obuf(pwm0_lcd_bl_obuf),
         
         
     // GPIO
-        .gpio_rtl_0_MULTI_tri_o(gpio_rtl_0_MULTI_tri_o)
+        .gpio_rtl_0_multi_tri_o(gpio_rtl_0_multi_tri_o)
         
         );
 
