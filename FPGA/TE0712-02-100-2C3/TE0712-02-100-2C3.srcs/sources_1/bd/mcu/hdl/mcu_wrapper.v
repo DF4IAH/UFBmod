@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1.1 (win64) Build 2580384 Sat Jun 29 08:12:21 MDT 2019
-//Date        : Sun Aug 11 23:29:19 2019
+//Date        : Mon Aug 12 21:31:14 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu_wrapper.bd
 //Design      : mcu_wrapper
@@ -29,10 +29,12 @@ module mcu_wrapper
     ddr3_sdram_ras_n,
     ddr3_sdram_reset_n,
     ddr3_sdram_we_n,
+    dmr_1_onewire_a_in,
+    dmr_1_onewire_d_in,
+    dmr_1_onewire_we_in,
     gpio_rtl_0_multi_tri_o,
-    gpio_rtl_1_onewire_addr_out_tri_o,
-    gpio_rtl_2_onewire_data_in_tri_i,
-    gpio_rtl_2_onewire_data_out_tri_o,
+    gpio_rtl_1_onewire_gpio_in,
+    gpio_rtl_1_onewire_gpio_out_tri_o,
     iic_rtl_0_pll_scl_io,
     iic_rtl_0_pll_sda_io,
     iic_rtl_1_board_scl_io,
@@ -40,14 +42,6 @@ module mcu_wrapper
     mb_axi_clk_100mhz,
     mdio_rtl_0_ethernet_mdc,
     mdio_rtl_0_ethernet_mdio_io,
-    onewire_s_axi_tdata,
-    onewire_s_axi_tdest,
-    onewire_s_axi_tid,
-    onewire_s_axi_tkeep,
-    onewire_s_axi_tlast,
-    onewire_s_axi_tready,
-    onewire_s_axi_tuser,
-    onewire_s_axi_tvalid,
     peripheral_reset,
     pll_clk_n,
     pll_clk_p,
@@ -113,10 +107,12 @@ module mcu_wrapper
   output ddr3_sdram_ras_n;
   output ddr3_sdram_reset_n;
   output ddr3_sdram_we_n;
+  input [3:0]dmr_1_onewire_a_in;
+  input [31:0]dmr_1_onewire_d_in;
+  input dmr_1_onewire_we_in;
   output [7:0]gpio_rtl_0_multi_tri_o;
-  output [14:0]gpio_rtl_1_onewire_addr_out_tri_o;
-  input [7:0]gpio_rtl_2_onewire_data_in_tri_i;
-  output [15:0]gpio_rtl_2_onewire_data_out_tri_o;
+  input [31:0]gpio_rtl_1_onewire_gpio_in;
+  output [31:0]gpio_rtl_1_onewire_gpio_out_tri_o;
   inout iic_rtl_0_pll_scl_io;
   inout iic_rtl_0_pll_sda_io;
   inout iic_rtl_1_board_scl_io;
@@ -124,14 +120,6 @@ module mcu_wrapper
   output mb_axi_clk_100mhz;
   output mdio_rtl_0_ethernet_mdc;
   inout mdio_rtl_0_ethernet_mdio_io;
-  input [31:0]onewire_s_axi_tdata;
-  input [3:0]onewire_s_axi_tdest;
-  input [7:0]onewire_s_axi_tid;
-  input [3:0]onewire_s_axi_tkeep;
-  input onewire_s_axi_tlast;
-  output onewire_s_axi_tready;
-  input [15:0]onewire_s_axi_tuser;
-  input onewire_s_axi_tvalid;
   output [0:0]peripheral_reset;
   input pll_clk_n;
   input pll_clk_p;
@@ -198,10 +186,12 @@ module mcu_wrapper
   wire ddr3_sdram_ras_n;
   wire ddr3_sdram_reset_n;
   wire ddr3_sdram_we_n;
+  wire [3:0]dmr_1_onewire_a_in;
+  wire [31:0]dmr_1_onewire_d_in;
+  wire dmr_1_onewire_we_in;
   wire [7:0]gpio_rtl_0_multi_tri_o;
-  wire [14:0]gpio_rtl_1_onewire_addr_out_tri_o;
-  wire [7:0]gpio_rtl_2_onewire_data_in_tri_i;
-  wire [15:0]gpio_rtl_2_onewire_data_out_tri_o;
+  wire [31:0]gpio_rtl_1_onewire_gpio_in;
+  wire [31:0]gpio_rtl_1_onewire_gpio_out_tri_o;
   wire iic_rtl_0_pll_scl_i;
   wire iic_rtl_0_pll_scl_io;
   wire iic_rtl_0_pll_scl_o;
@@ -224,14 +214,6 @@ module mcu_wrapper
   wire mdio_rtl_0_ethernet_mdio_io;
   wire mdio_rtl_0_ethernet_mdio_o;
   wire mdio_rtl_0_ethernet_mdio_t;
-  wire [31:0]onewire_s_axi_tdata;
-  wire [3:0]onewire_s_axi_tdest;
-  wire [7:0]onewire_s_axi_tid;
-  wire [3:0]onewire_s_axi_tkeep;
-  wire onewire_s_axi_tlast;
-  wire onewire_s_axi_tready;
-  wire [15:0]onewire_s_axi_tuser;
-  wire onewire_s_axi_tvalid;
   wire [0:0]peripheral_reset;
   wire pll_clk_n;
   wire pll_clk_p;
@@ -346,10 +328,12 @@ module mcu_wrapper
         .ddr3_sdram_ras_n(ddr3_sdram_ras_n),
         .ddr3_sdram_reset_n(ddr3_sdram_reset_n),
         .ddr3_sdram_we_n(ddr3_sdram_we_n),
+        .dmr_1_onewire_a_in(dmr_1_onewire_a_in),
+        .dmr_1_onewire_d_in(dmr_1_onewire_d_in),
+        .dmr_1_onewire_we_in(dmr_1_onewire_we_in),
         .gpio_rtl_0_multi_tri_o(gpio_rtl_0_multi_tri_o),
-        .gpio_rtl_1_onewire_addr_out_tri_o(gpio_rtl_1_onewire_addr_out_tri_o),
-        .gpio_rtl_2_onewire_data_in_tri_i(gpio_rtl_2_onewire_data_in_tri_i),
-        .gpio_rtl_2_onewire_data_out_tri_o(gpio_rtl_2_onewire_data_out_tri_o),
+        .gpio_rtl_1_onewire_gpio_in(gpio_rtl_1_onewire_gpio_in),
+        .gpio_rtl_1_onewire_gpio_out_tri_o(gpio_rtl_1_onewire_gpio_out_tri_o),
         .iic_rtl_0_pll_scl_i(iic_rtl_0_pll_scl_i),
         .iic_rtl_0_pll_scl_o(iic_rtl_0_pll_scl_o),
         .iic_rtl_0_pll_scl_t(iic_rtl_0_pll_scl_t),
@@ -367,14 +351,6 @@ module mcu_wrapper
         .mdio_rtl_0_ethernet_mdio_i(mdio_rtl_0_ethernet_mdio_i),
         .mdio_rtl_0_ethernet_mdio_o(mdio_rtl_0_ethernet_mdio_o),
         .mdio_rtl_0_ethernet_mdio_t(mdio_rtl_0_ethernet_mdio_t),
-        .onewire_s_axi_tdata(onewire_s_axi_tdata),
-        .onewire_s_axi_tdest(onewire_s_axi_tdest),
-        .onewire_s_axi_tid(onewire_s_axi_tid),
-        .onewire_s_axi_tkeep(onewire_s_axi_tkeep),
-        .onewire_s_axi_tlast(onewire_s_axi_tlast),
-        .onewire_s_axi_tready(onewire_s_axi_tready),
-        .onewire_s_axi_tuser(onewire_s_axi_tuser),
-        .onewire_s_axi_tvalid(onewire_s_axi_tvalid),
         .peripheral_reset(peripheral_reset),
         .pll_clk_n(pll_clk_n),
         .pll_clk_p(pll_clk_p),

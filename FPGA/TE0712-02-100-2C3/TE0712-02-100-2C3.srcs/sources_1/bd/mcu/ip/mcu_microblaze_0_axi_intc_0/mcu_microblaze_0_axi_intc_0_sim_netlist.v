@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.1.1 (win64) Build 2580384 Sat Jun 29 08:12:21 MDT 2019
-// Date        : Sun Aug 11 23:31:44 2019
+// Date        : Mon Aug 12 15:55:37 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_microblaze_0_axi_intc_0/mcu_microblaze_0_axi_intc_0_sim_netlist.v
@@ -59,7 +59,7 @@ module mcu_microblaze_0_axi_intc_0
   (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi RRESP" *) output [1:0]s_axi_rresp;
   (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi RVALID" *) output s_axi_rvalid;
   (* x_interface_info = "xilinx.com:interface:aximm:1.0 s_axi RREADY" *) input s_axi_rready;
-  (* x_interface_info = "xilinx.com:signal:interrupt:1.0 interrupt_input INTERRUPT" *) (* x_interface_parameter = "XIL_INTERFACENAME interrupt_input, SENSITIVITY EDGE_RISING:LEVEL_HIGH:LEVEL_HIGH:LEVEL_HIGH:NULL:LEVEL_HIGH:NULL:EDGE_RISING:LEVEL_HIGH:EDGE_RISING:LEVEL_HIGH:LEVEL_HIGH:EDGE_RISING, PortWidth 13" *) input [12:0]intr;
+  (* x_interface_info = "xilinx.com:signal:interrupt:1.0 interrupt_input INTERRUPT" *) (* x_interface_parameter = "XIL_INTERFACENAME interrupt_input, SENSITIVITY EDGE_RISING:NULL:LEVEL_HIGH:LEVEL_HIGH:NULL:LEVEL_HIGH:NULL:EDGE_RISING:LEVEL_HIGH:EDGE_RISING:LEVEL_HIGH:LEVEL_HIGH:EDGE_RISING, PortWidth 13" *) input [12:0]intr;
   (* x_interface_info = "xilinx.com:signal:clock:1.0 proc_clock CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME proc_clock, ASSOCIATED_BUSIF interrupt, ASSOCIATED_RESET processor_rst, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) input processor_clk;
   (* x_interface_info = "xilinx.com:signal:reset:1.0 proc_reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME proc_reset, POLARITY ACTIVE_HIGH, TYPE PROCESSOR, INSERT_VIP 0" *) input processor_rst;
   (* x_interface_info = "xilinx.com:interface:mbinterrupt:1.0 interrupt INTERRUPT" *) (* x_interface_parameter = "XIL_INTERFACENAME interrupt, SENSITIVITY EDGE_RISING, LOW_LATENCY 1" *) output irq;
@@ -94,7 +94,7 @@ module mcu_microblaze_0_axi_intc_0
   wire [1:0]NLW_U0_processor_ack_out_UNCONNECTED;
 
   (* C_ADDR_WIDTH = "32" *) 
-  (* C_ASYNC_INTR = "-3775" *) 
+  (* C_ASYNC_INTR = "-1727" *) 
   (* C_CASCADE_MASTER = "0" *) 
   (* C_DISABLE_SYNCHRONIZERS = "1" *) 
   (* C_ENABLE_ASYNC = "0" *) 
@@ -1807,7 +1807,7 @@ module mcu_microblaze_0_axi_intc_0_address_decoder
         .O(ip2bus_wrack_reg));
 endmodule
 
-(* C_ADDR_WIDTH = "32" *) (* C_ASYNC_INTR = "-3775" *) (* C_CASCADE_MASTER = "0" *) 
+(* C_ADDR_WIDTH = "32" *) (* C_ASYNC_INTR = "-1727" *) (* C_CASCADE_MASTER = "0" *) 
 (* C_DISABLE_SYNCHRONIZERS = "1" *) (* C_ENABLE_ASYNC = "0" *) (* C_EN_CASCADE_MODE = "0" *) 
 (* C_FAMILY = "artix7" *) (* C_HAS_CIE = "1" *) (* C_HAS_FAST = "1" *) 
 (* C_HAS_ILR = "0" *) (* C_HAS_IPR = "1" *) (* C_HAS_IVR = "1" *) 
@@ -3316,6 +3316,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
   (* async_reg = "true" *) wire [0:1]intr_ff__0;
   (* async_reg = "true" *) wire [0:1]intr_ff__1;
   (* async_reg = "true" *) wire [0:1]intr_ff__2;
+  (* async_reg = "true" *) wire [0:1]intr_ff__3;
   wire [11:0]ipr;
   wire irq;
   wire irq_gen;
@@ -3427,7 +3428,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
   wire second_ack_sync_d1;
   wire second_ack_sync_d2;
 
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT3 #(
     .INIT(8'h32)) 
     \ACK_EN_SYNC_ON_AXI_CLK_GEN.NO_CASCADE_MASTER.first_ack_active_i_1 
@@ -3441,7 +3442,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .D(\ACK_EN_SYNC_ON_AXI_CLK_GEN.NO_CASCADE_MASTER.first_ack_active_i_1_n_0 ),
         .Q(first_ack_active),
         .R(SR));
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \ACK_EN_SYNC_ON_AXI_CLK_GEN.NO_CASCADE_MASTER.first_ack_i_1 
@@ -3671,7 +3672,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .D(intr_ff[1]),
         .Q(intr_d1),
         .R(SR));
-  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
   LUT4 #(
     .INIT(16'h00E0)) 
     \INTR_DETECT_GEN[10].LVL_DETECT_GEN.hw_intr[10]_i_1 
@@ -3686,12 +3687,31 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .D(\INTR_DETECT_GEN[10].LVL_DETECT_GEN.hw_intr[10]_i_1_n_0 ),
         .Q(\INTR_DETECT_GEN[10].LVL_DETECT_GEN.hw_intr_reg ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \INTR_DETECT_GEN[11].ASYNC_GEN.intr_ff_reg[0] 
+       (.C(s_axi_aclk),
+        .CE(1'b1),
+        .D(intr[11]),
+        .Q(intr_ff__2[0]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \INTR_DETECT_GEN[11].ASYNC_GEN.intr_ff_reg[1] 
+       (.C(s_axi_aclk),
+        .CE(1'b1),
+        .D(intr_ff__2[0]),
+        .Q(intr_ff__2[1]),
+        .R(1'b0));
   LUT4 #(
     .INIT(16'h00E0)) 
     \INTR_DETECT_GEN[11].LVL_DETECT_GEN.hw_intr[11]_i_1 
        (.I0(\INTR_DETECT_GEN[11].LVL_DETECT_GEN.hw_intr_reg ),
-        .I1(intr[11]),
+        .I1(intr_ff__2[1]),
         .I2(s_axi_aresetn),
         .I3(p_11_in),
         .O(\INTR_DETECT_GEN[11].LVL_DETECT_GEN.hw_intr[11]_i_1_n_0 ));
@@ -3709,7 +3729,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(intr[12]),
-        .Q(intr_ff__2[0]),
+        .Q(intr_ff__3[0]),
         .R(1'b0));
   (* ASYNC_REG *) 
   (* KEEP = "yes" *) 
@@ -3718,14 +3738,14 @@ module mcu_microblaze_0_axi_intc_0_intc_core
     \INTR_DETECT_GEN[12].ASYNC_GEN.intr_ff_reg[1] 
        (.C(s_axi_aclk),
         .CE(1'b1),
-        .D(intr_ff__2[0]),
-        .Q(intr_ff__2[1]),
+        .D(intr_ff__3[0]),
+        .Q(intr_ff__3[1]),
         .R(1'b0));
   LUT5 #(
     .INIT(32'h0000AE00)) 
     \INTR_DETECT_GEN[12].EDGE_DETECT_GEN.hw_intr[12]_i_1 
        (.I0(\INTR_DETECT_GEN[12].EDGE_DETECT_GEN.hw_intr_reg ),
-        .I1(intr_ff__2[1]),
+        .I1(intr_ff__3[1]),
         .I2(\INTR_DETECT_GEN[12].EDGE_DETECT_GEN.intr_d1_reg_n_0 ),
         .I3(s_axi_aresetn),
         .I4(p_12_in),
@@ -3739,10 +3759,10 @@ module mcu_microblaze_0_axi_intc_0_intc_core
   FDRE \INTR_DETECT_GEN[12].EDGE_DETECT_GEN.intr_d1_reg 
        (.C(s_axi_aclk),
         .CE(1'b1),
-        .D(intr_ff__2[1]),
+        .D(intr_ff__3[1]),
         .Q(\INTR_DETECT_GEN[12].EDGE_DETECT_GEN.intr_d1_reg_n_0 ),
         .R(SR));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
   LUT4 #(
     .INIT(16'h00E0)) 
     \INTR_DETECT_GEN[1].LVL_DETECT_GEN.hw_intr[1]_i_1 
@@ -3757,7 +3777,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .D(\INTR_DETECT_GEN[1].LVL_DETECT_GEN.hw_intr[1]_i_1_n_0 ),
         .Q(\INTR_DETECT_GEN[1].LVL_DETECT_GEN.hw_intr_reg ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  (* SOFT_HLUTNM = "soft_lutpair46" *) 
   LUT4 #(
     .INIT(16'h00E0)) 
     \INTR_DETECT_GEN[2].LVL_DETECT_GEN.hw_intr[2]_i_1 
@@ -3794,7 +3814,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .D(intr[3]),
         .Q(\INTR_DETECT_GEN[3].EDGE_DETECT_GEN.intr_d1_reg_n_0 ),
         .R(SR));
-  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
   LUT4 #(
     .INIT(16'h00E0)) 
     \INTR_DETECT_GEN[4].LVL_DETECT_GEN.hw_intr[4]_i_1 
@@ -3872,7 +3892,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .D(intr_ff__0[1]),
         .Q(\INTR_DETECT_GEN[6].EDGE_DETECT_GEN.intr_d1_reg_n_0 ),
         .R(SR));
-  (* SOFT_HLUTNM = "soft_lutpair46" *) 
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
   LUT4 #(
     .INIT(16'h00E0)) 
     \INTR_DETECT_GEN[7].LVL_DETECT_GEN.hw_intr[7]_i_1 
@@ -3928,7 +3948,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .D(intr_ff__1[1]),
         .Q(\INTR_DETECT_GEN[8].EDGE_DETECT_GEN.intr_d1_reg_n_0 ),
         .R(SR));
-  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
   LUT4 #(
     .INIT(16'h00E0)) 
     \INTR_DETECT_GEN[9].LVL_DETECT_GEN.hw_intr[9]_i_1 
@@ -3968,7 +3988,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
        (.I0(p_0_in37_in),
         .I1(p_1_in),
         .O(\IPR_GEN.ipr[12]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \IPR_GEN.ipr[1]_i_1 
@@ -3987,7 +4007,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
        (.I0(p_0_in54_in),
         .I1(p_1_in55_in),
         .O(\IPR_GEN.ipr[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \IPR_GEN.ipr[4]_i_1 
@@ -4241,28 +4261,28 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(irq_gen_i_6_n_0),
         .I5(\IVR_GEN.ivr[0]_i_9_n_0 ),
         .O(\IVR_GEN.ivr[0]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \IVR_GEN.ivr[0]_i_6 
        (.I0(p_0_in52_in),
         .I1(p_1_in53_in),
         .O(\IVR_GEN.ivr[0]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \IVR_GEN.ivr[0]_i_7 
        (.I0(p_0_in56_in),
         .I1(p_1_in57_in),
         .O(\IVR_GEN.ivr[0]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \IVR_GEN.ivr[0]_i_8 
        (.I0(p_0_in58_in),
         .I1(p_1_in59_in),
         .O(\IVR_GEN.ivr[0]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
   LUT4 #(
     .INIT(16'h0888)) 
     \IVR_GEN.ivr[0]_i_9 
@@ -4320,7 +4340,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I3(p_1_in59_in),
         .I4(irq_gen_i_5_n_0),
         .O(\IVR_GEN.ivr[2]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \IVR_GEN.ivr[3]_i_1 
@@ -4409,7 +4429,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(\INTR_DETECT_GEN[0].EDGE_DETECT_GEN.hw_intr_reg ),
         .I5(p_38_out),
         .O(\REG_GEN[0].isr[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \REG_GEN[0].isr[0]_i_3 
@@ -4480,7 +4500,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(\INTR_DETECT_GEN[10].LVL_DETECT_GEN.hw_intr_reg ),
         .I5(p_28_out),
         .O(\REG_GEN[10].isr[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \REG_GEN[10].isr[10]_i_2 
@@ -4551,7 +4571,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(\INTR_DETECT_GEN[11].LVL_DETECT_GEN.hw_intr_reg ),
         .I5(p_27_out),
         .O(\REG_GEN[11].isr[11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \REG_GEN[11].isr[11]_i_2 
@@ -4622,7 +4642,6 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(\INTR_DETECT_GEN[12].EDGE_DETECT_GEN.hw_intr_reg ),
         .I5(p_26_out),
         .O(\REG_GEN[12].isr[12]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \REG_GEN[12].isr[12]_i_2 
@@ -4693,7 +4712,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(\INTR_DETECT_GEN[1].LVL_DETECT_GEN.hw_intr_reg ),
         .I5(p_37_out),
         .O(\REG_GEN[1].isr[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \REG_GEN[1].isr[1]_i_2 
@@ -4764,7 +4783,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(\INTR_DETECT_GEN[2].LVL_DETECT_GEN.hw_intr_reg ),
         .I5(p_36_out),
         .O(\REG_GEN[2].isr[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  (* SOFT_HLUTNM = "soft_lutpair46" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \REG_GEN[2].isr[2]_i_2 
@@ -4906,7 +4925,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(\INTR_DETECT_GEN[4].LVL_DETECT_GEN.hw_intr_reg ),
         .I5(p_34_out),
         .O(\REG_GEN[4].isr[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \REG_GEN[4].isr[4]_i_2 
@@ -5119,7 +5138,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(\INTR_DETECT_GEN[7].LVL_DETECT_GEN.hw_intr_reg ),
         .I5(p_31_out),
         .O(\REG_GEN[7].isr[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair46" *) 
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \REG_GEN[7].isr[7]_i_2 
@@ -5190,7 +5209,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(\INTR_DETECT_GEN[8].EDGE_DETECT_GEN.hw_intr_reg ),
         .I5(p_30_out),
         .O(\REG_GEN[8].isr[8]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \REG_GEN[8].isr[8]_i_2 
@@ -5261,7 +5280,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(\INTR_DETECT_GEN[9].LVL_DETECT_GEN.hw_intr_reg ),
         .I5(p_29_out),
         .O(\REG_GEN[9].isr[9]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \REG_GEN[9].isr[9]_i_2 
@@ -5371,7 +5390,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(p_3_in),
         .I5(p_10_in),
         .O(ack_or_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     ack_or_i_3
@@ -5416,7 +5435,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I4(p_0_in44_in),
         .I5(p_1_in45_in),
         .O(irq_gen_i_3_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
   LUT4 #(
     .INIT(16'hF888)) 
     irq_gen_i_4
@@ -5425,7 +5444,7 @@ module mcu_microblaze_0_axi_intc_0_intc_core
         .I2(p_1_in47_in),
         .I3(p_0_in46_in),
         .O(irq_gen_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
   LUT4 #(
     .INIT(16'h0777)) 
     irq_gen_i_5

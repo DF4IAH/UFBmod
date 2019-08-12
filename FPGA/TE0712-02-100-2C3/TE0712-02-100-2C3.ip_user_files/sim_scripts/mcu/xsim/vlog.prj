@@ -120,6 +120,7 @@ verilog xil_defaultlib --include "../../../../TE0712-02-100-2C3.srcs/sources_1/b
 "../../../bd/mcu/ip/mcu_xlconstant_0_2/sim/mcu_xlconstant_0_2.v" \
 "../../../bd/mcu/ip/mcu_xlconcat_0_0/sim/mcu_xlconcat_0_0.v" \
 "../../../bd/mcu/ip/mcu_xbar_1/sim/mcu_xbar_1.v" \
+"../../../bd/mcu/ip/mcu_CDC_LVDS_in_0/sim/mcu_CDC_LVDS_in_0.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_14/sim/mcu_auto_pc_14.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \

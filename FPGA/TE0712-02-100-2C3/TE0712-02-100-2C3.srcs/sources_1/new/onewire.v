@@ -20,34 +20,30 @@
 
 
 module onewire(
-  rst_i,
-  clk_i,
+    rst_i,
+    clk_i,
+    
+    onewire_io,
+    
+    dmr_1_onewire_we_in,
+    gpio_rtl_1_onewire_gpio_out,
+    gpio_rtl_1_onewire_gpio_in,
+    
+    dmr_1_onewire_a_in,
+    dmr_1_onewire_d_in
+  );
   
-  onewire_io,
-
-  gpio_rtl_1_onewire_addr_out,
-  gpio_rtl_2_onewire_data_out,
-  gpio_rtl_2_onewire_data_in,
-        
-  wr_i,
-  stb_i,
-  
-  rdy_o
-);
-
   input  rst_i;
   input  clk_i;
   
   inout  onewire_io;
   
-  input  [14:0]gpio_rtl_1_onewire_addr_out;
-  input  [ 7:0]gpio_rtl_2_onewire_data_out;
-  output [ 7:0]gpio_rtl_2_onewire_data_in;
+  output dmr_1_onewire_we_in;
+  input  [31:0]gpio_rtl_1_onewire_gpio_out;
+  output [31:0]gpio_rtl_1_onewire_gpio_in;
   
-  input  wr_i;
-  input  stb_i;
-  
-  output rdy_o;
+  output [ 3:0]dmr_1_onewire_a_in;
+  output [31:0]dmr_1_onewire_d_in;
 
 
 // TIMINGS
@@ -83,12 +79,13 @@ reg [ 7:0]data_r;
 
 reg wr_i_r;
 reg stb_i_r;
-reg rdy_o_r;
+reg busy_o_r;
 
 reg [7:0]sm1_send_r;
 reg [7:0]sm1_data_r;
 reg sm1_send_stb;
 reg sm1_receive_stb;
+reg [4:0]sm1_receive_ctr;
 
 reg sm2_send_busy;
 reg sm2_receive_busy;
@@ -96,6 +93,39 @@ reg [7:0]sm2_read_r;
 reg [19:0]sm2_bittrain;
 reg [ 4:0]sm2_bittrain_ctr;
 reg [ 8:0]sm2_10ns_timer_val;
+
+
+// output dmr_1_onewire_a_in_r
+reg dmr_1_onewire_we_in_r;
+reg [ 3:0]dmr_1_onewire_a_in_r;
+reg [31:0]dmr_1_onewire_d_in_r;
+reg [31:0]c8to32_r;
+reg [ 1:0]c8to32_ctr;
+
+assign dmr_1_onewire_we_in  = dmr_1_onewire_we_in_r;
+assign dmr_1_onewire_a_in   = dmr_1_onewire_a_in_r;
+assign dmr_1_onewire_d_in   = dmr_1_onewire_d_in_r;
+
+
+// input  gpio_rtl_1_onewire_gpio_out
+wire [14:0]reg_adr_i;
+wire [ 7:0]reg_dat_i;
+wire [4:0]ctr_load;
+wire wr_i;
+wire stb_i;
+
+assign reg_adr_i = gpio_rtl_1_onewire_gpio_out[14:0];
+assign reg_dat_i = gpio_rtl_1_onewire_gpio_out[23:16];
+assign ctr_load  = gpio_rtl_1_onewire_gpio_out[28:24];
+assign wr_i      = gpio_rtl_1_onewire_gpio_out[30];
+assign stb_i     = gpio_rtl_1_onewire_gpio_out[31];
+
+
+// output gpio_rtl_1_onewire_gpio_in
+wire busy_o;
+
+assign gpio_rtl_1_onewire_gpio_in[0] = busy_o;
+
 
 
 // IOBUF
@@ -118,28 +148,28 @@ always @(posedge clk_i) begin
     data_r          <=  8'b0;
     wr_i_r          <=  1'b0;
     stb_i_r         <=  1'b0;
-    rdy_o_r         <=  1'b0;
+    busy_o_r        <=  1'b0;
   end
   else begin
     /* Write to address and data registers */    
     if (stb_i && !stb_i_r) begin
         // Flash is 256 kBit type, mirror upper region
         addr_r[15]      <= 1'b0;
-        addr_r[14:0]    <= gpio_rtl_1_onewire_addr_out;
+        addr_r[14:0]    <= reg_adr_i;
         
         wr_i_r          <= wr_i;
-        rdy_o_r         <= 1'b0;
+        busy_o_r        <= 1'b1;
         
         if (wr_i) begin
-            data_r <= gpio_rtl_2_onewire_data_out;
+            data_r <= reg_dat_i;
         end 
         else begin
             data_r <= 8'h00;
         end
     end
     else if (sm2_state == 5'h0F) begin
-        data_r  <= sm1_data_r;
-        rdy_o_r <= 1'b1;
+        //data_r      <= sm1_data_r;
+        //busy_o_r    <= 1'b0;
     end
     
     // One clock delayed signals
@@ -147,20 +177,26 @@ always @(posedge clk_i) begin
   end
 end
 
-assign gpio_rtl_2_onewire_data_in   = data_r;
-assign rdy_o                        = rdy_o_r;
+//assign gpio_rtl_2_onewire_data_in   = data_r;
+//assign busy_o                       = rdy_o_r;
 
 
 
 // FSM - the protocol master
 always @(posedge clk_i) begin
   if (rst_i) begin
-    sm1_send_r          <=  8'h00;
-    sm1_send_stb        <=  1'b0;
-    sm1_data_r          <=  8'h00;
-    sm1_receive_stb     <=  1'b0;
+    sm1_send_r              <=  8'h00;
+    sm1_send_stb            <=  1'b0;
+    sm1_data_r              <=  8'h00;
+    sm1_receive_stb         <=  1'b0;
+    sm1_receive_ctr         <=  5'd0;
     
-    sm1_state           <=  5'h00;
+    dmr_1_onewire_a_in_r    <=  3'h0;
+    dmr_1_onewire_d_in_r    <= 32'h00000000;
+    c8to32_r                <= 32'h00000000;
+    c8to32_ctr              <=  2'd0;
+    
+    sm1_state               <=  5'h00;
   end 
   else begin
     // FSM
@@ -267,23 +303,67 @@ always @(posedge clk_i) begin
     // READ - Wait for address LSB done, switch to receive mode
     5'h0A:
         if (!sm2_send_busy) begin
+            sm1_receive_ctr <= ctr_load;
             sm1_receive_stb <= 1'b1;
+            sm1_state       <= 5'h0C;
+        end
+    
+    5'h0B:
+        begin
+            dmr_1_onewire_we_in_r <= 1'b0;
+            
+            if (!sm2_receive_busy) begin
+                // Write received data to the memory
+                if (c8to32_ctr == 2'h3) begin
+                    dmr_1_onewire_d_in_r[31:24] <= c8to32_r[23:0];
+                    dmr_1_onewire_d_in_r[ 7: 0] <= sm2_read_r;
+                end
+                c8to32_r[31:8]  <= c8to32_r[23:0];
+                c8to32_r[ 7:0]  <= sm2_read_r;
+                
+                if (sm1_receive_ctr) begin
+                    sm1_receive_ctr <= sm1_receive_ctr - 1'd1;
+                    sm1_receive_stb <= 1'b1;
+                    sm1_state       <= 5'h0C;
+                end
+                else begin
+                    sm1_state       <= 5'h0E;
+                end
+            end
+        end
+    
+    // Handshake
+    5'h0C:
+        if (sm2_receive_busy) begin
+            if (c8to32_ctr == 2'h3) begin
+                dmr_1_onewire_we_in_r <= 1'b1;
+            end
+            dmr_1_onewire_a_in_r    <= dmr_1_onewire_a_in_r + 1'd1;
+            c8to32_ctr              <= c8to32_ctr + 1'd1;
+            
+            // Release strobe
+            sm1_receive_stb <= 1'b0;
             sm1_state       <= 5'h0B;
         end
     
-    // Handshake    
-    5'h0B:
-        if (sm2_receive_busy) begin
-            // Release strobe
-            sm1_receive_stb <= 1'b0;
+    5'h0E:
+        if (!c8to32_ctr) begin
+            dmr_1_onewire_we_in_r <= 1'b1;
             sm1_state       <= 5'h0F;
         end
-    
-    // READ - read ONEWIRE data
+        else begin
+            dmr_1_onewire_d_in_r[31:24] <= c8to32_r[23:0];
+            dmr_1_onewire_d_in_r[ 7: 0] <= 8'b0;
+            c8to32_ctr                  <= c8to32_ctr + 1'd1;
+            if (c8to32_ctr == 2'h3) begin
+                dmr_1_onewire_a_in_r    <= dmr_1_onewire_a_in_r + 1'd1;
+            end
+        end
+
     5'h0F:
-        if (!sm2_receive_busy) begin
-            sm1_data_r      <= sm2_read_r;
-            sm1_state       <= 5'h00;
+        begin
+            dmr_1_onewire_we_in_r   <= 1'b0;
+            sm1_state               <= 5'h00;
         end
     
     

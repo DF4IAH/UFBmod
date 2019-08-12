@@ -364,17 +364,21 @@ module top(
     
     wire board_lcd_resetn_obuf;
     wire ddr3_init_calib_complete_obuf;
+    wire [3:0]dmr_1_onewire_a_in;
+    wire [31:0]dmr_1_onewire_d_in;
     wire fpga_led_rgb_red_obuf;
     wire fpga_led_rgb_green_obuf;
     wire fpga_led_rgb_blue_obuf;
     wire [7:0]gpio_rtl_0_multi_tri_o;
+    wire [31:0]gpio_rtl_1_onewire_gpio_in;
+    wire [31:0]gpio_rtl_1_onewire_gpio_out;
     wire mb_axi_clk_100mhz;
     wire peripheral_reset;
     wire pwm0_lcd_bl_obuf;
     wire ufb_fpga_ft_12mhz_obuf;
     wire ufb_fpga_ft_resetn_obuf;
     wire ufb_trx_rstn_obuf;
- 
+
 
 
     // RFX
@@ -485,14 +489,13 @@ module top(
   
         .onewire_io(onewire),
 
-        .gpio_rtl_1_onewire_addr_out(gpio_rtl_1_onewire_addr_out),
-        .gpio_rtl_2_onewire_data_in(gpio_rtl_2_onewire_data_in),
-        .gpio_rtl_2_onewire_data_out(gpio_rtl_2_onewire_data_out[7:0]),
-        
-        .wr_i(gpio_rtl_2_onewire_data_out[14]),
-        .stb_i(gpio_rtl_2_onewire_data_out[15])
+        .gpio_rtl_1_onewire_gpio_out(gpio_rtl_1_onewire_gpio_out),
+        .gpio_rtl_1_onewire_gpio_in(gpio_rtl_1_onewire_gpio_in),
+
+        .dmr_1_onewire_a_in(dmr_1_onewire_a_in),
+        .dmr_1_onewire_d_in(dmr_1_onewire_d_in)
     );
-    
+   
     
     // FTDI
     wire ufb_fpga_ft_cts_n;
@@ -619,11 +622,12 @@ module top(
         
         
     // Onewire
-        .gpio_rtl_1_onewire_addr_out_tri_o(gpio_rtl_1_onewire_addr_out),
-        .gpio_rtl_2_onewire_data_out_tri_o(gpio_rtl_2_onewire_data_out),
-        .gpio_rtl_2_onewire_data_in_tri_i(gpio_rtl_2_onewire_data_in),
-
-
+        .dmr_1_onewire_a_in(dmr_1_onewire_a_in),
+        .dmr_1_onewire_d_in(dmr_1_onewire_d_in),
+        .gpio_rtl_1_onewire_gpio_in(gpio_rtl_1_onewire_gpio_in),
+        .gpio_rtl_1_onewire_gpio_out_tri_o(gpio_rtl_1_onewire_gpio_out),
+        
+        
     // UFBmod special signals
     // TRX LVDS lanes
         .ufb_trx_rxclk_p(ufb_trx_rxclk_p),
