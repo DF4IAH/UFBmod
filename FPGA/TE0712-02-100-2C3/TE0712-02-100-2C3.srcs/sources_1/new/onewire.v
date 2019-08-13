@@ -25,12 +25,12 @@ module onewire(
     
     onewire_io,
     
-    dmr_1_onewire_we_in,
-    gpio_rtl_1_onewire_gpio_out,
     gpio_rtl_1_onewire_gpio_in,
+    gpio_rtl_1_onewire_gpio_out,
     
     dmr_1_onewire_a_in,
-    dmr_1_onewire_d_in
+    dmr_1_onewire_d_in,
+    dmr_1_onewire_we_in
   );
   
   input  rst_i;
@@ -38,12 +38,12 @@ module onewire(
   
   inout  onewire_io;
   
-  output dmr_1_onewire_we_in;
-  input  [31:0]gpio_rtl_1_onewire_gpio_out;
   output [31:0]gpio_rtl_1_onewire_gpio_in;
+  input  [31:0]gpio_rtl_1_onewire_gpio_out;
   
   output [ 3:0]dmr_1_onewire_a_in;
   output [31:0]dmr_1_onewire_d_in;
+  output dmr_1_onewire_we_in;
 
 
 // TIMINGS
@@ -95,6 +95,7 @@ reg [ 4:0]sm2_bittrain_ctr;
 reg [ 8:0]sm2_10ns_timer_val;
 
 
+
 // output dmr_1_onewire_a_in_r
 reg dmr_1_onewire_we_in_r;
 reg [ 3:0]dmr_1_onewire_a_in_r;
@@ -102,9 +103,10 @@ reg [31:0]dmr_1_onewire_d_in_r;
 reg [31:0]c8to32_r;
 reg [ 1:0]c8to32_ctr;
 
-assign dmr_1_onewire_we_in  = dmr_1_onewire_we_in_r;
 assign dmr_1_onewire_a_in   = dmr_1_onewire_a_in_r;
 assign dmr_1_onewire_d_in   = dmr_1_onewire_d_in_r;
+assign dmr_1_onewire_we_in  = dmr_1_onewire_we_in_r;
+
 
 
 // input  gpio_rtl_1_onewire_gpio_out
@@ -121,23 +123,24 @@ assign wr_i      = gpio_rtl_1_onewire_gpio_out[30];
 assign stb_i     = gpio_rtl_1_onewire_gpio_out[31];
 
 
-// output gpio_rtl_1_onewire_gpio_in
-wire busy_o;
 
-assign gpio_rtl_1_onewire_gpio_in[0] = busy_o;
+// output gpio_rtl_1_onewire_gpio_in
+assign gpio_rtl_1_onewire_gpio_in[0]        = busy_o_r;
+assign gpio_rtl_1_onewire_gpio_in[31:1]     = 31'b0;
 
 
 
 // IOBUF
-reg  onewire_o_r;
 reg  onewire_t_r;
+reg  onewire_o_r;
 wire onewire_i;
 
-IOBUF onewire_iobuf
-       (.I(onewire_o_r),
-        .IO(onewire_io),
-        .O(onewire_i),
-        .T(onewire_t_r)); 
+IOBUF onewire_iobuf(
+    .IO(onewire_io),
+    .T(onewire_t_r),
+    .I(onewire_o_r),
+    .O(onewire_i)
+); 
 
 
 
@@ -162,23 +165,16 @@ always @(posedge clk_i) begin
         
         if (wr_i) begin
             data_r <= reg_dat_i;
-        end 
-        else begin
-            data_r <= 8'h00;
         end
     end
     else if (sm2_state == 5'h0F) begin
-        //data_r      <= sm1_data_r;
-        //busy_o_r    <= 1'b0;
+        busy_o_r    <= 1'b0;
     end
     
     // One clock delayed signals
     stb_i_r <= stb_i;
   end
 end
-
-//assign gpio_rtl_2_onewire_data_in   = data_r;
-//assign busy_o                       = rdy_o_r;
 
 
 
@@ -193,6 +189,7 @@ always @(posedge clk_i) begin
     
     dmr_1_onewire_a_in_r    <=  3'h0;
     dmr_1_onewire_d_in_r    <= 32'h00000000;
+    dmr_1_onewire_we_in_r   <=  1'b0;
     c8to32_r                <= 32'h00000000;
     c8to32_ctr              <=  2'd0;
     
@@ -211,9 +208,8 @@ always @(posedge clk_i) begin
             sm1_send_r      <= 8'h00;
             sm1_send_stb    <= 1'b0;
 
-            sm1_send_r      <= c_startHeader;
-
             if (stb_i_r) begin
+                sm1_send_r      <= c_startHeader;
                 sm1_send_stb    <= 1'b1;
                 sm1_state       <= 5'h01;
             end
@@ -224,13 +220,13 @@ always @(posedge clk_i) begin
         if (sm2_send_busy) begin
             // Release strobe
             sm1_send_stb    <= 1'b0;
-            sm1_send_r      <= c_deviceAddr;
             sm1_state       <= 5'h02;
         end
     
     // Wait for sync pattern done    
     5'h02:
         if (!sm2_send_busy) begin
+            sm1_send_r      <= c_deviceAddr;
             sm1_send_stb    <= 1'b1;
             sm1_state       <= 5'h03;
         end
@@ -243,12 +239,10 @@ always @(posedge clk_i) begin
             
             if (!wr_i_r) begin
                 // READ access
-                sm1_send_r      <= c_cmdRead;
                 sm1_state <= 5'h04;
             end
             else begin
                 // WRITE access
-                sm1_send_r      <= c_cmdWrite;
                 sm1_state <= 5'h10;
             end
         end
@@ -256,6 +250,7 @@ always @(posedge clk_i) begin
     // READ - Wait for device address done
     5'h04:
         if (!sm2_send_busy) begin
+            sm1_send_r      <= c_cmdRead;
             sm1_send_stb    <= 1'b1;
             sm1_state       <= 5'h05;
         end
@@ -265,13 +260,13 @@ always @(posedge clk_i) begin
         if (sm2_send_busy) begin
             // Release strobe
             sm1_send_stb    <= 1'b0;
-            sm1_send_r      <= addr_r[15:8];
             sm1_state       <= 5'h06;
         end
     
     // READ - Wait for command done
     5'h06:
         if (!sm2_send_busy) begin
+            sm1_send_r      <= addr_r[15:8];
             sm1_send_stb    <= 1'b1;
             sm1_state       <= 5'h07;
         end
@@ -281,13 +276,13 @@ always @(posedge clk_i) begin
         if (sm2_send_busy) begin
             // Release strobe
             sm1_send_stb    <= 1'b0;
-            sm1_send_r      <= addr_r[7:0];
             sm1_state       <= 5'h08;
         end
     
     // READ - Wait for address MSB done
     5'h08:
         if (!sm2_send_busy) begin
+            sm1_send_r      <= addr_r[7:0];
             sm1_send_stb    <= 1'b1;
             sm1_state       <= 5'h09;
         end
@@ -371,7 +366,8 @@ always @(posedge clk_i) begin
     5'h10:
         if (!sm2_send_busy) begin
             // Not implemented yet
-            sm1_state <= 5'h00;
+            sm1_send_r      <= c_cmdWrite;
+            sm1_state       <= 5'h00;
         end
     
     endcase

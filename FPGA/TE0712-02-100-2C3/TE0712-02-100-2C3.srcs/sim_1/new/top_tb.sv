@@ -296,60 +296,77 @@ module top_tb;
     
     initial 
     begin
-    reset = 1;
-    sys_rst = 1;
+    reset = 1'b1;
+    sys_rst = 1'b1;
     
-    pll_clk_p = 0;
-    pll_clk_n = 1;
+    pll_clk_p = 1'b0;
+    pll_clk_n = 1'b1;
     
-    mgt_clk0_p = 0;
-    mgt_clk0_n = 1;
+    mgt_clk0_p = 1'b0;
+    mgt_clk0_n = 1'b1;
     
-    ufb_trx_rxclk_p = 0;
-    ufb_trx_rxclk_n = 1;
+    ufb_trx_rxclk_p = 1'b0;
+    ufb_trx_rxclk_n = 1'b1;
     
-    board_rotenc_push = 1;
-    board_rotenc_i    = 1;
-    board_rotenc_q    = 1;
+    board_rotenc_push = 1'b1;
+    board_rotenc_i    = 1'b1;
+    board_rotenc_q    = 1'b1;
+    end
+
+
+    // Reset lines
+    initial
+    begin
+        #1000 reset = 1'b0;
     end
     
-    
-    // Reset lines
-
     initial
-    #1000 reset = 0;
-     
-    initial
-    #1000 sys_rst = 0;
+    begin
+        #1000 sys_rst = 1'b0;
+    end
 
 
     // Clocks
+    always
+    begin
+        #10 pll_clk_p = !pll_clk_p;
+    end
     
     always
-    #10 pll_clk_p = !pll_clk_p;
-
-    always
-    #10 pll_clk_n = !pll_clk_n;
-
-
-    always
-    #15.625 ufb_trx_rxclk_p = !ufb_trx_rxclk_p;
-
-    always
-    #15.625 ufb_trx_rxclk_n = !ufb_trx_rxclk_n;
-
-
-    always
-    #4.16666666 mgt_clk0_p = !mgt_clk0_p;
-
-    always
-    #4.16666666 mgt_clk0_n = !mgt_clk0_n;
-
-
-    always
-    #1000  board_rotenc_i = !board_rotenc_i;
-
-    always
-    #1200  board_rotenc_q = !board_rotenc_q;
+    begin
+        #10 pll_clk_n = !pll_clk_n;
+    end
     
+    always
+    begin
+        #15.625 ufb_trx_rxclk_p = !ufb_trx_rxclk_p;
+    end
+    
+    always
+    begin
+        #15.625 ufb_trx_rxclk_n = !ufb_trx_rxclk_n;
+    end
+    
+    
+    always
+    begin
+        #4.16666666 mgt_clk0_p = !mgt_clk0_p;
+    end
+    
+    always
+    begin
+        #4.16666666 mgt_clk0_n = !mgt_clk0_n;
+    end
+    
+    
+    always
+    begin
+        #1000  board_rotenc_i = !board_rotenc_i;
+    end
+    
+    always
+    begin
+        #1200  board_rotenc_q = !board_rotenc_q;
+    end
+
 endmodule
