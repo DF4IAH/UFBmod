@@ -11,17 +11,18 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="9207744500fs"></ZoomStartTime>
-      <ZoomEndTime time="9761244501fs"></ZoomEndTime>
-      <Cursor1Time time="9755000000fs"></Cursor1Time>
+      <ZoomStartTime time="70000000000fs"></ZoomStartTime>
+      <ZoomEndTime time="182100000001fs"></ZoomEndTime>
+      <Cursor1Time time="106065000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="274"></NameColumnWidth>
-      <ValueColumnWidth column_width="154"></ValueColumnWidth>
+      <ValueColumnWidth column_width="150"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="9" />
    <wave_markers>
-      <marker time="2385000000" label="" />
+      <marker time="86075000000" label="" />
+      <marker time="106065000000" label="" />
    </wave_markers>
    <wvobject fp_name="/onewire_tb/rst_i" type="logic">
       <obj_property name="ElementShortName">rst_i</obj_property>
@@ -142,8 +143,8 @@
             <obj_property name="Radix">HEXRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/onewire_tb/onewire_i/c8to32_ctr" type="array">
-            <obj_property name="ElementShortName">c8to32_ctr[1:0]</obj_property>
-            <obj_property name="ObjectShortName">c8to32_ctr[1:0]</obj_property>
+            <obj_property name="ElementShortName">c8to32_ctr[2:0]</obj_property>
+            <obj_property name="ObjectShortName">c8to32_ctr[2:0]</obj_property>
             <obj_property name="CustomSignalColor">#FFA500</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
             <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
@@ -174,8 +175,8 @@
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/onewire_tb/onewire_i/sm2_10ns_timer_val" type="array">
-         <obj_property name="ElementShortName">sm2_10ns_timer_val[8:0]</obj_property>
-         <obj_property name="ObjectShortName">sm2_10ns_timer_val[8:0]</obj_property>
+         <obj_property name="ElementShortName">sm2_10ns_timer_val[9:0]</obj_property>
+         <obj_property name="ObjectShortName">sm2_10ns_timer_val[9:0]</obj_property>
          <obj_property name="CustomSignalColor">#0000A0</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>

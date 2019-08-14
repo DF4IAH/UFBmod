@@ -49,10 +49,15 @@ output dmr_1_onewire_we_in;
 
 // TIMINGS
 parameter c_freq_hz                     = 100000000;
-//parameter c_te_half_10ns              = 9'd499;                 // T_HDR and 1/2 of T_E = 5us
-parameter c_te_1div4_10ns               = 9'd3;  // TODO: quick debugging 249
-parameter c_te_2div4_10ns               = 9'd6;  // TODO: quick debugging 499
-parameter c_te_3div4_10ns               = 9'd9;  // TODO: quick debugging 749
+
+parameter c_te_1div4_10ns               = 10'd249;
+parameter c_te_2div4_10ns               = 10'd499;  // T_HDR and 1/2 of T_E = 5us
+parameter c_te_3div4_10ns               = 10'd749;
+
+//parameter c_te_1div4_10ns             = 10'd3;  // TODO: quick debugging
+//parameter c_te_2div4_10ns             = 10'd6;  // TODO: quick debugging
+//parameter c_te_3div4_10ns             = 10'd9;  // TODO: quick debugging
+
 
 // DEVICE PROTOCOL
 parameter c_startHeader                 = 8'b01010101;
@@ -96,7 +101,7 @@ reg sm2_receive_busy;
 reg [7:0]sm2_read_r;
 reg [19:0]sm2_bittrain;
 reg [ 4:0]sm2_bittrain_ctr;
-reg [ 8:0]sm2_10ns_timer_val;
+reg [ 9:0]sm2_10ns_timer_val;
 
 
 
@@ -334,13 +339,11 @@ always @(posedge clk_i) begin
             if (!sm2_receive_busy) begin
                 // Write received data to the memory
                 if (c8to32_ctr == 3'd4) begin
-                    // Use state before shift
+                    dmr_1_onewire_a_in_r        <= dmr_1_onewire_a_in_r + 1'h1;
                     dmr_1_onewire_d_in_r[31: 8] <= c8to32_r[23: 0];
                     dmr_1_onewire_d_in_r[ 7: 0] <= sm2_read_r;
-
-                    dmr_1_onewire_a_in_r        <= dmr_1_onewire_a_in_r + 1'h1;
                 end
-
+                
                 // Shift by one byte
                 c8to32_r[31:8]          <= c8to32_r[23: 0];
                 c8to32_r[ 7:0]          <= sm2_read_r;
@@ -352,6 +355,11 @@ always @(posedge clk_i) begin
                     sm1_state           <= 5'h0C;
                 end
                 else begin
+                    // Do not increase when word is already complete
+                    if (c8to32_ctr == 3'd4) begin
+                        dmr_1_onewire_a_in_r <= dmr_1_onewire_a_in_r; 
+                    end
+                    
                     sm1_state           <= 5'h0D;
                 end
             end
@@ -379,17 +387,16 @@ always @(posedge clk_i) begin
     5'h0D:
         if (c8to32_ctr == 3'd4) begin
             // Push word to memory
-            dmr_1_onewire_we_in_r       <= 1'b1;
-            
-            // Next address
             dmr_1_onewire_a_in_r        <= dmr_1_onewire_a_in_r + 1'h1;
+            dmr_1_onewire_d_in_r        <= c8to32_r;
+            dmr_1_onewire_we_in_r       <= 1'b1;
             c8to32_ctr                  <= 3'd0;
             
             sm1_state                   <= 5'h0F;
         end
         else begin
-            dmr_1_onewire_d_in_r[31:24] <= c8to32_r[23: 0];
-            dmr_1_onewire_d_in_r[ 7: 0] <= 8'h00;
+            c8to32_r[31: 8]             <= c8to32_r[23: 0];
+            c8to32_r[ 7: 0]             <= 8'h00;
             
             c8to32_ctr                  <= c8to32_ctr + 1'd1;
         end
@@ -398,6 +405,7 @@ always @(posedge clk_i) begin
     5'h0F:
         begin
             dmr_1_onewire_we_in_r       <= 1'b0;
+            c8to32_r                    <= 32'h00000000; 
             sm1_state                   <= 5'h00;
         end
     
@@ -425,7 +433,7 @@ always @(posedge clk_i) begin
         sm2_bittrain                    <= 20'h0;
         sm2_bittrain_ctr                <=  5'd0;
         
-        sm2_10ns_timer_val              <=  9'd0;
+        sm2_10ns_timer_val              <= 10'd0;
         
         onewire_o_r                     <=  1'b0;
         onewire_t_r                     <=  1'b1;

@@ -84,7 +84,7 @@ module onewire_tb;
         rst_i = 1'b0;
         
     #20
-        gpio_rtl_1_onewire_gpio_out     = 32'h000600FA;
+        gpio_rtl_1_onewire_gpio_out     = 32'h060000FA;
         
     #20
         gpio_rtl_1_onewire_gpio_out     = 32'h860000FA;
@@ -93,8 +93,8 @@ module onewire_tb;
         gpio_rtl_1_onewire_gpio_out     = 32'h00000000;
         
         
-    // End of stimulation
-    #1000000
+    // End of stimulation after 1 sec
+    #1000000000
         rst_i = 1'b1;
     end
 
