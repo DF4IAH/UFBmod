@@ -87,14 +87,14 @@ module onewire_tb;
         gpio_rtl_1_onewire_gpio_out     = 32'h000600FA;
         
     #20
-        gpio_rtl_1_onewire_gpio_out     = 32'h800600FA;
+        gpio_rtl_1_onewire_gpio_out     = 32'h860000FA;
         
     #40
         gpio_rtl_1_onewire_gpio_out     = 32'h00000000;
         
         
     // End of stimulation
-    #10000
+    #1000000
         rst_i = 1'b1;
     end
 

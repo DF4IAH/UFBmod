@@ -11,15 +11,18 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2307291000fs"></ZoomStartTime>
-      <ZoomEndTime time="2415991001fs"></ZoomEndTime>
-      <Cursor1Time time="2415000000fs"></Cursor1Time>
+      <ZoomStartTime time="9207744500fs"></ZoomStartTime>
+      <ZoomEndTime time="9761244501fs"></ZoomEndTime>
+      <Cursor1Time time="9755000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="300"></NameColumnWidth>
-      <ValueColumnWidth column_width="158"></ValueColumnWidth>
+      <NameColumnWidth column_width="274"></NameColumnWidth>
+      <ValueColumnWidth column_width="154"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="9" />
+   <wave_markers>
+      <marker time="2385000000" label="" />
+   </wave_markers>
    <wvobject fp_name="/onewire_tb/rst_i" type="logic">
       <obj_property name="ElementShortName">rst_i</obj_property>
       <obj_property name="ObjectShortName">rst_i</obj_property>
@@ -40,19 +43,17 @@
          <obj_property name="ElementShortName">onewire_io</obj_property>
          <obj_property name="ObjectShortName">onewire_io</obj_property>
       </wvobject>
-      <wvobject fp_name="/onewire_tb/onewire_io_i" type="logic">
-         <obj_property name="ElementShortName">onewire_io_i</obj_property>
-         <obj_property name="ObjectShortName">onewire_io_i</obj_property>
+      <wvobject fp_name="/onewire_tb/onewire_i/onewire_i" type="logic">
+         <obj_property name="ElementShortName">onewire_i</obj_property>
+         <obj_property name="ObjectShortName">onewire_i</obj_property>
       </wvobject>
-      <wvobject fp_name="/onewire_tb/onewire_io_o" type="logic">
-         <obj_property name="ElementShortName">onewire_io_o</obj_property>
-         <obj_property name="ObjectShortName">onewire_io_o</obj_property>
+      <wvobject fp_name="/onewire_tb/onewire_i/onewire_o_r" type="logic">
+         <obj_property name="ElementShortName">onewire_o_r</obj_property>
+         <obj_property name="ObjectShortName">onewire_o_r</obj_property>
       </wvobject>
-      <wvobject fp_name="/onewire_tb/onewire_io_t" type="logic">
-         <obj_property name="ElementShortName">onewire_io_t</obj_property>
-         <obj_property name="ObjectShortName">onewire_io_t</obj_property>
-         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
+      <wvobject fp_name="/onewire_tb/onewire_i/onewire_t_r" type="logic">
+         <obj_property name="ElementShortName">onewire_t_r</obj_property>
+         <obj_property name="ObjectShortName">onewire_t_r</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="/onewire_tb/gpio_rtl_1_onewire_gpio_in" type="array">
@@ -133,13 +134,6 @@
          <obj_property name="label">Memory prepare</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
-         <wvobject fp_name="/onewire_tb/onewire_i/ctr_load" type="array">
-            <obj_property name="ElementShortName">ctr_load[4:0]</obj_property>
-            <obj_property name="ObjectShortName">ctr_load[4:0]</obj_property>
-            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
-            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-         </wvobject>
          <wvobject fp_name="/onewire_tb/onewire_i/c8to32_r" type="array">
             <obj_property name="ElementShortName">c8to32_r[31:0]</obj_property>
             <obj_property name="ObjectShortName">c8to32_r[31:0]</obj_property>
@@ -167,13 +161,6 @@
          <obj_property name="UseCustomSignalColor">true</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/onewire_tb/onewire_i/sm2_10ns_timer_val" type="array">
-         <obj_property name="ElementShortName">sm2_10ns_timer_val[8:0]</obj_property>
-         <obj_property name="ObjectShortName">sm2_10ns_timer_val[8:0]</obj_property>
-         <obj_property name="CustomSignalColor">#0000A0</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
       <wvobject fp_name="/onewire_tb/onewire_i/sm2_send_busy" type="logic">
          <obj_property name="ElementShortName">sm2_send_busy</obj_property>
          <obj_property name="ObjectShortName">sm2_send_busy</obj_property>
@@ -185,6 +172,13 @@
          <obj_property name="ObjectShortName">sm2_receive_busy</obj_property>
          <obj_property name="CustomSignalColor">#FF00FF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/onewire_tb/onewire_i/sm2_10ns_timer_val" type="array">
+         <obj_property name="ElementShortName">sm2_10ns_timer_val[8:0]</obj_property>
+         <obj_property name="ObjectShortName">sm2_10ns_timer_val[8:0]</obj_property>
+         <obj_property name="CustomSignalColor">#0000A0</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="group149" type="group">
          <obj_property name="label">Bit train</obj_property>
@@ -204,6 +198,12 @@
             <obj_property name="UseCustomSignalColor">true</obj_property>
             <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
+      </wvobject>
+      <wvobject fp_name="/onewire_tb/onewire_i/sm2_read_r" type="array">
+         <obj_property name="ElementShortName">sm2_read_r[7:0]</obj_property>
+         <obj_property name="ObjectShortName">sm2_read_r[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>
