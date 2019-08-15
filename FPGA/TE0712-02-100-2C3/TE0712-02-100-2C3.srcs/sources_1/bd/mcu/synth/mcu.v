@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2019.1.1 (win64) Build 2580384 Sat Jun 29 08:12:21 MDT 2019
-//Date        : Mon Aug 12 21:31:12 2019
+//Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
+//Date        : Thu Aug 15 22:44:11 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -5424,7 +5424,7 @@ module mcu
   wire [31:0]dmr_1_ONEWIRE_qdpo;
   wire [3:0]dmr_1_onewire_a_in;
   wire [31:0]dmr_1_onewire_d_in;
-  wire [31:0]gpio_rtl_1_onewire_gpio_in;
+  wire [31:0]gpio_rtl_1_onewire_gpio_in_net;
   wire [31:0]gpio_rtl_1_onewire_gpio_out_TRI_O;
   wire [0:31]mb_0_DLMB_ABUS;
   wire mb_0_DLMB_ADDRSTROBE;
@@ -5970,6 +5970,7 @@ module mcu
   assign ddr3_sdram_reset_n = mig_7series_0_ddr3_RESET_N;
   assign ddr3_sdram_we_n = mig_7series_0_ddr3_WE_N;
   assign gpio_rtl_0_multi_tri_o[7:0] = axi_gpio_0_gpio_TRI_O;
+  assign gpio_rtl_1_onewire_gpio_in_net = gpio_rtl_1_onewire_gpio_in[31:0];
   assign gpio_rtl_1_onewire_gpio_out_tri_o[31:0] = gpio_rtl_1_onewire_gpio_out_TRI_O;
   assign iic_rtl_0_pll_scl_o = axi_iic_0_iic_SCL_O;
   assign iic_rtl_0_pll_scl_t = axi_iic_0_iic_SCL_T;
@@ -6123,7 +6124,7 @@ module mcu
         .s_axi_wstrb(mb_0_axi_interconnect_M13_AXI_WSTRB),
         .s_axi_wvalid(mb_0_axi_interconnect_M13_AXI_WVALID));
   mcu_axi_gpio_0_3 axi_gpio_2_ONEWIRE_in
-       (.gpio2_io_i(gpio_rtl_1_onewire_gpio_in),
+       (.gpio2_io_i(gpio_rtl_1_onewire_gpio_in_net),
         .gpio_io_i(dmr_1_ONEWIRE_qdpo),
         .ip2intc_irpt(axi_gpio_2_onewire_ip2intc_irpt),
         .s_axi_aclk(mb_0_clk),

@@ -503,7 +503,7 @@ module top(
     reg ufb_fpga_ft_cts_r;
     reg ufb_fpga_ft_dsr_r;
     
-    always @ (posedge ufb_fpga_ft_12mhz)
+    always @ (posedge ufb_fpga_ft_12mhz_obuf)
     if (peripheral_reset)  begin
         ufb_fpga_ft_cts_r <= 0;
         ufb_fpga_ft_dsr_r <= 0;

@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2019.1.1 (win64) Build 2580384 Sat Jun 29 08:12:21 MDT 2019
--- Date        : Mon Aug 12 15:55:33 2019
+-- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
+-- Date        : Thu Aug 15 19:19:31 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_axi_gpio_0_3/mcu_axi_gpio_0_3_sim_netlist.vhdl
@@ -12947,7 +12947,7 @@ entity mcu_axi_gpio_0_3 is
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mcu_axi_gpio_0_3 : entity is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of mcu_axi_gpio_0_3 : entity is "axi_gpio,Vivado 2019.1.1";
+  attribute x_core_info of mcu_axi_gpio_0_3 : entity is "axi_gpio,Vivado 2019.1.2";
 end mcu_axi_gpio_0_3;
 
 architecture STRUCTURE of mcu_axi_gpio_0_3 is

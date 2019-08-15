@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2019.1.1 (win64) Build 2580384 Sat Jun 29 08:12:21 MDT 2019
--- Date        : Mon Aug 12 15:56:57 2019
+-- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
+-- Date        : Thu Aug 15 19:20:46 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_CDC_LVDS_in_0/mcu_CDC_LVDS_in_0_sim_netlist.vhdl
+--               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_CDC_LVDS_in_0/mcu_CDC_LVDS_in_0_sim_netlist.vhdl
 -- Design      : mcu_CDC_LVDS_in_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -2336,7 +2336,7 @@ entity mcu_CDC_LVDS_in_0 is
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mcu_CDC_LVDS_in_0 : entity is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of mcu_CDC_LVDS_in_0 : entity is "dist_mem_gen_v8_0_13,Vivado 2019.1.1";
+  attribute x_core_info of mcu_CDC_LVDS_in_0 : entity is "dist_mem_gen_v8_0_13,Vivado 2019.1.2";
 end mcu_CDC_LVDS_in_0;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_0 is

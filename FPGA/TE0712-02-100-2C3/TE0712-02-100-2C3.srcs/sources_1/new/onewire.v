@@ -54,10 +54,6 @@ parameter c_te_1div4_10ns               = 10'd249;
 parameter c_te_2div4_10ns               = 10'd499;  // T_HDR and 1/2 of T_E = 5us
 parameter c_te_3div4_10ns               = 10'd749;
 
-//parameter c_te_1div4_10ns             = 10'd3;  // TODO: quick debugging
-//parameter c_te_2div4_10ns             = 10'd6;  // TODO: quick debugging
-//parameter c_te_3div4_10ns             = 10'd9;  // TODO: quick debugging
-
 
 // DEVICE PROTOCOL
 parameter c_startHeader                 = 8'b01010101;

@@ -46,12 +46,49 @@
 
 int main () 
 {
+   volatile uint32_t *const adrOnewire_gpio1__GPIO_DATA__memAdr		= (volatile uint32_t*) 0x40010000UL;
+   volatile uint32_t *const adrOnewire_gpio1__GPIO2_DATA__out		= (volatile uint32_t*) 0x40010008UL;
+   volatile uint32_t *const adrOnewire_gpio2__GPIO_DATA__memData	= (volatile uint32_t*) 0x40020000UL;
+   volatile uint32_t *const adrOnewire_gpio2__GPIO2_DATA__in		= (volatile uint32_t*) 0x40020008UL;
    static XIntc intc;
    static XSpi axi_quad_spi_0_Spi;
    static XTmrCtr axi_timer_0_Timer;
+   char buf[256] = { 0 };
+
+   /*
+    * assign stb_i                            = gpio_rtl_1_onewire_gpio_out[31];
+    * assign wr_i                             = gpio_rtl_1_onewire_gpio_out[30];
+    * assign ctr_load_i                       = gpio_rtl_1_onewire_gpio_out[28:24];
+    * assign reg_dat_i                        = gpio_rtl_1_onewire_gpio_out[23:16];
+    * assign reg_adr_i                        = gpio_rtl_1_onewire_gpio_out[ 7: 0];
+    */
+
+   /* Read EUI48 from onewire EEPROM */
+   *adrOnewire_gpio1__GPIO_DATA__memAdr	= 0x00000000UL;  // memAdr=4'h0
+   *adrOnewire_gpio1__GPIO2_DATA__out	= 0x860000FAUL;  // Read from 0x00fa on 6 bytes and store it to the readﬂout memory - strobe
+
+   /* Wait for handshake */
+   while (!(*adrOnewire_gpio2__GPIO2_DATA__in & 0x80000000UL)) {
+   }
+   *adrOnewire_gpio1__GPIO2_DATA__out 	= 0x00000000UL;
+
+   /* Wait for data */
+   while (*adrOnewire_gpio2__GPIO2_DATA__in & 0x80000000UL) {
+   }
+
+   /* Read 2 words */
+   uint32_t eui48_w1 = *adrOnewire_gpio2__GPIO_DATA__memData;
+   (*adrOnewire_gpio1__GPIO_DATA__memAdr)++;
+   uint32_t eui48_w2 = *adrOnewire_gpio2__GPIO_DATA__memData;
+
+   uint64_t eui48  = (uint64_t)eui48_w1 << 16;
+   	   	    eui48 |=           eui48_w2 >> 16;
+   snprintf(buf, sizeof(buf), "*** EUI48 = 0x%012llX\r\n", eui48);
+   print(buf);
+
 
    /* Initialize axi_uart16550_0 - Set baudrate and number of stop bits */
-   XUartNs550_SetBaud(STDOUT_BASEADDRESS, XPAR_XUARTNS550_CLOCK_HZ, 19200);
+   //XUartNs550_SetBaud(STDOUT_BASEADDRESS, XPAR_XUARTNS550_CLOCK_HZ, 19200);
    XUartNs550_SetLineControlReg(STDOUT_BASEADDRESS, XUN_LCR_8_DATA_BITS);
    Xil_ICacheEnable();
    Xil_DCacheEnable();
@@ -92,7 +129,7 @@ int main ()
       
       print("\r\n Runnning SpiSelfTestExample() for axi_quad_spi_0...\r\n");
       
-      status = SpiSelfTestExample(XPAR_AXI_QUAD_SPI_0_CONFIG_DEVICE_ID);
+      //status = SpiSelfTestExample(XPAR_AXI_QUAD_SPI_0_CONFIG_DEVICE_ID);
       
       if (status == 0) {
          print("SpiSelfTestExample PASSED\r\n");
@@ -106,9 +143,9 @@ int main ()
 
        print("\r\n Running Interrupt Test for axi_quad_spi_0...\r\n");
 
-       Status = SpiIntrExample(&intc, &axi_quad_spi_0_Spi, \
-    		   XPAR_AXI_QUAD_SPI_0_CONFIG_DEVICE_ID, \
-			   XPAR_MB_0_AXI_INTC_AXI_QUAD_SPI_0_CONFIG_IP2INTC_IRPT_INTR);
+       //Status = SpiIntrExample(&intc, &axi_quad_spi_0_Spi, \
+       //	   XPAR_AXI_QUAD_SPI_0_CONFIG_DEVICE_ID, \
+	   //	   XPAR_MB_0_AXI_INTC_AXI_QUAD_SPI_0_CONFIG_IP2INTC_IRPT_INTR);
       if (Status == 0) {
          print("Spi Interrupt Test PASSED\r\n");
       } 
@@ -125,7 +162,7 @@ int main ()
       
       print("\r\n Running TmrCtrSelfTestExample() for axi_timer_0...\r\n");
       
-      status = TmrCtrSelfTestExample(XPAR_AXI_TIMER_0_DEVICE_ID, 0x0);
+      //status = TmrCtrSelfTestExample(XPAR_AXI_TIMER_0_DEVICE_ID, 0x0);
       
       if (status == 0) {
          print("TmrCtrSelfTestExample PASSED\r\n");
@@ -139,9 +176,9 @@ int main ()
 
       print("\r\n Running Interrupt Test  for axi_timer_0...\r\n");
       
-      Status = TmrCtrIntrExample(&intc, &axi_timer_0_Timer, \
-                                 XPAR_AXI_TIMER_0_DEVICE_ID, \
-                                 XPAR_MB_0_AXI_INTC_AXI_TIMER_0_INTERRUPT_INTR, 0);
+      //Status = TmrCtrIntrExample(&intc, &axi_timer_0_Timer, \
+      //                           XPAR_AXI_TIMER_0_DEVICE_ID, \
+      //                           XPAR_MB_0_AXI_INTC_AXI_TIMER_0_INTERRUPT_INTR, 0);
 	
       if (Status == 0) {
          print("Timer Interrupt Test PASSED\r\n");

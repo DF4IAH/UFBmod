@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
--- Date        : Sun Aug  4 21:35:32 2019
+-- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
+-- Date        : Thu Aug 15 19:01:24 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_dlmb_bram_if_cntlr_0/mcu_dlmb_bram_if_cntlr_0_stub.vhdl
@@ -55,6 +55,6 @@ attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
 attribute black_box_pad_pin of stub : architecture is "LMB_Clk,LMB_Rst,LMB_ABus[0:31],LMB_WriteDBus[0:31],LMB_AddrStrobe,LMB_ReadStrobe,LMB_WriteStrobe,LMB_BE[0:3],Sl_DBus[0:31],Sl_Ready,Sl_Wait,Sl_UE,Sl_CE,LMB1_ABus[0:31],LMB1_WriteDBus[0:31],LMB1_AddrStrobe,LMB1_ReadStrobe,LMB1_WriteStrobe,LMB1_BE[0:3],Sl1_DBus[0:31],Sl1_Ready,Sl1_Wait,Sl1_UE,Sl1_CE,BRAM_Rst_A,BRAM_Clk_A,BRAM_Addr_A[0:31],BRAM_EN_A,BRAM_WEN_A[0:3],BRAM_Dout_A[0:31],BRAM_Din_A[0:31]";
 attribute x_core_info : string;
-attribute x_core_info of stub : architecture is "lmb_bram_if_cntlr,Vivado 2019.1";
+attribute x_core_info of stub : architecture is "lmb_bram_if_cntlr,Vivado 2019.1.2";
 begin
 end;

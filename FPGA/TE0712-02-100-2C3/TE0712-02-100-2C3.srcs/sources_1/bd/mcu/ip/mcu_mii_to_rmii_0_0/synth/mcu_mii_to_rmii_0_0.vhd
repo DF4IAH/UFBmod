@@ -110,11 +110,11 @@ ARCHITECTURE mcu_mii_to_rmii_0_0_arch OF mcu_mii_to_rmii_0_0 IS
     );
   END COMPONENT mii_to_rmii;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF mcu_mii_to_rmii_0_0_arch: ARCHITECTURE IS "mii_to_rmii,Vivado 2019.1.1";
+  ATTRIBUTE X_CORE_INFO OF mcu_mii_to_rmii_0_0_arch: ARCHITECTURE IS "mii_to_rmii,Vivado 2019.1.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF mcu_mii_to_rmii_0_0_arch : ARCHITECTURE IS "mcu_mii_to_rmii_0_0,mii_to_rmii,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF mcu_mii_to_rmii_0_0_arch: ARCHITECTURE IS "mcu_mii_to_rmii_0_0,mii_to_rmii,{x_ipProduct=Vivado 2019.1.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=mii_to_rmii,x_ipVersion=2.0,x_ipCoreRevision=21,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_INSTANCE=mcu_mii_to_rmii_0_0,C_FIXED_SPEED=0,C_INCLUDE_BUF=0,C_SPEED_100=1,C_FAMILY=artix7}";
+  ATTRIBUTE CORE_GENERATION_INFO OF mcu_mii_to_rmii_0_0_arch: ARCHITECTURE IS "mcu_mii_to_rmii_0_0,mii_to_rmii,{x_ipProduct=Vivado 2019.1.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=mii_to_rmii,x_ipVersion=2.0,x_ipCoreRevision=21,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_INSTANCE=mcu_mii_to_rmii_0_0,C_FIXED_SPEED=0,C_INCLUDE_BUF=0,C_SPEED_100=1,C_FAMILY=artix7}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF rmii2phy_tx_en: SIGNAL IS "xilinx.com:interface:rmii:1.0 RMII_PHY_M TX_EN";

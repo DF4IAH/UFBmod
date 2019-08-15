@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2019.1.1 (win64) Build 2580384 Sat Jun 29 08:12:21 MDT 2019
-// Date        : Sun Aug 11 23:38:49 2019
+// Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
+// Date        : Thu Aug 15 19:20:37 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_rst_clk_12mhz_FTDI_12M_0/mcu_rst_clk_12mhz_FTDI_12M_0_sim_netlist.v
+//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_rst_clk_12mhz_FTDI_12M_0/mcu_rst_clk_12mhz_FTDI_12M_0_sim_netlist.v
 // Design      : mcu_rst_clk_12mhz_FTDI_12M_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,7 +12,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "mcu_rst_clk_12mhz_FTDI_12M_0,proc_sys_reset,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "proc_sys_reset,Vivado 2019.1.1" *) 
+(* CHECK_LICENSE_TYPE = "mcu_rst_clk_12mhz_FTDI_12M_0,proc_sys_reset,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "proc_sys_reset,Vivado 2019.1.2" *) 
 (* NotValidForBitStream *)
 module mcu_rst_clk_12mhz_FTDI_12M_0
    (slowest_sync_clk,

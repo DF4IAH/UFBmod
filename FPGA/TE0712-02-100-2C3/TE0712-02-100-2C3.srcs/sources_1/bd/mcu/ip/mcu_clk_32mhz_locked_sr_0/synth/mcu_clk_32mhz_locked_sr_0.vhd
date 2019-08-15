@@ -105,12 +105,12 @@ ARCHITECTURE mcu_clk_32mhz_locked_sr_0_arch OF mcu_clk_32mhz_locked_sr_0 IS
     );
   END COMPONENT c_shift_ram_v12_0_13;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF mcu_clk_32mhz_locked_sr_0_arch: ARCHITECTURE IS "c_shift_ram_v12_0_13,Vivado 2019.1";
+  ATTRIBUTE X_CORE_INFO OF mcu_clk_32mhz_locked_sr_0_arch: ARCHITECTURE IS "c_shift_ram_v12_0_13,Vivado 2019.1.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF mcu_clk_32mhz_locked_sr_0_arch : ARCHITECTURE IS "mcu_clk_32mhz_locked_sr_0,c_shift_ram_v12_0_13,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF mcu_clk_32mhz_locked_sr_0_arch: ARCHITECTURE IS "mcu_clk_32mhz_locked_sr_0,c_shift_ram_v12_0_13,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=c_shift_ram,x_ipVersion=12.0,x_ipCoreRevision=13,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=artix7,C_VERBOSITY=0,C_WIDTH=1,C_DEPTH=6,C_ADDR_WIDTH=4,C_SHIFT_TYPE=0,C_OPT_GOAL=0,C_AINIT_VAL=1,C_SINIT_VAL=0,C_DEFAULT_DATA=1,C_HAS_A=0,C_HAS_CE=0,C_REG_LAST_BIT=1,C_SYNC_PRIORITY=1,C_SYNC_ENABLE=0,C_HAS_SCLR=0,C_HAS_SSET=1,C_HAS_SINIT=0,C_MEM_INIT_FILE=no_coe_file_loa" & 
-"ded,C_ELABORATION_DIR=./,C_READ_MIF=0,C_PARSER_TYPE=0}";
+  ATTRIBUTE CORE_GENERATION_INFO OF mcu_clk_32mhz_locked_sr_0_arch: ARCHITECTURE IS "mcu_clk_32mhz_locked_sr_0,c_shift_ram_v12_0_13,{x_ipProduct=Vivado 2019.1.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=c_shift_ram,x_ipVersion=12.0,x_ipCoreRevision=13,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=artix7,C_VERBOSITY=0,C_WIDTH=1,C_DEPTH=6,C_ADDR_WIDTH=4,C_SHIFT_TYPE=0,C_OPT_GOAL=0,C_AINIT_VAL=1,C_SINIT_VAL=0,C_DEFAULT_DATA=1,C_HAS_A=0,C_HAS_CE=0,C_REG_LAST_BIT=1,C_SYNC_PRIORITY=1,C_SYNC_ENABLE=0,C_HAS_SCLR=0,C_HAS_SSET=1,C_HAS_SINIT=0,C_MEM_INIT_FILE=no_coe_file_l" & 
+"oaded,C_ELABORATION_DIR=./,C_READ_MIF=0,C_PARSER_TYPE=0}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF Q: SIGNAL IS "XIL_INTERFACENAME q_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency data_bitwidth format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency signed format bool minimum {} ma" & 

@@ -382,7 +382,6 @@ vlog -work axi_crossbar_v2_1_20 -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/
 
 vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
 "../../../bd/mcu/ip/mcu_xbar_0/sim/mcu_xbar_0.v" \
-"../../../bd/mcu/sim/mcu.v" \
 
 vcom -work xil_defaultlib -64 -93 \
 "../../../bd/mcu/ip/mcu_axi_gpio_0_1/sim/mcu_axi_gpio_0_1.vhd" \
@@ -463,6 +462,7 @@ vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/source
 "../../../bd/mcu/ip/mcu_auto_pc_11/sim/mcu_auto_pc_11.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_12/sim/mcu_auto_pc_12.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_13/sim/mcu_auto_pc_13.v" \
+"../../../bd/mcu/sim/mcu.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

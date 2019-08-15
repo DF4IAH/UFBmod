@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2019.1.1 (win64) Build 2580384 Sat Jun 29 08:12:21 MDT 2019
--- Date        : Sun Aug 11 23:42:18 2019
+-- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
+-- Date        : Thu Aug 15 19:10:14 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top mcu_auto_pc_13 -prefix
---               mcu_auto_pc_13_ mcu_auto_pc_13_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_auto_pc_13/mcu_auto_pc_13_sim_netlist.vhdl
 -- Design      : mcu_auto_pc_13
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -38,6 +38,8 @@ entity mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_incr_cmd is
     sel_first : in STD_LOGIC;
     \axlen_cnt_reg[0]_1\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_incr_cmd : entity is "axi_protocol_converter_v2_1_19_b2s_incr_cmd";
 end mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_incr_cmd;
 
 architecture STRUCTURE of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_incr_cmd is
@@ -1981,6 +1983,8 @@ entity mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_rd_cmd_fsm is
     r_full : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_rd_cmd_fsm : entity is "axi_protocol_converter_v2_1_19_b2s_rd_cmd_fsm";
 end mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_rd_cmd_fsm;
 
 architecture STRUCTURE of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_rd_cmd_fsm is
@@ -2379,6 +2383,8 @@ entity mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_simple_fifo is
     \in\ : in STD_LOGIC_VECTOR ( 10 downto 0 );
     aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_simple_fifo : entity is "axi_protocol_converter_v2_1_19_b2s_simple_fifo";
 end mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_simple_fifo;
 
 architecture STRUCTURE of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_simple_fifo is
@@ -3955,6 +3961,8 @@ entity mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_wr_cmd_fsm is
     cnt_read : in STD_LOGIC_VECTOR ( 1 downto 0 );
     aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_wr_cmd_fsm : entity is "axi_protocol_converter_v2_1_19_b2s_wr_cmd_fsm";
 end mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_wr_cmd_fsm;
 
 architecture STRUCTURE of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_wr_cmd_fsm is
@@ -4219,6 +4227,8 @@ entity mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_wrap_cmd is
     \wrap_cnt_r_reg[3]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \wrap_boundary_axaddr_r_reg[6]_0\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_wrap_cmd : entity is "axi_protocol_converter_v2_1_19_b2s_wrap_cmd";
 end mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_wrap_cmd;
 
 architecture STRUCTURE of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_wrap_cmd is
@@ -5638,6 +5648,8 @@ entity mcu_auto_pc_13_axi_register_slice_v2_1_19_axic_register_slice is
     \m_axi_araddr[11]_2\ : in STD_LOGIC;
     \m_payload_i_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_auto_pc_13_axi_register_slice_v2_1_19_axic_register_slice : entity is "axi_register_slice_v2_1_19_axic_register_slice";
 end mcu_auto_pc_13_axi_register_slice_v2_1_19_axic_register_slice;
 
 architecture STRUCTURE of mcu_auto_pc_13_axi_register_slice_v2_1_19_axic_register_slice is
@@ -10203,6 +10215,8 @@ entity mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_b_channel is
     \in\ : in STD_LOGIC_VECTOR ( 10 downto 0 );
     m_axi_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_b_channel : entity is "axi_protocol_converter_v2_1_19_b2s_b_channel";
 end mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_b_channel;
 
 architecture STRUCTURE of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_b_channel is
@@ -10554,6 +10568,8 @@ entity mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_cmd_translator is
     \wrap_cnt_r_reg[3]\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \wrap_boundary_axaddr_r_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_cmd_translator : entity is "axi_protocol_converter_v2_1_19_b2s_cmd_translator";
 end mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_cmd_translator;
 
 architecture STRUCTURE of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_cmd_translator is
@@ -10880,6 +10896,8 @@ entity mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_r_channel is
     D : in STD_LOGIC_VECTOR ( 2 downto 0 );
     areset_d1 : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_r_channel : entity is "axi_protocol_converter_v2_1_19_b2s_r_channel";
 end mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_r_channel;
 
 architecture STRUCTURE of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_r_channel is
@@ -11053,6 +11071,8 @@ entity mcu_auto_pc_13_axi_register_slice_v2_1_19_axi_register_slice is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     \m_payload_i_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_auto_pc_13_axi_register_slice_v2_1_19_axi_register_slice : entity is "axi_register_slice_v2_1_19_axi_register_slice";
 end mcu_auto_pc_13_axi_register_slice_v2_1_19_axi_register_slice;
 
 architecture STRUCTURE of mcu_auto_pc_13_axi_register_slice_v2_1_19_axi_register_slice is
@@ -11225,6 +11245,8 @@ entity mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_ar_channel is
     \wrap_cnt_r_reg[3]\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \wrap_boundary_axaddr_r_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_ar_channel : entity is "axi_protocol_converter_v2_1_19_b2s_ar_channel";
 end mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_ar_channel;
 
 architecture STRUCTURE of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_ar_channel is
@@ -11489,6 +11511,8 @@ entity mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_aw_channel is
     \wrap_cnt_r_reg[3]\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \wrap_boundary_axaddr_r_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_aw_channel : entity is "axi_protocol_converter_v2_1_19_b2s_aw_channel";
 end mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_aw_channel;
 
 architecture STRUCTURE of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s_aw_channel is
@@ -11737,6 +11761,8 @@ entity mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s is
     s_axi_bready : in STD_LOGIC;
     aresetn : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s : entity is "axi_protocol_converter_v2_1_19_b2s";
 end mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s;
 
 architecture STRUCTURE of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_b2s is
@@ -12299,6 +12325,8 @@ entity mcu_auto_pc_13_axi_protocol_converter_v2_1_19_axi_protocol_converter is
   attribute C_TRANSLATION_MODE of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_axi_protocol_converter : entity is 2;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_axi_protocol_converter : entity is "yes";
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_axi_protocol_converter : entity is "axi_protocol_converter_v2_1_19_axi_protocol_converter";
   attribute P_AXI3 : integer;
   attribute P_AXI3 of mcu_auto_pc_13_axi_protocol_converter_v2_1_19_axi_protocol_converter : entity is 1;
   attribute P_AXI4 : integer;
@@ -12533,7 +12561,7 @@ entity mcu_auto_pc_13 is
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of mcu_auto_pc_13 : entity is "yes";
   attribute X_CORE_INFO : string;
-  attribute X_CORE_INFO of mcu_auto_pc_13 : entity is "axi_protocol_converter_v2_1_19_axi_protocol_converter,Vivado 2019.1.1";
+  attribute X_CORE_INFO of mcu_auto_pc_13 : entity is "axi_protocol_converter_v2_1_19_axi_protocol_converter,Vivado 2019.1.2";
 end mcu_auto_pc_13;
 
 architecture STRUCTURE of mcu_auto_pc_13 is
@@ -12636,7 +12664,7 @@ architecture STRUCTURE of mcu_auto_pc_13 is
   attribute X_INTERFACE_INFO of s_axi_bvalid : signal is "xilinx.com:interface:aximm:1.0 S_AXI BVALID";
   attribute X_INTERFACE_INFO of s_axi_rlast : signal is "xilinx.com:interface:aximm:1.0 S_AXI RLAST";
   attribute X_INTERFACE_INFO of s_axi_rready : signal is "xilinx.com:interface:aximm:1.0 S_AXI RREADY";
-  attribute X_INTERFACE_PARAMETER of s_axi_rready : signal is "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4, FREQ_HZ 100000000, ID_WIDTH 3, ADDR_WIDTH 13, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 1, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 32, MAX_BURST_LENGTH 32, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of s_axi_rready : signal is "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4, FREQ_HZ 100000000, ID_WIDTH 3, ADDR_WIDTH 13, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 1, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 1, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 32, MAX_BURST_LENGTH 256, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of s_axi_rvalid : signal is "xilinx.com:interface:aximm:1.0 S_AXI RVALID";
   attribute X_INTERFACE_INFO of s_axi_wlast : signal is "xilinx.com:interface:aximm:1.0 S_AXI WLAST";
   attribute X_INTERFACE_INFO of s_axi_wready : signal is "xilinx.com:interface:aximm:1.0 S_AXI WREADY";

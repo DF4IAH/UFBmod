@@ -287,7 +287,6 @@
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/mcu/ip/mcu_xbar_0/sim/mcu_xbar_0.v" \
-  "../../../bd/mcu/sim/mcu.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/mcu/ip/mcu_axi_gpio_0_1/sim/mcu_axi_gpio_0_1.vhd" \
@@ -368,6 +367,7 @@
   "../../../bd/mcu/ip/mcu_auto_pc_11/sim/mcu_auto_pc_11.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_12/sim/mcu_auto_pc_12.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_13/sim/mcu_auto_pc_13.v" \
+  "../../../bd/mcu/sim/mcu.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   glbl.v

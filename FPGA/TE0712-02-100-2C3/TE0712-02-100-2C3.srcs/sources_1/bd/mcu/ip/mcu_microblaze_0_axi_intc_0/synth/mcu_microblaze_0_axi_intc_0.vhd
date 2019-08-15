@@ -150,11 +150,11 @@ ARCHITECTURE mcu_microblaze_0_axi_intc_0_arch OF mcu_microblaze_0_axi_intc_0 IS
     );
   END COMPONENT axi_intc;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF mcu_microblaze_0_axi_intc_0_arch: ARCHITECTURE IS "axi_intc,Vivado 2019.1.1";
+  ATTRIBUTE X_CORE_INFO OF mcu_microblaze_0_axi_intc_0_arch: ARCHITECTURE IS "axi_intc,Vivado 2019.1.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF mcu_microblaze_0_axi_intc_0_arch : ARCHITECTURE IS "mcu_microblaze_0_axi_intc_0,axi_intc,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF mcu_microblaze_0_axi_intc_0_arch: ARCHITECTURE IS "mcu_microblaze_0_axi_intc_0,axi_intc,{x_ipProduct=Vivado 2019.1.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_intc,x_ipVersion=4.1,x_ipCoreRevision=13,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_INSTANCE=mcu_microblaze_0_axi_intc_0,C_S_AXI_ADDR_WIDTH=9,C_S_AXI_DATA_WIDTH=32,C_NUM_INTR_INPUTS=13,C_NUM_SW_INTR=0,C_KIND_OF_INTR=0xfffff169,C_KIND_OF_EDGE=0xFFFFFFFF,C_KIND_OF_LVL=0xFFFFFFFF,C_ASYNC_INTR=0xFFFFF941,C_NUM_SYNC_FF=2,C_ADDR_WIDTH=32,C_IVAR_RESET_VALUE=0x00000000000" & 
+  ATTRIBUTE CORE_GENERATION_INFO OF mcu_microblaze_0_axi_intc_0_arch: ARCHITECTURE IS "mcu_microblaze_0_axi_intc_0,axi_intc,{x_ipProduct=Vivado 2019.1.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_intc,x_ipVersion=4.1,x_ipCoreRevision=13,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_INSTANCE=mcu_microblaze_0_axi_intc_0,C_S_AXI_ADDR_WIDTH=9,C_S_AXI_DATA_WIDTH=32,C_NUM_INTR_INPUTS=13,C_NUM_SW_INTR=0,C_KIND_OF_INTR=0xfffff169,C_KIND_OF_EDGE=0xFFFFFFFF,C_KIND_OF_LVL=0xFFFFFFFF,C_ASYNC_INTR=0xFFFFF941,C_NUM_SYNC_FF=2,C_ADDR_WIDTH=32,C_IVAR_RESET_VALUE=0x00000000000" & 
 "00010,C_ENABLE_ASYNC=0,C_HAS_IPR=1,C_HAS_SIE=1,C_HAS_CIE=1,C_HAS_IVR=1,C_HAS_ILR=0,C_IRQ_IS_LEVEL=0,C_IRQ_ACTIVE=0x1,C_DISABLE_SYNCHRONIZERS=1,C_MB_CLK_NOT_CONNECTED=1,C_HAS_FAST=1,C_EN_CASCADE_MODE=0,C_CASCADE_MASTER=0}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;

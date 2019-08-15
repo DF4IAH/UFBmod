@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
--- Date        : Sun Aug  4 21:35:32 2019
+-- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
+-- Date        : Thu Aug 15 19:01:24 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_dlmb_bram_if_cntlr_0/mcu_dlmb_bram_if_cntlr_0_sim_netlist.vhdl
@@ -2082,7 +2082,7 @@ entity mcu_dlmb_bram_if_cntlr_0 is
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mcu_dlmb_bram_if_cntlr_0 : entity is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of mcu_dlmb_bram_if_cntlr_0 : entity is "lmb_bram_if_cntlr,Vivado 2019.1";
+  attribute x_core_info of mcu_dlmb_bram_if_cntlr_0 : entity is "lmb_bram_if_cntlr,Vivado 2019.1.2";
 end mcu_dlmb_bram_if_cntlr_0;
 
 architecture STRUCTURE of mcu_dlmb_bram_if_cntlr_0 is
