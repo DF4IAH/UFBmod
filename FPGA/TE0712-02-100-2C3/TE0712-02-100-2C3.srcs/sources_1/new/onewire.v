@@ -517,7 +517,7 @@ always @(posedge clk_i) begin
         4'h1:
             // Write mode
             if (!sm2_10ns_timer_val) begin
-                sm2_bittrain_ctr        <= 5'd20;
+                sm2_bittrain_ctr        <= 5'd19;
                 sm2_10ns_timer_val      <= c_te_2div4_10ns;
                 sm2_state               <= 4'h2;
             end
@@ -526,9 +526,9 @@ always @(posedge clk_i) begin
         // LOOP BEGIN
         4'h2:
             begin
-                if (sm2_bittrain_ctr >= 5'd3) begin
+                if (sm2_bittrain_ctr >= 5'd2) begin
                     // Write data bit
-                    onewire_o_r         <= sm2_bittrain[sm2_bittrain_ctr - 1];
+                    onewire_o_r         <= sm2_bittrain[sm2_bittrain_ctr];
                 end
                 else begin
                     // Read mode
@@ -536,13 +536,13 @@ always @(posedge clk_i) begin
                 end
                 
                 if (!sm2_10ns_timer_val) begin
+                    if (sm2_bittrain_ctr <= 5'd1) begin
+                        // Read data bit (SAK)
+                        sm2_bittrain[sm2_bittrain_ctr] <= onewire_i;
+                    end
+                    
                     if (sm2_bittrain_ctr) begin
                         sm2_10ns_timer_val <= c_te_2div4_10ns;
-    
-                        if (sm2_bittrain_ctr <= 5'd2) begin
-                            // Read data bit (SAK)
-                            sm2_bittrain[sm2_bittrain_ctr - 1'd1] <= onewire_i;
-                        end
                         
                         // Move on to the next bit
                         sm2_bittrain_ctr <= sm2_bittrain_ctr - 1'd1;
