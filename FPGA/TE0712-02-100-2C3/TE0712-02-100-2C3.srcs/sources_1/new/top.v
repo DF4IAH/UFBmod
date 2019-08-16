@@ -76,8 +76,8 @@ module top(
     ddr3_reset,
     ddr3_cke,
 
-    ddr3_clk0_p,         // 1.5 V    DDR3        xxx.x MHz
-    ddr3_clk0_n,         // 1.5 V    DDR3        xxx.x MHz
+    ddr3_clk0_p,         // 1.5 V    DDR3        400.0 MHz
+    ddr3_clk0_n,         // 1.5 V    DDR3        400.0 MHz
     
     ddr3_s,
     ddr3_dqs_p,
@@ -105,15 +105,15 @@ module top(
     
     
     // Ethernet
-    //eth_rst,
+    eth_rst,
     
-    //mdc,
-    //mdio,
+    mdc,
+    mdio,
     
-    //eth_tx_d,
+    eth_tx_d,
     
-    //eth_rx_d,
-    //eth_rx_dv,
+    eth_rx_d,
+    eth_rx_dv,
     
     //link_led,
     
@@ -282,15 +282,15 @@ module top(
     
     
     // Ethernet
-    //output eth_rst;
+    output eth_rst;
     
-    //output mdc;
-    //inout  mdio;
+    output mdc;
+    inout  mdio;
     
-    //output [1:0]eth_tx_d;
+    output [1:0]eth_tx_d;
     
-    //input  [1:0]eth_rx_d;
-    //input  eth_rx_dv;
+    input  [1:0]eth_rx_d;
+    input  eth_rx_dv;
     
     //input  link_led;
     
@@ -373,6 +373,7 @@ module top(
     wire [31:0]gpio_rtl_1_onewire_gpio_in;
     wire [31:0]gpio_rtl_1_onewire_gpio_out;
     wire mb_axi_clk_100mhz;
+    wire peripheral_aresetn;
     wire peripheral_reset;
     wire pwm0_lcd_bl_obuf;
     wire ufb_fpga_ft_12mhz_obuf;
@@ -518,6 +519,10 @@ module top(
     assign ufb_fpga_ft_ri  = 0;
     
     
+    // Ethernet
+    assign eth_rst = peripheral_aresetn;
+    
+    
     // RGB-LED
     assign fpga_led_rgb_red_obuf   = gpio_rtl_0_multi_tri_o[0];
     assign fpga_led_rgb_green_obuf = gpio_rtl_0_multi_tri_o[1];
@@ -537,6 +542,7 @@ module top(
         .reset(reset),
         .sys_rst(sys_rst),
         
+        .peripheral_aresetn(peripheral_aresetn),
         .peripheral_reset(peripheral_reset),
         
         
@@ -608,15 +614,18 @@ module top(
         
         
     // Ethernet
-                                                        //output eth_rst
+          //.xxx(eth_rst),
         
-                                                        //output mdc
-                                                        //inout  mdio
+         .mdio_rtl_0_ethernet_mdc(mdc),
+         .mdio_rtl_0_ethernet_mdio_io(mdio),
         
-                                                        //output [1:0]eth_tx_d
+         .rmii_rtl_0_rx_er(),
+         .rmii_rtl_0_tx_en(),
         
-                                                        //input  [1:0]eth_rx_d
-                                                        //input  eth_rx_dv
+         .rmii_rtl_0_txd(eth_tx_d),
+        
+         .rmii_rtl_0_rxd(eth_rx_d),
+         .rmii_rtl_0_crs_dv(eth_rx_dv),
         
                                                         //input  link_led
         
