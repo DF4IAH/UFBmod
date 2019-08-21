@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
--- Date        : Thu Aug 15 19:21:02 2019
+-- Date        : Thu Aug 15 19:21:01 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_xbar_1/mcu_xbar_1_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top mcu_xbar_1 -prefix
+--               mcu_xbar_1_ mcu_xbar_1_sim_netlist.vhdl
 -- Design      : mcu_xbar_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -63,8 +63,6 @@ entity mcu_xbar_1_axi_crossbar_v2_1_20_addr_arbiter_sasd is
     s_axi_araddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_xbar_1_axi_crossbar_v2_1_20_addr_arbiter_sasd : entity is "axi_crossbar_v2_1_20_addr_arbiter_sasd";
 end mcu_xbar_1_axi_crossbar_v2_1_20_addr_arbiter_sasd;
 
 architecture STRUCTURE of mcu_xbar_1_axi_crossbar_v2_1_20_addr_arbiter_sasd is
@@ -1269,8 +1267,6 @@ entity mcu_xbar_1_axi_crossbar_v2_1_20_decerr_slave is
     \gen_axilite.s_axi_bvalid_i_reg_1\ : in STD_LOGIC;
     aa_rready : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_xbar_1_axi_crossbar_v2_1_20_decerr_slave : entity is "axi_crossbar_v2_1_20_decerr_slave";
 end mcu_xbar_1_axi_crossbar_v2_1_20_decerr_slave;
 
 architecture STRUCTURE of mcu_xbar_1_axi_crossbar_v2_1_20_decerr_slave is
@@ -1416,8 +1412,6 @@ entity mcu_xbar_1_axi_crossbar_v2_1_20_splitter is
     aresetn_d : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_xbar_1_axi_crossbar_v2_1_20_splitter : entity is "axi_crossbar_v2_1_20_splitter";
 end mcu_xbar_1_axi_crossbar_v2_1_20_splitter;
 
 architecture STRUCTURE of mcu_xbar_1_axi_crossbar_v2_1_20_splitter is
@@ -1604,8 +1598,6 @@ entity mcu_xbar_1_axi_register_slice_v2_1_19_axic_register_slice is
     SR : in STD_LOGIC_VECTOR ( 0 to 0 );
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_xbar_1_axi_register_slice_v2_1_19_axic_register_slice : entity is "axi_register_slice_v2_1_19_axic_register_slice";
 end mcu_xbar_1_axi_register_slice_v2_1_19_axic_register_slice;
 
 architecture STRUCTURE of mcu_xbar_1_axi_register_slice_v2_1_19_axic_register_slice is
@@ -2759,8 +2751,6 @@ entity mcu_xbar_1_axi_crossbar_v2_1_20_crossbar_sasd is
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     m_axi_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_xbar_1_axi_crossbar_v2_1_20_crossbar_sasd : entity is "axi_crossbar_v2_1_20_crossbar_sasd";
 end mcu_xbar_1_axi_crossbar_v2_1_20_crossbar_sasd;
 
 architecture STRUCTURE of mcu_xbar_1_axi_crossbar_v2_1_20_crossbar_sasd is
@@ -3131,8 +3121,6 @@ entity mcu_xbar_1_axi_crossbar_v2_1_20_axi_crossbar is
   attribute C_S_AXI_WRITE_ACCEPTANCE of mcu_xbar_1_axi_crossbar_v2_1_20_axi_crossbar : entity is 1;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of mcu_xbar_1_axi_crossbar_v2_1_20_axi_crossbar : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_xbar_1_axi_crossbar_v2_1_20_axi_crossbar : entity is "axi_crossbar_v2_1_20_axi_crossbar";
   attribute P_ADDR_DECODE : integer;
   attribute P_ADDR_DECODE of mcu_xbar_1_axi_crossbar_v2_1_20_axi_crossbar : entity is 1;
   attribute P_AXI3 : integer;

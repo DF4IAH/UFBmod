@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-// Date        : Thu Aug 15 19:09:48 2019
+// Date        : Thu Aug 15 19:09:47 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_dist_mem_gen_0_0/mcu_dist_mem_gen_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top mcu_dist_mem_gen_0_0 -prefix
+//               mcu_dist_mem_gen_0_0_ mcu_dist_mem_gen_0_0_sim_netlist.v
 // Design      : mcu_dist_mem_gen_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -103,7 +103,7 @@ endmodule
 (* C_MEM_INIT_FILE = "no_coe_file_loaded" *) (* C_MEM_TYPE = "4" *) (* C_PARSER_TYPE = "1" *) 
 (* C_PIPELINE_STAGES = "1" *) (* C_QCE_JOINED = "0" *) (* C_QUALIFY_WE = "0" *) 
 (* C_READ_MIF = "0" *) (* C_REG_A_D_INPUTS = "1" *) (* C_REG_DPRA_INPUT = "0" *) 
-(* C_SYNC_ENABLE = "1" *) (* C_WIDTH = "8" *) (* ORIG_REF_NAME = "dist_mem_gen_v8_0_13" *) 
+(* C_SYNC_ENABLE = "1" *) (* C_WIDTH = "8" *) 
 module mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_13
    (a,
     d,
@@ -185,7 +185,6 @@ module mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_13
         .we(we));
 endmodule
 
-(* ORIG_REF_NAME = "dist_mem_gen_v8_0_13_synth" *) 
 module mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_13_synth
    (qdpo,
     a,
@@ -220,7 +219,6 @@ module mcu_dist_mem_gen_0_0_dist_mem_gen_v8_0_13_synth
         .we(we));
 endmodule
 
-(* ORIG_REF_NAME = "sdpram" *) 
 module mcu_dist_mem_gen_0_0_sdpram
    (qdpo,
     a,

@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="37">
   <CompositeFile CompositeFileTopName="mcu" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1565901860"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1565901860"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1565901860"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1565901860"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1566424863"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1566424863"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1566424863"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1566424863"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\mcu_microblaze_0_0\mcu_microblaze_0_0.xci" Type="IP">
         <Instance HierarchyPath="mb_0"/>
@@ -373,17 +373,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="synth\mcu.v" Type="Verilog">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-      </File>
-      <File Name="sim\mcu.v" Type="Verilog">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip\mcu_auto_pc_14\mcu_auto_pc_14.xci" Type="IP">
         <Instance HierarchyPath="mb_0_axi_interconnect_top/s00_couplers/auto_pc"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -502,6 +491,17 @@
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="synth\mcu.v" Type="Verilog">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+      </File>
+      <File Name="sim\mcu.v" Type="Verilog">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="mcu.bmm" Type="BMM">

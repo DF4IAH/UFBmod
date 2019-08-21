@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
--- Date        : Thu Aug 15 19:05:58 2019
+-- Date        : Thu Aug 15 19:05:57 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_selectio_wiz_0_0/mcu_selectio_wiz_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top mcu_selectio_wiz_0_0 -prefix
+--               mcu_selectio_wiz_0_0_ mcu_selectio_wiz_0_0_sim_netlist.vhdl
 -- Design      : mcu_selectio_wiz_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -28,8 +28,6 @@ entity mcu_selectio_wiz_0_0_mcu_selectio_wiz_0_0_selectio_wiz is
   );
   attribute DEV_W : integer;
   attribute DEV_W of mcu_selectio_wiz_0_0_mcu_selectio_wiz_0_0_selectio_wiz : entity is 8;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_selectio_wiz_0_0_mcu_selectio_wiz_0_0_selectio_wiz : entity is "mcu_selectio_wiz_0_0_selectio_wiz";
   attribute SYS_W : integer;
   attribute SYS_W of mcu_selectio_wiz_0_0_mcu_selectio_wiz_0_0_selectio_wiz : entity is 1;
   attribute num_serial_bits : integer;

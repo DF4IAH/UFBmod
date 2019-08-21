@@ -434,6 +434,8 @@ proc create_root_design { parentCell } {
 
   set gpio_rtl_0_multi [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 gpio_rtl_0_multi ]
 
+  set gpio_rtl_1_onewire_gpio_in [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 gpio_rtl_1_onewire_gpio_in ]
+
   set gpio_rtl_1_onewire_gpio_out [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 gpio_rtl_1_onewire_gpio_out ]
 
   set iic_rtl_0_pll [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:iic_rtl:1.0 iic_rtl_0_pll ]
@@ -442,7 +444,7 @@ proc create_root_design { parentCell } {
 
   set mdio_rtl_0_ethernet [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:mdio_rtl:1.0 mdio_rtl_0_ethernet ]
 
-  set rmii_rtl_0 [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:rmii_rtl:1.0 rmii_rtl_0 ]
+  set rmii_rtl_0_ethernet [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:rmii_rtl:1.0 rmii_rtl_0_ethernet ]
 
   set spi_rtl_0_config [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:spi_rtl:1.0 spi_rtl_0_config ]
 
@@ -459,7 +461,6 @@ proc create_root_design { parentCell } {
   set dmr_1_onewire_a_in [ create_bd_port -dir I -from 3 -to 0 dmr_1_onewire_a_in ]
   set dmr_1_onewire_d_in [ create_bd_port -dir I -from 31 -to 0 dmr_1_onewire_d_in ]
   set dmr_1_onewire_we_in [ create_bd_port -dir I dmr_1_onewire_we_in ]
-  set gpio_rtl_1_onewire_gpio_in [ create_bd_port -dir I -from 31 -to 0 gpio_rtl_1_onewire_gpio_in ]
   set mb_axi_clk_100mhz [ create_bd_port -dir O -type clk mb_axi_clk_100mhz ]
   set_property -dict [ list \
    CONFIG.ASSOCIATED_BUSIF {gpio_rtl_1_onewire_gpio_in} \
@@ -985,6 +986,7 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net axi_ethernetlite_0_MII [get_bd_intf_pins axi_ethernetlite_ETHERNET/MII] [get_bd_intf_pins mii_to_rmii_ETHERNET/MII]
   connect_bd_intf_net -intf_net axi_ethernetlite_ETHERNET_MDIO [get_bd_intf_ports mdio_rtl_0_ethernet] [get_bd_intf_pins axi_ethernetlite_ETHERNET/MDIO]
   connect_bd_intf_net -intf_net axi_gpio_0_gpio [get_bd_intf_ports gpio_rtl_0_multi] [get_bd_intf_pins axi_gpio_0_MULTI/GPIO]
+  connect_bd_intf_net -intf_net axi_gpio_2_ONEWIRE_in_GPIO2 [get_bd_intf_ports gpio_rtl_1_onewire_gpio_in] [get_bd_intf_pins axi_gpio_2_ONEWIRE_in/GPIO2]
   connect_bd_intf_net -intf_net axi_iic_0_iic [get_bd_intf_ports iic_rtl_0_pll] [get_bd_intf_pins axi_iic_0_PLL/IIC]
   connect_bd_intf_net -intf_net axi_iic_0_iic1 [get_bd_intf_ports iic_rtl_1_board] [get_bd_intf_pins axi_iic_1_BOARD/IIC]
   connect_bd_intf_net -intf_net axi_quad_spi_0_spi [get_bd_intf_ports spi_rtl_0_config] [get_bd_intf_pins axi_quad_spi_0_CONFIG/SPI_0]
@@ -1016,7 +1018,7 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net mb_0_mdm_MDEBUG_0 [get_bd_intf_pins mb_0/DEBUG] [get_bd_intf_pins mb_0_mdm/MBDEBUG_0]
   connect_bd_intf_net -intf_net mb_0_mdm_M_AXI [get_bd_intf_pins mb_0_axi_interconnect_top/S01_AXI] [get_bd_intf_pins mb_0_mdm/M_AXI]
   connect_bd_intf_net -intf_net mig_7series_0_ddr3 [get_bd_intf_ports ddr3_sdram] [get_bd_intf_pins mig_7series_0/DDR3]
-  connect_bd_intf_net -intf_net mii_to_rmii_ETHERNET_RMII_PHY_M [get_bd_intf_ports rmii_rtl_0] [get_bd_intf_pins mii_to_rmii_ETHERNET/RMII_PHY_M]
+  connect_bd_intf_net -intf_net mii_to_rmii_ETHERNET_RMII_PHY_M [get_bd_intf_ports rmii_rtl_0_ethernet] [get_bd_intf_pins mii_to_rmii_ETHERNET/RMII_PHY_M]
 
   # Create port connections
   connect_bd_net -net axi_ethernetlite_ETHERNET_ip2intc_irpt [get_bd_pins axi_ethernetlite_ETHERNET/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In12]
@@ -1048,7 +1050,6 @@ proc create_root_design { parentCell } {
   connect_bd_net -net dmr_1_ONEWIRE_qdpo [get_bd_pins axi_gpio_2_ONEWIRE_in/gpio_io_i] [get_bd_pins dmr_1_ONEWIRE/qdpo]
   connect_bd_net -net dmr_1_onewire_a_in [get_bd_ports dmr_1_onewire_a_in] [get_bd_pins dmr_1_ONEWIRE/a]
   connect_bd_net -net dmr_1_onewire_d_in [get_bd_ports dmr_1_onewire_d_in] [get_bd_pins dmr_1_ONEWIRE/d]
-  connect_bd_net -net gpio_rtl_1_onewire_gpio_in_net [get_bd_ports gpio_rtl_1_onewire_gpio_in] [get_bd_pins axi_gpio_2_ONEWIRE_in/gpio2_io_i]
   connect_bd_net -net mb_0_clk [get_bd_ports mb_axi_clk_100mhz] [get_bd_pins CDC_LVDS_in/qdpo_clk] [get_bd_pins CDC_LVDS_out/clk] [get_bd_pins axi_ethernetlite_ETHERNET/s_axi_aclk] [get_bd_pins axi_gpio_0_MULTI/s_axi_aclk] [get_bd_pins axi_gpio_1_ONEWIRE_out/s_axi_aclk] [get_bd_pins axi_gpio_2_ONEWIRE_in/s_axi_aclk] [get_bd_pins axi_gpio_3_ROTENC/s_axi_aclk] [get_bd_pins axi_gpio_7_LVDS/s_axi_aclk] [get_bd_pins axi_iic_0_PLL/s_axi_aclk] [get_bd_pins axi_iic_1_BOARD/s_axi_aclk] [get_bd_pins axi_quad_spi_0_CONFIG/s_axi_aclk] [get_bd_pins axi_quad_spi_1_TRX/s_axi_aclk] [get_bd_pins axi_timer_0/s_axi_aclk] [get_bd_pins axi_uart16550_0_FTDI/s_axi_aclk] [get_bd_pins c_accum_0_ROTENC/CLK] [get_bd_pins clk_12mhz_FTDI/clk_in1] [get_bd_pins dmr_1_ONEWIRE/clk] [get_bd_pins mb_0/Clk] [get_bd_pins mb_0_axi_intc/processor_clk] [get_bd_pins mb_0_axi_intc/s_axi_aclk] [get_bd_pins mb_0_axi_interconnect_bottom/ACLK] [get_bd_pins mb_0_axi_interconnect_bottom/M00_ACLK] [get_bd_pins mb_0_axi_interconnect_bottom/M01_ACLK] [get_bd_pins mb_0_axi_interconnect_bottom/S00_ACLK] [get_bd_pins mb_0_axi_interconnect_top/ACLK] [get_bd_pins mb_0_axi_interconnect_top/M00_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M01_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M02_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M03_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M04_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M05_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M06_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M07_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M08_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M09_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M10_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M11_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M12_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M13_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M14_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S00_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S01_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S02_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S03_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S04_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S05_ACLK] [get_bd_pins mb_0_local_memory/LMB_Clk] [get_bd_pins mb_0_mdm/M_AXI_ACLK] [get_bd_pins mb_0_mdm/S_AXI_ACLK] [get_bd_pins mb_0_reset/slowest_sync_clk] [get_bd_pins mig_7series_0/ui_clk]
   connect_bd_net -net mb_0_intr_in [get_bd_pins mb_0_axi_intc/intr] [get_bd_pins mb_0_axi_intc_concat/dout]
   connect_bd_net -net mb_0_mdm_Interrupt [get_bd_pins mb_0_axi_intc_concat/In0] [get_bd_pins mb_0_mdm/Interrupt]

@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
 // Date        : Thu Aug 15 19:01:21 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_ilmb_bram_if_cntlr_0/mcu_ilmb_bram_if_cntlr_0_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top mcu_ilmb_bram_if_cntlr_0 -prefix
+//               mcu_ilmb_bram_if_cntlr_0_ mcu_ilmb_bram_if_cntlr_0_stub.v
 // Design      : mcu_ilmb_bram_if_cntlr_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tfgg484-2

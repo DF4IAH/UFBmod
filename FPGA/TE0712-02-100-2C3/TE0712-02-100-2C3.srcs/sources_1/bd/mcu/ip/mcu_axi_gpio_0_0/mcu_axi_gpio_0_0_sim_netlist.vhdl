@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
 -- Date        : Thu Aug 15 19:13:18 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_axi_gpio_0_0/mcu_axi_gpio_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top mcu_axi_gpio_0_0 -prefix
+--               mcu_axi_gpio_0_0_ mcu_axi_gpio_0_0_sim_netlist.vhdl
 -- Design      : mcu_axi_gpio_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -34,8 +34,6 @@ entity mcu_axi_gpio_0_0_GPIO_Core is
     Bus_RNW_reg : in STD_LOGIC;
     \GEN_BKEND_CE_REGISTERS[3].ce_out_i_reg\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_axi_gpio_0_0_GPIO_Core : entity is "GPIO_Core";
 end mcu_axi_gpio_0_0_GPIO_Core;
 
 architecture STRUCTURE of mcu_axi_gpio_0_0_GPIO_Core is
@@ -471,8 +469,6 @@ entity mcu_axi_gpio_0_0_pselect_f is
     ce_expnd_i_3 : out STD_LOGIC;
     \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]\ : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_axi_gpio_0_0_pselect_f : entity is "pselect_f";
 end mcu_axi_gpio_0_0_pselect_f;
 
 architecture STRUCTURE of mcu_axi_gpio_0_0_pselect_f is
@@ -541,8 +537,6 @@ entity mcu_axi_gpio_0_0_address_decoder is
     s_axi_wready : in STD_LOGIC;
     s_axi_wdata : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_axi_gpio_0_0_address_decoder : entity is "address_decoder";
 end mcu_axi_gpio_0_0_address_decoder;
 
 architecture STRUCTURE of mcu_axi_gpio_0_0_address_decoder is
@@ -852,8 +846,6 @@ entity mcu_axi_gpio_0_0_slave_attachment is
     s_axi_araddr : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_axi_gpio_0_0_slave_attachment : entity is "slave_attachment";
 end mcu_axi_gpio_0_0_slave_attachment;
 
 architecture STRUCTURE of mcu_axi_gpio_0_0_slave_attachment is
@@ -1521,8 +1513,6 @@ entity mcu_axi_gpio_0_0_axi_lite_ipif is
     s_axi_araddr : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_axi_gpio_0_0_axi_lite_ipif : entity is "axi_lite_ipif";
 end mcu_axi_gpio_0_0_axi_lite_ipif;
 
 architecture STRUCTURE of mcu_axi_gpio_0_0_axi_lite_ipif is
@@ -1623,8 +1613,6 @@ entity mcu_axi_gpio_0_0_axi_gpio is
   attribute C_TRI_DEFAULT of mcu_axi_gpio_0_0_axi_gpio : entity is -1;
   attribute C_TRI_DEFAULT_2 : integer;
   attribute C_TRI_DEFAULT_2 of mcu_axi_gpio_0_0_axi_gpio : entity is -1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_axi_gpio_0_0_axi_gpio : entity is "axi_gpio";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mcu_axi_gpio_0_0_axi_gpio : entity is "yes";
   attribute ip_group : string;

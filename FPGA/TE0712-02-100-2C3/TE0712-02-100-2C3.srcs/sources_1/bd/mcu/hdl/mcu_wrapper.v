@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-//Date        : Thu Aug 15 22:44:13 2019
+//Date        : Thu Aug 22 00:00:21 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu_wrapper.bd
 //Design      : mcu_wrapper
@@ -33,7 +33,7 @@ module mcu_wrapper
     dmr_1_onewire_d_in,
     dmr_1_onewire_we_in,
     gpio_rtl_0_multi_tri_o,
-    gpio_rtl_1_onewire_gpio_in,
+    gpio_rtl_1_onewire_gpio_in_tri_i,
     gpio_rtl_1_onewire_gpio_out_tri_o,
     iic_rtl_0_pll_scl_io,
     iic_rtl_0_pll_sda_io,
@@ -48,11 +48,11 @@ module mcu_wrapper
     pll_int,
     pwm0_lcd_bl_obuf,
     reset,
-    rmii_rtl_0_crs_dv,
-    rmii_rtl_0_rx_er,
-    rmii_rtl_0_rxd,
-    rmii_rtl_0_tx_en,
-    rmii_rtl_0_txd,
+    rmii_rtl_0_ethernet_crs_dv,
+    rmii_rtl_0_ethernet_rx_er,
+    rmii_rtl_0_ethernet_rxd,
+    rmii_rtl_0_ethernet_tx_en,
+    rmii_rtl_0_ethernet_txd,
     spi_rtl_0_config_io0_io,
     spi_rtl_0_config_io1_io,
     spi_rtl_0_config_io2_io,
@@ -111,7 +111,7 @@ module mcu_wrapper
   input [31:0]dmr_1_onewire_d_in;
   input dmr_1_onewire_we_in;
   output [7:0]gpio_rtl_0_multi_tri_o;
-  input [31:0]gpio_rtl_1_onewire_gpio_in;
+  input [31:0]gpio_rtl_1_onewire_gpio_in_tri_i;
   output [31:0]gpio_rtl_1_onewire_gpio_out_tri_o;
   inout iic_rtl_0_pll_scl_io;
   inout iic_rtl_0_pll_sda_io;
@@ -126,11 +126,11 @@ module mcu_wrapper
   input [0:0]pll_int;
   output pwm0_lcd_bl_obuf;
   input reset;
-  input rmii_rtl_0_crs_dv;
-  input rmii_rtl_0_rx_er;
-  input [1:0]rmii_rtl_0_rxd;
-  output rmii_rtl_0_tx_en;
-  output [1:0]rmii_rtl_0_txd;
+  input rmii_rtl_0_ethernet_crs_dv;
+  input rmii_rtl_0_ethernet_rx_er;
+  input [1:0]rmii_rtl_0_ethernet_rxd;
+  output rmii_rtl_0_ethernet_tx_en;
+  output [1:0]rmii_rtl_0_ethernet_txd;
   inout spi_rtl_0_config_io0_io;
   inout spi_rtl_0_config_io1_io;
   inout spi_rtl_0_config_io2_io;
@@ -190,7 +190,7 @@ module mcu_wrapper
   wire [31:0]dmr_1_onewire_d_in;
   wire dmr_1_onewire_we_in;
   wire [7:0]gpio_rtl_0_multi_tri_o;
-  wire [31:0]gpio_rtl_1_onewire_gpio_in;
+  wire [31:0]gpio_rtl_1_onewire_gpio_in_tri_i;
   wire [31:0]gpio_rtl_1_onewire_gpio_out_tri_o;
   wire iic_rtl_0_pll_scl_i;
   wire iic_rtl_0_pll_scl_io;
@@ -220,11 +220,11 @@ module mcu_wrapper
   wire [0:0]pll_int;
   wire pwm0_lcd_bl_obuf;
   wire reset;
-  wire rmii_rtl_0_crs_dv;
-  wire rmii_rtl_0_rx_er;
-  wire [1:0]rmii_rtl_0_rxd;
-  wire rmii_rtl_0_tx_en;
-  wire [1:0]rmii_rtl_0_txd;
+  wire rmii_rtl_0_ethernet_crs_dv;
+  wire rmii_rtl_0_ethernet_rx_er;
+  wire [1:0]rmii_rtl_0_ethernet_rxd;
+  wire rmii_rtl_0_ethernet_tx_en;
+  wire [1:0]rmii_rtl_0_ethernet_txd;
   wire spi_rtl_0_config_io0_i;
   wire spi_rtl_0_config_io0_io;
   wire spi_rtl_0_config_io0_o;
@@ -332,7 +332,7 @@ module mcu_wrapper
         .dmr_1_onewire_d_in(dmr_1_onewire_d_in),
         .dmr_1_onewire_we_in(dmr_1_onewire_we_in),
         .gpio_rtl_0_multi_tri_o(gpio_rtl_0_multi_tri_o),
-        .gpio_rtl_1_onewire_gpio_in(gpio_rtl_1_onewire_gpio_in),
+        .gpio_rtl_1_onewire_gpio_in_tri_i(gpio_rtl_1_onewire_gpio_in_tri_i),
         .gpio_rtl_1_onewire_gpio_out_tri_o(gpio_rtl_1_onewire_gpio_out_tri_o),
         .iic_rtl_0_pll_scl_i(iic_rtl_0_pll_scl_i),
         .iic_rtl_0_pll_scl_o(iic_rtl_0_pll_scl_o),
@@ -357,11 +357,11 @@ module mcu_wrapper
         .pll_int(pll_int),
         .pwm0_lcd_bl_obuf(pwm0_lcd_bl_obuf),
         .reset(reset),
-        .rmii_rtl_0_crs_dv(rmii_rtl_0_crs_dv),
-        .rmii_rtl_0_rx_er(rmii_rtl_0_rx_er),
-        .rmii_rtl_0_rxd(rmii_rtl_0_rxd),
-        .rmii_rtl_0_tx_en(rmii_rtl_0_tx_en),
-        .rmii_rtl_0_txd(rmii_rtl_0_txd),
+        .rmii_rtl_0_ethernet_crs_dv(rmii_rtl_0_ethernet_crs_dv),
+        .rmii_rtl_0_ethernet_rx_er(rmii_rtl_0_ethernet_rx_er),
+        .rmii_rtl_0_ethernet_rxd(rmii_rtl_0_ethernet_rxd),
+        .rmii_rtl_0_ethernet_tx_en(rmii_rtl_0_ethernet_tx_en),
+        .rmii_rtl_0_ethernet_txd(rmii_rtl_0_ethernet_txd),
         .spi_rtl_0_config_io0_i(spi_rtl_0_config_io0_i),
         .spi_rtl_0_config_io0_o(spi_rtl_0_config_io0_o),
         .spi_rtl_0_config_io0_t(spi_rtl_0_config_io0_t),

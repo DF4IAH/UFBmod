@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
 -- Date        : Thu Aug 15 19:19:36 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_mii_to_rmii_0_0/mcu_mii_to_rmii_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top mcu_mii_to_rmii_0_0 -prefix
+--               mcu_mii_to_rmii_0_0_ mcu_mii_to_rmii_0_0_sim_netlist.vhdl
 -- Design      : mcu_mii_to_rmii_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -26,8 +26,6 @@ entity mcu_mii_to_rmii_0_0_SRL_FIFO is
     rx_fifo_wr_en : in STD_LOGIC;
     rx_fifo_rd_en : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mii_to_rmii_0_0_SRL_FIFO : entity is "SRL_FIFO";
 end mcu_mii_to_rmii_0_0_SRL_FIFO;
 
 architecture STRUCTURE of mcu_mii_to_rmii_0_0_SRL_FIFO is
@@ -477,8 +475,6 @@ entity mcu_mii_to_rmii_0_0_rmii_tx_agile is
     mac2Rmii_tx_en_d2 : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mii_to_rmii_0_0_rmii_tx_agile : entity is "rmii_tx_agile";
 end mcu_mii_to_rmii_0_0_rmii_tx_agile;
 
 architecture STRUCTURE of mcu_mii_to_rmii_0_0_rmii_tx_agile is
@@ -693,8 +689,6 @@ entity mcu_mii_to_rmii_0_0_rx_fifo_disposer is
     \FSM_sequential_present_state_reg[5]_0\ : in STD_LOGIC;
     ref_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mii_to_rmii_0_0_rx_fifo_disposer : entity is "rx_fifo_disposer";
 end mcu_mii_to_rmii_0_0_rx_fifo_disposer;
 
 architecture STRUCTURE of mcu_mii_to_rmii_0_0_rx_fifo_disposer is
@@ -1098,8 +1092,6 @@ entity mcu_mii_to_rmii_0_0_rx_fifo_loader is
     phy2Rmii_crs_dv_d2 : in STD_LOGIC;
     \phy2rmii_rxd_d1_reg[1]_0\ : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mii_to_rmii_0_0_rx_fifo_loader : entity is "rx_fifo_loader";
 end mcu_mii_to_rmii_0_0_rx_fifo_loader;
 
 architecture STRUCTURE of mcu_mii_to_rmii_0_0_rx_fifo_loader is
@@ -2165,8 +2157,6 @@ entity mcu_mii_to_rmii_0_0_rx_fifo is
     rx_fifo_wr_en : in STD_LOGIC;
     rx_fifo_rd_en : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mii_to_rmii_0_0_rx_fifo : entity is "rx_fifo";
 end mcu_mii_to_rmii_0_0_rx_fifo;
 
 architecture STRUCTURE of mcu_mii_to_rmii_0_0_rx_fifo is
@@ -2315,8 +2305,6 @@ entity mcu_mii_to_rmii_0_0_rmii_rx_agile is
     \phy2rmii_rxd_d1_reg[1]\ : in STD_LOGIC_VECTOR ( 1 downto 0 );
     phy2Rmii_crs_dv_d2 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mii_to_rmii_0_0_rmii_rx_agile : entity is "rmii_rx_agile";
 end mcu_mii_to_rmii_0_0_rmii_rx_agile;
 
 architecture STRUCTURE of mcu_mii_to_rmii_0_0_rmii_rx_agile is
@@ -2423,8 +2411,6 @@ entity mcu_mii_to_rmii_0_0_mii_to_rmii is
   attribute C_INSTANCE of mcu_mii_to_rmii_0_0_mii_to_rmii : entity is "mcu_mii_to_rmii_0_0";
   attribute C_SPEED_100 : string;
   attribute C_SPEED_100 of mcu_mii_to_rmii_0_0_mii_to_rmii : entity is "1'b1";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mii_to_rmii_0_0_mii_to_rmii : entity is "mii_to_rmii";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mcu_mii_to_rmii_0_0_mii_to_rmii : entity is "yes";
   attribute hdl : string;

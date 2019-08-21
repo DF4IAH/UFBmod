@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
 // Date        : Thu Aug 15 19:19:36 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_mii_to_rmii_0_0/mcu_mii_to_rmii_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top mcu_mii_to_rmii_0_0 -prefix
+//               mcu_mii_to_rmii_0_0_ mcu_mii_to_rmii_0_0_sim_netlist.v
 // Design      : mcu_mii_to_rmii_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,94 +12,6 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "mcu_mii_to_rmii_0_0,mii_to_rmii,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "mii_to_rmii,Vivado 2019.1.2" *) 
-(* NotValidForBitStream *)
-module mcu_mii_to_rmii_0_0
-   (rst_n,
-    ref_clk,
-    mac2rmii_tx_en,
-    mac2rmii_txd,
-    mac2rmii_tx_er,
-    rmii2mac_tx_clk,
-    rmii2mac_rx_clk,
-    rmii2mac_col,
-    rmii2mac_crs,
-    rmii2mac_rx_dv,
-    rmii2mac_rx_er,
-    rmii2mac_rxd,
-    phy2rmii_crs_dv,
-    phy2rmii_rx_er,
-    phy2rmii_rxd,
-    rmii2phy_txd,
-    rmii2phy_tx_en);
-  (* x_interface_info = "xilinx.com:signal:reset:1.0 rst RST" *) (* x_interface_parameter = "XIL_INTERFACENAME rst, BOARD.ASSOCIATED_PARAM RESET_BOARD_INTERFACE, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst_n;
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 clock CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME clock, BOARD.ASSOCIATED_PARAM REF_CLK_BOARD_INTERFACE, FREQ_HZ 50000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) input ref_clk;
-  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII TX_EN" *) input mac2rmii_tx_en;
-  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII TXD" *) input [3:0]mac2rmii_txd;
-  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII TX_ER" *) input mac2rmii_tx_er;
-  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII TX_CLK" *) output rmii2mac_tx_clk;
-  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII RX_CLK" *) output rmii2mac_rx_clk;
-  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII COL" *) output rmii2mac_col;
-  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII CRS" *) output rmii2mac_crs;
-  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII RX_DV" *) output rmii2mac_rx_dv;
-  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII RX_ER" *) output rmii2mac_rx_er;
-  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII RXD" *) output [3:0]rmii2mac_rxd;
-  (* x_interface_info = "xilinx.com:interface:rmii:1.0 RMII_PHY_M CRS_DV" *) (* x_interface_parameter = "XIL_INTERFACENAME RMII_PHY_M, BOARD.ASSOCIATED_PARAM RMII_BOARD_INTERFACE" *) input phy2rmii_crs_dv;
-  (* x_interface_info = "xilinx.com:interface:rmii:1.0 RMII_PHY_M RX_ER" *) input phy2rmii_rx_er;
-  (* x_interface_info = "xilinx.com:interface:rmii:1.0 RMII_PHY_M RXD" *) input [1:0]phy2rmii_rxd;
-  (* x_interface_info = "xilinx.com:interface:rmii:1.0 RMII_PHY_M TXD" *) output [1:0]rmii2phy_txd;
-  (* x_interface_info = "xilinx.com:interface:rmii:1.0 RMII_PHY_M TX_EN" *) output rmii2phy_tx_en;
-
-  wire mac2rmii_tx_en;
-  wire mac2rmii_tx_er;
-  wire [3:0]mac2rmii_txd;
-  wire phy2rmii_crs_dv;
-  wire phy2rmii_rx_er;
-  wire [1:0]phy2rmii_rxd;
-  wire ref_clk;
-  wire rmii2mac_col;
-  wire rmii2mac_crs;
-  wire rmii2mac_rx_clk;
-  wire rmii2mac_rx_dv;
-  wire rmii2mac_rx_er;
-  wire [3:0]rmii2mac_rxd;
-  wire rmii2mac_tx_clk;
-  wire rmii2phy_tx_en;
-  wire [1:0]rmii2phy_txd;
-  wire rst_n;
-
-  (* C_FAMILY = "artix7" *) 
-  (* C_FIXED_SPEED = "1'b0" *) 
-  (* C_INCLUDE_BUF = "0" *) 
-  (* C_INSTANCE = "mcu_mii_to_rmii_0_0" *) 
-  (* C_SPEED_100 = "1'b1" *) 
-  (* downgradeipidentifiedwarnings = "yes" *) 
-  (* hdl = "VHDL" *) 
-  (* imp_netlist = "TRUE" *) 
-  (* ip_group = "LOGICORE" *) 
-  (* iptype = "IP" *) 
-  (* style = "HDL" *) 
-  mcu_mii_to_rmii_0_0_mii_to_rmii U0
-       (.mac2rmii_tx_en(mac2rmii_tx_en),
-        .mac2rmii_tx_er(mac2rmii_tx_er),
-        .mac2rmii_txd(mac2rmii_txd),
-        .phy2rmii_crs_dv(phy2rmii_crs_dv),
-        .phy2rmii_rx_er(phy2rmii_rx_er),
-        .phy2rmii_rxd(phy2rmii_rxd),
-        .ref_clk(ref_clk),
-        .rmii2mac_col(rmii2mac_col),
-        .rmii2mac_crs(rmii2mac_crs),
-        .rmii2mac_rx_clk(rmii2mac_rx_clk),
-        .rmii2mac_rx_dv(rmii2mac_rx_dv),
-        .rmii2mac_rx_er(rmii2mac_rx_er),
-        .rmii2mac_rxd(rmii2mac_rxd),
-        .rmii2mac_tx_clk(rmii2mac_tx_clk),
-        .rmii2phy_tx_en(rmii2phy_tx_en),
-        .rmii2phy_txd(rmii2phy_txd),
-        .rst_n(rst_n));
-endmodule
-
-(* ORIG_REF_NAME = "SRL_FIFO" *) 
 module mcu_mii_to_rmii_0_0_SRL_FIFO
    (Data_Exists_DFF_0,
     D,
@@ -467,10 +379,97 @@ module mcu_mii_to_rmii_0_0_SRL_FIFO
         .Q(D[5]));
 endmodule
 
+(* CHECK_LICENSE_TYPE = "mcu_mii_to_rmii_0_0,mii_to_rmii,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "mii_to_rmii,Vivado 2019.1.2" *) 
+(* NotValidForBitStream *)
+module mcu_mii_to_rmii_0_0
+   (rst_n,
+    ref_clk,
+    mac2rmii_tx_en,
+    mac2rmii_txd,
+    mac2rmii_tx_er,
+    rmii2mac_tx_clk,
+    rmii2mac_rx_clk,
+    rmii2mac_col,
+    rmii2mac_crs,
+    rmii2mac_rx_dv,
+    rmii2mac_rx_er,
+    rmii2mac_rxd,
+    phy2rmii_crs_dv,
+    phy2rmii_rx_er,
+    phy2rmii_rxd,
+    rmii2phy_txd,
+    rmii2phy_tx_en);
+  (* x_interface_info = "xilinx.com:signal:reset:1.0 rst RST" *) (* x_interface_parameter = "XIL_INTERFACENAME rst, BOARD.ASSOCIATED_PARAM RESET_BOARD_INTERFACE, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst_n;
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 clock CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME clock, BOARD.ASSOCIATED_PARAM REF_CLK_BOARD_INTERFACE, FREQ_HZ 50000000, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) input ref_clk;
+  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII TX_EN" *) input mac2rmii_tx_en;
+  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII TXD" *) input [3:0]mac2rmii_txd;
+  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII TX_ER" *) input mac2rmii_tx_er;
+  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII TX_CLK" *) output rmii2mac_tx_clk;
+  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII RX_CLK" *) output rmii2mac_rx_clk;
+  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII COL" *) output rmii2mac_col;
+  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII CRS" *) output rmii2mac_crs;
+  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII RX_DV" *) output rmii2mac_rx_dv;
+  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII RX_ER" *) output rmii2mac_rx_er;
+  (* x_interface_info = "xilinx.com:interface:mii:1.0 MII RXD" *) output [3:0]rmii2mac_rxd;
+  (* x_interface_info = "xilinx.com:interface:rmii:1.0 RMII_PHY_M CRS_DV" *) (* x_interface_parameter = "XIL_INTERFACENAME RMII_PHY_M, BOARD.ASSOCIATED_PARAM RMII_BOARD_INTERFACE" *) input phy2rmii_crs_dv;
+  (* x_interface_info = "xilinx.com:interface:rmii:1.0 RMII_PHY_M RX_ER" *) input phy2rmii_rx_er;
+  (* x_interface_info = "xilinx.com:interface:rmii:1.0 RMII_PHY_M RXD" *) input [1:0]phy2rmii_rxd;
+  (* x_interface_info = "xilinx.com:interface:rmii:1.0 RMII_PHY_M TXD" *) output [1:0]rmii2phy_txd;
+  (* x_interface_info = "xilinx.com:interface:rmii:1.0 RMII_PHY_M TX_EN" *) output rmii2phy_tx_en;
+
+  wire mac2rmii_tx_en;
+  wire mac2rmii_tx_er;
+  wire [3:0]mac2rmii_txd;
+  wire phy2rmii_crs_dv;
+  wire phy2rmii_rx_er;
+  wire [1:0]phy2rmii_rxd;
+  wire ref_clk;
+  wire rmii2mac_col;
+  wire rmii2mac_crs;
+  wire rmii2mac_rx_clk;
+  wire rmii2mac_rx_dv;
+  wire rmii2mac_rx_er;
+  wire [3:0]rmii2mac_rxd;
+  wire rmii2mac_tx_clk;
+  wire rmii2phy_tx_en;
+  wire [1:0]rmii2phy_txd;
+  wire rst_n;
+
+  (* C_FAMILY = "artix7" *) 
+  (* C_FIXED_SPEED = "1'b0" *) 
+  (* C_INCLUDE_BUF = "0" *) 
+  (* C_INSTANCE = "mcu_mii_to_rmii_0_0" *) 
+  (* C_SPEED_100 = "1'b1" *) 
+  (* downgradeipidentifiedwarnings = "yes" *) 
+  (* hdl = "VHDL" *) 
+  (* imp_netlist = "TRUE" *) 
+  (* ip_group = "LOGICORE" *) 
+  (* iptype = "IP" *) 
+  (* style = "HDL" *) 
+  mcu_mii_to_rmii_0_0_mii_to_rmii U0
+       (.mac2rmii_tx_en(mac2rmii_tx_en),
+        .mac2rmii_tx_er(mac2rmii_tx_er),
+        .mac2rmii_txd(mac2rmii_txd),
+        .phy2rmii_crs_dv(phy2rmii_crs_dv),
+        .phy2rmii_rx_er(phy2rmii_rx_er),
+        .phy2rmii_rxd(phy2rmii_rxd),
+        .ref_clk(ref_clk),
+        .rmii2mac_col(rmii2mac_col),
+        .rmii2mac_crs(rmii2mac_crs),
+        .rmii2mac_rx_clk(rmii2mac_rx_clk),
+        .rmii2mac_rx_dv(rmii2mac_rx_dv),
+        .rmii2mac_rx_er(rmii2mac_rx_er),
+        .rmii2mac_rxd(rmii2mac_rxd),
+        .rmii2mac_tx_clk(rmii2mac_tx_clk),
+        .rmii2phy_tx_en(rmii2phy_tx_en),
+        .rmii2phy_txd(rmii2phy_txd),
+        .rst_n(rst_n));
+endmodule
+
 (* C_FAMILY = "artix7" *) (* C_FIXED_SPEED = "1'b0" *) (* C_INCLUDE_BUF = "0" *) 
-(* C_INSTANCE = "mcu_mii_to_rmii_0_0" *) (* C_SPEED_100 = "1'b1" *) (* ORIG_REF_NAME = "mii_to_rmii" *) 
-(* downgradeipidentifiedwarnings = "yes" *) (* hdl = "VHDL" *) (* imp_netlist = "TRUE" *) 
-(* ip_group = "LOGICORE" *) (* iptype = "IP" *) (* style = "HDL" *) 
+(* C_INSTANCE = "mcu_mii_to_rmii_0_0" *) (* C_SPEED_100 = "1'b1" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* hdl = "VHDL" *) (* imp_netlist = "TRUE" *) (* ip_group = "LOGICORE" *) 
+(* iptype = "IP" *) (* style = "HDL" *) 
 module mcu_mii_to_rmii_0_0_mii_to_rmii
    (rst_n,
     ref_clk,
@@ -785,7 +784,6 @@ module mcu_mii_to_rmii_0_0_mii_to_rmii
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "rmii_rx_agile" *) 
 module mcu_mii_to_rmii_0_0_rmii_rx_agile
    (SR,
     rmii2Mac_crs_i,
@@ -883,7 +881,6 @@ module mcu_mii_to_rmii_0_0_rmii_rx_agile
         .rxd_10_i_reg_0(I_RX_FIFO_LOADER_n_8));
 endmodule
 
-(* ORIG_REF_NAME = "rmii_tx_agile" *) 
 module mcu_mii_to_rmii_0_0_rmii_tx_agile
    (Rmii2Phy_tx_en,
     \Rmii2Phy_txd_reg[1]_0 ,
@@ -1055,7 +1052,6 @@ module mcu_mii_to_rmii_0_0_rmii_tx_agile
         .O(rmii2Mac_tx_clk_i));
 endmodule
 
-(* ORIG_REF_NAME = "rx_fifo" *) 
 module mcu_mii_to_rmii_0_0_rx_fifo
    (rx_fifo_mt_n,
     \Rx_fifo_output_reg[7]_0 ,
@@ -1181,7 +1177,6 @@ module mcu_mii_to_rmii_0_0_rx_fifo
         .R(\Addr_Counters[3].FDRE_I ));
 endmodule
 
-(* ORIG_REF_NAME = "rx_fifo_disposer" *) 
 module mcu_mii_to_rmii_0_0_rx_fifo_disposer
    (rx_fifo_rd_en,
     rmii2Mac_rx_er_i,
@@ -1511,7 +1506,6 @@ module mcu_mii_to_rmii_0_0_rx_fifo_disposer
         .O(D[3]));
 endmodule
 
-(* ORIG_REF_NAME = "rx_fifo_loader" *) 
 module mcu_mii_to_rmii_0_0_rx_fifo_loader
    (\rst_n_d_reg[1] ,
     rx_10,

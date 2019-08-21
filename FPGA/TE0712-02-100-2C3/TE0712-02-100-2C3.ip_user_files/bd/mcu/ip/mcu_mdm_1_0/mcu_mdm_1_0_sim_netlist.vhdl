@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
--- Date        : Thu Aug 15 19:03:50 2019
+-- Date        : Thu Aug 15 19:03:47 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_mdm_1_0/mcu_mdm_1_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top mcu_mdm_1_0 -prefix
+--               mcu_mdm_1_0_ mcu_mdm_1_0_sim_netlist.vhdl
 -- Design      : mcu_mdm_1_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -51,8 +51,6 @@ entity mcu_mdm_1_0_MB_BSCANE2 is
     Scan_Reset : in STD_LOGIC;
     Scan_En : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_MB_BSCANE2 : entity is "MB_BSCANE2";
 end mcu_mdm_1_0_MB_BSCANE2;
 
 architecture STRUCTURE of mcu_mdm_1_0_MB_BSCANE2 is
@@ -325,8 +323,6 @@ entity mcu_mdm_1_0_MB_BUFG is
     Ext_JTAG_DRCK : out STD_LOGIC;
     DRCK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_MB_BUFG : entity is "MB_BUFG";
 end mcu_mdm_1_0_MB_BUFG;
 
 architecture STRUCTURE of mcu_mdm_1_0_MB_BUFG is
@@ -422,8 +418,6 @@ entity mcu_mdm_1_0_MB_FDC_1 is
     Scan_Reset : in STD_LOGIC;
     Scan_En : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_MB_FDC_1 : entity is "MB_FDC_1";
 end mcu_mdm_1_0_MB_FDC_1;
 
 architecture STRUCTURE of mcu_mdm_1_0_MB_FDC_1 is
@@ -1222,8 +1216,6 @@ entity mcu_mdm_1_0_MB_FDRE is
     FIFO_Read : in STD_LOGIC;
     data_Exists_I_reg : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_MB_FDRE : entity is "MB_FDRE";
 end mcu_mdm_1_0_MB_FDRE;
 
 architecture STRUCTURE of mcu_mdm_1_0_MB_FDRE is
@@ -2623,8 +2615,6 @@ entity mcu_mdm_1_0_MB_FDRSE is
     S_AXI_ACLK : in STD_LOGIC;
     set_Ext_BRK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_MB_FDRSE : entity is "MB_FDRSE";
 end mcu_mdm_1_0_MB_FDRSE;
 
 architecture STRUCTURE of mcu_mdm_1_0_MB_FDRSE is
@@ -2686,8 +2676,6 @@ entity mcu_mdm_1_0_MB_MUXCY_XORCY is
     lopt_10 : out STD_LOGIC;
     lopt_11 : out STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_MB_MUXCY_XORCY : entity is "MB_MUXCY_XORCY";
 end mcu_mdm_1_0_MB_MUXCY_XORCY;
 
 architecture STRUCTURE of mcu_mdm_1_0_MB_MUXCY_XORCY is
@@ -3270,8 +3258,6 @@ entity mcu_mdm_1_0_MB_SRL16E is
     Q : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \Use_E2.BSCANE2_I_i_7\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_MB_SRL16E : entity is "MB_SRL16E";
 end mcu_mdm_1_0_MB_SRL16E;
 
 architecture STRUCTURE of mcu_mdm_1_0_MB_SRL16E is
@@ -4234,8 +4220,6 @@ entity mcu_mdm_1_0_MB_SRLC32E is
     A : in STD_LOGIC_VECTOR ( 4 downto 0 );
     M_AXI_ACLK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_MB_SRLC32E : entity is "MB_SRLC32E";
 end mcu_mdm_1_0_MB_SRLC32E;
 
 architecture STRUCTURE of mcu_mdm_1_0_MB_SRLC32E is
@@ -7283,8 +7267,6 @@ entity mcu_mdm_1_0_MB_XORCY is
     LI : in STD_LOGIC;
     LO : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_MB_XORCY : entity is "MB_XORCY";
 end mcu_mdm_1_0_MB_XORCY;
 
 architecture STRUCTURE of mcu_mdm_1_0_MB_XORCY is
@@ -7413,8 +7395,6 @@ entity mcu_mdm_1_0_pselect_f is
     \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]\ : in STD_LOGIC;
     \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]_0\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_pselect_f : entity is "pselect_f";
 end mcu_mdm_1_0_pselect_f;
 
 architecture STRUCTURE of mcu_mdm_1_0_pselect_f is
@@ -7478,8 +7458,6 @@ entity mcu_mdm_1_0_SRL_FIFO is
     Bus_RNW_reg : in STD_LOGIC;
     \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_SRL_FIFO : entity is "SRL_FIFO";
 end mcu_mdm_1_0_SRL_FIFO;
 
 architecture STRUCTURE of mcu_mdm_1_0_SRL_FIFO is
@@ -9352,8 +9330,6 @@ entity mcu_mdm_1_0_address_decoder is
     \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_2\ : in STD_LOGIC;
     \GEN_BKEND_CE_REGISTERS[2].ce_out_i_reg[2]_3\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_address_decoder : entity is "address_decoder";
 end mcu_mdm_1_0_address_decoder;
 
 architecture STRUCTURE of mcu_mdm_1_0_address_decoder is
@@ -9865,8 +9841,6 @@ entity mcu_mdm_1_0_JTAG_CONTROL is
     D : in STD_LOGIC_VECTOR ( 0 to 0 );
     \shift_Count_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_JTAG_CONTROL : entity is "JTAG_CONTROL";
 end mcu_mdm_1_0_JTAG_CONTROL;
 
 architecture STRUCTURE of mcu_mdm_1_0_JTAG_CONTROL is
@@ -16808,8 +16782,6 @@ entity mcu_mdm_1_0_bus_master is
     \M_AXI_AWSIZE_reg[1]_0\ : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M_AXI_BRESP : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_bus_master : entity is "bus_master";
 end mcu_mdm_1_0_bus_master;
 
 architecture STRUCTURE of mcu_mdm_1_0_bus_master is
@@ -19147,8 +19119,6 @@ entity mcu_mdm_1_0_slave_attachment is
     S_AXI_ARADDR : in STD_LOGIC_VECTOR ( 1 downto 0 );
     S_AXI_AWADDR : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_slave_attachment : entity is "slave_attachment";
 end mcu_mdm_1_0_slave_attachment;
 
 architecture STRUCTURE of mcu_mdm_1_0_slave_attachment is
@@ -19644,8 +19614,6 @@ entity mcu_mdm_1_0_MDM_Core is
     AR : in STD_LOGIC_VECTOR ( 0 to 0 );
     \Use_Serial_Unified_Completion.count_reg[5]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_MDM_Core : entity is "MDM_Core";
 end mcu_mdm_1_0_MDM_Core;
 
 architecture STRUCTURE of mcu_mdm_1_0_MDM_Core is
@@ -20401,8 +20369,6 @@ entity mcu_mdm_1_0_axi_lite_ipif is
     S_AXI_ARADDR : in STD_LOGIC_VECTOR ( 1 downto 0 );
     S_AXI_AWADDR : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_axi_lite_ipif : entity is "axi_lite_ipif";
 end mcu_mdm_1_0_axi_lite_ipif;
 
 architecture STRUCTURE of mcu_mdm_1_0_axi_lite_ipif is
@@ -22033,8 +21999,6 @@ entity mcu_mdm_1_0_MDM is
   attribute C_USE_CROSS_TRIGGER of mcu_mdm_1_0_MDM : entity is 1;
   attribute C_USE_UART : integer;
   attribute C_USE_UART of mcu_mdm_1_0_MDM : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_mdm_1_0_MDM : entity is "MDM";
 end mcu_mdm_1_0_MDM;
 
 architecture STRUCTURE of mcu_mdm_1_0_MDM is

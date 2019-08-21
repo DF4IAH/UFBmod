@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-//Date        : Thu Aug 15 22:44:12 2019
+//Date        : Thu Aug 22 00:00:20 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -5094,7 +5094,7 @@ module mb_0_local_memory_imp_N3WR47
         .Sl_Wait(microblaze_0_lmb_bus_WAIT));
 endmodule
 
-(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=86,numReposBlks=59,numNonXlnxBlks=0,numHierBlks=27,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=21,da_board_cnt=14,da_bram_cntlr_cnt=2,da_clkrst_cnt=5,da_mb_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
+(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=86,numReposBlks=59,numNonXlnxBlks=0,numHierBlks=27,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=21,da_board_cnt=15,da_bram_cntlr_cnt=2,da_clkrst_cnt=5,da_mb_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
 module mcu
    (board_rotenc_pulse,
     board_rotenc_push,
@@ -5119,7 +5119,7 @@ module mcu
     dmr_1_onewire_d_in,
     dmr_1_onewire_we_in,
     gpio_rtl_0_multi_tri_o,
-    gpio_rtl_1_onewire_gpio_in,
+    gpio_rtl_1_onewire_gpio_in_tri_i,
     gpio_rtl_1_onewire_gpio_out_tri_o,
     iic_rtl_0_pll_scl_i,
     iic_rtl_0_pll_scl_o,
@@ -5144,11 +5144,11 @@ module mcu
     pll_int,
     pwm0_lcd_bl_obuf,
     reset,
-    rmii_rtl_0_crs_dv,
-    rmii_rtl_0_rx_er,
-    rmii_rtl_0_rxd,
-    rmii_rtl_0_tx_en,
-    rmii_rtl_0_txd,
+    rmii_rtl_0_ethernet_crs_dv,
+    rmii_rtl_0_ethernet_rx_er,
+    rmii_rtl_0_ethernet_rxd,
+    rmii_rtl_0_ethernet_tx_en,
+    rmii_rtl_0_ethernet_txd,
     spi_rtl_0_config_io0_i,
     spi_rtl_0_config_io0_o,
     spi_rtl_0_config_io0_t,
@@ -5225,7 +5225,7 @@ module mcu
   input [31:0]dmr_1_onewire_d_in;
   input dmr_1_onewire_we_in;
   (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_0_multi TRI_O" *) output [7:0]gpio_rtl_0_multi_tri_o;
-  input [31:0]gpio_rtl_1_onewire_gpio_in;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_1_onewire_gpio_in TRI_I" *) input [31:0]gpio_rtl_1_onewire_gpio_in_tri_i;
   (* X_INTERFACE_INFO = "xilinx.com:interface:gpio:1.0 gpio_rtl_1_onewire_gpio_out TRI_O" *) output [31:0]gpio_rtl_1_onewire_gpio_out_tri_o;
   (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_pll SCL_I" *) input iic_rtl_0_pll_scl_i;
   (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 iic_rtl_0_pll SCL_O" *) output iic_rtl_0_pll_scl_o;
@@ -5250,11 +5250,11 @@ module mcu
   input [0:0]pll_int;
   output pwm0_lcd_bl_obuf;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input reset;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:rmii:1.0 rmii_rtl_0 CRS_DV" *) input rmii_rtl_0_crs_dv;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:rmii:1.0 rmii_rtl_0 RX_ER" *) input rmii_rtl_0_rx_er;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:rmii:1.0 rmii_rtl_0 RXD" *) input [1:0]rmii_rtl_0_rxd;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:rmii:1.0 rmii_rtl_0 TX_EN" *) output rmii_rtl_0_tx_en;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:rmii:1.0 rmii_rtl_0 TXD" *) output [1:0]rmii_rtl_0_txd;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:rmii:1.0 rmii_rtl_0_ethernet CRS_DV" *) input rmii_rtl_0_ethernet_crs_dv;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:rmii:1.0 rmii_rtl_0_ethernet RX_ER" *) input rmii_rtl_0_ethernet_rx_er;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:rmii:1.0 rmii_rtl_0_ethernet RXD" *) input [1:0]rmii_rtl_0_ethernet_rxd;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:rmii:1.0 rmii_rtl_0_ethernet TX_EN" *) output rmii_rtl_0_ethernet_tx_en;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:rmii:1.0 rmii_rtl_0_ethernet TXD" *) output [1:0]rmii_rtl_0_ethernet_txd;
   (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config IO0_I" *) input spi_rtl_0_config_io0_i;
   (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config IO0_O" *) output spi_rtl_0_config_io0_o;
   (* X_INTERFACE_INFO = "xilinx.com:interface:spi:1.0 spi_rtl_0_config IO0_T" *) output spi_rtl_0_config_io0_t;
@@ -5344,6 +5344,7 @@ module mcu
   wire axi_ethernetlite_ETHERNET_ip2intc_irpt;
   wire [7:0]axi_gpio_0_gpio_TRI_O;
   wire [3:0]axi_gpio_1_ONEWIRE_out_gpio_io_o;
+  wire [31:0]axi_gpio_2_ONEWIRE_in_GPIO2_TRI_I;
   wire axi_gpio_2_onewire_ip2intc_irpt;
   wire axi_gpio_3_rotenc_ip2intc_irpt;
   wire [0:0]axi_gpio_3_rotenc_push;
@@ -5424,7 +5425,6 @@ module mcu
   wire [31:0]dmr_1_ONEWIRE_qdpo;
   wire [3:0]dmr_1_onewire_a_in;
   wire [31:0]dmr_1_onewire_d_in;
-  wire [31:0]gpio_rtl_1_onewire_gpio_in_net;
   wire [31:0]gpio_rtl_1_onewire_gpio_out_TRI_O;
   wire [0:31]mb_0_DLMB_ABUS;
   wire mb_0_DLMB_ADDRSTROBE;
@@ -5936,6 +5936,7 @@ module mcu
   wire [0:0]xlconstant_val1_dout;
 
   assign axi_ethernetlite_ETHERNET_MDIO_MDIO_I = mdio_rtl_0_ethernet_mdio_i;
+  assign axi_gpio_2_ONEWIRE_in_GPIO2_TRI_I = gpio_rtl_1_onewire_gpio_in_tri_i[31:0];
   assign axi_gpio_3_rotenc_push = board_rotenc_push[0];
   assign axi_iic_0_iic1_SCL_I = iic_rtl_1_board_scl_i;
   assign axi_iic_0_iic1_SDA_I = iic_rtl_1_board_sda_i;
@@ -5970,7 +5971,6 @@ module mcu
   assign ddr3_sdram_reset_n = mig_7series_0_ddr3_RESET_N;
   assign ddr3_sdram_we_n = mig_7series_0_ddr3_WE_N;
   assign gpio_rtl_0_multi_tri_o[7:0] = axi_gpio_0_gpio_TRI_O;
-  assign gpio_rtl_1_onewire_gpio_in_net = gpio_rtl_1_onewire_gpio_in[31:0];
   assign gpio_rtl_1_onewire_gpio_out_tri_o[31:0] = gpio_rtl_1_onewire_gpio_out_TRI_O;
   assign iic_rtl_0_pll_scl_o = axi_iic_0_iic_SCL_O;
   assign iic_rtl_0_pll_scl_t = axi_iic_0_iic_SCL_T;
@@ -5986,14 +5986,14 @@ module mcu
   assign mdio_rtl_0_ethernet_mdio_o = axi_ethernetlite_ETHERNET_MDIO_MDIO_O;
   assign mdio_rtl_0_ethernet_mdio_t = axi_ethernetlite_ETHERNET_MDIO_MDIO_T;
   assign mig_7series_0_sys_rst = sys_rst;
-  assign mii_to_rmii_ETHERNET_RMII_PHY_M_CRS_DV = rmii_rtl_0_crs_dv;
-  assign mii_to_rmii_ETHERNET_RMII_PHY_M_RXD = rmii_rtl_0_rxd[1:0];
-  assign mii_to_rmii_ETHERNET_RMII_PHY_M_RX_ER = rmii_rtl_0_rx_er;
+  assign mii_to_rmii_ETHERNET_RMII_PHY_M_CRS_DV = rmii_rtl_0_ethernet_crs_dv;
+  assign mii_to_rmii_ETHERNET_RMII_PHY_M_RXD = rmii_rtl_0_ethernet_rxd[1:0];
+  assign mii_to_rmii_ETHERNET_RMII_PHY_M_RX_ER = rmii_rtl_0_ethernet_rx_er;
   assign peripheral_reset[0] = mb_0_reset_peripheral_reset;
   assign pll_iic2intc_irpt = pll_int[0];
   assign pwm0_lcd_bl_obuf = axi_timer_0_lcd_pwm0;
-  assign rmii_rtl_0_tx_en = mii_to_rmii_ETHERNET_RMII_PHY_M_TX_EN;
-  assign rmii_rtl_0_txd[1:0] = mii_to_rmii_ETHERNET_RMII_PHY_M_TXD;
+  assign rmii_rtl_0_ethernet_tx_en = mii_to_rmii_ETHERNET_RMII_PHY_M_TX_EN;
+  assign rmii_rtl_0_ethernet_txd[1:0] = mii_to_rmii_ETHERNET_RMII_PHY_M_TXD;
   assign spi_rtl_0_config_io0_o = axi_quad_spi_0_spi_IO0_O;
   assign spi_rtl_0_config_io0_t = axi_quad_spi_0_spi_IO0_T;
   assign spi_rtl_0_config_io1_o = axi_quad_spi_0_spi_IO1_O;
@@ -6124,7 +6124,7 @@ module mcu
         .s_axi_wstrb(mb_0_axi_interconnect_M13_AXI_WSTRB),
         .s_axi_wvalid(mb_0_axi_interconnect_M13_AXI_WVALID));
   mcu_axi_gpio_0_3 axi_gpio_2_ONEWIRE_in
-       (.gpio2_io_i(gpio_rtl_1_onewire_gpio_in_net),
+       (.gpio2_io_i(axi_gpio_2_ONEWIRE_in_GPIO2_TRI_I),
         .gpio_io_i(dmr_1_ONEWIRE_qdpo),
         .ip2intc_irpt(axi_gpio_2_onewire_ip2intc_irpt),
         .s_axi_aclk(mb_0_clk),
