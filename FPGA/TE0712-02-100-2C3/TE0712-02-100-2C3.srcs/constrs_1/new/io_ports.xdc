@@ -140,10 +140,10 @@ set_property -dict {PACKAGE_PIN Y12 IOSTANDARD LVDS_25} [get_ports ufb_trx_rxclk
 
 ## Bank 14 / 3.3 V
 
-#set_property -dict {PACKAGE_PIN P20 IOSTANDARD LVCMOS33} [get_ports {eth_rx_dv}]
+set_property -dict {PACKAGE_PIN P20 IOSTANDARD LVCMOS33} [get_ports {eth_rx_dv}]
 #IO_0_14 sch:ETH_RX_DV
 
-#set_property -dict {PACKAGE_PIN N15 IOSTANDARD LVCMOS33} [get_ports {link_led}]
+set_property -dict {PACKAGE_PIN N15 IOSTANDARD LVCMOS33} [get_ports {link_led}]
 #IO_25_14 sch:LINK_LED
 
 
@@ -273,10 +273,10 @@ set_property -dict {PACKAGE_PIN U18 IOSTANDARD LVCMOS33} [get_ports board_scl]
 #IO_L18N_T2_A11_D27_14 sch:B14_L18_N --> BOAD_SCL
 
 
-#set_property -dict {PACKAGE_PIN P14 IOSTANDARD LVCMOS33} [get_ports {eth_tx_d[0]}]
+set_property -dict {PACKAGE_PIN P14 IOSTANDARD LVCMOS33} [get_ports {eth_tx_d[0]}]
 #IO_L19P_T3_A10_D26_14 sch:ETH_TX_D0
 
-#set_property -dict {PACKAGE_PIN R14 IOSTANDARD LVCMOS33} [get_ports {eth_tx_en}]
+set_property -dict {PACKAGE_PIN R14 IOSTANDARD LVCMOS33} [get_ports {eth_tx_en}]
 #IO_L19N_T3_A09_D25_VREF_14 sch:ETH_TX_EN
 
 
@@ -287,24 +287,24 @@ set_property -dict {PACKAGE_PIN U18 IOSTANDARD LVCMOS33} [get_ports board_scl]
 #IO_L20N_T3_A07_D23_14 sch:B14_L20_N
 
 
-#set_property -dict {PACKAGE_PIN N17 IOSTANDARD LVCMOS33} [get_ports {eth_rst}]
+set_property -dict {PACKAGE_PIN N17 IOSTANDARD LVCMOS33} [get_ports {eth_rst}]
 #IO_L21P_T3_DQS_14 sch:ETH-RST
 
-#set_property -dict {PACKAGE_PIN P17 IOSTANDARD LVCMOS33} [get_ports {mdio}]
+set_property -dict {PACKAGE_PIN P17 IOSTANDARD LVCMOS33} [get_ports {mdio}]
 #IO_L21N_T3_DQS_A06_D22_14 sch:MDIO
 
 
-#set_property -dict {PACKAGE_PIN P15 IOSTANDARD LVCMOS33} [get_ports {eth_tx_d[1]}]
+set_property -dict {PACKAGE_PIN P15 IOSTANDARD LVCMOS33} [get_ports {eth_tx_d[1]}]
 #IO_L22P_T3_A05_D21_14 sch:ETH_TX_D1
 
-#set_property -dict {PACKAGE_PIN R16 IOSTANDARD LVCMOS33} [get_ports {mdc}]
+set_property -dict {PACKAGE_PIN R16 IOSTANDARD LVCMOS33} [get_ports {mdc}]
 #IO_L22N_T3_A04_D20_14 sch:MDC
 
 
-#set_property -dict {PACKAGE_PIN N13 IOSTANDARD LVCMOS33} [get_ports {eth_rx_d[0]}]
+set_property -dict {PACKAGE_PIN N13 IOSTANDARD LVCMOS33} [get_ports {eth_rx_d[0]}]
 #IO_L23P_T3_A03_D19_14 sch:ETH_RX_D0
 
-#set_property -dict {PACKAGE_PIN N14 IOSTANDARD LVCMOS33} [get_ports {eth_rx_d[1]}]
+set_property -dict {PACKAGE_PIN N14 IOSTANDARD LVCMOS33} [get_ports {eth_rx_d[1]}]
 #IO_L23N_T3_A02_D18_14 sch:ETH_RX_D1
 
 

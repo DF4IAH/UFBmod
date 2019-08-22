@@ -105,17 +105,18 @@ module top(
     
     
     // Ethernet
-    //eth_rst,
+    eth_rst,
     
-    //mdc,
-    //mdio,
+    mdc,
+    mdio,
     
-    //eth_tx_d,
+    eth_tx_d,
     
-    //eth_rx_d,
-    //eth_rx_dv,
+    eth_rx_d,
+    eth_rx_dv,
     
-    //link_led,
+    link_led,
+    
     
     // Onewire
     onewire,
@@ -282,17 +283,18 @@ module top(
     
     
     // Ethernet
-    //output eth_rst;
     
-    //output mdc;
-    //inout  mdio;
+    output eth_rst;
     
-    //output [1:0]eth_tx_d;
+    output mdc;
+    inout  mdio;
     
-    //input  [1:0]eth_rx_d;
-    //input  eth_rx_dv;
+    output [1:0]eth_tx_d;
     
-    //input  link_led;
+    input  [1:0]eth_rx_d;
+    input  eth_rx_dv;
+    
+    input  link_led;
     
     
     
@@ -495,6 +497,8 @@ module top(
         .dmr_1_onewire_a_in(dmr_1_onewire_a_in),
         .dmr_1_onewire_d_in(dmr_1_onewire_d_in)
     );
+    
+    assign eth_rst = peripheral_reset;
    
     
     // FTDI
@@ -609,14 +613,18 @@ module top(
         
     // Ethernet
                                                         //output eth_rst
+
+        .mdio_rtl_0_ethernet_mdc(mdc),                  //output mdc
+        .mdio_rtl_0_ethernet_mdio_io(mdio),             //inout  mdio
         
-                                                        //output mdc
-                                                        //inout  mdio
+        .rmii_rtl_0_ethernet_txd(eth_tx_d),             //output [1:0]eth_tx_d
+
+
+        .rmii_rtl_0_ethernet_rxd(eth_rx_d),             //input  [1:0]eth_rx_d
+        .rmii_rtl_0_ethernet_crs_dv(eth_rx_dv),         //input  eth_rx_dv
         
-                                                        //output [1:0]eth_tx_d
-        
-                                                        //input  [1:0]eth_rx_d
-                                                        //input  eth_rx_dv
+        .rmii_rtl_0_ethernet_rx_er(),
+        .rmii_rtl_0_ethernet_tx_en(eth_rst),
         
                                                         //input  link_led
         
@@ -624,7 +632,7 @@ module top(
     // Onewire
         .dmr_1_onewire_a_in(dmr_1_onewire_a_in),
         .dmr_1_onewire_d_in(dmr_1_onewire_d_in),
-        .gpio_rtl_1_onewire_gpio_in(gpio_rtl_1_onewire_gpio_in),
+        .gpio_rtl_1_onewire_gpio_in_tri_i(gpio_rtl_1_onewire_gpio_in),
         .gpio_rtl_1_onewire_gpio_out_tri_o(gpio_rtl_1_onewire_gpio_out),
         
         
