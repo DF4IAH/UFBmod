@@ -110,6 +110,7 @@ module top(
     mdc,
     mdio,
     
+    eth_tx_en,
     eth_tx_d,
     
     eth_rx_d,
@@ -292,6 +293,7 @@ module top(
     output mdc;
     inout  mdio;
     
+    output eth_tx_en;
     output [1:0]eth_tx_d;
     
     input  [1:0]eth_rx_d;
@@ -373,6 +375,8 @@ module top(
     wire ddr3_init_calib_complete_obuf;
     wire [3:0]dmr_1_onewire_a_in;
     wire [31:0]dmr_1_onewire_d_in;
+    wire dmr_1_onewire_we_in;
+    wire fpga_io_obuf;
     wire fpga_led_rgb_red_obuf;
     wire fpga_led_rgb_green_obuf;
     wire fpga_led_rgb_blue_obuf;
@@ -385,6 +389,7 @@ module top(
     wire ufb_fpga_ft_12mhz_obuf;
     wire ufb_fpga_ft_resetn_obuf;
     wire ufb_trx_rstn_obuf;
+    wire uli_system_obuf;
 
 
 
@@ -428,9 +433,34 @@ module top(
         .I(ufb_trx_rstn_obuf),
         .O(ufb_trx_rstn)
     );
-
-
-
+    
+    OBUF fpga_led_rgb_red_obuf_inst (
+        .I(fpga_led_rgb_red_obuf),
+        .O(fpga_led_rgb_red)
+    );
+    
+    OBUF fpga_led_rgb_green_obuf_inst (
+        .I(fpga_led_rgb_green_obuf),
+        .O(fpga_led_rgb_green)
+    );
+    
+    OBUF fpga_led_rgb_blue_obuf_inst (
+        .I(fpga_led_rgb_blue_obuf),
+        .O(fpga_led_rgb_blue)
+    );
+    
+    OBUF fpga_io_obuf_inst (
+        .I(fpga_io_obuf),
+        .O(fpga_io)
+    );
+    
+    OBUF uli_system_obuf_inst (
+        .I(uli_system_obuf),
+        .O(uli_system)
+    );
+    
+    
+    
     // Rotary encoder
     
     reg board_rotenc_pulse;
@@ -496,16 +526,17 @@ module top(
   
         .onewire_io(onewire),
 
-        .gpio_rtl_1_onewire_gpio_out(gpio_rtl_1_onewire_gpio_out),
-        .gpio_rtl_1_onewire_gpio_in(gpio_rtl_1_onewire_gpio_in),
-
         .dmr_1_onewire_a_in(dmr_1_onewire_a_in),
-        .dmr_1_onewire_d_in(dmr_1_onewire_d_in)
+        .dmr_1_onewire_d_in(dmr_1_onewire_d_in),
+        .dmr_1_onewire_we_in(dmr_1_onewire_we_in),
+
+        .gpio_rtl_1_onewire_gpio_out(gpio_rtl_1_onewire_gpio_out),
+        .gpio_rtl_1_onewire_gpio_in(gpio_rtl_1_onewire_gpio_in)
     );
     
-    assign eth_rst          = peripheral_reset;
-    assign fpga_eth_da_g    = link_led;
-    assign fpga_eth_da_y    = 1'b0;
+    assign eth_rst          = !peripheral_reset;    // eth_rst is low active
+    assign fpga_eth_da_g    = link_led & !eth_rx_dv & !eth_tx_en;
+    assign fpga_eth_da_y    = link_led;             // always 100 MBit when link active
     
     
     // FTDI
@@ -536,8 +567,8 @@ module top(
     
     
     // CPLD LEDs
-    assign fpga_io      = 1'b0;  // CPLD red
-    assign uli_system   = 1'b0;  // CPLD green
+    assign fpga_io_obuf      = 1'b0;     // CPLD red
+    assign uli_system_obuf   = 1'b0;     // CPLD green
     
     
     // TRX
@@ -629,21 +660,21 @@ module top(
         .mdio_rtl_0_ethernet_mdc(mdc),                  //output mdc
         .mdio_rtl_0_ethernet_mdio_io(mdio),             //inout  mdio
         
+        .rmii_rtl_0_ethernet_tx_en(eth_tx_en),          //output eth_tx_en
         .rmii_rtl_0_ethernet_txd(eth_tx_d),             //output [1:0]eth_tx_d
 
-
-        .rmii_rtl_0_ethernet_rxd(eth_rx_d),             //input  [1:0]eth_rx_d
         .rmii_rtl_0_ethernet_crs_dv(eth_rx_dv),         //input  eth_rx_dv
-        
-        .rmii_rtl_0_ethernet_rx_er(),
-        .rmii_rtl_0_ethernet_tx_en(eth_rst),
-        
+        .rmii_rtl_0_ethernet_rxd(eth_rx_d),             //input  [1:0]eth_rx_d
+        .rmii_rtl_0_ethernet_rx_er(1'b0),               //input
+       
                                                         //input  link_led
         
         
     // Onewire
         .dmr_1_onewire_a_in(dmr_1_onewire_a_in),
         .dmr_1_onewire_d_in(dmr_1_onewire_d_in),
+        .dmr_1_onewire_we_in(dmr_1_onewire_we_in),
+        
         .gpio_rtl_1_onewire_gpio_in_tri_i(gpio_rtl_1_onewire_gpio_in),
         .gpio_rtl_1_onewire_gpio_out_tri_o(gpio_rtl_1_onewire_gpio_out),
         
@@ -672,6 +703,13 @@ module top(
         .spi_rtl_1_trx_ss_io(ufb_trx_seln),
         
         .trx_int(ufb_trx_irq),
+        
+        .uart_rtl_0_ftdi_baudoutn(),
+        .uart_rtl_0_ftdi_ddis(),
+        .uart_rtl_0_ftdi_out1n(),
+        .uart_rtl_0_ftdi_out2n(),
+        .uart_rtl_0_ftdi_rxrdyn(),
+        .uart_rtl_0_ftdi_txrdyn(),
         
         
     // RFX

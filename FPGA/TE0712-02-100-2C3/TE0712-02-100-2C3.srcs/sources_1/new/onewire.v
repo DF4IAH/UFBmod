@@ -25,12 +25,12 @@ module onewire(
     
     onewire_io,
     
-    gpio_rtl_1_onewire_gpio_in,
-    gpio_rtl_1_onewire_gpio_out,
-    
     dmr_1_onewire_a_in,
     dmr_1_onewire_d_in,
-    dmr_1_onewire_we_in
+    dmr_1_onewire_we_in,
+    
+    gpio_rtl_1_onewire_gpio_in,
+    gpio_rtl_1_onewire_gpio_out
 );
 
 input  rst_i;
