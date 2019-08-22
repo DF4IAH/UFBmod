@@ -19729,6 +19729,20 @@ Right</text>
 <label x="40.64" y="121.92" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
+<net name="FPGA_ETH_DA_Y" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B14_L17_N"/>
+<wire x1="96.52" y1="134.62" x2="40.64" y2="134.62" width="0.1524" layer="91"/>
+<label x="40.64" y="134.62" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="FPGA_ETH_DA_G" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B14_L17_P"/>
+<wire x1="96.52" y1="132.08" x2="76.2" y2="132.08" width="0.1524" layer="91"/>
+<label x="76.2" y="132.08" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
