@@ -259,11 +259,11 @@ set_property -dict {PACKAGE_PIN V19 IOSTANDARD LVCMOS33} [get_ports board_rotenc
 #IO_L16N_T2_A15_D31_14 sch:B14_L16_N
 
 
-#set_property -dict {PACKAGE_PIN AA18 IOSTANDARD LVCMOS33} [get_ports {b14_l17_p}]
-#IO_L17P_T2_A14_D30_14 sch:B14_L17_P
+set_property -dict {PACKAGE_PIN AA18 IOSTANDARD LVCMOS33} [get_ports {fpga_eth_da_y}]
+#IO_L17P_T2_A14_D30_14 sch:B14_L17_P --> FPGA_ETH_DA_Y
 
-#set_property -dict {PACKAGE_PIN AB18 IOSTANDARD LVCMOS33} [get_ports {b14_l17_n}]
-#IO_L17N_T2_A13_D29_14 sch:B14_L17_N
+set_property -dict {PACKAGE_PIN AB18 IOSTANDARD LVCMOS33} [get_ports {fpga_eth_da_g}]
+#IO_L17N_T2_A13_D29_14 sch:B14_L17_N --> FPGA_ETH_DA_G
 
 
 set_property -dict {PACKAGE_PIN U17 IOSTANDARD LVCMOS33} [get_ports board_sda]

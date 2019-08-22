@@ -117,6 +117,9 @@ module top(
     
     link_led,
     
+    // Ethernet LEDs
+    fpga_eth_da_g,
+    fpga_eth_da_y,
     
     // Onewire
     onewire,
@@ -209,12 +212,12 @@ module top(
     
     // FPGA Config
     //inout  fpga_io;
-    input  fpga_io;
+    output fpga_io;
     
     
     // ULI System (Trenz-Electronic CPLD)
     //inout  uli_system;
-    input  uli_system;
+    output uli_system;
     
     
     // SPI-QUAD
@@ -296,6 +299,8 @@ module top(
     
     input  link_led;
     
+    output fpga_eth_da_g;
+    output fpga_eth_da_y;
     
     
     // UFBmod special signals
@@ -498,8 +503,10 @@ module top(
         .dmr_1_onewire_d_in(dmr_1_onewire_d_in)
     );
     
-    assign eth_rst = peripheral_reset;
-   
+    assign eth_rst          = peripheral_reset;
+    assign fpga_eth_da_g    = link_led;
+    assign fpga_eth_da_y    = 1'b0;
+    
     
     // FTDI
     wire ufb_fpga_ft_cts_n;
@@ -526,6 +533,11 @@ module top(
     assign fpga_led_rgb_red_obuf   = gpio_rtl_0_multi_tri_o[0];
     assign fpga_led_rgb_green_obuf = gpio_rtl_0_multi_tri_o[1];
     assign fpga_led_rgb_blue_obuf  = ddr3_init_calib_complete_obuf;
+    
+    
+    // CPLD LEDs
+    assign fpga_io      = 1'b0;  // CPLD red
+    assign uli_system   = 1'b0;  // CPLD green
     
     
     // TRX
