@@ -372,6 +372,12 @@ module top(
     // Wires
     
     wire board_lcd_resetn_obuf;
+    wire clk_200mhz;
+    wire clk_120mhz;
+    wire clk_050mhz;
+    wire clk_025mhz;
+    wire clk_012mhz;
+    wire clk_wiz_0_locked;
     wire ddr3_init_calib_complete_obuf;
     wire [3:0]dmr_1_onewire_a_in;
     wire [31:0]dmr_1_onewire_d_in;
@@ -386,24 +392,29 @@ module top(
     wire mb_axi_clk_100mhz;
     wire peripheral_reset;
     wire pwm0_lcd_bl_obuf;
+    wire reset_ibuf;
+    wire sys_rst_ibuf;
     wire ufb_fpga_ft_12mhz_obuf;
     wire ufb_fpga_ft_resetn_obuf;
     wire ufb_trx_rstn_obuf;
     wire uli_system_obuf;
-
-
-
-    // RFX
-    assign ufb_fpga_rfx_mode = 0;
     
     
-    // BOARD-I2C
-    assign board_lcd_resetn_obuf = !gpio_rtl_0_multi_tri_o[6];
+    
+    // IBUFs
+    IBUF reset_ibuf_inst (
+        .I(reset),
+        .O(reset_ibuf)
+    );
+    
+    IBUF sys_rst_ibuf_inst (
+        .I(sys_rst),
+        .O(sys_rst_ibuf)
+    );
     
     
     
     // OBUFs
-    
     OBUF board_lcd_resetn_obuf_inst (
         .I(board_lcd_resetn_obuf),
         .O(board_lcd_resetn)
@@ -458,6 +469,35 @@ module top(
         .I(uli_system_obuf),
         .O(uli_system)
     );
+    
+    
+    
+    // CLOCK WIZ 0
+    clk_wiz_0 clk_wiz_0_inst(
+        // Clock out ports
+        .clk_200mhz(clk_200mhz),
+        .clk_120mhz(clk_120mhz),
+        .clk_050mhz(clk_050mhz),
+        .clk_025mhz(clk_025mhz),
+        .clk_012mhz(clk_012mhz),
+        
+        // Status and control signals
+        .reset(reset_ibuf),
+        .clk_wiz_0_locked(clk_wiz_0_locked),
+
+        // Clock in ports
+        .clk_in_50mhz_p(pll_clk_p),
+        .clk_in_50mhz_n(pll_clk_n)
+    );
+    
+    
+    
+    // RFX
+    assign ufb_fpga_rfx_mode = 0;
+    
+    
+    // BOARD-I2C
+    assign board_lcd_resetn_obuf = !gpio_rtl_0_multi_tri_o[6];
     
     
     
