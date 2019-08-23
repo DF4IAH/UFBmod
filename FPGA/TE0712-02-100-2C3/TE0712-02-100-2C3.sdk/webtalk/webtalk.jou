@@ -1,9 +1,9 @@
 #-----------------------------------------------------------
-# Webtalk v2018.3 (64-bit)
-# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# Webtalk v2019.1.2 (64-bit)
+# SW Build 2615518 on Fri Aug  9 15:55:25 MDT 2019
 # 
-# Start of session at: Sat Aug  3 21:43:11 2019
-# Process ID: 3640
+# Start of session at: Thu Aug 22 19:46:40 2019
+# Process ID: 8408
 # Current directory: F:/TE0712-02-100-2C3/TE0712-02-100-2C3.sdk/webtalk
 # Command line: wbtcv.exe -mode batch -source sdk_webtalk.tcl
 # Log file: F:/TE0712-02-100-2C3/TE0712-02-100-2C3.sdk/webtalk/webtalk.log

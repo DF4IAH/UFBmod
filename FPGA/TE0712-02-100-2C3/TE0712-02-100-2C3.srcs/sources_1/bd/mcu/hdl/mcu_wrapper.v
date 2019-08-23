@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-//Date        : Thu Aug 22 17:50:59 2019
+//Date        : Fri Aug 23 12:33:04 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu_wrapper.bd
 //Design      : mcu_wrapper
@@ -13,6 +13,10 @@ module mcu_wrapper
    (board_rotenc_pulse,
     board_rotenc_push,
     board_rotenc_up,
+    clk_012mhz,
+    clk_025mhz,
+    clk_050mhz,
+    clk_177mhz778,
     ddr3_init_calib_complete_obuf,
     ddr3_sdram_addr,
     ddr3_sdram_ba,
@@ -39,12 +43,10 @@ module mcu_wrapper
     iic_rtl_0_pll_sda_io,
     iic_rtl_1_board_scl_io,
     iic_rtl_1_board_sda_io,
-    mb_axi_clk_100mhz,
+    mb_axi_clk_83mhz333,
     mdio_rtl_0_ethernet_mdc,
     mdio_rtl_0_ethernet_mdio_io,
     peripheral_reset,
-    pll_clk_n,
-    pll_clk_p,
     pll_int,
     pwm0_lcd_bl_obuf,
     reset,
@@ -91,6 +93,10 @@ module mcu_wrapper
   input board_rotenc_pulse;
   input [0:0]board_rotenc_push;
   input board_rotenc_up;
+  input clk_012mhz;
+  input clk_025mhz;
+  input clk_050mhz;
+  input clk_177mhz778;
   output ddr3_init_calib_complete_obuf;
   output [14:0]ddr3_sdram_addr;
   output [2:0]ddr3_sdram_ba;
@@ -117,12 +123,10 @@ module mcu_wrapper
   inout iic_rtl_0_pll_sda_io;
   inout iic_rtl_1_board_scl_io;
   inout iic_rtl_1_board_sda_io;
-  output mb_axi_clk_100mhz;
+  output mb_axi_clk_83mhz333;
   output mdio_rtl_0_ethernet_mdc;
   inout mdio_rtl_0_ethernet_mdio_io;
   output [0:0]peripheral_reset;
-  input pll_clk_n;
-  input pll_clk_p;
   input [0:0]pll_int;
   output pwm0_lcd_bl_obuf;
   input reset;
@@ -170,6 +174,10 @@ module mcu_wrapper
   wire board_rotenc_pulse;
   wire [0:0]board_rotenc_push;
   wire board_rotenc_up;
+  wire clk_012mhz;
+  wire clk_025mhz;
+  wire clk_050mhz;
+  wire clk_177mhz778;
   wire ddr3_init_calib_complete_obuf;
   wire [14:0]ddr3_sdram_addr;
   wire [2:0]ddr3_sdram_ba;
@@ -208,15 +216,13 @@ module mcu_wrapper
   wire iic_rtl_1_board_sda_io;
   wire iic_rtl_1_board_sda_o;
   wire iic_rtl_1_board_sda_t;
-  wire mb_axi_clk_100mhz;
+  wire mb_axi_clk_83mhz333;
   wire mdio_rtl_0_ethernet_mdc;
   wire mdio_rtl_0_ethernet_mdio_i;
   wire mdio_rtl_0_ethernet_mdio_io;
   wire mdio_rtl_0_ethernet_mdio_o;
   wire mdio_rtl_0_ethernet_mdio_t;
   wire [0:0]peripheral_reset;
-  wire pll_clk_n;
-  wire pll_clk_p;
   wire [0:0]pll_int;
   wire pwm0_lcd_bl_obuf;
   wire reset;
@@ -312,6 +318,10 @@ module mcu_wrapper
        (.board_rotenc_pulse(board_rotenc_pulse),
         .board_rotenc_push(board_rotenc_push),
         .board_rotenc_up(board_rotenc_up),
+        .clk_012mhz(clk_012mhz),
+        .clk_025mhz(clk_025mhz),
+        .clk_050mhz(clk_050mhz),
+        .clk_177mhz778(clk_177mhz778),
         .ddr3_init_calib_complete_obuf(ddr3_init_calib_complete_obuf),
         .ddr3_sdram_addr(ddr3_sdram_addr),
         .ddr3_sdram_ba(ddr3_sdram_ba),
@@ -346,14 +356,12 @@ module mcu_wrapper
         .iic_rtl_1_board_sda_i(iic_rtl_1_board_sda_i),
         .iic_rtl_1_board_sda_o(iic_rtl_1_board_sda_o),
         .iic_rtl_1_board_sda_t(iic_rtl_1_board_sda_t),
-        .mb_axi_clk_100mhz(mb_axi_clk_100mhz),
+        .mb_axi_clk_83mhz333(mb_axi_clk_83mhz333),
         .mdio_rtl_0_ethernet_mdc(mdio_rtl_0_ethernet_mdc),
         .mdio_rtl_0_ethernet_mdio_i(mdio_rtl_0_ethernet_mdio_i),
         .mdio_rtl_0_ethernet_mdio_o(mdio_rtl_0_ethernet_mdio_o),
         .mdio_rtl_0_ethernet_mdio_t(mdio_rtl_0_ethernet_mdio_t),
         .peripheral_reset(peripheral_reset),
-        .pll_clk_n(pll_clk_n),
-        .pll_clk_p(pll_clk_p),
         .pll_int(pll_int),
         .pwm0_lcd_bl_obuf(pwm0_lcd_bl_obuf),
         .reset(reset),

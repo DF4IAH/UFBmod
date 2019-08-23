@@ -188,8 +188,6 @@
   "../../../bd/mcu/ip/mcu_xlconstant_0_1/sim/mcu_xlconstant_0_1.v" \
   "../../../bd/mcu/ip/mcu_dist_mem_gen_lvds_in_0/sim/mcu_dist_mem_gen_lvds_in_0.v" \
   "../../../bd/mcu/ip/mcu_xlconstant_val0_0/sim/mcu_xlconstant_val0_0.v" \
-  "../../../bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0_clk_wiz.v" \
-  "../../../bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0.v" \
 -endlib
 -makelib xcelium_lib/xbip_utils_v3_0_10 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/1123/hdl/xbip_utils_v3_0_vh_rfs.vhd" \
@@ -341,11 +339,6 @@
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/mcu/ip/mcu_xbar_1/sim/mcu_xbar_1.v" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_rst_clk_12mhz_FTDI_12M_0/sim/mcu_rst_clk_12mhz_FTDI_12M_0.vhd" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
   "../../../bd/mcu/ip/mcu_CDC_LVDS_in_0/sim/mcu_CDC_LVDS_in_0.v" \
   "../../../bd/mcu/sim/mcu.v" \
 -endlib
@@ -354,19 +347,45 @@
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/mcu/ip/mcu_auto_pc_14/sim/mcu_auto_pc_14.v" \
+-endlib
+-makelib xcelium_lib/axi_clock_converter_v2_1_18 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ac9d/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
+-endlib
+-makelib xcelium_lib/axi_dwidth_converter_v2_1_19 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/e578/hdl/axi_dwidth_converter_v2_1_vl_rfs.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_auto_us_0/sim/mcu_auto_us_0.v" \
+  "../../../bd/mcu/ip/mcu_auto_us_1/sim/mcu_auto_us_1.v" \
+  "../../../bd/mcu/ip/mcu_auto_us_2/sim/mcu_auto_us_2.v" \
+  "../../../bd/mcu/ip/mcu_auto_us_3/sim/mcu_auto_us_3.v" \
+  "../../../bd/mcu/ip/mcu_auto_ds_0/sim/mcu_auto_ds_0.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
+  "../../../bd/mcu/ip/mcu_auto_ds_1/sim/mcu_auto_ds_1.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
+  "../../../bd/mcu/ip/mcu_auto_ds_2/sim/mcu_auto_ds_2.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
+  "../../../bd/mcu/ip/mcu_auto_ds_3/sim/mcu_auto_ds_3.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_3/sim/mcu_auto_pc_3.v" \
+  "../../../bd/mcu/ip/mcu_auto_ds_4/sim/mcu_auto_ds_4.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_4/sim/mcu_auto_pc_4.v" \
+  "../../../bd/mcu/ip/mcu_auto_ds_5/sim/mcu_auto_ds_5.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_5/sim/mcu_auto_pc_5.v" \
+  "../../../bd/mcu/ip/mcu_auto_ds_6/sim/mcu_auto_ds_6.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_6/sim/mcu_auto_pc_6.v" \
+  "../../../bd/mcu/ip/mcu_auto_ds_7/sim/mcu_auto_ds_7.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_7/sim/mcu_auto_pc_7.v" \
+  "../../../bd/mcu/ip/mcu_auto_ds_8/sim/mcu_auto_ds_8.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_8/sim/mcu_auto_pc_8.v" \
+  "../../../bd/mcu/ip/mcu_auto_ds_9/sim/mcu_auto_ds_9.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_9/sim/mcu_auto_pc_9.v" \
+  "../../../bd/mcu/ip/mcu_auto_ds_10/sim/mcu_auto_ds_10.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_10/sim/mcu_auto_pc_10.v" \
+  "../../../bd/mcu/ip/mcu_auto_ds_11/sim/mcu_auto_ds_11.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_11/sim/mcu_auto_pc_11.v" \
+  "../../../bd/mcu/ip/mcu_auto_ds_12/sim/mcu_auto_ds_12.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_12/sim/mcu_auto_pc_12.v" \
+  "../../../bd/mcu/ip/mcu_auto_ds_13/sim/mcu_auto_ds_13.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_13/sim/mcu_auto_pc_13.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \

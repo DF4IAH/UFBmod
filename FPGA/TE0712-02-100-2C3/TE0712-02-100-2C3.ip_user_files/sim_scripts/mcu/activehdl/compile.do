@@ -46,6 +46,8 @@ vlib activehdl/mii_to_rmii_v2_0_21
 vlib activehdl/lib_bmg_v1_0_12
 vlib activehdl/axi_ethernetlite_v3_0_17
 vlib activehdl/axi_protocol_converter_v2_1_19
+vlib activehdl/axi_clock_converter_v2_1_18
+vlib activehdl/axi_dwidth_converter_v2_1_19
 
 vmap xil_defaultlib activehdl/xil_defaultlib
 vmap xpm activehdl/xpm
@@ -92,6 +94,8 @@ vmap mii_to_rmii_v2_0_21 activehdl/mii_to_rmii_v2_0_21
 vmap lib_bmg_v1_0_12 activehdl/lib_bmg_v1_0_12
 vmap axi_ethernetlite_v3_0_17 activehdl/axi_ethernetlite_v3_0_17
 vmap axi_protocol_converter_v2_1_19 activehdl/axi_protocol_converter_v2_1_19
+vmap axi_clock_converter_v2_1_18 activehdl/axi_clock_converter_v2_1_18
+vmap axi_dwidth_converter_v2_1_19 activehdl/axi_dwidth_converter_v2_1_19
 
 vlog -work xil_defaultlib  -sv2k12 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
 "C:/Xilinx/Vivado/2019.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
@@ -283,8 +287,6 @@ vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sou
 "../../../bd/mcu/ip/mcu_xlconstant_0_1/sim/mcu_xlconstant_0_1.v" \
 "../../../bd/mcu/ip/mcu_dist_mem_gen_lvds_in_0/sim/mcu_dist_mem_gen_lvds_in_0.v" \
 "../../../bd/mcu/ip/mcu_xlconstant_val0_0/sim/mcu_xlconstant_val0_0.v" \
-"../../../bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0_clk_wiz.v" \
-"../../../bd/mcu/ip/mcu_clk_wiz_1_0/mcu_clk_wiz_1_0.v" \
 
 vcom -work xbip_utils_v3_0_10 -93 \
 "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/1123/hdl/xbip_utils_v3_0_vh_rfs.vhd" \
@@ -436,11 +438,6 @@ vcom -work xil_defaultlib -93 \
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
 "../../../bd/mcu/ip/mcu_xbar_1/sim/mcu_xbar_1.v" \
-
-vcom -work xil_defaultlib -93 \
-"../../../bd/mcu/ip/mcu_rst_clk_12mhz_FTDI_12M_0/sim/mcu_rst_clk_12mhz_FTDI_12M_0.vhd" \
-
-vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
 "../../../bd/mcu/ip/mcu_CDC_LVDS_in_0/sim/mcu_CDC_LVDS_in_0.v" \
 "../../../bd/mcu/sim/mcu.v" \
 
@@ -449,19 +446,45 @@ vlog -work axi_protocol_converter_v2_1_19  -v2k5 "+incdir+../../../../TE0712-02-
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
 "../../../bd/mcu/ip/mcu_auto_pc_14/sim/mcu_auto_pc_14.v" \
+
+vlog -work axi_clock_converter_v2_1_18  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ac9d/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
+
+vlog -work axi_dwidth_converter_v2_1_19  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
+"../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/e578/hdl/axi_dwidth_converter_v2_1_vl_rfs.v" \
+
+vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
+"../../../bd/mcu/ip/mcu_auto_us_0/sim/mcu_auto_us_0.v" \
+"../../../bd/mcu/ip/mcu_auto_us_1/sim/mcu_auto_us_1.v" \
+"../../../bd/mcu/ip/mcu_auto_us_2/sim/mcu_auto_us_2.v" \
+"../../../bd/mcu/ip/mcu_auto_us_3/sim/mcu_auto_us_3.v" \
+"../../../bd/mcu/ip/mcu_auto_ds_0/sim/mcu_auto_ds_0.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
+"../../../bd/mcu/ip/mcu_auto_ds_1/sim/mcu_auto_ds_1.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
+"../../../bd/mcu/ip/mcu_auto_ds_2/sim/mcu_auto_ds_2.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
+"../../../bd/mcu/ip/mcu_auto_ds_3/sim/mcu_auto_ds_3.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_3/sim/mcu_auto_pc_3.v" \
+"../../../bd/mcu/ip/mcu_auto_ds_4/sim/mcu_auto_ds_4.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_4/sim/mcu_auto_pc_4.v" \
+"../../../bd/mcu/ip/mcu_auto_ds_5/sim/mcu_auto_ds_5.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_5/sim/mcu_auto_pc_5.v" \
+"../../../bd/mcu/ip/mcu_auto_ds_6/sim/mcu_auto_ds_6.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_6/sim/mcu_auto_pc_6.v" \
+"../../../bd/mcu/ip/mcu_auto_ds_7/sim/mcu_auto_ds_7.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_7/sim/mcu_auto_pc_7.v" \
+"../../../bd/mcu/ip/mcu_auto_ds_8/sim/mcu_auto_ds_8.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_8/sim/mcu_auto_pc_8.v" \
+"../../../bd/mcu/ip/mcu_auto_ds_9/sim/mcu_auto_ds_9.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_9/sim/mcu_auto_pc_9.v" \
+"../../../bd/mcu/ip/mcu_auto_ds_10/sim/mcu_auto_ds_10.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_10/sim/mcu_auto_pc_10.v" \
+"../../../bd/mcu/ip/mcu_auto_ds_11/sim/mcu_auto_ds_11.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_11/sim/mcu_auto_pc_11.v" \
+"../../../bd/mcu/ip/mcu_auto_ds_12/sim/mcu_auto_ds_12.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_12/sim/mcu_auto_pc_12.v" \
+"../../../bd/mcu/ip/mcu_auto_ds_13/sim/mcu_auto_ds_13.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_13/sim/mcu_auto_pc_13.v" \
 
 vlog -work xil_defaultlib \

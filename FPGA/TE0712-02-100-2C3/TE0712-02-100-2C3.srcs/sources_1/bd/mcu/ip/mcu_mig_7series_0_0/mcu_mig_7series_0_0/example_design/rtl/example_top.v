@@ -143,23 +143,23 @@ module example_top #
    // The following parameters are multiplier and divisor factors for PLLE2.
    // Based on the selected design frequency these parameters vary.
    //***************************************************************************
-   parameter CLKIN_PERIOD          = 20000,
+   parameter CLKIN_PERIOD          = 5625,
                                      // Input Clock Period
-   parameter CLKFBOUT_MULT         = 16,
+   parameter CLKFBOUT_MULT         = 15,
                                      // write PLL VCO multiplier
-   parameter DIVCLK_DIVIDE         = 1,
+   parameter DIVCLK_DIVIDE         = 2,
                                      // write PLL VCO divisor
    parameter CLKOUT0_PHASE         = 0.0,
                                      // Phase for PLL output clock (CLKOUT0)
-   parameter CLKOUT0_DIVIDE        = 1,
+   parameter CLKOUT0_DIVIDE        = 2,
                                      // VCO output divisor for PLL output clock (CLKOUT0)
-   parameter CLKOUT1_DIVIDE        = 2,
+   parameter CLKOUT1_DIVIDE        = 4,
                                      // VCO output divisor for PLL output clock (CLKOUT1)
-   parameter CLKOUT2_DIVIDE        = 32,
+   parameter CLKOUT2_DIVIDE        = 64,
                                      // VCO output divisor for PLL output clock (CLKOUT2)
-   parameter CLKOUT3_DIVIDE        = 8,
+   parameter CLKOUT3_DIVIDE        = 16,
                                      // VCO output divisor for PLL output clock (CLKOUT3)
-   parameter MMCM_VCO              = 800,
+   parameter MMCM_VCO              = 666,
                                      // Max Freq (MHz) of MMCM VCO
    parameter MMCM_MULT_F           = 8,
                                      // write MMCM VCO multiplier
@@ -168,25 +168,25 @@ module example_top #
    parameter MMCM_CLKOUT0_EN       = "TRUE",
                                      // "TRUE" - MMCM output clock (CLKOUT0) is enabled
                                      // "FALSE" - MMCM output clock (CLKOUT0) is disabled
-   parameter MMCM_CLKOUT1_EN       = "TRUE",
+   parameter MMCM_CLKOUT1_EN       = "FALSE",
                                      // "TRUE" - MMCM output clock (CLKOUT1) is enabled
                                      // "FALSE" - MMCM output clock (CLKOUT1) is disabled
-   parameter MMCM_CLKOUT2_EN       = "TRUE",
+   parameter MMCM_CLKOUT2_EN       = "FALSE",
                                      // "TRUE" - MMCM output clock (CLKOUT2) is enabled
                                      // "FALSE" - MMCM output clock (CLKOUT2) is disabled
-   parameter MMCM_CLKOUT3_EN       = "TRUE",
+   parameter MMCM_CLKOUT3_EN       = "FALSE",
                                      // "TRUE" - MMCM output clock (CLKOUT3) is enabled
                                      // "FALSE" - MMCM output clock (CLKOUT3) is disabled
    parameter MMCM_CLKOUT4_EN       = "FALSE",
                                      // "TRUE" - MMCM output clock (CLKOUT4) is enabled
                                      // "FALSE" - MMCM output clock (CLKOUT4) is disabled
-   parameter MMCM_CLKOUT0_DIVIDE   = 4,
+   parameter MMCM_CLKOUT0_DIVIDE   = 3.375,
                                      // VCO output divisor for MMCM output clock (CLKOUT0)
-   parameter MMCM_CLKOUT1_DIVIDE   = 16,
+   parameter MMCM_CLKOUT1_DIVIDE   = 1,
                                      // VCO output divisor for MMCM output clock (CLKOUT1)
-   parameter MMCM_CLKOUT2_DIVIDE   = 32,
+   parameter MMCM_CLKOUT2_DIVIDE   = 1,
                                      // VCO output divisor for MMCM output clock (CLKOUT2)
-   parameter MMCM_CLKOUT3_DIVIDE   = 80,
+   parameter MMCM_CLKOUT3_DIVIDE   = 1,
                                      // VCO output divisor for MMCM output clock (CLKOUT3)
    parameter MMCM_CLKOUT4_DIVIDE   = 1,
                                      // VCO output divisor for MMCM output clock (CLKOUT4)
@@ -224,7 +224,7 @@ module example_top #
                                              // Width of S_AXI_AWADDR, S_AXI_ARADDR, M_AXI_AWADDR and
                                              // M_AXI_ARADDR for all SI/MI slots.
                                              // # = 32.
-   parameter C_S_AXI_DATA_WIDTH            = 32,
+   parameter C_S_AXI_DATA_WIDTH            = 256,
                                              // Width of WDATA and RDATA on SI slot.
                                              // Must be <= APP_DATA_WIDTH.
                                              // # = 32, 64, 128, 256.
@@ -271,9 +271,8 @@ module example_top #
 
    // Inputs
    
-   // Differential system clocks
-   input                                        sys_clk_p,
-   input                                        sys_clk_n,
+   // Single-ended system clock
+   input                                        sys_clk_i,
    
    // Single-ended iodelayctrl clk (reference clock)
    input                                        clk_ref_i,
@@ -518,8 +517,7 @@ function integer clogb2 (input integer size);
       
        
 // System Clock Ports
-       .sys_clk_p                       (sys_clk_p),
-       .sys_clk_n                       (sys_clk_n),
+       .sys_clk_i                       (sys_clk_i),
 // Reference Clock Ports
        .clk_ref_i                      (clk_ref_i),
        .device_temp            (device_temp),

@@ -115,8 +115,8 @@
     .s_axi_awvalid                  (s_axi_awvalid),  // input			s_axi_awvalid
     .s_axi_awready                  (s_axi_awready),  // output			s_axi_awready
     // Slave Interface Write Data Ports
-    .s_axi_wdata                    (s_axi_wdata),  // input [31:0]			s_axi_wdata
-    .s_axi_wstrb                    (s_axi_wstrb),  // input [3:0]			s_axi_wstrb
+    .s_axi_wdata                    (s_axi_wdata),  // input [255:0]			s_axi_wdata
+    .s_axi_wstrb                    (s_axi_wstrb),  // input [31:0]			s_axi_wstrb
     .s_axi_wlast                    (s_axi_wlast),  // input			s_axi_wlast
     .s_axi_wvalid                   (s_axi_wvalid),  // input			s_axi_wvalid
     .s_axi_wready                   (s_axi_wready),  // output			s_axi_wready
@@ -139,14 +139,13 @@
     .s_axi_arready                  (s_axi_arready),  // output			s_axi_arready
     // Slave Interface Read Data Ports
     .s_axi_rid                      (s_axi_rid),  // output [2:0]			s_axi_rid
-    .s_axi_rdata                    (s_axi_rdata),  // output [31:0]			s_axi_rdata
+    .s_axi_rdata                    (s_axi_rdata),  // output [255:0]			s_axi_rdata
     .s_axi_rresp                    (s_axi_rresp),  // output [1:0]			s_axi_rresp
     .s_axi_rlast                    (s_axi_rlast),  // output			s_axi_rlast
     .s_axi_rvalid                   (s_axi_rvalid),  // output			s_axi_rvalid
     .s_axi_rready                   (s_axi_rready),  // input			s_axi_rready
     // System Clock Ports
-    .sys_clk_p                       (sys_clk_p),  // input				sys_clk_p
-    .sys_clk_n                       (sys_clk_n),  // input				sys_clk_n
+    .sys_clk_i                       (sys_clk_i),
     // Reference Clock Ports
     .clk_ref_i                      (clk_ref_i),
     .sys_rst                        (sys_rst) // input sys_rst

@@ -180,7 +180,7 @@ output wire rstb_busy;
     .C_DISABLE_WARN_BHV_RANGE(0),
     .C_COUNT_36K_BRAM("64"),
     .C_COUNT_18K_BRAM("0"),
-    .C_EST_POWER_SUMMARY("Estimated Power for IP     :     22.0624 mW")
+    .C_EST_POWER_SUMMARY("Estimated Power for IP     :     20.388004 mW")
   ) inst (
     .clka(clka),
     .rsta(rsta),

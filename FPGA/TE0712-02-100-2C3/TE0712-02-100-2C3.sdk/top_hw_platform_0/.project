@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>top_hw_platform_0</name>
-	<comment>Created by SDK v2018.3</comment>
+	<comment>Created by SDK v2019.1</comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -11,7 +11,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1564859249507</id>
+			<id>1566495841947</id>
 			<name></name>
 			<type>6</type>
 			<matcher>
@@ -20,7 +20,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1564859249511</id>
+			<id>1566495841952</id>
 			<name></name>
 			<type>6</type>
 			<matcher>
@@ -29,7 +29,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1564859249515</id>
+			<id>1566495841955</id>
 			<name></name>
 			<type>6</type>
 			<matcher>

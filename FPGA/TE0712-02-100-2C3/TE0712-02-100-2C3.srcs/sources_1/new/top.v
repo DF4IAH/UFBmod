@@ -27,16 +27,18 @@ module top(
     
     
     // Clocks
-    pll_clk_p,           // 1.5 V    PLL          50.0 MHz
-    pll_clk_n,           // 1.5 V    PLL          50.0 MHz
+    pll_clk_p,              // 1.5 V    PLL          50.0 MHz
+    pll_clk_n,              // 1.5 V    PLL          50.0 MHz
     
-    mgt_clk0_p,          // 1.8 V    GTP         120.0 MHz
-    mgt_clk0_n,          // 1.8 V    GTP         120.0 MHz
+    mgt_clk0_p,             // 1.8 V    GTP         120.0 MHz
+    mgt_clk0_n,             // 1.8 V    GTP         120.0 MHz
+    
+    trx_clk_26mhz,          // 3.3V     TCXO/TRX     26.0 MHz
     
     // Out of order clocks
-    //clk0_p,            // 1.5 V    PLL         xxx.x MHz   REV02: none
-    //clk0_n,            // 1.5 V    PLL         xxx.x MHz   REV02: none
-    //clk50m2,           // 1.5 V    PLL-DDR3    xxx.x MHz   REV02: none
+    //clk0_p,               // 1.5 V    PLL         xxx.x MHz   REV02: none
+    //clk0_n,               // 1.5 V    PLL         xxx.x MHz   REV02: none
+    //clk50m2,              // 1.5 V    PLL-DDR3    xxx.x MHz   REV02: none
     
     
     // FPGA Config
@@ -198,17 +200,19 @@ module top(
     
     
     // Clocks
-    input  pll_clk_p;           // 1.5 V    PLL          50.0 MHz
-    input  pll_clk_n;           // 1.5 V    PLL          50.0 MHz
+    input  pll_clk_p;               // 1.5 V    PLL          50.0 MHz
+    input  pll_clk_n;               // 1.5 V    PLL          50.0 MHz
     
-    input  mgt_clk0_p;          // 1.8 V    GTP         120.0 MHz
-    input  mgt_clk0_n;          // 1.8 V    GTP         120.0 MHz
+    input  mgt_clk0_p;              // 1.8 V    GTP         120.0 MHz
+    input  mgt_clk0_n;              // 1.8 V    GTP         120.0 MHz
+    
+    input  trx_clk_26mhz;           // 3.3V     TCXO/TRX     26.0 MHz
     
     
     // Out of order clocks
-    //input  clk0_p;              // 1.5 V    PLL         xxx.x MHz   REV02: none
-    //input  clk0_n;              // 1.5 V    PLL         xxx.x MHz   REV02: none
-    //input  clk50m2;             // 1.5 V    PLL-DDR3    xxx.x MHz   REV02: none
+    //input  clk0_p;                // 1.5 V    PLL         xxx.x MHz   REV02: none
+    //input  clk0_n;                // 1.5 V    PLL         xxx.x MHz   REV02: none
+    //input  clk50m2;               // 1.5 V    PLL-DDR3    xxx.x MHz   REV02: none
     
     
     // FPGA Config
@@ -372,12 +376,15 @@ module top(
     // Wires
     
     wire board_lcd_resetn_obuf;
-    wire clk_200mhz;
+    wire clk_177mhz778;
     wire clk_120mhz;
     wire clk_050mhz;
     wire clk_025mhz;
     wire clk_012mhz;
     wire clk_wiz_0_locked;
+    wire clk_wiz_0_vctcxo_050mhz;
+    wire clk_wiz_1_input_clk_stopped;
+    wire clk_wiz_1_locked;
     wire ddr3_init_calib_complete_obuf;
     wire [3:0]dmr_1_onewire_a_in;
     wire [31:0]dmr_1_onewire_d_in;
@@ -389,11 +396,13 @@ module top(
     wire [7:0]gpio_rtl_0_multi_tri_o;
     wire [31:0]gpio_rtl_1_onewire_gpio_in;
     wire [31:0]gpio_rtl_1_onewire_gpio_out;
-    wire mb_axi_clk_100mhz;
+    wire mb_axi_clk_83mhz333;
     wire peripheral_reset;
+    wire pll_clk_g;
     wire pwm0_lcd_bl_obuf;
     wire reset_ibuf;
     wire sys_rst_ibuf;
+    wire trx_clk_26mhz_g;
     wire ufb_fpga_ft_12mhz_obuf;
     wire ufb_fpga_ft_resetn_obuf;
     wire ufb_trx_rstn_obuf;
@@ -410,6 +419,17 @@ module top(
     IBUF sys_rst_ibuf_inst (
         .I(sys_rst),
         .O(sys_rst_ibuf)
+    );
+    
+    IBUFGDS pll_clk_ibufgds_inst (
+        .I(pll_clk_p),
+        .IB(pll_clk_n),
+        .O(pll_clk_g)
+    );
+    
+    IBUFG trx_clk_26mhz_ibufg_inst (
+        .I(trx_clk_26mhz),
+        .O(trx_clk_26mhz_g)
     );
     
     
@@ -472,22 +492,37 @@ module top(
     
     
     
-    // CLOCK WIZ 0
-    clk_wiz_0 clk_wiz_0_inst(
-        // Clock out ports
-        .clk_200mhz(clk_200mhz),
-        .clk_120mhz(clk_120mhz),
-        .clk_050mhz(clk_050mhz),
-        .clk_025mhz(clk_025mhz),
-        .clk_012mhz(clk_012mhz),
+    // CLOCK WIZ 0 - 26 MHz --> 50 MHz
+    clk_wiz_0   clk_wiz_0_inst(
+        // Clock out ports  
+        .clk_out_vctcxo_050mhz(clk_wiz_0_vctcxo_050mhz),
         
-        // Status and control signals
-        .reset(reset_ibuf),
-        .clk_wiz_0_locked(clk_wiz_0_locked),
-
+        // Status and control signals               
+        .reset(reset_ibuf),          
+        .locked(clk_wiz_0_locked),
+        
         // Clock in ports
-        .clk_in_50mhz_p(pll_clk_p),
-        .clk_in_50mhz_n(pll_clk_n)
+        .clk_in_vctcxo_26mhz(trx_clk_26mhz_g)
+    );
+
+
+    // CLOCK WIZ 1 - 50 MHz (Si5338-PLL / TRX-VCTCXO)
+    clk_wiz_1   clk_wiz_1_inst(
+        // Clock out ports  
+        .clk_out_177mhz778(clk_177mhz778),
+        .clk_out_120mhz(clk_120mhz),
+        .clk_out_050mhz(clk_050mhz),
+        .clk_out_025mhz(clk_025mhz),
+        .clk_out_012mhz(clk_012mhz),
+        
+        // Status and control signals               
+        .reset(reset_ibuf),
+        .locked(clk_wiz_1_locked),
+        
+        // Clock in ports
+        .clk_in1_si5338(pll_clk_g),
+        .clk_in2_vctcxo(clk_wiz_0_vctcxo_050mhz),
+        .clk_in_sel(clk_wiz_0_locked)
     );
     
     
@@ -513,7 +548,7 @@ module top(
     reg board_rotenc_q_r;
     reg board_rotenc_q_rr;
 
-    always @ (posedge mb_axi_clk_100mhz)
+    always @ (posedge mb_axi_clk_83mhz333)
     if (peripheral_reset)  begin
         board_rotenc_pulse   <= 0;
         board_rotenc_pulse_r <= 0;
@@ -562,7 +597,7 @@ module top(
     
     onewire onewire_i(
         .rst_i(peripheral_reset),
-        .clk_i(mb_axi_clk_100mhz),
+        .clk_i(mb_axi_clk_83mhz333),
   
         .onewire_io(onewire),
 
@@ -582,8 +617,8 @@ module top(
     // FTDI
     wire ufb_fpga_ft_cts_n;
     wire ufb_fpga_ft_dsr_n;
-    reg ufb_fpga_ft_cts_r;
-    reg ufb_fpga_ft_dsr_r;
+    reg  ufb_fpga_ft_cts_r;
+    reg  ufb_fpga_ft_dsr_r;
     
     always @ (posedge ufb_fpga_ft_12mhz_obuf)
     if (peripheral_reset)  begin
@@ -607,8 +642,8 @@ module top(
     
     
     // CPLD LEDs
-    assign fpga_io_obuf      = 1'b0;     // CPLD red
-    assign uli_system_obuf   = 1'b0;     // CPLD green
+    assign fpga_io_obuf      = !ddr3_init_calib_complete;   // CPLD red
+    assign uli_system_obuf   =  ddr3_init_calib_complete;   // CPLD green
     
     
     // TRX
@@ -621,18 +656,20 @@ module top(
     
     // Block-Design MCU
  mcu_wrapper mcu_wrapper_i (
-        .reset(reset),
-        .sys_rst(sys_rst),
+        .reset(reset_ibuf),
+        .sys_rst(sys_rst_ibuf),
         
         .peripheral_reset(peripheral_reset),
         
         
-        .pll_clk_p(pll_clk_p),
-        .pll_clk_n(pll_clk_n),
+    // Clocks in
+        .clk_177mhz778(clk_177mhz778),
+        .clk_050mhz(clk_050mhz),
+        .clk_025mhz(clk_025mhz),
+        .clk_012mhz(clk_012mhz),
         
-        
-    // MB Clock (100 MHz) 
-        .mb_axi_clk_100mhz(mb_axi_clk_100mhz),
+    // MB Clock (83.333 MHz) 
+        .mb_axi_clk_83mhz333(mb_axi_clk_83mhz333),
         
         
     // FPGA Config

@@ -138,7 +138,7 @@ proc write_mig_file_mcu_mig_7series_0_0 { str_mig_prj_filepath } {
    puts $mig_prj_file {  <XADC_En>Enabled</XADC_En>}
    puts $mig_prj_file {  <TargetFPGA>xc7a100t-fgg484/-2</TargetFPGA>}
    puts $mig_prj_file {  <Version>4.2</Version>}
-   puts $mig_prj_file {  <SystemClock>Differential</SystemClock>}
+   puts $mig_prj_file {  <SystemClock>No Buffer</SystemClock>}
    puts $mig_prj_file {  <ReferenceClock>No Buffer</ReferenceClock>}
    puts $mig_prj_file {  <SysResetPolarity>ACTIVE HIGH</SysResetPolarity>}
    puts $mig_prj_file {  <BankSelectionFlag>FALSE</BankSelectionFlag>}
@@ -147,16 +147,16 @@ proc write_mig_file_mcu_mig_7series_0_0 { str_mig_prj_filepath } {
    puts $mig_prj_file {  <dci_cascade>0</dci_cascade>}
    puts $mig_prj_file {  <Controller number="0">}
    puts $mig_prj_file {    <MemoryDevice>DDR3_SDRAM/Components/MT41J256m16XX-125</MemoryDevice>}
-   puts $mig_prj_file {    <TimePeriod>2500</TimePeriod>}
+   puts $mig_prj_file {    <TimePeriod>3000</TimePeriod>}
    puts $mig_prj_file {    <VccAuxIO>1.8V</VccAuxIO>}
    puts $mig_prj_file {    <PHYRatio>4:1</PHYRatio>}
-   puts $mig_prj_file {    <InputClkFreq>50</InputClkFreq>}
+   puts $mig_prj_file {    <InputClkFreq>177.777</InputClkFreq>}
    puts $mig_prj_file {    <UIExtraClocks>1</UIExtraClocks>}
-   puts $mig_prj_file {    <MMCM_VCO>800</MMCM_VCO>}
-   puts $mig_prj_file {    <MMCMClkOut0> 4.000</MMCMClkOut0>}
-   puts $mig_prj_file {    <MMCMClkOut1>16</MMCMClkOut1>}
-   puts $mig_prj_file {    <MMCMClkOut2>32</MMCMClkOut2>}
-   puts $mig_prj_file {    <MMCMClkOut3>80</MMCMClkOut3>}
+   puts $mig_prj_file {    <MMCM_VCO>666</MMCM_VCO>}
+   puts $mig_prj_file {    <MMCMClkOut0> 3.375</MMCMClkOut0>}
+   puts $mig_prj_file {    <MMCMClkOut1>1</MMCMClkOut1>}
+   puts $mig_prj_file {    <MMCMClkOut2>1</MMCMClkOut2>}
+   puts $mig_prj_file {    <MMCMClkOut3>1</MMCMClkOut3>}
    puts $mig_prj_file {    <MMCMClkOut4>1</MMCMClkOut4>}
    puts $mig_prj_file {    <DataWidth>32</DataWidth>}
    puts $mig_prj_file {    <DeepMemory>1</DeepMemory>}
@@ -245,9 +245,6 @@ proc write_mig_file_mcu_mig_7series_0_0 { str_mig_prj_filepath } {
    puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="" PADName="H3" SLEW="" VCCAUX_IO="" name="ddr3_reset_n"/>}
    puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="" PADName="J2" SLEW="" VCCAUX_IO="" name="ddr3_we_n"/>}
    puts $mig_prj_file {    </PinSelection>}
-   puts $mig_prj_file {    <System_Clock>}
-   puts $mig_prj_file {      <Pin Bank="35" PADName="H4/G4(CC_P/N)" name="sys_clk_p/n"/>}
-   puts $mig_prj_file {    </System_Clock>}
    puts $mig_prj_file {    <System_Control>}
    puts $mig_prj_file {      <Pin Bank="13" PADName="Y16" name="sys_rst"/>}
    puts $mig_prj_file {      <Pin Bank="14" PADName="AA21" name="init_calib_complete"/>}
@@ -258,7 +255,7 @@ proc write_mig_file_mcu_mig_7series_0_0 { str_mig_prj_filepath } {
    puts $mig_prj_file {    </TimingParameters>}
    puts $mig_prj_file {    <mrBurstLength name="Burst Length">8 - Fixed</mrBurstLength>}
    puts $mig_prj_file {    <mrBurstType name="Read Burst Type and Length">Sequential</mrBurstType>}
-   puts $mig_prj_file {    <mrCasLatency name="CAS Latency">6</mrCasLatency>}
+   puts $mig_prj_file {    <mrCasLatency name="CAS Latency">5</mrCasLatency>}
    puts $mig_prj_file {    <mrMode name="Mode">Normal</mrMode>}
    puts $mig_prj_file {    <mrDllReset name="DLL Reset">No</mrDllReset>}
    puts $mig_prj_file {    <mrPdMode name="DLL control for precharge PD">Slow Exit</mrPdMode>}
@@ -280,7 +277,7 @@ proc write_mig_file_mcu_mig_7series_0_0 { str_mig_prj_filepath } {
    puts $mig_prj_file {    <AXIParameters>}
    puts $mig_prj_file {      <C0_C_RD_WR_ARB_ALGORITHM>RD_PRI_REG</C0_C_RD_WR_ARB_ALGORITHM>}
    puts $mig_prj_file {      <C0_S_AXI_ADDR_WIDTH>30</C0_S_AXI_ADDR_WIDTH>}
-   puts $mig_prj_file {      <C0_S_AXI_DATA_WIDTH>32</C0_S_AXI_DATA_WIDTH>}
+   puts $mig_prj_file {      <C0_S_AXI_DATA_WIDTH>256</C0_S_AXI_DATA_WIDTH>}
    puts $mig_prj_file {      <C0_S_AXI_ID_WIDTH>3</C0_S_AXI_ID_WIDTH>}
    puts $mig_prj_file {      <C0_S_AXI_SUPPORTS_NARROW_BURST>1</C0_S_AXI_SUPPORTS_NARROW_BURST>}
    puts $mig_prj_file {    </AXIParameters>}
@@ -458,25 +455,32 @@ proc create_root_design { parentCell } {
   set board_rotenc_pulse [ create_bd_port -dir I -type ce board_rotenc_pulse ]
   set board_rotenc_push [ create_bd_port -dir I -from 0 -to 0 board_rotenc_push ]
   set board_rotenc_up [ create_bd_port -dir I -type data board_rotenc_up ]
+  set clk_012mhz [ create_bd_port -dir I -type clk clk_012mhz ]
+  set_property -dict [ list \
+   CONFIG.FREQ_HZ {12000000} \
+ ] $clk_012mhz
+  set clk_025mhz [ create_bd_port -dir I -type clk clk_025mhz ]
+  set_property -dict [ list \
+   CONFIG.FREQ_HZ {25000000} \
+ ] $clk_025mhz
+  set clk_050mhz [ create_bd_port -dir I -type clk clk_050mhz ]
+  set_property -dict [ list \
+   CONFIG.FREQ_HZ {50000000} \
+ ] $clk_050mhz
+  set clk_177mhz778 [ create_bd_port -dir I -type clk clk_177mhz778 ]
+  set_property -dict [ list \
+   CONFIG.FREQ_HZ {177777778} \
+ ] $clk_177mhz778
   set ddr3_init_calib_complete_obuf [ create_bd_port -dir O ddr3_init_calib_complete_obuf ]
   set dmr_1_onewire_a_in [ create_bd_port -dir I -from 3 -to 0 dmr_1_onewire_a_in ]
   set dmr_1_onewire_d_in [ create_bd_port -dir I -from 31 -to 0 dmr_1_onewire_d_in ]
   set dmr_1_onewire_we_in [ create_bd_port -dir I dmr_1_onewire_we_in ]
-  set mb_axi_clk_100mhz [ create_bd_port -dir O -type clk mb_axi_clk_100mhz ]
+  set mb_axi_clk_83mhz333 [ create_bd_port -dir O -type clk mb_axi_clk_83mhz333 ]
   set_property -dict [ list \
    CONFIG.ASSOCIATED_BUSIF {gpio_rtl_1_onewire_gpio_in} \
    CONFIG.ASSOCIATED_RESET {peripheral_reset} \
- ] $mb_axi_clk_100mhz
+ ] $mb_axi_clk_83mhz333
   set peripheral_reset [ create_bd_port -dir O -from 0 -to 0 -type rst peripheral_reset ]
-  set pll_clk_n [ create_bd_port -dir I -type clk pll_clk_n ]
-  set_property -dict [ list \
-   CONFIG.FREQ_HZ {50000000} \
- ] $pll_clk_n
-  set pll_clk_p [ create_bd_port -dir I -type clk pll_clk_p ]
-  set_property -dict [ list \
-   CONFIG.ASSOCIATED_RESET {sys_rst:reset} \
-   CONFIG.FREQ_HZ {50000000} \
- ] $pll_clk_p
   set pll_int [ create_bd_port -dir I -from 0 -to 0 pll_int ]
   set pwm0_lcd_bl_obuf [ create_bd_port -dir O pwm0_lcd_bl_obuf ]
   set reset [ create_bd_port -dir I -type rst reset ]
@@ -659,43 +663,6 @@ proc create_root_design { parentCell } {
    CONFIG.SCLR {true} \
  ] $c_accum_0_ROTENC
 
-  # Create instance: clk_12mhz_FTDI, and set properties
-  set clk_12mhz_FTDI [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_12mhz_FTDI ]
-  set_property -dict [ list \
-   CONFIG.CLKIN1_JITTER_PS {100.0} \
-   CONFIG.CLKOUT1_DRIVES {BUFG} \
-   CONFIG.CLKOUT1_JITTER {345.775} \
-   CONFIG.CLKOUT1_PHASE_ERROR {293.793} \
-   CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {12} \
-   CONFIG.CLKOUT1_USED {true} \
-   CONFIG.CLKOUT2_DRIVES {BUFG} \
-   CONFIG.CLKOUT2_JITTER {145.943} \
-   CONFIG.CLKOUT2_PHASE_ERROR {94.994} \
-   CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {100.000} \
-   CONFIG.CLKOUT2_USED {false} \
-   CONFIG.CLKOUT3_DRIVES {BUFG} \
-   CONFIG.CLKOUT4_DRIVES {BUFG} \
-   CONFIG.CLKOUT5_DRIVES {BUFG} \
-   CONFIG.CLKOUT6_DRIVES {BUFG} \
-   CONFIG.CLKOUT7_DRIVES {BUFG} \
-   CONFIG.CLK_OUT1_PORT {clk_12mhz} \
-   CONFIG.CLK_OUT2_PORT {clk_out2} \
-   CONFIG.FEEDBACK_SOURCE {FDBK_AUTO} \
-   CONFIG.MMCM_CLKFBOUT_MULT_F {49.875} \
-   CONFIG.MMCM_CLKIN1_PERIOD {10.000} \
-   CONFIG.MMCM_CLKIN2_PERIOD {10.000} \
-   CONFIG.MMCM_CLKOUT0_DIVIDE_F {83.125} \
-   CONFIG.MMCM_CLKOUT1_DIVIDE {1} \
-   CONFIG.MMCM_COMPENSATION {ZHOLD} \
-   CONFIG.MMCM_DIVCLK_DIVIDE {5} \
-   CONFIG.NUM_OUT_CLKS {1} \
-   CONFIG.PRIMITIVE {MMCM} \
-   CONFIG.PRIM_SOURCE {Global_buffer} \
-   CONFIG.SECONDARY_SOURCE {Single_ended_clock_capable_pin} \
-   CONFIG.USE_LOCKED {true} \
-   CONFIG.USE_PHASE_ALIGNMENT {true} \
- ] $clk_12mhz_FTDI
-
   # Create instance: clk_32mhz_LVDS, and set properties
   set clk_32mhz_LVDS [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_32mhz_LVDS ]
   set_property -dict [ list \
@@ -853,7 +820,7 @@ proc create_root_design { parentCell } {
   # Create instance: mb_0_axi_intc_concat, and set properties
   set mb_0_axi_intc_concat [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 mb_0_axi_intc_concat ]
   set_property -dict [ list \
-   CONFIG.NUM_PORTS {13} \
+   CONFIG.NUM_PORTS {12} \
  ] $mb_0_axi_intc_concat
 
   # Create instance: mb_0_axi_interconnect_bottom, and set properties
@@ -898,15 +865,16 @@ proc create_root_design { parentCell } {
 
   # Generate the PRJ File for MIG
   set str_mig_folder [get_property IP_DIR [ get_ips [ get_property CONFIG.Component_Name $mig_7series_0 ] ] ]
-  set str_mig_file_name mig_a.prj
+  set str_mig_file_name mig_b.prj
   set str_mig_file_path ${str_mig_folder}/${str_mig_file_name}
 
   write_mig_file_mcu_mig_7series_0_0 $str_mig_file_path
 
   set_property -dict [ list \
    CONFIG.BOARD_MIG_PARAM {Custom} \
+   CONFIG.MIG_DONT_TOUCH_PARAM {Custom} \
    CONFIG.RESET_BOARD_INTERFACE {Custom} \
-   CONFIG.XML_INPUT_FILE {mig_a.prj} \
+   CONFIG.XML_INPUT_FILE {mig_b.prj} \
  ] $mig_7series_0
 
   # Create instance: mii_to_rmii_ETHERNET, and set properties
@@ -914,9 +882,6 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.C_FIXED_SPEED {0} \
  ] $mii_to_rmii_ETHERNET
-
-  # Create instance: rst_clk_12mhz_FTDI_12M, and set properties
-  set rst_clk_12mhz_FTDI_12M [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_clk_12mhz_FTDI_12M ]
 
   # Create instance: selectio_LVDS_in, and set properties
   set selectio_LVDS_in [ create_bd_cell -type ip -vlnv xilinx.com:ip:selectio_wiz:5.1 selectio_LVDS_in ]
@@ -1022,7 +987,7 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net mii_to_rmii_ETHERNET_RMII_PHY_M [get_bd_intf_ports rmii_rtl_0_ethernet] [get_bd_intf_pins mii_to_rmii_ETHERNET/RMII_PHY_M]
 
   # Create port connections
-  connect_bd_net -net axi_ethernetlite_ETHERNET_ip2intc_irpt [get_bd_pins axi_ethernetlite_ETHERNET/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In12]
+  connect_bd_net -net axi_ethernetlite_ETHERNET_ip2intc_irpt [get_bd_pins axi_ethernetlite_ETHERNET/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In11]
   connect_bd_net -net axi_gpio_1_ONEWIRE_out_gpio_io_o [get_bd_pins axi_gpio_1_ONEWIRE_out/gpio_io_o] [get_bd_pins dmr_1_ONEWIRE/dpra]
   connect_bd_net -net axi_gpio_2_onewire_ip2intc_irpt [get_bd_pins axi_gpio_2_ONEWIRE_in/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In10]
   connect_bd_net -net axi_gpio_3_rotenc_ip2intc_irpt [get_bd_pins axi_gpio_3_ROTENC/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In9]
@@ -1041,8 +1006,10 @@ proc create_root_design { parentCell } {
   connect_bd_net -net cdc_lvds_in_qdpo [get_bd_pins CDC_LVDS_in/qdpo] [get_bd_pins axi_gpio_7_LVDS/gpio2_io_i]
   connect_bd_net -net cdc_lvds_out_data [get_bd_pins CDC_LVDS_out/d] [get_bd_pins axi_gpio_7_LVDS/gpio_io_o]
   connect_bd_net -net cdc_lvds_out_qdpo [get_bd_pins CDC_LVDS_out/qdpo] [get_bd_pins selectio_LVDS_out/data_out_from_device]
-  connect_bd_net -net clk_12mhz_ftdi_clk [get_bd_ports ufb_fpga_ft_12mhz_obuf] [get_bd_pins clk_12mhz_FTDI/clk_12mhz] [get_bd_pins rst_clk_12mhz_FTDI_12M/slowest_sync_clk]
-  connect_bd_net -net clk_12mhz_ftdi_locked [get_bd_pins clk_12mhz_FTDI/locked] [get_bd_pins rst_clk_12mhz_FTDI_12M/dcm_locked]
+  connect_bd_net -net clk_025mhz_1 [get_bd_ports clk_025mhz] [get_bd_pins axi_quad_spi_0_CONFIG/ext_spi_clk]
+  connect_bd_net -net clk_050mhz_1 [get_bd_ports clk_050mhz] [get_bd_pins mii_to_rmii_ETHERNET/ref_clk]
+  connect_bd_net -net clk_12mhz_ftdi_clk [get_bd_ports clk_012mhz] [get_bd_ports ufb_fpga_ft_12mhz_obuf] [get_bd_pins axi_quad_spi_1_TRX/ext_spi_clk]
+  connect_bd_net -net clk_177mhz778_1 [get_bd_ports clk_177mhz778] [get_bd_pins mig_7series_0/sys_clk_i]
   connect_bd_net -net clk_32mhz_lvds_clk [get_bd_pins CDC_LVDS_in/clk] [get_bd_pins CDC_LVDS_out/qdpo_clk] [get_bd_pins clk_32mhz_LVDS/clk_32_lvds] [get_bd_pins clk_32mhz_LVDS_locked_inv/CLK] [get_bd_pins selectio_LVDS_in/clk_in] [get_bd_pins selectio_LVDS_out/clk_in]
   connect_bd_net -net clk_32mhz_lvds_clk_div_8 [get_bd_pins clk_32mhz_LVDS/clk_div_8_lvds] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_clkReset/CLK] [get_bd_pins clk_32mhz_LVDS_locked_inv_sr_ioReset/CLK] [get_bd_pins selectio_LVDS_in/clk_div_in] [get_bd_pins selectio_LVDS_out/clk_div_in]
   connect_bd_net -net clk_32mhz_lvds_locked [get_bd_pins clk_32mhz_LVDS/locked] [get_bd_pins clk_32mhz_LVDS_locked_inv/A]
@@ -1051,27 +1018,22 @@ proc create_root_design { parentCell } {
   connect_bd_net -net dmr_1_ONEWIRE_qdpo [get_bd_pins axi_gpio_2_ONEWIRE_in/gpio_io_i] [get_bd_pins dmr_1_ONEWIRE/qdpo]
   connect_bd_net -net dmr_1_onewire_a_in [get_bd_ports dmr_1_onewire_a_in] [get_bd_pins dmr_1_ONEWIRE/a]
   connect_bd_net -net dmr_1_onewire_d_in [get_bd_ports dmr_1_onewire_d_in] [get_bd_pins dmr_1_ONEWIRE/d]
-  connect_bd_net -net mb_0_clk [get_bd_ports mb_axi_clk_100mhz] [get_bd_pins CDC_LVDS_in/qdpo_clk] [get_bd_pins CDC_LVDS_out/clk] [get_bd_pins axi_ethernetlite_ETHERNET/s_axi_aclk] [get_bd_pins axi_gpio_0_MULTI/s_axi_aclk] [get_bd_pins axi_gpio_1_ONEWIRE_out/s_axi_aclk] [get_bd_pins axi_gpio_2_ONEWIRE_in/s_axi_aclk] [get_bd_pins axi_gpio_3_ROTENC/s_axi_aclk] [get_bd_pins axi_gpio_7_LVDS/s_axi_aclk] [get_bd_pins axi_iic_0_PLL/s_axi_aclk] [get_bd_pins axi_iic_1_BOARD/s_axi_aclk] [get_bd_pins axi_quad_spi_0_CONFIG/s_axi_aclk] [get_bd_pins axi_quad_spi_1_TRX/s_axi_aclk] [get_bd_pins axi_timer_0/s_axi_aclk] [get_bd_pins axi_uart16550_0_FTDI/s_axi_aclk] [get_bd_pins c_accum_0_ROTENC/CLK] [get_bd_pins clk_12mhz_FTDI/clk_in1] [get_bd_pins dmr_1_ONEWIRE/clk] [get_bd_pins mb_0/Clk] [get_bd_pins mb_0_axi_intc/processor_clk] [get_bd_pins mb_0_axi_intc/s_axi_aclk] [get_bd_pins mb_0_axi_interconnect_bottom/ACLK] [get_bd_pins mb_0_axi_interconnect_bottom/M00_ACLK] [get_bd_pins mb_0_axi_interconnect_bottom/M01_ACLK] [get_bd_pins mb_0_axi_interconnect_bottom/S00_ACLK] [get_bd_pins mb_0_axi_interconnect_top/ACLK] [get_bd_pins mb_0_axi_interconnect_top/M00_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M01_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M02_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M03_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M04_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M05_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M06_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M07_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M08_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M09_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M10_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M11_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M12_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M13_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M14_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S00_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S01_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S02_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S03_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S04_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S05_ACLK] [get_bd_pins mb_0_local_memory/LMB_Clk] [get_bd_pins mb_0_mdm/M_AXI_ACLK] [get_bd_pins mb_0_mdm/S_AXI_ACLK] [get_bd_pins mb_0_reset/slowest_sync_clk] [get_bd_pins mig_7series_0/ui_clk]
+  connect_bd_net -net mb_0_clk [get_bd_ports mb_axi_clk_83mhz333] [get_bd_pins CDC_LVDS_in/qdpo_clk] [get_bd_pins CDC_LVDS_out/clk] [get_bd_pins axi_ethernetlite_ETHERNET/s_axi_aclk] [get_bd_pins axi_gpio_0_MULTI/s_axi_aclk] [get_bd_pins axi_gpio_1_ONEWIRE_out/s_axi_aclk] [get_bd_pins axi_gpio_2_ONEWIRE_in/s_axi_aclk] [get_bd_pins axi_gpio_3_ROTENC/s_axi_aclk] [get_bd_pins axi_gpio_7_LVDS/s_axi_aclk] [get_bd_pins axi_iic_0_PLL/s_axi_aclk] [get_bd_pins axi_iic_1_BOARD/s_axi_aclk] [get_bd_pins axi_quad_spi_0_CONFIG/s_axi_aclk] [get_bd_pins axi_quad_spi_1_TRX/s_axi_aclk] [get_bd_pins axi_timer_0/s_axi_aclk] [get_bd_pins axi_uart16550_0_FTDI/s_axi_aclk] [get_bd_pins c_accum_0_ROTENC/CLK] [get_bd_pins dmr_1_ONEWIRE/clk] [get_bd_pins mb_0/Clk] [get_bd_pins mb_0_axi_intc/processor_clk] [get_bd_pins mb_0_axi_intc/s_axi_aclk] [get_bd_pins mb_0_axi_interconnect_bottom/ACLK] [get_bd_pins mb_0_axi_interconnect_bottom/M00_ACLK] [get_bd_pins mb_0_axi_interconnect_bottom/M01_ACLK] [get_bd_pins mb_0_axi_interconnect_bottom/S00_ACLK] [get_bd_pins mb_0_axi_interconnect_top/ACLK] [get_bd_pins mb_0_axi_interconnect_top/M00_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M01_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M02_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M03_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M04_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M05_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M06_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M07_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M08_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M09_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M10_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M11_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M12_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M13_ACLK] [get_bd_pins mb_0_axi_interconnect_top/M14_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S00_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S01_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S02_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S03_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S04_ACLK] [get_bd_pins mb_0_axi_interconnect_top/S05_ACLK] [get_bd_pins mb_0_local_memory/LMB_Clk] [get_bd_pins mb_0_mdm/M_AXI_ACLK] [get_bd_pins mb_0_mdm/S_AXI_ACLK] [get_bd_pins mb_0_reset/slowest_sync_clk] [get_bd_pins mig_7series_0/ui_clk]
   connect_bd_net -net mb_0_intr_in [get_bd_pins mb_0_axi_intc/intr] [get_bd_pins mb_0_axi_intc_concat/dout]
   connect_bd_net -net mb_0_mdm_Interrupt [get_bd_pins mb_0_axi_intc_concat/In0] [get_bd_pins mb_0_mdm/Interrupt]
   connect_bd_net -net mb_0_mdm_debug_sys_rst [get_bd_pins mb_0_mdm/Debug_SYS_Rst] [get_bd_pins mb_0_reset/mb_debug_sys_rst]
   connect_bd_net -net mb_0_reset_aux_reset_in [get_bd_ports reset] [get_bd_pins mb_0_reset/aux_reset_in]
-  connect_bd_net -net mb_0_reset_bus_struct_reset [get_bd_pins clk_12mhz_FTDI/reset] [get_bd_pins clk_32mhz_LVDS/reset] [get_bd_pins mb_0_local_memory/SYS_Rst] [get_bd_pins mb_0_reset/bus_struct_reset] [get_bd_pins rst_clk_12mhz_FTDI_12M/ext_reset_in]
+  connect_bd_net -net mb_0_reset_bus_struct_reset [get_bd_pins clk_32mhz_LVDS/reset] [get_bd_pins mb_0_local_memory/SYS_Rst] [get_bd_pins mb_0_reset/bus_struct_reset]
   connect_bd_net -net mb_0_reset_interconnect_aresetn [get_bd_pins mb_0_axi_interconnect_bottom/ARESETN] [get_bd_pins mb_0_axi_interconnect_top/ARESETN] [get_bd_pins mb_0_reset/interconnect_aresetn]
   connect_bd_net -net mb_0_reset_mb_reset [get_bd_pins mb_0/Reset] [get_bd_pins mb_0_axi_intc/processor_rst] [get_bd_pins mb_0_reset/mb_reset]
-  connect_bd_net -net mb_0_reset_peripheral_aresetn [get_bd_pins axi_ethernetlite_ETHERNET/s_axi_aresetn] [get_bd_pins axi_gpio_0_MULTI/s_axi_aresetn] [get_bd_pins axi_gpio_1_ONEWIRE_out/s_axi_aresetn] [get_bd_pins axi_gpio_2_ONEWIRE_in/s_axi_aresetn] [get_bd_pins axi_gpio_3_ROTENC/s_axi_aresetn] [get_bd_pins axi_gpio_7_LVDS/s_axi_aresetn] [get_bd_pins axi_iic_0_PLL/s_axi_aresetn] [get_bd_pins axi_iic_1_BOARD/s_axi_aresetn] [get_bd_pins axi_quad_spi_0_CONFIG/s_axi_aresetn] [get_bd_pins axi_quad_spi_1_TRX/s_axi_aresetn] [get_bd_pins axi_timer_0/s_axi_aresetn] [get_bd_pins axi_uart16550_0_FTDI/s_axi_aresetn] [get_bd_pins dmr_1_ONEWIRE/qdpo_srst] [get_bd_pins dmr_1_ONEWIRE/qspo_srst] [get_bd_pins mb_0_axi_intc/s_axi_aresetn] [get_bd_pins mb_0_axi_interconnect_bottom/M00_ARESETN] [get_bd_pins mb_0_axi_interconnect_bottom/M01_ARESETN] [get_bd_pins mb_0_axi_interconnect_bottom/S00_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M00_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M01_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M02_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M03_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M04_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M05_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M06_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M07_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M08_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M09_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M10_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M11_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M12_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M13_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M14_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/S00_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/S01_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/S02_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/S03_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/S04_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/S05_ARESETN] [get_bd_pins mb_0_mdm/M_AXI_ARESETN] [get_bd_pins mb_0_mdm/S_AXI_ARESETN] [get_bd_pins mb_0_reset/peripheral_aresetn] [get_bd_pins mig_7series_0/aresetn] [get_bd_pins mii_to_rmii_ETHERNET/rst_n]
+  connect_bd_net -net mb_0_reset_peripheral_aresetn [get_bd_ports ufb_fpga_ft_resetn_obuf] [get_bd_pins axi_ethernetlite_ETHERNET/s_axi_aresetn] [get_bd_pins axi_gpio_0_MULTI/s_axi_aresetn] [get_bd_pins axi_gpio_1_ONEWIRE_out/s_axi_aresetn] [get_bd_pins axi_gpio_2_ONEWIRE_in/s_axi_aresetn] [get_bd_pins axi_gpio_3_ROTENC/s_axi_aresetn] [get_bd_pins axi_gpio_7_LVDS/s_axi_aresetn] [get_bd_pins axi_iic_0_PLL/s_axi_aresetn] [get_bd_pins axi_iic_1_BOARD/s_axi_aresetn] [get_bd_pins axi_quad_spi_0_CONFIG/s_axi_aresetn] [get_bd_pins axi_quad_spi_1_TRX/s_axi_aresetn] [get_bd_pins axi_timer_0/s_axi_aresetn] [get_bd_pins axi_uart16550_0_FTDI/s_axi_aresetn] [get_bd_pins dmr_1_ONEWIRE/qdpo_srst] [get_bd_pins dmr_1_ONEWIRE/qspo_srst] [get_bd_pins mb_0_axi_intc/s_axi_aresetn] [get_bd_pins mb_0_axi_interconnect_bottom/M00_ARESETN] [get_bd_pins mb_0_axi_interconnect_bottom/M01_ARESETN] [get_bd_pins mb_0_axi_interconnect_bottom/S00_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M00_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M01_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M02_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M03_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M04_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M05_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M06_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M07_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M08_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M09_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M10_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M11_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M12_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M13_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/M14_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/S00_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/S01_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/S02_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/S03_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/S04_ARESETN] [get_bd_pins mb_0_axi_interconnect_top/S05_ARESETN] [get_bd_pins mb_0_mdm/M_AXI_ARESETN] [get_bd_pins mb_0_mdm/S_AXI_ARESETN] [get_bd_pins mb_0_reset/peripheral_aresetn] [get_bd_pins mig_7series_0/aresetn] [get_bd_pins mii_to_rmii_ETHERNET/rst_n]
   connect_bd_net -net mb_0_reset_peripheral_reset [get_bd_ports peripheral_reset] [get_bd_pins c_accum_0_ROTENC/SCLR] [get_bd_pins mb_0_reset/peripheral_reset]
   connect_bd_net -net mig_7series_0_init_calib_complete [get_bd_ports ddr3_init_calib_complete_obuf] [get_bd_pins mig_7series_0/init_calib_complete]
   connect_bd_net -net mig_7series_0_mmcm_locked [get_bd_pins mb_0_reset/dcm_locked] [get_bd_pins mig_7series_0/mmcm_locked]
   connect_bd_net -net mig_7series_0_sys_rst [get_bd_ports sys_rst] [get_bd_pins mig_7series_0/sys_rst]
   connect_bd_net -net mig_7series_0_ui_addn_clk_0 [get_bd_pins mig_7series_0/clk_ref_i] [get_bd_pins mig_7series_0/ui_addn_clk_0]
-  connect_bd_net -net mig_7series_0_ui_addn_clk_1 [get_bd_pins axi_quad_spi_0_CONFIG/ext_spi_clk] [get_bd_pins mig_7series_0/ui_addn_clk_1] [get_bd_pins mii_to_rmii_ETHERNET/ref_clk]
-  connect_bd_net -net mig_7series_0_ui_addn_clk_3 [get_bd_pins axi_quad_spi_1_TRX/ext_spi_clk] [get_bd_pins mig_7series_0/ui_addn_clk_3]
   connect_bd_net -net mig_7series_0_ui_clk_sync_rst [get_bd_pins mb_0_reset/ext_reset_in] [get_bd_pins mig_7series_0/ui_clk_sync_rst]
-  connect_bd_net -net pll_clk_n [get_bd_ports pll_clk_n] [get_bd_pins mig_7series_0/sys_clk_n]
-  connect_bd_net -net pll_clk_p [get_bd_ports pll_clk_p] [get_bd_pins mig_7series_0/sys_clk_p]
   connect_bd_net -net pll_iic2intc_irpt [get_bd_ports pll_int] [get_bd_pins mb_0_axi_intc_concat/In8]
-  connect_bd_net -net rst_clk_12mhz_FTDI_12M_peripheral_aresetn [get_bd_ports ufb_fpga_ft_resetn_obuf] [get_bd_pins rst_clk_12mhz_FTDI_12M/peripheral_aresetn]
   connect_bd_net -net selectio_wiz_lvds_out_clk_to_pins_n [get_bd_ports ufb_trx_txclk_n] [get_bd_pins selectio_LVDS_out/clk_to_pins_n]
   connect_bd_net -net selectio_wiz_lvds_out_clk_to_pins_p [get_bd_ports ufb_trx_txclk_p] [get_bd_pins selectio_LVDS_out/clk_to_pins_p]
   connect_bd_net -net selectio_wiz_lvds_out_data_out_to_pins_n [get_bd_ports ufb_trx_txd_n] [get_bd_pins selectio_LVDS_out/data_out_to_pins_n]

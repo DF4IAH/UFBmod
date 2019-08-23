@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;SREC-BootLoader/Debug/DoDisam-PeriphTest.sh&apos; to &apos;DoDisam-SREC-BootLoader.sh&apos;" description="Rename resource &apos;DoDisam-PeriphTest.sh&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Debug/DoDisam-PeriphTest.sh" name="DoDisam-SREC-BootLoader.sh" stamp="1564957797701" updateReferences="true"/>
-</session>

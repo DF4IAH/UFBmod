@@ -140,10 +140,10 @@ set_property -dict {PACKAGE_PIN Y12 IOSTANDARD LVDS_25} [get_ports ufb_trx_rxclk
 
 ## Bank 14 / 3.3 V
 
-set_property -dict {PACKAGE_PIN P20 IOSTANDARD LVCMOS33} [get_ports {eth_rx_dv}]
+set_property -dict {PACKAGE_PIN P20 IOSTANDARD LVCMOS33} [get_ports eth_rx_dv]
 #IO_0_14 sch:ETH_RX_DV
 
-set_property -dict {PACKAGE_PIN N15 IOSTANDARD LVCMOS33} [get_ports {link_led}]
+set_property -dict {PACKAGE_PIN N15 IOSTANDARD LVCMOS33} [get_ports link_led]
 #IO_25_14 sch:LINK_LED
 
 
@@ -196,7 +196,7 @@ set_property -dict {PACKAGE_PIN W22 IOSTANDARD LVCMOS33} [get_ports uli_system]
 #IO_L7N_T1_D10_14 sch:ULI_SYSTEM
 
 
-set_property -dict {PACKAGE_PIN AA20 IOSTANDARD LVCMOS33} [get_ports ddr3_init_calib_complete]
+#set_property -dict {PACKAGE_PIN AA20 IOSTANDARD LVCMOS33} [get_ports ddr3_init_calib_complete]  <-- set by MIG tool
 #IO_L8P_T1_D11_14 sch:B14_L8_P --> ddr3_init_calib_complete
 
 #set_property -dict {PACKAGE_PIN AA21 IOSTANDARD LVCMOS33} [get_ports {b14_l8_n}]
@@ -259,10 +259,10 @@ set_property -dict {PACKAGE_PIN V19 IOSTANDARD LVCMOS33} [get_ports board_rotenc
 #IO_L16N_T2_A15_D31_14 sch:B14_L16_N
 
 
-set_property -dict {PACKAGE_PIN AA18 IOSTANDARD LVCMOS33} [get_ports {fpga_eth_da_y}]
+set_property -dict {PACKAGE_PIN AA18 IOSTANDARD LVCMOS33} [get_ports fpga_eth_da_y]
 #IO_L17P_T2_A14_D30_14 sch:B14_L17_P --> FPGA_ETH_DA_Y
 
-set_property -dict {PACKAGE_PIN AB18 IOSTANDARD LVCMOS33} [get_ports {fpga_eth_da_g}]
+set_property -dict {PACKAGE_PIN AB18 IOSTANDARD LVCMOS33} [get_ports fpga_eth_da_g]
 #IO_L17N_T2_A13_D29_14 sch:B14_L17_N --> FPGA_ETH_DA_G
 
 
@@ -276,7 +276,7 @@ set_property -dict {PACKAGE_PIN U18 IOSTANDARD LVCMOS33} [get_ports board_scl]
 set_property -dict {PACKAGE_PIN P14 IOSTANDARD LVCMOS33} [get_ports {eth_tx_d[0]}]
 #IO_L19P_T3_A10_D26_14 sch:ETH_TX_D0
 
-set_property -dict {PACKAGE_PIN R14 IOSTANDARD LVCMOS33} [get_ports {eth_tx_en}]
+set_property -dict {PACKAGE_PIN R14 IOSTANDARD LVCMOS33} [get_ports eth_tx_en]
 #IO_L19N_T3_A09_D25_VREF_14 sch:ETH_TX_EN
 
 
@@ -287,17 +287,17 @@ set_property -dict {PACKAGE_PIN R14 IOSTANDARD LVCMOS33} [get_ports {eth_tx_en}]
 #IO_L20N_T3_A07_D23_14 sch:B14_L20_N
 
 
-set_property -dict {PACKAGE_PIN N17 IOSTANDARD LVCMOS33} [get_ports {eth_rst}]
+set_property -dict {PACKAGE_PIN N17 IOSTANDARD LVCMOS33} [get_ports eth_rst]
 #IO_L21P_T3_DQS_14 sch:ETH-RST
 
-set_property -dict {PACKAGE_PIN P17 IOSTANDARD LVCMOS33} [get_ports {mdio}]
+set_property -dict {PACKAGE_PIN P17 IOSTANDARD LVCMOS33} [get_ports mdio]
 #IO_L21N_T3_DQS_A06_D22_14 sch:MDIO
 
 
 set_property -dict {PACKAGE_PIN P15 IOSTANDARD LVCMOS33} [get_ports {eth_tx_d[1]}]
 #IO_L22P_T3_A05_D21_14 sch:ETH_TX_D1
 
-set_property -dict {PACKAGE_PIN R16 IOSTANDARD LVCMOS33} [get_ports {mdc}]
+set_property -dict {PACKAGE_PIN R16 IOSTANDARD LVCMOS33} [get_ports mdc]
 #IO_L22N_T3_A04_D20_14 sch:MDC
 
 
@@ -395,8 +395,8 @@ set_property -dict {PACKAGE_PIN H18 IOSTANDARD LVCMOS33} [get_ports ufb_fpga_ft_
 #IO_L10N_T1_AD11N_15 sch:B15_L10_N
 
 
-#set_property -dict {PACKAGE_PIN J20 IOSTANDARD LVCMOS33} [get_ports {b15_l11_p}]
-#IO_L11P_T1_SRCC_15 sch:B15_L11_P
+set_property -dict {PACKAGE_PIN J20 IOSTANDARD LVCMOS33} [get_ports trx_clk_26mhz]
+#IO_L11P_T1_SRCC_15 sch:B15_L11_P --> TRX_CLK_26MHZ
 
 #set_property -dict {PACKAGE_PIN J21 IOSTANDARD LVCMOS33} [get_ports {b15_l11_n}]
 #IO_L11N_T1_SRCC_15 sch:B15_L11_N
@@ -1113,5 +1113,8 @@ set_property PULLDOWN true [get_ports uli_system]
 
 
 # <EOF>
+
+
+
 
 

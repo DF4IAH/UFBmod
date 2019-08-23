@@ -86,9 +86,8 @@ module mcu_mig_7series_0_0 (
   output [3:0]     ddr3_dm,
   output [0:0]       ddr3_odt,
   // Inputs
-  // Differential system clocks
-  input             sys_clk_p,
-  input             sys_clk_n,
+  // Single-ended system clock
+  input             sys_clk_i,
   // Single-ended iodelayctrl clk (reference clock)
   input             clk_ref_i,
   // user interface signals
@@ -117,8 +116,8 @@ module mcu_mig_7series_0_0 (
   input         s_axi_awvalid,
   output            s_axi_awready,
   // Slave Interface Write Data Ports
-  input [31:0]         s_axi_wdata,
-  input [3:0]         s_axi_wstrb,
+  input [255:0]         s_axi_wdata,
+  input [31:0]         s_axi_wstrb,
   input         s_axi_wlast,
   input         s_axi_wvalid,
   output            s_axi_wready,
@@ -142,7 +141,7 @@ module mcu_mig_7series_0_0 (
   // Slave Interface Read Data Ports
   input         s_axi_rready,
   output [2:0]          s_axi_rid,
-  output [31:0]            s_axi_rdata,
+  output [255:0]            s_axi_rdata,
   output [1:0]          s_axi_rresp,
   output            s_axi_rlast,
   output            s_axi_rvalid,
@@ -236,8 +235,7 @@ module mcu_mig_7series_0_0 (
     .s_axi_rvalid                   (s_axi_rvalid),
     .s_axi_rready                   (s_axi_rready),
     // System Clock Ports
-    .sys_clk_p                       (sys_clk_p),
-    .sys_clk_n                       (sys_clk_n),
+    .sys_clk_i                       (sys_clk_i),
     // Reference Clock Ports
     .clk_ref_i                      (clk_ref_i),
        .device_temp            (device_temp),
