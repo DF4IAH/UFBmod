@@ -6974,6 +6974,7 @@ Covered vias can be set in Masks (Limit).
 </element>
 <element name="S1321" library="df4iah_switch" package="KSR223G_SMD_1POL" value="KSR223G_SMD_1POL" x="-19.05" y="-34.29"/>
 <element name="R1321" library="df4iah_rcl" package="R0402" value="100R" x="-21.59" y="-40.64"/>
+<element name="R0711" library="df4iah_rcl" package="R0402" value="100R" x="-21.59" y="-45.72"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -9900,6 +9901,16 @@ Covered vias can be set in Masks (Limit).
 <contactref element="R1321" pad="2"/>
 <contactref element="S1321" pad="1"/>
 <wire x1="-22.55" y1="-34.29" x2="-20.94" y2="-40.64" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="TRX_CLKO_26MHZ_R">
+<contactref element="U0701" pad="22"/>
+<contactref element="R0711" pad="2"/>
+<wire x1="15.55" y1="38.89" x2="-20.94" y2="-45.72" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="TRX_CLK_26MHZ">
+<contactref element="R0711" pad="1"/>
+<contactref element="JB2" pad="52"/>
+<wire x1="-22.24" y1="-45.72" x2="56.13" y2="59.11" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 <errors>

@@ -18917,6 +18917,7 @@ Subminiature Tact Switch for SMT</description>
 <part name="TP1371" library="df4iah_connector" deviceset="TP" device="B1,27"/>
 <part name="S1321" library="df4iah_switch" deviceset="KSR223G_SMD_1POL" device=""/>
 <part name="R1321" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="100R"/>
+<part name="R0711" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="100R"/>
 </parts>
 <sheets>
 <sheet>
@@ -19743,6 +19744,13 @@ Right</text>
 <label x="76.2" y="132.08" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
+<net name="TRX_CLK_26MHZ" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="B15_L11_CLK_P"/>
+<wire x1="96.52" y1="88.9" x2="76.2" y2="88.9" width="0.1524" layer="91"/>
+<label x="76.2" y="88.9" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
@@ -20280,6 +20288,7 @@ I2C addr: 0x38</text>
 <instance part="R0752" gate="G$1" x="210.82" y="63.5"/>
 <instance part="R0753" gate="G$1" x="200.66" y="58.42"/>
 <instance part="R0754" gate="G$1" x="185.42" y="53.34"/>
+<instance part="R0711" gate="G$1" x="73.66" y="83.82"/>
 </instances>
 <busses>
 </busses>
@@ -20673,6 +20682,20 @@ I2C addr: 0x38</text>
 <pinref part="R0754" gate="G$1" pin="2"/>
 <wire x1="190.5" y1="53.34" x2="218.44" y2="53.34" width="0.1524" layer="91"/>
 <label x="218.44" y="53.34" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="TRX_CLKO_26MHZ_R" class="0">
+<segment>
+<pinref part="U0701" gate="G$1" pin="CLKO"/>
+<wire x1="104.14" y1="83.82" x2="78.74" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="R0711" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="TRX_CLK_26MHZ" class="0">
+<segment>
+<pinref part="R0711" gate="G$1" pin="1"/>
+<wire x1="68.58" y1="83.82" x2="45.72" y2="83.82" width="0.1524" layer="91"/>
+<label x="45.72" y="83.82" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
