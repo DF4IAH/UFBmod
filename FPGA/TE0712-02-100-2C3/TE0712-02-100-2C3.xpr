@@ -39,13 +39,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="58"/>
-    <Option Name="WTModelSimExportSim" Val="58"/>
-    <Option Name="WTQuestaExportSim" Val="58"/>
-    <Option Name="WTIesExportSim" Val="58"/>
-    <Option Name="WTVcsExportSim" Val="58"/>
-    <Option Name="WTRivieraExportSim" Val="58"/>
-    <Option Name="WTActivehdlExportSim" Val="58"/>
+    <Option Name="WTXSimExportSim" Val="62"/>
+    <Option Name="WTModelSimExportSim" Val="62"/>
+    <Option Name="WTQuestaExportSim" Val="62"/>
+    <Option Name="WTIesExportSim" Val="62"/>
+    <Option Name="WTVcsExportSim" Val="62"/>
+    <Option Name="WTRivieraExportSim" Val="62"/>
+    <Option Name="WTActivehdlExportSim" Val="62"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -66,14 +66,14 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_xbar_0/mcu_xbar_0.xci">
+          <Proxy FileSetName="mcu_xbar_0"/>
+        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_microblaze_0_axi_intc_0/mcu_microblaze_0_axi_intc_0.xci">
           <Proxy FileSetName="mcu_microblaze_0_axi_intc_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mig_7series_0_0/mcu_mig_7series_0_0.xci">
           <Proxy FileSetName="mcu_mig_7series_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_xbar_0/mcu_xbar_0.xci">
-          <Proxy FileSetName="mcu_xbar_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/ip/clk_wiz_0/clk_wiz_0.xci">

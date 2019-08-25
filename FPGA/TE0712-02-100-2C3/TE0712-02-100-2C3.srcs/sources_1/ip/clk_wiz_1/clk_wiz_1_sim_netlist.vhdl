@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
--- Date        : Fri Aug 23 20:38:52 2019
+-- Date        : Sun Aug 25 22:05:46 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/ip/clk_wiz_1/clk_wiz_1_sim_netlist.vhdl
+--               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/ip/clk_wiz_1/clk_wiz_1_sim_netlist.vhdl
 -- Design      : clk_wiz_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -18,11 +18,10 @@ entity clk_wiz_1_clk_wiz_1_clk_wiz is
   port (
     clk_in2_vctcxo : in STD_LOGIC;
     clk_in_sel : in STD_LOGIC;
-    clk_out_177mhz778 : out STD_LOGIC;
-    clk_out_120mhz : out STD_LOGIC;
-    clk_out_050mhz : out STD_LOGIC;
-    clk_out_025mhz : out STD_LOGIC;
-    clk_out_012mhz : out STD_LOGIC;
+    clk_177mhz778 : out STD_LOGIC;
+    clk_050mhz : out STD_LOGIC;
+    clk_025mhz : out STD_LOGIC;
+    clk_012mhz : out STD_LOGIC;
     reset : in STD_LOGIC;
     locked : out STD_LOGIC;
     clk_in1_si5338 : in STD_LOGIC
@@ -32,13 +31,12 @@ entity clk_wiz_1_clk_wiz_1_clk_wiz is
 end clk_wiz_1_clk_wiz_1_clk_wiz;
 
 architecture STRUCTURE of clk_wiz_1_clk_wiz_1_clk_wiz is
+  signal clk_012mhz_clk_wiz_1 : STD_LOGIC;
+  signal clk_025mhz_clk_wiz_1 : STD_LOGIC;
+  signal clk_050mhz_clk_wiz_1 : STD_LOGIC;
+  signal clk_177mhz778_clk_wiz_1 : STD_LOGIC;
   signal clk_in1_si5338_clk_wiz_1 : STD_LOGIC;
   signal clk_in2_vctcxo_clk_wiz_1 : STD_LOGIC;
-  signal clk_out_012mhz_clk_wiz_1 : STD_LOGIC;
-  signal clk_out_025mhz_clk_wiz_1 : STD_LOGIC;
-  signal clk_out_050mhz_clk_wiz_1 : STD_LOGIC;
-  signal clk_out_120mhz_clk_wiz_1 : STD_LOGIC;
-  signal clk_out_177mhz778_clk_wiz_1 : STD_LOGIC;
   signal clkfbout_buf_clk_wiz_1 : STD_LOGIC;
   signal clkfbout_clk_wiz_1 : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED : STD_LOGIC;
@@ -48,6 +46,7 @@ architecture STRUCTURE of clk_wiz_1_clk_wiz_1_clk_wiz is
   signal NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED : STD_LOGIC;
+  signal NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_DRDY_UNCONNECTED : STD_LOGIC;
@@ -61,7 +60,6 @@ architecture STRUCTURE of clk_wiz_1_clk_wiz_1_clk_wiz is
   attribute BOX_TYPE of clkout2_buf : label is "PRIMITIVE";
   attribute BOX_TYPE of clkout3_buf : label is "PRIMITIVE";
   attribute BOX_TYPE of clkout4_buf : label is "PRIMITIVE";
-  attribute BOX_TYPE of clkout5_buf : label is "PRIMITIVE";
   attribute BOX_TYPE of mmcm_adv_inst : label is "PRIMITIVE";
 begin
 clkf_buf: unisim.vcomponents.BUFG
@@ -81,28 +79,23 @@ clkin2_bufg: unisim.vcomponents.BUFG
     );
 clkout1_buf: unisim.vcomponents.BUFG
      port map (
-      I => clk_out_177mhz778_clk_wiz_1,
-      O => clk_out_177mhz778
+      I => clk_177mhz778_clk_wiz_1,
+      O => clk_177mhz778
     );
 clkout2_buf: unisim.vcomponents.BUFG
      port map (
-      I => clk_out_120mhz_clk_wiz_1,
-      O => clk_out_120mhz
+      I => clk_050mhz_clk_wiz_1,
+      O => clk_050mhz
     );
 clkout3_buf: unisim.vcomponents.BUFG
      port map (
-      I => clk_out_050mhz_clk_wiz_1,
-      O => clk_out_050mhz
+      I => clk_025mhz_clk_wiz_1,
+      O => clk_025mhz
     );
 clkout4_buf: unisim.vcomponents.BUFG
      port map (
-      I => clk_out_025mhz_clk_wiz_1,
-      O => clk_out_025mhz
-    );
-clkout5_buf: unisim.vcomponents.BUFG
-     port map (
-      I => clk_out_012mhz_clk_wiz_1,
-      O => clk_out_012mhz
+      I => clk_012mhz_clk_wiz_1,
+      O => clk_012mhz
     );
 mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
     generic map(
@@ -116,20 +109,20 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKOUT0_DUTY_CYCLE => 0.500000,
       CLKOUT0_PHASE => 0.000000,
       CLKOUT0_USE_FINE_PS => false,
-      CLKOUT1_DIVIDE => 10,
+      CLKOUT1_DIVIDE => 24,
       CLKOUT1_DUTY_CYCLE => 0.500000,
       CLKOUT1_PHASE => 0.000000,
       CLKOUT1_USE_FINE_PS => false,
-      CLKOUT2_DIVIDE => 24,
+      CLKOUT2_DIVIDE => 48,
       CLKOUT2_DUTY_CYCLE => 0.500000,
       CLKOUT2_PHASE => 0.000000,
       CLKOUT2_USE_FINE_PS => false,
-      CLKOUT3_DIVIDE => 48,
+      CLKOUT3_DIVIDE => 100,
       CLKOUT3_DUTY_CYCLE => 0.500000,
       CLKOUT3_PHASE => 0.000000,
       CLKOUT3_USE_FINE_PS => false,
       CLKOUT4_CASCADE => false,
-      CLKOUT4_DIVIDE => 100,
+      CLKOUT4_DIVIDE => 1,
       CLKOUT4_DUTY_CYCLE => 0.500000,
       CLKOUT4_PHASE => 0.000000,
       CLKOUT4_USE_FINE_PS => false,
@@ -164,15 +157,15 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKIN2 => clk_in2_vctcxo_clk_wiz_1,
       CLKINSEL => clk_in_sel,
       CLKINSTOPPED => NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED,
-      CLKOUT0 => clk_out_177mhz778_clk_wiz_1,
+      CLKOUT0 => clk_177mhz778_clk_wiz_1,
       CLKOUT0B => NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED,
-      CLKOUT1 => clk_out_120mhz_clk_wiz_1,
+      CLKOUT1 => clk_050mhz_clk_wiz_1,
       CLKOUT1B => NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED,
-      CLKOUT2 => clk_out_050mhz_clk_wiz_1,
+      CLKOUT2 => clk_025mhz_clk_wiz_1,
       CLKOUT2B => NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED,
-      CLKOUT3 => clk_out_025mhz_clk_wiz_1,
+      CLKOUT3 => clk_012mhz_clk_wiz_1,
       CLKOUT3B => NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED,
-      CLKOUT4 => clk_out_012mhz_clk_wiz_1,
+      CLKOUT4 => NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED,
       CLKOUT5 => NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED,
       CLKOUT6 => NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED,
       DADDR(6 downto 0) => B"0000000",
@@ -199,11 +192,10 @@ entity clk_wiz_1 is
   port (
     clk_in2_vctcxo : in STD_LOGIC;
     clk_in_sel : in STD_LOGIC;
-    clk_out_177mhz778 : out STD_LOGIC;
-    clk_out_120mhz : out STD_LOGIC;
-    clk_out_050mhz : out STD_LOGIC;
-    clk_out_025mhz : out STD_LOGIC;
-    clk_out_012mhz : out STD_LOGIC;
+    clk_177mhz778 : out STD_LOGIC;
+    clk_050mhz : out STD_LOGIC;
+    clk_025mhz : out STD_LOGIC;
+    clk_012mhz : out STD_LOGIC;
     reset : in STD_LOGIC;
     locked : out STD_LOGIC;
     clk_in1_si5338 : in STD_LOGIC
@@ -216,14 +208,13 @@ architecture STRUCTURE of clk_wiz_1 is
 begin
 inst: entity work.clk_wiz_1_clk_wiz_1_clk_wiz
      port map (
+      clk_012mhz => clk_012mhz,
+      clk_025mhz => clk_025mhz,
+      clk_050mhz => clk_050mhz,
+      clk_177mhz778 => clk_177mhz778,
       clk_in1_si5338 => clk_in1_si5338,
       clk_in2_vctcxo => clk_in2_vctcxo,
       clk_in_sel => clk_in_sel,
-      clk_out_012mhz => clk_out_012mhz,
-      clk_out_025mhz => clk_out_025mhz,
-      clk_out_050mhz => clk_out_050mhz,
-      clk_out_120mhz => clk_out_120mhz,
-      clk_out_177mhz778 => clk_out_177mhz778,
       locked => locked,
       reset => reset
     );

@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-// Date        : Fri Aug 23 20:38:52 2019
+// Date        : Sun Aug 25 22:05:46 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/ip/clk_wiz_1/clk_wiz_1_sim_netlist.v
+//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/ip/clk_wiz_1/clk_wiz_1_sim_netlist.v
 // Design      : clk_wiz_1
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -16,45 +16,41 @@
 module clk_wiz_1
    (clk_in2_vctcxo,
     clk_in_sel,
-    clk_out_177mhz778,
-    clk_out_120mhz,
-    clk_out_050mhz,
-    clk_out_025mhz,
-    clk_out_012mhz,
+    clk_177mhz778,
+    clk_050mhz,
+    clk_025mhz,
+    clk_012mhz,
     reset,
     locked,
     clk_in1_si5338);
   input clk_in2_vctcxo;
   input clk_in_sel;
-  output clk_out_177mhz778;
-  output clk_out_120mhz;
-  output clk_out_050mhz;
-  output clk_out_025mhz;
-  output clk_out_012mhz;
+  output clk_177mhz778;
+  output clk_050mhz;
+  output clk_025mhz;
+  output clk_012mhz;
   input reset;
   output locked;
   input clk_in1_si5338;
 
+  wire clk_012mhz;
+  wire clk_025mhz;
+  wire clk_050mhz;
+  wire clk_177mhz778;
   wire clk_in1_si5338;
   wire clk_in2_vctcxo;
   wire clk_in_sel;
-  wire clk_out_012mhz;
-  wire clk_out_025mhz;
-  wire clk_out_050mhz;
-  wire clk_out_120mhz;
-  wire clk_out_177mhz778;
   wire locked;
   wire reset;
 
   clk_wiz_1_clk_wiz_1_clk_wiz inst
-       (.clk_in1_si5338(clk_in1_si5338),
+       (.clk_012mhz(clk_012mhz),
+        .clk_025mhz(clk_025mhz),
+        .clk_050mhz(clk_050mhz),
+        .clk_177mhz778(clk_177mhz778),
+        .clk_in1_si5338(clk_in1_si5338),
         .clk_in2_vctcxo(clk_in2_vctcxo),
         .clk_in_sel(clk_in_sel),
-        .clk_out_012mhz(clk_out_012mhz),
-        .clk_out_025mhz(clk_out_025mhz),
-        .clk_out_050mhz(clk_out_050mhz),
-        .clk_out_120mhz(clk_out_120mhz),
-        .clk_out_177mhz778(clk_out_177mhz778),
         .locked(locked),
         .reset(reset));
 endmodule
@@ -63,40 +59,36 @@ endmodule
 module clk_wiz_1_clk_wiz_1_clk_wiz
    (clk_in2_vctcxo,
     clk_in_sel,
-    clk_out_177mhz778,
-    clk_out_120mhz,
-    clk_out_050mhz,
-    clk_out_025mhz,
-    clk_out_012mhz,
+    clk_177mhz778,
+    clk_050mhz,
+    clk_025mhz,
+    clk_012mhz,
     reset,
     locked,
     clk_in1_si5338);
   input clk_in2_vctcxo;
   input clk_in_sel;
-  output clk_out_177mhz778;
-  output clk_out_120mhz;
-  output clk_out_050mhz;
-  output clk_out_025mhz;
-  output clk_out_012mhz;
+  output clk_177mhz778;
+  output clk_050mhz;
+  output clk_025mhz;
+  output clk_012mhz;
   input reset;
   output locked;
   input clk_in1_si5338;
 
+  wire clk_012mhz;
+  wire clk_012mhz_clk_wiz_1;
+  wire clk_025mhz;
+  wire clk_025mhz_clk_wiz_1;
+  wire clk_050mhz;
+  wire clk_050mhz_clk_wiz_1;
+  wire clk_177mhz778;
+  wire clk_177mhz778_clk_wiz_1;
   wire clk_in1_si5338;
   wire clk_in1_si5338_clk_wiz_1;
   wire clk_in2_vctcxo;
   wire clk_in2_vctcxo_clk_wiz_1;
   wire clk_in_sel;
-  wire clk_out_012mhz;
-  wire clk_out_012mhz_clk_wiz_1;
-  wire clk_out_025mhz;
-  wire clk_out_025mhz_clk_wiz_1;
-  wire clk_out_050mhz;
-  wire clk_out_050mhz_clk_wiz_1;
-  wire clk_out_120mhz;
-  wire clk_out_120mhz_clk_wiz_1;
-  wire clk_out_177mhz778;
-  wire clk_out_177mhz778_clk_wiz_1;
   wire clkfbout_buf_clk_wiz_1;
   wire clkfbout_clk_wiz_1;
   wire locked;
@@ -108,6 +100,7 @@ module clk_wiz_1_clk_wiz_1_clk_wiz
   wire NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED;
   wire NLW_mmcm_adv_inst_DRDY_UNCONNECTED;
@@ -128,24 +121,20 @@ module clk_wiz_1_clk_wiz_1_clk_wiz
         .O(clk_in2_vctcxo_clk_wiz_1));
   (* BOX_TYPE = "PRIMITIVE" *) 
   BUFG clkout1_buf
-       (.I(clk_out_177mhz778_clk_wiz_1),
-        .O(clk_out_177mhz778));
+       (.I(clk_177mhz778_clk_wiz_1),
+        .O(clk_177mhz778));
   (* BOX_TYPE = "PRIMITIVE" *) 
   BUFG clkout2_buf
-       (.I(clk_out_120mhz_clk_wiz_1),
-        .O(clk_out_120mhz));
+       (.I(clk_050mhz_clk_wiz_1),
+        .O(clk_050mhz));
   (* BOX_TYPE = "PRIMITIVE" *) 
   BUFG clkout3_buf
-       (.I(clk_out_050mhz_clk_wiz_1),
-        .O(clk_out_050mhz));
+       (.I(clk_025mhz_clk_wiz_1),
+        .O(clk_025mhz));
   (* BOX_TYPE = "PRIMITIVE" *) 
   BUFG clkout4_buf
-       (.I(clk_out_025mhz_clk_wiz_1),
-        .O(clk_out_025mhz));
-  (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFG clkout5_buf
-       (.I(clk_out_012mhz_clk_wiz_1),
-        .O(clk_out_012mhz));
+       (.I(clk_012mhz_clk_wiz_1),
+        .O(clk_012mhz));
   (* BOX_TYPE = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
@@ -158,20 +147,20 @@ module clk_wiz_1_clk_wiz_1_clk_wiz
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
-    .CLKOUT1_DIVIDE(10),
+    .CLKOUT1_DIVIDE(24),
     .CLKOUT1_DUTY_CYCLE(0.500000),
     .CLKOUT1_PHASE(0.000000),
     .CLKOUT1_USE_FINE_PS("FALSE"),
-    .CLKOUT2_DIVIDE(24),
+    .CLKOUT2_DIVIDE(48),
     .CLKOUT2_DUTY_CYCLE(0.500000),
     .CLKOUT2_PHASE(0.000000),
     .CLKOUT2_USE_FINE_PS("FALSE"),
-    .CLKOUT3_DIVIDE(48),
+    .CLKOUT3_DIVIDE(100),
     .CLKOUT3_DUTY_CYCLE(0.500000),
     .CLKOUT3_PHASE(0.000000),
     .CLKOUT3_USE_FINE_PS("FALSE"),
     .CLKOUT4_CASCADE("FALSE"),
-    .CLKOUT4_DIVIDE(100),
+    .CLKOUT4_DIVIDE(1),
     .CLKOUT4_DUTY_CYCLE(0.500000),
     .CLKOUT4_PHASE(0.000000),
     .CLKOUT4_USE_FINE_PS("FALSE"),
@@ -205,15 +194,15 @@ module clk_wiz_1_clk_wiz_1_clk_wiz
         .CLKIN2(clk_in2_vctcxo_clk_wiz_1),
         .CLKINSEL(clk_in_sel),
         .CLKINSTOPPED(NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED),
-        .CLKOUT0(clk_out_177mhz778_clk_wiz_1),
+        .CLKOUT0(clk_177mhz778_clk_wiz_1),
         .CLKOUT0B(NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED),
-        .CLKOUT1(clk_out_120mhz_clk_wiz_1),
+        .CLKOUT1(clk_050mhz_clk_wiz_1),
         .CLKOUT1B(NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED),
-        .CLKOUT2(clk_out_050mhz_clk_wiz_1),
+        .CLKOUT2(clk_025mhz_clk_wiz_1),
         .CLKOUT2B(NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED),
-        .CLKOUT3(clk_out_025mhz_clk_wiz_1),
+        .CLKOUT3(clk_012mhz_clk_wiz_1),
         .CLKOUT3B(NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED),
-        .CLKOUT4(clk_out_012mhz_clk_wiz_1),
+        .CLKOUT4(NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED),
         .CLKOUT5(NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED),
         .CLKOUT6(NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED),
         .DADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),

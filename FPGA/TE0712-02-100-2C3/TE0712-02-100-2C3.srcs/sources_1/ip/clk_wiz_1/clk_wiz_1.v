@@ -56,11 +56,10 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out_177mhz778___177.778______0.000______50.0______126.466____154.678
-// clk_out_120mhz___120.000______0.000______50.0______134.634____154.678
-// clk_out_050mhz____50.000______0.000______50.0______163.696____154.678
-// clk_out_025mhz____25.000______0.000______50.0______199.513____154.678
-// clk_out_012mhz____12.000______0.000______50.0______256.084____154.678
+// clk_177mhz778___177.778______0.000______50.0______126.466____154.678
+// clk_050mhz____50.000______0.000______50.0______163.696____154.678
+// clk_025mhz____25.000______0.000______50.0______199.513____154.678
+// clk_012mhz____12.000______0.000______50.0______256.084____154.678
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -70,18 +69,17 @@
 
 `timescale 1ps/1ps
 
-(* CORE_GENERATION_INFO = "clk_wiz_1,clk_wiz_v6_0_3_0_0,{component_name=clk_wiz_1,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=true,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=5,clkin1_period=20.000,clkin2_period=20.000,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
+(* CORE_GENERATION_INFO = "clk_wiz_1,clk_wiz_v6_0_3_0_0,{component_name=clk_wiz_1,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=true,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=4,clkin1_period=20.000,clkin2_period=20.000,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
 
 module clk_wiz_1 
  (
   input         clk_in2_vctcxo,
   input         clk_in_sel,
   // Clock out ports
-  output        clk_out_177mhz778,
-  output        clk_out_120mhz,
-  output        clk_out_050mhz,
-  output        clk_out_025mhz,
-  output        clk_out_012mhz,
+  output        clk_177mhz778,
+  output        clk_050mhz,
+  output        clk_025mhz,
+  output        clk_012mhz,
   // Status and control signals
   input         reset,
   output        locked,
@@ -94,11 +92,10 @@ module clk_wiz_1
   .clk_in2_vctcxo(clk_in2_vctcxo),
   .clk_in_sel(clk_in_sel),
   // Clock out ports  
-  .clk_out_177mhz778(clk_out_177mhz778),
-  .clk_out_120mhz(clk_out_120mhz),
-  .clk_out_050mhz(clk_out_050mhz),
-  .clk_out_025mhz(clk_out_025mhz),
-  .clk_out_012mhz(clk_out_012mhz),
+  .clk_177mhz778(clk_177mhz778),
+  .clk_050mhz(clk_050mhz),
+  .clk_025mhz(clk_025mhz),
+  .clk_012mhz(clk_012mhz),
   // Status and control signals               
   .reset(reset), 
   .locked(locked),

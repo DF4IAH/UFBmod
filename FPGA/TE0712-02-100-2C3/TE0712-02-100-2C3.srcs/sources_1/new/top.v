@@ -377,7 +377,6 @@ module top(
     
     wire board_lcd_resetn_obuf;
     wire clk_177mhz778;
-    wire clk_120mhz;
     wire clk_050mhz;
     wire clk_025mhz;
     wire clk_012mhz;
@@ -509,11 +508,10 @@ module top(
     // CLOCK WIZ 1 - 50 MHz (Si5338-PLL / TRX-VCTCXO)
     clk_wiz_1   clk_wiz_1_inst(
         // Clock out ports  
-        .clk_out_177mhz778(clk_177mhz778),
-        .clk_out_120mhz(clk_120mhz),
-        .clk_out_050mhz(clk_050mhz),
-        .clk_out_025mhz(clk_025mhz),
-        .clk_out_012mhz(clk_012mhz),
+        .clk_177mhz778(clk_177mhz778),
+        .clk_050mhz(clk_050mhz),
+        .clk_025mhz(clk_025mhz),
+        .clk_012mhz(clk_012mhz),
         
         // Status and control signals               
         .reset(reset_ibuf),

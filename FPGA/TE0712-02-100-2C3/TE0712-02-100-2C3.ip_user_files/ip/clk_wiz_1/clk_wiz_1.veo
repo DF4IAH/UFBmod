@@ -55,11 +55,10 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out_177mhz778___177.778______0.000______50.0______126.466____154.678
-// clk_out_120mhz___120.000______0.000______50.0______134.634____154.678
-// clk_out_050mhz____50.000______0.000______50.0______163.696____154.678
-// clk_out_025mhz____25.000______0.000______50.0______199.513____154.678
-// clk_out_012mhz____12.000______0.000______50.0______256.084____154.678
+// clk_177mhz778___177.778______0.000______50.0______126.466____154.678
+// clk_050mhz____50.000______0.000______50.0______163.696____154.678
+// clk_025mhz____25.000______0.000______50.0______199.513____154.678
+// clk_012mhz____12.000______0.000______50.0______256.084____154.678
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -78,11 +77,10 @@
     .clk_in2_vctcxo(clk_in2_vctcxo),      // input clk_in2_vctcxo
     .clk_in_sel(clk_in_sel),   // input clk_in_sel
     // Clock out ports
-    .clk_out_177mhz778(clk_out_177mhz778),     // output clk_out_177mhz778
-    .clk_out_120mhz(clk_out_120mhz),     // output clk_out_120mhz
-    .clk_out_050mhz(clk_out_050mhz),     // output clk_out_050mhz
-    .clk_out_025mhz(clk_out_025mhz),     // output clk_out_025mhz
-    .clk_out_012mhz(clk_out_012mhz),     // output clk_out_012mhz
+    .clk_177mhz778(clk_177mhz778),     // output clk_177mhz778
+    .clk_050mhz(clk_050mhz),     // output clk_050mhz
+    .clk_025mhz(clk_025mhz),     // output clk_025mhz
+    .clk_012mhz(clk_012mhz),     // output clk_012mhz
     // Status and control signals
     .reset(reset), // input reset
     .locked(locked),       // output locked
