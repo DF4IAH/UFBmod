@@ -636,7 +636,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_GPIO_WIDTH {32} \
    CONFIG.C_INTERRUPT_PRESENT {1} \
    CONFIG.C_IS_DUAL {1} \
-   CONFIG.C_TRI_DEFAULT_2 {0xFFFF0000} \
+   CONFIG.C_TRI_DEFAULT_2 {0xFFFFFFFF} \
  ] $axi_gpio_2_ONEWIRE_in
 
   # Create instance: axi_gpio_3_ROTENC, and set properties
@@ -784,21 +784,21 @@ proc create_root_design { parentCell } {
   # Create instance: clk_32mhz_LVDS_locked_inv_sr_clkReset, and set properties
   set clk_32mhz_LVDS_locked_inv_sr_clkReset [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 clk_32mhz_LVDS_locked_inv_sr_clkReset ]
   set_property -dict [ list \
-   CONFIG.AsyncInitVal {1} \
-   CONFIG.DefaultData {1} \
+   CONFIG.AsyncInitVal {0000000000000001} \
+   CONFIG.DefaultData  {0000000000000001} \
    CONFIG.Depth {6} \
    CONFIG.SSET {true} \
-   CONFIG.SyncInitVal {0} \
+   CONFIG.SyncInitVal  {0000000000000000} \
  ] $clk_32mhz_LVDS_locked_inv_sr_clkReset
 
   # Create instance: clk_32mhz_LVDS_locked_inv_sr_ioReset, and set properties
   set clk_32mhz_LVDS_locked_inv_sr_ioReset [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 clk_32mhz_LVDS_locked_inv_sr_ioReset ]
   set_property -dict [ list \
-   CONFIG.AsyncInitVal {1} \
-   CONFIG.DefaultData {1} \
+   CONFIG.AsyncInitVal {0000000000000001} \
+   CONFIG.DefaultData  {0000000000000001} \
    CONFIG.Depth {24} \
    CONFIG.SSET {true} \
-   CONFIG.SyncInitVal {0} \
+   CONFIG.SyncInitVal  {0000000000000000} \
  ] $clk_32mhz_LVDS_locked_inv_sr_ioReset
 
   # Create instance: dmr_1_ONEWIRE, and set properties
@@ -1161,6 +1161,8 @@ proc create_root_design { parentCell } {
 
   validate_bd_design
   save_bd_design
+
+  make_wrapper -files [get_files F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/mcu.bd] -top
 }
 # End of create_root_design()
 
