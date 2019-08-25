@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
--- Date        : Fri Aug 23 12:35:11 2019
+-- Date        : Fri Aug 23 12:35:10 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_microblaze_0_axi_intc_0/mcu_microblaze_0_axi_intc_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top mcu_microblaze_0_axi_intc_0 -prefix
+--               mcu_microblaze_0_axi_intc_0_ mcu_microblaze_0_axi_intc_0_stub.vhdl
 -- Design      : mcu_microblaze_0_axi_intc_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tfgg484-2

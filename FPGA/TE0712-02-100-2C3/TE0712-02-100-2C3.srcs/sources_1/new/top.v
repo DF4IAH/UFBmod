@@ -382,6 +382,7 @@ module top(
     wire clk_012mhz;
     wire clk_wiz_0_locked;
     wire clk_wiz_0_vctcxo_050mhz;
+    wire clk_wiz_0_vctcxo_050mhz_g;
     wire clk_wiz_1_input_clk_stopped;
     wire clk_wiz_1_locked;
     wire ddr3_init_calib_complete_obuf;
@@ -400,8 +401,8 @@ module top(
     wire pll_clk_g;
     wire pwm0_lcd_bl_obuf;
     wire reset_ibuf;
-    wire sys_rst_ibuf;
     wire trx_clk_26mhz_g;
+    wire trx_clk_26mhz_ig;
     wire ufb_fpga_ft_12mhz_obuf;
     wire ufb_fpga_ft_resetn_obuf;
     wire ufb_trx_rstn_obuf;
@@ -415,19 +416,19 @@ module top(
         .O(reset_ibuf)
     );
     
-    IBUF sys_rst_ibuf_inst (
-        .I(sys_rst),
-        .O(sys_rst_ibuf)
-    );
-    
     IBUFGDS pll_clk_ibufgds_inst (
         .I(pll_clk_p),
         .IB(pll_clk_n),
         .O(pll_clk_g)
     );
     
-    IBUFG trx_clk_26mhz_ibufg_inst (
+    IBUF trx_clk_26mhz_ibuf_inst (
         .I(trx_clk_26mhz),
+        .O(trx_clk_26mhz_ig)
+    );
+    
+    BUFG trx_clk_26mhz_bufg_inst (
+        .I(trx_clk_26mhz_ig),
         .O(trx_clk_26mhz_g)
     );
     
@@ -490,6 +491,13 @@ module top(
     );
     
     
+    // BUFG
+    BUFG clk_wiz_0_vctcxo_050mhz_inst (
+        .I(clk_wiz_0_vctcxo_050mhz),
+        .O(clk_wiz_0_vctcxo_050mhz_g)
+    );
+    
+    
     
     // CLOCK WIZ 0 - 26 MHz --> 50 MHz
     clk_wiz_0   clk_wiz_0_inst(
@@ -519,7 +527,7 @@ module top(
         
         // Clock in ports
         .clk_in1_si5338(pll_clk_g),
-        .clk_in2_vctcxo(clk_wiz_0_vctcxo_050mhz),
+        .clk_in2_vctcxo(clk_wiz_0_vctcxo_050mhz_g),
         .clk_in_sel(clk_wiz_0_locked)
     );
     
@@ -655,7 +663,7 @@ module top(
     // Block-Design MCU
  mcu_wrapper mcu_wrapper_i (
         .reset(reset_ibuf),
-        .sys_rst(sys_rst_ibuf),
+        .sys_rst(sys_rst),
         
         .peripheral_reset(peripheral_reset),
         
