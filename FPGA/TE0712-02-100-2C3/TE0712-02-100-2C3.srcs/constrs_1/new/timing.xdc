@@ -41,14 +41,14 @@ set_clock_groups -name async__mgt_clk0_p__trx_clk_26mhz -asynchronous \
 
 
 # TRX LVDS clock, 32 MHz
-create_clock -period 31.250 -name ufb_trx_rxclk -waveform { 0.000 15.625} [get_ports ufb_trx_rxclk_p]
-set_input_jitter [get_clocks -of_objects [get_ports ufb_trx_rxclk_p]] 0.100
+create_clock -period 31.250 -add -name ufb_trx_rxclk_p -waveform { 0.000 15.625} [get_ports ufb_trx_rxclk_p]
+set_input_jitter [get_clocks -of_objects [get_ports ufb_trx_rxclk_p]] 0.3125
 
 set_clock_groups -asynchronous \
 -group [get_clocks -include_generated_clocks pll_clk_p] \
--group [get_clocks -include_generated_clocks ufb_trx_rxclk]
+-group [get_clocks -include_generated_clocks ufb_trx_rxclk_p]
 set_clock_groups -asynchronous \
--group [get_clocks -include_generated_clocks ufb_trx_rxclk] \
+-group [get_clocks -include_generated_clocks ufb_trx_rxclk_p] \
 -group [get_clocks -include_generated_clocks pll_clk_p]
 
 
@@ -60,26 +60,26 @@ create_generated_clock -name clk_050mhz_clk_wiz_0    [get_pins clk_wiz_0_inst/in
 
 
 # CLK_WIZ_1
-create_generated_clock -name clk_177mhz778_clk_wiz_1_1 -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock [get_ports pll_clk_p]       [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT0]
-create_generated_clock -name clk_177mhz778_clk_wiz_1_2 -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock [get_ports trx_clk_26mhz_p] [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT0]
+create_generated_clock -name clk_177mhz778_clk_wiz_1_1 -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock [get_ports pll_clk_p]                                 [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT0]
+create_generated_clock -name clk_177mhz778_clk_wiz_1_2 -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock [get_ports trx_clk_26mhz] [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT0]
 set_clock_groups -physically_exclusive \
 -group [get_clocks -include_generated_clocks clk_177mhz778_clk_wiz_1_1] \
 -group [get_clocks -include_generated_clocks clk_177mhz778_clk_wiz_1_2]
 
-create_generated_clock -name clk_050mhz_clk_wiz_1_1    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock [get_ports pll_clk_p]       [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]
-create_generated_clock -name clk_050mhz_clk_wiz_1_2    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock [get_ports trx_clk_26mhz_p] [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]
+create_generated_clock -name clk_050mhz_clk_wiz_1_1    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock [get_ports pll_clk_p]                                 [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]
+create_generated_clock -name clk_050mhz_clk_wiz_1_2    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock [get_ports trx_clk_26mhz] [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]
 set_clock_groups -physically_exclusive \
 -group [get_clocks -include_generated_clocks clk_050mhz_clk_wiz_1_1] \
 -group [get_clocks -include_generated_clocks clk_050mhz_clk_wiz_1_2]
 
-create_generated_clock -name clk_025mhz_clk_wiz_1_1    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock [get_ports pll_clk_p]       [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT2]
-create_generated_clock -name clk_025mhz_clk_wiz_1_2    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock [get_ports trx_clk_26mhz_p] [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT2]
+create_generated_clock -name clk_025mhz_clk_wiz_1_1    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock [get_ports pll_clk_p]                                 [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT2]
+create_generated_clock -name clk_025mhz_clk_wiz_1_2    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock [get_ports trx_clk_26mhz] [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT2]
 set_clock_groups -physically_exclusive \
 -group [get_clocks -include_generated_clocks clk_025mhz_clk_wiz_1_1] \
 -group [get_clocks -include_generated_clocks clk_025mhz_clk_wiz_1_2]
 
-create_generated_clock -name clk_012mhz_clk_wiz_1_1    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock [get_ports pll_clk_p]       [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT3]
-create_generated_clock -name clk_012mhz_clk_wiz_1_2    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock [get_ports trx_clk_26mhz_p] [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT3]
+create_generated_clock -name clk_012mhz_clk_wiz_1_1    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock [get_ports pll_clk_p]                                 [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT3]
+create_generated_clock -name clk_012mhz_clk_wiz_1_2    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock [get_ports trx_clk_26mhz] [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT3]
 set_clock_groups -physically_exclusive \
 -group [get_clocks -include_generated_clocks clk_012mhz_clk_wiz_1_1] \
 -group [get_clocks -include_generated_clocks clk_012mhz_clk_wiz_1_2]
@@ -87,15 +87,15 @@ set_clock_groups -physically_exclusive \
 
 
 # MIG Tool
-create_generated_clock -name clk_083mhz333_mig_0       -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT0] -master_clock [get_ports pll_clk_p]      [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKOUT0]
+create_generated_clock -name clk_083mhz333_mig_0              [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKOUT0]
 
 
 
 # Ethernet / Ether-Lite
-create_generated_clock -name mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]  [get_pins mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_bi_reg/Q]
+#create_generated_clock -name mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk      [get_pins mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_bi_reg/Q]
 #create_generated_clock -name mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_1 -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]  -add  -master_clock clk_050mhz_clk_wiz_1_1 [get_pins mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_bi_reg/Q]
 #create_generated_clock -name mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_2 -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]  -add  -master_clock clk_050mhz_clk_wiz_1_2 [get_pins mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_bi_reg/Q]
-create_generated_clock -name mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]  [get_pins mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_bi_reg/Q]
+#create_generated_clock -name mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk      [get_pins mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_bi_reg/Q]
 #create_generated_clock -name mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_1 -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]  -add  -master_clock clk_050mhz_clk_wiz_1_1 [get_pins mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_bi_reg/Q]
 #create_generated_clock -name mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_2 -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]  -add  -master_clock clk_050mhz_clk_wiz_1_2 [get_pins mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_bi_reg/Q]
 
@@ -330,10 +330,10 @@ set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clo
 set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks iserdes_clkdiv_3] -group [get_clocks -include_generated_clocks iserdes_clkdiv_7] -group [get_clocks -include_generated_clocks iserdes_clkdiv_11]
 set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk_7] -group [get_clocks -include_generated_clocks oserdes_clk_15] -group [get_clocks -include_generated_clocks oserdes_clk_23]
 set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_7] -group [get_clocks -include_generated_clocks oserdes_clkdiv_15] -group [get_clocks -include_generated_clocks oserdes_clkdiv_23]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk] -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_1] -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk] -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_1] -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_2]
+#set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk] -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_1] -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_2]
+#set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk] -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_1] -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_2]
 
-set_clock_groups -logically_exclusive  -group [get_clocks -include_generated_clocks {mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_1_Gen mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_2_Gen mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_Gen}] -group [get_clocks -include_generated_clocks {mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_1_Gen mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_2_Gen mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_Gen}]
+#set_clock_groups -logically_exclusive  -group [get_clocks -include_generated_clocks {mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_1_Gen mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_2_Gen mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_Gen}] -group [get_clocks -include_generated_clocks {mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_1_Gen mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_2_Gen mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_Gen}]
 
 set_clock_groups -asynchronous -group [get_clocks -include_generated_clocks pll_clk_p]       -group [get_clocks -include_generated_clocks ufb_trx_rxclk_p]
 set_clock_groups -asynchronous -group [get_clocks -include_generated_clocks ufb_trx_rxclk_p] -group [get_clocks -include_generated_clocks pll_clk_p]
