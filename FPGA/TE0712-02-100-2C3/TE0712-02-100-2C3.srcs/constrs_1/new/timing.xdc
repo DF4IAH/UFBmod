@@ -55,8 +55,8 @@ set_clock_groups -asynchronous \
 
 
 # CLK_WIZ_0 - PLL: 26 MHz --> 50 MHz
-create_generated_clock -name clk_050mhz_clk_wiz_0    [get_pins clk_wiz_0_inst/inst/plle2_adv_inst/CLKOUT0]
-#create_clock -period 20.000 -name VIRTUAL_clk_050mhz_clk_wiz_0  -waveform {0.000 10.000}
+create_generated_clock -name clk_050mhz_clk_wiz_0 \
+ [get_pins clk_wiz_0_inst/inst/plle2_adv_inst/CLKOUT0]
 
 
 
@@ -65,45 +65,45 @@ create_generated_clock -name clk_177mhz778_clk_wiz_1 \
  -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] \
  -master_clock [get_ports pll_clk_p] \
  [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT0]
-create_generated_clock -name clk_177mhz778_clk_wiz_1_in2 \
- -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] \
- [get_pins clk_wiz_0_inst/inst/mmcm_adv_inst/CLKOUT0]
-set_clock_groups -physically_exclusive \
- -group [get_clocks -include_generated_clocks clk_177mhz778_clk_wiz_1] \
- -group [get_clocks -include_generated_clocks clk_177mhz778_clk_wiz_1_in2]
+#create_generated_clock -name clk_177mhz778_clk_wiz_1_in2 \
+# -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] \
+# [get_pins clk_wiz_0_inst/inst/mmcm_adv_inst/CLKOUT0]
+#set_clock_groups -physically_exclusive \
+# -group [get_clocks -include_generated_clocks clk_177mhz778_clk_wiz_1] \
+# -group [get_clocks -include_generated_clocks clk_177mhz778_clk_wiz_1_in2]
 
 create_generated_clock -name clk_050mhz_clk_wiz_1 \
  -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] \
  -master_clock [get_ports pll_clk_p] \
  [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]
-create_generated_clock -name clk_050mhz_clk_wiz_1_in2 \
- -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] \
- [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]
-set_clock_groups -physically_exclusive \
- -group [get_clocks -include_generated_clocks clk_050mhz_clk_wiz_1] \
- -group [get_clocks -include_generated_clocks clk_050mhz_clk_wiz_1_in2]
+#create_generated_clock -name clk_050mhz_clk_wiz_1_in2 \
+# -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] \
+# [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]
+#set_clock_groups -physically_exclusive \
+# -group [get_clocks -include_generated_clocks clk_050mhz_clk_wiz_1] \
+# -group [get_clocks -include_generated_clocks clk_050mhz_clk_wiz_1_in2]
 
 create_generated_clock -name clk_025mhz_clk_wiz_1 \
  -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] \
  -master_clock [get_ports pll_clk_p] \
  [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT2]
-create_generated_clock -name clk_025mhz_clk_wiz_1_in2 \
- -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] \
- [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT2]
-set_clock_groups -physically_exclusive \
- -group [get_clocks -include_generated_clocks clk_025mhz_clk_wiz_1] \
- -group [get_clocks -include_generated_clocks clk_025mhz_clk_wiz_1_in2]
+#create_generated_clock -name clk_025mhz_clk_wiz_1_in2 \
+# -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] \
+# [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT2]
+#set_clock_groups -physically_exclusive \
+# -group [get_clocks -include_generated_clocks clk_025mhz_clk_wiz_1] \
+# -group [get_clocks -include_generated_clocks clk_025mhz_clk_wiz_1_in2]
 
 create_generated_clock -name clk_012mhz_clk_wiz_1 \
  -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] \
  -master_clock [get_ports pll_clk_p] \
  [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT3]
-create_generated_clock -name clk_012mhz_clk_wiz_1_in2 \
- -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] \
- [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT3]
-set_clock_groups -physically_exclusive \
- -group [get_clocks -include_generated_clocks clk_012mhz_clk_wiz_1] \
- -group [get_clocks -include_generated_clocks clk_012mhz_clk_wiz_1_in2]
+#create_generated_clock -name clk_012mhz_clk_wiz_1_in2 \
+# -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] \
+# [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT3]
+#set_clock_groups -physically_exclusive \
+# -group [get_clocks -include_generated_clocks clk_012mhz_clk_wiz_1] \
+# -group [get_clocks -include_generated_clocks clk_012mhz_clk_wiz_1_in2]
 
 
 
@@ -313,44 +313,44 @@ set_property ASYNC_REG true [get_cells mcu_wrapper_i/mcu_i/axi_ethernetlite_ETHE
 #create_generated_clock -name mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_1_Gen -source [get_pins mcu_wrapper_i/mcu_i/axi_ethernetlite_ETHERNET/U0/LOOPBACK_GEN.NO_BUFG_GEN.CLOCK_MUX/I1] -divide_by 1 -add -master_clock mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_1 [get_pins mcu_wrapper_i/mcu_i/axi_ethernetlite_ETHERNET/U0/LOOPBACK_GEN.NO_BUFG_GEN.CLOCK_MUX/O]
 #create_generated_clock -name mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_2_Gen -source [get_pins mcu_wrapper_i/mcu_i/axi_ethernetlite_ETHERNET/U0/LOOPBACK_GEN.NO_BUFG_GEN.CLOCK_MUX/I1] -divide_by 1 -add -master_clock mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_2 [get_pins mcu_wrapper_i/mcu_i/axi_ethernetlite_ETHERNET/U0/LOOPBACK_GEN.NO_BUFG_GEN.CLOCK_MUX/O]
 
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks clkfbout_clk_wiz_1] -group [get_clocks -include_generated_clocks clkfbout_clk_wiz_1_1] -group [get_clocks -include_generated_clocks clkfbout_clk_wiz_1_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks clk_pll_i] -group [get_clocks -include_generated_clocks clk_pll_i_1] -group [get_clocks -include_generated_clocks clk_pll_i_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mmcm_clkout0] -group [get_clocks -include_generated_clocks mmcm_clkout0_1] -group [get_clocks -include_generated_clocks mmcm_clkout0_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mmcm_clkout1] -group [get_clocks -include_generated_clocks mmcm_clkout1_1] -group [get_clocks -include_generated_clocks mmcm_clkout1_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mmcm_clkout2] -group [get_clocks -include_generated_clocks mmcm_clkout2_1] -group [get_clocks -include_generated_clocks mmcm_clkout2_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mmcm_clkout3] -group [get_clocks -include_generated_clocks mmcm_clkout3_1] -group [get_clocks -include_generated_clocks mmcm_clkout3_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mmcm_clkout4] -group [get_clocks -include_generated_clocks mmcm_clkout4_1] -group [get_clocks -include_generated_clocks mmcm_clkout4_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mmcm_ps_clk_bufg_in] -group [get_clocks -include_generated_clocks mmcm_ps_clk_bufg_in_1] -group [get_clocks -include_generated_clocks mmcm_ps_clk_bufg_in_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks clk_div2_bufg_in] -group [get_clocks -include_generated_clocks clk_div2_bufg_in_1] -group [get_clocks -include_generated_clocks clk_div2_bufg_in_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks pll_clkfbout] -group [get_clocks -include_generated_clocks pll_clkfbout_1] -group [get_clocks -include_generated_clocks pll_clkfbout_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks freq_refclk] -group [get_clocks -include_generated_clocks freq_refclk_1] -group [get_clocks -include_generated_clocks freq_refclk_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mem_refclk] -group [get_clocks -include_generated_clocks mem_refclk_1] -group [get_clocks -include_generated_clocks mem_refclk_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks sync_pulse] -group [get_clocks -include_generated_clocks sync_pulse_1] -group [get_clocks -include_generated_clocks sync_pulse_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks pll_clk3_out] -group [get_clocks -include_generated_clocks pll_clk3_out_1] -group [get_clocks -include_generated_clocks pll_clk3_out_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk] -group [get_clocks -include_generated_clocks oserdes_clk_8] -group [get_clocks -include_generated_clocks oserdes_clk_16]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv] -group [get_clocks -include_generated_clocks oserdes_clkdiv_8] -group [get_clocks -include_generated_clocks oserdes_clkdiv_16]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk_1] -group [get_clocks -include_generated_clocks oserdes_clk_9] -group [get_clocks -include_generated_clocks oserdes_clk_17]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_1] -group [get_clocks -include_generated_clocks oserdes_clkdiv_9] -group [get_clocks -include_generated_clocks oserdes_clkdiv_17]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk_2] -group [get_clocks -include_generated_clocks oserdes_clk_10] -group [get_clocks -include_generated_clocks oserdes_clk_18]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_2] -group [get_clocks -include_generated_clocks oserdes_clkdiv_10] -group [get_clocks -include_generated_clocks oserdes_clkdiv_18]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk_3] -group [get_clocks -include_generated_clocks oserdes_clk_11] -group [get_clocks -include_generated_clocks oserdes_clk_19]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_3] -group [get_clocks -include_generated_clocks oserdes_clkdiv_11] -group [get_clocks -include_generated_clocks oserdes_clkdiv_19]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_A.ddr_byte_lane_A/iserdes_clk] -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_A.ddr_byte_lane_A/iserdes_clk_1] -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_A.ddr_byte_lane_A/iserdes_clk_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks iserdes_clkdiv] -group [get_clocks -include_generated_clocks iserdes_clkdiv_4] -group [get_clocks -include_generated_clocks iserdes_clkdiv_8]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk_4] -group [get_clocks -include_generated_clocks oserdes_clk_12] -group [get_clocks -include_generated_clocks oserdes_clk_20]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_4] -group [get_clocks -include_generated_clocks oserdes_clkdiv_12] -group [get_clocks -include_generated_clocks oserdes_clkdiv_20]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_B.ddr_byte_lane_B/iserdes_clk] -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_B.ddr_byte_lane_B/iserdes_clk_1] -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_B.ddr_byte_lane_B/iserdes_clk_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks iserdes_clkdiv_1] -group [get_clocks -include_generated_clocks iserdes_clkdiv_5] -group [get_clocks -include_generated_clocks iserdes_clkdiv_9]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk_5] -group [get_clocks -include_generated_clocks oserdes_clk_13] -group [get_clocks -include_generated_clocks oserdes_clk_21]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_5] -group [get_clocks -include_generated_clocks oserdes_clkdiv_13] -group [get_clocks -include_generated_clocks oserdes_clkdiv_21]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/iserdes_clk] -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/iserdes_clk_1] -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/iserdes_clk_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks iserdes_clkdiv_2] -group [get_clocks -include_generated_clocks iserdes_clkdiv_6] -group [get_clocks -include_generated_clocks iserdes_clkdiv_10]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk_6] -group [get_clocks -include_generated_clocks oserdes_clk_14] -group [get_clocks -include_generated_clocks oserdes_clk_22]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_6] -group [get_clocks -include_generated_clocks oserdes_clkdiv_14] -group [get_clocks -include_generated_clocks oserdes_clkdiv_22]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/iserdes_clk] -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/iserdes_clk_1] -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/iserdes_clk_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks iserdes_clkdiv_3] -group [get_clocks -include_generated_clocks iserdes_clkdiv_7] -group [get_clocks -include_generated_clocks iserdes_clkdiv_11]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk_7] -group [get_clocks -include_generated_clocks oserdes_clk_15] -group [get_clocks -include_generated_clocks oserdes_clk_23]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_7] -group [get_clocks -include_generated_clocks oserdes_clkdiv_15] -group [get_clocks -include_generated_clocks oserdes_clkdiv_23]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks clkfbout_clk_wiz_1] -group [get_clocks -include_generated_clocks clkfbout_clk_wiz_1_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks clk_pll_i] -group [get_clocks -include_generated_clocks clk_pll_i_1]
+#set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mmcm_clkout0] -group [get_clocks -include_generated_clocks mmcm_clkout0_1] -group [get_clocks -include_generated_clocks mmcm_clkout0_2]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mmcm_clkout1] -group [get_clocks -include_generated_clocks mmcm_clkout1_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mmcm_clkout2] -group [get_clocks -include_generated_clocks mmcm_clkout2_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mmcm_clkout3] -group [get_clocks -include_generated_clocks mmcm_clkout3_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mmcm_clkout4] -group [get_clocks -include_generated_clocks mmcm_clkout4_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mmcm_ps_clk_bufg_in] -group [get_clocks -include_generated_clocks mmcm_ps_clk_bufg_in_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks clk_div2_bufg_in] -group [get_clocks -include_generated_clocks clk_div2_bufg_in_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks pll_clkfbout] -group [get_clocks -include_generated_clocks pll_clkfbout_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks freq_refclk] -group [get_clocks -include_generated_clocks freq_refclk_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mem_refclk] -group [get_clocks -include_generated_clocks mem_refclk_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks sync_pulse] -group [get_clocks -include_generated_clocks sync_pulse_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks pll_clk3_out] -group [get_clocks -include_generated_clocks pll_clk3_out_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk] -group [get_clocks -include_generated_clocks oserdes_clk_8]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv] -group [get_clocks -include_generated_clocks oserdes_clkdiv_8]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk_1] -group [get_clocks -include_generated_clocks oserdes_clk_9]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_1] -group [get_clocks -include_generated_clocks oserdes_clkdiv_9]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk_2] -group [get_clocks -include_generated_clocks oserdes_clk_10]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_2] -group [get_clocks -include_generated_clocks oserdes_clkdiv_10]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk_3] -group [get_clocks -include_generated_clocks oserdes_clk_11]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_3] -group [get_clocks -include_generated_clocks oserdes_clkdiv_11]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_A.ddr_byte_lane_A/iserdes_clk] -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_A.ddr_byte_lane_A/iserdes_clk_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks iserdes_clkdiv] -group [get_clocks -include_generated_clocks iserdes_clkdiv_4]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk_4] -group [get_clocks -include_generated_clocks oserdes_clk_12]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_4] -group [get_clocks -include_generated_clocks oserdes_clkdiv_12]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_B.ddr_byte_lane_B/iserdes_clk] -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_B.ddr_byte_lane_B/iserdes_clk_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks iserdes_clkdiv_1] -group [get_clocks -include_generated_clocks iserdes_clkdiv_5]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk_5] -group [get_clocks -include_generated_clocks oserdes_clk_13]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_5] -group [get_clocks -include_generated_clocks oserdes_clkdiv_13]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/iserdes_clk] -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_C.ddr_byte_lane_C/iserdes_clk_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks iserdes_clkdiv_2] -group [get_clocks -include_generated_clocks iserdes_clkdiv_6]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk_6] -group [get_clocks -include_generated_clocks oserdes_clk_14]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_6] -group [get_clocks -include_generated_clocks oserdes_clkdiv_14]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/iserdes_clk] -group [get_clocks -include_generated_clocks u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ddr_phy_4lanes_1.u_ddr_phy_4lanes/ddr_byte_lane_D.ddr_byte_lane_D/iserdes_clk_1]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks iserdes_clkdiv_3] -group [get_clocks -include_generated_clocks iserdes_clkdiv_7]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clk_7] -group [get_clocks -include_generated_clocks oserdes_clk_15]
+set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks oserdes_clkdiv_7] -group [get_clocks -include_generated_clocks oserdes_clkdiv_15]
 #set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk] -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_1] -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_2]
 #set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk] -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_1] -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_2]
 
