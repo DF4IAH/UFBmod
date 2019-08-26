@@ -8,21 +8,22 @@
 
 # PLL_CLK, 50 MHz
 create_clock -period 20.000 -name pll_clk_p -waveform { 0.000 10.000} [get_ports pll_clk_p]
-create_clock -period 20.000 -name pll_clk_n -waveform {10.000 20.000} [get_ports pll_clk_n]
+#create_clock -period 20.000 -name pll_clk_n -waveform {10.000 20.000} [get_ports pll_clk_n]
 set_input_jitter [get_clocks -of_objects [get_ports pll_clk_p]] 0.100
-set_input_jitter [get_clocks -of_objects [get_ports pll_clk_n]] 0.100
+#set_input_jitter [get_clocks -of_objects [get_ports pll_clk_n]] 0.100
 
 
 
 # MGT, 120 MHz
 create_clock -period 8.333 -name mgt_clk0_p -waveform { 0.000  4.167} [get_ports mgt_clk0_p]
-create_clock -period 8.333 -name mgt_clk0_n -waveform { 4.167  8.333} [get_ports mgt_clk0_n]
+#create_clock -period 8.333 -name mgt_clk0_n -waveform { 4.167  8.333} [get_ports mgt_clk0_n]
 set_input_jitter [get_clocks -of_objects [get_ports mgt_clk0_p]] 0.100
-set_input_jitter [get_clocks -of_objects [get_ports mgt_clk0_n]] 0.100
+#set_input_jitter [get_clocks -of_objects [get_ports mgt_clk0_n]] 0.100
 
 set_clock_groups -name async__pll_clk_p__mgt_clk0_p -asynchronous \
 -group [get_clocks -include_generated_clocks pll_clk_p] \
 -group [get_clocks -include_generated_clocks mgt_clk0_p]
+
 
 
 
@@ -60,34 +61,57 @@ create_generated_clock -name clk_050mhz_clk_wiz_0    [get_pins clk_wiz_0_inst/in
 
 
 # CLK_WIZ_1
-create_generated_clock -name clk_177mhz778_clk_wiz_1_1 -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock [get_ports pll_clk_p]                                 [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT0]
-create_generated_clock -name clk_177mhz778_clk_wiz_1_2 -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock [get_ports trx_clk_26mhz] [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT0]
+create_generated_clock -name clk_177mhz778_clk_wiz_1 \
+ -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] \
+ -master_clock [get_ports pll_clk_p] \
+ [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT0]
+create_generated_clock -name clk_177mhz778_clk_wiz_1_in2 \
+ -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] \
+ [get_pins clk_wiz_0_inst/inst/mmcm_adv_inst/CLKOUT0]
 set_clock_groups -physically_exclusive \
--group [get_clocks -include_generated_clocks clk_177mhz778_clk_wiz_1_1] \
--group [get_clocks -include_generated_clocks clk_177mhz778_clk_wiz_1_2]
+ -group [get_clocks -include_generated_clocks clk_177mhz778_clk_wiz_1] \
+ -group [get_clocks -include_generated_clocks clk_177mhz778_clk_wiz_1_in2]
 
-create_generated_clock -name clk_050mhz_clk_wiz_1_1    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock [get_ports pll_clk_p]                                 [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]
-create_generated_clock -name clk_050mhz_clk_wiz_1_2    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock [get_ports trx_clk_26mhz] [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]
+create_generated_clock -name clk_050mhz_clk_wiz_1 \
+ -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] \
+ -master_clock [get_ports pll_clk_p] \
+ [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]
+create_generated_clock -name clk_050mhz_clk_wiz_1_in2 \
+ -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] \
+ [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]
 set_clock_groups -physically_exclusive \
--group [get_clocks -include_generated_clocks clk_050mhz_clk_wiz_1_1] \
--group [get_clocks -include_generated_clocks clk_050mhz_clk_wiz_1_2]
+ -group [get_clocks -include_generated_clocks clk_050mhz_clk_wiz_1] \
+ -group [get_clocks -include_generated_clocks clk_050mhz_clk_wiz_1_in2]
 
-create_generated_clock -name clk_025mhz_clk_wiz_1_1    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock [get_ports pll_clk_p]                                 [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT2]
-create_generated_clock -name clk_025mhz_clk_wiz_1_2    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock [get_ports trx_clk_26mhz] [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT2]
+create_generated_clock -name clk_025mhz_clk_wiz_1 \
+ -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] \
+ -master_clock [get_ports pll_clk_p] \
+ [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT2]
+create_generated_clock -name clk_025mhz_clk_wiz_1_in2 \
+ -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] \
+ [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT2]
 set_clock_groups -physically_exclusive \
--group [get_clocks -include_generated_clocks clk_025mhz_clk_wiz_1_1] \
--group [get_clocks -include_generated_clocks clk_025mhz_clk_wiz_1_2]
+ -group [get_clocks -include_generated_clocks clk_025mhz_clk_wiz_1] \
+ -group [get_clocks -include_generated_clocks clk_025mhz_clk_wiz_1_in2]
 
-create_generated_clock -name clk_012mhz_clk_wiz_1_1    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock [get_ports pll_clk_p]                                 [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT3]
-create_generated_clock -name clk_012mhz_clk_wiz_1_2    -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock [get_ports trx_clk_26mhz] [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT3]
+create_generated_clock -name clk_012mhz_clk_wiz_1 \
+ -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] \
+ -master_clock [get_ports pll_clk_p] \
+ [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT3]
+create_generated_clock -name clk_012mhz_clk_wiz_1_in2 \
+ -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] \
+ [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT3]
 set_clock_groups -physically_exclusive \
--group [get_clocks -include_generated_clocks clk_012mhz_clk_wiz_1_1] \
--group [get_clocks -include_generated_clocks clk_012mhz_clk_wiz_1_2]
+ -group [get_clocks -include_generated_clocks clk_012mhz_clk_wiz_1] \
+ -group [get_clocks -include_generated_clocks clk_012mhz_clk_wiz_1_in2]
 
 
 
 # MIG Tool
-create_generated_clock -name clk_083mhz333_mig_0              [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKOUT0]
+create_generated_clock -name clk_083mhz333_mig_0 \
+ -source [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKIN1] \
+ -master_clock [get_clocks pll_clk3_out] \
+ [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKOUT0]
 
 
 
@@ -150,8 +174,6 @@ set_output_delay -clock [get_clocks ufb_trx_rxclk_p]                    -max -ad
 set_output_delay -clock [get_clocks ufb_trx_rxclk_p]                    -min -add_delay -0.100 [get_ports ufb_trx_txd_p]
 set_output_delay -clock [get_clocks ufb_trx_rxclk_p]                    -max -add_delay 20.100 [get_ports ufb_trx_txd_p]
 
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.400 [get_ports mdc]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  8.000 [get_ports mdc]
 set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.400 [get_ports mdio]
 set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  8.000 [get_ports mdio]
 
@@ -173,102 +195,102 @@ set_output_delay -clock [get_clocks clk_050mhz_clk_wiz_1]               -max -ad
 set_output_delay -clock [get_clocks clk_050mhz_clk_wiz_1]               -min -add_delay -0.100 [get_ports eth_tx_en]
 set_output_delay -clock [get_clocks clk_050mhz_clk_wiz_1]               -max -add_delay  4.100 [get_ports eth_tx_en]
 set_output_delay -clock [get_clocks clk_050mhz_clk_wiz_1]               -min -add_delay -0.100 [get_ports fpga_eth_da_g]
-set_output_delay -clock [get_clocks clk_050mhz_clk_wiz_1]              -max -add_delay   4.000 [get_ports fpga_eth_da_g]
+set_output_delay -clock [get_clocks clk_050mhz_clk_wiz_1]               -max -add_delay   4.000 [get_ports fpga_eth_da_g]
 set_output_delay -clock [get_clocks clk_050mhz_clk_wiz_1]               -min -add_delay -0.100 [get_ports fpga_eth_da_y]
-set_output_delay -clock [get_clocks clk_050mhz_clk_wiz_1]              -max -add_delay   4.000 [get_ports fpga_eth_da_y]
+set_output_delay -clock [get_clocks clk_050mhz_clk_wiz_1]               -max -add_delay   4.000 [get_ports fpga_eth_da_y]
 
 
 
 # SPI-Q
-set_input_delay  -clock [get_clocks clk_025mhz_clk_wiz_1]          -min -add_delay  0.400 [get_ports {spi_dq[*]}]
-set_input_delay  -clock [get_clocks clk_025mhz_clk_wiz_1]          -max -add_delay 18.100 [get_ports {spi_dq[*]}]
+set_input_delay  -clock [get_clocks clk_025mhz_clk_wiz_1]               -min -add_delay  0.400 [get_ports {spi_dq[*]}]
+set_input_delay  -clock [get_clocks clk_025mhz_clk_wiz_1]               -max -add_delay 18.100 [get_ports {spi_dq[*]}]
 
 
 
 # AXI clock 83.333 MHz
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay  0.400 [get_ports board_rotenc_i]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  8.100 [get_ports board_rotenc_i]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay  0.400 [get_ports board_rotenc_push]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  8.100 [get_ports board_rotenc_push]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay  0.400 [get_ports board_rotenc_q]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  8.100 [get_ports board_rotenc_q]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay  0.400 [get_ports board_scl]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  8.100 [get_ports board_scl]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay  0.400 [get_ports board_sda]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  8.100 [get_ports board_sda]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay  0.400 [get_ports onewire]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  8.100 [get_ports onewire]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay  0.400 [get_ports pll_int]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  8.100 [get_ports pll_int]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay  0.400 [get_ports pll_scl]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  8.100 [get_ports pll_scl]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay  0.400 [get_ports pll_sda]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  8.100 [get_ports pll_sda]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay  0.400 [get_ports ufb_fpga_ft_dtr]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  8.100 [get_ports ufb_fpga_ft_dtr]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay  0.400 [get_ports ufb_fpga_ft_rts]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  8.100 [get_ports ufb_fpga_ft_rts]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay  0.400 [get_ports ufb_fpga_ft_txd]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  8.100 [get_ports ufb_fpga_ft_txd]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay  0.400 [get_ports ufb_trx_irq]
-set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  8.100 [get_ports ufb_trx_irq]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.400 [get_ports board_rotenc_i]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  8.100 [get_ports board_rotenc_i]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.400 [get_ports board_rotenc_push]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  8.100 [get_ports board_rotenc_push]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.400 [get_ports board_rotenc_q]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  8.100 [get_ports board_rotenc_q]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.400 [get_ports board_scl]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  8.100 [get_ports board_scl]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.400 [get_ports board_sda]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  8.100 [get_ports board_sda]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.400 [get_ports onewire]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  8.100 [get_ports onewire]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.400 [get_ports pll_int]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  8.100 [get_ports pll_int]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.400 [get_ports pll_scl]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  8.100 [get_ports pll_scl]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.400 [get_ports pll_sda]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  8.100 [get_ports pll_sda]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.400 [get_ports ufb_fpga_ft_dtr]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  8.100 [get_ports ufb_fpga_ft_dtr]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.400 [get_ports ufb_fpga_ft_rts]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  8.100 [get_ports ufb_fpga_ft_rts]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.400 [get_ports ufb_fpga_ft_txd]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  8.100 [get_ports ufb_fpga_ft_txd]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.400 [get_ports ufb_trx_irq]
+set_input_delay  -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  8.100 [get_ports ufb_trx_irq]
 
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports ddr3_reset]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports ddr3_reset]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports eth_rst]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports eth_rst]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports fpga_lcd_bl_pwm]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports fpga_lcd_bl_pwm]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports fpga_led_rgb_blue]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports fpga_led_rgb_blue]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports fpga_led_rgb_green]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports fpga_led_rgb_green]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports fpga_led_rgb_red]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports fpga_led_rgb_red]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports onewire]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports onewire]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports pll_scl]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports pll_scl]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports pll_sda]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports pll_sda]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports ufb_fpga_ft_resetn]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports ufb_fpga_ft_resetn]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports ufb_fpga_ft_rxd]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports ufb_fpga_ft_rxd]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports ufb_trx_rstn]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports ufb_trx_rstn]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports fpga_io]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports fpga_io]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports uli_system]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports uli_system]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports board_lcd_resetn]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports board_lcd_resetn]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports board_scl]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports board_scl]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay -0.100 [get_ports board_sda]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  4.100 [get_ports board_sda]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -min -add_delay  0.100 [get_ports ddr3_init_calib_complete]
-set_output_delay -clock [get_clocks clk_083mhz333_mig_0]           -max -add_delay  3.900 [get_ports ddr3_init_calib_complete]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports ddr3_reset]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports ddr3_reset]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports eth_rst]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports eth_rst]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports fpga_lcd_bl_pwm]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports fpga_lcd_bl_pwm]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports fpga_led_rgb_blue]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports fpga_led_rgb_blue]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports fpga_led_rgb_green]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports fpga_led_rgb_green]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports fpga_led_rgb_red]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports fpga_led_rgb_red]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports onewire]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports onewire]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports pll_scl]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports pll_scl]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports pll_sda]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports pll_sda]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports ufb_fpga_ft_resetn]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports ufb_fpga_ft_resetn]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports ufb_fpga_ft_rxd]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports ufb_fpga_ft_rxd]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports ufb_trx_rstn]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports ufb_trx_rstn]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports fpga_io]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports fpga_io]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports uli_system]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports uli_system]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports board_lcd_resetn]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports board_lcd_resetn]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports board_scl]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports board_scl]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay -0.100 [get_ports board_sda]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  4.100 [get_ports board_sda]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -min -add_delay  0.100 [get_ports ddr3_init_calib_complete]
+set_output_delay -clock [get_clocks clk_083mhz333_mig_0]                -max -add_delay  3.900 [get_ports ddr3_init_calib_complete]
 
 
 
 # SPI-Q access interface
-set_output_delay -clock [get_clocks clk_025mhz_clk_wiz_1]          -min -add_delay -0.100 [get_ports spi_cs]
-set_output_delay -clock [get_clocks clk_025mhz_clk_wiz_1]          -max -add_delay  4.100 [get_ports spi_cs]
-set_output_delay -clock [get_clocks clk_025mhz_clk_wiz_1]          -min -add_delay -0.100 [get_ports {spi_dq[*]}]
-set_output_delay -clock [get_clocks clk_025mhz_clk_wiz_1]          -max -add_delay  4.100 [get_ports {spi_dq[*]}]
+set_output_delay -clock [get_clocks clk_025mhz_clk_wiz_1]               -min -add_delay -0.100 [get_ports spi_cs]
+set_output_delay -clock [get_clocks clk_025mhz_clk_wiz_1]               -max -add_delay  4.100 [get_ports spi_cs]
+set_output_delay -clock [get_clocks clk_025mhz_clk_wiz_1]               -min -add_delay -0.100 [get_ports {spi_dq[*]}]
+set_output_delay -clock [get_clocks clk_025mhz_clk_wiz_1]               -max -add_delay  4.100 [get_ports {spi_dq[*]}]
 
 
 
 # FTDI 12 MHz
-set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]          -min -add_delay -0.100 [get_ports ufb_fpga_ft_cts]
-set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]          -max -add_delay  4.100 [get_ports ufb_fpga_ft_cts]
-set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]          -min -add_delay -0.100 [get_ports ufb_fpga_ft_cts]
-set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]          -max -add_delay  4.100 [get_ports ufb_fpga_ft_cts]
-set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]          -min -add_delay -0.100 [get_ports ufb_fpga_ft_dsr]
-set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]          -max -add_delay  4.100 [get_ports ufb_fpga_ft_dsr]
-set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]          -min -add_delay -0.100 [get_ports ufb_fpga_ft_dsr]
-set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]          -max -add_delay  4.100 [get_ports ufb_fpga_ft_dsr]
+set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]               -min -add_delay -0.100 [get_ports ufb_fpga_ft_cts]
+set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]               -max -add_delay  4.100 [get_ports ufb_fpga_ft_cts]
+set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]               -min -add_delay -0.100 [get_ports ufb_fpga_ft_cts]
+set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]               -max -add_delay  4.100 [get_ports ufb_fpga_ft_cts]
+set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]               -min -add_delay -0.100 [get_ports ufb_fpga_ft_dsr]
+set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]               -max -add_delay  4.100 [get_ports ufb_fpga_ft_dsr]
+set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]               -min -add_delay -0.100 [get_ports ufb_fpga_ft_dsr]
+set_output_delay -clock [get_clocks clk_012mhz_clk_wiz_1]               -max -add_delay  4.100 [get_ports ufb_fpga_ft_dsr]
 
 
 
@@ -292,7 +314,6 @@ set_property ASYNC_REG true [get_cells mcu_wrapper_i/mcu_i/axi_ethernetlite_ETHE
 #create_generated_clock -name mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_2_Gen -source [get_pins mcu_wrapper_i/mcu_i/axi_ethernetlite_ETHERNET/U0/LOOPBACK_GEN.NO_BUFG_GEN.CLOCK_MUX/I1] -divide_by 1 -add -master_clock mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_2 [get_pins mcu_wrapper_i/mcu_i/axi_ethernetlite_ETHERNET/U0/LOOPBACK_GEN.NO_BUFG_GEN.CLOCK_MUX/O]
 
 set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks clkfbout_clk_wiz_1] -group [get_clocks -include_generated_clocks clkfbout_clk_wiz_1_1] -group [get_clocks -include_generated_clocks clkfbout_clk_wiz_1_2]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks clk_177mhz778_clk_wiz_1] -group [get_clocks -include_generated_clocks clk_177mhz778_clk_wiz_1_1] -group [get_clocks -include_generated_clocks clk_177mhz778_clk_wiz_1_2]
 set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks clk_pll_i] -group [get_clocks -include_generated_clocks clk_pll_i_1] -group [get_clocks -include_generated_clocks clk_pll_i_2]
 set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mmcm_clkout0] -group [get_clocks -include_generated_clocks mmcm_clkout0_1] -group [get_clocks -include_generated_clocks mmcm_clkout0_2]
 set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mmcm_clkout1] -group [get_clocks -include_generated_clocks mmcm_clkout1_1] -group [get_clocks -include_generated_clocks mmcm_clkout1_2]
@@ -334,9 +355,6 @@ set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clo
 #set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk] -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_1] -group [get_clocks -include_generated_clocks mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_2]
 
 #set_clock_groups -logically_exclusive  -group [get_clocks -include_generated_clocks {mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_1_Gen mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_2_Gen mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_rx_clk_Gen}] -group [get_clocks -include_generated_clocks {mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_1_Gen mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_2_Gen mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_tx_clk_Gen}]
-
-set_clock_groups -asynchronous -group [get_clocks -include_generated_clocks pll_clk_p]       -group [get_clocks -include_generated_clocks ufb_trx_rxclk_p]
-set_clock_groups -asynchronous -group [get_clocks -include_generated_clocks ufb_trx_rxclk_p] -group [get_clocks -include_generated_clocks pll_clk_p]
 
 
 
