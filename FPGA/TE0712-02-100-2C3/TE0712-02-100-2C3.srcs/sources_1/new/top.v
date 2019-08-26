@@ -528,7 +528,7 @@ module top(
         // Clock in ports
         .clk_in1_si5338(pll_clk_g),
         .clk_in2_vctcxo(clk_wiz_0_vctcxo_050mhz_g),
-        .clk_in_sel(clk_wiz_0_locked)
+        .clk_in_sel(!clk_wiz_0_locked)
     );
     
     
