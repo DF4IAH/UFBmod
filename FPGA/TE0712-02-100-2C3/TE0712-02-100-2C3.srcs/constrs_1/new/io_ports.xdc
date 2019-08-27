@@ -196,7 +196,7 @@ set_property -dict {PACKAGE_PIN W22 IOSTANDARD LVCMOS33} [get_ports uli_system]
 #IO_L7N_T1_D10_14 sch:ULI_SYSTEM
 
 
-#set_property -dict {PACKAGE_PIN AA20 IOSTANDARD LVCMOS33} [get_ports ddr3_init_calib_complete]  <-- set by MIG tool
+set_property -dict {PACKAGE_PIN AA20 IOSTANDARD LVCMOS33} [get_ports ddr3_init_calib_complete]
 #IO_L8P_T1_D11_14 sch:B14_L8_P --> ddr3_init_calib_complete
 
 #set_property -dict {PACKAGE_PIN AA21 IOSTANDARD LVCMOS33} [get_ports {b14_l8_n}]

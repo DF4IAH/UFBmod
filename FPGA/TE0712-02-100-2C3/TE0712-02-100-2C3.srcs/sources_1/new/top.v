@@ -644,12 +644,12 @@ module top(
     // RGB-LED
     assign fpga_led_rgb_red_obuf   = gpio_rtl_0_multi_tri_o[0];
     assign fpga_led_rgb_green_obuf = gpio_rtl_0_multi_tri_o[1];
-    assign fpga_led_rgb_blue_obuf  = ddr3_init_calib_complete_obuf;
+    assign fpga_led_rgb_blue_obuf  = gpio_rtl_0_multi_tri_o[2];
     
     
     // CPLD LEDs
-    assign fpga_io_obuf      = !ddr3_init_calib_complete;   // CPLD red
-    assign uli_system_obuf   =  ddr3_init_calib_complete;   // CPLD green
+    assign fpga_io_obuf      = !ddr3_init_calib_complete_obuf;   // CPLD red
+    assign uli_system_obuf   =  ddr3_init_calib_complete_obuf;   // CPLD green
     
     
     // TRX
