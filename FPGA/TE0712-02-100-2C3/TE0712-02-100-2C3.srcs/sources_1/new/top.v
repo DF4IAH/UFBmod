@@ -382,7 +382,6 @@ module top(
     wire clk_012mhz;
     wire clk_wiz_0_locked;
     wire clk_wiz_0_vctcxo_050mhz;
-    wire clk_wiz_0_vctcxo_050mhz_g;
     wire clk_wiz_1_input_clk_stopped;
     wire clk_wiz_1_locked;
     wire ddr3_init_calib_complete_obuf;
@@ -491,13 +490,6 @@ module top(
     );
     
     
-    // BUFG
-    BUFG clk_wiz_0_vctcxo_050mhz_inst (
-        .I(clk_wiz_0_vctcxo_050mhz),
-        .O(clk_wiz_0_vctcxo_050mhz_g)
-    );
-    
-    
     
     // CLOCK WIZ 0 - 26 MHz --> 50 MHz
     clk_wiz_0   clk_wiz_0_inst(
@@ -527,7 +519,7 @@ module top(
         
         // Clock in ports
         .clk_in1_si5338(pll_clk_g),
-        .clk_in2_vctcxo(clk_wiz_0_vctcxo_050mhz_g),
+        .clk_in2_vctcxo(clk_wiz_0_vctcxo_050mhz),
         .clk_in_sel(!clk_wiz_0_locked)
     );
     

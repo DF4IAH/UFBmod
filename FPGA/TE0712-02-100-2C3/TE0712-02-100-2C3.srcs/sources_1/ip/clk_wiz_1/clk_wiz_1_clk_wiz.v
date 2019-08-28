@@ -109,7 +109,7 @@ wire clk_in2_vctcxo_clk_wiz_1;
   wire        clk_050mhz_clk_wiz_1;
   wire        clk_025mhz_clk_wiz_1;
   wire        clk_012mhz_clk_wiz_1;
-  wire        clk_out_012mhz_clk_wiz_1;
+  wire        clk_out5_clk_wiz_1;
   wire        clk_out6_clk_wiz_1;
   wire        clk_out7_clk_wiz_1;
 
