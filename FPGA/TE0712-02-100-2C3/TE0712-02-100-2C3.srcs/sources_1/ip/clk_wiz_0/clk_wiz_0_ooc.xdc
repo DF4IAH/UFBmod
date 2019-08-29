@@ -54,6 +54,6 @@
 ############################################################
 # Clock Period Constraints                                 #
 ############################################################
-create_clock -period 38.462 [get_ports clk_in_vctcxo_26mhz]
-#set_property HD.CLK_SRC BUFGCTRL_X0Y0 [get_ports clk_in_vctcxo_26mhz]
+create_clock -period 38.462 [get_ports trx_026mhz000]
+#set_property HD.CLK_SRC BUFGCTRL_X0Y0 [get_ports trx_026mhz000]
 

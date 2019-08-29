@@ -19,6 +19,7 @@
     <Option Name="CompiledLibDirActivehdl" Val="$PCACHEDIR/compile_simlib/activehdl"/>
     <Option Name="BoardPart" Val=""/>
     <Option Name="BoardPartRepoPaths" Val="C:/Users/espero/AppData/Roaming/Xilinx/Vivado/2019.1/xhub/board_store"/>
+    <Option Name="SourceMgmtMode" Val="DisplayOnly"/>
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
@@ -39,13 +40,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="70"/>
-    <Option Name="WTModelSimExportSim" Val="70"/>
-    <Option Name="WTQuestaExportSim" Val="70"/>
-    <Option Name="WTIesExportSim" Val="70"/>
-    <Option Name="WTVcsExportSim" Val="70"/>
-    <Option Name="WTRivieraExportSim" Val="70"/>
-    <Option Name="WTActivehdlExportSim" Val="70"/>
+    <Option Name="WTXSimExportSim" Val="76"/>
+    <Option Name="WTModelSimExportSim" Val="76"/>
+    <Option Name="WTQuestaExportSim" Val="76"/>
+    <Option Name="WTIesExportSim" Val="76"/>
+    <Option Name="WTVcsExportSim" Val="76"/>
+    <Option Name="WTRivieraExportSim" Val="76"/>
+    <Option Name="WTActivehdlExportSim" Val="76"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -69,59 +70,20 @@
         <CompFileExtendedInfo CompFileName="mcu_CDC_LVDS_in_0.xci" FileRelPathName="synth/mcu_CDC_LVDS_in_0.vhd">
           <Attr Name="UserDisabled" Val="1"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_quad_spi_1_TRX_0/mcu_axi_quad_spi_1_TRX_0.xci">
-          <Proxy FileSetName="mcu_axi_quad_spi_1_TRX_0"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_dlmb_bram_if_cntlr_0/mcu_dlmb_bram_if_cntlr_0.xci">
+          <Proxy FileSetName="mcu_dlmb_bram_if_cntlr_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_uart16550_0_FTDI_0/mcu_axi_uart16550_0_FTDI_0.xci">
-          <Proxy FileSetName="mcu_axi_uart16550_0_FTDI_0"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_dlmb_v10_0/mcu_dlmb_v10_0.xci">
+          <Proxy FileSetName="mcu_dlmb_v10_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_iic_1_BOARD_0/mcu_axi_iic_1_BOARD_0.xci">
-          <Proxy FileSetName="mcu_axi_iic_1_BOARD_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_clk_32mhz_LVDS_locked_inv_0/mcu_clk_32mhz_LVDS_locked_inv_0.xci">
-          <Proxy FileSetName="mcu_clk_32mhz_LVDS_locked_inv_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_timer_0_0/mcu_axi_timer_0_0.xci">
-          <Proxy FileSetName="mcu_axi_timer_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_quad_spi_0_CONFIG_0/mcu_axi_quad_spi_0_CONFIG_0.xci">
-          <Proxy FileSetName="mcu_axi_quad_spi_0_CONFIG_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_clk_32mhz_LVDS_0/mcu_clk_32mhz_LVDS_0.xci">
-          <Proxy FileSetName="mcu_clk_32mhz_LVDS_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0/mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0.xci">
-          <Proxy FileSetName="mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_iic_0_PLL_0/mcu_axi_iic_0_PLL_0.xci">
-          <Proxy FileSetName="mcu_axi_iic_0_PLL_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0/mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0.xci">
-          <Proxy FileSetName="mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_dmr_1_ONEWIRE_0/mcu_dmr_1_ONEWIRE_0.xci">
-          <Proxy FileSetName="mcu_dmr_1_ONEWIRE_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mb_0_axi_intc_0/mcu_mb_0_axi_intc_0.xci">
-          <Proxy FileSetName="mcu_mb_0_axi_intc_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_gpio_7_LVDS_0/mcu_axi_gpio_7_LVDS_0.xci">
-          <Proxy FileSetName="mcu_axi_gpio_7_LVDS_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mb_0_0/mcu_mb_0_0.xci">
-          <Proxy FileSetName="mcu_mb_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_xbar_0/mcu_xbar_0.xci">
-          <Proxy FileSetName="mcu_xbar_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_c_accum_0_ROTENC_0/mcu_c_accum_0_ROTENC_0.xci">
-          <Proxy FileSetName="mcu_c_accum_0_ROTENC_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_CDC_LVDS_in_0/mcu_CDC_LVDS_in_0.xci">
-          <Proxy FileSetName="mcu_CDC_LVDS_in_0"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_ilmb_bram_if_cntlr_0/mcu_ilmb_bram_if_cntlr_0.xci">
+          <Proxy FileSetName="mcu_ilmb_bram_if_cntlr_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_CDC_LVDS_out_0/mcu_CDC_LVDS_out_0.xci">
           <Proxy FileSetName="mcu_CDC_LVDS_out_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_CDC_LVDS_in_0/mcu_CDC_LVDS_in_0.xci">
+          <Proxy FileSetName="mcu_CDC_LVDS_in_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_ethernetlite_ETHERNET_0/mcu_axi_ethernetlite_ETHERNET_0.xci">
           <Proxy FileSetName="mcu_axi_ethernetlite_ETHERNET_0"/>
@@ -129,68 +91,93 @@
         <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_gpio_0_MULTI_0/mcu_axi_gpio_0_MULTI_0.xci">
           <Proxy FileSetName="mcu_axi_gpio_0_MULTI_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_gpio_1_ONEWIRE_out_0/mcu_axi_gpio_1_ONEWIRE_out_0.xci">
-          <Proxy FileSetName="mcu_axi_gpio_1_ONEWIRE_out_0"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_c_accum_0_ROTENC_0/mcu_c_accum_0_ROTENC_0.xci">
+          <Proxy FileSetName="mcu_c_accum_0_ROTENC_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_gpio_2_ONEWIRE_in_0/mcu_axi_gpio_2_ONEWIRE_in_0.xci">
-          <Proxy FileSetName="mcu_axi_gpio_2_ONEWIRE_in_0"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_dmr_1_ONEWIRE_0/mcu_dmr_1_ONEWIRE_0.xci">
+          <Proxy FileSetName="mcu_dmr_1_ONEWIRE_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mb_0_axi_intc_0/mcu_mb_0_axi_intc_0.xci">
+          <Proxy FileSetName="mcu_mb_0_axi_intc_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_clk_32mhz_LVDS_0/mcu_clk_32mhz_LVDS_0.xci">
+          <Proxy FileSetName="mcu_clk_32mhz_LVDS_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_clk_32mhz_LVDS_locked_inv_0/mcu_clk_32mhz_LVDS_locked_inv_0.xci">
+          <Proxy FileSetName="mcu_clk_32mhz_LVDS_locked_inv_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0/mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0.xci">
+          <Proxy FileSetName="mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mb_0_0/mcu_mb_0_0.xci">
+          <Proxy FileSetName="mcu_mb_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0/mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0.xci">
+          <Proxy FileSetName="mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_uart16550_0_FTDI_0/mcu_axi_uart16550_0_FTDI_0.xci">
+          <Proxy FileSetName="mcu_axi_uart16550_0_FTDI_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_gpio_3_ROTENC_0/mcu_axi_gpio_3_ROTENC_0.xci">
           <Proxy FileSetName="mcu_axi_gpio_3_ROTENC_0"/>
         </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_gpio_1_ONEWIRE_out_0/mcu_axi_gpio_1_ONEWIRE_out_0.xci">
+          <Proxy FileSetName="mcu_axi_gpio_1_ONEWIRE_out_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_gpio_7_LVDS_0/mcu_axi_gpio_7_LVDS_0.xci">
+          <Proxy FileSetName="mcu_axi_gpio_7_LVDS_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_iic_1_BOARD_0/mcu_axi_iic_1_BOARD_0.xci">
+          <Proxy FileSetName="mcu_axi_iic_1_BOARD_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_quad_spi_0_CONFIG_0/mcu_axi_quad_spi_0_CONFIG_0.xci">
+          <Proxy FileSetName="mcu_axi_quad_spi_0_CONFIG_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_timer_0_0/mcu_axi_timer_0_0.xci">
+          <Proxy FileSetName="mcu_axi_timer_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_iic_0_PLL_0/mcu_axi_iic_0_PLL_0.xci">
+          <Proxy FileSetName="mcu_axi_iic_0_PLL_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_gpio_2_ONEWIRE_in_0/mcu_axi_gpio_2_ONEWIRE_in_0.xci">
+          <Proxy FileSetName="mcu_axi_gpio_2_ONEWIRE_in_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_quad_spi_1_TRX_0/mcu_axi_quad_spi_1_TRX_0.xci">
+          <Proxy FileSetName="mcu_axi_quad_spi_1_TRX_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_xbar_0/mcu_xbar_0.xci">
+          <Proxy FileSetName="mcu_xbar_0"/>
+        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_xbar_1/mcu_xbar_1.xci">
           <Proxy FileSetName="mcu_xbar_1"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_lmb_bram_0/mcu_lmb_bram_0.xci">
-          <Proxy FileSetName="mcu_lmb_bram_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_selectio_LVDS_out_0/mcu_selectio_LVDS_out_0.xci">
-          <Proxy FileSetName="mcu_selectio_LVDS_out_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_selectio_LVDS_in_0/mcu_selectio_LVDS_in_0.xci">
-          <Proxy FileSetName="mcu_selectio_LVDS_in_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mig_7series_0_0/mcu_mig_7series_0_0.xci">
-          <Proxy FileSetName="mcu_mig_7series_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mb_0_reset_0/mcu_mb_0_reset_0.xci">
-          <Proxy FileSetName="mcu_mb_0_reset_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mb_0_mdm_0/mcu_mb_0_mdm_0.xci">
-          <Proxy FileSetName="mcu_mb_0_mdm_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_ilmb_bram_if_cntlr_0/mcu_ilmb_bram_if_cntlr_0.xci">
-          <Proxy FileSetName="mcu_ilmb_bram_if_cntlr_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_lmb_v10_0/mcu_lmb_v10_0.xci">
           <Proxy FileSetName="mcu_lmb_v10_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_ilmb_v10_0/mcu_ilmb_v10_0.xci">
-          <Proxy FileSetName="mcu_ilmb_v10_0"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mb_0_mdm_0/mcu_mb_0_mdm_0.xci">
+          <Proxy FileSetName="mcu_mb_0_mdm_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_dlmb_v10_0/mcu_dlmb_v10_0.xci">
-          <Proxy FileSetName="mcu_dlmb_v10_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_dlmb_bram_if_cntlr_0/mcu_dlmb_bram_if_cntlr_0.xci">
-          <Proxy FileSetName="mcu_dlmb_bram_if_cntlr_0"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mb_0_reset_0/mcu_mb_0_reset_0.xci">
+          <Proxy FileSetName="mcu_mb_0_reset_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mii_to_rmii_ETHERNET_0/mcu_mii_to_rmii_ETHERNET_0.xci">
           <Proxy FileSetName="mcu_mii_to_rmii_ETHERNET_0"/>
         </CompFileExtendedInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/ip/clk_wiz_1/clk_wiz_1.xci">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/ip/clk_wiz_0/clk_wiz_0.xci">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_lmb_bram_0/mcu_lmb_bram_0.xci">
+          <Proxy FileSetName="mcu_lmb_bram_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mig_7series_0_0/mcu_mig_7series_0_0.xci">
+          <Proxy FileSetName="mcu_mig_7series_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_selectio_LVDS_in_0/mcu_selectio_LVDS_in_0.xci">
+          <Proxy FileSetName="mcu_selectio_LVDS_in_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_selectio_LVDS_out_0/mcu_selectio_LVDS_out_0.xci">
+          <Proxy FileSetName="mcu_selectio_LVDS_out_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_ilmb_v10_0/mcu_ilmb_v10_0.xci">
+          <Proxy FileSetName="mcu_ilmb_v10_0"/>
+        </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/mcu/hdl/mcu_wrapper.v">
         <FileInfo>
@@ -215,7 +202,6 @@
       </File>
       <File Path="$PSRCDIR/sources_1/new/onewire_tb.sv">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -266,11 +252,6 @@
       <File Path="$PSRCDIR/constrs_1/new/timing.xdc">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/constrs_1/new/timing_impl.xdc">
-        <FileInfo>
           <Attr Name="UsedIn" Val="implementation"/>
         </FileInfo>
       </File>
@@ -565,6 +546,32 @@
     <FileSet Name="mcu_selectio_LVDS_out_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_selectio_LVDS_out_0">
       <Config>
         <Option Name="TopModule" Val="mcu_selectio_LVDS_out_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="clk_wiz_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/clk_wiz_0">
+      <File Path="$PSRCDIR/sources_1/ip/clk_wiz_0/clk_wiz_0.xci">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <Config>
+        <Option Name="TopModule" Val="clk_wiz_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="clk_wiz_1" Type="BlockSrcs" RelSrcDir="$PSRCDIR/clk_wiz_1">
+      <File Path="$PSRCDIR/sources_1/ip/clk_wiz_1/clk_wiz_1.xci">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <Config>
+        <Option Name="TopModule" Val="clk_wiz_1"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -917,6 +924,28 @@
     <Run Id="mcu_selectio_LVDS_out_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_selectio_LVDS_out_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_selectio_LVDS_out_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_selectio_LVDS_out_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="clk_wiz_0_synth_1" Type="Ft3:Synth" SrcSet="clk_wiz_0" Part="xc7a100tfgg484-2" ConstrsSet="clk_wiz_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/clk_wiz_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="clk_wiz_1_synth_1" Type="Ft3:Synth" SrcSet="clk_wiz_1" Part="xc7a100tfgg484-2" ConstrsSet="clk_wiz_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/clk_wiz_1_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -1505,6 +1534,42 @@
     <Run Id="mcu_selectio_LVDS_out_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_selectio_LVDS_out_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_selectio_LVDS_out_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="clk_wiz_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="clk_wiz_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="clk_wiz_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="clk_wiz_1_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="clk_wiz_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="clk_wiz_1_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>

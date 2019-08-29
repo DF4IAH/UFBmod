@@ -56,10 +56,10 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_177mhz778___177.778______0.000______50.0______126.466____154.678
-// clk_050mhz____50.000______0.000______50.0______163.696____154.678
-// clk_025mhz____25.000______0.000______50.0______199.513____154.678
-// clk_012mhz____12.000______0.000______50.0______256.084____154.678
+// clk_wiz_1_177mhz778___177.778______0.000______50.0______126.466____154.678
+// clk_wiz_1_050mhz000____50.000______0.000______50.0______163.696____154.678
+// clk_wiz_1_025mhz000____25.000______0.000______50.0______199.513____154.678
+// clk_wiz_1_012mhz000____12.000______0.000______50.0______256.084____154.678
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -76,13 +76,13 @@ module clk_wiz_1
   input         clk_in2_vctcxo,
   input         clk_in_sel,
   // Clock out ports
-  output        clk_177mhz778,
-  output        clk_050mhz,
-  output        clk_025mhz,
-  output        clk_012mhz,
+  output        clk_wiz_1_177mhz778,
+  output        clk_wiz_1_050mhz000,
+  output        clk_wiz_1_025mhz000,
+  output        clk_wiz_1_012mhz000,
   // Status and control signals
   input         reset,
-  output        locked,
+  output        clk_wiz_1_locked,
  // Clock in ports
   input         clk_in1_si5338
  );
@@ -92,13 +92,13 @@ module clk_wiz_1
   .clk_in2_vctcxo(clk_in2_vctcxo),
   .clk_in_sel(clk_in_sel),
   // Clock out ports  
-  .clk_177mhz778(clk_177mhz778),
-  .clk_050mhz(clk_050mhz),
-  .clk_025mhz(clk_025mhz),
-  .clk_012mhz(clk_012mhz),
+  .clk_wiz_1_177mhz778(clk_wiz_1_177mhz778),
+  .clk_wiz_1_050mhz000(clk_wiz_1_050mhz000),
+  .clk_wiz_1_025mhz000(clk_wiz_1_025mhz000),
+  .clk_wiz_1_012mhz000(clk_wiz_1_012mhz000),
   // Status and control signals               
   .reset(reset), 
-  .locked(locked),
+  .clk_wiz_1_locked(clk_wiz_1_locked),
  // Clock in ports
   .clk_in1_si5338(clk_in1_si5338)
   );

@@ -56,7 +56,7 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out_vctcxo_050mhz____50.000______0.000______50.0______187.765____208.908
+// clk_wiz_0_050mhz000____50.000______0.000______50.0______187.765____208.908
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -70,23 +70,23 @@
 module clk_wiz_0 
  (
   // Clock out ports
-  output        clk_out_vctcxo_050mhz,
+  output        clk_wiz_0_050mhz000,
   // Status and control signals
   input         reset,
-  output        locked,
+  output        clk_wiz_0_locked,
  // Clock in ports
-  input         clk_in_vctcxo_26mhz
+  input         trx_026mhz000
  );
 
   clk_wiz_0_clk_wiz inst
   (
   // Clock out ports  
-  .clk_out_vctcxo_050mhz(clk_out_vctcxo_050mhz),
+  .clk_wiz_0_050mhz000(clk_wiz_0_050mhz000),
   // Status and control signals               
   .reset(reset), 
-  .locked(locked),
+  .clk_wiz_0_locked(clk_wiz_0_locked),
  // Clock in ports
-  .clk_in_vctcxo_26mhz(clk_in_vctcxo_26mhz)
+  .trx_026mhz000(trx_026mhz000)
   );
 
 endmodule

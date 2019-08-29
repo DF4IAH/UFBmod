@@ -55,7 +55,7 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out_vctcxo_050mhz____50.000______0.000______50.0______187.765____208.908
+// clk_wiz_0_050mhz000____50.000______0.000______50.0______187.765____208.908
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -71,10 +71,10 @@
   clk_wiz_0 instance_name
    (
     // Clock out ports
-    .clk_out_vctcxo_050mhz(clk_out_vctcxo_050mhz),     // output clk_out_vctcxo_050mhz
+    .clk_wiz_0_050mhz000(clk_wiz_0_050mhz000),     // output clk_wiz_0_050mhz000
     // Status and control signals
     .reset(reset), // input reset
-    .locked(locked),       // output locked
+    .clk_wiz_0_locked(clk_wiz_0_locked),       // output clk_wiz_0_locked
    // Clock in ports
-    .clk_in_vctcxo_26mhz(clk_in_vctcxo_26mhz));      // input clk_in_vctcxo_26mhz
+    .trx_026mhz000(trx_026mhz000));      // input trx_026mhz000
 // INST_TAG_END ------ End INSTANTIATION Template ---------

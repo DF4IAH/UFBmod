@@ -56,10 +56,10 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_177mhz778___177.778______0.000______50.0______126.466____154.678
-// clk_050mhz____50.000______0.000______50.0______163.696____154.678
-// clk_025mhz____25.000______0.000______50.0______199.513____154.678
-// clk_012mhz____12.000______0.000______50.0______256.084____154.678
+// clk_wiz_1_177mhz778___177.778______0.000______50.0______126.466____154.678
+// clk_wiz_1_050mhz000____50.000______0.000______50.0______163.696____154.678
+// clk_wiz_1_025mhz000____25.000______0.000______50.0______199.513____154.678
+// clk_wiz_1_012mhz000____12.000______0.000______50.0______256.084____154.678
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -75,13 +75,13 @@ module clk_wiz_1_clk_wiz
   input         clk_in2_vctcxo,
   input         clk_in_sel,
   // Clock out ports
-  output        clk_177mhz778,
-  output        clk_050mhz,
-  output        clk_025mhz,
-  output        clk_012mhz,
+  output        clk_wiz_1_177mhz778,
+  output        clk_wiz_1_050mhz000,
+  output        clk_wiz_1_025mhz000,
+  output        clk_wiz_1_012mhz000,
   // Status and control signals
   input         reset,
-  output        locked,
+  output        clk_wiz_1_locked,
   input         clk_in1_si5338
  );
   // Input buffering
@@ -105,10 +105,10 @@ wire clk_in2_vctcxo_clk_wiz_1;
   //    * Unused inputs are tied off
   //    * Unused outputs are labeled unused
 
-  wire        clk_177mhz778_clk_wiz_1;
-  wire        clk_050mhz_clk_wiz_1;
-  wire        clk_025mhz_clk_wiz_1;
-  wire        clk_012mhz_clk_wiz_1;
+  wire        clk_wiz_1_177mhz778_clk_wiz_1;
+  wire        clk_wiz_1_050mhz000_clk_wiz_1;
+  wire        clk_wiz_1_025mhz000_clk_wiz_1;
+  wire        clk_wiz_1_012mhz000_clk_wiz_1;
   wire        clk_out5_clk_wiz_1;
   wire        clk_out6_clk_wiz_1;
   wire        clk_out7_clk_wiz_1;
@@ -116,7 +116,7 @@ wire clk_in2_vctcxo_clk_wiz_1;
   wire [15:0] do_unused;
   wire        drdy_unused;
   wire        psdone_unused;
-  wire        locked_int;
+  wire        clk_wiz_1_locked_int;
   wire        clkfbout_clk_wiz_1;
   wire        clkfbout_buf_clk_wiz_1;
   wire        clkfboutb_unused;
@@ -163,13 +163,13 @@ wire clk_in2_vctcxo_clk_wiz_1;
    (
     .CLKFBOUT            (clkfbout_clk_wiz_1),
     .CLKFBOUTB           (clkfboutb_unused),
-    .CLKOUT0             (clk_177mhz778_clk_wiz_1),
+    .CLKOUT0             (clk_wiz_1_177mhz778_clk_wiz_1),
     .CLKOUT0B            (clkout0b_unused),
-    .CLKOUT1             (clk_050mhz_clk_wiz_1),
+    .CLKOUT1             (clk_wiz_1_050mhz000_clk_wiz_1),
     .CLKOUT1B            (clkout1b_unused),
-    .CLKOUT2             (clk_025mhz_clk_wiz_1),
+    .CLKOUT2             (clk_wiz_1_025mhz000_clk_wiz_1),
     .CLKOUT2B            (clkout2b_unused),
-    .CLKOUT3             (clk_012mhz_clk_wiz_1),
+    .CLKOUT3             (clk_wiz_1_012mhz000_clk_wiz_1),
     .CLKOUT3B            (clkout3b_unused),
     .CLKOUT4             (clkout4_unused),
     .CLKOUT5             (clkout5_unused),
@@ -193,14 +193,14 @@ wire clk_in2_vctcxo_clk_wiz_1;
     .PSINCDEC            (1'b0),
     .PSDONE              (psdone_unused),
     // Other control and status signals
-    .LOCKED              (locked_int),
+    .LOCKED              (clk_wiz_1_locked_int),
     .CLKINSTOPPED        (clkinstopped_unused),
     .CLKFBSTOPPED        (clkfbstopped_unused),
     .PWRDWN              (1'b0),
     .RST                 (reset_high));
   assign reset_high = reset; 
 
-  assign locked = locked_int;
+  assign clk_wiz_1_locked = clk_wiz_1_locked_int;
 // Clock Monitor clock assigning
 //--------------------------------------
  // Output buffering
@@ -216,21 +216,21 @@ wire clk_in2_vctcxo_clk_wiz_1;
 
 
   BUFG clkout1_buf
-   (.O   (clk_177mhz778),
-    .I   (clk_177mhz778_clk_wiz_1));
+   (.O   (clk_wiz_1_177mhz778),
+    .I   (clk_wiz_1_177mhz778_clk_wiz_1));
 
 
   BUFG clkout2_buf
-   (.O   (clk_050mhz),
-    .I   (clk_050mhz_clk_wiz_1));
+   (.O   (clk_wiz_1_050mhz000),
+    .I   (clk_wiz_1_050mhz000_clk_wiz_1));
 
   BUFG clkout3_buf
-   (.O   (clk_025mhz),
-    .I   (clk_025mhz_clk_wiz_1));
+   (.O   (clk_wiz_1_025mhz000),
+    .I   (clk_wiz_1_025mhz000_clk_wiz_1));
 
   BUFG clkout4_buf
-   (.O   (clk_012mhz),
-    .I   (clk_012mhz_clk_wiz_1));
+   (.O   (clk_wiz_1_012mhz000),
+    .I   (clk_wiz_1_012mhz000_clk_wiz_1));
 
 
 

@@ -376,12 +376,12 @@ module top(
     // Wires
     
     wire board_lcd_resetn_obuf;
-    wire clk_177mhz778;
-    wire clk_050mhz;
-    wire clk_025mhz;
-    wire clk_012mhz;
     wire clk_wiz_0_locked;
-    wire clk_wiz_0_vctcxo_050mhz;
+    wire clk_wiz_0_050mhz000;
+    wire clk_wiz_1_177mhz778;
+    wire clk_wiz_1_050mhz000;
+    wire clk_wiz_1_025mhz000;
+    wire clk_wiz_1_012mhz000;
     wire clk_wiz_1_input_clk_stopped;
     wire clk_wiz_1_locked;
     wire ddr3_init_calib_complete_obuf;
@@ -395,7 +395,7 @@ module top(
     wire [7:0]gpio_rtl_0_multi_tri_o;
     wire [31:0]gpio_rtl_1_onewire_gpio_in;
     wire [31:0]gpio_rtl_1_onewire_gpio_out;
-    wire mb_axi_clk_83mhz333;
+    wire mb_axi_clk_083mhz333;
     wire peripheral_reset;
     wire pll_clk_g;
     wire pwm0_lcd_bl_obuf;
@@ -494,32 +494,32 @@ module top(
     // CLOCK WIZ 0 - 26 MHz --> 50 MHz
     clk_wiz_0   clk_wiz_0_inst(
         // Clock out ports  
-        .clk_out_vctcxo_050mhz(clk_wiz_0_vctcxo_050mhz),
+        .clk_wiz_0_050mhz000(clk_wiz_0_050mhz000),
         
         // Status and control signals               
         .reset(reset_ibuf),          
-        .locked(clk_wiz_0_locked),
+        .clk_wiz_0_locked(clk_wiz_0_locked),
         
         // Clock in ports
-        .clk_in_vctcxo_26mhz(trx_clk_26mhz_g)
+        .trx_026mhz000(trx_clk_26mhz_g)
     );
 
 
     // CLOCK WIZ 1 - 50 MHz (Si5338-PLL / TRX-VCTCXO)
     clk_wiz_1   clk_wiz_1_inst(
         // Clock out ports  
-        .clk_177mhz778(clk_177mhz778),
-        .clk_050mhz(clk_050mhz),
-        .clk_025mhz(clk_025mhz),
-        .clk_012mhz(clk_012mhz),
+        .clk_wiz_1_177mhz778(clk_wiz_1_177mhz778),
+        .clk_wiz_1_050mhz000(clk_wiz_1_050mhz000),
+        .clk_wiz_1_025mhz000(clk_wiz_1_025mhz000),
+        .clk_wiz_1_012mhz000(clk_wiz_1_012mhz000),
         
         // Status and control signals               
         .reset(reset_ibuf),
-        .locked(clk_wiz_1_locked),
+        .clk_wiz_1_locked(clk_wiz_1_locked),
         
         // Clock in ports
         .clk_in1_si5338(pll_clk_g),
-        .clk_in2_vctcxo(clk_wiz_0_vctcxo_050mhz),
+        .clk_in2_vctcxo(clk_wiz_0_050mhz000),
         .clk_in_sel(!clk_wiz_0_locked)
     );
     
@@ -546,7 +546,7 @@ module top(
     reg board_rotenc_q_r;
     reg board_rotenc_q_rr;
 
-    always @ (posedge mb_axi_clk_83mhz333)
+    always @ (posedge mb_axi_clk_083mhz333)
     if (peripheral_reset)  begin
         board_rotenc_pulse   <= 0;
         board_rotenc_pulse_r <= 0;
@@ -595,7 +595,7 @@ module top(
     
     onewire onewire_i(
         .rst_i(peripheral_reset),
-        .clk_i(mb_axi_clk_83mhz333),
+        .clk_i(mb_axi_clk_083mhz333),
   
         .onewire_io(onewire),
 
@@ -661,13 +661,13 @@ module top(
         
         
     // Clocks in
-        .clk_177mhz778(clk_177mhz778),
-        .clk_050mhz(clk_050mhz),
-        .clk_025mhz(clk_025mhz),
-        .clk_012mhz(clk_012mhz),
+        .clk_177mhz778(clk_wiz_1_177mhz778),
+        .clk_050mhz(clk_wiz_1_050mhz000),
+        .clk_025mhz(clk_wiz_1_025mhz000),
+        .clk_012mhz(clk_wiz_1_012mhz000),
         
     // MB Clock (83.333 MHz) 
-        .mb_axi_clk_83mhz333(mb_axi_clk_83mhz333),
+        .mb_axi_clk_083mhz333(mb_axi_clk_083mhz333),
         
         
     // FPGA Config
