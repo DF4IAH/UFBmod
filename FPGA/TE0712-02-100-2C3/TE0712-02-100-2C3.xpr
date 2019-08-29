@@ -40,13 +40,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="76"/>
-    <Option Name="WTModelSimExportSim" Val="76"/>
-    <Option Name="WTQuestaExportSim" Val="76"/>
-    <Option Name="WTIesExportSim" Val="76"/>
-    <Option Name="WTVcsExportSim" Val="76"/>
-    <Option Name="WTRivieraExportSim" Val="76"/>
-    <Option Name="WTActivehdlExportSim" Val="76"/>
+    <Option Name="WTXSimExportSim" Val="77"/>
+    <Option Name="WTModelSimExportSim" Val="77"/>
+    <Option Name="WTQuestaExportSim" Val="77"/>
+    <Option Name="WTIesExportSim" Val="77"/>
+    <Option Name="WTVcsExportSim" Val="77"/>
+    <Option Name="WTRivieraExportSim" Val="77"/>
+    <Option Name="WTActivehdlExportSim" Val="77"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -67,116 +67,35 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="mcu_CDC_LVDS_in_0.xci" FileRelPathName="synth/mcu_CDC_LVDS_in_0.vhd">
-          <Attr Name="UserDisabled" Val="1"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_auto_ds_1/mcu_auto_ds_1.xci">
+          <Proxy FileSetName="mcu_auto_ds_1"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_dlmb_bram_if_cntlr_0/mcu_dlmb_bram_if_cntlr_0.xci">
-          <Proxy FileSetName="mcu_dlmb_bram_if_cntlr_0"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_auto_ds_2/mcu_auto_ds_2.xci">
+          <Proxy FileSetName="mcu_auto_ds_2"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_dlmb_v10_0/mcu_dlmb_v10_0.xci">
-          <Proxy FileSetName="mcu_dlmb_v10_0"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_auto_ds_9/mcu_auto_ds_9.xci">
+          <Proxy FileSetName="mcu_auto_ds_9"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_ilmb_bram_if_cntlr_0/mcu_ilmb_bram_if_cntlr_0.xci">
-          <Proxy FileSetName="mcu_ilmb_bram_if_cntlr_0"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_auto_ds_4/mcu_auto_ds_4.xci">
+          <Proxy FileSetName="mcu_auto_ds_4"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_CDC_LVDS_out_0/mcu_CDC_LVDS_out_0.xci">
-          <Proxy FileSetName="mcu_CDC_LVDS_out_0"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_auto_ds_7/mcu_auto_ds_7.xci">
+          <Proxy FileSetName="mcu_auto_ds_7"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_CDC_LVDS_in_0/mcu_CDC_LVDS_in_0.xci">
-          <Proxy FileSetName="mcu_CDC_LVDS_in_0"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_auto_ds_3/mcu_auto_ds_3.xci">
+          <Proxy FileSetName="mcu_auto_ds_3"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_ethernetlite_ETHERNET_0/mcu_axi_ethernetlite_ETHERNET_0.xci">
-          <Proxy FileSetName="mcu_axi_ethernetlite_ETHERNET_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_gpio_0_MULTI_0/mcu_axi_gpio_0_MULTI_0.xci">
-          <Proxy FileSetName="mcu_axi_gpio_0_MULTI_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_c_accum_0_ROTENC_0/mcu_c_accum_0_ROTENC_0.xci">
-          <Proxy FileSetName="mcu_c_accum_0_ROTENC_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_dmr_1_ONEWIRE_0/mcu_dmr_1_ONEWIRE_0.xci">
-          <Proxy FileSetName="mcu_dmr_1_ONEWIRE_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mb_0_axi_intc_0/mcu_mb_0_axi_intc_0.xci">
-          <Proxy FileSetName="mcu_mb_0_axi_intc_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_clk_32mhz_LVDS_0/mcu_clk_32mhz_LVDS_0.xci">
-          <Proxy FileSetName="mcu_clk_32mhz_LVDS_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_clk_32mhz_LVDS_locked_inv_0/mcu_clk_32mhz_LVDS_locked_inv_0.xci">
-          <Proxy FileSetName="mcu_clk_32mhz_LVDS_locked_inv_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0/mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0.xci">
-          <Proxy FileSetName="mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mb_0_0/mcu_mb_0_0.xci">
-          <Proxy FileSetName="mcu_mb_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0/mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0.xci">
-          <Proxy FileSetName="mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_uart16550_0_FTDI_0/mcu_axi_uart16550_0_FTDI_0.xci">
-          <Proxy FileSetName="mcu_axi_uart16550_0_FTDI_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_gpio_3_ROTENC_0/mcu_axi_gpio_3_ROTENC_0.xci">
-          <Proxy FileSetName="mcu_axi_gpio_3_ROTENC_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_gpio_1_ONEWIRE_out_0/mcu_axi_gpio_1_ONEWIRE_out_0.xci">
-          <Proxy FileSetName="mcu_axi_gpio_1_ONEWIRE_out_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_gpio_7_LVDS_0/mcu_axi_gpio_7_LVDS_0.xci">
-          <Proxy FileSetName="mcu_axi_gpio_7_LVDS_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_iic_1_BOARD_0/mcu_axi_iic_1_BOARD_0.xci">
-          <Proxy FileSetName="mcu_axi_iic_1_BOARD_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_quad_spi_0_CONFIG_0/mcu_axi_quad_spi_0_CONFIG_0.xci">
-          <Proxy FileSetName="mcu_axi_quad_spi_0_CONFIG_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_timer_0_0/mcu_axi_timer_0_0.xci">
-          <Proxy FileSetName="mcu_axi_timer_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_iic_0_PLL_0/mcu_axi_iic_0_PLL_0.xci">
-          <Proxy FileSetName="mcu_axi_iic_0_PLL_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_gpio_2_ONEWIRE_in_0/mcu_axi_gpio_2_ONEWIRE_in_0.xci">
-          <Proxy FileSetName="mcu_axi_gpio_2_ONEWIRE_in_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_quad_spi_1_TRX_0/mcu_axi_quad_spi_1_TRX_0.xci">
-          <Proxy FileSetName="mcu_axi_quad_spi_1_TRX_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_xbar_0/mcu_xbar_0.xci">
-          <Proxy FileSetName="mcu_xbar_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_xbar_1/mcu_xbar_1.xci">
-          <Proxy FileSetName="mcu_xbar_1"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_lmb_v10_0/mcu_lmb_v10_0.xci">
-          <Proxy FileSetName="mcu_lmb_v10_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mb_0_mdm_0/mcu_mb_0_mdm_0.xci">
-          <Proxy FileSetName="mcu_mb_0_mdm_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mb_0_reset_0/mcu_mb_0_reset_0.xci">
-          <Proxy FileSetName="mcu_mb_0_reset_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mii_to_rmii_ETHERNET_0/mcu_mii_to_rmii_ETHERNET_0.xci">
-          <Proxy FileSetName="mcu_mii_to_rmii_ETHERNET_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_lmb_bram_0/mcu_lmb_bram_0.xci">
-          <Proxy FileSetName="mcu_lmb_bram_0"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_auto_ds_6/mcu_auto_ds_6.xci">
+          <Proxy FileSetName="mcu_auto_ds_6"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_mig_7series_0_0/mcu_mig_7series_0_0.xci">
           <Proxy FileSetName="mcu_mig_7series_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_selectio_LVDS_in_0/mcu_selectio_LVDS_in_0.xci">
-          <Proxy FileSetName="mcu_selectio_LVDS_in_0"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_auto_ds_5/mcu_auto_ds_5.xci">
+          <Proxy FileSetName="mcu_auto_ds_5"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_selectio_LVDS_out_0/mcu_selectio_LVDS_out_0.xci">
-          <Proxy FileSetName="mcu_selectio_LVDS_out_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_ilmb_v10_0/mcu_ilmb_v10_0.xci">
-          <Proxy FileSetName="mcu_ilmb_v10_0"/>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_auto_ds_8/mcu_auto_ds_8.xci">
+          <Proxy FileSetName="mcu_auto_ds_8"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/mcu/hdl/mcu_wrapper.v">
@@ -296,7 +215,7 @@
       <File Path="$PSRCDIR/utils_1/imports/impl_1/top_routed.dcp">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PRUNDIR/impl_1/top_routed.dcp"/>
-          <Attr Name="ImportTime" Val="1565445197"/>
+          <Attr Name="ImportTime" Val="1567111324"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedInSteps" Val="impl_1"/>
@@ -333,222 +252,6 @@
         <Option Name="XSimWcfgFile" Val="$PPRDIR/onewire_behav.wcfg"/>
       </Config>
     </FileSet>
-    <FileSet Name="mcu_CDC_LVDS_in_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_CDC_LVDS_in_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_CDC_LVDS_in_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_CDC_LVDS_out_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_CDC_LVDS_out_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_CDC_LVDS_out_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_axi_ethernetlite_ETHERNET_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_axi_ethernetlite_ETHERNET_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_axi_ethernetlite_ETHERNET_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_axi_gpio_0_MULTI_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_axi_gpio_0_MULTI_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_axi_gpio_0_MULTI_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_axi_gpio_1_ONEWIRE_out_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_axi_gpio_1_ONEWIRE_out_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_axi_gpio_1_ONEWIRE_out_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_axi_gpio_2_ONEWIRE_in_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_axi_gpio_2_ONEWIRE_in_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_axi_gpio_2_ONEWIRE_in_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_axi_gpio_3_ROTENC_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_axi_gpio_3_ROTENC_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_axi_gpio_3_ROTENC_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_axi_gpio_7_LVDS_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_axi_gpio_7_LVDS_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_axi_gpio_7_LVDS_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_axi_iic_0_PLL_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_axi_iic_0_PLL_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_axi_iic_0_PLL_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_axi_iic_1_BOARD_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_axi_iic_1_BOARD_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_axi_iic_1_BOARD_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_axi_quad_spi_0_CONFIG_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_axi_quad_spi_0_CONFIG_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_axi_quad_spi_0_CONFIG_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_axi_quad_spi_1_TRX_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_axi_quad_spi_1_TRX_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_axi_quad_spi_1_TRX_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_axi_timer_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_axi_timer_0_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_axi_timer_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_axi_uart16550_0_FTDI_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_axi_uart16550_0_FTDI_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_axi_uart16550_0_FTDI_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_c_accum_0_ROTENC_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_c_accum_0_ROTENC_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_c_accum_0_ROTENC_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_clk_32mhz_LVDS_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_clk_32mhz_LVDS_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_clk_32mhz_LVDS_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_clk_32mhz_LVDS_locked_inv_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_clk_32mhz_LVDS_locked_inv_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_clk_32mhz_LVDS_locked_inv_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_dmr_1_ONEWIRE_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_dmr_1_ONEWIRE_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_dmr_1_ONEWIRE_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_mb_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_mb_0_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_mb_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_mb_0_axi_intc_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_mb_0_axi_intc_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_mb_0_axi_intc_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_xbar_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_xbar_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_xbar_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_xbar_1" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_xbar_1">
-      <Config>
-        <Option Name="TopModule" Val="mcu_xbar_1"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_dlmb_bram_if_cntlr_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_dlmb_bram_if_cntlr_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_dlmb_bram_if_cntlr_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_dlmb_v10_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_dlmb_v10_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_dlmb_v10_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_ilmb_bram_if_cntlr_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_ilmb_bram_if_cntlr_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_ilmb_bram_if_cntlr_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_ilmb_v10_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_ilmb_v10_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_ilmb_v10_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_lmb_bram_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_lmb_bram_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_lmb_bram_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_lmb_v10_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_lmb_v10_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_lmb_v10_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_mb_0_mdm_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_mb_0_mdm_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_mb_0_mdm_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_mb_0_reset_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_mb_0_reset_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_mb_0_reset_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_mig_7series_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_mig_7series_0_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_mig_7series_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_mii_to_rmii_ETHERNET_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_mii_to_rmii_ETHERNET_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_mii_to_rmii_ETHERNET_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_selectio_LVDS_in_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_selectio_LVDS_in_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_selectio_LVDS_in_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="mcu_selectio_LVDS_out_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_selectio_LVDS_out_0">
-      <Config>
-        <Option Name="TopModule" Val="mcu_selectio_LVDS_out_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
     <FileSet Name="clk_wiz_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/clk_wiz_0">
       <File Path="$PSRCDIR/sources_1/ip/clk_wiz_0/clk_wiz_0.xci">
         <FileInfo>
@@ -575,6 +278,66 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
+    <FileSet Name="mcu_mig_7series_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_mig_7series_0_0">
+      <Config>
+        <Option Name="TopModule" Val="mcu_mig_7series_0_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="mcu_auto_ds_1" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_auto_ds_1">
+      <Config>
+        <Option Name="TopModule" Val="mcu_auto_ds_1"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="mcu_auto_ds_2" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_auto_ds_2">
+      <Config>
+        <Option Name="TopModule" Val="mcu_auto_ds_2"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="mcu_auto_ds_3" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_auto_ds_3">
+      <Config>
+        <Option Name="TopModule" Val="mcu_auto_ds_3"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="mcu_auto_ds_4" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_auto_ds_4">
+      <Config>
+        <Option Name="TopModule" Val="mcu_auto_ds_4"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="mcu_auto_ds_5" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_auto_ds_5">
+      <Config>
+        <Option Name="TopModule" Val="mcu_auto_ds_5"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="mcu_auto_ds_6" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_auto_ds_6">
+      <Config>
+        <Option Name="TopModule" Val="mcu_auto_ds_6"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="mcu_auto_ds_7" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_auto_ds_7">
+      <Config>
+        <Option Name="TopModule" Val="mcu_auto_ds_7"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="mcu_auto_ds_8" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_auto_ds_8">
+      <Config>
+        <Option Name="TopModule" Val="mcu_auto_ds_8"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="mcu_auto_ds_9" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_auto_ds_9">
+      <Config>
+        <Option Name="TopModule" Val="mcu_auto_ds_9"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
   </FileSets>
   <Simulators>
     <Simulator Name="XSim">
@@ -595,18 +358,15 @@
     </Simulator>
   </Simulators>
   <Runs Version="1" Minor="10">
-    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7a100tfgg484-2" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="true" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true">
+    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7a100tfgg484-2" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="true" State="current" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="mcu_CDC_LVDS_in_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_CDC_LVDS_in_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_CDC_LVDS_in_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_CDC_LVDS_in_0_synth_1" IncludeInArchive="true">
+    <Run Id="clk_wiz_0_synth_1" Type="Ft3:Synth" SrcSet="clk_wiz_0" Part="xc7a100tfgg484-2" ConstrsSet="clk_wiz_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/clk_wiz_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
@@ -615,277 +375,7 @@
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="mcu_CDC_LVDS_out_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_CDC_LVDS_out_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_CDC_LVDS_out_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_CDC_LVDS_out_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_ethernetlite_ETHERNET_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_axi_ethernetlite_ETHERNET_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_ethernetlite_ETHERNET_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_axi_ethernetlite_ETHERNET_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_gpio_0_MULTI_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_axi_gpio_0_MULTI_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_gpio_0_MULTI_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_axi_gpio_0_MULTI_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_gpio_1_ONEWIRE_out_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_axi_gpio_1_ONEWIRE_out_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_gpio_1_ONEWIRE_out_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_axi_gpio_1_ONEWIRE_out_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_gpio_2_ONEWIRE_in_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_axi_gpio_2_ONEWIRE_in_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_gpio_2_ONEWIRE_in_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_axi_gpio_2_ONEWIRE_in_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_gpio_3_ROTENC_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_axi_gpio_3_ROTENC_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_gpio_3_ROTENC_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_axi_gpio_3_ROTENC_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_gpio_7_LVDS_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_axi_gpio_7_LVDS_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_gpio_7_LVDS_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_axi_gpio_7_LVDS_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_iic_0_PLL_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_axi_iic_0_PLL_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_iic_0_PLL_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_axi_iic_0_PLL_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_iic_1_BOARD_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_axi_iic_1_BOARD_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_iic_1_BOARD_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_axi_iic_1_BOARD_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_quad_spi_0_CONFIG_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_axi_quad_spi_0_CONFIG_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_quad_spi_0_CONFIG_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_axi_quad_spi_0_CONFIG_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_quad_spi_1_TRX_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_axi_quad_spi_1_TRX_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_quad_spi_1_TRX_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_axi_quad_spi_1_TRX_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_timer_0_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_axi_timer_0_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_timer_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_axi_timer_0_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_uart16550_0_FTDI_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_axi_uart16550_0_FTDI_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_uart16550_0_FTDI_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_axi_uart16550_0_FTDI_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_c_accum_0_ROTENC_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_c_accum_0_ROTENC_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_c_accum_0_ROTENC_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_c_accum_0_ROTENC_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_clk_32mhz_LVDS_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_clk_32mhz_LVDS_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_clk_32mhz_LVDS_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_clk_32mhz_LVDS_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_clk_32mhz_LVDS_locked_inv_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_clk_32mhz_LVDS_locked_inv_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_clk_32mhz_LVDS_locked_inv_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_clk_32mhz_LVDS_locked_inv_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_dmr_1_ONEWIRE_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_dmr_1_ONEWIRE_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_dmr_1_ONEWIRE_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_dmr_1_ONEWIRE_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_mb_0_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_mb_0_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_mb_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_mb_0_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_mb_0_axi_intc_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_mb_0_axi_intc_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_mb_0_axi_intc_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_mb_0_axi_intc_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_xbar_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_xbar_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_xbar_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_xbar_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_xbar_1_synth_1" Type="Ft3:Synth" SrcSet="mcu_xbar_1" Part="xc7a100tfgg484-2" ConstrsSet="mcu_xbar_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_xbar_1_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_dlmb_bram_if_cntlr_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_dlmb_bram_if_cntlr_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_dlmb_bram_if_cntlr_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_dlmb_bram_if_cntlr_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_dlmb_v10_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_dlmb_v10_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_dlmb_v10_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_dlmb_v10_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_ilmb_bram_if_cntlr_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_ilmb_bram_if_cntlr_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_ilmb_bram_if_cntlr_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_ilmb_bram_if_cntlr_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_ilmb_v10_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_ilmb_v10_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_ilmb_v10_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_ilmb_v10_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_lmb_bram_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_lmb_bram_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_lmb_bram_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_lmb_bram_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_lmb_v10_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_lmb_v10_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_lmb_v10_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_lmb_v10_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_mb_0_mdm_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_mb_0_mdm_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_mb_0_mdm_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_mb_0_mdm_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_mb_0_reset_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_mb_0_reset_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_mb_0_reset_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_mb_0_reset_0_synth_1" IncludeInArchive="true">
+    <Run Id="clk_wiz_1_synth_1" Type="Ft3:Synth" SrcSet="clk_wiz_1" Part="xc7a100tfgg484-2" ConstrsSet="clk_wiz_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/clk_wiz_1_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
@@ -896,41 +386,16 @@
     </Run>
     <Run Id="mcu_mig_7series_0_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_mig_7series_0_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_mig_7series_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_mig_7series_0_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="mcu_mii_to_rmii_ETHERNET_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_mii_to_rmii_ETHERNET_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_mii_to_rmii_ETHERNET_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_mii_to_rmii_ETHERNET_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_selectio_LVDS_in_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_selectio_LVDS_in_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_selectio_LVDS_in_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_selectio_LVDS_in_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_selectio_LVDS_out_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_selectio_LVDS_out_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_selectio_LVDS_out_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_selectio_LVDS_out_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="clk_wiz_0_synth_1" Type="Ft3:Synth" SrcSet="clk_wiz_0" Part="xc7a100tfgg484-2" ConstrsSet="clk_wiz_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/clk_wiz_0_synth_1" IncludeInArchive="true">
+    <Run Id="mcu_auto_ds_1_synth_1" Type="Ft3:Synth" SrcSet="mcu_auto_ds_1" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_auto_ds_1_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -941,7 +406,7 @@
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="clk_wiz_1_synth_1" Type="Ft3:Synth" SrcSet="clk_wiz_1" Part="xc7a100tfgg484-2" ConstrsSet="clk_wiz_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/clk_wiz_1_synth_1" IncludeInArchive="true">
+    <Run Id="mcu_auto_ds_2_synth_1" Type="Ft3:Synth" SrcSet="mcu_auto_ds_2" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_2" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_auto_ds_2_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -952,586 +417,84 @@
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="true" IncrementalCheckpoint="$PSRCDIR/utils_1/imports/impl_1/top_routed.dcp" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true" GenFullBitstream="true">
+    <Run Id="mcu_auto_ds_3_synth_1" Type="Ft3:Synth" SrcSet="mcu_auto_ds_3" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_3" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_auto_ds_3_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
-          <Desc>Default settings for Implementation.</Desc>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
         </StratHandle>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
+        <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="mcu_CDC_LVDS_in_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_CDC_LVDS_in_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_CDC_LVDS_in_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="mcu_auto_ds_4_synth_1" Type="Ft3:Synth" SrcSet="mcu_auto_ds_4" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_4" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_auto_ds_4_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
       </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="mcu_CDC_LVDS_out_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_CDC_LVDS_out_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_CDC_LVDS_out_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="mcu_auto_ds_5_synth_1" Type="Ft3:Synth" SrcSet="mcu_auto_ds_5" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_5" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_auto_ds_5_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
       </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="mcu_axi_ethernetlite_ETHERNET_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_ethernetlite_ETHERNET_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_axi_ethernetlite_ETHERNET_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="mcu_auto_ds_6_synth_1" Type="Ft3:Synth" SrcSet="mcu_auto_ds_6" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_6" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_auto_ds_6_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
       </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="mcu_axi_gpio_0_MULTI_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_gpio_0_MULTI_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_axi_gpio_0_MULTI_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="mcu_auto_ds_7_synth_1" Type="Ft3:Synth" SrcSet="mcu_auto_ds_7" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_7" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_auto_ds_7_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
       </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="mcu_axi_gpio_1_ONEWIRE_out_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_gpio_1_ONEWIRE_out_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_axi_gpio_1_ONEWIRE_out_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="mcu_auto_ds_8_synth_1" Type="Ft3:Synth" SrcSet="mcu_auto_ds_8" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_8" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_auto_ds_8_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
       </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="mcu_axi_gpio_2_ONEWIRE_in_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_gpio_2_ONEWIRE_in_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_axi_gpio_2_ONEWIRE_in_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="mcu_auto_ds_9_synth_1" Type="Ft3:Synth" SrcSet="mcu_auto_ds_9" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_9" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_auto_ds_9_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
       </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="mcu_axi_gpio_3_ROTENC_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_gpio_3_ROTENC_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_axi_gpio_3_ROTENC_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_gpio_7_LVDS_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_gpio_7_LVDS_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_axi_gpio_7_LVDS_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_iic_0_PLL_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_iic_0_PLL_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_axi_iic_0_PLL_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_iic_1_BOARD_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_iic_1_BOARD_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_axi_iic_1_BOARD_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_quad_spi_0_CONFIG_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_quad_spi_0_CONFIG_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_axi_quad_spi_0_CONFIG_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_quad_spi_1_TRX_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_quad_spi_1_TRX_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_axi_quad_spi_1_TRX_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_timer_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_timer_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_axi_timer_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_axi_uart16550_0_FTDI_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_uart16550_0_FTDI_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_axi_uart16550_0_FTDI_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_c_accum_0_ROTENC_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_c_accum_0_ROTENC_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_c_accum_0_ROTENC_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_clk_32mhz_LVDS_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_clk_32mhz_LVDS_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_clk_32mhz_LVDS_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_clk_32mhz_LVDS_locked_inv_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_clk_32mhz_LVDS_locked_inv_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_clk_32mhz_LVDS_locked_inv_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_clk_32mhz_LVDS_locked_inv_sr_clkReset_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_clk_32mhz_LVDS_locked_inv_sr_ioReset_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_dmr_1_ONEWIRE_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_dmr_1_ONEWIRE_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_dmr_1_ONEWIRE_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_mb_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_mb_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_mb_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_mb_0_axi_intc_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_mb_0_axi_intc_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_mb_0_axi_intc_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_xbar_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_xbar_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_xbar_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_xbar_1_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_xbar_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_xbar_1_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_dlmb_bram_if_cntlr_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_dlmb_bram_if_cntlr_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_dlmb_bram_if_cntlr_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_dlmb_v10_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_dlmb_v10_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_dlmb_v10_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_ilmb_bram_if_cntlr_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_ilmb_bram_if_cntlr_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_ilmb_bram_if_cntlr_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_ilmb_v10_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_ilmb_v10_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_ilmb_v10_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_lmb_bram_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_lmb_bram_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_lmb_bram_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_lmb_v10_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_lmb_v10_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_lmb_v10_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_mb_0_mdm_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_mb_0_mdm_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_mb_0_mdm_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_mb_0_reset_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_mb_0_reset_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_mb_0_reset_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_mig_7series_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_mig_7series_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_mig_7series_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_mii_to_rmii_ETHERNET_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_mii_to_rmii_ETHERNET_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_mii_to_rmii_ETHERNET_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_selectio_LVDS_in_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_selectio_LVDS_in_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_selectio_LVDS_in_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mcu_selectio_LVDS_out_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_selectio_LVDS_out_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_selectio_LVDS_out_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="true" IncrementalCheckpoint="$PSRCDIR/utils_1/imports/impl_1/top_routed.dcp" WriteIncrSynthDcp="false" State="current" SynthRun="synth_1" IncludeInArchive="true" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
         <Step Id="init_design"/>
@@ -1549,6 +512,38 @@
     </Run>
     <Run Id="clk_wiz_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="clk_wiz_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="clk_wiz_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="clk_wiz_1_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="clk_wiz_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="clk_wiz_1_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="mcu_mig_7series_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_mig_7series_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_mig_7series_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
           <Desc>Default settings for Implementation.</Desc>
         </StratHandle>
@@ -1565,7 +560,151 @@
       <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="clk_wiz_1_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="clk_wiz_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="clk_wiz_1_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="mcu_auto_ds_1_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_auto_ds_1_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="mcu_auto_ds_2_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_2" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_auto_ds_2_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="mcu_auto_ds_3_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_3" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_auto_ds_3_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="mcu_auto_ds_4_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_4" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_auto_ds_4_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="mcu_auto_ds_5_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_5" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_auto_ds_5_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="mcu_auto_ds_6_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_6" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_auto_ds_6_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="mcu_auto_ds_7_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_7" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_auto_ds_7_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="mcu_auto_ds_8_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_8" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_auto_ds_8_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="mcu_auto_ds_9_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_auto_ds_9" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_auto_ds_9_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
           <Desc>Default settings for Implementation.</Desc>

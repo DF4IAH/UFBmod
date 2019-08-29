@@ -662,9 +662,9 @@ module top(
         
     // Clocks in
         .clk_177mhz778(clk_wiz_1_177mhz778),
-        .clk_050mhz(clk_wiz_1_050mhz000),
-        .clk_025mhz(clk_wiz_1_025mhz000),
-        .clk_012mhz(clk_wiz_1_012mhz000),
+        .clk_050mhz000(clk_wiz_1_050mhz000),
+        .clk_025mhz000(clk_wiz_1_025mhz000),
+        .clk_012mhz000(clk_wiz_1_012mhz000),
         
     // MB Clock (83.333 MHz) 
         .mb_axi_clk_083mhz333(mb_axi_clk_083mhz333),
