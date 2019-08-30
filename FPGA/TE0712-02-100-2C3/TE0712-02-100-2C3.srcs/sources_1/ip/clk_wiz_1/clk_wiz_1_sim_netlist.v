@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-// Date        : Fri Aug 30 03:12:46 2019
+// Date        : Thu Aug 29 14:35:58 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/ip/clk_wiz_1/clk_wiz_1_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top clk_wiz_1 -prefix
+//               clk_wiz_1_ clk_wiz_1_sim_netlist.v
 // Design      : clk_wiz_1
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -55,7 +55,6 @@ module clk_wiz_1
         .reset(reset));
 endmodule
 
-(* ORIG_REF_NAME = "clk_wiz_1_clk_wiz" *) 
 module clk_wiz_1_clk_wiz_1_clk_wiz
    (clk_in2_vctcxo,
     clk_in_sel,
@@ -153,7 +152,7 @@ module clk_wiz_1_clk_wiz_1_clk_wiz
     .CLKOUT1_USE_FINE_PS("FALSE"),
     .CLKOUT2_DIVIDE(48),
     .CLKOUT2_DUTY_CYCLE(0.500000),
-    .CLKOUT2_PHASE(325.312988),
+    .CLKOUT2_PHASE(0.000000),
     .CLKOUT2_USE_FINE_PS("FALSE"),
     .CLKOUT3_DIVIDE(100),
     .CLKOUT3_DUTY_CYCLE(0.500000),

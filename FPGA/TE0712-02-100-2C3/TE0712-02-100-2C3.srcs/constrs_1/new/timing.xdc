@@ -185,25 +185,30 @@ set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 3.900 [get_p
 set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -clock_fall -min -add_delay 1.800 [get_ports ufb_trx_rxd09_n]
 set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -clock_fall -max -add_delay 3.900 [get_ports ufb_trx_rxd09_n]
 
-set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay -1.100 [get_ports ufb_trx_txclk_n]
-set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 2.100 [get_ports ufb_trx_txclk_n]
-set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay -1.100 [get_ports ufb_trx_txclk_p]
-set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 2.100 [get_ports ufb_trx_txclk_p]
-set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay -1.100 [get_ports ufb_trx_txd_n]
-set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 2.100 [get_ports ufb_trx_txd_n]
-set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay -1.100 [get_ports ufb_trx_txd_p]
-set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 2.100 [get_ports ufb_trx_txd_p]
+#set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay -1.100 [get_ports ufb_trx_txclk_p]
+#set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 2.100 [get_ports ufb_trx_txclk_p]
+set_output_delay -reference_pin [get_ports ufb_trx_rxclk_p] 2 [get_ports ufb_trx_txclk_p]
+set_output_delay -reference_pin [get_ports ufb_trx_rxclk_n] 2 [get_ports ufb_trx_txclk_n]
+#set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay -1.100 [get_ports ufb_trx_txclk_n]
+#set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 2.100 [get_ports ufb_trx_txclk_n]
+#set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay -1.100 [get_ports ufb_trx_txd_p]
+#set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 2.100 [get_ports ufb_trx_txd_p]
+#set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay -1.100 [get_ports ufb_trx_txd_n]
+#set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 2.100 [get_ports ufb_trx_txd_n]
+set_output_delay -reference_pin [get_ports ufb_trx_rxclk_p] 2 [get_ports ufb_trx_txd_p]
+set_output_delay -reference_pin [get_ports ufb_trx_rxclk_n] 2 [get_ports ufb_trx_txd_n]
 
 # TRX SPI interface - Setup / Hold done
 set_input_delay -clock [get_clocks clk_wiz_1__025mhz000] -min -add_delay -0.900 [get_ports ufb_trx_miso]
 set_input_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 25.100 [get_ports ufb_trx_miso]
+set_input_delay -reference_pin [get_ports ufb_trx_sclk] 2 [get_ports ufb_trx_miso]
 
 set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -min -add_delay 0.000 [get_ports ufb_trx_sclk]
 set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 0.000 [get_ports ufb_trx_sclk]
-set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -min -add_delay -5.100 [get_ports ufb_trx_seln]
-set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 5.100 [get_ports ufb_trx_seln]
+set_output_delay -reference_pin [get_ports ufb_trx_sclk] 4 [get_ports ufb_trx_seln]
 set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -min -add_delay -5.100 [get_ports ufb_trx_mosi]
 set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 5.100 [get_ports ufb_trx_mosi]
+set_output_delay -reference_pin [get_ports ufb_trx_sclk] 4 [get_ports ufb_trx_mosi]
 
 
 
@@ -213,8 +218,10 @@ set_input_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 2.100 [
 
 set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -min -add_delay -3.100 [get_ports spi_cs]
 set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 3.100 [get_ports spi_cs]
+set_output_delay -reference_pin [get_ports ufb_trx_sclk] 4 [get_ports spi_cs]
 set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -min -add_delay -1.700 [get_ports {spi_dq[*]}]
 set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 2.100 [get_ports {spi_dq[*]}]
+set_output_delay -reference_pin [get_ports ufb_trx_sclk] 4 [get_ports {spi_dq[*]}]
 
 
 
