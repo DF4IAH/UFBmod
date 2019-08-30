@@ -53,10 +53,10 @@ create_generated_clock -name clk_wiz_1__025mhz000_trx -source [get_pins clk_wiz_
 create_generated_clock -name clk_wiz_1__012mhz000 -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock pll_clk_p [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT3]
 create_generated_clock -name clk_wiz_1__012mhz000_trx -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock clk_wiz_0__050mhz000 [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT3]
 
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks clk_wiz_1__177mhz778] -group [get_clocks -include_generated_clocks clk_wiz_1__177mhz778_trx]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks clk_wiz_1__050mhz000] -group [get_clocks -include_generated_clocks clk_wiz_1__050mhz000_trx]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks clk_wiz_1__025mhz000] -group [get_clocks -include_generated_clocks clk_wiz_1__025mhz000_trx]
-set_clock_groups -physically_exclusive -group [get_clocks -include_generated_clocks clk_wiz_1__012mhz000] -group [get_clocks -include_generated_clocks clk_wiz_1__012mhz000_trx]
+set_clock_groups -physically_exclusive -group [get_clocks clk_wiz_1__177mhz778] -group [get_clocks clk_wiz_1__177mhz778_trx]
+set_clock_groups -physically_exclusive -group [get_clocks clk_wiz_1__050mhz000] -group [get_clocks clk_wiz_1__050mhz000_trx]
+set_clock_groups -physically_exclusive -group [get_clocks clk_wiz_1__025mhz000] -group [get_clocks clk_wiz_1__025mhz000_trx]
+set_clock_groups -physically_exclusive -group [get_clocks clk_wiz_1__012mhz000] -group [get_clocks clk_wiz_1__012mhz000_trx]
 
 
 
@@ -176,14 +176,14 @@ set_false_path -from [get_clocks clk_wiz_1__050mhz000_trx] -to [get_clocks mcu_w
 
 
 # TRX rxd09 - DDR - Setup / Hold done
-set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay -11.725 [get_ports ufb_trx_rxd09_p]
-set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 1.900 [get_ports ufb_trx_rxd09_p]
-set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -clock_fall -min -add_delay -11.725 [get_ports ufb_trx_rxd09_p]
-set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -clock_fall -max -add_delay 1.900 [get_ports ufb_trx_rxd09_p]
-set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay -11.725 [get_ports ufb_trx_rxd09_n]
-set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 1.900 [get_ports ufb_trx_rxd09_n]
-set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -clock_fall -min -add_delay -11.725 [get_ports ufb_trx_rxd09_n]
-set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -clock_fall -max -add_delay 1.900 [get_ports ufb_trx_rxd09_n]
+set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay 1.800 [get_ports ufb_trx_rxd09_p]
+set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 3.900 [get_ports ufb_trx_rxd09_p]
+set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -clock_fall -min -add_delay 1.800 [get_ports ufb_trx_rxd09_p]
+set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -clock_fall -max -add_delay 3.900 [get_ports ufb_trx_rxd09_p]
+set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay 1.800 [get_ports ufb_trx_rxd09_n]
+set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 3.900 [get_ports ufb_trx_rxd09_n]
+set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -clock_fall -min -add_delay 1.800 [get_ports ufb_trx_rxd09_n]
+set_input_delay -clock [get_clocks ufb_trx_rxclk_p] -clock_fall -max -add_delay 3.900 [get_ports ufb_trx_rxd09_n]
 
 set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay -1.100 [get_ports ufb_trx_txclk_n]
 set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 2.100 [get_ports ufb_trx_txclk_n]
@@ -195,15 +195,15 @@ set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -min -add_delay -1.100 [get
 set_output_delay -clock [get_clocks ufb_trx_rxclk_p] -max -add_delay 2.100 [get_ports ufb_trx_txd_p]
 
 # TRX SPI interface - Setup / Hold done
-set_input_delay -clock [get_clocks clk_wiz_1__012mhz000] -min -add_delay -0.900 [get_ports ufb_trx_miso]
-set_input_delay -clock [get_clocks clk_wiz_1__012mhz000] -max -add_delay 25.100 [get_ports ufb_trx_miso]
+set_input_delay -clock [get_clocks clk_wiz_1__025mhz000] -min -add_delay -0.900 [get_ports ufb_trx_miso]
+set_input_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 25.100 [get_ports ufb_trx_miso]
 
-set_output_delay -clock [get_clocks clk_wiz_1__012mhz000] -min -add_delay 0.000 [get_ports ufb_trx_sclk]
-set_output_delay -clock [get_clocks clk_wiz_1__012mhz000] -max -add_delay 0.000 [get_ports ufb_trx_sclk]
-set_output_delay -clock [get_clocks clk_wiz_1__012mhz000] -min -add_delay -5.100 [get_ports ufb_trx_seln]
-set_output_delay -clock [get_clocks clk_wiz_1__012mhz000] -max -add_delay 5.100 [get_ports ufb_trx_seln]
-set_output_delay -clock [get_clocks clk_wiz_1__012mhz000] -min -add_delay -5.100 [get_ports ufb_trx_mosi]
-set_output_delay -clock [get_clocks clk_wiz_1__012mhz000] -max -add_delay 5.100 [get_ports ufb_trx_mosi]
+set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -min -add_delay 0.000 [get_ports ufb_trx_sclk]
+set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 0.000 [get_ports ufb_trx_sclk]
+set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -min -add_delay -5.100 [get_ports ufb_trx_seln]
+set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 5.100 [get_ports ufb_trx_seln]
+set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -min -add_delay -5.100 [get_ports ufb_trx_mosi]
+set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 5.100 [get_ports ufb_trx_mosi]
 
 
 
@@ -219,6 +219,15 @@ set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 2.100 
 
 
 # FTDI 12 MHz - Setup / Hold done
+set_max_delay -datapath_only 12 -from [get_clocks clk_pll_i_1] -to [get_clocks clk_wiz_1__012mhz000]
+set_max_delay -datapath_only 12 -from [get_clocks clk_pll_i_1] -to [get_clocks clk_wiz_1__012mhz000_trx]
+set_max_delay -datapath_only 12 -from [get_clocks mig_0__083mhz333] -to [get_clocks clk_wiz_1__012mhz000]
+set_max_delay -datapath_only 12 -from [get_clocks mig_0__083mhz333] -to [get_clocks clk_wiz_1__012mhz000_trx]
+set_max_delay -datapath_only 12 -from [get_clocks clk_wiz_1__012mhz000] -to [get_clocks clk_pll_i_1]
+set_max_delay -datapath_only 12 -from [get_clocks clk_wiz_1__012mhz000_trx] -to [get_clocks clk_pll_i_1]
+set_max_delay -datapath_only 12 -from [get_clocks clk_wiz_1__012mhz000] -to [get_clocks mig_0__083mhz333]
+set_max_delay -datapath_only 12 -from [get_clocks clk_wiz_1__012mhz000_trx] -to [get_clocks mig_0__083mhz333]
+
 set_input_delay -clock [get_clocks clk_wiz_1__012mhz000] -min -add_delay 0.000 [get_ports ufb_fpga_ft_txd]
 set_input_delay -clock [get_clocks clk_wiz_1__012mhz000] -max -add_delay 5.100 [get_ports ufb_fpga_ft_txd]
 set_input_delay -clock [get_clocks clk_wiz_1__012mhz000] -min -add_delay 0.000 [get_ports ufb_fpga_ft_rts]

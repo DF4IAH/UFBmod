@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-//Date        : Fri Aug 30 00:18:21 2019
+//Date        : Fri Aug 30 03:00:38 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -887,7 +887,7 @@ module m01_couplers_imp_A4MK1N
   assign m01_couplers_to_auto_ds_WLAST = S_AXI_wlast;
   assign m01_couplers_to_auto_ds_WSTRB = S_AXI_wstrb[31:0];
   assign m01_couplers_to_auto_ds_WVALID = S_AXI_wvalid;
-  mcu_auto_ds_2 auto_ds
+  mcu_auto_ds_1 auto_ds
        (.m_axi_araddr(auto_ds_to_auto_pc_ARADDR),
         .m_axi_arburst(auto_ds_to_auto_pc_ARBURST),
         .m_axi_arcache(auto_ds_to_auto_pc_ARCACHE),
@@ -960,7 +960,7 @@ module m01_couplers_imp_A4MK1N
         .s_axi_wready(m01_couplers_to_auto_ds_WREADY),
         .s_axi_wstrb(m01_couplers_to_auto_ds_WSTRB),
         .s_axi_wvalid(m01_couplers_to_auto_ds_WVALID));
-  mcu_auto_pc_3 auto_pc
+  mcu_auto_pc_2 auto_pc
        (.aclk(S_ACLK_1),
         .aresetn(S_ARESETN_1),
         .m_axi_araddr(auto_pc_to_m01_couplers_ARADDR),
@@ -1283,7 +1283,7 @@ module m01_couplers_imp_F7VMKK
   assign m01_couplers_to_auto_ds_WLAST = S_AXI_wlast;
   assign m01_couplers_to_auto_ds_WSTRB = S_AXI_wstrb[31:0];
   assign m01_couplers_to_auto_ds_WVALID = S_AXI_wvalid;
-  mcu_auto_ds_1 auto_ds
+  mcu_auto_ds_0 auto_ds
        (.m_axi_araddr(auto_ds_to_auto_pc_ARADDR),
         .m_axi_arburst(auto_ds_to_auto_pc_ARBURST),
         .m_axi_arcache(auto_ds_to_auto_pc_ARCACHE),
@@ -1356,7 +1356,7 @@ module m01_couplers_imp_F7VMKK
         .s_axi_wready(m01_couplers_to_auto_ds_WREADY),
         .s_axi_wstrb(m01_couplers_to_auto_ds_WSTRB),
         .s_axi_wvalid(m01_couplers_to_auto_ds_WVALID));
-  mcu_auto_pc_1 auto_pc
+  mcu_auto_pc_0 auto_pc
        (.aclk(S_ACLK_1),
         .aresetn(S_ARESETN_1),
         .m_axi_araddr(auto_pc_to_m01_couplers_ARADDR),
@@ -1805,7 +1805,7 @@ module m02_couplers_imp_16J6N91
   assign m02_couplers_to_auto_ds_WLAST = S_AXI_wlast;
   assign m02_couplers_to_auto_ds_WSTRB = S_AXI_wstrb[31:0];
   assign m02_couplers_to_auto_ds_WVALID = S_AXI_wvalid;
-  mcu_auto_ds_3 auto_ds
+  mcu_auto_ds_2 auto_ds
        (.m_axi_araddr(auto_ds_to_auto_pc_ARADDR),
         .m_axi_arburst(auto_ds_to_auto_pc_ARBURST),
         .m_axi_arcache(auto_ds_to_auto_pc_ARCACHE),
@@ -1878,7 +1878,7 @@ module m02_couplers_imp_16J6N91
         .s_axi_wready(m02_couplers_to_auto_ds_WREADY),
         .s_axi_wstrb(m02_couplers_to_auto_ds_WSTRB),
         .s_axi_wvalid(m02_couplers_to_auto_ds_WVALID));
-  mcu_auto_pc_4 auto_pc
+  mcu_auto_pc_3 auto_pc
        (.aclk(S_ACLK_1),
         .aresetn(S_ARESETN_1),
         .m_axi_araddr(auto_pc_to_m02_couplers_ARADDR),
@@ -2457,7 +2457,7 @@ module m03_couplers_imp_J3TUPC
   assign m03_couplers_to_auto_ds_WLAST = S_AXI_wlast;
   assign m03_couplers_to_auto_ds_WSTRB = S_AXI_wstrb[31:0];
   assign m03_couplers_to_auto_ds_WVALID = S_AXI_wvalid;
-  mcu_auto_ds_4 auto_ds
+  mcu_auto_ds_3 auto_ds
        (.m_axi_araddr(auto_ds_to_auto_pc_ARADDR),
         .m_axi_arburst(auto_ds_to_auto_pc_ARBURST),
         .m_axi_arcache(auto_ds_to_auto_pc_ARCACHE),
@@ -2530,7 +2530,7 @@ module m03_couplers_imp_J3TUPC
         .s_axi_wready(m03_couplers_to_auto_ds_WREADY),
         .s_axi_wstrb(m03_couplers_to_auto_ds_WSTRB),
         .s_axi_wvalid(m03_couplers_to_auto_ds_WVALID));
-  mcu_auto_pc_5 auto_pc
+  mcu_auto_pc_4 auto_pc
        (.aclk(S_ACLK_1),
         .aresetn(S_ARESETN_1),
         .m_axi_araddr(auto_pc_to_m03_couplers_ARADDR),
@@ -2845,7 +2845,7 @@ module m04_couplers_imp_G072SO
   assign m04_couplers_to_auto_ds_WLAST = S_AXI_wlast;
   assign m04_couplers_to_auto_ds_WSTRB = S_AXI_wstrb[31:0];
   assign m04_couplers_to_auto_ds_WVALID = S_AXI_wvalid;
-  mcu_auto_ds_5 auto_ds
+  mcu_auto_ds_4 auto_ds
        (.m_axi_araddr(auto_ds_to_auto_pc_ARADDR),
         .m_axi_arburst(auto_ds_to_auto_pc_ARBURST),
         .m_axi_arcache(auto_ds_to_auto_pc_ARCACHE),
@@ -2918,7 +2918,7 @@ module m04_couplers_imp_G072SO
         .s_axi_wready(m04_couplers_to_auto_ds_WREADY),
         .s_axi_wstrb(m04_couplers_to_auto_ds_WSTRB),
         .s_axi_wvalid(m04_couplers_to_auto_ds_WVALID));
-  mcu_auto_pc_6 auto_pc
+  mcu_auto_pc_5 auto_pc
        (.aclk(S_ACLK_1),
         .aresetn(S_ARESETN_1),
         .m_axi_araddr(auto_pc_to_m04_couplers_ARADDR),
@@ -3497,7 +3497,7 @@ module m05_couplers_imp_1RBOA5P
   assign m05_couplers_to_auto_ds_WLAST = S_AXI_wlast;
   assign m05_couplers_to_auto_ds_WSTRB = S_AXI_wstrb[31:0];
   assign m05_couplers_to_auto_ds_WVALID = S_AXI_wvalid;
-  mcu_auto_ds_6 auto_ds
+  mcu_auto_ds_5 auto_ds
        (.m_axi_araddr(auto_ds_to_auto_pc_ARADDR),
         .m_axi_arburst(auto_ds_to_auto_pc_ARBURST),
         .m_axi_arcache(auto_ds_to_auto_pc_ARCACHE),
@@ -3570,7 +3570,7 @@ module m05_couplers_imp_1RBOA5P
         .s_axi_wready(m05_couplers_to_auto_ds_WREADY),
         .s_axi_wstrb(m05_couplers_to_auto_ds_WSTRB),
         .s_axi_wvalid(m05_couplers_to_auto_ds_WVALID));
-  mcu_auto_pc_7 auto_pc
+  mcu_auto_pc_6 auto_pc
        (.aclk(S_ACLK_1),
         .aresetn(S_ARESETN_1),
         .m_axi_araddr(auto_pc_to_m05_couplers_ARADDR),
@@ -3885,7 +3885,7 @@ module m06_couplers_imp_OYIKYR
   assign m06_couplers_to_auto_ds_WLAST = S_AXI_wlast;
   assign m06_couplers_to_auto_ds_WSTRB = S_AXI_wstrb[31:0];
   assign m06_couplers_to_auto_ds_WVALID = S_AXI_wvalid;
-  mcu_auto_ds_7 auto_ds
+  mcu_auto_ds_6 auto_ds
        (.m_axi_araddr(auto_ds_to_auto_pc_ARADDR),
         .m_axi_arburst(auto_ds_to_auto_pc_ARBURST),
         .m_axi_arcache(auto_ds_to_auto_pc_ARCACHE),
@@ -3958,7 +3958,7 @@ module m06_couplers_imp_OYIKYR
         .s_axi_wready(m06_couplers_to_auto_ds_WREADY),
         .s_axi_wstrb(m06_couplers_to_auto_ds_WSTRB),
         .s_axi_wvalid(m06_couplers_to_auto_ds_WVALID));
-  mcu_auto_pc_8 auto_pc
+  mcu_auto_pc_7 auto_pc
        (.aclk(S_ACLK_1),
         .aresetn(S_ARESETN_1),
         .m_axi_araddr(auto_pc_to_m06_couplers_ARADDR),
@@ -4273,7 +4273,7 @@ module m07_couplers_imp_10QGH7Q
   assign m07_couplers_to_auto_ds_WLAST = S_AXI_wlast;
   assign m07_couplers_to_auto_ds_WSTRB = S_AXI_wstrb[31:0];
   assign m07_couplers_to_auto_ds_WVALID = S_AXI_wvalid;
-  mcu_auto_ds_8 auto_ds
+  mcu_auto_ds_7 auto_ds
        (.m_axi_araddr(auto_ds_to_auto_pc_ARADDR),
         .m_axi_arburst(auto_ds_to_auto_pc_ARBURST),
         .m_axi_arcache(auto_ds_to_auto_pc_ARCACHE),
@@ -4346,7 +4346,7 @@ module m07_couplers_imp_10QGH7Q
         .s_axi_wready(m07_couplers_to_auto_ds_WREADY),
         .s_axi_wstrb(m07_couplers_to_auto_ds_WSTRB),
         .s_axi_wvalid(m07_couplers_to_auto_ds_WVALID));
-  mcu_auto_pc_9 auto_pc
+  mcu_auto_pc_8 auto_pc
        (.aclk(S_ACLK_1),
         .aresetn(S_ARESETN_1),
         .m_axi_araddr(auto_pc_to_m07_couplers_ARADDR),
@@ -4661,7 +4661,7 @@ module m08_couplers_imp_1990MQB
   assign m08_couplers_to_auto_ds_WLAST = S_AXI_wlast;
   assign m08_couplers_to_auto_ds_WSTRB = S_AXI_wstrb[31:0];
   assign m08_couplers_to_auto_ds_WVALID = S_AXI_wvalid;
-  mcu_auto_ds_9 auto_ds
+  mcu_auto_ds_8 auto_ds
        (.m_axi_araddr(auto_ds_to_auto_pc_ARADDR),
         .m_axi_arburst(auto_ds_to_auto_pc_ARBURST),
         .m_axi_arcache(auto_ds_to_auto_pc_ARCACHE),
@@ -4734,7 +4734,7 @@ module m08_couplers_imp_1990MQB
         .s_axi_wready(m08_couplers_to_auto_ds_WREADY),
         .s_axi_wstrb(m08_couplers_to_auto_ds_WSTRB),
         .s_axi_wvalid(m08_couplers_to_auto_ds_WVALID));
-  mcu_auto_pc_10 auto_pc
+  mcu_auto_pc_9 auto_pc
        (.aclk(S_ACLK_1),
         .aresetn(S_ARESETN_1),
         .m_axi_araddr(auto_pc_to_m08_couplers_ARADDR),
@@ -6308,7 +6308,7 @@ module mcu
         .ss_o(axi_quad_spi_0_spi_SS_O),
         .ss_t(axi_quad_spi_0_spi_SS_T));
   mcu_axi_quad_spi_1_TRX_0 axi_quad_spi_1_TRX
-       (.ext_spi_clk(clk_12mhz_ftdi_clk),
+       (.ext_spi_clk(clk_025mhz_1),
         .io0_i(axi_quad_spi_1_spi_IO0_I),
         .io0_o(axi_quad_spi_1_spi_IO0_O),
         .io0_t(axi_quad_spi_1_spi_IO0_T),
@@ -11964,7 +11964,7 @@ module s00_couplers_imp_IEYFNF
   assign s00_couplers_to_auto_pc_WDATA = S_AXI_wdata[31:0];
   assign s00_couplers_to_auto_pc_WSTRB = S_AXI_wstrb[3:0];
   assign s00_couplers_to_auto_pc_WVALID = S_AXI_wvalid;
-  mcu_auto_pc_2 auto_pc
+  mcu_auto_pc_1 auto_pc
        (.aclk(S_ACLK_1),
         .aresetn(S_ARESETN_1),
         .m_axi_araddr(auto_pc_to_auto_us_ARADDR),

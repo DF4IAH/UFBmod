@@ -335,12 +335,13 @@
   "../../../bd/mcu/ip/mcu_xlconstant_ROTENC_31bit_val0_0/sim/mcu_xlconstant_ROTENC_31bit_val0_0.v" \
   "../../../bd/mcu/ip/mcu_xbar_2/sim/mcu_xbar_2.v" \
   "../../../bd/mcu/ip/mcu_xbar_3/sim/mcu_xbar_3.v" \
+  "../../../bd/mcu/sim/mcu.v" \
 -endlib
 -makelib ies_lib/axi_protocol_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
 -endlib
 -makelib ies_lib/axi_clock_converter_v2_1_18 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ac9d/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
@@ -353,8 +354,10 @@
   "../../../bd/mcu/ip/mcu_auto_us_1/sim/mcu_auto_us_1.v" \
   "../../../bd/mcu/ip/mcu_auto_us_2/sim/mcu_auto_us_2.v" \
   "../../../bd/mcu/ip/mcu_auto_us_3/sim/mcu_auto_us_3.v" \
+  "../../../bd/mcu/ip/mcu_auto_ds_0/sim/mcu_auto_ds_0.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
   "../../../bd/mcu/ip/mcu_auto_ds_1/sim/mcu_auto_ds_1.v" \
-  "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
+  "../../../bd/mcu/ip/mcu_auto_pc_2/sim/mcu_auto_pc_2.v" \
   "../../../bd/mcu/ip/mcu_auto_ds_2/sim/mcu_auto_ds_2.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_3/sim/mcu_auto_pc_3.v" \
   "../../../bd/mcu/ip/mcu_auto_ds_3/sim/mcu_auto_ds_3.v" \
@@ -369,9 +372,6 @@
   "../../../bd/mcu/ip/mcu_auto_pc_8/sim/mcu_auto_pc_8.v" \
   "../../../bd/mcu/ip/mcu_auto_ds_8/sim/mcu_auto_ds_8.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_9/sim/mcu_auto_pc_9.v" \
-  "../../../bd/mcu/ip/mcu_auto_ds_9/sim/mcu_auto_ds_9.v" \
-  "../../../bd/mcu/ip/mcu_auto_pc_10/sim/mcu_auto_pc_10.v" \
-  "../../../bd/mcu/sim/mcu.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   glbl.v
