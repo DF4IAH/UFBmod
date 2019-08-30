@@ -201,7 +201,7 @@ set_output_delay -reference_pin [get_ports ufb_trx_rxclk_n] 2 [get_ports ufb_trx
 # TRX SPI interface - Setup / Hold done
 set_input_delay -clock [get_clocks clk_wiz_1__025mhz000] -min -add_delay -0.900 [get_ports ufb_trx_miso]
 set_input_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 25.100 [get_ports ufb_trx_miso]
-set_input_delay -reference_pin [get_ports ufb_trx_sclk] 2 [get_ports ufb_trx_miso]
+set_input_delay -reference_pin [get_ports ufb_trx_sclk] 4 [get_ports ufb_trx_miso]
 
 set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -min -add_delay 0.000 [get_ports ufb_trx_sclk]
 set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 0.000 [get_ports ufb_trx_sclk]
