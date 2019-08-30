@@ -198,6 +198,11 @@ set_output_delay -reference_pin [get_ports ufb_trx_rxclk_n] 2 [get_ports ufb_trx
 set_output_delay -reference_pin [get_ports ufb_trx_rxclk_p] 2 [get_ports ufb_trx_txd_p]
 set_output_delay -reference_pin [get_ports ufb_trx_rxclk_n] 2 [get_ports ufb_trx_txd_n]
 
+set_false_path -from [get_clocks -of_objects [get_pins mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/inst/mmcm_adv_inst/CLKOUT0]] -to [get_clocks -of_objects [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT] -filter {IS_GENERATED && MASTER_CLOCK == pll_clk3_out}]
+set_false_path -from [get_clocks -of_objects [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT] -filter {IS_GENERATED && MASTER_CLOCK == pll_clk3_out}] -to [get_clocks -of_objects [get_pins mcu_wrapper_i/mcu_i/clk_32mhz_LVDS/inst/mmcm_adv_inst/CLKOUT0]]
+set_false_path -from [get_pins mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_crs_reg/C] -to [get_pins mcu_wrapper_i/mcu_i/axi_ethernetlite_ETHERNET/U0/XEMAC_I/EMAC_I/C_SENSE_SYNC_1/D]
+set_false_path -from [get_pins mcu_wrapper_i/mcu_i/mii_to_rmii_ETHERNET/U0/rmii2mac_crs_reg/C] -to [get_pins mcu_wrapper_i/mcu_i/axi_ethernetlite_ETHERNET/U0/XEMAC_I/EMAC_I/C_SENSE_SYNC_1/D]
+
 # TRX SPI interface - Setup / Hold done
 set_input_delay -clock [get_clocks clk_wiz_1__025mhz000] -min -add_delay -0.900 [get_ports ufb_trx_miso]
 set_input_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 25.100 [get_ports ufb_trx_miso]
@@ -215,6 +220,7 @@ set_output_delay -reference_pin [get_ports ufb_trx_sclk] 4 [get_ports ufb_trx_mo
 # SPI-Q access interface - Setup / Hold done
 set_input_delay -clock [get_clocks clk_wiz_1__025mhz000] -min -add_delay 0.000 [get_ports {spi_dq[*]}]
 set_input_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 2.100 [get_ports {spi_dq[*]}]
+set_input_delay -reference_pin [get_ports ufb_trx_sclk] 4 [get_ports {spi_dq[*]}]
 
 set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -min -add_delay -3.100 [get_ports spi_cs]
 set_output_delay -clock [get_clocks clk_wiz_1__025mhz000] -max -add_delay 3.100 [get_ports spi_cs]

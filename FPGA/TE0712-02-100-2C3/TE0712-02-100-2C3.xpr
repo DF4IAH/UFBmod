@@ -40,13 +40,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="79"/>
-    <Option Name="WTModelSimExportSim" Val="79"/>
-    <Option Name="WTQuestaExportSim" Val="79"/>
-    <Option Name="WTIesExportSim" Val="79"/>
-    <Option Name="WTVcsExportSim" Val="79"/>
-    <Option Name="WTRivieraExportSim" Val="79"/>
-    <Option Name="WTActivehdlExportSim" Val="79"/>
+    <Option Name="WTXSimExportSim" Val="80"/>
+    <Option Name="WTModelSimExportSim" Val="80"/>
+    <Option Name="WTQuestaExportSim" Val="80"/>
+    <Option Name="WTIesExportSim" Val="80"/>
+    <Option Name="WTVcsExportSim" Val="80"/>
+    <Option Name="WTRivieraExportSim" Val="80"/>
+    <Option Name="WTActivehdlExportSim" Val="80"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -67,6 +67,9 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
+        <CompFileExtendedInfo CompFileName="mcu.bd" FileRelPathName="ip/mcu_axi_quad_spi_1_TRX_0/mcu_axi_quad_spi_1_TRX_0.xci">
+          <Proxy FileSetName="mcu_axi_quad_spi_1_TRX_0"/>
+        </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/mcu/hdl/mcu_wrapper.v">
         <FileInfo>
@@ -236,6 +239,12 @@
         <Option Name="XSimWcfgFile" Val="$PPRDIR/onewire_behav.wcfg"/>
       </Config>
     </FileSet>
+    <FileSet Name="mcu_axi_quad_spi_1_TRX_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mcu_axi_quad_spi_1_TRX_0">
+      <Config>
+        <Option Name="TopModule" Val="mcu_axi_quad_spi_1_TRX_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
   </FileSets>
   <Simulators>
     <Simulator Name="XSim">
@@ -265,9 +274,39 @@
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="true" IncrementalCheckpoint="$PSRCDIR/utils_1/imports/impl_1/top_routed.dcp" WriteIncrSynthDcp="false" State="current" SynthRun="synth_1" IncludeInArchive="true" GenFullBitstream="true">
+    <Run Id="mcu_axi_quad_spi_1_TRX_0_synth_1" Type="Ft3:Synth" SrcSet="mcu_axi_quad_spi_1_TRX_0" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_quad_spi_1_TRX_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/mcu_axi_quad_spi_1_TRX_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="true" IncrementalCheckpoint="$PSRCDIR/utils_1/imports/impl_1/top_routed.dcp" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="mcu_axi_quad_spi_1_TRX_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="mcu_axi_quad_spi_1_TRX_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="mcu_axi_quad_spi_1_TRX_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
