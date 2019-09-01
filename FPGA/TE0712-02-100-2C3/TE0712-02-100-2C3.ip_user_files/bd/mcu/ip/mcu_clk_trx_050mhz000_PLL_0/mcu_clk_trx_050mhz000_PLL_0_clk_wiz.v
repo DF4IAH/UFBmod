@@ -56,6 +56,7 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
+// clk_200mhz000___200.000______0.000______50.0_______96.666____120.359
 // clk_177mhz778___177.778______0.000______50.0_______98.321____120.359
 // clk_050mhz000____50.000______0.000______50.0______118.639____120.359
 // clk_025mhz000____25.000______0.000______50.0______131.885____120.359
@@ -74,6 +75,7 @@ module mcu_clk_trx_050mhz000_PLL_0_clk_wiz
   input         clk_in2,
   input         clk_in_sel,
   // Clock out ports
+  output        clk_200mhz000,
   output        clk_177mhz778,
   output        clk_050mhz000,
   output        clk_025mhz000,
@@ -98,10 +100,10 @@ wire clk_in2_mcu_clk_trx_050mhz000_PLL_0;
   //    * Unused inputs are tied off
   //    * Unused outputs are labeled unused
 
+  wire        clk_200mhz000_mcu_clk_trx_050mhz000_PLL_0;
   wire        clk_177mhz778_mcu_clk_trx_050mhz000_PLL_0;
   wire        clk_050mhz000_mcu_clk_trx_050mhz000_PLL_0;
   wire        clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0;
-  wire        clk_050mhz000_mcu_clk_trx_050mhz000_PLL_0;
   wire        clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0;
   wire        clk_012mhz000_mcu_clk_trx_050mhz000_PLL_0;
   wire        clk_out7_mcu_clk_trx_050mhz000_PLL_0;
@@ -113,7 +115,6 @@ wire clk_in2_mcu_clk_trx_050mhz000_PLL_0;
   wire        clkfbout_mcu_clk_trx_050mhz000_PLL_0;
   wire        clkfbout_buf_mcu_clk_trx_050mhz000_PLL_0;
   wire        clkfboutb_unused;
-   wire clkout3_unused;
    wire clkout4_unused;
   wire        clkout5_unused;
   wire        clkout6_unused;
@@ -128,25 +129,28 @@ wire clk_in2_mcu_clk_trx_050mhz000_PLL_0;
     .DIVCLK_DIVIDE        (1),
     .CLKFBOUT_MULT        (32),
     .CLKFBOUT_PHASE       (0.000),
-    .CLKOUT0_DIVIDE       (9),
+    .CLKOUT0_DIVIDE       (8),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
-    .CLKOUT1_DIVIDE       (32),
+    .CLKOUT1_DIVIDE       (9),
     .CLKOUT1_PHASE        (0.000),
     .CLKOUT1_DUTY_CYCLE   (0.500),
-    .CLKOUT2_DIVIDE       (64),
+    .CLKOUT2_DIVIDE       (32),
     .CLKOUT2_PHASE        (0.000),
     .CLKOUT2_DUTY_CYCLE   (0.500),
+    .CLKOUT3_DIVIDE       (64),
+    .CLKOUT3_PHASE        (0.000),
+    .CLKOUT3_DUTY_CYCLE   (0.500),
     .CLKIN1_PERIOD        (20.000),
     .CLKIN2_PERIOD        (20.000))
   plle2_adv_inst
     // Output clocks
    (
     .CLKFBOUT            (clkfbout_mcu_clk_trx_050mhz000_PLL_0),
-    .CLKOUT0             (clk_177mhz778_mcu_clk_trx_050mhz000_PLL_0),
-    .CLKOUT1             (clk_050mhz000_mcu_clk_trx_050mhz000_PLL_0),
-    .CLKOUT2             (clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0),
-    .CLKOUT3             (clkout3_unused),
+    .CLKOUT0             (clk_200mhz000_mcu_clk_trx_050mhz000_PLL_0),
+    .CLKOUT1             (clk_177mhz778_mcu_clk_trx_050mhz000_PLL_0),
+    .CLKOUT2             (clk_050mhz000_mcu_clk_trx_050mhz000_PLL_0),
+    .CLKOUT3             (clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0),
     .CLKOUT4             (clkout4_unused),
     .CLKOUT5             (clkout5_unused),
      // Input clock control
@@ -183,15 +187,19 @@ wire clk_in2_mcu_clk_trx_050mhz000_PLL_0;
 
 
   BUFG clkout1_buf
-   (.O   (clk_177mhz778),
-    .I   (clk_177mhz778_mcu_clk_trx_050mhz000_PLL_0));
+   (.O   (clk_200mhz000),
+    .I   (clk_200mhz000_mcu_clk_trx_050mhz000_PLL_0));
 
 
   BUFG clkout2_buf
+   (.O   (clk_177mhz778),
+    .I   (clk_177mhz778_mcu_clk_trx_050mhz000_PLL_0));
+
+  BUFG clkout3_buf
    (.O   (clk_050mhz000),
     .I   (clk_050mhz000_mcu_clk_trx_050mhz000_PLL_0));
 
-  BUFG clkout3_buf
+  BUFG clkout4_buf
    (.O   (clk_025mhz000),
     .I   (clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0));
 

@@ -38,6 +38,9 @@ module top_tb;
     reg ufb_trx_rxclk_p;
     reg ufb_trx_rxclk_n;
     
+    reg ufb_trx_rxd09_p;
+    reg ufb_trx_rxd09_n;
+    
     
     wire spi_cs;
     wire [3:0]spi_dq;
@@ -231,8 +234,8 @@ module top_tb;
     .ufb_trx_rxclk_p(ufb_trx_rxclk_p),
     .ufb_trx_rxclk_n(ufb_trx_rxclk_n),
     
-    .ufb_trx_rxd09_p(1'b0),
-    .ufb_trx_rxd09_n(1'b1),
+    .ufb_trx_rxd09_p(ufb_trx_rxd09_p),
+    .ufb_trx_rxd09_n(ufb_trx_rxd09_n),
     
     .ufb_trx_rxd24_p(1'b0),
     .ufb_trx_rxd24_n(1'b1),
@@ -308,6 +311,9 @@ module top_tb;
     ufb_trx_rxclk_p = 1'b0;
     ufb_trx_rxclk_n = 1'b1;
     
+    ufb_trx_rxd09_p = 1'b0;
+    ufb_trx_rxd09_n = 1'b1;
+    
     board_rotenc_push = 1'b1;
     board_rotenc_i    = 1'b1;
     board_rotenc_q    = 1'b1;
@@ -339,23 +345,175 @@ module top_tb;
     
     always
     begin
-        #15.625 ufb_trx_rxclk_p = !ufb_trx_rxclk_p;
+        #7.8125 ufb_trx_rxclk_p = !ufb_trx_rxclk_p;
     end
     
     always
     begin
-        #15.625 ufb_trx_rxclk_n = !ufb_trx_rxclk_n;
+        #7.8125 ufb_trx_rxclk_n = !ufb_trx_rxclk_n;
+    end
+    
+    
+    // DDR @ 64 MHz, 32 bits --> 4 MSPS
+    always
+    begin
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;  // 0: key for I value following
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // I-value
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // 0: key for Q value following
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;  // Q-value
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        
+
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;  // 1: key for I value following
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // I-value
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // 1: key for Q value following
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // Q-value
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+
+
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;  // 2: key for I value following
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // I-value
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // 2: key for Q value following
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // Q-value
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        
+
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;  // 3: key for I value following
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;  // I-value
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // 3: key for Q value following
+        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // Q-value
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
     end
     
     
     always
     begin
-        #4.16666666 mgt_clk0_p = !mgt_clk0_p;
+        #4.1667 mgt_clk0_p = !mgt_clk0_p;
     end
     
     always
     begin
-        #4.16666666 mgt_clk0_n = !mgt_clk0_n;
+        #4.167 mgt_clk0_n = !mgt_clk0_n;
     end
     
     

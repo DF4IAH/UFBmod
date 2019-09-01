@@ -3,24 +3,14 @@
 	"modules": {
 		"mcu": {
 			"proto_instances": {
-				"/LVDS_in_AXIS/M_AXIS": {
-					"interface": "xilinx.com:interface:axis:1.0",
-					"ports": {
-						"ACLK": { "actual": "m_aclk"},
-						"TDATA": { "actual": "m_axis_tdata"},
-						"TREADY": { "actual": "m_axis_tready"},
-						"TVALID": { "actual": "m_axis_tvalid"}
-					}
-				},
-				"/LVDS_in_FFT/S_AXIS_DATA": {
+				"/LVDS_in_CORDIC_0/M_AXIS_DOUT": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "aclk"},
-						"ARESETN": { "actual": "aresetn"},
-						"TDATA": { "actual": "s_axis_data_tdata"},
-						"TLAST": { "actual": "s_axis_data_tlast"},
-						"TREADY": { "actual": "s_axis_data_tready"},
-						"TVALID": { "actual": "s_axis_data_tvalid"}
+						"TDATA": { "actual": "m_axis_dout_tdata"},
+						"TLAST": { "actual": "m_axis_dout_tlast"},
+						"TUSER": { "actual": "m_axis_dout_tuser"},
+						"TVALID": { "actual": "m_axis_dout_tvalid"}
 					}
 				},
 				"/axi_ethernetlite_ETHERNET/S_AXI": {
@@ -287,7 +277,7 @@
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
 				},
-				"/axi_uart16550_0_FTDI/S_AXI": {
+				"/axi_uart16550_FTDI_0/S_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s_axi_aclk"},

@@ -387,7 +387,45 @@
   "../../../bd/mcu/ip/mcu_sys_reset_16mhz000_0/sim/mcu_sys_reset_16mhz000_0.vhd" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
-  "../../../bd/mcu/ip/mcu_xlconstant_0_1/sim/mcu_xlconstant_0_1.v" \
+  "../../../bd/mcu/sim/mcu.v" \
+-endlib
+-makelib ies_lib/cordic_v6_0_15 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/42d6/hdl/cordic_v6_0_vh_rfs.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_cordic_0_0/sim/mcu_cordic_0_0.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_const_width1_val0_0/sim/mcu_const_width1_val0_0.v" \
+-endlib
+-makelib ies_lib/c_gate_bit_v12_0_6 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/7161/hdl/c_gate_bit_v12_0_vh_rfs.vhd" \
+-endlib
+-makelib ies_lib/xbip_counter_v3_0_6 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/9ac8/hdl/xbip_counter_v3_0_vh_rfs.vhd" \
+-endlib
+-makelib ies_lib/c_counter_binary_v12_0_13 \
+  "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/23f1/hdl/c_counter_binary_v12_0_vh_rfs.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_c_counter_binary_0_0/sim/mcu_c_counter_binary_0_0.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_xlslice_0_1/sim/mcu_xlslice_0_1.v" \
+  "../../../bd/mcu/ip/mcu_LVDS_in_out_samplecounter_SLICE_0_0/sim/mcu_LVDS_in_out_samplecounter_SLICE_0_0.v" \
+  "../../../bd/mcu/ip/mcu_util_reduced_logic_0_1/sim/mcu_util_reduced_logic_0_1.v" \
+  "../../../bd/mcu/ip/mcu_LVDS_in_out_bincounter_SLICE_0_0/sim/mcu_LVDS_in_out_bincounter_SLICE_0_0.v" \
+  "../../../bd/mcu/ip/mcu_LVDS_in_out_bin_clken_REDLOG_0_0/sim/mcu_LVDS_in_out_bin_clken_REDLOG_0_0.v" \
+  "../../../bd/mcu/ip/mcu_LVDS_in_out_sample_clken_SLICE_0_0/sim/mcu_LVDS_in_out_sample_clken_SLICE_0_0.v" \
+  "../../../bd/mcu/ip/mcu_LVDS_in_out_sample_clken_REDLOG_0_0/sim/mcu_LVDS_in_out_sample_clken_REDLOG_0_0.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_c_shift_ram_0_0/sim/mcu_c_shift_ram_0_0.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/mcu/ip/mcu_LVDS_in_tlast_gen_REDLOG_0_0/sim/mcu_LVDS_in_tlast_gen_REDLOG_0_0.v" \
+  "../../../bd/mcu/ip/mcu_util_vector_logic_0_2/sim/mcu_util_vector_logic_0_2.v" \
+  "../../../bd/mcu/ip/mcu_const_width32_0x80004000_0/sim/mcu_const_width32_0x80004000_0.v" \
 -endlib
 -makelib ies_lib/axi_protocol_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
@@ -410,7 +448,6 @@
   "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
   "../../../bd/mcu/ip/mcu_auto_ds_1/sim/mcu_auto_ds_1.v" \
   "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
-  "../../../bd/mcu/sim/mcu.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   glbl.v

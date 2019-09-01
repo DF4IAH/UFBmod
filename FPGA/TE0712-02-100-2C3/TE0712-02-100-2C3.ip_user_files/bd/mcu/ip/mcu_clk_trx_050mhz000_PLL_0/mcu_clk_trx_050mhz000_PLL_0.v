@@ -56,6 +56,7 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
+// clk_200mhz000___200.000______0.000______50.0_______96.666____120.359
 // clk_177mhz778___177.778______0.000______50.0_______98.321____120.359
 // clk_050mhz000____50.000______0.000______50.0______118.639____120.359
 // clk_025mhz000____25.000______0.000______50.0______131.885____120.359
@@ -68,13 +69,14 @@
 
 `timescale 1ps/1ps
 
-(* CORE_GENERATION_INFO = "mcu_clk_trx_050mhz000_PLL_0,clk_wiz_v6_0_3_0_0,{component_name=mcu_clk_trx_050mhz000_PLL_0,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=true,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=PLL,num_out_clk=3,clkin1_period=20.000,clkin2_period=20.000,use_power_down=false,use_reset=true,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
+(* CORE_GENERATION_INFO = "mcu_clk_trx_050mhz000_PLL_0,clk_wiz_v6_0_3_0_0,{component_name=mcu_clk_trx_050mhz000_PLL_0,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=true,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=PLL,num_out_clk=4,clkin1_period=20.000,clkin2_period=20.000,use_power_down=false,use_reset=true,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
 
 module mcu_clk_trx_050mhz000_PLL_0 
  (
   input         clk_in2,
   input         clk_in_sel,
   // Clock out ports
+  output        clk_200mhz000,
   output        clk_177mhz778,
   output        clk_050mhz000,
   output        clk_025mhz000,
@@ -89,6 +91,7 @@ module mcu_clk_trx_050mhz000_PLL_0
   .clk_in2(clk_in2),
   .clk_in_sel(clk_in_sel),
   // Clock out ports  
+  .clk_200mhz000(clk_200mhz000),
   .clk_177mhz778(clk_177mhz778),
   .clk_050mhz000(clk_050mhz000),
   .clk_025mhz000(clk_025mhz000),

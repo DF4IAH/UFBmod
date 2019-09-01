@@ -18,7 +18,7 @@
 #IO_0_13 sch:-
 
 
-set_property -dict {PACKAGE_PIN Y16 IOSTANDARD LVCMOS25} [get_ports sys_rst]
+#set_property -dict {PACKAGE_PIN Y16 IOSTANDARD LVCMOS25} [get_ports sys_rst]
 #IO_L1P_T0_13 sch:B13_L1_P --> sys_rst
 
 set_property -dict {PACKAGE_PIN AA16 IOSTANDARD LVCMOS25} [get_ports reset]

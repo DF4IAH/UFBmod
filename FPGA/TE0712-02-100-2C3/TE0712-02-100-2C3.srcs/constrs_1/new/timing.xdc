@@ -35,35 +35,34 @@ set_clock_groups -name async__ufb_trx_rxclk_p__trx_clk_26mhz -asynchronous -grou
 
 
 
-TODO!!!
 # CLK_WIZ_0 - PLL: 26 MHz --> 50 MHz
-create_generated_clock -name clk_wiz_0__050mhz000 -source [get_pins clk_wiz_0_inst/inst/plle2_adv_inst/CLKIN1] [get_pins clk_wiz_0_inst/inst/plle2_adv_inst/CLKOUT0]
+#create_generated_clock -name clk_trx_050mhz000_mcu_clk_wiz_0_0 -source [get_pins mcu_wrapper_i/mcu_i/clk_trx_in_PLL_0/clk_in1] [get_pins mcu_wrapper_i/mcu_i/clk_trx_in_PLL_0/clk_trx_050mhz000]
 
 
 
-TODO!!!
 # CLK_WIZ_1
-create_generated_clock -name clk_wiz_1__177mhz778 -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock pll_clk_p [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT0]
-create_generated_clock -name clk_wiz_1__177mhz778_trx -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock clk_wiz_0__050mhz000 [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT0]
+#create_generated_clock -name clk_200mhz000_mcu_clk_trx_050mhz000_PLL_0   -source [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_in1] -master_clock clk_trx_050mhz000_mcu_clk_wiz_0_0 [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_200mhz000]
+#create_generated_clock -name clk_200mhz000_mcu_clk_trx_050mhz000_PLL_0_1 -source [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_in2] -master_clock pll_clk_p [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_200mhz000]
 
-create_generated_clock -name clk_wiz_1__050mhz000 -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock pll_clk_p [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]
-create_generated_clock -name clk_wiz_1__050mhz000_trx -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock clk_wiz_0__050mhz000 [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT1]
+#create_generated_clock -name clk_177mhz778_mcu_clk_trx_050mhz000_PLL_0   -source [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_in1] -master_clock clk_trx_050mhz000_mcu_clk_wiz_0_0 [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_177mhz778]
+#create_generated_clock -name clk_177mhz778_mcu_clk_trx_050mhz000_PLL_0_1 -source [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_in2] -master_clock pll_clk_p [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_177mhz778]
 
-create_generated_clock -name clk_wiz_1__025mhz000 -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock pll_clk_p [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT2]
-create_generated_clock -name clk_wiz_1__025mhz000_trx -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock clk_wiz_0__050mhz000 [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT2]
+#create_generated_clock -name clk_050mhz000_mcu_clk_trx_050mhz000_PLL_0   -source [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_in1] -master_clock clk_trx_050mhz000_mcu_clk_wiz_0_0 [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_050mhz000]
+#create_generated_clock -name clk_050mhz000_mcu_clk_trx_050mhz000_PLL_0_1 -source [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_in2] -master_clock pll_clk_p [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_050mhz000]
 
-create_generated_clock -name clk_wiz_1__012mhz000 -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN1] -master_clock pll_clk_p [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT3]
-create_generated_clock -name clk_wiz_1__012mhz000_trx -source [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKIN2] -master_clock clk_wiz_0__050mhz000 [get_pins clk_wiz_1_inst/inst/mmcm_adv_inst/CLKOUT3]
+#create_generated_clock -name clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0   -source [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_in1] -master_clock clk_trx_050mhz000_mcu_clk_wiz_0_0 [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_025mhz000]
+#create_generated_clock -name clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0_1 -source [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_in2] -master_clock pll_clk_p [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_025mhz000]
 
-set_clock_groups -physically_exclusive -group [get_clocks clk_wiz_1__177mhz778] -group [get_clocks clk_wiz_1__177mhz778_trx]
-set_clock_groups -physically_exclusive -group [get_clocks clk_wiz_1__050mhz000] -group [get_clocks clk_wiz_1__050mhz000_trx]
-set_clock_groups -physically_exclusive -group [get_clocks clk_wiz_1__025mhz000] -group [get_clocks clk_wiz_1__025mhz000_trx]
-set_clock_groups -physically_exclusive -group [get_clocks clk_wiz_1__012mhz000] -group [get_clocks clk_wiz_1__012mhz000_trx]
+set_clock_groups -physically_exclusive -group [get_clocks clk_200mhz000_mcu_clk_trx_050mhz000_PLL_0] -group [get_clocks clk_200mhz000_mcu_clk_trx_050mhz000_PLL_0_1]
+set_clock_groups -physically_exclusive -group [get_clocks clk_177mhz778_mcu_clk_trx_050mhz000_PLL_0] -group [get_clocks clk_177mhz778_mcu_clk_trx_050mhz000_PLL_0_1]
+set_clock_groups -physically_exclusive -group [get_clocks clk_050mhz000_mcu_clk_trx_050mhz000_PLL_0] -group [get_clocks clk_050mhz000_mcu_clk_trx_050mhz000_PLL_0_1]
+set_clock_groups -physically_exclusive -group [get_clocks clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0] -group [get_clocks clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0_1]
 
 
 
 # MIG Tool
-create_generated_clock -name mig_0__083mhz333 -source [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKIN1] -master_clock pll_clk3_out [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT]
+create_generated_clock -name mig_0__083mhz333   -source [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKIN1] -master_clock pll_clk3_out [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT]
+create_generated_clock -name mig_0__083mhz333_1 -source [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKIN1] -master_clock pll_clk3_out_1 [get_pins mcu_wrapper_i/mcu_i/mig_7series_0/u_mcu_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT]
 
 
 
