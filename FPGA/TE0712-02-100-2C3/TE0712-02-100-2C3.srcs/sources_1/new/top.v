@@ -377,13 +377,13 @@ module top(
     
     wire board_lcd_resetn_obuf;
     wire clk_wiz_0_locked;
-    wire clk_wiz_0_050mhz000;
-    wire clk_wiz_1_177mhz778;
-    wire clk_wiz_1_050mhz000;
-    wire clk_wiz_1_025mhz000;
-    wire clk_wiz_1_012mhz000;
-    wire clk_wiz_1_input_clk_stopped;
-    wire clk_wiz_1_locked;
+    wire clk_trx_050mhz000;
+//    wire clk_wiz_1_177mhz778;
+//    wire clk_wiz_1_050mhz000;
+//    wire clk_wiz_1_025mhz000;
+//    wire clk_wiz_1_012mhz000;
+//    wire clk_wiz_1_input_clk_stopped;
+//    wire clk_wiz_1_locked;
     wire ddr3_init_calib_complete_obuf;
     wire [3:0]dmr_1_onewire_a_in;
     wire [31:0]dmr_1_onewire_d_in;
@@ -400,8 +400,8 @@ module top(
     wire pll_clk_g;
     wire pwm0_lcd_bl_obuf;
     wire reset_ibuf;
-    wire trx_clk_26mhz_g;
-    wire trx_clk_26mhz_ig;
+    wire trx_clk_026mhz000_g;
+    wire trx_clk_026mhz000_ig;
     wire ufb_fpga_ft_12mhz_obuf;
     wire ufb_fpga_ft_resetn_obuf;
     wire ufb_trx_rstn_obuf;
@@ -421,14 +421,14 @@ module top(
         .O(pll_clk_g)
     );
     
-    IBUF trx_clk_26mhz_ibuf_inst (
+    IBUF trx_clk_026mhz000_ibuf_inst (
         .I(trx_clk_26mhz),
-        .O(trx_clk_26mhz_ig)
+        .O(trx_clk_026mhz000_ig)
     );
     
-    BUFG trx_clk_26mhz_bufg_inst (
-        .I(trx_clk_26mhz_ig),
-        .O(trx_clk_26mhz_g)
+    BUFG trx_clk_026mhz000_bufg_inst (
+        .I(trx_clk_026mhz000_ig),
+        .O(trx_clk_026mhz000_g)
     );
     
     
@@ -491,37 +491,37 @@ module top(
     
     
     
-    // CLOCK WIZ 0 - 26 MHz --> 50 MHz
-    clk_wiz_0   clk_wiz_0_inst(
-        // Clock out ports  
-        .clk_wiz_0_050mhz000(clk_wiz_0_050mhz000),
-        
-        // Status and control signals               
-        .reset(reset_ibuf),          
-        .clk_wiz_0_locked(clk_wiz_0_locked),
-        
-        // Clock in ports
-        .trx_026mhz000(trx_clk_26mhz_g)
-    );
+//    // CLOCK WIZ 0 - 26 MHz --> 50 MHz
+//    clk_wiz_0   clk_wiz_0_inst(
+//        // Clock out ports  
+//        .clk_trx_050mhz000(clk_trx_050mhz000),
+//        
+//        // Status and control signals               
+//        .reset(reset_ibuf),          
+//        .clk_wiz_0_locked(clk_wiz_0_locked),
+//        
+//        // Clock in ports
+//        .trx_026mhz000(trx_clk_026mhz000_g)
+//    );
 
 
-    // CLOCK WIZ 1 - 50 MHz (Si5338-PLL / TRX-VCTCXO)
-    clk_wiz_1   clk_wiz_1_inst(
-        // Clock out ports  
-        .clk_wiz_1_177mhz778(clk_wiz_1_177mhz778),
-        .clk_wiz_1_050mhz000(clk_wiz_1_050mhz000),
-        .clk_wiz_1_025mhz000(clk_wiz_1_025mhz000),
-        .clk_wiz_1_012mhz000(clk_wiz_1_012mhz000),
-        
-        // Status and control signals               
-        .reset(reset_ibuf),
-        .clk_wiz_1_locked(clk_wiz_1_locked),
-        
-        // Clock in ports
-        .clk_in1_si5338(pll_clk_g),
-        .clk_in2_vctcxo(clk_wiz_0_050mhz000),
-        .clk_in_sel(!clk_wiz_0_locked)
-    );
+//    // CLOCK WIZ 1 - 50 MHz (Si5338-PLL / TRX-VCTCXO)
+//    clk_wiz_1   clk_wiz_1_inst(
+//        // Clock out ports  
+//        .clk_wiz_1_177mhz778(clk_wiz_1_177mhz778),
+//        .clk_wiz_1_050mhz000(clk_wiz_1_050mhz000),
+//        .clk_wiz_1_025mhz000(clk_wiz_1_025mhz000),
+//        .clk_wiz_1_012mhz000(clk_wiz_1_012mhz000),
+//        
+//        // Status and control signals               
+//        .reset(reset_ibuf),
+//        .clk_wiz_1_locked(clk_wiz_1_locked),
+//        
+//        // Clock in ports
+//        .clk_in1_si5338(pll_clk_g),
+//        .clk_in2_vctcxo(clk_wiz_0_050mhz000),
+//        .clk_in_sel(!clk_wiz_0_locked)
+//    );
     
     
     
@@ -661,10 +661,8 @@ module top(
         
         
     // Clocks in
-        .clk_177mhz778(clk_wiz_1_177mhz778),
-        .clk_050mhz000(clk_wiz_1_050mhz000),
-        .clk_025mhz000(clk_wiz_1_025mhz000),
-        .clk_012mhz000(clk_wiz_1_012mhz000),
+        .pll_clk_g(pll_clk_g),
+        .trx_clk_026mhz000_g(trx_clk_026mhz000_g),
         
     // MB Clock (83.333 MHz) 
         .mb_axi_clk_083mhz333(mb_axi_clk_083mhz333),
