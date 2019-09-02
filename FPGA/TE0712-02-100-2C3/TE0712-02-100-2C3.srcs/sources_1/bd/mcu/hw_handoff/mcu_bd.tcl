@@ -1139,12 +1139,12 @@ proc create_root_design { parentCell } {
    CONFIG.CLKOUT5_DRIVES {BUFG} \
    CONFIG.CLKOUT5_JITTER {106.952} \
    CONFIG.CLKOUT5_PHASE_ERROR {120.359} \
-   CONFIG.CLKOUT5_REQUESTED_OUT_FREQ {25} \
+   CONFIG.CLKOUT5_REQUESTED_OUT_FREQ {100} \
    CONFIG.CLKOUT5_USED {false} \
    CONFIG.CLKOUT6_DRIVES {BUFG} \
    CONFIG.CLKOUT6_JITTER {106.952} \
    CONFIG.CLKOUT6_PHASE_ERROR {120.359} \
-   CONFIG.CLKOUT6_REQUESTED_OUT_FREQ {12} \
+   CONFIG.CLKOUT6_REQUESTED_OUT_FREQ {100} \
    CONFIG.CLKOUT6_USED {false} \
    CONFIG.CLKOUT7_DRIVES {BUFG} \
    CONFIG.CLK_OUT1_PORT {clk_200mhz000} \
@@ -1152,8 +1152,8 @@ proc create_root_design { parentCell } {
    CONFIG.CLK_OUT2_PORT {clk_177mhz778} \
    CONFIG.CLK_OUT3_PORT {clk_050mhz000} \
    CONFIG.CLK_OUT4_PORT {clk_025mhz000} \
-   CONFIG.CLK_OUT5_PORT {clk_025mhz000} \
-   CONFIG.CLK_OUT6_PORT {clk_012mhz000} \
+   CONFIG.CLK_OUT5_PORT {clk_out5} \
+   CONFIG.CLK_OUT6_PORT {clk_out6} \
    CONFIG.FEEDBACK_SOURCE {FDBK_AUTO} \
    CONFIG.MMCM_BANDWIDTH {OPTIMIZED} \
    CONFIG.MMCM_CLKFBOUT_MULT_F {32} \
@@ -1541,13 +1541,13 @@ proc create_root_design { parentCell } {
   connect_bd_net -net axi_uart16550_0_ftdi_ip2intc_irpt [get_bd_pins axi_uart16550_FTDI_0/ip2intc_irpt] [get_bd_pins mb_0_axi_intc_concat/In2]
   connect_bd_net -net clk_012mhz000_n [get_bd_ports ufb_fpga_ft_12mhz_obuf] [get_bd_pins clk_pll_trx_in_MMCM_0/clk_012mhz000]
   connect_bd_net -net clk_025mhz000_n [get_bd_pins axi_quad_spi_0_CONFIG/ext_spi_clk] [get_bd_pins axi_quad_spi_1_TRX/ext_spi_clk] [get_bd_pins clk_pll_trx_in_PLL_0/clk_025mhz000]
+  connect_bd_net -net clk_050mhz000_n [get_bd_pins clk_pll_trx_in_PLL_0/clk_050mhz000] [get_bd_pins mii_to_rmii_ETHERNET/ref_clk]
   connect_bd_net -net clk_177mhz778_n [get_bd_pins clk_pll_trx_in_PLL_0/clk_177mhz778] [get_bd_pins mig_7series_0/sys_clk_i]
   connect_bd_net -net clk_LVDS_in_PLL_locked [get_bd_pins LVDS_016mhz000_SYSRESET_0/dcm_locked] [get_bd_pins LVDS_064mhz000_SYSRESET_0/dcm_locked] [get_bd_pins clk_lvds_in_MMCM_0/locked]
   connect_bd_net -net clk_LVDS_in_clk_016mhz000_lvds [get_bd_pins LVDS_016mhz000_SYSRESET_0/slowest_sync_clk] [get_bd_pins LVDS_in_SERDES_0/clk_div_in] [get_bd_pins LVDS_out_SERDES_0/clk_div_in] [get_bd_pins clk_lvds_in_MMCM_0/clk_016mhz000_lvds]
   connect_bd_net -net clk_LVDS_in_clk_064mhz000_lvds [get_bd_ports FSM_LVDS_clk_064mhz000] [get_bd_pins LVDS_064mhz000_SYSRESET_0/slowest_sync_clk] [get_bd_pins LVDS_in_AXIS_0/s_aclk] [get_bd_pins LVDS_in_CDC_0/clk] [get_bd_pins LVDS_in_CORDIC_0/aclk] [get_bd_pins LVDS_in_FFT_0/aclk] [get_bd_pins LVDS_in_FIFO_combiner_0/clk] [get_bd_pins LVDS_in_SERDES_0/clk_in] [get_bd_pins LVDS_in_ShiftRAM_0/CLK] [get_bd_pins LVDS_in_out_clk_BINCOUNTER_0/CLK] [get_bd_pins LVDS_out_CDC_0/qdpo_clk] [get_bd_pins LVDS_out_SERDES_0/clk_in] [get_bd_pins clk_lvds_in_MMCM_0/clk_064mhz000_lvds]
-  connect_bd_net -net clk_in_PLL_clk_050mhz000 [get_bd_pins clk_pll_trx_in_PLL_0/clk_050mhz000] [get_bd_pins mii_to_rmii_ETHERNET/ref_clk]
-  connect_bd_net -net clk_trx_050mhz000_PLL_clk_trx_050mhz000 [get_bd_pins clk_pll_trx_in_MMCM_0/clk_in1] [get_bd_pins clk_pll_trx_in_PLL_0/clk_in1] [get_bd_pins clk_trx_in_PLL_0/clk_trx_050mhz000]
   connect_bd_net -net clk_trx_050mhz000_PLL_locked [get_bd_pins clk_pll_trx_in_MMCM_0/clk_in_sel] [get_bd_pins clk_pll_trx_in_PLL_0/clk_in_sel] [get_bd_pins clk_trx_in_PLL_0/locked]
+  connect_bd_net -net clk_trx_050mhz000_n [get_bd_pins clk_pll_trx_in_MMCM_0/clk_in1] [get_bd_pins clk_pll_trx_in_PLL_0/clk_in1] [get_bd_pins clk_trx_in_PLL_0/clk_trx_050mhz000]
   connect_bd_net -net concat_ROTENC_0_dout [get_bd_pins concat_ROTENC_0/dout] [get_bd_pins rotenc_ACCU_0/B]
   connect_bd_net -net concat_ROTENC_0_pulse [get_bd_ports board_rotenc_pulse] [get_bd_pins concat_ROTENC_0/In0]
   connect_bd_net -net const_0xc000c000_dout [get_bd_pins LVDS_in_AND_0/Op2] [get_bd_pins const_width32_0xC000C000/dout]

@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-//Date        : Mon Sep  2 00:52:02 2019
+//Date        : Tue Sep  3 00:26:56 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -3226,7 +3226,7 @@ endmodule
 128 dots
 351 cycles
 351 cycles */
-(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=107,numReposBlks=80,numNonXlnxBlks=0,numHierBlks=27,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_board_cnt=2,da_clkrst_cnt=2,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
+(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=107,numReposBlks=80,numNonXlnxBlks=0,numHierBlks=27,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,\"\"\"\"\"da_board_cnt\"\"\"\"\"=2,\"\"\"\"\"da_clkrst_cnt\"\"\"\"\"=2,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
 module mcu
    (FSM_LVDS_clk_064mhz000,
     FSM_LVDS_in_0CMP_0_nomatch,
@@ -3346,10 +3346,10 @@ module mcu
     ufb_trx_txd_p);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.FSM_LVDS_CLK_064MHZ000 CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.FSM_LVDS_CLK_064MHZ000, CLK_DOMAIN mcu_clk_32mhz_LVDS_0_clk_064mhz000_lvds, FREQ_HZ 64000000, INSERT_VIP 0, PHASE 0.0" *) output FSM_LVDS_clk_064mhz000;
   output FSM_LVDS_in_0CMP_0_nomatch;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSM_LVDS_in_CORDIC_0_M_AXIS " *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME FSM_LVDS_in_CORDIC_0_M_AXIS, FREQ_HZ 64000000, HAS_TKEEP 0, HAS_TLAST 1, HAS_TREADY 0, HAS_TSTRB 0, INSERT_VIP 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value 14} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 16} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 13} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 32 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 44} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 44} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 44} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 44}, PHASE 0.0, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 44" *) output [31:0]FSM_LVDS_in_CORDIC_0_M_AXIS_tdata;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSM_LVDS_in_CORDIC_0_M_AXIS " *) output FSM_LVDS_in_CORDIC_0_M_AXIS_tlast;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSM_LVDS_in_CORDIC_0_M_AXIS " *) output [43:0]FSM_LVDS_in_CORDIC_0_M_AXIS_tuser;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSM_LVDS_in_CORDIC_0_M_AXIS " *) output FSM_LVDS_in_CORDIC_0_M_AXIS_tvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSM_LVDS_in_CORDIC_0_M_AXIS TDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME FSM_LVDS_in_CORDIC_0_M_AXIS, FREQ_HZ 64000000, HAS_TKEEP 0, HAS_TLAST 1, HAS_TREADY 0, HAS_TSTRB 0, INSERT_VIP 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value 14} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 16} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 13} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 32 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 44} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 44} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 44} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 44}, PHASE 0.0, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 44" *) output [31:0]FSM_LVDS_in_CORDIC_0_M_AXIS_tdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSM_LVDS_in_CORDIC_0_M_AXIS TLAST" *) output FSM_LVDS_in_CORDIC_0_M_AXIS_tlast;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSM_LVDS_in_CORDIC_0_M_AXIS TUSER" *) output [43:0]FSM_LVDS_in_CORDIC_0_M_AXIS_tuser;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSM_LVDS_in_CORDIC_0_M_AXIS TVALID" *) output FSM_LVDS_in_CORDIC_0_M_AXIS_tvalid;
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.FSM_LVDS_IN_FFT_0_FRAMESTARTED INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.FSM_LVDS_IN_FFT_0_FRAMESTARTED, PortWidth 1, SENSITIVITY EDGE_RISING" *) output FSM_LVDS_in_FFT_0_FrameStarted;
   output [7:0]FSM_LVDS_in_FFT_0_pntIdx;
   input [0:0]FSM_LVDS_in_bitslip;
@@ -3627,13 +3627,13 @@ module mcu
   wire axi_uart16550_0_uart_TxD;
   wire clk_012mhz000_n;
   wire clk_025mhz000_n;
+  wire clk_050mhz000_n;
   wire clk_177mhz778_n;
   wire clk_LVDS_in_PLL_locked;
   wire clk_LVDS_in_clk_016mhz000_lvds;
   wire clk_LVDS_in_clk_064mhz000_lvds;
-  wire clk_in_PLL_clk_050mhz000;
-  wire clk_trx_050mhz000_PLL_clk_trx_050mhz000;
   wire clk_trx_050mhz000_PLL_locked;
+  wire clk_trx_050mhz000_n;
   wire [31:0]concat_ROTENC_0_dout;
   wire concat_ROTENC_0_pulse;
   wire [31:0]const_0xc000c000_dout;
@@ -4715,21 +4715,21 @@ module mcu
         .locked(clk_LVDS_in_PLL_locked));
   mcu_clk_in_PLL_0_0 clk_pll_trx_in_MMCM_0
        (.clk_012mhz000(clk_012mhz000_n),
-        .clk_in1(clk_trx_050mhz000_PLL_clk_trx_050mhz000),
+        .clk_in1(clk_trx_050mhz000_n),
         .clk_in2(pll_clk_g),
         .clk_in_sel(clk_trx_050mhz000_PLL_locked),
         .reset(mb_0_reset_aux_reset_in));
   mcu_clk_trx_050mhz000_PLL_0 clk_pll_trx_in_PLL_0
        (.clk_025mhz000(clk_025mhz000_n),
-        .clk_050mhz000(clk_in_PLL_clk_050mhz000),
+        .clk_050mhz000(clk_050mhz000_n),
         .clk_177mhz778(clk_177mhz778_n),
-        .clk_in1(clk_trx_050mhz000_PLL_clk_trx_050mhz000),
+        .clk_in1(clk_trx_050mhz000_n),
         .clk_in2(pll_clk_g),
         .clk_in_sel(clk_trx_050mhz000_PLL_locked),
         .reset(mb_0_reset_aux_reset_in));
   mcu_clk_wiz_0_0 clk_trx_in_PLL_0
        (.clk_in1(trx_clk_026mhz000_g),
-        .clk_trx_050mhz000(clk_trx_050mhz000_PLL_clk_trx_050mhz000),
+        .clk_trx_050mhz000(clk_trx_050mhz000_n),
         .locked(clk_trx_050mhz000_PLL_locked));
   mcu_xlconcat_ROTENC_0 concat_ROTENC_0
        (.In0(concat_ROTENC_0_pulse),
@@ -5602,7 +5602,7 @@ module mcu
         .phy2rmii_crs_dv(mii_to_rmii_ETHERNET_RMII_PHY_M_CRS_DV),
         .phy2rmii_rx_er(mii_to_rmii_ETHERNET_RMII_PHY_M_RX_ER),
         .phy2rmii_rxd(mii_to_rmii_ETHERNET_RMII_PHY_M_RXD),
-        .ref_clk(clk_in_PLL_clk_050mhz000),
+        .ref_clk(clk_050mhz000_n),
         .rmii2mac_col(axi_ethernetlite_0_MII_COL),
         .rmii2mac_crs(axi_ethernetlite_0_MII_CRS),
         .rmii2mac_rx_clk(axi_ethernetlite_0_MII_RX_CLK),

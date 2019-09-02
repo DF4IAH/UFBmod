@@ -104,8 +104,8 @@ wire clk_in2_mcu_clk_trx_050mhz000_PLL_0;
   wire        clk_177mhz778_mcu_clk_trx_050mhz000_PLL_0;
   wire        clk_050mhz000_mcu_clk_trx_050mhz000_PLL_0;
   wire        clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0;
-  wire        clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0;
-  wire        clk_012mhz000_mcu_clk_trx_050mhz000_PLL_0;
+  wire        clk_out5_mcu_clk_trx_050mhz000_PLL_0;
+  wire        clk_out6_mcu_clk_trx_050mhz000_PLL_0;
   wire        clk_out7_mcu_clk_trx_050mhz000_PLL_0;
 
   wire [15:0] do_unused;

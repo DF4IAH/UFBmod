@@ -149,10 +149,10 @@ module top_tb;
 
     
     // FPGA Config
-    .fpga_io(1'b0),
+    .fpga_io(),
 
     // ULI System (Trenz-Electronic CPLD)
-    .uli_system(1'b0),
+    .uli_system(),
 
 
     // SPI-QUAD

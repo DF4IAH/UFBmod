@@ -11,6 +11,7 @@
             <top_module name="ipif_pkg" />
             <top_module name="lib_pkg" />
             <top_module name="lmb_bram_if_funcs" />
+            <top_module name="mac_pkg" />
             <top_module name="mdm_funcs" />
             <top_module name="tc_types" />
             <top_module name="top_tb" />
@@ -19,15 +20,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="9258565719fs"></ZoomStartTime>
-      <ZoomEndTime time="9447171411fs"></ZoomEndTime>
-      <Cursor1Time time="9370000000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="151191230fs"></ZoomEndTime>
+      <Cursor1Time time="0fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="300"></NameColumnWidth>
-      <ValueColumnWidth column_width="166"></ValueColumnWidth>
+      <ValueColumnWidth column_width="162"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="19" />
+   <WVObjectSize size="16" />
    <wave_markers>
       <marker time="3400100000" label="" />
       <marker time="5322488780" label="" />
@@ -164,6 +165,106 @@
          <obj_property name="ObjectShortName">ddr3_cas</obj_property>
       </wvobject>
    </wvobject>
+   <wvobject type="divider" fp_name="divider102">
+      <obj_property name="label">LVDS_in_FFT</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group113" type="group">
+      <obj_property name="label">SERDES</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/ufb_trx_rxd09_p" type="logic">
+         <obj_property name="ElementShortName">ufb_trx_rxd09_p</obj_property>
+         <obj_property name="ObjectShortName">ufb_trx_rxd09_p</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/ufb_trx_rxd09_n" type="logic">
+         <obj_property name="ElementShortName">ufb_trx_rxd09_n</obj_property>
+         <obj_property name="ObjectShortName">ufb_trx_rxd09_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_SERDES_0/io_reset" type="logic">
+         <obj_property name="ElementShortName">io_reset</obj_property>
+         <obj_property name="ObjectShortName">io_reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_SERDES_0/bitslip" type="array">
+         <obj_property name="ElementShortName">bitslip[0:0]</obj_property>
+         <obj_property name="ObjectShortName">bitslip[0:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_SERDES_0/data_in_to_device" type="array">
+         <obj_property name="ElementShortName">data_in_to_device[7:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_to_device[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group114" type="group">
+      <obj_property name="label">COMBINER</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_FIFO_combiner_0/wr_en" type="logic">
+         <obj_property name="ElementShortName">wr_en</obj_property>
+         <obj_property name="ObjectShortName">wr_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_FIFO_combiner_0/rd_en" type="logic">
+         <obj_property name="ElementShortName">rd_en</obj_property>
+         <obj_property name="ObjectShortName">rd_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_FIFO_combiner_0/dout" type="array">
+         <obj_property name="ElementShortName">dout[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group115" type="group">
+      <obj_property name="label">FFT</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_FFT_0/s_axis_data_tlast" type="logic">
+         <obj_property name="ElementShortName">s_axis_data_tlast</obj_property>
+         <obj_property name="ObjectShortName">s_axis_data_tlast</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_FFT_0/s_axis_data_tdata" type="array">
+         <obj_property name="ElementShortName">s_axis_data_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axis_data_tdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_FFT_0/m_axis_data_tdata" type="array">
+         <obj_property name="ElementShortName">m_axis_data_tdata[47:0]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_data_tdata[47:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_FFT_0/m_axis_data_tlast" type="logic">
+         <obj_property name="ElementShortName">m_axis_data_tlast</obj_property>
+         <obj_property name="ObjectShortName">m_axis_data_tlast</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_FFT_0/m_axis_data_tuser" type="array">
+         <obj_property name="ElementShortName">m_axis_data_tuser[7:0]</obj_property>
+         <obj_property name="ObjectShortName">m_axis_data_tuser[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/FSM_LVDS_in_FFT_0_FrameStarted" type="logic">
+         <obj_property name="ElementShortName">FSM_LVDS_in_FFT_0_FrameStarted</obj_property>
+         <obj_property name="ObjectShortName">FSM_LVDS_in_FFT_0_FrameStarted</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/FSM_LVDS_in_FFT_0_pntIdx" type="array">
+         <obj_property name="ElementShortName">FSM_LVDS_in_FFT_0_pntIdx[7:0]</obj_property>
+         <obj_property name="ObjectShortName">FSM_LVDS_in_FFT_0_pntIdx[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group116" type="group">
+      <obj_property name="label">CORDIC</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/FSM_LVDS_in_CORDIC_0_M_AXIS_tlast" type="logic">
+         <obj_property name="ElementShortName">FSM_LVDS_in_CORDIC_0_M_AXIS_tlast</obj_property>
+         <obj_property name="ObjectShortName">FSM_LVDS_in_CORDIC_0_M_AXIS_tlast</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/FSM_LVDS_in_CORDIC_0_M_AXIS_tvalid" type="logic">
+         <obj_property name="ElementShortName">FSM_LVDS_in_CORDIC_0_M_AXIS_tvalid</obj_property>
+         <obj_property name="ObjectShortName">FSM_LVDS_in_CORDIC_0_M_AXIS_tvalid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/FSM_LVDS_in_CORDIC_0_M_AXIS_tdata" type="array">
+         <obj_property name="ElementShortName">FSM_LVDS_in_CORDIC_0_M_AXIS_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">FSM_LVDS_in_CORDIC_0_M_AXIS_tdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/FSM_LVDS_in_CORDIC_0_M_AXIS_tuser" type="array">
+         <obj_property name="ElementShortName">FSM_LVDS_in_CORDIC_0_M_AXIS_tuser[43:0]</obj_property>
+         <obj_property name="ObjectShortName">FSM_LVDS_in_CORDIC_0_M_AXIS_tuser[43:0]</obj_property>
+      </wvobject>
+   </wvobject>
    <wvobject type="divider" fp_name="divider78">
       <obj_property name="label">Rotary Encoder</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -184,51 +285,45 @@
          <obj_property name="ObjectShortName">board_rotenc_q</obj_property>
       </wvobject>
    </wvobject>
-   <wvobject fp_name="/top_tb/top_i/board_rotenc_pulse" type="logic">
-      <obj_property name="ElementShortName">board_rotenc_pulse</obj_property>
-      <obj_property name="ObjectShortName">board_rotenc_pulse</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_tb/top_i/board_rotenc_up" type="logic">
-      <obj_property name="ElementShortName">board_rotenc_up</obj_property>
-      <obj_property name="ObjectShortName">board_rotenc_up</obj_property>
-   </wvobject>
    <wvobject fp_name="group88" type="group">
       <obj_property name="label">Decoder</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_tb/top_i/board_rotenc_pulse_r" type="logic">
-      <obj_property name="ElementShortName">board_rotenc_pulse_r</obj_property>
-      <obj_property name="ObjectShortName">board_rotenc_pulse_r</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_tb/top_i/board_rotenc_push_r" type="logic">
-      <obj_property name="ElementShortName">board_rotenc_push_r</obj_property>
-      <obj_property name="ObjectShortName">board_rotenc_push_r</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_tb/top_i/board_rotenc_i_r" type="logic">
-      <obj_property name="ElementShortName">board_rotenc_i_r</obj_property>
-      <obj_property name="ObjectShortName">board_rotenc_i_r</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_tb/top_i/board_rotenc_i_rr" type="logic">
-      <obj_property name="ElementShortName">board_rotenc_i_rr</obj_property>
-      <obj_property name="ObjectShortName">board_rotenc_i_rr</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_tb/top_i/board_rotenc_q_r" type="logic">
-      <obj_property name="ElementShortName">board_rotenc_q_r</obj_property>
-      <obj_property name="ObjectShortName">board_rotenc_q_r</obj_property>
-   </wvobject>
-   <wvobject fp_name="/top_tb/top_i/board_rotenc_q_rr" type="logic">
-      <obj_property name="ElementShortName">board_rotenc_q_rr</obj_property>
-      <obj_property name="ObjectShortName">board_rotenc_q_rr</obj_property>
+      <wvobject fp_name="/top_tb/top_i/board_rotenc_pulse_r" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_pulse_r</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_pulse_r</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/board_rotenc_push_r" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_push_r</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_push_r</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/board_rotenc_i_r" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_i_r</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_i_r</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/board_rotenc_i_rr" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_i_rr</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_i_rr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/board_rotenc_q_r" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_q_r</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_q_r</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/board_rotenc_q_rr" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_q_rr</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_q_rr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/board_rotenc_pulse" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_pulse</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_pulse</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/board_rotenc_up" type="logic">
+         <obj_property name="ElementShortName">board_rotenc_up</obj_property>
+         <obj_property name="ObjectShortName">board_rotenc_up</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="group271" type="group">
       <obj_property name="label">Accu</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/c_accum_0_ROTENC/Q" type="array">
-         <obj_property name="ElementShortName">Q[31:0]</obj_property>
-         <obj_property name="ObjectShortName">Q[31:0]</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject type="divider" fp_name="divider167">
       <obj_property name="label">Internals</obj_property>
@@ -254,50 +349,15 @@
    <wvobject fp_name="group97" type="group">
       <obj_property name="label">Onewire</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="group101" type="group">
          <obj_property name="label">1_Address</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
-         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/axi_gpio_1_ONEWIRE_addr/U0/gpio_io_o" type="array">
-            <obj_property name="ElementShortName">gpio_io_o[14:0]</obj_property>
-            <obj_property name="ObjectShortName">gpio_io_o[14:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/axi_gpio_1_ONEWIRE_addr/U0/gpio_io_t" type="array">
-            <obj_property name="ElementShortName">gpio_io_t[14:0]</obj_property>
-            <obj_property name="ObjectShortName">gpio_io_t[14:0]</obj_property>
-            <obj_property name="CustomSignalColor">#A52A2A</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
-         </wvobject>
       </wvobject>
       <wvobject fp_name="group98" type="group">
          <obj_property name="label">2_Data</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
-         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/axi_gpio_2_ONEWIRE_data/U0/gpio_io_o" type="array">
-            <obj_property name="ElementShortName">gpio_io_o[7:0]</obj_property>
-            <obj_property name="ObjectShortName">gpio_io_o[7:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/axi_gpio_2_ONEWIRE_data/U0/gpio_io_t" type="array">
-            <obj_property name="ElementShortName">gpio_io_t[7:0]</obj_property>
-            <obj_property name="ObjectShortName">gpio_io_t[7:0]</obj_property>
-            <obj_property name="CustomSignalColor">#A52A2A</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
-         </wvobject>
-         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/axi_gpio_2_ONEWIRE_data/U0/gpio2_io_o" type="array">
-            <obj_property name="ElementShortName">gpio2_io_o[15:0]</obj_property>
-            <obj_property name="ObjectShortName">gpio2_io_o[15:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/axi_gpio_2_ONEWIRE_data/U0/gpio2_io_i" type="array">
-            <obj_property name="ElementShortName">gpio2_io_i[15:0]</obj_property>
-            <obj_property name="ObjectShortName">gpio2_io_i[15:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/axi_gpio_2_ONEWIRE_data/U0/gpio2_io_t" type="array">
-            <obj_property name="ElementShortName">gpio2_io_t[15:0]</obj_property>
-            <obj_property name="ObjectShortName">gpio2_io_t[15:0]</obj_property>
-            <obj_property name="CustomSignalColor">#A52A2A</obj_property>
-            <obj_property name="UseCustomSignalColor">true</obj_property>
-         </wvobject>
       </wvobject>
       <wvobject fp_name="group104" type="group">
          <obj_property name="label">3_Module</obj_property>
@@ -331,10 +391,6 @@
             <obj_property name="label">Access bus</obj_property>
             <obj_property name="DisplayName">label</obj_property>
             <obj_property name="isExpanded"></obj_property>
-            <wvobject fp_name="/top_tb/top_i/onewire_i/rdy_o" type="logic">
-               <obj_property name="ElementShortName">rdy_o</obj_property>
-               <obj_property name="ObjectShortName">rdy_o</obj_property>
-            </wvobject>
             <wvobject fp_name="/top_tb/top_i/onewire_i/stb_i" type="logic">
                <obj_property name="ElementShortName">stb_i</obj_property>
                <obj_property name="ObjectShortName">stb_i</obj_property>
@@ -342,21 +398,6 @@
             <wvobject fp_name="/top_tb/top_i/onewire_i/wr_i" type="logic">
                <obj_property name="ElementShortName">wr_i</obj_property>
                <obj_property name="ObjectShortName">wr_i</obj_property>
-            </wvobject>
-            <wvobject fp_name="/top_tb/top_i/onewire_i/gpio_rtl_1_onewire_addr_out" type="array">
-               <obj_property name="ElementShortName">gpio_rtl_1_onewire_addr_out[14:0]</obj_property>
-               <obj_property name="ObjectShortName">gpio_rtl_1_onewire_addr_out[14:0]</obj_property>
-               <obj_property name="Radix">HEXRADIX</obj_property>
-            </wvobject>
-            <wvobject fp_name="/top_tb/top_i/onewire_i/gpio_rtl_2_onewire_data_out" type="array">
-               <obj_property name="ElementShortName">gpio_rtl_2_onewire_data_out[7:0]</obj_property>
-               <obj_property name="ObjectShortName">gpio_rtl_2_onewire_data_out[7:0]</obj_property>
-               <obj_property name="Radix">HEXRADIX</obj_property>
-            </wvobject>
-            <wvobject fp_name="/top_tb/top_i/onewire_i/gpio_rtl_2_onewire_data_in" type="array">
-               <obj_property name="ElementShortName">gpio_rtl_2_onewire_data_in[7:0]</obj_property>
-               <obj_property name="ObjectShortName">gpio_rtl_2_onewire_data_in[7:0]</obj_property>
-               <obj_property name="Radix">HEXRADIX</obj_property>
             </wvobject>
          </wvobject>
          <wvobject fp_name="group119" type="group">
@@ -444,8 +485,8 @@
                <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
             </wvobject>
             <wvobject fp_name="/top_tb/top_i/onewire_i/sm2_10ns_timer_val" type="array">
-               <obj_property name="ElementShortName">sm2_10ns_timer_val[8:0]</obj_property>
-               <obj_property name="ObjectShortName">sm2_10ns_timer_val[8:0]</obj_property>
+               <obj_property name="ElementShortName">sm2_10ns_timer_val[9:0]</obj_property>
+               <obj_property name="ObjectShortName">sm2_10ns_timer_val[9:0]</obj_property>
                <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
             </wvobject>
          </wvobject>
