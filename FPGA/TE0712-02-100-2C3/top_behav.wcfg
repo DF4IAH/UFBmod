@@ -20,13 +20,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="151191230fs"></ZoomEndTime>
-      <Cursor1Time time="0fs"></Cursor1Time>
+      <ZoomStartTime time="4019450000fs"></ZoomStartTime>
+      <ZoomEndTime time="4501530083fs"></ZoomEndTime>
+      <Cursor1Time time="4316683000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="300"></NameColumnWidth>
-      <ValueColumnWidth column_width="162"></ValueColumnWidth>
+      <ValueColumnWidth column_width="154"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="16" />
    <wave_markers>
@@ -185,6 +185,14 @@
          <obj_property name="ElementShortName">io_reset</obj_property>
          <obj_property name="ObjectShortName">io_reset</obj_property>
       </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_SERDES_0/clk_in" type="logic">
+         <obj_property name="ElementShortName">clk_in</obj_property>
+         <obj_property name="ObjectShortName">clk_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_SERDES_0/clk_div_in" type="logic">
+         <obj_property name="ElementShortName">clk_div_in</obj_property>
+         <obj_property name="ObjectShortName">clk_div_in</obj_property>
+      </wvobject>
       <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_SERDES_0/bitslip" type="array">
          <obj_property name="ElementShortName">bitslip[0:0]</obj_property>
          <obj_property name="ObjectShortName">bitslip[0:0]</obj_property>
@@ -192,6 +200,7 @@
       <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_SERDES_0/data_in_to_device" type="array">
          <obj_property name="ElementShortName">data_in_to_device[7:0]</obj_property>
          <obj_property name="ObjectShortName">data_in_to_device[7:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group114" type="group">

@@ -58,4 +58,3 @@ set_input_jitter [get_clocks -of_objects [get_ports clk_in1_p]] 0.15625
 
 
 set_property PHASESHIFT_MODE WAVEFORM [get_cells -hierarchical *adv*]
-set_property CLOCK_DELAY_GROUP group_mcu_clk_32mhz_LVDS_0 [get_nets -hierarchical {clk_064mhz000_lvds clk_016mhz000_lvds}]

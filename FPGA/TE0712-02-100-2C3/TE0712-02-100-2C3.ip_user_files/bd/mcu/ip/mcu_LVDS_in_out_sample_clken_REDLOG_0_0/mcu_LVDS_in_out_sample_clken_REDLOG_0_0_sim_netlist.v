@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
 // Date        : Sun Sep  1 20:49:56 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_LVDS_in_out_sample_clken_REDLOG_0_0/mcu_LVDS_in_out_sample_clken_REDLOG_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top mcu_LVDS_in_out_sample_clken_REDLOG_0_0 -prefix
+//               mcu_LVDS_in_out_sample_clken_REDLOG_0_0_ mcu_LVDS_in_out_sample_clken_REDLOG_0_0_sim_netlist.v
 // Design      : mcu_LVDS_in_out_sample_clken_REDLOG_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -28,7 +28,6 @@ module mcu_LVDS_in_out_sample_clken_REDLOG_0_0
         .Res(Res));
 endmodule
 
-(* ORIG_REF_NAME = "util_reduced_logic_v2_0_4_util_reduced_logic" *) 
 module mcu_LVDS_in_out_sample_clken_REDLOG_0_0_util_reduced_logic_v2_0_4_util_reduced_logic
    (Res,
     Op1);

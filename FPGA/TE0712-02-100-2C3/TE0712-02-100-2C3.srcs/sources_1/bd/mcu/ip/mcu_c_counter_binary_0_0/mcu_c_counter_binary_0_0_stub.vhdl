@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
--- Date        : Sun Sep  1 20:48:46 2019
+-- Date        : Sun Sep  1 20:48:44 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_c_counter_binary_0_0/mcu_c_counter_binary_0_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top mcu_c_counter_binary_0_0 -prefix
+--               mcu_c_counter_binary_0_0_ mcu_c_counter_binary_0_0_stub.vhdl
 -- Design      : mcu_c_counter_binary_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tfgg484-2

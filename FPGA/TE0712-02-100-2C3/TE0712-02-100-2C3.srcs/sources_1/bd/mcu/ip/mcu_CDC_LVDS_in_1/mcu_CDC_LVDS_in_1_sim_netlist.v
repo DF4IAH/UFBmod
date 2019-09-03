@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
 // Date        : Sun Sep  1 20:47:13 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_CDC_LVDS_in_1/mcu_CDC_LVDS_in_1_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top mcu_CDC_LVDS_in_1 -prefix
+//               mcu_CDC_LVDS_in_1_ mcu_CDC_LVDS_in_1_sim_netlist.v
 // Design      : mcu_CDC_LVDS_in_1
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -620,8 +620,8 @@ module mcu_CDC_LVDS_in_1
 endmodule
 
 (* DEF_VAL = "1'b1" *) (* DEST_SYNC_FF = "5" *) (* INIT = "1" *) 
-(* INIT_SYNC_FF = "0" *) (* ORIG_REF_NAME = "xpm_cdc_sync_rst" *) (* SIM_ASSERT_CHK = "0" *) 
-(* VERSION = "0" *) (* XPM_MODULE = "TRUE" *) (* xpm_cdc = "SYNC_RST" *) 
+(* INIT_SYNC_FF = "0" *) (* SIM_ASSERT_CHK = "0" *) (* VERSION = "0" *) 
+(* XPM_MODULE = "TRUE" *) (* xpm_cdc = "SYNC_RST" *) 
 module mcu_CDC_LVDS_in_1_xpm_cdc_sync_rst
    (src_rst,
     dest_clk,
@@ -692,7 +692,6 @@ module mcu_CDC_LVDS_in_1_xpm_cdc_sync_rst
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module mcu_CDC_LVDS_in_1_blk_mem_gen_generic_cstr
    (D,
     ENA_dly_D,
@@ -774,7 +773,6 @@ module mcu_CDC_LVDS_in_1_blk_mem_gen_generic_cstr
         .s_axis_tvalid(s_axis_tvalid));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module mcu_CDC_LVDS_in_1_blk_mem_gen_prim_width
    (D,
     s_aclk,
@@ -987,7 +985,6 @@ module mcu_CDC_LVDS_in_1_blk_mem_gen_prim_width__parameterized1
         .s_axis_tvalid(s_axis_tvalid));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper" *) 
 module mcu_CDC_LVDS_in_1_blk_mem_gen_prim_wrapper
    (D,
     s_aclk,
@@ -1682,7 +1679,6 @@ module mcu_CDC_LVDS_in_1_blk_mem_gen_prim_wrapper__parameterized1
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module mcu_CDC_LVDS_in_1_blk_mem_gen_top
    (D,
     ENA_dly_D,
@@ -1741,7 +1737,6 @@ module mcu_CDC_LVDS_in_1_blk_mem_gen_top
         .s_axis_tvalid(s_axis_tvalid));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_3" *) 
 module mcu_CDC_LVDS_in_1_blk_mem_gen_v8_4_3
    (D,
     ENA_dly_D,
@@ -1800,7 +1795,6 @@ module mcu_CDC_LVDS_in_1_blk_mem_gen_v8_4_3
         .s_axis_tvalid(s_axis_tvalid));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_3_synth" *) 
 module mcu_CDC_LVDS_in_1_blk_mem_gen_v8_4_3_synth
    (D,
     ENA_dly_D,
@@ -1859,7 +1853,6 @@ module mcu_CDC_LVDS_in_1_blk_mem_gen_v8_4_3_synth
         .s_axis_tvalid(s_axis_tvalid));
 endmodule
 
-(* ORIG_REF_NAME = "compare" *) 
 module mcu_CDC_LVDS_in_1_compare
    (comp0,
     v1_reg);
@@ -2087,7 +2080,6 @@ module mcu_CDC_LVDS_in_1_compare_2
         .O(ram_full_fb_i_reg));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_ramfifo" *) 
 module mcu_CDC_LVDS_in_1_fifo_generator_ramfifo
    (wr_rst_busy,
     Q,
@@ -2195,7 +2187,6 @@ module mcu_CDC_LVDS_in_1_fifo_generator_ramfifo
         .wr_rst_busy(wr_rst_busy));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_top" *) 
 module mcu_CDC_LVDS_in_1_fifo_generator_top
    (wr_rst_busy,
     Q,
@@ -2317,7 +2308,7 @@ endmodule
 (* C_WR_DEPTH_WRCH = "16" *) (* C_WR_FREQ = "1" *) (* C_WR_PNTR_WIDTH = "6" *) 
 (* C_WR_PNTR_WIDTH_AXIS = "10" *) (* C_WR_PNTR_WIDTH_RACH = "4" *) (* C_WR_PNTR_WIDTH_RDCH = "10" *) 
 (* C_WR_PNTR_WIDTH_WACH = "4" *) (* C_WR_PNTR_WIDTH_WDCH = "10" *) (* C_WR_PNTR_WIDTH_WRCH = "4" *) 
-(* C_WR_RESPONSE_LATENCY = "1" *) (* ORIG_REF_NAME = "fifo_generator_v13_2_4" *) 
+(* C_WR_RESPONSE_LATENCY = "1" *) 
 module mcu_CDC_LVDS_in_1_fifo_generator_v13_2_4
    (backup,
     backup_marker,
@@ -3353,7 +3344,6 @@ module mcu_CDC_LVDS_in_1_fifo_generator_v13_2_4
         .wr_rst_busy(wr_rst_busy));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_v13_2_4_synth" *) 
 module mcu_CDC_LVDS_in_1_fifo_generator_v13_2_4_synth
    (wr_rst_busy,
     Q,
@@ -3408,7 +3398,6 @@ module mcu_CDC_LVDS_in_1_fifo_generator_v13_2_4_synth
         .wr_rst_busy(wr_rst_busy));
 endmodule
 
-(* ORIG_REF_NAME = "memory" *) 
 module mcu_CDC_LVDS_in_1_memory
    (ENA_dly_D,
     Q,
@@ -4095,7 +4084,6 @@ module mcu_CDC_LVDS_in_1_memory
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "rd_bin_cntr" *) 
 module mcu_CDC_LVDS_in_1_rd_bin_cntr
    (v1_reg,
     Q,
@@ -4559,7 +4547,6 @@ module mcu_CDC_LVDS_in_1_rd_bin_cntr
         .O(\gc0.count_d1_reg[8]_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "rd_fwft" *) 
 module mcu_CDC_LVDS_in_1_rd_fwft
    (ENB_I,
     E,
@@ -4766,7 +4753,6 @@ module mcu_CDC_LVDS_in_1_rd_fwft
         .O(m_axis_tvalid));
 endmodule
 
-(* ORIG_REF_NAME = "rd_logic" *) 
 module mcu_CDC_LVDS_in_1_rd_logic
    (ENB_I,
     E,
@@ -4866,7 +4852,6 @@ module mcu_CDC_LVDS_in_1_rd_logic
         .v1_reg_1(\c2/v1_reg ));
 endmodule
 
-(* ORIG_REF_NAME = "rd_status_flags_ss" *) 
 module mcu_CDC_LVDS_in_1_rd_status_flags_ss
    (out,
     \gmux.gm[1].gms.ms ,
@@ -4949,7 +4934,6 @@ module mcu_CDC_LVDS_in_1_rd_status_flags_ss
         .S(ram_empty_i_reg_1));
 endmodule
 
-(* ORIG_REF_NAME = "reset_blk_ramfifo" *) 
 module mcu_CDC_LVDS_in_1_reset_blk_ramfifo
    (wr_rst_busy,
     out,
@@ -5076,7 +5060,6 @@ module mcu_CDC_LVDS_in_1_reset_blk_ramfifo
         .O(wr_rst_busy_i));
 endmodule
 
-(* ORIG_REF_NAME = "wr_bin_cntr" *) 
 module mcu_CDC_LVDS_in_1_wr_bin_cntr
    (Q,
     \gcc0.gc0.count_d1_reg[9]_0 ,
@@ -5352,7 +5335,6 @@ module mcu_CDC_LVDS_in_1_wr_bin_cntr
         .R(\gcc0.gc0.count_d1_reg[0]_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "wr_logic" *) 
 module mcu_CDC_LVDS_in_1_wr_logic
    (out,
     E,
@@ -5411,7 +5393,6 @@ module mcu_CDC_LVDS_in_1_wr_logic
         .s_aclk(s_aclk));
 endmodule
 
-(* ORIG_REF_NAME = "wr_status_flags_ss" *) 
 module mcu_CDC_LVDS_in_1_wr_status_flags_ss
    (out,
     E,

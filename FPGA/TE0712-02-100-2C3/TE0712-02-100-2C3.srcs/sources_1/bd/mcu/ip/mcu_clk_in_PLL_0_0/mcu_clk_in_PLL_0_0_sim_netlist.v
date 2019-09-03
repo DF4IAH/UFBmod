@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
 // Date        : Sun Sep  1 20:47:40 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_clk_in_PLL_0_0/mcu_clk_in_PLL_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top mcu_clk_in_PLL_0_0 -prefix
+//               mcu_clk_in_PLL_0_0_ mcu_clk_in_PLL_0_0_sim_netlist.v
 // Design      : mcu_clk_in_PLL_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -39,7 +39,6 @@ module mcu_clk_in_PLL_0_0
         .reset(reset));
 endmodule
 
-(* ORIG_REF_NAME = "mcu_clk_in_PLL_0_0_clk_wiz" *) 
 module mcu_clk_in_PLL_0_0_mcu_clk_in_PLL_0_0_clk_wiz
    (clk_in2,
     clk_in_sel,

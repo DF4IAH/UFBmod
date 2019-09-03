@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
 -- Date        : Sun Sep  1 20:49:56 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_LVDS_in_out_sample_clken_REDLOG_0_0/mcu_LVDS_in_out_sample_clken_REDLOG_0_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top mcu_LVDS_in_out_sample_clken_REDLOG_0_0 -prefix
+--               mcu_LVDS_in_out_sample_clken_REDLOG_0_0_ mcu_LVDS_in_out_sample_clken_REDLOG_0_0_stub.vhdl
 -- Design      : mcu_LVDS_in_out_sample_clken_REDLOG_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tfgg484-2

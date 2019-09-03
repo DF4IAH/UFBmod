@@ -386,9 +386,6 @@
   "../../../bd/mcu/ip/mcu_proc_sys_reset_0_0/sim/mcu_proc_sys_reset_0_0.vhd" \
   "../../../bd/mcu/ip/mcu_sys_reset_16mhz000_0/sim/mcu_sys_reset_16mhz000_0.vhd" \
 -endlib
--makelib ies_lib/xil_defaultlib \
-  "../../../bd/mcu/sim/mcu.v" \
--endlib
 -makelib ies_lib/cordic_v6_0_15 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/42d6/hdl/cordic_v6_0_vh_rfs.vhd" \
 -endlib
@@ -426,6 +423,7 @@
   "../../../bd/mcu/ip/mcu_LVDS_in_tlast_gen_REDLOG_0_0/sim/mcu_LVDS_in_tlast_gen_REDLOG_0_0.v" \
   "../../../bd/mcu/ip/mcu_util_vector_logic_0_2/sim/mcu_util_vector_logic_0_2.v" \
   "../../../bd/mcu/ip/mcu_const_width32_0x80004000_0/sim/mcu_const_width32_0x80004000_0.v" \
+  "../../../bd/mcu/sim/mcu.v" \
 -endlib
 -makelib ies_lib/axi_protocol_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \

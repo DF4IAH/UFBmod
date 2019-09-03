@@ -983,58 +983,59 @@ proc create_root_design { parentCell } {
   # Create instance: axi_uart16550_FTDI_0, and set properties
   set axi_uart16550_FTDI_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_uart16550:2.0 axi_uart16550_FTDI_0 ]
 
-  # Create instance: clk_lvds_in_MMCM_0, and set properties
-  set clk_lvds_in_MMCM_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_lvds_in_MMCM_0 ]
+  # Create instance: clk_lvds_in_PLL_0, and set properties
+  set clk_lvds_in_PLL_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_lvds_in_PLL_0 ]
   set_property -dict [ list \
    CONFIG.AXI_DRP {false} \
    CONFIG.CLKIN1_JITTER_PS {156.25} \
    CONFIG.CLKOUT1_DRIVES {BUFG} \
-   CONFIG.CLKOUT1_JITTER {160.713} \
+   CONFIG.CLKOUT1_JITTER {149.670} \
    CONFIG.CLKOUT1_MATCHED_ROUTING {true} \
-   CONFIG.CLKOUT1_PHASE_ERROR {108.152} \
-   CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {64} \
+   CONFIG.CLKOUT1_PHASE_ERROR {114.696} \
+   CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {128} \
+   CONFIG.CLKOUT1_USED {true} \
    CONFIG.CLKOUT2_DRIVES {BUFG} \
-   CONFIG.CLKOUT2_JITTER {222.903} \
-   CONFIG.CLKOUT2_MATCHED_ROUTING {true} \
-   CONFIG.CLKOUT2_PHASE_ERROR {108.152} \
-   CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {16} \
+   CONFIG.CLKOUT2_JITTER {174.718} \
+   CONFIG.CLKOUT2_MATCHED_ROUTING {false} \
+   CONFIG.CLKOUT2_PHASE_ERROR {114.696} \
+   CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {64} \
    CONFIG.CLKOUT2_USED {true} \
    CONFIG.CLKOUT3_DRIVES {BUFG} \
-   CONFIG.CLKOUT3_JITTER {291.105} \
-   CONFIG.CLKOUT3_PHASE_ERROR {203.212} \
-   CONFIG.CLKOUT3_REQUESTED_OUT_FREQ {100.000} \
-   CONFIG.CLKOUT3_USED {false} \
+   CONFIG.CLKOUT3_JITTER {237.501} \
+   CONFIG.CLKOUT3_PHASE_ERROR {114.696} \
+   CONFIG.CLKOUT3_REQUESTED_OUT_FREQ {16} \
+   CONFIG.CLKOUT3_USED {true} \
    CONFIG.CLKOUT4_DRIVES {BUFG} \
-   CONFIG.CLKOUT4_JITTER {429.931} \
-   CONFIG.CLKOUT4_PHASE_ERROR {203.212} \
+   CONFIG.CLKOUT4_JITTER {158.007} \
+   CONFIG.CLKOUT4_PHASE_ERROR {114.696} \
    CONFIG.CLKOUT4_REQUESTED_OUT_FREQ {100.000} \
    CONFIG.CLKOUT4_USED {false} \
    CONFIG.CLKOUT5_DRIVES {BUFG} \
    CONFIG.CLKOUT6_DRIVES {BUFG} \
    CONFIG.CLKOUT7_DRIVES {BUFG} \
-   CONFIG.CLK_OUT1_PORT {clk_064mhz000_lvds} \
+   CONFIG.CLK_OUT1_PORT {clk_128mhz000_lvds} \
    CONFIG.CLK_OUT1_USE_FINE_PS_GUI {false} \
-   CONFIG.CLK_OUT2_PORT {clk_016mhz000_lvds} \
+   CONFIG.CLK_OUT2_PORT {clk_064mhz000_lvds} \
    CONFIG.CLK_OUT2_USE_FINE_PS_GUI {false} \
-   CONFIG.CLK_OUT3_PORT {clk_out3} \
+   CONFIG.CLK_OUT3_PORT {clk_016mhz000_lvds} \
    CONFIG.CLK_OUT4_PORT {clk_out4} \
    CONFIG.FEEDBACK_SOURCE {FDBK_AUTO} \
    CONFIG.INTERFACE_SELECTION {Enable_AXI} \
    CONFIG.MMCM_BANDWIDTH {OPTIMIZED} \
-   CONFIG.MMCM_CLKFBOUT_MULT_F {15.500} \
+   CONFIG.MMCM_CLKFBOUT_MULT_F {14} \
    CONFIG.MMCM_CLKIN1_PERIOD {15.625} \
-   CONFIG.MMCM_CLKIN2_PERIOD {10.0} \
-   CONFIG.MMCM_CLKOUT0_DIVIDE_F {15.500} \
+   CONFIG.MMCM_CLKIN2_PERIOD {10.000} \
+   CONFIG.MMCM_CLKOUT0_DIVIDE_F {7} \
    CONFIG.MMCM_CLKOUT0_USE_FINE_PS {false} \
-   CONFIG.MMCM_CLKOUT1_DIVIDE {62} \
+   CONFIG.MMCM_CLKOUT1_DIVIDE {14} \
    CONFIG.MMCM_CLKOUT1_USE_FINE_PS {false} \
-   CONFIG.MMCM_CLKOUT2_DIVIDE {1} \
+   CONFIG.MMCM_CLKOUT2_DIVIDE {56} \
    CONFIG.MMCM_CLKOUT3_DIVIDE {1} \
    CONFIG.MMCM_COMPENSATION {ZHOLD} \
    CONFIG.MMCM_DIVCLK_DIVIDE {1} \
-   CONFIG.NUM_OUT_CLKS {2} \
+   CONFIG.NUM_OUT_CLKS {3} \
    CONFIG.PHASE_DUTY_CONFIG {false} \
-   CONFIG.PRIMITIVE {MMCM} \
+   CONFIG.PRIMITIVE {PLL} \
    CONFIG.PRIM_IN_FREQ {64} \
    CONFIG.PRIM_SOURCE {Differential_clock_capable_pin} \
    CONFIG.USE_DYN_PHASE_SHIFT {false} \
@@ -1042,7 +1043,7 @@ proc create_root_design { parentCell } {
    CONFIG.USE_LOCKED {true} \
    CONFIG.USE_RESET {false} \
    CONFIG.USE_SAFE_CLOCK_STARTUP {false} \
- ] $clk_lvds_in_MMCM_0
+ ] $clk_lvds_in_PLL_0
 
   # Create instance: clk_pll_trx_in_MMCM_0, and set properties
   set clk_pll_trx_in_MMCM_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_pll_trx_in_MMCM_0 ]
@@ -1229,9 +1230,6 @@ proc create_root_design { parentCell } {
    CONFIG.USE_INCLK_SWITCHOVER {false} \
    CONFIG.USE_RESET {false} \
  ] $clk_trx_in_PLL_0
-
-  # Create instance: concat_ROTENC_0, and set properties
-  set concat_ROTENC_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 concat_ROTENC_0 ]
 
   # Create instance: const_width11_0x400, and set properties
   set const_width11_0x400 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 const_width11_0x400 ]
@@ -1443,6 +1441,9 @@ proc create_root_design { parentCell } {
    CONFIG.SCLR {true} \
  ] $rotenc_ACCU_0
 
+  # Create instance: rotenc_CONCAT_0, and set properties
+  set rotenc_CONCAT_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 rotenc_CONCAT_0 ]
+
   # Create interface connections
   connect_bd_intf_net -intf_net LVDS_in_CORDIC_0_M_AXIS_DOUT [get_bd_intf_ports FSM_LVDS_in_CORDIC_0_M_AXIS] [get_bd_intf_pins LVDS_in_CORDIC_0/M_AXIS_DOUT]
   connect_bd_intf_net -intf_net S00_AXI_1 [get_bd_intf_pins mb_0_axi_interconnect_bot1/S00_AXI] [get_bd_intf_pins mb_0_axi_interconnect_top/M00_AXI]
@@ -1543,16 +1544,16 @@ proc create_root_design { parentCell } {
   connect_bd_net -net clk_025mhz000_n [get_bd_pins axi_quad_spi_0_CONFIG/ext_spi_clk] [get_bd_pins axi_quad_spi_1_TRX/ext_spi_clk] [get_bd_pins clk_pll_trx_in_PLL_0/clk_025mhz000]
   connect_bd_net -net clk_050mhz000_n [get_bd_pins clk_pll_trx_in_PLL_0/clk_050mhz000] [get_bd_pins mii_to_rmii_ETHERNET/ref_clk]
   connect_bd_net -net clk_177mhz778_n [get_bd_pins clk_pll_trx_in_PLL_0/clk_177mhz778] [get_bd_pins mig_7series_0/sys_clk_i]
-  connect_bd_net -net clk_LVDS_in_PLL_locked [get_bd_pins LVDS_016mhz000_SYSRESET_0/dcm_locked] [get_bd_pins LVDS_064mhz000_SYSRESET_0/dcm_locked] [get_bd_pins clk_lvds_in_MMCM_0/locked]
-  connect_bd_net -net clk_LVDS_in_clk_016mhz000_lvds [get_bd_pins LVDS_016mhz000_SYSRESET_0/slowest_sync_clk] [get_bd_pins LVDS_in_SERDES_0/clk_div_in] [get_bd_pins LVDS_out_SERDES_0/clk_div_in] [get_bd_pins clk_lvds_in_MMCM_0/clk_016mhz000_lvds]
-  connect_bd_net -net clk_LVDS_in_clk_064mhz000_lvds [get_bd_ports FSM_LVDS_clk_064mhz000] [get_bd_pins LVDS_064mhz000_SYSRESET_0/slowest_sync_clk] [get_bd_pins LVDS_in_AXIS_0/s_aclk] [get_bd_pins LVDS_in_CDC_0/clk] [get_bd_pins LVDS_in_CORDIC_0/aclk] [get_bd_pins LVDS_in_FFT_0/aclk] [get_bd_pins LVDS_in_FIFO_combiner_0/clk] [get_bd_pins LVDS_in_SERDES_0/clk_in] [get_bd_pins LVDS_in_ShiftRAM_0/CLK] [get_bd_pins LVDS_in_out_clk_BINCOUNTER_0/CLK] [get_bd_pins LVDS_out_CDC_0/qdpo_clk] [get_bd_pins LVDS_out_SERDES_0/clk_in] [get_bd_pins clk_lvds_in_MMCM_0/clk_064mhz000_lvds]
+  connect_bd_net -net clk_LVDS_in_PLL_locked [get_bd_pins LVDS_016mhz000_SYSRESET_0/dcm_locked] [get_bd_pins LVDS_064mhz000_SYSRESET_0/dcm_locked] [get_bd_pins clk_lvds_in_PLL_0/locked]
+  connect_bd_net -net clk_LVDS_in_clk_016mhz000_lvds [get_bd_pins LVDS_016mhz000_SYSRESET_0/slowest_sync_clk] [get_bd_pins LVDS_in_SERDES_0/clk_div_in] [get_bd_pins LVDS_out_SERDES_0/clk_div_in] [get_bd_pins clk_lvds_in_PLL_0/clk_016mhz000_lvds]
+  connect_bd_net -net clk_LVDS_in_clk_064mhz000_lvds [get_bd_ports FSM_LVDS_clk_064mhz000] [get_bd_pins LVDS_064mhz000_SYSRESET_0/slowest_sync_clk] [get_bd_pins LVDS_in_AXIS_0/s_aclk] [get_bd_pins LVDS_in_CDC_0/clk] [get_bd_pins LVDS_in_CORDIC_0/aclk] [get_bd_pins LVDS_in_FFT_0/aclk] [get_bd_pins LVDS_in_FIFO_combiner_0/clk] [get_bd_pins LVDS_in_SERDES_0/clk_in] [get_bd_pins LVDS_in_ShiftRAM_0/CLK] [get_bd_pins LVDS_in_out_clk_BINCOUNTER_0/CLK] [get_bd_pins LVDS_out_CDC_0/qdpo_clk] [get_bd_pins LVDS_out_SERDES_0/clk_in] [get_bd_pins clk_lvds_in_PLL_0/clk_064mhz000_lvds]
   connect_bd_net -net clk_trx_050mhz000_PLL_locked [get_bd_pins clk_pll_trx_in_MMCM_0/clk_in_sel] [get_bd_pins clk_pll_trx_in_PLL_0/clk_in_sel] [get_bd_pins clk_trx_in_PLL_0/locked]
   connect_bd_net -net clk_trx_050mhz000_n [get_bd_pins clk_pll_trx_in_MMCM_0/clk_in1] [get_bd_pins clk_pll_trx_in_PLL_0/clk_in1] [get_bd_pins clk_trx_in_PLL_0/clk_trx_050mhz000]
-  connect_bd_net -net concat_ROTENC_0_dout [get_bd_pins concat_ROTENC_0/dout] [get_bd_pins rotenc_ACCU_0/B]
-  connect_bd_net -net concat_ROTENC_0_pulse [get_bd_ports board_rotenc_pulse] [get_bd_pins concat_ROTENC_0/In0]
+  connect_bd_net -net concat_ROTENC_0_dout [get_bd_pins rotenc_ACCU_0/B] [get_bd_pins rotenc_CONCAT_0/dout]
+  connect_bd_net -net concat_ROTENC_0_pulse [get_bd_ports board_rotenc_pulse] [get_bd_pins rotenc_CONCAT_0/In0]
   connect_bd_net -net const_0xc000c000_dout [get_bd_pins LVDS_in_AND_0/Op2] [get_bd_pins const_width32_0xC000C000/dout]
   connect_bd_net -net const_width1_val1_dout [get_bd_pins LVDS_in_FFT_0/s_axis_config_tvalid] [get_bd_pins LVDS_out_CDC_0/we] [get_bd_pins const_width1_val1/dout]
-  connect_bd_net -net const_width31_val0_dout [get_bd_pins concat_ROTENC_0/In1] [get_bd_pins const_width31_val0/dout]
+  connect_bd_net -net const_width31_val0_dout [get_bd_pins const_width31_val0/dout] [get_bd_pins rotenc_CONCAT_0/In1]
   connect_bd_net -net const_width32_0x80004000_dout [get_bd_pins LVDS_in_XOR_0/Op2] [get_bd_pins const_width32_0x80004000/dout]
   connect_bd_net -net const_width32_0x80004001_dout [get_bd_pins LVDS_in_tlast_gen_VecLOG_1/Op2] [get_bd_pins const_width11_0x400/dout]
   connect_bd_net -net const_width4_val0_dout [get_bd_pins LVDS_in_CDC_0/a] [get_bd_pins LVDS_in_CDC_0/dpra] [get_bd_pins LVDS_out_CDC_0/a] [get_bd_pins LVDS_out_CDC_0/dpra] [get_bd_pins const_width4_val0/dout]
@@ -1583,8 +1584,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net sys_reset_016mhz000_peripheral_aresetn [get_bd_pins LVDS_016mhz000_SYSRESET_0/peripheral_aresetn] [get_bd_pins LVDS_in_AXIS_0/s_aresetn]
   connect_bd_net -net trx_clk_026mhz000_g [get_bd_ports trx_clk_026mhz000_g] [get_bd_pins clk_trx_in_PLL_0/clk_in1]
   connect_bd_net -net trx_iic2intc_irpt [get_bd_ports trx_int] [get_bd_pins mb_0_axi_intc_concat/In6]
-  connect_bd_net -net ufb_trx_rxclk_n [get_bd_ports ufb_trx_rxclk_n] [get_bd_pins clk_lvds_in_MMCM_0/clk_in1_n]
-  connect_bd_net -net ufb_trx_rxclk_p [get_bd_ports ufb_trx_rxclk_p] [get_bd_pins clk_lvds_in_MMCM_0/clk_in1_p]
+  connect_bd_net -net ufb_trx_rxclk_n [get_bd_ports ufb_trx_rxclk_n] [get_bd_pins clk_lvds_in_PLL_0/clk_in1_n]
+  connect_bd_net -net ufb_trx_rxclk_p [get_bd_ports ufb_trx_rxclk_p] [get_bd_pins clk_lvds_in_PLL_0/clk_in1_p]
   connect_bd_net -net ufb_trx_rxd09_n [get_bd_ports ufb_trx_rxd09_n] [get_bd_pins LVDS_in_SERDES_0/data_in_from_pins_n]
   connect_bd_net -net ufb_trx_rxd09_p [get_bd_ports ufb_trx_rxd09_p] [get_bd_pins LVDS_in_SERDES_0/data_in_from_pins_p]
 

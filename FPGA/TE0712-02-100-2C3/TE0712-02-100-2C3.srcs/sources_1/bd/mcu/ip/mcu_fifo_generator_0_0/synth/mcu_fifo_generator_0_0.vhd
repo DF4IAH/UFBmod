@@ -533,7 +533,7 @@ ARCHITECTURE mcu_fifo_generator_0_0_arch OF mcu_fifo_generator_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF rd_en: SIGNAL IS "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN";
   ATTRIBUTE X_INTERFACE_INFO OF wr_en: SIGNAL IS "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN";
   ATTRIBUTE X_INTERFACE_INFO OF din: SIGNAL IS "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME core_clk, FREQ_HZ 64000000, PHASE 0.0, CLK_DOMAIN mcu_clk_32mhz_LVDS_0_clk_064mhz000_lvds, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME core_clk, FREQ_HZ 64000000, PHASE 0.0, CLK_DOMAIN mcu_clk_32mhz_LVDS_0_clk_128mhz000_lvds, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 core_clk CLK";
 BEGIN
   U0 : fifo_generator_v13_2_4

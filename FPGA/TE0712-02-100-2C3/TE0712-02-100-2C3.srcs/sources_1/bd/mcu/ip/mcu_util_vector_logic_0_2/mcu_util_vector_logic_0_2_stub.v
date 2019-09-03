@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
 // Date        : Sun Sep  1 20:51:03 2019
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_util_vector_logic_0_2/mcu_util_vector_logic_0_2_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top mcu_util_vector_logic_0_2 -prefix
+//               mcu_util_vector_logic_0_2_ mcu_util_vector_logic_0_2_stub.v
 // Design      : mcu_util_vector_logic_0_2
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tfgg484-2

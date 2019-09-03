@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
 -- Date        : Sun Sep  1 00:38:58 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_sys_reset_16mhz000_0/mcu_sys_reset_16mhz000_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top mcu_sys_reset_16mhz000_0 -prefix
+--               mcu_sys_reset_16mhz000_0_ mcu_sys_reset_16mhz000_0_sim_netlist.vhdl
 -- Design      : mcu_sys_reset_16mhz000_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -25,8 +25,6 @@ entity mcu_sys_reset_16mhz000_0_cdc_sync is
     aux_reset_in : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_sys_reset_16mhz000_0_cdc_sync : entity is "cdc_sync";
 end mcu_sys_reset_16mhz000_0_cdc_sync;
 
 architecture STRUCTURE of mcu_sys_reset_16mhz000_0_cdc_sync is
@@ -226,8 +224,6 @@ entity mcu_sys_reset_16mhz000_0_upcnt_n is
     seq_cnt_en : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_sys_reset_16mhz000_0_upcnt_n : entity is "upcnt_n";
 end mcu_sys_reset_16mhz000_0_upcnt_n;
 
 architecture STRUCTURE of mcu_sys_reset_16mhz000_0_upcnt_n is
@@ -392,8 +388,6 @@ entity mcu_sys_reset_16mhz000_0_lpf is
     mb_debug_sys_rst : in STD_LOGIC;
     aux_reset_in : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_sys_reset_16mhz000_0_lpf : entity is "lpf";
 end mcu_sys_reset_16mhz000_0_lpf;
 
 architecture STRUCTURE of mcu_sys_reset_16mhz000_0_lpf is
@@ -575,8 +569,6 @@ entity mcu_sys_reset_16mhz000_0_sequence_psr is
     lpf_int : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_sys_reset_16mhz000_0_sequence_psr : entity is "sequence_psr";
 end mcu_sys_reset_16mhz000_0_sequence_psr;
 
 architecture STRUCTURE of mcu_sys_reset_16mhz000_0_sequence_psr is
@@ -915,8 +907,6 @@ entity mcu_sys_reset_16mhz000_0_proc_sys_reset is
   attribute C_NUM_PERP_ARESETN of mcu_sys_reset_16mhz000_0_proc_sys_reset : entity is 1;
   attribute C_NUM_PERP_RST : integer;
   attribute C_NUM_PERP_RST of mcu_sys_reset_16mhz000_0_proc_sys_reset : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_sys_reset_16mhz000_0_proc_sys_reset : entity is "proc_sys_reset";
 end mcu_sys_reset_16mhz000_0_proc_sys_reset;
 
 architecture STRUCTURE of mcu_sys_reset_16mhz000_0_proc_sys_reset is

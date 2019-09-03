@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
 -- Date        : Sun Sep  1 20:47:13 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_CDC_LVDS_in_1/mcu_CDC_LVDS_in_1_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top mcu_CDC_LVDS_in_1 -prefix
+--               mcu_CDC_LVDS_in_1_ mcu_CDC_LVDS_in_1_sim_netlist.vhdl
 -- Design      : mcu_CDC_LVDS_in_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -28,8 +28,6 @@ entity mcu_CDC_LVDS_in_1_xpm_cdc_sync_rst is
   attribute INIT of mcu_CDC_LVDS_in_1_xpm_cdc_sync_rst : entity is "1";
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of mcu_CDC_LVDS_in_1_xpm_cdc_sync_rst : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_xpm_cdc_sync_rst : entity is "xpm_cdc_sync_rst";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of mcu_CDC_LVDS_in_1_xpm_cdc_sync_rst : entity is 0;
   attribute VERSION : integer;
@@ -139,8 +137,6 @@ entity mcu_CDC_LVDS_in_1_blk_mem_gen_prim_wrapper is
     s_axis_tlast : in STD_LOGIC;
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_blk_mem_gen_prim_wrapper : entity is "blk_mem_gen_prim_wrapper";
 end mcu_CDC_LVDS_in_1_blk_mem_gen_prim_wrapper;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_blk_mem_gen_prim_wrapper is
@@ -852,8 +848,6 @@ entity mcu_CDC_LVDS_in_1_compare is
     comp0 : out STD_LOGIC;
     v1_reg : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_compare : entity is "compare";
 end mcu_CDC_LVDS_in_1_compare;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_compare is
@@ -1141,8 +1135,6 @@ entity mcu_CDC_LVDS_in_1_rd_bin_cntr is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_rd_bin_cntr : entity is "rd_bin_cntr";
 end mcu_CDC_LVDS_in_1_rd_bin_cntr;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_rd_bin_cntr is
@@ -1737,8 +1729,6 @@ entity mcu_CDC_LVDS_in_1_rd_fwft is
     \out\ : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_rd_fwft : entity is "rd_fwft";
 end mcu_CDC_LVDS_in_1_rd_fwft;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_rd_fwft is
@@ -1988,8 +1978,6 @@ entity mcu_CDC_LVDS_in_1_wr_bin_cntr is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_wr_bin_cntr : entity is "wr_bin_cntr";
 end mcu_CDC_LVDS_in_1_wr_bin_cntr;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_wr_bin_cntr is
@@ -2363,8 +2351,6 @@ entity mcu_CDC_LVDS_in_1_blk_mem_gen_prim_width is
     s_axis_tlast : in STD_LOGIC;
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
 end mcu_CDC_LVDS_in_1_blk_mem_gen_prim_width;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_blk_mem_gen_prim_width is
@@ -2571,8 +2557,6 @@ entity mcu_CDC_LVDS_in_1_rd_status_flags_ss is
     ram_empty_i_reg_2 : in STD_LOGIC;
     s_axis_tvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_rd_status_flags_ss : entity is "rd_status_flags_ss";
 end mcu_CDC_LVDS_in_1_rd_status_flags_ss;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_rd_status_flags_ss is
@@ -2648,8 +2632,6 @@ entity mcu_CDC_LVDS_in_1_reset_blk_ramfifo is
     s_aclk : in STD_LOGIC;
     s_aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_reset_blk_ramfifo : entity is "reset_blk_ramfifo";
 end mcu_CDC_LVDS_in_1_reset_blk_ramfifo;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_reset_blk_ramfifo is
@@ -2831,8 +2813,6 @@ entity mcu_CDC_LVDS_in_1_wr_status_flags_ss is
     ram_full_i_reg_1 : in STD_LOGIC_VECTOR ( 0 to 0 );
     ram_full_i_reg_2 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_wr_status_flags_ss : entity is "wr_status_flags_ss";
 end mcu_CDC_LVDS_in_1_wr_status_flags_ss;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_wr_status_flags_ss is
@@ -2948,8 +2928,6 @@ entity mcu_CDC_LVDS_in_1_blk_mem_gen_generic_cstr is
     \out\ : in STD_LOGIC;
     s_axis_tvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
 end mcu_CDC_LVDS_in_1_blk_mem_gen_generic_cstr;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_blk_mem_gen_generic_cstr is
@@ -3028,8 +3006,6 @@ entity mcu_CDC_LVDS_in_1_rd_logic is
     \gmux.gm[4].gms.ms\ : in STD_LOGIC_VECTOR ( 9 downto 0 );
     \gmux.gm[4].gms.ms_0\ : in STD_LOGIC_VECTOR ( 9 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_rd_logic : entity is "rd_logic";
 end mcu_CDC_LVDS_in_1_rd_logic;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_rd_logic is
@@ -3108,8 +3084,6 @@ entity mcu_CDC_LVDS_in_1_wr_logic is
     ram_full_i_reg : in STD_LOGIC_VECTOR ( 0 to 0 );
     ram_full_i_reg_0 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_wr_logic : entity is "wr_logic";
 end mcu_CDC_LVDS_in_1_wr_logic;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_wr_logic is
@@ -3158,8 +3132,6 @@ entity mcu_CDC_LVDS_in_1_blk_mem_gen_top is
     \out\ : in STD_LOGIC;
     s_axis_tvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_blk_mem_gen_top : entity is "blk_mem_gen_top";
 end mcu_CDC_LVDS_in_1_blk_mem_gen_top;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_blk_mem_gen_top is
@@ -3201,8 +3173,6 @@ entity mcu_CDC_LVDS_in_1_blk_mem_gen_v8_4_3_synth is
     \out\ : in STD_LOGIC;
     s_axis_tvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_blk_mem_gen_v8_4_3_synth : entity is "blk_mem_gen_v8_4_3_synth";
 end mcu_CDC_LVDS_in_1_blk_mem_gen_v8_4_3_synth;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_blk_mem_gen_v8_4_3_synth is
@@ -3244,8 +3214,6 @@ entity mcu_CDC_LVDS_in_1_blk_mem_gen_v8_4_3 is
     \out\ : in STD_LOGIC;
     s_axis_tvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_blk_mem_gen_v8_4_3 : entity is "blk_mem_gen_v8_4_3";
 end mcu_CDC_LVDS_in_1_blk_mem_gen_v8_4_3;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_blk_mem_gen_v8_4_3 is
@@ -3288,8 +3256,6 @@ entity mcu_CDC_LVDS_in_1_memory is
     s_axis_tvalid : in STD_LOGIC;
     \goreg_bm.dout_i_reg[77]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_memory : entity is "memory";
 end mcu_CDC_LVDS_in_1_memory;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_memory is
@@ -4189,8 +4155,6 @@ entity mcu_CDC_LVDS_in_1_fifo_generator_ramfifo is
     m_axis_tready : in STD_LOGIC;
     s_aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_fifo_generator_ramfifo : entity is "fifo_generator_ramfifo";
 end mcu_CDC_LVDS_in_1_fifo_generator_ramfifo;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_fifo_generator_ramfifo is
@@ -4289,8 +4253,6 @@ entity mcu_CDC_LVDS_in_1_fifo_generator_top is
     m_axis_tready : in STD_LOGIC;
     s_aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_fifo_generator_top : entity is "fifo_generator_top";
 end mcu_CDC_LVDS_in_1_fifo_generator_top;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_fifo_generator_top is
@@ -4330,8 +4292,6 @@ entity mcu_CDC_LVDS_in_1_fifo_generator_v13_2_4_synth is
     m_axis_tready : in STD_LOGIC;
     s_aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_fifo_generator_v13_2_4_synth : entity is "fifo_generator_v13_2_4_synth";
 end mcu_CDC_LVDS_in_1_fifo_generator_v13_2_4_synth;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_fifo_generator_v13_2_4_synth is
@@ -4994,8 +4954,6 @@ entity mcu_CDC_LVDS_in_1_fifo_generator_v13_2_4 is
   attribute C_WR_PNTR_WIDTH_WRCH of mcu_CDC_LVDS_in_1_fifo_generator_v13_2_4 : entity is 4;
   attribute C_WR_RESPONSE_LATENCY : integer;
   attribute C_WR_RESPONSE_LATENCY of mcu_CDC_LVDS_in_1_fifo_generator_v13_2_4 : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mcu_CDC_LVDS_in_1_fifo_generator_v13_2_4 : entity is "fifo_generator_v13_2_4";
 end mcu_CDC_LVDS_in_1_fifo_generator_v13_2_4;
 
 architecture STRUCTURE of mcu_CDC_LVDS_in_1_fifo_generator_v13_2_4 is

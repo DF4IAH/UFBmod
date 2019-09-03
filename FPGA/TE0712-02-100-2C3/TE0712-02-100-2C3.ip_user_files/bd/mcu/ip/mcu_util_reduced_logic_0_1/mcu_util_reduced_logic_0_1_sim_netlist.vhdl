@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
 -- Date        : Sun Sep  1 20:48:53 2019
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               f:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_util_reduced_logic_0_1/mcu_util_reduced_logic_0_1_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top mcu_util_reduced_logic_0_1 -prefix
+--               mcu_util_reduced_logic_0_1_ mcu_util_reduced_logic_0_1_sim_netlist.vhdl
 -- Design      : mcu_util_reduced_logic_0_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
