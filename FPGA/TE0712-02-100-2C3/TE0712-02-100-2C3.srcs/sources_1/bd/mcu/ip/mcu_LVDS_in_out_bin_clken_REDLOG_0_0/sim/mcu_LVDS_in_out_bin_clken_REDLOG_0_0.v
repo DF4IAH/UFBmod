@@ -62,7 +62,7 @@ input wire [3 : 0] Op1;
 output wire Res;
 
   util_reduced_logic_v2_0_4_util_reduced_logic #(
-    .C_OPERATION("and"),
+    .C_OPERATION("or"),
     .C_SIZE(4)
   ) inst (
     .Op1(Op1),

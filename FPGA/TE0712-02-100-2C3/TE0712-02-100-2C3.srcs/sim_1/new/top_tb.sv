@@ -394,115 +394,115 @@ module top_tb;
         #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
         
 
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;  // 1: key for I value following
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;  // 1: key for I value following
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
         
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // I-value
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // I-value
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
 
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // 1: key for Q value following
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // 1: key for Q value following
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
         
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // Q-value
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // Q-value
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
 
 
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;  // 2: key for I value following
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;  // 2: key for I value following
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
         
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // I-value
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // I-value
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
 
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // 2: key for Q value following
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // 2: key for Q value following
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
         
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // Q-value
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // Q-value
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
         
 
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;  // 3: key for I value following
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;  // 3: key for I value following
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
         
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;  // I-value
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;  // I-value
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
 
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // 3: key for Q value following
-        #7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // 3: key for Q value following
+        //#7.8125 ufb_trx_rxd09_p = 1'b1;  ufb_trx_rxd09_n = 1'b0;
         
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // Q-value
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
-        #7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;  // Q-value
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
+        //#7.8125 ufb_trx_rxd09_p = 1'b0;  ufb_trx_rxd09_n = 1'b1;
     end
     
     

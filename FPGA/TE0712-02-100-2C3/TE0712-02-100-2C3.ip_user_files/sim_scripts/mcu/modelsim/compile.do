@@ -534,8 +534,6 @@ vcom -work xil_defaultlib -64 -93 \
 
 vlog -work xil_defaultlib -64 -incr "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
 "../../../bd/mcu/ip/mcu_xlslice_0_1/sim/mcu_xlslice_0_1.v" \
-"../../../bd/mcu/ip/mcu_LVDS_in_out_samplecounter_SLICE_0_0/sim/mcu_LVDS_in_out_samplecounter_SLICE_0_0.v" \
-"../../../bd/mcu/ip/mcu_util_reduced_logic_0_1/sim/mcu_util_reduced_logic_0_1.v" \
 "../../../bd/mcu/ip/mcu_LVDS_in_out_bincounter_SLICE_0_0/sim/mcu_LVDS_in_out_bincounter_SLICE_0_0.v" \
 "../../../bd/mcu/ip/mcu_LVDS_in_out_bin_clken_REDLOG_0_0/sim/mcu_LVDS_in_out_bin_clken_REDLOG_0_0.v" \
 "../../../bd/mcu/ip/mcu_LVDS_in_out_sample_clken_SLICE_0_0/sim/mcu_LVDS_in_out_sample_clken_SLICE_0_0.v" \
@@ -549,6 +547,37 @@ vlog -work xil_defaultlib -64 -incr "+incdir+../../../../TE0712-02-100-2C3.srcs/
 "../../../bd/mcu/ip/mcu_util_vector_logic_0_2/sim/mcu_util_vector_logic_0_2.v" \
 "../../../bd/mcu/ip/mcu_const_width32_0x80004000_0/sim/mcu_const_width32_0x80004000_0.v" \
 "../../../bd/mcu/sim/mcu.v" \
+"../../../bd/mcu/ip/mcu_xlslice_0_2/sim/mcu_xlslice_0_2.v" \
+"../../../bd/mcu/ip/mcu_xlconcat_0_1/sim/mcu_xlconcat_0_1.v" \
+"../../../bd/mcu/ip/mcu_LVDS_in_SLICE_0_0/sim/mcu_LVDS_in_SLICE_0_0.v" \
+"../../../bd/mcu/ip/mcu_LVDS_in_SLICE_0_1/sim/mcu_LVDS_in_SLICE_0_1.v" \
+"../../../bd/mcu/ip/mcu_LVDS_in_SLICE_0_2/sim/mcu_LVDS_in_SLICE_0_2.v" \
+"../../../bd/mcu/ip/mcu_LVDS_in_SLICE_0_3/sim/mcu_LVDS_in_SLICE_0_3.v" \
+"../../../bd/mcu/ip/mcu_LVDS_in_SLICE_0_4/sim/mcu_LVDS_in_SLICE_0_4.v" \
+"../../../bd/mcu/ip/mcu_LVDS_in_SLICE_0_5/sim/mcu_LVDS_in_SLICE_0_5.v" \
+"../../../bd/mcu/ip/mcu_LVDS_in_SLICE_0_6/sim/mcu_LVDS_in_SLICE_0_6.v" \
+"../../../bd/mcu/ip/mcu_LVDS_in_out_sample_clken_REDLOG_0_1/sim/mcu_LVDS_in_out_sample_clken_REDLOG_0_1.v" \
+"../../../bd/mcu/ip/mcu_xlconcat_0_2/sim/mcu_xlconcat_0_2.v" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/mcu/ip/mcu_c_counter_binary_0_1/sim/mcu_c_counter_binary_0_1.vhd" \
+
+vlog -work xil_defaultlib -64 -incr "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
+"../../../bd/mcu/ip/mcu_LVDS_in_0CMP_0_0/sim/mcu_LVDS_in_0CMP_0_0.v" \
+"../../../bd/mcu/ip/mcu_xlconcat_0_3/sim/mcu_xlconcat_0_3.v" \
+"../../../bd/mcu/ip/mcu_util_reduced_logic_0_2/sim/mcu_util_reduced_logic_0_2.v" \
+"../../../bd/mcu/ip/mcu_LVDS_in_byte_CONCAT_0_0/sim/mcu_LVDS_in_byte_CONCAT_0_0.v" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/mcu/ip/mcu_c_shift_ram_0_1/sim/mcu_c_shift_ram_0_1.vhd" \
+
+vlog -work xil_defaultlib -64 -incr "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
+"../../../bd/mcu/ip/mcu_util_reduced_logic_0_3/sim/mcu_util_reduced_logic_0_3.v" \
+"../../../bd/mcu/ip/mcu_LVDS_in_byte_CONCAT_1_0/sim/mcu_LVDS_in_byte_CONCAT_1_0.v" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/mcu/ip/mcu_LVDS_in_bitslip_COUNTER_0_0/sim/mcu_LVDS_in_bitslip_COUNTER_0_0.vhd" \
+"../../../bd/mcu/ip/mcu_LVDS_in_byte_sync_SR_0_0/sim/mcu_LVDS_in_byte_sync_SR_0_0.vhd" \
 
 vlog -work axi_protocol_converter_v2_1_19 -64 -incr "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c923" "+incdir+../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/ec67/hdl" \
 "../../../../TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ipshared/c83a/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \

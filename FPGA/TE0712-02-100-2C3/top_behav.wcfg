@@ -20,19 +20,17 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="4019450000fs"></ZoomStartTime>
-      <ZoomEndTime time="4501530083fs"></ZoomEndTime>
-      <Cursor1Time time="4316683000fs"></Cursor1Time>
+      <ZoomStartTime time="10525500000fs"></ZoomStartTime>
+      <ZoomEndTime time="11095000001fs"></ZoomEndTime>
+      <Cursor1Time time="11000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="300"></NameColumnWidth>
-      <ValueColumnWidth column_width="154"></ValueColumnWidth>
+      <ValueColumnWidth column_width="106"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="16" />
+   <WVObjectSize size="18" />
    <wave_markers>
-      <marker time="3400100000" label="" />
-      <marker time="5322488780" label="" />
-      <marker time="9370000000" label="" />
+      <marker time="3886475000" label="" />
    </wave_markers>
    <wvobject fp_name="group137" type="group">
       <obj_property name="label">Resets</obj_property>
@@ -41,10 +39,14 @@
       <wvobject fp_name="/top_tb/reset" type="logic">
          <obj_property name="ElementShortName">reset</obj_property>
          <obj_property name="ObjectShortName">reset</obj_property>
+         <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/sys_rst" type="logic">
          <obj_property name="ElementShortName">sys_rst</obj_property>
          <obj_property name="ObjectShortName">sys_rst</obj_property>
+         <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group140" type="group">
@@ -54,22 +56,32 @@
       <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/mb_0_reset/U0/mb_reset" type="logic">
          <obj_property name="ElementShortName">mb_reset</obj_property>
          <obj_property name="ObjectShortName">mb_reset</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/mb_0_reset/U0/bus_struct_reset" type="array">
          <obj_property name="ElementShortName">bus_struct_reset[0:0]</obj_property>
          <obj_property name="ObjectShortName">bus_struct_reset[0:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/mb_0_reset/U0/interconnect_aresetn" type="array">
          <obj_property name="ElementShortName">interconnect_aresetn[0:0]</obj_property>
          <obj_property name="ObjectShortName">interconnect_aresetn[0:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/mb_0_reset/U0/peripheral_reset" type="array">
          <obj_property name="ElementShortName">peripheral_reset[0:0]</obj_property>
          <obj_property name="ObjectShortName">peripheral_reset[0:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/mb_0_reset/U0/peripheral_aresetn" type="array">
          <obj_property name="ElementShortName">peripheral_aresetn[0:0]</obj_property>
          <obj_property name="ObjectShortName">peripheral_aresetn[0:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group138" type="group">
@@ -79,26 +91,38 @@
       <wvobject fp_name="/top_tb/pll_clk_p" type="logic">
          <obj_property name="ElementShortName">pll_clk_p</obj_property>
          <obj_property name="ObjectShortName">pll_clk_p</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/pll_clk_n" type="logic">
          <obj_property name="ElementShortName">pll_clk_n</obj_property>
          <obj_property name="ObjectShortName">pll_clk_n</obj_property>
+         <obj_property name="CustomSignalColor">#A52A2A</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/mgt_clk0_p" type="logic">
          <obj_property name="ElementShortName">mgt_clk0_p</obj_property>
          <obj_property name="ObjectShortName">mgt_clk0_p</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/mgt_clk0_n" type="logic">
          <obj_property name="ElementShortName">mgt_clk0_n</obj_property>
          <obj_property name="ObjectShortName">mgt_clk0_n</obj_property>
+         <obj_property name="CustomSignalColor">#A52A2A</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/ufb_trx_rxclk_p" type="logic">
          <obj_property name="ElementShortName">ufb_trx_rxclk_p</obj_property>
          <obj_property name="ObjectShortName">ufb_trx_rxclk_p</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/ufb_trx_rxclk_n" type="logic">
          <obj_property name="ElementShortName">ufb_trx_rxclk_n</obj_property>
          <obj_property name="ObjectShortName">ufb_trx_rxclk_n</obj_property>
+         <obj_property name="CustomSignalColor">#A52A2A</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group163" type="group">
@@ -180,27 +204,110 @@
       <wvobject fp_name="/top_tb/ufb_trx_rxd09_n" type="logic">
          <obj_property name="ElementShortName">ufb_trx_rxd09_n</obj_property>
          <obj_property name="ObjectShortName">ufb_trx_rxd09_n</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_SERDES_0/io_reset" type="logic">
          <obj_property name="ElementShortName">io_reset</obj_property>
          <obj_property name="ObjectShortName">io_reset</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_SERDES_0/clk_in" type="logic">
          <obj_property name="ElementShortName">clk_in</obj_property>
          <obj_property name="ObjectShortName">clk_in</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_SERDES_0/clk_div_in" type="logic">
          <obj_property name="ElementShortName">clk_div_in</obj_property>
          <obj_property name="ObjectShortName">clk_div_in</obj_property>
-      </wvobject>
-      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_SERDES_0/bitslip" type="array">
-         <obj_property name="ElementShortName">bitslip[0:0]</obj_property>
-         <obj_property name="ObjectShortName">bitslip[0:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_SERDES_0/data_in_to_device" type="array">
          <obj_property name="ElementShortName">data_in_to_device[7:0]</obj_property>
          <obj_property name="ObjectShortName">data_in_to_device[7:0]</obj_property>
          <obj_property name="Radix">BINARYRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group454" type="group">
+      <obj_property name="label">SERDES_Bitslip-and-Byteswap_Generator</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="group1294" type="group">
+         <obj_property name="label">Bitslip</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_byte_CONCAT_0/dout" type="array">
+            <obj_property name="ElementShortName">dout[7:0]</obj_property>
+            <obj_property name="ObjectShortName">dout[7:0]</obj_property>
+            <obj_property name="Radix">BINARYRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_byte_CONCAT_1/dout" type="array">
+            <obj_property name="ElementShortName">dout[1:0]</obj_property>
+            <obj_property name="ObjectShortName">dout[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#D2691E</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+            <obj_property name="Radix">BINARYRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_byte_sync_REDLOG_0/Res" type="logic">
+            <obj_property name="ElementShortName">Res</obj_property>
+            <obj_property name="ObjectShortName">Res</obj_property>
+            <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_byte_sync_CONCAT_0/dout" type="array">
+            <obj_property name="ElementShortName">dout[1:0]</obj_property>
+            <obj_property name="ObjectShortName">dout[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_byte_sync_REDLOG_1/Res" type="logic">
+            <obj_property name="ElementShortName">Res</obj_property>
+            <obj_property name="ObjectShortName">Res</obj_property>
+            <obj_property name="CustomSignalColor">#808000</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_bitslip_COUNTER_0/SCLR" type="logic">
+            <obj_property name="ElementShortName">SCLR</obj_property>
+            <obj_property name="ObjectShortName">SCLR</obj_property>
+            <obj_property name="CustomSignalColor">#800080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_bitslip_COUNTER_0/Q" type="array">
+            <obj_property name="ElementShortName">Q[2:0]</obj_property>
+            <obj_property name="ObjectShortName">Q[2:0]</obj_property>
+            <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_bitslip_COUNTER_0/THRESH0" type="logic">
+            <obj_property name="ElementShortName">THRESH0</obj_property>
+            <obj_property name="ObjectShortName">THRESH0</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group1293" type="group">
+         <obj_property name="label">Byte-Swap</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_byteswap_COUNTER_0/SCLR" type="logic">
+            <obj_property name="ElementShortName">SCLR</obj_property>
+            <obj_property name="ObjectShortName">SCLR</obj_property>
+            <obj_property name="CustomSignalColor">#800080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_byteswap_COUNTER_0/Q" type="array">
+            <obj_property name="ElementShortName">Q[1:0]</obj_property>
+            <obj_property name="ObjectShortName">Q[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_byteswap_COUNTER_0/THRESH0" type="logic">
+            <obj_property name="ElementShortName">THRESH0</obj_property>
+            <obj_property name="ObjectShortName">THRESH0</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group114" type="group">
@@ -218,12 +325,29 @@
       <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_FIFO_combiner_0/dout" type="array">
          <obj_property name="ElementShortName">dout[31:0]</obj_property>
          <obj_property name="ObjectShortName">dout[31:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_out_sample_tvalid_REDLOG_1/Res" type="logic">
+         <obj_property name="ElementShortName">Res</obj_property>
+         <obj_property name="ObjectShortName">Res</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group226" type="group">
+      <obj_property name="label">I_Q SWAPPER</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_CONCAT_0/dout" type="array">
+         <obj_property name="ElementShortName">dout[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[31:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group115" type="group">
       <obj_property name="label">FFT</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/mcu_i/LVDS_in_FFT_0/s_axis_data_tlast" type="logic">
          <obj_property name="ElementShortName">s_axis_data_tlast</obj_property>
          <obj_property name="ObjectShortName">s_axis_data_tlast</obj_property>
@@ -256,7 +380,6 @@
    <wvobject fp_name="group116" type="group">
       <obj_property name="label">CORDIC</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/top_tb/top_i/mcu_wrapper_i/FSM_LVDS_in_CORDIC_0_M_AXIS_tlast" type="logic">
          <obj_property name="ElementShortName">FSM_LVDS_in_CORDIC_0_M_AXIS_tlast</obj_property>
          <obj_property name="ObjectShortName">FSM_LVDS_in_CORDIC_0_M_AXIS_tlast</obj_property>

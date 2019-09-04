@@ -816,15 +816,13 @@ module top(
         
     // FSM
         .FSM_LVDS_clk_064mhz000(),
-        .FSM_LVDS_in_0CMP_0_nomatch(),
-        .FSM_LVDS_in_CORDIC_0_M_AXIS_tdata(),
-        .FSM_LVDS_in_CORDIC_0_M_AXIS_tlast(),
-        .FSM_LVDS_in_CORDIC_0_M_AXIS_tuser(),
-        .FSM_LVDS_in_CORDIC_0_M_AXIS_tvalid(),
+        .FSM_LVDS_in_sample_clken(),
         .FSM_LVDS_in_FFT_0_FrameStarted(),
         .FSM_LVDS_in_FFT_0_pntIdx(),
-        .FSM_LVDS_in_bitslip(1'b0),
-        .FSM_LVDS_in_sample_clken()
+        .FSM_LVDS_in_CORDIC_0_M_AXIS_tlast(),
+        .FSM_LVDS_in_CORDIC_0_M_AXIS_tvalid(),
+        .FSM_LVDS_in_CORDIC_0_M_AXIS_tdata(),
+        .FSM_LVDS_in_CORDIC_0_M_AXIS_tuser()
         
         );
 

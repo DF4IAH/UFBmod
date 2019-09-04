@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-//Date        : Tue Sep  3 23:36:30 2019
+//Date        : Wed Sep  4 21:08:51 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -3222,21 +3222,21 @@ module mb_0_local_memory_imp_N3WR47
         .Sl_Wait(microblaze_0_lmb_bus_WAIT));
 endmodule
 
-/* 4 MSPS
+/* LVDS_in FFT:
+4 MSPS
 128 dots
 351 cycles
+LVDS_In ShiftRAM:
 351 cycles */
-(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=107,numReposBlks=80,numNonXlnxBlks=0,numHierBlks=27,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,\"\"\"\"\"\"\"\"\"\"\"da_board_cnt\"\"\"\"\"\"\"\"\"\"\"=2,\"\"\"\"\"\"\"\"\"\"\"da_clkrst_cnt\"\"\"\"\"\"\"\"\"\"\"=2,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
+(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=126,numReposBlks=99,numNonXlnxBlks=0,numHierBlks=27,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,\"\"\"\"\"\"\"\"\"\"\"\"da_board_cnt\"\"\"\"\"\"\"\"\"\"\"\"=2,\"\"\"\"\"\"\"\"\"\"\"\"da_clkrst_cnt\"\"\"\"\"\"\"\"\"\"\"\"=2,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
 module mcu
    (FSM_LVDS_clk_064mhz000,
-    FSM_LVDS_in_0CMP_0_nomatch,
     FSM_LVDS_in_CORDIC_0_M_AXIS_tdata,
     FSM_LVDS_in_CORDIC_0_M_AXIS_tlast,
     FSM_LVDS_in_CORDIC_0_M_AXIS_tuser,
     FSM_LVDS_in_CORDIC_0_M_AXIS_tvalid,
     FSM_LVDS_in_FFT_0_FrameStarted,
     FSM_LVDS_in_FFT_0_pntIdx,
-    FSM_LVDS_in_bitslip,
     FSM_LVDS_in_sample_clken,
     board_rotenc_pulse,
     board_rotenc_push,
@@ -3345,14 +3345,12 @@ module mcu
     ufb_trx_txd_n,
     ufb_trx_txd_p);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.FSM_LVDS_CLK_064MHZ000 CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.FSM_LVDS_CLK_064MHZ000, CLK_DOMAIN mcu_clk_32mhz_LVDS_0_clk_128mhz000_lvds, FREQ_HZ 64000000, INSERT_VIP 0, PHASE 0.0" *) output FSM_LVDS_clk_064mhz000;
-  output FSM_LVDS_in_0CMP_0_nomatch;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSM_LVDS_in_CORDIC_0_M_AXIS TDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME FSM_LVDS_in_CORDIC_0_M_AXIS, FREQ_HZ 64000000, HAS_TKEEP 0, HAS_TLAST 1, HAS_TREADY 0, HAS_TSTRB 0, INSERT_VIP 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value 14} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 16} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 13} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 32 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 44} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 44} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 44} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 44}, PHASE 0.0, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 44" *) output [31:0]FSM_LVDS_in_CORDIC_0_M_AXIS_tdata;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSM_LVDS_in_CORDIC_0_M_AXIS TLAST" *) output FSM_LVDS_in_CORDIC_0_M_AXIS_tlast;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSM_LVDS_in_CORDIC_0_M_AXIS TUSER" *) output [43:0]FSM_LVDS_in_CORDIC_0_M_AXIS_tuser;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 FSM_LVDS_in_CORDIC_0_M_AXIS TVALID" *) output FSM_LVDS_in_CORDIC_0_M_AXIS_tvalid;
   (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 INTR.FSM_LVDS_IN_FFT_0_FRAMESTARTED INTERRUPT" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME INTR.FSM_LVDS_IN_FFT_0_FRAMESTARTED, PortWidth 1, SENSITIVITY EDGE_RISING" *) output FSM_LVDS_in_FFT_0_FrameStarted;
   output [7:0]FSM_LVDS_in_FFT_0_pntIdx;
-  input [0:0]FSM_LVDS_in_bitslip;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clockenable:1.0 CE.FSM_LVDS_IN_SAMPLE_CLKEN CE" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CE.FSM_LVDS_IN_SAMPLE_CLKEN, POLARITY ACTIVE_LOW" *) output FSM_LVDS_in_sample_clken;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clockenable:1.0 CE.BOARD_ROTENC_PULSE CE" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CE.BOARD_ROTENC_PULSE, POLARITY ACTIVE_LOW" *) input board_rotenc_pulse;
   input [0:0]board_rotenc_push;
@@ -3461,19 +3459,17 @@ module mcu
   output [0:0]ufb_trx_txd_n;
   output [0:0]ufb_trx_txd_p;
 
-  wire [0:0]FSM_LVDS_in_bitslip_n;
   wire [0:0]LVDS_064mhz000_SYSRESET_0_bus_struct_reset;
   wire [0:0]LVDS_064mhz000_SYSRESET_0_peripheral_aresetn;
   wire [0:0]LVDS_064mhz000_SYSRESET_0_peripheral_reset;
-  wire LVDS_in_0CMP_0_nomatch;
+  wire LVDS_in_0CMP_0_Res;
+  wire [1:0]LVDS_in_0cmp_CONCAT_0_dout;
+  wire LVDS_in_0cmp_INV_0_Res;
   wire [31:0]LVDS_in_AND_0_Res;
   wire [31:0]LVDS_in_AXIS_0_m_axis_tdata;
   wire LVDS_in_AXIS_0_m_axis_tlast;
   wire [43:0]LVDS_in_AXIS_0_m_axis_tuser;
   wire LVDS_in_AXIS_0_m_axis_tvalid;
-  wire [7:0]LVDS_in_CDC_0_data;
-  wire [31:0]LVDS_in_CDC_0_dout;
-  wire [7:0]LVDS_in_CDC_0_qdpo;
   wire [31:0]LVDS_in_CONCAT_0_dout;
   wire [31:0]LVDS_in_CORDIC_0_M_AXIS_DOUT_TDATA;
   wire LVDS_in_CORDIC_0_M_AXIS_DOUT_TLAST;
@@ -3485,17 +3481,37 @@ module mcu
   wire [7:0]LVDS_in_FFT_0_m_axis_data_tuser;
   wire LVDS_in_FFT_0_m_axis_data_tvalid;
   wire LVDS_in_FFT_0_s_axis_data_tready;
+  wire [31:0]LVDS_in_FIFO_combiner_0_dout;
+  wire [7:0]LVDS_in_SERDES_0_data_in_to_device;
   wire [1:0]LVDS_in_SLICE_HiCheck_0_Dout;
   wire [13:0]LVDS_in_SLICE_I_0_Dout;
   wire [1:0]LVDS_in_SLICE_LoCheck_0_Dout;
   wire [13:0]LVDS_in_SLICE_Q_0_Dout;
   wire [43:0]LVDS_in_ShiftRAM_0_Q;
   wire [31:0]LVDS_in_XOR_0_Res;
-  wire LVDS_in_out_bincounter_REDLOG_0_Res;
-  wire [1:0]LVDS_in_out_bincounter_SLICE_0_Dout;
+  wire LVDS_in_bitslip_COUNTER_0_THRESH0;
+  wire [7:0]LVDS_in_byte_CDC_0_qdpo;
+  wire [7:0]LVDS_in_byte_CONCAT_0_dout;
+  wire [1:0]LVDS_in_byte_CONCAT_1_dout;
+  wire [0:0]LVDS_in_byte_SLICE_0_Dout;
+  wire [0:0]LVDS_in_byte_SLICE_1_Dout;
+  wire [0:0]LVDS_in_byte_SLICE_2_Dout;
+  wire [0:0]LVDS_in_byte_SLICE_3_Dout;
+  wire [0:0]LVDS_in_byte_SLICE_4_Dout;
+  wire [0:0]LVDS_in_byte_SLICE_5_Dout;
+  wire [0:0]LVDS_in_byte_SLICE_6_Dout;
+  wire [0:0]LVDS_in_byte_SLICE_7_Dout;
+  wire [1:0]LVDS_in_byte_sync_CONCAT_0_dout;
+  wire LVDS_in_byte_sync_REDLOG_0_Res;
+  wire LVDS_in_byte_sync_REDLOG_1_Res;
+  wire [0:0]LVDS_in_byte_sync_SR_0_Q;
+  wire [0:0]LVDS_in_byte_sync_SR_1_Q;
+  wire LVDS_in_byteswap_COUNTER_0_THRESH0;
   wire [47:0]LVDS_in_out_clk_BINCOUNTER_0_Q;
-  wire LVDS_in_out_sample_clken_REDLOG_0_Res;
-  wire [3:0]LVDS_in_out_sample_clken_SLICE_0_Dout;
+  wire [1:0]LVDS_in_out_sample_tvalid_INV_0_dout;
+  wire LVDS_in_out_sample_tvalid_REDLOG_0_Res;
+  wire LVDS_in_out_sample_tvalid_REDLOG_0_Res_2;
+  wire [3:0]LVDS_in_out_sample_tvalid_SLICE_0_Dout;
   wire [43:0]LVDS_in_out_samplecounter_SLICE_0_Dout;
   wire LVDS_in_tlast_gen_REDLOG_0_Res;
   wire LVDS_in_tlast_gen_REDLOG_1_Res;
@@ -4113,15 +4129,13 @@ module mcu
   wire [0:0]ufb_trx_rxd09_p;
 
   assign FSM_LVDS_clk_064mhz000 = clk_LVDS_in_clk_064mhz000_lvds;
-  assign FSM_LVDS_in_0CMP_0_nomatch = LVDS_in_0CMP_0_nomatch;
   assign FSM_LVDS_in_CORDIC_0_M_AXIS_tdata[31:0] = LVDS_in_CORDIC_0_M_AXIS_DOUT_TDATA;
   assign FSM_LVDS_in_CORDIC_0_M_AXIS_tlast = LVDS_in_CORDIC_0_M_AXIS_DOUT_TLAST;
   assign FSM_LVDS_in_CORDIC_0_M_AXIS_tuser[43:0] = LVDS_in_CORDIC_0_M_AXIS_DOUT_TUSER;
   assign FSM_LVDS_in_CORDIC_0_M_AXIS_tvalid = LVDS_in_CORDIC_0_M_AXIS_DOUT_TVALID;
   assign FSM_LVDS_in_FFT_0_FrameStarted = LVDS_in_FFT_0_event_frame_started;
   assign FSM_LVDS_in_FFT_0_pntIdx[7:0] = LVDS_in_FFT_0_m_axis_data_tuser;
-  assign FSM_LVDS_in_bitslip_n = FSM_LVDS_in_bitslip[0];
-  assign FSM_LVDS_in_sample_clken = LVDS_in_out_sample_clken_REDLOG_0_Res;
+  assign FSM_LVDS_in_sample_clken = LVDS_in_out_sample_tvalid_REDLOG_0_Res_2;
   assign axi_ethernetlite_ETHERNET_MDIO_MDIO_I = mdio_rtl_0_ethernet_mdio_i;
   assign axi_gpio_2_ONEWIRE_in_GPIO2_TRI_I = gpio_rtl_1_onewire_gpio_in_tri_i[31:0];
   assign axi_gpio_3_rotenc_push = board_rotenc_push[0];
@@ -4236,11 +4250,18 @@ module mcu
         .slowest_sync_clk(clk_LVDS_in_clk_064mhz000_lvds));
   mcu_util_reduced_logic_0_0 LVDS_in_0CMP_0
        (.Op1(LVDS_in_AND_0_Res),
-        .Res(LVDS_in_0CMP_0_nomatch));
-  mcu_util_vector_logic_0_1 LVDS_in_AND_0
+        .Res(LVDS_in_0CMP_0_Res));
+  mcu_util_vector_logic_0_1 LVDS_in_0cmp_AND_0
        (.Op1(LVDS_in_XOR_0_Res),
         .Op2(const_0xc000c000_dout),
         .Res(LVDS_in_AND_0_Res));
+  mcu_xlconcat_0_3 LVDS_in_0cmp_CONCAT_0
+       (.In0(LVDS_in_0CMP_0_Res),
+        .In1(const_width1_val1_dout),
+        .dout(LVDS_in_0cmp_CONCAT_0_dout));
+  mcu_LVDS_in_0CMP_0_0 LVDS_in_0cmp_INV_0
+       (.Op1(LVDS_in_0cmp_CONCAT_0_dout),
+        .Res(LVDS_in_0cmp_INV_0_Res));
   mcu_CDC_LVDS_in_1 LVDS_in_AXIS_0
        (.m_axis_tdata(LVDS_in_AXIS_0_m_axis_tdata),
         .m_axis_tlast(LVDS_in_AXIS_0_m_axis_tlast),
@@ -4253,15 +4274,7 @@ module mcu
         .s_axis_tid(LVDS_in_tlast_gen_REDLOG_1_Res),
         .s_axis_tlast(LVDS_in_tlast_gen_REDLOG_0_Res),
         .s_axis_tuser(LVDS_in_out_samplecounter_SLICE_0_Dout),
-        .s_axis_tvalid(LVDS_in_out_sample_clken_REDLOG_0_Res));
-  mcu_CDC_LVDS_in_0 LVDS_in_CDC_0
-       (.a(const_width4_val0_dout),
-        .clk(clk_LVDS_in_clk_064mhz000_lvds),
-        .d(LVDS_in_CDC_0_data),
-        .dpra(const_width4_val0_dout),
-        .qdpo(LVDS_in_CDC_0_qdpo),
-        .qdpo_clk(mb_axi_clk_083mhz333),
-        .we(1'b0));
+        .s_axis_tvalid(LVDS_in_out_sample_tvalid_REDLOG_0_Res_2));
   mcu_xlconcat_0_0 LVDS_in_CONCAT_0
        (.In0(LVDS_in_SLICE_I_0_Dout),
         .In1(LVDS_in_SLICE_LoCheck_0_Dout),
@@ -4293,30 +4306,30 @@ module mcu
         .s_axis_data_tready(LVDS_in_FFT_0_s_axis_data_tready),
         .s_axis_data_tvalid(LVDS_in_AXIS_0_m_axis_tvalid));
   mcu_fifo_generator_0_0 LVDS_in_FIFO_combiner_0
-       (.clk(clk_LVDS_in_clk_064mhz000_lvds),
-        .din(LVDS_in_CDC_0_data),
-        .dout(LVDS_in_CDC_0_dout),
-        .rd_en(LVDS_in_out_sample_clken_REDLOG_0_Res),
-        .wr_en(LVDS_in_out_bincounter_REDLOG_0_Res));
+       (.clk(clk_LVDS_in_clk_016mhz000_lvds),
+        .din(LVDS_in_byte_CONCAT_0_dout),
+        .dout(LVDS_in_FIFO_combiner_0_dout),
+        .rd_en(const_width1_val1_dout),
+        .wr_en(LVDS_in_byteswap_COUNTER_0_THRESH0));
   mcu_selectio_LVDS_in_0 LVDS_in_SERDES_0
-       (.bitslip(FSM_LVDS_in_bitslip_n),
+       (.bitslip(LVDS_in_bitslip_COUNTER_0_THRESH0),
         .clk_div_in(clk_LVDS_in_clk_016mhz000_lvds),
         .clk_in(clk_LVDS_in_clk_064mhz000_lvds),
         .data_in_from_pins_n(ufb_trx_rxd09_n),
         .data_in_from_pins_p(ufb_trx_rxd09_p),
-        .data_in_to_device(LVDS_in_CDC_0_data),
+        .data_in_to_device(LVDS_in_SERDES_0_data_in_to_device),
         .io_reset(mb_0_reset_peripheral_reset));
   mcu_SLICE_LVDS_in_15_3 LVDS_in_SLICE_HiCheck_0
-       (.Din(LVDS_in_CDC_0_dout),
+       (.Din(LVDS_in_FIFO_combiner_0_dout),
         .Dout(LVDS_in_SLICE_HiCheck_0_Dout));
   mcu_SLICE_LVDS_in_15_1 LVDS_in_SLICE_I_0
-       (.Din(LVDS_in_CDC_0_dout),
+       (.Din(LVDS_in_FIFO_combiner_0_dout),
         .Dout(LVDS_in_SLICE_I_0_Dout));
   mcu_SLICE_LVDS_in_15_2 LVDS_in_SLICE_LoCheck_0
-       (.Din(LVDS_in_CDC_0_dout),
+       (.Din(LVDS_in_FIFO_combiner_0_dout),
         .Dout(LVDS_in_SLICE_LoCheck_0_Dout));
   mcu_SLICE_LVDS_in_15_0 LVDS_in_SLICE_Q_0
-       (.Din(LVDS_in_CDC_0_dout),
+       (.Din(LVDS_in_FIFO_combiner_0_dout),
         .Dout(LVDS_in_SLICE_Q_0_Dout));
   mcu_c_shift_ram_0_0 LVDS_in_ShiftRAM_0
        (.CLK(clk_LVDS_in_clk_064mhz000_lvds),
@@ -4327,21 +4340,94 @@ module mcu
        (.Op1(LVDS_in_CONCAT_0_dout),
         .Op2(const_width32_0x80004000_dout),
         .Res(LVDS_in_XOR_0_Res));
-  mcu_util_reduced_logic_0_1 LVDS_in_out_bin_clken_REDLOG_0
-       (.Op1(LVDS_in_out_bincounter_SLICE_0_Dout),
-        .Res(LVDS_in_out_bincounter_REDLOG_0_Res));
-  mcu_LVDS_in_out_samplecounter_SLICE_0_0 LVDS_in_out_bin_clken_SLICE_0
-       (.Din(LVDS_in_out_clk_BINCOUNTER_0_Q),
-        .Dout(LVDS_in_out_bincounter_SLICE_0_Dout));
+  mcu_c_counter_binary_0_1 LVDS_in_bitslip_COUNTER_0
+       (.CLK(clk_LVDS_in_clk_016mhz000_lvds),
+        .SCLR(LVDS_in_byte_sync_REDLOG_1_Res),
+        .THRESH0(LVDS_in_bitslip_COUNTER_0_THRESH0));
+  mcu_CDC_LVDS_in_0 LVDS_in_byte_CDC_0
+       (.a(const_width4_val0_dout),
+        .clk(clk_LVDS_in_clk_064mhz000_lvds),
+        .d(LVDS_in_byte_CONCAT_0_dout),
+        .dpra(const_width4_val0_dout),
+        .qdpo(LVDS_in_byte_CDC_0_qdpo),
+        .qdpo_clk(mb_axi_clk_083mhz333),
+        .we(const_width1_val1_dout));
+  mcu_xlconcat_0_1 LVDS_in_byte_CONCAT_0
+       (.In0(LVDS_in_byte_SLICE_7_Dout),
+        .In1(LVDS_in_byte_SLICE_6_Dout),
+        .In2(LVDS_in_byte_SLICE_5_Dout),
+        .In3(LVDS_in_byte_SLICE_4_Dout),
+        .In4(LVDS_in_byte_SLICE_3_Dout),
+        .In5(LVDS_in_byte_SLICE_2_Dout),
+        .In6(LVDS_in_byte_SLICE_1_Dout),
+        .In7(LVDS_in_byte_SLICE_0_Dout),
+        .dout(LVDS_in_byte_CONCAT_0_dout));
+  mcu_LVDS_in_byte_CONCAT_0_0 LVDS_in_byte_CONCAT_1
+       (.In0(LVDS_in_byte_SLICE_1_Dout),
+        .In1(LVDS_in_byte_SLICE_0_Dout),
+        .dout(LVDS_in_byte_CONCAT_1_dout));
+  mcu_xlslice_0_2 LVDS_in_byte_SLICE_0
+       (.Din(LVDS_in_SERDES_0_data_in_to_device),
+        .Dout(LVDS_in_byte_SLICE_0_Dout));
+  mcu_LVDS_in_SLICE_0_0 LVDS_in_byte_SLICE_1
+       (.Din(LVDS_in_SERDES_0_data_in_to_device),
+        .Dout(LVDS_in_byte_SLICE_1_Dout));
+  mcu_LVDS_in_SLICE_0_1 LVDS_in_byte_SLICE_2
+       (.Din(LVDS_in_SERDES_0_data_in_to_device),
+        .Dout(LVDS_in_byte_SLICE_2_Dout));
+  mcu_LVDS_in_SLICE_0_2 LVDS_in_byte_SLICE_3
+       (.Din(LVDS_in_SERDES_0_data_in_to_device),
+        .Dout(LVDS_in_byte_SLICE_3_Dout));
+  mcu_LVDS_in_SLICE_0_3 LVDS_in_byte_SLICE_4
+       (.Din(LVDS_in_SERDES_0_data_in_to_device),
+        .Dout(LVDS_in_byte_SLICE_4_Dout));
+  mcu_LVDS_in_SLICE_0_4 LVDS_in_byte_SLICE_5
+       (.Din(LVDS_in_SERDES_0_data_in_to_device),
+        .Dout(LVDS_in_byte_SLICE_5_Dout));
+  mcu_LVDS_in_SLICE_0_5 LVDS_in_byte_SLICE_6
+       (.Din(LVDS_in_SERDES_0_data_in_to_device),
+        .Dout(LVDS_in_byte_SLICE_6_Dout));
+  mcu_LVDS_in_SLICE_0_6 LVDS_in_byte_SLICE_7
+       (.Din(LVDS_in_SERDES_0_data_in_to_device),
+        .Dout(LVDS_in_byte_SLICE_7_Dout));
+  mcu_LVDS_in_byte_CONCAT_1_0 LVDS_in_byte_sync_CONCAT_0
+       (.In0(LVDS_in_byte_sync_SR_0_Q),
+        .In1(LVDS_in_byte_sync_SR_1_Q),
+        .dout(LVDS_in_byte_sync_CONCAT_0_dout));
+  mcu_util_reduced_logic_0_2 LVDS_in_byte_sync_REDLOG_0
+       (.Op1(LVDS_in_byte_CONCAT_1_dout),
+        .Res(LVDS_in_byte_sync_REDLOG_0_Res));
+  mcu_util_reduced_logic_0_3 LVDS_in_byte_sync_REDLOG_1
+       (.Op1(LVDS_in_byte_sync_CONCAT_0_dout),
+        .Res(LVDS_in_byte_sync_REDLOG_1_Res));
+  mcu_c_shift_ram_0_1 LVDS_in_byte_sync_SR_0
+       (.CLK(clk_LVDS_in_clk_016mhz000_lvds),
+        .D(LVDS_in_byte_sync_REDLOG_0_Res),
+        .Q(LVDS_in_byte_sync_SR_0_Q));
+  mcu_LVDS_in_byte_sync_SR_0_0 LVDS_in_byte_sync_SR_1
+       (.CLK(clk_LVDS_in_clk_016mhz000_lvds),
+        .D(LVDS_in_byte_sync_SR_0_Q),
+        .Q(LVDS_in_byte_sync_SR_1_Q));
+  mcu_LVDS_in_bitslip_COUNTER_0_0 LVDS_in_byteswap_COUNTER_0
+       (.CLK(clk_LVDS_in_clk_016mhz000_lvds),
+        .SCLR(LVDS_in_0cmp_INV_0_Res),
+        .THRESH0(LVDS_in_byteswap_COUNTER_0_THRESH0));
   mcu_c_counter_binary_0_0 LVDS_in_out_clk_BINCOUNTER_0
        (.CLK(clk_LVDS_in_clk_064mhz000_lvds),
         .Q(LVDS_in_out_clk_BINCOUNTER_0_Q));
-  mcu_LVDS_in_out_bin_clken_REDLOG_0_0 LVDS_in_out_sample_clken_REDLOG_0
-       (.Op1(LVDS_in_out_sample_clken_SLICE_0_Dout),
-        .Res(LVDS_in_out_sample_clken_REDLOG_0_Res));
-  mcu_LVDS_in_out_bincounter_SLICE_0_0 LVDS_in_out_sample_clken_SLICE_0
+  mcu_xlconcat_0_2 LVDS_in_out_sample_tvalid_INV_0
+       (.In0(const_width1_val1_dout),
+        .In1(LVDS_in_out_sample_tvalid_REDLOG_0_Res),
+        .dout(LVDS_in_out_sample_tvalid_INV_0_dout));
+  mcu_LVDS_in_out_bin_clken_REDLOG_0_0 LVDS_in_out_sample_tvalid_REDLOG_0
+       (.Op1(LVDS_in_out_sample_tvalid_SLICE_0_Dout),
+        .Res(LVDS_in_out_sample_tvalid_REDLOG_0_Res));
+  mcu_LVDS_in_out_sample_clken_REDLOG_0_1 LVDS_in_out_sample_tvalid_REDLOG_1
+       (.Op1(LVDS_in_out_sample_tvalid_INV_0_dout),
+        .Res(LVDS_in_out_sample_tvalid_REDLOG_0_Res_2));
+  mcu_LVDS_in_out_bincounter_SLICE_0_0 LVDS_in_out_sample_tvalid_SLICE_0
        (.Din(LVDS_in_out_clk_BINCOUNTER_0_Q),
-        .Dout(LVDS_in_out_sample_clken_SLICE_0_Dout));
+        .Dout(LVDS_in_out_sample_tvalid_SLICE_0_Dout));
   mcu_xlslice_0_1 LVDS_in_out_samplecounter_SLICE_0
        (.Din(LVDS_in_out_clk_BINCOUNTER_0_Q),
         .Dout(LVDS_in_out_samplecounter_SLICE_0_Dout));
@@ -4500,7 +4586,7 @@ module mcu
         .s_axi_wstrb(mb_0_axi_interconnect_bot1_M04_AXI_WSTRB),
         .s_axi_wvalid(mb_0_axi_interconnect_bot1_M04_AXI_WVALID));
   mcu_axi_gpio_7_LVDS_0 axi_gpio_7_LVDS
-       (.gpio2_io_i(LVDS_in_CDC_0_qdpo),
+       (.gpio2_io_i(LVDS_in_byte_CDC_0_qdpo),
         .gpio_io_o(LVDS_out_CDC_0_data),
         .s_axi_aclk(mb_axi_clk_083mhz333),
         .s_axi_araddr(mb_0_axi_interconnect_bot1_M05_AXI_ARADDR[8:0]),

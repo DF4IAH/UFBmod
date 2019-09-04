@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Sep  3 23:36:32 2019" VIVADOVERSION="2019.1.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Sep  4 21:09:06 2019" VIVADOVERSION="2019.1.2">
 
   <SYSTEMINFO ARCH="artix7" DEVICE="7a100t" NAME="mcu" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -128,16 +128,6 @@
         <CONNECTION INSTANCE="LVDS_out_SERDES_0" PORT="data_out_to_pins_p"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="FSM_LVDS_in_0CMP_0_nomatch" SIGIS="undef" SIGNAME="LVDS_in_0CMP_0_Res">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="LVDS_in_0CMP_0" PORT="Res"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="0" NAME="FSM_LVDS_in_bitslip" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_FSM_LVDS_in_bitslip">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="LVDS_in_SERDES_0" PORT="bitslip"/>
-      </CONNECTIONS>
-    </PORT>
     <PORT CLKFREQUENCY="50000000" DIR="I" NAME="pll_clk_g" SIGIS="clk" SIGNAME="External_Ports_pll_clk_g">
       <CONNECTIONS>
         <CONNECTION INSTANCE="clk_pll_trx_in_PLL_0" PORT="clk_in2"/>
@@ -159,9 +149,9 @@
         <CONNECTION INSTANCE="LVDS_in_FFT_0" PORT="event_frame_started"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="FSM_LVDS_in_sample_clken" SIGIS="ce" SIGNAME="LVDS_in_out_sample_clken_REDLOG_0_Res">
+    <PORT DIR="O" NAME="FSM_LVDS_in_sample_clken" SIGIS="ce" SIGNAME="LVDS_in_out_sample_tvalid_REDLOG_1_Res">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="LVDS_in_out_sample_clken_REDLOG_0" PORT="Res"/>
+        <CONNECTION INSTANCE="LVDS_in_out_sample_tvalid_REDLOG_1" PORT="Res"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" LEFT="7" NAME="FSM_LVDS_in_FFT_0_pntIdx" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_FFT_0_m_axis_data_tuser">
@@ -880,20 +870,20 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="31" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_AND_0_Res">
+        <PORT DIR="I" LEFT="31" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_0cmp_AND_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_AND_0" PORT="Res"/>
+            <CONNECTION INSTANCE="LVDS_in_0cmp_AND_0" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="Res" SIGIS="undef" SIGNAME="LVDS_in_0CMP_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="FSM_LVDS_in_0CMP_0_nomatch"/>
+            <CONNECTION INSTANCE="LVDS_in_0cmp_CONCAT_0" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/LVDS_in_AND_0" HWVERSION="2.0" INSTANCE="LVDS_in_AND_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
+    <MODULE COREREVISION="1" FULLNAME="/LVDS_in_0cmp_AND_0" HWVERSION="2.0" INSTANCE="LVDS_in_0cmp_AND_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="C_OPERATION" VALUE="and"/>
@@ -913,9 +903,91 @@
             <CONNECTION INSTANCE="const_width32_0xC000C000" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_AND_0_Res">
+        <PORT DIR="O" LEFT="31" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_0cmp_AND_0_Res">
           <CONNECTIONS>
             <CONNECTION INSTANCE="LVDS_in_0CMP_0" PORT="Op1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="3" FULLNAME="/LVDS_in_0cmp_CONCAT_0" HWVERSION="2.1" INSTANCE="LVDS_in_0cmp_CONCAT_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="IN0_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN1_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN2_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN3_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN5_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN6_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN7_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN8_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN9_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN10_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN11_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN12_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN13_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN14_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN15_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN16_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN17_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN18_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN19_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN20_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN21_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN22_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN23_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN24_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN25_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN26_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN27_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN28_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN29_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="dout_width" VALUE="2"/>
+        <PARAMETER NAME="NUM_PORTS" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_xlconcat_0_3"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_0CMP_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_0CMP_0" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="const_width1_val1_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="const_width1_val1" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_0cmp_CONCAT_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_0cmp_INV_0" PORT="Op1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/LVDS_in_0cmp_INV_0" HWVERSION="2.0" INSTANCE="LVDS_in_0cmp_INV_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_reduced_logic" VLNV="xilinx.com:ip:util_reduced_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="xor"/>
+        <PARAMETER NAME="C_SIZE" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_0CMP_0_0"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_xorgate.png"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="1" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_0cmp_CONCAT_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_0cmp_CONCAT_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="Res" SIGIS="undef" SIGNAME="LVDS_in_0cmp_INV_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byteswap_COUNTER_0" PORT="SCLR"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1310,9 +1382,9 @@
             <CONNECTION INSTANCE="LVDS_016mhz000_SYSRESET_0" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axis_tvalid" SIGIS="undef" SIGNAME="LVDS_in_out_sample_clken_REDLOG_0_Res">
+        <PORT DIR="I" NAME="s_axis_tvalid" SIGIS="undef" SIGNAME="LVDS_in_out_sample_tvalid_REDLOG_1_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_out_sample_clken_REDLOG_0" PORT="Res"/>
+            <CONNECTION INSTANCE="LVDS_in_out_sample_tvalid_REDLOG_1" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_axis_tready" SIGIS="undef"/>
@@ -1411,106 +1483,6 @@
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
-    </MODULE>
-    <MODULE COREREVISION="13" FULLNAME="/LVDS_in_CDC_0" HWVERSION="8.0" INSTANCE="LVDS_in_CDC_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="dist_mem_gen" VLNV="xilinx.com:ip:dist_mem_gen:8.0">
-      <DOCUMENTS>
-        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=dist_mem_gen;v=v8_0;d=pg063-dist-mem-gen.pdf"/>
-      </DOCUMENTS>
-      <PARAMETERS>
-        <PARAMETER NAME="C_FAMILY" VALUE="artix7"/>
-        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
-        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
-        <PARAMETER NAME="C_DEPTH" VALUE="16"/>
-        <PARAMETER NAME="C_HAS_CLK" VALUE="1"/>
-        <PARAMETER NAME="C_HAS_D" VALUE="1"/>
-        <PARAMETER NAME="C_HAS_DPO" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_DPRA" VALUE="1"/>
-        <PARAMETER NAME="C_HAS_I_CE" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_QDPO" VALUE="1"/>
-        <PARAMETER NAME="C_HAS_QDPO_CE" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_QDPO_CLK" VALUE="1"/>
-        <PARAMETER NAME="C_HAS_QDPO_RST" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_QDPO_SRST" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_QSPO" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_QSPO_CE" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_QSPO_RST" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_QSPO_SRST" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_SPO" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_WE" VALUE="1"/>
-        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
-        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
-        <PARAMETER NAME="C_MEM_TYPE" VALUE="4"/>
-        <PARAMETER NAME="C_PIPELINE_STAGES" VALUE="1"/>
-        <PARAMETER NAME="C_QCE_JOINED" VALUE="0"/>
-        <PARAMETER NAME="C_QUALIFY_WE" VALUE="0"/>
-        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
-        <PARAMETER NAME="C_REG_A_D_INPUTS" VALUE="1"/>
-        <PARAMETER NAME="C_REG_DPRA_INPUT" VALUE="0"/>
-        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="1"/>
-        <PARAMETER NAME="C_WIDTH" VALUE="8"/>
-        <PARAMETER NAME="C_PARSER_TYPE" VALUE="1"/>
-        <PARAMETER NAME="depth" VALUE="16"/>
-        <PARAMETER NAME="data_width" VALUE="8"/>
-        <PARAMETER NAME="Component_Name" VALUE="mcu_CDC_LVDS_in_0"/>
-        <PARAMETER NAME="memory_type" VALUE="simple_dual_port_ram"/>
-        <PARAMETER NAME="input_options" VALUE="registered"/>
-        <PARAMETER NAME="input_clock_enable" VALUE="false"/>
-        <PARAMETER NAME="qualify_we_with_i_ce" VALUE="false"/>
-        <PARAMETER NAME="dual_port_address" VALUE="non_registered"/>
-        <PARAMETER NAME="simple_dual_port_address" VALUE="non_registered"/>
-        <PARAMETER NAME="output_options" VALUE="registered"/>
-        <PARAMETER NAME="Pipeline_Stages" VALUE="1"/>
-        <PARAMETER NAME="common_output_clk" VALUE="false"/>
-        <PARAMETER NAME="single_port_output_clock_enable" VALUE="false"/>
-        <PARAMETER NAME="common_output_ce" VALUE="false"/>
-        <PARAMETER NAME="dual_port_output_clock_enable" VALUE="false"/>
-        <PARAMETER NAME="simple_dual_port_output_clock_enable" VALUE="false"/>
-        <PARAMETER NAME="coefficient_file" VALUE="no_coe_file_loaded"/>
-        <PARAMETER NAME="default_data_radix" VALUE="16"/>
-        <PARAMETER NAME="default_data" VALUE="0"/>
-        <PARAMETER NAME="reset_qspo" VALUE="false"/>
-        <PARAMETER NAME="reset_qdpo" VALUE="false"/>
-        <PARAMETER NAME="reset_qsdpo" VALUE="false"/>
-        <PARAMETER NAME="sync_reset_qspo" VALUE="false"/>
-        <PARAMETER NAME="sync_reset_qdpo" VALUE="false"/>
-        <PARAMETER NAME="sync_reset_qsdpo" VALUE="false"/>
-        <PARAMETER NAME="ce_overrides" VALUE="ce_overrides_sync_controls"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="3" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="const_width4_val0_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="const_width4_val0" PORT="dout"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="7" NAME="d" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_SERDES_0_data_in_to_device">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_SERDES_0" PORT="data_in_to_device"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="dpra" RIGHT="0" SIGIS="undef" SIGNAME="const_width4_val0_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="const_width4_val0" PORT="dout"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="clk" SIGIS="undef" SIGNAME="clk_lvds_in_PLL_0_clk_064mhz000_lvds">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="clk_lvds_in_PLL_0" PORT="clk_064mhz000_lvds"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="we" SIGIS="undef"/>
-        <PORT DIR="I" NAME="qdpo_clk" SIGIS="undef" SIGNAME="mig_7series_0_ui_clk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="7" NAME="qdpo" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_CDC_0_qdpo">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_gpio_7_LVDS" PORT="gpio2_io_i"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
     </MODULE>
     <MODULE COREREVISION="3" FULLNAME="/LVDS_in_CONCAT_0" HWVERSION="2.1" INSTANCE="LVDS_in_CONCAT_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
       <DOCUMENTS/>
@@ -1945,7 +1917,7 @@
         <PARAMETER NAME="C_COMMON_CLOCK" VALUE="1"/>
         <PARAMETER NAME="C_SELECT_XPM" VALUE="0"/>
         <PARAMETER NAME="C_COUNT_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_DATA_COUNT_WIDTH" VALUE="7"/>
+        <PARAMETER NAME="C_DATA_COUNT_WIDTH" VALUE="6"/>
         <PARAMETER NAME="C_DEFAULT_VALUE" VALUE="BlankString"/>
         <PARAMETER NAME="C_DIN_WIDTH" VALUE="8"/>
         <PARAMETER NAME="C_DOUT_RST_VAL" VALUE="0"/>
@@ -1975,14 +1947,14 @@
         <PARAMETER NAME="C_MIF_FILE_NAME" VALUE="BlankString"/>
         <PARAMETER NAME="C_OPTIMIZATION_MODE" VALUE="0"/>
         <PARAMETER NAME="C_OVERFLOW_LOW" VALUE="0"/>
-        <PARAMETER NAME="C_PRELOAD_LATENCY" VALUE="0"/>
+        <PARAMETER NAME="C_PRELOAD_LATENCY" VALUE="2"/>
         <PARAMETER NAME="C_PRELOAD_REGS" VALUE="1"/>
         <PARAMETER NAME="C_PRIM_FIFO_TYPE" VALUE="512x36"/>
-        <PARAMETER NAME="C_PROG_EMPTY_THRESH_ASSERT_VAL" VALUE="4"/>
-        <PARAMETER NAME="C_PROG_EMPTY_THRESH_NEGATE_VAL" VALUE="5"/>
+        <PARAMETER NAME="C_PROG_EMPTY_THRESH_ASSERT_VAL" VALUE="2"/>
+        <PARAMETER NAME="C_PROG_EMPTY_THRESH_NEGATE_VAL" VALUE="3"/>
         <PARAMETER NAME="C_PROG_EMPTY_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROG_FULL_THRESH_ASSERT_VAL" VALUE="63"/>
-        <PARAMETER NAME="C_PROG_FULL_THRESH_NEGATE_VAL" VALUE="62"/>
+        <PARAMETER NAME="C_PROG_FULL_THRESH_ASSERT_VAL" VALUE="61"/>
+        <PARAMETER NAME="C_PROG_FULL_THRESH_NEGATE_VAL" VALUE="60"/>
         <PARAMETER NAME="C_PROG_FULL_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_RD_DATA_COUNT_WIDTH" VALUE="5"/>
         <PARAMETER NAME="C_RD_DEPTH" VALUE="16"/>
@@ -2149,7 +2121,7 @@
         <PARAMETER NAME="synchronization_stages" VALUE="2"/>
         <PARAMETER NAME="synchronization_stages_axi" VALUE="2"/>
         <PARAMETER NAME="INTERFACE_TYPE" VALUE="Native"/>
-        <PARAMETER NAME="Performance_Options" VALUE="First_Word_Fall_Through"/>
+        <PARAMETER NAME="Performance_Options" VALUE="Standard_FIFO"/>
         <PARAMETER NAME="asymmetric_port_width" VALUE="false"/>
         <PARAMETER NAME="Input_Data_Width" VALUE="8"/>
         <PARAMETER NAME="Input_Depth" VALUE="64"/>
@@ -2179,7 +2151,7 @@
         <PARAMETER NAME="ecc_pipeline_reg" VALUE="false"/>
         <PARAMETER NAME="Use_Extra_Logic" VALUE="true"/>
         <PARAMETER NAME="Data_Count" VALUE="false"/>
-        <PARAMETER NAME="Data_Count_Width" VALUE="7"/>
+        <PARAMETER NAME="Data_Count_Width" VALUE="6"/>
         <PARAMETER NAME="Write_Data_Count" VALUE="false"/>
         <PARAMETER NAME="Write_Data_Count_Width" VALUE="7"/>
         <PARAMETER NAME="Read_Data_Count" VALUE="false"/>
@@ -2188,11 +2160,11 @@
         <PARAMETER NAME="Read_Clock_Frequency" VALUE="1"/>
         <PARAMETER NAME="Write_Clock_Frequency" VALUE="1"/>
         <PARAMETER NAME="Programmable_Full_Type" VALUE="No_Programmable_Full_Threshold"/>
-        <PARAMETER NAME="Full_Threshold_Assert_Value" VALUE="63"/>
-        <PARAMETER NAME="Full_Threshold_Negate_Value" VALUE="62"/>
+        <PARAMETER NAME="Full_Threshold_Assert_Value" VALUE="61"/>
+        <PARAMETER NAME="Full_Threshold_Negate_Value" VALUE="60"/>
         <PARAMETER NAME="Programmable_Empty_Type" VALUE="No_Programmable_Empty_Threshold"/>
-        <PARAMETER NAME="Empty_Threshold_Assert_Value" VALUE="4"/>
-        <PARAMETER NAME="Empty_Threshold_Negate_Value" VALUE="5"/>
+        <PARAMETER NAME="Empty_Threshold_Assert_Value" VALUE="2"/>
+        <PARAMETER NAME="Empty_Threshold_Negate_Value" VALUE="3"/>
         <PARAMETER NAME="PROTOCOL" VALUE="AXI4"/>
         <PARAMETER NAME="Clock_Type_AXI" VALUE="Common_Clock"/>
         <PARAMETER NAME="HAS_ACLKEN" VALUE="false"/>
@@ -2314,24 +2286,24 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="64000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clk_lvds_in_PLL_0_clk_064mhz000_lvds">
+        <PORT CLKFREQUENCY="16000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="clk_lvds_in_PLL_0_clk_016mhz000_lvds">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="clk_lvds_in_PLL_0" PORT="clk_064mhz000_lvds"/>
+            <CONNECTION INSTANCE="clk_lvds_in_PLL_0" PORT="clk_016mhz000_lvds"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="din" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_SERDES_0_data_in_to_device">
+        <PORT DIR="I" LEFT="7" NAME="din" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_CONCAT_0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_SERDES_0" PORT="data_in_to_device"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_CONCAT_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="wr_en" SIGIS="undef" SIGNAME="LVDS_in_out_bin_clken_REDLOG_0_Res">
+        <PORT DIR="I" NAME="wr_en" SIGIS="undef" SIGNAME="LVDS_in_byteswap_COUNTER_0_THRESH0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_out_bin_clken_REDLOG_0" PORT="Res"/>
+            <CONNECTION INSTANCE="LVDS_in_byteswap_COUNTER_0" PORT="THRESH0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rd_en" SIGIS="undef" SIGNAME="LVDS_in_out_sample_clken_REDLOG_0_Res">
+        <PORT DIR="I" NAME="rd_en" SIGIS="undef" SIGNAME="const_width1_val1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_out_sample_clken_REDLOG_0" PORT="Res"/>
+            <CONNECTION INSTANCE="const_width1_val1" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_FIFO_combiner_0_dout">
@@ -2368,8 +2340,8 @@
       </DOCUMENTS>
       <PARAMETERS>
         <PARAMETER NAME="c_component_name" VALUE="mcu_selectio_LVDS_in_0"/>
-        <PARAMETER NAME="C_INCLUDE_IDELAYCTRL" VALUE="1"/>
-        <PARAMETER NAME="C_INCLUDE_IDELAYCTRL_BUFG" VALUE="1"/>
+        <PARAMETER NAME="C_INCLUDE_IDELAYCTRL" VALUE="0"/>
+        <PARAMETER NAME="C_INCLUDE_IDELAYCTRL_BUFG" VALUE="0"/>
         <PARAMETER NAME="C_DEVICE_FAMILY" VALUE="artix7"/>
         <PARAMETER NAME="C_NOTES" VALUE="None"/>
         <PARAMETER NAME="C_BUS_DIR" VALUE="INPUTS"/>
@@ -2468,8 +2440,8 @@
         <PARAMETER NAME="CLK_FWD_SIG_TYPE" VALUE="DIFF"/>
         <PARAMETER NAME="CLK_FWD_IO_STD" VALUE="DIFF_HSTL_I"/>
         <PARAMETER NAME="DDR_CLK_BUF" VALUE="BUFR"/>
-        <PARAMETER NAME="INCLUDE_IDELAYCTRL" VALUE="true"/>
-        <PARAMETER NAME="INCLUDE_IDELAYCTRL_BUFG" VALUE="true"/>
+        <PARAMETER NAME="INCLUDE_IDELAYCTRL" VALUE="false"/>
+        <PARAMETER NAME="INCLUDE_IDELAYCTRL_BUFG" VALUE="false"/>
         <PARAMETER NAME="IDELAY_HIGH_PERF_MODE" VALUE="false"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -2499,15 +2471,21 @@
             <CONNECTION INSTANCE="mb_0_reset" PORT="peripheral_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="bitslip" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_FSM_LVDS_in_bitslip">
+        <PORT DIR="I" LEFT="0" NAME="bitslip" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_bitslip_COUNTER_0_THRESH0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="FSM_LVDS_in_bitslip"/>
+            <CONNECTION INSTANCE="LVDS_in_bitslip_COUNTER_0" PORT="THRESH0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="7" NAME="data_in_to_device" RIGHT="0" SIGIS="data" SIGNAME="LVDS_in_SERDES_0_data_in_to_device">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_CDC_0" PORT="d"/>
-            <CONNECTION INSTANCE="LVDS_in_FIFO_combiner_0" PORT="din"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_0" PORT="Din"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_1" PORT="Din"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_2" PORT="Din"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_3" PORT="Din"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_4" PORT="Din"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_5" PORT="Din"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_6" PORT="Din"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_7" PORT="Din"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -2704,57 +2682,843 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_XOR_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_AND_0" PORT="Op1"/>
+            <CONNECTION INSTANCE="LVDS_in_0cmp_AND_0" PORT="Op1"/>
             <CONNECTION INSTANCE="LVDS_in_AXIS_0" PORT="s_axis_tdata"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="4" FULLNAME="/LVDS_in_out_bin_clken_REDLOG_0" HWVERSION="2.0" INSTANCE="LVDS_in_out_bin_clken_REDLOG_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_reduced_logic" VLNV="xilinx.com:ip:util_reduced_logic:2.0">
-      <DOCUMENTS/>
+    <MODULE COREREVISION="13" FULLNAME="/LVDS_in_bitslip_COUNTER_0" HWVERSION="12.0" INSTANCE="LVDS_in_bitslip_COUNTER_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_counter_binary" VLNV="xilinx.com:ip:c_counter_binary:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_counter_binary;v=v12_0;d=pg121-c-counter-binary.pdf"/>
+      </DOCUMENTS>
       <PARAMETERS>
-        <PARAMETER NAME="C_OPERATION" VALUE="and"/>
-        <PARAMETER NAME="C_SIZE" VALUE="2"/>
-        <PARAMETER NAME="Component_Name" VALUE="mcu_util_reduced_logic_0_1"/>
-        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_andgate.png"/>
+        <PARAMETER NAME="C_IMPLEMENTATION" VALUE="0"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="3"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="1"/>
+        <PARAMETER NAME="C_RESTRICT_COUNT" VALUE="0"/>
+        <PARAMETER NAME="C_COUNT_TO" VALUE="1"/>
+        <PARAMETER NAME="C_COUNT_BY" VALUE="1"/>
+        <PARAMETER NAME="C_COUNT_MODE" VALUE="0"/>
+        <PARAMETER NAME="C_THRESH0_VALUE" VALUE="110"/>
+        <PARAMETER NAME="C_CE_OVERRIDES_SYNC" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_THRESH0" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_LOAD" VALUE="0"/>
+        <PARAMETER NAME="C_LOAD_LOW" VALUE="0"/>
+        <PARAMETER NAME="C_LATENCY" VALUE="1"/>
+        <PARAMETER NAME="C_FB_LATENCY" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SCLR_OVERRIDES_SSET" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_c_counter_binary_0_1"/>
+        <PARAMETER NAME="Implementation" VALUE="Fabric"/>
+        <PARAMETER NAME="Output_Width" VALUE="3"/>
+        <PARAMETER NAME="Increment_Value" VALUE="1"/>
+        <PARAMETER NAME="Restrict_Count" VALUE="false"/>
+        <PARAMETER NAME="Final_Count_Value" VALUE="1"/>
+        <PARAMETER NAME="Count_Mode" VALUE="UP"/>
+        <PARAMETER NAME="Sync_Threshold_Output" VALUE="true"/>
+        <PARAMETER NAME="Threshold_Value" VALUE="6"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="true"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SINIT_Value" VALUE="0"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="Sync_CE_Priority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="AINIT_Value" VALUE="0"/>
+        <PARAMETER NAME="Load" VALUE="false"/>
+        <PARAMETER NAME="Latency_Configuration" VALUE="Manual"/>
+        <PARAMETER NAME="Latency" VALUE="1"/>
+        <PARAMETER NAME="Fb_Latency_Configuration" VALUE="Manual"/>
+        <PARAMETER NAME="Fb_Latency" VALUE="0"/>
+        <PARAMETER NAME="Load_Sense" VALUE="Active_High"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="1" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_out_bin_clken_SLICE_0_Dout">
+        <PORT CLKFREQUENCY="16000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="clk_lvds_in_PLL_0_clk_016mhz000_lvds">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_out_bin_clken_SLICE_0" PORT="Dout"/>
+            <CONNECTION INSTANCE="clk_lvds_in_PLL_0" PORT="clk_016mhz000_lvds"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="Res" SIGIS="undef" SIGNAME="LVDS_in_out_bin_clken_REDLOG_0_Res">
+        <PORT DIR="I" NAME="SCLR" SIGIS="rst" SIGNAME="LVDS_in_byte_sync_REDLOG_1_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_FIFO_combiner_0" PORT="wr_en"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_sync_REDLOG_1" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="THRESH0" SIGIS="data" SIGNAME="LVDS_in_bitslip_COUNTER_0_THRESH0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_SERDES_0" PORT="bitslip"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="Q" RIGHT="0" SIGIS="data"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="13" FULLNAME="/LVDS_in_byte_CDC_0" HWVERSION="8.0" INSTANCE="LVDS_in_byte_CDC_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="dist_mem_gen" VLNV="xilinx.com:ip:dist_mem_gen:8.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=dist_mem_gen;v=v8_0;d=pg063-dist-mem-gen.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_FAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="16"/>
+        <PARAMETER NAME="C_HAS_CLK" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_D" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_DPO" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_DPRA" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_I_CE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QDPO" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_QDPO_CE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QDPO_CLK" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_QDPO_RST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QDPO_SRST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QSPO" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QSPO_CE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QSPO_RST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_QSPO_SRST" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SPO" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_WE" VALUE="1"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_MEM_TYPE" VALUE="4"/>
+        <PARAMETER NAME="C_PIPELINE_STAGES" VALUE="1"/>
+        <PARAMETER NAME="C_QCE_JOINED" VALUE="0"/>
+        <PARAMETER NAME="C_QUALIFY_WE" VALUE="0"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_REG_A_D_INPUTS" VALUE="1"/>
+        <PARAMETER NAME="C_REG_DPRA_INPUT" VALUE="0"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="1"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="1"/>
+        <PARAMETER NAME="depth" VALUE="16"/>
+        <PARAMETER NAME="data_width" VALUE="8"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_CDC_LVDS_in_0"/>
+        <PARAMETER NAME="memory_type" VALUE="simple_dual_port_ram"/>
+        <PARAMETER NAME="input_options" VALUE="registered"/>
+        <PARAMETER NAME="input_clock_enable" VALUE="false"/>
+        <PARAMETER NAME="qualify_we_with_i_ce" VALUE="false"/>
+        <PARAMETER NAME="dual_port_address" VALUE="non_registered"/>
+        <PARAMETER NAME="simple_dual_port_address" VALUE="non_registered"/>
+        <PARAMETER NAME="output_options" VALUE="registered"/>
+        <PARAMETER NAME="Pipeline_Stages" VALUE="1"/>
+        <PARAMETER NAME="common_output_clk" VALUE="false"/>
+        <PARAMETER NAME="single_port_output_clock_enable" VALUE="false"/>
+        <PARAMETER NAME="common_output_ce" VALUE="false"/>
+        <PARAMETER NAME="dual_port_output_clock_enable" VALUE="false"/>
+        <PARAMETER NAME="simple_dual_port_output_clock_enable" VALUE="false"/>
+        <PARAMETER NAME="coefficient_file" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="default_data_radix" VALUE="16"/>
+        <PARAMETER NAME="default_data" VALUE="0"/>
+        <PARAMETER NAME="reset_qspo" VALUE="false"/>
+        <PARAMETER NAME="reset_qdpo" VALUE="false"/>
+        <PARAMETER NAME="reset_qsdpo" VALUE="false"/>
+        <PARAMETER NAME="sync_reset_qspo" VALUE="false"/>
+        <PARAMETER NAME="sync_reset_qdpo" VALUE="false"/>
+        <PARAMETER NAME="sync_reset_qsdpo" VALUE="false"/>
+        <PARAMETER NAME="ce_overrides" VALUE="ce_overrides_sync_controls"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="3" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="const_width4_val0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="const_width4_val0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="d" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_CONCAT_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_CONCAT_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="dpra" RIGHT="0" SIGIS="undef" SIGNAME="const_width4_val0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="const_width4_val0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="clk" SIGIS="undef" SIGNAME="clk_lvds_in_PLL_0_clk_064mhz000_lvds">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_lvds_in_PLL_0" PORT="clk_064mhz000_lvds"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="we" SIGIS="undef" SIGNAME="const_width1_val1_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="const_width1_val1" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="qdpo_clk" SIGIS="undef" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="qdpo" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_CDC_0_qdpo">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_gpio_7_LVDS" PORT="gpio2_io_i"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/LVDS_in_out_bin_clken_SLICE_0" HWVERSION="1.0" INSTANCE="LVDS_in_out_bin_clken_SLICE_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+    <MODULE COREREVISION="3" FULLNAME="/LVDS_in_byte_CONCAT_0" HWVERSION="2.1" INSTANCE="LVDS_in_byte_CONCAT_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="DIN_WIDTH" VALUE="48"/>
-        <PARAMETER NAME="DIN_FROM" VALUE="1"/>
-        <PARAMETER NAME="DIN_TO" VALUE="0"/>
-        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_out_samplecounter_SLICE_0_0"/>
-        <PARAMETER NAME="DOUT_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="IN0_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN1_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN2_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN3_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN5_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN6_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN7_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN8_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN9_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN10_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN11_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN12_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN13_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN14_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN15_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN16_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN17_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN18_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN19_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN20_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN21_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN22_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN23_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN24_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN25_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN26_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN27_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN28_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN29_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="dout_width" VALUE="8"/>
+        <PARAMETER NAME="NUM_PORTS" VALUE="8"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_xlconcat_0_1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="47" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_out_clk_BINCOUNTER_0_Q">
+        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_7_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_out_clk_BINCOUNTER_0" PORT="Q"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_7" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_out_bin_clken_SLICE_0_Dout">
+        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_6_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_out_bin_clken_REDLOG_0" PORT="Op1"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_6" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_5_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_5" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In3" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_4_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_4" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In4" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_3_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_3" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In5" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_2_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_2" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In6" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_1_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_1" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In7" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_0" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_CONCAT_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_CDC_0" PORT="d"/>
+            <CONNECTION INSTANCE="LVDS_in_FIFO_combiner_0" PORT="din"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="3" FULLNAME="/LVDS_in_byte_CONCAT_1" HWVERSION="2.1" INSTANCE="LVDS_in_byte_CONCAT_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="IN0_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN1_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN2_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN3_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN5_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN6_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN7_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN8_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN9_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN10_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN11_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN12_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN13_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN14_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN15_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN16_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN17_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN18_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN19_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN20_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN21_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN22_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN23_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN24_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN25_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN26_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN27_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN28_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN29_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="dout_width" VALUE="2"/>
+        <PARAMETER NAME="NUM_PORTS" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_byte_CONCAT_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_1_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_1" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_SLICE_0" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_CONCAT_1_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_sync_REDLOG_0" PORT="Op1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/LVDS_in_byte_SLICE_0" HWVERSION="1.0" INSTANCE="LVDS_in_byte_SLICE_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="0"/>
+        <PARAMETER NAME="DIN_TO" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_xlslice_0_2"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="7" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_SERDES_0_data_in_to_device">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_SERDES_0" PORT="data_in_to_device"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_CONCAT_0" PORT="In7"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_CONCAT_1" PORT="In1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/LVDS_in_byte_SLICE_1" HWVERSION="1.0" INSTANCE="LVDS_in_byte_SLICE_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="1"/>
+        <PARAMETER NAME="DIN_TO" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_SLICE_0_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="7" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_SERDES_0_data_in_to_device">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_SERDES_0" PORT="data_in_to_device"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_1_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_CONCAT_0" PORT="In6"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_CONCAT_1" PORT="In0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/LVDS_in_byte_SLICE_2" HWVERSION="1.0" INSTANCE="LVDS_in_byte_SLICE_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="2"/>
+        <PARAMETER NAME="DIN_TO" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_SLICE_0_1"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="7" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_SERDES_0_data_in_to_device">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_SERDES_0" PORT="data_in_to_device"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_2_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_CONCAT_0" PORT="In5"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/LVDS_in_byte_SLICE_3" HWVERSION="1.0" INSTANCE="LVDS_in_byte_SLICE_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="3"/>
+        <PARAMETER NAME="DIN_TO" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_SLICE_0_2"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="7" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_SERDES_0_data_in_to_device">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_SERDES_0" PORT="data_in_to_device"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_3_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_CONCAT_0" PORT="In4"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/LVDS_in_byte_SLICE_4" HWVERSION="1.0" INSTANCE="LVDS_in_byte_SLICE_4" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="4"/>
+        <PARAMETER NAME="DIN_TO" VALUE="4"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_SLICE_0_3"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="7" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_SERDES_0_data_in_to_device">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_SERDES_0" PORT="data_in_to_device"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_4_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_CONCAT_0" PORT="In3"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/LVDS_in_byte_SLICE_5" HWVERSION="1.0" INSTANCE="LVDS_in_byte_SLICE_5" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="5"/>
+        <PARAMETER NAME="DIN_TO" VALUE="5"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_SLICE_0_4"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="7" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_SERDES_0_data_in_to_device">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_SERDES_0" PORT="data_in_to_device"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_5_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_CONCAT_0" PORT="In2"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/LVDS_in_byte_SLICE_6" HWVERSION="1.0" INSTANCE="LVDS_in_byte_SLICE_6" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="6"/>
+        <PARAMETER NAME="DIN_TO" VALUE="6"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_SLICE_0_5"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="7" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_SERDES_0_data_in_to_device">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_SERDES_0" PORT="data_in_to_device"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_6_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_CONCAT_0" PORT="In1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/LVDS_in_byte_SLICE_7" HWVERSION="1.0" INSTANCE="LVDS_in_byte_SLICE_7" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="7"/>
+        <PARAMETER NAME="DIN_TO" VALUE="7"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_SLICE_0_6"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="7" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_SERDES_0_data_in_to_device">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_SERDES_0" PORT="data_in_to_device"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_SLICE_7_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_CONCAT_0" PORT="In0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="3" FULLNAME="/LVDS_in_byte_sync_CONCAT_0" HWVERSION="2.1" INSTANCE="LVDS_in_byte_sync_CONCAT_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="IN0_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN1_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN2_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN3_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN5_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN6_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN7_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN8_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN9_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN10_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN11_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN12_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN13_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN14_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN15_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN16_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN17_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN18_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN19_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN20_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN21_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN22_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN23_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN24_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN25_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN26_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN27_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN28_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN29_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="dout_width" VALUE="2"/>
+        <PARAMETER NAME="NUM_PORTS" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_byte_CONCAT_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_sync_SR_0_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_sync_SR_0" PORT="Q"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_sync_SR_1_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_sync_SR_1" PORT="Q"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_sync_CONCAT_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_sync_REDLOG_1" PORT="Op1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/LVDS_in_byte_sync_REDLOG_0" HWVERSION="2.0" INSTANCE="LVDS_in_byte_sync_REDLOG_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_reduced_logic" VLNV="xilinx.com:ip:util_reduced_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="xor"/>
+        <PARAMETER NAME="C_SIZE" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_util_reduced_logic_0_2"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_xorgate.png"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="1" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_CONCAT_1_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_CONCAT_1" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="Res" SIGIS="undef" SIGNAME="LVDS_in_byte_sync_REDLOG_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_sync_SR_0" PORT="D"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/LVDS_in_byte_sync_REDLOG_1" HWVERSION="2.0" INSTANCE="LVDS_in_byte_sync_REDLOG_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_reduced_logic" VLNV="xilinx.com:ip:util_reduced_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="or"/>
+        <PARAMETER NAME="C_SIZE" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_util_reduced_logic_0_3"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_orgate.png"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="1" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_sync_CONCAT_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_sync_CONCAT_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="Res" SIGIS="undef" SIGNAME="LVDS_in_byte_sync_REDLOG_1_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_bitslip_COUNTER_0" PORT="SCLR"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="13" FULLNAME="/LVDS_in_byte_sync_SR_0" HWVERSION="12.0" INSTANCE="LVDS_in_byte_sync_SR_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="1"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_c_shift_ram_0_1"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="1"/>
+        <PARAMETER NAME="Depth" VALUE="1"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="0"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="LVDS_in_byte_sync_REDLOG_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_sync_REDLOG_0" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="16000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="clk_lvds_in_PLL_0_clk_016mhz000_lvds">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_lvds_in_PLL_0" PORT="clk_016mhz000_lvds"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="LVDS_in_byte_sync_SR_0_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_sync_SR_1" PORT="D"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_sync_CONCAT_0" PORT="In0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="13" FULLNAME="/LVDS_in_byte_sync_SR_1" HWVERSION="12.0" INSTANCE="LVDS_in_byte_sync_SR_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="1"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_byte_sync_SR_0_0"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="1"/>
+        <PARAMETER NAME="Depth" VALUE="1"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="0"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="LVDS_in_byte_sync_SR_0_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_sync_SR_0" PORT="Q"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="16000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="clk_lvds_in_PLL_0_clk_016mhz000_lvds">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_lvds_in_PLL_0" PORT="clk_016mhz000_lvds"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="LVDS_in_byte_sync_SR_1_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_byte_sync_CONCAT_0" PORT="In1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="13" FULLNAME="/LVDS_in_byteswap_COUNTER_0" HWVERSION="12.0" INSTANCE="LVDS_in_byteswap_COUNTER_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_counter_binary" VLNV="xilinx.com:ip:c_counter_binary:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_counter_binary;v=v12_0;d=pg121-c-counter-binary.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_IMPLEMENTATION" VALUE="0"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="1"/>
+        <PARAMETER NAME="C_RESTRICT_COUNT" VALUE="0"/>
+        <PARAMETER NAME="C_COUNT_TO" VALUE="1"/>
+        <PARAMETER NAME="C_COUNT_BY" VALUE="1"/>
+        <PARAMETER NAME="C_COUNT_MODE" VALUE="0"/>
+        <PARAMETER NAME="C_THRESH0_VALUE" VALUE="10"/>
+        <PARAMETER NAME="C_CE_OVERRIDES_SYNC" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_THRESH0" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_LOAD" VALUE="0"/>
+        <PARAMETER NAME="C_LOAD_LOW" VALUE="0"/>
+        <PARAMETER NAME="C_LATENCY" VALUE="1"/>
+        <PARAMETER NAME="C_FB_LATENCY" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SCLR_OVERRIDES_SSET" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_bitslip_COUNTER_0_0"/>
+        <PARAMETER NAME="Implementation" VALUE="Fabric"/>
+        <PARAMETER NAME="Output_Width" VALUE="2"/>
+        <PARAMETER NAME="Increment_Value" VALUE="1"/>
+        <PARAMETER NAME="Restrict_Count" VALUE="false"/>
+        <PARAMETER NAME="Final_Count_Value" VALUE="1"/>
+        <PARAMETER NAME="Count_Mode" VALUE="UP"/>
+        <PARAMETER NAME="Sync_Threshold_Output" VALUE="true"/>
+        <PARAMETER NAME="Threshold_Value" VALUE="2"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="true"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SINIT_Value" VALUE="0"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="Sync_CE_Priority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="AINIT_Value" VALUE="0"/>
+        <PARAMETER NAME="Load" VALUE="false"/>
+        <PARAMETER NAME="Latency_Configuration" VALUE="Manual"/>
+        <PARAMETER NAME="Latency" VALUE="1"/>
+        <PARAMETER NAME="Fb_Latency_Configuration" VALUE="Manual"/>
+        <PARAMETER NAME="Fb_Latency" VALUE="0"/>
+        <PARAMETER NAME="Load_Sense" VALUE="Active_High"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="16000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="clk_lvds_in_PLL_0_clk_016mhz000_lvds">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_lvds_in_PLL_0" PORT="clk_016mhz000_lvds"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="SCLR" SIGIS="rst" SIGNAME="LVDS_in_0cmp_INV_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_0cmp_INV_0" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="THRESH0" SIGIS="data" SIGNAME="LVDS_in_byteswap_COUNTER_0_THRESH0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_FIFO_combiner_0" PORT="wr_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -2819,32 +3583,112 @@
         <PORT DIR="O" LEFT="47" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="LVDS_in_out_clk_BINCOUNTER_0_Q">
           <CONNECTIONS>
             <CONNECTION INSTANCE="LVDS_in_out_samplecounter_SLICE_0" PORT="Din"/>
-            <CONNECTION INSTANCE="LVDS_in_out_bin_clken_SLICE_0" PORT="Din"/>
-            <CONNECTION INSTANCE="LVDS_in_out_sample_clken_SLICE_0" PORT="Din"/>
+            <CONNECTION INSTANCE="LVDS_in_out_sample_tvalid_SLICE_0" PORT="Din"/>
             <CONNECTION INSTANCE="LVDS_in_tlast_gen_SLICE_0" PORT="Din"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="4" FULLNAME="/LVDS_in_out_sample_clken_REDLOG_0" HWVERSION="2.0" INSTANCE="LVDS_in_out_sample_clken_REDLOG_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_reduced_logic" VLNV="xilinx.com:ip:util_reduced_logic:2.0">
+    <MODULE COREREVISION="3" FULLNAME="/LVDS_in_out_sample_tvalid_INV_0" HWVERSION="2.1" INSTANCE="LVDS_in_out_sample_tvalid_INV_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="C_OPERATION" VALUE="and"/>
-        <PARAMETER NAME="C_SIZE" VALUE="4"/>
-        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_out_bin_clken_REDLOG_0_0"/>
-        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_andgate.png"/>
+        <PARAMETER NAME="IN0_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN1_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN2_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN3_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN5_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN6_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN7_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN8_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN9_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN10_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN11_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN12_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN13_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN14_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN15_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN16_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN17_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN18_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN19_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN20_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN21_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN22_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN23_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN24_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN25_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN26_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN27_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN28_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN29_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="dout_width" VALUE="2"/>
+        <PARAMETER NAME="NUM_PORTS" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_xlconcat_0_2"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="3" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_out_sample_clken_SLICE_0_Dout">
+        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="const_width1_val1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_out_sample_clken_SLICE_0" PORT="Dout"/>
+            <CONNECTION INSTANCE="const_width1_val1" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="Res" SIGIS="undef" SIGNAME="LVDS_in_out_sample_clken_REDLOG_0_Res">
+        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_out_sample_tvalid_REDLOG_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_FIFO_combiner_0" PORT="rd_en"/>
+            <CONNECTION INSTANCE="LVDS_in_out_sample_tvalid_REDLOG_0" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_out_sample_tvalid_INV_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_out_sample_tvalid_REDLOG_1" PORT="Op1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/LVDS_in_out_sample_tvalid_REDLOG_0" HWVERSION="2.0" INSTANCE="LVDS_in_out_sample_tvalid_REDLOG_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_reduced_logic" VLNV="xilinx.com:ip:util_reduced_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="or"/>
+        <PARAMETER NAME="C_SIZE" VALUE="4"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_out_bin_clken_REDLOG_0_0"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_orgate.png"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="3" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_out_sample_tvalid_SLICE_0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_out_sample_tvalid_SLICE_0" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="Res" SIGIS="undef" SIGNAME="LVDS_in_out_sample_tvalid_REDLOG_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_out_sample_tvalid_INV_0" PORT="In1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/LVDS_in_out_sample_tvalid_REDLOG_1" HWVERSION="2.0" INSTANCE="LVDS_in_out_sample_tvalid_REDLOG_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_reduced_logic" VLNV="xilinx.com:ip:util_reduced_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="xor"/>
+        <PARAMETER NAME="C_SIZE" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="mcu_LVDS_in_out_sample_clken_REDLOG_0_1"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_xorgate.png"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="1" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_out_sample_tvalid_INV_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="LVDS_in_out_sample_tvalid_INV_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="Res" SIGIS="undef" SIGNAME="LVDS_in_out_sample_tvalid_REDLOG_1_Res">
+          <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="FSM_LVDS_in_sample_clken"/>
             <CONNECTION INSTANCE="LVDS_in_AXIS_0" PORT="s_axis_tvalid"/>
           </CONNECTIONS>
@@ -2852,7 +3696,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/LVDS_in_out_sample_clken_SLICE_0" HWVERSION="1.0" INSTANCE="LVDS_in_out_sample_clken_SLICE_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/LVDS_in_out_sample_tvalid_SLICE_0" HWVERSION="1.0" INSTANCE="LVDS_in_out_sample_tvalid_SLICE_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DIN_WIDTH" VALUE="48"/>
@@ -2868,9 +3712,9 @@
             <CONNECTION INSTANCE="LVDS_in_out_clk_BINCOUNTER_0" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_out_sample_clken_SLICE_0_Dout">
+        <PORT DIR="O" LEFT="3" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_out_sample_tvalid_SLICE_0_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_out_sample_clken_REDLOG_0" PORT="Op1"/>
+            <CONNECTION INSTANCE="LVDS_in_out_sample_tvalid_REDLOG_0" PORT="Op1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -6789,9 +7633,9 @@
             <CONNECTION INSTANCE="LVDS_out_CDC_0" PORT="d"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="gpio2_io_i" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_CDC_0_qdpo">
+        <PORT DIR="I" LEFT="7" NAME="gpio2_io_i" RIGHT="0" SIGIS="undef" SIGNAME="LVDS_in_byte_CDC_0_qdpo">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_CDC_0" PORT="qdpo"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_CDC_0" PORT="qdpo"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -16690,12 +17534,12 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clk_in1_p" SIGIS="clk" SIGNAME="External_Ports_ufb_trx_rxclk_p">
+        <PORT CLKFREQUENCY="32000000" DIR="I" NAME="clk_in1_p" SIGIS="clk" SIGNAME="External_Ports_ufb_trx_rxclk_p">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="ufb_trx_rxclk_p"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clk_in1_n" SIGIS="clk" SIGNAME="External_Ports_ufb_trx_rxclk_n">
+        <PORT CLKFREQUENCY="32000000" DIR="I" NAME="clk_in1_n" SIGIS="clk" SIGNAME="External_Ports_ufb_trx_rxclk_n">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="ufb_trx_rxclk_n"/>
           </CONNECTIONS>
@@ -16707,8 +17551,7 @@
             <CONNECTION INSTANCE="LVDS_out_SERDES_0" PORT="clk_in"/>
             <CONNECTION INSTANCE="LVDS_in_FFT_0" PORT="aclk"/>
             <CONNECTION INSTANCE="LVDS_in_CORDIC_0" PORT="aclk"/>
-            <CONNECTION INSTANCE="LVDS_in_CDC_0" PORT="clk"/>
-            <CONNECTION INSTANCE="LVDS_in_FIFO_combiner_0" PORT="clk"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_CDC_0" PORT="clk"/>
             <CONNECTION INSTANCE="LVDS_in_AXIS_0" PORT="s_aclk"/>
             <CONNECTION INSTANCE="LVDS_in_out_clk_BINCOUNTER_0" PORT="CLK"/>
             <CONNECTION INSTANCE="External_Ports" PORT="FSM_LVDS_clk_064mhz000"/>
@@ -16722,6 +17565,11 @@
             <CONNECTION INSTANCE="LVDS_016mhz000_SYSRESET_0" PORT="slowest_sync_clk"/>
             <CONNECTION INSTANCE="LVDS_out_SERDES_0" PORT="clk_div_in"/>
             <CONNECTION INSTANCE="LVDS_in_SERDES_0" PORT="clk_div_in"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_sync_SR_0" PORT="CLK"/>
+            <CONNECTION INSTANCE="LVDS_in_bitslip_COUNTER_0" PORT="CLK"/>
+            <CONNECTION INSTANCE="LVDS_in_byteswap_COUNTER_0" PORT="CLK"/>
+            <CONNECTION INSTANCE="LVDS_in_FIFO_combiner_0" PORT="clk"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_sync_SR_1" PORT="CLK"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="locked" SIGIS="undef" SIGNAME="clk_lvds_in_PLL_0_locked">
@@ -18570,6 +19418,10 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="LVDS_out_CDC_0" PORT="we"/>
             <CONNECTION INSTANCE="LVDS_in_FFT_0" PORT="s_axis_config_tvalid"/>
+            <CONNECTION INSTANCE="LVDS_in_out_sample_tvalid_INV_0" PORT="In0"/>
+            <CONNECTION INSTANCE="LVDS_in_FIFO_combiner_0" PORT="rd_en"/>
+            <CONNECTION INSTANCE="LVDS_in_0cmp_CONCAT_0" PORT="In1"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_CDC_0" PORT="we"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -18620,7 +19472,7 @@
       <PORTS>
         <PORT DIR="O" LEFT="31" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="const_width32_0xC000C000_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_AND_0" PORT="Op2"/>
+            <CONNECTION INSTANCE="LVDS_in_0cmp_AND_0" PORT="Op2"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -18637,8 +19489,8 @@
       <PORTS>
         <PORT DIR="O" LEFT="3" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="const_width4_val0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="LVDS_in_CDC_0" PORT="a"/>
-            <CONNECTION INSTANCE="LVDS_in_CDC_0" PORT="dpra"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_CDC_0" PORT="a"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_CDC_0" PORT="dpra"/>
             <CONNECTION INSTANCE="LVDS_out_CDC_0" PORT="a"/>
             <CONNECTION INSTANCE="LVDS_out_CDC_0" PORT="dpra"/>
           </CONNECTIONS>
@@ -31962,7 +32814,7 @@
         <PORT CLKFREQUENCY="83333333" DIR="O" NAME="ui_clk" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="mb_axi_clk_083mhz333"/>
-            <CONNECTION INSTANCE="LVDS_in_CDC_0" PORT="qdpo_clk"/>
+            <CONNECTION INSTANCE="LVDS_in_byte_CDC_0" PORT="qdpo_clk"/>
             <CONNECTION INSTANCE="LVDS_out_CDC_0" PORT="clk"/>
             <CONNECTION INSTANCE="axi_ethernetlite_ETHERNET" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="axi_gpio_0_MULTI" PORT="s_axi_aclk"/>

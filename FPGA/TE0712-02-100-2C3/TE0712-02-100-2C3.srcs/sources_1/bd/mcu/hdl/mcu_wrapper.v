@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-//Date        : Tue Sep  3 23:36:31 2019
+//Date        : Wed Sep  4 21:08:51 2019
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu_wrapper.bd
 //Design      : mcu_wrapper
@@ -11,14 +11,12 @@
 
 module mcu_wrapper
    (FSM_LVDS_clk_064mhz000,
-    FSM_LVDS_in_0CMP_0_nomatch,
     FSM_LVDS_in_CORDIC_0_M_AXIS_tdata,
     FSM_LVDS_in_CORDIC_0_M_AXIS_tlast,
     FSM_LVDS_in_CORDIC_0_M_AXIS_tuser,
     FSM_LVDS_in_CORDIC_0_M_AXIS_tvalid,
     FSM_LVDS_in_FFT_0_FrameStarted,
     FSM_LVDS_in_FFT_0_pntIdx,
-    FSM_LVDS_in_bitslip,
     FSM_LVDS_in_sample_clken,
     board_rotenc_pulse,
     board_rotenc_push,
@@ -99,14 +97,12 @@ module mcu_wrapper
     ufb_trx_txd_n,
     ufb_trx_txd_p);
   output FSM_LVDS_clk_064mhz000;
-  output FSM_LVDS_in_0CMP_0_nomatch;
   output [31:0]FSM_LVDS_in_CORDIC_0_M_AXIS_tdata;
   output FSM_LVDS_in_CORDIC_0_M_AXIS_tlast;
   output [43:0]FSM_LVDS_in_CORDIC_0_M_AXIS_tuser;
   output FSM_LVDS_in_CORDIC_0_M_AXIS_tvalid;
   output FSM_LVDS_in_FFT_0_FrameStarted;
   output [7:0]FSM_LVDS_in_FFT_0_pntIdx;
-  input [0:0]FSM_LVDS_in_bitslip;
   output FSM_LVDS_in_sample_clken;
   input board_rotenc_pulse;
   input [0:0]board_rotenc_push;
@@ -188,14 +184,12 @@ module mcu_wrapper
   output [0:0]ufb_trx_txd_p;
 
   wire FSM_LVDS_clk_064mhz000;
-  wire FSM_LVDS_in_0CMP_0_nomatch;
   wire [31:0]FSM_LVDS_in_CORDIC_0_M_AXIS_tdata;
   wire FSM_LVDS_in_CORDIC_0_M_AXIS_tlast;
   wire [43:0]FSM_LVDS_in_CORDIC_0_M_AXIS_tuser;
   wire FSM_LVDS_in_CORDIC_0_M_AXIS_tvalid;
   wire FSM_LVDS_in_FFT_0_FrameStarted;
   wire [7:0]FSM_LVDS_in_FFT_0_pntIdx;
-  wire [0:0]FSM_LVDS_in_bitslip;
   wire FSM_LVDS_in_sample_clken;
   wire board_rotenc_pulse;
   wire [0:0]board_rotenc_push;
@@ -340,14 +334,12 @@ module mcu_wrapper
         .T(iic_rtl_1_board_sda_t));
   mcu mcu_i
        (.FSM_LVDS_clk_064mhz000(FSM_LVDS_clk_064mhz000),
-        .FSM_LVDS_in_0CMP_0_nomatch(FSM_LVDS_in_0CMP_0_nomatch),
         .FSM_LVDS_in_CORDIC_0_M_AXIS_tdata(FSM_LVDS_in_CORDIC_0_M_AXIS_tdata),
         .FSM_LVDS_in_CORDIC_0_M_AXIS_tlast(FSM_LVDS_in_CORDIC_0_M_AXIS_tlast),
         .FSM_LVDS_in_CORDIC_0_M_AXIS_tuser(FSM_LVDS_in_CORDIC_0_M_AXIS_tuser),
         .FSM_LVDS_in_CORDIC_0_M_AXIS_tvalid(FSM_LVDS_in_CORDIC_0_M_AXIS_tvalid),
         .FSM_LVDS_in_FFT_0_FrameStarted(FSM_LVDS_in_FFT_0_FrameStarted),
         .FSM_LVDS_in_FFT_0_pntIdx(FSM_LVDS_in_FFT_0_pntIdx),
-        .FSM_LVDS_in_bitslip(FSM_LVDS_in_bitslip),
         .FSM_LVDS_in_sample_clken(FSM_LVDS_in_sample_clken),
         .board_rotenc_pulse(board_rotenc_pulse),
         .board_rotenc_push(board_rotenc_push),
