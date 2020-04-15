@@ -1,1 +1,0 @@
-PROVIDES = "virtual/elfrealloc"
