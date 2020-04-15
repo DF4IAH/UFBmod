@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-// Date        : Sun Sep  1 00:33:23 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Apr 12 12:33:40 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top mcu_selectio_LVDS_out_0 -prefix
-//               mcu_selectio_LVDS_out_0_ mcu_selectio_LVDS_out_0_stub.v
+// Command     : write_verilog -force -mode synth_stub
+//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_selectio_LVDS_out_0/mcu_selectio_LVDS_out_0_stub.v
 // Design      : mcu_selectio_LVDS_out_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tfgg484-2

@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-// Date        : Mon Aug 26 01:58:13 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Apr 12 12:19:36 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub -rename_top mcu_axi_iic_1_BOARD_0 -prefix
 //               mcu_axi_iic_1_BOARD_0_ mcu_axi_iic_0_PLL_0_stub.v
@@ -13,7 +13,7 @@
 // This empty module with port declaration file causes synthesis tools to infer a black box for IP.
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
-(* x_core_info = "axi_iic,Vivado 2019.1.2" *)
+(* x_core_info = "axi_iic,Vivado 2019.1" *)
 module mcu_axi_iic_1_BOARD_0(s_axi_aclk, s_axi_aresetn, iic2intc_irpt, 
   s_axi_awaddr, s_axi_awvalid, s_axi_awready, s_axi_wdata, s_axi_wstrb, s_axi_wvalid, 
   s_axi_wready, s_axi_bresp, s_axi_bvalid, s_axi_bready, s_axi_araddr, s_axi_arvalid, 

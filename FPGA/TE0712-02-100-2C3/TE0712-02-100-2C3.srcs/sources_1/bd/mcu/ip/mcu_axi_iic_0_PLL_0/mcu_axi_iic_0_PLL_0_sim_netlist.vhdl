@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
--- Date        : Mon Aug 26 01:58:13 2019
+-- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+-- Date        : Sun Apr 12 12:19:37 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top mcu_axi_iic_0_PLL_0 -prefix
---               mcu_axi_iic_0_PLL_0_ mcu_axi_iic_0_PLL_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_axi_iic_0_PLL_0/mcu_axi_iic_0_PLL_0_sim_netlist.vhdl
 -- Design      : mcu_axi_iic_0_PLL_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -36,6 +36,8 @@ entity mcu_axi_iic_0_PLL_0_SRL_FIFO is
     Rc_fifo_wr_d : in STD_LOGIC;
     Rc_fifo_wr : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_SRL_FIFO : entity is "SRL_FIFO";
 end mcu_axi_iic_0_PLL_0_SRL_FIFO;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_SRL_FIFO is
@@ -1253,6 +1255,8 @@ entity mcu_axi_iic_0_PLL_0_address_decoder is
     gpo : in STD_LOGIC_VECTOR ( 0 to 0 );
     AXI_IP2Bus_WrAck2_reg : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_address_decoder : entity is "address_decoder";
 end mcu_axi_iic_0_PLL_0_address_decoder;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_address_decoder is
@@ -2444,6 +2448,8 @@ entity mcu_axi_iic_0_PLL_0_cdc_sync is
     sda_i : in STD_LOGIC;
     s_axi_aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_cdc_sync : entity is "cdc_sync";
 end mcu_axi_iic_0_PLL_0_cdc_sync;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_cdc_sync is
@@ -2639,6 +2645,8 @@ entity mcu_axi_iic_0_PLL_0_dynamic_master is
     earlyAckHdr : in STD_LOGIC;
     Tx_data_exists : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_dynamic_master : entity is "dynamic_master";
 end mcu_axi_iic_0_PLL_0_dynamic_master;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_dynamic_master is
@@ -3029,6 +3037,8 @@ entity mcu_axi_iic_0_PLL_0_interrupt_control is
     s_axi_wdata : in STD_LOGIC_VECTOR ( 7 downto 0 );
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_interrupt_control : entity is "interrupt_control";
 end mcu_axi_iic_0_PLL_0_interrupt_control;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_interrupt_control is
@@ -3476,6 +3486,8 @@ entity mcu_axi_iic_0_PLL_0_reg_interface is
     \cr_i_reg[2]_1\ : in STD_LOGIC_VECTOR ( 2 downto 0 );
     \IIC2Bus_IntrEvent_reg[0]_0\ : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_reg_interface : entity is "reg_interface";
 end mcu_axi_iic_0_PLL_0_reg_interface;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_reg_interface is
@@ -5190,6 +5202,8 @@ entity mcu_axi_iic_0_PLL_0_shift8 is
     s_axi_aclk : in STD_LOGIC;
     \data_int_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_shift8 : entity is "shift8";
 end mcu_axi_iic_0_PLL_0_shift8;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_shift8 is
@@ -5662,6 +5676,8 @@ entity mcu_axi_iic_0_PLL_0_soft_reset is
     s_axi_wdata : in STD_LOGIC_VECTOR ( 1 downto 0 );
     Tx_fifo_rst : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_soft_reset : entity is "soft_reset";
 end mcu_axi_iic_0_PLL_0_soft_reset;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_soft_reset is
@@ -5856,6 +5872,8 @@ entity mcu_axi_iic_0_PLL_0_upcnt_n is
     \q_int_reg[8]_2\ : in STD_LOGIC;
     s_axi_aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_upcnt_n : entity is "upcnt_n";
 end mcu_axi_iic_0_PLL_0_upcnt_n;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_upcnt_n is
@@ -6755,6 +6773,8 @@ entity mcu_axi_iic_0_PLL_0_debounce is
     scl_i : in STD_LOGIC;
     s_axi_aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_debounce : entity is "debounce";
 end mcu_axi_iic_0_PLL_0_debounce;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_debounce is
@@ -6859,6 +6879,8 @@ entity mcu_axi_iic_0_PLL_0_iic_control is
     new_rcv_dta_d1 : in STD_LOGIC;
     detect_stop_b_reg_0 : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_iic_control : entity is "iic_control";
 end mcu_axi_iic_0_PLL_0_iic_control;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_iic_control is
@@ -8985,6 +9007,8 @@ entity mcu_axi_iic_0_PLL_0_slave_attachment is
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     gpo : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_slave_attachment : entity is "slave_attachment";
 end mcu_axi_iic_0_PLL_0_slave_attachment;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_slave_attachment is
@@ -10590,6 +10614,8 @@ entity mcu_axi_iic_0_PLL_0_axi_lite_ipif is
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     gpo : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_axi_lite_ipif : entity is "axi_lite_ipif";
 end mcu_axi_iic_0_PLL_0_axi_lite_ipif;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_axi_lite_ipif is
@@ -10696,6 +10722,8 @@ entity mcu_axi_iic_0_PLL_0_filter is
     s_axi_aclk : in STD_LOGIC;
     sda_i : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_filter : entity is "filter";
 end mcu_axi_iic_0_PLL_0_filter;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_filter is
@@ -10785,6 +10813,8 @@ entity mcu_axi_iic_0_PLL_0_axi_ipif_ssp1 is
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     gpo : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_axi_ipif_ssp1 : entity is "axi_ipif_ssp1";
 end mcu_axi_iic_0_PLL_0_axi_ipif_ssp1;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_axi_ipif_ssp1 is
@@ -11024,6 +11054,8 @@ entity mcu_axi_iic_0_PLL_0_iic is
     s_axi_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_iic : entity is "iic";
 end mcu_axi_iic_0_PLL_0_iic;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0_iic is
@@ -11754,6 +11786,8 @@ entity mcu_axi_iic_0_PLL_0_axi_iic is
   attribute C_S_AXI_DATA_WIDTH of mcu_axi_iic_0_PLL_0_axi_iic : entity is 32;
   attribute C_TEN_BIT_ADR : integer;
   attribute C_TEN_BIT_ADR of mcu_axi_iic_0_PLL_0_axi_iic : entity is 0;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_axi_iic_0_PLL_0_axi_iic : entity is "axi_iic";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mcu_axi_iic_0_PLL_0_axi_iic : entity is "yes";
 end mcu_axi_iic_0_PLL_0_axi_iic;
@@ -11871,7 +11905,7 @@ entity mcu_axi_iic_0_PLL_0 is
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mcu_axi_iic_0_PLL_0 : entity is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of mcu_axi_iic_0_PLL_0 : entity is "axi_iic,Vivado 2019.1.2";
+  attribute x_core_info of mcu_axi_iic_0_PLL_0 : entity is "axi_iic,Vivado 2019.1";
 end mcu_axi_iic_0_PLL_0;
 
 architecture STRUCTURE of mcu_axi_iic_0_PLL_0 is
@@ -11927,7 +11961,7 @@ architecture STRUCTURE of mcu_axi_iic_0_PLL_0 is
   attribute x_interface_info of sda_t : signal is "xilinx.com:interface:iic:1.0 IIC SDA_T";
   attribute x_interface_info of s_axi_araddr : signal is "xilinx.com:interface:aximm:1.0 S_AXI ARADDR";
   attribute x_interface_info of s_axi_awaddr : signal is "xilinx.com:interface:aximm:1.0 S_AXI AWADDR";
-  attribute x_interface_parameter of s_axi_awaddr : signal is "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 83333333, ID_WIDTH 0, ADDR_WIDTH 9, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 0, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 32, MAX_BURST_LENGTH 1, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  attribute x_interface_parameter of s_axi_awaddr : signal is "XIL_INTERFACENAME S_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 83333333, ID_WIDTH 0, ADDR_WIDTH 9, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 0, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0, CLK_DOMAIN mcu_mig_7series_0_0_ui_clk, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
   attribute x_interface_info of s_axi_bresp : signal is "xilinx.com:interface:aximm:1.0 S_AXI BRESP";
   attribute x_interface_info of s_axi_rdata : signal is "xilinx.com:interface:aximm:1.0 S_AXI RDATA";
   attribute x_interface_info of s_axi_rresp : signal is "xilinx.com:interface:aximm:1.0 S_AXI RRESP";

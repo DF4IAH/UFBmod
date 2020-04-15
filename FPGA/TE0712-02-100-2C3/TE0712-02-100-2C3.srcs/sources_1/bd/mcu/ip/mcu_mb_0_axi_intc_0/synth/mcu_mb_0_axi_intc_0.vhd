@@ -1,4 +1,4 @@
--- (c) Copyright 1995-2019 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -150,12 +150,12 @@ ARCHITECTURE mcu_mb_0_axi_intc_0_arch OF mcu_mb_0_axi_intc_0 IS
     );
   END COMPONENT axi_intc;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF mcu_mb_0_axi_intc_0_arch: ARCHITECTURE IS "axi_intc,Vivado 2019.1.2";
+  ATTRIBUTE X_CORE_INFO OF mcu_mb_0_axi_intc_0_arch: ARCHITECTURE IS "axi_intc,Vivado 2019.1";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF mcu_mb_0_axi_intc_0_arch : ARCHITECTURE IS "mcu_mb_0_axi_intc_0,axi_intc,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF mcu_mb_0_axi_intc_0_arch: ARCHITECTURE IS "mcu_mb_0_axi_intc_0,axi_intc,{x_ipProduct=Vivado 2019.1.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_intc,x_ipVersion=4.1,x_ipCoreRevision=13,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_INSTANCE=mcu_mb_0_axi_intc_0,C_S_AXI_ADDR_WIDTH=9,C_S_AXI_DATA_WIDTH=32,C_NUM_INTR_INPUTS=12,C_NUM_SW_INTR=0,C_KIND_OF_INTR=0xfffff969,C_KIND_OF_EDGE=0xFFFFFFFF,C_KIND_OF_LVL=0xFFFFFFFF,C_ASYNC_INTR=0xFFFFF969,C_NUM_SYNC_FF=2,C_ADDR_WIDTH=32,C_IVAR_RESET_VALUE=0x0000000000000010,C_ENABLE_A" & 
-"SYNC=0,C_HAS_IPR=1,C_HAS_SIE=1,C_HAS_CIE=1,C_HAS_IVR=1,C_HAS_ILR=0,C_IRQ_IS_LEVEL=0,C_IRQ_ACTIVE=0x1,C_DISABLE_SYNCHRONIZERS=1,C_MB_CLK_NOT_CONNECTED=1,C_HAS_FAST=1,C_EN_CASCADE_MODE=0,C_CASCADE_MASTER=0}";
+  ATTRIBUTE CORE_GENERATION_INFO OF mcu_mb_0_axi_intc_0_arch: ARCHITECTURE IS "mcu_mb_0_axi_intc_0,axi_intc,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_intc,x_ipVersion=4.1,x_ipCoreRevision=13,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_INSTANCE=mcu_mb_0_axi_intc_0,C_S_AXI_ADDR_WIDTH=9,C_S_AXI_DATA_WIDTH=32,C_NUM_INTR_INPUTS=12,C_NUM_SW_INTR=0,C_KIND_OF_INTR=0xfffff969,C_KIND_OF_EDGE=0xFFFFFFFF,C_KIND_OF_LVL=0xFFFFFFFF,C_ASYNC_INTR=0xFFFFF969,C_NUM_SYNC_FF=2,C_ADDR_WIDTH=32,C_IVAR_RESET_VALUE=0x0000000000000010,C_ENABLE_ASY" & 
+"NC=0,C_HAS_IPR=1,C_HAS_SIE=1,C_HAS_CIE=1,C_HAS_IVR=1,C_HAS_ILR=0,C_IRQ_IS_LEVEL=0,C_IRQ_ACTIVE=0x1,C_DISABLE_SYNCHRONIZERS=1,C_MB_CLK_NOT_CONNECTED=1,C_HAS_FAST=1,C_EN_CASCADE_MODE=0,C_CASCADE_MASTER=0}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF interrupt_address: SIGNAL IS "xilinx.com:interface:mbinterrupt:1.0 interrupt ADDRESS";

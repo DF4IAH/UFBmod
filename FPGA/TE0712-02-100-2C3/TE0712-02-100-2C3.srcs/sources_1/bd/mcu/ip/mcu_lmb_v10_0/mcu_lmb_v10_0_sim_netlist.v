@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-// Date        : Mon Aug 26 03:01:09 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Apr 12 12:28:39 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim -rename_top mcu_lmb_v10_0 -prefix
 //               mcu_lmb_v10_0_ mcu_dlmb_v10_0_sim_netlist.v
@@ -104,7 +104,7 @@ module mcu_lmb_v10_0_lmb_v10
         .S(SYS_Rst));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "mcu_dlmb_v10_0,lmb_v10,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "lmb_v10,Vivado 2019.1.2" *) 
+(* CHECK_LICENSE_TYPE = "mcu_dlmb_v10_0,lmb_v10,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "lmb_v10,Vivado 2019.1" *) 
 (* NotValidForBitStream *)
 module mcu_lmb_v10_0
    (LMB_Clk,

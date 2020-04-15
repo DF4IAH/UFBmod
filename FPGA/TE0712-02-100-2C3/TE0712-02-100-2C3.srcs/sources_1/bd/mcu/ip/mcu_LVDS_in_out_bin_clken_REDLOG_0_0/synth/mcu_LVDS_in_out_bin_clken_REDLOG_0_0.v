@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2019 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -50,9 +50,9 @@
 // IP VLNV: xilinx.com:ip:util_reduced_logic:2.0
 // IP Revision: 4
 
-(* X_CORE_INFO = "util_reduced_logic_v2_0_4_util_reduced_logic,Vivado 2019.1.2" *)
+(* X_CORE_INFO = "util_reduced_logic_v2_0_4_util_reduced_logic,Vivado 2019.1" *)
 (* CHECK_LICENSE_TYPE = "mcu_LVDS_in_out_bin_clken_REDLOG_0_0,util_reduced_logic_v2_0_4_util_reduced_logic,{}" *)
-(* CORE_GENERATION_INFO = "mcu_LVDS_in_out_bin_clken_REDLOG_0_0,util_reduced_logic_v2_0_4_util_reduced_logic,{x_ipProduct=Vivado 2019.1.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=util_reduced_logic,x_ipVersion=2.0,x_ipCoreRevision=4,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_OPERATION=and,C_SIZE=4}" *)
+(* CORE_GENERATION_INFO = "mcu_LVDS_in_out_bin_clken_REDLOG_0_0,util_reduced_logic_v2_0_4_util_reduced_logic,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=util_reduced_logic,x_ipVersion=2.0,x_ipCoreRevision=4,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_OPERATION=or,C_SIZE=4}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module mcu_LVDS_in_out_bin_clken_REDLOG_0_0 (
   Op1,
@@ -63,7 +63,7 @@ input wire [3 : 0] Op1;
 output wire Res;
 
   util_reduced_logic_v2_0_4_util_reduced_logic #(
-    .C_OPERATION("and"),
+    .C_OPERATION("or"),
     .C_SIZE(4)
   ) inst (
     .Op1(Op1),

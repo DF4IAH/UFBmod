@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2019 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -50,9 +50,9 @@
 // IP VLNV: xilinx.com:ip:xlconstant:1.1
 // IP Revision: 6
 
-(* X_CORE_INFO = "xlconstant_v1_1_6_xlconstant,Vivado 2019.1.2" *)
+(* X_CORE_INFO = "xlconstant_v1_1_6_xlconstant,Vivado 2019.1" *)
 (* CHECK_LICENSE_TYPE = "mcu_xlconstant_LVDS_val1_0,xlconstant_v1_1_6_xlconstant,{}" *)
-(* CORE_GENERATION_INFO = "mcu_xlconstant_LVDS_val1_0,xlconstant_v1_1_6_xlconstant,{x_ipProduct=Vivado 2019.1.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xlconstant,x_ipVersion=1.1,x_ipCoreRevision=6,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,CONST_WIDTH=1,CONST_VAL=0x1}" *)
+(* CORE_GENERATION_INFO = "mcu_xlconstant_LVDS_val1_0,xlconstant_v1_1_6_xlconstant,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xlconstant,x_ipVersion=1.1,x_ipCoreRevision=6,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,CONST_WIDTH=1,CONST_VAL=0x1}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module mcu_xlconstant_LVDS_val1_0 (
   dout

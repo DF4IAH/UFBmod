@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
--- Date        : Mon Aug 26 03:06:07 2019
+-- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+-- Date        : Sun Apr 12 12:29:45 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top mcu_mb_0_reset_0 -prefix
---               mcu_mb_0_reset_0_ mcu_mb_0_reset_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_mb_0_reset_0/mcu_mb_0_reset_0_sim_netlist.vhdl
 -- Design      : mcu_mb_0_reset_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -25,6 +25,8 @@ entity mcu_mb_0_reset_0_cdc_sync is
     aux_reset_in : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_mb_0_reset_0_cdc_sync : entity is "cdc_sync";
 end mcu_mb_0_reset_0_cdc_sync;
 
 architecture STRUCTURE of mcu_mb_0_reset_0_cdc_sync is
@@ -224,6 +226,8 @@ entity mcu_mb_0_reset_0_upcnt_n is
     seq_cnt_en : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_mb_0_reset_0_upcnt_n : entity is "upcnt_n";
 end mcu_mb_0_reset_0_upcnt_n;
 
 architecture STRUCTURE of mcu_mb_0_reset_0_upcnt_n is
@@ -388,6 +392,8 @@ entity mcu_mb_0_reset_0_lpf is
     mb_debug_sys_rst : in STD_LOGIC;
     aux_reset_in : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_mb_0_reset_0_lpf : entity is "lpf";
 end mcu_mb_0_reset_0_lpf;
 
 architecture STRUCTURE of mcu_mb_0_reset_0_lpf is
@@ -569,6 +575,8 @@ entity mcu_mb_0_reset_0_sequence_psr is
     lpf_int : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_mb_0_reset_0_sequence_psr : entity is "sequence_psr";
 end mcu_mb_0_reset_0_sequence_psr;
 
 architecture STRUCTURE of mcu_mb_0_reset_0_sequence_psr is
@@ -907,6 +915,8 @@ entity mcu_mb_0_reset_0_proc_sys_reset is
   attribute C_NUM_PERP_ARESETN of mcu_mb_0_reset_0_proc_sys_reset : entity is 1;
   attribute C_NUM_PERP_RST : integer;
   attribute C_NUM_PERP_RST of mcu_mb_0_reset_0_proc_sys_reset : entity is 1;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_mb_0_reset_0_proc_sys_reset : entity is "proc_sys_reset";
 end mcu_mb_0_reset_0_proc_sys_reset;
 
 architecture STRUCTURE of mcu_mb_0_reset_0_proc_sys_reset is
@@ -1037,7 +1047,7 @@ entity mcu_mb_0_reset_0 is
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mcu_mb_0_reset_0 : entity is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of mcu_mb_0_reset_0 : entity is "proc_sys_reset,Vivado 2019.1.2";
+  attribute x_core_info of mcu_mb_0_reset_0 : entity is "proc_sys_reset,Vivado 2019.1";
 end mcu_mb_0_reset_0;
 
 architecture STRUCTURE of mcu_mb_0_reset_0 is

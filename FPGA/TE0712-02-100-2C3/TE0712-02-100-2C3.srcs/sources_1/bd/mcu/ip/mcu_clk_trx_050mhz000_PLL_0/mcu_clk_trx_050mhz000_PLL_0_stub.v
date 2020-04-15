@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-// Date        : Tue Sep  3 00:28:54 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Apr 12 12:39:05 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top mcu_clk_trx_050mhz000_PLL_0 -prefix
-//               mcu_clk_trx_050mhz000_PLL_0_ mcu_clk_trx_050mhz000_PLL_0_stub.v
+// Command     : write_verilog -force -mode synth_stub
+//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_clk_trx_050mhz000_PLL_0/mcu_clk_trx_050mhz000_PLL_0_stub.v
 // Design      : mcu_clk_trx_050mhz000_PLL_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tfgg484-2

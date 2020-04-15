@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-// Date        : Mon Aug 26 03:05:06 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Apr 12 12:22:21 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top mcu_mb_0_mdm_0 -prefix
-//               mcu_mb_0_mdm_0_ mcu_mb_0_mdm_0_stub.v
+// Command     : write_verilog -force -mode synth_stub
+//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_mb_0_mdm_0/mcu_mb_0_mdm_0_stub.v
 // Design      : mcu_mb_0_mdm_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tfgg484-2
@@ -13,7 +13,7 @@
 // This empty module with port declaration file causes synthesis tools to infer a black box for IP.
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
-(* x_core_info = "MDM,Vivado 2019.1.2" *)
+(* x_core_info = "MDM,Vivado 2019.1" *)
 module mcu_mb_0_mdm_0(S_AXI_ACLK, S_AXI_ARESETN, M_AXI_ACLK, 
   M_AXI_ARESETN, Interrupt, Debug_SYS_Rst, Trig_In_0, Trig_Ack_In_0, Trig_Out_0, 
   Trig_Ack_Out_0, S_AXI_AWADDR, S_AXI_AWVALID, S_AXI_AWREADY, S_AXI_WDATA, S_AXI_WSTRB, 

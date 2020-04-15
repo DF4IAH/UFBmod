@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-// Date        : Wed Aug 28 17:23:18 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Apr 12 12:32:19 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top mcu_mii_to_rmii_ETHERNET_0 -prefix
-//               mcu_mii_to_rmii_ETHERNET_0_ mcu_mii_to_rmii_ETHERNET_0_stub.v
+// Command     : write_verilog -force -mode synth_stub
+//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_mii_to_rmii_ETHERNET_0/mcu_mii_to_rmii_ETHERNET_0_stub.v
 // Design      : mcu_mii_to_rmii_ETHERNET_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tfgg484-2
@@ -13,7 +13,7 @@
 // This empty module with port declaration file causes synthesis tools to infer a black box for IP.
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
-(* x_core_info = "mii_to_rmii,Vivado 2019.1.2" *)
+(* x_core_info = "mii_to_rmii,Vivado 2019.1" *)
 module mcu_mii_to_rmii_ETHERNET_0(rst_n, ref_clk, mac2rmii_tx_en, mac2rmii_txd, 
   mac2rmii_tx_er, rmii2mac_tx_clk, rmii2mac_rx_clk, rmii2mac_col, rmii2mac_crs, 
   rmii2mac_rx_dv, rmii2mac_rx_er, rmii2mac_rxd, phy2rmii_crs_dv, phy2rmii_rx_er, 

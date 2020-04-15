@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
--- Date        : Mon Aug 26 03:01:09 2019
+-- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+-- Date        : Sun Apr 12 12:28:39 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top mcu_dlmb_v10_0 -prefix
---               mcu_dlmb_v10_0_ mcu_dlmb_v10_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_dlmb_v10_0/mcu_dlmb_v10_0_sim_netlist.vhdl
 -- Design      : mcu_dlmb_v10_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -50,6 +50,8 @@ entity mcu_dlmb_v10_0_lmb_v10 is
   attribute C_LMB_DWIDTH of mcu_dlmb_v10_0_lmb_v10 : entity is 32;
   attribute C_LMB_NUM_SLAVES : integer;
   attribute C_LMB_NUM_SLAVES of mcu_dlmb_v10_0_lmb_v10 : entity is 1;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_dlmb_v10_0_lmb_v10 : entity is "lmb_v10";
 end mcu_dlmb_v10_0_lmb_v10;
 
 architecture STRUCTURE of mcu_dlmb_v10_0_lmb_v10 is
@@ -142,7 +144,7 @@ entity mcu_dlmb_v10_0 is
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mcu_dlmb_v10_0 : entity is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of mcu_dlmb_v10_0 : entity is "lmb_v10,Vivado 2019.1.2";
+  attribute x_core_info of mcu_dlmb_v10_0 : entity is "lmb_v10,Vivado 2019.1";
 end mcu_dlmb_v10_0;
 
 architecture STRUCTURE of mcu_dlmb_v10_0 is

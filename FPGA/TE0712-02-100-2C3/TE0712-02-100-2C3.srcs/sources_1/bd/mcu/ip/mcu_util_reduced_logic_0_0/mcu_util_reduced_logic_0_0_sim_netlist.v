@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-// Date        : Sat Aug 31 19:20:03 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Apr 12 12:37:45 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top mcu_util_reduced_logic_0_0 -prefix
-//               mcu_util_reduced_logic_0_0_ mcu_util_reduced_logic_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim
+//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_util_reduced_logic_0_0/mcu_util_reduced_logic_0_0_sim_netlist.v
 // Design      : mcu_util_reduced_logic_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,7 +12,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "mcu_util_reduced_logic_0_0,util_reduced_logic_v2_0_4_util_reduced_logic,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "util_reduced_logic_v2_0_4_util_reduced_logic,Vivado 2019.1.2" *) 
+(* CHECK_LICENSE_TYPE = "mcu_util_reduced_logic_0_0,util_reduced_logic_v2_0_4_util_reduced_logic,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "util_reduced_logic_v2_0_4_util_reduced_logic,Vivado 2019.1" *) 
 (* NotValidForBitStream *)
 module mcu_util_reduced_logic_0_0
    (Op1,
@@ -28,6 +28,7 @@ module mcu_util_reduced_logic_0_0
         .Res(Res));
 endmodule
 
+(* ORIG_REF_NAME = "util_reduced_logic_v2_0_4_util_reduced_logic" *) 
 module mcu_util_reduced_logic_0_0_util_reduced_logic_v2_0_4_util_reduced_logic
    (Res,
     Op1);

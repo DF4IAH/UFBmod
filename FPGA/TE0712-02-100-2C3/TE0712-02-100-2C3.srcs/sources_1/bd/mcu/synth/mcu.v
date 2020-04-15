@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-//Date        : Wed Sep  4 21:08:49 2019
+//Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+//Date        : Sun Apr 12 12:13:37 2020
 //Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 //Command     : generate_target mcu.bd
 //Design      : mcu
@@ -3228,7 +3228,7 @@ endmodule
 351 cycles
 LVDS_In ShiftRAM:
 351 cycles */
-(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=126,numReposBlks=99,numNonXlnxBlks=0,numHierBlks=27,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,\"\"\"\"\"\"\"\"\"\"\"\"da_board_cnt\"\"\"\"\"\"\"\"\"\"\"\"=2,\"\"\"\"\"\"\"\"\"\"\"\"da_clkrst_cnt\"\"\"\"\"\"\"\"\"\"\"\"=2,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
+(* CORE_GENERATION_INFO = "mcu,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=mcu,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=126,numReposBlks=99,numNonXlnxBlks=0,numHierBlks=27,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,\"\"\"\"\"\"\"\"\"\"\"\"\"\"da_board_cnt\"\"\"\"\"\"\"\"\"\"\"\"\"\"=2,\"\"\"\"\"\"\"\"\"\"\"\"\"\"da_clkrst_cnt\"\"\"\"\"\"\"\"\"\"\"\"\"\"=2,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "mcu.hwdef" *) 
 module mcu
    (FSM_LVDS_clk_064mhz000,
     FSM_LVDS_in_CORDIC_0_M_AXIS_tdata,

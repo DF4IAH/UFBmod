@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
--- Date        : Wed Aug 28 17:23:18 2019
+-- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+-- Date        : Sun Apr 12 12:32:19 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top mcu_mii_to_rmii_ETHERNET_0 -prefix
---               mcu_mii_to_rmii_ETHERNET_0_ mcu_mii_to_rmii_ETHERNET_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_mii_to_rmii_ETHERNET_0/mcu_mii_to_rmii_ETHERNET_0_sim_netlist.vhdl
 -- Design      : mcu_mii_to_rmii_ETHERNET_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -26,6 +26,8 @@ entity mcu_mii_to_rmii_ETHERNET_0_SRL_FIFO is
     rx_fifo_wr_en : in STD_LOGIC;
     rx_fifo_rd_en : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_mii_to_rmii_ETHERNET_0_SRL_FIFO : entity is "SRL_FIFO";
 end mcu_mii_to_rmii_ETHERNET_0_SRL_FIFO;
 
 architecture STRUCTURE of mcu_mii_to_rmii_ETHERNET_0_SRL_FIFO is
@@ -475,6 +477,8 @@ entity mcu_mii_to_rmii_ETHERNET_0_rmii_tx_agile is
     mac2Rmii_tx_en_d2 : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_mii_to_rmii_ETHERNET_0_rmii_tx_agile : entity is "rmii_tx_agile";
 end mcu_mii_to_rmii_ETHERNET_0_rmii_tx_agile;
 
 architecture STRUCTURE of mcu_mii_to_rmii_ETHERNET_0_rmii_tx_agile is
@@ -689,6 +693,8 @@ entity mcu_mii_to_rmii_ETHERNET_0_rx_fifo_disposer is
     \FSM_sequential_present_state_reg[5]_0\ : in STD_LOGIC;
     ref_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_mii_to_rmii_ETHERNET_0_rx_fifo_disposer : entity is "rx_fifo_disposer";
 end mcu_mii_to_rmii_ETHERNET_0_rx_fifo_disposer;
 
 architecture STRUCTURE of mcu_mii_to_rmii_ETHERNET_0_rx_fifo_disposer is
@@ -1092,6 +1098,8 @@ entity mcu_mii_to_rmii_ETHERNET_0_rx_fifo_loader is
     phy2Rmii_crs_dv_d2 : in STD_LOGIC;
     \phy2rmii_rxd_d1_reg[1]_0\ : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_mii_to_rmii_ETHERNET_0_rx_fifo_loader : entity is "rx_fifo_loader";
 end mcu_mii_to_rmii_ETHERNET_0_rx_fifo_loader;
 
 architecture STRUCTURE of mcu_mii_to_rmii_ETHERNET_0_rx_fifo_loader is
@@ -2157,6 +2165,8 @@ entity mcu_mii_to_rmii_ETHERNET_0_rx_fifo is
     rx_fifo_wr_en : in STD_LOGIC;
     rx_fifo_rd_en : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_mii_to_rmii_ETHERNET_0_rx_fifo : entity is "rx_fifo";
 end mcu_mii_to_rmii_ETHERNET_0_rx_fifo;
 
 architecture STRUCTURE of mcu_mii_to_rmii_ETHERNET_0_rx_fifo is
@@ -2305,6 +2315,8 @@ entity mcu_mii_to_rmii_ETHERNET_0_rmii_rx_agile is
     \phy2rmii_rxd_d1_reg[1]\ : in STD_LOGIC_VECTOR ( 1 downto 0 );
     phy2Rmii_crs_dv_d2 : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_mii_to_rmii_ETHERNET_0_rmii_rx_agile : entity is "rmii_rx_agile";
 end mcu_mii_to_rmii_ETHERNET_0_rmii_rx_agile;
 
 architecture STRUCTURE of mcu_mii_to_rmii_ETHERNET_0_rmii_rx_agile is
@@ -2411,6 +2423,8 @@ entity mcu_mii_to_rmii_ETHERNET_0_mii_to_rmii is
   attribute C_INSTANCE of mcu_mii_to_rmii_ETHERNET_0_mii_to_rmii : entity is "mcu_mii_to_rmii_ETHERNET_0";
   attribute C_SPEED_100 : string;
   attribute C_SPEED_100 of mcu_mii_to_rmii_ETHERNET_0_mii_to_rmii : entity is "1'b1";
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of mcu_mii_to_rmii_ETHERNET_0_mii_to_rmii : entity is "mii_to_rmii";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mcu_mii_to_rmii_ETHERNET_0_mii_to_rmii : entity is "yes";
   attribute hdl : string;
@@ -2816,7 +2830,7 @@ entity mcu_mii_to_rmii_ETHERNET_0 is
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mcu_mii_to_rmii_ETHERNET_0 : entity is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of mcu_mii_to_rmii_ETHERNET_0 : entity is "mii_to_rmii,Vivado 2019.1.2";
+  attribute x_core_info of mcu_mii_to_rmii_ETHERNET_0 : entity is "mii_to_rmii,Vivado 2019.1";
 end mcu_mii_to_rmii_ETHERNET_0;
 
 architecture STRUCTURE of mcu_mii_to_rmii_ETHERNET_0 is
@@ -2849,7 +2863,7 @@ architecture STRUCTURE of mcu_mii_to_rmii_ETHERNET_0 is
   attribute x_interface_parameter of phy2rmii_crs_dv : signal is "XIL_INTERFACENAME RMII_PHY_M, BOARD.ASSOCIATED_PARAM RMII_BOARD_INTERFACE";
   attribute x_interface_info of phy2rmii_rx_er : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M RX_ER";
   attribute x_interface_info of ref_clk : signal is "xilinx.com:signal:clock:1.0 clock CLK";
-  attribute x_interface_parameter of ref_clk : signal is "XIL_INTERFACENAME clock, BOARD.ASSOCIATED_PARAM REF_CLK_BOARD_INTERFACE, FREQ_HZ 50000000, PHASE 0.000, CLK_DOMAIN mcu_clk_050mhz, INSERT_VIP 0";
+  attribute x_interface_parameter of ref_clk : signal is "XIL_INTERFACENAME clock, BOARD.ASSOCIATED_PARAM REF_CLK_BOARD_INTERFACE, FREQ_HZ 50000000, PHASE 0.0, CLK_DOMAIN /clk_trx_in_PLL_0_clk_out1, INSERT_VIP 0";
   attribute x_interface_info of rmii2mac_col : signal is "xilinx.com:interface:mii:1.0 MII COL";
   attribute x_interface_info of rmii2mac_crs : signal is "xilinx.com:interface:mii:1.0 MII CRS";
   attribute x_interface_info of rmii2mac_rx_clk : signal is "xilinx.com:interface:mii:1.0 MII RX_CLK";

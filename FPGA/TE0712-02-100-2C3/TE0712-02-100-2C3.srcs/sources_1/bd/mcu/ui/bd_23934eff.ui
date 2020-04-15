@@ -310,8 +310,8 @@ pagesize -pg 1 -db -bbox -sgen -220 0 5250 3870
    "textcolor_comment_1":""
 }
 {
-   """""""""""""da_board_cnt""""""""""""":"2",
-   """""""""""""da_clkrst_cnt""""""""""""":"2"
+   """""""""""""""da_board_cnt""""""""""""""":"2",
+   """""""""""""""da_clkrst_cnt""""""""""""""":"2"
 }
 {
    "/comment_0":"comment_0",

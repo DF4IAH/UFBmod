@@ -53,10 +53,12 @@ set_clock_groups -name async__ufb_trx_rxclk_p__trx_clk_26mhz -asynchronous -grou
 #create_generated_clock -name clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0   -source [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_in1] -master_clock clk_trx_050mhz000_mcu_clk_wiz_0_0 [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_025mhz000]
 #create_generated_clock -name clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0_1 -source [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_in2] -master_clock pll_clk_p [get_pins mcu_wrapper_i/mcu_i/clk_pll_trx_in_PLL_0/clk_025mhz000]
 
-set_clock_groups -physically_exclusive -group [get_clocks clk_200mhz000_mcu_clk_trx_050mhz000_PLL_0] -group [get_clocks clk_200mhz000_mcu_clk_trx_050mhz000_PLL_0_1]
-set_clock_groups -physically_exclusive -group [get_clocks clk_177mhz778_mcu_clk_trx_050mhz000_PLL_0] -group [get_clocks clk_177mhz778_mcu_clk_trx_050mhz000_PLL_0_1]
-set_clock_groups -physically_exclusive -group [get_clocks clk_050mhz000_mcu_clk_trx_050mhz000_PLL_0] -group [get_clocks clk_050mhz000_mcu_clk_trx_050mhz000_PLL_0_1]
-set_clock_groups -physically_exclusive -group [get_clocks clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0] -group [get_clocks clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0_1]
+#set_clock_groups -physically_exclusive -group [get_clocks clk_200mhz000_mcu_clk_trx_050mhz000_PLL_0] -group [get_clocks clk_200mhz000_mcu_clk_trx_050mhz000_PLL_0_1]
+#set_clock_groups -physically_exclusive -group [get_clocks clk_177mhz778_mcu_clk_trx_050mhz000_PLL_0] -group [get_clocks clk_177mhz778_mcu_clk_trx_050mhz000_PLL_0_1]
+#set_clock_groups -physically_exclusive -group [get_clocks clk_050mhz000_mcu_clk_trx_050mhz000_PLL_0] -group [get_clocks clk_050mhz000_mcu_clk_trx_050mhz000_PLL_0_1]
+#set_clock_groups -physically_exclusive -group [get_clocks clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0] -group [get_clocks clk_025mhz000_mcu_clk_trx_050mhz000_PLL_0_1]
+
+set_property CLOCK_DEDICATED_ROUTE BACKBONE [get_nets pll_clk_g]
 
 
 

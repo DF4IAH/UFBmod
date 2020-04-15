@@ -1,4 +1,4 @@
--- (c) Copyright 1995-2019 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -137,11 +137,11 @@ ARCHITECTURE mcu_axi_iic_1_BOARD_0_arch OF mcu_axi_iic_1_BOARD_0 IS
     );
   END COMPONENT axi_iic;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF mcu_axi_iic_1_BOARD_0_arch: ARCHITECTURE IS "axi_iic,Vivado 2019.1.2";
+  ATTRIBUTE X_CORE_INFO OF mcu_axi_iic_1_BOARD_0_arch: ARCHITECTURE IS "axi_iic,Vivado 2019.1";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF mcu_axi_iic_1_BOARD_0_arch : ARCHITECTURE IS "mcu_axi_iic_1_BOARD_0,axi_iic,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF mcu_axi_iic_1_BOARD_0_arch: ARCHITECTURE IS "mcu_axi_iic_1_BOARD_0,axi_iic,{x_ipProduct=Vivado 2019.1.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_iic,x_ipVersion=2.0,x_ipCoreRevision=22,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_S_AXI_ADDR_WIDTH=9,C_S_AXI_DATA_WIDTH=32,C_IIC_FREQ=400000,C_TEN_BIT_ADR=0,C_GPO_WIDTH=1,C_S_AXI_ACLK_FREQ_HZ=83333333,C_SCL_INERTIAL_DELAY=0,C_SDA_INERTIAL_DELAY=0,C_SDA_LEVEL=1,C_SMBUS_PMBUS_HOST=0,C_DEFAULT_VALUE=0x00}";
+  ATTRIBUTE CORE_GENERATION_INFO OF mcu_axi_iic_1_BOARD_0_arch: ARCHITECTURE IS "mcu_axi_iic_1_BOARD_0,axi_iic,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_iic,x_ipVersion=2.0,x_ipCoreRevision=22,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_S_AXI_ADDR_WIDTH=9,C_S_AXI_DATA_WIDTH=32,C_IIC_FREQ=400000,C_TEN_BIT_ADR=0,C_GPO_WIDTH=1,C_S_AXI_ACLK_FREQ_HZ=83333333,C_SCL_INERTIAL_DELAY=0,C_SDA_INERTIAL_DELAY=0,C_SDA_LEVEL=1,C_SMBUS_PMBUS_HOST=0,C_DEFAULT_VALUE=0x00}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF scl_t: SIGNAL IS "xilinx.com:interface:iic:1.0 IIC SCL_T";

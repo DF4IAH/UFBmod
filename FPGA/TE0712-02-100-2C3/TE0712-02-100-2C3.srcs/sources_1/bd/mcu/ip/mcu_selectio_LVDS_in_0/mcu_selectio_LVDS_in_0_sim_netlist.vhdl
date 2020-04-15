@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
--- Date        : Tue Sep  3 21:35:51 2019
+-- Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+-- Date        : Sun Apr 12 12:32:59 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               F:/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_selectio_LVDS_in_0/mcu_selectio_LVDS_in_0_sim_netlist.vhdl
+--               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_selectio_LVDS_in_0/mcu_selectio_LVDS_in_0_sim_netlist.vhdl
 -- Design      : mcu_selectio_LVDS_in_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.

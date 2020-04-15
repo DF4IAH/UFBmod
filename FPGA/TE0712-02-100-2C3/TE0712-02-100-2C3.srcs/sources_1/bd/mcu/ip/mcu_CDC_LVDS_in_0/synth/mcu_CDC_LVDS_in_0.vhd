@@ -1,4 +1,4 @@
--- (c) Copyright 1995-2019 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -127,12 +127,12 @@ ARCHITECTURE mcu_CDC_LVDS_in_0_arch OF mcu_CDC_LVDS_in_0 IS
     );
   END COMPONENT dist_mem_gen_v8_0_13;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF mcu_CDC_LVDS_in_0_arch: ARCHITECTURE IS "dist_mem_gen_v8_0_13,Vivado 2019.1.2";
+  ATTRIBUTE X_CORE_INFO OF mcu_CDC_LVDS_in_0_arch: ARCHITECTURE IS "dist_mem_gen_v8_0_13,Vivado 2019.1";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF mcu_CDC_LVDS_in_0_arch : ARCHITECTURE IS "mcu_CDC_LVDS_in_0,dist_mem_gen_v8_0_13,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF mcu_CDC_LVDS_in_0_arch: ARCHITECTURE IS "mcu_CDC_LVDS_in_0,dist_mem_gen_v8_0_13,{x_ipProduct=Vivado 2019.1.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=dist_mem_gen,x_ipVersion=8.0,x_ipCoreRevision=13,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_ADDR_WIDTH=4,C_DEFAULT_DATA=0,C_DEPTH=16,C_HAS_CLK=1,C_HAS_D=1,C_HAS_DPO=0,C_HAS_DPRA=1,C_HAS_I_CE=0,C_HAS_QDPO=1,C_HAS_QDPO_CE=0,C_HAS_QDPO_CLK=1,C_HAS_QDPO_RST=0,C_HAS_QDPO_SRST=0,C_HAS_QSPO=0,C_HAS_QSPO_CE=0,C_HAS_QSPO_RST=0,C_HAS_QSPO_SRST=0,C_HAS_SPO=0,C_HAS_WE=1,C_MEM_I" & 
-"NIT_FILE=no_coe_file_loaded,C_ELABORATION_DIR=./,C_MEM_TYPE=4,C_PIPELINE_STAGES=1,C_QCE_JOINED=0,C_QUALIFY_WE=0,C_READ_MIF=0,C_REG_A_D_INPUTS=1,C_REG_DPRA_INPUT=0,C_SYNC_ENABLE=1,C_WIDTH=8,C_PARSER_TYPE=1}";
+  ATTRIBUTE CORE_GENERATION_INFO OF mcu_CDC_LVDS_in_0_arch: ARCHITECTURE IS "mcu_CDC_LVDS_in_0,dist_mem_gen_v8_0_13,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=dist_mem_gen,x_ipVersion=8.0,x_ipCoreRevision=13,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_ADDR_WIDTH=4,C_DEFAULT_DATA=0,C_DEPTH=16,C_HAS_CLK=1,C_HAS_D=1,C_HAS_DPO=0,C_HAS_DPRA=1,C_HAS_I_CE=0,C_HAS_QDPO=1,C_HAS_QDPO_CE=0,C_HAS_QDPO_CLK=1,C_HAS_QDPO_RST=0,C_HAS_QDPO_SRST=0,C_HAS_QSPO=0,C_HAS_QSPO_CE=0,C_HAS_QSPO_RST=0,C_HAS_QSPO_SRST=0,C_HAS_SPO=0,C_HAS_WE=1,C_MEM_INI" & 
+"T_FILE=no_coe_file_loaded,C_ELABORATION_DIR=./,C_MEM_TYPE=4,C_PIPELINE_STAGES=1,C_QCE_JOINED=0,C_QUALIFY_WE=0,C_READ_MIF=0,C_REG_A_D_INPUTS=1,C_REG_DPRA_INPUT=0,C_SYNC_ENABLE=1,C_WIDTH=8,C_PARSER_TYPE=1}";
 BEGIN
   U0 : dist_mem_gen_v8_0_13
     GENERIC MAP (

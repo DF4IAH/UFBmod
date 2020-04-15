@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2019 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -50,9 +50,9 @@
 // IP VLNV: xilinx.com:ip:xlslice:1.0
 // IP Revision: 2
 
-(* X_CORE_INFO = "xlslice_v1_0_2_xlslice,Vivado 2019.1.2" *)
+(* X_CORE_INFO = "xlslice_v1_0_2_xlslice,Vivado 2019.1" *)
 (* CHECK_LICENSE_TYPE = "mcu_LVDS_in_out_sample_clken_SLICE_0_0,xlslice_v1_0_2_xlslice,{}" *)
-(* CORE_GENERATION_INFO = "mcu_LVDS_in_out_sample_clken_SLICE_0_0,xlslice_v1_0_2_xlslice,{x_ipProduct=Vivado 2019.1.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xlslice,x_ipVersion=1.0,x_ipCoreRevision=2,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,DIN_WIDTH=48,DIN_FROM=10,DIN_TO=0}" *)
+(* CORE_GENERATION_INFO = "mcu_LVDS_in_out_sample_clken_SLICE_0_0,xlslice_v1_0_2_xlslice,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xlslice,x_ipVersion=1.0,x_ipCoreRevision=2,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,DIN_WIDTH=48,DIN_FROM=10,DIN_TO=0}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module mcu_LVDS_in_out_sample_clken_SLICE_0_0 (
   Din,

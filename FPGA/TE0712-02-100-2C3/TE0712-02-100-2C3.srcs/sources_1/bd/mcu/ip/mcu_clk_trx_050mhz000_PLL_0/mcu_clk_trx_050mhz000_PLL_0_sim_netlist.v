@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-// Date        : Tue Sep  3 00:28:54 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Apr 12 12:39:05 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top mcu_clk_trx_050mhz000_PLL_0 -prefix
-//               mcu_clk_trx_050mhz000_PLL_0_ mcu_clk_trx_050mhz000_PLL_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim
+//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_clk_trx_050mhz000_PLL_0/mcu_clk_trx_050mhz000_PLL_0_sim_netlist.v
 // Design      : mcu_clk_trx_050mhz000_PLL_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -51,6 +51,7 @@ module mcu_clk_trx_050mhz000_PLL_0
         .reset(reset));
 endmodule
 
+(* ORIG_REF_NAME = "mcu_clk_trx_050mhz000_PLL_0_clk_wiz" *) 
 module mcu_clk_trx_050mhz000_PLL_0_mcu_clk_trx_050mhz000_PLL_0_clk_wiz
    (clk_in2,
     clk_in_sel,

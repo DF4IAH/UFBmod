@@ -1,18 +1,18 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-// Date        : Thu Aug 15 19:20:45 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Apr 12 12:23:58 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top mcu_dmr_1_ONEWIRE_0 -prefix
-//               mcu_dmr_1_ONEWIRE_0_ mcu_CDC_LVDS_in_0_sim_netlist.v
-// Design      : mcu_CDC_LVDS_in_0
+// Command     : write_verilog -force -mode funcsim
+//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_dmr_1_ONEWIRE_0/mcu_dmr_1_ONEWIRE_0_sim_netlist.v
+// Design      : mcu_dmr_1_ONEWIRE_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7a100tfgg484-2
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "mcu_CDC_LVDS_in_0,dist_mem_gen_v8_0_13,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "dist_mem_gen_v8_0_13,Vivado 2019.1.2" *) 
+(* CHECK_LICENSE_TYPE = "mcu_dmr_1_ONEWIRE_0,dist_mem_gen_v8_0_13,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "dist_mem_gen_v8_0_13,Vivado 2019.1" *) 
 (* NotValidForBitStream *)
 module mcu_dmr_1_ONEWIRE_0
    (a,
@@ -108,7 +108,7 @@ endmodule
 (* C_MEM_INIT_FILE = "no_coe_file_loaded" *) (* C_MEM_TYPE = "2" *) (* C_PARSER_TYPE = "1" *) 
 (* C_PIPELINE_STAGES = "0" *) (* C_QCE_JOINED = "0" *) (* C_QUALIFY_WE = "0" *) 
 (* C_READ_MIF = "0" *) (* C_REG_A_D_INPUTS = "1" *) (* C_REG_DPRA_INPUT = "1" *) 
-(* C_SYNC_ENABLE = "1" *) (* C_WIDTH = "32" *) 
+(* C_SYNC_ENABLE = "1" *) (* C_WIDTH = "32" *) (* ORIG_REF_NAME = "dist_mem_gen_v8_0_13" *) 
 module mcu_dmr_1_ONEWIRE_0_dist_mem_gen_v8_0_13
    (a,
     d,
@@ -234,6 +234,7 @@ module mcu_dmr_1_ONEWIRE_0_dist_mem_gen_v8_0_13
         .we(we));
 endmodule
 
+(* ORIG_REF_NAME = "dist_mem_gen_v8_0_13_synth" *) 
 module mcu_dmr_1_ONEWIRE_0_dist_mem_gen_v8_0_13_synth
    (qspo,
     qdpo,
@@ -276,6 +277,7 @@ module mcu_dmr_1_ONEWIRE_0_dist_mem_gen_v8_0_13_synth
         .we(we));
 endmodule
 
+(* ORIG_REF_NAME = "dpram" *) 
 module mcu_dmr_1_ONEWIRE_0_dpram
    (qspo,
     qdpo,

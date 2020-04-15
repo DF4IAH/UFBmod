@@ -546,7 +546,6 @@ vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/source
 "../../../bd/mcu/ip/mcu_LVDS_in_tlast_gen_REDLOG_0_0/sim/mcu_LVDS_in_tlast_gen_REDLOG_0_0.v" \
 "../../../bd/mcu/ip/mcu_util_vector_logic_0_2/sim/mcu_util_vector_logic_0_2.v" \
 "../../../bd/mcu/ip/mcu_const_width32_0x80004000_0/sim/mcu_const_width32_0x80004000_0.v" \
-"../../../bd/mcu/sim/mcu.v" \
 "../../../bd/mcu/ip/mcu_xlslice_0_2/sim/mcu_xlslice_0_2.v" \
 "../../../bd/mcu/ip/mcu_xlconcat_0_1/sim/mcu_xlconcat_0_1.v" \
 "../../../bd/mcu/ip/mcu_LVDS_in_SLICE_0_0/sim/mcu_LVDS_in_SLICE_0_0.v" \
@@ -600,6 +599,7 @@ vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3.srcs/source
 "../../../bd/mcu/ip/mcu_auto_pc_0/sim/mcu_auto_pc_0.v" \
 "../../../bd/mcu/ip/mcu_auto_ds_1/sim/mcu_auto_ds_1.v" \
 "../../../bd/mcu/ip/mcu_auto_pc_1/sim/mcu_auto_pc_1.v" \
+"../../../bd/mcu/sim/mcu.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

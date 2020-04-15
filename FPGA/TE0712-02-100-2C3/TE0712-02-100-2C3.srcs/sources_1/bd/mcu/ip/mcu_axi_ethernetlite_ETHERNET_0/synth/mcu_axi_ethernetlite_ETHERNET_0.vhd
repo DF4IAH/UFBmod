@@ -1,4 +1,4 @@
--- (c) Copyright 1995-2019 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -167,12 +167,12 @@ ARCHITECTURE mcu_axi_ethernetlite_ETHERNET_0_arch OF mcu_axi_ethernetlite_ETHERN
     );
   END COMPONENT axi_ethernetlite;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF mcu_axi_ethernetlite_ETHERNET_0_arch: ARCHITECTURE IS "axi_ethernetlite,Vivado 2019.1.2";
+  ATTRIBUTE X_CORE_INFO OF mcu_axi_ethernetlite_ETHERNET_0_arch: ARCHITECTURE IS "axi_ethernetlite,Vivado 2019.1";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF mcu_axi_ethernetlite_ETHERNET_0_arch : ARCHITECTURE IS "mcu_axi_ethernetlite_ETHERNET_0,axi_ethernetlite,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF mcu_axi_ethernetlite_ETHERNET_0_arch: ARCHITECTURE IS "mcu_axi_ethernetlite_ETHERNET_0,axi_ethernetlite,{x_ipProduct=Vivado 2019.1.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_ethernetlite,x_ipVersion=3.0,x_ipCoreRevision=17,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_SELECT_XPM=1,C_INSTANCE=axi_ethernetlite_inst,C_S_AXI_ACLK_PERIOD_PS=12000,C_S_AXI_ADDR_WIDTH=13,C_S_AXI_DATA_WIDTH=32,C_S_AXI_ID_WIDTH=1,C_S_AXI_PROTOCOL=AXI4LITE,C_INCLUDE_MDIO=1,C_INCLUDE_INTERNAL_LOOPBACK=1,C_INCLUDE_GLOBAL_BUFFERS=1,C_DUPLEX=1,C_TX_PING_PON" & 
-"G=1,C_RX_PING_PONG=1}";
+  ATTRIBUTE CORE_GENERATION_INFO OF mcu_axi_ethernetlite_ETHERNET_0_arch: ARCHITECTURE IS "mcu_axi_ethernetlite_ETHERNET_0,axi_ethernetlite,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_ethernetlite,x_ipVersion=3.0,x_ipCoreRevision=17,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_SELECT_XPM=1,C_INSTANCE=axi_ethernetlite_inst,C_S_AXI_ACLK_PERIOD_PS=12000,C_S_AXI_ADDR_WIDTH=13,C_S_AXI_DATA_WIDTH=32,C_S_AXI_ID_WIDTH=1,C_S_AXI_PROTOCOL=AXI4LITE,C_INCLUDE_MDIO=1,C_INCLUDE_INTERNAL_LOOPBACK=1,C_INCLUDE_GLOBAL_BUFFERS=1,C_DUPLEX=1,C_TX_PING_PONG=" & 
+"1,C_RX_PING_PONG=1}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF phy_mdc: SIGNAL IS "xilinx.com:interface:mdio:1.0 MDIO MDC";

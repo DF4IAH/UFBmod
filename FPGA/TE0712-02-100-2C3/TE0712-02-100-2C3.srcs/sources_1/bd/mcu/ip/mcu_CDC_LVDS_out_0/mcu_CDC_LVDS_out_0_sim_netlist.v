@@ -1,18 +1,18 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-// Date        : Thu Aug 15 19:09:47 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Apr 12 12:16:20 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim -rename_top mcu_CDC_LVDS_out_0 -prefix
-//               mcu_CDC_LVDS_out_0_ mcu_dist_mem_gen_0_0_sim_netlist.v
-// Design      : mcu_dist_mem_gen_0_0
+//               mcu_CDC_LVDS_out_0_ mcu_CDC_LVDS_in_0_sim_netlist.v
+// Design      : mcu_CDC_LVDS_in_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7a100tfgg484-2
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "mcu_dist_mem_gen_0_0,dist_mem_gen_v8_0_13,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "dist_mem_gen_v8_0_13,Vivado 2019.1.2" *) 
+(* CHECK_LICENSE_TYPE = "mcu_CDC_LVDS_in_0,dist_mem_gen_v8_0_13,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "dist_mem_gen_v8_0_13,Vivado 2019.1" *) 
 (* NotValidForBitStream *)
 module mcu_CDC_LVDS_out_0
    (a,

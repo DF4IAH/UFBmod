@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2019 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -50,9 +50,9 @@
 // IP VLNV: xilinx.com:ip:util_vector_logic:2.0
 // IP Revision: 1
 
-(* X_CORE_INFO = "util_vector_logic_v2_0_1_util_vector_logic,Vivado 2019.1.2" *)
+(* X_CORE_INFO = "util_vector_logic_v2_0_1_util_vector_logic,Vivado 2019.1" *)
 (* CHECK_LICENSE_TYPE = "mcu_util_vector_logic_0_1,util_vector_logic_v2_0_1_util_vector_logic,{}" *)
-(* CORE_GENERATION_INFO = "mcu_util_vector_logic_0_1,util_vector_logic_v2_0_1_util_vector_logic,{x_ipProduct=Vivado 2019.1.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=util_vector_logic,x_ipVersion=2.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_OPERATION=and,C_SIZE=32}" *)
+(* CORE_GENERATION_INFO = "mcu_util_vector_logic_0_1,util_vector_logic_v2_0_1_util_vector_logic,{x_ipProduct=Vivado 2019.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=util_vector_logic,x_ipVersion=2.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_OPERATION=and,C_SIZE=32}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module mcu_util_vector_logic_0_1 (
   Op1,

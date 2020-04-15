@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2019.1.2 (win64) Build 2615518 Fri Aug  9 15:55:25 MDT 2019
-// Date        : Tue Sep  3 21:22:20 2019
+// Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+// Date        : Sun Apr 12 12:23:11 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top mcu_clk_32mhz_LVDS_0 -prefix
-//               mcu_clk_32mhz_LVDS_0_ mcu_clk_32mhz_LVDS_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim
+//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.srcs/sources_1/bd/mcu/ip/mcu_clk_32mhz_LVDS_0/mcu_clk_32mhz_LVDS_0_sim_netlist.v
 // Design      : mcu_clk_32mhz_LVDS_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -17,14 +17,12 @@ module mcu_clk_32mhz_LVDS_0
    (clk_128mhz000_lvds,
     clk_064mhz000_lvds,
     clk_016mhz000_lvds,
-    reset,
     locked,
     clk_in1_p,
     clk_in1_n);
   output clk_128mhz000_lvds;
   output clk_064mhz000_lvds;
   output clk_016mhz000_lvds;
-  input reset;
   output locked;
   input clk_in1_p;
   input clk_in1_n;
@@ -35,7 +33,6 @@ module mcu_clk_32mhz_LVDS_0
   (* DIFF_TERM = 0 *) (* IBUF_LOW_PWR *) wire clk_in1_n;
   (* DIFF_TERM = 0 *) (* IBUF_LOW_PWR *) wire clk_in1_p;
   wire locked;
-  wire reset;
 
   mcu_clk_32mhz_LVDS_0_mcu_clk_32mhz_LVDS_0_clk_wiz inst
        (.clk_016mhz000_lvds(clk_016mhz000_lvds),
@@ -43,22 +40,20 @@ module mcu_clk_32mhz_LVDS_0
         .clk_128mhz000_lvds(clk_128mhz000_lvds),
         .clk_in1_n(clk_in1_n),
         .clk_in1_p(clk_in1_p),
-        .locked(locked),
-        .reset(reset));
+        .locked(locked));
 endmodule
 
+(* ORIG_REF_NAME = "mcu_clk_32mhz_LVDS_0_clk_wiz" *) 
 module mcu_clk_32mhz_LVDS_0_mcu_clk_32mhz_LVDS_0_clk_wiz
    (clk_128mhz000_lvds,
     clk_064mhz000_lvds,
     clk_016mhz000_lvds,
-    reset,
     locked,
     clk_in1_p,
     clk_in1_n);
   output clk_128mhz000_lvds;
   output clk_064mhz000_lvds;
   output clk_016mhz000_lvds;
-  input reset;
   output locked;
   input clk_in1_p;
   input clk_in1_n;
@@ -75,7 +70,6 @@ module mcu_clk_32mhz_LVDS_0_mcu_clk_32mhz_LVDS_0_clk_wiz
   wire clkfbout_buf_mcu_clk_32mhz_LVDS_0;
   wire clkfbout_mcu_clk_32mhz_LVDS_0;
   wire locked;
-  wire reset;
   wire NLW_plle2_adv_inst_CLKOUT3_UNCONNECTED;
   wire NLW_plle2_adv_inst_CLKOUT4_UNCONNECTED;
   wire NLW_plle2_adv_inst_CLKOUT5_UNCONNECTED;
@@ -162,7 +156,7 @@ module mcu_clk_32mhz_LVDS_0_mcu_clk_32mhz_LVDS_0_clk_wiz
         .DWE(1'b0),
         .LOCKED(locked),
         .PWRDWN(1'b0),
-        .RST(reset));
+        .RST(1'b0));
 endmodule
 `ifndef GLBL
 `define GLBL
