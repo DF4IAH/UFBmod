@@ -1,0 +1,373 @@
+# --------------------------------------------------------------------
+# --   *****************************
+# --   *   Trenz Electronic GmbH   *
+# --   *   Holzweg 19A             *
+# --   *   32257 Bünde             *
+# --   *   Germany                 *
+# --   *****************************
+# --------------------------------------------------------------------
+# -- $Author: Hartfiel, John $
+# -- $Email: j.hartfiel@trenz-electronic.de $
+# --------------------------------------------------------------------
+# -- Change History:
+# ------------------------------------------
+# -- $Date: 2019/12/01 | $Author: Hartfiel, John
+# -- - initial release
+# ------------------------------------------
+# -- $Date: 0000/00/00  | $Author:
+# -- - 
+# --------------------------------------------------------------------
+# --------------------------------------------------------------------
+namespace eval ::TE {
+  namespace eval VITIS {
+    set SW_APPLIST ""
+    set SCRIPT_PATH ../../scripts
+    set LIB_PATH ../../sw_lib
+    set ID UNKOWN
+    set SERIESNAME UNKOWN
+    set WORKSPACE_SDK_PATH ../../workspace/sdk
+    # -----------------------------------------------------------------------------------------------------------------------------------------
+    # TE HSI variablen declaration
+    # -----------------------------------------------------------------------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------------------------
+    # finished TE HSI variablen declaration
+    # -----------------------------------------------------------------------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------------------------
+    # hsi hw functions
+    # -----------------------------------------------------------------------------------------------------------------------------------------
+    proc set_workspace {} { 
+      setws ${TE::WORKSPACE_SDK_PATH}
+      repo -set ${TE::LIB_PATH}
+      repo -scan
+    }
+    proc platform_create {} {
+      #create platform project
+      if { [llength $TE::SDEF::SW_PLATLIST] > 2} { puts "Error:(TE) Script (TE::VITIS::platform_create) failed: Currently only one platform supported"}
+      foreach sw_platlist_line $TE::SDEF::SW_PLATLIST {
+        if { [lindex $sw_platlist_line ${TE::SDEF::P_ID}] ne "id" } {
+          set p_os [lindex $sw_platlist_line ${TE::SDEF::P_OS}]
+          set p_proc [lindex $sw_platlist_line ${TE::SDEF::P_PROC}]
+          set p_proc "psu_cortex[string map {"-" "_"} $p_proc]"
+          
+          if {[catch {
+            platform create -name ${TE::PRODID} -hw ${TE::WORKSPACE_SDK_PATH}/test_board.xsa -proc $p_proc -os $p_os -out ${TE::WORKSPACE_SDK_PATH}
+            platform write
+            platform read ${TE::WORKSPACE_SDK_PATH}/${TE::PRODID}/platform.spr
+
+
+          } result]} { puts "Error:(TE) platform ${TE::PRODID} failed: $result."}
+        }
+      }
+    }
+    proc platform_domains {} {
+      if {[catch {
+        #predefined for zynqMP
+        # --> add or remove:  todo 
+        # platform config -remove-boot-bsp
+        # platform write
+        # platform config -create-boot-bsp
+        
+        platform active ${TE::PRODID}
+        domain active {zynqmp_fsbl}
+        ::scw::get_hw_path
+        ::scw::regenerate_psinit ${TE::WORKSPACE_SDK_PATH}/${TE::PRODID}/hw/test_board.xsa
+        ::scw::get_mss_path
+        domain active {zynqmp_pmufw}
+        ::scw::get_hw_path
+        ::scw::regenerate_psinit ${TE::WORKSPACE_SDK_PATH}/${TE::PRODID}/hw/test_board.xsa
+        ::scw::get_mss_path
+        domain active {standalone_domain}
+        ::scw::get_hw_path
+        ::scw::regenerate_psinit ${TE::WORKSPACE_SDK_PATH}/${TE::PRODID}/hw/test_board.xsa
+        ::scw::get_mss_path
+      } result]} { puts "Error:(TE) platform ${TE::PRODID} failed: $result."}
+    }
+    proc bsp_modify {} {
+      foreach sw_bsplist_line $TE::SDEF::SW_BSPLIST {
+        if { [lindex $sw_bsplist_line ${TE::SDEF::B_ID}] ne "id" } {
+          if {[catch {
+            if { [lindex $sw_bsplist_line ${TE::SDEF::B_NAME}] eq "standalone" } { 
+              domain active standalone_domain
+            } else {
+              domain active [lindex $sw_bsplist_line ${TE::SDEF::B_NAME}]
+            }
+            if { [lindex $sw_bsplist_line ${TE::SDEF::B_UART}] ne "NA" } { 
+              bsp config stdin [lindex $sw_bsplist_line ${TE::SDEF::B_UART}]
+              bsp config stdout [lindex $sw_bsplist_line ${TE::SDEF::B_UART}]
+            }
+            if { [lindex $sw_bsplist_line ${TE::SDEF::B_LIBS}] ne "NA" } { 
+              set tmp [split [lindex $sw_bsplist_line ${TE::SDEF::B_LIBS}] ","]
+              foreach xlib $tmp {
+                bsp setlib $xlib
+              }
+            }          
+            bsp regenerate
+          } result]} { puts "Error:(TE) BSP [lindex $sw_bsplist_line ${TE::SDEF::B_NAME}]  failed: $result."}
+        }
+      }
+    }
+    
+    proc platform_generate {} {
+       #use this to add platform to SDK directly --> it will not opened on but platfrom generation step can be skipped --> directly add app
+       platform generate
+       
+       importprojects ${TE::WORKSPACE_SDK_PATH}/${TE::PRODID}
+    }
+    
+    proc app_create {} {
+      
+      foreach sw_applist_line $TE::SDEF::SW_APPLIST {
+        if { [lindex $sw_applist_line ${TE::SDEF::ID}] ne "id" } {
+           
+          if { [lindex $sw_applist_line ${TE::SDEF::STEPS}] eq "0" || [lindex $sw_applist_line ${TE::SDEF::STEPS}] eq "3"} {
+          
+            set app_name [lindex $sw_applist_line ${TE::SDEF::APPNAME}]
+            set app_template [lindex $sw_applist_line ${TE::SDEF::TEMPLATE_NAME}]
+            set app_os [lindex $sw_applist_line ${TE::SDEF::OSNAME}]
+            if {[catch {
+              if { $app_os eq "standalone" } { 
+                domain active standalone_domain
+              } else {
+                domain active $app_os
+              }
+              #todo zynq and microblaze
+              set app_proc [lindex $sw_applist_line ${TE::SDEF::ZYNQMP_DESTINATION_CPU}]
+              set app_proc "psu_cortex[string map {"-" "_"} $app_proc]"
+              
+              
+              app create -name  ${app_name} -platform ${TE::PRODID} -proc ${app_proc} -os ${app_os} -template ${app_template}
+              
+              if { [lindex $sw_applist_line ${TE::SDEF::CSYMB}] ne "NA" } { 
+                set tmp [split [lindex $sw_applist_line ${TE::SDEF::CSYMB}] ","]
+                foreach symb $tmp {
+                  app config -name ${app_name} define-compiler-symbols $symb 
+                }
+              }               
+              if { [lindex $sw_applist_line ${TE::SDEF::BUILD}] ne "NA" } { 
+                app config -name  ${app_name} build-config [lindex $sw_applist_line ${TE::SDEF::BUILD}]
+              } 
+            } result]} { puts "Error:(TE) create  $app_name failed: $result."}
+        
+          }
+        }
+      
+      }
+    }    
+    proc app_build {{name *}} {
+      set tmplist [app list]
+      set index 0
+      foreach element $tmplist {
+        if {$index>2} {
+          if {[string match $name $element]} {
+          
+            if {[catch {
+              app build $element
+            } result]} { puts "Error:(TE) build $element failed: $result."}
+
+            puts "build $element "
+          } else {
+            puts "skip $element"
+          }
+        } else {
+          puts "$element"
+        }
+        incr index
+      }
+    }
+    
+    proc app_delete {{name *}} {
+      set tmplist [app list]
+      set index 0
+      foreach element $tmplist {
+        if {$index>2} {
+          if {[string match $name $element]} {
+            app remove $element
+            puts "remove $element "
+          } else {
+            puts "skip $element"
+          }
+        } else {
+          puts "$element"
+        }
+        incr index
+      }
+    }   
+    proc app_clean {{name *}} {
+      set tmplist [app list]
+      set index 0
+      foreach element $tmplist {
+        if {$index>2} {
+          if {[string match $name $element]} {
+            app clean $element
+            puts "clean -name $element "
+          } else {
+            puts "skip $element"
+          }
+        } else {
+          puts "$element"
+        }
+        incr index
+      }
+    }
+    
+    proc open_workspace_gui {} { 
+        set tmplist [list]
+
+        lappend tmplist "-lp" ${TE::LIB_PATH}
+        set command exec
+        lappend command vitis
+        lappend command -workspace ${TE::WORKSPACE_SDK_PATH}
+        lappend command {*}$tmplist
+        if { [catch {eval $command} result ]  } {
+          puts "Error:(TE) ScriptCommand results from vitis \"$command\": $result \n"
+        } else {
+          puts "INFO:(TE) ScriptCommand results from vitis \"$command\": $result \n"
+        }
+    }
+    #--------------------------------
+    #--run_all:
+    proc ex_rescan {} { 
+      #this is a workaround -->  platform create failes with xsct started manually but works with vivado and scripts directly.
+      TE::VITIS::set_workspace
+      platform read ${TE::WORKSPACE_SDK_PATH}/${TE::PRODID}/platform.spr
+      platform active ${TE::PRODID}
+      
+    }
+    
+    
+    
+   #--------------------------------
+    #--run_all:
+    proc run_all {} {
+      puts "Info:(TE) VITIS...run all..."
+       puts "Info:(TE) Create workspace..."
+      if {[catch {TE::VITIS::set_workspace} result]} { puts "Error:(TE) Script (TE::VITIS::set_workspace) failed: $result."}
+       puts "Info:(TE) Create platform..."
+      if {[catch {TE::VITIS::platform_create} result]} { puts "Error:(TE) Script (TE::VITIS::platform_create) failed: $result."}
+      after  1000
+       puts "Info:(TE) Create platform domains..."
+      if {[catch {TE::VITIS::platform_domains} result]} { puts "Error:(TE) Script (TE::VITIS::platform_domains) failed: $result."}
+      after  1000
+       puts "Info:(TE) Modify BSP..."
+      if {[catch {TE::VITIS::bsp_modify} result]} { puts "Error:(TE) Script (TE::VITIS::bsp_modify) failed: $result."}
+      after  1000
+       puts "Info:(TE) Generate platform..."
+      if {[catch {TE::VITIS::platform_generate} result]} { puts "Error:(TE) Script (TE::VITIS::platform_generate) failed: $result."}
+      after  1000
+       puts "Info:(TE) Create Apps..."
+      if {[catch {TE::VITIS::app_create} result]} { puts "Error:(TE) Script (TE::VITIS::app_create) failed: $result."}
+       puts "Info:(TE) Clean Apps..."
+      if {[catch {TE::VITIS::app_clean} result]} { puts "Error:(TE) Script (TE::VITIS::app_clean) failed: $result."}
+       puts "Info:(TE) Build Apps..."
+      if {[catch {TE::VITIS::app_build} result]} { puts "Error:(TE) Script (TE::VITIS::app_build) failed: $result."}
+      puts "Info:(TE) finished..."
+      #--> done via vivado otherwise it can be happens some conflict with file lock of previous tasks
+      # if {[catch {open_workspace_gui} result]} { puts "Error:(TE) Script (TE::VITIS::open_workspace_gui) failed: $result."}
+    }
+    
+    #--------------------------------
+    #--return_option: 
+    proc help {} {
+      puts "source ../../scripts/script_vitis.tcl   --> rescan scripts and configs "
+      puts "TE::VITIS::ex_rescan                    --> rescan platform "
+      puts "TE::VITIS::platform_domains             --> create domains(some are predefined)"
+      puts "TE::VITIS::bsp_modify                   --> modify bsp from csv"
+      puts "TE::VITIS::platform_generate            --> generate platform"
+      puts "TE::VITIS::app_create                   --> create apps from csv"
+      puts "TE::VITIS::app_clean <arg>              --> clean  all apps or optional defined app"
+      puts "TE::VITIS::app_build <arg>              --> build  all apps or optional defined app"
+      puts "TE::VITIS::app_delete  <arg>            --> delete  all apps or optional defined app"
+      puts "TE::VITIS::open_workspace_gui           --> open Vitis"
+      puts "--------"
+      puts "repo -apps                              --> show available app templates"
+    }
+    
+    #--------------------------------
+    #--return_option: 
+    proc return_option {option argc argv} {
+      if { $argc <= [expr $option + 1]} { 
+        return -code error "Error:(TE) Read parameter failed"
+      } else {  
+        puts "Info:(TE) Parameter Option Value: [lindex $argv [expr $option + 1]]"
+        return [lindex $argv [expr $option + 1]]
+      }
+    }  
+    #--------------------------------
+    #--hsi_main: 
+    proc vitis_main {} {
+      global argc
+      global argv
+      set tmp_argc 0
+      set tmp_argv 0
+      if {$argc >= 1 } {
+        set tmp_argv [lindex $argv 0]
+        set tmp_argc [llength $tmp_argv]
+      }
+      
+      set tmp_argv [split $tmp_argv "*"]
+      set tmp_argc [llength $tmp_argv]
+      
+      set vivrun false
+      set platform_only false
+      set worspace_only false
+     
+      
+      for {set option 0} {$option < $tmp_argc} {incr option} {
+        puts "Info:(TE) Parameter Index: $option"
+        puts "Info:(TE) Parameter Option: [lindex $tmp_argv $option]"
+        switch [lindex $tmp_argv $option] {
+          "--id"	            { set TE::VITIS::ID [return_option $option $tmp_argc $tmp_argv];incr option;  }       
+          "--platform_only"		    { set platform_only true }
+          "--worspace_only"		    { set worspace_only true }
+          "--vivrun"		      { set vivrun true }
+          default             { puts "" }
+        }
+      }
+       source ${TE::VITIS::SCRIPT_PATH}/script_te_utils.tcl
+       source ${TE::VITIS::SCRIPT_PATH}/script_settings.tcl
+       set tmppath [pwd]
+       cd ../../
+       if {[catch {TE::INIT::init_pathvar} result]} {  puts "Error:(TE) Script Initialization...$result";  return -code error}
+       cd $tmppath
+      if {[catch {TE::INIT::init_boardlist} result]} {  puts "Error:(TE) Script Initialization...$result";return -code error}
+      if {[catch {TE::INIT::init_app_list} result]} { puts "Error:(TE) Script Initialization...$result"; return -code error}
+      
+      # TE::UTILS::generate_workspace_sdk $prebuilt_name
+
+       if { $TE::VITIS::ID ne "UNKOWN" } {
+         TE::INIT::init_board  [TE::BDEF::find_id $TE::VITIS::ID] $TE::BDEF::ID
+       } else {
+         puts "INFO:(TE) Script (TE::VITIS::vitis_main) use part name from environment."
+         TE::INIT::init_board  [TE::BDEF::find_id $::env(PARTNUMBER)] $TE::BDEF::ID
+       }
+      
+      puts "INFO: (TE): ${TE::WORKSPACE_SDK_PATH} is used as workspace"
+      puts "INFO: (TE): See also UG1400-Vitis Embedded Software Development"
+      if {$vivrun==true} {
+        
+        if {$worspace_only==true} {
+          if {[catch {TE::UTILS::generate_workspace_sdk [TE::BDEF::find_id $TE::VITIS::ID]} result]} { puts "Error:(TE) Script (TE::UTILS::generate_workspace_sdk) failed: $result." }
+          if {[catch {TE::VITIS::set_workspace} result]} { puts "Error:(TE) Script (TE::VITIS::set_workspace) failed: $result." }
+        } elseif {$platform_only==true} {
+          if {[catch {TE::UTILS::generate_workspace_sdk [TE::BDEF::find_id $TE::VITIS::ID]} result]} { puts "Error:(TE) Script (TE::UTILS::generate_workspace_sdk) failed: $result." }
+          if {[catch {TE::VITIS::set_workspace} result]} { puts "Error:(TE) Script (TE::VITIS::set_workspace) failed: $result." }
+          if {[catch {TE::VITIS::platform_create} result]} { puts "Error:(TE) Script (TE::VITIS::platform_create) failed: $result."}
+         
+        } else {
+          if {[catch {run_all} result]} { puts "Error:(TE) Script (TE::VITIS::run_all) failed: $result."}
+        }
+        exit
+      } else {
+        TE::VITIS::help
+      }
+
+    }
+    if {[catch {vitis_main} result]} {
+      puts "Error:(TE) Script (TE::VITIS::vitis_main) failed: $result."
+    } 
+  
+  # -----------------------------------------------------------------------------------------------------------------------------------------
+  }
+ puts "Info: Load VITIS scripts finished" 
+ return ok
+}
