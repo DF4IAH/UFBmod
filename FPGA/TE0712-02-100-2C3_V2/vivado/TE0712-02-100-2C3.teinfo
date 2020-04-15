@@ -1,0 +1,14 @@
+Creation Date:      2020-04-15 11:59:25
+TE::ID:             11           
+TE::PRODID:         TE0712-02-100-2C3       
+TE::PARTNAME:       xc7a100tfgg484-2     
+TE::BOARDPART:      trenz.biz:te0712_100_2c:part0:1.0    
+TE::SHORTDIR:       100_2c_1gb     
+TE::ZYNQFLASHTYP:   NA 
+TE::FPGAFLASHTYP:   s25fl256sxxxxxx0-spi-x1_x2_x4 
+TE::PCB_REV:        REV02      
+TE::DDR_SIZE:       1GB     
+TE::FLASH_SIZE:     32MB   
+TE::EMMC_SIZE:      NA    
+TE::OTHERS:         2.5 mm Samtec connectors       
+TE::NOTES:          NA        

@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2019.2.1 (64-bit)
+# SW Build 2729669 on Thu Dec  5 04:49:17 MST 2019
+# IP Build 2729494 on Thu Dec  5 07:38:25 MST 2019
+# Start of session at: Wed Apr 15 11:54:57 2020
+# Process ID: 13848
+# Current directory: C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/v_log
+# Command line: vivado.exe -source ../scripts/script_main.tcl -mode batch -notrace -tclargs --run_board_selection
+# Log file: C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/v_log/vivado.log
+# Journal file: C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/v_log\vivado.jou
+#-----------------------------------------------------------
+source ../scripts/script_main.tcl -notrace
+update_compile_order -fileset sources_1
+close_project
