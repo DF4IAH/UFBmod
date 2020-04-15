@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.626295",
-   "Default View_TopLeft":"-1135,-180",
+   "Default View_ScaleFactor":"1.77143",
+   "Default View_TopLeft":"-133,-180",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0.21  2019-05-29 bk=1.5064 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
@@ -86,17 +86,17 @@ preplace netloc util_ds_buf_1_IBUF_OUT 1 4 1 2520 1740n
 preplace netloc util_ds_buf_2_IBUF_OUT 1 4 1 2510 1860n
 preplace netloc xlconcat_0_dout 1 1 5 620 1940 NJ 1940 NJ 1940 NJ 1940 2930
 preplace netloc axi_quad_spi_0_SPI_0 1 2 5 1370 950 2010J 150 NJ 150 NJ 150 3220J
-preplace netloc axi_interconnect_0_M00_AXI 1 1 2 530 1010 1270J
 preplace netloc axi_iic_0_IIC 1 0 2 170 -30 450
-preplace netloc axi_uartlite_0_UART 1 1 6 600 -70 1380J 960 2020J 160 NJ 160 NJ 160 3250J
-preplace netloc axi_ethernetlite_0_MII 1 1 2 470 1681 NJ
+preplace netloc axi_interconnect_0_M00_AXI 1 1 2 530 1010 1270J
 preplace netloc mgt_clk0_1 1 0 4 50J -40 520J 1751 NJ 1751 2030J
 preplace netloc axi_ethernetlite_0_MDIO 1 1 6 560J 1050 NJ 1050 2030J -80 NJ -80 NJ -80 3250
+preplace netloc axi_uartlite_0_UART 1 1 6 600 -70 1380J 960 2020J 160 NJ 160 NJ 160 3250J
+preplace netloc axi_ethernetlite_0_MII 1 1 2 470 1681 NJ
 preplace netloc microblaze_0_M_AXI_DC 1 0 3 170 1040 NJ 1040 1180J
-preplace netloc microblaze_0_M_AXI_IC 1 0 3 130 -100 NJ -100 1170J
 preplace netloc microblaze_0_axi_periph_M02_AXI 1 0 4 110 1110 NJ 1110 NJ 1110 1930J
-preplace netloc microblaze_0_axi_periph_M05_AXI 1 0 4 80 1140 NJ 1140 NJ 1140 1900J
 preplace netloc CLK_IN_D_0_1 1 0 4 60J -20 480J 1860 NJ 1860 NJ
+preplace netloc microblaze_0_M_AXI_IC 1 0 3 130 -100 NJ -100 1170J
+preplace netloc microblaze_0_axi_periph_M05_AXI 1 0 4 80 1140 NJ 1140 NJ 1140 1900J
 preplace netloc microblaze_0_axi_dp 1 2 1 1320 150n
 preplace netloc microblaze_0_axi_periph_M04_AXI 1 0 4 150 1130 NJ 1130 NJ 1130 1910J
 preplace netloc microblaze_0_dlmb_1 1 2 1 1270 0n
@@ -105,14 +105,14 @@ preplace netloc microblaze_0_ilmb_1 1 2 1 1300 20n
 preplace netloc microblaze_0_interrupt 1 1 2 690 1020 1170
 preplace netloc microblaze_mcs_0_GPIO1 1 0 4 100 1080 NJ 1080 NJ 1080 1950J
 preplace netloc microblaze_0_intc_axi 1 1 3 680 1150 NJ 1150 1970J
-preplace netloc microblaze_0_axi_periph_M01_AXI 1 1 3 660 1100 NJ 1100 1940J
 preplace netloc microblaze_0_debug 1 1 2 700 1030 1190
 preplace netloc mii_to_rmii_0_RMII_PHY_M 1 6 1 3240 120n
 preplace netloc mig_7series_0_DDR3 1 3 4 1980 -70 NJ -70 NJ -70 3240J
-preplace netloc sys_diff_clock_1 1 0 3 30J -70 570J -80 1400J
+preplace netloc microblaze_0_axi_periph_M01_AXI 1 1 3 660 1100 NJ 1100 1940J
 preplace netloc mii_y_adapater_0_M_MII 1 3 3 2020 1680 NJ 1680 3000J
+preplace netloc sys_diff_clock_1 1 0 3 30J -70 570J -80 1400J
 levelinfo -pg 1 0 310 940 1690 2340 2760 3110 3270
-pagesize -pg 1 -db -bbox -sgen -140 -180 3440 2330
+pagesize -pg 1 -db -bbox -sgen -150 -180 3450 2330
 "
 }
 0
