@@ -187,6 +187,7 @@
 <layer number="255" name="routoute" color="7" fill="1" visible="no" active="yes"/>
 </layers>
 <schematic xreflabel="%F%N/%S.%C%R" xrefpart="/%S.%C%R">
+<description>UFBmod - the best digital modulation ever created :-)</description>
 <libraries>
 <library name="df4iah_frame">
 <description>&lt;b&gt;DF4IAH Library - Frame: schematic frame variants&lt;/b&gt;&lt;p&gt;</description>
