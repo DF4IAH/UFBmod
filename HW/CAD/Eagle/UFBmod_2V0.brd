@@ -187,7 +187,7 @@
 <layer number="255" name="routoute" color="7" fill="1" visible="no" active="yes"/>
 </layers>
 <board>
-<description>DL0WH Antenna BiTuner</description>
+<description>UFBmod - the best digital modulation ever created :-)</description>
 <plain>
 <text x="8.09625" y="15.875" size="1.27" layer="21" font="vector" ratio="20">UFBmod V2.0
 (C) 2019
