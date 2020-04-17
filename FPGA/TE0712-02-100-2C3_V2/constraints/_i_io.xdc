@@ -9,7 +9,8 @@ set_property PACKAGE_PIN T20 [get_ports PLL_I2C_ext_sda]
 set_property IOSTANDARD LVCMOS33 [get_ports PLL_I2C_ext_sda]
 
 #Reset
-set_property PACKAGE_PIN T3 [get_ports reset]
+#!set_property PACKAGE_PIN T3 [get_ports reset]
+set_property PACKAGE_PIN AA16 [get_ports reset]
 set_property IOSTANDARD LVCMOS15 [get_ports reset]
 #CLKS
 set_property PACKAGE_PIN R4 [get_ports {CLK1B[0]}]
