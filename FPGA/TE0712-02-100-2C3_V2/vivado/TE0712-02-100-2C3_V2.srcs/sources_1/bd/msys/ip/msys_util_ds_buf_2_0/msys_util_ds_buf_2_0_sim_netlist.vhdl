@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
 -- Date        : Wed Apr 15 17:03:02 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_util_ds_buf_2_0/msys_util_ds_buf_2_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_util_ds_buf_2_0 -prefix
+--               msys_util_ds_buf_2_0_ msys_util_ds_buf_2_0_sim_netlist.vhdl
 -- Design      : msys_util_ds_buf_2_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -59,8 +59,6 @@ entity msys_util_ds_buf_2_0_util_ds_buf is
   attribute C_SIM_DEVICE of msys_util_ds_buf_2_0_util_ds_buf : entity is "VERSAL_AI_CORE_ES1";
   attribute C_SIZE : integer;
   attribute C_SIZE of msys_util_ds_buf_2_0_util_ds_buf : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_util_ds_buf_2_0_util_ds_buf : entity is "util_ds_buf";
 end msys_util_ds_buf_2_0_util_ds_buf;
 
 architecture STRUCTURE of msys_util_ds_buf_2_0_util_ds_buf is

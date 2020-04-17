@@ -107,6 +107,11 @@ verilog xil_defaultlib --include "../../../../TE0712-02-100-2C3_V2.srcs/sources_
 "../../../bd/msys/ip/msys_mig_7series_0_0/msys_mig_7series_0_0/user_design/rtl/msys_mig_7series_0_0_mig_sim.v" \
 "../../../bd/msys/ip/msys_mig_7series_0_0/msys_mig_7series_0_0/user_design/rtl/msys_mig_7series_0_0.v" \
 "../../../bd/msys/ip/msys_xlconcat_0_0/sim/msys_xlconcat_0_0.v" \
+"../../../bd/msys/ip/msys_xlconcat_1_0/sim/msys_xlconcat_1_0.v" \
+"../../../bd/msys/ip/msys_xlslice_0_0/sim/msys_xlslice_0_0.v" \
+"../../../bd/msys/ip/msys_uart0_xlslice_0_0/sim/msys_uart0_xlslice_0_0.v" \
+"../../../bd/msys/ip/msys_uart0_xlslice_1_0/sim/msys_uart0_xlslice_1_0.v" \
+"../../../bd/msys/ip/msys_uart0_xlslice_1_1/sim/msys_uart0_xlslice_1_1.v" \
 "../../../bd/msys/ip/msys_auto_cc_0/sim/msys_auto_cc_0.v" \
 "../../../bd/msys/ip/msys_auto_cc_1/sim/msys_auto_cc_1.v" \
 

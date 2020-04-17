@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
--- Date        : Wed Apr 15 16:57:26 2020
+-- Date        : Wed Apr 15 16:57:24 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_microblaze_mcs_0_0/msys_microblaze_mcs_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_microblaze_mcs_0_0 -prefix
+--               msys_microblaze_mcs_0_0_ msys_microblaze_mcs_0_0_sim_netlist.vhdl
 -- Design      : msys_microblaze_mcs_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -26,8 +26,6 @@ entity msys_microblaze_mcs_0_0_GPI_Module is
     GPI1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     Clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_GPI_Module : entity is "GPI_Module";
 end msys_microblaze_mcs_0_0_GPI_Module;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_GPI_Module is
@@ -322,8 +320,6 @@ entity msys_microblaze_mcs_0_0_GPO_Module is
     D : in STD_LOGIC_VECTOR ( 31 downto 0 );
     Clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_GPO_Module : entity is "GPO_Module";
 end msys_microblaze_mcs_0_0_GPO_Module;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_GPO_Module is
@@ -626,8 +622,6 @@ entity msys_microblaze_mcs_0_0_cdc_sync is
     mb_debug_sys_rst : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_cdc_sync : entity is "cdc_sync";
 end msys_microblaze_mcs_0_0_cdc_sync;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_cdc_sync is
@@ -1149,8 +1143,6 @@ entity msys_microblaze_mcs_0_0_lmb_bram_if_cntlr_v4_0_17_pselect_mask is
     lmb_select : out STD_LOGIC;
     LMB_ABus : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_lmb_bram_if_cntlr_v4_0_17_pselect_mask : entity is "lmb_bram_if_cntlr_v4_0_17_pselect_mask";
 end msys_microblaze_mcs_0_0_lmb_bram_if_cntlr_v4_0_17_pselect_mask;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_lmb_bram_if_cntlr_v4_0_17_pselect_mask is
@@ -1208,8 +1200,6 @@ entity msys_microblaze_mcs_0_0_lmb_v10 is
   attribute C_LMB_NUM_SLAVES of msys_microblaze_mcs_0_0_lmb_v10 : entity is 3;
   attribute C_LMB_PROTOCOL : integer;
   attribute C_LMB_PROTOCOL of msys_microblaze_mcs_0_0_lmb_v10 : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_lmb_v10 : entity is "lmb_v10";
 end msys_microblaze_mcs_0_0_lmb_v10;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_lmb_v10 is
@@ -2185,8 +2175,6 @@ entity msys_microblaze_mcs_0_0_upcnt_n is
     seq_cnt_en : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_upcnt_n : entity is "upcnt_n";
 end msys_microblaze_mcs_0_0_upcnt_n;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_upcnt_n is
@@ -2348,8 +2336,6 @@ entity msys_microblaze_mcs_0_0_MB_FD is
     ex_Result : in STD_LOGIC_VECTOR ( 0 to 0 );
     Clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_MB_FD : entity is "MB_FD";
 end msys_microblaze_mcs_0_0_MB_FD;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_MB_FD is
@@ -2381,8 +2367,6 @@ entity msys_microblaze_mcs_0_0_MB_FDE is
     \Using_FPGA.Native_0\ : in STD_LOGIC;
     Clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_MB_FDE : entity is "MB_FDE";
 end msys_microblaze_mcs_0_0_MB_FDE;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_MB_FDE is
@@ -3866,8 +3850,6 @@ entity msys_microblaze_mcs_0_0_MB_FDRSE is
     \Using_FPGA.Native_1\ : in STD_LOGIC;
     Clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_MB_FDRSE : entity is "MB_FDRSE";
 end msys_microblaze_mcs_0_0_MB_FDRSE;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_MB_FDRSE is
@@ -4082,8 +4064,6 @@ entity msys_microblaze_mcs_0_0_MB_FDS is
     \Using_FPGA.Native_3\ : in STD_LOGIC;
     \Using_FPGA.Native_4\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_MB_FDS : entity is "MB_FDS";
 end msys_microblaze_mcs_0_0_MB_FDS;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_MB_FDS is
@@ -5220,8 +5200,6 @@ entity msys_microblaze_mcs_0_0_MB_LUT2 is
     byte_selects_0 : in STD_LOGIC;
     isbyte : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_MB_LUT2 : entity is "MB_LUT2";
 end msys_microblaze_mcs_0_0_MB_LUT2;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_MB_LUT2 is
@@ -5250,8 +5228,6 @@ entity msys_microblaze_mcs_0_0_MB_LUT4 is
     \Using_FPGA.Native_1\ : in STD_LOGIC;
     \Using_FPGA.Native_2\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_MB_LUT4 : entity is "MB_LUT4";
 end msys_microblaze_mcs_0_0_MB_LUT4;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_MB_LUT4 is
@@ -9405,8 +9381,6 @@ entity msys_microblaze_mcs_0_0_MB_LUT5 is
     load_Store_i : in STD_LOGIC;
     of_Pause : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_MB_LUT5 : entity is "MB_LUT5";
 end msys_microblaze_mcs_0_0_MB_LUT5;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_MB_LUT5 is
@@ -9472,8 +9446,6 @@ entity msys_microblaze_mcs_0_0_MB_LUT6_2 is
     res_Forward1 : in STD_LOGIC;
     opsel1_SPR : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_MB_LUT6_2 : entity is "MB_LUT6_2";
 end msys_microblaze_mcs_0_0_MB_LUT6_2;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_MB_LUT6_2 is
@@ -12329,8 +12301,6 @@ entity msys_microblaze_mcs_0_0_MB_RAM32X1D is
     \Using_FPGA.Native_0\ : in STD_LOGIC_VECTOR ( 4 downto 0 );
     reg1_Addr : in STD_LOGIC_VECTOR ( 0 to 4 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_MB_RAM32X1D : entity is "MB_RAM32X1D";
 end msys_microblaze_mcs_0_0_MB_RAM32X1D;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_MB_RAM32X1D is
@@ -15249,8 +15219,6 @@ entity msys_microblaze_mcs_0_0_MB_SRL16E is
     \Using_FPGA.Native_7\ : in STD_LOGIC;
     \Using_FPGA.Native_8\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_MB_SRL16E : entity is "MB_SRL16E";
 end msys_microblaze_mcs_0_0_MB_SRL16E;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_MB_SRL16E is
@@ -18563,8 +18531,6 @@ entity msys_microblaze_mcs_0_0_blk_mem_gen_prim_wrapper is
     wea : in STD_LOGIC_VECTOR ( 0 to 0 );
     web : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_blk_mem_gen_prim_wrapper : entity is "blk_mem_gen_prim_wrapper";
 end msys_microblaze_mcs_0_0_blk_mem_gen_prim_wrapper;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_blk_mem_gen_prim_wrapper is
@@ -20033,8 +19999,6 @@ entity msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDR is
     DReady : in STD_LOGIC;
     mul_Executing : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDR : entity is "microblaze_v11_0_2_MB_FDR";
 end msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDR;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDR is
@@ -20138,8 +20102,6 @@ entity msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDRE is
     correct_Carry_II : in STD_LOGIC;
     Clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDRE : entity is "microblaze_v11_0_2_MB_FDRE";
 end msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDRE;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDRE is
@@ -22747,8 +22709,6 @@ entity msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDSE is
     Reg_Test_Equal_i : in STD_LOGIC;
     Clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDSE : entity is "microblaze_v11_0_2_MB_FDSE";
 end msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDSE;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDSE is
@@ -23235,8 +23195,6 @@ entity msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_LUT3 is
     instr_OF_raw : in STD_LOGIC_VECTOR ( 1 downto 0 );
     D : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_LUT3 : entity is "microblaze_v11_0_2_MB_LUT3";
 end msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_LUT3;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_LUT3 is
@@ -23473,8 +23431,6 @@ entity msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_LUT6 is
     alu_Op : in STD_LOGIC_VECTOR ( 0 to 1 );
     Op1_Logic : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_LUT6 : entity is "microblaze_v11_0_2_MB_LUT6";
 end msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_LUT6;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_LUT6 is
@@ -25225,8 +25181,6 @@ entity msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MULT_AND is
     \Using_FPGA.Native_0\ : in STD_LOGIC;
     \Using_FPGA.Native_1\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MULT_AND : entity is "microblaze_v11_0_2_MB_MULT_AND";
 end msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MULT_AND;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MULT_AND is
@@ -25293,8 +25247,6 @@ entity msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXCY is
     lopt_1 : in STD_LOGIC;
     lopt_2 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXCY : entity is "microblaze_v11_0_2_MB_MUXCY";
 end msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXCY;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXCY is
@@ -26877,8 +26829,6 @@ entity msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXCY_XORCY is
     LO : in STD_LOGIC;
     lopt : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXCY_XORCY : entity is "microblaze_v11_0_2_MB_MUXCY_XORCY";
 end msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXCY_XORCY;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXCY_XORCY is
@@ -28799,8 +28749,6 @@ entity msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXF7 is
     shift_Res : in STD_LOGIC;
     logic_Res_i : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXF7 : entity is "microblaze_v11_0_2_MB_MUXF7";
 end msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXF7;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXF7 is
@@ -29663,8 +29611,6 @@ entity msys_microblaze_mcs_0_0_microblaze_v11_0_2_mb_sync_bit is
     Mb_Reset : in STD_LOGIC;
     Clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_microblaze_v11_0_2_mb_sync_bit : entity is "microblaze_v11_0_2_mb_sync_bit";
 end msys_microblaze_mcs_0_0_microblaze_v11_0_2_mb_sync_bit;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_microblaze_v11_0_2_mb_sync_bit is
@@ -29851,8 +29797,6 @@ entity msys_microblaze_mcs_0_0_Iomodule_core is
     Clk : in STD_LOGIC;
     GPI1 : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_Iomodule_core : entity is "Iomodule_core";
 end msys_microblaze_mcs_0_0_Iomodule_core;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_Iomodule_core is
@@ -29919,8 +29863,6 @@ entity msys_microblaze_mcs_0_0_bd_cf59_dlmb_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of msys_microblaze_mcs_0_0_bd_cf59_dlmb_0 : entity is "bd_cf59_dlmb_0,lmb_v10,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_bd_cf59_dlmb_0 : entity is "bd_cf59_dlmb_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_microblaze_mcs_0_0_bd_cf59_dlmb_0 : entity is "yes";
   attribute x_core_info : string;
@@ -30032,8 +29974,6 @@ entity msys_microblaze_mcs_0_0_bd_cf59_ilmb_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of msys_microblaze_mcs_0_0_bd_cf59_ilmb_0 : entity is "bd_cf59_ilmb_0,lmb_v10,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_bd_cf59_ilmb_0 : entity is "bd_cf59_ilmb_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_microblaze_mcs_0_0_bd_cf59_ilmb_0 : entity is "yes";
   attribute x_core_info : string;
@@ -30140,8 +30080,6 @@ entity msys_microblaze_mcs_0_0_bd_cf59_ilmb_cntlr_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of msys_microblaze_mcs_0_0_bd_cf59_ilmb_cntlr_0 : entity is "bd_cf59_ilmb_cntlr_0,lmb_bram_if_cntlr,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_bd_cf59_ilmb_cntlr_0 : entity is "bd_cf59_ilmb_cntlr_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_microblaze_mcs_0_0_bd_cf59_ilmb_cntlr_0 : entity is "yes";
   attribute x_core_info : string;
@@ -30242,8 +30180,6 @@ entity msys_microblaze_mcs_0_0_bd_cf59_second_dlmb_cntlr_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of msys_microblaze_mcs_0_0_bd_cf59_second_dlmb_cntlr_0 : entity is "bd_cf59_second_dlmb_cntlr_0,lmb_bram_if_cntlr,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_bd_cf59_second_dlmb_cntlr_0 : entity is "bd_cf59_second_dlmb_cntlr_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_microblaze_mcs_0_0_bd_cf59_second_dlmb_cntlr_0 : entity is "yes";
   attribute x_core_info : string;
@@ -30345,8 +30281,6 @@ entity msys_microblaze_mcs_0_0_bd_cf59_second_ilmb_cntlr_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of msys_microblaze_mcs_0_0_bd_cf59_second_ilmb_cntlr_0 : entity is "bd_cf59_second_ilmb_cntlr_0,lmb_bram_if_cntlr,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_bd_cf59_second_ilmb_cntlr_0 : entity is "bd_cf59_second_ilmb_cntlr_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_microblaze_mcs_0_0_bd_cf59_second_ilmb_cntlr_0 : entity is "yes";
   attribute x_core_info : string;
@@ -30427,8 +30361,6 @@ entity msys_microblaze_mcs_0_0_lmb_mux is
     lmb_select : out STD_LOGIC;
     LMB_ABus : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_lmb_mux : entity is "lmb_mux";
 end msys_microblaze_mcs_0_0_lmb_mux;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_lmb_mux is
@@ -30452,8 +30384,6 @@ entity msys_microblaze_mcs_0_0_lpf is
     mb_debug_sys_rst : in STD_LOGIC;
     aux_reset_in : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_lpf : entity is "lpf";
 end msys_microblaze_mcs_0_0_lpf;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_lpf is
@@ -30640,8 +30570,6 @@ entity msys_microblaze_mcs_0_0_sequence_psr is
     lpf_int : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_sequence_psr : entity is "sequence_psr";
 end msys_microblaze_mcs_0_0_sequence_psr;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_sequence_psr is
@@ -30962,8 +30890,6 @@ entity msys_microblaze_mcs_0_0_ALU_Bit is
     lopt_2 : out STD_LOGIC;
     lopt_3 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_ALU_Bit : entity is "ALU_Bit";
 end msys_microblaze_mcs_0_0_ALU_Bit;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_ALU_Bit is
@@ -32640,8 +32566,6 @@ entity msys_microblaze_mcs_0_0_MSR_Reg_Bit is
     \Using_FPGA.Native_0\ : in STD_LOGIC;
     PC_OF : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_MSR_Reg_Bit : entity is "MSR_Reg_Bit";
 end msys_microblaze_mcs_0_0_MSR_Reg_Bit;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_MSR_Reg_Bit is
@@ -32738,8 +32662,6 @@ entity msys_microblaze_mcs_0_0_Operand_Select_Bit is
     Clk : in STD_LOGIC;
     D_7 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_Operand_Select_Bit : entity is "Operand_Select_Bit";
 end msys_microblaze_mcs_0_0_Operand_Select_Bit;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_Operand_Select_Bit is
@@ -34675,8 +34597,6 @@ entity msys_microblaze_mcs_0_0_PC_Bit is
     Buffer_Addr : in STD_LOGIC_VECTOR ( 2 downto 0 );
     OF_PipeRun : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_PC_Bit : entity is "PC_Bit";
 end msys_microblaze_mcs_0_0_PC_Bit;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_PC_Bit is
@@ -35984,8 +35904,6 @@ entity msys_microblaze_mcs_0_0_PreFetch_Buffer is
     lopt_5 : in STD_LOGIC;
     lopt_6 : out STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_PreFetch_Buffer : entity is "PreFetch_Buffer";
 end msys_microblaze_mcs_0_0_PreFetch_Buffer;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_PreFetch_Buffer is
@@ -36744,8 +36662,6 @@ entity msys_microblaze_mcs_0_0_Register_File_Bit is
     reg1_Addr : in STD_LOGIC_VECTOR ( 0 to 4 );
     imm_Value : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_Register_File_Bit : entity is "Register_File_Bit";
 end msys_microblaze_mcs_0_0_Register_File_Bit;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_Register_File_Bit is
@@ -38092,8 +38008,6 @@ entity msys_microblaze_mcs_0_0_Result_Mux_Bit is
     Data_Read : in STD_LOGIC_VECTOR ( 0 to 0 );
     Clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_Result_Mux_Bit : entity is "Result_Mux_Bit";
 end msys_microblaze_mcs_0_0_Result_Mux_Bit;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_Result_Mux_Bit is
@@ -39863,8 +39777,6 @@ entity msys_microblaze_mcs_0_0_Shift_Logic_Bit is
     Shift_Oper : in STD_LOGIC;
     Select_Logic : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_Shift_Logic_Bit : entity is "Shift_Logic_Bit";
 end msys_microblaze_mcs_0_0_Shift_Logic_Bit;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_Shift_Logic_Bit is
@@ -41348,8 +41260,6 @@ entity msys_microblaze_mcs_0_0_Zero_Detect is
     lopt_1 : in STD_LOGIC;
     lopt_2 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_Zero_Detect : entity is "Zero_Detect";
 end msys_microblaze_mcs_0_0_Zero_Detect;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_Zero_Detect is
@@ -41529,8 +41439,6 @@ entity msys_microblaze_mcs_0_0_blk_mem_gen_prim_width is
     wea : in STD_LOGIC_VECTOR ( 0 to 0 );
     web : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
 end msys_microblaze_mcs_0_0_blk_mem_gen_prim_width;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_blk_mem_gen_prim_width is
@@ -42202,8 +42110,6 @@ entity msys_microblaze_mcs_0_0_mux4_8 is
     \trace_data_write_value_i_reg[8]\ : in STD_LOGIC_VECTOR ( 0 to 31 );
     sel_Write_Mux_MSB : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_mux4_8 : entity is "mux4_8";
 end msys_microblaze_mcs_0_0_mux4_8;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_mux4_8 is
@@ -42547,8 +42453,6 @@ entity msys_microblaze_mcs_0_0_iomodule is
   attribute C_USE_UART_RX of msys_microblaze_mcs_0_0_iomodule : entity is 0;
   attribute C_USE_UART_TX : integer;
   attribute C_USE_UART_TX of msys_microblaze_mcs_0_0_iomodule : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_iomodule : entity is "iomodule";
 end msys_microblaze_mcs_0_0_iomodule;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_iomodule is
@@ -44305,8 +44209,6 @@ entity msys_microblaze_mcs_0_0_lmb_bram_if_cntlr is
     LMB_WriteStrobe : in STD_LOGIC;
     LMB_BE : in STD_LOGIC_VECTOR ( 0 to 3 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_lmb_bram_if_cntlr : entity is "lmb_bram_if_cntlr";
 end msys_microblaze_mcs_0_0_lmb_bram_if_cntlr;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_lmb_bram_if_cntlr is
@@ -44428,8 +44330,6 @@ entity msys_microblaze_mcs_0_0_proc_sys_reset is
   attribute C_NUM_PERP_ARESETN of msys_microblaze_mcs_0_0_proc_sys_reset : entity is 1;
   attribute C_NUM_PERP_RST : integer;
   attribute C_NUM_PERP_RST of msys_microblaze_mcs_0_0_proc_sys_reset : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_proc_sys_reset : entity is "proc_sys_reset";
 end msys_microblaze_mcs_0_0_proc_sys_reset;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_proc_sys_reset is
@@ -44595,8 +44495,6 @@ entity msys_microblaze_mcs_0_0_ALU is
     lopt_4 : in STD_LOGIC;
     lopt_5 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_ALU : entity is "ALU";
 end msys_microblaze_mcs_0_0_ALU;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_ALU is
@@ -45259,8 +45157,6 @@ entity msys_microblaze_mcs_0_0_Byte_Doublet_Handle is
     isdoublet : in STD_LOGIC;
     \trace_data_write_value_i_reg[8]\ : in STD_LOGIC_VECTOR ( 0 to 31 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_Byte_Doublet_Handle : entity is "Byte_Doublet_Handle";
 end msys_microblaze_mcs_0_0_Byte_Doublet_Handle;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_Byte_Doublet_Handle is
@@ -45529,8 +45425,6 @@ entity msys_microblaze_mcs_0_0_Decode is
     lopt_6 : out STD_LOGIC;
     lopt_7 : out STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_Decode : entity is "Decode";
 end msys_microblaze_mcs_0_0_Decode;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_Decode is
@@ -47748,8 +47642,6 @@ entity msys_microblaze_mcs_0_0_MSR_Reg is
     PC_OF : in STD_LOGIC;
     \Using_FPGA.Native_5\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_MSR_Reg : entity is "MSR_Reg";
 end msys_microblaze_mcs_0_0_MSR_Reg;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_MSR_Reg is
@@ -47923,8 +47815,6 @@ entity msys_microblaze_mcs_0_0_Operand_Select is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     imm_Value : in STD_LOGIC_VECTOR ( 0 to 15 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_Operand_Select : entity is "Operand_Select";
 end msys_microblaze_mcs_0_0_Operand_Select;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_Operand_Select is
@@ -48565,8 +48455,6 @@ entity msys_microblaze_mcs_0_0_PC_Module is
     Increment : in STD_LOGIC;
     DI : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_PC_Module : entity is "PC_Module";
 end msys_microblaze_mcs_0_0_PC_Module;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_PC_Module is
@@ -48921,8 +48809,6 @@ entity msys_microblaze_mcs_0_0_Register_File is
     reg1_Addr : in STD_LOGIC_VECTOR ( 0 to 4 );
     imm_Value : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_Register_File : entity is "Register_File";
 end msys_microblaze_mcs_0_0_Register_File;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_Register_File is
@@ -49402,8 +49288,6 @@ entity msys_microblaze_mcs_0_0_Result_Mux is
     \Using_FPGA.Native_30\ : in STD_LOGIC;
     \Using_FPGA.Native_31\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_Result_Mux : entity is "Result_Mux";
 end msys_microblaze_mcs_0_0_Result_Mux;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_Result_Mux is
@@ -50008,8 +49892,6 @@ entity msys_microblaze_mcs_0_0_Shift_Logic_Module is
     \Using_FPGA.Native_30\ : in STD_LOGIC;
     \Using_FPGA.Native_31\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_Shift_Logic_Module : entity is "Shift_Logic_Module";
 end msys_microblaze_mcs_0_0_Shift_Logic_Module;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_Shift_Logic_Module is
@@ -50382,8 +50264,6 @@ entity msys_microblaze_mcs_0_0_blk_mem_gen_generic_cstr is
     rstb : in STD_LOGIC;
     enb : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
 end msys_microblaze_mcs_0_0_blk_mem_gen_generic_cstr;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_blk_mem_gen_generic_cstr is
@@ -50545,8 +50425,6 @@ entity msys_microblaze_mcs_0_0_bd_cf59_dlmb_cntlr_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of msys_microblaze_mcs_0_0_bd_cf59_dlmb_cntlr_0 : entity is "bd_cf59_dlmb_cntlr_0,lmb_bram_if_cntlr,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_bd_cf59_dlmb_cntlr_0 : entity is "bd_cf59_dlmb_cntlr_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_microblaze_mcs_0_0_bd_cf59_dlmb_cntlr_0 : entity is "yes";
   attribute x_core_info : string;
@@ -50643,8 +50521,6 @@ entity msys_microblaze_mcs_0_0_bd_cf59_iomodule_0_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of msys_microblaze_mcs_0_0_bd_cf59_iomodule_0_0 : entity is "bd_cf59_iomodule_0_0,iomodule,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_bd_cf59_iomodule_0_0 : entity is "bd_cf59_iomodule_0_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_microblaze_mcs_0_0_bd_cf59_iomodule_0_0 : entity is "yes";
   attribute x_core_info : string;
@@ -50983,8 +50859,6 @@ entity msys_microblaze_mcs_0_0_bd_cf59_rst_0_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of msys_microblaze_mcs_0_0_bd_cf59_rst_0_0 : entity is "bd_cf59_rst_0_0,proc_sys_reset,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_bd_cf59_rst_0_0 : entity is "bd_cf59_rst_0_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_microblaze_mcs_0_0_bd_cf59_rst_0_0 : entity is "yes";
   attribute x_core_info : string;
@@ -51184,8 +51058,6 @@ entity msys_microblaze_mcs_0_0_Data_Flow is
     lopt_7 : in STD_LOGIC;
     lopt_8 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_Data_Flow : entity is "Data_Flow";
 end msys_microblaze_mcs_0_0_Data_Flow;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_Data_Flow is
@@ -51884,8 +51756,6 @@ entity msys_microblaze_mcs_0_0_blk_mem_gen_top is
     rstb : in STD_LOGIC;
     enb : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_blk_mem_gen_top : entity is "blk_mem_gen_top";
 end msys_microblaze_mcs_0_0_blk_mem_gen_top;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_blk_mem_gen_top is
@@ -51985,8 +51855,6 @@ entity msys_microblaze_mcs_0_0_MicroBlaze_Area is
     Sleep_INST_0 : in STD_LOGIC;
     Interrupt_Address : in STD_LOGIC_VECTOR ( 0 to 31 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_MicroBlaze_Area : entity is "MicroBlaze_Area";
 end msys_microblaze_mcs_0_0_MicroBlaze_Area;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_MicroBlaze_Area is
@@ -53873,8 +53741,6 @@ entity msys_microblaze_mcs_0_0_blk_mem_gen_v8_4_4_synth is
     rstb : in STD_LOGIC;
     enb : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_blk_mem_gen_v8_4_4_synth : entity is "blk_mem_gen_v8_4_4_synth";
 end msys_microblaze_mcs_0_0_blk_mem_gen_v8_4_4_synth;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_blk_mem_gen_v8_4_4_synth is
@@ -53973,8 +53839,6 @@ entity msys_microblaze_mcs_0_0_MicroBlaze_Core is
     Interrupt : in STD_LOGIC;
     Interrupt_Address : in STD_LOGIC_VECTOR ( 0 to 31 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_MicroBlaze_Core : entity is "MicroBlaze_Core";
 end msys_microblaze_mcs_0_0_MicroBlaze_Core;
 
 architecture STRUCTURE of msys_microblaze_mcs_0_0_MicroBlaze_Core is
@@ -54294,8 +54158,6 @@ entity msys_microblaze_mcs_0_0_blk_mem_gen_v8_4_4 is
   attribute C_WRITE_WIDTH_B of msys_microblaze_mcs_0_0_blk_mem_gen_v8_4_4 : entity is 32;
   attribute C_XDEVICEFAMILY : string;
   attribute C_XDEVICEFAMILY of msys_microblaze_mcs_0_0_blk_mem_gen_v8_4_4 : entity is "artix7";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_blk_mem_gen_v8_4_4 : entity is "blk_mem_gen_v8_4_4";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_microblaze_mcs_0_0_blk_mem_gen_v8_4_4 : entity is "yes";
 end msys_microblaze_mcs_0_0_blk_mem_gen_v8_4_4;
@@ -54841,8 +54703,6 @@ entity msys_microblaze_mcs_0_0_bd_cf59_lmb_bram_I_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of msys_microblaze_mcs_0_0_bd_cf59_lmb_bram_I_0 : entity is "bd_cf59_lmb_bram_I_0,blk_mem_gen_v8_4_4,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_bd_cf59_lmb_bram_I_0 : entity is "bd_cf59_lmb_bram_I_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_microblaze_mcs_0_0_bd_cf59_lmb_bram_I_0 : entity is "yes";
   attribute x_core_info : string;
@@ -55133,8 +54993,6 @@ entity msys_microblaze_mcs_0_0_bd_cf59_second_lmb_bram_I_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of msys_microblaze_mcs_0_0_bd_cf59_second_lmb_bram_I_0 : entity is "bd_cf59_second_lmb_bram_I_0,blk_mem_gen_v8_4_4,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_bd_cf59_second_lmb_bram_I_0 : entity is "bd_cf59_second_lmb_bram_I_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_microblaze_mcs_0_0_bd_cf59_second_lmb_bram_I_0 : entity is "yes";
   attribute x_core_info : string;
@@ -56182,8 +56040,6 @@ entity msys_microblaze_mcs_0_0_MicroBlaze is
   attribute C_USE_REORDER_INSTR of msys_microblaze_mcs_0_0_MicroBlaze : entity is 0;
   attribute C_USE_STACK_PROTECTION : integer;
   attribute C_USE_STACK_PROTECTION of msys_microblaze_mcs_0_0_MicroBlaze : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_MicroBlaze : entity is "MicroBlaze";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_microblaze_mcs_0_0_MicroBlaze : entity is "yes";
 end msys_microblaze_mcs_0_0_MicroBlaze;
@@ -68298,8 +68154,6 @@ entity msys_microblaze_mcs_0_0_bd_cf59_microblaze_I_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of msys_microblaze_mcs_0_0_bd_cf59_microblaze_I_0 : entity is "bd_cf59_microblaze_I_0,MicroBlaze,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_bd_cf59_microblaze_I_0 : entity is "bd_cf59_microblaze_I_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_microblaze_mcs_0_0_bd_cf59_microblaze_I_0 : entity is "yes";
   attribute x_core_info : string;
@@ -69387,8 +69241,6 @@ entity msys_microblaze_mcs_0_0_bd_cf59 is
     GPIO1_tri_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
     Reset : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_microblaze_mcs_0_0_bd_cf59 : entity is "bd_cf59";
   attribute hw_handoff : string;
   attribute hw_handoff of msys_microblaze_mcs_0_0_bd_cf59 : entity is "msys_microblaze_mcs_0_0.hwdef";
 end msys_microblaze_mcs_0_0_bd_cf59;

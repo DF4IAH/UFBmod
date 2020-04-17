@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
--- Date        : Wed Apr 15 16:49:34 2020
+-- Date        : Wed Apr 15 16:49:33 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_xbar_0/msys_xbar_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_xbar_0 -prefix
+--               msys_xbar_0_ msys_xbar_0_sim_netlist.vhdl
 -- Design      : msys_xbar_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -65,8 +65,6 @@ entity msys_xbar_0_axi_crossbar_v2_1_21_addr_arbiter is
     D : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \gen_arbiter.grant_hot_reg[1]_1\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_xbar_0_axi_crossbar_v2_1_21_addr_arbiter : entity is "axi_crossbar_v2_1_21_addr_arbiter";
 end msys_xbar_0_axi_crossbar_v2_1_21_addr_arbiter;
 
 architecture STRUCTURE of msys_xbar_0_axi_crossbar_v2_1_21_addr_arbiter is
@@ -2655,8 +2653,6 @@ entity msys_xbar_0_axi_crossbar_v2_1_21_decerr_slave is
     \gen_single_thread.active_target_enc\ : in STD_LOGIC;
     \gen_axi.s_axi_rlast_i_reg_0\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_xbar_0_axi_crossbar_v2_1_21_decerr_slave : entity is "axi_crossbar_v2_1_21_decerr_slave";
 end msys_xbar_0_axi_crossbar_v2_1_21_decerr_slave;
 
 architecture STRUCTURE of msys_xbar_0_axi_crossbar_v2_1_21_decerr_slave is
@@ -3188,8 +3184,6 @@ entity msys_xbar_0_axi_crossbar_v2_1_21_si_transactor is
     \gen_single_thread.accept_cnt_reg[1]_0\ : in STD_LOGIC;
     \gen_single_thread.accept_cnt_reg[0]_1\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_xbar_0_axi_crossbar_v2_1_21_si_transactor : entity is "axi_crossbar_v2_1_21_si_transactor";
 end msys_xbar_0_axi_crossbar_v2_1_21_si_transactor;
 
 architecture STRUCTURE of msys_xbar_0_axi_crossbar_v2_1_21_si_transactor is
@@ -4168,8 +4162,6 @@ entity msys_xbar_0_axi_crossbar_v2_1_21_splitter is
     aresetn_d : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_xbar_0_axi_crossbar_v2_1_21_splitter : entity is "axi_crossbar_v2_1_21_splitter";
 end msys_xbar_0_axi_crossbar_v2_1_21_splitter;
 
 architecture STRUCTURE of msys_xbar_0_axi_crossbar_v2_1_21_splitter is
@@ -4413,8 +4405,6 @@ entity msys_xbar_0_axi_data_fifo_v2_1_19_ndeep_srl is
     \storage_data1_reg[0]_0\ : in STD_LOGIC;
     \storage_data1_reg[0]_1\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_xbar_0_axi_data_fifo_v2_1_19_ndeep_srl : entity is "axi_data_fifo_v2_1_19_ndeep_srl";
 end msys_xbar_0_axi_data_fifo_v2_1_19_ndeep_srl;
 
 architecture STRUCTURE of msys_xbar_0_axi_data_fifo_v2_1_19_ndeep_srl is
@@ -6884,8 +6874,6 @@ entity msys_xbar_0_axi_data_fifo_v2_1_19_axic_reg_srl_fifo is
     m_select_enc_0 : in STD_LOGIC;
     m_avalid_1 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_xbar_0_axi_data_fifo_v2_1_19_axic_reg_srl_fifo : entity is "axi_data_fifo_v2_1_19_axic_reg_srl_fifo";
 end msys_xbar_0_axi_data_fifo_v2_1_19_axic_reg_srl_fifo;
 
 architecture STRUCTURE of msys_xbar_0_axi_data_fifo_v2_1_19_axic_reg_srl_fifo is
@@ -8286,8 +8274,6 @@ entity msys_xbar_0_axi_register_slice_v2_1_20_axi_register_slice is
     m_axi_rdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
     m_axi_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_xbar_0_axi_register_slice_v2_1_20_axi_register_slice : entity is "axi_register_slice_v2_1_20_axi_register_slice";
 end msys_xbar_0_axi_register_slice_v2_1_20_axi_register_slice;
 
 architecture STRUCTURE of msys_xbar_0_axi_register_slice_v2_1_20_axi_register_slice is
@@ -8488,8 +8474,6 @@ entity msys_xbar_0_axi_crossbar_v2_1_21_wdata_mux is
     \storage_data1_reg[0]_2\ : in STD_LOGIC;
     SR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_xbar_0_axi_crossbar_v2_1_21_wdata_mux : entity is "axi_crossbar_v2_1_21_wdata_mux";
 end msys_xbar_0_axi_crossbar_v2_1_21_wdata_mux;
 
 architecture STRUCTURE of msys_xbar_0_axi_crossbar_v2_1_21_wdata_mux is
@@ -8615,8 +8599,6 @@ entity msys_xbar_0_axi_crossbar_v2_1_21_wdata_router is
     m_select_enc_0 : in STD_LOGIC;
     m_avalid_1 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_xbar_0_axi_crossbar_v2_1_21_wdata_router : entity is "axi_crossbar_v2_1_21_wdata_router";
 end msys_xbar_0_axi_crossbar_v2_1_21_wdata_router;
 
 architecture STRUCTURE of msys_xbar_0_axi_crossbar_v2_1_21_wdata_router is
@@ -8704,8 +8686,6 @@ entity msys_xbar_0_axi_crossbar_v2_1_21_crossbar is
     s_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     s_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_xbar_0_axi_crossbar_v2_1_21_crossbar : entity is "axi_crossbar_v2_1_21_crossbar";
 end msys_xbar_0_axi_crossbar_v2_1_21_crossbar;
 
 architecture STRUCTURE of msys_xbar_0_axi_crossbar_v2_1_21_crossbar is
@@ -9577,8 +9557,6 @@ entity msys_xbar_0_axi_crossbar_v2_1_21_axi_crossbar is
   attribute C_S_AXI_WRITE_ACCEPTANCE of msys_xbar_0_axi_crossbar_v2_1_21_axi_crossbar : entity is "64'b0000000000000000000000000000001000000000000000000000000000001000";
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of msys_xbar_0_axi_crossbar_v2_1_21_axi_crossbar : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_xbar_0_axi_crossbar_v2_1_21_axi_crossbar : entity is "axi_crossbar_v2_1_21_axi_crossbar";
   attribute P_ADDR_DECODE : integer;
   attribute P_ADDR_DECODE of msys_xbar_0_axi_crossbar_v2_1_21_axi_crossbar : entity is 1;
   attribute P_AXI3 : integer;

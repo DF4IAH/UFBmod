@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
 -- Date        : Wed Apr 15 16:55:07 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_ilmb_bram_if_cntlr_0/msys_ilmb_bram_if_cntlr_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_ilmb_bram_if_cntlr_0 -prefix
+--               msys_ilmb_bram_if_cntlr_0_ msys_ilmb_bram_if_cntlr_0_sim_netlist.vhdl
 -- Design      : msys_ilmb_bram_if_cntlr_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -144,8 +144,6 @@ entity msys_ilmb_bram_if_cntlr_0_lmb_bram_if_cntlr is
   attribute C_UE_FAILING_REGISTERS of msys_ilmb_bram_if_cntlr_0_lmb_bram_if_cntlr : entity is 0;
   attribute C_WRITE_ACCESS : integer;
   attribute C_WRITE_ACCESS of msys_ilmb_bram_if_cntlr_0_lmb_bram_if_cntlr : entity is 2;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_ilmb_bram_if_cntlr_0_lmb_bram_if_cntlr : entity is "lmb_bram_if_cntlr";
 end msys_ilmb_bram_if_cntlr_0_lmb_bram_if_cntlr;
 
 architecture STRUCTURE of msys_ilmb_bram_if_cntlr_0_lmb_bram_if_cntlr is

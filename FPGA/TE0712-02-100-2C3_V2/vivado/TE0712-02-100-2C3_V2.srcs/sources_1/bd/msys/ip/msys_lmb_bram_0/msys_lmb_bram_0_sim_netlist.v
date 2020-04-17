@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
 // Date        : Wed Apr 15 16:55:51 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_lmb_bram_0/msys_lmb_bram_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top msys_lmb_bram_0 -prefix
+//               msys_lmb_bram_0_ msys_lmb_bram_0_sim_netlist.v
 // Design      : msys_lmb_bram_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -224,7 +224,6 @@ module msys_lmb_bram_0
         .web(web));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module msys_lmb_bram_0_blk_mem_gen_generic_cstr
    (douta,
     doutb,
@@ -408,7 +407,6 @@ module msys_lmb_bram_0_blk_mem_gen_generic_cstr
         .web(web[3]));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module msys_lmb_bram_0_blk_mem_gen_prim_width
    (douta,
     doutb,
@@ -1100,7 +1098,6 @@ module msys_lmb_bram_0_blk_mem_gen_prim_width__parameterized6
         .web(web));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper" *) 
 module msys_lmb_bram_0_blk_mem_gen_prim_wrapper
    (douta,
     doutb,
@@ -3300,7 +3297,6 @@ module msys_lmb_bram_0_blk_mem_gen_prim_wrapper__parameterized6
         .O(ram_rstram_b));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module msys_lmb_bram_0_blk_mem_gen_top
    (douta,
     doutb,
@@ -3396,7 +3392,7 @@ endmodule
 (* C_WEA_WIDTH = "4" *) (* C_WEB_WIDTH = "4" *) (* C_WRITE_DEPTH_A = "8192" *) 
 (* C_WRITE_DEPTH_B = "8192" *) (* C_WRITE_MODE_A = "WRITE_FIRST" *) (* C_WRITE_MODE_B = "WRITE_FIRST" *) 
 (* C_WRITE_WIDTH_A = "32" *) (* C_WRITE_WIDTH_B = "32" *) (* C_XDEVICEFAMILY = "artix7" *) 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_4" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* downgradeipidentifiedwarnings = "yes" *) 
 module msys_lmb_bram_0_blk_mem_gen_v8_4_4
    (clka,
     rsta,
@@ -3682,7 +3678,6 @@ module msys_lmb_bram_0_blk_mem_gen_v8_4_4
         .web(web));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_4_synth" *) 
 module msys_lmb_bram_0_blk_mem_gen_v8_4_4_synth
    (douta,
     doutb,

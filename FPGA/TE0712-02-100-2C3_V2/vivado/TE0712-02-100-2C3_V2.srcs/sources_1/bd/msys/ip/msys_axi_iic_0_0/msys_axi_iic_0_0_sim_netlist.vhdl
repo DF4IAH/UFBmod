@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
--- Date        : Wed Apr 15 16:48:56 2020
+-- Date        : Wed Apr 15 16:48:55 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_axi_iic_0_0/msys_axi_iic_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_axi_iic_0_0 -prefix
+--               msys_axi_iic_0_0_ msys_axi_iic_0_0_sim_netlist.vhdl
 -- Design      : msys_axi_iic_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -34,8 +34,6 @@ entity msys_axi_iic_0_0_SRL_FIFO is
     Rc_fifo_wr_d : in STD_LOGIC;
     Rc_fifo_wr : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_SRL_FIFO : entity is "SRL_FIFO";
 end msys_axi_iic_0_0_SRL_FIFO;
 
 architecture STRUCTURE of msys_axi_iic_0_0_SRL_FIFO is
@@ -1243,8 +1241,6 @@ entity msys_axi_iic_0_0_address_decoder is
     gpo : in STD_LOGIC_VECTOR ( 0 to 0 );
     AXI_IP2Bus_WrAck2_reg : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_address_decoder : entity is "address_decoder";
 end msys_axi_iic_0_0_address_decoder;
 
 architecture STRUCTURE of msys_axi_iic_0_0_address_decoder is
@@ -2638,8 +2634,6 @@ entity msys_axi_iic_0_0_cdc_sync is
     sda_i : in STD_LOGIC;
     s_axi_aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_cdc_sync : entity is "cdc_sync";
 end msys_axi_iic_0_0_cdc_sync;
 
 architecture STRUCTURE of msys_axi_iic_0_0_cdc_sync is
@@ -2835,8 +2829,6 @@ entity msys_axi_iic_0_0_dynamic_master is
     earlyAckHdr : in STD_LOGIC;
     Tx_data_exists : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_dynamic_master : entity is "dynamic_master";
 end msys_axi_iic_0_0_dynamic_master;
 
 architecture STRUCTURE of msys_axi_iic_0_0_dynamic_master is
@@ -3235,8 +3227,6 @@ entity msys_axi_iic_0_0_interrupt_control is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axi_wdata : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_interrupt_control : entity is "interrupt_control";
 end msys_axi_iic_0_0_interrupt_control;
 
 architecture STRUCTURE of msys_axi_iic_0_0_interrupt_control is
@@ -3571,8 +3561,6 @@ entity msys_axi_iic_0_0_reg_interface is
     \cr_i_reg[4]_0\ : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \IIC2Bus_IntrEvent_reg[0]_0\ : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_reg_interface : entity is "reg_interface";
 end msys_axi_iic_0_0_reg_interface;
 
 architecture STRUCTURE of msys_axi_iic_0_0_reg_interface is
@@ -5462,8 +5450,6 @@ entity msys_axi_iic_0_0_shift8 is
     s_axi_aclk : in STD_LOGIC;
     \data_int_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_shift8 : entity is "shift8";
 end msys_axi_iic_0_0_shift8;
 
 architecture STRUCTURE of msys_axi_iic_0_0_shift8 is
@@ -5903,8 +5889,6 @@ entity msys_axi_iic_0_0_soft_reset is
     s_axi_wdata : in STD_LOGIC_VECTOR ( 1 downto 0 );
     Tx_fifo_rst : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_soft_reset : entity is "soft_reset";
 end msys_axi_iic_0_0_soft_reset;
 
 architecture STRUCTURE of msys_axi_iic_0_0_soft_reset is
@@ -6094,8 +6078,6 @@ entity msys_axi_iic_0_0_upcnt_n is
     \q_int_reg[9]_0\ : in STD_LOGIC;
     s_axi_aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_upcnt_n : entity is "upcnt_n";
 end msys_axi_iic_0_0_upcnt_n;
 
 architecture STRUCTURE of msys_axi_iic_0_0_upcnt_n is
@@ -6942,8 +6924,6 @@ entity msys_axi_iic_0_0_debounce is
     scl_i : in STD_LOGIC;
     s_axi_aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_debounce : entity is "debounce";
 end msys_axi_iic_0_0_debounce;
 
 architecture STRUCTURE of msys_axi_iic_0_0_debounce is
@@ -7051,8 +7031,6 @@ entity msys_axi_iic_0_0_iic_control is
     detect_stop_reg_1 : in STD_LOGIC;
     \FSM_sequential_state_reg[2]_0\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_iic_control : entity is "iic_control";
 end msys_axi_iic_0_0_iic_control;
 
 architecture STRUCTURE of msys_axi_iic_0_0_iic_control is
@@ -9138,8 +9116,6 @@ entity msys_axi_iic_0_0_slave_attachment is
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     gpo : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_slave_attachment : entity is "slave_attachment";
 end msys_axi_iic_0_0_slave_attachment;
 
 architecture STRUCTURE of msys_axi_iic_0_0_slave_attachment is
@@ -10778,8 +10754,6 @@ entity msys_axi_iic_0_0_axi_lite_ipif is
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     gpo : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_axi_lite_ipif : entity is "axi_lite_ipif";
 end msys_axi_iic_0_0_axi_lite_ipif;
 
 architecture STRUCTURE of msys_axi_iic_0_0_axi_lite_ipif is
@@ -10904,8 +10878,6 @@ entity msys_axi_iic_0_0_filter is
     s_axi_aclk : in STD_LOGIC;
     sda_i : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_filter : entity is "filter";
 end msys_axi_iic_0_0_filter;
 
 architecture STRUCTURE of msys_axi_iic_0_0_filter is
@@ -10990,8 +10962,6 @@ entity msys_axi_iic_0_0_axi_ipif_ssp1 is
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     gpo : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_axi_ipif_ssp1 : entity is "axi_ipif_ssp1";
 end msys_axi_iic_0_0_axi_ipif_ssp1;
 
 architecture STRUCTURE of msys_axi_iic_0_0_axi_ipif_ssp1 is
@@ -11246,8 +11216,6 @@ entity msys_axi_iic_0_0_iic is
     s_axi_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_iic : entity is "iic";
 end msys_axi_iic_0_0_iic;
 
 architecture STRUCTURE of msys_axi_iic_0_0_iic is
@@ -12009,8 +11977,6 @@ entity msys_axi_iic_0_0_axi_iic is
   attribute C_S_AXI_DATA_WIDTH of msys_axi_iic_0_0_axi_iic : entity is 32;
   attribute C_TEN_BIT_ADR : integer;
   attribute C_TEN_BIT_ADR of msys_axi_iic_0_0_axi_iic : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_iic_0_0_axi_iic : entity is "axi_iic";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_axi_iic_0_0_axi_iic : entity is "yes";
 end msys_axi_iic_0_0_axi_iic;

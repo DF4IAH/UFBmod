@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
 -- Date        : Wed Apr 15 16:51:50 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_mdm_1_0/msys_mdm_1_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_mdm_1_0 -prefix
+--               msys_mdm_1_0_ msys_mdm_1_0_sim_netlist.vhdl
 -- Design      : msys_mdm_1_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -42,8 +42,6 @@ entity msys_mdm_1_0_MB_BSCANE2 is
     Dbg_TDO_0 : in STD_LOGIC;
     \Use_Serial_Unified_Completion.completion_status_reg[15]\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_mdm_1_0_MB_BSCANE2 : entity is "MB_BSCANE2";
 end msys_mdm_1_0_MB_BSCANE2;
 
 architecture STRUCTURE of msys_mdm_1_0_MB_BSCANE2 is
@@ -172,8 +170,6 @@ entity msys_mdm_1_0_MB_BUFG is
     Dbg_Clk_0 : out STD_LOGIC;
     DRCK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_mdm_1_0_MB_BUFG : entity is "MB_BUFG";
 end msys_mdm_1_0_MB_BUFG;
 
 architecture STRUCTURE of msys_mdm_1_0_MB_BUFG is
@@ -244,8 +240,6 @@ entity msys_mdm_1_0_MB_FDC_1 is
     Debug_SYS_Rst : in STD_LOGIC;
     Ext_NM_BRK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_mdm_1_0_MB_FDC_1 : entity is "MB_FDC_1";
 end msys_mdm_1_0_MB_FDC_1;
 
 architecture STRUCTURE of msys_mdm_1_0_MB_FDC_1 is
@@ -860,8 +854,6 @@ entity msys_mdm_1_0_MB_FDRE_1 is
     Dbg_Shift_0_3 : in STD_LOGIC;
     Dbg_Shift_0_4 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_mdm_1_0_MB_FDRE_1 : entity is "MB_FDRE_1";
 end msys_mdm_1_0_MB_FDRE_1;
 
 architecture STRUCTURE of msys_mdm_1_0_MB_FDRE_1 is
@@ -907,8 +899,6 @@ entity msys_mdm_1_0_MB_LUT1 is
     Ext_JTAG_TDI : out STD_LOGIC;
     I0 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_mdm_1_0_MB_LUT1 : entity is "MB_LUT1";
 end msys_mdm_1_0_MB_LUT1;
 
 architecture STRUCTURE of msys_mdm_1_0_MB_LUT1 is
@@ -948,8 +938,6 @@ entity msys_mdm_1_0_MB_SRL16E is
     \Use_E2.BSCANE2_I_i_4_0\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     config_TDO_2 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_mdm_1_0_MB_SRL16E : entity is "MB_SRL16E";
 end msys_mdm_1_0_MB_SRL16E;
 
 architecture STRUCTURE of msys_mdm_1_0_MB_SRL16E is
@@ -1189,8 +1177,6 @@ entity msys_mdm_1_0_JTAG_CONTROL is
     \Use_Serial_Unified_Completion.count_reg[5]_2\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     \shift_Count_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_mdm_1_0_JTAG_CONTROL : entity is "JTAG_CONTROL";
 end msys_mdm_1_0_JTAG_CONTROL;
 
 architecture STRUCTURE of msys_mdm_1_0_JTAG_CONTROL is
@@ -2724,8 +2710,6 @@ entity msys_mdm_1_0_MDM_Core is
     AR : in STD_LOGIC_VECTOR ( 0 to 0 );
     \Use_Serial_Unified_Completion.count_reg[5]_1\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_mdm_1_0_MDM_Core : entity is "MDM_Core";
 end msys_mdm_1_0_MDM_Core;
 
 architecture STRUCTURE of msys_mdm_1_0_MDM_Core is
@@ -4900,8 +4884,6 @@ entity msys_mdm_1_0_MDM is
   attribute C_USE_CROSS_TRIGGER of msys_mdm_1_0_MDM : entity is 0;
   attribute C_USE_UART : integer;
   attribute C_USE_UART of msys_mdm_1_0_MDM : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_mdm_1_0_MDM : entity is "MDM";
 end msys_mdm_1_0_MDM;
 
 architecture STRUCTURE of msys_mdm_1_0_MDM is

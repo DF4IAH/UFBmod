@@ -1,16 +1,76 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
-// Date        : Wed Apr 15 16:48:00 2020
+// Date        : Wed Apr 15 16:47:59 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_SC0712_0_0/msys_SC0712_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top msys_SC0712_0_0 -prefix
+//               msys_SC0712_0_0_ msys_SC0712_0_0_sim_netlist.v
 // Design      : msys_SC0712_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7a100tfgg484-2
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
+
+module msys_SC0712_0_0_SC0712
+   (sda_i,
+    reset_out,
+    ext_sda,
+    GPIO1_O,
+    mcs_clk_in,
+    sda_t);
+  output sda_i;
+  output reset_out;
+  inout ext_sda;
+  input [1:0]GPIO1_O;
+  input mcs_clk_in;
+  input sda_t;
+
+  wire [1:0]GPIO1_O;
+  wire T;
+  wire ext_sda;
+  wire mcs_clk_in;
+  wire reset_out;
+  wire \rst_delay_i_reg[2]_srl2_n_0 ;
+  wire sda_i;
+  wire sda_t;
+
+  (* box_type = "PRIMITIVE" *) 
+  IOBUF #(
+    .IOSTANDARD("DEFAULT")) 
+    IOBUF_inst
+       (.I(T),
+        .IO(ext_sda),
+        .O(sda_i),
+        .T(T));
+  LUT2 #(
+    .INIT(4'h8)) 
+    IOBUF_inst_i_1
+       (.I0(sda_t),
+        .I1(GPIO1_O[0]),
+        .O(T));
+  (* srl_bus_name = "\U0/rst_delay_i_reg " *) 
+  (* srl_name = "\U0/rst_delay_i_reg[2]_srl2 " *) 
+  SRL16E #(
+    .INIT(16'h0000)) 
+    \rst_delay_i_reg[2]_srl2 
+       (.A0(1'b1),
+        .A1(1'b0),
+        .A2(1'b0),
+        .A3(1'b0),
+        .CE(1'b1),
+        .CLK(mcs_clk_in),
+        .D(GPIO1_O[1]),
+        .Q(\rst_delay_i_reg[2]_srl2_n_0 ));
+  FDRE #(
+    .INIT(1'b0)) 
+    \rst_delay_i_reg[3] 
+       (.C(mcs_clk_in),
+        .CE(1'b1),
+        .D(\rst_delay_i_reg[2]_srl2_n_0 ),
+        .Q(reset_out),
+        .R(1'b0));
+endmodule
 
 (* CHECK_LICENSE_TYPE = "msys_SC0712_0_0,SC0712,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "package_project" *) 
 (* x_core_info = "SC0712,Vivado 2019.2.1" *) 
@@ -139,67 +199,6 @@ module msys_SC0712_0_0
        (.I0(scl_t),
         .I1(GPIO1_O[1]),
         .O(ext_scl_o));
-endmodule
-
-(* ORIG_REF_NAME = "SC0712" *) 
-module msys_SC0712_0_0_SC0712
-   (sda_i,
-    reset_out,
-    ext_sda,
-    GPIO1_O,
-    mcs_clk_in,
-    sda_t);
-  output sda_i;
-  output reset_out;
-  inout ext_sda;
-  input [1:0]GPIO1_O;
-  input mcs_clk_in;
-  input sda_t;
-
-  wire [1:0]GPIO1_O;
-  wire T;
-  wire ext_sda;
-  wire mcs_clk_in;
-  wire reset_out;
-  wire \rst_delay_i_reg[2]_srl2_n_0 ;
-  wire sda_i;
-  wire sda_t;
-
-  (* box_type = "PRIMITIVE" *) 
-  IOBUF #(
-    .IOSTANDARD("DEFAULT")) 
-    IOBUF_inst
-       (.I(T),
-        .IO(ext_sda),
-        .O(sda_i),
-        .T(T));
-  LUT2 #(
-    .INIT(4'h8)) 
-    IOBUF_inst_i_1
-       (.I0(sda_t),
-        .I1(GPIO1_O[0]),
-        .O(T));
-  (* srl_bus_name = "\U0/rst_delay_i_reg " *) 
-  (* srl_name = "\U0/rst_delay_i_reg[2]_srl2 " *) 
-  SRL16E #(
-    .INIT(16'h0000)) 
-    \rst_delay_i_reg[2]_srl2 
-       (.A0(1'b1),
-        .A1(1'b0),
-        .A2(1'b0),
-        .A3(1'b0),
-        .CE(1'b1),
-        .CLK(mcs_clk_in),
-        .D(GPIO1_O[1]),
-        .Q(\rst_delay_i_reg[2]_srl2_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \rst_delay_i_reg[3] 
-       (.C(mcs_clk_in),
-        .CE(1'b1),
-        .D(\rst_delay_i_reg[2]_srl2_n_0 ),
-        .Q(reset_out),
-        .R(1'b0));
 endmodule
 `ifndef GLBL
 `define GLBL

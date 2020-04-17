@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
-// Date        : Wed Apr 15 16:57:26 2020
+// Date        : Wed Apr 15 16:57:23 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_microblaze_mcs_0_0/msys_microblaze_mcs_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top msys_microblaze_mcs_0_0 -prefix
+//               msys_microblaze_mcs_0_0_ msys_microblaze_mcs_0_0_sim_netlist.v
 // Design      : msys_microblaze_mcs_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,32 +12,6 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "msys_microblaze_mcs_0_0,bd_cf59,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "bd_cf59,Vivado 2019.2.1" *) 
-(* NotValidForBitStream *)
-module msys_microblaze_mcs_0_0
-   (Clk,
-    Reset,
-    GPIO1_tri_i,
-    GPIO1_tri_o);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 CLK.Clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME CLK.Clk, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN msys_SC0712_0_0_mcs_clk_out, INSERT_VIP 0, ASSOCIATED_ASYNC_RESET Reset, BOARD.ASSOCIATED_PARAM CLK_BOARD_INTERFACE" *) input Clk;
-  (* x_interface_info = "xilinx.com:signal:reset:1.0 RST.Reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME RST.Reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0, BOARD.ASSOCIATED_PARAM RESET_BOARD_INTERFACE" *) input Reset;
-  (* x_interface_info = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_I" *) (* x_interface_parameter = "XIL_INTERFACENAME GPIO1, C_USE_GPO1 1, C_GPO1_SIZE 32, C_GPO1_INIT 0x00000000, C_USE_GPI1 1, C_GPI1_SIZE 32, C_GPI1_INTERRUPT 0, BOARD.ASSOCIATED_PARAM GPIO1_BOARD_INTERFACE" *) input [31:0]GPIO1_tri_i;
-  (* x_interface_info = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O" *) output [31:0]GPIO1_tri_o;
-
-  wire Clk;
-  wire [31:0]GPIO1_tri_i;
-  wire [31:0]GPIO1_tri_o;
-  wire Reset;
-
-  (* hw_handoff = "msys_microblaze_mcs_0_0.hwdef" *) 
-  msys_microblaze_mcs_0_0_bd_cf59 U0
-       (.Clk(Clk),
-        .GPIO1_tri_i(GPIO1_tri_i),
-        .GPIO1_tri_o(GPIO1_tri_o),
-        .Reset(Reset));
-endmodule
-
-(* ORIG_REF_NAME = "GPI_Module" *) 
 module msys_microblaze_mcs_0_0_GPI_Module
    (Sl_DBus,
     \Using_GPI.GPI_In_reg[0]_0 ,
@@ -273,7 +247,6 @@ module msys_microblaze_mcs_0_0_GPI_Module
         .R(\Using_GPI.GPI_In[31]_i_1_n_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "GPO_Module" *) 
 module msys_microblaze_mcs_0_0_GPO_Module
    (\lmb_abus_Q_reg[2] ,
     GPO1,
@@ -524,7 +497,6 @@ module msys_microblaze_mcs_0_0_GPO_Module
         .R(Rst));
 endmodule
 
-(* ORIG_REF_NAME = "Iomodule_core" *) 
 module msys_microblaze_mcs_0_0_Iomodule_core
    (\lmb_abus_Q_reg[2] ,
     GPO1,
@@ -598,7 +570,7 @@ module msys_microblaze_mcs_0_0_Iomodule_core
         .p_0_in16_in(p_0_in16_in));
 endmodule
 
-(* ORIG_REF_NAME = "bd_cf59" *) (* hw_handoff = "msys_microblaze_mcs_0_0.hwdef" *) 
+(* hw_handoff = "msys_microblaze_mcs_0_0.hwdef" *) 
 module msys_microblaze_mcs_0_0_bd_cf59
    (Clk,
     GPIO1_tri_i,
@@ -970,8 +942,7 @@ module msys_microblaze_mcs_0_0_bd_cf59
         .web({ilmb_port_2_WE[0],ilmb_port_2_WE[1],ilmb_port_2_WE[2],ilmb_port_2_WE[3]}));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_cf59_dlmb_0,lmb_v10,{}" *) (* ORIG_REF_NAME = "bd_cf59_dlmb_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "lmb_v10,Vivado 2019.2.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_cf59_dlmb_0,lmb_v10,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "lmb_v10,Vivado 2019.2.1" *) 
 module msys_microblaze_mcs_0_0_bd_cf59_dlmb_0
    (LMB_Clk,
     SYS_Rst,
@@ -1083,8 +1054,7 @@ module msys_microblaze_mcs_0_0_bd_cf59_dlmb_0
         .Sl_Wait(Sl_Wait));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_cf59_dlmb_cntlr_0,lmb_bram_if_cntlr,{}" *) (* ORIG_REF_NAME = "bd_cf59_dlmb_cntlr_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "lmb_bram_if_cntlr,Vivado 2019.2.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_cf59_dlmb_cntlr_0,lmb_bram_if_cntlr,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "lmb_bram_if_cntlr,Vivado 2019.2.1" *) 
 module msys_microblaze_mcs_0_0_bd_cf59_dlmb_cntlr_0
    (LMB_Clk,
     LMB_Rst,
@@ -1161,8 +1131,7 @@ module msys_microblaze_mcs_0_0_bd_cf59_dlmb_cntlr_0
         .Sl_Ready(Sl_Ready));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_cf59_ilmb_0,lmb_v10,{}" *) (* ORIG_REF_NAME = "bd_cf59_ilmb_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "lmb_v10,Vivado 2019.2.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_cf59_ilmb_0,lmb_v10,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "lmb_v10,Vivado 2019.2.1" *) 
 module msys_microblaze_mcs_0_0_bd_cf59_ilmb_0
    (LMB_Clk,
     SYS_Rst,
@@ -1274,8 +1243,7 @@ module msys_microblaze_mcs_0_0_bd_cf59_ilmb_0
         .Sl_Wait(Sl_Wait));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_cf59_ilmb_cntlr_0,lmb_bram_if_cntlr,{}" *) (* ORIG_REF_NAME = "bd_cf59_ilmb_cntlr_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "lmb_bram_if_cntlr,Vivado 2019.2.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_cf59_ilmb_cntlr_0,lmb_bram_if_cntlr,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "lmb_bram_if_cntlr,Vivado 2019.2.1" *) 
 module msys_microblaze_mcs_0_0_bd_cf59_ilmb_cntlr_0
    (LMB_Clk,
     LMB_Rst,
@@ -1352,8 +1320,7 @@ module msys_microblaze_mcs_0_0_bd_cf59_ilmb_cntlr_0
         .Sl_Ready(Sl_Ready));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_cf59_iomodule_0_0,iomodule,{}" *) (* ORIG_REF_NAME = "bd_cf59_iomodule_0_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "iomodule,Vivado 2019.2.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_cf59_iomodule_0_0,iomodule,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "iomodule,Vivado 2019.2.1" *) 
 module msys_microblaze_mcs_0_0_bd_cf59_iomodule_0_0
    (Clk,
     Rst,
@@ -1599,8 +1566,7 @@ module msys_microblaze_mcs_0_0_bd_cf59_iomodule_0_0
         .UART_Tx(NLW_U0_UART_Tx_UNCONNECTED));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_cf59_lmb_bram_I_0,blk_mem_gen_v8_4_4,{}" *) (* ORIG_REF_NAME = "bd_cf59_lmb_bram_I_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "blk_mem_gen_v8_4_4,Vivado 2019.2.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_cf59_lmb_bram_I_0,blk_mem_gen_v8_4_4,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "blk_mem_gen_v8_4_4,Vivado 2019.2.1" *) 
 module msys_microblaze_mcs_0_0_bd_cf59_lmb_bram_I_0
    (clka,
     rsta,
@@ -1811,8 +1777,7 @@ module msys_microblaze_mcs_0_0_bd_cf59_lmb_bram_I_0
         .web(web));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_cf59_microblaze_I_0,MicroBlaze,{}" *) (* ORIG_REF_NAME = "bd_cf59_microblaze_I_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "MicroBlaze,Vivado 2019.2.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_cf59_microblaze_I_0,MicroBlaze,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "MicroBlaze,Vivado 2019.2.1" *) 
 module msys_microblaze_mcs_0_0_bd_cf59_microblaze_I_0
    (Clk,
     Reset,
@@ -2757,8 +2722,7 @@ module msys_microblaze_mcs_0_0_bd_cf59_microblaze_I_0
         .Write_Strobe(Write_Strobe));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_cf59_rst_0_0,proc_sys_reset,{}" *) (* ORIG_REF_NAME = "bd_cf59_rst_0_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "proc_sys_reset,Vivado 2019.2.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_cf59_rst_0_0,proc_sys_reset,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "proc_sys_reset,Vivado 2019.2.1" *) 
 module msys_microblaze_mcs_0_0_bd_cf59_rst_0_0
    (slowest_sync_clk,
     ext_reset_in,
@@ -2814,8 +2778,7 @@ module msys_microblaze_mcs_0_0_bd_cf59_rst_0_0
         .slowest_sync_clk(slowest_sync_clk));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_cf59_second_dlmb_cntlr_0,lmb_bram_if_cntlr,{}" *) (* ORIG_REF_NAME = "bd_cf59_second_dlmb_cntlr_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "lmb_bram_if_cntlr,Vivado 2019.2.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_cf59_second_dlmb_cntlr_0,lmb_bram_if_cntlr,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "lmb_bram_if_cntlr,Vivado 2019.2.1" *) 
 module msys_microblaze_mcs_0_0_bd_cf59_second_dlmb_cntlr_0
    (LMB_Clk,
     LMB_Rst,
@@ -2892,8 +2855,7 @@ module msys_microblaze_mcs_0_0_bd_cf59_second_dlmb_cntlr_0
         .Sl_Ready(Sl_Ready));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_cf59_second_ilmb_cntlr_0,lmb_bram_if_cntlr,{}" *) (* ORIG_REF_NAME = "bd_cf59_second_ilmb_cntlr_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "lmb_bram_if_cntlr,Vivado 2019.2.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_cf59_second_ilmb_cntlr_0,lmb_bram_if_cntlr,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "lmb_bram_if_cntlr,Vivado 2019.2.1" *) 
 module msys_microblaze_mcs_0_0_bd_cf59_second_ilmb_cntlr_0
    (LMB_Clk,
     LMB_Rst,
@@ -2970,8 +2932,7 @@ module msys_microblaze_mcs_0_0_bd_cf59_second_ilmb_cntlr_0
         .Sl_Ready(Sl_Ready));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_cf59_second_lmb_bram_I_0,blk_mem_gen_v8_4_4,{}" *) (* ORIG_REF_NAME = "bd_cf59_second_lmb_bram_I_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "blk_mem_gen_v8_4_4,Vivado 2019.2.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_cf59_second_lmb_bram_I_0,blk_mem_gen_v8_4_4,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "blk_mem_gen_v8_4_4,Vivado 2019.2.1" *) 
 module msys_microblaze_mcs_0_0_bd_cf59_second_lmb_bram_I_0
    (clka,
     rsta,
@@ -3182,7 +3143,6 @@ module msys_microblaze_mcs_0_0_bd_cf59_second_lmb_bram_I_0
         .web(web));
 endmodule
 
-(* ORIG_REF_NAME = "cdc_sync" *) 
 module msys_microblaze_mcs_0_0_cdc_sync
    (lpf_exr_reg,
     scndry_out,
@@ -3400,7 +3360,7 @@ endmodule
 (* C_USE_GPO2 = "0" *) (* C_USE_GPO3 = "0" *) (* C_USE_GPO4 = "0" *) 
 (* C_USE_IO_BUS = "0" *) (* C_USE_PIT1 = "0" *) (* C_USE_PIT2 = "0" *) 
 (* C_USE_PIT3 = "0" *) (* C_USE_PIT4 = "0" *) (* C_USE_TMR_DISABLE = "0" *) 
-(* C_USE_UART_RX = "0" *) (* C_USE_UART_TX = "0" *) (* ORIG_REF_NAME = "iomodule" *) 
+(* C_USE_UART_RX = "0" *) (* C_USE_UART_TX = "0" *) 
 module msys_microblaze_mcs_0_0_iomodule
    (Clk,
     Rst,
@@ -5180,7 +5140,6 @@ module msys_microblaze_mcs_0_0_iomodule
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "lmb_bram_if_cntlr" *) 
 module msys_microblaze_mcs_0_0_lmb_bram_if_cntlr
    (BRAM_WEN_A,
     Sl_Ready,
@@ -5542,7 +5501,6 @@ module msys_microblaze_mcs_0_0_lmb_bram_if_cntlr__parameterized5
         .O(Sl_Ready));
 endmodule
 
-(* ORIG_REF_NAME = "lmb_bram_if_cntlr_v4_0_17_pselect_mask" *) 
 module msys_microblaze_mcs_0_0_lmb_bram_if_cntlr_v4_0_17_pselect_mask
    (lmb_select,
     LMB_ABus);
@@ -5561,7 +5519,6 @@ module msys_microblaze_mcs_0_0_lmb_bram_if_cntlr_v4_0_17_pselect_mask
         .O(lmb_select));
 endmodule
 
-(* ORIG_REF_NAME = "lmb_mux" *) 
 module msys_microblaze_mcs_0_0_lmb_mux
    (lmb_select,
     LMB_ABus);
@@ -5577,7 +5534,7 @@ module msys_microblaze_mcs_0_0_lmb_mux
 endmodule
 
 (* C_EXT_RESET_HIGH = "1" *) (* C_LMB_AWIDTH = "32" *) (* C_LMB_DWIDTH = "32" *) 
-(* C_LMB_NUM_SLAVES = "3" *) (* C_LMB_PROTOCOL = "0" *) (* ORIG_REF_NAME = "lmb_v10" *) 
+(* C_LMB_NUM_SLAVES = "3" *) (* C_LMB_PROTOCOL = "0" *) 
 module msys_microblaze_mcs_0_0_lmb_v10
    (LMB_Clk,
     SYS_Rst,
@@ -6388,7 +6345,6 @@ module msys_microblaze_mcs_0_0_lmb_v10__parameterized1
         .S(SYS_Rst));
 endmodule
 
-(* ORIG_REF_NAME = "lpf" *) 
 module msys_microblaze_mcs_0_0_lpf
    (lpf_int,
     slowest_sync_clk,
@@ -6539,10 +6495,34 @@ module msys_microblaze_mcs_0_0_lpf
         .R(1'b0));
 endmodule
 
+(* CHECK_LICENSE_TYPE = "msys_microblaze_mcs_0_0,bd_cf59,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "bd_cf59,Vivado 2019.2.1" *) 
+(* NotValidForBitStream *)
+module msys_microblaze_mcs_0_0
+   (Clk,
+    Reset,
+    GPIO1_tri_i,
+    GPIO1_tri_o);
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 CLK.Clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME CLK.Clk, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN msys_SC0712_0_0_mcs_clk_out, INSERT_VIP 0, ASSOCIATED_ASYNC_RESET Reset, BOARD.ASSOCIATED_PARAM CLK_BOARD_INTERFACE" *) input Clk;
+  (* x_interface_info = "xilinx.com:signal:reset:1.0 RST.Reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME RST.Reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0, BOARD.ASSOCIATED_PARAM RESET_BOARD_INTERFACE" *) input Reset;
+  (* x_interface_info = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_I" *) (* x_interface_parameter = "XIL_INTERFACENAME GPIO1, C_USE_GPO1 1, C_GPO1_SIZE 32, C_GPO1_INIT 0x00000000, C_USE_GPI1 1, C_GPI1_SIZE 32, C_GPI1_INTERRUPT 0, BOARD.ASSOCIATED_PARAM GPIO1_BOARD_INTERFACE" *) input [31:0]GPIO1_tri_i;
+  (* x_interface_info = "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O" *) output [31:0]GPIO1_tri_o;
+
+  wire Clk;
+  wire [31:0]GPIO1_tri_i;
+  wire [31:0]GPIO1_tri_o;
+  wire Reset;
+
+  (* hw_handoff = "msys_microblaze_mcs_0_0.hwdef" *) 
+  msys_microblaze_mcs_0_0_bd_cf59 U0
+       (.Clk(Clk),
+        .GPIO1_tri_i(GPIO1_tri_i),
+        .GPIO1_tri_o(GPIO1_tri_o),
+        .Reset(Reset));
+endmodule
+
 (* C_AUX_RESET_HIGH = "1'b0" *) (* C_AUX_RST_WIDTH = "4" *) (* C_EXT_RESET_HIGH = "1'b1" *) 
 (* C_EXT_RST_WIDTH = "4" *) (* C_FAMILY = "artix7" *) (* C_NUM_BUS_RST = "1" *) 
 (* C_NUM_INTERCONNECT_ARESETN = "1" *) (* C_NUM_PERP_ARESETN = "1" *) (* C_NUM_PERP_RST = "1" *) 
-(* ORIG_REF_NAME = "proc_sys_reset" *) 
 module msys_microblaze_mcs_0_0_proc_sys_reset
    (slowest_sync_clk,
     ext_reset_in,
@@ -6659,7 +6639,6 @@ module msys_microblaze_mcs_0_0_proc_sys_reset
         .slowest_sync_clk(slowest_sync_clk));
 endmodule
 
-(* ORIG_REF_NAME = "sequence_psr" *) 
 module msys_microblaze_mcs_0_0_sequence_psr
    (MB_out,
     Bsr_out,
@@ -6900,7 +6879,6 @@ module msys_microblaze_mcs_0_0_sequence_psr
         .R(lpf_int));
 endmodule
 
-(* ORIG_REF_NAME = "upcnt_n" *) 
 module msys_microblaze_mcs_0_0_upcnt_n
    (Q,
     seq_clr,
@@ -7022,7 +7000,6 @@ module msys_microblaze_mcs_0_0_upcnt_n
         .R(clear));
 endmodule
 
-(* ORIG_REF_NAME = "ALU" *) 
 module msys_microblaze_mcs_0_0_ALU
    (LO,
     D,
@@ -7751,7 +7728,6 @@ module msys_microblaze_mcs_0_0_ALU
         .\trace_data_address_i_reg[9] (\trace_data_address_i_reg[9] ));
 endmodule
 
-(* ORIG_REF_NAME = "ALU_Bit" *) 
 module msys_microblaze_mcs_0_0_ALU_Bit
    (EX_CarryOut,
     D,
@@ -9726,7 +9702,6 @@ module msys_microblaze_mcs_0_0_ALU_Bit__parameterized2
         .\trace_data_address_i_reg[0] (\trace_data_address_i_reg[0] ));
 endmodule
 
-(* ORIG_REF_NAME = "Byte_Doublet_Handle" *) 
 module msys_microblaze_mcs_0_0_Byte_Doublet_Handle
    (D,
     O,
@@ -9827,7 +9802,6 @@ module msys_microblaze_mcs_0_0_Byte_Doublet_Handle
         .sel_Write_Mux_MSB(sel_Write_Mux_MSB));
 endmodule
 
-(* ORIG_REF_NAME = "Data_Flow" *) 
 module msys_microblaze_mcs_0_0_Data_Flow
    (Op1_Low,
     EX_Op2,
@@ -10782,7 +10756,6 @@ module msys_microblaze_mcs_0_0_Data_Flow
         .reg_Test_Equal_N(reg_Test_Equal_N));
 endmodule
 
-(* ORIG_REF_NAME = "Decode" *) 
 module msys_microblaze_mcs_0_0_Decode
    (IReady,
     Buffer_Addr,
@@ -12910,7 +12883,6 @@ module msys_microblaze_mcs_0_0_Decode
         .R(sync_reset));
 endmodule
 
-(* ORIG_REF_NAME = "MB_FD" *) 
 module msys_microblaze_mcs_0_0_MB_FD
    (D,
     ex_Result,
@@ -12935,7 +12907,6 @@ module msys_microblaze_mcs_0_0_MB_FD
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "MB_FDE" *) 
 module msys_microblaze_mcs_0_0_MB_FDE
    (PC_EX_i,
     OF_PipeRun,
@@ -14195,7 +14166,6 @@ module msys_microblaze_mcs_0_0_MB_FDE_655
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "MB_FDRSE" *) 
 module msys_microblaze_mcs_0_0_MB_FDRSE
    (force_Val2_N,
     \Using_FPGA.Native_0 ,
@@ -14378,7 +14348,6 @@ module msys_microblaze_mcs_0_0_MB_FDRSE_660
         .O(I3_1));
 endmodule
 
-(* ORIG_REF_NAME = "MB_FDS" *) 
 module msys_microblaze_mcs_0_0_MB_FDS
    (\Using_FPGA.Native_0 ,
     Increment,
@@ -15297,7 +15266,6 @@ module msys_microblaze_mcs_0_0_MB_FD_321
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "MB_LUT2" *) 
 module msys_microblaze_mcs_0_0_MB_LUT2
    (byte_i_reg,
     byte_selects_0,
@@ -15319,7 +15287,6 @@ module msys_microblaze_mcs_0_0_MB_LUT2
         .O(byte_i_reg));
 endmodule
 
-(* ORIG_REF_NAME = "MB_LUT4" *) 
 module msys_microblaze_mcs_0_0_MB_LUT4
    (write_Reg_I_S,
     DReady,
@@ -18853,7 +18820,6 @@ module msys_microblaze_mcs_0_0_MB_LUT4__parameterized9
         .O(correct_Carry_Select));
 endmodule
 
-(* ORIG_REF_NAME = "MB_LUT5" *) 
 module msys_microblaze_mcs_0_0_MB_LUT5
    (of_PipeRun_Select,
     mul_Executing,
@@ -18915,7 +18881,6 @@ module msys_microblaze_mcs_0_0_MB_LUT5__parameterized1
         .O(of_PipeRun_without_dready));
 endmodule
 
-(* ORIG_REF_NAME = "MB_LUT6_2" *) 
 module msys_microblaze_mcs_0_0_MB_LUT6_2
    (op1_Reg,
     op1_I,
@@ -21651,7 +21616,6 @@ module msys_microblaze_mcs_0_0_MB_LUT6_2__parameterized8
         .O6(D[1]));
 endmodule
 
-(* ORIG_REF_NAME = "MB_RAM32X1D" *) 
 module msys_microblaze_mcs_0_0_MB_RAM32X1D
    (Reg1_Data,
     Data_Write,
@@ -24595,7 +24559,6 @@ module msys_microblaze_mcs_0_0_MB_RAM32X1D_416
         .WE(Reg_Write));
 endmodule
 
-(* ORIG_REF_NAME = "MB_SRL16E" *) 
 module msys_microblaze_mcs_0_0_MB_SRL16E
    (\Using_FPGA.Native ,
     inHibit_EX_reg,
@@ -28074,7 +28037,6 @@ module msys_microblaze_mcs_0_0_MB_SRL16E_67
         .O(\Use_Async_Reset.sync_reset_reg ));
 endmodule
 
-(* ORIG_REF_NAME = "MSR_Reg" *) 
 module msys_microblaze_mcs_0_0_MSR_Reg
    (MSR,
     I3,
@@ -28149,7 +28111,6 @@ module msys_microblaze_mcs_0_0_MSR_Reg
         .\Using_FPGA.Native_1 (\Using_FPGA.Native_4 ));
 endmodule
 
-(* ORIG_REF_NAME = "MSR_Reg_Bit" *) 
 module msys_microblaze_mcs_0_0_MSR_Reg_Bit
    (MSR,
     I3_1,
@@ -28309,8 +28270,7 @@ endmodule
 (* C_USE_EXT_NM_BRK = "0" *) (* C_USE_FPU = "0" *) (* C_USE_HW_MUL = "0" *) 
 (* C_USE_ICACHE = "0" *) (* C_USE_INTERRUPT = "2" *) (* C_USE_MMU = "0" *) 
 (* C_USE_MSR_INSTR = "0" *) (* C_USE_NON_SECURE = "0" *) (* C_USE_PCMP_INSTR = "0" *) 
-(* C_USE_REORDER_INSTR = "0" *) (* C_USE_STACK_PROTECTION = "0" *) (* ORIG_REF_NAME = "MicroBlaze" *) 
-(* downgradeipidentifiedwarnings = "yes" *) 
+(* C_USE_REORDER_INSTR = "0" *) (* C_USE_STACK_PROTECTION = "0" *) (* downgradeipidentifiedwarnings = "yes" *) 
 module msys_microblaze_mcs_0_0_MicroBlaze
    (RAM_To,
     RAM_From,
@@ -40485,7 +40445,6 @@ module msys_microblaze_mcs_0_0_MicroBlaze
        (.P(\<const1> ));
 endmodule
 
-(* ORIG_REF_NAME = "MicroBlaze_Area" *) 
 module msys_microblaze_mcs_0_0_MicroBlaze_Area
    (D,
     Pause_Ack,
@@ -41934,7 +41893,6 @@ module msys_microblaze_mcs_0_0_MicroBlaze_Area
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "MicroBlaze_Core" *) 
 module msys_microblaze_mcs_0_0_MicroBlaze_Core
    (D,
     Pause_Ack,
@@ -42070,7 +42028,6 @@ module msys_microblaze_mcs_0_0_MicroBlaze_Core
         .sync_reset(sync_reset));
 endmodule
 
-(* ORIG_REF_NAME = "Operand_Select" *) 
 module msys_microblaze_mcs_0_0_Operand_Select
    (Op1_Logic,
     EX_Op2,
@@ -42973,7 +42930,6 @@ module msys_microblaze_mcs_0_0_Operand_Select
         .R(sync_reset));
 endmodule
 
-(* ORIG_REF_NAME = "Operand_Select_Bit" *) 
 module msys_microblaze_mcs_0_0_Operand_Select_Bit
    (\Using_FPGA.Native ,
     \Using_FPGA.Native_0 ,
@@ -45146,7 +45102,6 @@ module msys_microblaze_mcs_0_0_Operand_Select_Bit__parameterized8_516
         .op2_C(op2_C));
 endmodule
 
-(* ORIG_REF_NAME = "PC_Bit" *) 
 module msys_microblaze_mcs_0_0_PC_Bit
    (D,
     PC_OF,
@@ -46472,7 +46427,6 @@ module msys_microblaze_mcs_0_0_PC_Bit_428
         .sync_reset(sync_reset));
 endmodule
 
-(* ORIG_REF_NAME = "PC_Module" *) 
 module msys_microblaze_mcs_0_0_PC_Module
    (I3,
     I3_0,
@@ -46862,7 +46816,6 @@ module msys_microblaze_mcs_0_0_PC_Module
         .sync_reset(sync_reset));
 endmodule
 
-(* ORIG_REF_NAME = "PreFetch_Buffer" *) 
 module msys_microblaze_mcs_0_0_PreFetch_Buffer
    (instr_OF_raw,
     \Using_FPGA.Native ,
@@ -47982,7 +47935,6 @@ module msys_microblaze_mcs_0_0_PreFetch_Buffer
         .trace_jump_taken_i_reg(trace_jump_taken_i_reg));
 endmodule
 
-(* ORIG_REF_NAME = "Register_File" *) 
 module msys_microblaze_mcs_0_0_Register_File
    (Reg1_Data,
     D,
@@ -48338,7 +48290,6 @@ module msys_microblaze_mcs_0_0_Register_File
         .reg2_Data(reg2_Data[9]));
 endmodule
 
-(* ORIG_REF_NAME = "Register_File_Bit" *) 
 module msys_microblaze_mcs_0_0_Register_File_Bit
    (Reg1_Data,
     Data_Write,
@@ -49874,7 +49825,6 @@ module msys_microblaze_mcs_0_0_Register_File_Bit_353
         .reg2_Data(reg2_Data));
 endmodule
 
-(* ORIG_REF_NAME = "Result_Mux" *) 
 module msys_microblaze_mcs_0_0_Result_Mux
    (\Using_FPGA.take_Intr_2nd_Phase_reg ,
     ex_Result,
@@ -50579,7 +50529,6 @@ module msys_microblaze_mcs_0_0_Result_Mux
         .O(Upper_extend_n_0));
 endmodule
 
-(* ORIG_REF_NAME = "Result_Mux_Bit" *) 
 module msys_microblaze_mcs_0_0_Result_Mux_Bit
    (\Using_FPGA.take_Intr_2nd_Phase_reg ,
     ex_Result,
@@ -52659,7 +52608,6 @@ module msys_microblaze_mcs_0_0_Result_Mux_Bit_229
         .mul_ALU_Res(mul_ALU_Res));
 endmodule
 
-(* ORIG_REF_NAME = "Shift_Logic_Bit" *) 
 module msys_microblaze_mcs_0_0_Shift_Logic_Bit
    (Select_Logic_reg,
     op2_C,
@@ -54163,7 +54111,6 @@ module msys_microblaze_mcs_0_0_Shift_Logic_Bit_99
         .shift_Res(shift_Res));
 endmodule
 
-(* ORIG_REF_NAME = "Shift_Logic_Module" *) 
 module msys_microblaze_mcs_0_0_Shift_Logic_Module
    (Shift_Logic_Res,
     Select_Logic_reg,
@@ -54674,7 +54621,6 @@ module msys_microblaze_mcs_0_0_Shift_Logic_Module
         .op2_C(op2_C[18]));
 endmodule
 
-(* ORIG_REF_NAME = "Zero_Detect" *) 
 module msys_microblaze_mcs_0_0_Zero_Detect
    (Reg_zero,
     Reg_Test_Equal,
@@ -54912,7 +54858,6 @@ module msys_microblaze_mcs_0_0_Zero_Detect
         .zero_CI_6(zero_CI_6));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module msys_microblaze_mcs_0_0_blk_mem_gen_generic_cstr
    (douta,
     doutb,
@@ -55107,7 +55052,6 @@ module msys_microblaze_mcs_0_0_blk_mem_gen_generic_cstr__parameterized0
         .web(web));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module msys_microblaze_mcs_0_0_blk_mem_gen_prim_width
    (douta,
     doutb,
@@ -55785,7 +55729,6 @@ module msys_microblaze_mcs_0_0_blk_mem_gen_prim_width__parameterized3
         .O(ram_rstram_b_busy__0));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper" *) 
 module msys_microblaze_mcs_0_0_blk_mem_gen_prim_wrapper
    (douta,
     doutb,
@@ -57234,7 +57177,6 @@ module msys_microblaze_mcs_0_0_blk_mem_gen_prim_wrapper__parameterized3
         .O(ram_rstram_b));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module msys_microblaze_mcs_0_0_blk_mem_gen_top
    (douta,
     doutb,
@@ -57401,7 +57343,7 @@ endmodule
 (* C_WEA_WIDTH = "4" *) (* C_WEB_WIDTH = "4" *) (* C_WRITE_DEPTH_A = "4096" *) 
 (* C_WRITE_DEPTH_B = "4096" *) (* C_WRITE_MODE_A = "WRITE_FIRST" *) (* C_WRITE_MODE_B = "WRITE_FIRST" *) 
 (* C_WRITE_WIDTH_A = "32" *) (* C_WRITE_WIDTH_B = "32" *) (* C_XDEVICEFAMILY = "artix7" *) 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_4" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* downgradeipidentifiedwarnings = "yes" *) 
 module msys_microblaze_mcs_0_0_blk_mem_gen_v8_4_4
    (clka,
     rsta,
@@ -57998,7 +57940,6 @@ module msys_microblaze_mcs_0_0_blk_mem_gen_v8_4_4__parameterized1
         .web(web));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_4_synth" *) 
 module msys_microblaze_mcs_0_0_blk_mem_gen_v8_4_4_synth
    (douta,
     doutb,
@@ -58140,7 +58081,6 @@ module msys_microblaze_mcs_0_0_blk_mem_gen_v8_4_4_synth__parameterized0
         .web(web));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_2_MB_FDR" *) 
 module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDR
    (\Using_FPGA.Native_0 ,
     inHibit_EX_reg,
@@ -58275,7 +58215,6 @@ module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDR
         .O(nonvalid_IFetch_n_i_2_n_0));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_2_MB_FDRE" *) 
 module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDRE
    (carry_In,
     sync_reset,
@@ -60740,7 +60679,6 @@ module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDRE_8
         .R(R));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_2_MB_FDSE" *) 
 module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDSE
    (Reg_Test_Equal,
     R,
@@ -61202,7 +61140,6 @@ module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_FDSE_503
         .S(sync_reset));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_2_MB_LUT3" *) 
 module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_LUT3
    (opsel1_SPR_Select_2_2,
     instr_OF_raw,
@@ -61401,7 +61338,6 @@ module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_LUT3__parameterized4
         .O(O));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_2_MB_LUT6" *) 
 module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_LUT6
    (alu_AddSub_1,
     op2_C,
@@ -63294,7 +63230,6 @@ module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_LUT6__parameterized0_320
         .O(\Using_FPGA.take_Intr_2nd_Phase_reg ));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_2_MB_MULT_AND" *) 
 module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MULT_AND
    (sub_Carry,
     \Using_FPGA.Native_0 ,
@@ -63342,7 +63277,6 @@ module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MULT_AND_753
         .O(DI));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_2_MB_MUXCY" *) 
 module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXCY
    (correct_Carry_I,
     correct_Carry_Select,
@@ -64886,7 +64820,6 @@ module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXCY_9
        (.G(\<const0> ));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_2_MB_MUXCY_XORCY" *) 
 module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXCY_XORCY
    (buffer_Addr_S_I_2,
     \Using_FPGA.Native ,
@@ -66723,7 +66656,6 @@ module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXCY_XORCY_754
   assign \Using_FPGA.Native  = lopt;
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_2_MB_MUXF7" *) 
 module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXF7
    (Select_Logic_reg,
     Select_Logic,
@@ -67491,7 +67423,6 @@ module msys_microblaze_mcs_0_0_microblaze_v11_0_2_MB_MUXF7_198
         .S(Select_Logic));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_2_mb_sync_bit" *) 
 module msys_microblaze_mcs_0_0_microblaze_v11_0_2_mb_sync_bit
    (out,
     Reset,
@@ -67637,7 +67568,6 @@ module msys_microblaze_mcs_0_0_microblaze_v11_0_2_mb_sync_bit_2
         .R(sync_reset));
 endmodule
 
-(* ORIG_REF_NAME = "mux4_8" *) 
 module msys_microblaze_mcs_0_0_mux4_8
    (D,
     \trace_data_write_value_i_reg[8] ,

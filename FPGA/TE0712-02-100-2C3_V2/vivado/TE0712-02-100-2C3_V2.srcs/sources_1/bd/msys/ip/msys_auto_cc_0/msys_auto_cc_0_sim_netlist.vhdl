@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
 -- Date        : Wed Apr 15 17:03:59 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_auto_cc_0/msys_auto_cc_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_auto_cc_0 -prefix
+--               msys_auto_cc_0_ msys_auto_cc_0_sim_netlist.vhdl
 -- Design      : msys_auto_cc_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -28,8 +28,6 @@ entity msys_auto_cc_0_axi_clock_converter_v2_1_19_axic_sample_cycle_ratio is
     \gen_sync_clock_converter.s_aresetn_r\ : in STD_LOGIC;
     \gen_sync_clock_converter.s_tready_r_reg\ : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_auto_cc_0_axi_clock_converter_v2_1_19_axic_sample_cycle_ratio : entity is "axi_clock_converter_v2_1_19_axic_sample_cycle_ratio";
 end msys_auto_cc_0_axi_clock_converter_v2_1_19_axic_sample_cycle_ratio;
 
 architecture STRUCTURE of msys_auto_cc_0_axi_clock_converter_v2_1_19_axic_sample_cycle_ratio is
@@ -154,8 +152,6 @@ entity msys_auto_cc_0_axi_clock_converter_v2_1_19_axic_sync_clock_converter is
     \gen_sync_clock_converter.m_aresetn_r\ : in STD_LOGIC;
     D : in STD_LOGIC_VECTOR ( 9 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_auto_cc_0_axi_clock_converter_v2_1_19_axic_sync_clock_converter : entity is "axi_clock_converter_v2_1_19_axic_sync_clock_converter";
 end msys_auto_cc_0_axi_clock_converter_v2_1_19_axic_sync_clock_converter;
 
 architecture STRUCTURE of msys_auto_cc_0_axi_clock_converter_v2_1_19_axic_sync_clock_converter is
@@ -2081,8 +2077,6 @@ entity msys_auto_cc_0_axi_clock_converter_v2_1_19_axi_clock_converter is
   attribute C_W_WIDTH of msys_auto_cc_0_axi_clock_converter_v2_1_19_axi_clock_converter : entity is 36;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of msys_auto_cc_0_axi_clock_converter_v2_1_19_axi_clock_converter : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_auto_cc_0_axi_clock_converter_v2_1_19_axi_clock_converter : entity is "axi_clock_converter_v2_1_19_axi_clock_converter";
   attribute P_ACLK_RATIO : integer;
   attribute P_ACLK_RATIO of msys_auto_cc_0_axi_clock_converter_v2_1_19_axi_clock_converter : entity is 2;
   attribute P_AXI3 : integer;

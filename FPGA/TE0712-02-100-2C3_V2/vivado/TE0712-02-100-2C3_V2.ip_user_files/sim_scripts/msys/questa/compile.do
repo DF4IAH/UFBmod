@@ -32,6 +32,8 @@ vlib questa_lib/msim/xlconcat_v2_1_3
 vlib questa_lib/msim/proc_sys_reset_v5_0_13
 vlib questa_lib/msim/iomodule_v3_1_5
 vlib questa_lib/msim/mii_to_rmii_v2_0_20
+vlib questa_lib/msim/axi_gpio_v2_0_22
+vlib questa_lib/msim/xlslice_v1_0_2
 vlib questa_lib/msim/axi_clock_converter_v2_1_19
 
 vmap xpm questa_lib/msim/xpm
@@ -65,6 +67,8 @@ vmap xlconcat_v2_1_3 questa_lib/msim/xlconcat_v2_1_3
 vmap proc_sys_reset_v5_0_13 questa_lib/msim/proc_sys_reset_v5_0_13
 vmap iomodule_v3_1_5 questa_lib/msim/iomodule_v3_1_5
 vmap mii_to_rmii_v2_0_20 questa_lib/msim/mii_to_rmii_v2_0_20
+vmap axi_gpio_v2_0_22 questa_lib/msim/axi_gpio_v2_0_22
+vmap xlslice_v1_0_2 questa_lib/msim/xlslice_v1_0_2
 vmap axi_clock_converter_v2_1_19 questa_lib/msim/axi_clock_converter_v2_1_19
 
 vlog -work xpm -64 -sv "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
@@ -363,15 +367,33 @@ vcom -work xil_defaultlib -64 -93 \
 vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
 "../../../bd/msys/ip/msys_xlconcat_0_0/sim/msys_xlconcat_0_0.v" \
 
+vcom -work axi_gpio_v2_0_22 -64 -93 \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/f71e/hdl/axi_gpio_v2_0_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/msys/ip/msys_axi_gpio_0_0/sim/msys_axi_gpio_0_0.vhd" \
+
+vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
+"../../../bd/msys/ip/msys_xlconcat_1_0/sim/msys_xlconcat_1_0.v" \
+
+vlog -work xlslice_v1_0_2 -64 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/11d0/hdl/xlslice_v1_0_vl_rfs.v" \
+
+vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
+"../../../bd/msys/ip/msys_xlslice_0_0/sim/msys_xlslice_0_0.v" \
+"../../../bd/msys/ip/msys_uart0_xlslice_0_0/sim/msys_uart0_xlslice_0_0.v" \
+"../../../bd/msys/ip/msys_uart0_xlslice_1_0/sim/msys_uart0_xlslice_1_0.v" \
+"../../../bd/msys/ip/msys_uart0_xlslice_1_1/sim/msys_uart0_xlslice_1_1.v" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/msys/sim/msys.vhd" \
+
 vlog -work axi_clock_converter_v2_1_19 -64 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/9e81/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
 
 vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
 "../../../bd/msys/ip/msys_auto_cc_0/sim/msys_auto_cc_0.v" \
 "../../../bd/msys/ip/msys_auto_cc_1/sim/msys_auto_cc_1.v" \
-
-vcom -work xil_defaultlib -64 -93 \
-"../../../bd/msys/sim/msys.vhd" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

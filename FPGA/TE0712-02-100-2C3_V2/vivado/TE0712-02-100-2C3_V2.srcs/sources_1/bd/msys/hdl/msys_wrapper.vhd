@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Wed Apr 15 12:00:32 2020
+--Date        : Fri Apr 17 22:05:47 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -39,6 +39,12 @@ entity msys_wrapper is
     RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RMII_PHY_M_0_tx_en : out STD_LOGIC;
     RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    UART0EXT_CTSn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    UART0EXT_DCDn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    UART0EXT_DSRn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    UART0EXT_DTRn : in STD_LOGIC;
+    UART0EXT_RIn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    UART0EXT_RTSn : in STD_LOGIC;
     UART0_rxd : in STD_LOGIC;
     UART0_txd : out STD_LOGIC;
     mgt_clk0_clk_n : in STD_LOGIC;
@@ -63,6 +69,14 @@ architecture STRUCTURE of msys_wrapper is
     PLL_I2C_ext_sda : inout STD_LOGIC;
     phy_rst_n : out STD_LOGIC;
     reset : in STD_LOGIC;
+    UART0EXT_RTSn : in STD_LOGIC;
+    UART0EXT_DTRn : in STD_LOGIC;
+    UART0EXT_CTSn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    UART0EXT_DSRn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    UART0EXT_DCDn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    UART0EXT_RIn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     qspi_flash_io0_i : in STD_LOGIC;
     qspi_flash_io0_o : out STD_LOGIC;
     qspi_flash_io0_t : out STD_LOGIC;
@@ -78,20 +92,16 @@ architecture STRUCTURE of msys_wrapper is
     qspi_flash_ss_i : in STD_LOGIC;
     qspi_flash_ss_o : out STD_LOGIC;
     qspi_flash_ss_t : out STD_LOGIC;
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
-    mgt_clk0_clk_p : in STD_LOGIC;
-    mgt_clk0_clk_n : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
-    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     RMII_PHY_M_0_crs_dv : in STD_LOGIC;
     RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RMII_PHY_M_0_tx_en : out STD_LOGIC;
     RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
+    sys_diff_clock_clk_p : in STD_LOGIC;
+    sys_diff_clock_clk_n : in STD_LOGIC;
     DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -107,8 +117,10 @@ architecture STRUCTURE of msys_wrapper is
     DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
-    sys_diff_clock_clk_p : in STD_LOGIC;
-    sys_diff_clock_clk_n : in STD_LOGIC
+    UART0_rxd : in STD_LOGIC;
+    UART0_txd : out STD_LOGIC;
+    mgt_clk0_clk_p : in STD_LOGIC;
+    mgt_clk0_clk_n : in STD_LOGIC
   );
   end component msys;
   component IOBUF is
@@ -175,6 +187,12 @@ msys_i: component msys
       RMII_PHY_M_0_rxd(1 downto 0) => RMII_PHY_M_0_rxd(1 downto 0),
       RMII_PHY_M_0_tx_en => RMII_PHY_M_0_tx_en,
       RMII_PHY_M_0_txd(1 downto 0) => RMII_PHY_M_0_txd(1 downto 0),
+      UART0EXT_CTSn(0) => UART0EXT_CTSn(0),
+      UART0EXT_DCDn(0) => UART0EXT_DCDn(0),
+      UART0EXT_DSRn(0) => UART0EXT_DSRn(0),
+      UART0EXT_DTRn => UART0EXT_DTRn,
+      UART0EXT_RIn(0) => UART0EXT_RIn(0),
+      UART0EXT_RTSn => UART0EXT_RTSn,
       UART0_rxd => UART0_rxd,
       UART0_txd => UART0_txd,
       mgt_clk0_clk_n => mgt_clk0_clk_n,

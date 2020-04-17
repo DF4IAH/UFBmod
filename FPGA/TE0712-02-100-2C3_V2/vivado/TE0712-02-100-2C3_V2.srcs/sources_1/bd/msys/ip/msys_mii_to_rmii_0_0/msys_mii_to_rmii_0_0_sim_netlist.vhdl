@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
--- Date        : Wed Apr 15 16:58:14 2020
+-- Date        : Wed Apr 15 16:58:13 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_mii_to_rmii_0_0/msys_mii_to_rmii_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_mii_to_rmii_0_0 -prefix
+--               msys_mii_to_rmii_0_0_ msys_mii_to_rmii_0_0_sim_netlist.vhdl
 -- Design      : msys_mii_to_rmii_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -27,8 +27,6 @@ entity msys_mii_to_rmii_0_0_SRL_FIFO is
     \FSM_sequential_RX_100_MBPS.fifo_ldr_cs_reg[1]\ : in STD_LOGIC_VECTOR ( 1 downto 0 );
     rx_end_packet : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_mii_to_rmii_0_0_SRL_FIFO : entity is "SRL_FIFO";
 end msys_mii_to_rmii_0_0_SRL_FIFO;
 
 architecture STRUCTURE of msys_mii_to_rmii_0_0_SRL_FIFO is
@@ -412,8 +410,6 @@ entity msys_mii_to_rmii_0_0_rmii_tx_fixed is
     mac2Rmii_tx_en_d2 : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_mii_to_rmii_0_0_rmii_tx_fixed : entity is "rmii_tx_fixed";
 end msys_mii_to_rmii_0_0_rmii_tx_fixed;
 
 architecture STRUCTURE of msys_mii_to_rmii_0_0_rmii_tx_fixed is
@@ -628,8 +624,6 @@ entity msys_mii_to_rmii_0_0_rmii_rx_fixed is
     \Addr_Counters[3].FDRE_I\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     mac2Rmii_tx_en_d2 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_mii_to_rmii_0_0_rmii_rx_fixed : entity is "rmii_rx_fixed";
 end msys_mii_to_rmii_0_0_rmii_rx_fixed;
 
 architecture STRUCTURE of msys_mii_to_rmii_0_0_rmii_rx_fixed is
@@ -1090,8 +1084,6 @@ entity msys_mii_to_rmii_0_0_mii_to_rmii is
   attribute C_INSTANCE of msys_mii_to_rmii_0_0_mii_to_rmii : entity is "msys_mii_to_rmii_0_0";
   attribute C_SPEED_100 : string;
   attribute C_SPEED_100 of msys_mii_to_rmii_0_0_mii_to_rmii : entity is "1'b1";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_mii_to_rmii_0_0_mii_to_rmii : entity is "mii_to_rmii";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_mii_to_rmii_0_0_mii_to_rmii : entity is "yes";
   attribute hdl : string;

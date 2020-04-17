@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
 -- Date        : Wed Apr 15 17:00:32 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_rst_mig_7series_0_100M_0/msys_rst_mig_7series_0_100M_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_rst_mig_7series_0_100M_0 -prefix
+--               msys_rst_mig_7series_0_100M_0_ msys_rst_mig_7series_0_100M_0_sim_netlist.vhdl
 -- Design      : msys_rst_mig_7series_0_100M_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -26,8 +26,6 @@ entity msys_rst_mig_7series_0_100M_0_cdc_sync is
     mb_debug_sys_rst : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_rst_mig_7series_0_100M_0_cdc_sync : entity is "cdc_sync";
 end msys_rst_mig_7series_0_100M_0_cdc_sync;
 
 architecture STRUCTURE of msys_rst_mig_7series_0_100M_0_cdc_sync is
@@ -237,8 +235,6 @@ entity msys_rst_mig_7series_0_100M_0_upcnt_n is
     seq_cnt_en : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_rst_mig_7series_0_100M_0_upcnt_n : entity is "upcnt_n";
 end msys_rst_mig_7series_0_100M_0_upcnt_n;
 
 architecture STRUCTURE of msys_rst_mig_7series_0_100M_0_upcnt_n is
@@ -403,8 +399,6 @@ entity msys_rst_mig_7series_0_100M_0_lpf is
     mb_debug_sys_rst : in STD_LOGIC;
     aux_reset_in : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_rst_mig_7series_0_100M_0_lpf : entity is "lpf";
 end msys_rst_mig_7series_0_100M_0_lpf;
 
 architecture STRUCTURE of msys_rst_mig_7series_0_100M_0_lpf is
@@ -591,8 +585,6 @@ entity msys_rst_mig_7series_0_100M_0_sequence_psr is
     lpf_int : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_rst_mig_7series_0_100M_0_sequence_psr : entity is "sequence_psr";
 end msys_rst_mig_7series_0_100M_0_sequence_psr;
 
 architecture STRUCTURE of msys_rst_mig_7series_0_100M_0_sequence_psr is
@@ -931,8 +923,6 @@ entity msys_rst_mig_7series_0_100M_0_proc_sys_reset is
   attribute C_NUM_PERP_ARESETN of msys_rst_mig_7series_0_100M_0_proc_sys_reset : entity is 1;
   attribute C_NUM_PERP_RST : integer;
   attribute C_NUM_PERP_RST of msys_rst_mig_7series_0_100M_0_proc_sys_reset : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_rst_mig_7series_0_100M_0_proc_sys_reset : entity is "proc_sys_reset";
 end msys_rst_mig_7series_0_100M_0_proc_sys_reset;
 
 architecture STRUCTURE of msys_rst_mig_7series_0_100M_0_proc_sys_reset is

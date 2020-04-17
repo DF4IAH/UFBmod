@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
--- Date        : Wed Apr 15 17:03:33 2020
+-- Date        : Wed Apr 15 17:03:32 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_vio_0_0/msys_vio_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_vio_0_0 -prefix
+--               msys_vio_0_0_ msys_vio_0_0_sim_netlist.vhdl
 -- Design      : msys_vio_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -31,8 +31,6 @@ entity msys_vio_0_0_vio_v3_0_19_decoder is
     s_den_o : in STD_LOGIC;
     s_dwe_o : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_vio_0_0_vio_v3_0_19_decoder : entity is "vio_v3_0_19_decoder";
 end msys_vio_0_0_vio_v3_0_19_decoder;
 
 architecture STRUCTURE of msys_vio_0_0_vio_v3_0_19_decoder is
@@ -829,8 +827,6 @@ entity msys_vio_0_0_vio_v3_0_19_probe_in_one is
     D : in STD_LOGIC_VECTOR ( 193 downto 0 );
     clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_vio_0_0_vio_v3_0_19_probe_in_one : entity is "vio_v3_0_19_probe_in_one";
 end msys_vio_0_0_vio_v3_0_19_probe_in_one;
 
 architecture STRUCTURE of msys_vio_0_0_vio_v3_0_19_probe_in_one is
@@ -20401,8 +20397,6 @@ entity msys_vio_0_0_vio_v3_0_19_probe_width is
     internal_cnt_rst : in STD_LOGIC;
     s_rst_o : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_vio_0_0_vio_v3_0_19_probe_width : entity is "vio_v3_0_19_probe_width";
 end msys_vio_0_0_vio_v3_0_19_probe_width;
 
 architecture STRUCTURE of msys_vio_0_0_vio_v3_0_19_probe_width is
@@ -20516,8 +20510,6 @@ entity msys_vio_0_0_xsdbs_v1_0_2_xsdbs is
   attribute C_XDEVICEFAMILY of msys_vio_0_0_xsdbs_v1_0_2_xsdbs : entity is "artix7";
   attribute C_XSDB_SLAVE_TYPE : integer;
   attribute C_XSDB_SLAVE_TYPE of msys_vio_0_0_xsdbs_v1_0_2_xsdbs : entity is 33;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_vio_0_0_xsdbs_v1_0_2_xsdbs : entity is "xsdbs_v1_0_2_xsdbs";
   attribute dont_touch : string;
   attribute dont_touch of msys_vio_0_0_xsdbs_v1_0_2_xsdbs : entity is "true";
 end msys_vio_0_0_xsdbs_v1_0_2_xsdbs;
@@ -26609,8 +26601,6 @@ entity msys_vio_0_0_vio_v3_0_19_vio is
   attribute LC_TOTAL_PROBE_IN_WIDTH of msys_vio_0_0_vio_v3_0_19_vio : entity is 194;
   attribute LC_TOTAL_PROBE_OUT_WIDTH : integer;
   attribute LC_TOTAL_PROBE_OUT_WIDTH of msys_vio_0_0_vio_v3_0_19_vio : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_vio_0_0_vio_v3_0_19_vio : entity is "vio_v3_0_19_vio";
   attribute dont_touch : string;
   attribute dont_touch of msys_vio_0_0_vio_v3_0_19_vio : entity is "true";
 end msys_vio_0_0_vio_v3_0_19_vio;

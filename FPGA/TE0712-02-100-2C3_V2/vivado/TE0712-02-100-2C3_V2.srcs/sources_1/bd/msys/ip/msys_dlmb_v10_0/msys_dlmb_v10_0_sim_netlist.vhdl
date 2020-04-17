@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
 -- Date        : Wed Apr 15 16:54:27 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_dlmb_v10_0/msys_dlmb_v10_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_dlmb_v10_0 -prefix
+--               msys_dlmb_v10_0_ msys_dlmb_v10_0_sim_netlist.vhdl
 -- Design      : msys_dlmb_v10_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -52,8 +52,6 @@ entity msys_dlmb_v10_0_lmb_v10 is
   attribute C_LMB_NUM_SLAVES of msys_dlmb_v10_0_lmb_v10 : entity is 1;
   attribute C_LMB_PROTOCOL : integer;
   attribute C_LMB_PROTOCOL of msys_dlmb_v10_0_lmb_v10 : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_dlmb_v10_0_lmb_v10 : entity is "lmb_v10";
 end msys_dlmb_v10_0_lmb_v10;
 
 architecture STRUCTURE of msys_dlmb_v10_0_lmb_v10 is
