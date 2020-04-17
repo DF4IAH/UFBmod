@@ -18917,8 +18917,10 @@ Subminiature Tact Switch for SMT</description>
 <part name="R0754" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="100R"/>
 <part name="TP1371" library="df4iah_connector" deviceset="TP" device="B1,27"/>
 <part name="S1321" library="df4iah_switch" deviceset="KSR223G_SMD_1POL" device=""/>
-<part name="R1321" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="100R"/>
+<part name="R1321" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="1kR"/>
 <part name="R0711" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="100R"/>
+<part name="C1321" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="100nF"/>
+<part name="GND0001" library="df4iah_supply" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -19873,13 +19875,9 @@ Top</text>
 </net>
 <net name="FPGA_RESET" class="0">
 <segment>
-<pinref part="JB3" gate="G$1" pin="B13_L1_P"/>
-<wire x1="144.78" y1="124.46" x2="144.78" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="137.16" x2="147.32" y2="137.16" width="0.1524" layer="91"/>
 <pinref part="JB3" gate="G$1" pin="B13_L1_N"/>
 <wire x1="147.32" y1="137.16" x2="147.32" y2="124.46" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="137.16" x2="50.8" y2="137.16" width="0.1524" layer="91"/>
-<junction x="144.78" y="137.16"/>
+<wire x1="147.32" y1="137.16" x2="50.8" y2="137.16" width="0.1524" layer="91"/>
 <label x="50.8" y="137.16" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
@@ -22442,8 +22440,13 @@ Digilent JTAG HS3</text>
 </instance>
 <instance part="GND1381" gate="1" x="198.12" y="60.96"/>
 <instance part="TP1371" gate="G$1" x="220.98" y="81.28"/>
-<instance part="S1321" gate="G$1" x="114.3" y="53.34"/>
-<instance part="R1321" gate="G$1" x="114.3" y="40.64" rot="R90"/>
+<instance part="S1321" gate="G$1" x="114.3" y="55.88"/>
+<instance part="R1321" gate="G$1" x="114.3" y="43.18" rot="R90"/>
+<instance part="C1321" gate="G$1" x="114.3" y="27.94" smashed="yes" rot="R180">
+<attribute name="NAME" x="108.839" y="26.924" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="111.379" y="26.924" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="GND0001" gate="1" x="114.3" y="20.32"/>
 </instances>
 <busses>
 </busses>
@@ -22515,6 +22518,11 @@ Digilent JTAG HS3</text>
 <pinref part="C1381" gate="G$1" pin="1"/>
 <wire x1="200.66" y1="63.5" x2="198.12" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="GND1381" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="GND0001" gate="1" pin="GND"/>
+<pinref part="C1321" gate="G$1" pin="1"/>
+<wire x1="114.3" y1="22.86" x2="114.3" y2="25.4" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="USB_SHIELD" class="0">
@@ -22931,23 +22939,26 @@ Digilent JTAG HS3</text>
 <net name="VCCIO13" class="0">
 <segment>
 <pinref part="S1321" gate="G$1" pin="S"/>
-<wire x1="114.3" y1="58.42" x2="114.3" y2="66.04" width="0.1524" layer="91"/>
-<label x="114.3" y="66.04" size="1.778" layer="95" rot="R90" xref="yes"/>
+<wire x1="114.3" y1="60.96" x2="114.3" y2="68.58" width="0.1524" layer="91"/>
+<label x="114.3" y="68.58" size="1.778" layer="95" rot="R90" xref="yes"/>
 </segment>
 </net>
 <net name="FPGA_RESET" class="0">
 <segment>
 <pinref part="R1321" gate="G$1" pin="1"/>
+<wire x1="114.3" y1="38.1" x2="114.3" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="35.56" x2="129.54" y2="35.56" width="0.1524" layer="91"/>
+<label x="129.54" y="35.56" size="1.778" layer="95" xref="yes"/>
+<pinref part="C1321" gate="G$1" pin="2"/>
 <wire x1="114.3" y1="35.56" x2="114.3" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="114.3" y1="33.02" x2="129.54" y2="33.02" width="0.1524" layer="91"/>
-<label x="129.54" y="33.02" size="1.778" layer="95" xref="yes"/>
+<junction x="114.3" y="35.56"/>
 </segment>
 </net>
 <net name="FPGA_RESET_R" class="0">
 <segment>
 <pinref part="R1321" gate="G$1" pin="2"/>
 <pinref part="S1321" gate="G$1" pin="P"/>
-<wire x1="114.3" y1="45.72" x2="114.3" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="48.26" x2="114.3" y2="50.8" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

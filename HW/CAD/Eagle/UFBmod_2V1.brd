@@ -6973,8 +6973,9 @@ Covered vias can be set in Masks (Limit).
 <attribute name="TP_SIGNAL_NAME" value="" x="30.48" y="69.85" size="0.6096" layer="27" ratio="20" display="off"/>
 </element>
 <element name="S1321" library="df4iah_switch" package="KSR223G_SMD_1POL" value="KSR223G_SMD_1POL" x="36.83" y="73.66" rot="R90"/>
-<element name="R1321" library="df4iah_rcl" package="R0402" value="100R" x="36.83" y="67.31" rot="R90"/>
+<element name="R1321" library="df4iah_rcl" package="R0402" value="1kR" x="36.83" y="67.31" rot="R90"/>
 <element name="R0711" library="df4iah_rcl" package="R0402" value="100R" x="5.08" y="53.34"/>
+<element name="C1321" library="df4iah_rcl" package="C0402" value="100nF" x="-21.59" y="-26.67"/>
 </elements>
 <signals>
 <signal name="GND">
@@ -7553,6 +7554,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="53.64" y1="44.15" x2="53.6575" y2="44.1325" width="0.1524" layer="16"/>
 <wire x1="53.6575" y1="44.1325" x2="53.975" y2="44.45" width="0.1524" layer="16"/>
 <via x="53.975" y="44.45" extent="1-16" drill="0.3"/>
+<contactref element="C1321" pad="1"/>
 <wire x1="92.71" y1="74.77" x2="93.345" y2="84.455" width="0" layer="19" extent="1-1"/>
 <wire x1="83.82" y1="76.2" x2="92.71" y2="74.77" width="0" layer="19" extent="1-1"/>
 <wire x1="80.01" y1="80.3275" x2="78.74" y2="80.33" width="0" layer="19" extent="1-1"/>
@@ -7694,6 +7696,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="94.8563" y1="50.8" x2="94.8563" y2="38.1" width="0" layer="19" extent="1-1"/>
 <wire x1="94.8563" y1="53.1241" x2="94.8563" y2="50.8" width="0" layer="19" extent="16-16"/>
 <wire x1="93.345" y1="5.08" x2="74.93" y2="12.05" width="0" layer="19" extent="16-16"/>
+<wire x1="-22.24" y1="-26.67" x2="5.08" y2="5.08" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="+3V3">
 <contactref element="L0703" pad="1"/>
@@ -9882,11 +9885,11 @@ Covered vias can be set in Masks (Limit).
 <contactref element="TP1371" pad="TP"/>
 </signal>
 <signal name="FPGA_RESET">
-<contactref element="JB3" pad="41"/>
 <contactref element="JB3" pad="43"/>
 <contactref element="R1321" pad="1"/>
-<wire x1="33.03" y1="48.21" x2="33.03" y2="47.71" width="0" layer="19" extent="1-1"/>
-<wire x1="36.83" y1="66.66" x2="33.03" y2="47.71" width="0" layer="19" extent="1-1"/>
+<contactref element="C1321" pad="2"/>
+<wire x1="33.03" y1="48.21" x2="36.83" y2="66.66" width="0" layer="19" extent="1-1"/>
+<wire x1="-20.94" y1="-26.67" x2="33.03" y2="48.21" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="FPGA_RESET_R">
 <contactref element="R1321" pad="2"/>
