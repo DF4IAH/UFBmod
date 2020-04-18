@@ -9391,7 +9391,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="55.245" y1="37.48" x2="55.23" y2="37.465" width="0.1524" layer="16"/>
 <wire x1="55.23" y1="37.465" x2="53.355" y2="37.465" width="0.1524" layer="16"/>
 </signal>
-<signal name="FPGA_FT_RESET">
+<signal name="FPGA_FT_RESETN">
 <contactref element="R0912" pad="1"/>
 <contactref element="JB2" pad="77"/>
 <wire x1="52.055" y1="37.465" x2="62.63" y2="62.81" width="0" layer="19" extent="1-16"/>
@@ -9474,12 +9474,12 @@ Covered vias can be set in Masks (Limit).
 <wire x1="61.43" y1="45.72" x2="62.5475" y2="45.72" width="0.1524" layer="16"/>
 <wire x1="62.5475" y1="45.72" x2="64.77" y2="66.69" width="0" layer="19" extent="1-16"/>
 </signal>
-<signal name="FPGA_FT_RTS">
+<signal name="FPGA_FT_RTSN">
 <contactref element="R0963" pad="2"/>
 <contactref element="JB2" pad="85"/>
 <wire x1="65.42" y1="46.355" x2="64.63" y2="62.81" width="0" layer="19" extent="1-16"/>
 </signal>
-<signal name="FPGA_FT_CTS">
+<signal name="FPGA_FT_CTSN">
 <contactref element="R0964" pad="2"/>
 <contactref element="JB2" pad="87"/>
 <wire x1="65.13" y1="62.81" x2="65.0875" y2="62.8525" width="0.1524" layer="1"/>
@@ -9515,7 +9515,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="62.5475" y1="43.815" x2="62.865" y2="43.4975" width="0.1524" layer="16"/>
 <wire x1="62.5475" y1="43.815" x2="69.85" y2="66.69" width="0" layer="19" extent="1-16"/>
 </signal>
-<signal name="FPGA_FT_DSR">
+<signal name="FPGA_FT_DSRN">
 <contactref element="R0966" pad="2"/>
 <contactref element="JB2" pad="93"/>
 <wire x1="66.63" y1="62.81" x2="66.675" y2="62.855" width="0.1524" layer="1"/>
@@ -9523,12 +9523,12 @@ Covered vias can be set in Masks (Limit).
 <wire x1="66.675" y1="64.135" x2="66.04" y2="64.77" width="0.1524" layer="1"/>
 <wire x1="66.04" y1="64.77" x2="66.04" y2="65.39" width="0.1524" layer="1"/>
 </signal>
-<signal name="FPGA_FT_DTR">
+<signal name="FPGA_FT_DTRN">
 <contactref element="R0965" pad="2"/>
 <contactref element="JB2" pad="91"/>
 <wire x1="65.42" y1="45.085" x2="66.13" y2="62.81" width="0" layer="19" extent="1-16"/>
 </signal>
-<signal name="FPGA_FT_DCD">
+<signal name="FPGA_FT_DCDN">
 <contactref element="R0967" pad="2"/>
 <contactref element="JB2" pad="95"/>
 <wire x1="67.13" y1="62.81" x2="66.9925" y2="62.9475" width="0.1524" layer="1"/>
@@ -9536,7 +9536,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="66.9925" y1="63.8175" x2="67.945" y2="64.77" width="0.1524" layer="1"/>
 <wire x1="67.945" y1="64.77" x2="67.945" y2="65.39" width="0.1524" layer="1"/>
 </signal>
-<signal name="FPGA_FT_RI">
+<signal name="FPGA_FT_RIN">
 <contactref element="R0968" pad="2"/>
 <contactref element="JB2" pad="97"/>
 <wire x1="67.63" y1="62.81" x2="67.6275" y2="62.8125" width="0.1524" layer="1"/>

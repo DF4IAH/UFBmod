@@ -19398,6 +19398,14 @@ Left</text>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">Trenz-Electronic TE0712-02-100-2C3  Right-Connector</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">Trenz-Electronic FPGA
 Right</text>
+<text x="162.56" y="27.94" size="1.778" layer="94">out</text>
+<text x="162.56" y="30.48" size="1.778" layer="94">out</text>
+<text x="162.56" y="33.02" size="1.778" layer="94">out</text>
+<text x="162.56" y="35.56" size="1.778" layer="94">out</text>
+<text x="162.56" y="43.18" size="1.778" layer="94">out</text>
+<text x="162.56" y="45.72" size="1.778" layer="94">in</text>
+<text x="162.56" y="38.1" size="1.778" layer="94">in</text>
+<text x="162.56" y="55.88" size="1.778" layer="94">out</text>
 </plain>
 <instances>
 <instance part="FRAME_02" gate="G$1" x="0" y="0" smashed="yes">
@@ -19605,14 +19613,14 @@ Right</text>
 <label x="76.2" y="40.64" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_FT_DCD" class="0">
+<net name="FPGA_FT_DCDN" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_L22_N"/>
 <wire x1="162.56" y1="33.02" x2="182.88" y2="33.02" width="0.1524" layer="91"/>
 <label x="182.88" y="33.02" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_FT_RI" class="0">
+<net name="FPGA_FT_RIN" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_L22_P"/>
 <wire x1="162.56" y1="30.48" x2="215.9" y2="30.48" width="0.1524" layer="91"/>
@@ -19626,35 +19634,35 @@ Right</text>
 <label x="182.88" y="27.94" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_FT_RTS" class="0">
+<net name="FPGA_FT_RTSN" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_L21_P"/>
 <wire x1="162.56" y1="45.72" x2="182.88" y2="45.72" width="0.1524" layer="91"/>
 <label x="182.88" y="45.72" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_FT_CTS" class="0">
+<net name="FPGA_FT_CTSN" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_L21_N"/>
 <wire x1="162.56" y1="43.18" x2="215.9" y2="43.18" width="0.1524" layer="91"/>
 <label x="215.9" y="43.18" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_FT_DTR" class="0">
+<net name="FPGA_FT_DTRN" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_L24_N"/>
 <wire x1="162.56" y1="38.1" x2="182.88" y2="38.1" width="0.1524" layer="91"/>
 <label x="182.88" y="38.1" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_FT_DSR" class="0">
+<net name="FPGA_FT_DSRN" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_L24_P"/>
 <wire x1="162.56" y1="35.56" x2="215.9" y2="35.56" width="0.1524" layer="91"/>
 <label x="215.9" y="35.56" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_FT_RESET" class="0">
+<net name="FPGA_FT_RESETN" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_L15_N"/>
 <wire x1="162.56" y1="55.88" x2="215.9" y2="55.88" width="0.1524" layer="91"/>
@@ -21346,7 +21354,7 @@ FT232H</text>
 <junction x="63.5" y="104.14"/>
 </segment>
 </net>
-<net name="FPGA_FT_RESET" class="0">
+<net name="FPGA_FT_RESETN" class="0">
 <segment>
 <pinref part="R0912" gate="G$1" pin="1"/>
 <wire x1="48.26" y1="104.14" x2="38.1" y2="104.14" width="0.1524" layer="91"/>
@@ -21454,14 +21462,14 @@ FT232H</text>
 <label x="228.6" y="124.46" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_FT_RTS" class="0">
+<net name="FPGA_FT_RTSN" class="0">
 <segment>
 <pinref part="R0963" gate="G$1" pin="2"/>
 <wire x1="185.42" y1="121.92" x2="228.6" y2="121.92" width="0.1524" layer="91"/>
 <label x="228.6" y="121.92" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_FT_CTS" class="0">
+<net name="FPGA_FT_CTSN" class="0">
 <segment>
 <pinref part="R0964" gate="G$1" pin="2"/>
 <wire x1="218.44" y1="119.38" x2="228.6" y2="119.38" width="0.1524" layer="91"/>
@@ -21496,28 +21504,28 @@ FT232H</text>
 <wire x1="154.94" y1="109.22" x2="208.28" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="FPGA_FT_DSR" class="0">
+<net name="FPGA_FT_DSRN" class="0">
 <segment>
 <pinref part="R0966" gate="G$1" pin="2"/>
 <wire x1="226.06" y1="114.3" x2="228.6" y2="114.3" width="0.1524" layer="91"/>
 <label x="228.6" y="114.3" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_FT_DTR" class="0">
+<net name="FPGA_FT_DTRN" class="0">
 <segment>
 <pinref part="R0965" gate="G$1" pin="2"/>
 <wire x1="193.04" y1="116.84" x2="228.6" y2="116.84" width="0.1524" layer="91"/>
 <label x="228.6" y="116.84" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_FT_DCD" class="0">
+<net name="FPGA_FT_DCDN" class="0">
 <segment>
 <pinref part="R0967" gate="G$1" pin="2"/>
 <wire x1="210.82" y1="111.76" x2="228.6" y2="111.76" width="0.1524" layer="91"/>
 <label x="228.6" y="111.76" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_FT_RI" class="0">
+<net name="FPGA_FT_RIN" class="0">
 <segment>
 <pinref part="R0968" gate="G$1" pin="2"/>
 <wire x1="218.44" y1="109.22" x2="228.6" y2="109.22" width="0.1524" layer="91"/>
