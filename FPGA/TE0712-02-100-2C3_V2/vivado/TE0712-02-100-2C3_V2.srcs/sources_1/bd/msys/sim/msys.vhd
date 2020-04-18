@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Fri Apr 17 22:05:47 2020
+--Date        : Sat Apr 18 10:44:30 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -1381,10 +1381,10 @@ architecture STRUCTURE of microblaze_0_local_memory_imp_17WFGJG is
   signal NLW_ilmb_v10_LMB_Rst_UNCONNECTED : STD_LOGIC;
   signal NLW_lmb_bram_rsta_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_lmb_bram_rstb_busy_UNCONNECTED : STD_LOGIC;
+  attribute BMM_INFO_ADDRESS_SPACE : string;
+  attribute BMM_INFO_ADDRESS_SPACE of dlmb_bram_if_cntlr : label is "byte  0x00000000 32 > msys microblaze_0_local_memory/lmb_bram";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of dlmb_bram_if_cntlr : label is "yes";
-  attribute bmm_info_address_space : string;
-  attribute bmm_info_address_space of dlmb_bram_if_cntlr : label is "byte  0x00000000 32 > msys microblaze_0_local_memory/lmb_bram";
 begin
   DLMB_ce <= microblaze_0_dlmb_CE;
   DLMB_readdbus(0 to 31) <= microblaze_0_dlmb_READDBUS(0 to 31);
@@ -4340,6 +4340,7 @@ entity msys is
     DDR3_SDRAM_ras_n : out STD_LOGIC;
     DDR3_SDRAM_reset_n : out STD_LOGIC;
     DDR3_SDRAM_we_n : out STD_LOGIC;
+    DDR3_init_calib_complete : out STD_LOGIC;
     ETH0_MDIO_MDC_mdc : out STD_LOGIC;
     ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
     ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
@@ -4356,6 +4357,8 @@ entity msys is
     UART0EXT_DTRn : in STD_LOGIC;
     UART0EXT_RIn : out STD_LOGIC_VECTOR ( 0 to 0 );
     UART0EXT_RTSn : in STD_LOGIC;
+    UART0_clk : out STD_LOGIC;
+    UART0_rst_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     UART0_rxd : in STD_LOGIC;
     UART0_txd : out STD_LOGIC;
     mgt_clk0_clk_n : in STD_LOGIC;
@@ -4380,10 +4383,10 @@ entity msys is
     sys_diff_clock_clk_n : in STD_LOGIC;
     sys_diff_clock_clk_p : in STD_LOGIC
   );
-  attribute core_generation_info : string;
-  attribute core_generation_info of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=53,numReposBlks=39,numNonXlnxBlks=3,numHierBlks=14,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
-  attribute hw_handoff : string;
-  attribute hw_handoff of msys : entity is "msys.hwdef";
+  attribute CORE_GENERATION_INFO : string;
+  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=55,numReposBlks=41,numNonXlnxBlks=3,numHierBlks=14,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
+  attribute HW_HANDOFF : string;
+  attribute HW_HANDOFF of msys : entity is "msys.hwdef";
 end msys;
 
 architecture STRUCTURE of msys is
@@ -5050,6 +5053,27 @@ architecture STRUCTURE of msys is
     Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_uart0_xlslice_1_1;
+  component msys_rst_mig_7series_0_50M_1 is
+  port (
+    slowest_sync_clk : in STD_LOGIC;
+    ext_reset_in : in STD_LOGIC;
+    aux_reset_in : in STD_LOGIC;
+    mb_debug_sys_rst : in STD_LOGIC;
+    dcm_locked : in STD_LOGIC;
+    mb_reset : out STD_LOGIC;
+    bus_struct_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
+    peripheral_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
+    interconnect_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_rst_mig_7series_0_50M_1;
+  component msys_clk_wiz_0_0 is
+  port (
+    reset : in STD_LOGIC;
+    clk_in1 : in STD_LOGIC;
+    clk_out1 : out STD_LOGIC
+  );
+  end component msys_clk_wiz_0_0;
   signal ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal BUFG_I_0_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal CLK_IN_D_0_1_CLK_N : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -5064,6 +5088,7 @@ architecture STRUCTURE of msys is
   signal SC0712_0_reset_out : STD_LOGIC;
   signal UART0EXT_DTRn_1 : STD_LOGIC;
   signal UART0EXT_RTSn_1 : STD_LOGIC;
+  signal UART0_clk_wiz_0_clk_out1 : STD_LOGIC;
   signal axi_ethernetlite_0_MDIO_MDC : STD_LOGIC;
   signal axi_ethernetlite_0_MDIO_MDIO_I : STD_LOGIC;
   signal axi_ethernetlite_0_MDIO_MDIO_O : STD_LOGIC;
@@ -5417,6 +5442,7 @@ architecture STRUCTURE of msys is
   signal mig_7series_0_DDR3_RAS_N : STD_LOGIC;
   signal mig_7series_0_DDR3_RESET_N : STD_LOGIC;
   signal mig_7series_0_DDR3_WE_N : STD_LOGIC;
+  signal mig_7series_0_init_calib_complete : STD_LOGIC;
   signal mig_7series_0_mmcm_locked : STD_LOGIC;
   signal mig_7series_0_ui_addn_clk_0 : STD_LOGIC;
   signal mig_7series_0_ui_addn_clk_2 : STD_LOGIC;
@@ -5441,6 +5467,7 @@ architecture STRUCTURE of msys is
   signal rst_mig_7series_0_100M_bus_struct_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal rst_mig_7series_0_100M_mb_reset : STD_LOGIC;
   signal rst_mig_7series_0_100M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal rst_mig_7series_0_12M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal rst_mig_7series_0_50M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal sys_diff_clock_1_CLK_N : STD_LOGIC;
   signal sys_diff_clock_1_CLK_P : STD_LOGIC;
@@ -5459,7 +5486,6 @@ architecture STRUCTURE of msys is
   signal NLW_axi_timer_0_generateout0_UNCONNECTED : STD_LOGIC;
   signal NLW_axi_timer_0_generateout1_UNCONNECTED : STD_LOGIC;
   signal NLW_axi_timer_0_pwm0_UNCONNECTED : STD_LOGIC;
-  signal NLW_mig_7series_0_init_calib_complete_UNCONNECTED : STD_LOGIC;
   signal NLW_mig_7series_0_ui_addn_clk_1_UNCONNECTED : STD_LOGIC;
   signal NLW_mii_y_adapater_0_m_mii_rst_n_UNCONNECTED : STD_LOGIC;
   signal NLW_proc_sys_reset_0_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -5470,72 +5496,80 @@ architecture STRUCTURE of msys is
   signal NLW_proc_sys_reset_eth_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_proc_sys_reset_eth_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_mig_7series_0_100M_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_rst_mig_7series_0_12M_mb_reset_UNCONNECTED : STD_LOGIC;
+  signal NLW_rst_mig_7series_0_12M_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_rst_mig_7series_0_12M_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_rst_mig_7series_0_12M_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_mig_7series_0_50M_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_rst_mig_7series_0_50M_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_mig_7series_0_50M_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_mig_7series_0_50M_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_util_ds_buf_1_IBUF_DS_ODIV2_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  attribute BMM_INFO_PROCESSOR : string;
+  attribute BMM_INFO_PROCESSOR of microblaze_0 : label is "microblaze-le > msys microblaze_0_local_memory/dlmb_bram_if_cntlr";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of microblaze_0 : label is "yes";
-  attribute bmm_info_processor : string;
-  attribute bmm_info_processor of microblaze_0 : label is "microblaze-le > msys microblaze_0_local_memory/dlmb_bram_if_cntlr";
-  attribute x_interface_info : string;
-  attribute x_interface_info of DDR3_SDRAM_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CAS_N";
-  attribute x_interface_info of DDR3_SDRAM_ras_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM RAS_N";
-  attribute x_interface_info of DDR3_SDRAM_reset_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM RESET_N";
-  attribute x_interface_info of DDR3_SDRAM_we_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM WE_N";
-  attribute x_interface_info of ETH0_MDIO_MDC_mdc : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDC";
-  attribute x_interface_parameter : string;
-  attribute x_interface_parameter of ETH0_MDIO_MDC_mdc : signal is "XIL_INTERFACENAME ETH0_MDIO_MDC, CAN_DEBUG false";
-  attribute x_interface_info of ETH0_MDIO_MDC_mdio_i : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDIO_I";
-  attribute x_interface_info of ETH0_MDIO_MDC_mdio_o : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDIO_O";
-  attribute x_interface_info of ETH0_MDIO_MDC_mdio_t : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDIO_T";
-  attribute x_interface_info of RMII_PHY_M_0_crs_dv : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 CRS_DV";
-  attribute x_interface_info of RMII_PHY_M_0_tx_en : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 TX_EN";
-  attribute x_interface_info of UART0_rxd : signal is "xilinx.com:interface:uart:1.0 UART0 RxD";
-  attribute x_interface_info of UART0_txd : signal is "xilinx.com:interface:uart:1.0 UART0 TxD";
-  attribute x_interface_info of mgt_clk0_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 mgt_clk0 CLK_N";
-  attribute x_interface_parameter of mgt_clk0_clk_n : signal is "XIL_INTERFACENAME mgt_clk0, CAN_DEBUG false, FREQ_HZ 125000000";
-  attribute x_interface_info of mgt_clk0_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 mgt_clk0 CLK_P";
-  attribute x_interface_info of qspi_flash_io0_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO0_I";
-  attribute x_interface_info of qspi_flash_io0_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO0_O";
-  attribute x_interface_info of qspi_flash_io0_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO0_T";
-  attribute x_interface_info of qspi_flash_io1_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO1_I";
-  attribute x_interface_info of qspi_flash_io1_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO1_O";
-  attribute x_interface_info of qspi_flash_io1_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO1_T";
-  attribute x_interface_info of qspi_flash_io2_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO2_I";
-  attribute x_interface_info of qspi_flash_io2_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO2_O";
-  attribute x_interface_info of qspi_flash_io2_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO2_T";
-  attribute x_interface_info of qspi_flash_io3_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO3_I";
-  attribute x_interface_info of qspi_flash_io3_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO3_O";
-  attribute x_interface_info of qspi_flash_io3_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO3_T";
-  attribute x_interface_info of qspi_flash_ss_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash SS_I";
-  attribute x_interface_info of qspi_flash_ss_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash SS_O";
-  attribute x_interface_info of qspi_flash_ss_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash SS_T";
-  attribute x_interface_info of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
-  attribute x_interface_parameter of reset : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
-  attribute x_interface_info of sys_diff_clock_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 sys_diff_clock CLK_N";
-  attribute x_interface_parameter of sys_diff_clock_clk_n : signal is "XIL_INTERFACENAME sys_diff_clock, CAN_DEBUG false, FREQ_HZ 100000000";
-  attribute x_interface_info of sys_diff_clock_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 sys_diff_clock CLK_P";
-  attribute x_interface_info of CLK0_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 CLK0 CLK_N";
-  attribute x_interface_parameter of CLK0_clk_n : signal is "XIL_INTERFACENAME CLK0, CAN_DEBUG false, FREQ_HZ 100000000";
-  attribute x_interface_info of CLK0_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 CLK0 CLK_P";
-  attribute x_interface_info of CLK1B : signal is "xilinx.com:signal:clock:1.0 CLK.CLK1B CLK";
-  attribute x_interface_parameter of CLK1B : signal is "XIL_INTERFACENAME CLK.CLK1B, CLK_DOMAIN msys_CLK1B, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000";
-  attribute x_interface_info of DDR3_SDRAM_addr : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ADDR";
-  attribute x_interface_parameter of DDR3_SDRAM_addr : signal is "XIL_INTERFACENAME DDR3_SDRAM, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250";
-  attribute x_interface_info of DDR3_SDRAM_ba : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM BA";
-  attribute x_interface_info of DDR3_SDRAM_ck_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CK_N";
-  attribute x_interface_info of DDR3_SDRAM_ck_p : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CK_P";
-  attribute x_interface_info of DDR3_SDRAM_cke : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CKE";
-  attribute x_interface_info of DDR3_SDRAM_cs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CS_N";
-  attribute x_interface_info of DDR3_SDRAM_dm : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DM";
-  attribute x_interface_info of DDR3_SDRAM_dq : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQ";
-  attribute x_interface_info of DDR3_SDRAM_dqs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_N";
-  attribute x_interface_info of DDR3_SDRAM_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_P";
-  attribute x_interface_info of DDR3_SDRAM_odt : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ODT";
-  attribute x_interface_info of RMII_PHY_M_0_rxd : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 RXD";
-  attribute x_interface_info of RMII_PHY_M_0_txd : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 TXD";
+  attribute X_INTERFACE_INFO : string;
+  attribute X_INTERFACE_INFO of DDR3_SDRAM_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CAS_N";
+  attribute X_INTERFACE_INFO of DDR3_SDRAM_ras_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM RAS_N";
+  attribute X_INTERFACE_INFO of DDR3_SDRAM_reset_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM RESET_N";
+  attribute X_INTERFACE_INFO of DDR3_SDRAM_we_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM WE_N";
+  attribute X_INTERFACE_INFO of ETH0_MDIO_MDC_mdc : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDC";
+  attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of ETH0_MDIO_MDC_mdc : signal is "XIL_INTERFACENAME ETH0_MDIO_MDC, CAN_DEBUG false";
+  attribute X_INTERFACE_INFO of ETH0_MDIO_MDC_mdio_i : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDIO_I";
+  attribute X_INTERFACE_INFO of ETH0_MDIO_MDC_mdio_o : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDIO_O";
+  attribute X_INTERFACE_INFO of ETH0_MDIO_MDC_mdio_t : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDIO_T";
+  attribute X_INTERFACE_INFO of RMII_PHY_M_0_crs_dv : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 CRS_DV";
+  attribute X_INTERFACE_INFO of RMII_PHY_M_0_tx_en : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 TX_EN";
+  attribute X_INTERFACE_INFO of UART0_clk : signal is "xilinx.com:signal:clock:1.0 CLK.UART0_CLK CLK";
+  attribute X_INTERFACE_PARAMETER of UART0_clk : signal is "XIL_INTERFACENAME CLK.UART0_CLK, CLK_DOMAIN /UART0_clk_wiz_0_clk_out1, FREQ_HZ 12000000, INSERT_VIP 0, PHASE 0.0";
+  attribute X_INTERFACE_INFO of UART0_rxd : signal is "xilinx.com:interface:uart:1.0 UART0 RxD";
+  attribute X_INTERFACE_INFO of UART0_txd : signal is "xilinx.com:interface:uart:1.0 UART0 TxD";
+  attribute X_INTERFACE_INFO of mgt_clk0_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 mgt_clk0 CLK_N";
+  attribute X_INTERFACE_PARAMETER of mgt_clk0_clk_n : signal is "XIL_INTERFACENAME mgt_clk0, CAN_DEBUG false, FREQ_HZ 125000000";
+  attribute X_INTERFACE_INFO of mgt_clk0_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 mgt_clk0 CLK_P";
+  attribute X_INTERFACE_INFO of qspi_flash_io0_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO0_I";
+  attribute X_INTERFACE_INFO of qspi_flash_io0_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO0_O";
+  attribute X_INTERFACE_INFO of qspi_flash_io0_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO0_T";
+  attribute X_INTERFACE_INFO of qspi_flash_io1_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO1_I";
+  attribute X_INTERFACE_INFO of qspi_flash_io1_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO1_O";
+  attribute X_INTERFACE_INFO of qspi_flash_io1_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO1_T";
+  attribute X_INTERFACE_INFO of qspi_flash_io2_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO2_I";
+  attribute X_INTERFACE_INFO of qspi_flash_io2_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO2_O";
+  attribute X_INTERFACE_INFO of qspi_flash_io2_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO2_T";
+  attribute X_INTERFACE_INFO of qspi_flash_io3_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO3_I";
+  attribute X_INTERFACE_INFO of qspi_flash_io3_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO3_O";
+  attribute X_INTERFACE_INFO of qspi_flash_io3_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO3_T";
+  attribute X_INTERFACE_INFO of qspi_flash_ss_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash SS_I";
+  attribute X_INTERFACE_INFO of qspi_flash_ss_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash SS_O";
+  attribute X_INTERFACE_INFO of qspi_flash_ss_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash SS_T";
+  attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
+  attribute X_INTERFACE_PARAMETER of reset : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
+  attribute X_INTERFACE_INFO of sys_diff_clock_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 sys_diff_clock CLK_N";
+  attribute X_INTERFACE_PARAMETER of sys_diff_clock_clk_n : signal is "XIL_INTERFACENAME sys_diff_clock, CAN_DEBUG false, FREQ_HZ 100000000";
+  attribute X_INTERFACE_INFO of sys_diff_clock_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 sys_diff_clock CLK_P";
+  attribute X_INTERFACE_INFO of CLK0_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 CLK0 CLK_N";
+  attribute X_INTERFACE_PARAMETER of CLK0_clk_n : signal is "XIL_INTERFACENAME CLK0, CAN_DEBUG false, FREQ_HZ 100000000";
+  attribute X_INTERFACE_INFO of CLK0_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 CLK0 CLK_P";
+  attribute X_INTERFACE_INFO of CLK1B : signal is "xilinx.com:signal:clock:1.0 CLK.CLK1B CLK";
+  attribute X_INTERFACE_PARAMETER of CLK1B : signal is "XIL_INTERFACENAME CLK.CLK1B, CLK_DOMAIN msys_CLK1B, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000";
+  attribute X_INTERFACE_INFO of DDR3_SDRAM_addr : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ADDR";
+  attribute X_INTERFACE_PARAMETER of DDR3_SDRAM_addr : signal is "XIL_INTERFACENAME DDR3_SDRAM, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250";
+  attribute X_INTERFACE_INFO of DDR3_SDRAM_ba : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM BA";
+  attribute X_INTERFACE_INFO of DDR3_SDRAM_ck_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CK_N";
+  attribute X_INTERFACE_INFO of DDR3_SDRAM_ck_p : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CK_P";
+  attribute X_INTERFACE_INFO of DDR3_SDRAM_cke : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CKE";
+  attribute X_INTERFACE_INFO of DDR3_SDRAM_cs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CS_N";
+  attribute X_INTERFACE_INFO of DDR3_SDRAM_dm : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DM";
+  attribute X_INTERFACE_INFO of DDR3_SDRAM_dq : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQ";
+  attribute X_INTERFACE_INFO of DDR3_SDRAM_dqs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_N";
+  attribute X_INTERFACE_INFO of DDR3_SDRAM_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_P";
+  attribute X_INTERFACE_INFO of DDR3_SDRAM_odt : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ODT";
+  attribute X_INTERFACE_INFO of RMII_PHY_M_0_rxd : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 RXD";
+  attribute X_INTERFACE_INFO of RMII_PHY_M_0_txd : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 TXD";
+  attribute X_INTERFACE_INFO of UART0_rst_n : signal is "xilinx.com:signal:reset:1.0 RST.UART0_RST_N RST";
+  attribute X_INTERFACE_PARAMETER of UART0_rst_n : signal is "XIL_INTERFACENAME RST.UART0_RST_N, INSERT_VIP 0, POLARITY ACTIVE_LOW";
 begin
   BUFG_I_0_1(0) <= CLK1B(0);
   CLK_IN_D_0_1_CLK_N(0) <= CLK0_clk_n(0);
@@ -5552,6 +5586,7 @@ begin
   DDR3_SDRAM_ras_n <= mig_7series_0_DDR3_RAS_N;
   DDR3_SDRAM_reset_n <= mig_7series_0_DDR3_RESET_N;
   DDR3_SDRAM_we_n <= mig_7series_0_DDR3_WE_N;
+  DDR3_init_calib_complete <= mig_7series_0_init_calib_complete;
   ETH0_MDIO_MDC_mdc <= axi_ethernetlite_0_MDIO_MDC;
   ETH0_MDIO_MDC_mdio_o <= axi_ethernetlite_0_MDIO_MDIO_O;
   ETH0_MDIO_MDC_mdio_t <= axi_ethernetlite_0_MDIO_MDIO_T;
@@ -5564,6 +5599,8 @@ begin
   UART0EXT_DTRn_1 <= UART0EXT_DTRn;
   UART0EXT_RIn(0) <= uart0_xlslice_3_Dout(0);
   UART0EXT_RTSn_1 <= UART0EXT_RTSn;
+  UART0_clk <= UART0_clk_wiz_0_clk_out1;
+  UART0_rst_n(0) <= rst_mig_7series_0_12M_peripheral_aresetn(0);
   UART0_txd <= axi_uartlite_0_UART_TxD;
   axi_ethernetlite_0_MDIO_MDIO_I <= ETH0_MDIO_MDC_mdio_i;
   axi_quad_spi_0_SPI_0_IO0_I <= qspi_flash_io0_i;
@@ -5607,6 +5644,12 @@ SC0712_0: component msys_SC0712_0_0
       sda_i => axi_iic_0_IIC_SDA_I,
       sda_o => axi_iic_0_IIC_SDA_O,
       sda_t => axi_iic_0_IIC_SDA_T
+    );
+UART0_clk_wiz_0: component msys_clk_wiz_0_0
+     port map (
+      clk_in1 => microblaze_0_Clk,
+      clk_out1 => UART0_clk_wiz_0_clk_out1,
+      reset => mig_7series_0_ui_clk_sync_rst
     );
 axi_ethernetlite_0: component msys_axi_ethernetlite_0_0
      port map (
@@ -6350,7 +6393,7 @@ mig_7series_0: component msys_mig_7series_0_0
       ddr3_ras_n => mig_7series_0_DDR3_RAS_N,
       ddr3_reset_n => mig_7series_0_DDR3_RESET_N,
       ddr3_we_n => mig_7series_0_DDR3_WE_N,
-      init_calib_complete => NLW_mig_7series_0_init_calib_complete_UNCONNECTED,
+      init_calib_complete => mig_7series_0_init_calib_complete,
       mmcm_locked => mig_7series_0_mmcm_locked,
       s_axi_araddr(29 downto 0) => axi_interconnect_0_M00_AXI_ARADDR(29 downto 0),
       s_axi_arburst(1 downto 0) => axi_interconnect_0_M00_AXI_ARBURST(1 downto 0),
@@ -6482,6 +6525,19 @@ rst_mig_7series_0_100M: component msys_rst_mig_7series_0_100M_0
       peripheral_aresetn(0) => rst_mig_7series_0_100M_peripheral_aresetn(0),
       peripheral_reset(0) => NLW_rst_mig_7series_0_100M_peripheral_reset_UNCONNECTED(0),
       slowest_sync_clk => microblaze_0_Clk
+    );
+rst_mig_7series_0_12M: component msys_rst_mig_7series_0_50M_1
+     port map (
+      aux_reset_in => '1',
+      bus_struct_reset(0) => NLW_rst_mig_7series_0_12M_bus_struct_reset_UNCONNECTED(0),
+      dcm_locked => '1',
+      ext_reset_in => mig_7series_0_ui_clk_sync_rst,
+      interconnect_aresetn(0) => NLW_rst_mig_7series_0_12M_interconnect_aresetn_UNCONNECTED(0),
+      mb_debug_sys_rst => '0',
+      mb_reset => NLW_rst_mig_7series_0_12M_mb_reset_UNCONNECTED,
+      peripheral_aresetn(0) => rst_mig_7series_0_12M_peripheral_aresetn(0),
+      peripheral_reset(0) => NLW_rst_mig_7series_0_12M_peripheral_reset_UNCONNECTED(0),
+      slowest_sync_clk => UART0_clk_wiz_0_clk_out1
     );
 rst_mig_7series_0_50M: component msys_rst_mig_7series_0_50M_0
      port map (

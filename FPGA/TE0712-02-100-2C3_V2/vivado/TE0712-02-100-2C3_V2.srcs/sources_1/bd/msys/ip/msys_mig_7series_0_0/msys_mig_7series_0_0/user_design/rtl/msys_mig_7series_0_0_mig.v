@@ -228,9 +228,9 @@ module msys_mig_7series_0_0_mig #
    // The following parameters are multiplier and divisor factors for PLLE2.
    // Based on the selected design frequency these parameters vary.
    //***************************************************************************
-   parameter CLKIN_PERIOD          = 20000,
+   parameter CLKIN_PERIOD          = 2500,
                                      // Input Clock Period
-   parameter CLKFBOUT_MULT         = 16,
+   parameter CLKFBOUT_MULT         = 2,
                                      // write PLL VCO multiplier
    parameter DIVCLK_DIVIDE         = 1,
                                      // write PLL VCO divisor
@@ -283,7 +283,7 @@ module msys_mig_7series_0_0_mig #
    //***************************************************************************
    parameter tCKE                  = 5000,
                                      // memory tCKE paramter in pS
-   parameter tFAW                  = 30000,
+   parameter tFAW                  = 40000,
                                      // memory tRAW paramter in pS.
    parameter tPRDI                 = 1_000_000,
                                      // memory tPRDI paramter in pS.
@@ -293,11 +293,11 @@ module msys_mig_7series_0_0_mig #
                                      // memory tRCD paramter in pS.
    parameter tREFI                 = 7800000,
                                      // memory tREFI paramter in pS.
-   parameter tRFC                  = 300000,
+   parameter tRFC                  = 260000,
                                      // memory tRFC paramter in pS.
    parameter tRP                   = 13750,
                                      // memory tRP paramter in pS.
-   parameter tRRD                  = 6000,
+   parameter tRRD                  = 7500,
                                      // memory tRRD paramter in pS.
    parameter tRTP                  = 7500,
                                      // memory tRTP paramter in pS.

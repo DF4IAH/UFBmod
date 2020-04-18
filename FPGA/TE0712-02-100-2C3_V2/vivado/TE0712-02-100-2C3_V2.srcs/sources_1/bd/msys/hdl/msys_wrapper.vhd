@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Fri Apr 17 22:05:47 2020
+--Date        : Sat Apr 18 10:44:31 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -31,6 +31,7 @@ entity msys_wrapper is
     DDR3_SDRAM_ras_n : out STD_LOGIC;
     DDR3_SDRAM_reset_n : out STD_LOGIC;
     DDR3_SDRAM_we_n : out STD_LOGIC;
+    DDR3_init_calib_complete : out STD_LOGIC;
     ETH0_MDIO_MDC_mdc : out STD_LOGIC;
     ETH0_MDIO_MDC_mdio_io : inout STD_LOGIC;
     PLL_I2C_ext_scl_o : out STD_LOGIC;
@@ -45,6 +46,8 @@ entity msys_wrapper is
     UART0EXT_DTRn : in STD_LOGIC;
     UART0EXT_RIn : out STD_LOGIC_VECTOR ( 0 to 0 );
     UART0EXT_RTSn : in STD_LOGIC;
+    UART0_clk : out STD_LOGIC;
+    UART0_rst_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     UART0_rxd : in STD_LOGIC;
     UART0_txd : out STD_LOGIC;
     mgt_clk0_clk_n : in STD_LOGIC;
@@ -75,6 +78,13 @@ architecture STRUCTURE of msys_wrapper is
     UART0EXT_DSRn : out STD_LOGIC_VECTOR ( 0 to 0 );
     UART0EXT_DCDn : out STD_LOGIC_VECTOR ( 0 to 0 );
     UART0EXT_RIn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    UART0_rst_n : out STD_LOGIC_VECTOR ( 0 to 0 );
+    UART0_clk : out STD_LOGIC;
+    DDR3_init_calib_complete : out STD_LOGIC;
+    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
+    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    RMII_PHY_M_0_tx_en : out STD_LOGIC;
+    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
     CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     qspi_flash_io0_i : in STD_LOGIC;
@@ -92,16 +102,8 @@ architecture STRUCTURE of msys_wrapper is
     qspi_flash_ss_i : in STD_LOGIC;
     qspi_flash_ss_o : out STD_LOGIC;
     qspi_flash_ss_t : out STD_LOGIC;
-    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
-    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    RMII_PHY_M_0_tx_en : out STD_LOGIC;
-    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
-    sys_diff_clock_clk_p : in STD_LOGIC;
-    sys_diff_clock_clk_n : in STD_LOGIC;
+    UART0_rxd : in STD_LOGIC;
+    UART0_txd : out STD_LOGIC;
     DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -117,8 +119,12 @@ architecture STRUCTURE of msys_wrapper is
     DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
+    sys_diff_clock_clk_p : in STD_LOGIC;
+    sys_diff_clock_clk_n : in STD_LOGIC;
     mgt_clk0_clk_p : in STD_LOGIC;
     mgt_clk0_clk_n : in STD_LOGIC
   );
@@ -177,6 +183,7 @@ msys_i: component msys
       DDR3_SDRAM_ras_n => DDR3_SDRAM_ras_n,
       DDR3_SDRAM_reset_n => DDR3_SDRAM_reset_n,
       DDR3_SDRAM_we_n => DDR3_SDRAM_we_n,
+      DDR3_init_calib_complete => DDR3_init_calib_complete,
       ETH0_MDIO_MDC_mdc => ETH0_MDIO_MDC_mdc,
       ETH0_MDIO_MDC_mdio_i => ETH0_MDIO_MDC_mdio_i,
       ETH0_MDIO_MDC_mdio_o => ETH0_MDIO_MDC_mdio_o,
@@ -193,6 +200,8 @@ msys_i: component msys
       UART0EXT_DTRn => UART0EXT_DTRn,
       UART0EXT_RIn(0) => UART0EXT_RIn(0),
       UART0EXT_RTSn => UART0EXT_RTSn,
+      UART0_clk => UART0_clk,
+      UART0_rst_n(0) => UART0_rst_n(0),
       UART0_rxd => UART0_rxd,
       UART0_txd => UART0_txd,
       mgt_clk0_clk_n => mgt_clk0_clk_n,
