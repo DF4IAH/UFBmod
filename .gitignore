@@ -31,6 +31,8 @@
 *.out
 *.app
 
+# EAGLE ECAD-System
+HW/CAD/Eagle/UFBmod_?V?.?#?
 
 # XILINX Vivado
 *.cache/
