@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="msys" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1587199495"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1587199495"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1587199495"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1587199495"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1587221475"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1587221475"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1587221475"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1587221475"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\msys_SC0712_0_0\msys_SC0712_0_0.xci" Type="IP">
         <Instance HierarchyPath="SC0712_0"/>
@@ -337,6 +337,46 @@
       </File>
       <File Name="ip\msys_clk_wiz_0_0\msys_clk_wiz_0_0.xci" Type="IP">
         <Instance HierarchyPath="UART0_clk_wiz_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_selectio_wiz_0_0\msys_selectio_wiz_0_0.xci" Type="IP">
+        <Instance HierarchyPath="ETH0_selectio_wiz_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_util_reduced_logic_0_1\msys_util_reduced_logic_0_1.xci" Type="IP">
+        <Instance HierarchyPath="ETH0_util_reduced_logic_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_xlconcat_1_1\msys_xlconcat_1_1.xci" Type="IP">
+        <Instance HierarchyPath="ETH0_xlconcat_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_xlslice_0_1\msys_xlslice_0_1.xci" Type="IP">
+        <Instance HierarchyPath="ETH0_xlslice_0to1_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_ETH0_xlslice_0_0\msys_ETH0_xlslice_0_0.xci" Type="IP">
+        <Instance HierarchyPath="ETH0_xlslice_2to2_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

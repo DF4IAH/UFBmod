@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Sat Apr 18 10:44:30 2020
+--Date        : Sat Apr 18 16:51:13 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -4341,6 +4341,9 @@ entity msys is
     DDR3_SDRAM_reset_n : out STD_LOGIC;
     DDR3_SDRAM_we_n : out STD_LOGIC;
     DDR3_init_calib_complete : out STD_LOGIC;
+    ETH0_DA_G : out STD_LOGIC_VECTOR ( 0 to 0 );
+    ETH0_DA_Y : out STD_LOGIC;
+    ETH0_LINK_LED : in STD_LOGIC;
     ETH0_MDIO_MDC_mdc : out STD_LOGIC;
     ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
     ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
@@ -4384,7 +4387,7 @@ entity msys is
     sys_diff_clock_clk_p : in STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=55,numReposBlks=41,numNonXlnxBlks=3,numHierBlks=14,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
+  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=60,numReposBlks=46,numNonXlnxBlks=3,numHierBlks=14,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of msys : entity is "msys.hwdef";
 end msys;
@@ -5074,10 +5077,50 @@ architecture STRUCTURE of msys is
     clk_out1 : out STD_LOGIC
   );
   end component msys_clk_wiz_0_0;
+  component msys_selectio_wiz_0_0 is
+  port (
+    data_in_from_pins : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    clk_in : in STD_LOGIC;
+    io_reset : in STD_LOGIC;
+    data_in_to_device : out STD_LOGIC_VECTOR ( 2 downto 0 )
+  );
+  end component msys_selectio_wiz_0_0;
+  component msys_util_reduced_logic_0_1 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    Res : out STD_LOGIC
+  );
+  end component msys_util_reduced_logic_0_1;
+  component msys_xlconcat_1_1 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 2 downto 0 )
+  );
+  end component msys_xlconcat_1_1;
+  component msys_xlslice_0_1 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component msys_xlslice_0_1;
+  component msys_ETH0_xlslice_0_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_ETH0_xlslice_0_0;
   signal ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal BUFG_I_0_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal CLK_IN_D_0_1_CLK_N : STD_LOGIC_VECTOR ( 0 to 0 );
   signal CLK_IN_D_0_1_CLK_P : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal ETH0_LINK_LED_1 : STD_LOGIC;
+  signal ETH0_selectio_wiz_0_data_in_to_device : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal ETH0_util_reduced_logic_0_Res : STD_LOGIC;
+  signal ETH0_xlconcat_0_dout : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal ETH0_xlslice_0_Dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal ETH0_xlslice_1_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal M05_ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal Net : STD_LOGIC;
   signal Net1 : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -5098,12 +5141,11 @@ architecture STRUCTURE of msys is
   signal axi_ethernetlite_0_MII_RST_N : STD_LOGIC;
   signal axi_ethernetlite_0_MII_RXD : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal axi_ethernetlite_0_MII_RX_CLK : STD_LOGIC;
-  signal axi_ethernetlite_0_MII_RX_DV : STD_LOGIC;
   signal axi_ethernetlite_0_MII_RX_ER : STD_LOGIC;
   signal axi_ethernetlite_0_MII_TXD : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal axi_ethernetlite_0_MII_TX_CLK : STD_LOGIC;
-  signal axi_ethernetlite_0_MII_TX_EN : STD_LOGIC;
   signal axi_ethernetlite_0_ip2intc_irpt : STD_LOGIC;
+  signal axi_ethernetlite_0_phy_tx_en : STD_LOGIC;
   signal axi_gpio_0_ip2intc_irpt : STD_LOGIC;
   signal axi_iic_0_IIC_SCL_I : STD_LOGIC;
   signal axi_iic_0_IIC_SCL_O : STD_LOGIC;
@@ -5462,12 +5504,14 @@ architecture STRUCTURE of msys is
   signal mii_y_adapater_0_M_MII_TX_EN : STD_LOGIC;
   signal mii_y_adapater_0_M_MII_TX_ER : STD_LOGIC;
   signal mii_y_adapater_0_phy_rst_n : STD_LOGIC;
+  signal mii_y_adapater_0_s_mii_rx_dv : STD_LOGIC;
   signal proc_sys_reset_0_mb_reset : STD_LOGIC;
   signal reset_1 : STD_LOGIC;
   signal rst_mig_7series_0_100M_bus_struct_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal rst_mig_7series_0_100M_mb_reset : STD_LOGIC;
   signal rst_mig_7series_0_100M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal rst_mig_7series_0_12M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal rst_mig_7series_0_12M_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal rst_mig_7series_0_50M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal sys_diff_clock_1_CLK_N : STD_LOGIC;
   signal sys_diff_clock_1_CLK_P : STD_LOGIC;
@@ -5499,7 +5543,6 @@ architecture STRUCTURE of msys is
   signal NLW_rst_mig_7series_0_12M_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_rst_mig_7series_0_12M_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_mig_7series_0_12M_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_rst_mig_7series_0_12M_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_mig_7series_0_50M_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_rst_mig_7series_0_50M_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_mig_7series_0_50M_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -5587,6 +5630,9 @@ begin
   DDR3_SDRAM_reset_n <= mig_7series_0_DDR3_RESET_N;
   DDR3_SDRAM_we_n <= mig_7series_0_DDR3_WE_N;
   DDR3_init_calib_complete <= mig_7series_0_init_calib_complete;
+  ETH0_DA_G(0) <= ETH0_xlslice_1_Dout(0);
+  ETH0_DA_Y <= ETH0_util_reduced_logic_0_Res;
+  ETH0_LINK_LED_1 <= ETH0_LINK_LED;
   ETH0_MDIO_MDC_mdc <= axi_ethernetlite_0_MDIO_MDC;
   ETH0_MDIO_MDC_mdio_o <= axi_ethernetlite_0_MDIO_MDIO_O;
   ETH0_MDIO_MDC_mdio_t <= axi_ethernetlite_0_MDIO_MDIO_T;
@@ -5627,6 +5673,35 @@ begin
   reset_1 <= reset;
   sys_diff_clock_1_CLK_N <= sys_diff_clock_clk_n;
   sys_diff_clock_1_CLK_P <= sys_diff_clock_clk_p;
+ETH0_selectio_wiz_0: component msys_selectio_wiz_0_0
+     port map (
+      clk_in => UART0_clk_wiz_0_clk_out1,
+      data_in_from_pins(2 downto 0) => ETH0_xlconcat_0_dout(2 downto 0),
+      data_in_to_device(2 downto 0) => ETH0_selectio_wiz_0_data_in_to_device(2 downto 0),
+      io_reset => rst_mig_7series_0_12M_peripheral_reset(0)
+    );
+ETH0_util_reduced_logic_0: component msys_util_reduced_logic_0_1
+     port map (
+      Op1(1 downto 0) => ETH0_xlslice_0_Dout(1 downto 0),
+      Res => ETH0_util_reduced_logic_0_Res
+    );
+ETH0_xlconcat_0: component msys_xlconcat_1_1
+     port map (
+      In0(0) => mii_y_adapater_0_s_mii_rx_dv,
+      In1(0) => axi_ethernetlite_0_phy_tx_en,
+      In2(0) => ETH0_LINK_LED_1,
+      dout(2 downto 0) => ETH0_xlconcat_0_dout(2 downto 0)
+    );
+ETH0_xlslice_0to1_0: component msys_xlslice_0_1
+     port map (
+      Din(2 downto 0) => ETH0_selectio_wiz_0_data_in_to_device(2 downto 0),
+      Dout(1 downto 0) => ETH0_xlslice_0_Dout(1 downto 0)
+    );
+ETH0_xlslice_2to2_0: component msys_ETH0_xlslice_0_0
+     port map (
+      Din(2 downto 0) => ETH0_selectio_wiz_0_data_in_to_device(2 downto 0),
+      Dout(0) => ETH0_xlslice_1_Dout(0)
+    );
 SC0712_0: component msys_SC0712_0_0
      port map (
       GPIO1_I(31 downto 0) => microblaze_mcs_0_GPIO1_TRI_I(31 downto 0),
@@ -5656,7 +5731,7 @@ axi_ethernetlite_0: component msys_axi_ethernetlite_0_0
       ip2intc_irpt => axi_ethernetlite_0_ip2intc_irpt,
       phy_col => axi_ethernetlite_0_MII_COL,
       phy_crs => axi_ethernetlite_0_MII_CRS,
-      phy_dv => axi_ethernetlite_0_MII_RX_DV,
+      phy_dv => '0',
       phy_mdc => axi_ethernetlite_0_MDIO_MDC,
       phy_mdio_i => axi_ethernetlite_0_MDIO_MDIO_I,
       phy_mdio_o => axi_ethernetlite_0_MDIO_MDIO_O,
@@ -5667,7 +5742,7 @@ axi_ethernetlite_0: component msys_axi_ethernetlite_0_0
       phy_rx_er => axi_ethernetlite_0_MII_RX_ER,
       phy_tx_clk => axi_ethernetlite_0_MII_TX_CLK,
       phy_tx_data(3 downto 0) => axi_ethernetlite_0_MII_TXD(3 downto 0),
-      phy_tx_en => axi_ethernetlite_0_MII_TX_EN,
+      phy_tx_en => axi_ethernetlite_0_phy_tx_en,
       s_axi_aclk => util_ds_buf_0_BUFG_O(0),
       s_axi_araddr(12 downto 0) => microblaze_0_axi_periph_M05_AXI_ARADDR(12 downto 0),
       s_axi_aresetn => Net1(0),
@@ -6479,11 +6554,11 @@ mii_y_adapater_0: component msys_mii_y_adapater_0_0
       s_mii_crs => axi_ethernetlite_0_MII_CRS,
       s_mii_rst_n => axi_ethernetlite_0_MII_RST_N,
       s_mii_rx_clk => axi_ethernetlite_0_MII_RX_CLK,
-      s_mii_rx_dv => axi_ethernetlite_0_MII_RX_DV,
+      s_mii_rx_dv => mii_y_adapater_0_s_mii_rx_dv,
       s_mii_rx_er => axi_ethernetlite_0_MII_RX_ER,
       s_mii_rxd(3 downto 0) => axi_ethernetlite_0_MII_RXD(3 downto 0),
       s_mii_tx_clk => axi_ethernetlite_0_MII_TX_CLK,
-      s_mii_tx_en => axi_ethernetlite_0_MII_TX_EN,
+      s_mii_tx_en => '0',
       s_mii_tx_er => '0',
       s_mii_txd(3 downto 0) => axi_ethernetlite_0_MII_TXD(3 downto 0)
     );
@@ -6536,7 +6611,7 @@ rst_mig_7series_0_12M: component msys_rst_mig_7series_0_50M_1
       mb_debug_sys_rst => '0',
       mb_reset => NLW_rst_mig_7series_0_12M_mb_reset_UNCONNECTED,
       peripheral_aresetn(0) => rst_mig_7series_0_12M_peripheral_aresetn(0),
-      peripheral_reset(0) => NLW_rst_mig_7series_0_12M_peripheral_reset_UNCONNECTED(0),
+      peripheral_reset(0) => rst_mig_7series_0_12M_peripheral_reset(0),
       slowest_sync_clk => UART0_clk_wiz_0_clk_out1
     );
 rst_mig_7series_0_50M: component msys_rst_mig_7series_0_50M_0

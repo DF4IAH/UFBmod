@@ -319,6 +319,17 @@
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_clk_wiz_0_0/msys_clk_wiz_0_0_clk_wiz.v" \
   "../../../bd/msys/ip/msys_clk_wiz_0_0/msys_clk_wiz_0_0.v" \
+  "../../../bd/msys/ip/msys_selectio_wiz_0_0/msys_selectio_wiz_0_0_selectio_wiz.v" \
+  "../../../bd/msys/ip/msys_selectio_wiz_0_0/msys_selectio_wiz_0_0.v" \
+-endlib
+-makelib xcelium_lib/util_reduced_logic_v2_0_4 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/4c94/hdl/util_reduced_logic_v2_0_vl_rfs.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_util_reduced_logic_0_1/sim/msys_util_reduced_logic_0_1.v" \
+  "../../../bd/msys/ip/msys_xlconcat_1_1/sim/msys_xlconcat_1_1.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_1/sim/msys_xlslice_0_1.v" \
+  "../../../bd/msys/ip/msys_ETH0_xlslice_0_0/sim/msys_ETH0_xlslice_0_0.v" \
 -endlib
 -makelib xcelium_lib/axi_clock_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/9e81/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
