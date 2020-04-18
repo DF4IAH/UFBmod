@@ -331,6 +331,9 @@
   "../../../bd/msys/ip/msys_xlslice_0_1/sim/msys_xlslice_0_1.v" \
   "../../../bd/msys/ip/msys_ETH0_xlslice_0_0/sim/msys_ETH0_xlslice_0_0.v" \
 -endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_axi_iic_1_0/sim/msys_axi_iic_1_0.vhd" \
+-endlib
 -makelib ies_lib/axi_clock_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/9e81/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
 -endlib

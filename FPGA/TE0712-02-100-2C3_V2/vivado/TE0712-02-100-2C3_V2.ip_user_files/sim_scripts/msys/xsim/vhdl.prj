@@ -46,5 +46,6 @@ vhdl xil_defaultlib  \
 "../../../bd/msys/ip/msys_axi_gpio_0_0/sim/msys_axi_gpio_0_0.vhd" \
 "../../../bd/msys/sim/msys.vhd" \
 "../../../bd/msys/ip/msys_rst_mig_7series_0_50M_1/sim/msys_rst_mig_7series_0_50M_1.vhd" \
+"../../../bd/msys/ip/msys_axi_iic_1_0/sim/msys_axi_iic_1_0.vhd" \
 
 nosort
