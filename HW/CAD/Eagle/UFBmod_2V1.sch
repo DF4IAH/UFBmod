@@ -22405,6 +22405,10 @@ FT232H</text>
 <text x="50.8" y="154.94" size="1.778" layer="97">JTAG CPLD EN</text>
 <text x="15.24" y="96.52" size="1.778" layer="97">Programmer:
 Digilent JTAG HS3</text>
+<text x="193.04" y="55.88" size="1.778" layer="94">set to 3.3V</text>
+<text x="223.266" y="57.404" size="1.778" layer="94">x</text>
+<text x="223.012" y="54.864" size="1.778" layer="94">x</text>
+<text x="222.758" y="52.07" size="1.778" layer="94">-</text>
 </plain>
 <instances>
 <instance part="FRAME_13" gate="G$1" x="0" y="0" smashed="yes">
