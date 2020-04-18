@@ -18931,6 +18931,18 @@ Left</text>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">Trenz-Electronic TE0712-02-100-2C3  Left-Connector</text>
 <text x="91.44" y="45.72" size="1.778" layer="94">out</text>
 <text x="162.56" y="38.1" size="1.778" layer="94">in</text>
+<text x="91.44" y="40.64" size="1.778" layer="94">in</text>
+<text x="91.44" y="50.8" size="1.778" layer="94">out</text>
+<text x="88.9" y="48.26" size="1.778" layer="94">inout</text>
+<text x="91.44" y="38.1" size="1.778" layer="94">out</text>
+<text x="91.44" y="35.56" size="1.778" layer="94">out</text>
+<text x="91.44" y="33.02" size="1.778" layer="94">out</text>
+<text x="91.44" y="30.48" size="1.778" layer="94">out</text>
+<text x="91.44" y="27.94" size="1.778" layer="94">out</text>
+<text x="162.56" y="149.86" size="1.778" layer="94">out</text>
+<text x="162.56" y="147.32" size="1.778" layer="94">out</text>
+<text x="162.56" y="142.24" size="1.778" layer="94">in</text>
+<text x="162.56" y="139.7" size="1.778" layer="94">in</text>
 </plain>
 <instances>
 <instance part="FRAME_01" gate="G$1" x="0" y="0" smashed="yes">
@@ -19406,6 +19418,19 @@ Right</text>
 <text x="162.56" y="45.72" size="1.778" layer="94">in</text>
 <text x="162.56" y="38.1" size="1.778" layer="94">in</text>
 <text x="162.56" y="55.88" size="1.778" layer="94">out</text>
+<text x="91.44" y="132.08" size="1.778" layer="94">out</text>
+<text x="91.44" y="137.16" size="1.778" layer="94">out</text>
+<text x="91.44" y="134.62" size="1.778" layer="94">out</text>
+<text x="91.44" y="127" size="1.778" layer="94">in</text>
+<text x="91.44" y="124.46" size="1.778" layer="94">in</text>
+<text x="91.44" y="121.92" size="1.778" layer="94">in</text>
+<text x="162.56" y="58.42" size="1.778" layer="94">out</text>
+<text x="91.44" y="30.48" size="1.778" layer="94">out</text>
+<text x="91.44" y="33.02" size="1.778" layer="94">in</text>
+<text x="91.44" y="40.64" size="1.778" layer="94">in</text>
+<text x="91.44" y="35.56" size="1.778" layer="94">in</text>
+<text x="91.44" y="27.94" size="1.778" layer="94">in</text>
+<text x="91.44" y="38.1" size="1.778" layer="94">out</text>
 </plain>
 <instances>
 <instance part="FRAME_02" gate="G$1" x="0" y="0" smashed="yes">
@@ -19775,6 +19800,7 @@ Right</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">Trenz-Electronic FPGA
 Top</text>
 <text x="22.86" y="27.94" size="2.54" layer="97" ratio="15">Module mount pads</text>
+<text x="147.32" y="124.46" size="1.778" layer="94" rot="R90">in</text>
 </plain>
 <instances>
 <instance part="FRAME_03" gate="G$1" x="0" y="0" smashed="yes">
