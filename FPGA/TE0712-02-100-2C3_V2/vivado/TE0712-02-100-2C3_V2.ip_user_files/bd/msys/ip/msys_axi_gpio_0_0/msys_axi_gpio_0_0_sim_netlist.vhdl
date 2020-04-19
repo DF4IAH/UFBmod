@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
 -- Date        : Fri Apr 17 22:06:54 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_axi_gpio_0_0/msys_axi_gpio_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_axi_gpio_0_0 -prefix
+--               msys_axi_gpio_0_0_ msys_axi_gpio_0_0_sim_netlist.vhdl
 -- Design      : msys_axi_gpio_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -61,8 +61,6 @@ entity msys_axi_gpio_0_0_address_decoder is
     ip2bus_wrack_i_D1 : in STD_LOGIC;
     s_axi_wready : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_gpio_0_0_address_decoder : entity is "address_decoder";
 end msys_axi_gpio_0_0_address_decoder;
 
 architecture STRUCTURE of msys_axi_gpio_0_0_address_decoder is
@@ -1022,8 +1020,6 @@ entity msys_axi_gpio_0_0_cdc_sync is
     gpio_io_i : in STD_LOGIC_VECTOR ( 3 downto 0 );
     s_axi_aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_gpio_0_0_cdc_sync : entity is "cdc_sync";
 end msys_axi_gpio_0_0_cdc_sync;
 
 architecture STRUCTURE of msys_axi_gpio_0_0_cdc_sync is
@@ -1458,8 +1454,6 @@ entity msys_axi_gpio_0_0_interrupt_control is
     p_5_in : in STD_LOGIC;
     Bus_RNW_reg : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_gpio_0_0_interrupt_control : entity is "interrupt_control";
 end msys_axi_gpio_0_0_interrupt_control;
 
 architecture STRUCTURE of msys_axi_gpio_0_0_interrupt_control is
@@ -1679,8 +1673,6 @@ entity msys_axi_gpio_0_0_GPIO_Core is
     \Dual.gpio2_Data_Out_reg[0]_1\ : in STD_LOGIC;
     \Dual.gpio2_OE_reg[0]_0\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_gpio_0_0_GPIO_Core : entity is "GPIO_Core";
 end msys_axi_gpio_0_0_GPIO_Core;
 
 architecture STRUCTURE of msys_axi_gpio_0_0_GPIO_Core is
@@ -2248,8 +2240,6 @@ entity msys_axi_gpio_0_0_slave_attachment is
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 6 downto 0 );
     \s_axi_rdata_i_reg[31]_0\ : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_gpio_0_0_slave_attachment : entity is "slave_attachment";
 end msys_axi_gpio_0_0_slave_attachment;
 
 architecture STRUCTURE of msys_axi_gpio_0_0_slave_attachment is
@@ -3037,8 +3027,6 @@ entity msys_axi_gpio_0_0_axi_lite_ipif is
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 6 downto 0 );
     \s_axi_rdata_i_reg[31]\ : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_gpio_0_0_axi_lite_ipif : entity is "axi_lite_ipif";
 end msys_axi_gpio_0_0_axi_lite_ipif;
 
 architecture STRUCTURE of msys_axi_gpio_0_0_axi_lite_ipif is
@@ -3168,8 +3156,6 @@ entity msys_axi_gpio_0_0_axi_gpio is
   attribute C_TRI_DEFAULT of msys_axi_gpio_0_0_axi_gpio : entity is -1;
   attribute C_TRI_DEFAULT_2 : integer;
   attribute C_TRI_DEFAULT_2 of msys_axi_gpio_0_0_axi_gpio : entity is -1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_gpio_0_0_axi_gpio : entity is "axi_gpio";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_axi_gpio_0_0_axi_gpio : entity is "yes";
   attribute ip_group : string;

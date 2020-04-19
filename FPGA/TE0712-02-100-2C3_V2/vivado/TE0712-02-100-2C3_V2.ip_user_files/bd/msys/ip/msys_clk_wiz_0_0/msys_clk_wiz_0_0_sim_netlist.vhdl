@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
 -- Date        : Sat Apr 18 10:46:56 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_clk_wiz_0_0/msys_clk_wiz_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_clk_wiz_0_0 -prefix
+--               msys_clk_wiz_0_0_ msys_clk_wiz_0_0_sim_netlist.vhdl
 -- Design      : msys_clk_wiz_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -20,8 +20,6 @@ entity msys_clk_wiz_0_0_msys_clk_wiz_0_0_clk_wiz is
     reset : in STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_clk_wiz_0_0_msys_clk_wiz_0_0_clk_wiz : entity is "msys_clk_wiz_0_0_clk_wiz";
 end msys_clk_wiz_0_0_msys_clk_wiz_0_0_clk_wiz;
 
 architecture STRUCTURE of msys_clk_wiz_0_0_msys_clk_wiz_0_0_clk_wiz is

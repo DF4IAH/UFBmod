@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Sun Apr 19 01:11:18 2020
+--Date        : Sun Apr 19 23:25:43 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -15,6 +15,9 @@ entity msys_wrapper is
   port (
     BOARD_IIC_scl_io : inout STD_LOGIC;
     BOARD_IIC_sda_io : inout STD_LOGIC;
+    BOARD_ROTENC_PUSH : in STD_LOGIC;
+    BOARD_ROTENC_I : in STD_LOGIC;
+    BOARD_ROTENC_Q : in STD_LOGIC;
     CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK1B : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -99,8 +102,10 @@ architecture STRUCTURE of msys_wrapper is
     LED_RGB_blue : out STD_LOGIC_VECTOR ( 0 to 0 );
     LCD_BL : out STD_LOGIC_VECTOR ( 0 to 0 );
     LCD_rstn : out STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
+    rotenc_decoder_clk : out STD_LOGIC;
+    rotenc_decoder_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
+    rotenc_dec_cnt_up_dwn : in STD_LOGIC;
+    rotenc_dec_cnt_en : in STD_LOGIC;
     RMII_PHY_M_0_crs_dv : in STD_LOGIC;
     RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RMII_PHY_M_0_tx_en : out STD_LOGIC;
@@ -120,6 +125,8 @@ architecture STRUCTURE of msys_wrapper is
     qspi_flash_ss_i : in STD_LOGIC;
     qspi_flash_ss_o : out STD_LOGIC;
     qspi_flash_ss_t : out STD_LOGIC;
+    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     BOARD_IIC_scl_i : in STD_LOGIC;
     BOARD_IIC_scl_o : out STD_LOGIC;
     BOARD_IIC_scl_t : out STD_LOGIC;
@@ -147,10 +154,11 @@ architecture STRUCTURE of msys_wrapper is
     ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
     ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
     ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
+    sys_diff_clock_clk_p : in STD_LOGIC;
+    sys_diff_clock_clk_n : in STD_LOGIC;
     mgt_clk0_clk_p : in STD_LOGIC;
     mgt_clk0_clk_n : in STD_LOGIC;
-    sys_diff_clock_clk_p : in STD_LOGIC;
-    sys_diff_clock_clk_n : in STD_LOGIC
+    BOARD_ROTENC_PUSH : in STD_LOGIC
   );
   end component msys;
   component IOBUF is
@@ -161,6 +169,16 @@ architecture STRUCTURE of msys_wrapper is
     IO : inout STD_LOGIC
   );
   end component IOBUF;
+  component rotenc_decoder is
+  port (
+    clk : in STD_LOGIC;
+    reset : in STD_LOGIC;
+    rotenc_I : in STD_LOGIC;
+    rotenc_Q : in STD_LOGIC;
+    cnt_up_dwn : out STD_LOGIC;
+    cnt_en : out STD_LOGIC
+  );
+  end component rotenc_decoder;
   signal BOARD_IIC_scl_i : STD_LOGIC;
   signal BOARD_IIC_scl_o : STD_LOGIC;
   signal BOARD_IIC_scl_t : STD_LOGIC;
@@ -185,6 +203,10 @@ architecture STRUCTURE of msys_wrapper is
   signal qspi_flash_ss_i : STD_LOGIC;
   signal qspi_flash_ss_o : STD_LOGIC;
   signal qspi_flash_ss_t : STD_LOGIC;
+  signal rotenc_dec_cnt_en : STD_LOGIC;
+  signal rotenc_dec_cnt_up_dwn : STD_LOGIC;
+  signal rotenc_decoder_clk : STD_LOGIC;
+  signal rotenc_decoder_reset : STD_LOGIC;
 begin
 BOARD_IIC_scl_iobuf: component IOBUF
      port map (
@@ -207,6 +229,15 @@ ETH0_MDIO_MDC_mdio_iobuf: component IOBUF
       O => ETH0_MDIO_MDC_mdio_i,
       T => ETH0_MDIO_MDC_mdio_t
     );
+rotenc_decoder_i: component rotenc_decoder
+     port map (
+      clk => rotenc_decoder_clk,
+      reset => rotenc_decoder_reset,
+      rotenc_I => BOARD_ROTENC_I,
+      rotenc_Q => BOARD_ROTENC_Q,
+      cnt_up_dwn => rotenc_dec_cnt_up_dwn,
+      cnt_en => rotenc_dec_cnt_en
+     );
 msys_i: component msys
      port map (
       BOARD_IIC_scl_i => BOARD_IIC_scl_i,
@@ -215,6 +246,7 @@ msys_i: component msys
       BOARD_IIC_sda_i => BOARD_IIC_sda_i,
       BOARD_IIC_sda_o => BOARD_IIC_sda_o,
       BOARD_IIC_sda_t => BOARD_IIC_sda_t,
+      BOARD_ROTENC_PUSH => BOARD_ROTENC_PUSH,
       CLK0_clk_n(0) => CLK0_clk_n(0),
       CLK0_clk_p(0) => CLK0_clk_p(0),
       CLK1B(0) => CLK1B(0),
@@ -281,6 +313,10 @@ msys_i: component msys
       qspi_flash_ss_o => qspi_flash_ss_o,
       qspi_flash_ss_t => qspi_flash_ss_t,
       reset => reset,
+      rotenc_dec_cnt_en => rotenc_dec_cnt_en,
+      rotenc_dec_cnt_up_dwn => rotenc_dec_cnt_up_dwn,
+      rotenc_decoder_clk => rotenc_decoder_clk,
+      rotenc_decoder_reset(0) => rotenc_decoder_reset,
       sys_diff_clock_clk_n => sys_diff_clock_clk_n,
       sys_diff_clock_clk_p => sys_diff_clock_clk_p
     );
