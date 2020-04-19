@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Sat Apr 18 22:49:07 2020
+--Date        : Sun Apr 19 01:11:18 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -39,6 +39,11 @@ entity msys_wrapper is
     ETH0_LINK_LED : in STD_LOGIC;
     ETH0_MDIO_MDC_mdc : out STD_LOGIC;
     ETH0_MDIO_MDC_mdio_io : inout STD_LOGIC;
+    LCD_BL : out STD_LOGIC_VECTOR ( 0 to 0 );
+    LCD_rstn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    LED_RGB_blue : out STD_LOGIC_VECTOR ( 0 to 0 );
+    LED_RGB_green : out STD_LOGIC_VECTOR ( 0 to 0 );
+    LED_RGB_red : out STD_LOGIC_VECTOR ( 0 to 0 );
     PLL_I2C_ext_scl_o : out STD_LOGIC;
     PLL_I2C_ext_sda : inout STD_LOGIC;
     RMII_PHY_M_0_crs_dv : in STD_LOGIC;
@@ -89,12 +94,11 @@ architecture STRUCTURE of msys_wrapper is
     ETH0_DA_Y : out STD_LOGIC;
     ETH0_DA_G : out STD_LOGIC_VECTOR ( 0 to 0 );
     ETH0_LINK_LED : in STD_LOGIC;
-    BOARD_IIC_scl_i : in STD_LOGIC;
-    BOARD_IIC_scl_o : out STD_LOGIC;
-    BOARD_IIC_scl_t : out STD_LOGIC;
-    BOARD_IIC_sda_i : in STD_LOGIC;
-    BOARD_IIC_sda_o : out STD_LOGIC;
-    BOARD_IIC_sda_t : out STD_LOGIC;
+    LED_RGB_red : out STD_LOGIC_VECTOR ( 0 to 0 );
+    LED_RGB_green : out STD_LOGIC_VECTOR ( 0 to 0 );
+    LED_RGB_blue : out STD_LOGIC_VECTOR ( 0 to 0 );
+    LCD_BL : out STD_LOGIC_VECTOR ( 0 to 0 );
+    LCD_rstn : out STD_LOGIC_VECTOR ( 0 to 0 );
     CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     RMII_PHY_M_0_crs_dv : in STD_LOGIC;
@@ -116,12 +120,14 @@ architecture STRUCTURE of msys_wrapper is
     qspi_flash_ss_i : in STD_LOGIC;
     qspi_flash_ss_o : out STD_LOGIC;
     qspi_flash_ss_t : out STD_LOGIC;
+    BOARD_IIC_scl_i : in STD_LOGIC;
+    BOARD_IIC_scl_o : out STD_LOGIC;
+    BOARD_IIC_scl_t : out STD_LOGIC;
+    BOARD_IIC_sda_i : in STD_LOGIC;
+    BOARD_IIC_sda_o : out STD_LOGIC;
+    BOARD_IIC_sda_t : out STD_LOGIC;
     UART0_rxd : in STD_LOGIC;
     UART0_txd : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
     DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -137,10 +143,14 @@ architecture STRUCTURE of msys_wrapper is
     DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
-    sys_diff_clock_clk_p : in STD_LOGIC;
-    sys_diff_clock_clk_n : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
     mgt_clk0_clk_p : in STD_LOGIC;
-    mgt_clk0_clk_n : in STD_LOGIC
+    mgt_clk0_clk_n : in STD_LOGIC;
+    sys_diff_clock_clk_p : in STD_LOGIC;
+    sys_diff_clock_clk_n : in STD_LOGIC
   );
   end component msys;
   component IOBUF is
@@ -231,6 +241,11 @@ msys_i: component msys
       ETH0_MDIO_MDC_mdio_i => ETH0_MDIO_MDC_mdio_i,
       ETH0_MDIO_MDC_mdio_o => ETH0_MDIO_MDC_mdio_o,
       ETH0_MDIO_MDC_mdio_t => ETH0_MDIO_MDC_mdio_t,
+      LCD_BL(0) => LCD_BL(0),
+      LCD_rstn(0) => LCD_rstn(0),
+      LED_RGB_blue(0) => LED_RGB_blue(0),
+      LED_RGB_green(0) => LED_RGB_green(0),
+      LED_RGB_red(0) => LED_RGB_red(0),
       PLL_I2C_ext_scl_o => PLL_I2C_ext_scl_o,
       PLL_I2C_ext_sda => PLL_I2C_ext_sda,
       RMII_PHY_M_0_crs_dv => RMII_PHY_M_0_crs_dv,
