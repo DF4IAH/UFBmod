@@ -55,5 +55,6 @@ vhdl xil_defaultlib  \
 "../../../bd/msys/ip/msys_c_counter_binary_0_1/sim/msys_c_counter_binary_0_1.vhd" \
 "../../../bd/msys/ip/msys_axi_pwm_gpio_0_0/sim/msys_axi_pwm_gpio_0_0.vhd" \
 "../../../bd/msys/sim/msys.vhd" \
+"../../../bd/msys/ip/msys_axi_pwm_gpio_0_1/sim/msys_axi_pwm_gpio_0_1.vhd" \
 
 nosort

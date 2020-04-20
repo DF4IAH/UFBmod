@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Sun Apr 19 23:25:43 2020
+--Date        : Mon Apr 20 11:01:31 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -15,9 +15,9 @@ entity msys_wrapper is
   port (
     BOARD_IIC_scl_io : inout STD_LOGIC;
     BOARD_IIC_sda_io : inout STD_LOGIC;
-    BOARD_ROTENC_PUSH : in STD_LOGIC;
     BOARD_ROTENC_I : in STD_LOGIC;
     BOARD_ROTENC_Q : in STD_LOGIC;
+    BOARD_ROTENC_PUSH : in STD_LOGIC;
     CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK1B : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -65,6 +65,7 @@ entity msys_wrapper is
     UART0_txd : out STD_LOGIC;
     mgt_clk0_clk_n : in STD_LOGIC;
     mgt_clk0_clk_p : in STD_LOGIC;
+    onewire_EUI48_tri_io : inout STD_LOGIC_VECTOR ( 0 to 0 );
     phy_rst_n : out STD_LOGIC;
     qspi_flash_io0_io : inout STD_LOGIC;
     qspi_flash_io1_io : inout STD_LOGIC;
@@ -106,10 +107,27 @@ architecture STRUCTURE of msys_wrapper is
     rotenc_decoder_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     rotenc_dec_cnt_up_dwn : in STD_LOGIC;
     rotenc_dec_cnt_en : in STD_LOGIC;
+    BOARD_ROTENC_PUSH : in STD_LOGIC;
+    sys_diff_clock_clk_p : in STD_LOGIC;
+    sys_diff_clock_clk_n : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
+    mgt_clk0_clk_p : in STD_LOGIC;
+    mgt_clk0_clk_n : in STD_LOGIC;
     RMII_PHY_M_0_crs_dv : in STD_LOGIC;
     RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RMII_PHY_M_0_tx_en : out STD_LOGIC;
     RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
+    BOARD_IIC_scl_i : in STD_LOGIC;
+    BOARD_IIC_scl_o : out STD_LOGIC;
+    BOARD_IIC_scl_t : out STD_LOGIC;
+    BOARD_IIC_sda_i : in STD_LOGIC;
+    BOARD_IIC_sda_o : out STD_LOGIC;
+    BOARD_IIC_sda_t : out STD_LOGIC;
     qspi_flash_io0_i : in STD_LOGIC;
     qspi_flash_io0_o : out STD_LOGIC;
     qspi_flash_io0_t : out STD_LOGIC;
@@ -125,14 +143,6 @@ architecture STRUCTURE of msys_wrapper is
     qspi_flash_ss_i : in STD_LOGIC;
     qspi_flash_ss_o : out STD_LOGIC;
     qspi_flash_ss_t : out STD_LOGIC;
-    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
-    BOARD_IIC_scl_i : in STD_LOGIC;
-    BOARD_IIC_scl_o : out STD_LOGIC;
-    BOARD_IIC_scl_t : out STD_LOGIC;
-    BOARD_IIC_sda_i : in STD_LOGIC;
-    BOARD_IIC_sda_o : out STD_LOGIC;
-    BOARD_IIC_sda_t : out STD_LOGIC;
     UART0_rxd : in STD_LOGIC;
     UART0_txd : out STD_LOGIC;
     DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -150,15 +160,9 @@ architecture STRUCTURE of msys_wrapper is
     DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
-    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
-    sys_diff_clock_clk_p : in STD_LOGIC;
-    sys_diff_clock_clk_n : in STD_LOGIC;
-    mgt_clk0_clk_p : in STD_LOGIC;
-    mgt_clk0_clk_n : in STD_LOGIC;
-    BOARD_ROTENC_PUSH : in STD_LOGIC
+    onewire_EUI48_tri_i : in STD_LOGIC_VECTOR ( 0 to 0 );
+    onewire_EUI48_tri_o : out STD_LOGIC_VECTOR ( 0 to 0 );
+    onewire_EUI48_tri_t : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys;
   component IOBUF is
@@ -188,6 +192,10 @@ architecture STRUCTURE of msys_wrapper is
   signal ETH0_MDIO_MDC_mdio_i : STD_LOGIC;
   signal ETH0_MDIO_MDC_mdio_o : STD_LOGIC;
   signal ETH0_MDIO_MDC_mdio_t : STD_LOGIC;
+  signal onewire_EUI48_tri_i_0 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal onewire_EUI48_tri_io_0 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal onewire_EUI48_tri_o_0 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal onewire_EUI48_tri_t_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal qspi_flash_io0_i : STD_LOGIC;
   signal qspi_flash_io0_o : STD_LOGIC;
   signal qspi_flash_io0_t : STD_LOGIC;
@@ -296,6 +304,9 @@ msys_i: component msys
       UART0_txd => UART0_txd,
       mgt_clk0_clk_n => mgt_clk0_clk_n,
       mgt_clk0_clk_p => mgt_clk0_clk_p,
+      onewire_EUI48_tri_i(0) => onewire_EUI48_tri_i_0(0),
+      onewire_EUI48_tri_o(0) => onewire_EUI48_tri_o_0(0),
+      onewire_EUI48_tri_t(0) => onewire_EUI48_tri_t_0(0),
       phy_rst_n => phy_rst_n,
       qspi_flash_io0_i => qspi_flash_io0_i,
       qspi_flash_io0_o => qspi_flash_io0_o,
@@ -319,6 +330,13 @@ msys_i: component msys
       rotenc_decoder_reset(0) => rotenc_decoder_reset,
       sys_diff_clock_clk_n => sys_diff_clock_clk_n,
       sys_diff_clock_clk_p => sys_diff_clock_clk_p
+    );
+onewire_EUI48_tri_iobuf_0: component IOBUF
+     port map (
+      I => onewire_EUI48_tri_o_0(0),
+      IO => onewire_EUI48_tri_io(0),
+      O => onewire_EUI48_tri_i_0(0),
+      T => onewire_EUI48_tri_t_0(0)
     );
 qspi_flash_io0_iobuf: component IOBUF
      port map (
