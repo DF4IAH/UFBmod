@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Mon Apr 20 11:01:31 2020
+--Date        : Mon Apr 20 12:03:32 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -5294,6 +5294,7 @@ entity msys is
     LED_RGB_red : out STD_LOGIC_VECTOR ( 0 to 0 );
     PLL_I2C_ext_scl_o : out STD_LOGIC;
     PLL_I2C_ext_sda : inout STD_LOGIC;
+    PLL_int : in STD_LOGIC;
     RMII_PHY_M_0_crs_dv : in STD_LOGIC;
     RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RMII_PHY_M_0_tx_en : out STD_LOGIC;
@@ -5708,7 +5709,7 @@ architecture STRUCTURE of msys is
     s_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_rvalid : out STD_LOGIC;
     s_axi_rready : in STD_LOGIC;
-    intr : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    intr : in STD_LOGIC_VECTOR ( 9 downto 0 );
     processor_clk : in STD_LOGIC;
     processor_rst : in STD_LOGIC;
     irq : out STD_LOGIC;
@@ -5727,7 +5728,8 @@ architecture STRUCTURE of msys is
     In6 : in STD_LOGIC_VECTOR ( 0 to 0 );
     In7 : in STD_LOGIC_VECTOR ( 0 to 0 );
     In8 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    dout : out STD_LOGIC_VECTOR ( 8 downto 0 )
+    In9 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 9 downto 0 )
   );
   end component msys_microblaze_0_xlconcat_0;
   component msys_microblaze_mcs_0_0 is
@@ -6314,6 +6316,7 @@ architecture STRUCTURE of msys is
   signal M05_ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal Net : STD_LOGIC;
   signal Net1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal PLL_int_1 : STD_LOGIC;
   signal PWM_GPIO_xlslice_1_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal PWM_counter_binary_0_Q : STD_LOGIC_VECTOR ( 20 downto 0 );
   signal PWM_ctr_xlslice_0_Dout : STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -6751,7 +6754,7 @@ architecture STRUCTURE of msys is
   signal microblaze_0_interrupt_ACK : STD_LOGIC_VECTOR ( 0 to 1 );
   signal microblaze_0_interrupt_ADDRESS : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal microblaze_0_interrupt_INTERRUPT : STD_LOGIC;
-  signal microblaze_0_intr : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal microblaze_0_intr : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal microblaze_mcs_0_GPIO1_TRI_I : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal microblaze_mcs_0_GPIO1_TRI_O : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mig_7series_0_DDR3_ADDR : STD_LOGIC_VECTOR ( 14 downto 0 );
@@ -6861,6 +6864,8 @@ architecture STRUCTURE of msys is
   attribute X_INTERFACE_INFO of ETH0_MDIO_MDC_mdio_i : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDIO_I";
   attribute X_INTERFACE_INFO of ETH0_MDIO_MDC_mdio_o : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDIO_O";
   attribute X_INTERFACE_INFO of ETH0_MDIO_MDC_mdio_t : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDIO_T";
+  attribute X_INTERFACE_INFO of PLL_int : signal is "xilinx.com:signal:interrupt:1.0 INTR.PLL_INT INTERRUPT";
+  attribute X_INTERFACE_PARAMETER of PLL_int : signal is "XIL_INTERFACENAME INTR.PLL_INT, PortWidth 1, SENSITIVITY LEVEL_HIGH";
   attribute X_INTERFACE_INFO of RMII_PHY_M_0_crs_dv : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 CRS_DV";
   attribute X_INTERFACE_INFO of RMII_PHY_M_0_tx_en : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 TX_EN";
   attribute X_INTERFACE_INFO of UART0_clk : signal is "xilinx.com:signal:clock:1.0 CLK.UART0_CLK CLK";
@@ -6915,9 +6920,9 @@ architecture STRUCTURE of msys is
   attribute X_INTERFACE_INFO of RMII_PHY_M_0_txd : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 TXD";
   attribute X_INTERFACE_INFO of UART0_rst_n : signal is "xilinx.com:signal:reset:1.0 RST.UART0_RST_N RST";
   attribute X_INTERFACE_PARAMETER of UART0_rst_n : signal is "XIL_INTERFACENAME RST.UART0_RST_N, INSERT_VIP 0, POLARITY ACTIVE_LOW";
-  attribute X_INTERFACE_INFO of onewire_EUI48_tri_i : signal is "xilinx.com:interface:gpio:1.0 onewire_EUI48 ";
-  attribute X_INTERFACE_INFO of onewire_EUI48_tri_o : signal is "xilinx.com:interface:gpio:1.0 onewire_EUI48 ";
-  attribute X_INTERFACE_INFO of onewire_EUI48_tri_t : signal is "xilinx.com:interface:gpio:1.0 onewire_EUI48 ";
+  attribute X_INTERFACE_INFO of onewire_EUI48_tri_i : signal is "xilinx.com:interface:gpio:1.0 onewire_EUI48 TRI_I";
+  attribute X_INTERFACE_INFO of onewire_EUI48_tri_o : signal is "xilinx.com:interface:gpio:1.0 onewire_EUI48 TRI_O";
+  attribute X_INTERFACE_INFO of onewire_EUI48_tri_t : signal is "xilinx.com:interface:gpio:1.0 onewire_EUI48 TRI_T";
   attribute X_INTERFACE_INFO of rotenc_decoder_reset : signal is "xilinx.com:signal:reset:1.0 RST.ROTENC_DECODER_RESET RST";
   attribute X_INTERFACE_PARAMETER of rotenc_decoder_reset : signal is "XIL_INTERFACENAME RST.ROTENC_DECODER_RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
 begin
@@ -6954,6 +6959,7 @@ begin
   LED_RGB_green(0) <= RGB_green_xlslice_0_Dout(0);
   LED_RGB_red(0) <= RGB_red_xlslice_0_Dout(0);
   PLL_I2C_ext_scl_o <= SC0712_0_ext_scl_o;
+  PLL_int_1 <= PLL_int;
   RMII_PHY_M_0_tx_en <= mii_to_rmii_0_RMII_PHY_M_TX_EN;
   RMII_PHY_M_0_txd(1 downto 0) <= mii_to_rmii_0_RMII_PHY_M_TXD(1 downto 0);
   UART0EXT_CTSn(0) <= uart0_xlslice_0_Dout(0);
@@ -7752,7 +7758,7 @@ microblaze_0: component msys_microblaze_0_0
 microblaze_0_axi_intc: component msys_microblaze_0_axi_intc_0
      port map (
       interrupt_address(31 downto 0) => microblaze_0_interrupt_ADDRESS(31 downto 0),
-      intr(8 downto 0) => microblaze_0_intr(8 downto 0),
+      intr(9 downto 0) => microblaze_0_intr(9 downto 0),
       irq => microblaze_0_interrupt_INTERRUPT,
       processor_ack(1) => microblaze_0_interrupt_ACK(0),
       processor_ack(0) => microblaze_0_interrupt_ACK(1),
@@ -8048,7 +8054,8 @@ microblaze_0_xlconcat: component msys_microblaze_0_xlconcat_0
       In6(0) => axi_iic_1_iic2intc_irpt,
       In7(0) => axi_pwm_gpio_0_ip2intc_irpt,
       In8(0) => axi_rotenc_gpio_0_ip2intc_irpt,
-      dout(8 downto 0) => microblaze_0_intr(8 downto 0)
+      In9(0) => PLL_int_1,
+      dout(9 downto 0) => microblaze_0_intr(9 downto 0)
     );
 microblaze_mcs_0: component msys_microblaze_mcs_0_0
      port map (

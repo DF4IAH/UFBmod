@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
-// Date        : Sun Apr 19 21:08:16 2020
+// Date        : Mon Apr 20 12:04:38 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top msys_microblaze_0_axi_intc_0 -prefix
-//               msys_microblaze_0_axi_intc_0_ msys_microblaze_0_axi_intc_0_stub.v
+// Command     : write_verilog -force -mode synth_stub
+//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_microblaze_0_axi_intc_0/msys_microblaze_0_axi_intc_0_stub.v
 // Design      : msys_microblaze_0_axi_intc_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tfgg484-2
@@ -19,7 +19,7 @@ module msys_microblaze_0_axi_intc_0(s_axi_aclk, s_axi_aresetn, s_axi_awaddr,
   s_axi_bresp, s_axi_bvalid, s_axi_bready, s_axi_araddr, s_axi_arvalid, s_axi_arready, 
   s_axi_rdata, s_axi_rresp, s_axi_rvalid, s_axi_rready, intr, processor_clk, processor_rst, irq, 
   processor_ack, interrupt_address)
-/* synthesis syn_black_box black_box_pad_pin="s_axi_aclk,s_axi_aresetn,s_axi_awaddr[8:0],s_axi_awvalid,s_axi_awready,s_axi_wdata[31:0],s_axi_wstrb[3:0],s_axi_wvalid,s_axi_wready,s_axi_bresp[1:0],s_axi_bvalid,s_axi_bready,s_axi_araddr[8:0],s_axi_arvalid,s_axi_arready,s_axi_rdata[31:0],s_axi_rresp[1:0],s_axi_rvalid,s_axi_rready,intr[8:0],processor_clk,processor_rst,irq,processor_ack[1:0],interrupt_address[31:0]" */;
+/* synthesis syn_black_box black_box_pad_pin="s_axi_aclk,s_axi_aresetn,s_axi_awaddr[8:0],s_axi_awvalid,s_axi_awready,s_axi_wdata[31:0],s_axi_wstrb[3:0],s_axi_wvalid,s_axi_wready,s_axi_bresp[1:0],s_axi_bvalid,s_axi_bready,s_axi_araddr[8:0],s_axi_arvalid,s_axi_arready,s_axi_rdata[31:0],s_axi_rresp[1:0],s_axi_rvalid,s_axi_rready,intr[9:0],processor_clk,processor_rst,irq,processor_ack[1:0],interrupt_address[31:0]" */;
   input s_axi_aclk;
   input s_axi_aresetn;
   input [8:0]s_axi_awaddr;
@@ -39,7 +39,7 @@ module msys_microblaze_0_axi_intc_0(s_axi_aclk, s_axi_aresetn, s_axi_awaddr,
   output [1:0]s_axi_rresp;
   output s_axi_rvalid;
   input s_axi_rready;
-  input [8:0]intr;
+  input [9:0]intr;
   input processor_clk;
   input processor_rst;
   output irq;

@@ -460,6 +460,7 @@ proc create_root_design { parentCell } {
   set LED_RGB_red [ create_bd_port -dir O -from 0 -to 0 LED_RGB_red ]
   set PLL_I2C_ext_scl_o [ create_bd_port -dir O PLL_I2C_ext_scl_o ]
   set PLL_I2C_ext_sda [ create_bd_port -dir IO PLL_I2C_ext_sda ]
+  set PLL_int [ create_bd_port -dir I -type intr PLL_int ]
   set UART0EXT_CTSn [ create_bd_port -dir O -from 0 -to 0 UART0EXT_CTSn ]
   set UART0EXT_DCDn [ create_bd_port -dir O -from 0 -to 0 UART0EXT_DCDn ]
   set UART0EXT_DSRn [ create_bd_port -dir O -from 0 -to 0 UART0EXT_DSRn ]
@@ -878,7 +879,7 @@ proc create_root_design { parentCell } {
   # Create instance: microblaze_0_xlconcat, and set properties
   set microblaze_0_xlconcat [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 microblaze_0_xlconcat ]
   set_property -dict [ list \
-   CONFIG.NUM_PORTS {9} \
+   CONFIG.NUM_PORTS {10} \
  ] $microblaze_0_xlconcat
 
   # Create instance: microblaze_mcs_0, and set properties
@@ -1064,6 +1065,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net M05_ARESETN_1 [get_bd_pins microblaze_0_axi_periph/M05_ARESETN] [get_bd_pins proc_sys_reset_eth/interconnect_aresetn]
   connect_bd_net -net Net [get_bd_ports PLL_I2C_ext_sda] [get_bd_pins SC0712_0/ext_sda]
   connect_bd_net -net Net1 [get_bd_pins axi_ethernetlite_0/s_axi_aresetn] [get_bd_pins mii_to_rmii_0/rst_n] [get_bd_pins proc_sys_reset_eth/peripheral_aresetn]
+  connect_bd_net -net PLL_int_1 [get_bd_ports PLL_int] [get_bd_pins microblaze_0_xlconcat/In9]
   connect_bd_net -net PWM_GPIO_xlslice_1_Dout [get_bd_ports LCD_rstn] [get_bd_pins PWM_GPIO_xlslice_1/Dout]
   connect_bd_net -net PWM_counter_binary_0_Q [get_bd_pins PWM_counter_binary_0/Q] [get_bd_pins PWM_ctr_xlslice_0/Din]
   connect_bd_net -net PWM_ctr_xlslice_0_Dout [get_bd_pins LCD_BL_compare_0/A] [get_bd_pins PWM_ctr_xlslice_0/Dout] [get_bd_pins RGB_blue_compare_0/A] [get_bd_pins RGB_green_compare_0/A] [get_bd_pins RGB_red_compare_0/A]

@@ -49,6 +49,7 @@ entity msys_wrapper is
     LED_RGB_red : out STD_LOGIC_VECTOR ( 0 to 0 );
     PLL_I2C_ext_scl_o : out STD_LOGIC;
     PLL_I2C_ext_sda : inout STD_LOGIC;
+    PLL_int : in STD_LOGIC;
     RMII_PHY_M_0_crs_dv : in STD_LOGIC;
     RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RMII_PHY_M_0_tx_en : out STD_LOGIC;
@@ -84,6 +85,7 @@ architecture STRUCTURE of msys_wrapper is
     CLK1B : in STD_LOGIC_VECTOR ( 0 to 0 );
     PLL_I2C_ext_scl_o : out STD_LOGIC;
     PLL_I2C_ext_sda : inout STD_LOGIC;
+    PLL_int : in STD_LOGIC;
     phy_rst_n : out STD_LOGIC;
     reset : in STD_LOGIC;
     UART0EXT_RTSn : in STD_LOGIC;
@@ -288,6 +290,7 @@ msys_i: component msys
       LED_RGB_red(0) => LED_RGB_red(0),
       PLL_I2C_ext_scl_o => PLL_I2C_ext_scl_o,
       PLL_I2C_ext_sda => PLL_I2C_ext_sda,
+      PLL_int => PLL_int,
       RMII_PHY_M_0_crs_dv => RMII_PHY_M_0_crs_dv,
       RMII_PHY_M_0_rxd(1 downto 0) => RMII_PHY_M_0_rxd(1 downto 0),
       RMII_PHY_M_0_tx_en => RMII_PHY_M_0_tx_en,
