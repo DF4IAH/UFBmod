@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Tue Apr 21 13:34:52 2020
+--Date        : Tue Apr 21 15:44:52 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -5765,6 +5765,7 @@ entity msys is
     RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RMII_PHY_M_0_tx_en : out STD_LOGIC;
     RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TRX_clk_26mhz : out STD_LOGIC;
     TRX_int : in STD_LOGIC;
     TRX_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -6513,7 +6514,8 @@ architecture STRUCTURE of msys is
   port (
     reset : in STD_LOGIC;
     clk_in1 : in STD_LOGIC;
-    clk_out1 : out STD_LOGIC
+    clk_out1 : out STD_LOGIC;
+    clk_out2 : out STD_LOGIC
   );
   end component msys_clk_wiz_0_0;
   component msys_selectio_wiz_0_0 is
@@ -6858,6 +6860,7 @@ architecture STRUCTURE of msys is
   end component msys_TRX_xlslice_0to0_0_0;
   signal ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal BOARD_ROTENC_PUSH_1 : STD_LOGIC;
+  signal BOARD_clk_wiz_0_clk_out2 : STD_LOGIC;
   signal BUFG_I_0_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal CLK_IN_D_0_1_CLK_N : STD_LOGIC_VECTOR ( 0 to 0 );
   signal CLK_IN_D_0_1_CLK_P : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -7475,6 +7478,8 @@ architecture STRUCTURE of msys is
   attribute X_INTERFACE_PARAMETER of PLL_int : signal is "XIL_INTERFACENAME INTR.PLL_INT, PortWidth 1, SENSITIVITY LEVEL_HIGH";
   attribute X_INTERFACE_INFO of RMII_PHY_M_0_crs_dv : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 CRS_DV";
   attribute X_INTERFACE_INFO of RMII_PHY_M_0_tx_en : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 TX_EN";
+  attribute X_INTERFACE_INFO of TRX_clk_26mhz : signal is "xilinx.com:signal:clock:1.0 CLK.TRX_CLK_26MHZ CLK";
+  attribute X_INTERFACE_PARAMETER of TRX_clk_26mhz : signal is "XIL_INTERFACENAME CLK.TRX_CLK_26MHZ, CLK_DOMAIN /BOARD_clk_wiz_0_clk_out1, FREQ_HZ 26000000, INSERT_VIP 0, PHASE 0.0";
   attribute X_INTERFACE_INFO of TRX_int : signal is "xilinx.com:signal:interrupt:1.0 INTR.TRX_INT INTERRUPT";
   attribute X_INTERFACE_PARAMETER of TRX_int : signal is "XIL_INTERFACENAME INTR.TRX_INT, PortWidth 1, SENSITIVITY LEVEL_HIGH";
   attribute X_INTERFACE_INFO of TRX_spi_io0_i : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO0_I";
@@ -7488,7 +7493,7 @@ architecture STRUCTURE of msys is
   attribute X_INTERFACE_INFO of TRX_spi_sck_t : signal is "xilinx.com:interface:spi:1.0 TRX_spi SCK_T";
   attribute X_INTERFACE_INFO of TRX_spi_ss_t : signal is "xilinx.com:interface:spi:1.0 TRX_spi SS_T";
   attribute X_INTERFACE_INFO of UART0_clk : signal is "xilinx.com:signal:clock:1.0 CLK.UART0_CLK CLK";
-  attribute X_INTERFACE_PARAMETER of UART0_clk : signal is "XIL_INTERFACENAME CLK.UART0_CLK, CLK_DOMAIN /UART0_clk_wiz_0_clk_out1, FREQ_HZ 12000000, INSERT_VIP 0, PHASE 0.0";
+  attribute X_INTERFACE_PARAMETER of UART0_clk : signal is "XIL_INTERFACENAME CLK.UART0_CLK, CLK_DOMAIN /BOARD_clk_wiz_0_clk_out1, FREQ_HZ 12000000, INSERT_VIP 0, PHASE 0.0";
   attribute X_INTERFACE_INFO of UART0_rxd : signal is "xilinx.com:interface:uart:1.0 UART0 RxD";
   attribute X_INTERFACE_INFO of UART0_txd : signal is "xilinx.com:interface:uart:1.0 UART0 TxD";
   attribute X_INTERFACE_INFO of mgt_clk0_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 mgt_clk0 CLK_N";
@@ -7589,6 +7594,7 @@ begin
   TRX_axi_quad_spi_0_SPI_0_IO1_I <= TRX_spi_io1_i;
   TRX_axi_quad_spi_0_SPI_0_SCK_I <= TRX_spi_sck_i;
   TRX_axi_quad_spi_0_SPI_0_SS_I(0) <= TRX_spi_ss_i(0);
+  TRX_clk_26mhz <= BOARD_clk_wiz_0_clk_out2;
   TRX_int_1 <= TRX_int;
   TRX_reset(0) <= TRX_xlslice_1to1_0_Dout(0);
   TRX_rfx_mode(0) <= TRX_xlslice_1to1_0_Dout1(0);
@@ -7643,6 +7649,13 @@ begin
   rotenc_decoder_reset(0) <= rst_mig_7series_0_100M_peripheral_aresetn(0);
   sys_diff_clock_1_CLK_N <= sys_diff_clock_clk_n;
   sys_diff_clock_1_CLK_P <= sys_diff_clock_clk_p;
+BOARD_clk_wiz_0: component msys_clk_wiz_0_0
+     port map (
+      clk_in1 => microblaze_0_Clk,
+      clk_out1 => UART0_clk_wiz_0_clk_out1,
+      clk_out2 => BOARD_clk_wiz_0_clk_out2,
+      reset => mig_7series_0_ui_clk_sync_rst
+    );
 ETH0_selectio_wiz_0: component msys_selectio_wiz_0_0
      port map (
       clk_in => UART0_clk_wiz_0_clk_out1,
@@ -7839,12 +7852,6 @@ TRX_xlslice_1to1_0: component msys_TRX_xlslice_0to0_0_0
      port map (
       Din(1 downto 0) => axi_TRX_gpio_0_gpio_io_o(1 downto 0),
       Dout(0) => TRX_xlslice_1to1_0_Dout1(0)
-    );
-UART0_clk_wiz_0: component msys_clk_wiz_0_0
-     port map (
-      clk_in1 => microblaze_0_Clk,
-      clk_out1 => UART0_clk_wiz_0_clk_out1,
-      reset => mig_7series_0_ui_clk_sync_rst
     );
 UART0_xlconcat_1: component msys_xlconcat_1_0
      port map (

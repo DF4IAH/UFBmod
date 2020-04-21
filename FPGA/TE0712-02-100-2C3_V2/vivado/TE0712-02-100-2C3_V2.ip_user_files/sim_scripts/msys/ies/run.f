@@ -408,6 +408,7 @@
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_xlslice_0_3/sim/msys_xlslice_0_3.v" \
+  "../../../bd/msys/ip/msys_TRX_xlslice_0to0_0_0/sim/msys_TRX_xlslice_0to0_0_0.v" \
 -endlib
 -makelib ies_lib/axi_clock_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/9e81/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
@@ -415,7 +416,6 @@
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_auto_cc_0/sim/msys_auto_cc_0.v" \
   "../../../bd/msys/ip/msys_auto_cc_1/sim/msys_auto_cc_1.v" \
-  "../../../bd/msys/ip/msys_TRX_xlslice_0to0_0_0/sim/msys_TRX_xlslice_0to0_0_0.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   glbl.v

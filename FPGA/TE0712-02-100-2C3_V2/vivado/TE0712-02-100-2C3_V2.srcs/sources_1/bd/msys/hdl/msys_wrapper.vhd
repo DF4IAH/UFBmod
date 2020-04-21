@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Tue Apr 21 13:34:53 2020
+--Date        : Tue Apr 21 15:44:53 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -54,6 +54,7 @@ entity msys_wrapper is
     RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RMII_PHY_M_0_tx_en : out STD_LOGIC;
     RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TRX_clk_26mhz : out STD_LOGIC;
     TRX_int : in STD_LOGIC;
     TRX_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -120,6 +121,7 @@ architecture STRUCTURE of msys_wrapper is
     TRX_int : in STD_LOGIC;
     TRX_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_clk_26mhz : out STD_LOGIC;
     BOARD_IIC_scl_i : in STD_LOGIC;
     BOARD_IIC_scl_o : out STD_LOGIC;
     BOARD_IIC_scl_t : out STD_LOGIC;
@@ -164,17 +166,6 @@ architecture STRUCTURE of msys_wrapper is
     qspi_flash_ss_i : in STD_LOGIC;
     qspi_flash_ss_o : out STD_LOGIC;
     qspi_flash_ss_t : out STD_LOGIC;
-    onewire_EUI48_tri_i : in STD_LOGIC_VECTOR ( 0 to 0 );
-    onewire_EUI48_tri_o : out STD_LOGIC_VECTOR ( 0 to 0 );
-    onewire_EUI48_tri_t : out STD_LOGIC_VECTOR ( 0 to 0 );
-    sys_diff_clock_clk_p : in STD_LOGIC;
-    sys_diff_clock_clk_n : in STD_LOGIC;
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
     TRX_spi_io0_i : in STD_LOGIC;
     TRX_spi_io0_o : out STD_LOGIC;
     TRX_spi_io0_t : out STD_LOGIC;
@@ -186,7 +177,18 @@ architecture STRUCTURE of msys_wrapper is
     TRX_spi_sck_t : out STD_LOGIC;
     TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_spi_ss_t : out STD_LOGIC
+    TRX_spi_ss_t : out STD_LOGIC;
+    UART0_rxd : in STD_LOGIC;
+    UART0_txd : out STD_LOGIC;
+    onewire_EUI48_tri_i : in STD_LOGIC_VECTOR ( 0 to 0 );
+    onewire_EUI48_tri_o : out STD_LOGIC_VECTOR ( 0 to 0 );
+    onewire_EUI48_tri_t : out STD_LOGIC_VECTOR ( 0 to 0 );
+    sys_diff_clock_clk_p : in STD_LOGIC;
+    sys_diff_clock_clk_n : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC
   );
   end component msys;
   component IOBUF is
@@ -358,6 +360,7 @@ msys_i: component msys
       RMII_PHY_M_0_rxd(1 downto 0) => RMII_PHY_M_0_rxd(1 downto 0),
       RMII_PHY_M_0_tx_en => RMII_PHY_M_0_tx_en,
       RMII_PHY_M_0_txd(1 downto 0) => RMII_PHY_M_0_txd(1 downto 0),
+      TRX_clk_26mhz => TRX_clk_26mhz,
       TRX_int => TRX_int,
       TRX_reset(0) => TRX_reset(0),
       TRX_rfx_mode(0) => TRX_rfx_mode(0),
