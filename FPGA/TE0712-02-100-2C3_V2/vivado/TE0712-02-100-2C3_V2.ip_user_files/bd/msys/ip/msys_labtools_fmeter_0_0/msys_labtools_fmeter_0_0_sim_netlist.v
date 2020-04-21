@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
-// Date        : Wed Apr 15 16:51:14 2020
+// Date        : Tue Apr 21 20:17:28 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top msys_labtools_fmeter_0_0 -prefix
-//               msys_labtools_fmeter_0_0_ msys_labtools_fmeter_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim
+//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_labtools_fmeter_0_0/msys_labtools_fmeter_0_0_sim_netlist.v
 // Design      : msys_labtools_fmeter_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,34 +12,79 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
+(* CHECK_LICENSE_TYPE = "msys_labtools_fmeter_0_0,labtools_fmeter,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "labtools_fmeter,Vivado 2019.2.1" *) 
+(* NotValidForBitStream *)
+module msys_labtools_fmeter_0_0
+   (refclk,
+    fin,
+    F0,
+    F1,
+    F2,
+    F3,
+    F4,
+    update);
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 refclk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME refclk, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN msys_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) input refclk;
+  input [4:0]fin;
+  output [31:0]F0;
+  output [31:0]F1;
+  output [31:0]F2;
+  output [31:0]F3;
+  output [31:0]F4;
+  output update;
+
+  wire [31:0]F0;
+  wire [31:0]F1;
+  wire [31:0]F2;
+  wire [31:0]F3;
+  wire [31:0]F4;
+  wire [4:0]fin;
+  wire refclk;
+  wire update;
+
+  msys_labtools_fmeter_0_0_labtools_fmeter U0
+       (.F0(F0),
+        .F1(F1),
+        .F2(F2),
+        .F3(F3),
+        .F4(F4),
+        .fin(fin),
+        .refclk(refclk),
+        .update(update));
+endmodule
+
+(* ORIG_REF_NAME = "labtools_fmeter" *) 
 module msys_labtools_fmeter_0_0_labtools_fmeter
-   (F3,
+   (F4,
+    F3,
     F2,
     F1,
     F0,
     update,
     refclk,
     fin);
+  output [31:0]F4;
   output [31:0]F3;
   output [31:0]F2;
   output [31:0]F1;
   output [31:0]F0;
   output update;
   input refclk;
-  input [3:0]fin;
+  input [4:0]fin;
 
   wire CE;
   wire [31:0]CNTR_OUT;
   wire [31:0]CNTR_OUT_0;
   wire [31:0]CNTR_OUT_1;
   wire [31:0]CNTR_OUT_2;
+  wire [31:0]CNTR_OUT_3;
   wire COUNTER_REFCLK_inst_n_2;
   wire F;
   wire [31:0]F0;
   wire [31:0]F1;
   wire [31:0]F2;
   wire [31:0]F3;
-  wire [3:0]fin;
+  wire [31:0]F4;
+  wire [4:0]fin;
   wire refclk;
   wire toggle;
   wire update;
@@ -69,6 +114,11 @@ module msys_labtools_fmeter_0_0_labtools_fmeter
        (.CE(CE),
         .P(CNTR_OUT_2),
         .fin(fin[3]),
+        .toggle(toggle));
+  msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO__parameterized0_3 \FMETER_gen[4].COUNTER_F_inst 
+       (.CE(CE),
+        .P(CNTR_OUT_3),
+        .fin(fin[4]),
         .toggle(toggle));
   FDRE \F_reg[0] 
        (.C(refclk),
@@ -256,11 +306,83 @@ module msys_labtools_fmeter_0_0_labtools_fmeter
         .D(CNTR_OUT_2[31]),
         .Q(F3[31]),
         .R(1'b0));
+  FDRE \F_reg[128] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[0]),
+        .Q(F4[0]),
+        .R(1'b0));
+  FDRE \F_reg[129] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[1]),
+        .Q(F4[1]),
+        .R(1'b0));
   FDRE \F_reg[12] 
        (.C(refclk),
         .CE(F),
         .D(CNTR_OUT[12]),
         .Q(F0[12]),
+        .R(1'b0));
+  FDRE \F_reg[130] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[2]),
+        .Q(F4[2]),
+        .R(1'b0));
+  FDRE \F_reg[131] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[3]),
+        .Q(F4[3]),
+        .R(1'b0));
+  FDRE \F_reg[132] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[4]),
+        .Q(F4[4]),
+        .R(1'b0));
+  FDRE \F_reg[133] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[5]),
+        .Q(F4[5]),
+        .R(1'b0));
+  FDRE \F_reg[134] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[6]),
+        .Q(F4[6]),
+        .R(1'b0));
+  FDRE \F_reg[135] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[7]),
+        .Q(F4[7]),
+        .R(1'b0));
+  FDRE \F_reg[136] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[8]),
+        .Q(F4[8]),
+        .R(1'b0));
+  FDRE \F_reg[137] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[9]),
+        .Q(F4[9]),
+        .R(1'b0));
+  FDRE \F_reg[138] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[10]),
+        .Q(F4[10]),
+        .R(1'b0));
+  FDRE \F_reg[139] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[11]),
+        .Q(F4[11]),
         .R(1'b0));
   FDRE \F_reg[13] 
        (.C(refclk),
@@ -268,11 +390,131 @@ module msys_labtools_fmeter_0_0_labtools_fmeter
         .D(CNTR_OUT[13]),
         .Q(F0[13]),
         .R(1'b0));
+  FDRE \F_reg[140] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[12]),
+        .Q(F4[12]),
+        .R(1'b0));
+  FDRE \F_reg[141] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[13]),
+        .Q(F4[13]),
+        .R(1'b0));
+  FDRE \F_reg[142] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[14]),
+        .Q(F4[14]),
+        .R(1'b0));
+  FDRE \F_reg[143] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[15]),
+        .Q(F4[15]),
+        .R(1'b0));
+  FDRE \F_reg[144] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[16]),
+        .Q(F4[16]),
+        .R(1'b0));
+  FDRE \F_reg[145] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[17]),
+        .Q(F4[17]),
+        .R(1'b0));
+  FDRE \F_reg[146] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[18]),
+        .Q(F4[18]),
+        .R(1'b0));
+  FDRE \F_reg[147] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[19]),
+        .Q(F4[19]),
+        .R(1'b0));
+  FDRE \F_reg[148] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[20]),
+        .Q(F4[20]),
+        .R(1'b0));
+  FDRE \F_reg[149] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[21]),
+        .Q(F4[21]),
+        .R(1'b0));
   FDRE \F_reg[14] 
        (.C(refclk),
         .CE(F),
         .D(CNTR_OUT[14]),
         .Q(F0[14]),
+        .R(1'b0));
+  FDRE \F_reg[150] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[22]),
+        .Q(F4[22]),
+        .R(1'b0));
+  FDRE \F_reg[151] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[23]),
+        .Q(F4[23]),
+        .R(1'b0));
+  FDRE \F_reg[152] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[24]),
+        .Q(F4[24]),
+        .R(1'b0));
+  FDRE \F_reg[153] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[25]),
+        .Q(F4[25]),
+        .R(1'b0));
+  FDRE \F_reg[154] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[26]),
+        .Q(F4[26]),
+        .R(1'b0));
+  FDRE \F_reg[155] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[27]),
+        .Q(F4[27]),
+        .R(1'b0));
+  FDRE \F_reg[156] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[28]),
+        .Q(F4[28]),
+        .R(1'b0));
+  FDRE \F_reg[157] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[29]),
+        .Q(F4[29]),
+        .R(1'b0));
+  FDRE \F_reg[158] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[30]),
+        .Q(F4[30]),
+        .R(1'b0));
+  FDRE \F_reg[159] 
+       (.C(refclk),
+        .CE(F),
+        .D(CNTR_OUT_3[31]),
+        .Q(F4[31]),
         .R(1'b0));
   FDRE \F_reg[15] 
        (.C(refclk),
@@ -846,42 +1088,7 @@ module msys_labtools_fmeter_0_0_labtools_fmeter
         .R(1'b0));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "msys_labtools_fmeter_0_0,labtools_fmeter,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "labtools_fmeter,Vivado 2019.2.1" *) 
-(* NotValidForBitStream *)
-module msys_labtools_fmeter_0_0
-   (refclk,
-    fin,
-    F0,
-    F1,
-    F2,
-    F3,
-    update);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 refclk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME refclk, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN msys_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) input refclk;
-  input [3:0]fin;
-  output [31:0]F0;
-  output [31:0]F1;
-  output [31:0]F2;
-  output [31:0]F3;
-  output update;
-
-  wire [31:0]F0;
-  wire [31:0]F1;
-  wire [31:0]F2;
-  wire [31:0]F3;
-  wire [3:0]fin;
-  wire refclk;
-  wire update;
-
-  msys_labtools_fmeter_0_0_labtools_fmeter U0
-       (.F0(F0),
-        .F1(F1),
-        .F2(F2),
-        .F3(F3),
-        .fin(fin),
-        .refclk(refclk),
-        .update(update));
-endmodule
-
+(* ORIG_REF_NAME = "unimacro_COUNTER_TC_MACRO" *) 
 module msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO
    (update,
     F,
@@ -1517,6 +1724,117 @@ endmodule
 
 (* ORIG_REF_NAME = "unimacro_COUNTER_TC_MACRO" *) 
 module msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO__parameterized0_2
+   (P,
+    CE,
+    fin,
+    toggle);
+  output [31:0]P;
+  input CE;
+  input [0:0]fin;
+  input toggle;
+
+  wire CE;
+  wire [47:32]CNTR_OUT;
+  wire [31:0]P;
+  wire [0:0]fin;
+  wire toggle;
+  wire \NLW_bl.DSP48E_2_CARRYCASCOUT_UNCONNECTED ;
+  wire \NLW_bl.DSP48E_2_MULTSIGNOUT_UNCONNECTED ;
+  wire \NLW_bl.DSP48E_2_OVERFLOW_UNCONNECTED ;
+  wire \NLW_bl.DSP48E_2_PATTERNBDETECT_UNCONNECTED ;
+  wire \NLW_bl.DSP48E_2_PATTERNDETECT_UNCONNECTED ;
+  wire \NLW_bl.DSP48E_2_UNDERFLOW_UNCONNECTED ;
+  wire [29:0]\NLW_bl.DSP48E_2_ACOUT_UNCONNECTED ;
+  wire [17:0]\NLW_bl.DSP48E_2_BCOUT_UNCONNECTED ;
+  wire [3:0]\NLW_bl.DSP48E_2_CARRYOUT_UNCONNECTED ;
+  wire [47:0]\NLW_bl.DSP48E_2_PCOUT_UNCONNECTED ;
+
+  (* box_type = "PRIMITIVE" *) 
+  DSP48E1 #(
+    .ACASCREG(1),
+    .ADREG(0),
+    .ALUMODEREG(1),
+    .AREG(1),
+    .AUTORESET_PATDET("NO_RESET"),
+    .A_INPUT("DIRECT"),
+    .BCASCREG(1),
+    .BREG(1),
+    .B_INPUT("DIRECT"),
+    .CARRYINREG(1),
+    .CARRYINSELREG(1),
+    .CREG(1),
+    .DREG(0),
+    .INMODEREG(1),
+    .IS_ALUMODE_INVERTED(4'b0000),
+    .IS_CARRYIN_INVERTED(1'b0),
+    .IS_CLK_INVERTED(1'b0),
+    .IS_INMODE_INVERTED(5'b00000),
+    .IS_OPMODE_INVERTED(7'b0000000),
+    .MASK(48'h3FFFFFFFFFFF),
+    .MREG(0),
+    .OPMODEREG(1),
+    .PATTERN(48'h000000000000),
+    .PREG(1),
+    .SEL_MASK("MASK"),
+    .SEL_PATTERN("PATTERN"),
+    .USE_DPORT("FALSE"),
+    .USE_MULT("NONE"),
+    .USE_PATTERN_DETECT("NO_PATDET"),
+    .USE_SIMD("ONE48")) 
+    \bl.DSP48E_2 
+       (.A({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .ACIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .ACOUT(\NLW_bl.DSP48E_2_ACOUT_UNCONNECTED [29:0]),
+        .ALUMODE({1'b0,1'b0,1'b0,1'b0}),
+        .B({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b1}),
+        .BCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .BCOUT(\NLW_bl.DSP48E_2_BCOUT_UNCONNECTED [17:0]),
+        .C({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .CARRYCASCIN(1'b0),
+        .CARRYCASCOUT(\NLW_bl.DSP48E_2_CARRYCASCOUT_UNCONNECTED ),
+        .CARRYIN(1'b0),
+        .CARRYINSEL({1'b0,1'b0,1'b0}),
+        .CARRYOUT(\NLW_bl.DSP48E_2_CARRYOUT_UNCONNECTED [3:0]),
+        .CEA1(1'b0),
+        .CEA2(CE),
+        .CEAD(1'b0),
+        .CEALUMODE(CE),
+        .CEB1(1'b0),
+        .CEB2(CE),
+        .CEC(CE),
+        .CECARRYIN(CE),
+        .CECTRL(CE),
+        .CED(1'b0),
+        .CEINMODE(1'b0),
+        .CEM(1'b0),
+        .CEP(CE),
+        .CLK(fin),
+        .D({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .INMODE({1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .MULTSIGNIN(1'b0),
+        .MULTSIGNOUT(\NLW_bl.DSP48E_2_MULTSIGNOUT_UNCONNECTED ),
+        .OPMODE({1'b0,1'b1,1'b0,1'b0,1'b0,1'b1,1'b1}),
+        .OVERFLOW(\NLW_bl.DSP48E_2_OVERFLOW_UNCONNECTED ),
+        .P({CNTR_OUT,P}),
+        .PATTERNBDETECT(\NLW_bl.DSP48E_2_PATTERNBDETECT_UNCONNECTED ),
+        .PATTERNDETECT(\NLW_bl.DSP48E_2_PATTERNDETECT_UNCONNECTED ),
+        .PCIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .PCOUT(\NLW_bl.DSP48E_2_PCOUT_UNCONNECTED [47:0]),
+        .RSTA(toggle),
+        .RSTALLCARRYIN(toggle),
+        .RSTALUMODE(toggle),
+        .RSTB(toggle),
+        .RSTC(toggle),
+        .RSTCTRL(toggle),
+        .RSTD(toggle),
+        .RSTINMODE(toggle),
+        .RSTM(toggle),
+        .RSTP(toggle),
+        .UNDERFLOW(\NLW_bl.DSP48E_2_UNDERFLOW_UNCONNECTED ));
+endmodule
+
+(* ORIG_REF_NAME = "unimacro_COUNTER_TC_MACRO" *) 
+module msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO__parameterized0_3
    (P,
     CE,
     fin,

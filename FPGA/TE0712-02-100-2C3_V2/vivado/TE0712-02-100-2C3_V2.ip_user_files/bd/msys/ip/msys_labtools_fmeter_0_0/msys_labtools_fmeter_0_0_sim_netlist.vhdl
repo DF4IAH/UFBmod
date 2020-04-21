@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
--- Date        : Wed Apr 15 16:51:14 2020
+-- Date        : Tue Apr 21 20:17:28 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top msys_labtools_fmeter_0_0 -prefix
---               msys_labtools_fmeter_0_0_ msys_labtools_fmeter_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_labtools_fmeter_0_0/msys_labtools_fmeter_0_0_sim_netlist.vhdl
 -- Design      : msys_labtools_fmeter_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -22,6 +22,8 @@ entity msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO is
     refclk : in STD_LOGIC;
     toggle : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO : entity is "unimacro_COUNTER_TC_MACRO";
 end msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO;
 
 architecture STRUCTURE of msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO is
@@ -731,7 +733,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity \msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO__parameterized0_2\ is
   port (
     P : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    CE : out STD_LOGIC;
+    CE : in STD_LOGIC;
     fin : in STD_LOGIC_VECTOR ( 0 to 0 );
     toggle : in STD_LOGIC
   );
@@ -740,6 +742,122 @@ entity \msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO__parameterized0_2\ is
 end \msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO__parameterized0_2\;
 
 architecture STRUCTURE of \msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO__parameterized0_2\ is
+  signal CNTR_OUT : STD_LOGIC_VECTOR ( 47 downto 32 );
+  signal \NLW_bl.DSP48E_2_CARRYCASCOUT_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_bl.DSP48E_2_MULTSIGNOUT_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_bl.DSP48E_2_OVERFLOW_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_bl.DSP48E_2_PATTERNBDETECT_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_bl.DSP48E_2_PATTERNDETECT_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_bl.DSP48E_2_UNDERFLOW_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_bl.DSP48E_2_ACOUT_UNCONNECTED\ : STD_LOGIC_VECTOR ( 29 downto 0 );
+  signal \NLW_bl.DSP48E_2_BCOUT_UNCONNECTED\ : STD_LOGIC_VECTOR ( 17 downto 0 );
+  signal \NLW_bl.DSP48E_2_CARRYOUT_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal \NLW_bl.DSP48E_2_PCOUT_UNCONNECTED\ : STD_LOGIC_VECTOR ( 47 downto 0 );
+  attribute box_type : string;
+  attribute box_type of \bl.DSP48E_2\ : label is "PRIMITIVE";
+begin
+\bl.DSP48E_2\: unisim.vcomponents.DSP48E1
+    generic map(
+      ACASCREG => 1,
+      ADREG => 0,
+      ALUMODEREG => 1,
+      AREG => 1,
+      AUTORESET_PATDET => "NO_RESET",
+      A_INPUT => "DIRECT",
+      BCASCREG => 1,
+      BREG => 1,
+      B_INPUT => "DIRECT",
+      CARRYINREG => 1,
+      CARRYINSELREG => 1,
+      CREG => 1,
+      DREG => 0,
+      INMODEREG => 1,
+      IS_ALUMODE_INVERTED => B"0000",
+      IS_CARRYIN_INVERTED => '0',
+      IS_CLK_INVERTED => '0',
+      IS_INMODE_INVERTED => B"00000",
+      IS_OPMODE_INVERTED => B"0000000",
+      MASK => X"3FFFFFFFFFFF",
+      MREG => 0,
+      OPMODEREG => 1,
+      PATTERN => X"000000000000",
+      PREG => 1,
+      SEL_MASK => "MASK",
+      SEL_PATTERN => "PATTERN",
+      USE_DPORT => false,
+      USE_MULT => "NONE",
+      USE_PATTERN_DETECT => "NO_PATDET",
+      USE_SIMD => "ONE48"
+    )
+        port map (
+      A(29 downto 0) => B"000000000000000000000000000000",
+      ACIN(29 downto 0) => B"000000000000000000000000000000",
+      ACOUT(29 downto 0) => \NLW_bl.DSP48E_2_ACOUT_UNCONNECTED\(29 downto 0),
+      ALUMODE(3 downto 0) => B"0000",
+      B(17 downto 0) => B"000000000000000001",
+      BCIN(17 downto 0) => B"000000000000000000",
+      BCOUT(17 downto 0) => \NLW_bl.DSP48E_2_BCOUT_UNCONNECTED\(17 downto 0),
+      C(47 downto 0) => B"000000000000000000000000000000000000000000000000",
+      CARRYCASCIN => '0',
+      CARRYCASCOUT => \NLW_bl.DSP48E_2_CARRYCASCOUT_UNCONNECTED\,
+      CARRYIN => '0',
+      CARRYINSEL(2 downto 0) => B"000",
+      CARRYOUT(3 downto 0) => \NLW_bl.DSP48E_2_CARRYOUT_UNCONNECTED\(3 downto 0),
+      CEA1 => '0',
+      CEA2 => CE,
+      CEAD => '0',
+      CEALUMODE => CE,
+      CEB1 => '0',
+      CEB2 => CE,
+      CEC => CE,
+      CECARRYIN => CE,
+      CECTRL => CE,
+      CED => '0',
+      CEINMODE => '0',
+      CEM => '0',
+      CEP => CE,
+      CLK => fin(0),
+      D(24 downto 0) => B"0000000000000000000000000",
+      INMODE(4 downto 0) => B"00000",
+      MULTSIGNIN => '0',
+      MULTSIGNOUT => \NLW_bl.DSP48E_2_MULTSIGNOUT_UNCONNECTED\,
+      OPMODE(6 downto 0) => B"0100011",
+      OVERFLOW => \NLW_bl.DSP48E_2_OVERFLOW_UNCONNECTED\,
+      P(47 downto 32) => CNTR_OUT(47 downto 32),
+      P(31 downto 0) => P(31 downto 0),
+      PATTERNBDETECT => \NLW_bl.DSP48E_2_PATTERNBDETECT_UNCONNECTED\,
+      PATTERNDETECT => \NLW_bl.DSP48E_2_PATTERNDETECT_UNCONNECTED\,
+      PCIN(47 downto 0) => B"000000000000000000000000000000000000000000000000",
+      PCOUT(47 downto 0) => \NLW_bl.DSP48E_2_PCOUT_UNCONNECTED\(47 downto 0),
+      RSTA => toggle,
+      RSTALLCARRYIN => toggle,
+      RSTALUMODE => toggle,
+      RSTB => toggle,
+      RSTC => toggle,
+      RSTCTRL => toggle,
+      RSTD => toggle,
+      RSTINMODE => toggle,
+      RSTM => toggle,
+      RSTP => toggle,
+      UNDERFLOW => \NLW_bl.DSP48E_2_UNDERFLOW_UNCONNECTED\
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity \msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO__parameterized0_3\ is
+  port (
+    P : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    CE : out STD_LOGIC;
+    fin : in STD_LOGIC_VECTOR ( 0 to 0 );
+    toggle : in STD_LOGIC
+  );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of \msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO__parameterized0_3\ : entity is "unimacro_COUNTER_TC_MACRO";
+end \msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO__parameterized0_3\;
+
+architecture STRUCTURE of \msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO__parameterized0_3\ is
   signal \^ce\ : STD_LOGIC;
   signal CNTR_OUT : STD_LOGIC_VECTOR ( 47 downto 32 );
   signal \NLW_bl.DSP48E_2_CARRYCASCOUT_UNCONNECTED\ : STD_LOGIC;
@@ -856,14 +974,17 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity msys_labtools_fmeter_0_0_labtools_fmeter is
   port (
+    F4 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     F3 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     F2 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     F1 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     F0 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     update : out STD_LOGIC;
     refclk : in STD_LOGIC;
-    fin : in STD_LOGIC_VECTOR ( 3 downto 0 )
+    fin : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of msys_labtools_fmeter_0_0_labtools_fmeter : entity is "labtools_fmeter";
 end msys_labtools_fmeter_0_0_labtools_fmeter;
 
 architecture STRUCTURE of msys_labtools_fmeter_0_0_labtools_fmeter is
@@ -872,6 +993,7 @@ architecture STRUCTURE of msys_labtools_fmeter_0_0_labtools_fmeter is
   signal CNTR_OUT_0 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal CNTR_OUT_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal CNTR_OUT_2 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal CNTR_OUT_3 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal COUNTER_REFCLK_inst_n_2 : STD_LOGIC;
   signal F : STD_LOGIC;
   signal toggle : STD_LOGIC;
@@ -910,6 +1032,13 @@ COUNTER_REFCLK_inst: entity work.msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MA
       CE => CE,
       P(31 downto 0) => CNTR_OUT_2(31 downto 0),
       fin(0) => fin(3),
+      toggle => toggle
+    );
+\FMETER_gen[4].COUNTER_F_inst\: entity work.\msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO__parameterized0_3\
+     port map (
+      CE => CE,
+      P(31 downto 0) => CNTR_OUT_3(31 downto 0),
+      fin(0) => fin(4),
       toggle => toggle
     );
 \F_reg[0]\: unisim.vcomponents.FDRE
@@ -1160,12 +1289,108 @@ COUNTER_REFCLK_inst: entity work.msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MA
       Q => F3(31),
       R => '0'
     );
+\F_reg[128]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(0),
+      Q => F4(0),
+      R => '0'
+    );
+\F_reg[129]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(1),
+      Q => F4(1),
+      R => '0'
+    );
 \F_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => refclk,
       CE => F,
       D => CNTR_OUT(12),
       Q => F0(12),
+      R => '0'
+    );
+\F_reg[130]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(2),
+      Q => F4(2),
+      R => '0'
+    );
+\F_reg[131]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(3),
+      Q => F4(3),
+      R => '0'
+    );
+\F_reg[132]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(4),
+      Q => F4(4),
+      R => '0'
+    );
+\F_reg[133]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(5),
+      Q => F4(5),
+      R => '0'
+    );
+\F_reg[134]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(6),
+      Q => F4(6),
+      R => '0'
+    );
+\F_reg[135]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(7),
+      Q => F4(7),
+      R => '0'
+    );
+\F_reg[136]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(8),
+      Q => F4(8),
+      R => '0'
+    );
+\F_reg[137]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(9),
+      Q => F4(9),
+      R => '0'
+    );
+\F_reg[138]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(10),
+      Q => F4(10),
+      R => '0'
+    );
+\F_reg[139]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(11),
+      Q => F4(11),
       R => '0'
     );
 \F_reg[13]\: unisim.vcomponents.FDRE
@@ -1176,12 +1401,172 @@ COUNTER_REFCLK_inst: entity work.msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MA
       Q => F0(13),
       R => '0'
     );
+\F_reg[140]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(12),
+      Q => F4(12),
+      R => '0'
+    );
+\F_reg[141]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(13),
+      Q => F4(13),
+      R => '0'
+    );
+\F_reg[142]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(14),
+      Q => F4(14),
+      R => '0'
+    );
+\F_reg[143]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(15),
+      Q => F4(15),
+      R => '0'
+    );
+\F_reg[144]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(16),
+      Q => F4(16),
+      R => '0'
+    );
+\F_reg[145]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(17),
+      Q => F4(17),
+      R => '0'
+    );
+\F_reg[146]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(18),
+      Q => F4(18),
+      R => '0'
+    );
+\F_reg[147]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(19),
+      Q => F4(19),
+      R => '0'
+    );
+\F_reg[148]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(20),
+      Q => F4(20),
+      R => '0'
+    );
+\F_reg[149]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(21),
+      Q => F4(21),
+      R => '0'
+    );
 \F_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => refclk,
       CE => F,
       D => CNTR_OUT(14),
       Q => F0(14),
+      R => '0'
+    );
+\F_reg[150]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(22),
+      Q => F4(22),
+      R => '0'
+    );
+\F_reg[151]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(23),
+      Q => F4(23),
+      R => '0'
+    );
+\F_reg[152]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(24),
+      Q => F4(24),
+      R => '0'
+    );
+\F_reg[153]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(25),
+      Q => F4(25),
+      R => '0'
+    );
+\F_reg[154]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(26),
+      Q => F4(26),
+      R => '0'
+    );
+\F_reg[155]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(27),
+      Q => F4(27),
+      R => '0'
+    );
+\F_reg[156]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(28),
+      Q => F4(28),
+      R => '0'
+    );
+\F_reg[157]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(29),
+      Q => F4(29),
+      R => '0'
+    );
+\F_reg[158]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(30),
+      Q => F4(30),
+      R => '0'
+    );
+\F_reg[159]\: unisim.vcomponents.FDRE
+     port map (
+      C => refclk,
+      CE => F,
+      D => CNTR_OUT_3(31),
+      Q => F4(31),
       R => '0'
     );
 \F_reg[15]\: unisim.vcomponents.FDRE
@@ -1952,11 +2337,12 @@ use UNISIM.VCOMPONENTS.ALL;
 entity msys_labtools_fmeter_0_0 is
   port (
     refclk : in STD_LOGIC;
-    fin : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    fin : in STD_LOGIC_VECTOR ( 4 downto 0 );
     F0 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     F1 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     F2 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     F3 : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    F4 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     update : out STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
@@ -1981,7 +2367,8 @@ U0: entity work.msys_labtools_fmeter_0_0_labtools_fmeter
       F1(31 downto 0) => F1(31 downto 0),
       F2(31 downto 0) => F2(31 downto 0),
       F3(31 downto 0) => F3(31 downto 0),
-      fin(3 downto 0) => fin(3 downto 0),
+      F4(31 downto 0) => F4(31 downto 0),
+      fin(4 downto 0) => fin(4 downto 0),
       refclk => refclk,
       update => update
     );

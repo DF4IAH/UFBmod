@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="msys" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1587476696"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1587476696"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1587476696"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1587476696"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1587493711"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1587493711"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1587493711"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1587493711"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\msys_SC0712_0_0\msys_SC0712_0_0.xci" Type="IP">
         <Instance HierarchyPath="SC0712_0"/>
@@ -585,6 +585,14 @@
       </File>
       <File Name="ip\msys_TRX_xlslice_0to0_0_0\msys_TRX_xlslice_0to0_0_0.xci" Type="IP">
         <Instance HierarchyPath="TRX_xlslice_1to1_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_util_ds_buf_0_1\msys_util_ds_buf_0_1.xci" Type="IP">
+        <Instance HierarchyPath="util_ds_buf_3"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

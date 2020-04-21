@@ -56,11 +56,12 @@ USE ieee.numeric_std.ALL;
 ENTITY msys_labtools_fmeter_0_0 IS
   PORT (
     refclk : IN STD_LOGIC;
-    fin : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+    fin : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
     F0 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     F1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     F2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     F3 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    F4 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     update : OUT STD_LOGIC
   );
 END msys_labtools_fmeter_0_0;
@@ -77,7 +78,7 @@ ARCHITECTURE msys_labtools_fmeter_0_0_arch OF msys_labtools_fmeter_0_0 IS
     );
     PORT (
       refclk : IN STD_LOGIC;
-      fin : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+      fin : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
       F0 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       F1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       F2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -124,7 +125,7 @@ ARCHITECTURE msys_labtools_fmeter_0_0_arch OF msys_labtools_fmeter_0_0 IS
 BEGIN
   U0 : labtools_fmeter
     GENERIC MAP (
-      C_CHANNELS => 4,
+      C_CHANNELS => 5,
       C_NUM_BITS => 32,
       C_MODE => 0,
       C_REFCLK_HZ => 100000000
@@ -136,6 +137,7 @@ BEGIN
       F1 => F1,
       F2 => F2,
       F3 => F3,
+      F4 => F4,
       update => update
     );
 END msys_labtools_fmeter_0_0_arch;

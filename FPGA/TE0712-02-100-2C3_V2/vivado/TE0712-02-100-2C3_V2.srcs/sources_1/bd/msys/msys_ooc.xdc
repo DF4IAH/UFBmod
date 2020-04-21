@@ -7,6 +7,7 @@
 # of Vivado)
 ################################################################################
 create_clock -name CLK1B -period 20 [get_ports CLK1B]
+create_clock -name TRX_clk_26mhz -period 38.462 [get_ports TRX_clk_26mhz]
 create_clock -name CLK0_clk_p -period 10 [get_ports CLK0_clk_p]
 create_clock -name mgt_clk0_clk_p -period 8 [get_ports mgt_clk0_clk_p]
 create_clock -name sys_diff_clock_clk_p -period 10 [get_ports sys_diff_clock_clk_p]

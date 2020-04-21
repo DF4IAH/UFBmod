@@ -321,22 +321,10 @@
           "ilmb_cntlr/SLMB"
         ]
       },
-      "ilmb_sl_1": {
+      "iomodule_0_GPIO1": {
         "interface_ports": [
-          "ilmb/LMB_Sl_1",
-          "second_ilmb_cntlr/SLMB"
-        ]
-      },
-      "dlmb_sl_2": {
-        "interface_ports": [
-          "dlmb/LMB_Sl_2",
-          "second_dlmb_cntlr/SLMB"
-        ]
-      },
-      "dlmb": {
-        "interface_ports": [
-          "microblaze_I/DLMB",
-          "dlmb/LMB_M"
+          "GPIO1",
+          "iomodule_0/GPIO1"
         ]
       },
       "dlmb_port_2": {
@@ -357,16 +345,28 @@
           "lmb_bram_I/BRAM_PORTA"
         ]
       },
-      "iomodule_0_GPIO1": {
-        "interface_ports": [
-          "GPIO1",
-          "iomodule_0/GPIO1"
-        ]
-      },
       "ilmb_port_2": {
         "interface_ports": [
           "second_ilmb_cntlr/BRAM_PORT",
           "second_lmb_bram_I/BRAM_PORTB"
+        ]
+      },
+      "ilmb_sl_1": {
+        "interface_ports": [
+          "ilmb/LMB_Sl_1",
+          "second_ilmb_cntlr/SLMB"
+        ]
+      },
+      "dlmb_sl_2": {
+        "interface_ports": [
+          "dlmb/LMB_Sl_2",
+          "second_dlmb_cntlr/SLMB"
+        ]
+      },
+      "dlmb": {
+        "interface_ports": [
+          "microblaze_I/DLMB",
+          "dlmb/LMB_M"
         ]
       }
     },

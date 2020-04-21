@@ -58,5 +58,6 @@ vhdl xil_defaultlib  \
 "../../../bd/msys/ip/msys_axi_pwm_gpio_0_1/sim/msys_axi_pwm_gpio_0_1.vhd" \
 "../../../bd/msys/ip/msys_axi_quad_spi_1_0/sim/msys_axi_quad_spi_1_0.vhd" \
 "../../../bd/msys/ip/msys_axi_ROTENC_gpio_0_0/sim/msys_axi_ROTENC_gpio_0_0.vhd" \
+"../../../bd/msys/ip/msys_util_ds_buf_0_1/sim/msys_util_ds_buf_0_1.vhd" \
 
 nosort

@@ -40,13 +40,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="15"/>
-    <Option Name="WTModelSimExportSim" Val="15"/>
-    <Option Name="WTQuestaExportSim" Val="15"/>
-    <Option Name="WTIesExportSim" Val="15"/>
-    <Option Name="WTVcsExportSim" Val="15"/>
-    <Option Name="WTRivieraExportSim" Val="15"/>
-    <Option Name="WTActivehdlExportSim" Val="15"/>
+    <Option Name="WTXSimExportSim" Val="17"/>
+    <Option Name="WTModelSimExportSim" Val="17"/>
+    <Option Name="WTQuestaExportSim" Val="17"/>
+    <Option Name="WTIesExportSim" Val="17"/>
+    <Option Name="WTVcsExportSim" Val="17"/>
+    <Option Name="WTRivieraExportSim" Val="17"/>
+    <Option Name="WTActivehdlExportSim" Val="17"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -68,17 +68,23 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="msys.bd" FileRelPathName="ip/msys_xbar_1/msys_xbar_1.xci">
-          <Proxy FileSetName="msys_xbar_1"/>
+        <CompFileExtendedInfo CompFileName="msys.bd" FileRelPathName="ip/msys_util_ds_buf_0_1/msys_util_ds_buf_0_1.xci">
+          <Proxy FileSetName="msys_util_ds_buf_0_1"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="msys.bd" FileRelPathName="ip/msys_labtools_fmeter_0_0/msys_labtools_fmeter_0_0.xci">
+          <Proxy FileSetName="msys_labtools_fmeter_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="msys.bd" FileRelPathName="ip/msys_microblaze_0_axi_intc_0/msys_microblaze_0_axi_intc_0.xci">
           <Proxy FileSetName="msys_microblaze_0_axi_intc_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="msys.bd" FileRelPathName="ip/msys_axi_pwm_gpio_0_0/msys_axi_pwm_gpio_0_0.xci">
-          <Proxy FileSetName="msys_axi_pwm_gpio_0_0"/>
+        <CompFileExtendedInfo CompFileName="msys.bd" FileRelPathName="ip/msys_xbar_1/msys_xbar_1.xci">
+          <Proxy FileSetName="msys_xbar_1"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="msys.bd" FileRelPathName="ip/msys_axi_quad_spi_1_0/msys_axi_quad_spi_1_0.xci">
-          <Proxy FileSetName="msys_axi_quad_spi_1_0"/>
+        <CompFileExtendedInfo CompFileName="msys.bd" FileRelPathName="ip/msys_clk_wiz_0_0/msys_clk_wiz_0_0.xci">
+          <Proxy FileSetName="msys_clk_wiz_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="msys.bd" FileRelPathName="ip/msys_vio_0_0/msys_vio_0_0.xci">
+          <Proxy FileSetName="msys_vio_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="msys.bd" FileRelPathName="ip/msys_axi_ROTENC_gpio_0_0/msys_axi_ROTENC_gpio_0_0.xci">
           <Proxy FileSetName="msys_axi_ROTENC_gpio_0_0"/>
@@ -86,8 +92,11 @@
         <CompFileExtendedInfo CompFileName="msys.bd" FileRelPathName="ip/msys_axi_pwm_gpio_0_1/msys_axi_pwm_gpio_0_1.xci">
           <Proxy FileSetName="msys_axi_pwm_gpio_0_1"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="msys.bd" FileRelPathName="ip/msys_clk_wiz_0_0/msys_clk_wiz_0_0.xci">
-          <Proxy FileSetName="msys_clk_wiz_0_0"/>
+        <CompFileExtendedInfo CompFileName="msys.bd" FileRelPathName="ip/msys_axi_pwm_gpio_0_0/msys_axi_pwm_gpio_0_0.xci">
+          <Proxy FileSetName="msys_axi_pwm_gpio_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="msys.bd" FileRelPathName="ip/msys_axi_quad_spi_1_0/msys_axi_quad_spi_1_0.xci">
+          <Proxy FileSetName="msys_axi_quad_spi_1_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/new/rotenc_decoder.vhd">
@@ -234,6 +243,24 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
+    <FileSet Name="msys_labtools_fmeter_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/msys_labtools_fmeter_0_0">
+      <Config>
+        <Option Name="TopModule" Val="msys_labtools_fmeter_0_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="msys_vio_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/msys_vio_0_0">
+      <Config>
+        <Option Name="TopModule" Val="msys_vio_0_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="msys_util_ds_buf_0_1" Type="BlockSrcs" RelSrcDir="$PSRCDIR/msys_util_ds_buf_0_1">
+      <Config>
+        <Option Name="TopModule" Val="msys_util_ds_buf_0_1"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
   </FileSets>
   <Simulators>
     <Simulator Name="XSim">
@@ -325,6 +352,40 @@
       <RQSFiles/>
     </Run>
     <Run Id="msys_clk_wiz_0_0_synth_1" Type="Ft3:Synth" SrcSet="msys_clk_wiz_0_0" Part="xc7a100tfgg484-2" ConstrsSet="msys_clk_wiz_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/msys_clk_wiz_0_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="msys_labtools_fmeter_0_0_synth_1" Type="Ft3:Synth" SrcSet="msys_labtools_fmeter_0_0" Part="xc7a100tfgg484-2" ConstrsSet="msys_labtools_fmeter_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/msys_labtools_fmeter_0_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="msys_vio_0_0_synth_1" Type="Ft3:Synth" SrcSet="msys_vio_0_0" Part="xc7a100tfgg484-2" ConstrsSet="msys_vio_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/msys_vio_0_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="msys_util_ds_buf_0_1_synth_1" Type="Ft3:Synth" SrcSet="msys_util_ds_buf_0_1" Part="xc7a100tfgg484-2" ConstrsSet="msys_util_ds_buf_0_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/msys_util_ds_buf_0_1_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -457,6 +518,61 @@
       <RQSFiles/>
     </Run>
     <Run Id="msys_clk_wiz_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="msys_clk_wiz_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="msys_clk_wiz_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design" EnableStepBool="1"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="msys_labtools_fmeter_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="msys_labtools_fmeter_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="msys_labtools_fmeter_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design" EnableStepBool="1"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="msys_vio_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="msys_vio_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="msys_vio_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design" EnableStepBool="1"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="msys_util_ds_buf_0_1_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="msys_util_ds_buf_0_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="msys_util_ds_buf_0_1_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
           <Desc>Default settings for Implementation.</Desc>
