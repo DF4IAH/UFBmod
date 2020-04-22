@@ -18918,9 +18918,11 @@ Subminiature Tact Switch for SMT</description>
 <part name="TP1371" library="df4iah_connector" deviceset="TP" device="B1,27"/>
 <part name="S1321" library="df4iah_switch" deviceset="KSR223G_SMD_1POL" device=""/>
 <part name="R1321" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="1kR"/>
-<part name="R0711" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="100R"/>
+<part name="R0711" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="33R"/>
 <part name="C1321" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="100nF"/>
 <part name="GND0001" library="df4iah_supply" deviceset="GND" device=""/>
+<part name="C0713" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="1nF"/>
+<part name="GND0712" library="df4iah_supply" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -19801,6 +19803,11 @@ Right</text>
 Top</text>
 <text x="22.86" y="27.94" size="2.54" layer="97" ratio="15">Module mount pads</text>
 <text x="147.32" y="124.46" size="1.778" layer="94" rot="R90">in</text>
+<text x="132.08" y="124.46" size="1.778" layer="94" rot="R90">in</text>
+<text x="134.62" y="124.46" size="1.778" layer="94" rot="R90">in</text>
+<text x="139.7" y="124.46" size="1.778" layer="94" rot="R90">out</text>
+<text x="142.24" y="124.46" size="1.778" layer="94" rot="R90">out</text>
+<text x="119.38" y="147.32" size="1.778" layer="94">25 MHz</text>
 </plain>
 <instances>
 <instance part="FRAME_03" gate="G$1" x="0" y="0" smashed="yes">
@@ -19913,6 +19920,26 @@ Top</text>
 <wire x1="147.32" y1="137.16" x2="147.32" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="137.16" x2="50.8" y2="137.16" width="0.1524" layer="91"/>
 <label x="50.8" y="137.16" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="CLKIN2_N" class="0">
+<segment>
+<pinref part="JB3" gate="G$1" pin="CLKIN2_CLK_N"/>
+<wire x1="132.08" y1="124.46" x2="132.08" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="147.32" x2="142.24" y2="147.32" width="0.1524" layer="91"/>
+<pinref part="JB3" gate="G$1" pin="B13_L16_N"/>
+<wire x1="142.24" y1="147.32" x2="142.24" y2="124.46" width="0.1524" layer="91"/>
+<label x="132.08" y="147.32" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="CLKIN2_P" class="0">
+<segment>
+<pinref part="JB3" gate="G$1" pin="CLKIN2_CLK_P"/>
+<wire x1="134.62" y1="124.46" x2="134.62" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="142.24" x2="139.7" y2="142.24" width="0.1524" layer="91"/>
+<pinref part="JB3" gate="G$1" pin="B13_L16_P"/>
+<wire x1="139.7" y1="142.24" x2="139.7" y2="124.46" width="0.1524" layer="91"/>
+<label x="132.08" y="142.24" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
@@ -20303,13 +20330,13 @@ I2C addr: 0x38</text>
 <attribute name="VALUE" x="63.5" y="104.14" size="1.778" layer="96"/>
 </instance>
 <instance part="C0712" gate="G$1" x="96.52" y="96.52" smashed="yes" rot="R90">
-<attribute name="NAME" x="90.424" y="96.901" size="1.778" layer="95"/>
+<attribute name="NAME" x="87.884" y="96.901" size="1.778" layer="95"/>
 <attribute name="VALUE" x="90.424" y="94.361" size="1.778" layer="96"/>
 </instance>
 <instance part="+3V3_0711" gate="G$1" x="45.72" y="101.6"/>
 <instance part="GND0711" gate="1" x="55.88" y="88.9"/>
 <instance part="C0711" gate="G$1" x="48.26" y="91.44" smashed="yes" rot="R90">
-<attribute name="NAME" x="42.164" y="91.821" size="1.778" layer="95"/>
+<attribute name="NAME" x="39.624" y="91.821" size="1.778" layer="95"/>
 <attribute name="VALUE" x="42.164" y="89.281" size="1.778" layer="96"/>
 </instance>
 <instance part="L0721" gate="G$1" x="73.66" y="127"/>
@@ -20326,6 +20353,11 @@ I2C addr: 0x38</text>
 <instance part="R0753" gate="G$1" x="200.66" y="58.42"/>
 <instance part="R0754" gate="G$1" x="185.42" y="53.34"/>
 <instance part="R0711" gate="G$1" x="73.66" y="83.82"/>
+<instance part="C0713" gate="G$1" x="55.88" y="78.74" smashed="yes" rot="R180">
+<attribute name="NAME" x="52.959" y="75.184" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="60.579" y="75.184" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="GND0712" gate="1" x="55.88" y="73.66"/>
 </instances>
 <busses>
 </busses>
@@ -20408,6 +20440,10 @@ I2C addr: 0x38</text>
 <junction x="63.5" y="144.78"/>
 <pinref part="L0722" gate="G$1" pin="G_N_D"/>
 <wire x1="63.5" y1="142.24" x2="66.04" y2="142.24" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="C0713" gate="G$1" pin="1"/>
+<pinref part="GND0712" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="TRX_EVDD" class="0">
@@ -20731,8 +20767,11 @@ I2C addr: 0x38</text>
 <net name="TRX_CLK_26MHZ" class="0">
 <segment>
 <pinref part="R0711" gate="G$1" pin="1"/>
-<wire x1="68.58" y1="83.82" x2="45.72" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="83.82" x2="55.88" y2="83.82" width="0.1524" layer="91"/>
 <label x="45.72" y="83.82" size="1.778" layer="95" rot="R180" xref="yes"/>
+<pinref part="C0713" gate="G$1" pin="2"/>
+<wire x1="55.88" y1="83.82" x2="45.72" y2="83.82" width="0.1524" layer="91"/>
+<junction x="55.88" y="83.82"/>
 </segment>
 </net>
 </nets>
