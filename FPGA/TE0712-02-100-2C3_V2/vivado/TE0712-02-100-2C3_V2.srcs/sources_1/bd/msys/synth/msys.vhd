@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Wed Apr 22 15:41:10 2020
+--Date        : Thu Apr 23 00:22:03 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -5772,6 +5772,10 @@ entity msys is
     TRX_int : in STD_LOGIC;
     TRX_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
+    TRX_rx_data_n : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TRX_rx_data_p : in STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_spi_io0_i : in STD_LOGIC;
     TRX_spi_io0_o : out STD_LOGIC;
     TRX_spi_io0_t : out STD_LOGIC;
@@ -5784,6 +5788,10 @@ entity msys is
     TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_t : out STD_LOGIC;
+    TRX_tx_clk_clk_n : out STD_LOGIC;
+    TRX_tx_clk_clk_p : out STD_LOGIC;
+    TRX_tx_data_n : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TRX_tx_data_p : out STD_LOGIC_VECTOR ( 1 downto 0 );
     UART0EXT_CTSn : out STD_LOGIC_VECTOR ( 0 to 0 );
     UART0EXT_DCDn : out STD_LOGIC_VECTOR ( 0 to 0 );
     UART0EXT_DSRn : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -5825,7 +5833,7 @@ entity msys is
     sys_diff_clock_clk_p : in STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=94,numReposBlks=74,numNonXlnxBlks=3,numHierBlks=20,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
+  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=97,numReposBlks=77,numNonXlnxBlks=3,numHierBlks=20,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of msys : entity is "msys.hwdef";
 end msys;
@@ -6435,7 +6443,8 @@ architecture STRUCTURE of msys is
     probe_in7 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_in8 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_in9 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe_in10 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe_in10 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe_in11 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component msys_vio_0_0;
   component msys_xlconcat_0_0 is
@@ -6869,8 +6878,8 @@ architecture STRUCTURE of msys is
   component msys_BOARD_clk_wiz_0_0 is
   port (
     clk_in1 : in STD_LOGIC;
-    clk_out1 : out STD_LOGIC;
     clkfb_in : in STD_LOGIC;
+    clk_out1 : out STD_LOGIC;
     clkfb_out : out STD_LOGIC
   );
   end component msys_BOARD_clk_wiz_0_0;
@@ -6881,6 +6890,36 @@ architecture STRUCTURE of msys is
     OBUF_DS_N : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_util_ds_buf_0_2;
+  component msys_selectio_wiz_0_1 is
+  port (
+    data_in_from_pins_p : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    data_in_from_pins_n : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    data_out_to_pins_p : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    data_out_to_pins_n : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    clk_in_p : in STD_LOGIC;
+    clk_in_n : in STD_LOGIC;
+    data_out_from_device : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    clk_reset : in STD_LOGIC;
+    io_reset : in STD_LOGIC;
+    ref_clock : in STD_LOGIC;
+    delay_locked : out STD_LOGIC;
+    clk_to_pins_p : out STD_LOGIC;
+    clk_to_pins_n : out STD_LOGIC;
+    bitslip : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    clk_div_out : out STD_LOGIC;
+    data_in_to_device : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component msys_selectio_wiz_0_1;
+  component msys_xlconstant_0_1 is
+  port (
+    dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component msys_xlconstant_0_1;
+  component msys_xlconstant_0b00_0 is
+  port (
+    dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component msys_xlconstant_0b00_0;
   signal ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal BOARD_ROTENC_PUSH_1 : STD_LOGIC;
   signal BUFG_I_0_1 : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -6936,6 +6975,12 @@ architecture STRUCTURE of msys is
   signal TRX_clk_26MHz_1 : STD_LOGIC;
   signal TRX_clk_wiz_0_clkfb_out : STD_LOGIC;
   signal TRX_int_1 : STD_LOGIC;
+  signal TRX_rx_selectio_wiz_0_clk_div_out : STD_LOGIC;
+  signal TRX_rx_selectio_wiz_0_data_in_to_device : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal TRX_rx_selectio_wiz_0_data_out_to_pins_n : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal TRX_rx_selectio_wiz_0_data_out_to_pins_p : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal TRX_rx_selectio_wiz_0_diff_clk_to_pins_CLK_N : STD_LOGIC;
+  signal TRX_rx_selectio_wiz_0_diff_clk_to_pins_CLK_P : STD_LOGIC;
   signal TRX_xlslice_1to1_0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_xlslice_1to1_0_Dout1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal UART0EXT_DTRn_1 : STD_LOGIC;
@@ -7039,6 +7084,10 @@ architecture STRUCTURE of msys is
   signal axi_uartlite_0_UART_RxD : STD_LOGIC;
   signal axi_uartlite_0_UART_TxD : STD_LOGIC;
   signal axi_uartlite_0_interrupt : STD_LOGIC;
+  signal data_in_from_pins_n_0_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal data_in_from_pins_p_0_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal diff_clk_in_0_1_CLK_N : STD_LOGIC;
+  signal diff_clk_in_0_1_CLK_P : STD_LOGIC;
   signal fm_mgt_ref : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal fm_mig_50mhz : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal labtools_fmeter_0_F4 : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -7458,6 +7507,9 @@ architecture STRUCTURE of msys is
   signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal xlconcat_1_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal xlconstant_0_dout : STD_LOGIC_VECTOR ( 27 downto 0 );
+  signal xlconstant_0_dout1 : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal xlconstant_0x0000_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_TRX_rx_selectio_wiz_0_delay_locked_UNCONNECTED : STD_LOGIC;
   signal NLW_axi_BOARD_iic_0_gpo_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_PWM_gpio_0_gpio2_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_axi_iic_0_gpo_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -7512,6 +7564,9 @@ architecture STRUCTURE of msys is
   attribute X_INTERFACE_PARAMETER of TRX_clk_26MHz : signal is "XIL_INTERFACENAME CLK.TRX_CLK_26MHZ, CLK_DOMAIN msys_TRX_CLK_26MHz, FREQ_HZ 26000000, INSERT_VIP 0, PHASE 0.000";
   attribute X_INTERFACE_INFO of TRX_int : signal is "xilinx.com:signal:interrupt:1.0 INTR.TRX_INT INTERRUPT";
   attribute X_INTERFACE_PARAMETER of TRX_int : signal is "XIL_INTERFACENAME INTR.TRX_INT, PortWidth 1, SENSITIVITY LEVEL_HIGH";
+  attribute X_INTERFACE_INFO of TRX_rx_clk_64MHz_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 TRX_rx_clk_64MHz CLK_N";
+  attribute X_INTERFACE_PARAMETER of TRX_rx_clk_64MHz_clk_n : signal is "XIL_INTERFACENAME TRX_rx_clk_64MHz, CAN_DEBUG false, FREQ_HZ 64000000";
+  attribute X_INTERFACE_INFO of TRX_rx_clk_64MHz_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 TRX_rx_clk_64MHz CLK_P";
   attribute X_INTERFACE_INFO of TRX_spi_io0_i : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO0_I";
   attribute X_INTERFACE_INFO of TRX_spi_io0_o : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO0_O";
   attribute X_INTERFACE_INFO of TRX_spi_io0_t : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO0_T";
@@ -7522,6 +7577,9 @@ architecture STRUCTURE of msys is
   attribute X_INTERFACE_INFO of TRX_spi_sck_o : signal is "xilinx.com:interface:spi:1.0 TRX_spi SCK_O";
   attribute X_INTERFACE_INFO of TRX_spi_sck_t : signal is "xilinx.com:interface:spi:1.0 TRX_spi SCK_T";
   attribute X_INTERFACE_INFO of TRX_spi_ss_t : signal is "xilinx.com:interface:spi:1.0 TRX_spi SS_T";
+  attribute X_INTERFACE_INFO of TRX_tx_clk_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 TRX_tx_clk CLK_N";
+  attribute X_INTERFACE_PARAMETER of TRX_tx_clk_clk_n : signal is "XIL_INTERFACENAME TRX_tx_clk, CAN_DEBUG false, FREQ_HZ 64000000";
+  attribute X_INTERFACE_INFO of TRX_tx_clk_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 TRX_tx_clk CLK_P";
   attribute X_INTERFACE_INFO of UART0_clk : signal is "xilinx.com:signal:clock:1.0 CLK.UART0_CLK CLK";
   attribute X_INTERFACE_PARAMETER of UART0_clk : signal is "XIL_INTERFACENAME CLK.UART0_CLK, CLK_DOMAIN /BOARD_clk_wiz_0_clk_out1, FREQ_HZ 12000000, INSERT_VIP 0, PHASE 0.0";
   attribute X_INTERFACE_INFO of UART0_rxd : signal is "xilinx.com:interface:uart:1.0 UART0 RxD";
@@ -7643,6 +7701,10 @@ begin
   TRX_spi_sck_t <= TRX_axi_quad_spi_0_SPI_0_SCK_T;
   TRX_spi_ss_o(0) <= TRX_axi_quad_spi_0_SPI_0_SS_O(0);
   TRX_spi_ss_t <= TRX_axi_quad_spi_0_SPI_0_SS_T;
+  TRX_tx_clk_clk_n <= TRX_rx_selectio_wiz_0_diff_clk_to_pins_CLK_N;
+  TRX_tx_clk_clk_p <= TRX_rx_selectio_wiz_0_diff_clk_to_pins_CLK_P;
+  TRX_tx_data_n(1 downto 0) <= TRX_rx_selectio_wiz_0_data_out_to_pins_n(1 downto 0);
+  TRX_tx_data_p(1 downto 0) <= TRX_rx_selectio_wiz_0_data_out_to_pins_p(1 downto 0);
   UART0EXT_CTSn(0) <= uart0_xlslice_0_Dout(0);
   UART0EXT_DCDn(0) <= uart0_xlslice_2_Dout(0);
   UART0EXT_DSRn(0) <= uart0_xlslice_1_Dout(0);
@@ -7663,6 +7725,10 @@ begin
   axi_quad_spi_0_SPI_0_IO3_I <= qspi_flash_io3_i;
   axi_quad_spi_0_SPI_0_SS_I <= qspi_flash_ss_i;
   axi_uartlite_0_UART_RxD <= UART0_rxd;
+  data_in_from_pins_n_0_1(1 downto 0) <= TRX_rx_data_n(1 downto 0);
+  data_in_from_pins_p_0_1(1 downto 0) <= TRX_rx_data_p(1 downto 0);
+  diff_clk_in_0_1_CLK_N <= TRX_rx_clk_64MHz_clk_n;
+  diff_clk_in_0_1_CLK_P <= TRX_rx_clk_64MHz_clk_p;
   mgt_clk0_1_CLK_N <= mgt_clk0_clk_n;
   mgt_clk0_1_CLK_P <= mgt_clk0_clk_p;
   mii_to_rmii_0_RMII_PHY_M_CRS_DV <= RMII_PHY_M_0_crs_dv;
@@ -7892,6 +7958,25 @@ TRX_axi_quad_spi_0: component msys_axi_quad_spi_1_0
       ss_i(0) => TRX_axi_quad_spi_0_SPI_0_SS_I(0),
       ss_o(0) => TRX_axi_quad_spi_0_SPI_0_SS_O(0),
       ss_t => TRX_axi_quad_spi_0_SPI_0_SS_T
+    );
+TRX_rx_selectio_wiz_0: component msys_selectio_wiz_0_1
+     port map (
+      bitslip(1 downto 0) => xlconstant_0_dout1(1 downto 0),
+      clk_div_out => TRX_rx_selectio_wiz_0_clk_div_out,
+      clk_in_n => diff_clk_in_0_1_CLK_N,
+      clk_in_p => diff_clk_in_0_1_CLK_P,
+      clk_reset => rst_mig_7series_0_100M_peripheral_reset(0),
+      clk_to_pins_n => TRX_rx_selectio_wiz_0_diff_clk_to_pins_CLK_N,
+      clk_to_pins_p => TRX_rx_selectio_wiz_0_diff_clk_to_pins_CLK_P,
+      data_in_from_pins_n(1 downto 0) => data_in_from_pins_n_0_1(1 downto 0),
+      data_in_from_pins_p(1 downto 0) => data_in_from_pins_p_0_1(1 downto 0),
+      data_in_to_device(15 downto 0) => TRX_rx_selectio_wiz_0_data_in_to_device(15 downto 0),
+      data_out_from_device(15 downto 0) => xlconstant_0x0000_dout(15 downto 0),
+      data_out_to_pins_n(1 downto 0) => TRX_rx_selectio_wiz_0_data_out_to_pins_n(1 downto 0),
+      data_out_to_pins_p(1 downto 0) => TRX_rx_selectio_wiz_0_data_out_to_pins_p(1 downto 0),
+      delay_locked => NLW_TRX_rx_selectio_wiz_0_delay_locked_UNCONNECTED,
+      io_reset => rst_mig_7series_0_100M_peripheral_reset(0),
+      ref_clock => mig_7series_0_ui_addn_clk_0
     );
 TRX_xlslice_0to0_0: component msys_xlslice_0_3
      port map (
@@ -9105,6 +9190,7 @@ vio_0: component msys_vio_0_0
       probe_in0(31 downto 0) => fm_mig_50mhz(31 downto 0),
       probe_in1(31 downto 0) => fm_mgt_ref(31 downto 0),
       probe_in10(0) => ULI_SYSTEM_XIO_1,
+      probe_in11(15 downto 0) => TRX_rx_selectio_wiz_0_data_in_to_device(15 downto 0),
       probe_in2(31 downto 0) => lt_CLK1B(31 downto 0),
       probe_in3(31 downto 0) => lt_CLK0(31 downto 0),
       probe_in4(0) => labtools_fmeter_0_update,
@@ -9120,7 +9206,15 @@ xlconcat_0: component msys_xlconcat_0_0
       In1(0) => util_ds_buf_1_IBUF_OUT(0),
       In2(0) => util_ds_buf_0_BUFG_O(0),
       In3(0) => util_ds_buf_2_IBUF_OUT(0),
-      In4(0) => '0',
+      In4(0) => TRX_rx_selectio_wiz_0_clk_div_out,
       dout(4 downto 0) => xlconcat_0_dout(4 downto 0)
+    );
+xlconstant_0b00: component msys_xlconstant_0_1
+     port map (
+      dout(1 downto 0) => xlconstant_0_dout1(1 downto 0)
+    );
+xlconstant_0x0000: component msys_xlconstant_0b00_0
+     port map (
+      dout(15 downto 0) => xlconstant_0x0000_dout(15 downto 0)
     );
 end STRUCTURE;

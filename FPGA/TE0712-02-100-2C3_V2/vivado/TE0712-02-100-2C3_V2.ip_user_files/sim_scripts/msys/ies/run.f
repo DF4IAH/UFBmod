@@ -415,6 +415,12 @@
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_util_ds_buf_0_2/sim/msys_util_ds_buf_0_2.vhd" \
 -endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_selectio_wiz_0_1/msys_selectio_wiz_0_1_selectio_wiz.v" \
+  "../../../bd/msys/ip/msys_selectio_wiz_0_1/msys_selectio_wiz_0_1.v" \
+  "../../../bd/msys/ip/msys_xlconstant_0_1/sim/msys_xlconstant_0_1.v" \
+  "../../../bd/msys/ip/msys_xlconstant_0b00_0/sim/msys_xlconstant_0b00_0.v" \
+-endlib
 -makelib ies_lib/axi_clock_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/9e81/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
 -endlib
