@@ -455,6 +455,7 @@ proc create_root_design { parentCell } {
   set ETH0_DA_G [ create_bd_port -dir O -from 0 -to 0 ETH0_DA_G ]
   set ETH0_DA_Y [ create_bd_port -dir O ETH0_DA_Y ]
   set ETH0_LINK_LED [ create_bd_port -dir I ETH0_LINK_LED ]
+  set FPGA_IO [ create_bd_port -dir I FPGA_IO ]
   set LCD_BL [ create_bd_port -dir O -from 0 -to 0 LCD_BL ]
   set LCD_rstn [ create_bd_port -dir O -from 0 -to 0 -type rst LCD_rstn ]
   set LED_RGB_blue [ create_bd_port -dir O -from 0 -to 0 LED_RGB_blue ]
@@ -478,6 +479,7 @@ proc create_root_design { parentCell } {
    CONFIG.FREQ_HZ {12000000} \
  ] $UART0_clk
   set UART0_rst_n [ create_bd_port -dir O -from 0 -to 0 -type rst UART0_rst_n ]
+  set ULI_SYSTEM_XIO [ create_bd_port -dir I ULI_SYSTEM_XIO ]
   set phy_rst_n [ create_bd_port -dir O phy_rst_n ]
   set reset [ create_bd_port -dir I -type rst reset ]
   set_property -dict [ list \
@@ -1069,7 +1071,7 @@ proc create_root_design { parentCell } {
   # Create instance: vio_0, and set properties
   set vio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:vio:3.0 vio_0 ]
   set_property -dict [ list \
-   CONFIG.C_NUM_PROBE_IN {9} \
+   CONFIG.C_NUM_PROBE_IN {11} \
    CONFIG.C_NUM_PROBE_OUT {0} \
  ] $vio_0
 
@@ -1127,6 +1129,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net ETH0_xlconcat_0_dout [get_bd_pins ETH0_selectio_wiz_0/data_in_from_pins] [get_bd_pins ETH0_xlconcat_0/dout]
   connect_bd_net -net ETH0_xlslice_0_Dout [get_bd_pins ETH0_util_reduced_logic_0/Op1] [get_bd_pins ETH0_xlslice_0to1_0/Dout]
   connect_bd_net -net ETH0_xlslice_1_Dout [get_bd_ports ETH0_DA_G] [get_bd_pins ETH0_xlslice_2to2_0/Dout]
+  connect_bd_net -net FPGA_IO_1 [get_bd_ports FPGA_IO] [get_bd_pins vio_0/probe_in9]
   connect_bd_net -net LCD_BL_compare_0_S [get_bd_pins LCD_BL_compare_0/S] [get_bd_pins LCD_BL_xlslice_0/Din]
   connect_bd_net -net LCD_BL_xlslice_0_Dout [get_bd_ports LCD_BL] [get_bd_pins LCD_BL_xlslice_0/Dout]
   connect_bd_net -net M05_ARESETN_1 [get_bd_pins microblaze_0_axi_periph/M05_ARESETN] [get_bd_pins proc_sys_reset_eth/interconnect_aresetn]
@@ -1159,6 +1162,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net UART0EXT_DTRn_1 [get_bd_ports UART0EXT_DTRn] [get_bd_pins UART0_xlconcat_1/In1]
   connect_bd_net -net UART0EXT_RTSn_1 [get_bd_ports UART0EXT_RTSn] [get_bd_pins UART0_xlconcat_1/In0]
   connect_bd_net -net UART0_clk_wiz_0_clk_out1 [get_bd_ports UART0_clk] [get_bd_pins BOARD_clk_wiz_0/clk_out1] [get_bd_pins ETH0_selectio_wiz_0/clk_in] [get_bd_pins rst_mig_7series_0_12M/slowest_sync_clk]
+  connect_bd_net -net ULI_SYSTEM_XIO_1 [get_bd_ports ULI_SYSTEM_XIO] [get_bd_pins vio_0/probe_in10]
   connect_bd_net -net axi_TRX_gpio_0_gpio_io_o [get_bd_pins TRX_xlslice_0to0_0/Din] [get_bd_pins TRX_xlslice_1to1_0/Din] [get_bd_pins axi_TRX_gpio_0/gpio_io_o]
   connect_bd_net -net axi_ethernetlite_0_ip2intc_irpt [get_bd_pins axi_ethernetlite_0/ip2intc_irpt] [get_bd_pins microblaze_0_xlconcat/In4]
   connect_bd_net -net axi_ethernetlite_0_phy_tx_en [get_bd_pins ETH0_xlconcat_0/In1] [get_bd_pins PWM_GPIO2_xlconcat_0/In1] [get_bd_pins axi_ethernetlite_0/phy_tx_en]

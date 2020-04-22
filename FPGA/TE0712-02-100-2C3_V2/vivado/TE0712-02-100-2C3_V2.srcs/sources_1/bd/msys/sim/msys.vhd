@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Tue Apr 21 20:28:29 2020
+--Date        : Wed Apr 22 08:20:28 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -5753,6 +5753,7 @@ entity msys is
     ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
     ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
     ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
+    FPGA_IO : in STD_LOGIC;
     LCD_BL : out STD_LOGIC_VECTOR ( 0 to 0 );
     LCD_rstn : out STD_LOGIC_VECTOR ( 0 to 0 );
     LED_RGB_blue : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -5791,6 +5792,7 @@ entity msys is
     UART0_rst_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     UART0_rxd : in STD_LOGIC;
     UART0_txd : out STD_LOGIC;
+    ULI_SYSTEM_XIO : in STD_LOGIC;
     mgt_clk0_clk_n : in STD_LOGIC;
     mgt_clk0_clk_p : in STD_LOGIC;
     onewire_EUI48_tri_i : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -6429,7 +6431,9 @@ architecture STRUCTURE of msys is
     probe_in5 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe_in6 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_in7 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe_in8 : in STD_LOGIC_VECTOR ( 31 downto 0 )
+    probe_in8 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe_in9 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe_in10 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_vio_0_0;
   component msys_xlconcat_0_0 is
@@ -6877,6 +6881,7 @@ architecture STRUCTURE of msys is
   signal ETH0_xlconcat_0_dout : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ETH0_xlslice_0_Dout : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal ETH0_xlslice_1_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal FPGA_IO_1 : STD_LOGIC;
   signal LCD_BL_compare_0_S : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal LCD_BL_xlslice_0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal M05_ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -6921,6 +6926,7 @@ architecture STRUCTURE of msys is
   signal UART0EXT_DTRn_1 : STD_LOGIC;
   signal UART0EXT_RTSn_1 : STD_LOGIC;
   signal UART0_clk_wiz_0_clk_out1 : STD_LOGIC;
+  signal ULI_SYSTEM_XIO_1 : STD_LOGIC;
   signal axi_TRX_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal axi_ethernetlite_0_MDIO_MDC : STD_LOGIC;
   signal axi_ethernetlite_0_MDIO_MDIO_I : STD_LOGIC;
@@ -7591,6 +7597,7 @@ begin
   ETH0_MDIO_MDC_mdc <= axi_ethernetlite_0_MDIO_MDC;
   ETH0_MDIO_MDC_mdio_o <= axi_ethernetlite_0_MDIO_MDIO_O;
   ETH0_MDIO_MDC_mdio_t <= axi_ethernetlite_0_MDIO_MDIO_T;
+  FPGA_IO_1 <= FPGA_IO;
   LCD_BL(0) <= LCD_BL_xlslice_0_Dout(0);
   LCD_rstn(0) <= PWM_GPIO_xlslice_1_Dout(0);
   LED_RGB_blue(0) <= RGB_blue_xlslice_0_Dout(0);
@@ -7625,6 +7632,7 @@ begin
   UART0_clk <= UART0_clk_wiz_0_clk_out1;
   UART0_rst_n(0) <= rst_mig_7series_0_12M_peripheral_aresetn(0);
   UART0_txd <= axi_uartlite_0_UART_TxD;
+  ULI_SYSTEM_XIO_1 <= ULI_SYSTEM_XIO;
   axi_ethernetlite_0_MDIO_MDIO_I <= ETH0_MDIO_MDC_mdio_i;
   axi_iic_1_IIC_SCL_I <= BOARD_IIC_scl_i;
   axi_iic_1_IIC_SDA_I <= BOARD_IIC_sda_i;
@@ -9068,13 +9076,15 @@ vio_0: component msys_vio_0_0
       clk => SC0712_0_mcs_clk_out,
       probe_in0(31 downto 0) => fm_mig_50mhz(31 downto 0),
       probe_in1(31 downto 0) => fm_mgt_ref(31 downto 0),
+      probe_in10(0) => ULI_SYSTEM_XIO_1,
       probe_in2(31 downto 0) => lt_CLK1B(31 downto 0),
       probe_in3(31 downto 0) => lt_CLK0(31 downto 0),
       probe_in4(0) => labtools_fmeter_0_update,
       probe_in5(0) => SC0712_0_reset_out,
       probe_in6(31 downto 0) => SC0712_0_mon_GPIO1_O(31 downto 0),
       probe_in7(31 downto 0) => SC0712_0_mon_GPIO1_I(31 downto 0),
-      probe_in8(31 downto 0) => labtools_fmeter_0_F4(31 downto 0)
+      probe_in8(31 downto 0) => labtools_fmeter_0_F4(31 downto 0),
+      probe_in9(0) => FPGA_IO_1
     );
 xlconcat_0: component msys_xlconcat_0_0
      port map (

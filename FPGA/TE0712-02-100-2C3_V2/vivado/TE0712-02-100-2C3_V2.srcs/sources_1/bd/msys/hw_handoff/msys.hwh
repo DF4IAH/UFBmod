@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Apr 21 20:28:30 2020" VIVADOVERSION="2019.2.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Apr 22 08:20:30 2020" VIVADOVERSION="2019.2.1">
 
   <SYSTEMINFO ARCH="artix7" BOARD="trenz.biz:te0712_100_2c:part0:1.0" DEVICE="7a100t" NAME="msys" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -503,6 +503,16 @@
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_diff_clock_clk_n" SIGIS="clk" SIGNAME="mig_7series_0_sys_clk_n">
       <CONNECTIONS>
         <CONNECTION INSTANCE="mig_7series_0" PORT="sys_clk_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="FPGA_IO" SIGIS="undef" SIGNAME="External_Ports_FPGA_IO">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="vio_0" PORT="probe_in9"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="ULI_SYSTEM_XIO" SIGIS="undef" SIGNAME="External_Ports_ULI_SYSTEM_XIO">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="vio_0" PORT="probe_in10"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -19789,7 +19799,7 @@
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="0"/>
         <PARAMETER NAME="C_BUS_ADDR_WIDTH" VALUE="17"/>
         <PARAMETER NAME="C_BUS_DATA_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="C_NUM_PROBE_IN" VALUE="9"/>
+        <PARAMETER NAME="C_NUM_PROBE_IN" VALUE="11"/>
         <PARAMETER NAME="C_EN_PROBE_IN_ACTIVITY" VALUE="1"/>
         <PARAMETER NAME="C_NUM_PROBE_OUT" VALUE="0"/>
         <PARAMETER NAME="C_EN_SYNCHRONIZATION" VALUE="1"/>
@@ -20613,6 +20623,16 @@
         <PORT DIR="I" LEFT="31" NAME="probe_in8" RIGHT="0" SIGIS="undef" SIGNAME="labtools_fmeter_0_F4">
           <CONNECTIONS>
             <CONNECTION INSTANCE="labtools_fmeter_0" PORT="F4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe_in9" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_FPGA_IO">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="FPGA_IO"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe_in10" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ULI_SYSTEM_XIO">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="ULI_SYSTEM_XIO"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
