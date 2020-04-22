@@ -134,6 +134,8 @@ verilog xil_defaultlib --include "../../../../TE0712-02-100-2C3_V2.srcs/sources_
 "../../../bd/msys/ip/msys_xlconstant_0_0/sim/msys_xlconstant_0_0.v" \
 "../../../bd/msys/ip/msys_xlslice_0_3/sim/msys_xlslice_0_3.v" \
 "../../../bd/msys/ip/msys_TRX_xlslice_0to0_0_0/sim/msys_TRX_xlslice_0to0_0_0.v" \
+"../../../bd/msys/ip/msys_BOARD_clk_wiz_0_0/msys_BOARD_clk_wiz_0_0_clk_wiz.v" \
+"../../../bd/msys/ip/msys_BOARD_clk_wiz_0_0/msys_BOARD_clk_wiz_0_0.v" \
 "../../../bd/msys/ip/msys_auto_cc_0/sim/msys_auto_cc_0.v" \
 "../../../bd/msys/ip/msys_auto_cc_1/sim/msys_auto_cc_1.v" \
 

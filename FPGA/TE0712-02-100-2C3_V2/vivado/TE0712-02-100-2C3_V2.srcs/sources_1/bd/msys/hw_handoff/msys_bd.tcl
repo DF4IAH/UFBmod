@@ -464,7 +464,15 @@ proc create_root_design { parentCell } {
   set PLL_I2C_ext_scl_o [ create_bd_port -dir O PLL_I2C_ext_scl_o ]
   set PLL_I2C_ext_sda [ create_bd_port -dir IO PLL_I2C_ext_sda ]
   set PLL_int [ create_bd_port -dir I -type intr PLL_int ]
-  set TRX_clk_26mhz [ create_bd_port -dir I -type clk -freq_hz 26000000 TRX_clk_26mhz ]
+  set TRX_PLL_clk_25MHz_N [ create_bd_port -dir O -from 0 -to 0 -type clk TRX_PLL_clk_25MHz_N ]
+  set_property -dict [ list \
+   CONFIG.FREQ_HZ {25000000} \
+ ] $TRX_PLL_clk_25MHz_N
+  set TRX_PLL_clk_25MHz_P [ create_bd_port -dir O -from 0 -to 0 -type clk TRX_PLL_clk_25MHz_P ]
+  set_property -dict [ list \
+   CONFIG.FREQ_HZ {25000000} \
+ ] $TRX_PLL_clk_25MHz_P
+  set TRX_clk_26MHz [ create_bd_port -dir I -type clk -freq_hz 26000000 TRX_clk_26MHz ]
   set TRX_int [ create_bd_port -dir I -type intr TRX_int ]
   set TRX_reset [ create_bd_port -dir O -from 0 -to 0 -type rst TRX_reset ]
   set TRX_rfx_mode [ create_bd_port -dir O -from 0 -to 0 TRX_rfx_mode ]
@@ -748,6 +756,46 @@ proc create_root_design { parentCell } {
 
   # Create instance: SC0712_0, and set properties
   set SC0712_0 [ create_bd_cell -type ip -vlnv trenz.biz:user:SC0712:1.0 SC0712_0 ]
+
+  # Create instance: TRX_PLL_clk_wiz_0, and set properties
+  set TRX_PLL_clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 TRX_PLL_clk_wiz_0 ]
+  set_property -dict [ list \
+   CONFIG.CLKIN1_JITTER_PS {100.0} \
+   CONFIG.CLKOUT1_DRIVES {BUFG} \
+   CONFIG.CLKOUT1_JITTER {352.369} \
+   CONFIG.CLKOUT1_PHASE_ERROR {261.747} \
+   CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {25.000} \
+   CONFIG.CLKOUT1_USED {true} \
+   CONFIG.CLKOUT2_DRIVES {BUFG} \
+   CONFIG.CLKOUT2_JITTER {137.681} \
+   CONFIG.CLKOUT2_PHASE_ERROR {105.461} \
+   CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {100.000} \
+   CONFIG.CLKOUT2_USED {false} \
+   CONFIG.CLKOUT3_DRIVES {BUFG} \
+   CONFIG.CLKOUT4_DRIVES {BUFG} \
+   CONFIG.CLKOUT5_DRIVES {BUFG} \
+   CONFIG.CLKOUT6_DRIVES {BUFG} \
+   CONFIG.CLKOUT7_DRIVES {BUFG} \
+   CONFIG.FEEDBACK_SOURCE {FDBK_ONCHIP} \
+   CONFIG.MMCM_BANDWIDTH {OPTIMIZED} \
+   CONFIG.MMCM_CLKFBOUT_MULT_F {50} \
+   CONFIG.MMCM_CLKIN1_PERIOD {38.462} \
+   CONFIG.MMCM_CLKIN2_PERIOD {10.0} \
+   CONFIG.MMCM_CLKOUT0_DIVIDE_F {52} \
+   CONFIG.MMCM_CLKOUT1_DIVIDE {1} \
+   CONFIG.MMCM_COMPENSATION {ZHOLD} \
+   CONFIG.MMCM_DIVCLK_DIVIDE {1} \
+   CONFIG.NUM_OUT_CLKS {1} \
+   CONFIG.PRIMITIVE {PLL} \
+   CONFIG.USE_LOCKED {false} \
+   CONFIG.USE_RESET {false} \
+ ] $TRX_PLL_clk_wiz_0
+
+  # Create instance: TRX_PLL_util_ds_buf_0, and set properties
+  set TRX_PLL_util_ds_buf_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.1 TRX_PLL_util_ds_buf_0 ]
+  set_property -dict [ list \
+   CONFIG.C_BUF_TYPE {OBUFDS} \
+ ] $TRX_PLL_util_ds_buf_0
 
   # Create instance: TRX_axi_quad_spi_0, and set properties
   set TRX_axi_quad_spi_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_quad_spi:3.2 TRX_axi_quad_spi_0 ]
@@ -1062,12 +1110,6 @@ proc create_root_design { parentCell } {
   # Create instance: util_ds_buf_2, and set properties
   set util_ds_buf_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.1 util_ds_buf_2 ]
 
-  # Create instance: util_ds_buf_3, and set properties
-  set util_ds_buf_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.1 util_ds_buf_3 ]
-  set_property -dict [ list \
-   CONFIG.C_BUF_TYPE {BUFG} \
- ] $util_ds_buf_3
-
   # Create instance: vio_0, and set properties
   set vio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:vio:3.0 vio_0 ]
   set_property -dict [ list \
@@ -1154,8 +1196,12 @@ proc create_root_design { parentCell } {
   connect_bd_net -net SC0712_0_mon_GPIO1_I [get_bd_pins SC0712_0/mon_GPIO1_I] [get_bd_pins vio_0/probe_in7]
   connect_bd_net -net SC0712_0_mon_GPIO1_O [get_bd_pins SC0712_0/mon_GPIO1_O] [get_bd_pins vio_0/probe_in6]
   connect_bd_net -net SC0712_0_reset_out [get_bd_pins SC0712_0/reset_out] [get_bd_pins mig_7series_0/sys_rst] [get_bd_pins vio_0/probe_in5]
-  connect_bd_net -net TRX_CLK_26MHz_1 [get_bd_ports TRX_clk_26mhz] [get_bd_pins util_ds_buf_3/BUFG_I]
+  connect_bd_net -net TRX_PLL_clk_wiz_0_clk_out1 [get_bd_pins TRX_PLL_clk_wiz_0/clk_out1] [get_bd_pins TRX_PLL_util_ds_buf_0/OBUF_IN]
+  connect_bd_net -net TRX_PLL_util_ds_buf_0_OBUF_DS_N [get_bd_ports TRX_PLL_clk_25MHz_N] [get_bd_pins TRX_PLL_util_ds_buf_0/OBUF_DS_N]
+  connect_bd_net -net TRX_PLL_util_ds_buf_0_OBUF_DS_P [get_bd_ports TRX_PLL_clk_25MHz_P] [get_bd_pins TRX_PLL_util_ds_buf_0/OBUF_DS_P]
   connect_bd_net -net TRX_axi_quad_spi_1_ip2intc_irpt [get_bd_pins TRX_axi_quad_spi_0/ip2intc_irpt] [get_bd_pins microblaze_0_xlconcat/In10]
+  connect_bd_net -net TRX_clk_26MHz_1 [get_bd_ports TRX_clk_26MHz] [get_bd_pins TRX_PLL_clk_wiz_0/clk_in1]
+  connect_bd_net -net TRX_clk_wiz_0_clkfb_out [get_bd_pins TRX_PLL_clk_wiz_0/clkfb_in] [get_bd_pins TRX_PLL_clk_wiz_0/clkfb_out]
   connect_bd_net -net TRX_int_1 [get_bd_ports TRX_int] [get_bd_pins microblaze_0_xlconcat/In11]
   connect_bd_net -net TRX_xlslice_1to1_0_Dout [get_bd_ports TRX_reset] [get_bd_pins TRX_xlslice_0to0_0/Dout]
   connect_bd_net -net TRX_xlslice_1to1_0_Dout1 [get_bd_ports TRX_rfx_mode] [get_bd_pins TRX_xlslice_1to1_0/Dout]
@@ -1215,7 +1261,6 @@ proc create_root_design { parentCell } {
   connect_bd_net -net util_ds_buf_0_BUFG_O [get_bd_pins axi_ethernetlite_0/s_axi_aclk] [get_bd_pins microblaze_0_axi_periph/M05_ACLK] [get_bd_pins mii_to_rmii_0/ref_clk] [get_bd_pins proc_sys_reset_eth/slowest_sync_clk] [get_bd_pins util_ds_buf_0/BUFG_O] [get_bd_pins xlconcat_0/In2]
   connect_bd_net -net util_ds_buf_1_IBUF_OUT [get_bd_pins util_ds_buf_1/IBUF_OUT] [get_bd_pins xlconcat_0/In1]
   connect_bd_net -net util_ds_buf_2_IBUF_OUT [get_bd_pins util_ds_buf_2/IBUF_OUT] [get_bd_pins xlconcat_0/In3]
-  connect_bd_net -net util_ds_buf_3_BUFG_O [get_bd_pins util_ds_buf_3/BUFG_O] [get_bd_pins xlconcat_0/In4]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins labtools_fmeter_0/fin] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlconcat_1_dout [get_bd_pins PWM_GPIO2_xlconcat_0/dout] [get_bd_pins axi_PWM_gpio_0/gpio2_io_i]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins PWM_GPIO2_xlconcat_0/In4] [get_bd_pins PWM_GPIO2_xlconstant_0/dout]
