@@ -9934,6 +9934,12 @@ Covered vias can be set in Masks (Limit).
 <contactref element="JB3" pad="37"/>
 <wire x1="33.03" y1="45.71" x2="33.03" y2="46.71" width="0" layer="19" extent="1-1"/>
 </signal>
+<signal name="TRX_TXD_VOID_N">
+<contactref element="JB3" pad="49"/>
+</signal>
+<signal name="TRX_TXD_VOID_P">
+<contactref element="JB3" pad="47"/>
+</signal>
 </signals>
 <errors>
 <approved hash="5,1,07ecda39486acf2e"/>

@@ -19807,7 +19807,9 @@ Top</text>
 <text x="134.62" y="124.46" size="1.778" layer="94" rot="R90">in</text>
 <text x="139.7" y="124.46" size="1.778" layer="94" rot="R90">out</text>
 <text x="142.24" y="124.46" size="1.778" layer="94" rot="R90">out</text>
-<text x="119.38" y="147.32" size="1.778" layer="94">25 MHz</text>
+<text x="132.08" y="144.78" size="1.778" layer="94">25 MHz</text>
+<text x="151.892" y="153.162" size="1.778" layer="94">X</text>
+<text x="154.432" y="153.162" size="1.778" layer="94">X</text>
 </plain>
 <instances>
 <instance part="FRAME_03" gate="G$1" x="0" y="0" smashed="yes">
@@ -19940,6 +19942,20 @@ Top</text>
 <pinref part="JB3" gate="G$1" pin="B13_L16_P"/>
 <wire x1="139.7" y1="142.24" x2="139.7" y2="124.46" width="0.1524" layer="91"/>
 <label x="132.08" y="142.24" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="TRX_TXD_VOID_N" class="0">
+<segment>
+<pinref part="JB3" gate="G$1" pin="B13_L4_N"/>
+<wire x1="154.94" y1="124.46" x2="154.94" y2="152.4" width="0.1524" layer="91"/>
+<label x="154.94" y="129.54" size="1.778" layer="95" rot="R90"/>
+</segment>
+</net>
+<net name="TRX_TXD_VOID_P" class="0">
+<segment>
+<pinref part="JB3" gate="G$1" pin="B13_L4_P"/>
+<wire x1="152.4" y1="124.46" x2="152.4" y2="152.4" width="0.1524" layer="91"/>
+<label x="152.4" y="129.54" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 </nets>
