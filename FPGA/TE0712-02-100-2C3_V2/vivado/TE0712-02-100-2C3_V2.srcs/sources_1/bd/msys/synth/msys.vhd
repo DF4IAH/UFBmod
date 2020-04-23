@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Thu Apr 23 00:22:03 2020
+--Date        : Thu Apr 23 21:51:04 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -1987,10 +1987,10 @@ architecture STRUCTURE of microblaze_0_local_memory_imp_17WFGJG is
   signal NLW_ilmb_v10_LMB_Rst_UNCONNECTED : STD_LOGIC;
   signal NLW_lmb_bram_rsta_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_lmb_bram_rstb_busy_UNCONNECTED : STD_LOGIC;
-  attribute BMM_INFO_ADDRESS_SPACE : string;
-  attribute BMM_INFO_ADDRESS_SPACE of dlmb_bram_if_cntlr : label is "byte  0x00000000 32 > msys microblaze_0_local_memory/lmb_bram";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of dlmb_bram_if_cntlr : label is "yes";
+  attribute bmm_info_address_space : string;
+  attribute bmm_info_address_space of dlmb_bram_if_cntlr : label is "byte  0x00000000 32 > msys microblaze_0_local_memory/lmb_bram";
 begin
   DLMB_ce <= microblaze_0_dlmb_CE;
   DLMB_readdbus(0 to 31) <= microblaze_0_dlmb_READDBUS(0 to 31);
@@ -5832,10 +5832,10 @@ entity msys is
     sys_diff_clock_clk_n : in STD_LOGIC;
     sys_diff_clock_clk_p : in STD_LOGIC
   );
-  attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=97,numReposBlks=77,numNonXlnxBlks=3,numHierBlks=20,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
-  attribute HW_HANDOFF : string;
-  attribute HW_HANDOFF of msys : entity is "msys.hwdef";
+  attribute core_generation_info : string;
+  attribute core_generation_info of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=121,numReposBlks=101,numNonXlnxBlks=3,numHierBlks=20,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
+  attribute hw_handoff : string;
+  attribute hw_handoff of msys : entity is "msys.hwdef";
 end msys;
 
 architecture STRUCTURE of msys is
@@ -6444,7 +6444,9 @@ architecture STRUCTURE of msys is
     probe_in8 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_in9 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe_in10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe_in11 : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    probe_in11 : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    probe_in12 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe_in13 : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component msys_vio_0_0;
   component msys_xlconcat_0_0 is
@@ -6920,6 +6922,194 @@ architecture STRUCTURE of msys is
     dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component msys_xlconstant_0b00_0;
+  component msys_xlslice_0_4 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_xlslice_0_4;
+  component msys_TRX_rx_xlslice_15to15_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_TRX_rx_xlslice_15to15_0;
+  component msys_TRX_rx_xlslice_15to16_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_TRX_rx_xlslice_15to16_0;
+  component msys_TRX_rx_xlslice_13to13_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_TRX_rx_xlslice_13to13_0;
+  component msys_TRX_rx_xlslice_13to13_1 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_TRX_rx_xlslice_13to13_1;
+  component msys_TRX_rx_xlslice_13to13_2 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_TRX_rx_xlslice_13to13_2;
+  component msys_TRX_rx_xlslice_10to10_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_TRX_rx_xlslice_10to10_0;
+  component msys_TRX_rx_xlslice_10to10_1 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_TRX_rx_xlslice_10to10_1;
+  component msys_TRX_rx_xlslice_10to10_2 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_TRX_rx_xlslice_10to10_2;
+  component msys_TRX_rx_xlslice_10to10_3 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_TRX_rx_xlslice_10to10_3;
+  component msys_TRX_rx_xlslice_10to10_4 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_TRX_rx_xlslice_10to10_4;
+  component msys_TRX_rx_xlslice_10to10_5 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_TRX_rx_xlslice_10to10_5;
+  component msys_TRX_rx_xlslice_10to10_6 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_TRX_rx_xlslice_10to10_6;
+  component msys_TRX_rx_xlslice_10to10_7 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_TRX_rx_xlslice_10to10_7;
+  component msys_TRX_rx_xlslice_10to10_8 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_TRX_rx_xlslice_10to10_8;
+  component msys_TRX_rx_xlslice_10to10_9 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_TRX_rx_xlslice_10to10_9;
+  component msys_fifo_generator_0_0 is
+  port (
+    rst : in STD_LOGIC;
+    wr_clk : in STD_LOGIC;
+    rd_clk : in STD_LOGIC;
+    din : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    wr_en : in STD_LOGIC;
+    rd_en : in STD_LOGIC;
+    dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    full : out STD_LOGIC;
+    empty : out STD_LOGIC;
+    valid : out STD_LOGIC;
+    wr_rst_busy : out STD_LOGIC;
+    rd_rst_busy : out STD_LOGIC
+  );
+  end component msys_fifo_generator_0_0;
+  component msys_TRX_rx09_fifo_generator_0_0 is
+  port (
+    rst : in STD_LOGIC;
+    wr_clk : in STD_LOGIC;
+    rd_clk : in STD_LOGIC;
+    din : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    wr_en : in STD_LOGIC;
+    rd_en : in STD_LOGIC;
+    dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    full : out STD_LOGIC;
+    empty : out STD_LOGIC;
+    valid : out STD_LOGIC;
+    rd_data_count : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    wr_data_count : out STD_LOGIC_VECTOR ( 10 downto 0 );
+    wr_rst_busy : out STD_LOGIC;
+    rd_rst_busy : out STD_LOGIC
+  );
+  end component msys_TRX_rx09_fifo_generator_0_0;
+  component msys_xlconstant_0b00_1 is
+  port (
+    dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_xlconstant_0b00_1;
+  component msys_xlconcat_1_3 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component msys_xlconcat_1_3;
+  component msys_TRX_rx09_xlconcat_0_0 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component msys_TRX_rx09_xlconcat_0_0;
+  component msys_c_counter_binary_0_2 is
+  port (
+    CLK : in STD_LOGIC;
+    SCLR : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 6 downto 0 )
+  );
+  end component msys_c_counter_binary_0_2;
+  component msys_xlslice_0_5 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 6 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_xlslice_0_5;
+  component msys_proc_sys_reset_0_1 is
+  port (
+    slowest_sync_clk : in STD_LOGIC;
+    ext_reset_in : in STD_LOGIC;
+    aux_reset_in : in STD_LOGIC;
+    mb_debug_sys_rst : in STD_LOGIC;
+    dcm_locked : in STD_LOGIC;
+    mb_reset : out STD_LOGIC;
+    bus_struct_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
+    peripheral_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
+    interconnect_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_proc_sys_reset_0_1;
   signal ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal BOARD_ROTENC_PUSH_1 : STD_LOGIC;
   signal BUFG_I_0_1 : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -6937,6 +7127,7 @@ architecture STRUCTURE of msys is
   signal M05_ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal Net : STD_LOGIC;
   signal Net1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal Net2 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal PLL_int_1 : STD_LOGIC;
   signal PWM_GPIO_xlslice_1_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal PWM_counter_binary_0_Q : STD_LOGIC_VECTOR ( 20 downto 0 );
@@ -6973,14 +7164,37 @@ architecture STRUCTURE of msys is
   signal TRX_axi_quad_spi_0_SPI_0_SS_T : STD_LOGIC;
   signal TRX_axi_quad_spi_1_ip2intc_irpt : STD_LOGIC;
   signal TRX_clk_26MHz_1 : STD_LOGIC;
+  signal TRX_clk_sys_reset_0_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_clk_wiz_0_clkfb_out : STD_LOGIC;
   signal TRX_int_1 : STD_LOGIC;
+  signal TRX_rx09_fifo_generator_0_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal TRX_rx09_fifo_generator_0_rd_data_count : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal TRX_rx09_xlconcat_0_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal TRX_rx24_fifo_generator_0_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal TRX_rx24_xlconcat_0_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal TRX_rx_counter_binary_0_Q : STD_LOGIC_VECTOR ( 6 downto 0 );
+  signal TRX_rx_iorst_xlslice_6to6_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_rx_selectio_wiz_0_clk_div_out : STD_LOGIC;
-  signal TRX_rx_selectio_wiz_0_data_in_to_device : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal TRX_rx_selectio_wiz_0_data_out_to_pins_n : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal TRX_rx_selectio_wiz_0_data_out_to_pins_p : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal TRX_rx_selectio_wiz_0_diff_clk_to_pins_CLK_N : STD_LOGIC;
   signal TRX_rx_selectio_wiz_0_diff_clk_to_pins_CLK_P : STD_LOGIC;
+  signal TRX_rx_xlslice_00to00_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_xlslice_01to01_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_xlslice_02to02_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_xlslice_03to03_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_xlslice_04to04_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_xlslice_05to05_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_xlslice_06to06_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_xlslice_07to07_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_xlslice_08to08_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_xlslice_09to09_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_xlslice_10to10_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_xlslice_11to11_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_xlslice_12to12_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_xlslice_13to13_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_xlslice_14to14_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_xlslice_15to15_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_xlslice_1to1_0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_xlslice_1to1_0_Dout1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal UART0EXT_DTRn_1 : STD_LOGIC;
@@ -7506,9 +7720,25 @@ architecture STRUCTURE of msys is
   signal util_ds_buf_2_IBUF_OUT : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal xlconcat_1_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal xlconstant_0_dout : STD_LOGIC_VECTOR ( 27 downto 0 );
-  signal xlconstant_0_dout1 : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal xlconstant_0_dout2 : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal xlconstant_0_dout28 : STD_LOGIC_VECTOR ( 27 downto 0 );
   signal xlconstant_0x0000_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal xlconstant_1_dout1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_TRX_clk_sys_reset_0_mb_reset_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_clk_sys_reset_0_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_TRX_clk_sys_reset_0_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_TRX_clk_sys_reset_0_peripheral_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_TRX_rx09_fifo_generator_0_empty_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx09_fifo_generator_0_full_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx09_fifo_generator_0_rd_rst_busy_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx09_fifo_generator_0_valid_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx09_fifo_generator_0_wr_rst_busy_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx09_fifo_generator_0_wr_data_count_UNCONNECTED : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal NLW_TRX_rx24_fifo_generator_0_empty_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx24_fifo_generator_0_full_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx24_fifo_generator_0_rd_rst_busy_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx24_fifo_generator_0_valid_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx24_fifo_generator_0_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_TRX_rx_selectio_wiz_0_delay_locked_UNCONNECTED : STD_LOGIC;
   signal NLW_axi_BOARD_iic_0_gpo_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_PWM_gpio_0_gpio2_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -7535,116 +7765,116 @@ architecture STRUCTURE of msys is
   signal NLW_rst_mig_7series_0_50M_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_mig_7series_0_50M_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_util_ds_buf_1_IBUF_DS_ODIV2_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
-  attribute BMM_INFO_PROCESSOR : string;
-  attribute BMM_INFO_PROCESSOR of microblaze_0 : label is "microblaze-le > msys microblaze_0_local_memory/dlmb_bram_if_cntlr";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of microblaze_0 : label is "yes";
-  attribute X_INTERFACE_INFO : string;
-  attribute X_INTERFACE_INFO of BOARD_IIC_scl_i : signal is "xilinx.com:interface:iic:1.0 BOARD_IIC SCL_I";
-  attribute X_INTERFACE_INFO of BOARD_IIC_scl_o : signal is "xilinx.com:interface:iic:1.0 BOARD_IIC SCL_O";
-  attribute X_INTERFACE_INFO of BOARD_IIC_scl_t : signal is "xilinx.com:interface:iic:1.0 BOARD_IIC SCL_T";
-  attribute X_INTERFACE_INFO of BOARD_IIC_sda_i : signal is "xilinx.com:interface:iic:1.0 BOARD_IIC SDA_I";
-  attribute X_INTERFACE_INFO of BOARD_IIC_sda_o : signal is "xilinx.com:interface:iic:1.0 BOARD_IIC SDA_O";
-  attribute X_INTERFACE_INFO of BOARD_IIC_sda_t : signal is "xilinx.com:interface:iic:1.0 BOARD_IIC SDA_T";
-  attribute X_INTERFACE_INFO of DDR3_SDRAM_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CAS_N";
-  attribute X_INTERFACE_INFO of DDR3_SDRAM_ras_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM RAS_N";
-  attribute X_INTERFACE_INFO of DDR3_SDRAM_reset_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM RESET_N";
-  attribute X_INTERFACE_INFO of DDR3_SDRAM_we_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM WE_N";
-  attribute X_INTERFACE_INFO of ETH0_MDIO_MDC_mdc : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDC";
-  attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of ETH0_MDIO_MDC_mdc : signal is "XIL_INTERFACENAME ETH0_MDIO_MDC, CAN_DEBUG false";
-  attribute X_INTERFACE_INFO of ETH0_MDIO_MDC_mdio_i : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDIO_I";
-  attribute X_INTERFACE_INFO of ETH0_MDIO_MDC_mdio_o : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDIO_O";
-  attribute X_INTERFACE_INFO of ETH0_MDIO_MDC_mdio_t : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDIO_T";
-  attribute X_INTERFACE_INFO of PLL_int : signal is "xilinx.com:signal:interrupt:1.0 INTR.PLL_INT INTERRUPT";
-  attribute X_INTERFACE_PARAMETER of PLL_int : signal is "XIL_INTERFACENAME INTR.PLL_INT, PortWidth 1, SENSITIVITY LEVEL_HIGH";
-  attribute X_INTERFACE_INFO of RMII_PHY_M_0_crs_dv : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 CRS_DV";
-  attribute X_INTERFACE_INFO of RMII_PHY_M_0_tx_en : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 TX_EN";
-  attribute X_INTERFACE_INFO of TRX_clk_26MHz : signal is "xilinx.com:signal:clock:1.0 CLK.TRX_CLK_26MHZ CLK";
-  attribute X_INTERFACE_PARAMETER of TRX_clk_26MHz : signal is "XIL_INTERFACENAME CLK.TRX_CLK_26MHZ, CLK_DOMAIN msys_TRX_CLK_26MHz, FREQ_HZ 26000000, INSERT_VIP 0, PHASE 0.000";
-  attribute X_INTERFACE_INFO of TRX_int : signal is "xilinx.com:signal:interrupt:1.0 INTR.TRX_INT INTERRUPT";
-  attribute X_INTERFACE_PARAMETER of TRX_int : signal is "XIL_INTERFACENAME INTR.TRX_INT, PortWidth 1, SENSITIVITY LEVEL_HIGH";
-  attribute X_INTERFACE_INFO of TRX_rx_clk_64MHz_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 TRX_rx_clk_64MHz CLK_N";
-  attribute X_INTERFACE_PARAMETER of TRX_rx_clk_64MHz_clk_n : signal is "XIL_INTERFACENAME TRX_rx_clk_64MHz, CAN_DEBUG false, FREQ_HZ 64000000";
-  attribute X_INTERFACE_INFO of TRX_rx_clk_64MHz_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 TRX_rx_clk_64MHz CLK_P";
-  attribute X_INTERFACE_INFO of TRX_spi_io0_i : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO0_I";
-  attribute X_INTERFACE_INFO of TRX_spi_io0_o : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO0_O";
-  attribute X_INTERFACE_INFO of TRX_spi_io0_t : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO0_T";
-  attribute X_INTERFACE_INFO of TRX_spi_io1_i : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO1_I";
-  attribute X_INTERFACE_INFO of TRX_spi_io1_o : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO1_O";
-  attribute X_INTERFACE_INFO of TRX_spi_io1_t : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO1_T";
-  attribute X_INTERFACE_INFO of TRX_spi_sck_i : signal is "xilinx.com:interface:spi:1.0 TRX_spi SCK_I";
-  attribute X_INTERFACE_INFO of TRX_spi_sck_o : signal is "xilinx.com:interface:spi:1.0 TRX_spi SCK_O";
-  attribute X_INTERFACE_INFO of TRX_spi_sck_t : signal is "xilinx.com:interface:spi:1.0 TRX_spi SCK_T";
-  attribute X_INTERFACE_INFO of TRX_spi_ss_t : signal is "xilinx.com:interface:spi:1.0 TRX_spi SS_T";
-  attribute X_INTERFACE_INFO of TRX_tx_clk_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 TRX_tx_clk CLK_N";
-  attribute X_INTERFACE_PARAMETER of TRX_tx_clk_clk_n : signal is "XIL_INTERFACENAME TRX_tx_clk, CAN_DEBUG false, FREQ_HZ 64000000";
-  attribute X_INTERFACE_INFO of TRX_tx_clk_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 TRX_tx_clk CLK_P";
-  attribute X_INTERFACE_INFO of UART0_clk : signal is "xilinx.com:signal:clock:1.0 CLK.UART0_CLK CLK";
-  attribute X_INTERFACE_PARAMETER of UART0_clk : signal is "XIL_INTERFACENAME CLK.UART0_CLK, CLK_DOMAIN /BOARD_clk_wiz_0_clk_out1, FREQ_HZ 12000000, INSERT_VIP 0, PHASE 0.0";
-  attribute X_INTERFACE_INFO of UART0_rxd : signal is "xilinx.com:interface:uart:1.0 UART0 RxD";
-  attribute X_INTERFACE_INFO of UART0_txd : signal is "xilinx.com:interface:uart:1.0 UART0 TxD";
-  attribute X_INTERFACE_INFO of mgt_clk0_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 mgt_clk0 CLK_N";
-  attribute X_INTERFACE_PARAMETER of mgt_clk0_clk_n : signal is "XIL_INTERFACENAME mgt_clk0, CAN_DEBUG false, FREQ_HZ 125000000";
-  attribute X_INTERFACE_INFO of mgt_clk0_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 mgt_clk0 CLK_P";
-  attribute X_INTERFACE_INFO of qspi_flash_io0_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO0_I";
-  attribute X_INTERFACE_INFO of qspi_flash_io0_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO0_O";
-  attribute X_INTERFACE_INFO of qspi_flash_io0_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO0_T";
-  attribute X_INTERFACE_INFO of qspi_flash_io1_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO1_I";
-  attribute X_INTERFACE_INFO of qspi_flash_io1_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO1_O";
-  attribute X_INTERFACE_INFO of qspi_flash_io1_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO1_T";
-  attribute X_INTERFACE_INFO of qspi_flash_io2_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO2_I";
-  attribute X_INTERFACE_INFO of qspi_flash_io2_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO2_O";
-  attribute X_INTERFACE_INFO of qspi_flash_io2_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO2_T";
-  attribute X_INTERFACE_INFO of qspi_flash_io3_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO3_I";
-  attribute X_INTERFACE_INFO of qspi_flash_io3_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO3_O";
-  attribute X_INTERFACE_INFO of qspi_flash_io3_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO3_T";
-  attribute X_INTERFACE_INFO of qspi_flash_ss_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash SS_I";
-  attribute X_INTERFACE_INFO of qspi_flash_ss_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash SS_O";
-  attribute X_INTERFACE_INFO of qspi_flash_ss_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash SS_T";
-  attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
-  attribute X_INTERFACE_PARAMETER of reset : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
-  attribute X_INTERFACE_INFO of rotenc_decoder_clk : signal is "xilinx.com:signal:clock:1.0 CLK.ROTENC_DECODER_CLK CLK";
-  attribute X_INTERFACE_PARAMETER of rotenc_decoder_clk : signal is "XIL_INTERFACENAME CLK.ROTENC_DECODER_CLK, CLK_DOMAIN msys_mig_7series_0_0_ui_clk, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0";
-  attribute X_INTERFACE_INFO of sys_diff_clock_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 sys_diff_clock CLK_N";
-  attribute X_INTERFACE_PARAMETER of sys_diff_clock_clk_n : signal is "XIL_INTERFACENAME sys_diff_clock, CAN_DEBUG false, FREQ_HZ 100000000";
-  attribute X_INTERFACE_INFO of sys_diff_clock_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 sys_diff_clock CLK_P";
-  attribute X_INTERFACE_INFO of CLK0_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 CLK0 CLK_N";
-  attribute X_INTERFACE_PARAMETER of CLK0_clk_n : signal is "XIL_INTERFACENAME CLK0, CAN_DEBUG false, FREQ_HZ 100000000";
-  attribute X_INTERFACE_INFO of CLK0_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 CLK0 CLK_P";
-  attribute X_INTERFACE_INFO of CLK1B : signal is "xilinx.com:signal:clock:1.0 CLK.CLK1B CLK";
-  attribute X_INTERFACE_PARAMETER of CLK1B : signal is "XIL_INTERFACENAME CLK.CLK1B, CLK_DOMAIN msys_CLK1B, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000";
-  attribute X_INTERFACE_INFO of DDR3_SDRAM_addr : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ADDR";
-  attribute X_INTERFACE_PARAMETER of DDR3_SDRAM_addr : signal is "XIL_INTERFACENAME DDR3_SDRAM, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250";
-  attribute X_INTERFACE_INFO of DDR3_SDRAM_ba : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM BA";
-  attribute X_INTERFACE_INFO of DDR3_SDRAM_ck_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CK_N";
-  attribute X_INTERFACE_INFO of DDR3_SDRAM_ck_p : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CK_P";
-  attribute X_INTERFACE_INFO of DDR3_SDRAM_cke : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CKE";
-  attribute X_INTERFACE_INFO of DDR3_SDRAM_cs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CS_N";
-  attribute X_INTERFACE_INFO of DDR3_SDRAM_dm : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DM";
-  attribute X_INTERFACE_INFO of DDR3_SDRAM_dq : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQ";
-  attribute X_INTERFACE_INFO of DDR3_SDRAM_dqs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_N";
-  attribute X_INTERFACE_INFO of DDR3_SDRAM_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_P";
-  attribute X_INTERFACE_INFO of DDR3_SDRAM_odt : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ODT";
-  attribute X_INTERFACE_INFO of LCD_rstn : signal is "xilinx.com:signal:reset:1.0 RST.LCD_RSTN RST";
-  attribute X_INTERFACE_PARAMETER of LCD_rstn : signal is "XIL_INTERFACENAME RST.LCD_RSTN, INSERT_VIP 0, POLARITY ACTIVE_LOW";
-  attribute X_INTERFACE_INFO of RMII_PHY_M_0_rxd : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 RXD";
-  attribute X_INTERFACE_INFO of RMII_PHY_M_0_txd : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 TXD";
-  attribute X_INTERFACE_INFO of TRX_PLL_clk_25MHz_N : signal is "xilinx.com:signal:clock:1.0 CLK.TRX_PLL_CLK_25MHZ_N CLK";
-  attribute X_INTERFACE_PARAMETER of TRX_PLL_clk_25MHz_N : signal is "XIL_INTERFACENAME CLK.TRX_PLL_CLK_25MHZ_N, CLK_DOMAIN /TRX_PLL_clk_wiz_0_clk_out1, FREQ_HZ 25000000, INSERT_VIP 0, PHASE 0.0";
-  attribute X_INTERFACE_INFO of TRX_PLL_clk_25MHz_P : signal is "xilinx.com:signal:clock:1.0 CLK.TRX_PLL_CLK_25MHZ_P CLK";
-  attribute X_INTERFACE_PARAMETER of TRX_PLL_clk_25MHz_P : signal is "XIL_INTERFACENAME CLK.TRX_PLL_CLK_25MHZ_P, CLK_DOMAIN /TRX_PLL_clk_wiz_0_clk_out1, FREQ_HZ 25000000, INSERT_VIP 0, PHASE 0.0";
-  attribute X_INTERFACE_INFO of TRX_reset : signal is "xilinx.com:signal:reset:1.0 RST.TRX_RESET RST";
-  attribute X_INTERFACE_PARAMETER of TRX_reset : signal is "XIL_INTERFACENAME RST.TRX_RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
-  attribute X_INTERFACE_INFO of TRX_spi_ss_i : signal is "xilinx.com:interface:spi:1.0 TRX_spi SS_I";
-  attribute X_INTERFACE_INFO of TRX_spi_ss_o : signal is "xilinx.com:interface:spi:1.0 TRX_spi SS_O";
-  attribute X_INTERFACE_INFO of UART0_rst_n : signal is "xilinx.com:signal:reset:1.0 RST.UART0_RST_N RST";
-  attribute X_INTERFACE_PARAMETER of UART0_rst_n : signal is "XIL_INTERFACENAME RST.UART0_RST_N, INSERT_VIP 0, POLARITY ACTIVE_LOW";
-  attribute X_INTERFACE_INFO of onewire_EUI48_tri_i : signal is "xilinx.com:interface:gpio:1.0 onewire_EUI48 TRI_I";
-  attribute X_INTERFACE_INFO of onewire_EUI48_tri_o : signal is "xilinx.com:interface:gpio:1.0 onewire_EUI48 TRI_O";
-  attribute X_INTERFACE_INFO of onewire_EUI48_tri_t : signal is "xilinx.com:interface:gpio:1.0 onewire_EUI48 TRI_T";
-  attribute X_INTERFACE_INFO of rotenc_decoder_reset : signal is "xilinx.com:signal:reset:1.0 RST.ROTENC_DECODER_RESET RST";
-  attribute X_INTERFACE_PARAMETER of rotenc_decoder_reset : signal is "XIL_INTERFACENAME RST.ROTENC_DECODER_RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
+  attribute bmm_info_processor : string;
+  attribute bmm_info_processor of microblaze_0 : label is "microblaze-le > msys microblaze_0_local_memory/dlmb_bram_if_cntlr";
+  attribute x_interface_info : string;
+  attribute x_interface_info of BOARD_IIC_scl_i : signal is "xilinx.com:interface:iic:1.0 BOARD_IIC SCL_I";
+  attribute x_interface_info of BOARD_IIC_scl_o : signal is "xilinx.com:interface:iic:1.0 BOARD_IIC SCL_O";
+  attribute x_interface_info of BOARD_IIC_scl_t : signal is "xilinx.com:interface:iic:1.0 BOARD_IIC SCL_T";
+  attribute x_interface_info of BOARD_IIC_sda_i : signal is "xilinx.com:interface:iic:1.0 BOARD_IIC SDA_I";
+  attribute x_interface_info of BOARD_IIC_sda_o : signal is "xilinx.com:interface:iic:1.0 BOARD_IIC SDA_O";
+  attribute x_interface_info of BOARD_IIC_sda_t : signal is "xilinx.com:interface:iic:1.0 BOARD_IIC SDA_T";
+  attribute x_interface_info of DDR3_SDRAM_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CAS_N";
+  attribute x_interface_info of DDR3_SDRAM_ras_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM RAS_N";
+  attribute x_interface_info of DDR3_SDRAM_reset_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM RESET_N";
+  attribute x_interface_info of DDR3_SDRAM_we_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM WE_N";
+  attribute x_interface_info of ETH0_MDIO_MDC_mdc : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDC";
+  attribute x_interface_parameter : string;
+  attribute x_interface_parameter of ETH0_MDIO_MDC_mdc : signal is "XIL_INTERFACENAME ETH0_MDIO_MDC, CAN_DEBUG false";
+  attribute x_interface_info of ETH0_MDIO_MDC_mdio_i : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDIO_I";
+  attribute x_interface_info of ETH0_MDIO_MDC_mdio_o : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDIO_O";
+  attribute x_interface_info of ETH0_MDIO_MDC_mdio_t : signal is "xilinx.com:interface:mdio:1.0 ETH0_MDIO_MDC MDIO_T";
+  attribute x_interface_info of PLL_int : signal is "xilinx.com:signal:interrupt:1.0 INTR.PLL_INT INTERRUPT";
+  attribute x_interface_parameter of PLL_int : signal is "XIL_INTERFACENAME INTR.PLL_INT, PortWidth 1, SENSITIVITY LEVEL_HIGH";
+  attribute x_interface_info of RMII_PHY_M_0_crs_dv : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 CRS_DV";
+  attribute x_interface_info of RMII_PHY_M_0_tx_en : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 TX_EN";
+  attribute x_interface_info of TRX_clk_26MHz : signal is "xilinx.com:signal:clock:1.0 CLK.TRX_CLK_26MHZ CLK";
+  attribute x_interface_parameter of TRX_clk_26MHz : signal is "XIL_INTERFACENAME CLK.TRX_CLK_26MHZ, CLK_DOMAIN msys_TRX_CLK_26MHz, FREQ_HZ 26000000, INSERT_VIP 0, PHASE 0.000";
+  attribute x_interface_info of TRX_int : signal is "xilinx.com:signal:interrupt:1.0 INTR.TRX_INT INTERRUPT";
+  attribute x_interface_parameter of TRX_int : signal is "XIL_INTERFACENAME INTR.TRX_INT, PortWidth 1, SENSITIVITY LEVEL_HIGH";
+  attribute x_interface_info of TRX_rx_clk_64MHz_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 TRX_rx_clk_64MHz CLK_N";
+  attribute x_interface_parameter of TRX_rx_clk_64MHz_clk_n : signal is "XIL_INTERFACENAME TRX_rx_clk_64MHz, CAN_DEBUG false, FREQ_HZ 64000000";
+  attribute x_interface_info of TRX_rx_clk_64MHz_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 TRX_rx_clk_64MHz CLK_P";
+  attribute x_interface_info of TRX_spi_io0_i : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO0_I";
+  attribute x_interface_info of TRX_spi_io0_o : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO0_O";
+  attribute x_interface_info of TRX_spi_io0_t : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO0_T";
+  attribute x_interface_info of TRX_spi_io1_i : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO1_I";
+  attribute x_interface_info of TRX_spi_io1_o : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO1_O";
+  attribute x_interface_info of TRX_spi_io1_t : signal is "xilinx.com:interface:spi:1.0 TRX_spi IO1_T";
+  attribute x_interface_info of TRX_spi_sck_i : signal is "xilinx.com:interface:spi:1.0 TRX_spi SCK_I";
+  attribute x_interface_info of TRX_spi_sck_o : signal is "xilinx.com:interface:spi:1.0 TRX_spi SCK_O";
+  attribute x_interface_info of TRX_spi_sck_t : signal is "xilinx.com:interface:spi:1.0 TRX_spi SCK_T";
+  attribute x_interface_info of TRX_spi_ss_t : signal is "xilinx.com:interface:spi:1.0 TRX_spi SS_T";
+  attribute x_interface_info of TRX_tx_clk_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 TRX_tx_clk CLK_N";
+  attribute x_interface_parameter of TRX_tx_clk_clk_n : signal is "XIL_INTERFACENAME TRX_tx_clk, CAN_DEBUG false, FREQ_HZ 64000000";
+  attribute x_interface_info of TRX_tx_clk_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 TRX_tx_clk CLK_P";
+  attribute x_interface_info of UART0_clk : signal is "xilinx.com:signal:clock:1.0 CLK.UART0_CLK CLK";
+  attribute x_interface_parameter of UART0_clk : signal is "XIL_INTERFACENAME CLK.UART0_CLK, CLK_DOMAIN /BOARD_clk_wiz_0_clk_out1, FREQ_HZ 12000000, INSERT_VIP 0, PHASE 0.0";
+  attribute x_interface_info of UART0_rxd : signal is "xilinx.com:interface:uart:1.0 UART0 RxD";
+  attribute x_interface_info of UART0_txd : signal is "xilinx.com:interface:uart:1.0 UART0 TxD";
+  attribute x_interface_info of mgt_clk0_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 mgt_clk0 CLK_N";
+  attribute x_interface_parameter of mgt_clk0_clk_n : signal is "XIL_INTERFACENAME mgt_clk0, CAN_DEBUG false, FREQ_HZ 125000000";
+  attribute x_interface_info of mgt_clk0_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 mgt_clk0 CLK_P";
+  attribute x_interface_info of qspi_flash_io0_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO0_I";
+  attribute x_interface_info of qspi_flash_io0_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO0_O";
+  attribute x_interface_info of qspi_flash_io0_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO0_T";
+  attribute x_interface_info of qspi_flash_io1_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO1_I";
+  attribute x_interface_info of qspi_flash_io1_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO1_O";
+  attribute x_interface_info of qspi_flash_io1_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO1_T";
+  attribute x_interface_info of qspi_flash_io2_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO2_I";
+  attribute x_interface_info of qspi_flash_io2_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO2_O";
+  attribute x_interface_info of qspi_flash_io2_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO2_T";
+  attribute x_interface_info of qspi_flash_io3_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO3_I";
+  attribute x_interface_info of qspi_flash_io3_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO3_O";
+  attribute x_interface_info of qspi_flash_io3_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash IO3_T";
+  attribute x_interface_info of qspi_flash_ss_i : signal is "xilinx.com:interface:spi:1.0 qspi_flash SS_I";
+  attribute x_interface_info of qspi_flash_ss_o : signal is "xilinx.com:interface:spi:1.0 qspi_flash SS_O";
+  attribute x_interface_info of qspi_flash_ss_t : signal is "xilinx.com:interface:spi:1.0 qspi_flash SS_T";
+  attribute x_interface_info of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
+  attribute x_interface_parameter of reset : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
+  attribute x_interface_info of rotenc_decoder_clk : signal is "xilinx.com:signal:clock:1.0 CLK.ROTENC_DECODER_CLK CLK";
+  attribute x_interface_parameter of rotenc_decoder_clk : signal is "XIL_INTERFACENAME CLK.ROTENC_DECODER_CLK, CLK_DOMAIN msys_mig_7series_0_0_ui_clk, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0";
+  attribute x_interface_info of sys_diff_clock_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 sys_diff_clock CLK_N";
+  attribute x_interface_parameter of sys_diff_clock_clk_n : signal is "XIL_INTERFACENAME sys_diff_clock, CAN_DEBUG false, FREQ_HZ 100000000";
+  attribute x_interface_info of sys_diff_clock_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 sys_diff_clock CLK_P";
+  attribute x_interface_info of CLK0_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 CLK0 CLK_N";
+  attribute x_interface_parameter of CLK0_clk_n : signal is "XIL_INTERFACENAME CLK0, CAN_DEBUG false, FREQ_HZ 100000000";
+  attribute x_interface_info of CLK0_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 CLK0 CLK_P";
+  attribute x_interface_info of CLK1B : signal is "xilinx.com:signal:clock:1.0 CLK.CLK1B CLK";
+  attribute x_interface_parameter of CLK1B : signal is "XIL_INTERFACENAME CLK.CLK1B, CLK_DOMAIN msys_CLK1B, FREQ_HZ 50000000, INSERT_VIP 0, PHASE 0.000";
+  attribute x_interface_info of DDR3_SDRAM_addr : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ADDR";
+  attribute x_interface_parameter of DDR3_SDRAM_addr : signal is "XIL_INTERFACENAME DDR3_SDRAM, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250";
+  attribute x_interface_info of DDR3_SDRAM_ba : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM BA";
+  attribute x_interface_info of DDR3_SDRAM_ck_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CK_N";
+  attribute x_interface_info of DDR3_SDRAM_ck_p : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CK_P";
+  attribute x_interface_info of DDR3_SDRAM_cke : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CKE";
+  attribute x_interface_info of DDR3_SDRAM_cs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM CS_N";
+  attribute x_interface_info of DDR3_SDRAM_dm : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DM";
+  attribute x_interface_info of DDR3_SDRAM_dq : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQ";
+  attribute x_interface_info of DDR3_SDRAM_dqs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_N";
+  attribute x_interface_info of DDR3_SDRAM_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_P";
+  attribute x_interface_info of DDR3_SDRAM_odt : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ODT";
+  attribute x_interface_info of LCD_rstn : signal is "xilinx.com:signal:reset:1.0 RST.LCD_RSTN RST";
+  attribute x_interface_parameter of LCD_rstn : signal is "XIL_INTERFACENAME RST.LCD_RSTN, INSERT_VIP 0, POLARITY ACTIVE_LOW";
+  attribute x_interface_info of RMII_PHY_M_0_rxd : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 RXD";
+  attribute x_interface_info of RMII_PHY_M_0_txd : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 TXD";
+  attribute x_interface_info of TRX_PLL_clk_25MHz_N : signal is "xilinx.com:signal:clock:1.0 CLK.TRX_PLL_CLK_25MHZ_N CLK";
+  attribute x_interface_parameter of TRX_PLL_clk_25MHz_N : signal is "XIL_INTERFACENAME CLK.TRX_PLL_CLK_25MHZ_N, CLK_DOMAIN /TRX_PLL_clk_wiz_0_clk_out1, FREQ_HZ 25000000, INSERT_VIP 0, PHASE 0.0";
+  attribute x_interface_info of TRX_PLL_clk_25MHz_P : signal is "xilinx.com:signal:clock:1.0 CLK.TRX_PLL_CLK_25MHZ_P CLK";
+  attribute x_interface_parameter of TRX_PLL_clk_25MHz_P : signal is "XIL_INTERFACENAME CLK.TRX_PLL_CLK_25MHZ_P, CLK_DOMAIN /TRX_PLL_clk_wiz_0_clk_out1, FREQ_HZ 25000000, INSERT_VIP 0, PHASE 0.0";
+  attribute x_interface_info of TRX_reset : signal is "xilinx.com:signal:reset:1.0 RST.TRX_RESET RST";
+  attribute x_interface_parameter of TRX_reset : signal is "XIL_INTERFACENAME RST.TRX_RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
+  attribute x_interface_info of TRX_spi_ss_i : signal is "xilinx.com:interface:spi:1.0 TRX_spi SS_I";
+  attribute x_interface_info of TRX_spi_ss_o : signal is "xilinx.com:interface:spi:1.0 TRX_spi SS_O";
+  attribute x_interface_info of UART0_rst_n : signal is "xilinx.com:signal:reset:1.0 RST.UART0_RST_N RST";
+  attribute x_interface_parameter of UART0_rst_n : signal is "XIL_INTERFACENAME RST.UART0_RST_N, INSERT_VIP 0, POLARITY ACTIVE_LOW";
+  attribute x_interface_info of onewire_EUI48_tri_i : signal is "xilinx.com:interface:gpio:1.0 onewire_EUI48 TRI_I";
+  attribute x_interface_info of onewire_EUI48_tri_o : signal is "xilinx.com:interface:gpio:1.0 onewire_EUI48 TRI_O";
+  attribute x_interface_info of onewire_EUI48_tri_t : signal is "xilinx.com:interface:gpio:1.0 onewire_EUI48 TRI_T";
+  attribute x_interface_info of rotenc_decoder_reset : signal is "xilinx.com:signal:reset:1.0 RST.ROTENC_DECODER_RESET RST";
+  attribute x_interface_parameter of rotenc_decoder_reset : signal is "XIL_INTERFACENAME RST.ROTENC_DECODER_RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
 begin
   BOARD_IIC_scl_o <= axi_iic_1_IIC_SCL_O;
   BOARD_IIC_scl_t <= axi_iic_1_IIC_SCL_T;
@@ -7806,12 +8036,12 @@ PWM_GPIO2_xlconcat_0: component msys_xlconcat_1_2
       In1(0) => axi_ethernetlite_0_phy_tx_en,
       In2(0) => ETH0_LINK_LED_1,
       In3(0) => mig_7series_0_init_calib_complete,
-      In4(27 downto 0) => xlconstant_0_dout(27 downto 0),
+      In4(27 downto 0) => xlconstant_0_dout28(27 downto 0),
       dout(31 downto 0) => xlconcat_1_dout(31 downto 0)
     );
 PWM_GPIO2_xlconstant_0: component msys_xlconstant_0_0
      port map (
-      dout(27 downto 0) => xlconstant_0_dout(27 downto 0)
+      dout(27 downto 0) => xlconstant_0_dout28(27 downto 0)
     );
 PWM_GPIO_xlslice_1: component msys_RGB_red_xlslice_0_3
      port map (
@@ -7959,9 +8189,89 @@ TRX_axi_quad_spi_0: component msys_axi_quad_spi_1_0
       ss_o(0) => TRX_axi_quad_spi_0_SPI_0_SS_O(0),
       ss_t => TRX_axi_quad_spi_0_SPI_0_SS_T
     );
+TRX_clk_sys_reset_0: component msys_proc_sys_reset_0_1
+     port map (
+      aux_reset_in => '1',
+      bus_struct_reset(0) => NLW_TRX_clk_sys_reset_0_bus_struct_reset_UNCONNECTED(0),
+      dcm_locked => mig_7series_0_mmcm_locked,
+      ext_reset_in => mig_7series_0_ui_clk_sync_rst,
+      interconnect_aresetn(0) => NLW_TRX_clk_sys_reset_0_interconnect_aresetn_UNCONNECTED(0),
+      mb_debug_sys_rst => '0',
+      mb_reset => NLW_TRX_clk_sys_reset_0_mb_reset_UNCONNECTED,
+      peripheral_aresetn(0) => NLW_TRX_clk_sys_reset_0_peripheral_aresetn_UNCONNECTED(0),
+      peripheral_reset(0) => TRX_clk_sys_reset_0_peripheral_reset(0),
+      slowest_sync_clk => TRX_rx_selectio_wiz_0_clk_div_out
+    );
+TRX_rx09_fifo_generator_0: component msys_TRX_rx09_fifo_generator_0_0
+     port map (
+      din(7 downto 0) => TRX_rx09_xlconcat_0_dout(7 downto 0),
+      dout(31 downto 0) => TRX_rx09_fifo_generator_0_dout(31 downto 0),
+      empty => NLW_TRX_rx09_fifo_generator_0_empty_UNCONNECTED,
+      full => NLW_TRX_rx09_fifo_generator_0_full_UNCONNECTED,
+      rd_clk => microblaze_0_Clk,
+      rd_data_count(8 downto 0) => TRX_rx09_fifo_generator_0_rd_data_count(8 downto 0),
+      rd_en => xlconstant_1_dout1(0),
+      rd_rst_busy => NLW_TRX_rx09_fifo_generator_0_rd_rst_busy_UNCONNECTED,
+      rst => TRX_clk_sys_reset_0_peripheral_reset(0),
+      valid => NLW_TRX_rx09_fifo_generator_0_valid_UNCONNECTED,
+      wr_clk => TRX_rx_selectio_wiz_0_clk_div_out,
+      wr_data_count(10 downto 0) => NLW_TRX_rx09_fifo_generator_0_wr_data_count_UNCONNECTED(10 downto 0),
+      wr_en => xlconstant_1_dout1(0),
+      wr_rst_busy => NLW_TRX_rx09_fifo_generator_0_wr_rst_busy_UNCONNECTED
+    );
+TRX_rx09_xlconcat_0: component msys_xlconcat_1_3
+     port map (
+      In0(0) => TRX_rx_xlslice_00to00_Dout(0),
+      In1(0) => TRX_rx_xlslice_02to02_Dout(0),
+      In2(0) => TRX_rx_xlslice_04to04_Dout(0),
+      In3(0) => TRX_rx_xlslice_06to06_Dout(0),
+      In4(0) => TRX_rx_xlslice_08to08_Dout(0),
+      In5(0) => TRX_rx_xlslice_10to10_Dout(0),
+      In6(0) => TRX_rx_xlslice_12to12_Dout(0),
+      In7(0) => TRX_rx_xlslice_14to14_Dout(0),
+      dout(7 downto 0) => TRX_rx09_xlconcat_0_dout(7 downto 0)
+    );
+TRX_rx24_fifo_generator_0: component msys_fifo_generator_0_0
+     port map (
+      din(7 downto 0) => TRX_rx24_xlconcat_0_dout(7 downto 0),
+      dout(31 downto 0) => TRX_rx24_fifo_generator_0_dout(31 downto 0),
+      empty => NLW_TRX_rx24_fifo_generator_0_empty_UNCONNECTED,
+      full => NLW_TRX_rx24_fifo_generator_0_full_UNCONNECTED,
+      rd_clk => microblaze_0_Clk,
+      rd_en => xlconstant_1_dout1(0),
+      rd_rst_busy => NLW_TRX_rx24_fifo_generator_0_rd_rst_busy_UNCONNECTED,
+      rst => TRX_clk_sys_reset_0_peripheral_reset(0),
+      valid => NLW_TRX_rx24_fifo_generator_0_valid_UNCONNECTED,
+      wr_clk => TRX_rx_selectio_wiz_0_clk_div_out,
+      wr_en => xlconstant_1_dout1(0),
+      wr_rst_busy => NLW_TRX_rx24_fifo_generator_0_wr_rst_busy_UNCONNECTED
+    );
+TRX_rx24_xlconcat_0: component msys_TRX_rx09_xlconcat_0_0
+     port map (
+      In0(0) => TRX_rx_xlslice_01to01_Dout(0),
+      In1(0) => TRX_rx_xlslice_03to03_Dout(0),
+      In2(0) => TRX_rx_xlslice_05to05_Dout(0),
+      In3(0) => TRX_rx_xlslice_07to07_Dout(0),
+      In4(0) => TRX_rx_xlslice_09to09_Dout(0),
+      In5(0) => TRX_rx_xlslice_11to11_Dout(0),
+      In6(0) => TRX_rx_xlslice_13to13_Dout(0),
+      In7(0) => TRX_rx_xlslice_15to15_Dout(0),
+      dout(7 downto 0) => TRX_rx24_xlconcat_0_dout(7 downto 0)
+    );
+TRX_rx_counter_binary_0: component msys_c_counter_binary_0_2
+     port map (
+      CLK => TRX_rx_selectio_wiz_0_clk_div_out,
+      Q(6 downto 0) => TRX_rx_counter_binary_0_Q(6 downto 0),
+      SCLR => TRX_clk_sys_reset_0_peripheral_reset(0)
+    );
+TRX_rx_iorst_xlslice_6to6: component msys_xlslice_0_5
+     port map (
+      Din(6 downto 0) => TRX_rx_counter_binary_0_Q(6 downto 0),
+      Dout(0) => TRX_rx_iorst_xlslice_6to6_Dout(0)
+    );
 TRX_rx_selectio_wiz_0: component msys_selectio_wiz_0_1
      port map (
-      bitslip(1 downto 0) => xlconstant_0_dout1(1 downto 0),
+      bitslip(1 downto 0) => xlconstant_0_dout2(1 downto 0),
       clk_div_out => TRX_rx_selectio_wiz_0_clk_div_out,
       clk_in_n => diff_clk_in_0_1_CLK_N,
       clk_in_p => diff_clk_in_0_1_CLK_P,
@@ -7970,13 +8280,93 @@ TRX_rx_selectio_wiz_0: component msys_selectio_wiz_0_1
       clk_to_pins_p => TRX_rx_selectio_wiz_0_diff_clk_to_pins_CLK_P,
       data_in_from_pins_n(1 downto 0) => data_in_from_pins_n_0_1(1 downto 0),
       data_in_from_pins_p(1 downto 0) => data_in_from_pins_p_0_1(1 downto 0),
-      data_in_to_device(15 downto 0) => TRX_rx_selectio_wiz_0_data_in_to_device(15 downto 0),
+      data_in_to_device(15 downto 0) => Net2(15 downto 0),
       data_out_from_device(15 downto 0) => xlconstant_0x0000_dout(15 downto 0),
       data_out_to_pins_n(1 downto 0) => TRX_rx_selectio_wiz_0_data_out_to_pins_n(1 downto 0),
       data_out_to_pins_p(1 downto 0) => TRX_rx_selectio_wiz_0_data_out_to_pins_p(1 downto 0),
       delay_locked => NLW_TRX_rx_selectio_wiz_0_delay_locked_UNCONNECTED,
-      io_reset => rst_mig_7series_0_100M_peripheral_reset(0),
+      io_reset => TRX_rx_iorst_xlslice_6to6_Dout(0),
       ref_clock => mig_7series_0_ui_addn_clk_0
+    );
+TRX_rx_xlslice_00to00: component msys_TRX_rx_xlslice_10to10_9
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_00to00_Dout(0)
+    );
+TRX_rx_xlslice_01to01: component msys_TRX_rx_xlslice_10to10_8
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_01to01_Dout(0)
+    );
+TRX_rx_xlslice_02to02: component msys_TRX_rx_xlslice_10to10_7
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_02to02_Dout(0)
+    );
+TRX_rx_xlslice_03to03: component msys_TRX_rx_xlslice_10to10_6
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_03to03_Dout(0)
+    );
+TRX_rx_xlslice_04to04: component msys_TRX_rx_xlslice_10to10_5
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_04to04_Dout(0)
+    );
+TRX_rx_xlslice_05to05: component msys_TRX_rx_xlslice_10to10_4
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_05to05_Dout(0)
+    );
+TRX_rx_xlslice_06to06: component msys_TRX_rx_xlslice_10to10_3
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_06to06_Dout(0)
+    );
+TRX_rx_xlslice_07to07: component msys_TRX_rx_xlslice_10to10_2
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_07to07_Dout(0)
+    );
+TRX_rx_xlslice_08to08: component msys_TRX_rx_xlslice_10to10_1
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_08to08_Dout(0)
+    );
+TRX_rx_xlslice_09to09: component msys_TRX_rx_xlslice_10to10_0
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_09to09_Dout(0)
+    );
+TRX_rx_xlslice_10to10: component msys_TRX_rx_xlslice_13to13_2
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_10to10_Dout(0)
+    );
+TRX_rx_xlslice_11to11: component msys_TRX_rx_xlslice_13to13_1
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_11to11_Dout(0)
+    );
+TRX_rx_xlslice_12to12: component msys_TRX_rx_xlslice_13to13_0
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_12to12_Dout(0)
+    );
+TRX_rx_xlslice_13to13: component msys_TRX_rx_xlslice_15to15_0
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_13to13_Dout(0)
+    );
+TRX_rx_xlslice_14to14: component msys_TRX_rx_xlslice_15to16_0
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_14to14_Dout(0)
+    );
+TRX_rx_xlslice_15to15: component msys_xlslice_0_4
+     port map (
+      Din(15 downto 0) => Net2(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_15to15_Dout(0)
     );
 TRX_xlslice_0to0_0: component msys_xlslice_0_3
      port map (
@@ -9157,7 +9547,7 @@ rst_mig_7series_0_50M: component msys_rst_mig_7series_0_50M_0
      port map (
       aux_reset_in => '1',
       bus_struct_reset(0) => NLW_rst_mig_7series_0_50M_bus_struct_reset_UNCONNECTED(0),
-      dcm_locked => '1',
+      dcm_locked => mig_7series_0_mmcm_locked,
       ext_reset_in => mig_7series_0_ui_clk_sync_rst,
       interconnect_aresetn(0) => NLW_rst_mig_7series_0_50M_interconnect_aresetn_UNCONNECTED(0),
       mb_debug_sys_rst => '0',
@@ -9190,7 +9580,9 @@ vio_0: component msys_vio_0_0
       probe_in0(31 downto 0) => fm_mig_50mhz(31 downto 0),
       probe_in1(31 downto 0) => fm_mgt_ref(31 downto 0),
       probe_in10(0) => ULI_SYSTEM_XIO_1,
-      probe_in11(15 downto 0) => TRX_rx_selectio_wiz_0_data_in_to_device(15 downto 0),
+      probe_in11(8 downto 0) => TRX_rx09_fifo_generator_0_rd_data_count(8 downto 0),
+      probe_in12(31 downto 0) => TRX_rx09_fifo_generator_0_dout(31 downto 0),
+      probe_in13(31 downto 0) => TRX_rx24_fifo_generator_0_dout(31 downto 0),
       probe_in2(31 downto 0) => lt_CLK1B(31 downto 0),
       probe_in3(31 downto 0) => lt_CLK0(31 downto 0),
       probe_in4(0) => labtools_fmeter_0_update,
@@ -9211,7 +9603,11 @@ xlconcat_0: component msys_xlconcat_0_0
     );
 xlconstant_0b00: component msys_xlconstant_0_1
      port map (
-      dout(1 downto 0) => xlconstant_0_dout1(1 downto 0)
+      dout(1 downto 0) => xlconstant_0_dout2(1 downto 0)
+    );
+xlconstant_0b1: component msys_xlconstant_0b00_1
+     port map (
+      dout(0) => xlconstant_1_dout1(0)
     );
 xlconstant_0x0000: component msys_xlconstant_0b00_0
      port map (

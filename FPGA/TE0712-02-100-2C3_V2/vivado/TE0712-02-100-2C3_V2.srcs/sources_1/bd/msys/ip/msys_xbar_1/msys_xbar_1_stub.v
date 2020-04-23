@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
-// Date        : Tue Apr 21 13:36:30 2020
+// Date        : Tue Apr 21 13:36:29 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_xbar_1/msys_xbar_1_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top msys_xbar_1 -prefix
+//               msys_xbar_1_ msys_xbar_1_stub.v
 // Design      : msys_xbar_1
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tfgg484-2

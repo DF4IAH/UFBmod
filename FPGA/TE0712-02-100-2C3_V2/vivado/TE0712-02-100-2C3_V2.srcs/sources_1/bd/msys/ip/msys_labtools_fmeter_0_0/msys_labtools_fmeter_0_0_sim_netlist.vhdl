@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
 -- Date        : Tue Apr 21 20:17:28 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_labtools_fmeter_0_0/msys_labtools_fmeter_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_labtools_fmeter_0_0 -prefix
+--               msys_labtools_fmeter_0_0_ msys_labtools_fmeter_0_0_sim_netlist.vhdl
 -- Design      : msys_labtools_fmeter_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -22,8 +22,6 @@ entity msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO is
     refclk : in STD_LOGIC;
     toggle : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO : entity is "unimacro_COUNTER_TC_MACRO";
 end msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO;
 
 architecture STRUCTURE of msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO is
@@ -983,8 +981,6 @@ entity msys_labtools_fmeter_0_0_labtools_fmeter is
     refclk : in STD_LOGIC;
     fin : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_labtools_fmeter_0_0_labtools_fmeter : entity is "labtools_fmeter";
 end msys_labtools_fmeter_0_0_labtools_fmeter;
 
 architecture STRUCTURE of msys_labtools_fmeter_0_0_labtools_fmeter is

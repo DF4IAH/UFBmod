@@ -15,10 +15,10 @@ entity bd_cf59 is
     GPIO1_tri_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
     Reset : in STD_LOGIC
   );
-  attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of bd_cf59 : entity is "bd_cf59,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_cf59,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=11,numReposBlks=11,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=Global}";
-  attribute HW_HANDOFF : string;
-  attribute HW_HANDOFF of bd_cf59 : entity is "msys_microblaze_mcs_0_0.hwdef";
+  attribute core_generation_info : string;
+  attribute core_generation_info of bd_cf59 : entity is "bd_cf59,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_cf59,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=11,numReposBlks=11,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=Global}";
+  attribute hw_handoff : string;
+  attribute hw_handoff of bd_cf59 : entity is "msys_microblaze_mcs_0_0.hwdef";
 end bd_cf59;
 
 architecture STRUCTURE of bd_cf59 is
@@ -349,22 +349,22 @@ architecture STRUCTURE of bd_cf59 is
   signal ilmb_port_EN : STD_LOGIC;
   signal ilmb_port_RST : STD_LOGIC;
   signal ilmb_port_WE : STD_LOGIC_VECTOR ( 0 to 3 );
+  signal ilmb_sl_0_ABUS : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal ilmb_sl_0_ADDRSTROBE : STD_LOGIC;
+  signal ilmb_sl_0_BE : STD_LOGIC_VECTOR ( 0 to 3 );
   signal ilmb_sl_0_CE : STD_LOGIC;
   signal ilmb_sl_0_READDBUS : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal ilmb_sl_0_READSTROBE : STD_LOGIC;
   signal ilmb_sl_0_READY : STD_LOGIC;
   signal ilmb_sl_0_UE : STD_LOGIC;
   signal ilmb_sl_0_WAIT : STD_LOGIC;
-  signal ilmb_sl_1_ABUS : STD_LOGIC_VECTOR ( 0 to 31 );
-  signal ilmb_sl_1_ADDRSTROBE : STD_LOGIC;
-  signal ilmb_sl_1_BE : STD_LOGIC_VECTOR ( 0 to 3 );
+  signal ilmb_sl_0_WRITEDBUS : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal ilmb_sl_0_WRITESTROBE : STD_LOGIC;
   signal ilmb_sl_1_CE : STD_LOGIC;
   signal ilmb_sl_1_READDBUS : STD_LOGIC_VECTOR ( 0 to 31 );
-  signal ilmb_sl_1_READSTROBE : STD_LOGIC;
   signal ilmb_sl_1_READY : STD_LOGIC;
   signal ilmb_sl_1_UE : STD_LOGIC;
   signal ilmb_sl_1_WAIT : STD_LOGIC;
-  signal ilmb_sl_1_WRITEDBUS : STD_LOGIC_VECTOR ( 0 to 31 );
-  signal ilmb_sl_1_WRITESTROBE : STD_LOGIC;
   signal iomodule_0_GPIO1_TRI_I : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal iomodule_0_GPIO1_TRI_O : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_dlmb_LMB_Rst_UNCONNECTED : STD_LOGIC;
@@ -376,24 +376,24 @@ architecture STRUCTURE of bd_cf59 is
   signal NLW_rst_0_peripheral_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_second_lmb_bram_I_rsta_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_second_lmb_bram_I_rstb_busy_UNCONNECTED : STD_LOGIC;
-  attribute BMM_INFO_ADDRESS_SPACE : string;
-  attribute BMM_INFO_ADDRESS_SPACE of dlmb_cntlr : label is "byte  0x00000000 32 >  bd_cf59 lmb_bram_I bd_cf59 second_lmb_bram_I";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of dlmb_cntlr : label is "yes";
-  attribute BMM_INFO_PROCESSOR : string;
-  attribute BMM_INFO_PROCESSOR of microblaze_I : label is "microblaze-le > bd_cf59 dlmb_cntlr";
+  attribute bmm_info_address_space : string;
+  attribute bmm_info_address_space of dlmb_cntlr : label is "byte  0x00000000 32 >  bd_cf59 lmb_bram_I bd_cf59 second_lmb_bram_I";
   attribute KEEP_HIERARCHY of microblaze_I : label is "yes";
-  attribute BMM_INFO_ADDRESS_RANGE : string;
-  attribute BMM_INFO_ADDRESS_RANGE of second_dlmb_cntlr : label is " ";
-  attribute X_INTERFACE_INFO : string;
-  attribute X_INTERFACE_INFO of Clk : signal is "xilinx.com:signal:clock:1.0 CLK.CLK CLK";
-  attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of Clk : signal is "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_ASYNC_RESET Reset, CLK_DOMAIN msys_SC0712_0_0_mcs_clk_out, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.000";
-  attribute X_INTERFACE_INFO of Reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
-  attribute X_INTERFACE_PARAMETER of Reset : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
-  attribute X_INTERFACE_INFO of GPIO1_tri_i : signal is "xilinx.com:interface:gpio:1.0 GPIO1 TRI_I";
-  attribute X_INTERFACE_PARAMETER of GPIO1_tri_i : signal is "XIL_INTERFACENAME GPIO1, C_GPI1_INTERRUPT 0, C_GPI1_SIZE 32, C_GPO1_INIT 0x00000000, C_GPO1_SIZE 32, C_USE_GPI1 1, C_USE_GPO1 1";
-  attribute X_INTERFACE_INFO of GPIO1_tri_o : signal is "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O";
+  attribute bmm_info_processor : string;
+  attribute bmm_info_processor of microblaze_I : label is "microblaze-le > bd_cf59 dlmb_cntlr";
+  attribute bmm_info_address_range : string;
+  attribute bmm_info_address_range of second_dlmb_cntlr : label is " ";
+  attribute x_interface_info : string;
+  attribute x_interface_info of Clk : signal is "xilinx.com:signal:clock:1.0 CLK.CLK CLK";
+  attribute x_interface_parameter : string;
+  attribute x_interface_parameter of Clk : signal is "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_ASYNC_RESET Reset, CLK_DOMAIN msys_SC0712_0_0_mcs_clk_out, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.000";
+  attribute x_interface_info of Reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
+  attribute x_interface_parameter of Reset : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
+  attribute x_interface_info of GPIO1_tri_i : signal is "xilinx.com:interface:gpio:1.0 GPIO1 TRI_I";
+  attribute x_interface_parameter of GPIO1_tri_i : signal is "XIL_INTERFACENAME GPIO1, C_GPI1_INTERRUPT 0, C_GPI1_SIZE 32, C_GPO1_INIT 0x00000000, C_GPO1_SIZE 32, C_USE_GPI1 1, C_USE_GPO1 1";
+  attribute x_interface_info of GPIO1_tri_o : signal is "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O";
 begin
   Clk2 <= Clk;
   GPIO1_tri_o(31 downto 0) <= iomodule_0_GPIO1_TRI_O(31 downto 0);
@@ -492,19 +492,19 @@ dlmb_cntlr: component bd_cf59_dlmb_cntlr_0
     );
 ilmb: component bd_cf59_ilmb_0
      port map (
-      LMB_ABus(0 to 31) => ilmb_sl_1_ABUS(0 to 31),
-      LMB_AddrStrobe => ilmb_sl_1_ADDRSTROBE,
-      LMB_BE(0 to 3) => ilmb_sl_1_BE(0 to 3),
+      LMB_ABus(0 to 31) => ilmb_sl_0_ABUS(0 to 31),
+      LMB_AddrStrobe => ilmb_sl_0_ADDRSTROBE,
+      LMB_BE(0 to 3) => ilmb_sl_0_BE(0 to 3),
       LMB_CE => ilmb_CE,
       LMB_Clk => Clk2,
       LMB_ReadDBus(0 to 31) => ilmb_READDBUS(0 to 31),
-      LMB_ReadStrobe => ilmb_sl_1_READSTROBE,
+      LMB_ReadStrobe => ilmb_sl_0_READSTROBE,
       LMB_Ready => ilmb_READY,
       LMB_Rst => NLW_ilmb_LMB_Rst_UNCONNECTED,
       LMB_UE => ilmb_UE,
       LMB_Wait => ilmb_WAIT,
-      LMB_WriteDBus(0 to 31) => ilmb_sl_1_WRITEDBUS(0 to 31),
-      LMB_WriteStrobe => ilmb_sl_1_WRITESTROBE,
+      LMB_WriteDBus(0 to 31) => ilmb_sl_0_WRITEDBUS(0 to 31),
+      LMB_WriteStrobe => ilmb_sl_0_WRITESTROBE,
       M_ABus(0 to 31) => ilmb_ABUS(0 to 31),
       M_AddrStrobe => ilmb_ADDRSTROBE,
       M_BE(0 to 3) => B"0000",
@@ -563,14 +563,14 @@ ilmb_cntlr: component bd_cf59_ilmb_cntlr_0
       BRAM_EN_A => ilmb_port_EN,
       BRAM_Rst_A => ilmb_port_RST,
       BRAM_WEN_A(0 to 3) => ilmb_port_WE(0 to 3),
-      LMB_ABus(0 to 31) => ilmb_sl_1_ABUS(0 to 31),
-      LMB_AddrStrobe => ilmb_sl_1_ADDRSTROBE,
-      LMB_BE(0 to 3) => ilmb_sl_1_BE(0 to 3),
+      LMB_ABus(0 to 31) => ilmb_sl_0_ABUS(0 to 31),
+      LMB_AddrStrobe => ilmb_sl_0_ADDRSTROBE,
+      LMB_BE(0 to 3) => ilmb_sl_0_BE(0 to 3),
       LMB_Clk => Clk2,
-      LMB_ReadStrobe => ilmb_sl_1_READSTROBE,
+      LMB_ReadStrobe => ilmb_sl_0_READSTROBE,
       LMB_Rst => LMB_Rst2(0),
-      LMB_WriteDBus(0 to 31) => ilmb_sl_1_WRITEDBUS(0 to 31),
-      LMB_WriteStrobe => ilmb_sl_1_WRITESTROBE,
+      LMB_WriteDBus(0 to 31) => ilmb_sl_0_WRITEDBUS(0 to 31),
+      LMB_WriteStrobe => ilmb_sl_0_WRITESTROBE,
       Sl_CE => ilmb_sl_0_CE,
       Sl_DBus(0 to 31) => ilmb_sl_0_READDBUS(0 to 31),
       Sl_Ready => ilmb_sl_0_READY,
@@ -878,14 +878,14 @@ second_ilmb_cntlr: component bd_cf59_second_ilmb_cntlr_0
       BRAM_EN_A => ilmb_port_2_EN,
       BRAM_Rst_A => ilmb_port_2_RST,
       BRAM_WEN_A(0 to 3) => ilmb_port_2_WE(0 to 3),
-      LMB_ABus(0 to 31) => ilmb_sl_1_ABUS(0 to 31),
-      LMB_AddrStrobe => ilmb_sl_1_ADDRSTROBE,
-      LMB_BE(0 to 3) => ilmb_sl_1_BE(0 to 3),
+      LMB_ABus(0 to 31) => ilmb_sl_0_ABUS(0 to 31),
+      LMB_AddrStrobe => ilmb_sl_0_ADDRSTROBE,
+      LMB_BE(0 to 3) => ilmb_sl_0_BE(0 to 3),
       LMB_Clk => Clk2,
-      LMB_ReadStrobe => ilmb_sl_1_READSTROBE,
+      LMB_ReadStrobe => ilmb_sl_0_READSTROBE,
       LMB_Rst => LMB_Rst2(0),
-      LMB_WriteDBus(0 to 31) => ilmb_sl_1_WRITEDBUS(0 to 31),
-      LMB_WriteStrobe => ilmb_sl_1_WRITESTROBE,
+      LMB_WriteDBus(0 to 31) => ilmb_sl_0_WRITEDBUS(0 to 31),
+      LMB_WriteStrobe => ilmb_sl_0_WRITESTROBE,
       Sl_CE => ilmb_sl_1_CE,
       Sl_DBus(0 to 31) => ilmb_sl_1_READDBUS(0 to 31),
       Sl_Ready => ilmb_sl_1_READY,

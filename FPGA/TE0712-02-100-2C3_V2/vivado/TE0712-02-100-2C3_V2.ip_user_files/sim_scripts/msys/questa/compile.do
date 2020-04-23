@@ -498,7 +498,6 @@ vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sou
 vcom -work xil_defaultlib -64 -93 \
 "../../../bd/msys/ip/msys_c_counter_binary_0_1/sim/msys_c_counter_binary_0_1.vhd" \
 "../../../bd/msys/ip/msys_axi_pwm_gpio_0_0/sim/msys_axi_pwm_gpio_0_0.vhd" \
-"../../../bd/msys/sim/msys.vhd" \
 "../../../bd/msys/ip/msys_axi_pwm_gpio_0_1/sim/msys_axi_pwm_gpio_0_1.vhd" \
 "../../../bd/msys/ip/msys_axi_quad_spi_1_0/sim/msys_axi_quad_spi_1_0.vhd" \
 "../../../bd/msys/ip/msys_axi_ROTENC_gpio_0_0/sim/msys_axi_ROTENC_gpio_0_0.vhd" \
@@ -517,6 +516,37 @@ vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sou
 "../../../bd/msys/ip/msys_selectio_wiz_0_1/msys_selectio_wiz_0_1.v" \
 "../../../bd/msys/ip/msys_xlconstant_0_1/sim/msys_xlconstant_0_1.v" \
 "../../../bd/msys/ip/msys_xlconstant_0b00_0/sim/msys_xlconstant_0b00_0.v" \
+"../../../bd/msys/ip/msys_xlslice_0_4/sim/msys_xlslice_0_4.v" \
+"../../../bd/msys/ip/msys_TRX_rx_xlslice_15to15_0/sim/msys_TRX_rx_xlslice_15to15_0.v" \
+"../../../bd/msys/ip/msys_TRX_rx_xlslice_15to16_0/sim/msys_TRX_rx_xlslice_15to16_0.v" \
+"../../../bd/msys/ip/msys_TRX_rx_xlslice_13to13_0/sim/msys_TRX_rx_xlslice_13to13_0.v" \
+"../../../bd/msys/ip/msys_TRX_rx_xlslice_13to13_1/sim/msys_TRX_rx_xlslice_13to13_1.v" \
+"../../../bd/msys/ip/msys_TRX_rx_xlslice_13to13_2/sim/msys_TRX_rx_xlslice_13to13_2.v" \
+"../../../bd/msys/ip/msys_TRX_rx_xlslice_10to10_0/sim/msys_TRX_rx_xlslice_10to10_0.v" \
+"../../../bd/msys/ip/msys_TRX_rx_xlslice_10to10_1/sim/msys_TRX_rx_xlslice_10to10_1.v" \
+"../../../bd/msys/ip/msys_TRX_rx_xlslice_10to10_2/sim/msys_TRX_rx_xlslice_10to10_2.v" \
+"../../../bd/msys/ip/msys_TRX_rx_xlslice_10to10_3/sim/msys_TRX_rx_xlslice_10to10_3.v" \
+"../../../bd/msys/ip/msys_TRX_rx_xlslice_10to10_4/sim/msys_TRX_rx_xlslice_10to10_4.v" \
+"../../../bd/msys/ip/msys_TRX_rx_xlslice_10to10_5/sim/msys_TRX_rx_xlslice_10to10_5.v" \
+"../../../bd/msys/ip/msys_TRX_rx_xlslice_10to10_6/sim/msys_TRX_rx_xlslice_10to10_6.v" \
+"../../../bd/msys/ip/msys_TRX_rx_xlslice_10to10_7/sim/msys_TRX_rx_xlslice_10to10_7.v" \
+"../../../bd/msys/ip/msys_TRX_rx_xlslice_10to10_8/sim/msys_TRX_rx_xlslice_10to10_8.v" \
+"../../../bd/msys/ip/msys_TRX_rx_xlslice_10to10_9/sim/msys_TRX_rx_xlslice_10to10_9.v" \
+"../../../bd/msys/ip/msys_fifo_generator_0_0/sim/msys_fifo_generator_0_0.v" \
+"../../../bd/msys/ip/msys_TRX_rx09_fifo_generator_0_0/sim/msys_TRX_rx09_fifo_generator_0_0.v" \
+"../../../bd/msys/ip/msys_xlconstant_0b00_1/sim/msys_xlconstant_0b00_1.v" \
+"../../../bd/msys/ip/msys_xlconcat_1_3/sim/msys_xlconcat_1_3.v" \
+"../../../bd/msys/ip/msys_TRX_rx09_xlconcat_0_0/sim/msys_TRX_rx09_xlconcat_0_0.v" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/msys/ip/msys_c_counter_binary_0_2/sim/msys_c_counter_binary_0_2.vhd" \
+
+vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/4fba" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
+"../../../bd/msys/ip/msys_xlslice_0_5/sim/msys_xlslice_0_5.v" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/msys/ip/msys_proc_sys_reset_0_1/sim/msys_proc_sys_reset_0_1.vhd" \
+"../../../bd/msys/sim/msys.vhd" \
 
 vlog -work axi_clock_converter_v2_1_19 -64 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/4fba" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/9e81/hdl/axi_clock_converter_v2_1_vl_rfs.v" \

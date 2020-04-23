@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
 // Date        : Tue Apr 21 20:17:28 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_labtools_fmeter_0_0/msys_labtools_fmeter_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top msys_labtools_fmeter_0_0 -prefix
+//               msys_labtools_fmeter_0_0_ msys_labtools_fmeter_0_0_sim_netlist.v
 // Design      : msys_labtools_fmeter_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,47 +12,6 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "msys_labtools_fmeter_0_0,labtools_fmeter,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "labtools_fmeter,Vivado 2019.2.1" *) 
-(* NotValidForBitStream *)
-module msys_labtools_fmeter_0_0
-   (refclk,
-    fin,
-    F0,
-    F1,
-    F2,
-    F3,
-    F4,
-    update);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 refclk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME refclk, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN msys_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) input refclk;
-  input [4:0]fin;
-  output [31:0]F0;
-  output [31:0]F1;
-  output [31:0]F2;
-  output [31:0]F3;
-  output [31:0]F4;
-  output update;
-
-  wire [31:0]F0;
-  wire [31:0]F1;
-  wire [31:0]F2;
-  wire [31:0]F3;
-  wire [31:0]F4;
-  wire [4:0]fin;
-  wire refclk;
-  wire update;
-
-  msys_labtools_fmeter_0_0_labtools_fmeter U0
-       (.F0(F0),
-        .F1(F1),
-        .F2(F2),
-        .F3(F3),
-        .F4(F4),
-        .fin(fin),
-        .refclk(refclk),
-        .update(update));
-endmodule
-
-(* ORIG_REF_NAME = "labtools_fmeter" *) 
 module msys_labtools_fmeter_0_0_labtools_fmeter
    (F4,
     F3,
@@ -1088,7 +1047,46 @@ module msys_labtools_fmeter_0_0_labtools_fmeter
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "unimacro_COUNTER_TC_MACRO" *) 
+(* CHECK_LICENSE_TYPE = "msys_labtools_fmeter_0_0,labtools_fmeter,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "labtools_fmeter,Vivado 2019.2.1" *) 
+(* NotValidForBitStream *)
+module msys_labtools_fmeter_0_0
+   (refclk,
+    fin,
+    F0,
+    F1,
+    F2,
+    F3,
+    F4,
+    update);
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 refclk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME refclk, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN msys_mig_7series_0_0_ui_clk, INSERT_VIP 0" *) input refclk;
+  input [4:0]fin;
+  output [31:0]F0;
+  output [31:0]F1;
+  output [31:0]F2;
+  output [31:0]F3;
+  output [31:0]F4;
+  output update;
+
+  wire [31:0]F0;
+  wire [31:0]F1;
+  wire [31:0]F2;
+  wire [31:0]F3;
+  wire [31:0]F4;
+  wire [4:0]fin;
+  wire refclk;
+  wire update;
+
+  msys_labtools_fmeter_0_0_labtools_fmeter U0
+       (.F0(F0),
+        .F1(F1),
+        .F2(F2),
+        .F3(F3),
+        .F4(F4),
+        .fin(fin),
+        .refclk(refclk),
+        .update(update));
+endmodule
+
 module msys_labtools_fmeter_0_0_unimacro_COUNTER_TC_MACRO
    (update,
     F,

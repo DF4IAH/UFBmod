@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
 -- Date        : Mon Apr 20 10:51:54 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_axi_pwm_gpio_0_1/msys_axi_pwm_gpio_0_1_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_axi_pwm_gpio_0_1 -prefix
+--               msys_axi_pwm_gpio_0_1_ msys_axi_pwm_gpio_0_1_sim_netlist.vhdl
 -- Design      : msys_axi_pwm_gpio_0_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -43,8 +43,6 @@ entity msys_axi_pwm_gpio_0_1_address_decoder is
     s_axi_wready : in STD_LOGIC;
     reg1 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_pwm_gpio_0_1_address_decoder : entity is "address_decoder";
 end msys_axi_pwm_gpio_0_1_address_decoder;
 
 architecture STRUCTURE of msys_axi_pwm_gpio_0_1_address_decoder is
@@ -373,8 +371,6 @@ entity msys_axi_pwm_gpio_0_1_cdc_sync is
     gpio_io_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_axi_aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_pwm_gpio_0_1_cdc_sync : entity is "cdc_sync";
 end msys_axi_pwm_gpio_0_1_cdc_sync;
 
 architecture STRUCTURE of msys_axi_pwm_gpio_0_1_cdc_sync is
@@ -467,8 +463,6 @@ entity msys_axi_pwm_gpio_0_1_GPIO_Core is
     bus2ip_cs : in STD_LOGIC;
     gpio_io_i : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_pwm_gpio_0_1_GPIO_Core : entity is "GPIO_Core";
 end msys_axi_pwm_gpio_0_1_GPIO_Core;
 
 architecture STRUCTURE of msys_axi_pwm_gpio_0_1_GPIO_Core is
@@ -619,8 +613,6 @@ entity msys_axi_pwm_gpio_0_1_slave_attachment is
     s_axi_araddr : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_pwm_gpio_0_1_slave_attachment : entity is "slave_attachment";
 end msys_axi_pwm_gpio_0_1_slave_attachment;
 
 architecture STRUCTURE of msys_axi_pwm_gpio_0_1_slave_attachment is
@@ -1243,8 +1235,6 @@ entity msys_axi_pwm_gpio_0_1_axi_lite_ipif is
     s_axi_araddr : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_pwm_gpio_0_1_axi_lite_ipif : entity is "axi_lite_ipif";
 end msys_axi_pwm_gpio_0_1_axi_lite_ipif;
 
 architecture STRUCTURE of msys_axi_pwm_gpio_0_1_axi_lite_ipif is
@@ -1349,8 +1339,6 @@ entity msys_axi_pwm_gpio_0_1_axi_gpio is
   attribute C_TRI_DEFAULT of msys_axi_pwm_gpio_0_1_axi_gpio : entity is 0;
   attribute C_TRI_DEFAULT_2 : integer;
   attribute C_TRI_DEFAULT_2 of msys_axi_pwm_gpio_0_1_axi_gpio : entity is 65535;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_axi_pwm_gpio_0_1_axi_gpio : entity is "axi_gpio";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of msys_axi_pwm_gpio_0_1_axi_gpio : entity is "yes";
   attribute ip_group : string;

@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
 -- Date        : Wed Apr 22 23:43:50 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_selectio_wiz_0_1/msys_selectio_wiz_0_1_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_selectio_wiz_0_1 -prefix
+--               msys_selectio_wiz_0_1_ msys_selectio_wiz_0_1_sim_netlist.vhdl
 -- Design      : msys_selectio_wiz_0_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -35,8 +35,6 @@ entity msys_selectio_wiz_0_1_msys_selectio_wiz_0_1_selectio_wiz is
   );
   attribute DEV_W : integer;
   attribute DEV_W of msys_selectio_wiz_0_1_msys_selectio_wiz_0_1_selectio_wiz : entity is 16;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_selectio_wiz_0_1_msys_selectio_wiz_0_1_selectio_wiz : entity is "msys_selectio_wiz_0_1_selectio_wiz";
   attribute SYS_W : integer;
   attribute SYS_W of msys_selectio_wiz_0_1_msys_selectio_wiz_0_1_selectio_wiz : entity is 2;
   attribute num_serial_bits : integer;
