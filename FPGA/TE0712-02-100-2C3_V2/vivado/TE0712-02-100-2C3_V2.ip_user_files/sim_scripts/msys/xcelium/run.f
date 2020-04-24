@@ -417,7 +417,6 @@
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_selectio_wiz_0_1/msys_selectio_wiz_0_1_selectio_wiz.v" \
   "../../../bd/msys/ip/msys_selectio_wiz_0_1/msys_selectio_wiz_0_1.v" \
-  "../../../bd/msys/ip/msys_xlconstant_0_1/sim/msys_xlconstant_0_1.v" \
   "../../../bd/msys/ip/msys_xlconstant_0b00_0/sim/msys_xlconstant_0b00_0.v" \
   "../../../bd/msys/ip/msys_xlslice_0_4/sim/msys_xlslice_0_4.v" \
   "../../../bd/msys/ip/msys_TRX_rx_xlslice_15to15_0/sim/msys_TRX_rx_xlslice_15to15_0.v" \
@@ -450,6 +449,37 @@
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_proc_sys_reset_0_1/sim/msys_proc_sys_reset_0_1.vhd" \
   "../../../bd/msys/ip/msys_util_ds_buf_3_0/sim/msys_util_ds_buf_3_0.vhd" \
+  "../../../bd/msys/ip/msys_CLK0_util_ds_buf_0_0/sim/msys_CLK0_util_ds_buf_0_0.vhd" \
+  "../../../bd/msys/ip/msys_c_counter_binary_0_3/sim/msys_c_counter_binary_0_3.vhd" \
+  "../../../bd/msys/ip/msys_TRX_rx09_c_counter_binary_0_0/sim/msys_TRX_rx09_c_counter_binary_0_0.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xlconcat_0_1/sim/msys_xlconcat_0_1.v" \
+  "../../../bd/msys/ip/msys_fifo_generator_0_1/sim/msys_fifo_generator_0_1.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_6/sim/msys_xlslice_0_6.v" \
+  "../../../bd/msys/ip/msys_TRX_rx_xlslice_0to0_0/sim/msys_TRX_rx_xlslice_0to0_0.v" \
+  "../../../bd/msys/ip/msys_util_reduced_logic_0_2/sim/msys_util_reduced_logic_0_2.v" \
+  "../../../bd/msys/ip/msys_TRX_rx09_markers_util_reduced_logic_0_0/sim/msys_TRX_rx09_markers_util_reduced_logic_0_0.v" \
+  "../../../bd/msys/ip/msys_TRX_rx_xlconcat_0_0/sim/msys_TRX_rx_xlconcat_0_0.v" \
+  "../../../bd/msys/ip/msys_TRX_rx_bitslip_xlconcat_0_0/sim/msys_TRX_rx_bitslip_xlconcat_0_0.v" \
+  "../../../bd/msys/ip/msys_TRX_rx09_markers_xlconcat_0_0/sim/msys_TRX_rx09_markers_xlconcat_0_0.v" \
+  "../../../bd/msys/ip/msys_TRX_rx_iorst_xlslice_6to6_0/sim/msys_TRX_rx_iorst_xlslice_6to6_0.v" \
+  "../../../bd/msys/ip/msys_TRX_rx09_markers_xlslice_31to31_0/sim/msys_TRX_rx09_markers_xlslice_31to31_0.v" \
+  "../../../bd/msys/ip/msys_TRX_rx09_markers_xlslice_30to30_0/sim/msys_TRX_rx09_markers_xlslice_30to30_0.v" \
+  "../../../bd/msys/ip/msys_TRX_rx09_markers_xlslice_30to30_1/sim/msys_TRX_rx09_markers_xlslice_30to30_1.v" \
+-endlib
+-makelib xcelium_lib/util_vector_logic_v2_0_1 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/2137/hdl/util_vector_logic_v2_0_vl_rfs.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_util_vector_logic_0_0/sim/msys_util_vector_logic_0_0.v" \
+  "../../../bd/msys/ip/msys_TRX_rx09_markers_util_vector_logic_30_0/sim/msys_TRX_rx09_markers_util_vector_logic_30_0.v" \
+  "../../../bd/msys/ip/msys_TRX_rx09_markers_xlslice_31to31_1/sim/msys_TRX_rx09_markers_xlslice_31to31_1.v" \
+  "../../../bd/msys/ip/msys_TRX_rx24_markers_xlslice_14to14_0/sim/msys_TRX_rx24_markers_xlslice_14to14_0.v" \
+  "../../../bd/msys/ip/msys_TRX_rx24_markers_xlslice_14to14_1/sim/msys_TRX_rx24_markers_xlslice_14to14_1.v" \
+  "../../../bd/msys/ip/msys_TRX_rx24_markers_xlslice_14to14_2/sim/msys_TRX_rx24_markers_xlslice_14to14_2.v" \
+  "../../../bd/msys/ip/msys_TRX_rx09_markers_util_vector_logic_30_1/sim/msys_TRX_rx09_markers_util_vector_logic_30_1.v" \
+  "../../../bd/msys/ip/msys_TRX_rx24_markers_util_vector_logic_15_0/sim/msys_TRX_rx24_markers_util_vector_logic_15_0.v" \
 -endlib
 -makelib xcelium_lib/axi_clock_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/9e81/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
@@ -459,7 +489,6 @@
   "../../../bd/msys/ip/msys_auto_cc_1/sim/msys_auto_cc_1.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/msys/ip/msys_CLK0_util_ds_buf_0_0/sim/msys_CLK0_util_ds_buf_0_0.vhd" \
   "../../../bd/msys/sim/msys.vhd" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
