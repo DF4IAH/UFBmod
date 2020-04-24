@@ -108,6 +108,8 @@ set_property PACKAGE_PIN W14 [get_ports TRX_tx_clk_clk_p]
 
 
 
+set_property PACKAGE_PIN AA15 [get_ports {TRX_tx_data_p[1]}]
+
 set_property OFFCHIP_TERM NONE [get_ports BOARD_IIC_scl_io]
 set_property OFFCHIP_TERM NONE [get_ports BOARD_IIC_sda_io]
 set_property OFFCHIP_TERM NONE [get_ports DDR3_init_calib_complete]
@@ -138,7 +140,7 @@ set_property OFFCHIP_TERM NONE [get_ports UART0EXT_DSRn[0]]
 set_property OFFCHIP_TERM NONE [get_ports UART0EXT_RIn[0]]
 set_property OFFCHIP_TERM NONE [get_ports UART0_rst_n[0]]
 set_property OFFCHIP_TERM NONE [get_ports onewire_EUI48_tri_io[0]]
-set_property PACKAGE_PIN AA15 [get_ports {TRX_tx_data_p[1]}]
+create_clock -period 40.000 -name RMII_rx_clk [get_pins msys_i/mii_to_rmii_0/U0/rmii2mac_rx_clk_bi_reg/Q]
 set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
 set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
 set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]

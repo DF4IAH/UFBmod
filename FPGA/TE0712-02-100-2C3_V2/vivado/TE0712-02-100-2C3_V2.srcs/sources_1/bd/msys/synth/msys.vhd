@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Thu Apr 23 21:51:04 2020
+--Date        : Fri Apr 24 10:02:48 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -5833,7 +5833,7 @@ entity msys is
     sys_diff_clock_clk_p : in STD_LOGIC
   );
   attribute core_generation_info : string;
-  attribute core_generation_info of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=121,numReposBlks=101,numNonXlnxBlks=3,numHierBlks=20,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
+  attribute core_generation_info of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=123,numReposBlks=103,numNonXlnxBlks=3,numHierBlks=20,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
   attribute hw_handoff : string;
   attribute hw_handoff of msys : entity is "msys.hwdef";
 end msys;
@@ -7110,9 +7110,22 @@ architecture STRUCTURE of msys is
     peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_proc_sys_reset_0_1;
+  component msys_util_ds_buf_3_0 is
+  port (
+    BUFG_I : in STD_LOGIC_VECTOR ( 0 to 0 );
+    BUFG_O : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_util_ds_buf_3_0;
+  component msys_CLK0_util_ds_buf_0_0 is
+  port (
+    BUFG_I : in STD_LOGIC_VECTOR ( 0 to 0 );
+    BUFG_O : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_CLK0_util_ds_buf_0_0;
   signal ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal BOARD_ROTENC_PUSH_1 : STD_LOGIC;
   signal BUFG_I_0_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal CLK0_util_ds_buf_1_BUFG_O : STD_LOGIC_VECTOR ( 0 to 0 );
   signal CLK_IN_D_0_1_CLK_N : STD_LOGIC_VECTOR ( 0 to 0 );
   signal CLK_IN_D_0_1_CLK_P : STD_LOGIC_VECTOR ( 0 to 0 );
   signal ETH0_LINK_LED_1 : STD_LOGIC;
@@ -7298,6 +7311,7 @@ architecture STRUCTURE of msys is
   signal axi_uartlite_0_UART_RxD : STD_LOGIC;
   signal axi_uartlite_0_UART_TxD : STD_LOGIC;
   signal axi_uartlite_0_interrupt : STD_LOGIC;
+  signal cfgmclk_util_ds_buf_0_BUFG_O : STD_LOGIC_VECTOR ( 0 to 0 );
   signal data_in_from_pins_n_0_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal data_in_from_pins_p_0_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal diff_clk_in_0_1_CLK_N : STD_LOGIC;
@@ -7311,7 +7325,7 @@ architecture STRUCTURE of msys is
   signal mdm_1_debug_sys_rst : STD_LOGIC;
   signal mgt_clk0_1_CLK_N : STD_LOGIC;
   signal mgt_clk0_1_CLK_P : STD_LOGIC;
-  signal microblaze_0_Clk : STD_LOGIC;
+  signal microblaze_0_Clk_100MHz : STD_LOGIC;
   signal microblaze_0_M_AXI_DC_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal microblaze_0_M_AXI_DC_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal microblaze_0_M_AXI_DC_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -7677,8 +7691,9 @@ architecture STRUCTURE of msys is
   signal mig_7series_0_DDR3_WE_N : STD_LOGIC;
   signal mig_7series_0_init_calib_complete : STD_LOGIC;
   signal mig_7series_0_mmcm_locked : STD_LOGIC;
-  signal mig_7series_0_ui_addn_clk_0 : STD_LOGIC;
-  signal mig_7series_0_ui_addn_clk_2 : STD_LOGIC;
+  signal mig_7series_0_ui_addn_clk_0_200MHz : STD_LOGIC;
+  signal mig_7series_0_ui_addn_clk_1_100MHz : STD_LOGIC;
+  signal mig_7series_0_ui_addn_clk_2_50MHz : STD_LOGIC;
   signal mig_7series_0_ui_clk_sync_rst : STD_LOGIC;
   signal mii_to_rmii_0_RMII_PHY_M_CRS_DV : STD_LOGIC;
   signal mii_to_rmii_0_RMII_PHY_M_RXD : STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -7748,7 +7763,6 @@ architecture STRUCTURE of msys is
   signal NLW_axi_timer_0_generateout0_UNCONNECTED : STD_LOGIC;
   signal NLW_axi_timer_0_generateout1_UNCONNECTED : STD_LOGIC;
   signal NLW_axi_timer_0_pwm0_UNCONNECTED : STD_LOGIC;
-  signal NLW_mig_7series_0_ui_addn_clk_1_UNCONNECTED : STD_LOGIC;
   signal NLW_mii_y_adapater_0_m_mii_rst_n_UNCONNECTED : STD_LOGIC;
   signal NLW_proc_sys_reset_0_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_proc_sys_reset_0_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -7979,15 +7993,26 @@ begin
   reset_1 <= reset;
   rotenc_dec_cnt_en_1 <= rotenc_dec_cnt_en;
   rotenc_dec_cnt_up_dwn_1 <= rotenc_dec_cnt_up_dwn;
-  rotenc_decoder_clk <= microblaze_0_Clk;
+  rotenc_decoder_clk <= microblaze_0_Clk_100MHz;
   rotenc_decoder_reset(0) <= rst_mig_7series_0_100M_peripheral_aresetn(0);
   sys_diff_clock_1_CLK_N <= sys_diff_clock_clk_n;
   sys_diff_clock_1_CLK_P <= sys_diff_clock_clk_p;
 BOARD_clk_wiz_0: component msys_clk_wiz_0_0
      port map (
-      clk_in1 => microblaze_0_Clk,
+      clk_in1 => mig_7series_0_ui_addn_clk_1_100MHz,
       clk_out1 => UART0_clk_wiz_0_clk_out1,
       reset => mig_7series_0_ui_clk_sync_rst
+    );
+CLK0_util_ds_buf_0: component msys_util_ds_buf_2_0
+     port map (
+      IBUF_DS_N(0) => CLK_IN_D_0_1_CLK_N(0),
+      IBUF_DS_P(0) => CLK_IN_D_0_1_CLK_P(0),
+      IBUF_OUT(0) => util_ds_buf_2_IBUF_OUT(0)
+    );
+CLK0_util_ds_buf_1: component msys_CLK0_util_ds_buf_0_0
+     port map (
+      BUFG_I(0) => util_ds_buf_2_IBUF_OUT(0),
+      BUFG_O(0) => CLK0_util_ds_buf_1_BUFG_O(0)
     );
 ETH0_selectio_wiz_0: component msys_selectio_wiz_0_0
      port map (
@@ -8022,7 +8047,7 @@ LCD_BL_compare_0: component msys_RGB_blue_compare_0_0
      port map (
       A(7 downto 0) => PWM_ctr_xlslice_0_Dout(7 downto 0),
       B(7 downto 0) => PWM_gpio_xlslice_31to24_0_Dout(7 downto 0),
-      CLK => microblaze_0_Clk,
+      CLK => microblaze_0_Clk_100MHz,
       S(8 downto 0) => LCD_BL_compare_0_S(8 downto 0)
     );
 LCD_BL_xlslice_0: component msys_RGB_red_xlslice_0_2
@@ -8050,7 +8075,7 @@ PWM_GPIO_xlslice_1: component msys_RGB_red_xlslice_0_3
     );
 PWM_counter_binary_0: component msys_c_counter_binary_0_0
      port map (
-      CLK => microblaze_0_Clk,
+      CLK => microblaze_0_Clk_100MHz,
       Q(20 downto 0) => PWM_counter_binary_0_Q(20 downto 0)
     );
 PWM_ctr_xlslice_0: component msys_LCD_BL_xlslice_0_0
@@ -8082,7 +8107,7 @@ RGB_blue_compare_0: component msys_RGB_green_c_addsub_0_0
      port map (
       A(7 downto 0) => PWM_ctr_xlslice_0_Dout(7 downto 0),
       B(7 downto 0) => PWM_gpio_xlslice_21to16_0_Dout(7 downto 0),
-      CLK => microblaze_0_Clk,
+      CLK => microblaze_0_Clk_100MHz,
       S(8 downto 0) => RGB_blue_compare_0_S(8 downto 0)
     );
 RGB_blue_xlslice_0: component msys_RGB_red_xlslice_0_1
@@ -8094,7 +8119,7 @@ RGB_green_compare_0: component msys_RGB_red_c_addsub_0_0
      port map (
       A(7 downto 0) => PWM_ctr_xlslice_0_Dout(7 downto 0),
       B(7 downto 0) => PWM_gpio_xlslice_15to8_0_Dout(7 downto 0),
-      CLK => microblaze_0_Clk,
+      CLK => microblaze_0_Clk_100MHz,
       S(8 downto 0) => RGB_green_compare_0_S(8 downto 0)
     );
 RGB_green_xlslice_0: component msys_RGB_red_xlslice_0_0
@@ -8106,7 +8131,7 @@ RGB_red_compare_0: component msys_c_addsub_0_0
      port map (
       A(7 downto 0) => PWM_ctr_xlslice_0_Dout(7 downto 0),
       B(7 downto 0) => PWM_gpio_xlslice_7to0_0_Dout(7 downto 0),
-      CLK => microblaze_0_Clk,
+      CLK => microblaze_0_Clk_100MHz,
       S(8 downto 0) => RGB_red_compare_0_S(8 downto 0)
     );
 RGB_red_xlslice_0: component msys_xlslice_0_2
@@ -8117,7 +8142,7 @@ RGB_red_xlslice_0: component msys_xlslice_0_2
 ROTENC_counter_32bit_0: component msys_c_counter_binary_0_1
      port map (
       CE => rotenc_dec_cnt_en_1,
-      CLK => microblaze_0_Clk,
+      CLK => microblaze_0_Clk_100MHz,
       Q(31 downto 0) => rotenc_counter_32bit_0_Q(31 downto 0),
       SINIT => rst_mig_7series_0_100M_peripheral_reset(0),
       UP => rotenc_dec_cnt_up_dwn_1
@@ -8128,7 +8153,7 @@ SC0712_0: component msys_SC0712_0_0
       GPIO1_O(31 downto 0) => microblaze_mcs_0_GPIO1_TRI_O(31 downto 0),
       ext_scl_o => SC0712_0_ext_scl_o,
       ext_sda => PLL_I2C_ext_sda,
-      mcs_clk_in => axi_quad_spi_0_cfgmclk,
+      mcs_clk_in => cfgmclk_util_ds_buf_0_BUFG_O(0),
       mcs_clk_out => SC0712_0_mcs_clk_out,
       mon_GPIO1_I(31 downto 0) => SC0712_0_mon_GPIO1_I(31 downto 0),
       mon_GPIO1_O(31 downto 0) => SC0712_0_mon_GPIO1_O(31 downto 0),
@@ -8155,7 +8180,7 @@ TRX_PLL_util_ds_buf_0: component msys_util_ds_buf_0_2
     );
 TRX_axi_quad_spi_0: component msys_axi_quad_spi_1_0
      port map (
-      ext_spi_clk => microblaze_0_Clk,
+      ext_spi_clk => microblaze_0_Clk_100MHz,
       io0_i => TRX_axi_quad_spi_0_SPI_0_IO0_I,
       io0_o => TRX_axi_quad_spi_0_SPI_0_IO0_O,
       io0_t => TRX_axi_quad_spi_0_SPI_0_IO0_T,
@@ -8163,7 +8188,7 @@ TRX_axi_quad_spi_0: component msys_axi_quad_spi_1_0
       io1_o => TRX_axi_quad_spi_0_SPI_0_IO1_O,
       io1_t => TRX_axi_quad_spi_0_SPI_0_IO1_T,
       ip2intc_irpt => TRX_axi_quad_spi_1_ip2intc_irpt,
-      s_axi_aclk => microblaze_0_Clk,
+      s_axi_aclk => microblaze_0_Clk_100MHz,
       s_axi_araddr(6 downto 0) => microblaze_0_axi_periph_M11_AXI_ARADDR(6 downto 0),
       s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn(0),
       s_axi_arready => microblaze_0_axi_periph_M11_AXI_ARREADY,
@@ -8208,7 +8233,7 @@ TRX_rx09_fifo_generator_0: component msys_TRX_rx09_fifo_generator_0_0
       dout(31 downto 0) => TRX_rx09_fifo_generator_0_dout(31 downto 0),
       empty => NLW_TRX_rx09_fifo_generator_0_empty_UNCONNECTED,
       full => NLW_TRX_rx09_fifo_generator_0_full_UNCONNECTED,
-      rd_clk => microblaze_0_Clk,
+      rd_clk => microblaze_0_Clk_100MHz,
       rd_data_count(8 downto 0) => TRX_rx09_fifo_generator_0_rd_data_count(8 downto 0),
       rd_en => xlconstant_1_dout1(0),
       rd_rst_busy => NLW_TRX_rx09_fifo_generator_0_rd_rst_busy_UNCONNECTED,
@@ -8237,7 +8262,7 @@ TRX_rx24_fifo_generator_0: component msys_fifo_generator_0_0
       dout(31 downto 0) => TRX_rx24_fifo_generator_0_dout(31 downto 0),
       empty => NLW_TRX_rx24_fifo_generator_0_empty_UNCONNECTED,
       full => NLW_TRX_rx24_fifo_generator_0_full_UNCONNECTED,
-      rd_clk => microblaze_0_Clk,
+      rd_clk => microblaze_0_Clk_100MHz,
       rd_en => xlconstant_1_dout1(0),
       rd_rst_busy => NLW_TRX_rx24_fifo_generator_0_rd_rst_busy_UNCONNECTED,
       rst => TRX_clk_sys_reset_0_peripheral_reset(0),
@@ -8286,7 +8311,7 @@ TRX_rx_selectio_wiz_0: component msys_selectio_wiz_0_1
       data_out_to_pins_p(1 downto 0) => TRX_rx_selectio_wiz_0_data_out_to_pins_p(1 downto 0),
       delay_locked => NLW_TRX_rx_selectio_wiz_0_delay_locked_UNCONNECTED,
       io_reset => TRX_rx_iorst_xlslice_6to6_Dout(0),
-      ref_clock => mig_7series_0_ui_addn_clk_0
+      ref_clock => mig_7series_0_ui_addn_clk_0_200MHz
     );
 TRX_rx_xlslice_00to00: component msys_TRX_rx_xlslice_10to10_9
      port map (
@@ -8408,7 +8433,7 @@ axi_BOARD_iic_0: component msys_axi_iic_1_0
      port map (
       gpo(0) => NLW_axi_BOARD_iic_0_gpo_UNCONNECTED(0),
       iic2intc_irpt => axi_iic_1_iic2intc_irpt,
-      s_axi_aclk => microblaze_0_Clk,
+      s_axi_aclk => microblaze_0_Clk_100MHz,
       s_axi_araddr(8 downto 0) => microblaze_0_axi_periph_M07_AXI_ARADDR(8 downto 0),
       s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn(0),
       s_axi_arready => microblaze_0_axi_periph_M07_AXI_ARREADY,
@@ -8439,7 +8464,7 @@ axi_ONEWIRE_gpio_0: component msys_axi_pwm_gpio_0_1
       gpio_io_i(0) => axi_onewire_gpio_0_GPIO_TRI_I(0),
       gpio_io_o(0) => axi_onewire_gpio_0_GPIO_TRI_O(0),
       gpio_io_t(0) => axi_onewire_gpio_0_GPIO_TRI_T(0),
-      s_axi_aclk => microblaze_0_Clk,
+      s_axi_aclk => microblaze_0_Clk_100MHz,
       s_axi_araddr(8 downto 0) => microblaze_0_axi_periph_M10_AXI_ARADDR(8 downto 0),
       s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn(0),
       s_axi_arready => microblaze_0_axi_periph_M10_AXI_ARREADY,
@@ -8466,7 +8491,7 @@ axi_PWM_gpio_0: component msys_axi_uart0_gpio_0_0
       gpio2_io_t(31 downto 0) => NLW_axi_PWM_gpio_0_gpio2_io_t_UNCONNECTED(31 downto 0),
       gpio_io_o(31 downto 0) => axi_pwm_gpio_0_gpio_io_o(31 downto 0),
       ip2intc_irpt => axi_pwm_gpio_0_ip2intc_irpt,
-      s_axi_aclk => microblaze_0_Clk,
+      s_axi_aclk => microblaze_0_Clk_100MHz,
       s_axi_araddr(8 downto 0) => microblaze_0_axi_periph_M08_AXI_ARADDR(8 downto 0),
       s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn(0),
       s_axi_arready => microblaze_0_axi_periph_M08_AXI_ARREADY,
@@ -8491,7 +8516,7 @@ axi_ROTENC_gpio_0: component msys_axi_pwm_gpio_0_0
       gpio2_io_i(0) => BOARD_ROTENC_PUSH_1,
       gpio_io_i(31 downto 0) => rotenc_counter_32bit_0_Q(31 downto 0),
       ip2intc_irpt => axi_rotenc_gpio_0_ip2intc_irpt,
-      s_axi_aclk => microblaze_0_Clk,
+      s_axi_aclk => microblaze_0_Clk_100MHz,
       s_axi_araddr(8 downto 0) => microblaze_0_axi_periph_M09_AXI_ARADDR(8 downto 0),
       s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn(0),
       s_axi_arready => microblaze_0_axi_periph_M09_AXI_ARREADY,
@@ -8514,7 +8539,7 @@ axi_ROTENC_gpio_0: component msys_axi_pwm_gpio_0_0
 axi_TRX_gpio_0: component msys_axi_ROTENC_gpio_0_0
      port map (
       gpio_io_o(1 downto 0) => axi_TRX_gpio_0_gpio_io_o(1 downto 0),
-      s_axi_aclk => microblaze_0_Clk,
+      s_axi_aclk => microblaze_0_Clk_100MHz,
       s_axi_araddr(8 downto 0) => microblaze_0_axi_periph_M12_AXI_ARADDR(8 downto 0),
       s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn(0),
       s_axi_arready => microblaze_0_axi_periph_M12_AXI_ARREADY,
@@ -8539,7 +8564,7 @@ axi_UART0_gpio_0: component msys_axi_gpio_0_0
       gpio2_io_i(1 downto 0) => uart0_xlconcat_1_dout(1 downto 0),
       gpio_io_o(3 downto 0) => axi_uart0_gpio_0_gpio_io_o(3 downto 0),
       ip2intc_irpt => axi_gpio_0_ip2intc_irpt,
-      s_axi_aclk => microblaze_0_Clk,
+      s_axi_aclk => microblaze_0_Clk_100MHz,
       s_axi_araddr(8 downto 0) => microblaze_0_axi_periph_M06_AXI_ARADDR(8 downto 0),
       s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn(0),
       s_axi_arready => microblaze_0_axi_periph_M06_AXI_ARREADY,
@@ -8563,7 +8588,7 @@ axi_UART0_uartlite_0: component msys_axi_uartlite_0_0
      port map (
       interrupt => axi_uartlite_0_interrupt,
       rx => axi_uartlite_0_UART_RxD,
-      s_axi_aclk => microblaze_0_Clk,
+      s_axi_aclk => microblaze_0_Clk_100MHz,
       s_axi_araddr(3 downto 0) => microblaze_0_axi_periph_M02_AXI_ARADDR(3 downto 0),
       s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn(0),
       s_axi_arready => microblaze_0_axi_periph_M02_AXI_ARREADY,
@@ -8625,7 +8650,7 @@ axi_iic_0: component msys_axi_iic_0_0
      port map (
       gpo(0) => NLW_axi_iic_0_gpo_UNCONNECTED(0),
       iic2intc_irpt => axi_iic_0_iic2intc_irpt,
-      s_axi_aclk => microblaze_0_Clk,
+      s_axi_aclk => microblaze_0_Clk_100MHz,
       s_axi_araddr(8 downto 0) => microblaze_0_axi_periph_M04_AXI_ARADDR(8 downto 0),
       s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn(0),
       s_axi_arready => microblaze_0_axi_periph_M04_AXI_ARREADY,
@@ -8653,9 +8678,9 @@ axi_iic_0: component msys_axi_iic_0_0
     );
 axi_interconnect_0: entity work.msys_axi_interconnect_0_0
      port map (
-      ACLK => microblaze_0_Clk,
+      ACLK => microblaze_0_Clk_100MHz,
       ARESETN => ARESETN_1(0),
-      M00_ACLK => microblaze_0_Clk,
+      M00_ACLK => microblaze_0_Clk_100MHz,
       M00_ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
       M00_AXI_araddr(31 downto 0) => axi_interconnect_0_M00_AXI_ARADDR(31 downto 0),
       M00_AXI_arburst(1 downto 0) => axi_interconnect_0_M00_AXI_ARBURST(1 downto 0),
@@ -8694,7 +8719,7 @@ axi_interconnect_0: entity work.msys_axi_interconnect_0_0
       M00_AXI_wready => axi_interconnect_0_M00_AXI_WREADY,
       M00_AXI_wstrb(3 downto 0) => axi_interconnect_0_M00_AXI_WSTRB(3 downto 0),
       M00_AXI_wvalid => axi_interconnect_0_M00_AXI_WVALID,
-      S00_ACLK => microblaze_0_Clk,
+      S00_ACLK => microblaze_0_Clk_100MHz,
       S00_ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
       S00_AXI_araddr(31 downto 0) => microblaze_0_M_AXI_DC_ARADDR(31 downto 0),
       S00_AXI_arburst(1 downto 0) => microblaze_0_M_AXI_DC_ARBURST(1 downto 0),
@@ -8733,7 +8758,7 @@ axi_interconnect_0: entity work.msys_axi_interconnect_0_0
       S00_AXI_wready => microblaze_0_M_AXI_DC_WREADY,
       S00_AXI_wstrb(3 downto 0) => microblaze_0_M_AXI_DC_WSTRB(3 downto 0),
       S00_AXI_wvalid => microblaze_0_M_AXI_DC_WVALID,
-      S01_ACLK => microblaze_0_Clk,
+      S01_ACLK => microblaze_0_Clk_100MHz,
       S01_ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
       S01_AXI_araddr(31 downto 0) => microblaze_0_M_AXI_IC_ARADDR(31 downto 0),
       S01_AXI_arburst(1 downto 0) => microblaze_0_M_AXI_IC_ARBURST(1 downto 0),
@@ -8778,7 +8803,7 @@ axi_quad_spi_0: component msys_axi_quad_spi_0_0
       cfgclk => NLW_axi_quad_spi_0_cfgclk_UNCONNECTED,
       cfgmclk => axi_quad_spi_0_cfgmclk,
       eos => axi_quad_spi_0_eos,
-      ext_spi_clk => mig_7series_0_ui_addn_clk_2,
+      ext_spi_clk => mig_7series_0_ui_addn_clk_2_50MHz,
       io0_i => axi_quad_spi_0_SPI_0_IO0_I,
       io0_o => axi_quad_spi_0_SPI_0_IO0_O,
       io0_t => axi_quad_spi_0_SPI_0_IO0_T,
@@ -8793,7 +8818,7 @@ axi_quad_spi_0: component msys_axi_quad_spi_0_0
       io3_t => axi_quad_spi_0_SPI_0_IO3_T,
       ip2intc_irpt => axi_quad_spi_0_ip2intc_irpt,
       preq => NLW_axi_quad_spi_0_preq_UNCONNECTED,
-      s_axi_aclk => mig_7series_0_ui_addn_clk_2,
+      s_axi_aclk => mig_7series_0_ui_addn_clk_2_50MHz,
       s_axi_araddr(6 downto 0) => microblaze_0_axi_periph_M03_AXI_ARADDR(6 downto 0),
       s_axi_aresetn => rst_mig_7series_0_50M_peripheral_aresetn(0),
       s_axi_arready => microblaze_0_axi_periph_M03_AXI_ARREADY,
@@ -8825,7 +8850,7 @@ axi_timer_0: component msys_axi_timer_0_0
       generateout1 => NLW_axi_timer_0_generateout1_UNCONNECTED,
       interrupt => axi_timer_0_interrupt,
       pwm0 => NLW_axi_timer_0_pwm0_UNCONNECTED,
-      s_axi_aclk => microblaze_0_Clk,
+      s_axi_aclk => microblaze_0_Clk_100MHz,
       s_axi_araddr(4 downto 0) => microblaze_0_axi_periph_M01_AXI_ARADDR(4 downto 0),
       s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn(0),
       s_axi_arready => microblaze_0_axi_periph_M01_AXI_ARREADY,
@@ -8845,6 +8870,11 @@ axi_timer_0: component msys_axi_timer_0_0
       s_axi_wstrb(3 downto 0) => microblaze_0_axi_periph_M01_AXI_WSTRB(3 downto 0),
       s_axi_wvalid => microblaze_0_axi_periph_M01_AXI_WVALID(0)
     );
+cfgmclk_util_ds_buf_0: component msys_util_ds_buf_3_0
+     port map (
+      BUFG_I(0) => axi_quad_spi_0_cfgmclk,
+      BUFG_O(0) => cfgmclk_util_ds_buf_0_BUFG_O(0)
+    );
 labtools_fmeter_0: component msys_labtools_fmeter_0_0
      port map (
       F0(31 downto 0) => fm_mig_50mhz(31 downto 0),
@@ -8853,7 +8883,7 @@ labtools_fmeter_0: component msys_labtools_fmeter_0_0
       F3(31 downto 0) => lt_CLK0(31 downto 0),
       F4(31 downto 0) => labtools_fmeter_0_F4(31 downto 0),
       fin(4 downto 0) => xlconcat_0_dout(4 downto 0),
-      refclk => microblaze_0_Clk,
+      refclk => microblaze_0_Clk_100MHz,
       update => labtools_fmeter_0_update
     );
 mdm_1: component msys_mdm_1_0
@@ -8872,7 +8902,7 @@ mdm_1: component msys_mdm_1_0
 microblaze_0: component msys_microblaze_0_0
      port map (
       Byte_Enable(0 to 3) => microblaze_0_dlmb_1_BE(0 to 3),
-      Clk => microblaze_0_Clk,
+      Clk => microblaze_0_Clk_100MHz,
       DCE => microblaze_0_dlmb_1_CE,
       DReady => microblaze_0_dlmb_1_READY,
       DUE => microblaze_0_dlmb_1_UE,
@@ -9036,9 +9066,9 @@ microblaze_0_axi_intc: component msys_microblaze_0_axi_intc_0
       irq => microblaze_0_interrupt_INTERRUPT,
       processor_ack(1) => microblaze_0_interrupt_ACK(0),
       processor_ack(0) => microblaze_0_interrupt_ACK(1),
-      processor_clk => microblaze_0_Clk,
+      processor_clk => microblaze_0_Clk_100MHz,
       processor_rst => rst_mig_7series_0_100M_mb_reset,
-      s_axi_aclk => microblaze_0_Clk,
+      s_axi_aclk => microblaze_0_Clk_100MHz,
       s_axi_araddr(8 downto 0) => microblaze_0_intc_axi_ARADDR(8 downto 0),
       s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn(0),
       s_axi_arready => microblaze_0_intc_axi_ARREADY,
@@ -9060,9 +9090,9 @@ microblaze_0_axi_intc: component msys_microblaze_0_axi_intc_0
     );
 microblaze_0_axi_periph: entity work.msys_microblaze_0_axi_periph_0
      port map (
-      ACLK => microblaze_0_Clk,
+      ACLK => microblaze_0_Clk_100MHz,
       ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
-      M00_ACLK => microblaze_0_Clk,
+      M00_ACLK => microblaze_0_Clk_100MHz,
       M00_ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
       M00_AXI_araddr(31 downto 0) => microblaze_0_intc_axi_ARADDR(31 downto 0),
       M00_AXI_arready(0) => microblaze_0_intc_axi_ARREADY,
@@ -9081,7 +9111,7 @@ microblaze_0_axi_periph: entity work.msys_microblaze_0_axi_periph_0
       M00_AXI_wready(0) => microblaze_0_intc_axi_WREADY,
       M00_AXI_wstrb(3 downto 0) => microblaze_0_intc_axi_WSTRB(3 downto 0),
       M00_AXI_wvalid(0) => microblaze_0_intc_axi_WVALID(0),
-      M01_ACLK => microblaze_0_Clk,
+      M01_ACLK => microblaze_0_Clk_100MHz,
       M01_ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
       M01_AXI_araddr(31 downto 0) => microblaze_0_axi_periph_M01_AXI_ARADDR(31 downto 0),
       M01_AXI_arready(0) => microblaze_0_axi_periph_M01_AXI_ARREADY,
@@ -9100,7 +9130,7 @@ microblaze_0_axi_periph: entity work.msys_microblaze_0_axi_periph_0
       M01_AXI_wready(0) => microblaze_0_axi_periph_M01_AXI_WREADY,
       M01_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M01_AXI_WSTRB(3 downto 0),
       M01_AXI_wvalid(0) => microblaze_0_axi_periph_M01_AXI_WVALID(0),
-      M02_ACLK => microblaze_0_Clk,
+      M02_ACLK => microblaze_0_Clk_100MHz,
       M02_ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
       M02_AXI_araddr(31 downto 0) => microblaze_0_axi_periph_M02_AXI_ARADDR(31 downto 0),
       M02_AXI_arready(0) => microblaze_0_axi_periph_M02_AXI_ARREADY,
@@ -9119,7 +9149,7 @@ microblaze_0_axi_periph: entity work.msys_microblaze_0_axi_periph_0
       M02_AXI_wready(0) => microblaze_0_axi_periph_M02_AXI_WREADY,
       M02_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M02_AXI_WSTRB(3 downto 0),
       M02_AXI_wvalid(0) => microblaze_0_axi_periph_M02_AXI_WVALID(0),
-      M03_ACLK => mig_7series_0_ui_addn_clk_2,
+      M03_ACLK => mig_7series_0_ui_addn_clk_2_50MHz,
       M03_ARESETN => rst_mig_7series_0_50M_peripheral_aresetn(0),
       M03_AXI_araddr(6 downto 0) => microblaze_0_axi_periph_M03_AXI_ARADDR(6 downto 0),
       M03_AXI_arready => microblaze_0_axi_periph_M03_AXI_ARREADY,
@@ -9138,7 +9168,7 @@ microblaze_0_axi_periph: entity work.msys_microblaze_0_axi_periph_0
       M03_AXI_wready => microblaze_0_axi_periph_M03_AXI_WREADY,
       M03_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M03_AXI_WSTRB(3 downto 0),
       M03_AXI_wvalid => microblaze_0_axi_periph_M03_AXI_WVALID,
-      M04_ACLK => microblaze_0_Clk,
+      M04_ACLK => microblaze_0_Clk_100MHz,
       M04_ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
       M04_AXI_araddr(31 downto 0) => microblaze_0_axi_periph_M04_AXI_ARADDR(31 downto 0),
       M04_AXI_arready(0) => microblaze_0_axi_periph_M04_AXI_ARREADY,
@@ -9176,7 +9206,7 @@ microblaze_0_axi_periph: entity work.msys_microblaze_0_axi_periph_0
       M05_AXI_wready => microblaze_0_axi_periph_M05_AXI_WREADY,
       M05_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M05_AXI_WSTRB(3 downto 0),
       M05_AXI_wvalid => microblaze_0_axi_periph_M05_AXI_WVALID,
-      M06_ACLK => microblaze_0_Clk,
+      M06_ACLK => microblaze_0_Clk_100MHz,
       M06_ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
       M06_AXI_araddr(31 downto 0) => microblaze_0_axi_periph_M06_AXI_ARADDR(31 downto 0),
       M06_AXI_arready => microblaze_0_axi_periph_M06_AXI_ARREADY,
@@ -9195,7 +9225,7 @@ microblaze_0_axi_periph: entity work.msys_microblaze_0_axi_periph_0
       M06_AXI_wready => microblaze_0_axi_periph_M06_AXI_WREADY,
       M06_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M06_AXI_WSTRB(3 downto 0),
       M06_AXI_wvalid => microblaze_0_axi_periph_M06_AXI_WVALID,
-      M07_ACLK => microblaze_0_Clk,
+      M07_ACLK => microblaze_0_Clk_100MHz,
       M07_ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
       M07_AXI_araddr(31 downto 0) => microblaze_0_axi_periph_M07_AXI_ARADDR(31 downto 0),
       M07_AXI_arready => microblaze_0_axi_periph_M07_AXI_ARREADY,
@@ -9214,7 +9244,7 @@ microblaze_0_axi_periph: entity work.msys_microblaze_0_axi_periph_0
       M07_AXI_wready => microblaze_0_axi_periph_M07_AXI_WREADY,
       M07_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M07_AXI_WSTRB(3 downto 0),
       M07_AXI_wvalid => microblaze_0_axi_periph_M07_AXI_WVALID,
-      M08_ACLK => microblaze_0_Clk,
+      M08_ACLK => microblaze_0_Clk_100MHz,
       M08_ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
       M08_AXI_araddr(31 downto 0) => microblaze_0_axi_periph_M08_AXI_ARADDR(31 downto 0),
       M08_AXI_arready => microblaze_0_axi_periph_M08_AXI_ARREADY,
@@ -9233,7 +9263,7 @@ microblaze_0_axi_periph: entity work.msys_microblaze_0_axi_periph_0
       M08_AXI_wready => microblaze_0_axi_periph_M08_AXI_WREADY,
       M08_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M08_AXI_WSTRB(3 downto 0),
       M08_AXI_wvalid => microblaze_0_axi_periph_M08_AXI_WVALID,
-      M09_ACLK => microblaze_0_Clk,
+      M09_ACLK => microblaze_0_Clk_100MHz,
       M09_ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
       M09_AXI_araddr(31 downto 0) => microblaze_0_axi_periph_M09_AXI_ARADDR(31 downto 0),
       M09_AXI_arready => microblaze_0_axi_periph_M09_AXI_ARREADY,
@@ -9252,7 +9282,7 @@ microblaze_0_axi_periph: entity work.msys_microblaze_0_axi_periph_0
       M09_AXI_wready => microblaze_0_axi_periph_M09_AXI_WREADY,
       M09_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M09_AXI_WSTRB(3 downto 0),
       M09_AXI_wvalid => microblaze_0_axi_periph_M09_AXI_WVALID,
-      M10_ACLK => microblaze_0_Clk,
+      M10_ACLK => microblaze_0_Clk_100MHz,
       M10_ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
       M10_AXI_araddr(31 downto 0) => microblaze_0_axi_periph_M10_AXI_ARADDR(31 downto 0),
       M10_AXI_arready => microblaze_0_axi_periph_M10_AXI_ARREADY,
@@ -9271,7 +9301,7 @@ microblaze_0_axi_periph: entity work.msys_microblaze_0_axi_periph_0
       M10_AXI_wready => microblaze_0_axi_periph_M10_AXI_WREADY,
       M10_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M10_AXI_WSTRB(3 downto 0),
       M10_AXI_wvalid => microblaze_0_axi_periph_M10_AXI_WVALID,
-      M11_ACLK => microblaze_0_Clk,
+      M11_ACLK => microblaze_0_Clk_100MHz,
       M11_ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
       M11_AXI_araddr(31 downto 0) => microblaze_0_axi_periph_M11_AXI_ARADDR(31 downto 0),
       M11_AXI_arready => microblaze_0_axi_periph_M11_AXI_ARREADY,
@@ -9290,7 +9320,7 @@ microblaze_0_axi_periph: entity work.msys_microblaze_0_axi_periph_0
       M11_AXI_wready => microblaze_0_axi_periph_M11_AXI_WREADY,
       M11_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M11_AXI_WSTRB(3 downto 0),
       M11_AXI_wvalid => microblaze_0_axi_periph_M11_AXI_WVALID,
-      M12_ACLK => microblaze_0_Clk,
+      M12_ACLK => microblaze_0_Clk_100MHz,
       M12_ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
       M12_AXI_araddr(31 downto 0) => microblaze_0_axi_periph_M12_AXI_ARADDR(31 downto 0),
       M12_AXI_arready => microblaze_0_axi_periph_M12_AXI_ARREADY,
@@ -9309,7 +9339,7 @@ microblaze_0_axi_periph: entity work.msys_microblaze_0_axi_periph_0
       M12_AXI_wready => microblaze_0_axi_periph_M12_AXI_WREADY,
       M12_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M12_AXI_WSTRB(3 downto 0),
       M12_AXI_wvalid => microblaze_0_axi_periph_M12_AXI_WVALID,
-      S00_ACLK => microblaze_0_Clk,
+      S00_ACLK => microblaze_0_Clk_100MHz,
       S00_ARESETN => rst_mig_7series_0_100M_peripheral_aresetn(0),
       S00_AXI_araddr(31 downto 0) => microblaze_0_axi_dp_ARADDR(31 downto 0),
       S00_AXI_arprot(2 downto 0) => microblaze_0_axi_dp_ARPROT(2 downto 0),
@@ -9352,7 +9382,7 @@ microblaze_0_local_memory: entity work.microblaze_0_local_memory_imp_17WFGJG
       ILMB_ready => microblaze_0_ilmb_1_READY,
       ILMB_ue => microblaze_0_ilmb_1_UE,
       ILMB_wait => microblaze_0_ilmb_1_WAIT,
-      LMB_Clk => microblaze_0_Clk,
+      LMB_Clk => microblaze_0_Clk_100MHz,
       SYS_Rst => rst_mig_7series_0_100M_bus_struct_reset(0)
     );
 microblaze_0_xlconcat: component msys_microblaze_0_xlconcat_0
@@ -9381,7 +9411,7 @@ microblaze_mcs_0: component msys_microblaze_mcs_0_0
 mig_7series_0: component msys_mig_7series_0_0
      port map (
       aresetn => rst_mig_7series_0_100M_peripheral_aresetn(0),
-      clk_ref_i => mig_7series_0_ui_addn_clk_0,
+      clk_ref_i => mig_7series_0_ui_addn_clk_0_200MHz,
       ddr3_addr(14 downto 0) => mig_7series_0_DDR3_ADDR(14 downto 0),
       ddr3_ba(2 downto 0) => mig_7series_0_DDR3_BA(2 downto 0),
       ddr3_cas_n => mig_7series_0_DDR3_CAS_N,
@@ -9439,10 +9469,10 @@ mig_7series_0: component msys_mig_7series_0_0
       sys_clk_n => sys_diff_clock_1_CLK_N,
       sys_clk_p => sys_diff_clock_1_CLK_P,
       sys_rst => SC0712_0_reset_out,
-      ui_addn_clk_0 => mig_7series_0_ui_addn_clk_0,
-      ui_addn_clk_1 => NLW_mig_7series_0_ui_addn_clk_1_UNCONNECTED,
-      ui_addn_clk_2 => mig_7series_0_ui_addn_clk_2,
-      ui_clk => microblaze_0_Clk,
+      ui_addn_clk_0 => mig_7series_0_ui_addn_clk_0_200MHz,
+      ui_addn_clk_1 => mig_7series_0_ui_addn_clk_1_100MHz,
+      ui_addn_clk_2 => mig_7series_0_ui_addn_clk_2_50MHz,
+      ui_clk => microblaze_0_Clk_100MHz,
       ui_clk_sync_rst => mig_7series_0_ui_clk_sync_rst
     );
 mii_to_rmii_0: component msys_mii_to_rmii_0_0
@@ -9528,7 +9558,7 @@ rst_mig_7series_0_100M: component msys_rst_mig_7series_0_100M_0
       mb_reset => rst_mig_7series_0_100M_mb_reset,
       peripheral_aresetn(0) => rst_mig_7series_0_100M_peripheral_aresetn(0),
       peripheral_reset(0) => rst_mig_7series_0_100M_peripheral_reset(0),
-      slowest_sync_clk => microblaze_0_Clk
+      slowest_sync_clk => microblaze_0_Clk_100MHz
     );
 rst_mig_7series_0_12M: component msys_rst_mig_7series_0_50M_1
      port map (
@@ -9554,7 +9584,7 @@ rst_mig_7series_0_50M: component msys_rst_mig_7series_0_50M_0
       mb_reset => NLW_rst_mig_7series_0_50M_mb_reset_UNCONNECTED,
       peripheral_aresetn(0) => rst_mig_7series_0_50M_peripheral_aresetn(0),
       peripheral_reset(0) => NLW_rst_mig_7series_0_50M_peripheral_reset_UNCONNECTED(0),
-      slowest_sync_clk => mig_7series_0_ui_addn_clk_2
+      slowest_sync_clk => mig_7series_0_ui_addn_clk_2_50MHz
     );
 util_ds_buf_0: component msys_util_ds_buf_0_0
      port map (
@@ -9567,12 +9597,6 @@ util_ds_buf_1: component msys_util_ds_buf_1_0
       IBUF_DS_ODIV2(0) => NLW_util_ds_buf_1_IBUF_DS_ODIV2_UNCONNECTED(0),
       IBUF_DS_P(0) => mgt_clk0_1_CLK_P,
       IBUF_OUT(0) => util_ds_buf_1_IBUF_OUT(0)
-    );
-util_ds_buf_2: component msys_util_ds_buf_2_0
-     port map (
-      IBUF_DS_N(0) => CLK_IN_D_0_1_CLK_N(0),
-      IBUF_DS_P(0) => CLK_IN_D_0_1_CLK_P(0),
-      IBUF_OUT(0) => util_ds_buf_2_IBUF_OUT(0)
     );
 vio_0: component msys_vio_0_0
      port map (
@@ -9594,10 +9618,10 @@ vio_0: component msys_vio_0_0
     );
 xlconcat_0: component msys_xlconcat_0_0
      port map (
-      In0(0) => mig_7series_0_ui_addn_clk_2,
+      In0(0) => mig_7series_0_ui_addn_clk_2_50MHz,
       In1(0) => util_ds_buf_1_IBUF_OUT(0),
       In2(0) => util_ds_buf_0_BUFG_O(0),
-      In3(0) => util_ds_buf_2_IBUF_OUT(0),
+      In3(0) => CLK0_util_ds_buf_1_BUFG_O(0),
       In4(0) => TRX_rx_selectio_wiz_0_clk_div_out,
       dout(4 downto 0) => xlconcat_0_dout(4 downto 0)
     );
