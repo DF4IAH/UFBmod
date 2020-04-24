@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
 -- Date        : Fri Apr 24 17:53:16 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_fifo_generator_0_1/msys_fifo_generator_0_1_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_fifo_generator_0_1 -prefix
+--               msys_fifo_generator_0_1_ msys_fifo_generator_0_1_sim_netlist.vhdl
 -- Design      : msys_fifo_generator_0_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -25,8 +25,6 @@ entity msys_fifo_generator_0_1_xpm_cdc_gray is
   attribute DEST_SYNC_FF of msys_fifo_generator_0_1_xpm_cdc_gray : entity is 2;
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of msys_fifo_generator_0_1_xpm_cdc_gray : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_xpm_cdc_gray : entity is "xpm_cdc_gray";
   attribute REG_OUTPUT : integer;
   attribute REG_OUTPUT of msys_fifo_generator_0_1_xpm_cdc_gray : entity is 1;
   attribute SIM_ASSERT_CHK : integer;
@@ -551,8 +549,6 @@ entity msys_fifo_generator_0_1_xpm_cdc_single is
   attribute DEST_SYNC_FF of msys_fifo_generator_0_1_xpm_cdc_single : entity is 5;
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of msys_fifo_generator_0_1_xpm_cdc_single : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_xpm_cdc_single : entity is "xpm_cdc_single";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of msys_fifo_generator_0_1_xpm_cdc_single : entity is 0;
   attribute SRC_INPUT_REG : integer;
@@ -746,8 +742,6 @@ entity msys_fifo_generator_0_1_xpm_cdc_sync_rst is
   attribute INIT of msys_fifo_generator_0_1_xpm_cdc_sync_rst : entity is "1";
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of msys_fifo_generator_0_1_xpm_cdc_sync_rst : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_xpm_cdc_sync_rst : entity is "xpm_cdc_sync_rst";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of msys_fifo_generator_0_1_xpm_cdc_sync_rst : entity is 0;
   attribute VERSION : integer;
@@ -969,8 +963,6 @@ entity msys_fifo_generator_0_1_blk_mem_gen_prim_wrapper is
     din : in STD_LOGIC_VECTOR ( 1 downto 0 );
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_blk_mem_gen_prim_wrapper : entity is "blk_mem_gen_prim_wrapper";
 end msys_fifo_generator_0_1_blk_mem_gen_prim_wrapper;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_blk_mem_gen_prim_wrapper is
@@ -1195,8 +1187,6 @@ entity msys_fifo_generator_0_1_rd_bin_cntr is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     rd_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_rd_bin_cntr : entity is "rd_bin_cntr";
 end msys_fifo_generator_0_1_rd_bin_cntr;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_rd_bin_cntr is
@@ -1388,8 +1378,6 @@ entity msys_fifo_generator_0_1_rd_status_flags_as is
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     WR_PNTR_RD : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_rd_status_flags_as : entity is "rd_status_flags_as";
 end msys_fifo_generator_0_1_rd_status_flags_as;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_rd_status_flags_as is
@@ -1467,8 +1455,6 @@ entity msys_fifo_generator_0_1_wr_bin_cntr is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     wr_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_wr_bin_cntr : entity is "wr_bin_cntr";
 end msys_fifo_generator_0_1_wr_bin_cntr;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_wr_bin_cntr is
@@ -1683,8 +1669,6 @@ entity msys_fifo_generator_0_1_wr_status_flags_as is
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     RD_PNTR_WR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_wr_status_flags_as : entity is "wr_status_flags_as";
 end msys_fifo_generator_0_1_wr_status_flags_as;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_wr_status_flags_as is
@@ -1776,8 +1760,6 @@ entity msys_fifo_generator_0_1_blk_mem_gen_prim_width is
     din : in STD_LOGIC_VECTOR ( 1 downto 0 );
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
 end msys_fifo_generator_0_1_blk_mem_gen_prim_width;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_blk_mem_gen_prim_width is
@@ -1980,8 +1962,6 @@ entity msys_fifo_generator_0_1_clk_x_pntrs is
     rd_clk : in STD_LOGIC;
     \src_gray_ff_reg[3]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_clk_x_pntrs : entity is "clk_x_pntrs";
 end msys_fifo_generator_0_1_clk_x_pntrs;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_clk_x_pntrs is
@@ -2084,8 +2064,6 @@ entity msys_fifo_generator_0_1_rd_logic is
     rd_en : in STD_LOGIC;
     WR_PNTR_RD : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_rd_logic : entity is "rd_logic";
 end msys_fifo_generator_0_1_rd_logic;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_rd_logic is
@@ -2145,8 +2123,6 @@ entity msys_fifo_generator_0_1_reset_blk_ramfifo is
     \DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18.ram\ : in STD_LOGIC;
     rd_en : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_reset_blk_ramfifo : entity is "reset_blk_ramfifo";
 end msys_fifo_generator_0_1_reset_blk_ramfifo;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_reset_blk_ramfifo is
@@ -2632,8 +2608,6 @@ entity msys_fifo_generator_0_1_wr_logic is
     RD_PNTR_WR : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \gic0.gc0.count_d2_reg[0]\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_wr_logic : entity is "wr_logic";
 end msys_fifo_generator_0_1_wr_logic;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_wr_logic is
@@ -2687,8 +2661,6 @@ entity msys_fifo_generator_0_1_blk_mem_gen_generic_cstr is
     din : in STD_LOGIC_VECTOR ( 1 downto 0 );
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
 end msys_fifo_generator_0_1_blk_mem_gen_generic_cstr;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_blk_mem_gen_generic_cstr is
@@ -2730,8 +2702,6 @@ entity msys_fifo_generator_0_1_blk_mem_gen_top is
     din : in STD_LOGIC_VECTOR ( 1 downto 0 );
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_blk_mem_gen_top : entity is "blk_mem_gen_top";
 end msys_fifo_generator_0_1_blk_mem_gen_top;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_blk_mem_gen_top is
@@ -2773,8 +2743,6 @@ entity msys_fifo_generator_0_1_blk_mem_gen_v8_4_4_synth is
     din : in STD_LOGIC_VECTOR ( 1 downto 0 );
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_blk_mem_gen_v8_4_4_synth : entity is "blk_mem_gen_v8_4_4_synth";
 end msys_fifo_generator_0_1_blk_mem_gen_v8_4_4_synth;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_blk_mem_gen_v8_4_4_synth is
@@ -2816,8 +2784,6 @@ entity msys_fifo_generator_0_1_blk_mem_gen_v8_4_4 is
     din : in STD_LOGIC_VECTOR ( 1 downto 0 );
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_blk_mem_gen_v8_4_4 : entity is "blk_mem_gen_v8_4_4";
 end msys_fifo_generator_0_1_blk_mem_gen_v8_4_4;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_blk_mem_gen_v8_4_4 is
@@ -2859,8 +2825,6 @@ entity msys_fifo_generator_0_1_memory is
     din : in STD_LOGIC_VECTOR ( 1 downto 0 );
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_memory : entity is "memory";
 end msys_fifo_generator_0_1_memory;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_memory is
@@ -2900,8 +2864,6 @@ entity msys_fifo_generator_0_1_fifo_generator_ramfifo is
     wr_en : in STD_LOGIC;
     rd_en : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_fifo_generator_ramfifo : entity is "fifo_generator_ramfifo";
 end msys_fifo_generator_0_1_fifo_generator_ramfifo;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_fifo_generator_ramfifo is
@@ -3032,8 +2994,6 @@ entity msys_fifo_generator_0_1_fifo_generator_top is
     wr_en : in STD_LOGIC;
     rd_en : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_fifo_generator_top : entity is "fifo_generator_top";
 end msys_fifo_generator_0_1_fifo_generator_top;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_fifo_generator_top is
@@ -3071,8 +3031,6 @@ entity msys_fifo_generator_0_1_fifo_generator_v13_2_5_synth is
     wr_en : in STD_LOGIC;
     rd_en : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_fifo_generator_v13_2_5_synth : entity is "fifo_generator_v13_2_5_synth";
 end msys_fifo_generator_0_1_fifo_generator_v13_2_5_synth;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_fifo_generator_v13_2_5_synth is
@@ -3734,8 +3692,6 @@ entity msys_fifo_generator_0_1_fifo_generator_v13_2_5 is
   attribute C_WR_PNTR_WIDTH_WRCH of msys_fifo_generator_0_1_fifo_generator_v13_2_5 : entity is 4;
   attribute C_WR_RESPONSE_LATENCY : integer;
   attribute C_WR_RESPONSE_LATENCY of msys_fifo_generator_0_1_fifo_generator_v13_2_5 : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_fifo_generator_0_1_fifo_generator_v13_2_5 : entity is "fifo_generator_v13_2_5";
 end msys_fifo_generator_0_1_fifo_generator_v13_2_5;
 
 architecture STRUCTURE of msys_fifo_generator_0_1_fifo_generator_v13_2_5 is

@@ -57,8 +57,8 @@
 #include "systemc.h"
 class msys_xlconstant_0_1 : public sc_module {
   public:
-xlconstant_v1_1_6<2,0> mod;
-  sc_out< sc_bv<2> > dout;
+xlconstant_v1_1_6<3,0> mod;
+  sc_out< sc_bv<3> > dout;
 msys_xlconstant_0_1 (sc_core::sc_module_name name) :sc_module(name), mod("mod") {
     mod.dout(dout);
   }

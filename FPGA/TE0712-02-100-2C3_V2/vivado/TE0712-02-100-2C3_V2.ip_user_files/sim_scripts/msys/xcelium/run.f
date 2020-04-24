@@ -481,6 +481,48 @@
   "../../../bd/msys/ip/msys_TRX_rx09_markers_util_vector_logic_30_1/sim/msys_TRX_rx09_markers_util_vector_logic_30_1.v" \
   "../../../bd/msys/ip/msys_TRX_rx24_markers_util_vector_logic_15_0/sim/msys_TRX_rx24_markers_util_vector_logic_15_0.v" \
 -endlib
+-makelib xcelium_lib/axi_utils_v2_0_6 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1971/hdl/axi_utils_v2_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/c_mux_bit_v12_0_6 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ecb4/hdl/c_mux_bit_v12_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/c_shift_ram_v12_0_14 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/2598/hdl/c_shift_ram_v12_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/xbip_bram18k_v3_0_6 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/d367/hdl/xbip_bram18k_v3_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/mult_gen_v12_0_16 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ce84/hdl/mult_gen_v12_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/cmpy_v6_0_18 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/231d/hdl/cmpy_v6_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/floating_point_v7_0_17 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/096f/hdl/floating_point_v7_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/xfft_v9_1_3 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/c56c/hdl/xfft_v9_1_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xfft_0_0/sim/msys_xfft_0_0.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xlconcat_1_4/sim/msys_xlconcat_1_4.v" \
+  "../../../bd/msys/ip/msys_xlconstant_0_1/sim/msys_xlconstant_0_1.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_7/sim/msys_xlslice_0_7.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_8/sim/msys_xlslice_0_8.v" \
+  "../../../bd/msys/ip/msys_TRX_rx09_xfft_xlslice_0_0/sim/msys_TRX_rx09_xfft_xlslice_0_0.v" \
+  "../../../bd/msys/ip/msys_TRX_rx24_xfft_xlslice_0_0/sim/msys_TRX_rx24_xfft_xlslice_0_0.v" \
+  "../../../bd/msys/ip/msys_xlconstant_0_2/sim/msys_xlconstant_0_2.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_c_counter_binary_0_4/sim/msys_c_counter_binary_0_4.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xlconstant_0x0_0/sim/msys_xlconstant_0x0_0.v" \
+-endlib
 -makelib xcelium_lib/axi_clock_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/9e81/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
 -endlib

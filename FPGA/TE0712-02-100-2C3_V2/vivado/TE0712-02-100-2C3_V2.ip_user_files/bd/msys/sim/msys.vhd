@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Fri Apr 24 17:50:41 2020
+--Date        : Fri Apr 24 23:42:02 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -5833,7 +5833,7 @@ entity msys is
     sys_diff_clock_clk_p : in STD_LOGIC
   );
   attribute core_generation_info : string;
-  attribute core_generation_info of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=145,numReposBlks=125,numNonXlnxBlks=3,numHierBlks=20,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
+  attribute core_generation_info of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=155,numReposBlks=135,numNonXlnxBlks=3,numHierBlks=20,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
   attribute hw_handoff : string;
   attribute hw_handoff of msys : entity is "msys.hwdef";
 end msys;
@@ -7280,6 +7280,88 @@ architecture STRUCTURE of msys is
     Res : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_TRX_rx24_markers_util_vector_logic_15_0;
+  component msys_xfft_0_0 is
+  port (
+    aclk : in STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    s_axis_config_tdata : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    s_axis_config_tvalid : in STD_LOGIC;
+    s_axis_config_tready : out STD_LOGIC;
+    s_axis_data_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    s_axis_data_tvalid : in STD_LOGIC;
+    s_axis_data_tready : out STD_LOGIC;
+    s_axis_data_tlast : in STD_LOGIC;
+    m_axis_data_tdata : out STD_LOGIC_VECTOR ( 127 downto 0 );
+    m_axis_data_tuser : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    m_axis_data_tvalid : out STD_LOGIC;
+    m_axis_data_tlast : out STD_LOGIC;
+    event_frame_started : out STD_LOGIC;
+    event_tlast_unexpected : out STD_LOGIC;
+    event_tlast_missing : out STD_LOGIC;
+    event_data_in_channel_halt : out STD_LOGIC
+  );
+  end component msys_xfft_0_0;
+  component msys_xlconcat_1_4 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    In1 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    In2 : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    In3 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    In4 : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    In5 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    In6 : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    In7 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 63 downto 0 )
+  );
+  end component msys_xlconcat_1_4;
+  component msys_xlconstant_0_1 is
+  port (
+    dout : out STD_LOGIC_VECTOR ( 2 downto 0 )
+  );
+  end component msys_xlconstant_0_1;
+  component msys_xlslice_0_7 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 12 downto 0 )
+  );
+  end component msys_xlslice_0_7;
+  component msys_xlslice_0_8 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 12 downto 0 )
+  );
+  end component msys_xlslice_0_8;
+  component msys_TRX_rx09_xfft_xlslice_0_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 12 downto 0 )
+  );
+  end component msys_TRX_rx09_xfft_xlslice_0_0;
+  component msys_TRX_rx24_xfft_xlslice_0_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 12 downto 0 )
+  );
+  end component msys_TRX_rx24_xfft_xlslice_0_0;
+  component msys_xlconstant_0_2 is
+  port (
+    dout : out STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component msys_xlconstant_0_2;
+  component msys_c_counter_binary_0_4 is
+  port (
+    CLK : in STD_LOGIC;
+    LOAD : in STD_LOGIC;
+    L : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    THRESH0 : out STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 12 downto 0 )
+  );
+  end component msys_c_counter_binary_0_4;
+  component msys_xlconstant_0x0_0 is
+  port (
+    dout : out STD_LOGIC_VECTOR ( 12 downto 0 )
+  );
+  end component msys_xlconstant_0x0_0;
   signal ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal BOARD_ROTENC_PUSH_1 : STD_LOGIC;
   signal BUFG_I_0_1 : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -7335,12 +7417,14 @@ architecture STRUCTURE of msys is
   signal TRX_axi_quad_spi_0_SPI_0_SS_T : STD_LOGIC;
   signal TRX_axi_quad_spi_1_ip2intc_irpt : STD_LOGIC;
   signal TRX_clk_26MHz_1 : STD_LOGIC;
+  signal TRX_clk_sys_reset_0_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_clk_sys_reset_0_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_clk_wiz_0_clkfb_out : STD_LOGIC;
   signal TRX_int_1 : STD_LOGIC;
   signal TRX_rx09_c_counter_binary_0_THRESH0 : STD_LOGIC;
   signal TRX_rx09_fifo_generator_0_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal TRX_rx09_fifo_generator_0_rd_data_count : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal TRX_rx09_fifo_generator_0_valid : STD_LOGIC;
   signal TRX_rx09_markers_util_reduced_logic_0_Res : STD_LOGIC;
   signal TRX_rx09_markers_util_vector_logic_15_Res : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_rx09_markers_util_vector_logic_30_Res : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -7349,6 +7433,8 @@ architecture STRUCTURE of msys is
   signal TRX_rx09_markers_xlslice_15to15_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_rx09_markers_xlslice_30to30_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_rx09_markers_xlslice_31to31_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx09_xfft_xlslice_13to1_Dout : STD_LOGIC_VECTOR ( 12 downto 0 );
+  signal TRX_rx09_xfft_xlslice_29to17_Dout : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal TRX_rx09_xlconcat_0_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal TRX_rx24_c_counter_binary_0_THRESH0 : STD_LOGIC;
   signal TRX_rx24_fifo_generator_0_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -7360,6 +7446,8 @@ architecture STRUCTURE of msys is
   signal TRX_rx24_markers_xlslice_15to15_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_rx24_markers_xlslice_30to30_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_rx24_markers_xlslice_31to31_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx24_xfft_xlslice_13to1_Dout : STD_LOGIC_VECTOR ( 12 downto 0 );
+  signal TRX_rx24_xfft_xlslice_29to17_Dout : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal TRX_rx24_xlconcat_0_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal TRX_rx_counter_binary_0_Q : STD_LOGIC_VECTOR ( 6 downto 0 );
   signal TRX_rx_fifo_generator_0_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -7370,6 +7458,7 @@ architecture STRUCTURE of msys is
   signal TRX_rx_selectio_wiz_0_data_out_to_pins_p : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal TRX_rx_selectio_wiz_0_diff_clk_to_pins_CLK_N : STD_LOGIC;
   signal TRX_rx_selectio_wiz_0_diff_clk_to_pins_CLK_P : STD_LOGIC;
+  signal TRX_rx_xfft_last_c_counter_binary_12b_0_THRESH0 : STD_LOGIC;
   signal TRX_rx_xlconcat_0_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal TRX_rx_xlslice_00to00_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_rx_xlslice_01to01_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -7916,18 +8005,20 @@ architecture STRUCTURE of msys is
   signal util_ds_buf_2_IBUF_OUT : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal xlconcat_1_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal xlconcat_1_dout1 : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal xlconstant_0_dout28 : STD_LOGIC_VECTOR ( 27 downto 0 );
+  signal xlconstant_0b000_dout : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal xlconstant_0x0000_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal xlconstant_0x0_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal xlconstant_0x1_13b_dout : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal xlconstant_1_dout1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_TRX_clk_sys_reset_0_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_TRX_clk_sys_reset_0_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_TRX_clk_sys_reset_0_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_TRX_clk_sys_reset_0_peripheral_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_TRX_rx09_bitslip_c_counter_binary_0_Q_UNCONNECTED : STD_LOGIC_VECTOR ( 6 downto 0 );
   signal NLW_TRX_rx09_fifo_generator_0_empty_UNCONNECTED : STD_LOGIC;
   signal NLW_TRX_rx09_fifo_generator_0_full_UNCONNECTED : STD_LOGIC;
   signal NLW_TRX_rx09_fifo_generator_0_rd_rst_busy_UNCONNECTED : STD_LOGIC;
-  signal NLW_TRX_rx09_fifo_generator_0_valid_UNCONNECTED : STD_LOGIC;
   signal NLW_TRX_rx09_fifo_generator_0_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_TRX_rx09_fifo_generator_0_wr_data_count_UNCONNECTED : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal NLW_TRX_rx24_bitslip_c_counter_binary_0_Q_UNCONNECTED : STD_LOGIC_VECTOR ( 6 downto 0 );
@@ -7941,6 +8032,17 @@ architecture STRUCTURE of msys is
   signal NLW_TRX_rx_bitslip_fifo_generator_0_rd_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_TRX_rx_bitslip_fifo_generator_0_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_TRX_rx_selectio_wiz_0_delay_locked_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx_xfft_0_event_data_in_channel_halt_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx_xfft_0_event_frame_started_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx_xfft_0_event_tlast_missing_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx_xfft_0_event_tlast_unexpected_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx_xfft_0_m_axis_data_tlast_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx_xfft_0_m_axis_data_tvalid_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx_xfft_0_s_axis_config_tready_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx_xfft_0_s_axis_data_tready_UNCONNECTED : STD_LOGIC;
+  signal NLW_TRX_rx_xfft_0_m_axis_data_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 127 downto 0 );
+  signal NLW_TRX_rx_xfft_0_m_axis_data_tuser_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_TRX_rx_xfft_last_c_counter_binary_12b_0_Q_UNCONNECTED : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal NLW_axi_BOARD_iic_0_gpo_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_PWM_gpio_0_gpio2_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_axi_iic_0_gpo_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -8409,9 +8511,19 @@ TRX_clk_sys_reset_0: component msys_proc_sys_reset_0_1
       interconnect_aresetn(0) => NLW_TRX_clk_sys_reset_0_interconnect_aresetn_UNCONNECTED(0),
       mb_debug_sys_rst => '0',
       mb_reset => NLW_TRX_clk_sys_reset_0_mb_reset_UNCONNECTED,
-      peripheral_aresetn(0) => NLW_TRX_clk_sys_reset_0_peripheral_aresetn_UNCONNECTED(0),
+      peripheral_aresetn(0) => TRX_clk_sys_reset_0_peripheral_aresetn(0),
       peripheral_reset(0) => TRX_clk_sys_reset_0_peripheral_reset(0),
       slowest_sync_clk => TRX_rx_selectio_wiz_0_clk_div_out
+    );
+TRX_gpio_xlslice_0to0_0: component msys_xlslice_0_3
+     port map (
+      Din(1 downto 0) => axi_TRX_gpio_0_gpio_io_o(1 downto 0),
+      Dout(0) => TRX_xlslice_1to1_0_Dout(0)
+    );
+TRX_gpio_xlslice_1to1_0: component msys_TRX_xlslice_0to0_0_0
+     port map (
+      Din(1 downto 0) => axi_TRX_gpio_0_gpio_io_o(1 downto 0),
+      Dout(0) => TRX_xlslice_1to1_0_Dout1(0)
     );
 TRX_rx09_bitslip_c_counter_binary_0: component msys_c_counter_binary_0_3
      port map (
@@ -8431,7 +8543,7 @@ TRX_rx09_fifo_generator_0: component msys_TRX_rx09_fifo_generator_0_0
       rd_en => xlconstant_1_dout1(0),
       rd_rst_busy => NLW_TRX_rx09_fifo_generator_0_rd_rst_busy_UNCONNECTED,
       rst => TRX_clk_sys_reset_0_peripheral_reset(0),
-      valid => NLW_TRX_rx09_fifo_generator_0_valid_UNCONNECTED,
+      valid => TRX_rx09_fifo_generator_0_valid,
       wr_clk => TRX_rx_selectio_wiz_0_clk_div_out,
       wr_data_count(10 downto 0) => NLW_TRX_rx09_fifo_generator_0_wr_data_count_UNCONNECTED(10 downto 0),
       wr_en => xlconstant_1_dout1(0),
@@ -8481,6 +8593,16 @@ TRX_rx09_markers_xlslice_31to31: component msys_TRX_rx_iorst_xlslice_6to6_0
      port map (
       Din(31 downto 0) => TRX_rx09_fifo_generator_0_dout(31 downto 0),
       Dout(0) => TRX_rx09_markers_xlslice_31to31_Dout(0)
+    );
+TRX_rx09_xfft_xlslice_13to1: component msys_TRX_rx09_xfft_xlslice_0_0
+     port map (
+      Din(31 downto 0) => TRX_rx09_fifo_generator_0_dout(31 downto 0),
+      Dout(12 downto 0) => TRX_rx09_xfft_xlslice_13to1_Dout(12 downto 0)
+    );
+TRX_rx09_xfft_xlslice_29to17: component msys_xlslice_0_7
+     port map (
+      Din(31 downto 0) => TRX_rx09_fifo_generator_0_dout(31 downto 0),
+      Dout(12 downto 0) => TRX_rx09_xfft_xlslice_29to17_Dout(12 downto 0)
     );
 TRX_rx09_xlconcat_0: component msys_xlconcat_1_3
      port map (
@@ -8561,6 +8683,16 @@ TRX_rx24_markers_xlslice_31to31: component msys_TRX_rx24_markers_xlslice_14to14_
       Din(31 downto 0) => TRX_rx24_fifo_generator_0_dout(31 downto 0),
       Dout(0) => TRX_rx24_markers_xlslice_31to31_Dout(0)
     );
+TRX_rx24_xfft_xlslice_13to1: component msys_TRX_rx24_xfft_xlslice_0_0
+     port map (
+      Din(31 downto 0) => TRX_rx24_fifo_generator_0_dout(31 downto 0),
+      Dout(12 downto 0) => TRX_rx24_xfft_xlslice_13to1_Dout(12 downto 0)
+    );
+TRX_rx24_xfft_xlslice_29to17: component msys_xlslice_0_8
+     port map (
+      Din(31 downto 0) => TRX_rx24_fifo_generator_0_dout(31 downto 0),
+      Dout(12 downto 0) => TRX_rx24_xfft_xlslice_29to17_Dout(12 downto 0)
+    );
 TRX_rx24_xlconcat_0: component msys_TRX_rx09_xlconcat_0_0
      port map (
       In0(0) => TRX_rx_xlslice_01to01_Dout(0),
@@ -8638,6 +8770,46 @@ TRX_rx_selectio_wiz_0: component msys_selectio_wiz_0_1
       delay_locked => NLW_TRX_rx_selectio_wiz_0_delay_locked_UNCONNECTED,
       io_reset => TRX_rx_iorst_xlslice_6to6_Dout(0),
       ref_clock => mig_7series_0_ui_addn_clk_0_200MHz
+    );
+TRX_rx_xfft_0: component msys_xfft_0_0
+     port map (
+      aclk => TRX_rx_selectio_wiz_0_clk_div_out,
+      aresetn => TRX_clk_sys_reset_0_peripheral_aresetn(0),
+      event_data_in_channel_halt => NLW_TRX_rx_xfft_0_event_data_in_channel_halt_UNCONNECTED,
+      event_frame_started => NLW_TRX_rx_xfft_0_event_frame_started_UNCONNECTED,
+      event_tlast_missing => NLW_TRX_rx_xfft_0_event_tlast_missing_UNCONNECTED,
+      event_tlast_unexpected => NLW_TRX_rx_xfft_0_event_tlast_unexpected_UNCONNECTED,
+      m_axis_data_tdata(127 downto 0) => NLW_TRX_rx_xfft_0_m_axis_data_tdata_UNCONNECTED(127 downto 0),
+      m_axis_data_tlast => NLW_TRX_rx_xfft_0_m_axis_data_tlast_UNCONNECTED,
+      m_axis_data_tuser(15 downto 0) => NLW_TRX_rx_xfft_0_m_axis_data_tuser_UNCONNECTED(15 downto 0),
+      m_axis_data_tvalid => NLW_TRX_rx_xfft_0_m_axis_data_tvalid_UNCONNECTED,
+      s_axis_config_tdata(7 downto 0) => xlconstant_0x0_dout(7 downto 0),
+      s_axis_config_tready => NLW_TRX_rx_xfft_0_s_axis_config_tready_UNCONNECTED,
+      s_axis_config_tvalid => TRX_rx09_fifo_generator_0_valid,
+      s_axis_data_tdata(63 downto 0) => xlconcat_1_dout1(63 downto 0),
+      s_axis_data_tlast => TRX_rx_xfft_last_c_counter_binary_12b_0_THRESH0,
+      s_axis_data_tready => NLW_TRX_rx_xfft_0_s_axis_data_tready_UNCONNECTED,
+      s_axis_data_tvalid => TRX_rx09_fifo_generator_0_valid
+    );
+TRX_rx_xfft_last_c_counter_binary_12b_0: component msys_c_counter_binary_0_4
+     port map (
+      CLK => TRX_rx_selectio_wiz_0_clk_div_out,
+      L(12 downto 0) => xlconstant_0x1_13b_dout(12 downto 0),
+      LOAD => TRX_clk_sys_reset_0_peripheral_reset(0),
+      Q(12 downto 0) => NLW_TRX_rx_xfft_last_c_counter_binary_12b_0_Q_UNCONNECTED(12 downto 0),
+      THRESH0 => TRX_rx_xfft_last_c_counter_binary_12b_0_THRESH0
+    );
+TRX_rx_xfft_xlconcat_0: component msys_xlconcat_1_4
+     port map (
+      In0(12 downto 0) => TRX_rx09_xfft_xlslice_29to17_Dout(12 downto 0),
+      In1(2 downto 0) => xlconstant_0b000_dout(2 downto 0),
+      In2(12 downto 0) => TRX_rx09_xfft_xlslice_13to1_Dout(12 downto 0),
+      In3(2 downto 0) => xlconstant_0b000_dout(2 downto 0),
+      In4(12 downto 0) => TRX_rx24_xfft_xlslice_29to17_Dout(12 downto 0),
+      In5(2 downto 0) => xlconstant_0b000_dout(2 downto 0),
+      In6(12 downto 0) => TRX_rx24_xfft_xlslice_13to1_Dout(12 downto 0),
+      In7(2 downto 0) => xlconstant_0b000_dout(2 downto 0),
+      dout(63 downto 0) => xlconcat_1_dout1(63 downto 0)
     );
 TRX_rx_xlslice_00to00: component msys_TRX_rx_xlslice_10to10_9
      port map (
@@ -8718,16 +8890,6 @@ TRX_rx_xlslice_15to15: component msys_xlslice_0_4
      port map (
       Din(15 downto 0) => Net2(15 downto 0),
       Dout(0) => TRX_rx_xlslice_15to15_Dout(0)
-    );
-TRX_xlslice_0to0_0: component msys_xlslice_0_3
-     port map (
-      Din(1 downto 0) => axi_TRX_gpio_0_gpio_io_o(1 downto 0),
-      Dout(0) => TRX_xlslice_1to1_0_Dout(0)
-    );
-TRX_xlslice_1to1_0: component msys_TRX_xlslice_0to0_0_0
-     port map (
-      Din(1 downto 0) => axi_TRX_gpio_0_gpio_io_o(1 downto 0),
-      Dout(0) => TRX_xlslice_1to1_0_Dout1(0)
     );
 UART0_xlconcat_1: component msys_xlconcat_1_0
      port map (
@@ -9951,12 +10113,24 @@ xlconcat_0: component msys_xlconcat_0_0
       In4(0) => TRX_rx_selectio_wiz_0_clk_div_out,
       dout(4 downto 0) => xlconcat_0_dout(4 downto 0)
     );
+xlconstant_0b000: component msys_xlconstant_0_1
+     port map (
+      dout(2 downto 0) => xlconstant_0b000_dout(2 downto 0)
+    );
 xlconstant_0b1: component msys_xlconstant_0b00_1
      port map (
       dout(0) => xlconstant_1_dout1(0)
     );
+xlconstant_0x0: component msys_xlconstant_0_2
+     port map (
+      dout(7 downto 0) => xlconstant_0x0_dout(7 downto 0)
+    );
 xlconstant_0x0000: component msys_xlconstant_0b00_0
      port map (
       dout(15 downto 0) => xlconstant_0x0000_dout(15 downto 0)
+    );
+xlconstant_0x1_13b: component msys_xlconstant_0x0_0
+     port map (
+      dout(12 downto 0) => xlconstant_0x1_13b_dout(12 downto 0)
     );
 end STRUCTURE;

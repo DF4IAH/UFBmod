@@ -182,6 +182,14 @@ verilog xil_defaultlib --include "../../../../TE0712-02-100-2C3_V2.srcs/sources_
 "../../../bd/msys/ip/msys_TRX_rx24_markers_xlslice_14to14_2/sim/msys_TRX_rx24_markers_xlslice_14to14_2.v" \
 "../../../bd/msys/ip/msys_TRX_rx09_markers_util_vector_logic_30_1/sim/msys_TRX_rx09_markers_util_vector_logic_30_1.v" \
 "../../../bd/msys/ip/msys_TRX_rx24_markers_util_vector_logic_15_0/sim/msys_TRX_rx24_markers_util_vector_logic_15_0.v" \
+"../../../bd/msys/ip/msys_xlconcat_1_4/sim/msys_xlconcat_1_4.v" \
+"../../../bd/msys/ip/msys_xlconstant_0_1/sim/msys_xlconstant_0_1.v" \
+"../../../bd/msys/ip/msys_xlslice_0_7/sim/msys_xlslice_0_7.v" \
+"../../../bd/msys/ip/msys_xlslice_0_8/sim/msys_xlslice_0_8.v" \
+"../../../bd/msys/ip/msys_TRX_rx09_xfft_xlslice_0_0/sim/msys_TRX_rx09_xfft_xlslice_0_0.v" \
+"../../../bd/msys/ip/msys_TRX_rx24_xfft_xlslice_0_0/sim/msys_TRX_rx24_xfft_xlslice_0_0.v" \
+"../../../bd/msys/ip/msys_xlconstant_0_2/sim/msys_xlconstant_0_2.v" \
+"../../../bd/msys/ip/msys_xlconstant_0x0_0/sim/msys_xlconstant_0x0_0.v" \
 "../../../bd/msys/ip/msys_auto_cc_0/sim/msys_auto_cc_0.v" \
 "../../../bd/msys/ip/msys_auto_cc_1/sim/msys_auto_cc_1.v" \
 

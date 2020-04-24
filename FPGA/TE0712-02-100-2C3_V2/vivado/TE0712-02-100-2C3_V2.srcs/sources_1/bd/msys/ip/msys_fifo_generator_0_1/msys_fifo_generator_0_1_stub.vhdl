@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
--- Date        : Fri Apr 24 17:53:16 2020
+-- Date        : Fri Apr 24 17:53:15 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               c:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_fifo_generator_0_1/msys_fifo_generator_0_1_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top msys_fifo_generator_0_1 -prefix
+--               msys_fifo_generator_0_1_ msys_fifo_generator_0_1_stub.vhdl
 -- Design      : msys_fifo_generator_0_1
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tfgg484-2
