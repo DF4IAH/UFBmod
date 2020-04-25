@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="msys" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1587764565"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1587764565"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1587764565"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1587764565"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1587801270"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1587801270"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1587801270"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1587801270"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\msys_SC0712_0_0\msys_SC0712_0_0.xci" Type="IP">
         <Instance HierarchyPath="SC0712_0"/>
@@ -206,7 +206,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_proc_sys_reset_eth_0\msys_proc_sys_reset_eth_0.xci" Type="IP">
-        <Instance HierarchyPath="proc_sys_reset_eth"/>
+        <Instance HierarchyPath="ETH0_proc_sys_reset_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -798,7 +798,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_proc_sys_reset_0_1\msys_proc_sys_reset_0_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX_clk_sys_reset_0"/>
+        <Instance HierarchyPath="TRX_proc_sys_reset_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -1085,6 +1085,16 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
+      <File Name="synth\msys.vhd" Type="VHDL">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+      </File>
+      <File Name="sim\msys.vhd" Type="VHDL">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
       <File Name="ip\msys_auto_cc_0\msys_auto_cc_0.xci" Type="IP">
         <Instance HierarchyPath="microblaze_0_axi_periph/m03_couplers/auto_cc"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -1099,16 +1109,6 @@
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="synth\msys.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-      </File>
-      <File Name="sim\msys.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="msys.bmm" Type="BMM">
