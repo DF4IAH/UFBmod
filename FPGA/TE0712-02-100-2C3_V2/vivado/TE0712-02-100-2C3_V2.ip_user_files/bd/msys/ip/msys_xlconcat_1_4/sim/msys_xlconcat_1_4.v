@@ -58,10 +58,6 @@ module msys_xlconcat_1_4 (
   In1,
   In2,
   In3,
-  In4,
-  In5,
-  In6,
-  In7,
   dout
 );
 
@@ -69,11 +65,7 @@ input wire [12 : 0] In0;
 input wire [2 : 0] In1;
 input wire [12 : 0] In2;
 input wire [2 : 0] In3;
-input wire [12 : 0] In4;
-input wire [2 : 0] In5;
-input wire [12 : 0] In6;
-input wire [2 : 0] In7;
-output wire [63 : 0] dout;
+output wire [31 : 0] dout;
 
   xlconcat_v2_1_3_xlconcat #(
     .IN0_WIDTH(13),
@@ -108,17 +100,17 @@ output wire [63 : 0] dout;
     .IN29_WIDTH(1),
     .IN30_WIDTH(1),
     .IN31_WIDTH(1),
-    .dout_width(64),
-    .NUM_PORTS(8)
+    .dout_width(32),
+    .NUM_PORTS(4)
   ) inst (
     .In0(In0),
     .In1(In1),
     .In2(In2),
     .In3(In3),
-    .In4(In4),
-    .In5(In5),
-    .In6(In6),
-    .In7(In7),
+    .In4(13'B0),
+    .In5(3'B0),
+    .In6(13'B0),
+    .In7(3'B0),
     .In8(1'B0),
     .In9(1'B0),
     .In10(1'B0),

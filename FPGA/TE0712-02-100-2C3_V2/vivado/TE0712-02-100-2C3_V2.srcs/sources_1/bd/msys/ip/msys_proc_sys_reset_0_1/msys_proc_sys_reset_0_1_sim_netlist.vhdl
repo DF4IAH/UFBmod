@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
 -- Date        : Sat Apr 25 09:55:13 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_proc_sys_reset_0_1/msys_proc_sys_reset_0_1_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top msys_proc_sys_reset_0_1 -prefix
+--               msys_proc_sys_reset_0_1_ msys_proc_sys_reset_0_1_sim_netlist.vhdl
 -- Design      : msys_proc_sys_reset_0_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -25,8 +25,6 @@ entity msys_proc_sys_reset_0_1_cdc_sync is
     aux_reset_in : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_proc_sys_reset_0_1_cdc_sync : entity is "cdc_sync";
 end msys_proc_sys_reset_0_1_cdc_sync;
 
 architecture STRUCTURE of msys_proc_sys_reset_0_1_cdc_sync is
@@ -228,8 +226,6 @@ entity msys_proc_sys_reset_0_1_upcnt_n is
     seq_cnt_en : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_proc_sys_reset_0_1_upcnt_n : entity is "upcnt_n";
 end msys_proc_sys_reset_0_1_upcnt_n;
 
 architecture STRUCTURE of msys_proc_sys_reset_0_1_upcnt_n is
@@ -394,8 +390,6 @@ entity msys_proc_sys_reset_0_1_lpf is
     mb_debug_sys_rst : in STD_LOGIC;
     aux_reset_in : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_proc_sys_reset_0_1_lpf : entity is "lpf";
 end msys_proc_sys_reset_0_1_lpf;
 
 architecture STRUCTURE of msys_proc_sys_reset_0_1_lpf is
@@ -582,8 +576,6 @@ entity msys_proc_sys_reset_0_1_sequence_psr is
     lpf_int : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_proc_sys_reset_0_1_sequence_psr : entity is "sequence_psr";
 end msys_proc_sys_reset_0_1_sequence_psr;
 
 architecture STRUCTURE of msys_proc_sys_reset_0_1_sequence_psr is
@@ -922,8 +914,6 @@ entity msys_proc_sys_reset_0_1_proc_sys_reset is
   attribute C_NUM_PERP_ARESETN of msys_proc_sys_reset_0_1_proc_sys_reset : entity is 1;
   attribute C_NUM_PERP_RST : integer;
   attribute C_NUM_PERP_RST of msys_proc_sys_reset_0_1_proc_sys_reset : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of msys_proc_sys_reset_0_1_proc_sys_reset : entity is "proc_sys_reset";
 end msys_proc_sys_reset_0_1_proc_sys_reset;
 
 architecture STRUCTURE of msys_proc_sys_reset_0_1_proc_sys_reset is

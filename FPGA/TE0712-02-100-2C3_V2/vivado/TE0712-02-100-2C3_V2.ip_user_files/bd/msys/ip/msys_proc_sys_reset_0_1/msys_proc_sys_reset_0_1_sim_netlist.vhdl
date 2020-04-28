@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
--- Date        : Thu Apr 23 20:16:13 2020
+-- Date        : Sat Apr 25 09:55:13 2020
 -- Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim -rename_top msys_proc_sys_reset_0_1 -prefix
 --               msys_proc_sys_reset_0_1_ msys_proc_sys_reset_0_1_sim_netlist.vhdl
