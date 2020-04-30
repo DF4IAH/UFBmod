@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Root MajorVersion="0" MinorVersion="39">
-  <CompositeFile CompositeFileTopName="msys" CanBeSetAsTop="false" CanDisplayChildGraph="true">
+  <CompositeFile CompositeFileTopName="msys" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1588113414"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1588113414"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1588113414"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1588113414"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1588270442"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1588270442"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1588270442"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1588270442"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\msys_SC0712_0_0\msys_SC0712_0_0.xci" Type="IP">
         <Instance HierarchyPath="SC0712_0"/>
@@ -230,7 +230,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_util_ds_buf_0_0\msys_util_ds_buf_0_0.xci" Type="IP">
-        <Instance HierarchyPath="util_ds_buf_0"/>
+        <Instance HierarchyPath="CLK1B_util_ds_buf_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -238,7 +238,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_util_ds_buf_1_0\msys_util_ds_buf_1_0.xci" Type="IP">
-        <Instance HierarchyPath="util_ds_buf_1"/>
+        <Instance HierarchyPath="mgt_clk0_CLK2_util_ds_buf_1"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -518,7 +518,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_xlconstant_0_0\msys_xlconstant_0_0.xci" Type="IP">
-        <Instance HierarchyPath="PWM_lights/xlconstant_0_len28"/>
+        <Instance HierarchyPath="PWM_lights/xlconstant_0_len26"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -1325,6 +1325,16 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
+      <File Name="synth\msys.vhd" Type="VHDL">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+      </File>
+      <File Name="sim\msys.vhd" Type="VHDL">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
       <File Name="ip\msys_auto_cc_0\msys_auto_cc_0.xci" Type="IP">
         <Instance HierarchyPath="microblaze_0_axi_periph/m03_couplers/auto_cc"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -1339,16 +1349,6 @@
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="synth\msys.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-      </File>
-      <File Name="sim\msys.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="msys.bmm" Type="BMM">

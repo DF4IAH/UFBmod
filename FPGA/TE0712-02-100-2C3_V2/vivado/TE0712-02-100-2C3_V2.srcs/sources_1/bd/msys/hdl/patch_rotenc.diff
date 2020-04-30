@@ -1,5 +1,5 @@
---- msys_wrapper.vhd.orig	2020-04-23 18:57:49.176527300 +0200
-+++ msys_wrapper.vhd	2020-04-23 18:59:34.813514800 +0200
+--- msys_wrapper.vhd.orig	2020-04-29 12:08:13.008675400 +0200
++++ msys_wrapper.vhd	2020-04-29 12:28:07.247384300 +0200
 @@ -17,4 +17,6 @@
      BOARD_IIC_sda_io : inout STD_LOGIC;
      BOARD_ROTENC_PUSH : in STD_LOGIC;
@@ -7,15 +7,17 @@
 +    BOARD_ROTENC_Q : in STD_LOGIC;
      CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
      CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-@@ -93,8 +95,4 @@
+@@ -94,9 +96,5 @@
+     qspi_flash_io3_io : inout STD_LOGIC;
      qspi_flash_ss_io : inout STD_LOGIC;
-     reset : in STD_LOGIC;
+-    reset : in STD_LOGIC;
 -    rotenc_dec_cnt_en : in STD_LOGIC;
 -    rotenc_dec_cnt_up_dwn : in STD_LOGIC;
 -    rotenc_decoder_clk : out STD_LOGIC;
--    rotenc_decoder_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
-     sys_diff_clock_clk_n : in STD_LOGIC;
-     sys_diff_clock_clk_p : in STD_LOGIC
+-    rotenc_decoder_reset : out STD_LOGIC_VECTOR ( 0 to 0 )
++    reset : in STD_LOGIC
+   );
+ end msys_wrapper;
 @@ -226,4 +224,14 @@
    );
    end component IOBUF;
@@ -51,13 +53,13 @@
 +      rotenc_Q => BOARD_ROTENC_Q,
 +      cnt_up_dwn => rotenc_dec_cnt_up_dwn,
 +      cnt_en => rotenc_dec_cnt_en
-+     );
++    );
  msys_i: component msys
       port map (
-@@ -427,5 +448,5 @@
+@@ -429,5 +450,5 @@
        rotenc_dec_cnt_up_dwn => rotenc_dec_cnt_up_dwn,
        rotenc_decoder_clk => rotenc_decoder_clk,
--      rotenc_decoder_reset(0) => rotenc_decoder_reset(0),
-+      rotenc_decoder_reset(0) => rotenc_decoder_reset,
-       sys_diff_clock_clk_n => sys_diff_clock_clk_n,
-       sys_diff_clock_clk_p => sys_diff_clock_clk_p
+-      rotenc_decoder_reset(0) => rotenc_decoder_reset(0)
++      rotenc_decoder_reset(0) => rotenc_decoder_reset
+     );
+ onewire_EUI48_tri_iobuf_0: component IOBUF

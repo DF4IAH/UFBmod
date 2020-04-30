@@ -42,13 +42,13 @@
     <TimePeriod>2500</TimePeriod>
     <VccAuxIO>1.8V</VccAuxIO>
     <PHYRatio>4:1</PHYRatio>
-    <InputClkFreq>400</InputClkFreq>
+    <InputClkFreq>100</InputClkFreq>
     <UIExtraClocks>1</UIExtraClocks>
     <MMCM_VCO>800</MMCM_VCO>
     <MMCMClkOut0> 4.000</MMCMClkOut0>
     <MMCMClkOut1>8</MMCMClkOut1>
     <MMCMClkOut2>16</MMCMClkOut2>
-    <MMCMClkOut3>8</MMCMClkOut3>
+    <MMCMClkOut3>1</MMCMClkOut3>
     <MMCMClkOut4>1</MMCMClkOut4>
     <DataWidth>32</DataWidth>
     <DeepMemory>1</DeepMemory>

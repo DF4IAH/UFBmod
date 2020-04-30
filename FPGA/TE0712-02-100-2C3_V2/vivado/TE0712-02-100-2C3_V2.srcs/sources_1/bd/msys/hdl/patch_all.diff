@@ -1,0 +1,96 @@
+--- msys_wrapper.vhd.old	2020-04-30 20:14:00.524470400 +0200
++++ msys_wrapper.vhd	2020-04-30 20:27:11.040676100 +0200
+@@ -2,5 +2,5 @@
+ ----------------------------------------------------------------------------------
+ --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
+---Date        : Thu Apr 30 20:14:00 2020
++--Date        : Thu Apr 30 16:49:07 2020
+ --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
+ --Command     : generate_target msys_wrapper.bd
+@@ -17,4 +17,6 @@
+     BOARD_IIC_sda_io : inout STD_LOGIC;
+     BOARD_ROTENC_PUSH : in STD_LOGIC;
++    BOARD_ROTENC_I : in STD_LOGIC;
++    BOARD_ROTENC_Q : in STD_LOGIC;
+     CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
+     CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
+@@ -42,5 +44,5 @@
+     ETH0_DA_G : out STD_LOGIC_VECTOR ( 0 to 0 );
+     ETH0_DA_Y : out STD_LOGIC;
+-    ETH0_LINK_LED_g : in STD_LOGIC;
++    ETH0_LINK_LED : in STD_LOGIC;
+     ETH0_MDIO_MDC_mdc : out STD_LOGIC;
+     ETH0_MDIO_MDC_mdio_io : inout STD_LOGIC;
+@@ -94,9 +96,5 @@
+     qspi_flash_io3_io : inout STD_LOGIC;
+     qspi_flash_ss_io : inout STD_LOGIC;
+-    reset : in STD_LOGIC;
+-    rotenc_dec_cnt_en : in STD_LOGIC;
+-    rotenc_dec_cnt_up_dwn : in STD_LOGIC;
+-    rotenc_decoder_clk : out STD_LOGIC;
+-    rotenc_decoder_reset : out STD_LOGIC_VECTOR ( 0 to 0 )
++    reset : in STD_LOGIC
+   );
+ end msys_wrapper;
+@@ -226,4 +224,20 @@
+   );
+   end component IOBUF;
++  component rotenc_decoder is
++  port (
++    clk : in STD_LOGIC;
++    reset : in STD_LOGIC;
++    rotenc_I : in STD_LOGIC;
++    rotenc_Q : in STD_LOGIC;
++    cnt_up_dwn : out STD_LOGIC;
++    cnt_en : out STD_LOGIC
++  );
++  end component rotenc_decoder;
++  component IBUF is
++  port (
++    I : in STD_LOGIC;
++    O : out STD_LOGIC
++  );
++  end component IBUF;
+   signal BOARD_IIC_scl_i : STD_LOGIC;
+   signal BOARD_IIC_scl_o : STD_LOGIC;
+@@ -235,4 +249,5 @@
+   signal ETH0_MDIO_MDC_mdio_o : STD_LOGIC;
+   signal ETH0_MDIO_MDC_mdio_t : STD_LOGIC;
++  signal ETH0_LINK_LED_g : STD_LOGIC;
+   signal TRX_spi_io0_i : STD_LOGIC;
+   signal TRX_spi_io0_o : STD_LOGIC;
+@@ -267,4 +282,8 @@
+   signal qspi_flash_ss_o : STD_LOGIC;
+   signal qspi_flash_ss_t : STD_LOGIC;
++  signal rotenc_dec_cnt_en : STD_LOGIC;
++  signal rotenc_dec_cnt_up_dwn : STD_LOGIC;
++  signal rotenc_decoder_clk : STD_LOGIC;
++  signal rotenc_decoder_reset : STD_LOGIC;
+ begin
+ BOARD_IIC_scl_iobuf: component IOBUF
+@@ -317,4 +336,18 @@
+       T => TRX_spi_ss_t
+     );
++ETH0_LINK_LED_0: component IBUF
++     port map (
++      I => ETH0_LINK_LED,
++      O => ETH0_LINK_LED_g
++    );
++rotenc_decoder_i: component rotenc_decoder
++     port map (
++      clk => rotenc_decoder_clk,
++      reset => rotenc_decoder_reset,
++      rotenc_I => BOARD_ROTENC_I,
++      rotenc_Q => BOARD_ROTENC_Q,
++      cnt_up_dwn => rotenc_dec_cnt_up_dwn,
++      cnt_en => rotenc_dec_cnt_en
++    );
+ msys_i: component msys
+      port map (
+@@ -429,5 +462,5 @@
+       rotenc_dec_cnt_up_dwn => rotenc_dec_cnt_up_dwn,
+       rotenc_decoder_clk => rotenc_decoder_clk,
+-      rotenc_decoder_reset(0) => rotenc_decoder_reset(0)
++      rotenc_decoder_reset(0) => rotenc_decoder_reset
+     );
+ onewire_EUI48_tri_iobuf_0: component IOBUF

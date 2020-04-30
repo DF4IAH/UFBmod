@@ -572,15 +572,15 @@
   "../../../bd/msys/ip/msys_xlconstant_0_9/sim/msys_xlconstant_0_9.v" \
   "../../../bd/msys/ip/msys_xlconstant_0_10/sim/msys_xlconstant_0_10.v" \
 -endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/sim/msys.vhd" \
+-endlib
 -makelib xcelium_lib/axi_clock_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/9e81/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_auto_cc_0/sim/msys_auto_cc_0.v" \
   "../../../bd/msys/ip/msys_auto_cc_1/sim/msys_auto_cc_1.v" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/msys/sim/msys.vhd" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   glbl.v
