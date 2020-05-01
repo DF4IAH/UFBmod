@@ -41,6 +41,8 @@ architecture Behavioral of tb_null is
     BOARD_IIC_scl_io : inout STD_LOGIC;
     BOARD_IIC_sda_io : inout STD_LOGIC;
     BOARD_ROTENC_PUSH : in STD_LOGIC;
+    BOARD_ROTENC_I : in STD_LOGIC;
+    BOARD_ROTENC_Q : in STD_LOGIC;
     CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK1B_clk : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -118,11 +120,7 @@ architecture Behavioral of tb_null is
     qspi_flash_io2_io : inout STD_LOGIC;
     qspi_flash_io3_io : inout STD_LOGIC;
     qspi_flash_ss_io : inout STD_LOGIC;
-    reset : in STD_LOGIC;
-    rotenc_dec_cnt_en : in STD_LOGIC;
-    rotenc_dec_cnt_up_dwn : in STD_LOGIC;
-    rotenc_decoder_clk : out STD_LOGIC;
-    rotenc_decoder_reset : out STD_LOGIC_VECTOR ( 0 to 0 )
+    reset : in STD_LOGIC
   );
   end component msys_wrapper;
 
@@ -273,11 +271,9 @@ msys_wrapper_i: component msys_wrapper
     BOARD_IIC_scl_io => tb_BOARD_IIC_scl_io,
     BOARD_IIC_sda_io => tb_BOARD_IIC_sda_io,
 
-    rotenc_decoder_clk => tb_rd_clk,
-    rotenc_decoder_reset(0) => tb_rd_reset,
-    rotenc_dec_cnt_up_dwn => tb_rd_cnt_up_dwn,
-    rotenc_dec_cnt_en => tb_rd_cnt_en,
-    BOARD_ROTENC_PUSH => '0',
+    BOARD_ROTENC_I => 'H',
+    BOARD_ROTENC_Q => 'H',
+    BOARD_ROTENC_PUSH => 'H',
 
 --    LCD_rstn : out STD_LOGIC_VECTOR ( 0 to 0 );
 --    LCD_BL : out STD_LOGIC_VECTOR ( 0 to 0 );
