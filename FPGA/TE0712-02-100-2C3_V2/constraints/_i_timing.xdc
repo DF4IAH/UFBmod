@@ -10,6 +10,7 @@ create_clock -period 15.625 -name {TRX_rx_clk_64MHz_clk_p}  -waveform {0.000  7.
 create_clock -period 40.000 -name {RMII_rx_clk}                                      [get_pins {msys_i/ETH0/mii_to_rmii_0/U0/rmii2mac_rx_clk_bi_reg/Q}]
 
 
+set_false_path -from [get_clocks {CFGMCLK}] -to [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT]]
 set_false_path -from [get_clocks {CFGMCLK}] -to [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKOUT5]]
 set_false_path -from [get_clocks {CFGMCLK}] -to [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKOUT6]]
 

@@ -124,17 +124,6 @@ architecture Behavioral of tb_null is
   );
   end component msys_wrapper;
 
-  component rotenc_decoder is
-  port (
-    clk : in STD_LOGIC;
-    reset : in STD_LOGIC;
-    rotenc_I : in STD_LOGIC;
-    rotenc_Q : in STD_LOGIC;
-    cnt_up_dwn : out STD_LOGIC;
-    cnt_en : out STD_LOGIC
-  );
-  end component rotenc_decoder;
-
 -- RESETS
   signal tb_reset : STD_LOGIC;
   
@@ -179,14 +168,6 @@ architecture Behavioral of tb_null is
   signal tb_TRX_spi_sck_io : STD_LOGIC;
   signal tb_TRX_spi_ss_io : STD_LOGIC;
 
--- rotenc_decoder_i
-  signal tb_rd_clk : STD_LOGIC;
-  signal tb_rd_reset : STD_LOGIC;
-  signal tb_rd_rotenc_I : STD_LOGIC;
-  signal tb_rd_rotenc_Q : STD_LOGIC;
-  signal tb_rd_cnt_up_dwn : STD_LOGIC;
-  signal tb_rd_cnt_en : STD_LOGIC;
-
 begin
 msys_wrapper_i: component msys_wrapper
   port map (
@@ -217,9 +198,9 @@ msys_wrapper_i: component msys_wrapper
     ULI_SYSTEM_XIO => 'L',
 
     qspi_flash_io0_io => tb_qspi_flash_io0_io,
-    qspi_flash_io1_io => tb_qspi_flash_io0_io,
-    qspi_flash_io2_io => tb_qspi_flash_io0_io,
-    qspi_flash_io3_io => tb_qspi_flash_io0_io,
+    qspi_flash_io1_io => tb_qspi_flash_io1_io,
+    qspi_flash_io2_io => tb_qspi_flash_io2_io,
+    qspi_flash_io3_io => tb_qspi_flash_io3_io,
     qspi_flash_ss_io => tb_qspi_flash_ss_io,
 
     PLL_int => '0',
@@ -302,25 +283,16 @@ msys_wrapper_i: component msys_wrapper
 --    TRX_tx_data_n : out STD_LOGIC_VECTOR ( 1 downto 0 );
   );
 
-rotenc_decoder_i: component rotenc_decoder
-  port map (
-    clk => tb_rd_clk,
-    reset => tb_rd_reset,
-    rotenc_I => tb_rd_rotenc_I,
-    rotenc_Q => tb_rd_rotenc_Q,
-    cnt_up_dwn => tb_rd_cnt_up_dwn,
-    cnt_en => tb_rd_cnt_en
-  );
-
   
 -- RESETS
 
   proc_tb_reset: process
   begin
-  tb_reset <= '0';
+    tb_reset <= '1';
 
-  wait for 1us;
-  tb_reset <= '1';
+    wait for 10us;
+    tb_reset <= '0';
+    wait;
   end process proc_tb_reset;
 
 
@@ -381,5 +353,65 @@ rotenc_decoder_i: component rotenc_decoder
     tb_TRX_clk_26MHz <= '0';
     wait for 19.231ns;
   end process proc_tb_TRX_clk_26MHz;
+  
+  -- 64 MHz from TRX LVDS rx
+  proc_tb_TRX_rx_clk_64MHz_clk: process
+  begin
+    tb_TRX_rx_clk_64MHz_clk_p <= '1';
+    tb_TRX_rx_clk_64MHz_clk_n <= '0';
+    wait for 7.8125ns;
+    
+    tb_TRX_rx_clk_64MHz_clk_p <= '0';
+    tb_TRX_rx_clk_64MHz_clk_n <= '1';
+    wait for 7.8125ns;
+  end process proc_tb_TRX_rx_clk_64MHz_clk;
+  
+  
+-- INITIAL VALUES
+
+  proc_tb_TRX_rx_data: process
+  begin
+    tb_TRX_rx_data_p <= "11";
+    tb_TRX_rx_data_n <= "00";
+    wait;
+  end process proc_tb_TRX_rx_data;
+
+  proc_tb_qspi_flash: process
+  begin
+    tb_qspi_flash_io0_io <= 'L';
+    tb_qspi_flash_io1_io <= 'L';
+    tb_qspi_flash_io2_io <= 'L';
+    tb_qspi_flash_io3_io <= 'H';
+    tb_qspi_flash_ss_io  <= 'H';
+    wait;
+  end process proc_tb_qspi_flash;
+  
+  proc_tb_ETH0_MDIO_MDC_mdio_io: process
+  begin
+    tb_ETH0_MDIO_MDC_mdio_io <= 'H';
+    wait;
+  end process proc_tb_ETH0_MDIO_MDC_mdio_io;
+  
+  proc_tb_onewire_EUI48_tri_io: process
+  begin
+    tb_onewire_EUI48_tri_io <= 'H';
+    wait;
+  end process proc_tb_onewire_EUI48_tri_io;
+  
+  proc_tb_BOARD_IIC_xxx_io: process
+  begin
+    tb_BOARD_IIC_scl_io <= 'H';
+    tb_BOARD_IIC_sda_io <= 'H';
+    wait;
+  end process proc_tb_BOARD_IIC_xxx_io;
+  
+  proc_tb_TRX_spi_xxx_io: process
+  begin
+    tb_TRX_spi_io0_io <= 'H';
+    tb_TRX_spi_io1_io <= 'H';
+    tb_TRX_spi_sck_io <= 'L';
+    tb_TRX_spi_ss_io  <= 'H';
+    wait;
+  end process proc_tb_TRX_spi_xxx_io;
   
 end Behavioral;

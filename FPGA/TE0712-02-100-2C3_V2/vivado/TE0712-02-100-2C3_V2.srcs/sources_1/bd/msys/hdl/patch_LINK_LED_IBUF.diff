@@ -1,12 +1,5 @@
 --- msys_wrapper.vhd.old	2020-04-30 20:14:00.524470400 +0200
 +++ msys_wrapper.vhd	2020-04-30 20:25:16.763814100 +0200
-@@ -2,5 +2,5 @@
- ----------------------------------------------------------------------------------
- --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
----Date        : Thu Apr 30 20:14:00 2020
-+--Date        : Thu Apr 30 16:49:07 2020
- --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
- --Command     : generate_target msys_wrapper.bd
 @@ -42,5 +42,5 @@
      ETH0_DA_G : out STD_LOGIC_VECTOR ( 0 to 0 );
      ETH0_DA_Y : out STD_LOGIC;
