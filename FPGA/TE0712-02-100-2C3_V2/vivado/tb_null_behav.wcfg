@@ -22,15 +22,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="12015072000fs"></ZoomStartTime>
-      <ZoomEndTime time="12282772001fs"></ZoomEndTime>
-      <Cursor1Time time="12238072000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="54758013783fs"></ZoomEndTime>
+      <Cursor1Time time="15000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="370"></NameColumnWidth>
-      <ValueColumnWidth column_width="116"></ValueColumnWidth>
+      <NameColumnWidth column_width="440"></NameColumnWidth>
+      <ValueColumnWidth column_width="144"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="54" />
+   <WVObjectSize size="39" />
    <wave_markers>
       <marker time="21854563937" label="" />
    </wave_markers>
@@ -160,9 +160,21 @@
       <obj_property name="ElementShortName">tb_TRX_spi_ss_io</obj_property>
       <obj_property name="ObjectShortName">tb_TRX_spi_ss_io</obj_property>
    </wvobject>
+   <wvobject type="divider" fp_name="divider1298">
+      <obj_property name="label">DRIVE ME</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SC0712_0_reset_out" type="logic">
+      <obj_property name="ElementShortName">SC0712_0_reset_out</obj_property>
+      <obj_property name="ObjectShortName">SC0712_0_reset_out</obj_property>
+   </wvobject>
    <wvobject type="divider" fp_name="divider43">
       <obj_property name="label">Internals</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/ARESETN_1" type="array">
+      <obj_property name="ElementShortName">ARESETN_1[0:0]</obj_property>
+      <obj_property name="ObjectShortName">ARESETN_1[0:0]</obj_property>
    </wvobject>
    <wvobject fp_name="group67" type="group">
       <obj_property name="label">proc_sys_reset_0</obj_property>
@@ -234,10 +246,6 @@
          </wvobject>
       </wvobject>
    </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/ARESETN_1" type="array">
-      <obj_property name="ElementShortName">ARESETN_1[0:0]</obj_property>
-      <obj_property name="ObjectShortName">ARESETN_1[0:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_ABUS" type="array">
       <obj_property name="ElementShortName">ilmb_ABUS[0:31]</obj_property>
       <obj_property name="ObjectShortName">ilmb_ABUS[0:31]</obj_property>
@@ -249,7 +257,6 @@
    <wvobject fp_name="group175" type="group">
       <obj_property name="label">mig_7series_0</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="group241" type="group">
          <obj_property name="label">IN</obj_property>
          <obj_property name="DisplayName">label</obj_property>
@@ -715,85 +722,152 @@
          <obj_property name="ObjectShortName">peripheral_aresetn[0:0]</obj_property>
       </wvobject>
    </wvobject>
+   <wvobject fp_name="group1317" type="group">
+      <obj_property name="label">TRX_rx_selectio_wiz_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/ref_clock" type="logic">
+         <obj_property name="ElementShortName">ref_clock</obj_property>
+         <obj_property name="ObjectShortName">ref_clock</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/clk_in_p" type="logic">
+         <obj_property name="ElementShortName">clk_in_p</obj_property>
+         <obj_property name="ObjectShortName">clk_in_p</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/clk_in_n" type="logic">
+         <obj_property name="ElementShortName">clk_in_n</obj_property>
+         <obj_property name="ObjectShortName">clk_in_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/clk_reset" type="logic">
+         <obj_property name="ElementShortName">clk_reset</obj_property>
+         <obj_property name="ObjectShortName">clk_reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="group1343" type="group">
+         <obj_property name="label">TRX_proc_sys_reset_0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_proc_sys_reset_0/slowest_sync_clk" type="logic">
+            <obj_property name="ElementShortName">slowest_sync_clk</obj_property>
+            <obj_property name="ObjectShortName">slowest_sync_clk</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_proc_sys_reset_0/ext_reset_in" type="logic">
+            <obj_property name="ElementShortName">ext_reset_in</obj_property>
+            <obj_property name="ObjectShortName">ext_reset_in</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_proc_sys_reset_0/aux_reset_in" type="logic">
+            <obj_property name="ElementShortName">aux_reset_in</obj_property>
+            <obj_property name="ObjectShortName">aux_reset_in</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_proc_sys_reset_0/mb_debug_sys_rst" type="logic">
+            <obj_property name="ElementShortName">mb_debug_sys_rst</obj_property>
+            <obj_property name="ObjectShortName">mb_debug_sys_rst</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_proc_sys_reset_0/dcm_locked" type="logic">
+            <obj_property name="ElementShortName">dcm_locked</obj_property>
+            <obj_property name="ObjectShortName">dcm_locked</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_proc_sys_reset_0/bus_struct_reset" type="array">
+            <obj_property name="ElementShortName">bus_struct_reset[0:0]</obj_property>
+            <obj_property name="ObjectShortName">bus_struct_reset[0:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_proc_sys_reset_0/interconnect_aresetn" type="array">
+            <obj_property name="ElementShortName">interconnect_aresetn[0:0]</obj_property>
+            <obj_property name="ObjectShortName">interconnect_aresetn[0:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_proc_sys_reset_0/peripheral_reset" type="array">
+            <obj_property name="ElementShortName">peripheral_reset[0:0]</obj_property>
+            <obj_property name="ObjectShortName">peripheral_reset[0:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_proc_sys_reset_0/peripheral_aresetn" type="array">
+            <obj_property name="ElementShortName">peripheral_aresetn[0:0]</obj_property>
+            <obj_property name="ObjectShortName">peripheral_aresetn[0:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_proc_sys_reset_0/mb_reset" type="logic">
+            <obj_property name="ElementShortName">mb_reset</obj_property>
+            <obj_property name="ObjectShortName">mb_reset</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group1337" type="group">
+         <obj_property name="label">counter_binary_0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/counter_binary_0/CLK" type="logic">
+            <obj_property name="ElementShortName">CLK</obj_property>
+            <obj_property name="ObjectShortName">CLK</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/counter_binary_0/SCLR" type="logic">
+            <obj_property name="ElementShortName">SCLR</obj_property>
+            <obj_property name="ObjectShortName">SCLR</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/counter_binary_0/Q" type="array">
+            <obj_property name="ElementShortName">Q[6:0]</obj_property>
+            <obj_property name="ObjectShortName">Q[6:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/io_reset" type="logic">
+         <obj_property name="ElementShortName">io_reset</obj_property>
+         <obj_property name="ObjectShortName">io_reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/data_in_from_pins_p" type="array">
+         <obj_property name="ElementShortName">data_in_from_pins_p[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_from_pins_p[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/data_in_from_pins_n" type="array">
+         <obj_property name="ElementShortName">data_in_from_pins_n[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_from_pins_n[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/bitslip" type="array">
+         <obj_property name="ElementShortName">bitslip[1:0]</obj_property>
+         <obj_property name="ObjectShortName">bitslip[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/data_out_from_device" type="array">
+         <obj_property name="ElementShortName">data_out_from_device[15:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_from_device[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/delay_locked" type="logic">
+         <obj_property name="ElementShortName">delay_locked</obj_property>
+         <obj_property name="ObjectShortName">delay_locked</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/clk_div_out" type="logic">
+         <obj_property name="ElementShortName">clk_div_out</obj_property>
+         <obj_property name="ObjectShortName">clk_div_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/data_in_to_device" type="array">
+         <obj_property name="ElementShortName">data_in_to_device[15:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_to_device[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/clk_to_pins_p" type="logic">
+         <obj_property name="ElementShortName">clk_to_pins_p</obj_property>
+         <obj_property name="ObjectShortName">clk_to_pins_p</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/clk_to_pins_n" type="logic">
+         <obj_property name="ElementShortName">clk_to_pins_n</obj_property>
+         <obj_property name="ObjectShortName">clk_to_pins_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/data_out_to_pins_p" type="array">
+         <obj_property name="ElementShortName">data_out_to_pins_p[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_to_pins_p[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/data_out_to_pins_n" type="array">
+         <obj_property name="ElementShortName">data_out_to_pins_n[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_to_pins_n[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/SYS_W" type="array">
+         <obj_property name="ElementShortName">SYS_W[31:0]</obj_property>
+         <obj_property name="ObjectShortName">SYS_W[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/DEV_W" type="array">
+         <obj_property name="ElementShortName">DEV_W[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DEV_W[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
    <wvobject type="divider" fp_name="divider189">
       <obj_property name="label">DEBUG</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/mmcm_clk" type="logic">
-      <obj_property name="ElementShortName">mmcm_clk</obj_property>
-      <obj_property name="ObjectShortName">mmcm_clk</obj_property>
-   </wvobject>
    <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/ext_reset_in" type="logic">
       <obj_property name="ElementShortName">ext_reset_in</obj_property>
       <obj_property name="ObjectShortName">ext_reset_in</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SC0712_0_reset_out" type="logic">
-      <obj_property name="ElementShortName">SC0712_0_reset_out</obj_property>
-      <obj_property name="ObjectShortName">SC0712_0_reset_out</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/mmcm_locked" type="logic">
-      <obj_property name="ElementShortName">mmcm_locked</obj_property>
-      <obj_property name="ObjectShortName">mmcm_locked</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/pll_locked_i" type="logic">
-      <obj_property name="ElementShortName">pll_locked_i</obj_property>
-      <obj_property name="ObjectShortName">pll_locked_i</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/dcm_locked" type="logic">
-      <obj_property name="ElementShortName">dcm_locked</obj_property>
-      <obj_property name="ObjectShortName">dcm_locked</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/clk_ref_i" type="logic">
-      <obj_property name="ElementShortName">clk_ref_i</obj_property>
-      <obj_property name="ObjectShortName">clk_ref_i</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/phy_clk" type="logic">
-      <obj_property name="ElementShortName">phy_clk</obj_property>
-      <obj_property name="ObjectShortName">phy_clk</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/freq_refclk" type="logic">
-      <obj_property name="ElementShortName">freq_refclk</obj_property>
-      <obj_property name="ObjectShortName">freq_refclk</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/\ddr_phy_4lanes_0.u_ddr_phy_4lanes /pll_lock" type="logic">
-      <obj_property name="ElementShortName">pll_lock</obj_property>
-      <obj_property name="ObjectShortName">pll_lock</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_memc_ui_top_axi/mem_intfc0/ddr_phy_top0/u_ddr_mc_phy_wrapper/u_ddr_mc_phy/ref_dll_lock_w" type="array">
-      <obj_property name="ElementShortName">ref_dll_lock_w[1:0]</obj_property>
-      <obj_property name="ObjectShortName">ref_dll_lock_w[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/ref_dll_lock" type="logic">
-      <obj_property name="ElementShortName">ref_dll_lock</obj_property>
-      <obj_property name="ObjectShortName">ref_dll_lock</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/iodelay_ctrl_rdy[0]" type="logic">
-      <obj_property name="ElementShortName">[0]</obj_property>
-      <obj_property name="ObjectShortName">[0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/rstdiv0_sync_r" type="array">
-      <obj_property name="ElementShortName">rstdiv0_sync_r[11:0]</obj_property>
-      <obj_property name="ObjectShortName">rstdiv0_sync_r[11:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/rstdiv0_sync_r1" type="logic">
-      <obj_property name="ElementShortName">rstdiv0_sync_r1</obj_property>
-      <obj_property name="ObjectShortName">rstdiv0_sync_r1</obj_property>
-   </wvobject>
-   <wvobject fp_name="group44" type="group">
-      <obj_property name="label">counter_binary_0</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/counter_binary_0/CLK" type="logic">
-         <obj_property name="ElementShortName">CLK</obj_property>
-         <obj_property name="ObjectShortName">CLK</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/counter_binary_0/SCLR" type="logic">
-         <obj_property name="ElementShortName">SCLR</obj_property>
-         <obj_property name="ObjectShortName">SCLR</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/counter_binary_0/Q" type="array">
-         <obj_property name="ElementShortName">Q[6:0]</obj_property>
-         <obj_property name="ObjectShortName">Q[6:0]</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/inst/io_reset" type="logic">
       <obj_property name="ElementShortName">io_reset</obj_property>
@@ -806,381 +880,5 @@
    <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/inst/clk_fwd_out" type="logic">
       <obj_property name="ElementShortName">clk_fwd_out</obj_property>
       <obj_property name="ObjectShortName">clk_fwd_out</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/ARESETN_1" type="array">
-      <obj_property name="ElementShortName">ARESETN_1[0:0]</obj_property>
-      <obj_property name="ObjectShortName">ARESETN_1[0:0]</obj_property>
-   </wvobject>
-   <wvobject type="divider" fp_name="divider191">
-      <obj_property name="label">TEST</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-   </wvobject>
-   <wvobject fp_name="group202" type="group">
-      <obj_property name="label">microblaze_mcs_0</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/Clk" type="logic">
-         <obj_property name="ElementShortName">Clk</obj_property>
-         <obj_property name="ObjectShortName">Clk</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/Reset" type="logic">
-         <obj_property name="ElementShortName">Reset</obj_property>
-         <obj_property name="ObjectShortName">Reset</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/GPIO1_tri_i" type="array">
-         <obj_property name="ElementShortName">GPIO1_tri_i[31:0]</obj_property>
-         <obj_property name="ObjectShortName">GPIO1_tri_i[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/GPIO1_tri_o" type="array">
-         <obj_property name="ElementShortName">GPIO1_tri_o[31:0]</obj_property>
-         <obj_property name="ObjectShortName">GPIO1_tri_o[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/Clk2" type="logic">
-         <obj_property name="ElementShortName">Clk2</obj_property>
-         <obj_property name="ObjectShortName">Clk2</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/IO_Rst" type="array">
-         <obj_property name="ElementShortName">IO_Rst[0:0]</obj_property>
-         <obj_property name="ObjectShortName">IO_Rst[0:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/LMB_Rst2" type="array">
-         <obj_property name="ElementShortName">LMB_Rst2[0:0]</obj_property>
-         <obj_property name="ObjectShortName">LMB_Rst2[0:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/MB_Reset" type="logic">
-         <obj_property name="ElementShortName">MB_Reset</obj_property>
-         <obj_property name="ObjectShortName">MB_Reset</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_ABUS" type="array">
-         <obj_property name="ElementShortName">dlmb_ABUS[0:31]</obj_property>
-         <obj_property name="ObjectShortName">dlmb_ABUS[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_ADDRSTROBE" type="logic">
-         <obj_property name="ElementShortName">dlmb_ADDRSTROBE</obj_property>
-         <obj_property name="ObjectShortName">dlmb_ADDRSTROBE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_BE" type="array">
-         <obj_property name="ElementShortName">dlmb_BE[0:3]</obj_property>
-         <obj_property name="ObjectShortName">dlmb_BE[0:3]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_CE" type="logic">
-         <obj_property name="ElementShortName">dlmb_CE</obj_property>
-         <obj_property name="ObjectShortName">dlmb_CE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_READDBUS" type="array">
-         <obj_property name="ElementShortName">dlmb_READDBUS[0:31]</obj_property>
-         <obj_property name="ObjectShortName">dlmb_READDBUS[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_READSTROBE" type="logic">
-         <obj_property name="ElementShortName">dlmb_READSTROBE</obj_property>
-         <obj_property name="ObjectShortName">dlmb_READSTROBE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_READY" type="logic">
-         <obj_property name="ElementShortName">dlmb_READY</obj_property>
-         <obj_property name="ObjectShortName">dlmb_READY</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_UE" type="logic">
-         <obj_property name="ElementShortName">dlmb_UE</obj_property>
-         <obj_property name="ObjectShortName">dlmb_UE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_WAIT" type="logic">
-         <obj_property name="ElementShortName">dlmb_WAIT</obj_property>
-         <obj_property name="ObjectShortName">dlmb_WAIT</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_WRITEDBUS" type="array">
-         <obj_property name="ElementShortName">dlmb_WRITEDBUS[0:31]</obj_property>
-         <obj_property name="ObjectShortName">dlmb_WRITEDBUS[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_WRITESTROBE" type="logic">
-         <obj_property name="ElementShortName">dlmb_WRITESTROBE</obj_property>
-         <obj_property name="ObjectShortName">dlmb_WRITESTROBE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_port_2_ADDR" type="array">
-         <obj_property name="ElementShortName">dlmb_port_2_ADDR[0:31]</obj_property>
-         <obj_property name="ObjectShortName">dlmb_port_2_ADDR[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_port_2_CLK" type="logic">
-         <obj_property name="ElementShortName">dlmb_port_2_CLK</obj_property>
-         <obj_property name="ObjectShortName">dlmb_port_2_CLK</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_port_2_DIN" type="array">
-         <obj_property name="ElementShortName">dlmb_port_2_DIN[0:31]</obj_property>
-         <obj_property name="ObjectShortName">dlmb_port_2_DIN[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_port_2_DOUT" type="array">
-         <obj_property name="ElementShortName">dlmb_port_2_DOUT[31:0]</obj_property>
-         <obj_property name="ObjectShortName">dlmb_port_2_DOUT[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_port_2_EN" type="logic">
-         <obj_property name="ElementShortName">dlmb_port_2_EN</obj_property>
-         <obj_property name="ObjectShortName">dlmb_port_2_EN</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_port_2_RST" type="logic">
-         <obj_property name="ElementShortName">dlmb_port_2_RST</obj_property>
-         <obj_property name="ObjectShortName">dlmb_port_2_RST</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_port_2_WE" type="array">
-         <obj_property name="ElementShortName">dlmb_port_2_WE[0:3]</obj_property>
-         <obj_property name="ObjectShortName">dlmb_port_2_WE[0:3]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_port_ADDR" type="array">
-         <obj_property name="ElementShortName">dlmb_port_ADDR[0:31]</obj_property>
-         <obj_property name="ObjectShortName">dlmb_port_ADDR[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_port_CLK" type="logic">
-         <obj_property name="ElementShortName">dlmb_port_CLK</obj_property>
-         <obj_property name="ObjectShortName">dlmb_port_CLK</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_port_DIN" type="array">
-         <obj_property name="ElementShortName">dlmb_port_DIN[0:31]</obj_property>
-         <obj_property name="ObjectShortName">dlmb_port_DIN[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_port_DOUT" type="array">
-         <obj_property name="ElementShortName">dlmb_port_DOUT[31:0]</obj_property>
-         <obj_property name="ObjectShortName">dlmb_port_DOUT[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_port_EN" type="logic">
-         <obj_property name="ElementShortName">dlmb_port_EN</obj_property>
-         <obj_property name="ObjectShortName">dlmb_port_EN</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_port_RST" type="logic">
-         <obj_property name="ElementShortName">dlmb_port_RST</obj_property>
-         <obj_property name="ObjectShortName">dlmb_port_RST</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_port_WE" type="array">
-         <obj_property name="ElementShortName">dlmb_port_WE[0:3]</obj_property>
-         <obj_property name="ObjectShortName">dlmb_port_WE[0:3]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_sl_0_CE" type="logic">
-         <obj_property name="ElementShortName">dlmb_sl_0_CE</obj_property>
-         <obj_property name="ObjectShortName">dlmb_sl_0_CE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_sl_0_READDBUS" type="array">
-         <obj_property name="ElementShortName">dlmb_sl_0_READDBUS[0:31]</obj_property>
-         <obj_property name="ObjectShortName">dlmb_sl_0_READDBUS[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_sl_0_READY" type="logic">
-         <obj_property name="ElementShortName">dlmb_sl_0_READY</obj_property>
-         <obj_property name="ObjectShortName">dlmb_sl_0_READY</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_sl_0_UE" type="logic">
-         <obj_property name="ElementShortName">dlmb_sl_0_UE</obj_property>
-         <obj_property name="ObjectShortName">dlmb_sl_0_UE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_sl_0_WAIT" type="logic">
-         <obj_property name="ElementShortName">dlmb_sl_0_WAIT</obj_property>
-         <obj_property name="ObjectShortName">dlmb_sl_0_WAIT</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_sl_1_CE" type="logic">
-         <obj_property name="ElementShortName">dlmb_sl_1_CE</obj_property>
-         <obj_property name="ObjectShortName">dlmb_sl_1_CE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_sl_1_READDBUS" type="array">
-         <obj_property name="ElementShortName">dlmb_sl_1_READDBUS[0:31]</obj_property>
-         <obj_property name="ObjectShortName">dlmb_sl_1_READDBUS[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_sl_1_READY" type="logic">
-         <obj_property name="ElementShortName">dlmb_sl_1_READY</obj_property>
-         <obj_property name="ObjectShortName">dlmb_sl_1_READY</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_sl_1_UE" type="logic">
-         <obj_property name="ElementShortName">dlmb_sl_1_UE</obj_property>
-         <obj_property name="ObjectShortName">dlmb_sl_1_UE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_sl_1_WAIT" type="logic">
-         <obj_property name="ElementShortName">dlmb_sl_1_WAIT</obj_property>
-         <obj_property name="ObjectShortName">dlmb_sl_1_WAIT</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_sl_2_CE" type="logic">
-         <obj_property name="ElementShortName">dlmb_sl_2_CE</obj_property>
-         <obj_property name="ObjectShortName">dlmb_sl_2_CE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_sl_2_READDBUS" type="array">
-         <obj_property name="ElementShortName">dlmb_sl_2_READDBUS[0:31]</obj_property>
-         <obj_property name="ObjectShortName">dlmb_sl_2_READDBUS[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_sl_2_READY" type="logic">
-         <obj_property name="ElementShortName">dlmb_sl_2_READY</obj_property>
-         <obj_property name="ObjectShortName">dlmb_sl_2_READY</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_sl_2_UE" type="logic">
-         <obj_property name="ElementShortName">dlmb_sl_2_UE</obj_property>
-         <obj_property name="ObjectShortName">dlmb_sl_2_UE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/dlmb_sl_2_WAIT" type="logic">
-         <obj_property name="ElementShortName">dlmb_sl_2_WAIT</obj_property>
-         <obj_property name="ObjectShortName">dlmb_sl_2_WAIT</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_ABUS" type="array">
-         <obj_property name="ElementShortName">ilmb_ABUS[0:31]</obj_property>
-         <obj_property name="ObjectShortName">ilmb_ABUS[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_ADDRSTROBE" type="logic">
-         <obj_property name="ElementShortName">ilmb_ADDRSTROBE</obj_property>
-         <obj_property name="ObjectShortName">ilmb_ADDRSTROBE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_CE" type="logic">
-         <obj_property name="ElementShortName">ilmb_CE</obj_property>
-         <obj_property name="ObjectShortName">ilmb_CE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_READDBUS" type="array">
-         <obj_property name="ElementShortName">ilmb_READDBUS[0:31]</obj_property>
-         <obj_property name="ObjectShortName">ilmb_READDBUS[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_READSTROBE" type="logic">
-         <obj_property name="ElementShortName">ilmb_READSTROBE</obj_property>
-         <obj_property name="ObjectShortName">ilmb_READSTROBE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_READY" type="logic">
-         <obj_property name="ElementShortName">ilmb_READY</obj_property>
-         <obj_property name="ObjectShortName">ilmb_READY</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_UE" type="logic">
-         <obj_property name="ElementShortName">ilmb_UE</obj_property>
-         <obj_property name="ObjectShortName">ilmb_UE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_WAIT" type="logic">
-         <obj_property name="ElementShortName">ilmb_WAIT</obj_property>
-         <obj_property name="ObjectShortName">ilmb_WAIT</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_port_2_ADDR" type="array">
-         <obj_property name="ElementShortName">ilmb_port_2_ADDR[0:31]</obj_property>
-         <obj_property name="ObjectShortName">ilmb_port_2_ADDR[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_port_2_CLK" type="logic">
-         <obj_property name="ElementShortName">ilmb_port_2_CLK</obj_property>
-         <obj_property name="ObjectShortName">ilmb_port_2_CLK</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_port_2_DIN" type="array">
-         <obj_property name="ElementShortName">ilmb_port_2_DIN[0:31]</obj_property>
-         <obj_property name="ObjectShortName">ilmb_port_2_DIN[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_port_2_DOUT" type="array">
-         <obj_property name="ElementShortName">ilmb_port_2_DOUT[31:0]</obj_property>
-         <obj_property name="ObjectShortName">ilmb_port_2_DOUT[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_port_2_EN" type="logic">
-         <obj_property name="ElementShortName">ilmb_port_2_EN</obj_property>
-         <obj_property name="ObjectShortName">ilmb_port_2_EN</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_port_2_RST" type="logic">
-         <obj_property name="ElementShortName">ilmb_port_2_RST</obj_property>
-         <obj_property name="ObjectShortName">ilmb_port_2_RST</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_port_2_WE" type="array">
-         <obj_property name="ElementShortName">ilmb_port_2_WE[0:3]</obj_property>
-         <obj_property name="ObjectShortName">ilmb_port_2_WE[0:3]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_port_ADDR" type="array">
-         <obj_property name="ElementShortName">ilmb_port_ADDR[0:31]</obj_property>
-         <obj_property name="ObjectShortName">ilmb_port_ADDR[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_port_CLK" type="logic">
-         <obj_property name="ElementShortName">ilmb_port_CLK</obj_property>
-         <obj_property name="ObjectShortName">ilmb_port_CLK</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_port_DIN" type="array">
-         <obj_property name="ElementShortName">ilmb_port_DIN[0:31]</obj_property>
-         <obj_property name="ObjectShortName">ilmb_port_DIN[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_port_DOUT" type="array">
-         <obj_property name="ElementShortName">ilmb_port_DOUT[31:0]</obj_property>
-         <obj_property name="ObjectShortName">ilmb_port_DOUT[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_port_EN" type="logic">
-         <obj_property name="ElementShortName">ilmb_port_EN</obj_property>
-         <obj_property name="ObjectShortName">ilmb_port_EN</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_port_RST" type="logic">
-         <obj_property name="ElementShortName">ilmb_port_RST</obj_property>
-         <obj_property name="ObjectShortName">ilmb_port_RST</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_port_WE" type="array">
-         <obj_property name="ElementShortName">ilmb_port_WE[0:3]</obj_property>
-         <obj_property name="ObjectShortName">ilmb_port_WE[0:3]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_0_CE" type="logic">
-         <obj_property name="ElementShortName">ilmb_sl_0_CE</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_0_CE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_0_READDBUS" type="array">
-         <obj_property name="ElementShortName">ilmb_sl_0_READDBUS[0:31]</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_0_READDBUS[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_0_READY" type="logic">
-         <obj_property name="ElementShortName">ilmb_sl_0_READY</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_0_READY</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_0_UE" type="logic">
-         <obj_property name="ElementShortName">ilmb_sl_0_UE</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_0_UE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_0_WAIT" type="logic">
-         <obj_property name="ElementShortName">ilmb_sl_0_WAIT</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_0_WAIT</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_1_CE" type="logic">
-         <obj_property name="ElementShortName">ilmb_sl_1_CE</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_1_CE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_1_READDBUS" type="array">
-         <obj_property name="ElementShortName">ilmb_sl_1_READDBUS[0:31]</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_1_READDBUS[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_1_READY" type="logic">
-         <obj_property name="ElementShortName">ilmb_sl_1_READY</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_1_READY</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_1_UE" type="logic">
-         <obj_property name="ElementShortName">ilmb_sl_1_UE</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_1_UE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_1_WAIT" type="logic">
-         <obj_property name="ElementShortName">ilmb_sl_1_WAIT</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_1_WAIT</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/iomodule_0_GPIO1_TRI_I" type="array">
-         <obj_property name="ElementShortName">iomodule_0_GPIO1_TRI_I[31:0]</obj_property>
-         <obj_property name="ObjectShortName">iomodule_0_GPIO1_TRI_I[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/iomodule_0_GPIO1_TRI_O" type="array">
-         <obj_property name="ElementShortName">iomodule_0_GPIO1_TRI_O[31:0]</obj_property>
-         <obj_property name="ObjectShortName">iomodule_0_GPIO1_TRI_O[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/NLW_dlmb_LMB_Rst_UNCONNECTED" type="logic">
-         <obj_property name="ElementShortName">NLW_dlmb_LMB_Rst_UNCONNECTED</obj_property>
-         <obj_property name="ObjectShortName">NLW_dlmb_LMB_Rst_UNCONNECTED</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/NLW_ilmb_LMB_Rst_UNCONNECTED" type="logic">
-         <obj_property name="ElementShortName">NLW_ilmb_LMB_Rst_UNCONNECTED</obj_property>
-         <obj_property name="ObjectShortName">NLW_ilmb_LMB_Rst_UNCONNECTED</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/NLW_lmb_bram_I_rsta_busy_UNCONNECTED" type="logic">
-         <obj_property name="ElementShortName">NLW_lmb_bram_I_rsta_busy_UNCONNECTED</obj_property>
-         <obj_property name="ObjectShortName">NLW_lmb_bram_I_rsta_busy_UNCONNECTED</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/NLW_lmb_bram_I_rstb_busy_UNCONNECTED" type="logic">
-         <obj_property name="ElementShortName">NLW_lmb_bram_I_rstb_busy_UNCONNECTED</obj_property>
-         <obj_property name="ObjectShortName">NLW_lmb_bram_I_rstb_busy_UNCONNECTED</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/NLW_microblaze_I_Interrupt_Ack_UNCONNECTED" type="array">
-         <obj_property name="ElementShortName">NLW_microblaze_I_Interrupt_Ack_UNCONNECTED[0:1]</obj_property>
-         <obj_property name="ObjectShortName">NLW_microblaze_I_Interrupt_Ack_UNCONNECTED[0:1]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/NLW_rst_0_interconnect_aresetn_UNCONNECTED" type="array">
-         <obj_property name="ElementShortName">NLW_rst_0_interconnect_aresetn_UNCONNECTED[0:0]</obj_property>
-         <obj_property name="ObjectShortName">NLW_rst_0_interconnect_aresetn_UNCONNECTED[0:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/NLW_rst_0_peripheral_aresetn_UNCONNECTED" type="array">
-         <obj_property name="ElementShortName">NLW_rst_0_peripheral_aresetn_UNCONNECTED[0:0]</obj_property>
-         <obj_property name="ObjectShortName">NLW_rst_0_peripheral_aresetn_UNCONNECTED[0:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/NLW_second_lmb_bram_I_rsta_busy_UNCONNECTED" type="logic">
-         <obj_property name="ElementShortName">NLW_second_lmb_bram_I_rsta_busy_UNCONNECTED</obj_property>
-         <obj_property name="ObjectShortName">NLW_second_lmb_bram_I_rsta_busy_UNCONNECTED</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/NLW_second_lmb_bram_I_rstb_busy_UNCONNECTED" type="logic">
-         <obj_property name="ElementShortName">NLW_second_lmb_bram_I_rstb_busy_UNCONNECTED</obj_property>
-         <obj_property name="ObjectShortName">NLW_second_lmb_bram_I_rstb_busy_UNCONNECTED</obj_property>
-      </wvobject>
    </wvobject>
 </wave_config>

@@ -2481,7 +2481,6 @@ proc create_hier_cell_TRX { parentCell nameHier } {
   # Create instance: TRX_proc_sys_reset_0, and set properties
   set TRX_proc_sys_reset_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 TRX_proc_sys_reset_0 ]
   set_property -dict [ list \
-   CONFIG.C_AUX_RESET_HIGH {1} \
    CONFIG.RESET_BOARD_INTERFACE {Custom} \
    CONFIG.USE_BOARD_FLOW {true} \
  ] $TRX_proc_sys_reset_0
