@@ -332,16 +332,16 @@ msys_wrapper_i: component msys_wrapper
     wait for 4ns;
   end process proc_tb_CLK2_mgt_clk0_clk;
 
-  -- 100 MHz  CLK3_sys_diff_clk_p/n = (PLL CLK3) PLL_CLK_P/N
+  -- 50 MHz  CLK3_sys_diff_clk_p/n = (PLL CLK3) PLL_CLK_P/N
   proc_tb_CLK3_sys_diff_clk: process
   begin
     tb_CLK3_sys_diff_clk_p <= '1';
     tb_CLK3_sys_diff_clk_n <= '0';
-    wait for 5ns;
+    wait for 10ns;
 
     tb_CLK3_sys_diff_clk_p <= '0';
     tb_CLK3_sys_diff_clk_n <= '1';
-    wait for 5ns;
+    wait for 10ns;
   end process proc_tb_CLK3_sys_diff_clk;
 
   -- 26 MHz
