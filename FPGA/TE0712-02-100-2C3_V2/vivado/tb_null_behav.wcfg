@@ -22,15 +22,18 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="29988880000fs"></ZoomStartTime>
-      <ZoomEndTime time="30002225001fs"></ZoomEndTime>
-      <Cursor1Time time="29995000000fs"></Cursor1Time>
+      <ZoomStartTime time="12015072000fs"></ZoomStartTime>
+      <ZoomEndTime time="12282772001fs"></ZoomEndTime>
+      <Cursor1Time time="12238072000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="378"></NameColumnWidth>
+      <NameColumnWidth column_width="370"></NameColumnWidth>
       <ValueColumnWidth column_width="116"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="52" />
+   <WVObjectSize size="54" />
+   <wave_markers>
+      <marker time="21854563937" label="" />
+   </wave_markers>
    <wvobject fp_name="/tb_null/tb_reset" type="logic">
       <obj_property name="ElementShortName">tb_reset</obj_property>
       <obj_property name="ObjectShortName">tb_reset</obj_property>
@@ -235,6 +238,14 @@
       <obj_property name="ElementShortName">ARESETN_1[0:0]</obj_property>
       <obj_property name="ObjectShortName">ARESETN_1[0:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_ABUS" type="array">
+      <obj_property name="ElementShortName">ilmb_ABUS[0:31]</obj_property>
+      <obj_property name="ObjectShortName">ilmb_ABUS[0:31]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_0/Instr_Addr" type="array">
+      <obj_property name="ElementShortName">Instr_Addr[0:31]</obj_property>
+      <obj_property name="ObjectShortName">Instr_Addr[0:31]</obj_property>
+   </wvobject>
    <wvobject fp_name="group175" type="group">
       <obj_property name="label">mig_7series_0</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -432,6 +443,7 @@
          <wvobject fp_name="group246" type="group">
             <obj_property name="label">UI</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/mig_7series_0/ui_clk" type="logic">
                <obj_property name="ElementShortName">ui_clk</obj_property>
                <obj_property name="ObjectShortName">ui_clk</obj_property>
@@ -464,6 +476,7 @@
          <wvobject fp_name="group244" type="group">
             <obj_property name="label">DDR3</obj_property>
             <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
             <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/mig_7series_0/ddr3_addr" type="array">
                <obj_property name="ElementShortName">ddr3_addr[14:0]</obj_property>
                <obj_property name="ObjectShortName">ddr3_addr[14:0]</obj_property>
@@ -797,7 +810,6 @@
    <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/ARESETN_1" type="array">
       <obj_property name="ElementShortName">ARESETN_1[0:0]</obj_property>
       <obj_property name="ObjectShortName">ARESETN_1[0:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider191">
       <obj_property name="label">TEST</obj_property>
@@ -1106,18 +1118,6 @@
          <obj_property name="ElementShortName">ilmb_sl_0_WAIT</obj_property>
          <obj_property name="ObjectShortName">ilmb_sl_0_WAIT</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_1_ABUS" type="array">
-         <obj_property name="ElementShortName">ilmb_sl_1_ABUS[0:31]</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_1_ABUS[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_1_ADDRSTROBE" type="logic">
-         <obj_property name="ElementShortName">ilmb_sl_1_ADDRSTROBE</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_1_ADDRSTROBE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_1_BE" type="array">
-         <obj_property name="ElementShortName">ilmb_sl_1_BE[0:3]</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_1_BE[0:3]</obj_property>
-      </wvobject>
       <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_1_CE" type="logic">
          <obj_property name="ElementShortName">ilmb_sl_1_CE</obj_property>
          <obj_property name="ObjectShortName">ilmb_sl_1_CE</obj_property>
@@ -1125,10 +1125,6 @@
       <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_1_READDBUS" type="array">
          <obj_property name="ElementShortName">ilmb_sl_1_READDBUS[0:31]</obj_property>
          <obj_property name="ObjectShortName">ilmb_sl_1_READDBUS[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_1_READSTROBE" type="logic">
-         <obj_property name="ElementShortName">ilmb_sl_1_READSTROBE</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_1_READSTROBE</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_1_READY" type="logic">
          <obj_property name="ElementShortName">ilmb_sl_1_READY</obj_property>
@@ -1141,14 +1137,6 @@
       <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_1_WAIT" type="logic">
          <obj_property name="ElementShortName">ilmb_sl_1_WAIT</obj_property>
          <obj_property name="ObjectShortName">ilmb_sl_1_WAIT</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_1_WRITEDBUS" type="array">
-         <obj_property name="ElementShortName">ilmb_sl_1_WRITEDBUS[0:31]</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_1_WRITEDBUS[0:31]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/ilmb_sl_1_WRITESTROBE" type="logic">
-         <obj_property name="ElementShortName">ilmb_sl_1_WRITESTROBE</obj_property>
-         <obj_property name="ObjectShortName">ilmb_sl_1_WRITESTROBE</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/microblaze_mcs_0/U0/iomodule_0_GPIO1_TRI_I" type="array">
          <obj_property name="ElementShortName">iomodule_0_GPIO1_TRI_I[31:0]</obj_property>
