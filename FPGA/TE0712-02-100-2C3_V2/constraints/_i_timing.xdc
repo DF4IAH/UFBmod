@@ -26,7 +26,7 @@ set_false_path -from [get_clocks {CLK2_mgt_clk0_clk_p}]                         
 set_false_path -from [get_clocks -of_objects [get_pins {msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT}]] -to [get_clocks {CFGMCLK}]
 set_false_path -from [get_clocks -of_objects [get_pins {msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT}]] -to [get_clocks {CLK0_clk_p[0]}]
 set_false_path -from [get_clocks -of_objects [get_pins {msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT}]] -to [get_clocks {CLK2_mgt_clk0_clk_p}]
-set_false_path -from [get_clocks -of_objects [get_pins {msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT}]] -to [get_clocks -of_objects [get_pins {msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/inst/clk_div_out}]]
+set_false_path -from [get_clocks -of_objects [get_pins {msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT}]] -to [get_clocks -of_objects [get_pins {msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/inst/clk_div_out}]]
 
 set_false_path -from [get_pins {msys_i/SC0712_0/U0/rst_delay_i_reg[3]/C}]                                                                                            -to [get_pins -hierarchical -filter {NAME =~*u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/rstdiv0*/PRE}]
 
