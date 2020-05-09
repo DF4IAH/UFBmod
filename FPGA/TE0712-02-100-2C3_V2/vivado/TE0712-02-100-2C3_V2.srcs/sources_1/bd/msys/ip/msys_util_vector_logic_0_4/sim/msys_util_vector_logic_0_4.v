@@ -47,22 +47,26 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:ip:xlconstant:1.1
-// IP Revision: 6
+// IP VLNV: xilinx.com:ip:util_vector_logic:2.0
+// IP Revision: 1
 
 `timescale 1ns/1ps
 
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module msys_xlconstant_0_9 (
-  dout
+module msys_util_vector_logic_0_4 (
+  Op1,
+  Res
 );
 
-output wire [0 : 0] dout;
+input wire [0 : 0] Op1;
+output wire [0 : 0] Res;
 
-  xlconstant_v1_1_6_xlconstant #(
-    .CONST_WIDTH(1),
-    .CONST_VAL('H1)
+  util_vector_logic_v2_0_1_util_vector_logic #(
+    .C_OPERATION("not"),
+    .C_SIZE(1)
   ) inst (
-    .dout(dout)
+    .Op1(Op1),
+    .Op2(1'B0),
+    .Res(Res)
   );
 endmodule

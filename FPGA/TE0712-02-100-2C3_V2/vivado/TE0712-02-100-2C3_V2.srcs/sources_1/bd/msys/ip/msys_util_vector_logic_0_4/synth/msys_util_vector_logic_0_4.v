@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2014 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -47,21 +47,27 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:ip:xlconstant:1.1
+// IP VLNV: xilinx.com:ip:util_vector_logic:2.0
 // IP Revision: 1
 
-#ifndef _msys_xlconstant_0_9_H_
-#define _msys_xlconstant_0_9_H_
+(* X_CORE_INFO = "util_vector_logic_v2_0_1_util_vector_logic,Vivado 2019.2.1" *)
+(* CHECK_LICENSE_TYPE = "msys_util_vector_logic_0_4,util_vector_logic_v2_0_1_util_vector_logic,{}" *)
+(* CORE_GENERATION_INFO = "msys_util_vector_logic_0_4,util_vector_logic_v2_0_1_util_vector_logic,{x_ipProduct=Vivado 2019.2.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=util_vector_logic,x_ipVersion=2.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_OPERATION=not,C_SIZE=1}" *)
+(* DowngradeIPIdentifiedWarnings = "yes" *)
+module msys_util_vector_logic_0_4 (
+  Op1,
+  Res
+);
 
-#include "xlconstant_v1_1_6.h"
-#include "systemc.h"
-class msys_xlconstant_0_9 : public sc_module {
-  public:
-xlconstant_v1_1_6<1,1> mod;
-  sc_out< sc_bv<1> > dout;
-msys_xlconstant_0_9 (sc_core::sc_module_name name) :sc_module(name), mod("mod") {
-    mod.dout(dout);
-  }
-};
+input wire [0 : 0] Op1;
+output wire [0 : 0] Res;
 
-#endif
+  util_vector_logic_v2_0_1_util_vector_logic #(
+    .C_OPERATION("not"),
+    .C_SIZE(1)
+  ) inst (
+    .Op1(Op1),
+    .Op2(1'B0),
+    .Res(Res)
+  );
+endmodule

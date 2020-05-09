@@ -473,9 +473,9 @@ proc create_hier_cell_Boundary_2048_check { parentCell nameHier } {
   # Create instance: util_vector_logic_0, and set properties
   set util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_0 ]
   set_property -dict [ list \
-   CONFIG.C_OPERATION {xor} \
+   CONFIG.C_OPERATION {not} \
    CONFIG.C_SIZE {1} \
-   CONFIG.LOGO_FILE {data/sym_xorgate.png} \
+   CONFIG.LOGO_FILE {data/sym_notgate.png} \
  ] $util_vector_logic_0
 
   # Create instance: xlconcat_1, and set properties
@@ -484,9 +484,6 @@ proc create_hier_cell_Boundary_2048_check { parentCell nameHier } {
    CONFIG.IN0_WIDTH {11} \
    CONFIG.IN1_WIDTH {1} \
  ] $xlconcat_1
-
-  # Create instance: xlconstant_1_len1, and set properties
-  set xlconstant_1_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_1_len1 ]
 
   # Create instance: xlslice_0, and set properties
   set xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0 ]
@@ -503,7 +500,6 @@ proc create_hier_cell_Boundary_2048_check { parentCell nameHier } {
   connect_bd_net -net TRX_rx09_fifo_generator_0_valid_n_CD100 [get_bd_pins util_vector_logic_0/Res] [get_bd_pins xlconcat_1/In1]
   connect_bd_net -net all_zero_n [get_bd_pins util_reduced_logic_0/Op1] [get_bd_pins xlconcat_1/dout]
   connect_bd_net -net is_4096_boundary [get_bd_pins is_4096_boundary_o] [get_bd_pins util_reduced_logic_0/Res]
-  connect_bd_net -net xlconstant_1_len1_dout [get_bd_pins util_vector_logic_0/Op2] [get_bd_pins xlconstant_1_len1/dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -1395,21 +1391,18 @@ proc create_hier_cell_Pre_FFT_MEM_out { parentCell nameHier } {
   # Create instance: util_vector_logic_0, and set properties
   set util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_0 ]
   set_property -dict [ list \
-   CONFIG.C_OPERATION {xor} \
+   CONFIG.C_OPERATION {not} \
    CONFIG.C_SIZE {1} \
-   CONFIG.LOGO_FILE {data/sym_xorgate.png} \
+   CONFIG.LOGO_FILE {data/sym_notgate.png} \
  ] $util_vector_logic_0
 
   # Create instance: util_vector_logic_1, and set properties
   set util_vector_logic_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_1 ]
   set_property -dict [ list \
-   CONFIG.C_OPERATION {xor} \
+   CONFIG.C_OPERATION {not} \
    CONFIG.C_SIZE {1} \
-   CONFIG.LOGO_FILE {data/sym_xorgate.png} \
+   CONFIG.LOGO_FILE {data/sym_notgate.png} \
  ] $util_vector_logic_1
-
-  # Create instance: xlconstant_1_len1, and set properties
-  set xlconstant_1_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_1_len1 ]
 
   # Create instance: xlslice_11to11_0, and set properties
   set xlslice_11to11_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_11to11_0 ]
@@ -1425,7 +1418,6 @@ proc create_hier_cell_Pre_FFT_MEM_out { parentCell nameHier } {
   connect_bd_net -net TRX_rx09_fifo_generator_0_valid_CD100 [get_bd_pins valid_in] [get_bd_pins Boundary_2048_check/valid_in]
   connect_bd_net -net TRX_rx09_pre_fft_counter_binary_1_Q [get_bd_pins outaddr_4x2048_counter_binary_0/Q] [get_bd_pins outaddr_4x_subframes_xlslice_12to11/Din] [get_bd_pins outaddr_frame2048adr_xlslice_10to0/Din]
   connect_bd_net -net c_0_len4 [get_bd_pins outaddr_512subframe_xlconcat_0/In0] [get_bd_pins outaddr_xlconstant_0_len9/dout]
-  connect_bd_net -net c_1 [get_bd_pins util_vector_logic_0/Op2] [get_bd_pins util_vector_logic_1/Op2] [get_bd_pins xlconstant_1_len1/dout]
   connect_bd_net -net is_4096_boundary [get_bd_pins Boundary_2048_check/is_4096_boundary_o] [get_bd_pins outaddr_4x2048_counter_binary_0/SCLR]
   connect_bd_net -net outaddr_addsub_0_S [get_bd_pins S] [get_bd_pins outaddr_readaddr_addsub_0/S]
   connect_bd_net -net outaddr_counter_binary_1_THRESH0 [get_bd_pins data_tlast_o] [get_bd_pins outaddr_4x2048_counter_binary_0/THRESH0] [get_bd_pins util_vector_logic_0/Op1]
@@ -2494,12 +2486,15 @@ proc create_hier_cell_TRX { parentCell nameHier } {
   # Create instance: counter_binary_0, and set properties
   set counter_binary_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_counter_binary:12.0 counter_binary_0 ]
   set_property -dict [ list \
+   CONFIG.CE {true} \
    CONFIG.Count_Mode {UP} \
    CONFIG.Final_Count_Value {40} \
    CONFIG.Output_Width {7} \
-   CONFIG.Restrict_Count {true} \
+   CONFIG.Restrict_Count {false} \
    CONFIG.SCLR {true} \
    CONFIG.SSET {false} \
+   CONFIG.Sync_Threshold_Output {true} \
+   CONFIG.Threshold_Value {40} \
  ] $counter_binary_0
 
   # Create instance: iorst_xlslice_6to6, and set properties
@@ -2510,6 +2505,14 @@ proc create_hier_cell_TRX { parentCell nameHier } {
    CONFIG.DIN_WIDTH {7} \
    CONFIG.DOUT_WIDTH {1} \
  ] $iorst_xlslice_6to6
+
+  # Create instance: util_vector_logic_0, and set properties
+  set util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_0 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {not} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_notgate.png} \
+ ] $util_vector_logic_0
 
   # Create instance: xlconstant_1_len1, and set properties
   set xlconstant_1_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_1_len1 ]
@@ -2545,12 +2548,14 @@ proc create_hier_cell_TRX { parentCell nameHier } {
   connect_bd_net -net TRX_rx_selectio_wiz_0_data_out_to_pins_n [get_bd_pins TRX_tx_data_n] [get_bd_pins TRX_rx_LVDS/TRX_tx_data_n]
   connect_bd_net -net TRX_rx_selectio_wiz_0_data_out_to_pins_p [get_bd_pins TRX_tx_data_p] [get_bd_pins TRX_rx_LVDS/TRX_tx_data_p]
   connect_bd_net -net c_1 [get_bd_pins TRX_rx_LVDS/c_1_in] [get_bd_pins xlconstant_1_len1/dout]
+  connect_bd_net -net counter_binary_0_THRESH0 [get_bd_pins counter_binary_0/THRESH0] [get_bd_pins util_vector_logic_0/Op1]
   connect_bd_net -net mig_7series_0_mmcm_locked [get_bd_pins dcm_locked] [get_bd_pins TRX_proc_sys_reset_0/dcm_locked]
   connect_bd_net -net mig_7series_0_ui_addn_clk_0_200MHz [get_bd_pins ref_clock] [get_bd_pins TRX_rx_LVDS/ref_clock]
   connect_bd_net -net mig_7series_0_ui_clk_sync_rst [get_bd_pins ext_reset_in] [get_bd_pins TRX_proc_sys_reset_0/ext_reset_in]
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_aresetn [get_bd_pins s_axi_aresetn] [get_bd_pins TRX_config/s_axi_aresetn] [get_bd_pins TRX_rx09_FFT/aresetn_CD100_in]
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins reset_CD100_i] [get_bd_pins TRX_rx09_FFT/reset_CD100_i] [get_bd_pins TRX_rx_LVDS/clk_reset]
   connect_bd_net -net s_axi_aclk_CD100 [get_bd_pins s_axi_aclk] [get_bd_pins TRX_config/s_axi_aclk] [get_bd_pins TRX_rx09_FFT/s_axi_aclk_CD100_in] [get_bd_pins TRX_rx_LVDS/s_axi_aclk]
+  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins counter_binary_0/CE] [get_bd_pins util_vector_logic_0/Res]
 
   # Restore current instance
   current_bd_instance $oldCurInst
