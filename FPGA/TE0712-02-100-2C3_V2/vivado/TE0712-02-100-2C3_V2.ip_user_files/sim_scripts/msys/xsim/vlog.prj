@@ -160,7 +160,6 @@ verilog xil_defaultlib --include "../../../../TE0712-02-100-2C3_V2.srcs/sources_
 "../../../bd/msys/ip/msys_xlconstant_0b00_1/sim/msys_xlconstant_0b00_1.v" \
 "../../../bd/msys/ip/msys_xlconcat_1_3/sim/msys_xlconcat_1_3.v" \
 "../../../bd/msys/ip/msys_TRX_rx09_xlconcat_0_0/sim/msys_TRX_rx09_xlconcat_0_0.v" \
-"../../../bd/msys/ip/msys_xlslice_0_5/sim/msys_xlslice_0_5.v" \
 "../../../bd/msys/ip/msys_xlconcat_0_1/sim/msys_xlconcat_0_1.v" \
 "../../../bd/msys/ip/msys_xlslice_0_6/sim/msys_xlslice_0_6.v" \
 "../../../bd/msys/ip/msys_TRX_rx_xlslice_0to0_0/sim/msys_TRX_rx_xlslice_0to0_0.v" \

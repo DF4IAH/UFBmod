@@ -22,15 +22,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="57421557218fs"></ZoomEndTime>
-      <Cursor1Time time="15000000000fs"></Cursor1Time>
+      <ZoomStartTime time="29543657275fs"></ZoomStartTime>
+      <ZoomEndTime time="30091268545fs"></ZoomEndTime>
+      <Cursor1Time time="30000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="440"></NameColumnWidth>
-      <ValueColumnWidth column_width="136"></ValueColumnWidth>
+      <ValueColumnWidth column_width="120"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="39" />
+   <WVObjectSize size="37" />
    <wave_markers>
       <marker time="21854563937" label="" />
    </wave_markers>
@@ -726,26 +726,29 @@
       <obj_property name="label">TRX_rx_selectio_wiz_0</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/ref_clock" type="logic">
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/ref_clock" type="logic">
          <obj_property name="ElementShortName">ref_clock</obj_property>
          <obj_property name="ObjectShortName">ref_clock</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/clk_in_p" type="logic">
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/clk_in_p" type="logic">
          <obj_property name="ElementShortName">clk_in_p</obj_property>
          <obj_property name="ObjectShortName">clk_in_p</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/clk_in_n" type="logic">
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/clk_in_n" type="logic">
          <obj_property name="ElementShortName">clk_in_n</obj_property>
          <obj_property name="ObjectShortName">clk_in_n</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/clk_reset" type="logic">
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/clk_div_out" type="logic">
+         <obj_property name="ElementShortName">clk_div_out</obj_property>
+         <obj_property name="ObjectShortName">clk_div_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/clk_reset" type="logic">
          <obj_property name="ElementShortName">clk_reset</obj_property>
          <obj_property name="ObjectShortName">clk_reset</obj_property>
       </wvobject>
       <wvobject fp_name="group1343" type="group">
          <obj_property name="label">TRX_proc_sys_reset_0</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_proc_sys_reset_0/slowest_sync_clk" type="logic">
             <obj_property name="ElementShortName">slowest_sync_clk</obj_property>
             <obj_property name="ObjectShortName">slowest_sync_clk</obj_property>
@@ -790,7 +793,6 @@
       <wvobject fp_name="group1337" type="group">
          <obj_property name="label">counter_binary_0</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/counter_binary_0/CLK" type="logic">
             <obj_property name="ElementShortName">CLK</obj_property>
             <obj_property name="ObjectShortName">CLK</obj_property>
@@ -812,61 +814,59 @@
             <obj_property name="ObjectShortName">THRESH0</obj_property>
          </wvobject>
       </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/io_reset" type="logic">
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/io_reset" type="logic">
          <obj_property name="ElementShortName">io_reset</obj_property>
          <obj_property name="ObjectShortName">io_reset</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/data_in_from_pins_p" type="array">
-         <obj_property name="ElementShortName">data_in_from_pins_p[1:0]</obj_property>
-         <obj_property name="ObjectShortName">data_in_from_pins_p[1:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/data_in_from_pins_n" type="array">
-         <obj_property name="ElementShortName">data_in_from_pins_n[1:0]</obj_property>
-         <obj_property name="ObjectShortName">data_in_from_pins_n[1:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/bitslip" type="array">
-         <obj_property name="ElementShortName">bitslip[1:0]</obj_property>
-         <obj_property name="ObjectShortName">bitslip[1:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/data_out_from_device" type="array">
-         <obj_property name="ElementShortName">data_out_from_device[15:0]</obj_property>
-         <obj_property name="ObjectShortName">data_out_from_device[15:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/delay_locked" type="logic">
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/delay_locked" type="logic">
          <obj_property name="ElementShortName">delay_locked</obj_property>
          <obj_property name="ObjectShortName">delay_locked</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/clk_div_out" type="logic">
-         <obj_property name="ElementShortName">clk_div_out</obj_property>
-         <obj_property name="ObjectShortName">clk_div_out</obj_property>
+      <wvobject fp_name="group718" type="group">
+         <obj_property name="label">RX</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/data_in_from_pins_p" type="array">
+            <obj_property name="ElementShortName">data_in_from_pins_p[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_from_pins_p[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/data_in_from_pins_n" type="array">
+            <obj_property name="ElementShortName">data_in_from_pins_n[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_from_pins_n[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/bitslip" type="array">
+            <obj_property name="ElementShortName">bitslip[1:0]</obj_property>
+            <obj_property name="ObjectShortName">bitslip[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/data_in_to_device" type="array">
+            <obj_property name="ElementShortName">data_in_to_device[15:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_to_device[15:0]</obj_property>
+         </wvobject>
       </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/data_in_to_device" type="array">
-         <obj_property name="ElementShortName">data_in_to_device[15:0]</obj_property>
-         <obj_property name="ObjectShortName">data_in_to_device[15:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/clk_to_pins_p" type="logic">
-         <obj_property name="ElementShortName">clk_to_pins_p</obj_property>
-         <obj_property name="ObjectShortName">clk_to_pins_p</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/clk_to_pins_n" type="logic">
-         <obj_property name="ElementShortName">clk_to_pins_n</obj_property>
-         <obj_property name="ObjectShortName">clk_to_pins_n</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/data_out_to_pins_p" type="array">
-         <obj_property name="ElementShortName">data_out_to_pins_p[1:0]</obj_property>
-         <obj_property name="ObjectShortName">data_out_to_pins_p[1:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/data_out_to_pins_n" type="array">
-         <obj_property name="ElementShortName">data_out_to_pins_n[1:0]</obj_property>
-         <obj_property name="ObjectShortName">data_out_to_pins_n[1:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/SYS_W" type="array">
-         <obj_property name="ElementShortName">SYS_W[31:0]</obj_property>
-         <obj_property name="ObjectShortName">SYS_W[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/DEV_W" type="array">
-         <obj_property name="ElementShortName">DEV_W[31:0]</obj_property>
-         <obj_property name="ObjectShortName">DEV_W[31:0]</obj_property>
+      <wvobject fp_name="group719" type="group">
+         <obj_property name="label">TX</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/data_out_from_device" type="array">
+            <obj_property name="ElementShortName">data_out_from_device[15:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_from_device[15:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/data_out_to_pins_p" type="array">
+            <obj_property name="ElementShortName">data_out_to_pins_p[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_to_pins_p[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/data_out_to_pins_n" type="array">
+            <obj_property name="ElementShortName">data_out_to_pins_n[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_to_pins_n[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/clk_to_pins_p" type="logic">
+            <obj_property name="ElementShortName">clk_to_pins_p</obj_property>
+            <obj_property name="ObjectShortName">clk_to_pins_p</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/clk_to_pins_n" type="logic">
+            <obj_property name="ElementShortName">clk_to_pins_n</obj_property>
+            <obj_property name="ObjectShortName">clk_to_pins_n</obj_property>
+         </wvobject>
       </wvobject>
    </wvobject>
    <wvobject type="divider" fp_name="divider189">
@@ -877,16 +877,8 @@
       <obj_property name="ElementShortName">ext_reset_in</obj_property>
       <obj_property name="ObjectShortName">ext_reset_in</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/inst/io_reset" type="logic">
-      <obj_property name="ElementShortName">io_reset</obj_property>
-      <obj_property name="ObjectShortName">io_reset</obj_property>
-   </wvobject>
    <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/clk_div_out" type="logic">
       <obj_property name="ElementShortName">clk_div_out</obj_property>
       <obj_property name="ObjectShortName">clk_div_out</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0/inst/clk_fwd_out" type="logic">
-      <obj_property name="ElementShortName">clk_fwd_out</obj_property>
-      <obj_property name="ObjectShortName">clk_fwd_out</obj_property>
    </wvobject>
 </wave_config>

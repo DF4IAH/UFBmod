@@ -383,8 +383,8 @@ architecture STRUCTURE of bd_cf59 is
   attribute BMM_INFO_PROCESSOR : string;
   attribute BMM_INFO_PROCESSOR of microblaze_I : label is "microblaze-le > bd_cf59 dlmb_cntlr";
   attribute KEEP_HIERARCHY of microblaze_I : label is "yes";
-  attribute BMM_INFO_ADDRESS_RANGE : string;
-  attribute BMM_INFO_ADDRESS_RANGE of second_dlmb_cntlr : label is " ";
+  attribute bmm_info_address_range : string;
+  attribute bmm_info_address_range of second_dlmb_cntlr : label is " ";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of Clk : signal is "xilinx.com:signal:clock:1.0 CLK.CLK CLK";
   attribute X_INTERFACE_PARAMETER : string;

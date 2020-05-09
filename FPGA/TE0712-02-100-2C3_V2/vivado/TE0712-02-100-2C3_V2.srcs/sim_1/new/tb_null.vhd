@@ -367,14 +367,26 @@ msys_wrapper_i: component msys_wrapper
   end process proc_tb_TRX_rx_clk_64MHz_clk;
   
   
--- INITIAL VALUES
+-- STIMULATION
 
+  -- LVDS DDR data with 64 MHz clock (DDR: 128 MHz)
   proc_tb_TRX_rx_data: process
   begin
-    tb_TRX_rx_data_p <= "11";
-    tb_TRX_rx_data_n <= "00";
-    wait;
+    wait for 7.8125ns / 2;
+    
+    loop
+      tb_TRX_rx_data_p <= "10";
+      tb_TRX_rx_data_n <= "01";
+      wait for 7.8125ns;
+
+      tb_TRX_rx_data_p <= "01";
+      tb_TRX_rx_data_n <= "10";
+      wait for 7.8125ns;
+    end loop;
   end process proc_tb_TRX_rx_data;
+
+
+-- INITIAL VALUES
 
   proc_tb_qspi_flash: process
   begin

@@ -442,11 +442,6 @@
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_c_counter_binary_0_2/sim/msys_c_counter_binary_0_2.vhd" \
--endlib
--makelib ies_lib/xil_defaultlib \
-  "../../../bd/msys/ip/msys_xlslice_0_5/sim/msys_xlslice_0_5.v" \
--endlib
--makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_proc_sys_reset_0_1/sim/msys_proc_sys_reset_0_1.vhd" \
   "../../../bd/msys/ip/msys_util_ds_buf_3_0/sim/msys_util_ds_buf_3_0.vhd" \
   "../../../bd/msys/ip/msys_CLK0_util_ds_buf_0_0/sim/msys_CLK0_util_ds_buf_0_0.vhd" \
@@ -572,15 +567,15 @@
   "../../../bd/msys/ip/msys_xlconstant_0_11/sim/msys_xlconstant_0_11.v" \
   "../../../bd/msys/ip/msys_util_vector_logic_0_4/sim/msys_util_vector_logic_0_4.v" \
 -endlib
--makelib ies_lib/xil_defaultlib \
-  "../../../bd/msys/sim/msys.vhd" \
--endlib
 -makelib ies_lib/axi_clock_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/9e81/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_auto_cc_0/sim/msys_auto_cc_0.v" \
   "../../../bd/msys/ip/msys_auto_cc_1/sim/msys_auto_cc_1.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/msys/sim/msys.vhd" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   glbl.v

@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="msys" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1589036999"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1589036999"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1589036999"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1589036999"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1589046212"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1589046212"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1589046212"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1589046212"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\msys_SC0712_0_0\msys_SC0712_0_0.xci" Type="IP">
         <Instance HierarchyPath="SC0712_0"/>
@@ -598,7 +598,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_selectio_wiz_0_1\msys_selectio_wiz_0_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_selectio_wiz_0"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -606,7 +606,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_xlconstant_0b00_0\msys_xlconstant_0b00_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/xlconstant_0_len16"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/xlconstant_0xaa55_len16"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -614,7 +614,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_xlslice_0_4\msys_xlslice_0_4.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx24_concat/TRX_rx_xlslice_15to15"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx24_concat/TRX_rx_xlslice_15to15"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -622,7 +622,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_15to15_0\msys_TRX_rx_xlslice_15to15_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx24_concat/TRX_rx_xlslice_13to13"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx24_concat/TRX_rx_xlslice_13to13"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -630,7 +630,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_15to16_0\msys_TRX_rx_xlslice_15to16_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx09_concat/TRX_rx_xlslice_14to14"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx09_concat/TRX_rx_xlslice_14to14"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -638,7 +638,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_13to13_0\msys_TRX_rx_xlslice_13to13_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx09_concat/TRX_rx_xlslice_12to12"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx09_concat/TRX_rx_xlslice_12to12"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -646,7 +646,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_13to13_1\msys_TRX_rx_xlslice_13to13_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx24_concat/TRX_rx_xlslice_11to11"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx24_concat/TRX_rx_xlslice_11to11"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -654,7 +654,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_13to13_2\msys_TRX_rx_xlslice_13to13_2.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx09_concat/TRX_rx_xlslice_10to10"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx09_concat/TRX_rx_xlslice_10to10"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -662,7 +662,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_10to10_0\msys_TRX_rx_xlslice_10to10_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx24_concat/TRX_rx_xlslice_09to09"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx24_concat/TRX_rx_xlslice_09to09"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -670,7 +670,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_10to10_1\msys_TRX_rx_xlslice_10to10_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx09_concat/TRX_rx_xlslice_08to08"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx09_concat/TRX_rx_xlslice_08to08"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -678,7 +678,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_10to10_2\msys_TRX_rx_xlslice_10to10_2.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx24_concat/TRX_rx_xlslice_07to07"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx24_concat/TRX_rx_xlslice_07to07"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -686,7 +686,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_10to10_3\msys_TRX_rx_xlslice_10to10_3.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx09_concat/TRX_rx_xlslice_06to06"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx09_concat/TRX_rx_xlslice_06to06"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -694,7 +694,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_10to10_4\msys_TRX_rx_xlslice_10to10_4.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx24_concat/TRX_rx_xlslice_05to05"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx24_concat/TRX_rx_xlslice_05to05"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -702,7 +702,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_10to10_5\msys_TRX_rx_xlslice_10to10_5.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx09_concat/TRX_rx_xlslice_04to04"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx09_concat/TRX_rx_xlslice_04to04"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -710,7 +710,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_10to10_6\msys_TRX_rx_xlslice_10to10_6.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx24_concat/TRX_rx_xlslice_03to03"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx24_concat/TRX_rx_xlslice_03to03"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -718,7 +718,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_10to10_7\msys_TRX_rx_xlslice_10to10_7.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx09_concat/TRX_rx_xlslice_02to02"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx09_concat/TRX_rx_xlslice_02to02"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -726,7 +726,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_10to10_8\msys_TRX_rx_xlslice_10to10_8.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx24_concat/TRX_rx_xlslice_01to01"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx24_concat/TRX_rx_xlslice_01to01"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -734,7 +734,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_10to10_9\msys_TRX_rx_xlslice_10to10_9.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx09_concat/TRX_rx_xlslice_00to00"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx09_concat/TRX_rx_xlslice_00to00"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -742,7 +742,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_fifo_generator_0_0\msys_fifo_generator_0_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx24_fifo_generator_0"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx24_fifo_generator_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -750,7 +750,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx09_fifo_generator_0_0\msys_TRX_rx09_fifo_generator_0_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx09_fifo_generator_0"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx09_fifo_generator_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -758,7 +758,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_xlconstant_0b00_1\msys_xlconstant_0b00_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX/xlconstant_1_len1"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/xlconstant_1_len1"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -766,7 +766,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_xlconcat_1_3\msys_xlconcat_1_3.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx09_concat/TRX_rx09_xlconcat_0"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx09_concat/TRX_rx09_xlconcat_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -774,7 +774,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx09_xlconcat_0_0\msys_TRX_rx09_xlconcat_0_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx24_concat/TRX_rx24_xlconcat_0"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx24_concat/TRX_rx24_xlconcat_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -783,14 +783,6 @@
       </File>
       <File Name="ip\msys_c_counter_binary_0_2\msys_c_counter_binary_0_2.xci" Type="IP">
         <Instance HierarchyPath="TRX/counter_binary_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_xlslice_0_5\msys_xlslice_0_5.xci" Type="IP">
-        <Instance HierarchyPath="TRX/iorst_xlslice_6to6"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -822,7 +814,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_c_counter_binary_0_3\msys_c_counter_binary_0_3.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_bitslip/TRX_rx09_bitslip_counter_binary_0"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_bitslip/TRX_rx09_bitslip_counter_binary_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -830,7 +822,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx09_c_counter_binary_0_0\msys_TRX_rx09_c_counter_binary_0_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_bitslip/TRX_rx24_bitslip_c_counter_binary_0"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_bitslip/TRX_rx24_bitslip_c_counter_binary_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -838,7 +830,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_xlconcat_0_1\msys_xlconcat_0_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_bitslip/TRX_rx_bitslip_xlconcat_0"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_bitslip/TRX_rx_bitslip_xlconcat_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -846,7 +838,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_xlslice_0_6\msys_xlslice_0_6.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_bitslip/TRX_rx_bitslip_xlslice_0to0"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_bitslip/TRX_rx_bitslip_xlslice_0to0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -854,7 +846,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlslice_0to0_0\msys_TRX_rx_xlslice_0to0_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_bitslip/TRX_rx_bitslip_xlslice_1to1"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_bitslip/TRX_rx_bitslip_xlslice_1to1"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -862,7 +854,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_util_reduced_logic_0_2\msys_util_reduced_logic_0_2.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx09_markers_util_reduced_logic_0"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx09_markers_util_reduced_logic_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -870,7 +862,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx09_markers_util_reduced_logic_0_0\msys_TRX_rx09_markers_util_reduced_logic_0_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx24_markers_util_reduced_logic_0"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx24_markers_util_reduced_logic_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -878,7 +870,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_xlconcat_0_0\msys_TRX_rx_xlconcat_0_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx_markers_xlconcat_0"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx_markers_xlconcat_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -886,7 +878,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_bitslip_xlconcat_0_0\msys_TRX_rx_bitslip_xlconcat_0_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx09_markers_xlconcat_0"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx09_markers_xlconcat_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -894,7 +886,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx09_markers_xlconcat_0_0\msys_TRX_rx09_markers_xlconcat_0_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx24_markers_xlconcat_0"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx24_markers_xlconcat_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -902,7 +894,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_iorst_xlslice_6to6_0\msys_TRX_rx_iorst_xlslice_6to6_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx09_markers_xlslice_31to31"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx09_markers_xlslice_31to31"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -910,7 +902,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx09_markers_xlslice_31to31_0\msys_TRX_rx09_markers_xlslice_31to31_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx09_markers_xlslice_30to30"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx09_markers_xlslice_30to30"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -918,7 +910,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx09_markers_xlslice_30to30_0\msys_TRX_rx09_markers_xlslice_30to30_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx09_markers_xlslice_15to15"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx09_markers_xlslice_15to15"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -926,7 +918,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx09_markers_xlslice_30to30_1\msys_TRX_rx09_markers_xlslice_30to30_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx09_markers_xlslice_14to14"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx09_markers_xlslice_14to14"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -934,7 +926,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_util_vector_logic_0_0\msys_util_vector_logic_0_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx09_markers_util_vector_logic_30"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx09_markers_util_vector_logic_30"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -942,7 +934,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx09_markers_util_vector_logic_30_0\msys_TRX_rx09_markers_util_vector_logic_30_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx09_markers_util_vector_logic_15"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx09_markers_util_vector_logic_15"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -950,7 +942,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx09_markers_xlslice_31to31_1\msys_TRX_rx09_markers_xlslice_31to31_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx24_markers_xlslice_14to14"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx24_markers_xlslice_14to14"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -958,7 +950,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx24_markers_xlslice_14to14_0\msys_TRX_rx24_markers_xlslice_14to14_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx24_markers_xlslice_15to15"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx24_markers_xlslice_15to15"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -966,7 +958,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx24_markers_xlslice_14to14_1\msys_TRX_rx24_markers_xlslice_14to14_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx24_markers_xlslice_30to30"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx24_markers_xlslice_30to30"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -974,7 +966,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx24_markers_xlslice_14to14_2\msys_TRX_rx24_markers_xlslice_14to14_2.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx24_markers_xlslice_31to31"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx24_markers_xlslice_31to31"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -982,7 +974,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx09_markers_util_vector_logic_30_1\msys_TRX_rx09_markers_util_vector_logic_30_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx24_markers_util_vector_logic_15"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx24_markers_util_vector_logic_15"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -990,7 +982,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx24_markers_util_vector_logic_15_0\msys_TRX_rx24_markers_util_vector_logic_15_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_markers/TRX_rx24_markers_util_vector_logic_30"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_markers/TRX_rx24_markers_util_vector_logic_30"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -1126,7 +1118,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_c_shift_ram_0_0\msys_c_shift_ram_0_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_bitslip/TRX_rx_bitslip_c_shift_ram_0"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_bitslip/TRX_rx_bitslip_c_shift_ram_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -1134,7 +1126,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_TRX_rx_bitslip_c_shift_ram_0_0\msys_TRX_rx_bitslip_c_shift_ram_0_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_LVDS/TRX_rx_bitslip/TRX_rx_bitslip_c_shift_ram_1"/>
+        <Instance HierarchyPath="TRX/TRX_LVDS/TRX_rx_bitslip/TRX_rx_bitslip_c_shift_ram_1"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -1325,16 +1317,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="synth\msys.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-      </File>
-      <File Name="sim\msys.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip\msys_auto_cc_0\msys_auto_cc_0.xci" Type="IP">
         <Instance HierarchyPath="microblaze_0_axi_periph/m03_couplers/auto_cc"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -1349,6 +1331,16 @@
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="synth\msys.vhd" Type="VHDL">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+      </File>
+      <File Name="sim\msys.vhd" Type="VHDL">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="msys.bmm" Type="BMM">
