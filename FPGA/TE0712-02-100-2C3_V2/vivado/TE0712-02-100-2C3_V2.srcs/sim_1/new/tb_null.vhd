@@ -354,7 +354,7 @@ msys_wrapper_i: component msys_wrapper
     wait for 19.231ns;
   end process proc_tb_TRX_clk_26MHz;
   
-  -- 64 MHz from TRX LVDS rx
+  -- 64 MHz from TRX LVDS: RX24.7 RX09.7 RX24.6 RX09.6 ... RX24.0 RX09.0
   proc_tb_TRX_rx_clk_64MHz_clk: process
   begin
     tb_TRX_rx_clk_64MHz_clk_p <= '1';
@@ -375,8 +375,9 @@ msys_wrapper_i: component msys_wrapper
     wait for 7.8125ns / 2;
     
     loop
-      tb_TRX_rx_data_p <= "10";
-      tb_TRX_rx_data_n <= "01";
+      -- [1] RX24      [0] RX09
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
       wait for 7.8125ns;
 
       tb_TRX_rx_data_p <= "01";

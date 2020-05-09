@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Sat May  9 19:42:12 2020
+--Date        : Sat May  9 21:52:38 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -6022,7 +6022,7 @@ TRX_rx_markers: entity work.TRX_rx_markers_imp_6MQQQK
       rx09_i(31 downto 0) => TRX_rx09_32bits_CD100(31 downto 0),
       rx24_i(31 downto 0) => TRX_rx24_32bits_CD100(31 downto 0)
     );
-xlconstant_0xaa55_len16: component msys_xlconstant_0b00_0
+xlconstant_0x4411_len16: component msys_xlconstant_0b00_0
      port map (
       dout(15 downto 0) => c_0xaa55_len16(15 downto 0)
     );

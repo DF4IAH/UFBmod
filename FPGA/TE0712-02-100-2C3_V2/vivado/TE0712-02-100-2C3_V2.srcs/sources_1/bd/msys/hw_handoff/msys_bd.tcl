@@ -2017,12 +2017,12 @@ proc create_hier_cell_TRX_LVDS { parentCell nameHier } {
   # Create instance: TRX_rx_markers
   create_hier_cell_TRX_rx_markers $hier_obj TRX_rx_markers
 
-  # Create instance: xlconstant_0xaa55_len16, and set properties
-  set xlconstant_0xaa55_len16 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0xaa55_len16 ]
+  # Create instance: xlconstant_0x4411_len16, and set properties
+  set xlconstant_0x4411_len16 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0x4411_len16 ]
   set_property -dict [ list \
-   CONFIG.CONST_VAL {43605} \
+   CONFIG.CONST_VAL {17425} \
    CONFIG.CONST_WIDTH {16} \
- ] $xlconstant_0xaa55_len16
+ ] $xlconstant_0x4411_len16
 
   # Create instance: xlconstant_1_len1, and set properties
   set xlconstant_1_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_1_len1 ]
@@ -2051,7 +2051,7 @@ proc create_hier_cell_TRX_LVDS { parentCell nameHier } {
   connect_bd_net -net TRX_rx_selectio_wiz_0_data_out_to_pins_n [get_bd_pins TRX_tx_data_n] [get_bd_pins TRX_LVDS_selectio_wiz_0/data_out_to_pins_n]
   connect_bd_net -net TRX_rx_selectio_wiz_0_data_out_to_pins_p [get_bd_pins TRX_tx_data_p] [get_bd_pins TRX_LVDS_selectio_wiz_0/data_out_to_pins_p]
   connect_bd_net -net bitslip_CD016 [get_bd_pins TRX_LVDS_selectio_wiz_0/bitslip] [get_bd_pins TRX_rx_bitslip/bitslip_o]
-  connect_bd_net -net c_0xaa55_len16 [get_bd_pins TRX_LVDS_selectio_wiz_0/data_out_from_device] [get_bd_pins xlconstant_0xaa55_len16/dout]
+  connect_bd_net -net c_0xaa55_len16 [get_bd_pins TRX_LVDS_selectio_wiz_0/data_out_from_device] [get_bd_pins xlconstant_0x4411_len16/dout]
   connect_bd_net -net c_1 [get_bd_pins TRX_rx09_fifo_generator_0/rd_en] [get_bd_pins TRX_rx09_fifo_generator_0/wr_en] [get_bd_pins TRX_rx24_fifo_generator_0/rd_en] [get_bd_pins TRX_rx24_fifo_generator_0/wr_en] [get_bd_pins xlconstant_1_len1/dout]
   connect_bd_net -net markers_CD100 [get_bd_pins TRX_rx_bitslip/din] [get_bd_pins TRX_rx_markers/markers_o]
   connect_bd_net -net ref_clock_200MHz [get_bd_pins ref_clock] [get_bd_pins TRX_LVDS_selectio_wiz_0/ref_clock]
