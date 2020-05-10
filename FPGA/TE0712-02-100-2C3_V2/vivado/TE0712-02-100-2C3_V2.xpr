@@ -113,7 +113,6 @@
       <File Path="$PSRCDIR/sources_1/bd/msys/ip/msys_mig_7series_0_0/mig_b.prj">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="ScopedToCell" Val="msys_mig_7series_0_0"/>
         </FileInfo>
       </File>
       <Config>

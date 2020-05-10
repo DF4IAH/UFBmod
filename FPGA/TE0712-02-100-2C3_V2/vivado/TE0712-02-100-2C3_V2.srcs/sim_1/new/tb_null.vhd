@@ -372,17 +372,339 @@ msys_wrapper_i: component msys_wrapper
   -- LVDS DDR data with 64 MHz clock (DDR: 128 MHz)
   proc_tb_TRX_rx_data: process
   begin
+    -- RX data has offset by 1/2 bit clock
     wait for 7.8125ns / 2;
     
     loop
-      -- [1] RX24      [0] RX09
+      -- [1] RX24 off     [0] RX09 square wave max+ max- ...
+
+      -- First frame with I = max-pos / Q = 0
+      -- Bit31: I_SYNC 1_
+      tb_TRX_rx_data_p <= "11";
+      tb_TRX_rx_data_n <= "00";
+      wait for 7.8125ns;
+
+      -- Bit 30: I_SYNC  _0
       tb_TRX_rx_data_p <= "00";
       tb_TRX_rx_data_n <= "11";
       wait for 7.8125ns;
 
+      -- Bit 29: I[13] Sign-Bit  +
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 28: I[12] max-pos
       tb_TRX_rx_data_p <= "01";
       tb_TRX_rx_data_n <= "10";
       wait for 7.8125ns;
+
+      -- Bit 27: I[11] max-pos
+      tb_TRX_rx_data_p <= "01";
+      tb_TRX_rx_data_n <= "10";
+      wait for 7.8125ns;
+
+      -- Bit 26: I[10] max-pos
+      tb_TRX_rx_data_p <= "01";
+      tb_TRX_rx_data_n <= "10";
+      wait for 7.8125ns;
+
+      -- Bit 25: I[09] max-pos
+      tb_TRX_rx_data_p <= "01";
+      tb_TRX_rx_data_n <= "10";
+      wait for 7.8125ns;
+
+      -- Bit 24: I[08] max-pos
+      tb_TRX_rx_data_p <= "01";
+      tb_TRX_rx_data_n <= "10";
+      wait for 7.8125ns;
+
+      -- Bit 23: I[07] max-pos
+      tb_TRX_rx_data_p <= "01";
+      tb_TRX_rx_data_n <= "10";
+      wait for 7.8125ns;
+
+      -- Bit 22: I[06] max-pos
+      tb_TRX_rx_data_p <= "01";
+      tb_TRX_rx_data_n <= "10";
+      wait for 7.8125ns;
+
+      -- Bit 21: I[05] max-pos
+      tb_TRX_rx_data_p <= "01";
+      tb_TRX_rx_data_n <= "10";
+      wait for 7.8125ns;
+
+      -- Bit 20: I[04] max-pos
+      tb_TRX_rx_data_p <= "01";
+      tb_TRX_rx_data_n <= "10";
+      wait for 7.8125ns;
+
+      -- Bit 19: I[03] max-pos
+      tb_TRX_rx_data_p <= "01";
+      tb_TRX_rx_data_n <= "10";
+      wait for 7.8125ns;
+
+      -- Bit 18: I[02] max-pos
+      tb_TRX_rx_data_p <= "01";
+      tb_TRX_rx_data_n <= "10";
+      wait for 7.8125ns;
+
+      -- Bit 17: I[01] max-pos
+      tb_TRX_rx_data_p <= "01";
+      tb_TRX_rx_data_n <= "10";
+      wait for 7.8125ns;
+
+      -- Bit 16: I[00] always 0
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+
+      -- Bit15: Q_SYNC 0_
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 14: Q_SYNC  _1
+      tb_TRX_rx_data_p <= "11";
+      tb_TRX_rx_data_n <= "00";
+      wait for 7.8125ns;
+
+      -- Bit 13: Q[13] Sign-Bit  +(0)
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 12: Q[12] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 11: Q[11] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 10: Q[10] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 09: Q[09] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 08: Q[08] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 07: Q[07] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 06: Q[06] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 05: Q[05] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 04: Q[04] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 03: Q[03] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 02: Q[02] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 01: Q[01] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 00: Q[00] always 0
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+      -- 32 Bit frame complete
+
+
+      -- Second frame with I = max-neg / Q = 0
+      -- Bit31: I_SYNC 1_
+      tb_TRX_rx_data_p <= "11";
+      tb_TRX_rx_data_n <= "00";
+      wait for 7.8125ns;
+
+      -- Bit 30: I_SYNC  _0
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 29: I[13] Sign-Bit  -
+      tb_TRX_rx_data_p <= "01";
+      tb_TRX_rx_data_n <= "10";
+      wait for 7.8125ns;
+
+      -- Bit 28: I[12] max-neg
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 27: I[11] max-neg
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 26: I[10] max-neg
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 25: I[09] max-neg
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 24: I[08] max-neg
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 23: I[07] max-neg
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 22: I[06] max-neg
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 21: I[05] max-neg
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 20: I[04] max-neg
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 19: I[03] max-neg
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 18: I[02] max-neg
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 17: I[01] max-neg
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 16: I[00] always 0
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+
+      -- Bit15: Q_SYNC 0_
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 14: Q_SYNC  _1
+      tb_TRX_rx_data_p <= "11";
+      tb_TRX_rx_data_n <= "00";
+      wait for 7.8125ns;
+
+      -- Bit 13: Q[13] Sign-Bit  +(0)
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 12: Q[12] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 11: Q[11] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 10: Q[10] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 09: Q[09] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 08: Q[08] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 07: Q[07] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 06: Q[06] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 05: Q[05] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 04: Q[04] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 03: Q[03] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 02: Q[02] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 01: Q[01] zero
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+
+      -- Bit 00: Q[00] always 0
+      tb_TRX_rx_data_p <= "00";
+      tb_TRX_rx_data_n <= "11";
+      wait for 7.8125ns;
+      -- 32 Bit frame complete
+
     end loop;
   end process proc_tb_TRX_rx_data;
 
