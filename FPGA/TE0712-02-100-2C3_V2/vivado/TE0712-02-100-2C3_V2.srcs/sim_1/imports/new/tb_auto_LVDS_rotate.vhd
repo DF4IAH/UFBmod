@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 12.05.2020 18:38:56
 -- Design Name: 
--- Module Name: tb_barrel_rot32 - Behavioral
+-- Module Name: tb_auto_LVDS_rotate - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -35,18 +35,20 @@ use IEEE.std_logic_signed.all;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity tb_barrel_rot32 is
+entity tb_auto_LVDS_rotate is
 --  Port ( );
-end tb_barrel_rot32;
+end tb_auto_LVDS_rotate;
 
-architecture Behavioral of tb_barrel_rot32 is
-  component barrel_rot32 is
-  Port ( clk : in STD_LOGIC;
-         rot : in STD_LOGIC_VECTOR (4 downto 0);
-         d : in STD_LOGIC_VECTOR (31 downto 0);
-         q : out STD_LOGIC_VECTOR (31 downto 0)
+architecture Behavioral of tb_auto_LVDS_rotate is
+  component auto_LVDS_rotate is
+  Port ( reset  : in  STD_LOGIC;
+         clk    : in  STD_LOGIC;
+         LVDS24 : in  STD_LOGIC_VECTOR (31 downto 0);
+         LVDS09 : in  STD_LOGIC_VECTOR (31 downto 0);
+         rot24q : out STD_LOGIC_VECTOR (31 downto 0);
+         rot09q : out STD_LOGIC_VECTOR (31 downto 0)
     );
-  end component barrel_rot32;
+  end component auto_LVDS_rotate;
 
 -- RESETS
   signal tb_reset : STD_LOGIC;
@@ -55,18 +57,21 @@ architecture Behavioral of tb_barrel_rot32 is
   signal tb_clk : STD_LOGIC;
 
 -- STIMULUS
-  signal tb_rot : STD_LOGIC_VECTOR (4 downto 0);
-  signal tb_d : STD_LOGIC_VECTOR (31 downto 0);
-  signal tb_q : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_LVDS24 : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_LVDS09 : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_rot24q : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_rot09q : STD_LOGIC_VECTOR (31 downto 0);
 
 begin
 -- DUT
-  barrel_rot32_i: component barrel_rot32
+  auto_LVDS_rotate_i: component auto_LVDS_rotate
     port map (
-      clk => tb_clk,
-      rot => tb_rot,
-      d => tb_d,
-      q => tb_q
+      reset  => tb_reset,
+      clk    => tb_clk,
+      LVDS24 => tb_LVDS24,
+      LVDS09 => tb_LVDS09,
+      rot24q => tb_rot24q,
+      rot09q => tb_rot09q
     );
 
 
@@ -95,32 +100,9 @@ begin
   -- Data 32 bit
   proc_tb_d: process
   begin
-    tb_d <= "00000000000000000000000000000001";
+    tb_LVDS24 <= "00000000000000001000000000000001";
+    tb_LVDS09 <= "01000000000000000010000000000000";
     wait;
   end process proc_tb_d;
-
-  -- Rotate count value
-  proc_tb_rot: process
-    variable tb_rot_val : Integer;
-  begin
-    if (tb_reset = '1'  or  tb_reset = 'U') then
-      tb_rot_val := 0;
-      tb_rot <=  std_logic_vector(to_unsigned(tb_rot_val, tb_rot'length));
-      wait for 1ns;
-
-    else
-      while (tb_reset = '0') loop
-        wait for 2us;
-      
-        if (tb_rot_val < 31) then
-          tb_rot_val := tb_rot_val + 1;
-        else
-          tb_rot_val := 0;
-        end if;
-
-        tb_rot <=  std_logic_vector(to_unsigned(tb_rot_val, tb_rot'length));
-      end loop;
-    end if;
-  end process proc_tb_rot;
   
 end Behavioral;

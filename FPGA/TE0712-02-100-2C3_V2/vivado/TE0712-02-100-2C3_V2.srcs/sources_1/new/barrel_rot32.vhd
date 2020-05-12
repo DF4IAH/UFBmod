@@ -45,25 +45,29 @@ end barrel_rot32;
 
 architecture Behavioral of barrel_rot32 is
 begin
-  process (clk)
+  process (clk, rot, d)
     variable const : Integer;
     variable temp : STD_LOGIC_VECTOR (31 downto 0);
   begin
     const := conv_integer(rot);
-    temp := d;
+    if (const < 0) then
+      const := const + 32;
+    end if;
+
+    temp  := d;
   
     if (clk'EVENT and clk = '1') then
       for i in 1 to 32 loop
         if i <= const then
           if (temp(31) = '1') then
-            temp := temp (30 downto 0) & '1';
+            temp := temp(30 downto 0) & '1';
           else
-            temp := temp (30 downto 0) & '0';
+            temp := temp(30 downto 0) & '0';
           end if;
         end if;
-        
-        q <= temp;
       end loop;
+
+      q <= temp;
     end if;
   end process;
 

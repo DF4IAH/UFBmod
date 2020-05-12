@@ -95,7 +95,7 @@ begin
   -- Data 32 bit
   proc_tb_d: process
   begin
-    tb_d <= "00000000000000000000000000000001";
+    tb_d <= "10000000010000001100100100110110";
     wait;
   end process proc_tb_d;
 
@@ -105,19 +105,12 @@ begin
   begin
     if (tb_reset = '1'  or  tb_reset = 'U') then
       tb_rot_val := 0;
-      tb_rot <=  std_logic_vector(to_unsigned(tb_rot_val, tb_rot'length));
       wait for 1ns;
-
     else
       while (tb_reset = '0') loop
         wait for 2us;
       
-        if (tb_rot_val < 31) then
-          tb_rot_val := tb_rot_val + 1;
-        else
-          tb_rot_val := 0;
-        end if;
-
+        tb_rot_val := tb_rot_val + 1;
         tb_rot <=  std_logic_vector(to_unsigned(tb_rot_val, tb_rot'length));
       end loop;
     end if;
