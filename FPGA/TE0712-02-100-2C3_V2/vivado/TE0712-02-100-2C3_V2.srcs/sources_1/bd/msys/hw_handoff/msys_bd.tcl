@@ -1170,47 +1170,151 @@ proc create_hier_cell_TRX_rx_bitslip { parentCell nameHier } {
   create_bd_pin -dir I -from 1 -to 0 din
   create_bd_pin -dir I -type clk s_axi_aclk
 
-  # Create instance: TRX_rx09_bitslip_counter_binary_0, and set properties
-  set TRX_rx09_bitslip_counter_binary_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_counter_binary:12.0 TRX_rx09_bitslip_counter_binary_0 ]
+  # Create instance: TRX_rx09_bitslip_any_fail_util_reduced_logic_0, and set properties
+  set TRX_rx09_bitslip_any_fail_util_reduced_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_reduced_logic:2.0 TRX_rx09_bitslip_any_fail_util_reduced_logic_0 ]
   set_property -dict [ list \
-   CONFIG.Final_Count_Value {3F} \
-   CONFIG.Output_Width {7} \
-   CONFIG.Restrict_Count {true} \
-   CONFIG.SCLR {true} \
-   CONFIG.Sync_Threshold_Output {true} \
-   CONFIG.Threshold_Value {3F} \
- ] $TRX_rx09_bitslip_counter_binary_0
+   CONFIG.C_OPERATION {or} \
+   CONFIG.C_SIZE {3} \
+   CONFIG.LOGO_FILE {data/sym_orgate.png} \
+ ] $TRX_rx09_bitslip_any_fail_util_reduced_logic_0
 
-  # Create instance: TRX_rx24_bitslip_c_counter_binary_0, and set properties
-  set TRX_rx24_bitslip_c_counter_binary_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_counter_binary:12.0 TRX_rx24_bitslip_c_counter_binary_0 ]
+  # Create instance: TRX_rx09_bitslip_fail_counter_binary_0, and set properties
+  set TRX_rx09_bitslip_fail_counter_binary_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_counter_binary:12.0 TRX_rx09_bitslip_fail_counter_binary_0 ]
   set_property -dict [ list \
-   CONFIG.Final_Count_Value {3F} \
-   CONFIG.Output_Width {7} \
-   CONFIG.Restrict_Count {true} \
+   CONFIG.CE {true} \
+   CONFIG.Final_Count_Value {06} \
+   CONFIG.Output_Width {3} \
+   CONFIG.Restrict_Count {false} \
    CONFIG.SCLR {true} \
-   CONFIG.Sync_Threshold_Output {true} \
-   CONFIG.Threshold_Value {3F} \
- ] $TRX_rx24_bitslip_c_counter_binary_0
+   CONFIG.Sync_Threshold_Output {false} \
+   CONFIG.Threshold_Value {01} \
+ ] $TRX_rx09_bitslip_fail_counter_binary_0
 
-  # Create instance: TRX_rx_bitslip_c_shift_ram_0, and set properties
-  set TRX_rx_bitslip_c_shift_ram_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 TRX_rx_bitslip_c_shift_ram_0 ]
+  # Create instance: TRX_rx09_bitslip_util_reduced_logic_0, and set properties
+  set TRX_rx09_bitslip_util_reduced_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_reduced_logic:2.0 TRX_rx09_bitslip_util_reduced_logic_0 ]
+  set_property -dict [ list \
+   CONFIG.C_SIZE {2} \
+ ] $TRX_rx09_bitslip_util_reduced_logic_0
+
+  # Create instance: TRX_rx09_bitslip_util_vector_logic_0, and set properties
+  set TRX_rx09_bitslip_util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 TRX_rx09_bitslip_util_vector_logic_0 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {and} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_andgate.png} \
+ ] $TRX_rx09_bitslip_util_vector_logic_0
+
+  # Create instance: TRX_rx09_bitslip_util_vector_logic_1, and set properties
+  set TRX_rx09_bitslip_util_vector_logic_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 TRX_rx09_bitslip_util_vector_logic_1 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {not} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_notgate.png} \
+ ] $TRX_rx09_bitslip_util_vector_logic_1
+
+  # Create instance: TRX_rx09_bitslip_xlconcat_0, and set properties
+  set TRX_rx09_bitslip_xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 TRX_rx09_bitslip_xlconcat_0 ]
+
+  # Create instance: TRX_rx09_bitslip_xlslice_0to0, and set properties
+  set TRX_rx09_bitslip_xlslice_0to0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 TRX_rx09_bitslip_xlslice_0to0 ]
+  set_property -dict [ list \
+   CONFIG.DIN_WIDTH {2} \
+ ] $TRX_rx09_bitslip_xlslice_0to0
+
+  # Create instance: TRX_rx24_bitslip_any_fail_util_reduced_logic_0, and set properties
+  set TRX_rx24_bitslip_any_fail_util_reduced_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_reduced_logic:2.0 TRX_rx24_bitslip_any_fail_util_reduced_logic_0 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {or} \
+   CONFIG.C_SIZE {3} \
+   CONFIG.LOGO_FILE {data/sym_orgate.png} \
+ ] $TRX_rx24_bitslip_any_fail_util_reduced_logic_0
+
+  # Create instance: TRX_rx24_bitslip_fail_counter_binary_0, and set properties
+  set TRX_rx24_bitslip_fail_counter_binary_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_counter_binary:12.0 TRX_rx24_bitslip_fail_counter_binary_0 ]
+  set_property -dict [ list \
+   CONFIG.CE {true} \
+   CONFIG.Final_Count_Value {06} \
+   CONFIG.Output_Width {3} \
+   CONFIG.Restrict_Count {false} \
+   CONFIG.SCLR {true} \
+   CONFIG.Sync_Threshold_Output {false} \
+   CONFIG.Threshold_Value {01} \
+ ] $TRX_rx24_bitslip_fail_counter_binary_0
+
+  # Create instance: TRX_rx24_bitslip_util_reduced_logic_0, and set properties
+  set TRX_rx24_bitslip_util_reduced_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_reduced_logic:2.0 TRX_rx24_bitslip_util_reduced_logic_0 ]
+  set_property -dict [ list \
+   CONFIG.C_SIZE {2} \
+ ] $TRX_rx24_bitslip_util_reduced_logic_0
+
+  # Create instance: TRX_rx24_bitslip_util_vector_logic_0, and set properties
+  set TRX_rx24_bitslip_util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 TRX_rx24_bitslip_util_vector_logic_0 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {and} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_andgate.png} \
+ ] $TRX_rx24_bitslip_util_vector_logic_0
+
+  # Create instance: TRX_rx24_bitslip_util_vector_logic_1, and set properties
+  set TRX_rx24_bitslip_util_vector_logic_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 TRX_rx24_bitslip_util_vector_logic_1 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {not} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_notgate.png} \
+ ] $TRX_rx24_bitslip_util_vector_logic_1
+
+  # Create instance: TRX_rx24_bitslip_xlconcat_0, and set properties
+  set TRX_rx24_bitslip_xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 TRX_rx24_bitslip_xlconcat_0 ]
+
+  # Create instance: TRX_rx24_bitslip_xlslice_1to1, and set properties
+  set TRX_rx24_bitslip_xlslice_1to1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 TRX_rx24_bitslip_xlslice_1to1 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {1} \
+   CONFIG.DIN_TO {1} \
+   CONFIG.DIN_WIDTH {2} \
+   CONFIG.DOUT_WIDTH {1} \
+ ] $TRX_rx24_bitslip_xlslice_1to1
+
+  # Create instance: TRX_rx_bitslip_CDC_shift_ram_0, and set properties
+  set TRX_rx_bitslip_CDC_shift_ram_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 TRX_rx_bitslip_CDC_shift_ram_0 ]
   set_property -dict [ list \
    CONFIG.AsyncInitVal {00} \
    CONFIG.DefaultData {00} \
    CONFIG.Depth {1} \
    CONFIG.SyncInitVal {00} \
    CONFIG.Width {2} \
- ] $TRX_rx_bitslip_c_shift_ram_0
+ ] $TRX_rx_bitslip_CDC_shift_ram_0
 
-  # Create instance: TRX_rx_bitslip_c_shift_ram_1, and set properties
-  set TRX_rx_bitslip_c_shift_ram_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 TRX_rx_bitslip_c_shift_ram_1 ]
+  # Create instance: TRX_rx_bitslip_CDC_shift_ram_1, and set properties
+  set TRX_rx_bitslip_CDC_shift_ram_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 TRX_rx_bitslip_CDC_shift_ram_1 ]
   set_property -dict [ list \
    CONFIG.AsyncInitVal {00} \
    CONFIG.DefaultData {00} \
    CONFIG.Depth {1} \
    CONFIG.SyncInitVal {00} \
    CONFIG.Width {2} \
- ] $TRX_rx_bitslip_c_shift_ram_1
+ ] $TRX_rx_bitslip_CDC_shift_ram_1
+
+  # Create instance: TRX_rx_bitslip_div4_counter_binary_0, and set properties
+  set TRX_rx_bitslip_div4_counter_binary_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_counter_binary:12.0 TRX_rx_bitslip_div4_counter_binary_0 ]
+  set_property -dict [ list \
+   CONFIG.Output_Width {2} \
+ ] $TRX_rx_bitslip_div4_counter_binary_0
+
+  # Create instance: TRX_rx_bitslip_div4_util_reduced_logic_0, and set properties
+  set TRX_rx_bitslip_div4_util_reduced_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_reduced_logic:2.0 TRX_rx_bitslip_div4_util_reduced_logic_0 ]
+  set_property -dict [ list \
+   CONFIG.C_SIZE {2} \
+ ] $TRX_rx_bitslip_div4_util_reduced_logic_0
+
+  # Create instance: TRX_rx_bitslip_frame_counter_binary_0, and set properties
+  set TRX_rx_bitslip_frame_counter_binary_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_counter_binary:12.0 TRX_rx_bitslip_frame_counter_binary_0 ]
+  set_property -dict [ list \
+   CONFIG.CE {true} \
+   CONFIG.Output_Width {3} \
+   CONFIG.Sync_Threshold_Output {true} \
+   CONFIG.Threshold_Value {6} \
+ ] $TRX_rx_bitslip_frame_counter_binary_0
 
   # Create instance: TRX_rx_bitslip_xlconcat_0, and set properties
   set TRX_rx_bitslip_xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 TRX_rx_bitslip_xlconcat_0 ]
@@ -1218,32 +1322,30 @@ proc create_hier_cell_TRX_rx_bitslip { parentCell nameHier } {
    CONFIG.NUM_PORTS {2} \
  ] $TRX_rx_bitslip_xlconcat_0
 
-  # Create instance: TRX_rx_bitslip_xlslice_0to0, and set properties
-  set TRX_rx_bitslip_xlslice_0to0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 TRX_rx_bitslip_xlslice_0to0 ]
-  set_property -dict [ list \
-   CONFIG.DIN_WIDTH {2} \
- ] $TRX_rx_bitslip_xlslice_0to0
-
-  # Create instance: TRX_rx_bitslip_xlslice_1to1, and set properties
-  set TRX_rx_bitslip_xlslice_1to1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 TRX_rx_bitslip_xlslice_1to1 ]
-  set_property -dict [ list \
-   CONFIG.DIN_FROM {1} \
-   CONFIG.DIN_TO {1} \
-   CONFIG.DIN_WIDTH {2} \
-   CONFIG.DOUT_WIDTH {1} \
- ] $TRX_rx_bitslip_xlslice_1to1
-
   # Create port connections
-  connect_bd_net -net TRX_rx09_bitslip_counter_binary_0_THRESH0 [get_bd_pins TRX_rx09_bitslip_counter_binary_0/THRESH0] [get_bd_pins TRX_rx_bitslip_xlconcat_0/In0]
-  connect_bd_net -net TRX_rx24_bitslip_c_counter_binary_0_THRESH0 [get_bd_pins TRX_rx24_bitslip_c_counter_binary_0/THRESH0] [get_bd_pins TRX_rx_bitslip_xlconcat_0/In1]
+  connect_bd_net -net TRX_rx09_bitslip_any_fail_util_reduced_logic_0_Res [get_bd_pins TRX_rx09_bitslip_any_fail_util_reduced_logic_0/Res] [get_bd_pins TRX_rx09_bitslip_util_vector_logic_0/Op1]
+  connect_bd_net -net TRX_rx09_bitslip_fail_counter_binary_0_Q [get_bd_pins TRX_rx09_bitslip_any_fail_util_reduced_logic_0/Op1] [get_bd_pins TRX_rx09_bitslip_fail_counter_binary_0/Q]
+  connect_bd_net -net TRX_rx09_bitslip_util_reduced_logic_0_Res [get_bd_pins TRX_rx09_bitslip_fail_counter_binary_0/CE] [get_bd_pins TRX_rx09_bitslip_util_reduced_logic_0/Res]
+  connect_bd_net -net TRX_rx09_bitslip_util_vector_logic_0_Res [get_bd_pins TRX_rx09_bitslip_util_vector_logic_0/Res] [get_bd_pins TRX_rx_bitslip_xlconcat_0/In0]
+  connect_bd_net -net TRX_rx09_bitslip_util_vector_logic_1_Res [get_bd_pins TRX_rx09_bitslip_util_vector_logic_1/Res] [get_bd_pins TRX_rx09_bitslip_xlconcat_0/In0]
+  connect_bd_net -net TRX_rx09_bitslip_xlconcat_0_dout [get_bd_pins TRX_rx09_bitslip_util_reduced_logic_0/Op1] [get_bd_pins TRX_rx09_bitslip_xlconcat_0/dout]
+  connect_bd_net -net TRX_rx09_bitslip_xlslice_0to0_Dout [get_bd_pins TRX_rx09_bitslip_util_vector_logic_1/Op1] [get_bd_pins TRX_rx09_bitslip_xlslice_0to0/Dout]
+  connect_bd_net -net TRX_rx24_bitslip_any_fail_util_reduced_logic_0_Res [get_bd_pins TRX_rx24_bitslip_any_fail_util_reduced_logic_0/Res] [get_bd_pins TRX_rx24_bitslip_util_vector_logic_0/Op1]
+  connect_bd_net -net TRX_rx24_bitslip_fail_counter_binary_0_Q [get_bd_pins TRX_rx24_bitslip_any_fail_util_reduced_logic_0/Op1] [get_bd_pins TRX_rx24_bitslip_fail_counter_binary_0/Q]
+  connect_bd_net -net TRX_rx24_bitslip_util_reduced_logic_0_Res [get_bd_pins TRX_rx24_bitslip_fail_counter_binary_0/CE] [get_bd_pins TRX_rx24_bitslip_util_reduced_logic_0/Res]
+  connect_bd_net -net TRX_rx24_bitslip_util_vector_logic_0_Res [get_bd_pins TRX_rx24_bitslip_util_vector_logic_0/Res] [get_bd_pins TRX_rx_bitslip_xlconcat_0/In1]
+  connect_bd_net -net TRX_rx24_bitslip_util_vector_logic_1_Res [get_bd_pins TRX_rx24_bitslip_util_vector_logic_1/Res] [get_bd_pins TRX_rx24_bitslip_xlconcat_0/In0]
+  connect_bd_net -net TRX_rx24_bitslip_xlconcat_0_dout [get_bd_pins TRX_rx24_bitslip_util_reduced_logic_0/Op1] [get_bd_pins TRX_rx24_bitslip_xlconcat_0/dout]
+  connect_bd_net -net TRX_rx24_bitslip_xlslice_1to1_Dout [get_bd_pins TRX_rx24_bitslip_util_vector_logic_1/Op1] [get_bd_pins TRX_rx24_bitslip_xlslice_1to1/Dout]
+  connect_bd_net -net TRX_rx_bitslip_div4_counter_binary_0_Q [get_bd_pins TRX_rx_bitslip_div4_counter_binary_0/Q] [get_bd_pins TRX_rx_bitslip_div4_util_reduced_logic_0/Op1]
+  connect_bd_net -net TRX_rx_bitslip_div4_util_reduced_logic_0_Res [get_bd_pins TRX_rx09_bitslip_xlconcat_0/In1] [get_bd_pins TRX_rx24_bitslip_xlconcat_0/In1] [get_bd_pins TRX_rx_bitslip_div4_util_reduced_logic_0/Res] [get_bd_pins TRX_rx_bitslip_frame_counter_binary_0/CE]
+  connect_bd_net -net TRX_rx_bitslip_frame_counter_binary_0_THRESH0 [get_bd_pins TRX_rx09_bitslip_fail_counter_binary_0/SCLR] [get_bd_pins TRX_rx09_bitslip_util_vector_logic_0/Op2] [get_bd_pins TRX_rx24_bitslip_fail_counter_binary_0/SCLR] [get_bd_pins TRX_rx24_bitslip_util_vector_logic_0/Op2] [get_bd_pins TRX_rx_bitslip_frame_counter_binary_0/THRESH0]
   connect_bd_net -net TRX_rx_bitslip_xlconcat_0_dout [get_bd_pins bitslip_o] [get_bd_pins TRX_rx_bitslip_xlconcat_0/dout]
-  connect_bd_net -net TRX_rx_bitslip_xlslice_0to0_Dout [get_bd_pins TRX_rx09_bitslip_counter_binary_0/SCLR] [get_bd_pins TRX_rx_bitslip_xlslice_0to0/Dout]
-  connect_bd_net -net TRX_rx_bitslip_xlslice_1to1_Dout [get_bd_pins TRX_rx24_bitslip_c_counter_binary_0/SCLR] [get_bd_pins TRX_rx_bitslip_xlslice_1to1/Dout]
-  connect_bd_net -net TRX_rx_clkdiv_CD016 [get_bd_pins clk_div_i] [get_bd_pins TRX_rx09_bitslip_counter_binary_0/CLK] [get_bd_pins TRX_rx24_bitslip_c_counter_binary_0/CLK] [get_bd_pins TRX_rx_bitslip_c_shift_ram_1/CLK]
-  connect_bd_net -net din_3 [get_bd_pins din] [get_bd_pins TRX_rx_bitslip_c_shift_ram_0/D]
-  connect_bd_net -net markers_CD016 [get_bd_pins TRX_rx_bitslip_c_shift_ram_1/Q] [get_bd_pins TRX_rx_bitslip_xlslice_0to0/Din] [get_bd_pins TRX_rx_bitslip_xlslice_1to1/Din]
-  connect_bd_net -net markers_reg_CD100 [get_bd_pins TRX_rx_bitslip_c_shift_ram_0/Q] [get_bd_pins TRX_rx_bitslip_c_shift_ram_1/D]
-  connect_bd_net -net s_axi_aclk_CD100 [get_bd_pins s_axi_aclk] [get_bd_pins TRX_rx_bitslip_c_shift_ram_0/CLK]
+  connect_bd_net -net TRX_rx_clkdiv_CD016 [get_bd_pins clk_div_i] [get_bd_pins TRX_rx09_bitslip_fail_counter_binary_0/CLK] [get_bd_pins TRX_rx24_bitslip_fail_counter_binary_0/CLK] [get_bd_pins TRX_rx_bitslip_CDC_shift_ram_1/CLK] [get_bd_pins TRX_rx_bitslip_div4_counter_binary_0/CLK] [get_bd_pins TRX_rx_bitslip_frame_counter_binary_0/CLK]
+  connect_bd_net -net din_3 [get_bd_pins din] [get_bd_pins TRX_rx_bitslip_CDC_shift_ram_0/D]
+  connect_bd_net -net markers_reg_CD016 [get_bd_pins TRX_rx09_bitslip_xlslice_0to0/Din] [get_bd_pins TRX_rx24_bitslip_xlslice_1to1/Din] [get_bd_pins TRX_rx_bitslip_CDC_shift_ram_1/Q]
+  connect_bd_net -net markers_reg_CD100 [get_bd_pins TRX_rx_bitslip_CDC_shift_ram_0/Q] [get_bd_pins TRX_rx_bitslip_CDC_shift_ram_1/D]
+  connect_bd_net -net s_axi_aclk_CD100 [get_bd_pins s_axi_aclk] [get_bd_pins TRX_rx_bitslip_CDC_shift_ram_0/CLK]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -1370,14 +1472,14 @@ proc create_hier_cell_TRX_rx24_concat { parentCell nameHier } {
   # Create port connections
   connect_bd_net -net Din_1 [get_bd_pins Din] [get_bd_pins TRX_rx_xlslice_01to01/Din] [get_bd_pins TRX_rx_xlslice_03to03/Din] [get_bd_pins TRX_rx_xlslice_05to05/Din] [get_bd_pins TRX_rx_xlslice_07to07/Din] [get_bd_pins TRX_rx_xlslice_09to09/Din] [get_bd_pins TRX_rx_xlslice_11to11/Din] [get_bd_pins TRX_rx_xlslice_13to13/Din] [get_bd_pins TRX_rx_xlslice_15to15/Din]
   connect_bd_net -net TRX_rx24_8bits [get_bd_pins rx24_o] [get_bd_pins TRX_rx24_xlconcat_0/dout]
-  connect_bd_net -net TRX_rx_xlslice_01to01_Dout [get_bd_pins TRX_rx24_xlconcat_0/In0] [get_bd_pins TRX_rx_xlslice_01to01/Dout]
-  connect_bd_net -net TRX_rx_xlslice_03to03_Dout [get_bd_pins TRX_rx24_xlconcat_0/In1] [get_bd_pins TRX_rx_xlslice_03to03/Dout]
-  connect_bd_net -net TRX_rx_xlslice_05to05_Dout [get_bd_pins TRX_rx24_xlconcat_0/In2] [get_bd_pins TRX_rx_xlslice_05to05/Dout]
-  connect_bd_net -net TRX_rx_xlslice_07to07_Dout [get_bd_pins TRX_rx24_xlconcat_0/In3] [get_bd_pins TRX_rx_xlslice_07to07/Dout]
-  connect_bd_net -net TRX_rx_xlslice_09to09_Dout [get_bd_pins TRX_rx24_xlconcat_0/In4] [get_bd_pins TRX_rx_xlslice_09to09/Dout]
-  connect_bd_net -net TRX_rx_xlslice_11to11_Dout [get_bd_pins TRX_rx24_xlconcat_0/In5] [get_bd_pins TRX_rx_xlslice_11to11/Dout]
-  connect_bd_net -net TRX_rx_xlslice_13to13_Dout [get_bd_pins TRX_rx24_xlconcat_0/In6] [get_bd_pins TRX_rx_xlslice_13to13/Dout]
-  connect_bd_net -net TRX_rx_xlslice_15to15_Dout [get_bd_pins TRX_rx24_xlconcat_0/In7] [get_bd_pins TRX_rx_xlslice_15to15/Dout]
+  connect_bd_net -net TRX_rx_xlslice_01to01_Dout [get_bd_pins TRX_rx24_xlconcat_0/In0] [get_bd_pins TRX_rx_xlslice_15to15/Dout]
+  connect_bd_net -net TRX_rx_xlslice_03to03_Dout [get_bd_pins TRX_rx24_xlconcat_0/In1] [get_bd_pins TRX_rx_xlslice_13to13/Dout]
+  connect_bd_net -net TRX_rx_xlslice_05to05_Dout [get_bd_pins TRX_rx24_xlconcat_0/In2] [get_bd_pins TRX_rx_xlslice_11to11/Dout]
+  connect_bd_net -net TRX_rx_xlslice_07to07_Dout [get_bd_pins TRX_rx24_xlconcat_0/In3] [get_bd_pins TRX_rx_xlslice_09to09/Dout]
+  connect_bd_net -net TRX_rx_xlslice_09to09_Dout [get_bd_pins TRX_rx24_xlconcat_0/In4] [get_bd_pins TRX_rx_xlslice_07to07/Dout]
+  connect_bd_net -net TRX_rx_xlslice_11to11_Dout [get_bd_pins TRX_rx24_xlconcat_0/In5] [get_bd_pins TRX_rx_xlslice_05to05/Dout]
+  connect_bd_net -net TRX_rx_xlslice_13to13_Dout [get_bd_pins TRX_rx24_xlconcat_0/In6] [get_bd_pins TRX_rx_xlslice_03to03/Dout]
+  connect_bd_net -net TRX_rx_xlslice_15to15_Dout [get_bd_pins TRX_rx24_xlconcat_0/In7] [get_bd_pins TRX_rx_xlslice_01to01/Dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -1504,14 +1606,14 @@ proc create_hier_cell_TRX_rx09_concat { parentCell nameHier } {
   # Create port connections
   connect_bd_net -net Din_1 [get_bd_pins Din] [get_bd_pins TRX_rx_xlslice_00to00/Din] [get_bd_pins TRX_rx_xlslice_02to02/Din] [get_bd_pins TRX_rx_xlslice_04to04/Din] [get_bd_pins TRX_rx_xlslice_06to06/Din] [get_bd_pins TRX_rx_xlslice_08to08/Din] [get_bd_pins TRX_rx_xlslice_10to10/Din] [get_bd_pins TRX_rx_xlslice_12to12/Din] [get_bd_pins TRX_rx_xlslice_14to14/Din]
   connect_bd_net -net TRX_rx09_8bits [get_bd_pins rx09_o] [get_bd_pins TRX_rx09_xlconcat_0/dout]
-  connect_bd_net -net TRX_rx_xlslice_00to00_Dout [get_bd_pins TRX_rx09_xlconcat_0/In0] [get_bd_pins TRX_rx_xlslice_00to00/Dout]
-  connect_bd_net -net TRX_rx_xlslice_02to02_Dout [get_bd_pins TRX_rx09_xlconcat_0/In1] [get_bd_pins TRX_rx_xlslice_02to02/Dout]
-  connect_bd_net -net TRX_rx_xlslice_04to04_Dout [get_bd_pins TRX_rx09_xlconcat_0/In2] [get_bd_pins TRX_rx_xlslice_04to04/Dout]
-  connect_bd_net -net TRX_rx_xlslice_06to06_Dout [get_bd_pins TRX_rx09_xlconcat_0/In3] [get_bd_pins TRX_rx_xlslice_06to06/Dout]
-  connect_bd_net -net TRX_rx_xlslice_08to08_Dout [get_bd_pins TRX_rx09_xlconcat_0/In4] [get_bd_pins TRX_rx_xlslice_08to08/Dout]
-  connect_bd_net -net TRX_rx_xlslice_10to10_Dout [get_bd_pins TRX_rx09_xlconcat_0/In5] [get_bd_pins TRX_rx_xlslice_10to10/Dout]
-  connect_bd_net -net TRX_rx_xlslice_12to12_Dout [get_bd_pins TRX_rx09_xlconcat_0/In6] [get_bd_pins TRX_rx_xlslice_12to12/Dout]
-  connect_bd_net -net TRX_rx_xlslice_14to14_Dout [get_bd_pins TRX_rx09_xlconcat_0/In7] [get_bd_pins TRX_rx_xlslice_14to14/Dout]
+  connect_bd_net -net TRX_rx_xlslice_00to00_Dout [get_bd_pins TRX_rx09_xlconcat_0/In0] [get_bd_pins TRX_rx_xlslice_14to14/Dout]
+  connect_bd_net -net TRX_rx_xlslice_02to02_Dout [get_bd_pins TRX_rx09_xlconcat_0/In1] [get_bd_pins TRX_rx_xlslice_12to12/Dout]
+  connect_bd_net -net TRX_rx_xlslice_04to04_Dout [get_bd_pins TRX_rx09_xlconcat_0/In2] [get_bd_pins TRX_rx_xlslice_10to10/Dout]
+  connect_bd_net -net TRX_rx_xlslice_06to06_Dout [get_bd_pins TRX_rx09_xlconcat_0/In3] [get_bd_pins TRX_rx_xlslice_08to08/Dout]
+  connect_bd_net -net TRX_rx_xlslice_08to08_Dout [get_bd_pins TRX_rx09_xlconcat_0/In4] [get_bd_pins TRX_rx_xlslice_06to06/Dout]
+  connect_bd_net -net TRX_rx_xlslice_10to10_Dout [get_bd_pins TRX_rx09_xlconcat_0/In5] [get_bd_pins TRX_rx_xlslice_04to04/Dout]
+  connect_bd_net -net TRX_rx_xlslice_12to12_Dout [get_bd_pins TRX_rx09_xlconcat_0/In6] [get_bd_pins TRX_rx_xlslice_02to02/Dout]
+  connect_bd_net -net TRX_rx_xlslice_14to14_Dout [get_bd_pins TRX_rx09_xlconcat_0/In7] [get_bd_pins TRX_rx_xlslice_00to00/Dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst

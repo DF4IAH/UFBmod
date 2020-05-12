@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Sat May  9 21:52:38 2020
+--Date        : Mon May 11 23:56:02 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -1452,45 +1452,45 @@ TRX_rx09_xlconcat_0: component msys_xlconcat_1_3
       In7(0) => TRX_rx_xlslice_14to14_Dout(0),
       dout(7 downto 0) => TRX_rx09_8bits(7 downto 0)
     );
-TRX_rx_xlslice_00to00: component msys_TRX_rx_xlslice_10to10_9
+TRX_rx_xlslice_00to00: component msys_TRX_rx_xlslice_15to16_0
      port map (
       Din(15 downto 0) => Din_1(15 downto 0),
-      Dout(0) => TRX_rx_xlslice_00to00_Dout(0)
+      Dout(0) => TRX_rx_xlslice_14to14_Dout(0)
     );
-TRX_rx_xlslice_02to02: component msys_TRX_rx_xlslice_10to10_7
-     port map (
-      Din(15 downto 0) => Din_1(15 downto 0),
-      Dout(0) => TRX_rx_xlslice_02to02_Dout(0)
-    );
-TRX_rx_xlslice_04to04: component msys_TRX_rx_xlslice_10to10_5
-     port map (
-      Din(15 downto 0) => Din_1(15 downto 0),
-      Dout(0) => TRX_rx_xlslice_04to04_Dout(0)
-    );
-TRX_rx_xlslice_06to06: component msys_TRX_rx_xlslice_10to10_3
-     port map (
-      Din(15 downto 0) => Din_1(15 downto 0),
-      Dout(0) => TRX_rx_xlslice_06to06_Dout(0)
-    );
-TRX_rx_xlslice_08to08: component msys_TRX_rx_xlslice_10to10_1
-     port map (
-      Din(15 downto 0) => Din_1(15 downto 0),
-      Dout(0) => TRX_rx_xlslice_08to08_Dout(0)
-    );
-TRX_rx_xlslice_10to10: component msys_TRX_rx_xlslice_13to13_2
-     port map (
-      Din(15 downto 0) => Din_1(15 downto 0),
-      Dout(0) => TRX_rx_xlslice_10to10_Dout(0)
-    );
-TRX_rx_xlslice_12to12: component msys_TRX_rx_xlslice_13to13_0
+TRX_rx_xlslice_02to02: component msys_TRX_rx_xlslice_13to13_0
      port map (
       Din(15 downto 0) => Din_1(15 downto 0),
       Dout(0) => TRX_rx_xlslice_12to12_Dout(0)
     );
-TRX_rx_xlslice_14to14: component msys_TRX_rx_xlslice_15to16_0
+TRX_rx_xlslice_04to04: component msys_TRX_rx_xlslice_13to13_2
      port map (
       Din(15 downto 0) => Din_1(15 downto 0),
-      Dout(0) => TRX_rx_xlslice_14to14_Dout(0)
+      Dout(0) => TRX_rx_xlslice_10to10_Dout(0)
+    );
+TRX_rx_xlslice_06to06: component msys_TRX_rx_xlslice_10to10_1
+     port map (
+      Din(15 downto 0) => Din_1(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_08to08_Dout(0)
+    );
+TRX_rx_xlslice_08to08: component msys_TRX_rx_xlslice_10to10_3
+     port map (
+      Din(15 downto 0) => Din_1(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_06to06_Dout(0)
+    );
+TRX_rx_xlslice_10to10: component msys_TRX_rx_xlslice_10to10_5
+     port map (
+      Din(15 downto 0) => Din_1(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_04to04_Dout(0)
+    );
+TRX_rx_xlslice_12to12: component msys_TRX_rx_xlslice_10to10_7
+     port map (
+      Din(15 downto 0) => Din_1(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_02to02_Dout(0)
+    );
+TRX_rx_xlslice_14to14: component msys_TRX_rx_xlslice_10to10_9
+     port map (
+      Din(15 downto 0) => Din_1(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_00to00_Dout(0)
     );
 end STRUCTURE;
 library IEEE;
@@ -1591,45 +1591,45 @@ TRX_rx24_xlconcat_0: component msys_TRX_rx09_xlconcat_0_0
       In7(0) => TRX_rx_xlslice_15to15_Dout(0),
       dout(7 downto 0) => TRX_rx24_8bits(7 downto 0)
     );
-TRX_rx_xlslice_01to01: component msys_TRX_rx_xlslice_10to10_8
+TRX_rx_xlslice_01to01: component msys_xlslice_0_4
      port map (
       Din(15 downto 0) => Din_1(15 downto 0),
-      Dout(0) => TRX_rx_xlslice_01to01_Dout(0)
+      Dout(0) => TRX_rx_xlslice_15to15_Dout(0)
     );
-TRX_rx_xlslice_03to03: component msys_TRX_rx_xlslice_10to10_6
-     port map (
-      Din(15 downto 0) => Din_1(15 downto 0),
-      Dout(0) => TRX_rx_xlslice_03to03_Dout(0)
-    );
-TRX_rx_xlslice_05to05: component msys_TRX_rx_xlslice_10to10_4
-     port map (
-      Din(15 downto 0) => Din_1(15 downto 0),
-      Dout(0) => TRX_rx_xlslice_05to05_Dout(0)
-    );
-TRX_rx_xlslice_07to07: component msys_TRX_rx_xlslice_10to10_2
-     port map (
-      Din(15 downto 0) => Din_1(15 downto 0),
-      Dout(0) => TRX_rx_xlslice_07to07_Dout(0)
-    );
-TRX_rx_xlslice_09to09: component msys_TRX_rx_xlslice_10to10_0
-     port map (
-      Din(15 downto 0) => Din_1(15 downto 0),
-      Dout(0) => TRX_rx_xlslice_09to09_Dout(0)
-    );
-TRX_rx_xlslice_11to11: component msys_TRX_rx_xlslice_13to13_1
-     port map (
-      Din(15 downto 0) => Din_1(15 downto 0),
-      Dout(0) => TRX_rx_xlslice_11to11_Dout(0)
-    );
-TRX_rx_xlslice_13to13: component msys_TRX_rx_xlslice_15to15_0
+TRX_rx_xlslice_03to03: component msys_TRX_rx_xlslice_15to15_0
      port map (
       Din(15 downto 0) => Din_1(15 downto 0),
       Dout(0) => TRX_rx_xlslice_13to13_Dout(0)
     );
-TRX_rx_xlslice_15to15: component msys_xlslice_0_4
+TRX_rx_xlslice_05to05: component msys_TRX_rx_xlslice_13to13_1
      port map (
       Din(15 downto 0) => Din_1(15 downto 0),
-      Dout(0) => TRX_rx_xlslice_15to15_Dout(0)
+      Dout(0) => TRX_rx_xlslice_11to11_Dout(0)
+    );
+TRX_rx_xlslice_07to07: component msys_TRX_rx_xlslice_10to10_0
+     port map (
+      Din(15 downto 0) => Din_1(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_09to09_Dout(0)
+    );
+TRX_rx_xlslice_09to09: component msys_TRX_rx_xlslice_10to10_2
+     port map (
+      Din(15 downto 0) => Din_1(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_07to07_Dout(0)
+    );
+TRX_rx_xlslice_11to11: component msys_TRX_rx_xlslice_10to10_4
+     port map (
+      Din(15 downto 0) => Din_1(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_05to05_Dout(0)
+    );
+TRX_rx_xlslice_13to13: component msys_TRX_rx_xlslice_10to10_6
+     port map (
+      Din(15 downto 0) => Din_1(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_03to03_Dout(0)
+    );
+TRX_rx_xlslice_15to15: component msys_TRX_rx_xlslice_10to10_8
+     port map (
+      Din(15 downto 0) => Din_1(15 downto 0),
+      Dout(0) => TRX_rx_xlslice_01to01_Dout(0)
     );
 end STRUCTURE;
 library IEEE;
@@ -1661,17 +1661,17 @@ architecture STRUCTURE of TRX_rx_bitslip_imp_1URPS4H is
   component msys_TRX_rx09_c_counter_binary_0_0 is
   port (
     CLK : in STD_LOGIC;
+    CE : in STD_LOGIC;
     SCLR : in STD_LOGIC;
-    THRESH0 : out STD_LOGIC;
-    Q : out STD_LOGIC_VECTOR ( 6 downto 0 )
+    Q : out STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   end component msys_TRX_rx09_c_counter_binary_0_0;
   component msys_c_counter_binary_0_3 is
   port (
     CLK : in STD_LOGIC;
+    CE : in STD_LOGIC;
     SCLR : in STD_LOGIC;
-    THRESH0 : out STD_LOGIC;
-    Q : out STD_LOGIC_VECTOR ( 6 downto 0 )
+    Q : out STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   end component msys_c_counter_binary_0_3;
   component msys_xlconcat_0_1 is
@@ -1695,64 +1695,231 @@ architecture STRUCTURE of TRX_rx_bitslip_imp_1URPS4H is
     Q : out STD_LOGIC_VECTOR ( 1 downto 0 )
   );
   end component msys_TRX_rx_bitslip_c_shift_ram_0_0;
-  signal TRX_rx09_bitslip_counter_binary_0_THRESH0 : STD_LOGIC;
-  signal TRX_rx24_bitslip_c_counter_binary_0_THRESH0 : STD_LOGIC;
+  component msys_util_vector_logic_0_5 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Op2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_util_vector_logic_0_5;
+  component msys_util_vector_logic_0_6 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Op2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_util_vector_logic_0_6;
+  component msys_util_vector_logic_0_7 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_util_vector_logic_0_7;
+  component msys_util_vector_logic_1_1 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_util_vector_logic_1_1;
+  component msys_c_counter_binary_0_6 is
+  port (
+    CLK : in STD_LOGIC;
+    CE : in STD_LOGIC;
+    THRESH0 : out STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 2 downto 0 )
+  );
+  end component msys_c_counter_binary_0_6;
+  component msys_util_reduced_logic_0_4 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    Res : out STD_LOGIC
+  );
+  end component msys_util_reduced_logic_0_4;
+  component msys_util_reduced_logic_1_0 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    Res : out STD_LOGIC
+  );
+  end component msys_util_reduced_logic_1_0;
+  component msys_c_counter_binary_0_7 is
+  port (
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component msys_c_counter_binary_0_7;
+  component msys_util_reduced_logic_0_5 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    Res : out STD_LOGIC
+  );
+  end component msys_util_reduced_logic_0_5;
+  component msys_util_reduced_logic_0_7 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    Res : out STD_LOGIC
+  );
+  end component msys_util_reduced_logic_0_7;
+  component msys_util_reduced_logic_1_1 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    Res : out STD_LOGIC
+  );
+  end component msys_util_reduced_logic_1_1;
+  component msys_xlconcat_0_4 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component msys_xlconcat_0_4;
+  component msys_xlconcat_0_5 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component msys_xlconcat_0_5;
+  signal TRX_rx09_bitslip_any_fail_util_reduced_logic_0_Res : STD_LOGIC;
+  signal TRX_rx09_bitslip_fail_counter_binary_0_Q : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal TRX_rx09_bitslip_util_reduced_logic_0_Res : STD_LOGIC;
+  signal TRX_rx09_bitslip_util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx09_bitslip_util_vector_logic_1_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx09_bitslip_xlconcat_0_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal TRX_rx09_bitslip_xlslice_0to0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx24_bitslip_any_fail_util_reduced_logic_0_Res : STD_LOGIC;
+  signal TRX_rx24_bitslip_fail_counter_binary_0_Q : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal TRX_rx24_bitslip_util_reduced_logic_0_Res : STD_LOGIC;
+  signal TRX_rx24_bitslip_util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx24_bitslip_util_vector_logic_1_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx24_bitslip_xlconcat_0_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal TRX_rx24_bitslip_xlslice_1to1_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_rx_bitslip_div4_counter_binary_0_Q : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal TRX_rx_bitslip_div4_util_reduced_logic_0_Res : STD_LOGIC;
+  signal TRX_rx_bitslip_frame_counter_binary_0_THRESH0 : STD_LOGIC;
   signal TRX_rx_bitslip_xlconcat_0_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal TRX_rx_bitslip_xlslice_0to0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal TRX_rx_bitslip_xlslice_1to1_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_rx_clkdiv_CD016 : STD_LOGIC;
   signal din_3 : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal markers_CD016 : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal markers_reg_CD016 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal markers_reg_CD100 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal s_axi_aclk_CD100 : STD_LOGIC;
-  signal NLW_TRX_rx09_bitslip_counter_binary_0_Q_UNCONNECTED : STD_LOGIC_VECTOR ( 6 downto 0 );
-  signal NLW_TRX_rx24_bitslip_c_counter_binary_0_Q_UNCONNECTED : STD_LOGIC_VECTOR ( 6 downto 0 );
+  signal NLW_TRX_rx_bitslip_frame_counter_binary_0_Q_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
 begin
   TRX_rx_clkdiv_CD016 <= clk_div_i;
   bitslip_o(1 downto 0) <= TRX_rx_bitslip_xlconcat_0_dout(1 downto 0);
   din_3(1 downto 0) <= din(1 downto 0);
   s_axi_aclk_CD100 <= s_axi_aclk;
-TRX_rx09_bitslip_counter_binary_0: component msys_c_counter_binary_0_3
+TRX_rx09_bitslip_any_fail_util_reduced_logic_0: component msys_util_reduced_logic_1_0
      port map (
-      CLK => TRX_rx_clkdiv_CD016,
-      Q(6 downto 0) => NLW_TRX_rx09_bitslip_counter_binary_0_Q_UNCONNECTED(6 downto 0),
-      SCLR => TRX_rx_bitslip_xlslice_0to0_Dout(0),
-      THRESH0 => TRX_rx09_bitslip_counter_binary_0_THRESH0
+      Op1(2 downto 0) => TRX_rx09_bitslip_fail_counter_binary_0_Q(2 downto 0),
+      Res => TRX_rx09_bitslip_any_fail_util_reduced_logic_0_Res
     );
-TRX_rx24_bitslip_c_counter_binary_0: component msys_TRX_rx09_c_counter_binary_0_0
+TRX_rx09_bitslip_fail_counter_binary_0: component msys_c_counter_binary_0_3
      port map (
+      CE => TRX_rx09_bitslip_util_reduced_logic_0_Res,
       CLK => TRX_rx_clkdiv_CD016,
-      Q(6 downto 0) => NLW_TRX_rx24_bitslip_c_counter_binary_0_Q_UNCONNECTED(6 downto 0),
-      SCLR => TRX_rx_bitslip_xlslice_1to1_Dout(0),
-      THRESH0 => TRX_rx24_bitslip_c_counter_binary_0_THRESH0
+      Q(2 downto 0) => TRX_rx09_bitslip_fail_counter_binary_0_Q(2 downto 0),
+      SCLR => TRX_rx_bitslip_frame_counter_binary_0_THRESH0
     );
-TRX_rx_bitslip_c_shift_ram_0: component msys_c_shift_ram_0_0
+TRX_rx09_bitslip_util_reduced_logic_0: component msys_util_reduced_logic_0_7
+     port map (
+      Op1(1 downto 0) => TRX_rx09_bitslip_xlconcat_0_dout(1 downto 0),
+      Res => TRX_rx09_bitslip_util_reduced_logic_0_Res
+    );
+TRX_rx09_bitslip_util_vector_logic_0: component msys_util_vector_logic_0_5
+     port map (
+      Op1(0) => TRX_rx09_bitslip_any_fail_util_reduced_logic_0_Res,
+      Op2(0) => TRX_rx_bitslip_frame_counter_binary_0_THRESH0,
+      Res(0) => TRX_rx09_bitslip_util_vector_logic_0_Res(0)
+    );
+TRX_rx09_bitslip_util_vector_logic_1: component msys_util_vector_logic_0_7
+     port map (
+      Op1(0) => TRX_rx09_bitslip_xlslice_0to0_Dout(0),
+      Res(0) => TRX_rx09_bitslip_util_vector_logic_1_Res(0)
+    );
+TRX_rx09_bitslip_xlconcat_0: component msys_xlconcat_0_4
+     port map (
+      In0(0) => TRX_rx09_bitslip_util_vector_logic_1_Res(0),
+      In1(0) => TRX_rx_bitslip_div4_util_reduced_logic_0_Res,
+      dout(1 downto 0) => TRX_rx09_bitslip_xlconcat_0_dout(1 downto 0)
+    );
+TRX_rx09_bitslip_xlslice_0to0: component msys_xlslice_0_6
+     port map (
+      Din(1 downto 0) => markers_reg_CD016(1 downto 0),
+      Dout(0) => TRX_rx09_bitslip_xlslice_0to0_Dout(0)
+    );
+TRX_rx24_bitslip_any_fail_util_reduced_logic_0: component msys_util_reduced_logic_0_4
+     port map (
+      Op1(2 downto 0) => TRX_rx24_bitslip_fail_counter_binary_0_Q(2 downto 0),
+      Res => TRX_rx24_bitslip_any_fail_util_reduced_logic_0_Res
+    );
+TRX_rx24_bitslip_fail_counter_binary_0: component msys_TRX_rx09_c_counter_binary_0_0
+     port map (
+      CE => TRX_rx24_bitslip_util_reduced_logic_0_Res,
+      CLK => TRX_rx_clkdiv_CD016,
+      Q(2 downto 0) => TRX_rx24_bitslip_fail_counter_binary_0_Q(2 downto 0),
+      SCLR => TRX_rx_bitslip_frame_counter_binary_0_THRESH0
+    );
+TRX_rx24_bitslip_util_reduced_logic_0: component msys_util_reduced_logic_1_1
+     port map (
+      Op1(1 downto 0) => TRX_rx24_bitslip_xlconcat_0_dout(1 downto 0),
+      Res => TRX_rx24_bitslip_util_reduced_logic_0_Res
+    );
+TRX_rx24_bitslip_util_vector_logic_0: component msys_util_vector_logic_0_6
+     port map (
+      Op1(0) => TRX_rx24_bitslip_any_fail_util_reduced_logic_0_Res,
+      Op2(0) => TRX_rx_bitslip_frame_counter_binary_0_THRESH0,
+      Res(0) => TRX_rx24_bitslip_util_vector_logic_0_Res(0)
+    );
+TRX_rx24_bitslip_util_vector_logic_1: component msys_util_vector_logic_1_1
+     port map (
+      Op1(0) => TRX_rx24_bitslip_xlslice_1to1_Dout(0),
+      Res(0) => TRX_rx24_bitslip_util_vector_logic_1_Res(0)
+    );
+TRX_rx24_bitslip_xlconcat_0: component msys_xlconcat_0_5
+     port map (
+      In0(0) => TRX_rx24_bitslip_util_vector_logic_1_Res(0),
+      In1(0) => TRX_rx_bitslip_div4_util_reduced_logic_0_Res,
+      dout(1 downto 0) => TRX_rx24_bitslip_xlconcat_0_dout(1 downto 0)
+    );
+TRX_rx24_bitslip_xlslice_1to1: component msys_TRX_rx_xlslice_0to0_0
+     port map (
+      Din(1 downto 0) => markers_reg_CD016(1 downto 0),
+      Dout(0) => TRX_rx24_bitslip_xlslice_1to1_Dout(0)
+    );
+TRX_rx_bitslip_CDC_shift_ram_0: component msys_c_shift_ram_0_0
      port map (
       CLK => s_axi_aclk_CD100,
       D(1 downto 0) => din_3(1 downto 0),
       Q(1 downto 0) => markers_reg_CD100(1 downto 0)
     );
-TRX_rx_bitslip_c_shift_ram_1: component msys_TRX_rx_bitslip_c_shift_ram_0_0
+TRX_rx_bitslip_CDC_shift_ram_1: component msys_TRX_rx_bitslip_c_shift_ram_0_0
      port map (
       CLK => TRX_rx_clkdiv_CD016,
       D(1 downto 0) => markers_reg_CD100(1 downto 0),
-      Q(1 downto 0) => markers_CD016(1 downto 0)
+      Q(1 downto 0) => markers_reg_CD016(1 downto 0)
+    );
+TRX_rx_bitslip_div4_counter_binary_0: component msys_c_counter_binary_0_7
+     port map (
+      CLK => TRX_rx_clkdiv_CD016,
+      Q(1 downto 0) => TRX_rx_bitslip_div4_counter_binary_0_Q(1 downto 0)
+    );
+TRX_rx_bitslip_div4_util_reduced_logic_0: component msys_util_reduced_logic_0_5
+     port map (
+      Op1(1 downto 0) => TRX_rx_bitslip_div4_counter_binary_0_Q(1 downto 0),
+      Res => TRX_rx_bitslip_div4_util_reduced_logic_0_Res
+    );
+TRX_rx_bitslip_frame_counter_binary_0: component msys_c_counter_binary_0_6
+     port map (
+      CE => TRX_rx_bitslip_div4_util_reduced_logic_0_Res,
+      CLK => TRX_rx_clkdiv_CD016,
+      Q(2 downto 0) => NLW_TRX_rx_bitslip_frame_counter_binary_0_Q_UNCONNECTED(2 downto 0),
+      THRESH0 => TRX_rx_bitslip_frame_counter_binary_0_THRESH0
     );
 TRX_rx_bitslip_xlconcat_0: component msys_xlconcat_0_1
      port map (
-      In0(0) => TRX_rx09_bitslip_counter_binary_0_THRESH0,
-      In1(0) => TRX_rx24_bitslip_c_counter_binary_0_THRESH0,
+      In0(0) => TRX_rx09_bitslip_util_vector_logic_0_Res(0),
+      In1(0) => TRX_rx24_bitslip_util_vector_logic_0_Res(0),
       dout(1 downto 0) => TRX_rx_bitslip_xlconcat_0_dout(1 downto 0)
-    );
-TRX_rx_bitslip_xlslice_0to0: component msys_xlslice_0_6
-     port map (
-      Din(1 downto 0) => markers_CD016(1 downto 0),
-      Dout(0) => TRX_rx_bitslip_xlslice_0to0_Dout(0)
-    );
-TRX_rx_bitslip_xlslice_1to1: component msys_TRX_rx_xlslice_0to0_0
-     port map (
-      Din(1 downto 0) => markers_CD016(1 downto 0),
-      Dout(0) => TRX_rx_bitslip_xlslice_1to1_Dout(0)
     );
 end STRUCTURE;
 library IEEE;
@@ -9775,7 +9942,7 @@ entity msys is
     rotenc_decoder_reset : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=204,numReposBlks=164,numNonXlnxBlks=3,numHierBlks=40,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=217,numReposBlks=177,numNonXlnxBlks=3,numHierBlks=40,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of msys : entity is "msys.hwdef";
 end msys;

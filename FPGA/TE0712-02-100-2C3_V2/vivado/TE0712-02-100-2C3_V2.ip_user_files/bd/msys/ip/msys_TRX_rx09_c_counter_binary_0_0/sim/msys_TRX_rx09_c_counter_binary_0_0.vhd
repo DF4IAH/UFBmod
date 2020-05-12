@@ -59,9 +59,9 @@ USE c_counter_binary_v12_0_14.c_counter_binary_v12_0_14;
 ENTITY msys_TRX_rx09_c_counter_binary_0_0 IS
   PORT (
     CLK : IN STD_LOGIC;
+    CE : IN STD_LOGIC;
     SCLR : IN STD_LOGIC;
-    THRESH0 : OUT STD_LOGIC;
-    Q : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
+    Q : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
   );
 END msys_TRX_rx09_c_counter_binary_0_0;
 
@@ -101,20 +101,20 @@ ARCHITECTURE msys_TRX_rx09_c_counter_binary_0_0_arch OF msys_TRX_rx09_c_counter_
       SINIT : IN STD_LOGIC;
       UP : IN STD_LOGIC;
       LOAD : IN STD_LOGIC;
-      L : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
+      L : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
       THRESH0 : OUT STD_LOGIC;
-      Q : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
+      Q : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
     );
   END COMPONENT c_counter_binary_v12_0_14;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_PARAMETER OF Q: SIGNAL IS "XIL_INTERFACENAME q_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency bitwidth format long minimum {} maximum {}} value 7} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}}" & 
-" value false}}}} DATA_WIDTH 7}";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF Q: SIGNAL IS "XIL_INTERFACENAME q_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency bitwidth format long minimum {} maximum {}} value 3} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}}" & 
+" value false}}}} DATA_WIDTH 3}";
   ATTRIBUTE X_INTERFACE_INFO OF Q: SIGNAL IS "xilinx.com:signal:data:1.0 q_intf DATA";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF THRESH0: SIGNAL IS "XIL_INTERFACENAME thresh0_intf, LAYERED_METADATA undef, PortType data, PortType.PROP_SRC false";
-  ATTRIBUTE X_INTERFACE_INFO OF THRESH0: SIGNAL IS "xilinx.com:signal:data:1.0 thresh0_intf DATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF SCLR: SIGNAL IS "XIL_INTERFACENAME sclr_intf, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF SCLR: SIGNAL IS "xilinx.com:signal:reset:1.0 sclr_intf RST";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF CE: SIGNAL IS "XIL_INTERFACENAME ce_intf, POLARITY ACTIVE_HIGH";
+  ATTRIBUTE X_INTERFACE_INFO OF CE: SIGNAL IS "xilinx.com:signal:clockenable:1.0 ce_intf CE";
   ATTRIBUTE X_INTERFACE_PARAMETER OF CLK: SIGNAL IS "XIL_INTERFACENAME clk_intf, ASSOCIATED_BUSIF q_intf:thresh0_intf:l_intf:load_intf:up_intf:sinit_intf:sset_intf, ASSOCIATED_RESET SCLR, ASSOCIATED_CLKEN CE, FREQ_HZ 16000000, PHASE 0.000, CLK_DOMAIN msys_selectio_wiz_0_1_clk_div_out, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF CLK: SIGNAL IS "xilinx.com:signal:clock:1.0 clk_intf CLK";
 BEGIN
@@ -123,16 +123,16 @@ BEGIN
       C_IMPLEMENTATION => 0,
       C_VERBOSITY => 0,
       C_XDEVICEFAMILY => "artix7",
-      C_WIDTH => 7,
-      C_HAS_CE => 0,
+      C_WIDTH => 3,
+      C_HAS_CE => 1,
       C_HAS_SCLR => 1,
-      C_RESTRICT_COUNT => 1,
-      C_COUNT_TO => "111111",
+      C_RESTRICT_COUNT => 0,
+      C_COUNT_TO => "110",
       C_COUNT_BY => "1",
       C_COUNT_MODE => 0,
-      C_THRESH0_VALUE => "111111",
+      C_THRESH0_VALUE => "1",
       C_CE_OVERRIDES_SYNC => 0,
-      C_HAS_THRESH0 => 1,
+      C_HAS_THRESH0 => 0,
       C_HAS_LOAD => 0,
       C_LOAD_LOW => 0,
       C_LATENCY => 1,
@@ -145,14 +145,13 @@ BEGIN
     )
     PORT MAP (
       CLK => CLK,
-      CE => '1',
+      CE => CE,
       SCLR => SCLR,
       SSET => '0',
       SINIT => '0',
       UP => '1',
       LOAD => '0',
-      L => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 7)),
-      THRESH0 => THRESH0,
+      L => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 3)),
       Q => Q
     );
 END msys_TRX_rx09_c_counter_binary_0_0_arch;
