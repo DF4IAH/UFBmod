@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Mon May 11 23:56:02 2020
+--Date        : Tue May 12 23:32:05 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -15,9 +15,9 @@ entity msys_wrapper is
   port (
     BOARD_IIC_scl_io : inout STD_LOGIC;
     BOARD_IIC_sda_io : inout STD_LOGIC;
-    BOARD_ROTENC_PUSH : in STD_LOGIC;
     BOARD_ROTENC_I : in STD_LOGIC;
     BOARD_ROTENC_Q : in STD_LOGIC;
+    BOARD_ROTENC_PUSH : in STD_LOGIC;
     CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK1B_clk : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -65,6 +65,12 @@ entity msys_wrapper is
     TRX_int : in STD_LOGIC;
     TRX_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_rx09_bs_i : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_rx09_fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_rx09_fifo_valid_o : out STD_LOGIC;
+    TRX_rx24_bs_i : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_rx24_fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_rx24_fifo_valid_o : out STD_LOGIC;
     TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
     TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
     TRX_rx_data_n : in STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -88,6 +94,7 @@ entity msys_wrapper is
     UART0_rxd : in STD_LOGIC;
     UART0_txd : out STD_LOGIC;
     ULI_SYSTEM_XIO : in STD_LOGIC;
+    microblaze_0_Clk_100MHz_o : out STD_LOGIC;
     onewire_EUI48_tri_io : inout STD_LOGIC_VECTOR ( 0 to 0 );
     phy_rst_n : out STD_LOGIC;
     qspi_flash_io0_io : inout STD_LOGIC;
@@ -104,7 +111,6 @@ architecture STRUCTURE of msys_wrapper is
   port (
     PLL_I2C_ext_scl_o : out STD_LOGIC;
     PLL_I2C_ext_sda : inout STD_LOGIC;
-    microblaze_0_Clk_100MHz_o : out STD_LOGIC;
     phy_rst_n : out STD_LOGIC;
     reset : in STD_LOGIC;
     UART0EXT_RTSn : in STD_LOGIC;
@@ -124,6 +130,7 @@ architecture STRUCTURE of msys_wrapper is
     LED_RGB_blue : out STD_LOGIC_VECTOR ( 0 to 0 );
     LCD_BL : out STD_LOGIC_VECTOR ( 0 to 0 );
     LCD_rstn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    microblaze_0_Clk_100MHz_o : out STD_LOGIC;
     rotenc_decoder_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     rotenc_dec_cnt_up_dwn : in STD_LOGIC;
     rotenc_dec_cnt_en : in STD_LOGIC;
@@ -142,22 +149,12 @@ architecture STRUCTURE of msys_wrapper is
     TRX_tx_data_p : out STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_tx_data_n : out STD_LOGIC_VECTOR ( 1 downto 0 );
     CLK1B_clk : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_tx_clk_clk_n : out STD_LOGIC;
-    TRX_tx_clk_clk_p : out STD_LOGIC;
-    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
-    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
-    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
-    BOARD_IIC_scl_i : in STD_LOGIC;
-    BOARD_IIC_scl_o : out STD_LOGIC;
-    BOARD_IIC_scl_t : out STD_LOGIC;
-    BOARD_IIC_sda_i : in STD_LOGIC;
-    BOARD_IIC_sda_o : out STD_LOGIC;
-    BOARD_IIC_sda_t : out STD_LOGIC;
+    TRX_rx09_fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_rx24_fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_rx09_fifo_valid_o : out STD_LOGIC;
+    TRX_rx24_fifo_valid_o : out STD_LOGIC;
+    TRX_rx09_bs_i : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_rx24_bs_i : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_spi_io0_i : in STD_LOGIC;
     TRX_spi_io0_o : out STD_LOGIC;
     TRX_spi_io0_t : out STD_LOGIC;
@@ -170,6 +167,25 @@ architecture STRUCTURE of msys_wrapper is
     TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_t : out STD_LOGIC;
+    qspi_flash_io0_i : in STD_LOGIC;
+    qspi_flash_io0_o : out STD_LOGIC;
+    qspi_flash_io0_t : out STD_LOGIC;
+    qspi_flash_io1_i : in STD_LOGIC;
+    qspi_flash_io1_o : out STD_LOGIC;
+    qspi_flash_io1_t : out STD_LOGIC;
+    qspi_flash_io2_i : in STD_LOGIC;
+    qspi_flash_io2_o : out STD_LOGIC;
+    qspi_flash_io2_t : out STD_LOGIC;
+    qspi_flash_io3_i : in STD_LOGIC;
+    qspi_flash_io3_o : out STD_LOGIC;
+    qspi_flash_io3_t : out STD_LOGIC;
+    qspi_flash_ss_i : in STD_LOGIC;
+    qspi_flash_ss_o : out STD_LOGIC;
+    qspi_flash_ss_t : out STD_LOGIC;
+    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
     DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -185,36 +201,39 @@ architecture STRUCTURE of msys_wrapper is
     DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
-    onewire_EUI48_tri_i : in STD_LOGIC_VECTOR ( 0 to 0 );
-    onewire_EUI48_tri_o : out STD_LOGIC_VECTOR ( 0 to 0 );
-    onewire_EUI48_tri_t : out STD_LOGIC_VECTOR ( 0 to 0 );
+    BOARD_IIC_scl_i : in STD_LOGIC;
+    BOARD_IIC_scl_o : out STD_LOGIC;
+    BOARD_IIC_scl_t : out STD_LOGIC;
+    BOARD_IIC_sda_i : in STD_LOGIC;
+    BOARD_IIC_sda_o : out STD_LOGIC;
+    BOARD_IIC_sda_t : out STD_LOGIC;
+    UART0_rxd : in STD_LOGIC;
+    UART0_txd : out STD_LOGIC;
     ETH0_MDIO_MDC_mdc : out STD_LOGIC;
     ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
     ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
     ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
+    TRX_tx_clk_clk_n : out STD_LOGIC;
+    TRX_tx_clk_clk_p : out STD_LOGIC;
+    onewire_EUI48_tri_i : in STD_LOGIC_VECTOR ( 0 to 0 );
+    onewire_EUI48_tri_o : out STD_LOGIC_VECTOR ( 0 to 0 );
+    onewire_EUI48_tri_t : out STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK3_sys_diff_clk_p : in STD_LOGIC;
+    CLK3_sys_diff_clk_n : in STD_LOGIC;
     RMII_PHY_M_0_crs_dv : in STD_LOGIC;
     RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RMII_PHY_M_0_tx_en : out STD_LOGIC;
     RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    CLK3_sys_diff_clk_p : in STD_LOGIC;
-    CLK3_sys_diff_clk_n : in STD_LOGIC;
-    qspi_flash_io0_i : in STD_LOGIC;
-    qspi_flash_io0_o : out STD_LOGIC;
-    qspi_flash_io0_t : out STD_LOGIC;
-    qspi_flash_io1_i : in STD_LOGIC;
-    qspi_flash_io1_o : out STD_LOGIC;
-    qspi_flash_io1_t : out STD_LOGIC;
-    qspi_flash_io2_i : in STD_LOGIC;
-    qspi_flash_io2_o : out STD_LOGIC;
-    qspi_flash_io2_t : out STD_LOGIC;
-    qspi_flash_io3_i : in STD_LOGIC;
-    qspi_flash_io3_o : out STD_LOGIC;
-    qspi_flash_io3_t : out STD_LOGIC;
-    qspi_flash_ss_i : in STD_LOGIC;
-    qspi_flash_ss_o : out STD_LOGIC;
-    qspi_flash_ss_t : out STD_LOGIC
+    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
+    CLK2_mgt_clk0_clk_n : in STD_LOGIC
   );
   end component msys;
+  component IBUF is
+  port (
+    I : in STD_LOGIC;
+    O : out STD_LOGIC
+  );
+  end component IBUF;
   component IOBUF is
   port (
     I : in STD_LOGIC;
@@ -233,22 +252,28 @@ architecture STRUCTURE of msys_wrapper is
     cnt_en : out STD_LOGIC
   );
   end component rotenc_decoder;
-  component IBUF is
+  component auto_LVDS_rotate is
   port (
-    I : in STD_LOGIC;
-    O : out STD_LOGIC
+   reset        : in  STD_LOGIC;
+   clk          : in  STD_LOGIC;
+   LVDS24       : in  STD_LOGIC_VECTOR (31 downto 0);
+   LVDS24_valid : in  STD_LOGIC;
+   LVDS09       : in  STD_LOGIC_VECTOR (31 downto 0);
+   LVDS09_valid : in  STD_LOGIC;
+   rot24q       : out STD_LOGIC_VECTOR (31 downto 0);
+   rot09q       : out STD_LOGIC_VECTOR (31 downto 0)
   );
-  end component IBUF;
+  end component auto_LVDS_rotate;
   signal BOARD_IIC_scl_i : STD_LOGIC;
   signal BOARD_IIC_scl_o : STD_LOGIC;
   signal BOARD_IIC_scl_t : STD_LOGIC;
   signal BOARD_IIC_sda_i : STD_LOGIC;
   signal BOARD_IIC_sda_o : STD_LOGIC;
   signal BOARD_IIC_sda_t : STD_LOGIC;
+  signal ETH0_LINK_LED_g : STD_LOGIC;
   signal ETH0_MDIO_MDC_mdio_i : STD_LOGIC;
   signal ETH0_MDIO_MDC_mdio_o : STD_LOGIC;
   signal ETH0_MDIO_MDC_mdio_t : STD_LOGIC;
-  signal ETH0_LINK_LED_g : STD_LOGIC;
   signal TRX_spi_io0_i : STD_LOGIC;
   signal TRX_spi_io0_o : STD_LOGIC;
   signal TRX_spi_io0_t : STD_LOGIC;
@@ -262,6 +287,13 @@ architecture STRUCTURE of msys_wrapper is
   signal TRX_spi_ss_io_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_spi_ss_o_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_spi_ss_t : STD_LOGIC;
+  signal TRX_rx09_fifo : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal TRX_rx24_fifo : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal TRX_rx09_fifo_valid : STD_LOGIC;
+  signal TRX_rx24_fifo_valid : STD_LOGIC;
+  signal TRX_rx09_bs : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal TRX_rx24_bs : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal microblaze_0_Clk_100MHz : STD_LOGIC;
   signal onewire_EUI48_tri_i_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal onewire_EUI48_tri_io_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal onewire_EUI48_tri_o_0 : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -283,9 +315,13 @@ architecture STRUCTURE of msys_wrapper is
   signal qspi_flash_ss_t : STD_LOGIC;
   signal rotenc_dec_cnt_en : STD_LOGIC;
   signal rotenc_dec_cnt_up_dwn : STD_LOGIC;
-  signal microblaze_0_Clk_100MHz : STD_LOGIC;
   signal rotenc_decoder_reset : STD_LOGIC;
 begin
+ETH0_LINK_LED_0: component IBUF
+     port map (
+      I => ETH0_LINK_LED,
+      O => ETH0_LINK_LED_g
+    );
 BOARD_IIC_scl_iobuf: component IOBUF
      port map (
       I => BOARD_IIC_scl_o,
@@ -335,19 +371,25 @@ TRX_spi_ss_iobuf_0: component IOBUF
       O => TRX_spi_ss_i_0(0),
       T => TRX_spi_ss_t
     );
-ETH0_LINK_LED_0: component IBUF
-     port map (
-      I => ETH0_LINK_LED,
-      O => ETH0_LINK_LED_g
-    );
 rotenc_decoder_i: component rotenc_decoder
      port map (
-      clk => microblaze_0_Clk_100MHz,
       reset => rotenc_decoder_reset,
+      clk => microblaze_0_Clk_100MHz,
       rotenc_I => BOARD_ROTENC_I,
       rotenc_Q => BOARD_ROTENC_Q,
       cnt_up_dwn => rotenc_dec_cnt_up_dwn,
       cnt_en => rotenc_dec_cnt_en
+    );
+auto_LVDS_rotate_i: component auto_LVDS_rotate
+     port map (
+      reset => rotenc_decoder_reset,
+      clk => microblaze_0_Clk_100MHz,
+      LVDS24 => TRX_rx24_fifo,
+      LVDS24_valid => TRX_rx24_fifo_valid,
+      LVDS09 => TRX_rx09_fifo,
+      LVDS09_valid => TRX_rx09_fifo_valid,
+      rot24q => TRX_rx24_bs,
+      rot09q => TRX_rx09_bs
     );
 msys_i: component msys
      port map (
@@ -427,6 +469,12 @@ msys_i: component msys
       TRX_tx_clk_clk_p => TRX_tx_clk_clk_p,
       TRX_tx_data_n(1 downto 0) => TRX_tx_data_n(1 downto 0),
       TRX_tx_data_p(1 downto 0) => TRX_tx_data_p(1 downto 0),
+      TRX_rx09_fifo_o(31 downto 0) => TRX_rx09_fifo(31 downto 0),
+      TRX_rx24_fifo_o(31 downto 0) => TRX_rx24_fifo(31 downto 0),
+      TRX_rx09_fifo_valid_o => TRX_rx09_fifo_valid,
+      TRX_rx24_fifo_valid_o => TRX_rx24_fifo_valid,
+      TRX_rx09_bs_i(31 downto 0) => TRX_rx09_bs(31 downto 0),
+      TRX_rx24_bs_i(31 downto 0) => TRX_rx24_bs(31 downto 0),
       UART0EXT_CTSn(0) => UART0EXT_CTSn(0),
       UART0EXT_DCDn(0) => UART0EXT_DCDn(0),
       UART0EXT_DSRn(0) => UART0EXT_DSRn(0),
@@ -438,6 +486,7 @@ msys_i: component msys
       UART0_rxd => UART0_rxd,
       UART0_txd => UART0_txd,
       ULI_SYSTEM_XIO => ULI_SYSTEM_XIO,
+      microblaze_0_Clk_100MHz_o => microblaze_0_Clk_100MHz,
       onewire_EUI48_tri_i(0) => onewire_EUI48_tri_i_0(0),
       onewire_EUI48_tri_o(0) => onewire_EUI48_tri_o_0(0),
       onewire_EUI48_tri_t(0) => onewire_EUI48_tri_t_0(0),
@@ -460,7 +509,6 @@ msys_i: component msys
       reset => reset,
       rotenc_dec_cnt_en => rotenc_dec_cnt_en,
       rotenc_dec_cnt_up_dwn => rotenc_dec_cnt_up_dwn,
-      microblaze_0_Clk_100MHz_o => microblaze_0_Clk_100MHz,
       rotenc_decoder_reset(0) => rotenc_decoder_reset
     );
 onewire_EUI48_tri_iobuf_0: component IOBUF

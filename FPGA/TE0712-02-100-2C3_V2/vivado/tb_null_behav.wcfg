@@ -3,55 +3,65 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="tb_barrel_rot32_behav.wdb" id="1">
+      <db_ref path="tb_auto_LVDS_rotate_behav.wdb" id="1">
          <top_modules>
-            <top_module name="tb_barrel_rot32" />
+            <top_module name="glbl" />
+            <top_module name="tb_auto_LVDS_rotate" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="72992500fs"></ZoomStartTime>
-      <ZoomEndTime time="86447501fs"></ZoomEndTime>
-      <Cursor1Time time="84205000fs"></Cursor1Time>
+      <ZoomStartTime time="79774416fs"></ZoomStartTime>
+      <ZoomEndTime time="80045117fs"></ZoomEndTime>
+      <Cursor1Time time="80000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="356"></NameColumnWidth>
+      <NameColumnWidth column_width="340"></NameColumnWidth>
       <ValueColumnWidth column_width="116"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="6" />
-   <wave_markers>
-      <marker time="21854563937" label="" />
-      <marker time="22509253000" label="" />
-      <marker time="20509125000" label="" />
-      <marker time="42001000" label="" />
-      <marker time="0" label="" />
-   </wave_markers>
-   <wvobject fp_name="/tb_barrel_rot32/tb_reset" type="logic">
+   <WVObjectSize size="10" />
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_reset" type="logic">
       <obj_property name="ElementShortName">tb_reset</obj_property>
       <obj_property name="ObjectShortName">tb_reset</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_barrel_rot32/tb_clk" type="logic">
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_clk" type="logic">
       <obj_property name="ElementShortName">tb_clk</obj_property>
       <obj_property name="ObjectShortName">tb_clk</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_barrel_rot32/tb_rot" type="array">
-      <obj_property name="ElementShortName">tb_rot[4:0]</obj_property>
-      <obj_property name="ObjectShortName">tb_rot[4:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_barrel_rot32/barrel_rot32_i/rot" type="array">
-      <obj_property name="ElementShortName">rot[4:0]</obj_property>
-      <obj_property name="ObjectShortName">rot[4:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_barrel_rot32/tb_d" type="array">
-      <obj_property name="ElementShortName">tb_d[31:0]</obj_property>
-      <obj_property name="ObjectShortName">tb_d[31:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_barrel_rot32/tb_q" type="array">
-      <obj_property name="ElementShortName">tb_q[31:0]</obj_property>
-      <obj_property name="ObjectShortName">tb_q[31:0]</obj_property>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_LVDS24" type="array">
+      <obj_property name="ElementShortName">tb_LVDS24[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_LVDS24[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_LVDS24_valid" type="logic">
+      <obj_property name="ElementShortName">tb_LVDS24_valid</obj_property>
+      <obj_property name="ObjectShortName">tb_LVDS24_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_LVDS09" type="array">
+      <obj_property name="ElementShortName">tb_LVDS09[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_LVDS09[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_LVDS09_valid" type="logic">
+      <obj_property name="ElementShortName">tb_LVDS09_valid</obj_property>
+      <obj_property name="ObjectShortName">tb_LVDS09_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_rot24q" type="array">
+      <obj_property name="ElementShortName">tb_rot24q[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_rot24q[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_rot09q" type="array">
+      <obj_property name="ElementShortName">tb_rot09q[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_rot09q[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/auto_LVDS_rotate_i/mrk24ok" type="logic">
+      <obj_property name="ElementShortName">mrk24ok</obj_property>
+      <obj_property name="ObjectShortName">mrk24ok</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/auto_LVDS_rotate_i/mrk09ok" type="logic">
+      <obj_property name="ElementShortName">mrk09ok</obj_property>
+      <obj_property name="ObjectShortName">mrk09ok</obj_property>
    </wvobject>
 </wave_config>

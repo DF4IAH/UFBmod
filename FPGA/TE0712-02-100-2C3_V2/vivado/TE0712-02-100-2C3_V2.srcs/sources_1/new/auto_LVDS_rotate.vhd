@@ -36,12 +36,14 @@ use IEEE.std_logic_signed.all;
 --use UNISIM.VComponents.all;
 
 entity auto_LVDS_rotate is
-    Port ( reset  : in  STD_LOGIC;
-           clk    : in  STD_LOGIC;
-           LVDS24 : in  STD_LOGIC_VECTOR (31 downto 0);
-           LVDS09 : in  STD_LOGIC_VECTOR (31 downto 0);
-           rot24q : out STD_LOGIC_VECTOR (31 downto 0);
-           rot09q : out STD_LOGIC_VECTOR (31 downto 0)
+    Port ( reset        : in  STD_LOGIC;
+           clk          : in  STD_LOGIC;
+           LVDS24       : in  STD_LOGIC_VECTOR (31 downto 0);
+           LVDS24_valid : in  STD_LOGIC;
+           LVDS09       : in  STD_LOGIC_VECTOR (31 downto 0);
+           LVDS09_valid : in  STD_LOGIC;
+           rot24q       : out STD_LOGIC_VECTOR (31 downto 0);
+           rot09q       : out STD_LOGIC_VECTOR (31 downto 0)
     );
 end auto_LVDS_rotate;
 
@@ -58,7 +60,6 @@ architecture Behavioral of auto_LVDS_rotate is
   signal auto09rotval : STD_LOGIC_VECTOR (4 downto 0);
   signal rot24        : STD_LOGIC_VECTOR (31 downto 0);
   signal rot09        : STD_LOGIC_VECTOR (31 downto 0);
-  signal clk16        : STD_LOGIC;
   signal mrk24ok      : STD_LOGIC;
   signal mrk09ok      : STD_LOGIC;
 
@@ -67,16 +68,16 @@ begin
     port map (
       clk => clk,
       rot => auto24rotval,
-      d => LVDS24,
-      q => rot24
+      d   => LVDS24,
+      q   => rot24
     );
 
   barrel_rot32_09_i: component barrel_rot32
     port map (
       clk => clk,
       rot => auto09rotval,
-      d => LVDS09,
-      q => rot09
+      d   => LVDS09,
+      q   => rot09
     );
 
   -- Marker bits
@@ -101,34 +102,15 @@ begin
     end if;
   end process proc_markers;
 
-  -- Counter 4 bit
-  proc_counter: process (reset, clk)
-    variable counter_int : Integer;
-  begin
-    if (reset = '1') then
-      counter_int := 0;
-      clk16 <= '0';
-      
-    elsif (clk'EVENT and clk = '1') then
-      if (counter_int < 15 ) then
-        counter_int := counter_int + 1;
-        clk16 <= '0';
-      else
-        counter_int := 0;
-        clk16 <= '1';
-      end if;
-    end if;
-  end process proc_counter;
-
   -- State-machine-24
-  proc_fsm24: process (reset, clk, clk16, mrk24ok)
+  proc_fsm24: process (reset, clk, LVDS24_valid, mrk24ok)
   variable auto24rotval_int : Integer;
   begin
     if (reset = '1') then
       auto24rotval_int := 0;
       auto24rotval <= std_logic_vector(to_unsigned(0, auto24rotval'length));
       
-    elsif (clk'EVENT and clk = '1' and clk16 = '1' and mrk24ok = '0') then
+    elsif (clk'EVENT and clk = '1' and LVDS24_valid = '1' and mrk24ok = '0') then
       if (auto24rotval_int < 31) then
         auto24rotval_int := auto24rotval_int + 1;
       else
@@ -140,14 +122,14 @@ begin
   end process proc_fsm24;
 
   -- State-machine-09
-  proc_fsm09: process (reset, clk, clk16, mrk09ok)
+  proc_fsm09: process (reset, clk, LVDS09_valid, mrk09ok)
   variable auto09rotval_int : Integer;
   begin
     if (reset = '1') then
       auto09rotval_int := 0;
       auto09rotval <= std_logic_vector(to_unsigned(0, auto09rotval'length));
       
-    elsif (clk'EVENT and clk = '1' and clk16 = '1' and mrk09ok = '0') then
+    elsif (clk'EVENT and clk = '1' and LVDS09_valid = '1' and mrk09ok = '0') then
       if (auto09rotval_int < 31) then
         auto09rotval_int := auto09rotval_int + 1;
       else

@@ -41,13 +41,16 @@ end tb_auto_LVDS_rotate;
 
 architecture Behavioral of tb_auto_LVDS_rotate is
   component auto_LVDS_rotate is
-  Port ( reset  : in  STD_LOGIC;
-         clk    : in  STD_LOGIC;
-         LVDS24 : in  STD_LOGIC_VECTOR (31 downto 0);
-         LVDS09 : in  STD_LOGIC_VECTOR (31 downto 0);
-         rot24q : out STD_LOGIC_VECTOR (31 downto 0);
-         rot09q : out STD_LOGIC_VECTOR (31 downto 0)
-    );
+  Port (
+   reset        : in  STD_LOGIC;
+   clk          : in  STD_LOGIC;
+   LVDS24       : in  STD_LOGIC_VECTOR (31 downto 0);
+   LVDS24_valid : in  STD_LOGIC;
+   LVDS09       : in  STD_LOGIC_VECTOR (31 downto 0);
+   LVDS09_valid : in  STD_LOGIC;
+   rot24q       : out STD_LOGIC_VECTOR (31 downto 0);
+   rot09q       : out STD_LOGIC_VECTOR (31 downto 0)
+  );
   end component auto_LVDS_rotate;
 
 -- RESETS
@@ -57,21 +60,25 @@ architecture Behavioral of tb_auto_LVDS_rotate is
   signal tb_clk : STD_LOGIC;
 
 -- STIMULUS
-  signal tb_LVDS24 : STD_LOGIC_VECTOR (31 downto 0);
-  signal tb_LVDS09 : STD_LOGIC_VECTOR (31 downto 0);
-  signal tb_rot24q : STD_LOGIC_VECTOR (31 downto 0);
-  signal tb_rot09q : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_LVDS24       : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_LVDS24_valid : STD_LOGIC;
+  signal tb_LVDS09       : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_LVDS09_valid : STD_LOGIC;
+  signal tb_rot24q       : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_rot09q       : STD_LOGIC_VECTOR (31 downto 0);
 
 begin
 -- DUT
   auto_LVDS_rotate_i: component auto_LVDS_rotate
     port map (
-      reset  => tb_reset,
-      clk    => tb_clk,
-      LVDS24 => tb_LVDS24,
-      LVDS09 => tb_LVDS09,
-      rot24q => tb_rot24q,
-      rot09q => tb_rot09q
+      reset        => tb_reset,
+      clk          => tb_clk,
+      LVDS24       => tb_LVDS24,
+      LVDS24_valid => tb_LVDS24_valid,
+      LVDS09       => tb_LVDS09,
+      LVDS09_valid => tb_LVDS09_valid,
+      rot24q       => tb_rot24q,
+      rot09q =>    tb_rot09q
     );
 
 
@@ -100,9 +107,24 @@ begin
   -- Data 32 bit
   proc_tb_d: process
   begin
-    tb_LVDS24 <= "00000000000000001000000000000001";
-    tb_LVDS09 <= "01000000000000000010000000000000";
-    wait;
+    if (tb_reset = '0') then
+      tb_LVDS24       <= "00000000000000001000000000000001";
+      tb_LVDS24_valid <= '1';
+      tb_LVDS09       <= "01000000000000000010000000000000";
+      tb_LVDS09_valid <= '1';
+      wait for 10ns;
+
+      tb_LVDS24_valid <= '0';
+      tb_LVDS09_valid <= '0';
+      wait for 1990ns;
+
+    else
+      tb_LVDS24       <= "00000000000000000000000000000000";
+      tb_LVDS24_valid <= '0';
+      tb_LVDS09       <= "00000000000000000000000000000000";
+      tb_LVDS09_valid <= '0';
+      wait for 10ns;
+    end if;
   end process proc_tb_d;
   
 end Behavioral;
