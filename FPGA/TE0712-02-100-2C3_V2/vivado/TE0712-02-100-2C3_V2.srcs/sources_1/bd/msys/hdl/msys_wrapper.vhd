@@ -65,10 +65,8 @@ entity msys_wrapper is
     TRX_int : in STD_LOGIC;
     TRX_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_rx09_bs_i : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx09_fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx09_fifo_valid_o : out STD_LOGIC;
-    TRX_rx24_bs_i : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx24_fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx24_fifo_valid_o : out STD_LOGIC;
     TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
@@ -254,7 +252,7 @@ architecture STRUCTURE of msys_wrapper is
   end component rotenc_decoder;
   component auto_LVDS_rotate is
   port (
-   reset        : in  STD_LOGIC;
+   resetn       : in  STD_LOGIC;
    clk          : in  STD_LOGIC;
    LVDS24       : in  STD_LOGIC_VECTOR (31 downto 0);
    LVDS24_valid : in  STD_LOGIC;
@@ -382,7 +380,7 @@ rotenc_decoder_i: component rotenc_decoder
     );
 auto_LVDS_rotate_i: component auto_LVDS_rotate
      port map (
-      reset => rotenc_decoder_reset,
+      resetn => rotenc_decoder_reset,
       clk => microblaze_0_Clk_100MHz,
       LVDS24 => TRX_rx24_fifo,
       LVDS24_valid => TRX_rx24_fifo_valid,
@@ -473,8 +471,8 @@ msys_i: component msys
       TRX_rx24_fifo_o(31 downto 0) => TRX_rx24_fifo(31 downto 0),
       TRX_rx09_fifo_valid_o => TRX_rx09_fifo_valid,
       TRX_rx24_fifo_valid_o => TRX_rx24_fifo_valid,
-      TRX_rx09_bs_i(31 downto 0) => TRX_rx09_bs(31 downto 0),
-      TRX_rx24_bs_i(31 downto 0) => TRX_rx24_bs(31 downto 0),
+      TRX_rx09_bs_i => TRX_rx09_bs,
+      TRX_rx24_bs_i => TRX_rx24_bs,
       UART0EXT_CTSn(0) => UART0EXT_CTSn(0),
       UART0EXT_DCDn(0) => UART0EXT_DCDn(0),
       UART0EXT_DSRn(0) => UART0EXT_DSRn(0),

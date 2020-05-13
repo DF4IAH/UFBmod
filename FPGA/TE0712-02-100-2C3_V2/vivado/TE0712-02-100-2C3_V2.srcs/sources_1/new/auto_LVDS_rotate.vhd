@@ -36,7 +36,7 @@ use IEEE.std_logic_signed.all;
 --use UNISIM.VComponents.all;
 
 entity auto_LVDS_rotate is
-    Port ( reset        : in  STD_LOGIC;
+    Port ( resetn       : in  STD_LOGIC;
            clk          : in  STD_LOGIC;
            LVDS24       : in  STD_LOGIC_VECTOR (31 downto 0);
            LVDS24_valid : in  STD_LOGIC;
@@ -81,9 +81,9 @@ begin
     );
 
   -- Marker bits
-  proc_markers: process (reset, clk, rot24, rot09)
+  proc_markers: process (resetn, clk, rot24, rot09)
   begin
-    if (reset = '1') then
+    if (resetn = '0') then
       mrk24ok <= '0';
       mrk09ok <= '0';
       
@@ -103,10 +103,10 @@ begin
   end process proc_markers;
 
   -- State-machine-24
-  proc_fsm24: process (reset, clk, LVDS24_valid, mrk24ok)
+  proc_fsm24: process (resetn, clk, LVDS24_valid, mrk24ok)
   variable auto24rotval_int : Integer;
   begin
-    if (reset = '1') then
+    if (resetn = '0') then
       auto24rotval_int := 0;
       auto24rotval <= std_logic_vector(to_unsigned(0, auto24rotval'length));
       
@@ -122,10 +122,10 @@ begin
   end process proc_fsm24;
 
   -- State-machine-09
-  proc_fsm09: process (reset, clk, LVDS09_valid, mrk09ok)
+  proc_fsm09: process (resetn, clk, LVDS09_valid, mrk09ok)
   variable auto09rotval_int : Integer;
   begin
-    if (reset = '1') then
+    if (resetn = '0') then
       auto09rotval_int := 0;
       auto09rotval <= std_logic_vector(to_unsigned(0, auto09rotval'length));
       
@@ -141,9 +141,9 @@ begin
   end process proc_fsm09;
 
   -- Clocked rot output
-  proc_rot_q: process (reset, clk, rot24, rot09)
+  proc_rot_q: process (resetn, clk, rot24, rot09)
   begin
-    if (reset = '1') then
+    if (resetn = '0') then
       rot24q <= "00000000000000000000000000000000";
       rot09q <= "00000000000000000000000000000000";
       
