@@ -22,15 +22,27 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="26415600000fs"></ZoomStartTime>
-      <ZoomEndTime time="29138600001fs"></ZoomEndTime>
-      <Cursor1Time time="27670000000fs"></Cursor1Time>
+      <ZoomStartTime time="26205000000fs"></ZoomStartTime>
+      <ZoomEndTime time="28936000001fs"></ZoomEndTime>
+      <Cursor1Time time="27930000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="324"></NameColumnWidth>
+      <NameColumnWidth column_width="316"></NameColumnWidth>
       <ValueColumnWidth column_width="116"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="3" />
+   <WVObjectSize size="4" />
+   <wvobject type="divider" fp_name="divider1646">
+      <obj_property name="label">Force_High_after_10us</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SC0712_0/reset_out" type="logic">
+      <obj_property name="ElementShortName">reset_out</obj_property>
+      <obj_property name="ObjectShortName">reset_out</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider1685">
+      <obj_property name="label">Analysis</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
    <wvobject fp_name="group1645" type="group">
       <obj_property name="label">auto_LVDS_rotate</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -43,61 +55,55 @@
          <obj_property name="ElementShortName">clk</obj_property>
          <obj_property name="ObjectShortName">clk</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/LVDS24" type="array">
-         <obj_property name="ElementShortName">LVDS24[31:0]</obj_property>
-         <obj_property name="ObjectShortName">LVDS24[31:0]</obj_property>
+      <wvobject fp_name="group1686" type="group">
+         <obj_property name="label">LVDS24</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/LVDS24" type="array">
+            <obj_property name="ElementShortName">LVDS24[31:0]</obj_property>
+            <obj_property name="ObjectShortName">LVDS24[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/LVDS24_valid" type="logic">
+            <obj_property name="ElementShortName">LVDS24_valid</obj_property>
+            <obj_property name="ObjectShortName">LVDS24_valid</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/auto24rotval" type="array">
+            <obj_property name="ElementShortName">auto24rotval[4:0]</obj_property>
+            <obj_property name="ObjectShortName">auto24rotval[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/rot24q" type="array">
+            <obj_property name="ElementShortName">rot24q[31:0]</obj_property>
+            <obj_property name="ObjectShortName">rot24q[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/mrk24ok" type="logic">
+            <obj_property name="ElementShortName">mrk24ok</obj_property>
+            <obj_property name="ObjectShortName">mrk24ok</obj_property>
+         </wvobject>
       </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/LVDS24_valid" type="logic">
-         <obj_property name="ElementShortName">LVDS24_valid</obj_property>
-         <obj_property name="ObjectShortName">LVDS24_valid</obj_property>
+      <wvobject fp_name="group1687" type="group">
+         <obj_property name="label">LVDS09</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/LVDS09" type="array">
+            <obj_property name="ElementShortName">LVDS09[31:0]</obj_property>
+            <obj_property name="ObjectShortName">LVDS09[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/LVDS09_valid" type="logic">
+            <obj_property name="ElementShortName">LVDS09_valid</obj_property>
+            <obj_property name="ObjectShortName">LVDS09_valid</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/auto09rotval" type="array">
+            <obj_property name="ElementShortName">auto09rotval[4:0]</obj_property>
+            <obj_property name="ObjectShortName">auto09rotval[4:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/rot09q" type="array">
+            <obj_property name="ElementShortName">rot09q[31:0]</obj_property>
+            <obj_property name="ObjectShortName">rot09q[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/mrk09ok" type="logic">
+            <obj_property name="ElementShortName">mrk09ok</obj_property>
+            <obj_property name="ObjectShortName">mrk09ok</obj_property>
+         </wvobject>
       </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/LVDS09" type="array">
-         <obj_property name="ElementShortName">LVDS09[31:0]</obj_property>
-         <obj_property name="ObjectShortName">LVDS09[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/LVDS09_valid" type="logic">
-         <obj_property name="ElementShortName">LVDS09_valid</obj_property>
-         <obj_property name="ObjectShortName">LVDS09_valid</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/rot24q" type="array">
-         <obj_property name="ElementShortName">rot24q[31:0]</obj_property>
-         <obj_property name="ObjectShortName">rot24q[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/rot09q" type="array">
-         <obj_property name="ElementShortName">rot09q[31:0]</obj_property>
-         <obj_property name="ObjectShortName">rot09q[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/auto24rotval" type="array">
-         <obj_property name="ElementShortName">auto24rotval[4:0]</obj_property>
-         <obj_property name="ObjectShortName">auto24rotval[4:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/auto09rotval" type="array">
-         <obj_property name="ElementShortName">auto09rotval[4:0]</obj_property>
-         <obj_property name="ObjectShortName">auto09rotval[4:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/rot24" type="array">
-         <obj_property name="ElementShortName">rot24[31:0]</obj_property>
-         <obj_property name="ObjectShortName">rot24[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/rot09" type="array">
-         <obj_property name="ElementShortName">rot09[31:0]</obj_property>
-         <obj_property name="ObjectShortName">rot09[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/mrk24ok" type="logic">
-         <obj_property name="ElementShortName">mrk24ok</obj_property>
-         <obj_property name="ObjectShortName">mrk24ok</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_null/msys_wrapper_i/auto_LVDS_rotate_i/mrk09ok" type="logic">
-         <obj_property name="ElementShortName">mrk09ok</obj_property>
-         <obj_property name="ObjectShortName">mrk09ok</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject type="divider" fp_name="divider1646">
-      <obj_property name="label">Force_High_after_10us</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SC0712_0/reset_out" type="logic">
-      <obj_property name="ElementShortName">reset_out</obj_property>
-      <obj_property name="ObjectShortName">reset_out</obj_property>
    </wvobject>
 </wave_config>
