@@ -535,6 +535,12 @@
   "../../../bd/msys/ip/msys_xlconstant_0_11/sim/msys_xlconstant_0_11.v" \
   "../../../bd/msys/ip/msys_util_vector_logic_0_4/sim/msys_util_vector_logic_0_4.v" \
   "../../../bd/msys/ip/msys_xlconstant_0_12/sim/msys_xlconstant_0_12.v" \
+  "../../../bd/msys/ip/msys_xlslice_1_0/sim/msys_xlslice_1_0.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_13/sim/msys_xlslice_0_13.v" \
+  "../../../bd/msys/ip/msys_TRX_rx09_pre_fft_xlconcat_0_0/sim/msys_TRX_rx09_pre_fft_xlconcat_0_0.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_TRX_rx09_pre_fft_counter_binary_0_1/sim/msys_TRX_rx09_pre_fft_counter_binary_0_1.vhd" \
 -endlib
 -makelib xcelium_lib/axi_clock_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/9e81/hdl/axi_clock_converter_v2_1_vl_rfs.v" \

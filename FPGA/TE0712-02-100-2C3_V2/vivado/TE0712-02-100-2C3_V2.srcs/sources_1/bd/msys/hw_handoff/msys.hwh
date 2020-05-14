@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed May 13 10:44:06 2020" VIVADOVERSION="2019.2.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu May 14 23:07:52 2020" VIVADOVERSION="2019.2.1">
 
   <SYSTEMINFO ARCH="artix7" BOARD="trenz.biz:te0712_100_2c:part0:1.0" DEVICE="7a100t" NAME="msys" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -226,14 +226,221 @@
     </PORT>
     <PORT DIR="I" LEFT="31" NAME="TRX_rx09_bs_i" RIGHT="0" SIGIS="data" SIGNAME="External_Ports_TRX_rx09_bs_i">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_xfft_xlslice_29to17" PORT="Din"/>
-        <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_xfft_xlslice_13to1" PORT="Din"/>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_xfft_xlslice_29to17" PORT="Din"/>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_xfft_xlslice_13to1" PORT="Din"/>
         <CONNECTION INSTANCE="vio_0" PORT="probe_in12"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="31" NAME="TRX_rx24_bs_i" RIGHT="0" SIGIS="data" SIGNAME="External_Ports_TRX_rx24_bs_i">
       <CONNECTIONS>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_xfft_xlslice_13to1" PORT="Din"/>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_xfft_xlslice_29to17" PORT="Din"/>
         <CONNECTION INSTANCE="vio_0" PORT="probe_in13"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="BOARD_IIC_scl_i" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_scl_i">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="scl_i"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="BOARD_IIC_scl_o" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_scl_o">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="scl_o"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="BOARD_IIC_scl_t" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_scl_t">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="scl_t"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="BOARD_IIC_sda_i" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_sda_i">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="sda_i"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="BOARD_IIC_sda_o" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_sda_o">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="sda_o"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="BOARD_IIC_sda_t" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_sda_t">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="sda_t"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="ETH0_MDIO_MDC_mdc" SIGIS="clk" SIGNAME="ETH0_axi_ethernetlite_0_phy_mdc">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="phy_mdc"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="ETH0_MDIO_MDC_mdio_i" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_phy_mdio_i">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="phy_mdio_i"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="ETH0_MDIO_MDC_mdio_o" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_phy_mdio_o">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="phy_mdio_o"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="ETH0_MDIO_MDC_mdio_t" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_phy_mdio_t">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="phy_mdio_t"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="UART0_rxd" SIGIS="undef" SIGNAME="UART0_axi_UART0_uartlite_0_rx">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="UART0_axi_UART0_uartlite_0" PORT="rx"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="UART0_txd" SIGIS="undef" SIGNAME="UART0_axi_UART0_uartlite_0_tx">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="UART0_axi_UART0_uartlite_0" PORT="tx"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="TRX_tx_clk_clk_n" SIGIS="clk" SIGNAME="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0_clk_to_pins_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0" PORT="clk_to_pins_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="TRX_tx_clk_clk_p" SIGIS="clk" SIGNAME="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0_clk_to_pins_p">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0" PORT="clk_to_pins_p"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="0" NAME="onewire_EUI48_tri_i" RIGHT="0" SIGIS="undef" SIGNAME="axi_ONEWIRE_gpio_0_gpio_io_i">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_ONEWIRE_gpio_0" PORT="gpio_io_i"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="0" NAME="onewire_EUI48_tri_o" RIGHT="0" SIGIS="undef" SIGNAME="axi_ONEWIRE_gpio_0_gpio_io_o">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_ONEWIRE_gpio_0" PORT="gpio_io_o"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="0" NAME="onewire_EUI48_tri_t" RIGHT="0" SIGIS="undef" SIGNAME="axi_ONEWIRE_gpio_0_gpio_io_t">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_ONEWIRE_gpio_0" PORT="gpio_io_t"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK3_sys_diff_clk_p" SIGIS="clk" SIGNAME="mig_7series_0_sys_clk_p">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="sys_clk_p"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK3_sys_diff_clk_n" SIGIS="clk" SIGNAME="mig_7series_0_sys_clk_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="sys_clk_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="RMII_PHY_M_0_crs_dv" SIGIS="undef" SIGNAME="ETH0_mii_to_rmii_0_phy2rmii_crs_dv">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ETH0_mii_to_rmii_0" PORT="phy2rmii_crs_dv"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="RMII_PHY_M_0_rx_er" SIGIS="undef" SIGNAME="ETH0_mii_to_rmii_0_phy2rmii_rx_er">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ETH0_mii_to_rmii_0" PORT="phy2rmii_rx_er"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="1" NAME="RMII_PHY_M_0_rxd" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_mii_to_rmii_0_phy2rmii_rxd">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ETH0_mii_to_rmii_0" PORT="phy2rmii_rxd"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="RMII_PHY_M_0_tx_en" SIGIS="undef" SIGNAME="ETH0_mii_to_rmii_0_rmii2phy_tx_en">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ETH0_mii_to_rmii_0" PORT="rmii2phy_tx_en"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="1" NAME="RMII_PHY_M_0_txd" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_mii_to_rmii_0_rmii2phy_txd">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ETH0_mii_to_rmii_0" PORT="rmii2phy_txd"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK2_mgt_clk0_clk_p" SIGIS="clk" SIGNAME="mgt_clk0_CLK2_util_ds_buf_1_IBUF_DS_P">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mgt_clk0_CLK2_util_ds_buf_1" PORT="IBUF_DS_P"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK2_mgt_clk0_clk_n" SIGIS="clk" SIGNAME="mgt_clk0_CLK2_util_ds_buf_1_IBUF_DS_N">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mgt_clk0_CLK2_util_ds_buf_1" PORT="IBUF_DS_N"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" LEFT="31" NAME="DDR3_SDRAM_dq" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_dq">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_dq"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" LEFT="3" NAME="DDR3_SDRAM_dqs_p" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_dqs_p">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_dqs_p"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" LEFT="3" NAME="DDR3_SDRAM_dqs_n" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_dqs_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_dqs_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="14" NAME="DDR3_SDRAM_addr" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_addr">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_addr"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="2" NAME="DDR3_SDRAM_ba" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_ba">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_ba"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="DDR3_SDRAM_ras_n" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_ras_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_ras_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="DDR3_SDRAM_cas_n" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_cas_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_cas_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="DDR3_SDRAM_we_n" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_we_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_we_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="DDR3_SDRAM_reset_n" SIGIS="rst" SIGNAME="mig_7series_0_ddr3_reset_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_reset_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="O" LEFT="0" NAME="DDR3_SDRAM_ck_p" RIGHT="0" SIGIS="clk" SIGNAME="mig_7series_0_ddr3_ck_p">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_ck_p"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="O" LEFT="0" NAME="DDR3_SDRAM_ck_n" RIGHT="0" SIGIS="clk" SIGNAME="mig_7series_0_ddr3_ck_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_ck_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="0" NAME="DDR3_SDRAM_cke" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_cke">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_cke"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="0" NAME="DDR3_SDRAM_cs_n" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_cs_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_cs_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="3" NAME="DDR3_SDRAM_dm" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_dm">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_dm"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="0" NAME="DDR3_SDRAM_odt" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_odt">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_odt"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="TRX_spi_io0_i" SIGIS="undef" SIGNAME="TRX_TRX_config_TRX_axi_quad_spi_0_io0_i">
@@ -371,16 +578,6 @@
         <CONNECTION INSTANCE="axi_quad_spi_0" PORT="ss_t"/>
       </CONNECTIONS>
     </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="CLK0_clk_p" RIGHT="0" SIGIS="clk" SIGNAME="CLK0_util_ds_buf_0_IBUF_DS_P">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="CLK0_util_ds_buf_0" PORT="IBUF_DS_P"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="CLK0_clk_n" RIGHT="0" SIGIS="clk" SIGNAME="CLK0_util_ds_buf_0_IBUF_DS_N">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="CLK0_util_ds_buf_0" PORT="IBUF_DS_N"/>
-      </CONNECTIONS>
-    </PORT>
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="TRX_rx_clk_64MHz_clk_n" SIGIS="clk" SIGNAME="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0_clk_in_n">
       <CONNECTIONS>
         <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0" PORT="clk_in_n"/>
@@ -391,209 +588,26 @@
         <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0" PORT="clk_in_p"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="IO" LEFT="31" NAME="DDR3_SDRAM_dq" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_dq">
+    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="CLK0_clk_p" RIGHT="0" SIGIS="clk" SIGNAME="CLK0_util_ds_buf_0_IBUF_DS_P">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_dq"/>
+        <CONNECTION INSTANCE="CLK0_util_ds_buf_0" PORT="IBUF_DS_P"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="IO" LEFT="3" NAME="DDR3_SDRAM_dqs_p" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_dqs_p">
+    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="CLK0_clk_n" RIGHT="0" SIGIS="clk" SIGNAME="CLK0_util_ds_buf_0_IBUF_DS_N">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_dqs_p"/>
+        <CONNECTION INSTANCE="CLK0_util_ds_buf_0" PORT="IBUF_DS_N"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="IO" LEFT="3" NAME="DDR3_SDRAM_dqs_n" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_dqs_n">
+    <PORT DIR="I" NAME="rot09vld" SIGIS="undef" SIGNAME="External_Ports_rot09vld">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_dqs_n"/>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_counter_binary_0" PORT="CE"/>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_vector_logic_0" PORT="Op1"/>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_pre_fft_blk_mem_gen_0" PORT="ena"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="14" NAME="DDR3_SDRAM_addr" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_addr">
+    <PORT DIR="I" NAME="rot24vld" SIGIS="undef" SIGNAME="External_Ports_rot24vld">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_addr"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="2" NAME="DDR3_SDRAM_ba" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_ba">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_ba"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="DDR3_SDRAM_ras_n" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_ras_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_ras_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="DDR3_SDRAM_cas_n" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_cas_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_cas_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="DDR3_SDRAM_we_n" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_we_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_we_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="DDR3_SDRAM_reset_n" SIGIS="rst" SIGNAME="mig_7series_0_ddr3_reset_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_reset_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="O" LEFT="0" NAME="DDR3_SDRAM_ck_p" RIGHT="0" SIGIS="clk" SIGNAME="mig_7series_0_ddr3_ck_p">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_ck_p"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="O" LEFT="0" NAME="DDR3_SDRAM_ck_n" RIGHT="0" SIGIS="clk" SIGNAME="mig_7series_0_ddr3_ck_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_ck_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="0" NAME="DDR3_SDRAM_cke" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_cke">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_cke"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="0" NAME="DDR3_SDRAM_cs_n" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_cs_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_cs_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="3" NAME="DDR3_SDRAM_dm" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_dm">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_dm"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="0" NAME="DDR3_SDRAM_odt" RIGHT="0" SIGIS="undef" SIGNAME="mig_7series_0_ddr3_odt">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="ddr3_odt"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="BOARD_IIC_scl_i" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_scl_i">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="scl_i"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="BOARD_IIC_scl_o" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_scl_o">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="scl_o"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="BOARD_IIC_scl_t" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_scl_t">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="scl_t"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="BOARD_IIC_sda_i" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_sda_i">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="sda_i"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="BOARD_IIC_sda_o" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_sda_o">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="sda_o"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="BOARD_IIC_sda_t" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_sda_t">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="sda_t"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="UART0_rxd" SIGIS="undef" SIGNAME="UART0_axi_UART0_uartlite_0_rx">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="UART0_axi_UART0_uartlite_0" PORT="rx"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="UART0_txd" SIGIS="undef" SIGNAME="UART0_axi_UART0_uartlite_0_tx">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="UART0_axi_UART0_uartlite_0" PORT="tx"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="ETH0_MDIO_MDC_mdc" SIGIS="clk" SIGNAME="ETH0_axi_ethernetlite_0_phy_mdc">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="phy_mdc"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="ETH0_MDIO_MDC_mdio_i" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_phy_mdio_i">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="phy_mdio_i"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="ETH0_MDIO_MDC_mdio_o" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_phy_mdio_o">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="phy_mdio_o"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="ETH0_MDIO_MDC_mdio_t" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_phy_mdio_t">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="phy_mdio_t"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="TRX_tx_clk_clk_n" SIGIS="clk" SIGNAME="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0_clk_to_pins_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0" PORT="clk_to_pins_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="TRX_tx_clk_clk_p" SIGIS="clk" SIGNAME="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0_clk_to_pins_p">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0" PORT="clk_to_pins_p"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="0" NAME="onewire_EUI48_tri_i" RIGHT="0" SIGIS="undef" SIGNAME="axi_ONEWIRE_gpio_0_gpio_io_i">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_ONEWIRE_gpio_0" PORT="gpio_io_i"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="0" NAME="onewire_EUI48_tri_o" RIGHT="0" SIGIS="undef" SIGNAME="axi_ONEWIRE_gpio_0_gpio_io_o">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_ONEWIRE_gpio_0" PORT="gpio_io_o"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="0" NAME="onewire_EUI48_tri_t" RIGHT="0" SIGIS="undef" SIGNAME="axi_ONEWIRE_gpio_0_gpio_io_t">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_ONEWIRE_gpio_0" PORT="gpio_io_t"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK3_sys_diff_clk_p" SIGIS="clk" SIGNAME="mig_7series_0_sys_clk_p">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="sys_clk_p"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK3_sys_diff_clk_n" SIGIS="clk" SIGNAME="mig_7series_0_sys_clk_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mig_7series_0" PORT="sys_clk_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="RMII_PHY_M_0_crs_dv" SIGIS="undef" SIGNAME="ETH0_mii_to_rmii_0_phy2rmii_crs_dv">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ETH0_mii_to_rmii_0" PORT="phy2rmii_crs_dv"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="RMII_PHY_M_0_rx_er" SIGIS="undef" SIGNAME="ETH0_mii_to_rmii_0_phy2rmii_rx_er">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ETH0_mii_to_rmii_0" PORT="phy2rmii_rx_er"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="1" NAME="RMII_PHY_M_0_rxd" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_mii_to_rmii_0_phy2rmii_rxd">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ETH0_mii_to_rmii_0" PORT="phy2rmii_rxd"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="RMII_PHY_M_0_tx_en" SIGIS="undef" SIGNAME="ETH0_mii_to_rmii_0_rmii2phy_tx_en">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ETH0_mii_to_rmii_0" PORT="rmii2phy_tx_en"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="1" NAME="RMII_PHY_M_0_txd" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_mii_to_rmii_0_rmii2phy_txd">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ETH0_mii_to_rmii_0" PORT="rmii2phy_txd"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK2_mgt_clk0_clk_p" SIGIS="clk" SIGNAME="mgt_clk0_CLK2_util_ds_buf_1_IBUF_DS_P">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mgt_clk0_CLK2_util_ds_buf_1" PORT="IBUF_DS_P"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK2_mgt_clk0_clk_n" SIGIS="clk" SIGNAME="mgt_clk0_CLK2_util_ds_buf_1_IBUF_DS_N">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mgt_clk0_CLK2_util_ds_buf_1" PORT="IBUF_DS_N"/>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_pre_fft_counter_binary_0" PORT="CE"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -7102,9 +7116,6 @@
         <PORT DIR="O" NAME="valid" SIGIS="undef" SIGNAME="TRX_TRX_LVDS_TRX_rx09_fifo_generator_0_valid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="TRX_rx09_fifo_valid_o"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_counter_binary_0" PORT="CE"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_vector_logic_0" PORT="Op1"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_pre_fft_blk_mem_gen_0" PORT="ena"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="8" NAME="rd_data_count" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_LVDS_TRX_rx09_fifo_generator_0_rd_data_count">
@@ -10044,7 +10055,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_in/TRX_rx09_pre_fft_counter_binary_0" HWVERSION="12.0" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_counter_binary_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_counter_binary" VLNV="xilinx.com:ip:c_counter_binary:12.0">
+    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT09_MEM_in/TRX_rx09_pre_fft_counter_binary_0" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_counter_binary_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_counter_binary" VLNV="xilinx.com:ip:c_counter_binary:12.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_counter_binary;v=v12_0;d=pg121-c-counter-binary.pdf"/>
       </DOCUMENTS>
@@ -10102,22 +10113,22 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="CE" SIGIS="ce" SIGNAME="TRX_TRX_LVDS_TRX_rx09_fifo_generator_0_valid">
+        <PORT DIR="I" NAME="CE" SIGIS="ce" SIGNAME="External_Ports_rot09vld">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_rx09_fifo_generator_0" PORT="valid"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="rot09vld"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="11" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_counter_binary_0_Q">
+        <PORT DIR="O" LEFT="11" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_counter_binary_0_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlslice_0" PORT="Din"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_xlslice_11to11_0" PORT="Din"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_pre_fft_blk_mem_gen_0" PORT="addra"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlslice_0" PORT="Din"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_xlslice_11to11_0" PORT="Din"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_pre_fft_blk_mem_gen_0" PORT="addra"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="3" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_in/TRX_rx09_pre_fft_xlconcat_0" HWVERSION="2.1" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_xlconcat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+    <MODULE COREREVISION="3" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT09_MEM_in/TRX_rx09_pre_fft_xlconcat_0" HWVERSION="2.1" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_xlconcat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="IN0_WIDTH" VALUE="13"/>
@@ -10158,25 +10169,25 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="12" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_xfft_xlslice_29to17_Dout">
+        <PORT DIR="I" LEFT="12" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_xfft_xlslice_29to17_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_xfft_xlslice_29to17" PORT="Dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_xfft_xlslice_29to17" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="12" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_xfft_xlslice_13to1_Dout">
+        <PORT DIR="I" LEFT="12" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_xfft_xlslice_13to1_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_xfft_xlslice_13to1" PORT="Dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_xfft_xlslice_13to1" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="25" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_xlconcat_0_dout">
+        <PORT DIR="O" LEFT="25" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_xlconcat_0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_pre_fft_blk_mem_gen_0" PORT="dina"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_pre_fft_blk_mem_gen_0" PORT="dina"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_in/TRX_rx09_xfft_xlslice_13to1" HWVERSION="1.0" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_xfft_xlslice_13to1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT09_MEM_in/TRX_rx09_xfft_xlslice_13to1" HWVERSION="1.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_xfft_xlslice_13to1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DIN_WIDTH" VALUE="32"/>
@@ -10192,15 +10203,15 @@
             <CONNECTION INSTANCE="External_Ports" PORT="TRX_rx09_bs_i"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="12" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_xfft_xlslice_13to1_Dout">
+        <PORT DIR="O" LEFT="12" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_xfft_xlslice_13to1_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_xlconcat_0" PORT="In1"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_xlconcat_0" PORT="In1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_in/TRX_rx09_xfft_xlslice_29to17" HWVERSION="1.0" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_xfft_xlslice_29to17" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT09_MEM_in/TRX_rx09_xfft_xlslice_29to17" HWVERSION="1.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_xfft_xlslice_29to17" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DIN_WIDTH" VALUE="32"/>
@@ -10216,15 +10227,185 @@
             <CONNECTION INSTANCE="External_Ports" PORT="TRX_rx09_bs_i"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="12" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_xfft_xlslice_29to17_Dout">
+        <PORT DIR="O" LEFT="12" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_xfft_xlslice_29to17_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_xlconcat_0" PORT="In0"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_xlconcat_0" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="4" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_out/Boundary_2048_check/util_reduced_logic_0" HWVERSION="2.0" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_reduced_logic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_reduced_logic" VLNV="xilinx.com:ip:util_reduced_logic:2.0">
+    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT24_MEM_in/TRX_rx24_pre_fft_counter_binary_0" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_pre_fft_counter_binary_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_counter_binary" VLNV="xilinx.com:ip:c_counter_binary:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_counter_binary;v=v12_0;d=pg121-c-counter-binary.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_IMPLEMENTATION" VALUE="0"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="12"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_RESTRICT_COUNT" VALUE="0"/>
+        <PARAMETER NAME="C_COUNT_TO" VALUE="1"/>
+        <PARAMETER NAME="C_COUNT_BY" VALUE="1"/>
+        <PARAMETER NAME="C_COUNT_MODE" VALUE="0"/>
+        <PARAMETER NAME="C_THRESH0_VALUE" VALUE="1"/>
+        <PARAMETER NAME="C_CE_OVERRIDES_SYNC" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_THRESH0" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_LOAD" VALUE="0"/>
+        <PARAMETER NAME="C_LOAD_LOW" VALUE="0"/>
+        <PARAMETER NAME="C_LATENCY" VALUE="1"/>
+        <PARAMETER NAME="C_FB_LATENCY" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SCLR_OVERRIDES_SSET" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_TRX_rx09_pre_fft_counter_binary_0_1"/>
+        <PARAMETER NAME="Implementation" VALUE="Fabric"/>
+        <PARAMETER NAME="Output_Width" VALUE="12"/>
+        <PARAMETER NAME="Increment_Value" VALUE="1"/>
+        <PARAMETER NAME="Restrict_Count" VALUE="false"/>
+        <PARAMETER NAME="Final_Count_Value" VALUE="1"/>
+        <PARAMETER NAME="Count_Mode" VALUE="UP"/>
+        <PARAMETER NAME="Sync_Threshold_Output" VALUE="false"/>
+        <PARAMETER NAME="Threshold_Value" VALUE="1"/>
+        <PARAMETER NAME="CE" VALUE="true"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SINIT_Value" VALUE="0"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="Sync_CE_Priority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="AINIT_Value" VALUE="0"/>
+        <PARAMETER NAME="Load" VALUE="false"/>
+        <PARAMETER NAME="Latency_Configuration" VALUE="Manual"/>
+        <PARAMETER NAME="Latency" VALUE="1"/>
+        <PARAMETER NAME="Fb_Latency_Configuration" VALUE="Manual"/>
+        <PARAMETER NAME="Fb_Latency" VALUE="0"/>
+        <PARAMETER NAME="Load_Sense" VALUE="Active_High"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="CE" SIGIS="ce" SIGNAME="External_Ports_rot24vld">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rot24vld"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="11" NAME="Q" RIGHT="0" SIGIS="data"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="3" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT24_MEM_in/TRX_rx24_pre_fft_xlconcat_0" HWVERSION="2.1" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_pre_fft_xlconcat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="IN0_WIDTH" VALUE="13"/>
+        <PARAMETER NAME="IN1_WIDTH" VALUE="13"/>
+        <PARAMETER NAME="IN2_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN3_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN5_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN6_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN7_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN8_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN9_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN10_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN11_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN12_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN13_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN14_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN15_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN16_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN17_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN18_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN19_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN20_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN21_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN22_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN23_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN24_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN25_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN26_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN27_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN28_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN29_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="dout_width" VALUE="26"/>
+        <PARAMETER NAME="NUM_PORTS" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_TRX_rx09_pre_fft_xlconcat_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="12" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_xfft_xlslice_29to17_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_xfft_xlslice_29to17" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="12" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_xfft_xlslice_13to1_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_xfft_xlslice_13to1" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="25" NAME="dout" RIGHT="0" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT24_MEM_in/TRX_rx24_xfft_xlslice_13to1" HWVERSION="1.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_xfft_xlslice_13to1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="13"/>
+        <PARAMETER NAME="DIN_TO" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_xlslice_1_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="13"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_TRX_rx24_bs_i">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="TRX_rx24_bs_i"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="12" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_xfft_xlslice_13to1_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_pre_fft_xlconcat_0" PORT="In1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT24_MEM_in/TRX_rx24_xfft_xlslice_29to17" HWVERSION="1.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_xfft_xlslice_29to17" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="29"/>
+        <PARAMETER NAME="DIN_TO" VALUE="17"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_xlslice_0_13"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="13"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_TRX_rx24_bs_i">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="TRX_rx24_bs_i"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="12" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_xfft_xlslice_29to17_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_pre_fft_xlconcat_0" PORT="In0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT_MEM_out/Boundary_2048_check/util_reduced_logic_0" HWVERSION="2.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_reduced_logic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_reduced_logic" VLNV="xilinx.com:ip:util_reduced_logic:2.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="C_OPERATION" VALUE="or"/>
@@ -10234,20 +10415,20 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="11" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlconcat_1_dout">
+        <PORT DIR="I" LEFT="11" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlconcat_1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlconcat_1" PORT="dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlconcat_1" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="Res" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_reduced_logic_0_Res">
+        <PORT DIR="O" NAME="Res" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_reduced_logic_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" PORT="SCLR"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" PORT="SCLR"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_out/Boundary_2048_check/util_vector_logic_0" HWVERSION="2.0" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_vector_logic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
+    <MODULE COREREVISION="1" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT_MEM_out/Boundary_2048_check/util_vector_logic_0" HWVERSION="2.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_vector_logic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="C_OPERATION" VALUE="not"/>
@@ -10257,20 +10438,20 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_LVDS_TRX_rx09_fifo_generator_0_valid">
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_rot09vld">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_rx09_fifo_generator_0" PORT="valid"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="rot09vld"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_vector_logic_0_Res">
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_vector_logic_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlconcat_1" PORT="In1"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlconcat_1" PORT="In1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="3" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_out/Boundary_2048_check/xlconcat_1" HWVERSION="2.1" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlconcat_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+    <MODULE COREREVISION="3" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT_MEM_out/Boundary_2048_check/xlconcat_1" HWVERSION="2.1" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlconcat_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="IN0_WIDTH" VALUE="11"/>
@@ -10311,25 +10492,25 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="10" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlslice_0_Dout">
+        <PORT DIR="I" LEFT="10" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlslice_0_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlslice_0" PORT="Dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlslice_0" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_vector_logic_0_Res">
+        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_vector_logic_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_vector_logic_0" PORT="Res"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_vector_logic_0" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="11" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlconcat_1_dout">
+        <PORT DIR="O" LEFT="11" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlconcat_1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_reduced_logic_0" PORT="Op1"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_reduced_logic_0" PORT="Op1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_out/Boundary_2048_check/xlslice_0" HWVERSION="1.0" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlslice_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT_MEM_out/Boundary_2048_check/xlslice_0" HWVERSION="1.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlslice_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DIN_WIDTH" VALUE="12"/>
@@ -10340,20 +10521,20 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="11" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_counter_binary_0_Q">
+        <PORT DIR="I" LEFT="11" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_counter_binary_0_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_counter_binary_0" PORT="Q"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_counter_binary_0" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="10" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlslice_0_Dout">
+        <PORT DIR="O" LEFT="10" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlslice_0_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlconcat_1" PORT="In0"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_xlconcat_1" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_out/outaddr_4x2048_counter_binary_0" HWVERSION="12.0" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_counter_binary" VLNV="xilinx.com:ip:c_counter_binary:12.0">
+    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT_MEM_out/outaddr_4x2048_counter_binary_0" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_counter_binary" VLNV="xilinx.com:ip:c_counter_binary:12.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_counter_binary;v=v12_0;d=pg121-c-counter-binary.pdf"/>
       </DOCUMENTS>
@@ -10411,32 +10592,32 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="CE" SIGIS="ce" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_util_vector_logic_0_Res">
+        <PORT DIR="I" NAME="CE" SIGIS="ce" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_util_vector_logic_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_util_vector_logic_0" PORT="Res"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_util_vector_logic_0" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="SCLR" SIGIS="rst" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_reduced_logic_0_Res">
+        <PORT DIR="I" NAME="SCLR" SIGIS="rst" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_reduced_logic_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_reduced_logic_0" PORT="Res"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_Boundary_2048_check_util_reduced_logic_0" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="THRESH0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0_THRESH0">
+        <PORT DIR="O" NAME="THRESH0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0_THRESH0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_util_vector_logic_0" PORT="Op1"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231" PORT="s_axis_data_tlast"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_util_vector_logic_0" PORT="Op1"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231" PORT="s_axis_data_tlast"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="13" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0_Q">
+        <PORT DIR="O" LEFT="13" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_frame2048adr_xlslice_10to0" PORT="Din"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x_subframes_xlslice_12to11" PORT="Din"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_frame2048adr_xlslice_10to0" PORT="Din"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x_subframes_xlslice_12to11" PORT="Din"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_out/outaddr_4x_subframes_xlslice_12to11" HWVERSION="1.0" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x_subframes_xlslice_12to11" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT_MEM_out/outaddr_4x_subframes_xlslice_12to11" HWVERSION="1.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x_subframes_xlslice_12to11" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DIN_WIDTH" VALUE="14"/>
@@ -10447,21 +10628,21 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="13" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0_Q">
+        <PORT DIR="I" LEFT="13" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" PORT="Q"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x_subframes_xlslice_12to11_Dout">
+        <PORT DIR="O" LEFT="1" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x_subframes_xlslice_12to11_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_512subframe_xlconcat_0" PORT="In1"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_0" PORT="D"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_512subframe_xlconcat_0" PORT="In1"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_0" PORT="D"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="3" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_out/outaddr_512subframe_xlconcat_0" HWVERSION="2.1" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_512subframe_xlconcat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+    <MODULE COREREVISION="3" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT_MEM_out/outaddr_512subframe_xlconcat_0" HWVERSION="2.1" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_512subframe_xlconcat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="IN0_WIDTH" VALUE="9"/>
@@ -10502,30 +10683,30 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="8" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_xlconstant_0_len9_dout">
+        <PORT DIR="I" LEFT="8" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_xlconstant_0_len9_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_xlconstant_0_len9" PORT="dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_xlconstant_0_len9" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x_subframes_xlslice_12to11_Dout">
+        <PORT DIR="I" LEFT="1" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x_subframes_xlslice_12to11_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x_subframes_xlslice_12to11" PORT="Dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x_subframes_xlslice_12to11" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_util_vector_logic_1_Res">
+        <PORT DIR="I" LEFT="0" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_util_vector_logic_1_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_util_vector_logic_1" PORT="Res"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_util_vector_logic_1" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="11" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_512subframe_xlconcat_0_dout">
+        <PORT DIR="O" LEFT="11" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_512subframe_xlconcat_0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_readaddr_addsub_0" PORT="B"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_readaddr_addsub_0" PORT="B"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_out/outaddr_frame2048adr_xlslice_10to0" HWVERSION="1.0" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_frame2048adr_xlslice_10to0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT_MEM_out/outaddr_frame2048adr_xlslice_10to0" HWVERSION="1.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_frame2048adr_xlslice_10to0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DIN_WIDTH" VALUE="14"/>
@@ -10536,20 +10717,20 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="13" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0_Q">
+        <PORT DIR="I" LEFT="13" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" PORT="Q"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="10" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_frame2048adr_xlslice_10to0_Dout">
+        <PORT DIR="O" LEFT="10" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_frame2048adr_xlslice_10to0_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_readaddr_addsub_0" PORT="A"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_readaddr_addsub_0" PORT="A"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_out/outaddr_readaddr_addsub_0" HWVERSION="12.0" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_readaddr_addsub_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_addsub" VLNV="xilinx.com:ip:c_addsub:12.0">
+    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT_MEM_out/outaddr_readaddr_addsub_0" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_readaddr_addsub_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_addsub" VLNV="xilinx.com:ip:c_addsub:12.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_addsub;v=v12_0;d=pg120-c-addsub.pdf"/>
       </DOCUMENTS>
@@ -10609,14 +10790,14 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="10" NAME="A" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_frame2048adr_xlslice_10to0_Dout">
+        <PORT DIR="I" LEFT="10" NAME="A" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_frame2048adr_xlslice_10to0_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_frame2048adr_xlslice_10to0" PORT="Dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_frame2048adr_xlslice_10to0" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="11" NAME="B" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_512subframe_xlconcat_0_dout">
+        <PORT DIR="I" LEFT="11" NAME="B" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_512subframe_xlconcat_0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_512subframe_xlconcat_0" PORT="dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_512subframe_xlconcat_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
@@ -10624,15 +10805,15 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="11" NAME="S" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_readaddr_addsub_0_S">
+        <PORT DIR="O" LEFT="11" NAME="S" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_readaddr_addsub_0_S">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_pre_fft_blk_mem_gen_0" PORT="addrb"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_pre_fft_blk_mem_gen_0" PORT="addrb"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="6" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_out/outaddr_xlconstant_0_len9" HWVERSION="1.1" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_xlconstant_0_len9" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+    <MODULE COREREVISION="6" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT_MEM_out/outaddr_xlconstant_0_len9" HWVERSION="1.1" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_xlconstant_0_len9" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="CONST_WIDTH" VALUE="9"/>
@@ -10641,15 +10822,15 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="O" LEFT="8" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_xlconstant_0_len9_dout">
+        <PORT DIR="O" LEFT="8" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_xlconstant_0_len9_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_512subframe_xlconcat_0" PORT="In0"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_512subframe_xlconcat_0" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_out/util_vector_logic_0" HWVERSION="2.0" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_util_vector_logic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
+    <MODULE COREREVISION="1" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT_MEM_out/util_vector_logic_0" HWVERSION="2.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_util_vector_logic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="C_OPERATION" VALUE="not"/>
@@ -10659,22 +10840,22 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0_THRESH0">
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0_THRESH0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" PORT="THRESH0"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" PORT="THRESH0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_util_vector_logic_0_Res">
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_util_vector_logic_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" PORT="CE"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231" PORT="s_axis_data_tvalid"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231" PORT="s_axis_config_tvalid"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" PORT="CE"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231" PORT="s_axis_data_tvalid"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231" PORT="s_axis_config_tvalid"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_out/util_vector_logic_1" HWVERSION="2.0" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_util_vector_logic_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
+    <MODULE COREREVISION="1" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT_MEM_out/util_vector_logic_1" HWVERSION="2.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_util_vector_logic_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="C_OPERATION" VALUE="not"/>
@@ -10684,20 +10865,20 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_xlslice_11to11_0_Dout">
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_xlslice_11to11_0_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_xlslice_11to11_0" PORT="Dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_xlslice_11to11_0" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_util_vector_logic_1_Res">
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_util_vector_logic_1_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_512subframe_xlconcat_0" PORT="In2"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_512subframe_xlconcat_0" PORT="In2"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx09_FFT/Pre_FFT_MEM_out/xlslice_11to11_0" HWVERSION="1.0" INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_xlslice_11to11_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx_FFT/Pre_FFT_MEM_out/xlslice_11to11_0" HWVERSION="1.0" INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_xlslice_11to11_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DIN_WIDTH" VALUE="12"/>
@@ -10708,20 +10889,20 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="11" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_counter_binary_0_Q">
+        <PORT DIR="I" LEFT="11" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_counter_binary_0_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_counter_binary_0" PORT="Q"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_counter_binary_0" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_xlslice_11to11_0_Dout">
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_xlslice_11to11_0_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_util_vector_logic_1" PORT="Op1"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_util_vector_logic_1" PORT="Op1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="16" FULLNAME="/TRX/TRX_rx09_FFT/TRX_rx_fft/cordic_rx09_0" HWVERSION="6.0" INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_cordic_rx09_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="cordic" VLNV="xilinx.com:ip:cordic:6.0">
+    <MODULE COREREVISION="16" FULLNAME="/TRX/TRX_rx_FFT/TRX_rx_fft/cordic_rx09_0" HWVERSION="6.0" INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_cordic_rx09_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="cordic" VLNV="xilinx.com:ip:cordic:6.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=cordic;v=v6_0;d=pg105-cordic.pdf"/>
       </DOCUMENTS>
@@ -10789,40 +10970,40 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axis_cartesian_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tvalid">
+        <PORT DIR="I" NAME="s_axis_cartesian_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231" PORT="m_axis_data_tvalid"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231" PORT="m_axis_data_tvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="s_axis_cartesian_tuser" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tuser">
+        <PORT DIR="I" LEFT="15" NAME="s_axis_cartesian_tuser" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tuser">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231" PORT="m_axis_data_tuser"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231" PORT="m_axis_data_tuser"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axis_cartesian_tlast" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tlast">
+        <PORT DIR="I" NAME="s_axis_cartesian_tlast" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tlast">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231" PORT="m_axis_data_tlast"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231" PORT="m_axis_data_tlast"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="63" NAME="s_axis_cartesian_tdata" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tdata">
+        <PORT DIR="I" LEFT="63" NAME="s_axis_cartesian_tdata" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231" PORT="m_axis_data_tdata"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231" PORT="m_axis_data_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="m_axis_dout_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_cordic_rx09_0_m_axis_dout_tvalid">
+        <PORT DIR="O" NAME="m_axis_dout_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_cordic_rx09_0_m_axis_dout_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_post_fft_blk_mem_gen_0" PORT="ena"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_post_fft_blk_mem_gen_0" PORT="ena"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="m_axis_dout_tuser" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_cordic_rx09_0_m_axis_dout_tuser">
+        <PORT DIR="O" LEFT="15" NAME="m_axis_dout_tuser" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_cordic_rx09_0_m_axis_dout_tuser">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_11to0_1" PORT="Din"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_11to0_1" PORT="Din"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="m_axis_dout_tlast" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="31" NAME="m_axis_dout_tdata" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_cordic_rx09_0_m_axis_dout_tdata">
+        <PORT DIR="O" LEFT="31" NAME="m_axis_dout_tdata" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_cordic_rx09_0_m_axis_dout_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_MAG_15to0_3" PORT="Din"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_MAG_15to0_3" PORT="Din"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -10871,7 +11052,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx09_FFT/TRX_rx_fft/delay_4231clk/c_shift_ram_dly1024_0" HWVERSION="12.0" INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT/TRX_rx_fft/delay_4231clk/c_shift_ram_dly1024_0" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
       </DOCUMENTS>
@@ -10921,9 +11102,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x_subframes_xlslice_12to11_Dout">
+        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x_subframes_xlslice_12to11_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x_subframes_xlslice_12to11" PORT="Dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x_subframes_xlslice_12to11" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
@@ -10936,15 +11117,15 @@
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_0_Q">
+        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_0_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_1" PORT="D"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_1" PORT="D"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx09_FFT/TRX_rx_fft/delay_4231clk/c_shift_ram_dly1024_1" HWVERSION="12.0" INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT/TRX_rx_fft/delay_4231clk/c_shift_ram_dly1024_1" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
       </DOCUMENTS>
@@ -10994,9 +11175,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_0_Q">
+        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_0_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_0" PORT="Q"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_0" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
@@ -11009,15 +11190,15 @@
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_1_Q">
+        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_1_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_2" PORT="D"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_2" PORT="D"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx09_FFT/TRX_rx_fft/delay_4231clk/c_shift_ram_dly1024_2" HWVERSION="12.0" INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT/TRX_rx_fft/delay_4231clk/c_shift_ram_dly1024_2" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
       </DOCUMENTS>
@@ -11067,9 +11248,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_1_Q">
+        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_1_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_1" PORT="Q"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_1" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
@@ -11082,15 +11263,15 @@
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_2_Q">
+        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_2_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_3" PORT="D"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_3" PORT="D"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx09_FFT/TRX_rx_fft/delay_4231clk/c_shift_ram_dly1024_3" HWVERSION="12.0" INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT/TRX_rx_fft/delay_4231clk/c_shift_ram_dly1024_3" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
       </DOCUMENTS>
@@ -11140,9 +11321,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_2_Q">
+        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_2_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_2" PORT="Q"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_2" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
@@ -11155,15 +11336,15 @@
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_3_Q">
+        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_3_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly135_4" PORT="D"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly135_4" PORT="D"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx09_FFT/TRX_rx_fft/delay_4231clk/c_shift_ram_dly135_4" HWVERSION="12.0" INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly135_4" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT/TRX_rx_fft/delay_4231clk/c_shift_ram_dly135_4" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly135_4" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
       </DOCUMENTS>
@@ -11213,9 +11394,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_3_Q">
+        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_3_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_3" PORT="Q"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_3" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
@@ -11228,15 +11409,15 @@
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly135_4_Q">
+        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly135_4_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconcat_1" PORT="In1"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlconcat_1" PORT="In1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="3" FULLNAME="/TRX/TRX_rx09_FFT/TRX_rx_fft/xfft_dly4231" HWVERSION="9.1" INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xfft" VLNV="xilinx.com:ip:xfft:9.1">
+    <MODULE COREREVISION="3" FULLNAME="/TRX/TRX_rx_FFT/TRX_rx_fft/xfft_dly4231" HWVERSION="9.1" INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xfft" VLNV="xilinx.com:ip:xfft:9.1">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=xfft;v=v9_1;d=pg109-xfft.pdf"/>
       </DOCUMENTS>
@@ -11313,51 +11494,51 @@
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="s_axis_config_tdata" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconstant_0_len8_dout">
+        <PORT DIR="I" LEFT="7" NAME="s_axis_config_tdata" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlconstant_0_len8_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconstant_0_len8" PORT="dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlconstant_0_len8" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axis_config_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_util_vector_logic_0_Res">
+        <PORT DIR="I" NAME="s_axis_config_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_util_vector_logic_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_util_vector_logic_0" PORT="Res"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_util_vector_logic_0" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_axis_config_tready" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="31" NAME="s_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconcat_0_dout">
+        <PORT DIR="I" LEFT="31" NAME="s_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlconcat_0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconcat_0" PORT="dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlconcat_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axis_data_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_util_vector_logic_0_Res">
+        <PORT DIR="I" NAME="s_axis_data_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_util_vector_logic_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_util_vector_logic_0" PORT="Res"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_util_vector_logic_0" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_axis_data_tready" SIGIS="undef"/>
-        <PORT DIR="I" NAME="s_axis_data_tlast" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0_THRESH0">
+        <PORT DIR="I" NAME="s_axis_data_tlast" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0_THRESH0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" PORT="THRESH0"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" PORT="THRESH0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="63" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tdata">
+        <PORT DIR="O" LEFT="63" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_cordic_rx09_0" PORT="s_axis_cartesian_tdata"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_cordic_rx09_0" PORT="s_axis_cartesian_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="m_axis_data_tuser" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tuser">
+        <PORT DIR="O" LEFT="15" NAME="m_axis_data_tuser" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tuser">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_cordic_rx09_0" PORT="s_axis_cartesian_tuser"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_cordic_rx09_0" PORT="s_axis_cartesian_tuser"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="m_axis_data_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tvalid">
+        <PORT DIR="O" NAME="m_axis_data_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_cordic_rx09_0" PORT="s_axis_cartesian_tvalid"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_cordic_rx09_0" PORT="s_axis_cartesian_tvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="m_axis_data_tlast" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tlast">
+        <PORT DIR="O" NAME="m_axis_data_tlast" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231_m_axis_data_tlast">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_cordic_rx09_0" PORT="s_axis_cartesian_tlast"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_cordic_rx09_0" PORT="s_axis_cartesian_tlast"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="event_frame_started" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT"/>
@@ -11430,7 +11611,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="3" FULLNAME="/TRX/TRX_rx09_FFT/TRX_rx_fft/xlconcat_0" HWVERSION="2.1" INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconcat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+    <MODULE COREREVISION="3" FULLNAME="/TRX/TRX_rx_FFT/TRX_rx_fft/xlconcat_0" HWVERSION="2.1" INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlconcat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="IN0_WIDTH" VALUE="13"/>
@@ -11471,35 +11652,35 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="12" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_12to0_0_Dout">
+        <PORT DIR="I" LEFT="12" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_12to0_0_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_12to0_0" PORT="Dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_12to0_0" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="2" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconstant_0_len3_dout">
+        <PORT DIR="I" LEFT="2" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlconstant_0_len3_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconstant_0_len3" PORT="dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlconstant_0_len3" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="12" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_25to13_0_Dout">
+        <PORT DIR="I" LEFT="12" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_25to13_0_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_25to13_0" PORT="Dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_25to13_0" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="2" NAME="In3" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconstant_0_len3_dout">
+        <PORT DIR="I" LEFT="2" NAME="In3" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlconstant_0_len3_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconstant_0_len3" PORT="dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlconstant_0_len3" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconcat_0_dout">
+        <PORT DIR="O" LEFT="31" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlconcat_0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231" PORT="s_axis_data_tdata"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231" PORT="s_axis_data_tdata"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="3" FULLNAME="/TRX/TRX_rx09_FFT/TRX_rx_fft/xlconcat_1" HWVERSION="2.1" INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconcat_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+    <MODULE COREREVISION="3" FULLNAME="/TRX/TRX_rx_FFT/TRX_rx_fft/xlconcat_1" HWVERSION="2.1" INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlconcat_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="IN0_WIDTH" VALUE="11"/>
@@ -11540,25 +11721,25 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="10" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_11to0_1_Dout">
+        <PORT DIR="I" LEFT="10" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_11to0_1_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_11to0_1" PORT="Dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_11to0_1" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly135_4_Q">
+        <PORT DIR="I" LEFT="1" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly135_4_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly135_4" PORT="Q"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly135_4" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="12" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconcat_1_dout">
+        <PORT DIR="O" LEFT="12" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlconcat_1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_post_fft_blk_mem_gen_0" PORT="addra"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_post_fft_blk_mem_gen_0" PORT="addra"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="6" FULLNAME="/TRX/TRX_rx09_FFT/TRX_rx_fft/xlconstant_0_len3" HWVERSION="1.1" INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconstant_0_len3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+    <MODULE COREREVISION="6" FULLNAME="/TRX/TRX_rx_FFT/TRX_rx_fft/xlconstant_0_len3" HWVERSION="1.1" INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlconstant_0_len3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="CONST_WIDTH" VALUE="3"/>
@@ -11567,16 +11748,16 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="O" LEFT="2" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconstant_0_len3_dout">
+        <PORT DIR="O" LEFT="2" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlconstant_0_len3_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconcat_0" PORT="In3"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconcat_0" PORT="In1"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlconcat_0" PORT="In3"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlconcat_0" PORT="In1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="6" FULLNAME="/TRX/TRX_rx09_FFT/TRX_rx_fft/xlconstant_0_len8" HWVERSION="1.1" INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconstant_0_len8" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+    <MODULE COREREVISION="6" FULLNAME="/TRX/TRX_rx_FFT/TRX_rx_fft/xlconstant_0_len8" HWVERSION="1.1" INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlconstant_0_len8" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="CONST_WIDTH" VALUE="8"/>
@@ -11585,15 +11766,15 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="O" LEFT="7" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconstant_0_len8_dout">
+        <PORT DIR="O" LEFT="7" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlconstant_0_len8_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231" PORT="s_axis_config_tdata"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231" PORT="s_axis_config_tdata"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx09_FFT/TRX_rx_fft/xlslice_11to0_1" HWVERSION="1.0" INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_11to0_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx_FFT/TRX_rx_fft/xlslice_11to0_1" HWVERSION="1.0" INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_11to0_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DIN_WIDTH" VALUE="16"/>
@@ -11604,20 +11785,20 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="15" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_cordic_rx09_0_m_axis_dout_tuser">
+        <PORT DIR="I" LEFT="15" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_cordic_rx09_0_m_axis_dout_tuser">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_cordic_rx09_0" PORT="m_axis_dout_tuser"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_cordic_rx09_0" PORT="m_axis_dout_tuser"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="10" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_11to0_1_Dout">
+        <PORT DIR="O" LEFT="10" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_11to0_1_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconcat_1" PORT="In0"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlconcat_1" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx09_FFT/TRX_rx_fft/xlslice_12to0_0" HWVERSION="1.0" INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_12to0_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx_FFT/TRX_rx_fft/xlslice_12to0_0" HWVERSION="1.0" INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_12to0_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DIN_WIDTH" VALUE="26"/>
@@ -11628,20 +11809,20 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="25" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_pre_fft_blk_mem_gen_0_doutb">
+        <PORT DIR="I" LEFT="25" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_pre_fft_blk_mem_gen_0_doutb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_pre_fft_blk_mem_gen_0" PORT="doutb"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_pre_fft_blk_mem_gen_0" PORT="doutb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="12" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_12to0_0_Dout">
+        <PORT DIR="O" LEFT="12" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_12to0_0_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconcat_0" PORT="In0"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlconcat_0" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx09_FFT/TRX_rx_fft/xlslice_25to13_0" HWVERSION="1.0" INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_25to13_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx_FFT/TRX_rx_fft/xlslice_25to13_0" HWVERSION="1.0" INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_25to13_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DIN_WIDTH" VALUE="26"/>
@@ -11652,20 +11833,20 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="25" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_pre_fft_blk_mem_gen_0_doutb">
+        <PORT DIR="I" LEFT="25" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_pre_fft_blk_mem_gen_0_doutb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_pre_fft_blk_mem_gen_0" PORT="doutb"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_pre_fft_blk_mem_gen_0" PORT="doutb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="12" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_25to13_0_Dout">
+        <PORT DIR="O" LEFT="12" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_25to13_0_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconcat_0" PORT="In2"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlconcat_0" PORT="In2"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx09_FFT/TRX_rx_fft/xlslice_MAG_15to0_3" HWVERSION="1.0" INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_MAG_15to0_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx_FFT/TRX_rx_fft/xlslice_MAG_15to0_3" HWVERSION="1.0" INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_MAG_15to0_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DIN_WIDTH" VALUE="32"/>
@@ -11676,20 +11857,20 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="31" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_cordic_rx09_0_m_axis_dout_tdata">
+        <PORT DIR="I" LEFT="31" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_cordic_rx09_0_m_axis_dout_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_cordic_rx09_0" PORT="m_axis_dout_tdata"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_cordic_rx09_0" PORT="m_axis_dout_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_MAG_15to0_3_Dout">
+        <PORT DIR="O" LEFT="15" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_MAG_15to0_3_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_post_fft_blk_mem_gen_0" PORT="dina"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_post_fft_blk_mem_gen_0" PORT="dina"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="4" FULLNAME="/TRX/TRX_rx09_FFT/post_fft_blk_mem_gen_0" HWVERSION="8.4" INSTANCE="TRX_TRX_rx09_FFT_post_fft_blk_mem_gen_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY" MODTYPE="blk_mem_gen" VLNV="xilinx.com:ip:blk_mem_gen:8.4">
+    <MODULE COREREVISION="4" FULLNAME="/TRX/TRX_rx_FFT/post_fft_blk_mem_gen_0" HWVERSION="8.4" INSTANCE="TRX_TRX_rx_FFT_post_fft_blk_mem_gen_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY" MODTYPE="blk_mem_gen" VLNV="xilinx.com:ip:blk_mem_gen:8.4">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=blk_mem_gen;v=v8_4;d=pg058-blk-mem-gen.pdf"/>
       </DOCUMENTS>
@@ -11849,24 +12030,24 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ena" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_cordic_rx09_0_m_axis_dout_tvalid">
+        <PORT DIR="I" NAME="ena" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_cordic_rx09_0_m_axis_dout_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_cordic_rx09_0" PORT="m_axis_dout_tvalid"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_cordic_rx09_0" PORT="m_axis_dout_tvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="wea" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_xlconstant_1_len1_dout">
+        <PORT DIR="I" LEFT="0" NAME="wea" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_xlconstant_1_len1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_xlconstant_1_len1" PORT="dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_xlconstant_1_len1" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="12" NAME="addra" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconcat_1_dout">
+        <PORT DIR="I" LEFT="12" NAME="addra" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlconcat_1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlconcat_1" PORT="dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlconcat_1" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="dina" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_MAG_15to0_3_Dout">
+        <PORT DIR="I" LEFT="15" NAME="dina" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_MAG_15to0_3_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_MAG_15to0_3" PORT="Dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_MAG_15to0_3" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
@@ -11874,14 +12055,14 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="enb" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_xlconstant_0_len1_dout">
+        <PORT DIR="I" NAME="enb" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_xlconstant_0_len1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_xlconstant_0_len1" PORT="dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_xlconstant_0_len1" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="12" NAME="addrb" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_xlconstant_0_len13_dout">
+        <PORT DIR="I" LEFT="12" NAME="addrb" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_xlconstant_0_len13_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_xlconstant_0_len13" PORT="dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_xlconstant_0_len13" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="doutb" RIGHT="0" SIGIS="undef"/>
@@ -11918,7 +12099,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="4" FULLNAME="/TRX/TRX_rx09_FFT/pre_fft_blk_mem_gen_0" HWVERSION="8.4" INSTANCE="TRX_TRX_rx09_FFT_pre_fft_blk_mem_gen_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY" MODTYPE="blk_mem_gen" VLNV="xilinx.com:ip:blk_mem_gen:8.4">
+    <MODULE COREREVISION="4" FULLNAME="/TRX/TRX_rx_FFT/pre_fft_blk_mem_gen_0" HWVERSION="8.4" INSTANCE="TRX_TRX_rx_FFT_pre_fft_blk_mem_gen_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY" MODTYPE="blk_mem_gen" VLNV="xilinx.com:ip:blk_mem_gen:8.4">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=blk_mem_gen;v=v8_4;d=pg058-blk-mem-gen.pdf"/>
       </DOCUMENTS>
@@ -12078,20 +12259,20 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ena" SIGIS="undef" SIGNAME="TRX_TRX_LVDS_TRX_rx09_fifo_generator_0_valid">
+        <PORT DIR="I" NAME="ena" SIGIS="undef" SIGNAME="External_Ports_rot09vld">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_rx09_fifo_generator_0" PORT="valid"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="rot09vld"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="wea" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="11" NAME="addra" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_counter_binary_0_Q">
+        <PORT DIR="I" LEFT="11" NAME="addra" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_counter_binary_0_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_counter_binary_0" PORT="Q"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_counter_binary_0" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="25" NAME="dina" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_xlconcat_0_dout">
+        <PORT DIR="I" LEFT="25" NAME="dina" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_xlconcat_0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_xlconcat_0" PORT="dout"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_xlconcat_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
@@ -12099,15 +12280,15 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="11" NAME="addrb" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_readaddr_addsub_0_S">
+        <PORT DIR="I" LEFT="11" NAME="addrb" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_readaddr_addsub_0_S">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_readaddr_addsub_0" PORT="S"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_readaddr_addsub_0" PORT="S"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="25" NAME="doutb" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_pre_fft_blk_mem_gen_0_doutb">
+        <PORT DIR="O" LEFT="25" NAME="doutb" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_pre_fft_blk_mem_gen_0_doutb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_12to0_0" PORT="Din"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xlslice_25to13_0" PORT="Din"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_12to0_0" PORT="Din"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xlslice_25to13_0" PORT="Din"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -12142,7 +12323,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="6" FULLNAME="/TRX/TRX_rx09_FFT/xlconstant_0_len1" HWVERSION="1.1" INSTANCE="TRX_TRX_rx09_FFT_xlconstant_0_len1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+    <MODULE COREREVISION="6" FULLNAME="/TRX/TRX_rx_FFT/xlconstant_0_len1" HWVERSION="1.1" INSTANCE="TRX_TRX_rx_FFT_xlconstant_0_len1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
@@ -12151,15 +12332,15 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_xlconstant_0_len1_dout">
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_xlconstant_0_len1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_post_fft_blk_mem_gen_0" PORT="enb"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_post_fft_blk_mem_gen_0" PORT="enb"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="6" FULLNAME="/TRX/TRX_rx09_FFT/xlconstant_0_len13" HWVERSION="1.1" INSTANCE="TRX_TRX_rx09_FFT_xlconstant_0_len13" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+    <MODULE COREREVISION="6" FULLNAME="/TRX/TRX_rx_FFT/xlconstant_0_len13" HWVERSION="1.1" INSTANCE="TRX_TRX_rx_FFT_xlconstant_0_len13" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="CONST_WIDTH" VALUE="13"/>
@@ -12168,15 +12349,15 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="O" LEFT="12" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_xlconstant_0_len13_dout">
+        <PORT DIR="O" LEFT="12" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_xlconstant_0_len13_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_post_fft_blk_mem_gen_0" PORT="addrb"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_post_fft_blk_mem_gen_0" PORT="addrb"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="6" FULLNAME="/TRX/TRX_rx09_FFT/xlconstant_1_len1" HWVERSION="1.1" INSTANCE="TRX_TRX_rx09_FFT_xlconstant_1_len1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+    <MODULE COREREVISION="6" FULLNAME="/TRX/TRX_rx_FFT/xlconstant_1_len1" HWVERSION="1.1" INSTANCE="TRX_TRX_rx_FFT_xlconstant_1_len1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
@@ -12185,9 +12366,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx09_FFT_xlconstant_1_len1_dout">
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_xlconstant_1_len1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_post_fft_blk_mem_gen_0" PORT="wea"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_post_fft_blk_mem_gen_0" PORT="wea"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -15896,191 +16077,6 @@
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S01_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S01_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWADDR"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="7" NAME="S01_AXI_awlen" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awlen">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWLEN"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S01_AXI_awsize" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awsize">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWSIZE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="S01_AXI_awburst" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awburst">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWBURST"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S01_AXI_awlock" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awlock">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWLOCK"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S01_AXI_awcache" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awcache">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWCACHE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S01_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awprot">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWPROT"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S01_AXI_awqos" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awqos">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWQOS"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S01_AXI_awvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S01_AXI_awready" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S01_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WDATA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S01_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WSTRB"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S01_AXI_wlast" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_wlast">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WLAST"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S01_AXI_wvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S01_AXI_wready" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S01_AXI_bid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_bid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S01_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BRESP"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S01_AXI_bvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S01_AXI_bready" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S01_AXI_arid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S01_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARADDR"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="7" NAME="S01_AXI_arlen" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arlen">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARLEN"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S01_AXI_arsize" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arsize">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARSIZE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="S01_AXI_arburst" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arburst">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARBURST"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S01_AXI_arlock" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arlock">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARLOCK"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S01_AXI_arcache" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arcache">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARCACHE"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S01_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arprot">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARPROT"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S01_AXI_arqos" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arqos">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARQOS"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S01_AXI_arvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S01_AXI_arready" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S01_AXI_rid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_rid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="S01_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RDATA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S01_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RRESP"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S01_AXI_rlast" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_rlast">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RLAST"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S01_AXI_rvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S01_AXI_rready" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RREADY"/>
-          </CONNECTIONS>
-        </PORT>
         <PORT DIR="O" LEFT="0" NAME="M00_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_M00_AXI_awid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="s_axi_awid"/>
@@ -16451,6 +16447,191 @@
         <PORT DIR="I" NAME="S00_AXI_rready" SIGIS="undef" SIGNAME="axi_interconnect_0_S00_AXI_rready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DC_RREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S01_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S01_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWADDR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="S01_AXI_awlen" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awlen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWLEN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S01_AXI_awsize" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awsize">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWSIZE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="S01_AXI_awburst" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awburst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWBURST"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S01_AXI_awlock" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awlock">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWLOCK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S01_AXI_awcache" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awcache">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWCACHE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S01_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWPROT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S01_AXI_awqos" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awqos">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWQOS"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S01_AXI_awvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S01_AXI_awready" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_AWREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S01_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S01_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WSTRB"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S01_AXI_wlast" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_wlast">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WLAST"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S01_AXI_wvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S01_AXI_wready" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_WREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="S01_AXI_bid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_bid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="S01_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BRESP"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S01_AXI_bvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S01_AXI_bready" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_BREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S01_AXI_arid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S01_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARADDR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="S01_AXI_arlen" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arlen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARLEN"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S01_AXI_arsize" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arsize">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARSIZE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="S01_AXI_arburst" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arburst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARBURST"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S01_AXI_arlock" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arlock">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARLOCK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S01_AXI_arcache" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arcache">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARCACHE"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S01_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARPROT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S01_AXI_arqos" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arqos">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARQOS"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S01_AXI_arvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S01_AXI_arready" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_ARREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="S01_AXI_rid" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_rid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="S01_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="S01_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RRESP"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S01_AXI_rlast" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_rlast">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RLAST"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S01_AXI_rvalid" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S01_AXI_rready" SIGIS="undef" SIGNAME="axi_interconnect_0_S01_AXI_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_IC_RREADY"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -20062,91 +20243,91 @@
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M01_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_awaddr">
+        <PORT DIR="O" LEFT="12" NAME="M05_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_awaddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_awaddr"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_awaddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M01_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="0" NAME="M01_AXI_awvalid" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_awvalid">
+        <PORT DIR="O" NAME="M05_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M05_AXI_awvalid" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_awvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_awvalid"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_awvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M01_AXI_awready" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_awready">
+        <PORT DIR="I" NAME="M05_AXI_awready" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_awready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_awready"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_awready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M01_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_wdata">
+        <PORT DIR="O" LEFT="31" NAME="M05_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_wdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_wdata"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_wdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M01_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_wstrb">
+        <PORT DIR="O" LEFT="3" NAME="M05_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_wstrb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_wstrb"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="M01_AXI_wvalid" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_wvalid">
+        <PORT DIR="O" NAME="M05_AXI_wvalid" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_wvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_wvalid"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M01_AXI_wready" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_wready">
+        <PORT DIR="I" NAME="M05_AXI_wready" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_wready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_wready"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_wready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M01_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_bresp">
+        <PORT DIR="I" LEFT="1" NAME="M05_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_bresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_bresp"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_bresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M01_AXI_bvalid" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_bvalid">
+        <PORT DIR="I" NAME="M05_AXI_bvalid" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_bvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_bvalid"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_bvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="M01_AXI_bready" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_bready">
+        <PORT DIR="O" NAME="M05_AXI_bready" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_bready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_bready"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_bready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M01_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_araddr">
+        <PORT DIR="O" LEFT="12" NAME="M05_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_araddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_araddr"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_araddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M01_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="0" NAME="M01_AXI_arvalid" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_arvalid">
+        <PORT DIR="O" NAME="M05_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M05_AXI_arvalid" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_arvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_arvalid"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M01_AXI_arready" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_arready">
+        <PORT DIR="I" NAME="M05_AXI_arready" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_arready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_arready"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_arready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M01_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_rdata">
+        <PORT DIR="I" LEFT="31" NAME="M05_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_rdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_rdata"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_rdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M01_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_rresp">
+        <PORT DIR="I" LEFT="1" NAME="M05_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_rresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_rresp"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_rresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M01_AXI_rvalid" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_rvalid">
+        <PORT DIR="I" NAME="M05_AXI_rvalid" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_rvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_rvalid"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_rvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="M01_AXI_rready" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_rready">
+        <PORT DIR="O" NAME="M05_AXI_rready" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_rready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_rready"/>
+            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="M04_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_iic_0_s_axi_awaddr">
@@ -20234,93 +20415,6 @@
         <PORT DIR="O" LEFT="0" NAME="M04_AXI_rready" RIGHT="0" SIGIS="undef" SIGNAME="axi_iic_0_s_axi_rready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_iic_0" PORT="s_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="12" NAME="M05_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_awaddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M05_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M05_AXI_awvalid" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_awvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M05_AXI_awready" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_awready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M05_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M05_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_wstrb"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M05_AXI_wvalid" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_wvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M05_AXI_wready" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_wready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M05_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_bresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M05_AXI_bvalid" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_bvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M05_AXI_bready" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_bready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="12" NAME="M05_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M05_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M05_AXI_arvalid" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M05_AXI_arready" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M05_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M05_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M05_AXI_rvalid" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M05_AXI_rready" SIGIS="undef" SIGNAME="ETH0_axi_ethernetlite_0_s_axi_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_axi_ethernetlite_0" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="M08_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="PWM_lights_axi_PWM_gpio_0_s_axi_awaddr">
@@ -20758,6 +20852,101 @@
             <CONNECTION INSTANCE="TRX_TRX_config_axi_TRX_gpio_0" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWADDR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWADDR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S00_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWPROT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWPROT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S00_AXI_awvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="S00_AXI_awready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S00_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S00_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WSTRB">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WSTRB"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S00_AXI_wvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="S00_AXI_wready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="S00_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_BRESP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_BRESP"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="S00_AXI_bvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_BVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_BVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S00_AXI_bready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_BREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_BREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARADDR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARADDR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S00_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARPROT">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARPROT"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S00_AXI_arvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="S00_AXI_arready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="S00_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="S00_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RRESP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RRESP"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="S00_AXI_rvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="S00_AXI_rready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RREADY"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="31" NAME="M00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="INT_ctrl_microblaze_0_axi_intc_s_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="INT_ctrl_microblaze_0_axi_intc" PORT="s_axi_awaddr"/>
@@ -20845,178 +21034,91 @@
             <CONNECTION INSTANCE="INT_ctrl_microblaze_0_axi_intc" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M07_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_awaddr">
+        <PORT DIR="O" LEFT="31" NAME="M01_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_awaddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_awaddr"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_awaddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M07_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M07_AXI_awvalid" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_awvalid">
+        <PORT DIR="O" NAME="M01_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="0" NAME="M01_AXI_awvalid" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_awvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_awvalid"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_awvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M07_AXI_awready" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_awready">
+        <PORT DIR="I" LEFT="0" NAME="M01_AXI_awready" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_awready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_awready"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_awready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M07_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_wdata">
+        <PORT DIR="O" LEFT="31" NAME="M01_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_wdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_wdata"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_wdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M07_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_wstrb">
+        <PORT DIR="O" LEFT="3" NAME="M01_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_wstrb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_wstrb"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M07_AXI_wvalid" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_wvalid">
+        <PORT DIR="O" LEFT="0" NAME="M01_AXI_wvalid" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_wvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_wvalid"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M07_AXI_wready" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_wready">
+        <PORT DIR="I" LEFT="0" NAME="M01_AXI_wready" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_wready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_wready"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_wready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M07_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_bresp">
+        <PORT DIR="I" LEFT="1" NAME="M01_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_bresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_bresp"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_bresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M07_AXI_bvalid" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_bvalid">
+        <PORT DIR="I" LEFT="0" NAME="M01_AXI_bvalid" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_bvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_bvalid"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_bvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M07_AXI_bready" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_bready">
+        <PORT DIR="O" LEFT="0" NAME="M01_AXI_bready" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_bready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_bready"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_bready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M07_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_araddr">
+        <PORT DIR="O" LEFT="31" NAME="M01_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_araddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_araddr"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_araddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M07_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M07_AXI_arvalid" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_arvalid">
+        <PORT DIR="O" NAME="M01_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="0" NAME="M01_AXI_arvalid" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_arvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_arvalid"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M07_AXI_arready" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_arready">
+        <PORT DIR="I" LEFT="0" NAME="M01_AXI_arready" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_arready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_arready"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_arready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M07_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_rdata">
+        <PORT DIR="I" LEFT="31" NAME="M01_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_rdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_rdata"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_rdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M07_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_rresp">
+        <PORT DIR="I" LEFT="1" NAME="M01_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_rresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_rresp"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_rresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M07_AXI_rvalid" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_rvalid">
+        <PORT DIR="I" LEFT="0" NAME="M01_AXI_rvalid" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_rvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_rvalid"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_rvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M07_AXI_rready" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_rready">
+        <PORT DIR="O" LEFT="0" NAME="M01_AXI_rready" RIGHT="0" SIGIS="undef" SIGNAME="axi_timer_0_s_axi_rready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M06_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_awaddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M06_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M06_AXI_awvalid" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_awvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M06_AXI_awready" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_awready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M06_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M06_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_wstrb"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M06_AXI_wvalid" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_wvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M06_AXI_wready" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_wready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M06_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_bresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M06_AXI_bvalid" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_bvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M06_AXI_bready" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_bready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M06_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M06_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M06_AXI_arvalid" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M06_AXI_arready" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M06_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M06_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M06_AXI_rvalid" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M06_AXI_rready" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_rready"/>
+            <CONNECTION INSTANCE="axi_timer_0" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="M02_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="UART0_axi_UART0_uartlite_0_s_axi_awaddr">
@@ -21193,99 +21295,178 @@
             <CONNECTION INSTANCE="axi_quad_spi_0" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWADDR">
+        <PORT DIR="O" LEFT="31" NAME="M06_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_awaddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWADDR"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_awaddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S00_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWPROT">
+        <PORT DIR="O" NAME="M06_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M06_AXI_awvalid" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_awvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWPROT"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_awvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S00_AXI_awvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWVALID">
+        <PORT DIR="I" NAME="M06_AXI_awready" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_awready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWVALID"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_awready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S00_AXI_awready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_AWREADY">
+        <PORT DIR="O" LEFT="31" NAME="M06_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_wdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_AWREADY"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_wdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S00_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WDATA">
+        <PORT DIR="O" LEFT="3" NAME="M06_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_wstrb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WDATA"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S00_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WSTRB">
+        <PORT DIR="O" NAME="M06_AXI_wvalid" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_wvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WSTRB"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S00_AXI_wvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WVALID">
+        <PORT DIR="I" NAME="M06_AXI_wready" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_wready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WVALID"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_wready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S00_AXI_wready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_WREADY">
+        <PORT DIR="I" LEFT="1" NAME="M06_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_bresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_WREADY"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_bresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S00_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_BRESP">
+        <PORT DIR="I" NAME="M06_AXI_bvalid" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_bvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_BRESP"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_bvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S00_AXI_bvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_BVALID">
+        <PORT DIR="O" NAME="M06_AXI_bready" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_bready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_BVALID"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_bready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S00_AXI_bready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_BREADY">
+        <PORT DIR="O" LEFT="31" NAME="M06_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_araddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_BREADY"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_araddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARADDR">
+        <PORT DIR="O" NAME="M06_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M06_AXI_arvalid" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_arvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARADDR"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S00_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARPROT">
+        <PORT DIR="I" NAME="M06_AXI_arready" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_arready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARPROT"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_arready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S00_AXI_arvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARVALID">
+        <PORT DIR="I" LEFT="31" NAME="M06_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_rdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARVALID"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_rdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S00_AXI_arready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_ARREADY">
+        <PORT DIR="I" LEFT="1" NAME="M06_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_rresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_ARREADY"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_rresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="S00_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RDATA">
+        <PORT DIR="I" NAME="M06_AXI_rvalid" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_rvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RDATA"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_rvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="S00_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RRESP">
+        <PORT DIR="O" NAME="M06_AXI_rready" SIGIS="undef" SIGNAME="UART0_axi_UART0_gpio_0_s_axi_rready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RRESP"/>
+            <CONNECTION INSTANCE="UART0_axi_UART0_gpio_0" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S00_AXI_rvalid" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RVALID">
+        <PORT DIR="O" LEFT="31" NAME="M07_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_awaddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RVALID"/>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_awaddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="S00_AXI_rready" RIGHT="0" SIGIS="undef" SIGNAME="microblaze_0_M_AXI_DP_RREADY">
+        <PORT DIR="O" NAME="M07_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M07_AXI_awvalid" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_awvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="microblaze_0" PORT="M_AXI_DP_RREADY"/>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M07_AXI_awready" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M07_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M07_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M07_AXI_wvalid" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M07_AXI_wready" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M07_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M07_AXI_bvalid" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M07_AXI_bready" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M07_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M07_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M07_AXI_arvalid" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M07_AXI_arready" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M07_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M07_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M07_AXI_rvalid" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M07_AXI_rready" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_s_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -24020,20 +24201,21 @@
             <CONNECTION INSTANCE="ROTENC_decoder_axi_ROTENC_gpio_0" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_rx09_fifo_generator_0" PORT="rd_clk"/>
             <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_rx24_fifo_generator_0" PORT="rd_clk"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_in_TRX_rx09_pre_fft_counter_binary_0" PORT="CLK"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231" PORT="aclk"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_0" PORT="CLK"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_1" PORT="CLK"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_2" PORT="CLK"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_3" PORT="CLK"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly135_4" PORT="CLK"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_cordic_rx09_0" PORT="aclk"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_pre_fft_blk_mem_gen_0" PORT="clkb"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_pre_fft_blk_mem_gen_0" PORT="clka"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_post_fft_blk_mem_gen_0" PORT="clka"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_post_fft_blk_mem_gen_0" PORT="clkb"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" PORT="CLK"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_Pre_FFT_MEM_out_outaddr_readaddr_addsub_0" PORT="CLK"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT09_MEM_in_TRX_rx09_pre_fft_counter_binary_0" PORT="CLK"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231" PORT="aclk"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_0" PORT="CLK"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_1" PORT="CLK"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_2" PORT="CLK"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_3" PORT="CLK"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly135_4" PORT="CLK"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_cordic_rx09_0" PORT="aclk"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_pre_fft_blk_mem_gen_0" PORT="clkb"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_pre_fft_blk_mem_gen_0" PORT="clka"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_post_fft_blk_mem_gen_0" PORT="clka"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_post_fft_blk_mem_gen_0" PORT="clkb"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_4x2048_counter_binary_0" PORT="CLK"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT_MEM_out_outaddr_readaddr_addsub_0" PORT="CLK"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_Pre_FFT24_MEM_in_TRX_rx24_pre_fft_counter_binary_0" PORT="CLK"/>
             <CONNECTION INSTANCE="TRX_TRX_config_TRX_axi_quad_spi_0" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="TRX_TRX_config_TRX_axi_quad_spi_0" PORT="ext_spi_clk"/>
             <CONNECTION INSTANCE="TRX_TRX_config_axi_TRX_gpio_0" PORT="s_axi_aclk"/>
@@ -24508,11 +24690,11 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="ROTENC_decoder_ROTENC_counter_32bit_0" PORT="SINIT"/>
             <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0" PORT="clk_reset"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_0" PORT="SCLR"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_1" PORT="SCLR"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_2" PORT="SCLR"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_3" PORT="SCLR"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly135_4" PORT="SCLR"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_0" PORT="SCLR"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_1" PORT="SCLR"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_2" PORT="SCLR"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly1024_3" PORT="SCLR"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_delay_4231clk_c_shift_ram_dly135_4" PORT="SCLR"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="interconnect_aresetn" RIGHT="0" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_interconnect_aresetn">
@@ -24549,7 +24731,7 @@
             <CONNECTION INSTANCE="ROTENC_decoder_axi_ROTENC_gpio_0" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="TRX_TRX_config_TRX_axi_quad_spi_0" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="TRX_TRX_config_axi_TRX_gpio_0" PORT="s_axi_aresetn"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx09_FFT_TRX_rx_fft_xfft_dly4231" PORT="aresetn"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_TRX_rx_fft_xfft_dly4231" PORT="aresetn"/>
             <CONNECTION INSTANCE="INT_ctrl_microblaze_0_axi_intc" PORT="s_axi_aresetn"/>
           </CONNECTIONS>
         </PORT>

@@ -1,12 +1,5 @@
---- msys_wrapper.vhd.orig	2020-05-13 10:43:22.571687800 +0200
-+++ msys_wrapper.vhd	2020-05-13 10:05:49.604333700 +0200
-@@ -2,5 +2,5 @@
- ----------------------------------------------------------------------------------
- --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
----Date        : Wed May 13 10:43:22 2020
-+--Date        : Tue May 12 23:32:05 2020
- --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
- --Command     : generate_target msys_wrapper.bd
+--- msys_wrapper.vhd.orig	2020-05-14 23:07:09.030978100 +0200
++++ msys_wrapper.vhd	2020-05-14 23:37:37.578810100 +0200
 @@ -16,4 +16,6 @@
      BOARD_IIC_scl_io : inout STD_LOGIC;
      BOARD_IIC_sda_io : inout STD_LOGIC;
@@ -21,26 +14,36 @@
 +    ETH0_LINK_LED : in STD_LOGIC;
      ETH0_MDIO_MDC_mdc : out STD_LOGIC;
      ETH0_MDIO_MDC_mdio_io : inout STD_LOGIC;
-@@ -64,8 +66,6 @@
+@@ -64,10 +66,4 @@
      TRX_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
      TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
 -    TRX_rx09_bs_i : in STD_LOGIC_VECTOR ( 31 downto 0 );
-     TRX_rx09_fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
-     TRX_rx09_fifo_valid_o : out STD_LOGIC;
+-    TRX_rx09_fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
+-    TRX_rx09_fifo_valid_o : out STD_LOGIC;
 -    TRX_rx24_bs_i : in STD_LOGIC_VECTOR ( 31 downto 0 );
-     TRX_rx24_fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
-     TRX_rx24_fifo_valid_o : out STD_LOGIC;
-@@ -101,8 +101,5 @@
+-    TRX_rx24_fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
+-    TRX_rx24_fifo_valid_o : out STD_LOGIC;
+     TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
+     TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
+@@ -93,5 +89,4 @@
+     UART0_txd : out STD_LOGIC;
+     ULI_SYSTEM_XIO : in STD_LOGIC;
+-    microblaze_0_Clk_100MHz_o : out STD_LOGIC;
+     onewire_EUI48_tri_io : inout STD_LOGIC_VECTOR ( 0 to 0 );
+     phy_rst_n : out STD_LOGIC;
+@@ -101,10 +96,5 @@
      qspi_flash_io3_io : inout STD_LOGIC;
      qspi_flash_ss_io : inout STD_LOGIC;
 -    reset : in STD_LOGIC;
+-    rot09vld : in STD_LOGIC;
+-    rot24vld : in STD_LOGIC;
 -    rotenc_dec_cnt_en : in STD_LOGIC;
 -    rotenc_dec_cnt_up_dwn : in STD_LOGIC;
 -    rotenc_decoder_reset : out STD_LOGIC_VECTOR ( 0 to 0 )
 +    reset : in STD_LOGIC
    );
  end msys_wrapper;
-@@ -230,4 +227,10 @@
+@@ -234,4 +224,10 @@
    );
    end component msys;
 +  component IBUF is
@@ -51,7 +54,7 @@
 +  end component IBUF;
    component IOBUF is
    port (
-@@ -238,4 +241,26 @@
+@@ -242,4 +238,28 @@
    );
    end component IOBUF;
 +  component rotenc_decoder is
@@ -66,25 +69,27 @@
 +  end component rotenc_decoder;
 +  component auto_LVDS_rotate is
 +  port (
-+   resetn       : in  STD_LOGIC;
-+   clk          : in  STD_LOGIC;
-+   LVDS24       : in  STD_LOGIC_VECTOR (31 downto 0);
-+   LVDS24_valid : in  STD_LOGIC;
-+   LVDS09       : in  STD_LOGIC_VECTOR (31 downto 0);
-+   LVDS09_valid : in  STD_LOGIC;
-+   rot24q       : out STD_LOGIC_VECTOR (31 downto 0);
-+   rot09q       : out STD_LOGIC_VECTOR (31 downto 0)
++    resetn       : in  STD_LOGIC;
++    clk          : in  STD_LOGIC;
++    LVDS09       : in  STD_LOGIC_VECTOR (31 downto 0);
++    LVDS09_valid : in  STD_LOGIC;
++    LVDS24       : in  STD_LOGIC_VECTOR (31 downto 0);
++    LVDS24_valid : in  STD_LOGIC;
++    rot09q       : out STD_LOGIC_VECTOR (31 downto 0);
++    rot09vld     : out STD_LOGIC;
++    rot24q       : out STD_LOGIC_VECTOR (31 downto 0);
++    rot24vld     : out STD_LOGIC
 +  );
 +  end component auto_LVDS_rotate;
    signal BOARD_IIC_scl_i : STD_LOGIC;
    signal BOARD_IIC_scl_o : STD_LOGIC;
-@@ -244,4 +269,5 @@
+@@ -248,4 +268,5 @@
    signal BOARD_IIC_sda_o : STD_LOGIC;
    signal BOARD_IIC_sda_t : STD_LOGIC;
 +  signal ETH0_LINK_LED_g : STD_LOGIC;
    signal ETH0_MDIO_MDC_mdio_i : STD_LOGIC;
    signal ETH0_MDIO_MDC_mdio_o : STD_LOGIC;
-@@ -260,4 +286,11 @@
+@@ -264,4 +285,13 @@
    signal TRX_spi_ss_o_0 : STD_LOGIC_VECTOR ( 0 to 0 );
    signal TRX_spi_ss_t : STD_LOGIC;
 +  signal TRX_rx09_fifo : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -92,11 +97,13 @@
 +  signal TRX_rx09_fifo_valid : STD_LOGIC;
 +  signal TRX_rx24_fifo_valid : STD_LOGIC;
 +  signal TRX_rx09_bs : STD_LOGIC_VECTOR ( 31 downto 0 );
++  signal TRX_rot09vld : STD_LOGIC;
 +  signal TRX_rx24_bs : STD_LOGIC_VECTOR ( 31 downto 0 );
++  signal TRX_rot24vld : STD_LOGIC;
 +  signal microblaze_0_Clk_100MHz : STD_LOGIC;
    signal onewire_EUI48_tri_i_0 : STD_LOGIC_VECTOR ( 0 to 0 );
    signal onewire_EUI48_tri_io_0 : STD_LOGIC_VECTOR ( 0 to 0 );
-@@ -279,5 +312,13 @@
+@@ -283,5 +313,13 @@
    signal qspi_flash_ss_o : STD_LOGIC;
    signal qspi_flash_ss_t : STD_LOGIC;
 +  signal rotenc_dec_cnt_en : STD_LOGIC;
@@ -110,7 +117,7 @@
 +    );
  BOARD_IIC_scl_iobuf: component IOBUF
       port map (
-@@ -329,4 +370,24 @@
+@@ -333,4 +371,26 @@
        T => TRX_spi_ss_t
      );
 +rotenc_decoder_i: component rotenc_decoder
@@ -131,11 +138,13 @@
 +      LVDS09 => TRX_rx09_fifo,
 +      LVDS09_valid => TRX_rx09_fifo_valid,
 +      rot24q => TRX_rx24_bs,
-+      rot09q => TRX_rx09_bs
++      rot24vld => TRX_rot24vld,
++      rot09q => TRX_rx09_bs,
++      rot09vld => TRX_rot09vld
 +    );
  msys_i: component msys
       port map (
-@@ -387,10 +448,4 @@
+@@ -391,10 +451,10 @@
        TRX_reset(0) => TRX_reset(0),
        TRX_rfx_mode(0) => TRX_rfx_mode(0),
 -      TRX_rx09_bs_i(31 downto 0) => TRX_rx09_bs_i(31 downto 0),
@@ -144,27 +153,28 @@
 -      TRX_rx24_bs_i(31 downto 0) => TRX_rx24_bs_i(31 downto 0),
 -      TRX_rx24_fifo_o(31 downto 0) => TRX_rx24_fifo_o(31 downto 0),
 -      TRX_rx24_fifo_valid_o => TRX_rx24_fifo_valid_o,
++      TRX_rx09_bs_i(31 downto 0) => TRX_rx09_bs(31 downto 0),
++      TRX_rx09_fifo_o(31 downto 0) => TRX_rx09_fifo(31 downto 0),
++      TRX_rx09_fifo_valid_o => TRX_rx09_fifo_valid,
++      TRX_rx24_bs_i(31 downto 0) => TRX_rx24_bs(31 downto 0),
++      TRX_rx24_fifo_o(31 downto 0) => TRX_rx24_fifo(31 downto 0),
++      TRX_rx24_fifo_valid_o => TRX_rx24_fifo_valid,
        TRX_rx_clk_64MHz_clk_n => TRX_rx_clk_64MHz_clk_n,
        TRX_rx_clk_64MHz_clk_p => TRX_rx_clk_64MHz_clk_p,
-@@ -413,4 +468,10 @@
-       TRX_tx_data_n(1 downto 0) => TRX_tx_data_n(1 downto 0),
-       TRX_tx_data_p(1 downto 0) => TRX_tx_data_p(1 downto 0),
-+      TRX_rx09_fifo_o(31 downto 0) => TRX_rx09_fifo(31 downto 0),
-+      TRX_rx24_fifo_o(31 downto 0) => TRX_rx24_fifo(31 downto 0),
-+      TRX_rx09_fifo_valid_o => TRX_rx09_fifo_valid,
-+      TRX_rx24_fifo_valid_o => TRX_rx24_fifo_valid,
-+      TRX_rx09_bs_i => TRX_rx09_bs,
-+      TRX_rx24_bs_i => TRX_rx24_bs,
-       UART0EXT_CTSn(0) => UART0EXT_CTSn(0),
-       UART0EXT_DCDn(0) => UART0EXT_DCDn(0),
-@@ -424,5 +485,5 @@
+@@ -428,5 +488,5 @@
        UART0_txd => UART0_txd,
        ULI_SYSTEM_XIO => ULI_SYSTEM_XIO,
 -      microblaze_0_Clk_100MHz_o => microblaze_0_Clk_100MHz_o,
 +      microblaze_0_Clk_100MHz_o => microblaze_0_Clk_100MHz,
        onewire_EUI48_tri_i(0) => onewire_EUI48_tri_i_0(0),
        onewire_EUI48_tri_o(0) => onewire_EUI48_tri_o_0(0),
-@@ -447,5 +508,5 @@
+@@ -449,9 +509,9 @@
+       qspi_flash_ss_t => qspi_flash_ss_t,
+       reset => reset,
+-      rot09vld => rot09vld,
+-      rot24vld => rot24vld,
++      rot09vld => TRX_rot09vld,
++      rot24vld => TRX_rot24vld,
        rotenc_dec_cnt_en => rotenc_dec_cnt_en,
        rotenc_dec_cnt_up_dwn => rotenc_dec_cnt_up_dwn,
 -      rotenc_decoder_reset(0) => rotenc_decoder_reset(0)

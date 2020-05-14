@@ -36,14 +36,17 @@ use IEEE.std_logic_signed.all;
 --use UNISIM.VComponents.all;
 
 entity auto_LVDS_rotate is
-    Port ( resetn       : in  STD_LOGIC;
+    Port ( 
+           resetn       : in  STD_LOGIC;
            clk          : in  STD_LOGIC;
-           LVDS24       : in  STD_LOGIC_VECTOR (31 downto 0);
-           LVDS24_valid : in  STD_LOGIC;
            LVDS09       : in  STD_LOGIC_VECTOR (31 downto 0);
            LVDS09_valid : in  STD_LOGIC;
+           LVDS24       : in  STD_LOGIC_VECTOR (31 downto 0);
+           LVDS24_valid : in  STD_LOGIC;
+           rot09q       : out STD_LOGIC_VECTOR (31 downto 0);
+           rot09vld     : out STD_LOGIC;
            rot24q       : out STD_LOGIC_VECTOR (31 downto 0);
-           rot09q       : out STD_LOGIC_VECTOR (31 downto 0)
+           rot24vld     : out STD_LOGIC
     );
 end auto_LVDS_rotate;
 
@@ -56,101 +59,222 @@ architecture Behavioral of auto_LVDS_rotate is
     );
   end component barrel_rot32;
 
-  signal auto24rotval : STD_LOGIC_VECTOR (4 downto 0);
-  signal auto09rotval : STD_LOGIC_VECTOR (4 downto 0);
-  signal rot24        : STD_LOGIC_VECTOR (31 downto 0);
-  signal rot09        : STD_LOGIC_VECTOR (31 downto 0);
-  signal mrk24ok      : STD_LOGIC;
-  signal mrk09ok      : STD_LOGIC;
+  
+  -- FSM inbox09
+  signal inb09_in_r   : STD_LOGIC_VECTOR (31 downto 0);
+  signal inb09_out_r  : STD_LOGIC_VECTOR (31 downto 0);
+  signal inb09_rdy    : STD_LOGIC;
+  
+  -- FSM inbox24
+  signal inb24_in_r   : STD_LOGIC_VECTOR (31 downto 0);
+  signal inb24_out_r  : STD_LOGIC_VECTOR (31 downto 0);
+  signal inb24_rdy    : STD_LOGIC;
+
+  -- FSM brl
+  signal inb_lock09   : STD_LOGIC;
+  signal inb_lock09d  : STD_LOGIC;
+  signal inb_lock24   : STD_LOGIC;
+  signal inb_lock24d  : STD_LOGIC;
+  
+  -- FSM barrel
+  signal rot_in       : STD_LOGIC_VECTOR (31 downto 0);
+  signal rot_out      : STD_LOGIC_VECTOR (31 downto 0);
+  signal rot_val      : STD_LOGIC_VECTOR (4 downto 0);
+  
+  -- Marker bits
+  signal mrkok        : STD_LOGIC;
+
 
 begin
-  barrel_rot32_24_i: component barrel_rot32
+  barrel_rot32_i: component barrel_rot32
     port map (
       clk => clk,
-      rot => auto24rotval,
-      d   => LVDS24,
-      q   => rot24
+      rot => rot_val,
+      d   => rot_in,
+      q   => rot_out
     );
 
-  barrel_rot32_09_i: component barrel_rot32
-    port map (
-      clk => clk,
-      rot => auto09rotval,
-      d   => LVDS09,
-      q   => rot09
-    );
 
-  -- Marker bits
-  proc_markers: process (resetn, clk, rot24, rot09)
+  -- FSM-inbox-09
+  proc_fsm_inbox09: process (resetn, clk, LVDS09_valid, inb_lock09)
   begin
     if (resetn = '0') then
-      mrk24ok <= '0';
-      mrk09ok <= '0';
+      inb09_in_r  <= std_logic_vector(to_unsigned(0, inb09_in_r'length));
+      inb09_out_r <= std_logic_vector(to_unsigned(0, inb09_out_r'length));
+      inb09_rdy   <= '0';
       
     elsif (clk'EVENT and clk = '1') then
-      if (rot24(31) = '1' and rot24(30) = '0'  and  rot24(15) = '0' and rot24(14) = '1') then
-        mrk24ok <= '1';
+      if (LVDS09_valid = '1') then
+        inb09_in_r <= LVDS09;
+        inb09_rdy  <= '1';
+        if (inb_lock09 = '0') then
+          inb09_out_r <= LVDS09;
+        end if;
+
+      elsif (inb_lock09 = '0') then
+        inb09_out_r <= inb09_in_r;
       else
-        mrk24ok <= '0';
+        inb09_rdy <= '0';
       end if;
+    end if;
+  end process proc_fsm_inbox09;
+  
+  -- FSM-inbox-24
+  proc_fsm_inbox24: process (resetn, clk, LVDS24_valid, inb_lock24)
+  begin
+    if (resetn = '0') then
+      inb24_in_r  <= std_logic_vector(to_unsigned(0, inb24_in_r'length));
+      inb24_out_r <= std_logic_vector(to_unsigned(0, inb24_out_r'length));
+      inb24_rdy   <= '0';
       
-      if (rot09(31) = '1' and rot09(30) = '0'  and  rot09(15) = '0' and rot09(14) = '1') then
-        mrk09ok <= '1';
+    elsif (clk'EVENT and clk = '1') then
+      if (LVDS24_valid = '1') then
+        inb24_in_r <= LVDS24;
+        inb24_rdy  <= '1';
+        if (inb_lock24 = '0') then
+          inb24_out_r <= LVDS24;
+        end if;
+
+      elsif (inb_lock24 = '0') then
+        inb24_out_r <= inb24_in_r;
       else
-        mrk09ok <= '0';
+        inb24_rdy <= '0';
+      end if;
+    end if;
+  end process proc_fsm_inbox24;
+
+  -- FSM barrel
+  proc_fsm_brl: process (resetn, clk, inb09_rdy, inb24_rdy, mrkok)
+  variable rotval09_int : Integer;
+  variable rotval24_int : Integer;
+  variable state        : Integer;
+  begin
+    if (resetn = '0') then
+      rotval09_int := 0;
+      rotval24_int := 0;
+      inb_lock09   <= '0';
+      inb_lock09d  <= '0';
+      inb_lock24   <= '0';
+      inb_lock24d  <= '0';
+      rot_val      <= std_logic_vector(to_unsigned(0, rot_val'length));
+      rot09q       <= std_logic_vector(to_unsigned(0, rot09q'length));
+      rot24q       <= std_logic_vector(to_unsigned(0, rot24q'length));
+      state        := 0;
+      
+    elsif (clk'EVENT and clk = '1') then
+      inb_lock09d <= inb_lock09;
+      inb_lock24d <= inb_lock24;
+
+      case state is
+        when 0 =>
+          if (inb09_rdy = '1') then
+            inb_lock09 <= '1';
+            rot_in     <= inb09_out_r;
+            rot_val    <= std_logic_vector(to_unsigned(rotval09_int, rot_val'length));
+            state      := 4;
+
+          elsif (inb24_rdy = '1') then
+            inb_lock24 <= '1';
+            rot_in     <= inb24_out_r;
+            rot_val    <= std_logic_vector(to_unsigned(rotval24_int, rot_val'length));
+            state      := 8;
+          end if;
+
+        -- wait state          
+        when 4 =>
+          state := 5;
+
+        when 5 =>
+          if (mrkok = '0') then
+            if (rotval09_int < 31) then
+              rotval09_int := rotval09_int + 1;
+            else
+              rotval09_int := 0;
+            end if;
+            rot09q <= std_logic_vector(to_unsigned(0, rot09q'length));
+
+          else
+            rot09q <= rot_out;
+          end if;
+          inb_lock09 <= '0';
+          state := 0;
+
+        -- wait state          
+        when 8 =>
+          state := 9;
+
+        when 9 =>
+          if (mrkok = '0') then
+            if (rotval24_int < 31) then
+              rotval24_int := rotval24_int + 1;
+            else
+              rotval24_int := 0;
+            end if;
+            rot24q <= std_logic_vector(to_unsigned(0, rot24q'length));
+            state := 0;
+
+          else
+            rot24q <= rot_out;
+          end if;
+          inb_lock24 <= '0';
+          state := 0;
+          
+        when others =>
+          rotval09_int := 0;
+          rotval24_int := 0;
+          inb_lock09   <= '0';
+          inb_lock24   <= '0';
+          rot_val      <= std_logic_vector(to_unsigned(0, rot_val'length));
+          rot09q       <= std_logic_vector(to_unsigned(0, rot09q'length));
+          rot24q       <= std_logic_vector(to_unsigned(0, rot24q'length));
+          state        := 0;
+      end case;
+    end if;
+  end process proc_fsm_brl;
+
+  -- Marker bits
+  proc_markers: process (resetn, rot_out)
+  begin
+    if (resetn = '0') then
+      mrkok <= '0';
+      
+    else
+      if (rot_out(31) = '1' and rot_out(30) = '0'  and  rot_out(15) = '0' and rot_out(14) = '1') then
+        mrkok <= '1';
+      else
+        mrkok <= '0';
       end if;
     end if;
   end process proc_markers;
 
-  -- State-machine-24
-  proc_fsm24: process (resetn, clk, LVDS24_valid, mrk24ok)
-  variable auto24rotval_int : Integer;
+  -- FSM-outbox-09
+  proc_fsm_outbox09: process (resetn, clk, inb_lock09, inb_lock09d)
   begin
     if (resetn = '0') then
-      auto24rotval_int := 0;
-      auto24rotval <= std_logic_vector(to_unsigned(0, auto24rotval'length));
-      
-    elsif (clk'EVENT and clk = '1' and LVDS24_valid = '1' and mrk24ok = '0') then
-      if (auto24rotval_int < 31) then
-        auto24rotval_int := auto24rotval_int + 1;
-      else
-        auto24rotval_int := 0;
-      end if;
-
-      auto24rotval <= std_logic_vector(to_unsigned(auto24rotval_int, auto24rotval'length));
-    end if;
-  end process proc_fsm24;
-
-  -- State-machine-09
-  proc_fsm09: process (resetn, clk, LVDS09_valid, mrk09ok)
-  variable auto09rotval_int : Integer;
-  begin
-    if (resetn = '0') then
-      auto09rotval_int := 0;
-      auto09rotval <= std_logic_vector(to_unsigned(0, auto09rotval'length));
-      
-    elsif (clk'EVENT and clk = '1' and LVDS09_valid = '1' and mrk09ok = '0') then
-      if (auto09rotval_int < 31) then
-        auto09rotval_int := auto09rotval_int + 1;
-      else
-        auto09rotval_int := 0;
-      end if;
-
-      auto09rotval <= std_logic_vector(to_unsigned(auto09rotval_int, auto09rotval'length));
-    end if;
-  end process proc_fsm09;
-
-  -- Clocked rot output
-  proc_rot_q: process (resetn, clk, rot24, rot09)
-  begin
-    if (resetn = '0') then
-      rot24q <= "00000000000000000000000000000000";
-      rot09q <= "00000000000000000000000000000000";
+      rot09vld <= '0';
       
     elsif (clk'EVENT and clk = '1') then
-      rot24q <= rot24;
-      rot09q <= rot09;
+      if (inb_lock09 = '0' and inb_lock09d = '1') then
+        rot09vld <= '1';
+      else
+        rot09vld <= '0';
+      end if;
     end if;
-  end process proc_rot_q;
+  end process proc_fsm_outbox09;
 
+  -- FSM-outbox-24
+  proc_fsm_outbox24: process (resetn, clk, inb_lock24, inb_lock24d)
+  begin
+    if (resetn = '0') then
+      rot24vld <= '0';
+      
+    elsif (clk'EVENT and clk = '1') then
+      if (inb_lock24 = '0' and inb_lock24d = '1') then
+        rot24vld <= '1';
+      else
+        rot24vld <= '0';
+      end if;
+    end if;
+  end process proc_fsm_outbox24;
+  
 end Behavioral;

@@ -32,10 +32,19 @@ set_false_path -from [get_pins {msys_i/SC0712_0/U0/rst_delay_i_reg[3]/C}]       
 
 set_false_path -from [get_clocks {msys_i/ETH0/axi_ethernetlite_0/U0/phy_tx_clk}]                                                                                     -to [get_clocks -of_objects [get_pins {msys_i/BOARD_clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0}]]
 
-set_false_path -from [get_clocks {TRX_rx_clk_64MHz_clk_p}] -to [get_clocks {CFGMCLK}]
-set_false_path -from [get_clocks {TRX_rx_clk_64MHz_clk_p}] -to [get_clocks {CLK0_clk_p[0]}]
-set_false_path -from [get_clocks {TRX_rx_clk_64MHz_clk_p}] -to [get_clocks {CLK1B_clk[0]}]
+set_false_path -from [get_clocks {TRX_rx_clk_64MHz_clk_p}]                                                   -to [get_clocks {CFGMCLK}]
+set_false_path -from [get_clocks {TRX_rx_clk_64MHz_clk_p}]                                                   -to [get_clocks {CLK0_clk_p[0]}]
+set_false_path -from [get_clocks {TRX_rx_clk_64MHz_clk_p}]                                                   -to [get_clocks {CLK1B_clk[0]}]
 
 set_false_path -from [get_pins {msys_i/labtools_fmeter_0/U0/F_reg[*]/C}]                                     -to [get_pins {msys_i/vio_0/inst/PROBE_IN_INST/probe_in_reg_reg[*]/D}]
 set_false_path -from [get_pins {msys_i/labtools_fmeter_0/U0/COUNTER_REFCLK_inst/bl.DSP48E_2/CLK}]            -to [get_pins {msys_i/vio_0/inst/PROBE_IN_INST/probe_in_reg_reg[*]/D}]
 set_false_path -from [get_pins {msys_i/labtools_fmeter_0/U0/FMETER_gen[*].COUNTER_F_inst/bl.DSP48E_2/CLK}]   -to [get_pins {msys_i/labtools_fmeter_0/U0/F_reg[*]/D}]
+
+set_multicycle_path -from [get_pins {auto_LVDS_rotate_i/auto24rotval_reg[*]*/C}]                             -to [get_pins {auto_LVDS_rotate_i/barrel_rot32_09_i/q_reg[*]/D}] 3
+set_multicycle_path -from [get_pins {auto_LVDS_rotate_i/barrel_rot32_09_i/q[*]*/C}]                          -to [get_pins {auto_LVDS_rotate_i/barrel_rot32_09_i/q_reg[*]/D}] 3
+set_multicycle_path -from [get_pins {auto_LVDS_rotate_i/auto24rotval_reg[*]*/C}]                             -to [get_pins {auto_LVDS_rotate_i/barrel_rot32_24_i/q_reg[*]/D}] 3
+set_multicycle_path -from [get_pins {auto_LVDS_rotate_i/barrel_rot32_24_i/q[*]*/C}]                          -to [get_pins {auto_LVDS_rotate_i/barrel_rot32_24_i/q_reg[*]/D}] 3
+#set_max_delay -from [get_pins {auto_LVDS_rotate_i/auto09rotval_reg[*]*/C}]                                  -to [get_pins {auto_LVDS_rotate_i/barrel_rot32_09_i/q_reg[*]/D}] 20.0
+#set_max_delay -from [get_pins {auto_LVDS_rotate_i/barrel_rot32_09_i/q[*]*psbram*/C}]                        -to [get_pins {auto_LVDS_rotate_i/barrel_rot32_09_i/q_reg[*]/D}] 20.0
+#set_max_delay -from [get_pins {auto_LVDS_rotate_i/auto24rotval_reg[*]*/C}]                                  -to [get_pins {auto_LVDS_rotate_i/barrel_rot32_24_i/q_reg[*]/D}] 20.0
+#set_max_delay -from [get_pins {auto_LVDS_rotate_i/barrel_rot32_24_i/q[*]*psbram*/C}]                        -to [get_pins {auto_LVDS_rotate_i/barrel_rot32_24_i/q_reg[*]/D}] 20.0

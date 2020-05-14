@@ -1,0 +1,48 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-224,949",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0.21  2019-05-29 bk=1.5064 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port s_axi_aclk_CD100_in -pg 1 -lvl 0 -x 0 -y 660 -defaultsOSRD
+preplace port aresetn_CD100_in -pg 1 -lvl 0 -x 0 -y 1460 -defaultsOSRD
+preplace port rx09_bs_valid_CD100_in -pg 1 -lvl 0 -x 0 -y 690 -defaultsOSRD
+preplace port rx24_bs_valid_CD100_in -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
+preplace port reset_CD100_in -pg 1 -lvl 0 -x 0 -y 1720 -defaultsOSRD
+preplace portBus rx09_bs_32bits_CD100_in -pg 1 -lvl 0 -x 0 -y 750 -defaultsOSRD
+preplace portBus rx24_bs_32bits_CD100_in -pg 1 -lvl 0 -x 0 -y 90 -defaultsOSRD
+preplace inst Pre_FFT09_MEM_in -pg 1 -lvl 1 -x 330 -y 682 -defaultsOSRD
+preplace inst Pre_FFT_MEM_out -pg 1 -lvl 2 -x 834 -y 178 -defaultsOSRD
+preplace inst TRX_rx_fft -pg 1 -lvl 3 -x 1342 -y 1248 -defaultsOSRD
+preplace inst pre_fft_blk_mem_gen_0 -pg 1 -lvl 4 -x 1793 -y 546 -defaultsOSRD
+preplace inst post_fft_blk_mem_gen_0 -pg 1 -lvl 4 -x 1793 -y 816 -defaultsOSRD
+preplace inst xlconstant_0_len1 -pg 1 -lvl 3 -x 1342 -y 1088 -defaultsOSRD
+preplace inst xlconstant_0_len13 -pg 1 -lvl 3 -x 1342 -y 988 -defaultsOSRD
+preplace inst xlconstant_1_len1 -pg 1 -lvl 3 -x 1342 -y 888 -defaultsOSRD
+preplace inst Pre_FFT24_MEM_in -pg 1 -lvl 4 -x 1793 -y 58 -defaultsOSRD
+preplace netloc s_axi_aclk_CD100 1 0 4 30 600 540 296 1030 770 1570
+preplace netloc rst_mig_7series_0_100M_peripheral_aresetn 1 0 3 30J 1240 550J 986 1010J
+preplace netloc TRX_rx09_pre_fft_lin_data 1 1 3 570 286 1040J 710 1540J
+preplace netloc rx09_bs_valid_CD100_1 1 0 4 20 590 550 266 1050J 730 1550J
+preplace netloc rx09_bs_32bits_CD100_1 1 0 1 20 702n
+preplace netloc Din_1 1 2 2 1090 810 1560J
+preplace netloc data_tlast 1 2 1 1070 148n
+preplace netloc data_tvalid 1 2 1 1060 168n
+preplace netloc rst_mig_7series_0_100M_peripheral_reset 1 0 3 20J 1500 570J 1246 1010J
+preplace netloc TRX_rx09_post_fft_data 1 3 1 1580 786n
+preplace netloc TRX_rx_fft_m_axis_dout_tvalid 1 3 1 1610 806n
+preplace netloc c_0 1 3 1 1620J 906n
+preplace netloc xlconstant_0_len11_dout 1 3 1 1600J 866n
+preplace netloc Pre_FFT_MEM_out_S 1 2 2 1090J 390 1560
+preplace netloc D_1 1 2 1 1020 208n
+preplace netloc TRX_rx09_pre_fft_lin_adr 1 1 3 560 276 1080J 670 1530J
+preplace netloc xlconstant_1_len1_dout 1 3 1 1550J 826n
+preplace netloc TRX_rx09_post_fft_adr 1 3 1 1590 746n
+preplace netloc rx24_bs_32bits_CD100_1 1 0 4 NJ 90 570J 88 1020J 90 1530J
+preplace netloc rot24vld_1 1 0 4 20J 80 540J 78 1090J 80 1540J
+levelinfo -pg 1 0 330 834 1342 1793 1910
+pagesize -pg 1 -db -bbox -sgen -250 -30 1910 2130
+"
+}
+

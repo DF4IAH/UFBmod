@@ -1,0 +1,84 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.7087",
+   "Default View_TopLeft":"-294,-10",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0.21  2019-05-29 bk=1.5064 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port S_AXI -pg 1 -lvl 0 -x -20 -y 180 -defaultsOSRD
+preplace port TRX_spi -pg 1 -lvl 5 -x 1440 -y 130 -defaultsOSRD
+preplace port AXI_LITE -pg 1 -lvl 0 -x -20 -y 150 -defaultsOSRD
+preplace port TRX_tx_clk -pg 1 -lvl 5 -x 1440 -y 250 -defaultsOSRD
+preplace port TRX_rx_clk_64MHz -pg 1 -lvl 0 -x -20 -y 340 -defaultsOSRD
+preplace port s_axi_aclk -pg 1 -lvl 0 -x -20 -y 680 -defaultsOSRD
+preplace port s_axi_aresetn -pg 1 -lvl 0 -x -20 -y 710 -defaultsOSRD
+preplace port ip2intc_irpt -pg 1 -lvl 5 -x 1440 -y 160 -defaultsOSRD
+preplace port TRX_clk_26MHz -pg 1 -lvl 0 -x -20 -y 60 -defaultsOSRD
+preplace port ext_reset_in -pg 1 -lvl 0 -x -20 -y 420 -defaultsOSRD
+preplace port dcm_locked -pg 1 -lvl 0 -x -20 -y 480 -defaultsOSRD
+preplace port clk_div_out -pg 1 -lvl 5 -x 1440 -y 340 -defaultsOSRD
+preplace port ref_clock -pg 1 -lvl 0 -x -20 -y 650 -defaultsOSRD
+preplace port reset_CD100_i -pg 1 -lvl 0 -x -20 -y 580 -defaultsOSRD
+preplace port TRX_rx09_fifo_valid_o -pg 1 -lvl 5 -x 1440 -y 460 -defaultsOSRD
+preplace port TRX_rx24_fifo_valid_o -pg 1 -lvl 5 -x 1440 -y 490 -defaultsOSRD
+preplace port rot09vld -pg 1 -lvl 0 -x -20 -y 740 -defaultsOSRD
+preplace portBus TRX_reset -pg 1 -lvl 5 -x 1440 -y 190 -defaultsOSRD
+preplace portBus TRX_rfx_mode -pg 1 -lvl 5 -x 1440 -y 220 -defaultsOSRD
+preplace portBus TRX_PLL_clk_25MHz_P -pg 1 -lvl 5 -x 1440 -y 70 -defaultsOSRD
+preplace portBus TRX_PLL_clk_25MHz_N -pg 1 -lvl 5 -x 1440 -y 40 -defaultsOSRD
+preplace portBus TRX_rx_data_p -pg 1 -lvl 0 -x -20 -y 520 -defaultsOSRD
+preplace portBus TRX_rx_data_n -pg 1 -lvl 0 -x -20 -y 550 -defaultsOSRD
+preplace portBus TRX_tx_data_p -pg 1 -lvl 5 -x 1440 -y 280 -defaultsOSRD
+preplace portBus TRX_tx_data_n -pg 1 -lvl 5 -x 1440 -y 310 -defaultsOSRD
+preplace portBus rx24_32bits_CD100_o -pg 1 -lvl 5 -x 1440 -y 860 -defaultsOSRD
+preplace portBus rx09_32bits_CD100_o -pg 1 -lvl 5 -x 1440 -y 890 -defaultsOSRD
+preplace portBus rd_data_count_CD100_o -pg 1 -lvl 5 -x 1440 -y 370 -defaultsOSRD
+preplace portBus TRX_rx09_fifo_o -pg 1 -lvl 5 -x 1440 -y 400 -defaultsOSRD
+preplace portBus TRX_rx24_fifo_o -pg 1 -lvl 5 -x 1440 -y 430 -defaultsOSRD
+preplace portBus TRX_rx24_bs_i -pg 1 -lvl 0 -x -20 -y 770 -defaultsOSRD
+preplace portBus TRX_rx09_bs_i -pg 1 -lvl 0 -x -20 -y 800 -defaultsOSRD
+preplace inst TRX_proc_sys_reset_0 -pg 1 -lvl 1 -x 200 -y 440 -defaultsOSRD
+preplace inst counter_binary_0 -pg 1 -lvl 2 -x 480 -y 460 -defaultsOSRD
+preplace inst TRX_LVDS -pg 1 -lvl 4 -x 1160 -y 410 -defaultsOSRD
+preplace inst TRX_rx_FFT -pg 1 -lvl 4 -x 1160 -y 770 -defaultsOSRD
+preplace inst TRX_config -pg 1 -lvl 4 -x 1160 -y 190 -defaultsOSRD
+preplace inst TRX_clock -pg 1 -lvl 4 -x 1160 -y 60 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 3 -x 750 -y 640 -defaultsOSRD
+preplace netloc s_axi_aclk_CD100 1 0 4 20J 720 NJ 720 NJ 720 900
+preplace netloc rst_mig_7series_0_100M_peripheral_aresetn 1 0 4 10J 740 NJ 740 NJ 740 920
+preplace netloc TRX_axi_quad_spi_0_ip2intc_irpt 1 4 1 1380J 160n
+preplace netloc TRX_clk_26MHz_1 1 0 4 NJ 60 NJ 60 NJ 60 NJ
+preplace netloc mig_7series_0_ui_clk_sync_rst 1 0 1 NJ 420
+preplace netloc mig_7series_0_mmcm_locked 1 0 1 NJ 480
+preplace netloc TRX_proc_sys_reset_0_peripheral_reset_CD016 1 1 3 370 730 NJ 730 940J
+preplace netloc TRX_rx_clkdiv_CD016 1 0 5 30 540 380 540 570J 350 890J 270 1360
+preplace netloc mig_7series_0_ui_addn_clk_0_200MHz 1 0 4 30J 700 NJ 700 NJ 700 930J
+preplace netloc rst_mig_7series_0_100M_peripheral_reset 1 0 4 NJ 580 380J 570 NJ 570 950
+preplace netloc TRX_rx_data_p_1 1 0 4 20J 550 NJ 550 590J 360 NJ
+preplace netloc TRX_rx_data_n_1 1 0 4 10J 560 NJ 560 600J 380 NJ
+preplace netloc TRX_rx_selectio_wiz_0_data_out_to_pins_p 1 4 1 1380J 280n
+preplace netloc TRX_rx_selectio_wiz_0_data_out_to_pins_n 1 4 1 1390J 310n
+preplace netloc TRX_rx_LVDS_rd_data_count_CD100 1 4 1 1400J 370n
+preplace netloc TRX_clock_TRX_PLL_clk_25MHz_N 1 4 1 1370J 40n
+preplace netloc TRX_clock_TRX_PLL_clk_25MHz_P 1 4 1 NJ 70
+preplace netloc TRX_config_TRX_reset 1 4 1 1370J 190n
+preplace netloc TRX_config_TRX_rfx_mode 1 4 1 NJ 220
+preplace netloc counter_binary_0_THRESH0 1 2 1 580 450n
+preplace netloc io_reset_0 1 1 3 390 580 NJ 580 910
+preplace netloc TRX_rx09_fifo_o_1 1 4 1 1410J 400n
+preplace netloc TRX_rx24_fifo_o_1 1 4 1 1420J 430n
+preplace netloc TRX_rx09_fifo_valid_o_1 1 4 1 1390J 460n
+preplace netloc TRX_rx24_fifo_valid_o_1 1 4 1 NJ 490
+preplace netloc rx24_32bits_CD100_1 1 0 5 20J 780 NJ 780 NJ 780 930 870 1390J
+preplace netloc rx09_32bits_CD100_1 1 0 5 NJ 800 NJ 800 NJ 800 900 890 NJ
+preplace netloc TRX_rx09_barrel_valid_CD100_0 1 0 4 0J 760 NJ 760 NJ 760 NJ
+preplace netloc Conn2 1 4 1 1370J 130n
+preplace netloc Conn4 1 4 1 1370J 250n
+preplace netloc TRX_rx_clk_64MHz_1 1 0 4 NJ 340 NJ 340 NJ 340 NJ
+preplace netloc microblaze_0_axi_periph_M11_AXI 1 0 4 30J 160 NJ 160 NJ 160 NJ
+preplace netloc S_AXI_1 1 0 4 NJ 180 NJ 180 NJ 180 NJ
+levelinfo -pg 1 -20 200 480 750 1160 1440
+pagesize -pg 1 -db -bbox -sgen -200 -10 1670 910
+"
+}
+

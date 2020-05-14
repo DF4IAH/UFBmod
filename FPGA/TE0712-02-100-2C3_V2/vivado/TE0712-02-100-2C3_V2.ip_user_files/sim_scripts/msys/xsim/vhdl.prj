@@ -72,6 +72,7 @@ vhdl xil_defaultlib  \
 "../../../bd/msys/ip/msys_c_shift_ram_dly1024_1_1/sim/msys_c_shift_ram_dly1024_1_1.vhd" \
 "../../../bd/msys/ip/msys_c_shift_ram_dly1024_1_0/sim/msys_c_shift_ram_dly1024_1_0.vhd" \
 "../../../bd/msys/ip/msys_cordic_0_0/sim/msys_cordic_0_0.vhd" \
+"../../../bd/msys/ip/msys_TRX_rx09_pre_fft_counter_binary_0_1/sim/msys_TRX_rx09_pre_fft_counter_binary_0_1.vhd" \
 "../../../bd/msys/sim/msys.vhd" \
 
 nosort

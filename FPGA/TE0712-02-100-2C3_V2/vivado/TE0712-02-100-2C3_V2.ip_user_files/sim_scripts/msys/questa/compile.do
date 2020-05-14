@@ -652,6 +652,12 @@ vlog -work xil_defaultlib -64 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sou
 "../../../bd/msys/ip/msys_xlconstant_0_11/sim/msys_xlconstant_0_11.v" \
 "../../../bd/msys/ip/msys_util_vector_logic_0_4/sim/msys_util_vector_logic_0_4.v" \
 "../../../bd/msys/ip/msys_xlconstant_0_12/sim/msys_xlconstant_0_12.v" \
+"../../../bd/msys/ip/msys_xlslice_1_0/sim/msys_xlslice_1_0.v" \
+"../../../bd/msys/ip/msys_xlslice_0_13/sim/msys_xlslice_0_13.v" \
+"../../../bd/msys/ip/msys_TRX_rx09_pre_fft_xlconcat_0_0/sim/msys_TRX_rx09_pre_fft_xlconcat_0_0.v" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/msys/ip/msys_TRX_rx09_pre_fft_counter_binary_0_1/sim/msys_TRX_rx09_pre_fft_counter_binary_0_1.vhd" \
 
 vlog -work axi_clock_converter_v2_1_19 -64 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/4fba" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/9e81/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
