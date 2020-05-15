@@ -40,6 +40,7 @@ HW/CAD/Eagle/UFBmod_?V?.?#?
 *.runs/
 *.sdb
 *.log
+*.dcp
 ._mcu.pdf
 FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.cache/
 FPGA/TE0712-02-100-2C3/TE0712-02-100-2C3.hw/
