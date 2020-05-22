@@ -120,7 +120,7 @@ BEGIN
       C_XDEVICEFAMILY => "artix7",
       C_VERBOSITY => 0,
       C_WIDTH => 2,
-      C_DEPTH => 135,
+      C_DEPTH => 126,
       C_ADDR_WIDTH => 4,
       C_SHIFT_TYPE => 0,
       C_OPT_GOAL => 0,

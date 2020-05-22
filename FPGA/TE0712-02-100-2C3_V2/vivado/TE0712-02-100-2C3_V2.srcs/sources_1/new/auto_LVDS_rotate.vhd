@@ -36,53 +36,54 @@ use IEEE.std_logic_signed.all;
 --use UNISIM.VComponents.all;
 
 entity auto_LVDS_rotate is
-    Port ( 
-           resetn       : in  STD_LOGIC;
-           clk          : in  STD_LOGIC;
-           LVDS09       : in  STD_LOGIC_VECTOR (31 downto 0);
-           LVDS09_valid : in  STD_LOGIC;
-           LVDS24       : in  STD_LOGIC_VECTOR (31 downto 0);
-           LVDS24_valid : in  STD_LOGIC;
-           rot09q       : out STD_LOGIC_VECTOR (31 downto 0);
-           rot09vld     : out STD_LOGIC;
-           rot24q       : out STD_LOGIC_VECTOR (31 downto 0);
-           rot24vld     : out STD_LOGIC
-    );
+  Port ( 
+    resetn              : in  STD_LOGIC;
+    clk                 : in  STD_LOGIC;
+    LVDS09              : in  STD_LOGIC_VECTOR (31 downto 0);
+    LVDS09_valid        : in  STD_LOGIC;
+    LVDS24              : in  STD_LOGIC_VECTOR (31 downto 0);
+    LVDS24_valid        : in  STD_LOGIC;
+    rot09q              : out STD_LOGIC_VECTOR (31 downto 0);
+    rot09vld            : out STD_LOGIC;
+    rot24q              : out STD_LOGIC_VECTOR (31 downto 0);
+    rot24vld            : out STD_LOGIC
+  );
 end auto_LVDS_rotate;
 
 architecture Behavioral of auto_LVDS_rotate is
   component barrel_rot32 is
-  Port ( clk : in  STD_LOGIC;
-         rot : in  STD_LOGIC_VECTOR (4 downto 0);
-         d   : in  STD_LOGIC_VECTOR (31 downto 0);
-         q   : out STD_LOGIC_VECTOR (31 downto 0)
-    );
+  Port (
+    clk                 : in  STD_LOGIC;
+    rot                 : in  STD_LOGIC_VECTOR (4 downto 0);
+    d                   : in  STD_LOGIC_VECTOR (31 downto 0);
+    q                   : out STD_LOGIC_VECTOR (31 downto 0)
+  );
   end component barrel_rot32;
 
   
   -- FSM inbox09
-  signal inb09_in_r   : STD_LOGIC_VECTOR (31 downto 0);
-  signal inb09_out_r  : STD_LOGIC_VECTOR (31 downto 0);
-  signal inb09_rdy    : STD_LOGIC;
+  signal inb09_in_r     : STD_LOGIC_VECTOR (31 downto 0);
+  signal inb09_out_r    : STD_LOGIC_VECTOR (31 downto 0);
+  signal inb09_rdy      : STD_LOGIC;
   
   -- FSM inbox24
-  signal inb24_in_r   : STD_LOGIC_VECTOR (31 downto 0);
-  signal inb24_out_r  : STD_LOGIC_VECTOR (31 downto 0);
-  signal inb24_rdy    : STD_LOGIC;
+  signal inb24_in_r     : STD_LOGIC_VECTOR (31 downto 0);
+  signal inb24_out_r    : STD_LOGIC_VECTOR (31 downto 0);
+  signal inb24_rdy      : STD_LOGIC;
 
   -- FSM brl
-  signal inb_lock09   : STD_LOGIC;
-  signal inb_lock09d  : STD_LOGIC;
-  signal inb_lock24   : STD_LOGIC;
-  signal inb_lock24d  : STD_LOGIC;
+  signal inb_lock09     : STD_LOGIC;
+  signal inb_lock09d    : STD_LOGIC;
+  signal inb_lock24     : STD_LOGIC;
+  signal inb_lock24d    : STD_LOGIC;
   
   -- FSM barrel
-  signal rot_in       : STD_LOGIC_VECTOR (31 downto 0);
-  signal rot_out      : STD_LOGIC_VECTOR (31 downto 0);
-  signal rot_val      : STD_LOGIC_VECTOR (4 downto 0);
+  signal rot_in         : STD_LOGIC_VECTOR (31 downto 0);
+  signal rot_out        : STD_LOGIC_VECTOR (31 downto 0);
+  signal rot_val        : STD_LOGIC_VECTOR (4 downto 0);
   
   -- Marker bits
-  signal mrkok        : STD_LOGIC;
+  signal mrkok          : STD_LOGIC;
 
 
 begin
