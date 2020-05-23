@@ -74,14 +74,8 @@ entity FFT_controller is
 end FFT_controller;
 
 architecture Behavioral of FFT_controller is
-
-  -- proc_PreMem_in_Addr
-  signal PreMem_lckUpper      : STD_LOGIC;
-  
-  -- proc_PreMem_in_PageChange
-  signal PreMem_lckUpper_d    : STD_LOGIC;
-  signal PreMem_in_PgeCh      : STD_LOGIC;
-
+signal PreMem09_addra_r : STD_LOGIC_VECTOR (10 downto 0);
+signal PreMem24_addra_r : STD_LOGIC_VECTOR (10 downto 0);
 begin
   -- PreMem In - Data (from Barrel-Shift to the Memory)
   -- rxXX_bs_32bits[29..17]: I (re)  /  rx09_bs_32bits[13..01]: Q (im)
@@ -95,9 +89,9 @@ begin
   begin
     if (resetn = '0') then
       cnt09             := 0;
+      PreMem09_addra_r  <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra_r'length));
       PreMem09_addra    <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra'length));
       PreMem09_wea      <= '0';
-      PreMem_lckUpper   <= '0';
       
     elsif (clk'EVENT and clk = '1'  and  rx09_bs_32bits_vld = '1') then
       if (cnt09 /= 2047) then
@@ -105,14 +99,9 @@ begin
       else
         cnt09 := 0;
       end if;
-      PreMem09_addra <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra'length));
-      PreMem09_wea <= '1';
-      
-      if (0 <= cnt09  and  cnt09 < 1024) then
-        PreMem_lckUpper <= '0';
-      else
-        PreMem_lckUpper <= '1';
-      end if;
+      PreMem09_addra_r  <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra_r'length));
+      PreMem09_addra    <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra'length));
+      PreMem09_wea      <= '1';
 
     elsif (clk'EVENT and clk = '1'  and  rx09_bs_32bits_vld = '0') then
       PreMem09_wea <= '0';
@@ -125,6 +114,7 @@ begin
   begin
     if (resetn = '0') then
       cnt24             := 0;
+      PreMem24_addra_r  <= std_logic_vector(to_unsigned(cnt24, PreMem24_addra_r'length));
       PreMem24_addra    <= std_logic_vector(to_unsigned(cnt24, PreMem24_addra'length));
       PreMem24_wea      <= '0';
       
@@ -134,6 +124,7 @@ begin
       else
         cnt24 := 0;
       end if;
+      PreMem24_addra_r  <= std_logic_vector(to_unsigned(cnt24, PreMem24_addra_r'length));
       PreMem24_addra    <= std_logic_vector(to_unsigned(cnt24, PreMem24_addra'length));
       PreMem24_wea      <= '1';
       
@@ -142,30 +133,13 @@ begin
     end if;
   end process proc_PreMem24_in_Addr;
   
-  -- PreMem In - page change between lower and upper frame
-  proc_PreMem_in_PageChange: process (resetn, clk, PreMem_lckUpper)
-  begin
-    if (resetn = '0') then
-      PreMem_in_PgeCh   <= '0';
-      PreMem_lckUpper_d <= '0';
-      
-    elsif (clk'EVENT and clk = '1') then
-      if (PreMem_lckUpper_d /= PreMem_lckUpper) then
-        PreMem_in_PgeCh <= '1';
-      else
-        PreMem_in_PgeCh <= '0';
-      end if;
-      
-      PreMem_lckUpper_d <= PreMem_lckUpper; 
-    end if;
-  end process proc_PreMem_in_PageChange;
-  
-  -- PreMem 09 / 24 Out - FFT feeder
-  proc_PreMem_out_FFT: process (resetn, clk, PreMem_in_PgeCh, PreMem_lckUpper)
-  variable fsm_fft_subframe : Integer;
-  variable fsm_fft_subidx   : Integer;
-  variable fsm_fft_addr     : Integer;
-  variable fsm_fft_state    : Integer;
+  -- PreMem 09 Out - FFT feeder
+  proc_PreMem_out_FFT: process (resetn, clk, PreMem09_addra_r)
+  variable fsm_fft_subidx       : Integer;
+  variable fsm_fft_quarterframe : Integer;
+  variable fsm_fft_addr         : Integer;
+  variable fsm_fft_trigger      : Integer;
+  variable fsm_fft_state        : Integer;
   begin
     if (resetn = '0') then
       PreMem_addrb          <= std_logic_vector(to_unsigned(0, PreMem_addrb'length));
@@ -174,16 +148,24 @@ begin
       XFFT_s_data_tvalid    <= '0';
       XFFT_s_conf_tdata     <= std_logic_vector(to_unsigned(0, XFFT_s_conf_tdata'length));
       XFFT_s_conf_tvalid    <= '0';
-      fsm_fft_subframe      := 0;
       fsm_fft_subidx        := 0;
+      fsm_fft_quarterframe  := 0;
+      fsm_fft_trigger       := 0;
       fsm_fft_addr          := 0;
       fsm_fft_state         := 0;
       
     elsif (clk'EVENT and clk = '1') then
+      fsm_fft_trigger := (fsm_fft_quarterframe + 4) * 256;
+      if (fsm_fft_trigger >= 2048) then
+        fsm_fft_trigger := fsm_fft_trigger - 2048;
+      end if;
+      
       case fsm_fft_state is
         when 0 =>
-          -- Wait until lower frame is filled with (new) data
-          if (PreMem_in_PgeCh = '1'  and  PreMem_lckUpper = '1') then
+          -- Wait until one address before start trigger
+          if (XFFT_s_data_tready = '1'  
+              and PreMem09_addra_r = "01111111111"
+          ) then
             XFFT_aresetn        <= '1';  -- wait for two clocks before starting with data
             XFFT_s_conf_tdata   <= "00000011";  -- bit 7..2: DC, bit 1: 1 = FFT 24 forward, bit 0: 1 = FFT 09 forward
             XFFT_s_conf_tvalid  <= '0';
@@ -202,103 +184,52 @@ begin
         when 3 =>
           fsm_fft_state := 4;
 
-        -- Wait state 4a
+        -- Wait state 4
         when 4 =>
           fsm_fft_state := 8;
           
           
-        -- subidx 0 - lower frame
+        -- subidx 0
         when 8 =>
-          if (XFFT_s_data_tready = '1'  and  PreMem_lckUpper = '1') then
+          if (XFFT_s_data_tready = '1'
+              and PreMem09_addra_r = std_logic_vector(to_unsigned(fsm_fft_trigger, PreMem09_addra_r'length))
+          ) then
             XFFT_s_data_tvalid    <= '1';
             XFFT_s_data_tlast     <= '0';
-            fsm_fft_subframe      := 0;
             fsm_fft_subidx        := 0;
             fsm_fft_state         := 9;
           end if;
           
-        -- subidx 1..1023 - lower frame
+        -- subidx 1..1023
         when 9 =>
           if (XFFT_s_data_tready = '0') then
             XFFT_s_data_tvalid  <= '0';
             
-          -- subidx 1022 - lower frame
+          -- subidx 1022
           elsif (fsm_fft_subidx = 1022) then
             XFFT_s_data_tvalid  <= '1';
             XFFT_s_data_tlast   <= '1';
             fsm_fft_subidx      := fsm_fft_subidx + 1;
             
-          -- subidx 1023 - lower frame
+          -- subidx 1023
           elsif (fsm_fft_subidx = 1023) then
             XFFT_s_data_tlast   <= '0';
+            XFFT_s_data_tvalid  <= '0';  -- wait until Port A reaches next trigger address
             fsm_fft_subidx      := 0;
+            fsm_fft_state       := 8;
             
-            -- sub-frame 0..2
-            if (fsm_fft_subframe /= 3) then
-              XFFT_s_data_tvalid  <= '1';
-              fsm_fft_subframe    := fsm_fft_subframe + 1;
-              fsm_fft_state       := 9;
-              
-            -- sub-frame 3
+            if (fsm_fft_quarterframe /= 7) then
+              fsm_fft_quarterframe  := fsm_fft_quarterframe + 1;
             else
-              -- do not feed FFT anymore, output still works
-              XFFT_s_data_tvalid  <= '0';
-              fsm_fft_subframe    := 0;
-              fsm_fft_state       := 16;
+              fsm_fft_quarterframe  := 0;
             end if;
             
-          -- subidx 1..1021 - lower frame
+          -- subidx 1..1021
           else
             XFFT_s_data_tvalid  <= '1';
             fsm_fft_subidx      := fsm_fft_subidx + 1;
           end if;
           
-          
-        -- subidx 0 - upper frame
-        when 16 =>
-          if (XFFT_s_data_tready = '1'  and  PreMem_lckUpper = '0') then
-            XFFT_s_data_tvalid    <= '1';
-            XFFT_s_data_tlast     <= '0';
-            fsm_fft_subframe      := 0;
-            fsm_fft_subidx        := 0;
-            fsm_fft_state         := 17;
-          end if;
-          
-        -- subidx 1..1023 - upper frame
-        when 17 =>
-          if (XFFT_s_data_tready = '0') then
-            XFFT_s_data_tvalid  <= '0';
-            
-          -- subidx 1022 - upper frame
-          elsif (fsm_fft_subidx = 1022) then
-            XFFT_s_data_tvalid  <= '1';
-            XFFT_s_data_tlast   <= '1';
-            fsm_fft_subidx      := fsm_fft_subidx + 1;
-            
-          -- subidx 1023 - upper frame
-          elsif (fsm_fft_subidx = 1023) then
-            XFFT_s_data_tlast   <= '0';
-            fsm_fft_subidx      := 0;
-            
-            -- sub-frame 0..2
-            if (fsm_fft_subframe /= 3) then
-              XFFT_s_data_tvalid  <= '1';
-              fsm_fft_subframe    := fsm_fft_subframe + 1;
-              fsm_fft_state       := 17;
-              
-            -- sub-frame 3
-            else
-              -- do not feed FFT anymore, output still works
-              XFFT_s_data_tvalid  <= '0';
-              fsm_fft_subframe    := 0;
-              fsm_fft_state       := 8;
-            end if;
-            
-          -- subidx 1..1021 - upper frame
-          else
-            XFFT_s_data_tvalid  <= '1';
-            fsm_fft_subidx      := fsm_fft_subidx + 1;
-          end if;
           
         when others =>
           XFFT_aresetn          <= '0';
@@ -306,20 +237,15 @@ begin
           XFFT_s_data_tvalid    <= '0';
           XFFT_s_conf_tdata     <= std_logic_vector(to_unsigned(0, XFFT_s_conf_tdata'length));
           XFFT_s_conf_tvalid    <= '0';
-          fsm_fft_subframe      := 0;
           fsm_fft_subidx        := 0;
+          fsm_fft_quarterframe  := 0;
+          fsm_fft_trigger       := 0;
           fsm_fft_addr          := 0;
           fsm_fft_state         := 0;
       end case;
-
+      
       -- calc addr
-      if (PreMem_lckUpper = '1') then
-        -- use lower frame
-        fsm_fft_addr := (fsm_fft_subframe * 256) + (fsm_fft_subidx);
-      else
-        -- use upper frame
-        fsm_fft_addr := (fsm_fft_subframe * 256) + (fsm_fft_subidx) + 1024;
-      end if;
+      fsm_fft_addr := (fsm_fft_quarterframe * 256) + fsm_fft_subidx;
       PreMem_addrb  <= std_logic_vector(to_unsigned(fsm_fft_addr, PreMem_addrb'length));
     end if;
   end process proc_PreMem_out_FFT;
