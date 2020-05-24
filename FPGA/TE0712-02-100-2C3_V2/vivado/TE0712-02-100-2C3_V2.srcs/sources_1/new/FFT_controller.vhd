@@ -86,57 +86,61 @@ begin
   -- PreMemXX_dina[25..13]:  Q (im)  /  PreMem09_dina[12..00]:  I (re)
   PreMem09_dina <= rx09_bs_32bits(13 downto  1) & rx09_bs_32bits(29 downto 17);
   PreMem24_dina <= rx24_bs_32bits(13 downto  1) & rx24_bs_32bits(29 downto 17);
- 
+  
   -- PreMem09 In - Addr
   proc_PreMem09_in_Addr: process (resetn, clk, rx09_bs_32bits_vld)
   variable cnt09 : Integer;
   begin
     if (resetn = '0') then
-      cnt09             := 0;
+      cnt09 := 0;
       PreMem09_addra_r  <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra_r'length));
       PreMem09_addra    <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra'length));
       PreMem09_wea      <= '0';
       
-    elsif (clk'EVENT and clk = '1'  and  rx09_bs_32bits_vld = '1') then
-      if (cnt09 /= 2047) then
-        cnt09 := cnt09 + 1;
+    elsif (clk'EVENT and clk = '1') then
+      if (rx09_bs_32bits_vld = '1') then
+        if (cnt09 /= 2047) then
+          cnt09 := cnt09 + 1;
+        else
+          cnt09 := 0;
+        end if;
+        PreMem09_addra_r    <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra_r'length));
+        PreMem09_addra      <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra'length));
+        PreMem09_wea        <= '1';
+        
       else
-        cnt09 := 0;
+        PreMem09_wea <= '0';
       end if;
-      PreMem09_addra_r  <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra_r'length));
-      PreMem09_addra    <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra'length));
-      PreMem09_wea      <= '1';
-
-    elsif (clk'EVENT and clk = '1'  and  rx09_bs_32bits_vld = '0') then
-      PreMem09_wea <= '0';
     end if;
   end process proc_PreMem09_in_Addr;
- 
+  
   -- PreMem24 In - Addr
   proc_PreMem24_in_Addr: process (resetn, clk, rx24_bs_32bits_vld)
   variable cnt24 : Integer;
   begin
     if (resetn = '0') then
-      cnt24             := 0;
+      cnt24 := 0;
       PreMem24_addra_r  <= std_logic_vector(to_unsigned(cnt24, PreMem24_addra_r'length));
       PreMem24_addra    <= std_logic_vector(to_unsigned(cnt24, PreMem24_addra'length));
       PreMem24_wea      <= '0';
       
-    elsif (clk'EVENT and clk = '1'  and  rx24_bs_32bits_vld = '1') then
-      if (cnt24 /= 2047) then
-        cnt24 := cnt24 + 1;
+    elsif (clk'EVENT and clk = '1') then
+      if (rx09_bs_32bits_vld = '1') then
+        if (cnt24 /= 2047) then
+          cnt24 := cnt24 + 1;
+        else
+          cnt24 := 0;
+        end if;
+        PreMem24_addra_r  <= std_logic_vector(to_unsigned(cnt24, PreMem24_addra_r'length));
+        PreMem24_addra    <= std_logic_vector(to_unsigned(cnt24, PreMem24_addra'length));
+        PreMem24_wea      <= '1';
+        
       else
-        cnt24 := 0;
+        PreMem24_wea <= '0';
       end if;
-      PreMem24_addra_r  <= std_logic_vector(to_unsigned(cnt24, PreMem24_addra_r'length));
-      PreMem24_addra    <= std_logic_vector(to_unsigned(cnt24, PreMem24_addra'length));
-      PreMem24_wea      <= '1';
-      
-    elsif (clk'EVENT and clk = '1'  and  rx24_bs_32bits_vld = '0') then
-      PreMem24_wea <= '0';
     end if;
   end process proc_PreMem24_in_Addr;
-
+  
   
   -- PreMem 09 Out - FFT feeder
   proc_PreMem09_out_FFT: process (resetn, clk, PreMem09_addra_r)
