@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri May 22 00:06:24 2020" VIVADOVERSION="2019.2.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun May 24 10:46:18 2020" VIVADOVERSION="2019.2.1">
 
   <SYSTEMINFO ARCH="artix7" BOARD="trenz.biz:te0712_100_2c:part0:1.0" DEVICE="7a100t" NAME="msys" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -224,71 +224,35 @@
         <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_rx24_fifo_generator_0" PORT="valid"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" LEFT="1" NAME="fft_premem_subframe_in" RIGHT="0" SIGIS="data" SIGNAME="External_Ports_fft_premem_subframe_in">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_0" PORT="D"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="1" NAME="TRX_pre_fft_subframe_out" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly126_3_Q">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly126_3" PORT="Q"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="fft_data_tlast_in" SIGIS="undef" SIGNAME="External_Ports_fft_data_tlast_in">
+    <PORT DIR="I" NAME="fft09_data_tlast_in" SIGIS="undef" SIGNAME="External_Ports_fft09_data_tlast_in">
       <CONNECTIONS>
         <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198" PORT="s_axis_data_tlast"/>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="s_axis_data_tlast"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="fft_data_tready_out" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_s_axis_data_tready">
+    <PORT DIR="O" NAME="fft09_data_tready_out" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_s_axis_data_tready">
       <CONNECTIONS>
         <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198" PORT="s_axis_data_tready"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" NAME="fft_data_tvalid_in" SIGIS="undef" SIGNAME="External_Ports_fft_data_tvalid_in">
+    <PORT DIR="I" NAME="fft09_data_tvalid_in" SIGIS="undef" SIGNAME="External_Ports_fft09_data_tvalid_in">
       <CONNECTIONS>
         <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198" PORT="s_axis_data_tvalid"/>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="s_axis_data_tvalid"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" LEFT="7" NAME="fft_config_tdata_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_fft_config_tdata_in">
+    <PORT DIR="I" LEFT="7" NAME="fft09_config_tdata_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_fft09_config_tdata_in">
       <CONNECTIONS>
         <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198" PORT="s_axis_config_tdata"/>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="s_axis_config_tdata"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="fft_config_tready_out" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_s_axis_config_tready">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198" PORT="s_axis_config_tready"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="fft_config_tvalid_in" SIGIS="undef" SIGNAME="External_Ports_fft_config_tvalid_in">
+    <PORT DIR="I" NAME="fft09_config_tvalid_in" SIGIS="undef" SIGNAME="External_Ports_fft09_config_tvalid_in">
       <CONNECTIONS>
         <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198" PORT="s_axis_config_tvalid"/>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="s_axis_config_tvalid"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" NAME="fft_aresetn_in" SIGIS="rst" SIGNAME="External_Ports_fft_aresetn_in">
+    <PORT DIR="I" NAME="fft09_aresetn_in" SIGIS="rst" SIGNAME="External_Ports_fft09_aresetn_in">
       <CONNECTIONS>
         <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198" PORT="aresetn"/>
         <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09" PORT="aresetn"/>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24" PORT="aresetn"/>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="aresetn"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="cordic_rx09_tlast_out" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_m_axis_dout_tlast">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09" PORT="m_axis_dout_tlast"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="15" NAME="cordic_rx09_tuser_out" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_m_axis_dout_tuser">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09" PORT="m_axis_dout_tuser"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="cordic_rx09_tvalid_out" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_m_axis_dout_tvalid">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09" PORT="m_axis_dout_tvalid"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="10" NAME="premem_rx09_addra_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx09_addra_in">
@@ -311,22 +275,9 @@
         <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_pre_fft_rx09_blk_mem_gen_0" PORT="wea"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" LEFT="10" NAME="premem_rx_addrb_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx_addrb_in">
+    <PORT DIR="I" LEFT="10" NAME="premem_rx09_addrb_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx09_addrb_in">
       <CONNECTIONS>
         <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_pre_fft_rx09_blk_mem_gen_0" PORT="addrb"/>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_pre_fft_rx24_blk_mem_gen_0" PORT="addrb"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="12" NAME="postmem_rx_addra_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_postmem_rx_addra_in">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_post_fft_rx09_blk_mem_gen_0" PORT="addra"/>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_post_fft_rx24_blk_mem_gen_0" PORT="addra"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="0" NAME="postmem_rx_wea_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_postmem_rx_wea_in">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_post_fft_rx09_blk_mem_gen_0" PORT="wea"/>
-        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_post_fft_rx24_blk_mem_gen_0" PORT="wea"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="10" NAME="premem_rx24_addra_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx24_addra_in">
@@ -697,6 +648,52 @@
     <PORT CLKFREQUENCY="100000000" DIR="O" NAME="TRX_tx_clk_clk_p" SIGIS="clk" SIGNAME="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0_clk_to_pins_p">
       <CONNECTIONS>
         <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0" PORT="clk_to_pins_p"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="2" NAME="premem_rx09_quarterfrm_in" RIGHT="0" SIGIS="data" SIGNAME="External_Ports_premem_rx09_quarterfrm_in">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly1024_0" PORT="D"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="2" NAME="premem_rx24_quarterfrm_in" RIGHT="0" SIGIS="data" SIGNAME="External_Ports_premem_rx24_quarterfrm_in">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly1024_0" PORT="D"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="fft24_data_tready_out" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_s_axis_data_tready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="s_axis_data_tready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="fft24_data_tlast_in" SIGIS="undef" SIGNAME="External_Ports_fft24_data_tlast_in">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="s_axis_data_tlast"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="fft24_data_tvalid_in" SIGIS="undef" SIGNAME="External_Ports_fft24_data_tvalid_in">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="s_axis_data_tvalid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="7" NAME="fft24_config_tdata_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_fft24_config_tdata_in">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="s_axis_config_tdata"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="fft24_config_tvalid_in" SIGIS="undef" SIGNAME="External_Ports_fft24_config_tvalid_in">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="s_axis_config_tvalid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="10" NAME="premem_rx24_addrb_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx24_addrb_in">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_pre_fft_rx24_blk_mem_gen_0" PORT="addrb"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="fft24_aresetn_in" SIGIS="rst" SIGNAME="External_Ports_fft24_aresetn_in">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="aresetn"/>
+        <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24" PORT="aresetn"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -10176,9 +10173,9 @@
         <PARAMETER NAME="C_HAS_S_AXIS_CARTESIAN_TUSER" VALUE="1"/>
         <PARAMETER NAME="C_HAS_S_AXIS_CARTESIAN_TLAST" VALUE="1"/>
         <PARAMETER NAME="C_S_AXIS_CARTESIAN_TDATA_WIDTH" VALUE="48"/>
-        <PARAMETER NAME="C_S_AXIS_CARTESIAN_TUSER_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="C_S_AXIS_CARTESIAN_TUSER_WIDTH" VALUE="13"/>
         <PARAMETER NAME="C_M_AXIS_DOUT_TDATA_WIDTH" VALUE="64"/>
-        <PARAMETER NAME="C_M_AXIS_DOUT_TUSER_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="C_M_AXIS_DOUT_TUSER_WIDTH" VALUE="13"/>
         <PARAMETER NAME="Component_Name" VALUE="msys_cordic_0_0"/>
         <PARAMETER NAME="Functional_Selection" VALUE="Translate"/>
         <PARAMETER NAME="Architectural_Configuration" VALUE="Parallel"/>
@@ -10193,7 +10190,7 @@
         <PARAMETER NAME="Coarse_Rotation" VALUE="true"/>
         <PARAMETER NAME="Compensation_Scaling" VALUE="Embedded_Multiplier"/>
         <PARAMETER NAME="cartesian_has_tuser" VALUE="true"/>
-        <PARAMETER NAME="cartesian_tuser_width" VALUE="16"/>
+        <PARAMETER NAME="cartesian_tuser_width" VALUE="13"/>
         <PARAMETER NAME="cartesian_has_tlast" VALUE="true"/>
         <PARAMETER NAME="phase_has_tuser" VALUE="false"/>
         <PARAMETER NAME="phase_tuser_width" VALUE="1"/>
@@ -10212,9 +10209,9 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="aresetn" SIGIS="rst" SIGNAME="External_Ports_fft_aresetn_in">
+        <PORT DIR="I" NAME="aresetn" SIGIS="rst" SIGNAME="External_Ports_fft09_aresetn_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="fft_aresetn_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="fft09_aresetn_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="s_axis_cartesian_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_m_axis_data_tvalid">
@@ -10222,9 +10219,9 @@
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198" PORT="m_axis_data_tvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="s_axis_cartesian_tuser" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_m_axis_data_tuser">
+        <PORT DIR="I" LEFT="12" NAME="s_axis_cartesian_tuser" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_xlconcat_0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198" PORT="m_axis_data_tuser"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_xlconcat_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="s_axis_cartesian_tlast" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_m_axis_data_tlast">
@@ -10239,19 +10236,15 @@
         </PORT>
         <PORT DIR="O" NAME="m_axis_dout_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_m_axis_dout_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="cordic_rx09_tvalid_out"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_post_fft_rx09_blk_mem_gen_0" PORT="wea"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="m_axis_dout_tuser" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_m_axis_dout_tuser">
+        <PORT DIR="O" LEFT="12" NAME="m_axis_dout_tuser" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_m_axis_dout_tuser">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="cordic_rx09_tuser_out"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_post_fft_rx09_blk_mem_gen_0" PORT="addra"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="m_axis_dout_tlast" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_m_axis_dout_tlast">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="cordic_rx09_tlast_out"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" NAME="m_axis_dout_tlast" SIGIS="undef"/>
         <PORT DIR="O" LEFT="63" NAME="m_axis_dout_tdata" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_m_axis_dout_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_rx09_xlslice_31to00" PORT="Din"/>
@@ -10263,7 +10256,7 @@
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="6"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
-          <PARAMETER NAME="TUSER_WIDTH" VALUE="16"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="13"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
@@ -10284,7 +10277,7 @@
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="8"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
-          <PARAMETER NAME="TUSER_WIDTH" VALUE="16"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="13"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
@@ -10292,7 +10285,7 @@
           <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
           <PARAMETER NAME="PHASE" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="msys_mig_7series_0_0_ui_clk"/>
-          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value 30} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 32} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 29} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 64 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 16} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 16}"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value 30} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 32} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 29} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 64 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 13} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 13} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 13} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 13}"/>
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PORTMAPS>
             <PORTMAP LOGICAL="TDATA" PHYSICAL="m_axis_dout_tdata"/>
@@ -10302,6 +10295,89 @@
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/cordic_rx09_addra_xlslice_9to0" HWVERSION="1.0" INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_addra_xlslice_9to0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="9"/>
+        <PARAMETER NAME="DIN_TO" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_xlslice_0_24"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="10"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="15" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_m_axis_data_tuser">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198" PORT="m_axis_data_tuser"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="9" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_addra_xlslice_9to0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_xlconcat_0" PORT="In0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="3" FULLNAME="/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/cordic_rx09_xlconcat_0" HWVERSION="2.1" INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_xlconcat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="IN0_WIDTH" VALUE="10"/>
+        <PARAMETER NAME="IN1_WIDTH" VALUE="3"/>
+        <PARAMETER NAME="IN2_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN3_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN5_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN6_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN7_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN8_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN9_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN10_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN11_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN12_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN13_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN14_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN15_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN16_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN17_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN18_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN19_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN20_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN21_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN22_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN23_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN24_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN25_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN26_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN27_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN28_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN29_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="dout_width" VALUE="13"/>
+        <PARAMETER NAME="NUM_PORTS" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_xlconcat_0_4"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="9" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_addra_xlslice_9to0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_addra_xlslice_9to0" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly126_2_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly126_2" PORT="Q"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="12" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_xlconcat_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09" PORT="s_axis_cartesian_tuser"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
     </MODULE>
     <MODULE COREREVISION="16" FULLNAME="/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/cordic_rx24" HWVERSION="6.0" INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="cordic" VLNV="xilinx.com:ip:cordic:6.0">
       <DOCUMENTS>
@@ -10332,12 +10408,12 @@
         <PARAMETER NAME="C_HAS_S_AXIS_PHASE_TLAST" VALUE="0"/>
         <PARAMETER NAME="C_S_AXIS_PHASE_TDATA_WIDTH" VALUE="24"/>
         <PARAMETER NAME="C_S_AXIS_PHASE_TUSER_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_HAS_S_AXIS_CARTESIAN_TUSER" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_S_AXIS_CARTESIAN_TUSER" VALUE="1"/>
         <PARAMETER NAME="C_HAS_S_AXIS_CARTESIAN_TLAST" VALUE="1"/>
         <PARAMETER NAME="C_S_AXIS_CARTESIAN_TDATA_WIDTH" VALUE="48"/>
-        <PARAMETER NAME="C_S_AXIS_CARTESIAN_TUSER_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_S_AXIS_CARTESIAN_TUSER_WIDTH" VALUE="13"/>
         <PARAMETER NAME="C_M_AXIS_DOUT_TDATA_WIDTH" VALUE="64"/>
-        <PARAMETER NAME="C_M_AXIS_DOUT_TUSER_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_M_AXIS_DOUT_TUSER_WIDTH" VALUE="13"/>
         <PARAMETER NAME="Component_Name" VALUE="msys_cordic_rx09_0"/>
         <PARAMETER NAME="Functional_Selection" VALUE="Translate"/>
         <PARAMETER NAME="Architectural_Configuration" VALUE="Parallel"/>
@@ -10351,8 +10427,8 @@
         <PARAMETER NAME="Precision" VALUE="0"/>
         <PARAMETER NAME="Coarse_Rotation" VALUE="true"/>
         <PARAMETER NAME="Compensation_Scaling" VALUE="Embedded_Multiplier"/>
-        <PARAMETER NAME="cartesian_has_tuser" VALUE="false"/>
-        <PARAMETER NAME="cartesian_tuser_width" VALUE="1"/>
+        <PARAMETER NAME="cartesian_has_tuser" VALUE="true"/>
+        <PARAMETER NAME="cartesian_tuser_width" VALUE="13"/>
         <PARAMETER NAME="cartesian_has_tlast" VALUE="true"/>
         <PARAMETER NAME="phase_has_tuser" VALUE="false"/>
         <PARAMETER NAME="phase_tuser_width" VALUE="1"/>
@@ -10371,14 +10447,19 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="aresetn" SIGIS="rst" SIGNAME="External_Ports_fft_aresetn_in">
+        <PORT DIR="I" NAME="aresetn" SIGIS="rst" SIGNAME="External_Ports_fft24_aresetn_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="fft_aresetn_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="fft24_aresetn_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="s_axis_cartesian_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_m_axis_data_tvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="m_axis_data_tvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="12" NAME="s_axis_cartesian_tuser" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_xlconcat_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_xlconcat_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="s_axis_cartesian_tlast" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_m_axis_data_tlast">
@@ -10391,7 +10472,16 @@
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="m_axis_data_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="m_axis_dout_tvalid" SIGIS="undef"/>
+        <PORT DIR="O" NAME="m_axis_dout_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_m_axis_dout_tvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_post_fft_rx24_blk_mem_gen_0" PORT="wea"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="12" NAME="m_axis_dout_tuser" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_m_axis_dout_tuser">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_post_fft_rx24_blk_mem_gen_0" PORT="addra"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="m_axis_dout_tlast" SIGIS="undef"/>
         <PORT DIR="O" LEFT="63" NAME="m_axis_dout_tdata" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_m_axis_dout_tdata">
           <CONNECTIONS>
@@ -10404,7 +10494,7 @@
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="6"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
-          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="13"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
@@ -10417,6 +10507,7 @@
           <PORTMAPS>
             <PORTMAP LOGICAL="TDATA" PHYSICAL="s_axis_cartesian_tdata"/>
             <PORTMAP LOGICAL="TLAST" PHYSICAL="s_axis_cartesian_tlast"/>
+            <PORTMAP LOGICAL="TUSER" PHYSICAL="s_axis_cartesian_tuser"/>
             <PORTMAP LOGICAL="TVALID" PHYSICAL="s_axis_cartesian_tvalid"/>
           </PORTMAPS>
         </BUSINTERFACE>
@@ -10424,7 +10515,7 @@
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="8"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
-          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="13"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="0"/>
           <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
           <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
@@ -10432,31 +10523,115 @@
           <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
           <PARAMETER NAME="PHASE" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="msys_mig_7series_0_0_ui_clk"/>
-          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value 30} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 32} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 29} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 64 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 0}"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_real {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value real} enabled {attribs {resolve_type generated dependency polar_mag_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_mag_width format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_mag_fractwidth format long minimum {} maximum {}} value 30} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}} field_phase {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase} enabled {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency polar_phase_width format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type generated dependency polar_phase_offset format long minimum {} maximum {}} value 32} real {fixed {fractwidth {attribs {resolve_type generated dependency polar_phase_fractwidth format long minimum {} maximum {}} value 29} signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value true}}}}}}}} TDATA_WIDTH 64 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 13} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_cartesian_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value cartesian_tuser} enabled {attribs {resolve_type generated dependency cart_enabled format bool minimum {} maximum {}} value true} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency cart_width format long minimum {} maximum {}} value 13} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_phase_tuser {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value phase_tuser} enabled {attribs {resolve_type generated dependency phase_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency phase_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency phase_offset format long minimum {} maximum {}} value 13} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}}} TUSER_WIDTH 13}"/>
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PORTMAPS>
             <PORTMAP LOGICAL="TDATA" PHYSICAL="m_axis_dout_tdata"/>
             <PORTMAP LOGICAL="TLAST" PHYSICAL="m_axis_dout_tlast"/>
+            <PORTMAP LOGICAL="TUSER" PHYSICAL="m_axis_dout_tuser"/>
             <PORTMAP LOGICAL="TVALID" PHYSICAL="m_axis_dout_tvalid"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/delay_3198clk/c_shift_ram_dly1024_0" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+    <MODULE COREREVISION="2" FULLNAME="/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/cordic_rx24_addra_xlslice_9to0" HWVERSION="1.0" INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_addra_xlslice_9to0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="9"/>
+        <PARAMETER NAME="DIN_TO" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_xlslice_0_25"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="10"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="15" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_m_axis_data_tuser">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="m_axis_data_tuser"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="9" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_addra_xlslice_9to0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_xlconcat_0" PORT="In0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="3" FULLNAME="/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/cordic_rx24_xlconcat_0" HWVERSION="2.1" INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_xlconcat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="IN0_WIDTH" VALUE="10"/>
+        <PARAMETER NAME="IN1_WIDTH" VALUE="3"/>
+        <PARAMETER NAME="IN2_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN3_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN5_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN6_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN7_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN8_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN9_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN10_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN11_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN12_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN13_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN14_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN15_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN16_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN17_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN18_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN19_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN20_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN21_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN22_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN23_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN24_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN25_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN26_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN27_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN28_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN29_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="dout_width" VALUE="13"/>
+        <PARAMETER NAME="NUM_PORTS" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_xlconcat_0_5"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="9" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_addra_xlslice_9to0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_addra_xlslice_9to0" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly126_2_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly126_2" PORT="Q"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="12" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_xlconcat_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24" PORT="s_axis_cartesian_tuser"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/delay_rx09_2174clk/c_shift_ram_dly1024_0" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly1024_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
       </DOCUMENTS>
       <PARAMETERS>
         <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
         <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
-        <PARAMETER NAME="C_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="3"/>
         <PARAMETER NAME="C_DEPTH" VALUE="1024"/>
         <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
         <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
-        <PARAMETER NAME="C_AINIT_VAL" VALUE="00"/>
-        <PARAMETER NAME="C_SINIT_VAL" VALUE="00"/>
-        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="00"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="000"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="000"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="000"/>
         <PARAMETER NAME="C_HAS_A" VALUE="0"/>
         <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
         <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
@@ -10474,27 +10649,27 @@
         <PARAMETER NAME="OptGoal" VALUE="Resources"/>
         <PARAMETER NAME="RegLastBit" VALUE="true"/>
         <PARAMETER NAME="CE" VALUE="false"/>
-        <PARAMETER NAME="Width" VALUE="2"/>
+        <PARAMETER NAME="Width" VALUE="3"/>
         <PARAMETER NAME="Depth" VALUE="1024"/>
         <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
-        <PARAMETER NAME="DefaultData" VALUE="00"/>
+        <PARAMETER NAME="DefaultData" VALUE="000"/>
         <PARAMETER NAME="ReadMifFile" VALUE="false"/>
         <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
         <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
-        <PARAMETER NAME="AsyncInitVal" VALUE="00"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="000"/>
         <PARAMETER NAME="SSET" VALUE="false"/>
         <PARAMETER NAME="SCLR" VALUE="true"/>
         <PARAMETER NAME="SINIT" VALUE="false"/>
         <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
-        <PARAMETER NAME="SyncInitVal" VALUE="00"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="000"/>
         <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
         <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="External_Ports_fft_premem_subframe_in">
+        <PORT DIR="I" LEFT="2" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="External_Ports_premem_rx09_quarterfrm_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="fft_premem_subframe_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="premem_rx09_quarterfrm_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
@@ -10507,29 +10682,29 @@
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_0_Q">
+        <PORT DIR="O" LEFT="2" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly1024_0_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_1" PORT="D"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly1024_1" PORT="D"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/delay_3198clk/c_shift_ram_dly1024_1" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/delay_rx09_2174clk/c_shift_ram_dly1024_1" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly1024_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
       </DOCUMENTS>
       <PARAMETERS>
         <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
         <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
-        <PARAMETER NAME="C_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="3"/>
         <PARAMETER NAME="C_DEPTH" VALUE="1024"/>
         <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
         <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
-        <PARAMETER NAME="C_AINIT_VAL" VALUE="00"/>
-        <PARAMETER NAME="C_SINIT_VAL" VALUE="00"/>
-        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="00"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="000"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="000"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="000"/>
         <PARAMETER NAME="C_HAS_A" VALUE="0"/>
         <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
         <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
@@ -10547,27 +10722,27 @@
         <PARAMETER NAME="OptGoal" VALUE="Resources"/>
         <PARAMETER NAME="RegLastBit" VALUE="true"/>
         <PARAMETER NAME="CE" VALUE="false"/>
-        <PARAMETER NAME="Width" VALUE="2"/>
+        <PARAMETER NAME="Width" VALUE="3"/>
         <PARAMETER NAME="Depth" VALUE="1024"/>
         <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
-        <PARAMETER NAME="DefaultData" VALUE="00"/>
+        <PARAMETER NAME="DefaultData" VALUE="000"/>
         <PARAMETER NAME="ReadMifFile" VALUE="false"/>
         <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
         <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
-        <PARAMETER NAME="AsyncInitVal" VALUE="00"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="000"/>
         <PARAMETER NAME="SSET" VALUE="false"/>
         <PARAMETER NAME="SCLR" VALUE="true"/>
         <PARAMETER NAME="SINIT" VALUE="false"/>
         <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
-        <PARAMETER NAME="SyncInitVal" VALUE="00"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="000"/>
         <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
         <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_0_Q">
+        <PORT DIR="I" LEFT="2" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly1024_0_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_0" PORT="Q"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly1024_0" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
@@ -10580,102 +10755,29 @@
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_1_Q">
+        <PORT DIR="O" LEFT="2" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly1024_1_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_2" PORT="D"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly126_2" PORT="D"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/delay_3198clk/c_shift_ram_dly1024_2" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/delay_rx09_2174clk/c_shift_ram_dly126_2" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly126_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
       </DOCUMENTS>
       <PARAMETERS>
         <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
         <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
-        <PARAMETER NAME="C_WIDTH" VALUE="2"/>
-        <PARAMETER NAME="C_DEPTH" VALUE="1024"/>
-        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
-        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
-        <PARAMETER NAME="C_AINIT_VAL" VALUE="00"/>
-        <PARAMETER NAME="C_SINIT_VAL" VALUE="00"/>
-        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="00"/>
-        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
-        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
-        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
-        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_SCLR" VALUE="1"/>
-        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
-        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
-        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
-        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
-        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
-        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_dly1024_1_1"/>
-        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
-        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
-        <PARAMETER NAME="RegLastBit" VALUE="true"/>
-        <PARAMETER NAME="CE" VALUE="false"/>
-        <PARAMETER NAME="Width" VALUE="2"/>
-        <PARAMETER NAME="Depth" VALUE="1024"/>
-        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
-        <PARAMETER NAME="DefaultData" VALUE="00"/>
-        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
-        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
-        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
-        <PARAMETER NAME="AsyncInitVal" VALUE="00"/>
-        <PARAMETER NAME="SSET" VALUE="false"/>
-        <PARAMETER NAME="SCLR" VALUE="true"/>
-        <PARAMETER NAME="SINIT" VALUE="false"/>
-        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
-        <PARAMETER NAME="SyncInitVal" VALUE="00"/>
-        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
-        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_1_Q">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_1" PORT="Q"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="SCLR" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_2_Q">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly126_3" PORT="D"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/delay_3198clk/c_shift_ram_dly126_3" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly126_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
-      <DOCUMENTS>
-        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
-      </DOCUMENTS>
-      <PARAMETERS>
-        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
-        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
-        <PARAMETER NAME="C_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="3"/>
         <PARAMETER NAME="C_DEPTH" VALUE="126"/>
         <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
         <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
-        <PARAMETER NAME="C_AINIT_VAL" VALUE="00"/>
-        <PARAMETER NAME="C_SINIT_VAL" VALUE="00"/>
-        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="00"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="000"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="000"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="000"/>
         <PARAMETER NAME="C_HAS_A" VALUE="0"/>
         <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
         <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
@@ -10693,27 +10795,27 @@
         <PARAMETER NAME="OptGoal" VALUE="Resources"/>
         <PARAMETER NAME="RegLastBit" VALUE="true"/>
         <PARAMETER NAME="CE" VALUE="false"/>
-        <PARAMETER NAME="Width" VALUE="2"/>
+        <PARAMETER NAME="Width" VALUE="3"/>
         <PARAMETER NAME="Depth" VALUE="126"/>
         <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
-        <PARAMETER NAME="DefaultData" VALUE="00"/>
+        <PARAMETER NAME="DefaultData" VALUE="000"/>
         <PARAMETER NAME="ReadMifFile" VALUE="false"/>
         <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
         <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
-        <PARAMETER NAME="AsyncInitVal" VALUE="00"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="000"/>
         <PARAMETER NAME="SSET" VALUE="false"/>
         <PARAMETER NAME="SCLR" VALUE="true"/>
         <PARAMETER NAME="SINIT" VALUE="false"/>
         <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
-        <PARAMETER NAME="SyncInitVal" VALUE="00"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="000"/>
         <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
         <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_2_Q">
+        <PORT DIR="I" LEFT="2" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly1024_1_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_2" PORT="Q"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly1024_1" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
@@ -10726,10 +10828,228 @@
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly126_3_Q">
+        <PORT DIR="O" LEFT="2" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly126_2_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="TRX_pre_fft_subframe_out"/>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in16"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_xlconcat_0" PORT="In1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/delay_rx24_2174clk/c_shift_ram_dly1024_0" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly1024_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="3"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="1024"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="000"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="000"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="000"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_dly1024_0_0"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="3"/>
+        <PARAMETER NAME="Depth" VALUE="1024"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="000"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="000"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="true"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="000"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="2" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="External_Ports_premem_rx24_quarterfrm_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="premem_rx24_quarterfrm_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="SCLR" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly1024_0_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly1024_1" PORT="D"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/delay_rx24_2174clk/c_shift_ram_dly1024_1" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly1024_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="3"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="1024"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="000"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="000"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="000"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_dly1024_1_2"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="3"/>
+        <PARAMETER NAME="Depth" VALUE="1024"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="000"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="000"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="true"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="000"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="2" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly1024_0_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly1024_0" PORT="Q"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="SCLR" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly1024_1_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly126_2" PORT="D"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/delay_rx24_2174clk/c_shift_ram_dly126_2" HWVERSION="12.0" INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly126_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="3"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="126"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="000"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="000"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="000"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_dly126_3_0"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="3"/>
+        <PARAMETER NAME="Depth" VALUE="126"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="000"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="000"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="true"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="000"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="2" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly1024_1_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly1024_1" PORT="Q"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="SCLR" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly126_2_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_xlconcat_0" PORT="In1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -10993,44 +11313,40 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="aresetn" SIGIS="rst" SIGNAME="External_Ports_fft_aresetn_in">
+        <PORT DIR="I" NAME="aresetn" SIGIS="rst" SIGNAME="External_Ports_fft09_aresetn_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="fft_aresetn_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="fft09_aresetn_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="s_axis_config_tdata" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_fft_config_tdata_in">
+        <PORT DIR="I" LEFT="7" NAME="s_axis_config_tdata" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_fft09_config_tdata_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="fft_config_tdata_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="fft09_config_tdata_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axis_config_tvalid" SIGIS="undef" SIGNAME="External_Ports_fft_config_tvalid_in">
+        <PORT DIR="I" NAME="s_axis_config_tvalid" SIGIS="undef" SIGNAME="External_Ports_fft09_config_tvalid_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="fft_config_tvalid_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="fft09_config_tvalid_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s_axis_config_tready" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_s_axis_config_tready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="fft_config_tready_out"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" NAME="s_axis_config_tready" SIGIS="undef"/>
         <PORT DIR="I" LEFT="31" NAME="s_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_fft_rx09_s_data_xlconcat_0_dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_fft_rx09_s_data_xlconcat_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axis_data_tvalid" SIGIS="undef" SIGNAME="External_Ports_fft_data_tvalid_in">
+        <PORT DIR="I" NAME="s_axis_data_tvalid" SIGIS="undef" SIGNAME="External_Ports_fft09_data_tvalid_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="fft_data_tvalid_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="fft09_data_tvalid_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_axis_data_tready" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_s_axis_data_tready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="fft_data_tready_out"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="fft09_data_tready_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axis_data_tlast" SIGIS="undef" SIGNAME="External_Ports_fft_data_tlast_in">
+        <PORT DIR="I" NAME="s_axis_data_tlast" SIGIS="undef" SIGNAME="External_Ports_fft09_data_tlast_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="fft_data_tlast_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="fft09_data_tlast_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="47" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_m_axis_data_tdata">
@@ -11040,7 +11356,7 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="m_axis_data_tuser" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_m_axis_data_tuser">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09" PORT="s_axis_cartesian_tuser"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_addra_xlslice_9to0" PORT="Din"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="m_axis_data_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_m_axis_data_tvalid">
@@ -11055,22 +11371,22 @@
         </PORT>
         <PORT DIR="O" NAME="event_frame_started" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_event_frame_started">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in17"/>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in14"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="event_tlast_unexpected" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_event_tlast_unexpected">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in18"/>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in15"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="event_tlast_missing" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_event_tlast_missing">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in19"/>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in16"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="event_data_in_channel_halt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_event_data_in_channel_halt">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in20"/>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in17"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -11211,19 +11527,19 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="aresetn" SIGIS="rst" SIGNAME="External_Ports_fft_aresetn_in">
+        <PORT DIR="I" NAME="aresetn" SIGIS="rst" SIGNAME="External_Ports_fft24_aresetn_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="fft_aresetn_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="fft24_aresetn_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="s_axis_config_tdata" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_fft_config_tdata_in">
+        <PORT DIR="I" LEFT="7" NAME="s_axis_config_tdata" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_fft24_config_tdata_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="fft_config_tdata_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="fft24_config_tdata_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axis_config_tvalid" SIGIS="undef" SIGNAME="External_Ports_fft_config_tvalid_in">
+        <PORT DIR="I" NAME="s_axis_config_tvalid" SIGIS="undef" SIGNAME="External_Ports_fft24_config_tvalid_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="fft_config_tvalid_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="fft24_config_tvalid_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_axis_config_tready" SIGIS="undef"/>
@@ -11232,15 +11548,19 @@
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_fft_rx24_s_data_xlconcat_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axis_data_tvalid" SIGIS="undef" SIGNAME="External_Ports_fft_data_tvalid_in">
+        <PORT DIR="I" NAME="s_axis_data_tvalid" SIGIS="undef" SIGNAME="External_Ports_fft24_data_tvalid_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="fft_data_tvalid_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="fft24_data_tvalid_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s_axis_data_tready" SIGIS="undef"/>
-        <PORT DIR="I" NAME="s_axis_data_tlast" SIGIS="undef" SIGNAME="External_Ports_fft_data_tlast_in">
+        <PORT DIR="O" NAME="s_axis_data_tready" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_s_axis_data_tready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="fft_data_tlast_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="fft24_data_tready_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axis_data_tlast" SIGIS="undef" SIGNAME="External_Ports_fft24_data_tlast_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="fft24_data_tlast_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="47" NAME="m_axis_data_tdata" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_m_axis_data_tdata">
@@ -11248,7 +11568,11 @@
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24" PORT="s_axis_cartesian_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="m_axis_data_tuser" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="m_axis_data_tuser" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_m_axis_data_tuser">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_addra_xlslice_9to0" PORT="Din"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="m_axis_data_tvalid" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_m_axis_data_tvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24" PORT="s_axis_cartesian_tvalid"/>
@@ -11259,10 +11583,26 @@
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24" PORT="s_axis_cartesian_tlast"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="event_frame_started" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT"/>
-        <PORT DIR="O" NAME="event_tlast_unexpected" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT"/>
-        <PORT DIR="O" NAME="event_tlast_missing" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT"/>
-        <PORT DIR="O" NAME="event_data_in_channel_halt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT"/>
+        <PORT DIR="O" NAME="event_frame_started" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_event_frame_started">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in18"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="event_tlast_unexpected" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_event_tlast_unexpected">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in19"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="event_tlast_missing" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_event_tlast_missing">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in20"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="event_data_in_channel_halt" SENSITIVITY="EDGE_RISING" SIGIS="INTERRUPT" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_event_data_in_channel_halt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in21"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="S_AXIS_DATA" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
@@ -11509,14 +11849,14 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="wea" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_postmem_rx_wea_in">
+        <PORT DIR="I" LEFT="0" NAME="wea" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_m_axis_dout_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="postmem_rx_wea_in"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09" PORT="m_axis_dout_tvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="12" NAME="addra" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_postmem_rx_addra_in">
+        <PORT DIR="I" LEFT="12" NAME="addra" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09_m_axis_dout_tuser">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="postmem_rx_addra_in"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09" PORT="m_axis_dout_tuser"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="dina" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_rx09_xlslice_31to00_Dout">
@@ -11541,7 +11881,7 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="doutb" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_post_fft_rx09_blk_mem_gen_0_doutb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in21"/>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in22"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -11736,14 +12076,14 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="wea" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_postmem_rx_wea_in">
+        <PORT DIR="I" LEFT="0" NAME="wea" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_m_axis_dout_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="postmem_rx_wea_in"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24" PORT="m_axis_dout_tvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="12" NAME="addra" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_postmem_rx_addra_in">
+        <PORT DIR="I" LEFT="12" NAME="addra" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24_m_axis_dout_tuser">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="postmem_rx_addra_in"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24" PORT="m_axis_dout_tuser"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="dina" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_rx24_xlslice_31to00_Dout">
@@ -11768,7 +12108,7 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="doutb" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_post_fft_rx24_blk_mem_gen_0_doutb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in22"/>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in23"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -11988,9 +12328,9 @@
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="10" NAME="addrb" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx_addrb_in">
+        <PORT DIR="I" LEFT="10" NAME="addrb" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx09_addrb_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="premem_rx_addrb_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="premem_rx09_addrb_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="25" NAME="doutb" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_pre_fft_rx09_blk_mem_gen_0_doutb">
@@ -12216,9 +12556,9 @@
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="10" NAME="addrb" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx_addrb_in">
+        <PORT DIR="I" LEFT="10" NAME="addrb" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx24_addrb_in">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="premem_rx_addrb_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="premem_rx24_addrb_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="25" NAME="doutb" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_pre_fft_rx24_blk_mem_gen_0_doutb">
@@ -24184,12 +24524,14 @@
             <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_rx24_fifo_generator_0" PORT="rd_clk"/>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198" PORT="aclk"/>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx09" PORT="aclk"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_0" PORT="CLK"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_1" PORT="CLK"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_2" PORT="CLK"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly126_3" PORT="CLK"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly1024_0" PORT="CLK"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly1024_1" PORT="CLK"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly126_2" PORT="CLK"/>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_cordic_rx24" PORT="aclk"/>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="aclk"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly1024_0" PORT="CLK"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly1024_1" PORT="CLK"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly126_2" PORT="CLK"/>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_post_fft_rx09_blk_mem_gen_0" PORT="clka"/>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_post_fft_rx09_blk_mem_gen_0" PORT="clkb"/>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_pre_fft_rx09_blk_mem_gen_0" PORT="clka"/>
@@ -24672,10 +25014,12 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="ROTENC_decoder_ROTENC_counter_32bit_0" PORT="SINIT"/>
             <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0" PORT="clk_reset"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_0" PORT="SCLR"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_1" PORT="SCLR"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly1024_2" PORT="SCLR"/>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly126_3" PORT="SCLR"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly1024_0" PORT="SCLR"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly1024_1" PORT="SCLR"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx09_2174clk_c_shift_ram_dly126_2" PORT="SCLR"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly1024_0" PORT="SCLR"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly1024_1" PORT="SCLR"/>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_rx24_2174clk_c_shift_ram_dly126_2" PORT="SCLR"/>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_post_fft_rx09_blk_mem_gen_0" PORT="rstb"/>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_pre_fft_rx09_blk_mem_gen_0" PORT="rstb"/>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_post_fft_rx24_blk_mem_gen_0" PORT="rstb"/>
@@ -24795,7 +25139,7 @@
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="0"/>
         <PARAMETER NAME="C_BUS_ADDR_WIDTH" VALUE="17"/>
         <PARAMETER NAME="C_BUS_DATA_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="C_NUM_PROBE_IN" VALUE="23"/>
+        <PARAMETER NAME="C_NUM_PROBE_IN" VALUE="24"/>
         <PARAMETER NAME="C_EN_PROBE_IN_ACTIVITY" VALUE="1"/>
         <PARAMETER NAME="C_NUM_PROBE_OUT" VALUE="1"/>
         <PARAMETER NAME="C_EN_SYNCHRONIZATION" VALUE="1"/>
@@ -24813,16 +25157,16 @@
         <PARAMETER NAME="C_PROBE_IN11_WIDTH" VALUE="9"/>
         <PARAMETER NAME="C_PROBE_IN12_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_PROBE_IN13_WIDTH" VALUE="32"/>
-        <PARAMETER NAME="C_PROBE_IN14_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="C_PROBE_IN15_WIDTH" VALUE="26"/>
-        <PARAMETER NAME="C_PROBE_IN16_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="C_PROBE_IN14_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE_IN15_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE_IN16_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN17_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN18_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN19_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN20_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE_IN21_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_PROBE_IN21_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN22_WIDTH" VALUE="32"/>
-        <PARAMETER NAME="C_PROBE_IN23_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE_IN23_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_PROBE_IN24_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN25_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN26_WIDTH" VALUE="1"/>
@@ -25638,39 +25982,52 @@
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="probe_in12" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" LEFT="31" NAME="probe_in13" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="15" NAME="probe_in14" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="25" NAME="probe_in15" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="1" NAME="probe_in16" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly126_3_Q">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_delay_3198clk_c_shift_ram_dly126_3" PORT="Q"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe_in17" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_event_frame_started">
+        <PORT DIR="I" LEFT="0" NAME="probe_in14" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_event_frame_started">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198" PORT="event_frame_started"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe_in18" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_event_tlast_unexpected">
+        <PORT DIR="I" LEFT="0" NAME="probe_in15" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_event_tlast_unexpected">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198" PORT="event_tlast_unexpected"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe_in19" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_event_tlast_missing">
+        <PORT DIR="I" LEFT="0" NAME="probe_in16" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_event_tlast_missing">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198" PORT="event_tlast_missing"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe_in20" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_event_data_in_channel_halt">
+        <PORT DIR="I" LEFT="0" NAME="probe_in17" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_event_data_in_channel_halt">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198" PORT="event_data_in_channel_halt"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="probe_in21" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_post_fft_rx09_blk_mem_gen_0_doutb">
+        <PORT DIR="I" LEFT="0" NAME="probe_in18" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_event_frame_started">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="event_frame_started"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe_in19" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_event_tlast_unexpected">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="event_tlast_unexpected"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe_in20" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_event_tlast_missing">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="event_tlast_missing"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe_in21" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198_event_data_in_channel_halt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx24_dly3198" PORT="event_data_in_channel_halt"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="probe_in22" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_post_fft_rx09_blk_mem_gen_0_doutb">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_post_fft_rx09_blk_mem_gen_0" PORT="doutb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="probe_in22" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_post_fft_rx24_blk_mem_gen_0_doutb">
+        <PORT DIR="I" LEFT="31" NAME="probe_in23" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_post_fft_rx24_blk_mem_gen_0_doutb">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_post_fft_rx24_blk_mem_gen_0" PORT="doutb"/>
           </CONNECTIONS>

@@ -596,7 +596,6 @@ vlog -work xil_defaultlib -64 -incr "+incdir+../../../../TE0712-02-100-2C3_V2.sr
 vcom -work xil_defaultlib -64 -93 \
 "../../../bd/msys/ip/msys_c_shift_ram_0_1/sim/msys_c_shift_ram_0_1.vhd" \
 "../../../bd/msys/ip/msys_c_shift_ram_0_2/sim/msys_c_shift_ram_0_2.vhd" \
-"../../../bd/msys/ip/msys_c_shift_ram_dly1024_1_1/sim/msys_c_shift_ram_dly1024_1_1.vhd" \
 "../../../bd/msys/ip/msys_c_shift_ram_dly1024_1_0/sim/msys_c_shift_ram_dly1024_1_0.vhd" \
 
 vcom -work cordic_v6_0_16 -64 -93 \
@@ -636,6 +635,15 @@ vcom -work xil_defaultlib -64 -93 \
 
 vlog -work xil_defaultlib -64 -incr "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/4fba" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
 "../../../bd/msys/ip/msys_xlconcat_0_2/sim/msys_xlconcat_0_2.v" \
+"../../../bd/msys/ip/msys_xlslice_0_24/sim/msys_xlslice_0_24.v" \
+"../../../bd/msys/ip/msys_xlconcat_0_4/sim/msys_xlconcat_0_4.v" \
+"../../../bd/msys/ip/msys_xlconcat_0_5/sim/msys_xlconcat_0_5.v" \
+"../../../bd/msys/ip/msys_xlslice_0_25/sim/msys_xlslice_0_25.v" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/msys/ip/msys_c_shift_ram_dly1024_0_0/sim/msys_c_shift_ram_dly1024_0_0.vhd" \
+"../../../bd/msys/ip/msys_c_shift_ram_dly1024_1_2/sim/msys_c_shift_ram_dly1024_1_2.vhd" \
+"../../../bd/msys/ip/msys_c_shift_ram_dly126_3_0/sim/msys_c_shift_ram_dly126_3_0.vhd" \
 
 vlog -work axi_clock_converter_v2_1_19 -64 -incr "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/4fba" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/9e81/hdl/axi_clock_converter_v2_1_vl_rfs.v" \

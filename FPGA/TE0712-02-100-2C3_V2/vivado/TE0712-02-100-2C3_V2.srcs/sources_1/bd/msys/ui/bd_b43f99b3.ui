@@ -1,0 +1,81 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.58483",
+   "Default View_TopLeft":"-325,-91",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0.21  2019-05-29 bk=1.5064 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port rst_mig_7series_0_100M_peripheral_reset_in -pg 1 -lvl 0 -x 0 -y 100 -defaultsOSRD
+preplace port s_axi_aclk_CD100_in -pg 1 -lvl 0 -x 0 -y 70 -defaultsOSRD
+preplace port fft_data_tlast_in -pg 1 -lvl 0 -x 0 -y 270 -defaultsOSRD
+preplace port fft_data_tready_out -pg 1 -lvl 6 -x 1680 -y 480 -defaultsOSRD
+preplace port fft_data_tvalid_in -pg 1 -lvl 0 -x 0 -y 300 -defaultsOSRD
+preplace port fft_config_tready_out -pg 1 -lvl 6 -x 1680 -y 800 -defaultsOSRD
+preplace port fft_config_tvalid_in -pg 1 -lvl 0 -x 0 -y 360 -defaultsOSRD
+preplace port fft_aresetn_in -pg 1 -lvl 0 -x 0 -y 400 -defaultsOSRD
+preplace port event_frame_started -pg 1 -lvl 6 -x 1680 -y 620 -defaultsOSRD
+preplace port event_tlast_unexpected -pg 1 -lvl 6 -x 1680 -y 650 -defaultsOSRD
+preplace port event_tlast_missing -pg 1 -lvl 6 -x 1680 -y 680 -defaultsOSRD
+preplace port event_data_in_channel_halt -pg 1 -lvl 6 -x 1680 -y 710 -defaultsOSRD
+preplace port cordic_rx09_tlast_out -pg 1 -lvl 6 -x 1680 -y 100 -defaultsOSRD
+preplace port cordic_rx09_tvalid_out -pg 1 -lvl 6 -x 1680 -y 130 -defaultsOSRD
+preplace port cordic_rx24_tvalid_out -pg 1 -lvl 6 -x 1680 -y 360 -defaultsOSRD
+preplace portBus fft_premem_subframe_in -pg 1 -lvl 0 -x 0 -y 20 -defaultsOSRD
+preplace portBus fft_config_tdata_in -pg 1 -lvl 0 -x 0 -y 330 -defaultsOSRD
+preplace portBus rx09_postmem_re_out -pg 1 -lvl 6 -x 1680 -y 50 -defaultsOSRD
+preplace portBus Dout -pg 1 -lvl 6 -x 1680 -y 300 -defaultsOSRD
+preplace portBus fft_s_data_rx09_re_in -pg 1 -lvl 0 -x 0 -y 530 -defaultsOSRD
+preplace portBus fft_s_data_rx09_im_in -pg 1 -lvl 0 -x 0 -y 560 -defaultsOSRD
+preplace portBus fft_s_data_rx24_im_in -pg 1 -lvl 0 -x 0 -y 710 -defaultsOSRD
+preplace portBus fft_s_data_rx24_re_in -pg 1 -lvl 0 -x 0 -y 590 -defaultsOSRD
+preplace portBus D_0 -pg 1 -lvl 0 -x 0 -y 130 -defaultsOSRD
+preplace portBus Q -pg 1 -lvl 6 -x 1680 -y 20 -defaultsOSRD
+preplace inst xfft_rx09_dly3198 -pg 1 -lvl 4 -x 1200 -y 640 -defaultsOSRD
+preplace inst delay_rx09_3198clk -pg 1 -lvl 3 -x 720 -y 110 -defaultsOSRD
+preplace inst cordic_rx09 -pg 1 -lvl 4 -x 1200 -y 100 -defaultsOSRD
+preplace inst cordic_rx24 -pg 1 -lvl 4 -x 1200 -y 300 -defaultsOSRD
+preplace inst rx09_xlslice_31to00 -pg 1 -lvl 5 -x 1550 -y 50 -defaultsOSRD
+preplace inst rx24_xlslice_31to00 -pg 1 -lvl 5 -x 1550 -y 300 -defaultsOSRD
+preplace inst fft_rx09_s_data_xlconcat_0 -pg 1 -lvl 3 -x 720 -y 560 -defaultsOSRD
+preplace inst xlconstant_0x0_len3 -pg 1 -lvl 1 -x 120 -y 650 -defaultsOSRD
+preplace inst xfft_rx24_dly3198 -pg 1 -lvl 3 -x 720 -y 320 -defaultsOSRD
+preplace inst fft_rx24_s_data_xlconcat_0 -pg 1 -lvl 2 -x 340 -y 700 -defaultsOSRD
+preplace netloc rst_mig_7series_0_100M_peripheral_reset_0 1 0 3 20J 110 NJ 110 NJ
+preplace netloc TRX_rx_xfft_dly8334_m_axis_data_tvalid_0 1 3 2 970 420 1420
+preplace netloc TRX_rx_xfft_dly8334_m_axis_data_tlast_0 1 3 2 960 410 1430
+preplace netloc s_axi_aclk_CD100_0 1 0 4 20J 90 NJ 90 500 180 930
+preplace netloc fft_data_tlast_in_0 1 0 4 20J 280 NJ 280 490 460 920
+preplace netloc fft_data_tready_out_0 1 3 3 970 480 NJ 480 NJ
+preplace netloc fft_data_tvalid_in_0 1 0 4 NJ 300 NJ 300 480 650 970J
+preplace netloc fft_config_tdata_in_0 1 0 4 20J 340 NJ 340 470 660 NJ
+preplace netloc fft_config_tready_out_0 1 3 3 970 800 NJ 800 NJ
+preplace netloc fft_config_tvalid_in_0 1 0 4 NJ 360 NJ 360 450 700 NJ
+preplace netloc fft_aresetn_in_0 1 0 4 NJ 400 NJ 400 460 470 940
+preplace netloc xfft_dly3449_event_frame_started_0 1 4 2 NJ 650 1650J
+preplace netloc xfft_dly3449_event_tlast_unexpected_0 1 4 2 NJ 670 1660J
+preplace netloc xfft_dly3449_event_tlast_missing_0 1 4 2 NJ 690 1650J
+preplace netloc xfft_dly3449_event_data_in_channel_halt_0 1 4 2 NJ 710 NJ
+preplace netloc cordic_rx09_m_axis_dout_tdata 1 4 1 1430J 50n
+preplace netloc cordic_rx24_m_axis_dout_tdata 1 4 1 NJ 300
+preplace netloc rx09_postmem_re_0 1 5 1 NJ 50
+preplace netloc rx24_xlslice_31to00_Dout 1 5 1 NJ 300
+preplace netloc cordic_rx09_tlast_out_0 1 4 2 NJ 110 1650J
+preplace netloc cordic_rx09_tvalid_out_0 1 4 2 NJ 130 NJ
+preplace netloc fft_s_data_xlconcat_0_dout 1 3 1 N 560
+preplace netloc xlconstant_0x0_len3_dout 1 1 2 220 590 500
+preplace netloc fft_s_data_rx09_re_in_0 1 0 3 NJ 530 NJ 530 NJ
+preplace netloc fft_s_data_rx09_im_in_0 1 0 3 20J 570 NJ 570 NJ
+preplace netloc fft_s_data_rx24_im_in_0 1 0 2 NJ 710 NJ
+preplace netloc fft_s_data_rx24_re_in_0 1 0 2 NJ 590 210J
+preplace netloc fft_rx24_s_data_xlconcat_0_dout 1 2 1 440 260n
+preplace netloc xfft_rx09_dly3198_m_axis_data_tdata_0 1 3 2 950 430 1410
+preplace netloc xfft_rx24_dly3198_m_axis_data_tdata_0 1 3 1 N 270
+preplace netloc xfft_rx24_dly3198_m_axis_data_tlast_0 1 3 1 N 290
+preplace netloc xfft_rx24_dly3198_m_axis_data_tvalid_0 1 3 1 N 310
+preplace netloc cordic_rx24_tvalid_out_0 1 4 2 1430J 360 NJ
+preplace netloc D_0_1 1 0 3 NJ 130 NJ 130 NJ
+levelinfo -pg 1 0 120 340 720 1200 1550 1680
+pagesize -pg 1 -db -bbox -sgen -330 -10 1910 820
+"
+}
+

@@ -9,7 +9,5 @@ if { [string length $curr_wave] == 0 } {
 }
 
 add_force {/tb_null/msys_wrapper_i/msys_i/SC0712_0/reset_out} -radix hex {1 10us}
-add_force {/tb_null/msys_wrapper_i/FFT_controller_i/rx09_bs_32bits_vld} -radix hex {1 10us} {0 10010000000fs} -repeat_every 50000000fs
-add_force {/tb_null/msys_wrapper_i/FFT_controller_i/rx24_bs_32bits_vld} -radix hex {1 10us} {0 10010000000fs} -repeat_every 50000000fs
 
 run 1000ns

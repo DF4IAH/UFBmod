@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xC68D290FDDA7E7D5",
+      "boundary_crc": "0x3A4161531DF2E8E7",
       "device": "xc7a100tfgg484-2",
       "name": "msys",
       "synth_flow_mode": "None",
@@ -135,11 +135,10 @@
         "TRX_rx_FFT_unit": {
           "TRX_rx_FFT_calc": {
             "xfft_rx09_dly3198": "",
-            "delay_3198clk": {
+            "delay_rx09_2174clk": {
               "c_shift_ram_dly1024_0": "",
               "c_shift_ram_dly1024_1": "",
-              "c_shift_ram_dly1024_2": "",
-              "c_shift_ram_dly126_3": ""
+              "c_shift_ram_dly126_2": ""
             },
             "cordic_rx09": "",
             "cordic_rx24": "",
@@ -148,7 +147,16 @@
             "fft_rx09_s_data_xlconcat_0": "",
             "xlconstant_0x0_len3": "",
             "xfft_rx24_dly3198": "",
-            "fft_rx24_s_data_xlconcat_0": ""
+            "fft_rx24_s_data_xlconcat_0": "",
+            "cordic_rx09_xlconcat_0": "",
+            "cordic_rx24_xlconcat_0": "",
+            "cordic_rx09_addra_xlslice_9to0": "",
+            "cordic_rx24_addra_xlslice_9to0": "",
+            "delay_rx24_2174clk": {
+              "c_shift_ram_dly1024_0": "",
+              "c_shift_ram_dly1024_1": "",
+              "c_shift_ram_dly126_2": ""
+            }
           },
           "pre_fft_rx09_blk_mem_gen_0": "",
           "post_fft_rx09_blk_mem_gen_0": "",
@@ -487,7 +495,7 @@
         "direction": "O",
         "parameters": {
           "ASSOCIATED_RESET": {
-            "value": "fft_aresetn_in"
+            "value": "fft09_aresetn_in:fft24_aresetn_in"
           },
           "CLK_DOMAIN": {
             "value": "msys_mig_7series_0_0_ui_clk",
@@ -713,51 +721,24 @@
       "TRX_rx24_fifo_valid_o": {
         "direction": "O"
       },
-      "fft_premem_subframe_in": {
-        "type": "data",
-        "direction": "I",
-        "left": "1",
-        "right": "0",
-        "parameters": {
-          "LAYERED_METADATA": {
-            "value": "undef",
-            "value_src": "default"
-          }
-        }
-      },
-      "TRX_pre_fft_subframe_out": {
-        "type": "data",
-        "direction": "O",
-        "left": "1",
-        "right": "0",
-        "parameters": {
-          "LAYERED_METADATA": {
-            "value": "xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency data_bitwidth format long minimum {} maximum {}} value 2} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} DATA_WIDTH 2}",
-            "value_src": "ip_prop"
-          }
-        }
-      },
-      "fft_data_tlast_in": {
+      "fft09_data_tlast_in": {
         "direction": "I"
       },
-      "fft_data_tready_out": {
+      "fft09_data_tready_out": {
         "direction": "O"
       },
-      "fft_data_tvalid_in": {
+      "fft09_data_tvalid_in": {
         "direction": "I"
       },
-      "fft_config_tdata_in": {
+      "fft09_config_tdata_in": {
         "direction": "I",
         "left": "7",
         "right": "0"
       },
-      "fft_config_tready_out": {
-        "direction": "O"
-      },
-      "fft_config_tvalid_in": {
+      "fft09_config_tvalid_in": {
         "direction": "I"
       },
-      "fft_aresetn_in": {
+      "fft09_aresetn_in": {
         "type": "rst",
         "direction": "I",
         "parameters": {
@@ -770,17 +751,6 @@
             "value_src": "default"
           }
         }
-      },
-      "cordic_rx09_tlast_out": {
-        "direction": "O"
-      },
-      "cordic_rx09_tuser_out": {
-        "direction": "O",
-        "left": "15",
-        "right": "0"
-      },
-      "cordic_rx09_tvalid_out": {
-        "direction": "O"
       },
       "premem_rx09_addra_in": {
         "direction": "I",
@@ -802,19 +772,9 @@
         "left": "0",
         "right": "0"
       },
-      "premem_rx_addrb_in": {
+      "premem_rx09_addrb_in": {
         "direction": "I",
         "left": "10",
-        "right": "0"
-      },
-      "postmem_rx_addra_in": {
-        "direction": "I",
-        "left": "12",
-        "right": "0"
-      },
-      "postmem_rx_wea_in": {
-        "direction": "I",
-        "left": "0",
         "right": "0"
       },
       "premem_rx24_addra_in": {
@@ -826,6 +786,66 @@
         "direction": "I",
         "left": "0",
         "right": "0"
+      },
+      "premem_rx09_quarterfrm_in": {
+        "type": "data",
+        "direction": "I",
+        "left": "2",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "premem_rx24_quarterfrm_in": {
+        "type": "data",
+        "direction": "I",
+        "left": "2",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "fft24_data_tready_out": {
+        "direction": "O"
+      },
+      "fft24_data_tlast_in": {
+        "direction": "I"
+      },
+      "fft24_data_tvalid_in": {
+        "direction": "I"
+      },
+      "fft24_config_tdata_in": {
+        "direction": "I",
+        "left": "7",
+        "right": "0"
+      },
+      "fft24_config_tvalid_in": {
+        "direction": "I"
+      },
+      "premem_rx24_addrb_in": {
+        "direction": "I",
+        "left": "10",
+        "right": "0"
+      },
+      "fft24_aresetn_in": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
       }
     },
     "components": {
@@ -1111,16 +1131,16 @@
               "s00_couplers/S_AXI"
             ]
           },
-          "s00_couplers_to_xbar": {
-            "interface_ports": [
-              "s00_couplers/M_AXI",
-              "xbar/S00_AXI"
-            ]
-          },
           "axi_interconnect_0_to_s01_couplers": {
             "interface_ports": [
               "S01_AXI",
               "s01_couplers/S_AXI"
+            ]
+          },
+          "s00_couplers_to_xbar": {
+            "interface_ports": [
+              "s00_couplers/M_AXI",
+              "xbar/S00_AXI"
             ]
           },
           "s01_couplers_to_xbar": {
@@ -1917,16 +1937,16 @@
               }
             },
             "interface_nets": {
-              "m03_couplers_to_auto_cc": {
-                "interface_ports": [
-                  "S_AXI",
-                  "auto_cc/S_AXI"
-                ]
-              },
               "auto_cc_to_m03_couplers": {
                 "interface_ports": [
                   "M_AXI",
                   "auto_cc/M_AXI"
+                ]
+              },
+              "m03_couplers_to_auto_cc": {
+                "interface_ports": [
+                  "S_AXI",
+                  "auto_cc/S_AXI"
                 ]
               }
             },
@@ -2483,10 +2503,34 @@
           }
         },
         "interface_nets": {
-          "microblaze_0_axi_periph_to_s00_couplers": {
+          "xbar_to_m07_couplers": {
             "interface_ports": [
-              "S00_AXI",
-              "s00_couplers/S_AXI"
+              "xbar/M07_AXI",
+              "m07_couplers/S_AXI"
+            ]
+          },
+          "m08_couplers_to_microblaze_0_axi_periph": {
+            "interface_ports": [
+              "M08_AXI",
+              "m08_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m08_couplers": {
+            "interface_ports": [
+              "xbar/M08_AXI",
+              "m08_couplers/S_AXI"
+            ]
+          },
+          "m09_couplers_to_microblaze_0_axi_periph": {
+            "interface_ports": [
+              "M09_AXI",
+              "m09_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m09_couplers": {
+            "interface_ports": [
+              "xbar/M09_AXI",
+              "m09_couplers/S_AXI"
             ]
           },
           "m10_couplers_to_microblaze_0_axi_periph": {
@@ -2501,16 +2545,28 @@
               "m10_couplers/S_AXI"
             ]
           },
+          "m07_couplers_to_microblaze_0_axi_periph": {
+            "interface_ports": [
+              "M07_AXI",
+              "m07_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m06_couplers": {
+            "interface_ports": [
+              "xbar/M06_AXI",
+              "m06_couplers/S_AXI"
+            ]
+          },
+          "microblaze_0_axi_periph_to_s00_couplers": {
+            "interface_ports": [
+              "S00_AXI",
+              "s00_couplers/S_AXI"
+            ]
+          },
           "s00_couplers_to_xbar": {
             "interface_ports": [
               "s00_couplers/M_AXI",
               "xbar/S00_AXI"
-            ]
-          },
-          "xbar_to_m12_couplers": {
-            "interface_ports": [
-              "xbar/M12_AXI",
-              "m12_couplers/S_AXI"
             ]
           },
           "m00_couplers_to_microblaze_0_axi_periph": {
@@ -2531,22 +2587,16 @@
               "m01_couplers/M_AXI"
             ]
           },
-          "m02_couplers_to_microblaze_0_axi_periph": {
-            "interface_ports": [
-              "M02_AXI",
-              "m02_couplers/M_AXI"
-            ]
-          },
           "xbar_to_m01_couplers": {
             "interface_ports": [
               "xbar/M01_AXI",
               "m01_couplers/S_AXI"
             ]
           },
-          "xbar_to_m02_couplers": {
+          "m02_couplers_to_microblaze_0_axi_periph": {
             "interface_ports": [
-              "xbar/M02_AXI",
-              "m02_couplers/S_AXI"
+              "M02_AXI",
+              "m02_couplers/M_AXI"
             ]
           },
           "m03_couplers_to_microblaze_0_axi_periph": {
@@ -2555,10 +2605,10 @@
               "m03_couplers/M_AXI"
             ]
           },
-          "m04_couplers_to_microblaze_0_axi_periph": {
+          "xbar_to_m02_couplers": {
             "interface_ports": [
-              "M04_AXI",
-              "m04_couplers/M_AXI"
+              "xbar/M02_AXI",
+              "m02_couplers/S_AXI"
             ]
           },
           "xbar_to_m03_couplers": {
@@ -2567,10 +2617,10 @@
               "m03_couplers/S_AXI"
             ]
           },
-          "xbar_to_m04_couplers": {
+          "m04_couplers_to_microblaze_0_axi_periph": {
             "interface_ports": [
-              "xbar/M04_AXI",
-              "m04_couplers/S_AXI"
+              "M04_AXI",
+              "m04_couplers/M_AXI"
             ]
           },
           "m05_couplers_to_microblaze_0_axi_periph": {
@@ -2579,10 +2629,10 @@
               "m05_couplers/M_AXI"
             ]
           },
-          "m06_couplers_to_microblaze_0_axi_periph": {
+          "xbar_to_m04_couplers": {
             "interface_ports": [
-              "M06_AXI",
-              "m06_couplers/M_AXI"
+              "xbar/M04_AXI",
+              "m04_couplers/S_AXI"
             ]
           },
           "xbar_to_m05_couplers": {
@@ -2591,46 +2641,10 @@
               "m05_couplers/S_AXI"
             ]
           },
-          "xbar_to_m06_couplers": {
+          "m06_couplers_to_microblaze_0_axi_periph": {
             "interface_ports": [
-              "xbar/M06_AXI",
-              "m06_couplers/S_AXI"
-            ]
-          },
-          "m07_couplers_to_microblaze_0_axi_periph": {
-            "interface_ports": [
-              "M07_AXI",
-              "m07_couplers/M_AXI"
-            ]
-          },
-          "m08_couplers_to_microblaze_0_axi_periph": {
-            "interface_ports": [
-              "M08_AXI",
-              "m08_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m07_couplers": {
-            "interface_ports": [
-              "xbar/M07_AXI",
-              "m07_couplers/S_AXI"
-            ]
-          },
-          "m09_couplers_to_microblaze_0_axi_periph": {
-            "interface_ports": [
-              "M09_AXI",
-              "m09_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m08_couplers": {
-            "interface_ports": [
-              "xbar/M08_AXI",
-              "m08_couplers/S_AXI"
-            ]
-          },
-          "xbar_to_m09_couplers": {
-            "interface_ports": [
-              "xbar/M09_AXI",
-              "m09_couplers/S_AXI"
+              "M06_AXI",
+              "m06_couplers/M_AXI"
             ]
           },
           "m11_couplers_to_microblaze_0_axi_periph": {
@@ -2649,6 +2663,12 @@
             "interface_ports": [
               "M12_AXI",
               "m12_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m12_couplers": {
+            "interface_ports": [
+              "xbar/M12_AXI",
+              "m12_couplers/S_AXI"
             ]
           }
         },
@@ -3102,7 +3122,7 @@
         "xci_name": "msys_vio_0_0",
         "parameters": {
           "C_NUM_PROBE_IN": {
-            "value": "23"
+            "value": "24"
           },
           "C_NUM_PROBE_OUT": {
             "value": "1"
@@ -4503,77 +4523,41 @@
           "TRX_rx24_fifo_valid_o": {
             "direction": "O"
           },
-          "doutb": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "dout": {
-            "direction": "O",
-            "left": "25",
-            "right": "0"
-          },
-          "fft_premem_subframe_in": {
-            "type": "data",
-            "direction": "I",
-            "left": "1",
-            "right": "0"
-          },
-          "TRX_pre_fft_subframe_out": {
-            "type": "data",
-            "direction": "O",
-            "left": "1",
-            "right": "0"
-          },
-          "fft_data_tlast_in": {
+          "fft09_data_tlast_in": {
             "direction": "I"
           },
-          "fft_data_tready_out": {
+          "fft09_data_tready_out": {
             "direction": "O"
           },
-          "fft_data_tvalid_in": {
+          "fft09_data_tvalid_in": {
             "direction": "I"
           },
-          "fft_config_tdata_in": {
+          "fft09_config_tdata_in": {
             "direction": "I",
             "left": "7",
             "right": "0"
           },
-          "fft_config_tready_out": {
-            "direction": "O"
-          },
-          "fft_config_tvalid_in": {
+          "fft09_config_tvalid_in": {
             "direction": "I"
           },
-          "fft_aresetn_in": {
+          "fft09_aresetn_in": {
             "type": "rst",
             "direction": "I"
           },
-          "event_frame_started": {
+          "xfft_rx09_dly3449_event_frame_started_out": {
             "type": "intr",
             "direction": "O"
           },
-          "event_tlast_unexpected": {
+          "xfft_rx09_dly3449_event_tlast_unexpected_out": {
             "type": "intr",
             "direction": "O"
           },
-          "event_tlast_missing": {
+          "xfft_rx09_dly3449_event_tlast_missing_out": {
             "type": "intr",
             "direction": "O"
           },
-          "event_data_in_channel_halt": {
+          "xfft_rx09_dly3449_event_data_in_channel_halt_out": {
             "type": "intr",
-            "direction": "O"
-          },
-          "cordic_rx09_tlast_out": {
-            "direction": "O"
-          },
-          "cordic_rx09_tuser_out": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "cordic_rx09_tvalid_out": {
             "direction": "O"
           },
           "premem_rx09_addra_in": {
@@ -4596,24 +4580,9 @@
             "left": "0",
             "right": "0"
           },
-          "premem_rx_addrb_in": {
+          "premem_rx09_addrb_in": {
             "direction": "I",
             "left": "10",
-            "right": "0"
-          },
-          "postmem_rx_addra_in": {
-            "direction": "I",
-            "left": "12",
-            "right": "0"
-          },
-          "postmem_rx_wea_in": {
-            "direction": "I",
-            "left": "0",
-            "right": "0"
-          },
-          "postmem_rx_addrb_in": {
-            "direction": "I",
-            "left": "12",
             "right": "0"
           },
           "postmem_rx09_doutb_out": {
@@ -4635,6 +4604,65 @@
             "direction": "I",
             "left": "0",
             "right": "0"
+          },
+          "premem_rx09_quarterfrm_in": {
+            "type": "data",
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "premem_rx24_quarterfrm_in": {
+            "type": "data",
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "postmem_rx_addrb_in": {
+            "direction": "I",
+            "left": "12",
+            "right": "0"
+          },
+          "fft24_data_tready_out": {
+            "direction": "O"
+          },
+          "xfft_rx24_dly3449_event_frame_started_out": {
+            "type": "intr",
+            "direction": "O"
+          },
+          "xfft_rx24_dly3198_event_tlast_unexpected_out": {
+            "type": "intr",
+            "direction": "O"
+          },
+          "xfft_rx24_dly3198_event_tlast_missing_out": {
+            "type": "intr",
+            "direction": "O"
+          },
+          "xfft_rx24_dly3198_event_data_in_channel_halt_out": {
+            "type": "intr",
+            "direction": "O"
+          },
+          "fft24_data_tlast_in": {
+            "direction": "I"
+          },
+          "fft24_data_tvalid_in": {
+            "direction": "I"
+          },
+          "fft24_config_tdata_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "fft24_config_tvalid_in": {
+            "direction": "I"
+          },
+          "premem_rx24_addrb_in": {
+            "direction": "I",
+            "left": "10",
+            "right": "0"
+          },
+          "fft24_aresetn_in": {
+            "type": "rst",
+            "direction": "I"
           }
         },
         "components": {
@@ -5597,77 +5625,41 @@
                 "type": "rst",
                 "direction": "I"
               },
-              "doutb": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              },
-              "dout": {
-                "direction": "O",
-                "left": "25",
-                "right": "0"
-              },
-              "fft_premem_subframe_in": {
-                "type": "data",
-                "direction": "I",
-                "left": "1",
-                "right": "0"
-              },
-              "TRX_pre_fft_subframe_out_0": {
-                "type": "data",
-                "direction": "O",
-                "left": "1",
-                "right": "0"
-              },
-              "fft_data_tlast_in": {
+              "fft09_data_tlast_in": {
                 "direction": "I"
               },
-              "fft_data_tready_out": {
+              "fft09_data_tready_out": {
                 "direction": "O"
               },
-              "fft_data_tvalid_in": {
+              "fft09_data_tvalid_in": {
                 "direction": "I"
               },
-              "fft_config_tdata_in": {
+              "fft09_config_tdata_in": {
                 "direction": "I",
                 "left": "7",
                 "right": "0"
               },
-              "fft_config_tready_out": {
-                "direction": "O"
-              },
-              "fft_config_tvalid_in": {
+              "fft09_config_tvalid_in": {
                 "direction": "I"
               },
-              "fft_aresetn_in": {
+              "fft09_aresetn_in": {
                 "type": "rst",
                 "direction": "I"
               },
-              "event_frame_started": {
+              "xfft_rx09_dly3449_event_frame_started_out": {
                 "type": "intr",
                 "direction": "O"
               },
-              "event_tlast_unexpected": {
+              "xfft_rx09_dly3449_event_tlast_unexpected_out": {
                 "type": "intr",
                 "direction": "O"
               },
-              "event_tlast_missing": {
+              "xfft_rx09_dly3449_event_tlast_missing_out": {
                 "type": "intr",
                 "direction": "O"
               },
-              "event_data_in_channel_halt": {
+              "xfft_rx09_dly3449_event_data_in_channel_halt_out": {
                 "type": "intr",
-                "direction": "O"
-              },
-              "cordic_rx09_tlast_out": {
-                "direction": "O"
-              },
-              "cordic_rx09_tuser_out": {
-                "direction": "O",
-                "left": "15",
-                "right": "0"
-              },
-              "cordic_rx09_tvalid_out": {
                 "direction": "O"
               },
               "premem_rx09_addra_in": {
@@ -5690,19 +5682,9 @@
                 "left": "0",
                 "right": "0"
               },
-              "premem_rx_addrb_in": {
+              "premem_rx09_addrb_in": {
                 "direction": "I",
                 "left": "10",
-                "right": "0"
-              },
-              "postmem_rx_addra_in": {
-                "direction": "I",
-                "left": "12",
-                "right": "0"
-              },
-              "postmem_rx_wea_in": {
-                "direction": "I",
-                "left": "0",
                 "right": "0"
               },
               "postmem_rx_addrb_in": {
@@ -5729,6 +5711,60 @@
                 "direction": "I",
                 "left": "0",
                 "right": "0"
+              },
+              "premem_rx09_quarterfrm_in": {
+                "type": "data",
+                "direction": "I",
+                "left": "2",
+                "right": "0"
+              },
+              "premem_rx24_quarterfrm_in": {
+                "type": "data",
+                "direction": "I",
+                "left": "2",
+                "right": "0"
+              },
+              "fft24_data_tready_out": {
+                "direction": "O"
+              },
+              "xfft_rx24_dly3449_event_frame_started_out": {
+                "type": "intr",
+                "direction": "O"
+              },
+              "xfft_rx24_dly3198_event_tlast_unexpected_out": {
+                "type": "intr",
+                "direction": "O"
+              },
+              "xfft_rx24_dly3198_event_tlast_missing_out": {
+                "type": "intr",
+                "direction": "O"
+              },
+              "xfft_rx24_dly3198_event_data_in_channel_halt_out": {
+                "type": "intr",
+                "direction": "O"
+              },
+              "fft24_data_tlast_in": {
+                "direction": "I"
+              },
+              "fft24_data_tvalid_in": {
+                "direction": "I"
+              },
+              "fft24_config_tdata_in": {
+                "direction": "I",
+                "left": "7",
+                "right": "0"
+              },
+              "fft24_config_tvalid_in": {
+                "direction": "I"
+              },
+              "premem_rx24_addrb_in": {
+                "direction": "I",
+                "left": "10",
+                "right": "0"
+              },
+              "fft24_aresetn_in": {
+                "type": "rst",
+                "direction": "I"
               }
             },
             "components": {
@@ -5738,59 +5774,44 @@
                     "type": "rst",
                     "direction": "I"
                   },
-                  "fft_premem_subframe_in": {
-                    "type": "data",
-                    "direction": "I",
-                    "left": "1",
-                    "right": "0"
-                  },
                   "s_axi_aclk_CD100_in": {
                     "type": "clk",
                     "direction": "I"
                   },
-                  "TRX_pre_fft_subframe_out": {
-                    "type": "data",
-                    "direction": "O",
-                    "left": "1",
-                    "right": "0"
-                  },
-                  "fft_data_tlast_in": {
+                  "fft09_data_tlast_in": {
                     "direction": "I"
                   },
-                  "fft_data_tready_out": {
+                  "fft09_data_tready_out": {
                     "direction": "O"
                   },
-                  "fft_data_tvalid_in": {
+                  "fft09_data_tvalid_in": {
                     "direction": "I"
                   },
-                  "fft_config_tdata_in": {
+                  "fft09_config_tdata_in": {
                     "direction": "I",
                     "left": "7",
                     "right": "0"
                   },
-                  "fft_config_tready_out": {
-                    "direction": "O"
-                  },
-                  "fft_config_tvalid_in": {
+                  "fft09_config_tvalid_in": {
                     "direction": "I"
                   },
-                  "fft_aresetn_in": {
+                  "fft09_aresetn_in": {
                     "type": "rst",
                     "direction": "I"
                   },
-                  "event_frame_started": {
+                  "xfft_rx09_dly3449_event_frame_started_out": {
                     "type": "intr",
                     "direction": "O"
                   },
-                  "event_tlast_unexpected": {
+                  "xfft_rx09_dly3449_event_tlast_unexpected_out": {
                     "type": "intr",
                     "direction": "O"
                   },
-                  "event_tlast_missing": {
+                  "xfft_rx09_dly3449_event_tlast_missing_out": {
                     "type": "intr",
                     "direction": "O"
                   },
-                  "event_data_in_channel_halt": {
+                  "xfft_rx09_dly3449_event_data_in_channel_halt_out": {
                     "type": "intr",
                     "direction": "O"
                   },
@@ -5802,14 +5823,6 @@
                   "Dout": {
                     "direction": "O",
                     "left": "31",
-                    "right": "0"
-                  },
-                  "cordic_rx09_tlast_out": {
-                    "direction": "O"
-                  },
-                  "cordic_rx09_tuser_out": {
-                    "direction": "O",
-                    "left": "15",
                     "right": "0"
                   },
                   "cordic_rx09_tvalid_out": {
@@ -5834,6 +5847,68 @@
                     "direction": "I",
                     "left": "12",
                     "right": "0"
+                  },
+                  "cordic_rx24_tvalid_out": {
+                    "direction": "O"
+                  },
+                  "premem_rx09_quarterfrm_in": {
+                    "type": "data",
+                    "direction": "I",
+                    "left": "2",
+                    "right": "0"
+                  },
+                  "cordic_rx09_m_tuser_out": {
+                    "direction": "O",
+                    "left": "12",
+                    "right": "0"
+                  },
+                  "cordic_rx24_m_tuser_out": {
+                    "direction": "O",
+                    "left": "12",
+                    "right": "0"
+                  },
+                  "premem_rx24_quarterfrm_in": {
+                    "type": "data",
+                    "direction": "I",
+                    "left": "2",
+                    "right": "0"
+                  },
+                  "fft24_data_tready_out": {
+                    "direction": "O"
+                  },
+                  "xfft_rx24_dly3449_event_frame_started_out": {
+                    "type": "intr",
+                    "direction": "O"
+                  },
+                  "xfft_rx24_dly3198_event_tlast_unexpected_out": {
+                    "type": "intr",
+                    "direction": "O"
+                  },
+                  "xfft_rx24_dly3198_event_tlast_missing_out": {
+                    "type": "intr",
+                    "direction": "O"
+                  },
+                  "xfft_rx24_dly3198_event_data_in_channel_halt_out": {
+                    "type": "intr",
+                    "direction": "O"
+                  },
+                  "fft24_data_tlast_in": {
+                    "direction": "I"
+                  },
+                  "fft24_data_tvalid_in": {
+                    "direction": "I"
+                  },
+                  "fft24_config_tdata_in": {
+                    "direction": "I",
+                    "left": "7",
+                    "right": "0"
+                  },
+                  "fft24_config_tvalid_in": {
+                    "direction": "I"
+                  },
+                  "fft24_aresetn_in_0": {
+                    "type": "rst",
+                    "direction": "I"
                   }
                 },
                 "components": {
@@ -5897,7 +5972,7 @@
                       }
                     }
                   },
-                  "delay_3198clk": {
+                  "delay_rx09_2174clk": {
                     "ports": {
                       "s_axi_aclk_CD100_i": {
                         "type": "clk",
@@ -5910,13 +5985,13 @@
                       "Q": {
                         "type": "data",
                         "direction": "O",
-                        "left": "1",
+                        "left": "2",
                         "right": "0"
                       },
                       "D": {
                         "type": "data",
                         "direction": "I",
-                        "left": "1",
+                        "left": "2",
                         "right": "0"
                       }
                     },
@@ -5926,10 +6001,10 @@
                         "xci_name": "msys_c_shift_ram_0_1",
                         "parameters": {
                           "AsyncInitVal": {
-                            "value": "00"
+                            "value": "000"
                           },
                           "DefaultData": {
-                            "value": "00"
+                            "value": "000"
                           },
                           "Depth": {
                             "value": "1024"
@@ -5944,7 +6019,7 @@
                             "value": "Fixed_Length"
                           },
                           "Width": {
-                            "value": "2"
+                            "value": "3"
                           }
                         }
                       },
@@ -5953,10 +6028,10 @@
                         "xci_name": "msys_c_shift_ram_0_2",
                         "parameters": {
                           "AsyncInitVal": {
-                            "value": "00"
+                            "value": "000"
                           },
                           "DefaultData": {
-                            "value": "00"
+                            "value": "000"
                           },
                           "Depth": {
                             "value": "1024"
@@ -5971,46 +6046,19 @@
                             "value": "Fixed_Length"
                           },
                           "Width": {
-                            "value": "2"
+                            "value": "3"
                           }
                         }
                       },
-                      "c_shift_ram_dly1024_2": {
-                        "vlnv": "xilinx.com:ip:c_shift_ram:12.0",
-                        "xci_name": "msys_c_shift_ram_dly1024_1_1",
-                        "parameters": {
-                          "AsyncInitVal": {
-                            "value": "00"
-                          },
-                          "DefaultData": {
-                            "value": "00"
-                          },
-                          "Depth": {
-                            "value": "1024"
-                          },
-                          "OptGoal": {
-                            "value": "Resources"
-                          },
-                          "SCLR": {
-                            "value": "true"
-                          },
-                          "ShiftRegType": {
-                            "value": "Fixed_Length"
-                          },
-                          "Width": {
-                            "value": "2"
-                          }
-                        }
-                      },
-                      "c_shift_ram_dly126_3": {
+                      "c_shift_ram_dly126_2": {
                         "vlnv": "xilinx.com:ip:c_shift_ram:12.0",
                         "xci_name": "msys_c_shift_ram_dly1024_1_0",
                         "parameters": {
                           "AsyncInitVal": {
-                            "value": "00"
+                            "value": "000"
                           },
                           "DefaultData": {
-                            "value": "00"
+                            "value": "000"
                           },
                           "Depth": {
                             "value": "126"
@@ -6025,7 +6073,7 @@
                             "value": "Fixed_Length"
                           },
                           "Width": {
-                            "value": "2"
+                            "value": "3"
                           }
                         }
                       }
@@ -6036,8 +6084,7 @@
                           "s_axi_aclk_CD100_i",
                           "c_shift_ram_dly1024_0/CLK",
                           "c_shift_ram_dly1024_1/CLK",
-                          "c_shift_ram_dly1024_2/CLK",
-                          "c_shift_ram_dly126_3/CLK"
+                          "c_shift_ram_dly126_2/CLK"
                         ]
                       },
                       "rst_mig_7series_0_100M_peripheral_reset": {
@@ -6045,11 +6092,10 @@
                           "reset_CD100_i",
                           "c_shift_ram_dly1024_0/SCLR",
                           "c_shift_ram_dly1024_1/SCLR",
-                          "c_shift_ram_dly1024_2/SCLR",
-                          "c_shift_ram_dly126_3/SCLR"
+                          "c_shift_ram_dly126_2/SCLR"
                         ]
                       },
-                      "c_shift_ram_0_Q": {
+                      "c_shift_ram_dly1024_0_Q": {
                         "ports": [
                           "c_shift_ram_dly1024_0/Q",
                           "c_shift_ram_dly1024_1/D"
@@ -6058,25 +6104,19 @@
                       "c_shift_ram_dly1024_1_Q": {
                         "ports": [
                           "c_shift_ram_dly1024_1/Q",
-                          "c_shift_ram_dly1024_2/D"
+                          "c_shift_ram_dly126_2/D"
                         ]
                       },
-                      "c_shift_ram_dly135_4_Q": {
+                      "c_shift_ram_dly126_3_Q": {
                         "ports": [
-                          "c_shift_ram_dly126_3/Q",
+                          "c_shift_ram_dly126_2/Q",
                           "Q"
                         ]
                       },
-                      "D_1": {
+                      "D_0": {
                         "ports": [
                           "D",
                           "c_shift_ram_dly1024_0/D"
-                        ]
-                      },
-                      "c_shift_ram_dly1024_2_Q": {
-                        "ports": [
-                          "c_shift_ram_dly1024_2/Q",
-                          "c_shift_ram_dly126_3/D"
                         ]
                       }
                     }
@@ -6116,7 +6156,7 @@
                         "value": "true"
                       },
                       "cartesian_tuser_width": {
-                        "value": "16"
+                        "value": "13"
                       },
                       "out_tlast_behv": {
                         "value": "Pass_Cartesian_TLAST"
@@ -6155,10 +6195,10 @@
                         "value": "true"
                       },
                       "cartesian_has_tuser": {
-                        "value": "false"
+                        "value": "true"
                       },
                       "cartesian_tuser_width": {
-                        "value": "1"
+                        "value": "13"
                       },
                       "out_tlast_behv": {
                         "value": "Pass_Cartesian_TLAST"
@@ -6308,19 +6348,217 @@
                         "value": "4"
                       }
                     }
+                  },
+                  "cordic_rx09_xlconcat_0": {
+                    "vlnv": "xilinx.com:ip:xlconcat:2.1",
+                    "xci_name": "msys_xlconcat_0_4",
+                    "parameters": {
+                      "IN0_WIDTH": {
+                        "value": "10"
+                      },
+                      "IN1_WIDTH": {
+                        "value": "3"
+                      }
+                    }
+                  },
+                  "cordic_rx24_xlconcat_0": {
+                    "vlnv": "xilinx.com:ip:xlconcat:2.1",
+                    "xci_name": "msys_xlconcat_0_5",
+                    "parameters": {
+                      "IN0_WIDTH": {
+                        "value": "10"
+                      },
+                      "IN1_WIDTH": {
+                        "value": "3"
+                      }
+                    }
+                  },
+                  "cordic_rx09_addra_xlslice_9to0": {
+                    "vlnv": "xilinx.com:ip:xlslice:1.0",
+                    "xci_name": "msys_xlslice_0_24",
+                    "parameters": {
+                      "DIN_FROM": {
+                        "value": "9"
+                      },
+                      "DIN_WIDTH": {
+                        "value": "16"
+                      },
+                      "DOUT_WIDTH": {
+                        "value": "10"
+                      }
+                    }
+                  },
+                  "cordic_rx24_addra_xlslice_9to0": {
+                    "vlnv": "xilinx.com:ip:xlslice:1.0",
+                    "xci_name": "msys_xlslice_0_25",
+                    "parameters": {
+                      "DIN_FROM": {
+                        "value": "9"
+                      },
+                      "DIN_WIDTH": {
+                        "value": "16"
+                      },
+                      "DOUT_WIDTH": {
+                        "value": "10"
+                      }
+                    }
+                  },
+                  "delay_rx24_2174clk": {
+                    "ports": {
+                      "s_axi_aclk_CD100_i": {
+                        "type": "clk",
+                        "direction": "I"
+                      },
+                      "reset_CD100_i": {
+                        "type": "rst",
+                        "direction": "I"
+                      },
+                      "Q": {
+                        "type": "data",
+                        "direction": "O",
+                        "left": "2",
+                        "right": "0"
+                      },
+                      "D": {
+                        "type": "data",
+                        "direction": "I",
+                        "left": "2",
+                        "right": "0"
+                      }
+                    },
+                    "components": {
+                      "c_shift_ram_dly1024_0": {
+                        "vlnv": "xilinx.com:ip:c_shift_ram:12.0",
+                        "xci_name": "msys_c_shift_ram_dly1024_0_0",
+                        "parameters": {
+                          "AsyncInitVal": {
+                            "value": "000"
+                          },
+                          "DefaultData": {
+                            "value": "000"
+                          },
+                          "Depth": {
+                            "value": "1024"
+                          },
+                          "OptGoal": {
+                            "value": "Resources"
+                          },
+                          "SCLR": {
+                            "value": "true"
+                          },
+                          "ShiftRegType": {
+                            "value": "Fixed_Length"
+                          },
+                          "Width": {
+                            "value": "3"
+                          }
+                        }
+                      },
+                      "c_shift_ram_dly1024_1": {
+                        "vlnv": "xilinx.com:ip:c_shift_ram:12.0",
+                        "xci_name": "msys_c_shift_ram_dly1024_1_2",
+                        "parameters": {
+                          "AsyncInitVal": {
+                            "value": "000"
+                          },
+                          "DefaultData": {
+                            "value": "000"
+                          },
+                          "Depth": {
+                            "value": "1024"
+                          },
+                          "OptGoal": {
+                            "value": "Resources"
+                          },
+                          "SCLR": {
+                            "value": "true"
+                          },
+                          "ShiftRegType": {
+                            "value": "Fixed_Length"
+                          },
+                          "Width": {
+                            "value": "3"
+                          }
+                        }
+                      },
+                      "c_shift_ram_dly126_2": {
+                        "vlnv": "xilinx.com:ip:c_shift_ram:12.0",
+                        "xci_name": "msys_c_shift_ram_dly126_3_0",
+                        "parameters": {
+                          "AsyncInitVal": {
+                            "value": "000"
+                          },
+                          "DefaultData": {
+                            "value": "000"
+                          },
+                          "Depth": {
+                            "value": "126"
+                          },
+                          "OptGoal": {
+                            "value": "Resources"
+                          },
+                          "SCLR": {
+                            "value": "true"
+                          },
+                          "ShiftRegType": {
+                            "value": "Fixed_Length"
+                          },
+                          "Width": {
+                            "value": "3"
+                          }
+                        }
+                      }
+                    },
+                    "nets": {
+                      "s_axi_aclk_CD100": {
+                        "ports": [
+                          "s_axi_aclk_CD100_i",
+                          "c_shift_ram_dly1024_0/CLK",
+                          "c_shift_ram_dly1024_1/CLK",
+                          "c_shift_ram_dly126_2/CLK"
+                        ]
+                      },
+                      "rst_mig_7series_0_100M_peripheral_reset": {
+                        "ports": [
+                          "reset_CD100_i",
+                          "c_shift_ram_dly1024_0/SCLR",
+                          "c_shift_ram_dly1024_1/SCLR",
+                          "c_shift_ram_dly126_2/SCLR"
+                        ]
+                      },
+                      "c_shift_ram_dly1024_0_Q": {
+                        "ports": [
+                          "c_shift_ram_dly1024_0/Q",
+                          "c_shift_ram_dly1024_1/D"
+                        ]
+                      },
+                      "c_shift_ram_dly1024_1_Q": {
+                        "ports": [
+                          "c_shift_ram_dly1024_1/Q",
+                          "c_shift_ram_dly126_2/D"
+                        ]
+                      },
+                      "c_shift_ram_dly126_3_Q": {
+                        "ports": [
+                          "c_shift_ram_dly126_2/Q",
+                          "Q"
+                        ]
+                      },
+                      "D_0": {
+                        "ports": [
+                          "D",
+                          "c_shift_ram_dly1024_0/D"
+                        ]
+                      }
+                    }
                   }
                 },
                 "nets": {
-                  "TRX_rx_xfft_dly8334_m_axis_data_tuser_0": {
-                    "ports": [
-                      "xfft_rx09_dly3198/m_axis_data_tuser",
-                      "cordic_rx09/s_axis_cartesian_tuser"
-                    ]
-                  },
                   "rst_mig_7series_0_100M_peripheral_reset_0": {
                     "ports": [
                       "rst_mig_7series_0_100M_peripheral_reset_in",
-                      "delay_3198clk/reset_CD100_i"
+                      "delay_rx09_2174clk/reset_CD100_i",
+                      "delay_rx24_2174clk/reset_CD100_i"
                     ]
                   },
                   "TRX_rx_xfft_dly8334_m_axis_data_tvalid_0": {
@@ -6335,99 +6573,76 @@
                       "cordic_rx09/s_axis_cartesian_tlast"
                     ]
                   },
-                  "fft_premem_subframe_in_0": {
-                    "ports": [
-                      "fft_premem_subframe_in",
-                      "delay_3198clk/D"
-                    ]
-                  },
                   "s_axi_aclk_CD100_0": {
                     "ports": [
                       "s_axi_aclk_CD100_in",
                       "xfft_rx09_dly3198/aclk",
                       "cordic_rx09/aclk",
-                      "delay_3198clk/s_axi_aclk_CD100_i",
+                      "delay_rx09_2174clk/s_axi_aclk_CD100_i",
                       "cordic_rx24/aclk",
-                      "xfft_rx24_dly3198/aclk"
+                      "xfft_rx24_dly3198/aclk",
+                      "delay_rx24_2174clk/s_axi_aclk_CD100_i"
                     ]
                   },
-                  "TRX_pre_fft_subframe_out_0": {
+                  "fft09_data_tlast_in_0": {
                     "ports": [
-                      "delay_3198clk/Q",
-                      "TRX_pre_fft_subframe_out"
+                      "fft09_data_tlast_in",
+                      "xfft_rx09_dly3198/s_axis_data_tlast"
                     ]
                   },
-                  "fft_data_tlast_in_0": {
-                    "ports": [
-                      "fft_data_tlast_in",
-                      "xfft_rx09_dly3198/s_axis_data_tlast",
-                      "xfft_rx24_dly3198/s_axis_data_tlast"
-                    ]
-                  },
-                  "fft_data_tready_out_0": {
+                  "fft09_data_tready_out_0": {
                     "ports": [
                       "xfft_rx09_dly3198/s_axis_data_tready",
-                      "fft_data_tready_out"
+                      "fft09_data_tready_out"
                     ]
                   },
-                  "fft_data_tvalid_in_0": {
+                  "fft09_data_tvalid_in_0": {
                     "ports": [
-                      "fft_data_tvalid_in",
-                      "xfft_rx09_dly3198/s_axis_data_tvalid",
-                      "xfft_rx24_dly3198/s_axis_data_tvalid"
+                      "fft09_data_tvalid_in",
+                      "xfft_rx09_dly3198/s_axis_data_tvalid"
                     ]
                   },
-                  "fft_config_tdata_in_0": {
+                  "fft09_config_tdata_in_0": {
                     "ports": [
-                      "fft_config_tdata_in",
-                      "xfft_rx09_dly3198/s_axis_config_tdata",
-                      "xfft_rx24_dly3198/s_axis_config_tdata"
+                      "fft09_config_tdata_in",
+                      "xfft_rx09_dly3198/s_axis_config_tdata"
                     ]
                   },
-                  "fft_config_tready_out_0": {
+                  "fft09_config_tvalid_in_0": {
                     "ports": [
-                      "xfft_rx09_dly3198/s_axis_config_tready",
-                      "fft_config_tready_out"
+                      "fft09_config_tvalid_in",
+                      "xfft_rx09_dly3198/s_axis_config_tvalid"
                     ]
                   },
-                  "fft_config_tvalid_in_0": {
+                  "fft09_aresetn_in_0": {
                     "ports": [
-                      "fft_config_tvalid_in",
-                      "xfft_rx09_dly3198/s_axis_config_tvalid",
-                      "xfft_rx24_dly3198/s_axis_config_tvalid"
-                    ]
-                  },
-                  "fft_aresetn_in_0": {
-                    "ports": [
-                      "fft_aresetn_in",
+                      "fft09_aresetn_in",
                       "xfft_rx09_dly3198/aresetn",
-                      "cordic_rx09/aresetn",
-                      "cordic_rx24/aresetn",
-                      "xfft_rx24_dly3198/aresetn"
+                      "cordic_rx09/aresetn"
                     ]
                   },
-                  "xfft_dly3449_event_frame_started_0": {
+                  "xfft_rx09_dly3449_event_frame_started_out_0": {
                     "ports": [
                       "xfft_rx09_dly3198/event_frame_started",
-                      "event_frame_started"
+                      "xfft_rx09_dly3449_event_frame_started_out"
                     ]
                   },
-                  "xfft_dly3449_event_tlast_unexpected_0": {
+                  "xfft_rx09_dly3449_event_tlast_unexpected_out_0": {
                     "ports": [
                       "xfft_rx09_dly3198/event_tlast_unexpected",
-                      "event_tlast_unexpected"
+                      "xfft_rx09_dly3449_event_tlast_unexpected_out"
                     ]
                   },
-                  "xfft_dly3449_event_tlast_missing_0": {
+                  "xfft_rx09_dly3449_event_tlast_missing_out_0": {
                     "ports": [
                       "xfft_rx09_dly3198/event_tlast_missing",
-                      "event_tlast_missing"
+                      "xfft_rx09_dly3449_event_tlast_missing_out"
                     ]
                   },
-                  "xfft_dly3449_event_data_in_channel_halt_0": {
+                  "xfft_rx09_dly3449_event_data_in_channel_halt_out_0": {
                     "ports": [
                       "xfft_rx09_dly3198/event_data_in_channel_halt",
-                      "event_data_in_channel_halt"
+                      "xfft_rx09_dly3449_event_data_in_channel_halt_out"
                     ]
                   },
                   "cordic_rx09_m_axis_dout_tdata": {
@@ -6454,25 +6669,13 @@
                       "Dout"
                     ]
                   },
-                  "cordic_rx09_tlast_out_0": {
-                    "ports": [
-                      "cordic_rx09/m_axis_dout_tlast",
-                      "cordic_rx09_tlast_out"
-                    ]
-                  },
-                  "cordic_rx09_tuser_out_0": {
-                    "ports": [
-                      "cordic_rx09/m_axis_dout_tuser",
-                      "cordic_rx09_tuser_out"
-                    ]
-                  },
                   "cordic_rx09_tvalid_out_0": {
                     "ports": [
                       "cordic_rx09/m_axis_dout_tvalid",
                       "cordic_rx09_tvalid_out"
                     ]
                   },
-                  "fft_s_data_xlconcat_0_dout": {
+                  "fft09_s_data_xlconcat_0_dout": {
                     "ports": [
                       "fft_rx09_s_data_xlconcat_0/dout",
                       "xfft_rx09_dly3198/s_axis_data_tdata"
@@ -6511,7 +6714,7 @@
                       "fft_rx24_s_data_xlconcat_0/In0"
                     ]
                   },
-                  "fft_rx24_s_data_xlconcat_0_dout": {
+                  "fft24_s_data_xlconcat_0_dout": {
                     "ports": [
                       "fft_rx24_s_data_xlconcat_0/dout",
                       "xfft_rx24_dly3198/s_axis_data_tdata"
@@ -6539,6 +6742,145 @@
                     "ports": [
                       "xfft_rx24_dly3198/m_axis_data_tvalid",
                       "cordic_rx24/s_axis_cartesian_tvalid"
+                    ]
+                  },
+                  "cordic_rx24_tvalid_out_0": {
+                    "ports": [
+                      "cordic_rx24/m_axis_dout_tvalid",
+                      "cordic_rx24_tvalid_out"
+                    ]
+                  },
+                  "premem_rx09_quarterfrm_in_0": {
+                    "ports": [
+                      "premem_rx09_quarterfrm_in",
+                      "delay_rx09_2174clk/D"
+                    ]
+                  },
+                  "cordic_rx09_m_tuser_out_0": {
+                    "ports": [
+                      "cordic_rx09/m_axis_dout_tuser",
+                      "cordic_rx09_m_tuser_out"
+                    ]
+                  },
+                  "cordic_rx24_m_tuser_out_0": {
+                    "ports": [
+                      "cordic_rx24/m_axis_dout_tuser",
+                      "cordic_rx24_m_tuser_out"
+                    ]
+                  },
+                  "cordic_rx09_xlconcat_0_dout": {
+                    "ports": [
+                      "cordic_rx09_xlconcat_0/dout",
+                      "cordic_rx09/s_axis_cartesian_tuser"
+                    ]
+                  },
+                  "cordic_rx24_xlconcat_0_dout": {
+                    "ports": [
+                      "cordic_rx24_xlconcat_0/dout",
+                      "cordic_rx24/s_axis_cartesian_tuser"
+                    ]
+                  },
+                  "delay_rx09_3198clk_Q": {
+                    "ports": [
+                      "delay_rx09_2174clk/Q",
+                      "cordic_rx09_xlconcat_0/In1"
+                    ]
+                  },
+                  "cordic_rx09_addra_xlslice_9to0_Dout": {
+                    "ports": [
+                      "cordic_rx09_addra_xlslice_9to0/Dout",
+                      "cordic_rx09_xlconcat_0/In0"
+                    ]
+                  },
+                  "xfft_rx09_dly3198_m_axis_data_tuser": {
+                    "ports": [
+                      "xfft_rx09_dly3198/m_axis_data_tuser",
+                      "cordic_rx09_addra_xlslice_9to0/Din"
+                    ]
+                  },
+                  "cordic_rx24_addra_xlslice_9to0_Dout": {
+                    "ports": [
+                      "cordic_rx24_addra_xlslice_9to0/Dout",
+                      "cordic_rx24_xlconcat_0/In0"
+                    ]
+                  },
+                  "delay_rx24_3198clk_Q": {
+                    "ports": [
+                      "delay_rx24_2174clk/Q",
+                      "cordic_rx24_xlconcat_0/In1"
+                    ]
+                  },
+                  "xfft_rx24_dly3198_m_axis_data_tuser": {
+                    "ports": [
+                      "xfft_rx24_dly3198/m_axis_data_tuser",
+                      "cordic_rx24_addra_xlslice_9to0/Din"
+                    ]
+                  },
+                  "premem_rx24_quarterfrm_in_0": {
+                    "ports": [
+                      "premem_rx24_quarterfrm_in",
+                      "delay_rx24_2174clk/D"
+                    ]
+                  },
+                  "fft24_data_tready_out_0": {
+                    "ports": [
+                      "xfft_rx24_dly3198/s_axis_data_tready",
+                      "fft24_data_tready_out"
+                    ]
+                  },
+                  "xfft_rx24_dly3449_event_frame_started_out_0": {
+                    "ports": [
+                      "xfft_rx24_dly3198/event_frame_started",
+                      "xfft_rx24_dly3449_event_frame_started_out"
+                    ]
+                  },
+                  "xfft_rx24_dly3198_event_tlast_unexpected_out_0": {
+                    "ports": [
+                      "xfft_rx24_dly3198/event_tlast_unexpected",
+                      "xfft_rx24_dly3198_event_tlast_unexpected_out"
+                    ]
+                  },
+                  "xfft_rx24_dly3198_event_tlast_missing_out_0": {
+                    "ports": [
+                      "xfft_rx24_dly3198/event_tlast_missing",
+                      "xfft_rx24_dly3198_event_tlast_missing_out"
+                    ]
+                  },
+                  "xfft_rx24_dly3198_event_data_in_channel_halt_out_0": {
+                    "ports": [
+                      "xfft_rx24_dly3198/event_data_in_channel_halt",
+                      "xfft_rx24_dly3198_event_data_in_channel_halt_out"
+                    ]
+                  },
+                  "fft24_data_tlast_in_0": {
+                    "ports": [
+                      "fft24_data_tlast_in",
+                      "xfft_rx24_dly3198/s_axis_data_tlast"
+                    ]
+                  },
+                  "fft24_data_tvalid_in_0": {
+                    "ports": [
+                      "fft24_data_tvalid_in",
+                      "xfft_rx24_dly3198/s_axis_data_tvalid"
+                    ]
+                  },
+                  "fft24_config_tdata_in_0": {
+                    "ports": [
+                      "fft24_config_tdata_in",
+                      "xfft_rx24_dly3198/s_axis_config_tdata"
+                    ]
+                  },
+                  "fft24_config_tvalid_in_0": {
+                    "ports": [
+                      "fft24_config_tvalid_in",
+                      "xfft_rx24_dly3198/s_axis_config_tvalid"
+                    ]
+                  },
+                  "fft24_aresetn_in_0": {
+                    "ports": [
+                      "fft24_aresetn_in_0",
+                      "xfft_rx24_dly3198/aresetn",
+                      "cordic_rx24/aresetn"
                     ]
                   }
                 }
@@ -6875,82 +7217,64 @@
                   "pre_fft_rx24_blk_mem_gen_0/clkb"
                 ]
               },
-              "fft_premem_subframe_in_0": {
+              "fft09_data_tlast_in_0": {
                 "ports": [
-                  "fft_premem_subframe_in",
-                  "TRX_rx_FFT_calc/fft_premem_subframe_in"
+                  "fft09_data_tlast_in",
+                  "TRX_rx_FFT_calc/fft09_data_tlast_in"
                 ]
               },
-              "TRX_rx_FFT_calc_TRX_pre_fft_subframe_out": {
+              "fft09_data_tready_out_0": {
                 "ports": [
-                  "TRX_rx_FFT_calc/TRX_pre_fft_subframe_out",
-                  "TRX_pre_fft_subframe_out_0"
+                  "TRX_rx_FFT_calc/fft09_data_tready_out",
+                  "fft09_data_tready_out"
                 ]
               },
-              "fft_data_tlast_in_0": {
+              "fft09_data_tvalid_in_0": {
                 "ports": [
-                  "fft_data_tlast_in",
-                  "TRX_rx_FFT_calc/fft_data_tlast_in"
+                  "fft09_data_tvalid_in",
+                  "TRX_rx_FFT_calc/fft09_data_tvalid_in"
                 ]
               },
-              "fft_data_tready_out_0": {
+              "fft09_config_tdata_in_0": {
                 "ports": [
-                  "TRX_rx_FFT_calc/fft_data_tready_out",
-                  "fft_data_tready_out"
+                  "fft09_config_tdata_in",
+                  "TRX_rx_FFT_calc/fft09_config_tdata_in"
                 ]
               },
-              "fft_data_tvalid_in_0": {
+              "fft09_config_tvalid_in_0": {
                 "ports": [
-                  "fft_data_tvalid_in",
-                  "TRX_rx_FFT_calc/fft_data_tvalid_in"
+                  "fft09_config_tvalid_in",
+                  "TRX_rx_FFT_calc/fft09_config_tvalid_in"
                 ]
               },
-              "fft_config_tdata_in_0": {
+              "fft09_aresetn_in_0": {
                 "ports": [
-                  "fft_config_tdata_in",
-                  "TRX_rx_FFT_calc/fft_config_tdata_in"
+                  "fft09_aresetn_in",
+                  "TRX_rx_FFT_calc/fft09_aresetn_in"
                 ]
               },
-              "fft_config_tready_out_0": {
+              "xfft_rx09_dly3449_event_frame_started_out_0": {
                 "ports": [
-                  "TRX_rx_FFT_calc/fft_config_tready_out",
-                  "fft_config_tready_out"
+                  "TRX_rx_FFT_calc/xfft_rx09_dly3449_event_frame_started_out",
+                  "xfft_rx09_dly3449_event_frame_started_out"
                 ]
               },
-              "fft_config_tvalid_in_0": {
+              "xfft_rx09_dly3449_event_tlast_unexpected_out_0": {
                 "ports": [
-                  "fft_config_tvalid_in",
-                  "TRX_rx_FFT_calc/fft_config_tvalid_in"
+                  "TRX_rx_FFT_calc/xfft_rx09_dly3449_event_tlast_unexpected_out",
+                  "xfft_rx09_dly3449_event_tlast_unexpected_out"
                 ]
               },
-              "fft_aresetn_in_0": {
+              "xfft_rx09_dly3449_event_tlast_missing_out_0": {
                 "ports": [
-                  "fft_aresetn_in",
-                  "TRX_rx_FFT_calc/fft_aresetn_in"
+                  "TRX_rx_FFT_calc/xfft_rx09_dly3449_event_tlast_missing_out",
+                  "xfft_rx09_dly3449_event_tlast_missing_out"
                 ]
               },
-              "TRX_rx_FFT_calc_event_frame_started_0": {
+              "xfft_rx09_dly3449_event_data_in_channel_halt_out_0": {
                 "ports": [
-                  "TRX_rx_FFT_calc/event_frame_started",
-                  "event_frame_started"
-                ]
-              },
-              "TRX_rx_FFT_calc_event_tlast_unexpected_0": {
-                "ports": [
-                  "TRX_rx_FFT_calc/event_tlast_unexpected",
-                  "event_tlast_unexpected"
-                ]
-              },
-              "TRX_rx_FFT_calc_event_tlast_missing_0": {
-                "ports": [
-                  "TRX_rx_FFT_calc/event_tlast_missing",
-                  "event_tlast_missing"
-                ]
-              },
-              "TRX_rx_FFT_calc_event_data_in_channel_halt_0": {
-                "ports": [
-                  "TRX_rx_FFT_calc/event_data_in_channel_halt",
-                  "event_data_in_channel_halt"
+                  "TRX_rx_FFT_calc/xfft_rx09_dly3449_event_data_in_channel_halt_out",
+                  "xfft_rx09_dly3449_event_data_in_channel_halt_out"
                 ]
               },
               "rx09_postmem_re_0": {
@@ -6965,22 +7289,10 @@
                   "post_fft_rx24_blk_mem_gen_0/dina"
                 ]
               },
-              "cordic_rx09_tlast_out_0": {
-                "ports": [
-                  "TRX_rx_FFT_calc/cordic_rx09_tlast_out",
-                  "cordic_rx09_tlast_out"
-                ]
-              },
-              "cordic_rx09_tuser_out_0": {
-                "ports": [
-                  "TRX_rx_FFT_calc/cordic_rx09_tuser_out",
-                  "cordic_rx09_tuser_out"
-                ]
-              },
               "cordic_rx09_tvalid_out_0": {
                 "ports": [
                   "TRX_rx_FFT_calc/cordic_rx09_tvalid_out",
-                  "cordic_rx09_tvalid_out"
+                  "post_fft_rx09_blk_mem_gen_0/wea"
                 ]
               },
               "premem_rx09_addra_in_0": {
@@ -7007,25 +7319,10 @@
                   "pre_fft_rx09_blk_mem_gen_0/wea"
                 ]
               },
-              "premem_rx_addrb_in_0": {
+              "premem_rx09_addrb_in_0": {
                 "ports": [
-                  "premem_rx_addrb_in",
-                  "pre_fft_rx09_blk_mem_gen_0/addrb",
-                  "pre_fft_rx24_blk_mem_gen_0/addrb"
-                ]
-              },
-              "postmem_rx_addra_in_0": {
-                "ports": [
-                  "postmem_rx_addra_in",
-                  "post_fft_rx09_blk_mem_gen_0/addra",
-                  "post_fft_rx24_blk_mem_gen_0/addra"
-                ]
-              },
-              "postmem_rx_wea_in_0": {
-                "ports": [
-                  "postmem_rx_wea_in",
-                  "post_fft_rx09_blk_mem_gen_0/wea",
-                  "post_fft_rx24_blk_mem_gen_0/wea"
+                  "premem_rx09_addrb_in",
+                  "pre_fft_rx09_blk_mem_gen_0/addrb"
                 ]
               },
               "postmem_rx_addrb_in_0": {
@@ -7095,6 +7392,102 @@
                 "ports": [
                   "premem_fft_rx24_xlslice_12to00/Dout",
                   "TRX_rx_FFT_calc/fft_s_data_rx24_re_in"
+                ]
+              },
+              "cordic_rx24_tvalid_out_0": {
+                "ports": [
+                  "TRX_rx_FFT_calc/cordic_rx24_tvalid_out",
+                  "post_fft_rx24_blk_mem_gen_0/wea"
+                ]
+              },
+              "premem_rx09_quarterfrm_in_0": {
+                "ports": [
+                  "premem_rx09_quarterfrm_in",
+                  "TRX_rx_FFT_calc/premem_rx09_quarterfrm_in"
+                ]
+              },
+              "cordic_rx09_m_tuser_out_0": {
+                "ports": [
+                  "TRX_rx_FFT_calc/cordic_rx09_m_tuser_out",
+                  "post_fft_rx09_blk_mem_gen_0/addra"
+                ]
+              },
+              "cordic_rx24_m_tuser_out_0": {
+                "ports": [
+                  "TRX_rx_FFT_calc/cordic_rx24_m_tuser_out",
+                  "post_fft_rx24_blk_mem_gen_0/addra"
+                ]
+              },
+              "premem_rx24_quarterfrm_in_0": {
+                "ports": [
+                  "premem_rx24_quarterfrm_in",
+                  "TRX_rx_FFT_calc/premem_rx24_quarterfrm_in"
+                ]
+              },
+              "fft24_data_tready_out_0": {
+                "ports": [
+                  "TRX_rx_FFT_calc/fft24_data_tready_out",
+                  "fft24_data_tready_out"
+                ]
+              },
+              "xfft_rx24_dly3449_event_frame_started_out_0": {
+                "ports": [
+                  "TRX_rx_FFT_calc/xfft_rx24_dly3449_event_frame_started_out",
+                  "xfft_rx24_dly3449_event_frame_started_out"
+                ]
+              },
+              "xfft_rx24_dly3198_event_tlast_unexpected_out_0": {
+                "ports": [
+                  "TRX_rx_FFT_calc/xfft_rx24_dly3198_event_tlast_unexpected_out",
+                  "xfft_rx24_dly3198_event_tlast_unexpected_out"
+                ]
+              },
+              "xfft_rx24_dly3198_event_tlast_missing_out_0": {
+                "ports": [
+                  "TRX_rx_FFT_calc/xfft_rx24_dly3198_event_tlast_missing_out",
+                  "xfft_rx24_dly3198_event_tlast_missing_out"
+                ]
+              },
+              "xfft_rx24_dly3198_event_data_in_channel_halt_out_0": {
+                "ports": [
+                  "TRX_rx_FFT_calc/xfft_rx24_dly3198_event_data_in_channel_halt_out",
+                  "xfft_rx24_dly3198_event_data_in_channel_halt_out"
+                ]
+              },
+              "fft24_data_tlast_in_0": {
+                "ports": [
+                  "fft24_data_tlast_in",
+                  "TRX_rx_FFT_calc/fft24_data_tlast_in"
+                ]
+              },
+              "fft24_data_tvalid_in_0": {
+                "ports": [
+                  "fft24_data_tvalid_in",
+                  "TRX_rx_FFT_calc/fft24_data_tvalid_in"
+                ]
+              },
+              "fft24_config_tdata_in_0": {
+                "ports": [
+                  "fft24_config_tdata_in",
+                  "TRX_rx_FFT_calc/fft24_config_tdata_in"
+                ]
+              },
+              "fft24_config_tvalid_in_0": {
+                "ports": [
+                  "fft24_config_tvalid_in",
+                  "TRX_rx_FFT_calc/fft24_config_tvalid_in"
+                ]
+              },
+              "premem_rx24_addrb_in_0": {
+                "ports": [
+                  "premem_rx24_addrb_in",
+                  "pre_fft_rx24_blk_mem_gen_0/addrb"
+                ]
+              },
+              "fft24_aresetn_in": {
+                "ports": [
+                  "fft24_aresetn_in",
+                  "TRX_rx_FFT_calc/fft24_aresetn_in_0"
                 ]
               }
             }
@@ -7638,112 +8031,64 @@
               "TRX_rx24_fifo_valid_o"
             ]
           },
-          "TRX_rx_FFT_doutb": {
+          "fft09_data_tlast_in_0": {
             "ports": [
-              "TRX_rx_FFT_unit/doutb",
-              "doutb"
+              "fft09_data_tlast_in",
+              "TRX_rx_FFT_unit/fft09_data_tlast_in"
             ]
           },
-          "TRX_rx_FFT_dout": {
+          "fft09_data_tready_out_0": {
             "ports": [
-              "TRX_rx_FFT_unit/dout",
-              "dout"
+              "TRX_rx_FFT_unit/fft09_data_tready_out",
+              "fft09_data_tready_out"
             ]
           },
-          "fft_premem_subframe_in_0": {
+          "fft09_data_tvalid_in_0": {
             "ports": [
-              "fft_premem_subframe_in",
-              "TRX_rx_FFT_unit/fft_premem_subframe_in"
+              "fft09_data_tvalid_in",
+              "TRX_rx_FFT_unit/fft09_data_tvalid_in"
             ]
           },
-          "TRX_rx_FFT_unit_TRX_pre_fft_subframe_out_0": {
+          "fft09_config_tdata_in_0": {
             "ports": [
-              "TRX_rx_FFT_unit/TRX_pre_fft_subframe_out_0",
-              "TRX_pre_fft_subframe_out"
+              "fft09_config_tdata_in",
+              "TRX_rx_FFT_unit/fft09_config_tdata_in"
             ]
           },
-          "fft_data_tlast_in_0": {
+          "fft09_config_tvalid_in_0": {
             "ports": [
-              "fft_data_tlast_in",
-              "TRX_rx_FFT_unit/fft_data_tlast_in"
+              "fft09_config_tvalid_in",
+              "TRX_rx_FFT_unit/fft09_config_tvalid_in"
             ]
           },
-          "fft_data_tready_out_0": {
+          "fft09_aresetn_in_0": {
             "ports": [
-              "TRX_rx_FFT_unit/fft_data_tready_out",
-              "fft_data_tready_out"
+              "fft09_aresetn_in",
+              "TRX_rx_FFT_unit/fft09_aresetn_in"
             ]
           },
-          "fft_data_tvalid_in_0": {
+          "xfft_rx09_dly3449_event_frame_started_out_0": {
             "ports": [
-              "fft_data_tvalid_in",
-              "TRX_rx_FFT_unit/fft_data_tvalid_in"
+              "TRX_rx_FFT_unit/xfft_rx09_dly3449_event_frame_started_out",
+              "xfft_rx09_dly3449_event_frame_started_out"
             ]
           },
-          "fft_config_tdata_in_0": {
+          "xfft_rx09_dly3449_event_tlast_unexpected_out_0": {
             "ports": [
-              "fft_config_tdata_in",
-              "TRX_rx_FFT_unit/fft_config_tdata_in"
+              "TRX_rx_FFT_unit/xfft_rx09_dly3449_event_tlast_unexpected_out",
+              "xfft_rx09_dly3449_event_tlast_unexpected_out"
             ]
           },
-          "fft_config_tready_out_0": {
+          "xfft_rx09_dly3449_event_tlast_missing_out_0": {
             "ports": [
-              "TRX_rx_FFT_unit/fft_config_tready_out",
-              "fft_config_tready_out"
-            ]
-          },
-          "fft_config_tvalid_in_0": {
-            "ports": [
-              "fft_config_tvalid_in",
-              "TRX_rx_FFT_unit/fft_config_tvalid_in"
-            ]
-          },
-          "fft_aresetn_in_0": {
-            "ports": [
-              "fft_aresetn_in",
-              "TRX_rx_FFT_unit/fft_aresetn_in"
-            ]
-          },
-          "TRX_rx_FFT_unit_event_frame_started_0": {
-            "ports": [
-              "TRX_rx_FFT_unit/event_frame_started",
-              "event_frame_started"
-            ]
-          },
-          "TRX_rx_FFT_unit_event_tlast_unexpected_0": {
-            "ports": [
-              "TRX_rx_FFT_unit/event_tlast_unexpected",
-              "event_tlast_unexpected"
-            ]
-          },
-          "TRX_rx_FFT_unit_event_tlast_missing_0": {
-            "ports": [
-              "TRX_rx_FFT_unit/event_tlast_missing",
-              "event_tlast_missing"
+              "TRX_rx_FFT_unit/xfft_rx09_dly3449_event_tlast_missing_out",
+              "xfft_rx09_dly3449_event_tlast_missing_out"
             ]
           },
           "TRX_rx_FFT_unit_event_data_in_channel_halt_0": {
             "ports": [
-              "TRX_rx_FFT_unit/event_data_in_channel_halt",
-              "event_data_in_channel_halt"
-            ]
-          },
-          "cordic_rx09_tlast_out_0": {
-            "ports": [
-              "TRX_rx_FFT_unit/cordic_rx09_tlast_out",
-              "cordic_rx09_tlast_out"
-            ]
-          },
-          "cordic_rx09_tuser_out_0": {
-            "ports": [
-              "TRX_rx_FFT_unit/cordic_rx09_tuser_out",
-              "cordic_rx09_tuser_out"
-            ]
-          },
-          "cordic_rx09_tvalid_out_0": {
-            "ports": [
-              "TRX_rx_FFT_unit/cordic_rx09_tvalid_out",
-              "cordic_rx09_tvalid_out"
+              "TRX_rx_FFT_unit/xfft_rx09_dly3449_event_data_in_channel_halt_out",
+              "xfft_rx09_dly3449_event_data_in_channel_halt_out"
             ]
           },
           "premem_rx09_addra_in_0": {
@@ -7770,28 +8115,10 @@
               "TRX_rx_FFT_unit/premem_rx09_wea_in"
             ]
           },
-          "premem_rx_addrb_in_0": {
+          "premem_rx09_addrb_in_0": {
             "ports": [
-              "premem_rx_addrb_in",
-              "TRX_rx_FFT_unit/premem_rx_addrb_in"
-            ]
-          },
-          "postmem_rx_addra_in_0": {
-            "ports": [
-              "postmem_rx_addra_in",
-              "TRX_rx_FFT_unit/postmem_rx_addra_in"
-            ]
-          },
-          "postmem_rx_wea_in_0": {
-            "ports": [
-              "postmem_rx_wea_in",
-              "TRX_rx_FFT_unit/postmem_rx_wea_in"
-            ]
-          },
-          "postmem_rx_addrb_in_0": {
-            "ports": [
-              "postmem_rx_addrb_in",
-              "TRX_rx_FFT_unit/postmem_rx_addrb_in"
+              "premem_rx09_addrb_in",
+              "TRX_rx_FFT_unit/premem_rx09_addrb_in"
             ]
           },
           "postmem_rx09_doutb_out_0": {
@@ -7816,6 +8143,90 @@
             "ports": [
               "premem_rx24_wea_in",
               "TRX_rx_FFT_unit/premem_rx24_wea_in"
+            ]
+          },
+          "premem_rx09_quarterfrm_in_0": {
+            "ports": [
+              "premem_rx09_quarterfrm_in",
+              "TRX_rx_FFT_unit/premem_rx09_quarterfrm_in"
+            ]
+          },
+          "premem_rx24_quarterfrm_in_0": {
+            "ports": [
+              "premem_rx24_quarterfrm_in",
+              "TRX_rx_FFT_unit/premem_rx24_quarterfrm_in"
+            ]
+          },
+          "postmem_rx_addrb_in_0": {
+            "ports": [
+              "postmem_rx_addrb_in",
+              "TRX_rx_FFT_unit/postmem_rx_addrb_in"
+            ]
+          },
+          "fft24_data_tready_out_0": {
+            "ports": [
+              "TRX_rx_FFT_unit/fft24_data_tready_out",
+              "fft24_data_tready_out"
+            ]
+          },
+          "xfft_rx24_dly3449_event_frame_started_out_0": {
+            "ports": [
+              "TRX_rx_FFT_unit/xfft_rx24_dly3449_event_frame_started_out",
+              "xfft_rx24_dly3449_event_frame_started_out"
+            ]
+          },
+          "xfft_rx24_dly3198_event_tlast_unexpected_out_0": {
+            "ports": [
+              "TRX_rx_FFT_unit/xfft_rx24_dly3198_event_tlast_unexpected_out",
+              "xfft_rx24_dly3198_event_tlast_unexpected_out"
+            ]
+          },
+          "TRX_rx_FFT_unit_event_tlast_missing": {
+            "ports": [
+              "TRX_rx_FFT_unit/xfft_rx24_dly3198_event_tlast_missing_out",
+              "xfft_rx24_dly3198_event_tlast_missing_out"
+            ]
+          },
+          "xfft_rx24_dly3198_event_data_in_channel_halt_out_0": {
+            "ports": [
+              "TRX_rx_FFT_unit/xfft_rx24_dly3198_event_data_in_channel_halt_out",
+              "xfft_rx24_dly3198_event_data_in_channel_halt_out"
+            ]
+          },
+          "fft24_data_tlast_in_0": {
+            "ports": [
+              "fft24_data_tlast_in",
+              "TRX_rx_FFT_unit/fft24_data_tlast_in"
+            ]
+          },
+          "fft24_data_tvalid_in_0": {
+            "ports": [
+              "fft24_data_tvalid_in",
+              "TRX_rx_FFT_unit/fft24_data_tvalid_in"
+            ]
+          },
+          "fft24_config_tdata_in_0": {
+            "ports": [
+              "fft24_config_tdata_in",
+              "TRX_rx_FFT_unit/fft24_config_tdata_in"
+            ]
+          },
+          "fft24_config_tvalid_in_0": {
+            "ports": [
+              "fft24_config_tvalid_in",
+              "TRX_rx_FFT_unit/fft24_config_tvalid_in"
+            ]
+          },
+          "premem_rx24_addrb_in_0": {
+            "ports": [
+              "premem_rx24_addrb_in",
+              "TRX_rx_FFT_unit/premem_rx24_addrb_in"
+            ]
+          },
+          "fft24_aresetn_in_0": {
+            "ports": [
+              "fft24_aresetn_in",
+              "TRX_rx_FFT_unit/fft24_aresetn_in"
             ]
           }
         }
@@ -9351,113 +9762,64 @@
           "TRX_rx24_fifo_valid_o"
         ]
       },
-      "TRX_doutb": {
+      "fft09_data_tlast_in_0": {
         "ports": [
-          "TRX/doutb",
+          "fft09_data_tlast_in",
+          "TRX/fft09_data_tlast_in"
+        ]
+      },
+      "fft09_data_tready_out_0": {
+        "ports": [
+          "TRX/fft09_data_tready_out",
+          "fft09_data_tready_out"
+        ]
+      },
+      "fft09_data_tvalid_in_0": {
+        "ports": [
+          "fft09_data_tvalid_in",
+          "TRX/fft09_data_tvalid_in"
+        ]
+      },
+      "fft09_config_tdata_in_0": {
+        "ports": [
+          "fft09_config_tdata_in",
+          "TRX/fft09_config_tdata_in"
+        ]
+      },
+      "fft09_config_tvalid_in_0": {
+        "ports": [
+          "fft09_config_tvalid_in",
+          "TRX/fft09_config_tvalid_in"
+        ]
+      },
+      "fft09_aresetn_in_0": {
+        "ports": [
+          "fft09_aresetn_in",
+          "TRX/fft09_aresetn_in"
+        ]
+      },
+      "xfft_rx09_dly3449_event_frame_started_out_0": {
+        "ports": [
+          "TRX/xfft_rx09_dly3449_event_frame_started_out",
           "vio_0/probe_in14"
         ]
       },
-      "TRX_dout": {
+      "xfft_rx09_dly3449_event_tlast_unexpected_out_0": {
         "ports": [
-          "TRX/dout",
+          "TRX/xfft_rx09_dly3449_event_tlast_unexpected_out",
           "vio_0/probe_in15"
         ]
       },
-      "fft_premem_subframe_in_0": {
+      "xfft_rx09_dly3449_event_tlast_missing_out_0": {
         "ports": [
-          "fft_premem_subframe_in",
-          "TRX/fft_premem_subframe_in"
-        ]
-      },
-      "TRX_TRX_pre_fft_subframe_out_0": {
-        "ports": [
-          "TRX/TRX_pre_fft_subframe_out",
-          "TRX_pre_fft_subframe_out",
+          "TRX/xfft_rx09_dly3449_event_tlast_missing_out",
           "vio_0/probe_in16"
         ]
       },
-      "fft_data_tlast_in_0": {
+      "xfft_rx09_dly3449_event_data_in_channel_halt_out_0": {
         "ports": [
-          "fft_data_tlast_in",
-          "TRX/fft_data_tlast_in"
-        ]
-      },
-      "fft_data_tready_out_0": {
-        "ports": [
-          "TRX/fft_data_tready_out",
-          "fft_data_tready_out"
-        ]
-      },
-      "fft_data_tvalid_in_0": {
-        "ports": [
-          "fft_data_tvalid_in",
-          "TRX/fft_data_tvalid_in"
-        ]
-      },
-      "fft_config_tdata_in_0": {
-        "ports": [
-          "fft_config_tdata_in",
-          "TRX/fft_config_tdata_in"
-        ]
-      },
-      "fft_config_tready_out_0": {
-        "ports": [
-          "TRX/fft_config_tready_out",
-          "fft_config_tready_out"
-        ]
-      },
-      "fft_config_tvalid_in_0": {
-        "ports": [
-          "fft_config_tvalid_in",
-          "TRX/fft_config_tvalid_in"
-        ]
-      },
-      "fft_aresetn_in_0": {
-        "ports": [
-          "fft_aresetn_in",
-          "TRX/fft_aresetn_in"
-        ]
-      },
-      "TRX_event_frame_started_0": {
-        "ports": [
-          "TRX/event_frame_started",
+          "TRX/xfft_rx09_dly3449_event_data_in_channel_halt_out",
           "vio_0/probe_in17"
-        ]
-      },
-      "TRX_event_tlast_unexpected_0": {
-        "ports": [
-          "TRX/event_tlast_unexpected",
-          "vio_0/probe_in18"
-        ]
-      },
-      "TRX_event_tlast_missing_0": {
-        "ports": [
-          "TRX/event_tlast_missing",
-          "vio_0/probe_in19"
-        ]
-      },
-      "TRX_event_data_in_channel_halt_0": {
-        "ports": [
-          "TRX/event_data_in_channel_halt",
-          "vio_0/probe_in20"
-        ]
-      },
-      "cordic_rx09_tlast_out_0": {
-        "ports": [
-          "TRX/cordic_rx09_tlast_out",
-          "cordic_rx09_tlast_out"
-        ]
-      },
-      "cordic_rx09_tuser_out_0": {
-        "ports": [
-          "TRX/cordic_rx09_tuser_out",
-          "cordic_rx09_tuser_out"
-        ]
-      },
-      "cordic_rx09_tvalid_out_0": {
-        "ports": [
-          "TRX/cordic_rx09_tvalid_out",
-          "cordic_rx09_tvalid_out"
         ]
       },
       "premem_rx09_addra_in_0": {
@@ -9484,40 +9846,22 @@
           "TRX/premem_rx09_wea_in"
         ]
       },
-      "premem_rx_addrb_in_0": {
+      "premem_rx09_addrb_in_0": {
         "ports": [
-          "premem_rx_addrb_in",
-          "TRX/premem_rx_addrb_in"
-        ]
-      },
-      "postmem_rx_addra_in_0": {
-        "ports": [
-          "postmem_rx_addra_in",
-          "TRX/postmem_rx_addra_in"
-        ]
-      },
-      "postmem_rx_wea_in_0": {
-        "ports": [
-          "postmem_rx_wea_in",
-          "TRX/postmem_rx_wea_in"
+          "premem_rx09_addrb_in",
+          "TRX/premem_rx09_addrb_in"
         ]
       },
       "postmem_rx09_doutb_out_0": {
         "ports": [
           "TRX/postmem_rx09_doutb_out",
-          "vio_0/probe_in21"
+          "vio_0/probe_in22"
         ]
       },
       "postmem_rx24_doutb_out_0": {
         "ports": [
           "TRX/postmem_rx24_doutb_out",
-          "vio_0/probe_in22"
-        ]
-      },
-      "postmem_rx_addrb_in_0": {
-        "ports": [
-          "vio_0/probe_out0",
-          "TRX/postmem_rx_addrb_in"
+          "vio_0/probe_in23"
         ]
       },
       "premem_rx24_addra_in_0": {
@@ -9530,6 +9874,90 @@
         "ports": [
           "premem_rx24_wea_in",
           "TRX/premem_rx24_wea_in"
+        ]
+      },
+      "premem_rx09_quarterfrm_in_0": {
+        "ports": [
+          "premem_rx09_quarterfrm_in",
+          "TRX/premem_rx09_quarterfrm_in"
+        ]
+      },
+      "premem_rx24_quarterfrm_in_0": {
+        "ports": [
+          "premem_rx24_quarterfrm_in",
+          "TRX/premem_rx24_quarterfrm_in"
+        ]
+      },
+      "postmem_rx_addrb_in_0": {
+        "ports": [
+          "vio_0/probe_out0",
+          "TRX/postmem_rx_addrb_in"
+        ]
+      },
+      "fft24_data_tready_out_0": {
+        "ports": [
+          "TRX/fft24_data_tready_out",
+          "fft24_data_tready_out"
+        ]
+      },
+      "xfft_rx24_dly3449_event_frame_started_out_0": {
+        "ports": [
+          "TRX/xfft_rx24_dly3449_event_frame_started_out",
+          "vio_0/probe_in18"
+        ]
+      },
+      "xfft_rx24_dly3198_event_tlast_unexpected_out_0": {
+        "ports": [
+          "TRX/xfft_rx24_dly3198_event_tlast_unexpected_out",
+          "vio_0/probe_in19"
+        ]
+      },
+      "xfft_rx24_dly3198_event_tlast_missing_out_0": {
+        "ports": [
+          "TRX/xfft_rx24_dly3198_event_tlast_missing_out",
+          "vio_0/probe_in20"
+        ]
+      },
+      "xfft_rx24_dly3198_event_data_in_channel_halt_out_0": {
+        "ports": [
+          "TRX/xfft_rx24_dly3198_event_data_in_channel_halt_out",
+          "vio_0/probe_in21"
+        ]
+      },
+      "fft24_data_tlast_in_0": {
+        "ports": [
+          "fft24_data_tlast_in",
+          "TRX/fft24_data_tlast_in"
+        ]
+      },
+      "fft24_data_tvalid_in_0": {
+        "ports": [
+          "fft24_data_tvalid_in",
+          "TRX/fft24_data_tvalid_in"
+        ]
+      },
+      "fft24_config_tdata_in_0": {
+        "ports": [
+          "fft24_config_tdata_in",
+          "TRX/fft24_config_tdata_in"
+        ]
+      },
+      "fft24_config_tvalid_in_0": {
+        "ports": [
+          "fft24_config_tvalid_in",
+          "TRX/fft24_config_tvalid_in"
+        ]
+      },
+      "premem_rx24_addrb_in_0": {
+        "ports": [
+          "premem_rx24_addrb_in",
+          "TRX/premem_rx24_addrb_in"
+        ]
+      },
+      "fft24_aresetn_in_0": {
+        "ports": [
+          "fft24_aresetn_in",
+          "TRX/fft24_aresetn_in"
         ]
       }
     },
