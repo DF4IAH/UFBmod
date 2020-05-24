@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Sun May 24 10:45:37 2020
+--Date        : Sun May 24 23:31:32 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -159,12 +159,21 @@ architecture STRUCTURE of msys_wrapper is
     premem_rx09_addrb_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
     premem_rx24_addra_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
     premem_rx24_wea_in : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
-    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
+    premem_rx09_quarterfrm_in : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    premem_rx24_quarterfrm_in : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    fft24_data_tready_out : out STD_LOGIC;
+    fft24_data_tlast_in : in STD_LOGIC;
+    fft24_data_tvalid_in : in STD_LOGIC;
+    fft24_config_tdata_in : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    fft24_config_tvalid_in : in STD_LOGIC;
+    premem_rx24_addrb_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    fft24_aresetn_in : in STD_LOGIC;
     RMII_PHY_M_0_crs_dv : in STD_LOGIC;
     RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RMII_PHY_M_0_tx_en : out STD_LOGIC;
     RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
+    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
     CLK3_sys_diff_clk_p : in STD_LOGIC;
     CLK3_sys_diff_clk_n : in STD_LOGIC;
     DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -182,6 +191,8 @@ architecture STRUCTURE of msys_wrapper is
     DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
+    UART0_rxd : in STD_LOGIC;
+    UART0_txd : out STD_LOGIC;
     TRX_spi_io0_i : in STD_LOGIC;
     TRX_spi_io0_o : out STD_LOGIC;
     TRX_spi_io0_t : out STD_LOGIC;
@@ -194,8 +205,6 @@ architecture STRUCTURE of msys_wrapper is
     TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_t : out STD_LOGIC;
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
     qspi_flash_io0_i : in STD_LOGIC;
     qspi_flash_io0_o : out STD_LOGIC;
     qspi_flash_io0_t : out STD_LOGIC;
@@ -214,31 +223,22 @@ architecture STRUCTURE of msys_wrapper is
     onewire_EUI48_tri_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     onewire_EUI48_tri_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     onewire_EUI48_tri_t : out STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
     BOARD_IIC_scl_i : in STD_LOGIC;
     BOARD_IIC_scl_o : out STD_LOGIC;
     BOARD_IIC_scl_t : out STD_LOGIC;
     BOARD_IIC_sda_i : in STD_LOGIC;
     BOARD_IIC_sda_o : out STD_LOGIC;
     BOARD_IIC_sda_t : out STD_LOGIC;
-    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
+    TRX_tx_clk_clk_n : out STD_LOGIC;
+    TRX_tx_clk_clk_p : out STD_LOGIC;
     ETH0_MDIO_MDC_mdc : out STD_LOGIC;
     ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
     ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
-    TRX_tx_clk_clk_n : out STD_LOGIC;
-    TRX_tx_clk_clk_p : out STD_LOGIC;
-    premem_rx09_quarterfrm_in : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    premem_rx24_quarterfrm_in : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    fft24_data_tready_out : out STD_LOGIC;
-    fft24_data_tlast_in : in STD_LOGIC;
-    fft24_data_tvalid_in : in STD_LOGIC;
-    fft24_config_tdata_in : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    fft24_config_tvalid_in : in STD_LOGIC;
-    premem_rx24_addrb_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    fft24_aresetn_in : in STD_LOGIC
+    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC
   );
   end component msys;
   component IOBUF is

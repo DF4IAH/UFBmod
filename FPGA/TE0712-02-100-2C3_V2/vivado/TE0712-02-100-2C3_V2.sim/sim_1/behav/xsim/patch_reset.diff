@@ -1,8 +1,0 @@
---- tb_null.tcl.orig	2020-05-23 21:34:03.005604700 +0200
-+++ tb_null.tcl	2020-05-23 21:32:56.446860000 +0200
-@@ -9,3 +9,5 @@
- }
- 
-+add_force {/tb_null/msys_wrapper_i/msys_i/SC0712_0/reset_out} -radix hex {1 10us}
-+
- run 1000ns

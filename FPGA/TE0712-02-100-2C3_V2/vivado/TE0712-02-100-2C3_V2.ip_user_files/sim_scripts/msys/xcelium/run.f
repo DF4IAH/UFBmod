@@ -417,7 +417,6 @@
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_selectio_wiz_0_1/msys_selectio_wiz_0_1_selectio_wiz.v" \
   "../../../bd/msys/ip/msys_selectio_wiz_0_1/msys_selectio_wiz_0_1.v" \
-  "../../../bd/msys/ip/msys_xlconstant_0b00_0/sim/msys_xlconstant_0b00_0.v" \
   "../../../bd/msys/ip/msys_xlslice_0_4/sim/msys_xlslice_0_4.v" \
   "../../../bd/msys/ip/msys_TRX_rx_xlslice_15to15_0/sim/msys_TRX_rx_xlslice_15to15_0.v" \
   "../../../bd/msys/ip/msys_TRX_rx_xlslice_15to16_0/sim/msys_TRX_rx_xlslice_15to16_0.v" \
@@ -527,6 +526,63 @@
   "../../../bd/msys/ip/msys_c_shift_ram_dly1024_0_0/sim/msys_c_shift_ram_dly1024_0_0.vhd" \
   "../../../bd/msys/ip/msys_c_shift_ram_dly1024_1_2/sim/msys_c_shift_ram_dly1024_1_2.vhd" \
   "../../../bd/msys/ip/msys_c_shift_ram_dly126_3_0/sim/msys_c_shift_ram_dly126_3_0.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_TRX_rx09_fifo_generator_0_1/sim/msys_TRX_rx09_fifo_generator_0_1.v" \
+  "../../../bd/msys/ip/msys_xlconcat_0_6/sim/msys_xlconcat_0_6.v" \
+  "../../../bd/msys/ip/msys_xlconstant_0_14/sim/msys_xlconstant_0_14.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_26/sim/msys_xlslice_0_26.v" \
+  "../../../bd/msys/ip/msys_xlslice_1_1/sim/msys_xlslice_1_1.v" \
+  "../../../bd/msys/ip/msys_xlslice_2_0/sim/msys_xlslice_2_0.v" \
+  "../../../bd/msys/ip/msys_xlslice_3_0/sim/msys_xlslice_3_0.v" \
+  "../../../bd/msys/ip/msys_xlslice_4_0/sim/msys_xlslice_4_0.v" \
+  "../../../bd/msys/ip/msys_xlslice_5_0/sim/msys_xlslice_5_0.v" \
+  "../../../bd/msys/ip/msys_xlslice_6_0/sim/msys_xlslice_6_0.v" \
+  "../../../bd/msys/ip/msys_xlslice_7_0/sim/msys_xlslice_7_0.v" \
+-endlib
+-makelib xcelium_lib/xbip_dsp48_multadd_v3_0_6 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/b0ac/hdl/xbip_dsp48_multadd_v3_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/dds_compiler_v6_0_19 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/c3fd/hdl/dds_compiler_v6_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_dds_compiler_0_0/sim/msys_dds_compiler_0_0.vhd" \
+  "../../../bd/msys/ip/msys_TRX_tx_dds_compiler_0_0/sim/msys_TRX_tx_dds_compiler_0_0.vhd" \
+  "../../../bd/msys/ip/msys_c_counter_binary_0_3/sim/msys_c_counter_binary_0_3.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xlslice_0_27/sim/msys_xlslice_0_27.v" \
+  "../../../bd/msys/ip/msys_xlslice_1_2/sim/msys_xlslice_1_2.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_28/sim/msys_xlslice_0_28.v" \
+  "../../../bd/msys/ip/msys_xlslice_1_3/sim/msys_xlslice_1_3.v" \
+-endlib
+-makelib xcelium_lib/xbip_multadd_v3_0_15 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8914/hdl/xbip_multadd_v3_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xbip_multadd_0_0/sim/msys_xbip_multadd_0_0.vhd" \
+  "../../../bd/msys/ip/msys_xbip_multadd_0_1/sim/msys_xbip_multadd_0_1.vhd" \
+  "../../../bd/msys/ip/msys_axi_gpio_0_1/sim/msys_axi_gpio_0_1.vhd" \
+  "../../../bd/msys/ip/msys_c_shift_ram_0_3/sim/msys_c_shift_ram_0_3.vhd" \
+  "../../../bd/msys/ip/msys_c_shift_ram_0_4/sim/msys_c_shift_ram_0_4.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xlslice_0_29/sim/msys_xlslice_0_29.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_30/sim/msys_xlslice_0_30.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_31/sim/msys_xlslice_0_31.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_32/sim/msys_xlslice_0_32.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xbip_multadd_0_2/sim/msys_xbip_multadd_0_2.vhd" \
+  "../../../bd/msys/ip/msys_xbip_multadd_0_3/sim/msys_xbip_multadd_0_3.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xlconcat_0_7/sim/msys_xlconcat_0_7.v" \
+  "../../../bd/msys/ip/msys_xlconstant_0_15/sim/msys_xlconstant_0_15.v" \
+  "../../../bd/msys/ip/msys_xlconstant_0_16/sim/msys_xlconstant_0_16.v" \
+  "../../../bd/msys/ip/msys_xlconstant_0_17/sim/msys_xlconstant_0_17.v" \
+  "../../../bd/msys/ip/msys_xlconstant_0_18/sim/msys_xlconstant_0_18.v" \
 -endlib
 -makelib xcelium_lib/axi_clock_converter_v2_1_19 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/9e81/hdl/axi_clock_converter_v2_1_vl_rfs.v" \

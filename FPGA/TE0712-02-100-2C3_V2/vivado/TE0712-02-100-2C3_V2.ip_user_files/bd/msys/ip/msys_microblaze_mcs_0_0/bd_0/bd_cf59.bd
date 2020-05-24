@@ -297,16 +297,52 @@
       }
     },
     "interface_nets": {
-      "iomodule_0_GPIO1": {
+      "ilmb_port_2": {
         "interface_ports": [
-          "GPIO1",
-          "iomodule_0/GPIO1"
+          "second_ilmb_cntlr/BRAM_PORT",
+          "second_lmb_bram_I/BRAM_PORTB"
+        ]
+      },
+      "dlmb": {
+        "interface_ports": [
+          "microblaze_I/DLMB",
+          "dlmb/LMB_M"
+        ]
+      },
+      "dlmb_sl_2": {
+        "interface_ports": [
+          "dlmb/LMB_Sl_2",
+          "second_dlmb_cntlr/SLMB"
+        ]
+      },
+      "dlmb_port_2": {
+        "interface_ports": [
+          "second_dlmb_cntlr/BRAM_PORT",
+          "second_lmb_bram_I/BRAM_PORTA"
+        ]
+      },
+      "dlmb_port": {
+        "interface_ports": [
+          "dlmb_cntlr/BRAM_PORT",
+          "lmb_bram_I/BRAM_PORTA"
+        ]
+      },
+      "ilmb_port": {
+        "interface_ports": [
+          "ilmb_cntlr/BRAM_PORT",
+          "lmb_bram_I/BRAM_PORTB"
         ]
       },
       "ilmb_sl_1": {
         "interface_ports": [
           "ilmb/LMB_Sl_1",
           "second_ilmb_cntlr/SLMB"
+        ]
+      },
+      "iomodule_0_GPIO1": {
+        "interface_ports": [
+          "GPIO1",
+          "iomodule_0/GPIO1"
         ]
       },
       "dlmb_sl_1": {
@@ -321,52 +357,16 @@
           "ilmb/LMB_M"
         ]
       },
-      "ilmb_sl_0": {
-        "interface_ports": [
-          "ilmb/LMB_Sl_0",
-          "ilmb_cntlr/SLMB"
-        ]
-      },
       "dlmb_sl_0": {
         "interface_ports": [
           "dlmb/LMB_Sl_0",
           "dlmb_cntlr/SLMB"
         ]
       },
-      "dlmb": {
+      "ilmb_sl_0": {
         "interface_ports": [
-          "microblaze_I/DLMB",
-          "dlmb/LMB_M"
-        ]
-      },
-      "dlmb_port": {
-        "interface_ports": [
-          "dlmb_cntlr/BRAM_PORT",
-          "lmb_bram_I/BRAM_PORTA"
-        ]
-      },
-      "dlmb_port_2": {
-        "interface_ports": [
-          "second_dlmb_cntlr/BRAM_PORT",
-          "second_lmb_bram_I/BRAM_PORTA"
-        ]
-      },
-      "ilmb_port_2": {
-        "interface_ports": [
-          "second_ilmb_cntlr/BRAM_PORT",
-          "second_lmb_bram_I/BRAM_PORTB"
-        ]
-      },
-      "dlmb_sl_2": {
-        "interface_ports": [
-          "dlmb/LMB_Sl_2",
-          "second_dlmb_cntlr/SLMB"
-        ]
-      },
-      "ilmb_port": {
-        "interface_ports": [
-          "ilmb_cntlr/BRAM_PORT",
-          "lmb_bram_I/BRAM_PORTB"
+          "ilmb/LMB_Sl_0",
+          "ilmb_cntlr/SLMB"
         ]
       }
     },
