@@ -1297,7 +1297,7 @@ proc create_hier_cell_TRX_tx_DDS_unit { parentCell nameHier } {
    CONFIG.Optimization_Goal {Speed} \
    CONFIG.Output_Frequency1 {0} \
    CONFIG.Output_Width {13} \
-   CONFIG.PINC1 {100000000000000000000} \
+   CONFIG.PINC1 {0} \
    CONFIG.Parameter_Entry {Hardware_Parameters} \
    CONFIG.Phase_Increment {Programmable} \
    CONFIG.Phase_Width {24} \
@@ -1380,7 +1380,7 @@ proc create_hier_cell_TRX_tx_DDS_unit { parentCell nameHier } {
    CONFIG.Optimization_Goal {Speed} \
    CONFIG.Output_Frequency1 {0} \
    CONFIG.Output_Width {13} \
-   CONFIG.PINC1 {1001000000000000000} \
+   CONFIG.PINC1 {0} \
    CONFIG.Parameter_Entry {Hardware_Parameters} \
    CONFIG.Phase_Increment {Programmable} \
    CONFIG.Phase_Width {24} \
@@ -2208,12 +2208,11 @@ proc create_hier_cell_TRX_LVDS { parentCell nameHier } {
   connect_bd_net -net TRX_rx_selectio_wiz_0_data_out_to_pins_p [get_bd_pins TRX_tx_data_p] [get_bd_pins TRX_LVDS_selectio_wiz_0/data_out_to_pins_p]
   connect_bd_net -net TRX_tx09_fifo_din_0 [get_bd_pins TRX_tx09_fifo_generator_0/din] [get_bd_pins TRX_tx_concat/TRX_tx09_fifo_din]
   connect_bd_net -net TRX_tx09_fifo_dout_0 [get_bd_pins TRX_tx09_fifo_generator_0/dout] [get_bd_pins TRX_tx_concat/TRX_tx09_fifo_dout]
-  connect_bd_net -net TRX_tx_4to1_c_counter_binary_0_THRESH0_0 [get_bd_pins TRX_tx_4to1_c_counter_binary_0_THRESH0] [get_bd_pins TRX_tx09_fifo_generator_0/wr_en]
   connect_bd_net -net TRX_tx_PTT_in_0 [get_bd_pins TRX_tx_PTT_in] [get_bd_pins TRX_tx_concat/TRX_tx_PTT_in]
   connect_bd_net -net TRX_tx_data_out_from_device_in_0 [get_bd_pins TRX_LVDS_selectio_wiz_0/data_out_from_device] [get_bd_pins TRX_tx_concat/TRX_tx_data_out_from_device_in]
   connect_bd_net -net TRX_tx_im_out_0 [get_bd_pins TRX_tx_im_out] [get_bd_pins TRX_tx_concat/TRX_tx_im_out]
   connect_bd_net -net TRX_tx_re_out_0 [get_bd_pins TRX_tx_re_out] [get_bd_pins TRX_tx_concat/TRX_tx_re_out]
-  connect_bd_net -net c_1 [get_bd_pins TRX_rx09_fifo_generator_0/rd_en] [get_bd_pins TRX_rx09_fifo_generator_0/wr_en] [get_bd_pins TRX_rx24_fifo_generator_0/rd_en] [get_bd_pins TRX_rx24_fifo_generator_0/wr_en] [get_bd_pins TRX_tx09_fifo_generator_0/rd_en] [get_bd_pins xlconstant_1_len1/dout]
+  connect_bd_net -net c_1 [get_bd_pins TRX_rx09_fifo_generator_0/rd_en] [get_bd_pins TRX_rx09_fifo_generator_0/wr_en] [get_bd_pins TRX_rx24_fifo_generator_0/rd_en] [get_bd_pins TRX_rx24_fifo_generator_0/wr_en] [get_bd_pins TRX_tx09_fifo_generator_0/rd_en] [get_bd_pins TRX_tx09_fifo_generator_0/wr_en] [get_bd_pins xlconstant_1_len1/dout]
   connect_bd_net -net ref_clock_200MHz [get_bd_pins ref_clock] [get_bd_pins TRX_LVDS_selectio_wiz_0/ref_clock]
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins clk_reset] [get_bd_pins TRX_LVDS_selectio_wiz_0/clk_reset]
   connect_bd_net -net s_axi_aclk_CD100 [get_bd_pins s_axi_aclk] [get_bd_pins TRX_rx09_fifo_generator_0/rd_clk] [get_bd_pins TRX_rx24_fifo_generator_0/rd_clk]

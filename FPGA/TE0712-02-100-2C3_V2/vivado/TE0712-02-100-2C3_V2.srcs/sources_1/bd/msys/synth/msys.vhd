@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2.1 (win64) Build 2729669 Thu Dec  5 04:49:17 MST 2019
---Date        : Sun May 24 23:31:31 2020
+--Date        : Mon May 25 15:58:04 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -6076,7 +6076,6 @@ architecture STRUCTURE of TRX_LVDS_imp_1YILY8K is
   signal TRX_rx_selectio_wiz_0_data_out_to_pins_p : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal TRX_tx09_fifo_din_0 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal TRX_tx09_fifo_dout_0 : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal TRX_tx_4to1_c_counter_binary_0_THRESH0_0 : STD_LOGIC;
   signal TRX_tx_PTT_in_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_tx_data_out_from_device_in_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal TRX_tx_im_out_0 : STD_LOGIC_VECTOR ( 20 downto 8 );
@@ -6114,7 +6113,6 @@ begin
   TRX_rx_data_n_1(1 downto 0) <= TRX_rx_data_n(1 downto 0);
   TRX_rx_data_p_1(1 downto 0) <= TRX_rx_data_p(1 downto 0);
   TRX_rx_selectio_io_reset <= io_reset;
-  TRX_tx_4to1_c_counter_binary_0_THRESH0_0 <= TRX_tx_4to1_c_counter_binary_0_THRESH0;
   TRX_tx_PTT_in_0(0) <= TRX_tx_PTT_in(0);
   TRX_tx_clk_clk_n <= Conn4_CLK_N;
   TRX_tx_clk_clk_p <= Conn4_CLK_P;
@@ -6204,7 +6202,7 @@ TRX_tx09_fifo_generator_0: component msys_TRX_rx09_fifo_generator_0_1
       valid => NLW_TRX_tx09_fifo_generator_0_valid_UNCONNECTED,
       wr_clk => TRX_rx_clkdiv_CD016,
       wr_data_count(3 downto 0) => NLW_TRX_tx09_fifo_generator_0_wr_data_count_UNCONNECTED(3 downto 0),
-      wr_en => TRX_tx_4to1_c_counter_binary_0_THRESH0_0,
+      wr_en => c_1(0),
       wr_rst_busy => NLW_TRX_tx09_fifo_generator_0_wr_rst_busy_UNCONNECTED
     );
 TRX_tx_concat: entity work.TRX_tx_concat_imp_16F62M8

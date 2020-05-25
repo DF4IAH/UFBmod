@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_null_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="comp_defs" />
+            <top_module name="glbl" />
+            <top_module name="iic_pkg" />
+            <top_module name="iomodule_funcs" />
+            <top_module name="iomodule_vote_pkg" />
+            <top_module name="ipif_pkg" />
+            <top_module name="lib_pkg" />
+            <top_module name="lmb_bram_if_funcs" />
+            <top_module name="mac_pkg" />
+            <top_module name="mdm_funcs" />
+            <top_module name="tb_null" />
+            <top_module name="tc_types" />
+            <top_module name="vcomponents" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="24294098667fs"></ZoomStartTime>
+      <ZoomEndTime time="24508198668fs"></ZoomEndTime>
+      <Cursor1Time time="24329782000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="670"></NameColumnWidth>
+      <ValueColumnWidth column_width="352"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="6" />
+   <wave_markers>
+      <marker time="16266766000" label="" />
+      <marker time="18766926000" label="" />
+   </wave_markers>
+   <wvobject type="divider" fp_name="divider1646">
+      <obj_property name="label">Force_High_after_10us</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SC0712_0/reset_out" type="logic">
+      <obj_property name="ElementShortName">reset_out</obj_property>
+      <obj_property name="ObjectShortName">reset_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="group263" type="group">
+      <obj_property name="label">TRX_tx_DDS_unit</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="group266" type="group">
+         <obj_property name="label">clocks</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/s_axi_aresetn" type="logic">
+            <obj_property name="ElementShortName">s_axi_aresetn</obj_property>
+            <obj_property name="ObjectShortName">s_axi_aresetn</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/s_axi_aclk" type="logic">
+            <obj_property name="ElementShortName">s_axi_aclk</obj_property>
+            <obj_property name="ObjectShortName">s_axi_aclk</obj_property>
+            <obj_property name="CustomSignalColor">#008000</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/aresetn" type="logic">
+            <obj_property name="ElementShortName">aresetn</obj_property>
+            <obj_property name="ObjectShortName">aresetn</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/SCLR" type="logic">
+            <obj_property name="ElementShortName">SCLR</obj_property>
+            <obj_property name="ObjectShortName">SCLR</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/clk_div_out" type="logic">
+            <obj_property name="ElementShortName">clk_div_out</obj_property>
+            <obj_property name="ObjectShortName">clk_div_out</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx_4to1_c_counter_binary_0_THRESH0" type="logic">
+            <obj_property name="ElementShortName">TRX_tx_4to1_c_counter_binary_0_THRESH0</obj_property>
+            <obj_property name="ObjectShortName">TRX_tx_4to1_c_counter_binary_0_THRESH0</obj_property>
+            <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group321" type="group">
+         <obj_property name="label">FORCE_ME__DDS0_DDS1</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx0_c_shift_ram_0_Q" type="array">
+            <obj_property name="ElementShortName">TRX_tx0_c_shift_ram_0_Q[31:0]</obj_property>
+            <obj_property name="ObjectShortName">TRX_tx0_c_shift_ram_0_Q[31:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+            <obj_property name="CustomSignalColor">#FF0000</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx1_c_shift_ram_0_Q" type="array">
+            <obj_property name="ElementShortName">TRX_tx1_c_shift_ram_0_Q[31:0]</obj_property>
+            <obj_property name="ObjectShortName">TRX_tx1_c_shift_ram_0_Q[31:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+            <obj_property name="CustomSignalColor">#FF0000</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx_re_out" type="array">
+         <obj_property name="ElementShortName">TRX_tx_re_out[20:8]</obj_property>
+         <obj_property name="ObjectShortName">TRX_tx_re_out[20:8]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx_im_out" type="array">
+         <obj_property name="ElementShortName">TRX_tx_im_out[20:8]</obj_property>
+         <obj_property name="ObjectShortName">TRX_tx_im_out[20:8]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider388">
+         <obj_property name="label">Internals DDS</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx_dds_compiler_0_m_axis_data_tdata" type="array">
+         <obj_property name="ElementShortName">TRX_tx_dds_compiler_0_m_axis_data_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">TRX_tx_dds_compiler_0_m_axis_data_tdata[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="group282" type="group">
+         <obj_property name="label">TRX_tx0_re_MAC</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx0_re_xbip_multadd_0/CLK" type="logic">
+            <obj_property name="ElementShortName">CLK</obj_property>
+            <obj_property name="ObjectShortName">CLK</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx0_re_xbip_multadd_0/CE" type="logic">
+            <obj_property name="ElementShortName">CE</obj_property>
+            <obj_property name="ObjectShortName">CE</obj_property>
+            <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx0_re_xbip_multadd_0/SCLR" type="logic">
+            <obj_property name="ElementShortName">SCLR</obj_property>
+            <obj_property name="ObjectShortName">SCLR</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx0_re_xbip_multadd_0/SUBTRACT" type="logic">
+            <obj_property name="ElementShortName">SUBTRACT</obj_property>
+            <obj_property name="ObjectShortName">SUBTRACT</obj_property>
+            <obj_property name="CustomSignalColor">#A52A2A</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx0_re_xbip_multadd_0/A" type="array">
+            <obj_property name="ElementShortName">A[12:0]</obj_property>
+            <obj_property name="ObjectShortName">A[12:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+            <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx0_re_xbip_multadd_0/B" type="array">
+            <obj_property name="ElementShortName">B[7:0]</obj_property>
+            <obj_property name="ObjectShortName">B[7:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+            <obj_property name="CustomSignalColor">#D2691E</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx0_re_xbip_multadd_0/C" type="array">
+            <obj_property name="ElementShortName">C[0:0]</obj_property>
+            <obj_property name="ObjectShortName">C[0:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx0_re_xbip_multadd_0/P" type="array">
+            <obj_property name="ElementShortName">P[20:0]</obj_property>
+            <obj_property name="ObjectShortName">P[20:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+            <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx_dds_compiler_1_m_axis_data_tdata" type="array">
+         <obj_property name="ElementShortName">TRX_tx_dds_compiler_1_m_axis_data_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">TRX_tx_dds_compiler_1_m_axis_data_tdata[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="group331" type="group">
+         <obj_property name="label">TRX_tx1_re_MAC</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx1_re_xbip_multadd_0/CLK" type="logic">
+            <obj_property name="ElementShortName">CLK</obj_property>
+            <obj_property name="ObjectShortName">CLK</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx1_re_xbip_multadd_0/CE" type="logic">
+            <obj_property name="ElementShortName">CE</obj_property>
+            <obj_property name="ObjectShortName">CE</obj_property>
+            <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx1_re_xbip_multadd_0/SCLR" type="logic">
+            <obj_property name="ElementShortName">SCLR</obj_property>
+            <obj_property name="ObjectShortName">SCLR</obj_property>
+            <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx1_re_xbip_multadd_0/SUBTRACT" type="logic">
+            <obj_property name="ElementShortName">SUBTRACT</obj_property>
+            <obj_property name="ObjectShortName">SUBTRACT</obj_property>
+            <obj_property name="CustomSignalColor">#A52A2A</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx1_re_xbip_multadd_0/A" type="array">
+            <obj_property name="ElementShortName">A[12:0]</obj_property>
+            <obj_property name="ObjectShortName">A[12:0]</obj_property>
+            <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx1_re_xbip_multadd_0/B" type="array">
+            <obj_property name="ElementShortName">B[7:0]</obj_property>
+            <obj_property name="ObjectShortName">B[7:0]</obj_property>
+            <obj_property name="CustomSignalColor">#D2691E</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx1_re_xbip_multadd_0/C" type="array">
+            <obj_property name="ElementShortName">C[20:0]</obj_property>
+            <obj_property name="ObjectShortName">C[20:0]</obj_property>
+            <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx1_re_xbip_multadd_0/P" type="array">
+            <obj_property name="ElementShortName">P[20:8]</obj_property>
+            <obj_property name="ObjectShortName">P[20:8]</obj_property>
+            <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_tx_DDS_unit/TRX_tx1_re_xbip_multadd_0/PCOUT" type="array">
+            <obj_property name="ElementShortName">PCOUT[47:0]</obj_property>
+            <obj_property name="ObjectShortName">PCOUT[47:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+            <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider575">
+      <obj_property name="label">Internals LVDS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group574" type="group">
+      <obj_property name="label">TRX_tx09_fifo</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_tx09_fifo_generator_0/rst" type="logic">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_tx09_fifo_generator_0/wr_clk" type="logic">
+         <obj_property name="ElementShortName">wr_clk</obj_property>
+         <obj_property name="ObjectShortName">wr_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_tx09_fifo_generator_0/wr_rst_busy" type="logic">
+         <obj_property name="ElementShortName">wr_rst_busy</obj_property>
+         <obj_property name="ObjectShortName">wr_rst_busy</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_tx09_fifo_generator_0/wr_en" type="logic">
+         <obj_property name="ElementShortName">wr_en</obj_property>
+         <obj_property name="ObjectShortName">wr_en</obj_property>
+         <obj_property name="CustomSignalColor">#808000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_tx09_fifo_generator_0/din" type="array">
+         <obj_property name="ElementShortName">din[31:0]</obj_property>
+         <obj_property name="ObjectShortName">din[31:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_tx09_fifo_generator_0/full" type="logic">
+         <obj_property name="ElementShortName">full</obj_property>
+         <obj_property name="ObjectShortName">full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_tx09_fifo_generator_0/wr_data_count" type="array">
+         <obj_property name="ElementShortName">wr_data_count[3:0]</obj_property>
+         <obj_property name="ObjectShortName">wr_data_count[3:0]</obj_property>
+         <obj_property name="CustomSignalColor">#A52A2A</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_tx09_fifo_generator_0/rd_clk" type="logic">
+         <obj_property name="ElementShortName">rd_clk</obj_property>
+         <obj_property name="ObjectShortName">rd_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_tx09_fifo_generator_0/valid" type="logic">
+         <obj_property name="ElementShortName">valid</obj_property>
+         <obj_property name="ObjectShortName">valid</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_tx09_fifo_generator_0/rd_en" type="logic">
+         <obj_property name="ElementShortName">rd_en</obj_property>
+         <obj_property name="ObjectShortName">rd_en</obj_property>
+         <obj_property name="CustomSignalColor">#808000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_tx09_fifo_generator_0/dout" type="array">
+         <obj_property name="ElementShortName">dout[7:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[7:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_tx09_fifo_generator_0/empty" type="logic">
+         <obj_property name="ElementShortName">empty</obj_property>
+         <obj_property name="ObjectShortName">empty</obj_property>
+         <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_tx09_fifo_generator_0/rd_data_count" type="array">
+         <obj_property name="ElementShortName">rd_data_count[5:0]</obj_property>
+         <obj_property name="ObjectShortName">rd_data_count[5:0]</obj_property>
+         <obj_property name="CustomSignalColor">#A52A2A</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_tx09_fifo_generator_0/rd_rst_busy" type="logic">
+         <obj_property name="ElementShortName">rd_rst_busy</obj_property>
+         <obj_property name="ObjectShortName">rd_rst_busy</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group577" type="group">
+      <obj_property name="label">TRX_LVDS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/data_out_from_device" type="array">
+         <obj_property name="ElementShortName">data_out_from_device[15:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_from_device[15:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/data_out_to_pins_p" type="array">
+         <obj_property name="ElementShortName">data_out_to_pins_p[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_to_pins_p[1:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/data_out_to_pins_n" type="array">
+         <obj_property name="ElementShortName">data_out_to_pins_n[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_to_pins_n[1:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>
