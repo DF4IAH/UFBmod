@@ -19350,24 +19350,28 @@ Left</text>
 <segment>
 <wire x1="96.52" y1="38.1" x2="40.64" y2="38.1" width="0.1524" layer="91"/>
 <label x="40.64" y="38.1" size="1.778" layer="95" rot="R180" xref="yes"/>
+<pinref part="JB1" gate="G$1" pin="B14_L9_MIO_P"/>
 </segment>
 </net>
 <net name="FPGA_LED_RGB_GREEN" class="0">
 <segment>
 <wire x1="96.52" y1="35.56" x2="76.2" y2="35.56" width="0.1524" layer="91"/>
 <label x="76.2" y="35.56" size="1.778" layer="95" rot="R180" xref="yes"/>
+<pinref part="JB1" gate="G$1" pin="B14_L9_MIO_N"/>
 </segment>
 </net>
 <net name="FPGA_LED_RGB_BLUE" class="0">
 <segment>
 <wire x1="96.52" y1="27.94" x2="40.64" y2="27.94" width="0.1524" layer="91"/>
 <label x="40.64" y="27.94" size="1.778" layer="95" rot="R180" xref="yes"/>
+<pinref part="JB1" gate="G$1" pin="B14_L24_MIO_N"/>
 </segment>
 </net>
 <net name="FPGA_LCD_BL_PWM" class="0">
 <segment>
 <wire x1="96.52" y1="33.02" x2="40.64" y2="33.02" width="0.1524" layer="91"/>
 <label x="40.64" y="33.02" size="1.778" layer="95" rot="R180" xref="yes"/>
+<pinref part="JB1" gate="G$1" pin="B14_L4_MIO_P"/>
 </segment>
 </net>
 <net name="BOARD_SDA" class="0">
@@ -19388,6 +19392,7 @@ Left</text>
 <segment>
 <wire x1="96.52" y1="30.48" x2="76.2" y2="30.48" width="0.1524" layer="91"/>
 <label x="76.2" y="30.48" size="1.778" layer="95" rot="R180" xref="yes"/>
+<pinref part="JB1" gate="G$1" pin="B14_L4_MIO_N"/>
 </segment>
 </net>
 <net name="FPGA_UART0_TXD" class="0">
@@ -19749,6 +19754,7 @@ Right</text>
 <segment>
 <wire x1="96.52" y1="137.16" x2="76.2" y2="137.16" width="0.1524" layer="91"/>
 <label x="76.2" y="137.16" size="1.778" layer="95" rot="R180" xref="yes"/>
+<pinref part="JB2" gate="G$1" pin="B14_L8_P"/>
 </segment>
 </net>
 <net name="BOARD_ROTENC_I" class="0">
@@ -21346,14 +21352,14 @@ FT232H</text>
 <wire x1="127" y1="63.5" x2="127" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="USB_D_M" class="0">
+<net name="USB_D_N" class="3">
 <segment>
 <pinref part="U0911" gate="G$1" pin="D_M"/>
 <wire x1="104.14" y1="111.76" x2="38.1" y2="111.76" width="0.1524" layer="91"/>
 <label x="38.1" y="111.76" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="USB_D_P" class="0">
+<net name="USB_D_P" class="3">
 <segment>
 <pinref part="U0911" gate="G$1" pin="D_P"/>
 <wire x1="104.14" y1="109.22" x2="68.58" y2="109.22" width="0.1524" layer="91"/>
@@ -22749,14 +22755,14 @@ Digilent JTAG HS3</text>
 <pinref part="+3V3_1332" gate="G$1" pin="+3V3"/>
 </segment>
 </net>
-<net name="USB_D_M" class="0">
+<net name="USB_D_N" class="3">
 <segment>
 <pinref part="X1311" gate="G$1" pin="J_D-"/>
 <wire x1="58.42" y1="53.34" x2="48.26" y2="53.34" width="0.1524" layer="91"/>
 <label x="48.26" y="53.34" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="USB_D_P" class="0">
+<net name="USB_D_P" class="3">
 <segment>
 <pinref part="X1311" gate="G$1" pin="J_D+"/>
 <wire x1="58.42" y1="50.8" x2="30.48" y2="50.8" width="0.1524" layer="91"/>
