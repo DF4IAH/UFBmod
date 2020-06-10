@@ -47,14 +47,14 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:ip:iomodule:3.1
--- IP Revision: 5
+-- IP Revision: 6
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-LIBRARY iomodule_v3_1_5;
-USE iomodule_v3_1_5.iomodule;
+LIBRARY iomodule_v3_1_6;
+USE iomodule_v3_1_6.iomodule;
 
 ENTITY bd_cf59_iomodule_0_0 IS
   PORT (
@@ -108,6 +108,9 @@ ARCHITECTURE bd_cf59_iomodule_0_0_arch OF bd_cf59_iomodule_0_0 IS
       C_UART_TX_INTERRUPT : INTEGER;
       C_UART_ERROR_INTERRUPT : INTEGER;
       C_UART_PROG_BAUDRATE : INTEGER;
+      C_UART_FREQ : INTEGER;
+      C_UART_ASYNC : INTEGER;
+      C_UART_NUM_SYNC_FF : INTEGER;
       C_USE_FIT1 : INTEGER;
       C_FIT1_No_CLOCKS : INTEGER;
       C_FIT1_INTERRUPT : INTEGER;
@@ -194,6 +197,8 @@ ARCHITECTURE bd_cf59_iomodule_0_0_arch OF bd_cf59_iomodule_0_0 IS
       UART_Rx : IN STD_LOGIC;
       UART_Tx : OUT STD_LOGIC;
       UART_Interrupt : OUT STD_LOGIC;
+      UART_Clk : IN STD_LOGIC;
+      UART_Rst : IN STD_LOGIC;
       FIT1_Interrupt : OUT STD_LOGIC;
       FIT1_Toggle : OUT STD_LOGIC;
       FIT2_Interrupt : OUT STD_LOGIC;
@@ -263,7 +268,7 @@ ARCHITECTURE bd_cf59_iomodule_0_0_arch OF bd_cf59_iomodule_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF GPO1: SIGNAL IS "xilinx.com:interface:gpio:1.0 GPIO1 TRI_O";
   ATTRIBUTE X_INTERFACE_PARAMETER OF Rst: SIGNAL IS "XIL_INTERFACENAME RST.Rst, POLARITY ACTIVE_HIGH, TYPE PERIPHERAL, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF Rst: SIGNAL IS "xilinx.com:signal:reset:1.0 RST.Rst RST";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF Clk: SIGNAL IS "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_BUSIF SLMB, ASSOCIATED_RESET Rst:TMR_Rst, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN msys_SC0712_0_0_mcs_clk_out, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF Clk: SIGNAL IS "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_BUSIF SLMB, ASSOCIATED_RESET Rst:TMR_Rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN msys_SC0712_0_0_mcs_clk_out, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF Clk: SIGNAL IS "xilinx.com:signal:clock:1.0 CLK.CLK CLK";
 BEGIN
   U0 : iomodule
@@ -295,6 +300,9 @@ BEGIN
       C_UART_TX_INTERRUPT => 0,
       C_UART_ERROR_INTERRUPT => 0,
       C_UART_PROG_BAUDRATE => 0,
+      C_UART_FREQ => 100000000,
+      C_UART_ASYNC => 0,
+      C_UART_NUM_SYNC_FF => 2,
       C_USE_FIT1 => 0,
       C_FIT1_No_CLOCKS => 6216,
       C_FIT1_INTERRUPT => 0,
@@ -372,6 +380,8 @@ BEGIN
       IO_Read_Data => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
       IO_Ready => '0',
       UART_Rx => '0',
+      UART_Clk => '0',
+      UART_Rst => '0',
       PIT1_Enable => '0',
       PIT2_Enable => '0',
       PIT3_Enable => '0',

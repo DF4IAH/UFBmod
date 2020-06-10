@@ -53,15 +53,13 @@
 #ifndef _msys_xlconstant_0_13_H_
 #define _msys_xlconstant_0_13_H_
 
-#include "xlconstant_v1_1_6.h"
+#include "xlconstant_v1_1_7.h"
 #include "systemc.h"
 class msys_xlconstant_0_13 : public sc_module {
   public:
-xlconstant_v1_1_6<3,0> mod;
+xlconstant_v1_1_7<3,0> mod;
   sc_out< sc_bv<3> > dout;
-msys_xlconstant_0_13 (sc_core::sc_module_name name) :sc_module(name), mod("mod") {
-    mod.dout(dout);
-  }
-};
+msys_xlconstant_0_13 (sc_core::sc_module_name name);
+  };
 
 #endif

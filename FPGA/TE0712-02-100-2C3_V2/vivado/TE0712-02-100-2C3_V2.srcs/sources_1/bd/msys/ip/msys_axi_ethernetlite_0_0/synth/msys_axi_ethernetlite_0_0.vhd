@@ -47,14 +47,14 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:ip:axi_ethernetlite:3.0
--- IP Revision: 19
+-- IP Revision: 20
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-LIBRARY axi_ethernetlite_v3_0_19;
-USE axi_ethernetlite_v3_0_19.axi_ethernetlite;
+LIBRARY axi_ethernetlite_v3_0_20;
+USE axi_ethernetlite_v3_0_20.axi_ethernetlite;
 
 ENTITY msys_axi_ethernetlite_0_0 IS
   PORT (
@@ -167,12 +167,12 @@ ARCHITECTURE msys_axi_ethernetlite_0_0_arch OF msys_axi_ethernetlite_0_0 IS
     );
   END COMPONENT axi_ethernetlite;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF msys_axi_ethernetlite_0_0_arch: ARCHITECTURE IS "axi_ethernetlite,Vivado 2019.2.1";
+  ATTRIBUTE X_CORE_INFO OF msys_axi_ethernetlite_0_0_arch: ARCHITECTURE IS "axi_ethernetlite,Vivado 2020.1";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF msys_axi_ethernetlite_0_0_arch : ARCHITECTURE IS "msys_axi_ethernetlite_0_0,axi_ethernetlite,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF msys_axi_ethernetlite_0_0_arch: ARCHITECTURE IS "msys_axi_ethernetlite_0_0,axi_ethernetlite,{x_ipProduct=Vivado 2019.2.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_ethernetlite,x_ipVersion=3.0,x_ipCoreRevision=19,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_SELECT_XPM=1,C_INSTANCE=axi_ethernetlite_inst,C_S_AXI_ACLK_PERIOD_PS=20000,C_S_AXI_ADDR_WIDTH=13,C_S_AXI_DATA_WIDTH=32,C_S_AXI_ID_WIDTH=1,C_S_AXI_PROTOCOL=AXI4LITE,C_INCLUDE_MDIO=1,C_INCLUDE_INTERNAL_LOOPBACK=0,C_INCLUDE_GLOBAL_BUFFERS=1,C_DUPLEX=1,C_TX_PING_PONG=1,C_RX_" & 
-"PING_PONG=1}";
+  ATTRIBUTE CORE_GENERATION_INFO OF msys_axi_ethernetlite_0_0_arch: ARCHITECTURE IS "msys_axi_ethernetlite_0_0,axi_ethernetlite,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_ethernetlite,x_ipVersion=3.0,x_ipCoreRevision=20,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_SELECT_XPM=1,C_INSTANCE=axi_ethernetlite_inst,C_S_AXI_ACLK_PERIOD_PS=20000,C_S_AXI_ADDR_WIDTH=13,C_S_AXI_DATA_WIDTH=32,C_S_AXI_ID_WIDTH=1,C_S_AXI_PROTOCOL=AXI4LITE,C_INCLUDE_MDIO=1,C_INCLUDE_INTERNAL_LOOPBACK=0,C_INCLUDE_GLOBAL_BUFFERS=1,C_DUPLEX=1,C_TX_PING_PONG=1,C_RX_PI" & 
+"NG_PONG=1}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF phy_mdc: SIGNAL IS "xilinx.com:interface:mdio:1.0 MDIO MDC";
@@ -214,7 +214,7 @@ ARCHITECTURE msys_axi_ethernetlite_0_0_arch OF msys_axi_ethernetlite_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF ip2intc_irpt: SIGNAL IS "xilinx.com:signal:interrupt:1.0 interrupt INTERRUPT";
   ATTRIBUTE X_INTERFACE_PARAMETER OF s_axi_aresetn: SIGNAL IS "XIL_INTERFACENAME s_axi_aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_aresetn: SIGNAL IS "xilinx.com:signal:reset:1.0 s_axi_aresetn RST";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axi_aclk: SIGNAL IS "XIL_INTERFACENAME s_axi_aclk, ASSOCIATED_BUSIF S_AXI, ASSOCIATED_RESET s_axi_aresetn, FREQ_HZ 50000000, PHASE 0.000, CLK_DOMAIN msys_CLK1B_clk, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axi_aclk: SIGNAL IS "XIL_INTERFACENAME s_axi_aclk, ASSOCIATED_BUSIF S_AXI, ASSOCIATED_RESET s_axi_aresetn, FREQ_HZ 50000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN msys_CLK1B_clk, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 s_axi_aclk CLK";
 BEGIN
   U0 : axi_ethernetlite

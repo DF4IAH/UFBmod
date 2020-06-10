@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="msys" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1590415129"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1590415129"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1590415129"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1590415129"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1591727066"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1591727066"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1591727066"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1591727066"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\msys_SC0712_0_0\msys_SC0712_0_0.xci" Type="IP">
         <Instance HierarchyPath="SC0712_0"/>
@@ -25,14 +25,6 @@
       </File>
       <File Name="ip\msys_axi_iic_0_0\msys_axi_iic_0_0.xci" Type="IP">
         <Instance HierarchyPath="axi_iic_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_xbar_0\msys_xbar_0.xci" Type="IP">
-        <Instance HierarchyPath="axi_interconnect_0/xbar"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -96,14 +88,6 @@
       </File>
       <File Name="ip\msys_microblaze_0_axi_intc_0\msys_microblaze_0_axi_intc_0.xci" Type="IP">
         <Instance HierarchyPath="INT_ctrl/microblaze_0_axi_intc"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_xbar_1\msys_xbar_1.xci" Type="IP">
-        <Instance HierarchyPath="microblaze_0_axi_periph/xbar"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -1311,6 +1295,22 @@
       </File>
       <File Name="ip\msys_xlconstant_0_18\msys_xlconstant_0_18.xci" Type="IP">
         <Instance HierarchyPath="PTT_xlconstant_1_len10"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_xbar_2\msys_xbar_2.xci" Type="IP">
+        <Instance HierarchyPath="axi_interconnect_0/xbar"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_xbar_3\msys_xbar_3.xci" Type="IP">
+        <Instance HierarchyPath="microblaze_0_axi_periph/xbar"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

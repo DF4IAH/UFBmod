@@ -112,7 +112,7 @@ ARCHITECTURE msys_mii_y_adapater_0_0_arch OF msys_mii_y_adapater_0_0 IS
     );
   END COMPONENT mii_y_adapater;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF msys_mii_y_adapater_0_0_arch: ARCHITECTURE IS "mii_y_adapater,Vivado 2019.2.1";
+  ATTRIBUTE X_CORE_INFO OF msys_mii_y_adapater_0_0_arch: ARCHITECTURE IS "mii_y_adapater,Vivado 2020.1";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF msys_mii_y_adapater_0_0_arch : ARCHITECTURE IS "msys_mii_y_adapater_0_0,mii_y_adapater,{}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;

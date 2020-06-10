@@ -175,6 +175,15 @@
           <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.CLK.CLK.FREQ_HZ">100000000</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>FREQ_TOLERANCE_HZ</spirit:name>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK.FREQ_TOLERANCE_HZ">0</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>PHASE</spirit:name>
           <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK.PHASE">0.000</spirit:value>
           <spirit:vendorExtensions>
@@ -1079,6 +1088,127 @@
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
             <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.UART" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)">false</xilinx:isEnabled>
+          </xilinx:enablement>
+        </xilinx:busInterfaceInfo>
+      </spirit:vendorExtensions>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>UART_CLK.CLK</spirit:name>
+      <spirit:displayName>UART_Clk</spirit:displayName>
+      <spirit:description>Asynchronous UART Clock Input</spirit:description>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>UART_Clk</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.UART_CLK.CLK.ASSOCIATED_BUSIF">SLMB</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.UART_CLK.CLK.ASSOCIATED_RESET">UART_Rst:TMR_Rst</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>FREQ_HZ</spirit:name>
+          <spirit:displayName>UART Clk frequency</spirit:displayName>
+          <spirit:description>UART Clk frequency</spirit:description>
+          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.UART_CLK.CLK.FREQ_HZ">100000000</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>FREQ_TOLERANCE_HZ</spirit:name>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.UART_CLK.CLK.FREQ_TOLERANCE_HZ">0</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>PHASE</spirit:name>
+          <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.UART_CLK.CLK.PHASE">0.000</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>CLK_DOMAIN</spirit:name>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.UART_CLK.CLK.CLK_DOMAIN"/>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>INSERT_VIP</spirit:name>
+          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.UART_CLK.CLK.INSERT_VIP">0</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>simulation.rtl</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+      </spirit:parameters>
+      <spirit:vendorExtensions>
+        <xilinx:busInterfaceInfo>
+          <xilinx:enablement>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.UART_CLK.CLK" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_ASYNC&apos;)) = 1)">false</xilinx:isEnabled>
+          </xilinx:enablement>
+        </xilinx:busInterfaceInfo>
+      </spirit:vendorExtensions>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>UART_RST.Rst</spirit:name>
+      <spirit:displayName>UART_Rst</spirit:displayName>
+      <spirit:description>Asynchronous UART Reset Input</spirit:description>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>UART_Rst</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>POLARITY</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.UART_RST.RST.POLARITY">ACTIVE_HIGH</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>TYPE</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.UART_RST.RST.TYPE">PERIPHERAL</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>INSERT_VIP</spirit:name>
+          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.UART_RST.RST.INSERT_VIP">0</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>simulation.rtl</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+      </spirit:parameters>
+      <spirit:vendorExtensions>
+        <xilinx:busInterfaceInfo>
+          <xilinx:enablement>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.UART_RST.Rst" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_ASYNC&apos;)) = 1)">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -5492,11 +5622,11 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon May 25 13:58:10 UTC 2020</spirit:value>
+            <spirit:value>Tue Jun 09 18:23:46 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:89151092</spirit:value>
+            <spirit:value>9:be979117</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5507,7 +5637,7 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:89151092</spirit:value>
+            <spirit:value>9:be979117</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5523,11 +5653,11 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon May 25 13:58:10 UTC 2020</spirit:value>
+            <spirit:value>Tue Jun 09 18:23:46 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:89151092</spirit:value>
+            <spirit:value>9:be979117</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5543,11 +5673,11 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon May 25 13:58:10 UTC 2020</spirit:value>
+            <spirit:value>Tue Jun 09 18:23:46 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:cc555047</spirit:value>
+            <spirit:value>9:c7242f12</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5563,11 +5693,11 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon May 25 13:58:10 UTC 2020</spirit:value>
+            <spirit:value>Tue Jun 09 18:23:46 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:cc555047</spirit:value>
+            <spirit:value>9:c7242f12</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -5581,11 +5711,11 @@ The period is the value + 2.
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon May 25 13:58:10 UTC 2020</spirit:value>
+            <spirit:value>Tue Jun 09 18:23:47 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:89151092</spirit:value>
+            <spirit:value>9:be979117</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -6007,6 +6137,52 @@ The period is the value + 2.
           <xilinx:portInfo>
             <xilinx:enablement>
               <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.UART_Interrupt" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_RX_INTERRUPT&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_TX_INTERRUPT&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_ERROR_INTERRUPT&apos;)) = 1)">false</xilinx:isEnabled>
+            </xilinx:enablement>
+          </xilinx:portInfo>
+        </spirit:vendorExtensions>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>UART_Clk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+        <spirit:vendorExtensions>
+          <xilinx:portInfo>
+            <xilinx:enablement>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.UART_Clk" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_ASYNC&apos;)) = 1)">false</xilinx:isEnabled>
+            </xilinx:enablement>
+          </xilinx:portInfo>
+        </spirit:vendorExtensions>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>UART_Rst</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+        <spirit:vendorExtensions>
+          <xilinx:portInfo>
+            <xilinx:enablement>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.UART_Rst" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_RX&apos;)) = 1) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_UART_TX&apos;)) = 1)) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_UART_ASYNC&apos;)) = 1)">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -7177,6 +7353,20 @@ The period is the value + 2.
         </spirit:vendorExtensions>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>C_UART_FREQ</spirit:name>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_UART_FREQ" spirit:minimum="0" spirit:rangeType="long">100000000</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>C_UART_ASYNC</spirit:name>
+        <spirit:displayName>Asynchronous Clock</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_UART_ASYNC" spirit:choiceRef="choice_list_8af5a703">0</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>C_UART_NUM_SYNC_FF</spirit:name>
+        <spirit:displayName>Synchronizing FFs to Clk region</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_UART_NUM_SYNC_FF" spirit:minimum="0" spirit:rangeType="long">2</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_USE_FIT1</spirit:name>
         <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_FIT1">0</spirit:value>
       </spirit:modelParameter>
@@ -7745,6 +7935,11 @@ The period is the value + 2.
       <spirit:enumeration>32</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
+      <spirit:name>choice_list_8af5a703</spirit:name>
+      <spirit:enumeration>0</spirit:enumeration>
+      <spirit:enumeration>1</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
       <spirit:name>choice_list_994c23dd</spirit:name>
       <spirit:enumeration>Custom</spirit:enumeration>
       <spirit:enumeration>UART0</spirit:enumeration>
@@ -7864,9 +8059,9 @@ The period is the value + 2.
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlsynthesis_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../../../../ipshared/f748/hdl/iomodule_v3_1_vh_rfs.vhd</spirit:name>
+        <spirit:name>../../../../../ipshared/8c53/hdl/iomodule_v3_1_vh_rfs.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:logicalName>iomodule_v3_1_5</spirit:logicalName>
+        <spirit:logicalName>iomodule_v3_1_6</spirit:logicalName>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -7880,10 +8075,10 @@ The period is the value + 2.
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../../../../ipshared/f748/hdl/iomodule_v3_1_vh_rfs.vhd</spirit:name>
+        <spirit:name>../../../../../ipshared/8c53/hdl/iomodule_v3_1_vh_rfs.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
-        <spirit:logicalName>iomodule_v3_1_5</spirit:logicalName>
+        <spirit:logicalName>iomodule_v3_1_6</spirit:logicalName>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -8803,12 +8998,13 @@ The period is the value + 2.
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>IOModule</xilinx:displayName>
-      <xilinx:coreRevision>5</xilinx:coreRevision>
+      <xilinx:coreRevision>6</xilinx:coreRevision>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK.ASSOCIATED_BUSIF" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK.ASSOCIATED_RESET" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK.FREQ_HZ" xilinx:valueSource="constant_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK.PHASE" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.GPIO1.BOARD.ASSOCIATED_PARAM" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.GPIO1.C_GPI1_INTERRUPT" xilinx:valuePermission="bd"/>
@@ -8847,12 +9043,12 @@ The period is the value + 2.
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
-      <xilinx:xilinxVersion>2019.2.1</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="83b4a0e9"/>
+      <xilinx:xilinxVersion>2020.1</xilinx:xilinxVersion>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="3e38f1f1"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="00000000"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="b16721ed"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="ea93124a"/>
-      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="efdae123"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="08f03615"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="8aacb230"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="53aec875"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="4fae1825"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>

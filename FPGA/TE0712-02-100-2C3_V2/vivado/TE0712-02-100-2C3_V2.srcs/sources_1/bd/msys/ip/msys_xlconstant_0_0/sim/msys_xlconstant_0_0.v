@@ -48,7 +48,7 @@
 
 
 // IP VLNV: xilinx.com:ip:xlconstant:1.1
-// IP Revision: 6
+// IP Revision: 7
 
 `timescale 1ns/1ps
 
@@ -59,7 +59,7 @@ module msys_xlconstant_0_0 (
 
 output wire [25 : 0] dout;
 
-  xlconstant_v1_1_6_xlconstant #(
+  xlconstant_v1_1_7_xlconstant #(
     .CONST_WIDTH(26),
     .CONST_VAL('H0000000)
   ) inst (

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon May 25 15:58:10 2020" VIVADOVERSION="2019.2.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jun  9 20:23:47 2020" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="artix7" BOARD="trenz.biz:te0712_100_2c:part0:1.0" DEVICE="7a100t" NAME="bd_cf59" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -17,7 +17,7 @@
         <CONNECTION INSTANCE="rst_0" PORT="slowest_sync_clk"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" NAME="Reset" SIGIS="rst" SIGNAME="External_Ports_Reset">
+    <PORT DIR="I" NAME="Reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_Reset">
       <CONNECTIONS>
         <CONNECTION INSTANCE="rst_0" PORT="ext_reset_in"/>
       </CONNECTIONS>
@@ -50,7 +50,7 @@
   </EXTERNALINTERFACES>
 
   <MODULES>
-    <MODULE COREREVISION="10" FULLNAME="/dlmb" HWVERSION="3.0" INSTANCE="dlmb" IPTYPE="BUS" IS_ENABLE="1" MODCLASS="BUS" MODTYPE="lmb_v10" VLNV="xilinx.com:ip:lmb_v10:3.0">
+    <MODULE COREREVISION="11" FULLNAME="/dlmb" HWVERSION="3.0" INSTANCE="dlmb" IPTYPE="BUS" IS_ENABLE="1" MODCLASS="BUS" MODTYPE="lmb_v10" VLNV="xilinx.com:ip:lmb_v10:3.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=lmb_v10;v=v3_0;d=pg113-lmb-v10.pdf"/>
       </DOCUMENTS>
@@ -69,7 +69,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="Clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="SYS_Rst" SIGIS="rst" SIGNAME="rst_0_bus_struct_reset">
+        <PORT DIR="I" NAME="SYS_Rst" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_0_bus_struct_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_0" PORT="bus_struct_reset"/>
           </CONNECTIONS>
@@ -335,7 +335,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="17" FULLNAME="/dlmb_cntlr" HWVERSION="4.0" INSTANCE="dlmb_cntlr" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY_CNTLR" MODTYPE="lmb_bram_if_cntlr" VLNV="xilinx.com:ip:lmb_bram_if_cntlr:4.0">
+    <MODULE COREREVISION="18" FULLNAME="/dlmb_cntlr" HWVERSION="4.0" INSTANCE="dlmb_cntlr" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY_CNTLR" MODTYPE="lmb_bram_if_cntlr" VLNV="xilinx.com:ip:lmb_bram_if_cntlr:4.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=lmb_bram_if_cntlr;v=v4_0;d=pg112-lmb-bram-if-cntlr.pdf"/>
       </DOCUMENTS>
@@ -379,7 +379,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="Clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="LMB_Rst" SIGIS="rst" SIGNAME="rst_0_bus_struct_reset">
+        <PORT DIR="I" NAME="LMB_Rst" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_0_bus_struct_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_0" PORT="bus_struct_reset"/>
           </CONNECTIONS>
@@ -514,7 +514,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="10" FULLNAME="/ilmb" HWVERSION="3.0" INSTANCE="ilmb" IPTYPE="BUS" IS_ENABLE="1" MODCLASS="BUS" MODTYPE="lmb_v10" VLNV="xilinx.com:ip:lmb_v10:3.0">
+    <MODULE COREREVISION="11" FULLNAME="/ilmb" HWVERSION="3.0" INSTANCE="ilmb" IPTYPE="BUS" IS_ENABLE="1" MODCLASS="BUS" MODTYPE="lmb_v10" VLNV="xilinx.com:ip:lmb_v10:3.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=lmb_v10;v=v3_0;d=pg113-lmb-v10.pdf"/>
       </DOCUMENTS>
@@ -533,7 +533,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="Clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="SYS_Rst" SIGIS="rst" SIGNAME="rst_0_bus_struct_reset">
+        <PORT DIR="I" NAME="SYS_Rst" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_0_bus_struct_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_0" PORT="bus_struct_reset"/>
           </CONNECTIONS>
@@ -734,7 +734,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="17" FULLNAME="/ilmb_cntlr" HWVERSION="4.0" INSTANCE="ilmb_cntlr" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY_CNTLR" MODTYPE="lmb_bram_if_cntlr" VLNV="xilinx.com:ip:lmb_bram_if_cntlr:4.0">
+    <MODULE COREREVISION="18" FULLNAME="/ilmb_cntlr" HWVERSION="4.0" INSTANCE="ilmb_cntlr" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY_CNTLR" MODTYPE="lmb_bram_if_cntlr" VLNV="xilinx.com:ip:lmb_bram_if_cntlr:4.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=lmb_bram_if_cntlr;v=v4_0;d=pg112-lmb-bram-if-cntlr.pdf"/>
       </DOCUMENTS>
@@ -775,7 +775,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="Clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="LMB_Rst" SIGIS="rst" SIGNAME="rst_0_bus_struct_reset">
+        <PORT DIR="I" NAME="LMB_Rst" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_0_bus_struct_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_0" PORT="bus_struct_reset"/>
           </CONNECTIONS>
@@ -910,7 +910,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="5" FULLNAME="/iomodule_0" HWVERSION="3.1" INSTANCE="iomodule_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="iomodule" VLNV="xilinx.com:ip:iomodule:3.1">
+    <MODULE COREREVISION="6" FULLNAME="/iomodule_0" HWVERSION="3.1" INSTANCE="iomodule_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="iomodule" VLNV="xilinx.com:ip:iomodule:3.1">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=iomodule;v=v3_1;d=pg111-iomodule.pdf"/>
       </DOCUMENTS>
@@ -3296,6 +3296,9 @@
         <PARAMETER NAME="C_UART_TX_INTERRUPT" VALUE="0"/>
         <PARAMETER NAME="C_UART_ERROR_INTERRUPT" VALUE="0"/>
         <PARAMETER NAME="C_UART_PROG_BAUDRATE" VALUE="0"/>
+        <PARAMETER NAME="C_UART_FREQ" VALUE="100000000"/>
+        <PARAMETER NAME="C_UART_ASYNC" VALUE="0"/>
+        <PARAMETER NAME="C_UART_NUM_SYNC_FF" VALUE="2"/>
         <PARAMETER NAME="C_USE_FIT1" VALUE="0"/>
         <PARAMETER NAME="C_FIT1_No_CLOCKS" VALUE="6216"/>
         <PARAMETER NAME="C_FIT1_INTERRUPT" VALUE="0"/>
@@ -3380,7 +3383,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="Clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="Rst" SIGIS="rst" SIGNAME="rst_0_peripheral_reset">
+        <PORT DIR="I" NAME="Rst" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -3750,7 +3753,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/microblaze_I" HWVERSION="11.0" INSTANCE="microblaze_I" IPTYPE="PROCESSOR" IS_ENABLE="1" MODCLASS="PROCESSOR" MODTYPE="microblaze" PROCTYPE="microblaze" VLNV="xilinx.com:ip:microblaze:11.0">
+    <MODULE COREREVISION="3" FULLNAME="/microblaze_I" HWVERSION="11.0" INSTANCE="microblaze_I" IPTYPE="PROCESSOR" IS_ENABLE="1" MODCLASS="PROCESSOR" MODTYPE="microblaze" PROCTYPE="microblaze" VLNV="xilinx.com:ip:microblaze:11.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/rdoc?v=2018.3;d=ug984-vivado-microblaze-ref.pdf"/>
       </DOCUMENTS>
@@ -3795,6 +3798,7 @@
         <PARAMETER NAME="C_I_LMB" VALUE="1"/>
         <PARAMETER NAME="C_I_LMB_PROTOCOL" VALUE="0"/>
         <PARAMETER NAME="C_I_AXI" VALUE="0"/>
+        <PARAMETER NAME="G_TEMPLATE_LIST" VALUE="0"/>
         <PARAMETER NAME="C_USE_MSR_INSTR" VALUE="0"/>
         <PARAMETER NAME="C_USE_PCMP_INSTR" VALUE="0"/>
         <PARAMETER NAME="C_USE_BARREL" VALUE="0"/>
@@ -3933,7 +3937,6 @@
         <PARAMETER NAME="C_ENABLE_DISCRETE_PORTS" VALUE="0"/>
         <PARAMETER NAME="C_M_AXI_DC_USER_SIGNALS" VALUE="0"/>
         <PARAMETER NAME="C_M_AXI_IC_USER_SIGNALS" VALUE="0"/>
-        <PARAMETER NAME="G_TEMPLATE_LIST" VALUE="0"/>
         <PARAMETER NAME="G_USE_EXCEPTIONS" VALUE="0"/>
         <PARAMETER NAME="C_RESET_MSR_IE" VALUE="0"/>
         <PARAMETER NAME="C_RESET_MSR_BIP" VALUE="0"/>
@@ -3985,7 +3988,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="Clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="Reset" SIGIS="rst" SIGNAME="rst_0_mb_reset">
+        <PORT DIR="I" NAME="Reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_0_mb_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_0" PORT="mb_reset"/>
           </CONNECTIONS>
@@ -4175,20 +4178,20 @@
             <CONNECTION INSTANCE="External_Ports" PORT="Clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ext_reset_in" SIGIS="rst" SIGNAME="External_Ports_Reset">
+        <PORT DIR="I" NAME="ext_reset_in" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_Reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="Reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="aux_reset_in" SIGIS="rst"/>
-        <PORT DIR="I" NAME="mb_debug_sys_rst" SIGIS="rst"/>
+        <PORT DIR="I" NAME="aux_reset_in" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
+        <PORT DIR="I" NAME="mb_debug_sys_rst" POLARITY="ACTIVE_HIGH" SIGIS="rst"/>
         <PORT DIR="I" NAME="dcm_locked" SIGIS="undef"/>
-        <PORT DIR="O" NAME="mb_reset" SIGIS="rst" SIGNAME="rst_0_mb_reset">
+        <PORT DIR="O" NAME="mb_reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_0_mb_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="microblaze_I" PORT="Reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="bus_struct_reset" RIGHT="0" SIGIS="rst" SIGNAME="rst_0_bus_struct_reset">
+        <PORT DIR="O" LEFT="0" NAME="bus_struct_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst" SIGNAME="rst_0_bus_struct_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ilmb" PORT="SYS_Rst"/>
             <CONNECTION INSTANCE="dlmb" PORT="SYS_Rst"/>
@@ -4198,17 +4201,17 @@
             <CONNECTION INSTANCE="second_dlmb_cntlr" PORT="LMB_Rst"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="peripheral_reset" RIGHT="0" SIGIS="rst" SIGNAME="rst_0_peripheral_reset">
+        <PORT DIR="O" LEFT="0" NAME="peripheral_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst" SIGNAME="rst_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="iomodule_0" PORT="Rst"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="interconnect_aresetn" RIGHT="0" SIGIS="rst"/>
-        <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" RIGHT="0" SIGIS="rst"/>
+        <PORT DIR="O" LEFT="0" NAME="interconnect_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst"/>
+        <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="17" FULLNAME="/second_dlmb_cntlr" HWVERSION="4.0" INSTANCE="second_dlmb_cntlr" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY_CNTLR" MODTYPE="lmb_bram_if_cntlr" VLNV="xilinx.com:ip:lmb_bram_if_cntlr:4.0">
+    <MODULE COREREVISION="18" FULLNAME="/second_dlmb_cntlr" HWVERSION="4.0" INSTANCE="second_dlmb_cntlr" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY_CNTLR" MODTYPE="lmb_bram_if_cntlr" VLNV="xilinx.com:ip:lmb_bram_if_cntlr:4.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=lmb_bram_if_cntlr;v=v4_0;d=pg112-lmb-bram-if-cntlr.pdf"/>
       </DOCUMENTS>
@@ -4252,7 +4255,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="Clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="LMB_Rst" SIGIS="rst" SIGNAME="rst_0_bus_struct_reset">
+        <PORT DIR="I" NAME="LMB_Rst" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_0_bus_struct_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_0" PORT="bus_struct_reset"/>
           </CONNECTIONS>
@@ -4387,7 +4390,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="17" FULLNAME="/second_ilmb_cntlr" HWVERSION="4.0" INSTANCE="second_ilmb_cntlr" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY_CNTLR" MODTYPE="lmb_bram_if_cntlr" VLNV="xilinx.com:ip:lmb_bram_if_cntlr:4.0">
+    <MODULE COREREVISION="18" FULLNAME="/second_ilmb_cntlr" HWVERSION="4.0" INSTANCE="second_ilmb_cntlr" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="MEMORY_CNTLR" MODTYPE="lmb_bram_if_cntlr" VLNV="xilinx.com:ip:lmb_bram_if_cntlr:4.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=lmb_bram_if_cntlr;v=v4_0;d=pg112-lmb-bram-if-cntlr.pdf"/>
       </DOCUMENTS>
@@ -4428,7 +4431,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="Clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="LMB_Rst" SIGIS="rst" SIGNAME="rst_0_bus_struct_reset">
+        <PORT DIR="I" NAME="LMB_Rst" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_0_bus_struct_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_0" PORT="bus_struct_reset"/>
           </CONNECTIONS>

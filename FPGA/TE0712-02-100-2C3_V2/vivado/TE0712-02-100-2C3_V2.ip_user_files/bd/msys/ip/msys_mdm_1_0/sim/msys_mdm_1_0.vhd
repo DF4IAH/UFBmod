@@ -47,14 +47,14 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:ip:mdm:3.2
--- IP Revision: 17
+-- IP Revision: 18
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-LIBRARY mdm_v3_2_17;
-USE mdm_v3_2_17.MDM;
+LIBRARY mdm_v3_2_18;
+USE mdm_v3_2_18.MDM;
 
 ENTITY msys_mdm_1_0 IS
   PORT (

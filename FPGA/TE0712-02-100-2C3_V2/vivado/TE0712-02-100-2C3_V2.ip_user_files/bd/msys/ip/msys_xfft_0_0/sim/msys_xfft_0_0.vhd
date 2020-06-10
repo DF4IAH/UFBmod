@@ -47,14 +47,14 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:ip:xfft:9.1
--- IP Revision: 3
+-- IP Revision: 4
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-LIBRARY xfft_v9_1_3;
-USE xfft_v9_1_3.xfft_v9_1_3;
+LIBRARY xfft_v9_1_4;
+USE xfft_v9_1_4.xfft_v9_1_4;
 
 ENTITY msys_xfft_0_0 IS
   PORT (
@@ -81,9 +81,10 @@ END msys_xfft_0_0;
 ARCHITECTURE msys_xfft_0_0_arch OF msys_xfft_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
   ATTRIBUTE DowngradeIPIdentifiedWarnings OF msys_xfft_0_0_arch: ARCHITECTURE IS "yes";
-  COMPONENT xfft_v9_1_3 IS
+  COMPONENT xfft_v9_1_4 IS
     GENERIC (
       C_XDEVICEFAMILY : STRING;
+      C_PART : STRING;
       C_S_AXIS_CONFIG_TDATA_WIDTH : INTEGER;
       C_S_AXIS_DATA_TDATA_WIDTH : INTEGER;
       C_M_AXIS_DATA_TDATA_WIDTH : INTEGER;
@@ -144,7 +145,7 @@ ARCHITECTURE msys_xfft_0_0_arch OF msys_xfft_0_0 IS
       event_data_in_channel_halt : OUT STD_LOGIC;
       event_data_out_channel_halt : OUT STD_LOGIC
     );
-  END COMPONENT xfft_v9_1_3;
+  END COMPONENT xfft_v9_1_4;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF event_data_in_channel_halt: SIGNAL IS "XIL_INTERFACENAME event_data_in_channel_halt_intf, SENSITIVITY EDGE_RISING, PortWidth 1";
@@ -186,12 +187,13 @@ ARCHITECTURE msys_xfft_0_0_arch OF msys_xfft_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_config_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CONFIG TDATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF aresetn: SIGNAL IS "XIL_INTERFACENAME aresetn_intf, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF aresetn: SIGNAL IS "xilinx.com:signal:reset:1.0 aresetn_intf RST";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF aclk: SIGNAL IS "XIL_INTERFACENAME aclk_intf, ASSOCIATED_BUSIF S_AXIS_CONFIG:M_AXIS_DATA:M_AXIS_STATUS:S_AXIS_DATA, ASSOCIATED_RESET aresetn, ASSOCIATED_CLKEN aclken, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN msys_mig_7series_0_0_ui_clk, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF aclk: SIGNAL IS "XIL_INTERFACENAME aclk_intf, ASSOCIATED_BUSIF S_AXIS_CONFIG:M_AXIS_DATA:M_AXIS_STATUS:S_AXIS_DATA, ASSOCIATED_RESET aresetn, ASSOCIATED_CLKEN aclken, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0, CLK_DOMAIN msys_mig_7series_0_0_ui_clk, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 aclk_intf CLK";
 BEGIN
-  U0 : xfft_v9_1_3
+  U0 : xfft_v9_1_4
     GENERIC MAP (
       C_XDEVICEFAMILY => "artix7",
+      C_PART => "xc7a100tfgg484-2",
       C_S_AXIS_CONFIG_TDATA_WIDTH => 8,
       C_S_AXIS_DATA_TDATA_WIDTH => 32,
       C_M_AXIS_DATA_TDATA_WIDTH => 48,

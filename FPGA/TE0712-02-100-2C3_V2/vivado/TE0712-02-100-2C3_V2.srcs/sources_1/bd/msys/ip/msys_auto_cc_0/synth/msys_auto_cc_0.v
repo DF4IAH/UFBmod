@@ -48,12 +48,12 @@
 
 
 // IP VLNV: xilinx.com:ip:axi_clock_converter:2.1
-// IP Revision: 19
+// IP Revision: 20
 
-(* X_CORE_INFO = "axi_clock_converter_v2_1_19_axi_clock_converter,Vivado 2019.2.1" *)
-(* CHECK_LICENSE_TYPE = "msys_auto_cc_0,axi_clock_converter_v2_1_19_axi_clock_converter,{}" *)
-(* CORE_GENERATION_INFO = "msys_auto_cc_0,axi_clock_converter_v2_1_19_axi_clock_converter,{x_ipProduct=Vivado 2019.2.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_clock_converter,x_ipVersion=2.1,x_ipCoreRevision=19,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_AXI_ID_WIDTH=1,C_AXI_ADDR_WIDTH=7,C_AXI_DATA_WIDTH=32,C_S_AXI_ACLK_RATIO=2,C_M_AXI_ACLK_RATIO=1,C_AXI_IS_ACLK_ASYNC=0,C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_USER_SIGNALS=0,C_AXI_AWUSER_WIDTH=1,C_AXI_ARUSER_WIDTH=1,C_AXI_WUSER_WIDTH=1,C_AXI_RUSER_WIDTH=1,C\
-_AXI_BUSER_WIDTH=1,C_AXI_SUPPORTS_WRITE=1,C_AXI_SUPPORTS_READ=1,C_SYNCHRONIZER_STAGE=3}" *)
+(* X_CORE_INFO = "axi_clock_converter_v2_1_20_axi_clock_converter,Vivado 2020.1" *)
+(* CHECK_LICENSE_TYPE = "msys_auto_cc_0,axi_clock_converter_v2_1_20_axi_clock_converter,{}" *)
+(* CORE_GENERATION_INFO = "msys_auto_cc_0,axi_clock_converter_v2_1_20_axi_clock_converter,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_clock_converter,x_ipVersion=2.1,x_ipCoreRevision=20,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_AXI_ID_WIDTH=1,C_AXI_ADDR_WIDTH=7,C_AXI_DATA_WIDTH=32,C_S_AXI_ACLK_RATIO=2,C_M_AXI_ACLK_RATIO=1,C_AXI_IS_ACLK_ASYNC=0,C_AXI_PROTOCOL=2,C_AXI_SUPPORTS_USER_SIGNALS=0,C_AXI_AWUSER_WIDTH=1,C_AXI_ARUSER_WIDTH=1,C_AXI_WUSER_WIDTH=1,C_AXI_RUSER_WIDTH=1,C_A\
+XI_BUSER_WIDTH=1,C_AXI_SUPPORTS_WRITE=1,C_AXI_SUPPORTS_READ=1,C_SYNCHRONIZER_STAGE=3}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module msys_auto_cc_0 (
   s_axi_aclk,
@@ -100,7 +100,7 @@ module msys_auto_cc_0 (
   m_axi_rready
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME SI_CLK, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN msys_mig_7series_0_0_ui_clk, ASSOCIATED_BUSIF S_AXI, ASSOCIATED_RESET S_AXI_ARESETN, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME SI_CLK, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0, CLK_DOMAIN msys_mig_7series_0_0_ui_clk, ASSOCIATED_BUSIF S_AXI, ASSOCIATED_RESET S_AXI_ARESETN, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 SI_CLK CLK" *)
 input wire s_axi_aclk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME SI_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0, TYPE INTERCONNECT" *)
@@ -146,7 +146,7 @@ output wire s_axi_rvalid;
 ADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI RREADY" *)
 input wire s_axi_rready;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME MI_CLK, FREQ_HZ 50000000, PHASE 0, CLK_DOMAIN msys_mig_7series_0_0_ui_clk, ASSOCIATED_BUSIF M_AXI, ASSOCIATED_RESET M_AXI_ARESETN, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME MI_CLK, FREQ_HZ 50000000, FREQ_TOLERANCE_HZ 0, PHASE 0, CLK_DOMAIN msys_mig_7series_0_0_ui_clk, ASSOCIATED_BUSIF M_AXI, ASSOCIATED_RESET M_AXI_ARESETN, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 MI_CLK CLK" *)
 input wire m_axi_aclk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME MI_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0, TYPE INTERCONNECT" *)
@@ -193,7 +193,7 @@ DS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI RREADY" *)
 output wire m_axi_rready;
 
-  axi_clock_converter_v2_1_19_axi_clock_converter #(
+  axi_clock_converter_v2_1_20_axi_clock_converter #(
     .C_FAMILY("artix7"),
     .C_AXI_ID_WIDTH(1),
     .C_AXI_ADDR_WIDTH(7),
