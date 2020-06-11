@@ -18612,22 +18612,23 @@ Subminiature Tact Switch for SMT</description>
 <classes>
 <class number="0" name="default" width="0" drill="0.3">
 </class>
-<class number="1" name="diff_100R" width="0.3" drill="0">
-<clearance class="1" value="0.15"/>
+<class number="1" name="diff_100R_200u" width="0.2032" drill="0">
+<clearance class="1" value="0.2032"/>
 </class>
-<class number="2" name="pwr_ttl" width="0.75" drill="0">
-<clearance class="2" value="0.5"/>
+<class number="2" name="diff_100R_280u" width="0.2286" drill="0">
+<clearance class="2" value="0.1524"/>
 </class>
-<class number="3" name="usb_pair" width="0.254" drill="0">
+<class number="3" name="diff_100R_360u" width="0.2667" drill="0">
 <clearance class="3" value="0.1524"/>
 </class>
-<class number="4" name="pwrA5" width="0.4" drill="0">
+<class number="4" name="diff_90R_200u" width="0.2159" drill="0">
+<clearance class="4" value="0.1524"/>
 </class>
-<class number="5" name="single50R" width="0.8382" drill="0">
+<class number="5" name="diff_90R_280u" width="0.2921" drill="0">
 <clearance class="5" value="0.1524"/>
 </class>
-<class number="6" name="mil6_nofill" width="0.1524" drill="0">
-<clearance class="6" value="0.254"/>
+<class number="6" name="diff_90R_360u" width="0.3175" drill="0">
+<clearance class="6" value="0.127"/>
 </class>
 </classes>
 <parts>
