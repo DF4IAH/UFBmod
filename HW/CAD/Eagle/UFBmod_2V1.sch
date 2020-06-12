@@ -18610,7 +18610,8 @@ Subminiature Tact Switch for SMT</description>
 <variantdef name="Std"/>
 </variantdefs>
 <classes>
-<class number="0" name="default" width="0" drill="0.3">
+<class number="0" name="default" width="0.127" drill="0.3">
+<clearance class="0" value="0.127"/>
 </class>
 <class number="1" name="diff_100R_200u" width="0.2032" drill="0.3">
 <clearance class="1" value="0.2032"/>
@@ -18630,7 +18631,7 @@ Subminiature Tact Switch for SMT</description>
 <class number="6" name="diff_90R_360u" width="0.3175" drill="0.3">
 <clearance class="6" value="0.127"/>
 </class>
-<class number="7" name="uni_50R_200u" width="0.3302" drill="0.3">
+<class number="7" name="uni_50R_200u" width="0.3429" drill="0.3">
 <clearance class="7" value="0.381"/>
 </class>
 <class number="8" name="uni_50R_280u" width="0.4826" drill="0.3">
