@@ -6149,23 +6149,35 @@ Diameter = 1mm</description>
 <classes>
 <class number="0" name="default" width="0" drill="0.3">
 </class>
-<class number="1" name="diff_100R_200u" width="0.2032" drill="0">
+<class number="1" name="diff_100R_200u" width="0.2032" drill="0.3">
 <clearance class="1" value="0.2032"/>
 </class>
-<class number="2" name="diff_100R_280u" width="0.2286" drill="0">
+<class number="2" name="diff_100R_280u" width="0.2286" drill="0.3">
 <clearance class="2" value="0.1524"/>
 </class>
-<class number="3" name="diff_100R_360u" width="0.2667" drill="0">
+<class number="3" name="diff_100R_360u" width="0.2667" drill="0.3">
 <clearance class="3" value="0.1524"/>
 </class>
-<class number="4" name="diff_90R_200u" width="0.2159" drill="0">
+<class number="4" name="diff_90R_200u" width="0.2159" drill="0.3">
 <clearance class="4" value="0.1524"/>
 </class>
-<class number="5" name="diff_90R_280u" width="0.2921" drill="0">
+<class number="5" name="diff_90R_280u" width="0.2921" drill="0.3">
 <clearance class="5" value="0.1524"/>
 </class>
-<class number="6" name="diff_90R_360u" width="0.3175" drill="0">
+<class number="6" name="diff_90R_360u" width="0.3175" drill="0.3">
 <clearance class="6" value="0.127"/>
+</class>
+<class number="7" name="uni_50R_200u" width="0.3302" drill="0.3">
+<clearance class="7" value="0.381"/>
+</class>
+<class number="8" name="uni_50R_280u" width="0.4826" drill="0.3">
+<clearance class="8" value="0.381"/>
+</class>
+<class number="9" name="uni_50R_360u" width="0.635" drill="0.3">
+<clearance class="9" value="0.381"/>
+</class>
+<class number="10" name="diff_50R_200u" width="0.508" drill="0.3">
+<clearance class="10" value="0.127"/>
 </class>
 </classes>
 <designrules name="PCB-POOL Standard_ML6">
@@ -8603,7 +8615,7 @@ Covered vias can be set in Masks (Limit).
 <via x="16.51" y="49.2125" extent="1-16" drill="0.3"/>
 <wire x1="16.51" y1="49.2125" x2="16.51" y2="50.785" width="0.1524" layer="16"/>
 </signal>
-<signal name="TRX_RF24_N">
+<signal name="TRX_RF24_N" class="10">
 <contactref element="U0701" pad="5"/>
 <contactref element="L0722" pad="4"/>
 <wire x1="19.7375" y1="46.6575" x2="19.7775" y2="46.6175" width="0.3" layer="16"/>
@@ -8615,7 +8627,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="19.7775" y1="44.7675" x2="19.8" y2="44.745" width="0.3" layer="1"/>
 <wire x1="19.8" y1="44.745" x2="19.8" y2="44.14" width="0.3" layer="1"/>
 </signal>
-<signal name="TRX_RF24_P">
+<signal name="TRX_RF24_P" class="10">
 <contactref element="U0701" pad="4"/>
 <contactref element="L0722" pad="3"/>
 <wire x1="21.5375" y1="46.6575" x2="20.2275" y2="45.3475" width="0.3" layer="16"/>
@@ -8626,7 +8638,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="20.2275" y1="45.085" x2="20.3" y2="45.0125" width="0.3" layer="1"/>
 <wire x1="20.3" y1="45.0125" x2="20.3" y2="44.14" width="0.3" layer="1"/>
 </signal>
-<signal name="TRX_RF09_P" class="1">
+<signal name="TRX_RF09_P" class="10">
 <contactref element="U0701" pad="8"/>
 <contactref element="L0721" pad="3"/>
 <wire x1="18.18" y1="46.215" x2="18.3225" y2="46.1325" width="0.1524" layer="1"/>
@@ -8634,7 +8646,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="18.3225" y1="44.7675" x2="18.3" y2="44.4275" width="0.1524" layer="1"/>
 <wire x1="18.3" y1="44.4275" x2="18.3" y2="44.14" width="0.3" layer="1"/>
 </signal>
-<signal name="TRX_RF09_N" class="1">
+<signal name="TRX_RF09_N" class="10">
 <contactref element="U0701" pad="9"/>
 <contactref element="L0721" pad="2"/>
 <wire x1="17.38" y1="46.215" x2="18.03125" y2="45.33875" width="0.1524" layer="1"/>
@@ -8642,7 +8654,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="18.03125" y1="44.7675" x2="17.8" y2="44.3775" width="0.1524" layer="1"/>
 <wire x1="17.8" y1="44.3775" x2="17.8" y2="44.14" width="0.1524" layer="1"/>
 </signal>
-<signal name="TRX_RF09">
+<signal name="TRX_RF09" class="7">
 <contactref element="L0721" pad="4"/>
 <contactref element="C0821" pad="2"/>
 <wire x1="18.18" y1="47.765" x2="18.18" y2="48.025" width="0.1524" layer="1"/>
@@ -8650,7 +8662,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="18.415" y1="48.26" x2="18.415" y2="49.515" width="0.3" layer="1"/>
 <wire x1="18.415" y1="49.515" x2="17.78" y2="50.15" width="0.3" layer="1"/>
 </signal>
-<signal name="TRX_RF24">
+<signal name="TRX_RF24" class="7">
 <contactref element="L0722" pad="1"/>
 <contactref element="L0896" pad="1"/>
 <contactref element="C0895" pad="1"/>
@@ -8665,25 +8677,25 @@ Covered vias can be set in Masks (Limit).
 <wire x1="27.305" y1="73.3425" x2="27.305" y2="77.455" width="0.3" layer="1"/>
 <wire x1="27.305" y1="77.455" x2="27.32" y2="77.47" width="0.3" layer="1"/>
 </signal>
-<signal name="PE09_RFC">
+<signal name="PE09_RFC" class="7">
 <contactref element="U0811" pad="5"/>
 <contactref element="C0821" pad="1"/>
 <wire x1="17.78" y1="53.61" x2="17.78" y2="51.45" width="0.3" layer="1"/>
 </signal>
-<signal name="PE09_RF1">
+<signal name="PE09_RF1" class="7">
 <contactref element="U0811" pad="1"/>
 <contactref element="C0831" pad="2"/>
 <wire x1="18.43" y1="55.61" x2="18.4625" y2="55.61" width="0.3" layer="1"/>
 <wire x1="18.4625" y1="55.61" x2="19.05" y2="56.1975" width="0.3" layer="1"/>
 <wire x1="19.05" y1="56.1975" x2="19.05" y2="57.77" width="0.3" layer="1"/>
 </signal>
-<signal name="PE09_RF2">
+<signal name="PE09_RF2" class="7">
 <contactref element="U0811" pad="3"/>
 <contactref element="C0832" pad="2"/>
 <wire x1="16.51" y1="57.77" x2="16.51" y2="56.23" width="0.3" layer="1"/>
 <wire x1="16.51" y1="56.23" x2="17.13" y2="55.61" width="0.3" layer="1"/>
 </signal>
-<signal name="FE09_RX">
+<signal name="FE09_RX" class="7">
 <contactref element="U0821" pad="14"/>
 <contactref element="C0832" pad="1"/>
 <wire x1="16.51" y1="59.07" x2="14.2725" y2="59.07" width="0.3" layer="1"/>
@@ -8692,14 +8704,14 @@ Covered vias can be set in Masks (Limit).
 <wire x1="16.23" y1="63.75" x2="12.95" y2="63.75" width="0.3" layer="1"/>
 <wire x1="12.95" y1="63.75" x2="12.3825" y2="63.1825" width="0.3" layer="1"/>
 </signal>
-<signal name="FE09_TX">
+<signal name="FE09_TX" class="7">
 <contactref element="C0831" pad="1"/>
 <contactref element="U0821" pad="3"/>
 <wire x1="18.03" y1="61.95" x2="18.03" y2="61.345" width="0.3" layer="1"/>
 <wire x1="18.03" y1="61.345" x2="19.05" y2="60.325" width="0.3" layer="1"/>
 <wire x1="19.05" y1="60.325" x2="19.05" y2="59.07" width="0.3" layer="1"/>
 </signal>
-<signal name="FE09_ANT">
+<signal name="FE09_ANT" class="7">
 <contactref element="U0821" pad="9"/>
 <contactref element="U0881" pad="2"/>
 <wire x1="18.53" y1="65.05" x2="18.53" y2="67.21" width="0.3" layer="1"/>
@@ -8730,7 +8742,7 @@ Covered vias can be set in Masks (Limit).
 <signal name="FPGA_RFX_DET">
 <contactref element="R0821" pad="2"/>
 </signal>
-<signal name="ANT09">
+<signal name="ANT09" class="7">
 <contactref element="C593" pad="1"/>
 <contactref element="L0892" pad="2"/>
 <contactref element="X0891" pad="ANT2"/>
@@ -8747,7 +8759,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="19.05" y1="85.94625" x2="19.05" y2="86.6775" width="0.3" layer="16"/>
 <wire x1="19.05" y1="85.69225" x2="19.05" y2="86.6775" width="0.3" layer="1"/>
 </signal>
-<signal name="ANT09_MATCH">
+<signal name="ANT09_MATCH" class="7">
 <contactref element="C0891" pad="1"/>
 <contactref element="L0892" pad="1"/>
 <contactref element="U0881" pad="5"/>
@@ -8807,7 +8819,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="28.73375" y1="10.01625" x2="28.8775" y2="10.16" width="0.1524" layer="16"/>
 <wire x1="28.8775" y1="10.16" x2="32.37" y2="10.16" width="0.1524" layer="16"/>
 </signal>
-<signal name="ANT24">
+<signal name="ANT24" class="7">
 <contactref element="X0895" pad="ANT1"/>
 <contactref element="X0895" pad="ANT3"/>
 <contactref element="X0895" pad="ANT2"/>
@@ -9156,7 +9168,7 @@ Covered vias can be set in Masks (Limit).
 <contactref element="JB2" pad="26"/>
 <wire x1="15.89" y1="10.16" x2="49.63" y2="59.11" width="0" layer="19" extent="1-16"/>
 </signal>
-<signal name="FPGA_ETH_TD_P" class="3">
+<signal name="FPGA_ETH_TD_P" class="1">
 <contactref element="JB1" pad="3"/>
 <contactref element="J1411" pad="3"/>
 <wire x1="71.581184375" y1="40.496315625" x2="65.80666875" y2="34.7218" width="0.254" layer="1"/>
@@ -9182,7 +9194,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="74.93" y1="40.894" x2="72.4535" y2="40.894" width="0.254" layer="16"/>
 <wire x1="72.4535" y1="40.894" x2="72.216184375" y2="40.813815625" width="0.254" layer="16"/>
 </signal>
-<signal name="FPGA_ETH_TD_N" class="3">
+<signal name="FPGA_ETH_TD_N" class="1">
 <contactref element="JB1" pad="5"/>
 <contactref element="J1411" pad="4"/>
 <wire x1="71.293815625" y1="40.783684375" x2="65.63833125" y2="35.1282" width="0.254" layer="1"/>
@@ -9207,7 +9219,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="71.293815625" y1="40.783684375" x2="72.42013125" y2="41.91" width="0.254" layer="16"/>
 <wire x1="74.93" y1="41.91" x2="72.42013125" y2="41.91" width="0.254" layer="16"/>
 </signal>
-<signal name="FPGA_ETH_RD_P" class="3">
+<signal name="FPGA_ETH_RD_P" class="1">
 <contactref element="JB1" pad="9"/>
 <contactref element="J1411" pad="7"/>
 <wire x1="74.93" y1="44.958" x2="72.3138" y2="44.958" width="0.254" layer="16"/>
@@ -9237,7 +9249,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="56.59916875" y1="33.4518" x2="57.23416875" y2="34.0868" width="0.254" layer="1"/>
 <wire x1="57.23416875" y1="34.0868" x2="57.293684375" y2="34.146315625" width="0.254" layer="1"/>
 </signal>
-<signal name="FPGA_ETH_RD_N" class="3">
+<signal name="FPGA_ETH_RD_N" class="1">
 <contactref element="JB1" pad="11"/>
 <contactref element="J1411" pad="8"/>
 <wire x1="74.93" y1="45.974" x2="72.4408" y2="45.974" width="0.254" layer="16"/>
@@ -9508,7 +9520,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="57.15" y1="72.39" x2="57.15" y2="73.645" width="0.1524" layer="1"/>
 <wire x1="59.69" y1="72.39" x2="57.15" y2="72.39" width="0.1524" layer="1"/>
 </signal>
-<signal name="USB_D_N" class="3">
+<signal name="USB_D_N" class="4">
 <contactref element="X1311" pad="D-"/>
 <contactref element="U0911" pad="6"/>
 <wire x1="57.8" y1="84.5" x2="57.8" y2="82.91263125" width="0.254" layer="1"/>
@@ -9527,7 +9539,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="56.9468" y1="66.75916875" x2="56.9468" y2="80.1243" width="0.254" layer="16"/>
 <wire x1="56.9468" y1="80.1243" x2="57.3532" y2="80.5307" width="0.254" layer="16"/>
 </signal>
-<signal name="USB_D_P" class="3">
+<signal name="USB_D_P" class="4">
 <contactref element="X1311" pad="D+"/>
 <contactref element="U0911" pad="7"/>
 <wire x1="57.15" y1="84.5" x2="57.15" y2="82.83736875" width="0.254" layer="1"/>
@@ -10269,10 +10281,10 @@ Covered vias can be set in Masks (Limit).
 <wire x1="33.03" y1="45.71" x2="32.0775" y2="45.71" width="0.15" layer="1"/>
 <wire x1="32.0775" y1="45.71" x2="31.75" y2="46.0375" width="0.15" layer="1"/>
 </signal>
-<signal name="TRX_TXD_VOID_N">
+<signal name="TRX_TXD_VOID_N" class="1">
 <contactref element="JB3" pad="49"/>
 </signal>
-<signal name="TRX_TXD_VOID_P">
+<signal name="TRX_TXD_VOID_P" class="1">
 <contactref element="JB3" pad="47"/>
 </signal>
 </signals>

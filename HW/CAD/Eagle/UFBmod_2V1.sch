@@ -18612,23 +18612,35 @@ Subminiature Tact Switch for SMT</description>
 <classes>
 <class number="0" name="default" width="0" drill="0.3">
 </class>
-<class number="1" name="diff_100R_200u" width="0.2032" drill="0">
+<class number="1" name="diff_100R_200u" width="0.2032" drill="0.3">
 <clearance class="1" value="0.2032"/>
 </class>
-<class number="2" name="diff_100R_280u" width="0.2286" drill="0">
+<class number="2" name="diff_100R_280u" width="0.2286" drill="0.3">
 <clearance class="2" value="0.1524"/>
 </class>
-<class number="3" name="diff_100R_360u" width="0.2667" drill="0">
+<class number="3" name="diff_100R_360u" width="0.2667" drill="0.3">
 <clearance class="3" value="0.1524"/>
 </class>
-<class number="4" name="diff_90R_200u" width="0.2159" drill="0">
+<class number="4" name="diff_90R_200u" width="0.2159" drill="0.3">
 <clearance class="4" value="0.1524"/>
 </class>
-<class number="5" name="diff_90R_280u" width="0.2921" drill="0">
+<class number="5" name="diff_90R_280u" width="0.2921" drill="0.3">
 <clearance class="5" value="0.1524"/>
 </class>
-<class number="6" name="diff_90R_360u" width="0.3175" drill="0">
+<class number="6" name="diff_90R_360u" width="0.3175" drill="0.3">
 <clearance class="6" value="0.127"/>
+</class>
+<class number="7" name="uni_50R_200u" width="0.3302" drill="0.3">
+<clearance class="7" value="0.381"/>
+</class>
+<class number="8" name="uni_50R_280u" width="0.4826" drill="0.3">
+<clearance class="8" value="0.381"/>
+</class>
+<class number="9" name="uni_50R_360u" width="0.635" drill="0.3">
+<clearance class="9" value="0.381"/>
+</class>
+<class number="10" name="diff_50R_200u" width="0.508" drill="0.3">
+<clearance class="10" value="0.127"/>
 </class>
 </classes>
 <parts>
@@ -19036,28 +19048,28 @@ Left</text>
 <junction x="170.18" y="162.56"/>
 </segment>
 </net>
-<net name="FPGA_ETH_TD_P" class="3">
+<net name="FPGA_ETH_TD_P" class="1">
 <segment>
 <pinref part="JB1" gate="G$1" pin="ETH_TD_P"/>
 <wire x1="162.56" y1="149.86" x2="177.8" y2="149.86" width="0.1524" layer="91"/>
 <label x="177.8" y="149.86" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_ETH_TD_N" class="3">
+<net name="FPGA_ETH_TD_N" class="1">
 <segment>
 <pinref part="JB1" gate="G$1" pin="ETH_TD_N"/>
 <wire x1="162.56" y1="147.32" x2="213.36" y2="147.32" width="0.1524" layer="91"/>
 <label x="213.36" y="147.32" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_ETH_RD_P" class="3">
+<net name="FPGA_ETH_RD_P" class="1">
 <segment>
 <pinref part="JB1" gate="G$1" pin="ETH_RD_P"/>
 <wire x1="162.56" y1="142.24" x2="177.8" y2="142.24" width="0.1524" layer="91"/>
 <label x="177.8" y="142.24" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_ETH_RD_N" class="3">
+<net name="FPGA_ETH_RD_N" class="1">
 <segment>
 <pinref part="JB1" gate="G$1" pin="ETH_RD_N"/>
 <wire x1="162.56" y1="139.7" x2="213.36" y2="139.7" width="0.1524" layer="91"/>
@@ -19951,14 +19963,14 @@ Top</text>
 <label x="132.08" y="142.24" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="TRX_TXD_VOID_N" class="0">
+<net name="TRX_TXD_VOID_N" class="1">
 <segment>
 <pinref part="JB3" gate="G$1" pin="B13_L4_N"/>
 <wire x1="154.94" y1="124.46" x2="154.94" y2="152.4" width="0.1524" layer="91"/>
 <label x="154.94" y="129.54" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
-<net name="TRX_TXD_VOID_P" class="0">
+<net name="TRX_TXD_VOID_P" class="1">
 <segment>
 <pinref part="JB3" gate="G$1" pin="B13_L4_P"/>
 <wire x1="152.4" y1="124.46" x2="152.4" y2="152.4" width="0.1524" layer="91"/>
@@ -20696,42 +20708,42 @@ I2C addr: 0x38</text>
 <label x="45.72" y="116.84" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="TRX_RF24_N" class="0">
+<net name="TRX_RF24_N" class="10">
 <segment>
 <pinref part="U0701" gate="G$1" pin="RF24N"/>
 <wire x1="104.14" y1="144.78" x2="81.28" y2="144.78" width="0.1524" layer="91"/>
 <pinref part="L0722" gate="G$1" pin="B2"/>
 </segment>
 </net>
-<net name="TRX_RF24_P" class="0">
+<net name="TRX_RF24_P" class="10">
 <segment>
 <pinref part="U0701" gate="G$1" pin="RF24P"/>
 <wire x1="104.14" y1="149.86" x2="81.28" y2="149.86" width="0.1524" layer="91"/>
 <pinref part="L0722" gate="G$1" pin="B1"/>
 </segment>
 </net>
-<net name="TRX_RF24" class="0">
+<net name="TRX_RF24" class="7">
 <segment>
 <wire x1="66.04" y1="149.86" x2="45.72" y2="149.86" width="0.1524" layer="91"/>
 <label x="45.72" y="149.86" size="1.778" layer="95" rot="R180" xref="yes"/>
 <pinref part="L0722" gate="G$1" pin="UB"/>
 </segment>
 </net>
-<net name="TRX_RF09_P" class="1">
+<net name="TRX_RF09_P" class="10">
 <segment>
 <pinref part="U0701" gate="G$1" pin="RF09P"/>
 <pinref part="L0721" gate="G$1" pin="B1"/>
 <wire x1="104.14" y1="127" x2="81.28" y2="127" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="TRX_RF09_N" class="1">
+<net name="TRX_RF09_N" class="10">
 <segment>
 <pinref part="U0701" gate="G$1" pin="RF09N"/>
 <pinref part="L0721" gate="G$1" pin="B2"/>
 <wire x1="104.14" y1="121.92" x2="81.28" y2="121.92" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="TRX_RF09" class="0">
+<net name="TRX_RF09" class="7">
 <segment>
 <pinref part="L0721" gate="G$1" pin="UB"/>
 <wire x1="66.04" y1="127" x2="45.72" y2="127" width="0.1524" layer="91"/>
@@ -20878,7 +20890,7 @@ I2C addr: 0x38</text>
 <busses>
 </busses>
 <nets>
-<net name="TRX_RF09" class="0">
+<net name="TRX_RF09" class="7">
 <segment>
 <wire x1="226.06" y1="99.06" x2="231.14" y2="99.06" width="0.1524" layer="91"/>
 <label x="231.14" y="99.06" size="1.778" layer="95" xref="yes"/>
@@ -21033,28 +21045,28 @@ I2C addr: 0x38</text>
 <wire x1="76.2" y1="104.14" x2="76.2" y2="111.76" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="PE09_RFC" class="0">
+<net name="PE09_RFC" class="7">
 <segment>
 <pinref part="U0811" gate="G$1" pin="RFC"/>
 <wire x1="213.36" y1="99.06" x2="218.44" y2="99.06" width="0.1524" layer="91"/>
 <pinref part="C0821" gate="G$1" pin="1"/>
 </segment>
 </net>
-<net name="PE09_RF1" class="0">
+<net name="PE09_RF1" class="7">
 <segment>
 <pinref part="U0811" gate="G$1" pin="RF1"/>
 <wire x1="177.8" y1="111.76" x2="172.72" y2="111.76" width="0.1524" layer="91"/>
 <pinref part="C0831" gate="G$1" pin="2"/>
 </segment>
 </net>
-<net name="PE09_RF2" class="0">
+<net name="PE09_RF2" class="7">
 <segment>
 <pinref part="U0811" gate="G$1" pin="RF2"/>
 <wire x1="177.8" y1="86.36" x2="172.72" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="C0832" gate="G$1" pin="2"/>
 </segment>
 </net>
-<net name="FE09_RX" class="0">
+<net name="FE09_RX" class="7">
 <segment>
 <pinref part="U0821" gate="G$1" pin="RX"/>
 <wire x1="162.56" y1="83.82" x2="111.76" y2="83.82" width="0.1524" layer="91"/>
@@ -21072,7 +21084,7 @@ I2C addr: 0x38</text>
 <pinref part="R0863" gate="G$1" pin="1"/>
 </segment>
 </net>
-<net name="FE09_TX" class="0">
+<net name="FE09_TX" class="7">
 <segment>
 <pinref part="C0831" gate="G$1" pin="1"/>
 <pinref part="U0821" gate="G$1" pin="TX"/>
@@ -21080,7 +21092,7 @@ I2C addr: 0x38</text>
 <label x="154.94" y="111.76" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="FE09_ANT" class="0">
+<net name="FE09_ANT" class="7">
 <segment>
 <pinref part="U0821" gate="G$1" pin="ANT"/>
 <wire x1="91.44" y1="116.84" x2="73.66" y2="116.84" width="0.1524" layer="91"/>
@@ -21122,7 +21134,7 @@ I2C addr: 0x38</text>
 <pinref part="R0821" gate="G$1" pin="2"/>
 </segment>
 </net>
-<net name="ANT09" class="0">
+<net name="ANT09" class="7">
 <segment>
 <pinref part="C593" gate="G$1" pin="1"/>
 <wire x1="20.32" y1="111.76" x2="20.32" y2="116.84" width="0.1524" layer="91"/>
@@ -21133,7 +21145,7 @@ I2C addr: 0x38</text>
 <pinref part="X0891" gate="1" pin="SIGNAL"/>
 </segment>
 </net>
-<net name="ANT09_MATCH" class="0">
+<net name="ANT09_MATCH" class="7">
 <segment>
 <pinref part="C0891" gate="G$1" pin="1"/>
 <wire x1="35.56" y1="111.76" x2="35.56" y2="116.84" width="0.1524" layer="91"/>
@@ -21144,7 +21156,7 @@ I2C addr: 0x38</text>
 <pinref part="U0881" gate="G$1" pin="OUT"/>
 </segment>
 </net>
-<net name="ANT24" class="0">
+<net name="ANT24" class="7">
 <segment>
 <pinref part="X0895" gate="1" pin="SIGNAL"/>
 <wire x1="15.24" y1="35.56" x2="20.32" y2="35.56" width="0.1524" layer="91"/>
@@ -21155,7 +21167,7 @@ I2C addr: 0x38</text>
 <junction x="20.32" y="35.56"/>
 </segment>
 </net>
-<net name="TRX_RF24" class="0">
+<net name="TRX_RF24" class="7">
 <segment>
 <label x="50.8" y="35.56" size="1.778" layer="95" xref="yes"/>
 <pinref part="L0896" gate="G$1" pin="1"/>
@@ -21353,14 +21365,14 @@ FT232H</text>
 <wire x1="127" y1="63.5" x2="127" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="USB_D_N" class="3">
+<net name="USB_D_N" class="4">
 <segment>
 <pinref part="U0911" gate="G$1" pin="D_M"/>
 <wire x1="104.14" y1="111.76" x2="38.1" y2="111.76" width="0.1524" layer="91"/>
 <label x="38.1" y="111.76" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="USB_D_P" class="3">
+<net name="USB_D_P" class="4">
 <segment>
 <pinref part="U0911" gate="G$1" pin="D_P"/>
 <wire x1="104.14" y1="109.22" x2="68.58" y2="109.22" width="0.1524" layer="91"/>
@@ -22756,14 +22768,14 @@ Digilent JTAG HS3</text>
 <pinref part="+3V3_1332" gate="G$1" pin="+3V3"/>
 </segment>
 </net>
-<net name="USB_D_N" class="3">
+<net name="USB_D_N" class="4">
 <segment>
 <pinref part="X1311" gate="G$1" pin="J_D-"/>
 <wire x1="58.42" y1="53.34" x2="48.26" y2="53.34" width="0.1524" layer="91"/>
 <label x="48.26" y="53.34" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="USB_D_P" class="3">
+<net name="USB_D_P" class="4">
 <segment>
 <pinref part="X1311" gate="G$1" pin="J_D+"/>
 <wire x1="58.42" y1="50.8" x2="30.48" y2="50.8" width="0.1524" layer="91"/>
@@ -23150,28 +23162,28 @@ Digilent JTAG HS3</text>
 <wire x1="165.1" y1="124.46" x2="165.1" y2="121.92" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="FPGA_ETH_TD_P" class="3">
+<net name="FPGA_ETH_TD_P" class="1">
 <segment>
 <pinref part="J1411" gate="G$1" pin="3"/>
 <wire x1="149.86" y1="109.22" x2="93.98" y2="109.22" width="0.1524" layer="91"/>
 <label x="93.98" y="109.22" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_ETH_RD_P" class="3">
+<net name="FPGA_ETH_RD_P" class="1">
 <segment>
 <pinref part="J1411" gate="G$1" pin="7"/>
 <wire x1="149.86" y1="93.98" x2="93.98" y2="93.98" width="0.1524" layer="91"/>
 <label x="93.98" y="93.98" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_ETH_TD_N" class="3">
+<net name="FPGA_ETH_TD_N" class="1">
 <segment>
 <pinref part="J1411" gate="G$1" pin="4"/>
 <wire x1="149.86" y1="99.06" x2="93.98" y2="99.06" width="0.1524" layer="91"/>
 <label x="93.98" y="99.06" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_ETH_RD_N" class="3">
+<net name="FPGA_ETH_RD_N" class="1">
 <segment>
 <pinref part="J1411" gate="G$1" pin="8"/>
 <wire x1="149.86" y1="83.82" x2="93.98" y2="83.82" width="0.1524" layer="91"/>
