@@ -19334,7 +19334,7 @@ Left</text>
 <label x="213.36" y="43.18" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_B16_L9_N" class="3">
+<net name="FPGA_B16_L9_N" class="0">
 <segment>
 <pinref part="JB1" gate="G$1" pin="B16_L9_N"/>
 <wire x1="162.56" y1="83.82" x2="177.8" y2="83.82" width="0.1524" layer="91"/>
@@ -22988,7 +22988,7 @@ Digilent JTAG HS3</text>
 <label x="177.8" y="116.84" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="FPGA_B16_L9_N" class="3">
+<net name="FPGA_B16_L9_N" class="0">
 <segment>
 <pinref part="R1362" gate="G$1" pin="1"/>
 <wire x1="223.52" y1="119.38" x2="210.82" y2="119.38" width="0.1524" layer="91"/>
