@@ -9,8 +9,8 @@
 <grid distance="50" unitdist="mil" unit="mil" style="dots" multiple="1" display="yes" altdistance="12.5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top__SigA_Pair" color="13" fill="1" visible="yes" active="yes"/>
-<layer number="2" name="Route2__GND_Pair_AVSS" color="1" fill="3" visible="no" active="yes"/>
-<layer number="3" name="Route3__SigC_GND" color="6" fill="3" visible="no" active="yes"/>
+<layer number="2" name="Route2__GND_Pair_AVSS" color="1" fill="3" visible="yes" active="yes"/>
+<layer number="3" name="Route3__SigC_GND" color="6" fill="3" visible="yes" active="yes"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
 <layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
 <layer number="6" name="Route6" color="1" fill="8" visible="no" active="no"/>
@@ -21,18 +21,18 @@
 <layer number="11" name="Route11" color="4" fill="7" visible="no" active="no"/>
 <layer number="12" name="Route12" color="1" fill="5" visible="no" active="no"/>
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
-<layer number="14" name="Route14__VDD_SigD" color="12" fill="6" visible="no" active="yes"/>
-<layer number="15" name="Route15__GND_Pair" color="3" fill="6" visible="no" active="yes"/>
+<layer number="14" name="Route14__VDD_SigD" color="12" fill="6" visible="yes" active="yes"/>
+<layer number="15" name="Route15__GND_Pair" color="3" fill="6" visible="yes" active="yes"/>
 <layer number="16" name="Bottom__SigB_Pair" color="11" fill="1" visible="yes" active="yes"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="no" active="yes"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="no" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="5" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
@@ -1854,6 +1854,10 @@ by DF4IAH</text>
 <text x="43.65625" y="82.70875" size="0.8128" layer="21" font="vector" ratio="20" rot="R90">RX</text>
 <text x="94.615" y="15.875" size="0.8128" layer="14" ratio="20">L14</text>
 <text x="94.615" y="17.145" size="0.8128" layer="3" ratio="20">L3</text>
+<text x="30.7975" y="28.575" size="0.6096" layer="25" ratio="20" rot="R90">TP EN1</text>
+<text x="27.305" y="28.575" size="0.6096" layer="25" ratio="20" rot="R90">TP MODE</text>
+<text x="29.21" y="28.575" size="0.6096" layer="25" ratio="20" rot="R90">TP PGOOD</text>
+<text x="73.9775" y="20.955" size="0.6096" layer="25" ratio="20" rot="R90">TP TXDEN</text>
 </plain>
 <libraries>
 <library name="df4iah_connector">
@@ -6936,7 +6940,7 @@ Covered vias can be set in Masks (Limit).
 <attribute name="NAME" x="47.3075" y="22.86" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="44.7675" y="22.86" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
-<element name="J1411" library="df4iah_connector" package="ARJE-0034_RJ45_WITH_MAGNETICS" value="" x="86.36" y="44.45" rot="MR270"/>
+<element name="J1411" library="df4iah_connector" package="ARJE-0034_RJ45_WITH_MAGNETICS" value="ABRACON_ARJE-0034" x="86.36" y="44.45" rot="MR270"/>
 <element name="R1421" library="df4iah_rcl" package="R0402" value="1kR" x="72.39" y="35.56" smashed="yes" rot="MR90">
 <attribute name="NAME" x="73.3425" y="33.9725" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="70.8025" y="33.9725" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
@@ -6993,6 +6997,25 @@ Covered vias can be set in Masks (Limit).
 <element name="R0711" library="df4iah_rcl" package="R0402" value="33R" x="12.7" y="38.4175"/>
 <element name="C1321" library="df4iah_rcl" package="C0402" value="100nF" x="31.115" y="48.895" rot="R270"/>
 <element name="C0713" library="df4iah_rcl" package="C0402" value="1nF" x="12.7" y="36.83" rot="R180"/>
+<element name="TP_EN1" library="df4iah_connector" package="B1,27" value="TPB1,27" x="30.7975" y="33.655">
+<attribute name="TP_SIGNAL_NAME" value="" x="30.7975" y="33.655" size="0.6096" layer="27" ratio="20" display="off"/>
+</element>
+<element name="TP_PGOOD" library="df4iah_connector" package="B1,27" value="TPB1,27" x="28.8925" y="33.655">
+<attribute name="TP_SIGNAL_NAME" value="" x="28.8925" y="33.655" size="0.6096" layer="27" ratio="20" display="off"/>
+</element>
+<element name="TP_MODE" library="df4iah_connector" package="B1,27" value="TPB1,27" x="26.9875" y="33.655">
+<attribute name="TP_SIGNAL_NAME" value="" x="26.9875" y="33.655" size="0.6096" layer="27" ratio="20" display="off"/>
+</element>
+<element name="TP_RESIN" library="df4iah_connector" package="B1,27" value="TPB1,27" x="47.3075" y="65.0875">
+<attribute name="TP_SIGNAL_NAME" value="" x="47.3075" y="65.0875" size="0.6096" layer="27" ratio="20" display="off"/>
+</element>
+<element name="R0203" library="df4iah_rcl" package="R0402" value="10kR" x="44.7675" y="65.0875" rot="R180"/>
+<element name="TP_RFX_DET" library="df4iah_connector" package="B1,27" value="TPB1,27" x="22.86" y="59.69">
+<attribute name="TP_SIGNAL_NAME" value="" x="22.86" y="59.69" size="0.6096" layer="27" ratio="20" display="off"/>
+</element>
+<element name="TP_TXDEN" library="df4iah_connector" package="B1,27" value="TPB1,27" x="72.39" y="25.0825">
+<attribute name="TP_SIGNAL_NAME" value="" x="72.39" y="25.0825" size="0.6096" layer="27" ratio="20" display="off"/>
+</element>
 </elements>
 <signals>
 <signal name="GND" airwireshidden="yes">
@@ -7754,7 +7777,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="68.58" y1="41.26" x2="68.595" y2="41.26" width="0.1524" layer="16"/>
 <wire x1="68.595" y1="41.26" x2="69.5325" y2="40.3225" width="0.1524" layer="16"/>
 </signal>
-<signal name="+3V3" airwireshidden="yes">
+<signal name="+3V3">
 <contactref element="L0703" pad="1"/>
 <contactref element="L0704" pad="1"/>
 <contactref element="C0701" pad="1"/>
@@ -7953,10 +7976,13 @@ Covered vias can be set in Masks (Limit).
 <vertex x="97.79" y="86.4"/>
 <vertex x="97.79" y="3.135" curve="-90"/>
 </polygon>
+<contactref element="R0203" pad="2"/>
+<wire x1="44.1175" y1="65.0875" x2="44.1175" y2="62.81" width="0.1524" layer="1"/>
+<wire x1="44.1175" y1="62.81" x2="44.13" y2="62.81" width="0.1524" layer="1"/>
 <wire x1="66.04" y1="74.28" x2="67.31" y2="80.01" width="0" layer="19" extent="16-16"/>
 <wire x1="72.39" y1="70.5" x2="73.18375" y2="70.485" width="0" layer="19" extent="1-16"/>
 <wire x1="59.69" y1="74.93" x2="66.04" y2="74.28" width="0" layer="19" extent="16-16"/>
-<wire x1="45.13" y1="62.81" x2="59.69" y2="74.93" width="0" layer="19" extent="1-1"/>
+<wire x1="44.1175" y1="65.0875" x2="59.69" y2="74.93" width="0" layer="19" extent="1-1"/>
 <wire x1="45.4" y1="49.78" x2="44.45" y2="60.96" width="0" layer="19" extent="16-16"/>
 <wire x1="50.18" y1="43.815" x2="47.3075" y2="47.3075" width="0" layer="19" extent="16-16"/>
 <wire x1="67.6275" y1="42.545" x2="52.9" y2="43.15" width="0" layer="19" extent="16-16"/>
@@ -8803,6 +8829,12 @@ Covered vias can be set in Masks (Limit).
 </signal>
 <signal name="FPGA_RFX_DET">
 <contactref element="R0821" pad="2"/>
+<contactref element="TP_RFX_DET" pad="TP"/>
+<wire x1="22.86" y1="59.69" x2="23.8125" y2="59.69" width="0.1524" layer="1"/>
+<wire x1="23.8125" y1="59.69" x2="24.13" y2="60.0075" width="0.1524" layer="1"/>
+<wire x1="24.13" y1="60.0075" x2="24.13" y2="60.96" width="0.1524" layer="1"/>
+<via x="24.13" y="60.96" extent="1-16" drill="0.3"/>
+<wire x1="24.13" y1="60.96" x2="23.51" y2="60.96" width="0.1524" layer="16"/>
 </signal>
 <signal name="ANT09" class="7">
 <contactref element="C593" pad="1"/>
@@ -10114,6 +10146,17 @@ Covered vias can be set in Masks (Limit).
 </signal>
 <signal name="FT_TXDEN">
 <contactref element="U0911" pad="21"/>
+<contactref element="TP_TXDEN" pad="TP"/>
+<wire x1="61.4" y1="43.25" x2="62.16" y2="43.25" width="0.1524" layer="16"/>
+<wire x1="62.16" y1="43.25" x2="62.5475" y2="42.8625" width="0.1524" layer="16"/>
+<wire x1="62.5475" y1="42.8625" x2="65.0875" y2="42.8625" width="0.1524" layer="16"/>
+<wire x1="65.0875" y1="42.8625" x2="65.405" y2="42.545" width="0.1524" layer="16"/>
+<via x="65.405" y="42.545" extent="1-16" drill="0.3"/>
+<wire x1="65.405" y1="42.545" x2="70.1675" y2="37.7825" width="0.1524" layer="1"/>
+<wire x1="70.1675" y1="37.7825" x2="70.1675" y2="32.385" width="0.1524" layer="1"/>
+<wire x1="70.1675" y1="32.385" x2="73.66" y2="28.8925" width="0.1524" layer="1"/>
+<wire x1="73.66" y1="28.8925" x2="73.66" y2="26.3525" width="0.1524" layer="1"/>
+<wire x1="73.66" y1="26.3525" x2="72.39" y2="25.0825" width="0.1524" layer="1"/>
 </signal>
 <signal name="FT_RXLED">
 <contactref element="U0911" pad="27"/>
@@ -10899,6 +10942,53 @@ Covered vias can be set in Masks (Limit).
 </signal>
 <signal name="TRX_TXD_VOID_P" class="1">
 <contactref element="JB3" pad="47"/>
+</signal>
+<signal name="FPGA_EN1">
+<contactref element="JB1" pad="27"/>
+<contactref element="TP_EN1" pad="TP"/>
+<wire x1="50.13" y1="30.81" x2="50.13" y2="34.96" width="0.1524" layer="1"/>
+<wire x1="50.13" y1="34.96" x2="48.5775" y2="36.5125" width="0.1524" layer="1"/>
+<via x="48.5775" y="36.5125" extent="1-16" drill="0.3"/>
+<wire x1="48.5775" y1="36.5125" x2="33.655" y2="36.5125" width="0.1524" layer="3"/>
+<wire x1="33.655" y1="36.5125" x2="30.7975" y2="33.655" width="0.1524" layer="3"/>
+<via x="30.7975" y="33.655" extent="1-16" drill="0.3"/>
+</signal>
+<signal name="PGOOD">
+<contactref element="JB1" pad="29"/>
+<contactref element="TP_PGOOD" pad="TP"/>
+<wire x1="50.63" y1="30.81" x2="50.63" y2="35.4125" width="0.1524" layer="1"/>
+<wire x1="50.63" y1="35.4125" x2="49.53" y2="36.5125" width="0.1524" layer="1"/>
+<via x="49.53" y="36.5125" extent="1-16" drill="0.3"/>
+<wire x1="49.53" y1="36.5125" x2="48.895" y2="37.1475" width="0.1524" layer="3"/>
+<wire x1="48.895" y1="37.1475" x2="48.26" y2="37.1475" width="0.1524" layer="3"/>
+<wire x1="48.26" y1="37.1475" x2="47.9425" y2="36.83" width="0.1524" layer="3"/>
+<wire x1="47.9425" y1="36.83" x2="32.0675" y2="36.83" width="0.1524" layer="3"/>
+<wire x1="32.0675" y1="36.83" x2="28.8925" y2="33.655" width="0.1524" layer="3"/>
+<via x="28.8925" y="33.655" extent="1-16" drill="0.3"/>
+</signal>
+<signal name="FPGA_MODE">
+<contactref element="JB1" pad="31"/>
+<contactref element="TP_MODE" pad="TP"/>
+<wire x1="51.13" y1="33.325" x2="51.1175" y2="33.3375" width="0" layer="19" extent="1-16"/>
+<wire x1="51.1175" y1="33.3375" x2="51.435" y2="33.655" width="0" layer="19" extent="1-16"/>
+<wire x1="51.435" y1="33.655" x2="26.9875" y2="33.655" width="0" layer="19" extent="1-16"/>
+<wire x1="51.13" y1="30.81" x2="51.13" y2="33.35" width="0.1524" layer="1"/>
+<wire x1="51.13" y1="33.35" x2="53.34" y2="35.56" width="0.1524" layer="1"/>
+<via x="53.34" y="35.56" extent="1-16" drill="0.3"/>
+<wire x1="53.34" y1="35.56" x2="50.4825" y2="38.4175" width="0.1524" layer="3"/>
+<wire x1="50.4825" y1="38.4175" x2="48.895" y2="38.4175" width="0.1524" layer="3"/>
+<wire x1="48.895" y1="38.4175" x2="47.625" y2="37.1475" width="0.1524" layer="3"/>
+<wire x1="47.625" y1="37.1475" x2="30.48" y2="37.1475" width="0.1524" layer="3"/>
+<wire x1="30.48" y1="37.1475" x2="26.9875" y2="33.655" width="0.1524" layer="3"/>
+<via x="26.9875" y="33.655" extent="1-16" drill="0.3"/>
+</signal>
+<signal name="RESIN">
+<contactref element="JB2" pad="17"/>
+<contactref element="TP_RESIN" pad="TP"/>
+<contactref element="R0203" pad="1"/>
+<wire x1="47.63" y1="62.81" x2="47.63" y2="65.0875" width="0.1524" layer="1"/>
+<wire x1="47.63" y1="65.0875" x2="47.3075" y2="65.0875" width="0.1524" layer="1"/>
+<wire x1="45.4175" y1="65.0875" x2="47.3075" y2="65.0875" width="0.1524" layer="1"/>
 </signal>
 </signals>
 <errors>

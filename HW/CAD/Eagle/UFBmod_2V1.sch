@@ -18911,7 +18911,7 @@ Subminiature Tact Switch for SMT</description>
 <part name="C1381" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="100nF"/>
 <part name="GND1381" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="FRAME_14" library="df4iah_frame" deviceset="A4L-LOC" device="" value="Holes"/>
-<part name="J1411" library="df4iah_connector" deviceset="ARJE-0034_RJ45_WITH_MAGNETICS" device=""/>
+<part name="J1411" library="df4iah_connector" deviceset="ARJE-0034_RJ45_WITH_MAGNETICS" device="" value="ABRACON_ARJE-0034"/>
 <part name="GND1411" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="GND1412" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="GND1413" library="df4iah_supply" deviceset="GND" device=""/>
@@ -18937,6 +18937,13 @@ Subminiature Tact Switch for SMT</description>
 <part name="GND0001" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="C0713" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="1nF"/>
 <part name="GND0712" library="df4iah_supply" deviceset="GND" device=""/>
+<part name="TP_EN1" library="df4iah_connector" deviceset="TP" device="B1,27"/>
+<part name="TP_PGOOD" library="df4iah_connector" deviceset="TP" device="B1,27"/>
+<part name="TP_MODE" library="df4iah_connector" deviceset="TP" device="B1,27"/>
+<part name="TP_RESIN" library="df4iah_connector" deviceset="TP" device="B1,27"/>
+<part name="R0203" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="10kR"/>
+<part name="TP_RFX_DET" library="df4iah_connector" deviceset="TP" device="B1,27"/>
+<part name="TP_TXDEN" library="df4iah_connector" deviceset="TP" device="B1,27"/>
 </parts>
 <sheets>
 <sheet>
@@ -18959,6 +18966,24 @@ Left</text>
 <text x="162.56" y="147.32" size="1.778" layer="94">out</text>
 <text x="162.56" y="142.24" size="1.778" layer="94">in</text>
 <text x="162.56" y="139.7" size="1.778" layer="94">in</text>
+<text x="94.488" y="52.578" size="1.778" layer="94">X</text>
+<text x="91.44" y="142.24" size="1.778" layer="94">in</text>
+<text x="91.44" y="134.62" size="1.778" layer="94">in</text>
+<text x="91.44" y="152.4" size="1.778" layer="94">in</text>
+<text x="91.44" y="132.08" size="1.778" layer="94">in</text>
+<text x="91.44" y="129.54" size="1.778" layer="94">in</text>
+<text x="91.44" y="127" size="1.778" layer="94">in</text>
+<text x="91.44" y="124.46" size="1.778" layer="94">in</text>
+<text x="91.44" y="121.92" size="1.778" layer="94">in</text>
+<text x="91.44" y="119.38" size="1.778" layer="94">in</text>
+<text x="91.44" y="104.14" size="1.778" layer="94">out</text>
+<text x="162.56" y="119.38" size="1.778" layer="94">in</text>
+<text x="162.56" y="114.3" size="1.778" layer="94">in</text>
+<text x="162.56" y="116.84" size="1.778" layer="94">out</text>
+<text x="162.56" y="134.62" size="1.778" layer="94">out</text>
+<text x="162.56" y="132.08" size="1.778" layer="94">out</text>
+<text x="162.56" y="127" size="1.778" layer="94">out</text>
+<text x="162.56" y="124.46" size="1.778" layer="94">out</text>
 </plain>
 <instances>
 <instance part="FRAME_01" gate="G$1" x="0" y="0" smashed="yes">
@@ -18970,6 +18995,18 @@ Left</text>
 <instance part="GND0102" gate="1" x="139.7" y="15.24"/>
 <instance part="JB1" gate="G$1" x="129.54" y="91.44"/>
 <instance part="+3V3_0101" gate="G$1" x="38.1" y="152.4" rot="R90"/>
+<instance part="TP_EN1" gate="G$1" x="182.88" y="119.38" smashed="yes" rot="R270">
+<attribute name="NAME" x="184.15" y="118.11" size="1.778" layer="95"/>
+<attribute name="TP_SIGNAL_NAME" x="181.61" y="118.11" size="1.778" layer="97" rot="R270"/>
+</instance>
+<instance part="TP_PGOOD" gate="G$1" x="203.2" y="116.84" smashed="yes" rot="R270">
+<attribute name="NAME" x="204.47" y="115.57" size="1.778" layer="95"/>
+<attribute name="TP_SIGNAL_NAME" x="201.93" y="115.57" size="1.778" layer="97" rot="R270"/>
+</instance>
+<instance part="TP_MODE" gate="G$1" x="182.88" y="114.3" smashed="yes" rot="R270">
+<attribute name="NAME" x="184.15" y="113.03" size="1.778" layer="95"/>
+<attribute name="TP_SIGNAL_NAME" x="181.61" y="113.03" size="1.778" layer="97" rot="R270"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -19423,6 +19460,27 @@ Left</text>
 <label x="213.36" y="38.1" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
+<net name="FPGA_EN1" class="0">
+<segment>
+<pinref part="JB1" gate="G$1" pin="EN1@27"/>
+<wire x1="162.56" y1="119.38" x2="180.34" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="TP_EN1" gate="G$1" pin="TP"/>
+</segment>
+</net>
+<net name="PGOOD" class="0">
+<segment>
+<pinref part="JB1" gate="G$1" pin="PGOOD@29"/>
+<wire x1="162.56" y1="116.84" x2="200.66" y2="116.84" width="0.1524" layer="91"/>
+<pinref part="TP_PGOOD" gate="G$1" pin="TP"/>
+</segment>
+</net>
+<net name="FPGA_MODE" class="0">
+<segment>
+<pinref part="JB1" gate="G$1" pin="MODE@31"/>
+<wire x1="162.56" y1="114.3" x2="180.34" y2="114.3" width="0.1524" layer="91"/>
+<pinref part="TP_MODE" gate="G$1" pin="TP"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
@@ -19436,7 +19494,6 @@ Right</text>
 <text x="162.56" y="33.02" size="1.778" layer="94">out</text>
 <text x="162.56" y="35.56" size="1.778" layer="94">out</text>
 <text x="162.56" y="43.18" size="1.778" layer="94">out</text>
-<text x="162.56" y="45.72" size="1.778" layer="94">in</text>
 <text x="162.56" y="38.1" size="1.778" layer="94">in</text>
 <text x="162.56" y="55.88" size="1.778" layer="94">out</text>
 <text x="91.44" y="132.08" size="1.778" layer="94">out</text>
@@ -19452,6 +19509,19 @@ Right</text>
 <text x="91.44" y="35.56" size="1.778" layer="94">in</text>
 <text x="91.44" y="27.94" size="1.778" layer="94">in</text>
 <text x="91.44" y="38.1" size="1.778" layer="94">out</text>
+<text x="91.44" y="129.54" size="1.778" layer="94">out</text>
+<text x="91.44" y="152.4" size="1.778" layer="94">in</text>
+<text x="91.44" y="144.78" size="1.778" layer="94">in</text>
+<text x="162.56" y="142.24" size="1.778" layer="94">out</text>
+<text x="91.44" y="68.58" size="1.778" layer="94">in</text>
+<text x="91.44" y="55.88" size="1.778" layer="94">in</text>
+<text x="91.44" y="58.42" size="1.778" layer="94">out</text>
+<text x="91.44" y="63.5" size="1.778" layer="94">out</text>
+<text x="91.44" y="60.96" size="1.778" layer="94">out</text>
+<text x="91.44" y="71.12" size="1.778" layer="94">out</text>
+<text x="162.56" y="132.08" size="1.778" layer="94">in</text>
+<text x="91.44" y="88.9" size="1.778" layer="94">in</text>
+<text x="162.56" y="45.72" size="1.778" layer="94">in</text>
 </plain>
 <instances>
 <instance part="FRAME_02" gate="G$1" x="0" y="0" smashed="yes">
@@ -19466,6 +19536,11 @@ Right</text>
 <instance part="R0201" gate="G$1" x="40.64" y="157.48"/>
 <instance part="+2V5_0201" gate="G$2" x="7.62" y="157.48" rot="R90"/>
 <instance part="+3V3_0201" gate="G$1" x="238.76" y="152.4" rot="R270"/>
+<instance part="TP_RESIN" gate="G$1" x="182.88" y="132.08" smashed="yes" rot="R270">
+<attribute name="NAME" x="184.15" y="130.81" size="1.778" layer="95"/>
+<attribute name="TP_SIGNAL_NAME" x="181.61" y="130.81" size="1.778" layer="97" rot="R270"/>
+</instance>
+<instance part="R0203" gate="G$1" x="205.74" y="134.62"/>
 </instances>
 <busses>
 </busses>
@@ -19574,10 +19649,10 @@ Right</text>
 <wire x1="162.56" y1="139.7" x2="165.1" y2="139.7" width="0.1524" layer="91"/>
 <pinref part="JB2" gate="G$1" pin="U3V3@9"/>
 <wire x1="162.56" y1="142.24" x2="165.1" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="165.1" y1="142.24" x2="182.88" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="142.24" x2="177.8" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="165.1" y1="139.7" x2="165.1" y2="142.24" width="0.1524" layer="91"/>
 <junction x="165.1" y="142.24"/>
-<label x="182.88" y="142.24" size="1.778" layer="95" xref="yes"/>
+<label x="177.8" y="142.24" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="JB2" gate="G$1" pin="VCCIO15@8"/>
@@ -19602,7 +19677,8 @@ Right</text>
 <pinref part="JB2" gate="G$1" pin="VIN@1"/>
 <wire x1="162.56" y1="152.4" x2="165.1" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="JB2" gate="G$1" pin="VIN@7"/>
-<wire x1="165.1" y1="152.4" x2="236.22" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="152.4" x2="233.68" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="152.4" x2="236.22" y2="152.4" width="0.1524" layer="91"/>
 <wire x1="162.56" y1="144.78" x2="165.1" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="165.1" y1="144.78" x2="165.1" y2="147.32" width="0.1524" layer="91"/>
 <junction x="165.1" y="152.4"/>
@@ -19615,6 +19691,10 @@ Right</text>
 <wire x1="165.1" y1="149.86" x2="162.56" y2="149.86" width="0.1524" layer="91"/>
 <junction x="165.1" y="149.86"/>
 <pinref part="+3V3_0201" gate="G$1" pin="+3V3"/>
+<pinref part="R0203" gate="G$1" pin="2"/>
+<wire x1="210.82" y1="134.62" x2="233.68" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="134.62" x2="233.68" y2="152.4" width="0.1524" layer="91"/>
+<junction x="233.68" y="152.4"/>
 </segment>
 </net>
 <net name="U3V3_JTAGREF" class="0">
@@ -19662,64 +19742,64 @@ Right</text>
 <net name="FPGA_FT_DCDN" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_L22_N"/>
-<wire x1="162.56" y1="33.02" x2="182.88" y2="33.02" width="0.1524" layer="91"/>
-<label x="182.88" y="33.02" size="1.778" layer="95" xref="yes"/>
+<wire x1="162.56" y1="33.02" x2="177.8" y2="33.02" width="0.1524" layer="91"/>
+<label x="177.8" y="33.02" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FPGA_FT_RIN" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_L22_P"/>
-<wire x1="162.56" y1="30.48" x2="215.9" y2="30.48" width="0.1524" layer="91"/>
-<label x="215.9" y="30.48" size="1.778" layer="95" xref="yes"/>
+<wire x1="162.56" y1="30.48" x2="213.36" y2="30.48" width="0.1524" layer="91"/>
+<label x="213.36" y="30.48" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FPGA_FT_12MHZ" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_IO25"/>
-<wire x1="162.56" y1="27.94" x2="182.88" y2="27.94" width="0.1524" layer="91"/>
-<label x="182.88" y="27.94" size="1.778" layer="95" xref="yes"/>
+<wire x1="162.56" y1="27.94" x2="177.8" y2="27.94" width="0.1524" layer="91"/>
+<label x="177.8" y="27.94" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FPGA_FT_RTSN" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_L21_P"/>
-<wire x1="162.56" y1="45.72" x2="182.88" y2="45.72" width="0.1524" layer="91"/>
-<label x="182.88" y="45.72" size="1.778" layer="95" xref="yes"/>
+<wire x1="162.56" y1="45.72" x2="177.8" y2="45.72" width="0.1524" layer="91"/>
+<label x="177.8" y="45.72" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FPGA_FT_CTSN" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_L21_N"/>
-<wire x1="162.56" y1="43.18" x2="215.9" y2="43.18" width="0.1524" layer="91"/>
-<label x="215.9" y="43.18" size="1.778" layer="95" xref="yes"/>
+<wire x1="162.56" y1="43.18" x2="213.36" y2="43.18" width="0.1524" layer="91"/>
+<label x="213.36" y="43.18" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FPGA_FT_DTRN" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_L24_N"/>
-<wire x1="162.56" y1="38.1" x2="182.88" y2="38.1" width="0.1524" layer="91"/>
-<label x="182.88" y="38.1" size="1.778" layer="95" xref="yes"/>
+<wire x1="162.56" y1="38.1" x2="177.8" y2="38.1" width="0.1524" layer="91"/>
+<label x="177.8" y="38.1" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FPGA_FT_DSRN" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_L24_P"/>
-<wire x1="162.56" y1="35.56" x2="215.9" y2="35.56" width="0.1524" layer="91"/>
-<label x="215.9" y="35.56" size="1.778" layer="95" xref="yes"/>
+<wire x1="162.56" y1="35.56" x2="213.36" y2="35.56" width="0.1524" layer="91"/>
+<label x="213.36" y="35.56" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FPGA_FT_RESETN" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_L15_N"/>
-<wire x1="162.56" y1="55.88" x2="215.9" y2="55.88" width="0.1524" layer="91"/>
-<label x="215.9" y="55.88" size="1.778" layer="95" xref="yes"/>
+<wire x1="162.56" y1="55.88" x2="213.36" y2="55.88" width="0.1524" layer="91"/>
+<label x="213.36" y="55.88" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="FPGA_RFX_MODE" class="0">
 <segment>
 <pinref part="JB2" gate="G$1" pin="B15_L15_P"/>
-<wire x1="162.56" y1="58.42" x2="182.88" y2="58.42" width="0.1524" layer="91"/>
-<label x="182.88" y="58.42" size="1.778" layer="95" xref="yes"/>
+<wire x1="162.56" y1="58.42" x2="177.8" y2="58.42" width="0.1524" layer="91"/>
+<label x="177.8" y="58.42" size="1.778" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="TRX_SCLK" class="0">
@@ -19811,6 +19891,18 @@ Right</text>
 <pinref part="JB2" gate="G$1" pin="B15_L11_CLK_P"/>
 <wire x1="96.52" y1="88.9" x2="76.2" y2="88.9" width="0.1524" layer="91"/>
 <label x="76.2" y="88.9" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="RESIN" class="0">
+<segment>
+<pinref part="JB2" gate="G$1" pin="RESIN"/>
+<wire x1="162.56" y1="132.08" x2="177.8" y2="132.08" width="0.1524" layer="91"/>
+<pinref part="TP_RESIN" gate="G$1" pin="TP"/>
+<wire x1="177.8" y1="132.08" x2="180.34" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="132.08" x2="177.8" y2="134.62" width="0.1524" layer="91"/>
+<junction x="177.8" y="132.08"/>
+<pinref part="R0203" gate="G$1" pin="1"/>
+<wire x1="177.8" y1="134.62" x2="200.66" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -20887,6 +20979,10 @@ I2C addr: 0x38</text>
 <instance part="L0853" gate="G$1" x="111.76" y="139.7"/>
 <instance part="GND0821" gate="1" x="76.2" y="101.6"/>
 <instance part="R0861" gate="G$1" x="121.92" y="60.96" rot="R90"/>
+<instance part="TP_RFX_DET" gate="G$1" x="208.28" y="144.78" smashed="yes">
+<attribute name="NAME" x="209.55" y="146.05" size="1.778" layer="95" rot="R90"/>
+<attribute name="TP_SIGNAL_NAME" x="209.55" y="143.51" size="1.778" layer="97"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -21130,9 +21226,13 @@ I2C addr: 0x38</text>
 </net>
 <net name="FPGA_RFX_DET" class="0">
 <segment>
-<wire x1="175.26" y1="137.16" x2="231.14" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="137.16" x2="208.28" y2="137.16" width="0.1524" layer="91"/>
 <label x="231.14" y="137.16" size="1.778" layer="95" xref="yes"/>
 <pinref part="R0821" gate="G$1" pin="2"/>
+<pinref part="TP_RFX_DET" gate="G$1" pin="TP"/>
+<wire x1="208.28" y1="137.16" x2="231.14" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="137.16" x2="208.28" y2="142.24" width="0.1524" layer="91"/>
+<junction x="208.28" y="137.16"/>
 </segment>
 </net>
 <net name="ANT09" class="7">
@@ -21271,6 +21371,10 @@ FT232H</text>
 <instance part="R0972" gate="G$1" x="182.88" y="93.98"/>
 <instance part="D0972" gate="G$1" x="198.12" y="93.98" rot="R270"/>
 <instance part="D0971" gate="G$1" x="208.28" y="96.52" rot="R270"/>
+<instance part="TP_TXDEN" gate="G$1" x="172.72" y="106.68" smashed="yes">
+<attribute name="NAME" x="173.99" y="105.41" size="1.778" layer="95"/>
+<attribute name="TP_SIGNAL_NAME" x="173.99" y="105.41" size="1.778" layer="97"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -21356,14 +21460,12 @@ FT232H</text>
 <pinref part="U0911" gate="G$1" pin="AGND@4"/>
 <wire x1="121.92" y1="63.5" x2="121.92" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="53.34" x2="124.46" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="124.46" y1="53.34" x2="127" y2="53.34" width="0.1524" layer="91"/>
 <junction x="124.46" y="53.34"/>
 <pinref part="L0911" gate="G$1" pin="2"/>
 <wire x1="124.46" y1="53.34" x2="124.46" y2="50.8" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="U0911" gate="G$1" pin="AGND@41"/>
 <wire x1="127" y1="63.5" x2="127" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="53.34" x2="127" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="USB_D_N" class="4">
@@ -21637,7 +21739,10 @@ FT232H</text>
 <segment>
 <pinref part="U0911" gate="G$1" pin="ACBUS0"/>
 <wire x1="154.94" y1="104.14" x2="172.72" y2="104.14" width="0.1524" layer="91"/>
-<label x="172.72" y="104.14" size="1.778" layer="95" xref="yes"/>
+<label x="228.6" y="104.14" size="1.778" layer="95" xref="yes"/>
+<pinref part="TP_TXDEN" gate="G$1" pin="TP"/>
+<wire x1="172.72" y1="104.14" x2="228.6" y2="104.14" width="0.1524" layer="91"/>
+<junction x="172.72" y="104.14"/>
 </segment>
 </net>
 <net name="FT_RXLED" class="0">
@@ -23329,8 +23434,66 @@ Digilent JTAG HS3</text>
 </sheet>
 </sheets>
 <errors>
+<approved hash="102,9,104.14,121.92,VCCD,FT_VCCD,,,,"/>
+<approved hash="102,11,106.68,104.14,VREG,TPS_VREG,,,,"/>
+<approved hash="104,7,104.14,68.58,U0701,EVDD,TRX_EVDD,,,"/>
+<approved hash="104,7,104.14,53.34,U0701,DEVDD,TRX_DEVDD,,,"/>
+<approved hash="104,7,60.96,96.52,U0711,VCC_3V3,+3V3,,,"/>
+<approved hash="104,6,119.38,96.52,U0601,VDD,+3V3,,,"/>
+<approved hash="104,8,111.76,132.08,U0821,VDD3,RFX_VDD3,,,"/>
+<approved hash="104,8,106.68,86.36,U0821,VDD2,+3V3,,,"/>
+<approved hash="104,8,116.84,86.36,U0821,VDD1,+3V3,,,"/>
+<approved hash="104,13,58.42,55.88,X1311,J_VUSB,USB_VBUS,,,"/>
+<approved hash="104,1,96.52,152.4,JB1,VIN,+3V3,,,"/>
+<approved hash="104,1,96.52,149.86,JB1,VIN,+3V3,,,"/>
+<approved hash="104,1,96.52,147.32,JB1,VIN,+3V3,,,"/>
+<approved hash="104,1,96.52,137.16,JB1,U3V3IN,+3V3,,,"/>
+<approved hash="104,1,96.52,134.62,JB1,U3V3IN,+3V3,,,"/>
+<approved hash="204,1,96.52,53.34,JB1,VBAT_IN,,,,"/>
+<approved hash="104,2,162.56,152.4,JB2,VIN,+3V3,,,"/>
+<approved hash="104,2,162.56,149.86,JB2,VIN,+3V3,,,"/>
+<approved hash="104,2,162.56,147.32,JB2,VIN,+3V3,,,"/>
+<approved hash="104,2,162.56,144.78,JB2,VIN,+3V3,,,"/>
+<approved hash="104,2,96.52,144.78,JB2,VCCIO15,U3V3,,,"/>
+<approved hash="104,2,96.52,142.24,JB2,VCCIO15,U3V3,,,"/>
+<approved hash="104,5,127,99.06,U0501,VSS,GND,,,"/>
+<approved hash="104,5,124.46,99.06,U0501,VDD,+3V3,,,"/>
+<approved hash="104,11,137.16,104.14,U1101,VIN,TPS_VIN,,,"/>
+<approved hash="104,11,132.08,104.14,U1101,VIN,TPS_VIN,,,"/>
+<approved hash="104,11,127,104.14,U1101,VIN,TPS_VIN,,,"/>
+<approved hash="104,11,121.92,104.14,U1101,VIN,TPS_VIN,,,"/>
+<approved hash="104,11,116.84,104.14,U1101,VIN,TPS_VIN,,,"/>
+<approved hash="104,11,111.76,104.14,U1101,VIN,TPS_VIN,,,"/>
+<approved hash="104,11,101.6,104.14,U1101,VDD,TPS_VIN,,,"/>
+<approved hash="104,12,111.76,114.3,U1211,VIN,+3V3,,,"/>
+<approved hash="104,9,104.14,127,U0911,VREGIN,+3V3,,,"/>
+<approved hash="104,9,124.46,134.62,U0911,VPHY,FT_VPHY,,,"/>
+<approved hash="104,9,127,134.62,U0911,VPLL,FT_VPLL,,,"/>
+<approved hash="104,9,129.54,134.62,U0911,VCCIO,FT_VCCD,,,"/>
+<approved hash="104,9,132.08,134.62,U0911,VCCIO,FT_VCCD,,,"/>
+<approved hash="104,9,134.62,134.62,U0911,VCCIO,FT_VCCD,,,"/>
+<approved hash="106,1,162.56,53.34,FPGA_B16_L2_N,,,,,"/>
+<approved hash="106,1,162.56,50.8,FPGA_B16_L2_P,,,,,"/>
+<approved hash="106,1,162.56,58.42,FPGA_B16_L5_N,,,,,"/>
+<approved hash="106,1,162.56,55.88,FPGA_B16_L5_P,,,,,"/>
+<approved hash="106,1,162.56,45.72,FPGA_B16_L6_N,,,,,"/>
+<approved hash="106,1,162.56,43.18,FPGA_B16_L6_P,,,,,"/>
+<approved hash="106,1,162.56,66.04,FPGA_B16_L10_N,,,,,"/>
+<approved hash="106,1,162.56,63.5,FPGA_B16_L10_P,,,,,"/>
+<approved hash="209,1,162.56,119.38,FPGA_EN1,,,,,"/>
+<approved hash="209,1,180.34,119.38,FPGA_EN1,,,,,"/>
+<approved hash="209,1,162.56,114.3,FPGA_MODE,,,,,"/>
+<approved hash="209,1,180.34,114.3,FPGA_MODE,,,,,"/>
 <approved hash="106,7,104.14,139.7,TRX_FEA24,,,,,"/>
 <approved hash="106,7,104.14,134.62,TRX_FEB24,,,,,"/>
+<approved hash="106,3,154.94,124.46,TRX_TXD_VOID_N,,,,,"/>
+<approved hash="106,3,152.4,124.46,TRX_TXD_VOID_P,,,,,"/>
+<approved hash="106,2,96.52,129.54,U1V5,,,,,"/>
+<approved hash="106,13,58.42,48.26,USB_ID,,,,,"/>
+<approved hash="113,13,60.6383,143.835,X1332,,,,,"/>
+<approved hash="113,13,23.2146,119.317,X1331,,,,,"/>
+<approved hash="113,13,223.52,57.5987,X1381,,,,,"/>
+<approved hash="115,2,95.25,152.4,VCCIO13,,,,,"/>
 </errors>
 </schematic>
 </drawing>
