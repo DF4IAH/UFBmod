@@ -18937,9 +18937,9 @@ Subminiature Tact Switch for SMT</description>
 <part name="GND0001" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="C0713" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="1nF"/>
 <part name="GND0712" library="df4iah_supply" deviceset="GND" device=""/>
-<part name="TP_EN1" library="df4iah_connector" deviceset="TP" device="B1,27"/>
-<part name="TP_PGOOD" library="df4iah_connector" deviceset="TP" device="B1,27"/>
-<part name="TP_MODE" library="df4iah_connector" deviceset="TP" device="B1,27"/>
+<part name="FPGA_EN1" library="df4iah_connector" deviceset="TP" device="B1,27"/>
+<part name="PGOOD" library="df4iah_connector" deviceset="TP" device="B1,27"/>
+<part name="FPGA_MODE" library="df4iah_connector" deviceset="TP" device="B1,27"/>
 <part name="TP_RESIN" library="df4iah_connector" deviceset="TP" device="B1,27"/>
 <part name="R0203" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="10kR"/>
 <part name="TP_RFX_DET" library="df4iah_connector" deviceset="TP" device="B1,27"/>
@@ -18995,15 +18995,15 @@ Left</text>
 <instance part="GND0102" gate="1" x="139.7" y="15.24"/>
 <instance part="JB1" gate="G$1" x="129.54" y="91.44"/>
 <instance part="+3V3_0101" gate="G$1" x="38.1" y="152.4" rot="R90"/>
-<instance part="TP_EN1" gate="G$1" x="182.88" y="119.38" smashed="yes" rot="R270">
+<instance part="FPGA_EN1" gate="G$1" x="182.88" y="119.38" smashed="yes" rot="R270">
 <attribute name="NAME" x="184.15" y="118.11" size="1.778" layer="95"/>
 <attribute name="TP_SIGNAL_NAME" x="181.61" y="118.11" size="1.778" layer="97" rot="R270"/>
 </instance>
-<instance part="TP_PGOOD" gate="G$1" x="203.2" y="116.84" smashed="yes" rot="R270">
+<instance part="PGOOD" gate="G$1" x="203.2" y="116.84" smashed="yes" rot="R270">
 <attribute name="NAME" x="204.47" y="115.57" size="1.778" layer="95"/>
 <attribute name="TP_SIGNAL_NAME" x="201.93" y="115.57" size="1.778" layer="97" rot="R270"/>
 </instance>
-<instance part="TP_MODE" gate="G$1" x="182.88" y="114.3" smashed="yes" rot="R270">
+<instance part="FPGA_MODE" gate="G$1" x="182.88" y="114.3" smashed="yes" rot="R270">
 <attribute name="NAME" x="184.15" y="113.03" size="1.778" layer="95"/>
 <attribute name="TP_SIGNAL_NAME" x="181.61" y="113.03" size="1.778" layer="97" rot="R270"/>
 </instance>
@@ -19464,21 +19464,21 @@ Left</text>
 <segment>
 <pinref part="JB1" gate="G$1" pin="EN1@27"/>
 <wire x1="162.56" y1="119.38" x2="180.34" y2="119.38" width="0.1524" layer="91"/>
-<pinref part="TP_EN1" gate="G$1" pin="TP"/>
+<pinref part="FPGA_EN1" gate="G$1" pin="TP"/>
 </segment>
 </net>
 <net name="PGOOD" class="0">
 <segment>
 <pinref part="JB1" gate="G$1" pin="PGOOD@29"/>
 <wire x1="162.56" y1="116.84" x2="200.66" y2="116.84" width="0.1524" layer="91"/>
-<pinref part="TP_PGOOD" gate="G$1" pin="TP"/>
+<pinref part="PGOOD" gate="G$1" pin="TP"/>
 </segment>
 </net>
 <net name="FPGA_MODE" class="0">
 <segment>
 <pinref part="JB1" gate="G$1" pin="MODE@31"/>
 <wire x1="162.56" y1="114.3" x2="180.34" y2="114.3" width="0.1524" layer="91"/>
-<pinref part="TP_MODE" gate="G$1" pin="TP"/>
+<pinref part="FPGA_MODE" gate="G$1" pin="TP"/>
 </segment>
 </net>
 </nets>
