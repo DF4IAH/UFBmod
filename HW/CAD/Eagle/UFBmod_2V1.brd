@@ -30,8 +30,8 @@
 <layer number="20" name="Dimension" color="5" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
@@ -48,9 +48,9 @@
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
-<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
-<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
@@ -1807,11 +1807,11 @@ by DF4IAH</text>
 <wire x1="0" y1="89.535" x2="98.425" y2="89.535" width="0.1524" layer="20"/>
 <wire x1="98.425" y1="89.535" x2="98.425" y2="0" width="0.1524" layer="20"/>
 <wire x1="98.425" y1="0" x2="0" y2="0" width="0.1524" layer="20"/>
-<text x="63.02375" y="84.7725" size="0.8128" layer="21" ratio="20" rot="R90">USB</text>
-<text x="20.16125" y="83.185" size="0.8128" layer="25" font="vector" ratio="20">X591</text>
+<text x="62.70625" y="83.82" size="0.8128" layer="21" ratio="20" rot="R90">USB</text>
+<text x="14.76375" y="83.5025" size="0.8128" layer="25" font="vector" ratio="20">X0891</text>
 <text x="15.24" y="84.93125" size="0.8128" layer="21" font="vector" ratio="20" rot="R90">ANT09</text>
 <text x="32.54375" y="84.93125" size="0.8128" layer="21" font="vector" ratio="20" rot="R90">ANT24</text>
-<text x="29.05125" y="83.185" size="0.8128" layer="25" font="vector" ratio="20">X595</text>
+<text x="23.65375" y="83.5025" size="0.8128" layer="25" font="vector" ratio="20">X0895</text>
 <polygon width="0.15" layer="46">
 <vertex x="0" y="87"/>
 <vertex x="0" y="89.5"/>
@@ -1844,18 +1844,18 @@ by DF4IAH</text>
 <text x="82.8675" y="71.755" size="0.8128" layer="21" ratio="20">12V</text>
 <text x="82.8675" y="73.9775" size="0.8128" layer="21" ratio="20">GND</text>
 <text x="40.9575" y="76.835" size="0.8128" layer="21" font="vector" ratio="20">JTAG</text>
-<text x="57.62625" y="76.835" size="0.8128" layer="21" font="vector" ratio="20">CPLD_EN</text>
-<text x="88.9" y="8.255" size="0.6096" layer="21" ratio="20" rot="R90">1.8V</text>
-<text x="88.9" y="5.3975" size="0.6096" layer="21" ratio="20" rot="R90">2.5V</text>
-<text x="88.9" y="2.54" size="0.6096" layer="21" ratio="20" rot="R90">3.3V</text>
+<text x="63.5" y="71.755" size="0.8128" layer="21" font="vector" ratio="20" rot="R90">CPLD_EN</text>
+<text x="89.2175" y="8.255" size="0.6096" layer="21" ratio="20" rot="R90">1.8V</text>
+<text x="89.2175" y="5.3975" size="0.6096" layer="21" ratio="20" rot="R90">2.5V</text>
+<text x="89.2175" y="2.54" size="0.6096" layer="21" ratio="20" rot="R90">3.3V</text>
 <text x="83.82" y="10.795" size="0.6096" layer="21" ratio="20">VCCIO16</text>
 <text x="46.19625" y="82.70875" size="0.8128" layer="21" font="vector" ratio="20" rot="R90">TX</text>
 <text x="43.65625" y="82.70875" size="0.8128" layer="21" font="vector" ratio="20" rot="R90">RX</text>
 <text x="94.615" y="15.875" size="0.8128" layer="14" ratio="20">L14</text>
 <text x="94.615" y="17.145" size="0.8128" layer="3" ratio="20">L3</text>
-<text x="25.7175" y="33.02" size="0.6096" layer="25" ratio="20">TP EN1</text>
-<text x="25.0825" y="37.1475" size="0.6096" layer="25" ratio="20">TP MODE</text>
-<text x="24.4475" y="34.925" size="0.6096" layer="25" ratio="20">TP PGOOD</text>
+<text x="26.035" y="32.385" size="0.6096" layer="25" ratio="20">TP EN1</text>
+<text x="25.4" y="37.1475" size="0.6096" layer="25" ratio="20">TP MODE</text>
+<text x="24.765" y="34.29" size="0.6096" layer="25" ratio="20">TP PGOOD</text>
 <text x="72.39" y="23.1775" size="0.6096" layer="25" ratio="20">TP TXDEN</text>
 <polygon width="0.1524" layer="41">
 <vertex x="15.875" y="43.4975"/>
@@ -1881,9 +1881,10 @@ by DF4IAH</text>
 <vertex x="21.9075" y="37.465"/>
 <vertex x="15.875" y="37.465"/>
 </polygon>
-<text x="48.26" y="65.405" size="0.6096" layer="25" ratio="20">TP RESIN</text>
+<text x="49.53" y="65.405" size="0.6096" layer="25" ratio="20">TP RESIN</text>
 <text x="23.1775" y="52.705" size="0.6096" layer="25" ratio="20" rot="R90">TP RFX_DET</text>
 <text x="29.5275" y="47.3075" size="0.6096" layer="25" ratio="20" rot="R90">TP DDR3_INIT_CALIB</text>
+<text x="21.9075" y="48.895" size="0.6096" layer="26" ratio="10" rot="MR0">L0722</text>
 </plain>
 <libraries>
 <library name="df4iah_connector">
@@ -6400,83 +6401,83 @@ Covered vias can be set in Masks (Limit).
 <element name="H1512" library="df4iah_holes" package="3,2-PAD" value="MOUNT-PAD-ROUND3.2" x="5.08" y="5.08" locked="yes" smashed="yes"/>
 <element name="H1514" library="df4iah_holes" package="3,2-PAD" value="MOUNT-PAD-ROUND3.2" x="93.345" y="5.08" locked="yes" smashed="yes"/>
 <element name="L1101" library="df4iah_rcl" package="L1812" value="440nH" x="73.18375" y="72.86625" smashed="yes" rot="R90">
-<attribute name="NAME" x="71.27875" y="71.675625" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="71.993125" y="68.73875" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="75.72375" y="71.59625" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="C1153" library="df4iah_rcl" package="C0805" value="100uF" x="80.01" y="72.39" smashed="yes" rot="R90">
-<attribute name="NAME" x="79.0575" y="71.040625" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="80.3275" y="67.548125" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="81.5975" y="71.12" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="U0701" library="df4iah_rf" package="QFN48_7X7-0P5-PAD" value="AT86RF215-ZU" x="19.05" y="40.64" smashed="yes" rot="R270">
-<attribute name="NAME" x="16.815" y="36.358" size="0.6096" layer="25" font="vector" ratio="10" rot="R180" align="bottom-center"/>
+<attribute name="NAME" x="17.45" y="36.0405" size="0.6096" layer="25" font="vector" ratio="10" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="15.17" y="35.89" size="0.6096" layer="27" font="vector" rot="R270" align="top-center"/>
 </element>
 <element name="L0702" library="df4iah_rcl" package="R1206" value="300R" x="20.6375" y="30.1625" smashed="yes" rot="R90">
-<attribute name="NAME" x="22.70125" y="28.73375" size="0.6096" layer="25" font="vector" rot="R90"/>
+<attribute name="NAME" x="22.70125" y="28.41625" size="0.6096" layer="25" font="vector" rot="R90"/>
 <attribute name="VALUE" x="23.1775" y="28.8925" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="L0701" library="df4iah_rcl" package="R1206" value="300R" x="13.97" y="46.99" smashed="yes" rot="R270">
-<attribute name="NAME" x="12.7" y="45.87875" size="0.6096" layer="25" font="vector" rot="R90"/>
+<attribute name="NAME" x="12.7" y="45.56125" size="0.6096" layer="25" font="vector" rot="R90"/>
 <attribute name="VALUE" x="11.43" y="48.26" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="L0703" library="df4iah_rcl" package="R1206" value="300R" x="17.4625" y="30.1625" smashed="yes" rot="R90">
-<attribute name="NAME" x="16.03375" y="28.73375" size="0.6096" layer="25" font="vector" rot="R90"/>
+<attribute name="NAME" x="16.03375" y="28.41625" size="0.6096" layer="25" font="vector" rot="R90"/>
 <attribute name="VALUE" x="20.0025" y="28.8925" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="L0704" library="df4iah_rcl" package="R1206" value="300R" x="10.16" y="46.99" smashed="yes" rot="R270">
-<attribute name="NAME" x="8.73125" y="45.87875" size="0.6096" layer="25" font="vector" rot="R90"/>
+<attribute name="NAME" x="8.73125" y="45.56125" size="0.6096" layer="25" font="vector" rot="R90"/>
 <attribute name="VALUE" x="7.62" y="48.26" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="C0704" library="df4iah_rcl" package="C0402" value="1nF" x="12.7" y="45.72" smashed="yes" rot="MR180">
-<attribute name="NAME" x="13.97" y="46.355" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="13.97" y="46.6725" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="11.43" y="47.3075" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="C0703" library="df4iah_rcl" package="C0402" value="1nF" x="19.05" y="32.0675" smashed="yes" rot="MR180">
-<attribute name="NAME" x="20.32" y="32.7025" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="21.2725" y="33.02" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="17.78" y="33.655" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="C0706" library="df4iah_rcl" package="C0402" value="100nF" x="24.13" y="37.1475" smashed="yes" rot="R180">
-<attribute name="NAME" x="23.495" y="37.7825" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="22.86" y="35.56" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="25.4" y="38.735" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="C0708" library="df4iah_rcl" package="C0402" value="100nF" x="24.13" y="44.45" smashed="yes" rot="R270">
-<attribute name="NAME" x="25.4" y="43.815" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="24.4475" y="46.0375" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="22.5425" y="45.72" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="C0707" library="df4iah_rcl" package="C0402" value="100nF" x="12.7" y="43.4975" smashed="yes">
-<attribute name="NAME" x="11.27125" y="43.97375" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="11.27125" y="41.75125" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="11.43" y="41.91" size="0.6096" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="C0701" library="df4iah_rcl" package="C0402" value="1uF" x="19.05" y="26.67" smashed="yes">
-<attribute name="NAME" x="17.78" y="24.765" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="17.78" y="24.4475" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="17.78" y="25.0825" size="0.6096" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="U0711" library="df4iah_osc" package="ASVTX-13" value="ASVTX-13-D-26.000MHZ-I05-T" x="8.89" y="40.64" smashed="yes">
-<attribute name="NAME" x="7.090146875" y="39.6013" size="0.6096" layer="25" font="vector" rot="R90"/>
+<attribute name="NAME" x="4.3588" y="40.217353125" size="0.6096" layer="25" font="vector"/>
 <attribute name="VALUE" x="11.828525" y="37.89166875" size="1.27" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="C0712" library="df4iah_rcl" package="C0402" value="10nF" x="12.7" y="40.64" smashed="yes">
-<attribute name="NAME" x="11.43" y="41.11625" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="11.43" y="41.43375" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="11.43" y="39.0525" size="0.6096" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="C0711" library="df4iah_rcl" package="C0402" value="10nF" x="8.89" y="42.545" smashed="yes">
-<attribute name="NAME" x="7.9375" y="43.65625" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="4.445" y="42.06875" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="7.62" y="40.9575" size="0.6096" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="C0621" library="df4iah_rcl" package="C0402" value="1uF" x="8.89" y="36.83" smashed="yes" rot="R270">
-<attribute name="NAME" x="10.16" y="35.56" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="10.4775" y="35.56" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="7.3025" y="38.1" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="R0621" library="df4iah_rcl" package="R0402" value="100kR" x="7.62" y="36.83" smashed="yes" rot="R90">
-<attribute name="NAME" x="6.985" y="35.56" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="6.6675" y="35.56" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="9.2075" y="35.2425" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="C0612" library="df4iah_rcl" package="C0402" value="100nF" x="6.35" y="34.29" smashed="yes" rot="R180">
-<attribute name="NAME" x="2.54" y="33.9725" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="1.905" y="33.9725" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="7.62" y="35.8775" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="C0611" library="df4iah_rcl" package="C0402" value="100nF" x="6.35" y="25.4" smashed="yes" rot="R270">
-<attribute name="NAME" x="7.46125" y="23.97125" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="6.50875" y="21.11375" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="4.7625" y="26.67" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="U0601" library="df4iah_dac" package="µMAX8" value="MAX5217" x="7.62" y="30.48" smashed="yes" rot="R90">
@@ -6484,11 +6485,11 @@ Covered vias can be set in Masks (Limit).
 <attribute name="VALUE" x="10.22" y="29.18" size="0.6096" layer="27" rot="R90"/>
 </element>
 <element name="R0411" library="df4iah_rcl" package="R0402" value="3.9kR" x="10.16" y="26.67" smashed="yes">
-<attribute name="NAME" x="9.525" y="27.305" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="12.065" y="26.3525" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="8.5725" y="25.0825" size="0.6096" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R0412" library="df4iah_rcl" package="R0402" value="3.9kR" x="10.16" y="24.13" smashed="yes">
-<attribute name="NAME" x="9.525" y="22.86" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="12.065" y="23.8125" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="8.5725" y="22.5425" size="0.6096" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="L0721" library="df4iah_balun" package="DXW21HN5011BL" value="MURATA DXW21HN5011BL" x="17.78" y="46.99" smashed="yes" rot="R270"/>
@@ -6498,97 +6499,97 @@ Covered vias can be set in Masks (Limit).
 <attribute name="VALUE" x="16.55" y="55.08" size="0.6096" layer="27" font="vector" rot="R270" align="top-center"/>
 </element>
 <element name="C0811" library="df4iah_rcl" package="C0402" value="100nF" x="20.0025" y="54.61" smashed="yes" rot="R90">
-<attribute name="NAME" x="21.2725" y="53.34" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="21.9075" y="53.34" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="21.59" y="53.34" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="C0821" library="df4iah_rcl" package="C0402" value="1nF" x="17.78" y="50.8" smashed="yes" rot="R270">
-<attribute name="NAME" x="17.145" y="49.8475" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="19.3675" y="49.53" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="16.1925" y="52.07" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="C0831" library="df4iah_rcl" package="C0402" value="1nF" x="19.05" y="58.42" smashed="yes" rot="R270">
-<attribute name="NAME" x="18.57375" y="57.30875" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="20.47875" y="56.99125" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="17.4625" y="59.69" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="C0832" library="df4iah_rcl" package="C0402" value="1nF" x="16.51" y="58.42" smashed="yes" rot="R270">
-<attribute name="NAME" x="16.03375" y="57.30875" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="15.71625" y="56.99125" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="14.9225" y="59.69" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="U0821" library="df4iah_rf" package="QFN16-3X3-0P5-PAD" value="RFX1010" x="17.78" y="63.5" smashed="yes" rot="R90">
-<attribute name="NAME" x="17.935" y="65.667" size="0.6096" layer="25" font="vector" ratio="10" align="bottom-center"/>
+<attribute name="NAME" x="17.6175" y="60.2695" size="0.6096" layer="25" font="vector" ratio="10" align="bottom-center"/>
 <attribute name="VALUE" x="19.955" y="63.5" size="0.6096" layer="27" font="vector" rot="R90" align="top-center"/>
 </element>
 <element name="L0821" library="df4iah_rcl" package="L0603" value="2.7nH" x="16.1925" y="67.31" smashed="yes" rot="R180">
-<attribute name="NAME" x="12.3825" y="66.9925" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="11.7475" y="66.9925" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="17.4625" y="68.8975" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="C0853" library="df4iah_rcl" package="C0402" value="10nF" x="20.955" y="65.0875" smashed="yes" rot="R90">
-<attribute name="NAME" x="22.5425" y="64.4525" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="21.2725" y="66.675" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="22.5425" y="63.8175" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="C0852" library="df4iah_rcl" package="C0402" value="10nF" x="13.97" y="64.77" smashed="yes" rot="R180">
-<attribute name="NAME" x="12.3825" y="63.5" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="9.8425" y="64.4525" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="15.24" y="66.3575" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="C0851" library="df4iah_rcl" package="C0402" value="10nF" x="13.97" y="62.23" smashed="yes" rot="R180">
-<attribute name="NAME" x="12.3825" y="62.5475" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="9.8425" y="61.9125" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="15.24" y="63.8175" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
-<element name="C593" library="df4iah_rcl" package="C0402" value="0pF" x="17.78" y="82.55" smashed="yes" rot="R180">
-<attribute name="NAME" x="16.8275" y="83.185" size="0.6096" layer="25" font="vector" ratio="10"/>
+<element name="C0891" library="df4iah_rcl" package="C0402" value="0pF" x="17.78" y="82.55" smashed="yes" rot="R180">
+<attribute name="NAME" x="13.6525" y="81.915" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="19.05" y="84.1375" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="L0892" library="df4iah_rcl" package="L0603" value="0nH" x="19.05" y="80.01" smashed="yes" rot="R90">
-<attribute name="NAME" x="18.0975" y="78.74" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="20.955" y="78.74" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="20.6375" y="78.74" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
-<element name="C0891" library="df4iah_rcl" package="C0402" value="0pF" x="17.78" y="77.47" smashed="yes" rot="R180">
-<attribute name="NAME" x="16.51" y="76.2" size="0.6096" layer="25" font="vector" ratio="10"/>
+<element name="C0893" library="df4iah_rcl" package="C0402" value="0pF" x="17.78" y="77.47" smashed="yes" rot="R180">
+<attribute name="NAME" x="16.51" y="75.8825" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="19.05" y="79.0575" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="X0891" library="_c2h" package="SMA_UFL_PAD_TINY" value="ANTENNATINY" x="19.05" y="89.535" rot="R90"/>
 <element name="U0881" library="df4iah_rf" package="B3440_3MM-X-3MM" value="B39871B3440U410" x="17.78" y="71.12" smashed="yes">
-<attribute name="NAME" x="14.7775" y="69.9125" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="16.5725" y="68.4075" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="20.405" y="69.495" size="0.6096" layer="27" ratio="10" rot="R90"/>
 </element>
 <element name="X1311" library="df4iah_connector" package="USB-B-MICRO-SMD_MOLEX-105017-0001" value="MOLEX 105017-0001" x="57.15" y="88.9" smashed="yes" rot="R180">
-<attribute name="NAME" x="56.4388" y="82.5246" size="0.8128" layer="25" font="vector" ratio="20"/>
+<attribute name="NAME" x="52.6288" y="81.8896" size="0.8128" layer="25" font="vector" ratio="20"/>
 <attribute name="VALUE" x="52.0954" y="88.9381" size="0.6096" layer="27" font="vector" ratio="20" rot="R270" align="top-left"/>
 </element>
 <element name="R1311" library="df4iah_rcl" package="R0402" value="330kR" x="49.2125" y="85.09" smashed="yes" rot="R90">
-<attribute name="NAME" x="48.5775" y="83.97875" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="49.53" y="80.80375" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="50.8" y="83.5025" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="C1311" library="df4iah_rcl" package="C0402" value="1nF" x="50.8" y="85.09" smashed="yes" rot="R90">
-<attribute name="NAME" x="50.4825" y="83.97875" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="51.1175" y="80.80375" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="52.3875" y="83.82" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="PF1311" library="rcl" package="M1206" value="1.1A/2.2A" x="60.96" y="81.28" smashed="yes" rot="R180">
-<attribute name="NAME" x="59.53125" y="79.375" size="0.6096" layer="25" font="vector"/>
+<attribute name="NAME" x="59.53125" y="79.0575" size="0.6096" layer="25" font="vector"/>
 <attribute name="VALUE" x="62.23" y="83.82" size="1.27" layer="27" rot="R180"/>
 </element>
 <element name="X1351" library="df4iah_connector" package="PHOENIX_1990067_1X8X2MM50_PTSA-0-5" value="PHOENIX_1990067_1X8X2MM50_PTSA-0-5" x="92.71" y="21.59" locked="yes" smashed="yes" rot="R90">
-<attribute name="NAME" x="84.615" y="12.71" size="0.8128" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="93.99" y="33.495" size="0.8128" layer="25" font="vector" ratio="20"/>
 <attribute name="VALUE" x="95.21" y="34.715" size="0.6096" layer="27" rot="R180"/>
 </element>
 <element name="X1361" library="df4iah_connector" package="PHOENIX_1990067_1X8X2MM50_PTSA-0-5" value="PHOENIX_1990067_1X8X2MM50_PTSA-0-5" x="92.71" y="64.77" locked="yes" smashed="yes" rot="R90">
-<attribute name="NAME" x="84.615" y="55.89" size="0.8128" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="NAME" x="93.99" y="76.675" size="0.8128" layer="25" font="vector" ratio="20"/>
 <attribute name="VALUE" x="95.21" y="77.895" size="0.6096" layer="27" rot="R180"/>
 </element>
 <element name="R0821" library="df4iah_rcl" package="R0402" value="100R" x="22.86" y="60.96" smashed="yes" rot="MR180">
-<attribute name="NAME" x="23.97125" y="59.69" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="23.97125" y="59.3725" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="21.2725" y="62.5475" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="X0895" library="_c2h" package="SMA_UFL_PAD_TINY" value="ANTENNATINY" x="27.94" y="89.535" rot="R90"/>
-<element name="C0897" library="df4iah_rcl" package="C0402" value="0pF" x="26.67" y="82.55" smashed="yes" rot="R180">
-<attribute name="NAME" x="25.4" y="83.185" size="0.6096" layer="25" font="vector" ratio="10"/>
+<element name="C0895" library="df4iah_rcl" package="C0402" value="0pF" x="26.67" y="82.55" smashed="yes" rot="R180">
+<attribute name="NAME" x="22.5425" y="81.915" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="27.94" y="84.1375" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
-<element name="C0895" library="df4iah_rcl" package="C0402" value="0pF" x="26.67" y="77.47" smashed="yes" rot="R180">
-<attribute name="NAME" x="25.4" y="76.2" size="0.6096" layer="25" font="vector" ratio="10"/>
+<element name="C0897" library="df4iah_rcl" package="C0402" value="0pF" x="26.67" y="77.47" smashed="yes" rot="R180">
+<attribute name="NAME" x="25.4" y="75.8825" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="27.94" y="79.0575" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="L0896" library="df4iah_rcl" package="L0603" value="0nH" x="27.94" y="80.01" smashed="yes" rot="R90">
-<attribute name="NAME" x="26.9875" y="78.74" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="29.845" y="78.74" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="29.5275" y="78.74" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="FIDU_BL" library="df4iah_fiducial" package="FIDUCIAL_MARK_1MM" value="" x="2.54" y="11.1125" locked="yes" smashed="yes">
@@ -6608,59 +6609,59 @@ Covered vias can be set in Masks (Limit).
 <attribute name="VALUE" x="94.385" y="8.8745" size="0.6096" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R1021" library="df4iah_rcl" package="R0402" value="820R" x="24.765" y="20.32" smashed="yes" rot="R90">
-<attribute name="NAME" x="24.765" y="21.59" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="23.495" y="19.3675" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="26.3525" y="18.7325" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="R1022" library="df4iah_rcl" package="R0402" value="1kR" x="26.035" y="20.32" smashed="yes" rot="R90">
-<attribute name="NAME" x="26.3525" y="21.59" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="26.3525" y="22.225" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="27.6225" y="18.7325" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="R1023" library="df4iah_rcl" package="R0402" value="820R" x="27.305" y="20.32" smashed="yes" rot="R90">
-<attribute name="NAME" x="27.6225" y="21.59" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="27.6225" y="22.225" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="28.8925" y="18.7325" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="D1021" library="df4iah_led" package="ASMT-YTB7_0AA02_RGB" value="ASMT-YTB7-0AA02_RGB" x="26.67" y="16.51" locked="yes" smashed="yes" rot="R180">
-<attribute name="NAME" x="24.45795" y="15.2715" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="25.114" y="13.95955" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="29.496" y="19.6538" size="1.27" layer="27" rot="R180"/>
 </element>
 <element name="X1011" library="df4iah_switch" package="TTE_EN11-HSM" value="TTE_EN11-HSM" x="19.05" y="7.62" locked="yes" smashed="yes" rot="R90">
-<attribute name="NAME" x="26.09875" y="1.22125" size="0.8128" layer="25" ratio="20"/>
+<attribute name="NAME" x="11.81125" y="14.23875" size="0.8128" layer="25" ratio="20"/>
 <attribute name="VALUE" x="21.74" y="15.755" size="0.8128" layer="27" ratio="10" rot="R180"/>
 </element>
 <element name="C1011" library="df4iah_rcl" package="C0402" value="100nF" x="28.73375" y="5.87375" smashed="yes" rot="MR90">
-<attribute name="NAME" x="29.36875" y="4.60375" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="29.68625" y="4.28625" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="27.14625" y="4.60375" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="C1012" library="df4iah_rcl" package="C0402" value="100nF" x="28.73375" y="9.36625" smashed="yes" rot="MR270">
-<attribute name="NAME" x="29.36875" y="8.09625" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="29.68625" y="8.09625" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="30.32125" y="10.63625" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="C1013" library="df4iah_rcl" package="C0402" value="100nF" x="12.065" y="7.77875" smashed="yes" rot="MR270">
-<attribute name="NAME" x="12.7" y="6.50875" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="13.0175" y="6.19125" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="13.6525" y="9.04875" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="R0862" library="df4iah_rcl" package="R0402" value="10kR" x="15.24" y="51.435" smashed="yes" rot="MR90">
-<attribute name="NAME" x="13.97" y="50.165" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="13.6525" y="50.165" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="13.6525" y="49.8475" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="R0863" library="df4iah_rcl" package="R0402" value="10kR" x="16.51" y="51.435" smashed="yes" rot="MR90">
-<attribute name="NAME" x="17.145" y="50.165" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="17.4625" y="50.165" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="14.9225" y="49.8475" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="R0822" library="df4iah_rcl" package="R0402" value="10kR" x="22.225" y="62.865" smashed="yes" rot="MR270">
-<attribute name="NAME" x="22.86" y="61.9125" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="20.6375" y="61.595" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="23.8125" y="64.4525" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="L0853" library="df4iah_rcl" package="L0603" value="6.8nH" x="22.225" y="62.23" smashed="yes" rot="R180">
-<attribute name="NAME" x="20.955" y="63.1825" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="24.13" y="61.9125" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="23.495" y="63.8175" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R0861" library="df4iah_rcl" package="R0402" value="10kR" x="62.23" y="66.04" smashed="yes" rot="R90">
-<attribute name="NAME" x="62.23" y="66.9925" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="61.2775" y="66.675" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="63.8175" y="64.4525" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="JB1" library="df4iah_connector" package="SAMTEC_LSHM-150-DV" value="LSHM-150-04.0-L-DV-A-S-K-TR" x="55.88" y="28.96" locked="yes" smashed="yes" rot="R180">
-<attribute name="NAME" x="40.83" y="31.6925" size="0.8128" layer="25" font="vector" ratio="20"/>
+<attribute name="NAME" x="40.83" y="32.01" size="0.8128" layer="25" font="vector" ratio="20"/>
 <attribute name="VALUE" x="67.88" y="29.31" size="0.6096" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="JB2" library="df4iah_connector" package="SAMTEC_LSHM-150-DV" value="LSHM-150-04.0-L-DV-A-S-K-TR" x="55.88" y="60.96" locked="yes" smashed="yes" rot="R180">
@@ -6668,67 +6669,67 @@ Covered vias can be set in Masks (Limit).
 <attribute name="VALUE" x="67.88" y="61.31" size="0.6096" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="JB3" library="df4iah_connector" package="SAMTEC_LSHM-130-DV" value="LSHM-130-04.0-L-DV-A-S-K-TR" x="34.88" y="44.96" locked="yes" smashed="yes" rot="R270">
-<attribute name="NAME" x="32.28" y="33.8025" size="0.8128" layer="25" font="vector" ratio="20"/>
+<attribute name="NAME" x="32.28" y="33.485" size="0.8128" layer="25" font="vector" ratio="20"/>
 <attribute name="VALUE" x="34.53" y="51.71" size="0.6096" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="U0501" library="df4iah_lcd" package="MIDAS_MCCOG21605B6W-FPTLWI" value="MIDAS_MCCOG21605B6W-FPTLWI" x="30.48" y="1.27" locked="yes" smashed="yes">
-<attribute name="NAME" x="38.62375" y="1.20375" size="0.8128" layer="21" font="vector" ratio="20"/>
-<attribute name="VALUE" x="30.3975" y="22.635" size="0.6096" layer="21" font="vector" ratio="10"/>
+<attribute name="NAME" x="39.89375" y="0.88625" size="0.8128" layer="21" font="vector" ratio="20"/>
+<attribute name="VALUE" x="45.955" y="22.3175" size="0.6096" layer="21" font="vector" ratio="10"/>
 </element>
 <element name="HB_351" library="df4iah_holes" package="3,2-PAD" value="MOUNT-PAD-ROUND3.2" x="77.88" y="27.96" locked="yes" rot="R180"/>
 <element name="HB_353" library="df4iah_holes" package="3,2-PAD" value="MOUNT-PAD-ROUND3.2" x="33.88" y="27.96" locked="yes" rot="R180"/>
 <element name="HB_354" library="df4iah_holes" package="3,2-PAD" value="MOUNT-PAD-ROUND3.2" x="33.88" y="61.96" locked="yes" rot="R180"/>
 <element name="HB_352" library="df4iah_holes" package="3,2-PAD" value="MOUNT-PAD-ROUND3.2" x="77.88" y="61.96" locked="yes" rot="R180"/>
 <element name="C0501" library="df4iah_rcl" package="C0402" value="100nF" x="53.49875" y="5.08" smashed="yes" rot="MR180">
-<attribute name="NAME" x="54.76875" y="5.715" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="55.08625" y="6.0325" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="52.22875" y="6.6675" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="C0511" library="df4iah_rcl" package="C0402" value="1uF" x="50.32375" y="5.08" smashed="yes" rot="MR0">
-<attribute name="NAME" x="51.59375" y="5.715" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="51.27625" y="6.0325" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="51.59375" y="3.4925" size="0.6096" layer="28" font="vector" ratio="10" rot="MR0"/>
 </element>
 <element name="C0512" library="df4iah_rcl" package="C0402" value="1uF" x="47.14875" y="5.08" smashed="yes" rot="MR0">
-<attribute name="NAME" x="48.41875" y="5.715" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="45.56125" y="4.7625" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="48.41875" y="3.4925" size="0.6096" layer="28" font="vector" ratio="10" rot="MR0"/>
 </element>
 <element name="R0531" library="df4iah_rcl" package="R0402" value="220kR" x="56.67375" y="5.08" smashed="yes" rot="MR180">
-<attribute name="NAME" x="57.94375" y="5.715" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="60.80125" y="4.7625" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="55.08625" y="6.6675" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="T0551" library="transistor" package="SOT23" value="MMBT2222" x="76.2" y="16.51" smashed="yes" rot="MR90">
-<attribute name="NAME" x="77.31125" y="13.17625" size="0.6096" layer="26" font="vector" rot="MR90"/>
+<attribute name="NAME" x="77.31125" y="12.85875" size="0.6096" layer="26" font="vector" rot="MR90"/>
 <attribute name="VALUE" x="73.025" y="14.605" size="1.27" layer="28" rot="MR90"/>
 </element>
 <element name="R0553" library="df4iah_rcl" package="R0603" value="27R" x="74.93" y="20.32" smashed="yes" rot="MR270">
-<attribute name="NAME" x="75.565" y="18.7325" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="74.6125" y="22.225" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="76.835" y="21.59" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="R0551" library="df4iah_rcl" package="R0402" value="1.5kR" x="74.93" y="12.7" smashed="yes" rot="MR90">
-<attribute name="NAME" x="75.565" y="11.43" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="74.6125" y="8.5725" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="73.3425" y="11.1125" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="R0552" library="df4iah_rcl" package="R0402" value="2.0kR" x="72.39" y="16.51" smashed="yes" rot="MR90">
-<attribute name="NAME" x="73.025" y="15.24" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="72.0725" y="12.065" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="70.8025" y="14.9225" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="D1111" library="df4iah_diode" package="SOD80C" value="CRS08" x="87.63" y="80.01" smashed="yes" rot="R270">
-<attribute name="NAME" x="86.487" y="78.8035" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="89.9795" y="78.8035" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="85.852" y="81.534" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="D1112" library="df4iah_diode" package="SOD80C" value="CRS08" x="76.2" y="85.09" smashed="yes" rot="R180">
-<attribute name="NAME" x="74.676" y="86.233" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="74.676" y="86.5505" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="77.724" y="86.868" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="U1101" library="df4iah_powersupply" package="DQP-22" value="TPS53353" x="71.12" y="80.01" smashed="yes">
-<attribute name="NAME" x="71.4356" y="82.9275" size="0.6096" layer="25" font="vector" ratio="10" rot="SR0"/>
+<attribute name="NAME" x="74.87" y="80.0081" size="0.6096" layer="25" font="vector" ratio="10" rot="SR90"/>
 <attribute name="VALUE" x="74.895" y="78.0556" size="0.6096" layer="27" font="vector" ratio="10" rot="SR90"/>
 </element>
 <element name="R1101" library="df4iah_rcl" package="R0402" value="10kR 0%5" x="66.04" y="77.47" smashed="yes" rot="MR180">
-<attribute name="NAME" x="67.31" y="78.105" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="70.8025" y="76.835" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="64.4525" y="79.0575" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1102" library="df4iah_rcl" package="R0402" value="45.3kR 0%5" x="66.04" y="74.93" smashed="yes" rot="MR270">
-<attribute name="NAME" x="65.7225" y="71.12" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="65.7225" y="70.1675" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="67.6275" y="76.5175" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="C1101" library="df4iah_rcl" package="C0805" value="4.7uF" x="69.37375" y="86.20125" smashed="yes" rot="R270">
@@ -6736,19 +6737,19 @@ Covered vias can be set in Masks (Limit).
 <attribute name="VALUE" x="67.46875" y="87.47125" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="C1102" library="df4iah_rcl" package="C0402" value="1uF" x="71.755" y="85.725" smashed="yes" rot="MR270">
-<attribute name="NAME" x="72.39" y="84.455" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="73.025" y="84.455" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="73.3425" y="86.995" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="C1111" library="df4iah_rcl" package="C0805" value="22uF" x="76.2" y="81.28" smashed="yes" rot="R90">
-<attribute name="NAME" x="75.2475" y="79.6925" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="75.565" y="76.5175" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="78.105" y="80.01" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="R1103" library="df4iah_rcl" package="R0402" value="187kR" x="67.31" y="85.725" smashed="yes" rot="MR270">
-<attribute name="NAME" x="66.04" y="84.455" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="65.7225" y="84.455" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="68.8975" y="87.3125" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="R1104" library="df4iah_rcl" package="R0402" value="N/A" x="67.31" y="81.28" smashed="yes" rot="MR90">
-<attribute name="NAME" x="66.04" y="80.01" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="65.0875" y="80.01" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="65.7225" y="79.6925" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="R1105" library="df4iah_rcl" package="R0402" value="110kR" x="68.58" y="85.725" smashed="yes" rot="MR270">
@@ -6756,139 +6757,139 @@ Covered vias can be set in Masks (Limit).
 <attribute name="VALUE" x="70.1675" y="87.3125" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="R1106" library="df4iah_rcl" package="R0402" value="200kR" x="69.85" y="85.725" smashed="yes" rot="MR270">
-<attribute name="NAME" x="70.485" y="84.455" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="70.485" y="82.8675" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="71.4375" y="87.3125" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="R1107" library="df4iah_rcl" package="R0402" value="100kR" x="67.31" y="74.93" smashed="yes" rot="MR270">
-<attribute name="NAME" x="66.9925" y="71.12" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="66.9925" y="70.1675" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="68.8975" y="76.5175" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="C1108" library="df4iah_rcl" package="C0805" value="100nF" x="73.66" y="73.66" smashed="yes" rot="MR0">
-<attribute name="NAME" x="74.93" y="74.6125" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="74.93" y="74.93" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="74.93" y="71.755" size="0.6096" layer="28" font="vector" ratio="10" rot="MR0"/>
 </element>
 <element name="R1108" library="df4iah_rcl" package="R0805" value="2R" x="69.85" y="73.3425" smashed="yes" rot="MR270">
-<attribute name="NAME" x="70.8025" y="71.755" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="71.12" y="72.0725" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="71.755" y="74.6125" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="R1122" library="df4iah_rcl" package="R0805" value="N/A" x="78.105" y="76.2" smashed="yes" rot="R180">
-<attribute name="NAME" x="76.835" y="77.1525" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="76.835" y="77.47" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="79.375" y="78.105" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="C1122" library="df4iah_rcl" package="C0805" value="N/A" x="82.55" y="76.2" smashed="yes">
-<attribute name="NAME" x="81.28" y="77.1525" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="81.28" y="77.47" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="81.28" y="74.295" size="0.6096" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R1131" library="df4iah_rcl" package="R0402" value="3.01kR" x="74.93" y="69.85" smashed="yes" rot="MR270">
-<attribute name="NAME" x="75.565" y="68.58" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="75.8825" y="68.58" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="76.5175" y="71.4375" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="C1131" library="df4iah_rcl" package="C0402" value="100nF" x="72.39" y="69.85" smashed="yes" rot="MR270">
-<attribute name="NAME" x="73.025" y="68.58" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="73.3425" y="68.58" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="73.9775" y="71.12" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="C1132" library="df4iah_rcl" package="C0402" value="1nF" x="64.77" y="74.93" smashed="yes" rot="MR90">
-<attribute name="NAME" x="64.4525" y="71.12" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="64.4525" y="70.1675" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="63.1825" y="73.66" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="C1152" library="df4iah_rcl" package="C0805" value="100uF" x="77.47" y="72.39" smashed="yes" rot="R90">
-<attribute name="NAME" x="76.5175" y="71.12" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="77.7875" y="67.6275" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="79.375" y="71.12" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="C1151" library="df4iah_rcl" package="C0805" value="100uF" x="68.58" y="70.485" smashed="yes" rot="R180">
-<attribute name="NAME" x="67.31" y="71.4375" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="67.31" y="71.755" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="69.85" y="72.39" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="C1112" library="df4iah_rcl" package="C0805" value="22uF" x="78.74" y="81.28" smashed="yes" rot="R90">
-<attribute name="NAME" x="77.7875" y="79.6925" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="77.47" y="78.4225" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="80.645" y="80.01" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="C1113" library="df4iah_rcl" package="C0805" value="22uF" x="81.28" y="81.28" smashed="yes" rot="R90">
-<attribute name="NAME" x="80.3275" y="79.6925" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="80.645" y="78.4225" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="83.185" y="80.01" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="C1114" library="df4iah_rcl" package="C0805" value="22uF" x="83.82" y="81.28" smashed="yes" rot="R90">
-<attribute name="NAME" x="82.8675" y="79.6925" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="85.725" y="79.6925" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="85.725" y="80.01" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="R1161" library="df4iah_rcl" package="R0402" value="220kR" x="71.12" y="85.725" smashed="yes" rot="R270">
-<attribute name="NAME" x="72.39" y="84.7725" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="72.7075" y="84.7725" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="69.5325" y="87.3125" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="D1161" library="df4iah_diode" package="SOD80C" value="CRS08" x="66.04" y="80.01" smashed="yes" rot="R270">
-<attribute name="NAME" x="64.897" y="78.8035" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="64.5795" y="78.8035" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="64.262" y="81.534" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="R0532" library="df4iah_rcl" package="R0402" value="1kR" x="57.4675" y="7.62" smashed="yes" rot="MR270">
-<attribute name="NAME" x="58.1025" y="6.6675" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="57.15" y="9.2075" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="59.055" y="9.2075" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="R1011" library="df4iah_rcl" package="R0402" value="1kR" x="33.02" y="5.08" smashed="yes" rot="MR180">
-<attribute name="NAME" x="34.29" y="5.715" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="34.6075" y="6.0325" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="31.4325" y="6.6675" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1012" library="df4iah_rcl" package="R0402" value="1kR" x="33.02" y="10.16" smashed="yes" rot="MR180">
-<attribute name="NAME" x="34.29" y="10.795" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="34.6075" y="11.1125" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="31.4325" y="11.7475" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1013" library="df4iah_rcl" package="R0402" value="1kR" x="15.24" y="10.16" smashed="yes" rot="MR180">
-<attribute name="NAME" x="16.51" y="10.795" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="16.1925" y="11.1125" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="13.6525" y="11.7475" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R0202" library="df4iah_rcl" package="R0402" value="N/A" x="44.1325" y="55.72125" locked="yes" smashed="yes" rot="MR90">
-<attribute name="NAME" x="44.7675" y="54.61" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="45.085" y="53.975" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="42.545" y="54.13375" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="R0201" library="df4iah_rcl" package="R0402" value="0R" x="42.70375" y="55.72125" locked="yes" smashed="yes" rot="MR90">
-<attribute name="NAME" x="41.43375" y="54.61" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="41.11625" y="53.975" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="41.11625" y="54.13375" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="L1211" library="df4iah_rcl" package="L2520" value="4.7uH" x="41.11625" y="49.53" locked="yes" smashed="yes" rot="MR270">
-<attribute name="NAME" x="39.21125" y="48.26" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="38.89375" y="48.26" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="43.65625" y="51.435" size="1.27" layer="28" rot="MR270"/>
 </element>
 <element name="C1221" library="df4iah_rcl" package="C0603" value="10uF" x="42.70375" y="52.705" locked="yes" smashed="yes" rot="MR180">
-<attribute name="NAME" x="46.6725" y="52.3875" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="40.64" y="52.3875" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="41.43375" y="54.2925" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="C1201" library="df4iah_rcl" package="C0603" value="10uF" x="47.3075" y="49.8475" locked="yes" smashed="yes" rot="MR90">
-<attribute name="NAME" x="46.99" y="46.0375" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="48.5775" y="48.5775" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="45.72" y="48.5775" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="U1211" library="df4iah_powersupply" package="WSON-12" value="TPS62745DSSR" x="44.45" y="49.53" locked="yes" smashed="yes" rot="MR180">
-<attribute name="NAME" x="45.9044" y="51.245" size="0.6096" layer="26" font="vector" ratio="10" rot="SMR0"/>
+<attribute name="NAME" x="44.3169" y="46.4825" size="0.6096" layer="26" font="vector" ratio="10" rot="SMR0"/>
 <attribute name="VALUE" x="42.9956" y="53.055" size="0.6096" layer="28" font="vector" ratio="10" rot="SMR180"/>
 </element>
 <element name="R1211" library="df4iah_rcl" package="R0402" value="10kR" x="45.4025" y="46.355" smashed="yes" rot="MR90">
-<attribute name="NAME" x="46.0375" y="45.72" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="46.355" y="45.4025" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="43.815" y="44.7675" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="R1331" library="df4iah_rcl" package="R0402" value="1kR" x="66.04" y="55.88" smashed="yes" rot="MR90">
-<attribute name="NAME" x="66.675" y="54.61" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="64.4525" y="54.61" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="64.4525" y="54.2925" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="R1332" library="df4iah_rcl" package="R0402" value="100R" x="52.07" y="68.58" smashed="yes" rot="R270">
-<attribute name="NAME" x="51.435" y="67.31" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="53.6575" y="67.31" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="50.4825" y="70.1675" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="R1333" library="df4iah_rcl" package="R0402" value="100R" x="50.165" y="68.58" smashed="yes" rot="R270">
-<attribute name="NAME" x="49.53" y="67.31" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="49.2125" y="70.1675" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="48.5775" y="70.1675" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="R1334" library="df4iah_rcl" package="R0402" value="100R" x="48.26" y="68.58" smashed="yes" rot="R270">
-<attribute name="NAME" x="47.625" y="67.31" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="47.3075" y="67.31" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="46.6725" y="70.1675" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="R1335" library="df4iah_rcl" package="R0402" value="100R" x="67.945" y="55.88" smashed="yes" rot="MR90">
-<attribute name="NAME" x="68.58" y="54.61" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="68.8975" y="53.34" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="66.3575" y="54.2925" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="R1337" library="df4iah_rcl" package="R0402" value="100R" x="42.2275" y="68.58" smashed="yes" rot="R270">
-<attribute name="NAME" x="41.5925" y="67.31" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="41.275" y="67.31" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="40.64" y="70.1675" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="R1339" library="df4iah_rcl" package="R0402" value="100R" x="57.15" y="71.12" smashed="yes" rot="R270">
-<attribute name="NAME" x="56.515" y="69.5325" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="57.4675" y="66.675" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="55.5625" y="72.7075" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="X1332" library="df4iah_connector" package="1X02" value="" x="59.69" y="74.93" smashed="yes" rot="R180">
@@ -6896,11 +6897,11 @@ Covered vias can be set in Masks (Limit).
 <attribute name="VALUE" x="62.23" y="78.105" size="1.27" layer="27" rot="R180"/>
 </element>
 <element name="R1338" library="df4iah_rcl" package="R0402" value="10kR" x="57.15" y="74.295" smashed="yes" rot="R90">
-<attribute name="NAME" x="56.515" y="73.025" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="57.4675" y="75.8825" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="58.7375" y="72.7075" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="U0911" library="df4iah_dataconvertion" package="LQFP48" value="FT232HL" x="57.15" y="44.45" smashed="yes" rot="MR270">
-<attribute name="NAME" x="53.125" y="48.72" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="60.11" y="49.6725" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="57.555" y="46.95" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="L0911" library="df4iah_rcl" package="R1206" value="300R" x="52.705" y="52.705" smashed="yes" rot="MR180">
@@ -6908,99 +6909,99 @@ Covered vias can be set in Masks (Limit).
 <attribute name="VALUE" x="51.435" y="55.245" size="1.27" layer="28" rot="MR180"/>
 </element>
 <element name="R0911" library="df4iah_rcl" package="R0402" value="12kR 1%0" x="60.96" y="52.705" smashed="yes" rot="MR0">
-<attribute name="NAME" x="62.23" y="53.34" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="62.23" y="53.6575" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="62.5475" y="51.1175" size="0.6096" layer="28" font="vector" ratio="10" rot="MR0"/>
 </element>
 <element name="C0912" library="df4iah_rcl" package="C0402" value="100nF" x="49.53" y="42.545" smashed="yes" rot="MR180">
-<attribute name="NAME" x="48.5775" y="42.2275" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="47.9425" y="41.91" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="48.26" y="44.1325" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="C0913" library="df4iah_rcl" package="C0402" value="100nF" x="49.53" y="41.275" smashed="yes" rot="MR180">
-<attribute name="NAME" x="48.5775" y="40.9575" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="47.9425" y="40.64" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="48.26" y="42.8625" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R0913" library="df4iah_rcl" package="R0402" value="100kR" x="55.245" y="36.83" smashed="yes" rot="MR90">
-<attribute name="NAME" x="54.9275" y="33.02" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="56.1975" y="35.56" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="53.6575" y="35.2425" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="R0912" library="df4iah_rcl" package="R0402" value="100R" x="52.705" y="37.465" smashed="yes" rot="MR180">
-<attribute name="NAME" x="53.975" y="38.1" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="53.975" y="38.4175" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="51.1175" y="39.0525" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="C0911" library="df4iah_rcl" package="C0402" value="100nF" x="49.53" y="43.815" smashed="yes" rot="MR0">
-<attribute name="NAME" x="48.5775" y="43.4975" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="47.9425" y="43.18" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="50.8" y="42.2275" size="0.6096" layer="28" font="vector" ratio="10" rot="MR0"/>
 </element>
 <element name="L0922" library="df4iah_rcl" package="R1206" value="300R" x="55.88" y="44.45" smashed="yes" rot="R270">
-<attribute name="NAME" x="54.61" y="42.8625" size="0.6096" layer="25" font="vector" rot="R90"/>
+<attribute name="NAME" x="55.88" y="39.0525" size="0.6096" layer="25" font="vector" rot="R90"/>
 <attribute name="VALUE" x="53.34" y="45.72" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="L0921" library="df4iah_rcl" package="R1206" value="300R" x="58.42" y="44.45" smashed="yes" rot="R270">
-<attribute name="NAME" x="60.325" y="42.8625" size="0.6096" layer="25" font="vector" rot="R90"/>
+<attribute name="NAME" x="58.7375" y="39.0525" size="0.6096" layer="25" font="vector" rot="R90"/>
 <attribute name="VALUE" x="55.88" y="45.72" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="C0922" library="df4iah_rcl" package="C0402" value="100nF" x="53.34" y="46.99" smashed="yes">
-<attribute name="NAME" x="52.07" y="47.625" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="48.895" y="46.6725" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="52.07" y="45.4025" size="0.6096" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="C0921" library="df4iah_rcl" package="C0402" value="100nF" x="60.96" y="46.99" smashed="yes" rot="R180">
-<attribute name="NAME" x="59.69" y="47.625" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="60.0075" y="45.4025" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="62.23" y="48.5775" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R0931" library="df4iah_rcl" package="R0402" value="10kR" x="49.53" y="45.085" smashed="yes" rot="MR0">
-<attribute name="NAME" x="48.5775" y="44.7675" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="47.9425" y="44.45" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="51.1175" y="43.4975" size="0.6096" layer="28" font="vector" ratio="10" rot="MR0"/>
 </element>
 <element name="R0941" library="df4iah_rcl" package="R0402" value="100R" x="68.58" y="66.04" smashed="yes" rot="MR90">
-<attribute name="NAME" x="69.215" y="64.77" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="69.5325" y="64.4525" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="66.9925" y="64.4525" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="R0961" library="df4iah_rcl" package="R0402" value="100R" x="64.77" y="47.625" smashed="yes" rot="MR180">
-<attribute name="NAME" x="66.04" y="48.26" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="66.04" y="49.2125" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="63.1825" y="49.2125" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R0962" library="df4iah_rcl" package="R0402" value="100R" x="63.5" y="66.04" smashed="yes" rot="R270">
-<attribute name="NAME" x="63.5" y="66.9925" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="63.8175" y="68.2625" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="61.9125" y="67.6275" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="R0963" library="df4iah_rcl" package="R0402" value="100R" x="64.77" y="46.355" smashed="yes" rot="MR180">
-<attribute name="NAME" x="65.7225" y="45.085" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="66.3575" y="45.085" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="63.1825" y="47.9425" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R0964" library="df4iah_rcl" package="R0402" value="100R" x="64.77" y="66.04" smashed="yes" rot="R270">
-<attribute name="NAME" x="64.77" y="66.9925" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="65.0875" y="68.2625" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="63.1825" y="67.6275" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="R0965" library="df4iah_rcl" package="R0402" value="100R" x="64.77" y="45.085" smashed="yes" rot="MR180">
-<attribute name="NAME" x="66.04" y="43.815" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="66.04" y="43.18" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="63.1825" y="46.6725" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R0966" library="df4iah_rcl" package="R0402" value="100R" x="66.04" y="66.04" smashed="yes" rot="R270">
-<attribute name="NAME" x="66.3575" y="66.9925" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="66.3575" y="68.2625" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="64.4525" y="67.6275" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="R0967" library="df4iah_rcl" package="R0402" value="100R" x="67.945" y="66.04" smashed="yes" rot="R270">
-<attribute name="NAME" x="68.2625" y="66.9925" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="67.6275" y="68.2625" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="66.3575" y="67.6275" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="R0968" library="df4iah_rcl" package="R0402" value="100R" x="69.85" y="66.04" smashed="yes" rot="R270">
-<attribute name="NAME" x="70.1675" y="66.9925" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="71.4375" y="65.405" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="68.2625" y="67.6275" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="R0971" library="df4iah_rcl" package="R0402" value="560R" x="59.69" y="36.83" smashed="yes" rot="MR270">
-<attribute name="NAME" x="59.3725" y="33.02" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="60.6425" y="35.8775" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="61.2775" y="38.4175" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="R0972" library="df4iah_rcl" package="R0402" value="560R" x="58.42" y="36.83" smashed="yes" rot="MR270">
-<attribute name="NAME" x="58.1025" y="33.02" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="59.3725" y="34.6075" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="60.0075" y="38.4175" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="D0972" library="df4iah_led" package="CHIP-LED0805" value="CMD17-21VRD/TR8  RED" x="45.72" y="86.36" smashed="yes">
-<attribute name="NAME" x="44.7675" y="85.09" size="0.6096" layer="25" font="vector" rot="R90"/>
+<attribute name="NAME" x="47.625" y="85.09" size="0.6096" layer="25" font="vector" rot="R90"/>
 <attribute name="VALUE" x="48.26" y="85.09" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="D0971" library="df4iah_led" package="CHIP-LED0805" value="CMD17-21VGD/TR8  GREEN" x="43.18" y="86.36" smashed="yes">
-<attribute name="NAME" x="42.2275" y="85.09" size="0.6096" layer="25" font="vector" rot="R90"/>
+<attribute name="NAME" x="41.91" y="85.09" size="0.6096" layer="25" font="vector" rot="R90"/>
 <attribute name="VALUE" x="45.72" y="85.09" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="X1331" library="df4iah_connector" package="2X07_2MM00_SHROUDED_XILINX_JTAG" value="" x="48.26" y="73.66" smashed="yes" rot="R180">
@@ -7008,119 +7009,119 @@ Covered vias can be set in Masks (Limit).
 <attribute name="VALUE" x="55.15" y="78.105" size="0.8128" layer="27" font="vector" ratio="20" rot="R180"/>
 </element>
 <element name="R1351" library="df4iah_rcl" package="R0402" value="100R" x="85.09" y="13.97" smashed="yes" rot="MR180">
-<attribute name="NAME" x="86.0425" y="14.605" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="83.5025" y="13.6525" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="83.5025" y="15.5575" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1352" library="df4iah_rcl" package="R0402" value="100R" x="85.09" y="16.51" smashed="yes" rot="MR180">
-<attribute name="NAME" x="86.36" y="17.145" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="82.8675" y="15.24" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="83.5025" y="18.0975" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1353" library="df4iah_rcl" package="R0402" value="100R" x="85.09" y="19.05" smashed="yes" rot="MR180">
-<attribute name="NAME" x="86.36" y="19.685" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="83.5025" y="18.415" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="83.5025" y="20.6375" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1354" library="df4iah_rcl" package="R0402" value="100R" x="85.09" y="21.59" smashed="yes" rot="MR180">
-<attribute name="NAME" x="86.36" y="22.225" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="82.8675" y="20.0025" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="83.5025" y="23.1775" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1355" library="df4iah_rcl" package="R0402" value="100R" x="85.09" y="24.13" smashed="yes" rot="MR180">
-<attribute name="NAME" x="86.36" y="24.765" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="83.5025" y="23.8125" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="83.5025" y="25.7175" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1356" library="df4iah_rcl" package="R0402" value="100R" x="85.09" y="26.67" smashed="yes" rot="MR180">
-<attribute name="NAME" x="86.36" y="27.305" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="83.5025" y="26.3525" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="83.5025" y="28.2575" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1357" library="df4iah_rcl" package="R0402" value="100R" x="85.09" y="29.21" smashed="yes" rot="MR180">
-<attribute name="NAME" x="86.36" y="29.845" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="83.5025" y="28.575" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="83.5025" y="30.7975" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1358" library="df4iah_rcl" package="R0402" value="100R" x="85.09" y="31.75" smashed="yes" rot="MR180">
-<attribute name="NAME" x="86.36" y="32.385" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="83.5025" y="31.115" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="83.5025" y="33.3375" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1361" library="df4iah_rcl" package="R0402" value="100R" x="85.09" y="57.15" smashed="yes" rot="MR180">
-<attribute name="NAME" x="86.36" y="57.785" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="83.5025" y="56.8325" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="83.5025" y="58.7375" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1362" library="df4iah_rcl" package="R0402" value="100R" x="85.09" y="59.69" smashed="yes" rot="MR180">
-<attribute name="NAME" x="86.36" y="60.325" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="83.5025" y="59.3725" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="83.5025" y="61.2775" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1363" library="df4iah_rcl" package="R0402" value="100R" x="85.09" y="62.23" smashed="yes" rot="MR180">
-<attribute name="NAME" x="86.36" y="62.865" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="82.8675" y="60.96" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="83.5025" y="63.8175" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1364" library="df4iah_rcl" package="R0402" value="100R" x="85.09" y="64.77" smashed="yes" rot="MR180">
-<attribute name="NAME" x="86.36" y="65.405" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="83.5025" y="64.4525" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="83.5025" y="66.3575" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1365" library="df4iah_rcl" package="R0402" value="100R" x="85.09" y="67.31" smashed="yes" rot="MR180">
-<attribute name="NAME" x="86.36" y="67.945" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="83.5025" y="66.9925" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="83.5025" y="68.8975" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="R1366" library="df4iah_rcl" package="R0402" value="100R" x="85.09" y="69.85" smashed="yes" rot="MR180">
-<attribute name="NAME" x="86.36" y="70.485" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
+<attribute name="NAME" x="83.5025" y="69.5325" size="0.6096" layer="26" font="vector" ratio="10" rot="MR0"/>
 <attribute name="VALUE" x="83.5025" y="71.4375" size="0.6096" layer="28" font="vector" ratio="10" rot="MR180"/>
 </element>
 <element name="X1381" library="df4iah_connector" package="2X03" value="" x="85.725" y="6.35" locked="yes" smashed="yes" rot="R270">
-<attribute name="NAME" x="83.82" y="1.27" size="0.8128" layer="25" font="vector" ratio="20"/>
+<attribute name="NAME" x="83.82" y="0.9525" size="0.8128" layer="25" font="vector" ratio="20"/>
 <attribute name="VALUE" x="81.28" y="10.16" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="C1381" library="df4iah_rcl" package="C0402" value="100nF" x="46.355" y="24.13" smashed="yes" rot="MR90">
-<attribute name="NAME" x="46.99" y="22.86" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="46.0375" y="19.685" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="44.7675" y="22.86" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="J1411" library="df4iah_connector" package="ARJE-0034_RJ45_WITH_MAGNETICS" value="ABRACON_ARJE-0034" x="86.36" y="44.45" smashed="yes" rot="MR270">
-<attribute name="NAME" x="97.4979" y="54.7243" size="0.8128" layer="26" font="vector" ratio="20" rot="MR0"/>
+<attribute name="NAME" x="97.4979" y="55.0418" size="0.8128" layer="26" font="vector" ratio="20" rot="MR0"/>
 <attribute name="VALUE" x="85.2932" y="49.6824" size="0.8128" layer="28" font="vector" ratio="20" rot="MR270"/>
 </element>
 <element name="R1421" library="df4iah_rcl" package="R0402" value="1kR" x="72.39" y="35.56" smashed="yes" rot="MR90">
-<attribute name="NAME" x="73.025" y="34.29" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="73.3425" y="34.29" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="70.8025" y="33.9725" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="R1422" library="df4iah_rcl" package="R0402" value="1kR" x="72.39" y="53.34" smashed="yes" rot="MR270">
-<attribute name="NAME" x="73.025" y="52.07" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="72.0725" y="54.9275" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="73.9775" y="54.9275" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="C1431" library="df4iah_rcl" package="C0402" value="1uF" x="68.58" y="41.91" smashed="yes" rot="MR270">
-<attribute name="NAME" x="68.2625" y="38.1" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="68.2625" y="37.465" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="70.1675" y="43.18" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="C1432" library="df4iah_rcl" package="C0402" value="100nF" x="70.1675" y="41.91" smashed="yes" rot="MR270">
-<attribute name="NAME" x="69.85" y="38.1" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="70.1675" y="37.465" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="71.755" y="43.18" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
 <element name="C1441" library="df4iah_rcl" package="C0402" value="1uF" x="68.58" y="45.085" smashed="yes" rot="MR90">
-<attribute name="NAME" x="68.2625" y="46.0375" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="68.2625" y="46.99" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="66.9925" y="43.815" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="C1442" library="df4iah_rcl" package="C0402" value="100nF" x="70.1675" y="45.085" smashed="yes" rot="MR90">
-<attribute name="NAME" x="69.85" y="46.0375" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
+<attribute name="NAME" x="70.1675" y="46.99" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="68.58" y="43.815" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
 <element name="R0755" library="df4iah_rcl" package="R0402" value="100R" x="58.42" y="55.88" smashed="yes" rot="R90">
-<attribute name="NAME" x="58.1025" y="54.61" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="58.1025" y="51.7525" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="60.0075" y="54.2925" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="R0756" library="df4iah_rcl" package="R0402" value="100R" x="27.305" y="38.735" smashed="yes">
-<attribute name="NAME" x="26.035" y="39.37" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="25.7175" y="38.4175" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="25.7175" y="37.1475" size="0.6096" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R0751" library="df4iah_rcl" package="R0402" value="100R" x="60.0075" y="55.88" smashed="yes" rot="R90">
-<attribute name="NAME" x="59.69" y="54.61" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="60.325" y="51.7525" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="61.595" y="54.2925" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="R0752" library="df4iah_rcl" package="R0402" value="100R" x="61.595" y="55.88" smashed="yes" rot="R90">
-<attribute name="NAME" x="61.2775" y="54.61" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="61.9125" y="51.7525" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="63.1825" y="54.2925" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="R0753" library="df4iah_rcl" package="R0402" value="100R" x="63.1825" y="55.88" smashed="yes" rot="R90">
-<attribute name="NAME" x="62.865" y="54.61" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="63.5" y="51.7525" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="64.77" y="54.2925" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="R0754" library="df4iah_rcl" package="R0402" value="100R" x="27.305" y="41.91" smashed="yes">
-<attribute name="NAME" x="26.035" y="42.545" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="25.7175" y="42.8625" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="25.7175" y="40.3225" size="0.6096" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="TP1371" library="df4iah_connector" package="B1,27" value="TPB1,27" x="29.21" y="58.42" smashed="yes">
@@ -7129,19 +7130,19 @@ Covered vias can be set in Masks (Limit).
 </element>
 <element name="S1321" library="df4iah_switch" package="KSR223G_SMD_1POL" value="KSR223G_SMD_1POL" x="36.83" y="73.66" rot="R90"/>
 <element name="R1321" library="df4iah_rcl" package="R0402" value="1kR" x="36.83" y="67.31" smashed="yes" rot="R90">
-<attribute name="NAME" x="36.195" y="66.04" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="35.8775" y="66.04" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="38.4175" y="65.7225" size="0.6096" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="R0711" library="df4iah_rcl" package="R0402" value="33R" x="12.7" y="38.4175" smashed="yes">
-<attribute name="NAME" x="11.43" y="39.0525" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="11.43" y="37.1475" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="11.1125" y="36.83" size="0.6096" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="C1321" library="df4iah_rcl" package="C0402" value="100nF" x="31.115" y="48.895" smashed="yes" rot="R270">
-<attribute name="NAME" x="32.0675" y="45.085" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="NAME" x="31.75" y="44.7675" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="VALUE" x="29.5275" y="50.165" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
 </element>
 <element name="C0713" library="df4iah_rcl" package="C0402" value="1nF" x="12.7" y="36.83" smashed="yes" rot="R180">
-<attribute name="NAME" x="11.43" y="37.1475" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="11.43" y="34.29" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="13.97" y="38.4175" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="FPGA_EN1" library="df4iah_connector" package="B1,27" value="TPB1,27" x="29.845" y="33.655" smashed="yes">
@@ -7161,7 +7162,7 @@ Covered vias can be set in Masks (Limit).
 <attribute name="VALUE" x="46.6725" y="64.3255" size="0.0254" layer="27"/>
 </element>
 <element name="R0203" library="df4iah_rcl" package="R0402" value="10kR" x="44.7675" y="65.0875" smashed="yes" rot="R180">
-<attribute name="NAME" x="43.4975" y="65.7225" size="0.6096" layer="25" font="vector" ratio="10"/>
+<attribute name="NAME" x="43.4975" y="66.04" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="46.355" y="66.675" size="0.6096" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="TP_RFX_DET" library="df4iah_connector" package="B1,27" value="TPB1,27" x="22.86" y="59.69" smashed="yes">
@@ -7201,8 +7202,8 @@ Covered vias can be set in Masks (Limit).
 <contactref element="C0851" pad="2"/>
 <contactref element="U0821" pad="8"/>
 <contactref element="C0853" pad="2"/>
-<contactref element="C593" pad="2"/>
 <contactref element="C0891" pad="2"/>
+<contactref element="C0893" pad="2"/>
 <contactref element="X0891" pad="GND4"/>
 <contactref element="X0891" pad="GND3"/>
 <contactref element="X0891" pad="GND2"/>
@@ -7348,8 +7349,8 @@ Covered vias can be set in Masks (Limit).
 <contactref element="X0895" pad="GND3"/>
 <contactref element="X0895" pad="GND2"/>
 <contactref element="X0895" pad="GND1"/>
-<contactref element="C0897" pad="2"/>
 <contactref element="C0895" pad="2"/>
+<contactref element="C0897" pad="2"/>
 <via x="25.0825" y="85.4075" extent="1-16" drill="0.3"/>
 <via x="25.4" y="86.995" extent="1-16" drill="0.3"/>
 <via x="25.0825" y="88.9" extent="1-16" drill="0.3"/>
@@ -8759,7 +8760,7 @@ Covered vias can be set in Masks (Limit).
 <signal name="TRX_RF24" class="7">
 <contactref element="L0722" pad="1"/>
 <contactref element="L0896" pad="1"/>
-<contactref element="C0895" pad="1"/>
+<contactref element="C0897" pad="1"/>
 <wire x1="27.32" y1="77.47" x2="27.32" y2="78.54" width="0.3429" layer="1"/>
 <wire x1="27.32" y1="78.54" x2="27.94" y2="79.16" width="0.3429" layer="1"/>
 <wire x1="21.5375" y1="47.9575" x2="22.24" y2="47.9575" width="0.3429" layer="16"/>
@@ -8842,7 +8843,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="24.257" y1="60.96" x2="23.51" y2="60.96" width="0.1524" layer="16"/>
 </signal>
 <signal name="ANT09" class="7">
-<contactref element="C593" pad="1"/>
+<contactref element="C0891" pad="1"/>
 <contactref element="L0892" pad="2"/>
 <contactref element="X0891" pad="ANT2"/>
 <contactref element="X0891" pad="ANT3"/>
@@ -8859,7 +8860,7 @@ Covered vias can be set in Masks (Limit).
 <wire x1="19.05" y1="85.69225" x2="19.05" y2="86.6775" width="0.3429" layer="1"/>
 </signal>
 <signal name="ANT09_MATCH" class="7">
-<contactref element="C0891" pad="1"/>
+<contactref element="C0893" pad="1"/>
 <contactref element="L0892" pad="1"/>
 <contactref element="U0881" pad="5"/>
 <wire x1="18.43" y1="77.47" x2="18.43" y2="78.54" width="0.3429" layer="1"/>
@@ -8923,7 +8924,7 @@ Covered vias can be set in Masks (Limit).
 <contactref element="X0895" pad="ANT3"/>
 <contactref element="X0895" pad="ANT2"/>
 <contactref element="L0896" pad="2"/>
-<contactref element="C0897" pad="1"/>
+<contactref element="C0895" pad="1"/>
 <wire x1="27.32" y1="82.55" x2="27.32" y2="83.2" width="0.3429" layer="1"/>
 <wire x1="27.32" y1="83.2" x2="27.94" y2="83.82" width="0.3429" layer="1"/>
 <wire x1="27.94" y1="83.82" x2="27.94" y2="84.455" width="0.3429" layer="1"/>

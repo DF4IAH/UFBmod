@@ -18720,9 +18720,9 @@ Subminiature Tact Switch for SMT</description>
 <part name="+3V3_0850" library="df4iah_supply" deviceset="+3V3" device=""/>
 <part name="GND0852" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="GND0851" library="df4iah_supply" deviceset="GND" device=""/>
-<part name="C593" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="0pF"/>
-<part name="L0892" library="df4iah_rcl" deviceset="L-EU" device="L0603" value="0nH"/>
 <part name="C0891" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="0pF"/>
+<part name="L0892" library="df4iah_rcl" deviceset="L-EU" device="L0603" value="0nH"/>
+<part name="C0893" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="0pF"/>
 <part name="GND0893" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="GND0891" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="X0891" library="_c2h" deviceset="ANTENNA" device="TINY"/>
@@ -18739,8 +18739,8 @@ Subminiature Tact Switch for SMT</description>
 <part name="R0821" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="100R"/>
 <part name="X0895" library="_c2h" deviceset="ANTENNA" device="TINY"/>
 <part name="GND0898" library="df4iah_supply" deviceset="GND" device=""/>
-<part name="C0897" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="0pF"/>
 <part name="C0895" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="0pF"/>
+<part name="C0897" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="0pF"/>
 <part name="L0896" library="df4iah_rcl" deviceset="L-EU" device="L0603" value="0nH"/>
 <part name="GND0897" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="GND0895" library="df4iah_supply" deviceset="GND" device=""/>
@@ -20953,9 +20953,9 @@ I2C addr: 0x38</text>
 <instance part="+3V3_0850" gate="G$1" x="96.52" y="86.36"/>
 <instance part="GND0852" gate="1" x="106.68" y="66.04"/>
 <instance part="GND0851" gate="1" x="116.84" y="66.04"/>
-<instance part="C593" gate="G$1" x="20.32" y="109.22"/>
+<instance part="C0891" gate="G$1" x="20.32" y="109.22"/>
 <instance part="L0892" gate="G$1" x="27.94" y="116.84" rot="R270"/>
-<instance part="C0891" gate="G$1" x="35.56" y="109.22"/>
+<instance part="C0893" gate="G$1" x="35.56" y="109.22"/>
 <instance part="GND0893" gate="1" x="20.32" y="99.06"/>
 <instance part="GND0891" gate="1" x="35.56" y="99.06"/>
 <instance part="X0891" gate="1" x="10.16" y="116.84" rot="MR0"/>
@@ -20968,8 +20968,8 @@ I2C addr: 0x38</text>
 <instance part="R0821" gate="G$1" x="170.18" y="137.16"/>
 <instance part="X0895" gate="1" x="10.16" y="35.56" rot="MR0"/>
 <instance part="GND0898" gate="1" x="12.7" y="17.78"/>
-<instance part="C0897" gate="G$1" x="20.32" y="27.94"/>
-<instance part="C0895" gate="G$1" x="35.56" y="27.94"/>
+<instance part="C0895" gate="G$1" x="20.32" y="27.94"/>
+<instance part="C0897" gate="G$1" x="35.56" y="27.94"/>
 <instance part="L0896" gate="G$1" x="27.94" y="35.56" rot="R270"/>
 <instance part="GND0897" gate="1" x="20.32" y="17.78"/>
 <instance part="GND0895" gate="1" x="35.56" y="17.78"/>
@@ -21083,12 +21083,12 @@ I2C addr: 0x38</text>
 </segment>
 <segment>
 <pinref part="GND0893" gate="1" pin="GND"/>
-<pinref part="C593" gate="G$1" pin="2"/>
+<pinref part="C0891" gate="G$1" pin="2"/>
 <wire x1="20.32" y1="101.6" x2="20.32" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND0891" gate="1" pin="GND"/>
-<pinref part="C0891" gate="G$1" pin="2"/>
+<pinref part="C0893" gate="G$1" pin="2"/>
 <wire x1="35.56" y1="101.6" x2="35.56" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -21127,12 +21127,12 @@ I2C addr: 0x38</text>
 </segment>
 <segment>
 <pinref part="GND0897" gate="1" pin="GND"/>
-<pinref part="C0897" gate="G$1" pin="2"/>
+<pinref part="C0895" gate="G$1" pin="2"/>
 <wire x1="20.32" y1="20.32" x2="20.32" y2="22.86" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND0895" gate="1" pin="GND"/>
-<pinref part="C0895" gate="G$1" pin="2"/>
+<pinref part="C0897" gate="G$1" pin="2"/>
 <wire x1="35.56" y1="20.32" x2="35.56" y2="22.86" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -21237,7 +21237,7 @@ I2C addr: 0x38</text>
 </net>
 <net name="ANT09" class="7">
 <segment>
-<pinref part="C593" gate="G$1" pin="1"/>
+<pinref part="C0891" gate="G$1" pin="1"/>
 <wire x1="20.32" y1="111.76" x2="20.32" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="L0892" gate="G$1" pin="2"/>
 <wire x1="20.32" y1="116.84" x2="22.86" y2="116.84" width="0.1524" layer="91"/>
@@ -21248,7 +21248,7 @@ I2C addr: 0x38</text>
 </net>
 <net name="ANT09_MATCH" class="7">
 <segment>
-<pinref part="C0891" gate="G$1" pin="1"/>
+<pinref part="C0893" gate="G$1" pin="1"/>
 <wire x1="35.56" y1="111.76" x2="35.56" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="L0892" gate="G$1" pin="1"/>
 <wire x1="35.56" y1="116.84" x2="33.02" y2="116.84" width="0.1524" layer="91"/>
@@ -21262,7 +21262,7 @@ I2C addr: 0x38</text>
 <pinref part="X0895" gate="1" pin="SIGNAL"/>
 <wire x1="15.24" y1="35.56" x2="20.32" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="L0896" gate="G$1" pin="2"/>
-<pinref part="C0897" gate="G$1" pin="1"/>
+<pinref part="C0895" gate="G$1" pin="1"/>
 <wire x1="20.32" y1="35.56" x2="22.86" y2="35.56" width="0.1524" layer="91"/>
 <wire x1="20.32" y1="35.56" x2="20.32" y2="30.48" width="0.1524" layer="91"/>
 <junction x="20.32" y="35.56"/>
@@ -21273,7 +21273,7 @@ I2C addr: 0x38</text>
 <label x="50.8" y="35.56" size="1.778" layer="95" xref="yes"/>
 <pinref part="L0896" gate="G$1" pin="1"/>
 <wire x1="50.8" y1="35.56" x2="35.56" y2="35.56" width="0.1524" layer="91"/>
-<pinref part="C0895" gate="G$1" pin="1"/>
+<pinref part="C0897" gate="G$1" pin="1"/>
 <wire x1="35.56" y1="35.56" x2="33.02" y2="35.56" width="0.1524" layer="91"/>
 <wire x1="35.56" y1="35.56" x2="35.56" y2="30.48" width="0.1524" layer="91"/>
 <junction x="35.56" y="35.56"/>
