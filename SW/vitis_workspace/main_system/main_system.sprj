@@ -5,6 +5,10 @@
       <applications name="main" domainName="freertos10_xilinx_domain" domainPrettyName="freertos10_xilinx on microblaze_0" appBuildConfig="Debug"/>
       <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
     </configBuildOptions>
+    <lastBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="main" domainName="freertos10_xilinx_domain" domainPrettyName="freertos10_xilinx on microblaze_0" appBuildConfig="Debug"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </lastBuildOptions>
   </configuration>
   <configuration name="Release">
     <configBuildOptions xsi:type="systemproject:SystemOptions">

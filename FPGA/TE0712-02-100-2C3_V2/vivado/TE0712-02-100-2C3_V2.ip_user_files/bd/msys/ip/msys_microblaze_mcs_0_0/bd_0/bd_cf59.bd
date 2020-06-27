@@ -355,34 +355,22 @@
       }
     },
     "interface_nets": {
-      "dlmb_sl_1": {
+      "dlmb_port_2": {
         "interface_ports": [
-          "dlmb/LMB_Sl_1",
-          "iomodule_0/SLMB"
+          "second_dlmb_cntlr/BRAM_PORT",
+          "second_lmb_bram_I/BRAM_PORTA"
         ]
       },
-      "ilmb_port": {
+      "iomodule_0_GPIO1": {
         "interface_ports": [
-          "ilmb_cntlr/BRAM_PORT",
-          "lmb_bram_I/BRAM_PORTB"
-        ]
-      },
-      "ilmb": {
-        "interface_ports": [
-          "microblaze_I/ILMB",
-          "ilmb/LMB_M"
+          "GPIO1",
+          "iomodule_0/GPIO1"
         ]
       },
       "dlmb": {
         "interface_ports": [
           "microblaze_I/DLMB",
           "dlmb/LMB_M"
-        ]
-      },
-      "ilmb_sl_0": {
-        "interface_ports": [
-          "ilmb/LMB_Sl_0",
-          "ilmb_cntlr/SLMB"
         ]
       },
       "dlmb_sl_0": {
@@ -403,16 +391,10 @@
           "second_lmb_bram_I/BRAM_PORTB"
         ]
       },
-      "dlmb_port": {
+      "dlmb_sl_1": {
         "interface_ports": [
-          "dlmb_cntlr/BRAM_PORT",
-          "lmb_bram_I/BRAM_PORTA"
-        ]
-      },
-      "dlmb_port_2": {
-        "interface_ports": [
-          "second_dlmb_cntlr/BRAM_PORT",
-          "second_lmb_bram_I/BRAM_PORTA"
+          "dlmb/LMB_Sl_1",
+          "iomodule_0/SLMB"
         ]
       },
       "ilmb_sl_1": {
@@ -421,10 +403,28 @@
           "second_ilmb_cntlr/SLMB"
         ]
       },
-      "iomodule_0_GPIO1": {
+      "ilmb_port": {
         "interface_ports": [
-          "GPIO1",
-          "iomodule_0/GPIO1"
+          "ilmb_cntlr/BRAM_PORT",
+          "lmb_bram_I/BRAM_PORTB"
+        ]
+      },
+      "ilmb": {
+        "interface_ports": [
+          "microblaze_I/ILMB",
+          "ilmb/LMB_M"
+        ]
+      },
+      "ilmb_sl_0": {
+        "interface_ports": [
+          "ilmb/LMB_Sl_0",
+          "ilmb_cntlr/SLMB"
+        ]
+      },
+      "dlmb_port": {
+        "interface_ports": [
+          "dlmb_cntlr/BRAM_PORT",
+          "lmb_bram_I/BRAM_PORTA"
         ]
       }
     },

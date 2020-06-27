@@ -47,13 +47,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="107"/>
-    <Option Name="WTModelSimExportSim" Val="107"/>
-    <Option Name="WTQuestaExportSim" Val="107"/>
-    <Option Name="WTIesExportSim" Val="107"/>
-    <Option Name="WTVcsExportSim" Val="107"/>
-    <Option Name="WTRivieraExportSim" Val="107"/>
-    <Option Name="WTActivehdlExportSim" Val="107"/>
+    <Option Name="WTXSimExportSim" Val="108"/>
+    <Option Name="WTModelSimExportSim" Val="108"/>
+    <Option Name="WTQuestaExportSim" Val="108"/>
+    <Option Name="WTIesExportSim" Val="108"/>
+    <Option Name="WTVcsExportSim" Val="108"/>
+    <Option Name="WTRivieraExportSim" Val="108"/>
+    <Option Name="WTActivehdlExportSim" Val="108"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -137,6 +137,7 @@
       <File Path="$PSRCDIR/sources_1/bd/msys/ip/msys_mig_7series_0_0/mig_b.prj">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="ScopedToCell" Val="msys_mig_7series_0_0"/>
         </FileInfo>
       </File>
       <Config>
