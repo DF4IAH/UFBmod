@@ -4,3 +4,14 @@ timestamp=[2020-06-27 10:35:14], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:03
 timestamp=[2020-06-27 10:35:49], mode=PLATFORM_CREATION, duration=0:00:06.053, duration_ms=6053, data={platform_source=dsa, os=freertos10_xilinx, processor=microblaze, platform=null}
 timestamp=[2020-06-27 10:38:08], mode=PLATFORM_GENERATION, duration=0:00:28.884, duration_ms=28884, data={name=mb0}
 timestamp=[2020-06-27 10:51:22], mode=PLATFORM_GENERATION, duration=0:00:28.442, duration_ms=28442, data={name=mb0}
+timestamp=[2020-06-27 10:54:15], mode=WORKBENCH_START, duration=0:00:08.311, duration_ms=8311, data={}
+timestamp=[2020-06-27 10:54:17], mode=WORKBENCH_UI_INIT, duration=0:00:02.142, duration_ms=2142, data={editors_count=1, platform_editors_count=1, projects_count=2, platform_projects_count=1, active_platform_editor=true, projects=RemoteSystemsTempFiles,mb0}
+timestamp=[2020-06-27 10:54:22], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:03.294, duration_ms=3294, data={}
+timestamp=[2020-06-27 10:54:58], mode=PLATFORM_GENERATION, duration=0:00:02.842, duration_ms=2842, data={name=mb0}
+timestamp=[2020-06-27 11:02:03], mode=WORKBENCH_START, duration=0:00:08.395, duration_ms=8395, data={}
+timestamp=[2020-06-27 11:02:05], mode=WORKBENCH_UI_INIT, duration=0:00:02.017, duration_ms=2017, data={editors_count=1, platform_editors_count=1, projects_count=2, platform_projects_count=1, active_platform_editor=true, projects=RemoteSystemsTempFiles,mb0}
+timestamp=[2020-06-27 11:02:11], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:03.426, duration_ms=3426, data={}
+timestamp=[2020-06-27 11:03:59], mode=PLATFORM_GENERATION, duration=0:00:02.697, duration_ms=2697, data={name=mb0}
+timestamp=[2020-06-27 11:20:12], mode=APP_CREATION, duration=0:00:02.798, duration_ms=2798, data={name=main, project_type=sdk, os=freertos10_xilinx, processor=microblaze_0, runtime=C/C++, platform=mb0, application_type=application}
+timestamp=[2020-06-27 11:30:45], mode=APP_CREATION, duration=0:00:01.169, duration_ms=1169, data={name=exp_echo, project_type=sdk, os=freertos10_xilinx, processor=microblaze_0, runtime=C/C++, platform=mb0, application_type=application}
+timestamp=[2020-06-27 18:24:43], mode=PLATFORM_GENERATION, duration=0:00:25.884, duration_ms=25884, data={name=mb0}
