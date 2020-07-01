@@ -9,8 +9,8 @@
 <grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
-<layer number="3" name="Route3" color="4" fill="3" visible="no" active="yes"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
+<layer number="3" name="Route3" color="4" fill="3" visible="yes" active="yes"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="yes"/>
 <layer number="5" name="Route5" color="4" fill="4" visible="no" active="yes"/>
 <layer number="6" name="Route6" color="1" fill="8" visible="no" active="yes"/>
@@ -21,8 +21,8 @@
 <layer number="11" name="Route11" color="4" fill="7" visible="no" active="yes"/>
 <layer number="12" name="Route12" color="1" fill="5" visible="no" active="yes"/>
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="yes"/>
-<layer number="14" name="Route14" color="1" fill="6" visible="no" active="yes"/>
-<layer number="15" name="Route15" color="4" fill="6" visible="no" active="yes"/>
+<layer number="14" name="Route14" color="1" fill="6" visible="yes" active="yes"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
@@ -4341,6 +4341,46 @@ Subminiature Tact Switch for SMT</description>
 <wire x1="5.5" y1="1.2" x2="3.8" y2="1.2" width="1.25" layer="30"/>
 <wire x1="5.5" y1="-1.2" x2="3.8" y2="-1.2" width="1.25" layer="30"/>
 <pad name="P$1" x="0" y="0" drill="2.8" diameter="2.8" stop="no" thermals="no"/>
+<polygon width="0.01" layer="3" pour="cutout">
+<vertex x="-5.334" y="1.905"/>
+<vertex x="-3.81" y="1.905" curve="-90"/>
+<vertex x="-3.175" y="1.27"/>
+<vertex x="-3.175" y="-1.27" curve="-90"/>
+<vertex x="-3.81" y="-1.905"/>
+<vertex x="-5.334" y="-1.905" curve="-90"/>
+<vertex x="-6.096" y="-1.27"/>
+<vertex x="-6.096" y="1.27" curve="-90"/>
+</polygon>
+<polygon width="0.01" layer="3" pour="cutout">
+<vertex x="3.937" y="1.905"/>
+<vertex x="5.461" y="1.905" curve="-90"/>
+<vertex x="6.096" y="1.27"/>
+<vertex x="6.096" y="-1.27" curve="-90"/>
+<vertex x="5.461" y="-1.905"/>
+<vertex x="3.937" y="-1.905" curve="-90"/>
+<vertex x="3.175" y="-1.27"/>
+<vertex x="3.175" y="1.27" curve="-90"/>
+</polygon>
+<polygon width="0.01" layer="14" pour="cutout">
+<vertex x="-5.334" y="1.905"/>
+<vertex x="-3.81" y="1.905" curve="-90"/>
+<vertex x="-3.175" y="1.27"/>
+<vertex x="-3.175" y="-1.27" curve="-90"/>
+<vertex x="-3.81" y="-1.905"/>
+<vertex x="-5.334" y="-1.905" curve="-90"/>
+<vertex x="-6.096" y="-1.27"/>
+<vertex x="-6.096" y="1.27" curve="-90"/>
+</polygon>
+<polygon width="0.01" layer="14" pour="cutout">
+<vertex x="3.937" y="1.905"/>
+<vertex x="5.461" y="1.905" curve="-90"/>
+<vertex x="6.096" y="1.27"/>
+<vertex x="6.096" y="-1.27" curve="-90"/>
+<vertex x="5.461" y="-1.905"/>
+<vertex x="3.937" y="-1.905" curve="-90"/>
+<vertex x="3.175" y="-1.27"/>
+<vertex x="3.175" y="1.27" curve="-90"/>
+</polygon>
 </package>
 </packages>
 <symbols>
