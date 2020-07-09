@@ -18696,7 +18696,7 @@ Subminiature Tact Switch for SMT</description>
 <part name="FRAME_11" library="df4iah_frame" deviceset="A4L-LOC" device="" value="Holes"/>
 <part name="H1514" library="df4iah_holes" deviceset="MOUNT-PAD-ROUND" device="3.2" value="MOUNT-PAD-ROUND3.2"/>
 <part name="GND1514" library="df4iah_supply" deviceset="GND" device=""/>
-<part name="L1101" library="df4iah_rcl" deviceset="L-EU" device="L1812" value="440nH"/>
+<part name="L1101" library="df4iah_rcl" deviceset="L-EU" device="L5650M" value="470nH"/>
 <part name="GND1121" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="C1153" library="df4iah_rcl" deviceset="C-EU" device="C0805" value="100uF"/>
 <part name="FRAME_13" library="df4iah_frame" deviceset="A4L-LOC" device="" value="Holes"/>
@@ -22009,8 +22009,9 @@ FT232H</text>
 <plain>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">PMIC 5V..14V --&gt; 3.3V_REG</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">PMIC: 5V..14V --&gt; 3.3V</text>
-<text x="165.1" y="116.84" size="1.778" layer="97">PULSE PA0513.441NL</text>
-<text x="165.1" y="122.174" size="1.778" layer="97">(Better: 1uH .. 1.5 uH)</text>
+<text x="160.02" y="109.22" size="1.778" layer="97">PULSE PA5003.471NLT (470 nH, 18.4 A, 4.13 mR)
+5.50 mm x 5.30 mm</text>
+<text x="160.02" y="117.094" size="1.778" layer="97">(Better: 1uH .. 1.5 uH)</text>
 <text x="139.7" y="134.62" size="1.778" layer="97" rot="R90">25V</text>
 <text x="134.62" y="134.62" size="1.778" layer="97" rot="R90">25V</text>
 <text x="129.54" y="134.62" size="1.778" layer="97" rot="R90">25V</text>
@@ -22480,7 +22481,9 @@ FT232H</text>
 <plain>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">PMIC 3.5V --&gt; 2.5V</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">PMIC: 3.5V --&gt; 2.5V</text>
-<text x="149.86" y="119.38" size="1.778" layer="97">MURATA DFE252010P-4R7M=P2</text>
+<text x="149.86" y="119.38" size="1.778" layer="97">MURATA DFE252010P-4R7M=P2
+2.50 mm x 2.00 mm
+</text>
 <text x="96.52" y="78.74" size="1.778" layer="97" rot="R90">Prog: 2.5V</text>
 <text x="132.08" y="116.84" size="1.778" layer="97">300mA</text>
 </plain>
@@ -22625,7 +22628,7 @@ FT232H</text>
 <text x="50.8" y="154.94" size="1.778" layer="97">JTAG CPLD EN</text>
 <text x="15.24" y="96.52" size="1.778" layer="97">Programmer:
 Digilent JTAG HS3</text>
-<text x="193.04" y="55.88" size="1.778" layer="94">set to 3.3V</text>
+<text x="193.294" y="54.864" size="1.778" layer="94">set to 3.3V</text>
 <text x="223.266" y="57.404" size="1.778" layer="94">x</text>
 <text x="223.012" y="54.864" size="1.778" layer="94">x</text>
 <text x="222.758" y="52.07" size="1.778" layer="94">-</text>
@@ -22691,7 +22694,7 @@ Digilent JTAG HS3</text>
 <instance part="R1365" gate="G$1" x="228.6" y="127"/>
 <instance part="R1366" gate="G$1" x="236.22" y="129.54"/>
 <instance part="X1381" gate="G$1" x="223.52" y="55.88"/>
-<instance part="+2V5_1350" gate="G$2" x="190.5" y="43.18" rot="R90"/>
+<instance part="+2V5_1350" gate="G$2" x="213.36" y="43.18" rot="R90"/>
 <instance part="C1381" gate="G$1" x="203.2" y="63.5" smashed="yes" rot="R90">
 <attribute name="NAME" x="202.184" y="68.961" size="1.778" layer="95"/>
 <attribute name="VALUE" x="202.184" y="66.421" size="1.778" layer="96"/>
@@ -23182,7 +23185,7 @@ Digilent JTAG HS3</text>
 <pinref part="X1381" gate="G$1" pin="4"/>
 <wire x1="228.6" y1="55.88" x2="238.76" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="238.76" y1="55.88" x2="238.76" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="238.76" y1="43.18" x2="193.04" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="238.76" y1="43.18" x2="215.9" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="+2V5_1350" gate="G$2" pin="+2V5"/>
 </segment>
 </net>
