@@ -54,12 +54,12 @@
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
-<layer number="47" name="Measures" color="13" fill="1" visible="yes" active="yes"/>
+<layer number="47" name="Measures" color="13" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="14" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="14" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="6" fill="1" visible="no" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
@@ -4422,6 +4422,8 @@ chip</description>
 <circle x="-0.4" y="0.2" radius="0.03" width="0.065" layer="51"/>
 <dimension x1="-1" y1="0.6" x2="1" y2="0.6" x3="0" y3="1" textsize="0.25" textratio="10" layer="47" width="0.025"/>
 <dimension x1="1" y1="0.6" x2="1" y2="-0.6" x3="1.75" y3="0" textsize="0.25" textratio="10" layer="47" width="0.025"/>
+<text x="-0.635" y="-1.27" size="0.6096" layer="25" font="vector" ratio="10">&gt;NAME</text>
+<text x="-1.27" y="-1.905" size="0.6096" layer="27" font="vector" ratio="10">&gt;VALUE</text>
 </package>
 <package name="2450BL15B050">
 <description>&lt;h3&gt;BALUN: JOHANSON TECHNOLOGY  2450BL15B050&lt;/h3&gt;
@@ -4444,6 +4446,8 @@ chip</description>
 <circle x="-1.35" y="-0.825" radius="0.1" width="0.2" layer="21"/>
 <dimension x1="0.475" y1="-1.4" x2="0.175" y2="-1.4" x3="0.325" y3="-1.8" textsize="0.25" textratio="10" layer="47" width="0.025"/>
 <rectangle x1="-0.8" y1="-0.15" x2="-0.5" y2="0.15" layer="21"/>
+<text x="-1.27" y="-0.635" size="0.6096" layer="25" font="vector" ratio="10" rot="R90">&gt;NAME</text>
+<text x="1.905" y="-1.27" size="0.6096" layer="27" font="vector" ratio="10" rot="R90">&gt;VALUE</text>
 </package>
 </packages>
 </library>
@@ -6539,7 +6543,10 @@ Covered vias can be set in Masks (Limit).
 <attribute name="NAME" x="12.065" y="23.8125" size="0.6096" layer="25" font="vector" ratio="10"/>
 <attribute name="VALUE" x="8.5725" y="22.5425" size="0.6096" layer="27" font="vector" ratio="10"/>
 </element>
-<element name="L0721" library="df4iah_balun" package="DXW21HN5011BL" value="MURATA DXW21HN5011BL" x="17.78" y="46.99" smashed="yes" rot="R270"/>
+<element name="L0721" library="df4iah_balun" package="DXW21HN5011BL" value="MURATA DXW21HN5011BL" x="17.78" y="46.99" smashed="yes" rot="R270">
+<attribute name="NAME" x="16.51" y="45.72" size="0.6096" layer="25" font="vector" ratio="10" rot="R90"/>
+<attribute name="VALUE" x="15.875" y="48.26" size="0.6096" layer="27" font="vector" ratio="10" rot="R270"/>
+</element>
 <element name="L0722" library="df4iah_balun" package="2450BL15B050" value="Johanson 2450BL15B050E" x="20.6375" y="47.3075" smashed="yes" rot="MR270"/>
 <element name="U0811" library="df4iah_rf" package="SC-70_6-LEAD_2X1MM25_0P65" value="PE4259" x="17.78" y="54.61" smashed="yes" rot="R180">
 <attribute name="NAME" x="16.07175" y="54.73" size="0.6096" layer="25" font="vector" ratio="10" rot="R90" align="bottom-center"/>

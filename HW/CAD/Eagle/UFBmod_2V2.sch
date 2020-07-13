@@ -12167,6 +12167,8 @@ DAC 16 bit, I2C</description>
 <circle x="-0.4" y="0.2" radius="0.03" width="0.065" layer="51"/>
 <dimension x1="-1" y1="0.6" x2="1" y2="0.6" x3="0" y3="1" textsize="0.25" textratio="10" layer="47" width="0.025"/>
 <dimension x1="1" y1="0.6" x2="1" y2="-0.6" x3="1.75" y3="0" textsize="0.25" textratio="10" layer="47" width="0.025"/>
+<text x="-0.635" y="-1.27" size="0.6096" layer="25" font="vector" ratio="10">&gt;NAME</text>
+<text x="-1.27" y="-1.905" size="0.6096" layer="27" font="vector" ratio="10">&gt;VALUE</text>
 </package>
 <package name="2450BL15B050">
 <description>&lt;h3&gt;BALUN: JOHANSON TECHNOLOGY  2450BL15B050&lt;/h3&gt;
@@ -12189,6 +12191,8 @@ DAC 16 bit, I2C</description>
 <circle x="-1.35" y="-0.825" radius="0.1" width="0.2" layer="21"/>
 <dimension x1="0.475" y1="-1.4" x2="0.175" y2="-1.4" x3="0.325" y3="-1.8" textsize="0.25" textratio="10" layer="47" width="0.025"/>
 <rectangle x1="-0.8" y1="-0.15" x2="-0.5" y2="0.15" layer="21"/>
+<text x="-1.27" y="-0.635" size="0.6096" layer="25" font="vector" ratio="10" rot="R90">&gt;NAME</text>
+<text x="1.905" y="-1.27" size="0.6096" layer="27" font="vector" ratio="10" rot="R90">&gt;VALUE</text>
 </package>
 </packages>
 <symbols>
