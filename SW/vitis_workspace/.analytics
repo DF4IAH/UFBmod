@@ -113,3 +113,10 @@ timestamp=[2020-07-16 22:36:12], mode=BUILD, duration=0:00:00.367, duration_ms=3
 timestamp=[2020-07-16 22:44:19], mode=BUILD, duration=0:00:05.173, duration_ms=5173, data={name=main, configuration=Debug, clean_build=false}
 timestamp=[2020-07-17 19:45:02], mode=BUILD, duration=0:00:05.331, duration_ms=5331, data={name=main, configuration=Debug, clean_build=false}
 timestamp=[2020-07-17 19:45:57], mode=BUILD, duration=0:00:01.796, duration_ms=1796, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-17 23:14:15], mode=BUILD, duration=0:00:25.132, duration_ms=25132, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-17 23:15:32], mode=BUILD, duration=0:00:39.849, duration_ms=39849, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-17 23:22:38], mode=BUILD, duration=0:01:48.726, duration_ms=108726, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-17 23:30:28], mode=BUILD, duration=0:00:36.285, duration_ms=36285, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-17 23:58:11], mode=WORKBENCH_START, duration=0:00:15.064, duration_ms=15064, data={}
+timestamp=[2020-07-17 23:58:12], mode=WORKBENCH_UI_INIT, duration=0:00:01.144, duration_ms=1144, data={editors_count=5, platform_editors_count=2, projects_count=6, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,exp_echo,exp_echo_system,main,main_system,mb0}
+timestamp=[2020-07-17 23:58:17], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:01.087, duration_ms=1087, data={}

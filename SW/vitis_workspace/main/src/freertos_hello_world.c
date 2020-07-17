@@ -119,18 +119,18 @@ int main( void )
 /*-----------------------------------------------------------*/
 static void prvTxTask( void *pvParameters )
 {
-	//const TickType_t ticks100ms  = pdMS_TO_TICKS(DELAY_100_MILLISEC);
-	const TickType_t ticks1000ms = pdMS_TO_TICKS(DELAY_1000_MILLISEC);
-	u8 loopIdx = 0U;
+	const TickType_t ticks100ms  = pdMS_TO_TICKS(DELAY_100_MILLISEC);
+	//const TickType_t ticks1000ms = pdMS_TO_TICKS(DELAY_1000_MILLISEC);
+	//u8 loopIdx = 0U;
 
-#if 0
+#if 1
 	int statusRotenc = XGpio_Initialize(&Gpio_Rotenc, XPAR_ROTENC_DECODER_AXI_ROTENC_GPIO_0_DEVICE_ID);
 	if (statusRotenc != XST_SUCCESS) {
 		xil_printf("GPIO Rotenc Initialization Failed\r\n");
 		return;
 	}
 	XGpio_SetDataDirection(&Gpio_Rotenc, 1U, 0xffffffffUL);  // 32 bit input
-	XGpio_SetDataDirection(&Gpio_Rotenc, 2U, 0xffffffffUL);  // 32 bit input
+	XGpio_SetDataDirection(&Gpio_Rotenc, 2U, 0x0000ffffUL);  // 16 bit output - 16 bit input
 #endif
 
 #if 1
@@ -141,28 +141,37 @@ static void prvTxTask( void *pvParameters )
 	}
 	XGpio_SetDataDirection(&Gpio_PWM_Lights, 1U, 0x00000000UL);  // 32 bit output
 	XGpio_SetDataDirection(&Gpio_PWM_Lights, 2U, 0xffffffffUL);  // 32 bit input
-	u8  pwm_ctr = 0U;
 #endif
 
 	for( ;; )
 	{
 		/* Delay */
-		vTaskDelay(ticks1000ms);
+		vTaskDelay(ticks100ms);
 
-#if 0
+#if 1
 		const u32 gpio1_ctr  = XGpio_DiscreteRead(&Gpio_Rotenc, 1U);
 		const u32 gpio2_push = XGpio_DiscreteRead(&Gpio_Rotenc, 2U);
 		xil_printf( "ROTENC decoder: ctr=%08lx, push=%d\r\n", gpio1_ctr, gpio2_push);
 #endif
 
-#if 1
-		pwm_ctr += 0x04U;
 		{
-			//u8  pwm_r_val 	= pwm_ctr;
-			//u8  pwm_g_val 	= (u8) (pwm_ctr + 0xc0U);
-			//u8  pwm_b_val 	= (u8) (pwm_ctr + 0x80U);
-			//u8  pwm_bl_val	= (u8) (pwm_ctr + 0x40U);
-			//u32 pwm_bf    	= ((u32) pwm_bl_val << 24) | ((u32) pwm_b_val << 16) | ((u32) pwm_g_val << 8) | ((u32) pwm_r_val << 0);
+#if 1
+			u8  pwm_r_val 	= (u8) (0x03U & (gpio1_ctr >> 2));
+			u8  pwm_g_val 	= (u8) (0x03U & (gpio1_ctr >> 4));
+			u8  pwm_b_val 	= (u8) (0x03U & (gpio1_ctr >> 6));
+			u8  pwm_bl_val	= (u8) (0x03U & (gpio1_ctr >> 8));
+
+			if (!gpio2_push) {
+				pwm_r_val = 0x20;
+				pwm_g_val = 0x20;
+				pwm_b_val = 0x20;
+				pwm_bl_val = 0x20;
+			}
+
+			u32 pwm_bf    	= ((u32) pwm_bl_val << 24) | ((u32) pwm_b_val << 16) | ((u32) pwm_g_val << 8) | ((u32) pwm_r_val << 0);
+#endif
+
+#if 0
 			u32 pwm_bf;
 
 			switch (loopIdx)
@@ -184,13 +193,16 @@ static void prvTxTask( void *pvParameters )
 				pwm_bf = 0xff000000UL;
 				break;
 			}
+#endif
 
 			XGpio_DiscreteWrite(&Gpio_PWM_Lights, 1U, pwm_bf);
 
+#if 0
 			++loopIdx;
 			loopIdx &= 0x03U;
-		}
 #endif
+		}
+
 
 		/* Send the next value on the queue.  The queue should always be
 		empty at this point so a block time of 0 is used. */

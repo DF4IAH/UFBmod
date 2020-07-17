@@ -1,5 +1,5 @@
---- msys_wrapper.vhd.orig	2020-05-24 02:00:36.149972700 +0200
-+++ msys_wrapper.vhd	2020-05-24 07:25:38.601622200 +0200
+--- msys_wrapper.vhd.orig	2020-07-17 21:56:09.803645400 +0200
++++ msys_wrapper.vhd	2020-07-17 21:54:16.071231300 +0200
 @@ -16,4 +16,6 @@
      BOARD_IIC_scl_io : inout STD_LOGIC;
      BOARD_IIC_sda_io : inout STD_LOGIC;
@@ -59,7 +59,7 @@
 -    reset : in STD_LOGIC;
 -    rotenc_dec_cnt_en : in STD_LOGIC;
 -    rotenc_dec_cnt_up_dwn : in STD_LOGIC;
--    rotenc_decoder_reset : out STD_LOGIC_VECTOR ( 0 to 0 )
+-    rotenc_decoder_resetn : out STD_LOGIC_VECTOR ( 0 to 0 )
 +    reset : in STD_LOGIC
    );
  end msys_wrapper;
@@ -69,7 +69,7 @@
 +  component rotenc_decoder is
 +  port (
 +    clk                 : in STD_LOGIC;
-+    reset               : in STD_LOGIC;
++    resetn              : in STD_LOGIC;
 +    rotenc_I            : in STD_LOGIC;
 +    rotenc_Q            : in STD_LOGIC;
 +    cnt_up_dwn          : out STD_LOGIC;
@@ -175,7 +175,7 @@
 +  signal mw_fft24_premem_subframe_in : STD_LOGIC_VECTOR ( 1 downto 0 );
 +  signal mw_postmem_rx_wea_in : STD_LOGIC;
 +  signal mw_postmem_rx_addra_in : STD_LOGIC_VECTOR ( 12 downto 0 );
-+  signal mw_rotenc_decoder_reset : STD_LOGIC;
++  signal mw_rotenc_decoder_resetn : STD_LOGIC;
 +  signal mw_rotenc_dec_cnt_en : STD_LOGIC;
 +  signal mw_rotenc_dec_cnt_up_dwn : STD_LOGIC;
    signal onewire_EUI48_tri_i_0 : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -195,7 +195,7 @@
      );
 +rotenc_decoder_i: component rotenc_decoder
 +     port map (
-+      reset             => mw_rotenc_decoder_reset,
++      resetn             => mw_rotenc_decoder_resetn,
 +      clk               => mw_microblaze_0_Clk_100MHz,
 +      rotenc_I          => BOARD_ROTENC_I,
 +      rotenc_Q          => BOARD_ROTENC_Q,
@@ -204,7 +204,7 @@
 +    );
 +auto_LVDS_rotate_i: component auto_LVDS_rotate
 +    port map (
-+      resetn            => mw_rotenc_decoder_reset,
++      resetn            => mw_rotenc_decoder_resetn,
 +      clk               => mw_microblaze_0_Clk_100MHz,
 +      LVDS09            => mw_TRX_rx09_fifo,
 +      LVDS09_valid      => mw_TRX_rx09_fifo_valid,
@@ -217,7 +217,7 @@
 +    );
 +FFT_controller_i: component FFT_controller
 +    port map (
-+      resetn                => mw_rotenc_decoder_reset,
++      resetn                => mw_rotenc_decoder_resetn,
 +      clk                   => mw_microblaze_0_Clk_100MHz,
 +      rx09_bs_32bits        => mw_TRX_rx09_bs,
 +      rx09_bs_32bits_vld    => mw_TRX_rot09vld,
@@ -322,9 +322,9 @@
        reset => reset,
 -      rotenc_dec_cnt_en => rotenc_dec_cnt_en,
 -      rotenc_dec_cnt_up_dwn => rotenc_dec_cnt_up_dwn,
--      rotenc_decoder_reset(0) => rotenc_decoder_reset(0)
+-      rotenc_decoder_resetn(0) => rotenc_decoder_resetn(0)
 +      rotenc_dec_cnt_en => mw_rotenc_dec_cnt_en,
 +      rotenc_dec_cnt_up_dwn => mw_rotenc_dec_cnt_up_dwn,
-+      rotenc_decoder_reset(0) => mw_rotenc_decoder_reset
++      rotenc_decoder_resetn(0) => mw_rotenc_decoder_resetn
      );
  onewire_EUI48_tri_iobuf_0: component IOBUF

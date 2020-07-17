@@ -29,6 +29,8 @@
   </ObjectList>
   <ObjectList object_type="hw_probe" gui_info="">
     <Object name="msys_i/FPGA_IO_1" gui_info="hw_vios/hw_vio_1=3"/>
+    <Object name="msys_i/ROTENC_decoder_Q[31:0]" gui_info="hw_vios/hw_vio_1=26"/>
+    <Object name="msys_i/ROTENC_decoder_dout[2:0]" gui_info="hw_vios/hw_vio_1=25"/>
     <Object name="msys_i/SC0712_0_mon_GPIO1_I[31:0]" gui_info="hw_vios/hw_vio_1=1"/>
     <Object name="msys_i/SC0712_0_mon_GPIO1_O[31:0]" gui_info="hw_vios/hw_vio_1=2"/>
     <Object name="msys_i/SC0712_0_reset_out" gui_info="hw_vios/hw_vio_1=0"/>
@@ -42,6 +44,11 @@
     <Object name="msys_i/labtools_fmeter_0_update" gui_info="hw_vios/hw_vio_1=5"/>
     <Object name="msys_i/lt_CLK0[31:0]" gui_info="hw_vios/hw_vio_1=7"/>
     <Object name="msys_i/lt_CLK1B[31:0]" gui_info="hw_vios/hw_vio_1=8"/>
+    <Object name="msys_i/lt_F0_MIG_50mhz[31:0]" gui_info="hw_vios/hw_vio_1=8"/>
+    <Object name="msys_i/lt_F1_mgt_ref[31:0]" gui_info="hw_vios/hw_vio_1=6"/>
+    <Object name="msys_i/lt_F2_CLK1B[31:0]" gui_info="hw_vios/hw_vio_1=7"/>
+    <Object name="msys_i/lt_F3_CLK0[31:0]" gui_info="hw_vios/hw_vio_1=9"/>
+    <Object name="msys_i/lt_F4_TRX_LVDS_divclk[31:0]" gui_info="hw_vios/hw_vio_1=10"/>
     <Object name="msys_i/postmem_rx09_doutb_out_0[31:0]" gui_info="hw_vios/hw_vio_1=23"/>
     <Object name="msys_i/postmem_rx24_doutb_out_0[31:0]" gui_info="hw_vios/hw_vio_1=24"/>
     <Object name="msys_i/postmem_rx_addrb_in_0[12:0]" gui_info="hw_vios/hw_vio_1=22"/>
@@ -55,7 +62,7 @@
     <Object name="msys_i/xfft_rx24_dly3449_event_frame_started_out_0" gui_info="hw_vios/hw_vio_1=18"/>
   </ObjectList>
   <ObjectList object_type="hw_vio" gui_info="">
-    <Object name="hw_vio_1" gui_info="hw_vios/hw_vio_1/TablePreference=5	1204	Name	0	2147483647	15	652	652	Value	1	2147483647	15	187	187	Activity	2	2147483647	15	110	110	Direction	3	2147483647	15	129	129	VIO	4	2147483647	15	126	126			1	6	1	Name	Value	Activity	Direction	VIO"/>
+    <Object name="hw_vio_1" gui_info="hw_vios/hw_vio_1/TablePreference=5	1279	Name	0	2147483647	15	649	649	Value	1	2147483647	15	241	241	Activity	2	2147483647	15	122	122	Direction	3	2147483647	15	141	141	VIO	4	2147483647	15	126	126			1	6	1	Name	Value	Activity	Direction	VIO"/>
   </ObjectList>
   <probeset name="hw project" active="false">
     <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
@@ -125,7 +132,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_VIO" value="hw_vio_1"/>
-        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="INPUT_VALUE_RADIX" value="BINARY"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
@@ -624,7 +631,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_VIO" value="hw_vio_1"/>
-        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="INPUT_VALUE_RADIX" value="UNSIGNED"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
@@ -670,7 +677,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_VIO" value="hw_vio_1"/>
-        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="INPUT_VALUE_RADIX" value="UNSIGNED"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
@@ -716,7 +723,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_VIO" value="hw_vio_1"/>
-        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="INPUT_VALUE_RADIX" value="UNSIGNED"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
@@ -762,7 +769,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_VIO" value="hw_vio_1"/>
-        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="INPUT_VALUE_RADIX" value="UNSIGNED"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
@@ -808,7 +815,7 @@
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_VIO" value="hw_vio_1"/>
-        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="INPUT_VALUE_RADIX" value="UNSIGNED"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>

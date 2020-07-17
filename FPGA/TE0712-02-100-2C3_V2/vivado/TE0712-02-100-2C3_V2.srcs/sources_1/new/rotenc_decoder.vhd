@@ -35,7 +35,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity rotenc_decoder is
     Port ( clk : in STD_LOGIC;
-           reset : in STD_LOGIC;
+           resetn : in STD_LOGIC;
            rotenc_I : in STD_LOGIC;
            rotenc_Q : in STD_LOGIC;
            cnt_up_dwn : out STD_LOGIC;
@@ -47,9 +47,9 @@ architecture Behavioral of rotenc_decoder is
     signal rotenc_Q_d1 : STD_LOGIC;
     signal cnt_en_pre : STD_LOGIC;
 begin
-    process (reset, clk)
+    process (resetn, clk)
     begin
-        if (reset = '1') then
+        if (resetn = '0') then
             rotenc_I_d1 <= '0';
             rotenc_Q_d1 <= '0';
             cnt_en_pre <= '0';
@@ -72,7 +72,7 @@ begin
                     (rotenc_I_d1 = '1' and rotenc_I = '0' and rotenc_Q_d1 = '1' and rotenc_Q = '1') or
                     (rotenc_I_d1 = '0' and rotenc_I = '0' and rotenc_Q_d1 = '1' and rotenc_Q = '0')
                 ) then
-                    cnt_up_dwn <= '1';
+                    cnt_up_dwn <= '0';
                 -- 4 quadrants in left direction = down
                 elsif (
                     (rotenc_I_d1 = '0' and rotenc_I = '0' and rotenc_Q_d1 = '0' and rotenc_Q = '1') or
@@ -80,7 +80,7 @@ begin
                     (rotenc_I_d1 = '1' and rotenc_I = '1' and rotenc_Q_d1 = '1' and rotenc_Q = '0') or
                     (rotenc_I_d1 = '1' and rotenc_I = '0' and rotenc_Q_d1 = '0' and rotenc_Q = '0')
                 ) then
-                    cnt_up_dwn <= '0';
+                    cnt_up_dwn <= '1';
                 end if;
             end if;
             

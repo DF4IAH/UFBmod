@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Thu Jul 16 23:38:36 2020
+--Date        : Fri Jul 17 23:01:08 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -10770,7 +10770,7 @@ entity msys is
     reset : in STD_LOGIC;
     rotenc_dec_cnt_en : in STD_LOGIC;
     rotenc_dec_cnt_up_dwn : in STD_LOGIC;
-    rotenc_decoder_reset : out STD_LOGIC_VECTOR ( 0 to 0 )
+    rotenc_decoder_resetn : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute CORE_GENERATION_INFO : string;
   attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=205,numReposBlks=166,numNonXlnxBlks=3,numHierBlks=39,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
@@ -12066,8 +12066,8 @@ architecture STRUCTURE of msys is
   attribute X_INTERFACE_PARAMETER of premem_rx09_quarterfrm_in : signal is "XIL_INTERFACENAME DATA.PREMEM_RX09_QUARTERFRM_IN, LAYERED_METADATA undef";
   attribute X_INTERFACE_INFO of premem_rx24_quarterfrm_in : signal is "xilinx.com:signal:data:1.0 DATA.PREMEM_RX24_QUARTERFRM_IN DATA";
   attribute X_INTERFACE_PARAMETER of premem_rx24_quarterfrm_in : signal is "XIL_INTERFACENAME DATA.PREMEM_RX24_QUARTERFRM_IN, LAYERED_METADATA undef";
-  attribute X_INTERFACE_INFO of rotenc_decoder_reset : signal is "xilinx.com:signal:reset:1.0 RST.ROTENC_DECODER_RESET RST";
-  attribute X_INTERFACE_PARAMETER of rotenc_decoder_reset : signal is "XIL_INTERFACENAME RST.ROTENC_DECODER_RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
+  attribute X_INTERFACE_INFO of rotenc_decoder_resetn : signal is "xilinx.com:signal:reset:1.0 RST.ROTENC_DECODER_RESETN RST";
+  attribute X_INTERFACE_PARAMETER of rotenc_decoder_resetn : signal is "XIL_INTERFACENAME RST.ROTENC_DECODER_RESETN, INSERT_VIP 0, POLARITY ACTIVE_LOW";
 begin
   BOARD_IIC_scl_o <= axi_iic_1_IIC_SCL_O;
   BOARD_IIC_scl_t <= axi_iic_1_IIC_SCL_T;
@@ -12201,7 +12201,7 @@ begin
   reset_1 <= reset;
   rotenc_dec_cnt_en_1 <= rotenc_dec_cnt_en;
   rotenc_dec_cnt_up_dwn_1 <= rotenc_dec_cnt_up_dwn;
-  rotenc_decoder_reset(0) <= rst_mig_7series_0_100M_peripheral_aresetn(0);
+  rotenc_decoder_resetn(0) <= rst_mig_7series_0_100M_peripheral_aresetn(0);
 BOARD_clk_wiz_0: component msys_clk_wiz_0_0
      port map (
       clk_in1 => mig_7series_0_ui_addn_clk_1_100MHz,

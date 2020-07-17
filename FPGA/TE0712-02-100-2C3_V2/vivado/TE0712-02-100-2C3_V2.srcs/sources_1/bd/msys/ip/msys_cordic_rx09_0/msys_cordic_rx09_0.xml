@@ -690,7 +690,7 @@ ffset format long minimum {} maximum {}} value 13} integer {signed {attribs {res
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Jul 16 21:39:23 UTC 2020</spirit:value>
+            <spirit:value>Fri Jul 17 19:56:50 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
@@ -708,7 +708,7 @@ ffset format long minimum {} maximum {}} value 13} integer {signed {attribs {res
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Jul 16 21:39:23 UTC 2020</spirit:value>
+            <spirit:value>Fri Jul 17 19:56:50 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
@@ -728,7 +728,7 @@ ffset format long minimum {} maximum {}} value 13} integer {signed {attribs {res
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Jul 16 21:39:23 UTC 2020</spirit:value>
+            <spirit:value>Fri Jul 17 19:56:50 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
@@ -778,7 +778,7 @@ ffset format long minimum {} maximum {}} value 13} integer {signed {attribs {res
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Jul 16 21:39:23 UTC 2020</spirit:value>
+            <spirit:value>Fri Jul 17 19:56:50 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
@@ -798,7 +798,7 @@ ffset format long minimum {} maximum {}} value 13} integer {signed {attribs {res
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Jul 16 21:39:23 UTC 2020</spirit:value>
+            <spirit:value>Fri Jul 17 19:56:50 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
