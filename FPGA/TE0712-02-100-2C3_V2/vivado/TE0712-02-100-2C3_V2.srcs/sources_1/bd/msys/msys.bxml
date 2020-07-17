@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="msys" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1593275727"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1593275727"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1593275727"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1593275727"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1594935569"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1594935569"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1594935569"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1594935569"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\msys_SC0712_0_0\msys_SC0712_0_0.xci" Type="IP">
         <Instance HierarchyPath="SC0712_0"/>
@@ -398,7 +398,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_xlslice_0_2\msys_xlslice_0_2.xci" Type="IP">
-        <Instance HierarchyPath="PWM_lights/RGB_red_xlslice_0"/>
+        <Instance HierarchyPath="PWM_lights/RGB_red_xlslice_8to8_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -406,7 +406,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_RGB_red_xlslice_0_0\msys_RGB_red_xlslice_0_0.xci" Type="IP">
-        <Instance HierarchyPath="PWM_lights/RGB_green_xlslice_0"/>
+        <Instance HierarchyPath="PWM_lights/RGB_green_xlslice_8to8_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -414,7 +414,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_RGB_red_xlslice_0_1\msys_RGB_red_xlslice_0_1.xci" Type="IP">
-        <Instance HierarchyPath="PWM_lights/RGB_blue_xlslice_0"/>
+        <Instance HierarchyPath="PWM_lights/RGB_blue_xlslice_8to8_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -422,7 +422,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_RGB_red_xlslice_0_2\msys_RGB_red_xlslice_0_2.xci" Type="IP">
-        <Instance HierarchyPath="PWM_lights/LCD_BL_xlslice_0"/>
+        <Instance HierarchyPath="PWM_lights/LCD_BL_xlslice_8to8_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -438,7 +438,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_LCD_BL_xlslice_0_0\msys_LCD_BL_xlslice_0_0.xci" Type="IP">
-        <Instance HierarchyPath="PWM_lights/PWM_ctr_xlslice_0"/>
+        <Instance HierarchyPath="PWM_lights/PWM_ctr_xlslice_17to10_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -462,7 +462,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_PWM_gpio_xlslice_3_0\msys_PWM_gpio_xlslice_3_0.xci" Type="IP">
-        <Instance HierarchyPath="PWM_lights/PWM_gpio_xlslice_21to16_0"/>
+        <Instance HierarchyPath="PWM_lights/PWM_gpio_xlslice_23to16_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -486,7 +486,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_RGB_red_xlslice_0_3\msys_RGB_red_xlslice_0_3.xci" Type="IP">
-        <Instance HierarchyPath="PWM_lights/PWM_GPIO_xlslice_1"/>
+        <Instance HierarchyPath="PWM_lights/PWM_GPIO_xlslice_0to0_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -502,7 +502,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_xlconstant_0_0\msys_xlconstant_0_0.xci" Type="IP">
-        <Instance HierarchyPath="PWM_lights/xlconstant_0_len26"/>
+        <Instance HierarchyPath="PWM_lights/xlconstant_0_len10"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -1311,6 +1311,22 @@
       </File>
       <File Name="ip\msys_xbar_3\msys_xbar_3.xci" Type="IP">
         <Instance HierarchyPath="microblaze_0_axi_periph/xbar"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_xlconcat_0_8\msys_xlconcat_0_8.xci" Type="IP">
+        <Instance HierarchyPath="ROTENC_decoder/xlconcat_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_xlslice_0_33\msys_xlslice_0_33.xci" Type="IP">
+        <Instance HierarchyPath="PWM_lights/PWM_GPIO2_xlslice_15to0_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

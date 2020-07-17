@@ -2830,7 +2830,9 @@ proc create_hier_cell_ROTENC_decoder { parentCell nameHier } {
   # Create pins
   create_bd_pin -dir I -from 0 -to 0 BOARD_ROTENC_PUSH
   create_bd_pin -dir I -type clk CLK
+  create_bd_pin -dir O -from 31 -to 0 -type data Q
   create_bd_pin -dir I -type data SINIT
+  create_bd_pin -dir O -from 2 -to 0 dout
   create_bd_pin -dir O -type intr ip2intc_irpt
   create_bd_pin -dir I -type ce rotenc_dec_cnt_en
   create_bd_pin -dir I -type data rotenc_dec_cnt_up_dwn
@@ -2862,18 +2864,28 @@ proc create_hier_cell_ROTENC_decoder { parentCell nameHier } {
    CONFIG.C_TRI_DEFAULT_2 {0xFFFFFFFF} \
  ] $axi_ROTENC_gpio_0
 
+  # Create instance: xlconcat_0, and set properties
+  set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
+  set_property -dict [ list \
+   CONFIG.IN0_WIDTH {1} \
+   CONFIG.IN1_WIDTH {1} \
+   CONFIG.IN2_WIDTH {1} \
+   CONFIG.NUM_PORTS {3} \
+ ] $xlconcat_0
+
   # Create interface connections
   connect_bd_intf_net -intf_net Conn1 [get_bd_intf_pins S_AXI] [get_bd_intf_pins axi_ROTENC_gpio_0/S_AXI]
 
   # Create port connections
   connect_bd_net -net BOARD_ROTENC_PUSH_1 [get_bd_pins BOARD_ROTENC_PUSH] [get_bd_pins axi_ROTENC_gpio_0/gpio2_io_i]
   connect_bd_net -net CLK_1 [get_bd_pins CLK] [get_bd_pins ROTENC_counter_32bit_0/CLK] [get_bd_pins axi_ROTENC_gpio_0/s_axi_aclk]
-  connect_bd_net -net ROTENC_counter_32bit_0_Q [get_bd_pins ROTENC_counter_32bit_0/Q] [get_bd_pins axi_ROTENC_gpio_0/gpio_io_i]
-  connect_bd_net -net SINIT_1 [get_bd_pins SINIT] [get_bd_pins ROTENC_counter_32bit_0/SINIT]
+  connect_bd_net -net ROTENC_counter_32bit_0_Q [get_bd_pins Q] [get_bd_pins ROTENC_counter_32bit_0/Q] [get_bd_pins axi_ROTENC_gpio_0/gpio_io_i]
+  connect_bd_net -net SINIT_1 [get_bd_pins SINIT] [get_bd_pins ROTENC_counter_32bit_0/SINIT] [get_bd_pins xlconcat_0/In2]
   connect_bd_net -net axi_ROTENC_gpio_0_ip2intc_irpt [get_bd_pins ip2intc_irpt] [get_bd_pins axi_ROTENC_gpio_0/ip2intc_irpt]
-  connect_bd_net -net rotenc_dec_cnt_en_1 [get_bd_pins rotenc_dec_cnt_en] [get_bd_pins ROTENC_counter_32bit_0/CE]
-  connect_bd_net -net rotenc_dec_cnt_up_dwn_1 [get_bd_pins rotenc_dec_cnt_up_dwn] [get_bd_pins ROTENC_counter_32bit_0/UP]
+  connect_bd_net -net rotenc_dec_cnt_en_1 [get_bd_pins rotenc_dec_cnt_en] [get_bd_pins ROTENC_counter_32bit_0/CE] [get_bd_pins xlconcat_0/In0]
+  connect_bd_net -net rotenc_dec_cnt_up_dwn_1 [get_bd_pins rotenc_dec_cnt_up_dwn] [get_bd_pins ROTENC_counter_32bit_0/UP] [get_bd_pins xlconcat_0/In1]
   connect_bd_net -net s_axi_aresetn_1 [get_bd_pins s_axi_aresetn] [get_bd_pins axi_ROTENC_gpio_0/s_axi_aresetn]
+  connect_bd_net -net xlconcat_0_dout [get_bd_pins dout] [get_bd_pins xlconcat_0/dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -2934,10 +2946,10 @@ proc create_hier_cell_PWM_lights { parentCell nameHier } {
   # Create instance: LCD_BL_compare_0, and set properties
   set LCD_BL_compare_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_addsub:12.0 LCD_BL_compare_0 ]
   set_property -dict [ list \
-   CONFIG.A_Type {Signed} \
+   CONFIG.A_Type {Unsigned} \
    CONFIG.A_Width {8} \
    CONFIG.Add_Mode {Subtract} \
-   CONFIG.B_Type {Signed} \
+   CONFIG.B_Type {Unsigned} \
    CONFIG.B_Value {00000000} \
    CONFIG.B_Width {8} \
    CONFIG.CE {false} \
@@ -2945,69 +2957,77 @@ proc create_hier_cell_PWM_lights { parentCell nameHier } {
    CONFIG.Out_Width {9} \
  ] $LCD_BL_compare_0
 
-  # Create instance: LCD_BL_xlslice_0, and set properties
-  set LCD_BL_xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 LCD_BL_xlslice_0 ]
+  # Create instance: LCD_BL_xlslice_8to8_0, and set properties
+  set LCD_BL_xlslice_8to8_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 LCD_BL_xlslice_8to8_0 ]
   set_property -dict [ list \
    CONFIG.DIN_FROM {8} \
    CONFIG.DIN_TO {8} \
    CONFIG.DIN_WIDTH {9} \
    CONFIG.DOUT_WIDTH {1} \
- ] $LCD_BL_xlslice_0
+ ] $LCD_BL_xlslice_8to8_0
 
   # Create instance: PWM_GPIO2_xlconcat_0, and set properties
   set PWM_GPIO2_xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 PWM_GPIO2_xlconcat_0 ]
   set_property -dict [ list \
-   CONFIG.IN0_WIDTH {1} \
+   CONFIG.IN0_WIDTH {16} \
    CONFIG.IN1_WIDTH {1} \
-   CONFIG.IN2_WIDTH {3} \
-   CONFIG.IN3_WIDTH {1} \
-   CONFIG.IN4_WIDTH {26} \
-   CONFIG.IN5_WIDTH {27} \
-   CONFIG.NUM_PORTS {5} \
+   CONFIG.IN2_WIDTH {1} \
+   CONFIG.IN3_WIDTH {3} \
+   CONFIG.IN4_WIDTH {1} \
+   CONFIG.IN5_WIDTH {10} \
+   CONFIG.NUM_PORTS {6} \
  ] $PWM_GPIO2_xlconcat_0
 
-  # Create instance: PWM_GPIO_xlslice_1, and set properties
-  set PWM_GPIO_xlslice_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 PWM_GPIO_xlslice_1 ]
+  # Create instance: PWM_GPIO2_xlslice_15to0_0, and set properties
+  set PWM_GPIO2_xlslice_15to0_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 PWM_GPIO2_xlslice_15to0_0 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {15} \
+   CONFIG.DIN_WIDTH {32} \
+   CONFIG.DOUT_WIDTH {16} \
+ ] $PWM_GPIO2_xlslice_15to0_0
+
+  # Create instance: PWM_GPIO_xlslice_0to0_0, and set properties
+  set PWM_GPIO_xlslice_0to0_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 PWM_GPIO_xlslice_0to0_0 ]
   set_property -dict [ list \
    CONFIG.DIN_FROM {0} \
    CONFIG.DIN_TO {0} \
    CONFIG.DIN_WIDTH {32} \
    CONFIG.DOUT_WIDTH {1} \
- ] $PWM_GPIO_xlslice_1
+ ] $PWM_GPIO_xlslice_0to0_0
 
   # Create instance: PWM_counter_binary_0, and set properties
   set PWM_counter_binary_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_counter_binary:12.0 PWM_counter_binary_0 ]
   set_property -dict [ list \
    CONFIG.Implementation {DSP48} \
-   CONFIG.Output_Width {21} \
+   CONFIG.Output_Width {18} \
  ] $PWM_counter_binary_0
 
-  # Create instance: PWM_ctr_xlslice_0, and set properties
-  set PWM_ctr_xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 PWM_ctr_xlslice_0 ]
+  # Create instance: PWM_ctr_xlslice_17to10_0, and set properties
+  set PWM_ctr_xlslice_17to10_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 PWM_ctr_xlslice_17to10_0 ]
   set_property -dict [ list \
-   CONFIG.DIN_FROM {20} \
-   CONFIG.DIN_TO {13} \
-   CONFIG.DIN_WIDTH {21} \
+   CONFIG.DIN_FROM {17} \
+   CONFIG.DIN_TO {10} \
+   CONFIG.DIN_WIDTH {18} \
    CONFIG.DOUT_WIDTH {8} \
- ] $PWM_ctr_xlslice_0
+ ] $PWM_ctr_xlslice_17to10_0
 
   # Create instance: PWM_gpio_xlslice_15to8_0, and set properties
   set PWM_gpio_xlslice_15to8_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 PWM_gpio_xlslice_15to8_0 ]
   set_property -dict [ list \
-   CONFIG.DIN_FROM {31} \
-   CONFIG.DIN_TO {24} \
+   CONFIG.DIN_FROM {15} \
+   CONFIG.DIN_TO {8} \
    CONFIG.DIN_WIDTH {32} \
    CONFIG.DOUT_WIDTH {8} \
  ] $PWM_gpio_xlslice_15to8_0
 
-  # Create instance: PWM_gpio_xlslice_21to16_0, and set properties
-  set PWM_gpio_xlslice_21to16_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 PWM_gpio_xlslice_21to16_0 ]
+  # Create instance: PWM_gpio_xlslice_23to16_0, and set properties
+  set PWM_gpio_xlslice_23to16_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 PWM_gpio_xlslice_23to16_0 ]
   set_property -dict [ list \
-   CONFIG.DIN_FROM {31} \
-   CONFIG.DIN_TO {24} \
+   CONFIG.DIN_FROM {23} \
+   CONFIG.DIN_TO {16} \
    CONFIG.DIN_WIDTH {32} \
    CONFIG.DOUT_WIDTH {8} \
- ] $PWM_gpio_xlslice_21to16_0
+ ] $PWM_gpio_xlslice_23to16_0
 
   # Create instance: PWM_gpio_xlslice_31to24_0, and set properties
   set PWM_gpio_xlslice_31to24_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 PWM_gpio_xlslice_31to24_0 ]
@@ -3030,10 +3050,10 @@ proc create_hier_cell_PWM_lights { parentCell nameHier } {
   # Create instance: RGB_blue_compare_0, and set properties
   set RGB_blue_compare_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_addsub:12.0 RGB_blue_compare_0 ]
   set_property -dict [ list \
-   CONFIG.A_Type {Signed} \
+   CONFIG.A_Type {Unsigned} \
    CONFIG.A_Width {8} \
    CONFIG.Add_Mode {Subtract} \
-   CONFIG.B_Type {Signed} \
+   CONFIG.B_Type {Unsigned} \
    CONFIG.B_Value {00000000} \
    CONFIG.B_Width {8} \
    CONFIG.CE {false} \
@@ -3041,22 +3061,22 @@ proc create_hier_cell_PWM_lights { parentCell nameHier } {
    CONFIG.Out_Width {9} \
  ] $RGB_blue_compare_0
 
-  # Create instance: RGB_blue_xlslice_0, and set properties
-  set RGB_blue_xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 RGB_blue_xlslice_0 ]
+  # Create instance: RGB_blue_xlslice_8to8_0, and set properties
+  set RGB_blue_xlslice_8to8_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 RGB_blue_xlslice_8to8_0 ]
   set_property -dict [ list \
    CONFIG.DIN_FROM {8} \
    CONFIG.DIN_TO {8} \
    CONFIG.DIN_WIDTH {9} \
    CONFIG.DOUT_WIDTH {1} \
- ] $RGB_blue_xlslice_0
+ ] $RGB_blue_xlslice_8to8_0
 
   # Create instance: RGB_green_compare_0, and set properties
   set RGB_green_compare_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_addsub:12.0 RGB_green_compare_0 ]
   set_property -dict [ list \
-   CONFIG.A_Type {Signed} \
+   CONFIG.A_Type {Unsigned} \
    CONFIG.A_Width {8} \
    CONFIG.Add_Mode {Subtract} \
-   CONFIG.B_Type {Signed} \
+   CONFIG.B_Type {Unsigned} \
    CONFIG.B_Value {00000000} \
    CONFIG.B_Width {8} \
    CONFIG.CE {false} \
@@ -3064,22 +3084,22 @@ proc create_hier_cell_PWM_lights { parentCell nameHier } {
    CONFIG.Out_Width {9} \
  ] $RGB_green_compare_0
 
-  # Create instance: RGB_green_xlslice_0, and set properties
-  set RGB_green_xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 RGB_green_xlslice_0 ]
+  # Create instance: RGB_green_xlslice_8to8_0, and set properties
+  set RGB_green_xlslice_8to8_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 RGB_green_xlslice_8to8_0 ]
   set_property -dict [ list \
    CONFIG.DIN_FROM {8} \
    CONFIG.DIN_TO {8} \
    CONFIG.DIN_WIDTH {9} \
    CONFIG.DOUT_WIDTH {1} \
- ] $RGB_green_xlslice_0
+ ] $RGB_green_xlslice_8to8_0
 
   # Create instance: RGB_red_compare_0, and set properties
   set RGB_red_compare_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_addsub:12.0 RGB_red_compare_0 ]
   set_property -dict [ list \
-   CONFIG.A_Type {Signed} \
+   CONFIG.A_Type {Unsigned} \
    CONFIG.A_Width {8} \
    CONFIG.Add_Mode {Subtract} \
-   CONFIG.B_Type {Signed} \
+   CONFIG.B_Type {Unsigned} \
    CONFIG.B_Value {00000000} \
    CONFIG.B_Width {8} \
    CONFIG.CE {false} \
@@ -3087,14 +3107,14 @@ proc create_hier_cell_PWM_lights { parentCell nameHier } {
    CONFIG.Out_Width {9} \
  ] $RGB_red_compare_0
 
-  # Create instance: RGB_red_xlslice_0, and set properties
-  set RGB_red_xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 RGB_red_xlslice_0 ]
+  # Create instance: RGB_red_xlslice_8to8_0, and set properties
+  set RGB_red_xlslice_8to8_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 RGB_red_xlslice_8to8_0 ]
   set_property -dict [ list \
    CONFIG.DIN_FROM {8} \
    CONFIG.DIN_TO {8} \
    CONFIG.DIN_WIDTH {9} \
    CONFIG.DOUT_WIDTH {1} \
- ] $RGB_red_xlslice_0
+ ] $RGB_red_xlslice_8to8_0
 
   # Create instance: axi_PWM_gpio_0, and set properties
   set axi_PWM_gpio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_PWM_gpio_0 ]
@@ -3103,7 +3123,7 @@ proc create_hier_cell_PWM_lights { parentCell nameHier } {
    CONFIG.C_ALL_INPUTS_2 {0} \
    CONFIG.C_ALL_OUTPUTS {1} \
    CONFIG.C_ALL_OUTPUTS_2 {0} \
-   CONFIG.C_DOUT_DEFAULT {0x00000000} \
+   CONFIG.C_DOUT_DEFAULT {0x20010101} \
    CONFIG.C_GPIO2_WIDTH {32} \
    CONFIG.C_GPIO_WIDTH {32} \
    CONFIG.C_INTERRUPT_PRESENT {1} \
@@ -3111,43 +3131,44 @@ proc create_hier_cell_PWM_lights { parentCell nameHier } {
    CONFIG.C_TRI_DEFAULT_2 {0x0000FFFF} \
  ] $axi_PWM_gpio_0
 
-  # Create instance: xlconstant_0_len26, and set properties
-  set xlconstant_0_len26 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0_len26 ]
+  # Create instance: xlconstant_0_len10, and set properties
+  set xlconstant_0_len10 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0_len10 ]
   set_property -dict [ list \
    CONFIG.CONST_VAL {0} \
-   CONFIG.CONST_WIDTH {26} \
- ] $xlconstant_0_len26
+   CONFIG.CONST_WIDTH {10} \
+ ] $xlconstant_0_len10
 
   # Create interface connections
   connect_bd_intf_net -intf_net Conn1 [get_bd_intf_pins S_AXI] [get_bd_intf_pins axi_PWM_gpio_0/S_AXI]
 
   # Create port connections
-  connect_bd_net -net In0_1 [get_bd_pins In0] [get_bd_pins PWM_GPIO2_xlconcat_0/In0]
-  connect_bd_net -net In1_1 [get_bd_pins In1] [get_bd_pins PWM_GPIO2_xlconcat_0/In1]
-  connect_bd_net -net In2_1 [get_bd_pins In2] [get_bd_pins PWM_GPIO2_xlconcat_0/In2]
-  connect_bd_net -net In3_1 [get_bd_pins In3] [get_bd_pins PWM_GPIO2_xlconcat_0/In3]
-  connect_bd_net -net LCD_BL_compare_0_S [get_bd_pins LCD_BL_compare_0/S] [get_bd_pins LCD_BL_xlslice_0/Din]
-  connect_bd_net -net LCD_BL_xlslice_0_Dout [get_bd_pins LCD_BL] [get_bd_pins LCD_BL_xlslice_0/Dout]
+  connect_bd_net -net ETH_Led_RX_In0_1 [get_bd_pins In0] [get_bd_pins PWM_GPIO2_xlconcat_0/In1]
+  connect_bd_net -net ETH_Led_TX_In1_1 [get_bd_pins In1] [get_bd_pins PWM_GPIO2_xlconcat_0/In2]
+  connect_bd_net -net ETH_RX_Cnt_In2_1 [get_bd_pins In2] [get_bd_pins PWM_GPIO2_xlconcat_0/In3]
+  connect_bd_net -net LCD_BL_compare_0_S [get_bd_pins LCD_BL_compare_0/S] [get_bd_pins LCD_BL_xlslice_8to8_0/Din]
+  connect_bd_net -net LCD_BL_xlslice_0_Dout [get_bd_pins LCD_BL] [get_bd_pins LCD_BL_xlslice_8to8_0/Dout]
   connect_bd_net -net PWM_GPIO2_xlconcat_0_dout [get_bd_pins PWM_GPIO2_xlconcat_0/dout] [get_bd_pins axi_PWM_gpio_0/gpio2_io_i]
-  connect_bd_net -net PWM_GPIO_xlslice_1_Dout [get_bd_pins LCD_rstn] [get_bd_pins PWM_GPIO_xlslice_1/Dout]
-  connect_bd_net -net PWM_counter_binary_0_Q [get_bd_pins PWM_counter_binary_0/Q] [get_bd_pins PWM_ctr_xlslice_0/Din]
-  connect_bd_net -net PWM_ctr_xlslice_0_Dout [get_bd_pins LCD_BL_compare_0/A] [get_bd_pins PWM_ctr_xlslice_0/Dout] [get_bd_pins RGB_blue_compare_0/A] [get_bd_pins RGB_green_compare_0/A] [get_bd_pins RGB_red_compare_0/A]
+  connect_bd_net -net PWM_GPIO2_xlslice_15to0_0_Dout [get_bd_pins PWM_GPIO2_xlconcat_0/In0] [get_bd_pins PWM_GPIO2_xlslice_15to0_0/Dout]
+  connect_bd_net -net PWM_GPIO_xlslice_1_Dout [get_bd_pins LCD_rstn] [get_bd_pins PWM_GPIO_xlslice_0to0_0/Dout]
+  connect_bd_net -net PWM_counter_binary_0_Q [get_bd_pins PWM_counter_binary_0/Q] [get_bd_pins PWM_ctr_xlslice_17to10_0/Din]
+  connect_bd_net -net PWM_ctr_xlslice_0_Dout [get_bd_pins LCD_BL_compare_0/A] [get_bd_pins PWM_ctr_xlslice_17to10_0/Dout] [get_bd_pins RGB_blue_compare_0/A] [get_bd_pins RGB_green_compare_0/A] [get_bd_pins RGB_red_compare_0/A]
   connect_bd_net -net PWM_gpio_xlslice_15to8_0_Dout [get_bd_pins PWM_gpio_xlslice_15to8_0/Dout] [get_bd_pins RGB_green_compare_0/B]
-  connect_bd_net -net PWM_gpio_xlslice_21to16_0_Dout [get_bd_pins PWM_gpio_xlslice_21to16_0/Dout] [get_bd_pins RGB_blue_compare_0/B]
+  connect_bd_net -net PWM_gpio_xlslice_21to16_0_Dout [get_bd_pins PWM_gpio_xlslice_23to16_0/Dout] [get_bd_pins RGB_blue_compare_0/B]
   connect_bd_net -net PWM_gpio_xlslice_31to24_0_Dout [get_bd_pins LCD_BL_compare_0/B] [get_bd_pins PWM_gpio_xlslice_31to24_0/Dout]
   connect_bd_net -net PWM_gpio_xlslice_7to0_0_Dout [get_bd_pins PWM_gpio_xlslice_7to0_0/Dout] [get_bd_pins RGB_red_compare_0/B]
-  connect_bd_net -net RGB_blue_compare_0_S [get_bd_pins RGB_blue_compare_0/S] [get_bd_pins RGB_blue_xlslice_0/Din]
-  connect_bd_net -net RGB_blue_xlslice_0_Dout [get_bd_pins LED_RGB_blue] [get_bd_pins RGB_blue_xlslice_0/Dout]
-  connect_bd_net -net RGB_green_compare_0_S [get_bd_pins RGB_green_compare_0/S] [get_bd_pins RGB_green_xlslice_0/Din]
-  connect_bd_net -net RGB_green_xlslice_0_Dout [get_bd_pins LED_RGB_green] [get_bd_pins RGB_green_xlslice_0/Dout]
-  connect_bd_net -net RGB_red_compare_0_S [get_bd_pins RGB_red_compare_0/S] [get_bd_pins RGB_red_xlslice_0/Din]
-  connect_bd_net -net RGB_red_xlslice_0_Dout [get_bd_pins LED_RGB_red] [get_bd_pins RGB_red_xlslice_0/Dout]
-  connect_bd_net -net axi_PWM_gpio_0_gpio2_io_o [get_bd_pins PWM_GPIO_xlslice_1/Din] [get_bd_pins axi_PWM_gpio_0/gpio2_io_o]
-  connect_bd_net -net axi_PWM_gpio_0_gpio_io_o [get_bd_pins PWM_gpio_xlslice_15to8_0/Din] [get_bd_pins PWM_gpio_xlslice_21to16_0/Din] [get_bd_pins PWM_gpio_xlslice_31to24_0/Din] [get_bd_pins PWM_gpio_xlslice_7to0_0/Din] [get_bd_pins axi_PWM_gpio_0/gpio_io_o]
+  connect_bd_net -net RAM_calib_complete_In3_1 [get_bd_pins In3] [get_bd_pins PWM_GPIO2_xlconcat_0/In4]
+  connect_bd_net -net RGB_blue_compare_0_S [get_bd_pins RGB_blue_compare_0/S] [get_bd_pins RGB_blue_xlslice_8to8_0/Din]
+  connect_bd_net -net RGB_blue_xlslice_0_Dout [get_bd_pins LED_RGB_blue] [get_bd_pins RGB_blue_xlslice_8to8_0/Dout]
+  connect_bd_net -net RGB_green_compare_0_S [get_bd_pins RGB_green_compare_0/S] [get_bd_pins RGB_green_xlslice_8to8_0/Din]
+  connect_bd_net -net RGB_green_xlslice_0_Dout [get_bd_pins LED_RGB_green] [get_bd_pins RGB_green_xlslice_8to8_0/Dout]
+  connect_bd_net -net RGB_red_compare_0_S [get_bd_pins RGB_red_compare_0/S] [get_bd_pins RGB_red_xlslice_8to8_0/Din]
+  connect_bd_net -net RGB_red_xlslice_0_Dout [get_bd_pins LED_RGB_red] [get_bd_pins RGB_red_xlslice_8to8_0/Dout]
+  connect_bd_net -net axi_PWM_gpio_0_gpio2_io_o [get_bd_pins PWM_GPIO2_xlslice_15to0_0/Din] [get_bd_pins PWM_GPIO_xlslice_0to0_0/Din] [get_bd_pins axi_PWM_gpio_0/gpio2_io_o]
+  connect_bd_net -net axi_PWM_gpio_0_gpio_io_o [get_bd_pins PWM_gpio_xlslice_15to8_0/Din] [get_bd_pins PWM_gpio_xlslice_23to16_0/Din] [get_bd_pins PWM_gpio_xlslice_31to24_0/Din] [get_bd_pins PWM_gpio_xlslice_7to0_0/Din] [get_bd_pins axi_PWM_gpio_0/gpio_io_o]
   connect_bd_net -net axi_PWM_gpio_0_ip2intc_irpt [get_bd_pins ip2intc_irpt] [get_bd_pins axi_PWM_gpio_0/ip2intc_irpt]
-  connect_bd_net -net c_0_len28 [get_bd_pins PWM_GPIO2_xlconcat_0/In4] [get_bd_pins xlconstant_0_len26/dout]
   connect_bd_net -net s_axi_aclk_1 [get_bd_pins s_axi_aclk] [get_bd_pins LCD_BL_compare_0/CLK] [get_bd_pins PWM_counter_binary_0/CLK] [get_bd_pins RGB_blue_compare_0/CLK] [get_bd_pins RGB_green_compare_0/CLK] [get_bd_pins RGB_red_compare_0/CLK] [get_bd_pins axi_PWM_gpio_0/s_axi_aclk]
   connect_bd_net -net s_axi_aresetn_1 [get_bd_pins s_axi_aresetn] [get_bd_pins axi_PWM_gpio_0/s_axi_aresetn]
+  connect_bd_net -net xlconstant_0_len10_dout [get_bd_pins PWM_GPIO2_xlconcat_0/In5] [get_bd_pins xlconstant_0_len10/dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -3734,7 +3755,7 @@ proc create_root_design { parentCell } {
   # Create instance: vio_0, and set properties
   set vio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:vio:3.0 vio_0 ]
   set_property -dict [ list \
-   CONFIG.C_NUM_PROBE_IN {24} \
+   CONFIG.C_NUM_PROBE_IN {26} \
    CONFIG.C_NUM_PROBE_OUT {1} \
    CONFIG.C_PROBE_OUT0_WIDTH {13} \
  ] $vio_0
@@ -3812,6 +3833,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net PWM_lights_LED_RGB_green [get_bd_ports LED_RGB_green] [get_bd_pins PWM_lights/LED_RGB_green]
   connect_bd_net -net PWM_lights_LED_RGB_red [get_bd_ports LED_RGB_red] [get_bd_pins PWM_lights/LED_RGB_red]
   connect_bd_net -net PWM_lights_ip2intc_irpt [get_bd_pins INT_ctrl/In7] [get_bd_pins PWM_lights/ip2intc_irpt]
+  connect_bd_net -net ROTENC_decoder_Q [get_bd_pins ROTENC_decoder/Q] [get_bd_pins vio_0/probe_in24]
+  connect_bd_net -net ROTENC_decoder_dout [get_bd_pins ROTENC_decoder/dout] [get_bd_pins vio_0/probe_in25]
   connect_bd_net -net ROTENC_decoder_ip2intc_irpt [get_bd_pins INT_ctrl/In8] [get_bd_pins ROTENC_decoder/ip2intc_irpt]
   connect_bd_net -net SC0712_0_ext_scl_o [get_bd_ports PLL_I2C_ext_scl_o] [get_bd_pins SC0712_0/ext_scl_o]
   connect_bd_net -net SC0712_0_mcs_clk_out [get_bd_pins SC0712_0/mcs_clk_out] [get_bd_pins microblaze_mcs_0/Clk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins vio_0/clk]
@@ -3869,12 +3892,12 @@ proc create_root_design { parentCell } {
   connect_bd_net -net fft24_data_tlast_in_0 [get_bd_ports fft24_data_tlast_in] [get_bd_pins TRX/fft24_data_tlast_in]
   connect_bd_net -net fft24_data_tready_out_0 [get_bd_ports fft24_data_tready_out] [get_bd_pins TRX/fft24_data_tready_out]
   connect_bd_net -net fft24_data_tvalid_in_0 [get_bd_ports fft24_data_tvalid_in] [get_bd_pins TRX/fft24_data_tvalid_in]
-  connect_bd_net -net fm_mgt_ref [get_bd_pins labtools_fmeter_0/F1] [get_bd_pins vio_0/probe_in1]
-  connect_bd_net -net fm_mig_50mhz [get_bd_pins labtools_fmeter_0/F0] [get_bd_pins vio_0/probe_in0]
-  connect_bd_net -net labtools_fmeter_0_F4 [get_bd_pins labtools_fmeter_0/F4] [get_bd_pins vio_0/probe_in8]
   connect_bd_net -net labtools_fmeter_0_update [get_bd_pins labtools_fmeter_0/update] [get_bd_pins vio_0/probe_in4]
-  connect_bd_net -net lt_CLK0 [get_bd_pins labtools_fmeter_0/F3] [get_bd_pins vio_0/probe_in3]
-  connect_bd_net -net lt_CLK1B [get_bd_pins labtools_fmeter_0/F2] [get_bd_pins vio_0/probe_in2]
+  connect_bd_net -net lt_F0_MIG_50mhz [get_bd_pins labtools_fmeter_0/F0] [get_bd_pins vio_0/probe_in0]
+  connect_bd_net -net lt_F1_mgt_ref [get_bd_pins labtools_fmeter_0/F1] [get_bd_pins vio_0/probe_in1]
+  connect_bd_net -net lt_F2_CLK1B [get_bd_pins labtools_fmeter_0/F2] [get_bd_pins vio_0/probe_in2]
+  connect_bd_net -net lt_F3_CLK0 [get_bd_pins labtools_fmeter_0/F3] [get_bd_pins vio_0/probe_in3]
+  connect_bd_net -net lt_F4_TRX_LVDS_divclk [get_bd_pins labtools_fmeter_0/F4] [get_bd_pins vio_0/probe_in8]
   connect_bd_net -net mdm_1_debug_sys_rst [get_bd_pins ETH0/mb_debug_sys_rst] [get_bd_pins mdm_1/Debug_SYS_Rst] [get_bd_pins rst_mig_7series_0_100M/mb_debug_sys_rst]
   connect_bd_net -net microblaze_0_Clk_100MHz [get_bd_ports microblaze_0_Clk_100MHz_o] [get_bd_pins INT_ctrl/processor_clk] [get_bd_pins PWM_lights/s_axi_aclk] [get_bd_pins ROTENC_decoder/CLK] [get_bd_pins TRX/s_axi_aclk] [get_bd_pins UART0/s_axi_aclk] [get_bd_pins axi_BOARD_iic_0/s_axi_aclk] [get_bd_pins axi_ONEWIRE_gpio_0/s_axi_aclk] [get_bd_pins axi_iic_0/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins axi_interconnect_0/S01_ACLK] [get_bd_pins axi_timer_0/s_axi_aclk] [get_bd_pins labtools_fmeter_0/refclk] [get_bd_pins microblaze_0/Clk] [get_bd_pins microblaze_0_axi_periph/ACLK] [get_bd_pins microblaze_0_axi_periph/M00_ACLK] [get_bd_pins microblaze_0_axi_periph/M01_ACLK] [get_bd_pins microblaze_0_axi_periph/M02_ACLK] [get_bd_pins microblaze_0_axi_periph/M04_ACLK] [get_bd_pins microblaze_0_axi_periph/M06_ACLK] [get_bd_pins microblaze_0_axi_periph/M07_ACLK] [get_bd_pins microblaze_0_axi_periph/M08_ACLK] [get_bd_pins microblaze_0_axi_periph/M09_ACLK] [get_bd_pins microblaze_0_axi_periph/M10_ACLK] [get_bd_pins microblaze_0_axi_periph/M11_ACLK] [get_bd_pins microblaze_0_axi_periph/M12_ACLK] [get_bd_pins microblaze_0_axi_periph/M13_ACLK] [get_bd_pins microblaze_0_axi_periph/S00_ACLK] [get_bd_pins microblaze_0_local_memory/LMB_Clk] [get_bd_pins mig_7series_0/ui_clk] [get_bd_pins rst_mig_7series_0_100M/slowest_sync_clk]
   connect_bd_net -net mig_7series_0_init_calib_complete [get_bd_ports DDR3_init_calib_complete] [get_bd_pins PWM_lights/In3] [get_bd_pins mig_7series_0/init_calib_complete]

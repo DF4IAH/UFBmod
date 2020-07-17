@@ -57,8 +57,8 @@
 #include "systemc.h"
 class msys_xlconstant_0_0 : public sc_module {
   public:
-xlconstant_v1_1_7<26,0> mod;
-  sc_out< sc_bv<26> > dout;
+xlconstant_v1_1_7<10,0> mod;
+  sc_out< sc_bv<10> > dout;
 msys_xlconstant_0_0 (sc_core::sc_module_name name);
   };
 

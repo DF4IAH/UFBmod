@@ -22,7 +22,7 @@
     <Object name="xc7a100t_0" gui_info="">
       <Properties Property="FULL_PROBES.FILE" value="$_project_name_.runs/impl_1/msys_wrapper.ltx"/>
       <Properties Property="PROBES.FILE" value="$_project_name_.runs/impl_1/msys_wrapper.ltx"/>
-      <Properties Property="PROGRAM.HW_BITSTREAM" value="F:/Xilinx/Vivado/2020.1/data/xicom/cfgmem/bitfile/spi_xc7a100t_pullnone.bit"/>
+      <Properties Property="PROGRAM.HW_BITSTREAM" value=""/>
       <Properties Property="PROGRAM.HW_CFGMEM_PART" value="s25fl256sxxxxxx0-spi-x1_x2_x4"/>
       <Properties Property="SLR.COUNT" value="1"/>
     </Object>
@@ -55,7 +55,7 @@
     <Object name="msys_i/xfft_rx24_dly3449_event_frame_started_out_0" gui_info="hw_vios/hw_vio_1=18"/>
   </ObjectList>
   <ObjectList object_type="hw_vio" gui_info="">
-    <Object name="hw_vio_1" gui_info="hw_vios/hw_vio_1/TablePreference=5	1306	Name	0	2147483647	15	727	727	Value	1	2147483647	15	246	246	Activity	2	2147483647	15	94	94	Direction	3	2147483647	15	113	113	VIO	4	2147483647	15	126	126			1	6	1	Name	Value	Activity	Direction	VIO"/>
+    <Object name="hw_vio_1" gui_info="hw_vios/hw_vio_1/TablePreference=5	1204	Name	0	2147483647	15	652	652	Value	1	2147483647	15	187	187	Activity	2	2147483647	15	110	110	Direction	3	2147483647	15	129	129	VIO	4	2147483647	15	126	126			1	6	1	Name	Value	Activity	Direction	VIO"/>
   </ObjectList>
   <probeset name="hw project" active="false">
     <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
@@ -71,6 +71,69 @@
       </probeOptions>
       <nets>
         <net name="msys_i/FPGA_IO_1"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/ROTENC_decoder_Q[31]"/>
+        <net name="msys_i/ROTENC_decoder_Q[30]"/>
+        <net name="msys_i/ROTENC_decoder_Q[29]"/>
+        <net name="msys_i/ROTENC_decoder_Q[28]"/>
+        <net name="msys_i/ROTENC_decoder_Q[27]"/>
+        <net name="msys_i/ROTENC_decoder_Q[26]"/>
+        <net name="msys_i/ROTENC_decoder_Q[25]"/>
+        <net name="msys_i/ROTENC_decoder_Q[24]"/>
+        <net name="msys_i/ROTENC_decoder_Q[23]"/>
+        <net name="msys_i/ROTENC_decoder_Q[22]"/>
+        <net name="msys_i/ROTENC_decoder_Q[21]"/>
+        <net name="msys_i/ROTENC_decoder_Q[20]"/>
+        <net name="msys_i/ROTENC_decoder_Q[19]"/>
+        <net name="msys_i/ROTENC_decoder_Q[18]"/>
+        <net name="msys_i/ROTENC_decoder_Q[17]"/>
+        <net name="msys_i/ROTENC_decoder_Q[16]"/>
+        <net name="msys_i/ROTENC_decoder_Q[15]"/>
+        <net name="msys_i/ROTENC_decoder_Q[14]"/>
+        <net name="msys_i/ROTENC_decoder_Q[13]"/>
+        <net name="msys_i/ROTENC_decoder_Q[12]"/>
+        <net name="msys_i/ROTENC_decoder_Q[11]"/>
+        <net name="msys_i/ROTENC_decoder_Q[10]"/>
+        <net name="msys_i/ROTENC_decoder_Q[9]"/>
+        <net name="msys_i/ROTENC_decoder_Q[8]"/>
+        <net name="msys_i/ROTENC_decoder_Q[7]"/>
+        <net name="msys_i/ROTENC_decoder_Q[6]"/>
+        <net name="msys_i/ROTENC_decoder_Q[5]"/>
+        <net name="msys_i/ROTENC_decoder_Q[4]"/>
+        <net name="msys_i/ROTENC_decoder_Q[3]"/>
+        <net name="msys_i/ROTENC_decoder_Q[2]"/>
+        <net name="msys_i/ROTENC_decoder_Q[1]"/>
+        <net name="msys_i/ROTENC_decoder_Q[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/ROTENC_decoder_dout[2]"/>
+        <net name="msys_i/ROTENC_decoder_dout[1]"/>
+        <net name="msys_i/ROTENC_decoder_dout[0]"/>
       </nets>
     </probe>
     <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
@@ -310,7 +373,7 @@
         <net name="msys_i/ULI_SYSTEM_XIO_1"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -356,7 +419,7 @@
         <net name="msys_i/fm_mgt_ref[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -402,7 +465,7 @@
         <net name="msys_i/fm_mig_50mhz[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -463,7 +526,7 @@
         <net name="msys_i/labtools_fmeter_0_update"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -509,7 +572,7 @@
         <net name="msys_i/lt_CLK0[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -553,6 +616,236 @@
         <net name="msys_i/lt_CLK1B[2]"/>
         <net name="msys_i/lt_CLK1B[1]"/>
         <net name="msys_i/lt_CLK1B[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/lt_F0_MIG_50mhz[31]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[30]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[29]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[28]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[27]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[26]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[25]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[24]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[23]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[22]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[21]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[20]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[19]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[18]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[17]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[16]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[15]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[14]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[13]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[12]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[11]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[10]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[9]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[8]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[7]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[6]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[5]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[4]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[3]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[2]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[1]"/>
+        <net name="msys_i/lt_F0_MIG_50mhz[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/lt_F1_mgt_ref[31]"/>
+        <net name="msys_i/lt_F1_mgt_ref[30]"/>
+        <net name="msys_i/lt_F1_mgt_ref[29]"/>
+        <net name="msys_i/lt_F1_mgt_ref[28]"/>
+        <net name="msys_i/lt_F1_mgt_ref[27]"/>
+        <net name="msys_i/lt_F1_mgt_ref[26]"/>
+        <net name="msys_i/lt_F1_mgt_ref[25]"/>
+        <net name="msys_i/lt_F1_mgt_ref[24]"/>
+        <net name="msys_i/lt_F1_mgt_ref[23]"/>
+        <net name="msys_i/lt_F1_mgt_ref[22]"/>
+        <net name="msys_i/lt_F1_mgt_ref[21]"/>
+        <net name="msys_i/lt_F1_mgt_ref[20]"/>
+        <net name="msys_i/lt_F1_mgt_ref[19]"/>
+        <net name="msys_i/lt_F1_mgt_ref[18]"/>
+        <net name="msys_i/lt_F1_mgt_ref[17]"/>
+        <net name="msys_i/lt_F1_mgt_ref[16]"/>
+        <net name="msys_i/lt_F1_mgt_ref[15]"/>
+        <net name="msys_i/lt_F1_mgt_ref[14]"/>
+        <net name="msys_i/lt_F1_mgt_ref[13]"/>
+        <net name="msys_i/lt_F1_mgt_ref[12]"/>
+        <net name="msys_i/lt_F1_mgt_ref[11]"/>
+        <net name="msys_i/lt_F1_mgt_ref[10]"/>
+        <net name="msys_i/lt_F1_mgt_ref[9]"/>
+        <net name="msys_i/lt_F1_mgt_ref[8]"/>
+        <net name="msys_i/lt_F1_mgt_ref[7]"/>
+        <net name="msys_i/lt_F1_mgt_ref[6]"/>
+        <net name="msys_i/lt_F1_mgt_ref[5]"/>
+        <net name="msys_i/lt_F1_mgt_ref[4]"/>
+        <net name="msys_i/lt_F1_mgt_ref[3]"/>
+        <net name="msys_i/lt_F1_mgt_ref[2]"/>
+        <net name="msys_i/lt_F1_mgt_ref[1]"/>
+        <net name="msys_i/lt_F1_mgt_ref[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/lt_F2_CLK1B[31]"/>
+        <net name="msys_i/lt_F2_CLK1B[30]"/>
+        <net name="msys_i/lt_F2_CLK1B[29]"/>
+        <net name="msys_i/lt_F2_CLK1B[28]"/>
+        <net name="msys_i/lt_F2_CLK1B[27]"/>
+        <net name="msys_i/lt_F2_CLK1B[26]"/>
+        <net name="msys_i/lt_F2_CLK1B[25]"/>
+        <net name="msys_i/lt_F2_CLK1B[24]"/>
+        <net name="msys_i/lt_F2_CLK1B[23]"/>
+        <net name="msys_i/lt_F2_CLK1B[22]"/>
+        <net name="msys_i/lt_F2_CLK1B[21]"/>
+        <net name="msys_i/lt_F2_CLK1B[20]"/>
+        <net name="msys_i/lt_F2_CLK1B[19]"/>
+        <net name="msys_i/lt_F2_CLK1B[18]"/>
+        <net name="msys_i/lt_F2_CLK1B[17]"/>
+        <net name="msys_i/lt_F2_CLK1B[16]"/>
+        <net name="msys_i/lt_F2_CLK1B[15]"/>
+        <net name="msys_i/lt_F2_CLK1B[14]"/>
+        <net name="msys_i/lt_F2_CLK1B[13]"/>
+        <net name="msys_i/lt_F2_CLK1B[12]"/>
+        <net name="msys_i/lt_F2_CLK1B[11]"/>
+        <net name="msys_i/lt_F2_CLK1B[10]"/>
+        <net name="msys_i/lt_F2_CLK1B[9]"/>
+        <net name="msys_i/lt_F2_CLK1B[8]"/>
+        <net name="msys_i/lt_F2_CLK1B[7]"/>
+        <net name="msys_i/lt_F2_CLK1B[6]"/>
+        <net name="msys_i/lt_F2_CLK1B[5]"/>
+        <net name="msys_i/lt_F2_CLK1B[4]"/>
+        <net name="msys_i/lt_F2_CLK1B[3]"/>
+        <net name="msys_i/lt_F2_CLK1B[2]"/>
+        <net name="msys_i/lt_F2_CLK1B[1]"/>
+        <net name="msys_i/lt_F2_CLK1B[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/lt_F3_CLK0[31]"/>
+        <net name="msys_i/lt_F3_CLK0[30]"/>
+        <net name="msys_i/lt_F3_CLK0[29]"/>
+        <net name="msys_i/lt_F3_CLK0[28]"/>
+        <net name="msys_i/lt_F3_CLK0[27]"/>
+        <net name="msys_i/lt_F3_CLK0[26]"/>
+        <net name="msys_i/lt_F3_CLK0[25]"/>
+        <net name="msys_i/lt_F3_CLK0[24]"/>
+        <net name="msys_i/lt_F3_CLK0[23]"/>
+        <net name="msys_i/lt_F3_CLK0[22]"/>
+        <net name="msys_i/lt_F3_CLK0[21]"/>
+        <net name="msys_i/lt_F3_CLK0[20]"/>
+        <net name="msys_i/lt_F3_CLK0[19]"/>
+        <net name="msys_i/lt_F3_CLK0[18]"/>
+        <net name="msys_i/lt_F3_CLK0[17]"/>
+        <net name="msys_i/lt_F3_CLK0[16]"/>
+        <net name="msys_i/lt_F3_CLK0[15]"/>
+        <net name="msys_i/lt_F3_CLK0[14]"/>
+        <net name="msys_i/lt_F3_CLK0[13]"/>
+        <net name="msys_i/lt_F3_CLK0[12]"/>
+        <net name="msys_i/lt_F3_CLK0[11]"/>
+        <net name="msys_i/lt_F3_CLK0[10]"/>
+        <net name="msys_i/lt_F3_CLK0[9]"/>
+        <net name="msys_i/lt_F3_CLK0[8]"/>
+        <net name="msys_i/lt_F3_CLK0[7]"/>
+        <net name="msys_i/lt_F3_CLK0[6]"/>
+        <net name="msys_i/lt_F3_CLK0[5]"/>
+        <net name="msys_i/lt_F3_CLK0[4]"/>
+        <net name="msys_i/lt_F3_CLK0[3]"/>
+        <net name="msys_i/lt_F3_CLK0[2]"/>
+        <net name="msys_i/lt_F3_CLK0[1]"/>
+        <net name="msys_i/lt_F3_CLK0[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[31]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[30]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[29]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[28]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[27]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[26]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[25]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[24]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[23]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[22]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[21]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[20]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[19]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[18]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[17]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[16]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[15]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[14]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[13]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[12]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[11]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[10]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[9]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[8]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[7]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[6]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[5]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[4]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[3]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[2]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[1]"/>
+        <net name="msys_i/lt_F4_TRX_LVDS_divclk[0]"/>
       </nets>
     </probe>
     <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">

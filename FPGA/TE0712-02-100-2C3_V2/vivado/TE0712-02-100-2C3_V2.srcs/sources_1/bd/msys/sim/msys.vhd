@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Sat Jun 27 18:34:44 2020
+--Date        : Thu Jul 16 23:38:36 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -359,12 +359,12 @@ architecture STRUCTURE of PWM_lights_imp_1HWCS6J is
   component msys_c_counter_binary_0_0 is
   port (
     CLK : in STD_LOGIC;
-    Q : out STD_LOGIC_VECTOR ( 20 downto 0 )
+    Q : out STD_LOGIC_VECTOR ( 17 downto 0 )
   );
   end component msys_c_counter_binary_0_0;
   component msys_LCD_BL_xlslice_0_0 is
   port (
-    Din : in STD_LOGIC_VECTOR ( 20 downto 0 );
+    Din : in STD_LOGIC_VECTOR ( 17 downto 0 );
     Dout : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component msys_LCD_BL_xlslice_0_0;
@@ -456,11 +456,12 @@ architecture STRUCTURE of PWM_lights_imp_1HWCS6J is
   end component msys_xlslice_0_2;
   component msys_xlconcat_1_2 is
   port (
-    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In2 : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In4 : in STD_LOGIC_VECTOR ( 25 downto 0 );
+    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In3 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    In4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In5 : in STD_LOGIC_VECTOR ( 9 downto 0 );
     dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component msys_xlconcat_1_2;
@@ -494,9 +495,15 @@ architecture STRUCTURE of PWM_lights_imp_1HWCS6J is
   end component msys_axi_uart0_gpio_0_0;
   component msys_xlconstant_0_0 is
   port (
-    dout : out STD_LOGIC_VECTOR ( 25 downto 0 )
+    dout : out STD_LOGIC_VECTOR ( 9 downto 0 )
   );
   end component msys_xlconstant_0_0;
+  component msys_xlslice_0_33 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component msys_xlslice_0_33;
   signal Conn1_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal Conn1_ARREADY : STD_LOGIC;
   signal Conn1_ARVALID : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -514,20 +521,21 @@ architecture STRUCTURE of PWM_lights_imp_1HWCS6J is
   signal Conn1_WREADY : STD_LOGIC;
   signal Conn1_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal Conn1_WVALID : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal In0_1 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal In1_1 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal In2_1 : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal In3_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal ETH_Led_RX_In0_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal ETH_Led_TX_In1_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal ETH_RX_Cnt_In2_1 : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal LCD_BL_compare_0_S : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal LCD_BL_xlslice_0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal PWM_GPIO2_xlconcat_0_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal PWM_GPIO2_xlslice_15to0_0_Dout : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal PWM_GPIO_xlslice_1_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal PWM_counter_binary_0_Q : STD_LOGIC_VECTOR ( 20 downto 0 );
+  signal PWM_counter_binary_0_Q : STD_LOGIC_VECTOR ( 17 downto 0 );
   signal PWM_ctr_xlslice_0_Dout : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal PWM_gpio_xlslice_15to8_0_Dout : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal PWM_gpio_xlslice_21to16_0_Dout : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal PWM_gpio_xlslice_31to24_0_Dout : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal PWM_gpio_xlslice_7to0_0_Dout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal RAM_calib_complete_In3_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal RGB_blue_compare_0_S : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal RGB_blue_xlslice_0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal RGB_green_compare_0_S : STD_LOGIC_VECTOR ( 8 downto 0 );
@@ -537,9 +545,9 @@ architecture STRUCTURE of PWM_lights_imp_1HWCS6J is
   signal axi_PWM_gpio_0_gpio2_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_PWM_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_PWM_gpio_0_ip2intc_irpt : STD_LOGIC;
-  signal c_0_len28 : STD_LOGIC_VECTOR ( 25 downto 0 );
   signal s_axi_aclk_1 : STD_LOGIC;
   signal s_axi_aresetn_1 : STD_LOGIC;
+  signal xlconstant_0_len10_dout : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal NLW_axi_PWM_gpio_0_gpio2_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
 begin
   Conn1_ARADDR(31 downto 0) <= S_AXI_araddr(31 downto 0);
@@ -551,15 +559,15 @@ begin
   Conn1_WDATA(31 downto 0) <= S_AXI_wdata(31 downto 0);
   Conn1_WSTRB(3 downto 0) <= S_AXI_wstrb(3 downto 0);
   Conn1_WVALID(0) <= S_AXI_wvalid(0);
-  In0_1(0) <= In0(0);
-  In1_1(0) <= In1(0);
-  In2_1(2 downto 0) <= In2(2 downto 0);
-  In3_1(0) <= In3(0);
+  ETH_Led_RX_In0_1(0) <= In0(0);
+  ETH_Led_TX_In1_1(0) <= In1(0);
+  ETH_RX_Cnt_In2_1(2 downto 0) <= In2(2 downto 0);
   LCD_BL(0) <= LCD_BL_xlslice_0_Dout(0);
   LCD_rstn(0) <= PWM_GPIO_xlslice_1_Dout(0);
   LED_RGB_blue(0) <= RGB_blue_xlslice_0_Dout(0);
   LED_RGB_green(0) <= RGB_green_xlslice_0_Dout(0);
   LED_RGB_red(0) <= RGB_red_xlslice_0_Dout(0);
+  RAM_calib_complete_In3_1(0) <= In3(0);
   S_AXI_arready(0) <= Conn1_ARREADY;
   S_AXI_awready(0) <= Conn1_AWREADY;
   S_AXI_bresp(1 downto 0) <= Conn1_BRESP(1 downto 0);
@@ -578,21 +586,27 @@ LCD_BL_compare_0: component msys_RGB_blue_compare_0_0
       CLK => s_axi_aclk_1,
       S(8 downto 0) => LCD_BL_compare_0_S(8 downto 0)
     );
-LCD_BL_xlslice_0: component msys_RGB_red_xlslice_0_2
+LCD_BL_xlslice_8to8_0: component msys_RGB_red_xlslice_0_2
      port map (
       Din(8 downto 0) => LCD_BL_compare_0_S(8 downto 0),
       Dout(0) => LCD_BL_xlslice_0_Dout(0)
     );
 PWM_GPIO2_xlconcat_0: component msys_xlconcat_1_2
      port map (
-      In0(0) => In0_1(0),
-      In1(0) => In1_1(0),
-      In2(2 downto 0) => In2_1(2 downto 0),
-      In3(0) => In3_1(0),
-      In4(25 downto 0) => c_0_len28(25 downto 0),
+      In0(15 downto 0) => PWM_GPIO2_xlslice_15to0_0_Dout(15 downto 0),
+      In1(0) => ETH_Led_RX_In0_1(0),
+      In2(0) => ETH_Led_TX_In1_1(0),
+      In3(2 downto 0) => ETH_RX_Cnt_In2_1(2 downto 0),
+      In4(0) => RAM_calib_complete_In3_1(0),
+      In5(9 downto 0) => xlconstant_0_len10_dout(9 downto 0),
       dout(31 downto 0) => PWM_GPIO2_xlconcat_0_dout(31 downto 0)
     );
-PWM_GPIO_xlslice_1: component msys_RGB_red_xlslice_0_3
+PWM_GPIO2_xlslice_15to0_0: component msys_xlslice_0_33
+     port map (
+      Din(31 downto 0) => axi_PWM_gpio_0_gpio2_io_o(31 downto 0),
+      Dout(15 downto 0) => PWM_GPIO2_xlslice_15to0_0_Dout(15 downto 0)
+    );
+PWM_GPIO_xlslice_0to0_0: component msys_RGB_red_xlslice_0_3
      port map (
       Din(31 downto 0) => axi_PWM_gpio_0_gpio2_io_o(31 downto 0),
       Dout(0) => PWM_GPIO_xlslice_1_Dout(0)
@@ -600,11 +614,11 @@ PWM_GPIO_xlslice_1: component msys_RGB_red_xlslice_0_3
 PWM_counter_binary_0: component msys_c_counter_binary_0_0
      port map (
       CLK => s_axi_aclk_1,
-      Q(20 downto 0) => PWM_counter_binary_0_Q(20 downto 0)
+      Q(17 downto 0) => PWM_counter_binary_0_Q(17 downto 0)
     );
-PWM_ctr_xlslice_0: component msys_LCD_BL_xlslice_0_0
+PWM_ctr_xlslice_17to10_0: component msys_LCD_BL_xlslice_0_0
      port map (
-      Din(20 downto 0) => PWM_counter_binary_0_Q(20 downto 0),
+      Din(17 downto 0) => PWM_counter_binary_0_Q(17 downto 0),
       Dout(7 downto 0) => PWM_ctr_xlslice_0_Dout(7 downto 0)
     );
 PWM_gpio_xlslice_15to8_0: component msys_PWM_gpio_xlslice_3_1
@@ -612,7 +626,7 @@ PWM_gpio_xlslice_15to8_0: component msys_PWM_gpio_xlslice_3_1
       Din(31 downto 0) => axi_PWM_gpio_0_gpio_io_o(31 downto 0),
       Dout(7 downto 0) => PWM_gpio_xlslice_15to8_0_Dout(7 downto 0)
     );
-PWM_gpio_xlslice_21to16_0: component msys_PWM_gpio_xlslice_3_0
+PWM_gpio_xlslice_23to16_0: component msys_PWM_gpio_xlslice_3_0
      port map (
       Din(31 downto 0) => axi_PWM_gpio_0_gpio_io_o(31 downto 0),
       Dout(7 downto 0) => PWM_gpio_xlslice_21to16_0_Dout(7 downto 0)
@@ -634,7 +648,7 @@ RGB_blue_compare_0: component msys_RGB_green_c_addsub_0_0
       CLK => s_axi_aclk_1,
       S(8 downto 0) => RGB_blue_compare_0_S(8 downto 0)
     );
-RGB_blue_xlslice_0: component msys_RGB_red_xlslice_0_1
+RGB_blue_xlslice_8to8_0: component msys_RGB_red_xlslice_0_1
      port map (
       Din(8 downto 0) => RGB_blue_compare_0_S(8 downto 0),
       Dout(0) => RGB_blue_xlslice_0_Dout(0)
@@ -646,7 +660,7 @@ RGB_green_compare_0: component msys_RGB_red_c_addsub_0_0
       CLK => s_axi_aclk_1,
       S(8 downto 0) => RGB_green_compare_0_S(8 downto 0)
     );
-RGB_green_xlslice_0: component msys_RGB_red_xlslice_0_0
+RGB_green_xlslice_8to8_0: component msys_RGB_red_xlslice_0_0
      port map (
       Din(8 downto 0) => RGB_green_compare_0_S(8 downto 0),
       Dout(0) => RGB_green_xlslice_0_Dout(0)
@@ -658,7 +672,7 @@ RGB_red_compare_0: component msys_c_addsub_0_0
       CLK => s_axi_aclk_1,
       S(8 downto 0) => RGB_red_compare_0_S(8 downto 0)
     );
-RGB_red_xlslice_0: component msys_xlslice_0_2
+RGB_red_xlslice_8to8_0: component msys_xlslice_0_2
      port map (
       Din(8 downto 0) => RGB_red_compare_0_S(8 downto 0),
       Dout(0) => RGB_red_xlslice_0_Dout(0)
@@ -690,9 +704,9 @@ axi_PWM_gpio_0: component msys_axi_uart0_gpio_0_0
       s_axi_wstrb(3 downto 0) => Conn1_WSTRB(3 downto 0),
       s_axi_wvalid => Conn1_WVALID(0)
     );
-xlconstant_0_len26: component msys_xlconstant_0_0
+xlconstant_0_len10: component msys_xlconstant_0_0
      port map (
-      dout(25 downto 0) => c_0_len28(25 downto 0)
+      dout(9 downto 0) => xlconstant_0_len10_dout(9 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -703,6 +717,7 @@ entity ROTENC_decoder_imp_9V4OMT is
   port (
     BOARD_ROTENC_PUSH : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 31 downto 0 );
     SINIT : in STD_LOGIC;
     S_AXI_araddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     S_AXI_arready : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -721,6 +736,7 @@ entity ROTENC_decoder_imp_9V4OMT is
     S_AXI_wready : out STD_LOGIC_VECTOR ( 0 to 0 );
     S_AXI_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S_AXI_wvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 2 downto 0 );
     ip2intc_irpt : out STD_LOGIC;
     rotenc_dec_cnt_en : in STD_LOGIC;
     rotenc_dec_cnt_up_dwn : in STD_LOGIC;
@@ -764,6 +780,14 @@ architecture STRUCTURE of ROTENC_decoder_imp_9V4OMT is
     gpio2_io_i : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_axi_pwm_gpio_0_0;
+  component msys_xlconcat_0_8 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 2 downto 0 )
+  );
+  end component msys_xlconcat_0_8;
   signal BOARD_ROTENC_PUSH_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal CLK_1 : STD_LOGIC;
   signal Conn1_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -789,6 +813,7 @@ architecture STRUCTURE of ROTENC_decoder_imp_9V4OMT is
   signal rotenc_dec_cnt_en_1 : STD_LOGIC;
   signal rotenc_dec_cnt_up_dwn_1 : STD_LOGIC;
   signal s_axi_aresetn_1 : STD_LOGIC;
+  signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 2 downto 0 );
 begin
   BOARD_ROTENC_PUSH_1(0) <= BOARD_ROTENC_PUSH(0);
   CLK_1 <= CLK;
@@ -801,6 +826,7 @@ begin
   Conn1_WDATA(31 downto 0) <= S_AXI_wdata(31 downto 0);
   Conn1_WSTRB(3 downto 0) <= S_AXI_wstrb(3 downto 0);
   Conn1_WVALID(0) <= S_AXI_wvalid(0);
+  Q(31 downto 0) <= ROTENC_counter_32bit_0_Q(31 downto 0);
   SINIT_1 <= SINIT;
   S_AXI_arready(0) <= Conn1_ARREADY;
   S_AXI_awready(0) <= Conn1_AWREADY;
@@ -810,6 +836,7 @@ begin
   S_AXI_rresp(1 downto 0) <= Conn1_RRESP(1 downto 0);
   S_AXI_rvalid(0) <= Conn1_RVALID;
   S_AXI_wready(0) <= Conn1_WREADY;
+  dout(2 downto 0) <= xlconcat_0_dout(2 downto 0);
   ip2intc_irpt <= axi_ROTENC_gpio_0_ip2intc_irpt;
   rotenc_dec_cnt_en_1 <= rotenc_dec_cnt_en;
   rotenc_dec_cnt_up_dwn_1 <= rotenc_dec_cnt_up_dwn;
@@ -846,6 +873,13 @@ axi_ROTENC_gpio_0: component msys_axi_pwm_gpio_0_0
       s_axi_wready => Conn1_WREADY,
       s_axi_wstrb(3 downto 0) => Conn1_WSTRB(3 downto 0),
       s_axi_wvalid => Conn1_WVALID(0)
+    );
+xlconcat_0: component msys_xlconcat_0_8
+     port map (
+      In0(0) => rotenc_dec_cnt_en_1,
+      In1(0) => rotenc_dec_cnt_up_dwn_1,
+      In2(0) => SINIT_1,
+      dout(2 downto 0) => xlconcat_0_dout(2 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -10739,7 +10773,7 @@ entity msys is
     rotenc_decoder_reset : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=203,numReposBlks=164,numNonXlnxBlks=3,numHierBlks=39,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=205,numReposBlks=166,numNonXlnxBlks=3,numHierBlks=39,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of msys : entity is "msys.hwdef";
 end msys;
@@ -10913,6 +10947,8 @@ architecture STRUCTURE of msys is
     probe_in21 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe_in22 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_in23 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe_in24 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe_in25 : in STD_LOGIC_VECTOR ( 2 downto 0 );
     probe_out0 : out STD_LOGIC_VECTOR ( 12 downto 0 )
   );
   end component msys_vio_0_0;
@@ -11328,6 +11364,8 @@ architecture STRUCTURE of msys is
   signal PWM_lights_LED_RGB_green : STD_LOGIC_VECTOR ( 0 to 0 );
   signal PWM_lights_LED_RGB_red : STD_LOGIC_VECTOR ( 0 to 0 );
   signal PWM_lights_ip2intc_irpt : STD_LOGIC;
+  signal ROTENC_decoder_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ROTENC_decoder_dout : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ROTENC_decoder_ip2intc_irpt : STD_LOGIC;
   signal SC0712_0_ext_scl_o : STD_LOGIC;
   signal SC0712_0_mcs_clk_out : STD_LOGIC;
@@ -11470,12 +11508,12 @@ architecture STRUCTURE of msys is
   signal fft24_data_tlast_in_0 : STD_LOGIC;
   signal fft24_data_tready_out_0 : STD_LOGIC;
   signal fft24_data_tvalid_in_0 : STD_LOGIC;
-  signal fm_mgt_ref : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal fm_mig_50mhz : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal labtools_fmeter_0_F4 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal labtools_fmeter_0_update : STD_LOGIC;
-  signal lt_CLK0 : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal lt_CLK1B : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal lt_F0_MIG_50mhz : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal lt_F1_mgt_ref : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal lt_F2_CLK1B : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal lt_F3_CLK0 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal lt_F4_TRX_LVDS_divclk : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mdm_1_debug_sys_rst : STD_LOGIC;
   signal microblaze_0_Clk_100MHz : STD_LOGIC;
   signal microblaze_0_M_AXI_DC_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -12307,6 +12345,7 @@ ROTENC_decoder: entity work.ROTENC_decoder_imp_9V4OMT
      port map (
       BOARD_ROTENC_PUSH(0) => BOARD_ROTENC_PUSH_1,
       CLK => microblaze_0_Clk_100MHz,
+      Q(31 downto 0) => ROTENC_decoder_Q(31 downto 0),
       SINIT => rst_mig_7series_0_100M_peripheral_reset(0),
       S_AXI_araddr(31 downto 0) => microblaze_0_axi_periph_M09_AXI_ARADDR(31 downto 0),
       S_AXI_arready(0) => microblaze_0_axi_periph_M09_AXI_ARREADY(0),
@@ -12325,6 +12364,7 @@ ROTENC_decoder: entity work.ROTENC_decoder_imp_9V4OMT
       S_AXI_wready(0) => microblaze_0_axi_periph_M09_AXI_WREADY(0),
       S_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M09_AXI_WSTRB(3 downto 0),
       S_AXI_wvalid(0) => microblaze_0_axi_periph_M09_AXI_WVALID(0),
+      dout(2 downto 0) => ROTENC_decoder_dout(2 downto 0),
       ip2intc_irpt => ROTENC_decoder_ip2intc_irpt,
       rotenc_dec_cnt_en => rotenc_dec_cnt_en_1,
       rotenc_dec_cnt_up_dwn => rotenc_dec_cnt_up_dwn_1,
@@ -12815,11 +12855,11 @@ cfgmclk_util_ds_buf_0: component msys_util_ds_buf_3_0
     );
 labtools_fmeter_0: component msys_labtools_fmeter_0_0
      port map (
-      F0(31 downto 0) => fm_mig_50mhz(31 downto 0),
-      F1(31 downto 0) => fm_mgt_ref(31 downto 0),
-      F2(31 downto 0) => lt_CLK1B(31 downto 0),
-      F3(31 downto 0) => lt_CLK0(31 downto 0),
-      F4(31 downto 0) => labtools_fmeter_0_F4(31 downto 0),
+      F0(31 downto 0) => lt_F0_MIG_50mhz(31 downto 0),
+      F1(31 downto 0) => lt_F1_mgt_ref(31 downto 0),
+      F2(31 downto 0) => lt_F2_CLK1B(31 downto 0),
+      F3(31 downto 0) => lt_F3_CLK0(31 downto 0),
+      F4(31 downto 0) => lt_F4_TRX_LVDS_divclk(31 downto 0),
       fin(4 downto 0) => xlconcat_0_dout(4 downto 0),
       refclk => microblaze_0_Clk_100MHz,
       update => labtools_fmeter_0_update
@@ -13436,8 +13476,8 @@ rst_mig_7series_0_50M: component msys_rst_mig_7series_0_50M_0
 vio_0: component msys_vio_0_0
      port map (
       clk => SC0712_0_mcs_clk_out,
-      probe_in0(31 downto 0) => fm_mig_50mhz(31 downto 0),
-      probe_in1(31 downto 0) => fm_mgt_ref(31 downto 0),
+      probe_in0(31 downto 0) => lt_F0_MIG_50mhz(31 downto 0),
+      probe_in1(31 downto 0) => lt_F1_mgt_ref(31 downto 0),
       probe_in10(0) => ULI_SYSTEM_XIO_1,
       probe_in11(8 downto 0) => TRX_rd_data_count_CD100(8 downto 0),
       probe_in12(31 downto 0) => TRX_rx09_32bits_CD100(31 downto 0),
@@ -13448,17 +13488,19 @@ vio_0: component msys_vio_0_0
       probe_in17(0) => xfft_rx09_dly3449_event_data_in_channel_halt_out_0,
       probe_in18(0) => xfft_rx24_dly3449_event_frame_started_out_0,
       probe_in19(0) => xfft_rx24_dly3198_event_tlast_unexpected_out_0,
-      probe_in2(31 downto 0) => lt_CLK1B(31 downto 0),
+      probe_in2(31 downto 0) => lt_F2_CLK1B(31 downto 0),
       probe_in20(0) => xfft_rx24_dly3198_event_tlast_missing_out_0,
       probe_in21(0) => xfft_rx24_dly3198_event_data_in_channel_halt_out_0,
       probe_in22(31 downto 0) => postmem_rx09_doutb_out_0(31 downto 0),
       probe_in23(31 downto 0) => postmem_rx24_doutb_out_0(31 downto 0),
-      probe_in3(31 downto 0) => lt_CLK0(31 downto 0),
+      probe_in24(31 downto 0) => ROTENC_decoder_Q(31 downto 0),
+      probe_in25(2 downto 0) => ROTENC_decoder_dout(2 downto 0),
+      probe_in3(31 downto 0) => lt_F3_CLK0(31 downto 0),
       probe_in4(0) => labtools_fmeter_0_update,
       probe_in5(0) => SC0712_0_reset_out,
       probe_in6(31 downto 0) => SC0712_0_mon_GPIO1_O(31 downto 0),
       probe_in7(31 downto 0) => SC0712_0_mon_GPIO1_I(31 downto 0),
-      probe_in8(31 downto 0) => labtools_fmeter_0_F4(31 downto 0),
+      probe_in8(31 downto 0) => lt_F4_TRX_LVDS_divclk(31 downto 0),
       probe_in9(0) => FPGA_IO_1,
       probe_out0(12 downto 0) => postmem_rx_addrb_in_0(12 downto 0)
     );

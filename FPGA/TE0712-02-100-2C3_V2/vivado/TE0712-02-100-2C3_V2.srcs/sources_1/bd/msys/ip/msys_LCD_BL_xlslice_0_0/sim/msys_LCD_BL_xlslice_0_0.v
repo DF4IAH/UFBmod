@@ -58,13 +58,13 @@ module msys_LCD_BL_xlslice_0_0 (
   Dout
 );
 
-input wire [20 : 0] Din;
+input wire [17 : 0] Din;
 output wire [7 : 0] Dout;
 
   xlslice_v1_0_2_xlslice #(
-    .DIN_WIDTH(21),
-    .DIN_FROM(20),
-    .DIN_TO(13)
+    .DIN_WIDTH(18),
+    .DIN_FROM(17),
+    .DIN_TO(10)
   ) inst (
     .Din(Din),
     .Dout(Dout)

@@ -57,11 +57,11 @@ module msys_xlconstant_0_0 (
   dout
 );
 
-output wire [25 : 0] dout;
+output wire [9 : 0] dout;
 
   xlconstant_v1_1_7_xlconstant #(
-    .CONST_WIDTH(26),
-    .CONST_VAL('H0000000)
+    .CONST_WIDTH(10),
+    .CONST_VAL('H000)
   ) inst (
     .dout(dout)
   );

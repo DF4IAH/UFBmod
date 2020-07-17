@@ -19,10 +19,14 @@
 /* Xilinx includes. */
 #include "xil_printf.h"
 #include "xparameters.h"
+#include "xgpio.h"
+
 
 #define TIMER_ID	1
 #define DELAY_10_SECONDS	10000UL
 #define DELAY_1_SECOND		1000UL
+#define DELAY_1000_MILLISEC	1000UL
+#define DELAY_100_MILLISEC	100UL
 #define TIMER_CHECK_THRESHOLD	9
 /*-----------------------------------------------------------*/
 
@@ -41,6 +45,11 @@ static TimerHandle_t xTimer = NULL;
 char HWstring[15] = "Hello World";
 long RxtaskCntr = 0;
 
+/* The Instances of the GPIO Drivers */
+XGpio Gpio_Rotenc;
+XGpio Gpio_PWM_Lights;
+
+
 int main( void )
 {
 	const TickType_t x10seconds = pdMS_TO_TICKS( DELAY_10_SECONDS );
@@ -57,12 +66,14 @@ int main( void )
 					tskIDLE_PRIORITY,			/* The task runs at the idle priority. */
 					&xTxTask );
 
+#if 0
 	xTaskCreate( prvRxTask,
 				 ( const char * ) "GB",
 				 configMINIMAL_STACK_SIZE,
 				 NULL,
 				 tskIDLE_PRIORITY + 1,
 				 &xRxTask );
+#endif
 
 	/* Create the queue used by the tasks.  The Rx task has a higher priority
 	than the Tx task, so will preempt the Tx task and remove values from the
@@ -108,18 +119,86 @@ int main( void )
 /*-----------------------------------------------------------*/
 static void prvTxTask( void *pvParameters )
 {
-const TickType_t x1second = pdMS_TO_TICKS( DELAY_1_SECOND );
+	//const TickType_t ticks100ms  = pdMS_TO_TICKS(DELAY_100_MILLISEC);
+	const TickType_t ticks1000ms = pdMS_TO_TICKS(DELAY_1000_MILLISEC);
+	u8 loopIdx = 0U;
+
+#if 0
+	int statusRotenc = XGpio_Initialize(&Gpio_Rotenc, XPAR_ROTENC_DECODER_AXI_ROTENC_GPIO_0_DEVICE_ID);
+	if (statusRotenc != XST_SUCCESS) {
+		xil_printf("GPIO Rotenc Initialization Failed\r\n");
+		return;
+	}
+	XGpio_SetDataDirection(&Gpio_Rotenc, 1U, 0xffffffffUL);  // 32 bit input
+	XGpio_SetDataDirection(&Gpio_Rotenc, 2U, 0xffffffffUL);  // 32 bit input
+#endif
+
+#if 1
+	int statusPwmLights = XGpio_Initialize(&Gpio_PWM_Lights, XPAR_PWM_LIGHTS_AXI_PWM_GPIO_0_DEVICE_ID);
+	if (statusPwmLights != XST_SUCCESS) {
+		xil_printf("GPIO PWM Lights Initialization Failed\r\n");
+		return;
+	}
+	XGpio_SetDataDirection(&Gpio_PWM_Lights, 1U, 0x00000000UL);  // 32 bit output
+	XGpio_SetDataDirection(&Gpio_PWM_Lights, 2U, 0xffffffffUL);  // 32 bit input
+	u8  pwm_ctr = 0U;
+#endif
 
 	for( ;; )
 	{
-		/* Delay for 1 second. */
-		vTaskDelay( x1second );
+		/* Delay */
+		vTaskDelay(ticks1000ms);
+
+#if 0
+		const u32 gpio1_ctr  = XGpio_DiscreteRead(&Gpio_Rotenc, 1U);
+		const u32 gpio2_push = XGpio_DiscreteRead(&Gpio_Rotenc, 2U);
+		xil_printf( "ROTENC decoder: ctr=%08lx, push=%d\r\n", gpio1_ctr, gpio2_push);
+#endif
+
+#if 1
+		pwm_ctr += 0x04U;
+		{
+			//u8  pwm_r_val 	= pwm_ctr;
+			//u8  pwm_g_val 	= (u8) (pwm_ctr + 0xc0U);
+			//u8  pwm_b_val 	= (u8) (pwm_ctr + 0x80U);
+			//u8  pwm_bl_val	= (u8) (pwm_ctr + 0x40U);
+			//u32 pwm_bf    	= ((u32) pwm_bl_val << 24) | ((u32) pwm_b_val << 16) | ((u32) pwm_g_val << 8) | ((u32) pwm_r_val << 0);
+			u32 pwm_bf;
+
+			switch (loopIdx)
+			{
+			case 0:
+				pwm_bf = 0x000000ffUL;
+				break;
+
+			case 1:
+				pwm_bf = 0x0000ff00UL;
+				break;
+
+			case 2:
+				pwm_bf = 0x00ff0000UL;
+				break;
+
+			default:
+			case 3:
+				pwm_bf = 0xff000000UL;
+				break;
+			}
+
+			XGpio_DiscreteWrite(&Gpio_PWM_Lights, 1U, pwm_bf);
+
+			++loopIdx;
+			loopIdx &= 0x03U;
+		}
+#endif
 
 		/* Send the next value on the queue.  The queue should always be
 		empty at this point so a block time of 0 is used. */
+#if 0
 		xQueueSend( xQueue,			/* The queue being written to. */
 					HWstring, /* The address of the data being sent. */
 					0UL );			/* The block time. */
+#endif
 	}
 }
 

@@ -1,0 +1,35 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"2.0",
+   "Default View_TopLeft":"-867,-306",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port S_AXI -pg 1 -lvl 0 -x -30 -y 230 -defaultsOSRD
+preplace port CLK -pg 1 -lvl 0 -x -30 -y 20 -defaultsOSRD
+preplace port SINIT -pg 1 -lvl 0 -x -30 -y 80 -defaultsOSRD
+preplace port rotenc_dec_cnt_up_dwn -pg 1 -lvl 0 -x -30 -y 110 -defaultsOSRD
+preplace port rotenc_dec_cnt_en -pg 1 -lvl 0 -x -30 -y 50 -defaultsOSRD
+preplace port ip2intc_irpt -pg 1 -lvl 3 -x 520 -y 290 -defaultsOSRD
+preplace port s_axi_aresetn -pg 1 -lvl 0 -x -30 -y 270 -defaultsOSRD
+preplace portBus BOARD_ROTENC_PUSH -pg 1 -lvl 0 -x -30 -y 350 -defaultsOSRD
+preplace portBus Q -pg 1 -lvl 3 -x 520 -y 80 -defaultsOSRD
+preplace portBus dout -pg 1 -lvl 3 -x 520 -y -130 -defaultsOSRD
+preplace inst ROTENC_counter_32bit_0 -pg 1 -lvl 2 -x 360 -y 80 -defaultsOSRD
+preplace inst axi_ROTENC_gpio_0 -pg 1 -lvl 2 -x 360 -y 370 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 1 -x 100 -y -130 -defaultsOSRD
+preplace netloc CLK_1 1 0 2 N 20 220
+preplace netloc SINIT_1 1 0 2 10J 90 N
+preplace netloc rotenc_dec_cnt_up_dwn_1 1 0 2 -10J 110 N
+preplace netloc rotenc_dec_cnt_en_1 1 0 2 0J 70 N
+preplace netloc axi_ROTENC_gpio_0_ip2intc_irpt 1 2 1 500 290n
+preplace netloc s_axi_aresetn_1 1 0 2 NJ 270 200
+preplace netloc BOARD_ROTENC_PUSH_1 1 0 3 NJ 350 190 470 490
+preplace netloc ROTENC_counter_32bit_0_Q 1 2 1 490 80n
+preplace netloc xlconcat_0_dout 1 1 2 NJ -130 NJ
+preplace netloc Conn1 1 0 2 NJ 230 210
+levelinfo -pg 1 -30 100 360 520
+pagesize -pg 1 -db -bbox -sgen -260 -210 640 480
+"
+}
+
