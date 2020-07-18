@@ -20116,12 +20116,16 @@ Top</text>
 <description>I2C - Termination</description>
 <plain>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">I2C: Termination</text>
-<text x="149.86" y="134.62" size="2.54" layer="97" ratio="15">Addr        Device
-
-0x38        DAC
-0x3D        LCD</text>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">I2C Termination</text>
-<text x="149.86" y="162.56" size="2.54" layer="97" ratio="15">I2C1 Address space</text>
+<text x="149.86" y="134.62" size="2.54" layer="97" ratio="15">Addr     Device
+
+0x1C     DAC
+0x2A     LCD</text>
+<text x="149.86" y="162.56" size="2.54" layer="97" ratio="15">I2C1 (BOARD) Address space</text>
+<text x="152.4" y="73.66" size="2.54" layer="97" ratio="15">I2Ctrenz (Si-PLL) Address space</text>
+<text x="152.4" y="50.8" size="2.54" layer="97" ratio="15">Addr    Device
+
+0x70    Si8338</text>
 </plain>
 <instances>
 <instance part="FRAME_04" gate="G$1" x="0" y="0" smashed="yes">
@@ -20176,8 +20180,8 @@ Top</text>
 <sheet>
 <description>I2C LCD</description>
 <plain>
-<text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">I2C LCD module
-I2C addr: 0x3D</text>
+<text x="22.86" y="160.02" size="2.54" layer="97" ratio="15">I2C LCD module
+I2C addr: 0x2A</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">I2C: LCD</text>
 </plain>
 <instances>
@@ -20345,7 +20349,7 @@ I2C addr: 0x3D</text>
 <text x="157.48" y="109.22" size="1.778" layer="97">f_LP = 10 Hz</text>
 <text x="109.22" y="104.14" size="1.778" layer="97">Iq=80uA</text>
 <text x="22.86" y="160.02" size="2.54" layer="97" ratio="15">DAC for VCTCXO pull voltage
-I2C addr: 0x38</text>
+I2C addr: 0x1C</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">I2C: DAC</text>
 </plain>
 <instances>
@@ -21376,6 +21380,7 @@ FT232H</text>
 <text x="154.94" y="104.14" size="1.778" layer="94">out</text>
 <text x="154.94" y="96.52" size="1.778" layer="94">out</text>
 <text x="154.94" y="93.98" size="1.778" layer="94">out</text>
+<text x="33.02" y="132.08" size="1.778" layer="97">Fix: connect Pin39 to Pin40.</text>
 </plain>
 <instances>
 <instance part="FRAME_09" gate="G$1" x="0" y="0" smashed="yes">
@@ -21489,8 +21494,6 @@ FT232H</text>
 <pinref part="C0922" gate="G$1" pin="1"/>
 <wire x1="76.2" y1="137.16" x2="114.3" y2="137.16" width="0.1524" layer="91"/>
 <junction x="76.2" y="137.16"/>
-<wire x1="124.46" y1="38.1" x2="205.74" y2="38.1" width="0.1524" layer="91"/>
-<junction x="124.46" y="38.1"/>
 </segment>
 </net>
 <net name="FT_AGND" class="0">
