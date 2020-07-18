@@ -16,18 +16,33 @@
 #include "task.h"
 #include "queue.h"
 #include "timers.h"
+
 /* Xilinx includes. */
-#include "xil_printf.h"
 #include "xparameters.h"
 #include "xgpio.h"
+#include "xil_io.h"
+#include "xiic.h"
+#include "xil_printf.h"
 
 
-#define TIMER_ID	1
-#define DELAY_10_SECONDS	10000UL
-#define DELAY_1_SECOND		1000UL
-#define DELAY_1000_MILLISEC	1000UL
-#define DELAY_100_MILLISEC	100UL
+#define TIMER_ID				1
+#define DELAY_10_SECONDS		10000UL
+#define DELAY_1_SECOND			1000UL
+#define DELAY_1000_MILLISEC		1000UL
+#define DELAY_100_MILLISEC		100UL
 #define TIMER_CHECK_THRESHOLD	9
+
+
+/* XPAR_IIC_1_DEVICE_ID  :=  XPAR_AXI_IIC_0_DEVICE_ID */
+#define IIC_PLL_BASE_ADDRESS	XPAR_IIC_1_BASEADDR
+#define IIC_PLL_ONCHIP_ADDRESS 	0x70
+
+/* XPAR_IIC_0_DEVICE_ID  :=  XPAR_AXI_BOARD_IIC_0_DEVICE_ID */
+#define IIC_BOARD_BASE_ADDRESS	XPAR_IIC_0_BASEADDR
+#define IIC_DAC_ONCHIP_ADDRESS 	0x1C
+#define IIC_LCD_ONCHIP_ADDRESS 	0x2A
+
+
 /*-----------------------------------------------------------*/
 
 /* The Tx and Rx tasks as described at the top of this file. */
@@ -141,6 +156,26 @@ static void prvTxTask( void *pvParameters )
 	}
 	XGpio_SetDataDirection(&Gpio_PWM_Lights, 1U, 0x00000000UL);  // 32 bit output
 	XGpio_SetDataDirection(&Gpio_PWM_Lights, 2U, 0xffffffffUL);  // 32 bit input
+#endif
+
+#if 1
+	int ByteCount;
+	u8 iicData;
+
+	for (u8 iicChipAddr = 0; iicChipAddr <= 0x7fU; ++iicChipAddr) {
+		xil_printf("IIC Test iicChipAddr = 0x%02x --> ", iicChipAddr);
+
+		u16 StatusReg = XIic_ReadReg(IIC_BOARD_BASE_ADDRESS, XIIC_SR_REG_OFFSET);
+		if(!(StatusReg & XIIC_SR_BUS_BUSY_MASK)) {
+			ByteCount = XIic_Recv(IIC_BOARD_BASE_ADDRESS, iicChipAddr, &iicData, 1, XIIC_STOP);
+			if (ByteCount) {
+				xil_printf("found\r\n");
+			} else {
+				xil_printf("no\r\n");
+			}
+		}
+	}
+
 #endif
 
 	for( ;; )

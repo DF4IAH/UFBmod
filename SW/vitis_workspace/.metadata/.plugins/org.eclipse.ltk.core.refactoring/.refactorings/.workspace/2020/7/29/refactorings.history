@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;xiic_repeated_start_example_1_system&apos;" deleteContents="true" description="Delete resource &apos;xiic_repeated_start_example_1_system&apos;" element1="/xiic_repeated_start_example_1_system" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1595055800637"/>
+</session>
