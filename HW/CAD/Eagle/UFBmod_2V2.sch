@@ -20134,8 +20134,9 @@ Top</text>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">I2C Termination</text>
 <text x="149.86" y="134.62" size="2.54" layer="97" ratio="15">Addr     Device
 
-0x1C     DAC
-0x2A     LCD</text>
+0x1C     DAC main address
+0x2A     DAC broadcast address
+0x3E     LCD</text>
 <text x="149.86" y="162.56" size="2.54" layer="97" ratio="15">I2C1 (BOARD) Address space</text>
 <text x="152.4" y="73.66" size="2.54" layer="97" ratio="15">I2Ctrenz (Si-PLL) Address space</text>
 <text x="152.4" y="50.8" size="2.54" layer="97" ratio="15">Addr    Device
@@ -20196,7 +20197,7 @@ Top</text>
 <description>I2C LCD</description>
 <plain>
 <text x="22.86" y="160.02" size="2.54" layer="97" ratio="15">I2C LCD module
-I2C addr: 0x2A</text>
+I2C addr: 0x3E</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">I2C: LCD</text>
 </plain>
 <instances>
@@ -20364,7 +20365,7 @@ I2C addr: 0x2A</text>
 <text x="157.48" y="109.22" size="1.778" layer="97">f_LP = 10 Hz</text>
 <text x="109.22" y="104.14" size="1.778" layer="97">Iq=80uA</text>
 <text x="22.86" y="160.02" size="2.54" layer="97" ratio="15">DAC for VCTCXO pull voltage
-I2C addr: 0x1C</text>
+I2C addr: 0x1C, I2C broadcast addr: 0x2A</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">I2C: DAC</text>
 <text x="93.98" y="50.8" size="1.778" layer="97">Reminder: REF input needs voltage reference to minimize phase noise.</text>
 </plain>
