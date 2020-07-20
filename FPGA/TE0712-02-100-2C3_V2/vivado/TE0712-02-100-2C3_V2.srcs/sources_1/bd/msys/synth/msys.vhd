@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Fri Jul 17 23:01:07 2020
+--Date        : Mon Jul 20 12:55:03 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -16,9 +16,7 @@ entity ETH0_LEDs_imp_437WON is
     ETH0_DA_G : out STD_LOGIC_VECTOR ( 0 to 0 );
     ETH0_DA_Y : out STD_LOGIC;
     ETH0_LINK_LED : in STD_LOGIC_VECTOR ( 0 to 0 );
-    clk_in : in STD_LOGIC;
     data_in_to_device : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    io_reset : in STD_LOGIC;
     phy_tx_en : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_mii_rx_dv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
@@ -31,12 +29,6 @@ architecture STRUCTURE of ETH0_LEDs_imp_437WON is
     Res : out STD_LOGIC
   );
   end component msys_util_reduced_logic_0_1;
-  component msys_ETH0_xlslice_0_0 is
-  port (
-    Din : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component msys_ETH0_xlslice_0_0;
   component msys_xlslice_0_1 is
   port (
     Din : in STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -51,40 +43,19 @@ architecture STRUCTURE of ETH0_LEDs_imp_437WON is
     dout : out STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   end component msys_xlconcat_1_1;
-  component msys_selectio_wiz_0_0 is
-  port (
-    data_in_from_pins : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    clk_in : in STD_LOGIC;
-    io_reset : in STD_LOGIC;
-    data_in_to_device : out STD_LOGIC_VECTOR ( 2 downto 0 )
-  );
-  end component msys_selectio_wiz_0_0;
   signal ETH0_LINK_LED_1 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal ETH0_selectio_wiz_0_data_in_to_device : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ETH0_util_reduced_logic_0_Res : STD_LOGIC;
   signal ETH0_xlconcat_0_dout : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ETH0_xlslice_0to1_0_Dout : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal ETH0_xlslice_2to2_0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal clk_in_1 : STD_LOGIC;
-  signal io_reset_1 : STD_LOGIC;
   signal phy_tx_en_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal s_mii_rx_dv_1 : STD_LOGIC_VECTOR ( 0 to 0 );
 begin
-  ETH0_DA_G(0) <= ETH0_xlslice_2to2_0_Dout(0);
+  ETH0_DA_G(0) <= ETH0_LINK_LED_1(0);
   ETH0_DA_Y <= ETH0_util_reduced_logic_0_Res;
   ETH0_LINK_LED_1(0) <= ETH0_LINK_LED(0);
-  clk_in_1 <= clk_in;
-  data_in_to_device(2 downto 0) <= ETH0_selectio_wiz_0_data_in_to_device(2 downto 0);
-  io_reset_1 <= io_reset;
+  data_in_to_device(2 downto 0) <= ETH0_xlconcat_0_dout(2 downto 0);
   phy_tx_en_1(0) <= phy_tx_en(0);
   s_mii_rx_dv_1(0) <= s_mii_rx_dv(0);
-ETH0_selectio_wiz_0: component msys_selectio_wiz_0_0
-     port map (
-      clk_in => clk_in_1,
-      data_in_from_pins(2 downto 0) => ETH0_xlconcat_0_dout(2 downto 0),
-      data_in_to_device(2 downto 0) => ETH0_selectio_wiz_0_data_in_to_device(2 downto 0),
-      io_reset => io_reset_1
-    );
 ETH0_util_reduced_logic_0: component msys_util_reduced_logic_0_1
      port map (
       Op1(1 downto 0) => ETH0_xlslice_0to1_0_Dout(1 downto 0),
@@ -92,20 +63,15 @@ ETH0_util_reduced_logic_0: component msys_util_reduced_logic_0_1
     );
 ETH0_xlconcat_0: component msys_xlconcat_1_1
      port map (
-      In0(0) => s_mii_rx_dv_1(0),
-      In1(0) => phy_tx_en_1(0),
-      In2(0) => ETH0_LINK_LED_1(0),
+      In0(0) => ETH0_LINK_LED_1(0),
+      In1(0) => s_mii_rx_dv_1(0),
+      In2(0) => phy_tx_en_1(0),
       dout(2 downto 0) => ETH0_xlconcat_0_dout(2 downto 0)
     );
-ETH0_xlslice_0to1_0: component msys_xlslice_0_1
+ETH0_xlslice_2to1_0: component msys_xlslice_0_1
      port map (
-      Din(2 downto 0) => ETH0_selectio_wiz_0_data_in_to_device(2 downto 0),
+      Din(2 downto 0) => ETH0_xlconcat_0_dout(2 downto 0),
       Dout(1 downto 0) => ETH0_xlslice_0to1_0_Dout(1 downto 0)
-    );
-ETH0_xlslice_2to2_0: component msys_ETH0_xlslice_0_0
-     port map (
-      Din(2 downto 0) => ETH0_selectio_wiz_0_data_in_to_device(2 downto 0),
-      Dout(0) => ETH0_xlslice_2to2_0_Dout(0)
     );
 end STRUCTURE;
 library IEEE;
@@ -5620,6 +5586,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity ETH0_imp_1S8N2C8 is
   port (
+    CLK : in STD_LOGIC;
     ETH0_DA_G : out STD_LOGIC_VECTOR ( 0 to 0 );
     ETH0_DA_Y : out STD_LOGIC;
     ETH0_LINK_LED : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -5648,12 +5615,10 @@ entity ETH0_imp_1S8N2C8 is
     S_AXI_wready : out STD_LOGIC;
     S_AXI_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S_AXI_wvalid : in STD_LOGIC;
-    UART0_clk : in STD_LOGIC;
     data_in_to_device : out STD_LOGIC_VECTOR ( 2 downto 0 );
     dcm_locked : in STD_LOGIC;
     ext_reset_in : in STD_LOGIC;
     interconnect_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 );
-    io_reset : in STD_LOGIC;
     ip2intc_irpt : out STD_LOGIC;
     mb_debug_sys_rst : in STD_LOGIC;
     phy_rst_n : out STD_LOGIC;
@@ -5764,6 +5729,19 @@ architecture STRUCTURE of ETH0_imp_1S8N2C8 is
     phy_mdc : out STD_LOGIC
   );
   end component msys_axi_ethernetlite_0_0;
+  component msys_util_vector_logic_0_5 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_util_vector_logic_0_5;
+  component msys_c_shift_ram_0_5 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 2 downto 0 )
+  );
+  end component msys_c_shift_ram_0_5;
   signal Conn1_ARADDR : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal Conn1_ARREADY : STD_LOGIC;
   signal Conn1_ARVALID : STD_LOGIC;
@@ -5791,11 +5769,12 @@ architecture STRUCTURE of ETH0_imp_1S8N2C8 is
   signal Conn3_MDIO_T : STD_LOGIC;
   signal ETH0_LEDs_ETH0_DA_G : STD_LOGIC_VECTOR ( 0 to 0 );
   signal ETH0_LEDs_ETH0_DA_Y : STD_LOGIC;
-  signal ETH0_LEDs_data_in_to_device : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal ETH0_LEDs_data_in_to_device_0 : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal ETH0_LEDs_data_in_to_device_1 : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ETH0_LINK_LED_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal ETH0_LINK_LED_2 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal ETH0_proc_sys_reset_0_interconnect_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal UART0_clk_wiz_0_clk_out1 : STD_LOGIC;
-  signal UART0_peripheral_reset : STD_LOGIC;
+  signal SC0712_0_mcs_clk_0 : STD_LOGIC;
   signal axi_ethernetlite_0_MII_COL : STD_LOGIC;
   signal axi_ethernetlite_0_MII_CRS : STD_LOGIC;
   signal axi_ethernetlite_0_MII_RST_N : STD_LOGIC;
@@ -5842,12 +5821,13 @@ begin
   Conn3_MDIO_I <= ETH0_MDIO_MDC_mdio_i;
   ETH0_DA_G(0) <= ETH0_LEDs_ETH0_DA_G(0);
   ETH0_DA_Y <= ETH0_LEDs_ETH0_DA_Y;
-  ETH0_LINK_LED_1(0) <= ETH0_LINK_LED(0);
+  ETH0_LINK_LED_2(0) <= ETH0_LINK_LED(0);
   ETH0_MDIO_MDC_mdc <= Conn3_MDC;
   ETH0_MDIO_MDC_mdio_o <= Conn3_MDIO_O;
   ETH0_MDIO_MDC_mdio_t <= Conn3_MDIO_T;
   RMII_PHY_M_0_tx_en <= Conn2_TX_EN;
   RMII_PHY_M_0_txd(1 downto 0) <= Conn2_TXD(1 downto 0);
+  SC0712_0_mcs_clk_0 <= CLK;
   S_AXI_arready <= Conn1_ARREADY;
   S_AXI_awready <= Conn1_AWREADY;
   S_AXI_bresp(1 downto 0) <= Conn1_BRESP(1 downto 0);
@@ -5856,9 +5836,7 @@ begin
   S_AXI_rresp(1 downto 0) <= Conn1_RRESP(1 downto 0);
   S_AXI_rvalid <= Conn1_RVALID;
   S_AXI_wready <= Conn1_WREADY;
-  UART0_clk_wiz_0_clk_out1 <= UART0_clk;
-  UART0_peripheral_reset <= io_reset;
-  data_in_to_device(2 downto 0) <= ETH0_LEDs_data_in_to_device(2 downto 0);
+  data_in_to_device(2 downto 0) <= ETH0_LEDs_data_in_to_device_1(2 downto 0);
   dcm_locked_1 <= dcm_locked;
   ext_reset_in_1 <= ext_reset_in;
   interconnect_aresetn(0) <= ETH0_proc_sys_reset_0_interconnect_aresetn(0);
@@ -5868,14 +5846,18 @@ begin
   phy_tx_en <= axi_ethernetlite_0_phy_tx_en;
   ref_clk_1 <= ref_clk;
   s_mii_rx_dv <= mii_y_adapater_0_s_mii_rx_dv;
+ETH0_CDC_c_shift_ram_0: component msys_c_shift_ram_0_5
+     port map (
+      CLK => SC0712_0_mcs_clk_0,
+      D(2 downto 0) => ETH0_LEDs_data_in_to_device_0(2 downto 0),
+      Q(2 downto 0) => ETH0_LEDs_data_in_to_device_1(2 downto 0)
+    );
 ETH0_LEDs: entity work.ETH0_LEDs_imp_437WON
      port map (
       ETH0_DA_G(0) => ETH0_LEDs_ETH0_DA_G(0),
       ETH0_DA_Y => ETH0_LEDs_ETH0_DA_Y,
       ETH0_LINK_LED(0) => ETH0_LINK_LED_1(0),
-      clk_in => UART0_clk_wiz_0_clk_out1,
-      data_in_to_device(2 downto 0) => ETH0_LEDs_data_in_to_device(2 downto 0),
-      io_reset => UART0_peripheral_reset,
+      data_in_to_device(2 downto 0) => ETH0_LEDs_data_in_to_device_0(2 downto 0),
       phy_tx_en(0) => axi_ethernetlite_0_phy_tx_en,
       s_mii_rx_dv(0) => mii_y_adapater_0_s_mii_rx_dv
     );
@@ -5974,6 +5956,11 @@ mii_y_adapater_0: component msys_mii_y_adapater_0_0
       s_mii_tx_en => '0',
       s_mii_tx_er => '0',
       s_mii_txd(3 downto 0) => axi_ethernetlite_0_MII_TXD(3 downto 0)
+    );
+util_vector_logic_0: component msys_util_vector_logic_0_5
+     port map (
+      Op1(0) => ETH0_LINK_LED_2(0),
+      Res(0) => ETH0_LINK_LED_1(0)
     );
 end STRUCTURE;
 library IEEE;
@@ -10962,12 +10949,6 @@ architecture STRUCTURE of msys is
     dout : out STD_LOGIC_VECTOR ( 4 downto 0 )
   );
   end component msys_xlconcat_0_0;
-  component msys_CLK0_util_ds_buf_0_0 is
-  port (
-    BUFG_I : in STD_LOGIC_VECTOR ( 0 to 0 );
-    BUFG_O : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component msys_CLK0_util_ds_buf_0_0;
   component msys_axi_iic_0_0 is
   port (
     s_axi_aclk : in STD_LOGIC;
@@ -11326,16 +11307,25 @@ architecture STRUCTURE of msys is
     dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_xlconstant_0_18;
+  component msys_CLK0_util_ds_buf_0_0 is
+  port (
+    BUFG_I : in STD_LOGIC_VECTOR ( 0 to 0 );
+    BUFG_O : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_CLK0_util_ds_buf_0_0;
   signal ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal BOARD_ROTENC_PUSH_1 : STD_LOGIC;
-  signal BUFG_I_0_1 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal CLK0_1_CLK_N : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal CLK0_1_CLK_P : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal CLK0_util_ds_buf_1_BUFG_O : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal CLK2_mgt_clk0_1_CLK_N : STD_LOGIC;
-  signal CLK2_mgt_clk0_1_CLK_P : STD_LOGIC;
-  signal CLK3_sys_diff_1_CLK_N : STD_LOGIC;
-  signal CLK3_sys_diff_1_CLK_P : STD_LOGIC;
+  signal CLK0_NA_0 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal CLK0_NA_diff_0_CLK_N : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal CLK0_NA_diff_0_CLK_P : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal CLK0_NA_g_0 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal CLK1B_50MHz_phy_clk_0 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal CLK1B_50MHz_phy_clk_g_0 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal CLK2_125MHz_mgt_diff_0_CLK_N : STD_LOGIC;
+  signal CLK2_125MHz_mgt_diff_0_CLK_P : STD_LOGIC;
+  signal CLK2_125MHz_mgt_g_0 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal CLK3_50MHz_mig_diff_0_CLK_N : STD_LOGIC;
+  signal CLK3_50MHz_mig_diff_0_CLK_P : STD_LOGIC;
   signal ETH0_ETH0_DA_G : STD_LOGIC_VECTOR ( 0 to 0 );
   signal ETH0_ETH0_DA_Y : STD_LOGIC;
   signal ETH0_ETH0_MDIO_MDC_MDC : STD_LOGIC;
@@ -11365,7 +11355,6 @@ architecture STRUCTURE of msys is
   signal PWM_lights_LED_RGB_red : STD_LOGIC_VECTOR ( 0 to 0 );
   signal PWM_lights_ip2intc_irpt : STD_LOGIC;
   signal ROTENC_decoder_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal ROTENC_decoder_dout : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ROTENC_decoder_ip2intc_irpt : STD_LOGIC;
   signal SC0712_0_ext_scl_o : STD_LOGIC;
   signal SC0712_0_mcs_clk_out : STD_LOGIC;
@@ -11406,7 +11395,7 @@ architecture STRUCTURE of msys is
   signal TRX_rx_clk_64MHz_1_CLK_P : STD_LOGIC;
   signal TRX_rx_data_n_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal TRX_rx_data_p_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal TRX_rx_selectio_wiz_0_clk_div_out : STD_LOGIC;
+  signal TRX_rx_div_clk_g_0 : STD_LOGIC;
   signal UART0EXT_DTRn_1 : STD_LOGIC;
   signal UART0EXT_RTSn_1 : STD_LOGIC;
   signal UART0_UART0EXT_CTSn : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -11419,7 +11408,6 @@ architecture STRUCTURE of msys is
   signal UART0_clk_wiz_0_clk_out1 : STD_LOGIC;
   signal UART0_interrupt : STD_LOGIC;
   signal UART0_ip2intc_irpt : STD_LOGIC;
-  signal UART0_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal ULI_SYSTEM_XIO_1 : STD_LOGIC;
   signal axi_BOARD_iic_0_iic2intc_irpt : STD_LOGIC;
   signal axi_ethernetlite_0_phy_tx_en : STD_LOGIC;
@@ -11922,9 +11910,6 @@ architecture STRUCTURE of msys is
   signal rst_mig_7series_0_100M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal rst_mig_7series_0_100M_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal rst_mig_7series_0_50M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal util_ds_buf_0_BUFG_O : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal util_ds_buf_1_IBUF_OUT : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal util_ds_buf_2_IBUF_OUT : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xfft_rx09_dly3449_event_data_in_channel_halt_out_0 : STD_LOGIC;
   signal xfft_rx09_dly3449_event_frame_started_out_0 : STD_LOGIC;
   signal xfft_rx09_dly3449_event_tlast_missing_out_0 : STD_LOGIC;
@@ -11935,6 +11920,8 @@ architecture STRUCTURE of msys is
   signal xfft_rx24_dly3449_event_frame_started_out_0 : STD_LOGIC;
   signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal xlconstant_0_len1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_ROTENC_decoder_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal NLW_UART0_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_BOARD_iic_0_gpo_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_iic_0_gpo_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_quad_spi_0_cfgclk_UNCONNECTED : STD_LOGIC;
@@ -12074,13 +12061,13 @@ begin
   BOARD_IIC_sda_o <= axi_iic_1_IIC_SDA_O;
   BOARD_IIC_sda_t <= axi_iic_1_IIC_SDA_T;
   BOARD_ROTENC_PUSH_1 <= BOARD_ROTENC_PUSH;
-  BUFG_I_0_1(0) <= CLK1B_clk(0);
-  CLK0_1_CLK_N(0) <= CLK0_clk_n(0);
-  CLK0_1_CLK_P(0) <= CLK0_clk_p(0);
-  CLK2_mgt_clk0_1_CLK_N <= CLK2_mgt_clk0_clk_n;
-  CLK2_mgt_clk0_1_CLK_P <= CLK2_mgt_clk0_clk_p;
-  CLK3_sys_diff_1_CLK_N <= CLK3_sys_diff_clk_n;
-  CLK3_sys_diff_1_CLK_P <= CLK3_sys_diff_clk_p;
+  CLK0_NA_diff_0_CLK_N(0) <= CLK0_clk_n(0);
+  CLK0_NA_diff_0_CLK_P(0) <= CLK0_clk_p(0);
+  CLK1B_50MHz_phy_clk_0(0) <= CLK1B_clk(0);
+  CLK2_125MHz_mgt_diff_0_CLK_N <= CLK2_mgt_clk0_clk_n;
+  CLK2_125MHz_mgt_diff_0_CLK_P <= CLK2_mgt_clk0_clk_p;
+  CLK3_50MHz_mig_diff_0_CLK_N <= CLK3_sys_diff_clk_n;
+  CLK3_50MHz_mig_diff_0_CLK_P <= CLK3_sys_diff_clk_p;
   DDR3_SDRAM_addr(14 downto 0) <= mig_7series_0_DDR3_ADDR(14 downto 0);
   DDR3_SDRAM_ba(2 downto 0) <= mig_7series_0_DDR3_BA(2 downto 0);
   DDR3_SDRAM_cas_n <= mig_7series_0_DDR3_CAS_N;
@@ -12210,22 +12197,23 @@ BOARD_clk_wiz_0: component msys_clk_wiz_0_0
     );
 CLK0_util_ds_buf_0: component msys_util_ds_buf_2_0
      port map (
-      IBUF_DS_N(0) => CLK0_1_CLK_N(0),
-      IBUF_DS_P(0) => CLK0_1_CLK_P(0),
-      IBUF_OUT(0) => util_ds_buf_2_IBUF_OUT(0)
+      IBUF_DS_N(0) => CLK0_NA_diff_0_CLK_N(0),
+      IBUF_DS_P(0) => CLK0_NA_diff_0_CLK_P(0),
+      IBUF_OUT(0) => CLK0_NA_0(0)
     );
 CLK0_util_ds_buf_1: component msys_CLK0_util_ds_buf_0_0
      port map (
-      BUFG_I(0) => util_ds_buf_2_IBUF_OUT(0),
-      BUFG_O(0) => CLK0_util_ds_buf_1_BUFG_O(0)
+      BUFG_I(0) => CLK0_NA_0(0),
+      BUFG_O(0) => CLK0_NA_g_0(0)
     );
 CLK1B_util_ds_buf_0: component msys_util_ds_buf_0_0
      port map (
-      BUFG_I(0) => BUFG_I_0_1(0),
-      BUFG_O(0) => util_ds_buf_0_BUFG_O(0)
+      BUFG_I(0) => CLK1B_50MHz_phy_clk_0(0),
+      BUFG_O(0) => CLK1B_50MHz_phy_clk_g_0(0)
     );
 ETH0: entity work.ETH0_imp_1S8N2C8
      port map (
+      CLK => SC0712_0_mcs_clk_out,
       ETH0_DA_G(0) => ETH0_ETH0_DA_G(0),
       ETH0_DA_Y => ETH0_ETH0_DA_Y,
       ETH0_LINK_LED(0) => ETH0_LINK_LED_g_1,
@@ -12254,17 +12242,15 @@ ETH0: entity work.ETH0_imp_1S8N2C8
       S_AXI_wready => microblaze_0_axi_periph_M05_AXI_WREADY,
       S_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M05_AXI_WSTRB(3 downto 0),
       S_AXI_wvalid => microblaze_0_axi_periph_M05_AXI_WVALID,
-      UART0_clk => UART0_clk_wiz_0_clk_out1,
       data_in_to_device(2 downto 0) => In2_1(2 downto 0),
       dcm_locked => mig_7series_0_mmcm_locked,
       ext_reset_in => mig_7series_0_ui_clk_sync_rst,
       interconnect_aresetn(0) => M05_ARESETN_1(0),
-      io_reset => UART0_peripheral_reset(0),
       ip2intc_irpt => ETH0_ip2intc_irpt,
       mb_debug_sys_rst => mdm_1_debug_sys_rst,
       phy_rst_n => ETH0_phy_rst_n,
       phy_tx_en => axi_ethernetlite_0_phy_tx_en,
-      ref_clk => util_ds_buf_0_BUFG_O(0),
+      ref_clk => CLK1B_50MHz_phy_clk_g_0(0),
       s_mii_rx_dv => mii_y_adapater_0_s_mii_rx_dv
     );
 INT_ctrl: entity work.INT_ctrl_imp_PISLEF
@@ -12364,7 +12350,7 @@ ROTENC_decoder: entity work.ROTENC_decoder_imp_9V4OMT
       S_AXI_wready(0) => microblaze_0_axi_periph_M09_AXI_WREADY(0),
       S_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M09_AXI_WSTRB(3 downto 0),
       S_AXI_wvalid(0) => microblaze_0_axi_periph_M09_AXI_WVALID(0),
-      dout(2 downto 0) => ROTENC_decoder_dout(2 downto 0),
+      dout(2 downto 0) => NLW_ROTENC_decoder_dout_UNCONNECTED(2 downto 0),
       ip2intc_irpt => ROTENC_decoder_ip2intc_irpt,
       rotenc_dec_cnt_en => rotenc_dec_cnt_en_1,
       rotenc_dec_cnt_up_dwn => rotenc_dec_cnt_up_dwn_1,
@@ -12471,7 +12457,7 @@ TRX: entity work.TRX_imp_W48V8V
       TRX_tx_clk_clk_p => TRX_TRX_tx_clk_CLK_P,
       TRX_tx_data_n(1 downto 0) => TRX_TRX_tx_data_n(1 downto 0),
       TRX_tx_data_p(1 downto 0) => TRX_TRX_tx_data_p(1 downto 0),
-      clk_div_out => TRX_rx_selectio_wiz_0_clk_div_out,
+      clk_div_out => TRX_rx_div_clk_g_0,
       dcm_locked => mig_7series_0_mmcm_locked,
       ext_reset_in => mig_7series_0_ui_clk_sync_rst,
       fft09_aresetn_in => fft09_aresetn_in_0,
@@ -12564,7 +12550,7 @@ UART0: entity work.UART0_imp_1B98M7Q
       ext_reset_in => mig_7series_0_ui_clk_sync_rst,
       interrupt => UART0_interrupt,
       ip2intc_irpt => UART0_ip2intc_irpt,
-      peripheral_reset(0) => UART0_peripheral_reset(0),
+      peripheral_reset(0) => NLW_UART0_peripheral_reset_UNCONNECTED(0),
       s_axi_aclk => microblaze_0_Clk_100MHz,
       s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn(0),
       slowest_sync_clk => UART0_clk_wiz_0_clk_out1
@@ -12879,10 +12865,10 @@ mdm_1: component msys_mdm_1_0
     );
 mgt_clk0_CLK2_util_ds_buf_1: component msys_util_ds_buf_1_0
      port map (
-      IBUF_DS_N(0) => CLK2_mgt_clk0_1_CLK_N,
+      IBUF_DS_N(0) => CLK2_125MHz_mgt_diff_0_CLK_N,
       IBUF_DS_ODIV2(0) => NLW_mgt_clk0_CLK2_util_ds_buf_1_IBUF_DS_ODIV2_UNCONNECTED(0),
-      IBUF_DS_P(0) => CLK2_mgt_clk0_1_CLK_P,
-      IBUF_OUT(0) => util_ds_buf_1_IBUF_OUT(0)
+      IBUF_DS_P(0) => CLK2_125MHz_mgt_diff_0_CLK_P,
+      IBUF_OUT(0) => CLK2_125MHz_mgt_g_0(0)
     );
 microblaze_0: component msys_microblaze_0_0
      port map (
@@ -13143,7 +13129,7 @@ microblaze_0_axi_periph: entity work.msys_microblaze_0_axi_periph_0
       M04_AXI_wready(0) => microblaze_0_axi_periph_M04_AXI_WREADY,
       M04_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M04_AXI_WSTRB(3 downto 0),
       M04_AXI_wvalid(0) => microblaze_0_axi_periph_M04_AXI_WVALID(0),
-      M05_ACLK => util_ds_buf_0_BUFG_O(0),
+      M05_ACLK => CLK1B_50MHz_phy_clk_g_0(0),
       M05_ARESETN => M05_ARESETN_1(0),
       M05_AXI_araddr(12 downto 0) => microblaze_0_axi_periph_M05_AXI_ARADDR(12 downto 0),
       M05_AXI_arready => microblaze_0_axi_periph_M05_AXI_ARREADY,
@@ -13425,8 +13411,8 @@ mig_7series_0: component msys_mig_7series_0_0
       s_axi_wready => axi_interconnect_0_M00_AXI_WREADY,
       s_axi_wstrb(3 downto 0) => axi_interconnect_0_M00_AXI_WSTRB(3 downto 0),
       s_axi_wvalid => axi_interconnect_0_M00_AXI_WVALID(0),
-      sys_clk_n => CLK3_sys_diff_1_CLK_N,
-      sys_clk_p => CLK3_sys_diff_1_CLK_P,
+      sys_clk_n => CLK3_50MHz_mig_diff_0_CLK_N,
+      sys_clk_p => CLK3_50MHz_mig_diff_0_CLK_P,
       sys_rst => SC0712_0_reset_out,
       ui_addn_clk_0 => mig_7series_0_ui_addn_clk_0_200MHz,
       ui_addn_clk_1 => mig_7series_0_ui_addn_clk_1_100MHz,
@@ -13494,7 +13480,7 @@ vio_0: component msys_vio_0_0
       probe_in22(31 downto 0) => postmem_rx09_doutb_out_0(31 downto 0),
       probe_in23(31 downto 0) => postmem_rx24_doutb_out_0(31 downto 0),
       probe_in24(31 downto 0) => ROTENC_decoder_Q(31 downto 0),
-      probe_in25(2 downto 0) => ROTENC_decoder_dout(2 downto 0),
+      probe_in25(2 downto 0) => In2_1(2 downto 0),
       probe_in3(31 downto 0) => lt_F3_CLK0(31 downto 0),
       probe_in4(0) => labtools_fmeter_0_update,
       probe_in5(0) => SC0712_0_reset_out,
@@ -13507,10 +13493,10 @@ vio_0: component msys_vio_0_0
 xlconcat_0: component msys_xlconcat_0_0
      port map (
       In0(0) => mig_7series_0_ui_addn_clk_2_50MHz,
-      In1(0) => util_ds_buf_1_IBUF_OUT(0),
-      In2(0) => util_ds_buf_0_BUFG_O(0),
-      In3(0) => CLK0_util_ds_buf_1_BUFG_O(0),
-      In4(0) => TRX_rx_selectio_wiz_0_clk_div_out,
+      In1(0) => CLK2_125MHz_mgt_g_0(0),
+      In2(0) => CLK1B_50MHz_phy_clk_g_0(0),
+      In3(0) => CLK0_NA_g_0(0),
+      In4(0) => TRX_rx_div_clk_g_0,
       dout(4 downto 0) => xlconcat_0_dout(4 downto 0)
     );
 xlconstant_1_len1: component msys_xlconstant_0_11

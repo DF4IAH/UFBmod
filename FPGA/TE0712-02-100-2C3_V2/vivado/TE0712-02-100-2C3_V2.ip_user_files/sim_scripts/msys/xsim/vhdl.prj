@@ -61,7 +61,6 @@ vhdl xil_defaultlib  \
 "../../../bd/msys/ip/msys_c_counter_binary_0_2/sim/msys_c_counter_binary_0_2.vhd" \
 "../../../bd/msys/ip/msys_proc_sys_reset_0_1/sim/msys_proc_sys_reset_0_1.vhd" \
 "../../../bd/msys/ip/msys_util_ds_buf_3_0/sim/msys_util_ds_buf_3_0.vhd" \
-"../../../bd/msys/ip/msys_CLK0_util_ds_buf_0_0/sim/msys_CLK0_util_ds_buf_0_0.vhd" \
 "../../../bd/msys/ip/msys_xfft_0_0/sim/msys_xfft_0_0.vhd" \
 "../../../bd/msys/ip/msys_c_shift_ram_0_1/sim/msys_c_shift_ram_0_1.vhd" \
 "../../../bd/msys/ip/msys_c_shift_ram_0_2/sim/msys_c_shift_ram_0_2.vhd" \
@@ -82,6 +81,8 @@ vhdl xil_defaultlib  \
 "../../../bd/msys/ip/msys_c_shift_ram_0_4/sim/msys_c_shift_ram_0_4.vhd" \
 "../../../bd/msys/ip/msys_xbip_multadd_0_2/sim/msys_xbip_multadd_0_2.vhd" \
 "../../../bd/msys/ip/msys_xbip_multadd_0_3/sim/msys_xbip_multadd_0_3.vhd" \
+"../../../bd/msys/ip/msys_CLK0_util_ds_buf_0_0/sim/msys_CLK0_util_ds_buf_0_0.vhd" \
+"../../../bd/msys/ip/msys_c_shift_ram_0_5/sim/msys_c_shift_ram_0_5.vhd" \
 "../../../bd/msys/sim/msys.vhd" \
 
 nosort

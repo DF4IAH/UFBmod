@@ -1,0 +1,53 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"2.0",
+   "Default View_TopLeft":"-174,128",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port RMII_PHY_M_0 -pg 1 -lvl 3 -x 820 -y 450 -defaultsOSRD
+preplace port S_AXI -pg 1 -lvl 0 -x 0 -y 260 -defaultsOSRD
+preplace port ETH0_MDIO_MDC -pg 1 -lvl 3 -x 820 -y 280 -defaultsOSRD
+preplace port ETH0_DA_Y -pg 1 -lvl 3 -x 820 -y 600 -defaultsOSRD
+preplace port ref_clk -pg 1 -lvl 0 -x 0 -y 510 -defaultsOSRD
+preplace port s_mii_rx_dv -pg 1 -lvl 3 -x 820 -y 550 -defaultsOSRD
+preplace port phy_rst_n -pg 1 -lvl 3 -x 820 -y 520 -defaultsOSRD
+preplace port ip2intc_irpt -pg 1 -lvl 3 -x 820 -y 310 -defaultsOSRD
+preplace port phy_tx_en -pg 1 -lvl 3 -x 820 -y 250 -defaultsOSRD
+preplace port mb_debug_sys_rst -pg 1 -lvl 0 -x 0 -y 100 -defaultsOSRD
+preplace port ext_reset_in -pg 1 -lvl 0 -x 0 -y 70 -defaultsOSRD
+preplace port dcm_locked -pg 1 -lvl 0 -x 0 -y 130 -defaultsOSRD
+preplace portBus ETH0_DA_G -pg 1 -lvl 3 -x 820 -y 630 -defaultsOSRD
+preplace portBus ETH0_LINK_LED -pg 1 -lvl 0 -x 0 -y 630 -defaultsOSRD
+preplace portBus interconnect_aresetn -pg 1 -lvl 3 -x 820 -y 110 -defaultsOSRD
+preplace portBus data_in_to_device -pg 1 -lvl 3 -x 820 -y 20 -defaultsOSRD
+preplace inst ETH0_LEDs -pg 1 -lvl 2 -x 600 -y 630 -defaultsOSRD
+preplace inst mii_to_rmii_0 -pg 1 -lvl 2 -x 600 -y 450 -defaultsOSRD
+preplace inst mii_y_adapater_0 -pg 1 -lvl 1 -x 170 -y 440 -defaultsOSRD
+preplace inst ETH0_proc_sys_reset_0 -pg 1 -lvl 2 -x 600 -y 90 -defaultsOSRD
+preplace inst axi_ethernetlite_0 -pg 1 -lvl 2 -x 600 -y 280 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 1 -x 170 -y 630 -defaultsOSRD
+preplace netloc ETH0_LEDs_ETH0_DA_Y 1 2 1 780J 600n
+preplace netloc ETH0_LEDs_ETH0_DA_G 1 2 1 NJ 630
+preplace netloc rst_n_1 1 1 2 330 190 770
+preplace netloc ref_clk_1 1 0 2 NJ 510 310
+preplace netloc mii_y_adapater_0_s_mii_rx_dv 1 0 3 20 520 310 550 NJ
+preplace netloc mii_y_adapater_0_phy_rst_n 1 1 2 320J 530 800J
+preplace netloc axi_ethernetlite_0_ip2intc_irpt 1 2 1 NJ 310
+preplace netloc axi_ethernetlite_0_phy_tx_en 1 1 2 330 540 790
+preplace netloc ETH0_proc_sys_reset_0_interconnect_aresetn 1 2 1 NJ 110
+preplace netloc mb_debug_sys_rst_1 1 0 2 20J 110 NJ
+preplace netloc ext_reset_in_1 1 0 2 NJ 70 NJ
+preplace netloc dcm_locked_1 1 0 2 NJ 130 NJ
+preplace netloc ETH0_LINK_LED_1 1 1 1 NJ 630
+preplace netloc ETH0_LINK_LED_2 1 0 1 NJ 630
+preplace netloc Conn3 1 2 1 780J 280n
+preplace netloc Conn2 1 2 1 NJ 450
+preplace netloc mii_y_adapater_0_M_MII 1 1 1 N 430
+preplace netloc axi_ethernetlite_0_MII 1 0 3 20 370 NJ 370 770
+preplace netloc Conn1 1 0 2 NJ 260 NJ
+levelinfo -pg 1 0 170 600 820
+pagesize -pg 1 -db -bbox -sgen -180 -10 1030 900
+"
+}
+

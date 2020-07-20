@@ -215,3 +215,6 @@ timestamp=[2020-07-19 14:29:11], mode=BUILD, duration=0:00:01.781, duration_ms=1
 timestamp=[2020-07-19 14:40:42], mode=BUILD, duration=0:00:04.781, duration_ms=4781, data={name=main, configuration=Debug, clean_build=false}
 timestamp=[2020-07-19 14:41:23], mode=BUILD, duration=0:00:01.047, duration_ms=1047, data={name=main, configuration=Debug, clean_build=false}
 timestamp=[2020-07-19 14:42:21], mode=BUILD, duration=0:00:00.953, duration_ms=953, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 16:42:35], mode=BUILD, duration=0:00:00.703, duration_ms=703, data={name=main, configuration=Debug, clean_build=true}
+timestamp=[2020-07-19 16:42:42], mode=PLATFORM_GENERATION, duration=0:00:03.536, duration_ms=3536, data={name=mb0}
+timestamp=[2020-07-19 16:42:44], mode=BUILD, duration=0:00:01.125, duration_ms=1125, data={name=main, configuration=Debug, clean_build=false}

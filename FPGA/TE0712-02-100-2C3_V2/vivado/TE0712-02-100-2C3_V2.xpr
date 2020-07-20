@@ -47,13 +47,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="113"/>
-    <Option Name="WTModelSimExportSim" Val="113"/>
-    <Option Name="WTQuestaExportSim" Val="113"/>
-    <Option Name="WTIesExportSim" Val="113"/>
-    <Option Name="WTVcsExportSim" Val="113"/>
-    <Option Name="WTRivieraExportSim" Val="113"/>
-    <Option Name="WTActivehdlExportSim" Val="113"/>
+    <Option Name="WTXSimExportSim" Val="116"/>
+    <Option Name="WTModelSimExportSim" Val="116"/>
+    <Option Name="WTQuestaExportSim" Val="116"/>
+    <Option Name="WTIesExportSim" Val="116"/>
+    <Option Name="WTVcsExportSim" Val="116"/>
+    <Option Name="WTRivieraExportSim" Val="116"/>
+    <Option Name="WTActivehdlExportSim" Val="116"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -134,6 +134,12 @@
           <Attr Name="ScopedToCell" Val="msys_mig_7series_0_0"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/bd/msys/ip/msys_mig_7series_0_0/mig_b.prj">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="ScopedToCell" Val="msys_mig_7series_0_0"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="msys_wrapper"/>
@@ -173,7 +179,7 @@
         </FileInfo>
       </File>
       <Config>
-        <Option Name="TargetConstrsFile" Val="$PPRDIR/../constraints/_i_timing.xdc"/>
+        <Option Name="TargetConstrsFile" Val="$PPRDIR/../constraints/vivado_target.xdc"/>
         <Option Name="ConstrsType" Val="XDC"/>
       </Config>
     </FileSet>
@@ -291,10 +297,10 @@
         <Step Id="synth_design">
           <Option Id="ResourceSharing">2</Option>
           <Option Id="KeepEquivalentRegisters">1</Option>
-          <Option Id="Directive">7</Option>
           <Option Id="NoCombineLuts">1</Option>
-          <Option Id="FsmExtraction">1</Option>
+          <Option Id="Directive">7</Option>
           <Option Id="ShregMinSize">5</Option>
+          <Option Id="FsmExtraction">1</Option>
           <Option Id="RepFanoutThreshold">400</Option>
         </Step>
       </Strategy>
