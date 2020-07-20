@@ -218,3 +218,30 @@ timestamp=[2020-07-19 14:42:21], mode=BUILD, duration=0:00:00.953, duration_ms=9
 timestamp=[2020-07-19 16:42:35], mode=BUILD, duration=0:00:00.703, duration_ms=703, data={name=main, configuration=Debug, clean_build=true}
 timestamp=[2020-07-19 16:42:42], mode=PLATFORM_GENERATION, duration=0:00:03.536, duration_ms=3536, data={name=mb0}
 timestamp=[2020-07-19 16:42:44], mode=BUILD, duration=0:00:01.125, duration_ms=1125, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 16:49:51], mode=APP_CREATION, duration=0:00:05.110, duration_ms=5110, data={name=xemaclite_ping_reply_example_1, project_type=sdk, os=freertos10_xilinx, processor=microblaze_0, runtime=C/C++, platform=mb0, application_type=application}
+timestamp=[2020-07-19 16:54:31], mode=APP_CREATION, duration=0:00:01.375, duration_ms=1375, data={name=xemaclite_ping_req_example_1, project_type=sdk, os=freertos10_xilinx, processor=microblaze_0, runtime=C/C++, platform=mb0, application_type=application}
+timestamp=[2020-07-19 18:35:22], mode=WORKBENCH_START, duration=0:00:07.794, duration_ms=7794, data={}
+timestamp=[2020-07-19 18:35:25], mode=WORKBENCH_UI_INIT, duration=0:00:02.282, duration_ms=2282, data={editors_count=1, platform_editors_count=1, projects_count=13, platform_projects_count=1, active_platform_editor=true, projects=RemoteSystemsTempFiles,exp_echo,exp_echo_system,main,main_system,mb0,xemaclite_ping_reply_example_1,xemaclite_ping_reply_example_1_system,xemaclite_ping_req_example_1,xemaclite_ping_req_example_1_system,xiic_low_level_eeprom_example_1,xiic_low_level_tempsensor_example_1,xiic_tempsensor_example_1}
+timestamp=[2020-07-19 18:35:30], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:03.313, duration_ms=3313, data={}
+timestamp=[2020-07-19 20:11:11], mode=PLATFORM_GENERATION, duration=0:00:02.082, duration_ms=2082, data={name=mb0}
+timestamp=[2020-07-19 20:11:12], mode=BUILD, duration=0:00:00.812, duration_ms=812, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 20:11:13], mode=BUILD, duration=0:00:00.203, duration_ms=203, data={name=main_system, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 20:11:25], mode=BUILD, duration=0:00:00.423, duration_ms=423, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 20:11:26], mode=BUILD, duration=0:00:00.172, duration_ms=172, data={name=main_system, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 20:16:33], mode=BUILD, duration=0:00:00.328, duration_ms=328, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 20:17:38], mode=BUILD, duration=0:00:00.922, duration_ms=922, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 20:54:08], mode=BUILD, duration=0:00:01.203, duration_ms=1203, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 20:55:35], mode=BUILD, duration=0:00:00.782, duration_ms=782, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 20:57:24], mode=BUILD, duration=0:00:00.782, duration_ms=782, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 20:59:58], mode=BUILD, duration=0:00:00.813, duration_ms=813, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 21:03:47], mode=BUILD, duration=0:00:00.781, duration_ms=781, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 21:03:55], mode=BUILD, duration=0:00:00.219, duration_ms=219, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 21:03:56], mode=BUILD, duration=0:00:00.250, duration_ms=250, data={name=main_system, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 21:04:55], mode=BUILD, duration=0:00:00.219, duration_ms=219, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 21:04:55], mode=BUILD, duration=0:00:00.140, duration_ms=140, data={name=main_system, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 21:05:15], mode=BUILD, duration=0:00:00.266, duration_ms=266, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 21:07:40], mode=BUILD, duration=0:00:00.781, duration_ms=781, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 21:09:38], mode=BUILD, duration=0:00:00.781, duration_ms=781, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 21:13:57], mode=BUILD, duration=0:00:00.797, duration_ms=797, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 21:29:03], mode=BUILD, duration=0:00:01.063, duration_ms=1063, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-19 21:40:26], mode=BUILD, duration=0:00:01.031, duration_ms=1031, data={name=main, configuration=Debug, clean_build=false}
