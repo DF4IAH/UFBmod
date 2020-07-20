@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2014 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -47,23 +47,90 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:ip:xlconstant:1.1
-// IP Revision: 1
+// IP VLNV: xilinx.com:ip:xlconcat:2.1
+// IP Revision: 3
 
-#ifndef _xlconstant_v1_1_7_H_
-#define _xlconstant_v1_1_7_H_
+`timescale 1ns/1ps
 
-#include "systemc.h"
-template<int CONST_WIDTH,int CONST_VAL>
-SC_MODULE(xlconstant_v1_1_7) {
-  public:
-  sc_out< sc_bv<CONST_WIDTH> > dout;
-  void init() {
-    dout.write(CONST_VAL);
-  }
-  SC_CTOR(xlconstant_v1_1_7) {
-    SC_METHOD(init);  
-  }
-};
+(* DowngradeIPIdentifiedWarnings = "yes" *)
+module msys_xlconcat_0_9 (
+  In0,
+  In1,
+  dout
+);
 
-#endif
+input wire [0 : 0] In0;
+input wire [0 : 0] In1;
+output wire [1 : 0] dout;
+
+  xlconcat_v2_1_3_xlconcat #(
+    .IN0_WIDTH(1),
+    .IN1_WIDTH(1),
+    .IN2_WIDTH(1),
+    .IN3_WIDTH(1),
+    .IN4_WIDTH(1),
+    .IN5_WIDTH(1),
+    .IN6_WIDTH(1),
+    .IN7_WIDTH(1),
+    .IN8_WIDTH(1),
+    .IN9_WIDTH(1),
+    .IN10_WIDTH(1),
+    .IN11_WIDTH(1),
+    .IN12_WIDTH(1),
+    .IN13_WIDTH(1),
+    .IN14_WIDTH(1),
+    .IN15_WIDTH(1),
+    .IN16_WIDTH(1),
+    .IN17_WIDTH(1),
+    .IN18_WIDTH(1),
+    .IN19_WIDTH(1),
+    .IN20_WIDTH(1),
+    .IN21_WIDTH(1),
+    .IN22_WIDTH(1),
+    .IN23_WIDTH(1),
+    .IN24_WIDTH(1),
+    .IN25_WIDTH(1),
+    .IN26_WIDTH(1),
+    .IN27_WIDTH(1),
+    .IN28_WIDTH(1),
+    .IN29_WIDTH(1),
+    .IN30_WIDTH(1),
+    .IN31_WIDTH(1),
+    .dout_width(2),
+    .NUM_PORTS(2)
+  ) inst (
+    .In0(In0),
+    .In1(In1),
+    .In2(1'B0),
+    .In3(1'B0),
+    .In4(1'B0),
+    .In5(1'B0),
+    .In6(1'B0),
+    .In7(1'B0),
+    .In8(1'B0),
+    .In9(1'B0),
+    .In10(1'B0),
+    .In11(1'B0),
+    .In12(1'B0),
+    .In13(1'B0),
+    .In14(1'B0),
+    .In15(1'B0),
+    .In16(1'B0),
+    .In17(1'B0),
+    .In18(1'B0),
+    .In19(1'B0),
+    .In20(1'B0),
+    .In21(1'B0),
+    .In22(1'B0),
+    .In23(1'B0),
+    .In24(1'B0),
+    .In25(1'B0),
+    .In26(1'B0),
+    .In27(1'B0),
+    .In28(1'B0),
+    .In29(1'B0),
+    .In30(1'B0),
+    .In31(1'B0),
+    .dout(dout)
+  );
+endmodule

@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Mon Jul 20 12:55:03 2020
+--Date        : Mon Jul 20 21:23:18 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -15,7 +15,7 @@ entity ETH0_LEDs_imp_437WON is
   port (
     ETH0_DA_G : out STD_LOGIC_VECTOR ( 0 to 0 );
     ETH0_DA_Y : out STD_LOGIC;
-    ETH0_LINK_LED : in STD_LOGIC_VECTOR ( 0 to 0 );
+    ETH0_LINK_LED_inv : in STD_LOGIC_VECTOR ( 0 to 0 );
     data_in_to_device : out STD_LOGIC_VECTOR ( 2 downto 0 );
     phy_tx_en : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_mii_rx_dv : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -29,12 +29,6 @@ architecture STRUCTURE of ETH0_LEDs_imp_437WON is
     Res : out STD_LOGIC
   );
   end component msys_util_reduced_logic_0_1;
-  component msys_xlslice_0_1 is
-  port (
-    Din : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    Dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
-  );
-  end component msys_xlslice_0_1;
   component msys_xlconcat_1_1 is
   port (
     In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -43,35 +37,43 @@ architecture STRUCTURE of ETH0_LEDs_imp_437WON is
     dout : out STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   end component msys_xlconcat_1_1;
-  signal ETH0_LINK_LED_1 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal ETH0_util_reduced_logic_0_Res : STD_LOGIC;
+  component msys_xlconcat_0_9 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component msys_xlconcat_0_9;
+  signal ETH0_LEDs_ETH0_DA_Y_0 : STD_LOGIC;
+  signal ETH0_LINK_LED_inv_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal ETH0_xlconcat_0_dout : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal ETH0_xlslice_0to1_0_Dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal ETH_xlconcat_0_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal phy_tx_en_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal s_mii_rx_dv_1 : STD_LOGIC_VECTOR ( 0 to 0 );
 begin
-  ETH0_DA_G(0) <= ETH0_LINK_LED_1(0);
-  ETH0_DA_Y <= ETH0_util_reduced_logic_0_Res;
-  ETH0_LINK_LED_1(0) <= ETH0_LINK_LED(0);
+  ETH0_DA_G(0) <= ETH0_LINK_LED_inv_0(0);
+  ETH0_DA_Y <= ETH0_LEDs_ETH0_DA_Y_0;
+  ETH0_LINK_LED_inv_0(0) <= ETH0_LINK_LED_inv(0);
   data_in_to_device(2 downto 0) <= ETH0_xlconcat_0_dout(2 downto 0);
   phy_tx_en_1(0) <= phy_tx_en(0);
   s_mii_rx_dv_1(0) <= s_mii_rx_dv(0);
 ETH0_util_reduced_logic_0: component msys_util_reduced_logic_0_1
      port map (
-      Op1(1 downto 0) => ETH0_xlslice_0to1_0_Dout(1 downto 0),
-      Res => ETH0_util_reduced_logic_0_Res
+      Op1(1 downto 0) => ETH_xlconcat_0_dout(1 downto 0),
+      Res => ETH0_LEDs_ETH0_DA_Y_0
     );
 ETH0_xlconcat_0: component msys_xlconcat_1_1
      port map (
-      In0(0) => ETH0_LINK_LED_1(0),
+      In0(0) => ETH0_LINK_LED_inv_0(0),
       In1(0) => s_mii_rx_dv_1(0),
       In2(0) => phy_tx_en_1(0),
       dout(2 downto 0) => ETH0_xlconcat_0_dout(2 downto 0)
     );
-ETH0_xlslice_2to1_0: component msys_xlslice_0_1
+ETH_xlconcat_1: component msys_xlconcat_0_9
      port map (
-      Din(2 downto 0) => ETH0_xlconcat_0_dout(2 downto 0),
-      Dout(1 downto 0) => ETH0_xlslice_0to1_0_Dout(1 downto 0)
+      In0(0) => s_mii_rx_dv_1(0),
+      In1(0) => phy_tx_en_1(0),
+      dout(1 downto 0) => ETH_xlconcat_0_dout(1 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -5586,7 +5588,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity ETH0_imp_1S8N2C8 is
   port (
-    CLK : in STD_LOGIC;
+    CLK1B_50MHz_phy_clk_in : in STD_LOGIC;
     ETH0_DA_G : out STD_LOGIC_VECTOR ( 0 to 0 );
     ETH0_DA_Y : out STD_LOGIC;
     ETH0_LINK_LED : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -5594,10 +5596,12 @@ entity ETH0_imp_1S8N2C8 is
     ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
     ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
     ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
+    ETH_vio_out : out STD_LOGIC_VECTOR ( 2 downto 0 );
     RMII_PHY_M_0_crs_dv : in STD_LOGIC;
     RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RMII_PHY_M_0_tx_en : out STD_LOGIC;
     RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    SC0712_0_mcs_clk_in : in STD_LOGIC;
     S_AXI_araddr : in STD_LOGIC_VECTOR ( 12 downto 0 );
     S_AXI_arready : out STD_LOGIC;
     S_AXI_arvalid : in STD_LOGIC;
@@ -5615,16 +5619,15 @@ entity ETH0_imp_1S8N2C8 is
     S_AXI_wready : out STD_LOGIC;
     S_AXI_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S_AXI_wvalid : in STD_LOGIC;
-    data_in_to_device : out STD_LOGIC_VECTOR ( 2 downto 0 );
     dcm_locked : in STD_LOGIC;
     ext_reset_in : in STD_LOGIC;
     interconnect_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 );
     ip2intc_irpt : out STD_LOGIC;
-    mb_debug_sys_rst : in STD_LOGIC;
     phy_rst_n : out STD_LOGIC;
     phy_tx_en : out STD_LOGIC;
-    ref_clk : in STD_LOGIC;
-    s_mii_rx_dv : out STD_LOGIC
+    s_mii_rx_clk : out STD_LOGIC;
+    s_mii_rx_dv : out STD_LOGIC;
+    s_mii_tx_clk : out STD_LOGIC
   );
 end ETH0_imp_1S8N2C8;
 
@@ -5742,6 +5745,7 @@ architecture STRUCTURE of ETH0_imp_1S8N2C8 is
     Q : out STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   end component msys_c_shift_ram_0_5;
+  signal CLK1B_50MHz_phy_clk_0 : STD_LOGIC;
   signal Conn1_ARADDR : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal Conn1_ARREADY : STD_LOGIC;
   signal Conn1_ARVALID : STD_LOGIC;
@@ -5768,26 +5772,23 @@ architecture STRUCTURE of ETH0_imp_1S8N2C8 is
   signal Conn3_MDIO_O : STD_LOGIC;
   signal Conn3_MDIO_T : STD_LOGIC;
   signal ETH0_LEDs_ETH0_DA_G : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal ETH0_LEDs_ETH0_DA_Y : STD_LOGIC;
+  signal ETH0_LEDs_ETH0_DA_Y_0 : STD_LOGIC;
   signal ETH0_LEDs_data_in_to_device_0 : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal ETH0_LEDs_data_in_to_device_1 : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal ETH0_LINK_LED_1 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal ETH0_LINK_LED_2 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal ETH0_LINK_LED_0 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal ETH0_LINK_LED_inv_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal ETH0_proc_sys_reset_0_interconnect_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal ETH_vio_out_0 : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal SC0712_0_mcs_clk_0 : STD_LOGIC;
   signal axi_ethernetlite_0_MII_COL : STD_LOGIC;
   signal axi_ethernetlite_0_MII_CRS : STD_LOGIC;
   signal axi_ethernetlite_0_MII_RST_N : STD_LOGIC;
   signal axi_ethernetlite_0_MII_RXD : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal axi_ethernetlite_0_MII_RX_CLK : STD_LOGIC;
   signal axi_ethernetlite_0_MII_RX_ER : STD_LOGIC;
   signal axi_ethernetlite_0_MII_TXD : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal axi_ethernetlite_0_MII_TX_CLK : STD_LOGIC;
   signal axi_ethernetlite_0_ip2intc_irpt : STD_LOGIC;
   signal axi_ethernetlite_0_phy_tx_en : STD_LOGIC;
   signal dcm_locked_1 : STD_LOGIC;
   signal ext_reset_in_1 : STD_LOGIC;
-  signal mb_debug_sys_rst_1 : STD_LOGIC;
   signal mii_y_adapater_0_M_MII_COL : STD_LOGIC;
   signal mii_y_adapater_0_M_MII_CRS : STD_LOGIC;
   signal mii_y_adapater_0_M_MII_RXD : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -5799,14 +5800,16 @@ architecture STRUCTURE of ETH0_imp_1S8N2C8 is
   signal mii_y_adapater_0_M_MII_TX_EN : STD_LOGIC;
   signal mii_y_adapater_0_M_MII_TX_ER : STD_LOGIC;
   signal mii_y_adapater_0_phy_rst_n : STD_LOGIC;
+  signal mii_y_adapater_0_s_mii_rx_clk : STD_LOGIC;
   signal mii_y_adapater_0_s_mii_rx_dv : STD_LOGIC;
-  signal ref_clk_1 : STD_LOGIC;
+  signal mii_y_adapater_0_s_mii_tx_clk : STD_LOGIC;
   signal rst_n_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_ETH0_proc_sys_reset_0_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_ETH0_proc_sys_reset_0_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_ETH0_proc_sys_reset_0_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_mii_y_adapater_0_m_mii_rst_n_UNCONNECTED : STD_LOGIC;
 begin
+  CLK1B_50MHz_phy_clk_0 <= CLK1B_50MHz_phy_clk_in;
   Conn1_ARADDR(12 downto 0) <= S_AXI_araddr(12 downto 0);
   Conn1_ARVALID <= S_AXI_arvalid;
   Conn1_AWADDR(12 downto 0) <= S_AXI_awaddr(12 downto 0);
@@ -5820,14 +5823,15 @@ begin
   Conn2_RXD(1 downto 0) <= RMII_PHY_M_0_rxd(1 downto 0);
   Conn3_MDIO_I <= ETH0_MDIO_MDC_mdio_i;
   ETH0_DA_G(0) <= ETH0_LEDs_ETH0_DA_G(0);
-  ETH0_DA_Y <= ETH0_LEDs_ETH0_DA_Y;
-  ETH0_LINK_LED_2(0) <= ETH0_LINK_LED(0);
+  ETH0_DA_Y <= ETH0_LEDs_ETH0_DA_Y_0;
+  ETH0_LINK_LED_0(0) <= ETH0_LINK_LED(0);
   ETH0_MDIO_MDC_mdc <= Conn3_MDC;
   ETH0_MDIO_MDC_mdio_o <= Conn3_MDIO_O;
   ETH0_MDIO_MDC_mdio_t <= Conn3_MDIO_T;
+  ETH_vio_out(2 downto 0) <= ETH_vio_out_0(2 downto 0);
   RMII_PHY_M_0_tx_en <= Conn2_TX_EN;
   RMII_PHY_M_0_txd(1 downto 0) <= Conn2_TXD(1 downto 0);
-  SC0712_0_mcs_clk_0 <= CLK;
+  SC0712_0_mcs_clk_0 <= SC0712_0_mcs_clk_in;
   S_AXI_arready <= Conn1_ARREADY;
   S_AXI_awready <= Conn1_AWREADY;
   S_AXI_bresp(1 downto 0) <= Conn1_BRESP(1 downto 0);
@@ -5836,45 +5840,31 @@ begin
   S_AXI_rresp(1 downto 0) <= Conn1_RRESP(1 downto 0);
   S_AXI_rvalid <= Conn1_RVALID;
   S_AXI_wready <= Conn1_WREADY;
-  data_in_to_device(2 downto 0) <= ETH0_LEDs_data_in_to_device_1(2 downto 0);
   dcm_locked_1 <= dcm_locked;
   ext_reset_in_1 <= ext_reset_in;
   interconnect_aresetn(0) <= ETH0_proc_sys_reset_0_interconnect_aresetn(0);
   ip2intc_irpt <= axi_ethernetlite_0_ip2intc_irpt;
-  mb_debug_sys_rst_1 <= mb_debug_sys_rst;
   phy_rst_n <= mii_y_adapater_0_phy_rst_n;
   phy_tx_en <= axi_ethernetlite_0_phy_tx_en;
-  ref_clk_1 <= ref_clk;
+  s_mii_rx_clk <= mii_y_adapater_0_s_mii_rx_clk;
   s_mii_rx_dv <= mii_y_adapater_0_s_mii_rx_dv;
+  s_mii_tx_clk <= mii_y_adapater_0_s_mii_tx_clk;
 ETH0_CDC_c_shift_ram_0: component msys_c_shift_ram_0_5
      port map (
       CLK => SC0712_0_mcs_clk_0,
       D(2 downto 0) => ETH0_LEDs_data_in_to_device_0(2 downto 0),
-      Q(2 downto 0) => ETH0_LEDs_data_in_to_device_1(2 downto 0)
+      Q(2 downto 0) => ETH_vio_out_0(2 downto 0)
     );
 ETH0_LEDs: entity work.ETH0_LEDs_imp_437WON
      port map (
       ETH0_DA_G(0) => ETH0_LEDs_ETH0_DA_G(0),
-      ETH0_DA_Y => ETH0_LEDs_ETH0_DA_Y,
-      ETH0_LINK_LED(0) => ETH0_LINK_LED_1(0),
+      ETH0_DA_Y => ETH0_LEDs_ETH0_DA_Y_0,
+      ETH0_LINK_LED_inv(0) => ETH0_LINK_LED_inv_0(0),
       data_in_to_device(2 downto 0) => ETH0_LEDs_data_in_to_device_0(2 downto 0),
       phy_tx_en(0) => axi_ethernetlite_0_phy_tx_en,
       s_mii_rx_dv(0) => mii_y_adapater_0_s_mii_rx_dv
     );
-ETH0_proc_sys_reset_0: component msys_proc_sys_reset_eth_0
-     port map (
-      aux_reset_in => '1',
-      bus_struct_reset(0) => NLW_ETH0_proc_sys_reset_0_bus_struct_reset_UNCONNECTED(0),
-      dcm_locked => dcm_locked_1,
-      ext_reset_in => ext_reset_in_1,
-      interconnect_aresetn(0) => ETH0_proc_sys_reset_0_interconnect_aresetn(0),
-      mb_debug_sys_rst => mb_debug_sys_rst_1,
-      mb_reset => NLW_ETH0_proc_sys_reset_0_mb_reset_UNCONNECTED,
-      peripheral_aresetn(0) => rst_n_1(0),
-      peripheral_reset(0) => NLW_ETH0_proc_sys_reset_0_peripheral_reset_UNCONNECTED(0),
-      slowest_sync_clk => ref_clk_1
-    );
-axi_ethernetlite_0: component msys_axi_ethernetlite_0_0
+ETH0_axi_ethernetlite_0: component msys_axi_ethernetlite_0_0
      port map (
       ip2intc_irpt => axi_ethernetlite_0_ip2intc_irpt,
       phy_col => axi_ethernetlite_0_MII_COL,
@@ -5885,13 +5875,13 @@ axi_ethernetlite_0: component msys_axi_ethernetlite_0_0
       phy_mdio_o => Conn3_MDIO_O,
       phy_mdio_t => Conn3_MDIO_T,
       phy_rst_n => axi_ethernetlite_0_MII_RST_N,
-      phy_rx_clk => axi_ethernetlite_0_MII_RX_CLK,
+      phy_rx_clk => '0',
       phy_rx_data(3 downto 0) => axi_ethernetlite_0_MII_RXD(3 downto 0),
       phy_rx_er => axi_ethernetlite_0_MII_RX_ER,
-      phy_tx_clk => axi_ethernetlite_0_MII_TX_CLK,
+      phy_tx_clk => '0',
       phy_tx_data(3 downto 0) => axi_ethernetlite_0_MII_TXD(3 downto 0),
       phy_tx_en => axi_ethernetlite_0_phy_tx_en,
-      s_axi_aclk => ref_clk_1,
+      s_axi_aclk => CLK1B_50MHz_phy_clk_0,
       s_axi_araddr(12 downto 0) => Conn1_ARADDR(12 downto 0),
       s_axi_aresetn => rst_n_1(0),
       s_axi_arready => Conn1_ARREADY,
@@ -5911,7 +5901,7 @@ axi_ethernetlite_0: component msys_axi_ethernetlite_0_0
       s_axi_wstrb(3 downto 0) => Conn1_WSTRB(3 downto 0),
       s_axi_wvalid => Conn1_WVALID
     );
-mii_to_rmii_0: component msys_mii_to_rmii_0_0
+ETH0_mii_to_rmii_0: component msys_mii_to_rmii_0_0
      port map (
       mac2rmii_tx_en => mii_y_adapater_0_M_MII_TX_EN,
       mac2rmii_tx_er => mii_y_adapater_0_M_MII_TX_ER,
@@ -5919,7 +5909,7 @@ mii_to_rmii_0: component msys_mii_to_rmii_0_0
       phy2rmii_crs_dv => Conn2_CRS_DV,
       phy2rmii_rx_er => '0',
       phy2rmii_rxd(1 downto 0) => Conn2_RXD(1 downto 0),
-      ref_clk => ref_clk_1,
+      ref_clk => CLK1B_50MHz_phy_clk_0,
       rmii2mac_col => mii_y_adapater_0_M_MII_COL,
       rmii2mac_crs => mii_y_adapater_0_M_MII_CRS,
       rmii2mac_rx_clk => mii_y_adapater_0_M_MII_RX_CLK,
@@ -5930,6 +5920,19 @@ mii_to_rmii_0: component msys_mii_to_rmii_0_0
       rmii2phy_tx_en => Conn2_TX_EN,
       rmii2phy_txd(1 downto 0) => Conn2_TXD(1 downto 0),
       rst_n => rst_n_1(0)
+    );
+ETH0_proc_sys_reset_0: component msys_proc_sys_reset_eth_0
+     port map (
+      aux_reset_in => '1',
+      bus_struct_reset(0) => NLW_ETH0_proc_sys_reset_0_bus_struct_reset_UNCONNECTED(0),
+      dcm_locked => dcm_locked_1,
+      ext_reset_in => ext_reset_in_1,
+      interconnect_aresetn(0) => ETH0_proc_sys_reset_0_interconnect_aresetn(0),
+      mb_debug_sys_rst => '0',
+      mb_reset => NLW_ETH0_proc_sys_reset_0_mb_reset_UNCONNECTED,
+      peripheral_aresetn(0) => rst_n_1(0),
+      peripheral_reset(0) => NLW_ETH0_proc_sys_reset_0_peripheral_reset_UNCONNECTED(0),
+      slowest_sync_clk => CLK1B_50MHz_phy_clk_0
     );
 mii_y_adapater_0: component msys_mii_y_adapater_0_0
      port map (
@@ -5948,19 +5951,19 @@ mii_y_adapater_0: component msys_mii_y_adapater_0_0
       s_mii_col => axi_ethernetlite_0_MII_COL,
       s_mii_crs => axi_ethernetlite_0_MII_CRS,
       s_mii_rst_n => axi_ethernetlite_0_MII_RST_N,
-      s_mii_rx_clk => axi_ethernetlite_0_MII_RX_CLK,
+      s_mii_rx_clk => mii_y_adapater_0_s_mii_rx_clk,
       s_mii_rx_dv => mii_y_adapater_0_s_mii_rx_dv,
       s_mii_rx_er => axi_ethernetlite_0_MII_RX_ER,
       s_mii_rxd(3 downto 0) => axi_ethernetlite_0_MII_RXD(3 downto 0),
-      s_mii_tx_clk => axi_ethernetlite_0_MII_TX_CLK,
+      s_mii_tx_clk => mii_y_adapater_0_s_mii_tx_clk,
       s_mii_tx_en => '0',
       s_mii_tx_er => '0',
       s_mii_txd(3 downto 0) => axi_ethernetlite_0_MII_TXD(3 downto 0)
     );
 util_vector_logic_0: component msys_util_vector_logic_0_5
      port map (
-      Op1(0) => ETH0_LINK_LED_2(0),
-      Res(0) => ETH0_LINK_LED_1(0)
+      Op1(0) => ETH0_LINK_LED_0(0),
+      Res(0) => ETH0_LINK_LED_inv_0(0)
     );
 end STRUCTURE;
 library IEEE;
@@ -10760,7 +10763,7 @@ entity msys is
     rotenc_decoder_resetn : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=205,numReposBlks=166,numNonXlnxBlks=3,numHierBlks=39,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=204,numReposBlks=165,numNonXlnxBlks=3,numHierBlks=39,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of msys : entity is "msys.hwdef";
 end msys;
@@ -10788,12 +10791,14 @@ architecture STRUCTURE of msys is
   component msys_labtools_fmeter_0_0 is
   port (
     refclk : in STD_LOGIC;
-    fin : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    fin : in STD_LOGIC_VECTOR ( 6 downto 0 );
     F0 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     F1 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     F2 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     F3 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     F4 : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    F5 : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    F6 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     update : out STD_LOGIC
   );
   end component msys_labtools_fmeter_0_0;
@@ -10936,6 +10941,8 @@ architecture STRUCTURE of msys is
     probe_in23 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_in24 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_in25 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe_in26 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe_in27 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_out0 : out STD_LOGIC_VECTOR ( 12 downto 0 )
   );
   end component msys_vio_0_0;
@@ -10946,7 +10953,9 @@ architecture STRUCTURE of msys is
     In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
     In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
     In4 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    dout : out STD_LOGIC_VECTOR ( 4 downto 0 )
+    In5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 6 downto 0 )
   );
   end component msys_xlconcat_0_0;
   component msys_axi_iic_0_0 is
@@ -11297,11 +11306,6 @@ architecture STRUCTURE of msys is
     BUFG_O : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_util_ds_buf_3_0;
-  component msys_xlconstant_0_11 is
-  port (
-    dout : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component msys_xlconstant_0_11;
   component msys_xlconstant_0_18 is
   port (
     dout : out STD_LOGIC_VECTOR ( 0 to 0 )
@@ -11326,24 +11330,24 @@ architecture STRUCTURE of msys is
   signal CLK2_125MHz_mgt_g_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal CLK3_50MHz_mig_diff_0_CLK_N : STD_LOGIC;
   signal CLK3_50MHz_mig_diff_0_CLK_P : STD_LOGIC;
-  signal ETH0_ETH0_DA_G : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal ETH0_ETH0_DA_Y : STD_LOGIC;
   signal ETH0_ETH0_MDIO_MDC_MDC : STD_LOGIC;
   signal ETH0_ETH0_MDIO_MDC_MDIO_I : STD_LOGIC;
   signal ETH0_ETH0_MDIO_MDC_MDIO_O : STD_LOGIC;
   signal ETH0_ETH0_MDIO_MDC_MDIO_T : STD_LOGIC;
-  signal ETH0_LINK_LED_g_1 : STD_LOGIC;
+  signal ETH0_LINK_LED_g_0 : STD_LOGIC;
   signal ETH0_RMII_PHY_M_0_CRS_DV : STD_LOGIC;
   signal ETH0_RMII_PHY_M_0_RXD : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal ETH0_RMII_PHY_M_0_TXD : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal ETH0_RMII_PHY_M_0_TX_EN : STD_LOGIC;
   signal ETH0_ip2intc_irpt : STD_LOGIC;
   signal ETH0_phy_rst_n : STD_LOGIC;
+  signal ETH0_s_mii_rx_clk : STD_LOGIC;
+  signal ETH0_s_mii_tx_clk : STD_LOGIC;
+  signal ETH_vio_0 : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal FPGA_IO_1 : STD_LOGIC;
   signal INT_ctrl_interrupt_ACK : STD_LOGIC_VECTOR ( 0 to 1 );
   signal INT_ctrl_interrupt_ADDRESS : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal INT_ctrl_interrupt_INTERRUPT : STD_LOGIC;
-  signal In2_1 : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal M05_ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal Net : STD_LOGIC;
   signal PLL_int_1 : STD_LOGIC;
@@ -11496,13 +11500,14 @@ architecture STRUCTURE of msys is
   signal fft24_data_tlast_in_0 : STD_LOGIC;
   signal fft24_data_tready_out_0 : STD_LOGIC;
   signal fft24_data_tvalid_in_0 : STD_LOGIC;
+  signal labtools_fmeter_0_F5 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal labtools_fmeter_0_F6 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal labtools_fmeter_0_update : STD_LOGIC;
   signal lt_F0_MIG_50mhz : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal lt_F1_mgt_ref : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal lt_F2_CLK1B : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal lt_F3_CLK0 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal lt_F4_TRX_LVDS_divclk : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mdm_1_debug_sys_rst : STD_LOGIC;
   signal microblaze_0_Clk_100MHz : STD_LOGIC;
   signal microblaze_0_M_AXI_DC_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal microblaze_0_M_AXI_DC_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -11918,8 +11923,7 @@ architecture STRUCTURE of msys is
   signal xfft_rx24_dly3198_event_tlast_missing_out_0 : STD_LOGIC;
   signal xfft_rx24_dly3198_event_tlast_unexpected_out_0 : STD_LOGIC;
   signal xfft_rx24_dly3449_event_frame_started_out_0 : STD_LOGIC;
-  signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 4 downto 0 );
-  signal xlconstant_0_len1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 6 downto 0 );
   signal NLW_ROTENC_decoder_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal NLW_UART0_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_BOARD_iic_0_gpo_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -11929,6 +11933,7 @@ architecture STRUCTURE of msys is
   signal NLW_axi_timer_0_generateout0_UNCONNECTED : STD_LOGIC;
   signal NLW_axi_timer_0_generateout1_UNCONNECTED : STD_LOGIC;
   signal NLW_axi_timer_0_pwm0_UNCONNECTED : STD_LOGIC;
+  signal NLW_mdm_1_Debug_SYS_Rst_UNCONNECTED : STD_LOGIC;
   signal NLW_mgt_clk0_CLK2_util_ds_buf_1_IBUF_DS_ODIV2_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_proc_sys_reset_0_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_proc_sys_reset_0_peripheral_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -12081,10 +12086,8 @@ begin
   DDR3_SDRAM_reset_n <= mig_7series_0_DDR3_RESET_N;
   DDR3_SDRAM_we_n <= mig_7series_0_DDR3_WE_N;
   DDR3_init_calib_complete <= mig_7series_0_init_calib_complete;
-  ETH0_DA_G(0) <= ETH0_ETH0_DA_G(0);
-  ETH0_DA_Y <= ETH0_ETH0_DA_Y;
   ETH0_ETH0_MDIO_MDC_MDIO_I <= ETH0_MDIO_MDC_mdio_i;
-  ETH0_LINK_LED_g_1 <= ETH0_LINK_LED_g;
+  ETH0_LINK_LED_g_0 <= ETH0_LINK_LED_g;
   ETH0_MDIO_MDC_mdc <= ETH0_ETH0_MDIO_MDC_MDC;
   ETH0_MDIO_MDC_mdio_o <= ETH0_ETH0_MDIO_MDC_MDIO_O;
   ETH0_MDIO_MDC_mdio_t <= ETH0_ETH0_MDIO_MDC_MDIO_T;
@@ -12213,18 +12216,20 @@ CLK1B_util_ds_buf_0: component msys_util_ds_buf_0_0
     );
 ETH0: entity work.ETH0_imp_1S8N2C8
      port map (
-      CLK => SC0712_0_mcs_clk_out,
-      ETH0_DA_G(0) => ETH0_ETH0_DA_G(0),
-      ETH0_DA_Y => ETH0_ETH0_DA_Y,
-      ETH0_LINK_LED(0) => ETH0_LINK_LED_g_1,
+      CLK1B_50MHz_phy_clk_in => CLK1B_50MHz_phy_clk_g_0(0),
+      ETH0_DA_G(0) => ETH0_DA_G(0),
+      ETH0_DA_Y => ETH0_DA_Y,
+      ETH0_LINK_LED(0) => ETH0_LINK_LED_g_0,
       ETH0_MDIO_MDC_mdc => ETH0_ETH0_MDIO_MDC_MDC,
       ETH0_MDIO_MDC_mdio_i => ETH0_ETH0_MDIO_MDC_MDIO_I,
       ETH0_MDIO_MDC_mdio_o => ETH0_ETH0_MDIO_MDC_MDIO_O,
       ETH0_MDIO_MDC_mdio_t => ETH0_ETH0_MDIO_MDC_MDIO_T,
+      ETH_vio_out(2 downto 0) => ETH_vio_0(2 downto 0),
       RMII_PHY_M_0_crs_dv => ETH0_RMII_PHY_M_0_CRS_DV,
       RMII_PHY_M_0_rxd(1 downto 0) => ETH0_RMII_PHY_M_0_RXD(1 downto 0),
       RMII_PHY_M_0_tx_en => ETH0_RMII_PHY_M_0_TX_EN,
       RMII_PHY_M_0_txd(1 downto 0) => ETH0_RMII_PHY_M_0_TXD(1 downto 0),
+      SC0712_0_mcs_clk_in => SC0712_0_mcs_clk_out,
       S_AXI_araddr(12 downto 0) => microblaze_0_axi_periph_M05_AXI_ARADDR(12 downto 0),
       S_AXI_arready => microblaze_0_axi_periph_M05_AXI_ARREADY,
       S_AXI_arvalid => microblaze_0_axi_periph_M05_AXI_ARVALID,
@@ -12242,16 +12247,15 @@ ETH0: entity work.ETH0_imp_1S8N2C8
       S_AXI_wready => microblaze_0_axi_periph_M05_AXI_WREADY,
       S_AXI_wstrb(3 downto 0) => microblaze_0_axi_periph_M05_AXI_WSTRB(3 downto 0),
       S_AXI_wvalid => microblaze_0_axi_periph_M05_AXI_WVALID,
-      data_in_to_device(2 downto 0) => In2_1(2 downto 0),
       dcm_locked => mig_7series_0_mmcm_locked,
       ext_reset_in => mig_7series_0_ui_clk_sync_rst,
       interconnect_aresetn(0) => M05_ARESETN_1(0),
       ip2intc_irpt => ETH0_ip2intc_irpt,
-      mb_debug_sys_rst => mdm_1_debug_sys_rst,
       phy_rst_n => ETH0_phy_rst_n,
       phy_tx_en => axi_ethernetlite_0_phy_tx_en,
-      ref_clk => CLK1B_50MHz_phy_clk_g_0(0),
-      s_mii_rx_dv => mii_y_adapater_0_s_mii_rx_dv
+      s_mii_rx_clk => ETH0_s_mii_rx_clk,
+      s_mii_rx_dv => mii_y_adapater_0_s_mii_rx_dv,
+      s_mii_tx_clk => ETH0_s_mii_tx_clk
     );
 INT_ctrl: entity work.INT_ctrl_imp_PISLEF
      port map (
@@ -12299,7 +12303,7 @@ PWM_lights: entity work.PWM_lights_imp_1HWCS6J
      port map (
       In0(0) => mii_y_adapater_0_s_mii_rx_dv,
       In1(0) => axi_ethernetlite_0_phy_tx_en,
-      In2(2 downto 0) => In2_1(2 downto 0),
+      In2(2 downto 0) => ETH_vio_0(2 downto 0),
       In3(0) => mig_7series_0_init_calib_complete,
       LCD_BL(0) => PWM_lights_LCD_BL(0),
       LCD_rstn(0) => PWM_lights_LCD_rstn(0),
@@ -12846,9 +12850,22 @@ labtools_fmeter_0: component msys_labtools_fmeter_0_0
       F2(31 downto 0) => lt_F2_CLK1B(31 downto 0),
       F3(31 downto 0) => lt_F3_CLK0(31 downto 0),
       F4(31 downto 0) => lt_F4_TRX_LVDS_divclk(31 downto 0),
-      fin(4 downto 0) => xlconcat_0_dout(4 downto 0),
+      F5(31 downto 0) => labtools_fmeter_0_F5(31 downto 0),
+      F6(31 downto 0) => labtools_fmeter_0_F6(31 downto 0),
+      fin(6 downto 0) => xlconcat_0_dout(6 downto 0),
       refclk => microblaze_0_Clk_100MHz,
       update => labtools_fmeter_0_update
+    );
+lt_fmeter_xlconcat_0: component msys_xlconcat_0_0
+     port map (
+      In0(0) => mig_7series_0_ui_addn_clk_2_50MHz,
+      In1(0) => CLK2_125MHz_mgt_g_0(0),
+      In2(0) => CLK1B_50MHz_phy_clk_g_0(0),
+      In3(0) => CLK0_NA_g_0(0),
+      In4(0) => TRX_rx_div_clk_g_0,
+      In5(0) => ETH0_s_mii_tx_clk,
+      In6(0) => ETH0_s_mii_rx_clk,
+      dout(6 downto 0) => xlconcat_0_dout(6 downto 0)
     );
 mdm_1: component msys_mdm_1_0
      port map (
@@ -12861,7 +12878,7 @@ mdm_1: component msys_mdm_1_0
       Dbg_TDI_0 => microblaze_0_debug_TDI,
       Dbg_TDO_0 => microblaze_0_debug_TDO,
       Dbg_Update_0 => microblaze_0_debug_UPDATE,
-      Debug_SYS_Rst => mdm_1_debug_sys_rst
+      Debug_SYS_Rst => NLW_mdm_1_Debug_SYS_Rst_UNCONNECTED
     );
 mgt_clk0_CLK2_util_ds_buf_1: component msys_util_ds_buf_1_0
      port map (
@@ -13435,12 +13452,12 @@ proc_sys_reset_0: component msys_proc_sys_reset_0_0
     );
 rst_mig_7series_0_100M: component msys_rst_mig_7series_0_100M_0
      port map (
-      aux_reset_in => xlconstant_0_len1_dout(0),
+      aux_reset_in => '1',
       bus_struct_reset(0) => rst_mig_7series_0_100M_bus_struct_reset(0),
       dcm_locked => mig_7series_0_mmcm_locked,
       ext_reset_in => mig_7series_0_ui_clk_sync_rst,
       interconnect_aresetn(0) => ARESETN_1(0),
-      mb_debug_sys_rst => mdm_1_debug_sys_rst,
+      mb_debug_sys_rst => '0',
       mb_reset => rst_mig_7series_0_100M_mb_reset,
       peripheral_aresetn(0) => rst_mig_7series_0_100M_peripheral_aresetn(0),
       peripheral_reset(0) => rst_mig_7series_0_100M_peripheral_reset(0),
@@ -13480,7 +13497,9 @@ vio_0: component msys_vio_0_0
       probe_in22(31 downto 0) => postmem_rx09_doutb_out_0(31 downto 0),
       probe_in23(31 downto 0) => postmem_rx24_doutb_out_0(31 downto 0),
       probe_in24(31 downto 0) => ROTENC_decoder_Q(31 downto 0),
-      probe_in25(2 downto 0) => In2_1(2 downto 0),
+      probe_in25(2 downto 0) => ETH_vio_0(2 downto 0),
+      probe_in26(31 downto 0) => labtools_fmeter_0_F5(31 downto 0),
+      probe_in27(31 downto 0) => labtools_fmeter_0_F6(31 downto 0),
       probe_in3(31 downto 0) => lt_F3_CLK0(31 downto 0),
       probe_in4(0) => labtools_fmeter_0_update,
       probe_in5(0) => SC0712_0_reset_out,
@@ -13489,18 +13508,5 @@ vio_0: component msys_vio_0_0
       probe_in8(31 downto 0) => lt_F4_TRX_LVDS_divclk(31 downto 0),
       probe_in9(0) => FPGA_IO_1,
       probe_out0(12 downto 0) => postmem_rx_addrb_in_0(12 downto 0)
-    );
-xlconcat_0: component msys_xlconcat_0_0
-     port map (
-      In0(0) => mig_7series_0_ui_addn_clk_2_50MHz,
-      In1(0) => CLK2_125MHz_mgt_g_0(0),
-      In2(0) => CLK1B_50MHz_phy_clk_g_0(0),
-      In3(0) => CLK0_NA_g_0(0),
-      In4(0) => TRX_rx_div_clk_g_0,
-      dout(4 downto 0) => xlconcat_0_dout(4 downto 0)
-    );
-xlconstant_1_len1: component msys_xlconstant_0_11
-     port map (
-      dout(0) => xlconstant_0_len1_dout(0)
     );
 end STRUCTURE;

@@ -7,7 +7,7 @@ create_clock -period 20.000 -name CLK3_sys_diff_clk_p -waveform {0.000 10.000} [
 
 create_clock -period 15.625 -name TRX_rx_clk_64MHz_clk_p -waveform {0.000 7.812} [get_ports TRX_rx_clk_64MHz_clk_p]
 
-create_clock -period 40.000 -name RMII_rx_clk [get_pins msys_i/ETH0/mii_to_rmii_0/U0/rmii2mac_rx_clk_bi_reg/Q]
+create_clock -period 40.000 -name RMII_rx_clk [get_pins msys_i/ETH0/ETH0_mii_to_rmii_0/U0/rmii2mac_rx_clk_bi_reg/Q]
 
 
 set_multicycle_path -setup -from [get_pins {auto_LVDS_rotate_i/rot_in_reg[*]/C}] -to [get_pins {auto_LVDS_rotate_i/barrel_rot32_i/q_reg[*]/D}] 2
@@ -36,8 +36,8 @@ set_false_path -from [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_ms
 
 set_false_path -from [get_pins {msys_i/SC0712_0/U0/rst_delay_i_reg[3]/C}] -to [get_pins -hierarchical -filter {NAME =~*u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/rstdiv0*/PRE}]
 
-set_false_path -from [get_clocks msys_i/ETH0/axi_ethernetlite_0/U0/phy_tx_clk] -to [get_clocks -of_objects [get_pins msys_i/BOARD_clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0]]
-set_false_path -from [get_clocks msys_i/ETH0/axi_ethernetlite_0/U0/phy_tx_clk] -to [get_clocks CFGMCLK]
+set_false_path -from [get_clocks msys_i/ETH0/ETH0_axi_ethernetlite_0/U0/phy_tx_clk] -to [get_clocks -of_objects [get_pins msys_i/BOARD_clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0]]
+set_false_path -from [get_clocks msys_i/ETH0/ETH0_axi_ethernetlite_0/U0/phy_tx_clk] -to [get_clocks CFGMCLK]
 
 set_false_path -from [get_clocks TRX_rx_clk_64MHz_clk_p] -to [get_clocks CFGMCLK]
 set_false_path -from [get_clocks TRX_rx_clk_64MHz_clk_p] -to [get_clocks {CLK0_clk_p[0]}]

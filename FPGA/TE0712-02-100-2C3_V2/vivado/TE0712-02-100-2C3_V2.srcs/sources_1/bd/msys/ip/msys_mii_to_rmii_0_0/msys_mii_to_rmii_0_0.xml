@@ -377,11 +377,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 20 10:55:31 UTC 2020</spirit:value>
+            <spirit:value>Mon Jul 20 19:11:50 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:248aaa5d</spirit:value>
+            <spirit:value>9:44e53212</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -392,7 +392,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:248aaa5d</spirit:value>
+            <spirit:value>9:44e53212</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -408,11 +408,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 20 10:55:31 UTC 2020</spirit:value>
+            <spirit:value>Mon Jul 20 19:11:50 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:248aaa5d</spirit:value>
+            <spirit:value>9:44e53212</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -428,11 +428,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 20 10:55:31 UTC 2020</spirit:value>
+            <spirit:value>Mon Jul 20 19:11:50 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9028227a</spirit:value>
+            <spirit:value>9:8f8c3286</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -448,11 +448,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 20 10:55:31 UTC 2020</spirit:value>
+            <spirit:value>Mon Jul 20 19:11:50 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9028227a</spirit:value>
+            <spirit:value>9:8f8c3286</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -466,11 +466,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 20 10:55:31 UTC 2020</spirit:value>
+            <spirit:value>Mon Jul 20 19:11:50 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:248aaa5d</spirit:value>
+            <spirit:value>9:44e53212</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -729,7 +729,7 @@
       <spirit:modelParameter spirit:dataType="std_logic">
         <spirit:name>C_FIXED_SPEED</spirit:name>
         <spirit:displayName>Fixed Speed</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_FIXED_SPEED">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_FIXED_SPEED">0</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_INCLUDE_BUF</spirit:name>
@@ -739,7 +739,7 @@
       <spirit:modelParameter spirit:dataType="std_logic">
         <spirit:name>C_SPEED_100</spirit:name>
         <spirit:displayName>Speed 100</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_SPEED_100">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_SPEED_100">0</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="STRING">
         <spirit:name>C_FAMILY</spirit:name>
@@ -841,7 +841,7 @@
     <spirit:parameter>
       <spirit:name>C_SPEED_100</spirit:name>
       <spirit:displayName>Speed 100</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_SPEED_100" spirit:choiceRef="choice_pairs_4873554b" spirit:order="1300">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_SPEED_100" spirit:choiceRef="choice_pairs_4873554b" spirit:order="1300">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -853,7 +853,7 @@
     <spirit:parameter>
       <spirit:name>C_FIXED_SPEED</spirit:name>
       <spirit:displayName>Fixed Speed</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_FIXED_SPEED" spirit:choiceRef="choice_pairs_4873554b" spirit:order="1200">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_FIXED_SPEED" spirit:choiceRef="choice_pairs_4873554b" spirit:order="1200">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -924,6 +924,8 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.RMII_PHY_M.BOARD.ASSOCIATED_PARAM" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.RST.BOARD.ASSOCIATED_PARAM" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.RST.POLARITY" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_FIXED_SPEED" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SPEED_100" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.RMII_BOARD_INTERFACE" xilinx:valueSource="user"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>

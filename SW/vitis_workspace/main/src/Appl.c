@@ -743,7 +743,7 @@ static void taskEth(void* pvParameters)
 
 		/* Wait for a Receive packet */
 		while (!emacLiteRxFrameLength) {
-			vTaskDelay(pdMS_TO_TICKS(20UL));
+			//vTaskDelay(pdMS_TO_TICKS(20UL));
 			emacLiteRxFrameLength = XEmacLite_Recv(emacLiteInstPtr, (u8*) emacLiteRxFrame);
 		}
 

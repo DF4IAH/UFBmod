@@ -245,3 +245,9 @@ timestamp=[2020-07-19 21:09:38], mode=BUILD, duration=0:00:00.781, duration_ms=7
 timestamp=[2020-07-19 21:13:57], mode=BUILD, duration=0:00:00.797, duration_ms=797, data={name=main, configuration=Debug, clean_build=false}
 timestamp=[2020-07-19 21:29:03], mode=BUILD, duration=0:00:01.063, duration_ms=1063, data={name=main, configuration=Debug, clean_build=false}
 timestamp=[2020-07-19 21:40:26], mode=BUILD, duration=0:00:01.031, duration_ms=1031, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-20 19:19:34], mode=WORKBENCH_START, duration=0:00:13.874, duration_ms=13874, data={}
+timestamp=[2020-07-20 19:19:35], mode=WORKBENCH_UI_INIT, duration=0:00:00.808, duration_ms=808, data={editors_count=5, platform_editors_count=2, projects_count=13, platform_projects_count=1, active_platform_editor=true, projects=RemoteSystemsTempFiles,exp_echo,exp_echo_system,main,main_system,mb0,xemaclite_ping_reply_example_1,xemaclite_ping_reply_example_1_system,xemaclite_ping_req_example_1,xemaclite_ping_req_example_1_system,xiic_low_level_eeprom_example_1,xiic_low_level_tempsensor_example_1,xiic_tempsensor_example_1}
+timestamp=[2020-07-20 19:19:41], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.126, duration_ms=126, data={}
+timestamp=[2020-07-20 19:19:49], mode=BUILD, duration=0:00:00.523, duration_ms=523, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-20 22:36:19], mode=PLATFORM_GENERATION, duration=0:00:03.819, duration_ms=3819, data={name=mb0}
+timestamp=[2020-07-20 22:36:21], mode=BUILD, duration=0:00:01.923, duration_ms=1923, data={name=main, configuration=Debug, clean_build=false}
