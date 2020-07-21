@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Tue Jul 21 12:52:38 2020
+--Date        : Tue Jul 21 14:05:41 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -16,21 +16,13 @@ entity ETH0_LEDs_imp_437WON is
     ETH0_DA_G : out STD_LOGIC_VECTOR ( 0 to 0 );
     ETH0_DA_Y : out STD_LOGIC_VECTOR ( 0 to 0 );
     ETH0_LINK_LED_inv : in STD_LOGIC_VECTOR ( 0 to 0 );
-    Q : out STD_LOGIC_VECTOR ( 22 downto 0 );
     data_to_vio_0 : out STD_LOGIC_VECTOR ( 2 downto 0 );
     phy_tx_en : in STD_LOGIC_VECTOR ( 0 to 0 );
-    s_axi_aclk : in STD_LOGIC;
     s_mii_rx_dv : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
 end ETH0_LEDs_imp_437WON;
 
 architecture STRUCTURE of ETH0_LEDs_imp_437WON is
-  component msys_util_reduced_logic_0_1 is
-  port (
-    Op1 : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    Res : out STD_LOGIC
-  );
-  end component msys_util_reduced_logic_0_1;
   component msys_xlconcat_1_1 is
   port (
     In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -39,77 +31,23 @@ architecture STRUCTURE of ETH0_LEDs_imp_437WON is
     dout : out STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   end component msys_xlconcat_1_1;
-  component msys_xlconcat_0_9 is
+  component msys_xlconstant_0_19 is
   port (
-    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+    dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  end component msys_xlconcat_0_9;
-  component msys_c_counter_binary_0_4 is
-  port (
-    CLK : in STD_LOGIC;
-    SCLR : in STD_LOGIC;
-    THRESH0 : out STD_LOGIC;
-    Q : out STD_LOGIC_VECTOR ( 22 downto 0 )
-  );
-  end component msys_c_counter_binary_0_4;
-  component msys_util_vector_logic_0_6 is
-  port (
-    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component msys_util_vector_logic_0_6;
-  component msys_c_shift_ram_0_7 is
-  port (
-    D : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    CLK : in STD_LOGIC;
-    Q : out STD_LOGIC_VECTOR ( 1 downto 0 )
-  );
-  end component msys_c_shift_ram_0_7;
-  signal ETH0_LEDs_CDC_c_shift_ram_0_Q : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal ETH0_LEDs_util_reduced_logic_0_Res : STD_LOGIC;
-  signal ETH0_LEDs_xlconcat_1_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+  end component msys_xlconstant_0_19;
+  signal ETH0_LEDs_xlconstant_0_len1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal ETH0_LINK_LED_inv_0 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal ETH0_c_counter_binary_0_Q : STD_LOGIC_VECTOR ( 22 downto 0 );
-  signal ETH0_c_counter_binary_0_THRESH0 : STD_LOGIC;
-  signal ETH0_util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
   signal ETH0_xlconcat_0_dout : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal phy_tx_en_1 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal s_axi_aclk_0 : STD_LOGIC;
   signal s_mii_rx_dv_1 : STD_LOGIC_VECTOR ( 0 to 0 );
 begin
   ETH0_DA_G(0) <= ETH0_LINK_LED_inv_0(0);
-  ETH0_DA_Y(0) <= ETH0_util_vector_logic_0_Res(0);
+  ETH0_DA_Y(0) <= ETH0_LEDs_xlconstant_0_len1_dout(0);
   ETH0_LINK_LED_inv_0(0) <= ETH0_LINK_LED_inv(0);
-  Q(22 downto 0) <= ETH0_c_counter_binary_0_Q(22 downto 0);
   data_to_vio_0(2 downto 0) <= ETH0_xlconcat_0_dout(2 downto 0);
   phy_tx_en_1(0) <= phy_tx_en(0);
-  s_axi_aclk_0 <= s_axi_aclk;
   s_mii_rx_dv_1(0) <= s_mii_rx_dv(0);
-ETH0_LEDs_CDC_c_shift_ram_0: component msys_c_shift_ram_0_7
-     port map (
-      CLK => s_axi_aclk_0,
-      D(1 downto 0) => ETH0_LEDs_xlconcat_1_dout(1 downto 0),
-      Q(1 downto 0) => ETH0_LEDs_CDC_c_shift_ram_0_Q(1 downto 0)
-    );
-ETH0_LEDs_c_counter_binary_0: component msys_c_counter_binary_0_4
-     port map (
-      CLK => s_axi_aclk_0,
-      Q(22 downto 0) => ETH0_c_counter_binary_0_Q(22 downto 0),
-      SCLR => ETH0_LEDs_util_reduced_logic_0_Res,
-      THRESH0 => ETH0_c_counter_binary_0_THRESH0
-    );
-ETH0_LEDs_util_reduced_logic_0: component msys_util_reduced_logic_0_1
-     port map (
-      Op1(1 downto 0) => ETH0_LEDs_CDC_c_shift_ram_0_Q(1 downto 0),
-      Res => ETH0_LEDs_util_reduced_logic_0_Res
-    );
-ETH0_LEDs_util_vector_logic_0: component msys_util_vector_logic_0_6
-     port map (
-      Op1(0) => ETH0_c_counter_binary_0_THRESH0,
-      Res(0) => ETH0_util_vector_logic_0_Res(0)
-    );
 ETH0_LEDs_xlconcat_0: component msys_xlconcat_1_1
      port map (
       In0(0) => ETH0_LINK_LED_inv_0(0),
@@ -117,11 +55,9 @@ ETH0_LEDs_xlconcat_0: component msys_xlconcat_1_1
       In2(0) => phy_tx_en_1(0),
       dout(2 downto 0) => ETH0_xlconcat_0_dout(2 downto 0)
     );
-ETH0_LEDs_xlconcat_1: component msys_xlconcat_0_9
+ETH0_LEDs_xlconstant_0_len1: component msys_xlconstant_0_19
      port map (
-      In0(0) => s_mii_rx_dv_1(0),
-      In1(0) => phy_tx_en_1(0),
-      dout(1 downto 0) => ETH0_LEDs_xlconcat_1_dout(1 downto 0)
+      dout(0) => ETH0_LEDs_xlconstant_0_len1_dout(0)
     );
 end STRUCTURE;
 library IEEE;
@@ -5521,7 +5457,6 @@ entity ETH0_imp_1S8N2C8 is
     ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
     ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
     ETH_vio_out : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    Q : out STD_LOGIC_VECTOR ( 22 downto 0 );
     RMII_PHY_M_0_crs_dv : in STD_LOGIC;
     RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RMII_PHY_M_0_tx_en : out STD_LOGIC;
@@ -5671,13 +5606,6 @@ architecture STRUCTURE of ETH0_imp_1S8N2C8 is
     Q : out STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   end component msys_c_shift_ram_0_5;
-  component msys_c_shift_ram_0_6 is
-  port (
-    D : in STD_LOGIC_VECTOR ( 22 downto 0 );
-    CLK : in STD_LOGIC;
-    Q : out STD_LOGIC_VECTOR ( 22 downto 0 )
-  );
-  end component msys_c_shift_ram_0_6;
   signal CLK1B_50MHz_phy_clk_0 : STD_LOGIC;
   signal Conn1_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal Conn1_ARREADY : STD_LOGIC;
@@ -5705,12 +5633,10 @@ architecture STRUCTURE of ETH0_imp_1S8N2C8 is
   signal Conn3_MDIO_O : STD_LOGIC;
   signal Conn3_MDIO_T : STD_LOGIC;
   signal ETH0_LEDs_ETH0_DA_G : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal ETH0_LEDs_ETH0_DA_Y_0 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal ETH0_LEDs_Q : STD_LOGIC_VECTOR ( 22 downto 0 );
+  signal ETH0_LEDs_ETH0_DA_Y : STD_LOGIC_VECTOR ( 0 to 0 );
   signal ETH0_LEDs_vio_0 : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ETH0_LINK_LED_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal ETH0_LINK_LED_inv_0 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal ETH0_c_shift_ram_1_Q : STD_LOGIC_VECTOR ( 22 downto 0 );
   signal ETH_vio_out_0 : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal SC0712_0_mcs_clk_0 : STD_LOGIC;
   signal axi_ethernetlite_0_MII_COL : STD_LOGIC;
@@ -5760,13 +5686,12 @@ begin
   Conn2_RXD(1 downto 0) <= RMII_PHY_M_0_rxd(1 downto 0);
   Conn3_MDIO_I <= ETH0_MDIO_MDC_mdio_i;
   ETH0_DA_G(0) <= ETH0_LEDs_ETH0_DA_G(0);
-  ETH0_DA_Y(0) <= ETH0_LEDs_ETH0_DA_Y_0(0);
+  ETH0_DA_Y(0) <= ETH0_LEDs_ETH0_DA_Y(0);
   ETH0_LINK_LED_0(0) <= ETH0_LINK_LED(0);
   ETH0_MDIO_MDC_mdc <= Conn3_MDC;
   ETH0_MDIO_MDC_mdio_o <= Conn3_MDIO_O;
   ETH0_MDIO_MDC_mdio_t <= Conn3_MDIO_T;
   ETH_vio_out(2 downto 0) <= ETH_vio_out_0(2 downto 0);
-  Q(22 downto 0) <= ETH0_c_shift_ram_1_Q(22 downto 0);
   RMII_PHY_M_0_tx_en <= Conn2_TX_EN;
   RMII_PHY_M_0_txd(1 downto 0) <= Conn2_TXD(1 downto 0);
   SC0712_0_mcs_clk_0 <= SC0712_0_mcs_clk_in;
@@ -5794,21 +5719,13 @@ ETH0_CDC_c_shift_ram_0: component msys_c_shift_ram_0_5
       D(2 downto 0) => ETH0_LEDs_vio_0(2 downto 0),
       Q(2 downto 0) => ETH_vio_out_0(2 downto 0)
     );
-ETH0_CDC_c_shift_ram_1: component msys_c_shift_ram_0_6
-     port map (
-      CLK => SC0712_0_mcs_clk_0,
-      D(22 downto 0) => ETH0_LEDs_Q(22 downto 0),
-      Q(22 downto 0) => ETH0_c_shift_ram_1_Q(22 downto 0)
-    );
 ETH0_LEDs: entity work.ETH0_LEDs_imp_437WON
      port map (
       ETH0_DA_G(0) => ETH0_LEDs_ETH0_DA_G(0),
-      ETH0_DA_Y(0) => ETH0_LEDs_ETH0_DA_Y_0(0),
+      ETH0_DA_Y(0) => ETH0_LEDs_ETH0_DA_Y(0),
       ETH0_LINK_LED_inv(0) => ETH0_LINK_LED_inv_0(0),
-      Q(22 downto 0) => ETH0_LEDs_Q(22 downto 0),
       data_to_vio_0(2 downto 0) => ETH0_LEDs_vio_0(2 downto 0),
       phy_tx_en(0) => axi_ethernetlite_0_phy_tx_en,
-      s_axi_aclk => s_axi_aclk_1,
       s_mii_rx_dv(0) => mii_y_adapater_0_s_mii_rx_dv
     );
 ETH0_LEDs_proc_sys_reset_0: component msys_proc_sys_reset_eth_0
@@ -10702,7 +10619,7 @@ entity msys is
     rotenc_decoder_resetn : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute core_generation_info : string;
-  attribute core_generation_info of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=207,numReposBlks=168,numNonXlnxBlks=3,numHierBlks=39,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
+  attribute core_generation_info of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=202,numReposBlks=163,numNonXlnxBlks=3,numHierBlks=39,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
   attribute hw_handoff : string;
   attribute hw_handoff of msys : entity is "msys.hwdef";
 end msys;
@@ -10882,7 +10799,6 @@ architecture STRUCTURE of msys is
     probe_in25 : in STD_LOGIC_VECTOR ( 2 downto 0 );
     probe_in26 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_in27 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe_in28 : in STD_LOGIC_VECTOR ( 22 downto 0 );
     probe_out0 : out STD_LOGIC_VECTOR ( 12 downto 0 )
   );
   end component msys_vio_0_0;
@@ -11274,7 +11190,6 @@ architecture STRUCTURE of msys is
   signal ETH0_ETH0_MDIO_MDC_MDIO_I : STD_LOGIC;
   signal ETH0_ETH0_MDIO_MDC_MDIO_O : STD_LOGIC;
   signal ETH0_ETH0_MDIO_MDC_MDIO_T : STD_LOGIC;
-  signal ETH0_LEDs_MF_Q_vio_0 : STD_LOGIC_VECTOR ( 22 downto 0 );
   signal ETH0_LINK_LED_g_0 : STD_LOGIC;
   signal ETH0_RMII_PHY_M_0_CRS_DV : STD_LOGIC;
   signal ETH0_RMII_PHY_M_0_RXD : STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -12165,7 +12080,6 @@ ETH0: entity work.ETH0_imp_1S8N2C8
       ETH0_MDIO_MDC_mdio_o => ETH0_ETH0_MDIO_MDC_MDIO_O,
       ETH0_MDIO_MDC_mdio_t => ETH0_ETH0_MDIO_MDC_MDIO_T,
       ETH_vio_out(2 downto 0) => ETH_vio_0(2 downto 0),
-      Q(22 downto 0) => ETH0_LEDs_MF_Q_vio_0(22 downto 0),
       RMII_PHY_M_0_crs_dv => ETH0_RMII_PHY_M_0_CRS_DV,
       RMII_PHY_M_0_rxd(1 downto 0) => ETH0_RMII_PHY_M_0_RXD(1 downto 0),
       RMII_PHY_M_0_tx_en => ETH0_RMII_PHY_M_0_TX_EN,
@@ -13442,7 +13356,6 @@ vio_0: component msys_vio_0_0
       probe_in25(2 downto 0) => ETH_vio_0(2 downto 0),
       probe_in26(31 downto 0) => labtools_fmeter_0_F5(31 downto 0),
       probe_in27(31 downto 0) => labtools_fmeter_0_F6(31 downto 0),
-      probe_in28(22 downto 0) => ETH0_LEDs_MF_Q_vio_0(22 downto 0),
       probe_in3(31 downto 0) => lt_F3_CLK0(31 downto 0),
       probe_in4(0) => labtools_fmeter_0_update,
       probe_in5(0) => SC0712_0_reset_out,

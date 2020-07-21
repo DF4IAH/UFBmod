@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jul 21 12:53:20 2020" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jul 21 14:06:25 2020" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="artix7" BOARD="trenz.biz:te0712_100_2c:part0:1.0" DEVICE="7a100t" NAME="msys" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -69,9 +69,9 @@
         <CONNECTION INSTANCE="mig_7series_0" PORT="init_calib_complete"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="0" NAME="ETH0_DA_Y" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_LEDs_ETH0_LEDs_util_vector_logic_0_Res">
+    <PORT DIR="O" LEFT="0" NAME="ETH0_DA_Y" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_LEDs_ETH0_LEDs_xlconstant_0_len1_dout">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_util_vector_logic_0" PORT="Res"/>
+        <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_xlconstant_0_len1" PORT="dout"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" LEFT="0" NAME="ETH0_DA_G" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_util_vector_logic_0_Res">
@@ -1622,264 +1622,6 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="14" FULLNAME="/ETH0/ETH0_CDC_c_shift_ram_1" HWVERSION="12.0" INSTANCE="ETH0_ETH0_CDC_c_shift_ram_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
-      <DOCUMENTS>
-        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
-      </DOCUMENTS>
-      <PARAMETERS>
-        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
-        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
-        <PARAMETER NAME="C_WIDTH" VALUE="23"/>
-        <PARAMETER NAME="C_DEPTH" VALUE="1"/>
-        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
-        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
-        <PARAMETER NAME="C_AINIT_VAL" VALUE="00000000000000000000000"/>
-        <PARAMETER NAME="C_SINIT_VAL" VALUE="00000000000000000000000"/>
-        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="00000000000000000000000"/>
-        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
-        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
-        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
-        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
-        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
-        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
-        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
-        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
-        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_0_6"/>
-        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
-        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
-        <PARAMETER NAME="RegLastBit" VALUE="true"/>
-        <PARAMETER NAME="CE" VALUE="false"/>
-        <PARAMETER NAME="Width" VALUE="23"/>
-        <PARAMETER NAME="Depth" VALUE="1"/>
-        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
-        <PARAMETER NAME="DefaultData" VALUE="00000000000000000000000"/>
-        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
-        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
-        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
-        <PARAMETER NAME="AsyncInitVal" VALUE="00000000000000000000000"/>
-        <PARAMETER NAME="SSET" VALUE="false"/>
-        <PARAMETER NAME="SCLR" VALUE="false"/>
-        <PARAMETER NAME="SINIT" VALUE="false"/>
-        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
-        <PARAMETER NAME="SyncInitVal" VALUE="00000000000000000000000"/>
-        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
-        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="22" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="ETH0_ETH0_LEDs_ETH0_LEDs_c_counter_binary_0_Q">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_c_counter_binary_0" PORT="Q"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="SC0712_0_mcs_clk_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="SC0712_0" PORT="mcs_clk_out"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="22" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="ETH0_ETH0_CDC_c_shift_ram_1_Q">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in28"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="14" FULLNAME="/ETH0/ETH0_LEDs/ETH0_LEDs_CDC_c_shift_ram_0" HWVERSION="12.0" INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_CDC_c_shift_ram_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
-      <DOCUMENTS>
-        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
-      </DOCUMENTS>
-      <PARAMETERS>
-        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
-        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
-        <PARAMETER NAME="C_WIDTH" VALUE="2"/>
-        <PARAMETER NAME="C_DEPTH" VALUE="1"/>
-        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
-        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
-        <PARAMETER NAME="C_AINIT_VAL" VALUE="00"/>
-        <PARAMETER NAME="C_SINIT_VAL" VALUE="00"/>
-        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="00"/>
-        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
-        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
-        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
-        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
-        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
-        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
-        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
-        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
-        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_0_7"/>
-        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
-        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
-        <PARAMETER NAME="RegLastBit" VALUE="true"/>
-        <PARAMETER NAME="CE" VALUE="false"/>
-        <PARAMETER NAME="Width" VALUE="2"/>
-        <PARAMETER NAME="Depth" VALUE="1"/>
-        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
-        <PARAMETER NAME="DefaultData" VALUE="00"/>
-        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
-        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
-        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
-        <PARAMETER NAME="AsyncInitVal" VALUE="00"/>
-        <PARAMETER NAME="SSET" VALUE="false"/>
-        <PARAMETER NAME="SCLR" VALUE="false"/>
-        <PARAMETER NAME="SINIT" VALUE="false"/>
-        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
-        <PARAMETER NAME="SyncInitVal" VALUE="00"/>
-        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
-        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="ETH0_ETH0_LEDs_ETH0_LEDs_xlconcat_1_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_xlconcat_1" PORT="dout"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="ETH0_ETH0_LEDs_ETH0_LEDs_CDC_c_shift_ram_0_Q">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_util_reduced_logic_0" PORT="Op1"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="14" FULLNAME="/ETH0/ETH0_LEDs/ETH0_LEDs_c_counter_binary_0" HWVERSION="12.0" INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_c_counter_binary_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_counter_binary" VLNV="xilinx.com:ip:c_counter_binary:12.0">
-      <DOCUMENTS>
-        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_counter_binary;v=v12_0;d=pg121-c-counter-binary.pdf"/>
-      </DOCUMENTS>
-      <PARAMETERS>
-        <PARAMETER NAME="C_IMPLEMENTATION" VALUE="1"/>
-        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
-        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
-        <PARAMETER NAME="C_WIDTH" VALUE="23"/>
-        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_SCLR" VALUE="1"/>
-        <PARAMETER NAME="C_RESTRICT_COUNT" VALUE="1"/>
-        <PARAMETER NAME="C_COUNT_TO" VALUE="11111111111111111111110"/>
-        <PARAMETER NAME="C_COUNT_BY" VALUE="1"/>
-        <PARAMETER NAME="C_COUNT_MODE" VALUE="0"/>
-        <PARAMETER NAME="C_THRESH0_VALUE" VALUE="11111111111111111111101"/>
-        <PARAMETER NAME="C_CE_OVERRIDES_SYNC" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_THRESH0" VALUE="1"/>
-        <PARAMETER NAME="C_HAS_LOAD" VALUE="0"/>
-        <PARAMETER NAME="C_LOAD_LOW" VALUE="0"/>
-        <PARAMETER NAME="C_LATENCY" VALUE="1"/>
-        <PARAMETER NAME="C_FB_LATENCY" VALUE="1"/>
-        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
-        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
-        <PARAMETER NAME="C_SCLR_OVERRIDES_SSET" VALUE="1"/>
-        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
-        <PARAMETER NAME="Component_Name" VALUE="msys_c_counter_binary_0_4"/>
-        <PARAMETER NAME="Implementation" VALUE="DSP48"/>
-        <PARAMETER NAME="Output_Width" VALUE="23"/>
-        <PARAMETER NAME="Increment_Value" VALUE="1"/>
-        <PARAMETER NAME="Restrict_Count" VALUE="true"/>
-        <PARAMETER NAME="Final_Count_Value" VALUE="7ffffe"/>
-        <PARAMETER NAME="Count_Mode" VALUE="UP"/>
-        <PARAMETER NAME="Sync_Threshold_Output" VALUE="true"/>
-        <PARAMETER NAME="Threshold_Value" VALUE="7ffffd"/>
-        <PARAMETER NAME="CE" VALUE="false"/>
-        <PARAMETER NAME="SCLR" VALUE="true"/>
-        <PARAMETER NAME="SSET" VALUE="false"/>
-        <PARAMETER NAME="SINIT" VALUE="false"/>
-        <PARAMETER NAME="SINIT_Value" VALUE="0"/>
-        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
-        <PARAMETER NAME="Sync_CE_Priority" VALUE="Sync_Overrides_CE"/>
-        <PARAMETER NAME="AINIT_Value" VALUE="0"/>
-        <PARAMETER NAME="Load" VALUE="false"/>
-        <PARAMETER NAME="Latency_Configuration" VALUE="Manual"/>
-        <PARAMETER NAME="Latency" VALUE="1"/>
-        <PARAMETER NAME="Fb_Latency_Configuration" VALUE="Manual"/>
-        <PARAMETER NAME="Fb_Latency" VALUE="1"/>
-        <PARAMETER NAME="Load_Sense" VALUE="Active_High"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="SCLR" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="ETH0_ETH0_LEDs_ETH0_LEDs_util_reduced_logic_0_Res">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_util_reduced_logic_0" PORT="Res"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="THRESH0" SIGIS="data" SIGNAME="ETH0_ETH0_LEDs_ETH0_LEDs_c_counter_binary_0_THRESH0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_util_vector_logic_0" PORT="Op1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="22" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="ETH0_ETH0_LEDs_ETH0_LEDs_c_counter_binary_0_Q">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_CDC_c_shift_ram_1" PORT="D"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="4" FULLNAME="/ETH0/ETH0_LEDs/ETH0_LEDs_util_reduced_logic_0" HWVERSION="2.0" INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_util_reduced_logic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_reduced_logic" VLNV="xilinx.com:ip:util_reduced_logic:2.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="C_OPERATION" VALUE="or"/>
-        <PARAMETER NAME="C_SIZE" VALUE="2"/>
-        <PARAMETER NAME="Component_Name" VALUE="msys_util_reduced_logic_0_1"/>
-        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_orgate.png"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="1" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_LEDs_ETH0_LEDs_CDC_c_shift_ram_0_Q">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_CDC_c_shift_ram_0" PORT="Q"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="Res" SIGIS="undef" SIGNAME="ETH0_ETH0_LEDs_ETH0_LEDs_util_reduced_logic_0_Res">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_c_counter_binary_0" PORT="SCLR"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/ETH0/ETH0_LEDs/ETH0_LEDs_util_vector_logic_0" HWVERSION="2.0" INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_util_vector_logic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="C_OPERATION" VALUE="not"/>
-        <PARAMETER NAME="C_SIZE" VALUE="1"/>
-        <PARAMETER NAME="Component_Name" VALUE="msys_util_vector_logic_0_6"/>
-        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_notgate.png"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_LEDs_ETH0_LEDs_c_counter_binary_0_THRESH0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_c_counter_binary_0" PORT="THRESH0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_LEDs_ETH0_LEDs_util_vector_logic_0_Res">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="ETH0_DA_Y"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
     <MODULE COREREVISION="3" FULLNAME="/ETH0/ETH0_LEDs/ETH0_LEDs_xlconcat_0" HWVERSION="2.1" INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_xlconcat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -1944,60 +1686,18 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="3" FULLNAME="/ETH0/ETH0_LEDs/ETH0_LEDs_xlconcat_1" HWVERSION="2.1" INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_xlconcat_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+    <MODULE COREREVISION="7" FULLNAME="/ETH0/ETH0_LEDs/ETH0_LEDs_xlconstant_0_len1" HWVERSION="1.1" INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_xlconstant_0_len1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="IN0_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN1_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN2_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN3_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN5_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN6_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN7_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN8_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN9_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN10_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN11_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN12_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN13_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN14_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN15_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN16_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN17_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN18_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN19_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN20_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN21_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN22_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN23_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN24_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN25_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN26_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN27_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN28_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN29_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="dout_width" VALUE="2"/>
-        <PARAMETER NAME="NUM_PORTS" VALUE="2"/>
-        <PARAMETER NAME="Component_Name" VALUE="msys_xlconcat_0_9"/>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_xlconstant_0_19"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rx_dv">
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_LEDs_ETH0_LEDs_xlconstant_0_len1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_rx_dv"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_axi_ethernetlite_0_phy_tx_en">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="phy_tx_en"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="1" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_LEDs_ETH0_LEDs_xlconcat_1_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_CDC_c_shift_ram_0" PORT="D"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="ETH0_DA_Y"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -2553,7 +2253,6 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="PWM_lights_PWM_GPIO2_xlconcat_0" PORT="In2"/>
             <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_xlconcat_0" PORT="In2"/>
-            <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_xlconcat_1" PORT="In1"/>
           </CONNECTIONS>
           <CONNECTIONS>
             <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_tx_en"/>
@@ -2821,7 +2520,6 @@
             <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="phy_dv"/>
             <CONNECTION INSTANCE="PWM_lights_PWM_GPIO2_xlconcat_0" PORT="In1"/>
             <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_xlconcat_0" PORT="In1"/>
-            <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_xlconcat_1" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_mii_rx_er" SIGIS="undef" SIGNAME="ETH0_ETH0_axi_ethernetlite_0_phy_rx_er">
@@ -6473,7 +6171,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="rotenc_dec_cnt_up_dwn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" LEFT="0" NAME="In2" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="undef" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -6495,7 +6193,6 @@
             <CONNECTION INSTANCE="vio_0" PORT="clk"/>
             <CONNECTION INSTANCE="microblaze_mcs_0" PORT="Clk"/>
             <CONNECTION INSTANCE="ETH0_ETH0_CDC_c_shift_ram_0" PORT="CLK"/>
-            <CONNECTION INSTANCE="ETH0_ETH0_CDC_c_shift_ram_1" PORT="CLK"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="mcs_clk_in" SIGIS="undef" SIGNAME="cfgmclk_util_ds_buf_0_BUFG_O">
@@ -7485,7 +7182,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -8211,7 +7908,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -8650,7 +8347,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -13068,7 +12765,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -13088,12 +12785,12 @@
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_rx09_xlslice_31to00" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -13295,7 +12992,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -13315,12 +13012,12 @@
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_rx24_xlslice_31to00" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -13522,7 +13219,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -13542,12 +13239,12 @@
             <CONNECTION INSTANCE="External_Ports" PORT="premem_rx09_dina_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -13750,7 +13447,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -13770,12 +13467,12 @@
             <CONNECTION INSTANCE="External_Ports" PORT="premem_rx24_dina_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -27584,8 +27281,6 @@
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M12_ACLK"/>
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M13_ACLK"/>
             <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="s_axi_aclk"/>
-            <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_c_counter_binary_0" PORT="CLK"/>
-            <CONNECTION INSTANCE="ETH0_ETH0_LEDs_ETH0_LEDs_CDC_c_shift_ram_0" PORT="CLK"/>
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M05_ACLK"/>
           </CONNECTIONS>
         </PORT>
@@ -28178,7 +27873,7 @@
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="0"/>
         <PARAMETER NAME="C_BUS_ADDR_WIDTH" VALUE="17"/>
         <PARAMETER NAME="C_BUS_DATA_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="C_NUM_PROBE_IN" VALUE="29"/>
+        <PARAMETER NAME="C_NUM_PROBE_IN" VALUE="28"/>
         <PARAMETER NAME="C_EN_PROBE_IN_ACTIVITY" VALUE="1"/>
         <PARAMETER NAME="C_NUM_PROBE_OUT" VALUE="1"/>
         <PARAMETER NAME="C_EN_SYNCHRONIZATION" VALUE="1"/>
@@ -28210,7 +27905,7 @@
         <PARAMETER NAME="C_PROBE_IN25_WIDTH" VALUE="3"/>
         <PARAMETER NAME="C_PROBE_IN26_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_PROBE_IN27_WIDTH" VALUE="32"/>
-        <PARAMETER NAME="C_PROBE_IN28_WIDTH" VALUE="23"/>
+        <PARAMETER NAME="C_PROBE_IN28_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN29_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN30_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN31_WIDTH" VALUE="1"/>
@@ -28984,7 +28679,7 @@
             <CONNECTION INSTANCE="labtools_fmeter_0" PORT="update"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe_in5" RIGHT="0" SIGIS="undef" SIGNAME="SC0712_0_reset_out">
+        <PORT DIR="I" LEFT="0" NAME="probe_in5" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="undef" SIGNAME="SC0712_0_reset_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="SC0712_0" PORT="reset_out"/>
           </CONNECTIONS>
@@ -29089,11 +28784,6 @@
         <PORT DIR="I" LEFT="31" NAME="probe_in27" RIGHT="0" SIGIS="undef" SIGNAME="labtools_fmeter_0_F6">
           <CONNECTIONS>
             <CONNECTION INSTANCE="labtools_fmeter_0" PORT="F6"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="22" NAME="probe_in28" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_CDC_c_shift_ram_1_Q">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_CDC_c_shift_ram_1" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="12" NAME="probe_out0" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out0">

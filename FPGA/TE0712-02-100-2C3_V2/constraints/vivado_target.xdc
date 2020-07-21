@@ -152,9 +152,13 @@ set_property PACKAGE_PIN Y13 [get_ports {TRX_tx_data_p[0]}]
 set_property PACKAGE_PIN AA15 [get_ports {TRX_tx_data_p[1]}]
 
 
+# ETH0 PHY address = 0x01
 set_property PULLDOWN true [get_ports {RMII_PHY_M_0_rxd[0]}]
 set_property PULLDOWN true [get_ports {RMII_PHY_M_0_rxd[1]}]
-set_property PULLUP true [get_ports RMII_PHY_M_0_crs_dv]
+
+# ETH0 LINK LED mode 2: LINK and activity together
+set_property PULLDOWN true [get_ports RMII_PHY_M_0_crs_dv]
+
 set_property SLEW FAST [get_ports {RMII_PHY_M_0_txd[0]}]
 set_property SLEW FAST [get_ports {RMII_PHY_M_0_txd[1]}]
 set_property SLEW FAST [get_ports RMII_PHY_M_0_tx_en]

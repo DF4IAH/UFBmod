@@ -2262,55 +2262,9 @@ proc create_hier_cell_ETH0_LEDs { parentCell nameHier } {
   create_bd_pin -dir O -from 0 -to 0 ETH0_DA_G
   create_bd_pin -dir O -from 0 -to 0 ETH0_DA_Y
   create_bd_pin -dir I -from 0 -to 0 ETH0_LINK_LED_inv
-  create_bd_pin -dir O -from 22 -to 0 -type data Q
   create_bd_pin -dir O -from 2 -to 0 -type data data_to_vio_0
   create_bd_pin -dir I -from 0 -to 0 phy_tx_en
-  create_bd_pin -dir I -type clk s_axi_aclk
   create_bd_pin -dir I -from 0 -to 0 s_mii_rx_dv
-
-  # Create instance: ETH0_LEDs_CDC_c_shift_ram_0, and set properties
-  set ETH0_LEDs_CDC_c_shift_ram_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 ETH0_LEDs_CDC_c_shift_ram_0 ]
-  set_property -dict [ list \
-   CONFIG.AsyncInitVal {00} \
-   CONFIG.DefaultData {00} \
-   CONFIG.Depth {1} \
-   CONFIG.SyncInitVal {00} \
-   CONFIG.Width {2} \
- ] $ETH0_LEDs_CDC_c_shift_ram_0
-
-  # Create instance: ETH0_LEDs_c_counter_binary_0, and set properties
-  set ETH0_LEDs_c_counter_binary_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_counter_binary:12.0 ETH0_LEDs_c_counter_binary_0 ]
-  set_property -dict [ list \
-   CONFIG.Count_Mode {UP} \
-   CONFIG.Fb_Latency {1} \
-   CONFIG.Fb_Latency_Configuration {Manual} \
-   CONFIG.Final_Count_Value {7ffffe} \
-   CONFIG.Implementation {DSP48} \
-   CONFIG.Latency {1} \
-   CONFIG.Latency_Configuration {Manual} \
-   CONFIG.Load {false} \
-   CONFIG.Output_Width {23} \
-   CONFIG.Restrict_Count {true} \
-   CONFIG.SCLR {true} \
-   CONFIG.Sync_Threshold_Output {true} \
-   CONFIG.Threshold_Value {7ffffd} \
- ] $ETH0_LEDs_c_counter_binary_0
-
-  # Create instance: ETH0_LEDs_util_reduced_logic_0, and set properties
-  set ETH0_LEDs_util_reduced_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_reduced_logic:2.0 ETH0_LEDs_util_reduced_logic_0 ]
-  set_property -dict [ list \
-   CONFIG.C_OPERATION {or} \
-   CONFIG.C_SIZE {2} \
-   CONFIG.LOGO_FILE {data/sym_orgate.png} \
- ] $ETH0_LEDs_util_reduced_logic_0
-
-  # Create instance: ETH0_LEDs_util_vector_logic_0, and set properties
-  set ETH0_LEDs_util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 ETH0_LEDs_util_vector_logic_0 ]
-  set_property -dict [ list \
-   CONFIG.C_OPERATION {not} \
-   CONFIG.C_SIZE {1} \
-   CONFIG.LOGO_FILE {data/sym_notgate.png} \
- ] $ETH0_LEDs_util_vector_logic_0
 
   # Create instance: ETH0_LEDs_xlconcat_0, and set properties
   set ETH0_LEDs_xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 ETH0_LEDs_xlconcat_0 ]
@@ -2318,21 +2272,18 @@ proc create_hier_cell_ETH0_LEDs { parentCell nameHier } {
    CONFIG.NUM_PORTS {3} \
  ] $ETH0_LEDs_xlconcat_0
 
-  # Create instance: ETH0_LEDs_xlconcat_1, and set properties
-  set ETH0_LEDs_xlconcat_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 ETH0_LEDs_xlconcat_1 ]
+  # Create instance: ETH0_LEDs_xlconstant_0_len1, and set properties
+  set ETH0_LEDs_xlconstant_0_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 ETH0_LEDs_xlconstant_0_len1 ]
+  set_property -dict [ list \
+   CONFIG.CONST_VAL {0} \
+ ] $ETH0_LEDs_xlconstant_0_len1
 
   # Create port connections
-  connect_bd_net -net ETH0_LEDs_CDC_c_shift_ram_0_Q [get_bd_pins ETH0_LEDs_CDC_c_shift_ram_0/Q] [get_bd_pins ETH0_LEDs_util_reduced_logic_0/Op1]
-  connect_bd_net -net ETH0_LEDs_util_reduced_logic_0_Res [get_bd_pins ETH0_LEDs_c_counter_binary_0/SCLR] [get_bd_pins ETH0_LEDs_util_reduced_logic_0/Res]
-  connect_bd_net -net ETH0_LEDs_xlconcat_1_dout [get_bd_pins ETH0_LEDs_CDC_c_shift_ram_0/D] [get_bd_pins ETH0_LEDs_xlconcat_1/dout]
+  connect_bd_net -net ETH0_LEDs_xlconstant_0_len1_dout [get_bd_pins ETH0_DA_Y] [get_bd_pins ETH0_LEDs_xlconstant_0_len1/dout]
   connect_bd_net -net ETH0_LINK_LED_inv_0 [get_bd_pins ETH0_DA_G] [get_bd_pins ETH0_LINK_LED_inv] [get_bd_pins ETH0_LEDs_xlconcat_0/In0]
-  connect_bd_net -net ETH0_c_counter_binary_0_Q [get_bd_pins Q] [get_bd_pins ETH0_LEDs_c_counter_binary_0/Q]
-  connect_bd_net -net ETH0_c_counter_binary_0_THRESH0 [get_bd_pins ETH0_LEDs_c_counter_binary_0/THRESH0] [get_bd_pins ETH0_LEDs_util_vector_logic_0/Op1]
-  connect_bd_net -net ETH0_util_vector_logic_0_Res [get_bd_pins ETH0_DA_Y] [get_bd_pins ETH0_LEDs_util_vector_logic_0/Res]
   connect_bd_net -net ETH0_xlconcat_0_dout [get_bd_pins data_to_vio_0] [get_bd_pins ETH0_LEDs_xlconcat_0/dout]
-  connect_bd_net -net phy_tx_en_1 [get_bd_pins phy_tx_en] [get_bd_pins ETH0_LEDs_xlconcat_0/In2] [get_bd_pins ETH0_LEDs_xlconcat_1/In1]
-  connect_bd_net -net s_axi_aclk_0 [get_bd_pins s_axi_aclk] [get_bd_pins ETH0_LEDs_CDC_c_shift_ram_0/CLK] [get_bd_pins ETH0_LEDs_c_counter_binary_0/CLK]
-  connect_bd_net -net s_mii_rx_dv_1 [get_bd_pins s_mii_rx_dv] [get_bd_pins ETH0_LEDs_xlconcat_0/In1] [get_bd_pins ETH0_LEDs_xlconcat_1/In0]
+  connect_bd_net -net phy_tx_en_1 [get_bd_pins phy_tx_en] [get_bd_pins ETH0_LEDs_xlconcat_0/In2]
+  connect_bd_net -net s_mii_rx_dv_1 [get_bd_pins s_mii_rx_dv] [get_bd_pins ETH0_LEDs_xlconcat_0/In1]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -3328,7 +3279,6 @@ proc create_hier_cell_ETH0 { parentCell nameHier } {
   create_bd_pin -dir O -from 0 -to 0 ETH0_DA_Y
   create_bd_pin -dir I -from 0 -to 0 ETH0_LINK_LED
   create_bd_pin -dir O -from 2 -to 0 -type data ETH_vio_out
-  create_bd_pin -dir O -from 22 -to 0 -type data Q
   create_bd_pin -dir I -type clk SC0712_0_mcs_clk_in
   create_bd_pin -dir I dcm_locked
   create_bd_pin -dir I -type rst ext_reset_in
@@ -3350,16 +3300,6 @@ proc create_hier_cell_ETH0 { parentCell nameHier } {
    CONFIG.SyncInitVal {000} \
    CONFIG.Width {3} \
  ] $ETH0_CDC_c_shift_ram_0
-
-  # Create instance: ETH0_CDC_c_shift_ram_1, and set properties
-  set ETH0_CDC_c_shift_ram_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 ETH0_CDC_c_shift_ram_1 ]
-  set_property -dict [ list \
-   CONFIG.AsyncInitVal {00000000000000000000000} \
-   CONFIG.DefaultData {00000000000000000000000} \
-   CONFIG.Depth {1} \
-   CONFIG.SyncInitVal {00000000000000000000000} \
-   CONFIG.Width {23} \
- ] $ETH0_CDC_c_shift_ram_1
 
   # Create instance: ETH0_LEDs
   create_hier_cell_ETH0_LEDs $hier_obj ETH0_LEDs
@@ -3404,14 +3344,12 @@ proc create_hier_cell_ETH0 { parentCell nameHier } {
   # Create port connections
   connect_bd_net -net CLK1B_50MHz_phy_clk_0 [get_bd_pins CLK1B_50MHz_phy_clk_in] [get_bd_pins ETH0_LEDs_proc_sys_reset_0/slowest_sync_clk] [get_bd_pins ETH0_mii_to_rmii_0/ref_clk]
   connect_bd_net -net ETH0_LEDs_ETH0_DA_G [get_bd_pins ETH0_DA_G] [get_bd_pins ETH0_LEDs/ETH0_DA_G]
-  connect_bd_net -net ETH0_LEDs_ETH0_DA_Y_0 [get_bd_pins ETH0_DA_Y] [get_bd_pins ETH0_LEDs/ETH0_DA_Y]
-  connect_bd_net -net ETH0_LEDs_Q [get_bd_pins ETH0_CDC_c_shift_ram_1/D] [get_bd_pins ETH0_LEDs/Q]
+  connect_bd_net -net ETH0_LEDs_ETH0_DA_Y [get_bd_pins ETH0_DA_Y] [get_bd_pins ETH0_LEDs/ETH0_DA_Y]
   connect_bd_net -net ETH0_LEDs_vio_0 [get_bd_pins ETH0_CDC_c_shift_ram_0/D] [get_bd_pins ETH0_LEDs/data_to_vio_0]
   connect_bd_net -net ETH0_LINK_LED_0 [get_bd_pins ETH0_LINK_LED] [get_bd_pins ETH0_util_vector_logic_0/Op1]
   connect_bd_net -net ETH0_LINK_LED_inv_0 [get_bd_pins ETH0_LEDs/ETH0_LINK_LED_inv] [get_bd_pins ETH0_util_vector_logic_0/Res]
-  connect_bd_net -net ETH0_c_shift_ram_1_Q [get_bd_pins Q] [get_bd_pins ETH0_CDC_c_shift_ram_1/Q]
   connect_bd_net -net ETH_vio_out_0 [get_bd_pins ETH_vio_out] [get_bd_pins ETH0_CDC_c_shift_ram_0/Q]
-  connect_bd_net -net SC0712_0_mcs_clk_0 [get_bd_pins SC0712_0_mcs_clk_in] [get_bd_pins ETH0_CDC_c_shift_ram_0/CLK] [get_bd_pins ETH0_CDC_c_shift_ram_1/CLK]
+  connect_bd_net -net SC0712_0_mcs_clk_0 [get_bd_pins SC0712_0_mcs_clk_in] [get_bd_pins ETH0_CDC_c_shift_ram_0/CLK]
   connect_bd_net -net axi_ethernetlite_0_ip2intc_irpt [get_bd_pins ip2intc_irpt] [get_bd_pins ETH0_axi_ethernetlite_0/ip2intc_irpt]
   connect_bd_net -net axi_ethernetlite_0_phy_tx_en [get_bd_pins phy_tx_en] [get_bd_pins ETH0_LEDs/phy_tx_en] [get_bd_pins ETH0_axi_ethernetlite_0/phy_tx_en]
   connect_bd_net -net dcm_locked_1 [get_bd_pins dcm_locked] [get_bd_pins ETH0_LEDs_proc_sys_reset_0/dcm_locked]
@@ -3421,7 +3359,7 @@ proc create_hier_cell_ETH0 { parentCell nameHier } {
   connect_bd_net -net mii_y_adapater_0_s_mii_rx_dv [get_bd_pins s_mii_rx_dv] [get_bd_pins ETH0_LEDs/s_mii_rx_dv] [get_bd_pins ETH0_mii_y_adapater_0/s_mii_rx_dv]
   connect_bd_net -net mii_y_adapater_0_s_mii_tx_clk [get_bd_pins s_mii_tx_clk] [get_bd_pins ETH0_mii_y_adapater_0/s_mii_tx_clk]
   connect_bd_net -net rst_n_1 [get_bd_pins ETH0_LEDs_proc_sys_reset_0/peripheral_aresetn] [get_bd_pins ETH0_mii_to_rmii_0/rst_n]
-  connect_bd_net -net s_axi_aclk_1 [get_bd_pins s_axi_aclk] [get_bd_pins ETH0_LEDs/s_axi_aclk] [get_bd_pins ETH0_axi_ethernetlite_0/s_axi_aclk]
+  connect_bd_net -net s_axi_aclk_1 [get_bd_pins s_axi_aclk] [get_bd_pins ETH0_axi_ethernetlite_0/s_axi_aclk]
   connect_bd_net -net s_axi_aresetn_1 [get_bd_pins s_axi_aresetn] [get_bd_pins ETH0_axi_ethernetlite_0/s_axi_aresetn]
 
   # Restore current instance
@@ -3813,8 +3751,9 @@ proc create_root_design { parentCell } {
   # Create instance: vio_0, and set properties
   set vio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:vio:3.0 vio_0 ]
   set_property -dict [ list \
-   CONFIG.C_NUM_PROBE_IN {29} \
+   CONFIG.C_NUM_PROBE_IN {28} \
    CONFIG.C_NUM_PROBE_OUT {1} \
+   CONFIG.C_PROBE_IN28_WIDTH {1} \
    CONFIG.C_PROBE_OUT0_WIDTH {13} \
  ] $vio_0
 
@@ -3867,7 +3806,6 @@ proc create_root_design { parentCell } {
   connect_bd_net -net CLK2_125MHz_mgt_g_0 [get_bd_pins lt_fmeter_xlconcat_0/In1] [get_bd_pins mgt_clk0_CLK2_util_ds_buf_1/IBUF_OUT]
   connect_bd_net -net ETH0_DA_G [get_bd_ports ETH0_DA_G] [get_bd_pins ETH0/ETH0_DA_G]
   connect_bd_net -net ETH0_DA_Y [get_bd_ports ETH0_DA_Y] [get_bd_pins ETH0/ETH0_DA_Y]
-  connect_bd_net -net ETH0_LEDs_MF_Q_vio_0 [get_bd_pins ETH0/Q] [get_bd_pins vio_0/probe_in28]
   connect_bd_net -net ETH0_LINK_LED_g_0 [get_bd_ports ETH0_LINK_LED_g] [get_bd_pins ETH0/ETH0_LINK_LED]
   connect_bd_net -net ETH0_ip2intc_irpt [get_bd_pins ETH0/ip2intc_irpt] [get_bd_pins INT_ctrl/In4]
   connect_bd_net -net ETH0_phy_rst_n [get_bd_ports phy_rst_n] [get_bd_pins ETH0/phy_rst_n]

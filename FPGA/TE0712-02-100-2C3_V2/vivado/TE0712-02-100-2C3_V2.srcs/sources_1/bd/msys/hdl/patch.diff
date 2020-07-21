@@ -1,5 +1,5 @@
---- msys_wrapper.vhd.orig	2020-07-17 21:56:09.803645400 +0200
-+++ msys_wrapper.vhd	2020-07-17 21:54:16.071231300 +0200
+--- msys_wrapper.vhd.orig	2020-07-21 14:05:42.741452600 +0200
++++ msys_wrapper.vhd	2020-07-21 14:06:19.967423700 +0200
 @@ -16,4 +16,6 @@
      BOARD_IIC_scl_io : inout STD_LOGIC;
      BOARD_IIC_sda_io : inout STD_LOGIC;
@@ -9,7 +9,7 @@
      CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
 @@ -42,5 +44,5 @@
      ETH0_DA_G : out STD_LOGIC_VECTOR ( 0 to 0 );
-     ETH0_DA_Y : out STD_LOGIC;
+     ETH0_DA_Y : out STD_LOGIC_VECTOR ( 0 to 0 );
 -    ETH0_LINK_LED_g : in STD_LOGIC;
 +    ETH0_LINK_LED : in STD_LOGIC;
      ETH0_MDIO_MDC_mdc : out STD_LOGIC;

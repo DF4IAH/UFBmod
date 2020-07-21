@@ -297,12 +297,6 @@
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_clk_wiz_0_0/msys_clk_wiz_0_0_clk_wiz.v" \
   "../../../bd/msys/ip/msys_clk_wiz_0_0/msys_clk_wiz_0_0.v" \
--endlib
--makelib xcelium_lib/util_reduced_logic_v2_0_4 \
-  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/4c94/hdl/util_reduced_logic_v2_0_vl_rfs.v" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/msys/ip/msys_util_reduced_logic_0_1/sim/msys_util_reduced_logic_0_1.v" \
   "../../../bd/msys/ip/msys_xlconcat_1_1/sim/msys_xlconcat_1_1.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
@@ -584,17 +578,7 @@
   "../../../bd/msys/ip/msys_c_shift_ram_0_5/sim/msys_c_shift_ram_0_5.vhd" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/msys/ip/msys_xlconcat_0_9/sim/msys_xlconcat_0_9.v" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/msys/ip/msys_c_counter_binary_0_4/sim/msys_c_counter_binary_0_4.vhd" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/msys/ip/msys_util_vector_logic_0_6/sim/msys_util_vector_logic_0_6.v" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/msys/ip/msys_c_shift_ram_0_6/sim/msys_c_shift_ram_0_6.vhd" \
-  "../../../bd/msys/ip/msys_c_shift_ram_0_7/sim/msys_c_shift_ram_0_7.vhd" \
+  "../../../bd/msys/ip/msys_xlconstant_0_19/sim/msys_xlconstant_0_19.v" \
 -endlib
 -makelib xcelium_lib/axi_clock_converter_v2_1_20 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/7589/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
