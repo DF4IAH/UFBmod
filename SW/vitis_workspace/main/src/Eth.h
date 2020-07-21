@@ -79,10 +79,6 @@ extern "C" {
 #define EMACLITE_PHY_DELAY_SEC		4U		/* Amount of time to delay waiting on PHY to reset */
 
 
-
-
-
-
 /*
  * The following constants map to the XPAR parameters created in the
  * xparameters.h file. They are defined here such that a user can easily
@@ -96,10 +92,6 @@ extern "C" {
 /**************************** Type Definitions ******************************/
 
 /************************** Function Prototypes *****************************/
-
-/*
- * Utility functions implemented in xemaclite_example_util.c
- */
 void emacLitePhyDelay(unsigned int seconds);
 u32 emacLitePhyDetect(XEmacLite* instancePtr);
 int emacLiteEnablePhyLoopBack(XEmacLite* instancePtr, u32 phyAddress);
