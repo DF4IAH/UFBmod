@@ -19050,8 +19050,8 @@ Voltage reference</description>
 <part name="GND1411" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="GND1412" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="GND1413" library="df4iah_supply" deviceset="GND" device=""/>
-<part name="R1421" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="1kR"/>
-<part name="R1422" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="1kR"/>
+<part name="R1421" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="470R"/>
+<part name="R1422" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="470R"/>
 <part name="+3V3_1431" library="df4iah_supply" deviceset="+3V3" device=""/>
 <part name="+3V3_1441" library="df4iah_supply" deviceset="+3V3" device=""/>
 <part name="C1431" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="1uF"/>

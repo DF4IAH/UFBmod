@@ -7116,11 +7116,11 @@ Covered vias can be set in Masks (Limit).
 <attribute name="NAME" x="97.4979" y="55.0418" size="0.8128" layer="26" font="vector" ratio="20" rot="MR0"/>
 <attribute name="VALUE" x="85.2932" y="49.6824" size="0.8128" layer="28" font="vector" ratio="20" rot="MR270"/>
 </element>
-<element name="R1421" library="df4iah_rcl" package="R0402" value="1kR" x="72.39" y="35.56" smashed="yes" rot="MR90">
+<element name="R1421" library="df4iah_rcl" package="R0402" value="470R" x="72.39" y="35.56" smashed="yes" rot="MR90">
 <attribute name="NAME" x="73.3425" y="34.29" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="70.8025" y="33.9725" size="0.6096" layer="28" font="vector" ratio="10" rot="MR90"/>
 </element>
-<element name="R1422" library="df4iah_rcl" package="R0402" value="1kR" x="72.39" y="53.34" smashed="yes" rot="MR270">
+<element name="R1422" library="df4iah_rcl" package="R0402" value="470R" x="72.39" y="53.34" smashed="yes" rot="MR270">
 <attribute name="NAME" x="72.0725" y="54.9275" size="0.6096" layer="26" font="vector" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="73.9775" y="54.9275" size="0.6096" layer="28" font="vector" ratio="10" rot="MR270"/>
 </element>
