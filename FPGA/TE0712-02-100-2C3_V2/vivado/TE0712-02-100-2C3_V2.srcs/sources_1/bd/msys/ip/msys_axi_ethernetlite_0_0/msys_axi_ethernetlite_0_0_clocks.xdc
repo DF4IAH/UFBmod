@@ -49,4 +49,5 @@
  set clk_domain_b [get_clocks -of_objects [get_ports phy_rx_clk]]
  set clk_domain_c [get_clocks -of_objects [get_ports s_axi_aclk]]
 
+set_clock_groups -physically_exclusive -group [get_clocks -of_objects [get_ports -scoped_to_current_instance phy_tx_clk]] -group [get_clocks -of_objects [get_ports -scoped_to_current_instance phy_rx_clk]]
 

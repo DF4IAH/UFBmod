@@ -1,0 +1,4 @@
+
+
+extern u8 emacLiteLocalMacAddr[XEL_MAC_ADDR_SIZE]
+

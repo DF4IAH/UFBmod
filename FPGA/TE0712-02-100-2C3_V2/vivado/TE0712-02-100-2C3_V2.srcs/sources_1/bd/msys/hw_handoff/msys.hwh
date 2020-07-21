@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jul 21 16:27:32 2020" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jul 21 17:44:39 2020" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="artix7" BOARD="trenz.biz:te0712_100_2c:part0:1.0" DEVICE="7a100t" NAME="msys" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -2079,7 +2079,7 @@
         <PARAMETER NAME="C_S_AXI_ID_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_S_AXI_PROTOCOL" VALUE="AXI4LITE"/>
         <PARAMETER NAME="C_INCLUDE_MDIO" VALUE="1"/>
-        <PARAMETER NAME="C_INCLUDE_INTERNAL_LOOPBACK" VALUE="0"/>
+        <PARAMETER NAME="C_INCLUDE_INTERNAL_LOOPBACK" VALUE="1"/>
         <PARAMETER NAME="C_INCLUDE_GLOBAL_BUFFERS" VALUE="1"/>
         <PARAMETER NAME="C_DUPLEX" VALUE="1"/>
         <PARAMETER NAME="C_TX_PING_PONG" VALUE="1"/>
@@ -2351,9 +2351,9 @@
       </DOCUMENTS>
       <PARAMETERS>
         <PARAMETER NAME="C_INSTANCE" VALUE="msys_mii_to_rmii_0_0"/>
-        <PARAMETER NAME="C_FIXED_SPEED" VALUE="0"/>
-        <PARAMETER NAME="C_INCLUDE_BUF" VALUE="0"/>
-        <PARAMETER NAME="C_SPEED_100" VALUE="1"/>
+        <PARAMETER NAME="C_FIXED_SPEED" VALUE="1"/>
+        <PARAMETER NAME="C_INCLUDE_BUF" VALUE="1"/>
+        <PARAMETER NAME="C_SPEED_100" VALUE="0"/>
         <PARAMETER NAME="C_FAMILY" VALUE="artix7"/>
         <PARAMETER NAME="RESET_BOARD_INTERFACE" VALUE="Custom"/>
         <PARAMETER NAME="REF_CLK_BOARD_INTERFACE" VALUE="Custom"/>
@@ -6168,7 +6168,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="rotenc_dec_cnt_up_dwn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" LEFT="0" NAME="In2" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="undef" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -7179,7 +7179,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -7905,7 +7905,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -8344,7 +8344,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -12762,7 +12762,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -12782,12 +12782,12 @@
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_rx09_xlslice_31to00" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -12989,7 +12989,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -13009,12 +13009,12 @@
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_rx24_xlslice_31to00" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -13216,7 +13216,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -13236,12 +13236,12 @@
             <CONNECTION INSTANCE="External_Ports" PORT="premem_rx09_dina_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -13444,7 +13444,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -13464,12 +13464,12 @@
             <CONNECTION INSTANCE="External_Ports" PORT="premem_rx24_dina_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -28676,7 +28676,7 @@
             <CONNECTION INSTANCE="labtools_fmeter_0" PORT="update"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe_in5" RIGHT="0" SIGIS="undef" SIGNAME="SC0712_0_reset_out">
+        <PORT DIR="I" LEFT="0" NAME="probe_in5" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="undef" SIGNAME="SC0712_0_reset_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="SC0712_0" PORT="reset_out"/>
           </CONNECTIONS>

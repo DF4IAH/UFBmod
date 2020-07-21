@@ -1378,11 +1378,11 @@ Setting this bit and status bit configures the new Ethernet MAC address for the 
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Jul 21 14:26:43 UTC 2020</spirit:value>
+            <spirit:value>Tue Jul 21 15:43:55 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:787bf017</spirit:value>
+            <spirit:value>9:b3d1e0ff</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1393,7 +1393,7 @@ Setting this bit and status bit configures the new Ethernet MAC address for the 
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:787bf017</spirit:value>
+            <spirit:value>9:b3d1e0ff</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1409,11 +1409,11 @@ Setting this bit and status bit configures the new Ethernet MAC address for the 
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Jul 21 14:26:43 UTC 2020</spirit:value>
+            <spirit:value>Tue Jul 21 15:43:55 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:787bf017</spirit:value>
+            <spirit:value>9:b3d1e0ff</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1447,11 +1447,11 @@ Setting this bit and status bit configures the new Ethernet MAC address for the 
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Jul 21 14:26:43 UTC 2020</spirit:value>
+            <spirit:value>Tue Jul 21 15:43:55 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0b1c0363</spirit:value>
+            <spirit:value>9:6d21aad7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1467,11 +1467,11 @@ Setting this bit and status bit configures the new Ethernet MAC address for the 
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Jul 21 14:26:43 UTC 2020</spirit:value>
+            <spirit:value>Tue Jul 21 15:43:55 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0b1c0363</spirit:value>
+            <spirit:value>9:6d21aad7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1485,11 +1485,11 @@ Setting this bit and status bit configures the new Ethernet MAC address for the 
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Jul 21 14:26:43 UTC 2020</spirit:value>
+            <spirit:value>Tue Jul 21 15:43:55 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:787bf017</spirit:value>
+            <spirit:value>9:b3d1e0ff</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2413,7 +2413,7 @@ Setting this bit and status bit configures the new Ethernet MAC address for the 
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_INCLUDE_INTERNAL_LOOPBACK</spirit:name>
         <spirit:displayName>Include Internal Loopback</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_INCLUDE_INTERNAL_LOOPBACK">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_INCLUDE_INTERNAL_LOOPBACK">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_INCLUDE_GLOBAL_BUFFERS</spirit:name>
@@ -2782,7 +2782,7 @@ Setting this bit and status bit configures the new Ethernet MAC address for the 
       <spirit:name>C_INCLUDE_INTERNAL_LOOPBACK</spirit:name>
       <spirit:displayName>Enable Internal Loopback</spirit:displayName>
       <spirit:description>Enabling this parameter includes BUFG for PHY clock switching when loopback is enabled.</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_INCLUDE_INTERNAL_LOOPBACK" spirit:choiceRef="choice_pairs_4873554b" spirit:order="1500">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_INCLUDE_INTERNAL_LOOPBACK" spirit:choiceRef="choice_pairs_4873554b" spirit:order="1500">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>

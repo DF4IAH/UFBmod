@@ -135,9 +135,9 @@ BEGIN
   U0 : mii_to_rmii
     GENERIC MAP (
       C_INSTANCE => "msys_mii_to_rmii_0_0",
-      C_FIXED_SPEED => '0',
-      C_INCLUDE_BUF => 0,
-      C_SPEED_100 => '1',
+      C_FIXED_SPEED => '1',
+      C_INCLUDE_BUF => 1,
+      C_SPEED_100 => '0',
       C_FAMILY => "artix7"
     )
     PORT MAP (

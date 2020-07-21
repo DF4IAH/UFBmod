@@ -3307,7 +3307,7 @@ proc create_hier_cell_ETH0 { parentCell nameHier } {
   # Create instance: ETH0_axi_ethernetlite_0, and set properties
   set ETH0_axi_ethernetlite_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_ethernetlite:3.0 ETH0_axi_ethernetlite_0 ]
   set_property -dict [ list \
-   CONFIG.C_INCLUDE_INTERNAL_LOOPBACK {0} \
+   CONFIG.C_INCLUDE_INTERNAL_LOOPBACK {1} \
    CONFIG.MDIO_BOARD_INTERFACE {ETH0_MDIO_MDC} \
    CONFIG.USE_BOARD_FLOW {true} \
  ] $ETH0_axi_ethernetlite_0
@@ -3315,8 +3315,9 @@ proc create_hier_cell_ETH0 { parentCell nameHier } {
   # Create instance: ETH0_mii_to_rmii_0, and set properties
   set ETH0_mii_to_rmii_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:mii_to_rmii:2.0 ETH0_mii_to_rmii_0 ]
   set_property -dict [ list \
-   CONFIG.C_FIXED_SPEED {0} \
-   CONFIG.C_SPEED_100 {1} \
+   CONFIG.C_FIXED_SPEED {1} \
+   CONFIG.C_INCLUDE_BUF {1} \
+   CONFIG.C_SPEED_100 {0} \
    CONFIG.RMII_BOARD_INTERFACE {ETH0_RMII} \
  ] $ETH0_mii_to_rmii_0
 

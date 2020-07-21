@@ -4,17 +4,31 @@
 #include "Eth.h"
 
 
-/************************** Variable Definitions ****************************/
 
-/* Set up valid local MAC addresses. This loop back test uses the LocalAddress both as a source and destination MAC address */
-XEmacLite emacLiteInstance;					/* Instance of the EmacLite */
+/************************** Static Forward Declarations **********************/
 
-/* Buffers used for Transmission and Reception of Packets. These are declared as global so that they are not a part of the stack */
-u8 emacLiteTxFrame[XEL_MAX_FRAME_SIZE];
-u8 emacLiteRxFrame[XEL_MAX_FRAME_SIZE];
+static u16 ethCheckSumCalculation(u16* rxFramePtr, int startLoc, int length);
+static void ethProcessRecvFrame(XEmacLite* instancePtr);
 
-volatile u32 emacLiteRecvFrameLength;		/* Indicates the length of the Received packet */
-volatile int emacLiteTransmitComplete;		/* Flag to indicate that the Transmission is complete */
+
+/************************** Global Variable Definitions **********************/
+
+XEmacLite emacLiteInstance;																		/* Instance of the EmacLite driver */
+
+u8  emacLiteLocalMacAddr[XEL_MAC_ADDR_SIZE] = { 0x00U, 0x0aU, 0x35U, 0x02U, 0x23U, 0x5fU };  	/* MAC address */
+u8  emacLiteLocalIpAddr[IP_ADDR_SIZE] 		= { 192U, 168U, 178U, 44U };						/* IP address  */
+
+u32 emacLiteRxFrameLength 					= 0UL;												/* Variable used to indicate the length of the received frame */
+u8  emacLiteRxFrame[XEL_MAX_FRAME_SIZE];
+
+u8  emacLiteTxFrame[XEL_MAX_FRAME_SIZE];
+
+
+/************************** Static Eth.c Variable Definitions ****************/
+
+//volatile u32 emacLiteRecvFrameLength;															/* Indicates the length of the Received packet */
+//volatile int emacLiteTransmitComplete;															/* Flag to indicate that the Transmission is complete */
+
 
 /******************************************************************************
 * This function detects the PHY address by looking for successful MII status
@@ -174,4 +188,254 @@ void emacLitePhyDelay(unsigned int seconds)
 	usleep(seconds * 1000000);
 
 #endif
+}
+
+
+
+/*****************************************************************************
+* This function calculates the checksum and returns a 16 bit result.
+*
+* @param 	RxFramePtr is a 16 bit pointer for the data to which checksum is to be calculated.
+* @param	StartLoc is the starting location of the data from which the checksum has to be calculated.
+* @param	Length is the number of halfwords(16 bits) to which checksum is to be calculated.
+*
+* @return	It returns a 16 bit checksum value.
+*
+* @note		This can also be used for calculating checksum. The ones complement of this return value will give the final checksum.
+******************************************************************************/
+static u16 ethCheckSumCalculation(u16* rxFramePtr, int startLoc, int length)
+{
+	u32 sum = 0;
+	u16 checkSum = 0;
+
+	/* Add all the 16 bit data */
+	int index = startLoc;
+	while (index < (startLoc + length)) {
+		sum += Xil_Ntohs(*(rxFramePtr + index));
+		index++;
+	}
+
+	/* Add upper 16 bits to lower 16 bits */
+	checkSum = sum;
+	sum >>= 16;
+	checkSum = sum + checkSum;
+	return checkSum;
+}
+
+
+/******************************************************************************
+* This function processes the received packet and generates the corresponding reply packets.
+*
+* @param	InstancePtr is a pointer to the instance of the EmacLite.
+*
+* @return	None.
+*
+* @note		This function assumes MAC does not strip padding or CRC.
+******************************************************************************/
+void ethProcessRecvFrame(XEmacLite* instancePtr)
+{
+	u16* rxFramePtr;
+	u16* txFramePtr;
+	u16* tempPtr;
+	u16  checkSum;
+	//u32  NextTxBuffBaseAddr;
+	int  index;
+	int  packetType = 0;
+
+	txFramePtr = (u16*) emacLiteTxFrame;
+	rxFramePtr = (u16*) emacLiteRxFrame;
+
+	/* Determine the next expected Tx buffer address */
+	//NextTxBuffBaseAddr = XEmacLite_NextTransmitAddr(instancePtr);
+	//(void) NextTxBuffBaseAddr;		/* Used within the macro 'XEmacLite_NextTransmitAddr' @see xemaclite.h */
+
+	/* Check the packet type */
+	index = MAC_ADDR_LEN;
+	tempPtr = (u16*) emacLiteLocalMacAddr;
+	while (index--) {
+		if (Xil_Ntohs((*(rxFramePtr + index)) == BROADCAST_ADDR) && (packetType != MAC_MATCHED_PACKET)) {
+			packetType = BROADCAST_PACKET;
+
+		} else if (Xil_Ntohs((*(rxFramePtr + index)) == *(tempPtr + index)) && (packetType != BROADCAST_PACKET)) {
+			packetType = MAC_MATCHED_PACKET;
+
+		} else {
+			packetType = 0;
+			break;
+		}
+	}
+
+	/* Process broadcast packet */
+	if (packetType == BROADCAST_PACKET) {
+		/* Check for an ARP Packet if so generate a reply */
+		if (Xil_Ntohs(*(rxFramePtr + ETHER_PROTO_TYPE_LOC)) == XEL_ETHER_PROTO_TYPE_ARP) {
+			/* IP address of the local machine */
+			tempPtr = (u16*) emacLiteLocalIpAddr;
+
+			/* Check destination IP address of the packet with local IP address */
+			if (
+			  ((*(rxFramePtr + ARP_REQ_DEST_IP_LOC_1)) == *tempPtr++) &&
+			  ((*(rxFramePtr + ARP_REQ_DEST_IP_LOC_2)) == *tempPtr++)) {
+				/* Check ARP packet type(request/reply) */
+				if (Xil_Ntohs(*(rxFramePtr + ARP_REQ_STATUS_LOC)) == ARP_REQUEST) {
+					/* Add destination MAC address to the reply packet (i.e) source address of the received packet */
+					index = SRC_MAC_ADDR_LOC;
+					while (index < (SRC_MAC_ADDR_LOC + MAC_ADDR_LEN)) {
+						*txFramePtr++ = *(rxFramePtr + index);
+						index++;
+					}
+
+					/* Add source (local) MAC address to the reply packet */
+					index = 0;
+					tempPtr = (u16*) emacLiteLocalMacAddr;
+					while (index < MAC_ADDR_LEN) {
+						*txFramePtr++ = *tempPtr++;
+						index++;
+					}
+
+					/* Add Ethernet proto type H/W type(10/3MBps), H/W address length and protocol address len (i.e)same as in the received packet */
+					index = ETHER_PROTO_TYPE_LOC;
+					while (index < (ETHER_PROTO_TYPE_LOC + ETHER_PROTO_TYPE_LEN + ARP_HW_TYPE_LEN + ARP_HW_ADD_LEN + ARP_PROTO_ADD_LEN)) {
+						*txFramePtr++ = *(rxFramePtr + index);
+						index++;
+					}
+
+					/* Add ARP reply status to the reply packet */
+					*txFramePtr++ = Xil_Htons(ARP_REPLY);
+
+					/* Add local MAC Address to the reply packet */
+					tempPtr = (u16*) emacLiteLocalMacAddr;
+					index = 0;
+					while (index < MAC_ADDR_LEN) {
+						*txFramePtr++ = *tempPtr++;
+						index++;
+					}
+
+					/* Add local IP Address to the reply packet */
+					tempPtr = (u16*) emacLiteLocalIpAddr;
+					index = 0;
+					while (index < IP_ADDR_LEN) {
+						*txFramePtr++ = *tempPtr++;
+						index++;
+					}
+
+					/* Add Destination MAC Address to the reply packet from the received packet */
+					index = SRC_MAC_ADDR_LOC;
+					while (index < (SRC_MAC_ADDR_LOC + MAC_ADDR_LEN)) {
+						*txFramePtr++ = *(rxFramePtr + index);
+						index++;
+					}
+
+					/* Add Destination IP Address to the reply packet */
+					index = ARP_REQ_SRC_IP_LOC;
+					while (index < (ARP_REQ_SRC_IP_LOC + IP_ADDR_LEN)) {
+						*txFramePtr++ = *(rxFramePtr + index);
+						index++;
+					}
+
+					/* Fill zeros as per protocol. */
+					index = 0;
+					while (index < ARP_ZEROS_LEN) {
+						*txFramePtr++ = 0x0000;
+						index++;
+					}
+
+					/* Transmit the Reply Packet */
+					XEmacLite_Send(instancePtr, (u8*) &emacLiteTxFrame, ARP_PACKET_SIZE);
+				}
+			}
+		}
+	}
+
+	/* Process packets whose MAC address is matched */
+	if (packetType == MAC_MATCHED_PACKET) {
+		/* Check ICMP packet */
+		if (Xil_Ntohs(*(rxFramePtr + ETHER_PROTO_TYPE_LOC)) == XEL_ETHER_PROTO_TYPE_IP) {
+			/* Check the IP header checksum */
+			checkSum = ethCheckSumCalculation(rxFramePtr, IP_HDR_START_LOC, IP_HDR_LEN);
+
+			/* Check the Data field checksum */
+			if (checkSum == CORRECT_CKSUM_VALUE) {
+				checkSum = ethCheckSumCalculation(rxFramePtr, ICMP_DATA_START_LOC, ICMP_DATA_FIELD_LEN);
+				if (checkSum == CORRECT_CKSUM_VALUE) {
+					/* Add destination address to the reply packet (i.e)source address of the received packet */
+					index = SRC_MAC_ADDR_LOC;
+					while (index < (SRC_MAC_ADDR_LOC + MAC_ADDR_LEN)) {
+						*txFramePtr++ = *(rxFramePtr + index);
+						index++;
+					}
+
+					/* Add local MAC address to the reply packet */
+					index = 0;
+					tempPtr = (u16*) emacLiteLocalMacAddr;
+					while (index < MAC_ADDR_LEN) {
+						*txFramePtr++ = *tempPtr++;
+						index++;
+					}
+
+					/* Add protocol type header length and, packet length(60 Bytes) to the reply packet */
+					index = ETHER_PROTO_TYPE_LOC;
+					while (index < (ETHER_PROTO_TYPE_LOC + ETHER_PROTO_TYPE_LEN + IP_VERSION_LEN + IP_PACKET_LEN)) {
+						*txFramePtr++ = *(rxFramePtr + index);
+						index++;
+					}
+
+					/* Identification field a random number which is set to IDENT_FIELD_VALUE */
+					*txFramePtr++ = IDENT_FIELD_VALUE;
+
+					/* Add fragment type, time to live and ICM field. It is same as in the received packet */
+					index = IP_FRAG_FIELD_LOC;
+					while (index < (IP_FRAG_FIELD_LOC + IP_TTL_ICM_LEN + IP_FRAG_FIELD_LEN)) {
+						*txFramePtr++ = *(rxFramePtr + index);
+						index++;
+					}
+
+					/* Checksum first set to 0 and added in this field later */
+					*txFramePtr++ = 0x0000;
+
+					/* Add Source IP address */
+					index = 0;
+					tempPtr = (u16*) emacLiteLocalIpAddr;
+					while (index < IP_ADDR_LEN) {
+						*txFramePtr++ = *tempPtr++;
+						index++;
+					}
+
+					/* Add Destination IP address */
+					index = ICMP_REQ_SRC_IP_LOC;
+					while (index < (ICMP_REQ_SRC_IP_LOC + IP_ADDR_LEN)) {
+						*txFramePtr++ = *(rxFramePtr + index);
+						index++;
+					}
+
+					/* Calculate checksum, and add it in the appropriate field */
+					checkSum = ethCheckSumCalculation((u16*) emacLiteTxFrame, IP_HDR_START_LOC, IP_HDR_LEN);
+					checkSum = ~checkSum;
+					*(txFramePtr - IP_CSUM_LOC_BACK) = Xil_Htons(checkSum);
+
+					/* Echo reply status & checksum */
+					index = ICMP_ECHO_FIELD_LOC;
+					while (index < (ICMP_ECHO_FIELD_LOC + ICMP_ECHO_FIELD_LEN)) {
+						*txFramePtr++ = 0x0000;
+						index++;
+					}
+
+					/* Add data to buffer which was received from the packet */
+					index = ICMP_DATA_LOC;
+					while (index < (ICMP_DATA_LOC + ICMP_DATA_LEN)) {
+						*txFramePtr++ = (*(rxFramePtr + index));
+						index++;
+					}
+
+					/* Generate checksum for the data and add it in the appropriate field */
+					checkSum = ethCheckSumCalculation((u16*) emacLiteTxFrame, ICMP_DATA_START_LOC, ICMP_DATA_FIELD_LEN);
+					checkSum = ~checkSum;
+					*(txFramePtr - ICMP_DATA_CSUM_LOC_BACK) = Xil_Htons(checkSum);
+
+					/* Transmit the frame */
+					XEmacLite_Send(instancePtr, (u8*) &emacLiteTxFrame, ICMP_PACKET_SIZE);
+				}
+			}
+		}
+	}
 }

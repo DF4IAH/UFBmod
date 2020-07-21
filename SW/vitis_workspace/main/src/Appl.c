@@ -25,6 +25,8 @@
 #include "xiic.h"
 #include "xemaclite.h"
 
+#include "externals.h"
+
 
 //#define TIMER_ID					1
 //#define TIMER_CHECK_THRESHOLD		9
@@ -42,61 +44,6 @@
 
 //#define EMAC_DEVICE_ID		  		XPAR_EMACLITE_0_DEVICE_ID
 
-/* EMACLITE  begin */
-#define BROADCAST_PACKET			1		/* Broadcast packet */
-#define MAC_MATCHED_PACKET			2 		/* Dest MAC matched with local MAC */
-#define IP_ADDR_SIZE				4		/* IP Address size in Bytes */
-#define ARP_REQUEST 				0x0001	/* ARP Request bits in Rx packet */
-#define ARP_REPLY 					0x0002 	/* ARP status bits indicating reply */
-#define ARP_PACKET_SIZE 			0x3C    /* ARP packet len 60 Bytes */
-#define ICMP_PACKET_SIZE 			0x4A    /* ICMP packet length 74 Bytes
- 	 	 	 	 	 	 	 	 	 	 	 * including Src and Dest MAC Address */
-#define BROADCAST_ADDR 				0xFFFF  /* Broadcast Address */
-#define CORRECT_CKSUM_VALUE			0xFFFF  /* Correct checksum value */
-#define IDENT_FIELD_VALUE			0x9263	/* Identification field (random num) */
-
-/*
- * Definitions for the locations and length of some of the fields in a
- * IP packet. The lengths are defined in Half-Words (2 bytes).
- */
-#define ETHER_PROTO_TYPE_LEN		1  		/* Ethernet protocol Type length  */
-#define SRC_MAC_ADDR_LOC			3  		/* Source MAC address location */
-#define MAC_ADDR_LEN 				3  		/* MAC address length */
-#define ETHER_PROTO_TYPE_LOC		6  		/* Ethernet Proto type location */
-
-#define ARP_HW_TYPE_LEN 			1  		/* Hardware Type length  */
-#define ARP_PROTO_TYPE_LEN			1  		/* Protocol Type length  */
-#define ARP_HW_ADD_LEN				1  		/* Hardware address length */
-#define ARP_PROTO_ADD_LEN			1  		/* Protocol address length */
-#define ARP_ZEROS_LEN				9  		/* Length to be filled with zeros */
-#define ARP_REQ_STATUS_LOC 			10 		/* ARP request location */
-#define ARP_REQ_SRC_IP_LOC 			14 		/* Src IP address location of ARP request */
-#define ARP_REQ_DEST_IP_LOC_1 		19 		/* Destination IP's 1st half word location */
-#define ARP_REQ_DEST_IP_LOC_2 		20 		/* Destination IP's 2nd half word location */
-
-#define IP_VERSION_LEN 				1  		/* IP Version length  */
-#define IP_PACKET_LEN 				1  		/* IP Packet length field  */
-#define IP_FRAG_FIELD_LEN			1  		/* Fragment field len in ICMP packet */
-#define IP_TTL_ICM_LEN 				1  		/* Time to live and ICM fields length */
-#define IP_ADDR_LEN 				2  		/* Size of IP address in half-words */
-#define IP_CSUM_LOC_BACK			5  		/* IP checksum location from end of frame */
-#define IP_HDR_START_LOC 			7  		/* IP header start location */
-#define IP_HDR_LEN 					10 		/* IP Header length */
-#define IP_FRAG_FIELD_LOC 			10 		/* Fragment field location */
-
-#define ICMP_TYPE_LEN 				1  		/* ICMP Type length */
-#define ICMP_ECHO_FIELD_LEN 		2  		/* Echo field length in half-words */
-#define ICMP_REQ_SRC_IP_LOC 		13 		/* Src IP address location of ICMP request */
-#define ICMP_ECHO_FIELD_LOC 		17 		/* Echo field location */
-#define ICMP_DATA_START_LOC 		17 		/* Data field start location */
-#define ICMP_DATA_LEN 				18 		/* ICMP data length */
-#define ICMP_DATA_LOC 				19 		/* ICMP data location including
-				      	  	  	  	  	   	 * identifier number and sequence number */
-#define ICMP_DATA_CSUM_LOC_BACK 	19 		/* Data checksum location from end of
-									  	   	 * frame */
-#define ICMP_DATA_FIELD_LEN 		20 		/* Data field length */
-/* EMACLITE  end */
-
 
 /*-----------------------------------------------------------*/
 /* Prototypes 												 */
@@ -104,9 +51,6 @@
 static void taskDefault(void* pvParameters);
 static void taskEth(void* pvParameters);
 //static void vTimerCallback(TimerHandle_t pxTimer);
-
-static u16 ethCheckSumCalculation(u16* rxFramePtr, int startLoc, int length);
-static void ethProcessRecvFrame(XEmacLite* instancePtr);
 
 /*-----------------------------------------------------------*/
 static TaskHandle_t thDflt;
@@ -120,13 +64,6 @@ static TaskHandle_t thEth;
 
 static XGpio gpio_Rotenc;																		/* ROTENC 	   */
 static XGpio gpio_PWM_Lights;																	/* PWM Lights  */
-
-static XEmacLite emacLiteInstance;																/* Instance of the EmacLite driver */
-static u8 emacLiteLocalMacAddr[XEL_MAC_ADDR_SIZE] 	= { 0x00U, 0x0aU, 0x35U, 0x02U, 0x23U, 0x5fU };  	/* MAC address */
-static u8 emacLiteLocalIpAddr[IP_ADDR_SIZE] 		= { 192U, 168U, 178U, 44U };				/* IP address  */
-static u8 emacLiteRxFrame[XEL_MAX_FRAME_SIZE];
-static u8 emacLiteTxFrame[XEL_MAX_FRAME_SIZE];
-u32 emacLiteRxFrameLength 							= 0UL;										/* Variable used to indicate the length of the received frame */
 
 
 /* Apps includes */
@@ -149,6 +86,7 @@ int main(void)
 			&thDflt
 	);
 
+#if 0
 	xTaskCreate(
 			taskEth,
 			(const char*) "tskNet",
@@ -157,6 +95,7 @@ int main(void)
 			tskIDLE_PRIORITY + 1U,
 			&thEth
 	);
+#endif
 
 #if 0
 	xQueue = xQueueCreate(
@@ -232,255 +171,6 @@ static u8 lcdTextWrite(u8 row, u8 col, u8 strLen, const char* strBuf)
     	}
     }
     return XST_SUCCESS;
-}
-
-
-/*****************************************************************************
-* This function calculates the checksum and returns a 16 bit result.
-*
-* @param 	RxFramePtr is a 16 bit pointer for the data to which checksum is to be calculated.
-* @param	StartLoc is the starting location of the data from which the checksum has to be calculated.
-* @param	Length is the number of halfwords(16 bits) to which checksum is to be calculated.
-*
-* @return	It returns a 16 bit checksum value.
-*
-* @note		This can also be used for calculating checksum. The ones complement of this return value will give the final checksum.
-******************************************************************************/
-static u16 ethCheckSumCalculation(u16* rxFramePtr, int startLoc, int length)
-{
-	u32 sum = 0;
-	u16 checkSum = 0;
-
-	/* Add all the 16 bit data */
-	int index = startLoc;
-	while (index < (startLoc + length)) {
-		sum += Xil_Ntohs(*(rxFramePtr + index));
-		index++;
-	}
-
-	/* Add upper 16 bits to lower 16 bits */
-	checkSum = sum;
-	sum >>= 16;
-	checkSum = sum + checkSum;
-	return checkSum;
-}
-
-
-/******************************************************************************
-* This function processes the received packet and generates the corresponding reply packets.
-*
-* @param	InstancePtr is a pointer to the instance of the EmacLite.
-*
-* @return	None.
-*
-* @note		This function assumes MAC does not strip padding or CRC.
-******************************************************************************/
-static void ethProcessRecvFrame(XEmacLite* instancePtr)
-{
-	u16* rxFramePtr;
-	u16* txFramePtr;
-	u16* tempPtr;
-	u16  checkSum;
-	u32  NextTxBuffBaseAddr;
-	int  index;
-	int  packetType = 0;
-
-	txFramePtr = (u16*) emacLiteTxFrame;
-	rxFramePtr = (u16*) emacLiteRxFrame;
-
-	/* Determine the next expected Tx buffer address */
-	NextTxBuffBaseAddr = XEmacLite_NextTransmitAddr(instancePtr);
-	(void) NextTxBuffBaseAddr;		/* Used within the macro 'XEmacLite_NextTransmitAddr' @see xemaclite.h */
-
-	/* Check the packet type */
-	index = MAC_ADDR_LEN;
-	tempPtr = (u16*) emacLiteLocalMacAddr;
-	while (index--) {
-		if (Xil_Ntohs((*(rxFramePtr + index)) == BROADCAST_ADDR) && (packetType != MAC_MATCHED_PACKET)) {
-			packetType = BROADCAST_PACKET;
-
-		} else if (Xil_Ntohs((*(rxFramePtr + index)) == *(tempPtr + index)) && (packetType != BROADCAST_PACKET)) {
-			packetType = MAC_MATCHED_PACKET;
-
-		} else {
-			packetType = 0;
-			break;
-		}
-	}
-
-	/* Process broadcast packet */
-	if (packetType == BROADCAST_PACKET) {
-		/* Check for an ARP Packet if so generate a reply */
-		if (Xil_Ntohs(*(rxFramePtr + ETHER_PROTO_TYPE_LOC)) == XEL_ETHER_PROTO_TYPE_ARP) {
-			/* IP address of the local machine */
-			tempPtr = (u16*) emacLiteLocalIpAddr;
-
-			/* Check destination IP address of the packet with local IP address */
-			if (
-			  ((*(rxFramePtr + ARP_REQ_DEST_IP_LOC_1)) == *tempPtr++) &&
-			  ((*(rxFramePtr + ARP_REQ_DEST_IP_LOC_2)) == *tempPtr++)) {
-				/* Check ARP packet type(request/reply) */
-				if (Xil_Ntohs(*(rxFramePtr + ARP_REQ_STATUS_LOC)) == ARP_REQUEST) {
-					/* Add destination MAC address to the reply packet (i.e) source address of the received packet */
-					index = SRC_MAC_ADDR_LOC;
-					while (index < (SRC_MAC_ADDR_LOC + MAC_ADDR_LEN)) {
-						*txFramePtr++ = *(rxFramePtr + index);
-						index++;
-					}
-
-					/* Add source (local) MAC address to the reply packet */
-					index = 0;
-					tempPtr = (u16*) emacLiteLocalMacAddr;
-					while (index < MAC_ADDR_LEN) {
-						*txFramePtr++ = *tempPtr++;
-						index++;
-					}
-
-					/* Add Ethernet proto type H/W type(10/3MBps), H/W address length and protocol address len (i.e)same as in the received packet */
-					index = ETHER_PROTO_TYPE_LOC;
-					while (index < (ETHER_PROTO_TYPE_LOC + ETHER_PROTO_TYPE_LEN + ARP_HW_TYPE_LEN + ARP_HW_ADD_LEN + ARP_PROTO_ADD_LEN)) {
-						*txFramePtr++ = *(rxFramePtr + index);
-						index++;
-					}
-
-					/* Add ARP reply status to the reply packet */
-					*txFramePtr++ = Xil_Htons(ARP_REPLY);
-
-					/* Add local MAC Address to the reply packet */
-					tempPtr = (u16*) emacLiteLocalMacAddr;
-					index = 0;
-					while (index < MAC_ADDR_LEN) {
-						*txFramePtr++ = *tempPtr++;
-						index++;
-					}
-
-					/* Add local IP Address to the reply packet */
-					tempPtr = (u16*) emacLiteLocalIpAddr;
-					index = 0;
-					while (index < IP_ADDR_LEN) {
-						*txFramePtr++ = *tempPtr++;
-						index++;
-					}
-
-					/* Add Destination MAC Address to the reply packet from the received packet */
-					index = SRC_MAC_ADDR_LOC;
-					while (index < (SRC_MAC_ADDR_LOC + MAC_ADDR_LEN)) {
-						*txFramePtr++ = *(rxFramePtr + index);
-						index++;
-					}
-
-					/* Add Destination IP Address to the reply packet */
-					index = ARP_REQ_SRC_IP_LOC;
-					while (index < (ARP_REQ_SRC_IP_LOC + IP_ADDR_LEN)) {
-						*txFramePtr++ = *(rxFramePtr + index);
-						index++;
-					}
-
-					/* Fill zeros as per protocol. */
-					index = 0;
-					while (index < ARP_ZEROS_LEN) {
-						*txFramePtr++ = 0x0000;
-						index++;
-					}
-
-					/* Transmit the Reply Packet */
-					XEmacLite_Send(instancePtr, (u8*) &emacLiteTxFrame, ARP_PACKET_SIZE);
-				}
-			}
-		}
-	}
-
-	/* Process packets whose MAC address is matched */
-	if (packetType == MAC_MATCHED_PACKET) {
-		/* Check ICMP packet */
-		if (Xil_Ntohs(*(rxFramePtr + ETHER_PROTO_TYPE_LOC)) == XEL_ETHER_PROTO_TYPE_IP) {
-			/* Check the IP header checksum */
-			checkSum = ethCheckSumCalculation(rxFramePtr, IP_HDR_START_LOC, IP_HDR_LEN);
-
-			/* Check the Data field checksum */
-			if (checkSum == CORRECT_CKSUM_VALUE) {
-				checkSum = ethCheckSumCalculation(rxFramePtr, ICMP_DATA_START_LOC, ICMP_DATA_FIELD_LEN);
-				if (checkSum == CORRECT_CKSUM_VALUE) {
-					/* Add destination address to the reply packet (i.e)source address of the received packet */
-					index = SRC_MAC_ADDR_LOC;
-					while (index < (SRC_MAC_ADDR_LOC + MAC_ADDR_LEN)) {
-						*txFramePtr++ = *(rxFramePtr + index);
-						index++;
-					}
-
-					/* Add local MAC address to the reply packet */
-					index = 0;
-					tempPtr = (u16*) emacLiteLocalMacAddr;
-					while (index < MAC_ADDR_LEN) {
-						*txFramePtr++ = *tempPtr++;
-						index++;
-					}
-
-					/* Add protocol type header length and, packet length(60 Bytes) to the reply packet */
-					index = ETHER_PROTO_TYPE_LOC;
-					while (index < (ETHER_PROTO_TYPE_LOC + ETHER_PROTO_TYPE_LEN + IP_VERSION_LEN + IP_PACKET_LEN)) {
-						*txFramePtr++ = *(rxFramePtr + index);
-						index++;
-					}
-
-					/* Identification field a random number which is set to IDENT_FIELD_VALUE */
-					*txFramePtr++ = IDENT_FIELD_VALUE;
-
-					/* Add fragment type, time to live and ICM field. It is same as in the received packet */
-					index = IP_FRAG_FIELD_LOC;
-					while (index < (IP_FRAG_FIELD_LOC + IP_TTL_ICM_LEN + IP_FRAG_FIELD_LEN)) {
-						*txFramePtr++ = *(rxFramePtr + index);
-						index++;
-					}
-
-					/* Checksum first set to 0 and added in this field later */
-					*txFramePtr++ = 0x0000;
-
-					/* Add Source IP address */
-					index = 0;
-					tempPtr = (u16*) emacLiteLocalIpAddr;
-					while (index < IP_ADDR_LEN) {
-						*txFramePtr++ = *tempPtr++;
-						index++;
-					}
-
-					/* Add Destination IP address */
-					index = ICMP_REQ_SRC_IP_LOC;
-					while (index < (ICMP_REQ_SRC_IP_LOC + IP_ADDR_LEN)) {
-						*txFramePtr++ = *(rxFramePtr + index);
-						index++;
-					}
-
-					/* Calculate checksum, and add it in the appropriate field */
-					checkSum = ethCheckSumCalculation((u16*) emacLiteTxFrame, IP_HDR_START_LOC, IP_HDR_LEN);
-					checkSum = ~checkSum;
-					*(txFramePtr - IP_CSUM_LOC_BACK) = Xil_Htons(checkSum);
-
-					/* Echo reply status & checksum */
-					index = ICMP_ECHO_FIELD_LOC;
-					while (index < (ICMP_ECHO_FIELD_LOC + ICMP_ECHO_FIELD_LEN)) {
-						*txFramePtr++ = 0x0000;
-						index++;
-					}
-
-					/* Add data to buffer which was received from the packet */
-					index = ICMP_DATA_LOC;
-					while (index < (ICMP_DATA_LOC + ICMP_DATA_LEN)) {
-						*txFramePtr++ = (*(rxFramePtr + index));
-						index++;
-					}
-
-					/* Generate checksum for the data and add it in the appropriate field */
-					checkSum = ethCheckSumCalculation((u16*) emacLiteTxFrame, ICMP_DATA_START_LOC, ICMP_DATA_FIELD_LEN);
-					checkSum = ~checkSum;
-					*(txFramePtr - ICMP_DATA_CSUM_LOC_BACK) = Xil_Htons(checkSum);
-
-					/* Transmit the frame */
-					XEmacLite_Send(instancePtr, (u8*) &emacLiteTxFrame, ICMP_PACKET_SIZE);
-				}
-			}
-		}
-	}
 }
 
 
@@ -743,7 +433,7 @@ static void taskEth(void* pvParameters)
 
 		/* Wait for a Receive packet */
 		while (!emacLiteRxFrameLength) {
-			//vTaskDelay(pdMS_TO_TICKS(20UL));
+			vTaskDelay(pdMS_TO_TICKS(20UL));
 			emacLiteRxFrameLength = XEmacLite_Recv(emacLiteInstPtr, (u8*) emacLiteRxFrame);
 		}
 
