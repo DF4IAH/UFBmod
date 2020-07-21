@@ -377,11 +377,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 20 19:11:50 UTC 2020</spirit:value>
+            <spirit:value>Tue Jul 21 10:53:06 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:44e53212</spirit:value>
+            <spirit:value>9:2f38e5e6</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -392,7 +392,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:44e53212</spirit:value>
+            <spirit:value>9:2f38e5e6</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -408,11 +408,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 20 19:11:50 UTC 2020</spirit:value>
+            <spirit:value>Tue Jul 21 10:53:06 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:44e53212</spirit:value>
+            <spirit:value>9:2f38e5e6</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -428,11 +428,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 20 19:11:50 UTC 2020</spirit:value>
+            <spirit:value>Tue Jul 21 10:53:06 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:8f8c3286</spirit:value>
+            <spirit:value>9:9d83c80e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -448,11 +448,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 20 19:11:50 UTC 2020</spirit:value>
+            <spirit:value>Tue Jul 21 10:53:06 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:8f8c3286</spirit:value>
+            <spirit:value>9:9d83c80e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -466,11 +466,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 20 19:11:50 UTC 2020</spirit:value>
+            <spirit:value>Tue Jul 21 10:53:06 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:44e53212</spirit:value>
+            <spirit:value>9:2f38e5e6</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -739,7 +739,7 @@
       <spirit:modelParameter spirit:dataType="std_logic">
         <spirit:name>C_SPEED_100</spirit:name>
         <spirit:displayName>Speed 100</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_SPEED_100">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_SPEED_100">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="STRING">
         <spirit:name>C_FAMILY</spirit:name>
@@ -841,7 +841,7 @@
     <spirit:parameter>
       <spirit:name>C_SPEED_100</spirit:name>
       <spirit:displayName>Speed 100</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_SPEED_100" spirit:choiceRef="choice_pairs_4873554b" spirit:order="1300">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_SPEED_100" spirit:choiceRef="choice_pairs_4873554b" spirit:order="1300">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
