@@ -76,7 +76,7 @@
 
 #define configMINIMAL_STACK_SIZE ( ( unsigned short ) 200)
 
-#define configTOTAL_HEAP_SIZE ( ( size_t ) ( 131072 ) )
+#define configTOTAL_HEAP_SIZE ( ( size_t ) ( 65536 ) )
 
 #define configMAX_TASK_NAME_LEN 32
 
@@ -106,11 +106,23 @@
 
 #define configNUM_THREAD_LOCAL_STORAGE_POINTERS 0
 
-#define configGENERATE_RUN_TIME_STATS 0
+#define configGENERATE_RUN_TIME_STATS 1
 
-#define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS()
+#ifndef __ASSEMBLER__
 
-#define portGET_RUN_TIME_COUNTER_VALUE()
+void xCONFIGURE_TIMER_FOR_RUN_TIME_STATS(void);
+
+#endif
+
+#define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() xCONFIGURE_TIMER_FOR_RUN_TIME_STATS()
+
+#ifndef __ASSEMBLER__
+
+uint32_t xGET_RUN_TIME_COUNTER_VALUE(void);
+
+#endif
+
+#define portGET_RUN_TIME_COUNTER_VALUE() xGET_RUN_TIME_COUNTER_VALUE()
 
 #define configUSE_TICKLESS_IDLE	0
 #define configTASK_RETURN_ADDRESS    NULL

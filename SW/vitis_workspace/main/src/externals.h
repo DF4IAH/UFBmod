@@ -14,15 +14,8 @@ extern "C" {
 #endif
 
 
-#ifndef EUI48_SIZE
-#define EUI48_SIZE					6				/* EUI48 size in Bytes */
-#endif
-
-
 
 /************************** Global Variables *********************************/
-
-extern u8  owEUI48[EUI48_SIZE];
 
 extern u8  emacLiteLocalMacAddr[XEL_MAC_ADDR_SIZE];
 extern u8  emacLiteLocalIpAddr[IP_ADDR_SIZE];
@@ -36,9 +29,6 @@ extern XEmacLite emacLiteInstance;					/* Instance of the EmacLite */
 
 
 /************************** Global Functions *********************************/
-
-extern u8 owreadEUI48(void);
-extern u8 owTestDelay(void);
 
 extern void emacLitePhyDelay(unsigned int seconds);
 extern u32 emacLitePhyDetect(XEmacLite* instancePtr);

@@ -50,8 +50,8 @@ static TaskHandle_t thEth;
 /*-----------------------------------------------------------*/
 /* Instances 												 */
 
-static XGpio gpio_Rotenc;																		/* ROTENC 	    */
-static XGpio gpio_PWM_Lights;																	/* PWM Lights   */
+static XGpio gpio_Rotenc;																		/* ROTENC 	   */
+static XGpio gpio_PWM_Lights;																	/* PWM Lights  */
 
 
 /* Apps includes */
@@ -61,8 +61,6 @@ static XGpio gpio_PWM_Lights;																	/* PWM Lights   */
 /*-----------------------------------------------------------*/
 /* Functions 												 */
 
-
-
 int main(void)
 {
 	xil_printf("\r\n\r\n*** UFBmod start-up ***\r\n" );
@@ -70,22 +68,22 @@ int main(void)
 	xTaskCreate(
 			taskDefault, 					/* The function that implements the task. */
 			(const char*) "tskDflt", 		/* Text name for the task, provided to assist debugging only. */
-			configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
-			//(unsigned short) 500,	 		/* The stack allocated to the task. */
+			configMINIMAL_STACK_SIZE, 		/* The stack allocated to the task. */
 			NULL, 							/* The task parameter is not used, so set to NULL. */
 			tskIDLE_PRIORITY,				/* The task runs at the idle priority. */
 			&thDflt
 	);
 
+#if 0
 	xTaskCreate(
-			taskEth, 						/* The function that implements the task. */
-			(const char*) "tskNet",			/* Text name for the task, provided to assist debugging only. */
-			configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
-			//(unsigned short) 500,	 		/* The stack allocated to the task. */
-			NULL,							/* The task parameter is not used, so set to NULL. */
-			tskIDLE_PRIORITY + 1U,			/* The task runs at that priority. */
+			taskEth,
+			(const char*) "tskNet",
+			configMINIMAL_STACK_SIZE,
+			NULL,
+			tskIDLE_PRIORITY + 1U,
 			&thEth
 	);
+#endif
 
 #if 0
 	xQueue = xQueueCreate(
@@ -136,17 +134,6 @@ int main(void)
 
 static void taskDefault(void* pvParameters)
 {
-#if 0
-	/* Delay loop calibration for EUI48 read-out */
-	{
-		owTestDelay();
-
-		/* Blocking loop */
-		while (1)
-			;
-	}
-#endif
-
 #if 1
 	/* ROTENC counter and push button */
 	{
@@ -251,7 +238,7 @@ static void taskDefault(void* pvParameters)
 			xil_printf("LCD reset: rstn --> actv\r\n");
 
 			XGpio_DiscreteWrite(&gpio_PWM_Lights, 2U, pwmLights_gpio2_lcd_rstn);
-			vTaskDelay(pdMS_TO_TICKS(10));
+			vTaskDelay(pdMS_TO_TICKS(2));
 
 			XGpio_DiscreteWrite(&gpio_PWM_Lights, 2U, pwmLights_gpio2_lcd_actv);
 			vTaskDelay(pdMS_TO_TICKS(50));
@@ -291,24 +278,6 @@ static void taskDefault(void* pvParameters)
 			const char strBufL2[] 	= "Demo by HFT Labs";
 			const u8 strLenL2		= 16;
 			lcdTextWrite(rowL2, col, strLenL2, strBufL2);
-		}
-	}
-#endif
-
-#if 1
-	/* Onewire EUI48 */
-	{
-		if (owreadEUI48() == XST_SUCCESS) {
-			xil_printf("EUI48 address: %02X:%02X:%02X:%02X:%02X:%02X\r\n",
-					owEUI48[0],
-					owEUI48[1],
-					owEUI48[2],
-					owEUI48[3],
-					owEUI48[4],
-					owEUI48[5]);
-
-		} else {
-			xil_printf("EUI48 read has failed!\r\n");
 		}
 	}
 #endif
@@ -386,10 +355,6 @@ static void taskDefault(void* pvParameters)
 
 static void taskEth(void* pvParameters)
 {
-	while (1) {
-		vTaskDelay(pdMS_TO_TICKS(1000));
-	}
-
 	XEmacLite* emacLiteInstPtr = &emacLiteInstance;
 
 	/* Initialize the EmacLite device */

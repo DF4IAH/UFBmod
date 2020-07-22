@@ -2,27 +2,25 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="EUI48_BYTE_LEN" key="selection"/>
+		<item value="Next" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="EUI48_BYTE_LEN"/>
-			<item value="owTestDelay"/>
-			<item value="gpio_PWM_Lights"/>
-			<item value="ow_EUI48"/>
-			<item value="output"/>
-			<item value="IIC_LCD_ONCHIP_ADDRESS"/>
-			<item value="emacLiteRecvFrameLength"/>
-			<item value="emacLiteRxFrameLength"/>
+			<item value="Next"/>
+			<item value="NextTxBuffBaseAddr"/>
+			<item value="nextTxBuffBaseAddr"/>
 			<item value="ethCheckSumCalculation"/>
-			<item value="IP_ADDR_SIZE"/>
-			<item value="emacLiteLocalMacAddr"/>
-			<item value="XEmacLite_SetMacAddress"/>
-			<item value="taskEth"/>
-			<item value="./TE0712-02-100-2C3_V2/vivado/TE0712-02-100-taskEth"/>
-			<item value="MD"/>
+			<item value="PRIORITY"/>
+			<item value="PingReplie"/>
+			<item value="ethProcessRecvFrame"/>
+			<item value="ProcessRecvFrame"/>
+			<item value="TIMER_ID"/>
+			<item value="TIMER_CHECK_THRESHOLD"/>
+			<item value="ByteCount"/>
+			<item value="_start1"/>
+			<item value="uxAutoReload"/>
 		</list>
 		<list key="replacehistory">
 		</list>
