@@ -73,16 +73,21 @@ static void ow_send(u8 bit)
 	}
 }
 
+static void ow_getLevels(volatile u8* left, volatile u8* right)
+{
+	ow_waitQuarts(1);	/* 25 us */
+	*left = XGpio_DiscreteRead(&gpio_OnewireEUI48, 1U) & 0x00000001UL;
+	ow_waitQuarts(2);	/* 50 us */
+	*right = XGpio_DiscreteRead(&gpio_OnewireEUI48, 1U) & 0x00000001UL;
+	ow_waitQuarts(1);	/* 25 us */
+}
+
 static u8 ow_checkSak(void)
 {
-	u8 ow_sak1, ow_sak2;
-
 	XGpio_SetDataDirection(&gpio_OnewireEUI48, 1U, 0xffffffffUL);  // ow-bit: input
-	ow_waitQuarts(1);	/* 25 us */
-	ow_sak1 = XGpio_DiscreteRead(&gpio_OnewireEUI48, 1U) & 0x00000001UL;
-	ow_waitQuarts(2);	/* 50 us */
-	ow_sak2 = XGpio_DiscreteRead(&gpio_OnewireEUI48, 1U) & 0x00000001UL;
-	ow_waitQuarts(1);	/* 25 us */
+
+	volatile u8 ow_sak1, ow_sak2;
+	ow_getLevels(&ow_sak1, &ow_sak2);
 
 	/* Check SAK response */
 	if (ow_sak1 || !ow_sak2) {
@@ -97,19 +102,16 @@ static u8 ow_checkSak(void)
 static void ow_dropSak(void)
 {
 	XGpio_SetDataDirection(&gpio_OnewireEUI48, 1U, 0xffffffffUL);  // ow-bit: input
+
 	ow_waitQuarts(4);	/* 100 us */
+
 	XGpio_SetDataDirection(&gpio_OnewireEUI48, 1U, 0xfffffffeUL);  // ow-bit: output
 }
 
 static u8 ow_readDataBit(void)
 {
-	u8 ow_bit1, ow_bit2;
-
-	ow_waitQuarts(1);	/* 25 us */
-	ow_bit1 = XGpio_DiscreteRead(&gpio_OnewireEUI48, 1U) & 0x00000001UL;
-	ow_waitQuarts(2);	/* 50 us */
-	ow_bit2 = XGpio_DiscreteRead(&gpio_OnewireEUI48, 1U) & 0x00000001UL;
-	ow_waitQuarts(1);	/* 25 us */
+	volatile u8 ow_bit1, ow_bit2;
+	ow_getLevels(&ow_bit1, &ow_bit2);
 
 	if (!ow_bit1 && ow_bit2) {
 		return 1U;
@@ -143,6 +145,7 @@ static u8 ow_readDataByte(void)
 	}
 
 	if (ow_checkSak()) {
+		/* Drop data byte */
 		return 0U;
 	}
 
@@ -156,24 +159,22 @@ u8 owreadEUI48(void)
 		xil_printf("GPIO Onewire EUI-48 Initialization Failed\r\n");
 		return 1U;
 	}
-	XGpio_SetDataDirection(&gpio_OnewireEUI48, 1U, ~0x00000001UL);  // 1 bit output
 
-	/* Initial Low to High transition after POR/BOR */
+	XGpio_SetDataDirection(&gpio_OnewireEUI48, 1U, 0xfffffffeUL);  // 1 bit output
+
+	/* Initial Low to High transition after POR/BOR followed by a Standby pulse */
 	{
 		XGpio_DiscreteClear(&gpio_OnewireEUI48, 1U, 0x00000001UL);
-		ow_waitQuarts(1);	/* 25 us */
-	}
+		ow_waitQuarts(1);	/* 25 us > 5 us */
 
-	/* Standby Pulse */
-	{
 		XGpio_DiscreteSet(&gpio_OnewireEUI48, 1U, 0x00000001UL);
-		ow_waitQuarts(8);	/* 200 us */
+		ow_waitQuarts(2);	/* 50 us > 10 us*/
 	}
 
 	/* Start Header */
 	{
 		XGpio_DiscreteClear(&gpio_OnewireEUI48, 1U, 0x00000001UL);
-		ow_waitQuarts(2);	/* 50 us */
+		ow_waitQuarts(1);	/* 25 us > 5 us*/
 
 		ow_send(0);
 		ow_send(1);

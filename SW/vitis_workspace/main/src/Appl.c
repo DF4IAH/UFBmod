@@ -291,6 +291,8 @@ static void taskDefault(void* pvParameters)
 			const char strBufL2[] 	= "Demo by HFT Labs";
 			const u8 strLenL2		= 16;
 			lcdTextWrite(rowL2, col, strLenL2, strBufL2);
+
+			xil_printf(".\r\n");
 		}
 	}
 #endif
@@ -298,7 +300,8 @@ static void taskDefault(void* pvParameters)
 #if 1
 	/* Onewire EUI48 */
 	{
-		if (owreadEUI48() == XST_SUCCESS) {
+		u8 errCode = owreadEUI48();
+		if (errCode == XST_SUCCESS) {
 			xil_printf("EUI48 address: %02X:%02X:%02X:%02X:%02X:%02X\r\n",
 					owEUI48[0],
 					owEUI48[1],
@@ -308,7 +311,7 @@ static void taskDefault(void* pvParameters)
 					owEUI48[5]);
 
 		} else {
-			xil_printf("EUI48 read has failed!\r\n");
+			xil_printf("EUI48 read has failed with code: %d !\r\n", errCode);
 		}
 	}
 #endif

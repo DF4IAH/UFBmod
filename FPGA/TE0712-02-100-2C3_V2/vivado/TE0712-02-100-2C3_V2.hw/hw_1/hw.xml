@@ -30,7 +30,7 @@
   <ObjectList object_type="hw_probe" gui_info="">
     <Object name="msys_i/ETH0_LEDs_MF_Q_vio_0[22:0]" gui_info="hw_vios/hw_vio_1=29"/>
     <Object name="msys_i/ETH0_Q[22:0]" gui_info="hw_vios/hw_vio_1=29"/>
-    <Object name="msys_i/ETH0_Q[3:0]" gui_info="hw_vios/hw_vio_1=28_exp"/>
+    <Object name="msys_i/ETH0_Q[3:0]" gui_info="hw_vios/hw_vio_1=28"/>
     <Object name="msys_i/ETH0_m_mii_tx_er" gui_info="hw_vios/hw_vio_1=34"/>
     <Object name="msys_i/ETH0_m_mii_txd[3:0]" gui_info="hw_vios/hw_vio_1=33"/>
     <Object name="msys_i/ETH0_s_mii_col" gui_info="hw_vios/hw_vio_1=31"/>
