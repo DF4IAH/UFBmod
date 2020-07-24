@@ -86,8 +86,8 @@ set_property PACKAGE_PIN Y18 [get_ports BOARD_ROTENC_PUSH]
 set_property IOSTANDARD LVCMOS33 [get_ports BOARD_ROTENC_PUSH]
 set_property PULLUP true [get_ports BOARD_ROTENC_PUSH]
 
-set_property PACKAGE_PIN V22 [get_ports {onewire_EUI48_tri_io[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {onewire_EUI48_tri_io[0]}]
+set_property PACKAGE_PIN V22 [get_ports {EUI48_onewire_io}]
+set_property IOSTANDARD LVCMOS33 [get_ports {EUI48_onewire_io}]
 
 
 set_property PACKAGE_PIN B2 [get_ports PLL_int]
@@ -193,7 +193,7 @@ set_property OFFCHIP_TERM NONE [get_ports UART0EXT_DCDn[0]]
 set_property OFFCHIP_TERM NONE [get_ports UART0EXT_DSRn[0]]
 set_property OFFCHIP_TERM NONE [get_ports UART0EXT_RIn[0]]
 set_property OFFCHIP_TERM NONE [get_ports UART0_rst_n[0]]
-set_property OFFCHIP_TERM NONE [get_ports onewire_EUI48_tri_io[0]]
+set_property OFFCHIP_TERM NONE [get_ports EUI48_onewire_io]
 
 set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
 set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]

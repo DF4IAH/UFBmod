@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="EUI48_BYTE_LEN" key="selection"/>
+		<item value="owreadEUI48" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="owreadEUI48"/>
 			<item value="EUI48_BYTE_LEN"/>
 			<item value="owTestDelay"/>
 			<item value="gpio_PWM_Lights"/>
@@ -22,7 +23,6 @@
 			<item value="XEmacLite_SetMacAddress"/>
 			<item value="taskEth"/>
 			<item value="./TE0712-02-100-2C3_V2/vivado/TE0712-02-100-taskEth"/>
-			<item value="MD"/>
 		</list>
 		<list key="replacehistory">
 		</list>

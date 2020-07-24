@@ -148,6 +148,19 @@ static void taskDefault(void* pvParameters)
 #endif
 
 #if 1
+	/* Read EUI48 address from Onewire S-EEPROM as Ethernet MAC address */
+	{
+		int statusEui48 = owreadEUI48();
+		if (statusEui48 != XST_SUCCESS) {
+			xil_printf("EUI48 readout Failed\r\n");
+		} else {
+			xil_printf("EUI48 readout: 0x %02X:%02X:%02X:%02X:%02X:%02X\r\n",
+					owEUI48[0], owEUI48[1], owEUI48[2], owEUI48[3], owEUI48[4], owEUI48[5]);
+		}
+	}
+#endif
+
+#if 1
 	/* ROTENC counter and push button */
 	{
 		int statusRotenc = XGpio_Initialize(&gpio_Rotenc, XPAR_ROTENC_DECODER_AXI_ROTENC_GPIO_0_DEVICE_ID);

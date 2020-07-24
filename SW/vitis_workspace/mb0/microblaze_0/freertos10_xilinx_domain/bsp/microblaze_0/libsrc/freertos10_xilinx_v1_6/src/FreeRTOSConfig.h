@@ -100,7 +100,7 @@
 
 #define configUSE_TASK_FPU_SUPPORT 1
 
-#define configQUEUE_REGISTRY_SIZE 32
+#define configQUEUE_REGISTRY_SIZE 10
 
 #define configUSE_STATS_FORMATTING_FUNCTIONS 1
 

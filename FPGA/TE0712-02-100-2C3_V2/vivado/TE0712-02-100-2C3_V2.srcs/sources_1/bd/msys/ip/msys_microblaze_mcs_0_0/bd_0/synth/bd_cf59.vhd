@@ -306,22 +306,22 @@ architecture STRUCTURE of bd_cf59 is
   signal dlmb_port_EN : STD_LOGIC;
   signal dlmb_port_RST : STD_LOGIC;
   signal dlmb_port_WE : STD_LOGIC_VECTOR ( 0 to 3 );
+  signal dlmb_sl_0_ABUS : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal dlmb_sl_0_ADDRSTROBE : STD_LOGIC;
+  signal dlmb_sl_0_BE : STD_LOGIC_VECTOR ( 0 to 3 );
   signal dlmb_sl_0_CE : STD_LOGIC;
   signal dlmb_sl_0_READDBUS : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal dlmb_sl_0_READSTROBE : STD_LOGIC;
   signal dlmb_sl_0_READY : STD_LOGIC;
   signal dlmb_sl_0_UE : STD_LOGIC;
   signal dlmb_sl_0_WAIT : STD_LOGIC;
-  signal dlmb_sl_1_ABUS : STD_LOGIC_VECTOR ( 0 to 31 );
-  signal dlmb_sl_1_ADDRSTROBE : STD_LOGIC;
-  signal dlmb_sl_1_BE : STD_LOGIC_VECTOR ( 0 to 3 );
+  signal dlmb_sl_0_WRITEDBUS : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal dlmb_sl_0_WRITESTROBE : STD_LOGIC;
   signal dlmb_sl_1_CE : STD_LOGIC;
   signal dlmb_sl_1_READDBUS : STD_LOGIC_VECTOR ( 0 to 31 );
-  signal dlmb_sl_1_READSTROBE : STD_LOGIC;
   signal dlmb_sl_1_READY : STD_LOGIC;
   signal dlmb_sl_1_UE : STD_LOGIC;
   signal dlmb_sl_1_WAIT : STD_LOGIC;
-  signal dlmb_sl_1_WRITEDBUS : STD_LOGIC_VECTOR ( 0 to 31 );
-  signal dlmb_sl_1_WRITESTROBE : STD_LOGIC;
   signal dlmb_sl_2_CE : STD_LOGIC;
   signal dlmb_sl_2_READDBUS : STD_LOGIC_VECTOR ( 0 to 31 );
   signal dlmb_sl_2_READY : STD_LOGIC;
@@ -400,19 +400,19 @@ begin
   iomodule_0_GPIO1_TRI_I(31 downto 0) <= GPIO1_tri_i(31 downto 0);
 dlmb: component bd_cf59_dlmb_0
      port map (
-      LMB_ABus(0 to 31) => dlmb_sl_1_ABUS(0 to 31),
-      LMB_AddrStrobe => dlmb_sl_1_ADDRSTROBE,
-      LMB_BE(0 to 3) => dlmb_sl_1_BE(0 to 3),
+      LMB_ABus(0 to 31) => dlmb_sl_0_ABUS(0 to 31),
+      LMB_AddrStrobe => dlmb_sl_0_ADDRSTROBE,
+      LMB_BE(0 to 3) => dlmb_sl_0_BE(0 to 3),
       LMB_CE => dlmb_CE,
       LMB_Clk => Clk2,
       LMB_ReadDBus(0 to 31) => dlmb_READDBUS(0 to 31),
-      LMB_ReadStrobe => dlmb_sl_1_READSTROBE,
+      LMB_ReadStrobe => dlmb_sl_0_READSTROBE,
       LMB_Ready => dlmb_READY,
       LMB_Rst => NLW_dlmb_LMB_Rst_UNCONNECTED,
       LMB_UE => dlmb_UE,
       LMB_Wait => dlmb_WAIT,
-      LMB_WriteDBus(0 to 31) => dlmb_sl_1_WRITEDBUS(0 to 31),
-      LMB_WriteStrobe => dlmb_sl_1_WRITESTROBE,
+      LMB_WriteDBus(0 to 31) => dlmb_sl_0_WRITEDBUS(0 to 31),
+      LMB_WriteStrobe => dlmb_sl_0_WRITESTROBE,
       M_ABus(0 to 31) => dlmb_ABUS(0 to 31),
       M_AddrStrobe => dlmb_ADDRSTROBE,
       M_BE(0 to 3) => dlmb_BE(0 to 3),
@@ -476,14 +476,14 @@ dlmb_cntlr: component bd_cf59_dlmb_cntlr_0
       BRAM_EN_A => dlmb_port_EN,
       BRAM_Rst_A => dlmb_port_RST,
       BRAM_WEN_A(0 to 3) => dlmb_port_WE(0 to 3),
-      LMB_ABus(0 to 31) => dlmb_sl_1_ABUS(0 to 31),
-      LMB_AddrStrobe => dlmb_sl_1_ADDRSTROBE,
-      LMB_BE(0 to 3) => dlmb_sl_1_BE(0 to 3),
+      LMB_ABus(0 to 31) => dlmb_sl_0_ABUS(0 to 31),
+      LMB_AddrStrobe => dlmb_sl_0_ADDRSTROBE,
+      LMB_BE(0 to 3) => dlmb_sl_0_BE(0 to 3),
       LMB_Clk => Clk2,
-      LMB_ReadStrobe => dlmb_sl_1_READSTROBE,
+      LMB_ReadStrobe => dlmb_sl_0_READSTROBE,
       LMB_Rst => LMB_Rst2(0),
-      LMB_WriteDBus(0 to 31) => dlmb_sl_1_WRITEDBUS(0 to 31),
-      LMB_WriteStrobe => dlmb_sl_1_WRITESTROBE,
+      LMB_WriteDBus(0 to 31) => dlmb_sl_0_WRITEDBUS(0 to 31),
+      LMB_WriteStrobe => dlmb_sl_0_WRITESTROBE,
       Sl_CE => dlmb_sl_0_CE,
       Sl_DBus(0 to 31) => dlmb_sl_0_READDBUS(0 to 31),
       Sl_Ready => dlmb_sl_0_READY,
@@ -582,12 +582,12 @@ iomodule_0: component bd_cf59_iomodule_0_0
       Clk => Clk2,
       GPI1(31 downto 0) => iomodule_0_GPIO1_TRI_I(31 downto 0),
       GPO1(31 downto 0) => iomodule_0_GPIO1_TRI_O(31 downto 0),
-      LMB_ABus(0 to 31) => dlmb_sl_1_ABUS(0 to 31),
-      LMB_AddrStrobe => dlmb_sl_1_ADDRSTROBE,
-      LMB_BE(0 to 3) => dlmb_sl_1_BE(0 to 3),
-      LMB_ReadStrobe => dlmb_sl_1_READSTROBE,
-      LMB_WriteDBus(0 to 31) => dlmb_sl_1_WRITEDBUS(0 to 31),
-      LMB_WriteStrobe => dlmb_sl_1_WRITESTROBE,
+      LMB_ABus(0 to 31) => dlmb_sl_0_ABUS(0 to 31),
+      LMB_AddrStrobe => dlmb_sl_0_ADDRSTROBE,
+      LMB_BE(0 to 3) => dlmb_sl_0_BE(0 to 3),
+      LMB_ReadStrobe => dlmb_sl_0_READSTROBE,
+      LMB_WriteDBus(0 to 31) => dlmb_sl_0_WRITEDBUS(0 to 31),
+      LMB_WriteStrobe => dlmb_sl_0_WRITESTROBE,
       Rst => IO_Rst(0),
       Sl_CE => dlmb_sl_1_CE,
       Sl_DBus(0 to 31) => dlmb_sl_1_READDBUS(0 to 31),
@@ -824,14 +824,14 @@ second_dlmb_cntlr: component bd_cf59_second_dlmb_cntlr_0
       BRAM_EN_A => dlmb_port_2_EN,
       BRAM_Rst_A => dlmb_port_2_RST,
       BRAM_WEN_A(0 to 3) => dlmb_port_2_WE(0 to 3),
-      LMB_ABus(0 to 31) => dlmb_sl_1_ABUS(0 to 31),
-      LMB_AddrStrobe => dlmb_sl_1_ADDRSTROBE,
-      LMB_BE(0 to 3) => dlmb_sl_1_BE(0 to 3),
+      LMB_ABus(0 to 31) => dlmb_sl_0_ABUS(0 to 31),
+      LMB_AddrStrobe => dlmb_sl_0_ADDRSTROBE,
+      LMB_BE(0 to 3) => dlmb_sl_0_BE(0 to 3),
       LMB_Clk => Clk2,
-      LMB_ReadStrobe => dlmb_sl_1_READSTROBE,
+      LMB_ReadStrobe => dlmb_sl_0_READSTROBE,
       LMB_Rst => LMB_Rst2(0),
-      LMB_WriteDBus(0 to 31) => dlmb_sl_1_WRITEDBUS(0 to 31),
-      LMB_WriteStrobe => dlmb_sl_1_WRITESTROBE,
+      LMB_WriteDBus(0 to 31) => dlmb_sl_0_WRITEDBUS(0 to 31),
+      LMB_WriteStrobe => dlmb_sl_0_WRITESTROBE,
       Sl_CE => dlmb_sl_2_CE,
       Sl_DBus(0 to 31) => dlmb_sl_2_READDBUS(0 to 31),
       Sl_Ready => dlmb_sl_2_READY,

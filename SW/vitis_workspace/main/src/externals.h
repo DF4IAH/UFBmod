@@ -38,7 +38,6 @@ extern XEmacLite emacLiteInstance;					/* Instance of the EmacLite */
 /************************** Global Functions *********************************/
 
 extern u8 owreadEUI48(void);
-extern u8 owTestDelay(void);
 
 extern void emacLitePhyDelay(unsigned int seconds);
 extern u32 emacLitePhyDetect(XEmacLite* instancePtr);
