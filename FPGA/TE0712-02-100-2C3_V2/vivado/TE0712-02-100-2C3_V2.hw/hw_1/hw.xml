@@ -38,6 +38,11 @@
     <Object name="msys_i/ETH0_s_mii_rx_er" gui_info="hw_vios/hw_vio_1=30"/>
     <Object name="msys_i/ETH0_s_mii_rxd[3:0]" gui_info="hw_vios/hw_vio_1=29"/>
     <Object name="msys_i/ETH_vio_0[2:0]" gui_info="hw_vios/hw_vio_1=28_exp"/>
+    <Object name="msys_i/EUI48_EUI48_FSM_start" gui_info="hw_vios/hw_vio_1=35"/>
+    <Object name="msys_i/EUI48_FSM_run_1" gui_info="hw_vios/hw_vio_1=36"/>
+    <Object name="msys_i/EUI48_abort_1[7:0]" gui_info="hw_vios/hw_vio_1=39"/>
+    <Object name="msys_i/EUI48_data_1[47:0]" gui_info="hw_vios/hw_vio_1=37"/>
+    <Object name="msys_i/EUI48_state_1[7:0]" gui_info="hw_vios/hw_vio_1=38"/>
     <Object name="msys_i/FPGA_IO_1" gui_info="hw_vios/hw_vio_1=3"/>
     <Object name="msys_i/In2_1[2:0]" gui_info="hw_vios/hw_vio_1=26_exp"/>
     <Object name="msys_i/ROTENC_decoder_Q[31:0]" gui_info="hw_vios/hw_vio_1=27"/>
@@ -281,6 +286,142 @@
         <net name="msys_i/ETH_vio_0[2]"/>
         <net name="msys_i/ETH_vio_0[1]"/>
         <net name="msys_i/ETH_vio_0[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="BINARY"/>
+        <Option Id="NAME.CUSTOM" value="EUI48_FSM_start"/>
+        <Option Id="NAME.SELECT" value="Custom"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/EUI48_EUI48_FSM_start"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="BINARY"/>
+        <Option Id="NAME.CUSTOM" value="EUI48_FSM_run"/>
+        <Option Id="NAME.SELECT" value="Custom"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/EUI48_FSM_run_1"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="UNSIGNED"/>
+        <Option Id="NAME.CUSTOM" value="EUI48_FSM_abort[7:0]"/>
+        <Option Id="NAME.SELECT" value="Custom"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/EUI48_abort_1[7]"/>
+        <net name="msys_i/EUI48_abort_1[6]"/>
+        <net name="msys_i/EUI48_abort_1[5]"/>
+        <net name="msys_i/EUI48_abort_1[4]"/>
+        <net name="msys_i/EUI48_abort_1[3]"/>
+        <net name="msys_i/EUI48_abort_1[2]"/>
+        <net name="msys_i/EUI48_abort_1[1]"/>
+        <net name="msys_i/EUI48_abort_1[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value="EUI48_data[47:0]"/>
+        <Option Id="NAME.SELECT" value="Custom"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/EUI48_data_1[47]"/>
+        <net name="msys_i/EUI48_data_1[46]"/>
+        <net name="msys_i/EUI48_data_1[45]"/>
+        <net name="msys_i/EUI48_data_1[44]"/>
+        <net name="msys_i/EUI48_data_1[43]"/>
+        <net name="msys_i/EUI48_data_1[42]"/>
+        <net name="msys_i/EUI48_data_1[41]"/>
+        <net name="msys_i/EUI48_data_1[40]"/>
+        <net name="msys_i/EUI48_data_1[39]"/>
+        <net name="msys_i/EUI48_data_1[38]"/>
+        <net name="msys_i/EUI48_data_1[37]"/>
+        <net name="msys_i/EUI48_data_1[36]"/>
+        <net name="msys_i/EUI48_data_1[35]"/>
+        <net name="msys_i/EUI48_data_1[34]"/>
+        <net name="msys_i/EUI48_data_1[33]"/>
+        <net name="msys_i/EUI48_data_1[32]"/>
+        <net name="msys_i/EUI48_data_1[31]"/>
+        <net name="msys_i/EUI48_data_1[30]"/>
+        <net name="msys_i/EUI48_data_1[29]"/>
+        <net name="msys_i/EUI48_data_1[28]"/>
+        <net name="msys_i/EUI48_data_1[27]"/>
+        <net name="msys_i/EUI48_data_1[26]"/>
+        <net name="msys_i/EUI48_data_1[25]"/>
+        <net name="msys_i/EUI48_data_1[24]"/>
+        <net name="msys_i/EUI48_data_1[23]"/>
+        <net name="msys_i/EUI48_data_1[22]"/>
+        <net name="msys_i/EUI48_data_1[21]"/>
+        <net name="msys_i/EUI48_data_1[20]"/>
+        <net name="msys_i/EUI48_data_1[19]"/>
+        <net name="msys_i/EUI48_data_1[18]"/>
+        <net name="msys_i/EUI48_data_1[17]"/>
+        <net name="msys_i/EUI48_data_1[16]"/>
+        <net name="msys_i/EUI48_data_1[15]"/>
+        <net name="msys_i/EUI48_data_1[14]"/>
+        <net name="msys_i/EUI48_data_1[13]"/>
+        <net name="msys_i/EUI48_data_1[12]"/>
+        <net name="msys_i/EUI48_data_1[11]"/>
+        <net name="msys_i/EUI48_data_1[10]"/>
+        <net name="msys_i/EUI48_data_1[9]"/>
+        <net name="msys_i/EUI48_data_1[8]"/>
+        <net name="msys_i/EUI48_data_1[7]"/>
+        <net name="msys_i/EUI48_data_1[6]"/>
+        <net name="msys_i/EUI48_data_1[5]"/>
+        <net name="msys_i/EUI48_data_1[4]"/>
+        <net name="msys_i/EUI48_data_1[3]"/>
+        <net name="msys_i/EUI48_data_1[2]"/>
+        <net name="msys_i/EUI48_data_1[1]"/>
+        <net name="msys_i/EUI48_data_1[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="UNSIGNED"/>
+        <Option Id="NAME.CUSTOM" value="EUI48_FSM_state[7:0]"/>
+        <Option Id="NAME.SELECT" value="Custom"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/EUI48_state_1[7]"/>
+        <net name="msys_i/EUI48_state_1[6]"/>
+        <net name="msys_i/EUI48_state_1[5]"/>
+        <net name="msys_i/EUI48_state_1[4]"/>
+        <net name="msys_i/EUI48_state_1[3]"/>
+        <net name="msys_i/EUI48_state_1[2]"/>
+        <net name="msys_i/EUI48_state_1[1]"/>
+        <net name="msys_i/EUI48_state_1[0]"/>
       </nets>
     </probe>
     <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">

@@ -3577,7 +3577,9 @@ proc create_root_design { parentCell } {
   set ETH0_LINK_LED_g [ create_bd_port -dir I ETH0_LINK_LED_g ]
   set EUI48_FSM_run [ create_bd_port -dir I EUI48_FSM_run ]
   set EUI48_FSM_start [ create_bd_port -dir O -from 0 -to 0 EUI48_FSM_start ]
+  set EUI48_abort [ create_bd_port -dir I -from 7 -to 0 -type data EUI48_abort ]
   set EUI48_data [ create_bd_port -dir I -from 47 -to 0 -type data EUI48_data ]
+  set EUI48_state [ create_bd_port -dir I -from 7 -to 0 -type data EUI48_state ]
   set FPGA_IO [ create_bd_port -dir I FPGA_IO ]
   set LCD_BL [ create_bd_port -dir O -from 0 -to 0 LCD_BL ]
   set LCD_rstn [ create_bd_port -dir O -from 0 -to 0 -type rst LCD_rstn ]
@@ -3871,7 +3873,7 @@ proc create_root_design { parentCell } {
   # Create instance: vio_0, and set properties
   set vio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:vio:3.0 vio_0 ]
   set_property -dict [ list \
-   CONFIG.C_NUM_PROBE_IN {34} \
+   CONFIG.C_NUM_PROBE_IN {39} \
    CONFIG.C_NUM_PROBE_OUT {1} \
    CONFIG.C_PROBE_OUT0_WIDTH {13} \
  ] $vio_0
@@ -3936,9 +3938,11 @@ proc create_root_design { parentCell } {
   connect_bd_net -net ETH0_s_mii_rx_er [get_bd_pins ETH0/s_mii_rx_er] [get_bd_pins vio_0/probe_in32]
   connect_bd_net -net ETH0_s_mii_rxd [get_bd_pins ETH0/s_mii_rxd] [get_bd_pins vio_0/probe_in29]
   connect_bd_net -net ETH0_s_mii_tx_clk [get_bd_pins ETH0/s_mii_tx_clk] [get_bd_pins lt_fmeter_xlconcat_0/In5]
-  connect_bd_net -net EUI48_EUI48_FSM_start [get_bd_ports EUI48_FSM_start] [get_bd_pins EUI48/EUI48_FSM_start]
-  connect_bd_net -net EUI48_FSM_run_1 [get_bd_ports EUI48_FSM_run] [get_bd_pins EUI48/EUI48_FSM_run]
-  connect_bd_net -net EUI48_data_1 [get_bd_ports EUI48_data] [get_bd_pins EUI48/EUI48_data]
+  connect_bd_net -net EUI48_EUI48_FSM_start [get_bd_ports EUI48_FSM_start] [get_bd_pins EUI48/EUI48_FSM_start] [get_bd_pins vio_0/probe_in34]
+  connect_bd_net -net EUI48_FSM_run_1 [get_bd_ports EUI48_FSM_run] [get_bd_pins EUI48/EUI48_FSM_run] [get_bd_pins vio_0/probe_in35]
+  connect_bd_net -net EUI48_abort_1 [get_bd_ports EUI48_abort] [get_bd_pins vio_0/probe_in38]
+  connect_bd_net -net EUI48_data_1 [get_bd_ports EUI48_data] [get_bd_pins EUI48/EUI48_data] [get_bd_pins vio_0/probe_in36]
+  connect_bd_net -net EUI48_state_1 [get_bd_ports EUI48_state] [get_bd_pins vio_0/probe_in37]
   connect_bd_net -net FPGA_IO_1 [get_bd_ports FPGA_IO] [get_bd_pins vio_0/probe_in9]
   connect_bd_net -net Net [get_bd_ports PLL_I2C_ext_sda] [get_bd_pins SC0712_0/ext_sda]
   connect_bd_net -net PLL_int_1 [get_bd_ports PLL_int] [get_bd_pins INT_ctrl/PLL_int]

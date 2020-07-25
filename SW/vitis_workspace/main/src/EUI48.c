@@ -56,13 +56,6 @@ u8 owreadEUI48(void)
 
 	/* Send run */
 	XGpio_DiscreteSet(&gpio_OnewireEUI48, 1U, 0x80000000UL);
-	while (1) {
-		u32 gpio1 = XGpio_DiscreteRead(&gpio_OnewireEUI48, 1);
-		if ((gpio1 & 0x40000000UL) != 0UL) {
-			// EUI48 FSM running
-			break;
-		}
-	}
 
 	/* Wait until ready */
 	while (1) {

@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Fri Jul 24 22:34:31 2020
+--Date        : Sat Jul 25 17:17:33 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -10717,7 +10717,9 @@ entity msys is
     ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
     EUI48_FSM_run : in STD_LOGIC;
     EUI48_FSM_start : out STD_LOGIC_VECTOR ( 0 to 0 );
+    EUI48_abort : in STD_LOGIC_VECTOR ( 7 downto 0 );
     EUI48_data : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    EUI48_state : in STD_LOGIC_VECTOR ( 7 downto 0 );
     FPGA_IO : in STD_LOGIC;
     LCD_BL : out STD_LOGIC_VECTOR ( 0 to 0 );
     LCD_rstn : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -11003,6 +11005,11 @@ architecture STRUCTURE of msys is
     probe_in31 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe_in32 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe_in33 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe_in34 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe_in35 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe_in36 : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    probe_in37 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe_in38 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe_out0 : out STD_LOGIC_VECTOR ( 12 downto 0 )
   );
   end component msys_vio_0_0;
@@ -11386,7 +11393,9 @@ architecture STRUCTURE of msys is
   signal ETH0_s_mii_tx_clk : STD_LOGIC;
   signal EUI48_EUI48_FSM_start : STD_LOGIC_VECTOR ( 0 to 0 );
   signal EUI48_FSM_run_1 : STD_LOGIC;
+  signal EUI48_abort_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal EUI48_data_1 : STD_LOGIC_VECTOR ( 47 downto 0 );
+  signal EUI48_state_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal FPGA_IO_1 : STD_LOGIC;
   signal INT_ctrl_interrupt_ACK : STD_LOGIC_VECTOR ( 0 to 1 );
   signal INT_ctrl_interrupt_ADDRESS : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -12076,8 +12085,12 @@ architecture STRUCTURE of msys is
   attribute X_INTERFACE_INFO of DDR3_SDRAM_dqs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_N";
   attribute X_INTERFACE_INFO of DDR3_SDRAM_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_P";
   attribute X_INTERFACE_INFO of DDR3_SDRAM_odt : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ODT";
+  attribute X_INTERFACE_INFO of EUI48_abort : signal is "xilinx.com:signal:data:1.0 DATA.EUI48_ABORT DATA";
+  attribute X_INTERFACE_PARAMETER of EUI48_abort : signal is "XIL_INTERFACENAME DATA.EUI48_ABORT, LAYERED_METADATA undef";
   attribute X_INTERFACE_INFO of EUI48_data : signal is "xilinx.com:signal:data:1.0 DATA.EUI48_DATA DATA";
   attribute X_INTERFACE_PARAMETER of EUI48_data : signal is "XIL_INTERFACENAME DATA.EUI48_DATA, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of EUI48_state : signal is "xilinx.com:signal:data:1.0 DATA.EUI48_STATE DATA";
+  attribute X_INTERFACE_PARAMETER of EUI48_state : signal is "XIL_INTERFACENAME DATA.EUI48_STATE, LAYERED_METADATA undef";
   attribute X_INTERFACE_INFO of LCD_rstn : signal is "xilinx.com:signal:reset:1.0 RST.LCD_RSTN RST";
   attribute X_INTERFACE_PARAMETER of LCD_rstn : signal is "XIL_INTERFACENAME RST.LCD_RSTN, INSERT_VIP 0, POLARITY ACTIVE_LOW";
   attribute X_INTERFACE_INFO of RMII_PHY_M_0_rxd : signal is "xilinx.com:interface:rmii:1.0 RMII_PHY_M_0 RXD";
@@ -12133,7 +12146,9 @@ begin
   ETH0_RMII_PHY_M_0_RXD(1 downto 0) <= RMII_PHY_M_0_rxd(1 downto 0);
   EUI48_FSM_run_1 <= EUI48_FSM_run;
   EUI48_FSM_start(0) <= EUI48_EUI48_FSM_start(0);
+  EUI48_abort_1(7 downto 0) <= EUI48_abort(7 downto 0);
   EUI48_data_1(47 downto 0) <= EUI48_data(47 downto 0);
+  EUI48_state_1(7 downto 0) <= EUI48_state(7 downto 0);
   FPGA_IO_1 <= FPGA_IO;
   LCD_BL(0) <= PWM_lights_LCD_BL(0);
   LCD_rstn(0) <= PWM_lights_LCD_rstn(0);
@@ -13552,6 +13567,11 @@ vio_0: component msys_vio_0_0
       probe_in31(0) => ETH0_s_mii_col,
       probe_in32(0) => ETH0_s_mii_rx_er,
       probe_in33(0) => ETH0_m_mii_tx_er,
+      probe_in34(0) => EUI48_EUI48_FSM_start(0),
+      probe_in35(0) => EUI48_FSM_run_1,
+      probe_in36(47 downto 0) => EUI48_data_1(47 downto 0),
+      probe_in37(7 downto 0) => EUI48_state_1(7 downto 0),
+      probe_in38(7 downto 0) => EUI48_abort_1(7 downto 0),
       probe_in4(0) => labtools_fmeter_0_update,
       probe_in5(0) => SC0712_0_reset_out,
       probe_in6(31 downto 0) => SC0712_0_mon_GPIO1_O(31 downto 0),

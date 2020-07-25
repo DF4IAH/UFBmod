@@ -24,7 +24,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+use IEEE.std_logic_1164.all;
+use IEEE.std_logic_misc.all;
+use IEEE.std_logic_signed.all;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
@@ -40,7 +44,9 @@ entity EUI48_FSM is
     EUI48_onewire_tri_t     : out STD_LOGIC;
     EUI48_FSM_start         : in  STD_LOGIC;
     EUI48_FSM_run           : out STD_LOGIC;
-    EUI48_data              : out STD_LOGIC_VECTOR (47 downto 0)
+    EUI48_data              : out STD_LOGIC_VECTOR (47 downto 0);
+    EUI48_state             : out STD_LOGIC_VECTOR ( 7 downto 0);
+    EUI48_abort             : out STD_LOGIC_VECTOR ( 7 downto 0)
   );
 end EUI48_FSM;
 
@@ -89,14 +95,14 @@ begin
 
     -- FSM
     proc_fsm: process (resetn, clk, EUI48_FSM_start, EUI48_onewire_tri_i)
+    variable state          : Integer;
     variable ctrBit         : Integer;
     variable ctrByte        : Integer;
-    variable state          : Integer;
     begin
         if (resetn = '0') then
+            state               := 0;
             ctrBit              := 0;
             ctrByte             := 0;
-            state               := 0;
             EUI48_onewire_tri_o <= '0';
             EUI48_onewire_tri_t <= '1';     -- IOBUF: i <- io
             EUI48_data_r        <= "000000000000000000000000000000000000000000000000";
@@ -104,62 +110,80 @@ begin
             bitLeft             <= '0';
             bitRight            <= '0';
             byteMakShift_r      <= "000000000";
+            EUI48_state         <= std_logic_vector(to_unsigned(0, EUI48_state'length));
+            EUI48_abort         <= std_logic_vector(to_unsigned(0, EUI48_abort'length));
 
         elsif (clk'EVENT and clk = '1') then
             case state is
                 when 0 =>
+                    -- wait for release of start
                     if (EUI48_FSM_start = '0') then
                         state := 1;
                     end if;
                     
                 when 1 =>
+                    -- wait for start signal
                     if (EUI48_FSM_start = '1') then
+                        -- Reset abort register
+                        EUI48_abort <= std_logic_vector(to_unsigned(0, EUI48_abort'length));
                         state := 2;
                     end if;
 
                 when 2 =>
-                    if (ow_clk_0_of_4 = '1') then
-                        -- before Standby Pulse
+                    -- Sync of last quarter
+                    if (ow_clk_3_of_4 = '1') then
+                        -- before Standby Pulse there has to be a 0->1 transsition
                         EUI48_onewire_tri_o <= '0';
                         EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
+                        ctrBit := 0;
                         state := 3;
                     end if;
                     
                 when 3 =>
+                    -- Sync of starting quarter
                     if (ow_clk_0_of_4 = '1') then
                         -- Standby Pulse
                         EUI48_onewire_tri_o <= '1';
-                        state := 4;
+                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
+                        ctrBit := ctrBit + 1;
+                        -- Duration of Standby Pulse 800 us 
+                        if (ctrBit = 16) then
+                            ctrBit := 0;
+                            state := 4;
+                        end if;
                     end if;
-                    
-
+                
                 when 4 =>
-                    if (ow_clk_0_of_4 = '1') then
-                        -- Start Header
+                    -- Sync of last quarter
+                    if (ow_clk_3_of_4 = '1') then
+                        -- Start Header is low before sync pattern follows
                         EUI48_onewire_tri_o <= '0';
+                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
                         state := 10;
                     end if;
 
                     
                 when 10 =>
-                    -- Start Header
+                    -- Prepare Start Header
                     byteMakShift_r <= "010101011";
                     ctrBit := 0;
                     state := 11;
                     
                 when 11 =>
+                    -- Sync of starting quarter
                     if (ow_clk_0_of_4 = '1') then
                         -- bits left side
-                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
                         if (byteMakShift_r(8) = '0') then
                             EUI48_onewire_tri_o <= '1';
                         else
                             EUI48_onewire_tri_o <= '0';
                         end if;
+                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
                         state := 12;
                     end if;
                     
                 when 12 =>
+                    -- Sync of middle bit time
                     if (ow_clk_2_of_4 = '1') then
                         -- bits right side
                         if (byteMakShift_r(8) = '0') then
@@ -167,6 +191,7 @@ begin
                         else
                             EUI48_onewire_tri_o <= '1';
                         end if;
+                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
                         if (ctrBit = 8) then
                             state := 13;
                         else
@@ -178,6 +203,7 @@ begin
 
 
                 when 13 =>
+                    -- Sync of starting quarter
                     if (ow_clk_0_of_4 = '1') then
                         -- Start Header (drop SAK)
                         EUI48_onewire_tri_o <= '0';
@@ -187,24 +213,26 @@ begin
                     
 
                 when 20 =>
-                    -- Device address
+                    -- Prepare Device address
                     byteMakShift_r <= "101000001";
                     ctrBit := 0;
                     state := 21;
                     
                 when 21 =>
+                    -- Sync of starting quarter
                     if (ow_clk_0_of_4 = '1') then
-                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
                         -- bits left side
                         if (byteMakShift_r(8) = '0') then
                             EUI48_onewire_tri_o <= '1';
                         else
                             EUI48_onewire_tri_o <= '0';
                         end if;
+                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
                         state := 22;
                     end if;
                     
                 when 22 =>
+                    -- Sync of middle bit time
                     if (ow_clk_2_of_4 = '1') then
                         -- bits right side
                         if (byteMakShift_r(8) = '0') then
@@ -212,6 +240,7 @@ begin
                         else
                             EUI48_onewire_tri_o <= '1';
                         end if;
+                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
                         if (ctrBit = 8) then
                             state := 23;
                         else
@@ -221,8 +250,8 @@ begin
                         end if;
                     end if;
                     
-                    
                 when 23 =>
+                    -- Sync of starting quarter
                     if (ow_clk_0_of_4 = '1') then
                         -- SAK input
                         EUI48_onewire_tri_t <= '1';     -- IOBUF: i <- io
@@ -230,6 +259,7 @@ begin
                     end if;
 
                 when 24 =>
+                    -- Sync of left position
                     if (ow_clk_1_of_4 = '1') then
                         -- SAK peak left
                         bitLeft <= EUI48_onewire_tri_i;
@@ -237,6 +267,7 @@ begin
                     end if;
 
                 when 25 =>
+                    -- Sync of right position
                     if (ow_clk_3_of_4 = '1') then
                         -- SAK peak right
                         bitRight <= EUI48_onewire_tri_i;
@@ -251,29 +282,32 @@ begin
                         state := 30;
                     else
                         -- Abort
+                        EUI48_abort <= std_logic_vector(to_unsigned(state, EUI48_abort'length));
                         state := 0;
                     end if;
 
 
                 when 30 =>
-                    -- MSB of register address
-                    byteMakShift_r <= "111111111";
+                    -- Prepare Command READ 0x03
+                    byteMakShift_r <= "000000111";
                     ctrBit := 0;
                     state := 31;
                     
                 when 31 =>
+                    -- Sync of starting quarter
                     if (ow_clk_0_of_4 = '1') then
-                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
                         -- bits left side
                         if (byteMakShift_r(8) = '0') then
                             EUI48_onewire_tri_o <= '1';
                         else
                             EUI48_onewire_tri_o <= '0';
                         end if;
+                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
                         state := 32;
                     end if;
                     
                 when 32 =>
+                    -- Sync of middle bit time
                     if (ow_clk_2_of_4 = '1') then
                         -- bits right side
                         if (byteMakShift_r(8) = '0') then
@@ -281,6 +315,7 @@ begin
                         else
                             EUI48_onewire_tri_o <= '1';
                         end if;
+                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
                         if (ctrBit = 8) then
                             state := 33;
                         else
@@ -290,8 +325,8 @@ begin
                         end if;
                     end if;
                     
-                    
                 when 33 =>
+                    -- Sync of starting quarter
                     if (ow_clk_0_of_4 = '1') then
                         -- SAK input
                         EUI48_onewire_tri_t <= '1';     -- IOBUF: i <- io
@@ -299,6 +334,7 @@ begin
                     end if;
 
                 when 34 =>
+                    -- Sync of left position
                     if (ow_clk_1_of_4 = '1') then
                         -- SAK peak left
                         bitLeft <= EUI48_onewire_tri_i;
@@ -306,6 +342,7 @@ begin
                     end if;
 
                 when 35 =>
+                    -- Sync of right position
                     if (ow_clk_3_of_4 = '1') then
                         -- SAK peak right
                         bitRight <= EUI48_onewire_tri_i;
@@ -320,29 +357,32 @@ begin
                         state := 40;
                     else
                         -- Abort
+                        EUI48_abort <= std_logic_vector(to_unsigned(state, EUI48_abort'length));
                         state := 0;
                     end if;
 
 
                 when 40 =>
-                    -- MSB of register address
-                    byteMakShift_r <= "111110101";
+                    -- Prepare MSB of register address  0xfffa
+                    byteMakShift_r <= "111111111";
                     ctrBit := 0;
                     state := 41;
                     
                 when 41 =>
+                    -- Sync of starting quarter
                     if (ow_clk_0_of_4 = '1') then
-                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
                         -- bits left side
                         if (byteMakShift_r(8) = '0') then
                             EUI48_onewire_tri_o <= '1';
                         else
                             EUI48_onewire_tri_o <= '0';
                         end if;
+                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
                         state := 42;
                     end if;
                     
                 when 42 =>
+                    -- Sync of middle bit time
                     if (ow_clk_2_of_4 = '1') then
                         -- bits right side
                         if (byteMakShift_r(8) = '0') then
@@ -350,6 +390,7 @@ begin
                         else
                             EUI48_onewire_tri_o <= '1';
                         end if;
+                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
                         if (ctrBit = 8) then
                             state := 43;
                         else
@@ -359,8 +400,8 @@ begin
                         end if;
                     end if;
                     
-                    
                 when 43 =>
+                    -- Sync of starting quarter
                     if (ow_clk_0_of_4 = '1') then
                         -- SAK input
                         EUI48_onewire_tri_t <= '1';     -- IOBUF: i <- io
@@ -368,6 +409,7 @@ begin
                     end if;
 
                 when 44 =>
+                    -- Sync of left position
                     if (ow_clk_1_of_4 = '1') then
                         -- SAK peak left
                         bitLeft <= EUI48_onewire_tri_i;
@@ -375,6 +417,7 @@ begin
                     end if;
 
                 when 45 =>
+                    -- Sync of right position
                     if (ow_clk_3_of_4 = '1') then
                         -- SAK peak right
                         bitRight <= EUI48_onewire_tri_i;
@@ -389,100 +432,196 @@ begin
                         state := 50;
                     else
                         -- Abort
+                        EUI48_abort <= std_logic_vector(to_unsigned(state, EUI48_abort'length));
+                        state := 0;
+                    end if;
+
+
+                when 50 =>
+                    -- Prepare LSB of register address  0xfffa
+                    byteMakShift_r <= "111110101";
+                    ctrBit := 0;
+                    state := 51;
+                    
+                when 51 =>
+                    -- Sync of starting quarter
+                    if (ow_clk_0_of_4 = '1') then
+                        -- bits left side
+                        if (byteMakShift_r(8) = '0') then
+                            EUI48_onewire_tri_o <= '1';
+                        else
+                            EUI48_onewire_tri_o <= '0';
+                        end if;
+                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
+                        state := 52;
+                    end if;
+                    
+                when 52 =>
+                    -- Sync of middle bit time
+                    if (ow_clk_2_of_4 = '1') then
+                        -- bits right side
+                        if (byteMakShift_r(8) = '0') then
+                            EUI48_onewire_tri_o <= '0';
+                        else
+                            EUI48_onewire_tri_o <= '1';
+                        end if;
+                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
+                        if (ctrBit = 8) then
+                            state := 53;
+                        else
+                            byteMakShift_r(8 downto 0) <= byteMakShift_r(7 downto 0) & '0';
+                            ctrBit := ctrBit + 1;
+                            state := 51;
+                        end if;
+                    end if;
+                    
+                when 53 =>
+                    -- Sync of starting quarter
+                    if (ow_clk_0_of_4 = '1') then
+                        -- SAK input
+                        EUI48_onewire_tri_t <= '1';     -- IOBUF: i <- io
+                        state := 54;
+                    end if;
+
+                when 54 =>
+                    -- Sync of left position
+                    if (ow_clk_1_of_4 = '1') then
+                        -- SAK peak left
+                        bitLeft <= EUI48_onewire_tri_i;
+                        state := 55;
+                    end if;
+
+                when 55 =>
+                    -- Sync of right position
+                    if (ow_clk_3_of_4 = '1') then
+                        -- SAK peak right
+                        bitRight <= EUI48_onewire_tri_i;
+                        state := 56;
+                    end if;
+
+                when 56 =>
+                    if (bitLeft = '0'  and  bitRight = '1') then
+                        -- SAK '1' means ok
+                        ctrByte := 0;
+                        ctrBit  := 0;
+                        state := 60;
+                    else
+                        -- Abort
+                        EUI48_abort <= std_logic_vector(to_unsigned(state, EUI48_abort'length));
                         state := 0;
                     end if;
 
 
                 -- since here data comes in
-                when 50 =>
+                when 60 =>
+                    -- Sync of left position
                     if (ow_clk_1_of_4 = '1') then
                         -- Data peak left
                         bitLeft <= EUI48_onewire_tri_i;
-                        state := 51;
+                        state := 61;
                     end if;
 
-                when 51 =>
+                when 61 =>
+                    -- Sync of right position
                     if (ow_clk_3_of_4 = '1') then
                         -- Data peak right
                         bitRight <= EUI48_onewire_tri_i;
-                        state := 52;
+                        state := 62;
                     end if;
                 
-                when 52 =>
+                when 62 =>
                     if (bitLeft = '0'  and  bitRight = '1') then
                         EUI48_data_r(47 downto 0) <= EUI48_data_r(46 downto 0) & '1';
-                        state := 53;
+                        state := 63;
                     elsif (bitLeft = '1'  and  bitRight = '0') then
                         EUI48_data_r(47 downto 0) <= EUI48_data_r(46 downto 0) & '0';
-                        state := 53;
+                        state := 63;
                     else
                         -- Abort
+                        EUI48_abort <= std_logic_vector(to_unsigned(state, EUI48_abort'length));
                         state := 0;
                     end if;
 
-                when 53 =>
-                    if (ctrBit < 7) then
-                        ctrBit := ctrBit + 1;
-                        state  := 50;
-                    else
+                when 63 =>
+                    if (ctrBit = 7) then
                         ctrBit := 0;
-                        state  := 54;
+                        state  := 64;
+                    else
+                        ctrBit := ctrBit + 1;
+                        state  := 60;
                     end if;
 
 
-                when 54 =>
+                when 64 =>
+                    -- Sync of starting quarter
                     if (ow_clk_0_of_4 = '1') then
-                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
                         -- MAK / NoMAK left
                         if (ctrByte = 5) then
-                            EUI48_onewire_tri_o <= '0';
-                        else
                             EUI48_onewire_tri_o <= '1';
+                        else
+                            EUI48_onewire_tri_o <= '0';
                         end if;
-                        state := 55;
+                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
+                        state := 65;
                     end if;
                     
-                when 55 =>
+                when 65 =>
+                    -- Sync of middle bit time
                     if (ow_clk_2_of_4 = '1') then
                         -- MAK / NoMAK left
                         if (ctrByte = 5) then
-                            EUI48_onewire_tri_o <= '1';
-                        else
                             EUI48_onewire_tri_o <= '0';
+                        else
+                            EUI48_onewire_tri_o <= '1';
                         end if;
-                        state := 60;
+                        EUI48_onewire_tri_t <= '0';     -- IOBUF: o -> io
+                        state := 70;
                     end if;
 
                 
-                when 60 =>
+                when 70 =>
+                    -- Sync of starting quarter
                     if (ow_clk_0_of_4 = '1') then
                         EUI48_onewire_tri_t <= '1';     -- IOBUF: i <- io
-                        state := 61;
+                        state := 71;
                     end if;
                     
-                when 61 =>
+                when 71 =>
+                    -- Sync of left position
                     if (ow_clk_1_of_4 = '1') then
                         -- SAK peak left
                         bitLeft <= EUI48_onewire_tri_i;
-                        state := 62;
+                        state := 72;
                     end if;
 
-                when 62 =>
+                when 72 =>
+                    -- Sync of right position
                     if (ow_clk_3_of_4 = '1') then
                         -- SAK peak right
                         bitRight <= EUI48_onewire_tri_i;
-                        state := 63;
+                        state := 73;
                     end if;
 
-                when 63 =>
+                when 73 =>
+                    if (bitLeft = '0'  and  bitRight = '1') then
+                        -- SAK '1' means ok
+                        state := 74;
+                    else
+                        -- Abort
+                        EUI48_abort <= std_logic_vector(to_unsigned(state, EUI48_abort'length));
+                        state := 0;
+                    end if;
+
+                when 74 =>
                     if (ctrByte = 5) then
-                        state  := 70;
+                        state  := 80;
                     else
                         ctrByte := ctrByte + 1;
-                        state  := 50;
+                        state  := 60;
                     end if;
 
-                when 70 =>
+
+                when 80 =>
                     -- wait until start is being reset
                     if (EUI48_FSM_start = '0') then
                         state := 0;
@@ -492,7 +631,8 @@ begin
                     state := 0;
             end case;
             
-            EUI48_data <= EUI48_data_r;
+            EUI48_data  <= EUI48_data_r;
+            EUI48_state <= std_logic_vector(to_unsigned(state, EUI48_state'length));
         end if;
     end process proc_fsm;
     

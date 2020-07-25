@@ -47,13 +47,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="128"/>
-    <Option Name="WTModelSimExportSim" Val="128"/>
-    <Option Name="WTQuestaExportSim" Val="128"/>
-    <Option Name="WTIesExportSim" Val="128"/>
-    <Option Name="WTVcsExportSim" Val="128"/>
-    <Option Name="WTRivieraExportSim" Val="128"/>
-    <Option Name="WTActivehdlExportSim" Val="128"/>
+    <Option Name="WTXSimExportSim" Val="130"/>
+    <Option Name="WTModelSimExportSim" Val="130"/>
+    <Option Name="WTQuestaExportSim" Val="130"/>
+    <Option Name="WTIesExportSim" Val="130"/>
+    <Option Name="WTVcsExportSim" Val="130"/>
+    <Option Name="WTRivieraExportSim" Val="130"/>
+    <Option Name="WTActivehdlExportSim" Val="130"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -135,12 +135,6 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/msys/ip/msys_mig_7series_0_0/mig_a.prj">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="ScopedToCell" Val="msys_mig_7series_0_0"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/bd/msys/ip/msys_mig_7series_0_0/mig_b.prj">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="ScopedToCell" Val="msys_mig_7series_0_0"/>
@@ -302,11 +296,11 @@
         <StratHandle Name="Flow_PerfOptimized_high" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design">
           <Option Id="ResourceSharing">2</Option>
-          <Option Id="KeepEquivalentRegisters">1</Option>
           <Option Id="RepFanoutThreshold">400</Option>
+          <Option Id="NoCombineLuts">1</Option>
+          <Option Id="KeepEquivalentRegisters">1</Option>
           <Option Id="ShregMinSize">5</Option>
           <Option Id="Directive">7</Option>
-          <Option Id="NoCombineLuts">1</Option>
           <Option Id="FsmExtraction">1</Option>
         </Step>
       </Strategy>
