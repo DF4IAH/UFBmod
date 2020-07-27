@@ -264,8 +264,7 @@
   "../../../bd/msys/ip/msys_proc_sys_reset_eth_0/sim/msys_proc_sys_reset_eth_0.vhd" \
   "../../../bd/msys/ip/msys_rst_mig_7series_0_100M_0/sim/msys_rst_mig_7series_0_100M_0.vhd" \
   "../../../bd/msys/ip/msys_rst_mig_7series_0_50M_0/sim/msys_rst_mig_7series_0_50M_0.vhd" \
-  "../../../bd/msys/ip/msys_util_ds_buf_0_0/util_ds_buf.vhd" \
-  "../../../bd/msys/ip/msys_util_ds_buf_0_0/sim/msys_util_ds_buf_0_0.vhd" \
+  "../../../bd/msys/ip/msys_util_ds_buf_1_0/util_ds_buf.vhd" \
   "../../../bd/msys/ip/msys_util_ds_buf_1_0/sim/msys_util_ds_buf_1_0.vhd" \
   "../../../bd/msys/ip/msys_util_ds_buf_2_0/sim/msys_util_ds_buf_2_0.vhd" \
   "../../../bd/msys/ip/msys_vio_0_0/sim/msys_vio_0_0.vhd" \
@@ -569,7 +568,6 @@
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_xbar_2/sim/msys_xbar_2.v" \
   "../../../bd/msys/ip/msys_xbar_3/sim/msys_xbar_3.v" \
-  "../../../bd/msys/ip/msys_xlconcat_0_8/sim/msys_xlconcat_0_8.v" \
   "../../../bd/msys/ip/msys_xlslice_0_33/sim/msys_xlslice_0_33.v" \
   "../../../bd/msys/ip/msys_util_vector_logic_0_5/sim/msys_util_vector_logic_0_5.v" \
 -endlib
@@ -584,6 +582,32 @@
   "../../../bd/msys/ip/msys_xlconstant_0_19/sim/msys_xlconstant_0_19.v" \
   "../../../bd/msys/ip/msys_xlslice_0_36/sim/msys_xlslice_0_36.v" \
   "../../../bd/msys/ip/msys_xlconstant_0_20/sim/msys_xlconstant_0_20.v" \
+  "../../../bd/msys/ip/msys_clk_wiz_0_1/msys_clk_wiz_0_1_clk_wiz.v" \
+  "../../../bd/msys/ip/msys_clk_wiz_0_1/msys_clk_wiz_0_1.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_c_shift_ram_0_6/sim/msys_c_shift_ram_0_6.vhd" \
+  "../../../bd/msys/ip/msys_c_shift_ram_0_7/sim/msys_c_shift_ram_0_7.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xlconcat_0_11/sim/msys_xlconcat_0_11.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_c_shift_ram_0_8/sim/msys_c_shift_ram_0_8.vhd" \
+  "../../../bd/msys/ip/msys_axi_gpio_0_2/sim/msys_axi_gpio_0_2.vhd" \
+  "../../../bd/msys/ip/msys_c_shift_ram_0_9/sim/msys_c_shift_ram_0_9.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xlslice_0_37/sim/msys_xlslice_0_37.v" \
+  "../../../bd/msys/ip/msys_xlslice_1_4/sim/msys_xlslice_1_4.v" \
+  "../../../bd/msys/ip/msys_util_vector_logic_0_7/sim/msys_util_vector_logic_0_7.v" \
+-endlib
+-makelib xcelium_lib/util_reduced_logic_v2_0_4 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/4c94/hdl/util_reduced_logic_v2_0_vl_rfs.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_util_reduced_logic_0_0/sim/msys_util_reduced_logic_0_0.v" \
+  "../../../bd/msys/ip/msys_xlconcat_0_12/sim/msys_xlconcat_0_12.v" \
 -endlib
 -makelib xcelium_lib/axi_clock_converter_v2_1_20 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/7589/hdl/axi_clock_converter_v2_1_vl_rfs.v" \

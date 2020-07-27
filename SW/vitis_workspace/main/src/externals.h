@@ -22,7 +22,7 @@ extern "C" {
 
 /************************** Global Variables *********************************/
 
-extern u8  owEUI48[EUI48_SIZE];
+extern volatile u8 owEUI48[EUI48_SIZE];
 
 extern u8  emacLiteLocalMacAddr[XEL_MAC_ADDR_SIZE];
 extern u8  emacLiteLocalIpAddr[IP_ADDR_SIZE];

@@ -8,14 +8,14 @@
 /************************** Static Forward Declarations **********************/
 
 static u16 ethCheckSumCalculation(u16* rxFramePtr, int startLoc, int length);
-static void ethProcessRecvFrame(XEmacLite* instancePtr);
+//static void ethProcessRecvFrame(XEmacLite* instancePtr);
 
 
 /************************** Global Variable Definitions **********************/
 
 XEmacLite emacLiteInstance;																		/* Instance of the EmacLite driver */
 
-u8  emacLiteLocalMacAddr[XEL_MAC_ADDR_SIZE] = { 0x00U, 0x0aU, 0x35U, 0x02U, 0x23U, 0x5fU };  	/* MAC address */
+u8  emacLiteLocalMacAddr[XEL_MAC_ADDR_SIZE] = { 0x00U, 0x0aU, 0x35U, 0x02U, 0x23U, 0x5fU };  	/* Default MAC address to be overwritten */
 u8  emacLiteLocalIpAddr[IP_ADDR_SIZE] 		= { 192U, 168U, 178U, 44U };						/* IP address  */
 
 u32 emacLiteRxFrameLength 					= 0UL;												/* Variable used to indicate the length of the received frame */

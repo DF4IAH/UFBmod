@@ -20,7 +20,7 @@
 
 //XEmacLite emacLiteInstance;																	/* Instance of the EmacLite driver */
 
-u8 owEUI48[EUI48_SIZE] = { 0 };
+volatile u8 owEUI48[EUI48_SIZE] = { 0 };
 
 
 /************************** Static Eth.c Variable Definitions ****************/

@@ -63,7 +63,7 @@ typedef bit bit_as_bool;
 
 (* SC_MODULE_EXPORT *)
 module msys_xlconstant_0_0 (
-  output bit [11 : 0 ] dout
+  output bit [15 : 0 ] dout
 );
 endmodule
 `endif
@@ -73,14 +73,14 @@ endmodule
 module msys_xlconstant_0_0 (dout)
 (* integer foreign = "SystemC";
 *);
- output wire [11 : 0 ] dout;  
+ output wire [15 : 0 ] dout;  
 endmodule
 `endif
 
 `ifdef RIVIERA
 (* SC_MODULE_EXPORT *)
 module msys_xlconstant_0_0 (dout)
-  output wire [11 : 0 ] dout;
+  output wire [15 : 0 ] dout;
 endmodule
 `endif
 

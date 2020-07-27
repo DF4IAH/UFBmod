@@ -562,7 +562,7 @@
 #define XPAR_ETH0_ETH0_AXI_ETHERNETLITE_0_TX_PING_PONG 1
 #define XPAR_ETH0_ETH0_AXI_ETHERNETLITE_0_RX_PING_PONG 1
 #define XPAR_ETH0_ETH0_AXI_ETHERNETLITE_0_INCLUDE_MDIO 1
-#define XPAR_ETH0_ETH0_AXI_ETHERNETLITE_0_INCLUDE_INTERNAL_LOOPBACK 1
+#define XPAR_ETH0_ETH0_AXI_ETHERNETLITE_0_INCLUDE_INTERNAL_LOOPBACK 0
 
 
 /******************************************************************/
@@ -574,13 +574,13 @@
 #define XPAR_EMACLITE_0_TX_PING_PONG 1
 #define XPAR_EMACLITE_0_RX_PING_PONG 1
 #define XPAR_EMACLITE_0_INCLUDE_MDIO 1
-#define XPAR_EMACLITE_0_INCLUDE_INTERNAL_LOOPBACK 1
+#define XPAR_EMACLITE_0_INCLUDE_INTERNAL_LOOPBACK 0
 
 
 /******************************************************************/
 
 /* Definitions for driver GPIO */
-#define XPAR_XGPIO_NUM_INSTANCES 6
+#define XPAR_XGPIO_NUM_INSTANCES 7
 
 /* Definitions for peripheral EUI48_AXI_EUI48_GPIO_0 */
 #define XPAR_EUI48_AXI_EUI48_GPIO_0_BASEADDR 0x40030000
@@ -630,6 +630,14 @@
 #define XPAR_UART0_AXI_UART0_GPIO_0_IS_DUAL 1
 
 
+/* Definitions for peripheral CLK1B_CW_0_CLK1B_AXI_GPIO_0 */
+#define XPAR_CLK1B_CW_0_CLK1B_AXI_GPIO_0_BASEADDR 0x40060000
+#define XPAR_CLK1B_CW_0_CLK1B_AXI_GPIO_0_HIGHADDR 0x4006FFFF
+#define XPAR_CLK1B_CW_0_CLK1B_AXI_GPIO_0_DEVICE_ID 6
+#define XPAR_CLK1B_CW_0_CLK1B_AXI_GPIO_0_INTERRUPT_PRESENT 0
+#define XPAR_CLK1B_CW_0_CLK1B_AXI_GPIO_0_IS_DUAL 1
+
+
 /******************************************************************/
 
 /* Canonical definitions for peripheral EUI48_AXI_EUI48_GPIO_0 */
@@ -673,6 +681,13 @@
 #define XPAR_GPIO_5_DEVICE_ID XPAR_UART0_AXI_UART0_GPIO_0_DEVICE_ID
 #define XPAR_GPIO_5_INTERRUPT_PRESENT 1
 #define XPAR_GPIO_5_IS_DUAL 1
+
+/* Canonical definitions for peripheral CLK1B_CW_0_CLK1B_AXI_GPIO_0 */
+#define XPAR_GPIO_6_BASEADDR 0x40060000
+#define XPAR_GPIO_6_HIGHADDR 0x4006FFFF
+#define XPAR_GPIO_6_DEVICE_ID XPAR_CLK1B_CW_0_CLK1B_AXI_GPIO_0_DEVICE_ID
+#define XPAR_GPIO_6_INTERRUPT_PRESENT 0
+#define XPAR_GPIO_6_IS_DUAL 1
 
 
 /******************************************************************/

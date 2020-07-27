@@ -114,7 +114,7 @@ ARCHITECTURE msys_mii_to_rmii_0_0_arch OF msys_mii_to_rmii_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF msys_mii_to_rmii_0_0_arch : ARCHITECTURE IS "msys_mii_to_rmii_0_0,mii_to_rmii,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF msys_mii_to_rmii_0_0_arch: ARCHITECTURE IS "msys_mii_to_rmii_0_0,mii_to_rmii,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=mii_to_rmii,x_ipVersion=2.0,x_ipCoreRevision=20,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_INSTANCE=msys_mii_to_rmii_0_0,C_FIXED_SPEED=1,C_INCLUDE_BUF=1,C_SPEED_100=0,C_FAMILY=artix7}";
+  ATTRIBUTE CORE_GENERATION_INFO OF msys_mii_to_rmii_0_0_arch: ARCHITECTURE IS "msys_mii_to_rmii_0_0,mii_to_rmii,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=mii_to_rmii,x_ipVersion=2.0,x_ipCoreRevision=20,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_INSTANCE=msys_mii_to_rmii_0_0,C_FIXED_SPEED=1,C_INCLUDE_BUF=0,C_SPEED_100=1,C_FAMILY=artix7}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF rmii2phy_tx_en: SIGNAL IS "xilinx.com:interface:rmii:1.0 RMII_PHY_M TX_EN";
@@ -133,7 +133,7 @@ ARCHITECTURE msys_mii_to_rmii_0_0_arch OF msys_mii_to_rmii_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF mac2rmii_tx_er: SIGNAL IS "xilinx.com:interface:mii:1.0 MII TX_ER";
   ATTRIBUTE X_INTERFACE_INFO OF mac2rmii_txd: SIGNAL IS "xilinx.com:interface:mii:1.0 MII TXD";
   ATTRIBUTE X_INTERFACE_INFO OF mac2rmii_tx_en: SIGNAL IS "xilinx.com:interface:mii:1.0 MII TX_EN";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF ref_clk: SIGNAL IS "XIL_INTERFACENAME clock, BOARD.ASSOCIATED_PARAM REF_CLK_BOARD_INTERFACE, FREQ_HZ 50000000, PHASE 0.000, CLK_DOMAIN msys_CLK1B_clk, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF ref_clk: SIGNAL IS "XIL_INTERFACENAME clock, BOARD.ASSOCIATED_PARAM REF_CLK_BOARD_INTERFACE, FREQ_HZ 50000000, PHASE 0.0, CLK_DOMAIN /CLK1B_CW_0/CLK1B_clk_wiz_0_clk_out1, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF ref_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clock CLK";
   ATTRIBUTE X_INTERFACE_PARAMETER OF rst_n: SIGNAL IS "XIL_INTERFACENAME rst, BOARD.ASSOCIATED_PARAM RESET_BOARD_INTERFACE, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF rst_n: SIGNAL IS "xilinx.com:signal:reset:1.0 rst RST";
@@ -142,8 +142,8 @@ BEGIN
     GENERIC MAP (
       C_INSTANCE => "msys_mii_to_rmii_0_0",
       C_FIXED_SPEED => '1',
-      C_INCLUDE_BUF => 1,
-      C_SPEED_100 => '0',
+      C_INCLUDE_BUF => 0,
+      C_SPEED_100 => '1',
       C_FAMILY => "artix7"
     )
     PORT MAP (

@@ -100,7 +100,7 @@ begin
     variable ctrByte        : Integer;
     begin
         if (resetn = '0') then
-            state               := 0;
+            state               := 2;
             ctrBit              := 0;
             ctrByte             := 0;
             EUI48_onewire_tri_o <= '0';
