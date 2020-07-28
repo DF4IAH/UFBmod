@@ -609,6 +609,25 @@
   "../../../bd/msys/ip/msys_util_reduced_logic_0_0/sim/msys_util_reduced_logic_0_0.v" \
   "../../../bd/msys/ip/msys_xlconcat_0_12/sim/msys_xlconcat_0_12.v" \
 -endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_axi_gpio_0_3/sim/msys_axi_gpio_0_3.vhd" \
+  "../../../bd/msys/ip/msys_c_counter_binary_0_4/sim/msys_c_counter_binary_0_4.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xlconcat_0_13/sim/msys_xlconcat_0_13.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_c_shift_ram_0_10/sim/msys_c_shift_ram_0_10.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xlconcat_0_14/sim/msys_xlconcat_0_14.v" \
+  "../../../bd/msys/ip/msys_xlconstant_0_21/sim/msys_xlconstant_0_21.v" \
+  "../../../bd/msys/ip/msys_fifo_generator_0_1/sim/msys_fifo_generator_0_1.v" \
+  "../../../bd/msys/ip/msys_xlconstant_0_22/sim/msys_xlconstant_0_22.v" \
+  "../../../bd/msys/ip/msys_xlconstant_0_23/sim/msys_xlconstant_0_23.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_38/sim/msys_xlslice_0_38.v" \
+  "../../../bd/msys/ip/msys_xlconcat_0_15/sim/msys_xlconcat_0_15.v" \
+-endlib
 -makelib ies_lib/axi_clock_converter_v2_1_20 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/7589/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
 -endlib

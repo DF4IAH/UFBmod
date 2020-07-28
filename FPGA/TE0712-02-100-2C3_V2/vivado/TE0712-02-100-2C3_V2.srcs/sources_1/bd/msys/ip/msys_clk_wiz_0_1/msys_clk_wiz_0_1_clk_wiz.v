@@ -58,6 +58,7 @@
 //----------------------------------------------------------------------------
 // clk_out1_RMII__50.00000______0.000______50.0______243.865____148.661
 // clk_out2_fMeter__50.00000______0.000______50.0______243.865____148.661
+// clk_out3_Scope__50.00000______0.000______50.0______243.865____148.661
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -72,6 +73,7 @@ module msys_clk_wiz_0_1_clk_wiz
   // Clock out ports
   output        clk_out1_RMII,
   output        clk_out2_fMeter,
+  output        clk_out3_Scope,
   // Dynamic phase shift ports
   input         psclk,
   input         psen,
@@ -102,7 +104,7 @@ wire clk_in2_msys_clk_wiz_0_1;
 
   wire        clk_out1_RMII_msys_clk_wiz_0_1;
   wire        clk_out2_fMeter_msys_clk_wiz_0_1;
-  wire        clk_out3_msys_clk_wiz_0_1;
+  wire        clk_out3_Scope_msys_clk_wiz_0_1;
   wire        clk_out4_msys_clk_wiz_0_1;
   wire        clk_out5_msys_clk_wiz_0_1;
   wire        clk_out6_msys_clk_wiz_0_1;
@@ -116,7 +118,6 @@ wire clk_in2_msys_clk_wiz_0_1;
   wire        clkfboutb_unused;
     wire clkout0b_unused;
    wire clkout1b_unused;
-   wire clkout2_unused;
    wire clkout2b_unused;
    wire clkout3_unused;
    wire clkout3b_unused;
@@ -144,6 +145,10 @@ wire clk_in2_msys_clk_wiz_0_1;
     .CLKOUT1_PHASE        (0.000),
     .CLKOUT1_DUTY_CYCLE   (0.5),
     .CLKOUT1_USE_FINE_PS  ("FALSE"),
+    .CLKOUT2_DIVIDE       (13),
+    .CLKOUT2_PHASE        (0.000),
+    .CLKOUT2_DUTY_CYCLE   (0.5),
+    .CLKOUT2_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (20.000))
   mmcm_adv_inst
     // Output clocks
@@ -154,7 +159,7 @@ wire clk_in2_msys_clk_wiz_0_1;
     .CLKOUT0B            (clkout0b_unused),
     .CLKOUT1             (clk_out2_fMeter_msys_clk_wiz_0_1),
     .CLKOUT1B            (clkout1b_unused),
-    .CLKOUT2             (clkout2_unused),
+    .CLKOUT2             (clk_out3_Scope_msys_clk_wiz_0_1),
     .CLKOUT2B            (clkout2b_unused),
     .CLKOUT3             (clkout3_unused),
     .CLKOUT3B            (clkout3b_unused),
@@ -211,6 +216,8 @@ wire clk_in2_msys_clk_wiz_0_1;
   BUFG clkout2_buf
    (.O   (clk_out2_fMeter),
     .I   (clk_out2_fMeter_msys_clk_wiz_0_1));
+
+  assign clk_out3_Scope = clk_out3_Scope_msys_clk_wiz_0_1;
 
 
 
