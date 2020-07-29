@@ -2787,6 +2787,7 @@ proc create_hier_cell_SCOPE { parentCell nameHier } {
   create_bd_pin -dir I SCOPE_FSM_FIFO_RdEn
   create_bd_pin -dir O SCOPE_FSM_FIFO_RdValid
   create_bd_pin -dir I SCOPE_FSM_FIFO_Rst
+  create_bd_pin -dir I SCOPE_FSM_FIFO_WrEn
   create_bd_pin -dir O SCOPE_FSM_FIFO_WrFull
   create_bd_pin -dir I -from 15 -to 0 SCOPE_FSM_GPIO_In
   create_bd_pin -dir O -from 15 -to 0 SCOPE_FSM_GPIO_Out
@@ -2921,9 +2922,6 @@ proc create_hier_cell_SCOPE { parentCell nameHier } {
    CONFIG.CONST_VAL {0} \
  ] $SCOPE_xlconstant_val0_len1
 
-  # Create instance: SCOPE_xlconstant_val1_len1, and set properties
-  set SCOPE_xlconstant_val1_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 SCOPE_xlconstant_val1_len1 ]
-
   # Create interface connections
   connect_bd_intf_net -intf_net microblaze_0_axi_periph_M15_AXI_0 [get_bd_intf_pins S_AXI] [get_bd_intf_pins SCOPE_axi_gpio_0/S_AXI]
 
@@ -2941,6 +2939,7 @@ proc create_hier_cell_SCOPE { parentCell nameHier } {
   connect_bd_net -net ETH0_s_mii_tx_clk_0 [get_bd_pins ETH0_s_mii_tx_clk] [get_bd_pins SCOPE_Signals_xlconcat_1/In16]
   connect_bd_net -net SCOPE_FSM_FIFO_RdEn_1 [get_bd_pins SCOPE_FSM_FIFO_RdEn] [get_bd_pins SCOPE_fifo_generator_0/rd_en]
   connect_bd_net -net SCOPE_FSM_FIFO_Rst_1 [get_bd_pins SCOPE_FSM_FIFO_Rst] [get_bd_pins SCOPE_fifo_generator_0/rd_rst] [get_bd_pins SCOPE_fifo_generator_0/wr_rst]
+  connect_bd_net -net SCOPE_FSM_FIFO_WrEn_0 [get_bd_pins SCOPE_FSM_FIFO_WrEn] [get_bd_pins SCOPE_fifo_generator_0/wr_en]
   connect_bd_net -net SCOPE_FSM_GPIO_In_1 [get_bd_pins SCOPE_FSM_GPIO_In] [get_bd_pins SCOPE_GPIO_In_xlconcat_0/In1]
   connect_bd_net -net SCOPE_FSM_Timebase_CE_1 [get_bd_pins SCOPE_FSM_Timebase_CE] [get_bd_pins SCOPE_Timebase_c_counter_binary_0/CE]
   connect_bd_net -net SCOPE_FSM_Timebase_SCLR_1 [get_bd_pins SCOPE_FSM_Timebase_SCLR] [get_bd_pins SCOPE_Timebase_c_counter_binary_0/SCLR]
@@ -2957,7 +2956,6 @@ proc create_hier_cell_SCOPE { parentCell nameHier } {
   connect_bd_net -net SCOPE_fifo_generator_0_full [get_bd_pins SCOPE_FSM_FIFO_WrFull] [get_bd_pins SCOPE_fifo_generator_0/full]
   connect_bd_net -net SCOPE_fifo_generator_0_valid [get_bd_pins SCOPE_FSM_FIFO_RdValid] [get_bd_pins SCOPE_fifo_generator_0/valid]
   connect_bd_net -net SCOPE_xlconstant_val0_len0_dout [get_bd_pins SCOPE_Signals_xlconcat_1/In1] [get_bd_pins SCOPE_Signals_xlconcat_1/In2] [get_bd_pins SCOPE_Signals_xlconcat_1/In3] [get_bd_pins SCOPE_Signals_xlconcat_1/In4] [get_bd_pins SCOPE_Signals_xlconcat_1/In5] [get_bd_pins SCOPE_Signals_xlconcat_1/In6] [get_bd_pins SCOPE_xlconstant_val0_len1/dout]
-  connect_bd_net -net SCOPE_xlconstant_val1_len1_dout [get_bd_pins SCOPE_fifo_generator_0/wr_en] [get_bd_pins SCOPE_xlconstant_val1_len1/dout]
   connect_bd_net -net microblaze_0_Clk_100MHz_0 [get_bd_pins s_axi_aclk] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_0/CLK] [get_bd_pins SCOPE_Timebase_c_counter_binary_0/CLK] [get_bd_pins SCOPE_axi_gpio_0/s_axi_aclk] [get_bd_pins SCOPE_fifo_generator_0/rd_clk] [get_bd_pins SCOPE_fifo_generator_0/wr_clk]
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_aresetn_0 [get_bd_pins s_axi_aresetn] [get_bd_pins SCOPE_axi_gpio_0/s_axi_aresetn]
 
@@ -4042,6 +4040,7 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_HIGH} \
  ] $SCOPE_FSM_FIFO_Rst
+  set SCOPE_FSM_FIFO_WrEn [ create_bd_port -dir I SCOPE_FSM_FIFO_WrEn ]
   set SCOPE_FSM_FIFO_WrFull [ create_bd_port -dir O SCOPE_FSM_FIFO_WrFull ]
   set SCOPE_FSM_GPIO_In [ create_bd_port -dir I -from 15 -to 0 SCOPE_FSM_GPIO_In ]
   set SCOPE_FSM_GPIO_Out [ create_bd_port -dir O -from 15 -to 0 SCOPE_FSM_GPIO_Out ]
@@ -4435,6 +4434,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net SC0712_0_reset_out [get_bd_pins SC0712_0/reset_out] [get_bd_pins mig_7series_0/sys_rst] [get_bd_pins vio_0/probe_in5]
   connect_bd_net -net SCOPE_FSM_FIFO_RdEn_1 [get_bd_ports SCOPE_FSM_FIFO_RdEn] [get_bd_pins SCOPE/SCOPE_FSM_FIFO_RdEn]
   connect_bd_net -net SCOPE_FSM_FIFO_Rst_1 [get_bd_ports SCOPE_FSM_FIFO_Rst] [get_bd_pins SCOPE/SCOPE_FSM_FIFO_Rst]
+  connect_bd_net -net SCOPE_FSM_FIFO_WrEn_0 [get_bd_ports SCOPE_FSM_FIFO_WrEn] [get_bd_pins SCOPE/SCOPE_FSM_FIFO_WrEn]
   connect_bd_net -net SCOPE_FSM_GPIO_In_1 [get_bd_ports SCOPE_FSM_GPIO_In] [get_bd_pins SCOPE/SCOPE_FSM_GPIO_In]
   connect_bd_net -net SCOPE_FSM_Timebase_CE_1 [get_bd_ports SCOPE_FSM_Timebase_CE] [get_bd_pins SCOPE/SCOPE_FSM_Timebase_CE]
   connect_bd_net -net SCOPE_FSM_Timebase_SCLR_1 [get_bd_ports SCOPE_FSM_Timebase_SCLR] [get_bd_pins SCOPE/SCOPE_FSM_Timebase_SCLR]
@@ -4558,8 +4558,8 @@ proc create_root_design { parentCell } {
   assign_bd_address -offset 0x40810000 -range 0x00010000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_iic_0/S_AXI/Reg] -force
   assign_bd_address -offset 0x44A10000 -range 0x00010000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_quad_spi_0/AXI_LITE/Reg] -force
   assign_bd_address -offset 0x41C00000 -range 0x00010000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_timer_0/S_AXI/Reg] -force
-  assign_bd_address -offset 0x00000000 -range 0x00002000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs microblaze_0_local_memory/dlmb_bram_if_cntlr/SLMB/Mem] -force
-  assign_bd_address -offset 0x00000000 -range 0x00002000 -target_address_space [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs microblaze_0_local_memory/ilmb_bram_if_cntlr/SLMB/Mem] -force
+  assign_bd_address -offset 0x00000000 -range 0x00040000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs microblaze_0_local_memory/dlmb_bram_if_cntlr/SLMB/Mem] -force
+  assign_bd_address -offset 0x00000000 -range 0x00040000 -target_address_space [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs microblaze_0_local_memory/ilmb_bram_if_cntlr/SLMB/Mem] -force
   assign_bd_address -offset 0x41200000 -range 0x00010000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs INT_ctrl/microblaze_0_axi_intc/S_AXI/Reg] -force
   assign_bd_address -offset 0x80000000 -range 0x40000000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs mig_7series_0/memmap/memaddr] -force
   assign_bd_address -offset 0x80000000 -range 0x40000000 -target_address_space [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs mig_7series_0/memmap/memaddr] -force

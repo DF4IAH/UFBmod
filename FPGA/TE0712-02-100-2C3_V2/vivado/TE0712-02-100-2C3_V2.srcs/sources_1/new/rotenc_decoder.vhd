@@ -49,44 +49,46 @@ architecture Behavioral of rotenc_decoder is
 begin
     process (resetn, clk)
     begin
-        if (resetn = '0') then
-            rotenc_I_d1 <= '0';
-            rotenc_Q_d1 <= '0';
-            cnt_en_pre <= '0';
-            cnt_up_dwn <= '0';
-        elsif (clk'EVENT and clk = '1') then
-            -- one clock delayed clk_enable for counter
-            cnt_en <= cnt_en_pre;
+        if (clk'EVENT and clk = '1') then
+            if (resetn = '0') then
+                rotenc_I_d1 <= '0';
+                rotenc_Q_d1 <= '0';
+                cnt_en_pre <= '0';
+                cnt_up_dwn <= '0';
+            else
+                -- one clock delayed clk_enable for counter
+                cnt_en <= cnt_en_pre;
 
-            -- default value to be overwritten when needed
-            cnt_en_pre <= '0';
-            
-            if (rotenc_I /= rotenc_I_d1  or  rotenc_Q /= rotenc_Q_d1) then
-                -- Rotenc switch was turned
-                cnt_en_pre <= '1';
+                -- default value to be overwritten when needed
+                cnt_en_pre <= '0';
                 
-                -- 4 quadrants in right direction = up
-                if (
-                    (rotenc_I_d1 = '0' and rotenc_I = '1' and rotenc_Q_d1 = '0' and rotenc_Q = '0') or
-                    (rotenc_I_d1 = '1' and rotenc_I = '1' and rotenc_Q_d1 = '0' and rotenc_Q = '1') or
-                    (rotenc_I_d1 = '1' and rotenc_I = '0' and rotenc_Q_d1 = '1' and rotenc_Q = '1') or
-                    (rotenc_I_d1 = '0' and rotenc_I = '0' and rotenc_Q_d1 = '1' and rotenc_Q = '0')
-                ) then
-                    cnt_up_dwn <= '0';
-                -- 4 quadrants in left direction = down
-                elsif (
-                    (rotenc_I_d1 = '0' and rotenc_I = '0' and rotenc_Q_d1 = '0' and rotenc_Q = '1') or
-                    (rotenc_I_d1 = '0' and rotenc_I = '1' and rotenc_Q_d1 = '1' and rotenc_Q = '1') or
-                    (rotenc_I_d1 = '1' and rotenc_I = '1' and rotenc_Q_d1 = '1' and rotenc_Q = '0') or
-                    (rotenc_I_d1 = '1' and rotenc_I = '0' and rotenc_Q_d1 = '0' and rotenc_Q = '0')
-                ) then
-                    cnt_up_dwn <= '1';
+                if (rotenc_I /= rotenc_I_d1  or  rotenc_Q /= rotenc_Q_d1) then
+                    -- Rotenc switch was turned
+                    cnt_en_pre <= '1';
+                    
+                    -- 4 quadrants in right direction = up
+                    if (
+                        (rotenc_I_d1 = '0' and rotenc_I = '1' and rotenc_Q_d1 = '0' and rotenc_Q = '0') or
+                        (rotenc_I_d1 = '1' and rotenc_I = '1' and rotenc_Q_d1 = '0' and rotenc_Q = '1') or
+                        (rotenc_I_d1 = '1' and rotenc_I = '0' and rotenc_Q_d1 = '1' and rotenc_Q = '1') or
+                        (rotenc_I_d1 = '0' and rotenc_I = '0' and rotenc_Q_d1 = '1' and rotenc_Q = '0')
+                    ) then
+                        cnt_up_dwn <= '0';
+                    -- 4 quadrants in left direction = down
+                    elsif (
+                        (rotenc_I_d1 = '0' and rotenc_I = '0' and rotenc_Q_d1 = '0' and rotenc_Q = '1') or
+                        (rotenc_I_d1 = '0' and rotenc_I = '1' and rotenc_Q_d1 = '1' and rotenc_Q = '1') or
+                        (rotenc_I_d1 = '1' and rotenc_I = '1' and rotenc_Q_d1 = '1' and rotenc_Q = '0') or
+                        (rotenc_I_d1 = '1' and rotenc_I = '0' and rotenc_Q_d1 = '0' and rotenc_Q = '0')
+                    ) then
+                        cnt_up_dwn <= '1';
+                    end if;
                 end if;
+                
+                -- update delayed values
+                rotenc_I_d1 <= rotenc_I;
+                rotenc_Q_d1 <= rotenc_Q;
             end if;
-            
-            -- update delayed values
-            rotenc_I_d1 <= rotenc_I;
-            rotenc_Q_d1 <= rotenc_Q;
         end if;
     end process;
 end Behavioral;

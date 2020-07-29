@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Wed Jul 29 00:20:02 2020
+--Date        : Wed Jul 29 21:09:35 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -52,8 +52,8 @@ architecture STRUCTURE of CLK1B_CW_0_imp_GGLS6Z is
     psdone : out STD_LOGIC;
     clk_out1_RMII : out STD_LOGIC;
     clk_out2_fMeter : out STD_LOGIC;
-    locked : out STD_LOGIC;
-    clk_out3_Scope : out STD_LOGIC
+    clk_out3_Scope : out STD_LOGIC;
+    locked : out STD_LOGIC
   );
   end component msys_clk_wiz_0_1;
   component msys_axi_gpio_0_2 is
@@ -1230,6 +1230,7 @@ entity SCOPE_imp_FH2SDI is
     SCOPE_FSM_FIFO_RdEn : in STD_LOGIC;
     SCOPE_FSM_FIFO_RdValid : out STD_LOGIC;
     SCOPE_FSM_FIFO_Rst : in STD_LOGIC;
+    SCOPE_FSM_FIFO_WrEn : in STD_LOGIC;
     SCOPE_FSM_FIFO_WrFull : out STD_LOGIC;
     SCOPE_FSM_GPIO_In : in STD_LOGIC_VECTOR ( 15 downto 0 );
     SCOPE_FSM_GPIO_Out : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -1352,11 +1353,6 @@ architecture STRUCTURE of SCOPE_imp_FH2SDI is
     valid : out STD_LOGIC
   );
   end component msys_fifo_generator_0_1;
-  component msys_xlconstant_0_22 is
-  port (
-    dout : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component msys_xlconstant_0_22;
   component msys_xlconstant_0_23 is
   port (
     dout : out STD_LOGIC_VECTOR ( 24 downto 0 )
@@ -1388,6 +1384,7 @@ architecture STRUCTURE of SCOPE_imp_FH2SDI is
   signal ETH0_s_mii_tx_clk_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal SCOPE_FSM_FIFO_RdEn_1 : STD_LOGIC;
   signal SCOPE_FSM_FIFO_Rst_1 : STD_LOGIC;
+  signal SCOPE_FSM_FIFO_WrEn_0 : STD_LOGIC;
   signal SCOPE_FSM_GPIO_In_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal SCOPE_FSM_Timebase_CE_1 : STD_LOGIC;
   signal SCOPE_FSM_Timebase_SCLR_1 : STD_LOGIC;
@@ -1404,7 +1401,6 @@ architecture STRUCTURE of SCOPE_imp_FH2SDI is
   signal SCOPE_fifo_generator_0_full : STD_LOGIC;
   signal SCOPE_fifo_generator_0_valid : STD_LOGIC;
   signal SCOPE_xlconstant_val0_len0_dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal SCOPE_xlconstant_val1_len1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal microblaze_0_Clk_100MHz_0 : STD_LOGIC;
   signal microblaze_0_axi_periph_M15_AXI_0_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal microblaze_0_axi_periph_M15_AXI_0_ARREADY : STD_LOGIC;
@@ -1442,6 +1438,7 @@ begin
   SCOPE_FSM_FIFO_RdEn_1 <= SCOPE_FSM_FIFO_RdEn;
   SCOPE_FSM_FIFO_RdValid <= SCOPE_fifo_generator_0_valid;
   SCOPE_FSM_FIFO_Rst_1 <= SCOPE_FSM_FIFO_Rst;
+  SCOPE_FSM_FIFO_WrEn_0 <= SCOPE_FSM_FIFO_WrEn;
   SCOPE_FSM_FIFO_WrFull <= SCOPE_fifo_generator_0_full;
   SCOPE_FSM_GPIO_In_1(15 downto 0) <= SCOPE_FSM_GPIO_In(15 downto 0);
   SCOPE_FSM_GPIO_Out(15 downto 0) <= SCOPE_GPIO_Out_xlslice_15downto0_Dout(15 downto 0);
@@ -1561,16 +1558,12 @@ SCOPE_fifo_generator_0: component msys_fifo_generator_0_1
       rd_rst => SCOPE_FSM_FIFO_Rst_1,
       valid => SCOPE_fifo_generator_0_valid,
       wr_clk => microblaze_0_Clk_100MHz_0,
-      wr_en => SCOPE_xlconstant_val1_len1_dout(0),
+      wr_en => SCOPE_FSM_FIFO_WrEn_0,
       wr_rst => SCOPE_FSM_FIFO_Rst_1
     );
 SCOPE_xlconstant_val0_len1: component msys_xlconstant_0_21
      port map (
       dout(0) => SCOPE_xlconstant_val0_len0_dout(0)
-    );
-SCOPE_xlconstant_val1_len1: component msys_xlconstant_0_22
-     port map (
-      dout(0) => SCOPE_xlconstant_val1_len1_dout(0)
     );
 end STRUCTURE;
 library IEEE;
@@ -11839,6 +11832,7 @@ entity msys is
     SCOPE_FSM_FIFO_RdEn : in STD_LOGIC;
     SCOPE_FSM_FIFO_RdValid : out STD_LOGIC;
     SCOPE_FSM_FIFO_Rst : in STD_LOGIC;
+    SCOPE_FSM_FIFO_WrEn : in STD_LOGIC;
     SCOPE_FSM_FIFO_WrFull : out STD_LOGIC;
     SCOPE_FSM_GPIO_In : in STD_LOGIC_VECTOR ( 15 downto 0 );
     SCOPE_FSM_GPIO_Out : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -11931,7 +11925,7 @@ entity msys is
     rst_100M_peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=233,numReposBlks=189,numNonXlnxBlks=3,numHierBlks=44,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=232,numReposBlks=188,numNonXlnxBlks=3,numHierBlks=44,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of msys : entity is "msys.hwdef";
 end msys;
@@ -12528,6 +12522,7 @@ architecture STRUCTURE of msys is
   signal SC0712_0_reset_out : STD_LOGIC;
   signal SCOPE_FSM_FIFO_RdEn_1 : STD_LOGIC;
   signal SCOPE_FSM_FIFO_Rst_1 : STD_LOGIC;
+  signal SCOPE_FSM_FIFO_WrEn_0 : STD_LOGIC;
   signal SCOPE_FSM_GPIO_In_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal SCOPE_FSM_Timebase_CE_1 : STD_LOGIC;
   signal SCOPE_FSM_Timebase_SCLR_1 : STD_LOGIC;
@@ -13321,6 +13316,7 @@ begin
   SCOPE_FSM_FIFO_RdEn_1 <= SCOPE_FSM_FIFO_RdEn;
   SCOPE_FSM_FIFO_RdValid <= SCOPE_SCOPE_FSM_FIFO_RdValid;
   SCOPE_FSM_FIFO_Rst_1 <= SCOPE_FSM_FIFO_Rst;
+  SCOPE_FSM_FIFO_WrEn_0 <= SCOPE_FSM_FIFO_WrEn;
   SCOPE_FSM_FIFO_WrFull <= SCOPE_SCOPE_FSM_FIFO_WrFull;
   SCOPE_FSM_GPIO_In_1(15 downto 0) <= SCOPE_FSM_GPIO_In(15 downto 0);
   SCOPE_FSM_GPIO_Out(15 downto 0) <= SCOPE_SCOPE_FSM_GPIO_Out(15 downto 0);
@@ -13669,6 +13665,7 @@ SCOPE: entity work.SCOPE_imp_FH2SDI
       SCOPE_FSM_FIFO_RdEn => SCOPE_FSM_FIFO_RdEn_1,
       SCOPE_FSM_FIFO_RdValid => SCOPE_SCOPE_FSM_FIFO_RdValid,
       SCOPE_FSM_FIFO_Rst => SCOPE_FSM_FIFO_Rst_1,
+      SCOPE_FSM_FIFO_WrEn => SCOPE_FSM_FIFO_WrEn_0,
       SCOPE_FSM_FIFO_WrFull => SCOPE_SCOPE_FSM_FIFO_WrFull,
       SCOPE_FSM_GPIO_In(15 downto 0) => SCOPE_FSM_GPIO_In_1(15 downto 0),
       SCOPE_FSM_GPIO_Out(15 downto 0) => SCOPE_SCOPE_FSM_GPIO_Out(15 downto 0),

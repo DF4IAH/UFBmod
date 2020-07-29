@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="xemaclite_selftest_example_1" location="C:/Users/espero/git/UFBmod/SW/vitis_workspace/xemaclite_selftest_example_1" platform="C:/Users/espero/git/UFBmod/SW/vitis_workspace/mb0/export/mb0/mb0.xpfm" platformUID="xilinx:te0712_100_2c::0.0(custom)" systemProject="xemaclite_selftest_example_1_system" sysConfig="mb0" runtime="C/C++" cpu="freertos10_xilinx_domain" cpuInstance="microblaze_0" os="freertos10_xilinx" mssSignature="3acd96816cabf074015430a176eafc40">
+  <configuration name="Debug" id="xilinx.gnu.mb.exe.debug.1009337917" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.mb.exe.release.1875494652" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>

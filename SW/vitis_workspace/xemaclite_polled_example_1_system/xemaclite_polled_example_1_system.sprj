@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<systemproject:SystemProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdsproject="http://www.xilinx.com/sdsproject" xmlns:systemproject="http://www.xilinx.com/systemproject" name="xemaclite_polled_example_1_system" platform="C:/Users/espero/git/UFBmod/SW/vitis_workspace/mb0/export/mb0/mb0.xpfm" platformUID="xilinx:te0712_100_2c::0.0(custom)" sysConfig="mb0" runtime="C/C++">
+  <configuration name="Debug">
+    <configBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="xemaclite_polled_example_1" domainName="freertos10_xilinx_domain" domainPrettyName="freertos10_xilinx on microblaze_0" appBuildConfig="Debug"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </configBuildOptions>
+  </configuration>
+  <configuration name="Release">
+    <configBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="xemaclite_polled_example_1" domainName="freertos10_xilinx_domain" domainPrettyName="freertos10_xilinx on microblaze_0" appBuildConfig="Release"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </configBuildOptions>
+  </configuration>
+</systemproject:SystemProject>

@@ -32,6 +32,59 @@
 //#define TIMER_CHECK_THRESHOLD		9
 
 
+/*-----------------------------------------------------------*/
+/* Constants 												 */
+
+/* SCOPE */
+#define SCOPE_BF_GPIO1_OUT_enable 		 	 0
+#define SCOPE_BF_GPIO1_OUT_start 			 1
+#define SCOPE_BF_GPIO1_OUT_pop	 		 	 2
+#define SCOPE_BF_GPIO1_OUT_trigLvl 		 	 7
+#define SCOPE_BF_GPIO1_OUT_trigSrc_LSB	 	 8
+#define SCOPE_BF_GPIO1_OUT_trigSrc_width	 6
+
+#define SCOPE_BF_GPIO1_IN_running 		 	16
+#define SCOPE_BF_GPIO1_IN_readAvail 		17
+#define SCOPE_BF_GPIO1_IN_readValid 		18
+
+
+#define SCOPE_MASK_GPIO1_OUT_enable 		0x00000001UL
+#define SCOPE_MASK_GPIO1_OUT_start 			0x00000002UL
+#define SCOPE_MASK_GPIO1_OUT_pop	 		0x00000004UL
+#define SCOPE_MASK_GPIO1_OUT_trigLvl 		0x00000080UL
+#define SCOPE_MASK_GPIO1_OUT_trigSrc	 	0x00003f00UL
+
+#define SCOPE_MASK_GPIO1_IN_running 		0x00010000UL
+#define SCOPE_MASK_GPIO1_IN_readAvail 		0x00020000UL
+#define SCOPE_MASK_GPIO1_IN_readValid 		0x00040000UL
+
+
+enum SCOPE_TRIGSRC_48LINES_ENUM {
+	SCOPE_TRIGSRC_RMII_25MHz_RefClk = 0,
+	SCOPE_TRIGSRC_RMII_NC1,
+	SCOPE_TRIGSRC_RMII_NC2,
+	SCOPE_TRIGSRC_RMII_NC3,
+	SCOPE_TRIGSRC_RMII_NC4,
+	SCOPE_TRIGSRC_RMII_NC5,
+	SCOPE_TRIGSRC_RMII_NC6,
+	SCOPE_TRIGSRC_MII_COL,
+	SCOPE_TRIGSRC_MII_CRS,
+	SCOPE_TRIGSRC_MII_RX_DV,
+	SCOPE_TRIGSRC_MII_RX_RXD0,
+	SCOPE_TRIGSRC_MII_RX_RXD1,
+	SCOPE_TRIGSRC_MII_RX_RXD2,
+	SCOPE_TRIGSRC_MII_RX_RXD3,
+	SCOPE_TRIGSRC_MII_RX_ER,
+	SCOPE_TRIGSRC_MII_RX_CLK,
+	SCOPE_TRIGSRC_MII_TX_EN,
+	SCOPE_TRIGSRC_MII_TX_TXD0,
+	SCOPE_TRIGSRC_MII_TX_TXD1,
+	SCOPE_TRIGSRC_MII_TX_TXD2,
+	SCOPE_TRIGSRC_MII_TX_TXD3,
+	SCOPE_TRIGSRC_MII_TX_ER,
+	SCOPE_TRIGSRC_MII_TX_CLK,
+};
+
 
 /*-----------------------------------------------------------*/
 /* Prototypes 												 */
@@ -50,9 +103,10 @@ static TaskHandle_t thEth;
 /*-----------------------------------------------------------*/
 /* Instances 												 */
 
-static XGpio gpio_Rotenc;																		/* ROTENC 	            */
-static XGpio gpio_PWM_Lights;																	/* PWM Lights           */
-static XGpio gpio_CLK1B_PS;																		/* CLK1B fine PS tuning */
+static XGpio gpio_Rotenc;																		/* ROTENC 	               */
+static XGpio gpio_PWM_Lights;																	/* PWM Lights              */
+static XGpio gpio_CLK1B_PS;																		/* CLK1B fine PS tuning    */
+static XGpio gpio_SCOPE;																		/* SCOPE unit for analysis */
 
 
 /* App includes */
@@ -71,8 +125,8 @@ int main(void)
 	xTaskCreate(
 			taskDefault, 					/* The function that implements the task. */
 			(const char*) "tskDflt", 		/* Text name for the task, provided to assist debugging only. */
-			configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
-			//(unsigned short) 500,	 		/* The stack allocated to the task. */
+			//configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
+			(unsigned short) 500,	 		/* The stack allocated to the task. */
 			NULL, 							/* The task parameter is not used, so set to NULL. */
 			tskIDLE_PRIORITY,				/* The task runs at the idle priority. */
 			&thDflt
@@ -81,8 +135,8 @@ int main(void)
 	xTaskCreate(
 			taskEth, 						/* The function that implements the task. */
 			(const char*) "tskNet",			/* Text name for the task, provided to assist debugging only. */
-			configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
-			//(unsigned short) 500,	 		/* The stack allocated to the task. */
+			//configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
+			(unsigned short) 500,	 		/* The stack allocated to the task. */
 			NULL,							/* The task parameter is not used, so set to NULL. */
 			tskIDLE_PRIORITY + 1U,			/* The task runs at that priority. */
 			&thEth
@@ -186,6 +240,19 @@ static void taskDefault(void* pvParameters)
 		}
 		XGpio_SetDataDirection(&gpio_CLK1B_PS, 1U, ~0x00000001UL);  // 1 bit output
 		XGpio_SetDataDirection(&gpio_CLK1B_PS, 2U,  0xffffffffUL);  // 1 bit input
+	}
+#endif
+
+#if 1
+	/* SCOPE unit for MII analysis */
+	{
+		int statusScope = XGpio_Initialize(&gpio_SCOPE, XPAR_SCOPE_SCOPE_AXI_GPIO_0_DEVICE_ID);
+		if (statusScope != XST_SUCCESS) {
+			xil_printf("GPIO SCOPE Failed\r\n");
+			return;
+		}
+		XGpio_SetDataDirection(&gpio_SCOPE, 1U, 0xffff0000UL);  // 16 bit input (STATUS) - 16 bit output (CONTROL)
+		XGpio_SetDataDirection(&gpio_SCOPE, 2U, 0xffffffffUL);  // 32 bit input (DATA)
 	}
 #endif
 
@@ -539,7 +606,7 @@ static void taskDefault(void* pvParameters)
 		/* Delay */
 		vTaskDelay(pdMS_TO_TICKS(500));
 
-#if 1
+#if 0
 		/* CLK1B ClockWizard fine PS tuning */
 		{
 			static s32 ctr = 0L;
@@ -557,15 +624,113 @@ static void taskDefault(void* pvParameters)
 			}
 
 			/* Toggle direction */
-			if (dwnUp && (ctr > 30)) {
+			if (dwnUp && (ctr == 12)) {
 				dwnUp = 0U;
-			} else if (!dwnUp && (ctr < -30)) {
+			} else if (!dwnUp && (ctr == 0)) {
 				dwnUp = 1U;
 			}
 
 			xil_printf( "CLK1B_PS: dwnUp=%d, ctr=%4ld\r\n", dwnUp, ctr);
 		}
 #endif
+
+#if 1
+		/* SCOPE Triggering and Readout */
+		{
+			/* Prepare: turn off first */
+			XGpio_DiscreteWrite(&gpio_SCOPE, 1, 0UL);
+
+			/* Prepare: turn on and switch Scope in running mode */
+			const u32 startTrig_RX_DV = (
+							(SCOPE_TRIGSRC_MII_RX_DV		<< SCOPE_BF_GPIO1_OUT_trigSrc_LSB)	|
+							SCOPE_MASK_GPIO1_OUT_trigLvl										|
+							SCOPE_MASK_GPIO1_OUT_start											|
+							SCOPE_MASK_GPIO1_OUT_enable);
+			XGpio_DiscreteWrite(&gpio_SCOPE, 1, startTrig_RX_DV);
+
+			/* Print Header */
+			xil_printf("\r\nSCOPE\r\n");
+			xil_printf("Timebase \t\t\t\tInput - Vector\r\n\r\n");
+			xil_printf("\t\t\t\t\t\t4444.4444.3333.3333.3322.2222.2222.1111.1111.1100.0000.0000\r\n");
+			xil_printf("\t\t\t\t\t\t7654.3210.9876.5432.1098.7654.3210.9876.5432.1098.7654.3210\r\n");
+			xil_printf("(waiting for Trigger) ...");
+
+			/* Wait until triggered and data ready */
+			while (1) {
+				const u32 gpio1 = XGpio_DiscreteRead(&gpio_SCOPE, 1);
+				if ((gpio1 & SCOPE_MASK_GPIO1_IN_running) == 0UL) {
+					/* No more running */
+					break;
+				}
+//				vTaskDelay(pdMS_TO_TICKS(100));
+			}
+
+			/* Triggered */
+			xil_printf("Trig\r\n");
+
+			/* Data read-out */
+			while (1) {
+				static u8  loHi 	= 0U;
+				static u32 loData 	= 0x0UL;
+
+				const u32 gpio1 = XGpio_DiscreteRead(&gpio_SCOPE, 1);
+				const u32 gpio2 = XGpio_DiscreteRead(&gpio_SCOPE, 2);
+
+				/* End when no more data is available */
+				if ((gpio1 & SCOPE_MASK_GPIO1_IN_readAvail) == 0) {
+					xil_printf("=====\r\n");
+					break;
+				}
+
+				/* Request next datum */
+				XGpio_DiscreteSet(&gpio_SCOPE, gpio1, SCOPE_MASK_GPIO1_OUT_pop);
+
+				/* Wait until data is ready to poll */
+				while (1) {
+					const u32 gpio1 = XGpio_DiscreteRead(&gpio_SCOPE, 1);
+					if ((gpio1 & SCOPE_MASK_GPIO1_IN_readValid) != 0UL) {
+						/* Data ready */
+						break;
+					}
+				}
+
+				if (!loHi) {
+					loData = gpio2;
+				} else {
+					const u32 hiData 	= gpio2;
+					const u16 time 		= loData & 0x0000ffffUL;
+
+					xil_printf("Time = %6d x 10 ns \t%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d\r\n",
+							time,
+
+							((hiData >> 31) & 0x1UL), ((hiData >> 30) & 0x1UL), ((hiData >> 29) & 0x1UL), ((hiData >> 28) & 0x1UL),
+							((hiData >> 27) & 0x1UL), ((hiData >> 26) & 0x1UL), ((hiData >> 25) & 0x1UL), ((hiData >> 24) & 0x1UL),
+							((hiData >> 23) & 0x1UL), ((hiData >> 22) & 0x1UL), ((hiData >> 21) & 0x1UL), ((hiData >> 20) & 0x1UL),
+							((hiData >> 19) & 0x1UL), ((hiData >> 18) & 0x1UL), ((hiData >> 17) & 0x1UL), ((hiData >> 16) & 0x1UL),
+							((hiData >> 15) & 0x1UL), ((hiData >> 14) & 0x1UL), ((hiData >> 13) & 0x1UL), ((hiData >> 12) & 0x1UL),
+							((hiData >> 11) & 0x1UL), ((hiData >> 10) & 0x1UL), ((hiData >>  9) & 0x1UL), ((hiData >>  8) & 0x1UL),
+							((hiData >>  7) & 0x1UL), ((hiData >>  6) & 0x1UL), ((hiData >>  5) & 0x1UL), ((hiData >>  4) & 0x1UL),
+							((hiData >>  3) & 0x1UL), ((hiData >>  2) & 0x1UL), ((hiData >>  1) & 0x1UL), ((hiData >>  0) & 0x1UL),
+
+							((loData >> 31) & 0x1UL), ((loData >> 30) & 0x1UL), ((loData >> 29) & 0x1UL), ((loData >> 28) & 0x1UL),
+							((loData >> 27) & 0x1UL), ((loData >> 26) & 0x1UL), ((loData >> 25) & 0x1UL), ((loData >> 24) & 0x1UL),
+							((loData >> 23) & 0x1UL), ((loData >> 22) & 0x1UL), ((loData >> 21) & 0x1UL), ((loData >> 20) & 0x1UL),
+							((loData >> 19) & 0x1UL), ((loData >> 18) & 0x1UL), ((loData >> 17) & 0x1UL), ((loData >> 16) & 0x1UL)
+					);
+				}
+
+				/* Release bit */
+				XGpio_DiscreteClear(&gpio_SCOPE, gpio1, SCOPE_MASK_GPIO1_OUT_pop);
+
+				loHi = !loHi;
+			}
+		}
+
+		/* Prepare: turn off module */
+		XGpio_DiscreteWrite(&gpio_SCOPE, 1, 0UL);
+		xil_printf("\r\n");
+#endif
+
 
 #if 0
 		const u32 gpio1_ctr  = XGpio_DiscreteRead(&gpio_Rotenc, 1U);

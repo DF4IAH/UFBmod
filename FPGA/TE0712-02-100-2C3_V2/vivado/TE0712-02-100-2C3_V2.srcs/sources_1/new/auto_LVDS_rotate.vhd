@@ -99,48 +99,52 @@ begin
   -- FSM-inbox-09
   proc_fsm_inbox09: process (resetn, clk, LVDS09_valid, inb_lock09)
   begin
-    if (resetn = '0') then
-      inb09_in_r  <= std_logic_vector(to_unsigned(0, inb09_in_r'length));
-      inb09_out_r <= std_logic_vector(to_unsigned(0, inb09_out_r'length));
-      inb09_rdy   <= '0';
-      
-    elsif (clk'EVENT and clk = '1') then
-      if (LVDS09_valid = '1') then
-        inb09_in_r <= LVDS09;
-        inb09_rdy  <= '1';
-        if (inb_lock09 = '0') then
-          inb09_out_r <= LVDS09;
-        end if;
+    if (clk'EVENT and clk = '1') then
+        if (resetn = '0') then
+            inb09_in_r  <= (others => '0');
+            inb09_out_r <= (others => '0');
+            inb09_rdy   <= '0';
 
-      elsif (inb_lock09 = '0') then
-        inb09_out_r <= inb09_in_r;
-      else
-        inb09_rdy <= '0';
-      end if;
+        else      
+            if (LVDS09_valid = '1') then
+                inb09_in_r <= LVDS09;
+                inb09_rdy  <= '1';
+                if (inb_lock09 = '0') then
+                    inb09_out_r <= LVDS09;
+                end if;
+
+            elsif (inb_lock09 = '0') then
+                inb09_out_r <= inb09_in_r;
+            else
+                inb09_rdy <= '0';
+            end if;
+        end if;
     end if;
   end process proc_fsm_inbox09;
   
   -- FSM-inbox-24
   proc_fsm_inbox24: process (resetn, clk, LVDS24_valid, inb_lock24)
   begin
-    if (resetn = '0') then
-      inb24_in_r  <= std_logic_vector(to_unsigned(0, inb24_in_r'length));
-      inb24_out_r <= std_logic_vector(to_unsigned(0, inb24_out_r'length));
-      inb24_rdy   <= '0';
-      
-    elsif (clk'EVENT and clk = '1') then
-      if (LVDS24_valid = '1') then
-        inb24_in_r <= LVDS24;
-        inb24_rdy  <= '1';
-        if (inb_lock24 = '0') then
-          inb24_out_r <= LVDS24;
-        end if;
+    if (clk'EVENT and clk = '1') then
+        if (resetn = '0') then
+            inb24_in_r  <= (others => '0');
+            inb24_out_r <= (others => '0');
+            inb24_rdy   <= '0';
 
-      elsif (inb_lock24 = '0') then
-        inb24_out_r <= inb24_in_r;
-      else
-        inb24_rdy <= '0';
-      end if;
+        else
+            if (LVDS24_valid = '1') then
+                inb24_in_r <= LVDS24;
+                inb24_rdy  <= '1';
+                if (inb_lock24 = '0') then
+                    inb24_out_r <= LVDS24;
+                end if;
+    
+            elsif (inb_lock24 = '0') then
+                inb24_out_r <= inb24_in_r;
+            else
+                inb24_rdy <= '0';
+            end if;
+        end if;
     end if;
   end process proc_fsm_inbox24;
 
@@ -150,86 +154,88 @@ begin
   variable rotval24_int : Integer;
   variable state        : Integer;
   begin
-    if (resetn = '0') then
-      rotval09_int := 0;
-      rotval24_int := 0;
-      inb_lock09   <= '0';
-      inb_lock09d  <= '0';
-      inb_lock24   <= '0';
-      inb_lock24d  <= '0';
-      rot_val      <= std_logic_vector(to_unsigned(0, rot_val'length));
-      rot09q       <= std_logic_vector(to_unsigned(0, rot09q'length));
-      rot24q       <= std_logic_vector(to_unsigned(0, rot24q'length));
-      state        := 0;
-      
-    elsif (clk'EVENT and clk = '1') then
-      inb_lock09d <= inb_lock09;
-      inb_lock24d <= inb_lock24;
-
-      case state is
-        when 0 =>
-          if (inb09_rdy = '1') then
-            inb_lock09 <= '1';
-            rot_in     <= inb09_out_r;
-            rot_val    <= std_logic_vector(to_unsigned(rotval09_int, rot_val'length));
-            state      := 4;
-
-          elsif (inb24_rdy = '1') then
-            inb_lock24 <= '1';
-            rot_in     <= inb24_out_r;
-            rot_val    <= std_logic_vector(to_unsigned(rotval24_int, rot_val'length));
-            state      := 8;
-          end if;
-
-        -- wait state          
-        when 4 =>
-          state := 5;
-
-        when 5 =>
-          if (mrkok = '0') then
-            if (rotval09_int < 31) then
-              rotval09_int := rotval09_int + 1;
-            else
-              rotval09_int := 0;
-            end if;
-            rot09q <= std_logic_vector(to_unsigned(0, rot09q'length));
-
-          else
-            rot09q <= rot_out;
-          end if;
-          inb_lock09 <= '0';
-          state := 0;
-
-        -- wait state          
-        when 8 =>
-          state := 9;
-
-        when 9 =>
-          if (mrkok = '0') then
-            if (rotval24_int < 31) then
-              rotval24_int := rotval24_int + 1;
-            else
-              rotval24_int := 0;
-            end if;
-            rot24q <= std_logic_vector(to_unsigned(0, rot24q'length));
-            state := 0;
-
-          else
-            rot24q <= rot_out;
-          end if;
-          inb_lock24 <= '0';
-          state := 0;
-          
-        when others =>
+    if (clk'EVENT and clk = '1') then
+        if (resetn = '0') then
           rotval09_int := 0;
           rotval24_int := 0;
           inb_lock09   <= '0';
+          inb_lock09d  <= '0';
           inb_lock24   <= '0';
-          rot_val      <= std_logic_vector(to_unsigned(0, rot_val'length));
-          rot09q       <= std_logic_vector(to_unsigned(0, rot09q'length));
-          rot24q       <= std_logic_vector(to_unsigned(0, rot24q'length));
+          inb_lock24d  <= '0';
+          rot_val      <= (others => '0');
+          rot09q       <= (others => '0');
+          rot24q       <= (others => '0');
           state        := 0;
-      end case;
+
+        else
+            inb_lock09d <= inb_lock09;
+            inb_lock24d <= inb_lock24;
+    
+            case state is
+                when 0 =>
+                    if (inb09_rdy = '1') then
+                        inb_lock09 <= '1';
+                        rot_in     <= inb09_out_r;
+                        rot_val    <= std_logic_vector(to_unsigned(rotval09_int, rot_val'length));
+                        state      := 4;
+
+                    elsif (inb24_rdy = '1') then
+                        inb_lock24 <= '1';
+                        rot_in     <= inb24_out_r;
+                        rot_val    <= std_logic_vector(to_unsigned(rotval24_int, rot_val'length));
+                        state      := 8;
+                    end if;
+
+                -- wait state          
+                when 4 =>
+                    state := 5;
+        
+                when 5 =>
+                    if (mrkok = '0') then
+                        if (rotval09_int < 31) then
+                            rotval09_int := rotval09_int + 1;
+                        else
+                            rotval09_int := 0;
+                        end if;
+                        rot09q <= (others => '0');
+        
+                    else
+                        rot09q <= rot_out;
+                    end if;
+                    inb_lock09 <= '0';
+                    state := 0;
+        
+                -- wait state          
+                when 8 =>
+                    state := 9;
+        
+                when 9 =>
+                    if (mrkok = '0') then
+                        if (rotval24_int < 31) then
+                            rotval24_int := rotval24_int + 1;
+                        else
+                            rotval24_int := 0;
+                        end if;
+                        rot24q <= (others => '0');
+                        state := 0;
+        
+                    else
+                        rot24q <= rot_out;
+                    end if;
+                    inb_lock24 <= '0';
+                    state := 0;
+                  
+                when others =>
+                    rotval09_int := 0;
+                    rotval24_int := 0;
+                    inb_lock09   <= '0';
+                    inb_lock24   <= '0';
+                    rot_val      <= (others => '0');
+                    rot09q       <= (others => '0');
+                    rot24q       <= (others => '0');
+                    state        := 0;
+            end case;
+        end if;
     end if;
   end process proc_fsm_brl;
 
@@ -237,44 +243,48 @@ begin
   proc_markers: process (resetn, rot_out)
   begin
     if (resetn = '0') then
-      mrkok <= '0';
+        mrkok <= '0';
       
     else
-      if (rot_out(31) = '1' and rot_out(30) = '0'  and  rot_out(15) = '0' and rot_out(14) = '1') then
-        mrkok <= '1';
-      else
-        mrkok <= '0';
-      end if;
+        if (rot_out(31) = '1' and rot_out(30) = '0'  and  rot_out(15) = '0' and rot_out(14) = '1') then
+            mrkok <= '1';
+        else
+            mrkok <= '0';
+        end if;
     end if;
   end process proc_markers;
 
   -- FSM-outbox-09
   proc_fsm_outbox09: process (resetn, clk, inb_lock09, inb_lock09d)
   begin
-    if (resetn = '0') then
-      rot09vld <= '0';
-      
-    elsif (clk'EVENT and clk = '1') then
-      if (inb_lock09 = '0' and inb_lock09d = '1') then
-        rot09vld <= '1';
-      else
-        rot09vld <= '0';
-      end if;
+    if (clk'EVENT and clk = '1') then
+        if (resetn = '0') then
+            rot09vld <= '0';
+
+        else
+            if (inb_lock09 = '0' and inb_lock09d = '1') then
+                rot09vld <= '1';
+            else
+                rot09vld <= '0';
+            end if;
+        end if;
     end if;
   end process proc_fsm_outbox09;
 
   -- FSM-outbox-24
   proc_fsm_outbox24: process (resetn, clk, inb_lock24, inb_lock24d)
   begin
-    if (resetn = '0') then
-      rot24vld <= '0';
-      
-    elsif (clk'EVENT and clk = '1') then
-      if (inb_lock24 = '0' and inb_lock24d = '1') then
-        rot24vld <= '1';
-      else
-        rot24vld <= '0';
-      end if;
+    if (clk'EVENT and clk = '1') then
+        if (resetn = '0') then
+            rot24vld <= '0';
+          
+        else
+            if (inb_lock24 = '0' and inb_lock24d = '1') then
+                rot24vld <= '1';
+            else
+                rot24vld <= '0';
+            end if;
+        end if;
     end if;
   end process proc_fsm_outbox24;
   

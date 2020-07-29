@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="9600" key="selection"/>
+		<item value="gpio_SCOPE" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="gpio_SCOPE"/>
 			<item value="9600"/>
 			<item value="Lookup"/>
 			<item value="Config"/>
@@ -22,7 +23,6 @@
 			<item value="emacLiteRxFrameLength"/>
 			<item value="ethCheckSumCalculation"/>
 			<item value="IP_ADDR_SIZE"/>
-			<item value="emacLiteLocalMacAddr"/>
 		</list>
 		<list key="replacehistory">
 		</list>

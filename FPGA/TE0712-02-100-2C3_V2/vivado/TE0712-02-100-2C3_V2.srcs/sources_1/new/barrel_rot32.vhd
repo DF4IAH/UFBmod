@@ -51,23 +51,23 @@ begin
   begin
     const := conv_integer(rot);
     if (const < 0) then
-      const := const + 32;
+        const := const + 32;
     end if;
 
     temp  := d;
   
     if (clk'EVENT and clk = '1') then
-      for i in 1 to 32 loop
-        if i <= const then
-          if (temp(31) = '1') then
-            temp := temp(30 downto 0) & '1';
-          else
-            temp := temp(30 downto 0) & '0';
-          end if;
-        end if;
-      end loop;
+        for i in 1 to 32 loop
+            if i <= const then
+                if (temp(31) = '1') then
+                    temp := temp(30 downto 0) & '1';
+                else
+                    temp := temp(30 downto 0) & '0';
+                end if;
+            end if;
+        end loop;
 
-      q <= temp;
+        q <= temp;
     end if;
   end process;
 
