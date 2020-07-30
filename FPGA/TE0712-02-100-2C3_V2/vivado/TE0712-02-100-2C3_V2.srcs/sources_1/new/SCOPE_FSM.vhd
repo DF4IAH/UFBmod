@@ -64,7 +64,8 @@ architecture Behavioral of SCOPE_FSM is
   constant GPIO1_IN_running         : natural   :=  0;
   constant GPIO1_IN_readAvail       : natural   :=  1;
   constant GPIO1_IN_readValid       : natural   :=  2;
---signal xxx                : STD_LOGIC;
+
+  signal FSM_state_dbg              : STD_LOGIC_VECTOR (7 downto 0);
 begin
 
   -- FSM
@@ -77,6 +78,7 @@ begin
   begin
     if (clk'EVENT and clk = '1') then
         if (resetn = '0') then
+            FSM_state_dbg <= x"ff";
             state                   := off;
             ctr                     := 0;
             trgSrc                  := 0;
@@ -84,24 +86,29 @@ begin
             SCOPE_FSM_Timebase_CE   <= '0';
             SCOPE_FSM_Timebase_SCLR <= '0';
             SCOPE_FSM_FIFO_Rst      <= '0';
+            SCOPE_FSM_FIFO_WrEn     <= '0';
             SCOPE_FSM_FIFO_RdEn     <= '0';
             
         else
             if (SCOPE_FSM_GPIO_Out(GPIO1_OUT_enable) = '0') then
+                FSM_state_dbg <= x"80";
                 state := off;
             end if;
             
             case state is
                 when off =>
-                    ctr     := 0;
-                    trgSrc  := 0;
+                    FSM_state_dbg <= x"00";
+                    ctr                     := 0;
+                    trgSrc                  := 0;
                     SCOPE_FSM_GPIO_In       <= (others => '0');
                     SCOPE_FSM_Timebase_CE   <= '0';
                     SCOPE_FSM_Timebase_SCLR <= '0';
                     SCOPE_FSM_FIFO_Rst      <= '0';
+                    SCOPE_FSM_FIFO_WrEn     <= '0';
                     SCOPE_FSM_FIFO_RdEn     <= '0';
                     
                     if (SCOPE_FSM_GPIO_Out(GPIO1_OUT_enable) = '1') then
+                        FSM_state_dbg <= x"01";
                         SCOPE_FSM_FIFO_Rst      <= '1';
                         SCOPE_FSM_Timebase_CE   <= '1';
                         SCOPE_FSM_Timebase_SCLR <= '1';
@@ -109,13 +116,16 @@ begin
                     end if;
                     
                 when init1 =>
+                    FSM_state_dbg <= x"02";
                     state := init2;
         
                 when init2 =>
+                    FSM_state_dbg <= x"03";
                     ctr := 16;
                     state := waitRdy;
                     
                 when waitRdy =>
+                    FSM_state_dbg <= x"10";
                     SCOPE_FSM_FIFO_Rst      <= '0';
                     if (ctr = 0) then
                         state := ready;
@@ -124,7 +134,9 @@ begin
                     end if;
                     
                 when ready =>
+                    FSM_state_dbg <= x"20";
                     if (SCOPE_FSM_GPIO_Out(GPIO1_OUT_start) = '1') then
+                        FSM_state_dbg <= x"21";
                         SCOPE_FSM_Timebase_SCLR <= '0';
                         SCOPE_FSM_FIFO_WrEn     <= '1';
                         SCOPE_FSM_GPIO_In(GPIO1_IN_running) <= '1';
@@ -132,6 +144,7 @@ begin
                     end if;
                     
                 when run =>
+                    FSM_state_dbg <= x"30";
                     SCOPE_FSM_FIFO_RdEn <= SCOPE_FSM_FIFO_WrFull;  --  During RUN roll-out old data when buffer full
 
                     -- Select trigger source
@@ -142,49 +155,61 @@ begin
                     
                     -- Trigger check
                     if (SCOPE_FSM_TrigSrc(trgSrc) = SCOPE_FSM_GPIO_Out(GPIO1_OUT_trigLvl)) then
-                        SCOPE_FSM_FIFO_WrEn <= '0';
+                        FSM_state_dbg <= x"31";
                         state := trig;
                     end if;
                     
                 when trig =>
                     -- Start after-trigger timer
+                    FSM_state_dbg <= x"40";
                     ctr := 512;
                     state := trigTmr;
                     
                 when trigTmr =>
+                    FSM_state_dbg <= x"41";
                     if (ctr = 0) then
+                        FSM_state_dbg <= x"42";
                         SCOPE_FSM_FIFO_WrEn <= '0';
-                        SCOPE_FSM_GPIO_In(GPIO1_IN_running) <= '0';
                         state := stop;
                     else
                         ctr := ctr - 1;
                     end if;
                     
                 when stop =>
+                    FSM_state_dbg <= x"50";
+                    SCOPE_FSM_GPIO_In(GPIO1_IN_running) <= '0';
+                    
                     SCOPE_FSM_GPIO_In(GPIO1_IN_readAvail) <= not SCOPE_FSM_FIFO_RdEmpty;    -- During STOP available data is shown here
                     
                     if (SCOPE_FSM_GPIO_Out(GPIO1_OUT_pop) = '1'  and  SCOPE_FSM_FIFO_RdEmpty = '0') then
+                        FSM_state_dbg <= x"51";
                         SCOPE_FSM_FIFO_RdEn <= '1';
                         state := pop1;
                         
-                    elsif (SCOPE_FSM_GPIO_Out(GPIO1_OUT_start) = '1') then
+                    elsif (SCOPE_FSM_GPIO_Out(GPIO1_OUT_enable) = '0') then
+                        FSM_state_dbg <= x"52";
                         state := off;
                     end if;
 
                 when pop1 =>
+                    FSM_state_dbg <= x"60";
                     SCOPE_FSM_FIFO_RdEn <= '0';
                     if (SCOPE_FSM_FIFO_RdValid = '1') then
+                        FSM_state_dbg <= x"61";
                         SCOPE_FSM_GPIO_In(GPIO1_IN_readValid) <= '1';
                         state := pop2;
                     end if;
                 
                 when pop2 =>
+                    FSM_state_dbg <= x"62";
                     if (SCOPE_FSM_GPIO_Out(GPIO1_OUT_pop) = '0') then
+                        FSM_state_dbg <= x"63";
                         SCOPE_FSM_GPIO_In(GPIO1_IN_readValid) <= '0';
                         state := stop;
                     end if;
                 
                 when others =>
+                    FSM_state_dbg <= x"99";
                     state := off;
             end case;
         end if;

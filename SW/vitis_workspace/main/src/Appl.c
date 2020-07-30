@@ -642,9 +642,9 @@ static void taskDefault(void* pvParameters)
 
 			/* Prepare: turn on and switch Scope in running mode */
 			const u32 startTrig_RX_DV = (
-							(SCOPE_TRIGSRC_MII_RX_DV		<< SCOPE_BF_GPIO1_OUT_trigSrc_LSB)	|
-							SCOPE_MASK_GPIO1_OUT_trigLvl										|
-							SCOPE_MASK_GPIO1_OUT_start											|
+							(SCOPE_TRIGSRC_RMII_25MHz_RefClk	<< SCOPE_BF_GPIO1_OUT_trigSrc_LSB)	|
+						//	SCOPE_MASK_GPIO1_OUT_trigLvl											|
+							SCOPE_MASK_GPIO1_OUT_start												|
 							SCOPE_MASK_GPIO1_OUT_enable);
 			XGpio_DiscreteWrite(&gpio_SCOPE, 1, startTrig_RX_DV);
 

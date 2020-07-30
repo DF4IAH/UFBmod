@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_SCOPE_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_SCOPE" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="197057fs"></ZoomEndTime>
+      <Cursor1Time time="0fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="670"></NameColumnWidth>
+      <ValueColumnWidth column_width="296"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="22" />
+   <wave_markers>
+      <marker time="1000000000" label="" />
+      <marker time="1205160000" label="" />
+   </wave_markers>
+   <wvobject type="divider" fp_name="divider1646">
+      <obj_property name="label">Force_High_after_10us</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/tb_resetn" type="logic">
+      <obj_property name="ElementShortName">tb_resetn</obj_property>
+      <obj_property name="ObjectShortName">tb_resetn</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/tb_clk" type="logic">
+      <obj_property name="ElementShortName">tb_clk</obj_property>
+      <obj_property name="ObjectShortName">tb_clk</obj_property>
+      <obj_property name="CustomSignalColor">#008000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider204">
+      <obj_property name="label">GPIO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/tb_SCOPE_FSM_GPIO_Out" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tb_SCOPE_FSM_GPIO_Out[15:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_SCOPE_FSM_GPIO_Out[15:0]</obj_property>
+      <obj_property name="label">tb_SCOPE_FSM_GPIO_Out[15:0]_to_SCOPE</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#800080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/tb_SCOPE_FSM_GPIO_In" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tb_SCOPE_FSM_GPIO_In[15:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_SCOPE_FSM_GPIO_In[15:0]</obj_property>
+      <obj_property name="label">tb_SCOPE_FSM_GPIO_In[15:0]_from_SCOPE</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider192">
+      <obj_property name="label">Trigger Sources</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/tb_SCOPE_FSM_TrigSrc_00" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tb_SCOPE_FSM_TrigSrc_00</obj_property>
+      <obj_property name="ObjectShortName">tb_SCOPE_FSM_TrigSrc_00</obj_property>
+      <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="label">tb_SCOPE_FSM_TrigSrc_00__RefClk_50MHz</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/tb_SCOPE_FSM_TrigSrc_07" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tb_SCOPE_FSM_TrigSrc_07</obj_property>
+      <obj_property name="ObjectShortName">tb_SCOPE_FSM_TrigSrc_07</obj_property>
+      <obj_property name="CustomSignalColor">#800000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="label">tb_SCOPE_FSM_TrigSrc_07__MII_COL</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/tb_SCOPE_FSM_TrigSrc_08" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tb_SCOPE_FSM_TrigSrc_08</obj_property>
+      <obj_property name="ObjectShortName">tb_SCOPE_FSM_TrigSrc_08</obj_property>
+      <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="label">tb_SCOPE_FSM_TrigSrc_08__MII_CRS</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/tb_SCOPE_FSM_TrigSrc_09" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tb_SCOPE_FSM_TrigSrc_09</obj_property>
+      <obj_property name="ObjectShortName">tb_SCOPE_FSM_TrigSrc_09</obj_property>
+      <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="label">tb_SCOPE_FSM_TrigSrc_09__RX_DV</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/tb_SCOPE_FSM_TrigSrc_10" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tb_SCOPE_FSM_TrigSrc_10[3:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_SCOPE_FSM_TrigSrc_10[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#808000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="label">tb_SCOPE_FSM_TrigSrc_10[3:0]__MII_RXD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/tb_SCOPE_FSM_TrigSrc_14" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tb_SCOPE_FSM_TrigSrc_14</obj_property>
+      <obj_property name="ObjectShortName">tb_SCOPE_FSM_TrigSrc_14</obj_property>
+      <obj_property name="CustomSignalColor">#800000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="label">tb_SCOPE_FSM_TrigSrc_14__RX_ER</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/tb_SCOPE_FSM_TrigSrc_15" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tb_SCOPE_FSM_TrigSrc_15</obj_property>
+      <obj_property name="ObjectShortName">tb_SCOPE_FSM_TrigSrc_15</obj_property>
+      <obj_property name="CustomSignalColor">#008000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="label">tb_SCOPE_FSM_TrigSrc_15__MII_RX_CLK_25MHz</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/tb_SCOPE_FSM_TrigSrc_16" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tb_SCOPE_FSM_TrigSrc_16</obj_property>
+      <obj_property name="ObjectShortName">tb_SCOPE_FSM_TrigSrc_16</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="label">tb_SCOPE_FSM_TrigSrc_16__MII_TX_EN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/tb_SCOPE_FSM_TrigSrc_17" type="array">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tb_SCOPE_FSM_TrigSrc_17[3:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_SCOPE_FSM_TrigSrc_17[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="label">tb_SCOPE_FSM_TrigSrc_17[3:0]__MII_TXD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/tb_SCOPE_FSM_TrigSrc_21" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tb_SCOPE_FSM_TrigSrc_21</obj_property>
+      <obj_property name="ObjectShortName">tb_SCOPE_FSM_TrigSrc_21</obj_property>
+      <obj_property name="CustomSignalColor">#800000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="label">tb_SCOPE_FSM_TrigSrc_21__MII_TX_ER</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/tb_SCOPE_FSM_TrigSrc_22" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">tb_SCOPE_FSM_TrigSrc_22</obj_property>
+      <obj_property name="ObjectShortName">tb_SCOPE_FSM_TrigSrc_22</obj_property>
+      <obj_property name="CustomSignalColor">#008000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="label">tb_SCOPE_FSM_TrigSrc_22__MII_TX_CLK_25MHz</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider225">
+      <obj_property name="label">FSM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SCOPE/SCOPE_FSM_i/FSM_state_dbg" type="array">
+      <obj_property name="ElementShortName">FSM_state_dbg[7:0]</obj_property>
+      <obj_property name="ObjectShortName">FSM_state_dbg[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#DCDCDC</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="group231" type="group">
+      <obj_property name="label">Timebase</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_SCOPE/SCOPE_FSM_i/SCOPE_FSM_Timebase_CE" type="logic">
+         <obj_property name="ElementShortName">SCOPE_FSM_Timebase_CE</obj_property>
+         <obj_property name="ObjectShortName">SCOPE_FSM_Timebase_CE</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SCOPE/SCOPE_FSM_i/SCOPE_FSM_Timebase_SCLR" type="logic">
+         <obj_property name="ElementShortName">SCOPE_FSM_Timebase_SCLR</obj_property>
+         <obj_property name="ObjectShortName">SCOPE_FSM_Timebase_SCLR</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group246" type="group">
+      <obj_property name="label">FIFO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_SCOPE/tb_fifo_ctr_d" type="array">
+         <obj_property name="ElementShortName">tb_fifo_ctr_d[16:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_fifo_ctr_d[16:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SCOPE/SCOPE_FSM_i/SCOPE_FSM_FIFO_Rst" type="logic">
+         <obj_property name="ElementShortName">SCOPE_FSM_FIFO_Rst</obj_property>
+         <obj_property name="ObjectShortName">SCOPE_FSM_FIFO_Rst</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SCOPE/SCOPE_FSM_i/SCOPE_FSM_FIFO_WrFull" type="logic">
+         <obj_property name="ElementShortName">SCOPE_FSM_FIFO_WrFull</obj_property>
+         <obj_property name="ObjectShortName">SCOPE_FSM_FIFO_WrFull</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SCOPE/SCOPE_FSM_i/SCOPE_FSM_FIFO_WrEn" type="logic">
+         <obj_property name="ElementShortName">SCOPE_FSM_FIFO_WrEn</obj_property>
+         <obj_property name="ObjectShortName">SCOPE_FSM_FIFO_WrEn</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SCOPE/SCOPE_FSM_i/SCOPE_FSM_FIFO_RdEmpty" type="logic">
+         <obj_property name="ElementShortName">SCOPE_FSM_FIFO_RdEmpty</obj_property>
+         <obj_property name="ObjectShortName">SCOPE_FSM_FIFO_RdEmpty</obj_property>
+         <obj_property name="CustomSignalColor">#808000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SCOPE/SCOPE_FSM_i/SCOPE_FSM_FIFO_RdEn" type="logic">
+         <obj_property name="ElementShortName">SCOPE_FSM_FIFO_RdEn</obj_property>
+         <obj_property name="ObjectShortName">SCOPE_FSM_FIFO_RdEn</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SCOPE/SCOPE_FSM_i/SCOPE_FSM_FIFO_RdValid" type="logic">
+         <obj_property name="ElementShortName">SCOPE_FSM_FIFO_RdValid</obj_property>
+         <obj_property name="ObjectShortName">SCOPE_FSM_FIFO_RdValid</obj_property>
+         <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

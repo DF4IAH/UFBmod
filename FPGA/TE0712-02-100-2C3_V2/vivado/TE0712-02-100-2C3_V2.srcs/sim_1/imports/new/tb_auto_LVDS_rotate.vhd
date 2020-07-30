@@ -110,9 +110,9 @@ begin
       end loop;
 
     else
-      tb_LVDS09       <= std_logic_vector(to_unsigned(0, tb_LVDS09'length));
+      tb_LVDS09       <= (others=>'0');
       tb_LVDS09_valid <= '0';
-      tb_LVDS24       <= std_logic_vector(to_unsigned(0, tb_LVDS24'length));
+      tb_LVDS24       <= (others=>'0');
       tb_LVDS24_valid <= '0';
       wait for 10ns;
     end if;
