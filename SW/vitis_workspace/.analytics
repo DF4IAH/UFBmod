@@ -589,3 +589,21 @@ timestamp=[2020-07-30 09:21:42], mode=BUILD, duration=0:00:00.819, duration_ms=8
 timestamp=[2020-07-30 09:45:49], mode=WORKBENCH_START, duration=0:00:15.517, duration_ms=15517, data={}
 timestamp=[2020-07-30 09:45:51], mode=WORKBENCH_UI_INIT, duration=0:00:02.416, duration_ms=2416, data={editors_count=6, platform_editors_count=2, projects_count=16, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,exp_echo,exp_echo_system,main,main_system,mb0,xemaclite_ping_reply_example_1,xemaclite_ping_reply_example_1_system,xemaclite_ping_req_example_1,xemaclite_ping_req_example_1_system,xemaclite_polled_example_1,xemaclite_polled_example_1_system,xemaclite_selftest_example_1,xiic_low_level_eeprom_example_1,xiic_low_level_tempsensor_example_1,xiic_tempsensor_example_1}
 timestamp=[2020-07-30 09:45:58], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.029, duration_ms=29, data={}
+timestamp=[2020-07-30 21:23:48], mode=WORKBENCH_START, duration=0:00:13.564, duration_ms=13564, data={}
+timestamp=[2020-07-30 21:23:49], mode=WORKBENCH_UI_INIT, duration=0:00:01.346, duration_ms=1346, data={editors_count=6, platform_editors_count=2, projects_count=16, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,exp_echo,exp_echo_system,main,main_system,mb0,xemaclite_ping_reply_example_1,xemaclite_ping_reply_example_1_system,xemaclite_ping_req_example_1,xemaclite_ping_req_example_1_system,xemaclite_polled_example_1,xemaclite_polled_example_1_system,xemaclite_selftest_example_1,xiic_low_level_eeprom_example_1,xiic_low_level_tempsensor_example_1,xiic_tempsensor_example_1}
+timestamp=[2020-07-30 21:23:55], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.056, duration_ms=56, data={}
+timestamp=[2020-07-30 21:24:13], mode=BUILD, duration=0:00:00.327, duration_ms=327, data={name=main, configuration=Debug, clean_build=true}
+timestamp=[2020-07-30 21:24:13], mode=BUILD, duration=0:00:00.247, duration_ms=247, data={name=main_system, configuration=Debug, clean_build=true}
+timestamp=[2020-07-30 21:24:23], mode=BUILD, duration=0:00:01.434, duration_ms=1434, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-30 21:24:53], mode=PLATFORM_GENERATION, duration=0:00:27.168, duration_ms=27168, data={name=mb0}
+timestamp=[2020-07-30 21:32:48], mode=BUILD, duration=0:00:01.652, duration_ms=1652, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-30 21:37:18], mode=BUILD, duration=0:00:00.737, duration_ms=737, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-30 21:37:29], mode=BUILD, duration=0:00:00.215, duration_ms=215, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-30 21:38:52], mode=BUILD, duration=0:00:00.689, duration_ms=689, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-30 21:42:15], mode=BUILD, duration=0:00:00.785, duration_ms=785, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-30 21:45:54], mode=BUILD, duration=0:00:00.682, duration_ms=682, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-30 21:47:44], mode=BUILD, duration=0:00:00.857, duration_ms=857, data={name=main, configuration=Debug, clean_build=false}
+timestamp=[2020-07-30 22:35:06], mode=WORKBENCH_START, duration=0:00:10.726, duration_ms=10726, data={}
+timestamp=[2020-07-30 22:35:07], mode=WORKBENCH_UI_INIT, duration=0:00:00.891, duration_ms=891, data={editors_count=6, platform_editors_count=2, projects_count=16, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,exp_echo,exp_echo_system,main,main_system,mb0,xemaclite_ping_reply_example_1,xemaclite_ping_reply_example_1_system,xemaclite_ping_req_example_1,xemaclite_ping_req_example_1_system,xemaclite_polled_example_1,xemaclite_polled_example_1_system,xemaclite_selftest_example_1,xiic_low_level_eeprom_example_1,xiic_low_level_tempsensor_example_1,xiic_tempsensor_example_1}
+timestamp=[2020-07-30 22:35:15], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.044, duration_ms=44, data={}
+timestamp=[2020-07-30 23:40:16], mode=BUILD, duration=0:00:00.551, duration_ms=551, data={name=main, configuration=Debug, clean_build=false}

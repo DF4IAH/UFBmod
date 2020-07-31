@@ -120,11 +120,11 @@ begin
     wait for 1 ms;
   
     -- Enable, Trigger Src RefClk, Trigger Lo-->Hi
-    tb_SCOPE_FSM_GPIO_Out <= x"0081";
+    tb_SCOPE_FSM_GPIO_Out <= x"0881";
     wait for 80 ns;
     
     -- Run
-    tb_SCOPE_FSM_GPIO_Out <= x"0083";
+    tb_SCOPE_FSM_GPIO_Out <= x"0883";
     wait for 80 ns;
     
     -- Wait until no more running
@@ -134,13 +134,13 @@ begin
     while tb_SCOPE_FSM_FIFO_RdEmpty = '0' loop
 
         -- Pop data entry
-        tb_SCOPE_FSM_GPIO_Out <= x"0085";
+        tb_SCOPE_FSM_GPIO_Out <= x"0885";
         
         -- Wait until data is present
         wait until tb_SCOPE_FSM_GPIO_In(2) = '1';
         
         -- Release Pop bit
-        tb_SCOPE_FSM_GPIO_Out <= x"0081";
+        tb_SCOPE_FSM_GPIO_Out <= x"0881";
         wait for 40 ns;
     
     end loop;
@@ -218,6 +218,7 @@ begin
     wait for 20ns;
   end process proc_s15_rxclk;
 
+
   -- Signal 08,09,10: RX
   proc_sxx_rx: process
   begin
@@ -226,14 +227,14 @@ begin
     tb_SCOPE_FSM_TrigSrc_09 <= '0';     -- MII_RX_DV
     tb_SCOPE_FSM_TrigSrc_10 <= "0000";  -- MII_RXD[3:0]
     
-    wait for 100us;
+    wait for 2us;
 
     -- Preamble
     tb_SCOPE_FSM_TrigSrc_08 <= '1';     -- MII_CRS
     tb_SCOPE_FSM_TrigSrc_09 <= '0';     -- MII_RX_DV
     tb_SCOPE_FSM_TrigSrc_10 <= "0000";  -- MII_RXD[3:0]
 
-    wait for 100us;
+    wait for 200ns;
     
     -- Preamble
     tb_SCOPE_FSM_TrigSrc_08 <= '1';     -- MII_CRS
@@ -276,8 +277,9 @@ begin
     tb_SCOPE_FSM_TrigSrc_09 <= '0';     -- MII_RX_DV
     tb_SCOPE_FSM_TrigSrc_10 <= "0000";  -- MII_RXD[3:0]
 
-    wait for 10ms;
+    wait for 10us;
   end process proc_sxx_rx;
+
 
   -- Signal 22: TxClk
   proc_s22_txclk: process

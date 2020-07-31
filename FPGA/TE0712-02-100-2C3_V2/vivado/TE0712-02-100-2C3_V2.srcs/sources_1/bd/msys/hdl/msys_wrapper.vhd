@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Wed Jul 29 21:09:36 2020
+--Date        : Fri Jul 31 00:56:01 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -89,6 +89,7 @@ entity msys_wrapper is
     UART0_rxd : in STD_LOGIC;
     UART0_txd : out STD_LOGIC;
     ULI_SYSTEM_XIO : in STD_LOGIC;
+    USER_dbg_out : out STD_LOGIC_VECTOR ( 13 downto 0 );
     phy_rst_n : out STD_LOGIC;
     qspi_flash_io0_io : inout STD_LOGIC;
     qspi_flash_io1_io : inout STD_LOGIC;
@@ -251,7 +252,8 @@ architecture STRUCTURE of msys_wrapper is
     CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK2_mgt_clk0_clk_p : in STD_LOGIC;
-    CLK2_mgt_clk0_clk_n : in STD_LOGIC
+    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
+    USER_dbg_out : out STD_LOGIC_VECTOR ( 13 downto 0 )
   );
   end component msys;
   component IOBUF is
@@ -704,6 +706,7 @@ msys_i: component msys
       UART0_rxd => UART0_rxd,
       UART0_txd => UART0_txd,
       ULI_SYSTEM_XIO => ULI_SYSTEM_XIO,
+      USER_dbg_out(13 downto 0) => USER_dbg_out(13 downto 0),
       fft09_aresetn_in => mw_fft09_aresetn_in,
       fft09_config_tdata_in(7 downto 0) => mw_fft09_config_tdata_in(7 downto 0),
       fft09_config_tvalid_in => mw_fft09_config_tvalid_in,

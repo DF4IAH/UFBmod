@@ -2355,6 +2355,96 @@ proc create_hier_cell_microblaze_0_local_memory { parentCell nameHier } {
   current_bd_instance $oldCurInst
 }
 
+# Hierarchical cell: USER_dbg
+proc create_hier_cell_USER_dbg { parentCell nameHier } {
+
+  variable script_folder
+
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_USER_dbg() - Empty argument(s)!"}
+     return
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2091 -severity "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
+
+  # Create interface pins
+
+  # Create pins
+  create_bd_pin -dir I -from 0 -to 0 In0
+  create_bd_pin -dir I -from 0 -to 0 In1
+  create_bd_pin -dir I -from 3 -to 0 In2
+  create_bd_pin -dir I -from 0 -to 0 In3
+  create_bd_pin -dir I -from 0 -to 0 In4
+  create_bd_pin -dir I -from 0 -to 0 In5
+  create_bd_pin -dir I -from 0 -to 0 In6
+  create_bd_pin -dir I -from 0 -to 0 In7
+  create_bd_pin -dir I -from 0 -to 0 In8
+  create_bd_pin -dir O -from 13 -to 0 USER_dbg_out
+
+  # Create instance: USER_dbg_out_xlconcat_0, and set properties
+  set USER_dbg_out_xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 USER_dbg_out_xlconcat_0 ]
+  set_property -dict [ list \
+   CONFIG.IN0_WIDTH {1} \
+   CONFIG.IN10_WIDTH {1} \
+   CONFIG.IN11_WIDTH {1} \
+   CONFIG.IN12_WIDTH {2} \
+   CONFIG.IN1_WIDTH {1} \
+   CONFIG.IN2_WIDTH {4} \
+   CONFIG.IN3_WIDTH {1} \
+   CONFIG.IN4_WIDTH {1} \
+   CONFIG.IN5_WIDTH {1} \
+   CONFIG.IN6_WIDTH {1} \
+   CONFIG.IN7_WIDTH {1} \
+   CONFIG.IN8_WIDTH {1} \
+   CONFIG.IN9_WIDTH {1} \
+   CONFIG.NUM_PORTS {11} \
+ ] $USER_dbg_out_xlconcat_0
+
+  # Create instance: USER_dbg_xlconstant_val0_len0, and set properties
+  set USER_dbg_xlconstant_val0_len0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 USER_dbg_xlconstant_val0_len0 ]
+  set_property -dict [ list \
+   CONFIG.CONST_VAL {0} \
+ ] $USER_dbg_xlconstant_val0_len0
+
+  # Create port connections
+  connect_bd_net -net In0_1 [get_bd_pins In0] [get_bd_pins USER_dbg_out_xlconcat_0/In0]
+  connect_bd_net -net In1_1 [get_bd_pins In1] [get_bd_pins USER_dbg_out_xlconcat_0/In1]
+  connect_bd_net -net In2_1 [get_bd_pins In2] [get_bd_pins USER_dbg_out_xlconcat_0/In2]
+  connect_bd_net -net In3_1 [get_bd_pins In3] [get_bd_pins USER_dbg_out_xlconcat_0/In3]
+  connect_bd_net -net In4_1 [get_bd_pins In4] [get_bd_pins USER_dbg_out_xlconcat_0/In4]
+  connect_bd_net -net In5_1 [get_bd_pins In5] [get_bd_pins USER_dbg_out_xlconcat_0/In5]
+  connect_bd_net -net In6_1 [get_bd_pins In6] [get_bd_pins USER_dbg_out_xlconcat_0/In6]
+  connect_bd_net -net In7_1 [get_bd_pins In7] [get_bd_pins USER_dbg_out_xlconcat_0/In7]
+  connect_bd_net -net In8_1 [get_bd_pins In8] [get_bd_pins USER_dbg_out_xlconcat_0/In8]
+  connect_bd_net -net USER_dbg_out_xlconcat_0_dout [get_bd_pins USER_dbg_out] [get_bd_pins USER_dbg_out_xlconcat_0/dout]
+  connect_bd_net -net USER_dbg_xlconstant_val0_len0_dout [get_bd_pins USER_dbg_out_xlconcat_0/In9] [get_bd_pins USER_dbg_out_xlconcat_0/In10] [get_bd_pins USER_dbg_xlconstant_val0_len0/dout]
+
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
+
 # Hierarchical cell: UART0
 proc create_hier_cell_UART0 { parentCell nameHier } {
 
@@ -3840,7 +3930,7 @@ proc create_hier_cell_CLK1B_CW_0 { parentCell nameHier } {
    CONFIG.CLKOUT2_PHASE_ERROR {148.661} \
    CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {50.000} \
    CONFIG.CLKOUT2_USED {true} \
-   CONFIG.CLKOUT3_DRIVES {No_buffer} \
+   CONFIG.CLKOUT3_DRIVES {BUFG} \
    CONFIG.CLKOUT3_JITTER {243.865} \
    CONFIG.CLKOUT3_PHASE_ERROR {148.661} \
    CONFIG.CLKOUT3_REQUESTED_OUT_FREQ {50.000} \
@@ -4086,6 +4176,7 @@ proc create_root_design { parentCell } {
  ] $UART0_clk
   set UART0_rst_n [ create_bd_port -dir O -from 0 -to 0 -type rst UART0_rst_n ]
   set ULI_SYSTEM_XIO [ create_bd_port -dir I ULI_SYSTEM_XIO ]
+  set USER_dbg_out [ create_bd_port -dir O -from 13 -to 0 USER_dbg_out ]
   set fft09_aresetn_in [ create_bd_port -dir I -type rst fft09_aresetn_in ]
   set fft09_config_tdata_in [ create_bd_port -dir I -from 7 -to 0 fft09_config_tdata_in ]
   set fft09_config_tvalid_in [ create_bd_port -dir I fft09_config_tvalid_in ]
@@ -4195,6 +4286,9 @@ proc create_root_design { parentCell } {
 
   # Create instance: UART0
   create_hier_cell_UART0 [current_bd_instance .] UART0
+
+  # Create instance: USER_dbg
+  create_hier_cell_USER_dbg [current_bd_instance .] USER_dbg
 
   # Create instance: axi_BOARD_iic_0, and set properties
   set axi_BOARD_iic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_iic:2.0 axi_BOARD_iic_0 ]
@@ -4388,8 +4482,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net CLK0_NA_0 [get_bd_pins CLK0_util_ds_buf_0/IBUF_OUT] [get_bd_pins CLK0_util_ds_buf_1/BUFG_I]
   connect_bd_net -net CLK0_NA_g_0 [get_bd_pins CLK0_util_ds_buf_1/BUFG_O] [get_bd_pins lt_fmeter_xlconcat_0/In3]
   connect_bd_net -net CLK1B_50MHz_phy_clk_0 [get_bd_ports CLK1B_clk] [get_bd_pins CLK1B_CW_0/CLK1B_clk]
-  connect_bd_net -net CLK1B_CW_0_clk_out3_Scope_RefClk [get_bd_pins CLK1B_CW_0/clk_out3_Scope] [get_bd_pins SCOPE/CLK1B_CW_0_clk_out3_Scope_RefClk]
-  connect_bd_net -net CLK1B_clk_wiz_0_clk_out1_RMII [get_bd_pins CLK1B_CW_0/clk_out1_RMII] [get_bd_pins ETH0/CLK1B_50MHz_phy_clk_in]
+  connect_bd_net -net CLK1B_CW_0_clk_out1_RMII [get_bd_pins CLK1B_CW_0/clk_out1_RMII] [get_bd_pins ETH0/CLK1B_50MHz_phy_clk_in] [get_bd_pins USER_dbg/In4]
+  connect_bd_net -net CLK1B_CW_0_clk_out3_Scope [get_bd_pins CLK1B_CW_0/clk_out3_Scope] [get_bd_pins SCOPE/CLK1B_CW_0_clk_out3_Scope_RefClk] [get_bd_pins USER_dbg/In5]
   connect_bd_net -net CLK1B_clk_wiz_0_clk_out2_fmeter [get_bd_pins CLK1B_CW_0/clk_out2_fMeter] [get_bd_pins lt_fmeter_xlconcat_0/In2]
   connect_bd_net -net CLK2_125MHz_mgt_g_0 [get_bd_pins lt_fmeter_xlconcat_0/In1] [get_bd_pins mgt_clk0_CLK2_util_ds_buf_1/IBUF_OUT]
   connect_bd_net -net ETH0_DA_G [get_bd_ports ETH0_DA_G] [get_bd_pins ETH0/ETH0_DA_G]
@@ -4402,14 +4496,14 @@ proc create_root_design { parentCell } {
   connect_bd_net -net ETH0_m_mii_tx_er [get_bd_pins ETH0/m_mii_tx_er] [get_bd_pins SCOPE/ETH0_m_mii_tx_er]
   connect_bd_net -net ETH0_m_mii_txd_0 [get_bd_pins ETH0/m_mii_txd] [get_bd_pins vio_0/probe_in28]
   connect_bd_net -net ETH0_m_mii_txd_1 [get_bd_pins ETH0/m_mii_txd1] [get_bd_pins SCOPE/ETH0_m_mii_txd]
-  connect_bd_net -net ETH0_s_mii_col [get_bd_pins ETH0/s_mii_col] [get_bd_pins SCOPE/ETH0_s_mii_col]
-  connect_bd_net -net ETH0_s_mii_crs [get_bd_pins ETH0/s_mii_crs] [get_bd_pins SCOPE/ETH0_s_mii_crs]
-  connect_bd_net -net ETH0_s_mii_rx_clk [get_bd_pins ETH0/s_mii_rx_clk] [get_bd_pins SCOPE/ETH0_s_mii_rx_clk] [get_bd_pins lt_fmeter_xlconcat_0/In6]
-  connect_bd_net -net ETH0_s_mii_rx_dv [get_bd_pins ETH0/s_mii_rx_dv] [get_bd_pins SCOPE/ETH0_s_mii_rx_dv]
-  connect_bd_net -net ETH0_s_mii_rx_er [get_bd_pins ETH0/s_mii_rx_er] [get_bd_pins SCOPE/ETH0_s_mii_rx_er]
+  connect_bd_net -net ETH0_s_mii_col [get_bd_pins ETH0/s_mii_col] [get_bd_pins SCOPE/ETH0_s_mii_col] [get_bd_pins USER_dbg/In8]
+  connect_bd_net -net ETH0_s_mii_crs [get_bd_pins ETH0/s_mii_crs] [get_bd_pins SCOPE/ETH0_s_mii_crs] [get_bd_pins USER_dbg/In0]
+  connect_bd_net -net ETH0_s_mii_rx_clk [get_bd_pins ETH0/s_mii_rx_clk] [get_bd_pins SCOPE/ETH0_s_mii_rx_clk] [get_bd_pins USER_dbg/In3] [get_bd_pins lt_fmeter_xlconcat_0/In6]
+  connect_bd_net -net ETH0_s_mii_rx_dv [get_bd_pins ETH0/s_mii_rx_dv] [get_bd_pins SCOPE/ETH0_s_mii_rx_dv] [get_bd_pins USER_dbg/In1]
+  connect_bd_net -net ETH0_s_mii_rx_er [get_bd_pins ETH0/s_mii_rx_er] [get_bd_pins SCOPE/ETH0_s_mii_rx_er] [get_bd_pins USER_dbg/In7]
   connect_bd_net -net ETH0_s_mii_rxd_0 [get_bd_pins ETH0/s_mii_rxd] [get_bd_pins vio_0/probe_in29]
-  connect_bd_net -net ETH0_s_mii_rxd_1 [get_bd_pins ETH0/s_mii_rxd1] [get_bd_pins SCOPE/ETH0_s_mii_rxd]
-  connect_bd_net -net ETH0_s_mii_tx_clk [get_bd_pins ETH0/s_mii_tx_clk] [get_bd_pins SCOPE/ETH0_s_mii_tx_clk] [get_bd_pins lt_fmeter_xlconcat_0/In5]
+  connect_bd_net -net ETH0_s_mii_rxd_1 [get_bd_pins ETH0/s_mii_rxd1] [get_bd_pins SCOPE/ETH0_s_mii_rxd] [get_bd_pins USER_dbg/In2]
+  connect_bd_net -net ETH0_s_mii_tx_clk [get_bd_pins ETH0/s_mii_tx_clk] [get_bd_pins SCOPE/ETH0_s_mii_tx_clk] [get_bd_pins USER_dbg/In6] [get_bd_pins lt_fmeter_xlconcat_0/In5]
   connect_bd_net -net EUI48_EUI48_FSM_start [get_bd_ports EUI48_FSM_start] [get_bd_pins EUI48/EUI48_FSM_start] [get_bd_pins vio_0/probe_in32]
   connect_bd_net -net EUI48_FSM_run_1 [get_bd_ports EUI48_FSM_run] [get_bd_pins EUI48/EUI48_FSM_run] [get_bd_pins vio_0/probe_in33]
   connect_bd_net -net EUI48_abort_1 [get_bd_ports EUI48_abort] [get_bd_pins vio_0/probe_in36]
@@ -4473,6 +4567,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net UART0_interrupt [get_bd_pins INT_ctrl/In1] [get_bd_pins UART0/interrupt]
   connect_bd_net -net UART0_ip2intc_irpt [get_bd_pins INT_ctrl/In5] [get_bd_pins UART0/ip2intc_irpt]
   connect_bd_net -net ULI_SYSTEM_XIO_1 [get_bd_ports ULI_SYSTEM_XIO] [get_bd_pins vio_0/probe_in10]
+  connect_bd_net -net USER_dbg_USER_dbg_out [get_bd_ports USER_dbg_out] [get_bd_pins USER_dbg/USER_dbg_out]
   connect_bd_net -net axi_BOARD_iic_0_iic2intc_irpt [get_bd_pins INT_ctrl/In6] [get_bd_pins axi_BOARD_iic_0/iic2intc_irpt]
   connect_bd_net -net axi_iic_0_iic2intc_irpt [get_bd_pins INT_ctrl/In3] [get_bd_pins axi_iic_0/iic2intc_irpt]
   connect_bd_net -net axi_quad_spi_0_cfgmclk [get_bd_pins axi_quad_spi_0/cfgmclk] [get_bd_pins cfgmclk_util_ds_buf_0/BUFG_I]

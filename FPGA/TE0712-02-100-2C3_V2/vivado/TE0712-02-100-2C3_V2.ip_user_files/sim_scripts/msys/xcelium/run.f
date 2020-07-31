@@ -626,6 +626,8 @@
   "../../../bd/msys/ip/msys_xlconstant_0_23/sim/msys_xlconstant_0_23.v" \
   "../../../bd/msys/ip/msys_xlslice_0_38/sim/msys_xlslice_0_38.v" \
   "../../../bd/msys/ip/msys_xlconcat_0_15/sim/msys_xlconcat_0_15.v" \
+  "../../../bd/msys/ip/msys_xlconcat_0_16/sim/msys_xlconcat_0_16.v" \
+  "../../../bd/msys/ip/msys_xlconstant_0_24/sim/msys_xlconstant_0_24.v" \
 -endlib
 -makelib xcelium_lib/axi_clock_converter_v2_1_20 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/7589/hdl/axi_clock_converter_v2_1_vl_rfs.v" \

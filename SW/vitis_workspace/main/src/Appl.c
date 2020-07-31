@@ -642,17 +642,17 @@ static void taskDefault(void* pvParameters)
 
 			/* Prepare: turn on and switch Scope in running mode */
 			const u32 startTrig_RX_DV = (
-							(SCOPE_TRIGSRC_RMII_25MHz_RefClk	<< SCOPE_BF_GPIO1_OUT_trigSrc_LSB)	|
-						//	SCOPE_MASK_GPIO1_OUT_trigLvl											|
+							(SCOPE_TRIGSRC_MII_CRS				<< SCOPE_BF_GPIO1_OUT_trigSrc_LSB)	|
+						  	SCOPE_MASK_GPIO1_OUT_trigLvl											|
 							SCOPE_MASK_GPIO1_OUT_start												|
 							SCOPE_MASK_GPIO1_OUT_enable);
 			XGpio_DiscreteWrite(&gpio_SCOPE, 1, startTrig_RX_DV);
 
 			/* Print Header */
 			xil_printf("\r\nSCOPE\r\n");
-			xil_printf("Timebase \t\t\t\tInput - Vector\r\n\r\n");
-			xil_printf("\t\t\t\t\t\t4444.4444.3333.3333.3322.2222.2222.1111.1111.1100.0000.0000\r\n");
-			xil_printf("\t\t\t\t\t\t7654.3210.9876.5432.1098.7654.3210.9876.5432.1098.7654.3210\r\n");
+			xil_printf("Timebase \t\tInput - Vector\r\n\r\n");
+			xil_printf("\t\t\t4444.4444.3333.3333.3322.2222.2222.1111.1111.1100.0000.0000\r\n");
+			xil_printf("\t\t\t7654.3210.9876.5432.1098.7654.3210.9876.5432.1098.7654.3210\r\n");
 			xil_printf("(waiting for Trigger) ...");
 
 			/* Wait until triggered and data ready */
@@ -683,7 +683,7 @@ static void taskDefault(void* pvParameters)
 				}
 
 				/* Request next datum */
-				XGpio_DiscreteSet(&gpio_SCOPE, gpio1, SCOPE_MASK_GPIO1_OUT_pop);
+				XGpio_DiscreteSet(&gpio_SCOPE, 1, SCOPE_MASK_GPIO1_OUT_pop);
 
 				/* Wait until data is ready to poll */
 				while (1) {
@@ -720,7 +720,7 @@ static void taskDefault(void* pvParameters)
 				}
 
 				/* Release bit */
-				XGpio_DiscreteClear(&gpio_SCOPE, gpio1, SCOPE_MASK_GPIO1_OUT_pop);
+				XGpio_DiscreteClear(&gpio_SCOPE, 1, SCOPE_MASK_GPIO1_OUT_pop);
 
 				loHi = !loHi;
 			}

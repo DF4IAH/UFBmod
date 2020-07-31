@@ -1,0 +1,46 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.70662",
+   "Default View_TopLeft":"-130,-225",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port S_AXI -pg 1 -lvl 0 -x 0 -y 350 -defaultsOSRD
+preplace port reset -pg 1 -lvl 0 -x 0 -y 20 -defaultsOSRD
+preplace port CLK1B_clk -pg 1 -lvl 0 -x 0 -y 50 -defaultsOSRD
+preplace port clk_out1_RMII -pg 1 -lvl 8 -x 1800 -y 40 -defaultsOSRD
+preplace port clk_out2_fMeter -pg 1 -lvl 8 -x 1800 -y 70 -defaultsOSRD
+preplace port locked -pg 1 -lvl 8 -x 1800 -y 130 -defaultsOSRD
+preplace port s_axi_aresetn -pg 1 -lvl 0 -x 0 -y 410 -defaultsOSRD
+preplace port s_axi_aclk -pg 1 -lvl 0 -x 0 -y 380 -defaultsOSRD
+preplace port clk_out3_Scope -pg 1 -lvl 8 -x 1800 -y 100 -defaultsOSRD
+preplace inst CLK1B_clk_wiz_0 -pg 1 -lvl 7 -x 1640 -y 90 -defaultsOSRD
+preplace inst CLK1B_axi_gpio_0 -pg 1 -lvl 1 -x 170 -y 390 -defaultsOSRD
+preplace inst CLK1B_c_shift_ram_0 -pg 1 -lvl 3 -x 630 -y 350 -defaultsOSRD
+preplace inst CLK1B_xlslice_0to0 -pg 1 -lvl 2 -x 420 -y 280 -defaultsOSRD
+preplace inst CLK1B_xlslice_1to1 -pg 1 -lvl 6 -x 1370 -y 210 -defaultsOSRD
+preplace inst CLK1B_util_vector_logic_0 -pg 1 -lvl 4 -x 890 -y 350 -defaultsOSRD
+preplace inst CLK1B_util_reduced_logic_1 -pg 1 -lvl 6 -x 1370 -y 110 -defaultsOSRD
+preplace inst CLK1B_xlconcat_0 -pg 1 -lvl 5 -x 1140 -y 340 -defaultsOSRD
+preplace netloc reset_0 1 0 7 NJ 20 NJ 20 NJ 20 NJ 20 NJ 20 NJ 20 1520J
+preplace netloc CLK1B_50MHz_phy_clk_0 1 0 7 30J 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 1510J
+preplace netloc CLK1B_clk_wiz_0_clk_out1_RMII 1 7 1 1770J 40n
+preplace netloc CLK1B_clk_wiz_0_clk_out2_fmeter 1 7 1 1780J 70n
+preplace netloc dcm_locked_1 1 7 1 NJ 130
+preplace netloc s_axi_aresetn_0 1 0 1 NJ 410
+preplace netloc s_axi_aclk_0 1 0 7 30 300 300J 340 520 50 NJ 50 NJ 50 NJ 50 1500
+preplace netloc CLK1B_c_shift_ram_0_Q 1 3 1 NJ 350
+preplace netloc CLK1B_axi_gpio_0_gpio_io_o 1 1 5 310 210 NJ 210 NJ 210 NJ 210 NJ
+preplace netloc CLK1B_xlslice_0to0_Dout 1 2 3 530 280 NJ 280 1030
+preplace netloc CLK1B_xlslice_1to1_Dout 1 6 1 1510 130n
+preplace netloc CLK1B_util_reduced_logic_1_Res 1 6 1 NJ 110
+preplace netloc CLK1B_xlconcat_0_dout 1 5 1 1230 110n
+preplace netloc CLK1B_util_vector_logic_0_Res 1 4 1 N 350
+preplace netloc CLK1B_clk_wiz_0_psdone 1 1 7 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 1760
+preplace netloc CLK1B_clk_wiz_0_clk_out3_Scope 1 7 1 1770J 100n
+preplace netloc Conn1 1 0 1 20J 350n
+levelinfo -pg 1 0 170 420 630 890 1140 1370 1640 1800
+pagesize -pg 1 -db -bbox -sgen -130 -10 1950 480
+"
+}
+

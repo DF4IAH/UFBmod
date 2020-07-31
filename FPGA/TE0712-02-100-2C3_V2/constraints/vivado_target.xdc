@@ -153,6 +153,63 @@ set_property PACKAGE_PIN Y13 [get_ports {TRX_tx_data_p[0]}]
 set_property PACKAGE_PIN AA15 [get_ports {TRX_tx_data_p[1]}]
 
 
+set_property PACKAGE_PIN B20 [get_ports {USER_dbg_out[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {USER_dbg_out[0]}]
+set_property SLEW SLOW [get_ports {USER_dbg_out[0]}]
+
+set_property PACKAGE_PIN A20 [get_ports {USER_dbg_out[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {USER_dbg_out[1]}]
+set_property SLEW SLOW [get_ports {USER_dbg_out[1]}]
+
+set_property PACKAGE_PIN D20 [get_ports {USER_dbg_out[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {USER_dbg_out[2]}]
+set_property SLEW SLOW [get_ports {USER_dbg_out[2]}]
+
+set_property PACKAGE_PIN C20 [get_ports {USER_dbg_out[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {USER_dbg_out[3]}]
+set_property SLEW SLOW [get_ports {USER_dbg_out[3]}]
+
+set_property PACKAGE_PIN A18 [get_ports {USER_dbg_out[4]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {USER_dbg_out[4]}]
+set_property SLEW SLOW [get_ports {USER_dbg_out[4]}]
+
+set_property PACKAGE_PIN A19 [get_ports {USER_dbg_out[5]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {USER_dbg_out[5]}]
+set_property SLEW SLOW [get_ports {USER_dbg_out[5]}]
+
+set_property PACKAGE_PIN F19 [get_ports {USER_dbg_out[6]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {USER_dbg_out[6]}]
+set_property SLEW SLOW [get_ports {USER_dbg_out[6]}]
+
+set_property PACKAGE_PIN F20 [get_ports {USER_dbg_out[7]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {USER_dbg_out[7]}]
+set_property SLEW SLOW [get_ports {USER_dbg_out[7]}]
+
+set_property PACKAGE_PIN A15 [get_ports {USER_dbg_out[8]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {USER_dbg_out[8]}]
+set_property SLEW SLOW [get_ports {USER_dbg_out[8]}]
+
+set_property PACKAGE_PIN A16 [get_ports {USER_dbg_out[9]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {USER_dbg_out[9]}]
+set_property SLEW SLOW [get_ports {USER_dbg_out[9]}]
+
+set_property PACKAGE_PIN B15 [get_ports {USER_dbg_out[10]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {USER_dbg_out[10]}]
+set_property SLEW SLOW [get_ports {USER_dbg_out[10]}]
+
+set_property PACKAGE_PIN B16 [get_ports {USER_dbg_out[11]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {USER_dbg_out[11]}]
+set_property SLEW SLOW [get_ports {USER_dbg_out[11]}]
+
+set_property PACKAGE_PIN B17 [get_ports {USER_dbg_out[12]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {USER_dbg_out[12]}]
+set_property SLEW SLOW [get_ports {USER_dbg_out[12]}]
+
+set_property PACKAGE_PIN B18 [get_ports {USER_dbg_out[13]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {USER_dbg_out[13]}]
+set_property SLEW SLOW [get_ports {USER_dbg_out[13]}]
+
+
 # ETH0 PHY address = 0x01
 set_property PULLDOWN true [get_ports {RMII_PHY_M_0_rxd[0]}]
 set_property PULLDOWN true [get_ports {RMII_PHY_M_0_rxd[1]}]
@@ -200,6 +257,20 @@ set_property OFFCHIP_TERM NONE [get_ports UART0EXT_DCDn[0]]
 set_property OFFCHIP_TERM NONE [get_ports UART0EXT_DSRn[0]]
 set_property OFFCHIP_TERM NONE [get_ports UART0EXT_RIn[0]]
 set_property OFFCHIP_TERM NONE [get_ports UART0_rst_n[0]]
+set_property OFFCHIP_TERM NONE [get_ports USER_dbg_out[0]]
+set_property OFFCHIP_TERM NONE [get_ports USER_dbg_out[1]]
+set_property OFFCHIP_TERM NONE [get_ports USER_dbg_out[2]]
+set_property OFFCHIP_TERM NONE [get_ports USER_dbg_out[3]]
+set_property OFFCHIP_TERM NONE [get_ports USER_dbg_out[4]]
+set_property OFFCHIP_TERM NONE [get_ports USER_dbg_out[5]]
+set_property OFFCHIP_TERM NONE [get_ports USER_dbg_out[6]]
+set_property OFFCHIP_TERM NONE [get_ports USER_dbg_out[7]]
+set_property OFFCHIP_TERM NONE [get_ports USER_dbg_out[8]]
+set_property OFFCHIP_TERM NONE [get_ports USER_dbg_out[9]]
+set_property OFFCHIP_TERM NONE [get_ports USER_dbg_out[10]]
+set_property OFFCHIP_TERM NONE [get_ports USER_dbg_out[11]]
+set_property OFFCHIP_TERM NONE [get_ports USER_dbg_out[12]]
+set_property OFFCHIP_TERM NONE [get_ports USER_dbg_out[13]]
 
 set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
 set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]

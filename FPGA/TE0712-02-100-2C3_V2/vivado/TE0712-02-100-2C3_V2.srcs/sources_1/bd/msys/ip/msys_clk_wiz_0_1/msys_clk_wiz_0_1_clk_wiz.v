@@ -217,7 +217,9 @@ wire clk_in2_msys_clk_wiz_0_1;
    (.O   (clk_out2_fMeter),
     .I   (clk_out2_fMeter_msys_clk_wiz_0_1));
 
-  assign clk_out3_Scope = clk_out3_Scope_msys_clk_wiz_0_1;
+  BUFG clkout3_buf
+   (.O   (clk_out3_Scope),
+    .I   (clk_out3_Scope_msys_clk_wiz_0_1));
 
 
 

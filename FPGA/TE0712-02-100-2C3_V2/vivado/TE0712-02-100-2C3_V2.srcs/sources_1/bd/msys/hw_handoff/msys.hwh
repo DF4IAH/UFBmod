@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Jul 29 21:10:23 2020" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Jul 31 00:56:42 2020" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="artix7" BOARD="trenz.biz:te0712_100_2c:part0:1.0" DEVICE="7a100t" NAME="msys" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -761,6 +761,11 @@
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK2_mgt_clk0_clk_n" SIGIS="clk" SIGNAME="mgt_clk0_CLK2_util_ds_buf_1_IBUF_DS_N">
       <CONNECTIONS>
         <CONNECTION INSTANCE="mgt_clk0_CLK2_util_ds_buf_1" PORT="IBUF_DS_N"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="13" NAME="USER_dbg_out" RIGHT="0" SIGIS="undef" SIGNAME="USER_dbg_USER_dbg_out_xlconcat_0_dout">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="dout"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -2082,7 +2087,7 @@
         <PARAMETER NAME="C_NUM_OUT_CLKS" VALUE="3"/>
         <PARAMETER NAME="C_CLKOUT1_DRIVES" VALUE="BUFG"/>
         <PARAMETER NAME="C_CLKOUT2_DRIVES" VALUE="BUFG"/>
-        <PARAMETER NAME="C_CLKOUT3_DRIVES" VALUE="No_buffer"/>
+        <PARAMETER NAME="C_CLKOUT3_DRIVES" VALUE="BUFG"/>
         <PARAMETER NAME="C_CLKOUT4_DRIVES" VALUE="BUFG"/>
         <PARAMETER NAME="C_CLKOUT5_DRIVES" VALUE="BUFG"/>
         <PARAMETER NAME="C_CLKOUT6_DRIVES" VALUE="BUFG"/>
@@ -2444,7 +2449,7 @@
         <PARAMETER NAME="PRIM_SOURCE" VALUE="Single_ended_clock_capable_pin"/>
         <PARAMETER NAME="CLKOUT1_DRIVES" VALUE="BUFG"/>
         <PARAMETER NAME="CLKOUT2_DRIVES" VALUE="BUFG"/>
-        <PARAMETER NAME="CLKOUT3_DRIVES" VALUE="No_buffer"/>
+        <PARAMETER NAME="CLKOUT3_DRIVES" VALUE="BUFG"/>
         <PARAMETER NAME="CLKOUT4_DRIVES" VALUE="BUFG"/>
         <PARAMETER NAME="CLKOUT5_DRIVES" VALUE="BUFG"/>
         <PARAMETER NAME="CLKOUT6_DRIVES" VALUE="BUFG"/>
@@ -2625,6 +2630,7 @@
         </PORT>
         <PORT CLKFREQUENCY="50000000" DIR="O" NAME="clk_out1_RMII" SIGIS="clk" SIGNAME="CLK1B_CW_0_CLK1B_clk_wiz_0_clk_out1_RMII">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In4"/>
             <CONNECTION INSTANCE="ETH0_ETH0_mii_to_rmii_0" PORT="ref_clk"/>
             <CONNECTION INSTANCE="ETH0_ETH0_LEDs_proc_sys_reset_0" PORT="slowest_sync_clk"/>
           </CONNECTIONS>
@@ -2636,6 +2642,7 @@
         </PORT>
         <PORT CLKFREQUENCY="50000000" DIR="O" NAME="clk_out3_Scope" SIGIS="clk" SIGNAME="CLK1B_CW_0_CLK1B_clk_wiz_0_clk_out3_Scope">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In5"/>
             <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
@@ -3881,6 +3888,7 @@
             <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="phy_col"/>
             <CONNECTION INSTANCE="ETH0_ETH0_MIIstatus_xlconcat_0" PORT="In2"/>
             <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In7"/>
+            <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In8"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_mii_crs" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_crs">
@@ -3888,6 +3896,7 @@
             <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="phy_crs"/>
             <CONNECTION INSTANCE="ETH0_ETH0_MIIstatus_xlconcat_0" PORT="In1"/>
             <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In8"/>
+            <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_mii_rx_clk" SIGIS="clk" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rx_clk">
@@ -3895,6 +3904,7 @@
             <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="phy_rx_clk"/>
             <CONNECTION INSTANCE="lt_fmeter_xlconcat_0" PORT="In6"/>
             <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In12"/>
+            <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In3"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_mii_rx_dv" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rx_dv">
@@ -3903,6 +3913,7 @@
             <CONNECTION INSTANCE="ETH0_ETH0_LEDs_xlconcat_0" PORT="In1"/>
             <CONNECTION INSTANCE="ETH0_ETH0_MIIstatus_xlconcat_0" PORT="In0"/>
             <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In9"/>
+            <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_mii_rx_er" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rx_er">
@@ -3910,6 +3921,7 @@
             <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="phy_rx_er"/>
             <CONNECTION INSTANCE="ETH0_ETH0_MIIstatus_xlconcat_0" PORT="In3"/>
             <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In11"/>
+            <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In7"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="3" NAME="s_mii_rxd" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rxd">
@@ -3917,6 +3929,7 @@
             <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="phy_rx_data"/>
             <CONNECTION INSTANCE="ETH0_ETH0_rxd_CDC_c_shift_ram_0" PORT="D"/>
             <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In10"/>
+            <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In2"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_mii_tx_clk" SIGIS="clk" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_tx_clk">
@@ -3924,6 +3937,7 @@
             <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="phy_tx_clk"/>
             <CONNECTION INSTANCE="lt_fmeter_xlconcat_0" PORT="In5"/>
             <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In16"/>
+            <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In6"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="s_mii_tx_en" SIGIS="undef" SIGNAME="ETH0_ETH0_axi_ethernetlite_0_phy_tx_en">
@@ -9490,7 +9504,7 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="wr_rst" SIGIS="undef" SIGNAME="External_Ports_SCOPE_FSM_FIFO_Rst">
+        <PORT DIR="I" NAME="wr_rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="External_Ports_SCOPE_FSM_FIFO_Rst">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="SCOPE_FSM_FIFO_Rst"/>
           </CONNECTIONS>
@@ -9500,7 +9514,7 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rd_rst" SIGIS="undef" SIGNAME="External_Ports_SCOPE_FSM_FIFO_Rst">
+        <PORT DIR="I" NAME="rd_rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="External_Ports_SCOPE_FSM_FIFO_Rst">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="SCOPE_FSM_FIFO_Rst"/>
           </CONNECTIONS>
@@ -10478,7 +10492,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -11204,7 +11218,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -11643,7 +11657,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -16061,7 +16075,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -16081,12 +16095,12 @@
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_rx09_xlslice_31to00" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -16288,7 +16302,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -16308,12 +16322,12 @@
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_rx24_xlslice_31to00" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -16515,7 +16529,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -16535,12 +16549,12 @@
             <CONNECTION INSTANCE="External_Ports" PORT="premem_rx09_dina_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -16743,7 +16757,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -16763,12 +16777,12 @@
             <CONNECTION INSTANCE="External_Ports" PORT="premem_rx24_dina_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -19548,6 +19562,128 @@
         <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst" SIGNAME="UART0_rst_mig_7series_0_12M_peripheral_aresetn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="UART0_rst_n"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="3" FULLNAME="/USER_dbg/USER_dbg_out_xlconcat_0" HWVERSION="2.1" INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="IN0_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN1_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN2_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="IN3_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN5_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN6_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN7_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN8_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN9_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN10_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN11_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN12_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="IN13_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN14_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN15_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN16_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN17_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN18_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN19_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN20_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN21_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN22_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN23_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN24_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN25_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN26_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN27_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN28_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN29_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="dout_width" VALUE="14"/>
+        <PARAMETER NAME="NUM_PORTS" VALUE="11"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_xlconcat_0_16"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_crs">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_crs"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rx_dv">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_rx_dv"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rxd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_rxd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In3" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rx_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_rx_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In4" RIGHT="0" SIGIS="undef" SIGNAME="CLK1B_CW_0_CLK1B_clk_wiz_0_clk_out1_RMII">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="CLK1B_CW_0_CLK1B_clk_wiz_0" PORT="clk_out1_RMII"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In5" RIGHT="0" SIGIS="undef" SIGNAME="CLK1B_CW_0_CLK1B_clk_wiz_0_clk_out3_Scope">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="CLK1B_CW_0_CLK1B_clk_wiz_0" PORT="clk_out3_Scope"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In6" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_tx_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_tx_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In7" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rx_er">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_rx_er"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In8" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_col">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_col"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In9" RIGHT="0" SIGIS="undef" SIGNAME="USER_dbg_USER_dbg_xlconstant_val0_len0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="USER_dbg_USER_dbg_xlconstant_val0_len0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In10" RIGHT="0" SIGIS="undef" SIGNAME="USER_dbg_USER_dbg_xlconstant_val0_len0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="USER_dbg_USER_dbg_xlconstant_val0_len0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="13" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="USER_dbg_USER_dbg_out_xlconcat_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="USER_dbg_out"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="7" FULLNAME="/USER_dbg/USER_dbg_xlconstant_val0_len0" HWVERSION="1.1" INSTANCE="USER_dbg_USER_dbg_xlconstant_val0_len0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_xlconstant_0_24"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="USER_dbg_USER_dbg_xlconstant_val0_len0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In9"/>
+            <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In10"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -31866,7 +32002,7 @@
             <CONNECTION INSTANCE="labtools_fmeter_0" PORT="update"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe_in5" RIGHT="0" SIGIS="undef" SIGNAME="SC0712_0_reset_out">
+        <PORT DIR="I" LEFT="0" NAME="probe_in5" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="undef" SIGNAME="SC0712_0_reset_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="SC0712_0" PORT="reset_out"/>
           </CONNECTIONS>

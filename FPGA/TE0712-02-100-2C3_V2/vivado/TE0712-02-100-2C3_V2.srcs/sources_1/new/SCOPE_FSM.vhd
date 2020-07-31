@@ -66,6 +66,7 @@ architecture Behavioral of SCOPE_FSM is
   constant GPIO1_IN_readValid       : natural   :=  2;
 
   signal FSM_state_dbg              : STD_LOGIC_VECTOR (7 downto 0);
+  signal ctr                        : STD_LOGIC_VECTOR(15 downto 0);
 begin
 
   -- FSM
@@ -73,14 +74,13 @@ begin
     type state_type is (off, init1, init2, waitRdy, ready, run, trig, trigTmr, stop, pop1, pop2);
     
     variable state          : state_type;
-    variable ctr            : Integer;
     variable trgSrc         : Integer;
   begin
     if (clk'EVENT and clk = '1') then
         if (resetn = '0') then
             FSM_state_dbg <= x"ff";
             state                   := off;
-            ctr                     := 0;
+            ctr                     <= (others => '0');
             trgSrc                  := 0;
             SCOPE_FSM_GPIO_In       <= (others => '0');
             SCOPE_FSM_Timebase_CE   <= '0';
@@ -98,7 +98,7 @@ begin
             case state is
                 when off =>
                     FSM_state_dbg <= x"00";
-                    ctr                     := 0;
+                    ctr                     <= (others => '0');
                     trgSrc                  := 0;
                     SCOPE_FSM_GPIO_In       <= (others => '0');
                     SCOPE_FSM_Timebase_CE   <= '0';
@@ -118,19 +118,19 @@ begin
                 when init1 =>
                     FSM_state_dbg <= x"02";
                     state := init2;
-        
+                    
                 when init2 =>
                     FSM_state_dbg <= x"03";
-                    ctr := 16;
+                    ctr <= x"0010";
                     state := waitRdy;
                     
                 when waitRdy =>
                     FSM_state_dbg <= x"10";
                     SCOPE_FSM_FIFO_Rst      <= '0';
-                    if (ctr = 0) then
+                    if (unsigned(ctr) = 0) then
                         state := ready;
                     else
-                        ctr := ctr - 1;
+                        ctr <= std_logic_vector(to_unsigned( (to_integer(unsigned(ctr)) - 1), ctr'length));
                     end if;
                     
                 when ready =>
@@ -146,7 +146,7 @@ begin
                 when run =>
                     FSM_state_dbg <= x"30";
                     SCOPE_FSM_FIFO_RdEn <= SCOPE_FSM_FIFO_WrFull;  --  During RUN roll-out old data when buffer full
-
+                    
                     -- Select trigger source
                     trgSrc := to_integer(unsigned(SCOPE_FSM_GPIO_Out(GPIO1_OUT_trigSrc_HI downto GPIO1_OUT_trigSrc_LO)));
                     if (trgSrc > 47) then
@@ -162,17 +162,17 @@ begin
                 when trig =>
                     -- Start after-trigger timer
                     FSM_state_dbg <= x"40";
-                    ctr := 512;
+                    ctr <= x"0200";
                     state := trigTmr;
                     
                 when trigTmr =>
                     FSM_state_dbg <= x"41";
-                    if (ctr = 0) then
+                    if (unsigned(ctr) = 0) then
                         FSM_state_dbg <= x"42";
                         SCOPE_FSM_FIFO_WrEn <= '0';
                         state := stop;
                     else
-                        ctr := ctr - 1;
+                        ctr <= std_logic_vector(to_unsigned( (to_integer(unsigned(ctr)) - 1), ctr'length));
                     end if;
                     
                 when stop =>
