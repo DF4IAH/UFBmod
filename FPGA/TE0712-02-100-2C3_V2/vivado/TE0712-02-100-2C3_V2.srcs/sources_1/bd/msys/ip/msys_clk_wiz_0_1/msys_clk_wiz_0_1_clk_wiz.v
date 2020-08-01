@@ -59,6 +59,7 @@
 // clk_out1_RMII__50.00000______0.000______50.0______243.865____148.661
 // clk_out2_fMeter__50.00000______0.000______50.0______243.865____148.661
 // clk_out3_Scope__50.00000______0.000______50.0______243.865____148.661
+// clk_out4_000deg__50.00000______0.000______50.0______243.865____148.661
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -74,6 +75,15 @@ module msys_clk_wiz_0_1_clk_wiz
   output        clk_out1_RMII,
   output        clk_out2_fMeter,
   output        clk_out3_Scope,
+  output        clk_out4_000deg,
+  // Dynamic reconfiguration ports
+  input   [6:0] daddr,
+  input         dclk,
+  input         den,
+  input  [15:0] din,
+  output [15:0] dout,
+  output        drdy,
+  input         dwe,
   // Dynamic phase shift ports
   input         psclk,
   input         psen,
@@ -105,13 +115,11 @@ wire clk_in2_msys_clk_wiz_0_1;
   wire        clk_out1_RMII_msys_clk_wiz_0_1;
   wire        clk_out2_fMeter_msys_clk_wiz_0_1;
   wire        clk_out3_Scope_msys_clk_wiz_0_1;
-  wire        clk_out4_msys_clk_wiz_0_1;
+  wire        clk_out4_000deg_msys_clk_wiz_0_1;
   wire        clk_out5_msys_clk_wiz_0_1;
   wire        clk_out6_msys_clk_wiz_0_1;
   wire        clk_out7_msys_clk_wiz_0_1;
 
-  wire [15:0] do_unused;
-  wire        drdy_unused;
   wire        locked_int;
   wire        clkfbout_msys_clk_wiz_0_1;
   wire        clkfbout_buf_msys_clk_wiz_0_1;
@@ -119,7 +127,6 @@ wire clk_in2_msys_clk_wiz_0_1;
     wire clkout0b_unused;
    wire clkout1b_unused;
    wire clkout2b_unused;
-   wire clkout3_unused;
    wire clkout3b_unused;
    wire clkout4_unused;
   wire        clkout5_unused;
@@ -148,7 +155,11 @@ wire clk_in2_msys_clk_wiz_0_1;
     .CLKOUT2_DIVIDE       (13),
     .CLKOUT2_PHASE        (0.000),
     .CLKOUT2_DUTY_CYCLE   (0.5),
-    .CLKOUT2_USE_FINE_PS  ("FALSE"),
+    .CLKOUT2_USE_FINE_PS  ("TRUE"),
+    .CLKOUT3_DIVIDE       (13),
+    .CLKOUT3_PHASE        (0.000),
+    .CLKOUT3_DUTY_CYCLE   (0.5),
+    .CLKOUT3_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (20.000))
   mmcm_adv_inst
     // Output clocks
@@ -161,7 +172,7 @@ wire clk_in2_msys_clk_wiz_0_1;
     .CLKOUT1B            (clkout1b_unused),
     .CLKOUT2             (clk_out3_Scope_msys_clk_wiz_0_1),
     .CLKOUT2B            (clkout2b_unused),
-    .CLKOUT3             (clkout3_unused),
+    .CLKOUT3             (clk_out4_000deg_msys_clk_wiz_0_1),
     .CLKOUT3B            (clkout3b_unused),
     .CLKOUT4             (clkout4_unused),
     .CLKOUT5             (clkout5_unused),
@@ -173,13 +184,13 @@ wire clk_in2_msys_clk_wiz_0_1;
      // Tied to always select the primary input clock
     .CLKINSEL            (1'b1),
     // Ports for dynamic reconfiguration
-    .DADDR               (7'h0),
-    .DCLK                (1'b0),
-    .DEN                 (1'b0),
-    .DI                  (16'h0),
-    .DO                  (do_unused),
-    .DRDY                (drdy_unused),
-    .DWE                 (1'b0),
+    .DADDR               (daddr),
+    .DCLK                (dclk),
+    .DEN                 (den),
+    .DI                  (din),
+    .DO                  (dout),
+    .DRDY                (drdy),
+    .DWE                 (dwe),
     // Ports for dynamic phase shift
     .PSCLK               (psclk),
     .PSEN                (psen),
@@ -220,6 +231,10 @@ wire clk_in2_msys_clk_wiz_0_1;
   BUFG clkout3_buf
    (.O   (clk_out3_Scope),
     .I   (clk_out3_Scope_msys_clk_wiz_0_1));
+
+  BUFG clkout4_buf
+   (.O   (clk_out4_000deg),
+    .I   (clk_out4_000deg_msys_clk_wiz_0_1));
 
 
 

@@ -2062,7 +2062,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>ADDR_WIDTH</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.M_AXI_IP.ADDR_WIDTH" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_M_AXI_IP_ADDR_WIDTH&apos;))">1</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.M_AXI_IP.ADDR_WIDTH" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_M_AXI_IP_ADDR_WIDTH&apos;))">32</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PROTOCOL</spirit:name>
@@ -2591,7 +2591,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>ADDR_WIDTH</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.MON_AXI_IP.ADDR_WIDTH" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_M_AXI_IP_ADDR_WIDTH&apos;))">1</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.MON_AXI_IP.ADDR_WIDTH" spirit:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_M_AXI_IP_ADDR_WIDTH&apos;))">32</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PROTOCOL</spirit:name>
@@ -8592,7 +8592,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MAX_BURST_LENGTH</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXI_DC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_LINE_LEN&apos;)) - 1) + 1">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXI_DC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_LINE_LEN&apos;)) - 1) + 1">16</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
@@ -9126,7 +9126,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MAX_BURST_LENGTH</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.MON_AXI_DC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_LINE_LEN&apos;)) - 1) + 1">256</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.MON_AXI_DC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_LINE_LEN&apos;)) - 1) + 1">16</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
@@ -9778,7 +9778,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MAX_BURST_LENGTH</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.M_ACE_DC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_LINE_LEN&apos;)) - 1) + 1">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.M_ACE_DC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_LINE_LEN&apos;)) - 1) + 1">16</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
@@ -10383,7 +10383,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MAX_BURST_LENGTH</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.MON_ACE_DC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_LINE_LEN&apos;)) - 1) + 1">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.MON_ACE_DC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_LINE_LEN&apos;)) - 1) + 1">16</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
@@ -10868,7 +10868,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MAX_BURST_LENGTH</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXI_IC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_LINE_LEN&apos;)) - 1) + 1">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXI_IC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_LINE_LEN&apos;)) - 1) + 1">16</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>HAS_WSTRB</spirit:name>
@@ -11402,7 +11402,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MAX_BURST_LENGTH</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.MON_AXI_IC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_LINE_LEN&apos;)) - 1) + 1">256</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.MON_AXI_IC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_LINE_LEN&apos;)) - 1) + 1">16</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>HAS_WSTRB</spirit:name>
@@ -12058,7 +12058,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MAX_BURST_LENGTH</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.M_ACE_IC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_LINE_LEN&apos;)) - 1) + 1">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.M_ACE_IC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_LINE_LEN&apos;)) - 1) + 1">16</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
@@ -12668,7 +12668,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>MAX_BURST_LENGTH</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.MON_ACE_IC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_LINE_LEN&apos;)) - 1) + 1">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="BUSIFPARAM_VALUE.MON_ACE_IC.MAX_BURST_LENGTH" spirit:dependency="(1 - floor((spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_DATA_WIDTH&apos;)) + 1) div 2)) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_LINE_LEN&apos;)) - 1) + 1">16</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
@@ -13876,7 +13876,7 @@
         <spirit:addressBlock>
           <spirit:name>microblaze_0</spirit:name>
           <spirit:baseAddress spirit:format="long">0</spirit:baseAddress>
-          <spirit:range spirit:format="long">262144</spirit:range>
+          <spirit:range spirit:format="long">131072</spirit:range>
           <spirit:width spirit:format="long">32</spirit:width>
           <spirit:parameters>
             <spirit:parameter>
@@ -13908,7 +13908,7 @@
         <spirit:addressBlock>
           <spirit:name>microblaze_1</spirit:name>
           <spirit:baseAddress spirit:format="long">0</spirit:baseAddress>
-          <spirit:range spirit:format="long">262144</spirit:range>
+          <spirit:range spirit:format="long">131072</spirit:range>
           <spirit:width spirit:format="long">32</spirit:width>
           <spirit:parameters>
             <spirit:parameter>
@@ -13975,11 +13975,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Jul 30 22:56:03 UTC 2020</spirit:value>
+            <spirit:value>Sat Aug 01 07:54:05 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7b960141</spirit:value>
+            <spirit:value>9:e0de227d</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -13990,7 +13990,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7b960141</spirit:value>
+            <spirit:value>9:e0de227d</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -14006,11 +14006,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Jul 30 22:56:03 UTC 2020</spirit:value>
+            <spirit:value>Sat Aug 01 07:54:05 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7b960141</spirit:value>
+            <spirit:value>9:e0de227d</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -14026,11 +14026,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Jul 30 22:56:03 UTC 2020</spirit:value>
+            <spirit:value>Sat Aug 01 07:54:05 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9a6f9cf5</spirit:value>
+            <spirit:value>9:e019a3f7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -14046,11 +14046,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Jul 30 22:56:03 UTC 2020</spirit:value>
+            <spirit:value>Sat Aug 01 07:54:06 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9a6f9cf5</spirit:value>
+            <spirit:value>9:e019a3f7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -24350,7 +24350,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_M_AXI_I_BUS_EXCEPTION</spirit:name>
         <spirit:displayName>Enable Instruction-side AXI Exception</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_M_AXI_I_BUS_EXCEPTION" spirit:choiceRef="choice_pairs_4873554b">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_M_AXI_I_BUS_EXCEPTION" spirit:choiceRef="choice_pairs_4873554b">0</spirit:value>
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
@@ -24392,7 +24392,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>G_TEMPLATE_LIST</spirit:name>
         <spirit:displayName>Select Configuration</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.G_TEMPLATE_LIST" spirit:choiceRef="choice_pairs_7dd2834f">5</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.G_TEMPLATE_LIST" spirit:choiceRef="choice_pairs_7dd2834f">6</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_USE_MSR_INSTR</spirit:name>
@@ -24412,7 +24412,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_USE_DIV</spirit:name>
         <spirit:displayName>Enable Integer Divider</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_DIV" spirit:choiceRef="choice_pairs_4873554b">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_DIV" spirit:choiceRef="choice_pairs_4873554b">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_USE_HW_MUL</spirit:name>
@@ -24437,7 +24437,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ILL_OPCODE_EXCEPTION</spirit:name>
         <spirit:displayName>Enable Illegal Instruction Exception</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ILL_OPCODE_EXCEPTION" spirit:choiceRef="choice_pairs_4873554b">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ILL_OPCODE_EXCEPTION" spirit:choiceRef="choice_pairs_4873554b">0</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DIV_ZERO_EXCEPTION</spirit:name>
@@ -24446,7 +24446,7 @@
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_DIV_ZERO_EXCEPTION" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_DIV&apos;)) = 1">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_DIV_ZERO_EXCEPTION" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_DIV&apos;)) = 1">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -24488,11 +24488,11 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_USE_STACK_PROTECTION</spirit:name>
         <spirit:displayName>Enable stack protection</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_STACK_PROTECTION" spirit:choiceRef="choice_pairs_4873554b">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_STACK_PROTECTION" spirit:choiceRef="choice_pairs_4873554b">1</spirit:value>
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_USE_STACK_PROTECTION" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_MMU&apos;)) = 0) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) = 1))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_USE_STACK_PROTECTION" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_MMU&apos;)) = 0) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) = 1))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -24521,7 +24521,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_USE_MMU</spirit:name>
         <spirit:displayName>Memory Management</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_MMU" spirit:choiceRef="choice_pairs_0000a26c">3</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_MMU" spirit:choiceRef="choice_pairs_0000a26c">0</spirit:value>
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
@@ -24537,7 +24537,7 @@
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_MMU_DTLB_SIZE" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_MMU&apos;)) > 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) != 1))">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_MMU_DTLB_SIZE" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_MMU&apos;)) > 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) != 1))">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -24549,7 +24549,7 @@
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_MMU_ITLB_SIZE" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_MMU&apos;)) > 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) != 1))">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_MMU_ITLB_SIZE" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_MMU&apos;)) > 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) != 1))">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -24561,7 +24561,7 @@
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_MMU_TLB_ACCESS" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_MMU&apos;)) > 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) != 1))">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_MMU_TLB_ACCESS" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_MMU&apos;)) > 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) != 1))">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -24573,7 +24573,7 @@
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_MMU_ZONES" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_MMU&apos;)) > 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) != 1))">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_MMU_ZONES" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_MMU&apos;)) > 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) != 1))">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -24585,7 +24585,7 @@
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_MMU_PRIVILEGED_INSTR" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_MMU&apos;)) > 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) != 1))">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_MMU_PRIVILEGED_INSTR" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_MMU&apos;)) > 0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) != 1))">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -24593,7 +24593,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_USE_BRANCH_TARGET_CACHE</spirit:name>
         <spirit:displayName>Enable Branch Target Cache</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_BRANCH_TARGET_CACHE" spirit:choiceRef="choice_pairs_4873554b">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_BRANCH_TARGET_CACHE" spirit:choiceRef="choice_pairs_4873554b">1</spirit:value>
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
@@ -24645,7 +24645,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_OPCODE_0x0_ILLEGAL</spirit:name>
         <spirit:displayName>Generate Illegal Instruction Exception for NULL Instruction</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_OPCODE_0x0_ILLEGAL" spirit:choiceRef="choice_pairs_4873554b">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_OPCODE_0x0_ILLEGAL" spirit:choiceRef="choice_pairs_4873554b">0</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DEBUG_ENABLED</spirit:name>
@@ -24660,7 +24660,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_NUMBER_OF_PC_BRK</spirit:name>
         <spirit:displayName>Number of PC Breakpoints</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_NUMBER_OF_PC_BRK" spirit:minimum="0" spirit:maximum="8" spirit:rangeType="long">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_NUMBER_OF_PC_BRK" spirit:minimum="0" spirit:maximum="8" spirit:rangeType="long">5</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_NUMBER_OF_RD_ADDR_BRK</spirit:name>
@@ -24885,7 +24885,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ICACHE_LINE_LEN</spirit:name>
         <spirit:displayName>Line Length</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ICACHE_LINE_LEN" spirit:choiceRef="choice_list_f86403bf">4</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ICACHE_LINE_LEN" spirit:choiceRef="choice_list_f86403bf">16</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ICACHE_ALWAYS_USED</spirit:name>
@@ -24907,7 +24907,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ICACHE_VICTIMS</spirit:name>
         <spirit:displayName>Number of Victims</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ICACHE_VICTIMS" spirit:choiceRef="choice_list_b94541ab">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ICACHE_VICTIMS" spirit:choiceRef="choice_list_b94541ab">8</spirit:value>
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
@@ -24919,11 +24919,11 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ICACHE_FORCE_TAG_LUTRAM</spirit:name>
         <spirit:displayName>Use Distributed RAM for Tags</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ICACHE_FORCE_TAG_LUTRAM" spirit:choiceRef="choice_pairs_4873554b">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ICACHE_FORCE_TAG_LUTRAM" spirit:choiceRef="choice_pairs_4873554b">1</spirit:value>
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_ICACHE_FORCE_TAG_LUTRAM" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_CACHE_BYTE_SIZE&apos;)) &lt;= (2048 * spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_LINE_LEN&apos;))))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_ICACHE_FORCE_TAG_LUTRAM" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_CACHE_BYTE_SIZE&apos;)) &lt;= (2048 * spirit:decode(id(&apos;MODELPARAM_VALUE.C_ICACHE_LINE_LEN&apos;))))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -25064,7 +25064,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DCACHE_LINE_LEN</spirit:name>
         <spirit:displayName>Line Length</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DCACHE_LINE_LEN" spirit:choiceRef="choice_list_f86403bf">4</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DCACHE_LINE_LEN" spirit:choiceRef="choice_list_f86403bf">16</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DCACHE_ALWAYS_USED</spirit:name>
@@ -25074,7 +25074,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DCACHE_USE_WRITEBACK</spirit:name>
         <spirit:displayName>Enable Write-back Storage Policy</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DCACHE_USE_WRITEBACK" spirit:choiceRef="choice_pairs_4873554b">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DCACHE_USE_WRITEBACK" spirit:choiceRef="choice_pairs_4873554b">1</spirit:value>
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
@@ -25086,11 +25086,11 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DCACHE_VICTIMS</spirit:name>
         <spirit:displayName>Number of Victims</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DCACHE_VICTIMS" spirit:choiceRef="choice_list_b94541ab">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DCACHE_VICTIMS" spirit:choiceRef="choice_list_b94541ab">4</spirit:value>
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_DCACHE_VICTIMS" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_USE_WRITEBACK&apos;)) = 1))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_DCACHE_VICTIMS" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_USE_WRITEBACK&apos;)) = 1))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -25098,7 +25098,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DCACHE_FORCE_TAG_LUTRAM</spirit:name>
         <spirit:displayName>Use Distributed RAM for Tags</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DCACHE_FORCE_TAG_LUTRAM" spirit:choiceRef="choice_pairs_4873554b">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_DCACHE_FORCE_TAG_LUTRAM" spirit:choiceRef="choice_pairs_4873554b">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_DCACHE_DATA_WIDTH</spirit:name>
@@ -25107,7 +25107,7 @@
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_DCACHE_DATA_WIDTH" xilinx:dependency="((((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTERCONNECT&apos;)) >= 2)) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAULT_TOLERANT&apos;)) = 0)) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_USE_WRITEBACK&apos;)) = 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_BYTE_SIZE&apos;)) > ((2048 * spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_LINE_LEN&apos;))) - 1)))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="MODELPARAM_ENABLEMENT.C_DCACHE_DATA_WIDTH" xilinx:dependency="((((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AREA_OPTIMIZED&apos;)) != 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_INTERCONNECT&apos;)) >= 2)) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAULT_TOLERANT&apos;)) = 0)) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_USE_WRITEBACK&apos;)) = 1) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_BYTE_SIZE&apos;)) > ((2048 * spirit:decode(id(&apos;MODELPARAM_VALUE.C_DCACHE_LINE_LEN&apos;))) - 1)))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:parameterInfo>
         </spirit:vendorExtensions>
@@ -25656,7 +25656,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_FAULT_TOLERANT">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_FAULT_TOLERANT">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -25727,7 +25727,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_INTERCONNECT">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_INTERCONNECT">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -26099,7 +26099,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>G_TEMPLATE_LIST</spirit:name>
       <spirit:displayName>Select Configuration</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.G_TEMPLATE_LIST" spirit:choiceRef="choice_pairs_7dd2834f" spirit:order="10" spirit:configGroups="9 GUI">5</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.G_TEMPLATE_LIST" spirit:choiceRef="choice_pairs_7dd2834f" spirit:order="10" spirit:configGroups="9 GUI">6</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -26171,7 +26171,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_USE_DIV</spirit:name>
       <spirit:displayName>Enable Integer Divider</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_DIV" spirit:choiceRef="choice_pairs_4873554b" spirit:order="1030" spirit:configGroups="1 Instructions">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_DIV" spirit:choiceRef="choice_pairs_4873554b" spirit:order="1030" spirit:configGroups="1 Instructions">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -26219,7 +26219,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_ILL_OPCODE_EXCEPTION</spirit:name>
       <spirit:displayName>Enable Illegal Instruction Exception</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_ILL_OPCODE_EXCEPTION" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2060" spirit:configGroups="2 Misc Exceptions">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_ILL_OPCODE_EXCEPTION" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2060" spirit:configGroups="2 Misc Exceptions">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -26231,7 +26231,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_M_AXI_I_BUS_EXCEPTION</spirit:name>
       <spirit:displayName>Enable Instruction-side AXI Exception</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_M_AXI_I_BUS_EXCEPTION" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2040" spirit:configGroups="2 Bus Exceptions">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_M_AXI_I_BUS_EXCEPTION" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2040" spirit:configGroups="2 Bus Exceptions">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -26259,7 +26259,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_DIV_ZERO_EXCEPTION">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_DIV_ZERO_EXCEPTION">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -26291,11 +26291,11 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_USE_STACK_PROTECTION</spirit:name>
       <spirit:displayName>Enable stack protection</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_STACK_PROTECTION" spirit:choiceRef="choice_pairs_4873554b" spirit:order="4004" spirit:configGroups="2 Misc Exceptions">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_STACK_PROTECTION" spirit:choiceRef="choice_pairs_4873554b" spirit:order="4004" spirit:configGroups="2 Misc Exceptions">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_USE_STACK_PROTECTION">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_USE_STACK_PROTECTION">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -26375,7 +26375,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_NUMBER_OF_PC_BRK</spirit:name>
       <spirit:displayName>Number of PC Breakpoints</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_NUMBER_OF_PC_BRK" spirit:order="5100" spirit:configGroups="5 Hardware Breakpoints" spirit:minimum="0" spirit:maximum="8" spirit:rangeType="long">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_NUMBER_OF_PC_BRK" spirit:order="5100" spirit:configGroups="5 Hardware Breakpoints" spirit:minimum="0" spirit:maximum="8" spirit:rangeType="long">5</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -26613,11 +26613,11 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_OPCODE_0x0_ILLEGAL</spirit:name>
       <spirit:displayName>Generate Illegal Instruction Exception for NULL Instruction</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_OPCODE_0x0_ILLEGAL" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2070" spirit:configGroups="2 Misc Exceptions">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_OPCODE_0x0_ILLEGAL" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2070" spirit:configGroups="2 Misc Exceptions">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_OPCODE_0x0_ILLEGAL">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_OPCODE_0x0_ILLEGAL">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -27425,7 +27425,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_ICACHE_LINE_LEN</spirit:name>
       <spirit:displayName>Line Length</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_ICACHE_LINE_LEN" spirit:choiceRef="choice_list_f86403bf" spirit:order="3020" spirit:configGroups="3 Instruction Cache Feature">4</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_ICACHE_LINE_LEN" spirit:choiceRef="choice_list_f86403bf" spirit:order="3020" spirit:configGroups="3 Instruction Cache Feature">16</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -27449,7 +27449,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_ICACHE_VICTIMS</spirit:name>
       <spirit:displayName>Number of Victims</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_ICACHE_VICTIMS" spirit:choiceRef="choice_list_b94541ab" spirit:order="3090" spirit:configGroups="3 Instruction Cache Feature">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_ICACHE_VICTIMS" spirit:choiceRef="choice_list_b94541ab" spirit:order="3090" spirit:configGroups="3 Instruction Cache Feature">8</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -27473,11 +27473,11 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_ICACHE_FORCE_TAG_LUTRAM</spirit:name>
       <spirit:displayName>Use Distributed RAM for Tags</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_ICACHE_FORCE_TAG_LUTRAM" spirit:choiceRef="choice_pairs_4873554b" spirit:order="3070" spirit:configGroups="3 Instruction Cache Feature">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_ICACHE_FORCE_TAG_LUTRAM" spirit:choiceRef="choice_pairs_4873554b" spirit:order="3070" spirit:configGroups="3 Instruction Cache Feature">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_ICACHE_FORCE_TAG_LUTRAM">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_ICACHE_FORCE_TAG_LUTRAM">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -27657,7 +27657,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_DCACHE_LINE_LEN</spirit:name>
       <spirit:displayName>Line Length</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_DCACHE_LINE_LEN" spirit:choiceRef="choice_list_f86403bf" spirit:order="3120" spirit:configGroups="3 Data Cache Feature">4</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_DCACHE_LINE_LEN" spirit:choiceRef="choice_list_f86403bf" spirit:order="3120" spirit:configGroups="3 Data Cache Feature">16</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -27681,7 +27681,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_DCACHE_USE_WRITEBACK</spirit:name>
       <spirit:displayName>Enable Write-back Storage Policy</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_DCACHE_USE_WRITEBACK" spirit:choiceRef="choice_pairs_4873554b" spirit:order="3180" spirit:configGroups="3 Data Cache Feature">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_DCACHE_USE_WRITEBACK" spirit:choiceRef="choice_pairs_4873554b" spirit:order="3180" spirit:configGroups="3 Data Cache Feature">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -27693,11 +27693,11 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_DCACHE_VICTIMS</spirit:name>
       <spirit:displayName>Number of Victims</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_DCACHE_VICTIMS" spirit:choiceRef="choice_list_b94541ab" spirit:order="3190" spirit:configGroups="3 Data Cache Feature">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_DCACHE_VICTIMS" spirit:choiceRef="choice_list_b94541ab" spirit:order="3190" spirit:configGroups="3 Data Cache Feature">4</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_DCACHE_VICTIMS">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_DCACHE_VICTIMS">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -27705,11 +27705,11 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_DCACHE_FORCE_TAG_LUTRAM</spirit:name>
       <spirit:displayName>Use Distributed RAM for Tags</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_DCACHE_FORCE_TAG_LUTRAM" spirit:choiceRef="choice_pairs_4873554b" spirit:order="3170" spirit:configGroups="3 Data Cache Feature">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_DCACHE_FORCE_TAG_LUTRAM" spirit:choiceRef="choice_pairs_4873554b" spirit:order="3170" spirit:configGroups="3 Data Cache Feature">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_DCACHE_FORCE_TAG_LUTRAM">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_DCACHE_FORCE_TAG_LUTRAM">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -27721,7 +27721,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_DCACHE_DATA_WIDTH">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_DCACHE_DATA_WIDTH">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -27828,11 +27828,11 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_USE_MMU</spirit:name>
       <spirit:displayName>Memory Management</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_MMU" spirit:choiceRef="choice_pairs_0000a26c" spirit:order="4000" spirit:configGroups="4 Memory Management Unit">3</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_MMU" spirit:choiceRef="choice_pairs_0000a26c" spirit:order="4000" spirit:configGroups="4 Memory Management Unit">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_USE_MMU">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_USE_MMU">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -27844,7 +27844,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_MMU_DTLB_SIZE">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_MMU_DTLB_SIZE">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -27856,7 +27856,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_MMU_ITLB_SIZE">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_MMU_ITLB_SIZE">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -27868,7 +27868,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_MMU_TLB_ACCESS">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_MMU_TLB_ACCESS">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -27880,7 +27880,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_MMU_ZONES">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_MMU_ZONES">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -27892,7 +27892,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_MMU_PRIVILEGED_INSTR">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_MMU_PRIVILEGED_INSTR">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -27960,7 +27960,7 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
     <spirit:parameter>
       <spirit:name>C_USE_BRANCH_TARGET_CACHE</spirit:name>
       <spirit:displayName>Enable Branch Target Cache</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_BRANCH_TARGET_CACHE" spirit:choiceRef="choice_pairs_4873554b" spirit:order="1090" spirit:configGroups="1 Optimization">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_USE_BRANCH_TARGET_CACHE" spirit:choiceRef="choice_pairs_4873554b" spirit:order="1090" spirit:configGroups="1 Optimization">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -28103,13 +28103,18 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.RST.RESET.POLARITY" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.RST.RESET.TYPE" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_ADDR_TAG_BITS" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_AREA_OPTIMIZED" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_ASYNC_WAKEUP" xilinx:valueSource="propagated"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_BRANCH_TARGET_CACHE_SIZE" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_CACHE_BYTE_SIZE" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DCACHE_ADDR_TAG" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DCACHE_ALWAYS_USED" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DCACHE_BASEADDR" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DCACHE_BYTE_SIZE" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DCACHE_FORCE_TAG_LUTRAM" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DCACHE_HIGHADDR" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DCACHE_LINE_LEN" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DCACHE_USE_WRITEBACK" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DCACHE_VICTIMS" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DEBUG_ENABLED" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DEBUG_EXTERNAL_TRACE" xilinx:valuePermission="bd_and_user"/>
@@ -28118,10 +28123,14 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_D_LMB" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_D_LMB_PROTOCOL" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_EDGE_IS_POSITIVE" xilinx:valueSource="propagated" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_ENABLE_DISCRETE_PORTS" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_FAULT_TOLERANT" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_FPU_EXCEPTION" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_FREQ" xilinx:valueSource="propagated"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_ICACHE_ALWAYS_USED" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_ICACHE_BASEADDR" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_ICACHE_DATA_WIDTH" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_ICACHE_FORCE_TAG_LUTRAM" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_ICACHE_HIGHADDR" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_ICACHE_LINE_LEN" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_ICACHE_STREAMS" xilinx:valueSource="user"/>
@@ -28130,19 +28139,26 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_INTERRUPT_IS_EDGE" xilinx:valueSource="propagated" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_I_LMB" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_I_LMB_PROTOCOL" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_MMU_DTLB_SIZE" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_MMU_ITLB_SIZE" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_MMU_ZONES" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_M_AXI_DC_USER_SIGNALS" xilinx:valueSource="propagated"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_M_AXI_D_BUS_EXCEPTION" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_M_AXI_IC_USER_SIGNALS" xilinx:valueSource="propagated"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_M_AXI_I_BUS_EXCEPTION" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_NUMBER_OF_PC_BRK" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_NUMBER_OF_RD_ADDR_BRK" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_NUMBER_OF_WR_ADDR_BRK" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_OPCODE_0x0_ILLEGAL" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PVR" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_UNALIGNED_EXCEPTIONS" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_BARREL" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_BRANCH_TARGET_CACHE" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_DCACHE" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_DIV" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_EXT_BRK" xilinx:valueSource="propagated"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_EXT_NM_BRK" xilinx:valueSource="propagated"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_FPU" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_HW_MUL" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_ICACHE" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_INTERRUPT" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
@@ -28150,6 +28166,8 @@ It is highly recommended to create MicroBlaze systems within Vivado IP Integrato
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_MSR_INSTR" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_NON_SECURE" xilinx:valueSource="propagated"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_PCMP_INSTR" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_REORDER_INSTR" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_STACK_PROTECTION" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.G_TEMPLATE_LIST" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.G_USE_EXCEPTIONS" xilinx:valueSource="user"/>
       </xilinx:configElementInfos>

@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Fri Jul 31 00:56:01 2020
+--Date        : Sat Aug  1 09:54:02 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -185,53 +185,7 @@ architecture STRUCTURE of msys_wrapper is
     SCOPE_FSM_FIFO_RdEmpty : out STD_LOGIC;
     SCOPE_FSM_TrigSrc : out STD_LOGIC_VECTOR ( 47 downto 0 );
     SCOPE_FSM_FIFO_WrEn : in STD_LOGIC;
-    DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
-    DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
-    DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
-    DDR3_SDRAM_addr : out STD_LOGIC_VECTOR ( 14 downto 0 );
-    DDR3_SDRAM_ba : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    DDR3_SDRAM_ras_n : out STD_LOGIC;
-    DDR3_SDRAM_cas_n : out STD_LOGIC;
-    DDR3_SDRAM_we_n : out STD_LOGIC;
-    DDR3_SDRAM_reset_n : out STD_LOGIC;
-    DDR3_SDRAM_ck_p : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_ck_n : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_cke : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_spi_io0_i : in STD_LOGIC;
-    TRX_spi_io0_o : out STD_LOGIC;
-    TRX_spi_io0_t : out STD_LOGIC;
-    TRX_spi_io1_i : in STD_LOGIC;
-    TRX_spi_io1_o : out STD_LOGIC;
-    TRX_spi_io1_t : out STD_LOGIC;
-    TRX_spi_sck_i : in STD_LOGIC;
-    TRX_spi_sck_o : out STD_LOGIC;
-    TRX_spi_sck_t : out STD_LOGIC;
-    TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_spi_ss_t : out STD_LOGIC;
-    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
-    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    RMII_PHY_M_0_tx_en : out STD_LOGIC;
-    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
-    BOARD_IIC_scl_i : in STD_LOGIC;
-    BOARD_IIC_scl_o : out STD_LOGIC;
-    BOARD_IIC_scl_t : out STD_LOGIC;
-    BOARD_IIC_sda_i : in STD_LOGIC;
-    BOARD_IIC_sda_o : out STD_LOGIC;
-    BOARD_IIC_sda_t : out STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
-    CLK3_sys_diff_clk_p : in STD_LOGIC;
-    CLK3_sys_diff_clk_n : in STD_LOGIC;
+    USER_dbg_out : out STD_LOGIC_VECTOR ( 13 downto 0 );
     qspi_flash_io0_i : in STD_LOGIC;
     qspi_flash_io0_o : out STD_LOGIC;
     qspi_flash_io0_t : out STD_LOGIC;
@@ -247,13 +201,59 @@ architecture STRUCTURE of msys_wrapper is
     qspi_flash_ss_i : in STD_LOGIC;
     qspi_flash_ss_o : out STD_LOGIC;
     qspi_flash_ss_t : out STD_LOGIC;
-    TRX_tx_clk_clk_n : out STD_LOGIC;
-    TRX_tx_clk_clk_p : out STD_LOGIC;
-    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK2_mgt_clk0_clk_p : in STD_LOGIC;
     CLK2_mgt_clk0_clk_n : in STD_LOGIC;
-    USER_dbg_out : out STD_LOGIC_VECTOR ( 13 downto 0 )
+    TRX_tx_clk_clk_n : out STD_LOGIC;
+    TRX_tx_clk_clk_p : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
+    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
+    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    RMII_PHY_M_0_tx_en : out STD_LOGIC;
+    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
+    DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
+    DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
+    DDR3_SDRAM_addr : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    DDR3_SDRAM_ba : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    DDR3_SDRAM_ras_n : out STD_LOGIC;
+    DDR3_SDRAM_cas_n : out STD_LOGIC;
+    DDR3_SDRAM_we_n : out STD_LOGIC;
+    DDR3_SDRAM_reset_n : out STD_LOGIC;
+    DDR3_SDRAM_ck_p : out STD_LOGIC_VECTOR ( 0 to 0 );
+    DDR3_SDRAM_ck_n : out STD_LOGIC_VECTOR ( 0 to 0 );
+    DDR3_SDRAM_cke : out STD_LOGIC_VECTOR ( 0 to 0 );
+    DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
+    DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
+    UART0_rxd : in STD_LOGIC;
+    UART0_txd : out STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
+    BOARD_IIC_scl_i : in STD_LOGIC;
+    BOARD_IIC_scl_o : out STD_LOGIC;
+    BOARD_IIC_scl_t : out STD_LOGIC;
+    BOARD_IIC_sda_i : in STD_LOGIC;
+    BOARD_IIC_sda_o : out STD_LOGIC;
+    BOARD_IIC_sda_t : out STD_LOGIC;
+    TRX_spi_io0_i : in STD_LOGIC;
+    TRX_spi_io0_o : out STD_LOGIC;
+    TRX_spi_io0_t : out STD_LOGIC;
+    TRX_spi_io1_i : in STD_LOGIC;
+    TRX_spi_io1_o : out STD_LOGIC;
+    TRX_spi_io1_t : out STD_LOGIC;
+    TRX_spi_sck_i : in STD_LOGIC;
+    TRX_spi_sck_o : out STD_LOGIC;
+    TRX_spi_sck_t : out STD_LOGIC;
+    TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_spi_ss_t : out STD_LOGIC;
+    CLK3_sys_diff_clk_p : in STD_LOGIC;
+    CLK3_sys_diff_clk_n : in STD_LOGIC
   );
   end component msys;
   component IOBUF is

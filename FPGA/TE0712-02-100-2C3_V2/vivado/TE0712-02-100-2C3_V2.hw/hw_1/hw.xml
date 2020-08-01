@@ -22,42 +22,43 @@
     <Object name="xc7a100t_0" gui_info="">
       <Properties Property="FULL_PROBES.FILE" value="$_project_name_.runs/impl_1/msys_wrapper.ltx"/>
       <Properties Property="PROBES.FILE" value="$_project_name_.runs/impl_1/msys_wrapper.ltx"/>
-      <Properties Property="PROGRAM.HW_BITSTREAM" value=""/>
+      <Properties Property="PROGRAM.HW_BITSTREAM" value="$_project_name_.runs/impl_1/msys_wrapper.bit"/>
       <Properties Property="PROGRAM.HW_CFGMEM_PART" value="s25fl256sxxxxxx0-spi-x1_x2_x4"/>
       <Properties Property="SLR.COUNT" value="1"/>
     </Object>
   </ObjectList>
   <ObjectList object_type="hw_probe" gui_info="">
-    <Object name="msys_i/BOARD_ROTENC_PUSH_1" gui_info="hw_vios/hw_vio_1=18"/>
+    <Object name="msys_i/BOARD_ROTENC_PUSH_1" gui_info="hw_vios/hw_vio_1=19"/>
+    <Object name="msys_i/CLK1B_CW_0_psdone" gui_info="hw_vios/hw_vio_1=13"/>
     <Object name="msys_i/ETH0_LEDs_MF_Q_vio_0[22:0]" gui_info="hw_vios/hw_vio_1=29"/>
-    <Object name="msys_i/ETH0_LEDstatus_0[3:0]" gui_info="hw_vios/hw_vio_1=20_exp"/>
-    <Object name="msys_i/ETH0_MIIstatus_0[4:0]" gui_info="hw_vios/hw_vio_1=21_exp"/>
+    <Object name="msys_i/ETH0_LEDstatus_0[3:0]" gui_info="hw_vios/hw_vio_1=21_exp"/>
+    <Object name="msys_i/ETH0_MIIstatus_0[4:0]" gui_info="hw_vios/hw_vio_1=22_exp"/>
     <Object name="msys_i/ETH0_Q[22:0]" gui_info="hw_vios/hw_vio_1=29"/>
     <Object name="msys_i/ETH0_Q[3:0]" gui_info="hw_vios/hw_vio_1=33"/>
     <Object name="msys_i/ETH0_m_mii_tx_er" gui_info="hw_vios/hw_vio_1=39"/>
     <Object name="msys_i/ETH0_m_mii_txd[3:0]" gui_info="hw_vios/hw_vio_1=38"/>
-    <Object name="msys_i/ETH0_m_mii_txd_0[3:0]" gui_info="hw_vios/hw_vio_1=23_exp"/>
+    <Object name="msys_i/ETH0_m_mii_txd_0[3:0]" gui_info="hw_vios/hw_vio_1=24_exp"/>
     <Object name="msys_i/ETH0_s_mii_col" gui_info="hw_vios/hw_vio_1=36"/>
     <Object name="msys_i/ETH0_s_mii_crs" gui_info="hw_vios/hw_vio_1=37"/>
     <Object name="msys_i/ETH0_s_mii_rx_er" gui_info="hw_vios/hw_vio_1=35"/>
     <Object name="msys_i/ETH0_s_mii_rxd[3:0]" gui_info="hw_vios/hw_vio_1=34"/>
-    <Object name="msys_i/ETH0_s_mii_rxd_0[3:0]" gui_info="hw_vios/hw_vio_1=22_exp"/>
+    <Object name="msys_i/ETH0_s_mii_rxd_0[3:0]" gui_info="hw_vios/hw_vio_1=23_exp"/>
     <Object name="msys_i/ETH_vio_0[2:0]" gui_info="hw_vios/hw_vio_1=28_exp"/>
-    <Object name="msys_i/EUI48_EUI48_FSM_start" gui_info="hw_vios/hw_vio_1=13"/>
-    <Object name="msys_i/EUI48_FSM_run_1" gui_info="hw_vios/hw_vio_1=14"/>
-    <Object name="msys_i/EUI48_abort_1[7:0]" gui_info="hw_vios/hw_vio_1=17"/>
-    <Object name="msys_i/EUI48_data_1[47:0]" gui_info="hw_vios/hw_vio_1=15"/>
-    <Object name="msys_i/EUI48_state_1[7:0]" gui_info="hw_vios/hw_vio_1=16"/>
+    <Object name="msys_i/EUI48_EUI48_FSM_start" gui_info="hw_vios/hw_vio_1=14"/>
+    <Object name="msys_i/EUI48_FSM_run_1" gui_info="hw_vios/hw_vio_1=15"/>
+    <Object name="msys_i/EUI48_abort_1[7:0]" gui_info="hw_vios/hw_vio_1=18"/>
+    <Object name="msys_i/EUI48_data_1[47:0]" gui_info="hw_vios/hw_vio_1=16"/>
+    <Object name="msys_i/EUI48_state_1[7:0]" gui_info="hw_vios/hw_vio_1=17"/>
     <Object name="msys_i/FPGA_IO_1" gui_info="hw_vios/hw_vio_1=3"/>
     <Object name="msys_i/In2_1[2:0]" gui_info="hw_vios/hw_vio_1=26_exp"/>
-    <Object name="msys_i/ROTENC_decoder_Q[31:0]" gui_info="hw_vios/hw_vio_1=19"/>
+    <Object name="msys_i/ROTENC_decoder_Q[31:0]" gui_info="hw_vios/hw_vio_1=20"/>
     <Object name="msys_i/ROTENC_decoder_dout[2:0]" gui_info="hw_vios/hw_vio_1=25"/>
     <Object name="msys_i/SC0712_0_mon_GPIO1_I[31:0]" gui_info="hw_vios/hw_vio_1=1"/>
     <Object name="msys_i/SC0712_0_mon_GPIO1_O[31:0]" gui_info="hw_vios/hw_vio_1=2"/>
     <Object name="msys_i/SC0712_0_reset_out" gui_info="hw_vios/hw_vio_1=0"/>
-    <Object name="msys_i/TRX_rd_data_count_CD100[8:0]" gui_info="hw_vios/hw_vio_1=24"/>
-    <Object name="msys_i/TRX_rx09_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=25"/>
-    <Object name="msys_i/TRX_rx24_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=30"/>
+    <Object name="msys_i/TRX_rd_data_count_CD100[8:0]" gui_info="hw_vios/hw_vio_1=25"/>
+    <Object name="msys_i/TRX_rx09_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=26"/>
+    <Object name="msys_i/TRX_rx24_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=31"/>
     <Object name="msys_i/ULI_SYSTEM_XIO_1" gui_info="hw_vios/hw_vio_1=4"/>
     <Object name="msys_i/fm_mgt_ref[31:0]" gui_info="hw_vios/hw_vio_1=9"/>
     <Object name="msys_i/fm_mig_50mhz[31:0]" gui_info="hw_vios/hw_vio_1=10"/>
@@ -72,17 +73,17 @@
     <Object name="msys_i/lt_F2_CLK1B[31:0]" gui_info="hw_vios/hw_vio_1=8"/>
     <Object name="msys_i/lt_F3_CLK0[31:0]" gui_info="hw_vios/hw_vio_1=9"/>
     <Object name="msys_i/lt_F4_TRX_LVDS_divclk[31:0]" gui_info="hw_vios/hw_vio_1=10"/>
-    <Object name="msys_i/postmem_rx09_doutb_out_0[31:0]" gui_info="hw_vios/hw_vio_1=36"/>
-    <Object name="msys_i/postmem_rx24_doutb_out_0[31:0]" gui_info="hw_vios/hw_vio_1=37"/>
-    <Object name="msys_i/postmem_rx_addrb_in_0[12:0]" gui_info="hw_vios/hw_vio_1=35"/>
-    <Object name="msys_i/xfft_rx09_dly3449_event_data_in_channel_halt_out_0" gui_info="hw_vios/hw_vio_1=26"/>
-    <Object name="msys_i/xfft_rx09_dly3449_event_frame_started_out_0" gui_info="hw_vios/hw_vio_1=27"/>
-    <Object name="msys_i/xfft_rx09_dly3449_event_tlast_missing_out_0" gui_info="hw_vios/hw_vio_1=28"/>
-    <Object name="msys_i/xfft_rx09_dly3449_event_tlast_unexpected_out_0" gui_info="hw_vios/hw_vio_1=29"/>
-    <Object name="msys_i/xfft_rx24_dly3198_event_data_in_channel_halt_out_0" gui_info="hw_vios/hw_vio_1=31"/>
-    <Object name="msys_i/xfft_rx24_dly3198_event_tlast_missing_out_0" gui_info="hw_vios/hw_vio_1=33"/>
-    <Object name="msys_i/xfft_rx24_dly3198_event_tlast_unexpected_out_0" gui_info="hw_vios/hw_vio_1=34"/>
-    <Object name="msys_i/xfft_rx24_dly3449_event_frame_started_out_0" gui_info="hw_vios/hw_vio_1=32"/>
+    <Object name="msys_i/postmem_rx09_doutb_out_0[31:0]" gui_info="hw_vios/hw_vio_1=37"/>
+    <Object name="msys_i/postmem_rx24_doutb_out_0[31:0]" gui_info="hw_vios/hw_vio_1=38"/>
+    <Object name="msys_i/postmem_rx_addrb_in_0[12:0]" gui_info="hw_vios/hw_vio_1=36"/>
+    <Object name="msys_i/xfft_rx09_dly3449_event_data_in_channel_halt_out_0" gui_info="hw_vios/hw_vio_1=27"/>
+    <Object name="msys_i/xfft_rx09_dly3449_event_frame_started_out_0" gui_info="hw_vios/hw_vio_1=28"/>
+    <Object name="msys_i/xfft_rx09_dly3449_event_tlast_missing_out_0" gui_info="hw_vios/hw_vio_1=29"/>
+    <Object name="msys_i/xfft_rx09_dly3449_event_tlast_unexpected_out_0" gui_info="hw_vios/hw_vio_1=30"/>
+    <Object name="msys_i/xfft_rx24_dly3198_event_data_in_channel_halt_out_0" gui_info="hw_vios/hw_vio_1=32"/>
+    <Object name="msys_i/xfft_rx24_dly3198_event_tlast_missing_out_0" gui_info="hw_vios/hw_vio_1=34"/>
+    <Object name="msys_i/xfft_rx24_dly3198_event_tlast_unexpected_out_0" gui_info="hw_vios/hw_vio_1=35"/>
+    <Object name="msys_i/xfft_rx24_dly3449_event_frame_started_out_0" gui_info="hw_vios/hw_vio_1=33"/>
   </ObjectList>
   <ObjectList object_type="hw_vio" gui_info="">
     <Object name="hw_vio_1" gui_info="hw_vios/hw_vio_1/TablePreference=5	1298	Name	0	2147483647	15	685	685	Value	1	2147483647	15	226	226	Activity	2	2147483647	15	94	94	Direction	3	2147483647	15	145	145	VIO	4	2147483647	15	148	148			1	6	1	Name	Value	Activity	Direction	VIO"/>
@@ -101,6 +102,21 @@
       </probeOptions>
       <nets>
         <net name="msys_i/BOARD_ROTENC_PUSH_1"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="BINARY"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Short"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/CLK1B_CW_0_psdone"/>
       </nets>
     </probe>
     <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">

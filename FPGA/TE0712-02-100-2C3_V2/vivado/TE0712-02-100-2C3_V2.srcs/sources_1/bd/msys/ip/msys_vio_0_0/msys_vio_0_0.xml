@@ -94,11 +94,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Jul 30 22:56:29 UTC 2020</spirit:value>
+            <spirit:value>Sat Aug 01 07:54:34 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:89165c5e</spirit:value>
+            <spirit:value>9:3141102d</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -109,7 +109,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:89165c5e</spirit:value>
+            <spirit:value>9:3141102d</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -125,11 +125,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Jul 30 22:56:29 UTC 2020</spirit:value>
+            <spirit:value>Sat Aug 01 07:54:34 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:89165c5e</spirit:value>
+            <spirit:value>9:3141102d</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -145,11 +145,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Thu Jul 30 22:56:29 UTC 2020</spirit:value>
+            <spirit:value>Sat Aug 01 07:54:34 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:874dd60f</spirit:value>
+            <spirit:value>9:4c3a2538</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1134,7 +1134,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_PROBE_IN37_WIDTH&apos;)) - 1)">7</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_PROBE_IN37_WIDTH&apos;)) - 1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -1150,7 +1150,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.probe_in37" xilinx:dependency="(id(&apos;PARAM_VALUE.C_NUM_PROBE_IN&apos;)>37)">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.probe_in37" xilinx:dependency="(id(&apos;PARAM_VALUE.C_NUM_PROBE_IN&apos;)>37)">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -12805,7 +12805,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_NUM_PROBE_IN</spirit:name>
         <spirit:displayName>Input  Probe  Count</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_NUM_PROBE_IN" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">37</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_NUM_PROBE_IN" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">38</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_EN_PROBE_IN_ACTIVITY</spirit:name>
@@ -13010,7 +13010,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_PROBE_IN37_WIDTH</spirit:name>
         <spirit:displayName>PROBE IN37 WIDTH</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="MODELPARAM_VALUE.C_PROBE_IN37_WIDTH" spirit:dependency="(spirit:decode(id(&apos;PARAM_VALUE.C_PROBE_IN37_WIDTH&apos;)))" spirit:minimum="1" spirit:maximum="256" spirit:rangeType="long">8</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="dependent" spirit:id="MODELPARAM_VALUE.C_PROBE_IN37_WIDTH" spirit:dependency="(spirit:decode(id(&apos;PARAM_VALUE.C_PROBE_IN37_WIDTH&apos;)))" spirit:minimum="1" spirit:maximum="256" spirit:rangeType="long">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_PROBE_IN38_WIDTH</spirit:name>
@@ -20414,7 +20414,7 @@
     <spirit:parameter>
       <spirit:name>C_PROBE_IN37_WIDTH</spirit:name>
       <spirit:displayName>PROBE IN37 WIDTH</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_PROBE_IN37_WIDTH" spirit:order="5200" spirit:minimum="1" spirit:maximum="256" spirit:rangeType="long">8</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_PROBE_IN37_WIDTH" spirit:order="5200" spirit:minimum="1" spirit:maximum="256" spirit:rangeType="long">1</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_PROBE_IN36_WIDTH</spirit:name>
@@ -20619,7 +20619,7 @@
     <spirit:parameter>
       <spirit:name>C_NUM_PROBE_IN</spirit:name>
       <spirit:displayName>Input  Probe  Count</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_NUM_PROBE_IN" spirit:order="1100" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">37</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_NUM_PROBE_IN" spirit:order="1100" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">38</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>

@@ -125,8 +125,8 @@ int main(void)
 	xTaskCreate(
 			taskDefault, 					/* The function that implements the task. */
 			(const char*) "tskDflt", 		/* Text name for the task, provided to assist debugging only. */
-			//configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
-			(unsigned short) 500,	 		/* The stack allocated to the task. */
+			configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
+			//(unsigned short) 500,	 		/* The stack allocated to the task. */
 			NULL, 							/* The task parameter is not used, so set to NULL. */
 			tskIDLE_PRIORITY,				/* The task runs at the idle priority. */
 			&thDflt
@@ -135,8 +135,8 @@ int main(void)
 	xTaskCreate(
 			taskEth, 						/* The function that implements the task. */
 			(const char*) "tskNet",			/* Text name for the task, provided to assist debugging only. */
-			//configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
-			(unsigned short) 500,	 		/* The stack allocated to the task. */
+			configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
+			//(unsigned short) 500,	 		/* The stack allocated to the task. */
 			NULL,							/* The task parameter is not used, so set to NULL. */
 			tskIDLE_PRIORITY + 1U,			/* The task runs at that priority. */
 			&thEth
@@ -186,6 +186,89 @@ int main(void)
 }
 
 
+static void clkwiz_print_DRP(void)
+{
+	const UINTPTR ba = XPAR_CLK_WIZ_0_BASEADDR;
+
+	u32 reg;
+	xil_printf("Register dump 0x300 .. 0x35C:\r\n\r\n");
+
+	reg = Xil_In32(ba + 0x300UL);
+	xil_printf("PowerReg \t\t\t\t\t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x304UL);
+	xil_printf("CLOCKOUT0 Reg1 \t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x308UL);
+	xil_printf("CLOCKOUT0 Reg2 \t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x30cUL);
+	xil_printf("CLOCKOUT1 Reg1 \t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x310UL);
+	xil_printf("CLOCKOUT1 Reg2 \t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x314UL);
+	xil_printf("CLOCKOUT2 Reg1 \t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x318UL);
+	xil_printf("CLOCKOUT2 Reg2 \t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x31cUL);
+	xil_printf("CLOCKOUT3 Reg1 \t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x320UL);
+	xil_printf("CLOCKOUT3 Reg2 \t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x324UL);
+	xil_printf("CLOCKOUT4 Reg1 \t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x328UL);
+	xil_printf("CLOCKOUT4 Reg2 \t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x32cUL);
+	xil_printf("CLOCKOUT5 Reg1 \t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x330UL);
+	xil_printf("CLOCKOUT5 Reg2 \t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x334UL);
+	xil_printf("CLOCKOUT6 Reg1 \t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x338UL);
+	xil_printf("CLOCKOUT6 Reg2 \t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x33cUL);
+	xil_printf("DIV_CLK Reg \t\t\t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x340UL);
+	xil_printf("CLKFBOUT Reg1 \t\t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x344UL);
+	xil_printf("CLKFBOUT Reg2 \t\t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x348UL);
+	xil_printf("LOCK Reg1 \t\t\t\t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x34cUL);
+	xil_printf("LOCK Reg2 \t\t\t\t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x350UL);
+	xil_printf("LOCK Reg3 \t\t\t\t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x354UL);
+	xil_printf("Filter Reg1 \t\t\t\t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x358UL);
+	xil_printf("Filter Reg2 \t\t\t\t= 0x%08lx\r\n", reg);
+
+	reg = Xil_In32(ba + 0x35cUL);
+	xil_printf("Control Reg \t\t\t\t= 0x%08lx\r\n", reg);
+
+	xil_printf("\r\ndone.\r\n");
+}
+
+
 /*-----------------------------------------------------------*/
 /* TASKS 													 */
 
@@ -230,20 +313,8 @@ static void taskDefault(void* pvParameters)
 	}
 #endif
 
-#if 1
-	/* CLK1B ClockWizard fine PS tuning */
-	{
-		int statusClk1b = XGpio_Initialize(&gpio_CLK1B_PS, XPAR_CLK1B_CW_0_CLK1B_AXI_GPIO_0_DEVICE_ID);
-		if (statusClk1b != XST_SUCCESS) {
-			xil_printf("GPIO LK1B ClockWizard fine PS tuning Initialization Failed\r\n");
-			return;
-		}
-		XGpio_SetDataDirection(&gpio_CLK1B_PS, 1U, ~0x00000001UL);  // 1 bit output
-		XGpio_SetDataDirection(&gpio_CLK1B_PS, 2U,  0xffffffffUL);  // 1 bit input
-	}
-#endif
 
-#if 1
+#if 0
 	/* SCOPE unit for MII analysis */
 	{
 		int statusScope = XGpio_Initialize(&gpio_SCOPE, XPAR_SCOPE_SCOPE_AXI_GPIO_0_DEVICE_ID);
@@ -255,6 +326,7 @@ static void taskDefault(void* pvParameters)
 		XGpio_SetDataDirection(&gpio_SCOPE, 2U, 0xffffffffUL);  // 32 bit input (DATA)
 	}
 #endif
+
 
 #if 0
 	/* I2C address mapping list */
@@ -277,6 +349,7 @@ static void taskDefault(void* pvParameters)
 		}
 	}
 #endif
+
 
 #if 1
 	/* DAC pull voltage */
@@ -321,6 +394,168 @@ static void taskDefault(void* pvParameters)
 #endif
 	}
 #endif
+
+
+#if 1
+//#define PHASE_000DEG
+//#define PHASE_090DEG
+//#define PHASE_180DEG
+#define PHASE_270DEG
+
+	/* CLK1B ClockWizard pre-defined settings */
+	{
+		const UINTPTR ba = XPAR_CLK_WIZ_0_BASEADDR;
+		u8 mode = 0U;
+
+#if defined PHASE_000DEG
+		mode = 0U;
+#elif defined PHASE_090DEG
+		mode = 1U;
+#elif defined PHASE_180DEG
+		mode = 2U;
+#elif defined PHASE_270DEG
+		mode = 3U;
+#endif
+
+		xil_printf("\r\nClock Wizard - CLK1B -->\r\n");
+
+#if 0
+		/* Debugging */
+		clkwiz_print_DRP();
+#endif
+
+		/* Turning off INT */
+		microblaze_disable_interrupts();
+
+		/* Init MMCM DRP registers */
+		Xil_Out32(ba + 0x300UL, 0x0000ffffUL);		// Power Reg
+
+		// phase variants
+		if (mode == 0) {
+			Xil_Out32(ba + 0x304UL, 0x00001187UL);	// CLKOUT0 Reg1
+			Xil_Out32(ba + 0x308UL, 0x00000080UL);	// CLKOUT0 Reg2
+
+			Xil_Out32(ba + 0x314UL, 0x00001187UL);	// CLKOUT2 Reg1
+			Xil_Out32(ba + 0x318UL, 0x00000080UL);	// CLKOUT2 Reg2
+
+		} else if (mode == 1) {
+			Xil_Out32(ba + 0x304UL, 0x00005187UL);	// CLKOUT0 Reg1
+			Xil_Out32(ba + 0x308UL, 0x00000083UL);	// CLKOUT0 Reg2
+
+			Xil_Out32(ba + 0x314UL, 0x00005187UL);	// CLKOUT2 Reg1
+			Xil_Out32(ba + 0x318UL, 0x00000083UL);	// CLKOUT2 Reg2
+
+		} else if (mode == 2) {
+			Xil_Out32(ba + 0x304UL, 0x00009187UL);	// CLKOUT0 Reg1
+			Xil_Out32(ba + 0x308UL, 0x00000086UL);	// CLKOUT0 Reg2
+
+			Xil_Out32(ba + 0x314UL, 0x00009187UL);	// CLKOUT2 Reg1
+			Xil_Out32(ba + 0x318UL, 0x00000086UL);	// CLKOUT2 Reg2
+
+		} else if (mode == 3) {
+			Xil_Out32(ba + 0x304UL, 0x0000d187UL);	// CLKOUT0 Reg1
+			Xil_Out32(ba + 0x308UL, 0x00000089UL);	// CLKOUT0 Reg2
+
+			Xil_Out32(ba + 0x314UL, 0x0000d187UL);	// CLKOUT2 Reg1
+			Xil_Out32(ba + 0x318UL, 0x00000089UL);	// CLKOUT2 Reg2
+		}
+
+		Xil_Out32(ba + 0x30cUL, 0x00001187UL);		// CLKOUT1 Reg1
+		Xil_Out32(ba + 0x310UL, 0x00000080UL);		// CLKOUT1 Reg2
+
+		Xil_Out32(ba + 0x31cUL, 0x00001187UL);		// CLKOUT3 Reg1
+		Xil_Out32(ba + 0x320UL, 0x00000080UL);		// CLKOUT3 Reg2
+
+		Xil_Out32(ba + 0x324UL, 0x00001041UL);		// CLKOUT4 Reg1
+		Xil_Out32(ba + 0x328UL, 0x000000c0UL);		// CLKOUT4 Reg2
+		Xil_Out32(ba + 0x32cUL, 0x00001041UL);		// CLKOUT5 Reg1
+		Xil_Out32(ba + 0x330UL, 0x000000c0UL);		// CLKOUT5 Reg2
+		Xil_Out32(ba + 0x334UL, 0x00001041UL);		// CLKOUT6 Reg1
+		Xil_Out32(ba + 0x338UL, 0x000000c0UL);		// CLKOUT6 Reg2
+		Xil_Out32(ba + 0x33cUL, 0x00001041UL);		// DIV_CLK Reg
+		Xil_Out32(ba + 0x340UL, 0x00001187UL);		// CLKFBOUT Reg1
+		Xil_Out32(ba + 0x344UL, 0x00000080UL);		// CLKFBOUT Reg2
+		Xil_Out32(ba + 0x348UL, 0x000001eeUL);		// LOCK Reg1
+		Xil_Out32(ba + 0x34cUL, 0x00007c01UL);		// LOCK Reg2
+		Xil_Out32(ba + 0x350UL, 0x00007de9UL);		// LOCK Reg3
+		Xil_Out32(ba + 0x354UL, 0x00000800UL);		// Filter Reg1
+		Xil_Out32(ba + 0x358UL, 0x00009800UL);		// Filter Reg2
+
+		Xil_Out32(ba + 0x35cUL, 0x00000003UL);		// Clock Configuration Register - Load and enable above settings
+		//__asm volatile( "NOP" );
+
+#if 0
+		/* Return to default settings */
+		Xil_Out32(ba + 0x35cUL, 0x00000001UL);		// Clock Configuration Register - Load and enable predefined settings
+		//__asm volatile( "NOP" );
+#endif
+
+		/* Re-enable INT */
+		microblaze_enable_interrupts();
+		//__asm volatile( "NOP" );
+
+#if 0
+		clkwiz_print_DRP();
+#endif
+
+		xil_printf("=====\r\n\r\n");
+	}
+#endif
+
+#if 0
+	/* CLK1B ClockWizard fine PS tuning */
+	{
+		/* Return to default settings */
+		const UINTPTR ba = XPAR_CLK_WIZ_0_BASEADDR;
+		Xil_Out32(ba + 0x35cUL, 0x00000001UL);		// Clock Configuration Register - Load and enable predefined settings
+
+		int statusClk1b = XGpio_Initialize(&gpio_CLK1B_PS, XPAR_CLK1B_CW_0_CLK1B_AXI_GPIO_0_DEVICE_ID);
+		if (statusClk1b != XST_SUCCESS) {
+			xil_printf("GPIO LK1B ClockWizard fine PS tuning Initialization Failed\r\n");
+			return;
+		}
+		XGpio_SetDataDirection(&gpio_CLK1B_PS, 1U, ~0x00000003UL);  //  2 bit output
+		XGpio_SetDataDirection(&gpio_CLK1B_PS, 2U,  0xffffffffUL);  // 16 bit input
+
+		/* Turning off INT */
+		//microblaze_disable_interrupts();
+
+		// Shift phase to desired position (relative / absolute after FPGA reconfig)
+		{
+			const int desiredPhase	= -900;  // 0.1 ° resolution
+			const int stepPhase		=    5;  // 0.1 ° resolution
+			int       nowPhase 		=    0;
+
+			while (((desiredPhase >= nowPhase ) ? (desiredPhase - nowPhase) : (nowPhase - desiredPhase)) >= stepPhase) {
+				if (desiredPhase > nowPhase) {
+					XGpio_DiscreteWrite(   &gpio_CLK1B_PS, 1U,  0x00000003UL);	// Up-Direction with trigger
+					nowPhase += stepPhase;
+
+				} else if (desiredPhase < nowPhase) {
+					XGpio_DiscreteWrite(   &gpio_CLK1B_PS, 1U,  0x00000001UL);	// Down-Direction with trigger
+					nowPhase -= stepPhase;
+				}
+				XGpio_DiscreteClear(&gpio_CLK1B_PS, 1U, 0x00000001UL);	// release
+
+				//vTaskDelay(pdMS_TO_TICKS(10));
+			}
+		}
+
+		// Preset direction
+		XGpio_DiscreteWrite(&gpio_CLK1B_PS, 1U,  0x00000002UL);	// Up-Direction, no-trigger
+
+		/* Re-enable INT */
+		//microblaze_enable_interrupts();
+	}
+#endif
+
+#if 0
+	while (1) {
+		/* Delay */
+		vTaskDelay(pdMS_TO_TICKS(1000));
+	}
+#endif
+
 
 #if 1
 	/* LCD */
@@ -380,226 +615,6 @@ static void taskDefault(void* pvParameters)
 	}
 #endif
 
-#if 0
-#define PHASE_270DEG
-	{
-		volatile u32 *ba = (volatile u32*) XPAR_CLK_WIZ_0_BASEADDR;
-
-		xil_printf("\r\nClock Wizard - CLK1B -->\r\n");
-
-		/* Init MMCM DRP registers */
-		*(ba + 0x300UL) = 0x0000ffffUL;		// Power Reg
-#if defined PHASE_000DEG
-		*(ba + 0x304UL) = 0x00001187UL;		// CLKOUT0 Reg1
-		*(ba + 0x308UL) = 0x00000080UL;		// CLKOUT0 Reg2
-#elif defined PHASE_090DEG
-		*(ba + 0x304UL) = 0x00005187UL;		// CLKOUT0 Reg1
-		*(ba + 0x308UL) = 0x00000083UL;		// CLKOUT0 Reg2
-#elif defined PHASE_180DEG
-		*(ba + 0x304UL) = 0x00009187UL;		// CLKOUT0 Reg1
-		*(ba + 0x308UL) = 0x00000086UL;		// CLKOUT0 Reg2
-#elif defined PHASE_270DEG
-		*(ba + 0x304UL) = 0x0000d187UL;		// CLKOUT0 Reg1
-		*(ba + 0x308UL) = 0x00000089UL;		// CLKOUT0 Reg2
-#endif
-		*(ba + 0x30cUL) = 0x00001187UL;		// CLKOUT1 Reg1
-		*(ba + 0x310UL) = 0x00000080UL;		// CLKOUT1 Reg2
-		*(ba + 0x314UL) = 0x00001041UL;		// CLKOUT2 Reg1
-		*(ba + 0x318UL) = 0x000000c0UL;		// CLKOUT2 Reg2
-		*(ba + 0x31cUL) = 0x00001041UL;		// CLKOUT3 Reg1
-		*(ba + 0x320UL) = 0x000000c0UL;		// CLKOUT3 Reg2
-		*(ba + 0x324UL) = 0x00001041UL;		// CLKOUT4 Reg1
-		*(ba + 0x328UL) = 0x000000c0UL;		// CLKOUT4 Reg2
-		*(ba + 0x32cUL) = 0x00001041UL;		// CLKOUT5 Reg1
-		*(ba + 0x330UL) = 0x000000c0UL;		// CLKOUT5 Reg2
-		*(ba + 0x334UL) = 0x00001041UL;		// CLKOUT6 Reg1
-		*(ba + 0x338UL) = 0x000000c0UL;		// CLKOUT6 Reg2
-		*(ba + 0x33cUL) = 0x00001041UL;		// DIV_CLK Reg
-		*(ba + 0x340UL) = 0x00001187UL;		// CLKFBOUT Reg1
-		*(ba + 0x344UL) = 0x00000080UL;		// CLKFBOUT Reg2
-		*(ba + 0x348UL) = 0x000001eeUL;		// LOCK Reg1
-		*(ba + 0x34cUL) = 0x00007c01UL;		// LOCK Reg2
-		*(ba + 0x350UL) = 0x00007de9UL;		// LOCK Reg3
-		*(ba + 0x354UL) = 0x00000800UL;		// Filter Reg1
-		*(ba + 0x358UL) = 0x00009800UL;		// Filter Reg2
-
-		*(ba + 0x35cUL) = 0x00000003UL;		// Clock Configuration Register
-
-		u32 test;
-		u32 cnt = 0;
-		while (((test = *(ba + 0x35cUL)) & 0x1U) != 0) {
-			cnt++;
-		}
-		(void) cnt;
-
-#if 0
-		u32 ccr;
-		xil_printf("0x200 f.f. -->\r\n");
-
-		ccr = *(ba + 0x200UL);
-		xil_printf("CCR0  = 0x%08lx\r\n", ccr);
-
-		ccr  = *(ba + 0x204UL);
-		xil_printf("CCR1  = 0x%08lx\r\n", ccr);
-
-		ccr  = *(ba + 0x208UL);
-		xil_printf("CCR2  = 0x%08lx\r\n", ccr);
-
-		ccr  = *(ba + 0x20cUL);
-		xil_printf("CCR3  = 0x%08lx\r\n", ccr);
-
-		ccr  = *(ba + 0x210UL);
-		xil_printf("CCR4  = 0x%08lx\r\n", ccr);
-
-		ccr  = *(ba + 0x214UL);
-		xil_printf("CCR5  = 0x%08lx\r\n", ccr);
-
-		ccr  = *(ba + 0x218UL);
-		xil_printf("CCR6  = 0x%08lx\r\n", ccr);
-
-		ccr  = *(ba + 0x21cUL);
-		xil_printf("CCR7  = 0x%08lx\r\n", ccr);
-
-		ccr  = *(ba + 0x220UL);
-		xil_printf("CCR8  = 0x%08lx\r\n", ccr);
-
-		ccr  = *(ba + 0x224UL);
-		xil_printf("CCR9  = 0x%08lx\r\n", ccr);
-
-		ccr = *(ba + 0x228UL);
-		xil_printf("CCR10 = 0x%08lx\r\n", ccr);
-
-		ccr = *(ba + 0x22cUL);
-		xil_printf("CCR11 = 0x%08lx\r\n", ccr);
-
-		ccr = *(ba + 0x230UL);
-		xil_printf("CCR12 = 0x%08lx\r\n", ccr);
-
-		ccr = *(ba + 0x234UL);
-		xil_printf("CCR13 = 0x%08lx\r\n", ccr);
-
-		ccr = *(ba + 0x238UL);
-		xil_printf("CCR14 = 0x%08lx\r\n", ccr);
-
-		ccr = *(ba + 0x23cUL);
-		xil_printf("CCR15 = 0x%08lx\r\n", ccr);
-
-		ccr = *(ba + 0x240UL);
-		xil_printf("CCR16 = 0x%08lx\r\n", ccr);
-
-		ccr = *(ba + 0x244UL);
-		xil_printf("CCR17 = 0x%08lx\r\n", ccr);
-
-		ccr = *(ba + 0x248UL);
-		xil_printf("CCR18 = 0x%08lx\r\n", ccr);
-
-		ccr = *(ba + 0x24cUL);
-		xil_printf("CCR19 = 0x%08lx\r\n", ccr);
-
-		ccr = *(ba + 0x250UL);
-		xil_printf("CCR20 = 0x%08lx\r\n", ccr);
-
-		ccr = *(ba + 0x254UL);
-		xil_printf("CCR21 = 0x%08lx\r\n", ccr);
-
-		ccr = *(ba + 0x258UL);
-		xil_printf("CCR22 = 0x%08lx\r\n", ccr);
-
-		ccr = *(ba + 0x25cUL);
-		xil_printf("CCR23 = 0x%08lx\r\n", ccr);
-
-		xil_printf("done.\r\n");
-#endif
-
-#if 0
-		u32 reg;
-		xil_printf("0x300 f.f. -->\r\n");
-
-		reg = *(ba + 0x300UL);
-		xil_printf("PowerReg\t\t\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x304UL);
-		xil_printf("CLOCKOUT0 Reg1\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x308UL);
-		xil_printf("CLOCKOUT0 Reg2\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x30cUL);
-		xil_printf("CLOCKOUT1 Reg1\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x310UL);
-		xil_printf("CLOCKOUT1 Reg2\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x314UL);
-		xil_printf("CLOCKOUT2 Reg1\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x318UL);
-		xil_printf("CLOCKOUT2 Reg2\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x31cUL);
-		xil_printf("CLOCKOUT3 Reg1\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x320UL);
-		xil_printf("CLOCKOUT3 Reg2\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x324UL);
-		xil_printf("CLOCKOUT4 Reg1\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x328UL);
-		xil_printf("CLOCKOUT4 Reg2\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x32cUL);
-		xil_printf("CLOCKOUT5 Reg1\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x330UL);
-		xil_printf("CLOCKOUT5 Reg2\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x334UL);
-		xil_printf("CLOCKOUT6 Reg1\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x338UL);
-		xil_printf("CLOCKOUT6 Reg2\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x33cUL);
-		xil_printf("DIV_CLK Reg\t\t\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x340UL);
-		xil_printf("CLKFBOUT Reg1\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x344UL);
-		xil_printf("CLKFBOUT Reg2\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x348UL);
-		xil_printf("LOCK Reg1\t\t\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x34cUL);
-		xil_printf("LOCK Reg2\t\t\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x350UL);
-		xil_printf("LOCK Reg3\t\t\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x354UL);
-		xil_printf("Filter Reg1\t\t\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x358UL);
-		xil_printf("Filter Reg2\t\t\t = 0x%08lx\r\n", reg);
-
-		reg = *(ba + 0x35cUL);
-		xil_printf("Control Reg\t\t\t = 0x%08lx\r\n", reg);
-
-
-		xil_printf("done.\r\n");
-#endif
-
-		xil_printf("=====\r\n");
-
-		while (1) {
-			/* Delay */
-			vTaskDelay(pdMS_TO_TICKS(1000));
-		}
-	}
-#endif
-
 
 	//u8 loopIdx = 0U;
 	while (1) {
@@ -624,17 +639,20 @@ static void taskDefault(void* pvParameters)
 			}
 
 			/* Toggle direction */
-			if (dwnUp && (ctr == 12)) {
+			if (dwnUp && (ctr == 360)) {
 				dwnUp = 0U;
-			} else if (!dwnUp && (ctr == 0)) {
+				XGpio_DiscreteClear(&gpio_CLK1B_PS, 1, 0x00000002UL);
+
+			} else if (!dwnUp && (ctr == -360)) {
 				dwnUp = 1U;
+				XGpio_DiscreteSet(  &gpio_CLK1B_PS, 1, 0x00000002UL);
 			}
 
 			xil_printf( "CLK1B_PS: dwnUp=%d, ctr=%4ld\r\n", dwnUp, ctr);
 		}
 #endif
 
-#if 1
+#if 0
 		/* SCOPE Triggering and Readout */
 		{
 			/* Prepare: turn off first */
