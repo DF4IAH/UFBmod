@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Sat Aug  1 09:54:02 2020
+--Date        : Mon Aug  3 11:04:58 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -178,41 +178,18 @@ architecture STRUCTURE of msys_wrapper is
     SCOPE_FSM_Timebase_CE : in STD_LOGIC;
     SCOPE_FSM_FIFO_Rst : in STD_LOGIC;
     SCOPE_FSM_FIFO_RdEn : in STD_LOGIC;
-    SCOPE_FSM_GPIO_In : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    SCOPE_FSM_GPIO_Out : out STD_LOGIC_VECTOR ( 15 downto 0 );
     SCOPE_FSM_FIFO_WrFull : out STD_LOGIC;
     SCOPE_FSM_FIFO_RdValid : out STD_LOGIC;
     SCOPE_FSM_FIFO_RdEmpty : out STD_LOGIC;
     SCOPE_FSM_TrigSrc : out STD_LOGIC_VECTOR ( 47 downto 0 );
     SCOPE_FSM_FIFO_WrEn : in STD_LOGIC;
     USER_dbg_out : out STD_LOGIC_VECTOR ( 13 downto 0 );
-    qspi_flash_io0_i : in STD_LOGIC;
-    qspi_flash_io0_o : out STD_LOGIC;
-    qspi_flash_io0_t : out STD_LOGIC;
-    qspi_flash_io1_i : in STD_LOGIC;
-    qspi_flash_io1_o : out STD_LOGIC;
-    qspi_flash_io1_t : out STD_LOGIC;
-    qspi_flash_io2_i : in STD_LOGIC;
-    qspi_flash_io2_o : out STD_LOGIC;
-    qspi_flash_io2_t : out STD_LOGIC;
-    qspi_flash_io3_i : in STD_LOGIC;
-    qspi_flash_io3_o : out STD_LOGIC;
-    qspi_flash_io3_t : out STD_LOGIC;
-    qspi_flash_ss_i : in STD_LOGIC;
-    qspi_flash_ss_o : out STD_LOGIC;
-    qspi_flash_ss_t : out STD_LOGIC;
-    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
-    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
+    SCOPE_FSM_FIFO_rd_rst_busy : out STD_LOGIC;
+    SCOPE_FSM_FIFO_wr_rst_busy : out STD_LOGIC;
+    SCOPE_FSM_GPIO0_Out : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    SCOPE_FSM_GPIO1_In : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_tx_clk_clk_n : out STD_LOGIC;
     TRX_tx_clk_clk_p : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
-    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
-    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    RMII_PHY_M_0_tx_en : out STD_LOGIC;
-    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
     DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -228,18 +205,12 @@ architecture STRUCTURE of msys_wrapper is
     DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
-    BOARD_IIC_scl_i : in STD_LOGIC;
-    BOARD_IIC_scl_o : out STD_LOGIC;
-    BOARD_IIC_scl_t : out STD_LOGIC;
-    BOARD_IIC_sda_i : in STD_LOGIC;
-    BOARD_IIC_sda_o : out STD_LOGIC;
-    BOARD_IIC_sda_t : out STD_LOGIC;
+    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
+    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
     TRX_spi_io0_i : in STD_LOGIC;
     TRX_spi_io0_o : out STD_LOGIC;
     TRX_spi_io0_t : out STD_LOGIC;
@@ -252,8 +223,39 @@ architecture STRUCTURE of msys_wrapper is
     TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_t : out STD_LOGIC;
+    UART0_rxd : in STD_LOGIC;
+    UART0_txd : out STD_LOGIC;
+    BOARD_IIC_scl_i : in STD_LOGIC;
+    BOARD_IIC_scl_o : out STD_LOGIC;
+    BOARD_IIC_scl_t : out STD_LOGIC;
+    BOARD_IIC_sda_i : in STD_LOGIC;
+    BOARD_IIC_sda_o : out STD_LOGIC;
+    BOARD_IIC_sda_t : out STD_LOGIC;
+    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
+    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    RMII_PHY_M_0_tx_en : out STD_LOGIC;
+    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
     CLK3_sys_diff_clk_p : in STD_LOGIC;
-    CLK3_sys_diff_clk_n : in STD_LOGIC
+    CLK3_sys_diff_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
+    qspi_flash_io0_i : in STD_LOGIC;
+    qspi_flash_io0_o : out STD_LOGIC;
+    qspi_flash_io0_t : out STD_LOGIC;
+    qspi_flash_io1_i : in STD_LOGIC;
+    qspi_flash_io1_o : out STD_LOGIC;
+    qspi_flash_io1_t : out STD_LOGIC;
+    qspi_flash_io2_i : in STD_LOGIC;
+    qspi_flash_io2_o : out STD_LOGIC;
+    qspi_flash_io2_t : out STD_LOGIC;
+    qspi_flash_io3_i : in STD_LOGIC;
+    qspi_flash_io3_o : out STD_LOGIC;
+    qspi_flash_io3_t : out STD_LOGIC;
+    qspi_flash_ss_i : in STD_LOGIC;
+    qspi_flash_ss_o : out STD_LOGIC;
+    qspi_flash_ss_t : out STD_LOGIC;
+    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys;
   component IOBUF is
@@ -343,19 +345,21 @@ architecture STRUCTURE of msys_wrapper is
   end component EUI48_FSM;
   component SCOPE_FSM is
   Port (
-    resetn                  : in  STD_LOGIC;
-    clk                     : in  STD_LOGIC;
-    SCOPE_FSM_GPIO_In       : out STD_LOGIC_VECTOR (15 downto 0);
-    SCOPE_FSM_GPIO_Out      : in  STD_LOGIC_VECTOR (15 downto 0);
-    SCOPE_FSM_TrigSrc       : in  STD_LOGIC_VECTOR (47 downto 0);
-    SCOPE_FSM_Timebase_CE   : out STD_LOGIC;
-    SCOPE_FSM_Timebase_SCLR : out STD_LOGIC;
-    SCOPE_FSM_FIFO_Rst      : out STD_LOGIC;
-    SCOPE_FSM_FIFO_WrFull   : in  STD_LOGIC;
-    SCOPE_FSM_FIFO_RdEmpty  : in  STD_LOGIC;
-    SCOPE_FSM_FIFO_WrEn     : out STD_LOGIC;
-    SCOPE_FSM_FIFO_RdEn     : out STD_LOGIC;
-    SCOPE_FSM_FIFO_RdValid  : in  STD_LOGIC
+    resetn                      : in  STD_LOGIC;
+    clk                         : in  STD_LOGIC;
+    SCOPE_FSM_GPIO0_Out         : in  STD_LOGIC_VECTOR (31 downto 0);
+    SCOPE_FSM_GPIO1_In          : out STD_LOGIC_VECTOR (31 downto 0);
+    SCOPE_FSM_TrigSrc           : in  STD_LOGIC_VECTOR (47 downto 0);
+    SCOPE_FSM_Timebase_CE       : out STD_LOGIC;
+    SCOPE_FSM_Timebase_SCLR     : out STD_LOGIC;
+    SCOPE_FSM_FIFO_Rst          : out STD_LOGIC;
+    SCOPE_FSM_FIFO_wr_rst_busy  : in  STD_LOGIC;
+    SCOPE_FSM_FIFO_rd_rst_busy  : in  STD_LOGIC;
+    SCOPE_FSM_FIFO_WrFull       : in  STD_LOGIC;
+    SCOPE_FSM_FIFO_RdEmpty      : in  STD_LOGIC;
+    SCOPE_FSM_FIFO_WrEn         : out STD_LOGIC;
+    SCOPE_FSM_FIFO_RdEn         : out STD_LOGIC;
+    SCOPE_FSM_FIFO_RdValid      : in  STD_LOGIC
   );
   end component SCOPE_FSM;
   signal BOARD_IIC_scl_i : STD_LOGIC;
@@ -427,8 +431,8 @@ architecture STRUCTURE of msys_wrapper is
   signal mw_postmem_rx_addra_in : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal mw_rotenc_dec_cnt_en : STD_LOGIC;
   signal mw_rotenc_dec_cnt_up_dwn : STD_LOGIC;
-  signal mw_SCOPE_FSM_GPIO_In : STD_LOGIC_VECTOR (15 downto 0);
-  signal mw_SCOPE_FSM_GPIO_Out : STD_LOGIC_VECTOR (15 downto 0);
+  signal mw_SCOPE_FSM_GPIO0_Out : STD_LOGIC_VECTOR (31 downto 0);
+  signal mw_SCOPE_FSM_GPIO1_In : STD_LOGIC_VECTOR (31 downto 0);
   signal mw_SCOPE_FSM_TrigSrc : STD_LOGIC_VECTOR (47 downto 0);
   signal mw_SCOPE_FSM_Timebase_CE : STD_LOGIC;
   signal mw_SCOPE_FSM_Timebase_SCLR : STD_LOGIC;
@@ -438,6 +442,8 @@ architecture STRUCTURE of msys_wrapper is
   signal mw_SCOPE_FSM_FIFO_WrEn : STD_LOGIC;
   signal mw_SCOPE_FSM_FIFO_RdEn : STD_LOGIC;
   signal mw_SCOPE_FSM_FIFO_RdValid : STD_LOGIC;
+  signal mw_SCOPE_FSM_FIFO_rd_rst_busy : STD_LOGIC;
+  signal mw_SCOPE_FSM_FIFO_wr_rst_busy : STD_LOGIC;
   signal qspi_flash_io0_i : STD_LOGIC;
   signal qspi_flash_io0_o : STD_LOGIC;
   signal qspi_flash_io0_t : STD_LOGIC;
@@ -583,19 +589,21 @@ EUI48_FSM_i: component EUI48_FSM
     );
 SCOPE_FSM_i: component SCOPE_FSM
     port map (
-      resetn                  => mw_rst_100M_peripheral_aresetn,
-      clk                     => mw_microblaze_0_Clk_100MHz,
-      SCOPE_FSM_GPIO_In       => mw_SCOPE_FSM_GPIO_In(15 downto 0),
-      SCOPE_FSM_GPIO_Out      => mw_SCOPE_FSM_GPIO_Out(15 downto 0),
-      SCOPE_FSM_TrigSrc       => mw_SCOPE_FSM_TrigSrc(47 downto 0),
-      SCOPE_FSM_Timebase_CE   => mw_SCOPE_FSM_Timebase_CE,
-      SCOPE_FSM_Timebase_SCLR => mw_SCOPE_FSM_Timebase_SCLR,
-      SCOPE_FSM_FIFO_Rst      => mw_SCOPE_FSM_FIFO_Rst,
-      SCOPE_FSM_FIFO_WrFull   => mw_SCOPE_FSM_FIFO_WrFull,
-      SCOPE_FSM_FIFO_RdEmpty  => mw_SCOPE_FSM_FIFO_RdEmpty,
-      SCOPE_FSM_FIFO_WrEn     => mw_SCOPE_FSM_FIFO_WrEn,
-      SCOPE_FSM_FIFO_RdEn     => mw_SCOPE_FSM_FIFO_RdEn,
-      SCOPE_FSM_FIFO_RdValid  => mw_SCOPE_FSM_FIFO_RdValid
+      resetn                        => mw_rst_100M_peripheral_aresetn,
+      clk                           => mw_microblaze_0_Clk_100MHz,
+      SCOPE_FSM_GPIO0_Out           => mw_SCOPE_FSM_GPIO0_Out,
+      SCOPE_FSM_GPIO1_In            => mw_SCOPE_FSM_GPIO1_In,
+      SCOPE_FSM_TrigSrc             => mw_SCOPE_FSM_TrigSrc,
+      SCOPE_FSM_Timebase_CE         => mw_SCOPE_FSM_Timebase_CE,
+      SCOPE_FSM_Timebase_SCLR       => mw_SCOPE_FSM_Timebase_SCLR,
+      SCOPE_FSM_FIFO_Rst            => mw_SCOPE_FSM_FIFO_Rst,
+      SCOPE_FSM_FIFO_wr_rst_busy    => mw_SCOPE_FSM_FIFO_wr_rst_busy,
+      SCOPE_FSM_FIFO_rd_rst_busy    => mw_SCOPE_FSM_FIFO_rd_rst_busy,
+      SCOPE_FSM_FIFO_WrFull         => mw_SCOPE_FSM_FIFO_WrFull,
+      SCOPE_FSM_FIFO_RdEmpty        => mw_SCOPE_FSM_FIFO_RdEmpty,
+      SCOPE_FSM_FIFO_WrEn           => mw_SCOPE_FSM_FIFO_WrEn,
+      SCOPE_FSM_FIFO_RdEn           => mw_SCOPE_FSM_FIFO_RdEn,
+      SCOPE_FSM_FIFO_RdValid        => mw_SCOPE_FSM_FIFO_RdValid
     );
 msys_i: component msys
      port map (
@@ -660,8 +668,10 @@ msys_i: component msys
       SCOPE_FSM_FIFO_Rst => mw_SCOPE_FSM_FIFO_Rst,
       SCOPE_FSM_FIFO_WrEn => mw_SCOPE_FSM_FIFO_WrEn,
       SCOPE_FSM_FIFO_WrFull => mw_SCOPE_FSM_FIFO_WrFull,
-      SCOPE_FSM_GPIO_In(15 downto 0) => mw_SCOPE_FSM_GPIO_In(15 downto 0),
-      SCOPE_FSM_GPIO_Out(15 downto 0) => mw_SCOPE_FSM_GPIO_Out(15 downto 0),
+      SCOPE_FSM_FIFO_rd_rst_busy => mw_SCOPE_FSM_FIFO_rd_rst_busy,
+      SCOPE_FSM_FIFO_wr_rst_busy => mw_SCOPE_FSM_FIFO_wr_rst_busy,
+      SCOPE_FSM_GPIO0_Out(31 downto 0) => mw_SCOPE_FSM_GPIO0_Out(31 downto 0),
+      SCOPE_FSM_GPIO1_In(31 downto 0) => mw_SCOPE_FSM_GPIO1_In(31 downto 0),
       SCOPE_FSM_Timebase_CE => mw_SCOPE_FSM_Timebase_CE,
       SCOPE_FSM_Timebase_SCLR => mw_SCOPE_FSM_Timebase_SCLR,
       SCOPE_FSM_TrigSrc(47 downto 0) => mw_SCOPE_FSM_TrigSrc(47 downto 0),

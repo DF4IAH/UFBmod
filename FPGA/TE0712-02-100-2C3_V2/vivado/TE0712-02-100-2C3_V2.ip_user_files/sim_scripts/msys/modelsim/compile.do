@@ -764,10 +764,15 @@ vlog -work xil_defaultlib  -incr "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/
 "../../../bd/msys/ip/msys_xlconstant_0_21/sim/msys_xlconstant_0_21.v" \
 "../../../bd/msys/ip/msys_fifo_generator_0_1/sim/msys_fifo_generator_0_1.v" \
 "../../../bd/msys/ip/msys_xlconstant_0_23/sim/msys_xlconstant_0_23.v" \
-"../../../bd/msys/ip/msys_xlslice_0_38/sim/msys_xlslice_0_38.v" \
-"../../../bd/msys/ip/msys_xlconcat_0_15/sim/msys_xlconcat_0_15.v" \
 "../../../bd/msys/ip/msys_xlconcat_0_16/sim/msys_xlconcat_0_16.v" \
 "../../../bd/msys/ip/msys_xlconstant_0_24/sim/msys_xlconstant_0_24.v" \
+
+vcom -work xil_defaultlib  -93 \
+"../../../bd/msys/ip/msys_axi_gpio_0_4/sim/msys_axi_gpio_0_4.vhd" \
+
+vlog -work xil_defaultlib  -incr "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
+"../../../bd/msys/ip/msys_xlslice_0_39/sim/msys_xlslice_0_39.v" \
+"../../../bd/msys/ip/msys_xlslice_1_5/sim/msys_xlslice_1_5.v" \
 "../../../bd/msys/ip/msys_tier2_xbar_0_0/sim/msys_tier2_xbar_0_0.v" \
 "../../../bd/msys/ip/msys_tier2_xbar_1_0/sim/msys_tier2_xbar_1_0.v" \
 "../../../bd/msys/ip/msys_tier2_xbar_2_0/sim/msys_tier2_xbar_2_0.v" \

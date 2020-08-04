@@ -36,27 +36,27 @@
 /* Constants 												 */
 
 /* SCOPE */
-#define SCOPE_BF_GPIO1_OUT_enable 		 	 0
-#define SCOPE_BF_GPIO1_OUT_start 			 1
-#define SCOPE_BF_GPIO1_OUT_pop	 		 	 2
-#define SCOPE_BF_GPIO1_OUT_trigLvl 		 	 7
-#define SCOPE_BF_GPIO1_OUT_trigSrc_LSB	 	 8
-#define SCOPE_BF_GPIO1_OUT_trigSrc_width	 6
+#define SCOPE_BF_GPIO0_OUT_enable 		 	0
+#define SCOPE_BF_GPIO0_OUT_start 			1
+#define SCOPE_BF_GPIO0_OUT_pop	 		 	2
+#define SCOPE_BF_GPIO0_OUT_trigLvl 		 	7
+#define SCOPE_BF_GPIO0_OUT_trigSrc_LSB	 	8
+#define SCOPE_BF_GPIO0_OUT_trigSrc_width	6
 
-#define SCOPE_BF_GPIO1_IN_running 		 	16
-#define SCOPE_BF_GPIO1_IN_readAvail 		17
-#define SCOPE_BF_GPIO1_IN_readValid 		18
+#define SCOPE_BF_GPIO1_IN_running 		 	0
+#define SCOPE_BF_GPIO1_IN_readAvail 		1
+#define SCOPE_BF_GPIO1_IN_readValid 		2
 
 
-#define SCOPE_MASK_GPIO1_OUT_enable 		0x00000001UL
-#define SCOPE_MASK_GPIO1_OUT_start 			0x00000002UL
-#define SCOPE_MASK_GPIO1_OUT_pop	 		0x00000004UL
-#define SCOPE_MASK_GPIO1_OUT_trigLvl 		0x00000080UL
-#define SCOPE_MASK_GPIO1_OUT_trigSrc	 	0x00003f00UL
+#define SCOPE_MASK_GPIO0_OUT_enable 		0x00000001UL
+#define SCOPE_MASK_GPIO0_OUT_start 			0x00000002UL
+#define SCOPE_MASK_GPIO0_OUT_pop	 		0x00000004UL
+#define SCOPE_MASK_GPIO0_OUT_trigLvlHi 		0x00000080UL
+#define SCOPE_MASK_GPIO0_OUT_trigSrc	 	0x00003f00UL
 
-#define SCOPE_MASK_GPIO1_IN_running 		0x00010000UL
-#define SCOPE_MASK_GPIO1_IN_readAvail 		0x00020000UL
-#define SCOPE_MASK_GPIO1_IN_readValid 		0x00040000UL
+#define SCOPE_MASK_GPIO1_IN_running 		0x0000001UL
+#define SCOPE_MASK_GPIO1_IN_readAvail 		0x0000002UL
+#define SCOPE_MASK_GPIO1_IN_readValid 		0x0000004UL
 
 
 enum SCOPE_TRIGSRC_48LINES_ENUM {
@@ -106,7 +106,8 @@ static TaskHandle_t thEth;
 static XGpio gpio_Rotenc;																		/* ROTENC 	               */
 static XGpio gpio_PWM_Lights;																	/* PWM Lights              */
 static XGpio gpio_CLK1B_PS;																		/* CLK1B fine PS tuning    */
-static XGpio gpio_SCOPE;																		/* SCOPE unit for analysis */
+static XGpio gpio0_SCOPE;																		/* SCOPE unit for analysis */
+static XGpio gpio1_SCOPE;																		/* GPIO2 and GPIO3         */
 
 
 /* App includes */
@@ -125,8 +126,8 @@ int main(void)
 	xTaskCreate(
 			taskDefault, 					/* The function that implements the task. */
 			(const char*) "tskDflt", 		/* Text name for the task, provided to assist debugging only. */
-			configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
-			//(unsigned short) 500,	 		/* The stack allocated to the task. */
+			//configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
+			(unsigned short) 500,	 		/* The stack allocated to the task. */
 			NULL, 							/* The task parameter is not used, so set to NULL. */
 			tskIDLE_PRIORITY,				/* The task runs at the idle priority. */
 			&thDflt
@@ -135,8 +136,8 @@ int main(void)
 	xTaskCreate(
 			taskEth, 						/* The function that implements the task. */
 			(const char*) "tskNet",			/* Text name for the task, provided to assist debugging only. */
-			configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
-			//(unsigned short) 500,	 		/* The stack allocated to the task. */
+			//configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
+			(unsigned short) 500,	 		/* The stack allocated to the task. */
 			NULL,							/* The task parameter is not used, so set to NULL. */
 			tskIDLE_PRIORITY + 1U,			/* The task runs at that priority. */
 			&thEth
@@ -314,16 +315,25 @@ static void taskDefault(void* pvParameters)
 #endif
 
 
-#if 0
+#if 1
 	/* SCOPE unit for MII analysis */
 	{
-		int statusScope = XGpio_Initialize(&gpio_SCOPE, XPAR_SCOPE_SCOPE_AXI_GPIO_0_DEVICE_ID);
+		int statusScope = XGpio_Initialize(&gpio0_SCOPE, XPAR_SCOPE_SCOPE_AXI_GPIO_0_DEVICE_ID);
 		if (statusScope != XST_SUCCESS) {
-			xil_printf("GPIO SCOPE Failed\r\n");
+			xil_printf("GPIO SCOPE (GPIO0) Failed\r\n");
 			return;
 		}
-		XGpio_SetDataDirection(&gpio_SCOPE, 1U, 0xffff0000UL);  // 16 bit input (STATUS) - 16 bit output (CONTROL)
-		XGpio_SetDataDirection(&gpio_SCOPE, 2U, 0xffffffffUL);  // 32 bit input (DATA)
+
+		statusScope = XGpio_Initialize(&gpio1_SCOPE, XPAR_SCOPE_SCOPE_AXI_GPIO_1_DEVICE_ID);
+		if (statusScope != XST_SUCCESS) {
+			xil_printf("GPIO SCOPE (GPIO1) Failed\r\n");
+			return;
+		}
+
+		XGpio_SetDataDirection(&gpio0_SCOPE, 1U, 0x00000000UL);  // 32 bit input (CONTROL)
+		XGpio_SetDataDirection(&gpio0_SCOPE, 2U, 0xffffffffUL);  // 32 bit input (STATUS)
+		XGpio_SetDataDirection(&gpio1_SCOPE, 1U, 0xffffffffUL);  // 32 bit input (DATA MSB)
+		XGpio_SetDataDirection(&gpio1_SCOPE, 2U, 0xffffffffUL);  // 32 bit input (DATA LSB)
 	}
 #endif
 
@@ -652,47 +662,62 @@ static void taskDefault(void* pvParameters)
 		}
 #endif
 
-#if 0
+#if 1
 		/* SCOPE Triggering and Readout */
 		{
-			/* Prepare: turn off first */
-			XGpio_DiscreteWrite(&gpio_SCOPE, 1, 0UL);
+			u32 gpio1, gpio3, gpio4;
 
-			/* Prepare: turn on and switch Scope in running mode */
-			const u32 startTrig_RX_DV = (
-							(SCOPE_TRIGSRC_MII_CRS				<< SCOPE_BF_GPIO1_OUT_trigSrc_LSB)	|
-						  	SCOPE_MASK_GPIO1_OUT_trigLvl											|
-							SCOPE_MASK_GPIO1_OUT_start												|
-							SCOPE_MASK_GPIO1_OUT_enable);
-			XGpio_DiscreteWrite(&gpio_SCOPE, 1, startTrig_RX_DV);
+			/* Prepare: turn off first */
+			XGpio_DiscreteWrite(&gpio0_SCOPE, 1U, 0UL);
+
+			/* Activate SCOPE Module */
+			const u32 Enable = (SCOPE_MASK_GPIO0_OUT_enable);
+			XGpio_DiscreteWrite(&gpio0_SCOPE, 1U, Enable);
 
 			/* Print Header */
-			xil_printf("\r\nSCOPE\r\n");
-			xil_printf("Timebase \t\tInput - Vector\r\n\r\n");
-			xil_printf("\t\t\t4444.4444.3333.3333.3322.2222.2222.1111.1111.1100.0000.0000\r\n");
-			xil_printf("\t\t\t7654.3210.9876.5432.1098.7654.3210.9876.5432.1098.7654.3210\r\n");
+			xil_printf("\r\n===\r\nSCOPE -->\r\n\r\n");
+			xil_printf("Trigger-Source lines:\r\n\r\n");
+			xil_printf("00: RMII_25MHz_RefClk\r\n");
+			xil_printf("07: MII_COL\r\n");
+			xil_printf("08: MII_CRS\r\n");
+			xil_printf("09: MII_RX_DV\r\n");
+			xil_printf("13: MII_RX_RXD3 \t12: D2 \t\t11: D1 \t\t10: D0\r\n");
+			xil_printf("14: MII_RX_ER\r\n");
+			xil_printf("15: MII_RX_CLK\r\n");
+			xil_printf("16: MII_TX_EN\r\n");
+			xil_printf("20: MII_TX_TXD3 \t19: D2 \t\t18: D1 \t\t17: D0\r\n");
+			xil_printf("21: MII_TX_ER\r\n");
+			xil_printf("22: MII_TX_CLK\r\n");
+			xil_printf("\r\n");
 			xil_printf("(waiting for Trigger) ...");
+
+			/* Start capturing and wait for Trigger */
+			const u32 EnableStartTrigHigh_TrigSel = (
+							(SCOPE_TRIGSRC_MII_CRS				<< SCOPE_BF_GPIO0_OUT_trigSrc_LSB)	|
+						    SCOPE_MASK_GPIO0_OUT_trigLvlHi											|
+						    SCOPE_MASK_GPIO0_OUT_start												|
+							SCOPE_MASK_GPIO0_OUT_enable);
+			XGpio_DiscreteWrite(&gpio0_SCOPE, 1U, EnableStartTrigHigh_TrigSel);
 
 			/* Wait until triggered and data ready */
 			while (1) {
-				const u32 gpio1 = XGpio_DiscreteRead(&gpio_SCOPE, 1);
+				gpio1 = XGpio_DiscreteRead(&gpio0_SCOPE, 2U);
 				if ((gpio1 & SCOPE_MASK_GPIO1_IN_running) == 0UL) {
 					/* No more running */
 					break;
 				}
-//				vTaskDelay(pdMS_TO_TICKS(100));
+				vTaskDelay(pdMS_TO_TICKS(100));
 			}
 
 			/* Triggered */
-			xil_printf("Trig\r\n");
+			xil_printf(" *Trig*\r\n\r\n");
+			xil_printf("Timebase \t\tInput - Vector\r\n\r\n");
+			xil_printf("\t\t\t4444.4444.3333.3333.3322.2222.2222.1111.1111.1100.0000.0000\r\n");
+			xil_printf("\t\t\t7654.3210.9876.5432.1098.7654.3210.9876.5432.1098.7654.3210\r\n\r\n");
 
 			/* Data read-out */
 			while (1) {
-				static u8  loHi 	= 0U;
-				static u32 loData 	= 0x0UL;
-
-				const u32 gpio1 = XGpio_DiscreteRead(&gpio_SCOPE, 1);
-				const u32 gpio2 = XGpio_DiscreteRead(&gpio_SCOPE, 2);
+				gpio1 = XGpio_DiscreteRead(&gpio0_SCOPE, 2U);
 
 				/* End when no more data is available */
 				if ((gpio1 & SCOPE_MASK_GPIO1_IN_readAvail) == 0) {
@@ -700,52 +725,48 @@ static void taskDefault(void* pvParameters)
 					break;
 				}
 
-				/* Request next datum */
-				XGpio_DiscreteSet(&gpio_SCOPE, 1, SCOPE_MASK_GPIO1_OUT_pop);
+				/* Request next Row */
+				XGpio_DiscreteSet(&gpio0_SCOPE, 1U, SCOPE_MASK_GPIO0_OUT_pop);
 
-				/* Wait until data is ready to poll */
+				/* Wait until Data is ready to poll */
 				while (1) {
-					const u32 gpio1 = XGpio_DiscreteRead(&gpio_SCOPE, 1);
+					gpio1 = XGpio_DiscreteRead(&gpio0_SCOPE, 2U);
+
+					/* Wait until data is valid */
 					if ((gpio1 & SCOPE_MASK_GPIO1_IN_readValid) != 0UL) {
 						/* Data ready */
 						break;
 					}
 				}
+				gpio3		= XGpio_DiscreteRead(&gpio1_SCOPE, 1U);
+				gpio4		= XGpio_DiscreteRead(&gpio1_SCOPE, 2U);
+				u16 time 	= (gpio3 & 0xffff0000UL) >> 16;
 
-				if (!loHi) {
-					loData = gpio2;
-				} else {
-					const u32 hiData 	= gpio2;
-					const u16 time 		= loData & 0x0000ffffUL;
+				xil_printf("Time = %6d x 10 ns \t%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d\r\n",
+						time,
 
-					xil_printf("Time = %6d x 10 ns \t%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d.%d%d%d%d\r\n",
-							time,
+						((gpio3 >> 15) & 0x1UL), ((gpio3 >> 14) & 0x1UL), ((gpio3 >> 13) & 0x1UL), ((gpio3 >> 12) & 0x1UL),
+						((gpio3 >> 11) & 0x1UL), ((gpio3 >> 10) & 0x1UL), ((gpio3 >>  9) & 0x1UL), ((gpio3 >>  8) & 0x1UL),
+						((gpio3 >>  7) & 0x1UL), ((gpio3 >>  6) & 0x1UL), ((gpio3 >>  5) & 0x1UL), ((gpio3 >>  4) & 0x1UL),
+						((gpio3 >>  3) & 0x1UL), ((gpio3 >>  2) & 0x1UL), ((gpio3 >>  1) & 0x1UL), ((gpio3 >>  0) & 0x1UL),
 
-							((hiData >> 31) & 0x1UL), ((hiData >> 30) & 0x1UL), ((hiData >> 29) & 0x1UL), ((hiData >> 28) & 0x1UL),
-							((hiData >> 27) & 0x1UL), ((hiData >> 26) & 0x1UL), ((hiData >> 25) & 0x1UL), ((hiData >> 24) & 0x1UL),
-							((hiData >> 23) & 0x1UL), ((hiData >> 22) & 0x1UL), ((hiData >> 21) & 0x1UL), ((hiData >> 20) & 0x1UL),
-							((hiData >> 19) & 0x1UL), ((hiData >> 18) & 0x1UL), ((hiData >> 17) & 0x1UL), ((hiData >> 16) & 0x1UL),
-							((hiData >> 15) & 0x1UL), ((hiData >> 14) & 0x1UL), ((hiData >> 13) & 0x1UL), ((hiData >> 12) & 0x1UL),
-							((hiData >> 11) & 0x1UL), ((hiData >> 10) & 0x1UL), ((hiData >>  9) & 0x1UL), ((hiData >>  8) & 0x1UL),
-							((hiData >>  7) & 0x1UL), ((hiData >>  6) & 0x1UL), ((hiData >>  5) & 0x1UL), ((hiData >>  4) & 0x1UL),
-							((hiData >>  3) & 0x1UL), ((hiData >>  2) & 0x1UL), ((hiData >>  1) & 0x1UL), ((hiData >>  0) & 0x1UL),
-
-							((loData >> 31) & 0x1UL), ((loData >> 30) & 0x1UL), ((loData >> 29) & 0x1UL), ((loData >> 28) & 0x1UL),
-							((loData >> 27) & 0x1UL), ((loData >> 26) & 0x1UL), ((loData >> 25) & 0x1UL), ((loData >> 24) & 0x1UL),
-							((loData >> 23) & 0x1UL), ((loData >> 22) & 0x1UL), ((loData >> 21) & 0x1UL), ((loData >> 20) & 0x1UL),
-							((loData >> 19) & 0x1UL), ((loData >> 18) & 0x1UL), ((loData >> 17) & 0x1UL), ((loData >> 16) & 0x1UL)
-					);
-				}
+						((gpio4 >> 31) & 0x1UL), ((gpio4 >> 30) & 0x1UL), ((gpio4 >> 29) & 0x1UL), ((gpio4 >> 28) & 0x1UL),
+						((gpio4 >> 27) & 0x1UL), ((gpio4 >> 26) & 0x1UL), ((gpio4 >> 25) & 0x1UL), ((gpio4 >> 24) & 0x1UL),
+						((gpio4 >> 23) & 0x1UL), ((gpio4 >> 22) & 0x1UL), ((gpio4 >> 21) & 0x1UL), ((gpio4 >> 20) & 0x1UL),
+						((gpio4 >> 19) & 0x1UL), ((gpio4 >> 18) & 0x1UL), ((gpio4 >> 17) & 0x1UL), ((gpio4 >> 16) & 0x1UL),
+						((gpio4 >> 15) & 0x1UL), ((gpio4 >> 14) & 0x1UL), ((gpio4 >> 13) & 0x1UL), ((gpio4 >> 12) & 0x1UL),
+						((gpio4 >> 11) & 0x1UL), ((gpio4 >> 10) & 0x1UL), ((gpio4 >>  9) & 0x1UL), ((gpio4 >>  8) & 0x1UL),
+						((gpio4 >>  7) & 0x1UL), ((gpio4 >>  6) & 0x1UL), ((gpio4 >>  5) & 0x1UL), ((gpio4 >>  4) & 0x1UL),
+						((gpio4 >>  3) & 0x1UL), ((gpio4 >>  2) & 0x1UL), ((gpio4 >>  1) & 0x1UL), ((gpio4 >>  0) & 0x1UL)
+				);
 
 				/* Release bit */
-				XGpio_DiscreteClear(&gpio_SCOPE, 1, SCOPE_MASK_GPIO1_OUT_pop);
-
-				loHi = !loHi;
+				XGpio_DiscreteClear(&gpio0_SCOPE, 1U, SCOPE_MASK_GPIO0_OUT_pop);
 			}
 		}
 
 		/* Prepare: turn off module */
-		XGpio_DiscreteWrite(&gpio_SCOPE, 1, 0UL);
+		XGpio_DiscreteWrite(&gpio0_SCOPE, 1U, 0UL);
 		xil_printf("\r\n");
 #endif
 

@@ -37,29 +37,31 @@ use IEEE.std_logic_signed.all;
 
 entity SCOPE_FSM is
   Port ( 
-    resetn                  : in  STD_LOGIC;
-    clk                     : in  STD_LOGIC;
-    SCOPE_FSM_GPIO_In       : out STD_LOGIC_VECTOR (15 downto 0);
-    SCOPE_FSM_GPIO_Out      : in  STD_LOGIC_VECTOR (15 downto 0);
-    SCOPE_FSM_TrigSrc       : in  STD_LOGIC_VECTOR (47 downto 0);
-    SCOPE_FSM_Timebase_CE   : out STD_LOGIC;
-    SCOPE_FSM_Timebase_SCLR : out STD_LOGIC;
-    SCOPE_FSM_FIFO_Rst      : out STD_LOGIC;
-    SCOPE_FSM_FIFO_WrFull   : in  STD_LOGIC;
-    SCOPE_FSM_FIFO_RdEmpty  : in  STD_LOGIC;
-    SCOPE_FSM_FIFO_WrEn     : out STD_LOGIC;
-    SCOPE_FSM_FIFO_RdEn     : out STD_LOGIC;
-    SCOPE_FSM_FIFO_RdValid  : in  STD_LOGIC
+    resetn                      : in  STD_LOGIC;
+    clk                         : in  STD_LOGIC;
+    SCOPE_FSM_GPIO0_Out         : in  STD_LOGIC_VECTOR (31 downto 0);
+    SCOPE_FSM_GPIO1_In          : out STD_LOGIC_VECTOR (31 downto 0);
+    SCOPE_FSM_TrigSrc           : in  STD_LOGIC_VECTOR (47 downto 0);
+    SCOPE_FSM_Timebase_CE       : out STD_LOGIC;
+    SCOPE_FSM_Timebase_SCLR     : out STD_LOGIC;
+    SCOPE_FSM_FIFO_Rst          : out STD_LOGIC;
+    SCOPE_FSM_FIFO_wr_rst_busy  : in  STD_LOGIC;
+    SCOPE_FSM_FIFO_rd_rst_busy  : in  STD_LOGIC;
+    SCOPE_FSM_FIFO_WrFull       : in  STD_LOGIC;
+    SCOPE_FSM_FIFO_RdEmpty      : in  STD_LOGIC;
+    SCOPE_FSM_FIFO_WrEn         : out STD_LOGIC;
+    SCOPE_FSM_FIFO_RdEn         : out STD_LOGIC;
+    SCOPE_FSM_FIFO_RdValid      : in  STD_LOGIC
   );
 end SCOPE_FSM;
 
 architecture Behavioral of SCOPE_FSM is
-  constant GPIO1_OUT_enable         : natural   :=  0;
-  constant GPIO1_OUT_start          : natural   :=  1;
-  constant GPIO1_OUT_pop            : natural   :=  2;
-  constant GPIO1_OUT_trigLvl        : natural   :=  7;
-  constant GPIO1_OUT_trigSrc_LO     : natural   :=  8;
-  constant GPIO1_OUT_trigSrc_HI     : natural   := 13;
+  constant GPIO0_OUT_enable         : natural   :=  0;
+  constant GPIO0_OUT_start          : natural   :=  1;
+  constant GPIO0_OUT_pop            : natural   :=  2;
+  constant GPIO0_OUT_trigLvl        : natural   :=  7;
+  constant GPIO0_OUT_trigSrc_LO     : natural   :=  8;
+  constant GPIO0_OUT_trigSrc_HI     : natural   := 13;
 
   constant GPIO1_IN_running         : natural   :=  0;
   constant GPIO1_IN_readAvail       : natural   :=  1;
@@ -71,7 +73,7 @@ begin
 
   -- FSM
   proc_fsm: process (resetn, clk)
-    type state_type is (off, init1, init2, waitRdy, ready, run, trig, trigTmr, stop, pop1, pop2);
+    type state_type is (off, init, waitRdy, ready, run, trig, trigTmr, stop, pop1, pop2);
     
     variable state          : state_type;
     variable trgSrc         : Integer;
@@ -82,15 +84,15 @@ begin
             state                   := off;
             ctr                     <= (others => '0');
             trgSrc                  := 0;
-            SCOPE_FSM_GPIO_In       <= (others => '0');
-            SCOPE_FSM_Timebase_CE   <= '0';
-            SCOPE_FSM_Timebase_SCLR <= '0';
-            SCOPE_FSM_FIFO_Rst      <= '0';
+            SCOPE_FSM_GPIO1_In      <= (others => '0');
+            SCOPE_FSM_Timebase_CE   <= '1';
+            SCOPE_FSM_Timebase_SCLR <= '1';
+            SCOPE_FSM_FIFO_Rst      <= '1';
             SCOPE_FSM_FIFO_WrEn     <= '0';
             SCOPE_FSM_FIFO_RdEn     <= '0';
             
         else
-            if (SCOPE_FSM_GPIO_Out(GPIO1_OUT_enable) = '0') then
+            if (SCOPE_FSM_GPIO0_Out(GPIO0_OUT_enable) = '0') then
                 FSM_state_dbg <= x"80";
                 state := off;
             end if;
@@ -100,46 +102,38 @@ begin
                     FSM_state_dbg <= x"00";
                     ctr                     <= (others => '0');
                     trgSrc                  := 0;
-                    SCOPE_FSM_GPIO_In       <= (others => '0');
-                    SCOPE_FSM_Timebase_CE   <= '0';
-                    SCOPE_FSM_Timebase_SCLR <= '0';
-                    SCOPE_FSM_FIFO_Rst      <= '0';
+                    SCOPE_FSM_GPIO1_In      <= (others => '0');
+                    SCOPE_FSM_Timebase_CE   <= '1';
+                    SCOPE_FSM_Timebase_SCLR <= '1';
+                    SCOPE_FSM_FIFO_Rst      <= '1';
                     SCOPE_FSM_FIFO_WrEn     <= '0';
                     SCOPE_FSM_FIFO_RdEn     <= '0';
                     
-                    if (SCOPE_FSM_GPIO_Out(GPIO1_OUT_enable) = '1') then
+                    if (SCOPE_FSM_GPIO0_Out(GPIO0_OUT_enable) = '1') then
                         FSM_state_dbg <= x"01";
-                        SCOPE_FSM_FIFO_Rst      <= '1';
                         SCOPE_FSM_Timebase_CE   <= '1';
                         SCOPE_FSM_Timebase_SCLR <= '1';
-                        state := init1;
+                        state := init;
                     end if;
                     
-                when init1 =>
+                when init =>
                     FSM_state_dbg <= x"02";
-                    state := init2;
-                    
-                when init2 =>
-                    FSM_state_dbg <= x"03";
-                    ctr <= x"0010";
                     state := waitRdy;
                     
                 when waitRdy =>
                     FSM_state_dbg <= x"10";
-                    SCOPE_FSM_FIFO_Rst      <= '0';
-                    if (unsigned(ctr) = 0) then
+                    SCOPE_FSM_FIFO_Rst <= '0';
+                    if (SCOPE_FSM_FIFO_wr_rst_busy = '0') then
                         state := ready;
-                    else
-                        ctr <= std_logic_vector(to_unsigned( (to_integer(unsigned(ctr)) - 1), ctr'length));
                     end if;
                     
                 when ready =>
                     FSM_state_dbg <= x"20";
-                    if (SCOPE_FSM_GPIO_Out(GPIO1_OUT_start) = '1') then
+                    if (SCOPE_FSM_GPIO0_Out(GPIO0_OUT_start) = '1') then
                         FSM_state_dbg <= x"21";
                         SCOPE_FSM_Timebase_SCLR <= '0';
                         SCOPE_FSM_FIFO_WrEn     <= '1';
-                        SCOPE_FSM_GPIO_In(GPIO1_IN_running) <= '1';
+                        SCOPE_FSM_GPIO1_In(GPIO1_IN_running) <= '1';
                         state := run;
                     end if;
                     
@@ -148,13 +142,13 @@ begin
                     SCOPE_FSM_FIFO_RdEn <= SCOPE_FSM_FIFO_WrFull;  --  During RUN roll-out old data when buffer full
                     
                     -- Select trigger source
-                    trgSrc := to_integer(unsigned(SCOPE_FSM_GPIO_Out(GPIO1_OUT_trigSrc_HI downto GPIO1_OUT_trigSrc_LO)));
+                    trgSrc := to_integer(unsigned(SCOPE_FSM_GPIO0_Out(GPIO0_OUT_trigSrc_HI downto GPIO0_OUT_trigSrc_LO)));
                     if (trgSrc > 47) then
                         trgSrc := 0;
                     end if;
                     
                     -- Trigger check
-                    if (SCOPE_FSM_TrigSrc(trgSrc) = SCOPE_FSM_GPIO_Out(GPIO1_OUT_trigLvl)) then
+                    if (SCOPE_FSM_TrigSrc(trgSrc) = SCOPE_FSM_GPIO0_Out(GPIO0_OUT_trigLvl)) then
                         FSM_state_dbg <= x"31";
                         state := trig;
                     end if;
@@ -162,6 +156,7 @@ begin
                 when trig =>
                     -- Start after-trigger timer
                     FSM_state_dbg <= x"40";
+                    SCOPE_FSM_FIFO_RdEn <= SCOPE_FSM_FIFO_WrFull;
                     ctr <= x"0200";
                     state := trigTmr;
                     
@@ -170,23 +165,25 @@ begin
                     if (unsigned(ctr) = 0) then
                         FSM_state_dbg <= x"42";
                         SCOPE_FSM_FIFO_WrEn <= '0';
+                        SCOPE_FSM_FIFO_RdEn <= '0';
                         state := stop;
                     else
                         ctr <= std_logic_vector(to_unsigned( (to_integer(unsigned(ctr)) - 1), ctr'length));
+                        SCOPE_FSM_FIFO_RdEn <= SCOPE_FSM_FIFO_WrFull;
                     end if;
                     
                 when stop =>
                     FSM_state_dbg <= x"50";
-                    SCOPE_FSM_GPIO_In(GPIO1_IN_running) <= '0';
+                    SCOPE_FSM_GPIO1_In(GPIO1_IN_running) <= '0';
                     
-                    SCOPE_FSM_GPIO_In(GPIO1_IN_readAvail) <= not SCOPE_FSM_FIFO_RdEmpty;    -- During STOP available data is shown here
+                    SCOPE_FSM_GPIO1_In(GPIO1_IN_readAvail) <= not SCOPE_FSM_FIFO_RdEmpty;    -- During STOP available data is shown here
                     
-                    if (SCOPE_FSM_GPIO_Out(GPIO1_OUT_pop) = '1'  and  SCOPE_FSM_FIFO_RdEmpty = '0') then
+                    if ((SCOPE_FSM_GPIO0_Out(GPIO0_OUT_pop) = '1')  and  (SCOPE_FSM_FIFO_rd_rst_busy = '0')  and  (SCOPE_FSM_FIFO_RdEmpty = '0')) then
                         FSM_state_dbg <= x"51";
                         SCOPE_FSM_FIFO_RdEn <= '1';
                         state := pop1;
                         
-                    elsif (SCOPE_FSM_GPIO_Out(GPIO1_OUT_enable) = '0') then
+                    elsif (SCOPE_FSM_GPIO0_Out(GPIO0_OUT_enable) = '0') then
                         FSM_state_dbg <= x"52";
                         state := off;
                     end if;
@@ -196,15 +193,15 @@ begin
                     SCOPE_FSM_FIFO_RdEn <= '0';
                     if (SCOPE_FSM_FIFO_RdValid = '1') then
                         FSM_state_dbg <= x"61";
-                        SCOPE_FSM_GPIO_In(GPIO1_IN_readValid) <= '1';
+                        SCOPE_FSM_GPIO1_In(GPIO1_IN_readValid) <= '1';
                         state := pop2;
                     end if;
                 
                 when pop2 =>
                     FSM_state_dbg <= x"62";
-                    if (SCOPE_FSM_GPIO_Out(GPIO1_OUT_pop) = '0') then
+                    if (SCOPE_FSM_GPIO0_Out(GPIO0_OUT_pop) = '0') then
                         FSM_state_dbg <= x"63";
-                        SCOPE_FSM_GPIO_In(GPIO1_IN_readValid) <= '0';
+                        SCOPE_FSM_GPIO1_In(GPIO1_IN_readValid) <= '0';
                         state := stop;
                     end if;
                 

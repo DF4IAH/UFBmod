@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="gpio_CLK1B_PS" key="selection"/>
+		<item value="SCOPE_MASK_GPIO0_OUT_trigLvlHi" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="SCOPE_MASK_GPIO0_OUT_trigLvlHi"/>
 			<item value="gpio_CLK1B_PS"/>
 			<item value="gpio_SCOPE"/>
 			<item value="9600"/>
@@ -22,7 +23,6 @@
 			<item value="IIC_LCD_ONCHIP_ADDRESS"/>
 			<item value="emacLiteRecvFrameLength"/>
 			<item value="emacLiteRxFrameLength"/>
-			<item value="ethCheckSumCalculation"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -15,6 +15,9 @@
             <top_module name="lmb_bram_if_funcs" />
             <top_module name="mac_pkg" />
             <top_module name="mdm_funcs" />
+            <top_module name="msys_clk_wiz_0_1_family_support" />
+            <top_module name="msys_clk_wiz_0_1_ipif_pkg" />
+            <top_module name="msys_clk_wiz_0_1_proc_common_pkg" />
             <top_module name="tb_null" />
             <top_module name="tc_types" />
             <top_module name="vcomponents" />
@@ -22,15 +25,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="24294098667fs"></ZoomStartTime>
-      <ZoomEndTime time="24508198668fs"></ZoomEndTime>
-      <Cursor1Time time="24329782000fs"></Cursor1Time>
+      <ZoomStartTime time="828601959fs"></ZoomStartTime>
+      <ZoomEndTime time="1034279609fs"></ZoomEndTime>
+      <Cursor1Time time="1000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="670"></NameColumnWidth>
-      <ValueColumnWidth column_width="352"></ValueColumnWidth>
+      <ValueColumnWidth column_width="344"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="6" />
+   <WVObjectSize size="12" />
    <wave_markers>
       <marker time="16266766000" label="" />
       <marker time="18766926000" label="" />
@@ -46,7 +49,6 @@
    <wvobject fp_name="group263" type="group">
       <obj_property name="label">TRX_tx_DDS_unit</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="group266" type="group">
          <obj_property name="label">clocks</obj_property>
          <obj_property name="DisplayName">label</obj_property>
@@ -255,7 +257,6 @@
    <wvobject fp_name="group574" type="group">
       <obj_property name="label">TRX_tx09_fifo</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_tx09_fifo_generator_0/rst" type="logic">
          <obj_property name="ElementShortName">rst</obj_property>
          <obj_property name="ObjectShortName">rst</obj_property>
@@ -338,7 +339,6 @@
    <wvobject fp_name="group577" type="group">
       <obj_property name="label">TRX_LVDS</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/data_out_from_device" type="array">
          <obj_property name="ElementShortName">data_out_from_device[15:0]</obj_property>
          <obj_property name="ObjectShortName">data_out_from_device[15:0]</obj_property>
@@ -359,6 +359,112 @@
          <obj_property name="Radix">BINARYRADIX</obj_property>
          <obj_property name="CustomSignalColor">#800080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider227">
+      <obj_property name="label">SCOPE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/SCOPE_FSM_i/SCOPE_FSM_TrigSrc" type="array">
+      <obj_property name="ElementShortName">SCOPE_FSM_TrigSrc[47:0]</obj_property>
+      <obj_property name="ObjectShortName">SCOPE_FSM_TrigSrc[47:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#800080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/SCOPE_FSM_i/SCOPE_FSM_GPIO0_Out" type="array">
+      <obj_property name="ElementShortName">SCOPE_FSM_GPIO0_Out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SCOPE_FSM_GPIO0_Out[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#DCDCDC</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/SCOPE_FSM_i/SCOPE_FSM_GPIO1_In" type="array">
+      <obj_property name="ElementShortName">SCOPE_FSM_GPIO1_In[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SCOPE_FSM_GPIO1_In[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#DCDCDC</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="group233" type="group">
+      <obj_property name="label">Timebase</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/SCOPE_FSM_i/SCOPE_FSM_Timebase_CE" type="logic">
+         <obj_property name="ElementShortName">SCOPE_FSM_Timebase_CE</obj_property>
+         <obj_property name="ObjectShortName">SCOPE_FSM_Timebase_CE</obj_property>
+         <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/SCOPE_FSM_i/SCOPE_FSM_Timebase_SCLR" type="logic">
+         <obj_property name="ElementShortName">SCOPE_FSM_Timebase_SCLR</obj_property>
+         <obj_property name="ObjectShortName">SCOPE_FSM_Timebase_SCLR</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_Timebase_c_counter_binary_0/Q" type="array">
+         <obj_property name="ElementShortName">Q[15:0]</obj_property>
+         <obj_property name="ObjectShortName">Q[15:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group248" type="group">
+      <obj_property name="label">FIFO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/rst" type="logic">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/wr_rst_busy" type="logic">
+         <obj_property name="ElementShortName">wr_rst_busy</obj_property>
+         <obj_property name="ObjectShortName">wr_rst_busy</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/rd_rst_busy" type="logic">
+         <obj_property name="ElementShortName">rd_rst_busy</obj_property>
+         <obj_property name="ObjectShortName">rd_rst_busy</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/wr_clk" type="logic">
+         <obj_property name="ElementShortName">wr_clk</obj_property>
+         <obj_property name="ObjectShortName">wr_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/wr_en" type="logic">
+         <obj_property name="ElementShortName">wr_en</obj_property>
+         <obj_property name="ObjectShortName">wr_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/almost_full" type="logic">
+         <obj_property name="ElementShortName">almost_full</obj_property>
+         <obj_property name="ObjectShortName">almost_full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/full" type="logic">
+         <obj_property name="ElementShortName">full</obj_property>
+         <obj_property name="ObjectShortName">full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/din" type="array">
+         <obj_property name="ElementShortName">din[63:0]</obj_property>
+         <obj_property name="ObjectShortName">din[63:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/rd_clk" type="logic">
+         <obj_property name="ElementShortName">rd_clk</obj_property>
+         <obj_property name="ObjectShortName">rd_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/rd_en" type="logic">
+         <obj_property name="ElementShortName">rd_en</obj_property>
+         <obj_property name="ObjectShortName">rd_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/dout" type="array">
+         <obj_property name="ElementShortName">dout[63:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[63:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/empty" type="logic">
+         <obj_property name="ElementShortName">empty</obj_property>
+         <obj_property name="ObjectShortName">empty</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/valid" type="logic">
+         <obj_property name="ElementShortName">valid</obj_property>
+         <obj_property name="ObjectShortName">valid</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>

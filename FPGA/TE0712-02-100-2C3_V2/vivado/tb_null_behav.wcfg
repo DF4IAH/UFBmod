@@ -15,6 +15,9 @@
             <top_module name="lmb_bram_if_funcs" />
             <top_module name="mac_pkg" />
             <top_module name="mdm_funcs" />
+            <top_module name="msys_clk_wiz_0_1_family_support" />
+            <top_module name="msys_clk_wiz_0_1_ipif_pkg" />
+            <top_module name="msys_clk_wiz_0_1_proc_common_pkg" />
             <top_module name="tb_null" />
             <top_module name="tc_types" />
             <top_module name="vcomponents" />
@@ -22,18 +25,17 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="219284912fs"></ZoomEndTime>
-      <Cursor1Time time="1000000000fs"></Cursor1Time>
+      <ZoomStartTime time="33024789091fs"></ZoomStartTime>
+      <ZoomEndTime time="33264889092fs"></ZoomEndTime>
+      <Cursor1Time time="33224872425fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="426"></NameColumnWidth>
-      <ValueColumnWidth column_width="360"></ValueColumnWidth>
+      <ValueColumnWidth column_width="336"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="2" />
+   <WVObjectSize size="15" />
    <wave_markers>
-      <marker time="13390100000" label="" />
-      <marker time="32980000000" label="" />
+      <marker time="13520100000" label="" />
    </wave_markers>
    <wvobject type="divider" fp_name="divider1646">
       <obj_property name="label">Force_High_after_10us</obj_property>
@@ -42,5 +44,210 @@
    <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SC0712_0/reset_out" type="logic">
       <obj_property name="ElementShortName">reset_out</obj_property>
       <obj_property name="ObjectShortName">reset_out</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider297">
+      <obj_property name="label">SCOPE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group602" type="group">
+      <obj_property name="label">CLK1B</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/CLK1B_CW_0/CLK1B_clk_wiz_0/clk_in1" type="logic">
+      <obj_property name="ElementShortName">clk_in1</obj_property>
+      <obj_property name="ObjectShortName">clk_in1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/CLK1B_CW_0/CLK1B_clk_wiz_0/s_axi_aresetn" type="logic">
+      <obj_property name="ElementShortName">s_axi_aresetn</obj_property>
+      <obj_property name="ObjectShortName">s_axi_aresetn</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/CLK1B_CW_0/CLK1B_clk_wiz_0/locked" type="logic">
+      <obj_property name="ElementShortName">locked</obj_property>
+      <obj_property name="ObjectShortName">locked</obj_property>
+      <obj_property name="CustomSignalColor">#008000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/CLK1B_CW_0/CLK1B_clk_wiz_0/clk_out1_RMII" type="logic">
+      <obj_property name="ElementShortName">clk_out1_RMII</obj_property>
+      <obj_property name="ObjectShortName">clk_out1_RMII</obj_property>
+      <obj_property name="CustomSignalColor">#00FF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/CLK1B_CW_0/CLK1B_clk_wiz_0/clk_out2_fMeter" type="logic">
+      <obj_property name="ElementShortName">clk_out2_fMeter</obj_property>
+      <obj_property name="ObjectShortName">clk_out2_fMeter</obj_property>
+      <obj_property name="CustomSignalColor">#00FF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/CLK1B_CW_0/CLK1B_clk_wiz_0/clk_out3_Scope" type="logic">
+      <obj_property name="ElementShortName">clk_out3_Scope</obj_property>
+      <obj_property name="ObjectShortName">clk_out3_Scope</obj_property>
+      <obj_property name="CustomSignalColor">#00FF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/CLK1B_CW_0/CLK1B_clk_wiz_0/clk_out4_000deg" type="logic">
+      <obj_property name="ElementShortName">clk_out4_000deg</obj_property>
+      <obj_property name="ObjectShortName">clk_out4_000deg</obj_property>
+      <obj_property name="CustomSignalColor">#00FF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="group298" type="group">
+      <obj_property name="label">GPIO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/mw_SCOPE_FSM_GPIO0_Out" type="array">
+         <obj_property name="ElementShortName">mw_SCOPE_FSM_GPIO0_Out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">mw_SCOPE_FSM_GPIO0_Out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#DCDCDC</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/mw_SCOPE_FSM_GPIO1_In" type="array">
+         <obj_property name="ElementShortName">mw_SCOPE_FSM_GPIO1_In[31:0]</obj_property>
+         <obj_property name="ObjectShortName">mw_SCOPE_FSM_GPIO1_In[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#DCDCDC</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/mw_SCOPE_FSM_TrigSrc" type="array">
+         <obj_property name="ElementShortName">mw_SCOPE_FSM_TrigSrc[47:0]</obj_property>
+         <obj_property name="ObjectShortName">mw_SCOPE_FSM_TrigSrc[47:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group299" type="group">
+      <obj_property name="label">Timebase</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_Timebase_c_counter_binary_0/CLK" type="logic">
+         <obj_property name="ElementShortName">CLK</obj_property>
+         <obj_property name="ObjectShortName">CLK</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_Timebase_c_counter_binary_0/CE" type="logic">
+         <obj_property name="ElementShortName">CE</obj_property>
+         <obj_property name="ObjectShortName">CE</obj_property>
+         <obj_property name="CustomSignalColor">#808000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_Timebase_c_counter_binary_0/SCLR" type="logic">
+         <obj_property name="ElementShortName">SCLR</obj_property>
+         <obj_property name="ObjectShortName">SCLR</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_Timebase_c_counter_binary_0/Q" type="array">
+         <obj_property name="ElementShortName">Q[15:0]</obj_property>
+         <obj_property name="ObjectShortName">Q[15:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group321" type="group">
+      <obj_property name="label">FSM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/SCOPE_FSM_i/FSM_state_dbg" type="array">
+         <obj_property name="ElementShortName">FSM_state_dbg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">FSM_state_dbg[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/SCOPE_FSM_i/ctr" type="array">
+         <obj_property name="ElementShortName">ctr[15:0]</obj_property>
+         <obj_property name="ObjectShortName">ctr[15:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group300" type="group">
+      <obj_property name="label">FIFO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/rst" type="logic">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/wr_rst_busy" type="logic">
+         <obj_property name="ElementShortName">wr_rst_busy</obj_property>
+         <obj_property name="ObjectShortName">wr_rst_busy</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/wr_clk" type="logic">
+         <obj_property name="ElementShortName">wr_clk</obj_property>
+         <obj_property name="ObjectShortName">wr_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/almost_full" type="logic">
+         <obj_property name="ElementShortName">almost_full</obj_property>
+         <obj_property name="ObjectShortName">almost_full</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/full" type="logic">
+         <obj_property name="ElementShortName">full</obj_property>
+         <obj_property name="ObjectShortName">full</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/wr_en" type="logic">
+         <obj_property name="ElementShortName">wr_en</obj_property>
+         <obj_property name="ObjectShortName">wr_en</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/din" type="array">
+         <obj_property name="ElementShortName">din[63:0]</obj_property>
+         <obj_property name="ObjectShortName">din[63:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/rd_rst_busy" type="logic">
+         <obj_property name="ElementShortName">rd_rst_busy</obj_property>
+         <obj_property name="ObjectShortName">rd_rst_busy</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/rd_clk" type="logic">
+         <obj_property name="ElementShortName">rd_clk</obj_property>
+         <obj_property name="ObjectShortName">rd_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/empty" type="logic">
+         <obj_property name="ElementShortName">empty</obj_property>
+         <obj_property name="ObjectShortName">empty</obj_property>
+         <obj_property name="CustomSignalColor">#0000A0</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/rd_en" type="logic">
+         <obj_property name="ElementShortName">rd_en</obj_property>
+         <obj_property name="ObjectShortName">rd_en</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/valid" type="logic">
+         <obj_property name="ElementShortName">valid</obj_property>
+         <obj_property name="ObjectShortName">valid</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_null/msys_wrapper_i/msys_i/SCOPE/SCOPE_fifo_generator_0/dout" type="array">
+         <obj_property name="ElementShortName">dout[63:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[63:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
    </wvobject>
 </wave_config>

@@ -86,7 +86,7 @@
     <Object name="msys_i/xfft_rx24_dly3449_event_frame_started_out_0" gui_info="hw_vios/hw_vio_1=33"/>
   </ObjectList>
   <ObjectList object_type="hw_vio" gui_info="">
-    <Object name="hw_vio_1" gui_info="hw_vios/hw_vio_1/TablePreference=5	1298	Name	0	2147483647	15	685	685	Value	1	2147483647	15	226	226	Activity	2	2147483647	15	94	94	Direction	3	2147483647	15	145	145	VIO	4	2147483647	15	148	148			1	6	1	Name	Value	Activity	Direction	VIO"/>
+    <Object name="hw_vio_1" gui_info="hw_vios/hw_vio_1/TablePreference=5	1342	Name	0	2147483647	15	649	649	Value	1	2147483647	15	272	272	Activity	2	2147483647	15	104	104	Direction	3	2147483647	15	151	151	VIO	4	2147483647	15	166	166			1	6	1	Name	Value	Activity	Direction	VIO"/>
   </ObjectList>
   <probeset name="hw project" active="false">
     <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">

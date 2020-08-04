@@ -641,10 +641,15 @@
   "../../../bd/msys/ip/msys_xlconstant_0_21/sim/msys_xlconstant_0_21.v" \
   "../../../bd/msys/ip/msys_fifo_generator_0_1/sim/msys_fifo_generator_0_1.v" \
   "../../../bd/msys/ip/msys_xlconstant_0_23/sim/msys_xlconstant_0_23.v" \
-  "../../../bd/msys/ip/msys_xlslice_0_38/sim/msys_xlslice_0_38.v" \
-  "../../../bd/msys/ip/msys_xlconcat_0_15/sim/msys_xlconcat_0_15.v" \
   "../../../bd/msys/ip/msys_xlconcat_0_16/sim/msys_xlconcat_0_16.v" \
   "../../../bd/msys/ip/msys_xlconstant_0_24/sim/msys_xlconstant_0_24.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_axi_gpio_0_4/sim/msys_axi_gpio_0_4.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xlslice_0_39/sim/msys_xlslice_0_39.v" \
+  "../../../bd/msys/ip/msys_xlslice_1_5/sim/msys_xlslice_1_5.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_0_0/sim/msys_tier2_xbar_0_0.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_1_0/sim/msys_tier2_xbar_1_0.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_2_0/sim/msys_tier2_xbar_2_0.v" \

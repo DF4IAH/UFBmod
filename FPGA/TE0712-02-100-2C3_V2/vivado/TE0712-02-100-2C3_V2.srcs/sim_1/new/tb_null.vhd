@@ -40,9 +40,9 @@ architecture Behavioral of tb_null is
   port (
     BOARD_IIC_scl_io : inout STD_LOGIC;
     BOARD_IIC_sda_io : inout STD_LOGIC;
-    BOARD_ROTENC_PUSH : in STD_LOGIC;
     BOARD_ROTENC_I : in STD_LOGIC;
     BOARD_ROTENC_Q : in STD_LOGIC;
+    BOARD_ROTENC_PUSH : in STD_LOGIC;
     CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK1B_clk : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -67,10 +67,11 @@ architecture Behavioral of tb_null is
     DDR3_SDRAM_we_n : out STD_LOGIC;
     DDR3_init_calib_complete : out STD_LOGIC;
     ETH0_DA_G : out STD_LOGIC_VECTOR ( 0 to 0 );
-    ETH0_DA_Y : out STD_LOGIC;
+    ETH0_DA_Y : out STD_LOGIC_VECTOR ( 0 to 0 );
     ETH0_LINK_LED : in STD_LOGIC;
     ETH0_MDIO_MDC_mdc : out STD_LOGIC;
     ETH0_MDIO_MDC_mdio_io : inout STD_LOGIC;
+    EUI48_onewire_io : inout STD_LOGIC;
     FPGA_IO : in STD_LOGIC;
     LCD_BL : out STD_LOGIC_VECTOR ( 0 to 0 );
     LCD_rstn : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -113,7 +114,7 @@ architecture Behavioral of tb_null is
     UART0_rxd : in STD_LOGIC;
     UART0_txd : out STD_LOGIC;
     ULI_SYSTEM_XIO : in STD_LOGIC;
-    onewire_EUI48_tri_io : inout STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_out : out STD_LOGIC_VECTOR ( 13 downto 0 );
     phy_rst_n : out STD_LOGIC;
     qspi_flash_io0_io : inout STD_LOGIC;
     qspi_flash_io1_io : inout STD_LOGIC;
@@ -123,6 +124,20 @@ architecture Behavioral of tb_null is
     reset : in STD_LOGIC
   );
   end component msys_wrapper;
+
+
+-- Constants SCOPE
+  constant SCOPE_GPIO0_OUT_enable         : natural   :=  0;
+  constant SCOPE_GPIO0_OUT_start          : natural   :=  1;
+  constant SCOPE_GPIO0_OUT_pop            : natural   :=  2;
+  constant SCOPE_GPIO0_OUT_trigLvl        : natural   :=  7;
+  constant SCOPE_GPIO0_OUT_trigSrc_LO     : natural   :=  8;
+  constant SCOPE_GPIO0_OUT_trigSrc_HI     : natural   := 13;
+
+  constant SCOPE_GPIO1_IN_running         : natural   :=  0;
+  constant SCOPE_GPIO1_IN_readAvail       : natural   :=  1;
+  constant SCOPE_GPIO1_IN_readValid       : natural   :=  2;
+
 
 -- RESETS
   signal tb_reset : STD_LOGIC;
@@ -158,7 +173,7 @@ architecture Behavioral of tb_null is
   
   signal tb_ETH0_MDIO_MDC_mdio_io : STD_LOGIC;
   
-  signal tb_onewire_EUI48_tri_io : STD_LOGIC;
+  signal tb_EUI48_onewire_io : STD_LOGIC;
   
   signal tb_BOARD_IIC_scl_io : STD_LOGIC;
   signal tb_BOARD_IIC_sda_io : STD_LOGIC;
@@ -244,7 +259,7 @@ msys_wrapper_i: component msys_wrapper
 --    ETH0_DA_Y : out STD_LOGIC;
 --    ETH0_DA_G : out STD_LOGIC_VECTOR ( 0 to 0 );
 
-    onewire_EUI48_tri_io(0) => tb_onewire_EUI48_tri_io,
+    EUI48_onewire_io => tb_EUI48_onewire_io,
 
     UART0_rxd => '1',
 --    UART0_txd : out STD_LOGIC;
@@ -1060,7 +1075,7 @@ msys_wrapper_i: component msys_wrapper
   
   proc_tb_onewire_EUI48_tri_io: process
   begin
-    tb_onewire_EUI48_tri_io <= 'H';
+    tb_EUI48_onewire_io <= 'H';
     wait;
   end process proc_tb_onewire_EUI48_tri_io;
   

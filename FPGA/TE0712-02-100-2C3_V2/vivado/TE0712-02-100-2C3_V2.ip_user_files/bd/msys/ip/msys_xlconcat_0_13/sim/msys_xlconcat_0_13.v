@@ -59,13 +59,13 @@ module msys_xlconcat_0_13 (
   dout
 );
 
-input wire [15 : 0] In0;
-input wire [47 : 0] In1;
+input wire [47 : 0] In0;
+input wire [15 : 0] In1;
 output wire [63 : 0] dout;
 
   xlconcat_v2_1_3_xlconcat #(
-    .IN0_WIDTH(16),
-    .IN1_WIDTH(48),
+    .IN0_WIDTH(48),
+    .IN1_WIDTH(16),
     .IN2_WIDTH(16),
     .IN3_WIDTH(1),
     .IN4_WIDTH(1),
