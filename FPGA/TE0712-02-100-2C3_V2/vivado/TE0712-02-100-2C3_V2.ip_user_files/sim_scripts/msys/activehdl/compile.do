@@ -3,18 +3,15 @@ vlib activehdl
 
 vlib activehdl/xpm
 vlib activehdl/xil_defaultlib
-vlib activehdl/axi_lite_ipif_v3_0_4
-vlib activehdl/lib_cdc_v1_0_2
-vlib activehdl/blk_mem_gen_v8_4_4
-vlib activehdl/lib_bmg_v1_0_13
-vlib activehdl/fifo_generator_v13_2_5
-vlib activehdl/lib_fifo_v1_0_14
-vlib activehdl/axi_ethernetlite_v3_0_20
 vlib activehdl/lib_pkg_v1_0_2
+vlib activehdl/lib_cdc_v1_0_2
+vlib activehdl/axi_lite_ipif_v3_0_4
 vlib activehdl/interrupt_control_v3_1_4
 vlib activehdl/axi_iic_v2_0_24
 vlib activehdl/dist_mem_gen_v8_0_13
 vlib activehdl/lib_srl_fifo_v1_0_2
+vlib activehdl/fifo_generator_v13_2_5
+vlib activehdl/lib_fifo_v1_0_14
 vlib activehdl/axi_quad_spi_v3_2_20
 vlib activehdl/axi_timer_v2_0_23
 vlib activehdl/axi_uartlite_v2_0_25
@@ -23,6 +20,7 @@ vlib activehdl/microblaze_v11_0_3
 vlib activehdl/axi_intc_v4_1_14
 vlib activehdl/lmb_bram_if_cntlr_v4_0_18
 vlib activehdl/lmb_v10_v3_0_11
+vlib activehdl/blk_mem_gen_v8_4_4
 vlib activehdl/xlconcat_v2_1_3
 vlib activehdl/proc_sys_reset_v5_0_13
 vlib activehdl/iomodule_v3_1_6
@@ -59,23 +57,22 @@ vlib activehdl/axi_register_slice_v2_1_21
 vlib activehdl/axi_data_fifo_v2_1_20
 vlib activehdl/axi_crossbar_v2_1_22
 vlib activehdl/util_reduced_logic_v2_0_4
+vlib activehdl/lib_bmg_v1_0_13
+vlib activehdl/axi_ethernetlite_v3_0_20
 vlib activehdl/axi_clock_converter_v2_1_20
 vlib activehdl/axi_protocol_converter_v2_1_21
 
 vmap xpm activehdl/xpm
 vmap xil_defaultlib activehdl/xil_defaultlib
-vmap axi_lite_ipif_v3_0_4 activehdl/axi_lite_ipif_v3_0_4
-vmap lib_cdc_v1_0_2 activehdl/lib_cdc_v1_0_2
-vmap blk_mem_gen_v8_4_4 activehdl/blk_mem_gen_v8_4_4
-vmap lib_bmg_v1_0_13 activehdl/lib_bmg_v1_0_13
-vmap fifo_generator_v13_2_5 activehdl/fifo_generator_v13_2_5
-vmap lib_fifo_v1_0_14 activehdl/lib_fifo_v1_0_14
-vmap axi_ethernetlite_v3_0_20 activehdl/axi_ethernetlite_v3_0_20
 vmap lib_pkg_v1_0_2 activehdl/lib_pkg_v1_0_2
+vmap lib_cdc_v1_0_2 activehdl/lib_cdc_v1_0_2
+vmap axi_lite_ipif_v3_0_4 activehdl/axi_lite_ipif_v3_0_4
 vmap interrupt_control_v3_1_4 activehdl/interrupt_control_v3_1_4
 vmap axi_iic_v2_0_24 activehdl/axi_iic_v2_0_24
 vmap dist_mem_gen_v8_0_13 activehdl/dist_mem_gen_v8_0_13
 vmap lib_srl_fifo_v1_0_2 activehdl/lib_srl_fifo_v1_0_2
+vmap fifo_generator_v13_2_5 activehdl/fifo_generator_v13_2_5
+vmap lib_fifo_v1_0_14 activehdl/lib_fifo_v1_0_14
 vmap axi_quad_spi_v3_2_20 activehdl/axi_quad_spi_v3_2_20
 vmap axi_timer_v2_0_23 activehdl/axi_timer_v2_0_23
 vmap axi_uartlite_v2_0_25 activehdl/axi_uartlite_v2_0_25
@@ -84,6 +81,7 @@ vmap microblaze_v11_0_3 activehdl/microblaze_v11_0_3
 vmap axi_intc_v4_1_14 activehdl/axi_intc_v4_1_14
 vmap lmb_bram_if_cntlr_v4_0_18 activehdl/lmb_bram_if_cntlr_v4_0_18
 vmap lmb_v10_v3_0_11 activehdl/lmb_v10_v3_0_11
+vmap blk_mem_gen_v8_4_4 activehdl/blk_mem_gen_v8_4_4
 vmap xlconcat_v2_1_3 activehdl/xlconcat_v2_1_3
 vmap proc_sys_reset_v5_0_13 activehdl/proc_sys_reset_v5_0_13
 vmap iomodule_v3_1_6 activehdl/iomodule_v3_1_6
@@ -120,6 +118,8 @@ vmap axi_register_slice_v2_1_21 activehdl/axi_register_slice_v2_1_21
 vmap axi_data_fifo_v2_1_20 activehdl/axi_data_fifo_v2_1_20
 vmap axi_crossbar_v2_1_22 activehdl/axi_crossbar_v2_1_22
 vmap util_reduced_logic_v2_0_4 activehdl/util_reduced_logic_v2_0_4
+vmap lib_bmg_v1_0_13 activehdl/lib_bmg_v1_0_13
+vmap axi_ethernetlite_v3_0_20 activehdl/axi_ethernetlite_v3_0_20
 vmap axi_clock_converter_v2_1_20 activehdl/axi_clock_converter_v2_1_20
 vmap axi_protocol_converter_v2_1_21 activehdl/axi_protocol_converter_v2_1_21
 
@@ -135,38 +135,14 @@ vcom -work xil_defaultlib -93 \
 "../../../bd/msys/ipshared/97ab/scr/SC0712.vhd" \
 "../../../bd/msys/ip/msys_SC0712_0_0/sim/msys_SC0712_0_0.vhd" \
 
-vcom -work axi_lite_ipif_v3_0_4 -93 \
-"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd" \
+vcom -work lib_pkg_v1_0_2 -93 \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/0513/hdl/lib_pkg_v1_0_rfs.vhd" \
 
 vcom -work lib_cdc_v1_0_2 -93 \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd" \
 
-vlog -work blk_mem_gen_v8_4_4  -v2k5 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
-"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/2985/simulation/blk_mem_gen_v8_4.v" \
-
-vcom -work lib_bmg_v1_0_13 -93 \
-"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/af67/hdl/lib_bmg_v1_0_rfs.vhd" \
-
-vlog -work fifo_generator_v13_2_5  -v2k5 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
-"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/276e/simulation/fifo_generator_vlog_beh.v" \
-
-vcom -work fifo_generator_v13_2_5 -93 \
-"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/276e/hdl/fifo_generator_v13_2_rfs.vhd" \
-
-vlog -work fifo_generator_v13_2_5  -v2k5 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
-"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/276e/hdl/fifo_generator_v13_2_rfs.v" \
-
-vcom -work lib_fifo_v1_0_14 -93 \
-"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/a5cb/hdl/lib_fifo_v1_0_rfs.vhd" \
-
-vcom -work axi_ethernetlite_v3_0_20 -93 \
-"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/e293/hdl/axi_ethernetlite_v3_0_vh_rfs.vhd" \
-
-vcom -work xil_defaultlib -93 \
-"../../../bd/msys/ip/msys_axi_ethernetlite_0_0/sim/msys_axi_ethernetlite_0_0.vhd" \
-
-vcom -work lib_pkg_v1_0_2 -93 \
-"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/0513/hdl/lib_pkg_v1_0_rfs.vhd" \
+vcom -work axi_lite_ipif_v3_0_4 -93 \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd" \
 
 vcom -work interrupt_control_v3_1_4 -93 \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/a040/hdl/interrupt_control_v3_1_vh_rfs.vhd" \
@@ -182,6 +158,18 @@ vlog -work dist_mem_gen_v8_0_13  -v2k5 "+incdir+../../../../TE0712-02-100-2C3_V2
 
 vcom -work lib_srl_fifo_v1_0_2 -93 \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd" \
+
+vlog -work fifo_generator_v13_2_5  -v2k5 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/276e/simulation/fifo_generator_vlog_beh.v" \
+
+vcom -work fifo_generator_v13_2_5 -93 \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/276e/hdl/fifo_generator_v13_2_rfs.vhd" \
+
+vlog -work fifo_generator_v13_2_5  -v2k5 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/276e/hdl/fifo_generator_v13_2_rfs.v" \
+
+vcom -work lib_fifo_v1_0_14 -93 \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/a5cb/hdl/lib_fifo_v1_0_rfs.vhd" \
 
 vcom -work axi_quad_spi_v3_2_20 -93 \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1735/hdl/axi_quad_spi_v3_2_rfs.vhd" \
@@ -234,6 +222,9 @@ vcom -work xil_defaultlib -93 \
 "../../../bd/msys/ip/msys_dlmb_v10_0/sim/msys_dlmb_v10_0.vhd" \
 "../../../bd/msys/ip/msys_ilmb_bram_if_cntlr_0/sim/msys_ilmb_bram_if_cntlr_0.vhd" \
 "../../../bd/msys/ip/msys_ilmb_v10_0/sim/msys_ilmb_v10_0.vhd" \
+
+vlog -work blk_mem_gen_v8_4_4  -v2k5 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/2985/simulation/blk_mem_gen_v8_4.v" \
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
 "../../../bd/msys/ip/msys_lmb_bram_0/sim/msys_lmb_bram_0.v" \
@@ -790,6 +781,18 @@ vcom -work xil_defaultlib -93 \
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
 "../../../bd/msys/ip/msys_xlconcat_0_17/sim/msys_xlconcat_0_17.v" \
+
+vcom -work lib_bmg_v1_0_13 -93 \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/af67/hdl/lib_bmg_v1_0_rfs.vhd" \
+
+vcom -work axi_ethernetlite_v3_0_20 -93 \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/e293/hdl/axi_ethernetlite_v3_0_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib -93 \
+"../../../bd/msys/ip/msys_axi_ethernetlite_0_1/sim/msys_axi_ethernetlite_0_1.vhd" \
+
+vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
+"../../../bd/msys/ip/msys_xlconstant_0_26/sim/msys_xlconstant_0_26.v" \
 "../../../bd/msys/ip/msys_tier2_xbar_0_0/sim/msys_tier2_xbar_0_0.v" \
 "../../../bd/msys/ip/msys_tier2_xbar_1_0/sim/msys_tier2_xbar_1_0.v" \
 "../../../bd/msys/ip/msys_tier2_xbar_2_0/sim/msys_tier2_xbar_2_0.v" \
@@ -805,6 +808,7 @@ vlog -work axi_protocol_converter_v2_1_21  -v2k5 "+incdir+../../../../TE0712-02-
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
 "../../../bd/msys/ip/msys_auto_pc_0/sim/msys_auto_pc_0.v" \
+"../../../bd/msys/ip/msys_auto_pc_1/sim/msys_auto_pc_1.v" \
 
 vcom -work xil_defaultlib -93 \
 "../../../bd/msys/sim/msys.vhd" \

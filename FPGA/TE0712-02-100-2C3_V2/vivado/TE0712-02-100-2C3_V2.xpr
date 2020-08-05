@@ -47,13 +47,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="152"/>
-    <Option Name="WTModelSimExportSim" Val="152"/>
-    <Option Name="WTQuestaExportSim" Val="152"/>
-    <Option Name="WTIesExportSim" Val="152"/>
-    <Option Name="WTVcsExportSim" Val="152"/>
-    <Option Name="WTRivieraExportSim" Val="152"/>
-    <Option Name="WTActivehdlExportSim" Val="152"/>
+    <Option Name="WTXSimExportSim" Val="153"/>
+    <Option Name="WTModelSimExportSim" Val="153"/>
+    <Option Name="WTQuestaExportSim" Val="153"/>
+    <Option Name="WTIesExportSim" Val="153"/>
+    <Option Name="WTVcsExportSim" Val="153"/>
+    <Option Name="WTRivieraExportSim" Val="153"/>
+    <Option Name="WTActivehdlExportSim" Val="153"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>

@@ -126,8 +126,8 @@ int main(void)
 	xTaskCreate(
 			taskDefault, 					/* The function that implements the task. */
 			(const char*) "tskDflt", 		/* Text name for the task, provided to assist debugging only. */
-			//configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
-			(unsigned short) 500,	 		/* The stack allocated to the task. */
+			configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
+			//(unsigned short) 500,	 		/* The stack allocated to the task. */
 			NULL, 							/* The task parameter is not used, so set to NULL. */
 			tskIDLE_PRIORITY,				/* The task runs at the idle priority. */
 			&thDflt
@@ -136,8 +136,8 @@ int main(void)
 	xTaskCreate(
 			taskEth, 						/* The function that implements the task. */
 			(const char*) "tskNet",			/* Text name for the task, provided to assist debugging only. */
-			//configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
-			(unsigned short) 500,	 		/* The stack allocated to the task. */
+			configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
+			//(unsigned short) 500,	 		/* The stack allocated to the task. */
 			NULL,							/* The task parameter is not used, so set to NULL. */
 			tskIDLE_PRIORITY + 1U,			/* The task runs at that priority. */
 			&thEth
@@ -406,11 +406,11 @@ static void taskDefault(void* pvParameters)
 #endif
 
 
-#if 1
-//#define PHASE_000DEG
+#if 0
+#define PHASE_000DEG
 //#define PHASE_090DEG
 //#define PHASE_180DEG
-#define PHASE_270DEG
+//#define PHASE_270DEG
 
 	/* CLK1B ClockWizard pre-defined settings */
 	{
@@ -662,7 +662,7 @@ static void taskDefault(void* pvParameters)
 		}
 #endif
 
-#if 1
+#if 0
 		/* SCOPE Triggering and Readout */
 		{
 			u32 gpio1, gpio3, gpio4;
@@ -885,12 +885,16 @@ static void taskEth(void* pvParameters)
 		/* Wait for a Receive packet */
 		while (!emacLiteRxFrameLength) {
 			vTaskDelay(pdMS_TO_TICKS(20UL));
+			XGpio_DiscreteWrite(&gpio_PWM_Lights, 1U, 0x20ff0000UL);
 			emacLiteRxFrameLength = XEmacLite_Recv(emacLiteInstPtr, (u8*) emacLiteRxFrame);
+			XGpio_DiscreteWrite(&gpio_PWM_Lights, 1U, 0x20000000UL);
 		}
 
 		/* Process the Receive frame */
+		XGpio_DiscreteWrite(&gpio_PWM_Lights, 1U, 0x2000ff00UL);
 		ethProcessRecvFrame(emacLiteInstPtr);
 		emacLiteRxFrameLength = 0UL;
+		XGpio_DiscreteWrite(&gpio_PWM_Lights, 1U, 0x20000000UL);
 	}
 }
 

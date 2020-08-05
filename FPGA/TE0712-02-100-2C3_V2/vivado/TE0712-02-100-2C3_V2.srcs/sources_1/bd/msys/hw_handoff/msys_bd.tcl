@@ -3835,7 +3835,7 @@ proc create_hier_cell_ETH0 { parentCell nameHier } {
   create_bd_pin -dir I -type rst ext_reset_in
   create_bd_pin -dir O -type intr ip2intc_irpt
   create_bd_pin -dir O m_mii_tx_en
-  create_bd_pin -dir O m_mii_tx_er
+  create_bd_pin -dir O -from 0 -to 0 m_mii_tx_er
   create_bd_pin -dir O -from 3 -to 0 m_mii_txd
   create_bd_pin -dir O -from 3 -to 0 m_mii_txd1
   create_bd_pin -dir I -type rst mb_debug_sys_rst
@@ -3901,9 +3901,8 @@ proc create_hier_cell_ETH0 { parentCell nameHier } {
   # Create instance: ETH0_axi_ethernetlite_0, and set properties
   set ETH0_axi_ethernetlite_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_ethernetlite:3.0 ETH0_axi_ethernetlite_0 ]
   set_property -dict [ list \
-   CONFIG.C_INCLUDE_INTERNAL_LOOPBACK {0} \
+   CONFIG.C_S_AXI_PROTOCOL {AXI4} \
    CONFIG.MDIO_BOARD_INTERFACE {ETH0_MDIO_MDC} \
-   CONFIG.USE_BOARD_FLOW {true} \
  ] $ETH0_axi_ethernetlite_0
 
   # Create instance: ETH0_mii_to_rmii_0, and set properties
@@ -3946,12 +3945,16 @@ proc create_hier_cell_ETH0 { parentCell nameHier } {
    CONFIG.LOGO_FILE {data/sym_notgate.png} \
  ] $ETH0_util_vector_logic_0
 
+  # Create instance: ETH0_xlconstant_val0_len1, and set properties
+  set ETH0_xlconstant_val0_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 ETH0_xlconstant_val0_len1 ]
+  set_property -dict [ list \
+   CONFIG.CONST_VAL {0} \
+ ] $ETH0_xlconstant_val0_len1
+
   # Create interface connections
-  connect_bd_intf_net -intf_net Conn1 [get_bd_intf_pins S_AXI] [get_bd_intf_pins ETH0_axi_ethernetlite_0/S_AXI]
   connect_bd_intf_net -intf_net Conn2 [get_bd_intf_pins RMII_PHY_M_0] [get_bd_intf_pins ETH0_mii_to_rmii_0/RMII_PHY_M]
-  connect_bd_intf_net -intf_net Conn3 [get_bd_intf_pins ETH0_MDIO_MDC] [get_bd_intf_pins ETH0_axi_ethernetlite_0/MDIO]
-  connect_bd_intf_net -intf_net axi_ethernetlite_0_MII [get_bd_intf_pins ETH0_axi_ethernetlite_0/MII] [get_bd_intf_pins ETH0_mii_y_adapater_0/S_MII]
-  connect_bd_intf_net -intf_net mii_y_adapater_0_M_MII [get_bd_intf_pins ETH0_mii_to_rmii_0/MII] [get_bd_intf_pins ETH0_mii_y_adapater_0/M_MII]
+  connect_bd_intf_net -intf_net ETH0_axi_ethernetlite_0_MDIO [get_bd_intf_pins ETH0_MDIO_MDC] [get_bd_intf_pins ETH0_axi_ethernetlite_0/MDIO]
+  connect_bd_intf_net -intf_net S_AXI_1 [get_bd_intf_pins S_AXI] [get_bd_intf_pins ETH0_axi_ethernetlite_0/S_AXI]
 
   # Create port connections
   connect_bd_net -net CLK1B_50MHz_phy_clk_0 [get_bd_pins CLK1B_50MHz_phy_clk_in] [get_bd_pins ETH0_LEDs_proc_sys_reset_0/slowest_sync_clk] [get_bd_pins ETH0_mii_to_rmii_0/ref_clk]
@@ -3963,28 +3966,27 @@ proc create_hier_cell_ETH0 { parentCell nameHier } {
   connect_bd_net -net ETH0_LINK_LED_inv_0 [get_bd_pins ETH0_LEDs/ETH0_LINK_LED_inv] [get_bd_pins ETH0_LEDs_xlconcat_0/In0] [get_bd_pins ETH0_util_vector_logic_0/Res]
   connect_bd_net -net ETH0_MIIstatus_CDC_c_shift_ram_0_Q [get_bd_pins ETH0_MIIstatus] [get_bd_pins ETH0_MIIstatus_CDC_c_shift_ram_0/Q]
   connect_bd_net -net ETH0_MIIstatus_xlconcat_0_dout [get_bd_pins ETH0_MIIstatus_CDC_c_shift_ram_0/D] [get_bd_pins ETH0_MIIstatus_xlconcat_0/dout]
-  connect_bd_net -net ETH0_mii_y_adapater_0_m_mii_rst_n [get_bd_pins ETH0_LEDs_xlconcat_0/In3] [get_bd_pins ETH0_mii_y_adapater_0/m_mii_rst_n]
-  connect_bd_net -net ETH0_mii_y_adapater_0_m_mii_tx_er [get_bd_pins m_mii_tx_er] [get_bd_pins ETH0_MIIstatus_xlconcat_0/In4] [get_bd_pins ETH0_mii_y_adapater_0/m_mii_tx_er]
-  connect_bd_net -net ETH0_mii_y_adapater_0_m_mii_txd [get_bd_pins m_mii_txd1] [get_bd_pins ETH0_mii_y_adapater_0/m_mii_txd] [get_bd_pins ETH0_txd_CDC_c_shift_ram_0/D]
-  connect_bd_net -net ETH0_mii_y_adapater_0_phy_rst_n [get_bd_pins phy_rst_n] [get_bd_pins ETH0_mii_y_adapater_0/phy_rst_n]
-  connect_bd_net -net ETH0_mii_y_adapater_0_s_mii_col [get_bd_pins s_mii_col] [get_bd_pins ETH0_MIIstatus_xlconcat_0/In2] [get_bd_pins ETH0_mii_y_adapater_0/s_mii_col]
-  connect_bd_net -net ETH0_mii_y_adapater_0_s_mii_crs [get_bd_pins s_mii_crs] [get_bd_pins ETH0_MIIstatus_xlconcat_0/In1] [get_bd_pins ETH0_mii_y_adapater_0/s_mii_crs]
-  connect_bd_net -net ETH0_mii_y_adapater_0_s_mii_rx_er [get_bd_pins s_mii_rx_er] [get_bd_pins ETH0_MIIstatus_xlconcat_0/In3] [get_bd_pins ETH0_mii_y_adapater_0/s_mii_rx_er]
-  connect_bd_net -net ETH0_mii_y_adapater_0_s_mii_rxd [get_bd_pins s_mii_rxd1] [get_bd_pins ETH0_mii_y_adapater_0/s_mii_rxd] [get_bd_pins ETH0_rxd_CDC_c_shift_ram_0/D]
+  connect_bd_net -net ETH0_axi_ethernetlite_0_ip2intc_irpt [get_bd_pins ip2intc_irpt] [get_bd_pins ETH0_axi_ethernetlite_0/ip2intc_irpt]
+  connect_bd_net -net ETH0_axi_ethernetlite_0_phy_rst_n [get_bd_pins phy_rst_n] [get_bd_pins ETH0_LEDs_xlconcat_0/In3] [get_bd_pins ETH0_axi_ethernetlite_0/phy_rst_n]
+  connect_bd_net -net ETH0_mii_y_adapater_0_m_mii_tx_er [get_bd_pins m_mii_tx_er] [get_bd_pins ETH0_MIIstatus_xlconcat_0/In4] [get_bd_pins ETH0_mii_to_rmii_0/mac2rmii_tx_er] [get_bd_pins ETH0_xlconstant_val0_len1/dout]
+  connect_bd_net -net ETH0_mii_y_adapater_0_m_mii_txd [get_bd_pins m_mii_txd1] [get_bd_pins ETH0_axi_ethernetlite_0/phy_tx_data] [get_bd_pins ETH0_mii_to_rmii_0/mac2rmii_txd] [get_bd_pins ETH0_txd_CDC_c_shift_ram_0/D]
+  connect_bd_net -net ETH0_mii_y_adapater_0_s_mii_col [get_bd_pins s_mii_col] [get_bd_pins ETH0_MIIstatus_xlconcat_0/In2] [get_bd_pins ETH0_axi_ethernetlite_0/phy_col] [get_bd_pins ETH0_mii_to_rmii_0/rmii2mac_col]
+  connect_bd_net -net ETH0_mii_y_adapater_0_s_mii_crs [get_bd_pins s_mii_crs] [get_bd_pins ETH0_MIIstatus_xlconcat_0/In1] [get_bd_pins ETH0_axi_ethernetlite_0/phy_crs] [get_bd_pins ETH0_mii_to_rmii_0/rmii2mac_crs]
+  connect_bd_net -net ETH0_mii_y_adapater_0_s_mii_rx_er [get_bd_pins s_mii_rx_er] [get_bd_pins ETH0_MIIstatus_xlconcat_0/In3] [get_bd_pins ETH0_axi_ethernetlite_0/phy_rx_er] [get_bd_pins ETH0_mii_to_rmii_0/rmii2mac_rx_er]
+  connect_bd_net -net ETH0_mii_y_adapater_0_s_mii_rxd [get_bd_pins s_mii_rxd1] [get_bd_pins ETH0_axi_ethernetlite_0/phy_rx_data] [get_bd_pins ETH0_mii_to_rmii_0/rmii2mac_rxd] [get_bd_pins ETH0_rxd_CDC_c_shift_ram_0/D]
   connect_bd_net -net ETH0_rxd_CDC_c_shift_ram_0_Q [get_bd_pins s_mii_rxd] [get_bd_pins ETH0_rxd_CDC_c_shift_ram_0/Q]
   connect_bd_net -net ETH0_txd_CDC_c_shift_ram_0_Q [get_bd_pins m_mii_txd] [get_bd_pins ETH0_txd_CDC_c_shift_ram_0/Q]
   connect_bd_net -net SC0712_0_mcs_clk_0 [get_bd_pins SC0712_0_mcs_clk_in] [get_bd_pins ETH0_LEDstatus_CDC_c_shift_ram_0/CLK] [get_bd_pins ETH0_MIIstatus_CDC_c_shift_ram_0/CLK] [get_bd_pins ETH0_rxd_CDC_c_shift_ram_0/CLK] [get_bd_pins ETH0_txd_CDC_c_shift_ram_0/CLK]
-  connect_bd_net -net axi_ethernetlite_0_ip2intc_irpt [get_bd_pins ip2intc_irpt] [get_bd_pins ETH0_axi_ethernetlite_0/ip2intc_irpt]
-  connect_bd_net -net axi_ethernetlite_0_phy_tx_en [get_bd_pins m_mii_tx_en] [get_bd_pins ETH0_LEDs_xlconcat_0/In2] [get_bd_pins ETH0_mii_y_adapater_0/m_mii_tx_en]
+  connect_bd_net -net axi_ethernetlite_0_phy_tx_en [get_bd_pins m_mii_tx_en] [get_bd_pins ETH0_LEDs_xlconcat_0/In2] [get_bd_pins ETH0_axi_ethernetlite_0/phy_tx_en] [get_bd_pins ETH0_mii_to_rmii_0/mac2rmii_tx_en]
   connect_bd_net -net dcm_locked_1 [get_bd_pins dcm_locked] [get_bd_pins ETH0_LEDs_proc_sys_reset_0/dcm_locked]
   connect_bd_net -net ext_reset_in_0 [get_bd_pins ext_reset_in] [get_bd_pins ETH0_LEDs_proc_sys_reset_0/ext_reset_in]
   connect_bd_net -net mb_debug_sys_rst_1 [get_bd_pins mb_debug_sys_rst] [get_bd_pins ETH0_LEDs_proc_sys_reset_0/mb_debug_sys_rst]
-  connect_bd_net -net mii_y_adapater_0_s_mii_rx_clk [get_bd_pins s_mii_rx_clk] [get_bd_pins ETH0_mii_y_adapater_0/s_mii_rx_clk]
-  connect_bd_net -net mii_y_adapater_0_s_mii_rx_dv [get_bd_pins s_mii_rx_dv] [get_bd_pins ETH0_LEDs_xlconcat_0/In1] [get_bd_pins ETH0_MIIstatus_xlconcat_0/In0] [get_bd_pins ETH0_mii_y_adapater_0/s_mii_rx_dv]
-  connect_bd_net -net mii_y_adapater_0_s_mii_tx_clk [get_bd_pins s_mii_tx_clk] [get_bd_pins ETH0_mii_y_adapater_0/s_mii_tx_clk]
+  connect_bd_net -net mii_y_adapater_0_s_mii_rx_clk [get_bd_pins s_mii_rx_clk] [get_bd_pins ETH0_axi_ethernetlite_0/phy_rx_clk] [get_bd_pins ETH0_mii_to_rmii_0/rmii2mac_rx_clk]
+  connect_bd_net -net mii_y_adapater_0_s_mii_rx_dv [get_bd_pins s_mii_rx_dv] [get_bd_pins ETH0_LEDs_xlconcat_0/In1] [get_bd_pins ETH0_MIIstatus_xlconcat_0/In0] [get_bd_pins ETH0_axi_ethernetlite_0/phy_dv] [get_bd_pins ETH0_mii_to_rmii_0/rmii2mac_rx_dv]
+  connect_bd_net -net mii_y_adapater_0_s_mii_tx_clk [get_bd_pins s_mii_tx_clk] [get_bd_pins ETH0_axi_ethernetlite_0/phy_tx_clk] [get_bd_pins ETH0_mii_to_rmii_0/rmii2mac_tx_clk]
   connect_bd_net -net rst_n_0 [get_bd_pins ETH0_LEDs_proc_sys_reset_0/peripheral_aresetn] [get_bd_pins ETH0_mii_to_rmii_0/rst_n]
-  connect_bd_net -net s_axi_aclk_0 [get_bd_pins s_axi_aclk] [get_bd_pins ETH0_axi_ethernetlite_0/s_axi_aclk]
-  connect_bd_net -net s_axi_aresetn_0 [get_bd_pins s_axi_aresetn] [get_bd_pins ETH0_axi_ethernetlite_0/s_axi_aresetn]
+  connect_bd_net -net s_axi_aclk_1 [get_bd_pins s_axi_aclk] [get_bd_pins ETH0_axi_ethernetlite_0/s_axi_aclk]
+  connect_bd_net -net s_axi_aresetn_1 [get_bd_pins s_axi_aresetn] [get_bd_pins ETH0_axi_ethernetlite_0/s_axi_aresetn]
 
   # Restore current instance
   current_bd_instance $oldCurInst
