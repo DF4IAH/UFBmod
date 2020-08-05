@@ -3490,6 +3490,7 @@ proc create_hier_cell_INT_ctrl { parentCell nameHier } {
   create_bd_pin -dir I -from 0 -to 0 In10
   create_bd_pin -dir I -from 0 -to 0 PLL_int
   create_bd_pin -dir I -from 0 -to 0 TRX_int
+  create_bd_pin -dir I -from 0 -to 0 el_ip2intc_irpt
   create_bd_pin -dir I -type clk processor_clk
   create_bd_pin -dir I -type rst processor_rst
   create_bd_pin -dir I -type rst s_axi_aresetn
@@ -3503,7 +3504,7 @@ proc create_hier_cell_INT_ctrl { parentCell nameHier } {
   # Create instance: microblaze_0_xlconcat, and set properties
   set microblaze_0_xlconcat [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 microblaze_0_xlconcat ]
   set_property -dict [ list \
-   CONFIG.NUM_PORTS {12} \
+   CONFIG.NUM_PORTS {13} \
  ] $microblaze_0_xlconcat
 
   # Create interface connections
@@ -3523,6 +3524,7 @@ proc create_hier_cell_INT_ctrl { parentCell nameHier } {
   connect_bd_net -net In8_1 [get_bd_pins In8] [get_bd_pins microblaze_0_xlconcat/In8]
   connect_bd_net -net PLL_int_1 [get_bd_pins PLL_int] [get_bd_pins microblaze_0_xlconcat/In9]
   connect_bd_net -net TRX_int_1 [get_bd_pins TRX_int] [get_bd_pins microblaze_0_xlconcat/In11]
+  connect_bd_net -net el_ip2intc_irpt_1 [get_bd_pins el_ip2intc_irpt] [get_bd_pins microblaze_0_xlconcat/In12]
   connect_bd_net -net microblaze_0_xlconcat_dout [get_bd_pins microblaze_0_axi_intc/intr] [get_bd_pins microblaze_0_xlconcat/dout]
   connect_bd_net -net processor_clk_1 [get_bd_pins processor_clk] [get_bd_pins microblaze_0_axi_intc/processor_clk] [get_bd_pins microblaze_0_axi_intc/s_axi_aclk]
   connect_bd_net -net processor_rst_1 [get_bd_pins processor_rst] [get_bd_pins microblaze_0_axi_intc/processor_rst]
@@ -3716,6 +3718,7 @@ proc create_hier_cell_ETH0 { parentCell nameHier } {
   create_bd_pin -dir O -from 3 -to 0 m_mii_txd
   create_bd_pin -dir O -from 3 -to 0 m_mii_txd1
   create_bd_pin -dir I -type rst mb_debug_sys_rst
+  create_bd_pin -dir O phy_rst_n
   create_bd_pin -dir I -type clk s_axi_aclk
   create_bd_pin -dir I -type rst s_axi_aresetn
   create_bd_pin -dir O s_mii_col
@@ -3842,6 +3845,7 @@ proc create_hier_cell_ETH0 { parentCell nameHier } {
   connect_bd_net -net ETH0_mii_y_adapater_0_m_mii_rst_n [get_bd_pins ETH0_LEDs_xlconcat_0/In3] [get_bd_pins ETH0_mii_y_adapater_0/m_mii_rst_n]
   connect_bd_net -net ETH0_mii_y_adapater_0_m_mii_tx_er [get_bd_pins m_mii_tx_er] [get_bd_pins ETH0_MIIstatus_xlconcat_0/In4] [get_bd_pins ETH0_mii_y_adapater_0/m_mii_tx_er]
   connect_bd_net -net ETH0_mii_y_adapater_0_m_mii_txd [get_bd_pins m_mii_txd1] [get_bd_pins ETH0_mii_y_adapater_0/m_mii_txd] [get_bd_pins ETH0_txd_CDC_c_shift_ram_0/D]
+  connect_bd_net -net ETH0_mii_y_adapater_0_phy_rst_n [get_bd_pins phy_rst_n] [get_bd_pins ETH0_mii_y_adapater_0/phy_rst_n]
   connect_bd_net -net ETH0_mii_y_adapater_0_s_mii_col [get_bd_pins s_mii_col] [get_bd_pins ETH0_MIIstatus_xlconcat_0/In2] [get_bd_pins ETH0_mii_y_adapater_0/s_mii_col]
   connect_bd_net -net ETH0_mii_y_adapater_0_s_mii_crs [get_bd_pins s_mii_crs] [get_bd_pins ETH0_MIIstatus_xlconcat_0/In1] [get_bd_pins ETH0_mii_y_adapater_0/s_mii_crs]
   connect_bd_net -net ETH0_mii_y_adapater_0_s_mii_rx_er [get_bd_pins s_mii_rx_er] [get_bd_pins ETH0_MIIstatus_xlconcat_0/In3] [get_bd_pins ETH0_mii_y_adapater_0/s_mii_rx_er]
@@ -4129,6 +4133,16 @@ proc create_root_design { parentCell } {
 
   set UART0 [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:uart_rtl:1.0 UART0 ]
 
+  set el_S_AXI [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:aximm_rtl:1.0 el_S_AXI ]
+  set_property -dict [ list \
+   CONFIG.ADDR_WIDTH {32} \
+   CONFIG.CLK_DOMAIN {msys_mig_7series_0_0_ui_clk} \
+   CONFIG.DATA_WIDTH {32} \
+   CONFIG.NUM_READ_OUTSTANDING {2} \
+   CONFIG.NUM_WRITE_OUTSTANDING {2} \
+   CONFIG.PROTOCOL {AXI4} \
+   ] $el_S_AXI
+
   set qspi_flash [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:spi_rtl:1.0 qspi_flash ]
 
 
@@ -4209,6 +4223,21 @@ proc create_root_design { parentCell } {
   set UART0_rst_n [ create_bd_port -dir O -from 0 -to 0 -type rst UART0_rst_n ]
   set ULI_SYSTEM_XIO [ create_bd_port -dir I ULI_SYSTEM_XIO ]
   set USER_dbg_out [ create_bd_port -dir O -from 13 -to 0 USER_dbg_out ]
+  set el_ip2intc_irpt [ create_bd_port -dir I -type intr el_ip2intc_irpt ]
+  set el_phy_col [ create_bd_port -dir O el_phy_col ]
+  set el_phy_crs [ create_bd_port -dir O el_phy_crs ]
+  set el_phy_dv [ create_bd_port -dir O el_phy_dv ]
+  set el_phy_mdc [ create_bd_port -dir I -type clk -freq_hz 25000000 el_phy_mdc ]
+  set el_phy_mdio_i [ create_bd_port -dir O -from 0 -to 0 el_phy_mdio_i ]
+  set el_phy_mdio_o [ create_bd_port -dir I el_phy_mdio_o ]
+  set el_phy_mdio_t [ create_bd_port -dir I el_phy_mdio_t ]
+  set el_phy_rst_n [ create_bd_port -dir I -type rst el_phy_rst_n ]
+  set el_phy_rx_clk [ create_bd_port -dir O -type clk el_phy_rx_clk ]
+  set el_phy_rx_data [ create_bd_port -dir O -from 3 -to 0 -type data el_phy_rx_data ]
+  set el_phy_rx_er [ create_bd_port -dir O el_phy_rx_er ]
+  set el_phy_tx_clk [ create_bd_port -dir O -type clk el_phy_tx_clk ]
+  set el_phy_tx_data [ create_bd_port -dir I -from 3 -to 0 -type data el_phy_tx_data ]
+  set el_phy_tx_en [ create_bd_port -dir I el_phy_tx_en ]
   set fft09_aresetn_in [ create_bd_port -dir I -type rst fft09_aresetn_in ]
   set fft09_config_tdata_in [ create_bd_port -dir I -from 7 -to 0 fft09_config_tdata_in ]
   set fft09_config_tvalid_in [ create_bd_port -dir I fft09_config_tvalid_in ]
@@ -4223,6 +4252,7 @@ proc create_root_design { parentCell } {
   set fft24_data_tvalid_in [ create_bd_port -dir I fft24_data_tvalid_in ]
   set microblaze_0_Clk_100MHz_o [ create_bd_port -dir O -type clk microblaze_0_Clk_100MHz_o ]
   set_property -dict [ list \
+   CONFIG.ASSOCIATED_BUSIF {el_S_AXI} \
    CONFIG.ASSOCIATED_RESET {fft09_aresetn_in:fft24_aresetn_in:SCOPE_FSM_Timebase_SCLR} \
  ] $microblaze_0_Clk_100MHz_o
   set phy_rst_n [ create_bd_port -dir O phy_rst_n ]
@@ -4355,6 +4385,12 @@ proc create_root_design { parentCell } {
    CONFIG.C_BUF_TYPE {BUFG} \
  ] $cfgmclk_util_ds_buf_0
 
+  # Create instance: el_xlconstant_val1_len1, and set properties
+  set el_xlconstant_val1_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 el_xlconstant_val1_len1 ]
+  set_property -dict [ list \
+   CONFIG.CONST_VAL {1} \
+ ] $el_xlconstant_val1_len1
+
   # Create instance: labtools_fmeter_0, and set properties
   set labtools_fmeter_0 [ create_bd_cell -type ip -vlnv trenz.biz:user:labtools_fmeter:1.0 labtools_fmeter_0 ]
   set_property -dict [ list \
@@ -4434,7 +4470,7 @@ proc create_root_design { parentCell } {
   # Create instance: microblaze_0_axi_periph, and set properties
   set microblaze_0_axi_periph [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 microblaze_0_axi_periph ]
   set_property -dict [ list \
-   CONFIG.NUM_MI {18} \
+   CONFIG.NUM_MI {19} \
  ] $microblaze_0_axi_periph
 
   # Create instance: microblaze_0_local_memory
@@ -4522,6 +4558,7 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net microblaze_0_axi_periph_M15_AXI [get_bd_intf_pins SCOPE/S_AXI] [get_bd_intf_pins microblaze_0_axi_periph/M15_AXI]
   connect_bd_intf_net -intf_net microblaze_0_axi_periph_M16_AXI [get_bd_intf_pins CLK1B_CW_0/s_axi_lite] [get_bd_intf_pins microblaze_0_axi_periph/M16_AXI]
   connect_bd_intf_net -intf_net microblaze_0_axi_periph_M17_AXI [get_bd_intf_pins SCOPE/S_AXI1] [get_bd_intf_pins microblaze_0_axi_periph/M17_AXI]
+  connect_bd_intf_net -intf_net microblaze_0_axi_periph_M18_AXI [get_bd_intf_ports el_S_AXI] [get_bd_intf_pins microblaze_0_axi_periph/M18_AXI]
   connect_bd_intf_net -intf_net microblaze_0_debug [get_bd_intf_pins mdm_1/MBDEBUG_0] [get_bd_intf_pins microblaze_0/DEBUG]
   connect_bd_intf_net -intf_net microblaze_0_dlmb_1 [get_bd_intf_pins microblaze_0/DLMB] [get_bd_intf_pins microblaze_0_local_memory/DLMB]
   connect_bd_intf_net -intf_net microblaze_0_ilmb_1 [get_bd_intf_pins microblaze_0/ILMB] [get_bd_intf_pins microblaze_0_local_memory/ILMB]
@@ -4549,14 +4586,15 @@ proc create_root_design { parentCell } {
   connect_bd_net -net ETH0_m_mii_tx_er [get_bd_pins ETH0/m_mii_tx_er] [get_bd_pins SCOPE/ETH0_m_mii_tx_er]
   connect_bd_net -net ETH0_m_mii_txd_0 [get_bd_pins ETH0/m_mii_txd] [get_bd_pins vio_0/probe_in28]
   connect_bd_net -net ETH0_m_mii_txd_1 [get_bd_pins ETH0/m_mii_txd1] [get_bd_pins SCOPE/ETH0_m_mii_txd]
-  connect_bd_net -net ETH0_s_mii_col [get_bd_pins ETH0/s_mii_col] [get_bd_pins SCOPE/ETH0_s_mii_col] [get_bd_pins USER_dbg/In8]
-  connect_bd_net -net ETH0_s_mii_crs [get_bd_pins ETH0/s_mii_crs] [get_bd_pins SCOPE/ETH0_s_mii_crs] [get_bd_pins USER_dbg/In0]
-  connect_bd_net -net ETH0_s_mii_rx_clk [get_bd_pins ETH0/s_mii_rx_clk] [get_bd_pins SCOPE/ETH0_s_mii_rx_clk] [get_bd_pins USER_dbg/In3] [get_bd_pins lt_fmeter_xlconcat_0/In6]
-  connect_bd_net -net ETH0_s_mii_rx_dv [get_bd_pins ETH0/s_mii_rx_dv] [get_bd_pins SCOPE/ETH0_s_mii_rx_dv] [get_bd_pins USER_dbg/In1]
-  connect_bd_net -net ETH0_s_mii_rx_er [get_bd_pins ETH0/s_mii_rx_er] [get_bd_pins SCOPE/ETH0_s_mii_rx_er] [get_bd_pins USER_dbg/In7]
+  connect_bd_net -net ETH0_phy_rst_n [get_bd_ports phy_rst_n] [get_bd_pins ETH0/phy_rst_n]
+  connect_bd_net -net ETH0_s_mii_col [get_bd_ports el_phy_col] [get_bd_pins ETH0/s_mii_col] [get_bd_pins SCOPE/ETH0_s_mii_col] [get_bd_pins USER_dbg/In8]
+  connect_bd_net -net ETH0_s_mii_crs [get_bd_ports el_phy_crs] [get_bd_pins ETH0/s_mii_crs] [get_bd_pins SCOPE/ETH0_s_mii_crs] [get_bd_pins USER_dbg/In0]
+  connect_bd_net -net ETH0_s_mii_rx_clk [get_bd_ports el_phy_rx_clk] [get_bd_pins ETH0/s_mii_rx_clk] [get_bd_pins SCOPE/ETH0_s_mii_rx_clk] [get_bd_pins USER_dbg/In3] [get_bd_pins lt_fmeter_xlconcat_0/In6]
+  connect_bd_net -net ETH0_s_mii_rx_dv [get_bd_ports el_phy_dv] [get_bd_pins ETH0/s_mii_rx_dv] [get_bd_pins SCOPE/ETH0_s_mii_rx_dv] [get_bd_pins USER_dbg/In1]
+  connect_bd_net -net ETH0_s_mii_rx_er [get_bd_ports el_phy_rx_er] [get_bd_pins ETH0/s_mii_rx_er] [get_bd_pins SCOPE/ETH0_s_mii_rx_er] [get_bd_pins USER_dbg/In7]
   connect_bd_net -net ETH0_s_mii_rxd_0 [get_bd_pins ETH0/s_mii_rxd] [get_bd_pins vio_0/probe_in29]
-  connect_bd_net -net ETH0_s_mii_rxd_1 [get_bd_pins ETH0/s_mii_rxd1] [get_bd_pins SCOPE/ETH0_s_mii_rxd] [get_bd_pins USER_dbg/In2]
-  connect_bd_net -net ETH0_s_mii_tx_clk [get_bd_pins ETH0/s_mii_tx_clk] [get_bd_pins SCOPE/ETH0_s_mii_tx_clk] [get_bd_pins USER_dbg/In6] [get_bd_pins lt_fmeter_xlconcat_0/In5]
+  connect_bd_net -net ETH0_s_mii_rxd_1 [get_bd_ports el_phy_rx_data] [get_bd_pins ETH0/s_mii_rxd1] [get_bd_pins SCOPE/ETH0_s_mii_rxd] [get_bd_pins USER_dbg/In2]
+  connect_bd_net -net ETH0_s_mii_tx_clk [get_bd_ports el_phy_tx_clk] [get_bd_pins ETH0/s_mii_tx_clk] [get_bd_pins SCOPE/ETH0_s_mii_tx_clk] [get_bd_pins USER_dbg/In6] [get_bd_pins lt_fmeter_xlconcat_0/In5]
   connect_bd_net -net EUI48_EUI48_FSM_start [get_bd_ports EUI48_FSM_start] [get_bd_pins EUI48/EUI48_FSM_start] [get_bd_pins vio_0/probe_in32]
   connect_bd_net -net EUI48_FSM_run_1 [get_bd_ports EUI48_FSM_run] [get_bd_pins EUI48/EUI48_FSM_run] [get_bd_pins vio_0/probe_in33]
   connect_bd_net -net EUI48_abort_1 [get_bd_ports EUI48_abort] [get_bd_pins vio_0/probe_in36]
@@ -4632,6 +4670,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net axi_timer_0_interrupt [get_bd_pins INT_ctrl/In0] [get_bd_pins axi_timer_0/interrupt]
   connect_bd_net -net cfgmclk_util_ds_buf_0_BUFG_O [get_bd_pins SC0712_0/mcs_clk_in] [get_bd_pins cfgmclk_util_ds_buf_0/BUFG_O]
   connect_bd_net -net dcm_locked_1 [get_bd_pins CLK1B_CW_0/locked] [get_bd_pins ETH0/dcm_locked]
+  connect_bd_net -net el_ip2intc_irpt_1 [get_bd_ports el_ip2intc_irpt] [get_bd_pins INT_ctrl/el_ip2intc_irpt]
+  connect_bd_net -net el_xlconstant_val1_len1_dout [get_bd_ports el_phy_mdio_i] [get_bd_pins el_xlconstant_val1_len1/dout]
   connect_bd_net -net fft09_aresetn_in_0 [get_bd_ports fft09_aresetn_in] [get_bd_pins TRX/fft09_aresetn_in]
   connect_bd_net -net fft09_config_tdata_in_0 [get_bd_ports fft09_config_tdata_in] [get_bd_pins TRX/fft09_config_tdata_in]
   connect_bd_net -net fft09_config_tvalid_in_0 [get_bd_ports fft09_config_tvalid_in] [get_bd_pins TRX/fft09_config_tvalid_in]
@@ -4653,7 +4693,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net lt_F3_CLK0 [get_bd_pins labtools_fmeter_0/F3] [get_bd_pins vio_0/probe_in3]
   connect_bd_net -net lt_F4_TRX_LVDS_divclk [get_bd_pins labtools_fmeter_0/F4] [get_bd_pins vio_0/probe_in8]
   connect_bd_net -net mdm_1_Debug_SYS_Rst [get_bd_pins ETH0/mb_debug_sys_rst] [get_bd_pins mdm_1/Debug_SYS_Rst]
-  connect_bd_net -net microblaze_0_Clk_100MHz [get_bd_ports microblaze_0_Clk_100MHz_o] [get_bd_pins CLK1B_CW_0/s_axi_aclk] [get_bd_pins ETH0/s_axi_aclk] [get_bd_pins EUI48/microblaze_0_Clk_100MHz_o] [get_bd_pins INT_ctrl/processor_clk] [get_bd_pins PWM_lights/s_axi_aclk] [get_bd_pins ROTENC_decoder/CLK] [get_bd_pins SCOPE/s_axi_aclk] [get_bd_pins TRX/s_axi_aclk] [get_bd_pins UART0/s_axi_aclk] [get_bd_pins axi_BOARD_iic_0/s_axi_aclk] [get_bd_pins axi_iic_0/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins axi_interconnect_0/S01_ACLK] [get_bd_pins axi_timer_0/s_axi_aclk] [get_bd_pins labtools_fmeter_0/refclk] [get_bd_pins microblaze_0/Clk] [get_bd_pins microblaze_0_axi_periph/ACLK] [get_bd_pins microblaze_0_axi_periph/M00_ACLK] [get_bd_pins microblaze_0_axi_periph/M01_ACLK] [get_bd_pins microblaze_0_axi_periph/M02_ACLK] [get_bd_pins microblaze_0_axi_periph/M04_ACLK] [get_bd_pins microblaze_0_axi_periph/M05_ACLK] [get_bd_pins microblaze_0_axi_periph/M06_ACLK] [get_bd_pins microblaze_0_axi_periph/M07_ACLK] [get_bd_pins microblaze_0_axi_periph/M08_ACLK] [get_bd_pins microblaze_0_axi_periph/M09_ACLK] [get_bd_pins microblaze_0_axi_periph/M10_ACLK] [get_bd_pins microblaze_0_axi_periph/M11_ACLK] [get_bd_pins microblaze_0_axi_periph/M12_ACLK] [get_bd_pins microblaze_0_axi_periph/M13_ACLK] [get_bd_pins microblaze_0_axi_periph/M14_ACLK] [get_bd_pins microblaze_0_axi_periph/M15_ACLK] [get_bd_pins microblaze_0_axi_periph/M16_ACLK] [get_bd_pins microblaze_0_axi_periph/M17_ACLK] [get_bd_pins microblaze_0_axi_periph/S00_ACLK] [get_bd_pins microblaze_0_local_memory/LMB_Clk] [get_bd_pins mig_7series_0/ui_clk] [get_bd_pins rst_mig_7series_0_100M/slowest_sync_clk]
+  connect_bd_net -net microblaze_0_Clk_100MHz [get_bd_ports microblaze_0_Clk_100MHz_o] [get_bd_pins CLK1B_CW_0/s_axi_aclk] [get_bd_pins ETH0/s_axi_aclk] [get_bd_pins EUI48/microblaze_0_Clk_100MHz_o] [get_bd_pins INT_ctrl/processor_clk] [get_bd_pins PWM_lights/s_axi_aclk] [get_bd_pins ROTENC_decoder/CLK] [get_bd_pins SCOPE/s_axi_aclk] [get_bd_pins TRX/s_axi_aclk] [get_bd_pins UART0/s_axi_aclk] [get_bd_pins axi_BOARD_iic_0/s_axi_aclk] [get_bd_pins axi_iic_0/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins axi_interconnect_0/S01_ACLK] [get_bd_pins axi_timer_0/s_axi_aclk] [get_bd_pins labtools_fmeter_0/refclk] [get_bd_pins microblaze_0/Clk] [get_bd_pins microblaze_0_axi_periph/ACLK] [get_bd_pins microblaze_0_axi_periph/M00_ACLK] [get_bd_pins microblaze_0_axi_periph/M01_ACLK] [get_bd_pins microblaze_0_axi_periph/M02_ACLK] [get_bd_pins microblaze_0_axi_periph/M04_ACLK] [get_bd_pins microblaze_0_axi_periph/M05_ACLK] [get_bd_pins microblaze_0_axi_periph/M06_ACLK] [get_bd_pins microblaze_0_axi_periph/M07_ACLK] [get_bd_pins microblaze_0_axi_periph/M08_ACLK] [get_bd_pins microblaze_0_axi_periph/M09_ACLK] [get_bd_pins microblaze_0_axi_periph/M10_ACLK] [get_bd_pins microblaze_0_axi_periph/M11_ACLK] [get_bd_pins microblaze_0_axi_periph/M12_ACLK] [get_bd_pins microblaze_0_axi_periph/M13_ACLK] [get_bd_pins microblaze_0_axi_periph/M14_ACLK] [get_bd_pins microblaze_0_axi_periph/M15_ACLK] [get_bd_pins microblaze_0_axi_periph/M16_ACLK] [get_bd_pins microblaze_0_axi_periph/M17_ACLK] [get_bd_pins microblaze_0_axi_periph/M18_ACLK] [get_bd_pins microblaze_0_axi_periph/S00_ACLK] [get_bd_pins microblaze_0_local_memory/LMB_Clk] [get_bd_pins mig_7series_0/ui_clk] [get_bd_pins rst_mig_7series_0_100M/slowest_sync_clk]
   connect_bd_net -net mig_7series_0_init_calib_complete [get_bd_ports DDR3_init_calib_complete] [get_bd_pins mig_7series_0/init_calib_complete]
   connect_bd_net -net mig_7series_0_mmcm_locked [get_bd_pins TRX/dcm_locked] [get_bd_pins mig_7series_0/mmcm_locked] [get_bd_pins rst_mig_7series_0_100M/dcm_locked] [get_bd_pins rst_mig_7series_0_50M/dcm_locked]
   connect_bd_net -net mig_7series_0_ui_addn_clk_0_200MHz [get_bd_pins TRX/ref_clock] [get_bd_pins mig_7series_0/clk_ref_i] [get_bd_pins mig_7series_0/ui_addn_clk_0]
@@ -4680,7 +4720,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net rotenc_dec_cnt_up_dwn_1 [get_bd_ports rotenc_dec_cnt_up_dwn] [get_bd_pins ROTENC_decoder/rotenc_dec_cnt_up_dwn]
   connect_bd_net -net rst_mig_7series_0_100M_bus_struct_reset [get_bd_pins microblaze_0_local_memory/SYS_Rst] [get_bd_pins rst_mig_7series_0_100M/bus_struct_reset]
   connect_bd_net -net rst_mig_7series_0_100M_mb_reset [get_bd_pins INT_ctrl/processor_rst] [get_bd_pins microblaze_0/Reset] [get_bd_pins rst_mig_7series_0_100M/mb_reset]
-  connect_bd_net -net rst_mig_7series_0_100M_peripheral_aresetn [get_bd_ports rst_100M_peripheral_aresetn] [get_bd_pins CLK1B_CW_0/s_axi_aresetn] [get_bd_pins ETH0/s_axi_aresetn] [get_bd_pins EUI48/s_axi_aresetn] [get_bd_pins INT_ctrl/s_axi_aresetn] [get_bd_pins PWM_lights/s_axi_aresetn] [get_bd_pins ROTENC_decoder/s_axi_aresetn] [get_bd_pins SCOPE/s_axi_aresetn] [get_bd_pins TRX/s_axi_aresetn] [get_bd_pins UART0/s_axi_aresetn] [get_bd_pins axi_BOARD_iic_0/s_axi_aresetn] [get_bd_pins axi_iic_0/s_axi_aresetn] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins axi_interconnect_0/S01_ARESETN] [get_bd_pins axi_timer_0/s_axi_aresetn] [get_bd_pins microblaze_0_axi_periph/ARESETN] [get_bd_pins microblaze_0_axi_periph/M00_ARESETN] [get_bd_pins microblaze_0_axi_periph/M01_ARESETN] [get_bd_pins microblaze_0_axi_periph/M02_ARESETN] [get_bd_pins microblaze_0_axi_periph/M04_ARESETN] [get_bd_pins microblaze_0_axi_periph/M05_ARESETN] [get_bd_pins microblaze_0_axi_periph/M06_ARESETN] [get_bd_pins microblaze_0_axi_periph/M07_ARESETN] [get_bd_pins microblaze_0_axi_periph/M08_ARESETN] [get_bd_pins microblaze_0_axi_periph/M09_ARESETN] [get_bd_pins microblaze_0_axi_periph/M10_ARESETN] [get_bd_pins microblaze_0_axi_periph/M11_ARESETN] [get_bd_pins microblaze_0_axi_periph/M12_ARESETN] [get_bd_pins microblaze_0_axi_periph/M13_ARESETN] [get_bd_pins microblaze_0_axi_periph/M14_ARESETN] [get_bd_pins microblaze_0_axi_periph/M15_ARESETN] [get_bd_pins microblaze_0_axi_periph/M16_ARESETN] [get_bd_pins microblaze_0_axi_periph/M17_ARESETN] [get_bd_pins microblaze_0_axi_periph/S00_ARESETN] [get_bd_pins rst_mig_7series_0_100M/peripheral_aresetn]
+  connect_bd_net -net rst_mig_7series_0_100M_peripheral_aresetn [get_bd_ports rst_100M_peripheral_aresetn] [get_bd_pins CLK1B_CW_0/s_axi_aresetn] [get_bd_pins ETH0/s_axi_aresetn] [get_bd_pins EUI48/s_axi_aresetn] [get_bd_pins INT_ctrl/s_axi_aresetn] [get_bd_pins PWM_lights/s_axi_aresetn] [get_bd_pins ROTENC_decoder/s_axi_aresetn] [get_bd_pins SCOPE/s_axi_aresetn] [get_bd_pins TRX/s_axi_aresetn] [get_bd_pins UART0/s_axi_aresetn] [get_bd_pins axi_BOARD_iic_0/s_axi_aresetn] [get_bd_pins axi_iic_0/s_axi_aresetn] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins axi_interconnect_0/S01_ARESETN] [get_bd_pins axi_timer_0/s_axi_aresetn] [get_bd_pins microblaze_0_axi_periph/ARESETN] [get_bd_pins microblaze_0_axi_periph/M00_ARESETN] [get_bd_pins microblaze_0_axi_periph/M01_ARESETN] [get_bd_pins microblaze_0_axi_periph/M02_ARESETN] [get_bd_pins microblaze_0_axi_periph/M04_ARESETN] [get_bd_pins microblaze_0_axi_periph/M05_ARESETN] [get_bd_pins microblaze_0_axi_periph/M06_ARESETN] [get_bd_pins microblaze_0_axi_periph/M07_ARESETN] [get_bd_pins microblaze_0_axi_periph/M08_ARESETN] [get_bd_pins microblaze_0_axi_periph/M09_ARESETN] [get_bd_pins microblaze_0_axi_periph/M10_ARESETN] [get_bd_pins microblaze_0_axi_periph/M11_ARESETN] [get_bd_pins microblaze_0_axi_periph/M12_ARESETN] [get_bd_pins microblaze_0_axi_periph/M13_ARESETN] [get_bd_pins microblaze_0_axi_periph/M14_ARESETN] [get_bd_pins microblaze_0_axi_periph/M15_ARESETN] [get_bd_pins microblaze_0_axi_periph/M16_ARESETN] [get_bd_pins microblaze_0_axi_periph/M17_ARESETN] [get_bd_pins microblaze_0_axi_periph/M18_ARESETN] [get_bd_pins microblaze_0_axi_periph/S00_ARESETN] [get_bd_pins rst_mig_7series_0_100M/peripheral_aresetn]
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins ROTENC_decoder/SINIT] [get_bd_pins TRX/reset_CD100_i] [get_bd_pins rst_mig_7series_0_100M/peripheral_reset]
   connect_bd_net -net rst_mig_7series_0_50M_peripheral_aresetn [get_bd_pins axi_quad_spi_0/s_axi_aresetn] [get_bd_pins microblaze_0_axi_periph/M03_ARESETN] [get_bd_pins rst_mig_7series_0_50M/peripheral_aresetn]
   connect_bd_net -net xfft_rx09_dly3449_event_data_in_channel_halt_out_0 [get_bd_pins TRX/xfft_rx09_dly3449_event_data_in_channel_halt_out] [get_bd_pins vio_0/probe_in17]
@@ -4712,6 +4752,7 @@ proc create_root_design { parentCell } {
   assign_bd_address -offset 0x44A10000 -range 0x00010000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_quad_spi_0/AXI_LITE/Reg] -force
   assign_bd_address -offset 0x41C00000 -range 0x00010000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_timer_0/S_AXI/Reg] -force
   assign_bd_address -offset 0x00000000 -range 0x00020000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs microblaze_0_local_memory/dlmb_bram_if_cntlr/SLMB/Mem] -force
+  assign_bd_address -offset 0x40E10000 -range 0x00010000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs el_S_AXI/Reg] -force
   assign_bd_address -offset 0x00000000 -range 0x00020000 -target_address_space [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs microblaze_0_local_memory/ilmb_bram_if_cntlr/SLMB/Mem] -force
   assign_bd_address -offset 0x41200000 -range 0x00010000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs INT_ctrl/microblaze_0_axi_intc/S_AXI/Reg] -force
   assign_bd_address -offset 0x80000000 -range 0x40000000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs mig_7series_0/memmap/memaddr] -force

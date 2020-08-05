@@ -182,6 +182,9 @@ architecture Behavioral of tb_null is
   signal tb_TRX_spi_io1_io : STD_LOGIC;
   signal tb_TRX_spi_sck_io : STD_LOGIC;
   signal tb_TRX_spi_ss_io : STD_LOGIC;
+  
+  signal tb_RMII_PHY_M_0_crs_dv : STD_LOGIC;
+  signal tb_RMII_PHY_M_0_rxd : STD_LOGIC_VECTOR (1 downto 0);
 
 begin
 msys_wrapper_i: component msys_wrapper
@@ -250,8 +253,8 @@ msys_wrapper_i: component msys_wrapper
 
 --    phy_rst_n : out STD_LOGIC;
     ETH0_LINK_LED => '0',
-    RMII_PHY_M_0_crs_dv => '0',
-    RMII_PHY_M_0_rxd => "00",
+    RMII_PHY_M_0_crs_dv => tb_RMII_PHY_M_0_crs_dv,
+    RMII_PHY_M_0_rxd => tb_RMII_PHY_M_0_rxd,
 --    RMII_PHY_M_0_tx_en : out STD_LOGIC;
 --    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
 --    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
@@ -1053,6 +1056,100 @@ msys_wrapper_i: component msys_wrapper
     -- Should never enter here
     wait;
   end process proc_tb_TRX_rx_data;
+
+
+-- ETHERNET
+
+  proc_tb_RMII_PHY: process
+  begin
+    tb_RMII_PHY_M_0_rxd     <= "00";
+    tb_RMII_PHY_M_0_crs_dv  <= '0';
+    wait for 13 us;
+
+    -- Preamble
+    for ii in 0 to 6 loop
+        wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+        tb_RMII_PHY_M_0_rxd     <= "01";
+        tb_RMII_PHY_M_0_crs_dv  <= '1';
+        wait for 20 ns;
+        wait for 20 ns;
+        wait for 20 ns;
+        wait for 19 ns;
+    end loop;
+    
+    -- Start Frame Delimiter 
+    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    tb_RMII_PHY_M_0_rxd     <= "01";
+    tb_RMII_PHY_M_0_crs_dv  <= '1';
+    wait for 20 ns;
+    wait for 20 ns;
+    wait for 20 ns;
+    tb_RMII_PHY_M_0_rxd     <= "11";
+    wait for 19 ns;
+
+    -- Destination MAC - 6 octets   ff:ff:ff:ff:ff:ff   (broadcast MAC address)
+    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    for ii in 0 to 5 loop
+        wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+        tb_RMII_PHY_M_0_rxd     <= "11";
+        tb_RMII_PHY_M_0_crs_dv  <= '1';
+        wait for 20 ns;
+        wait for 20 ns;
+        wait for 20 ns;
+        wait for 19 ns;
+    end loop;
+    
+    -- Source MAC - 6 octets        aa:aa:aa:aa:aa:aa   (faked MAC address)
+    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    for ii in 0 to 5 loop
+        wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+        tb_RMII_PHY_M_0_rxd     <= "10";
+        tb_RMII_PHY_M_0_crs_dv  <= '1';
+        wait for 20 ns;
+        wait for 20 ns;
+        wait for 20 ns;
+        wait for 19 ns;
+    end loop;
+    
+    -- Ethernet II  0x8000    
+    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    tb_RMII_PHY_M_0_rxd     <= "00";
+    tb_RMII_PHY_M_0_crs_dv  <= '1';
+    wait for 20 ns;
+    wait for 20 ns;
+    wait for 20 ns;
+    wait for 19 ns;
+
+    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    tb_RMII_PHY_M_0_rxd     <= "00";
+    tb_RMII_PHY_M_0_crs_dv  <= '1';
+    wait for 20 ns;
+    wait for 20 ns;
+    wait for 19 ns;
+
+    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    tb_RMII_PHY_M_0_rxd     <= "10";
+    tb_RMII_PHY_M_0_crs_dv  <= '1';
+    wait for 19 ns;
+    
+    -- Payload
+    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    tb_RMII_PHY_M_0_rxd     <= "00";
+    tb_RMII_PHY_M_0_crs_dv  <= '1';
+    
+    -- CRC
+    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    tb_RMII_PHY_M_0_rxd     <= "00";
+    tb_RMII_PHY_M_0_crs_dv  <= '1';
+    
+    -- Release
+    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    tb_RMII_PHY_M_0_rxd     <= "00";
+    tb_RMII_PHY_M_0_crs_dv  <= '0';
+    
+    -- do not loop
+    wait;
+  end process proc_tb_RMII_PHY;
 
 
 -- INITIAL VALUES

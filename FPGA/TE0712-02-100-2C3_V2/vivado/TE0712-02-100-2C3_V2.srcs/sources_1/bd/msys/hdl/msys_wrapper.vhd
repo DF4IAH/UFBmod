@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Mon Aug  3 11:04:58 2020
+--Date        : Wed Aug  5 01:35:45 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -188,8 +188,105 @@ architecture STRUCTURE of msys_wrapper is
     SCOPE_FSM_FIFO_wr_rst_busy : out STD_LOGIC;
     SCOPE_FSM_GPIO0_Out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     SCOPE_FSM_GPIO1_In : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_tx_clk_clk_n : out STD_LOGIC;
-    TRX_tx_clk_clk_p : out STD_LOGIC;
+    el_ip2intc_irpt : in STD_LOGIC;
+    el_phy_tx_clk : out STD_LOGIC;
+    el_phy_rx_clk : out STD_LOGIC;
+    el_phy_crs : out STD_LOGIC;
+    el_phy_dv : out STD_LOGIC;
+    el_phy_rx_data : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    el_phy_col : out STD_LOGIC;
+    el_phy_rx_er : out STD_LOGIC;
+    el_phy_rst_n : in STD_LOGIC;
+    el_phy_tx_en : in STD_LOGIC;
+    el_phy_tx_data : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    el_phy_mdio_o : in STD_LOGIC;
+    el_phy_mdio_t : in STD_LOGIC;
+    el_phy_mdc : in STD_LOGIC;
+    el_phy_mdio_i : out STD_LOGIC_VECTOR ( 0 to 0 );
+    qspi_flash_io0_i : in STD_LOGIC;
+    qspi_flash_io0_o : out STD_LOGIC;
+    qspi_flash_io0_t : out STD_LOGIC;
+    qspi_flash_io1_i : in STD_LOGIC;
+    qspi_flash_io1_o : out STD_LOGIC;
+    qspi_flash_io1_t : out STD_LOGIC;
+    qspi_flash_io2_i : in STD_LOGIC;
+    qspi_flash_io2_o : out STD_LOGIC;
+    qspi_flash_io2_t : out STD_LOGIC;
+    qspi_flash_io3_i : in STD_LOGIC;
+    qspi_flash_io3_o : out STD_LOGIC;
+    qspi_flash_io3_t : out STD_LOGIC;
+    qspi_flash_ss_i : in STD_LOGIC;
+    qspi_flash_ss_o : out STD_LOGIC;
+    qspi_flash_ss_t : out STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
+    UART0_rxd : in STD_LOGIC;
+    UART0_txd : out STD_LOGIC;
+    CLK3_sys_diff_clk_p : in STD_LOGIC;
+    CLK3_sys_diff_clk_n : in STD_LOGIC;
+    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
+    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
+    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    RMII_PHY_M_0_tx_en : out STD_LOGIC;
+    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    BOARD_IIC_scl_i : in STD_LOGIC;
+    BOARD_IIC_scl_o : out STD_LOGIC;
+    BOARD_IIC_scl_t : out STD_LOGIC;
+    BOARD_IIC_sda_i : in STD_LOGIC;
+    BOARD_IIC_sda_o : out STD_LOGIC;
+    BOARD_IIC_sda_t : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
+    TRX_spi_io0_i : in STD_LOGIC;
+    TRX_spi_io0_o : out STD_LOGIC;
+    TRX_spi_io0_t : out STD_LOGIC;
+    TRX_spi_io1_i : in STD_LOGIC;
+    TRX_spi_io1_o : out STD_LOGIC;
+    TRX_spi_io1_t : out STD_LOGIC;
+    TRX_spi_sck_i : in STD_LOGIC;
+    TRX_spi_sck_o : out STD_LOGIC;
+    TRX_spi_sck_t : out STD_LOGIC;
+    TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_spi_ss_t : out STD_LOGIC;
+    el_S_AXI_awaddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    el_S_AXI_awlen : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    el_S_AXI_awsize : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    el_S_AXI_awburst : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    el_S_AXI_awlock : out STD_LOGIC_VECTOR ( 0 to 0 );
+    el_S_AXI_awcache : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    el_S_AXI_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    el_S_AXI_awregion : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    el_S_AXI_awqos : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    el_S_AXI_awvalid : out STD_LOGIC;
+    el_S_AXI_awready : in STD_LOGIC;
+    el_S_AXI_wdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    el_S_AXI_wstrb : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    el_S_AXI_wlast : out STD_LOGIC;
+    el_S_AXI_wvalid : out STD_LOGIC;
+    el_S_AXI_wready : in STD_LOGIC;
+    el_S_AXI_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    el_S_AXI_bvalid : in STD_LOGIC;
+    el_S_AXI_bready : out STD_LOGIC;
+    el_S_AXI_araddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    el_S_AXI_arlen : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    el_S_AXI_arsize : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    el_S_AXI_arburst : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    el_S_AXI_arlock : out STD_LOGIC_VECTOR ( 0 to 0 );
+    el_S_AXI_arcache : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    el_S_AXI_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    el_S_AXI_arregion : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    el_S_AXI_arqos : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    el_S_AXI_arvalid : out STD_LOGIC;
+    el_S_AXI_arready : in STD_LOGIC;
+    el_S_AXI_rdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    el_S_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    el_S_AXI_rlast : in STD_LOGIC;
+    el_S_AXI_rvalid : in STD_LOGIC;
+    el_S_AXI_rready : out STD_LOGIC;
     DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -207,55 +304,8 @@ architecture STRUCTURE of msys_wrapper is
     DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
     CLK2_mgt_clk0_clk_p : in STD_LOGIC;
     CLK2_mgt_clk0_clk_n : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
-    TRX_spi_io0_i : in STD_LOGIC;
-    TRX_spi_io0_o : out STD_LOGIC;
-    TRX_spi_io0_t : out STD_LOGIC;
-    TRX_spi_io1_i : in STD_LOGIC;
-    TRX_spi_io1_o : out STD_LOGIC;
-    TRX_spi_io1_t : out STD_LOGIC;
-    TRX_spi_sck_i : in STD_LOGIC;
-    TRX_spi_sck_o : out STD_LOGIC;
-    TRX_spi_sck_t : out STD_LOGIC;
-    TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_spi_ss_t : out STD_LOGIC;
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
-    BOARD_IIC_scl_i : in STD_LOGIC;
-    BOARD_IIC_scl_o : out STD_LOGIC;
-    BOARD_IIC_scl_t : out STD_LOGIC;
-    BOARD_IIC_sda_i : in STD_LOGIC;
-    BOARD_IIC_sda_o : out STD_LOGIC;
-    BOARD_IIC_sda_t : out STD_LOGIC;
-    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
-    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    RMII_PHY_M_0_tx_en : out STD_LOGIC;
-    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    CLK3_sys_diff_clk_p : in STD_LOGIC;
-    CLK3_sys_diff_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
-    qspi_flash_io0_i : in STD_LOGIC;
-    qspi_flash_io0_o : out STD_LOGIC;
-    qspi_flash_io0_t : out STD_LOGIC;
-    qspi_flash_io1_i : in STD_LOGIC;
-    qspi_flash_io1_o : out STD_LOGIC;
-    qspi_flash_io1_t : out STD_LOGIC;
-    qspi_flash_io2_i : in STD_LOGIC;
-    qspi_flash_io2_o : out STD_LOGIC;
-    qspi_flash_io2_t : out STD_LOGIC;
-    qspi_flash_io3_i : in STD_LOGIC;
-    qspi_flash_io3_o : out STD_LOGIC;
-    qspi_flash_io3_t : out STD_LOGIC;
-    qspi_flash_ss_i : in STD_LOGIC;
-    qspi_flash_ss_o : out STD_LOGIC;
-    qspi_flash_ss_t : out STD_LOGIC;
-    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 )
+    TRX_tx_clk_clk_n : out STD_LOGIC;
+    TRX_tx_clk_clk_p : out STD_LOGIC
   );
   end component msys;
   component IOBUF is
@@ -362,6 +412,90 @@ architecture STRUCTURE of msys_wrapper is
     SCOPE_FSM_FIFO_RdValid      : in  STD_LOGIC
   );
   end component SCOPE_FSM;
+    component axi_ethernetlite is
+  Generic
+   (
+    C_FAMILY                        : string := "artix7";
+    C_SELECT_XPM                    : integer := 1;
+    C_INSTANCE                      : string := "axi_ethernetlite_inst";
+    C_S_AXI_ACLK_PERIOD_PS          : integer := 10000;
+    C_S_AXI_ADDR_WIDTH              : integer := 32;
+    C_S_AXI_DATA_WIDTH              : integer range 32 to 32 := 32;
+    C_S_AXI_ID_WIDTH                : integer := 4;
+    C_S_AXI_PROTOCOL                : string  := "AXI4LITE";
+
+    C_INCLUDE_MDIO                  : integer := 1;
+    C_INCLUDE_INTERNAL_LOOPBACK     : integer := 0;
+    C_INCLUDE_GLOBAL_BUFFERS        : integer := 1;
+    C_DUPLEX                        : integer range 0 to 1:= 1;
+    C_TX_PING_PONG                  : integer range 0 to 1:= 1;
+    C_RX_PING_PONG                  : integer range 0 to 1:= 1
+    );
+  Port (
+--  -- AXI Slave signals ------------------------------------------------------
+--   -- AXI Global System Signals
+       s_axi_aclk       : in  std_logic;
+       s_axi_aresetn    : in  std_logic;
+       ip2intc_irpt     : out std_logic;
+
+--   -- axi slave burst Interface
+--   -- axi write address Channel Signals
+       s_axi_awid    : in  std_logic_vector(C_S_AXI_ID_WIDTH-1 downto 0);
+       s_axi_awaddr  : in  std_logic_vector(31 downto 0); -- (C_S_AXI_ADDR_WIDTH-1 downto 0);
+       s_axi_awlen   : in  std_logic_vector(7 downto 0);
+       s_axi_awsize  : in  std_logic_vector(2 downto 0);
+       s_axi_awburst : in  std_logic_vector(1 downto 0);
+       s_axi_awcache : in  std_logic_vector(3 downto 0);
+       s_axi_awvalid : in  std_logic;
+       s_axi_awready : out std_logic;
+
+--   -- axi write data Channel Signals
+       s_axi_wdata   : in  std_logic_vector(31 downto 0); -- (C_S_AXI_DATA_WIDTH-1 downto 0);
+       s_axi_wstrb   : in  std_logic_vector(3 downto 0);  --(((C_S_AXI_DATA_WIDTH/8)-1) downto 0);
+       s_axi_wlast   : in  std_logic;
+       s_axi_wvalid  : in  std_logic;
+       s_axi_wready  : out std_logic;
+
+--   -- axi write response Channel Signals
+       s_axi_bid     : out std_logic_vector(C_S_AXI_ID_WIDTH-1 downto 0);
+       s_axi_bresp   : out std_logic_vector(1 downto 0);
+       s_axi_bvalid  : out std_logic;
+       s_axi_bready  : in  std_logic;
+--   -- axi read address Channel Signals
+       s_axi_arid    : in  std_logic_vector(C_S_AXI_ID_WIDTH-1 downto 0);
+       s_axi_araddr  : in  std_logic_vector(31 downto 0); -- (C_S_AXI_ADDR_WIDTH-1 downto 0);
+       s_axi_arlen   : in  std_logic_vector(7 downto 0);
+       s_axi_arsize  : in  std_logic_vector(2 downto 0);
+       s_axi_arburst : in  std_logic_vector(1 downto 0);
+       s_axi_arcache : in  std_logic_vector(3 downto 0);
+       s_axi_arvalid : in  std_logic;
+       s_axi_arready : out std_logic;
+
+--   -- axi read data Channel Signals
+       s_axi_rid     : out std_logic_vector(C_S_AXI_ID_WIDTH-1 downto 0);
+       s_axi_rdata   : out std_logic_vector(31 downto 0); -- (C_S_AXI_DATA_WIDTH-1 downto 0);
+       s_axi_rresp   : out std_logic_vector(1 downto 0);
+       s_axi_rlast   : out std_logic;
+       s_axi_rvalid  : out std_logic;
+       s_axi_rready  : in  std_logic;
+
+--   -- Ethernet Interface
+       phy_tx_clk        : in std_logic;
+       phy_rx_clk        : in std_logic;
+       phy_crs           : in std_logic;
+       phy_dv            : in std_logic;
+       phy_rx_data       : in std_logic_vector (3 downto 0);
+       phy_col           : in std_logic;
+       phy_rx_er         : in std_logic;
+       phy_rst_n         : out std_logic;
+       phy_tx_en         : out std_logic;
+       phy_tx_data       : out std_logic_vector (3 downto 0);
+       phy_mdio_i        : in  std_logic;
+       phy_mdio_o        : out std_logic;
+       phy_mdio_t        : out std_logic;
+       phy_mdc           : out std_logic
+    );
+  end component axi_ethernetlite;
   signal BOARD_IIC_scl_i : STD_LOGIC;
   signal BOARD_IIC_scl_o : STD_LOGIC;
   signal BOARD_IIC_scl_t : STD_LOGIC;
@@ -459,6 +593,56 @@ architecture STRUCTURE of msys_wrapper is
   signal qspi_flash_ss_i : STD_LOGIC;
   signal qspi_flash_ss_o : STD_LOGIC;
   signal qspi_flash_ss_t : STD_LOGIC;
+  signal el_S_AXI_araddr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal el_S_AXI_arburst : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal el_S_AXI_arcache : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal el_S_AXI_arlen : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal el_S_AXI_arlock : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal el_S_AXI_arprot : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal el_S_AXI_arqos : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal el_S_AXI_arready : STD_LOGIC;
+  signal el_S_AXI_arregion : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal el_S_AXI_arsize : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal el_S_AXI_arvalid : STD_LOGIC;
+  signal el_S_AXI_awaddr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal el_S_AXI_awburst : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal el_S_AXI_awcache : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal el_S_AXI_awlen : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal el_S_AXI_awlock : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal el_S_AXI_awprot : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal el_S_AXI_awqos : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal el_S_AXI_awready : STD_LOGIC;
+  signal el_S_AXI_awregion : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal el_S_AXI_awsize : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal el_S_AXI_awvalid : STD_LOGIC;
+  signal el_S_AXI_bready : STD_LOGIC;
+  signal el_S_AXI_bresp : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal el_S_AXI_bvalid : STD_LOGIC;
+  signal el_S_AXI_rdata : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal el_S_AXI_rlast : STD_LOGIC;
+  signal el_S_AXI_rready : STD_LOGIC;
+  signal el_S_AXI_rresp : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal el_S_AXI_rvalid : STD_LOGIC;
+  signal el_S_AXI_wdata : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal el_S_AXI_wlast : STD_LOGIC;
+  signal el_S_AXI_wready : STD_LOGIC;
+  signal el_S_AXI_wstrb : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal el_S_AXI_wvalid : STD_LOGIC;
+  signal el_ip2intc_irpt : STD_LOGIC;
+  signal el_phy_col : STD_LOGIC;
+  signal el_phy_crs : STD_LOGIC;
+  signal el_phy_dv : STD_LOGIC;
+  signal el_phy_mdc : STD_LOGIC;
+  signal el_phy_mdio_i : STD_LOGIC;
+  signal el_phy_mdio_o : STD_LOGIC;
+  signal el_phy_mdio_t : STD_LOGIC;
+  signal el_phy_rst_n : STD_LOGIC;
+  signal el_phy_rx_clk : STD_LOGIC;
+  signal el_phy_rx_data : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal el_phy_rx_er : STD_LOGIC;
+  signal el_phy_tx_clk : STD_LOGIC;
+  signal el_phy_tx_data : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal el_phy_tx_en : STD_LOGIC;
 begin
 ETH0_LINK_LED_0: component IBUF
      port map (
@@ -605,6 +789,69 @@ SCOPE_FSM_i: component SCOPE_FSM
       SCOPE_FSM_FIFO_RdEn           => mw_SCOPE_FSM_FIFO_RdEn,
       SCOPE_FSM_FIFO_RdValid        => mw_SCOPE_FSM_FIFO_RdValid
     );
+dut_axiethernetlite_i: component axi_ethernetlite
+    port map (
+       s_axi_aclk           => mw_microblaze_0_Clk_100MHz,      --      in  std_logic;
+       s_axi_aresetn        => mw_rst_100M_peripheral_aresetn,  --      in  std_logic;
+       ip2intc_irpt         => el_ip2intc_irpt,                 --      out std_logic;
+
+--   -- axi slave burst Interface
+--   -- axi write address Channel Signals
+       s_axi_awid           => "0000",                          --      in  std_logic_vector(C_S_AXI_ID_WIDTH-1 downto 0);
+       s_axi_awaddr         => el_S_AXI_awaddr,                 --      in  std_logic_vector(31 downto 0); -- (C_S_AXI_ADDR_WIDTH-1 downto 0);
+       s_axi_awlen          => el_S_AXI_awlen,                  --      in  std_logic_vector(7 downto 0);
+       s_axi_awsize         => el_S_AXI_awsize,                 --      in  std_logic_vector(2 downto 0);
+       s_axi_awburst        => el_S_AXI_awburst,                --      in  std_logic_vector(1 downto 0);
+       s_axi_awcache        => el_S_AXI_awcache,                --      in  std_logic_vector(3 downto 0);
+       s_axi_awvalid        => el_S_AXI_awvalid,                --      in  std_logic;
+       s_axi_awready        => el_S_AXI_awready,                --      out std_logic;
+
+--   -- axi write data Channel Signals
+       s_axi_wdata          => el_S_AXI_wdata,                  --      in  std_logic_vector(31 downto 0);    -- (C_S_AXI_DATA_WIDTH-1 downto 0);
+       s_axi_wstrb          => el_S_AXI_wstrb,                  --      in  std_logic_vector(3 downto 0);     -- (((C_S_AXI_DATA_WIDTH/8)-1) downto 0);
+       s_axi_wlast          => el_S_AXI_wlast,                  --      in  std_logic;
+       s_axi_wvalid         => el_S_AXI_wvalid,                 --      in  std_logic;
+       s_axi_wready         => el_S_AXI_wready,                 --      out std_logic;
+
+--   -- axi write response Channel Signals
+     --s_axi_bid            => (none),                          --      out std_logic_vector(C_S_AXI_ID_WIDTH-1 downto 0);
+       s_axi_bresp          => el_S_AXI_bresp,                  --      out std_logic_vector(1 downto 0);
+       s_axi_bvalid         => el_S_AXI_bvalid,                 --      out std_logic;
+       s_axi_bready         => el_S_AXI_bready,                 --      in  std_logic;
+--   -- axi read address Channel Signals
+       s_axi_arid           => "0000",                          --      in  std_logic_vector(C_S_AXI_ID_WIDTH-1 downto 0);
+       s_axi_araddr         => el_S_AXI_araddr,                 --      in  std_logic_vector(31 downto 0); -- (C_S_AXI_ADDR_WIDTH-1 downto 0);
+       s_axi_arlen          => el_S_AXI_arlen,                  --      in  std_logic_vector(7 downto 0);
+       s_axi_arsize         => el_S_AXI_arsize,                 --      in  std_logic_vector(2 downto 0);
+       s_axi_arburst        => el_S_AXI_arburst,                --      in  std_logic_vector(1 downto 0);
+       s_axi_arcache        => el_S_AXI_arcache,                --      in  std_logic_vector(3 downto 0);
+       s_axi_arvalid        => el_S_AXI_arvalid,                --      in  std_logic;
+       s_axi_arready        => el_S_AXI_arready,                --      out std_logic;
+
+--   -- axi read data Channel Signals
+     --s_axi_rid            => (none),                          --      out std_logic_vector(C_S_AXI_ID_WIDTH-1 downto 0);
+       s_axi_rdata          => el_S_AXI_rdata,                  --      out std_logic_vector(31 downto 0); -- (C_S_AXI_DATA_WIDTH-1 downto 0);
+       s_axi_rresp          => el_S_AXI_rresp,                  --      out std_logic_vector(1 downto 0);
+       s_axi_rlast          => el_S_AXI_rlast,                  --      out std_logic;
+       s_axi_rvalid         => el_S_AXI_rvalid,                 --      out std_logic;
+       s_axi_rready         => el_S_AXI_rready,                 --      in  std_logic;
+
+--   -- Ethernet Interface
+       phy_tx_clk           => el_phy_tx_clk,                   --      in std_logic;
+       phy_rx_clk           => el_phy_rx_clk,                   --      in std_logic;
+       phy_crs              => el_phy_crs,                      --      in std_logic;
+       phy_dv               => el_phy_dv,                       --      in std_logic;
+       phy_rx_data          => el_phy_rx_data,                  --      in std_logic_vector (3 downto 0);
+       phy_col              => el_phy_col,                      --      in std_logic;
+       phy_rx_er            => el_phy_rx_er,                    --      in std_logic;
+       phy_rst_n            => el_phy_rst_n,                    --      out std_logic;
+       phy_tx_en            => el_phy_tx_en,                    --      out std_logic;
+       phy_tx_data          => el_phy_tx_data,                  --      out std_logic_vector (3 downto 0);
+       phy_mdio_i           => el_phy_mdio_i,                   --      in  std_logic;
+       phy_mdio_o           => el_phy_mdio_o,                   --      out std_logic;
+       phy_mdio_t           => el_phy_mdio_t,                   --      out std_logic;
+       phy_mdc              => el_phy_mdc                       --      out std_logic
+    );    
 msys_i: component msys
      port map (
       BOARD_IIC_scl_i => BOARD_IIC_scl_i,
@@ -717,6 +964,56 @@ msys_i: component msys
       UART0_txd => UART0_txd,
       ULI_SYSTEM_XIO => ULI_SYSTEM_XIO,
       USER_dbg_out(13 downto 0) => USER_dbg_out(13 downto 0),
+      el_S_AXI_araddr(31 downto 0) => el_S_AXI_araddr(31 downto 0),
+      el_S_AXI_arburst(1 downto 0) => el_S_AXI_arburst(1 downto 0),
+      el_S_AXI_arcache(3 downto 0) => el_S_AXI_arcache(3 downto 0),
+      el_S_AXI_arlen(7 downto 0) => el_S_AXI_arlen(7 downto 0),
+      el_S_AXI_arlock(0) => el_S_AXI_arlock(0),
+      el_S_AXI_arprot(2 downto 0) => el_S_AXI_arprot(2 downto 0),
+      el_S_AXI_arqos(3 downto 0) => el_S_AXI_arqos(3 downto 0),
+      el_S_AXI_arready => el_S_AXI_arready,
+      el_S_AXI_arregion(3 downto 0) => el_S_AXI_arregion(3 downto 0),
+      el_S_AXI_arsize(2 downto 0) => el_S_AXI_arsize(2 downto 0),
+      el_S_AXI_arvalid => el_S_AXI_arvalid,
+      el_S_AXI_awaddr(31 downto 0) => el_S_AXI_awaddr(31 downto 0),
+      el_S_AXI_awburst(1 downto 0) => el_S_AXI_awburst(1 downto 0),
+      el_S_AXI_awcache(3 downto 0) => el_S_AXI_awcache(3 downto 0),
+      el_S_AXI_awlen(7 downto 0) => el_S_AXI_awlen(7 downto 0),
+      el_S_AXI_awlock(0) => el_S_AXI_awlock(0),
+      el_S_AXI_awprot(2 downto 0) => el_S_AXI_awprot(2 downto 0),
+      el_S_AXI_awqos(3 downto 0) => el_S_AXI_awqos(3 downto 0),
+      el_S_AXI_awready => el_S_AXI_awready,
+      el_S_AXI_awregion(3 downto 0) => el_S_AXI_awregion(3 downto 0),
+      el_S_AXI_awsize(2 downto 0) => el_S_AXI_awsize(2 downto 0),
+      el_S_AXI_awvalid => el_S_AXI_awvalid,
+      el_S_AXI_bready => el_S_AXI_bready,
+      el_S_AXI_bresp(1 downto 0) => el_S_AXI_bresp(1 downto 0),
+      el_S_AXI_bvalid => el_S_AXI_bvalid,
+      el_S_AXI_rdata(31 downto 0) => el_S_AXI_rdata(31 downto 0),
+      el_S_AXI_rlast => el_S_AXI_rlast,
+      el_S_AXI_rready => el_S_AXI_rready,
+      el_S_AXI_rresp(1 downto 0) => el_S_AXI_rresp(1 downto 0),
+      el_S_AXI_rvalid => el_S_AXI_rvalid,
+      el_S_AXI_wdata(31 downto 0) => el_S_AXI_wdata(31 downto 0),
+      el_S_AXI_wlast => el_S_AXI_wlast,
+      el_S_AXI_wready => el_S_AXI_wready,
+      el_S_AXI_wstrb(3 downto 0) => el_S_AXI_wstrb(3 downto 0),
+      el_S_AXI_wvalid => el_S_AXI_wvalid,
+      el_ip2intc_irpt => el_ip2intc_irpt,
+      el_phy_col => el_phy_col,
+      el_phy_crs => el_phy_crs,
+      el_phy_dv => el_phy_dv,
+      el_phy_mdc => el_phy_mdc,
+      el_phy_mdio_i(0) => el_phy_mdio_i,
+      el_phy_mdio_o => el_phy_mdio_o,
+      el_phy_mdio_t => el_phy_mdio_t,
+      el_phy_rst_n => el_phy_rst_n,
+      el_phy_rx_clk => el_phy_rx_clk,
+      el_phy_rx_data(3 downto 0) => el_phy_rx_data(3 downto 0),
+      el_phy_rx_er => el_phy_rx_er,
+      el_phy_tx_clk => el_phy_tx_clk,
+      el_phy_tx_data(3 downto 0) => el_phy_tx_data(3 downto 0),
+      el_phy_tx_en => el_phy_tx_en,
       fft09_aresetn_in => mw_fft09_aresetn_in,
       fft09_config_tdata_in(7 downto 0) => mw_fft09_config_tdata_in(7 downto 0),
       fft09_config_tvalid_in => mw_fft09_config_tvalid_in,

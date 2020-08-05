@@ -157,7 +157,7 @@ begin
                     -- Start after-trigger timer
                     FSM_state_dbg <= x"40";
                     SCOPE_FSM_FIFO_RdEn <= SCOPE_FSM_FIFO_WrFull;
-                    ctr <= x"0200";
+                    ctr <= x"0399";     -- 1021 complete entries - 100 samples before the Trigger
                     state := trigTmr;
                     
                 when trigTmr =>

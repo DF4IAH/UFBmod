@@ -1,0 +1,49 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"2.0",
+   "Default View_TopLeft":"-651,-156",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port s_axi -pg 1 -lvl 0 -x -30 -y 350 -defaultsOSRD
+preplace port interrupt -pg 1 -lvl 3 -x 510 -y 380 -defaultsOSRD
+preplace port processor_clk -pg 1 -lvl 0 -x -30 -y 380 -defaultsOSRD
+preplace port s_axi_aresetn -pg 1 -lvl 0 -x -30 -y 410 -defaultsOSRD
+preplace port processor_rst -pg 1 -lvl 0 -x -30 -y 440 -defaultsOSRD
+preplace portBus In3 -pg 1 -lvl 0 -x -30 -y 80 -defaultsOSRD
+preplace portBus In2 -pg 1 -lvl 0 -x -30 -y 50 -defaultsOSRD
+preplace portBus In0 -pg 1 -lvl 0 -x -30 -y -10 -defaultsOSRD
+preplace portBus TRX_int -pg 1 -lvl 0 -x -30 -y 320 -defaultsOSRD
+preplace portBus PLL_int -pg 1 -lvl 0 -x -30 -y 260 -defaultsOSRD
+preplace portBus In5 -pg 1 -lvl 0 -x -30 -y 140 -defaultsOSRD
+preplace portBus In6 -pg 1 -lvl 0 -x -30 -y 170 -defaultsOSRD
+preplace portBus In8 -pg 1 -lvl 0 -x -30 -y 230 -defaultsOSRD
+preplace portBus In1 -pg 1 -lvl 0 -x -30 -y 20 -defaultsOSRD
+preplace portBus In10 -pg 1 -lvl 0 -x -30 -y 290 -defaultsOSRD
+preplace portBus In4 -pg 1 -lvl 0 -x -30 -y 110 -defaultsOSRD
+preplace portBus In7 -pg 1 -lvl 0 -x -30 -y 200 -defaultsOSRD
+preplace inst microblaze_0_xlconcat -pg 1 -lvl 1 -x 130 -y 160 -defaultsOSRD
+preplace inst microblaze_0_axi_intc -pg 1 -lvl 2 -x 370 -y 380 -defaultsOSRD
+preplace netloc In3_1 1 0 1 0J 80n
+preplace netloc In2_1 1 0 1 10J 50n
+preplace netloc In0_1 1 0 1 30J -10n
+preplace netloc TRX_int_1 1 0 1 30J 270n
+preplace netloc PLL_int_1 1 0 1 0J 230n
+preplace netloc In5_1 1 0 1 10J 140n
+preplace netloc In6_1 1 0 1 NJ 170
+preplace netloc In8_1 1 0 1 -10J 210n
+preplace netloc In1_1 1 0 1 20J 20n
+preplace netloc In10_1 1 0 1 20J 250n
+preplace netloc In4_1 1 0 1 -10J 110n
+preplace netloc In7_1 1 0 1 10J 190n
+preplace netloc microblaze_0_xlconcat_dout 1 1 1 230 160n
+preplace netloc processor_clk_1 1 0 2 20J 350 240
+preplace netloc s_axi_aresetn_1 1 0 2 30J 370 NJ
+preplace netloc processor_rst_1 1 0 2 10J 430 NJ
+preplace netloc Conn2 1 2 1 N 380
+preplace netloc Conn1 1 0 2 0J 330 NJ
+levelinfo -pg 1 -30 130 370 510
+pagesize -pg 1 -db -bbox -sgen -170 -30 620 490
+"
+}
+

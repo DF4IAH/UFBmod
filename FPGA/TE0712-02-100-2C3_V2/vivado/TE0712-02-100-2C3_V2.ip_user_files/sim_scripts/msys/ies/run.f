@@ -650,6 +650,7 @@
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_xlslice_0_39/sim/msys_xlslice_0_39.v" \
   "../../../bd/msys/ip/msys_xlslice_1_5/sim/msys_xlslice_1_5.v" \
+  "../../../bd/msys/ip/msys_xlconstant_0_25/sim/msys_xlconstant_0_25.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_0_0/sim/msys_tier2_xbar_0_0.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_1_0/sim/msys_tier2_xbar_1_0.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_2_0/sim/msys_tier2_xbar_2_0.v" \
@@ -659,6 +660,12 @@
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_auto_cc_0/sim/msys_auto_cc_0.v" \
+-endlib
+-makelib ies_lib/axi_protocol_converter_v2_1_21 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8dfa/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_auto_pc_0/sim/msys_auto_pc_0.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/sim/msys.vhd" \
