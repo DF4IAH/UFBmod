@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Wed Aug  5 03:05:14 2020
+--Date        : Wed Aug  5 11:42:04 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -1312,6 +1312,8 @@ use UNISIM.VCOMPONENTS.ALL;
 entity SCOPE_imp_FH2SDI is
   port (
     CLK1B_CW_0_clk_out3_Scope_RefClk : in STD_LOGIC;
+    Dbg_RMII_PHY_M_0_crs_dv : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Dbg_RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     ETH0_m_mii_tx_en : in STD_LOGIC;
     ETH0_m_mii_tx_er : in STD_LOGIC;
     ETH0_m_mii_txd : in STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -1417,39 +1419,11 @@ architecture STRUCTURE of SCOPE_imp_FH2SDI is
   end component msys_xlconcat_0_13;
   component msys_c_shift_ram_0_10 is
   port (
-    D : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    D : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK : in STD_LOGIC;
-    Q : out STD_LOGIC_VECTOR ( 47 downto 0 )
+    Q : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_c_shift_ram_0_10;
-  component msys_xlconcat_0_14 is
-  port (
-    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In4 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In5 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In6 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In7 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In8 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In9 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In10 : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    In11 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In12 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In13 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In14 : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    In15 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In16 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In17 : in STD_LOGIC_VECTOR ( 24 downto 0 );
-    dout : out STD_LOGIC_VECTOR ( 47 downto 0 )
-  );
-  end component msys_xlconcat_0_14;
-  component msys_xlconstant_0_21 is
-  port (
-    dout : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component msys_xlconstant_0_21;
   component msys_fifo_generator_0_1 is
   port (
     rst : in STD_LOGIC;
@@ -1467,11 +1441,6 @@ architecture STRUCTURE of SCOPE_imp_FH2SDI is
     rd_rst_busy : out STD_LOGIC
   );
   end component msys_fifo_generator_0_1;
-  component msys_xlconstant_0_23 is
-  port (
-    dout : out STD_LOGIC_VECTOR ( 24 downto 0 )
-  );
-  end component msys_xlconstant_0_23;
   component msys_axi_gpio_0_4 is
   port (
     s_axi_aclk : in STD_LOGIC;
@@ -1509,6 +1478,113 @@ architecture STRUCTURE of SCOPE_imp_FH2SDI is
     Dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component msys_xlslice_1_5;
+  component msys_c_shift_ram_0_11 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_c_shift_ram_0_11;
+  component msys_c_shift_ram_0_12 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component msys_c_shift_ram_0_12;
+  component msys_c_shift_ram_0_13 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_c_shift_ram_0_13;
+  component msys_c_shift_ram_0_14 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_c_shift_ram_0_14;
+  component msys_c_shift_ram_0_15 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_c_shift_ram_0_15;
+  component msys_c_shift_ram_0_16 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 3 downto 0 )
+  );
+  end component msys_c_shift_ram_0_16;
+  component msys_c_shift_ram_0_17 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_c_shift_ram_0_17;
+  component msys_c_shift_ram_0_18 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_c_shift_ram_0_18;
+  component msys_c_shift_ram_0_19 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_c_shift_ram_0_19;
+  component msys_c_shift_ram_0_20 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 3 downto 0 )
+  );
+  end component msys_c_shift_ram_0_20;
+  component msys_c_shift_ram_0_21 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_c_shift_ram_0_21;
+  component msys_c_shift_ram_0_22 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_c_shift_ram_0_22;
+  component msys_xlconcat_0_17 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In2 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In4 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    In5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In8 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In9 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In10 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    In11 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In12 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In13 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In14 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    In15 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In16 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In17 : in STD_LOGIC_VECTOR ( 22 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 47 downto 0 )
+  );
+  end component msys_xlconcat_0_17;
   signal CLK1B_CW_0_clk_out3_Scope_RefClk_0 : STD_LOGIC;
   signal Conn1_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal Conn1_ARREADY : STD_LOGIC;
@@ -1527,6 +1603,8 @@ architecture STRUCTURE of SCOPE_imp_FH2SDI is
   signal Conn1_WREADY : STD_LOGIC;
   signal Conn1_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal Conn1_WVALID : STD_LOGIC;
+  signal Dbg_RMII_PHY_M_0_crs_dv_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal Dbg_RMII_PHY_M_0_rxd_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal ETH0_m_mii_tx_en_0 : STD_LOGIC;
   signal ETH0_m_mii_tx_er_0 : STD_LOGIC;
   signal ETH0_m_mii_txd_1 : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -1545,10 +1623,21 @@ architecture STRUCTURE of SCOPE_imp_FH2SDI is
   signal SCOPE_FSM_Timebase_SCLR_1 : STD_LOGIC;
   signal SCOPE_GPIO3_Out_xlslice_63downto32_Dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal SCOPE_GPIO4_Out_xlslice_31downto0_Dout : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal SCOPE_Signals_CDC_c_shift_ram_0_Q : STD_LOGIC_VECTOR ( 47 downto 0 );
+  signal SCOPE_Signals_CDC_c_shift_ram_0_Q : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal SCOPE_Signals_CDC_c_shift_ram_10_Q : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal SCOPE_Signals_CDC_c_shift_ram_11_Q : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal SCOPE_Signals_CDC_c_shift_ram_12_Q : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal SCOPE_Signals_CDC_c_shift_ram_13_Q : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal SCOPE_Signals_CDC_c_shift_ram_14_Q : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal SCOPE_Signals_CDC_c_shift_ram_15_Q : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal SCOPE_Signals_CDC_c_shift_ram_16_Q : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal SCOPE_Signals_CDC_c_shift_ram_1_Q : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal SCOPE_Signals_CDC_c_shift_ram_2_Q : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal SCOPE_Signals_CDC_c_shift_ram_7_Q : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal SCOPE_Signals_CDC_c_shift_ram_8_Q : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal SCOPE_Signals_CDC_c_shift_ram_9_Q : STD_LOGIC_VECTOR ( 0 to 0 );
   signal SCOPE_Signals_xlconcat_0_dout : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal SCOPE_Signals_xlconcat_1_dout : STD_LOGIC_VECTOR ( 47 downto 0 );
-  signal SCOPE_Signals_xlconstant_0_dout : STD_LOGIC_VECTOR ( 24 downto 0 );
   signal SCOPE_Timebase_c_counter_binary_0_Q : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal SCOPE_axi_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal SCOPE_fifo_generator_0_almost_full : STD_LOGIC;
@@ -1557,7 +1646,6 @@ architecture STRUCTURE of SCOPE_imp_FH2SDI is
   signal SCOPE_fifo_generator_0_rd_rst_busy : STD_LOGIC;
   signal SCOPE_fifo_generator_0_valid : STD_LOGIC;
   signal SCOPE_fifo_generator_0_wr_rst_busy : STD_LOGIC;
-  signal SCOPE_xlconstant_val0_len0_dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal microblaze_0_Clk_100MHz_0 : STD_LOGIC;
   signal microblaze_0_axi_periph_M15_AXI_0_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal microblaze_0_axi_periph_M15_AXI_0_ARREADY : STD_LOGIC;
@@ -1589,6 +1677,8 @@ begin
   Conn1_WDATA(31 downto 0) <= S_AXI1_wdata(31 downto 0);
   Conn1_WSTRB(3 downto 0) <= S_AXI1_wstrb(3 downto 0);
   Conn1_WVALID <= S_AXI1_wvalid;
+  Dbg_RMII_PHY_M_0_crs_dv_1(0) <= Dbg_RMII_PHY_M_0_crs_dv(0);
+  Dbg_RMII_PHY_M_0_rxd_1(1 downto 0) <= Dbg_RMII_PHY_M_0_rxd(1 downto 0);
   ETH0_m_mii_tx_en_0 <= ETH0_m_mii_tx_en;
   ETH0_m_mii_tx_er_0 <= ETH0_m_mii_tx_er;
   ETH0_m_mii_txd_1(3 downto 0) <= ETH0_m_mii_txd(3 downto 0);
@@ -1611,7 +1701,7 @@ begin
   SCOPE_FSM_GPIO1_In_1(31 downto 0) <= SCOPE_FSM_GPIO1_In(31 downto 0);
   SCOPE_FSM_Timebase_CE_1 <= SCOPE_FSM_Timebase_CE;
   SCOPE_FSM_Timebase_SCLR_1 <= SCOPE_FSM_Timebase_SCLR;
-  SCOPE_FSM_TrigSrc(47 downto 0) <= SCOPE_Signals_CDC_c_shift_ram_0_Q(47 downto 0);
+  SCOPE_FSM_TrigSrc(47 downto 0) <= SCOPE_Signals_xlconcat_1_dout(47 downto 0);
   S_AXI1_arready <= Conn1_ARREADY;
   S_AXI1_awready <= Conn1_AWREADY;
   S_AXI1_bresp(1 downto 0) <= Conn1_BRESP(1 downto 0);
@@ -1652,40 +1742,108 @@ SCOPE_GPIO4_Out_xlslice_31downto0: component msys_xlslice_1_5
 SCOPE_Signals_CDC_c_shift_ram_0: component msys_c_shift_ram_0_10
      port map (
       CLK => microblaze_0_Clk_100MHz_0,
-      D(47 downto 0) => SCOPE_Signals_xlconcat_1_dout(47 downto 0),
-      Q(47 downto 0) => SCOPE_Signals_CDC_c_shift_ram_0_Q(47 downto 0)
+      D(0) => CLK1B_CW_0_clk_out3_Scope_RefClk_0,
+      Q(0) => SCOPE_Signals_CDC_c_shift_ram_0_Q(0)
+    );
+SCOPE_Signals_CDC_c_shift_ram_1: component msys_c_shift_ram_0_11
+     port map (
+      CLK => microblaze_0_Clk_100MHz_0,
+      D(0) => Dbg_RMII_PHY_M_0_crs_dv_1(0),
+      Q(0) => SCOPE_Signals_CDC_c_shift_ram_1_Q(0)
+    );
+SCOPE_Signals_CDC_c_shift_ram_10: component msys_c_shift_ram_0_16
+     port map (
+      CLK => microblaze_0_Clk_100MHz_0,
+      D(3 downto 0) => ETH0_s_mii_rxd_1(3 downto 0),
+      Q(3 downto 0) => SCOPE_Signals_CDC_c_shift_ram_10_Q(3 downto 0)
+    );
+SCOPE_Signals_CDC_c_shift_ram_11: component msys_c_shift_ram_0_17
+     port map (
+      CLK => microblaze_0_Clk_100MHz_0,
+      D(0) => ETH0_s_mii_rx_er_0,
+      Q(0) => SCOPE_Signals_CDC_c_shift_ram_11_Q(0)
+    );
+SCOPE_Signals_CDC_c_shift_ram_12: component msys_c_shift_ram_0_18
+     port map (
+      CLK => microblaze_0_Clk_100MHz_0,
+      D(0) => ETH0_s_mii_rx_clk_0(0),
+      Q(0) => SCOPE_Signals_CDC_c_shift_ram_12_Q(0)
+    );
+SCOPE_Signals_CDC_c_shift_ram_13: component msys_c_shift_ram_0_19
+     port map (
+      CLK => microblaze_0_Clk_100MHz_0,
+      D(0) => ETH0_m_mii_tx_en_0,
+      Q(0) => SCOPE_Signals_CDC_c_shift_ram_13_Q(0)
+    );
+SCOPE_Signals_CDC_c_shift_ram_14: component msys_c_shift_ram_0_20
+     port map (
+      CLK => microblaze_0_Clk_100MHz_0,
+      D(3 downto 0) => ETH0_m_mii_txd_1(3 downto 0),
+      Q(3 downto 0) => SCOPE_Signals_CDC_c_shift_ram_14_Q(3 downto 0)
+    );
+SCOPE_Signals_CDC_c_shift_ram_15: component msys_c_shift_ram_0_21
+     port map (
+      CLK => microblaze_0_Clk_100MHz_0,
+      D(0) => ETH0_m_mii_tx_er_0,
+      Q(0) => SCOPE_Signals_CDC_c_shift_ram_15_Q(0)
+    );
+SCOPE_Signals_CDC_c_shift_ram_16: component msys_c_shift_ram_0_22
+     port map (
+      CLK => microblaze_0_Clk_100MHz_0,
+      D(0) => ETH0_s_mii_tx_clk_0(0),
+      Q(0) => SCOPE_Signals_CDC_c_shift_ram_16_Q(0)
+    );
+SCOPE_Signals_CDC_c_shift_ram_2: component msys_c_shift_ram_0_12
+     port map (
+      CLK => microblaze_0_Clk_100MHz_0,
+      D(1 downto 0) => Dbg_RMII_PHY_M_0_rxd_1(1 downto 0),
+      Q(1 downto 0) => SCOPE_Signals_CDC_c_shift_ram_2_Q(1 downto 0)
+    );
+SCOPE_Signals_CDC_c_shift_ram_7: component msys_c_shift_ram_0_13
+     port map (
+      CLK => microblaze_0_Clk_100MHz_0,
+      D(0) => ETH0_s_mii_col_0,
+      Q(0) => SCOPE_Signals_CDC_c_shift_ram_7_Q(0)
+    );
+SCOPE_Signals_CDC_c_shift_ram_8: component msys_c_shift_ram_0_14
+     port map (
+      CLK => microblaze_0_Clk_100MHz_0,
+      D(0) => ETH0_s_mii_crs_0,
+      Q(0) => SCOPE_Signals_CDC_c_shift_ram_8_Q(0)
+    );
+SCOPE_Signals_CDC_c_shift_ram_9: component msys_c_shift_ram_0_15
+     port map (
+      CLK => microblaze_0_Clk_100MHz_0,
+      D(0) => ETH0_s_mii_rx_dv_0,
+      Q(0) => SCOPE_Signals_CDC_c_shift_ram_9_Q(0)
     );
 SCOPE_Signals_xlconcat_0: component msys_xlconcat_0_13
      port map (
-      In0(47 downto 0) => SCOPE_Signals_CDC_c_shift_ram_0_Q(47 downto 0),
+      In0(47 downto 0) => SCOPE_Signals_xlconcat_1_dout(47 downto 0),
       In1(15 downto 0) => SCOPE_Timebase_c_counter_binary_0_Q(15 downto 0),
       dout(63 downto 0) => SCOPE_Signals_xlconcat_0_dout(63 downto 0)
     );
-SCOPE_Signals_xlconcat_1: component msys_xlconcat_0_14
+SCOPE_Signals_xlconcat_1: component msys_xlconcat_0_17
      port map (
-      In0(0) => CLK1B_CW_0_clk_out3_Scope_RefClk_0,
-      In1(0) => SCOPE_xlconstant_val0_len0_dout(0),
-      In10(3 downto 0) => ETH0_s_mii_rxd_1(3 downto 0),
-      In11(0) => ETH0_s_mii_rx_er_0,
-      In12(0) => ETH0_s_mii_rx_clk_0(0),
-      In13(0) => ETH0_m_mii_tx_en_0,
-      In14(3 downto 0) => ETH0_m_mii_txd_1(3 downto 0),
-      In15(0) => ETH0_m_mii_tx_er_0,
-      In16(0) => ETH0_s_mii_tx_clk_0(0),
-      In17(24 downto 0) => SCOPE_Signals_xlconstant_0_dout(24 downto 0),
-      In2(0) => SCOPE_xlconstant_val0_len0_dout(0),
-      In3(0) => SCOPE_xlconstant_val0_len0_dout(0),
-      In4(0) => SCOPE_xlconstant_val0_len0_dout(0),
-      In5(0) => SCOPE_xlconstant_val0_len0_dout(0),
-      In6(0) => SCOPE_xlconstant_val0_len0_dout(0),
-      In7(0) => ETH0_s_mii_col_0,
-      In8(0) => ETH0_s_mii_crs_0,
-      In9(0) => ETH0_s_mii_rx_dv_0,
+      In0(0) => SCOPE_Signals_CDC_c_shift_ram_0_Q(0),
+      In1(0) => SCOPE_Signals_CDC_c_shift_ram_1_Q(0),
+      In10(3 downto 0) => SCOPE_Signals_CDC_c_shift_ram_10_Q(3 downto 0),
+      In11(0) => SCOPE_Signals_CDC_c_shift_ram_11_Q(0),
+      In12(0) => SCOPE_Signals_CDC_c_shift_ram_12_Q(0),
+      In13(0) => SCOPE_Signals_CDC_c_shift_ram_13_Q(0),
+      In14(3 downto 0) => SCOPE_Signals_CDC_c_shift_ram_14_Q(3 downto 0),
+      In15(0) => SCOPE_Signals_CDC_c_shift_ram_15_Q(0),
+      In16(0) => SCOPE_Signals_CDC_c_shift_ram_16_Q(0),
+      In17(22 downto 0) => B"00000000000000000000000",
+      In2(1 downto 0) => SCOPE_Signals_CDC_c_shift_ram_2_Q(1 downto 0),
+      In3(0) => '0',
+      In4(1 downto 0) => B"00",
+      In5(0) => '0',
+      In6(0) => '0',
+      In7(0) => SCOPE_Signals_CDC_c_shift_ram_7_Q(0),
+      In8(0) => SCOPE_Signals_CDC_c_shift_ram_8_Q(0),
+      In9(0) => SCOPE_Signals_CDC_c_shift_ram_9_Q(0),
       dout(47 downto 0) => SCOPE_Signals_xlconcat_1_dout(47 downto 0)
-    );
-SCOPE_Signals_xlconstant_val0_len25: component msys_xlconstant_0_23
-     port map (
-      dout(24 downto 0) => SCOPE_Signals_xlconstant_0_dout(24 downto 0)
     );
 SCOPE_Timebase_c_counter_binary_0: component msys_c_counter_binary_0_4
      port map (
@@ -1757,10 +1915,6 @@ SCOPE_fifo_generator_0: component msys_fifo_generator_0_1
       wr_clk => microblaze_0_Clk_100MHz_0,
       wr_en => SCOPE_FSM_FIFO_WrEn_0,
       wr_rst_busy => SCOPE_fifo_generator_0_wr_rst_busy
-    );
-SCOPE_xlconstant_val0_len1: component msys_xlconstant_0_21
-     port map (
-      dout(0) => SCOPE_xlconstant_val0_len0_dout(0)
     );
 end STRUCTURE;
 library IEEE;
@@ -13913,6 +14067,8 @@ entity msys is
     DDR3_SDRAM_reset_n : out STD_LOGIC;
     DDR3_SDRAM_we_n : out STD_LOGIC;
     DDR3_init_calib_complete : out STD_LOGIC;
+    Dbg_RMII_PHY_M_0_crs_dv : in STD_LOGIC;
+    Dbg_RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     ETH0_DA_G : out STD_LOGIC_VECTOR ( 0 to 0 );
     ETH0_DA_Y : out STD_LOGIC_VECTOR ( 0 to 0 );
     ETH0_LINK_LED_g : in STD_LOGIC;
@@ -14088,7 +14244,7 @@ entity msys is
     rst_100M_peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=247,numReposBlks=196,numNonXlnxBlks=3,numHierBlks=51,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=257,numReposBlks=206,numNonXlnxBlks=3,numHierBlks=51,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of msys : entity is "msys.hwdef";
 end msys;
@@ -14641,6 +14797,8 @@ architecture STRUCTURE of msys is
   signal CLK2_125MHz_mgt_g_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal CLK3_50MHz_mig_diff_0_CLK_N : STD_LOGIC;
   signal CLK3_50MHz_mig_diff_0_CLK_P : STD_LOGIC;
+  signal Dbg_RMII_PHY_M_0_crs_dv_1 : STD_LOGIC;
+  signal Dbg_RMII_PHY_M_0_rxd_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal ETH0_ETH0_MDIO_MDC_MDC : STD_LOGIC;
   signal ETH0_ETH0_MDIO_MDC_MDIO_I : STD_LOGIC;
   signal ETH0_ETH0_MDIO_MDC_MDIO_O : STD_LOGIC;
@@ -15506,6 +15664,8 @@ architecture STRUCTURE of msys is
   attribute X_INTERFACE_INFO of DDR3_SDRAM_dqs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_N";
   attribute X_INTERFACE_INFO of DDR3_SDRAM_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM DQS_P";
   attribute X_INTERFACE_INFO of DDR3_SDRAM_odt : signal is "xilinx.com:interface:ddrx:1.0 DDR3_SDRAM ODT";
+  attribute X_INTERFACE_INFO of Dbg_RMII_PHY_M_0_rxd : signal is "xilinx.com:signal:data:1.0 DATA.DBG_RMII_PHY_M_0_RXD DATA";
+  attribute X_INTERFACE_PARAMETER of Dbg_RMII_PHY_M_0_rxd : signal is "XIL_INTERFACENAME DATA.DBG_RMII_PHY_M_0_RXD, LAYERED_METADATA undef, PortType data, PortType.PROP_SRC false";
   attribute X_INTERFACE_INFO of EUI48_abort : signal is "xilinx.com:signal:data:1.0 DATA.EUI48_ABORT DATA";
   attribute X_INTERFACE_PARAMETER of EUI48_abort : signal is "XIL_INTERFACENAME DATA.EUI48_ABORT, LAYERED_METADATA undef";
   attribute X_INTERFACE_INFO of EUI48_data : signal is "xilinx.com:signal:data:1.0 DATA.EUI48_DATA DATA";
@@ -15586,6 +15746,8 @@ begin
   DDR3_SDRAM_reset_n <= mig_7series_0_DDR3_RESET_N;
   DDR3_SDRAM_we_n <= mig_7series_0_DDR3_WE_N;
   DDR3_init_calib_complete <= mig_7series_0_init_calib_complete;
+  Dbg_RMII_PHY_M_0_crs_dv_1 <= Dbg_RMII_PHY_M_0_crs_dv;
+  Dbg_RMII_PHY_M_0_rxd_1(1 downto 0) <= Dbg_RMII_PHY_M_0_rxd(1 downto 0);
   ETH0_ETH0_MDIO_MDC_MDIO_I <= ETH0_MDIO_MDC_mdio_i;
   ETH0_LINK_LED_g_0 <= ETH0_LINK_LED_g;
   ETH0_MDIO_MDC_mdc <= ETH0_ETH0_MDIO_MDC_MDC;
@@ -16014,6 +16176,8 @@ SC0712_0: component msys_SC0712_0_0
 SCOPE: entity work.SCOPE_imp_FH2SDI
      port map (
       CLK1B_CW_0_clk_out3_Scope_RefClk => CLK1B_CW_0_clk_out3_Scope,
+      Dbg_RMII_PHY_M_0_crs_dv(0) => Dbg_RMII_PHY_M_0_crs_dv_1,
+      Dbg_RMII_PHY_M_0_rxd(1 downto 0) => Dbg_RMII_PHY_M_0_rxd_1(1 downto 0),
       ETH0_m_mii_tx_en => ETH0_m_mii_tx_en,
       ETH0_m_mii_tx_er => ETH0_m_mii_tx_er,
       ETH0_m_mii_txd(3 downto 0) => ETH0_m_mii_txd_1(3 downto 0),

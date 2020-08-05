@@ -1342,8 +1342,8 @@ use unisim.Vcomponents.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.mac_pkg.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.mac_pkg.all;
 
 -- synopsys translate_off
 -- Library XilinxCoreLib;
@@ -1595,8 +1595,8 @@ use ieee.std_logic_1164.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.mac_pkg.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.mac_pkg.all;
 
 -- synopsys translate_off
 -- Library XilinxCoreLib;
@@ -2085,8 +2085,8 @@ use ieee.numeric_std.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.mac_pkg.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.mac_pkg.all;
 
 -------------------------------------------------------------------------------
 -- Port Declaration
@@ -2294,8 +2294,8 @@ use ieee.std_logic_1164.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.all;
 
 -- synopsys translate_off
 -- Library XilinxCoreLib;
@@ -2680,7 +2680,7 @@ begin
    ----------------------------------------------------------------------------
    -- Pre SFD Counter
    ----------------------------------------------------------------------------
-   PRE_SFD_count: entity axi_ethernetlite_v3_0_20.cntr5bit
+   PRE_SFD_count: entity dut_axi_ethernetlite_v3_0_20.cntr5bit
      port map
             (
              cntout  =>  open,
@@ -3868,8 +3868,8 @@ use ieee.std_logic_1164.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.all;
 
 -------------------------------------------------------------------------------
 library lib_cdc_v1_0_2;
@@ -4198,8 +4198,8 @@ use ieee.numeric_std."+";
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.all;
 
 -- synopsys translate_off
 -- Library XilinxCoreLib;
@@ -5235,8 +5235,8 @@ use ieee.std_logic_1164.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.all;
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
@@ -5574,8 +5574,8 @@ use ieee.std_logic_unsigned.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.mac_pkg.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.mac_pkg.all;
 
 -- synopsys translate_off
 -- Library XilinxCoreLib;
@@ -6197,8 +6197,8 @@ use ieee.std_logic_1164.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.mac_pkg.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.mac_pkg.all;
 
 -- synopsys translate_off
 -- Library XilinxCoreLib;
@@ -6273,7 +6273,7 @@ comboCntrEn2 <= Tx_clk_en and cntrEn and ifgp1_zero;
 -------------------------------------------------------------------------------
 -- Ifgp1 counter
 -------------------------------------------------------------------------------
-  inst_ifgp1_count: entity axi_ethernetlite_v3_0_20.cntr5bit
+  inst_ifgp1_count: entity dut_axi_ethernetlite_v3_0_20.cntr5bit
     port map
            (
             Clk     =>  Clk, 
@@ -6287,7 +6287,7 @@ comboCntrEn2 <= Tx_clk_en and cntrEn and ifgp1_zero;
 -------------------------------------------------------------------------------
 -- Ifgp2 counter
 -------------------------------------------------------------------------------
-  inst_ifgp2_count: entity axi_ethernetlite_v3_0_20.cntr5bit
+  inst_ifgp2_count: entity dut_axi_ethernetlite_v3_0_20.cntr5bit
     port map
            (
             Clk     =>  Clk, 
@@ -6301,7 +6301,7 @@ comboCntrEn2 <= Tx_clk_en and cntrEn and ifgp1_zero;
 -------------------------------------------------------------------------------
 -- deferral state machine
 -------------------------------------------------------------------------------
-  inst_deferral_state: entity axi_ethernetlite_v3_0_20.defer_state
+  inst_deferral_state: entity dut_axi_ethernetlite_v3_0_20.defer_state
     port map
             (
              Clk         =>  Clk, 
@@ -6515,8 +6515,8 @@ use ieee.numeric_std.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.mac_pkg.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.mac_pkg.all;
 
 -------------------------------------------------------------------------------
 -- Definition of Ports:
@@ -6657,7 +6657,7 @@ begin  ----------------------------------------------------------------------
 -- of this register. 
 -----------------------------------------------------------------------------
 
-  NSR : entity axi_ethernetlite_v3_0_20.crcnibshiftreg
+  NSR : entity dut_axi_ethernetlite_v3_0_20.crcnibshiftreg
     port map
      (
       Clk     => Clk,
@@ -6865,8 +6865,8 @@ use ieee.numeric_std.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.mac_pkg.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.mac_pkg.all;
 
 -------------------------------------------------------------------------------
 -- Definition of Ports:
@@ -7131,8 +7131,8 @@ use ieee.std_logic_unsigned.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.mac_pkg.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.mac_pkg.all;
 
 -- synopsys translate_off
 -- Library XilinxCoreLib;
@@ -7215,7 +7215,7 @@ attribute DowngradeIPIdentifiedWarnings of implementation : architecture is "yes
 
 begin
 
-  LFSRP : entity axi_ethernetlite_v3_0_20.lfsr16
+  LFSRP : entity dut_axi_ethernetlite_v3_0_20.lfsr16
     port map(
              Rst     => Rst,
              Clk     => Clk,
@@ -7596,8 +7596,8 @@ use ieee.std_logic_unsigned.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.mac_pkg.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.mac_pkg.all;
 
 -------------------------------------------------------------------------------
 library lib_cdc_v1_0_2;
@@ -7806,7 +7806,7 @@ begin
    ----------------------------------------------------------------------------
    -- tx crc generator
    ----------------------------------------------------------------------------
-   INST_CRCGENTX: entity axi_ethernetlite_v3_0_20.crcgentx
+   INST_CRCGENTX: entity dut_axi_ethernetlite_v3_0_20.crcgentx
       port map 
          (
          Clk     => Clk,
@@ -7824,7 +7824,7 @@ begin
    ----------------------------------------------------------------------------
    -- tx interface contains the ethernet tx fifo
    ----------------------------------------------------------------------------
-   INST_TX_INTRFCE: entity axi_ethernetlite_v3_0_20.tx_intrfce
+   INST_TX_INTRFCE: entity dut_axi_ethernetlite_v3_0_20.tx_intrfce
       generic map
          (
          C_FAMILY => C_FAMILY
@@ -7869,7 +7869,7 @@ begin
    ----------------------------------------------------------------------------
    -- Multiplexing PHY transmit data
    ----------------------------------------------------------------------------
-   ONR_HOT_MUX:entity axi_ethernetlite_v3_0_20.mux_onehot_f
+   ONR_HOT_MUX:entity dut_axi_ethernetlite_v3_0_20.mux_onehot_f
    
       generic map 
          ( 
@@ -7923,7 +7923,7 @@ begin
    ----------------------------------------------------------------------------
    -- transmit packet fifo read nibble counter
    ----------------------------------------------------------------------------
-   INST_TXNIBBLECOUNT: entity axi_ethernetlite_v3_0_20.ld_arith_reg
+   INST_TXNIBBLECOUNT: entity dut_axi_ethernetlite_v3_0_20.ld_arith_reg
       generic  map
         (
          C_ADD_SUB_NOT => false,
@@ -7974,7 +7974,7 @@ begin
    ----------------------------------------------------------------------------
    -- transmit state machine
    ----------------------------------------------------------------------------
-   INST_TX_STATE_MACHINE: entity axi_ethernetlite_v3_0_20.tx_statemachine
+   INST_TX_STATE_MACHINE: entity dut_axi_ethernetlite_v3_0_20.tx_statemachine
       generic map 
         (
          C_DUPLEX             => C_DUPLEX
@@ -8038,7 +8038,7 @@ begin
    full_half_n <= '1'when C_DUPLEX = 1 else
                   '0';  
                   
-   INST_DEFERRAL_CONTROL: entity axi_ethernetlite_v3_0_20.deferral
+   INST_DEFERRAL_CONTROL: entity dut_axi_ethernetlite_v3_0_20.deferral
       port map
         (
          Clk         => Clk,
@@ -8057,7 +8057,7 @@ begin
    ----------------------------------------------------------------------------
    -- transmit bus fifo write nibble counter
    ----------------------------------------------------------------------------
-   INST_TXBUSFIFOWRITENIBBLECOUNT: entity axi_ethernetlite_v3_0_20.ld_arith_reg
+   INST_TXBUSFIFOWRITENIBBLECOUNT: entity dut_axi_ethernetlite_v3_0_20.ld_arith_reg
       generic  map
         (
          C_ADD_SUB_NOT => true,
@@ -8088,7 +8088,7 @@ begin
    ----------------------------------------------------------------------------
    phy_tx_en_n <= not(tx_en_i); -- modified to have this in lite clock domain
    
-   INST_CRCCOUNTER: entity axi_ethernetlite_v3_0_20.ld_arith_reg
+   INST_CRCCOUNTER: entity dut_axi_ethernetlite_v3_0_20.ld_arith_reg
       generic  map
         (
          C_ADD_SUB_NOT => false,
@@ -8133,7 +8133,7 @@ begin
    ----------------------------------------------------------------------------
    -- transmit collision retry down counter
    ----------------------------------------------------------------------------
-   INST_COLRETRYCNT: entity axi_ethernetlite_v3_0_20.msh_cnt
+   INST_COLRETRYCNT: entity dut_axi_ethernetlite_v3_0_20.msh_cnt
       generic map
         (
          C_ADD_SUB_NOT => true,
@@ -8159,7 +8159,7 @@ begin
    ----------------------------------------------------------------------------
    -- transmit collision window nibble down counter
    ----------------------------------------------------------------------------
-   INST_COLWINDOWNIBCNT: entity axi_ethernetlite_v3_0_20.msh_cnt
+   INST_COLWINDOWNIBCNT: entity dut_axi_ethernetlite_v3_0_20.msh_cnt
       generic  map
         (
          C_ADD_SUB_NOT => false,
@@ -8184,7 +8184,7 @@ begin
    ----------------------------------------------------------------------------
    -- jam transmit nibble down counter
    ----------------------------------------------------------------------------
-   INST_JAMTXNIBCNT: entity axi_ethernetlite_v3_0_20.msh_cnt
+   INST_JAMTXNIBCNT: entity dut_axi_ethernetlite_v3_0_20.msh_cnt
       generic  map
         (
          C_ADD_SUB_NOT => false,
@@ -8207,7 +8207,7 @@ begin
    ----------------------------------------------------------------------------
    -- tx collision back off counter
    ----------------------------------------------------------------------------
-   INST_BOCNT: entity axi_ethernetlite_v3_0_20.bocntr
+   INST_BOCNT: entity dut_axi_ethernetlite_v3_0_20.bocntr
       port map
         (
          Clk         => Clk,
@@ -8490,8 +8490,8 @@ use ieee.STD_LOGIC_1164.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.all;
 
 -- synopsys translate_off
 -- Library XilinxCoreLib;
@@ -8599,7 +8599,7 @@ begin
    ----------------------------------------------------------------------------
    -- rx control state machine
    ----------------------------------------------------------------------------
-   INST_RX_STATE: entity axi_ethernetlite_v3_0_20.rx_statemachine
+   INST_RX_STATE: entity dut_axi_ethernetlite_v3_0_20.rx_statemachine
      generic map (
        C_DUPLEX             => C_DUPLEX
        )  
@@ -8638,7 +8638,7 @@ begin
    ----------------------------------------------------------------------------
    -- rx interface contains the ethernet rx fifo
    ----------------------------------------------------------------------------
-   INST_RX_INTRFCE: entity axi_ethernetlite_v3_0_20.rx_intrfce
+   INST_RX_INTRFCE: entity dut_axi_ethernetlite_v3_0_20.rx_intrfce
      generic map (
        C_FAMILY => C_FAMILY
        )
@@ -8663,7 +8663,7 @@ begin
    ----------------------------------------------------------------------------
    -- crc checker
    ----------------------------------------------------------------------------
-   INST_CRCGENRX: entity axi_ethernetlite_v3_0_20.crcgenrx
+   INST_CRCGENRX: entity dut_axi_ethernetlite_v3_0_20.crcgenrx
      port map(
        Clk     => Clk,
        Rst     => rxComboCrcRst,
@@ -8833,8 +8833,8 @@ use ieee.std_logic_unsigned.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.mac_pkg.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.mac_pkg.all;
 
 -------------------------------------------------------------------------------
 -- synopsys translate_off
@@ -8915,7 +8915,7 @@ attribute DowngradeIPIdentifiedWarnings of imp : architecture is "yes";
 
  begin
 
-  ram16x4i: entity axi_ethernetlite_v3_0_20.ram16x4
+  ram16x4i: entity dut_axi_ethernetlite_v3_0_20.ram16x4
      generic map
        (INIT_00 => netOrder(MACAddr(47 downto 32)),
         INIT_01 => netOrder(MACAddr(31 downto 16)),
@@ -9051,8 +9051,8 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use ieee.std_logic_arith.all;
 
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.all;
 
 -------------------------------------------------------------------------------
 -- Definition of Ports:
@@ -9606,8 +9606,8 @@ use IEEE.std_logic_unsigned.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.mac_pkg.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.mac_pkg.all;
 
 -------------------------------------------------------------------------------
 library lib_bmg_v1_0_13;
@@ -10360,9 +10360,9 @@ use ieee.std_logic_unsigned.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.mac_pkg.all;
-use axi_ethernetlite_v3_0_20.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.mac_pkg.all;
+use dut_axi_ethernetlite_v3_0_20.all;
 
 -------------------------------------------------------------------------------
 -- Vcomponents from unisim library is used for FIFO instatiation
@@ -10515,7 +10515,7 @@ begin
    ----------------------------------------------------------------------------
    -- Receive Interface
    ----------------------------------------------------------------------------
-   RX: entity axi_ethernetlite_v3_0_20.receive
+   RX: entity dut_axi_ethernetlite_v3_0_20.receive
      generic map
        (
        C_DUPLEX => C_DUPLEX,
@@ -10548,7 +10548,7 @@ begin
    ----------------------------------------------------------------------------
    -- Transmit Interface
    ----------------------------------------------------------------------------
-   TX: entity axi_ethernetlite_v3_0_20.transmit
+   TX: entity dut_axi_ethernetlite_v3_0_20.transmit
      generic map
        (
        C_DUPLEX => C_DUPLEX,
@@ -10629,7 +10629,7 @@ begin
    ----------------------------------------------------------------------------
    -- MAC Address RAM
    ----------------------------------------------------------------------------
-   NODEMACADDRRAMI: entity axi_ethernetlite_v3_0_20.MacAddrRAM
+   NODEMACADDRRAMI: entity dut_axi_ethernetlite_v3_0_20.MacAddrRAM
       generic map 
         (
         MACAddr  => NODE_MAC
@@ -10883,8 +10883,8 @@ use ieee.numeric_std.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.all;
 
 -------------------------------------------------------------------------------
 
@@ -11205,7 +11205,7 @@ begin
    ----------------------------------------------------------------------------
    -- EMAC
    ----------------------------------------------------------------------------
-   EMAC_I: entity axi_ethernetlite_v3_0_20.emac
+   EMAC_I: entity dut_axi_ethernetlite_v3_0_20.emac
      generic map (
        C_DUPLEX            => C_DUPLEX,
        NODE_MAC            => NODE_MAC,
@@ -11307,7 +11307,7 @@ begin
    ----------------------------------------------------------------------------
    -- TX_PING Buffer
    ----------------------------------------------------------------------------
-   TX_PING: entity axi_ethernetlite_v3_0_20.emac_dpram
+   TX_PING: entity dut_axi_ethernetlite_v3_0_20.emac_dpram
      generic map (
        C_FAMILY             => C_FAMILY,
        C_SELECT_XPM         => C_SELECT_XPM
@@ -11331,7 +11331,7 @@ begin
    ----------------------------------------------------------------------------
    -- RX_PING Buffer
    ----------------------------------------------------------------------------
-   RX_PING: entity axi_ethernetlite_v3_0_20.emac_dpram
+   RX_PING: entity dut_axi_ethernetlite_v3_0_20.emac_dpram
      generic map (
        C_FAMILY             => C_FAMILY,
        C_SELECT_XPM         => C_SELECT_XPM
@@ -11385,7 +11385,7 @@ begin
 
       Begin
 
-         TX_PONG_I: entity axi_ethernetlite_v3_0_20.emac_dpram
+         TX_PONG_I: entity dut_axi_ethernetlite_v3_0_20.emac_dpram
            generic map (
              C_FAMILY             => C_FAMILY,
              C_SELECT_XPM         => C_SELECT_XPM
@@ -11457,7 +11457,7 @@ begin
 
       Begin
 
-        RX_PONG_I: entity axi_ethernetlite_v3_0_20.emac_dpram
+        RX_PONG_I: entity dut_axi_ethernetlite_v3_0_20.emac_dpram
           generic map (
             C_FAMILY             => C_FAMILY,
             C_SELECT_XPM         => C_SELECT_XPM
@@ -12191,7 +12191,7 @@ begin
       -------------------------------------------------------------------------
       -- MDIO master interface module
       -------------------------------------------------------------------------
-      MDIO_IF_I: entity axi_ethernetlite_v3_0_20.mdio_if
+      MDIO_IF_I: entity dut_axi_ethernetlite_v3_0_20.mdio_if
          port map (
             Clk            => Clk       ,
             Rst            => Rst     ,
@@ -13280,10 +13280,10 @@ use ieee.std_logic_1164.all;
 -- axi_ethernetlite_v3_0_20 library is used for axi_ethernetlite_v3_0_20 
 -- component declarations
 -------------------------------------------------------------------------------
-library axi_ethernetlite_v3_0_20;
-use axi_ethernetlite_v3_0_20.mac_pkg.all;
-use axi_ethernetlite_v3_0_20.axi_interface;
-use axi_ethernetlite_v3_0_20.all;
+library dut_axi_ethernetlite_v3_0_20;
+use dut_axi_ethernetlite_v3_0_20.mac_pkg.all;
+use dut_axi_ethernetlite_v3_0_20.axi_interface;
+use dut_axi_ethernetlite_v3_0_20.all;
 
 -------------------------------------------------------------------------------
 library lib_cdc_v1_0_2;
@@ -14069,7 +14069,7 @@ begin -- this is the begin between declarations and architecture body
    ----------------------------------------------------------------------------
    -- XEMAC Module
    ----------------------------------------------------------------------------   
-   XEMAC_I : entity axi_ethernetlite_v3_0_20.xemac
+   XEMAC_I : entity dut_axi_ethernetlite_v3_0_20.xemac
      generic map 
         (
         C_FAMILY                 => C_FAMILY,
@@ -14122,7 +14122,7 @@ begin -- this is the begin between declarations and architecture body
         Loopback       => Loopback 
         );
         
-I_AXI_NATIVE_IPIF: entity axi_ethernetlite_v3_0_20.axi_interface
+I_AXI_NATIVE_IPIF: entity dut_axi_ethernetlite_v3_0_20.axi_interface
   generic map (
   
         C_S_AXI_ADDR_WIDTH          => C_S_AXI_ADDR_WIDTH,  

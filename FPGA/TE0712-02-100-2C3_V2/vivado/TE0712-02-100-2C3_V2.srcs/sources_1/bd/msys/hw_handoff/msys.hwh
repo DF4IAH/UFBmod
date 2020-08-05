@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Aug  5 03:06:03 2020" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Aug  5 11:42:56 2020" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="artix7" BOARD="trenz.biz:te0712_100_2c:part0:1.0" DEVICE="7a100t" NAME="msys" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -400,9 +400,9 @@
         <CONNECTION INSTANCE="SCOPE_SCOPE_fifo_generator_0" PORT="empty"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="47" NAME="SCOPE_FSM_TrigSrc" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_0_Q">
+    <PORT DIR="O" LEFT="47" NAME="SCOPE_FSM_TrigSrc" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_xlconcat_1_dout">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_0" PORT="Q"/>
+        <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="dout"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="SCOPE_FSM_FIFO_WrEn" SIGIS="undef" SIGNAME="External_Ports_SCOPE_FSM_FIFO_WrEn">
@@ -1004,6 +1004,16 @@
     <PORT DIR="O" NAME="BOARD_IIC_sda_t" SIGIS="undef" SIGNAME="axi_BOARD_iic_0_sda_t">
       <CONNECTIONS>
         <CONNECTION INSTANCE="axi_BOARD_iic_0" PORT="sda_t"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="Dbg_RMII_PHY_M_0_crs_dv" SIGIS="undef" SIGNAME="External_Ports_Dbg_RMII_PHY_M_0_crs_dv">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_1" PORT="D"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="1" NAME="Dbg_RMII_PHY_M_0_rxd" RIGHT="0" SIGIS="data" SIGNAME="External_Ports_Dbg_RMII_PHY_M_0_rxd">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_2" PORT="D"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -3043,7 +3053,7 @@
         </PORT>
         <PORT CLKFREQUENCY="50000000" DIR="O" NAME="clk_out3_Scope" SIGIS="clk" SIGNAME="CLK1B_CW_0_CLK1B_clk_wiz_0_clk_out3_Scope">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In0"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_0" PORT="D"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="50000000" DIR="O" NAME="clk_out4_000deg" SIGIS="clk" SIGNAME="CLK1B_CW_0_CLK1B_clk_wiz_0_clk_out4_000deg">
@@ -4345,7 +4355,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="phy_col"/>
             <CONNECTION INSTANCE="ETH0_ETH0_MIIstatus_xlconcat_0" PORT="In2"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In7"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_7" PORT="D"/>
             <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In8"/>
             <CONNECTION INSTANCE="External_Ports" PORT="el_phy_col"/>
           </CONNECTIONS>
@@ -4354,7 +4364,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="phy_crs"/>
             <CONNECTION INSTANCE="ETH0_ETH0_MIIstatus_xlconcat_0" PORT="In1"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In8"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_8" PORT="D"/>
             <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In0"/>
             <CONNECTION INSTANCE="External_Ports" PORT="el_phy_crs"/>
           </CONNECTIONS>
@@ -4363,7 +4373,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="phy_rx_clk"/>
             <CONNECTION INSTANCE="lt_fmeter_xlconcat_0" PORT="In6"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In12"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_12" PORT="D"/>
             <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In3"/>
             <CONNECTION INSTANCE="External_Ports" PORT="el_phy_rx_clk"/>
           </CONNECTIONS>
@@ -4373,7 +4383,7 @@
             <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="phy_dv"/>
             <CONNECTION INSTANCE="ETH0_ETH0_LEDs_xlconcat_0" PORT="In1"/>
             <CONNECTION INSTANCE="ETH0_ETH0_MIIstatus_xlconcat_0" PORT="In0"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In9"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_9" PORT="D"/>
             <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In1"/>
             <CONNECTION INSTANCE="External_Ports" PORT="el_phy_dv"/>
           </CONNECTIONS>
@@ -4382,7 +4392,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="phy_rx_er"/>
             <CONNECTION INSTANCE="ETH0_ETH0_MIIstatus_xlconcat_0" PORT="In3"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In11"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_11" PORT="D"/>
             <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In7"/>
             <CONNECTION INSTANCE="External_Ports" PORT="el_phy_rx_er"/>
           </CONNECTIONS>
@@ -4391,7 +4401,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="phy_rx_data"/>
             <CONNECTION INSTANCE="ETH0_ETH0_rxd_CDC_c_shift_ram_0" PORT="D"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In10"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_10" PORT="D"/>
             <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In2"/>
             <CONNECTION INSTANCE="External_Ports" PORT="el_phy_rx_data"/>
           </CONNECTIONS>
@@ -4400,7 +4410,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="ETH0_ETH0_axi_ethernetlite_0" PORT="phy_tx_clk"/>
             <CONNECTION INSTANCE="lt_fmeter_xlconcat_0" PORT="In5"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In16"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_16" PORT="D"/>
             <CONNECTION INSTANCE="USER_dbg_USER_dbg_out_xlconcat_0" PORT="In6"/>
             <CONNECTION INSTANCE="External_Ports" PORT="el_phy_tx_clk"/>
           </CONNECTIONS>
@@ -4460,21 +4470,21 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="ETH0_ETH0_mii_to_rmii_0" PORT="mac2rmii_tx_en"/>
             <CONNECTION INSTANCE="ETH0_ETH0_LEDs_xlconcat_0" PORT="In2"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In13"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_13" PORT="D"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="m_mii_tx_er" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_m_mii_tx_er">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ETH0_ETH0_mii_to_rmii_0" PORT="mac2rmii_tx_er"/>
             <CONNECTION INSTANCE="ETH0_ETH0_MIIstatus_xlconcat_0" PORT="In4"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In15"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_15" PORT="D"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="3" NAME="m_mii_txd" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_m_mii_txd">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ETH0_ETH0_mii_to_rmii_0" PORT="mac2rmii_txd"/>
             <CONNECTION INSTANCE="ETH0_ETH0_txd_CDC_c_shift_ram_0" PORT="D"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In14"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_14" PORT="D"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="m_mii_rst_n" SIGIS="rst" SIGNAME="ETH0_ETH0_mii_y_adapater_0_m_mii_rst_n">
@@ -8833,14 +8843,14 @@
       <PARAMETERS>
         <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
         <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
-        <PARAMETER NAME="C_WIDTH" VALUE="48"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_DEPTH" VALUE="2"/>
         <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
         <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
-        <PARAMETER NAME="C_AINIT_VAL" VALUE="000000000000000000000000000000000000000000000000"/>
-        <PARAMETER NAME="C_SINIT_VAL" VALUE="000000000000000000000000000000000000000000000000"/>
-        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="000000000000000000000000000000000000000000000000"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
         <PARAMETER NAME="C_HAS_A" VALUE="0"/>
         <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
         <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
@@ -8858,27 +8868,27 @@
         <PARAMETER NAME="OptGoal" VALUE="Resources"/>
         <PARAMETER NAME="RegLastBit" VALUE="true"/>
         <PARAMETER NAME="CE" VALUE="false"/>
-        <PARAMETER NAME="Width" VALUE="48"/>
+        <PARAMETER NAME="Width" VALUE="1"/>
         <PARAMETER NAME="Depth" VALUE="2"/>
         <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
-        <PARAMETER NAME="DefaultData" VALUE="000000000000000000000000000000000000000000000000"/>
+        <PARAMETER NAME="DefaultData" VALUE="0"/>
         <PARAMETER NAME="ReadMifFile" VALUE="false"/>
         <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
         <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
-        <PARAMETER NAME="AsyncInitVal" VALUE="000000000000000000000000000000000000000000000000"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="0"/>
         <PARAMETER NAME="SSET" VALUE="false"/>
         <PARAMETER NAME="SCLR" VALUE="false"/>
         <PARAMETER NAME="SINIT" VALUE="false"/>
         <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
-        <PARAMETER NAME="SyncInitVal" VALUE="000000000000000000000000000000000000000000000000"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="0"/>
         <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
         <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="47" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="SCOPE_SCOPE_Signals_xlconcat_1_dout">
+        <PORT DIR="I" LEFT="0" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="CLK1B_CW_0_CLK1B_clk_wiz_0_clk_out3_Scope">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="dout"/>
+            <CONNECTION INSTANCE="CLK1B_CW_0_CLK1B_clk_wiz_0" PORT="clk_out3_Scope"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
@@ -8886,10 +8896,825 @@
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="47" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_0_Q">
+        <PORT DIR="O" LEFT="0" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_0_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="SCOPE_FSM_TrigSrc"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_0" PORT="In0"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/SCOPE/SCOPE_Signals_CDC_c_shift_ram_1" HWVERSION="12.0" INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="2"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_0_11"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="1"/>
+        <PARAMETER NAME="Depth" VALUE="2"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="0"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="External_Ports_Dbg_RMII_PHY_M_0_crs_dv">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="Dbg_RMII_PHY_M_0_crs_dv"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_1_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/SCOPE/SCOPE_Signals_CDC_c_shift_ram_10" HWVERSION="12.0" INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_10" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="2"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0000"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0000"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0000"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_0_16"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="4"/>
+        <PARAMETER NAME="Depth" VALUE="2"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="0000"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="0000"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="0000"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="3" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rxd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_rxd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_10_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In10"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/SCOPE/SCOPE_Signals_CDC_c_shift_ram_11" HWVERSION="12.0" INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_11" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="2"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_0_17"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="1"/>
+        <PARAMETER NAME="Depth" VALUE="2"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="0"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rx_er">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_rx_er"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_11_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In11"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/SCOPE/SCOPE_Signals_CDC_c_shift_ram_12" HWVERSION="12.0" INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_12" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="2"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_0_18"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="1"/>
+        <PARAMETER NAME="Depth" VALUE="2"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="0"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rx_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_rx_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_12_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In12"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/SCOPE/SCOPE_Signals_CDC_c_shift_ram_13" HWVERSION="12.0" INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_13" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="2"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_0_19"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="1"/>
+        <PARAMETER NAME="Depth" VALUE="2"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="0"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="ETH0_ETH0_mii_y_adapater_0_m_mii_tx_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="m_mii_tx_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_13_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In13"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/SCOPE/SCOPE_Signals_CDC_c_shift_ram_14" HWVERSION="12.0" INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_14" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="2"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0000"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0000"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0000"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_0_20"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="4"/>
+        <PARAMETER NAME="Depth" VALUE="2"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="0000"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="0000"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="0000"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="3" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="ETH0_ETH0_mii_y_adapater_0_m_mii_txd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="m_mii_txd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_14_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In14"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/SCOPE/SCOPE_Signals_CDC_c_shift_ram_15" HWVERSION="12.0" INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_15" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="2"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_0_21"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="1"/>
+        <PARAMETER NAME="Depth" VALUE="2"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="0"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="ETH0_ETH0_mii_y_adapater_0_m_mii_tx_er">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="m_mii_tx_er"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_15_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In15"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/SCOPE/SCOPE_Signals_CDC_c_shift_ram_16" HWVERSION="12.0" INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_16" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="2"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_0_22"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="1"/>
+        <PARAMETER NAME="Depth" VALUE="2"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="0"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_tx_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_tx_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_16_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In16"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/SCOPE/SCOPE_Signals_CDC_c_shift_ram_2" HWVERSION="12.0" INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="2"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="00"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="00"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="00"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_0_12"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="2"/>
+        <PARAMETER NAME="Depth" VALUE="2"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="00"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="00"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="00"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="1" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="External_Ports_Dbg_RMII_PHY_M_0_rxd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="Dbg_RMII_PHY_M_0_rxd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_2_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In2"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/SCOPE/SCOPE_Signals_CDC_c_shift_ram_7" HWVERSION="12.0" INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_7" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="2"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_0_13"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="1"/>
+        <PARAMETER NAME="Depth" VALUE="2"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="0"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_col">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_col"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_7_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In7"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/SCOPE/SCOPE_Signals_CDC_c_shift_ram_8" HWVERSION="12.0" INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_8" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="2"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_0_14"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="1"/>
+        <PARAMETER NAME="Depth" VALUE="2"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="0"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_crs">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_crs"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_8_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In8"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="14" FULLNAME="/SCOPE/SCOPE_Signals_CDC_c_shift_ram_9" HWVERSION="12.0" INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_9" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_shift_ram" VLNV="xilinx.com:ip:c_shift_ram:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_shift_ram;v=v12_0;d=pg122-c-shift-ram.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="artix7"/>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_DEPTH" VALUE="2"/>
+        <PARAMETER NAME="C_ADDR_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_SHIFT_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_OPT_GOAL" VALUE="0"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_DEFAULT_DATA" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_A" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_REG_LAST_BIT" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_PRIORITY" VALUE="1"/>
+        <PARAMETER NAME="C_SYNC_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="C_MEM_INIT_FILE" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="C_ELABORATION_DIR" VALUE="./"/>
+        <PARAMETER NAME="C_READ_MIF" VALUE="0"/>
+        <PARAMETER NAME="C_PARSER_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_c_shift_ram_0_15"/>
+        <PARAMETER NAME="ShiftRegType" VALUE="Fixed_Length"/>
+        <PARAMETER NAME="OptGoal" VALUE="Resources"/>
+        <PARAMETER NAME="RegLastBit" VALUE="true"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="Width" VALUE="1"/>
+        <PARAMETER NAME="Depth" VALUE="2"/>
+        <PARAMETER NAME="DefaultDataRadix" VALUE="2"/>
+        <PARAMETER NAME="DefaultData" VALUE="0"/>
+        <PARAMETER NAME="ReadMifFile" VALUE="false"/>
+        <PARAMETER NAME="MemInitFile" VALUE="no_coe_file_loaded"/>
+        <PARAMETER NAME="AsyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="AsyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SyncInitRadix" VALUE="2"/>
+        <PARAMETER NAME="SyncInitVal" VALUE="0"/>
+        <PARAMETER NAME="SyncCtrlPriority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="CEPriority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="D" RIGHT="0" SIGIS="data" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rx_dv">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_rx_dv"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_9_Q">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In9"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -8936,9 +9761,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="47" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_0_Q">
+        <PORT DIR="I" LEFT="47" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_xlconcat_1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_0" PORT="Q"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Timebase_c_counter_binary_0_Q">
@@ -8959,9 +9784,9 @@
       <PARAMETERS>
         <PARAMETER NAME="IN0_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN1_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN2_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN2_WIDTH" VALUE="2"/>
         <PARAMETER NAME="IN3_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN4_WIDTH" VALUE="2"/>
         <PARAMETER NAME="IN5_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN6_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN7_WIDTH" VALUE="1"/>
@@ -8974,7 +9799,7 @@
         <PARAMETER NAME="IN14_WIDTH" VALUE="4"/>
         <PARAMETER NAME="IN15_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN16_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN17_WIDTH" VALUE="25"/>
+        <PARAMETER NAME="IN17_WIDTH" VALUE="23"/>
         <PARAMETER NAME="IN18_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN19_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN20_WIDTH" VALUE="1"/>
@@ -8991,120 +9816,84 @@
         <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
         <PARAMETER NAME="dout_width" VALUE="48"/>
         <PARAMETER NAME="NUM_PORTS" VALUE="18"/>
-        <PARAMETER NAME="Component_Name" VALUE="msys_xlconcat_0_14"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_xlconcat_0_17"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="CLK1B_CW_0_CLK1B_clk_wiz_0_clk_out3_Scope">
+        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_0_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="CLK1B_CW_0_CLK1B_clk_wiz_0" PORT="clk_out3_Scope"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_0" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_xlconstant_val0_len1_dout">
+        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_1_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_xlconstant_val0_len1" PORT="dout"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_1" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_xlconstant_val0_len1_dout">
+        <PORT DIR="I" LEFT="1" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_2_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_xlconstant_val0_len1" PORT="dout"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_2" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In3" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_xlconstant_val0_len1_dout">
+        <PORT DIR="I" LEFT="0" NAME="In3" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="1" NAME="In4" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="0" NAME="In5" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="0" NAME="In6" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="0" NAME="In7" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_7_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_xlconstant_val0_len1" PORT="dout"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_7" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In4" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_xlconstant_val0_len1_dout">
+        <PORT DIR="I" LEFT="0" NAME="In8" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_8_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_xlconstant_val0_len1" PORT="dout"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_8" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In5" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_xlconstant_val0_len1_dout">
+        <PORT DIR="I" LEFT="0" NAME="In9" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_9_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_xlconstant_val0_len1" PORT="dout"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_9" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In6" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_xlconstant_val0_len1_dout">
+        <PORT DIR="I" LEFT="3" NAME="In10" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_10_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_xlconstant_val0_len1" PORT="dout"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_10" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In7" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_col">
+        <PORT DIR="I" LEFT="0" NAME="In11" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_11_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_col"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_11" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In8" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_crs">
+        <PORT DIR="I" LEFT="0" NAME="In12" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_12_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_crs"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_12" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In9" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rx_dv">
+        <PORT DIR="I" LEFT="0" NAME="In13" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_13_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_rx_dv"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_13" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="In10" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rxd">
+        <PORT DIR="I" LEFT="3" NAME="In14" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_14_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_rxd"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_14" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In11" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rx_er">
+        <PORT DIR="I" LEFT="0" NAME="In15" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_15_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_rx_er"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_15" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In12" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_rx_clk">
+        <PORT DIR="I" LEFT="0" NAME="In16" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_CDC_c_shift_ram_16_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_rx_clk"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_16" PORT="Q"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In13" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_m_mii_tx_en">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="m_mii_tx_en"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="In14" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_m_mii_txd">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="m_mii_txd"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In15" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_m_mii_tx_er">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="m_mii_tx_er"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In16" RIGHT="0" SIGIS="undef" SIGNAME="ETH0_ETH0_mii_y_adapater_0_s_mii_tx_clk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ETH0_ETH0_mii_y_adapater_0" PORT="s_mii_tx_clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="24" NAME="In17" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_xlconstant_val0_len25_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconstant_val0_len25" PORT="dout"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="I" LEFT="22" NAME="In17" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="47" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_xlconcat_1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_0" PORT="D"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="7" FULLNAME="/SCOPE/SCOPE_Signals_xlconstant_val0_len25" HWVERSION="1.1" INSTANCE="SCOPE_SCOPE_Signals_xlconstant_val0_len25" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="CONST_WIDTH" VALUE="25"/>
-        <PARAMETER NAME="CONST_VAL" VALUE="0x0000000"/>
-        <PARAMETER NAME="Component_Name" VALUE="msys_xlconstant_0_23"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="O" LEFT="24" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_Signals_xlconstant_val0_len25_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In17"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="SCOPE_FSM_TrigSrc"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_0" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -10295,7 +11084,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="External_Ports_SCOPE_FSM_FIFO_Rst">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="External_Ports_SCOPE_FSM_FIFO_Rst">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="SCOPE_FSM_FIFO_Rst"/>
           </CONNECTIONS>
@@ -10375,28 +11164,6 @@
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
-    </MODULE>
-    <MODULE COREREVISION="7" FULLNAME="/SCOPE/SCOPE_xlconstant_val0_len1" HWVERSION="1.1" INSTANCE="SCOPE_SCOPE_xlconstant_val0_len1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="CONST_VAL" VALUE="0x0"/>
-        <PARAMETER NAME="Component_Name" VALUE="msys_xlconstant_0_21"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="SCOPE_SCOPE_xlconstant_val0_len1_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In1"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In2"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In3"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In4"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In5"/>
-            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_xlconcat_1" PORT="In6"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
     </MODULE>
     <MODULE COREREVISION="15" FULLNAME="/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0" HWVERSION="5.1" INSTANCE="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="selectio_wiz" VLNV="xilinx.com:ip:selectio_wiz:5.1">
       <DOCUMENTS>
@@ -11294,7 +12061,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -12020,7 +12787,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -12459,7 +13226,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -16877,7 +17644,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -16897,12 +17664,12 @@
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_rx09_xlslice_31to00" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -17104,7 +17871,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -17124,12 +17891,12 @@
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_rx24_xlslice_31to00" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -17331,7 +18098,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -17351,12 +18118,12 @@
             <CONNECTION INSTANCE="External_Ports" PORT="premem_rx09_dina_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -17559,7 +18326,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -17579,12 +18346,12 @@
             <CONNECTION INSTANCE="External_Ports" PORT="premem_rx24_dina_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -31894,6 +32661,18 @@
             <CONNECTION INSTANCE="SCOPE_SCOPE_fifo_generator_0" PORT="wr_clk"/>
             <CONNECTION INSTANCE="SCOPE_SCOPE_fifo_generator_0" PORT="rd_clk"/>
             <CONNECTION INSTANCE="SCOPE_SCOPE_axi_gpio_1" PORT="s_axi_aclk"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_1" PORT="CLK"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_2" PORT="CLK"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_7" PORT="CLK"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_8" PORT="CLK"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_9" PORT="CLK"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_10" PORT="CLK"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_11" PORT="CLK"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_12" PORT="CLK"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_13" PORT="CLK"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_14" PORT="CLK"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_15" PORT="CLK"/>
+            <CONNECTION INSTANCE="SCOPE_SCOPE_Signals_CDC_c_shift_ram_16" PORT="CLK"/>
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M16_ACLK"/>
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M17_ACLK"/>
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M18_ACLK"/>
@@ -33300,7 +34079,7 @@
             <CONNECTION INSTANCE="labtools_fmeter_0" PORT="update"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe_in5" RIGHT="0" SIGIS="undef" SIGNAME="SC0712_0_reset_out">
+        <PORT DIR="I" LEFT="0" NAME="probe_in5" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="undef" SIGNAME="SC0712_0_reset_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="SC0712_0" PORT="reset_out"/>
           </CONNECTIONS>

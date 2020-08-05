@@ -2865,6 +2865,8 @@ proc create_hier_cell_SCOPE { parentCell nameHier } {
 
   # Create pins
   create_bd_pin -dir I -type clk CLK1B_CW_0_clk_out3_Scope_RefClk
+  create_bd_pin -dir I -from 0 -to 0 Dbg_RMII_PHY_M_0_crs_dv
+  create_bd_pin -dir I -from 1 -to 0 Dbg_RMII_PHY_M_0_rxd
   create_bd_pin -dir I ETH0_m_mii_tx_en
   create_bd_pin -dir I ETH0_m_mii_tx_er
   create_bd_pin -dir I -from 3 -to 0 ETH0_m_mii_txd
@@ -2911,12 +2913,132 @@ proc create_hier_cell_SCOPE { parentCell nameHier } {
   # Create instance: SCOPE_Signals_CDC_c_shift_ram_0, and set properties
   set SCOPE_Signals_CDC_c_shift_ram_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 SCOPE_Signals_CDC_c_shift_ram_0 ]
   set_property -dict [ list \
-   CONFIG.AsyncInitVal {000000000000000000000000000000000000000000000000} \
-   CONFIG.DefaultData {000000000000000000000000000000000000000000000000} \
+   CONFIG.AsyncInitVal {0} \
+   CONFIG.DefaultData {0} \
    CONFIG.Depth {2} \
-   CONFIG.SyncInitVal {000000000000000000000000000000000000000000000000} \
-   CONFIG.Width {48} \
+   CONFIG.SyncInitVal {0} \
+   CONFIG.Width {1} \
  ] $SCOPE_Signals_CDC_c_shift_ram_0
+
+  # Create instance: SCOPE_Signals_CDC_c_shift_ram_1, and set properties
+  set SCOPE_Signals_CDC_c_shift_ram_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 SCOPE_Signals_CDC_c_shift_ram_1 ]
+  set_property -dict [ list \
+   CONFIG.AsyncInitVal {0} \
+   CONFIG.DefaultData {0} \
+   CONFIG.Depth {2} \
+   CONFIG.SyncInitVal {0} \
+   CONFIG.Width {1} \
+ ] $SCOPE_Signals_CDC_c_shift_ram_1
+
+  # Create instance: SCOPE_Signals_CDC_c_shift_ram_2, and set properties
+  set SCOPE_Signals_CDC_c_shift_ram_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 SCOPE_Signals_CDC_c_shift_ram_2 ]
+  set_property -dict [ list \
+   CONFIG.AsyncInitVal {00} \
+   CONFIG.DefaultData {00} \
+   CONFIG.Depth {2} \
+   CONFIG.SyncInitVal {00} \
+   CONFIG.Width {2} \
+ ] $SCOPE_Signals_CDC_c_shift_ram_2
+
+  # Create instance: SCOPE_Signals_CDC_c_shift_ram_7, and set properties
+  set SCOPE_Signals_CDC_c_shift_ram_7 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 SCOPE_Signals_CDC_c_shift_ram_7 ]
+  set_property -dict [ list \
+   CONFIG.AsyncInitVal {0} \
+   CONFIG.DefaultData {0} \
+   CONFIG.Depth {2} \
+   CONFIG.SyncInitVal {0} \
+   CONFIG.Width {1} \
+ ] $SCOPE_Signals_CDC_c_shift_ram_7
+
+  # Create instance: SCOPE_Signals_CDC_c_shift_ram_8, and set properties
+  set SCOPE_Signals_CDC_c_shift_ram_8 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 SCOPE_Signals_CDC_c_shift_ram_8 ]
+  set_property -dict [ list \
+   CONFIG.AsyncInitVal {0} \
+   CONFIG.DefaultData {0} \
+   CONFIG.Depth {2} \
+   CONFIG.SyncInitVal {0} \
+   CONFIG.Width {1} \
+ ] $SCOPE_Signals_CDC_c_shift_ram_8
+
+  # Create instance: SCOPE_Signals_CDC_c_shift_ram_9, and set properties
+  set SCOPE_Signals_CDC_c_shift_ram_9 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 SCOPE_Signals_CDC_c_shift_ram_9 ]
+  set_property -dict [ list \
+   CONFIG.AsyncInitVal {0} \
+   CONFIG.DefaultData {0} \
+   CONFIG.Depth {2} \
+   CONFIG.SyncInitVal {0} \
+   CONFIG.Width {1} \
+ ] $SCOPE_Signals_CDC_c_shift_ram_9
+
+  # Create instance: SCOPE_Signals_CDC_c_shift_ram_10, and set properties
+  set SCOPE_Signals_CDC_c_shift_ram_10 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 SCOPE_Signals_CDC_c_shift_ram_10 ]
+  set_property -dict [ list \
+   CONFIG.AsyncInitVal {0000} \
+   CONFIG.DefaultData {0000} \
+   CONFIG.Depth {2} \
+   CONFIG.SyncInitVal {0000} \
+   CONFIG.Width {4} \
+ ] $SCOPE_Signals_CDC_c_shift_ram_10
+
+  # Create instance: SCOPE_Signals_CDC_c_shift_ram_11, and set properties
+  set SCOPE_Signals_CDC_c_shift_ram_11 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 SCOPE_Signals_CDC_c_shift_ram_11 ]
+  set_property -dict [ list \
+   CONFIG.AsyncInitVal {0} \
+   CONFIG.DefaultData {0} \
+   CONFIG.Depth {2} \
+   CONFIG.SyncInitVal {0} \
+   CONFIG.Width {1} \
+ ] $SCOPE_Signals_CDC_c_shift_ram_11
+
+  # Create instance: SCOPE_Signals_CDC_c_shift_ram_12, and set properties
+  set SCOPE_Signals_CDC_c_shift_ram_12 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 SCOPE_Signals_CDC_c_shift_ram_12 ]
+  set_property -dict [ list \
+   CONFIG.AsyncInitVal {0} \
+   CONFIG.DefaultData {0} \
+   CONFIG.Depth {2} \
+   CONFIG.SyncInitVal {0} \
+   CONFIG.Width {1} \
+ ] $SCOPE_Signals_CDC_c_shift_ram_12
+
+  # Create instance: SCOPE_Signals_CDC_c_shift_ram_13, and set properties
+  set SCOPE_Signals_CDC_c_shift_ram_13 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 SCOPE_Signals_CDC_c_shift_ram_13 ]
+  set_property -dict [ list \
+   CONFIG.AsyncInitVal {0} \
+   CONFIG.DefaultData {0} \
+   CONFIG.Depth {2} \
+   CONFIG.SyncInitVal {0} \
+   CONFIG.Width {1} \
+ ] $SCOPE_Signals_CDC_c_shift_ram_13
+
+  # Create instance: SCOPE_Signals_CDC_c_shift_ram_14, and set properties
+  set SCOPE_Signals_CDC_c_shift_ram_14 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 SCOPE_Signals_CDC_c_shift_ram_14 ]
+  set_property -dict [ list \
+   CONFIG.AsyncInitVal {0000} \
+   CONFIG.DefaultData {0000} \
+   CONFIG.Depth {2} \
+   CONFIG.SyncInitVal {0000} \
+   CONFIG.Width {4} \
+ ] $SCOPE_Signals_CDC_c_shift_ram_14
+
+  # Create instance: SCOPE_Signals_CDC_c_shift_ram_15, and set properties
+  set SCOPE_Signals_CDC_c_shift_ram_15 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 SCOPE_Signals_CDC_c_shift_ram_15 ]
+  set_property -dict [ list \
+   CONFIG.AsyncInitVal {0} \
+   CONFIG.DefaultData {0} \
+   CONFIG.Depth {2} \
+   CONFIG.SyncInitVal {0} \
+   CONFIG.Width {1} \
+ ] $SCOPE_Signals_CDC_c_shift_ram_15
+
+  # Create instance: SCOPE_Signals_CDC_c_shift_ram_16, and set properties
+  set SCOPE_Signals_CDC_c_shift_ram_16 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 SCOPE_Signals_CDC_c_shift_ram_16 ]
+  set_property -dict [ list \
+   CONFIG.AsyncInitVal {0} \
+   CONFIG.DefaultData {0} \
+   CONFIG.Depth {2} \
+   CONFIG.SyncInitVal {0} \
+   CONFIG.Width {1} \
+ ] $SCOPE_Signals_CDC_c_shift_ram_16
 
   # Create instance: SCOPE_Signals_xlconcat_0, and set properties
   set SCOPE_Signals_xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 SCOPE_Signals_xlconcat_0 ]
@@ -2938,11 +3060,11 @@ proc create_hier_cell_SCOPE { parentCell nameHier } {
    CONFIG.IN14_WIDTH {4} \
    CONFIG.IN15_WIDTH {1} \
    CONFIG.IN16_WIDTH {1} \
-   CONFIG.IN17_WIDTH {25} \
+   CONFIG.IN17_WIDTH {23} \
    CONFIG.IN1_WIDTH {1} \
-   CONFIG.IN2_WIDTH {1} \
+   CONFIG.IN2_WIDTH {2} \
    CONFIG.IN3_WIDTH {1} \
-   CONFIG.IN4_WIDTH {1} \
+   CONFIG.IN4_WIDTH {2} \
    CONFIG.IN5_WIDTH {1} \
    CONFIG.IN6_WIDTH {1} \
    CONFIG.IN7_WIDTH {1} \
@@ -2950,13 +3072,6 @@ proc create_hier_cell_SCOPE { parentCell nameHier } {
    CONFIG.IN9_WIDTH {1} \
    CONFIG.NUM_PORTS {18} \
  ] $SCOPE_Signals_xlconcat_1
-
-  # Create instance: SCOPE_Signals_xlconstant_val0_len25, and set properties
-  set SCOPE_Signals_xlconstant_val0_len25 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 SCOPE_Signals_xlconstant_val0_len25 ]
-  set_property -dict [ list \
-   CONFIG.CONST_VAL {0} \
-   CONFIG.CONST_WIDTH {25} \
- ] $SCOPE_Signals_xlconstant_val0_len25
 
   # Create instance: SCOPE_Timebase_c_counter_binary_0, and set properties
   set SCOPE_Timebase_c_counter_binary_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_counter_binary:12.0 SCOPE_Timebase_c_counter_binary_0 ]
@@ -3021,28 +3136,24 @@ proc create_hier_cell_SCOPE { parentCell nameHier } {
    CONFIG.Write_Data_Count_Width {10} \
  ] $SCOPE_fifo_generator_0
 
-  # Create instance: SCOPE_xlconstant_val0_len1, and set properties
-  set SCOPE_xlconstant_val0_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 SCOPE_xlconstant_val0_len1 ]
-  set_property -dict [ list \
-   CONFIG.CONST_VAL {0} \
- ] $SCOPE_xlconstant_val0_len1
-
   # Create interface connections
   connect_bd_intf_net -intf_net Conn1 [get_bd_intf_pins S_AXI1] [get_bd_intf_pins SCOPE_axi_gpio_1/S_AXI]
   connect_bd_intf_net -intf_net microblaze_0_axi_periph_M15_AXI_0 [get_bd_intf_pins S_AXI] [get_bd_intf_pins SCOPE_axi_gpio_0/S_AXI]
 
   # Create port connections
-  connect_bd_net -net CLK1B_CW_0_clk_out3_Scope_RefClk_0 [get_bd_pins CLK1B_CW_0_clk_out3_Scope_RefClk] [get_bd_pins SCOPE_Signals_xlconcat_1/In0]
-  connect_bd_net -net ETH0_m_mii_tx_en_0 [get_bd_pins ETH0_m_mii_tx_en] [get_bd_pins SCOPE_Signals_xlconcat_1/In13]
-  connect_bd_net -net ETH0_m_mii_tx_er_0 [get_bd_pins ETH0_m_mii_tx_er] [get_bd_pins SCOPE_Signals_xlconcat_1/In15]
-  connect_bd_net -net ETH0_m_mii_txd_1 [get_bd_pins ETH0_m_mii_txd] [get_bd_pins SCOPE_Signals_xlconcat_1/In14]
-  connect_bd_net -net ETH0_s_mii_col_0 [get_bd_pins ETH0_s_mii_col] [get_bd_pins SCOPE_Signals_xlconcat_1/In7]
-  connect_bd_net -net ETH0_s_mii_crs_0 [get_bd_pins ETH0_s_mii_crs] [get_bd_pins SCOPE_Signals_xlconcat_1/In8]
-  connect_bd_net -net ETH0_s_mii_rx_clk_0 [get_bd_pins ETH0_s_mii_rx_clk] [get_bd_pins SCOPE_Signals_xlconcat_1/In12]
-  connect_bd_net -net ETH0_s_mii_rx_dv_0 [get_bd_pins ETH0_s_mii_rx_dv] [get_bd_pins SCOPE_Signals_xlconcat_1/In9]
-  connect_bd_net -net ETH0_s_mii_rx_er_0 [get_bd_pins ETH0_s_mii_rx_er] [get_bd_pins SCOPE_Signals_xlconcat_1/In11]
-  connect_bd_net -net ETH0_s_mii_rxd_1 [get_bd_pins ETH0_s_mii_rxd] [get_bd_pins SCOPE_Signals_xlconcat_1/In10]
-  connect_bd_net -net ETH0_s_mii_tx_clk_0 [get_bd_pins ETH0_s_mii_tx_clk] [get_bd_pins SCOPE_Signals_xlconcat_1/In16]
+  connect_bd_net -net CLK1B_CW_0_clk_out3_Scope_RefClk_0 [get_bd_pins CLK1B_CW_0_clk_out3_Scope_RefClk] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_0/D]
+  connect_bd_net -net Dbg_RMII_PHY_M_0_crs_dv_1 [get_bd_pins Dbg_RMII_PHY_M_0_crs_dv] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_1/D]
+  connect_bd_net -net Dbg_RMII_PHY_M_0_rxd_1 [get_bd_pins Dbg_RMII_PHY_M_0_rxd] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_2/D]
+  connect_bd_net -net ETH0_m_mii_tx_en_0 [get_bd_pins ETH0_m_mii_tx_en] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_13/D]
+  connect_bd_net -net ETH0_m_mii_tx_er_0 [get_bd_pins ETH0_m_mii_tx_er] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_15/D]
+  connect_bd_net -net ETH0_m_mii_txd_1 [get_bd_pins ETH0_m_mii_txd] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_14/D]
+  connect_bd_net -net ETH0_s_mii_col_0 [get_bd_pins ETH0_s_mii_col] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_7/D]
+  connect_bd_net -net ETH0_s_mii_crs_0 [get_bd_pins ETH0_s_mii_crs] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_8/D]
+  connect_bd_net -net ETH0_s_mii_rx_clk_0 [get_bd_pins ETH0_s_mii_rx_clk] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_12/D]
+  connect_bd_net -net ETH0_s_mii_rx_dv_0 [get_bd_pins ETH0_s_mii_rx_dv] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_9/D]
+  connect_bd_net -net ETH0_s_mii_rx_er_0 [get_bd_pins ETH0_s_mii_rx_er] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_11/D]
+  connect_bd_net -net ETH0_s_mii_rxd_1 [get_bd_pins ETH0_s_mii_rxd] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_10/D]
+  connect_bd_net -net ETH0_s_mii_tx_clk_0 [get_bd_pins ETH0_s_mii_tx_clk] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_16/D]
   connect_bd_net -net SCOPE_FSM_FIFO_RdEn_1 [get_bd_pins SCOPE_FSM_FIFO_RdEn] [get_bd_pins SCOPE_fifo_generator_0/rd_en]
   connect_bd_net -net SCOPE_FSM_FIFO_Rst_1 [get_bd_pins SCOPE_FSM_FIFO_Rst] [get_bd_pins SCOPE_fifo_generator_0/rst]
   connect_bd_net -net SCOPE_FSM_FIFO_WrEn_0 [get_bd_pins SCOPE_FSM_FIFO_WrEn] [get_bd_pins SCOPE_fifo_generator_0/wr_en]
@@ -3051,10 +3162,21 @@ proc create_hier_cell_SCOPE { parentCell nameHier } {
   connect_bd_net -net SCOPE_FSM_Timebase_SCLR_1 [get_bd_pins SCOPE_FSM_Timebase_SCLR] [get_bd_pins SCOPE_Timebase_c_counter_binary_0/SCLR]
   connect_bd_net -net SCOPE_GPIO3_Out_xlslice_63downto32_Dout [get_bd_pins SCOPE_GPIO3_Out_xlslice_63downto32/Dout] [get_bd_pins SCOPE_axi_gpio_1/gpio_io_i]
   connect_bd_net -net SCOPE_GPIO4_Out_xlslice_31downto0_Dout [get_bd_pins SCOPE_GPIO4_Out_xlslice_31downto0/Dout] [get_bd_pins SCOPE_axi_gpio_1/gpio2_io_i]
-  connect_bd_net -net SCOPE_Signals_CDC_c_shift_ram_0_Q [get_bd_pins SCOPE_FSM_TrigSrc] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_0/Q] [get_bd_pins SCOPE_Signals_xlconcat_0/In0]
+  connect_bd_net -net SCOPE_Signals_CDC_c_shift_ram_0_Q [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_0/Q] [get_bd_pins SCOPE_Signals_xlconcat_1/In0]
+  connect_bd_net -net SCOPE_Signals_CDC_c_shift_ram_10_Q [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_10/Q] [get_bd_pins SCOPE_Signals_xlconcat_1/In10]
+  connect_bd_net -net SCOPE_Signals_CDC_c_shift_ram_11_Q [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_11/Q] [get_bd_pins SCOPE_Signals_xlconcat_1/In11]
+  connect_bd_net -net SCOPE_Signals_CDC_c_shift_ram_12_Q [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_12/Q] [get_bd_pins SCOPE_Signals_xlconcat_1/In12]
+  connect_bd_net -net SCOPE_Signals_CDC_c_shift_ram_13_Q [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_13/Q] [get_bd_pins SCOPE_Signals_xlconcat_1/In13]
+  connect_bd_net -net SCOPE_Signals_CDC_c_shift_ram_14_Q [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_14/Q] [get_bd_pins SCOPE_Signals_xlconcat_1/In14]
+  connect_bd_net -net SCOPE_Signals_CDC_c_shift_ram_15_Q [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_15/Q] [get_bd_pins SCOPE_Signals_xlconcat_1/In15]
+  connect_bd_net -net SCOPE_Signals_CDC_c_shift_ram_16_Q [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_16/Q] [get_bd_pins SCOPE_Signals_xlconcat_1/In16]
+  connect_bd_net -net SCOPE_Signals_CDC_c_shift_ram_1_Q [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_1/Q] [get_bd_pins SCOPE_Signals_xlconcat_1/In1]
+  connect_bd_net -net SCOPE_Signals_CDC_c_shift_ram_2_Q [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_2/Q] [get_bd_pins SCOPE_Signals_xlconcat_1/In2]
+  connect_bd_net -net SCOPE_Signals_CDC_c_shift_ram_7_Q [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_7/Q] [get_bd_pins SCOPE_Signals_xlconcat_1/In7]
+  connect_bd_net -net SCOPE_Signals_CDC_c_shift_ram_8_Q [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_8/Q] [get_bd_pins SCOPE_Signals_xlconcat_1/In8]
+  connect_bd_net -net SCOPE_Signals_CDC_c_shift_ram_9_Q [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_9/Q] [get_bd_pins SCOPE_Signals_xlconcat_1/In9]
   connect_bd_net -net SCOPE_Signals_xlconcat_0_dout [get_bd_pins SCOPE_Signals_xlconcat_0/dout] [get_bd_pins SCOPE_fifo_generator_0/din]
-  connect_bd_net -net SCOPE_Signals_xlconcat_1_dout [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_0/D] [get_bd_pins SCOPE_Signals_xlconcat_1/dout]
-  connect_bd_net -net SCOPE_Signals_xlconstant_0_dout [get_bd_pins SCOPE_Signals_xlconcat_1/In17] [get_bd_pins SCOPE_Signals_xlconstant_val0_len25/dout]
+  connect_bd_net -net SCOPE_Signals_xlconcat_1_dout [get_bd_pins SCOPE_FSM_TrigSrc] [get_bd_pins SCOPE_Signals_xlconcat_0/In0] [get_bd_pins SCOPE_Signals_xlconcat_1/dout]
   connect_bd_net -net SCOPE_Timebase_c_counter_binary_0_Q [get_bd_pins SCOPE_Signals_xlconcat_0/In1] [get_bd_pins SCOPE_Timebase_c_counter_binary_0/Q]
   connect_bd_net -net SCOPE_axi_gpio_0_gpio_io_o [get_bd_pins SCOPE_FSM_GPIO0_Out] [get_bd_pins SCOPE_axi_gpio_0/gpio_io_o]
   connect_bd_net -net SCOPE_fifo_generator_0_almost_full [get_bd_pins SCOPE_FSM_FIFO_WrFull] [get_bd_pins SCOPE_fifo_generator_0/almost_full]
@@ -3063,8 +3185,7 @@ proc create_hier_cell_SCOPE { parentCell nameHier } {
   connect_bd_net -net SCOPE_fifo_generator_0_rd_rst_busy [get_bd_pins SCOPE_FSM_FIFO_rd_rst_busy] [get_bd_pins SCOPE_fifo_generator_0/rd_rst_busy]
   connect_bd_net -net SCOPE_fifo_generator_0_valid [get_bd_pins SCOPE_FSM_FIFO_RdValid] [get_bd_pins SCOPE_fifo_generator_0/valid]
   connect_bd_net -net SCOPE_fifo_generator_0_wr_rst_busy [get_bd_pins SCOPE_FSM_FIFO_wr_rst_busy] [get_bd_pins SCOPE_fifo_generator_0/wr_rst_busy]
-  connect_bd_net -net SCOPE_xlconstant_val0_len0_dout [get_bd_pins SCOPE_Signals_xlconcat_1/In1] [get_bd_pins SCOPE_Signals_xlconcat_1/In2] [get_bd_pins SCOPE_Signals_xlconcat_1/In3] [get_bd_pins SCOPE_Signals_xlconcat_1/In4] [get_bd_pins SCOPE_Signals_xlconcat_1/In5] [get_bd_pins SCOPE_Signals_xlconcat_1/In6] [get_bd_pins SCOPE_xlconstant_val0_len1/dout]
-  connect_bd_net -net microblaze_0_Clk_100MHz_0 [get_bd_pins s_axi_aclk] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_0/CLK] [get_bd_pins SCOPE_Timebase_c_counter_binary_0/CLK] [get_bd_pins SCOPE_axi_gpio_0/s_axi_aclk] [get_bd_pins SCOPE_axi_gpio_1/s_axi_aclk] [get_bd_pins SCOPE_fifo_generator_0/rd_clk] [get_bd_pins SCOPE_fifo_generator_0/wr_clk]
+  connect_bd_net -net microblaze_0_Clk_100MHz_0 [get_bd_pins s_axi_aclk] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_0/CLK] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_1/CLK] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_10/CLK] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_11/CLK] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_12/CLK] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_13/CLK] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_14/CLK] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_15/CLK] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_16/CLK] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_2/CLK] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_7/CLK] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_8/CLK] [get_bd_pins SCOPE_Signals_CDC_c_shift_ram_9/CLK] [get_bd_pins SCOPE_Timebase_c_counter_binary_0/CLK] [get_bd_pins SCOPE_axi_gpio_0/s_axi_aclk] [get_bd_pins SCOPE_axi_gpio_1/s_axi_aclk] [get_bd_pins SCOPE_fifo_generator_0/rd_clk] [get_bd_pins SCOPE_fifo_generator_0/wr_clk]
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_aresetn_0 [get_bd_pins s_axi_aresetn] [get_bd_pins SCOPE_axi_gpio_0/s_axi_aresetn] [get_bd_pins SCOPE_axi_gpio_1/s_axi_aresetn]
 
   # Restore current instance
@@ -4150,6 +4271,8 @@ proc create_root_design { parentCell } {
   set BOARD_ROTENC_PUSH [ create_bd_port -dir I BOARD_ROTENC_PUSH ]
   set CLK1B_clk [ create_bd_port -dir I -from 0 -to 0 -type clk -freq_hz 50000000 CLK1B_clk ]
   set DDR3_init_calib_complete [ create_bd_port -dir O DDR3_init_calib_complete ]
+  set Dbg_RMII_PHY_M_0_crs_dv [ create_bd_port -dir I Dbg_RMII_PHY_M_0_crs_dv ]
+  set Dbg_RMII_PHY_M_0_rxd [ create_bd_port -dir I -from 1 -to 0 -type data Dbg_RMII_PHY_M_0_rxd ]
   set ETH0_DA_G [ create_bd_port -dir O -from 0 -to 0 ETH0_DA_G ]
   set ETH0_DA_Y [ create_bd_port -dir O -from 0 -to 0 ETH0_DA_Y ]
   set ETH0_LINK_LED_g [ create_bd_port -dir I ETH0_LINK_LED_g ]
@@ -4576,6 +4699,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net CLK1B_CW_0_psdone [get_bd_pins CLK1B_CW_0/psdone] [get_bd_pins vio_0/probe_in37]
   connect_bd_net -net CLK1B_clk_wiz_0_clk_out2_fmeter [get_bd_pins CLK1B_CW_0/clk_out2_fMeter] [get_bd_pins lt_fmeter_xlconcat_0/In2]
   connect_bd_net -net CLK2_125MHz_mgt_g_0 [get_bd_pins lt_fmeter_xlconcat_0/In1] [get_bd_pins mgt_clk0_CLK2_util_ds_buf_1/IBUF_OUT]
+  connect_bd_net -net Dbg_RMII_PHY_M_0_crs_dv_1 [get_bd_ports Dbg_RMII_PHY_M_0_crs_dv] [get_bd_pins SCOPE/Dbg_RMII_PHY_M_0_crs_dv]
+  connect_bd_net -net Dbg_RMII_PHY_M_0_rxd_1 [get_bd_ports Dbg_RMII_PHY_M_0_rxd] [get_bd_pins SCOPE/Dbg_RMII_PHY_M_0_rxd]
   connect_bd_net -net ETH0_DA_G [get_bd_ports ETH0_DA_G] [get_bd_pins ETH0/ETH0_DA_G]
   connect_bd_net -net ETH0_DA_Y [get_bd_ports ETH0_DA_Y] [get_bd_pins ETH0/ETH0_DA_Y]
   connect_bd_net -net ETH0_LEDstatus_0 [get_bd_pins ETH0/ETH0_status] [get_bd_pins vio_0/probe_in31]
