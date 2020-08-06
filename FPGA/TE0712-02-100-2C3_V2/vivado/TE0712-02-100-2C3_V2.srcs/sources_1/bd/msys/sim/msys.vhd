@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Thu Aug  6 12:10:57 2020
+--Date        : Thu Aug  6 18:51:19 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -347,16 +347,82 @@ entity ETH0_LEDs_imp_437WON is
   port (
     ETH0_DA_G : out STD_LOGIC_VECTOR ( 0 to 0 );
     ETH0_DA_Y : out STD_LOGIC_VECTOR ( 0 to 0 );
-    ETH0_LINK_LED_inv : in STD_LOGIC_VECTOR ( 0 to 0 )
+    ETH0_LINK_LED_inv : in STD_LOGIC_VECTOR ( 0 to 0 );
+    m_mii_tx_en : in STD_LOGIC_VECTOR ( 0 to 0 );
+    s_axi_aclk : in STD_LOGIC;
+    s_mii_crs : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
 end ETH0_LEDs_imp_437WON;
 
 architecture STRUCTURE of ETH0_LEDs_imp_437WON is
+  component msys_util_reduced_logic_0_1 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    Res : out STD_LOGIC
+  );
+  end component msys_util_reduced_logic_0_1;
+  component msys_xlconcat_0_18 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component msys_xlconcat_0_18;
+  component msys_c_counter_binary_0_5 is
+  port (
+    CLK : in STD_LOGIC;
+    CE : in STD_LOGIC;
+    SCLR : in STD_LOGIC;
+    THRESH0 : out STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 23 downto 0 )
+  );
+  end component msys_c_counter_binary_0_5;
+  component msys_util_vector_logic_0_8 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_util_vector_logic_0_8;
+  signal ETH0_LEDs_c_counter_binary_0_THRESH0 : STD_LOGIC;
+  signal ETH0_LEDs_util_reduced_logic_0_Res : STD_LOGIC;
+  signal ETH0_LEDs_util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal ETH0_LEDs_xlconcat_0_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal ETH0_LINK_LED_inv_0 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal m_mii_tx_en_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal s_axi_aclk_1 : STD_LOGIC;
+  signal s_mii_crs_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_ETH0_LEDs_c_counter_binary_0_Q_UNCONNECTED : STD_LOGIC_VECTOR ( 23 downto 0 );
 begin
   ETH0_DA_G(0) <= ETH0_LINK_LED_inv_0(0);
-  ETH0_DA_Y(0) <= ETH0_LINK_LED_inv_0(0);
+  ETH0_DA_Y(0) <= ETH0_LEDs_util_vector_logic_0_Res(0);
   ETH0_LINK_LED_inv_0(0) <= ETH0_LINK_LED_inv(0);
+  m_mii_tx_en_1(0) <= m_mii_tx_en(0);
+  s_axi_aclk_1 <= s_axi_aclk;
+  s_mii_crs_1(0) <= s_mii_crs(0);
+ETH0_LEDs_c_counter_binary_0: component msys_c_counter_binary_0_5
+     port map (
+      CE => ETH0_LEDs_util_vector_logic_0_Res(0),
+      CLK => s_axi_aclk_1,
+      Q(23 downto 0) => NLW_ETH0_LEDs_c_counter_binary_0_Q_UNCONNECTED(23 downto 0),
+      SCLR => ETH0_LEDs_util_reduced_logic_0_Res,
+      THRESH0 => ETH0_LEDs_c_counter_binary_0_THRESH0
+    );
+ETH0_LEDs_util_reduced_logic_0: component msys_util_reduced_logic_0_1
+     port map (
+      Op1(1 downto 0) => ETH0_LEDs_xlconcat_0_dout(1 downto 0),
+      Res => ETH0_LEDs_util_reduced_logic_0_Res
+    );
+ETH0_LEDs_util_vector_logic_0: component msys_util_vector_logic_0_8
+     port map (
+      Op1(0) => ETH0_LEDs_c_counter_binary_0_THRESH0,
+      Res(0) => ETH0_LEDs_util_vector_logic_0_Res(0)
+    );
+ETH0_LEDs_xlconcat_0: component msys_xlconcat_0_18
+     port map (
+      In0(0) => s_mii_crs_1(0),
+      In1(0) => m_mii_tx_en_1(0),
+      dout(1 downto 0) => ETH0_LEDs_xlconcat_0_dout(1 downto 0)
+    );
 end STRUCTURE;
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -7853,7 +7919,10 @@ ETH0_LEDs: entity work.ETH0_LEDs_imp_437WON
      port map (
       ETH0_DA_G(0) => ETH0_LEDs_ETH0_DA_G(0),
       ETH0_DA_Y(0) => ETH0_LEDs_ETH0_DA_Y(0),
-      ETH0_LINK_LED_inv(0) => ETH0_LINK_LED_inv_0(0)
+      ETH0_LINK_LED_inv(0) => ETH0_LINK_LED_inv_0(0),
+      m_mii_tx_en(0) => axi_ethernetlite_0_phy_tx_en,
+      s_axi_aclk => s_axi_aclk_1,
+      s_mii_crs(0) => ETH0_mii_y_adapater_0_s_mii_crs
     );
 ETH0_LEDs_proc_sys_reset_0: component msys_proc_sys_reset_eth_0
      port map (
@@ -13911,7 +13980,7 @@ entity msys is
     rst_100M_peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=255,numReposBlks=205,numNonXlnxBlks=3,numHierBlks=50,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=259,numReposBlks=209,numNonXlnxBlks=3,numHierBlks=50,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of msys : entity is "msys.hwdef";
 end msys;

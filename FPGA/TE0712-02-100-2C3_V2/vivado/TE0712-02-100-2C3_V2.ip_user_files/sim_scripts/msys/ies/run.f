@@ -666,6 +666,14 @@
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_xlconstant_0_26/sim/msys_xlconstant_0_26.v" \
+  "../../../bd/msys/ip/msys_util_reduced_logic_0_1/sim/msys_util_reduced_logic_0_1.v" \
+  "../../../bd/msys/ip/msys_xlconcat_0_18/sim/msys_xlconcat_0_18.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_c_counter_binary_0_5/sim/msys_c_counter_binary_0_5.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_util_vector_logic_0_8/sim/msys_util_vector_logic_0_8.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_0_0/sim/msys_tier2_xbar_0_0.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_1_0/sim/msys_tier2_xbar_1_0.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_2_0/sim/msys_tier2_xbar_2_0.v" \

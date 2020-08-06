@@ -22,7 +22,7 @@
     <Object name="xc7a100t_0" gui_info="">
       <Properties Property="FULL_PROBES.FILE" value="$_project_name_.runs/impl_1/msys_wrapper.ltx"/>
       <Properties Property="PROBES.FILE" value="$_project_name_.runs/impl_1/msys_wrapper.ltx"/>
-      <Properties Property="PROGRAM.HW_BITSTREAM" value="$_project_name_.runs/impl_1/msys_wrapper.bit"/>
+      <Properties Property="PROGRAM.HW_BITSTREAM" value=""/>
       <Properties Property="PROGRAM.HW_CFGMEM_PART" value="s25fl256sxxxxxx0-spi-x1_x2_x4"/>
       <Properties Property="SLR.COUNT" value="1"/>
     </Object>
@@ -86,7 +86,7 @@
     <Object name="msys_i/xfft_rx24_dly3449_event_frame_started_out_0" gui_info="hw_vios/hw_vio_1=33"/>
   </ObjectList>
   <ObjectList object_type="hw_vio" gui_info="">
-    <Object name="hw_vio_1" gui_info="hw_vios/hw_vio_1/TablePreference=5	1342	Name	0	2147483647	15	649	649	Value	1	2147483647	15	272	272	Activity	2	2147483647	15	104	104	Direction	3	2147483647	15	151	151	VIO	4	2147483647	15	166	166			1	6	1	Name	Value	Activity	Direction	VIO"/>
+    <Object name="hw_vio_1" gui_info="hw_vios/hw_vio_1/TablePreference=5	1341	Name	0	2147483647	15	649	649	Value	1	2147483647	15	303	303	Activity	2	2147483647	15	122	122	Direction	3	2147483647	15	141	141	VIO	4	2147483647	15	126	126			1	6	1	Name	Value	Activity	Direction	VIO"/>
   </ObjectList>
   <probeset name="hw project" active="false">
     <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">

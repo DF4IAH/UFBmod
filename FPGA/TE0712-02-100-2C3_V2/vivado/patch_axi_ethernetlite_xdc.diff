@@ -1,0 +1,17 @@
+--- TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_axi_ethernetlite_0_1/msys_axi_ethernetlite_0_1.xdc.orig.txt	2020-08-06 13:27:52.910018900 +0200
++++ TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ip/msys_axi_ethernetlite_0_1/msys_axi_ethernetlite_0_1.xdc	2020-08-06 13:41:47.954174700 +0200
+@@ -56,9 +56,9 @@
+ set_false_path -through [get_cells -hierarchical -filter {NAME =~*loopback_en_reg}]
+ 
+-set_property IOB true [get_cells -hierarchical -filter {NAME =~*RX_FF_I}]
+-set_property IOB true [get_cells -hierarchical -filter {NAME =~*TX_FF_I}]
+-set_property IOB true [get_cells -hierarchical -filter {NAME =~*DVD_FF}]
+-set_property IOB true [get_cells -hierarchical -filter {NAME =~*RER_FF}]
+-set_property IOB true [get_cells -hierarchical -filter {NAME =~*TEN_FF}]
++#set_property IOB true [get_cells -hierarchical -filter {NAME =~*RX_FF_I}]
++#set_property IOB true [get_cells -hierarchical -filter {NAME =~*TX_FF_I}]
++#set_property IOB true [get_cells -hierarchical -filter {NAME =~*DVD_FF}]
++#set_property IOB true [get_cells -hierarchical -filter {NAME =~*RER_FF}]
++#set_property IOB true [get_cells -hierarchical -filter {NAME =~*TEN_FF}]
+ 
+ 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item value="Y:\Downloads" key="dump_restore_files_selection"/>
+	<item value="C:\Users\espero\git\UFBmod\FPGA\TE0712-02-100-2C3_V2\vivado" key="scw_hwspec_file_selection"/>
 	<item value="C:\Users\espero\git\UFBmod\FPGA\TE0712-02-100-2C3_V2\vivado" key="scw_hwspec"/>
 </section>

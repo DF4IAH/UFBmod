@@ -215,7 +215,7 @@ set_property PULLDOWN true [get_ports {RMII_PHY_M_0_rxd[0]}]
 set_property PULLDOWN true [get_ports {RMII_PHY_M_0_rxd[1]}]
 
 # ETH0 LINK LED mode 2: LINK and activity together
-set_property PULLDOWN true [get_ports RMII_PHY_M_0_crs_dv]
+set_property PULLUP true [get_ports RMII_PHY_M_0_crs_dv]
 
 set_property SLEW FAST [get_ports {RMII_PHY_M_0_txd[0]}]
 set_property SLEW FAST [get_ports {RMII_PHY_M_0_txd[1]}]
