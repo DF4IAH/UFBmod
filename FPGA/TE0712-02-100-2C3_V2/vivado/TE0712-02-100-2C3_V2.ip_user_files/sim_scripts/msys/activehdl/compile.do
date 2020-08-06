@@ -755,7 +755,6 @@ vcom -work xil_defaultlib -93 \
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
 "../../../bd/msys/ip/msys_fifo_generator_0_1/sim/msys_fifo_generator_0_1.v" \
 "../../../bd/msys/ip/msys_xlconcat_0_16/sim/msys_xlconcat_0_16.v" \
-"../../../bd/msys/ip/msys_xlconstant_0_24/sim/msys_xlconstant_0_24.v" \
 
 vcom -work xil_defaultlib -93 \
 "../../../bd/msys/ip/msys_axi_gpio_0_4/sim/msys_axi_gpio_0_4.vhd" \
@@ -763,7 +762,6 @@ vcom -work xil_defaultlib -93 \
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
 "../../../bd/msys/ip/msys_xlslice_0_39/sim/msys_xlslice_0_39.v" \
 "../../../bd/msys/ip/msys_xlslice_1_5/sim/msys_xlslice_1_5.v" \
-"../../../bd/msys/ip/msys_xlconstant_0_25/sim/msys_xlconstant_0_25.v" \
 
 vcom -work xil_defaultlib -93 \
 "../../../bd/msys/ip/msys_c_shift_ram_0_11/sim/msys_c_shift_ram_0_11.vhd" \
@@ -808,7 +806,6 @@ vlog -work axi_protocol_converter_v2_1_21  -v2k5 "+incdir+../../../../TE0712-02-
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
 "../../../bd/msys/ip/msys_auto_pc_0/sim/msys_auto_pc_0.v" \
-"../../../bd/msys/ip/msys_auto_pc_1/sim/msys_auto_pc_1.v" \
 
 vcom -work xil_defaultlib -93 \
 "../../../bd/msys/sim/msys.vhd" \

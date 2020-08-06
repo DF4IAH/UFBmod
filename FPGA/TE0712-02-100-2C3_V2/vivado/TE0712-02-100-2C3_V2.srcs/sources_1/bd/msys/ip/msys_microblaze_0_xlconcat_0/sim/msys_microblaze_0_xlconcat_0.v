@@ -66,7 +66,6 @@ module msys_microblaze_0_xlconcat_0 (
   In9,
   In10,
   In11,
-  In12,
   dout
 );
 
@@ -82,8 +81,7 @@ input wire [0 : 0] In8;
 input wire [0 : 0] In9;
 input wire [0 : 0] In10;
 input wire [0 : 0] In11;
-input wire [0 : 0] In12;
-output wire [12 : 0] dout;
+output wire [11 : 0] dout;
 
   xlconcat_v2_1_3_xlconcat #(
     .IN0_WIDTH(1),
@@ -118,8 +116,8 @@ output wire [12 : 0] dout;
     .IN29_WIDTH(1),
     .IN30_WIDTH(1),
     .IN31_WIDTH(1),
-    .dout_width(13),
-    .NUM_PORTS(13)
+    .dout_width(12),
+    .NUM_PORTS(12)
   ) inst (
     .In0(In0),
     .In1(In1),
@@ -133,7 +131,7 @@ output wire [12 : 0] dout;
     .In9(In9),
     .In10(In10),
     .In11(In11),
-    .In12(In12),
+    .In12(1'B0),
     .In13(1'B0),
     .In14(1'B0),
     .In15(1'B0),

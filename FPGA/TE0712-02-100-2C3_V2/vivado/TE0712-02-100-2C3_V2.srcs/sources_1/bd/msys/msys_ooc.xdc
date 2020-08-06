@@ -8,7 +8,6 @@
 ################################################################################
 create_clock -name TRX_clk_26MHz -period 38.462 [get_ports TRX_clk_26MHz]
 create_clock -name CLK1B_clk -period 20 [get_ports CLK1B_clk]
-create_clock -name el_phy_mdc -period 40 [get_ports el_phy_mdc]
 create_clock -name CLK0_clk_p -period 10 [get_ports CLK0_clk_p]
 create_clock -name CLK2_mgt_clk0_clk_p -period 8 [get_ports CLK2_mgt_clk0_clk_p]
 create_clock -name CLK3_sys_diff_clk_p -period 10 [get_ports CLK3_sys_diff_clk_p]

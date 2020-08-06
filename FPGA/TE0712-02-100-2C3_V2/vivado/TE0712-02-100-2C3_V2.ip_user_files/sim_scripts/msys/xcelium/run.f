@@ -630,7 +630,6 @@
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_fifo_generator_0_1/sim/msys_fifo_generator_0_1.v" \
   "../../../bd/msys/ip/msys_xlconcat_0_16/sim/msys_xlconcat_0_16.v" \
-  "../../../bd/msys/ip/msys_xlconstant_0_24/sim/msys_xlconstant_0_24.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_axi_gpio_0_4/sim/msys_axi_gpio_0_4.vhd" \
@@ -638,7 +637,6 @@
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_xlslice_0_39/sim/msys_xlslice_0_39.v" \
   "../../../bd/msys/ip/msys_xlslice_1_5/sim/msys_xlslice_1_5.v" \
-  "../../../bd/msys/ip/msys_xlconstant_0_25/sim/msys_xlconstant_0_25.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_c_shift_ram_0_11/sim/msys_c_shift_ram_0_11.vhd" \
@@ -683,7 +681,6 @@
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_auto_pc_0/sim/msys_auto_pc_0.v" \
-  "../../../bd/msys/ip/msys_auto_pc_1/sim/msys_auto_pc_1.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/msys/sim/msys.vhd" \

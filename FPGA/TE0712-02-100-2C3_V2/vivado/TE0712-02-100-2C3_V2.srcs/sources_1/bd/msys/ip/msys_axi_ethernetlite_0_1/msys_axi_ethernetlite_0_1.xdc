@@ -55,11 +55,11 @@ set_false_path -to [get_pins -leaf -of_objects [get_cells -hier *cdc_to* -filter
 ##set_false_path -to [get_cells -hierarchical -filter {NAME =~*TEN_FF}]
 set_false_path -through [get_cells -hierarchical -filter {NAME =~*loopback_en_reg}]
 
-set_property IOB true [get_cells -hierarchical -filter {NAME =~*RX_FF_I}]
-set_property IOB true [get_cells -hierarchical -filter {NAME =~*TX_FF_I}]
-set_property IOB true [get_cells -hierarchical -filter {NAME =~*DVD_FF}]
-set_property IOB true [get_cells -hierarchical -filter {NAME =~*RER_FF}]
-set_property IOB true [get_cells -hierarchical -filter {NAME =~*TEN_FF}]
+#set_property IOB true [get_cells -hierarchical -filter {NAME =~*RX_FF_I}]
+#set_property IOB true [get_cells -hierarchical -filter {NAME =~*TX_FF_I}]
+#set_property IOB true [get_cells -hierarchical -filter {NAME =~*DVD_FF}]
+#set_property IOB true [get_cells -hierarchical -filter {NAME =~*RER_FF}]
+#set_property IOB true [get_cells -hierarchical -filter {NAME =~*TEN_FF}]
 
 
 ################################ Waivers #################################

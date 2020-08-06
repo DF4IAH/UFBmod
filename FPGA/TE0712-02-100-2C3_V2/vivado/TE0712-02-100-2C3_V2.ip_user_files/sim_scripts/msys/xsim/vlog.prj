@@ -217,10 +217,8 @@ verilog xil_defaultlib --include "../../../../TE0712-02-100-2C3_V2.srcs/sources_
 "../../../bd/msys/ip/msys_xlconcat_0_13/sim/msys_xlconcat_0_13.v" \
 "../../../bd/msys/ip/msys_fifo_generator_0_1/sim/msys_fifo_generator_0_1.v" \
 "../../../bd/msys/ip/msys_xlconcat_0_16/sim/msys_xlconcat_0_16.v" \
-"../../../bd/msys/ip/msys_xlconstant_0_24/sim/msys_xlconstant_0_24.v" \
 "../../../bd/msys/ip/msys_xlslice_0_39/sim/msys_xlslice_0_39.v" \
 "../../../bd/msys/ip/msys_xlslice_1_5/sim/msys_xlslice_1_5.v" \
-"../../../bd/msys/ip/msys_xlconstant_0_25/sim/msys_xlconstant_0_25.v" \
 "../../../bd/msys/ip/msys_xlconcat_0_17/sim/msys_xlconcat_0_17.v" \
 "../../../bd/msys/ip/msys_xlconstant_0_26/sim/msys_xlconstant_0_26.v" \
 "../../../bd/msys/ip/msys_tier2_xbar_0_0/sim/msys_tier2_xbar_0_0.v" \
@@ -228,7 +226,6 @@ verilog xil_defaultlib --include "../../../../TE0712-02-100-2C3_V2.srcs/sources_
 "../../../bd/msys/ip/msys_tier2_xbar_2_0/sim/msys_tier2_xbar_2_0.v" \
 "../../../bd/msys/ip/msys_auto_cc_0/sim/msys_auto_cc_0.v" \
 "../../../bd/msys/ip/msys_auto_pc_0/sim/msys_auto_pc_0.v" \
-"../../../bd/msys/ip/msys_auto_pc_1/sim/msys_auto_pc_1.v" \
 
 verilog xil_defaultlib "glbl.v"
 
