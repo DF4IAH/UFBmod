@@ -56,7 +56,7 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out1__25.00000______0.000______50.0______208.558____208.908
+// clk_out1_25MHz__25.00000______0.000______50.0______208.558____208.908
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -71,7 +71,7 @@ module msys_BOARD_clk_wiz_0_0
  (
   input         clkfb_in,
   // Clock out ports
-  output        clk_out1,
+  output        clk_out1_25MHz,
   output        clkfb_out,
  // Clock in ports
   input         clk_in1
@@ -81,7 +81,7 @@ module msys_BOARD_clk_wiz_0_0
   (
   .clkfb_in(clkfb_in),
   // Clock out ports  
-  .clk_out1(clk_out1),
+  .clk_out1_25MHz(clk_out1_25MHz),
   .clkfb_out(clkfb_out),
  // Clock in ports
   .clk_in1(clk_in1)

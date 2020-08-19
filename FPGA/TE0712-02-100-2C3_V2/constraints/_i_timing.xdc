@@ -1,4 +1,4 @@
-create_clock -period 15.152 -name CFGMCLK -waveform {0.000 7.576} [get_pins -hierarchical -filter {NAME =~*NO_DUAL_QUAD_MODE.QSPI_NORMAL/*STARTUP_7SERIES_GEN.STARTUP2_7SERIES_inst/CFGMCLK}]
+create_clock -period 15.384 -name CFGMCLK -waveform {0.000 7.692} [get_pins -hierarchical -filter {NAME =~*NO_DUAL_QUAD_MODE.QSPI_NORMAL/*STARTUP_7SERIES_GEN.STARTUP2_7SERIES_inst/CFGMCLK}]
 
 create_clock -period 10.000 -name {CLK0_clk_p[0]} -waveform {0.000 5.000} [get_ports {CLK0_clk_p[0]}]
 create_clock -period 20.000 -name {CLK1B_clk[0]} -waveform {0.000 10.000} [get_ports {CLK1B_clk[0]}]
@@ -18,9 +18,15 @@ set_multicycle_path -hold -from [get_pins {auto_LVDS_rotate_i/rot_val_reg[*]*/C}
 
 
 # CFGMCLK
-set_false_path -from [get_clocks CFGMCLK] -to [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT]]
-set_false_path -from [get_clocks CFGMCLK] -to [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKOUT5]]
-set_false_path -from [get_clocks CFGMCLK] -to [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKOUT6]]
+set_false_path -from [get_clocks CFGMCLK]                                                                 -to [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT]]
+set_false_path -from [get_clocks CFGMCLK]                                                                 -to [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKOUT1]]
+set_false_path -from [get_clocks CFGMCLK]                                                                 -to [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKOUT2]]
+set_false_path -from [get_clocks CFGMCLK]                                                                 -to [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKOUT3]]
+set_false_path -from [get_clocks CFGMCLK]                                                                 -to [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKOUT4]]
+set_false_path -from [get_clocks CFGMCLK]                                                                 -to [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKOUT5]]
+set_false_path -from [get_clocks CFGMCLK]                                                                 -to [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKOUT6]]
+set_false_path -from [get_clocks CFGMCLK]                                                                 -to [get_clocks -of_objects [get_pins msys_i/CLK1B_CW_0/CLK1B_clk_wiz_0/clk_out1_RMII]]
+set_false_path -from [get_clocks -of_objects [get_pins msys_i/CLK1B_CW_0/CLK1B_clk_wiz_0/clk_out1_RMII]]  -to [get_clocks CFGMCLK]
 
 
 # CLK0_clk
@@ -49,8 +55,8 @@ set_false_path -from [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_ms
 set_false_path -from [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT]] -to [get_clocks -of_objects [get_pins msys_i/TRX/TRX_LVDS/TRX_LVDS_selectio_wiz_0/inst/clk_div_out]]
 
 
-# SC0712_0
-set_false_path -from [get_pins {msys_i/SC0712_0/U0/rst_delay_i_reg[3]/C}] -to [get_pins -hierarchical -filter {NAME =~*u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/rstdiv0*/PRE}]
+# CFG/SC0712_0
+set_false_path -from [get_pins {msys_i/CFG/SC0712_0/U0/rst_delay_i_reg[3]/C}] -to [get_pins -hierarchical -filter {NAME =~*u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/rstdiv0*/PRE}]
 
 
 # phy_tx_clk

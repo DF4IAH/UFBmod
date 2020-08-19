@@ -108,6 +108,10 @@ ENTITY msys_microblaze_0_0 IS
     Dbg_Shift : IN STD_LOGIC;
     Dbg_Capture : IN STD_LOGIC;
     Dbg_Update : IN STD_LOGIC;
+    Dbg_Trig_In : OUT STD_LOGIC_VECTOR(0 TO 7);
+    Dbg_Trig_Ack_In : IN STD_LOGIC_VECTOR(0 TO 7);
+    Dbg_Trig_Out : IN STD_LOGIC_VECTOR(0 TO 7);
+    Dbg_Trig_Ack_Out : OUT STD_LOGIC_VECTOR(0 TO 7);
     Debug_Rst : IN STD_LOGIC;
     Dbg_Disable : IN STD_LOGIC;
     M_AXI_IC_AWID : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
@@ -887,6 +891,10 @@ ARCHITECTURE msys_microblaze_0_0_arch OF msys_microblaze_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF M_AXI_IC_AWID: SIGNAL IS "xilinx.com:interface:aximm:1.0 M_AXI_IC AWID";
   ATTRIBUTE X_INTERFACE_INFO OF Dbg_Disable: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG DISABLE";
   ATTRIBUTE X_INTERFACE_INFO OF Debug_Rst: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG RST";
+  ATTRIBUTE X_INTERFACE_INFO OF Dbg_Trig_Ack_Out: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG TRIG_ACK_OUT";
+  ATTRIBUTE X_INTERFACE_INFO OF Dbg_Trig_Out: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG TRIG_OUT";
+  ATTRIBUTE X_INTERFACE_INFO OF Dbg_Trig_Ack_In: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG TRIG_ACK_IN";
+  ATTRIBUTE X_INTERFACE_INFO OF Dbg_Trig_In: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG TRIG_IN";
   ATTRIBUTE X_INTERFACE_INFO OF Dbg_Update: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG UPDATE";
   ATTRIBUTE X_INTERFACE_INFO OF Dbg_Capture: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG CAPTURE";
   ATTRIBUTE X_INTERFACE_INFO OF Dbg_Shift: SIGNAL IS "xilinx.com:interface:mbdebug:3.0 DEBUG SHIFT";
@@ -1025,11 +1033,11 @@ BEGIN
       C_DYNAMIC_BUS_SIZING => 0,
       C_RESET_MSR => X"00000000",
       C_OPCODE_0x0_ILLEGAL => 0,
-      C_DEBUG_ENABLED => 1,
+      C_DEBUG_ENABLED => 2,
       C_DEBUG_INTERFACE => 0,
       C_NUMBER_OF_PC_BRK => 5,
-      C_NUMBER_OF_RD_ADDR_BRK => 0,
-      C_NUMBER_OF_WR_ADDR_BRK => 0,
+      C_NUMBER_OF_RD_ADDR_BRK => 1,
+      C_NUMBER_OF_WR_ADDR_BRK => 1,
       C_DEBUG_EVENT_COUNTERS => 5,
       C_DEBUG_LATENCY_COUNTERS => 1,
       C_DEBUG_COUNTER_WIDTH => 32,
@@ -1196,8 +1204,10 @@ BEGIN
       Dbg_Shift => Dbg_Shift,
       Dbg_Capture => Dbg_Capture,
       Dbg_Update => Dbg_Update,
-      Dbg_Trig_Ack_In => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 8)),
-      Dbg_Trig_Out => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 8)),
+      Dbg_Trig_In => Dbg_Trig_In,
+      Dbg_Trig_Ack_In => Dbg_Trig_Ack_In,
+      Dbg_Trig_Out => Dbg_Trig_Out,
+      Dbg_Trig_Ack_Out => Dbg_Trig_Ack_Out,
       Dbg_Trace_Clk => '0',
       Dbg_Trace_Ready => '0',
       Debug_Rst => Debug_Rst,

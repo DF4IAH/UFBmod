@@ -1,0 +1,24 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"2.0",
+   "Default View_TopLeft":"-590,-316",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port TRX_clk_26MHz -pg 1 -lvl 0 -x -40 -y 60 -defaultsOSRD
+preplace port clk_out2_50MHz_cfgeclk -pg 1 -lvl 3 -x 550 -y -10 -defaultsOSRD
+preplace portBus TRX_PLL_clk_25MHz_N -pg 1 -lvl 3 -x 550 -y 70 -defaultsOSRD
+preplace portBus TRX_PLL_clk_25MHz_P -pg 1 -lvl 3 -x 550 -y 40 -defaultsOSRD
+preplace inst TRX_PLL_clk_wiz_0 -pg 1 -lvl 1 -x 120 -y 70 -defaultsOSRD
+preplace inst TRX_PLL_util_ds_buf_0 -pg 1 -lvl 2 -x 400 -y 60 -defaultsOSRD
+preplace netloc TRX_clk_wiz_0_clkfb_out 1 0 2 -20 150 260
+preplace netloc TRX_clk_26MHz_1 1 0 1 N 60
+preplace netloc TRX_PLL_util_ds_buf_0_OBUF_DS_N 1 2 1 NJ 70
+preplace netloc TRX_PLL_util_ds_buf_0_OBUF_DS_P 1 2 1 530J 40n
+preplace netloc TRX_PLL_clk_wiz_0_clk_out1_25MHz 1 1 1 260 50n
+preplace netloc TRX_PLL_clk_wiz_0_clk_out2_50MHz_cfgeclk 1 1 2 270J -10 NJ
+levelinfo -pg 1 -40 120 400 550
+pagesize -pg 1 -db -bbox -sgen -190 -30 770 160
+"
+}
+0

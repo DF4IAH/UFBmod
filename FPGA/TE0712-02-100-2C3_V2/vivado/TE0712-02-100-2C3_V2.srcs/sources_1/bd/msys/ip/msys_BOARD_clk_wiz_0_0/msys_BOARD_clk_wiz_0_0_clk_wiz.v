@@ -56,7 +56,7 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out1__25.00000______0.000______50.0______208.558____208.908
+// clk_out1_25MHz__25.00000______0.000______50.0______208.558____208.908
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -70,7 +70,7 @@ module msys_BOARD_clk_wiz_0_0_clk_wiz
  (// Clock in ports
   input         clkfb_in,
   // Clock out ports
-  output        clk_out1,
+  output        clk_out1_25MHz,
   output        clkfb_out,
   input         clk_in1
  );
@@ -92,8 +92,8 @@ wire clk_in2_msys_BOARD_clk_wiz_0_0;
   //    * Unused inputs are tied off
   //    * Unused outputs are labeled unused
 
-  wire        clk_out1_msys_BOARD_clk_wiz_0_0;
-  wire        clk_out2_msys_BOARD_clk_wiz_0_0;
+  wire        clk_out1_25MHz_msys_BOARD_clk_wiz_0_0;
+  wire        clk_out2_50MHz_cfgeclk_msys_BOARD_clk_wiz_0_0;
   wire        clk_out3_msys_BOARD_clk_wiz_0_0;
   wire        clk_out4_msys_BOARD_clk_wiz_0_0;
   wire        clk_out5_msys_BOARD_clk_wiz_0_0;
@@ -130,7 +130,7 @@ wire clk_in2_msys_BOARD_clk_wiz_0_0;
     // Output clocks
    (
     .CLKFBOUT            (clkfbout_msys_BOARD_clk_wiz_0_0),
-    .CLKOUT0             (clk_out1_msys_BOARD_clk_wiz_0_0),
+    .CLKOUT0             (clk_out1_25MHz_msys_BOARD_clk_wiz_0_0),
     .CLKOUT1             (clkout1_unused),
     .CLKOUT2             (clkout2_unused),
     .CLKOUT3             (clkout3_unused),
@@ -168,8 +168,8 @@ wire clk_in2_msys_BOARD_clk_wiz_0_0;
 
 
   BUFG clkout1_buf
-   (.O   (clk_out1),
-    .I   (clk_out1_msys_BOARD_clk_wiz_0_0));
+   (.O   (clk_out1_25MHz),
+    .I   (clk_out1_25MHz_msys_BOARD_clk_wiz_0_0));
 
 
 

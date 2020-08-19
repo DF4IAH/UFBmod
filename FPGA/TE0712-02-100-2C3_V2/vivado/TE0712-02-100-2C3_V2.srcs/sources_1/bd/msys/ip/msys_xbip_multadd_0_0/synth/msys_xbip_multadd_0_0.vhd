@@ -105,11 +105,11 @@ ARCHITECTURE msys_xbip_multadd_0_0_arch OF msys_xbip_multadd_0_0 IS
     );
   END COMPONENT xbip_multadd_v3_0_15;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF msys_xbip_multadd_0_0_arch: ARCHITECTURE IS "xbip_multadd_v3_0_15,Vivado 2020.1";
+  ATTRIBUTE X_CORE_INFO OF msys_xbip_multadd_0_0_arch: ARCHITECTURE IS "xbip_multadd_v3_0_15,Vivado 2020.1.1";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF msys_xbip_multadd_0_0_arch : ARCHITECTURE IS "msys_xbip_multadd_0_0,xbip_multadd_v3_0_15,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF msys_xbip_multadd_0_0_arch: ARCHITECTURE IS "msys_xbip_multadd_0_0,xbip_multadd_v3_0_15,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xbip_multadd,x_ipVersion=3.0,x_ipCoreRevision=15,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_VERBOSITY=0,C_XDEVICEFAMILY=artix7,C_A_WIDTH=13,C_B_WIDTH=8,C_C_WIDTH=1,C_A_TYPE=0,C_B_TYPE=1,C_C_TYPE=1,C_CE_OVERRIDES_SCLR=0,C_AB_LATENCY=-1,C_C_LATENCY=-1,C_OUT_HIGH=20,C_OUT_LOW=0,C_USE_PCIN=0,C_TEST_CORE=0}";
+  ATTRIBUTE CORE_GENERATION_INFO OF msys_xbip_multadd_0_0_arch: ARCHITECTURE IS "msys_xbip_multadd_0_0,xbip_multadd_v3_0_15,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xbip_multadd,x_ipVersion=3.0,x_ipCoreRevision=15,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_VERBOSITY=0,C_XDEVICEFAMILY=artix7,C_A_WIDTH=13,C_B_WIDTH=8,C_C_WIDTH=1,C_A_TYPE=0,C_B_TYPE=1,C_C_TYPE=1,C_CE_OVERRIDES_SCLR=0,C_AB_LATENCY=-1,C_C_LATENCY=-1,C_OUT_HIGH=20,C_OUT_LOW=0,C_USE_PCIN=0,C_TEST_CORE=0}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF PCOUT: SIGNAL IS "XIL_INTERFACENAME pcout_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} " & 

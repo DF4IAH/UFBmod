@@ -110,11 +110,11 @@ ARCHITECTURE msys_mii_to_rmii_0_0_arch OF msys_mii_to_rmii_0_0 IS
     );
   END COMPONENT mii_to_rmii;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF msys_mii_to_rmii_0_0_arch: ARCHITECTURE IS "mii_to_rmii,Vivado 2020.1";
+  ATTRIBUTE X_CORE_INFO OF msys_mii_to_rmii_0_0_arch: ARCHITECTURE IS "mii_to_rmii,Vivado 2020.1.1";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF msys_mii_to_rmii_0_0_arch : ARCHITECTURE IS "msys_mii_to_rmii_0_0,mii_to_rmii,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF msys_mii_to_rmii_0_0_arch: ARCHITECTURE IS "msys_mii_to_rmii_0_0,mii_to_rmii,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=mii_to_rmii,x_ipVersion=2.0,x_ipCoreRevision=20,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_INSTANCE=msys_mii_to_rmii_0_0,C_FIXED_SPEED=1,C_INCLUDE_BUF=0,C_SPEED_100=1,C_FAMILY=artix7}";
+  ATTRIBUTE CORE_GENERATION_INFO OF msys_mii_to_rmii_0_0_arch: ARCHITECTURE IS "msys_mii_to_rmii_0_0,mii_to_rmii,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=mii_to_rmii,x_ipVersion=2.0,x_ipCoreRevision=20,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_INSTANCE=msys_mii_to_rmii_0_0,C_FIXED_SPEED=1,C_INCLUDE_BUF=0,C_SPEED_100=1,C_FAMILY=artix7}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF rmii2phy_tx_en: SIGNAL IS "xilinx.com:interface:rmii:1.0 RMII_PHY_M TX_EN";

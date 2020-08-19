@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Product Version: Vivado v2020.1 (64-bit)                     -->
+<!-- Product Version: Vivado v2020.1.1 (64-bit)                   -->
 <!--                                                              -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.        -->
 
@@ -22,27 +22,29 @@
     <Object name="xc7a100t_0" gui_info="">
       <Properties Property="FULL_PROBES.FILE" value="$_project_name_.runs/impl_1/msys_wrapper.ltx"/>
       <Properties Property="PROBES.FILE" value="$_project_name_.runs/impl_1/msys_wrapper.ltx"/>
-      <Properties Property="PROGRAM.HW_BITSTREAM" value=""/>
+      <Properties Property="PROGRAM.HW_BITSTREAM" value="$_project_name_.runs/impl_1/msys_wrapper.bit"/>
       <Properties Property="PROGRAM.HW_CFGMEM_PART" value="s25fl256sxxxxxx0-spi-x1_x2_x4"/>
       <Properties Property="SLR.COUNT" value="1"/>
     </Object>
   </ObjectList>
   <ObjectList object_type="hw_probe" gui_info="">
     <Object name="msys_i/BOARD_ROTENC_PUSH_1" gui_info="hw_vios/hw_vio_1=19"/>
+    <Object name="msys_i/CFG_mon_GPIO1_I[31:0]" gui_info="hw_vios/hw_vio_1=1"/>
+    <Object name="msys_i/CFG_mon_GPIO1_O[31:0]" gui_info="hw_vios/hw_vio_1=0"/>
     <Object name="msys_i/CLK1B_CW_0_psdone" gui_info="hw_vios/hw_vio_1=13"/>
     <Object name="msys_i/ETH0_LEDs_MF_Q_vio_0[22:0]" gui_info="hw_vios/hw_vio_1=29"/>
-    <Object name="msys_i/ETH0_LEDstatus_0[3:0]" gui_info="hw_vios/hw_vio_1=21_exp"/>
-    <Object name="msys_i/ETH0_MIIstatus_0[4:0]" gui_info="hw_vios/hw_vio_1=22_exp"/>
+    <Object name="msys_i/ETH0_LEDstatus_0[3:0]" gui_info="hw_vios/hw_vio_1=21"/>
+    <Object name="msys_i/ETH0_MIIstatus_0[4:0]" gui_info="hw_vios/hw_vio_1=22"/>
     <Object name="msys_i/ETH0_Q[22:0]" gui_info="hw_vios/hw_vio_1=29"/>
     <Object name="msys_i/ETH0_Q[3:0]" gui_info="hw_vios/hw_vio_1=33"/>
     <Object name="msys_i/ETH0_m_mii_tx_er" gui_info="hw_vios/hw_vio_1=39"/>
     <Object name="msys_i/ETH0_m_mii_txd[3:0]" gui_info="hw_vios/hw_vio_1=38"/>
-    <Object name="msys_i/ETH0_m_mii_txd_0[3:0]" gui_info="hw_vios/hw_vio_1=24_exp"/>
+    <Object name="msys_i/ETH0_m_mii_txd_0[3:0]" gui_info="hw_vios/hw_vio_1=24"/>
     <Object name="msys_i/ETH0_s_mii_col" gui_info="hw_vios/hw_vio_1=36"/>
     <Object name="msys_i/ETH0_s_mii_crs" gui_info="hw_vios/hw_vio_1=37"/>
     <Object name="msys_i/ETH0_s_mii_rx_er" gui_info="hw_vios/hw_vio_1=35"/>
     <Object name="msys_i/ETH0_s_mii_rxd[3:0]" gui_info="hw_vios/hw_vio_1=34"/>
-    <Object name="msys_i/ETH0_s_mii_rxd_0[3:0]" gui_info="hw_vios/hw_vio_1=23_exp"/>
+    <Object name="msys_i/ETH0_s_mii_rxd_0[3:0]" gui_info="hw_vios/hw_vio_1=23"/>
     <Object name="msys_i/ETH_vio_0[2:0]" gui_info="hw_vios/hw_vio_1=28_exp"/>
     <Object name="msys_i/EUI48_EUI48_FSM_start" gui_info="hw_vios/hw_vio_1=14"/>
     <Object name="msys_i/EUI48_FSM_run_1" gui_info="hw_vios/hw_vio_1=15"/>
@@ -55,7 +57,7 @@
     <Object name="msys_i/ROTENC_decoder_dout[2:0]" gui_info="hw_vios/hw_vio_1=25"/>
     <Object name="msys_i/SC0712_0_mon_GPIO1_I[31:0]" gui_info="hw_vios/hw_vio_1=1"/>
     <Object name="msys_i/SC0712_0_mon_GPIO1_O[31:0]" gui_info="hw_vios/hw_vio_1=2"/>
-    <Object name="msys_i/SC0712_0_reset_out" gui_info="hw_vios/hw_vio_1=0"/>
+    <Object name="msys_i/SC0712_0_reset_out" gui_info="hw_vios/hw_vio_1=2"/>
     <Object name="msys_i/TRX_rd_data_count_CD100[8:0]" gui_info="hw_vios/hw_vio_1=25"/>
     <Object name="msys_i/TRX_rx09_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=26"/>
     <Object name="msys_i/TRX_rx24_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=31"/>
@@ -102,6 +104,98 @@
       </probeOptions>
       <nets>
         <net name="msys_i/BOARD_ROTENC_PUSH_1"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/CFG_mon_GPIO1_I[31]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[30]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[29]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[28]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[27]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[26]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[25]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[24]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[23]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[22]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[21]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[20]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[19]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[18]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[17]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[16]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[15]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[14]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[13]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[12]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[11]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[10]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[9]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[8]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[7]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[6]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[5]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[4]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[3]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[2]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[1]"/>
+        <net name="msys_i/CFG_mon_GPIO1_I[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/CFG_mon_GPIO1_O[31]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[30]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[29]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[28]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[27]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[26]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[25]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[24]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[23]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[22]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[21]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[20]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[19]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[18]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[17]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[16]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[15]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[14]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[13]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[12]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[11]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[10]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[9]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[8]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[7]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[6]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[5]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[4]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[3]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[2]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[1]"/>
+        <net name="msys_i/CFG_mon_GPIO1_O[0]"/>
       </nets>
     </probe>
     <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
@@ -628,7 +722,7 @@
         <net name="msys_i/ROTENC_decoder_dout[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -674,7 +768,7 @@
         <net name="msys_i/SC0712_0_mon_GPIO1_I[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>

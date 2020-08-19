@@ -117,7 +117,7 @@ ARCHITECTURE msys_labtools_fmeter_0_0_arch OF msys_labtools_fmeter_0_0 IS
     );
   END COMPONENT labtools_fmeter;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF msys_labtools_fmeter_0_0_arch: ARCHITECTURE IS "labtools_fmeter,Vivado 2020.1";
+  ATTRIBUTE X_CORE_INFO OF msys_labtools_fmeter_0_0_arch: ARCHITECTURE IS "labtools_fmeter,Vivado 2020.1.1";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF msys_labtools_fmeter_0_0_arch : ARCHITECTURE IS "msys_labtools_fmeter_0_0,labtools_fmeter,{}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;

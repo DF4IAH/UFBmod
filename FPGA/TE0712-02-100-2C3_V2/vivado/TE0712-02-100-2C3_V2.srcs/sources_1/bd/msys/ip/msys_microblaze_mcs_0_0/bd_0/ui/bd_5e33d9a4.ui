@@ -1,0 +1,43 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-1319,-736",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS-threadsafe
+#  -string -flagsOSRD
+preplace port GPIO1 -pg 1 -lvl 6 -x 1560 -y 350 -defaultsOSRD
+preplace port Clk -pg 1 -lvl 0 -x 0 -y 330 -defaultsOSRD
+preplace port Reset -pg 1 -lvl 0 -x 0 -y 350 -defaultsOSRD
+preplace inst microblaze_I -pg 1 -lvl 2 -x 590 -y 470 -defaultsOSRD
+preplace inst rst_0 -pg 1 -lvl 1 -x 190 -y 370 -defaultsOSRD
+preplace inst ilmb -pg 1 -lvl 3 -x 930 -y 500 -defaultsOSRD
+preplace inst dlmb -pg 1 -lvl 3 -x 930 -y 330 -defaultsOSRD
+preplace inst dlmb_cntlr -pg 1 -lvl 4 -x 1190 -y 70 -defaultsOSRD
+preplace inst ilmb_cntlr -pg 1 -lvl 4 -x 1190 -y 210 -defaultsOSRD
+preplace inst lmb_bram_I -pg 1 -lvl 5 -x 1420 -y 200 -defaultsOSRD
+preplace inst second_dlmb_cntlr -pg 1 -lvl 4 -x 1190 -y 490 -defaultsOSRD
+preplace inst second_ilmb_cntlr -pg 1 -lvl 4 -x 1190 -y 630 -defaultsOSRD
+preplace inst second_lmb_bram_I -pg 1 -lvl 5 -x 1420 -y 500 -defaultsOSRD
+preplace inst iomodule_0 -pg 1 -lvl 4 -x 1190 -y 350 -defaultsOSRD
+preplace netloc Clk2 1 0 4 20 470 380 340 820 410 1060
+preplace netloc Reset 1 0 1 NJ 350
+preplace netloc MB_Reset 1 1 1 370 330n
+preplace netloc LMB_Rst2 1 1 3 N 350 800 420 1070
+preplace netloc IO_Rst 1 1 3 360 250 NJ 250 1080J
+preplace netloc ilmb 1 2 1 N 480
+preplace netloc dlmb 1 2 1 810 310n
+preplace netloc ilmb_sl_0 1 3 1 1040 190n
+preplace netloc dlmb_sl_0 1 3 1 1050 50n
+preplace netloc dlmb_sl_1 1 3 1 N 330
+preplace netloc ilmb_port 1 4 1 N 210
+preplace netloc dlmb_port 1 4 1 1300 70n
+preplace netloc ilmb_sl_1 1 3 1 1040 510n
+preplace netloc dlmb_sl_2 1 3 1 1050 350n
+preplace netloc ilmb_port_2 1 4 1 1300 510n
+preplace netloc dlmb_port_2 1 4 1 N 490
+preplace netloc iomodule_0_GPIO1 1 4 2 NJ 350 NJ
+levelinfo -pg 1 0 190 590 930 1190 1420 1560
+pagesize -pg 1 -db -bbox -sgen -90 0 1650 700
+"
+}
+

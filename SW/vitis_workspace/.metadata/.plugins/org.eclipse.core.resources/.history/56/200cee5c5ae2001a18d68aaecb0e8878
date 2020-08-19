@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="boot_pll" location="C:/Users/espero/git/UFBmod/SW/vitis_workspace/boot_pll" platform="C:/Users/espero/git/UFBmod/SW/vitis_workspace/mb0_boot/export/mb0_boot/mb0_boot.xpfm" platformUID="xilinx:te0712_100_2c::0.0(custom)" systemProject="boot_pll_system" sysConfig="mb0_boot" runtime="C/C++" cpu="standalone_domain" cpuInstance="BOOT_PLL_BOOT_PLL_microblaze_0" os="standalone" mssSignature="15bc4074a3785a28829a0cf8f9cf6a04">
+  <configuration name="Debug" id="xilinx.gnu.mb.exe.debug.1889359974">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.mb.exe.release.985166069" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>

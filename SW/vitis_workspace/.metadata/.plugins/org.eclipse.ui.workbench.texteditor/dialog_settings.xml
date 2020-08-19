@@ -2,12 +2,17 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="ARP_PACKET_SIZE" key="selection"/>
+		<item value="nop" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="nop"/>
+			<item value="asm"/>
+			<item value="ssert"/>
+			<item value="for"/>
+			<item value="XIic"/>
 			<item value="ARP_PACKET_SIZE"/>
 			<item value="htons"/>
 			<item value="NextTxBuffBaseAddr"/>
@@ -18,11 +23,6 @@
 			<item value="Lookup"/>
 			<item value="Config"/>
 			<item value="owreadEUI48"/>
-			<item value="EUI48_BYTE_LEN"/>
-			<item value="owTestDelay"/>
-			<item value="gpio_PWM_Lights"/>
-			<item value="ow_EUI48"/>
-			<item value="output"/>
 		</list>
 		<list key="replacehistory">
 		</list>

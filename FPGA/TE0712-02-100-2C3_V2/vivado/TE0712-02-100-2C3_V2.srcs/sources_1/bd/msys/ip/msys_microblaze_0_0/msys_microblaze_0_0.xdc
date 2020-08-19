@@ -179,3 +179,120 @@ create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -i
 create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
   -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/*Debug_Control.dbg_stop_instr_fetch_nohalt_reg/C] \
   -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Serial_Dbg_Intf.sync_stop_CPU/Single_Synchronize.use_async_reset.sync_reg/D]
+
+# Waivers for debug trace
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Embedded_Trace.Serial_Dbg_Intf.data_read_reg_cs_TCK_reg/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Embedded_Trace.Serial_Dbg_Intf.data_read_reg_reg\[*\]/CE]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.status_reg_reg\[*\]/CE]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.command_reg_reg\[*\]/CE]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.control_reg_reg\[*\]/CE]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/status_count_reg\[*\]/C] \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.status_reg_reg\[*\]/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/cc_overflow_reg/C] \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.sync_cc_overflow/Single_Synchronize.use_async_reset.sync_reg/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.started_i_reg/C] \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.sync_started/Single_Synchronize.use_async_reset.sync_reg/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.control_reg_reg\[*\]/C]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.status_reg_reg\[*\]/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-10 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.control_reg_reg\[*\]/C] \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.sync_sample/sync_bits\[*\].sync_bit/Synchronize.use_sync_reset.sync_reg\[1\]/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.command_reg_reg\[*\]/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.control_reg_reg\[*\]/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.control_reg_reg\[*\]/C]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-10 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Using_PC_Breakpoints.All_PC_Brks\[*\].*/Compare\[*\].*/*/CLK] \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.sync_sample/sync_bits\[*\].sync_bit/Synchronize.use_sync_reset.sync_reg\[1\]/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Embedded_Trace.Serial_Dbg_Intf.data_read_reg_cs_TCK_reg/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-2 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.control_reg_reg\[*\]/C] \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Embedded_Trace.trace_wr_reg/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-4 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Embedded_Trace.rddata_reg\[*\]/C] \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Embedded_Trace.Serial_Dbg_Intf.data_read_reg_reg\[*\]/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-10 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Serial_Dbg_Intf.control_reg_reg\[*\]/C] \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Trace.Debug_Trace_I/Embedded_Trace.trace_wr_reg/D]
+
+# Waivers for debug statistics counters
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.data_read_reg_reg\[*\]/*]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.data_read_select_reg\[*\]/CE]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.status_reg_reg\[*\]/CE]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.status_select_reg\[*\]/CE]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.command_reg_reg\[*\]/CE]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.control_incr_TClk_reg/CE]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.control_reg_reg\[*\]/CE]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.data_write_TClk_reg/CE]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-1 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.data_write_reg_reg\[*\]/CE]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-4 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.status_reg_reg\[*\]/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-7 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.data_read_*_reg\[*\]/CLR]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-7 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.status_*_reg\[*\]/CLR]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-7 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.command_reg_reg\[*\]/CLR]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-7 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.control_incr_TClk_reg/CLR]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-7 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.control_reg_reg\[*\]/CLR]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-7 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.data_write_TClk_reg/CLR]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-7 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.data_write_reg_reg\[*\]/CLR]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.command_reg_reg\[*\]/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.control_incr_TClk_reg/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.control_reg_reg\[*\]/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.data_write_TClk_reg/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.data_write_reg_reg\[*\]/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.command_reg_clear_reg/C] \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.command_reg_reg\[*\]/CLR]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.reset_cmd_reg/C] \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.*/CLR]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/*_rst_reg/C] \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.*/CLR]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.control_reg_reg\[*\]/C] \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/stat_select_reg\[*\]\[*\]/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -from [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.data_write_reg_reg\[*\]/C] \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/all_statistics_counters\[*\].*/*/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.data_read_reg_reg\[*\]/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.status_reg_reg\[*\]/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.data_read_select_reg\[*\]/D]
+create_waiver -internal -quiet -scoped -user microblaze -tags 12436 -type CDC -id CDC-15 -description "Debug protocol ensures stable signals" \
+  -to   [get_pins -quiet MicroBlaze_Core_I/*.Core/*Debug_Logic.Master_Core.Debug*/Use_Statistics.Debug_Stat_I/Serial_Dbg_Intf.status_select_reg\[*\]/D]
