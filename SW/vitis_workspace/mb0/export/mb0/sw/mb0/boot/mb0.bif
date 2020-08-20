@@ -1,6 +1,0 @@
-/*mb0*/
-the_ROM_image:
-{
-   <bitstream> 
-   <elf> 
-}

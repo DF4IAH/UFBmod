@@ -1,0 +1,6 @@
+/*TE0712_02_DF4IAH*/
+the_ROM_image:
+{
+   <bitstream> 
+   <elf> 
+}
