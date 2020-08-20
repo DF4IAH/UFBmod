@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<systemproject:SystemProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdsproject="http://www.xilinx.com/sdsproject" xmlns:systemproject="http://www.xilinx.com/systemproject" name="boot_pll_system" platform="C:/Users/espero/git/UFBmod/SW/vitis_workspace/mb0_boot/export/mb0_boot/mb0_boot.xpfm" platformUID="xilinx:te0712_100_2c::0.0(custom)" sysConfig="mb0_boot" runtime="C/C++" rootFSLocation="" linuxImage="" sysroot="">
+  <configuration name="Debug">
+    <configBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="boot_pll" domainName="standalone_domain" domainPrettyName="standalone_domain" appBuildConfig="Debug"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </configBuildOptions>
+    <lastBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="boot_pll" domainName="standalone_domain" domainPrettyName="standalone_domain" appBuildConfig="Debug"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </lastBuildOptions>
+  </configuration>
+  <configuration name="Release">
+    <configBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="boot_pll" domainName="standalone_domain" domainPrettyName="standalone_domain" appBuildConfig="Release"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </configBuildOptions>
+    <lastBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="boot_pll" domainName="standalone_domain" domainPrettyName="standalone_domain" appBuildConfig="Release"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </lastBuildOptions>
+  </configuration>
+</systemproject:SystemProject>

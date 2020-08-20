@@ -41,7 +41,6 @@
 #include "xgpio_l.h"
 #include "xiic.h"
 #include "xil_io.h"
-#include "xil_printf.h"
 
 #include "Si5338-RevB-Registers.h"
 
@@ -176,19 +175,16 @@ int IicLowLevelSi5338(void)
 	static u8 s_pad = 0U;
 	static unsigned int status = 0U;
 
-	//xil_printf("\r\nSi5338 reading current settings:\r\n");
-
 	/* Check read from PLL chip */
 	for (u16 idx = 0000U; idx < NUM_REGS_MAX; ++idx) {
 		u8 iicRegister 	= Reg_Store[idx].Reg_Addr;
 
 		status = iicRead(IIC_BASE_ADDRESS, SI5338_ADDRESS, iicRegister, &s_pad);
 		(void) status;
-		//xil_printf("Reg-Adr = %03d --> peek: 0x%02x, status = %d\r\n", iicRegister, s_pad, status);
+
 		asm volatile ("nop              \n\t");
 	}
 
-	//xil_printf("*** DONE ***\r\n");
 	asm volatile ("nop              \n\t");
 
 	while (1)

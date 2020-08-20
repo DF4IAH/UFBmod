@@ -625,7 +625,7 @@
 /******************************************************************/
 
 /* Definitions for driver GPIO */
-#define XPAR_XGPIO_NUM_INSTANCES 9
+#define XPAR_XGPIO_NUM_INSTANCES 10
 
 /* Definitions for peripheral EUI48_AXI_EUI48_GPIO_0 */
 #define XPAR_EUI48_AXI_EUI48_GPIO_0_BASEADDR 0x40010000
@@ -699,6 +699,14 @@
 #define XPAR_SCOPE_SCOPE_AXI_GPIO_1_IS_DUAL 1
 
 
+/* Definitions for peripheral CLOCK_AXI_GPIO_0 */
+#define XPAR_CLOCK_AXI_GPIO_0_BASEADDR 0x40090000
+#define XPAR_CLOCK_AXI_GPIO_0_HIGHADDR 0x4009FFFF
+#define XPAR_CLOCK_AXI_GPIO_0_DEVICE_ID 9
+#define XPAR_CLOCK_AXI_GPIO_0_INTERRUPT_PRESENT 0
+#define XPAR_CLOCK_AXI_GPIO_0_IS_DUAL 1
+
+
 /******************************************************************/
 
 /* Canonical definitions for peripheral EUI48_AXI_EUI48_GPIO_0 */
@@ -763,6 +771,13 @@
 #define XPAR_GPIO_8_DEVICE_ID XPAR_SCOPE_SCOPE_AXI_GPIO_1_DEVICE_ID
 #define XPAR_GPIO_8_INTERRUPT_PRESENT 0
 #define XPAR_GPIO_8_IS_DUAL 1
+
+/* Canonical definitions for peripheral CLOCK_AXI_GPIO_0 */
+#define XPAR_GPIO_9_BASEADDR 0x40090000
+#define XPAR_GPIO_9_HIGHADDR 0x4009FFFF
+#define XPAR_GPIO_9_DEVICE_ID XPAR_CLOCK_AXI_GPIO_0_DEVICE_ID
+#define XPAR_GPIO_9_INTERRUPT_PRESENT 0
+#define XPAR_GPIO_9_IS_DUAL 1
 
 
 /******************************************************************/
