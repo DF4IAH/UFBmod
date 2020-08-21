@@ -10,9 +10,9 @@
 
 <MemInfoSimulation Version="1" Minor="1">
   <Processor Endianness="Little" InstPath="msys_wrapper_i/msys_i/BOOT_PLL/BOOT_PLL_microblaze_0">
-    <AddressSpace Name="msys_wrapper_i_msys_i_BOOT_PLL_BOOT_PLL_microblaze_0.msys_wrapper_i_msys_i_BOOT_PLL_BOOT_PLL_Local_BRAM_blk_mem_gen_0_ADDR_SPACE" ECC="NONE" Begin="0" End="16383">
+    <AddressSpace Name="msys_wrapper_i_msys_i_BOOT_PLL_BOOT_PLL_microblaze_0.msys_wrapper_i_msys_i_BOOT_PLL_BOOT_PLL_Local_BRAM_blk_mem_gen_0_16K_1_ADDR_SPACE" ECC="NONE" Begin="0" End="16383">
       <BusBlock>
-        <BitLane MemType="BOOT_PLL_BOOT_PLL_Local_BRAM_blk_mem_gen_0_MEM_DEVICE" MemType_DataWidth="32" MemType_AddressDepth="16383">
+        <BitLane MemType="BOOT_PLL_BOOT_PLL_Local_BRAM_blk_mem_gen_0_16K_1_MEM_DEVICE" MemType_DataWidth="32" MemType_AddressDepth="16383">
           <DataWidth MSB="31" LSB="0"/>
           <AddressRange Begin="0" End="4095"/>
           <Parity ON="false" NumBits="0"/>
@@ -22,11 +22,11 @@
     </AddressSpace>
   </Processor>
   <Processor Endianness="Little" InstPath="msys_wrapper_i/msys_i/microblaze_0">
-    <AddressSpace Name="msys_wrapper_i_msys_i_microblaze_0.msys_wrapper_i_msys_i_microblaze_0_local_memory_lmb_bram_ADDR_SPACE" ECC="NONE" Begin="0" End="262143">
+    <AddressSpace Name="msys_wrapper_i_msys_i_microblaze_0.msys_wrapper_i_msys_i_microblaze_0_local_memory_lmb_bram_16K_1_ADDR_SPACE" ECC="NONE" Begin="0" End="16383">
       <BusBlock>
-        <BitLane MemType="microblaze_0_local_memory_lmb_bram_MEM_DEVICE" MemType_DataWidth="32" MemType_AddressDepth="262143">
+        <BitLane MemType="microblaze_0_local_memory_lmb_bram_16K_1_MEM_DEVICE" MemType_DataWidth="32" MemType_AddressDepth="16383">
           <DataWidth MSB="31" LSB="0"/>
-          <AddressRange Begin="0" End="65535"/>
+          <AddressRange Begin="0" End="4095"/>
           <Parity ON="false" NumBits="0"/>
           <MemFile Name="msys_lmb_bram_0.mem"/>
         </BitLane>
