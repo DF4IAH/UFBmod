@@ -57,6 +57,8 @@
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
 // clk_out1_25MHz__25.00000______0.000______50.0______208.558____208.908
+// clk_trx_26MHz_vio__26.00000______0.000______50.0______206.498____208.908
+// clk_trx_pll_25MHz_vio__25.00000______0.000______50.0______208.558____208.908
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -71,6 +73,8 @@ module msys_BOARD_clk_wiz_0_0_clk_wiz
   input         clkfb_in,
   // Clock out ports
   output        clk_out1_25MHz,
+  output        clk_trx_26MHz_vio,
+  output        clk_trx_pll_25MHz_vio,
   output        clkfb_out,
   input         clk_in1
  );
@@ -93,8 +97,8 @@ wire clk_in2_msys_BOARD_clk_wiz_0_0;
   //    * Unused outputs are labeled unused
 
   wire        clk_out1_25MHz_msys_BOARD_clk_wiz_0_0;
-  wire        clk_out2_50MHz_cfgeclk_msys_BOARD_clk_wiz_0_0;
-  wire        clk_out3_msys_BOARD_clk_wiz_0_0;
+  wire        clk_trx_26MHz_vio_msys_BOARD_clk_wiz_0_0;
+  wire        clk_trx_pll_25MHz_vio_msys_BOARD_clk_wiz_0_0;
   wire        clk_out4_msys_BOARD_clk_wiz_0_0;
   wire        clk_out5_msys_BOARD_clk_wiz_0_0;
   wire        clk_out6_msys_BOARD_clk_wiz_0_0;
@@ -106,8 +110,6 @@ wire clk_in2_msys_BOARD_clk_wiz_0_0;
   wire        locked_int;
   wire        clkfbout_msys_BOARD_clk_wiz_0_0;
   wire        clkfboutb_unused;
-   wire clkout1_unused;
-   wire clkout2_unused;
    wire clkout3_unused;
    wire clkout4_unused;
   wire        clkout5_unused;
@@ -125,14 +127,20 @@ wire clk_in2_msys_BOARD_clk_wiz_0_0;
     .CLKOUT0_DIVIDE       (52),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
+    .CLKOUT1_DIVIDE       (50),
+    .CLKOUT1_PHASE        (0.000),
+    .CLKOUT1_DUTY_CYCLE   (0.500),
+    .CLKOUT2_DIVIDE       (52),
+    .CLKOUT2_PHASE        (0.000),
+    .CLKOUT2_DUTY_CYCLE   (0.500),
     .CLKIN1_PERIOD        (38.462))
   plle2_adv_inst
     // Output clocks
    (
     .CLKFBOUT            (clkfbout_msys_BOARD_clk_wiz_0_0),
     .CLKOUT0             (clk_out1_25MHz_msys_BOARD_clk_wiz_0_0),
-    .CLKOUT1             (clkout1_unused),
-    .CLKOUT2             (clkout2_unused),
+    .CLKOUT1             (clk_trx_26MHz_vio_msys_BOARD_clk_wiz_0_0),
+    .CLKOUT2             (clk_trx_pll_25MHz_vio_msys_BOARD_clk_wiz_0_0),
     .CLKOUT3             (clkout3_unused),
     .CLKOUT4             (clkout4_unused),
     .CLKOUT5             (clkout5_unused),
@@ -171,6 +179,14 @@ wire clk_in2_msys_BOARD_clk_wiz_0_0;
    (.O   (clk_out1_25MHz),
     .I   (clk_out1_25MHz_msys_BOARD_clk_wiz_0_0));
 
+
+  BUFG clkout2_buf
+   (.O   (clk_trx_26MHz_vio),
+    .I   (clk_trx_26MHz_vio_msys_BOARD_clk_wiz_0_0));
+
+  BUFG clkout3_buf
+   (.O   (clk_trx_pll_25MHz_vio),
+    .I   (clk_trx_pll_25MHz_vio_msys_BOARD_clk_wiz_0_0));
 
 
 

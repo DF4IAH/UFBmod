@@ -11,5 +11,7 @@ org.eclipse.launchbar.core.descriptorType.default\:Debugger_main-Emulation/activ
 org.eclipse.launchbar.core.descriptorType.default\:Debugger_main-Emulation/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:Debugger_rtos-Default/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:Debugger_rtos-Default/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:SystemDebugger_boot_system/activeLaunchMode=debug
+org.eclipse.launchbar.core.descriptorType.default\:SystemDebugger_boot_system/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:SystemDebugger_main_system/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:SystemDebugger_main_system/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

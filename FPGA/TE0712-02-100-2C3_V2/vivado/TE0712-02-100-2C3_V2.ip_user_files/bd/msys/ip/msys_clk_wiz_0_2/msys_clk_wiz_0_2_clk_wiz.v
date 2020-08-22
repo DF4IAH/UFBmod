@@ -57,6 +57,7 @@
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
 // cfgmclk_pll_50MHz__50.00000______0.000______50.0______134.409____126.425
+// clkmclk_pll_65MHz_vio__65.00000______0.000______50.0______127.964____126.425
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -70,6 +71,7 @@ module msys_clk_wiz_0_2_clk_wiz
  (// Clock in ports
   // Clock out ports
   output        cfgmclk_pll_50MHz,
+  output        clkmclk_pll_65MHz_vio,
   input         clk_in1
  );
   // Input buffering
@@ -91,7 +93,7 @@ wire clk_in2_msys_clk_wiz_0_2;
   //    * Unused outputs are labeled unused
 
   wire        cfgmclk_pll_50MHz_msys_clk_wiz_0_2;
-  wire        clk_out2_msys_clk_wiz_0_2;
+  wire        clkmclk_pll_65MHz_vio_msys_clk_wiz_0_2;
   wire        clk_out3_msys_clk_wiz_0_2;
   wire        clk_out4_msys_clk_wiz_0_2;
   wire        clk_out5_msys_clk_wiz_0_2;
@@ -104,7 +106,6 @@ wire clk_in2_msys_clk_wiz_0_2;
   wire        locked_int;
   wire        clkfbout_msys_clk_wiz_0_2;
   wire        clkfboutb_unused;
-   wire clkout1_unused;
    wire clkout2_unused;
    wire clkout3_unused;
    wire clkout4_unused;
@@ -123,13 +124,16 @@ wire clk_in2_msys_clk_wiz_0_2;
     .CLKOUT0_DIVIDE       (26),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.5),
+    .CLKOUT1_DIVIDE       (20),
+    .CLKOUT1_PHASE        (0.000),
+    .CLKOUT1_DUTY_CYCLE   (0.5),
     .CLKIN1_PERIOD        (15.385))
   plle2_adv_inst
     // Output clocks
    (
     .CLKFBOUT            (clkfbout_msys_clk_wiz_0_2),
     .CLKOUT0             (cfgmclk_pll_50MHz_msys_clk_wiz_0_2),
-    .CLKOUT1             (clkout1_unused),
+    .CLKOUT1             (clkmclk_pll_65MHz_vio_msys_clk_wiz_0_2),
     .CLKOUT2             (clkout2_unused),
     .CLKOUT3             (clkout3_unused),
     .CLKOUT4             (clkout4_unused),
@@ -167,6 +171,10 @@ wire clk_in2_msys_clk_wiz_0_2;
    (.O   (cfgmclk_pll_50MHz),
     .I   (cfgmclk_pll_50MHz_msys_clk_wiz_0_2));
 
+
+  BUFG clkout2_buf
+   (.O   (clkmclk_pll_65MHz_vio),
+    .I   (clkmclk_pll_65MHz_vio_msys_clk_wiz_0_2));
 
 
 

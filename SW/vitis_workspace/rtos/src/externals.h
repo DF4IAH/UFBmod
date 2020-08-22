@@ -39,6 +39,11 @@ extern XEmacLite emacLiteInstance;					/* Instance of the EmacLite */
 
 extern u8 owreadEUI48(void);
 
+extern unsigned int iicRead(UINTPTR baseAddr, u8 iicChipAddr, u8 iicRegister, u8* getValue);
+extern unsigned int iicReadAndModify(UINTPTR baseAddr, u8 iicChipAddr, u8 iicRegister, u8 setValue, u8 readMask);
+
+extern void taskTrx(void* pvParameters);
+
 extern void emacLitePhyDelay(unsigned int seconds);
 extern u32 emacLitePhyDetect(XEmacLite* instancePtr);
 extern int emacLiteEnablePhyLoopBack(XEmacLite* instancePtr, u32 phyAddress);

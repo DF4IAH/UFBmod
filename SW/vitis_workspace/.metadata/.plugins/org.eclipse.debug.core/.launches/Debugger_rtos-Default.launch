@@ -54,6 +54,9 @@
     <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
         <listEntry value="4"/>
     </listAttribute>
+    <listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+        <listEntry value="com.xilinx.ide.launchGroup.emb.debug"/>
+    </listAttribute>
     <booleanAttribute key="org.eclipse.tcf.debug.AttachChildren" value="true"/>
     <booleanAttribute key="org.eclipse.tcf.debug.DisconnectOnCtxExit" value="false"/>
     <booleanAttribute key="org.eclipse.tcf.debug.StopAtEntry" value="false"/>

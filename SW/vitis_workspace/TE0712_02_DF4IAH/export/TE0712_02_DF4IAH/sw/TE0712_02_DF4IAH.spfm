@@ -32,7 +32,7 @@ TE0712_02_DF4IAH
                 />
             </sdx:processorGroup>
             <sdx:processorGroup sdx:name="RTOS_main"
-                                sdx:displayName="RTOS_main"
+                                sdx:displayName="RTOS on microblaze_0"
                                 sdx:cpuType="microblaze_0"
                                 sdx:cpuInstance="microblaze_0">
                 <sdx:os sdx:name="freertos10_xilinx"

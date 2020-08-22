@@ -28,7 +28,6 @@ set_false_path -from [get_clocks CFGMCLK]                                       
 set_false_path -from [get_clocks CFGMCLK]                                                                 -to [get_clocks -of_objects [get_pins msys_i/CLK1B_CW_0/CLK1B_clk_wiz_0/clk_out1_RMII]]
 set_false_path -from [get_clocks -of_objects [get_pins msys_i/CLK1B_CW_0/CLK1B_clk_wiz_0/clk_out1_RMII]]  -to [get_clocks CFGMCLK]
 
-
 # CLK0_clk
 set_false_path -from [get_clocks {CLK0_clk_p[0]}] -to [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT]]
 
@@ -62,6 +61,10 @@ set_false_path -from [get_pins {msys_i/CFG/SC0712_0/U0/rst_delay_i_reg[3]/C}] -t
 # phy_tx_clk
 set_false_path -from [get_clocks msys_i/ETH0/ETH0_axi_ethernetlite_0/U0/phy_tx_clk] -to [get_clocks -of_objects [get_pins msys_i/BOARD_clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0]]
 set_false_path -from [get_clocks msys_i/ETH0/ETH0_axi_ethernetlite_0/U0/phy_tx_clk] -to [get_clocks CFGMCLK]
+
+
+# TRX_clk_26MHz
+set_false_path -from [get_clocks -of_objects [get_pins msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT]] -to [get_clocks -of_objects [get_pins msys_i/TRX/TRX_clock/TRX_PLL_clk_wiz_0/inst/plle2_adv_inst/CLKOUT1]]
 
 
 # TRX_rx_clk_64MHz_clk_p

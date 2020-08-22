@@ -379,7 +379,7 @@ unsigned int iicReadAndModify(UINTPTR baseAddr, u8 iicChipAddr, u8 iicRegister, 
 	accu &= (~readMask);
 
 	/* Overlay with new data */
-	accu |= setValue;
+	accu |= (setValue & readMask);
 
 	/* Prepare write buffer */
 	WriteBuffer[0] = iicRegister;

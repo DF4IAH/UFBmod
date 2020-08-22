@@ -96,6 +96,7 @@ static void taskEth(void* pvParameters);
 /*-----------------------------------------------------------*/
 static TaskHandle_t thDflt;
 static TaskHandle_t thEth;
+static TaskHandle_t thTrx;
 //static QueueHandle_t qhTodo = NULL;
 //static TimerHandle_t thTodo = NULL;
 
@@ -139,6 +140,15 @@ int main(void)
 			NULL,							/* The task parameter is not used, so set to NULL. */
 			tskIDLE_PRIORITY + 1U,			/* The task runs at that priority. */
 			&thEth
+	);
+
+	xTaskCreate(
+			taskTrx, 						/* The function that implements the task. */
+			(const char*) "tskTrx",			/* Text name for the task, provided to assist debugging only. */
+			configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
+			NULL,							/* The task parameter is not used, so set to NULL. */
+			tskIDLE_PRIORITY + 1U,			/* The task runs at that priority. */
+			&thTrx
 	);
 
 #if 0

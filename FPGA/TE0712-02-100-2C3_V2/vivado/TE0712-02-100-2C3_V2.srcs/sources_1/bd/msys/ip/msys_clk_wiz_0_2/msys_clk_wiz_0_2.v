@@ -57,6 +57,7 @@
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
 // cfgmclk_pll_50MHz__50.00000______0.000______50.0______134.409____126.425
+// clkmclk_pll_65MHz_vio__65.00000______0.000______50.0______127.964____126.425
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -65,12 +66,13 @@
 
 `timescale 1ps/1ps
 
-(* CORE_GENERATION_INFO = "msys_clk_wiz_0_2,clk_wiz_v6_0_5_0_0,{component_name=msys_clk_wiz_0_2,use_phase_alignment=false,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=PLL,num_out_clk=1,clkin1_period=15.385,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
+(* CORE_GENERATION_INFO = "msys_clk_wiz_0_2,clk_wiz_v6_0_5_0_0,{component_name=msys_clk_wiz_0_2,use_phase_alignment=false,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=PLL,num_out_clk=2,clkin1_period=15.385,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
 
 module msys_clk_wiz_0_2 
  (
   // Clock out ports
   output        cfgmclk_pll_50MHz,
+  output        clkmclk_pll_65MHz_vio,
  // Clock in ports
   input         clk_in1
  );
@@ -79,6 +81,7 @@ module msys_clk_wiz_0_2
   (
   // Clock out ports  
   .cfgmclk_pll_50MHz(cfgmclk_pll_50MHz),
+  .clkmclk_pll_65MHz_vio(clkmclk_pll_65MHz_vio),
  // Clock in ports
   .clk_in1(clk_in1)
   );
