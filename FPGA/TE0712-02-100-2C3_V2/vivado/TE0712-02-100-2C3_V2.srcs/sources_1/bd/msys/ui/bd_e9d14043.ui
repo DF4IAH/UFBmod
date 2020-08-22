@@ -1,0 +1,72 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.37554",
+   "Default View_TopLeft":"-309,-10",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port IIC -pg 1 -lvl 7 -x 2050 -y 730 -defaultsOSRD
+preplace port BOOT_microblaze_0_Debug_in -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace port mdm_USER2_0_BOOT_M_AXI_in -pg 1 -lvl 0 -x 0 -y 460 -defaultsOSRD
+preplace port mdm_USER2_0_BOOT_LMB_0_in -pg 1 -lvl 0 -x 0 -y 170 -defaultsOSRD
+preplace port cfgmclk_pll_50MHz_in -pg 1 -lvl 0 -x 0 -y 90 -defaultsOSRD
+preplace port reset_in -pg 1 -lvl 0 -x 0 -y 720 -defaultsOSRD
+preplace port mb_debug_sys_rst_in -pg 1 -lvl 0 -x 0 -y 330 -defaultsOSRD
+preplace port CFG_eos_in -pg 1 -lvl 0 -x 0 -y 360 -defaultsOSRD
+preplace portBus gpio_io_o -pg 1 -lvl 7 -x 2050 -y 810 -defaultsOSRD
+preplace portBus gpio2_io_i -pg 1 -lvl 0 -x 0 -y 390 -defaultsOSRD
+preplace portBus peripheral_aresetn -pg 1 -lvl 7 -x 2050 -y 370 -defaultsOSRD
+preplace portBus interconnect_aresetn -pg 1 -lvl 7 -x 2050 -y 230 -defaultsOSRD
+preplace portBus scl_pll_in -pg 1 -lvl 0 -x 0 -y 900 -defaultsOSRD
+preplace portBus sda_pll_in -pg 1 -lvl 0 -x 0 -y 1030 -defaultsOSRD
+preplace portBus rst_mig_7series_0_100M_mb_reset_in -pg 1 -lvl 0 -x 0 -y 930 -defaultsOSRD
+preplace inst BOOT_PLL_microblaze_0 -pg 1 -lvl 1 -x 260 -y 80 -defaultsOSRD
+preplace inst BOOT_PLL_Local_BRAM -pg 1 -lvl 2 -x 670 -y 120 -defaultsOSRD
+preplace inst BOOT_PLL_axi_interconnect_0 -pg 1 -lvl 3 -x 970 -y 550 -defaultsOSRD
+preplace inst BOOT_PLL_axi_gpio_0 -pg 1 -lvl 4 -x 1280 -y 560 -defaultsOSRD
+preplace inst BOOT_PLL_axi_iic_0 -pg 1 -lvl 4 -x 1280 -y 750 -defaultsOSRD
+preplace inst BOOT_PLL_proc_sys_reset_0 -pg 1 -lvl 5 -x 1620 -y 330 -defaultsOSRD
+preplace inst BOOT_PLL_xlslice_31downto31 -pg 1 -lvl 5 -x 1620 -y 830 -defaultsOSRD
+preplace inst BOOT_PLL_xlconcat_0 -pg 1 -lvl 6 -x 1920 -y 810 -defaultsOSRD
+preplace inst BOOT_PLL_CDC_c_shift_ram_0 -pg 1 -lvl 5 -x 1620 -y 940 -defaultsOSRD
+preplace inst BOOT_PLL_xlconcat_1 -pg 1 -lvl 4 -x 1280 -y 930 -defaultsOSRD
+preplace inst BOOT_PLL_util_reduced_logic_0 -pg 1 -lvl 3 -x 970 -y 920 -defaultsOSRD
+preplace inst BOOT_PLL_util_reduced_logic_1 -pg 1 -lvl 3 -x 970 -y 1040 -defaultsOSRD
+preplace inst BOOT_PLL_util_xlconcat_0 -pg 1 -lvl 2 -x 670 -y 920 -defaultsOSRD
+preplace inst BOOT_PLL_util_xlconcat_1 -pg 1 -lvl 2 -x 670 -y 1040 -defaultsOSRD
+preplace inst BOOT_PLL_IIC_xlslice_0downto0 -pg 1 -lvl 6 -x 1920 -y 50 -defaultsOSRD
+preplace netloc cfgmclk_pll_50MHz 1 0 5 20 180 510 470 820 730 1120 830 1430
+preplace netloc reset_1 1 0 5 NJ 720 NJ 720 NJ 720 1130J 660 1450J
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 2 5 830 740 1140 670 NJ 670 1800 370 NJ
+preplace netloc gpio2_io_i_1 1 0 5 NJ 390 NJ 390 820J 380 1130J 650 1420
+preplace netloc mb_debug_sys_rst_1 1 0 5 20J 350 NJ 350 NJ 350 NJ 350 NJ
+preplace netloc CFG_eos 1 0 5 30J 370 NJ 370 NJ 370 NJ 370 NJ
+preplace netloc BOOT_proc_sys_reset_0_interconnect_aresetn 1 2 5 830 230 NJ 230 NJ 230 1810 230 NJ
+preplace netloc BOOT_PLL_proc_sys_reset_0_mb_reset 1 0 6 30 220 NJ 220 NJ 220 NJ 220 NJ 220 1790
+preplace netloc BOOT_PLL_proc_sys_reset_0_bus_struct_reset 1 1 5 520 210 NJ 210 NJ 210 NJ 210 1800
+preplace netloc BOOT_PLL_axi_gpio_0_gpio_io_o 1 4 1 1440 550n
+preplace netloc BOOT_PLL_xlconcat_0_dout 1 6 1 NJ 810
+preplace netloc BOOT_PLL_xlslice_31downto31_Dout 1 5 1 NJ 830
+preplace netloc BOOT_PLL_CDC_c_shift_ram_0_Q 1 5 1 1800 790n
+preplace netloc BOOT_PLL_xlconcat_1_dout 1 4 1 N 930
+preplace netloc BOOT_PLL_util_reduced_logic_0_Res 1 3 1 NJ 920
+preplace netloc BOOT_PLL_util_reduced_logic_1_Res 1 3 1 1120J 940n
+preplace netloc BOOT_PLL_util_xlconcat_1_dout 1 2 1 N 1040
+preplace netloc BOOT_PLL_util_xlconcat_0_dout 1 2 1 N 920
+preplace netloc scl_pll 1 0 2 20J 910 NJ
+preplace netloc sda_pll 1 0 2 NJ 1030 NJ
+preplace netloc rst_mig_7series_0_100M_mb_reset 1 0 2 NJ 930 510
+preplace netloc mdm_USER2_0_BOOT_LMB_0_in_1 1 0 2 NJ 170 500J
+preplace netloc mdm_USER2_0_BOOT_M_AXI_0 1 0 3 NJ 460 NJ 460 NJ
+preplace netloc BOOT_PLL_microblaze_0_ILMB 1 1 1 N 80
+preplace netloc BOOT_microblaze_0_Debug 1 0 1 20J 60n
+preplace netloc Conn1 1 4 3 NJ 730 NJ 730 NJ
+preplace netloc BOOT_PLL_microblaze_0_DLMB 1 1 1 520 60n
+preplace netloc BOOT_PLL_microblaze_0_M_AXI_DP 1 1 2 490 440 NJ
+preplace netloc axi_interconnect_0_M00_AXI 1 3 1 N 540
+preplace netloc axi_interconnect_0_M01_AXI 1 3 1 1110 560n
+levelinfo -pg 1 0 260 670 970 1280 1620 1920 2050
+pagesize -pg 1 -db -bbox -sgen -310 -10 2260 1110
+"
+}
+

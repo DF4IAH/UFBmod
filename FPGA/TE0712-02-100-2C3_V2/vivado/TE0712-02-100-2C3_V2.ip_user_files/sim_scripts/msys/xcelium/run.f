@@ -669,6 +669,35 @@
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_xlslice_0_40/sim/msys_xlslice_0_40.v" \
   "../../../bd/msys/ip/msys_xlslice_1_6/sim/msys_xlslice_1_6.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_axi_iic_0_2/sim/msys_axi_iic_0_2.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xlslice_0_41/sim/msys_xlslice_0_41.v" \
+  "../../../bd/msys/ip/msys_xlconcat_0_19/sim/msys_xlconcat_0_19.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_c_shift_ram_0_25/sim/msys_c_shift_ram_0_25.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xlconcat_0_20/sim/msys_xlconcat_0_20.v" \
+  "../../../bd/msys/ip/msys_util_reduced_logic_0_2/sim/msys_util_reduced_logic_0_2.v" \
+  "../../../bd/msys/ip/msys_util_reduced_logic_0_3/sim/msys_util_reduced_logic_0_3.v" \
+  "../../../bd/msys/ip/msys_xlconcat_0_21/sim/msys_xlconcat_0_21.v" \
+  "../../../bd/msys/ip/msys_xlconcat_0_22/sim/msys_xlconcat_0_22.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_c_shift_ram_0_26/sim/msys_c_shift_ram_0_26.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xlslice_0_42/sim/msys_xlslice_0_42.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_43/sim/msys_xlslice_0_43.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_c_shift_ram_0_27/sim/msys_c_shift_ram_0_27.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_tier2_xbar_0_0/sim/msys_tier2_xbar_0_0.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_1_0/sim/msys_tier2_xbar_1_0.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_2_0/sim/msys_tier2_xbar_2_0.v" \
