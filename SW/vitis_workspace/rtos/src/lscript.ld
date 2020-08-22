@@ -17,7 +17,7 @@ _HEAP_SIZE = DEFINED(_HEAP_SIZE) ? _HEAP_SIZE : 0x800;
 
 MEMORY
 {
-   microblaze_0_local_memory_ilmb_bram_if_cntlr_Mem_microblaze_0_local_memory_dlmb_bram_if_cntlr_Mem : ORIGIN = 0x50, LENGTH = 0x3FB0
+   microblaze_0_local_memory_ilmb_bram_if_cntlr_Mem_microblaze_0_local_memory_dlmb_bram_if_cntlr_Mem : ORIGIN = 0x10050, LENGTH = 0x3FB0
    mig_7series_0_memaddr : ORIGIN = 0x80000000, LENGTH = 0x40000000
 }
 
@@ -29,19 +29,19 @@ ENTRY(_start)
 
 SECTIONS
 {
-.vectors.reset 0x0 : {
+.vectors.reset 0x10000 : {
    KEEP (*(.vectors.reset))
 } 
 
-.vectors.sw_exception 0x8 : {
+.vectors.sw_exception 0x10008 : {
    KEEP (*(.vectors.sw_exception))
 } 
 
-.vectors.interrupt 0x10 : {
+.vectors.interrupt 0x10010 : {
    KEEP (*(.vectors.interrupt))
 } 
 
-.vectors.hw_exception 0x20 : {
+.vectors.hw_exception 0x10020 : {
    KEEP (*(.vectors.hw_exception))
 } 
 

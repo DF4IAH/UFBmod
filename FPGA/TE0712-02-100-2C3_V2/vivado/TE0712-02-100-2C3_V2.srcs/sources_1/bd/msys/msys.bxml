@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="msys" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1598103681"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1598103681"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1598103681"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1598103681"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1598128298"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1598128298"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1598128298"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1598128298"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\msys_SC0712_0_0\msys_SC0712_0_0.xci" Type="IP">
         <Instance HierarchyPath="CFG/SC0712_0"/>
@@ -1756,142 +1756,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip\msys_axi_iic_0_2\msys_axi_iic_0_2.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_config/axi_iic_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_xlslice_0_41\msys_xlslice_0_41.xci" Type="IP">
-        <Instance HierarchyPath="BOOT_PLL/BOOT_PLL_xlslice_31downto31"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_xlconcat_0_19\msys_xlconcat_0_19.xci" Type="IP">
-        <Instance HierarchyPath="BOOT_PLL/BOOT_PLL_xlconcat_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_c_shift_ram_0_25\msys_c_shift_ram_0_25.xci" Type="IP">
-        <Instance HierarchyPath="BOOT_PLL/BOOT_PLL_CDC_c_shift_ram_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_xlconcat_0_20\msys_xlconcat_0_20.xci" Type="IP">
-        <Instance HierarchyPath="BOOT_PLL/BOOT_PLL_xlconcat_1"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_util_reduced_logic_0_2\msys_util_reduced_logic_0_2.xci" Type="IP">
-        <Instance HierarchyPath="BOOT_PLL/BOOT_PLL_util_reduced_logic_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_util_reduced_logic_0_3\msys_util_reduced_logic_0_3.xci" Type="IP">
-        <Instance HierarchyPath="BOOT_PLL/BOOT_PLL_util_reduced_logic_1"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_xlconcat_0_21\msys_xlconcat_0_21.xci" Type="IP">
-        <Instance HierarchyPath="BOOT_PLL/BOOT_PLL_util_xlconcat_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_xlconcat_0_22\msys_xlconcat_0_22.xci" Type="IP">
-        <Instance HierarchyPath="BOOT_PLL/BOOT_PLL_util_xlconcat_1"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_c_shift_ram_0_26\msys_c_shift_ram_0_26.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_config/CDC_c_shift_ram_1"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_xlslice_0_42\msys_xlslice_0_42.xci" Type="IP">
-        <Instance HierarchyPath="BOOT_PLL/BOOT_PLL_IIC_xlslice_0downto0_scl"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_xlslice_0_43\msys_xlslice_0_43.xci" Type="IP">
-        <Instance HierarchyPath="BOOT_PLL/BOOT_PLL_IIC_xlslice_1downto1_sda"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_c_shift_ram_0_27\msys_c_shift_ram_0_27.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_config/CDC_c_shift_ram_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_util_reduced_logic_0_4\msys_util_reduced_logic_0_4.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_config/util_reduced_logic_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_util_reduced_logic_1_0\msys_util_reduced_logic_1_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_config/util_reduced_logic_1"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_xlconcat_0_23\msys_xlconcat_0_23.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_config/xlconcat_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\msys_xlconcat_1_4\msys_xlconcat_1_4.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_config/xlconcat_1"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip\msys_tier2_xbar_0_0\msys_tier2_xbar_0_0.xci" Type="IP">
         <Instance HierarchyPath="microblaze_0_axi_periph/tier2_xbar_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -1926,6 +1790,14 @@
       </File>
       <File Name="ip\msys_auto_pc_0\msys_auto_pc_0.xci" Type="IP">
         <Instance HierarchyPath="microblaze_0_axi_periph/m05_couplers/auto_pc"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_auto_cc_1\msys_auto_cc_1.xci" Type="IP">
+        <Instance HierarchyPath="microblaze_0_axi_periph/m18_couplers/auto_cc"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

@@ -3,4 +3,6 @@
 	<item value="Y:\Downloads" key="dump_restore_files_selection"/>
 	<item value="C:\Users\espero\git\UFBmod\FPGA\TE0712-02-100-2C3_V2\vivado" key="scw_hwspec_file_selection"/>
 	<item value="C:\Users\espero\git\UFBmod\FPGA\TE0712-02-100-2C3_V2\vivado" key="scw_hwspec"/>
+	<item value="C:\Users\espero\git\UFBmod\SW\vitis_workspace\TE0712_02_DF4IAH\BOOT_PLL_BOOT_PLL_microblaze_0\standalone_domain\bsp" key="bsp_settings_file"/>
+	<item value="C:\Users\espero\git\UFBmod\SW\vitis_workspace\TE0712_02_DF4IAH\BOOT_PLL_BOOT_PLL_microblaze_0\standalone_domain\bsp" key="platform_editor"/>
 </section>

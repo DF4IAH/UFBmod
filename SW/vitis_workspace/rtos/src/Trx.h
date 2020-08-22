@@ -15,7 +15,8 @@ extern "C" {
 
 /***************************** Definitions ***********************************/
 
-#define IIC_PLL_BASE_ADDRESS		XPAR_TRX_TRX_CONFIG_AXI_IIC_0_BASEADDR
+/* XPAR_IIC_0_DEVICE_ID  :=  XPAR_BOOT_PLL_BOOT_PLL_AXI_IIC_0_DEVICE_ID */
+#define IIC_PLL_BASE_ADDRESS		XPAR_IIC_0_BASEADDR
 #define IIC_PLL_ONCHIP_ADDRESS 		0x70U
 
 

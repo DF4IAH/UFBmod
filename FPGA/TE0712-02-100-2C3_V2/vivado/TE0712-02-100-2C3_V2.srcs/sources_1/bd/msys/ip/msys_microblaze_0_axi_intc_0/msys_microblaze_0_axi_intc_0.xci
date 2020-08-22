@@ -73,7 +73,7 @@
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_INSTANCE">msys_microblaze_0_axi_intc_0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_IRQ_ACTIVE">0x1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_IRQ_IS_LEVEL">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_IVAR_RESET_VALUE">0x0000000000000010</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_IVAR_RESET_VALUE">0x0000000000010010</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_KIND_OF_EDGE">0xFFFFFFFF</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_KIND_OF_INTR">0xffffe416</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_KIND_OF_LVL">0xFFFFFFFF</spirit:configurableElementValue>
@@ -96,7 +96,7 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_IRQ_ACTIVE">0x1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_IRQ_CONNECTION">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_IRQ_IS_LEVEL">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_IVAR_RESET_VALUE">0x0000000000000010</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_IVAR_RESET_VALUE">0x0000000000010010</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_KIND_OF_EDGE">0xFFFFFFFF</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_KIND_OF_INTR">0xFFFFE416</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_KIND_OF_LVL">0xFFFFFFFF</spirit:configurableElementValue>

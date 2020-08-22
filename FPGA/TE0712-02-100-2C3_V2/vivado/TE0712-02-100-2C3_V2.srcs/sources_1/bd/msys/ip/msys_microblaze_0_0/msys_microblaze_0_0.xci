@@ -640,7 +640,7 @@
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_ASYNC_INTERRUPT">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_ASYNC_WAKEUP">3</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_AVOID_PRIMITIVES">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_BASE_VECTORS">0x0000000000000000</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_BASE_VECTORS">0x0000000000010000</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_BRANCH_TARGET_CACHE_SIZE">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_CACHE_BYTE_SIZE">32768</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_DADDR_SIZE">32</spirit:configurableElementValue>
@@ -759,7 +759,7 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_ASYNC_INTERRUPT">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_ASYNC_WAKEUP">3</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_AVOID_PRIMITIVES">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_BASE_VECTORS">0x0000000000000000</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_BASE_VECTORS">0x0000000000010000</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_BRANCH_TARGET_CACHE_SIZE">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_CACHE_BYTE_SIZE">32768</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_DATA_SIZE">32</spirit:configurableElementValue>
@@ -1051,6 +1051,7 @@
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_ADDR_TAG_BITS" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_AREA_OPTIMIZED" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_ASYNC_WAKEUP" xilinx:valueSource="propagated"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_BASE_VECTORS" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_BRANCH_TARGET_CACHE_SIZE" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_CACHE_BYTE_SIZE" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DCACHE_ADDR_TAG" xilinx:valueSource="user"/>

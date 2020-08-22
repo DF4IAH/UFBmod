@@ -11,7 +11,7 @@ TE0712_02_DF4IAH
     <sdx:systemConfigurations sdx:defaultConfiguration="TE0712_02_DF4IAH">
         <sdx:configuration sdx:name="TE0712_02_DF4IAH"
                            sdx:displayName="TE0712_02_DF4IAH"
-                           sdx:defaultProcessorGroup="RTOS_main"
+                           sdx:defaultProcessorGroup="rtos"
                            sdx:runtimes="cpp">
             <sdx:description>TE0712_02_DF4IAH</sdx:description>
             <sdx:bootImages sdx:default="standard">
@@ -31,15 +31,15 @@ TE0712_02_DF4IAH
                         sdx:bspConfig="TE0712_02_DF4IAH/standalone_domain/system.mss"
                 />
             </sdx:processorGroup>
-            <sdx:processorGroup sdx:name="RTOS_main"
-                                sdx:displayName="RTOS on microblaze_0"
+            <sdx:processorGroup sdx:name="rtos"
+                                sdx:displayName="rtos on microblaze_0"
                                 sdx:cpuType="microblaze_0"
                                 sdx:cpuInstance="microblaze_0">
                 <sdx:os sdx:name="freertos10_xilinx"
                         sdx:displayName="freertos"
-                        sdx:bspLibraryPaths="TE0712_02_DF4IAH/RTOS_main/bsplib/lib"
-                        sdx:bspIncludePaths="TE0712_02_DF4IAH/RTOS_main/bspinclude/include"
-                        sdx:bspConfig="TE0712_02_DF4IAH/RTOS_main/system.mss"
+                        sdx:bspLibraryPaths="TE0712_02_DF4IAH/rtos/bsplib/lib"
+                        sdx:bspIncludePaths="TE0712_02_DF4IAH/rtos/bspinclude/include"
+                        sdx:bspConfig="TE0712_02_DF4IAH/rtos/system.mss"
                 />
             </sdx:processorGroup>
         </sdx:configuration>
