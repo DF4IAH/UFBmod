@@ -18708,8 +18708,8 @@ Subminiature Tact Switch for SMT</description>
 <part name="L0703" library="df4iah_rcl" deviceset="R-EU_" device="R1206" value="300R"/>
 <part name="L0704" library="df4iah_rcl" deviceset="R-EU_" device="R1206" value="300R"/>
 <part name="+3V3_0701" library="df4iah_supply" deviceset="+3V3" device=""/>
-<part name="C0704" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="1nF"/>
-<part name="C0703" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="1nF"/>
+<part name="C0704" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="1uF"/>
+<part name="C0703" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="1uF"/>
 <part name="C0706" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="100nF"/>
 <part name="C0708" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="100nF"/>
 <part name="C0707" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="100nF"/>
@@ -18972,10 +18972,10 @@ Subminiature Tact Switch for SMT</description>
 <part name="TP1371" library="df4iah_connector" deviceset="TP" device="B1,27"/>
 <part name="S1321" library="df4iah_switch" deviceset="KSR223G_SMD_1POL" device=""/>
 <part name="R1321" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="1kR"/>
-<part name="R0711" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="33R"/>
+<part name="R0711" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="130R"/>
 <part name="C1321" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="100nF"/>
 <part name="GND0001" library="df4iah_supply" deviceset="GND" device=""/>
-<part name="C0713" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="1nF"/>
+<part name="C0713" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="N/A"/>
 <part name="GND0712" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="FPGA_EN1" library="df4iah_connector" deviceset="TP" device="B1,27"/>
 <part name="PGOOD" library="df4iah_connector" deviceset="TP" device="B1,27"/>
