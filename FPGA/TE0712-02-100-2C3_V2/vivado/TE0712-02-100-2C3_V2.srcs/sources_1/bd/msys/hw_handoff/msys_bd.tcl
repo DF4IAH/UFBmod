@@ -1838,7 +1838,7 @@ proc create_hier_cell_TRX_config { parentCell nameHier } {
 
 
   # Create pins
-  create_bd_pin -dir O -from 0 -to 0 TRX_reset
+  create_bd_pin -dir O -from 0 -to 0 TRX_resetn
   create_bd_pin -dir O -from 0 -to 0 TRX_rfx_mode
   create_bd_pin -dir O -type intr ip2intc_irpt
   create_bd_pin -dir I -type clk s_axi_aclk
@@ -1847,10 +1847,12 @@ proc create_hier_cell_TRX_config { parentCell nameHier } {
   # Create instance: TRX_axi_quad_spi_0, and set properties
   set TRX_axi_quad_spi_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_quad_spi:3.2 TRX_axi_quad_spi_0 ]
   set_property -dict [ list \
-   CONFIG.C_FIFO_DEPTH {256} \
+   CONFIG.C_FIFO_DEPTH {16} \
+   CONFIG.C_NUM_SS_BITS {1} \
    CONFIG.C_SCK_RATIO {4} \
    CONFIG.C_USE_STARTUP {0} \
    CONFIG.C_USE_STARTUP_INT {0} \
+   CONFIG.FIFO_INCLUDED {1} \
  ] $TRX_axi_quad_spi_0
 
   # Create instance: TRX_gpio_xlslice_0to0_0, and set properties
@@ -1893,7 +1895,7 @@ proc create_hier_cell_TRX_config { parentCell nameHier } {
 
   # Create port connections
   connect_bd_net -net TRX_axi_quad_spi_0_ip2intc_irpt [get_bd_pins ip2intc_irpt] [get_bd_pins TRX_axi_quad_spi_0/ip2intc_irpt]
-  connect_bd_net -net TRX_gpio_xlslice_0to0_0_Dout [get_bd_pins TRX_reset] [get_bd_pins TRX_gpio_xlslice_0to0_0/Dout]
+  connect_bd_net -net TRX_gpio_xlslice_0to0_0_Dout [get_bd_pins TRX_resetn] [get_bd_pins TRX_gpio_xlslice_0to0_0/Dout]
   connect_bd_net -net TRX_gpio_xlslice_1to1_0_Dout [get_bd_pins TRX_rfx_mode] [get_bd_pins TRX_gpio_xlslice_1to1_0/Dout]
   connect_bd_net -net axi_TRX_gpio_0_gpio_io_o [get_bd_pins TRX_gpio_xlslice_0to0_0/Din] [get_bd_pins TRX_gpio_xlslice_1to1_0/Din] [get_bd_pins axi_TRX_gpio_0/gpio_io_o]
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_aresetn [get_bd_pins s_axi_aresetn] [get_bd_pins TRX_axi_quad_spi_0/s_axi_aresetn] [get_bd_pins axi_TRX_gpio_0/s_axi_aresetn]
@@ -2777,7 +2779,7 @@ proc create_hier_cell_TRX { parentCell nameHier } {
   create_bd_pin -dir O -from 0 -to 0 -type clk TRX_PLL_clk_25MHz_N
   create_bd_pin -dir O -from 0 -to 0 -type clk TRX_PLL_clk_25MHz_P
   create_bd_pin -dir I -type clk TRX_clk_26MHz
-  create_bd_pin -dir O -from 0 -to 0 TRX_reset
+  create_bd_pin -dir O -from 0 -to 0 TRX_resetn
   create_bd_pin -dir O -from 0 -to 0 TRX_rfx_mode
   create_bd_pin -dir O -from 31 -to 0 TRX_rx09_fifo_o
   create_bd_pin -dir O TRX_rx09_fifo_valid_o
@@ -2894,7 +2896,7 @@ proc create_hier_cell_TRX { parentCell nameHier } {
   connect_bd_net -net TRX_clock_TRX_PLL_clk_25MHz_P [get_bd_pins TRX_PLL_clk_25MHz_P] [get_bd_pins TRX_clock/TRX_PLL_clk_25MHz_P]
   connect_bd_net -net TRX_clock_clk_trx_26MHz_vio [get_bd_pins clk_trx_26MHz_vio] [get_bd_pins TRX_clock/clk_trx_26MHz_vio]
   connect_bd_net -net TRX_clock_clk_trx_pll_25MHz_vio [get_bd_pins clk_trx_pll_25MHz_vio] [get_bd_pins TRX_clock/clk_trx_pll_25MHz_vio]
-  connect_bd_net -net TRX_config_TRX_reset [get_bd_pins TRX_reset] [get_bd_pins TRX_config/TRX_reset]
+  connect_bd_net -net TRX_config_TRX_resetn [get_bd_pins TRX_resetn] [get_bd_pins TRX_config/TRX_resetn]
   connect_bd_net -net TRX_config_TRX_rfx_mode [get_bd_pins TRX_rfx_mode] [get_bd_pins TRX_config/TRX_rfx_mode]
   connect_bd_net -net TRX_proc_sys_reset_0_peripheral_aresetn [get_bd_pins TRX_proc_sys_reset_0/peripheral_aresetn] [get_bd_pins TRX_tx_DDS_unit/aresetn]
   connect_bd_net -net TRX_proc_sys_reset_0_peripheral_reset_CD016 [get_bd_pins TRX_LVDS/rst] [get_bd_pins TRX_proc_sys_reset_0/peripheral_reset] [get_bd_pins TRX_tx_DDS_unit/SCLR] [get_bd_pins counter_binary_0/SCLR]
@@ -4832,7 +4834,7 @@ proc create_root_design { parentCell } {
  ] $TRX_PLL_clk_25MHz_P
   set TRX_clk_26MHz [ create_bd_port -dir I -type clk -freq_hz 26000000 TRX_clk_26MHz ]
   set TRX_int [ create_bd_port -dir I -type intr TRX_int ]
-  set TRX_reset [ create_bd_port -dir O -from 0 -to 0 -type rst TRX_reset ]
+  set TRX_resetn [ create_bd_port -dir O -from 0 -to 0 -type rst TRX_resetn ]
   set TRX_rfx_mode [ create_bd_port -dir O -from 0 -to 0 TRX_rfx_mode ]
   set TRX_rx09_fifo_o [ create_bd_port -dir O -from 31 -to 0 TRX_rx09_fifo_o ]
   set TRX_rx09_fifo_valid_o [ create_bd_port -dir O TRX_rx09_fifo_valid_o ]
@@ -5228,7 +5230,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net SCOPE_SCOPE_FSM_TrigSrc [get_bd_ports SCOPE_FSM_TrigSrc] [get_bd_pins SCOPE/SCOPE_FSM_TrigSrc]
   connect_bd_net -net TRX_TRX_PLL_clk_25MHz_N [get_bd_ports TRX_PLL_clk_25MHz_N] [get_bd_pins TRX/TRX_PLL_clk_25MHz_N]
   connect_bd_net -net TRX_TRX_PLL_clk_25MHz_P [get_bd_ports TRX_PLL_clk_25MHz_P] [get_bd_pins TRX/TRX_PLL_clk_25MHz_P]
-  connect_bd_net -net TRX_TRX_reset [get_bd_ports TRX_reset] [get_bd_pins TRX/TRX_reset]
+  connect_bd_net -net TRX_TRX_resetn [get_bd_ports TRX_resetn] [get_bd_pins TRX/TRX_resetn]
   connect_bd_net -net TRX_TRX_rfx_mode [get_bd_ports TRX_rfx_mode] [get_bd_pins TRX/TRX_rfx_mode]
   connect_bd_net -net TRX_TRX_tx_data_n [get_bd_ports TRX_tx_data_n] [get_bd_pins TRX/TRX_tx_data_n]
   connect_bd_net -net TRX_TRX_tx_data_p [get_bd_ports TRX_tx_data_p] [get_bd_pins TRX/TRX_tx_data_p]

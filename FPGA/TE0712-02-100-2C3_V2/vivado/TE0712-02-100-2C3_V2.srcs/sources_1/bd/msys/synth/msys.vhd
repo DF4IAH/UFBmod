@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Sat Aug 22 22:30:44 2020
+--Date        : Sun Aug 23 22:51:47 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -3182,7 +3182,7 @@ entity TRX_config_imp_SLQI5S is
     S_AXI_spi_wready : out STD_LOGIC_VECTOR ( 0 to 0 );
     S_AXI_spi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S_AXI_spi_wvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_resetn : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_io0_i : in STD_LOGIC;
     TRX_spi_io0_o : out STD_LOGIC;
@@ -3367,7 +3367,7 @@ begin
   S_AXI_spi_rresp(1 downto 0) <= S_AXI_spi_0_RRESP(1 downto 0);
   S_AXI_spi_rvalid(0) <= S_AXI_spi_0_RVALID;
   S_AXI_spi_wready(0) <= S_AXI_spi_0_WREADY;
-  TRX_reset(0) <= TRX_gpio_xlslice_0to0_0_Dout(0);
+  TRX_resetn(0) <= TRX_gpio_xlslice_0to0_0_Dout(0);
   TRX_rfx_mode(0) <= TRX_gpio_xlslice_1to1_0_Dout(0);
   TRX_spi_io0_o <= Conn2_IO0_O;
   TRX_spi_io0_t <= Conn2_IO0_T;
@@ -17004,7 +17004,7 @@ entity TRX_imp_W48V8V is
     TRX_PLL_clk_25MHz_N : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_PLL_clk_25MHz_P : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_clk_26MHz : in STD_LOGIC;
-    TRX_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_resetn : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rx09_fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx09_fifo_valid_o : out STD_LOGIC;
@@ -17181,7 +17181,7 @@ architecture STRUCTURE of TRX_imp_W48V8V is
   signal TRX_clock_TRX_PLL_clk_25MHz_P : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_clock_clk_trx_26MHz_vio : STD_LOGIC;
   signal TRX_clock_clk_trx_pll_25MHz_vio : STD_LOGIC;
-  signal TRX_config_TRX_reset : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_config_TRX_resetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_config_TRX_rfx_mode : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_proc_sys_reset_0_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_proc_sys_reset_0_peripheral_reset_CD016 : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -17305,7 +17305,7 @@ begin
   TRX_PLL_clk_25MHz_N(0) <= TRX_clock_TRX_PLL_clk_25MHz_N(0);
   TRX_PLL_clk_25MHz_P(0) <= TRX_clock_TRX_PLL_clk_25MHz_P(0);
   TRX_clk_26MHz_1 <= TRX_clk_26MHz;
-  TRX_reset(0) <= TRX_config_TRX_reset(0);
+  TRX_resetn(0) <= TRX_config_TRX_resetn(0);
   TRX_rfx_mode(0) <= TRX_config_TRX_rfx_mode(0);
   TRX_rx09_fifo_o(31 downto 0) <= TRX_rx09_fifo_o_1(31 downto 0);
   TRX_rx09_fifo_valid_o <= TRX_rx09_fifo_valid_o_0;
@@ -17506,7 +17506,7 @@ TRX_config: entity work.TRX_config_imp_SLQI5S
       S_AXI_spi_wready(0) => S_AXI_spi_0_WREADY(0),
       S_AXI_spi_wstrb(3 downto 0) => S_AXI_spi_0_WSTRB(3 downto 0),
       S_AXI_spi_wvalid(0) => S_AXI_spi_0_WVALID(0),
-      TRX_reset(0) => TRX_config_TRX_reset(0),
+      TRX_resetn(0) => TRX_config_TRX_resetn(0),
       TRX_rfx_mode(0) => TRX_config_TRX_rfx_mode(0),
       TRX_spi_io0_i => Conn2_IO0_I,
       TRX_spi_io0_o => Conn2_IO0_O,
@@ -17696,7 +17696,7 @@ entity msys is
     TRX_PLL_clk_25MHz_P : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_clk_26MHz : in STD_LOGIC;
     TRX_int : in STD_LOGIC;
-    TRX_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_resetn : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rx09_fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx09_fifo_valid_o : out STD_LOGIC;
@@ -18413,7 +18413,7 @@ architecture STRUCTURE of msys is
   signal S_AXI_spi_0_WVALID : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_TRX_PLL_clk_25MHz_N : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_TRX_PLL_clk_25MHz_P : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal TRX_TRX_reset : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_TRX_resetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_TRX_rfx_mode : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_TRX_spi_IO0_I : STD_LOGIC;
   signal TRX_TRX_spi_IO0_O : STD_LOGIC;
@@ -19201,8 +19201,8 @@ architecture STRUCTURE of msys is
   attribute X_INTERFACE_PARAMETER of TRX_PLL_clk_25MHz_N : signal is "XIL_INTERFACENAME CLK.TRX_PLL_CLK_25MHZ_N, CLK_DOMAIN /TRX/TRX_clock/TRX_PLL_clk_wiz_0_clk_out1, FREQ_HZ 25000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
   attribute X_INTERFACE_INFO of TRX_PLL_clk_25MHz_P : signal is "xilinx.com:signal:clock:1.0 CLK.TRX_PLL_CLK_25MHZ_P CLK";
   attribute X_INTERFACE_PARAMETER of TRX_PLL_clk_25MHz_P : signal is "XIL_INTERFACENAME CLK.TRX_PLL_CLK_25MHZ_P, CLK_DOMAIN /TRX/TRX_clock/TRX_PLL_clk_wiz_0_clk_out1, FREQ_HZ 25000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
-  attribute X_INTERFACE_INFO of TRX_reset : signal is "xilinx.com:signal:reset:1.0 RST.TRX_RESET RST";
-  attribute X_INTERFACE_PARAMETER of TRX_reset : signal is "XIL_INTERFACENAME RST.TRX_RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW";
+  attribute X_INTERFACE_INFO of TRX_resetn : signal is "xilinx.com:signal:reset:1.0 RST.TRX_RESETN RST";
+  attribute X_INTERFACE_PARAMETER of TRX_resetn : signal is "XIL_INTERFACENAME RST.TRX_RESETN, INSERT_VIP 0, POLARITY ACTIVE_LOW";
   attribute X_INTERFACE_INFO of TRX_spi_ss_i : signal is "xilinx.com:interface:spi:1.0 TRX_spi SS_I";
   attribute X_INTERFACE_INFO of TRX_spi_ss_o : signal is "xilinx.com:interface:spi:1.0 TRX_spi SS_O";
   attribute X_INTERFACE_INFO of UART0_rst_n : signal is "xilinx.com:signal:reset:1.0 RST.UART0_RST_N RST";
@@ -19282,7 +19282,7 @@ begin
   TRX_TRX_spi_SS_I(0) <= TRX_spi_ss_i(0);
   TRX_clk_26MHz_1 <= TRX_clk_26MHz;
   TRX_int_1 <= TRX_int;
-  TRX_reset(0) <= TRX_TRX_reset(0);
+  TRX_resetn(0) <= TRX_TRX_resetn(0);
   TRX_rfx_mode(0) <= TRX_TRX_rfx_mode(0);
   TRX_rx09_fifo_o(31 downto 0) <= TRX_rx09_fifo_o_1(31 downto 0);
   TRX_rx09_fifo_valid_o <= TRX_rx09_fifo_valid_o_1;
@@ -19898,7 +19898,7 @@ TRX: entity work.TRX_imp_W48V8V
       TRX_PLL_clk_25MHz_N(0) => TRX_TRX_PLL_clk_25MHz_N(0),
       TRX_PLL_clk_25MHz_P(0) => TRX_TRX_PLL_clk_25MHz_P(0),
       TRX_clk_26MHz => TRX_clk_26MHz_1,
-      TRX_reset(0) => TRX_TRX_reset(0),
+      TRX_resetn(0) => TRX_TRX_resetn(0),
       TRX_rfx_mode(0) => TRX_TRX_rfx_mode(0),
       TRX_rx09_fifo_o(31 downto 0) => TRX_rx09_fifo_o_1(31 downto 0),
       TRX_rx09_fifo_valid_o => TRX_rx09_fifo_valid_o_1,

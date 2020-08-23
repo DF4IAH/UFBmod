@@ -19,6 +19,8 @@ extern "C" {
 #define IIC_PLL_BASE_ADDRESS		XPAR_IIC_0_BASEADDR
 #define IIC_PLL_ONCHIP_ADDRESS 		0x70U
 
+#define SPI_TRX_BASE_ADDRESS  		XPAR_TRX_TRX_CONFIG_TRX_AXI_QUAD_SPI_0_BASEADDR
+
 
 
 /************************** Function Prototypes ******************************/

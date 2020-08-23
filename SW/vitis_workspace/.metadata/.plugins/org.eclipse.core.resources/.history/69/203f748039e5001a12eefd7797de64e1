@@ -1,0 +1,142 @@
+/***************************** Include Files *********************************/
+
+/* FreeRTOS includes */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "timers.h"
+
+/* Xilinx includes */
+#include "xparameters.h"
+#include "xstatus.h"
+#include "xil_printf.h"
+#include "xil_io.h"
+#include "xgpio.h"
+#include "xiic.h"
+#include "xspi.h"		/* SPI device driver */
+#include "xspi_l.h"
+
+#include "externals.h"
+
+#include "Trx.h"
+
+
+/************************** Constant Definitions *****************************/
+
+/*
+ *  This is the size of the buffer to be transmitted/received.
+ */
+#define BUFFER_SIZE			 32
+
+
+/************************** Variable Definitions *****************************/
+
+static XGpio gpio_TRX;
+
+XSpi_Config* spiConfigPtr;	/* Pointer to Configuration data */
+static XSpi  spiInstance;
+
+/*
+ * The buffer used for Transmission/Reception of the SPI data frames.
+ */
+u8 buffer[BUFFER_SIZE];
+
+
+/*-----------------------------------------------------------*/
+
+void taskTrx(void* pvParameters)
+{
+	vTaskDelay(pdMS_TO_TICKS(1000));
+
+	/* Init I2C to PLL chip */
+	{
+		/* Check for PLL chip */
+		u32 StatusReg = XIic_ReadReg(IIC_PLL_BASE_ADDRESS, XIIC_SR_REG_OFFSET);
+		if (!(StatusReg & XIIC_SR_BUS_BUSY_MASK)) {
+			u8 val = 0U;
+			if (XST_SUCCESS == iicRead(IIC_PLL_BASE_ADDRESS, IIC_PLL_ONCHIP_ADDRESS, 0x00U, &val)) {
+				xil_printf("\r\nTaskTrx: Read version of PLL chip: 0x%02X (0x00 = 'A', 0x01 = 'B')\r\n", val);
+			} else {
+				xil_printf("\r\nTaskTrx: I2C read operation failed\r\n");
+			}
+		} else {
+			xil_printf("\r\nTaskTrx: *** I2C bus locked!\r\n");
+		}
+	}
+
+	/* Init TRX-GPIO */
+	{
+		int statusTrx = XGpio_Initialize(&gpio_TRX, XPAR_PWM_LIGHTS_AXI_PWM_GPIO_0_DEVICE_ID);
+		if (statusTrx != XST_SUCCESS) {
+			xil_printf("GPIO TRX Initialization Failed\r\n");
+			return /*XST_FAILURE*/;
+		}
+		XGpio_SetDataDirection(&gpio_TRX, 1U, 0x00000000UL);  	// 32 bit output
+		XGpio_DiscreteWrite(&gpio_TRX, 1U, 0x00000001UL);		// RFX1010_MODE Lo-Mode (Bit 1), Disable TRX_RESETN (Bit 0)
+	}
+
+	/* Init SPI */
+	{
+		/* Set up the device in loopback mode and enable master mode */
+		spiConfigPtr = XSpi_LookupConfig(XPAR_TRX_TRX_CONFIG_TRX_AXI_QUAD_SPI_0_DEVICE_ID);
+		if (spiConfigPtr == NULL) {
+			return /*XST_DEVICE_NOT_FOUND*/;
+		}
+
+		int status = XSpi_CfgInitialize(&spiInstance, spiConfigPtr, spiConfigPtr->BaseAddress);
+		if (status != XST_SUCCESS) {
+			return /*XST_FAILURE*/;
+		}
+
+		/* Set the SPI device as a master and in loopback mode */
+		status = XSpi_SetOptions(&spiInstance, XSP_MASTER_OPTION | XSP_LOOPBACK_OPTION);
+		if (status != XST_SUCCESS) {
+			return /*XST_FAILURE*/;
+		}
+	}
+
+	/* Check version of TRX chip */
+	{
+		const u8 NumBytesToSend 	= 4U;
+		u8 Trx_Reg_pn_vn[4] 		= { 0x00U, 0x0dU, 0x00U, 0x00U };
+
+		/* Start the SPI driver so that the device is enabled */
+		XSpi_Start(&spiInstance);
+
+		/* Disable Global interrupt to use polled mode operation */
+		XSpi_IntrGlobalDisable(&spiInstance);
+
+		/* Prepare Receive buffer */
+		for (u8 idx = 0; idx < BUFFER_SIZE; ++idx) {
+			buffer[idx] = 0U;
+		}
+
+		/* Transmit the data */
+		int status = XSpi_Transfer(&spiInstance, Trx_Reg_pn_vn, buffer, NumBytesToSend);
+
+		/* Stop the SPI driver */
+		XSpi_Stop(&spiInstance);
+
+		if (status != XST_SUCCESS) {
+			return;
+		}
+
+		const u8 trx_pn = buffer[2];
+		const u8 trx_vn = buffer[3];
+
+		xil_printf("\r\nTaskTrx: Read TRX chip: PN = 0x%02X, VN = 0x%02X\r\n", trx_pn, trx_vn);
+	}
+
+#if 1
+	/* Switch to VCTCXO */
+	{
+
+	}
+#endif
+
+	while (1) {
+
+
+		vTaskDelay(pdMS_TO_TICKS(1000));
+	}
+}

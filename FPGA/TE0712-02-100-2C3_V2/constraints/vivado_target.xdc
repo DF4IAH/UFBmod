@@ -103,25 +103,33 @@ set_property IOSTANDARD LVCMOS33 [get_ports {TRX_rfx_mode[0]}]
 set_property PACKAGE_PIN J20 [get_ports TRX_clk_26MHz]
 set_property IOSTANDARD LVCMOS33 [get_ports TRX_clk_26MHz]
 
-set_property PACKAGE_PIN M18 [get_ports {TRX_reset[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {TRX_reset[0]}]
+set_property PACKAGE_PIN M18 [get_ports {TRX_resetn[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {TRX_resetn[0]}]
 
 set_property PACKAGE_PIN L18 [get_ports TRX_int]
 set_property IOSTANDARD LVCMOS33 [get_ports TRX_int]
 set_property PULLDOWN true [get_ports TRX_int]
 
 
+# SPI CLOCK
 set_property PACKAGE_PIN H13 [get_ports TRX_spi_sck_io]
 set_property IOSTANDARD LVCMOS33 [get_ports TRX_spi_sck_io]
+set_property PULLDOWN true [get_ports TRX_spi_sck_io]
 
+# SPI SELN
 set_property IOSTANDARD LVCMOS33 [get_ports {TRX_spi_ss_io[0]}]
 set_property PACKAGE_PIN G13 [get_ports {TRX_spi_ss_io[0]}]
+set_property PULLUP true [get_ports {TRX_spi_ss_io[0]}]
 
+# SPI MOSI
 set_property PACKAGE_PIN G16 [get_ports TRX_spi_io0_io]
 set_property IOSTANDARD LVCMOS33 [get_ports TRX_spi_io0_io]
+set_property PULLUP true [get_ports TRX_spi_io0_io]
 
-set_property PACKAGE_PIN J14 [get_ports TRX_spi_io1_io]
+# SPI MISO
+set_property PACKAGE_PIN G15 [get_ports TRX_spi_io1_io]
 set_property IOSTANDARD LVCMOS33 [get_ports TRX_spi_io1_io]
+set_property PULLUP true [get_ports TRX_spi_io1_io]
 
 
 set_property PACKAGE_PIN U22 [get_ports FPGA_IO]

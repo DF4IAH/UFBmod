@@ -1,5 +1,5 @@
---- msys_wrapper.vhd.orig.txt	2020-08-06 12:10:57.623753000 +0200
-+++ msys_wrapper.vhd	2020-08-06 12:11:19.229388100 +0200
+--- msys_wrapper.vhd.orig.txt	2020-08-23 14:22:43.069172500 +0200
++++ msys_wrapper.vhd	2020-08-23 14:23:15.542192300 +0200
 @@ -16,4 +16,6 @@
      BOARD_IIC_scl_io : inout STD_LOGIC;
      BOARD_IIC_sda_io : inout STD_LOGIC;
@@ -41,7 +41,7 @@
      TRX_PLL_clk_25MHz_N : out STD_LOGIC_VECTOR ( 0 to 0 );
      TRX_PLL_clk_25MHz_P : out STD_LOGIC_VECTOR ( 0 to 0 );
 @@ -82,8 +67,4 @@
-     TRX_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
+     TRX_resetn : out STD_LOGIC_VECTOR ( 0 to 0 );
      TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
 -    TRX_rx09_fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
 -    TRX_rx09_fifo_valid_o : out STD_LOGIC;
@@ -412,7 +412,7 @@
        TRX_PLL_clk_25MHz_N(0) => TRX_PLL_clk_25MHz_N(0),
        TRX_PLL_clk_25MHz_P(0) => TRX_PLL_clk_25MHz_P(0),
 @@ -475,8 +682,8 @@
-       TRX_reset(0) => TRX_reset(0),
+       TRX_resetn(0) => TRX_resetn(0),
        TRX_rfx_mode(0) => TRX_rfx_mode(0),
 -      TRX_rx09_fifo_o(31 downto 0) => TRX_rx09_fifo_o(31 downto 0),
 -      TRX_rx09_fifo_valid_o => TRX_rx09_fifo_valid_o,

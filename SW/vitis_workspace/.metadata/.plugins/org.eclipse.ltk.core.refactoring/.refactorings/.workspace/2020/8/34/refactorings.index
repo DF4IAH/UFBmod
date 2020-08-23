@@ -5,3 +5,6 @@
 1597923025002	Delete resource 'main_system'
 1598116764176	Delete resource 'rtos_system'
 1598134019087	Delete resource 'rtos_system'
+1598140917024	Delete resource 'xspi_low_level_example_1_system'
+1598141045642	Delete resource 'xspi_eeprom_example_1_system'
+1598184482947	Delete resource 'xspi_polled_example_1_system'

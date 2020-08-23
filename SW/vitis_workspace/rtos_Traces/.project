@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>rtos_Traces</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.linuxtools.tmf.project.nature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>Traces/Run_Aug.-23_00-49/mdm_USER2_0_MB_Trace_Aug.-23_00-49/mdm_USER2_0_MB_Trace_Aug.-23_00-49_</name>
+			<type>1</type>
+			<location>C:/Users/espero/git/UFBmod/SW/vitis_workspace/rtos_Traces/Traces/.bookmarks</location>
+		</link>
+		<link>
+			<name>Traces/Run_Aug.-23_00-53/mdm_USER2_0_MB_Trace_Aug.-23_00-53/mdm_USER2_0_MB_Trace_Aug.-23_00-53_</name>
+			<type>1</type>
+			<location>C:/Users/espero/git/UFBmod/SW/vitis_workspace/rtos_Traces/Traces/.bookmarks</location>
+		</link>
+		<link>
+			<name>Traces/Run_Aug.-23_00-56/mdm_USER2_0_MB_Trace_Aug.-23_00-56/mdm_USER2_0_MB_Trace_Aug.-23_00-56_</name>
+			<type>1</type>
+			<location>C:/Users/espero/git/UFBmod/SW/vitis_workspace/rtos_Traces/Traces/.bookmarks</location>
+		</link>
+	</linkedResources>
+</projectDescription>

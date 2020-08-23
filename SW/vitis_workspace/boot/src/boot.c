@@ -192,13 +192,13 @@ int IicLowLevelSi5338(void)
 #endif
 
 	/* Disable outputs */
-	if (iicReadAndModify(IIC_BASE_ADDRESS, SI5338_ADDRESS, 230U, 0x10U, 0x00U) != XST_SUCCESS)
+	if (iicReadAndModify(IIC_BASE_ADDRESS, SI5338_ADDRESS, 230U, 0x10U, 0x10U) != XST_SUCCESS)
 	{
 		return XST_FAILURE;
 	}
 
 	/* Pause LOL*/
-	if (iicReadAndModify(IIC_BASE_ADDRESS, SI5338_ADDRESS, 241U, 0x80U, 0x00U) != XST_SUCCESS)
+	if (iicReadAndModify(IIC_BASE_ADDRESS, SI5338_ADDRESS, 241U, 0x80U, 0x80U) != XST_SUCCESS)
 	{
 		return XST_FAILURE;
 	}
@@ -234,7 +234,7 @@ int IicLowLevelSi5338(void)
 	{
 		return XST_FAILURE;
 	}
-	if (iicReadAndModify(IIC_BASE_ADDRESS, SI5338_ADDRESS, 246U, 0x02U, 0x00U) != XST_SUCCESS)
+	if (iicReadAndModify(IIC_BASE_ADDRESS, SI5338_ADDRESS, 246U, 0x02U, 0x02U) != XST_SUCCESS)
 	{
 		return XST_FAILURE;
 	}
@@ -261,7 +261,7 @@ int IicLowLevelSi5338(void)
 		{
 			return XST_FAILURE;
 		}
-		value &= ~0x08U;
+		value &= ~0xeaU;
 
 		if (!value) {
 			break;
@@ -308,7 +308,7 @@ int IicLowLevelSi5338(void)
 			return XST_FAILURE;
 		}
 
-		if (iicReadAndModify(IIC_BASE_ADDRESS, SI5338_ADDRESS, 49U, 0x80U, 0x00U) != XST_SUCCESS)
+		if (iicReadAndModify(IIC_BASE_ADDRESS, SI5338_ADDRESS, 49U, 0x80U, 0x80U) != XST_SUCCESS)
 		{
 			return XST_FAILURE;
 		}
@@ -316,7 +316,7 @@ int IicLowLevelSi5338(void)
 
 	/* Down-spread */
 	if (0) {
-		if (iicReadAndModify(IIC_BASE_ADDRESS, SI5338_ADDRESS, 226U, 0x04U, 0x00U) != XST_SUCCESS)
+		if (iicReadAndModify(IIC_BASE_ADDRESS, SI5338_ADDRESS, 226U, 0x04U, 0x04U) != XST_SUCCESS)
 		{
 			return XST_FAILURE;
 		}
