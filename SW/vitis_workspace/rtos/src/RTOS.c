@@ -145,7 +145,7 @@ int main(void)
 	xTaskCreate(
 			taskTrx, 						/* The function that implements the task. */
 			(const char*) "tskTrx",			/* Text name for the task, provided to assist debugging only. */
-			configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
+			512U,							/* The stack allocated to the task. */
 			NULL,							/* The task parameter is not used, so set to NULL. */
 			tskIDLE_PRIORITY + 1U,			/* The task runs at that priority. */
 			&thTrx
@@ -192,6 +192,18 @@ int main(void)
 	for more details. */
 	while (1)
 		;
+}
+
+
+void pwmLedSet(u32 enableBF, u32 changeMsk)
+{
+	u32 gpio1_leds  = XGpio_DiscreteRead(&gpio_PWM_Lights, 1U);
+
+	// Read-and-Modify
+	gpio1_leds &= (~changeMsk);
+	gpio1_leds |= ( changeMsk & enableBF);
+
+	XGpio_DiscreteWrite(&gpio_PWM_Lights, 1U, gpio1_leds);
 }
 
 
@@ -365,51 +377,6 @@ static void taskDefault(void* pvParameters)
 				}
 			}
 		}
-	}
-#endif
-
-
-#if 1
-	/* DAC pull voltage */
-	{
-		u32 ByteCount;
-		u8 iicData[3] = { 0 };
-
-#if 1
-		/* Write DAC data */
-		xil_printf("IIC write DAC Addr = 0x%02x --> ", IIC_DAC_ONCHIP_ADDRESS);
-
-		u16 StatusReg = XIic_ReadReg(IIC_BOARD_BASE_ADDRESS, XIIC_SR_REG_OFFSET);
-		if(!(StatusReg & XIIC_SR_BUS_BUSY_MASK)) {
-			iicData[0]	= 0x01U;  // command: DAC_latch & CODE register
-			iicData[1]	= 0x7fU;  // MSB
-			iicData[2]	= 0x30U;  // LSB
-			ByteCount 	= 3;
-			ByteCount = XIic_Send(IIC_BOARD_BASE_ADDRESS, IIC_DAC_ONCHIP_ADDRESS, (u8*) &iicData, ByteCount, XIIC_STOP);
-			xil_printf("write: data cnt = %d\r\n", ByteCount);
-		}
-#endif
-
-#if 0
-		/* Read DAC data */
-		xil_printf("IIC read DAC Addr = 0x%02x --> ", IIC_DAC_ONCHIP_ADDRESS);
-
-		u16 StatusReg = XIic_ReadReg(IIC_BOARD_BASE_ADDRESS, XIIC_SR_REG_OFFSET);
-		if(!(StatusReg & XIIC_SR_BUS_BUSY_MASK)) {
-			iicData[0]	= 0x01;
-			ByteCount 	= 1;
-			ByteCount = XIic_Send(IIC_BOARD_BASE_ADDRESS, IIC_DAC_ONCHIP_ADDRESS, (u8*) &iicData, ByteCount, XIIC_REPEATED_START);
-
-			iicData[0]	= 0x00U;
-			iicData[1]	= 0x00U;
-			ByteCount = XIic_Recv(IIC_BOARD_BASE_ADDRESS, IIC_DAC_ONCHIP_ADDRESS, (u8*) &iicData, 2, XIIC_STOP);
-			if (ByteCount) {
-				xil_printf("read: data cnt = %d, data[0] = 0x%02x, data[1] = 0x%02x\r\n", ByteCount, iicData[0], iicData[1]);
-			} else {
-				xil_printf("read: no data.\r\n");
-			}
-		}
-#endif
 	}
 #endif
 
@@ -829,7 +796,7 @@ static void taskDefault(void* pvParameters)
 			loopIdx &= 0x03U;
 #endif
 
-			XGpio_DiscreteWrite(&gpio_PWM_Lights, 1U, pwm_bf);
+			pwmLedSet(pwm_bf, 0xffffffffUL);
 		}
 #endif
 
@@ -893,16 +860,16 @@ static void taskEth(void* pvParameters)
 		/* Wait for a Receive packet */
 		while (!emacLiteRxFrameLength) {
 			vTaskDelay(pdMS_TO_TICKS(20UL));
-			XGpio_DiscreteWrite(&gpio_PWM_Lights, 1U, 0x20ff0000UL);
+			//pwmLedSet(0x00ff0000UL, 0x00ff0000UL);
 			emacLiteRxFrameLength = XEmacLite_Recv(emacLiteInstPtr, (u8*) emacLiteRxFrame);
-			XGpio_DiscreteWrite(&gpio_PWM_Lights, 1U, 0x20000000UL);
+			//pwmLedSet(0x00000000UL, 0x00ff0000UL);
 		}
 
 		/* Process the Receive frame */
-		XGpio_DiscreteWrite(&gpio_PWM_Lights, 1U, 0x2000ff00UL);
+		//pwmLedSet(0x0000ff00UL, 0x0000ff00UL);
 		ethProcessRecvFrame(emacLiteInstPtr);
 		emacLiteRxFrameLength = 0UL;
-		XGpio_DiscreteWrite(&gpio_PWM_Lights, 1U, 0x20000000UL);
+		//pwmLedSet(0x00000000UL, 0x0000ff00UL);
 	}
 }
 

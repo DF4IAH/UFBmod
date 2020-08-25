@@ -19,6 +19,8 @@ extern "C" {
 #endif
 
 
+#define min(a,b)	((a) > (b) ?  (b) : (a))
+
 
 /************************** Global Variables *********************************/
 
@@ -41,6 +43,8 @@ extern u8 owreadEUI48(void);
 
 extern unsigned int iicRead(UINTPTR baseAddr, u8 iicChipAddr, u8 iicRegister, u8* getValue);
 extern unsigned int iicReadAndModify(UINTPTR baseAddr, u8 iicChipAddr, u8 iicRegister, u8 setValue, u8 readMask);
+
+extern void pwmLedSet(u32 enableBF, u32 changeMsk);
 
 extern void taskTrx(void* pvParameters);
 

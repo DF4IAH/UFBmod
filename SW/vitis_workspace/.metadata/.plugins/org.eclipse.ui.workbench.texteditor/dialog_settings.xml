@@ -2,12 +2,19 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="SPI" key="selection"/>
+		<item value="AUXS" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="AUXS"/>
+			<item value="PADFE"/>
+			<item value="TrxOperationModeSet"/>
+			<item value="Assert"/>
+			<item value="gpio_PWM_Lights"/>
+			<item value="led"/>
+			<item value="PWM"/>
 			<item value="SPI"/>
 			<item value="nop"/>
 			<item value="asm"/>
@@ -16,13 +23,6 @@
 			<item value="XIic"/>
 			<item value="ARP_PACKET_SIZE"/>
 			<item value="htons"/>
-			<item value="NextTxBuffBaseAddr"/>
-			<item value="SCOPE_MASK_GPIO0_OUT_trigLvlHi"/>
-			<item value="gpio_CLK1B_PS"/>
-			<item value="gpio_SCOPE"/>
-			<item value="9600"/>
-			<item value="Lookup"/>
-			<item value="Config"/>
 		</list>
 		<list key="replacehistory">
 		</list>

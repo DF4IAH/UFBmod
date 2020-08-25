@@ -1847,9 +1847,9 @@ proc create_hier_cell_TRX_config { parentCell nameHier } {
   # Create instance: TRX_axi_quad_spi_0, and set properties
   set TRX_axi_quad_spi_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_quad_spi:3.2 TRX_axi_quad_spi_0 ]
   set_property -dict [ list \
-   CONFIG.C_FIFO_DEPTH {16} \
+   CONFIG.C_FIFO_DEPTH {256} \
    CONFIG.C_NUM_SS_BITS {1} \
-   CONFIG.C_SCK_RATIO {4} \
+   CONFIG.C_SCK_RATIO {16} \
    CONFIG.C_USE_STARTUP {0} \
    CONFIG.C_USE_STARTUP_INT {0} \
    CONFIG.FIFO_INCLUDED {1} \
