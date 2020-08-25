@@ -20954,15 +20954,15 @@ I2C addr: 0x1C, I2C broadcast addr: 0x2A</text>
 <plain>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">Front end: LNA &amp; PA for 868 MHz</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">Front end 868 MHz</text>
-<text x="215.9" y="76.2" size="1.778" layer="97">Config2
+<text x="215.9" y="76.2" size="1.778" layer="97">Config1
 0: RX
 1: TX</text>
-<text x="134.62" y="20.32" size="1.778" layer="97">Config2
-0: OFF
-1: ON</text>
-<text x="149.86" y="20.32" size="1.778" layer="97">Config2
-0: RX
-1: TX</text>
+<text x="134.62" y="20.32" size="1.778" layer="97">Config1
+RX: H ON
+TX: L OFF</text>
+<text x="149.86" y="20.32" size="1.778" layer="97">Config1
+RX: L OFF
+TX: H ON</text>
 <text x="7.62" y="121.92" size="1.778" layer="97">X0891</text>
 <text x="7.62" y="40.64" size="1.778" layer="97">X0895</text>
 </plain>
