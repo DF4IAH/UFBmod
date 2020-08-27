@@ -18702,8 +18702,8 @@ Subminiature Tact Switch for SMT</description>
 <part name="FRAME_13" library="df4iah_frame" deviceset="A4L-LOC" device="" value="Holes"/>
 <part name="FRAME_07" library="df4iah_frame" deviceset="A4L-LOC" device="" value="Holes"/>
 <part name="U0701" library="df4iah_rf" deviceset="AT86RF215" device="" value="AT86RF215-ZU"/>
-<part name="L0702" library="df4iah_rcl" deviceset="R-EU_" device="R1206" value="300R"/>
-<part name="L0701" library="df4iah_rcl" deviceset="R-EU_" device="R1206" value="300R"/>
+<part name="L0702" library="df4iah_rcl" deviceset="R-EU_" device="R1206" value="0R"/>
+<part name="L0701" library="df4iah_rcl" deviceset="R-EU_" device="R1206" value="0R"/>
 <part name="GND0701" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="L0703" library="df4iah_rcl" deviceset="R-EU_" device="R1206" value="300R"/>
 <part name="L0704" library="df4iah_rcl" deviceset="R-EU_" device="R1206" value="300R"/>
@@ -20466,6 +20466,7 @@ I2C addr: 0x1C, I2C broadcast addr: 0x2A</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">SPI: TRX</text>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">Microchip Technologies AT86RF215</text>
 <text x="93.98" y="83.82" size="1.778" layer="97">26MHz</text>
+<text x="35.56" y="22.86" size="1.778" layer="97">Replace L0701, L0702 by 0 Ohm bridges</text>
 </plain>
 <instances>
 <instance part="FRAME_07" gate="G$1" x="0" y="0" smashed="yes">

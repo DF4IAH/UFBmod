@@ -18798,8 +18798,6 @@ Voltage reference</description>
 <part name="FRAME_13" library="df4iah_frame" deviceset="A4L-LOC" device="" value="Holes"/>
 <part name="FRAME_07" library="df4iah_frame" deviceset="A4L-LOC" device="" value="Holes"/>
 <part name="U0701" library="df4iah_rf" deviceset="AT86RF215" device="" value="AT86RF215-ZU"/>
-<part name="L0702" library="df4iah_rcl" deviceset="R-EU_" device="R1206" value="300R"/>
-<part name="L0701" library="df4iah_rcl" deviceset="R-EU_" device="R1206" value="300R"/>
 <part name="GND0701" library="df4iah_supply" deviceset="GND" device=""/>
 <part name="L0703" library="df4iah_rcl" deviceset="R-EU_" device="R1206" value="300R"/>
 <part name="L0704" library="df4iah_rcl" deviceset="R-EU_" device="R1206" value="300R"/>
@@ -20608,7 +20606,9 @@ I2C addr: 0x1C, I2C broadcast addr: 0x2A</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">SPI: TRX</text>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">Microchip Technologies AT86RF215</text>
 <text x="93.98" y="83.82" size="1.778" layer="97">26MHz</text>
-<text x="15.24" y="22.86" size="1.778" layer="97">TODO: use extra driver for CLKO to keep TRX in balance</text>
+<text x="15.24" y="22.86" size="1.778" layer="97">TODO: 
+- use extra driver for CLKO to keep TRX in balance
+- Low drop linear voltage regulator needed for L0703, L0704</text>
 </plain>
 <instances>
 <instance part="FRAME_07" gate="G$1" x="0" y="0" smashed="yes">
@@ -20620,8 +20620,6 @@ I2C addr: 0x1C, I2C broadcast addr: 0x2A</text>
 <attribute name="NAME" x="109.22" y="154.94" size="1.9304" layer="95" font="vector" ratio="10"/>
 <attribute name="VALUE" x="142.24" y="76.2" size="1.9304" layer="96" font="vector" ratio="10" rot="R90"/>
 </instance>
-<instance part="L0702" gate="G$1" x="63.5" y="43.18"/>
-<instance part="L0701" gate="G$1" x="53.34" y="38.1"/>
 <instance part="GND0701" gate="1" x="45.72" y="33.02"/>
 <instance part="L0703" gate="G$1" x="63.5" y="53.34"/>
 <instance part="L0704" gate="G$1" x="53.34" y="68.58"/>
@@ -20678,11 +20676,17 @@ I2C addr: 0x1C, I2C broadcast addr: 0x2A</text>
 <busses>
 </busses>
 <nets>
-<net name="TRX_DVSS" class="0">
+<net name="GND" class="0">
 <segment>
-<pinref part="L0702" gate="G$1" pin="2"/>
+<wire x1="45.72" y1="38.1" x2="45.72" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="38.1" x2="45.72" y2="43.18" width="0.1524" layer="91"/>
+<junction x="45.72" y="38.1"/>
+<wire x1="45.72" y1="43.18" x2="78.74" y2="43.18" width="0.1524" layer="91"/>
+<pinref part="GND0701" gate="1" pin="GND"/>
+<pinref part="C0701" gate="G$1" pin="2"/>
+<wire x1="45.72" y1="43.18" x2="45.72" y2="45.72" width="0.1524" layer="91"/>
+<junction x="45.72" y="43.18"/>
 <pinref part="U0701" gate="G$1" pin="DVSS"/>
-<wire x1="68.58" y1="43.18" x2="78.74" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="C0703" gate="G$1" pin="2"/>
 <wire x1="78.74" y1="43.18" x2="88.9" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="43.18" x2="104.14" y2="43.18" width="0.1524" layer="91"/>
@@ -20692,13 +20696,8 @@ I2C addr: 0x1C, I2C broadcast addr: 0x2A</text>
 <junction x="88.9" y="43.18"/>
 <pinref part="C0706" gate="G$1" pin="1"/>
 <wire x1="88.9" y1="48.26" x2="93.98" y2="48.26" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="TRX_AVSS" class="0">
-<segment>
-<pinref part="L0701" gate="G$1" pin="2"/>
 <pinref part="U0701" gate="G$1" pin="AVSS"/>
-<wire x1="58.42" y1="38.1" x2="73.66" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="38.1" x2="73.66" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="C0704" gate="G$1" pin="2"/>
 <wire x1="73.66" y1="38.1" x2="86.36" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="38.1" x2="104.14" y2="38.1" width="0.1524" layer="91"/>
@@ -20718,21 +20717,6 @@ I2C addr: 0x1C, I2C broadcast addr: 0x2A</text>
 <wire x1="96.52" y1="76.2" x2="96.52" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="U0701" gate="G$1" pin="XTAL2"/>
 <wire x1="96.52" y1="91.44" x2="104.14" y2="91.44" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="GND" class="0">
-<segment>
-<pinref part="L0701" gate="G$1" pin="1"/>
-<wire x1="48.26" y1="38.1" x2="45.72" y2="38.1" width="0.1524" layer="91"/>
-<wire x1="45.72" y1="38.1" x2="45.72" y2="35.56" width="0.1524" layer="91"/>
-<wire x1="45.72" y1="38.1" x2="45.72" y2="43.18" width="0.1524" layer="91"/>
-<junction x="45.72" y="38.1"/>
-<pinref part="L0702" gate="G$1" pin="1"/>
-<wire x1="45.72" y1="43.18" x2="58.42" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="GND0701" gate="1" pin="GND"/>
-<pinref part="C0701" gate="G$1" pin="2"/>
-<wire x1="45.72" y1="43.18" x2="45.72" y2="45.72" width="0.1524" layer="91"/>
-<junction x="45.72" y="43.18"/>
 </segment>
 <segment>
 <pinref part="U0711" gate="G$1" pin="GND"/>

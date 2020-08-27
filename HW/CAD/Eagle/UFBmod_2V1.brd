@@ -6452,11 +6452,11 @@ Covered vias can be set in Masks (Limit).
 <attribute name="NAME" x="17.45" y="36.0405" size="0.6096" layer="25" font="vector" ratio="10" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="15.17" y="35.89" size="0.6096" layer="27" font="vector" rot="R270" align="top-center"/>
 </element>
-<element name="L0702" library="df4iah_rcl" package="R1206" value="300R" x="20.6375" y="30.1625" smashed="yes" rot="R90">
+<element name="L0702" library="df4iah_rcl" package="R1206" value="0R" x="20.6375" y="30.1625" smashed="yes" rot="R90">
 <attribute name="NAME" x="22.70125" y="28.41625" size="0.6096" layer="25" font="vector" rot="R90"/>
 <attribute name="VALUE" x="23.1775" y="28.8925" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="L0701" library="df4iah_rcl" package="R1206" value="300R" x="13.97" y="46.99" smashed="yes" rot="R270">
+<element name="L0701" library="df4iah_rcl" package="R1206" value="0R" x="13.97" y="46.99" smashed="yes" rot="R270">
 <attribute name="NAME" x="12.7" y="45.56125" size="0.6096" layer="25" font="vector" rot="R90"/>
 <attribute name="VALUE" x="11.43" y="48.26" size="1.27" layer="27" rot="R270"/>
 </element>
