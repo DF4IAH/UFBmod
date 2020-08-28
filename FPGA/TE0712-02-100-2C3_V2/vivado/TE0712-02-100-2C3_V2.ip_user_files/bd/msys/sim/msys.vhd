@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Tue Aug 25 21:41:05 2020
+--Date        : Fri Aug 28 21:10:12 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -3091,7 +3091,8 @@ entity TRX_clock_imp_19R9ARK is
     TRX_PLL_clk_25MHz_P : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_clk_26MHz : in STD_LOGIC;
     clk_trx_26MHz_vio : out STD_LOGIC;
-    clk_trx_pll_25MHz_vio : out STD_LOGIC
+    clk_trx_pll_25MHz_vio : out STD_LOGIC;
+    locked : out STD_LOGIC
   );
 end TRX_clock_imp_19R9ARK;
 
@@ -3103,7 +3104,8 @@ architecture STRUCTURE of TRX_clock_imp_19R9ARK is
     clk_out1_25MHz : out STD_LOGIC;
     clk_trx_26MHz_vio : out STD_LOGIC;
     clk_trx_pll_25MHz_vio : out STD_LOGIC;
-    clkfb_out : out STD_LOGIC
+    clkfb_out : out STD_LOGIC;
+    locked : out STD_LOGIC
   );
   end component msys_BOARD_clk_wiz_0_0;
   component msys_util_ds_buf_0_2 is
@@ -3116,6 +3118,7 @@ architecture STRUCTURE of TRX_clock_imp_19R9ARK is
   signal TRX_PLL_clk_wiz_0_clk_out1_25MHz : STD_LOGIC;
   signal TRX_PLL_clk_wiz_0_clk_trx_26MHz_vio : STD_LOGIC;
   signal TRX_PLL_clk_wiz_0_clk_trx_pll_25MHz_vio : STD_LOGIC;
+  signal TRX_PLL_clk_wiz_0_locked : STD_LOGIC;
   signal TRX_PLL_util_ds_buf_0_OBUF_DS_N : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_PLL_util_ds_buf_0_OBUF_DS_P : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_clk_26MHz_1 : STD_LOGIC;
@@ -3126,6 +3129,7 @@ begin
   TRX_clk_26MHz_1 <= TRX_clk_26MHz;
   clk_trx_26MHz_vio <= TRX_PLL_clk_wiz_0_clk_trx_26MHz_vio;
   clk_trx_pll_25MHz_vio <= TRX_PLL_clk_wiz_0_clk_trx_pll_25MHz_vio;
+  locked <= TRX_PLL_clk_wiz_0_locked;
 TRX_PLL_clk_wiz_0: component msys_BOARD_clk_wiz_0_0
      port map (
       clk_in1 => TRX_clk_26MHz_1,
@@ -3133,7 +3137,8 @@ TRX_PLL_clk_wiz_0: component msys_BOARD_clk_wiz_0_0
       clk_trx_26MHz_vio => TRX_PLL_clk_wiz_0_clk_trx_26MHz_vio,
       clk_trx_pll_25MHz_vio => TRX_PLL_clk_wiz_0_clk_trx_pll_25MHz_vio,
       clkfb_in => TRX_clk_wiz_0_clkfb_out,
-      clkfb_out => TRX_clk_wiz_0_clkfb_out
+      clkfb_out => TRX_clk_wiz_0_clkfb_out,
+      locked => TRX_PLL_clk_wiz_0_locked
     );
 TRX_PLL_util_ds_buf_0: component msys_util_ds_buf_0_2
      port map (
@@ -3148,6 +3153,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity TRX_config_imp_SLQI5S is
   port (
+    LVDS_tx_blank : out STD_LOGIC_VECTOR ( 0 to 0 );
     S_AXI_gpio_araddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     S_AXI_gpio_arready : out STD_LOGIC_VECTOR ( 0 to 0 );
     S_AXI_gpio_arvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -3182,6 +3188,8 @@ entity TRX_config_imp_SLQI5S is
     S_AXI_spi_wready : out STD_LOGIC_VECTOR ( 0 to 0 );
     S_AXI_spi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S_AXI_spi_wvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Status_LVDS_rx09_synced : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Status_LVDS_rx24_synced : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_resetn : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_io0_i : in STD_LOGIC;
@@ -3197,6 +3205,7 @@ entity TRX_config_imp_SLQI5S is
     TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_t : out STD_LOGIC;
     ip2intc_irpt : out STD_LOGIC;
+    locked : in STD_LOGIC;
     s_axi_aclk : in STD_LOGIC;
     s_axi_aresetn : in STD_LOGIC
   );
@@ -3205,13 +3214,13 @@ end TRX_config_imp_SLQI5S;
 architecture STRUCTURE of TRX_config_imp_SLQI5S is
   component msys_xlslice_0_3 is
   port (
-    Din : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
     Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_xlslice_0_3;
   component msys_TRX_xlslice_0to0_0_0 is
   port (
-    Din : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
     Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_TRX_xlslice_0to0_0_0;
@@ -3236,7 +3245,8 @@ architecture STRUCTURE of TRX_config_imp_SLQI5S is
     s_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_rvalid : out STD_LOGIC;
     s_axi_rready : in STD_LOGIC;
-    gpio_io_o : out STD_LOGIC_VECTOR ( 1 downto 0 )
+    gpio_io_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    gpio2_io_i : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component msys_axi_ROTENC_gpio_0_0;
   component msys_axi_quad_spi_1_0 is
@@ -3276,6 +3286,21 @@ architecture STRUCTURE of TRX_config_imp_SLQI5S is
     ip2intc_irpt : out STD_LOGIC
   );
   end component msys_axi_quad_spi_1_0;
+  component msys_xlslice_0_42 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_xlslice_0_42;
+  component msys_xlconcat_0_19 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In3 : in STD_LOGIC_VECTOR ( 28 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component msys_xlconcat_0_19;
   signal Conn2_IO0_I : STD_LOGIC;
   signal Conn2_IO0_O : STD_LOGIC;
   signal Conn2_IO0_T : STD_LOGIC;
@@ -3322,10 +3347,15 @@ architecture STRUCTURE of TRX_config_imp_SLQI5S is
   signal S_AXI_spi_0_WREADY : STD_LOGIC;
   signal S_AXI_spi_0_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal S_AXI_spi_0_WVALID : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal Status_LVDS_rx09_synced_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal Status_LVDS_rx24_synced_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_axi_quad_spi_0_ip2intc_irpt : STD_LOGIC;
+  signal TRX_gpio_xlconcat_0_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal TRX_gpio_xlslice_0to0_0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_gpio_xlslice_1downto1_blankTx_0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_gpio_xlslice_1to1_0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal axi_TRX_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal axi_TRX_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal locked_0 : STD_LOGIC;
   signal rst_mig_7series_0_100M_peripheral_aresetn : STD_LOGIC;
   signal s_axi_aclk_CD100 : STD_LOGIC;
 begin
@@ -3333,6 +3363,7 @@ begin
   Conn2_IO1_I <= TRX_spi_io1_i;
   Conn2_SCK_I <= TRX_spi_sck_i;
   Conn2_SS_I(0) <= TRX_spi_ss_i(0);
+  LVDS_tx_blank(0) <= TRX_gpio_xlslice_1downto1_blankTx_0_Dout(0);
   S_AXI_gpio_0_ARADDR(31 downto 0) <= S_AXI_gpio_araddr(31 downto 0);
   S_AXI_gpio_0_ARVALID(0) <= S_AXI_gpio_arvalid(0);
   S_AXI_gpio_0_AWADDR(31 downto 0) <= S_AXI_gpio_awaddr(31 downto 0);
@@ -3367,6 +3398,8 @@ begin
   S_AXI_spi_rresp(1 downto 0) <= S_AXI_spi_0_RRESP(1 downto 0);
   S_AXI_spi_rvalid(0) <= S_AXI_spi_0_RVALID;
   S_AXI_spi_wready(0) <= S_AXI_spi_0_WREADY;
+  Status_LVDS_rx09_synced_1(0) <= Status_LVDS_rx09_synced(0);
+  Status_LVDS_rx24_synced_1(0) <= Status_LVDS_rx24_synced(0);
   TRX_resetn(0) <= TRX_gpio_xlslice_0to0_0_Dout(0);
   TRX_rfx_mode(0) <= TRX_gpio_xlslice_1to1_0_Dout(0);
   TRX_spi_io0_o <= Conn2_IO0_O;
@@ -3378,6 +3411,7 @@ begin
   TRX_spi_ss_o(0) <= Conn2_SS_O(0);
   TRX_spi_ss_t <= Conn2_SS_T;
   ip2intc_irpt <= TRX_axi_quad_spi_0_ip2intc_irpt;
+  locked_0 <= locked;
   rst_mig_7series_0_100M_peripheral_aresetn <= s_axi_aresetn;
   s_axi_aclk_CD100 <= s_axi_aclk;
 TRX_axi_quad_spi_0: component msys_axi_quad_spi_1_0
@@ -3416,19 +3450,33 @@ TRX_axi_quad_spi_0: component msys_axi_quad_spi_1_0
       ss_o(0) => Conn2_SS_O(0),
       ss_t => Conn2_SS_T
     );
-TRX_gpio_xlslice_0to0_0: component msys_xlslice_0_3
+TRX_gpio_xlconcat_0: component msys_xlconcat_0_19
      port map (
-      Din(1 downto 0) => axi_TRX_gpio_0_gpio_io_o(1 downto 0),
-      Dout(0) => TRX_gpio_xlslice_0to0_0_Dout(0)
+      In0(0) => locked_0,
+      In1(0) => Status_LVDS_rx09_synced_1(0),
+      In2(0) => Status_LVDS_rx24_synced_1(0),
+      In3(28 downto 0) => B"00000000000000000000000000000",
+      dout(31 downto 0) => TRX_gpio_xlconcat_0_dout(31 downto 0)
     );
-TRX_gpio_xlslice_1to1_0: component msys_TRX_xlslice_0to0_0_0
+TRX_gpio_xlslice_0downto0_blankTx_0: component msys_xlslice_0_42
      port map (
-      Din(1 downto 0) => axi_TRX_gpio_0_gpio_io_o(1 downto 0),
+      Din(31 downto 0) => axi_TRX_gpio_0_gpio_io_o(31 downto 0),
+      Dout(0) => TRX_gpio_xlslice_1downto1_blankTx_0_Dout(0)
+    );
+TRX_gpio_xlslice_30downto30_rfxmode_0: component msys_TRX_xlslice_0to0_0_0
+     port map (
+      Din(31 downto 0) => axi_TRX_gpio_0_gpio_io_o(31 downto 0),
       Dout(0) => TRX_gpio_xlslice_1to1_0_Dout(0)
+    );
+TRX_gpio_xlslice_31downto31_resetn_0: component msys_xlslice_0_3
+     port map (
+      Din(31 downto 0) => axi_TRX_gpio_0_gpio_io_o(31 downto 0),
+      Dout(0) => TRX_gpio_xlslice_0to0_0_Dout(0)
     );
 axi_TRX_gpio_0: component msys_axi_ROTENC_gpio_0_0
      port map (
-      gpio_io_o(1 downto 0) => axi_TRX_gpio_0_gpio_io_o(1 downto 0),
+      gpio2_io_i(31 downto 0) => TRX_gpio_xlconcat_0_dout(31 downto 0),
+      gpio_io_o(31 downto 0) => axi_TRX_gpio_0_gpio_io_o(31 downto 0),
       s_axi_aclk => s_axi_aclk_CD100,
       s_axi_araddr(8 downto 0) => S_AXI_gpio_0_ARADDR(8 downto 0),
       s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn,
@@ -3752,11 +3800,11 @@ entity TRX_tx_DDS_unit_imp_195K6TC is
     S_AXI_wready : out STD_LOGIC_VECTOR ( 0 to 0 );
     S_AXI_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S_AXI_wvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_rx_clkdiv_16MHz_i : in STD_LOGIC;
     TRX_tx_4to1_c_counter_binary_0_THRESH0 : out STD_LOGIC;
     TRX_tx_im_out : out STD_LOGIC_VECTOR ( 20 downto 8 );
     TRX_tx_re_out : out STD_LOGIC_VECTOR ( 20 downto 8 );
     aresetn : in STD_LOGIC;
-    clk_div_out : in STD_LOGIC;
     s_axi_aclk : in STD_LOGIC;
     s_axi_aresetn : in STD_LOGIC
   );
@@ -4017,7 +4065,7 @@ begin
   TRX_tx_im_out(20 downto 8) <= TRX_tx_im_out_0(20 downto 8);
   TRX_tx_re_out(20 downto 8) <= TRX_tx_re_out_0(20 downto 8);
   aresetn_1 <= aresetn;
-  clk_div_out_1 <= clk_div_out;
+  clk_div_out_1 <= TRX_rx_clkdiv_16MHz_i;
   s_axi_aclk_1 <= s_axi_aclk;
   s_axi_aresetn_1 <= s_axi_aresetn;
 TRX_CDC_tx0_c_shift_ram_0: component msys_c_shift_ram_0_3
@@ -4042,7 +4090,7 @@ TRX_tx0_dds_compiler_0: component msys_dds_compiler_0_0
       m_axis_data_tdata(31 downto 0) => TRX_tx_dds_compiler_0_m_axis_data_tdata(31 downto 0),
       m_axis_data_tvalid => NLW_TRX_tx0_dds_compiler_0_m_axis_data_tvalid_UNCONNECTED,
       s_axis_config_tdata(23 downto 0) => TRX_tx0_xlslice_23to00_Dout(23 downto 0),
-      s_axis_config_tvalid => '0'
+      s_axis_config_tvalid => xlconstant_1_len1_dout(0)
     );
 TRX_tx0_im_xbip_multadd_0: component msys_xbip_multadd_0_1
      port map (
@@ -4096,7 +4144,7 @@ TRX_tx1_dds_compiler_0: component msys_TRX_tx_dds_compiler_0_0
       m_axis_data_tdata(31 downto 0) => TRX_tx_dds_compiler_1_m_axis_data_tdata(31 downto 0),
       m_axis_data_tvalid => NLW_TRX_tx1_dds_compiler_0_m_axis_data_tvalid_UNCONNECTED,
       s_axis_config_tdata(23 downto 0) => TRX_tx1_xlslice_23to00_Dout(23 downto 0),
-      s_axis_config_tvalid => '0'
+      s_axis_config_tvalid => xlconstant_1_len1_dout(0)
     );
 TRX_tx1_im_xbip_multadd_0: component msys_xbip_multadd_0_3
      port map (
@@ -4188,12 +4236,14 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity TRX_tx_concat_imp_16F62M8 is
   port (
+    TRX_config_LVDS_tx_blank_in : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_tx09_fifo_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_tx09_fifo_dout : in STD_LOGIC_VECTOR ( 7 downto 0 );
     TRX_tx_PTT_in : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_tx_data_out_from_device_in : out STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_tx_im_out : in STD_LOGIC_VECTOR ( 20 downto 8 );
-    TRX_tx_re_out : in STD_LOGIC_VECTOR ( 20 downto 8 )
+    TRX_tx_re_out : in STD_LOGIC_VECTOR ( 20 downto 8 );
+    clk_div_out : in STD_LOGIC
   );
 end TRX_tx_concat_imp_16F62M8;
 
@@ -4290,108 +4340,194 @@ architecture STRUCTURE of TRX_tx_concat_imp_16F62M8 is
     dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_xlconstant_0_17;
-  signal TRX_tx09_fifo_din_0 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  component msys_util_vector_logic_0_9 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Op2 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Res : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component msys_util_vector_logic_0_9;
+  component msys_xlconcat_1_4 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In8 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In9 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In10 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In11 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In12 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In13 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In14 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In15 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component msys_xlconcat_1_4;
+  component msys_util_vector_logic_0_10 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_util_vector_logic_0_10;
+  component msys_c_shift_ram_0_25 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_c_shift_ram_0_25;
+  signal TRX_blank_tx_c_shift_ram_0_Q : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_blank_tx_util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal TRX_blank_tx_xlconcat_0_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal TRX_config_LVDS_tx_blank_in_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_config_LVDS_tx_blankn_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_tx09_fifo_dout_0 : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal TRX_tx_LVDS_interleave_xlconcat_0_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal TRX_tx_PTT_in_0 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal TRX_tx_data_out_from_device_in_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal TRX_tx_im_out_0 : STD_LOGIC_VECTOR ( 20 downto 8 );
   signal TRX_tx_re_out_0 : STD_LOGIC_VECTOR ( 20 downto 8 );
-  signal xlconstant_0_len1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal xlconstant_1_len1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal xlslice_0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal xlslice_1_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal xlslice_2_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal xlslice_3_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal xlslice_4_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal xlslice_5_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal xlslice_6_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal xlslice_7_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_tx_word_format_xlconcat_0_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal clk_div_out_1 : STD_LOGIC;
+  signal xlconstant_val0_len1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal xlconstant_val1_len1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal xlslice_00to00_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal xlslice_01to01_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal xlslice_02to02_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal xlslice_03to03_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal xlslice_04to04_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal xlslice_05to05_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal xlslice_06to06_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal xlslice_07to07_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
 begin
-  TRX_tx09_fifo_din(31 downto 0) <= TRX_tx09_fifo_din_0(31 downto 0);
+  TRX_config_LVDS_tx_blank_in_1(0) <= TRX_config_LVDS_tx_blank_in(0);
+  TRX_tx09_fifo_din(31 downto 0) <= TRX_tx_word_format_xlconcat_0_dout(31 downto 0);
   TRX_tx09_fifo_dout_0(7 downto 0) <= TRX_tx09_fifo_dout(7 downto 0);
   TRX_tx_PTT_in_0(0) <= TRX_tx_PTT_in(0);
-  TRX_tx_data_out_from_device_in(15 downto 0) <= TRX_tx_data_out_from_device_in_0(15 downto 0);
+  TRX_tx_data_out_from_device_in(15 downto 0) <= TRX_blank_tx_util_vector_logic_0_Res(15 downto 0);
   TRX_tx_im_out_0(20 downto 8) <= TRX_tx_im_out(20 downto 8);
   TRX_tx_re_out_0(20 downto 8) <= TRX_tx_re_out(20 downto 8);
-TRX_tx_xlconcat_0: component msys_xlconcat_0_6
+  clk_div_out_1 <= clk_div_out;
+TRX_blank_tx_c_shift_ram_0: component msys_c_shift_ram_0_25
      port map (
-      In0(0) => xlslice_0_Dout(0),
-      In1(0) => xlconstant_0_len1_dout(0),
-      In10(0) => xlslice_5_Dout(0),
-      In11(0) => xlconstant_0_len1_dout(0),
-      In12(0) => xlslice_6_Dout(0),
-      In13(0) => xlconstant_0_len1_dout(0),
-      In14(0) => xlslice_7_Dout(0),
-      In15(0) => xlconstant_0_len1_dout(0),
-      In2(0) => xlslice_1_Dout(0),
-      In3(0) => xlconstant_0_len1_dout(0),
-      In4(0) => xlslice_2_Dout(0),
-      In5(0) => xlconstant_0_len1_dout(0),
-      In6(0) => xlslice_3_Dout(0),
-      In7(0) => xlconstant_0_len1_dout(0),
-      In8(0) => xlslice_4_Dout(0),
-      In9(0) => xlconstant_0_len1_dout(0),
-      dout(15 downto 0) => TRX_tx_data_out_from_device_in_0(15 downto 0)
+      CLK => clk_div_out_1,
+      D(0) => TRX_config_LVDS_tx_blank_in_1(0),
+      Q(0) => TRX_blank_tx_c_shift_ram_0_Q(0)
     );
-xlconcat_0: component msys_xlconcat_0_7
+TRX_blank_tx_util_vector_logic_0: component msys_util_vector_logic_0_9
      port map (
-      In0(0) => xlconstant_0_len1_dout(0),
+      Op1(15 downto 0) => TRX_tx_LVDS_interleave_xlconcat_0_dout(15 downto 0),
+      Op2(15 downto 0) => TRX_blank_tx_xlconcat_0_dout(15 downto 0),
+      Res(15 downto 0) => TRX_blank_tx_util_vector_logic_0_Res(15 downto 0)
+    );
+TRX_blank_tx_util_vector_logic_1: component msys_util_vector_logic_0_10
+     port map (
+      Op1(0) => TRX_blank_tx_c_shift_ram_0_Q(0),
+      Res(0) => TRX_config_LVDS_tx_blankn_0(0)
+    );
+TRX_blank_tx_xlconcat_0: component msys_xlconcat_1_4
+     port map (
+      In0(0) => TRX_config_LVDS_tx_blankn_0(0),
+      In1(0) => TRX_config_LVDS_tx_blankn_0(0),
+      In10(0) => TRX_config_LVDS_tx_blankn_0(0),
+      In11(0) => TRX_config_LVDS_tx_blankn_0(0),
+      In12(0) => TRX_config_LVDS_tx_blankn_0(0),
+      In13(0) => TRX_config_LVDS_tx_blankn_0(0),
+      In14(0) => TRX_config_LVDS_tx_blankn_0(0),
+      In15(0) => TRX_config_LVDS_tx_blankn_0(0),
+      In2(0) => TRX_config_LVDS_tx_blankn_0(0),
+      In3(0) => TRX_config_LVDS_tx_blankn_0(0),
+      In4(0) => TRX_config_LVDS_tx_blankn_0(0),
+      In5(0) => TRX_config_LVDS_tx_blankn_0(0),
+      In6(0) => TRX_config_LVDS_tx_blankn_0(0),
+      In7(0) => TRX_config_LVDS_tx_blankn_0(0),
+      In8(0) => TRX_config_LVDS_tx_blankn_0(0),
+      In9(0) => TRX_config_LVDS_tx_blankn_0(0),
+      dout(15 downto 0) => TRX_blank_tx_xlconcat_0_dout(15 downto 0)
+    );
+TRX_tx_LVDS_interleave_xlconcat_0: component msys_xlconcat_0_6
+     port map (
+      In0(0) => xlslice_07to07_Dout(0),
+      In1(0) => xlconstant_val0_len1_dout(0),
+      In10(0) => xlslice_02to02_Dout(0),
+      In11(0) => xlconstant_val0_len1_dout(0),
+      In12(0) => xlslice_01to01_Dout(0),
+      In13(0) => xlconstant_val0_len1_dout(0),
+      In14(0) => xlslice_00to00_Dout(0),
+      In15(0) => xlconstant_val0_len1_dout(0),
+      In2(0) => xlslice_06to06_Dout(0),
+      In3(0) => xlconstant_val0_len1_dout(0),
+      In4(0) => xlslice_05to05_Dout(0),
+      In5(0) => xlconstant_val0_len1_dout(0),
+      In6(0) => xlslice_04to04_Dout(0),
+      In7(0) => xlconstant_val0_len1_dout(0),
+      In8(0) => xlslice_03to03_Dout(0),
+      In9(0) => xlconstant_val0_len1_dout(0),
+      dout(15 downto 0) => TRX_tx_LVDS_interleave_xlconcat_0_dout(15 downto 0)
+    );
+TRX_tx_word_format_xlconcat_0: component msys_xlconcat_0_7
+     port map (
+      In0(0) => xlconstant_val0_len1_dout(0),
       In1(12 downto 0) => TRX_tx_im_out_0(20 downto 8),
-      In2(0) => xlconstant_1_len1_dout(0),
-      In3(0) => xlconstant_0_len1_dout(0),
+      In2(0) => xlconstant_val1_len1_dout(0),
+      In3(0) => xlconstant_val0_len1_dout(0),
       In4(0) => TRX_tx_PTT_in_0(0),
       In5(12 downto 0) => TRX_tx_re_out_0(20 downto 8),
-      In6(0) => xlconstant_0_len1_dout(0),
-      In7(0) => xlconstant_1_len1_dout(0),
-      dout(31 downto 0) => TRX_tx09_fifo_din_0(31 downto 0)
+      In6(0) => xlconstant_val0_len1_dout(0),
+      In7(0) => xlconstant_val1_len1_dout(0),
+      dout(31 downto 0) => TRX_tx_word_format_xlconcat_0_dout(31 downto 0)
     );
-xlconstant_0_len1: component msys_xlconstant_0_14
+xlconstant_val0_len1: component msys_xlconstant_0_14
      port map (
-      dout(0) => xlconstant_0_len1_dout(0)
+      dout(0) => xlconstant_val0_len1_dout(0)
     );
-xlconstant_1_len1: component msys_xlconstant_0_17
+xlconstant_val1_len1: component msys_xlconstant_0_17
      port map (
-      dout(0) => xlconstant_1_len1_dout(0)
+      dout(0) => xlconstant_val1_len1_dout(0)
     );
 xlslice_00to00: component msys_xlslice_0_26
      port map (
       Din(7 downto 0) => TRX_tx09_fifo_dout_0(7 downto 0),
-      Dout(0) => xlslice_0_Dout(0)
+      Dout(0) => xlslice_00to00_Dout(0)
     );
 xlslice_01to01: component msys_xlslice_1_1
      port map (
       Din(7 downto 0) => TRX_tx09_fifo_dout_0(7 downto 0),
-      Dout(0) => xlslice_1_Dout(0)
+      Dout(0) => xlslice_01to01_Dout(0)
     );
 xlslice_02to02: component msys_xlslice_2_0
      port map (
       Din(7 downto 0) => TRX_tx09_fifo_dout_0(7 downto 0),
-      Dout(0) => xlslice_2_Dout(0)
+      Dout(0) => xlslice_02to02_Dout(0)
     );
 xlslice_03to03: component msys_xlslice_3_0
      port map (
       Din(7 downto 0) => TRX_tx09_fifo_dout_0(7 downto 0),
-      Dout(0) => xlslice_3_Dout(0)
+      Dout(0) => xlslice_03to03_Dout(0)
     );
 xlslice_04to04: component msys_xlslice_4_0
      port map (
       Din(7 downto 0) => TRX_tx09_fifo_dout_0(7 downto 0),
-      Dout(0) => xlslice_4_Dout(0)
+      Dout(0) => xlslice_04to04_Dout(0)
     );
 xlslice_05to05: component msys_xlslice_5_0
      port map (
       Din(7 downto 0) => TRX_tx09_fifo_dout_0(7 downto 0),
-      Dout(0) => xlslice_5_Dout(0)
+      Dout(0) => xlslice_05to05_Dout(0)
     );
 xlslice_06to06: component msys_xlslice_6_0
      port map (
       Din(7 downto 0) => TRX_tx09_fifo_dout_0(7 downto 0),
-      Dout(0) => xlslice_6_Dout(0)
+      Dout(0) => xlslice_06to06_Dout(0)
     );
 xlslice_07to07: component msys_xlslice_7_0
      port map (
       Din(7 downto 0) => TRX_tx09_fifo_dout_0(7 downto 0),
-      Dout(0) => xlslice_7_Dout(0)
+      Dout(0) => xlslice_07to07_Dout(0)
     );
 end STRUCTURE;
 library IEEE;
@@ -4753,6 +4889,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity USER_dbg_imp_1LGDWY9 is
   port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     USER_dbg_out : out STD_LOGIC_VECTOR ( 13 downto 0 )
   );
 end USER_dbg_imp_1LGDWY9;
@@ -4760,16 +4897,20 @@ end USER_dbg_imp_1LGDWY9;
 architecture STRUCTURE of USER_dbg_imp_1LGDWY9 is
   component msys_xlconcat_0_16 is
   port (
-    In0 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 12 downto 0 );
     dout : out STD_LOGIC_VECTOR ( 13 downto 0 )
   );
   end component msys_xlconcat_0_16;
+  signal In0_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal USER_dbg_out_xlconcat_0_dout : STD_LOGIC_VECTOR ( 13 downto 0 );
 begin
+  In0_1(0) <= In0(0);
   USER_dbg_out(13 downto 0) <= USER_dbg_out_xlconcat_0_dout(13 downto 0);
 USER_dbg_out_xlconcat_0: component msys_xlconcat_0_16
      port map (
-      In0(13 downto 0) => B"00000000000000",
+      In0(0) => In0_1(0),
+      In1(12 downto 0) => B"0000000000000",
       dout(13 downto 0) => USER_dbg_out_xlconcat_0_dout(13 downto 0)
     );
 end STRUCTURE;
@@ -10138,15 +10279,18 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity TRX_LVDS_imp_1YILY8K is
   port (
+    TRX_config_LVDS_tx_blank_in : in STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_io_reset_i : in STD_LOGIC;
     TRX_rx09_fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx09_fifo_valid_o : out STD_LOGIC;
     TRX_rx24_fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx24_fifo_valid_o : out STD_LOGIC;
     TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
     TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
+    TRX_rx_clkdiv_16MHz_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rx_data_n : in STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_rx_data_p : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_tx_4to1_c_counter_binary_0_THRESH0 : in STD_LOGIC;
+    TRX_tx_4to1_c_counter_binary_0_THRESH0_4MHz : in STD_LOGIC;
     TRX_tx_PTT_in : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_tx_clk_clk_n : out STD_LOGIC;
     TRX_tx_clk_clk_p : out STD_LOGIC;
@@ -10154,11 +10298,9 @@ entity TRX_LVDS_imp_1YILY8K is
     TRX_tx_data_p : out STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_tx_im_out : in STD_LOGIC_VECTOR ( 20 downto 8 );
     TRX_tx_re_out : in STD_LOGIC_VECTOR ( 20 downto 8 );
-    clk_reset : in STD_LOGIC;
-    clkdiv_CD016_o : out STD_LOGIC;
-    io_reset : in STD_LOGIC;
-    ref_clock : in STD_LOGIC;
-    rst : in STD_LOGIC;
+    clk_rst_i : in STD_LOGIC;
+    ref_clock_i : in STD_LOGIC;
+    reset_CD100_i : in STD_LOGIC;
     rx09_rd_data_count_CD100_o : out STD_LOGIC_VECTOR ( 8 downto 0 );
     s_axi_aclk : in STD_LOGIC
   );
@@ -10237,18 +10379,22 @@ architecture STRUCTURE of TRX_LVDS_imp_1YILY8K is
     data_in_to_device : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component msys_selectio_wiz_0_1;
-  component msys_xlconstant_0_12 is
-  port (
-    dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
-  );
-  end component msys_xlconstant_0_12;
   component msys_xlconstant_0b00_1 is
   port (
     dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_xlconstant_0b00_1;
+  component msys_util_ds_buf_0_3 is
+  port (
+    BUFG_I : in STD_LOGIC_VECTOR ( 0 to 0 );
+    BUFG_O : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component msys_util_ds_buf_0_3;
   signal Conn4_CLK_N : STD_LOGIC;
   signal Conn4_CLK_P : STD_LOGIC;
+  signal TRX_LVDS_selectio_wiz_0_clk_div_out : STD_LOGIC;
+  signal TRX_config_LVDS_tx_blank_0 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_io_reset : STD_LOGIC;
   signal TRX_proc_sys_reset_0_peripheral_reset : STD_LOGIC;
   signal TRX_rx09_concat_CD016 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal TRX_rx09_fifo_generator_0_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -10257,11 +10403,10 @@ architecture STRUCTURE of TRX_LVDS_imp_1YILY8K is
   signal TRX_rx24_concat_CD016 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal TRX_rx24_fifo_generator_0_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal TRX_rx24_fifo_generator_0_valid : STD_LOGIC;
-  signal TRX_rx_clkdiv_CD016 : STD_LOGIC;
+  signal TRX_rx_clkdiv_16MHz : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_rx_data_n_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal TRX_rx_data_p_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal TRX_rx_lvds_16bits_CD016 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal TRX_rx_selectio_io_reset : STD_LOGIC;
   signal TRX_rx_selectio_wiz_0_data_out_to_pins_n : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal TRX_rx_selectio_wiz_0_data_out_to_pins_p : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal TRX_tx09_fifo_din_0 : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -10275,8 +10420,7 @@ architecture STRUCTURE of TRX_LVDS_imp_1YILY8K is
   signal rst_mig_7series_0_100M_peripheral_reset : STD_LOGIC;
   signal rx_clk_CD064_CLK_N : STD_LOGIC;
   signal rx_clk_CD064_CLK_P : STD_LOGIC;
-  signal s_axi_aclk_CD100 : STD_LOGIC;
-  signal xlconstant_0x0_len2_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal s_axi_aclk_100MHz : STD_LOGIC;
   signal NLW_TRX_LVDS_selectio_wiz_0_delay_locked_UNCONNECTED : STD_LOGIC;
   signal NLW_TRX_rx09_fifo_generator_0_empty_UNCONNECTED : STD_LOGIC;
   signal NLW_TRX_rx09_fifo_generator_0_full_UNCONNECTED : STD_LOGIC;
@@ -10295,14 +10439,16 @@ architecture STRUCTURE of TRX_LVDS_imp_1YILY8K is
   signal NLW_TRX_tx09_fifo_generator_0_rd_data_count_UNCONNECTED : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal NLW_TRX_tx09_fifo_generator_0_wr_data_count_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
 begin
-  TRX_proc_sys_reset_0_peripheral_reset <= rst;
+  TRX_config_LVDS_tx_blank_0(0) <= TRX_config_LVDS_tx_blank_in(0);
+  TRX_io_reset <= TRX_io_reset_i;
+  TRX_proc_sys_reset_0_peripheral_reset <= clk_rst_i;
   TRX_rx09_fifo_o(31 downto 0) <= TRX_rx09_fifo_generator_0_dout(31 downto 0);
   TRX_rx09_fifo_valid_o <= TRX_rx09_fifo_generator_0_valid;
   TRX_rx24_fifo_o(31 downto 0) <= TRX_rx24_fifo_generator_0_dout(31 downto 0);
   TRX_rx24_fifo_valid_o <= TRX_rx24_fifo_generator_0_valid;
+  TRX_rx_clkdiv_16MHz_o(0) <= TRX_rx_clkdiv_16MHz(0);
   TRX_rx_data_n_1(1 downto 0) <= TRX_rx_data_n(1 downto 0);
   TRX_rx_data_p_1(1 downto 0) <= TRX_rx_data_p(1 downto 0);
-  TRX_rx_selectio_io_reset <= io_reset;
   TRX_tx_PTT_in_0(0) <= TRX_tx_PTT_in(0);
   TRX_tx_clk_clk_n <= Conn4_CLK_N;
   TRX_tx_clk_clk_p <= Conn4_CLK_P;
@@ -10310,17 +10456,16 @@ begin
   TRX_tx_data_p(1 downto 0) <= TRX_rx_selectio_wiz_0_data_out_to_pins_p(1 downto 0);
   TRX_tx_im_out_0(20 downto 8) <= TRX_tx_im_out(20 downto 8);
   TRX_tx_re_out_0(20 downto 8) <= TRX_tx_re_out(20 downto 8);
-  clkdiv_CD016_o <= TRX_rx_clkdiv_CD016;
-  ref_clock_200MHz <= ref_clock;
-  rst_mig_7series_0_100M_peripheral_reset <= clk_reset;
+  ref_clock_200MHz <= ref_clock_i;
+  rst_mig_7series_0_100M_peripheral_reset <= reset_CD100_i;
   rx09_rd_data_count_CD100_o(8 downto 0) <= TRX_rx09_fifo_generator_0_rd_data_count(8 downto 0);
   rx_clk_CD064_CLK_N <= TRX_rx_clk_64MHz_clk_n;
   rx_clk_CD064_CLK_P <= TRX_rx_clk_64MHz_clk_p;
-  s_axi_aclk_CD100 <= s_axi_aclk;
+  s_axi_aclk_100MHz <= s_axi_aclk;
 TRX_LVDS_selectio_wiz_0: component msys_selectio_wiz_0_1
      port map (
-      bitslip(1 downto 0) => xlconstant_0x0_len2_dout(1 downto 0),
-      clk_div_out => TRX_rx_clkdiv_CD016,
+      bitslip(1 downto 0) => B"00",
+      clk_div_out => TRX_LVDS_selectio_wiz_0_clk_div_out,
       clk_in_n => rx_clk_CD064_CLK_N,
       clk_in_p => rx_clk_CD064_CLK_P,
       clk_reset => rst_mig_7series_0_100M_peripheral_reset,
@@ -10333,8 +10478,13 @@ TRX_LVDS_selectio_wiz_0: component msys_selectio_wiz_0_1
       data_out_to_pins_n(1 downto 0) => TRX_rx_selectio_wiz_0_data_out_to_pins_n(1 downto 0),
       data_out_to_pins_p(1 downto 0) => TRX_rx_selectio_wiz_0_data_out_to_pins_p(1 downto 0),
       delay_locked => NLW_TRX_LVDS_selectio_wiz_0_delay_locked_UNCONNECTED,
-      io_reset => TRX_rx_selectio_io_reset,
+      io_reset => TRX_io_reset,
       ref_clock => ref_clock_200MHz
+    );
+TRX_LVDS_util_ds_buf_0: component msys_util_ds_buf_0_3
+     port map (
+      BUFG_I(0) => TRX_LVDS_selectio_wiz_0_clk_div_out,
+      BUFG_O(0) => TRX_rx_clkdiv_16MHz(0)
     );
 TRX_rx09_concat: entity work.TRX_rx09_concat_imp_15HUCYS
      port map (
@@ -10347,13 +10497,13 @@ TRX_rx09_fifo_generator_0: component msys_TRX_rx09_fifo_generator_0_0
       dout(31 downto 0) => TRX_rx09_fifo_generator_0_dout(31 downto 0),
       empty => NLW_TRX_rx09_fifo_generator_0_empty_UNCONNECTED,
       full => NLW_TRX_rx09_fifo_generator_0_full_UNCONNECTED,
-      rd_clk => s_axi_aclk_CD100,
+      rd_clk => s_axi_aclk_100MHz,
       rd_data_count(8 downto 0) => TRX_rx09_fifo_generator_0_rd_data_count(8 downto 0),
       rd_en => c_1(0),
       rd_rst_busy => NLW_TRX_rx09_fifo_generator_0_rd_rst_busy_UNCONNECTED,
       rst => TRX_proc_sys_reset_0_peripheral_reset,
       valid => TRX_rx09_fifo_generator_0_valid,
-      wr_clk => TRX_rx_clkdiv_CD016,
+      wr_clk => TRX_rx_clkdiv_16MHz(0),
       wr_data_count(10 downto 0) => NLW_TRX_rx09_fifo_generator_0_wr_data_count_UNCONNECTED(10 downto 0),
       wr_en => c_1(0),
       wr_rst_busy => NLW_TRX_rx09_fifo_generator_0_wr_rst_busy_UNCONNECTED
@@ -10369,12 +10519,12 @@ TRX_rx24_fifo_generator_0: component msys_fifo_generator_0_0
       dout(31 downto 0) => TRX_rx24_fifo_generator_0_dout(31 downto 0),
       empty => NLW_TRX_rx24_fifo_generator_0_empty_UNCONNECTED,
       full => NLW_TRX_rx24_fifo_generator_0_full_UNCONNECTED,
-      rd_clk => s_axi_aclk_CD100,
+      rd_clk => s_axi_aclk_100MHz,
       rd_en => c_1(0),
       rd_rst_busy => NLW_TRX_rx24_fifo_generator_0_rd_rst_busy_UNCONNECTED,
       rst => TRX_proc_sys_reset_0_peripheral_reset,
       valid => TRX_rx24_fifo_generator_0_valid,
-      wr_clk => TRX_rx_clkdiv_CD016,
+      wr_clk => TRX_rx_clkdiv_16MHz(0),
       wr_en => c_1(0),
       wr_rst_busy => NLW_TRX_rx24_fifo_generator_0_wr_rst_busy_UNCONNECTED
     );
@@ -10384,29 +10534,27 @@ TRX_tx09_fifo_generator_0: component msys_TRX_rx09_fifo_generator_0_1
       dout(7 downto 0) => TRX_tx09_fifo_dout_0(7 downto 0),
       empty => NLW_TRX_tx09_fifo_generator_0_empty_UNCONNECTED,
       full => NLW_TRX_tx09_fifo_generator_0_full_UNCONNECTED,
-      rd_clk => TRX_rx_clkdiv_CD016,
+      rd_clk => TRX_rx_clkdiv_16MHz(0),
       rd_data_count(5 downto 0) => NLW_TRX_tx09_fifo_generator_0_rd_data_count_UNCONNECTED(5 downto 0),
       rd_en => c_1(0),
       rd_rst_busy => NLW_TRX_tx09_fifo_generator_0_rd_rst_busy_UNCONNECTED,
       rst => TRX_proc_sys_reset_0_peripheral_reset,
       valid => NLW_TRX_tx09_fifo_generator_0_valid_UNCONNECTED,
-      wr_clk => TRX_rx_clkdiv_CD016,
+      wr_clk => TRX_tx_4to1_c_counter_binary_0_THRESH0_4MHz,
       wr_data_count(3 downto 0) => NLW_TRX_tx09_fifo_generator_0_wr_data_count_UNCONNECTED(3 downto 0),
       wr_en => c_1(0),
       wr_rst_busy => NLW_TRX_tx09_fifo_generator_0_wr_rst_busy_UNCONNECTED
     );
 TRX_tx_concat: entity work.TRX_tx_concat_imp_16F62M8
      port map (
+      TRX_config_LVDS_tx_blank_in(0) => TRX_config_LVDS_tx_blank_0(0),
       TRX_tx09_fifo_din(31 downto 0) => TRX_tx09_fifo_din_0(31 downto 0),
       TRX_tx09_fifo_dout(7 downto 0) => TRX_tx09_fifo_dout_0(7 downto 0),
       TRX_tx_PTT_in(0) => TRX_tx_PTT_in_0(0),
       TRX_tx_data_out_from_device_in(15 downto 0) => TRX_tx_data_out_from_device_in_0(15 downto 0),
       TRX_tx_im_out(20 downto 8) => TRX_tx_im_out_0(20 downto 8),
-      TRX_tx_re_out(20 downto 8) => TRX_tx_re_out_0(20 downto 8)
-    );
-xlconstant_0x0_len2: component msys_xlconstant_0_12
-     port map (
-      dout(1 downto 0) => xlconstant_0x0_len2_dout(1 downto 0)
+      TRX_tx_re_out(20 downto 8) => TRX_tx_re_out_0(20 downto 8),
+      clk_div_out => TRX_rx_clkdiv_16MHz(0)
     );
 xlconstant_1_len1: component msys_xlconstant_0b00_1
      port map (
@@ -17001,6 +17149,8 @@ entity TRX_imp_W48V8V is
     S_AXI_spi_wready : out STD_LOGIC_VECTOR ( 0 to 0 );
     S_AXI_spi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S_AXI_spi_wvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Status_LVDS_rx09_synced : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Status_LVDS_rx24_synced : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_PLL_clk_25MHz_N : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_PLL_clk_25MHz_P : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_clk_26MHz : in STD_LOGIC;
@@ -17012,6 +17162,7 @@ entity TRX_imp_W48V8V is
     TRX_rx24_fifo_valid_o : out STD_LOGIC;
     TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
     TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
+    TRX_rx_clkdiv_16MHz_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rx_data_n : in STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_rx_data_p : in STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_spi_io0_i : in STD_LOGIC;
@@ -17031,7 +17182,8 @@ entity TRX_imp_W48V8V is
     TRX_tx_clk_clk_p : out STD_LOGIC;
     TRX_tx_data_n : out STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_tx_data_p : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    clk_div_out : out STD_LOGIC;
+    TRX_tx_im_out : out STD_LOGIC_VECTOR ( 20 downto 8 );
+    TRX_tx_re_out : out STD_LOGIC_VECTOR ( 20 downto 8 );
     clk_trx_26MHz_vio : out STD_LOGIC;
     clk_trx_pll_25MHz_vio : out STD_LOGIC;
     dcm_locked : in STD_LOGIC;
@@ -17101,7 +17253,7 @@ architecture STRUCTURE of TRX_imp_W48V8V is
     CE : in STD_LOGIC;
     SCLR : in STD_LOGIC;
     THRESH0 : out STD_LOGIC;
-    Q : out STD_LOGIC_VECTOR ( 6 downto 0 )
+    Q : out STD_LOGIC_VECTOR ( 4 downto 0 )
   );
   end component msys_c_counter_binary_0_2;
   component msys_util_vector_logic_0_4 is
@@ -17175,16 +17327,22 @@ architecture STRUCTURE of TRX_imp_W48V8V is
   signal S_AXI_spi_0_WREADY : STD_LOGIC_VECTOR ( 0 to 0 );
   signal S_AXI_spi_0_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal S_AXI_spi_0_WVALID : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal Status_LVDS_rx09_synced_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal Status_LVDS_rx24_synced_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_axi_quad_spi_0_ip2intc_irpt : STD_LOGIC;
   signal TRX_clk_26MHz_1 : STD_LOGIC;
   signal TRX_clock_TRX_PLL_clk_25MHz_N : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_clock_TRX_PLL_clk_25MHz_P : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_clock_clk_trx_26MHz_vio : STD_LOGIC;
   signal TRX_clock_clk_trx_pll_25MHz_vio : STD_LOGIC;
+  signal TRX_clock_locked : STD_LOGIC;
+  signal TRX_config_LVDS_tx_blank_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_config_TRX_resetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_config_TRX_rfx_mode : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_io_reset : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal TRX_io_reset_counter_binary_0_THRESH0 : STD_LOGIC;
+  signal TRX_proc_sys_reset_0_16MHz_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_proc_sys_reset_0_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal TRX_proc_sys_reset_0_peripheral_reset_CD016 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_rx09_fifo_o_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal TRX_rx09_fifo_valid_o_0 : STD_LOGIC;
   signal TRX_rx24_fifo_o_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -17194,7 +17352,7 @@ architecture STRUCTURE of TRX_imp_W48V8V is
   signal TRX_rx_LVDS_rd_data_count_CD100 : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal TRX_rx_clk_64MHz_1_CLK_N : STD_LOGIC;
   signal TRX_rx_clk_64MHz_1_CLK_P : STD_LOGIC;
-  signal TRX_rx_clkdiv_CD016 : STD_LOGIC;
+  signal TRX_rx_clkdiv_16MHz : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_rx_data_n_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal TRX_rx_data_p_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal TRX_rx_selectio_wiz_0_data_out_to_pins_n : STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -17203,7 +17361,6 @@ architecture STRUCTURE of TRX_imp_W48V8V is
   signal TRX_tx_PTT_in_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_tx_im_out_0 : STD_LOGIC_VECTOR ( 20 downto 8 );
   signal TRX_tx_re_out_0 : STD_LOGIC_VECTOR ( 20 downto 8 );
-  signal counter_binary_0_THRESH0 : STD_LOGIC;
   signal fft09_aresetn_in_0 : STD_LOGIC;
   signal fft09_config_tdata_in_0 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal fft09_config_tvalid_in_0 : STD_LOGIC;
@@ -17216,7 +17373,6 @@ architecture STRUCTURE of TRX_imp_W48V8V is
   signal fft24_data_tlast_in_0 : STD_LOGIC;
   signal fft24_data_tready_out_0 : STD_LOGIC;
   signal fft24_data_tvalid_in_0 : STD_LOGIC;
-  signal io_reset_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal mig_7series_0_mmcm_locked : STD_LOGIC;
   signal mig_7series_0_ui_addn_clk_0_200MHz : STD_LOGIC;
   signal mig_7series_0_ui_clk_sync_rst : STD_LOGIC;
@@ -17233,19 +17389,19 @@ architecture STRUCTURE of TRX_imp_W48V8V is
   signal premem_rx24_dina_in_0 : STD_LOGIC_VECTOR ( 25 downto 0 );
   signal premem_rx24_quarterfrm_in_0 : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal premem_rx24_wea_in_0 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal rst_mig_7series_0_100M_peripheral_aresetn_0 : STD_LOGIC;
-  signal rst_mig_7series_0_100M_peripheral_reset_0 : STD_LOGIC;
-  signal s_axi_aclk_CD100_0 : STD_LOGIC;
+  signal rst_mig_7series_0_100M_peripheral_aresetn : STD_LOGIC;
+  signal rst_mig_7series_0_100M_peripheral_reset : STD_LOGIC;
+  signal s_axi_aclk_100MHz : STD_LOGIC;
   signal xfft_rx09_dly3449_event_frame_started_out_0 : STD_LOGIC;
   signal xfft_rx09_dly3449_event_tlast_missing_out_0 : STD_LOGIC;
   signal xfft_rx09_dly3449_event_tlast_unexpected_out_0 : STD_LOGIC;
   signal xfft_rx24_dly3198_event_data_in_channel_halt_out_0 : STD_LOGIC;
   signal xfft_rx24_dly3198_event_tlast_unexpected_out_0 : STD_LOGIC;
   signal xfft_rx24_dly3449_event_frame_started_out_0 : STD_LOGIC;
+  signal NLW_TRX_io_reset_counter_binary_0_Q_UNCONNECTED : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal NLW_TRX_proc_sys_reset_0_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_TRX_proc_sys_reset_0_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_TRX_proc_sys_reset_0_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_counter_binary_0_Q_UNCONNECTED : STD_LOGIC_VECTOR ( 6 downto 0 );
 begin
   Conn2_IO0_I <= TRX_spi_io0_i;
   Conn2_IO1_I <= TRX_spi_io1_i;
@@ -17302,6 +17458,8 @@ begin
   S_AXI_spi_rresp(1 downto 0) <= S_AXI_spi_0_RRESP(1 downto 0);
   S_AXI_spi_rvalid(0) <= S_AXI_spi_0_RVALID(0);
   S_AXI_spi_wready(0) <= S_AXI_spi_0_WREADY(0);
+  Status_LVDS_rx09_synced_1(0) <= Status_LVDS_rx09_synced(0);
+  Status_LVDS_rx24_synced_1(0) <= Status_LVDS_rx24_synced(0);
   TRX_PLL_clk_25MHz_N(0) <= TRX_clock_TRX_PLL_clk_25MHz_N(0);
   TRX_PLL_clk_25MHz_P(0) <= TRX_clock_TRX_PLL_clk_25MHz_P(0);
   TRX_clk_26MHz_1 <= TRX_clk_26MHz;
@@ -17313,6 +17471,7 @@ begin
   TRX_rx24_fifo_valid_o <= TRX_rx24_fifo_valid_o_1;
   TRX_rx_clk_64MHz_1_CLK_N <= TRX_rx_clk_64MHz_clk_n;
   TRX_rx_clk_64MHz_1_CLK_P <= TRX_rx_clk_64MHz_clk_p;
+  TRX_rx_clkdiv_16MHz_o(0) <= TRX_rx_clkdiv_16MHz(0);
   TRX_rx_data_n_1(1 downto 0) <= TRX_rx_data_n(1 downto 0);
   TRX_rx_data_p_1(1 downto 0) <= TRX_rx_data_p(1 downto 0);
   TRX_spi_io0_o <= Conn2_IO0_O;
@@ -17328,7 +17487,8 @@ begin
   TRX_tx_clk_clk_p <= Conn4_CLK_P;
   TRX_tx_data_n(1 downto 0) <= TRX_rx_selectio_wiz_0_data_out_to_pins_n(1 downto 0);
   TRX_tx_data_p(1 downto 0) <= TRX_rx_selectio_wiz_0_data_out_to_pins_p(1 downto 0);
-  clk_div_out <= TRX_rx_clkdiv_CD016;
+  TRX_tx_im_out(20 downto 8) <= TRX_tx_im_out_0(20 downto 8);
+  TRX_tx_re_out(20 downto 8) <= TRX_tx_re_out_0(20 downto 8);
   clk_trx_26MHz_vio <= TRX_clock_clk_trx_26MHz_vio;
   clk_trx_pll_25MHz_vio <= TRX_clock_clk_trx_pll_25MHz_vio;
   fft09_aresetn_in_0 <= fft09_aresetn_in;
@@ -17361,9 +17521,11 @@ begin
   premem_rx24_quarterfrm_in_0(2 downto 0) <= premem_rx24_quarterfrm_in(2 downto 0);
   premem_rx24_wea_in_0(0) <= premem_rx24_wea_in(0);
   rd_data_count_CD100_o(8 downto 0) <= TRX_rx_LVDS_rd_data_count_CD100(8 downto 0);
-  rst_mig_7series_0_100M_peripheral_aresetn_0 <= s_axi_aresetn;
-  rst_mig_7series_0_100M_peripheral_reset_0 <= reset_CD100_i;
-  s_axi_aclk_CD100_0 <= s_axi_aclk;
+  rst_mig_7series_0_100M_peripheral_aresetn <= s_axi_aresetn;
+  rst_mig_7series_0_100M_peripheral_reset <= reset_CD100_i;
+  rx09_32bits_CD100_o(31 downto 0) <= TRX_rx24_fifo_o_1(31 downto 0);
+  rx24_32bits_CD100_o(31 downto 0) <= TRX_rx09_fifo_o_1(31 downto 0);
+  s_axi_aclk_100MHz <= s_axi_aclk;
   xfft_rx09_dly3449_event_data_in_channel_halt_out <= TRX_rx_FFT_unit_event_data_in_channel_halt_0;
   xfft_rx09_dly3449_event_frame_started_out <= xfft_rx09_dly3449_event_frame_started_out_0;
   xfft_rx09_dly3449_event_tlast_missing_out <= xfft_rx09_dly3449_event_tlast_missing_out_0;
@@ -17372,81 +17534,20 @@ begin
   xfft_rx24_dly3198_event_tlast_missing_out <= TRX_rx_FFT_unit_event_tlast_missing;
   xfft_rx24_dly3198_event_tlast_unexpected_out <= xfft_rx24_dly3198_event_tlast_unexpected_out_0;
   xfft_rx24_dly3449_event_frame_started_out <= xfft_rx24_dly3449_event_frame_started_out_0;
-  rx09_32bits_CD100_o(0) <= 'Z';
-  rx09_32bits_CD100_o(1) <= 'Z';
-  rx09_32bits_CD100_o(2) <= 'Z';
-  rx09_32bits_CD100_o(3) <= 'Z';
-  rx09_32bits_CD100_o(4) <= 'Z';
-  rx09_32bits_CD100_o(5) <= 'Z';
-  rx09_32bits_CD100_o(6) <= 'Z';
-  rx09_32bits_CD100_o(7) <= 'Z';
-  rx09_32bits_CD100_o(8) <= 'Z';
-  rx09_32bits_CD100_o(9) <= 'Z';
-  rx09_32bits_CD100_o(10) <= 'Z';
-  rx09_32bits_CD100_o(11) <= 'Z';
-  rx09_32bits_CD100_o(12) <= 'Z';
-  rx09_32bits_CD100_o(13) <= 'Z';
-  rx09_32bits_CD100_o(14) <= 'Z';
-  rx09_32bits_CD100_o(15) <= 'Z';
-  rx09_32bits_CD100_o(16) <= 'Z';
-  rx09_32bits_CD100_o(17) <= 'Z';
-  rx09_32bits_CD100_o(18) <= 'Z';
-  rx09_32bits_CD100_o(19) <= 'Z';
-  rx09_32bits_CD100_o(20) <= 'Z';
-  rx09_32bits_CD100_o(21) <= 'Z';
-  rx09_32bits_CD100_o(22) <= 'Z';
-  rx09_32bits_CD100_o(23) <= 'Z';
-  rx09_32bits_CD100_o(24) <= 'Z';
-  rx09_32bits_CD100_o(25) <= 'Z';
-  rx09_32bits_CD100_o(26) <= 'Z';
-  rx09_32bits_CD100_o(27) <= 'Z';
-  rx09_32bits_CD100_o(28) <= 'Z';
-  rx09_32bits_CD100_o(29) <= 'Z';
-  rx09_32bits_CD100_o(30) <= 'Z';
-  rx09_32bits_CD100_o(31) <= 'Z';
-  rx24_32bits_CD100_o(0) <= 'Z';
-  rx24_32bits_CD100_o(1) <= 'Z';
-  rx24_32bits_CD100_o(2) <= 'Z';
-  rx24_32bits_CD100_o(3) <= 'Z';
-  rx24_32bits_CD100_o(4) <= 'Z';
-  rx24_32bits_CD100_o(5) <= 'Z';
-  rx24_32bits_CD100_o(6) <= 'Z';
-  rx24_32bits_CD100_o(7) <= 'Z';
-  rx24_32bits_CD100_o(8) <= 'Z';
-  rx24_32bits_CD100_o(9) <= 'Z';
-  rx24_32bits_CD100_o(10) <= 'Z';
-  rx24_32bits_CD100_o(11) <= 'Z';
-  rx24_32bits_CD100_o(12) <= 'Z';
-  rx24_32bits_CD100_o(13) <= 'Z';
-  rx24_32bits_CD100_o(14) <= 'Z';
-  rx24_32bits_CD100_o(15) <= 'Z';
-  rx24_32bits_CD100_o(16) <= 'Z';
-  rx24_32bits_CD100_o(17) <= 'Z';
-  rx24_32bits_CD100_o(18) <= 'Z';
-  rx24_32bits_CD100_o(19) <= 'Z';
-  rx24_32bits_CD100_o(20) <= 'Z';
-  rx24_32bits_CD100_o(21) <= 'Z';
-  rx24_32bits_CD100_o(22) <= 'Z';
-  rx24_32bits_CD100_o(23) <= 'Z';
-  rx24_32bits_CD100_o(24) <= 'Z';
-  rx24_32bits_CD100_o(25) <= 'Z';
-  rx24_32bits_CD100_o(26) <= 'Z';
-  rx24_32bits_CD100_o(27) <= 'Z';
-  rx24_32bits_CD100_o(28) <= 'Z';
-  rx24_32bits_CD100_o(29) <= 'Z';
-  rx24_32bits_CD100_o(30) <= 'Z';
-  rx24_32bits_CD100_o(31) <= 'Z';
 TRX_LVDS: entity work.TRX_LVDS_imp_1YILY8K
      port map (
+      TRX_config_LVDS_tx_blank_in(0) => TRX_config_LVDS_tx_blank_0(0),
+      TRX_io_reset_i => TRX_io_reset(0),
       TRX_rx09_fifo_o(31 downto 0) => TRX_rx09_fifo_o_1(31 downto 0),
       TRX_rx09_fifo_valid_o => TRX_rx09_fifo_valid_o_0,
       TRX_rx24_fifo_o(31 downto 0) => TRX_rx24_fifo_o_1(31 downto 0),
       TRX_rx24_fifo_valid_o => TRX_rx24_fifo_valid_o_1,
       TRX_rx_clk_64MHz_clk_n => TRX_rx_clk_64MHz_1_CLK_N,
       TRX_rx_clk_64MHz_clk_p => TRX_rx_clk_64MHz_1_CLK_P,
+      TRX_rx_clkdiv_16MHz_o(0) => TRX_rx_clkdiv_16MHz(0),
       TRX_rx_data_n(1 downto 0) => TRX_rx_data_n_1(1 downto 0),
       TRX_rx_data_p(1 downto 0) => TRX_rx_data_p_1(1 downto 0),
-      TRX_tx_4to1_c_counter_binary_0_THRESH0 => TRX_tx_4to1_c_counter_binary_0_THRESH0_0,
+      TRX_tx_4to1_c_counter_binary_0_THRESH0_4MHz => TRX_tx_4to1_c_counter_binary_0_THRESH0_0,
       TRX_tx_PTT_in(0) => TRX_tx_PTT_in_0(0),
       TRX_tx_clk_clk_n => Conn4_CLK_N,
       TRX_tx_clk_clk_p => Conn4_CLK_P,
@@ -17454,13 +17555,11 @@ TRX_LVDS: entity work.TRX_LVDS_imp_1YILY8K
       TRX_tx_data_p(1 downto 0) => TRX_rx_selectio_wiz_0_data_out_to_pins_p(1 downto 0),
       TRX_tx_im_out(20 downto 8) => TRX_tx_im_out_0(20 downto 8),
       TRX_tx_re_out(20 downto 8) => TRX_tx_re_out_0(20 downto 8),
-      clk_reset => rst_mig_7series_0_100M_peripheral_reset_0,
-      clkdiv_CD016_o => TRX_rx_clkdiv_CD016,
-      io_reset => io_reset_0(0),
-      ref_clock => mig_7series_0_ui_addn_clk_0_200MHz,
-      rst => TRX_proc_sys_reset_0_peripheral_reset_CD016(0),
+      clk_rst_i => TRX_proc_sys_reset_0_16MHz_peripheral_reset(0),
+      ref_clock_i => mig_7series_0_ui_addn_clk_0_200MHz,
+      reset_CD100_i => rst_mig_7series_0_100M_peripheral_reset,
       rx09_rd_data_count_CD100_o(8 downto 0) => TRX_rx_LVDS_rd_data_count_CD100(8 downto 0),
-      s_axi_aclk => s_axi_aclk_CD100_0
+      s_axi_aclk => s_axi_aclk_100MHz
     );
 TRX_clock: entity work.TRX_clock_imp_19R9ARK
      port map (
@@ -17468,10 +17567,12 @@ TRX_clock: entity work.TRX_clock_imp_19R9ARK
       TRX_PLL_clk_25MHz_P(0) => TRX_clock_TRX_PLL_clk_25MHz_P(0),
       TRX_clk_26MHz => TRX_clk_26MHz_1,
       clk_trx_26MHz_vio => TRX_clock_clk_trx_26MHz_vio,
-      clk_trx_pll_25MHz_vio => TRX_clock_clk_trx_pll_25MHz_vio
+      clk_trx_pll_25MHz_vio => TRX_clock_clk_trx_pll_25MHz_vio,
+      locked => TRX_clock_locked
     );
 TRX_config: entity work.TRX_config_imp_SLQI5S
      port map (
+      LVDS_tx_blank(0) => TRX_config_LVDS_tx_blank_0(0),
       S_AXI_gpio_araddr(31 downto 0) => S_AXI_gpio_0_ARADDR(31 downto 0),
       S_AXI_gpio_arready(0) => S_AXI_gpio_0_ARREADY(0),
       S_AXI_gpio_arvalid(0) => S_AXI_gpio_0_ARVALID(0),
@@ -17506,6 +17607,8 @@ TRX_config: entity work.TRX_config_imp_SLQI5S
       S_AXI_spi_wready(0) => S_AXI_spi_0_WREADY(0),
       S_AXI_spi_wstrb(3 downto 0) => S_AXI_spi_0_WSTRB(3 downto 0),
       S_AXI_spi_wvalid(0) => S_AXI_spi_0_WVALID(0),
+      Status_LVDS_rx09_synced(0) => Status_LVDS_rx09_synced_1(0),
+      Status_LVDS_rx24_synced(0) => Status_LVDS_rx24_synced_1(0),
       TRX_resetn(0) => TRX_config_TRX_resetn(0),
       TRX_rfx_mode(0) => TRX_config_TRX_rfx_mode(0),
       TRX_spi_io0_i => Conn2_IO0_I,
@@ -17521,8 +17624,17 @@ TRX_config: entity work.TRX_config_imp_SLQI5S
       TRX_spi_ss_o(0) => Conn2_SS_O(0),
       TRX_spi_ss_t => Conn2_SS_T,
       ip2intc_irpt => TRX_axi_quad_spi_0_ip2intc_irpt,
-      s_axi_aclk => s_axi_aclk_CD100_0,
-      s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn_0
+      locked => TRX_clock_locked,
+      s_axi_aclk => s_axi_aclk_100MHz,
+      s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn
+    );
+TRX_io_reset_counter_binary_0: component msys_c_counter_binary_0_2
+     port map (
+      CE => TRX_io_reset(0),
+      CLK => TRX_rx_clkdiv_16MHz(0),
+      Q(4 downto 0) => NLW_TRX_io_reset_counter_binary_0_Q_UNCONNECTED(4 downto 0),
+      SCLR => TRX_proc_sys_reset_0_16MHz_peripheral_reset(0),
+      THRESH0 => TRX_io_reset_counter_binary_0_THRESH0
     );
 TRX_proc_sys_reset_0: component msys_proc_sys_reset_0_1
      port map (
@@ -17534,12 +17646,12 @@ TRX_proc_sys_reset_0: component msys_proc_sys_reset_0_1
       mb_debug_sys_rst => '0',
       mb_reset => NLW_TRX_proc_sys_reset_0_mb_reset_UNCONNECTED,
       peripheral_aresetn(0) => TRX_proc_sys_reset_0_peripheral_aresetn(0),
-      peripheral_reset(0) => TRX_proc_sys_reset_0_peripheral_reset_CD016(0),
-      slowest_sync_clk => TRX_rx_clkdiv_CD016
+      peripheral_reset(0) => TRX_proc_sys_reset_0_16MHz_peripheral_reset(0),
+      slowest_sync_clk => TRX_rx_clkdiv_16MHz(0)
     );
 TRX_rx_FFT_unit: entity work.TRX_rx_FFT_unit_imp_1NLKML1
      port map (
-      aresetn_CD100_in => rst_mig_7series_0_100M_peripheral_aresetn_0,
+      aresetn_CD100_in => rst_mig_7series_0_100M_peripheral_aresetn,
       fft09_aresetn_in => fft09_aresetn_in_0,
       fft09_config_tdata_in(7 downto 0) => fft09_config_tdata_in_0(7 downto 0),
       fft09_config_tvalid_in => fft09_config_tvalid_in_0,
@@ -17565,8 +17677,8 @@ TRX_rx_FFT_unit: entity work.TRX_rx_FFT_unit_imp_1NLKML1
       premem_rx24_dina_in(25 downto 0) => premem_rx24_dina_in_0(25 downto 0),
       premem_rx24_quarterfrm_in(2 downto 0) => premem_rx24_quarterfrm_in_0(2 downto 0),
       premem_rx24_wea_in(0) => premem_rx24_wea_in_0(0),
-      rst_mig_7series_0_100M_peripheral_reset_in => rst_mig_7series_0_100M_peripheral_reset_0,
-      s_axi_aclk_CD100_in => s_axi_aclk_CD100_0,
+      rst_mig_7series_0_100M_peripheral_reset_in => rst_mig_7series_0_100M_peripheral_reset,
+      s_axi_aclk_CD100_in => s_axi_aclk_100MHz,
       xfft_rx09_dly3449_event_data_in_channel_halt_out => TRX_rx_FFT_unit_event_data_in_channel_halt_0,
       xfft_rx09_dly3449_event_frame_started_out => xfft_rx09_dly3449_event_frame_started_out_0,
       xfft_rx09_dly3449_event_tlast_missing_out => xfft_rx09_dly3449_event_tlast_missing_out_0,
@@ -17578,7 +17690,7 @@ TRX_rx_FFT_unit: entity work.TRX_rx_FFT_unit_imp_1NLKML1
     );
 TRX_tx_DDS_unit: entity work.TRX_tx_DDS_unit_imp_195K6TC
      port map (
-      SCLR => TRX_proc_sys_reset_0_peripheral_reset_CD016(0),
+      SCLR => TRX_proc_sys_reset_0_16MHz_peripheral_reset(0),
       S_AXI_araddr(31 downto 0) => S_AXI_dds_0_ARADDR(31 downto 0),
       S_AXI_arready(0) => S_AXI_dds_0_ARREADY(0),
       S_AXI_arvalid(0) => S_AXI_dds_0_ARVALID(0),
@@ -17596,26 +17708,18 @@ TRX_tx_DDS_unit: entity work.TRX_tx_DDS_unit_imp_195K6TC
       S_AXI_wready(0) => S_AXI_dds_0_WREADY(0),
       S_AXI_wstrb(3 downto 0) => S_AXI_dds_0_WSTRB(3 downto 0),
       S_AXI_wvalid(0) => S_AXI_dds_0_WVALID(0),
+      TRX_rx_clkdiv_16MHz_i => TRX_rx_clkdiv_16MHz(0),
       TRX_tx_4to1_c_counter_binary_0_THRESH0 => TRX_tx_4to1_c_counter_binary_0_THRESH0_0,
       TRX_tx_im_out(20 downto 8) => TRX_tx_im_out_0(20 downto 8),
       TRX_tx_re_out(20 downto 8) => TRX_tx_re_out_0(20 downto 8),
       aresetn => TRX_proc_sys_reset_0_peripheral_aresetn(0),
-      clk_div_out => TRX_rx_clkdiv_CD016,
-      s_axi_aclk => s_axi_aclk_CD100_0,
-      s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn_0
-    );
-counter_binary_0: component msys_c_counter_binary_0_2
-     port map (
-      CE => io_reset_0(0),
-      CLK => TRX_rx_clkdiv_CD016,
-      Q(6 downto 0) => NLW_counter_binary_0_Q_UNCONNECTED(6 downto 0),
-      SCLR => TRX_proc_sys_reset_0_peripheral_reset_CD016(0),
-      THRESH0 => counter_binary_0_THRESH0
+      s_axi_aclk => s_axi_aclk_100MHz,
+      s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn
     );
 util_vector_logic_0: component msys_util_vector_logic_0_4
      port map (
-      Op1(0) => counter_binary_0_THRESH0,
-      Res(0) => io_reset_0(0)
+      Op1(0) => TRX_io_reset_counter_binary_0_THRESH0,
+      Res(0) => TRX_io_reset(0)
     );
 end STRUCTURE;
 library IEEE;
@@ -17672,6 +17776,8 @@ entity msys is
     LED_RGB_blue : out STD_LOGIC_VECTOR ( 0 to 0 );
     LED_RGB_green : out STD_LOGIC_VECTOR ( 0 to 0 );
     LED_RGB_red : out STD_LOGIC_VECTOR ( 0 to 0 );
+    LVDS_rx09_synced : in STD_LOGIC;
+    LVDS_rx24_synced : in STD_LOGIC;
     PLL_I2C_ext_scl_o : out STD_LOGIC;
     PLL_I2C_ext_sda : inout STD_LOGIC;
     PLL_int : in STD_LOGIC;
@@ -17779,7 +17885,7 @@ entity msys is
     rst_100M_peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=284,numReposBlks=223,numNonXlnxBlks=2,numHierBlks=61,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=294,numReposBlks=233,numNonXlnxBlks=2,numHierBlks=61,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of msys : entity is "msys.hwdef";
 end msys;
@@ -17941,6 +18047,8 @@ architecture STRUCTURE of msys is
     probe_in37 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe_in38 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_in39 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe_in40 : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    probe_in41 : in STD_LOGIC_VECTOR ( 12 downto 0 );
     probe_out0 : out STD_LOGIC_VECTOR ( 12 downto 0 )
   );
   end component msys_vio_0_0;
@@ -18271,6 +18379,32 @@ architecture STRUCTURE of msys is
     BUFG_O : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_CLK0_util_ds_buf_0_0;
+  component msys_xlslice_0_43 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 20 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 12 downto 0 )
+  );
+  end component msys_xlslice_0_43;
+  component msys_xlslice_0_44 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 20 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 12 downto 0 )
+  );
+  end component msys_xlslice_0_44;
+  component msys_xlconcat_0_20 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    In1 : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 20 downto 0 )
+  );
+  end component msys_xlconcat_0_20;
+  component msys_xlconcat_0_21 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    In1 : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 20 downto 0 )
+  );
+  end component msys_xlconcat_0_21;
   signal ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal BOARD_ROTENC_PUSH_1 : STD_LOGIC;
   signal BOOT_PLL_IIC_SCL_I : STD_LOGIC;
@@ -18411,6 +18545,8 @@ architecture STRUCTURE of msys is
   signal S_AXI_spi_0_WREADY : STD_LOGIC_VECTOR ( 0 to 0 );
   signal S_AXI_spi_0_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal S_AXI_spi_0_WVALID : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal Status_LVDS_rx09_synced_1 : STD_LOGIC;
+  signal Status_LVDS_rx24_synced_1 : STD_LOGIC;
   signal TRX_TRX_PLL_clk_25MHz_N : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_TRX_PLL_clk_25MHz_P : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_TRX_resetn : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -18431,6 +18567,8 @@ architecture STRUCTURE of msys is
   signal TRX_TRX_tx_clk_CLK_P : STD_LOGIC;
   signal TRX_TRX_tx_data_n : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal TRX_TRX_tx_data_p : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal TRX_TRX_tx_im_out : STD_LOGIC_VECTOR ( 20 downto 8 );
+  signal TRX_TRX_tx_re_out : STD_LOGIC_VECTOR ( 20 downto 8 );
   signal TRX_clk_26MHz_1 : STD_LOGIC;
   signal TRX_clk_trx_26MHz_vio : STD_LOGIC;
   signal TRX_clk_trx_pll_25MHz_vio : STD_LOGIC;
@@ -18445,9 +18583,9 @@ architecture STRUCTURE of msys is
   signal TRX_rx24_fifo_valid_o_1 : STD_LOGIC;
   signal TRX_rx_clk_64MHz_1_CLK_N : STD_LOGIC;
   signal TRX_rx_clk_64MHz_1_CLK_P : STD_LOGIC;
+  signal TRX_rx_clkdiv_16MHz : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_rx_data_n_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal TRX_rx_data_p_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal TRX_rx_div_clk_g_0 : STD_LOGIC;
   signal UART0EXT_DTRn_1 : STD_LOGIC;
   signal UART0EXT_RTSn_1 : STD_LOGIC;
   signal UART0_UART0EXT_CTSn : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -19061,6 +19199,10 @@ architecture STRUCTURE of msys is
   signal rst_mig_7series_0_100M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal rst_mig_7series_0_100M_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal rst_mig_7series_0_50M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal vio_xlconcat_40_dout : STD_LOGIC_VECTOR ( 20 downto 0 );
+  signal vio_xlconcat_41_dout : STD_LOGIC_VECTOR ( 20 downto 0 );
+  signal vio_xlslice_40_Dout : STD_LOGIC_VECTOR ( 12 downto 0 );
+  signal vio_xlslice_41_Dout : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal xfft_rx09_dly3449_event_data_in_channel_halt_out_0 : STD_LOGIC;
   signal xfft_rx09_dly3449_event_frame_started_out_0 : STD_LOGIC;
   signal xfft_rx09_dly3449_event_tlast_missing_out_0 : STD_LOGIC;
@@ -19274,6 +19416,8 @@ begin
   SCOPE_FSM_Timebase_CE_1 <= SCOPE_FSM_Timebase_CE;
   SCOPE_FSM_Timebase_SCLR_1 <= SCOPE_FSM_Timebase_SCLR;
   SCOPE_FSM_TrigSrc(47 downto 0) <= SCOPE_SCOPE_FSM_TrigSrc(47 downto 0);
+  Status_LVDS_rx09_synced_1 <= LVDS_rx09_synced;
+  Status_LVDS_rx24_synced_1 <= LVDS_rx24_synced;
   TRX_PLL_clk_25MHz_N(0) <= TRX_TRX_PLL_clk_25MHz_N(0);
   TRX_PLL_clk_25MHz_P(0) <= TRX_TRX_PLL_clk_25MHz_P(0);
   TRX_TRX_spi_IO0_I <= TRX_spi_io0_i;
@@ -19717,7 +19861,7 @@ INT_ctrl: entity work.INT_ctrl_imp_PISLEF
       s_axi_wstrb(3 downto 0) => microblaze_0_axi_periph_M00_AXI_WSTRB(3 downto 0),
       s_axi_wvalid(0) => microblaze_0_axi_periph_M00_AXI_WVALID(0)
     );
-PTT_xlconstant_1_len10: component msys_xlconstant_0_18
+PTT_xlconstant_1_len1: component msys_xlconstant_0_18
      port map (
       dout(0) => PTT_xlconstant_1_len10_dout(0)
     );
@@ -19895,6 +20039,8 @@ TRX: entity work.TRX_imp_W48V8V
       S_AXI_spi_wready(0) => S_AXI_spi_0_WREADY(0),
       S_AXI_spi_wstrb(3 downto 0) => S_AXI_spi_0_WSTRB(3 downto 0),
       S_AXI_spi_wvalid(0) => S_AXI_spi_0_WVALID(0),
+      Status_LVDS_rx09_synced(0) => Status_LVDS_rx09_synced_1,
+      Status_LVDS_rx24_synced(0) => Status_LVDS_rx24_synced_1,
       TRX_PLL_clk_25MHz_N(0) => TRX_TRX_PLL_clk_25MHz_N(0),
       TRX_PLL_clk_25MHz_P(0) => TRX_TRX_PLL_clk_25MHz_P(0),
       TRX_clk_26MHz => TRX_clk_26MHz_1,
@@ -19906,6 +20052,7 @@ TRX: entity work.TRX_imp_W48V8V
       TRX_rx24_fifo_valid_o => TRX_rx24_fifo_valid_o_1,
       TRX_rx_clk_64MHz_clk_n => TRX_rx_clk_64MHz_1_CLK_N,
       TRX_rx_clk_64MHz_clk_p => TRX_rx_clk_64MHz_1_CLK_P,
+      TRX_rx_clkdiv_16MHz_o(0) => TRX_rx_clkdiv_16MHz(0),
       TRX_rx_data_n(1 downto 0) => TRX_rx_data_n_1(1 downto 0),
       TRX_rx_data_p(1 downto 0) => TRX_rx_data_p_1(1 downto 0),
       TRX_spi_io0_i => TRX_TRX_spi_IO0_I,
@@ -19925,7 +20072,8 @@ TRX: entity work.TRX_imp_W48V8V
       TRX_tx_clk_clk_p => TRX_TRX_tx_clk_CLK_P,
       TRX_tx_data_n(1 downto 0) => TRX_TRX_tx_data_n(1 downto 0),
       TRX_tx_data_p(1 downto 0) => TRX_TRX_tx_data_p(1 downto 0),
-      clk_div_out => TRX_rx_div_clk_g_0,
+      TRX_tx_im_out(20 downto 8) => TRX_TRX_tx_im_out(20 downto 8),
+      TRX_tx_re_out(20 downto 8) => TRX_TRX_tx_re_out(20 downto 8),
       clk_trx_26MHz_vio => TRX_clk_trx_26MHz_vio,
       clk_trx_pll_25MHz_vio => TRX_clk_trx_pll_25MHz_vio,
       dcm_locked => mig_7series_0_mmcm_locked,
@@ -20027,6 +20175,7 @@ UART0: entity work.UART0_imp_1B98M7Q
     );
 USER_dbg: entity work.USER_dbg_imp_1LGDWY9
      port map (
+      In0(0) => TRX_rx_clkdiv_16MHz(0),
       USER_dbg_out(13 downto 0) => USER_dbg_USER_dbg_out(13 downto 0)
     );
 axi_BOARD_iic_0: component msys_axi_iic_1_0
@@ -20232,7 +20381,7 @@ lt_fmeter_xlconcat_0: component msys_xlconcat_0_0
       In1(0) => CLK2_125MHz_mgt_g_0(0),
       In2(0) => CLK1B_clk_wiz_0_clk_out2_fmeter,
       In3(0) => CLK0_NA_g_0(0),
-      In4(0) => TRX_rx_div_clk_g_0,
+      In4(0) => TRX_rx_clkdiv_16MHz(0),
       In5(0) => ETH0_s_mii_tx_clk,
       In6(0) => ETH0_s_mii_rx_clk,
       In7(0) => TRX_clk_trx_26MHz_vio,
@@ -21059,11 +21208,35 @@ vio_0: component msys_vio_0_0
       probe_in38(31 downto 0) => labtools_fmeter_0_F7(31 downto 0),
       probe_in39(31 downto 0) => labtools_fmeter_0_F8(31 downto 0),
       probe_in4(0) => labtools_fmeter_0_update,
+      probe_in40(12 downto 0) => vio_xlslice_40_Dout(12 downto 0),
+      probe_in41(12 downto 0) => vio_xlslice_41_Dout(12 downto 0),
       probe_in5(0) => SC0712_0_reset_out,
       probe_in6(31 downto 0) => CFG_mon_GPIO1_O(31 downto 0),
       probe_in7(31 downto 0) => CFG_mon_GPIO1_I(31 downto 0),
       probe_in8(31 downto 0) => lt_F4_TRX_LVDS_divclk(31 downto 0),
       probe_in9(0) => FPGA_IO_1,
       probe_out0(12 downto 0) => postmem_rx_addrb_in_0(12 downto 0)
+    );
+vio_xlconcat_40: component msys_xlconcat_0_20
+     port map (
+      In0(7 downto 0) => B"00000000",
+      In1(12 downto 0) => TRX_TRX_tx_re_out(20 downto 8),
+      dout(20 downto 0) => vio_xlconcat_40_dout(20 downto 0)
+    );
+vio_xlconcat_41: component msys_xlconcat_0_21
+     port map (
+      In0(7 downto 0) => B"00000000",
+      In1(12 downto 0) => TRX_TRX_tx_im_out(20 downto 8),
+      dout(20 downto 0) => vio_xlconcat_41_dout(20 downto 0)
+    );
+vio_xlslice_40: component msys_xlslice_0_43
+     port map (
+      Din(20 downto 0) => vio_xlconcat_40_dout(20 downto 0),
+      Dout(12 downto 0) => vio_xlslice_40_Dout(12 downto 0)
+    );
+vio_xlslice_41: component msys_xlslice_0_44
+     port map (
+      Din(20 downto 0) => vio_xlconcat_41_dout(20 downto 0),
+      Dout(12 downto 0) => vio_xlslice_41_Dout(12 downto 0)
     );
 end STRUCTURE;

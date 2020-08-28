@@ -55,15 +55,17 @@
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module msys_xlconcat_0_16 (
   In0,
+  In1,
   dout
 );
 
-input wire [13 : 0] In0;
+input wire [0 : 0] In0;
+input wire [12 : 0] In1;
 output wire [13 : 0] dout;
 
   xlconcat_v2_1_3_xlconcat #(
-    .IN0_WIDTH(14),
-    .IN1_WIDTH(1),
+    .IN0_WIDTH(1),
+    .IN1_WIDTH(13),
     .IN2_WIDTH(4),
     .IN3_WIDTH(1),
     .IN4_WIDTH(1),
@@ -95,10 +97,10 @@ output wire [13 : 0] dout;
     .IN30_WIDTH(1),
     .IN31_WIDTH(1),
     .dout_width(14),
-    .NUM_PORTS(1)
+    .NUM_PORTS(2)
   ) inst (
     .In0(In0),
-    .In1(1'B0),
+    .In1(In1),
     .In2(4'B0),
     .In3(1'B0),
     .In4(1'B0),

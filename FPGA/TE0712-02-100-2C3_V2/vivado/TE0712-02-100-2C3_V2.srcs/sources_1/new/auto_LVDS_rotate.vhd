@@ -36,7 +36,7 @@ use IEEE.std_logic_signed.all;
 --use UNISIM.VComponents.all;
 
 entity auto_LVDS_rotate is
-  Port ( 
+  Port (
     resetn              : in  STD_LOGIC;
     clk                 : in  STD_LOGIC;
     LVDS09              : in  STD_LOGIC_VECTOR (31 downto 0);
@@ -46,7 +46,9 @@ entity auto_LVDS_rotate is
     rot09q              : out STD_LOGIC_VECTOR (31 downto 0);
     rot09vld            : out STD_LOGIC;
     rot24q              : out STD_LOGIC_VECTOR (31 downto 0);
-    rot24vld            : out STD_LOGIC
+    rot24vld            : out STD_LOGIC;
+    LVDS_rx09_synced    : out STD_LOGIC;
+    LVDS_rx24_synced    : out STD_LOGIC
   );
 end auto_LVDS_rotate;
 
@@ -60,12 +62,12 @@ architecture Behavioral of auto_LVDS_rotate is
   );
   end component barrel_rot32;
 
-  
+
   -- FSM inbox09
   signal inb09_in_r     : STD_LOGIC_VECTOR (31 downto 0);
   signal inb09_out_r    : STD_LOGIC_VECTOR (31 downto 0);
   signal inb09_rdy      : STD_LOGIC;
-  
+
   -- FSM inbox24
   signal inb24_in_r     : STD_LOGIC_VECTOR (31 downto 0);
   signal inb24_out_r    : STD_LOGIC_VECTOR (31 downto 0);
@@ -76,12 +78,12 @@ architecture Behavioral of auto_LVDS_rotate is
   signal inb_lock09d    : STD_LOGIC;
   signal inb_lock24     : STD_LOGIC;
   signal inb_lock24d    : STD_LOGIC;
-  
+
   -- FSM barrel
   signal rot_in         : STD_LOGIC_VECTOR (31 downto 0);
   signal rot_out        : STD_LOGIC_VECTOR (31 downto 0);
   signal rot_val        : STD_LOGIC_VECTOR (4 downto 0);
-  
+
   -- Marker bits
   signal mrkok          : STD_LOGIC;
 
@@ -105,7 +107,7 @@ begin
             inb09_out_r <= (others => '0');
             inb09_rdy   <= '0';
 
-        else      
+        else
             if (LVDS09_valid = '1') then
                 inb09_in_r <= LVDS09;
                 inb09_rdy  <= '1';
@@ -121,7 +123,7 @@ begin
         end if;
     end if;
   end process proc_fsm_inbox09;
-  
+
   -- FSM-inbox-24
   proc_fsm_inbox24: process (resetn, clk, LVDS24_valid, inb_lock24)
   begin
@@ -138,7 +140,7 @@ begin
                 if (inb_lock24 = '0') then
                     inb24_out_r <= LVDS24;
                 end if;
-    
+
             elsif (inb_lock24 = '0') then
                 inb24_out_r <= inb24_in_r;
             else
@@ -156,21 +158,23 @@ begin
   begin
     if (clk'EVENT and clk = '1') then
         if (resetn = '0') then
-          rotval09_int := 0;
-          rotval24_int := 0;
-          inb_lock09   <= '0';
-          inb_lock09d  <= '0';
-          inb_lock24   <= '0';
-          inb_lock24d  <= '0';
-          rot_val      <= (others => '0');
-          rot09q       <= (others => '0');
-          rot24q       <= (others => '0');
-          state        := 0;
+          rotval09_int      := 0;
+          rotval24_int      := 0;
+          inb_lock09        <= '0';
+          inb_lock09d       <= '0';
+          inb_lock24        <= '0';
+          inb_lock24d       <= '0';
+          LVDS_rx09_synced  <= '0';
+          LVDS_rx24_synced  <= '0';
+          rot_val           <= (others => '0');
+          rot09q            <= (others => '0');
+          rot24q            <= (others => '0');
+          state             := 0;
 
         else
-            inb_lock09d <= inb_lock09;
-            inb_lock24d <= inb_lock24;
-    
+            inb_lock09d     <= inb_lock09;
+            inb_lock24d     <= inb_lock24;
+
             case state is
                 when 0 =>
                     if (inb09_rdy = '1') then
@@ -186,10 +190,10 @@ begin
                         state      := 8;
                     end if;
 
-                -- wait state          
+                -- wait state
                 when 4 =>
                     state := 5;
-        
+
                 when 5 =>
                     if (mrkok = '0') then
                         if (rotval09_int < 31) then
@@ -197,18 +201,20 @@ begin
                         else
                             rotval09_int := 0;
                         end if;
-                        rot09q <= (others => '0');
-        
+                        LVDS_rx09_synced    <= '0';
+                        rot09q              <= (others => '0');
+
                     else
-                        rot09q <= rot_out;
+                        rot09q              <= rot_out;
+                        LVDS_rx09_synced    <= '1';
                     end if;
                     inb_lock09 <= '0';
                     state := 0;
-        
-                -- wait state          
+
+                -- wait state
                 when 8 =>
                     state := 9;
-        
+
                 when 9 =>
                     if (mrkok = '0') then
                         if (rotval24_int < 31) then
@@ -216,15 +222,17 @@ begin
                         else
                             rotval24_int := 0;
                         end if;
-                        rot24q <= (others => '0');
+                        LVDS_rx24_synced    <= '0';
+                        rot24q              <= (others => '0');
                         state := 0;
-        
+
                     else
-                        rot24q <= rot_out;
+                        rot24q              <= rot_out;
+                        LVDS_rx24_synced    <= '1';
                     end if;
                     inb_lock24 <= '0';
                     state := 0;
-                  
+
                 when others =>
                     rotval09_int := 0;
                     rotval24_int := 0;

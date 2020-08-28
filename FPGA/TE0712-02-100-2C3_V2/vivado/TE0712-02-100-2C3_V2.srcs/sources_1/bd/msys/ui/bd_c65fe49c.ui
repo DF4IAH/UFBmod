@@ -1,0 +1,33 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"2.0",
+   "Default View_TopLeft":"-729,-203",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port TRX_spi -pg 1 -lvl 3 -x 610 -y 60 -defaultsOSRD
+preplace port S_AXI_spi -pg 1 -lvl 0 -x 0 -y 50 -defaultsOSRD
+preplace port S_AXI_gpio -pg 1 -lvl 0 -x 0 -y 90 -defaultsOSRD
+preplace port s_axi_aclk -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
+preplace port s_axi_aresetn -pg 1 -lvl 0 -x 0 -y 150 -defaultsOSRD
+preplace port ip2intc_irpt -pg 1 -lvl 3 -x 610 -y 90 -defaultsOSRD
+preplace portBus TRX_resetn -pg 1 -lvl 3 -x 610 -y 210 -defaultsOSRD
+preplace portBus TRX_rfx_mode -pg 1 -lvl 3 -x 610 -y 310 -defaultsOSRD
+preplace inst TRX_gpio_xlslice_0to0_0 -pg 1 -lvl 2 -x 460 -y 210 -defaultsOSRD
+preplace inst TRX_gpio_xlslice_1to1_0 -pg 1 -lvl 2 -x 460 -y 310 -defaultsOSRD
+preplace inst axi_TRX_gpio_0 -pg 1 -lvl 1 -x 170 -y 130 -defaultsOSRD
+preplace inst TRX_axi_quad_spi_0 -pg 1 -lvl 2 -x 460 -y 80 -defaultsOSRD
+preplace netloc s_axi_aclk_CD100 1 0 2 20 210 300
+preplace netloc rst_mig_7series_0_100M_peripheral_aresetn 1 0 2 30 220 320J
+preplace netloc TRX_axi_quad_spi_0_ip2intc_irpt 1 2 1 NJ 90
+preplace netloc axi_TRX_gpio_0_gpio_io_o 1 1 1 310 140n
+preplace netloc TRX_gpio_xlslice_0to0_0_Dout 1 2 1 NJ 210
+preplace netloc TRX_gpio_xlslice_1to1_0_Dout 1 2 1 NJ 310
+preplace netloc S_AXI_gpio_0 1 0 1 20J 90n
+preplace netloc S_AXI_spi_0 1 0 2 NJ 50 NJ
+preplace netloc Conn2 1 2 1 570J 60n
+levelinfo -pg 1 0 170 460 610
+pagesize -pg 1 -db -bbox -sgen -130 -10 780 370
+"
+}
+

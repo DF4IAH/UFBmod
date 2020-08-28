@@ -813,21 +813,69 @@ proc create_hier_cell_TRX_tx_concat { parentCell nameHier } {
   # Create interface pins
 
   # Create pins
+  create_bd_pin -dir I -from 0 -to 0 TRX_config_LVDS_tx_blank_in
   create_bd_pin -dir O -from 31 -to 0 TRX_tx09_fifo_din
   create_bd_pin -dir I -from 7 -to 0 TRX_tx09_fifo_dout
   create_bd_pin -dir I -from 0 -to 0 TRX_tx_PTT_in
   create_bd_pin -dir O -from 15 -to 0 TRX_tx_data_out_from_device_in
   create_bd_pin -dir I -from 20 -to 8 TRX_tx_im_out
   create_bd_pin -dir I -from 20 -to 8 TRX_tx_re_out
+  create_bd_pin -dir I -type clk clk_div_out
 
-  # Create instance: TRX_tx_xlconcat_0, and set properties
-  set TRX_tx_xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 TRX_tx_xlconcat_0 ]
+  # Create instance: TRX_blank_tx_c_shift_ram_0, and set properties
+  set TRX_blank_tx_c_shift_ram_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 TRX_blank_tx_c_shift_ram_0 ]
+  set_property -dict [ list \
+   CONFIG.AsyncInitVal {0} \
+   CONFIG.DefaultData {0} \
+   CONFIG.Depth {2} \
+   CONFIG.SyncInitVal {0} \
+   CONFIG.Width {1} \
+ ] $TRX_blank_tx_c_shift_ram_0
+
+  # Create instance: TRX_blank_tx_util_vector_logic_0, and set properties
+  set TRX_blank_tx_util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 TRX_blank_tx_util_vector_logic_0 ]
+  set_property -dict [ list \
+   CONFIG.C_SIZE {16} \
+ ] $TRX_blank_tx_util_vector_logic_0
+
+  # Create instance: TRX_blank_tx_util_vector_logic_1, and set properties
+  set TRX_blank_tx_util_vector_logic_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 TRX_blank_tx_util_vector_logic_1 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {not} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_notgate.png} \
+ ] $TRX_blank_tx_util_vector_logic_1
+
+  # Create instance: TRX_blank_tx_xlconcat_0, and set properties
+  set TRX_blank_tx_xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 TRX_blank_tx_xlconcat_0 ]
+  set_property -dict [ list \
+   CONFIG.IN0_WIDTH {1} \
+   CONFIG.IN10_WIDTH {1} \
+   CONFIG.IN11_WIDTH {1} \
+   CONFIG.IN12_WIDTH {1} \
+   CONFIG.IN13_WIDTH {1} \
+   CONFIG.IN14_WIDTH {1} \
+   CONFIG.IN15_WIDTH {1} \
+   CONFIG.IN1_WIDTH {1} \
+   CONFIG.IN2_WIDTH {1} \
+   CONFIG.IN3_WIDTH {1} \
+   CONFIG.IN4_WIDTH {1} \
+   CONFIG.IN5_WIDTH {1} \
+   CONFIG.IN6_WIDTH {1} \
+   CONFIG.IN7_WIDTH {1} \
+   CONFIG.IN8_WIDTH {1} \
+   CONFIG.IN9_WIDTH {1} \
+   CONFIG.NUM_PORTS {16} \
+ ] $TRX_blank_tx_xlconcat_0
+
+  # Create instance: TRX_tx_LVDS_interleave_xlconcat_0, and set properties
+  set TRX_tx_LVDS_interleave_xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 TRX_tx_LVDS_interleave_xlconcat_0 ]
   set_property -dict [ list \
    CONFIG.NUM_PORTS {16} \
- ] $TRX_tx_xlconcat_0
+ ] $TRX_tx_LVDS_interleave_xlconcat_0
 
-  # Create instance: xlconcat_0, and set properties
-  set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
+  # Create instance: TRX_tx_word_format_xlconcat_0, and set properties
+  set TRX_tx_word_format_xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 TRX_tx_word_format_xlconcat_0 ]
   set_property -dict [ list \
    CONFIG.IN0_WIDTH {1} \
    CONFIG.IN1_WIDTH {13} \
@@ -838,16 +886,16 @@ proc create_hier_cell_TRX_tx_concat { parentCell nameHier } {
    CONFIG.IN6_WIDTH {1} \
    CONFIG.IN7_WIDTH {1} \
    CONFIG.NUM_PORTS {8} \
- ] $xlconcat_0
+ ] $TRX_tx_word_format_xlconcat_0
 
-  # Create instance: xlconstant_0_len1, and set properties
-  set xlconstant_0_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0_len1 ]
+  # Create instance: xlconstant_val0_len1, and set properties
+  set xlconstant_val0_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_val0_len1 ]
   set_property -dict [ list \
    CONFIG.CONST_VAL {0} \
- ] $xlconstant_0_len1
+ ] $xlconstant_val0_len1
 
-  # Create instance: xlconstant_1_len1, and set properties
-  set xlconstant_1_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_1_len1 ]
+  # Create instance: xlconstant_val1_len1, and set properties
+  set xlconstant_val1_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_val1_len1 ]
 
   # Create instance: xlslice_00to00, and set properties
   set xlslice_00to00 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_00to00 ]
@@ -919,22 +967,28 @@ proc create_hier_cell_TRX_tx_concat { parentCell nameHier } {
  ] $xlslice_07to07
 
   # Create port connections
-  connect_bd_net -net TRX_tx09_fifo_din_0 [get_bd_pins TRX_tx09_fifo_din] [get_bd_pins xlconcat_0/dout]
+  connect_bd_net -net TRX_blank_tx_c_shift_ram_0_Q [get_bd_pins TRX_blank_tx_c_shift_ram_0/Q] [get_bd_pins TRX_blank_tx_util_vector_logic_1/Op1]
+  connect_bd_net -net TRX_blank_tx_util_vector_logic_0_Res [get_bd_pins TRX_tx_data_out_from_device_in] [get_bd_pins TRX_blank_tx_util_vector_logic_0/Res]
+  connect_bd_net -net TRX_blank_tx_xlconcat_0_dout [get_bd_pins TRX_blank_tx_util_vector_logic_0/Op2] [get_bd_pins TRX_blank_tx_xlconcat_0/dout]
+  connect_bd_net -net TRX_config_LVDS_tx_blank_in_1 [get_bd_pins TRX_config_LVDS_tx_blank_in] [get_bd_pins TRX_blank_tx_c_shift_ram_0/D]
+  connect_bd_net -net TRX_config_LVDS_tx_blankn_0 [get_bd_pins TRX_blank_tx_util_vector_logic_1/Res] [get_bd_pins TRX_blank_tx_xlconcat_0/In0] [get_bd_pins TRX_blank_tx_xlconcat_0/In1] [get_bd_pins TRX_blank_tx_xlconcat_0/In2] [get_bd_pins TRX_blank_tx_xlconcat_0/In3] [get_bd_pins TRX_blank_tx_xlconcat_0/In4] [get_bd_pins TRX_blank_tx_xlconcat_0/In5] [get_bd_pins TRX_blank_tx_xlconcat_0/In6] [get_bd_pins TRX_blank_tx_xlconcat_0/In7] [get_bd_pins TRX_blank_tx_xlconcat_0/In8] [get_bd_pins TRX_blank_tx_xlconcat_0/In9] [get_bd_pins TRX_blank_tx_xlconcat_0/In10] [get_bd_pins TRX_blank_tx_xlconcat_0/In11] [get_bd_pins TRX_blank_tx_xlconcat_0/In12] [get_bd_pins TRX_blank_tx_xlconcat_0/In13] [get_bd_pins TRX_blank_tx_xlconcat_0/In14] [get_bd_pins TRX_blank_tx_xlconcat_0/In15]
   connect_bd_net -net TRX_tx09_fifo_dout_0 [get_bd_pins TRX_tx09_fifo_dout] [get_bd_pins xlslice_00to00/Din] [get_bd_pins xlslice_01to01/Din] [get_bd_pins xlslice_02to02/Din] [get_bd_pins xlslice_03to03/Din] [get_bd_pins xlslice_04to04/Din] [get_bd_pins xlslice_05to05/Din] [get_bd_pins xlslice_06to06/Din] [get_bd_pins xlslice_07to07/Din]
-  connect_bd_net -net TRX_tx_PTT_in_0 [get_bd_pins TRX_tx_PTT_in] [get_bd_pins xlconcat_0/In4]
-  connect_bd_net -net TRX_tx_data_out_from_device_in_0 [get_bd_pins TRX_tx_data_out_from_device_in] [get_bd_pins TRX_tx_xlconcat_0/dout]
-  connect_bd_net -net TRX_tx_im_out_0 [get_bd_pins TRX_tx_im_out] [get_bd_pins xlconcat_0/In1]
-  connect_bd_net -net TRX_tx_re_out_0 [get_bd_pins TRX_tx_re_out] [get_bd_pins xlconcat_0/In5]
-  connect_bd_net -net xlconstant_0_len1_dout [get_bd_pins TRX_tx_xlconcat_0/In1] [get_bd_pins TRX_tx_xlconcat_0/In3] [get_bd_pins TRX_tx_xlconcat_0/In5] [get_bd_pins TRX_tx_xlconcat_0/In7] [get_bd_pins TRX_tx_xlconcat_0/In9] [get_bd_pins TRX_tx_xlconcat_0/In11] [get_bd_pins TRX_tx_xlconcat_0/In13] [get_bd_pins TRX_tx_xlconcat_0/In15] [get_bd_pins xlconcat_0/In0] [get_bd_pins xlconcat_0/In3] [get_bd_pins xlconcat_0/In6] [get_bd_pins xlconstant_0_len1/dout]
-  connect_bd_net -net xlconstant_1_len1_dout [get_bd_pins xlconcat_0/In2] [get_bd_pins xlconcat_0/In7] [get_bd_pins xlconstant_1_len1/dout]
-  connect_bd_net -net xlslice_0_Dout [get_bd_pins TRX_tx_xlconcat_0/In0] [get_bd_pins xlslice_00to00/Dout]
-  connect_bd_net -net xlslice_1_Dout [get_bd_pins TRX_tx_xlconcat_0/In2] [get_bd_pins xlslice_01to01/Dout]
-  connect_bd_net -net xlslice_2_Dout [get_bd_pins TRX_tx_xlconcat_0/In4] [get_bd_pins xlslice_02to02/Dout]
-  connect_bd_net -net xlslice_3_Dout [get_bd_pins TRX_tx_xlconcat_0/In6] [get_bd_pins xlslice_03to03/Dout]
-  connect_bd_net -net xlslice_4_Dout [get_bd_pins TRX_tx_xlconcat_0/In8] [get_bd_pins xlslice_04to04/Dout]
-  connect_bd_net -net xlslice_5_Dout [get_bd_pins TRX_tx_xlconcat_0/In10] [get_bd_pins xlslice_05to05/Dout]
-  connect_bd_net -net xlslice_6_Dout [get_bd_pins TRX_tx_xlconcat_0/In12] [get_bd_pins xlslice_06to06/Dout]
-  connect_bd_net -net xlslice_7_Dout [get_bd_pins TRX_tx_xlconcat_0/In14] [get_bd_pins xlslice_07to07/Dout]
+  connect_bd_net -net TRX_tx_LVDS_interleave_xlconcat_0_dout [get_bd_pins TRX_blank_tx_util_vector_logic_0/Op1] [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/dout]
+  connect_bd_net -net TRX_tx_PTT_in_0 [get_bd_pins TRX_tx_PTT_in] [get_bd_pins TRX_tx_word_format_xlconcat_0/In4]
+  connect_bd_net -net TRX_tx_im_out_0 [get_bd_pins TRX_tx_im_out] [get_bd_pins TRX_tx_word_format_xlconcat_0/In1]
+  connect_bd_net -net TRX_tx_re_out_0 [get_bd_pins TRX_tx_re_out] [get_bd_pins TRX_tx_word_format_xlconcat_0/In5]
+  connect_bd_net -net TRX_tx_word_format_xlconcat_0_dout [get_bd_pins TRX_tx09_fifo_din] [get_bd_pins TRX_tx_word_format_xlconcat_0/dout]
+  connect_bd_net -net clk_div_out_1 [get_bd_pins clk_div_out] [get_bd_pins TRX_blank_tx_c_shift_ram_0/CLK]
+  connect_bd_net -net xlconstant_val0_len1_dout [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In1] [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In3] [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In5] [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In7] [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In9] [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In11] [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In13] [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In15] [get_bd_pins TRX_tx_word_format_xlconcat_0/In0] [get_bd_pins TRX_tx_word_format_xlconcat_0/In3] [get_bd_pins TRX_tx_word_format_xlconcat_0/In6] [get_bd_pins xlconstant_val0_len1/dout]
+  connect_bd_net -net xlconstant_val1_len1_dout [get_bd_pins TRX_tx_word_format_xlconcat_0/In2] [get_bd_pins TRX_tx_word_format_xlconcat_0/In7] [get_bd_pins xlconstant_val1_len1/dout]
+  connect_bd_net -net xlslice_00to00_Dout [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In14] [get_bd_pins xlslice_00to00/Dout]
+  connect_bd_net -net xlslice_01to01_Dout [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In12] [get_bd_pins xlslice_01to01/Dout]
+  connect_bd_net -net xlslice_02to02_Dout [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In10] [get_bd_pins xlslice_02to02/Dout]
+  connect_bd_net -net xlslice_03to03_Dout [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In8] [get_bd_pins xlslice_03to03/Dout]
+  connect_bd_net -net xlslice_04to04_Dout [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In6] [get_bd_pins xlslice_04to04/Dout]
+  connect_bd_net -net xlslice_05to05_Dout [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In4] [get_bd_pins xlslice_05to05/Dout]
+  connect_bd_net -net xlslice_06to06_Dout [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In2] [get_bd_pins xlslice_06to06/Dout]
+  connect_bd_net -net xlslice_07to07_Dout [get_bd_pins TRX_tx_LVDS_interleave_xlconcat_0/In0] [get_bd_pins xlslice_07to07/Dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -1248,11 +1302,11 @@ proc create_hier_cell_TRX_tx_DDS_unit { parentCell nameHier } {
 
   # Create pins
   create_bd_pin -dir I -type rst SCLR
+  create_bd_pin -dir I -type clk TRX_rx_clkdiv_16MHz_i
   create_bd_pin -dir O -type data TRX_tx_4to1_c_counter_binary_0_THRESH0
   create_bd_pin -dir O -from 20 -to 8 -type data TRX_tx_im_out
   create_bd_pin -dir O -from 20 -to 8 -type data TRX_tx_re_out
   create_bd_pin -dir I -type rst aresetn
-  create_bd_pin -dir I -type clk clk_div_out
   create_bd_pin -dir I -type clk s_axi_aclk
   create_bd_pin -dir I -type rst s_axi_aresetn
 
@@ -1495,11 +1549,11 @@ proc create_hier_cell_TRX_tx_DDS_unit { parentCell nameHier } {
   connect_bd_net -net TRX_tx_im_out_0 [get_bd_pins TRX_tx_im_out] [get_bd_pins TRX_tx1_im_xbip_multadd_0/P]
   connect_bd_net -net TRX_tx_re_out_0 [get_bd_pins TRX_tx_re_out] [get_bd_pins TRX_tx1_re_xbip_multadd_0/P]
   connect_bd_net -net aresetn_1 [get_bd_pins aresetn] [get_bd_pins TRX_tx0_dds_compiler_0/aresetn] [get_bd_pins TRX_tx1_dds_compiler_0/aresetn]
-  connect_bd_net -net clk_div_out_1 [get_bd_pins clk_div_out] [get_bd_pins TRX_CDC_tx0_c_shift_ram_0/CLK] [get_bd_pins TRX_CDC_tx1_c_shift_ram_0/CLK] [get_bd_pins TRX_tx0_dds_compiler_0/aclk] [get_bd_pins TRX_tx0_im_xbip_multadd_0/CLK] [get_bd_pins TRX_tx0_re_xbip_multadd_0/CLK] [get_bd_pins TRX_tx1_dds_compiler_0/aclk] [get_bd_pins TRX_tx1_im_xbip_multadd_0/CLK] [get_bd_pins TRX_tx1_re_xbip_multadd_0/CLK] [get_bd_pins TRX_tx_4to1_c_counter_binary_0/CLK]
+  connect_bd_net -net clk_div_out_1 [get_bd_pins TRX_rx_clkdiv_16MHz_i] [get_bd_pins TRX_CDC_tx0_c_shift_ram_0/CLK] [get_bd_pins TRX_CDC_tx1_c_shift_ram_0/CLK] [get_bd_pins TRX_tx0_dds_compiler_0/aclk] [get_bd_pins TRX_tx0_im_xbip_multadd_0/CLK] [get_bd_pins TRX_tx0_re_xbip_multadd_0/CLK] [get_bd_pins TRX_tx1_dds_compiler_0/aclk] [get_bd_pins TRX_tx1_im_xbip_multadd_0/CLK] [get_bd_pins TRX_tx1_re_xbip_multadd_0/CLK] [get_bd_pins TRX_tx_4to1_c_counter_binary_0/CLK]
   connect_bd_net -net s_axi_aclk_1 [get_bd_pins s_axi_aclk] [get_bd_pins TRX_tx_axi_gpio_0/s_axi_aclk]
   connect_bd_net -net s_axi_aresetn_1 [get_bd_pins s_axi_aresetn] [get_bd_pins TRX_tx_axi_gpio_0/s_axi_aresetn]
   connect_bd_net -net xlconstant_0_len1_dout [get_bd_pins TRX_tx0_im_xbip_multadd_0/C] [get_bd_pins TRX_tx0_im_xbip_multadd_0/SUBTRACT] [get_bd_pins TRX_tx0_re_xbip_multadd_0/C] [get_bd_pins TRX_tx0_re_xbip_multadd_0/SUBTRACT] [get_bd_pins TRX_tx1_im_xbip_multadd_0/SUBTRACT] [get_bd_pins TRX_tx1_re_xbip_multadd_0/SUBTRACT] [get_bd_pins xlconstant_0_len1/dout]
-  connect_bd_net -net xlconstant_1_len1_dout [get_bd_pins TRX_tx0_im_xbip_multadd_0/CE] [get_bd_pins TRX_tx0_re_xbip_multadd_0/CE] [get_bd_pins TRX_tx1_im_xbip_multadd_0/CE] [get_bd_pins TRX_tx1_re_xbip_multadd_0/CE] [get_bd_pins xlconstant_1_len1/dout]
+  connect_bd_net -net xlconstant_1_len1_dout [get_bd_pins TRX_tx0_dds_compiler_0/s_axis_config_tvalid] [get_bd_pins TRX_tx0_im_xbip_multadd_0/CE] [get_bd_pins TRX_tx0_re_xbip_multadd_0/CE] [get_bd_pins TRX_tx1_dds_compiler_0/s_axis_config_tvalid] [get_bd_pins TRX_tx1_im_xbip_multadd_0/CE] [get_bd_pins TRX_tx1_re_xbip_multadd_0/CE] [get_bd_pins xlconstant_1_len1/dout]
   connect_bd_net -net xlslice_0_12to00_Dout [get_bd_pins TRX_tx0_re_xbip_multadd_0/A] [get_bd_pins TRX_tx0_re_xlslice_12to00/Dout]
   connect_bd_net -net xlslice_0_28to16_Dout [get_bd_pins TRX_tx0_im_xbip_multadd_0/A] [get_bd_pins TRX_tx0_im_xlslice_28to16/Dout]
 
@@ -1838,9 +1892,13 @@ proc create_hier_cell_TRX_config { parentCell nameHier } {
 
 
   # Create pins
+  create_bd_pin -dir O -from 0 -to 0 LVDS_tx_blank
+  create_bd_pin -dir I -from 0 -to 0 Status_LVDS_rx09_synced
+  create_bd_pin -dir I -from 0 -to 0 Status_LVDS_rx24_synced
   create_bd_pin -dir O -from 0 -to 0 TRX_resetn
   create_bd_pin -dir O -from 0 -to 0 TRX_rfx_mode
   create_bd_pin -dir O -type intr ip2intc_irpt
+  create_bd_pin -dir I locked
   create_bd_pin -dir I -type clk s_axi_aclk
   create_bd_pin -dir I -type rst s_axi_aresetn
 
@@ -1855,36 +1913,49 @@ proc create_hier_cell_TRX_config { parentCell nameHier } {
    CONFIG.FIFO_INCLUDED {1} \
  ] $TRX_axi_quad_spi_0
 
-  # Create instance: TRX_gpio_xlslice_0to0_0, and set properties
-  set TRX_gpio_xlslice_0to0_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 TRX_gpio_xlslice_0to0_0 ]
+  # Create instance: TRX_gpio_xlconcat_0, and set properties
+  set TRX_gpio_xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 TRX_gpio_xlconcat_0 ]
   set_property -dict [ list \
-   CONFIG.DIN_FROM {0} \
-   CONFIG.DIN_TO {0} \
-   CONFIG.DIN_WIDTH {2} \
-   CONFIG.DOUT_WIDTH {1} \
- ] $TRX_gpio_xlslice_0to0_0
+   CONFIG.IN0_WIDTH {1} \
+   CONFIG.IN1_WIDTH {1} \
+   CONFIG.IN2_WIDTH {1} \
+   CONFIG.IN3_WIDTH {29} \
+   CONFIG.NUM_PORTS {4} \
+ ] $TRX_gpio_xlconcat_0
 
-  # Create instance: TRX_gpio_xlslice_1to1_0, and set properties
-  set TRX_gpio_xlslice_1to1_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 TRX_gpio_xlslice_1to1_0 ]
+  # Create instance: TRX_gpio_xlslice_0downto0_blankTx_0, and set properties
+  set TRX_gpio_xlslice_0downto0_blankTx_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 TRX_gpio_xlslice_0downto0_blankTx_0 ]
+
+  # Create instance: TRX_gpio_xlslice_30downto30_rfxmode_0, and set properties
+  set TRX_gpio_xlslice_30downto30_rfxmode_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 TRX_gpio_xlslice_30downto30_rfxmode_0 ]
   set_property -dict [ list \
-   CONFIG.DIN_FROM {1} \
-   CONFIG.DIN_TO {1} \
-   CONFIG.DIN_WIDTH {2} \
+   CONFIG.DIN_FROM {30} \
+   CONFIG.DIN_TO {30} \
+   CONFIG.DIN_WIDTH {32} \
    CONFIG.DOUT_WIDTH {1} \
- ] $TRX_gpio_xlslice_1to1_0
+ ] $TRX_gpio_xlslice_30downto30_rfxmode_0
+
+  # Create instance: TRX_gpio_xlslice_31downto31_resetn_0, and set properties
+  set TRX_gpio_xlslice_31downto31_resetn_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 TRX_gpio_xlslice_31downto31_resetn_0 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {31} \
+   CONFIG.DIN_TO {31} \
+   CONFIG.DIN_WIDTH {32} \
+   CONFIG.DOUT_WIDTH {1} \
+ ] $TRX_gpio_xlslice_31downto31_resetn_0
 
   # Create instance: axi_TRX_gpio_0, and set properties
   set axi_TRX_gpio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_TRX_gpio_0 ]
   set_property -dict [ list \
    CONFIG.C_ALL_INPUTS {0} \
-   CONFIG.C_ALL_INPUTS_2 {0} \
+   CONFIG.C_ALL_INPUTS_2 {1} \
    CONFIG.C_ALL_OUTPUTS {1} \
    CONFIG.C_ALL_OUTPUTS_2 {0} \
    CONFIG.C_DOUT_DEFAULT {0x00000000} \
    CONFIG.C_GPIO2_WIDTH {32} \
-   CONFIG.C_GPIO_WIDTH {2} \
+   CONFIG.C_GPIO_WIDTH {32} \
    CONFIG.C_INTERRUPT_PRESENT {0} \
-   CONFIG.C_IS_DUAL {0} \
+   CONFIG.C_IS_DUAL {1} \
    CONFIG.C_TRI_DEFAULT_2 {0xFFFFFFFF} \
  ] $axi_TRX_gpio_0
 
@@ -1894,10 +1965,15 @@ proc create_hier_cell_TRX_config { parentCell nameHier } {
   connect_bd_intf_net -intf_net S_AXI_spi_0 [get_bd_intf_pins S_AXI_spi] [get_bd_intf_pins TRX_axi_quad_spi_0/AXI_LITE]
 
   # Create port connections
+  connect_bd_net -net Status_LVDS_rx09_synced_1 [get_bd_pins Status_LVDS_rx09_synced] [get_bd_pins TRX_gpio_xlconcat_0/In1]
+  connect_bd_net -net Status_LVDS_rx24_synced_1 [get_bd_pins Status_LVDS_rx24_synced] [get_bd_pins TRX_gpio_xlconcat_0/In2]
   connect_bd_net -net TRX_axi_quad_spi_0_ip2intc_irpt [get_bd_pins ip2intc_irpt] [get_bd_pins TRX_axi_quad_spi_0/ip2intc_irpt]
-  connect_bd_net -net TRX_gpio_xlslice_0to0_0_Dout [get_bd_pins TRX_resetn] [get_bd_pins TRX_gpio_xlslice_0to0_0/Dout]
-  connect_bd_net -net TRX_gpio_xlslice_1to1_0_Dout [get_bd_pins TRX_rfx_mode] [get_bd_pins TRX_gpio_xlslice_1to1_0/Dout]
-  connect_bd_net -net axi_TRX_gpio_0_gpio_io_o [get_bd_pins TRX_gpio_xlslice_0to0_0/Din] [get_bd_pins TRX_gpio_xlslice_1to1_0/Din] [get_bd_pins axi_TRX_gpio_0/gpio_io_o]
+  connect_bd_net -net TRX_gpio_xlconcat_0_dout [get_bd_pins TRX_gpio_xlconcat_0/dout] [get_bd_pins axi_TRX_gpio_0/gpio2_io_i]
+  connect_bd_net -net TRX_gpio_xlslice_0to0_0_Dout [get_bd_pins TRX_resetn] [get_bd_pins TRX_gpio_xlslice_31downto31_resetn_0/Dout]
+  connect_bd_net -net TRX_gpio_xlslice_1downto1_blankTx_0_Dout [get_bd_pins LVDS_tx_blank] [get_bd_pins TRX_gpio_xlslice_0downto0_blankTx_0/Dout]
+  connect_bd_net -net TRX_gpio_xlslice_1to1_0_Dout [get_bd_pins TRX_rfx_mode] [get_bd_pins TRX_gpio_xlslice_30downto30_rfxmode_0/Dout]
+  connect_bd_net -net axi_TRX_gpio_0_gpio_io_o [get_bd_pins TRX_gpio_xlslice_0downto0_blankTx_0/Din] [get_bd_pins TRX_gpio_xlslice_30downto30_rfxmode_0/Din] [get_bd_pins TRX_gpio_xlslice_31downto31_resetn_0/Din] [get_bd_pins axi_TRX_gpio_0/gpio_io_o]
+  connect_bd_net -net locked_0 [get_bd_pins locked] [get_bd_pins TRX_gpio_xlconcat_0/In0]
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_aresetn [get_bd_pins s_axi_aresetn] [get_bd_pins TRX_axi_quad_spi_0/s_axi_aresetn] [get_bd_pins axi_TRX_gpio_0/s_axi_aresetn]
   connect_bd_net -net s_axi_aclk_CD100 [get_bd_pins s_axi_aclk] [get_bd_pins TRX_axi_quad_spi_0/ext_spi_clk] [get_bd_pins TRX_axi_quad_spi_0/s_axi_aclk] [get_bd_pins axi_TRX_gpio_0/s_axi_aclk]
 
@@ -1947,6 +2023,7 @@ proc create_hier_cell_TRX_clock { parentCell nameHier } {
   create_bd_pin -dir I -type clk TRX_clk_26MHz
   create_bd_pin -dir O -type clk clk_trx_26MHz_vio
   create_bd_pin -dir O -type clk clk_trx_pll_25MHz_vio
+  create_bd_pin -dir O locked
 
   # Create instance: TRX_PLL_clk_wiz_0, and set properties
   set TRX_PLL_clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 TRX_PLL_clk_wiz_0 ]
@@ -1986,7 +2063,7 @@ proc create_hier_cell_TRX_clock { parentCell nameHier } {
    CONFIG.MMCM_DIVCLK_DIVIDE {1} \
    CONFIG.NUM_OUT_CLKS {3} \
    CONFIG.PRIMITIVE {PLL} \
-   CONFIG.USE_LOCKED {false} \
+   CONFIG.USE_LOCKED {true} \
    CONFIG.USE_RESET {false} \
  ] $TRX_PLL_clk_wiz_0
 
@@ -2000,6 +2077,7 @@ proc create_hier_cell_TRX_clock { parentCell nameHier } {
   connect_bd_net -net TRX_PLL_clk_wiz_0_clk_out1_25MHz [get_bd_pins TRX_PLL_clk_wiz_0/clk_out1_25MHz] [get_bd_pins TRX_PLL_util_ds_buf_0/OBUF_IN]
   connect_bd_net -net TRX_PLL_clk_wiz_0_clk_trx_26MHz_vio [get_bd_pins clk_trx_26MHz_vio] [get_bd_pins TRX_PLL_clk_wiz_0/clk_trx_26MHz_vio]
   connect_bd_net -net TRX_PLL_clk_wiz_0_clk_trx_pll_25MHz_vio [get_bd_pins clk_trx_pll_25MHz_vio] [get_bd_pins TRX_PLL_clk_wiz_0/clk_trx_pll_25MHz_vio]
+  connect_bd_net -net TRX_PLL_clk_wiz_0_locked [get_bd_pins locked] [get_bd_pins TRX_PLL_clk_wiz_0/locked]
   connect_bd_net -net TRX_PLL_util_ds_buf_0_OBUF_DS_N [get_bd_pins TRX_PLL_clk_25MHz_N] [get_bd_pins TRX_PLL_util_ds_buf_0/OBUF_DS_N]
   connect_bd_net -net TRX_PLL_util_ds_buf_0_OBUF_DS_P [get_bd_pins TRX_PLL_clk_25MHz_P] [get_bd_pins TRX_PLL_util_ds_buf_0/OBUF_DS_P]
   connect_bd_net -net TRX_clk_26MHz_1 [get_bd_pins TRX_clk_26MHz] [get_bd_pins TRX_PLL_clk_wiz_0/clk_in1]
@@ -2050,23 +2128,24 @@ proc create_hier_cell_TRX_LVDS { parentCell nameHier } {
 
 
   # Create pins
+  create_bd_pin -dir I -from 0 -to 0 TRX_config_LVDS_tx_blank_in
+  create_bd_pin -dir I -type rst TRX_io_reset_i
   create_bd_pin -dir O -from 31 -to 0 TRX_rx09_fifo_o
   create_bd_pin -dir O TRX_rx09_fifo_valid_o
   create_bd_pin -dir O -from 31 -to 0 TRX_rx24_fifo_o
   create_bd_pin -dir O TRX_rx24_fifo_valid_o
+  create_bd_pin -dir O -from 0 -to 0 -type clk TRX_rx_clkdiv_16MHz_o
   create_bd_pin -dir I -from 1 -to 0 TRX_rx_data_n
   create_bd_pin -dir I -from 1 -to 0 TRX_rx_data_p
-  create_bd_pin -dir I -type data TRX_tx_4to1_c_counter_binary_0_THRESH0
+  create_bd_pin -dir I -type data TRX_tx_4to1_c_counter_binary_0_THRESH0_4MHz
   create_bd_pin -dir I -from 0 -to 0 TRX_tx_PTT_in
   create_bd_pin -dir O -from 1 -to 0 TRX_tx_data_n
   create_bd_pin -dir O -from 1 -to 0 TRX_tx_data_p
   create_bd_pin -dir I -from 20 -to 8 -type data TRX_tx_im_out
   create_bd_pin -dir I -from 20 -to 8 -type data TRX_tx_re_out
-  create_bd_pin -dir I -type rst clk_reset
-  create_bd_pin -dir O -type clk clkdiv_CD016_o
-  create_bd_pin -dir I -type rst io_reset
-  create_bd_pin -dir I ref_clock
-  create_bd_pin -dir I rst
+  create_bd_pin -dir I clk_rst_i
+  create_bd_pin -dir I ref_clock_i
+  create_bd_pin -dir I -type rst reset_CD100_i
   create_bd_pin -dir O -from 8 -to 0 rx09_rd_data_count_CD100_o
   create_bd_pin -dir I -type clk s_axi_aclk
 
@@ -2079,7 +2158,7 @@ proc create_hier_cell_TRX_LVDS { parentCell nameHier } {
    CONFIG.CLK_FWD {true} \
    CONFIG.CLK_FWD_IO_STD {LVDS_25} \
    CONFIG.CLK_FWD_SIG_TYPE {DIFF} \
-   CONFIG.IDELAY_HIGH_PERF_MODE {true} \
+   CONFIG.IDELAY_HIGH_PERF_MODE {false} \
    CONFIG.SELIO_ACTIVE_EDGE {DDR} \
    CONFIG.SELIO_BUS_IN_DELAY {FIXED} \
    CONFIG.SELIO_CLK_BUF {BUFIO} \
@@ -2092,6 +2171,12 @@ proc create_hier_cell_TRX_LVDS { parentCell nameHier } {
    CONFIG.SYSTEM_DATA_WIDTH {2} \
    CONFIG.USE_SERIALIZATION {true} \
  ] $TRX_LVDS_selectio_wiz_0
+
+  # Create instance: TRX_LVDS_util_ds_buf_0, and set properties
+  set TRX_LVDS_util_ds_buf_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.1 TRX_LVDS_util_ds_buf_0 ]
+  set_property -dict [ list \
+   CONFIG.C_BUF_TYPE {BUFG} \
+ ] $TRX_LVDS_util_ds_buf_0
 
   # Create instance: TRX_rx09_concat
   create_hier_cell_TRX_rx09_concat $hier_obj TRX_rx09_concat
@@ -2186,13 +2271,6 @@ proc create_hier_cell_TRX_LVDS { parentCell nameHier } {
   # Create instance: TRX_tx_concat
   create_hier_cell_TRX_tx_concat $hier_obj TRX_tx_concat
 
-  # Create instance: xlconstant_0x0_len2, and set properties
-  set xlconstant_0x0_len2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0x0_len2 ]
-  set_property -dict [ list \
-   CONFIG.CONST_VAL {0} \
-   CONFIG.CONST_WIDTH {2} \
- ] $xlconstant_0x0_len2
-
   # Create instance: xlconstant_1_len1, and set properties
   set xlconstant_1_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_1_len1 ]
   set_property -dict [ list \
@@ -2205,7 +2283,10 @@ proc create_hier_cell_TRX_LVDS { parentCell nameHier } {
   connect_bd_intf_net -intf_net rx_clk_CD064 [get_bd_intf_pins TRX_rx_clk_64MHz] [get_bd_intf_pins TRX_LVDS_selectio_wiz_0/diff_clk_in]
 
   # Create port connections
-  connect_bd_net -net TRX_proc_sys_reset_0_peripheral_reset [get_bd_pins rst] [get_bd_pins TRX_rx09_fifo_generator_0/rst] [get_bd_pins TRX_rx24_fifo_generator_0/rst] [get_bd_pins TRX_tx09_fifo_generator_0/rst]
+  connect_bd_net -net TRX_LVDS_selectio_wiz_0_clk_div_out [get_bd_pins TRX_LVDS_selectio_wiz_0/clk_div_out] [get_bd_pins TRX_LVDS_util_ds_buf_0/BUFG_I]
+  connect_bd_net -net TRX_config_LVDS_tx_blank_0 [get_bd_pins TRX_config_LVDS_tx_blank_in] [get_bd_pins TRX_tx_concat/TRX_config_LVDS_tx_blank_in]
+  connect_bd_net -net TRX_io_reset [get_bd_pins TRX_io_reset_i] [get_bd_pins TRX_LVDS_selectio_wiz_0/io_reset]
+  connect_bd_net -net TRX_proc_sys_reset_0_peripheral_reset [get_bd_pins clk_rst_i] [get_bd_pins TRX_rx09_fifo_generator_0/rst] [get_bd_pins TRX_rx24_fifo_generator_0/rst] [get_bd_pins TRX_tx09_fifo_generator_0/rst]
   connect_bd_net -net TRX_rx09_concat_CD016 [get_bd_pins TRX_rx09_concat/rx09_o] [get_bd_pins TRX_rx09_fifo_generator_0/din]
   connect_bd_net -net TRX_rx09_fifo_generator_0_dout [get_bd_pins TRX_rx09_fifo_o] [get_bd_pins TRX_rx09_fifo_generator_0/dout]
   connect_bd_net -net TRX_rx09_fifo_generator_0_rd_data_count [get_bd_pins rx09_rd_data_count_CD100_o] [get_bd_pins TRX_rx09_fifo_generator_0/rd_data_count]
@@ -2213,24 +2294,23 @@ proc create_hier_cell_TRX_LVDS { parentCell nameHier } {
   connect_bd_net -net TRX_rx24_concat_CD016 [get_bd_pins TRX_rx24_concat/rx24_o] [get_bd_pins TRX_rx24_fifo_generator_0/din]
   connect_bd_net -net TRX_rx24_fifo_generator_0_dout [get_bd_pins TRX_rx24_fifo_o] [get_bd_pins TRX_rx24_fifo_generator_0/dout]
   connect_bd_net -net TRX_rx24_fifo_generator_0_valid [get_bd_pins TRX_rx24_fifo_valid_o] [get_bd_pins TRX_rx24_fifo_generator_0/valid]
-  connect_bd_net -net TRX_rx_clkdiv_CD016 [get_bd_pins clkdiv_CD016_o] [get_bd_pins TRX_LVDS_selectio_wiz_0/clk_div_out] [get_bd_pins TRX_rx09_fifo_generator_0/wr_clk] [get_bd_pins TRX_rx24_fifo_generator_0/wr_clk] [get_bd_pins TRX_tx09_fifo_generator_0/rd_clk] [get_bd_pins TRX_tx09_fifo_generator_0/wr_clk]
+  connect_bd_net -net TRX_rx_clkdiv_16MHz [get_bd_pins TRX_rx_clkdiv_16MHz_o] [get_bd_pins TRX_LVDS_util_ds_buf_0/BUFG_O] [get_bd_pins TRX_rx09_fifo_generator_0/wr_clk] [get_bd_pins TRX_rx24_fifo_generator_0/wr_clk] [get_bd_pins TRX_tx09_fifo_generator_0/rd_clk] [get_bd_pins TRX_tx_concat/clk_div_out]
   connect_bd_net -net TRX_rx_data_n_1 [get_bd_pins TRX_rx_data_n] [get_bd_pins TRX_LVDS_selectio_wiz_0/data_in_from_pins_n]
   connect_bd_net -net TRX_rx_data_p_1 [get_bd_pins TRX_rx_data_p] [get_bd_pins TRX_LVDS_selectio_wiz_0/data_in_from_pins_p]
   connect_bd_net -net TRX_rx_lvds_16bits_CD016 [get_bd_pins TRX_LVDS_selectio_wiz_0/data_in_to_device] [get_bd_pins TRX_rx09_concat/Din] [get_bd_pins TRX_rx24_concat/Din]
-  connect_bd_net -net TRX_rx_selectio_io_reset [get_bd_pins io_reset] [get_bd_pins TRX_LVDS_selectio_wiz_0/io_reset]
   connect_bd_net -net TRX_rx_selectio_wiz_0_data_out_to_pins_n [get_bd_pins TRX_tx_data_n] [get_bd_pins TRX_LVDS_selectio_wiz_0/data_out_to_pins_n]
   connect_bd_net -net TRX_rx_selectio_wiz_0_data_out_to_pins_p [get_bd_pins TRX_tx_data_p] [get_bd_pins TRX_LVDS_selectio_wiz_0/data_out_to_pins_p]
   connect_bd_net -net TRX_tx09_fifo_din_0 [get_bd_pins TRX_tx09_fifo_generator_0/din] [get_bd_pins TRX_tx_concat/TRX_tx09_fifo_din]
   connect_bd_net -net TRX_tx09_fifo_dout_0 [get_bd_pins TRX_tx09_fifo_generator_0/dout] [get_bd_pins TRX_tx_concat/TRX_tx09_fifo_dout]
+  connect_bd_net -net TRX_tx_4to1_c_counter_binary_0_THRESH0_4MHz [get_bd_pins TRX_tx_4to1_c_counter_binary_0_THRESH0_4MHz] [get_bd_pins TRX_tx09_fifo_generator_0/wr_clk]
   connect_bd_net -net TRX_tx_PTT_in_0 [get_bd_pins TRX_tx_PTT_in] [get_bd_pins TRX_tx_concat/TRX_tx_PTT_in]
   connect_bd_net -net TRX_tx_data_out_from_device_in_0 [get_bd_pins TRX_LVDS_selectio_wiz_0/data_out_from_device] [get_bd_pins TRX_tx_concat/TRX_tx_data_out_from_device_in]
   connect_bd_net -net TRX_tx_im_out_0 [get_bd_pins TRX_tx_im_out] [get_bd_pins TRX_tx_concat/TRX_tx_im_out]
   connect_bd_net -net TRX_tx_re_out_0 [get_bd_pins TRX_tx_re_out] [get_bd_pins TRX_tx_concat/TRX_tx_re_out]
   connect_bd_net -net c_1 [get_bd_pins TRX_rx09_fifo_generator_0/rd_en] [get_bd_pins TRX_rx09_fifo_generator_0/wr_en] [get_bd_pins TRX_rx24_fifo_generator_0/rd_en] [get_bd_pins TRX_rx24_fifo_generator_0/wr_en] [get_bd_pins TRX_tx09_fifo_generator_0/rd_en] [get_bd_pins TRX_tx09_fifo_generator_0/wr_en] [get_bd_pins xlconstant_1_len1/dout]
-  connect_bd_net -net ref_clock_200MHz [get_bd_pins ref_clock] [get_bd_pins TRX_LVDS_selectio_wiz_0/ref_clock]
-  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins clk_reset] [get_bd_pins TRX_LVDS_selectio_wiz_0/clk_reset]
-  connect_bd_net -net s_axi_aclk_CD100 [get_bd_pins s_axi_aclk] [get_bd_pins TRX_rx09_fifo_generator_0/rd_clk] [get_bd_pins TRX_rx24_fifo_generator_0/rd_clk]
-  connect_bd_net -net xlconstant_0x0_len2_dout [get_bd_pins TRX_LVDS_selectio_wiz_0/bitslip] [get_bd_pins xlconstant_0x0_len2/dout]
+  connect_bd_net -net ref_clock_200MHz [get_bd_pins ref_clock_i] [get_bd_pins TRX_LVDS_selectio_wiz_0/ref_clock]
+  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins reset_CD100_i] [get_bd_pins TRX_LVDS_selectio_wiz_0/clk_reset]
+  connect_bd_net -net s_axi_aclk_100MHz [get_bd_pins s_axi_aclk] [get_bd_pins TRX_rx09_fifo_generator_0/rd_clk] [get_bd_pins TRX_rx24_fifo_generator_0/rd_clk]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -2550,16 +2630,17 @@ proc create_hier_cell_USER_dbg { parentCell nameHier } {
   # Create interface pins
 
   # Create pins
+  create_bd_pin -dir I -from 0 -to 0 In0
   create_bd_pin -dir O -from 13 -to 0 USER_dbg_out
 
   # Create instance: USER_dbg_out_xlconcat_0, and set properties
   set USER_dbg_out_xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 USER_dbg_out_xlconcat_0 ]
   set_property -dict [ list \
-   CONFIG.IN0_WIDTH {14} \
+   CONFIG.IN0_WIDTH {1} \
    CONFIG.IN10_WIDTH {1} \
    CONFIG.IN11_WIDTH {1} \
    CONFIG.IN12_WIDTH {2} \
-   CONFIG.IN1_WIDTH {1} \
+   CONFIG.IN1_WIDTH {13} \
    CONFIG.IN2_WIDTH {4} \
    CONFIG.IN3_WIDTH {1} \
    CONFIG.IN4_WIDTH {1} \
@@ -2568,10 +2649,11 @@ proc create_hier_cell_USER_dbg { parentCell nameHier } {
    CONFIG.IN7_WIDTH {1} \
    CONFIG.IN8_WIDTH {1} \
    CONFIG.IN9_WIDTH {1} \
-   CONFIG.NUM_PORTS {1} \
+   CONFIG.NUM_PORTS {2} \
  ] $USER_dbg_out_xlconcat_0
 
   # Create port connections
+  connect_bd_net -net In0_1 [get_bd_pins In0] [get_bd_pins USER_dbg_out_xlconcat_0/In0]
   connect_bd_net -net USER_dbg_out_xlconcat_0_dout [get_bd_pins USER_dbg_out] [get_bd_pins USER_dbg_out_xlconcat_0/dout]
 
   # Restore current instance
@@ -2776,6 +2858,8 @@ proc create_hier_cell_TRX { parentCell nameHier } {
 
 
   # Create pins
+  create_bd_pin -dir I -from 0 -to 0 Status_LVDS_rx09_synced
+  create_bd_pin -dir I -from 0 -to 0 Status_LVDS_rx24_synced
   create_bd_pin -dir O -from 0 -to 0 -type clk TRX_PLL_clk_25MHz_N
   create_bd_pin -dir O -from 0 -to 0 -type clk TRX_PLL_clk_25MHz_P
   create_bd_pin -dir I -type clk TRX_clk_26MHz
@@ -2785,12 +2869,14 @@ proc create_hier_cell_TRX { parentCell nameHier } {
   create_bd_pin -dir O TRX_rx09_fifo_valid_o
   create_bd_pin -dir O -from 31 -to 0 TRX_rx24_fifo_o
   create_bd_pin -dir O TRX_rx24_fifo_valid_o
+  create_bd_pin -dir O -from 0 -to 0 -type clk TRX_rx_clkdiv_16MHz_o
   create_bd_pin -dir I -from 1 -to 0 TRX_rx_data_n
   create_bd_pin -dir I -from 1 -to 0 TRX_rx_data_p
   create_bd_pin -dir I -from 0 -to 0 TRX_tx_PTT_in
   create_bd_pin -dir O -from 1 -to 0 TRX_tx_data_n
   create_bd_pin -dir O -from 1 -to 0 TRX_tx_data_p
-  create_bd_pin -dir O -type clk clk_div_out
+  create_bd_pin -dir O -from 20 -to 8 -type data TRX_tx_im_out
+  create_bd_pin -dir O -from 20 -to 8 -type data TRX_tx_re_out
   create_bd_pin -dir O -type clk clk_trx_26MHz_vio
   create_bd_pin -dir O -type clk clk_trx_pll_25MHz_vio
   create_bd_pin -dir I dcm_locked
@@ -2846,6 +2932,20 @@ proc create_hier_cell_TRX { parentCell nameHier } {
   # Create instance: TRX_config
   create_hier_cell_TRX_config $hier_obj TRX_config
 
+  # Create instance: TRX_io_reset_counter_binary_0, and set properties
+  set TRX_io_reset_counter_binary_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_counter_binary:12.0 TRX_io_reset_counter_binary_0 ]
+  set_property -dict [ list \
+   CONFIG.CE {true} \
+   CONFIG.Count_Mode {UP} \
+   CONFIG.Final_Count_Value {1e} \
+   CONFIG.Output_Width {5} \
+   CONFIG.Restrict_Count {true} \
+   CONFIG.SCLR {true} \
+   CONFIG.SSET {false} \
+   CONFIG.Sync_Threshold_Output {true} \
+   CONFIG.Threshold_Value {1e} \
+ ] $TRX_io_reset_counter_binary_0
+
   # Create instance: TRX_proc_sys_reset_0, and set properties
   set TRX_proc_sys_reset_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 TRX_proc_sys_reset_0 ]
   set_property -dict [ list \
@@ -2858,20 +2958,6 @@ proc create_hier_cell_TRX { parentCell nameHier } {
 
   # Create instance: TRX_tx_DDS_unit
   create_hier_cell_TRX_tx_DDS_unit $hier_obj TRX_tx_DDS_unit
-
-  # Create instance: counter_binary_0, and set properties
-  set counter_binary_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_counter_binary:12.0 counter_binary_0 ]
-  set_property -dict [ list \
-   CONFIG.CE {true} \
-   CONFIG.Count_Mode {UP} \
-   CONFIG.Final_Count_Value {40} \
-   CONFIG.Output_Width {7} \
-   CONFIG.Restrict_Count {false} \
-   CONFIG.SCLR {true} \
-   CONFIG.SSET {false} \
-   CONFIG.Sync_Threshold_Output {true} \
-   CONFIG.Threshold_Value {40} \
- ] $counter_binary_0
 
   # Create instance: util_vector_logic_0, and set properties
   set util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_0 ]
@@ -2890,33 +2976,38 @@ proc create_hier_cell_TRX { parentCell nameHier } {
   connect_bd_intf_net -intf_net TRX_rx_clk_64MHz_1 [get_bd_intf_pins TRX_rx_clk_64MHz] [get_bd_intf_pins TRX_LVDS/TRX_rx_clk_64MHz]
 
   # Create port connections
+  connect_bd_net -net Status_LVDS_rx09_synced_1 [get_bd_pins Status_LVDS_rx09_synced] [get_bd_pins TRX_config/Status_LVDS_rx09_synced]
+  connect_bd_net -net Status_LVDS_rx24_synced_1 [get_bd_pins Status_LVDS_rx24_synced] [get_bd_pins TRX_config/Status_LVDS_rx24_synced]
   connect_bd_net -net TRX_axi_quad_spi_0_ip2intc_irpt [get_bd_pins ip2intc_irpt] [get_bd_pins TRX_config/ip2intc_irpt]
   connect_bd_net -net TRX_clk_26MHz_1 [get_bd_pins TRX_clk_26MHz] [get_bd_pins TRX_clock/TRX_clk_26MHz]
   connect_bd_net -net TRX_clock_TRX_PLL_clk_25MHz_N [get_bd_pins TRX_PLL_clk_25MHz_N] [get_bd_pins TRX_clock/TRX_PLL_clk_25MHz_N]
   connect_bd_net -net TRX_clock_TRX_PLL_clk_25MHz_P [get_bd_pins TRX_PLL_clk_25MHz_P] [get_bd_pins TRX_clock/TRX_PLL_clk_25MHz_P]
   connect_bd_net -net TRX_clock_clk_trx_26MHz_vio [get_bd_pins clk_trx_26MHz_vio] [get_bd_pins TRX_clock/clk_trx_26MHz_vio]
   connect_bd_net -net TRX_clock_clk_trx_pll_25MHz_vio [get_bd_pins clk_trx_pll_25MHz_vio] [get_bd_pins TRX_clock/clk_trx_pll_25MHz_vio]
+  connect_bd_net -net TRX_clock_locked [get_bd_pins TRX_clock/locked] [get_bd_pins TRX_config/locked]
+  connect_bd_net -net TRX_config_LVDS_tx_blank_0 [get_bd_pins TRX_LVDS/TRX_config_LVDS_tx_blank_in] [get_bd_pins TRX_config/LVDS_tx_blank]
   connect_bd_net -net TRX_config_TRX_resetn [get_bd_pins TRX_resetn] [get_bd_pins TRX_config/TRX_resetn]
   connect_bd_net -net TRX_config_TRX_rfx_mode [get_bd_pins TRX_rfx_mode] [get_bd_pins TRX_config/TRX_rfx_mode]
+  connect_bd_net -net TRX_io_reset [get_bd_pins TRX_LVDS/TRX_io_reset_i] [get_bd_pins TRX_io_reset_counter_binary_0/CE] [get_bd_pins util_vector_logic_0/Res]
+  connect_bd_net -net TRX_io_reset_counter_binary_0_THRESH0 [get_bd_pins TRX_io_reset_counter_binary_0/THRESH0] [get_bd_pins util_vector_logic_0/Op1]
+  connect_bd_net -net TRX_proc_sys_reset_0_16MHz_peripheral_reset [get_bd_pins TRX_LVDS/clk_rst_i] [get_bd_pins TRX_io_reset_counter_binary_0/SCLR] [get_bd_pins TRX_proc_sys_reset_0/peripheral_reset] [get_bd_pins TRX_tx_DDS_unit/SCLR]
   connect_bd_net -net TRX_proc_sys_reset_0_peripheral_aresetn [get_bd_pins TRX_proc_sys_reset_0/peripheral_aresetn] [get_bd_pins TRX_tx_DDS_unit/aresetn]
-  connect_bd_net -net TRX_proc_sys_reset_0_peripheral_reset_CD016 [get_bd_pins TRX_LVDS/rst] [get_bd_pins TRX_proc_sys_reset_0/peripheral_reset] [get_bd_pins TRX_tx_DDS_unit/SCLR] [get_bd_pins counter_binary_0/SCLR]
-  connect_bd_net -net TRX_rx09_fifo_o_1 [get_bd_pins TRX_rx09_fifo_o] [get_bd_pins TRX_LVDS/TRX_rx09_fifo_o]
+  connect_bd_net -net TRX_rx09_fifo_o_1 [get_bd_pins TRX_rx09_fifo_o] [get_bd_pins rx24_32bits_CD100_o] [get_bd_pins TRX_LVDS/TRX_rx09_fifo_o]
   connect_bd_net -net TRX_rx09_fifo_valid_o_0 [get_bd_pins TRX_rx09_fifo_valid_o] [get_bd_pins TRX_LVDS/TRX_rx09_fifo_valid_o]
-  connect_bd_net -net TRX_rx24_fifo_o_1 [get_bd_pins TRX_rx24_fifo_o] [get_bd_pins TRX_LVDS/TRX_rx24_fifo_o]
+  connect_bd_net -net TRX_rx24_fifo_o_1 [get_bd_pins TRX_rx24_fifo_o] [get_bd_pins rx09_32bits_CD100_o] [get_bd_pins TRX_LVDS/TRX_rx24_fifo_o]
   connect_bd_net -net TRX_rx24_fifo_valid_o_1 [get_bd_pins TRX_rx24_fifo_valid_o] [get_bd_pins TRX_LVDS/TRX_rx24_fifo_valid_o]
   connect_bd_net -net TRX_rx_FFT_unit_event_data_in_channel_halt_0 [get_bd_pins xfft_rx09_dly3449_event_data_in_channel_halt_out] [get_bd_pins TRX_rx_FFT_unit/xfft_rx09_dly3449_event_data_in_channel_halt_out]
   connect_bd_net -net TRX_rx_FFT_unit_event_tlast_missing [get_bd_pins xfft_rx24_dly3198_event_tlast_missing_out] [get_bd_pins TRX_rx_FFT_unit/xfft_rx24_dly3198_event_tlast_missing_out]
   connect_bd_net -net TRX_rx_LVDS_rd_data_count_CD100 [get_bd_pins rd_data_count_CD100_o] [get_bd_pins TRX_LVDS/rx09_rd_data_count_CD100_o]
-  connect_bd_net -net TRX_rx_clkdiv_CD016 [get_bd_pins clk_div_out] [get_bd_pins TRX_LVDS/clkdiv_CD016_o] [get_bd_pins TRX_proc_sys_reset_0/slowest_sync_clk] [get_bd_pins TRX_tx_DDS_unit/clk_div_out] [get_bd_pins counter_binary_0/CLK]
+  connect_bd_net -net TRX_rx_clkdiv_16MHz [get_bd_pins TRX_rx_clkdiv_16MHz_o] [get_bd_pins TRX_LVDS/TRX_rx_clkdiv_16MHz_o] [get_bd_pins TRX_io_reset_counter_binary_0/CLK] [get_bd_pins TRX_proc_sys_reset_0/slowest_sync_clk] [get_bd_pins TRX_tx_DDS_unit/TRX_rx_clkdiv_16MHz_i]
   connect_bd_net -net TRX_rx_data_n_1 [get_bd_pins TRX_rx_data_n] [get_bd_pins TRX_LVDS/TRX_rx_data_n]
   connect_bd_net -net TRX_rx_data_p_1 [get_bd_pins TRX_rx_data_p] [get_bd_pins TRX_LVDS/TRX_rx_data_p]
   connect_bd_net -net TRX_rx_selectio_wiz_0_data_out_to_pins_n [get_bd_pins TRX_tx_data_n] [get_bd_pins TRX_LVDS/TRX_tx_data_n]
   connect_bd_net -net TRX_rx_selectio_wiz_0_data_out_to_pins_p [get_bd_pins TRX_tx_data_p] [get_bd_pins TRX_LVDS/TRX_tx_data_p]
-  connect_bd_net -net TRX_tx_4to1_c_counter_binary_0_THRESH0_0 [get_bd_pins TRX_LVDS/TRX_tx_4to1_c_counter_binary_0_THRESH0] [get_bd_pins TRX_tx_DDS_unit/TRX_tx_4to1_c_counter_binary_0_THRESH0]
+  connect_bd_net -net TRX_tx_4to1_c_counter_binary_0_THRESH0_0 [get_bd_pins TRX_LVDS/TRX_tx_4to1_c_counter_binary_0_THRESH0_4MHz] [get_bd_pins TRX_tx_DDS_unit/TRX_tx_4to1_c_counter_binary_0_THRESH0]
   connect_bd_net -net TRX_tx_PTT_in_0 [get_bd_pins TRX_tx_PTT_in] [get_bd_pins TRX_LVDS/TRX_tx_PTT_in]
-  connect_bd_net -net TRX_tx_im_out_0 [get_bd_pins TRX_LVDS/TRX_tx_im_out] [get_bd_pins TRX_tx_DDS_unit/TRX_tx_im_out]
-  connect_bd_net -net TRX_tx_re_out_0 [get_bd_pins TRX_LVDS/TRX_tx_re_out] [get_bd_pins TRX_tx_DDS_unit/TRX_tx_re_out]
-  connect_bd_net -net counter_binary_0_THRESH0 [get_bd_pins counter_binary_0/THRESH0] [get_bd_pins util_vector_logic_0/Op1]
+  connect_bd_net -net TRX_tx_im_out_0 [get_bd_pins TRX_tx_im_out] [get_bd_pins TRX_LVDS/TRX_tx_im_out] [get_bd_pins TRX_tx_DDS_unit/TRX_tx_im_out]
+  connect_bd_net -net TRX_tx_re_out_0 [get_bd_pins TRX_tx_re_out] [get_bd_pins TRX_LVDS/TRX_tx_re_out] [get_bd_pins TRX_tx_DDS_unit/TRX_tx_re_out]
   connect_bd_net -net fft09_aresetn_in_0 [get_bd_pins fft09_aresetn_in] [get_bd_pins TRX_rx_FFT_unit/fft09_aresetn_in]
   connect_bd_net -net fft09_config_tdata_in_0 [get_bd_pins fft09_config_tdata_in] [get_bd_pins TRX_rx_FFT_unit/fft09_config_tdata_in]
   connect_bd_net -net fft09_config_tvalid_in_0 [get_bd_pins fft09_config_tvalid_in] [get_bd_pins TRX_rx_FFT_unit/fft09_config_tvalid_in]
@@ -2929,9 +3020,8 @@ proc create_hier_cell_TRX { parentCell nameHier } {
   connect_bd_net -net fft24_data_tlast_in_0 [get_bd_pins fft24_data_tlast_in] [get_bd_pins TRX_rx_FFT_unit/fft24_data_tlast_in]
   connect_bd_net -net fft24_data_tready_out_0 [get_bd_pins fft24_data_tready_out] [get_bd_pins TRX_rx_FFT_unit/fft24_data_tready_out]
   connect_bd_net -net fft24_data_tvalid_in_0 [get_bd_pins fft24_data_tvalid_in] [get_bd_pins TRX_rx_FFT_unit/fft24_data_tvalid_in]
-  connect_bd_net -net io_reset_0 [get_bd_pins TRX_LVDS/io_reset] [get_bd_pins counter_binary_0/CE] [get_bd_pins util_vector_logic_0/Res]
   connect_bd_net -net mig_7series_0_mmcm_locked [get_bd_pins dcm_locked] [get_bd_pins TRX_proc_sys_reset_0/dcm_locked]
-  connect_bd_net -net mig_7series_0_ui_addn_clk_0_200MHz [get_bd_pins ref_clock] [get_bd_pins TRX_LVDS/ref_clock]
+  connect_bd_net -net mig_7series_0_ui_addn_clk_0_200MHz [get_bd_pins ref_clock] [get_bd_pins TRX_LVDS/ref_clock_i]
   connect_bd_net -net mig_7series_0_ui_clk_sync_rst [get_bd_pins ext_reset_in] [get_bd_pins TRX_proc_sys_reset_0/ext_reset_in]
   connect_bd_net -net postmem_rx09_doutb_out_0 [get_bd_pins postmem_rx09_doutb_out] [get_bd_pins TRX_rx_FFT_unit/postmem_rx09_doutb_out]
   connect_bd_net -net postmem_rx24_doutb_out_0 [get_bd_pins postmem_rx24_doutb_out] [get_bd_pins TRX_rx_FFT_unit/postmem_rx24_doutb_out]
@@ -2946,9 +3036,9 @@ proc create_hier_cell_TRX { parentCell nameHier } {
   connect_bd_net -net premem_rx24_dina_in_0 [get_bd_pins premem_rx24_dina_in] [get_bd_pins TRX_rx_FFT_unit/premem_rx24_dina_in]
   connect_bd_net -net premem_rx24_quarterfrm_in_0 [get_bd_pins premem_rx24_quarterfrm_in] [get_bd_pins TRX_rx_FFT_unit/premem_rx24_quarterfrm_in]
   connect_bd_net -net premem_rx24_wea_in_0 [get_bd_pins premem_rx24_wea_in] [get_bd_pins TRX_rx_FFT_unit/premem_rx24_wea_in]
-  connect_bd_net -net rst_mig_7series_0_100M_peripheral_aresetn_0 [get_bd_pins s_axi_aresetn] [get_bd_pins TRX_config/s_axi_aresetn] [get_bd_pins TRX_rx_FFT_unit/aresetn_CD100_in] [get_bd_pins TRX_tx_DDS_unit/s_axi_aresetn]
-  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset_0 [get_bd_pins reset_CD100_i] [get_bd_pins TRX_LVDS/clk_reset] [get_bd_pins TRX_rx_FFT_unit/rst_mig_7series_0_100M_peripheral_reset_in]
-  connect_bd_net -net s_axi_aclk_CD100_0 [get_bd_pins s_axi_aclk] [get_bd_pins TRX_LVDS/s_axi_aclk] [get_bd_pins TRX_config/s_axi_aclk] [get_bd_pins TRX_rx_FFT_unit/s_axi_aclk_CD100_in] [get_bd_pins TRX_tx_DDS_unit/s_axi_aclk]
+  connect_bd_net -net rst_mig_7series_0_100M_peripheral_aresetn [get_bd_pins s_axi_aresetn] [get_bd_pins TRX_config/s_axi_aresetn] [get_bd_pins TRX_rx_FFT_unit/aresetn_CD100_in] [get_bd_pins TRX_tx_DDS_unit/s_axi_aresetn]
+  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins reset_CD100_i] [get_bd_pins TRX_LVDS/reset_CD100_i] [get_bd_pins TRX_rx_FFT_unit/rst_mig_7series_0_100M_peripheral_reset_in]
+  connect_bd_net -net s_axi_aclk_100MHz [get_bd_pins s_axi_aclk] [get_bd_pins TRX_LVDS/s_axi_aclk] [get_bd_pins TRX_config/s_axi_aclk] [get_bd_pins TRX_rx_FFT_unit/s_axi_aclk_CD100_in] [get_bd_pins TRX_tx_DDS_unit/s_axi_aclk]
   connect_bd_net -net xfft_rx09_dly3449_event_frame_started_out_0 [get_bd_pins xfft_rx09_dly3449_event_frame_started_out] [get_bd_pins TRX_rx_FFT_unit/xfft_rx09_dly3449_event_frame_started_out]
   connect_bd_net -net xfft_rx09_dly3449_event_tlast_missing_out_0 [get_bd_pins xfft_rx09_dly3449_event_tlast_missing_out] [get_bd_pins TRX_rx_FFT_unit/xfft_rx09_dly3449_event_tlast_missing_out]
   connect_bd_net -net xfft_rx09_dly3449_event_tlast_unexpected_out_0 [get_bd_pins xfft_rx09_dly3449_event_tlast_unexpected_out] [get_bd_pins TRX_rx_FFT_unit/xfft_rx09_dly3449_event_tlast_unexpected_out]
@@ -4799,6 +4889,8 @@ proc create_root_design { parentCell } {
   set LED_RGB_blue [ create_bd_port -dir O -from 0 -to 0 LED_RGB_blue ]
   set LED_RGB_green [ create_bd_port -dir O -from 0 -to 0 LED_RGB_green ]
   set LED_RGB_red [ create_bd_port -dir O -from 0 -to 0 LED_RGB_red ]
+  set LVDS_rx09_synced [ create_bd_port -dir I LVDS_rx09_synced ]
+  set LVDS_rx24_synced [ create_bd_port -dir I LVDS_rx24_synced ]
   set PLL_I2C_ext_scl_o [ create_bd_port -dir O PLL_I2C_ext_scl_o ]
   set PLL_I2C_ext_sda [ create_bd_port -dir IO PLL_I2C_ext_sda ]
   set PLL_int [ create_bd_port -dir I -type intr PLL_int ]
@@ -4956,8 +5048,8 @@ proc create_root_design { parentCell } {
   # Create instance: INT_ctrl
   create_hier_cell_INT_ctrl [current_bd_instance .] INT_ctrl
 
-  # Create instance: PTT_xlconstant_1_len10, and set properties
-  set PTT_xlconstant_1_len10 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 PTT_xlconstant_1_len10 ]
+  # Create instance: PTT_xlconstant_1_len1, and set properties
+  set PTT_xlconstant_1_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 PTT_xlconstant_1_len1 ]
 
   # Create instance: PWM_lights
   create_hier_cell_PWM_lights [current_bd_instance .] PWM_lights
@@ -5108,10 +5200,40 @@ proc create_root_design { parentCell } {
   # Create instance: vio_0, and set properties
   set vio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:vio:3.0 vio_0 ]
   set_property -dict [ list \
-   CONFIG.C_NUM_PROBE_IN {40} \
+   CONFIG.C_NUM_PROBE_IN {42} \
    CONFIG.C_NUM_PROBE_OUT {1} \
    CONFIG.C_PROBE_OUT0_WIDTH {13} \
  ] $vio_0
+
+  # Create instance: vio_xlconcat_40, and set properties
+  set vio_xlconcat_40 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 vio_xlconcat_40 ]
+  set_property -dict [ list \
+   CONFIG.IN0_WIDTH {8} \
+ ] $vio_xlconcat_40
+
+  # Create instance: vio_xlconcat_41, and set properties
+  set vio_xlconcat_41 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 vio_xlconcat_41 ]
+  set_property -dict [ list \
+   CONFIG.IN0_WIDTH {8} \
+ ] $vio_xlconcat_41
+
+  # Create instance: vio_xlslice_40, and set properties
+  set vio_xlslice_40 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 vio_xlslice_40 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {20} \
+   CONFIG.DIN_TO {8} \
+   CONFIG.DIN_WIDTH {21} \
+   CONFIG.DOUT_WIDTH {13} \
+ ] $vio_xlslice_40
+
+  # Create instance: vio_xlslice_41, and set properties
+  set vio_xlslice_41 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 vio_xlslice_41 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {20} \
+   CONFIG.DIN_TO {8} \
+   CONFIG.DIN_WIDTH {21} \
+   CONFIG.DOUT_WIDTH {13} \
+ ] $vio_xlslice_41
 
   # Create interface connections
   connect_bd_intf_net -intf_net BOOT_PLL_IIC [get_bd_intf_pins BOOT_PLL/IIC] [get_bd_intf_pins CFG/EMIO_I2C]
@@ -5205,7 +5327,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net FPGA_IO_1 [get_bd_ports FPGA_IO] [get_bd_pins vio_0/probe_in9]
   connect_bd_net -net Net [get_bd_ports PLL_I2C_ext_sda] [get_bd_pins CFG/PLL_I2C_ext_sda]
   connect_bd_net -net PLL_int_1 [get_bd_ports PLL_int] [get_bd_pins INT_ctrl/PLL_int]
-  connect_bd_net -net PTT_xlconstant_1_len10_dout [get_bd_pins PTT_xlconstant_1_len10/dout] [get_bd_pins TRX/TRX_tx_PTT_in]
+  connect_bd_net -net PTT_xlconstant_1_len10_dout [get_bd_pins PTT_xlconstant_1_len1/dout] [get_bd_pins TRX/TRX_tx_PTT_in]
   connect_bd_net -net PWM_lights_LCD_BL [get_bd_ports LCD_BL] [get_bd_pins PWM_lights/LCD_BL]
   connect_bd_net -net PWM_lights_LCD_rstn [get_bd_ports LCD_rstn] [get_bd_pins PWM_lights/LCD_rstn]
   connect_bd_net -net PWM_lights_LED_RGB_blue [get_bd_ports LED_RGB_blue] [get_bd_pins PWM_lights/LED_RGB_blue]
@@ -5228,12 +5350,16 @@ proc create_root_design { parentCell } {
   connect_bd_net -net SCOPE_SCOPE_FSM_FIFO_wr_rst_busy [get_bd_ports SCOPE_FSM_FIFO_wr_rst_busy] [get_bd_pins SCOPE/SCOPE_FSM_FIFO_wr_rst_busy]
   connect_bd_net -net SCOPE_SCOPE_FSM_GPIO0_Out [get_bd_ports SCOPE_FSM_GPIO0_Out] [get_bd_pins SCOPE/SCOPE_FSM_GPIO0_Out]
   connect_bd_net -net SCOPE_SCOPE_FSM_TrigSrc [get_bd_ports SCOPE_FSM_TrigSrc] [get_bd_pins SCOPE/SCOPE_FSM_TrigSrc]
+  connect_bd_net -net Status_LVDS_rx09_synced_1 [get_bd_ports LVDS_rx09_synced] [get_bd_pins TRX/Status_LVDS_rx09_synced]
+  connect_bd_net -net Status_LVDS_rx24_synced_1 [get_bd_ports LVDS_rx24_synced] [get_bd_pins TRX/Status_LVDS_rx24_synced]
   connect_bd_net -net TRX_TRX_PLL_clk_25MHz_N [get_bd_ports TRX_PLL_clk_25MHz_N] [get_bd_pins TRX/TRX_PLL_clk_25MHz_N]
   connect_bd_net -net TRX_TRX_PLL_clk_25MHz_P [get_bd_ports TRX_PLL_clk_25MHz_P] [get_bd_pins TRX/TRX_PLL_clk_25MHz_P]
   connect_bd_net -net TRX_TRX_resetn [get_bd_ports TRX_resetn] [get_bd_pins TRX/TRX_resetn]
   connect_bd_net -net TRX_TRX_rfx_mode [get_bd_ports TRX_rfx_mode] [get_bd_pins TRX/TRX_rfx_mode]
   connect_bd_net -net TRX_TRX_tx_data_n [get_bd_ports TRX_tx_data_n] [get_bd_pins TRX/TRX_tx_data_n]
   connect_bd_net -net TRX_TRX_tx_data_p [get_bd_ports TRX_tx_data_p] [get_bd_pins TRX/TRX_tx_data_p]
+  connect_bd_net -net TRX_TRX_tx_im_out [get_bd_pins TRX/TRX_tx_im_out] [get_bd_pins vio_xlconcat_41/In1]
+  connect_bd_net -net TRX_TRX_tx_re_out [get_bd_pins TRX/TRX_tx_re_out] [get_bd_pins vio_xlconcat_40/In1]
   connect_bd_net -net TRX_clk_26MHz_1 [get_bd_ports TRX_clk_26MHz] [get_bd_pins TRX/TRX_clk_26MHz]
   connect_bd_net -net TRX_clk_trx_26MHz_vio [get_bd_pins TRX/clk_trx_26MHz_vio] [get_bd_pins lt_fmeter_xlconcat_0/In7]
   connect_bd_net -net TRX_clk_trx_pll_25MHz_vio [get_bd_pins TRX/clk_trx_pll_25MHz_vio] [get_bd_pins lt_fmeter_xlconcat_0/In8]
@@ -5246,9 +5372,9 @@ proc create_root_design { parentCell } {
   connect_bd_net -net TRX_rx24_32bits_CD100 [get_bd_pins TRX/rx24_32bits_CD100_o] [get_bd_pins vio_0/probe_in13]
   connect_bd_net -net TRX_rx24_fifo_o_1 [get_bd_ports TRX_rx24_fifo_o] [get_bd_pins TRX/TRX_rx24_fifo_o]
   connect_bd_net -net TRX_rx24_fifo_valid_o_1 [get_bd_ports TRX_rx24_fifo_valid_o] [get_bd_pins TRX/TRX_rx24_fifo_valid_o]
+  connect_bd_net -net TRX_rx_clkdiv_16MHz [get_bd_pins TRX/TRX_rx_clkdiv_16MHz_o] [get_bd_pins USER_dbg/In0] [get_bd_pins lt_fmeter_xlconcat_0/In4]
   connect_bd_net -net TRX_rx_data_n_1 [get_bd_ports TRX_rx_data_n] [get_bd_pins TRX/TRX_rx_data_n]
   connect_bd_net -net TRX_rx_data_p_1 [get_bd_ports TRX_rx_data_p] [get_bd_pins TRX/TRX_rx_data_p]
-  connect_bd_net -net TRX_rx_div_clk_g_0 [get_bd_pins TRX/clk_div_out] [get_bd_pins lt_fmeter_xlconcat_0/In4]
   connect_bd_net -net UART0EXT_DTRn_1 [get_bd_ports UART0EXT_DTRn] [get_bd_pins UART0/UART0EXT_DTRn]
   connect_bd_net -net UART0EXT_RTSn_1 [get_bd_ports UART0EXT_RTSn] [get_bd_pins UART0/UART0EXT_RTSn]
   connect_bd_net -net UART0_UART0EXT_CTSn [get_bd_ports UART0EXT_CTSn] [get_bd_pins UART0/UART0EXT_CTSn]
@@ -5318,6 +5444,10 @@ proc create_root_design { parentCell } {
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_aresetn [get_bd_ports rst_100M_peripheral_aresetn] [get_bd_pins CLK1B_CW_0/s_axi_aresetn] [get_bd_pins CLOCK/s_axi_aresetn] [get_bd_pins ETH0/s_axi_aresetn_in] [get_bd_pins EUI48/s_axi_aresetn] [get_bd_pins INT_ctrl/s_axi_aresetn] [get_bd_pins PWM_lights/s_axi_aresetn] [get_bd_pins ROTENC_decoder/s_axi_aresetn] [get_bd_pins SCOPE/s_axi_aresetn] [get_bd_pins TRX/s_axi_aresetn] [get_bd_pins UART0/s_axi_aresetn] [get_bd_pins axi_BOARD_iic_0/s_axi_aresetn] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins axi_interconnect_0/S01_ARESETN] [get_bd_pins axi_timer_0/s_axi_aresetn] [get_bd_pins microblaze_0_axi_periph/ARESETN] [get_bd_pins microblaze_0_axi_periph/M00_ARESETN] [get_bd_pins microblaze_0_axi_periph/M01_ARESETN] [get_bd_pins microblaze_0_axi_periph/M02_ARESETN] [get_bd_pins microblaze_0_axi_periph/M04_ARESETN] [get_bd_pins microblaze_0_axi_periph/M05_ARESETN] [get_bd_pins microblaze_0_axi_periph/M06_ARESETN] [get_bd_pins microblaze_0_axi_periph/M07_ARESETN] [get_bd_pins microblaze_0_axi_periph/M08_ARESETN] [get_bd_pins microblaze_0_axi_periph/M09_ARESETN] [get_bd_pins microblaze_0_axi_periph/M10_ARESETN] [get_bd_pins microblaze_0_axi_periph/M11_ARESETN] [get_bd_pins microblaze_0_axi_periph/M12_ARESETN] [get_bd_pins microblaze_0_axi_periph/M13_ARESETN] [get_bd_pins microblaze_0_axi_periph/M14_ARESETN] [get_bd_pins microblaze_0_axi_periph/M15_ARESETN] [get_bd_pins microblaze_0_axi_periph/M16_ARESETN] [get_bd_pins microblaze_0_axi_periph/M17_ARESETN] [get_bd_pins microblaze_0_axi_periph/S00_ARESETN] [get_bd_pins rst_mig_7series_0_100M/peripheral_aresetn]
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins ROTENC_decoder/SINIT] [get_bd_pins TRX/reset_CD100_i] [get_bd_pins rst_mig_7series_0_100M/peripheral_reset]
   connect_bd_net -net rst_mig_7series_0_50M_peripheral_aresetn [get_bd_pins CFG/s_axi_aresetn] [get_bd_pins microblaze_0_axi_periph/M03_ARESETN] [get_bd_pins rst_mig_7series_0_50M/peripheral_aresetn]
+  connect_bd_net -net vio_xlconcat_40_dout [get_bd_pins vio_xlconcat_40/dout] [get_bd_pins vio_xlslice_40/Din]
+  connect_bd_net -net vio_xlconcat_41_dout [get_bd_pins vio_xlconcat_41/dout] [get_bd_pins vio_xlslice_41/Din]
+  connect_bd_net -net vio_xlslice_40_Dout [get_bd_pins vio_0/probe_in40] [get_bd_pins vio_xlslice_40/Dout]
+  connect_bd_net -net vio_xlslice_41_Dout [get_bd_pins vio_0/probe_in41] [get_bd_pins vio_xlslice_41/Dout]
   connect_bd_net -net xfft_rx09_dly3449_event_data_in_channel_halt_out_0 [get_bd_pins TRX/xfft_rx09_dly3449_event_data_in_channel_halt_out] [get_bd_pins vio_0/probe_in17]
   connect_bd_net -net xfft_rx09_dly3449_event_frame_started_out_0 [get_bd_pins TRX/xfft_rx09_dly3449_event_frame_started_out] [get_bd_pins vio_0/probe_in14]
   connect_bd_net -net xfft_rx09_dly3449_event_tlast_missing_out_0 [get_bd_pins TRX/xfft_rx09_dly3449_event_tlast_missing_out] [get_bd_pins vio_0/probe_in16]

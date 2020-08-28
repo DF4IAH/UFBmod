@@ -153,7 +153,7 @@ module msys_selectio_wiz_0_1_selectio_wiz
        # (
          .CINVCTRL_SEL           ("FALSE"),                            // TRUE, FALSE
          .DELAY_SRC              ("IDATAIN"),                          // IDATAIN, DATAIN
-         .HIGH_PERFORMANCE_MODE  ("TRUE"),                            // TRUE, FALSE
+         .HIGH_PERFORMANCE_MODE  ("FALSE"),                            // TRUE, FALSE
          .IDELAY_TYPE            ("FIXED"),              // FIXED, VARIABLE, or VAR_LOADABLE
          .IDELAY_VALUE           (0),                  // 0 to 31
          .REFCLK_FREQUENCY       (200.0),

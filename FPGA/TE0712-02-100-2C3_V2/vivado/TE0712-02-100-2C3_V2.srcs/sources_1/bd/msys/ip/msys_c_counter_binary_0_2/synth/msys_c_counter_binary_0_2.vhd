@@ -62,7 +62,7 @@ ENTITY msys_c_counter_binary_0_2 IS
     CE : IN STD_LOGIC;
     SCLR : IN STD_LOGIC;
     THRESH0 : OUT STD_LOGIC;
-    Q : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
+    Q : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
   );
 END msys_c_counter_binary_0_2;
 
@@ -102,9 +102,9 @@ ARCHITECTURE msys_c_counter_binary_0_2_arch OF msys_c_counter_binary_0_2 IS
       SINIT : IN STD_LOGIC;
       UP : IN STD_LOGIC;
       LOAD : IN STD_LOGIC;
-      L : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
+      L : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
       THRESH0 : OUT STD_LOGIC;
-      Q : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
+      Q : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
     );
   END COMPONENT c_counter_binary_v12_0_14;
   ATTRIBUTE X_CORE_INFO : STRING;
@@ -112,12 +112,12 @@ ARCHITECTURE msys_c_counter_binary_0_2_arch OF msys_c_counter_binary_0_2 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF msys_c_counter_binary_0_2_arch : ARCHITECTURE IS "msys_c_counter_binary_0_2,c_counter_binary_v12_0_14,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF msys_c_counter_binary_0_2_arch: ARCHITECTURE IS "msys_c_counter_binary_0_2,c_counter_binary_v12_0_14,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=c_counter_binary,x_ipVersion=12.0,x_ipCoreRevision=14,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_IMPLEMENTATION=0,C_VERBOSITY=0,C_XDEVICEFAMILY=artix7,C_WIDTH=7,C_HAS_CE=1,C_HAS_SCLR=1,C_RESTRICT_COUNT=0,C_COUNT_TO=1000000,C_COUNT_BY=1,C_COUNT_MODE=0,C_THRESH0_VALUE=1000000,C_CE_OVERRIDES_SYNC=0,C_HAS_THRESH0=1,C_HAS_LOAD=0,C_LOAD_LOW=0,C_LATENCY=1,C_FB_LATENCY=0,C_AINIT_" & 
-"VAL=0,C_SINIT_VAL=0,C_SCLR_OVERRIDES_SSET=1,C_HAS_SSET=0,C_HAS_SINIT=0}";
+  ATTRIBUTE CORE_GENERATION_INFO OF msys_c_counter_binary_0_2_arch: ARCHITECTURE IS "msys_c_counter_binary_0_2,c_counter_binary_v12_0_14,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=c_counter_binary,x_ipVersion=12.0,x_ipCoreRevision=14,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_IMPLEMENTATION=0,C_VERBOSITY=0,C_XDEVICEFAMILY=artix7,C_WIDTH=5,C_HAS_CE=1,C_HAS_SCLR=1,C_RESTRICT_COUNT=1,C_COUNT_TO=11110,C_COUNT_BY=1,C_COUNT_MODE=0,C_THRESH0_VALUE=11110,C_CE_OVERRIDES_SYNC=0,C_HAS_THRESH0=1,C_HAS_LOAD=0,C_LOAD_LOW=0,C_LATENCY=1,C_FB_LATENCY=0,C_AINIT_VAL=" & 
+"0,C_SINIT_VAL=0,C_SCLR_OVERRIDES_SSET=1,C_HAS_SSET=0,C_HAS_SINIT=0}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_PARAMETER OF Q: SIGNAL IS "XIL_INTERFACENAME q_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency bitwidth format long minimum {} maximum {}} value 7} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}}" & 
-" value false}}}} DATA_WIDTH 7}";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF Q: SIGNAL IS "XIL_INTERFACENAME q_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency bitwidth format long minimum {} maximum {}} value 5} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}}" & 
+" value false}}}} DATA_WIDTH 5}";
   ATTRIBUTE X_INTERFACE_INFO OF Q: SIGNAL IS "xilinx.com:signal:data:1.0 q_intf DATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF THRESH0: SIGNAL IS "XIL_INTERFACENAME thresh0_intf, LAYERED_METADATA undef";
   ATTRIBUTE X_INTERFACE_INFO OF THRESH0: SIGNAL IS "xilinx.com:signal:data:1.0 thresh0_intf DATA";
@@ -133,14 +133,14 @@ BEGIN
       C_IMPLEMENTATION => 0,
       C_VERBOSITY => 0,
       C_XDEVICEFAMILY => "artix7",
-      C_WIDTH => 7,
+      C_WIDTH => 5,
       C_HAS_CE => 1,
       C_HAS_SCLR => 1,
-      C_RESTRICT_COUNT => 0,
-      C_COUNT_TO => "1000000",
+      C_RESTRICT_COUNT => 1,
+      C_COUNT_TO => "11110",
       C_COUNT_BY => "1",
       C_COUNT_MODE => 0,
-      C_THRESH0_VALUE => "1000000",
+      C_THRESH0_VALUE => "11110",
       C_CE_OVERRIDES_SYNC => 0,
       C_HAS_THRESH0 => 1,
       C_HAS_LOAD => 0,
@@ -161,7 +161,7 @@ BEGIN
       SINIT => '0',
       UP => '1',
       LOAD => '0',
-      L => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 7)),
+      L => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 5)),
       THRESH0 => THRESH0,
       Q => Q
     );

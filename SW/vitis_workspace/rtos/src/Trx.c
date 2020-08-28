@@ -33,6 +33,7 @@
 /************************** Variable Definitions *****************************/
 
 static XGpio gpio_TRX;
+static XGpio gpio_TRX_DDS;
 
 XSpi_Config* spiConfigPtr;	/* Pointer to Configuration data */
 static XSpi  spiInstance;
@@ -44,6 +45,69 @@ u8 buffer[BUFFER_SIZE];
 
 
 /*-----------------------------------------------------------*/
+
+/* DAC pull voltage - value: 0x7f30 (0x82a0) */
+static u32 DacValueSet(u16 val) /* DAC pull voltage */
+{
+	u32 ByteCount;
+	u8 iicData[3] = { 0 };
+
+	/* Write DAC data */
+	xil_printf("TaskTrx: I2C write DAC Addr = 0x%02x --> ", IIC_DAC_ONCHIP_ADDRESS);
+
+	u16 StatusReg = XIic_ReadReg(IIC_BOARD_BASE_ADDRESS, XIIC_SR_REG_OFFSET);
+	if(!(StatusReg & XIIC_SR_BUS_BUSY_MASK)) {
+		iicData[0]	= 0x01U;  // command: DAC_latch & CODE register
+		iicData[1]	= (u8) ((val >> 8) & 0xffU);  	// MSB
+		iicData[2]	= (u8) ( val       & 0xffU);	// LSB
+		ByteCount 	= 3;
+		ByteCount = XIic_Send(IIC_BOARD_BASE_ADDRESS, IIC_DAC_ONCHIP_ADDRESS, (u8*) &iicData, ByteCount, XIIC_STOP);
+		xil_printf("written data cnt = %d\r\n", ByteCount);
+	}
+
+	return XST_SUCCESS;
+}
+
+/* FPGA DDS channel 0/1 setting frequency and amplitude */
+static u32 DdsFreqAmpSet(u8 doSetCh1, float freqHz, u8 ampl)
+{
+	u8 sign = 0U;
+
+	/* Parameter checks */
+	if (doSetCh1 > 1) {
+		return XST_FAILURE;
+	}
+	if (freqHz > 200E+3) {
+		return XST_FAILURE;
+	}
+
+	/* Turn direction reversed */
+	if (freqHz < 0.0f) {
+		freqHz = -freqHz;
+		sign = 1U;
+	}
+
+	/* Frequency */
+	float calc = freqHz * (1UL << 24);
+	calc /= 4E+6;
+	calc += 0.5f;
+	u32 reg = (u32) calc;
+	if (sign) {
+		reg = ~reg;
+	}
+	reg &= 0x00ffffffUL;
+
+	/* Amplitude */
+	reg |= (((u32) ampl) << 24);
+
+	if (doSetCh1 == 0) {
+		XGpio_DiscreteWrite(&gpio_TRX_DDS, 1U, reg);
+	} else {
+		XGpio_DiscreteWrite(&gpio_TRX_DDS, 2U, reg);
+	}
+
+	return XST_SUCCESS;
+}
 
 static u32 TrxGetIrqs(u32* irqs)
 {
@@ -190,6 +254,35 @@ static u32 TrxPllLockedGet(u8* ls, u8* cf)
 	XSpi_Stop(&spiInstance);
 
 	xil_printf("TaskTrx: TrxPllLockedGet done, ls = 0x%02X, cf = 0x%02X\r\n", *ls, *cf);
+
+	return XST_SUCCESS;
+}
+
+static u32 TrxPllCfSet(u8 cf)
+{
+	/* Start the SPI driver so that the device is enabled */
+	XSpi_Start(&spiInstance);
+
+	/* Disable Global interrupt to use polled mode operation */
+	XSpi_IntrGlobalDisable(&spiInstance);
+
+	/* Write the RF09_PLLCF.CF value */
+	{
+		const u8 frameLen = 3;
+		u8 readBuf[3]  = { 0 };
+		u8 writeBuf[3] = { 0 };
+		writeBuf[0] = 0x01U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0122
+		writeBuf[1] = 0x22U;									// Reg-LSB
+		writeBuf[2] = cf & 0x3f;
+
+		/* Write the data */
+		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+	}
+
+	/* Stop the SPI driver */
+	XSpi_Stop(&spiInstance);
+
+	xil_printf("TaskTrx: TrxPllCfSet done, set cf = 0x%02X\r\n", cf);
 
 	return XST_SUCCESS;
 }
@@ -356,10 +449,10 @@ static u32 TrxOperationModeSet(u8 chpm, u8 ctx, s32 pwr)
 		writeBuf[0] = 0x00U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0006
 		writeBuf[1] = 0x06U;									// Reg-LSB
 		writeBuf[2] = ((readBuf[2] & 0x00U) | (0x0aU << 0));	// RF_CFG		IRQMM=08, IRQP=00, DRV=01 (p19)
-		writeBuf[3] = ((readBuf[3] & 0x00U) | (0x09U << 0));	// RF_CLKO		DRV=08, OS=01 26MHz (p21)
+		writeBuf[3] = ((readBuf[3] & 0x00U) | (0x01U << 0));	// RF_CLKO		DRV=00, OS=01 26MHz (p21)
 		writeBuf[4] = ((readBuf[4] & 0x1fU) | (0x00U << 0));	// RF_BMDVC		BMHR, BMVTH (p79)
 		writeBuf[5] = ((readBuf[5] & 0x00U) | (0x00U << 0));	// RF_XOC		FS=00, TRIM=00 (p69)
-		writeBuf[6] = ((readBuf[6] & 0x00U) | (0x12U << 0));	// RF_IQIFC0	EXTLB=00, DRV=10, CMV=00, CMV1V2=02, EEC=00 (p27)
+		writeBuf[6] = ((readBuf[6] & 0x00U) | (0x10U << 0));	// RF_IQIFC0	EXTLB=00, DRV=10, CMV=00#04#08#0c, CMV1V2=02#00, EEC=00 (p27)
 		writeBuf[7] = ((readBuf[7] & 0x03U) | (chpm << 4));		// RF_IQIFC1	CHPM (p32)
 
 		/* Write the data */
@@ -740,44 +833,7 @@ void taskTrx(void* pvParameters)
 	vTaskDelay(pdMS_TO_TICKS(500));
 
 	/* DAC pull voltage */
-	{
-		u32 ByteCount;
-		u8 iicData[3] = { 0 };
-
-		/* Write DAC data */
-		xil_printf("TaskTrx: I2C write DAC Addr = 0x%02x --> ", IIC_DAC_ONCHIP_ADDRESS);
-
-		u16 StatusReg = XIic_ReadReg(IIC_BOARD_BASE_ADDRESS, XIIC_SR_REG_OFFSET);
-		if(!(StatusReg & XIIC_SR_BUS_BUSY_MASK)) {
-			iicData[0]	= 0x01U;  // command: DAC_latch & CODE register
-			iicData[1]	= 0x82U;  //0x7fU;  // MSB
-			iicData[2]	= 0xa0U;  //0x30U;  // LSB
-			ByteCount 	= 3;
-			ByteCount = XIic_Send(IIC_BOARD_BASE_ADDRESS, IIC_DAC_ONCHIP_ADDRESS, (u8*) &iicData, ByteCount, XIIC_STOP);
-			xil_printf("written data cnt = %d\r\n", ByteCount);
-		}
-
-#if 0
-		/* Read DAC data */
-		xil_printf("TaskTrx: I2C read DAC Addr = 0x%02x --> ", IIC_DAC_ONCHIP_ADDRESS);
-
-		u16 StatusReg = XIic_ReadReg(IIC_BOARD_BASE_ADDRESS, XIIC_SR_REG_OFFSET);
-		if(!(StatusReg & XIIC_SR_BUS_BUSY_MASK)) {
-			iicData[0]	= 0x01;
-			ByteCount 	= 1;
-			ByteCount = XIic_Send(IIC_BOARD_BASE_ADDRESS, IIC_DAC_ONCHIP_ADDRESS, (u8*) &iicData, ByteCount, XIIC_REPEATED_START);
-
-			iicData[0]	= 0x00U;
-			iicData[1]	= 0x00U;
-			ByteCount = XIic_Recv(IIC_BOARD_BASE_ADDRESS, IIC_DAC_ONCHIP_ADDRESS, (u8*) &iicData, 2, XIIC_STOP);
-			if (ByteCount) {
-				xil_printf("read: data cnt = %d, data[0] = 0x%02x, data[1] = 0x%02x\r\n", ByteCount, iicData[0], iicData[1]);
-			} else {
-				xil_printf("read: *** no data.\r\n");
-			}
-		}
-#endif
-	}
+	DacValueSet(0x82a0);
 
 	/* Init I2C to PLL chip */
 	{
@@ -802,15 +858,26 @@ void taskTrx(void* pvParameters)
 	{
 		int statusTrx = XGpio_Initialize(&gpio_TRX, XPAR_TRX_TRX_CONFIG_AXI_TRX_GPIO_0_DEVICE_ID);
 		if (statusTrx != XST_SUCCESS) {
-			xil_printf("TaskTrx: *** GPIO TRX Initialization Failed\r\n");
+			xil_printf("TaskTrx: *** GPIO TRX Config Initialization Failed\r\n");
 			return /*XST_FAILURE*/;
 		}
 		XGpio_SetDataDirection(&gpio_TRX, 1U, 0x00000000UL);  	// 32 bit output
 
-		XGpio_DiscreteWrite(   &gpio_TRX, 1U, 0x00000000UL);	// RFX1010_MODE Lo-Mode (Bit 1), Enable TRX_RESETN (Bit 0)
+		// RFX1010_MODE Lo-Mode (Bit 1), Disable TRX_RESETN (Bit 31), RFX-mode (Bit 30), LVDS-blankTX (Bit 0)
+		XGpio_DiscreteWrite(   &gpio_TRX, 1U, 0x00000001UL);	// TRX:enable  RESETN, RFX:low-Amp, TRX:enable LVDS blankTX
 		vTaskDelay(pdMS_TO_TICKS(10));
-		XGpio_DiscreteWrite(   &gpio_TRX, 1U, 0x00000001UL);	// RFX1010_MODE Lo-Mode (Bit 1), Disable TRX_RESETN (Bit 0)
-		vTaskDelay(pdMS_TO_TICKS(10));
+		XGpio_DiscreteWrite(   &gpio_TRX, 1U, 0x80000001UL);	// TRX:disable RESETN, RFX:low-Amp, TRX:enable LVDS blankTX
+	}
+
+	/* Init TRX-DDS-GPIO */
+	{
+		int statusTrx = XGpio_Initialize(&gpio_TRX_DDS, XPAR_TRX_TRX_TX_DDS_UNIT_TRX_TX_AXI_GPIO_0_DEVICE_ID);
+		if (statusTrx != XST_SUCCESS) {
+			xil_printf("TaskTrx: *** GPIO TRX DDS Initialization Failed\r\n");
+			return /*XST_FAILURE*/;
+		}
+		XGpio_SetDataDirection(&gpio_TRX_DDS, 1U, 0x00000000UL);  	// 32 bit output
+		XGpio_SetDataDirection(&gpio_TRX_DDS, 2U, 0x00000000UL);  	// 32 bit output
 	}
 
 	/* Init SPI */
@@ -893,7 +960,7 @@ void taskTrx(void* pvParameters)
 	TrxGetIrqs(&irqs);
 	TrxCmdSet(CMD_TRXOFF);
 	TrxFreqSet(869000000UL);
-	TrxOperationModeSet(CHPM_RF_MODE_BBRF09, CTX_DISABLE, -20 /*+11*/);  // max. power @ TRX pins
+	TrxOperationModeSet(CHPM_RF_MODE_RF, CTX_DISABLE, -20);  // max. power @ TRX pins: +11 (dBm)  CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF
 
 	/* Yellow */
 	pwmLedSet(0x00003f4fUL, 0x00ffffffUL);
@@ -907,20 +974,34 @@ void taskTrx(void* pvParameters)
 		}
 	}
 
-	//TrxBatteryGet(&state);  								// SUCCESS	state = 1
-	//TrxAVccGet(&state);									// SUCESS	state = 1
+	/* Syncing I/Q Link state */
+	while (1) {
+		TrxIqSyncGet(&state);
+		if (state) {
+			break;
+		}
 
-	//u8 ls = 0U, cf = 0U;
-	//TrxPllLockedGet(&ls, &cf);  							// SUCCESS	ls = 1, cf = 0x1b 868MHz - 0x1a 869 MHz - 0x1a 870 MHz  (max. 0x3f)
+		/* Enable LVDS TX stream from FPGA */
+		{
+			XGpio_DiscreteWrite(&gpio_TRX, 1U, 0x80000001UL);	// TRX:disable RESETN, RFX:low-Amp, TRX:disable LVDS blankTX
+			vTaskDelay(pdMS_TO_TICKS(10));
+			XGpio_DiscreteWrite(&gpio_TRX, 1U, 0x80000000UL);	// TRX:disable RESETN, RFX:low-Amp, TRX:disable LVDS blankTX
+		}
+		vTaskDelay(pdMS_TO_TICKS(10));
+	}
 
-	TrxIqSyncGet(&state);	  								// FAIL		state = 0
+#if 0
+	while (1) {
+		TrxIqSyncGet(&state);
+	}
+#endif
 
-	//TrxFbliSet(0U);
-	//TrxTxFrameBufSet(sizeof(txFrameBufTemplate), txFrameBufTemplate);
+	/* Set DDS channel 0*/
+	DdsFreqAmpSet(0U, -25e3, 0xffU);
 
 	/* Test-Cycles */
 	TrxTxFlSet(2047U);
-	TrxDacCwSet(DAC_CW_ENABLE);
+	TrxDacCwSet(DAC_CW_DISABLE);
 	TrxCtxSet(CTX_ENABLE);
 
 	/* RED on */
@@ -940,14 +1021,19 @@ void taskTrx(void* pvParameters)
 		TrxFreqSet(frq);
 		vTaskDelay(pdMS_TO_TICKS(100));
 	}
-#endif
-
-#if 1
-	/* Show I/Q Link state */
-	while (1) {
-		TrxIqSyncGet(&state);
+#elif 0
+	/* Sweep balance for Harmonic distortions */
+	for (u8 idx = 0x10U; idx <= 0x30U; idx++) {
+		TrxPllCfSet(idx);
+		vTaskDelay(pdMS_TO_TICKS(500));
+	}
+	TrxPllCfSet(0x1f);
+#elif 0
+	for (u16 pv = 0x0000U; pv <= 0x8100U; pv += 0x0800U) {
+		DacValueSet(pv);
 		vTaskDelay(pdMS_TO_TICKS(250));
 	}
+	DacValueSet(0x82a0);
 #endif
 
 	vTaskDelay(pdMS_TO_TICKS(250));

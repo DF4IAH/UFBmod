@@ -58,13 +58,13 @@ module msys_TRX_xlslice_0to0_0_0 (
   Dout
 );
 
-input wire [1 : 0] Din;
+input wire [31 : 0] Din;
 output wire [0 : 0] Dout;
 
   xlslice_v1_0_2_xlslice #(
-    .DIN_WIDTH(2),
-    .DIN_FROM(1),
-    .DIN_TO(1)
+    .DIN_WIDTH(32),
+    .DIN_FROM(30),
+    .DIN_TO(30)
   ) inst (
     .Din(Din),
     .Dout(Dout)

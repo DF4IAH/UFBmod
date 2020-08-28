@@ -76,6 +76,8 @@ module msys_BOARD_clk_wiz_0_0_clk_wiz
   output        clk_trx_26MHz_vio,
   output        clk_trx_pll_25MHz_vio,
   output        clkfb_out,
+  // Status and control signals
+  output        locked,
   input         clk_in1
  );
   // Input buffering
@@ -163,6 +165,7 @@ wire clk_in2_msys_BOARD_clk_wiz_0_0;
     .PWRDWN              (1'b0),
     .RST                 (1'b0));
 
+  assign locked = locked_int;
 // Clock Monitor clock assigning
 //--------------------------------------
  // Output buffering
