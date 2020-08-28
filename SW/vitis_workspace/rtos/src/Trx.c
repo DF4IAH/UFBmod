@@ -287,6 +287,75 @@ static u32 TrxPllCfSet(u8 cf)
 	return XST_SUCCESS;
 }
 
+static u32 TrxPllDcoIqGet(u8* dcoI, u8* dcoQ)
+{
+	if (!dcoI || !dcoQ) {
+		return XST_FAILURE;
+	}
+
+	/* Start the SPI driver so that the device is enabled */
+	XSpi_Start(&spiInstance);
+
+	/* Disable Global interrupt to use polled mode operation */
+	XSpi_IntrGlobalDisable(&spiInstance);
+
+	/* Read the RF09_TXCQ.DCOI and RF09_TXCQ.DCOQ values */
+	{
+		const u8 frameLen = 4;
+		u8 readBuf[4]  = { 0 };
+		u8 writeBuf[4] = { 0 };
+		writeBuf[0] = 0x01U | 0x00U;							// Reg-MSB with Read CMD starting @ 0x0125
+		writeBuf[1] = 0x25U;									// Reg-LSB
+
+		/* Read the data */
+		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+
+		*dcoI = readBuf[2] & 0x3f;
+		*dcoQ = readBuf[3] & 0x3f;
+	}
+
+	/* Stop the SPI driver */
+	XSpi_Stop(&spiInstance);
+
+	xil_printf("TaskTrx: TrxPllDcoIqGet done, get dcoI = 0x%02X \tdcoQ = 0x%02X\r\n", *dcoI, *dcoQ);
+
+	return XST_SUCCESS;
+}
+
+static u32 TrxPllDcoIqSet(u8 dcoI, u8 dcoQ)
+{
+	if (!dcoI || !dcoQ) {
+		return XST_FAILURE;
+	}
+
+	/* Start the SPI driver so that the device is enabled */
+	XSpi_Start(&spiInstance);
+
+	/* Disable Global interrupt to use polled mode operation */
+	XSpi_IntrGlobalDisable(&spiInstance);
+
+	/* Write the RF09_TXCQ.DCOI and RF09_TXCQ.DCOQ values */
+	{
+		const u8 frameLen = 4;
+		u8 readBuf[4]  = { 0 };
+		u8 writeBuf[4] = { 0 };
+		writeBuf[0] = 0x01U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0125
+		writeBuf[1] = 0x25U;									// Reg-LSB
+		writeBuf[2] = dcoI & 0x3f;
+		writeBuf[3] = dcoQ & 0x3f;
+
+		/* Write the data */
+		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+	}
+
+	/* Stop the SPI driver */
+	XSpi_Stop(&spiInstance);
+
+	xil_printf("TaskTrx: TrxPllDcoIqSet done, set dcoI = 0x%02X \tdcoQ = 0x%02X\r\n", dcoI, dcoQ);
+
+	return XST_SUCCESS;
+}
+
 static u32 TrxIqSyncGet(u8* state)
 {
 	if (!state) {
@@ -621,11 +690,11 @@ static u32 TrxDacCwSet(u8 enable)
 		writeBuf[1] = 0x27U;									// Reg-LSB
 
 		if (enable) {
-			writeBuf[2] = (0x80U | 0x7eU);							// RF09_TXDACI	ENTXDAC ID=80, TXDACID=7e  (p223)
-			writeBuf[3] = (0x80U | 0x3fU);							// RF09_TXDACQ	ENTXDAC QD=80, TXDACQD=3f  (p223)
+			writeBuf[2] = (0x80U | 0x7eU);						// RF09_TXDACI	ENTXDAC ID=80, TXDACID=7e  (p223)
+			writeBuf[3] = (0x80U | 0x3fU);						// RF09_TXDACQ	ENTXDAC QD=80, TXDACQD=3f  (p223)
 		} else {
-			writeBuf[2] = (0x00U | 0x3fU);							// RF09_TXDACI	ENTXDAC ID=00, TXDACID=00  (p223)
-			writeBuf[3] = (0x00U | 0x3fU);							// RF09_TXDACQ	ENTXDAC QD=00, TXDACQD=00  (p223)
+			writeBuf[2] = (0x00U | 0x3fU);						// RF09_TXDACI	ENTXDAC ID=00, TXDACID=00  (p223)
+			writeBuf[3] = (0x00U | 0x3fU);						// RF09_TXDACQ	ENTXDAC QD=00, TXDACQD=00  (p223)
 		}
 
 		/* Write the data */
@@ -959,8 +1028,10 @@ void taskTrx(void* pvParameters)
 
 	TrxGetIrqs(&irqs);
 	TrxCmdSet(CMD_TRXOFF);
+	//TrxFreqSet(868000000UL);
 	TrxFreqSet(869000000UL);
-	TrxOperationModeSet(CHPM_RF_MODE_RF, CTX_DISABLE, -20);  // max. power @ TRX pins: +11 (dBm)  CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF
+	//TrxFreqSet(870000000UL);
+	TrxOperationModeSet(CHPM_RF_MODE_RF, CTX_DISABLE, 0);  // max. power @ TRX pins: +11 (dBm)  CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF
 
 	/* Yellow */
 	pwmLedSet(0x00003f4fUL, 0x00ffffffUL);
@@ -997,12 +1068,28 @@ void taskTrx(void* pvParameters)
 #endif
 
 	/* Set DDS channel 0*/
-	DdsFreqAmpSet(0U, -25e3, 0xffU);
+	DdsFreqAmpSet(0U, +10.000E+3, 0x7fU);
+	/* Set DDS channel 1*/
+	DdsFreqAmpSet(1U, +15.000E+3, 0x7fU);
 
 	/* Test-Cycles */
 	TrxTxFlSet(2047U);
 	TrxDacCwSet(DAC_CW_DISABLE);
 	TrxCtxSet(CTX_ENABLE);
+
+	u8 dcoI = 0U, dcoQ = 0U;
+#if 0
+	TrxPllDcoIqGet(&dcoI, &dcoQ);	// Automatic bad meassurement: 0x1d, 0x39  instead of   0x0e, 0x21
+#else
+//	dcoI = 0x1eU; dcoQ = 0x26U;		// QRG: 868, 869, 870 MHz & +11 dBm
+//	dcoI = 0x1eU; dcoQ = 0x25U;		// QRG: 868, 869, 870 MHz & + 5 dBm
+	dcoI = 0x1eU; dcoQ = 0x25U;		// QRG: 868, 869, 870 MHz &   0 dBm
+//	dcoI = 0x1fU; dcoQ = 0x23U;		// QRG: 868, 869, 870 MHz & - 5 dBm
+//	dcoI = 0x19U; dcoQ = 0x24U;		// QRG: 868, 869, 870 MHz & -10 dBm
+//	dcoI = 0x17U; dcoQ = 0x1fU;		// QRG: 868, 869, 870 MHz & -15 dBm
+//	dcoI = 0x0eU; dcoQ = 0x20U;		// QRG: 868, 869, 870 MHz & -20 dBm
+	TrxPllDcoIqSet(dcoI, dcoQ);
+#endif
 
 	/* RED on */
 	pwmLedSet(0x0000007fUL, 0x00ffffffUL);
@@ -1034,6 +1121,14 @@ void taskTrx(void* pvParameters)
 		vTaskDelay(pdMS_TO_TICKS(250));
 	}
 	DacValueSet(0x82a0);
+#elif 0
+	dcoI = 0x0eU;
+	dcoQ = 0x20U;
+	for (u8 idx = 0x00U; idx <= 0x3fU; idx++) {
+		TrxPllDcoIqSet(idx, dcoQ);
+		vTaskDelay(pdMS_TO_TICKS(1000));
+	}
+	TrxPllDcoIqSet(dcoI, dcoQ);
 #endif
 
 	vTaskDelay(pdMS_TO_TICKS(250));
