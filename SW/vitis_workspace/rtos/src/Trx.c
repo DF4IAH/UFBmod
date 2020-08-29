@@ -34,6 +34,7 @@
 
 static XGpio gpio_TRX;
 static XGpio gpio_TRX_DDS;
+static XGpio gpio_TRX_AMPT;
 
 XSpi_Config* spiConfigPtr;	/* Pointer to Configuration data */
 static XSpi  spiInstance;
@@ -68,17 +69,118 @@ static u32 DacValueSet(u16 val) /* DAC pull voltage */
 	return XST_SUCCESS;
 }
 
+
+/* Get correction values for power setting */
+static u32 calcCorectionGet(int pwr, float* cor, u8* dcoI, u8* dcoQ)
+{
+	if ((pwr < -22) || (+11 < pwr)) {
+		return XST_FAILURE;
+	}
+	if (!cor || !dcoI || !dcoQ) {
+		return XST_FAILURE;
+	}
+
+	switch (pwr)
+	{
+	case +11:
+	case +10:
+	case  +9:
+	case  +8:
+		*cor = 1.200f;
+		*dcoI = 0x1eU;
+		*dcoQ = 0x26U;
+		break;
+
+	case  +7:
+	case  +6:
+	case  +5:
+	case  +4:
+	case  +3:
+		*cor = 1.125f;
+		*dcoI = 0x1eU;
+		*dcoQ = 0x25U;
+		break;
+
+	case  +2:
+	case  +1:
+	case   0:
+	case  -1:
+	case  -2:
+		*cor = 1.076f;
+		*dcoI = 0x1eU;
+		*dcoQ = 0x25U;
+		break;
+
+	case  -3:
+	case  -4:
+	case  -5:
+	case  -6:
+	case  -7:
+		*cor = 1.067f;
+		*dcoI = 0x1fU;
+		*dcoQ = 0x23U;
+		break;
+
+	case  -8:
+	case  -9:
+	case -10:
+	case -11:
+	case -12:
+		*cor = 1.052f;
+		*dcoI = 0x19U;
+		*dcoQ = 0x24U;
+		break;
+
+	case -13:
+	case -14:
+	case -15:
+	case -16:
+	case -17:
+		*cor = 1.037f;
+		*dcoI = 0x17U;
+		*dcoQ = 0x1fU;
+		break;
+
+	case -18:
+	case -19:
+	case -20:
+	case -21:
+	case -22:
+		*cor = 1.032f;
+		*dcoI = 0x0eU;
+		*dcoQ = 0x20U;
+		break;
+
+	default:
+		*cor = 1.000f;
+		*dcoI = 0x1eU;
+		*dcoQ = 0x26U;
+	}
+
+	return XST_SUCCESS;
+}
+
 /* FPGA DDS channel 0/1 setting frequency and amplitude */
-static u32 DdsFreqAmpSet(u8 doSetCh1, float freqHz, u8 ampl)
+static u32 DdsFreqAmpSet(u8 doSetCh1, float freqHz, u8 ampl, float factIq)
 {
 	u8 sign = 0U;
-
 	/* Parameter checks */
 	if (doSetCh1 > 1) {
 		return XST_FAILURE;
 	}
 	if (freqHz > 200E+3) {
 		return XST_FAILURE;
+	}
+	if (factIq < 0.0f) {
+		/* Symmetry for negative values */
+		factIq = -1 / factIq;
+	}
+
+	float factI = 1.0f, factQ = 1.0f;
+	if (factIq <= 1.0f) {
+		factQ = factIq;
+	} else {
+		factI = 1 / factIq;
 	}
 
 	/* Turn direction reversed */
@@ -91,20 +193,35 @@ static u32 DdsFreqAmpSet(u8 doSetCh1, float freqHz, u8 ampl)
 	float calc = freqHz * (1UL << 24);
 	calc /= 4E+6;
 	calc += 0.5f;
-	u32 reg = (u32) calc;
+	u32 regDds = (u32) calc;
 	if (sign) {
-		reg = ~reg;
+		regDds = ~regDds;
 	}
-	reg &= 0x00ffffffUL;
+	regDds &= 0x00ffffffUL;
 
 	/* Amplitude */
-	reg |= (((u32) ampl) << 24);
+	u32 regAmpt;
+	regAmpt  =  (u32) (ampl * factI);
+	regAmpt |= ((u32) (ampl * factQ)) << 8;
 
 	if (doSetCh1 == 0) {
-		XGpio_DiscreteWrite(&gpio_TRX_DDS, 1U, reg);
+		/* DDS0 */
+		XGpio_DiscreteWrite(&gpio_TRX_DDS, 1U, regDds);
+		XGpio_DiscreteWrite(&gpio_TRX_AMPT, 1U, regAmpt);
+
 	} else {
-		XGpio_DiscreteWrite(&gpio_TRX_DDS, 2U, reg);
+		/* DDS1 */
+		XGpio_DiscreteWrite(&gpio_TRX_DDS, 2U, regDds);
+		XGpio_DiscreteWrite(&gpio_TRX_AMPT, 2U, regAmpt);
 	}
+
+	int factIq_d	= (int)   factIq;
+	int factIq_f	= (int) ((factIq - factIq_d) * 1000.0f);
+	int factI_d		= (int)   factI;
+	int factI_f		= (int) ((factI - factI_d) * 1000.0f);
+	int factQ_d		= (int)   factQ;
+	int factQ_f		= (int) ((factQ - factQ_d) * 1000.0f);
+	xil_printf("TaskTrx: DdsFreqAmpSet done, Freq = %6d Hz, Ampl = 0x%02X, Fact-IQ = %d.%03d --> (factI = %d.%03d, factQ = %d.%03d)\r\n", (int)freqHz, ampl, factIq_d, factIq_f, factI_d, factI_f, factQ_d, factQ_f);
 
 	return XST_SUCCESS;
 }
@@ -940,13 +1057,21 @@ void taskTrx(void* pvParameters)
 
 	/* Init TRX-DDS-GPIO */
 	{
-		int statusTrx = XGpio_Initialize(&gpio_TRX_DDS, XPAR_TRX_TRX_TX_DDS_UNIT_TRX_TX_AXI_GPIO_0_DEVICE_ID);
+		int statusTrx = XGpio_Initialize(&gpio_TRX_DDS, XPAR_TRX_TRX_TX_DDS_UNIT_TRX_TX_DDS_INC_AXI_GPIO_0_DEVICE_ID);
 		if (statusTrx != XST_SUCCESS) {
 			xil_printf("TaskTrx: *** GPIO TRX DDS Initialization Failed\r\n");
 			return /*XST_FAILURE*/;
 		}
-		XGpio_SetDataDirection(&gpio_TRX_DDS, 1U, 0x00000000UL);  	// 32 bit output
-		XGpio_SetDataDirection(&gpio_TRX_DDS, 2U, 0x00000000UL);  	// 32 bit output
+		XGpio_SetDataDirection(&gpio_TRX_DDS, 1U, 0x00000000UL);  	// 24 bit output
+		XGpio_SetDataDirection(&gpio_TRX_DDS, 2U, 0x00000000UL);  	// 24 bit output
+
+		statusTrx = XGpio_Initialize(&gpio_TRX_AMPT, XPAR_TRX_TRX_TX_DDS_UNIT_TRX_TX_DDS_AMPT_AXI_GPIO_0_DEVICE_ID);
+		if (statusTrx != XST_SUCCESS) {
+			xil_printf("TaskTrx: *** GPIO TRX AMPT Initialization Failed\r\n");
+			return /*XST_FAILURE*/;
+		}
+		XGpio_SetDataDirection(&gpio_TRX_AMPT, 1U, 0x00000000UL);  	// 16 bit output
+		XGpio_SetDataDirection(&gpio_TRX_AMPT, 2U, 0x00000000UL);  	// 16 bit output
 	}
 
 	/* Init SPI */
@@ -1028,10 +1153,21 @@ void taskTrx(void* pvParameters)
 
 	TrxGetIrqs(&irqs);
 	TrxCmdSet(CMD_TRXOFF);
-	//TrxFreqSet(868000000UL);
-	TrxFreqSet(869000000UL);
-	//TrxFreqSet(870000000UL);
-	TrxOperationModeSet(CHPM_RF_MODE_RF, CTX_DISABLE, 0);  // max. power @ TRX pins: +11 (dBm)  CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF
+
+	/* Values */		// XXX
+	int pwr_dBm = -20;
+	u32 freq_Hz = 869000000UL;  // 868000000 .. 870000000 Hz
+
+	/* Get correction values */
+	float cor = 1.000f;
+	u8 dcoI = 0U, dcoQ = 0U;
+	calcCorectionGet(pwr_dBm, &cor, &dcoI, &dcoQ);
+
+	/* Set frequency */
+	TrxFreqSet(freq_Hz);
+
+	/* Set power and operation mode */
+	TrxOperationModeSet(CHPM_RF_MODE_RF, CTX_DISABLE, pwr_dBm);  // CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF, CTX ContinuesWave, Power @ TRX pins
 
 	/* Yellow */
 	pwmLedSet(0x00003f4fUL, 0x00ffffffUL);
@@ -1045,7 +1181,24 @@ void taskTrx(void* pvParameters)
 		}
 	}
 
-	/* Syncing I/Q Link state */
+	/* I/Q mixer balance */
+#if 0
+	TrxPllDcoIqGet(&dcoI, &dcoQ);	// Automatic: bad measurement values  0x1d, 0x39  - use correction table instead
+#else
+	TrxPllDcoIqSet(dcoI, dcoQ);
+#endif
+
+#if 1
+	/* Set FPGA DDS0 */
+	DdsFreqAmpSet(0U, +10.000E+3, 0xffU, cor);
+	DdsFreqAmpSet(1U,  +0.000E+3, 0x00U, cor);
+#else
+	/* Set FPGA DDS0 & DDS1 */
+	DdsFreqAmpSet(0U, +10.000E+3, 0x7fU, cor);
+	DdsFreqAmpSet(1U, +15.000E+3, 0x7fU, cor);
+#endif
+
+	/* Syncing I/Q line */
 	while (1) {
 		TrxIqSyncGet(&state);
 		if (state) {
@@ -1060,42 +1213,22 @@ void taskTrx(void* pvParameters)
 		}
 		vTaskDelay(pdMS_TO_TICKS(10));
 	}
-
 #if 0
 	while (1) {
 		TrxIqSyncGet(&state);
 	}
 #endif
 
-	/* Set DDS channel 0*/
-	DdsFreqAmpSet(0U, +10.000E+3, 0x7fU);
-	/* Set DDS channel 1*/
-	DdsFreqAmpSet(1U, +15.000E+3, 0x7fU);
-
 	/* Test-Cycles */
 	TrxTxFlSet(2047U);
 	TrxDacCwSet(DAC_CW_DISABLE);
 	TrxCtxSet(CTX_ENABLE);
 
-	u8 dcoI = 0U, dcoQ = 0U;
-#if 0
-	TrxPllDcoIqGet(&dcoI, &dcoQ);	// Automatic bad meassurement: 0x1d, 0x39  instead of   0x0e, 0x21
-#else
-//	dcoI = 0x1eU; dcoQ = 0x26U;		// QRG: 868, 869, 870 MHz & +11 dBm
-//	dcoI = 0x1eU; dcoQ = 0x25U;		// QRG: 868, 869, 870 MHz & + 5 dBm
-	dcoI = 0x1eU; dcoQ = 0x25U;		// QRG: 868, 869, 870 MHz &   0 dBm
-//	dcoI = 0x1fU; dcoQ = 0x23U;		// QRG: 868, 869, 870 MHz & - 5 dBm
-//	dcoI = 0x19U; dcoQ = 0x24U;		// QRG: 868, 869, 870 MHz & -10 dBm
-//	dcoI = 0x17U; dcoQ = 0x1fU;		// QRG: 868, 869, 870 MHz & -15 dBm
-//	dcoI = 0x0eU; dcoQ = 0x20U;		// QRG: 868, 869, 870 MHz & -20 dBm
-	TrxPllDcoIqSet(dcoI, dcoQ);
-#endif
-
 	/* RED on */
 	pwmLedSet(0x0000007fUL, 0x00ffffffUL);
 	TrxCmdSet(CMD_TX);
 	while (1) {
-		TrxStateGet(&state);								// SUCCESS	state = 4
+		TrxStateGet(&state);
 		if (state == STATE_TX) {
 			xil_printf("TaskTrx: changed into state = 0x%02X\r\n", state);
 			break;
@@ -1122,13 +1255,23 @@ void taskTrx(void* pvParameters)
 	}
 	DacValueSet(0x82a0);
 #elif 0
-	dcoI = 0x0eU;
-	dcoQ = 0x20U;
-	for (u8 idx = 0x00U; idx <= 0x3fU; idx++) {
+	dcoI = 0x1eU;
+	dcoQ = 0x25U;
+	for (u8 idx = 0x1eU; idx <= 0x1eU; idx++) {
 		TrxPllDcoIqSet(idx, dcoQ);
 		vTaskDelay(pdMS_TO_TICKS(1000));
 	}
+	for (u8 idx = 0x25U; idx <= 0x25U; idx++) {
+		TrxPllDcoIqSet(dcoI, idx);
+		vTaskDelay(pdMS_TO_TICKS(1000));
+	}
 	TrxPllDcoIqSet(dcoI, dcoQ);
+#elif 0
+	for (float idx = 1.000f; idx <= 1.200f; idx += 0.001f) {
+		/* Set DDS channel 0*/
+		DdsFreqAmpSet(0U, 10.000E+3, 0xf0U, idx);
+		vTaskDelay(pdMS_TO_TICKS(500));
+	}
 #endif
 
 	vTaskDelay(pdMS_TO_TICKS(250));

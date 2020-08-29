@@ -114,6 +114,9 @@ vhdl xil_defaultlib  \
 "../../../bd/msys/ip/msys_c_shift_ram_0_24/sim/msys_c_shift_ram_0_24.vhd" \
 "../../../bd/msys/ip/msys_c_shift_ram_0_25/sim/msys_c_shift_ram_0_25.vhd" \
 "../../../bd/msys/ip/msys_util_ds_buf_0_3/sim/msys_util_ds_buf_0_3.vhd" \
+"../../../bd/msys/ip/msys_axi_gpio_0_7/sim/msys_axi_gpio_0_7.vhd" \
+"../../../bd/msys/ip/msys_c_shift_ram_0_26/sim/msys_c_shift_ram_0_26.vhd" \
+"../../../bd/msys/ip/msys_c_shift_ram_0_27/sim/msys_c_shift_ram_0_27.vhd" \
 "../../../bd/msys/sim/msys.vhd" \
 
 nosort

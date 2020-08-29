@@ -47,13 +47,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="196"/>
-    <Option Name="WTModelSimExportSim" Val="196"/>
-    <Option Name="WTQuestaExportSim" Val="195"/>
-    <Option Name="WTIesExportSim" Val="195"/>
-    <Option Name="WTVcsExportSim" Val="195"/>
-    <Option Name="WTRivieraExportSim" Val="195"/>
-    <Option Name="WTActivehdlExportSim" Val="195"/>
+    <Option Name="WTXSimExportSim" Val="197"/>
+    <Option Name="WTModelSimExportSim" Val="197"/>
+    <Option Name="WTQuestaExportSim" Val="196"/>
+    <Option Name="WTIesExportSim" Val="196"/>
+    <Option Name="WTVcsExportSim" Val="196"/>
+    <Option Name="WTRivieraExportSim" Val="196"/>
+    <Option Name="WTActivehdlExportSim" Val="196"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -154,11 +154,6 @@
           <Attr Name="ScopedToRef" Val="msys"/>
           <Attr Name="ScopedToCell" Val="BOOT_PLL/BOOT_PLL_microblaze_0"/>
           <Attr Name="IsVisible" Val="1"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/bd/msys/ip/msys_mig_7series_0_0/mig_a.prj">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
         </FileInfo>
       </File>
       <Config>
@@ -333,10 +328,10 @@
         <Step Id="synth_design">
           <Option Id="ResourceSharing">2</Option>
           <Option Id="ShregMinSize">5</Option>
-          <Option Id="Directive">7</Option>
-          <Option Id="NoCombineLuts">1</Option>
           <Option Id="KeepEquivalentRegisters">1</Option>
+          <Option Id="Directive">7</Option>
           <Option Id="FsmExtraction">1</Option>
+          <Option Id="NoCombineLuts">1</Option>
         </Step>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>

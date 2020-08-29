@@ -613,9 +613,7 @@ vcom -work xil_defaultlib  -93 \
 "../../../bd/msys/ip/msys_c_shift_ram_0_4/sim/msys_c_shift_ram_0_4.vhd" \
 
 vlog -work xil_defaultlib  "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
-"../../../bd/msys/ip/msys_xlslice_0_29/sim/msys_xlslice_0_29.v" \
 "../../../bd/msys/ip/msys_xlslice_0_30/sim/msys_xlslice_0_30.v" \
-"../../../bd/msys/ip/msys_xlslice_0_31/sim/msys_xlslice_0_31.v" \
 "../../../bd/msys/ip/msys_xlslice_0_32/sim/msys_xlslice_0_32.v" \
 
 vcom -work xil_defaultlib  -93 \
@@ -806,6 +804,15 @@ vlog -work xil_defaultlib  "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/source
 "../../../bd/msys/ip/msys_xlslice_0_44/sim/msys_xlslice_0_44.v" \
 "../../../bd/msys/ip/msys_xlconcat_0_20/sim/msys_xlconcat_0_20.v" \
 "../../../bd/msys/ip/msys_xlconcat_0_21/sim/msys_xlconcat_0_21.v" \
+
+vcom -work xil_defaultlib  -93 \
+"../../../bd/msys/ip/msys_axi_gpio_0_7/sim/msys_axi_gpio_0_7.vhd" \
+"../../../bd/msys/ip/msys_c_shift_ram_0_26/sim/msys_c_shift_ram_0_26.vhd" \
+"../../../bd/msys/ip/msys_c_shift_ram_0_27/sim/msys_c_shift_ram_0_27.vhd" \
+
+vlog -work xil_defaultlib  "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8b3d" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/ec67/hdl" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/1b7e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/122e/hdl/verilog" "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/46fd/hdl" \
+"../../../bd/msys/ip/msys_xlslice_0_45/sim/msys_xlslice_0_45.v" \
+"../../../bd/msys/ip/msys_xlslice_0_46/sim/msys_xlslice_0_46.v" \
 "../../../bd/msys/ip/msys_tier2_xbar_0_0/sim/msys_tier2_xbar_0_0.v" \
 "../../../bd/msys/ip/msys_tier2_xbar_1_0/sim/msys_tier2_xbar_1_0.v" \
 "../../../bd/msys/ip/msys_tier2_xbar_2_0/sim/msys_tier2_xbar_2_0.v" \

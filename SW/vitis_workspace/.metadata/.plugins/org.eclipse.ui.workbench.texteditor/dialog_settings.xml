@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="DdsFreqAmpSet" key="selection"/>
+		<item value="calcCorectionGet" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="calcCorectionGet"/>
 			<item value="DdsFreqAmpSet"/>
 			<item value="CMV"/>
 			<item value="RESET"/>
@@ -22,7 +23,6 @@
 			<item value="SPI"/>
 			<item value="nop"/>
 			<item value="asm"/>
-			<item value="ssert"/>
 		</list>
 		<list key="replacehistory">
 		</list>

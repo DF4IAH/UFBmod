@@ -77,8 +77,8 @@ ENTITY msys_axi_gpio_0_1 IS
     s_axi_rresp : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
     s_axi_rvalid : OUT STD_LOGIC;
     s_axi_rready : IN STD_LOGIC;
-    gpio_io_o : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    gpio2_io_o : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+    gpio_io_o : OUT STD_LOGIC_VECTOR(23 DOWNTO 0);
+    gpio2_io_o : OUT STD_LOGIC_VECTOR(23 DOWNTO 0)
   );
 END msys_axi_gpio_0_1;
 
@@ -124,12 +124,12 @@ ARCHITECTURE msys_axi_gpio_0_1_arch OF msys_axi_gpio_0_1 IS
       s_axi_rvalid : OUT STD_LOGIC;
       s_axi_rready : IN STD_LOGIC;
       ip2intc_irpt : OUT STD_LOGIC;
-      gpio_io_i : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      gpio_io_o : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      gpio_io_t : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      gpio2_io_i : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      gpio2_io_o : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      gpio2_io_t : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+      gpio_io_i : IN STD_LOGIC_VECTOR(23 DOWNTO 0);
+      gpio_io_o : OUT STD_LOGIC_VECTOR(23 DOWNTO 0);
+      gpio_io_t : OUT STD_LOGIC_VECTOR(23 DOWNTO 0);
+      gpio2_io_i : IN STD_LOGIC_VECTOR(23 DOWNTO 0);
+      gpio2_io_o : OUT STD_LOGIC_VECTOR(23 DOWNTO 0);
+      gpio2_io_t : OUT STD_LOGIC_VECTOR(23 DOWNTO 0)
     );
   END COMPONENT axi_gpio;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -167,8 +167,8 @@ BEGIN
       C_FAMILY => "artix7",
       C_S_AXI_ADDR_WIDTH => 9,
       C_S_AXI_DATA_WIDTH => 32,
-      C_GPIO_WIDTH => 32,
-      C_GPIO2_WIDTH => 32,
+      C_GPIO_WIDTH => 24,
+      C_GPIO2_WIDTH => 24,
       C_ALL_INPUTS => 0,
       C_ALL_INPUTS_2 => 0,
       C_ALL_OUTPUTS => 1,
@@ -200,9 +200,9 @@ BEGIN
       s_axi_rresp => s_axi_rresp,
       s_axi_rvalid => s_axi_rvalid,
       s_axi_rready => s_axi_rready,
-      gpio_io_i => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      gpio_io_i => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 24)),
       gpio_io_o => gpio_io_o,
-      gpio2_io_i => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
+      gpio2_io_i => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 24)),
       gpio2_io_o => gpio2_io_o
     );
 END msys_axi_gpio_0_1_arch;
