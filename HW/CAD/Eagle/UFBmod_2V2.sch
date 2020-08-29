@@ -20606,9 +20606,10 @@ I2C addr: 0x1C, I2C broadcast addr: 0x2A</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">SPI: TRX</text>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">Microchip Technologies AT86RF215</text>
 <text x="93.98" y="83.82" size="1.778" layer="97">26MHz</text>
-<text x="15.24" y="22.86" size="1.778" layer="97">TODO: 
+<text x="15.24" y="17.78" size="1.778" layer="97">TODO: 
 - use extra driver for CLKO to keep TRX in balance
-- Low drop linear voltage regulator needed for L0703, L0704</text>
+- Low drop linear voltage regulator needed for L0703, L0704
+- EEPROM for I/Q balance and correcting factors</text>
 </plain>
 <instances>
 <instance part="FRAME_07" gate="G$1" x="0" y="0" smashed="yes">
