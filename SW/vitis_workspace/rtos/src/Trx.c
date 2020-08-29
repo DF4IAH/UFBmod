@@ -660,8 +660,8 @@ static u32 TrxOperationModeSet(u8 chpm, u8 ctx, s32 pwr)
 
 		writeBuf[0] = 0x01U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0112
 		writeBuf[1] = 0x12U;									// Reg-LSB
-		writeBuf[2] = ((readBuf[2] & 0x00U) | 0xc8U);			// RF09_TXCUTC	PARAMP=c0 32us, LPFCUT=08 500kHz (p48)
-		writeBuf[3] = ((readBuf[3] & 0x00U) | 0x01U);			// RF09_TXDFE	RCUT=00, DM=00 , SR=01 4MSPS (p48)
+		writeBuf[2] = ((readBuf[2] & 0x00U) | 0xc8U);			// RF09_TXCUTC	PARAMP=#c0 32us, LPFCUT=#00 80kHz #08 500kHz #0b 1000kHz (p48)
+		writeBuf[3] = ((readBuf[3] & 0x00U) | 0x01U);			// RF09_TXDFE	RCUT=#00 fs/8 #20 0.1875*fs #40 fs/4 #60 0.375*fs #80 fs/2, DM=00 , SR=01 4MSPS (p48)
 		writeBuf[4] = ((pacur & 0x03U) << 5) | (txpwr & 0x1fU);	// RF09_PAC		PACUR, TXPWR (p49)
 
 		/* Write the data */
@@ -1011,6 +1011,119 @@ static u32 TrxTxFrameBufSet(u16 len, u8* txFrameBufTemplate)
 	return XST_SUCCESS;
 }
 
+static u32 TrxLvdsSyncing(void)
+{
+	u8 state;
+
+	/* Syncing I/Q line */
+	while (1) {
+		TrxIqSyncGet(&state);
+		if (state) {
+			break;
+		}
+
+		/* Enable LVDS TX stream from FPGA */
+		{
+			XGpio_DiscreteWrite(&gpio_TRX, 1U, 0x80000001UL);	// TRX:disable RESETN, RFX:low-Amp, TRX:disable LVDS blankTX
+			XGpio_DiscreteWrite(&gpio_TRX, 1U, 0x80000000UL);	// TRX:disable RESETN, RFX:low-Amp, TRX:disable LVDS blankTX
+		}
+		vTaskDelay(pdMS_TO_TICKS(10));
+	}
+#if 0
+	while (1) {
+		TrxIqSyncGet(&state);
+	}
+#endif
+
+	return XST_SUCCESS;
+}
+
+
+/*-----------------------------------------------------------*/
+
+void testTx(float cor, u8 dcoI, u8 dcoQ)
+{
+#if 1
+	/* Set FPGA DDS0 */
+	DdsFreqAmpSet(0U, +10.000E+3, 0xf3U, cor);  // ampl <= 0xf3
+	DdsFreqAmpSet(1U,  +0.000E+3, 0x00U, cor);
+#else
+	/* Set FPGA DDS0 & DDS1 */
+	DdsFreqAmpSet(0U, +10.000E+3, 0x70U, cor);
+	DdsFreqAmpSet(1U, +15.000E+3, 0x70U, cor);
+#endif
+
+	/* Test-Cycles */
+	TrxTxFlSet(2047U);
+	TrxDacCwSet(DAC_CW_DISABLE);
+	TrxCtxSet(CTX_ENABLE);
+
+	/* RED on */
+	u8 state;
+	pwmLedSet(0x0000007fUL, 0x00ffffffUL);
+	TrxCmdSet(CMD_TX);
+	while (1) {
+		TrxStateGet(&state);
+		if (state == STATE_TX) {
+			xil_printf("TaskTrx: changed into state = 0x%02X\r\n", state);
+			break;
+		}
+	}
+
+#if 0
+	/* Freq. sweep 868 .. 870 MHz */
+	for (u32 frq = FREQ_SAWFILT_MIN - 1000000UL; frq <= (FREQ_SAWFILT_MAX + 1000000UL); frq += 10000UL) {
+		TrxFreqSet(frq);
+		vTaskDelay(pdMS_TO_TICKS(100));
+	}
+#elif 0
+	/* Sweep balance for Harmonic distortions */
+	for (u8 idx = 0x10U; idx <= 0x30U; idx++) {
+		TrxPllCfSet(idx);
+		vTaskDelay(pdMS_TO_TICKS(500));
+	}
+	TrxPllCfSet(0x1f);
+#elif 0
+	for (u16 pv = 0x0000U; pv <= 0x8100U; pv += 0x0800U) {
+		DacValueSet(pv);
+		vTaskDelay(pdMS_TO_TICKS(250));
+	}
+	DacValueSet(0x82a0);
+#elif 0
+	dcoI = 0x1eU;
+	dcoQ = 0x25U;
+	for (u8 idx = 0x1eU; idx <= 0x1eU; idx++) {
+		TrxPllDcoIqSet(idx, dcoQ);
+		vTaskDelay(pdMS_TO_TICKS(1000));
+	}
+	for (u8 idx = 0x25U; idx <= 0x25U; idx++) {
+		TrxPllDcoIqSet(dcoI, idx);
+		vTaskDelay(pdMS_TO_TICKS(1000));
+	}
+	TrxPllDcoIqSet(dcoI, dcoQ);
+#elif 0
+	for (float idx = 1.000f; idx <= 1.200f; idx += 0.001f) {
+		/* Set DDS channel 0*/
+		DdsFreqAmpSet(0U, 10.000E+3, 0xf0U, idx);
+		vTaskDelay(pdMS_TO_TICKS(500));
+	}
+#endif
+
+	vTaskDelay(pdMS_TO_TICKS(250));
+
+	/* RED off */
+	u32 irqs;
+	TrxCmdSet(CMD_TRXOFF);
+	while (1) {
+		TrxGetIrqs(&irqs);
+		TrxStateGet(&state);
+		if (state == CMD_TRXOFF) {
+			xil_printf("TaskTrx: changed into state = 0x%02X\r\n", state);
+			break;
+		}
+	}
+	pwmLedSet(0x00000000UL, 0x00ffffffUL);
+}
 
 /*-----------------------------------------------------------*/
 
@@ -1144,151 +1257,60 @@ void taskTrx(void* pvParameters)
 		txFrameBufTemplate[idx] = 0xaaU;
 	}
 
-	u32 irqs;
-	u8 state;
-	u16 level;
-	(void) irqs;
-	(void) state;
-	(void) level;
-
-	TrxGetIrqs(&irqs);
-	TrxCmdSet(CMD_TRXOFF);
-
-	/* Values */		// XXX
-	int pwr_dBm = -20;
-	u32 freq_Hz = 869000000UL;  // 868000000 .. 870000000 Hz
-
-	/* Get correction values */
-	float cor = 1.000f;
-	u8 dcoI = 0U, dcoQ = 0U;
-	calcCorectionGet(pwr_dBm, &cor, &dcoI, &dcoQ);
-
-	/* Set frequency */
-	TrxFreqSet(freq_Hz);
-
-	/* Set power and operation mode */
-	TrxOperationModeSet(CHPM_RF_MODE_RF, CTX_DISABLE, pwr_dBm);  // CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF, CTX ContinuesWave, Power @ TRX pins
-
-	/* Yellow */
-	pwmLedSet(0x00003f4fUL, 0x00ffffffUL);
-	TrxCmdSet(CMD_TXPREP);
-	while (1) {
+	/* TRX going Live */
+	{
+		u32 irqs;
 		TrxGetIrqs(&irqs);
-		TrxStateGet(&state);
-		if (state == STATE_TXPREP) {
-			xil_printf("TaskTrx: changed into state = 0x%02X\r\n", state);
-			break;
-		}
-	}
+		TrxCmdSet(CMD_TRXOFF);
 
-	/* I/Q mixer balance */
+		/* Values */				// XXX
+		int pwr_dBm = -20;
+		u32 freq_Hz = 869000000UL;  // 868000000 .. 870000000 Hz
+
+		/* Get correction values */
+		float cor = 1.000f;
+		u8 dcoI = 0U, dcoQ = 0U;
+		calcCorectionGet(pwr_dBm, &cor, &dcoI, &dcoQ);
+
+		/* Set frequency */
+		TrxFreqSet(freq_Hz);
+
+		/* Set power and operation mode */
+		TrxOperationModeSet(CHPM_RF_MODE_RF, CTX_DISABLE, pwr_dBm);  // CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF, CTX ContinuesWave, Power @ TRX pins
+
+		/* Yellow */
+		u8 state;
+		pwmLedSet(0x00003f4fUL, 0x00ffffffUL);
+		TrxCmdSet(CMD_TXPREP);
+		while (1) {
+			TrxGetIrqs(&irqs);
+			TrxStateGet(&state);
+			if (state == STATE_TXPREP) {
+				xil_printf("TaskTrx: changed into state = 0x%02X\r\n", state);
+				break;
+			}
+		}
+
+		/* I/Q mixer balance */
 #if 0
-	TrxPllDcoIqGet(&dcoI, &dcoQ);	// Automatic: bad measurement values  0x1d, 0x39  - use correction table instead
+		TrxPllDcoIqGet(&dcoI, &dcoQ);	// Automatic: bad measurement values  0x1d, 0x39  - use correction table instead
 #else
-	TrxPllDcoIqSet(dcoI, dcoQ);
+		TrxPllDcoIqSet(dcoI, dcoQ);
 #endif
+
+		/* Syncing I/Q TX line */
+		TrxLvdsSyncing();
 
 #if 1
-	/* Set FPGA DDS0 */
-	DdsFreqAmpSet(0U, +10.000E+3, 0xffU, cor);
-	DdsFreqAmpSet(1U,  +0.000E+3, 0x00U, cor);
+		/* Testing the Transmitter of the TRX */
+		testTx(cor, dcoI, dcoQ);
 #else
-	/* Set FPGA DDS0 & DDS1 */
-	DdsFreqAmpSet(0U, +10.000E+3, 0x7fU, cor);
-	DdsFreqAmpSet(1U, +15.000E+3, 0x7fU, cor);
+		/* Testing the Receiver of the TRX */
+		testRx();
 #endif
 
-	/* Syncing I/Q line */
-	while (1) {
-		TrxIqSyncGet(&state);
-		if (state) {
-			break;
+		while (1) {
+			vTaskDelay(pdMS_TO_TICKS(1000));
 		}
-
-		/* Enable LVDS TX stream from FPGA */
-		{
-			XGpio_DiscreteWrite(&gpio_TRX, 1U, 0x80000001UL);	// TRX:disable RESETN, RFX:low-Amp, TRX:disable LVDS blankTX
-			vTaskDelay(pdMS_TO_TICKS(10));
-			XGpio_DiscreteWrite(&gpio_TRX, 1U, 0x80000000UL);	// TRX:disable RESETN, RFX:low-Amp, TRX:disable LVDS blankTX
-		}
-		vTaskDelay(pdMS_TO_TICKS(10));
-	}
-#if 0
-	while (1) {
-		TrxIqSyncGet(&state);
-	}
-#endif
-
-	/* Test-Cycles */
-	TrxTxFlSet(2047U);
-	TrxDacCwSet(DAC_CW_DISABLE);
-	TrxCtxSet(CTX_ENABLE);
-
-	/* RED on */
-	pwmLedSet(0x0000007fUL, 0x00ffffffUL);
-	TrxCmdSet(CMD_TX);
-	while (1) {
-		TrxStateGet(&state);
-		if (state == STATE_TX) {
-			xil_printf("TaskTrx: changed into state = 0x%02X\r\n", state);
-			break;
-		}
-	}
-
-#if 0
-	/* Freq. sweep 868 .. 870 MHz */
-	for (u32 frq = FREQ_SAWFILT_MIN - 1000000UL; frq <= (FREQ_SAWFILT_MAX + 1000000UL); frq += 10000UL) {
-		TrxFreqSet(frq);
-		vTaskDelay(pdMS_TO_TICKS(100));
-	}
-#elif 0
-	/* Sweep balance for Harmonic distortions */
-	for (u8 idx = 0x10U; idx <= 0x30U; idx++) {
-		TrxPllCfSet(idx);
-		vTaskDelay(pdMS_TO_TICKS(500));
-	}
-	TrxPllCfSet(0x1f);
-#elif 0
-	for (u16 pv = 0x0000U; pv <= 0x8100U; pv += 0x0800U) {
-		DacValueSet(pv);
-		vTaskDelay(pdMS_TO_TICKS(250));
-	}
-	DacValueSet(0x82a0);
-#elif 0
-	dcoI = 0x1eU;
-	dcoQ = 0x25U;
-	for (u8 idx = 0x1eU; idx <= 0x1eU; idx++) {
-		TrxPllDcoIqSet(idx, dcoQ);
-		vTaskDelay(pdMS_TO_TICKS(1000));
-	}
-	for (u8 idx = 0x25U; idx <= 0x25U; idx++) {
-		TrxPllDcoIqSet(dcoI, idx);
-		vTaskDelay(pdMS_TO_TICKS(1000));
-	}
-	TrxPllDcoIqSet(dcoI, dcoQ);
-#elif 0
-	for (float idx = 1.000f; idx <= 1.200f; idx += 0.001f) {
-		/* Set DDS channel 0*/
-		DdsFreqAmpSet(0U, 10.000E+3, 0xf0U, idx);
-		vTaskDelay(pdMS_TO_TICKS(500));
-	}
-#endif
-
-	vTaskDelay(pdMS_TO_TICKS(250));
-
-	/* RED off */
-	TrxCmdSet(CMD_TRXOFF);
-	while (1) {
-		TrxGetIrqs(&irqs);
-		TrxStateGet(&state);
-		if (state == CMD_TRXOFF) {
-			xil_printf("TaskTrx: changed into state = 0x%02X\r\n", state);
-			break;
-		}
-	}
-	pwmLedSet(0x00000000UL, 0x00ffffffUL);
-
-	while (1) {
-		vTaskDelay(pdMS_TO_TICKS(1000));
 	}
 }
