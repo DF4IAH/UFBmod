@@ -2,12 +2,16 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="" key="selection"/>
+		<item value="RFX" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="RFX"/>
+			<item value="CF"/>
+			<item value="dcoI"/>
+			<item value="TrxFreqSet"/>
 			<item value="1V2"/>
 			<item value="V2"/>
 			<item value="CMV"/>
@@ -19,10 +23,6 @@
 			<item value="PAVC"/>
 			<item value="AUXS"/>
 			<item value="PADFE"/>
-			<item value="TrxOperationModeSet"/>
-			<item value="Assert"/>
-			<item value="gpio_PWM_Lights"/>
-			<item value="led"/>
 		</list>
 		<list key="replacehistory">
 		</list>
