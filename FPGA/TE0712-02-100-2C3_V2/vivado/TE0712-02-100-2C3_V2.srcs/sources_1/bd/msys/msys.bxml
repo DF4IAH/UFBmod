@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="msys" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1598671961"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1598671961"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1598671961"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1598671961"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1598699854"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1598699854"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1598699854"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1598699854"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\msys_SC0712_0_0\msys_SC0712_0_0.xci" Type="IP">
         <Instance HierarchyPath="CFG/SC0712_0"/>
@@ -1854,6 +1854,38 @@
       </File>
       <File Name="ip\msys_xlslice_0_46\msys_xlslice_0_46.xci" Type="IP">
         <Instance HierarchyPath="TRX/TRX_tx_DDS_unit/TRX_ampt_tx0_xslice_7to0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_xlslice_0_47\msys_xlslice_0_47.xci" Type="IP">
+        <Instance HierarchyPath="vio_xlslice_rx09_re_12to0_in44"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_xlslice_0_48\msys_xlslice_0_48.xci" Type="IP">
+        <Instance HierarchyPath="vio_xlslice_rx09_im_25to13_in45"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_xlslice_0_49\msys_xlslice_0_49.xci" Type="IP">
+        <Instance HierarchyPath="vio_xlslice_rx24_re_12to0_in46"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_xlslice_0_50\msys_xlslice_0_50.xci" Type="IP">
+        <Instance HierarchyPath="vio_xlslice_rx24_im_25to13_in47"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

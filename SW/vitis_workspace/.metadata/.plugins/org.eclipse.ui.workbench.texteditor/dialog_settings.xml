@@ -8,11 +8,13 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="1V2"/>
+			<item value="V2"/>
+			<item value="CMV"/>
 			<item value="TXCUT"/>
 			<item value="testTx"/>
 			<item value="calcCorectionGet"/>
 			<item value="DdsFreqAmpSet"/>
-			<item value="CMV"/>
 			<item value="RESET"/>
 			<item value="PAVC"/>
 			<item value="AUXS"/>
@@ -21,8 +23,6 @@
 			<item value="Assert"/>
 			<item value="gpio_PWM_Lights"/>
 			<item value="led"/>
-			<item value="PWM"/>
-			<item value="SPI"/>
 		</list>
 		<list key="replacehistory">
 		</list>

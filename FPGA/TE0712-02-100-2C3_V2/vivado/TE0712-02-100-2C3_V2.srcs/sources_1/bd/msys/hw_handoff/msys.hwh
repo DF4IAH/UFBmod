@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Aug 29 05:32:41 2020" VIVADOVERSION="2020.1.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Aug 29 13:17:33 2020" VIVADOVERSION="2020.1.1">
 
   <SYSTEMINFO ARCH="artix7" BOARD="trenz.biz:te0712_100_2c:part0:1.0" DEVICE="7a100t" NAME="msys" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -265,11 +265,15 @@
     <PORT DIR="I" LEFT="25" NAME="premem_rx09_dina_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx09_dina_in">
       <CONNECTIONS>
         <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_pre_fft_rx09_blk_mem_gen_0" PORT="dina"/>
+        <CONNECTION INSTANCE="vio_xlslice_rx09_re_12to0_in44" PORT="Din"/>
+        <CONNECTION INSTANCE="vio_xlslice_rx09_im_25to13_in45" PORT="Din"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="25" NAME="premem_rx24_dina_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx24_dina_in">
       <CONNECTIONS>
         <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_pre_fft_rx24_blk_mem_gen_0" PORT="dina"/>
+        <CONNECTION INSTANCE="vio_xlslice_rx24_im_25to13_in47" PORT="Din"/>
+        <CONNECTION INSTANCE="vio_xlslice_rx24_re_12to0_in46" PORT="Din"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="0" NAME="premem_rx09_wea_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx09_wea_in">
@@ -439,11 +443,13 @@
     <PORT DIR="I" NAME="LVDS_rx09_synced" SIGIS="undef" SIGNAME="External_Ports_LVDS_rx09_synced">
       <CONNECTIONS>
         <CONNECTION INSTANCE="TRX_TRX_config_TRX_gpio_xlconcat_0" PORT="In1"/>
+        <CONNECTION INSTANCE="vio_0" PORT="probe_in42"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="LVDS_rx24_synced" SIGIS="undef" SIGNAME="External_Ports_LVDS_rx24_synced">
       <CONNECTIONS>
         <CONNECTION INSTANCE="TRX_TRX_config_TRX_gpio_xlconcat_0" PORT="In2"/>
+        <CONNECTION INSTANCE="vio_0" PORT="probe_in43"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="TRX_rx_clk_64MHz_clk_n" SIGIS="clk" SIGNAME="TRX_TRX_LVDS_TRX_LVDS_selectio_wiz_0_clk_in_n">
@@ -8502,8 +8508,8 @@
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
           <PARAMETER NAME="HAS_RRESP" VALUE="1"/>
           <PARAMETER NAME="SUPPORTS_NARROW_BURST" VALUE="0"/>
-          <PARAMETER NAME="NUM_READ_OUTSTANDING" VALUE="1"/>
-          <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="1"/>
+          <PARAMETER NAME="NUM_READ_OUTSTANDING" VALUE="2"/>
+          <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="2"/>
           <PARAMETER NAME="MAX_BURST_LENGTH" VALUE="1"/>
           <PARAMETER NAME="PHASE" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="msys_mig_7series_0_0_ui_clk"/>
@@ -12436,8 +12442,8 @@
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
           <PARAMETER NAME="HAS_RRESP" VALUE="1"/>
           <PARAMETER NAME="SUPPORTS_NARROW_BURST" VALUE="0"/>
-          <PARAMETER NAME="NUM_READ_OUTSTANDING" VALUE="1"/>
-          <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="1"/>
+          <PARAMETER NAME="NUM_READ_OUTSTANDING" VALUE="2"/>
+          <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="2"/>
           <PARAMETER NAME="MAX_BURST_LENGTH" VALUE="1"/>
           <PARAMETER NAME="PHASE" VALUE="0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="msys_mig_7series_0_0_ui_clk"/>
@@ -19091,7 +19097,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="External_Ports_SCOPE_FSM_FIFO_Rst">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="External_Ports_SCOPE_FSM_FIFO_Rst">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="SCOPE_FSM_FIFO_Rst"/>
           </CONNECTIONS>
@@ -20096,7 +20102,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -20129,7 +20135,7 @@
         <PORT DIR="O" LEFT="31" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_LVDS_TRX_rx09_fifo_generator_0_dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="TRX_rx09_fifo_o"/>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in13"/>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in12"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="full" SIGIS="undef"/>
@@ -20823,7 +20829,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -20856,7 +20862,7 @@
         <PORT DIR="O" LEFT="31" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_LVDS_TRX_rx24_fifo_generator_0_dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="TRX_rx24_fifo_o"/>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in12"/>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in13"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="full" SIGIS="undef"/>
@@ -21263,7 +21269,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -26121,7 +26127,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -26141,12 +26147,12 @@
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_rx09_xlslice_31to00" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -26348,7 +26354,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -26368,12 +26374,12 @@
             <CONNECTION INSTANCE="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_rx24_xlslice_31to00" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -26575,7 +26581,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -26595,12 +26601,12 @@
             <CONNECTION INSTANCE="External_Ports" PORT="premem_rx09_dina_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -26803,7 +26809,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
@@ -26823,12 +26829,12 @@
             <CONNECTION INSTANCE="External_Ports" PORT="premem_rx24_dina_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="mig_7series_0_ui_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mig_7series_0" PORT="ui_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_mig_7series_0_100M" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -40523,7 +40529,7 @@
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="0"/>
         <PARAMETER NAME="C_BUS_ADDR_WIDTH" VALUE="17"/>
         <PARAMETER NAME="C_BUS_DATA_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="C_NUM_PROBE_IN" VALUE="42"/>
+        <PARAMETER NAME="C_NUM_PROBE_IN" VALUE="48"/>
         <PARAMETER NAME="C_EN_PROBE_IN_ACTIVITY" VALUE="1"/>
         <PARAMETER NAME="C_NUM_PROBE_OUT" VALUE="1"/>
         <PARAMETER NAME="C_EN_SYNCHRONIZATION" VALUE="1"/>
@@ -40571,10 +40577,10 @@
         <PARAMETER NAME="C_PROBE_IN41_WIDTH" VALUE="13"/>
         <PARAMETER NAME="C_PROBE_IN42_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN43_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE_IN44_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE_IN45_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE_IN46_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE_IN47_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE_IN44_WIDTH" VALUE="13"/>
+        <PARAMETER NAME="C_PROBE_IN45_WIDTH" VALUE="13"/>
+        <PARAMETER NAME="C_PROBE_IN46_WIDTH" VALUE="13"/>
+        <PARAMETER NAME="C_PROBE_IN47_WIDTH" VALUE="13"/>
         <PARAMETER NAME="C_PROBE_IN48_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN49_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN50_WIDTH" VALUE="1"/>
@@ -41329,7 +41335,7 @@
             <CONNECTION INSTANCE="labtools_fmeter_0" PORT="update"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe_in5" RIGHT="0" SIGIS="undef" SIGNAME="CFG_SC0712_0_reset_out">
+        <PORT DIR="I" LEFT="0" NAME="probe_in5" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="undef" SIGNAME="CFG_SC0712_0_reset_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="CFG_SC0712_0" PORT="reset_out"/>
           </CONNECTIONS>
@@ -41364,14 +41370,14 @@
             <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_rx09_fifo_generator_0" PORT="rd_data_count"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="probe_in12" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_LVDS_TRX_rx24_fifo_generator_0_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_rx24_fifo_generator_0" PORT="dout"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="probe_in13" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_LVDS_TRX_rx09_fifo_generator_0_dout">
+        <PORT DIR="I" LEFT="31" NAME="probe_in12" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_LVDS_TRX_rx09_fifo_generator_0_dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_rx09_fifo_generator_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="probe_in13" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_LVDS_TRX_rx24_fifo_generator_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TRX_TRX_LVDS_TRX_rx24_fifo_generator_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="probe_in14" RIGHT="0" SIGIS="undef" SIGNAME="TRX_TRX_rx_FFT_unit_TRX_rx_FFT_calc_xfft_rx09_dly3198_event_frame_started">
@@ -41512,6 +41518,36 @@
         <PORT DIR="I" LEFT="12" NAME="probe_in41" RIGHT="0" SIGIS="undef" SIGNAME="vio_xlslice_41_Dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="vio_xlslice_41" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe_in42" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_LVDS_rx09_synced">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="LVDS_rx09_synced"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe_in43" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_LVDS_rx24_synced">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="LVDS_rx24_synced"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="12" NAME="probe_in44" RIGHT="0" SIGIS="undef" SIGNAME="vio_xlslice_rx09_re_12to0_in44_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_xlslice_rx09_re_12to0_in44" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="12" NAME="probe_in45" RIGHT="0" SIGIS="undef" SIGNAME="vio_xlslice_rx09_im_25to13_in45_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_xlslice_rx09_im_25to13_in45" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="12" NAME="probe_in46" RIGHT="0" SIGIS="undef" SIGNAME="vio_xlslice_rx24_re_12to0_in46_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_xlslice_rx24_re_12to0_in46" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="12" NAME="probe_in47" RIGHT="0" SIGIS="undef" SIGNAME="vio_xlslice_rx24_im_25to13_in47_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_xlslice_rx24_im_25to13_in47" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="12" NAME="probe_out0" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out0">
@@ -41676,6 +41712,102 @@
         <PORT DIR="O" LEFT="12" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="vio_xlslice_41_Dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="vio_0" PORT="probe_in41"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/vio_xlslice_rx09_im_25to13_in45" HWVERSION="1.0" INSTANCE="vio_xlslice_rx09_im_25to13_in45" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="26"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="25"/>
+        <PARAMETER NAME="DIN_TO" VALUE="13"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_xlslice_0_48"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="13"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="25" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx09_dina_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="premem_rx09_dina_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="12" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="vio_xlslice_rx09_im_25to13_in45_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in45"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/vio_xlslice_rx09_re_12to0_in44" HWVERSION="1.0" INSTANCE="vio_xlslice_rx09_re_12to0_in44" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="26"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="12"/>
+        <PARAMETER NAME="DIN_TO" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_xlslice_0_47"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="13"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="25" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx09_dina_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="premem_rx09_dina_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="12" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="vio_xlslice_rx09_re_12to0_in44_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in44"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/vio_xlslice_rx24_im_25to13_in47" HWVERSION="1.0" INSTANCE="vio_xlslice_rx24_im_25to13_in47" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="26"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="25"/>
+        <PARAMETER NAME="DIN_TO" VALUE="13"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_xlslice_0_50"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="13"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="25" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx24_dina_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="premem_rx24_dina_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="12" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="vio_xlslice_rx24_im_25to13_in47_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in47"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/vio_xlslice_rx24_re_12to0_in46" HWVERSION="1.0" INSTANCE="vio_xlslice_rx24_re_12to0_in46" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="26"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="12"/>
+        <PARAMETER NAME="DIN_TO" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="msys_xlslice_0_49"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="13"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="25" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_premem_rx24_dina_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="premem_rx24_dina_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="12" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="vio_xlslice_rx24_re_12to0_in46_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_in46"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

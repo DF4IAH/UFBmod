@@ -1,0 +1,174 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0585",
+   "Default View_TopLeft":"-322,279",
+   "ExpandedHierarchyInLayout":"/TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port s_axi_aclk_CD100_in -pg 1 -lvl 0 -x -30 -y 330 -defaultsOSRD
+preplace port aresetn_CD100_in -pg 1 -lvl 0 -x -30 -y 20 -defaultsOSRD
+preplace port rst_mig_7series_0_100M_peripheral_reset_in -pg 1 -lvl 0 -x -30 -y 300 -defaultsOSRD
+preplace port fft09_data_tlast_in -pg 1 -lvl 0 -x -30 -y 360 -defaultsOSRD
+preplace port fft09_data_tready_out -pg 1 -lvl 4 -x 2880 -y 300 -defaultsOSRD
+preplace port fft09_data_tvalid_in -pg 1 -lvl 0 -x -30 -y 390 -defaultsOSRD
+preplace port fft09_config_tvalid_in -pg 1 -lvl 0 -x -30 -y 450 -defaultsOSRD
+preplace port fft09_aresetn_in -pg 1 -lvl 0 -x -30 -y 480 -defaultsOSRD
+preplace port xfft_rx09_dly3449_event_frame_started_out -pg 1 -lvl 4 -x 2880 -y 570 -defaultsOSRD
+preplace port xfft_rx09_dly3449_event_tlast_unexpected_out -pg 1 -lvl 4 -x 2880 -y 600 -defaultsOSRD
+preplace port xfft_rx09_dly3449_event_tlast_missing_out -pg 1 -lvl 4 -x 2880 -y 630 -defaultsOSRD
+preplace port xfft_rx09_dly3449_event_data_in_channel_halt_out -pg 1 -lvl 4 -x 2880 -y 660 -defaultsOSRD
+preplace port fft24_data_tready_out -pg 1 -lvl 4 -x 2880 -y 760 -defaultsOSRD
+preplace port xfft_rx24_dly3449_event_frame_started_out -pg 1 -lvl 4 -x 2880 -y 790 -defaultsOSRD
+preplace port xfft_rx24_dly3198_event_tlast_unexpected_out -pg 1 -lvl 4 -x 2880 -y 820 -defaultsOSRD
+preplace port xfft_rx24_dly3198_event_tlast_missing_out -pg 1 -lvl 4 -x 2880 -y 850 -defaultsOSRD
+preplace port xfft_rx24_dly3198_event_data_in_channel_halt_out -pg 1 -lvl 4 -x 2880 -y 880 -defaultsOSRD
+preplace port fft24_data_tlast_in -pg 1 -lvl 0 -x -30 -y 810 -defaultsOSRD
+preplace port fft24_data_tvalid_in -pg 1 -lvl 0 -x -30 -y 840 -defaultsOSRD
+preplace port fft24_config_tvalid_in -pg 1 -lvl 0 -x -30 -y 900 -defaultsOSRD
+preplace port fft24_aresetn_in -pg 1 -lvl 0 -x -30 -y 930 -defaultsOSRD
+preplace portBus fft09_config_tdata_in -pg 1 -lvl 0 -x -30 -y 420 -defaultsOSRD
+preplace portBus premem_rx09_addra_in -pg 1 -lvl 0 -x -30 -y 960 -defaultsOSRD
+preplace portBus premem_rx09_dina_in -pg 1 -lvl 0 -x -30 -y 990 -defaultsOSRD
+preplace portBus premem_rx24_dina_in -pg 1 -lvl 0 -x -30 -y 1270 -defaultsOSRD
+preplace portBus premem_rx09_wea_in -pg 1 -lvl 0 -x -30 -y 1020 -defaultsOSRD
+preplace portBus premem_rx09_addrb_in -pg 1 -lvl 0 -x -30 -y 1060 -defaultsOSRD
+preplace portBus postmem_rx_addrb_in -pg 1 -lvl 0 -x -30 -y 170 -defaultsOSRD
+preplace portBus postmem_rx09_doutb_out -pg 1 -lvl 4 -x 2880 -y 270 -defaultsOSRD
+preplace portBus postmem_rx24_doutb_out -pg 1 -lvl 4 -x 2880 -y 540 -defaultsOSRD
+preplace portBus premem_rx24_addra_in -pg 1 -lvl 0 -x -30 -y 1240 -defaultsOSRD
+preplace portBus premem_rx24_wea_in -pg 1 -lvl 0 -x -30 -y 1300 -defaultsOSRD
+preplace portBus premem_rx09_quarterfrm_in -pg 1 -lvl 0 -x -30 -y 750 -defaultsOSRD
+preplace portBus premem_rx24_quarterfrm_in -pg 1 -lvl 0 -x -30 -y 780 -defaultsOSRD
+preplace portBus fft24_config_tdata_in -pg 1 -lvl 0 -x -30 -y 870 -defaultsOSRD
+preplace portBus premem_rx24_addrb_in -pg 1 -lvl 0 -x -30 -y 1340 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc -pg 1 -lvl 2 -x 950 -y 732 -defaultsOSRD
+preplace inst pre_fft_rx09_blk_mem_gen_0 -pg 1 -lvl 3 -x 2740 -y 1030 -defaultsOSRD
+preplace inst post_fft_rx09_blk_mem_gen_0 -pg 1 -lvl 3 -x 2740 -y 140 -defaultsOSRD
+preplace inst post_fft_rx24_blk_mem_gen_0 -pg 1 -lvl 3 -x 2740 -y 450 -defaultsOSRD
+preplace inst pre_fft_rx24_blk_mem_gen_0 -pg 1 -lvl 3 -x 2740 -y 1310 -defaultsOSRD
+preplace inst premem_fft_rx09_xlslice_25to13 -pg 1 -lvl 1 -x 180 -y 620 -defaultsOSRD
+preplace inst premem_fft_rx09_xlslice_12to00 -pg 1 -lvl 1 -x 180 -y 520 -defaultsOSRD
+preplace inst premem_fft_rx24_xlslice_25to13 -pg 1 -lvl 1 -x 180 -y 720 -defaultsOSRD
+preplace inst premem_fft_rx24_xlslice_12to00 -pg 1 -lvl 1 -x 180 -y 820 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc|delay_rx09_2174clk -pg 1 -lvl 1 -x 860 -y 1202 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc|cordic_rx09 -pg 1 -lvl 3 -x 1500 -y 1162 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc|cordic_rx24 -pg 1 -lvl 3 -x 1500 -y 1382 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc|rx09_xlslice_31to00 -pg 1 -lvl 4 -x 1970 -y 1152 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc|rx24_xlslice_31to00 -pg 1 -lvl 4 -x 1970 -y 1332 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc|fft_rx09_s_data_xlconcat_0 -pg 1 -lvl 2 -x 1100 -y 792 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc|fft_rx24_s_data_xlconcat_0 -pg 1 -lvl 3 -x 1500 -y 622 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc|cordic_rx09_xlconcat_0 -pg 1 -lvl 2 -x 1100 -y 1072 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc|cordic_rx24_xlconcat_0 -pg 1 -lvl 2 -x 1100 -y 1452 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc|cordic_rx09_addra_xlslice_9to0 -pg 1 -lvl 1 -x 860 -y 1062 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc|cordic_rx24_addra_xlslice_9to0 -pg 1 -lvl 1 -x 860 -y 1442 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc|delay_rx24_2174clk -pg 1 -lvl 1 -x 860 -y 1332 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc|xfft_rx09_dly3198 -pg 1 -lvl 3 -x 1500 -y 862 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc|xfft_rx24_dly3198 -pg 1 -lvl 4 -x 1970 -y 1702 -defaultsOSRD
+preplace inst TRX_rx_FFT_calc|xlconstant_0x0_len3 -pg 1 -lvl 1 -x 860 -y 812 -defaultsOSRD
+preplace netloc rst_mig_7series_0_100M_peripheral_reset_0 1 0 3 80J 360 550 490 2520
+preplace netloc s_axi_aclk_CD100_0 1 0 3 70J 380 540 500 2500
+preplace netloc fft09_data_tlast_in_0 1 0 2 60J 400 530J
+preplace netloc fft09_data_tready_out_0 1 2 2 2370J 300 NJ
+preplace netloc fft09_data_tvalid_in_0 1 0 2 50J 420 520J
+preplace netloc fft09_config_tdata_in_0 1 0 2 20J 440 510J
+preplace netloc fft09_config_tvalid_in_0 1 0 2 NJ 450 500J
+preplace netloc fft09_aresetn_in_0 1 0 2 60J 460 490J
+preplace netloc xfft_rx09_dly3449_event_frame_started_out_0 1 2 2 2410J 610 2850J
+preplace netloc xfft_rx09_dly3449_event_tlast_unexpected_out_0 1 2 2 2420J 620 2860J
+preplace netloc xfft_rx09_dly3449_event_tlast_missing_out_0 1 2 2 2440J 640 2850J
+preplace netloc xfft_rx09_dly3449_event_data_in_channel_halt_out_0 1 2 2 2470J 660 NJ
+preplace netloc rx09_postmem_re_0 1 2 1 2380 110n
+preplace netloc TRX_rx_FFT_calc_Dout 1 2 1 2430 420n
+preplace netloc cordic_rx09_tvalid_out_0 1 2 1 2400 130n
+preplace netloc premem_rx09_addra_in_0 1 0 3 -10J 970 370J 1884 2550J
+preplace netloc premem_rx09_dina_in_0 1 0 3 30J 1000 360J 1924 2560J
+preplace netloc premem_rx24_dina_in_0 1 0 3 30J 1280 310J 2204 2610J
+preplace netloc premem_rx09_wea_in_0 1 0 3 NJ 1020 350J 1944 2570J
+preplace netloc premem_rx09_addrb_in_0 1 0 3 NJ 1060 340J 1984 2580J
+preplace netloc postmem_rx_addrb_in_0 1 0 3 NJ 170 NJ 170 2470
+preplace netloc postmem_rx09_doutb_out_0 1 2 2 2540 290 2840J
+preplace netloc postmem_rx24_doutb_out_0 1 2 2 2540 600 2840J
+preplace netloc premem_rx24_addra_in_0 1 0 3 NJ 1240 320J 2164 2600J
+preplace netloc premem_rx24_wea_in_0 1 0 3 NJ 1300 300J 2224 2620J
+preplace netloc pre_fft_rx09_blk_mem_gen_0_doutb 1 0 3 70 1100 330J 2024 2590J
+preplace netloc pre_fft_rx24_blk_mem_gen_0_doutb 1 0 3 80 1380 280J 2304 2640J
+preplace netloc fft_s_data_rx09_re_in_0 1 1 1 480J 520n
+preplace netloc fft_s_data_rx09_im_in_0 1 1 1 470J 620n
+preplace netloc fft_s_data_rx24_im_in_0 1 1 1 460J 720n
+preplace netloc fft_s_data_rx24_re_in_0 1 1 1 450J 820n
+preplace netloc cordic_rx24_tvalid_out_0 1 2 1 2460 440n
+preplace netloc premem_rx09_quarterfrm_in_0 1 0 2 60J 880 440J
+preplace netloc cordic_rx09_m_tuser_out_0 1 2 1 2390 70n
+preplace netloc cordic_rx24_m_tuser_out_0 1 2 1 2450 380n
+preplace netloc premem_rx24_quarterfrm_in_0 1 0 2 50J 890 430J
+preplace netloc fft24_data_tready_out_0 1 2 2 2480J 800 2840J
+preplace netloc xfft_rx24_dly3449_event_frame_started_out_0 1 2 2 2490J 820 2850J
+preplace netloc xfft_rx24_dly3198_event_tlast_unexpected_out_0 1 2 2 2510J 840 2860J
+preplace netloc xfft_rx24_dly3198_event_tlast_missing_out_0 1 2 2 2530J 860 2850J
+preplace netloc xfft_rx24_dly3198_event_data_in_channel_halt_out_0 1 2 2 2540J 880 NJ
+preplace netloc fft24_data_tlast_in_0 1 0 2 40J 900 420J
+preplace netloc fft24_data_tvalid_in_0 1 0 2 30J 910 410J
+preplace netloc fft24_config_tdata_in_0 1 0 2 20J 920 400J
+preplace netloc fft24_config_tvalid_in_0 1 0 2 10J 940 390J
+preplace netloc premem_rx24_addrb_in_0 1 0 3 NJ 1340 290J 2264 2630J
+preplace netloc fft24_aresetn_in 1 0 2 0J 960 380J
+preplace netloc TRX_rx_FFT_calc|rst_mig_7series_0_100M_peripheral_reset_0 1 0 1 730 652n
+preplace netloc TRX_rx_FFT_calc|TRX_rx_xfft_dly8334_m_axis_data_tvalid_0 1 2 2 1290 1042 1720
+preplace netloc TRX_rx_FFT_calc|TRX_rx_xfft_dly8334_m_axis_data_tlast_0 1 2 2 1280 1032 1730
+preplace netloc TRX_rx_FFT_calc|s_axi_aclk_CD100_0 1 0 4 720 1122 990J 1142 1250 1772 NJ
+preplace netloc TRX_rx_FFT_calc|fft09_data_tlast_in_0 1 0 3 NJ 692 NJ 692 1240
+preplace netloc TRX_rx_FFT_calc|fft09_data_tready_out_0 1 2 3 1250 712 NJ 712 NJ
+preplace netloc TRX_rx_FFT_calc|fft09_data_tvalid_in_0 1 0 3 NJ 872 1000J 882 1250
+preplace netloc TRX_rx_FFT_calc|fft09_config_tdata_in_0 1 0 3 NJ 892 NJ 892 N
+preplace netloc TRX_rx_FFT_calc|fft09_config_tvalid_in_0 1 0 3 NJ 912 NJ 912 N
+preplace netloc TRX_rx_FFT_calc|fft09_aresetn_in_0 1 0 3 NJ 932 NJ 932 1220
+preplace netloc TRX_rx_FFT_calc|xfft_rx09_dly3449_event_frame_started_out_0 1 3 2 N 882 NJ
+preplace netloc TRX_rx_FFT_calc|xfft_rx09_dly3449_event_tlast_unexpected_out_0 1 3 2 N 902 NJ
+preplace netloc TRX_rx_FFT_calc|xfft_rx09_dly3449_event_tlast_missing_out_0 1 3 2 N 922 NJ
+preplace netloc TRX_rx_FFT_calc|xfft_rx09_dly3449_event_data_in_channel_halt_out_0 1 3 2 N 942 NJ
+preplace netloc TRX_rx_FFT_calc|cordic_rx09_m_axis_dout_tdata 1 3 1 N 1152
+preplace netloc TRX_rx_FFT_calc|cordic_rx24_m_axis_dout_tdata 1 3 1 1730 1332n
+preplace netloc TRX_rx_FFT_calc|rx09_postmem_re_0 1 4 1 NJ 1152
+preplace netloc TRX_rx_FFT_calc|rx24_xlslice_31to00_Dout 1 4 1 NJ 1332
+preplace netloc TRX_rx_FFT_calc|cordic_rx09_tvalid_out_0 1 3 2 1760 1392 NJ
+preplace netloc TRX_rx_FFT_calc|fft09_s_data_xlconcat_0_dout 1 2 1 N 792
+preplace netloc TRX_rx_FFT_calc|xlconstant_0x0_len3_dout 1 1 2 1000 702 1200
+preplace netloc TRX_rx_FFT_calc|fft_s_data_rx09_re_in_0 1 0 2 NJ 952 980
+preplace netloc TRX_rx_FFT_calc|fft_s_data_rx09_im_in_0 1 0 2 NJ 972 990
+preplace netloc TRX_rx_FFT_calc|fft_s_data_rx24_im_in_0 1 0 3 NJ 992 NJ 992 1230
+preplace netloc TRX_rx_FFT_calc|fft_s_data_rx24_re_in_0 1 0 3 710J 1002 NJ 1002 1210
+preplace netloc TRX_rx_FFT_calc|fft24_s_data_xlconcat_0_dout 1 3 1 1750 622n
+preplace netloc TRX_rx_FFT_calc|xfft_rx09_dly3198_m_axis_data_tdata_0 1 2 2 1270 1022 1740
+preplace netloc TRX_rx_FFT_calc|xfft_rx24_dly3198_m_axis_data_tdata_0 1 2 3 1270 1502 NJ 1502 2200
+preplace netloc TRX_rx_FFT_calc|xfft_rx24_dly3198_m_axis_data_tlast_0 1 2 3 1280 1512 NJ 1512 2190
+preplace netloc TRX_rx_FFT_calc|xfft_rx24_dly3198_m_axis_data_tvalid_0 1 2 3 1290 1552 NJ 1552 2170
+preplace netloc TRX_rx_FFT_calc|cordic_rx24_tvalid_out_0 1 3 2 N 1412 NJ
+preplace netloc TRX_rx_FFT_calc|premem_rx09_quarterfrm_in_0 1 0 1 N 1222
+preplace netloc TRX_rx_FFT_calc|cordic_rx09_m_tuser_out_0 1 3 2 1770 1432 NJ
+preplace netloc TRX_rx_FFT_calc|cordic_rx24_m_tuser_out_0 1 3 2 1740 1522 2210J
+preplace netloc TRX_rx_FFT_calc|cordic_rx09_xlconcat_0_dout 1 2 1 1200 1072n
+preplace netloc TRX_rx_FFT_calc|cordic_rx24_xlconcat_0_dout 1 2 1 1220 1382n
+preplace netloc TRX_rx_FFT_calc|delay_rx09_3198clk_Q 1 1 1 1000 1082n
+preplace netloc TRX_rx_FFT_calc|cordic_rx09_addra_xlslice_9to0_Dout 1 1 1 NJ 1062
+preplace netloc TRX_rx_FFT_calc|xfft_rx09_dly3198_m_axis_data_tuser 1 0 4 740 902 NJ 902 1240J 1012 1710
+preplace netloc TRX_rx_FFT_calc|cordic_rx24_addra_xlslice_9to0_Dout 1 1 1 NJ 1442
+preplace netloc TRX_rx_FFT_calc|delay_rx24_3198clk_Q 1 1 1 990 1332n
+preplace netloc TRX_rx_FFT_calc|xfft_rx24_dly3198_m_axis_data_tuser 1 0 5 740 1542 NJ 1542 NJ 1542 NJ 1542 2180
+preplace netloc TRX_rx_FFT_calc|premem_rx24_quarterfrm_in_0 1 0 1 N 1352
+preplace netloc TRX_rx_FFT_calc|fft24_data_tready_out_0 1 3 2 1770 1532 NJ
+preplace netloc TRX_rx_FFT_calc|xfft_rx24_dly3449_event_frame_started_out_0 1 4 1 N 1722
+preplace netloc TRX_rx_FFT_calc|xfft_rx24_dly3198_event_tlast_unexpected_out_0 1 4 1 N 1742
+preplace netloc TRX_rx_FFT_calc|xfft_rx24_dly3198_event_tlast_missing_out_0 1 4 1 N 1762
+preplace netloc TRX_rx_FFT_calc|xfft_rx24_dly3198_event_data_in_channel_halt_out_0 1 4 1 N 1782
+preplace netloc TRX_rx_FFT_calc|fft24_data_tlast_in_0 1 0 4 NJ 1522 NJ 1522 NJ 1522 1720
+preplace netloc TRX_rx_FFT_calc|fft24_data_tvalid_in_0 1 0 4 720J 1532 NJ 1532 NJ 1532 1710
+preplace netloc TRX_rx_FFT_calc|fft24_config_tdata_in_0 1 0 4 NJ 1792 NJ 1792 NJ 1792 1720
+preplace netloc TRX_rx_FFT_calc|fft24_config_tvalid_in_0 1 0 4 NJ 1812 NJ 1812 NJ 1812 1760
+preplace netloc TRX_rx_FFT_calc|fft24_aresetn_in_0 1 0 4 NJ 1832 NJ 1832 1260 1782 1740J
+levelinfo -pg 1 -30 180 950 2740 2880
+levelinfo -hier TRX_rx_FFT_calc * 860 1100 1500 1970 *
+pagesize -pg 1 -db -bbox -sgen -360 -10 3250 2320
+pagesize -hier TRX_rx_FFT_calc -db -bbox -sgen 680 532 2240 1852
+"
+}
+

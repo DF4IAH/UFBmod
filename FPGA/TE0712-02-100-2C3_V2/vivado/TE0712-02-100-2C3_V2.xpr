@@ -47,13 +47,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="197"/>
-    <Option Name="WTModelSimExportSim" Val="197"/>
-    <Option Name="WTQuestaExportSim" Val="196"/>
-    <Option Name="WTIesExportSim" Val="196"/>
-    <Option Name="WTVcsExportSim" Val="196"/>
-    <Option Name="WTRivieraExportSim" Val="196"/>
-    <Option Name="WTActivehdlExportSim" Val="196"/>
+    <Option Name="WTXSimExportSim" Val="198"/>
+    <Option Name="WTModelSimExportSim" Val="198"/>
+    <Option Name="WTQuestaExportSim" Val="197"/>
+    <Option Name="WTIesExportSim" Val="197"/>
+    <Option Name="WTVcsExportSim" Val="197"/>
+    <Option Name="WTRivieraExportSim" Val="197"/>
+    <Option Name="WTActivehdlExportSim" Val="197"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -327,11 +327,11 @@
         <StratHandle Name="Flow_PerfOptimized_high" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design">
           <Option Id="ResourceSharing">2</Option>
+          <Option Id="NoCombineLuts">1</Option>
           <Option Id="ShregMinSize">5</Option>
           <Option Id="KeepEquivalentRegisters">1</Option>
           <Option Id="Directive">7</Option>
           <Option Id="FsmExtraction">1</Option>
-          <Option Id="NoCombineLuts">1</Option>
         </Step>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>

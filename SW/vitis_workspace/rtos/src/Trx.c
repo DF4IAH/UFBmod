@@ -36,13 +36,13 @@ static XGpio gpio_TRX;
 static XGpio gpio_TRX_DDS;
 static XGpio gpio_TRX_AMPT;
 
-XSpi_Config* spiConfigPtr;	/* Pointer to Configuration data */
+static XSpi_Config* spiConfigPtr;	/* Pointer to Configuration data */
 static XSpi  spiInstance;
 
 /*
  * The buffer used for Transmission/Reception of the SPI data frames.
  */
-u8 buffer[BUFFER_SIZE];
+static u8 buffer[BUFFER_SIZE];
 
 
 /*-----------------------------------------------------------*/
@@ -634,12 +634,12 @@ static u32 TrxOperationModeSet(u8 chpm, u8 ctx, s32 pwr)
 
 		writeBuf[0] = 0x00U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0006
 		writeBuf[1] = 0x06U;									// Reg-LSB
-		writeBuf[2] = ((readBuf[2] & 0x00U) | (0x0aU << 0));	// RF_CFG		IRQMM=08, IRQP=00, DRV=01 (p19)
-		writeBuf[3] = ((readBuf[3] & 0x00U) | (0x01U << 0));	// RF_CLKO		DRV=00, OS=01 26MHz (p21)
-		writeBuf[4] = ((readBuf[4] & 0x1fU) | (0x00U << 0));	// RF_BMDVC		BMHR, BMVTH (p79)
-		writeBuf[5] = ((readBuf[5] & 0x00U) | (0x00U << 0));	// RF_XOC		FS=00, TRIM=00 (p69)
-		writeBuf[6] = ((readBuf[6] & 0x00U) | (0x10U << 0));	// RF_IQIFC0	EXTLB=00, DRV=10, CMV=00#04#08#0c, CMV1V2=02#00, EEC=00 (p27)
-		writeBuf[7] = ((readBuf[7] & 0x03U) | (chpm << 4));		// RF_IQIFC1	CHPM (p32)
+		writeBuf[2] = (readBuf[2] & 0x00U) 	|  0x08U;			// RF_CFG		IRQMM=#08, IRQP=#00, DRV=#00 #01 (p19)
+		writeBuf[3] = (readBuf[3] & 0x00U) 	|  0x01U;			// RF_CLKO		DRV=#00#08, OS=#00#01 26MHz (p21)
+		writeBuf[4] = (readBuf[4] & 0x1fU) 	|  0x00U;			// RF_BMDVC		BMHR, BMVTH (p79)
+		writeBuf[5] = (readBuf[5] & 0x00U) 	|  0x00U;			// RF_XOC		FS=00, TRIM=00 (p69)
+		writeBuf[6] = (readBuf[6] & 0x00U) 	|  0x38U;			// RF_IQIFC0	EXTLB=#00#80, DRV=#00#10#20#30, CMV=#00#04#08#0c, CMV1V2=#00#02, EEC=#00#01 (p27)  // XXX
+		writeBuf[7] = (chpm  << 4) 			|  0x00U;			// RF_IQIFC1	CHPM, SKEWDRV=#00#01#02#03 (p32)
 
 		/* Write the data */
 		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
@@ -1016,18 +1016,20 @@ static u32 TrxLvdsSyncing(void)
 	u8 state;
 
 	/* Syncing I/Q line */
+	TrxIqSyncGet(&state);
 	while (1) {
-		TrxIqSyncGet(&state);
-		if (state) {
-			break;
-		}
-
 		/* Enable LVDS TX stream from FPGA */
 		{
 			XGpio_DiscreteWrite(&gpio_TRX, 1U, 0x80000001UL);	// TRX:disable RESETN, RFX:low-Amp, TRX:disable LVDS blankTX
 			XGpio_DiscreteWrite(&gpio_TRX, 1U, 0x80000000UL);	// TRX:disable RESETN, RFX:low-Amp, TRX:disable LVDS blankTX
 		}
+
 		vTaskDelay(pdMS_TO_TICKS(10));
+
+		TrxIqSyncGet(&state);
+		if (state) {
+			break;
+		}
 	}
 #if 0
 	while (1) {
@@ -1041,8 +1043,11 @@ static u32 TrxLvdsSyncing(void)
 
 /*-----------------------------------------------------------*/
 
-void testTx(float cor, u8 dcoI, u8 dcoQ)
+static void TestTx(float cor, u8 dcoI, u8 dcoQ)
 {
+	/* Syncing I/Q TX line */
+	TrxLvdsSyncing();
+
 #if 1
 	/* Set FPGA DDS0 */
 	DdsFreqAmpSet(0U, +10.000E+3, 0xf3U, cor);  // ampl <= 0xf3
@@ -1065,7 +1070,7 @@ void testTx(float cor, u8 dcoI, u8 dcoQ)
 	while (1) {
 		TrxStateGet(&state);
 		if (state == STATE_TX) {
-			xil_printf("TaskTrx: changed into state = 0x%02X\r\n", state);
+			xil_printf("TestTx: changed into state = 0x%02X\r\n", state);
 			break;
 		}
 	}
@@ -1118,7 +1123,44 @@ void testTx(float cor, u8 dcoI, u8 dcoQ)
 		TrxGetIrqs(&irqs);
 		TrxStateGet(&state);
 		if (state == CMD_TRXOFF) {
-			xil_printf("TaskTrx: changed into state = 0x%02X\r\n", state);
+			xil_printf("TestTx: changed into state = 0x%02X\r\n", state);
+			break;
+		}
+	}
+	pwmLedSet(0x00000000UL, 0x00ffffffUL);
+}
+
+static void TestRx(void)
+{
+	/* Syncing I/Q TX line */
+	TrxLvdsSyncing();
+
+	/* Stop FPGA DDS0/DDS1 */
+	DdsFreqAmpSet(0U, 0.5f, 0x00U, 1.0f);		// XXX
+	DdsFreqAmpSet(1U, 0.0f, 0x00U, 1.0f);
+
+	/* BLUE on */
+	u8 state;
+	pwmLedSet(0x007f0000UL, 0x00ffffffUL);
+	TrxCmdSet(CMD_RX);
+	while (1) {
+		TrxStateGet(&state);
+		if (state == STATE_RX) {
+			xil_printf("TestRx: changed into state = 0x%02X\r\n", state);
+			break;
+		}
+	}
+
+	vTaskDelay(pdMS_TO_TICKS(250));
+
+	/* BLUE off */
+	u32 irqs;
+	TrxCmdSet(CMD_TRXOFF);
+	while (1) {
+		TrxGetIrqs(&irqs);
+		TrxStateGet(&state);
+		if (state == CMD_TRXOFF) {
+			xil_printf("TestRx: changed into state = 0x%02X\r\n", state);
 			break;
 		}
 	}
@@ -1298,15 +1340,12 @@ void taskTrx(void* pvParameters)
 		TrxPllDcoIqSet(dcoI, dcoQ);
 #endif
 
-		/* Syncing I/Q TX line */
-		TrxLvdsSyncing();
-
-#if 1
+#if 0
 		/* Testing the Transmitter of the TRX */
-		testTx(cor, dcoI, dcoQ);
+		TestTx(cor, dcoI, dcoQ);
 #else
 		/* Testing the Receiver of the TRX */
-		testRx();
+		TestRx();
 #endif
 
 		while (1) {

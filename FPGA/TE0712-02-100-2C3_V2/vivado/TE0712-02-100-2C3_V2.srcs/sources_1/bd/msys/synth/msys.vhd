@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Sat Aug 29 05:31:46 2020
+--Date        : Sat Aug 29 13:16:40 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -17943,8 +17943,8 @@ begin
   rd_data_count_CD100_o(8 downto 0) <= TRX_rx_LVDS_rd_data_count_CD100(8 downto 0);
   rst_mig_7series_0_100M_peripheral_aresetn <= s_axi_aresetn;
   rst_mig_7series_0_100M_peripheral_reset <= reset_CD100_i;
-  rx09_32bits_CD100_o(31 downto 0) <= TRX_rx24_fifo_o_1(31 downto 0);
-  rx24_32bits_CD100_o(31 downto 0) <= TRX_rx09_fifo_o_1(31 downto 0);
+  rx09_32bits_CD100_o(31 downto 0) <= TRX_rx09_fifo_o_1(31 downto 0);
+  rx24_32bits_CD100_o(31 downto 0) <= TRX_rx24_fifo_o_1(31 downto 0);
   s_axi_aclk_100MHz <= s_axi_aclk;
   xfft_rx09_dly3449_event_data_in_channel_halt_out <= TRX_rx_FFT_unit_event_data_in_channel_halt_0;
   xfft_rx09_dly3449_event_frame_started_out <= xfft_rx09_dly3449_event_frame_started_out_0;
@@ -18322,7 +18322,7 @@ entity msys is
     rst_100M_peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=298,numReposBlks=236,numNonXlnxBlks=2,numHierBlks=62,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of msys : entity is "msys,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=msys,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=302,numReposBlks=240,numNonXlnxBlks=2,numHierBlks=62,maxHierDepth=4,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of msys : entity is "msys.hwdef";
 end msys;
@@ -18486,6 +18486,12 @@ architecture STRUCTURE of msys is
     probe_in39 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_in40 : in STD_LOGIC_VECTOR ( 12 downto 0 );
     probe_in41 : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    probe_in42 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe_in43 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe_in44 : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    probe_in45 : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    probe_in46 : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    probe_in47 : in STD_LOGIC_VECTOR ( 12 downto 0 );
     probe_out0 : out STD_LOGIC_VECTOR ( 12 downto 0 )
   );
   end component msys_vio_0_0;
@@ -18842,6 +18848,30 @@ architecture STRUCTURE of msys is
     dout : out STD_LOGIC_VECTOR ( 20 downto 0 )
   );
   end component msys_xlconcat_0_21;
+  component msys_xlslice_0_47 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 25 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 12 downto 0 )
+  );
+  end component msys_xlslice_0_47;
+  component msys_xlslice_0_48 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 25 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 12 downto 0 )
+  );
+  end component msys_xlslice_0_48;
+  component msys_xlslice_0_49 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 25 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 12 downto 0 )
+  );
+  end component msys_xlslice_0_49;
+  component msys_xlslice_0_50 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 25 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 12 downto 0 )
+  );
+  end component msys_xlslice_0_50;
   signal ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal BOARD_ROTENC_PUSH_1 : STD_LOGIC;
   signal BOOT_PLL_IIC_SCL_I : STD_LOGIC;
@@ -19657,6 +19687,10 @@ architecture STRUCTURE of msys is
   signal vio_xlconcat_41_dout : STD_LOGIC_VECTOR ( 20 downto 0 );
   signal vio_xlslice_40_Dout : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal vio_xlslice_41_Dout : STD_LOGIC_VECTOR ( 12 downto 0 );
+  signal vio_xlslice_rx09_im_25to13_in45_Dout : STD_LOGIC_VECTOR ( 12 downto 0 );
+  signal vio_xlslice_rx09_re_12to0_in44_Dout : STD_LOGIC_VECTOR ( 12 downto 0 );
+  signal vio_xlslice_rx24_im_25to13_in47_Dout : STD_LOGIC_VECTOR ( 12 downto 0 );
+  signal vio_xlslice_rx24_re_12to0_in46_Dout : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal xfft_rx09_dly3449_event_data_in_channel_halt_out_0 : STD_LOGIC;
   signal xfft_rx09_dly3449_event_frame_started_out_0 : STD_LOGIC;
   signal xfft_rx09_dly3449_event_tlast_missing_out_0 : STD_LOGIC;
@@ -21700,6 +21734,12 @@ vio_0: component msys_vio_0_0
       probe_in4(0) => labtools_fmeter_0_update,
       probe_in40(12 downto 0) => vio_xlslice_40_Dout(12 downto 0),
       probe_in41(12 downto 0) => vio_xlslice_41_Dout(12 downto 0),
+      probe_in42(0) => Status_LVDS_rx09_synced_1,
+      probe_in43(0) => Status_LVDS_rx24_synced_1,
+      probe_in44(12 downto 0) => vio_xlslice_rx09_re_12to0_in44_Dout(12 downto 0),
+      probe_in45(12 downto 0) => vio_xlslice_rx09_im_25to13_in45_Dout(12 downto 0),
+      probe_in46(12 downto 0) => vio_xlslice_rx24_re_12to0_in46_Dout(12 downto 0),
+      probe_in47(12 downto 0) => vio_xlslice_rx24_im_25to13_in47_Dout(12 downto 0),
       probe_in5(0) => SC0712_0_reset_out,
       probe_in6(31 downto 0) => CFG_mon_GPIO1_O(31 downto 0),
       probe_in7(31 downto 0) => CFG_mon_GPIO1_I(31 downto 0),
@@ -21728,5 +21768,25 @@ vio_xlslice_41: component msys_xlslice_0_44
      port map (
       Din(20 downto 0) => vio_xlconcat_41_dout(20 downto 0),
       Dout(12 downto 0) => vio_xlslice_41_Dout(12 downto 0)
+    );
+vio_xlslice_rx09_im_25to13_in45: component msys_xlslice_0_48
+     port map (
+      Din(25 downto 0) => premem_rx09_dina_in_0(25 downto 0),
+      Dout(12 downto 0) => vio_xlslice_rx09_im_25to13_in45_Dout(12 downto 0)
+    );
+vio_xlslice_rx09_re_12to0_in44: component msys_xlslice_0_47
+     port map (
+      Din(25 downto 0) => premem_rx09_dina_in_0(25 downto 0),
+      Dout(12 downto 0) => vio_xlslice_rx09_re_12to0_in44_Dout(12 downto 0)
+    );
+vio_xlslice_rx24_im_25to13_in47: component msys_xlslice_0_50
+     port map (
+      Din(25 downto 0) => premem_rx24_dina_in_0(25 downto 0),
+      Dout(12 downto 0) => vio_xlslice_rx24_im_25to13_in47_Dout(12 downto 0)
+    );
+vio_xlslice_rx24_re_12to0_in46: component msys_xlslice_0_49
+     port map (
+      Din(25 downto 0) => premem_rx24_dina_in_0(25 downto 0),
+      Dout(12 downto 0) => vio_xlslice_rx24_re_12to0_in46_Dout(12 downto 0)
     );
 end STRUCTURE;

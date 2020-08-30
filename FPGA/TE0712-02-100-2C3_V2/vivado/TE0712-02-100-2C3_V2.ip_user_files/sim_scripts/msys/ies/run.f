@@ -690,6 +690,10 @@
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_xlslice_0_45/sim/msys_xlslice_0_45.v" \
   "../../../bd/msys/ip/msys_xlslice_0_46/sim/msys_xlslice_0_46.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_47/sim/msys_xlslice_0_47.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_48/sim/msys_xlslice_0_48.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_49/sim/msys_xlslice_0_49.v" \
+  "../../../bd/msys/ip/msys_xlslice_0_50/sim/msys_xlslice_0_50.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_0_0/sim/msys_tier2_xbar_0_0.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_1_0/sim/msys_tier2_xbar_1_0.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_2_0/sim/msys_tier2_xbar_2_0.v" \
