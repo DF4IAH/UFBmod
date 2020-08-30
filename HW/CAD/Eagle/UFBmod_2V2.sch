@@ -21093,6 +21093,8 @@ RX: L OFF
 TX: H ON</text>
 <text x="7.62" y="121.92" size="1.778" layer="97">X0891</text>
 <text x="7.62" y="40.64" size="1.778" layer="97">X0895</text>
+<text x="7.62" y="45.72" size="1.778" layer="97">max. +1.3 dBm (TRX: +14 dBm set)</text>
+<text x="7.62" y="132.08" size="1.778" layer="97">max. +14 dBm (TRX: +11 dBm set)</text>
 </plain>
 <instances>
 <instance part="FRAME_08" gate="G$1" x="0" y="0" smashed="yes">
