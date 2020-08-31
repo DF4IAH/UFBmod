@@ -1732,7 +1732,7 @@ static u32 TrxLvdsSyncing(void)
 		/* Enable LVDS TX stream from FPGA */
 		{
 			XGpio_DiscreteWrite(&gpio_TRX, 1U, 0x80000001UL);	// TRX:disable RESETN, RFX:Lo-Gain, TRX:enable  LVDS blankTX
-			XGpio_DiscreteWrite(&gpio_TRX, 1U, 0xc0000000UL);	// TRX:disable RESETN, RFX:Hi-Gain, TRX:disable LVDS blankTX
+			XGpio_DiscreteWrite(&gpio_TRX, 1U, 0x80000000UL);	// TRX:disable RESETN, RFX:Lo-Gain, TRX:disable LVDS blankTX
 		}
 
 		vTaskDelay(pdMS_TO_TICKS(10));
@@ -1775,8 +1775,8 @@ static void TestRF09Tx(int pwr_dBm)
 
 #if 1
 	/* Set FPGA DDS0 */
-	DdsFreqAmpSet(0U, +10.000E+3, 0xf0U, cor);  // ampl <= 0xf3
-	DdsFreqAmpSet(1U,   0.000E+3, 0x00U, cor);
+	DdsFreqAmpSet(0U, +00.000E+3, 0xf3U, cor);  // ampl <= 0xf3
+	DdsFreqAmpSet(1U, +00.000E+3, 0x00U, cor);
 #else
 	/* Set FPGA DDS0 & DDS1 */
 	DdsFreqAmpSet(0U, +10.000E+3, 0x70U, cor);
@@ -1874,8 +1874,8 @@ static void TestRF24Tx(int pwr_dBm)
 
 #if 1
 	/* Set FPGA DDS0 */
-	DdsFreqAmpSet(0U, +10.000E+3, 0xf0U, cor);  // ampl <= 0xf3
-	DdsFreqAmpSet(1U,  +0.000E+3, 0x00U, cor);
+	DdsFreqAmpSet(0U, +00.000E+3, 0xf3U, cor);  // ampl <= 0xf3
+	DdsFreqAmpSet(1U,  00.000E+3, 0x00U, cor);
 #else
 	/* Set FPGA DDS0 & DDS1 */
 	DdsFreqAmpSet(0U, +10.000E+3, 0x70U, cor);
@@ -1958,6 +1958,14 @@ static void TestRF09Rx(void)
 {
 	/* Syncing I/Q TX line */
 	TrxLvdsSyncing();
+
+#if 1
+	/* RFX1010 Gain setting: Hi */
+	XGpio_DiscreteWrite(&gpio_TRX, 1U, 0xc0000000UL);	// TRX:disable RESETN, RFX:Lo-Gain, TRX:disable LVDS blankTX
+#else
+	/* RFX1010 Gain setting: Lo */
+	XGpio_DiscreteWrite(&gpio_TRX, 1U, 0x80000000UL);	// TRX:disable RESETN, RFX:Lo-Gain, TRX:disable LVDS blankTX
+#endif
 
 	/* Stop FPGA DDS0/DDS1 */
 	DdsFreqAmpSet(0U, 0.5f, 0x00U, 1.0f);		// XXX
@@ -2190,7 +2198,7 @@ void taskTrx(void* pvParameters)
 			}
 		}
 
-#if 0
+#if 1
 		/* Testing the Transmitter of the TRX */
 		TestRF09Tx(pwr_dBm);
 #else
