@@ -83,10 +83,10 @@ architecture Behavioral of FFT_controller is
 
 signal PreMem09_addra_r                 : STD_LOGIC_VECTOR (10 downto 0);
 signal PreMem24_addra_r                 : STD_LOGIC_VECTOR (10 downto 0);
-signal XFFT09_s_data_tvalid_r           : STD_LOGIC_VECTOR (2 downto 0);
-signal XFFT09_s_data_tlast_r            : STD_LOGIC_VECTOR (2 downto 0);
-signal XFFT24_s_data_tvalid_r           : STD_LOGIC_VECTOR (2 downto 0);
-signal XFFT24_s_data_tlast_r            : STD_LOGIC_VECTOR (2 downto 0);
+signal XFFT09_s_data_tvalid_r           : STD_LOGIC_VECTOR (1 downto 0);
+signal XFFT09_s_data_tlast_r            : STD_LOGIC_VECTOR (1 downto 0);
+signal XFFT24_s_data_tvalid_r           : STD_LOGIC_VECTOR (1 downto 0);
+signal XFFT24_s_data_tlast_r            : STD_LOGIC_VECTOR (1 downto 0);
 shared variable fsm09_fft_framectr      : Integer;
 shared variable fsm09_fft_subframectr   : Integer;
 shared variable fsm24_fft_framectr      : Integer;
@@ -117,13 +117,15 @@ begin
                 else
                     cnt09 := 0;
                 end if;
-                PreMem09_addra_r    <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra_r'length));
-                PreMem09_addra      <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra'length));
-                PreMem09_wea        <= '1';
                 
+                PreMem09_addra_r    <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra_r'length));
+                PreMem09_wea        <= '1';
+
             else
                 PreMem09_wea <= '0';
             end if;
+
+           PreMem09_addra <= PreMem09_addra_r;
         end if;
     end if;
   end process proc_PreMem09_in_Addr;
@@ -146,13 +148,15 @@ begin
                 else
                     cnt24 := 0;
                 end if;
+
                 PreMem24_addra_r  <= std_logic_vector(to_unsigned(cnt24, PreMem24_addra_r'length));
-                PreMem24_addra    <= std_logic_vector(to_unsigned(cnt24, PreMem24_addra'length));
                 PreMem24_wea      <= '1';
                 
             else
                 PreMem24_wea <= '0';
             end if;
+
+           PreMem24_addra <= PreMem24_addra_r;
         end if;
     end if;
   end process proc_PreMem24_in_Addr;
@@ -217,21 +221,21 @@ begin
                 -- subidx 0
                 when 8 =>
                     if (XFFT09_s_data_tready = '1' and PreMem09_addra_r = std_logic_vector(to_unsigned(fsm09_fft_trigger, PreMem09_addra_r'length))) then
-                        XFFT09_s_data_tvalid_r  <= XFFT09_s_data_tvalid_r(1 downto 0) & '1';
-                        XFFT09_s_data_tlast_r   <= XFFT09_s_data_tlast_r(1 downto 0)  & '0';
+                        XFFT09_s_data_tvalid_r  <= XFFT09_s_data_tvalid_r(0) & '1';
+                        XFFT09_s_data_tlast_r   <= XFFT09_s_data_tlast_r(0)  & '0';
                         fsm09_fft_loop_cycle    := 1;
                         fsm09_fft_state         := 9;
                     else
-                        XFFT09_s_data_tvalid_r  <= XFFT09_s_data_tvalid_r(1 downto 0) & '0';
-                        XFFT09_s_data_tlast_r   <= XFFT09_s_data_tlast_r(1 downto 0)  & '0';
+                        XFFT09_s_data_tvalid_r  <= XFFT09_s_data_tvalid_r(0) & '0';
+                        XFFT09_s_data_tlast_r   <= XFFT09_s_data_tlast_r(0)  & '0';
                     end if;
                     
                 -- subidx 1..1023
                 when 9 =>
                     -- subidx 1
                     if (fsm09_fft_subidx = 1) then
-                        XFFT09_s_data_tvalid_r  <= XFFT09_s_data_tvalid_r(1 downto 0) & '1';
-                        XFFT09_s_data_tlast_r   <= XFFT09_s_data_tlast_r(1 downto 0)  & '0';
+                        XFFT09_s_data_tvalid_r  <= XFFT09_s_data_tvalid_r(0) & '1';
+                        XFFT09_s_data_tlast_r   <= XFFT09_s_data_tlast_r(0)  & '0';
                         if (fsm09_fft_loop_cycle /= 0) then
                             fsm09_fft_loop_cycle := fsm09_fft_loop_cycle - 1;   -- pause cycles due to XFFT behavior
                         else
@@ -240,18 +244,18 @@ begin
                         
                     -- subidx 1022
                     elsif (fsm09_fft_subidx = 1022) then
-                        XFFT09_s_data_tvalid_r  <= XFFT09_s_data_tvalid_r(1 downto 0) & '1';
-                        XFFT09_s_data_tlast_r   <= XFFT09_s_data_tlast_r(1 downto 0)  & '1';
+                        XFFT09_s_data_tvalid_r  <= XFFT09_s_data_tvalid_r(0) & '1';
+                        XFFT09_s_data_tlast_r   <= XFFT09_s_data_tlast_r(0)  & '1';
                         fsm09_fft_subidx        := fsm09_fft_subidx + 1;
                         
                     -- subidx 1023
                     elsif (fsm09_fft_subidx = 1023) then
-                        XFFT09_s_data_tvalid_r  <= XFFT09_s_data_tvalid_r(1 downto 0) & '0';
-                        XFFT09_s_data_tlast_r   <= XFFT09_s_data_tlast_r(1 downto 0)  & '0';    -- wait until Port A reaches next trigger address
+                        XFFT09_s_data_tvalid_r  <= XFFT09_s_data_tvalid_r(0) & '0';
+                        XFFT09_s_data_tlast_r   <= XFFT09_s_data_tlast_r(0)  & '0';    -- wait until Port A reaches next trigger address
                         fsm09_fft_subidx        := 0;
                         fsm09_fft_state         := 8;
                         
-                        if (fsm09_fft_subframectr /= 4) then
+                        if (fsm09_fft_subframectr /= 3) then
                             fsm09_fft_subframectr := fsm09_fft_subframectr + 1;
                         else
                             fsm09_fft_subframectr := 0;
@@ -265,8 +269,8 @@ begin
                         
                     -- subidx 1..1021
                     else
-                        XFFT09_s_data_tvalid_r  <= XFFT09_s_data_tvalid_r(1 downto 0) & '1';
-                        XFFT09_s_data_tlast_r   <= XFFT09_s_data_tlast_r(1 downto 0)  & '0';
+                        XFFT09_s_data_tvalid_r  <= XFFT09_s_data_tvalid_r(0) & '1';
+                        XFFT09_s_data_tlast_r   <= XFFT09_s_data_tlast_r(0)  & '0';
                         fsm09_fft_subidx        := fsm09_fft_subidx + 1;
                     end if;
                     
@@ -285,8 +289,8 @@ begin
             end case;
             
             -- Delayed output signals for Memory access latency
-            XFFT09_s_data_tvalid    <= XFFT09_s_data_tvalid_r(2);
-            XFFT09_s_data_tlast     <= XFFT09_s_data_tlast_r(2);
+            XFFT09_s_data_tvalid    <= XFFT09_s_data_tvalid_r(1);
+            XFFT09_s_data_tlast     <= XFFT09_s_data_tlast_r(1);
             
             -- Frame and Subframe counters
             RF09_framectr   <= std_logic_vector(to_unsigned(fsm09_fft_framectr, RF09_framectr'length));
@@ -358,21 +362,21 @@ begin
                 -- subidx 0
                 when 8 =>
                     if (XFFT24_s_data_tready = '1' and PreMem24_addra_r = std_logic_vector(to_unsigned(fsm24_fft_trigger, PreMem24_addra_r'length))) then
-                        XFFT24_s_data_tvalid_r  <= XFFT24_s_data_tvalid_r(1 downto 0) & '1';
-                        XFFT24_s_data_tlast_r   <= XFFT24_s_data_tlast_r(1 downto 0)  & '0';
+                        XFFT24_s_data_tvalid_r  <= XFFT24_s_data_tvalid_r(0) & '1';
+                        XFFT24_s_data_tlast_r   <= XFFT24_s_data_tlast_r(0)  & '0';
                         fsm24_fft_loop_cycle    := 1;
                         fsm24_fft_state         := 9;
                     else
-                        XFFT24_s_data_tvalid_r  <= XFFT24_s_data_tvalid_r(1 downto 0) & '0';
-                        XFFT24_s_data_tlast_r   <= XFFT24_s_data_tlast_r(1 downto 0)  & '0';
+                        XFFT24_s_data_tvalid_r  <= XFFT24_s_data_tvalid_r(0) & '0';
+                        XFFT24_s_data_tlast_r   <= XFFT24_s_data_tlast_r(0)  & '0';
                     end if;
                     
                 -- subidx 1..1023
                 when 9 =>
                     -- subidx 1
                     if (fsm24_fft_subidx = 1) then
-                        XFFT24_s_data_tvalid_r  <= XFFT24_s_data_tvalid_r(1 downto 0) & '1';
-                        XFFT24_s_data_tlast_r   <= XFFT24_s_data_tlast_r(1 downto 0)  & '0';
+                        XFFT24_s_data_tvalid_r  <= XFFT24_s_data_tvalid_r(0) & '1';
+                        XFFT24_s_data_tlast_r   <= XFFT24_s_data_tlast_r(0)  & '0';
                         if (fsm24_fft_loop_cycle /= 0) then
                             fsm24_fft_loop_cycle := fsm24_fft_loop_cycle - 1;   -- pause cycles due to XFFT behavior
                         else
@@ -381,18 +385,18 @@ begin
                         
                     -- subidx 1022
                     elsif (fsm24_fft_subidx = 1022) then
-                        XFFT24_s_data_tvalid_r  <= XFFT24_s_data_tvalid_r(1 downto 0) & '1';
-                        XFFT24_s_data_tlast_r   <= XFFT24_s_data_tlast_r(1 downto 0)  & '1';
+                        XFFT24_s_data_tvalid_r  <= XFFT24_s_data_tvalid_r(0) & '1';
+                        XFFT24_s_data_tlast_r   <= XFFT24_s_data_tlast_r(0)  & '1';
                         fsm24_fft_subidx        := fsm24_fft_subidx + 1;
                         
                     -- subidx 1023
                     elsif (fsm24_fft_subidx = 1023) then
-                        XFFT24_s_data_tvalid_r  <= XFFT24_s_data_tvalid_r(1 downto 0) & '0';
-                        XFFT24_s_data_tlast_r   <= XFFT24_s_data_tlast_r(1 downto 0)  & '0';    -- wait until Port A reaches next trigger address
+                        XFFT24_s_data_tvalid_r  <= XFFT24_s_data_tvalid_r(0) & '0';
+                        XFFT24_s_data_tlast_r   <= XFFT24_s_data_tlast_r(0)  & '0';    -- wait until Port A reaches next trigger address
                         fsm24_fft_subidx        := 0;
                         fsm24_fft_state         := 8;
                         
-                        if (fsm24_fft_subframectr /= 4) then
+                        if (fsm24_fft_subframectr /= 3) then
                             fsm24_fft_subframectr := fsm24_fft_subframectr + 1;
                         else
                             fsm24_fft_subframectr := 0;
@@ -406,8 +410,8 @@ begin
                         
                     -- subidx 1..1021
                     else
-                        XFFT24_s_data_tvalid_r  <= XFFT24_s_data_tvalid_r(1 downto 0) & '1';
-                        XFFT24_s_data_tlast_r   <= XFFT24_s_data_tlast_r(1 downto 0)  & '0';
+                        XFFT24_s_data_tvalid_r  <= XFFT24_s_data_tvalid_r(0) & '1';
+                        XFFT24_s_data_tlast_r   <= XFFT24_s_data_tlast_r(0)  & '0';
                         fsm24_fft_subidx        := fsm24_fft_subidx + 1;
                     end if;
                     
@@ -426,8 +430,8 @@ begin
             end case;
             
             -- Delayed output signals for Memory access latency
-            XFFT24_s_data_tvalid    <= XFFT24_s_data_tvalid_r(2);
-            XFFT24_s_data_tlast     <= XFFT24_s_data_tlast_r(2);
+            XFFT24_s_data_tvalid    <= XFFT24_s_data_tvalid_r(1);
+            XFFT24_s_data_tlast     <= XFFT24_s_data_tlast_r(1);
             
             -- Frame and Subframe counters
             RF24_framectr   <= std_logic_vector(to_unsigned(fsm24_fft_framectr, RF24_framectr'length));

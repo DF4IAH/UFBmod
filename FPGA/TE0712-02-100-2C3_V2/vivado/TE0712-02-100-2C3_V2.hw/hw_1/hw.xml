@@ -103,7 +103,7 @@
   <ObjectList object_type="hw_vio" gui_info="">
     <Object name="hw_vio_1" gui_info="hw_vios/hw_vio_1/TablePreference=5	1341	Name	0	2147483647	15	649	649	Value	1	2147483647	15	359	359	Activity	2	2147483647	15	94	94	Direction	3	2147483647	15	113	113	VIO	4	2147483647	15	126	126			1	6	1	Name	Value	Activity	Direction	VIO"/>
     <Object name="msys_i/vio_0" gui_info="">
-      <Properties Property="CORE_REFRESH_RATE_MS" value="100"/>
+      <Properties Property="CORE_REFRESH_RATE_MS" value="250"/>
     </Object>
   </ObjectList>
   <probeset name="hw project" active="false">

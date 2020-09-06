@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_FFT_controller_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_FFT_controller" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="81464973fs"></ZoomStartTime>
+      <ZoomEndTime time="81699006fs"></ZoomEndTime>
+      <Cursor1Time time="81660000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="658"></NameColumnWidth>
+      <ValueColumnWidth column_width="222"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="18" />
+   <wvobject fp_name="/tb_FFT_controller/tb_clk" type="logic">
+      <obj_property name="ElementShortName">tb_clk</obj_property>
+      <obj_property name="ObjectShortName">tb_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_FFT_controller/tb_resetn" type="logic">
+      <obj_property name="ElementShortName">tb_resetn</obj_property>
+      <obj_property name="ObjectShortName">tb_resetn</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider295">
+      <obj_property name="label">STIMU RF09</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_FFT_controller/tb_rx09_bs_32bits_vld" type="logic">
+      <obj_property name="ElementShortName">tb_rx09_bs_32bits_vld</obj_property>
+      <obj_property name="ObjectShortName">tb_rx09_bs_32bits_vld</obj_property>
+      <obj_property name="CustomSignalColor">#008000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_FFT_controller/tb_rx09_bs_32bits" type="array">
+      <obj_property name="ElementShortName">tb_rx09_bs_32bits[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_rx09_bs_32bits[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider296">
+      <obj_property name="label">REACTION RF09</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_FFT_controller/tb_RF09_framectr" type="array">
+      <obj_property name="ElementShortName">tb_RF09_framectr[29:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_RF09_framectr[29:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_FFT_controller/tb_RF09_quarterfrm" type="array">
+      <obj_property name="ElementShortName">tb_RF09_quarterfrm[1:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_RF09_quarterfrm[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="group602" type="group">
+      <obj_property name="label">PreMem_RF09</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_FFT_controller/tb_PreMem09_addra" type="array">
+         <obj_property name="ElementShortName">tb_PreMem09_addra[10:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_PreMem09_addra[10:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_PreMem09_dina" type="array">
+         <obj_property name="ElementShortName">tb_PreMem09_dina[25:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_PreMem09_dina[25:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_PreMem09_wea" type="logic">
+         <obj_property name="ElementShortName">tb_PreMem09_wea</obj_property>
+         <obj_property name="ObjectShortName">tb_PreMem09_wea</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_PreMem09_addrb" type="array">
+         <obj_property name="ElementShortName">tb_PreMem09_addrb[10:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_PreMem09_addrb[10:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group603" type="group">
+      <obj_property name="label">XFFT_RF09</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_FFT_controller/tb_XFFT09_aresetn" type="logic">
+         <obj_property name="ElementShortName">tb_XFFT09_aresetn</obj_property>
+         <obj_property name="ObjectShortName">tb_XFFT09_aresetn</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_XFFT09_s_conf_tdata" type="array">
+         <obj_property name="ElementShortName">tb_XFFT09_s_conf_tdata[7:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_XFFT09_s_conf_tdata[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_XFFT09_s_conf_tvalid" type="logic">
+         <obj_property name="ElementShortName">tb_XFFT09_s_conf_tvalid</obj_property>
+         <obj_property name="ObjectShortName">tb_XFFT09_s_conf_tvalid</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_XFFT09_s_data_tready" type="logic">
+         <obj_property name="ElementShortName">tb_XFFT09_s_data_tready</obj_property>
+         <obj_property name="ObjectShortName">tb_XFFT09_s_data_tready</obj_property>
+         <obj_property name="CustomSignalColor">#808000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_XFFT09_s_data_tvalid" type="logic">
+         <obj_property name="ElementShortName">tb_XFFT09_s_data_tvalid</obj_property>
+         <obj_property name="ObjectShortName">tb_XFFT09_s_data_tvalid</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_XFFT09_s_data_tlast" type="logic">
+         <obj_property name="ElementShortName">tb_XFFT09_s_data_tlast</obj_property>
+         <obj_property name="ObjectShortName">tb_XFFT09_s_data_tlast</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider706">
+      <obj_property name="label">STIMU RF24</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_FFT_controller/tb_rx24_bs_32bits_vld" type="logic">
+      <obj_property name="ElementShortName">tb_rx24_bs_32bits_vld</obj_property>
+      <obj_property name="ObjectShortName">tb_rx24_bs_32bits_vld</obj_property>
+      <obj_property name="CustomSignalColor">#008000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_FFT_controller/tb_rx24_bs_32bits" type="array">
+      <obj_property name="ElementShortName">tb_rx24_bs_32bits[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_rx24_bs_32bits[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider709">
+      <obj_property name="label">REACTION RF24</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_FFT_controller/tb_RF24_framectr" type="array">
+      <obj_property name="ElementShortName">tb_RF24_framectr[29:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_RF24_framectr[29:0]</obj_property>
+      <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_FFT_controller/tb_RF24_quarterfrm" type="array">
+      <obj_property name="ElementShortName">tb_RF24_quarterfrm[1:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_RF24_quarterfrm[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="group716" type="group">
+      <obj_property name="label">PreMem_RF24</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_FFT_controller/tb_PreMem24_addra" type="array">
+         <obj_property name="ElementShortName">tb_PreMem24_addra[10:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_PreMem24_addra[10:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_PreMem24_dina" type="array">
+         <obj_property name="ElementShortName">tb_PreMem24_dina[25:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_PreMem24_dina[25:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_PreMem24_wea" type="logic">
+         <obj_property name="ElementShortName">tb_PreMem24_wea</obj_property>
+         <obj_property name="ObjectShortName">tb_PreMem24_wea</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_PreMem24_addrb" type="array">
+         <obj_property name="ElementShortName">tb_PreMem24_addrb[10:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_PreMem24_addrb[10:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group723" type="group">
+      <obj_property name="label">XFFT_RF24</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_FFT_controller/tb_XFFT24_aresetn" type="logic">
+         <obj_property name="ElementShortName">tb_XFFT24_aresetn</obj_property>
+         <obj_property name="ObjectShortName">tb_XFFT24_aresetn</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_XFFT24_s_conf_tdata" type="array">
+         <obj_property name="ElementShortName">tb_XFFT24_s_conf_tdata[7:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_XFFT24_s_conf_tdata[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_XFFT24_s_conf_tvalid" type="logic">
+         <obj_property name="ElementShortName">tb_XFFT24_s_conf_tvalid</obj_property>
+         <obj_property name="ObjectShortName">tb_XFFT24_s_conf_tvalid</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_XFFT24_s_data_tready" type="logic">
+         <obj_property name="ElementShortName">tb_XFFT24_s_data_tready</obj_property>
+         <obj_property name="ObjectShortName">tb_XFFT24_s_data_tready</obj_property>
+         <obj_property name="CustomSignalColor">#808000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_XFFT24_s_data_tvalid" type="logic">
+         <obj_property name="ElementShortName">tb_XFFT24_s_data_tvalid</obj_property>
+         <obj_property name="ObjectShortName">tb_XFFT24_s_data_tvalid</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_FFT_controller/tb_XFFT24_s_data_tlast" type="logic">
+         <obj_property name="ElementShortName">tb_XFFT24_s_data_tlast</obj_property>
+         <obj_property name="ObjectShortName">tb_XFFT24_s_data_tlast</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

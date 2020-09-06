@@ -1746,7 +1746,7 @@ proc create_hier_cell_TRX_rx_FFT_unit { parentCell nameHier } {
    CONFIG.Read_Width_B {16} \
    CONFIG.Register_PortA_Output_of_Memory_Primitives {false} \
    CONFIG.Register_PortB_Output_of_Memory_Core {true} \
-   CONFIG.Register_PortB_Output_of_Memory_Primitives {true} \
+   CONFIG.Register_PortB_Output_of_Memory_Primitives {false} \
    CONFIG.Use_Byte_Write_Enable {false} \
    CONFIG.Use_RSTA_Pin {false} \
    CONFIG.Use_RSTB_Pin {true} \
@@ -1776,7 +1776,7 @@ proc create_hier_cell_TRX_rx_FFT_unit { parentCell nameHier } {
    CONFIG.Read_Width_B {16} \
    CONFIG.Register_PortA_Output_of_Memory_Primitives {false} \
    CONFIG.Register_PortB_Output_of_Memory_Core {true} \
-   CONFIG.Register_PortB_Output_of_Memory_Primitives {true} \
+   CONFIG.Register_PortB_Output_of_Memory_Primitives {false} \
    CONFIG.Use_Byte_Write_Enable {false} \
    CONFIG.Use_RSTA_Pin {false} \
    CONFIG.Use_RSTB_Pin {true} \
@@ -1808,7 +1808,7 @@ proc create_hier_cell_TRX_rx_FFT_unit { parentCell nameHier } {
    CONFIG.Register_PortA_Output_of_Memory_Core {false} \
    CONFIG.Register_PortA_Output_of_Memory_Primitives {false} \
    CONFIG.Register_PortB_Output_of_Memory_Core {true} \
-   CONFIG.Register_PortB_Output_of_Memory_Primitives {true} \
+   CONFIG.Register_PortB_Output_of_Memory_Primitives {false} \
    CONFIG.Use_Byte_Write_Enable {false} \
    CONFIG.Use_RSTA_Pin {false} \
    CONFIG.Use_RSTB_Pin {true} \
@@ -1840,7 +1840,7 @@ proc create_hier_cell_TRX_rx_FFT_unit { parentCell nameHier } {
    CONFIG.Register_PortA_Output_of_Memory_Core {false} \
    CONFIG.Register_PortA_Output_of_Memory_Primitives {false} \
    CONFIG.Register_PortB_Output_of_Memory_Core {true} \
-   CONFIG.Register_PortB_Output_of_Memory_Primitives {true} \
+   CONFIG.Register_PortB_Output_of_Memory_Primitives {false} \
    CONFIG.Use_Byte_Write_Enable {false} \
    CONFIG.Use_RSTA_Pin {false} \
    CONFIG.Use_RSTB_Pin {true} \

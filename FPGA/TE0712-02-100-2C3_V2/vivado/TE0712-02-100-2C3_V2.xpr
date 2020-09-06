@@ -40,20 +40,20 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="te0712_100_2c"/>
-    <Option Name="WTXSimLaunchSim" Val="249"/>
+    <Option Name="WTXSimLaunchSim" Val="259"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="203"/>
-    <Option Name="WTModelSimExportSim" Val="203"/>
-    <Option Name="WTQuestaExportSim" Val="202"/>
-    <Option Name="WTIesExportSim" Val="202"/>
-    <Option Name="WTVcsExportSim" Val="202"/>
-    <Option Name="WTRivieraExportSim" Val="202"/>
-    <Option Name="WTActivehdlExportSim" Val="202"/>
+    <Option Name="WTXSimExportSim" Val="204"/>
+    <Option Name="WTModelSimExportSim" Val="204"/>
+    <Option Name="WTQuestaExportSim" Val="203"/>
+    <Option Name="WTIesExportSim" Val="203"/>
+    <Option Name="WTVcsExportSim" Val="203"/>
+    <Option Name="WTRivieraExportSim" Val="203"/>
+    <Option Name="WTActivehdlExportSim" Val="203"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -201,14 +201,27 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sim_1/imports/new/tb_FFT_controller.vhd">
+        <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="ImportPath" Val="$PSRCDIR/sim_1/new/tb_FFT_controller.vhd"/>
+          <Attr Name="ImportTime" Val="1596452556"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sim_1/new/tb_null.vhd">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sim_1/new/tb_SCOPE.vhd">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -216,6 +229,7 @@
       </File>
       <File Path="$PSRCDIR/sim_1/imports/new/tb_auto_LVDS_rotate.vhd">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PSRCDIR/sim_1/new/tb_auto_LVDS_rotate.vhd"/>
           <Attr Name="ImportTime" Val="1589305539"/>
@@ -225,6 +239,7 @@
       </File>
       <File Path="$PSRCDIR/sim_1/new/tb_barrel_rot32.vhd">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -237,24 +252,33 @@
       </File>
       <File Path="$PPRDIR/tb_null_behav_RX.wcfg">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <File Path="$PPRDIR/tb_null_behav_TX.wcfg">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sim_1/imports/vivado/tb_SCOPE_behav.wcfg">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/tb_SCOPE_behav.wcfg"/>
           <Attr Name="ImportTime" Val="1596452045"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PPRDIR/tb_FFT_controller_behav.wcfg">
+        <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="tb_null"/>
+        <Option Name="TopModule" Val="msys_wrapper"/>
         <Option Name="TopLib" Val="xil_defaultlib"/>
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
@@ -268,6 +292,7 @@
         <Option Name="XSimWcfgFile" Val="$PPRDIR/tb_null_behav_RX.wcfg"/>
         <Option Name="XSimWcfgFile" Val="$PPRDIR/tb_null_behav_TX.wcfg"/>
         <Option Name="XSimWcfgFile" Val="$PPRDIR/tb_SCOPE_post-imp-func_impl.wcfg"/>
+        <Option Name="XSimWcfgFile" Val="$PPRDIR/tb_FFT_controller_behav.wcfg"/>
       </Config>
     </FileSet>
     <FileSet Name="utils_1" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
@@ -319,10 +344,10 @@
         <StratHandle Name="Flow_PerfOptimized_high" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design">
           <Option Id="ResourceSharing">2</Option>
-          <Option Id="ShregMinSize">5</Option>
-          <Option Id="FsmExtraction">1</Option>
           <Option Id="Directive">7</Option>
           <Option Id="NoCombineLuts">1</Option>
+          <Option Id="ShregMinSize">5</Option>
+          <Option Id="FsmExtraction">1</Option>
           <Option Id="KeepEquivalentRegisters">1</Option>
         </Step>
       </Strategy>
