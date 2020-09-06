@@ -40,20 +40,20 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="te0712_100_2c"/>
-    <Option Name="WTXSimLaunchSim" Val="235"/>
+    <Option Name="WTXSimLaunchSim" Val="249"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="198"/>
-    <Option Name="WTModelSimExportSim" Val="198"/>
-    <Option Name="WTQuestaExportSim" Val="197"/>
-    <Option Name="WTIesExportSim" Val="197"/>
-    <Option Name="WTVcsExportSim" Val="197"/>
-    <Option Name="WTRivieraExportSim" Val="197"/>
-    <Option Name="WTActivehdlExportSim" Val="197"/>
+    <Option Name="WTXSimExportSim" Val="203"/>
+    <Option Name="WTModelSimExportSim" Val="203"/>
+    <Option Name="WTQuestaExportSim" Val="202"/>
+    <Option Name="WTIesExportSim" Val="202"/>
+    <Option Name="WTVcsExportSim" Val="202"/>
+    <Option Name="WTRivieraExportSim" Val="202"/>
+    <Option Name="WTActivehdlExportSim" Val="202"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -235,14 +235,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../firmware/microblaze_mcs_0/scu_te0712.elf">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="simulation"/>
-          <Attr Name="ScopedToRef" Val="msys"/>
-          <Attr Name="ScopedToCell" Val="microblaze_mcs_0/U0/microblaze_I"/>
-          <Attr Name="IsVisible" Val="1"/>
-        </FileInfo>
-      </File>
       <File Path="$PPRDIR/tb_null_behav_RX.wcfg">
         <FileInfo>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -328,10 +320,10 @@
         <Step Id="synth_design">
           <Option Id="ResourceSharing">2</Option>
           <Option Id="ShregMinSize">5</Option>
+          <Option Id="FsmExtraction">1</Option>
           <Option Id="Directive">7</Option>
           <Option Id="NoCombineLuts">1</Option>
           <Option Id="KeepEquivalentRegisters">1</Option>
-          <Option Id="FsmExtraction">1</Option>
         </Step>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>

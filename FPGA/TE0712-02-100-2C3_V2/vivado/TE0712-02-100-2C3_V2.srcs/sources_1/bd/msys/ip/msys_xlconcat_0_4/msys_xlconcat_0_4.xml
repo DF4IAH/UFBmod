@@ -18,11 +18,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Aug 29 11:16:45 UTC 2020</spirit:value>
+            <spirit:value>Sun Sep 06 09:28:57 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:fffb1f91</spirit:value>
+            <spirit:value>9:c7acc78f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -33,7 +33,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:fffb1f91</spirit:value>
+            <spirit:value>9:c7acc78f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -49,11 +49,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Aug 29 11:17:18 UTC 2020</spirit:value>
+            <spirit:value>Sun Sep 06 09:29:29 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:fffb1f91</spirit:value>
+            <spirit:value>9:c7acc78f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -69,11 +69,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Aug 29 11:16:45 UTC 2020</spirit:value>
+            <spirit:value>Sun Sep 06 09:28:57 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:eaf5752e</spirit:value>
+            <spirit:value>9:2508a47b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -89,11 +89,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Aug 29 11:17:18 UTC 2020</spirit:value>
+            <spirit:value>Sun Sep 06 09:29:29 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:eaf5752e</spirit:value>
+            <spirit:value>9:2508a47b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -131,7 +131,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.IN1_WIDTH&apos;)) - 1)">2</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.IN1_WIDTH&apos;)) - 1)">4</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -968,7 +968,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.dout_width&apos;)) - 1)">12</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.dout_width&apos;)) - 1)">14</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -990,7 +990,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>IN1_WIDTH</spirit:name>
         <spirit:displayName>In1 Width</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.IN1_WIDTH">3</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.IN1_WIDTH">5</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>IN2_WIDTH</spirit:name>
@@ -1145,7 +1145,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>dout_width</spirit:name>
         <spirit:displayName>Dout Width</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.dout_width">13</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.dout_width">15</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>NUM_PORTS</spirit:name>
@@ -1208,7 +1208,7 @@
     <spirit:parameter>
       <spirit:name>IN1_WIDTH</spirit:name>
       <spirit:displayName>In1 Width</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.IN1_WIDTH" spirit:order="5" spirit:minimum="1" spirit:maximum="4096" spirit:rangeType="long">3</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.IN1_WIDTH" spirit:order="5" spirit:minimum="1" spirit:maximum="4096" spirit:rangeType="long">5</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>IN2_WIDTH</spirit:name>
@@ -1363,7 +1363,7 @@
     <spirit:parameter>
       <spirit:name>dout_width</spirit:name>
       <spirit:displayName>Dout Width</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.dout_width" spirit:order="36">13</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.dout_width" spirit:order="36">15</spirit:value>
     </spirit:parameter>
   </spirit:parameters>
   <spirit:vendorExtensions>

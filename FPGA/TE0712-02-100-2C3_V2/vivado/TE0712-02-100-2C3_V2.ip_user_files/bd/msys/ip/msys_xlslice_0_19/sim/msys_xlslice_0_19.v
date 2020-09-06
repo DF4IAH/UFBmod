@@ -59,12 +59,12 @@ module msys_xlslice_0_19 (
 );
 
 input wire [63 : 0] Din;
-output wire [31 : 0] Dout;
+output wire [15 : 0] Dout;
 
   xlslice_v1_0_2_xlslice #(
     .DIN_WIDTH(64),
     .DIN_FROM(31),
-    .DIN_TO(0)
+    .DIN_TO(16)
   ) inst (
     .Din(Din),
     .Dout(Dout)

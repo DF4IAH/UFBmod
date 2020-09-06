@@ -1968,7 +1968,7 @@ static void TestRF09Rx(void)
 #endif
 
 	/* Stop FPGA DDS0/DDS1 */
-	DdsFreqAmpSet(0U, 0.5f, 0x00U, 1.0f);		// XXX
+	DdsFreqAmpSet(0U, 0.0f, 0x00U, 1.0f);		// XXX
 	DdsFreqAmpSet(1U, 0.0f, 0x00U, 1.0f);
 
 	/* BLUE on */
@@ -2198,7 +2198,7 @@ void taskTrx(void* pvParameters)
 			}
 		}
 
-#if 1
+#if 0
 		/* Testing the Transmitter of the TRX */
 		TestRF09Tx(pwr_dBm);
 #else

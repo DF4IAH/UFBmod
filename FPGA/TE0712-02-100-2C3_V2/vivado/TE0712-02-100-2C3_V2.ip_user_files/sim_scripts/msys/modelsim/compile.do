@@ -817,6 +817,10 @@ vlog -work xil_defaultlib  -incr "+incdir+../../../../TE0712-02-100-2C3_V2.srcs/
 "../../../bd/msys/ip/msys_xlslice_0_48/sim/msys_xlslice_0_48.v" \
 "../../../bd/msys/ip/msys_xlslice_0_49/sim/msys_xlslice_0_49.v" \
 "../../../bd/msys/ip/msys_xlslice_0_50/sim/msys_xlslice_0_50.v" \
+"../../../bd/msys/ip/msys_xlconcat_0_22/sim/msys_xlconcat_0_22.v" \
+"../../../bd/msys/ip/msys_xlslice_0_51/sim/msys_xlslice_0_51.v" \
+"../../../bd/msys/ip/msys_xlconcat_0_23/sim/msys_xlconcat_0_23.v" \
+"../../../bd/msys/ip/msys_xlslice_0_52/sim/msys_xlslice_0_52.v" \
 "../../../bd/msys/ip/msys_tier2_xbar_0_0/sim/msys_tier2_xbar_0_0.v" \
 "../../../bd/msys/ip/msys_tier2_xbar_1_0/sim/msys_tier2_xbar_1_0.v" \
 "../../../bd/msys/ip/msys_tier2_xbar_2_0/sim/msys_tier2_xbar_2_0.v" \

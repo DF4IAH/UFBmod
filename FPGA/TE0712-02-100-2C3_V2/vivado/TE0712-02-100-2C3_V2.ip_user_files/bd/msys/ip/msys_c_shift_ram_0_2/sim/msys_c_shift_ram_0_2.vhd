@@ -58,10 +58,10 @@ USE c_shift_ram_v12_0_14.c_shift_ram_v12_0_14;
 
 ENTITY msys_c_shift_ram_0_2 IS
   PORT (
-    D : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+    D : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     CLK : IN STD_LOGIC;
     SCLR : IN STD_LOGIC;
-    Q : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
+    Q : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
 END msys_c_shift_ram_0_2;
 
@@ -95,38 +95,38 @@ ARCHITECTURE msys_c_shift_ram_0_2_arch OF msys_c_shift_ram_0_2 IS
     );
     PORT (
       A : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-      D : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+      D : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       CLK : IN STD_LOGIC;
       CE : IN STD_LOGIC;
       SCLR : IN STD_LOGIC;
       SSET : IN STD_LOGIC;
       SINIT : IN STD_LOGIC;
-      Q : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
+      Q : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
   END COMPONENT c_shift_ram_v12_0_14;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_PARAMETER OF Q: SIGNAL IS "XIL_INTERFACENAME q_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency data_bitwidth format long minimum {} maximum {}} value 3} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} DATA_WIDTH 3}";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF Q: SIGNAL IS "XIL_INTERFACENAME q_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency data_bitwidth format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} DATA_WIDTH 32}";
   ATTRIBUTE X_INTERFACE_INFO OF Q: SIGNAL IS "xilinx.com:signal:data:1.0 q_intf DATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF SCLR: SIGNAL IS "XIL_INTERFACENAME sclr_intf, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF SCLR: SIGNAL IS "xilinx.com:signal:reset:1.0 sclr_intf RST";
   ATTRIBUTE X_INTERFACE_PARAMETER OF CLK: SIGNAL IS "XIL_INTERFACENAME clk_intf, ASSOCIATED_BUSIF q_intf:sinit_intf:sset_intf:d_intf:a_intf, ASSOCIATED_RESET SCLR, ASSOCIATED_CLKEN CE, FREQ_HZ 100000000, PHASE 0, CLK_DOMAIN msys_mig_7series_0_0_ui_clk, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF CLK: SIGNAL IS "xilinx.com:signal:clock:1.0 clk_intf CLK";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF D: SIGNAL IS "XIL_INTERFACENAME d_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency data_bitwidth format long minimum {} maximum {}} value 3} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} DATA_WIDTH 3}";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF D: SIGNAL IS "XIL_INTERFACENAME d_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency data_bitwidth format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} DATA_WIDTH 32}";
   ATTRIBUTE X_INTERFACE_INFO OF D: SIGNAL IS "xilinx.com:signal:data:1.0 d_intf DATA";
 BEGIN
   U0 : c_shift_ram_v12_0_14
     GENERIC MAP (
       C_XDEVICEFAMILY => "artix7",
       C_VERBOSITY => 0,
-      C_WIDTH => 3,
+      C_WIDTH => 32,
       C_DEPTH => 1024,
       C_ADDR_WIDTH => 4,
       C_SHIFT_TYPE => 0,
       C_OPT_GOAL => 0,
-      C_AINIT_VAL => "000",
-      C_SINIT_VAL => "000",
-      C_DEFAULT_DATA => "000",
+      C_AINIT_VAL => "00000000000000000000000000000000",
+      C_SINIT_VAL => "00000000000000000000000000000000",
+      C_DEFAULT_DATA => "00000000000000000000000000000000",
       C_HAS_A => 0,
       C_HAS_CE => 0,
       C_REG_LAST_BIT => 1,

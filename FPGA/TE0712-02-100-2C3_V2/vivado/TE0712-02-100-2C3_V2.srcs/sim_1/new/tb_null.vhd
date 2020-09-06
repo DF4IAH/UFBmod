@@ -89,7 +89,7 @@ architecture Behavioral of tb_null is
     TRX_PLL_clk_25MHz_P : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_clk_26MHz : in STD_LOGIC;
     TRX_int : in STD_LOGIC;
-    TRX_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_resetn : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
     TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
@@ -288,7 +288,7 @@ msys_wrapper_i: component msys_wrapper
     TRX_spi_ss_io(0) => tb_TRX_spi_ss_io,
 
     TRX_int => '0',
---    TRX_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
+--    TRX_resetn : out STD_LOGIC_VECTOR ( 0 to 0 );
 --    TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
 
 --    TRX_PLL_clk_25MHz_P : out STD_LOGIC_VECTOR ( 0 to 0 );

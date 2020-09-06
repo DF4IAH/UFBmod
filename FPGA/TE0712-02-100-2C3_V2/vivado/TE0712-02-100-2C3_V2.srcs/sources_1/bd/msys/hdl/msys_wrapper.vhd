@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Sat Aug 29 13:16:42 2020
+--Date        : Sun Sep  6 11:28:54 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -160,8 +160,8 @@ architecture STRUCTURE of msys_wrapper is
     premem_rx09_addrb_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
     premem_rx24_addra_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
     premem_rx24_wea_in : in STD_LOGIC_VECTOR ( 0 to 0 );
-    premem_rx09_quarterfrm_in : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    premem_rx24_quarterfrm_in : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    RF09_quarterfrm : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    RF24_quarterfrm : in STD_LOGIC_VECTOR ( 1 downto 0 );
     fft24_data_tready_out : out STD_LOGIC;
     fft24_data_tlast_in : in STD_LOGIC;
     fft24_data_tvalid_in : in STD_LOGIC;
@@ -190,33 +190,10 @@ architecture STRUCTURE of msys_wrapper is
     SCOPE_FSM_GPIO1_In : in STD_LOGIC_VECTOR ( 31 downto 0 );
     LVDS_rx09_synced : in STD_LOGIC;
     LVDS_rx24_synced : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
-    qspi_flash_io0_i : in STD_LOGIC;
-    qspi_flash_io0_o : out STD_LOGIC;
-    qspi_flash_io0_t : out STD_LOGIC;
-    qspi_flash_io1_i : in STD_LOGIC;
-    qspi_flash_io1_o : out STD_LOGIC;
-    qspi_flash_io1_t : out STD_LOGIC;
-    qspi_flash_io2_i : in STD_LOGIC;
-    qspi_flash_io2_o : out STD_LOGIC;
-    qspi_flash_io2_t : out STD_LOGIC;
-    qspi_flash_io3_i : in STD_LOGIC;
-    qspi_flash_io3_o : out STD_LOGIC;
-    qspi_flash_io3_t : out STD_LOGIC;
-    qspi_flash_ss_i : in STD_LOGIC;
-    qspi_flash_ss_o : out STD_LOGIC;
-    qspi_flash_ss_t : out STD_LOGIC;
+    RF09_framectr : in STD_LOGIC_VECTOR ( 29 downto 0 );
+    RF24_framectr : in STD_LOGIC_VECTOR ( 29 downto 0 );
     TRX_tx_clk_clk_n : out STD_LOGIC;
     TRX_tx_clk_clk_p : out STD_LOGIC;
-    CLK3_sys_diff_clk_p : in STD_LOGIC;
-    CLK3_sys_diff_clk_n : in STD_LOGIC;
-    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
-    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
     DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -232,20 +209,37 @@ architecture STRUCTURE of msys_wrapper is
     DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
+    UART0_rxd : in STD_LOGIC;
+    UART0_txd : out STD_LOGIC;
+    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK3_sys_diff_clk_p : in STD_LOGIC;
+    CLK3_sys_diff_clk_n : in STD_LOGIC;
     RMII_PHY_M_0_crs_dv : in STD_LOGIC;
     RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RMII_PHY_M_0_tx_en : out STD_LOGIC;
     RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
     BOARD_IIC_scl_i : in STD_LOGIC;
     BOARD_IIC_scl_o : out STD_LOGIC;
     BOARD_IIC_scl_t : out STD_LOGIC;
     BOARD_IIC_sda_i : in STD_LOGIC;
     BOARD_IIC_sda_o : out STD_LOGIC;
     BOARD_IIC_sda_t : out STD_LOGIC;
-    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
+    qspi_flash_io0_i : in STD_LOGIC;
+    qspi_flash_io0_o : out STD_LOGIC;
+    qspi_flash_io0_t : out STD_LOGIC;
+    qspi_flash_io1_i : in STD_LOGIC;
+    qspi_flash_io1_o : out STD_LOGIC;
+    qspi_flash_io1_t : out STD_LOGIC;
+    qspi_flash_io2_i : in STD_LOGIC;
+    qspi_flash_io2_o : out STD_LOGIC;
+    qspi_flash_io2_t : out STD_LOGIC;
+    qspi_flash_io3_i : in STD_LOGIC;
+    qspi_flash_io3_o : out STD_LOGIC;
+    qspi_flash_io3_t : out STD_LOGIC;
+    qspi_flash_ss_i : in STD_LOGIC;
+    qspi_flash_ss_o : out STD_LOGIC;
+    qspi_flash_ss_t : out STD_LOGIC;
     TRX_spi_io0_i : in STD_LOGIC;
     TRX_spi_io0_o : out STD_LOGIC;
     TRX_spi_io0_t : out STD_LOGIC;
@@ -257,7 +251,15 @@ architecture STRUCTURE of msys_wrapper is
     TRX_spi_sck_t : out STD_LOGIC;
     TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_spi_ss_t : out STD_LOGIC
+    TRX_spi_ss_t : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
+    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
+    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC
   );
   end component msys;
   component IOBUF is
@@ -299,32 +301,36 @@ architecture STRUCTURE of msys_wrapper is
     -- All Clock Domain AXI 100 MHz
     resetn                  : in  STD_LOGIC;
     clk                     : in  STD_LOGIC;
-    
+
     rx09_bs_32bits          : in  STD_LOGIC_VECTOR (31 downto 0);
     rx09_bs_32bits_vld      : in  STD_LOGIC;
 
     rx24_bs_32bits          : in  STD_LOGIC_VECTOR (31 downto 0);
     rx24_bs_32bits_vld      : in  STD_LOGIC;
-    
+
     PreMem09_addra          : out STD_LOGIC_VECTOR (10 downto 0);  -- (a)  2x FFT frame of 1024 points = 2048 addresses
     PreMem09_wea            : out STD_LOGIC;
     PreMem09_dina           : out STD_LOGIC_VECTOR (25 downto 0);  -- (b)  29..17: I-data, 13..01: Q-data
     PreMem09_addrb          : out STD_LOGIC_VECTOR (10 downto 0);  -- see above (a)
-    PreMem09_quarterfrm     : out STD_LOGIC_VECTOR ( 2 downto 0);
-    
+
+    RF09_quarterfrm         : out STD_LOGIC_VECTOR ( 1 downto 0);  -- subframes of  64 us
+    RF09_framectr           : out STD_LOGIC_VECTOR (29 downto 0);  -- frames    of 256 us
+
     PreMem24_addra          : out STD_LOGIC_VECTOR (10 downto 0);  -- (a)  2x FFT frame of 1024 points = 2048 addresses
     PreMem24_wea            : out STD_LOGIC;
     PreMem24_dina           : out STD_LOGIC_VECTOR (25 downto 0);  -- see above (b)
     PreMem24_addrb          : out STD_LOGIC_VECTOR (10 downto 0);  -- see above (a)
-    PreMem24_quarterfrm     : out STD_LOGIC_VECTOR ( 2 downto 0);
-    
+
+    RF24_quarterfrm         : out STD_LOGIC_VECTOR ( 1 downto 0);  -- subframes of  64 us
+    RF24_framectr           : out STD_LOGIC_VECTOR (29 downto 0);  -- frames    of 256 us
+
     XFFT09_aresetn          : out STD_LOGIC;
     XFFT09_s_data_tlast     : out STD_LOGIC;
     XFFT09_s_data_tready    : in  STD_LOGIC;
     XFFT09_s_data_tvalid    : out STD_LOGIC;
     XFFT09_s_conf_tdata     : out STD_LOGIC_VECTOR ( 7 downto 0);
     XFFT09_s_conf_tvalid    : out STD_LOGIC;
-    
+
     XFFT24_aresetn          : out STD_LOGIC;
     XFFT24_s_data_tlast     : out STD_LOGIC;
     XFFT24_s_data_tready    : in  STD_LOGIC;
@@ -435,6 +441,10 @@ architecture STRUCTURE of msys_wrapper is
   signal mw_fft24_premem_subframe_in : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal mw_postmem_rx_wea_in : STD_LOGIC;
   signal mw_postmem_rx_addra_in : STD_LOGIC_VECTOR ( 12 downto 0 );
+  signal mw_RF09_quarterfrm : STD_LOGIC_VECTOR (1 downto 0);
+  signal mw_RF09_framectr : STD_LOGIC_VECTOR (29 downto 0);
+  signal mw_RF24_quarterfrm : STD_LOGIC_VECTOR (1 downto 0);
+  signal mw_RF24_framectr : STD_LOGIC_VECTOR (29 downto 0);
   signal mw_rotenc_dec_cnt_en : STD_LOGIC;
   signal mw_rotenc_dec_cnt_up_dwn : STD_LOGIC;
   signal mw_SCOPE_FSM_GPIO0_Out : STD_LOGIC_VECTOR (31 downto 0);
@@ -563,12 +573,18 @@ FFT_controller_i: component FFT_controller
       PreMem09_wea          => mw_premem_rx09_wea_in,
       PreMem09_dina         => mw_premem_rx09_dina_in,
       PreMem09_addrb        => mw_premem_rx09_addrb_in,
-      PreMem09_quarterfrm   => mw_premem_rx09_quarterfrm_in,
+
+      RF09_quarterfrm       => mw_RF09_quarterfrm,
+      RF09_framectr         => mw_RF09_framectr,
+
       PreMem24_addra        => mw_premem_rx24_addra_in,
       PreMem24_wea          => mw_premem_rx24_wea_in,
       PreMem24_dina         => mw_premem_rx24_dina_in,
       PreMem24_addrb        => mw_premem_rx24_addrb_in,
-      PreMem24_quarterfrm   => mw_premem_rx24_quarterfrm_in,
+
+      RF24_quarterfrm       => mw_RF24_quarterfrm,
+      RF24_framectr         => mw_RF24_framectr,
+
       XFFT09_aresetn        => mw_fft09_aresetn_in,
       XFFT09_s_data_tlast   => mw_fft09_data_tlast_in,
       XFFT09_s_data_tready  => mw_fft09_data_tready_out,
@@ -668,6 +684,10 @@ msys_i: component msys
       PLL_I2C_ext_scl_o => PLL_I2C_ext_scl_o,
       PLL_I2C_ext_sda => PLL_I2C_ext_sda,
       PLL_int => PLL_int,
+      RF09_framectr(29 downto 0) => mw_RF09_framectr(29 downto 0),
+      RF09_quarterfrm(1 downto 0) => mw_RF09_quarterfrm(1 downto 0),
+      RF24_framectr(29 downto 0) => mw_RF24_framectr(29 downto 0),
+      RF24_quarterfrm(1 downto 0) => mw_RF24_quarterfrm(1 downto 0),
       RMII_PHY_M_0_crs_dv => RMII_PHY_M_0_crs_dv,
       RMII_PHY_M_0_rxd(1 downto 0) => RMII_PHY_M_0_rxd(1 downto 0),
       RMII_PHY_M_0_tx_en => RMII_PHY_M_0_tx_en,
@@ -744,12 +764,10 @@ msys_i: component msys
       premem_rx09_addra_in(10 downto 0) => mw_premem_rx09_addra_in(10 downto 0),
       premem_rx09_addrb_in(10 downto 0) => mw_premem_rx09_addrb_in(10 downto 0),
       premem_rx09_dina_in(25 downto 0) => mw_premem_rx09_dina_in(25 downto 0),
-      premem_rx09_quarterfrm_in(2 downto 0) => mw_premem_rx09_quarterfrm_in(2 downto 0),
       premem_rx09_wea_in(0) => mw_premem_rx09_wea_in,
       premem_rx24_addra_in(10 downto 0) => mw_premem_rx24_addra_in(10 downto 0),
       premem_rx24_addrb_in(10 downto 0) => mw_premem_rx24_addrb_in(10 downto 0),
       premem_rx24_dina_in(25 downto 0) => mw_premem_rx24_dina_in(25 downto 0),
-      premem_rx24_quarterfrm_in(2 downto 0) => mw_premem_rx24_quarterfrm_in(2 downto 0),
       premem_rx24_wea_in(0) => mw_premem_rx24_wea_in,
       qspi_flash_io0_i => qspi_flash_io0_i,
       qspi_flash_io0_o => qspi_flash_io0_o,
