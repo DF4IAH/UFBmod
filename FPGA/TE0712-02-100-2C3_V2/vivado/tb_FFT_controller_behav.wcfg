@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="81464973fs"></ZoomStartTime>
-      <ZoomEndTime time="81699006fs"></ZoomEndTime>
-      <Cursor1Time time="81660000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="238404fs"></ZoomEndTime>
+      <Cursor1Time time="0fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="658"></NameColumnWidth>
-      <ValueColumnWidth column_width="222"></ValueColumnWidth>
+      <ValueColumnWidth column_width="214"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="18" />
+   <WVObjectSize size="20" />
    <wvobject fp_name="/tb_FFT_controller/tb_clk" type="logic">
       <obj_property name="ElementShortName">tb_clk</obj_property>
       <obj_property name="ObjectShortName">tb_clk</obj_property>
@@ -91,6 +91,18 @@
       <wvobject fp_name="/tb_FFT_controller/tb_PreMem09_addrb" type="array">
          <obj_property name="ElementShortName">tb_PreMem09_addrb[10:0]</obj_property>
          <obj_property name="ObjectShortName">tb_PreMem09_addrb[10:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group156" type="group">
+      <obj_property name="label">Window_RF09</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_FFT_controller/FFT_controller_i/FFT_window_coef_rom_rx09" type="array">
+         <obj_property name="ElementShortName">FFT_window_coef_rom_rx09[9:0]</obj_property>
+         <obj_property name="ObjectShortName">FFT_window_coef_rom_rx09[9:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
          <obj_property name="CustomSignalColor">#0000FF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
@@ -199,6 +211,18 @@
       <wvobject fp_name="/tb_FFT_controller/tb_PreMem24_addrb" type="array">
          <obj_property name="ElementShortName">tb_PreMem24_addrb[10:0]</obj_property>
          <obj_property name="ObjectShortName">tb_PreMem24_addrb[10:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group158" type="group">
+      <obj_property name="label">Window_RF24</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_FFT_controller/FFT_controller_i/FFT_window_coef_rom_rx24" type="array">
+         <obj_property name="ElementShortName">FFT_window_coef_rom_rx24[9:0]</obj_property>
+         <obj_property name="ObjectShortName">FFT_window_coef_rom_rx24[9:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
          <obj_property name="CustomSignalColor">#0000FF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>

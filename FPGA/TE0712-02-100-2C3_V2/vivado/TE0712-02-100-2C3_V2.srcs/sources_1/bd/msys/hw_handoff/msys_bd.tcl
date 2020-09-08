@@ -300,13 +300,13 @@ proc write_mig_file_msys_mig_7series_0_0 { str_mig_prj_filepath } {
 ##################################################################
 
 
-# Hierarchical cell: delay_rx24_3449minus1024clk
-proc create_hier_cell_delay_rx24_3449minus1024clk { parentCell nameHier } {
+# Hierarchical cell: delay_rx24_3459minus1024clk
+proc create_hier_cell_delay_rx24_3459minus1024clk { parentCell nameHier } {
 
   variable script_folder
 
   if { $parentCell eq "" || $nameHier eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_delay_rx24_3449minus1024clk() - Empty argument(s)!"}
+     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_delay_rx24_3459minus1024clk() - Empty argument(s)!"}
      return
   }
 
@@ -369,18 +369,18 @@ proc create_hier_cell_delay_rx24_3449minus1024clk { parentCell nameHier } {
    CONFIG.Width {32} \
  ] $c_shift_ram_dly1024_1
 
-  # Create instance: c_shift_ram_dly377_2, and set properties
-  set c_shift_ram_dly377_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_dly377_2 ]
+  # Create instance: c_shift_ram_dly387_2, and set properties
+  set c_shift_ram_dly387_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_dly387_2 ]
   set_property -dict [ list \
    CONFIG.AsyncInitVal {00000000000000000000000000000000} \
    CONFIG.DefaultData {00000000000000000000000000000000} \
-   CONFIG.Depth {377} \
+   CONFIG.Depth {387} \
    CONFIG.OptGoal {Resources} \
    CONFIG.SCLR {true} \
    CONFIG.ShiftRegType {Fixed_Length} \
    CONFIG.SyncInitVal {00000000000000000000000000000000} \
    CONFIG.Width {32} \
- ] $c_shift_ram_dly377_2
+ ] $c_shift_ram_dly387_2
 
   # Create instance: xlconcat_0, and set properties
   set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
@@ -393,23 +393,23 @@ proc create_hier_cell_delay_rx24_3449minus1024clk { parentCell nameHier } {
   connect_bd_net -net RF24_framectr_0 [get_bd_pins RF24_framectr] [get_bd_pins xlconcat_0/In1]
   connect_bd_net -net RF24_quarterfrm_0 [get_bd_pins RF24_quarterfrm] [get_bd_pins xlconcat_0/In0]
   connect_bd_net -net c_shift_ram_dly1024_0_Q [get_bd_pins c_shift_ram_dly1024_0/Q] [get_bd_pins c_shift_ram_dly1024_1/D]
-  connect_bd_net -net c_shift_ram_dly1024_1_Q [get_bd_pins c_shift_ram_dly1024_1/Q] [get_bd_pins c_shift_ram_dly377_2/D]
-  connect_bd_net -net c_shift_ram_dly126_3_Q [get_bd_pins premem_rx24_quarterfrm_out] [get_bd_pins c_shift_ram_dly377_2/Q]
-  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins reset_CD100_i] [get_bd_pins c_shift_ram_dly1024_0/SCLR] [get_bd_pins c_shift_ram_dly1024_1/SCLR] [get_bd_pins c_shift_ram_dly377_2/SCLR]
-  connect_bd_net -net s_axi_aclk_CD100 [get_bd_pins s_axi_aclk_CD100_i] [get_bd_pins c_shift_ram_dly1024_0/CLK] [get_bd_pins c_shift_ram_dly1024_1/CLK] [get_bd_pins c_shift_ram_dly377_2/CLK]
+  connect_bd_net -net c_shift_ram_dly1024_1_Q [get_bd_pins c_shift_ram_dly1024_1/Q] [get_bd_pins c_shift_ram_dly387_2/D]
+  connect_bd_net -net c_shift_ram_dly126_3_Q [get_bd_pins premem_rx24_quarterfrm_out] [get_bd_pins c_shift_ram_dly387_2/Q]
+  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins reset_CD100_i] [get_bd_pins c_shift_ram_dly1024_0/SCLR] [get_bd_pins c_shift_ram_dly1024_1/SCLR] [get_bd_pins c_shift_ram_dly387_2/SCLR]
+  connect_bd_net -net s_axi_aclk_CD100 [get_bd_pins s_axi_aclk_CD100_i] [get_bd_pins c_shift_ram_dly1024_0/CLK] [get_bd_pins c_shift_ram_dly1024_1/CLK] [get_bd_pins c_shift_ram_dly387_2/CLK]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins c_shift_ram_dly1024_0/D] [get_bd_pins xlconcat_0/dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
 }
 
-# Hierarchical cell: delay_rx09_3449minus1024clk
-proc create_hier_cell_delay_rx09_3449minus1024clk { parentCell nameHier } {
+# Hierarchical cell: delay_rx09_3459minus1024clk
+proc create_hier_cell_delay_rx09_3459minus1024clk { parentCell nameHier } {
 
   variable script_folder
 
   if { $parentCell eq "" || $nameHier eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_delay_rx09_3449minus1024clk() - Empty argument(s)!"}
+     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_delay_rx09_3459minus1024clk() - Empty argument(s)!"}
      return
   }
 
@@ -472,18 +472,18 @@ proc create_hier_cell_delay_rx09_3449minus1024clk { parentCell nameHier } {
    CONFIG.Width {32} \
  ] $c_shift_ram_dly1024_1
 
-  # Create instance: c_shift_ram_dly377_2, and set properties
-  set c_shift_ram_dly377_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_dly377_2 ]
+  # Create instance: c_shift_ram_dly387_2, and set properties
+  set c_shift_ram_dly387_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_dly387_2 ]
   set_property -dict [ list \
    CONFIG.AsyncInitVal {00000000000000000000000000000000} \
    CONFIG.DefaultData {00000000000000000000000000000000} \
-   CONFIG.Depth {377} \
+   CONFIG.Depth {387} \
    CONFIG.OptGoal {Resources} \
    CONFIG.SCLR {true} \
    CONFIG.ShiftRegType {Fixed_Length} \
    CONFIG.SyncInitVal {00000000000000000000000000000000} \
    CONFIG.Width {32} \
- ] $c_shift_ram_dly377_2
+ ] $c_shift_ram_dly387_2
 
   # Create instance: xlconcat_0, and set properties
   set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
@@ -496,10 +496,10 @@ proc create_hier_cell_delay_rx09_3449minus1024clk { parentCell nameHier } {
   connect_bd_net -net RF09_framectr_0 [get_bd_pins RF09_framectr] [get_bd_pins xlconcat_0/In1]
   connect_bd_net -net RF09_quarterfrm_0 [get_bd_pins RF09_quarterfrm] [get_bd_pins xlconcat_0/In0]
   connect_bd_net -net c_shift_ram_dly1024_0_Q [get_bd_pins c_shift_ram_dly1024_0/Q] [get_bd_pins c_shift_ram_dly1024_1/D]
-  connect_bd_net -net c_shift_ram_dly1024_1_Q [get_bd_pins c_shift_ram_dly1024_1/Q] [get_bd_pins c_shift_ram_dly377_2/D]
-  connect_bd_net -net c_shift_ram_dly126_3_Q [get_bd_pins premem_rx09_quarterfrm_out] [get_bd_pins c_shift_ram_dly377_2/Q]
-  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins reset_CD100_i] [get_bd_pins c_shift_ram_dly1024_0/SCLR] [get_bd_pins c_shift_ram_dly1024_1/SCLR] [get_bd_pins c_shift_ram_dly377_2/SCLR]
-  connect_bd_net -net s_axi_aclk_CD100 [get_bd_pins s_axi_aclk_CD100_i] [get_bd_pins c_shift_ram_dly1024_0/CLK] [get_bd_pins c_shift_ram_dly1024_1/CLK] [get_bd_pins c_shift_ram_dly377_2/CLK]
+  connect_bd_net -net c_shift_ram_dly1024_1_Q [get_bd_pins c_shift_ram_dly1024_1/Q] [get_bd_pins c_shift_ram_dly387_2/D]
+  connect_bd_net -net c_shift_ram_dly126_3_Q [get_bd_pins premem_rx09_quarterfrm_out] [get_bd_pins c_shift_ram_dly387_2/Q]
+  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins reset_CD100_i] [get_bd_pins c_shift_ram_dly1024_0/SCLR] [get_bd_pins c_shift_ram_dly1024_1/SCLR] [get_bd_pins c_shift_ram_dly387_2/SCLR]
+  connect_bd_net -net s_axi_aclk_CD100 [get_bd_pins s_axi_aclk_CD100_i] [get_bd_pins c_shift_ram_dly1024_0/CLK] [get_bd_pins c_shift_ram_dly1024_1/CLK] [get_bd_pins c_shift_ram_dly387_2/CLK]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins c_shift_ram_dly1024_0/D] [get_bd_pins xlconcat_0/dout]
 
   # Restore current instance
@@ -543,7 +543,8 @@ proc create_hier_cell_TRX_rx_FFT_calc { parentCell nameHier } {
   # Create interface pins
 
   # Create pins
-  create_bd_pin -dir O -from 15 -to 0 Dout
+  create_bd_pin -dir I -from 9 -to 0 FFT_window_coef_rom_rx09
+  create_bd_pin -dir I -from 9 -to 0 FFT_window_coef_rom_rx24
   create_bd_pin -dir I -from 29 -to 0 RF09_framectr
   create_bd_pin -dir I -from 1 -to 0 -type data RF09_quarterfrm
   create_bd_pin -dir I -from 29 -to 0 RF24_framectr
@@ -569,7 +570,8 @@ proc create_hier_cell_TRX_rx_FFT_calc { parentCell nameHier } {
   create_bd_pin -dir I -from 12 -to 0 fft_s_data_rx24_im_in
   create_bd_pin -dir I -from 12 -to 0 fft_s_data_rx24_re_in
   create_bd_pin -dir I -type rst rst_mig_7series_0_100M_peripheral_reset_in
-  create_bd_pin -dir O -from 15 -to 0 rx09_postmem_re_out
+  create_bd_pin -dir O -from 15 -to 0 rx09_postmem_magnitude_out
+  create_bd_pin -dir O -from 15 -to 0 rx24_postmem_magnitude_out
   create_bd_pin -dir I -type clk s_axi_aclk_CD100_in
   create_bd_pin -dir O -type intr xfft_rx09_dly3449_event_data_in_channel_halt_out
   create_bd_pin -dir O -type intr xfft_rx09_dly3449_event_frame_started_out
@@ -588,8 +590,8 @@ proc create_hier_cell_TRX_rx_FFT_calc { parentCell nameHier } {
    CONFIG.Compensation_Scaling {Embedded_Multiplier} \
    CONFIG.Data_Format {SignedFraction} \
    CONFIG.Functional_Selection {Translate} \
-   CONFIG.Input_Width {24} \
-   CONFIG.Output_Width {32} \
+   CONFIG.Input_Width {27} \
+   CONFIG.Output_Width {16} \
    CONFIG.Round_Mode {Nearest_Even} \
    CONFIG.cartesian_has_tlast {true} \
    CONFIG.cartesian_has_tuser {true} \
@@ -627,8 +629,8 @@ proc create_hier_cell_TRX_rx_FFT_calc { parentCell nameHier } {
    CONFIG.Compensation_Scaling {Embedded_Multiplier} \
    CONFIG.Data_Format {SignedFraction} \
    CONFIG.Functional_Selection {Translate} \
-   CONFIG.Input_Width {24} \
-   CONFIG.Output_Width {32} \
+   CONFIG.Input_Width {27} \
+   CONFIG.Output_Width {16} \
    CONFIG.Round_Mode {Nearest_Even} \
    CONFIG.cartesian_has_tlast {true} \
    CONFIG.cartesian_has_tuser {true} \
@@ -658,56 +660,150 @@ proc create_hier_cell_TRX_rx_FFT_calc { parentCell nameHier } {
    CONFIG.DOUT_WIDTH {5} \
  ] $cordic_rx24_xlslice_4downto0
 
-  # Create instance: delay_rx09_3449minus1024clk
-  create_hier_cell_delay_rx09_3449minus1024clk $hier_obj delay_rx09_3449minus1024clk
+  # Create instance: delay_rx09_3459minus1024clk
+  create_hier_cell_delay_rx09_3459minus1024clk $hier_obj delay_rx09_3459minus1024clk
 
-  # Create instance: delay_rx24_3449minus1024clk
-  create_hier_cell_delay_rx24_3449minus1024clk $hier_obj delay_rx24_3449minus1024clk
+  # Create instance: delay_rx24_3459minus1024clk
+  create_hier_cell_delay_rx24_3459minus1024clk $hier_obj delay_rx24_3459minus1024clk
 
   # Create instance: fft_rx09_s_data_xlconcat_0, and set properties
   set fft_rx09_s_data_xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 fft_rx09_s_data_xlconcat_0 ]
   set_property -dict [ list \
-   CONFIG.IN0_WIDTH {13} \
-   CONFIG.IN1_WIDTH {3} \
+   CONFIG.IN0_WIDTH {16} \
+   CONFIG.IN1_WIDTH {16} \
    CONFIG.IN2_WIDTH {13} \
    CONFIG.IN3_WIDTH {3} \
    CONFIG.IN4_WIDTH {13} \
    CONFIG.IN5_WIDTH {3} \
    CONFIG.IN6_WIDTH {13} \
    CONFIG.IN7_WIDTH {3} \
-   CONFIG.NUM_PORTS {4} \
+   CONFIG.NUM_PORTS {2} \
  ] $fft_rx09_s_data_xlconcat_0
 
   # Create instance: fft_rx24_s_data_xlconcat_0, and set properties
   set fft_rx24_s_data_xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 fft_rx24_s_data_xlconcat_0 ]
   set_property -dict [ list \
-   CONFIG.IN0_WIDTH {13} \
-   CONFIG.IN1_WIDTH {3} \
+   CONFIG.IN0_WIDTH {16} \
+   CONFIG.IN1_WIDTH {16} \
    CONFIG.IN2_WIDTH {13} \
    CONFIG.IN3_WIDTH {3} \
-   CONFIG.NUM_PORTS {4} \
+   CONFIG.NUM_PORTS {2} \
  ] $fft_rx24_s_data_xlconcat_0
 
-  # Create instance: rx09_xlslice_31to16, and set properties
-  set rx09_xlslice_31to16 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 rx09_xlslice_31to16 ]
+  # Create instance: rx09_xlslice_15downto0, and set properties
+  set rx09_xlslice_15downto0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 rx09_xlslice_15downto0 ]
   set_property -dict [ list \
-   CONFIG.DIN_FROM {31} \
-   CONFIG.DIN_TO {16} \
-   CONFIG.DIN_WIDTH {64} \
+   CONFIG.DIN_FROM {15} \
+   CONFIG.DIN_TO {0} \
+   CONFIG.DIN_WIDTH {32} \
    CONFIG.DOUT_WIDTH {16} \
- ] $rx09_xlslice_31to16
+ ] $rx09_xlslice_15downto0
 
-  # Create instance: rx24_xlslice_31to16, and set properties
-  set rx24_xlslice_31to16 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 rx24_xlslice_31to16 ]
+  # Create instance: rx24_xlslice_15downto0, and set properties
+  set rx24_xlslice_15downto0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 rx24_xlslice_15downto0 ]
   set_property -dict [ list \
-   CONFIG.DIN_FROM {31} \
-   CONFIG.DIN_TO {16} \
-   CONFIG.DIN_WIDTH {64} \
+   CONFIG.DIN_FROM {15} \
+   CONFIG.DIN_TO {0} \
+   CONFIG.DIN_WIDTH {32} \
    CONFIG.DOUT_WIDTH {16} \
- ] $rx24_xlslice_31to16
+ ] $rx24_xlslice_15downto0
 
-  # Create instance: xfft_rx09_dly3449, and set properties
-  set xfft_rx09_dly3449 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xfft:9.1 xfft_rx09_dly3449 ]
+  # Create instance: window_coef_rom_blk_mem_gen_0, and set properties
+  set window_coef_rom_blk_mem_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 window_coef_rom_blk_mem_gen_0 ]
+  set_property -dict [ list \
+   CONFIG.Assume_Synchronous_Clk {true} \
+   CONFIG.Byte_Size {9} \
+   CONFIG.Coe_File {../../../../new/window_hann_1024_16bit_unsigned.coe} \
+   CONFIG.EN_SAFETY_CKT {false} \
+   CONFIG.Enable_32bit_Address {false} \
+   CONFIG.Enable_A {Always_Enabled} \
+   CONFIG.Enable_B {Always_Enabled} \
+   CONFIG.Fill_Remaining_Memory_Locations {false} \
+   CONFIG.Load_Init_File {true} \
+   CONFIG.Memory_Type {Dual_Port_ROM} \
+   CONFIG.Port_A_Write_Rate {0} \
+   CONFIG.Port_B_Clock {100} \
+   CONFIG.Port_B_Enable_Rate {100} \
+   CONFIG.Read_Width_A {16} \
+   CONFIG.Read_Width_B {16} \
+   CONFIG.Register_PortA_Output_of_Memory_Core {true} \
+   CONFIG.Register_PortA_Output_of_Memory_Primitives {false} \
+   CONFIG.Register_PortB_Output_of_Memory_Core {true} \
+   CONFIG.Register_PortB_Output_of_Memory_Primitives {false} \
+   CONFIG.Use_Byte_Write_Enable {false} \
+   CONFIG.Use_RSTA_Pin {false} \
+   CONFIG.Write_Depth_A {1024} \
+   CONFIG.Write_Width_A {16} \
+   CONFIG.Write_Width_B {16} \
+   CONFIG.use_bram_block {Stand_Alone} \
+ ] $window_coef_rom_blk_mem_gen_0
+
+  # Create instance: window_rx09_im_mult_gen_0, and set properties
+  set window_rx09_im_mult_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:mult_gen:12.0 window_rx09_im_mult_gen_0 ]
+  set_property -dict [ list \
+   CONFIG.Multiplier_Construction {Use_Mults} \
+   CONFIG.OutputWidthHigh {28} \
+   CONFIG.OutputWidthLow {13} \
+   CONFIG.PipeStages {3} \
+   CONFIG.PortAType {Signed} \
+   CONFIG.PortAWidth {13} \
+   CONFIG.PortBType {Unsigned} \
+   CONFIG.PortBWidth {16} \
+   CONFIG.RoundPoint {13} \
+   CONFIG.UseRounding {true} \
+   CONFIG.Use_Custom_Output_Width {true} \
+ ] $window_rx09_im_mult_gen_0
+
+  # Create instance: window_rx09_re_mult_gen_0, and set properties
+  set window_rx09_re_mult_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:mult_gen:12.0 window_rx09_re_mult_gen_0 ]
+  set_property -dict [ list \
+   CONFIG.Multiplier_Construction {Use_Mults} \
+   CONFIG.OutputWidthHigh {28} \
+   CONFIG.OutputWidthLow {13} \
+   CONFIG.PipeStages {3} \
+   CONFIG.PortAType {Signed} \
+   CONFIG.PortAWidth {13} \
+   CONFIG.PortBType {Unsigned} \
+   CONFIG.PortBWidth {16} \
+   CONFIG.RoundPoint {13} \
+   CONFIG.UseRounding {true} \
+   CONFIG.Use_Custom_Output_Width {true} \
+ ] $window_rx09_re_mult_gen_0
+
+  # Create instance: window_rx24_im_mult_gen_0, and set properties
+  set window_rx24_im_mult_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:mult_gen:12.0 window_rx24_im_mult_gen_0 ]
+  set_property -dict [ list \
+   CONFIG.Multiplier_Construction {Use_Mults} \
+   CONFIG.OutputWidthHigh {28} \
+   CONFIG.OutputWidthLow {13} \
+   CONFIG.PipeStages {3} \
+   CONFIG.PortAType {Signed} \
+   CONFIG.PortAWidth {13} \
+   CONFIG.PortBType {Unsigned} \
+   CONFIG.PortBWidth {16} \
+   CONFIG.RoundPoint {13} \
+   CONFIG.UseRounding {true} \
+   CONFIG.Use_Custom_Output_Width {true} \
+ ] $window_rx24_im_mult_gen_0
+
+  # Create instance: window_rx24_re_mult_gen_0, and set properties
+  set window_rx24_re_mult_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:mult_gen:12.0 window_rx24_re_mult_gen_0 ]
+  set_property -dict [ list \
+   CONFIG.Multiplier_Construction {Use_Mults} \
+   CONFIG.OutputWidthHigh {28} \
+   CONFIG.OutputWidthLow {13} \
+   CONFIG.PipeStages {3} \
+   CONFIG.PortAType {Signed} \
+   CONFIG.PortAWidth {13} \
+   CONFIG.PortBType {Unsigned} \
+   CONFIG.PortBWidth {16} \
+   CONFIG.RoundPoint {13} \
+   CONFIG.UseRounding {true} \
+   CONFIG.Use_Custom_Output_Width {true} \
+ ] $window_rx24_re_mult_gen_0
+
+  # Create instance: xfft_rx09_dly3459, and set properties
+  set xfft_rx09_dly3459 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xfft:9.1 xfft_rx09_dly3459 ]
   set_property -dict [ list \
    CONFIG.aresetn {true} \
    CONFIG.butterfly_type {use_xtremedsp_slices} \
@@ -716,7 +812,7 @@ proc create_hier_cell_TRX_rx_FFT_calc { parentCell nameHier } {
    CONFIG.cyclic_prefix_insertion {false} \
    CONFIG.data_format {fixed_point} \
    CONFIG.implementation_options {radix_4_burst_io} \
-   CONFIG.input_width {13} \
+   CONFIG.input_width {16} \
    CONFIG.memory_options_data {block_ram} \
    CONFIG.memory_options_hybrid {true} \
    CONFIG.memory_options_phase_factors {block_ram} \
@@ -729,17 +825,17 @@ proc create_hier_cell_TRX_rx_FFT_calc { parentCell nameHier } {
    CONFIG.throttle_scheme {realtime} \
    CONFIG.transform_length {1024} \
    CONFIG.xk_index {true} \
- ] $xfft_rx09_dly3449
+ ] $xfft_rx09_dly3459
 
-  # Create instance: xfft_rx24_dly3449, and set properties
-  set xfft_rx24_dly3449 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xfft:9.1 xfft_rx24_dly3449 ]
+  # Create instance: xfft_rx24_dly3459, and set properties
+  set xfft_rx24_dly3459 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xfft:9.1 xfft_rx24_dly3459 ]
   set_property -dict [ list \
    CONFIG.aresetn {true} \
    CONFIG.butterfly_type {use_xtremedsp_slices} \
    CONFIG.complex_mult_type {use_mults_performance} \
    CONFIG.data_format {fixed_point} \
    CONFIG.implementation_options {radix_4_burst_io} \
-   CONFIG.input_width {13} \
+   CONFIG.input_width {16} \
    CONFIG.memory_options_hybrid {true} \
    CONFIG.number_of_stages_using_block_ram_for_data_and_phase_factors {0} \
    CONFIG.output_ordering {bit_reversed_order} \
@@ -749,7 +845,7 @@ proc create_hier_cell_TRX_rx_FFT_calc { parentCell nameHier } {
    CONFIG.target_data_throughput {50} \
    CONFIG.throttle_scheme {realtime} \
    CONFIG.xk_index {true} \
- ] $xfft_rx24_dly3449
+ ] $xfft_rx24_dly3459
 
   # Create instance: xlconstant_0x0_len3, and set properties
   set xlconstant_0x0_len3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0x0_len3 ]
@@ -759,63 +855,70 @@ proc create_hier_cell_TRX_rx_FFT_calc { parentCell nameHier } {
  ] $xlconstant_0x0_len3
 
   # Create port connections
-  connect_bd_net -net RF09_framectr_0 [get_bd_pins RF09_framectr] [get_bd_pins delay_rx09_3449minus1024clk/RF09_framectr]
-  connect_bd_net -net RF09_quarterfrm_0 [get_bd_pins RF09_quarterfrm] [get_bd_pins delay_rx09_3449minus1024clk/RF09_quarterfrm]
-  connect_bd_net -net RF24_framectr_0 [get_bd_pins RF24_framectr] [get_bd_pins delay_rx24_3449minus1024clk/RF24_framectr]
-  connect_bd_net -net RF24_quarterfrm_0 [get_bd_pins RF24_quarterfrm] [get_bd_pins delay_rx24_3449minus1024clk/RF24_quarterfrm]
-  connect_bd_net -net TRX_rx_xfft_dly8334_m_axis_data_tlast_0 [get_bd_pins cordic_rx09/s_axis_cartesian_tlast] [get_bd_pins xfft_rx09_dly3449/m_axis_data_tlast]
-  connect_bd_net -net TRX_rx_xfft_dly8334_m_axis_data_tvalid_0 [get_bd_pins cordic_rx09/s_axis_cartesian_tvalid] [get_bd_pins xfft_rx09_dly3449/m_axis_data_tvalid]
+  connect_bd_net -net FFT_window_coef_rom_rx09_1 [get_bd_pins FFT_window_coef_rom_rx09] [get_bd_pins window_coef_rom_blk_mem_gen_0/addra]
+  connect_bd_net -net FFT_window_coef_rom_rx24_1 [get_bd_pins FFT_window_coef_rom_rx24] [get_bd_pins window_coef_rom_blk_mem_gen_0/addrb]
+  connect_bd_net -net RF09_framectr_0 [get_bd_pins RF09_framectr] [get_bd_pins delay_rx09_3459minus1024clk/RF09_framectr]
+  connect_bd_net -net RF09_quarterfrm_0 [get_bd_pins RF09_quarterfrm] [get_bd_pins delay_rx09_3459minus1024clk/RF09_quarterfrm]
+  connect_bd_net -net RF24_framectr_0 [get_bd_pins RF24_framectr] [get_bd_pins delay_rx24_3459minus1024clk/RF24_framectr]
+  connect_bd_net -net RF24_quarterfrm_0 [get_bd_pins RF24_quarterfrm] [get_bd_pins delay_rx24_3459minus1024clk/RF24_quarterfrm]
+  connect_bd_net -net TRX_rx_xfft_dly8334_m_axis_data_tlast_0 [get_bd_pins cordic_rx09/s_axis_cartesian_tlast] [get_bd_pins xfft_rx09_dly3459/m_axis_data_tlast]
+  connect_bd_net -net TRX_rx_xfft_dly8334_m_axis_data_tvalid_0 [get_bd_pins cordic_rx09/s_axis_cartesian_tvalid] [get_bd_pins xfft_rx09_dly3459/m_axis_data_tvalid]
+  connect_bd_net -net blk_mem_gen_0_douta [get_bd_pins window_coef_rom_blk_mem_gen_0/douta] [get_bd_pins window_rx09_im_mult_gen_0/B] [get_bd_pins window_rx09_re_mult_gen_0/B]
+  connect_bd_net -net blk_mem_gen_0_doutb [get_bd_pins window_coef_rom_blk_mem_gen_0/doutb] [get_bd_pins window_rx24_im_mult_gen_0/B] [get_bd_pins window_rx24_re_mult_gen_0/B]
   connect_bd_net -net cordic_rx09_addra_xlslice_9to0_Dout [get_bd_pins cordic_rx09_addra_xlslice_9to0/Dout] [get_bd_pins cordic_rx09_xlconcat_0/In0]
-  connect_bd_net -net cordic_rx09_m_axis_dout_tdata [get_bd_pins cordic_rx09/m_axis_dout_tdata] [get_bd_pins rx09_xlslice_31to16/Din]
+  connect_bd_net -net cordic_rx09_m_axis_dout_tdata [get_bd_pins cordic_rx09/m_axis_dout_tdata] [get_bd_pins rx09_xlslice_15downto0/Din]
   connect_bd_net -net cordic_rx09_m_tuser_out_0 [get_bd_pins cordic_rx09_m_tuser_out] [get_bd_pins cordic_rx09/m_axis_dout_tuser]
   connect_bd_net -net cordic_rx09_tvalid_out_0 [get_bd_pins cordic_rx09_tvalid_out] [get_bd_pins cordic_rx09/m_axis_dout_tvalid]
   connect_bd_net -net cordic_rx09_xlconcat_0_dout [get_bd_pins cordic_rx09/s_axis_cartesian_tuser] [get_bd_pins cordic_rx09_xlconcat_0/dout]
   connect_bd_net -net cordic_rx09_xlslice_4downto0_Dout [get_bd_pins cordic_rx09_xlconcat_0/In1] [get_bd_pins cordic_rx09_xlslice_4downto0/Dout]
   connect_bd_net -net cordic_rx24_addra_xlslice_9to0_Dout [get_bd_pins cordic_rx24_addra_xlslice_9to0/Dout] [get_bd_pins cordic_rx24_xlconcat_0/In0]
-  connect_bd_net -net cordic_rx24_m_axis_dout_tdata [get_bd_pins cordic_rx24/m_axis_dout_tdata] [get_bd_pins rx24_xlslice_31to16/Din]
+  connect_bd_net -net cordic_rx24_m_axis_dout_tdata [get_bd_pins cordic_rx24/m_axis_dout_tdata] [get_bd_pins rx24_xlslice_15downto0/Din]
   connect_bd_net -net cordic_rx24_m_tuser_out_0 [get_bd_pins cordic_rx24_m_tuser_out] [get_bd_pins cordic_rx24/m_axis_dout_tuser]
   connect_bd_net -net cordic_rx24_tvalid_out_0 [get_bd_pins cordic_rx24_tvalid_out] [get_bd_pins cordic_rx24/m_axis_dout_tvalid]
   connect_bd_net -net cordic_rx24_xlconcat_0_dout [get_bd_pins cordic_rx24/s_axis_cartesian_tuser] [get_bd_pins cordic_rx24_xlconcat_0/dout]
   connect_bd_net -net cordic_rx24_xlslice_4downto0_Dout [get_bd_pins cordic_rx24_xlconcat_0/In1] [get_bd_pins cordic_rx24_xlslice_4downto0/Dout]
-  connect_bd_net -net delay_rx09_3449minus1024clk_premem_rx09_quarterfrm_out [get_bd_pins cordic_rx09_xlslice_4downto0/Din] [get_bd_pins delay_rx09_3449minus1024clk/premem_rx09_quarterfrm_out]
-  connect_bd_net -net delay_rx24_3449minus1024clk_premem_rx24_quarterfrm_out [get_bd_pins cordic_rx24_xlslice_4downto0/Din] [get_bd_pins delay_rx24_3449minus1024clk/premem_rx24_quarterfrm_out]
-  connect_bd_net -net fft09_aresetn_in_0 [get_bd_pins fft09_aresetn_in] [get_bd_pins cordic_rx09/aresetn] [get_bd_pins xfft_rx09_dly3449/aresetn]
-  connect_bd_net -net fft09_config_tdata_in_0 [get_bd_pins fft09_config_tdata_in] [get_bd_pins xfft_rx09_dly3449/s_axis_config_tdata]
-  connect_bd_net -net fft09_config_tvalid_in_0 [get_bd_pins fft09_config_tvalid_in] [get_bd_pins xfft_rx09_dly3449/s_axis_config_tvalid]
-  connect_bd_net -net fft09_data_tlast_in_0 [get_bd_pins fft09_data_tlast_in] [get_bd_pins xfft_rx09_dly3449/s_axis_data_tlast]
-  connect_bd_net -net fft09_data_tready_out_0 [get_bd_pins fft09_data_tready_out] [get_bd_pins xfft_rx09_dly3449/s_axis_data_tready]
-  connect_bd_net -net fft09_data_tvalid_in_0 [get_bd_pins fft09_data_tvalid_in] [get_bd_pins xfft_rx09_dly3449/s_axis_data_tvalid]
-  connect_bd_net -net fft09_s_data_xlconcat_0_dout [get_bd_pins fft_rx09_s_data_xlconcat_0/dout] [get_bd_pins xfft_rx09_dly3449/s_axis_data_tdata]
-  connect_bd_net -net fft24_aresetn_in_0 [get_bd_pins fft24_aresetn_in_0] [get_bd_pins cordic_rx24/aresetn] [get_bd_pins xfft_rx24_dly3449/aresetn]
-  connect_bd_net -net fft24_config_tdata_in_0 [get_bd_pins fft24_config_tdata_in] [get_bd_pins xfft_rx24_dly3449/s_axis_config_tdata]
-  connect_bd_net -net fft24_config_tvalid_in_0 [get_bd_pins fft24_config_tvalid_in] [get_bd_pins xfft_rx24_dly3449/s_axis_config_tvalid]
-  connect_bd_net -net fft24_data_tlast_in_0 [get_bd_pins fft24_data_tlast_in] [get_bd_pins xfft_rx24_dly3449/s_axis_data_tlast]
-  connect_bd_net -net fft24_data_tready_out_0 [get_bd_pins fft24_data_tready_out] [get_bd_pins xfft_rx24_dly3449/s_axis_data_tready]
-  connect_bd_net -net fft24_data_tvalid_in_0 [get_bd_pins fft24_data_tvalid_in] [get_bd_pins xfft_rx24_dly3449/s_axis_data_tvalid]
-  connect_bd_net -net fft24_s_data_xlconcat_0_dout [get_bd_pins fft_rx24_s_data_xlconcat_0/dout] [get_bd_pins xfft_rx24_dly3449/s_axis_data_tdata]
-  connect_bd_net -net fft_s_data_rx09_im_in_0 [get_bd_pins fft_s_data_rx09_im_in] [get_bd_pins fft_rx09_s_data_xlconcat_0/In2]
-  connect_bd_net -net fft_s_data_rx09_re_in_0 [get_bd_pins fft_s_data_rx09_re_in] [get_bd_pins fft_rx09_s_data_xlconcat_0/In0]
-  connect_bd_net -net fft_s_data_rx24_im_in_0 [get_bd_pins fft_s_data_rx24_im_in] [get_bd_pins fft_rx24_s_data_xlconcat_0/In2]
-  connect_bd_net -net fft_s_data_rx24_re_in_0 [get_bd_pins fft_s_data_rx24_re_in] [get_bd_pins fft_rx24_s_data_xlconcat_0/In0]
-  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset_0 [get_bd_pins rst_mig_7series_0_100M_peripheral_reset_in] [get_bd_pins delay_rx09_3449minus1024clk/reset_CD100_i] [get_bd_pins delay_rx24_3449minus1024clk/reset_CD100_i]
-  connect_bd_net -net rx09_postmem_re_0 [get_bd_pins rx09_postmem_re_out] [get_bd_pins rx09_xlslice_31to16/Dout]
-  connect_bd_net -net rx24_xlslice_31to00_Dout [get_bd_pins Dout] [get_bd_pins rx24_xlslice_31to16/Dout]
-  connect_bd_net -net s_axi_aclk_CD100_0 [get_bd_pins s_axi_aclk_CD100_in] [get_bd_pins cordic_rx09/aclk] [get_bd_pins cordic_rx24/aclk] [get_bd_pins delay_rx09_3449minus1024clk/s_axi_aclk_CD100_i] [get_bd_pins delay_rx24_3449minus1024clk/s_axi_aclk_CD100_i] [get_bd_pins xfft_rx09_dly3449/aclk] [get_bd_pins xfft_rx24_dly3449/aclk]
-  connect_bd_net -net xfft_rx09_dly3198_m_axis_data_tdata_0 [get_bd_pins cordic_rx09/s_axis_cartesian_tdata] [get_bd_pins xfft_rx09_dly3449/m_axis_data_tdata]
-  connect_bd_net -net xfft_rx09_dly3198_m_axis_data_tuser [get_bd_pins cordic_rx09_addra_xlslice_9to0/Din] [get_bd_pins xfft_rx09_dly3449/m_axis_data_tuser]
-  connect_bd_net -net xfft_rx09_dly3449_event_data_in_channel_halt_out_0 [get_bd_pins xfft_rx09_dly3449_event_data_in_channel_halt_out] [get_bd_pins xfft_rx09_dly3449/event_data_in_channel_halt]
-  connect_bd_net -net xfft_rx09_dly3449_event_frame_started_out_0 [get_bd_pins xfft_rx09_dly3449_event_frame_started_out] [get_bd_pins xfft_rx09_dly3449/event_frame_started]
-  connect_bd_net -net xfft_rx09_dly3449_event_tlast_missing_out_0 [get_bd_pins xfft_rx09_dly3449_event_tlast_missing_out] [get_bd_pins xfft_rx09_dly3449/event_tlast_missing]
-  connect_bd_net -net xfft_rx09_dly3449_event_tlast_unexpected_out_0 [get_bd_pins xfft_rx09_dly3449_event_tlast_unexpected_out] [get_bd_pins xfft_rx09_dly3449/event_tlast_unexpected]
-  connect_bd_net -net xfft_rx24_dly3198_event_data_in_channel_halt_out_0 [get_bd_pins xfft_rx24_dly3198_event_data_in_channel_halt_out] [get_bd_pins xfft_rx24_dly3449/event_data_in_channel_halt]
-  connect_bd_net -net xfft_rx24_dly3198_event_tlast_missing_out_0 [get_bd_pins xfft_rx24_dly3198_event_tlast_missing_out] [get_bd_pins xfft_rx24_dly3449/event_tlast_missing]
-  connect_bd_net -net xfft_rx24_dly3198_event_tlast_unexpected_out_0 [get_bd_pins xfft_rx24_dly3198_event_tlast_unexpected_out] [get_bd_pins xfft_rx24_dly3449/event_tlast_unexpected]
-  connect_bd_net -net xfft_rx24_dly3198_m_axis_data_tdata_0 [get_bd_pins cordic_rx24/s_axis_cartesian_tdata] [get_bd_pins xfft_rx24_dly3449/m_axis_data_tdata]
-  connect_bd_net -net xfft_rx24_dly3198_m_axis_data_tlast_0 [get_bd_pins cordic_rx24/s_axis_cartesian_tlast] [get_bd_pins xfft_rx24_dly3449/m_axis_data_tlast]
-  connect_bd_net -net xfft_rx24_dly3198_m_axis_data_tuser [get_bd_pins cordic_rx24_addra_xlslice_9to0/Din] [get_bd_pins xfft_rx24_dly3449/m_axis_data_tuser]
-  connect_bd_net -net xfft_rx24_dly3198_m_axis_data_tvalid_0 [get_bd_pins cordic_rx24/s_axis_cartesian_tvalid] [get_bd_pins xfft_rx24_dly3449/m_axis_data_tvalid]
-  connect_bd_net -net xfft_rx24_dly3449_event_frame_started_out_0 [get_bd_pins xfft_rx24_dly3449_event_frame_started_out] [get_bd_pins xfft_rx24_dly3449/event_frame_started]
-  connect_bd_net -net xlconstant_0x0_len3_dout [get_bd_pins fft_rx09_s_data_xlconcat_0/In1] [get_bd_pins fft_rx09_s_data_xlconcat_0/In3] [get_bd_pins fft_rx24_s_data_xlconcat_0/In1] [get_bd_pins fft_rx24_s_data_xlconcat_0/In3] [get_bd_pins xlconstant_0x0_len3/dout]
+  connect_bd_net -net delay_rx09_3449minus1024clk_premem_rx09_quarterfrm_out [get_bd_pins cordic_rx09_xlslice_4downto0/Din] [get_bd_pins delay_rx09_3459minus1024clk/premem_rx09_quarterfrm_out]
+  connect_bd_net -net delay_rx24_3449minus1024clk_premem_rx24_quarterfrm_out [get_bd_pins cordic_rx24_xlslice_4downto0/Din] [get_bd_pins delay_rx24_3459minus1024clk/premem_rx24_quarterfrm_out]
+  connect_bd_net -net fft09_aresetn_in_0 [get_bd_pins fft09_aresetn_in] [get_bd_pins cordic_rx09/aresetn] [get_bd_pins xfft_rx09_dly3459/aresetn]
+  connect_bd_net -net fft09_config_tdata_in_0 [get_bd_pins fft09_config_tdata_in] [get_bd_pins xfft_rx09_dly3459/s_axis_config_tdata]
+  connect_bd_net -net fft09_config_tvalid_in_0 [get_bd_pins fft09_config_tvalid_in] [get_bd_pins xfft_rx09_dly3459/s_axis_config_tvalid]
+  connect_bd_net -net fft09_data_tlast_in_0 [get_bd_pins fft09_data_tlast_in] [get_bd_pins xfft_rx09_dly3459/s_axis_data_tlast]
+  connect_bd_net -net fft09_data_tready_out_0 [get_bd_pins fft09_data_tready_out] [get_bd_pins xfft_rx09_dly3459/s_axis_data_tready]
+  connect_bd_net -net fft09_data_tvalid_in_0 [get_bd_pins fft09_data_tvalid_in] [get_bd_pins xfft_rx09_dly3459/s_axis_data_tvalid]
+  connect_bd_net -net fft09_s_data_xlconcat_0_dout [get_bd_pins fft_rx09_s_data_xlconcat_0/dout] [get_bd_pins xfft_rx09_dly3459/s_axis_data_tdata]
+  connect_bd_net -net fft24_aresetn_in_0 [get_bd_pins fft24_aresetn_in_0] [get_bd_pins cordic_rx24/aresetn] [get_bd_pins xfft_rx24_dly3459/aresetn]
+  connect_bd_net -net fft24_config_tdata_in_0 [get_bd_pins fft24_config_tdata_in] [get_bd_pins xfft_rx24_dly3459/s_axis_config_tdata]
+  connect_bd_net -net fft24_config_tvalid_in_0 [get_bd_pins fft24_config_tvalid_in] [get_bd_pins xfft_rx24_dly3459/s_axis_config_tvalid]
+  connect_bd_net -net fft24_data_tlast_in_0 [get_bd_pins fft24_data_tlast_in] [get_bd_pins xfft_rx24_dly3459/s_axis_data_tlast]
+  connect_bd_net -net fft24_data_tready_out_0 [get_bd_pins fft24_data_tready_out] [get_bd_pins xfft_rx24_dly3459/s_axis_data_tready]
+  connect_bd_net -net fft24_data_tvalid_in_0 [get_bd_pins fft24_data_tvalid_in] [get_bd_pins xfft_rx24_dly3459/s_axis_data_tvalid]
+  connect_bd_net -net fft24_s_data_xlconcat_0_dout [get_bd_pins fft_rx24_s_data_xlconcat_0/dout] [get_bd_pins xfft_rx24_dly3459/s_axis_data_tdata]
+  connect_bd_net -net fft_s_data_rx09_im_in_0 [get_bd_pins fft_s_data_rx09_im_in] [get_bd_pins window_rx09_im_mult_gen_0/A]
+  connect_bd_net -net fft_s_data_rx09_re_in_0 [get_bd_pins fft_s_data_rx09_re_in] [get_bd_pins window_rx09_re_mult_gen_0/A]
+  connect_bd_net -net fft_s_data_rx24_im_in_0 [get_bd_pins fft_s_data_rx24_im_in] [get_bd_pins window_rx24_im_mult_gen_0/A]
+  connect_bd_net -net fft_s_data_rx24_re_in_0 [get_bd_pins fft_s_data_rx24_re_in] [get_bd_pins window_rx24_re_mult_gen_0/A]
+  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset_0 [get_bd_pins rst_mig_7series_0_100M_peripheral_reset_in] [get_bd_pins delay_rx09_3459minus1024clk/reset_CD100_i] [get_bd_pins delay_rx24_3459minus1024clk/reset_CD100_i]
+  connect_bd_net -net rx09_postmem_magnitude_0 [get_bd_pins rx09_postmem_magnitude_out] [get_bd_pins rx09_xlslice_15downto0/Dout]
+  connect_bd_net -net rx24_postmem_magnitude_0 [get_bd_pins rx24_postmem_magnitude_out] [get_bd_pins rx24_xlslice_15downto0/Dout]
+  connect_bd_net -net s_axi_aclk_CD100_0 [get_bd_pins s_axi_aclk_CD100_in] [get_bd_pins cordic_rx09/aclk] [get_bd_pins cordic_rx24/aclk] [get_bd_pins delay_rx09_3459minus1024clk/s_axi_aclk_CD100_i] [get_bd_pins delay_rx24_3459minus1024clk/s_axi_aclk_CD100_i] [get_bd_pins window_coef_rom_blk_mem_gen_0/clka] [get_bd_pins window_coef_rom_blk_mem_gen_0/clkb] [get_bd_pins window_rx09_im_mult_gen_0/CLK] [get_bd_pins window_rx09_re_mult_gen_0/CLK] [get_bd_pins window_rx24_im_mult_gen_0/CLK] [get_bd_pins window_rx24_re_mult_gen_0/CLK] [get_bd_pins xfft_rx09_dly3459/aclk] [get_bd_pins xfft_rx24_dly3459/aclk]
+  connect_bd_net -net window_rx09_im_mult_gen_0_P [get_bd_pins fft_rx09_s_data_xlconcat_0/In1] [get_bd_pins window_rx09_im_mult_gen_0/P]
+  connect_bd_net -net window_rx09_re_mult_gen_0_P [get_bd_pins fft_rx09_s_data_xlconcat_0/In0] [get_bd_pins window_rx09_re_mult_gen_0/P]
+  connect_bd_net -net window_rx24_im_mult_gen_0_P [get_bd_pins fft_rx24_s_data_xlconcat_0/In1] [get_bd_pins window_rx24_im_mult_gen_0/P]
+  connect_bd_net -net window_rx24_re_mult_gen_0_P [get_bd_pins fft_rx24_s_data_xlconcat_0/In0] [get_bd_pins window_rx24_re_mult_gen_0/P]
+  connect_bd_net -net xfft_rx09_dly3198_m_axis_data_tdata_0 [get_bd_pins cordic_rx09/s_axis_cartesian_tdata] [get_bd_pins xfft_rx09_dly3459/m_axis_data_tdata]
+  connect_bd_net -net xfft_rx09_dly3198_m_axis_data_tuser [get_bd_pins cordic_rx09_addra_xlslice_9to0/Din] [get_bd_pins xfft_rx09_dly3459/m_axis_data_tuser]
+  connect_bd_net -net xfft_rx09_dly3449_event_data_in_channel_halt_out_0 [get_bd_pins xfft_rx09_dly3449_event_data_in_channel_halt_out] [get_bd_pins xfft_rx09_dly3459/event_data_in_channel_halt]
+  connect_bd_net -net xfft_rx09_dly3449_event_frame_started_out_0 [get_bd_pins xfft_rx09_dly3449_event_frame_started_out] [get_bd_pins xfft_rx09_dly3459/event_frame_started]
+  connect_bd_net -net xfft_rx09_dly3449_event_tlast_missing_out_0 [get_bd_pins xfft_rx09_dly3449_event_tlast_missing_out] [get_bd_pins xfft_rx09_dly3459/event_tlast_missing]
+  connect_bd_net -net xfft_rx09_dly3449_event_tlast_unexpected_out_0 [get_bd_pins xfft_rx09_dly3449_event_tlast_unexpected_out] [get_bd_pins xfft_rx09_dly3459/event_tlast_unexpected]
+  connect_bd_net -net xfft_rx24_dly3198_event_data_in_channel_halt_out_0 [get_bd_pins xfft_rx24_dly3198_event_data_in_channel_halt_out] [get_bd_pins xfft_rx24_dly3459/event_data_in_channel_halt]
+  connect_bd_net -net xfft_rx24_dly3198_event_tlast_missing_out_0 [get_bd_pins xfft_rx24_dly3198_event_tlast_missing_out] [get_bd_pins xfft_rx24_dly3459/event_tlast_missing]
+  connect_bd_net -net xfft_rx24_dly3198_event_tlast_unexpected_out_0 [get_bd_pins xfft_rx24_dly3198_event_tlast_unexpected_out] [get_bd_pins xfft_rx24_dly3459/event_tlast_unexpected]
+  connect_bd_net -net xfft_rx24_dly3198_m_axis_data_tdata_0 [get_bd_pins cordic_rx24/s_axis_cartesian_tdata] [get_bd_pins xfft_rx24_dly3459/m_axis_data_tdata]
+  connect_bd_net -net xfft_rx24_dly3198_m_axis_data_tlast_0 [get_bd_pins cordic_rx24/s_axis_cartesian_tlast] [get_bd_pins xfft_rx24_dly3459/m_axis_data_tlast]
+  connect_bd_net -net xfft_rx24_dly3198_m_axis_data_tuser [get_bd_pins cordic_rx24_addra_xlslice_9to0/Din] [get_bd_pins xfft_rx24_dly3459/m_axis_data_tuser]
+  connect_bd_net -net xfft_rx24_dly3198_m_axis_data_tvalid_0 [get_bd_pins cordic_rx24/s_axis_cartesian_tvalid] [get_bd_pins xfft_rx24_dly3459/m_axis_data_tvalid]
+  connect_bd_net -net xfft_rx24_dly3449_event_frame_started_out_0 [get_bd_pins xfft_rx24_dly3449_event_frame_started_out] [get_bd_pins xfft_rx24_dly3459/event_frame_started]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -1684,6 +1787,8 @@ proc create_hier_cell_TRX_rx_FFT_unit { parentCell nameHier } {
   # Create interface pins
 
   # Create pins
+  create_bd_pin -dir I -from 9 -to 0 FFT_window_coef_rom_rx09
+  create_bd_pin -dir I -from 9 -to 0 FFT_window_coef_rom_rx24
   create_bd_pin -dir I -from 29 -to 0 RF09_framectr
   create_bd_pin -dir I -from 1 -to 0 -type data RF09_quarterfrm
   create_bd_pin -dir I -from 29 -to 0 RF24_framectr
@@ -1885,11 +1990,12 @@ proc create_hier_cell_TRX_rx_FFT_unit { parentCell nameHier } {
  ] $premem_fft_rx24_xlslice_25to13
 
   # Create port connections
+  connect_bd_net -net FFT_window_coef_rom_rx09_1 [get_bd_pins FFT_window_coef_rom_rx09] [get_bd_pins TRX_rx_FFT_calc/FFT_window_coef_rom_rx09]
+  connect_bd_net -net FFT_window_coef_rom_rx24_1 [get_bd_pins FFT_window_coef_rom_rx24] [get_bd_pins TRX_rx_FFT_calc/FFT_window_coef_rom_rx24]
   connect_bd_net -net RF09_framectr_0 [get_bd_pins RF09_framectr] [get_bd_pins TRX_rx_FFT_calc/RF09_framectr]
   connect_bd_net -net RF09_quarterfrm_0 [get_bd_pins RF09_quarterfrm] [get_bd_pins TRX_rx_FFT_calc/RF09_quarterfrm]
   connect_bd_net -net RF24_framectr_0 [get_bd_pins RF24_framectr] [get_bd_pins TRX_rx_FFT_calc/RF24_framectr]
   connect_bd_net -net RF24_quarterfrm_0 [get_bd_pins RF24_quarterfrm] [get_bd_pins TRX_rx_FFT_calc/RF24_quarterfrm]
-  connect_bd_net -net TRX_rx_FFT_calc_Dout [get_bd_pins TRX_rx_FFT_calc/Dout] [get_bd_pins post_fft_rx24_blk_mem_gen_0/dina]
   connect_bd_net -net cordic_rx09_m_tuser_out_0 [get_bd_pins TRX_rx_FFT_calc/cordic_rx09_m_tuser_out] [get_bd_pins post_fft_rx09_blk_mem_gen_0/addra]
   connect_bd_net -net cordic_rx09_tvalid_out_0 [get_bd_pins TRX_rx_FFT_calc/cordic_rx09_tvalid_out] [get_bd_pins post_fft_rx09_blk_mem_gen_0/wea]
   connect_bd_net -net cordic_rx24_m_tuser_out_0 [get_bd_pins TRX_rx_FFT_calc/cordic_rx24_m_tuser_out] [get_bd_pins post_fft_rx24_blk_mem_gen_0/addra]
@@ -1924,7 +2030,8 @@ proc create_hier_cell_TRX_rx_FFT_unit { parentCell nameHier } {
   connect_bd_net -net premem_rx24_dina_in_0 [get_bd_pins premem_rx24_dina_in] [get_bd_pins pre_fft_rx24_blk_mem_gen_0/dina]
   connect_bd_net -net premem_rx24_wea_in_0 [get_bd_pins premem_rx24_wea_in] [get_bd_pins pre_fft_rx24_blk_mem_gen_0/wea]
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset_0 [get_bd_pins rst_mig_7series_0_100M_peripheral_reset_in] [get_bd_pins TRX_rx_FFT_calc/rst_mig_7series_0_100M_peripheral_reset_in] [get_bd_pins post_fft_rx09_blk_mem_gen_0/rstb] [get_bd_pins post_fft_rx24_blk_mem_gen_0/rstb] [get_bd_pins pre_fft_rx09_blk_mem_gen_0/rstb] [get_bd_pins pre_fft_rx24_blk_mem_gen_0/rstb]
-  connect_bd_net -net rx09_postmem_re_0 [get_bd_pins TRX_rx_FFT_calc/rx09_postmem_re_out] [get_bd_pins post_fft_rx09_blk_mem_gen_0/dina]
+  connect_bd_net -net rx09_postmem_magnitude_0 [get_bd_pins TRX_rx_FFT_calc/rx09_postmem_magnitude_out] [get_bd_pins post_fft_rx09_blk_mem_gen_0/dina]
+  connect_bd_net -net rx24_postmem_magnitude_0 [get_bd_pins TRX_rx_FFT_calc/rx24_postmem_magnitude_out] [get_bd_pins post_fft_rx24_blk_mem_gen_0/dina]
   connect_bd_net -net s_axi_aclk_CD100_0 [get_bd_pins s_axi_aclk_CD100_in] [get_bd_pins TRX_rx_FFT_calc/s_axi_aclk_CD100_in] [get_bd_pins post_fft_rx09_blk_mem_gen_0/clka] [get_bd_pins post_fft_rx09_blk_mem_gen_0/clkb] [get_bd_pins post_fft_rx24_blk_mem_gen_0/clka] [get_bd_pins post_fft_rx24_blk_mem_gen_0/clkb] [get_bd_pins pre_fft_rx09_blk_mem_gen_0/clka] [get_bd_pins pre_fft_rx09_blk_mem_gen_0/clkb] [get_bd_pins pre_fft_rx24_blk_mem_gen_0/clka] [get_bd_pins pre_fft_rx24_blk_mem_gen_0/clkb]
   connect_bd_net -net xfft_rx09_dly3449_event_data_in_channel_halt_out_0 [get_bd_pins xfft_rx09_dly3449_event_data_in_channel_halt_out] [get_bd_pins TRX_rx_FFT_calc/xfft_rx09_dly3449_event_data_in_channel_halt_out]
   connect_bd_net -net xfft_rx09_dly3449_event_frame_started_out_0 [get_bd_pins xfft_rx09_dly3449_event_frame_started_out] [get_bd_pins TRX_rx_FFT_calc/xfft_rx09_dly3449_event_frame_started_out]
@@ -2950,6 +3057,8 @@ proc create_hier_cell_TRX { parentCell nameHier } {
 
 
   # Create pins
+  create_bd_pin -dir I -from 9 -to 0 FFT_window_coef_rom_rx09
+  create_bd_pin -dir I -from 9 -to 0 FFT_window_coef_rom_rx24
   create_bd_pin -dir I -from 29 -to 0 RF09_framectr
   create_bd_pin -dir I -from 1 -to 0 -type data RF09_quarterfrm
   create_bd_pin -dir I -from 29 -to 0 RF24_framectr
@@ -3047,19 +3156,19 @@ proc create_hier_cell_TRX { parentCell nameHier } {
    CONFIG.USE_BOARD_FLOW {true} \
  ] $TRX_proc_sys_reset_0
 
+  # Create instance: TRX_reset_util_vector_logic_0, and set properties
+  set TRX_reset_util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 TRX_reset_util_vector_logic_0 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {not} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_notgate.png} \
+ ] $TRX_reset_util_vector_logic_0
+
   # Create instance: TRX_rx_FFT_unit
   create_hier_cell_TRX_rx_FFT_unit $hier_obj TRX_rx_FFT_unit
 
   # Create instance: TRX_tx_DDS_unit
   create_hier_cell_TRX_tx_DDS_unit $hier_obj TRX_tx_DDS_unit
-
-  # Create instance: util_vector_logic_0, and set properties
-  set util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_0 ]
-  set_property -dict [ list \
-   CONFIG.C_OPERATION {not} \
-   CONFIG.C_SIZE {1} \
-   CONFIG.LOGO_FILE {data/sym_notgate.png} \
- ] $util_vector_logic_0
 
   # Create interface connections
   connect_bd_intf_net -intf_net Conn1 [get_bd_intf_pins S_AXI] [get_bd_intf_pins TRX_tx_DDS_unit/S_AXI1]
@@ -3071,6 +3180,8 @@ proc create_hier_cell_TRX { parentCell nameHier } {
   connect_bd_intf_net -intf_net TRX_rx_clk_64MHz_1 [get_bd_intf_pins TRX_rx_clk_64MHz] [get_bd_intf_pins TRX_LVDS/TRX_rx_clk_64MHz]
 
   # Create port connections
+  connect_bd_net -net FFT_window_coef_rom_rx09_1 [get_bd_pins FFT_window_coef_rom_rx09] [get_bd_pins TRX_rx_FFT_unit/FFT_window_coef_rom_rx09]
+  connect_bd_net -net FFT_window_coef_rom_rx24_1 [get_bd_pins FFT_window_coef_rom_rx24] [get_bd_pins TRX_rx_FFT_unit/FFT_window_coef_rom_rx24]
   connect_bd_net -net RF09_framectr_0 [get_bd_pins RF09_framectr] [get_bd_pins TRX_rx_FFT_unit/RF09_framectr]
   connect_bd_net -net RF09_quarterfrm_0 [get_bd_pins RF09_quarterfrm] [get_bd_pins TRX_rx_FFT_unit/RF09_quarterfrm]
   connect_bd_net -net RF24_framectr_0 [get_bd_pins RF24_framectr] [get_bd_pins TRX_rx_FFT_unit/RF24_framectr]
@@ -3087,8 +3198,8 @@ proc create_hier_cell_TRX { parentCell nameHier } {
   connect_bd_net -net TRX_config_LVDS_tx_blank_0 [get_bd_pins TRX_LVDS/TRX_config_LVDS_tx_blank_in] [get_bd_pins TRX_config/LVDS_tx_blank]
   connect_bd_net -net TRX_config_TRX_resetn [get_bd_pins TRX_resetn] [get_bd_pins TRX_config/TRX_resetn]
   connect_bd_net -net TRX_config_TRX_rfx_mode [get_bd_pins TRX_rfx_mode] [get_bd_pins TRX_config/TRX_rfx_mode]
-  connect_bd_net -net TRX_io_reset [get_bd_pins TRX_LVDS/TRX_io_reset_i] [get_bd_pins TRX_io_reset_counter_binary_0/CE] [get_bd_pins util_vector_logic_0/Res]
-  connect_bd_net -net TRX_io_reset_counter_binary_0_THRESH0 [get_bd_pins TRX_io_reset_counter_binary_0/THRESH0] [get_bd_pins util_vector_logic_0/Op1]
+  connect_bd_net -net TRX_io_reset [get_bd_pins TRX_LVDS/TRX_io_reset_i] [get_bd_pins TRX_io_reset_counter_binary_0/CE] [get_bd_pins TRX_reset_util_vector_logic_0/Res]
+  connect_bd_net -net TRX_io_reset_counter_binary_0_THRESH0 [get_bd_pins TRX_io_reset_counter_binary_0/THRESH0] [get_bd_pins TRX_reset_util_vector_logic_0/Op1]
   connect_bd_net -net TRX_proc_sys_reset_0_16MHz_peripheral_reset [get_bd_pins TRX_LVDS/clk_rst_i] [get_bd_pins TRX_io_reset_counter_binary_0/SCLR] [get_bd_pins TRX_proc_sys_reset_0/peripheral_reset] [get_bd_pins TRX_tx_DDS_unit/SCLR]
   connect_bd_net -net TRX_proc_sys_reset_0_peripheral_aresetn [get_bd_pins TRX_proc_sys_reset_0/peripheral_aresetn] [get_bd_pins TRX_tx_DDS_unit/aresetn]
   connect_bd_net -net TRX_rx09_fifo_o_1 [get_bd_pins TRX_rx09_fifo_o] [get_bd_pins rx09_32bits_CD100_o] [get_bd_pins TRX_LVDS/TRX_rx09_fifo_o]
@@ -4980,6 +5091,8 @@ proc create_root_design { parentCell } {
   set EUI48_abort [ create_bd_port -dir I -from 7 -to 0 -type data EUI48_abort ]
   set EUI48_data [ create_bd_port -dir I -from 47 -to 0 -type data EUI48_data ]
   set EUI48_state [ create_bd_port -dir I -from 7 -to 0 -type data EUI48_state ]
+  set FFT_window_coef_rom_rx09 [ create_bd_port -dir I -from 9 -to 0 FFT_window_coef_rom_rx09 ]
+  set FFT_window_coef_rom_rx24 [ create_bd_port -dir I -from 9 -to 0 FFT_window_coef_rom_rx24 ]
   set FPGA_IO [ create_bd_port -dir I FPGA_IO ]
   set LCD_BL [ create_bd_port -dir O -from 0 -to 0 LCD_BL ]
   set LCD_rstn [ create_bd_port -dir O -from 0 -to 0 -type rst LCD_rstn ]
@@ -5458,6 +5571,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net EUI48_abort_1 [get_bd_ports EUI48_abort] [get_bd_pins vio_0/probe_in36]
   connect_bd_net -net EUI48_data_1 [get_bd_ports EUI48_data] [get_bd_pins EUI48/EUI48_data] [get_bd_pins vio_0/probe_in34]
   connect_bd_net -net EUI48_state_1 [get_bd_ports EUI48_state] [get_bd_pins vio_0/probe_in35]
+  connect_bd_net -net FFT_window_coef_rom_rx09_1 [get_bd_ports FFT_window_coef_rom_rx09] [get_bd_pins TRX/FFT_window_coef_rom_rx09]
+  connect_bd_net -net FFT_window_coef_rom_rx24_1 [get_bd_ports FFT_window_coef_rom_rx24] [get_bd_pins TRX/FFT_window_coef_rom_rx24]
   connect_bd_net -net FPGA_IO_1 [get_bd_ports FPGA_IO] [get_bd_pins vio_0/probe_in9]
   connect_bd_net -net Net [get_bd_ports PLL_I2C_ext_sda] [get_bd_pins CFG/PLL_I2C_ext_sda]
   connect_bd_net -net PLL_int_1 [get_bd_ports PLL_int] [get_bd_pins INT_ctrl/PLL_int]

@@ -15,7 +15,7 @@ int main(int argc, char** argv)
   
   /* Formatting */
   {
-    printf("; width = 16 bits\r\n");
+    printf("; width = 16 bit unsigned\r\n");
     printf("; depth = 1024\r\n");
     printf("; FFT window coef: Hanning  (cos^2)\r\n");
     printf(";\r\n");

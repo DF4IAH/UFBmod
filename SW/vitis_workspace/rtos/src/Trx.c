@@ -58,7 +58,7 @@ static u32 DacValueSet(u16 val) /* DAC pull voltage */
 
 	u16 StatusReg = XIic_ReadReg(IIC_BOARD_BASE_ADDRESS, XIIC_SR_REG_OFFSET);
 	if(!(StatusReg & XIIC_SR_BUS_BUSY_MASK)) {
-		iicData[0]	= 0x01U;  // command: DAC_latch & CODE register
+		iicData[0]	= 0x01U;  						// command: DAC_latch & CODE register
 		iicData[1]	= (u8) ((val >> 8) & 0xffU);  	// MSB
 		iicData[2]	= (u8) ( val       & 0xffU);	// LSB
 		ByteCount 	= 3;
@@ -1983,7 +1983,13 @@ static void TestRF09Rx(void)
 		}
 	}
 
+#if 0
+	while (1) {
+		vTaskDelay(pdMS_TO_TICKS(250));
+	}
+#else
 	vTaskDelay(pdMS_TO_TICKS(250));
+#endif
 
 	/* BLUE off */
 	u32 irqs;
@@ -2043,7 +2049,7 @@ void taskTrx(void* pvParameters)
 	vTaskDelay(pdMS_TO_TICKS(500));
 
 	/* DAC pull voltage */
-	DacValueSet(0x82a0);
+	DacValueSet(0x8178);
 
 	/* Init I2C to PLL chip */
 	{

@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Sun Sep  6 22:53:16 2020
+--Date        : Mon Sep  7 20:30:03 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -192,12 +192,14 @@ architecture STRUCTURE of msys_wrapper is
     LVDS_rx24_synced : in STD_LOGIC;
     RF09_framectr : in STD_LOGIC_VECTOR ( 29 downto 0 );
     RF24_framectr : in STD_LOGIC_VECTOR ( 29 downto 0 );
+    FFT_window_coef_rom_rx09 : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    FFT_window_coef_rom_rx24 : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
     ETH0_MDIO_MDC_mdc : out STD_LOGIC;
     ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
     ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
     ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
-    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
-    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
     qspi_flash_io0_i : in STD_LOGIC;
     qspi_flash_io0_o : out STD_LOGIC;
     qspi_flash_io0_t : out STD_LOGIC;
@@ -213,12 +215,18 @@ architecture STRUCTURE of msys_wrapper is
     qspi_flash_ss_i : in STD_LOGIC;
     qspi_flash_ss_o : out STD_LOGIC;
     qspi_flash_ss_t : out STD_LOGIC;
+    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
+    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    RMII_PHY_M_0_tx_en : out STD_LOGIC;
+    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
     BOARD_IIC_scl_i : in STD_LOGIC;
     BOARD_IIC_scl_o : out STD_LOGIC;
     BOARD_IIC_scl_t : out STD_LOGIC;
     BOARD_IIC_sda_i : in STD_LOGIC;
     BOARD_IIC_sda_o : out STD_LOGIC;
     BOARD_IIC_sda_t : out STD_LOGIC;
+    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_io0_i : in STD_LOGIC;
     TRX_spi_io0_o : out STD_LOGIC;
     TRX_spi_io0_t : out STD_LOGIC;
@@ -231,20 +239,10 @@ architecture STRUCTURE of msys_wrapper is
     TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_t : out STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
-    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
-    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    RMII_PHY_M_0_tx_en : out STD_LOGIC;
-    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_tx_clk_clk_n : out STD_LOGIC;
-    TRX_tx_clk_clk_p : out STD_LOGIC;
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
-    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK3_sys_diff_clk_p : in STD_LOGIC;
     CLK3_sys_diff_clk_n : in STD_LOGIC;
+    UART0_rxd : in STD_LOGIC;
+    UART0_txd : out STD_LOGIC;
     DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -259,7 +257,11 @@ architecture STRUCTURE of msys_wrapper is
     DDR3_SDRAM_cke : out STD_LOGIC_VECTOR ( 0 to 0 );
     DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 )
+    DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_tx_clk_clk_n : out STD_LOGIC;
+    TRX_tx_clk_clk_p : out STD_LOGIC;
+    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
+    CLK2_mgt_clk0_clk_n : in STD_LOGIC
   );
   end component msys;
   component IOBUF is
@@ -299,44 +301,48 @@ architecture STRUCTURE of msys_wrapper is
   component FFT_controller is
   port (
     -- All Clock Domain AXI 100 MHz
-    resetn                  : in  STD_LOGIC;
-    clk                     : in  STD_LOGIC;
+    resetn                      : in  STD_LOGIC;
+    clk                         : in  STD_LOGIC;
 
-    rx09_bs_32bits          : in  STD_LOGIC_VECTOR (31 downto 0);
-    rx09_bs_32bits_vld      : in  STD_LOGIC;
+    rx09_bs_32bits              : in  STD_LOGIC_VECTOR (31 downto 0);
+    rx09_bs_32bits_vld          : in  STD_LOGIC;
 
-    rx24_bs_32bits          : in  STD_LOGIC_VECTOR (31 downto 0);
-    rx24_bs_32bits_vld      : in  STD_LOGIC;
+    rx24_bs_32bits              : in  STD_LOGIC_VECTOR (31 downto 0);
+    rx24_bs_32bits_vld          : in  STD_LOGIC;
 
-    PreMem09_addra          : out STD_LOGIC_VECTOR (10 downto 0);  -- (a)  2x FFT frame of 1024 points = 2048 addresses
-    PreMem09_wea            : out STD_LOGIC;
-    PreMem09_dina           : out STD_LOGIC_VECTOR (25 downto 0);  -- (b)  29..17: I-data, 13..01: Q-data
-    PreMem09_addrb          : out STD_LOGIC_VECTOR (10 downto 0);  -- see above (a)
+    PreMem09_addra              : out STD_LOGIC_VECTOR (10 downto 0);  -- (a)  2x FFT frame of 1024 points = 2048 addresses
+    PreMem09_wea                : out STD_LOGIC;
+    PreMem09_dina               : out STD_LOGIC_VECTOR (25 downto 0);  -- (b)  29..17: I-data, 13..01: Q-data
+    PreMem09_addrb              : out STD_LOGIC_VECTOR (10 downto 0);  -- see above (a)
 
-    RF09_quarterfrm         : out STD_LOGIC_VECTOR ( 1 downto 0);  -- subframes of  64 us
-    RF09_framectr           : out STD_LOGIC_VECTOR (29 downto 0);  -- frames    of 256 us
+    FFT_window_coef_rom_rx09    : out STD_LOGIC_VECTOR ( 9 downto 0);
 
-    PreMem24_addra          : out STD_LOGIC_VECTOR (10 downto 0);  -- (a)  2x FFT frame of 1024 points = 2048 addresses
-    PreMem24_wea            : out STD_LOGIC;
-    PreMem24_dina           : out STD_LOGIC_VECTOR (25 downto 0);  -- see above (b)
-    PreMem24_addrb          : out STD_LOGIC_VECTOR (10 downto 0);  -- see above (a)
+    RF09_quarterfrm             : out STD_LOGIC_VECTOR ( 1 downto 0);  -- subframes of  64 us
+    RF09_framectr               : out STD_LOGIC_VECTOR (29 downto 0);  -- frames    of 256 us
 
-    RF24_quarterfrm         : out STD_LOGIC_VECTOR ( 1 downto 0);  -- subframes of  64 us
-    RF24_framectr           : out STD_LOGIC_VECTOR (29 downto 0);  -- frames    of 256 us
+    PreMem24_addra              : out STD_LOGIC_VECTOR (10 downto 0);  -- (a)  2x FFT frame of 1024 points = 2048 addresses
+    PreMem24_wea                : out STD_LOGIC;
+    PreMem24_dina               : out STD_LOGIC_VECTOR (25 downto 0);  -- see above (b)
+    PreMem24_addrb              : out STD_LOGIC_VECTOR (10 downto 0);  -- see above (a)
 
-    XFFT09_aresetn          : out STD_LOGIC;
-    XFFT09_s_data_tlast     : out STD_LOGIC;
-    XFFT09_s_data_tready    : in  STD_LOGIC;
-    XFFT09_s_data_tvalid    : out STD_LOGIC;
-    XFFT09_s_conf_tdata     : out STD_LOGIC_VECTOR ( 7 downto 0);
-    XFFT09_s_conf_tvalid    : out STD_LOGIC;
+    FFT_window_coef_rom_rx24    : out STD_LOGIC_VECTOR ( 9 downto 0);
 
-    XFFT24_aresetn          : out STD_LOGIC;
-    XFFT24_s_data_tlast     : out STD_LOGIC;
-    XFFT24_s_data_tready    : in  STD_LOGIC;
-    XFFT24_s_data_tvalid    : out STD_LOGIC;
-    XFFT24_s_conf_tdata     : out STD_LOGIC_VECTOR ( 7 downto 0);
-    XFFT24_s_conf_tvalid    : out STD_LOGIC
+    RF24_quarterfrm             : out STD_LOGIC_VECTOR ( 1 downto 0);  -- subframes of  64 us
+    RF24_framectr               : out STD_LOGIC_VECTOR (29 downto 0);  -- frames    of 256 us
+
+    XFFT09_aresetn              : out STD_LOGIC;
+    XFFT09_s_data_tlast         : out STD_LOGIC;
+    XFFT09_s_data_tready        : in  STD_LOGIC;
+    XFFT09_s_data_tvalid        : out STD_LOGIC;
+    XFFT09_s_conf_tdata         : out STD_LOGIC_VECTOR ( 7 downto 0);
+    XFFT09_s_conf_tvalid        : out STD_LOGIC;
+
+    XFFT24_aresetn              : out STD_LOGIC;
+    XFFT24_s_data_tlast         : out STD_LOGIC;
+    XFFT24_s_data_tready        : in  STD_LOGIC;
+    XFFT24_s_data_tvalid        : out STD_LOGIC;
+    XFFT24_s_conf_tdata         : out STD_LOGIC_VECTOR ( 7 downto 0);
+    XFFT24_s_conf_tvalid        : out STD_LOGIC
   );
   end component FFT_controller;
   component EUI48_FSM is 
@@ -425,6 +431,8 @@ architecture STRUCTURE of msys_wrapper is
   signal mw_premem_rx24_dina_in : STD_LOGIC_VECTOR ( 25 downto 0 );
   signal mw_premem_rx24_addrb_in : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal mw_premem_rx24_quarterfrm_in : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal mw_FFT_window_coef_rom_rx09 : STD_LOGIC_VECTOR ( 9 downto 0 );
+  signal mw_FFT_window_coef_rom_rx24 : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal mw_fft09_aresetn_in : STD_LOGIC;
   signal mw_fft09_data_tlast_in : STD_LOGIC;
   signal mw_fft09_data_tready_out : STD_LOGIC;
@@ -563,40 +571,44 @@ auto_LVDS_rotate_i: component auto_LVDS_rotate
     );
 FFT_controller_i: component FFT_controller
     port map (
-      resetn                => mw_rst_100M_peripheral_aresetn,
-      clk                   => mw_microblaze_0_Clk_100MHz,
-      rx09_bs_32bits        => mw_TRX_rx09_bs,
-      rx09_bs_32bits_vld    => mw_TRX_rot09vld,
-      rx24_bs_32bits        => mw_TRX_rx24_bs,
-      rx24_bs_32bits_vld    => mw_TRX_rot24vld,
-      PreMem09_addra        => mw_premem_rx09_addra_in,
-      PreMem09_wea          => mw_premem_rx09_wea_in,
-      PreMem09_dina         => mw_premem_rx09_dina_in,
-      PreMem09_addrb        => mw_premem_rx09_addrb_in,
+      resetn                    => mw_rst_100M_peripheral_aresetn,
+      clk                       => mw_microblaze_0_Clk_100MHz,
+      rx09_bs_32bits            => mw_TRX_rx09_bs,
+      rx09_bs_32bits_vld        => mw_TRX_rot09vld,
+      rx24_bs_32bits            => mw_TRX_rx24_bs,
+      rx24_bs_32bits_vld        => mw_TRX_rot24vld,
+      PreMem09_addra            => mw_premem_rx09_addra_in,
+      PreMem09_wea              => mw_premem_rx09_wea_in,
+      PreMem09_dina             => mw_premem_rx09_dina_in,
+      PreMem09_addrb            => mw_premem_rx09_addrb_in,
+      
+      FFT_window_coef_rom_rx09  => mw_FFT_window_coef_rom_rx09,
+      
+      RF09_quarterfrm           => mw_RF09_quarterfrm,
+      RF09_framectr             => mw_RF09_framectr,
 
-      RF09_quarterfrm       => mw_RF09_quarterfrm,
-      RF09_framectr         => mw_RF09_framectr,
+      PreMem24_addra            => mw_premem_rx24_addra_in,
+      PreMem24_wea              => mw_premem_rx24_wea_in,
+      PreMem24_dina             => mw_premem_rx24_dina_in,
+      PreMem24_addrb            => mw_premem_rx24_addrb_in,
+      
+      FFT_window_coef_rom_rx24  => mw_FFT_window_coef_rom_rx24,
+      
+      RF24_quarterfrm           => mw_RF24_quarterfrm,
+      RF24_framectr             => mw_RF24_framectr,
 
-      PreMem24_addra        => mw_premem_rx24_addra_in,
-      PreMem24_wea          => mw_premem_rx24_wea_in,
-      PreMem24_dina         => mw_premem_rx24_dina_in,
-      PreMem24_addrb        => mw_premem_rx24_addrb_in,
-
-      RF24_quarterfrm       => mw_RF24_quarterfrm,
-      RF24_framectr         => mw_RF24_framectr,
-
-      XFFT09_aresetn        => mw_fft09_aresetn_in,
-      XFFT09_s_data_tlast   => mw_fft09_data_tlast_in,
-      XFFT09_s_data_tready  => mw_fft09_data_tready_out,
-      XFFT09_s_data_tvalid  => mw_fft09_data_tvalid_in,
-      XFFT09_s_conf_tdata   => mw_fft09_config_tdata_in,
-      XFFT09_s_conf_tvalid  => mw_fft09_config_tvalid_in,
-      XFFT24_aresetn        => mw_fft24_aresetn_in,
-      XFFT24_s_data_tlast   => mw_fft24_data_tlast_in,
-      XFFT24_s_data_tready  => mw_fft24_data_tready_out,
-      XFFT24_s_data_tvalid  => mw_fft24_data_tvalid_in,
-      XFFT24_s_conf_tdata   => mw_fft24_config_tdata_in,
-      XFFT24_s_conf_tvalid  => mw_fft24_config_tvalid_in
+      XFFT09_aresetn            => mw_fft09_aresetn_in,
+      XFFT09_s_data_tlast       => mw_fft09_data_tlast_in,
+      XFFT09_s_data_tready      => mw_fft09_data_tready_out,
+      XFFT09_s_data_tvalid      => mw_fft09_data_tvalid_in,
+      XFFT09_s_conf_tdata       => mw_fft09_config_tdata_in,
+      XFFT09_s_conf_tvalid      => mw_fft09_config_tvalid_in,
+      XFFT24_aresetn            => mw_fft24_aresetn_in,
+      XFFT24_s_data_tlast       => mw_fft24_data_tlast_in,
+      XFFT24_s_data_tready      => mw_fft24_data_tready_out,
+      XFFT24_s_data_tvalid      => mw_fft24_data_tvalid_in,
+      XFFT24_s_conf_tdata       => mw_fft24_config_tdata_in,
+      XFFT24_s_conf_tvalid      => mw_fft24_config_tvalid_in
     );
 EUI48_FSM_i: component EUI48_FSM
     port map (
@@ -673,6 +685,8 @@ msys_i: component msys
       EUI48_abort(7 downto 0) => mw_EUI48_abort(7 downto 0),
       EUI48_data(47 downto 0) => mw_EUI48_data(47 downto 0),
       EUI48_state(7 downto 0) => mw_EUI48_state(7 downto 0),
+      FFT_window_coef_rom_rx09(9 downto 0) => mw_FFT_window_coef_rom_rx09(9 downto 0),
+      FFT_window_coef_rom_rx24(9 downto 0) => mw_FFT_window_coef_rom_rx24(9 downto 0),
       FPGA_IO => FPGA_IO,
       LCD_BL(0) => LCD_BL(0),
       LCD_rstn(0) => LCD_rstn(0),

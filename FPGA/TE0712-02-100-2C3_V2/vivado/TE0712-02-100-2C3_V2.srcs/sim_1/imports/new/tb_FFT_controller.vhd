@@ -46,44 +46,48 @@ architecture Behavioral of tb_FFT_controller is
 component  FFT_controller is
   Port ( 
     -- All Clock Domain AXI 100 MHz
-    resetn                  : in  STD_LOGIC;
-    clk                     : in  STD_LOGIC;
+    resetn                      : in  STD_LOGIC;
+    clk                         : in  STD_LOGIC;
     
-    rx09_bs_32bits          : in  STD_LOGIC_VECTOR (31 downto 0);
-    rx09_bs_32bits_vld      : in  STD_LOGIC;
+    rx09_bs_32bits              : in  STD_LOGIC_VECTOR (31 downto 0);
+    rx09_bs_32bits_vld          : in  STD_LOGIC;
 
-    rx24_bs_32bits          : in  STD_LOGIC_VECTOR (31 downto 0);
-    rx24_bs_32bits_vld      : in  STD_LOGIC;
+    rx24_bs_32bits              : in  STD_LOGIC_VECTOR (31 downto 0);
+    rx24_bs_32bits_vld          : in  STD_LOGIC;
     
-    PreMem09_addra          : out STD_LOGIC_VECTOR (10 downto 0);  -- (a)  2x FFT frame of 1024 points = 2048 addresses
-    PreMem09_wea            : out STD_LOGIC;
-    PreMem09_dina           : out STD_LOGIC_VECTOR (25 downto 0);  -- (b)  29..17: I-data, 13..01: Q-data
-    PreMem09_addrb          : out STD_LOGIC_VECTOR (10 downto 0);  -- see above (a)
-
-    RF09_quarterfrm         : out STD_LOGIC_VECTOR ( 1 downto 0);  -- subframes of  64 us
-    RF09_framectr           : out STD_LOGIC_VECTOR (29 downto 0);  -- frames    of 256 us
+    PreMem09_addra              : out STD_LOGIC_VECTOR (10 downto 0);  -- (a)  2x FFT frame of 1024 points = 2048 addresses
+    PreMem09_wea                : out STD_LOGIC;
+    PreMem09_dina               : out STD_LOGIC_VECTOR (25 downto 0);  -- (b)  29..17: I-data, 13..01: Q-data
+    PreMem09_addrb              : out STD_LOGIC_VECTOR (10 downto 0);  -- see above (a)
     
-    PreMem24_addra          : out STD_LOGIC_VECTOR (10 downto 0);  -- (a)  2x FFT frame of 1024 points = 2048 addresses
-    PreMem24_wea            : out STD_LOGIC;
-    PreMem24_dina           : out STD_LOGIC_VECTOR (25 downto 0);  -- see above (b)
-    PreMem24_addrb          : out STD_LOGIC_VECTOR (10 downto 0);  -- see above (a)
-
-    RF24_quarterfrm         : out STD_LOGIC_VECTOR ( 1 downto 0);  -- subframes of  64 us
-    RF24_framectr           : out STD_LOGIC_VECTOR (29 downto 0);  -- frames    of 256 us
+    FFT_window_coef_rom_rx09    : out STD_LOGIC_VECTOR ( 9 downto 0);
     
-    XFFT09_aresetn          : out STD_LOGIC;
-    XFFT09_s_data_tlast     : out STD_LOGIC;
-    XFFT09_s_data_tready    : in  STD_LOGIC;
-    XFFT09_s_data_tvalid    : out STD_LOGIC;
-    XFFT09_s_conf_tdata     : out STD_LOGIC_VECTOR ( 7 downto 0);
-    XFFT09_s_conf_tvalid    : out STD_LOGIC;
+    RF09_quarterfrm             : out STD_LOGIC_VECTOR ( 1 downto 0);  -- subframes of  64 us
+    RF09_framectr               : out STD_LOGIC_VECTOR (29 downto 0);  -- frames    of 256 us
     
-    XFFT24_aresetn          : out STD_LOGIC;
-    XFFT24_s_data_tlast     : out STD_LOGIC;
-    XFFT24_s_data_tready    : in  STD_LOGIC;
-    XFFT24_s_data_tvalid    : out STD_LOGIC;
-    XFFT24_s_conf_tdata     : out STD_LOGIC_VECTOR ( 7 downto 0);
-    XFFT24_s_conf_tvalid    : out STD_LOGIC
+    PreMem24_addra              : out STD_LOGIC_VECTOR (10 downto 0);  -- (a)  2x FFT frame of 1024 points = 2048 addresses
+    PreMem24_wea                : out STD_LOGIC;
+    PreMem24_dina               : out STD_LOGIC_VECTOR (25 downto 0);  -- see above (b)
+    PreMem24_addrb              : out STD_LOGIC_VECTOR (10 downto 0);  -- see above (a)
+    
+    FFT_window_coef_rom_rx24    : out STD_LOGIC_VECTOR ( 9 downto 0);
+    
+    RF24_quarterfrm             : out STD_LOGIC_VECTOR ( 1 downto 0);  -- subframes of  64 us
+    RF24_framectr               : out STD_LOGIC_VECTOR (29 downto 0);  -- frames    of 256 us
+    
+    XFFT09_aresetn              : out STD_LOGIC;
+    XFFT09_s_data_tlast         : out STD_LOGIC;
+    XFFT09_s_data_tready        : in  STD_LOGIC;
+    XFFT09_s_data_tvalid        : out STD_LOGIC;
+    XFFT09_s_conf_tdata         : out STD_LOGIC_VECTOR ( 7 downto 0);
+    XFFT09_s_conf_tvalid        : out STD_LOGIC;
+    
+    XFFT24_aresetn              : out STD_LOGIC;
+    XFFT24_s_data_tlast         : out STD_LOGIC;
+    XFFT24_s_data_tready        : in  STD_LOGIC;
+    XFFT24_s_data_tvalid        : out STD_LOGIC;
+    XFFT24_s_conf_tdata         : out STD_LOGIC_VECTOR ( 7 downto 0);
+    XFFT24_s_conf_tvalid        : out STD_LOGIC
   );
 end component FFT_controller;
     

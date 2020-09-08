@@ -698,6 +698,15 @@
   "../../../bd/msys/ip/msys_xlslice_0_51/sim/msys_xlslice_0_51.v" \
   "../../../bd/msys/ip/msys_xlconcat_0_23/sim/msys_xlconcat_0_23.v" \
   "../../../bd/msys/ip/msys_xlslice_0_52/sim/msys_xlslice_0_52.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_mult_gen_0_0/sim/msys_mult_gen_0_0.vhd" \
+  "../../../bd/msys/ip/msys_window_rx09_re_mult_gen_0_2/sim/msys_window_rx09_re_mult_gen_0_2.vhd" \
+  "../../../bd/msys/ip/msys_window_rx09_re_mult_gen_0_0/sim/msys_window_rx09_re_mult_gen_0_0.vhd" \
+  "../../../bd/msys/ip/msys_window_rx09_re_mult_gen_0_1/sim/msys_window_rx09_re_mult_gen_0_1.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_blk_mem_gen_0_5/sim/msys_blk_mem_gen_0_5.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_0_0/sim/msys_tier2_xbar_0_0.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_1_0/sim/msys_tier2_xbar_1_0.v" \
   "../../../bd/msys/ip/msys_tier2_xbar_2_0/sim/msys_tier2_xbar_2_0.v" \
