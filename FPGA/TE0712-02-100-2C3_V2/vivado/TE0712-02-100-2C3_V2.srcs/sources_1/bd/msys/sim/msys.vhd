@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Mon Sep  7 20:30:02 2020
+--Date        : Thu Sep 10 01:37:16 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -17334,9 +17334,11 @@ entity TRX_rx_FFT_unit_imp_1NLKML1 is
     fft24_data_tlast_in : in STD_LOGIC;
     fft24_data_tready_out : out STD_LOGIC;
     fft24_data_tvalid_in : in STD_LOGIC;
-    postmem_rx09_doutb_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    postmem_rx24_doutb_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    postmem_rx_addrb_in : in STD_LOGIC_VECTOR ( 14 downto 0 );
+    post_fft_rx09_mem_a_addr_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    post_fft_rx09_mem_b_addr_in : in STD_LOGIC_VECTOR ( 14 downto 0 );
+    post_fft_rx09_mem_b_dout_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    post_fft_rx24_mem_b_addr_in : in STD_LOGIC_VECTOR ( 14 downto 0 );
+    post_fft_rx24_mem_b_dout_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
     premem_rx09_addra_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
     premem_rx09_addrb_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
     premem_rx09_dina_in : in STD_LOGIC_VECTOR ( 25 downto 0 );
@@ -17437,7 +17439,6 @@ architecture STRUCTURE of TRX_rx_FFT_unit_imp_1NLKML1 is
   signal RF09_quarterfrm_0 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal RF24_framectr_0 : STD_LOGIC_VECTOR ( 29 downto 0 );
   signal RF24_quarterfrm_0 : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal cordic_rx09_m_tuser_out_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal cordic_rx09_tvalid_out_0 : STD_LOGIC;
   signal cordic_rx24_m_tuser_out_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal cordic_rx24_tvalid_out_0 : STD_LOGIC;
@@ -17456,9 +17457,11 @@ architecture STRUCTURE of TRX_rx_FFT_unit_imp_1NLKML1 is
   signal fft_s_data_rx09_re_in_0 : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal fft_s_data_rx24_im_in_0 : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal fft_s_data_rx24_re_in_0 : STD_LOGIC_VECTOR ( 12 downto 0 );
-  signal postmem_rx09_doutb_out_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal postmem_rx24_doutb_out_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal postmem_rx_addrb_in_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal post_fft_rx09_mem_a_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal post_fft_rx09_mem_b_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal post_fft_rx09_mem_b_dout_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal post_fft_rx24_mem_b_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal post_fft_rx24_mem_b_dout_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal pre_fft_rx09_blk_mem_gen_0_doutb : STD_LOGIC_VECTOR ( 25 downto 0 );
   signal pre_fft_rx24_blk_mem_gen_0_doutb : STD_LOGIC_VECTOR ( 25 downto 0 );
   signal premem_rx09_addra_in_0 : STD_LOGIC_VECTOR ( 10 downto 0 );
@@ -17499,9 +17502,11 @@ begin
   fft24_data_tlast_in_0 <= fft24_data_tlast_in;
   fft24_data_tready_out <= fft24_data_tready_out_0;
   fft24_data_tvalid_in_0 <= fft24_data_tvalid_in;
-  postmem_rx09_doutb_out(15 downto 0) <= postmem_rx09_doutb_out_0(15 downto 0);
-  postmem_rx24_doutb_out(15 downto 0) <= postmem_rx24_doutb_out_0(15 downto 0);
-  postmem_rx_addrb_in_0(14 downto 0) <= postmem_rx_addrb_in(14 downto 0);
+  post_fft_rx09_mem_a_addr_out(14 downto 0) <= post_fft_rx09_mem_a_addr_0(14 downto 0);
+  post_fft_rx09_mem_b_addr_0(14 downto 0) <= post_fft_rx09_mem_b_addr_in(14 downto 0);
+  post_fft_rx09_mem_b_dout_out(15 downto 0) <= post_fft_rx09_mem_b_dout_0(15 downto 0);
+  post_fft_rx24_mem_b_addr_0(14 downto 0) <= post_fft_rx24_mem_b_addr_in(14 downto 0);
+  post_fft_rx24_mem_b_dout_out(15 downto 0) <= post_fft_rx24_mem_b_dout_0(15 downto 0);
   premem_rx09_addra_in_0(10 downto 0) <= premem_rx09_addra_in(10 downto 0);
   premem_rx09_addrb_in_0(10 downto 0) <= premem_rx09_addrb_in(10 downto 0);
   premem_rx09_dina_in_0(25 downto 0) <= premem_rx09_dina_in(25 downto 0);
@@ -17528,7 +17533,7 @@ TRX_rx_FFT_calc: entity work.TRX_rx_FFT_calc_imp_3HC979
       RF09_quarterfrm(1 downto 0) => RF09_quarterfrm_0(1 downto 0),
       RF24_framectr(29 downto 0) => RF24_framectr_0(29 downto 0),
       RF24_quarterfrm(1 downto 0) => RF24_quarterfrm_0(1 downto 0),
-      cordic_rx09_m_tuser_out(14 downto 0) => cordic_rx09_m_tuser_out_0(14 downto 0),
+      cordic_rx09_m_tuser_out(14 downto 0) => post_fft_rx09_mem_a_addr_0(14 downto 0),
       cordic_rx09_tvalid_out => cordic_rx09_tvalid_out_0,
       cordic_rx24_m_tuser_out(14 downto 0) => cordic_rx24_m_tuser_out_0(14 downto 0),
       cordic_rx24_tvalid_out => cordic_rx24_tvalid_out_0,
@@ -17563,23 +17568,23 @@ TRX_rx_FFT_calc: entity work.TRX_rx_FFT_calc_imp_3HC979
     );
 post_fft_rx09_blk_mem_gen_0: component msys_blk_mem_gen_0_2
      port map (
-      addra(14 downto 0) => cordic_rx09_m_tuser_out_0(14 downto 0),
-      addrb(14 downto 0) => postmem_rx_addrb_in_0(14 downto 0),
+      addra(14 downto 0) => post_fft_rx09_mem_a_addr_0(14 downto 0),
+      addrb(14 downto 0) => post_fft_rx09_mem_b_addr_0(14 downto 0),
       clka => s_axi_aclk_CD100_0,
       clkb => s_axi_aclk_CD100_0,
       dina(15 downto 0) => rx09_postmem_magnitude_0(15 downto 0),
-      doutb(15 downto 0) => postmem_rx09_doutb_out_0(15 downto 0),
+      doutb(15 downto 0) => post_fft_rx09_mem_b_dout_0(15 downto 0),
       rstb => rst_mig_7series_0_100M_peripheral_reset_0,
       wea(0) => cordic_rx09_tvalid_out_0
     );
 post_fft_rx24_blk_mem_gen_0: component msys_post_fft_rx09_blk_mem_gen_0_0
      port map (
       addra(14 downto 0) => cordic_rx24_m_tuser_out_0(14 downto 0),
-      addrb(14 downto 0) => postmem_rx_addrb_in_0(14 downto 0),
+      addrb(14 downto 0) => post_fft_rx24_mem_b_addr_0(14 downto 0),
       clka => s_axi_aclk_CD100_0,
       clkb => s_axi_aclk_CD100_0,
       dina(15 downto 0) => rx24_postmem_magnitude_0(15 downto 0),
-      doutb(15 downto 0) => postmem_rx24_doutb_out_0(15 downto 0),
+      doutb(15 downto 0) => post_fft_rx24_mem_b_dout_0(15 downto 0),
       rstb => rst_mig_7series_0_100M_peripheral_reset_0,
       wea(0) => cordic_rx24_tvalid_out_0
     );
@@ -17594,6 +17599,16 @@ pre_fft_rx09_blk_mem_gen_0: component msys_blk_mem_gen_0_0
       rstb => rst_mig_7series_0_100M_peripheral_reset_0,
       wea(0) => premem_rx09_wea_in_0(0)
     );
+pre_fft_rx09_xlslice_12to00: component msys_xlslice_1_0
+     port map (
+      Din(25 downto 0) => pre_fft_rx09_blk_mem_gen_0_doutb(25 downto 0),
+      Dout(12 downto 0) => fft_s_data_rx09_re_in_0(12 downto 0)
+    );
+pre_fft_rx09_xlslice_25to13: component msys_xlslice_0_21
+     port map (
+      Din(25 downto 0) => pre_fft_rx09_blk_mem_gen_0_doutb(25 downto 0),
+      Dout(12 downto 0) => fft_s_data_rx09_im_in_0(12 downto 0)
+    );
 pre_fft_rx24_blk_mem_gen_0: component msys_pre_fft_rx09_blk_mem_gen_0_0
      port map (
       addra(10 downto 0) => premem_rx24_addra_in_0(10 downto 0),
@@ -17605,22 +17620,12 @@ pre_fft_rx24_blk_mem_gen_0: component msys_pre_fft_rx09_blk_mem_gen_0_0
       rstb => rst_mig_7series_0_100M_peripheral_reset_0,
       wea(0) => premem_rx24_wea_in_0(0)
     );
-premem_fft_rx09_xlslice_12to00: component msys_xlslice_1_0
-     port map (
-      Din(25 downto 0) => pre_fft_rx09_blk_mem_gen_0_doutb(25 downto 0),
-      Dout(12 downto 0) => fft_s_data_rx09_re_in_0(12 downto 0)
-    );
-premem_fft_rx09_xlslice_25to13: component msys_xlslice_0_21
-     port map (
-      Din(25 downto 0) => pre_fft_rx09_blk_mem_gen_0_doutb(25 downto 0),
-      Dout(12 downto 0) => fft_s_data_rx09_im_in_0(12 downto 0)
-    );
-premem_fft_rx24_xlslice_12to00: component msys_xlslice_0_23
+pre_fft_rx24_xlslice_12to00: component msys_xlslice_0_23
      port map (
       Din(25 downto 0) => pre_fft_rx24_blk_mem_gen_0_doutb(25 downto 0),
       Dout(12 downto 0) => fft_s_data_rx24_re_in_0(12 downto 0)
     );
-premem_fft_rx24_xlslice_25to13: component msys_xlslice_0_22
+pre_fft_rx24_xlslice_25to13: component msys_xlslice_0_22
      port map (
       Din(25 downto 0) => pre_fft_rx24_blk_mem_gen_0_doutb(25 downto 0),
       Dout(12 downto 0) => fft_s_data_rx24_im_in_0(12 downto 0)
@@ -17758,9 +17763,11 @@ entity TRX_imp_W48V8V is
     fft24_data_tready_out : out STD_LOGIC;
     fft24_data_tvalid_in : in STD_LOGIC;
     ip2intc_irpt : out STD_LOGIC;
-    postmem_rx09_doutb_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    postmem_rx24_doutb_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    postmem_rx_addrb_in : in STD_LOGIC_VECTOR ( 14 downto 0 );
+    post_fft_rx09_mem_a_addr_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    post_fft_rx09_mem_b_addr_in : in STD_LOGIC_VECTOR ( 14 downto 0 );
+    post_fft_rx09_mem_b_dout_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    post_fft_rx24_mem_b_addr_in : in STD_LOGIC_VECTOR ( 14 downto 0 );
+    post_fft_rx24_mem_b_dout_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
     premem_rx09_addra_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
     premem_rx09_addrb_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
     premem_rx09_dina_in : in STD_LOGIC_VECTOR ( 25 downto 0 );
@@ -17954,9 +17961,11 @@ architecture STRUCTURE of TRX_imp_W48V8V is
   signal mig_7series_0_mmcm_locked : STD_LOGIC;
   signal mig_7series_0_ui_addn_clk_0_200MHz : STD_LOGIC;
   signal mig_7series_0_ui_clk_sync_rst : STD_LOGIC;
-  signal postmem_rx09_doutb_out_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal postmem_rx24_doutb_out_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal postmem_rx_addrb_in_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal post_fft_rx09_mem_a_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal post_fft_rx09_mem_b_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal post_fft_rx09_mem_b_dout_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal post_fft_rx24_mem_b_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal post_fft_rx24_mem_b_dout_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal premem_rx09_addra_in_0 : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal premem_rx09_addrb_in_0 : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal premem_rx09_dina_in_0 : STD_LOGIC_VECTOR ( 25 downto 0 );
@@ -18106,9 +18115,11 @@ begin
   mig_7series_0_mmcm_locked <= dcm_locked;
   mig_7series_0_ui_addn_clk_0_200MHz <= ref_clock;
   mig_7series_0_ui_clk_sync_rst <= ext_reset_in;
-  postmem_rx09_doutb_out(15 downto 0) <= postmem_rx09_doutb_out_0(15 downto 0);
-  postmem_rx24_doutb_out(15 downto 0) <= postmem_rx24_doutb_out_0(15 downto 0);
-  postmem_rx_addrb_in_0(14 downto 0) <= postmem_rx_addrb_in(14 downto 0);
+  post_fft_rx09_mem_a_addr_out(14 downto 0) <= post_fft_rx09_mem_a_addr_0(14 downto 0);
+  post_fft_rx09_mem_b_addr_0(14 downto 0) <= post_fft_rx09_mem_b_addr_in(14 downto 0);
+  post_fft_rx09_mem_b_dout_out(15 downto 0) <= post_fft_rx09_mem_b_dout_0(15 downto 0);
+  post_fft_rx24_mem_b_addr_0(14 downto 0) <= post_fft_rx24_mem_b_addr_in(14 downto 0);
+  post_fft_rx24_mem_b_dout_out(15 downto 0) <= post_fft_rx24_mem_b_dout_0(15 downto 0);
   premem_rx09_addra_in_0(10 downto 0) <= premem_rx09_addra_in(10 downto 0);
   premem_rx09_addrb_in_0(10 downto 0) <= premem_rx09_addrb_in(10 downto 0);
   premem_rx09_dina_in_0(25 downto 0) <= premem_rx09_dina_in(25 downto 0);
@@ -18272,9 +18283,11 @@ TRX_rx_FFT_unit: entity work.TRX_rx_FFT_unit_imp_1NLKML1
       fft24_data_tlast_in => fft24_data_tlast_in_0,
       fft24_data_tready_out => fft24_data_tready_out_0,
       fft24_data_tvalid_in => fft24_data_tvalid_in_0,
-      postmem_rx09_doutb_out(15 downto 0) => postmem_rx09_doutb_out_0(15 downto 0),
-      postmem_rx24_doutb_out(15 downto 0) => postmem_rx24_doutb_out_0(15 downto 0),
-      postmem_rx_addrb_in(14 downto 0) => postmem_rx_addrb_in_0(14 downto 0),
+      post_fft_rx09_mem_a_addr_out(14 downto 0) => post_fft_rx09_mem_a_addr_0(14 downto 0),
+      post_fft_rx09_mem_b_addr_in(14 downto 0) => post_fft_rx09_mem_b_addr_0(14 downto 0),
+      post_fft_rx09_mem_b_dout_out(15 downto 0) => post_fft_rx09_mem_b_dout_0(15 downto 0),
+      post_fft_rx24_mem_b_addr_in(14 downto 0) => post_fft_rx24_mem_b_addr_0(14 downto 0),
+      post_fft_rx24_mem_b_dout_out(15 downto 0) => post_fft_rx24_mem_b_dout_0(15 downto 0),
       premem_rx09_addra_in(10 downto 0) => premem_rx09_addra_in_0(10 downto 0),
       premem_rx09_addrb_in(10 downto 0) => premem_rx09_addrb_in_0(10 downto 0),
       premem_rx09_dina_in(25 downto 0) => premem_rx09_dina_in_0(25 downto 0),
@@ -18464,6 +18477,9 @@ entity msys is
     UART0_txd : out STD_LOGIC;
     ULI_SYSTEM_XIO : in STD_LOGIC;
     USER_dbg_out : out STD_LOGIC_VECTOR ( 13 downto 0 );
+    decoder_rx09_center_pos : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 18 downto 0 );
+    decoder_rx09_strength : in STD_LOGIC_VECTOR ( 18 downto 0 );
     fft09_aresetn_in : in STD_LOGIC;
     fft09_config_tdata_in : in STD_LOGIC_VECTOR ( 7 downto 0 );
     fft09_config_tvalid_in : in STD_LOGIC;
@@ -18478,6 +18494,9 @@ entity msys is
     fft24_data_tvalid_in : in STD_LOGIC;
     microblaze_0_Clk_100MHz_o : out STD_LOGIC;
     phy_rst_n : out STD_LOGIC;
+    post_fft_rx09_mem_a_addr : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    post_fft_rx09_mem_b_addr : in STD_LOGIC_VECTOR ( 14 downto 0 );
+    post_fft_rx09_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
     premem_rx09_addra_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
     premem_rx09_addrb_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
     premem_rx09_dina_in : in STD_LOGIC_VECTOR ( 25 downto 0 );
@@ -18677,7 +18696,10 @@ architecture STRUCTURE of msys is
     probe_in45 : in STD_LOGIC_VECTOR ( 12 downto 0 );
     probe_in46 : in STD_LOGIC_VECTOR ( 12 downto 0 );
     probe_in47 : in STD_LOGIC_VECTOR ( 12 downto 0 );
-    probe_out0 : out STD_LOGIC_VECTOR ( 14 downto 0 )
+    probe_in48 : in STD_LOGIC_VECTOR ( 18 downto 0 );
+    probe_in49 : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    probe_out0 : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    probe_out1 : out STD_LOGIC_VECTOR ( 18 downto 0 )
   );
   end component msys_vio_0_0;
   component msys_xlconcat_0_0 is
@@ -19321,6 +19343,8 @@ architecture STRUCTURE of msys is
   signal axi_timer_0_interrupt : STD_LOGIC;
   signal cfgmclk_pll_50MHz : STD_LOGIC;
   signal dcm_locked_1 : STD_LOGIC;
+  signal decoder_rx09_center_pos_1 : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal decoder_rx09_strength_1 : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal fft09_aresetn_in_0 : STD_LOGIC;
   signal fft09_config_tdata_in_0 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal fft09_config_tvalid_in_0 : STD_LOGIC;
@@ -19853,9 +19877,11 @@ architecture STRUCTURE of msys is
   signal mig_7series_0_ui_addn_clk_1_100MHz : STD_LOGIC;
   signal mig_7series_0_ui_addn_clk_2_50MHz : STD_LOGIC;
   signal mig_7series_0_ui_clk_sync_rst : STD_LOGIC;
-  signal postmem_rx09_doutb_out_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal postmem_rx24_doutb_out_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal postmem_rx_addrb_in_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal post_fft_rx09_mem_a_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal post_fft_rx09_mem_b_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal post_fft_rx09_mem_b_dout_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal post_fft_rx24_mem_b_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal post_fft_rx24_mem_b_dout_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal premem_rx09_addra_in_0 : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal premem_rx09_addrb_in_0 : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal premem_rx09_dina_in_0 : STD_LOGIC_VECTOR ( 25 downto 0 );
@@ -19872,6 +19898,7 @@ architecture STRUCTURE of msys is
   signal rst_mig_7series_0_100M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal rst_mig_7series_0_100M_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal rst_mig_7series_0_50M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal vio_0_probe_out1 : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal vio_xlconcat_40_dout : STD_LOGIC_VECTOR ( 20 downto 0 );
   signal vio_xlconcat_41_dout : STD_LOGIC_VECTOR ( 20 downto 0 );
   signal vio_xlslice_40_Dout : STD_LOGIC_VECTOR ( 12 downto 0 );
@@ -20030,6 +20057,14 @@ architecture STRUCTURE of msys is
   attribute X_INTERFACE_INFO of TRX_spi_ss_o : signal is "xilinx.com:interface:spi:1.0 TRX_spi SS_O";
   attribute X_INTERFACE_INFO of UART0_rst_n : signal is "xilinx.com:signal:reset:1.0 RST.UART0_RST_N RST";
   attribute X_INTERFACE_PARAMETER of UART0_rst_n : signal is "XIL_INTERFACENAME RST.UART0_RST_N, INSERT_VIP 0, POLARITY ACTIVE_LOW";
+  attribute X_INTERFACE_INFO of decoder_rx09_center_pos : signal is "xilinx.com:signal:data:1.0 DATA.DECODER_RX09_CENTER_POS DATA";
+  attribute X_INTERFACE_PARAMETER of decoder_rx09_center_pos : signal is "XIL_INTERFACENAME DATA.DECODER_RX09_CENTER_POS, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of decoder_rx09_squelch_lvl : signal is "xilinx.com:signal:data:1.0 DATA.DECODER_RX09_SQUELCH_LVL DATA";
+  attribute X_INTERFACE_PARAMETER of decoder_rx09_squelch_lvl : signal is "XIL_INTERFACENAME DATA.DECODER_RX09_SQUELCH_LVL, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of decoder_rx09_strength : signal is "xilinx.com:signal:data:1.0 DATA.DECODER_RX09_STRENGTH DATA";
+  attribute X_INTERFACE_PARAMETER of decoder_rx09_strength : signal is "XIL_INTERFACENAME DATA.DECODER_RX09_STRENGTH, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of post_fft_rx09_mem_b_dout : signal is "xilinx.com:signal:data:1.0 DATA.POST_FFT_RX09_MEM_B_DOUT DATA";
+  attribute X_INTERFACE_PARAMETER of post_fft_rx09_mem_b_dout : signal is "XIL_INTERFACENAME DATA.POST_FFT_RX09_MEM_B_DOUT, LAYERED_METADATA undef";
   attribute X_INTERFACE_INFO of rst_100M_peripheral_aresetn : signal is "xilinx.com:signal:reset:1.0 RST.RST_100M_PERIPHERAL_ARESETN RST";
   attribute X_INTERFACE_PARAMETER of rst_100M_peripheral_aresetn : signal is "XIL_INTERFACENAME RST.RST_100M_PERIPHERAL_ARESETN, INSERT_VIP 0, POLARITY ACTIVE_LOW";
 begin
@@ -20150,6 +20185,9 @@ begin
   axi_quad_spi_0_SPI_0_IO2_I <= qspi_flash_io2_i;
   axi_quad_spi_0_SPI_0_IO3_I <= qspi_flash_io3_i;
   axi_quad_spi_0_SPI_0_SS_I <= qspi_flash_ss_i;
+  decoder_rx09_center_pos_1(4 downto 0) <= decoder_rx09_center_pos(4 downto 0);
+  decoder_rx09_squelch_lvl(18 downto 0) <= vio_0_probe_out1(18 downto 0);
+  decoder_rx09_strength_1(18 downto 0) <= decoder_rx09_strength(18 downto 0);
   fft09_aresetn_in_0 <= fft09_aresetn_in;
   fft09_config_tdata_in_0(7 downto 0) <= fft09_config_tdata_in(7 downto 0);
   fft09_config_tvalid_in_0 <= fft09_config_tvalid_in;
@@ -20164,6 +20202,9 @@ begin
   fft24_data_tvalid_in_0 <= fft24_data_tvalid_in;
   microblaze_0_Clk_100MHz_o <= microblaze_0_Clk_100MHz;
   phy_rst_n <= ETH0_phy_rst_n;
+  post_fft_rx09_mem_a_addr(14 downto 0) <= post_fft_rx09_mem_a_addr_0(14 downto 0);
+  post_fft_rx09_mem_b_addr_0(14 downto 0) <= post_fft_rx09_mem_b_addr(14 downto 0);
+  post_fft_rx09_mem_b_dout(15 downto 0) <= post_fft_rx09_mem_b_dout_0(15 downto 0);
   premem_rx09_addra_in_0(10 downto 0) <= premem_rx09_addra_in(10 downto 0);
   premem_rx09_addrb_in_0(10 downto 0) <= premem_rx09_addrb_in(10 downto 0);
   premem_rx09_dina_in_0(25 downto 0) <= premem_rx09_dina_in(25 downto 0);
@@ -20795,9 +20836,11 @@ TRX: entity work.TRX_imp_W48V8V
       fft24_data_tready_out => fft24_data_tready_out_0,
       fft24_data_tvalid_in => fft24_data_tvalid_in_0,
       ip2intc_irpt => TRX_ip2intc_irpt,
-      postmem_rx09_doutb_out(15 downto 0) => postmem_rx09_doutb_out_0(15 downto 0),
-      postmem_rx24_doutb_out(15 downto 0) => postmem_rx24_doutb_out_0(15 downto 0),
-      postmem_rx_addrb_in(14 downto 0) => postmem_rx_addrb_in_0(14 downto 0),
+      post_fft_rx09_mem_a_addr_out(14 downto 0) => post_fft_rx09_mem_a_addr_0(14 downto 0),
+      post_fft_rx09_mem_b_addr_in(14 downto 0) => post_fft_rx09_mem_b_addr_0(14 downto 0),
+      post_fft_rx09_mem_b_dout_out(15 downto 0) => post_fft_rx09_mem_b_dout_0(15 downto 0),
+      post_fft_rx24_mem_b_addr_in(14 downto 0) => post_fft_rx24_mem_b_addr_0(14 downto 0),
+      post_fft_rx24_mem_b_dout_out(15 downto 0) => post_fft_rx24_mem_b_dout_0(15 downto 0),
       premem_rx09_addra_in(10 downto 0) => premem_rx09_addra_in_0(10 downto 0),
       premem_rx09_addrb_in(10 downto 0) => premem_rx09_addrb_in_0(10 downto 0),
       premem_rx09_dina_in(25 downto 0) => premem_rx09_dina_in_0(25 downto 0),
@@ -21909,8 +21952,8 @@ vio_0: component msys_vio_0_0
       probe_in2(31 downto 0) => lt_F2_CLK1B(31 downto 0),
       probe_in20(0) => xfft_rx24_dly3198_event_tlast_missing_out_0,
       probe_in21(0) => xfft_rx24_dly3198_event_data_in_channel_halt_out_0,
-      probe_in22(15 downto 0) => postmem_rx09_doutb_out_0(15 downto 0),
-      probe_in23(15 downto 0) => postmem_rx24_doutb_out_0(15 downto 0),
+      probe_in22(15 downto 0) => post_fft_rx09_mem_b_dout_0(15 downto 0),
+      probe_in23(15 downto 0) => post_fft_rx24_mem_b_dout_0(15 downto 0),
       probe_in24(31 downto 0) => ROTENC_decoder_Q(31 downto 0),
       probe_in25(0) => BOARD_ROTENC_PUSH_1,
       probe_in26(31 downto 0) => labtools_fmeter_0_F5(31 downto 0),
@@ -21937,12 +21980,15 @@ vio_0: component msys_vio_0_0
       probe_in45(12 downto 0) => vio_xlslice_rx09_im_25to13_in45_Dout(12 downto 0),
       probe_in46(12 downto 0) => vio_xlslice_rx24_re_12to0_in46_Dout(12 downto 0),
       probe_in47(12 downto 0) => vio_xlslice_rx24_im_25to13_in47_Dout(12 downto 0),
+      probe_in48(18 downto 0) => decoder_rx09_strength_1(18 downto 0),
+      probe_in49(4 downto 0) => decoder_rx09_center_pos_1(4 downto 0),
       probe_in5(0) => SC0712_0_reset_out,
       probe_in6(31 downto 0) => CFG_mon_GPIO1_O(31 downto 0),
       probe_in7(31 downto 0) => CFG_mon_GPIO1_I(31 downto 0),
       probe_in8(31 downto 0) => lt_F4_TRX_LVDS_divclk(31 downto 0),
       probe_in9(0) => FPGA_IO_1,
-      probe_out0(14 downto 0) => postmem_rx_addrb_in_0(14 downto 0)
+      probe_out0(14 downto 0) => post_fft_rx24_mem_b_addr_0(14 downto 0),
+      probe_out1(18 downto 0) => vio_0_probe_out1(18 downto 0)
     );
 vio_xlconcat_40: component msys_xlconcat_0_20
      port map (
