@@ -20466,7 +20466,9 @@ I2C addr: 0x1C, I2C broadcast addr: 0x2A</text>
 <text x="165.1" y="15.24" size="2.54" layer="97" ratio="15">SPI: TRX</text>
 <text x="22.86" y="162.56" size="2.54" layer="97" ratio="15">Microchip Technologies AT86RF215</text>
 <text x="93.98" y="83.82" size="1.778" layer="97">26MHz</text>
-<text x="35.56" y="22.86" size="1.778" layer="97">Replace L0701, L0702 by 0 Ohm bridges</text>
+<text x="15.24" y="17.78" size="1.778" layer="97">TODO:
+- Replace L0701, L0702 by 0 Ohm bridges
+- Replace L0721 by TDK HHM1776B2 (old device loss 22dB)</text>
 </plain>
 <instances>
 <instance part="FRAME_07" gate="G$1" x="0" y="0" smashed="yes">
