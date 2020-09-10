@@ -864,6 +864,74 @@ static u32 TrxStateRF24Get(u8* state)
 	return XST_SUCCESS;
 }
 
+static u32 TrxRssiRF09Get(s8* rssi)
+{
+	if (!rssi) {
+		return XST_FAILURE;
+	}
+
+	/* Start the SPI driver so that the device is enabled */
+	XSpi_Start(&spiInstance);
+
+	/* Disable Global interrupt to use polled mode operation */
+	XSpi_IntrGlobalDisable(&spiInstance);
+
+	/* Read the RSSI of RF09 */
+	{
+		const u8 frameLen = 3;
+		u8 readBuf[3]  = { 0 };
+		u8 writeBuf[3] = { 0 };
+		writeBuf[0] = 0x01U | 0x00U;							// Reg-MSB with Read CMD starting @ 0x010D
+		writeBuf[1] = 0x0dU;									// Reg-LSB
+
+		/* Read the data */
+		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+
+		*rssi = readBuf[2];
+	}
+
+	/* Stop the SPI driver */
+	XSpi_Stop(&spiInstance);
+
+	xil_printf("TaskTrx: TrxRssiRF09Get done, rssi = %i dBm\r\n", *rssi);
+
+	return XST_SUCCESS;
+}
+
+static u32 TrxRssiRF24Get(s8* rssi)
+{
+	if (!rssi) {
+		return XST_FAILURE;
+	}
+
+	/* Start the SPI driver so that the device is enabled */
+	XSpi_Start(&spiInstance);
+
+	/* Disable Global interrupt to use polled mode operation */
+	XSpi_IntrGlobalDisable(&spiInstance);
+
+	/* Read the RSSI of RF24 */
+	{
+		const u8 frameLen = 3;
+		u8 readBuf[3]  = { 0 };
+		u8 writeBuf[3] = { 0 };
+		writeBuf[0] = 0x02U | 0x00U;							// Reg-MSB with Read CMD starting @ 0x020D
+		writeBuf[1] = 0x0dU;									// Reg-LSB
+
+		/* Read the data */
+		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+
+		*rssi = readBuf[2];
+	}
+
+	/* Stop the SPI driver */
+	XSpi_Stop(&spiInstance);
+
+	xil_printf("TaskTrx: TrxRssiRF24Get done, rssi = %i dBm\r\n", *rssi);
+
+	return XST_SUCCESS;
+}
+
 static u32 TrxOperationModeRFSet(u8 chpm)
 {
 	/* Parameters */
@@ -996,8 +1064,8 @@ static u32 TrxOperationModeRF09BBC0Set(u8 ctx, s32 pwr)
 		writeBuf[1] = 0x09U;									// Reg-LSB
 		writeBuf[2] = ((readBuf[2] & 0x00U) | (0x0bU << 0));	// RF09_RXBWC	IFI=00, IFS=00, BW=0b (p57)
 		writeBuf[3] = ((readBuf[3] & 0x00U) | (0x01U << 0));	// RF09_RXDFE	RCUT=00, SR=01 (p58)
-		writeBuf[4] = ((readBuf[4] & 0x80U) | (0x01U << 0));	// RF09_AGCC	AGCI=00, AVGS=00, RST=00, FRZC=00, EN=01 (p59)
-		writeBuf[5] = ((readBuf[5] & 0x1fU) | (0x60U << 0));	// RF09_AGCS	TGT=60 (p60)
+		writeBuf[4] = ((readBuf[4] & 0x80U) | (0x01U << 0));	// RF09_AGCC	AGCI=#40 00, AVGS=#30 00, RST=#08 00, FRZC=#02 00, EN=#01 01 (p59)
+		writeBuf[5] = ((readBuf[5] & 0x00U) | (0x00U << 0));	// RF09_AGCS	TGT=#E0 00 [60], GCW=#1F 17 (p60)
 		writeBuf[6] = ((readBuf[6] & 0x00U) | (0x00U << 0));	// RF09_RSSI	(p60)
 		writeBuf[7] = ((readBuf[7] & 0x00U) | (0x00U << 0));	// RF09_EDC	EDM=00 (p60)
 		writeBuf[8] = ((readBuf[8] & 0x00U) | (0x48U << 0));	// RF09_EDD	DF=40, DTB=08 (p61)
@@ -1971,9 +2039,9 @@ static void TestRF09Rx(void)
 	DdsFreqAmpSet(0U, 0.0f, 0x00U, 1.0f);		// XXX
 	DdsFreqAmpSet(1U, 0.0f, 0x00U, 1.0f);
 
-	/* BLUE on */
+	/* GREEN on */
 	u8 state;
-	pwmLedSet(0x007f0000UL, 0x00ffffffUL);
+	pwmLedSet(0x00007f00UL, 0x00ffffffUL);
 	TrxCmdRF09Set(CMD_RX);
 	while (1) {
 		TrxStateRF09Get(&state);
@@ -1983,15 +2051,17 @@ static void TestRF09Rx(void)
 		}
 	}
 
-#if 0
+#if 1
 	while (1) {
+		s8 rssi = 127;
+		TrxRssiRF09Get(&rssi);
 		vTaskDelay(pdMS_TO_TICKS(250));
 	}
 #else
-	vTaskDelay(pdMS_TO_TICKS(250));
+	vTaskDelay(pdMS_TO_TICKS(1000));
 #endif
 
-	/* BLUE off */
+	/* GREEN off */
 	u32 irqs;
 	TrxCmdRF09Set(CMD_TRXOFF);
 	while (1) {
@@ -2011,7 +2081,7 @@ static void TestRF24Rx(void)
 	TrxLvdsSyncing();
 
 	/* Stop FPGA DDS0/DDS1 */
-	DdsFreqAmpSet(0U, 0.5f, 0x00U, 1.0f);		// XXX
+	DdsFreqAmpSet(0U, 0.0f, 0x00U, 1.0f);		// XXX
 	DdsFreqAmpSet(1U, 0.0f, 0x00U, 1.0f);
 
 	/* BLUE on */
@@ -2026,7 +2096,15 @@ static void TestRF24Rx(void)
 		}
 	}
 
-	vTaskDelay(pdMS_TO_TICKS(250));
+#if 1
+	while (1) {
+		s8 rssi = 127;
+		TrxRssiRF24Get(&rssi);
+		vTaskDelay(pdMS_TO_TICKS(250));
+	}
+#else
+	vTaskDelay(pdMS_TO_TICKS(1000));
+#endif
 
 	/* BLUE off */
 	u32 irqs;
