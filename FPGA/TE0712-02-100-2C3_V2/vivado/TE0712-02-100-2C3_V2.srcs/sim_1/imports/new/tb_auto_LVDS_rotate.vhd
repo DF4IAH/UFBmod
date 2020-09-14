@@ -26,14 +26,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
 
-use IEEE.std_logic_1164.all;
-use IEEE.std_logic_misc.all;
-use IEEE.std_logic_signed.all;
-
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
+
+--use IEEE.std_logic_misc.all;
+--use IEEE.std_logic_unsigned.all;
+--use IEEE.std_logic_signed.all;
+
 
 entity tb_auto_LVDS_rotate is
 --  Port ( );

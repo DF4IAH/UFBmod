@@ -26,12 +26,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
+
+--use IEEE.std_logic_misc.all;
+--use IEEE.std_logic_unsigned.all;
+--use IEEE.std_logic_signed.all;
+
 
 entity rotenc_decoder is
     Port ( clk : in STD_LOGIC;

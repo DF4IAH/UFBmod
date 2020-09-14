@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Thu Sep 10 01:37:16 2020
+--Date        : Fri Sep 11 18:30:18 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -10842,9 +10842,9 @@ entity TRX_rx_FFT_calc_imp_3HC979 is
     RF09_quarterfrm : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RF24_framectr : in STD_LOGIC_VECTOR ( 29 downto 0 );
     RF24_quarterfrm : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    cordic_rx09_m_tuser_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    cordic_rx09_m_tuser_out : out STD_LOGIC_VECTOR ( 41 downto 0 );
     cordic_rx09_tvalid_out : out STD_LOGIC;
-    cordic_rx24_m_tuser_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    cordic_rx24_m_tuser_out : out STD_LOGIC_VECTOR ( 41 downto 0 );
     cordic_rx24_tvalid_out : out STD_LOGIC;
     fft09_aresetn_in : in STD_LOGIC;
     fft09_config_tdata_in : in STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -10883,11 +10883,11 @@ architecture STRUCTURE of TRX_rx_FFT_calc_imp_3HC979 is
     aclk : in STD_LOGIC;
     aresetn : in STD_LOGIC;
     s_axis_cartesian_tvalid : in STD_LOGIC;
-    s_axis_cartesian_tuser : in STD_LOGIC_VECTOR ( 14 downto 0 );
+    s_axis_cartesian_tuser : in STD_LOGIC_VECTOR ( 41 downto 0 );
     s_axis_cartesian_tlast : in STD_LOGIC;
     s_axis_cartesian_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 );
     m_axis_dout_tvalid : out STD_LOGIC;
-    m_axis_dout_tuser : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    m_axis_dout_tuser : out STD_LOGIC_VECTOR ( 41 downto 0 );
     m_axis_dout_tlast : out STD_LOGIC;
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
@@ -10897,11 +10897,11 @@ architecture STRUCTURE of TRX_rx_FFT_calc_imp_3HC979 is
     aclk : in STD_LOGIC;
     aresetn : in STD_LOGIC;
     s_axis_cartesian_tvalid : in STD_LOGIC;
-    s_axis_cartesian_tuser : in STD_LOGIC_VECTOR ( 14 downto 0 );
+    s_axis_cartesian_tuser : in STD_LOGIC_VECTOR ( 41 downto 0 );
     s_axis_cartesian_tlast : in STD_LOGIC;
     s_axis_cartesian_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 );
     m_axis_dout_tvalid : out STD_LOGIC;
-    m_axis_dout_tuser : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    m_axis_dout_tuser : out STD_LOGIC_VECTOR ( 41 downto 0 );
     m_axis_dout_tlast : out STD_LOGIC;
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
@@ -10935,15 +10935,15 @@ architecture STRUCTURE of TRX_rx_FFT_calc_imp_3HC979 is
   component msys_xlconcat_0_4 is
   port (
     In0 : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    In1 : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    dout : out STD_LOGIC_VECTOR ( 14 downto 0 )
+    In1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 41 downto 0 )
   );
   end component msys_xlconcat_0_4;
   component msys_xlconcat_0_5 is
   port (
     In0 : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    In1 : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    dout : out STD_LOGIC_VECTOR ( 14 downto 0 )
+    In1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 41 downto 0 )
   );
   end component msys_xlconcat_0_5;
   component msys_xlslice_0_24 is
@@ -11005,18 +11005,6 @@ architecture STRUCTURE of TRX_rx_FFT_calc_imp_3HC979 is
     dout : out STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   end component msys_xlconstant_0_13;
-  component msys_xlslice_0_51 is
-  port (
-    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    Dout : out STD_LOGIC_VECTOR ( 4 downto 0 )
-  );
-  end component msys_xlslice_0_51;
-  component msys_xlslice_0_52 is
-  port (
-    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    Dout : out STD_LOGIC_VECTOR ( 4 downto 0 )
-  );
-  end component msys_xlslice_0_52;
   component msys_mult_gen_0_0 is
   port (
     CLK : in STD_LOGIC;
@@ -11071,18 +11059,16 @@ architecture STRUCTURE of TRX_rx_FFT_calc_imp_3HC979 is
   signal blk_mem_gen_0_doutb : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal cordic_rx09_addra_xlslice_9to0_Dout : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal cordic_rx09_m_axis_dout_tdata : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal cordic_rx09_m_tuser_out_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal cordic_rx09_m_tuser_out_0 : STD_LOGIC_VECTOR ( 41 downto 0 );
   signal cordic_rx09_tvalid_out_0 : STD_LOGIC;
-  signal cordic_rx09_xlconcat_0_dout : STD_LOGIC_VECTOR ( 14 downto 0 );
-  signal cordic_rx09_xlslice_4downto0_Dout : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal cordic_rx09_xlconcat_0_dout : STD_LOGIC_VECTOR ( 41 downto 0 );
   signal cordic_rx24_addra_xlslice_9to0_Dout : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal cordic_rx24_m_axis_dout_tdata : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal cordic_rx24_m_tuser_out_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal cordic_rx24_m_tuser_out_0 : STD_LOGIC_VECTOR ( 41 downto 0 );
   signal cordic_rx24_tvalid_out_0 : STD_LOGIC;
-  signal cordic_rx24_xlconcat_0_dout : STD_LOGIC_VECTOR ( 14 downto 0 );
-  signal cordic_rx24_xlslice_4downto0_Dout : STD_LOGIC_VECTOR ( 4 downto 0 );
-  signal delay_rx09_3449minus1024clk_premem_rx09_quarterfrm_out : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal delay_rx24_3449minus1024clk_premem_rx24_quarterfrm_out : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal cordic_rx24_xlconcat_0_dout : STD_LOGIC_VECTOR ( 41 downto 0 );
+  signal delay_rx09_3459minus1024clk_premem_rx09_quarterfrm_out : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal delay_rx24_3459minus1024clk_premem_rx24_quarterfrm_out : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal fft09_aresetn_in_0 : STD_LOGIC;
   signal fft09_config_tdata_in_0 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal fft09_config_tvalid_in_0 : STD_LOGIC;
@@ -11134,9 +11120,9 @@ begin
   RF09_quarterfrm_0(1 downto 0) <= RF09_quarterfrm(1 downto 0);
   RF24_framectr_0(29 downto 0) <= RF24_framectr(29 downto 0);
   RF24_quarterfrm_0(1 downto 0) <= RF24_quarterfrm(1 downto 0);
-  cordic_rx09_m_tuser_out(14 downto 0) <= cordic_rx09_m_tuser_out_0(14 downto 0);
+  cordic_rx09_m_tuser_out(41 downto 0) <= cordic_rx09_m_tuser_out_0(41 downto 0);
   cordic_rx09_tvalid_out <= cordic_rx09_tvalid_out_0;
-  cordic_rx24_m_tuser_out(14 downto 0) <= cordic_rx24_m_tuser_out_0(14 downto 0);
+  cordic_rx24_m_tuser_out(41 downto 0) <= cordic_rx24_m_tuser_out_0(41 downto 0);
   cordic_rx24_tvalid_out <= cordic_rx24_tvalid_out_0;
   fft09_aresetn_in_0 <= fft09_aresetn_in;
   fft09_config_tdata_in_0(7 downto 0) <= fft09_config_tdata_in(7 downto 0);
@@ -11171,11 +11157,11 @@ cordic_rx09: component msys_cordic_0_0
       aresetn => fft09_aresetn_in_0,
       m_axis_dout_tdata(31 downto 0) => cordic_rx09_m_axis_dout_tdata(31 downto 0),
       m_axis_dout_tlast => NLW_cordic_rx09_m_axis_dout_tlast_UNCONNECTED,
-      m_axis_dout_tuser(14 downto 0) => cordic_rx09_m_tuser_out_0(14 downto 0),
+      m_axis_dout_tuser(41 downto 0) => cordic_rx09_m_tuser_out_0(41 downto 0),
       m_axis_dout_tvalid => cordic_rx09_tvalid_out_0,
       s_axis_cartesian_tdata(63 downto 0) => xfft_rx09_dly3198_m_axis_data_tdata_0(63 downto 0),
       s_axis_cartesian_tlast => TRX_rx_xfft_dly8334_m_axis_data_tlast_0,
-      s_axis_cartesian_tuser(14 downto 0) => cordic_rx09_xlconcat_0_dout(14 downto 0),
+      s_axis_cartesian_tuser(41 downto 0) => cordic_rx09_xlconcat_0_dout(41 downto 0),
       s_axis_cartesian_tvalid => TRX_rx_xfft_dly8334_m_axis_data_tvalid_0
     );
 cordic_rx09_addra_xlslice_9to0: component msys_xlslice_0_24
@@ -11186,13 +11172,8 @@ cordic_rx09_addra_xlslice_9to0: component msys_xlslice_0_24
 cordic_rx09_xlconcat_0: component msys_xlconcat_0_4
      port map (
       In0(9 downto 0) => cordic_rx09_addra_xlslice_9to0_Dout(9 downto 0),
-      In1(4 downto 0) => cordic_rx09_xlslice_4downto0_Dout(4 downto 0),
-      dout(14 downto 0) => cordic_rx09_xlconcat_0_dout(14 downto 0)
-    );
-cordic_rx09_xlslice_4downto0: component msys_xlslice_0_51
-     port map (
-      Din(31 downto 0) => delay_rx09_3449minus1024clk_premem_rx09_quarterfrm_out(31 downto 0),
-      Dout(4 downto 0) => cordic_rx09_xlslice_4downto0_Dout(4 downto 0)
+      In1(31 downto 0) => delay_rx09_3459minus1024clk_premem_rx09_quarterfrm_out(31 downto 0),
+      dout(41 downto 0) => cordic_rx09_xlconcat_0_dout(41 downto 0)
     );
 cordic_rx24: component msys_cordic_rx09_0
      port map (
@@ -11200,11 +11181,11 @@ cordic_rx24: component msys_cordic_rx09_0
       aresetn => fft24_aresetn_in_0,
       m_axis_dout_tdata(31 downto 0) => cordic_rx24_m_axis_dout_tdata(31 downto 0),
       m_axis_dout_tlast => NLW_cordic_rx24_m_axis_dout_tlast_UNCONNECTED,
-      m_axis_dout_tuser(14 downto 0) => cordic_rx24_m_tuser_out_0(14 downto 0),
+      m_axis_dout_tuser(41 downto 0) => cordic_rx24_m_tuser_out_0(41 downto 0),
       m_axis_dout_tvalid => cordic_rx24_tvalid_out_0,
       s_axis_cartesian_tdata(63 downto 0) => xfft_rx24_dly3198_m_axis_data_tdata_0(63 downto 0),
       s_axis_cartesian_tlast => xfft_rx24_dly3198_m_axis_data_tlast_0,
-      s_axis_cartesian_tuser(14 downto 0) => cordic_rx24_xlconcat_0_dout(14 downto 0),
+      s_axis_cartesian_tuser(41 downto 0) => cordic_rx24_xlconcat_0_dout(41 downto 0),
       s_axis_cartesian_tvalid => xfft_rx24_dly3198_m_axis_data_tvalid_0
     );
 cordic_rx24_addra_xlslice_9to0: component msys_xlslice_0_25
@@ -11215,19 +11196,14 @@ cordic_rx24_addra_xlslice_9to0: component msys_xlslice_0_25
 cordic_rx24_xlconcat_0: component msys_xlconcat_0_5
      port map (
       In0(9 downto 0) => cordic_rx24_addra_xlslice_9to0_Dout(9 downto 0),
-      In1(4 downto 0) => cordic_rx24_xlslice_4downto0_Dout(4 downto 0),
-      dout(14 downto 0) => cordic_rx24_xlconcat_0_dout(14 downto 0)
-    );
-cordic_rx24_xlslice_4downto0: component msys_xlslice_0_52
-     port map (
-      Din(31 downto 0) => delay_rx24_3449minus1024clk_premem_rx24_quarterfrm_out(31 downto 0),
-      Dout(4 downto 0) => cordic_rx24_xlslice_4downto0_Dout(4 downto 0)
+      In1(31 downto 0) => delay_rx24_3459minus1024clk_premem_rx24_quarterfrm_out(31 downto 0),
+      dout(41 downto 0) => cordic_rx24_xlconcat_0_dout(41 downto 0)
     );
 delay_rx09_3459minus1024clk: entity work.delay_rx09_3459minus1024clk_imp_Y44V7U
      port map (
       RF09_framectr(29 downto 0) => RF09_framectr_0(29 downto 0),
       RF09_quarterfrm(1 downto 0) => RF09_quarterfrm_0(1 downto 0),
-      premem_rx09_quarterfrm_out(31 downto 0) => delay_rx09_3449minus1024clk_premem_rx09_quarterfrm_out(31 downto 0),
+      premem_rx09_quarterfrm_out(31 downto 0) => delay_rx09_3459minus1024clk_premem_rx09_quarterfrm_out(31 downto 0),
       reset_CD100_i => rst_mig_7series_0_100M_peripheral_reset_0,
       s_axi_aclk_CD100_i => s_axi_aclk_CD100_0
     );
@@ -11235,7 +11211,7 @@ delay_rx24_3459minus1024clk: entity work.delay_rx24_3459minus1024clk_imp_S7PV6R
      port map (
       RF24_framectr(29 downto 0) => RF24_framectr_0(29 downto 0),
       RF24_quarterfrm(1 downto 0) => RF24_quarterfrm_0(1 downto 0),
-      premem_rx24_quarterfrm_out(31 downto 0) => delay_rx24_3449minus1024clk_premem_rx24_quarterfrm_out(31 downto 0),
+      premem_rx24_quarterfrm_out(31 downto 0) => delay_rx24_3459minus1024clk_premem_rx24_quarterfrm_out(31 downto 0),
       reset_CD100_i => rst_mig_7series_0_100M_peripheral_reset_0,
       s_axi_aclk_CD100_i => s_axi_aclk_CD100_0
     );
@@ -17334,7 +17310,7 @@ entity TRX_rx_FFT_unit_imp_1NLKML1 is
     fft24_data_tlast_in : in STD_LOGIC;
     fft24_data_tready_out : out STD_LOGIC;
     fft24_data_tvalid_in : in STD_LOGIC;
-    post_fft_rx09_mem_a_addr_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    post_fft_rx09_mem_a_addr_out : out STD_LOGIC_VECTOR ( 41 downto 0 );
     post_fft_rx09_mem_b_addr_in : in STD_LOGIC_VECTOR ( 14 downto 0 );
     post_fft_rx09_mem_b_dout_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
     post_fft_rx24_mem_b_addr_in : in STD_LOGIC_VECTOR ( 14 downto 0 );
@@ -17433,6 +17409,18 @@ architecture STRUCTURE of TRX_rx_FFT_unit_imp_1NLKML1 is
     Dout : out STD_LOGIC_VECTOR ( 12 downto 0 )
   );
   end component msys_xlslice_0_23;
+  component msys_xlslice_0_53 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 41 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 14 downto 0 )
+  );
+  end component msys_xlslice_0_53;
+  component msys_xlslice_0_54 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 41 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 14 downto 0 )
+  );
+  end component msys_xlslice_0_54;
   signal FFT_window_coef_rom_rx09_1 : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal FFT_window_coef_rom_rx24_1 : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal RF09_framectr_0 : STD_LOGIC_VECTOR ( 29 downto 0 );
@@ -17440,7 +17428,7 @@ architecture STRUCTURE of TRX_rx_FFT_unit_imp_1NLKML1 is
   signal RF24_framectr_0 : STD_LOGIC_VECTOR ( 29 downto 0 );
   signal RF24_quarterfrm_0 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal cordic_rx09_tvalid_out_0 : STD_LOGIC;
-  signal cordic_rx24_m_tuser_out_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal cordic_rx24_m_tuser_out_0 : STD_LOGIC_VECTOR ( 41 downto 0 );
   signal cordic_rx24_tvalid_out_0 : STD_LOGIC;
   signal fft09_aresetn_in_0 : STD_LOGIC;
   signal fft09_config_tdata_in_0 : STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -17457,11 +17445,13 @@ architecture STRUCTURE of TRX_rx_FFT_unit_imp_1NLKML1 is
   signal fft_s_data_rx09_re_in_0 : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal fft_s_data_rx24_im_in_0 : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal fft_s_data_rx24_re_in_0 : STD_LOGIC_VECTOR ( 12 downto 0 );
-  signal post_fft_rx09_mem_a_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal post_fft_rx09_mem_a_addr_0 : STD_LOGIC_VECTOR ( 41 downto 0 );
   signal post_fft_rx09_mem_b_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal post_fft_rx09_mem_b_dout_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal post_fft_rx09_xlslice_14downto0_Dout : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal post_fft_rx24_mem_b_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal post_fft_rx24_mem_b_dout_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal post_fft_rx24_xlslice_14downto0_Dout : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal pre_fft_rx09_blk_mem_gen_0_doutb : STD_LOGIC_VECTOR ( 25 downto 0 );
   signal pre_fft_rx24_blk_mem_gen_0_doutb : STD_LOGIC_VECTOR ( 25 downto 0 );
   signal premem_rx09_addra_in_0 : STD_LOGIC_VECTOR ( 10 downto 0 );
@@ -17502,7 +17492,7 @@ begin
   fft24_data_tlast_in_0 <= fft24_data_tlast_in;
   fft24_data_tready_out <= fft24_data_tready_out_0;
   fft24_data_tvalid_in_0 <= fft24_data_tvalid_in;
-  post_fft_rx09_mem_a_addr_out(14 downto 0) <= post_fft_rx09_mem_a_addr_0(14 downto 0);
+  post_fft_rx09_mem_a_addr_out(41 downto 0) <= post_fft_rx09_mem_a_addr_0(41 downto 0);
   post_fft_rx09_mem_b_addr_0(14 downto 0) <= post_fft_rx09_mem_b_addr_in(14 downto 0);
   post_fft_rx09_mem_b_dout_out(15 downto 0) <= post_fft_rx09_mem_b_dout_0(15 downto 0);
   post_fft_rx24_mem_b_addr_0(14 downto 0) <= post_fft_rx24_mem_b_addr_in(14 downto 0);
@@ -17533,9 +17523,9 @@ TRX_rx_FFT_calc: entity work.TRX_rx_FFT_calc_imp_3HC979
       RF09_quarterfrm(1 downto 0) => RF09_quarterfrm_0(1 downto 0),
       RF24_framectr(29 downto 0) => RF24_framectr_0(29 downto 0),
       RF24_quarterfrm(1 downto 0) => RF24_quarterfrm_0(1 downto 0),
-      cordic_rx09_m_tuser_out(14 downto 0) => post_fft_rx09_mem_a_addr_0(14 downto 0),
+      cordic_rx09_m_tuser_out(41 downto 0) => post_fft_rx09_mem_a_addr_0(41 downto 0),
       cordic_rx09_tvalid_out => cordic_rx09_tvalid_out_0,
-      cordic_rx24_m_tuser_out(14 downto 0) => cordic_rx24_m_tuser_out_0(14 downto 0),
+      cordic_rx24_m_tuser_out(41 downto 0) => cordic_rx24_m_tuser_out_0(41 downto 0),
       cordic_rx24_tvalid_out => cordic_rx24_tvalid_out_0,
       fft09_aresetn_in => fft09_aresetn_in_0,
       fft09_config_tdata_in(7 downto 0) => fft09_config_tdata_in_0(7 downto 0),
@@ -17568,7 +17558,7 @@ TRX_rx_FFT_calc: entity work.TRX_rx_FFT_calc_imp_3HC979
     );
 post_fft_rx09_blk_mem_gen_0: component msys_blk_mem_gen_0_2
      port map (
-      addra(14 downto 0) => post_fft_rx09_mem_a_addr_0(14 downto 0),
+      addra(14 downto 0) => post_fft_rx09_xlslice_14downto0_Dout(14 downto 0),
       addrb(14 downto 0) => post_fft_rx09_mem_b_addr_0(14 downto 0),
       clka => s_axi_aclk_CD100_0,
       clkb => s_axi_aclk_CD100_0,
@@ -17577,9 +17567,14 @@ post_fft_rx09_blk_mem_gen_0: component msys_blk_mem_gen_0_2
       rstb => rst_mig_7series_0_100M_peripheral_reset_0,
       wea(0) => cordic_rx09_tvalid_out_0
     );
+post_fft_rx09_xlslice_14downto0: component msys_xlslice_0_53
+     port map (
+      Din(41 downto 0) => post_fft_rx09_mem_a_addr_0(41 downto 0),
+      Dout(14 downto 0) => post_fft_rx09_xlslice_14downto0_Dout(14 downto 0)
+    );
 post_fft_rx24_blk_mem_gen_0: component msys_post_fft_rx09_blk_mem_gen_0_0
      port map (
-      addra(14 downto 0) => cordic_rx24_m_tuser_out_0(14 downto 0),
+      addra(14 downto 0) => post_fft_rx24_xlslice_14downto0_Dout(14 downto 0),
       addrb(14 downto 0) => post_fft_rx24_mem_b_addr_0(14 downto 0),
       clka => s_axi_aclk_CD100_0,
       clkb => s_axi_aclk_CD100_0,
@@ -17587,6 +17582,11 @@ post_fft_rx24_blk_mem_gen_0: component msys_post_fft_rx09_blk_mem_gen_0_0
       doutb(15 downto 0) => post_fft_rx24_mem_b_dout_0(15 downto 0),
       rstb => rst_mig_7series_0_100M_peripheral_reset_0,
       wea(0) => cordic_rx24_tvalid_out_0
+    );
+post_fft_rx24_xlslice_14downto0: component msys_xlslice_0_54
+     port map (
+      Din(41 downto 0) => cordic_rx24_m_tuser_out_0(41 downto 0),
+      Dout(14 downto 0) => post_fft_rx24_xlslice_14downto0_Dout(14 downto 0)
     );
 pre_fft_rx09_blk_mem_gen_0: component msys_blk_mem_gen_0_0
      port map (
@@ -17763,7 +17763,7 @@ entity TRX_imp_W48V8V is
     fft24_data_tready_out : out STD_LOGIC;
     fft24_data_tvalid_in : in STD_LOGIC;
     ip2intc_irpt : out STD_LOGIC;
-    post_fft_rx09_mem_a_addr_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    post_fft_rx09_mem_a_addr_out : out STD_LOGIC_VECTOR ( 41 downto 0 );
     post_fft_rx09_mem_b_addr_in : in STD_LOGIC_VECTOR ( 14 downto 0 );
     post_fft_rx09_mem_b_dout_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
     post_fft_rx24_mem_b_addr_in : in STD_LOGIC_VECTOR ( 14 downto 0 );
@@ -17961,7 +17961,7 @@ architecture STRUCTURE of TRX_imp_W48V8V is
   signal mig_7series_0_mmcm_locked : STD_LOGIC;
   signal mig_7series_0_ui_addn_clk_0_200MHz : STD_LOGIC;
   signal mig_7series_0_ui_clk_sync_rst : STD_LOGIC;
-  signal post_fft_rx09_mem_a_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal post_fft_rx09_mem_a_addr_0 : STD_LOGIC_VECTOR ( 41 downto 0 );
   signal post_fft_rx09_mem_b_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal post_fft_rx09_mem_b_dout_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal post_fft_rx24_mem_b_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
@@ -18115,7 +18115,7 @@ begin
   mig_7series_0_mmcm_locked <= dcm_locked;
   mig_7series_0_ui_addn_clk_0_200MHz <= ref_clock;
   mig_7series_0_ui_clk_sync_rst <= ext_reset_in;
-  post_fft_rx09_mem_a_addr_out(14 downto 0) <= post_fft_rx09_mem_a_addr_0(14 downto 0);
+  post_fft_rx09_mem_a_addr_out(41 downto 0) <= post_fft_rx09_mem_a_addr_0(41 downto 0);
   post_fft_rx09_mem_b_addr_0(14 downto 0) <= post_fft_rx09_mem_b_addr_in(14 downto 0);
   post_fft_rx09_mem_b_dout_out(15 downto 0) <= post_fft_rx09_mem_b_dout_0(15 downto 0);
   post_fft_rx24_mem_b_addr_0(14 downto 0) <= post_fft_rx24_mem_b_addr_in(14 downto 0);
@@ -18283,7 +18283,7 @@ TRX_rx_FFT_unit: entity work.TRX_rx_FFT_unit_imp_1NLKML1
       fft24_data_tlast_in => fft24_data_tlast_in_0,
       fft24_data_tready_out => fft24_data_tready_out_0,
       fft24_data_tvalid_in => fft24_data_tvalid_in_0,
-      post_fft_rx09_mem_a_addr_out(14 downto 0) => post_fft_rx09_mem_a_addr_0(14 downto 0),
+      post_fft_rx09_mem_a_addr_out(41 downto 0) => post_fft_rx09_mem_a_addr_0(41 downto 0),
       post_fft_rx09_mem_b_addr_in(14 downto 0) => post_fft_rx09_mem_b_addr_0(14 downto 0),
       post_fft_rx09_mem_b_dout_out(15 downto 0) => post_fft_rx09_mem_b_dout_0(15 downto 0),
       post_fft_rx24_mem_b_addr_in(14 downto 0) => post_fft_rx24_mem_b_addr_0(14 downto 0),
@@ -18494,7 +18494,7 @@ entity msys is
     fft24_data_tvalid_in : in STD_LOGIC;
     microblaze_0_Clk_100MHz_o : out STD_LOGIC;
     phy_rst_n : out STD_LOGIC;
-    post_fft_rx09_mem_a_addr : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    post_fft_rx09_mem_a_addr : out STD_LOGIC_VECTOR ( 41 downto 0 );
     post_fft_rx09_mem_b_addr : in STD_LOGIC_VECTOR ( 14 downto 0 );
     post_fft_rx09_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
     premem_rx09_addra_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
@@ -19877,7 +19877,7 @@ architecture STRUCTURE of msys is
   signal mig_7series_0_ui_addn_clk_1_100MHz : STD_LOGIC;
   signal mig_7series_0_ui_addn_clk_2_50MHz : STD_LOGIC;
   signal mig_7series_0_ui_clk_sync_rst : STD_LOGIC;
-  signal post_fft_rx09_mem_a_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal post_fft_rx09_mem_a_addr_0 : STD_LOGIC_VECTOR ( 41 downto 0 );
   signal post_fft_rx09_mem_b_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal post_fft_rx09_mem_b_dout_0 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal post_fft_rx24_mem_b_addr_0 : STD_LOGIC_VECTOR ( 14 downto 0 );
@@ -20202,7 +20202,7 @@ begin
   fft24_data_tvalid_in_0 <= fft24_data_tvalid_in;
   microblaze_0_Clk_100MHz_o <= microblaze_0_Clk_100MHz;
   phy_rst_n <= ETH0_phy_rst_n;
-  post_fft_rx09_mem_a_addr(14 downto 0) <= post_fft_rx09_mem_a_addr_0(14 downto 0);
+  post_fft_rx09_mem_a_addr(41 downto 0) <= post_fft_rx09_mem_a_addr_0(41 downto 0);
   post_fft_rx09_mem_b_addr_0(14 downto 0) <= post_fft_rx09_mem_b_addr(14 downto 0);
   post_fft_rx09_mem_b_dout(15 downto 0) <= post_fft_rx09_mem_b_dout_0(15 downto 0);
   premem_rx09_addra_in_0(10 downto 0) <= premem_rx09_addra_in(10 downto 0);
@@ -20836,7 +20836,7 @@ TRX: entity work.TRX_imp_W48V8V
       fft24_data_tready_out => fft24_data_tready_out_0,
       fft24_data_tvalid_in => fft24_data_tvalid_in_0,
       ip2intc_irpt => TRX_ip2intc_irpt,
-      post_fft_rx09_mem_a_addr_out(14 downto 0) => post_fft_rx09_mem_a_addr_0(14 downto 0),
+      post_fft_rx09_mem_a_addr_out(41 downto 0) => post_fft_rx09_mem_a_addr_0(41 downto 0),
       post_fft_rx09_mem_b_addr_in(14 downto 0) => post_fft_rx09_mem_b_addr_0(14 downto 0),
       post_fft_rx09_mem_b_dout_out(15 downto 0) => post_fft_rx09_mem_b_dout_0(15 downto 0),
       post_fft_rx24_mem_b_addr_in(14 downto 0) => post_fft_rx24_mem_b_addr_0(14 downto 0),

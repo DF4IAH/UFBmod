@@ -31,6 +31,11 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+--use IEEE.std_logic_misc.all;
+--use IEEE.std_logic_unsigned.all;
+--use IEEE.std_logic_signed.all;
+
+
 entity tb_null is
 --  Port ( );
 end tb_null;

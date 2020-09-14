@@ -53,17 +53,17 @@
 `timescale 1ns/1ps
 
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module msys_xlslice_0_52 (
+module msys_xlslice_0_54 (
   Din,
   Dout
 );
 
-input wire [31 : 0] Din;
-output wire [4 : 0] Dout;
+input wire [41 : 0] Din;
+output wire [14 : 0] Dout;
 
   xlslice_v1_0_2_xlslice #(
-    .DIN_WIDTH(32),
-    .DIN_FROM(4),
+    .DIN_WIDTH(42),
+    .DIN_FROM(14),
     .DIN_TO(0)
   ) inst (
     .Din(Din),
