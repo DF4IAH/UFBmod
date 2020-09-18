@@ -11,19 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1448500750fs"></ZoomStartTime>
-      <ZoomEndTime time="1448715851fs"></ZoomEndTime>
-      <Cursor1Time time="1448612850fs"></Cursor1Time>
+      <ZoomStartTime time="1514784655fs"></ZoomStartTime>
+      <ZoomEndTime time="2765983069fs"></ZoomEndTime>
+      <Cursor1Time time="2557450000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="726"></NameColumnWidth>
+      <NameColumnWidth column_width="694"></NameColumnWidth>
       <ValueColumnWidth column_width="116"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="11" />
-   <wave_markers>
-      <marker time="9512010000" label="" />
-      <marker time="1576080000" label="" />
-   </wave_markers>
+   <WVObjectSize size="13" />
    <wvobject type="divider" fp_name="divider49">
       <obj_property name="label">STIMULI</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -40,6 +36,19 @@
       <obj_property name="CustomSignalColor">#00FFFF</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Decoder/tb_decoder_rx09_squelch_lvl" type="array">
+      <obj_property name="ElementShortName">tb_decoder_rx09_squelch_lvl[18:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_decoder_rx09_squelch_lvl[18:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#808000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_Decoder_i/post_fft_rx09_mem_a_EoT" type="logic">
+      <obj_property name="ElementShortName">post_fft_rx09_mem_a_EoT</obj_property>
+      <obj_property name="ObjectShortName">post_fft_rx09_mem_a_EoT</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
    <wvobject fp_name="/tb_UFBmod_Decoder/tb_pre_fft_rx09_mem_a_addr" type="array">
       <obj_property name="ElementShortName">tb_pre_fft_rx09_mem_a_addr[10:0]</obj_property>
       <obj_property name="ObjectShortName">tb_pre_fft_rx09_mem_a_addr[10:0]</obj_property>
@@ -48,7 +57,7 @@
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject fp_name="group211" type="group">
-      <obj_property name="label">FrameCtr</obj_property>
+      <obj_property name="label">Post_rx09_Mem_A</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_UFBmod_Decoder/tb_post_fft_rx09_mem_a_addr" type="array">
@@ -67,18 +76,11 @@
          <obj_property name="CustomSignalColor">#0000FF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_UFBmod_Decoder/tb_post_fft_rx09_mem_a_addr_PreAAddr" type="array">
-         <obj_property name="ElementShortName">tb_post_fft_rx09_mem_a_addr_PreAAddr[10:0]</obj_property>
-         <obj_property name="ObjectShortName">tb_post_fft_rx09_mem_a_addr_PreAAddr[10:0]</obj_property>
+      <wvobject fp_name="/tb_UFBmod_Decoder/tb_post_fft_rx09_mem_a_addr_RAM" type="array">
+         <obj_property name="ElementShortName">tb_post_fft_rx09_mem_a_addr_RAM[9:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_post_fft_rx09_mem_a_addr_RAM[9:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_UFBmod_Decoder/tb_post_fft_rx09_mem_a_addr_PostBAddr" type="array">
-         <obj_property name="ElementShortName">tb_post_fft_rx09_mem_a_addr_PostBAddr[14:0]</obj_property>
-         <obj_property name="ObjectShortName">tb_post_fft_rx09_mem_a_addr_PostBAddr[14:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
    </wvobject>
@@ -107,8 +109,8 @@
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_UFBmod_Decoder/tb_post_fft_rx09_mem_b_addr" type="array">
-      <obj_property name="ElementShortName">tb_post_fft_rx09_mem_b_addr[14:0]</obj_property>
-      <obj_property name="ObjectShortName">tb_post_fft_rx09_mem_b_addr[14:0]</obj_property>
+      <obj_property name="ElementShortName">tb_post_fft_rx09_mem_b_addr[9:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_post_fft_rx09_mem_b_addr[9:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="CustomSignalColor">#0000FF</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
@@ -117,20 +119,6 @@
       <obj_property name="label">FSM</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_Decoder_i/post_fft_rx09_mem_a_subframe_addr" type="array">
-         <obj_property name="ElementShortName">post_fft_rx09_mem_a_subframe_addr[41:0]</obj_property>
-         <obj_property name="ObjectShortName">post_fft_rx09_mem_a_subframe_addr[41:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_Decoder_i/dbg_max_val" type="array">
-         <obj_property name="ElementShortName">dbg_max_val[18:0]</obj_property>
-         <obj_property name="ObjectShortName">dbg_max_val[18:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#808000</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
       <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_Decoder_i/decoder_rx09_squelch_lvl" type="array">
          <obj_property name="ElementShortName">decoder_rx09_squelch_lvl[18:0]</obj_property>
          <obj_property name="ObjectShortName">decoder_rx09_squelch_lvl[18:0]</obj_property>
@@ -171,6 +159,19 @@
          <obj_property name="ObjectShortName">decoder_rx09_out_len[10:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_Decoder_i/pushdata_rx09_en" type="logic">
+         <obj_property name="ElementShortName">pushdata_rx09_en</obj_property>
+         <obj_property name="ObjectShortName">pushdata_rx09_en</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_Decoder_i/pushdata_rx09_byteData" type="array">
+         <obj_property name="ElementShortName">pushdata_rx09_byteData[7:0]</obj_property>
+         <obj_property name="ObjectShortName">pushdata_rx09_byteData[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
    </wvobject>

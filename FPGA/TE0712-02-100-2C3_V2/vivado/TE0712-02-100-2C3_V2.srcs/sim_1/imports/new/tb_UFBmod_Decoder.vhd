@@ -43,22 +43,24 @@ architecture Behavioral of tb_UFBmod_Decoder is
   component UFBmod_Decoder is
     Port ( 
         -- All Clock Domain AXI 100 MHz
-        resetn                                  : in  STD_LOGIC;
-        clk                                     : in  STD_LOGIC;
+        resetn                                      : in  STD_LOGIC;
+        clk                                         : in  STD_LOGIC;
         
-        post_fft_rx09_mem_a_addr                : in  STD_LOGIC_VECTOR(41 downto 0);
+        post_fft_rx09_mem_a_EoT                     : in  STD_LOGIC;
+        post_fft_rx09_mem_a_addr                    : in  STD_LOGIC_VECTOR(41 downto 0);
         
-        post_fft_rx09_mem_b_addr                : out STD_LOGIC_VECTOR(14 downto 0);
-        post_fft_rx09_mem_b_dout                : in  STD_LOGIC_VECTOR(15 downto 0);
+        post_fft_rx09_mem_b_addr                    : out STD_LOGIC_VECTOR( 9 downto 0);
+        post_fft_rx09_mem_b_dout                    : in  STD_LOGIC_VECTOR(15 downto 0);
         
-        decoder_rx09_squelch_lvl                : in  STD_LOGIC_VECTOR(18 downto 0);
+        decoder_rx09_squelch_lvl                    : in  STD_LOGIC_VECTOR(18 downto 0);
         
-        decoder_rx09_SoM_frameCtrAddr           : out STD_LOGIC_VECTOR(41 downto 0);
-        decoder_rx09_center_pos                 : out STD_LOGIC_VECTOR( 4 downto 0);
-        decoder_rx09_strength                   : out STD_LOGIC_VECTOR(18 downto 0);
-        
-        -- Debugging purposes only
-        dbg_max_val                             : out STD_LOGIC_VECTOR(18 downto 0)
+        decoder_rx09_SoM_frameCtrAddr               : out STD_LOGIC_VECTOR(41 downto 0);
+        decoder_rx09_center_pos                     : out STD_LOGIC_VECTOR( 4 downto 0);
+        decoder_rx09_strength                       : out STD_LOGIC_VECTOR(18 downto 0);
+        decoder_rx09_noise                          : out STD_LOGIC_VECTOR(18 downto 0);
+    
+        pushdata_rx09_en                            : out STD_LOGIC;
+        pushdata_rx09_byteData                      : out STD_LOGIC_VECTOR( 7 downto 0)
     );
   end component UFBmod_Decoder;
 
@@ -69,41 +71,49 @@ architecture Behavioral of tb_UFBmod_Decoder is
   signal tb_clk : STD_LOGIC;
 
 -- STIMULUS
-  signal tb_pre_fft_rx09_mem_a_addr             : STD_LOGIC_VECTOR (10 downto 0);
-  signal tb_post_fft_rx09_mem_a_addr            : STD_LOGIC_VECTOR (41 downto 0);
-  signal tb_post_fft_rx09_mem_a_addr_FrmCtr     : STD_LOGIC_VECTOR (31 downto 0);
-  signal tb_post_fft_rx09_mem_a_addr_PreAAddr   : STD_LOGIC_VECTOR (10 downto 0);
-  signal tb_post_fft_rx09_mem_a_addr_PostBAddr  : STD_LOGIC_VECTOR (14 downto 0);
-  signal tb_post_fft_rx09_mem_b_addr            : STD_LOGIC_VECTOR (14 downto 0);
-  signal tb_post_fft_rx09_mem_b_dout_d0         : STD_LOGIC_VECTOR (15 downto 0);
-  signal tb_post_fft_rx09_mem_b_dout            : STD_LOGIC_VECTOR (15 downto 0);
-  signal tb_decoder_rx09_squelch_lvl            : STD_LOGIC_VECTOR (18 downto 0);
-  signal tb_decoder_rx09_center_pos             : STD_LOGIC_VECTOR ( 4 downto 0);
-  signal tb_decoder_rx09_strength               : STD_LOGIC_VECTOR (18 downto 0);
-  shared variable post_fft_rx09_mem_b_dout_Int  : Integer;
+  signal tb_pre_fft_rx09_mem_a_addr                 : STD_LOGIC_VECTOR (10 downto 0);
+  signal tb_post_fft_rx09_mem_a_EoT                 : STD_LOGIC;
+  signal tb_post_fft_rx09_mem_a_addr                : STD_LOGIC_VECTOR (41 downto 0);
+  signal tb_post_fft_rx09_mem_a_addr_FrmCtr         : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_post_fft_rx09_mem_a_addr_RAM            : STD_LOGIC_VECTOR ( 9 downto 0);
+  signal tb_post_fft_rx09_mem_b_addr                : STD_LOGIC_VECTOR ( 9 downto 0);
+  signal tb_post_fft_rx09_mem_b_dout_d0             : STD_LOGIC_VECTOR (15 downto 0);
+  signal tb_post_fft_rx09_mem_b_dout                : STD_LOGIC_VECTOR (15 downto 0);
+  signal tb_decoder_rx09_squelch_lvl                : STD_LOGIC_VECTOR (18 downto 0);
+  signal tb_decoder_rx09_SoM_frameCtrAddr           : STD_LOGIC_VECTOR (41 downto 0);
+  signal tb_decoder_rx09_center_pos                 : STD_LOGIC_VECTOR ( 4 downto 0);
+  signal tb_decoder_rx09_strength                   : STD_LOGIC_VECTOR (18 downto 0);
+  signal tb_decoder_rx09_noise                      : STD_LOGIC_VECTOR (18 downto 0);
+  signal tb_pushdata_rx09_en                        : STD_LOGIC;
+  signal tb_pushdata_rx09_byteData                  : STD_LOGIC_VECTOR ( 7 downto 0);
 begin
 
   -- Debugging aid
   tb_post_fft_rx09_mem_a_addr_FrmCtr      <= tb_post_fft_rx09_mem_a_addr(41 downto 10);
-  tb_post_fft_rx09_mem_a_addr_PreAAddr    <= tb_post_fft_rx09_mem_a_addr(10 downto  0);
-  tb_post_fft_rx09_mem_a_addr_PostBAddr   <= tb_post_fft_rx09_mem_a_addr(14 downto  0);
+  tb_post_fft_rx09_mem_a_addr_RAM         <= tb_post_fft_rx09_mem_a_addr( 9 downto  0);
 
 
 -- DUT
   UFBmod_Decoder_i: component UFBmod_Decoder
     port map (
-      resetn                        => tb_resetn,
-      clk                           => tb_clk,
-      
-      post_fft_rx09_mem_a_addr      => tb_post_fft_rx09_mem_a_addr,
-      
-      post_fft_rx09_mem_b_addr      => tb_post_fft_rx09_mem_b_addr,
-      post_fft_rx09_mem_b_dout      => tb_post_fft_rx09_mem_b_dout,
-      
-      decoder_rx09_squelch_lvl      => tb_decoder_rx09_squelch_lvl,
-      
-      decoder_rx09_center_pos       => tb_decoder_rx09_center_pos,
-      decoder_rx09_strength         => tb_decoder_rx09_strength
+        resetn                          => tb_resetn,
+        clk                             => tb_clk,
+        
+        post_fft_rx09_mem_a_EoT         => tb_post_fft_rx09_mem_a_EoT,
+        post_fft_rx09_mem_a_addr        => tb_post_fft_rx09_mem_a_addr,
+        
+        post_fft_rx09_mem_b_addr        => tb_post_fft_rx09_mem_b_addr,
+        post_fft_rx09_mem_b_dout        => tb_post_fft_rx09_mem_b_dout,
+        
+        decoder_rx09_squelch_lvl        => tb_decoder_rx09_squelch_lvl,
+        
+        decoder_rx09_SoM_frameCtrAddr   => tb_decoder_rx09_SoM_frameCtrAddr,
+        decoder_rx09_center_pos         => tb_decoder_rx09_center_pos,
+        decoder_rx09_strength           => tb_decoder_rx09_strength,
+        decoder_rx09_noise              => tb_decoder_rx09_noise,
+        
+        pushdata_rx09_en                => tb_pushdata_rx09_en,
+        pushdata_rx09_byteData          => tb_pushdata_rx09_byteData
     );
 
 
@@ -133,7 +143,7 @@ begin
 
   -- Squelch level setting
   proc_squelch_lvl: process
-  constant C_squelch_lvl        : Integer  := 100; -- Set squelch level
+  constant C_squelch_lvl                : Integer   := 100; -- Set squelch level
   begin
     tb_decoder_rx09_squelch_lvl <= (others => '0');
     
@@ -148,15 +158,16 @@ begin
   proc_tb_pre_a_addr: process
     constant C_pre_mem_a_depth          : Integer   := 2048;
     variable pre_a_addr_Int             : Integer;
-begin
-    pre_a_addr_Int := 0;
+  begin
+    pre_a_addr_Int              := 0;
+    tb_pre_fft_rx09_mem_a_addr  <= (others => '0');
     
     wait until tb_resetn = '1';
     loop
         wait until tb_clk'event and tb_clk = '1';
         
-        tb_pre_fft_rx09_mem_a_addr <= std_logic_vector(to_unsigned(pre_a_addr_Int, tb_pre_fft_rx09_mem_a_addr'length));
-        pre_a_addr_Int := (pre_a_addr_Int + 1) mod C_pre_mem_a_depth;
+        tb_pre_fft_rx09_mem_a_addr      <= std_logic_vector(to_unsigned(pre_a_addr_Int, tb_pre_fft_rx09_mem_a_addr'length));
+        pre_a_addr_Int                  := (pre_a_addr_Int + 1)  mod  C_pre_mem_a_depth;
         
         wait for 250 ns;
     end loop;
@@ -165,12 +176,13 @@ begin
   
   -- Post FFT port A address stimulus
   proc_tb_post_a_addr: process
-  variable frame_start_Int              : Integer;
-  variable post_a_addr_Int              : Integer;
+    variable frame_start_Int            : Integer;
+    variable post_a_addr_Int            : Integer;
   begin
     -- Position address pointer just before change of full 1024 frame
     frame_start_Int                     := 0;
     post_a_addr_Int                     := 0;
+    tb_post_fft_rx09_mem_a_EoT          <= '0';
     tb_post_fft_rx09_mem_a_addr         <= (others => '0');
     
     wait until tb_resetn = '1';
@@ -183,10 +195,19 @@ begin
         -- FFT out burst starts abt. 30 us after points are delivered in
         wait for 30 us;
         
-        for ii in 0 to 1023 loop
+        for ii in 0 to 1024 loop
             wait until tb_clk'event and tb_clk = '1';
-            post_a_addr_Int             := frame_start_Int + ii;
-            tb_post_fft_rx09_mem_a_addr <= std_logic_vector(to_unsigned(post_a_addr_Int, tb_post_fft_rx09_mem_a_addr'length));
+            
+            if (ii < 1024) then
+                post_a_addr_Int             := frame_start_Int + ii;
+                tb_post_fft_rx09_mem_a_addr <= std_logic_vector(to_unsigned(post_a_addr_Int, tb_post_fft_rx09_mem_a_addr'length));
+            end if;
+            
+            if (ii = 1023) then
+                tb_post_fft_rx09_mem_a_EoT <= '1';
+            else
+                tb_post_fft_rx09_mem_a_EoT <= '0';
+            end if;
         end loop;
         
         frame_start_Int := frame_start_Int + 1024;
@@ -195,27 +216,29 @@ begin
 
 
   -- Port B data stimulus
-  -- TODO
   proc_tb_b_dout: process
-  constant C_postmem_depth                      : Integer   := 32768;
-  constant C_postmem_pages                      : Integer   := 4;
-  constant C_postmemSim_depth                   : Integer   := C_postmem_pages * C_postmem_depth;
-  constant C_centerOfs                          : Integer   := +1; 
-
-  type PostMemType                              is array ((C_postmemSim_depth - 1) downto 0) of Integer; 
-  variable postmemSim                           : PostMemType;
-
-  variable row                                  : Integer;
-  variable sigPos                               : Integer;
-  variable tb_post_fft_rx09_mem_b_dout_d0_Int   : Integer;
-  variable getAddrIn                            : Integer;
-  variable getAddrIn_d1                         : Integer;
-  variable getAddrPage                          : Integer;
-  variable readAddr                             : Integer;
+    constant C_postmem_depth                    : Integer   := 1024;
+    constant C_postmem_pages                    : Integer   := 128;
+    constant C_postmemSim_depth                 : Integer   := C_postmem_pages * C_postmem_depth;
+    constant C_startRow                         : Integer   := 0;
+  --constant C_centerOfs                        : Integer   := +1; 
+    constant C_centerOfs                        : Integer   := -4; 
+    
+    type PostMemType                            is array ((C_postmemSim_depth - 1) downto 0) of Integer; 
+    variable postmemSim                         : PostMemType;
+    
+    variable row                                : Integer;
+    variable sigPos                             : Integer;
+    variable tb_post_fft_rx09_mem_b_dout_d0_Int : Integer;
+    variable getAddrIn                          : Integer;
+    variable getAddrIn_d1                       : Integer;
+    variable getAddrPage                        : Integer;
+    variable readAddr                           : Integer;
   begin
     -- Position address pointer just before change of full 1024 frame
-    post_fft_rx09_mem_b_dout_Int    := 5;
+  --post_fft_rx09_mem_b_dout_Int    := 5;
     tb_post_fft_rx09_mem_b_dout     <= (others => '0');
+    tb_post_fft_rx09_mem_b_dout_d0  <= (others => '0');
     
     getAddrIn       := 0;
     getAddrIn_d1    := 0;
@@ -224,69 +247,71 @@ begin
     
     -- Init with 'noise'
     for ii in 0 to (C_postmemSim_depth - 1) loop
-        postmemSim(ii) := 1 + (ii mod 12);
+        postmemSim(ii) := (ii mod 12);
     end loop;
     
     -- Fill message: '1' = (n-1) + 17 / '0' = (n-1) - 11
-    row := 0;
+    row := C_startRow;
+    
     -- PA ramp-up
-    postmemSim(row * 2048 + 16  +  C_centerOfs +  0)    := 15;  row := row + 1;     -- all is moduleo 32
-    postmemSim(row * 2048 + 16  +  C_centerOfs +  0)    := 18;  row := row + 1;
-
+    postmemSim(row * 1024 + 16  +  C_centerOfs +  0)    := 15;  row := row + 2;     -- all is moduleo 32
+    postmemSim(row * 1024 + 16  +  C_centerOfs +  0)    := 18;  row := row + 2;
+    
     -- Preamble
-    postmemSim(row * 2048 + 16  +  C_centerOfs +  6)    := 20;  row := row + 1;
-    postmemSim(row * 2048 + 16  +  C_centerOfs -  6)    := 20;  row := row + 1;
-    postmemSim(row * 2048 + 16  +  C_centerOfs +  9)    := 20;  row := row + 1;
-    postmemSim(row * 2048 + 16  +  C_centerOfs -  9)    := 20;  row := row + 1;
-    postmemSim(row * 2048 + 16  +  C_centerOfs + 12)    := 20;  row := row + 1;
-    postmemSim(row * 2048 + 16  +  C_centerOfs - 12)    := 20;  row := row + 1;
-
+    postmemSim(row * 1024 + 16  +  C_centerOfs +  6)    := 20;  row := row + 2;
+    postmemSim(row * 1024 + 16  +  C_centerOfs -  6)    := 20;  row := row + 2;
+    postmemSim(row * 1024 + 16  +  C_centerOfs +  9)    := 20;  row := row + 2;
+    postmemSim(row * 1024 + 16  +  C_centerOfs -  9)    := 20;  row := row + 2;
+    postmemSim(row * 1024 + 16  +  C_centerOfs + 12)    := 20;  row := row + 2;
+    postmemSim(row * 1024 + 16  +  C_centerOfs - 12)    := 20;  row := row + 2;
+    
     -- Loop remain counter  (TODO)
-    postmemSim(row * 2048 + 16  +  C_centerOfs +  0)    := 20;  row := row + 1;     -- 0 remaining loops after this one
-
+    sigPos := (32 + 16  +  C_centerOfs +  0) mod 32;
+    postmemSim(row * 1024 + 16  +  C_centerOfs +  0)    := 20;  row := row + 2;     -- 0 remaining loops after this one
+    
     -- Loop length counter  (TODO)
-    postmemSim(row * 2048 + 16  +  C_centerOfs +  1)    := 20;  row := row + 1;     -- 1 u32 words of data following
-
+    sigPos := (32 + 16  +  C_centerOfs +  1) mod 32;
+    postmemSim(row * 1024 + 16  +  C_centerOfs +  1)    := 20;  row := row + 2;     -- 1 u32 words of data following
+    
     -- Message body
-    sigPos := (32 + 16 + C_centerOfs +17) mod 32;                                   -- '1'
-    postmemSim(row * 2048       +  sigPos)              := 20;  row := row + 1;
+    sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
     
     sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
-    postmemSim(row * 2048       +  sigPos)              := 20;  row := row + 1;
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
     
     sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
-    postmemSim(row * 2048       +  sigPos)              := 20;  row := row + 1;
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
     
     sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
-    postmemSim(row * 2048       +  sigPos)              := 20;  row := row + 1;
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
     
     sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
-    postmemSim(row * 2048       +  sigPos)              := 20;  row := row + 1;
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
     
     sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
-    postmemSim(row * 2048       +  sigPos)              := 20;  row := row + 1;
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
     
     sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
-    postmemSim(row * 2048       +  sigPos)              := 20;  row := row + 1;
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
     
     sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
-    postmemSim(row * 2048       +  sigPos)              := 20;  row := row + 1;
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
     
     -- to be correct for the length counter, additional 3 more bytes would be needed.
     -- End of message
     
     -- Footer
-    postmemSim(row * 2048 + 16  +  C_centerOfs + 10)    := 20;  row := row + 1;
-    postmemSim(row * 2048 + 16  +  C_centerOfs - 10)    := 20;  row := row + 1;
-    postmemSim(row * 2048 + 16  +  C_centerOfs +  8)    := 20;  row := row + 1;
-    postmemSim(row * 2048 + 16  +  C_centerOfs -  8)    := 20;  row := row + 1;
-    postmemSim(row * 2048 + 16  +  C_centerOfs +  4)    := 20;  row := row + 1;
-    postmemSim(row * 2048 + 16  +  C_centerOfs -  4)    := 20;  row := row + 1;
+    sigPos := (32 + sigPos      +0 +3) mod 32;
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      -3 -3) mod 32;
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
     
     -- PA ramp-down
-    postmemSim(row * 2048 + 16  +  C_centerOfs +  0)    := 18;  row := row + 1;
-    postmemSim(row * 2048 + 16  +  C_centerOfs +  0)    := 15;  row := row + 1;
-    
+    sigPos := (32 + sigPos      +3 +0) mod 32;
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
     
     wait until tb_resetn = '1';
     wait for 10 us;
@@ -297,7 +322,7 @@ begin
         -- Delay output by 2 clocks
         getAddrIn_d1                        := getAddrIn;
         getAddrIn                           := to_integer(unsigned(tb_post_fft_rx09_mem_b_addr));
-        if ((getAddrIn + C_postmem_depth/2) < getAddrIn_d1) then
+        if (getAddrIn < getAddrIn_d1) then
             getAddrPage := (getAddrPage + 1) mod C_postmem_pages;
         end if;
         readAddr                            := getAddrIn + (getAddrPage * C_postmem_depth);

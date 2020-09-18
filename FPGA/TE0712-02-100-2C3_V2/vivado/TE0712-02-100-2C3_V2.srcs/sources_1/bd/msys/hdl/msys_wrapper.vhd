@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Fri Sep 11 18:30:19 2020
+--Date        : Wed Sep 16 22:46:33 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -195,36 +195,24 @@ architecture STRUCTURE of msys_wrapper is
     FFT_window_coef_rom_rx09 : in STD_LOGIC_VECTOR ( 9 downto 0 );
     FFT_window_coef_rom_rx24 : in STD_LOGIC_VECTOR ( 9 downto 0 );
     post_fft_rx09_mem_a_addr : out STD_LOGIC_VECTOR ( 41 downto 0 );
-    post_fft_rx09_mem_b_addr : in STD_LOGIC_VECTOR ( 14 downto 0 );
+    post_fft_rx09_mem_b_addr : in STD_LOGIC_VECTOR ( 9 downto 0 );
     post_fft_rx09_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
     decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 18 downto 0 );
     decoder_rx09_center_pos : in STD_LOGIC_VECTOR ( 4 downto 0 );
     decoder_rx09_strength : in STD_LOGIC_VECTOR ( 18 downto 0 );
-    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
-    qspi_flash_io0_i : in STD_LOGIC;
-    qspi_flash_io0_o : out STD_LOGIC;
-    qspi_flash_io0_t : out STD_LOGIC;
-    qspi_flash_io1_i : in STD_LOGIC;
-    qspi_flash_io1_o : out STD_LOGIC;
-    qspi_flash_io1_t : out STD_LOGIC;
-    qspi_flash_io2_i : in STD_LOGIC;
-    qspi_flash_io2_o : out STD_LOGIC;
-    qspi_flash_io2_t : out STD_LOGIC;
-    qspi_flash_io3_i : in STD_LOGIC;
-    qspi_flash_io3_o : out STD_LOGIC;
-    qspi_flash_io3_t : out STD_LOGIC;
-    qspi_flash_ss_i : in STD_LOGIC;
-    qspi_flash_ss_o : out STD_LOGIC;
-    qspi_flash_ss_t : out STD_LOGIC;
+    post_fft_rx09_mem_a_EoT : out STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
     BOARD_IIC_scl_i : in STD_LOGIC;
     BOARD_IIC_scl_o : out STD_LOGIC;
     BOARD_IIC_scl_t : out STD_LOGIC;
     BOARD_IIC_sda_i : in STD_LOGIC;
     BOARD_IIC_sda_o : out STD_LOGIC;
     BOARD_IIC_sda_t : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
     TRX_spi_io0_i : in STD_LOGIC;
     TRX_spi_io0_o : out STD_LOGIC;
     TRX_spi_io0_t : out STD_LOGIC;
@@ -237,16 +225,6 @@ architecture STRUCTURE of msys_wrapper is
     TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_t : out STD_LOGIC;
-    TRX_tx_clk_clk_n : out STD_LOGIC;
-    TRX_tx_clk_clk_p : out STD_LOGIC;
-    CLK3_sys_diff_clk_p : in STD_LOGIC;
-    CLK3_sys_diff_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
-    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
-    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
     DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -262,10 +240,33 @@ architecture STRUCTURE of msys_wrapper is
     DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_tx_clk_clk_n : out STD_LOGIC;
+    TRX_tx_clk_clk_p : out STD_LOGIC;
+    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
+    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
+    CLK3_sys_diff_clk_p : in STD_LOGIC;
+    CLK3_sys_diff_clk_n : in STD_LOGIC;
+    qspi_flash_io0_i : in STD_LOGIC;
+    qspi_flash_io0_o : out STD_LOGIC;
+    qspi_flash_io0_t : out STD_LOGIC;
+    qspi_flash_io1_i : in STD_LOGIC;
+    qspi_flash_io1_o : out STD_LOGIC;
+    qspi_flash_io1_t : out STD_LOGIC;
+    qspi_flash_io2_i : in STD_LOGIC;
+    qspi_flash_io2_o : out STD_LOGIC;
+    qspi_flash_io2_t : out STD_LOGIC;
+    qspi_flash_io3_i : in STD_LOGIC;
+    qspi_flash_io3_o : out STD_LOGIC;
+    qspi_flash_io3_t : out STD_LOGIC;
+    qspi_flash_ss_i : in STD_LOGIC;
+    qspi_flash_ss_o : out STD_LOGIC;
+    qspi_flash_ss_t : out STD_LOGIC;
     RMII_PHY_M_0_crs_dv : in STD_LOGIC;
     RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RMII_PHY_M_0_tx_en : out STD_LOGIC;
     RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    UART0_rxd : in STD_LOGIC;
+    UART0_txd : out STD_LOGIC;
     CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
@@ -367,16 +368,19 @@ architecture STRUCTURE of msys_wrapper is
   end component EUI48_FSM;
   component UFBmod_Decoder is
   port (
-    resetn                                  : in  STD_LOGIC;
-    clk                                     : in  STD_LOGIC;
-    post_fft_rx09_mem_a_addr                : in  STD_LOGIC_VECTOR(41 downto 0);
-    post_fft_rx09_mem_b_addr                : out STD_LOGIC_VECTOR(14 downto 0);
-    post_fft_rx09_mem_b_dout                : in  STD_LOGIC_VECTOR(15 downto 0);
-    decoder_rx09_squelch_lvl                : in  STD_LOGIC_VECTOR(18 downto 0);
-    decoder_rx09_SoM_frameCtrAddr           : out STD_LOGIC_VECTOR(41 downto 0);
-    decoder_rx09_center_pos                 : out STD_LOGIC_VECTOR( 4 downto 0);
-    decoder_rx09_strength                   : out STD_LOGIC_VECTOR(18 downto 0);
-    dbg_max_val                             : out STD_LOGIC_VECTOR(18 downto 0)
+    resetn                                      : in  STD_LOGIC;
+    clk                                         : in  STD_LOGIC;
+    post_fft_rx09_mem_a_EoT                     : in  STD_LOGIC;
+    post_fft_rx09_mem_a_addr                    : in  STD_LOGIC_VECTOR(41 downto 0);
+    post_fft_rx09_mem_b_addr                    : out STD_LOGIC_VECTOR( 9 downto 0);
+    post_fft_rx09_mem_b_dout                    : in  STD_LOGIC_VECTOR(15 downto 0);
+    decoder_rx09_squelch_lvl                    : in  STD_LOGIC_VECTOR(18 downto 0);
+    decoder_rx09_SoM_frameCtrAddr               : out STD_LOGIC_VECTOR(41 downto 0);
+    decoder_rx09_center_pos                     : out STD_LOGIC_VECTOR( 4 downto 0);
+    decoder_rx09_strength                       : out STD_LOGIC_VECTOR(18 downto 0);
+    decoder_rx09_noise                          : out STD_LOGIC_VECTOR(18 downto 0);
+    pushdata_rx09_en                            : out STD_LOGIC;
+    pushdata_rx09_byteData                      : out STD_LOGIC_VECTOR( 7 downto 0)
   );
   end component UFBmod_Decoder;
   component SCOPE_FSM is
@@ -423,11 +427,10 @@ architecture STRUCTURE of msys_wrapper is
   signal TRX_spi_ss_io_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_spi_ss_o_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_spi_ss_t : STD_LOGIC;
-  signal mw_decoder_rx09_center_pos : STD_LOGIC_VECTOR (4 downto 0);
-  signal mw_decoder_rx09_squelch_lvl : STD_LOGIC_VECTOR (18 downto 0);
-  signal mw_decoder_rx09_SoM_frameCtrAddr : STD_LOGIC_VECTOR (41 downto 0);
-  signal mw_decoder_rx09_strength : STD_LOGIC_VECTOR (18 downto 0);
-  signal mw_dbg_max_val : STD_LOGIC_VECTOR (18 downto 0);
+  signal mw_decoder_rx09_center_pos : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal mw_decoder_rx09_squelch_lvl : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal mw_decoder_rx09_SoM_frameCtrAddr : STD_LOGIC_VECTOR ( 41 downto 0 );
+  signal mw_decoder_rx09_strength : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal mw_microblaze_0_Clk_100MHz : STD_LOGIC;
   signal mw_rst_100M_peripheral_aresetn : STD_LOGIC;
   signal mw_EUI48_FSM_start : STD_LOGIC;
@@ -474,18 +477,19 @@ architecture STRUCTURE of msys_wrapper is
   signal mw_fft24_premem_subframe_in : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal mw_postmem_rx_wea_in : STD_LOGIC;
   signal mw_postmem_rx_addra_in : STD_LOGIC_VECTOR ( 12 downto 0 );
-  signal mw_post_fft_rx09_mem_b_dout : STD_LOGIC_VECTOR (15 downto 0 );
-  signal mw_post_fft_rx09_mem_a_addr : STD_LOGIC_VECTOR (14 downto 0);
-  signal mw_post_fft_rx09_mem_b_addr : STD_LOGIC_VECTOR (14 downto 0);
-  signal mw_RF09_quarterfrm : STD_LOGIC_VECTOR (1 downto 0);
-  signal mw_RF09_framectr : STD_LOGIC_VECTOR (29 downto 0);
-  signal mw_RF24_quarterfrm : STD_LOGIC_VECTOR (1 downto 0);
-  signal mw_RF24_framectr : STD_LOGIC_VECTOR (29 downto 0);
+  signal mw_post_fft_rx09_mem_a_EoT : STD_LOGIC;
+  signal mw_post_fft_rx09_mem_b_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal mw_post_fft_rx09_mem_a_addr : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal mw_post_fft_rx09_mem_b_addr : STD_LOGIC_VECTOR ( 9 downto 0 );
+  signal mw_RF09_quarterfrm : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal mw_RF09_framectr : STD_LOGIC_VECTOR ( 29 downto 0 );
+  signal mw_RF24_quarterfrm : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal mw_RF24_framectr : STD_LOGIC_VECTOR ( 29 downto 0 );
   signal mw_rotenc_dec_cnt_en : STD_LOGIC;
   signal mw_rotenc_dec_cnt_up_dwn : STD_LOGIC;
-  signal mw_SCOPE_FSM_GPIO0_Out : STD_LOGIC_VECTOR (31 downto 0);
-  signal mw_SCOPE_FSM_GPIO1_In : STD_LOGIC_VECTOR (31 downto 0);
-  signal mw_SCOPE_FSM_TrigSrc : STD_LOGIC_VECTOR (47 downto 0);
+  signal mw_SCOPE_FSM_GPIO0_Out : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mw_SCOPE_FSM_GPIO1_In : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mw_SCOPE_FSM_TrigSrc : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal mw_SCOPE_FSM_Timebase_CE : STD_LOGIC;
   signal mw_SCOPE_FSM_Timebase_SCLR : STD_LOGIC;
   signal mw_SCOPE_FSM_FIFO_Rst : STD_LOGIC;
@@ -655,14 +659,14 @@ UFBmod_Decoder_i: component UFBmod_Decoder
     port map (
       resetn                        => mw_rst_100M_peripheral_aresetn,
       clk                           => mw_microblaze_0_Clk_100MHz,
+      post_fft_rx09_mem_a_EoT       => mw_post_fft_rx09_mem_a_EoT,
       post_fft_rx09_mem_a_addr      => mw_post_fft_rx09_mem_a_addr,
       post_fft_rx09_mem_b_addr      => mw_post_fft_rx09_mem_b_addr,
       post_fft_rx09_mem_b_dout      => mw_post_fft_rx09_mem_b_dout,
       decoder_rx09_squelch_lvl      => mw_decoder_rx09_squelch_lvl,
       decoder_rx09_SoM_frameCtrAddr => mw_decoder_rx09_SoM_frameCtrAddr,
       decoder_rx09_center_pos       => mw_decoder_rx09_center_pos,
-      decoder_rx09_strength         => mw_decoder_rx09_strength,
-      dbg_max_val                   => mw_dbg_max_val
+      decoder_rx09_strength         => mw_decoder_rx09_strength
     );
 SCOPE_FSM_i: component SCOPE_FSM
     port map (
@@ -819,8 +823,9 @@ msys_i: component msys
       fft24_data_tvalid_in => mw_fft24_data_tvalid_in,
       microblaze_0_Clk_100MHz_o => mw_microblaze_0_Clk_100MHz,
       phy_rst_n => phy_rst_n,
+      post_fft_rx09_mem_a_EoT => mw_post_fft_rx09_mem_a_EoT,
       post_fft_rx09_mem_a_addr(41 downto 0) => mw_post_fft_rx09_mem_a_addr(41 downto 0),
-      post_fft_rx09_mem_b_addr(14 downto 0) => mw_post_fft_rx09_mem_b_addr(14 downto 0),
+      post_fft_rx09_mem_b_addr(9 downto 0) => mw_post_fft_rx09_mem_b_addr(9 downto 0),
       post_fft_rx09_mem_b_dout(15 downto 0) => mw_post_fft_rx09_mem_b_dout(15 downto 0),
       premem_rx09_addra_in(10 downto 0) => mw_premem_rx09_addra_in(10 downto 0),
       premem_rx09_addrb_in(10 downto 0) => mw_premem_rx09_addrb_in(10 downto 0),
