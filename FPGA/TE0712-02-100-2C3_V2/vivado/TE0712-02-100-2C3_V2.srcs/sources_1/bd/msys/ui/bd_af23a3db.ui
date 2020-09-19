@@ -38,8 +38,8 @@ preplace netloc microblaze_0_xlconcat_dout 1 1 1 230 160n
 preplace netloc processor_clk_1 1 0 2 0J 350 240
 preplace netloc s_axi_aresetn_1 1 0 2 20J 370 NJ
 preplace netloc processor_rst_1 1 0 2 -10J 430 NJ
-preplace netloc Conn1 1 0 2 -20J 330 NJ
 preplace netloc Conn2 1 2 1 N 380
+preplace netloc Conn1 1 0 2 -20J 330 NJ
 levelinfo -pg 1 -50 130 370 510
 pagesize -pg 1 -db -bbox -sgen -190 -30 620 490
 "

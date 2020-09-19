@@ -54,7 +54,6 @@ architecture Behavioral of tb_UFBmod_Decoder is
         
         decoder_rx09_squelch_lvl                    : in  STD_LOGIC_VECTOR(18 downto 0);
         
-        decoder_rx09_SoM_frameCtrAddr               : out STD_LOGIC_VECTOR(41 downto 0);
         decoder_rx09_center_pos                     : out STD_LOGIC_VECTOR( 4 downto 0);
         decoder_rx09_strength                       : out STD_LOGIC_VECTOR(18 downto 0);
         decoder_rx09_noise                          : out STD_LOGIC_VECTOR(18 downto 0);
@@ -80,7 +79,6 @@ architecture Behavioral of tb_UFBmod_Decoder is
   signal tb_post_fft_rx09_mem_b_dout_d0             : STD_LOGIC_VECTOR (15 downto 0);
   signal tb_post_fft_rx09_mem_b_dout                : STD_LOGIC_VECTOR (15 downto 0);
   signal tb_decoder_rx09_squelch_lvl                : STD_LOGIC_VECTOR (18 downto 0);
-  signal tb_decoder_rx09_SoM_frameCtrAddr           : STD_LOGIC_VECTOR (41 downto 0);
   signal tb_decoder_rx09_center_pos                 : STD_LOGIC_VECTOR ( 4 downto 0);
   signal tb_decoder_rx09_strength                   : STD_LOGIC_VECTOR (18 downto 0);
   signal tb_decoder_rx09_noise                      : STD_LOGIC_VECTOR (18 downto 0);
@@ -107,7 +105,6 @@ begin
         
         decoder_rx09_squelch_lvl        => tb_decoder_rx09_squelch_lvl,
         
-        decoder_rx09_SoM_frameCtrAddr   => tb_decoder_rx09_SoM_frameCtrAddr,
         decoder_rx09_center_pos         => tb_decoder_rx09_center_pos,
         decoder_rx09_strength           => tb_decoder_rx09_strength,
         decoder_rx09_noise              => tb_decoder_rx09_noise,
@@ -274,7 +271,7 @@ begin
     postmemSim(row * 1024 + 16  +  C_centerOfs +  1)    := 20;  row := row + 2;     -- 1 u32 words of data following
     
     -- Message body
-    sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
+    sigPos := (32 + sigPos      +17) mod 32;                                        -- '1' = 0xac
     postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
     
     sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
@@ -298,7 +295,80 @@ begin
     sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
     postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
     
-    -- to be correct for the length counter, additional 3 more bytes would be needed.
+    
+    sigPos := (32 + sigPos      -11) mod 32;                                        -- '0' = 0x53
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    
+    sigPos := (32 + sigPos      +17) mod 32;                                        -- '1' = 0xe2
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    
+    sigPos := (32 + sigPos      -11) mod 32;                                        -- '0' = 0x0f
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      -11) mod 32;                                        -- '0'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
+    
+    sigPos := (32 + sigPos      +17) mod 32;                                        -- '1'
+    postmemSim(row * 1024       +  sigPos)              := 20;  row := row + 2;
     -- End of message
     
     -- Footer

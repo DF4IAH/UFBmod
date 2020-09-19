@@ -49,7 +49,6 @@ entity UFBmod_Decoder is
     
     decoder_rx09_squelch_lvl                    : in  STD_LOGIC_VECTOR(18 downto 0);
     
-    decoder_rx09_SoM_frameCtrAddr               : out STD_LOGIC_VECTOR(41 downto 0);
     decoder_rx09_center_pos                     : out STD_LOGIC_VECTOR( 4 downto 0);
     decoder_rx09_strength                       : out STD_LOGIC_VECTOR(18 downto 0);
     decoder_rx09_noise                          : out STD_LOGIC_VECTOR(18 downto 0);
@@ -60,6 +59,7 @@ entity UFBmod_Decoder is
 end UFBmod_Decoder;
 
 architecture Behavioral of UFBmod_Decoder is
+  signal decoder_rx09_SoM_frameCtr              : STD_LOGIC_VECTOR(31 downto 0);
   signal post_fft_rx09_mem_b_complete_addr      : STD_LOGIC_VECTOR(41 downto 0);
   signal decoder_rx09_out_vec                   : STD_LOGIC_VECTOR(1023 downto 0);
   signal decoder_rx09_out_len                   : STD_LOGIC_VECTOR(10 downto 0);
@@ -70,7 +70,15 @@ begin
     type StateType                                  is (off, init, loop_start, wait_until_post_fft_done, read_in_loop,
                                                     artemis_search, artemis_calc_row, artemis_sum_up, artemis_div, artemis_check_candidates, artemis_find_max, artemis_check_squelch,
                                                     decoder_init, decoder_process,
-                                                    pushdata_loop_header, pushdata_loop_begin, pushdata_loop_transfer
+                                                    pushdata_prepare_calc, pushdata_prepare_shift,
+                                                    pushdata_header_a, pushdata_header_b,
+                                                    pushdata_signal_msb_a, pushdata_signal_msb_b, pushdata_signal_lsb_a, pushdata_signal_lsb_b,
+                                                    pushdata_noise_msb_a, pushdata_noise_msb_b, pushdata_noise_lsb_a, pushdata_noise_lsb_b,
+                                                    pushdata_frameCtr_p3_a, pushdata_frameCtr_p3_b, pushdata_frameCtr_p2_a, pushdata_frameCtr_p2_b, pushdata_frameCtr_p1_a, pushdata_frameCtr_p1_b, pushdata_frameCtr_p0_a, pushdata_frameCtr_p0_b,
+                                                    pushdata_centerpos_a, pushdata_centerpos_b,
+                                                    pushdata_remainCtr_a, pushdata_remainCtr_b,
+                                                    pushdata_msgU32Len_a,
+                                                    pushdata_loop_begin, pushdata_loop_transfer
                                                     );
     variable state                                  : StateType;
     
@@ -115,12 +123,18 @@ begin
     variable decoder_val                            : Integer;
     variable decoder_max                            : Integer;
     variable decoder_pos                            : Integer;
+    variable decoder_rx09_SoM_frameCtrA_Int         : Integer;
+    variable decoder_rx09_strength_Int              : Integer;
+    variable decoder_rx09_noise_Int                 : Integer;
+    variable decoder_rx09_center_pos_Int            : Integer;
     variable decoder_remainVal                      : Integer;
     variable decoder_u32Count                       : Integer;
     variable decoder_u32Cnt                         : Integer;
     variable decoder_one_val                        : Integer;
     variable decoder_zero_val                       : Integer;
     variable decoder_footer_val                     : Integer;
+    
+    variable loopCnt                                : Integer;
   begin
     if (clk'EVENT and clk = '1') then
         if (resetn = '0') then
@@ -129,7 +143,7 @@ begin
             post_fft_rx09_mem_b_complete_addr       <= (others => '0');
             post_fft_rx09_mem_b_addr                <= (others => '0');
             
-            decoder_rx09_SoM_frameCtrAddr           <= (others => '0');
+            decoder_rx09_SoM_frameCtr               <= (others => '0');
             decoder_rx09_center_pos                 <= (others => '0');
             decoder_rx09_strength                   <= (others => '0');
             decoder_rx09_noise                      <= (others => '0');
@@ -147,12 +161,18 @@ begin
             decoder_lastOfs                         := 0;
             decoder_val                             := 0;
             decoder_max                             := 0;
+            decoder_rx09_SoM_frameCtrA_Int          := 0;
+            decoder_rx09_strength_Int               := 0;
+            decoder_rx09_noise_Int                  := 0;
+            decoder_rx09_center_pos_Int             := 0;
             decoder_remainVal                       := 0;
             decoder_u32Count                        := 0;
             decoder_u32Cnt                          := 0;
             decoder_one_val                         := 0;
             decoder_zero_val                        := 0;
             decoder_footer_val                      := 0;
+            
+            loopCnt                                 := 0;
             
             pushdata_rx09_en                        <= '0';
             pushdata_rx09_byteData                  <= (others => '0');
@@ -351,12 +371,15 @@ begin
                     
                     
                 when decoder_init =>
-                    decoder_rx09_SoM_frameCtrAddr   <= std_logic_vector(to_unsigned((post_fft_rx09_mem_a_addr_Int + (5 * 1024)), decoder_rx09_SoM_frameCtrAddr'length));
+                    decoder_rx09_SoM_frameCtr       <= std_logic_vector(to_unsigned((to_integer(unsigned(post_fft_rx09_mem_a_addr(41 downto 10))) + 5), decoder_rx09_SoM_frameCtr'length));
                     decoder_lastCenterOfs           := preambleMaxPos;
                     decoder_lastOfs                 := preambleMaxPos;
-                    decoder_rx09_center_pos         <= std_logic_vector(to_unsigned(decoder_lastCenterOfs, decoder_rx09_center_pos'length));
-                    decoder_rx09_strength           <= std_logic_vector(to_unsigned((preambleMaxVal / 6), decoder_rx09_strength'length));
-                    decoder_rx09_noise              <= std_logic_vector(to_unsigned(avgVal, decoder_rx09_noise'length));
+                    decoder_rx09_center_pos_Int     := decoder_lastCenterOfs;
+                    decoder_rx09_center_pos         <= std_logic_vector(to_unsigned(decoder_rx09_center_pos_Int, decoder_rx09_center_pos'length));
+                    decoder_rx09_strength_Int       := preambleMaxVal / 6;
+                    decoder_rx09_strength           <= std_logic_vector(to_unsigned(decoder_rx09_strength_Int, decoder_rx09_strength'length));
+                    decoder_rx09_noise_Int          := avgVal;
+                    decoder_rx09_noise              <= std_logic_vector(to_unsigned(decoder_rx09_noise_Int, decoder_rx09_noise'length));
                     decoder_rx09_out_vec            <= (others => '0');
                     decoder_rx09_out_len            <= (others => '0');
                     
@@ -441,7 +464,7 @@ begin
                         when decode_message_decider_f =>
                             if (decoder_footer_val >= decoder_zero_val)  and  (decoder_footer_val >= decoder_one_val) then
                                 decoder_state       := NOP;  -- End of message stream
-                                state               := pushdata_loop_header;
+                                state               := pushdata_prepare_calc;
                             else
                                 decoder_state       := decode_message_decider_01;
                             end if;
@@ -456,24 +479,139 @@ begin
                             end if;
                             decoder_rx09_out_len        <= std_logic_vector(to_unsigned( (1 + to_integer(unsigned(decoder_rx09_out_len))) , decoder_rx09_out_len'length));
                             
-                            decoder_state           := decode_message_loop;
-                            state                   := loop_start;  -- Get next odd row
+                            decoder_state               := decode_message_loop;
+                            state                       := loop_start;  -- Get next odd row
                             
                         when others =>
                             decoder_state := NOP;
                             
                     end case;   -- decoder_state
                     
-                when pushdata_loop_header =>
+                when pushdata_prepare_calc =>
+                    loopCnt := (1024 - to_integer(unsigned(decoder_rx09_out_len))) / 8;     -- Number of bytes to skip
+                    state := pushdata_prepare_shift;
+                    
+                when pushdata_prepare_shift =>
+                    if (loopCnt /= 0) then
+                        decoder_rx09_out_vec <= "00000000" & decoder_rx09_out_vec(1023 downto 8);  -- SHR
+                        loopCnt := loopCnt - 1;
+                    else
+                        loopCnt := to_integer(unsigned(decoder_rx09_out_len(10 downto 3))); -- Number of bytes to transfer
+                        
+                        state := pushdata_header_a;
+                    end if;
+                    
+                when pushdata_header_a =>
                     pushdata_rx09_en        <= '1';
-                    pushdata_rx09_byteData  <= decoder_rx09_out_len(10 downto 3);
+                    pushdata_rx09_byteData  <= std_logic_vector(to_unsigned((to_integer(unsigned(decoder_rx09_out_len(10 downto 3))) + 11), pushdata_rx09_byteData'length));
+                    state                   := pushdata_header_b;
+                    
+                when pushdata_header_b =>
+                    pushdata_rx09_en        <= '0';
+                    state                   := pushdata_signal_msb_a;
+                    
+                when pushdata_signal_msb_a =>
+                    pushdata_rx09_en        <= '1';
+                    pushdata_rx09_byteData  <= std_logic_vector(to_unsigned((decoder_rx09_strength_Int / 256), pushdata_rx09_byteData'length));
+                    state                   := pushdata_signal_msb_b;
+                    
+                when pushdata_signal_msb_b =>
+                    pushdata_rx09_en        <= '0';
+                    state                   := pushdata_signal_lsb_a;
+                    
+                when pushdata_signal_lsb_a =>
+                    pushdata_rx09_en        <= '1';
+                    pushdata_rx09_byteData  <= std_logic_vector(to_unsigned((decoder_rx09_strength_Int mod 256), pushdata_rx09_byteData'length));
+                    state                   := pushdata_signal_lsb_b;
+                    
+                when pushdata_signal_lsb_b =>
+                    pushdata_rx09_en        <= '0';
+                    state                   := pushdata_noise_msb_a;
+                    
+                when pushdata_noise_msb_a =>
+                    pushdata_rx09_en        <= '1';
+                    pushdata_rx09_byteData  <= std_logic_vector(to_unsigned((decoder_rx09_noise_Int / 256), pushdata_rx09_byteData'length));
+                    state                   := pushdata_noise_msb_b;
+                    
+                when pushdata_noise_msb_b =>
+                    pushdata_rx09_en        <= '0';
+                    state                   := pushdata_noise_lsb_a;
+                    
+                when pushdata_noise_lsb_a =>
+                    pushdata_rx09_en        <= '1';
+                    pushdata_rx09_byteData  <= std_logic_vector(to_unsigned((decoder_rx09_noise_Int mod 256), pushdata_rx09_byteData'length));
+                    state                   := pushdata_noise_lsb_b;
+                    
+                when pushdata_noise_lsb_b =>
+                    pushdata_rx09_en        <= '0';
+                    state                   := pushdata_frameCtr_p3_a;
+                    
+                when pushdata_frameCtr_p3_a =>
+                    pushdata_rx09_en        <= '1';
+                    pushdata_rx09_byteData  <= decoder_rx09_SoM_frameCtr(31 downto 24);
+                    state                   := pushdata_frameCtr_p3_b;
+                    
+                when pushdata_frameCtr_p3_b =>
+                    pushdata_rx09_en        <= '0';
+                    state                   := pushdata_frameCtr_p2_a;
+                    
+                when pushdata_frameCtr_p2_a =>
+                    pushdata_rx09_en        <= '1';
+                    pushdata_rx09_byteData  <= decoder_rx09_SoM_frameCtr(23 downto 16);
+                    state                   := pushdata_frameCtr_p2_b;
+                    
+                when pushdata_frameCtr_p2_b =>
+                    pushdata_rx09_en        <= '0';
+                    state                   := pushdata_frameCtr_p1_a;
+                    
+                when pushdata_frameCtr_p1_a =>
+                    pushdata_rx09_en        <= '1';
+                    pushdata_rx09_byteData  <= decoder_rx09_SoM_frameCtr(15 downto 8);
+                    state                   := pushdata_frameCtr_p1_b;
+                    
+                when pushdata_frameCtr_p1_b =>
+                    pushdata_rx09_en        <= '0';
+                    state                   := pushdata_frameCtr_p0_a;
+                    
+                when pushdata_frameCtr_p0_a =>
+                    pushdata_rx09_en        <= '1';
+                    pushdata_rx09_byteData  <= decoder_rx09_SoM_frameCtr(7 downto 0);
+                    state                   := pushdata_frameCtr_p0_b;
+                    
+                when pushdata_frameCtr_p0_b =>
+                    pushdata_rx09_en        <= '0';
+                    state                   := pushdata_centerpos_a;
+                    
+                when pushdata_centerpos_a =>
+                    pushdata_rx09_en        <= '1';
+                    pushdata_rx09_byteData  <= std_logic_vector(to_unsigned(decoder_rx09_center_pos_Int, pushdata_rx09_byteData'length));
+                    state                   := pushdata_centerpos_b;
+                    
+                when pushdata_centerpos_b =>
+                    pushdata_rx09_en        <= '0';
+                    state                   := pushdata_remainCtr_a;
+                    
+                when pushdata_remainCtr_a =>
+                    pushdata_rx09_en        <= '1';
+                    pushdata_rx09_byteData  <= std_logic_vector(to_unsigned(decoder_remainVal, pushdata_rx09_byteData'length));
+                    state                   := pushdata_remainCtr_b;
+                    
+                when pushdata_remainCtr_b =>
+                    pushdata_rx09_en        <= '0';
+                    state                   := pushdata_msgU32Len_a;
+                    
+                when pushdata_msgU32Len_a =>
+                    pushdata_rx09_en        <= '1';
+                    pushdata_rx09_byteData  <= std_logic_vector(to_unsigned(decoder_u32Count, pushdata_rx09_byteData'length));
                     state                   := pushdata_loop_begin;
                     
                 when pushdata_loop_begin =>
                     pushdata_rx09_en        <= '0';
                     
-                    if (decoder_rx09_out_len(10 downto 3) /= "00000000") then
-                        state := pushdata_loop_transfer;
+                    if (loopCnt /= 0) then
+                        loopCnt             := loopCnt - 1;
+                        
+                        state               := pushdata_loop_transfer;
                     else
                         pushdata_rx09_byteData  <= (others => '0');
                         decoder_rx09_out_vec    <= (others => '0');
@@ -483,18 +621,19 @@ begin
                     end if;
                     
                 when pushdata_loop_transfer =>
-                    pushdata_rx09_byteData  <= decoder_rx09_out_vec(1016)
-                                             & decoder_rx09_out_vec(1017)
-                                             & decoder_rx09_out_vec(1018)
-                                             & decoder_rx09_out_vec(1019)
-                                             & decoder_rx09_out_vec(1020)
-                                             & decoder_rx09_out_vec(1021)
-                                             & decoder_rx09_out_vec(1022)
-                                             & decoder_rx09_out_vec(1023);
+                    pushdata_rx09_byteData  <= decoder_rx09_out_vec(0)
+                                             & decoder_rx09_out_vec(1)
+                                             & decoder_rx09_out_vec(2)
+                                             & decoder_rx09_out_vec(3)
+                                             & decoder_rx09_out_vec(4)
+                                             & decoder_rx09_out_vec(5)
+                                             & decoder_rx09_out_vec(6)
+                                             & decoder_rx09_out_vec(7);
                     pushdata_rx09_en        <= '1';
                     
-                    decoder_rx09_out_vec    <= decoder_rx09_out_vec(1015 downto 0) & "00000000";
+                    decoder_rx09_out_vec    <= "00000000" & decoder_rx09_out_vec(1023 downto 8);
                     decoder_rx09_out_len    <= std_logic_vector(to_unsigned( (to_integer(unsigned(decoder_rx09_out_len)) - 8) , decoder_rx09_out_len'length));
+                    
                     state                   := pushdata_loop_begin;
                     
                 when others =>

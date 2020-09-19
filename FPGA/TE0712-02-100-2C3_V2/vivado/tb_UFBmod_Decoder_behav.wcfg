@@ -11,12 +11,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1514784655fs"></ZoomStartTime>
-      <ZoomEndTime time="2765983069fs"></ZoomEndTime>
-      <Cursor1Time time="2557450000fs"></Cursor1Time>
+      <ZoomStartTime time="5630618532fs"></ZoomStartTime>
+      <ZoomEndTime time="5631092333fs"></ZoomEndTime>
+      <Cursor1Time time="5631000332fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="694"></NameColumnWidth>
+      <NameColumnWidth column_width="678"></NameColumnWidth>
       <ValueColumnWidth column_width="116"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="13" />
@@ -126,13 +126,6 @@
          <obj_property name="CustomSignalColor">#808080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_Decoder_i/decoder_rx09_SoM_frameCtrAddr" type="array">
-         <obj_property name="ElementShortName">decoder_rx09_SoM_frameCtrAddr[41:0]</obj_property>
-         <obj_property name="ObjectShortName">decoder_rx09_SoM_frameCtrAddr[41:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
       <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_Decoder_i/decoder_rx09_center_pos" type="array">
          <obj_property name="ElementShortName">decoder_rx09_center_pos[4:0]</obj_property>
          <obj_property name="ObjectShortName">decoder_rx09_center_pos[4:0]</obj_property>
@@ -150,7 +143,7 @@
       <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_Decoder_i/decoder_rx09_out_vec" type="array">
          <obj_property name="ElementShortName">decoder_rx09_out_vec[1023:0]</obj_property>
          <obj_property name="ObjectShortName">decoder_rx09_out_vec[1023:0]</obj_property>
-         <obj_property name="Radix">BINARYRADIX</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
          <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>

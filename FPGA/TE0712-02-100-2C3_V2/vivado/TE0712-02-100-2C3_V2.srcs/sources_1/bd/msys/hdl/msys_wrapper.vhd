@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Wed Sep 16 22:46:33 2020
+--Date        : Sat Sep 19 15:14:16 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -268,7 +268,10 @@ architecture STRUCTURE of msys_wrapper is
     UART0_rxd : in STD_LOGIC;
     UART0_txd : out STD_LOGIC;
     CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 )
+    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
+    decoder_rx09_noise : in STD_LOGIC_VECTOR ( 18 downto 0 );
+    pushdata_rx09_en : in STD_LOGIC;
+    pushdata_rx09_byteData : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component msys;
   component IOBUF is
@@ -375,7 +378,6 @@ architecture STRUCTURE of msys_wrapper is
     post_fft_rx09_mem_b_addr                    : out STD_LOGIC_VECTOR( 9 downto 0);
     post_fft_rx09_mem_b_dout                    : in  STD_LOGIC_VECTOR(15 downto 0);
     decoder_rx09_squelch_lvl                    : in  STD_LOGIC_VECTOR(18 downto 0);
-    decoder_rx09_SoM_frameCtrAddr               : out STD_LOGIC_VECTOR(41 downto 0);
     decoder_rx09_center_pos                     : out STD_LOGIC_VECTOR( 4 downto 0);
     decoder_rx09_strength                       : out STD_LOGIC_VECTOR(18 downto 0);
     decoder_rx09_noise                          : out STD_LOGIC_VECTOR(18 downto 0);
@@ -428,8 +430,8 @@ architecture STRUCTURE of msys_wrapper is
   signal TRX_spi_ss_o_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_spi_ss_t : STD_LOGIC;
   signal mw_decoder_rx09_center_pos : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal mw_decoder_rx09_noise : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal mw_decoder_rx09_squelch_lvl : STD_LOGIC_VECTOR ( 18 downto 0 );
-  signal mw_decoder_rx09_SoM_frameCtrAddr : STD_LOGIC_VECTOR ( 41 downto 0 );
   signal mw_decoder_rx09_strength : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal mw_microblaze_0_Clk_100MHz : STD_LOGIC;
   signal mw_rst_100M_peripheral_aresetn : STD_LOGIC;
@@ -479,8 +481,10 @@ architecture STRUCTURE of msys_wrapper is
   signal mw_postmem_rx_addra_in : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal mw_post_fft_rx09_mem_a_EoT : STD_LOGIC;
   signal mw_post_fft_rx09_mem_b_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal mw_post_fft_rx09_mem_a_addr : STD_LOGIC_VECTOR ( 14 downto 0 );
+  signal mw_post_fft_rx09_mem_a_addr : STD_LOGIC_VECTOR ( 41 downto 0 );
   signal mw_post_fft_rx09_mem_b_addr : STD_LOGIC_VECTOR ( 9 downto 0 );
+  signal mw_pushdata_rx09_byteData : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal mw_pushdata_rx09_en : STD_LOGIC;
   signal mw_RF09_quarterfrm : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal mw_RF09_framectr : STD_LOGIC_VECTOR ( 29 downto 0 );
   signal mw_RF24_quarterfrm : STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -664,9 +668,11 @@ UFBmod_Decoder_i: component UFBmod_Decoder
       post_fft_rx09_mem_b_addr      => mw_post_fft_rx09_mem_b_addr,
       post_fft_rx09_mem_b_dout      => mw_post_fft_rx09_mem_b_dout,
       decoder_rx09_squelch_lvl      => mw_decoder_rx09_squelch_lvl,
-      decoder_rx09_SoM_frameCtrAddr => mw_decoder_rx09_SoM_frameCtrAddr,
       decoder_rx09_center_pos       => mw_decoder_rx09_center_pos,
-      decoder_rx09_strength         => mw_decoder_rx09_strength
+      decoder_rx09_strength         => mw_decoder_rx09_strength,
+      decoder_rx09_noise            => mw_decoder_rx09_noise,
+      pushdata_rx09_en              => mw_pushdata_rx09_en,
+      pushdata_rx09_byteData        => mw_pushdata_rx09_byteData
     );
 SCOPE_FSM_i: component SCOPE_FSM
     port map (
@@ -807,6 +813,7 @@ msys_i: component msys
       ULI_SYSTEM_XIO => ULI_SYSTEM_XIO,
       USER_dbg_out(13 downto 0) => USER_dbg_out(13 downto 0),
       decoder_rx09_center_pos(4 downto 0) => mw_decoder_rx09_center_pos(4 downto 0),
+      decoder_rx09_noise(18 downto 0) => mw_decoder_rx09_noise(18 downto 0),
       decoder_rx09_squelch_lvl(18 downto 0) => mw_decoder_rx09_squelch_lvl(18 downto 0),
       decoder_rx09_strength(18 downto 0) => mw_decoder_rx09_strength(18 downto 0),
       fft09_aresetn_in => mw_fft09_aresetn_in,
@@ -835,6 +842,8 @@ msys_i: component msys
       premem_rx24_addrb_in(10 downto 0) => mw_premem_rx24_addrb_in(10 downto 0),
       premem_rx24_dina_in(25 downto 0) => mw_premem_rx24_dina_in(25 downto 0),
       premem_rx24_wea_in(0) => mw_premem_rx24_wea_in,
+      pushdata_rx09_byteData(7 downto 0) => mw_pushdata_rx09_byteData(7 downto 0),
+      pushdata_rx09_en => mw_pushdata_rx09_en,
       qspi_flash_io0_i => qspi_flash_io0_i,
       qspi_flash_io0_o => qspi_flash_io0_o,
       qspi_flash_io0_t => qspi_flash_io0_t,
