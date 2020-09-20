@@ -35,6 +35,7 @@
 static XGpio gpio_TRX;
 static XGpio gpio_TRX_DDS;
 static XGpio gpio_TRX_AMPT;
+static XGpio gpio_TRX_PUSHDATA;
 
 static XSpi_Config* spiConfigPtr;	/* Pointer to Configuration data */
 static XSpi  spiInstance;
@@ -1819,6 +1820,23 @@ static u32 TrxLvdsSyncing(void)
 	return XST_SUCCESS;
 }
 
+/* RX FIFO dumping */
+static void TrxRxFifoDump(void)
+{
+	int remain = 4;
+	do {
+		/* Trigger FIFO to release next byte entry */
+		XGpio_DiscreteWrite(&gpio_TRX_PUSHDATA, 2U, 0x80000000UL);
+		XGpio_DiscreteWrite(&gpio_TRX_PUSHDATA, 2U, 0x00000000UL);
+
+		u32 status = XGpio_DiscreteRead(&gpio_TRX_PUSHDATA, 1U);
+		if (!(status & 0x80000000UL)) {
+			remain = 4;
+		}
+	} while (--remain);
+	//xil_printf("TrxRxFifoDump: FIFO dumping done.\r\n");
+}
+
 
 /*-----------------------------------------------------------*/
 
@@ -2052,10 +2070,108 @@ static void TestRF09Rx(void)
 	}
 
 #if 1
+	/* Clear FIFO */
+	TrxRxFifoDump();
+
 	while (1) {
 		s8 rssi = 127;
 		TrxRssiRF09Get(&rssi);
-		vTaskDelay(pdMS_TO_TICKS(250));
+
+		/* Get state of PushData FIFO */
+		u32 pdIn = XGpio_DiscreteRead(&gpio_TRX_PUSHDATA, 1U);
+		//xil_printf("TestRF09Rx: PushData IN state = 0x%04X\r\n", pdIn);
+
+		/* Check FIFO empty state  ('empty' = 0..2 bytes) */
+		if (!(pdIn & 0x80000000UL)) {
+			int idx 			= 0;
+			int msgLen 			= 0;
+			int hdrStrength 	= 0;
+			int hdrNoise 		= 0;
+			u32 hdrFrameCtr		= 0UL;
+			int hdrCenterPos	= 0;
+			int hdrRemainCtr 	= 0;
+			int hdrU32Len 		= 0;
+
+			/* Read message */
+			do {
+				/* Trigger FIFO to release next byte entry */
+				XGpio_DiscreteWrite(&gpio_TRX_PUSHDATA, 2U, 0x80000000UL);
+				XGpio_DiscreteWrite(&gpio_TRX_PUSHDATA, 2U, 0x00000000UL);
+
+				/* Read data byte */
+				pdIn = XGpio_DiscreteRead(&gpio_TRX_PUSHDATA, 1U);
+				u8 byte = (u8) pdIn;
+
+				switch (idx)
+				{
+				case 0:
+					/* Length field */
+					msgLen = byte;
+					xil_printf("TestRF09Rx: FIFO msg length \t\t\t\t\t\t\t\t\t\t\t\t= %02u\r\n", msgLen);
+					break;
+
+				case 1:
+					hdrStrength = (int)byte << 8;
+					break;
+
+				case 2:
+					hdrStrength |= byte;
+					xil_printf("TestRF09Rx: header - signal strength \t\t\t\t\t\t\t\t\t= %d\r\n", hdrStrength);
+					break;
+
+				case 3:
+					hdrNoise = (int)byte << 8;
+					break;
+
+				case 4:
+					hdrNoise |= byte;
+					xil_printf("TestRF09Rx: header - noise \t\t\t\t\t\t\t\t\t\t\t\t\t= %d\r\n", hdrNoise);
+					break;
+
+				case 5:
+					hdrFrameCtr  = (u32)byte << 24;
+					break;
+
+				case 6:
+					hdrFrameCtr |= (u32)byte << 16;
+					break;
+
+				case 7:
+					hdrFrameCtr |= (u32)byte << 8;
+					break;
+
+				case 8:
+					hdrFrameCtr |= byte;
+					xil_printf("TestRF09Rx: header - start message @ frame \t\t\t\t\t\t= 0x%08lX\r\n", hdrFrameCtr);
+					break;
+
+				case 9:
+					hdrCenterPos = byte;
+					xil_printf("TestRF09Rx: header - preamble center position \t\t\t\t\t= %02u\r\n", hdrCenterPos);
+					break;
+
+				case 10:
+					hdrRemainCtr = byte;
+					xil_printf("TestRF09Rx: header - remaining frames repetition counter \t= %02u\r\n", hdrRemainCtr);
+					break;
+
+				case 11:
+					hdrU32Len = byte;
+					xil_printf("TestRF09Rx: header - message body containing u32 words \t= %02u\r\n", hdrU32Len);
+					break;
+
+				default:
+					xil_printf("TestRF09Rx: message byte(%02d) \t\t\t= 0x%02X\r\n", (idx - 11), byte);
+				}
+			} while (idx++ < msgLen);
+			xil_printf("TestRF09Rx: end of message.\r\n");
+
+			/* Dumping rest (for debugging only) */
+			TrxRxFifoDump();
+			xil_printf("TestRF09Rx: FIFO dumping done.\r\n");
+		}
+
+		vTaskDelay(pdMS_TO_TICKS(1000));
 	}
 #else
 	vTaskDelay(pdMS_TO_TICKS(1000));
@@ -2179,6 +2295,19 @@ void taskTrx(void* pvParameters)
 		}
 		XGpio_SetDataDirection(&gpio_TRX_AMPT, 1U, 0x00000000UL);  	// 16 bit output
 		XGpio_SetDataDirection(&gpio_TRX_AMPT, 2U, 0x00000000UL);  	// 16 bit output
+	}
+
+	/* Init TRX-PUSHDATA-GPIO */
+	{
+		int statusTrx = XGpio_Initialize(&gpio_TRX_PUSHDATA, XPAR_TRX_TRX_RX_FFT_UNIT_PUSHDATA_PUSHDATA_RX09_AXI_GPIO_0_DEVICE_ID);
+		if (statusTrx != XST_SUCCESS) {
+			xil_printf("TaskTrx: *** GPIO TRX PushData Initialization Failed\r\n");
+			return /*XST_FAILURE*/;
+		}
+		XGpio_SetDataDirection(&gpio_TRX_PUSHDATA, 1U, 0xffffffffUL);  	// 32 bit input
+		XGpio_SetDataDirection(&gpio_TRX_PUSHDATA, 2U, 0x00000000UL);  	// 32 bit output
+
+		XGpio_DiscreteWrite(   &gpio_TRX_PUSHDATA, 2U, 0x00000000UL);	// Disable data pull trigger
 	}
 
 	/* Init SPI */

@@ -68,7 +68,7 @@ begin
   -- UFBmod decoder for the RF09 receiver
   proc_UFBmod_Decoder_rx09: process (resetn, clk, post_fft_rx09_mem_a_addr)
     type StateType                                  is (off, init, loop_start, wait_until_post_fft_done, read_in_loop,
-                                                    artemis_search, artemis_calc_row, artemis_sum_up, artemis_div, artemis_check_candidates, artemis_find_max, artemis_check_squelch,
+                                                    artemis_search, artemis_calc_row, artemis_sum_up, artemis_sqlval, artemis_check_candidates, artemis_find_max, artemis_check_squelch,
                                                     decoder_init, decoder_process,
                                                     pushdata_prepare_calc, pushdata_prepare_shift,
                                                     pushdata_header_a, pushdata_header_b,
@@ -89,11 +89,11 @@ begin
                                                     );
     variable decoder_state                          : DecoderStateType;
     
-    type Vec1024Int                                 is array (1023 downto 0) of Integer;
-    variable srRow                                  : Vec1024Int;
+    type Vec32u16                                   is array (31 downto 0) of unsigned(15 downto 0);
+    variable srRow                                  : Vec32u16;
     
-    type Vec12Vec1024Vec16                          is array (11 downto 0) of Vec1024Int;
-    variable srField                                : Vec12Vec1024Vec16;
+    type Vec12Vec32u16                              is array (11 downto 0) of Vec32u16;
+    variable srField                                : Vec12Vec32u16;
     
     type Vec32Int                                   is array (31 downto 0) of Integer;
     variable sumPreambleRow                         : Vec32Int;
@@ -112,10 +112,9 @@ begin
     variable historyLoopIdx                         : Integer;
     variable fftLoopIdx                             : Integer;
     
-    variable avgVal                                 : Integer;
+    variable sqlVal                                 : Integer;
     
     variable post_fft_rx09_mem_b_addr_Int           : Integer;
-    variable post_fft_rx09_mem_a_addr_Int           : Integer;
     
     variable decoder_LoopIdx                        : Integer;
     variable decoder_lastCenterOfs                  : Integer;
@@ -138,7 +137,6 @@ begin
   begin
     if (clk'EVENT and clk = '1') then
         if (resetn = '0') then
-            post_fft_rx09_mem_a_addr_Int            := 0;
             post_fft_rx09_mem_b_addr_Int            := 0;
             post_fft_rx09_mem_b_complete_addr       <= (others => '0');
             post_fft_rx09_mem_b_addr                <= (others => '0');
@@ -154,7 +152,7 @@ begin
             sumAll                                  := 0;
             preambleMaxVal                          := 0;
             preambleMaxPos                          := 0;
-            avgVal                                  := 0;
+            sqlVal                                  := 0;
             
             decoder_LoopIdx                         := 0;
             decoder_lastCenterOfs                   := 0;
@@ -183,8 +181,9 @@ begin
         else
             case state is
                 when init =>
-                    for ii in 0 to 1023 loop
-                        srRow(ii)                   := 0;
+                    for ii in 0 to 31 loop
+                        srRow(ii)                   := (others => '0');
+                        sumPreambleRow(ii)          := 0;
                     end loop;
                     
                     for ii in 0 to 11 loop
@@ -192,9 +191,6 @@ begin
                         sumOfRow(ii)                := 0;
                     end loop;
                     
-                    for ii in 0 to 31 loop
-                        sumPreambleRow(ii)          := 0;
-                    end loop;
                     sumPreambleField_t0             := sumPreambleRow;
                     sumPreambleField_t1             := sumPreambleRow;
                     sumPreambleField_t2             := sumPreambleRow;
@@ -204,11 +200,8 @@ begin
                     
                 -- Loop entry point
                 when loop_start =>
-                    for ii in 0 to 1023 loop
-                        srRow(ii)                   := 0;
-                    end loop;
-                    
                     for ii in 0 to 31 loop
+                        srRow(ii)                   := (others => '0');
                         sumPreambleRow(ii)          := 0;
                     end loop;
                     
@@ -220,13 +213,12 @@ begin
                         state := read_in_loop;
                         
                         -- RAM Loop init
-                        post_fft_rx09_mem_a_addr_Int := to_integer((unsigned(post_fft_rx09_mem_a_addr and "111111111111111111111111111111110000000000")));
                         post_fft_rx09_mem_b_addr_Int := 0;
                     end if;
                     
                 when read_in_loop =>
                     -- Request data from RAM (latency: 2 clocks
-                    if (post_fft_rx09_mem_b_addr_Int < 1024) then
+                    if (post_fft_rx09_mem_b_addr_Int < 32) then
                         -- Time span of RAM read-out
                         post_fft_rx09_mem_b_addr    <= std_logic_vector(to_unsigned(post_fft_rx09_mem_b_addr_Int, post_fft_rx09_mem_b_addr'length));
                     else
@@ -235,11 +227,11 @@ begin
                     end if;
                     
                     -- Read into shift register
-                    if ((2 < post_fft_rx09_mem_b_addr_Int)  and  (post_fft_rx09_mem_b_addr_Int <= 1026)) then
+                    if ((2 < post_fft_rx09_mem_b_addr_Int)  and  (post_fft_rx09_mem_b_addr_Int <= 34)) then
                         -- Shift in data
-                        srRow := to_integer(unsigned(post_fft_rx09_mem_b_dout)) & srRow(1023 downto 1);
+                        srRow(31 downto 0) := unsigned(post_fft_rx09_mem_b_dout) & srRow(31 downto 1);
                         
-                    elsif (1026 < post_fft_rx09_mem_b_addr_Int) then
+                    elsif (34 < post_fft_rx09_mem_b_addr_Int) then
                         -- End of loop
                         srField := srField(10 downto 0) & srRow;
                         
@@ -262,22 +254,22 @@ begin
                         -- Preamble fingerprint
                         case historyLoopIdx is
                             when 10 =>
-                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + srRow(((fftIdx       +6) mod 32));
+                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + to_integer(srRow(((fftIdx       +6) mod 32)));
                                 
                             when  8 =>
-                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + srRow(((fftIdx + 32  -6) mod 32));
+                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + to_integer(srRow(((fftIdx + 32  -6) mod 32)));
                                 
                             when  6 =>
-                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + srRow(((fftIdx       +9) mod 32));
+                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + to_integer(srRow(((fftIdx       +9) mod 32)));
                                 
                             when  4 =>
-                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + srRow(((fftIdx + 32  -9) mod 32));
+                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + to_integer(srRow(((fftIdx + 32  -9) mod 32)));
                                 
                             when  2 =>
-                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + srRow(((fftIdx      +12) mod 32));
+                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + to_integer(srRow(((fftIdx      +12) mod 32)));
                                 
                             when  0 =>
-                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + srRow(((fftIdx + 32 -12) mod 32));
+                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + to_integer(srRow(((fftIdx + 32 -12) mod 32)));
                                 
                             when others =>
                                 -- NOP
@@ -315,7 +307,7 @@ begin
                     end if;
                     
                 when artemis_calc_row =>
-                    sumOfRow(0) := sumOfRow(0)  + srRow(fftLoopIdx);
+                    sumOfRow(0) := sumOfRow(0)  + to_integer(srRow(fftLoopIdx));
                     
                     if (fftLoopIdx /= 31) then
                         fftLoopIdx      := fftLoopIdx + 1;
@@ -331,17 +323,19 @@ begin
                     
                     if historyLoopIdx /= 0 then
                         historyLoopIdx := historyLoopIdx - 1;
+                        
                     else
-                        state := artemis_div;
+                        state := artemis_sqlval;
                     end if;
                     
-                when artemis_div =>
-                    avgVal          := (sumAll + 32 * 6) / (32 * 12);
+                when artemis_sqlval =>
+                    decoder_rx09_noise_Int  := sumAll / 16;
+                    sqlVal                  := decoder_rx09_noise_Int + to_integer(unsigned(decoder_rx09_squelch_lvl));
                     
-                    state           := artemis_check_candidates;
-                    fftLoopIdx      := 0;
-                    preambleMaxVal  := 0;
-                    preambleMaxPos  := 0;
+                    state                   := artemis_check_candidates;
+                    fftLoopIdx          := 0;
+                    preambleMaxVal      := 0;
+                    preambleMaxPos      := 0;
                     
                 when artemis_check_candidates =>
                     if (sumPreambleField_t1(fftLoopIdx) >= sumPreambleField_t2(fftLoopIdx)) and (sumPreambleField_t1(fftLoopIdx) >= sumPreambleField_t0(fftLoopIdx)) then
@@ -354,32 +348,39 @@ begin
                     
                     if fftLoopIdx /= 31 then
                         fftLoopIdx := fftLoopIdx + 1;
+                        
                     else
-                        state := artemis_check_squelch;
+                        decoder_rx09_strength_Int           := preambleMaxVal;
+                        state                               := artemis_check_squelch;
                     end if;
                     
                 when artemis_check_squelch =>
                     if (decoder_state /= NOP) then
-                        state := decoder_process;
+                        state                               := decoder_process;
+                        
                     else
-                        if (preambleMaxVal <= (avgVal * 16)) then  -- Noise: preambleMaxVal = 6x avgVal
-                            state := loop_start;    -- Get next row
+                        if (sqlVal >= decoder_rx09_strength_Int) then  -- SNR without tweeks:  S=(preambleMaxVal / 6)  /   N=(sumAll / (12*32=384)
+                            -- Noise
+                            decoder_rx09_noise              <= std_logic_vector(to_unsigned(decoder_rx09_noise_Int, decoder_rx09_noise'length));
+                            
+                            state                           := loop_start;    -- Get next row
+                            
                         else
-                            state := decoder_init;  -- Message and Remain/Length-value decoder
+                            -- Signal
+                            state                           := decoder_init;  -- Message and Remain/Length-value decoder
+                            
+                            decoder_lastCenterOfs           := preambleMaxPos;
+                            decoder_lastOfs                 := preambleMaxPos;
+                            decoder_rx09_center_pos_Int     := decoder_lastCenterOfs;
                         end if;
                     end if;
                     
                     
                 when decoder_init =>
                     decoder_rx09_SoM_frameCtr       <= std_logic_vector(to_unsigned((to_integer(unsigned(post_fft_rx09_mem_a_addr(41 downto 10))) + 5), decoder_rx09_SoM_frameCtr'length));
-                    decoder_lastCenterOfs           := preambleMaxPos;
-                    decoder_lastOfs                 := preambleMaxPos;
-                    decoder_rx09_center_pos_Int     := decoder_lastCenterOfs;
                     decoder_rx09_center_pos         <= std_logic_vector(to_unsigned(decoder_rx09_center_pos_Int, decoder_rx09_center_pos'length));
-                    decoder_rx09_strength_Int       := preambleMaxVal / 6;
-                    decoder_rx09_strength           <= std_logic_vector(to_unsigned(decoder_rx09_strength_Int, decoder_rx09_strength'length));
-                    decoder_rx09_noise_Int          := avgVal;
-                    decoder_rx09_noise              <= std_logic_vector(to_unsigned(decoder_rx09_noise_Int, decoder_rx09_noise'length));
+                    decoder_rx09_strength           <= std_logic_vector(to_unsigned((decoder_rx09_strength_Int / 8), decoder_rx09_strength'length));
+                    decoder_rx09_noise              <= std_logic_vector(to_unsigned((decoder_rx09_noise_Int    / 8), decoder_rx09_noise'length));
                     decoder_rx09_out_vec            <= (others => '0');
                     decoder_rx09_out_len            <= (others => '0');
                     
@@ -400,7 +401,7 @@ begin
                         when decode_remainValue_loop =>
                             if decoder_LoopIdx /= 32 then
                                 srRow               := srField(1);  -- Point to last even row
-                                decoder_val         := srRow(decoder_LoopIdx);
+                                decoder_val         := to_integer(srRow(decoder_LoopIdx));
                                 
                                 if (decoder_max < decoder_val) then
                                     decoder_max     := decoder_val;
@@ -428,7 +429,7 @@ begin
                         when decode_u32Count_loop =>
                             if decoder_LoopIdx /= 32 then
                                 srRow               := srField(1);  -- Point to last even row
-                                decoder_val         := srRow(decoder_LoopIdx);
+                                decoder_val         := to_integer(srRow(decoder_LoopIdx));
                                 
                                 if (decoder_max < decoder_val) then
                                     decoder_max     := decoder_val;
@@ -454,9 +455,9 @@ begin
                             
                         when decode_message_loop =>
                             srRow                   := srField(1);  -- Point to last even row
-                            decoder_one_val         := srRow((     decoder_lastOfs  + 17) mod 32);
-                            decoder_zero_val        := srRow((32 + decoder_lastOfs  - 11) mod 32);
-                            decoder_footer_val      := srRow((     decoder_lastOfs  +  3) mod 32);
+                            decoder_one_val         := to_integer(srRow((     decoder_lastOfs  + 17) mod 32));
+                            decoder_zero_val        := to_integer(srRow((32 + decoder_lastOfs  - 11) mod 32));
+                            decoder_footer_val      := to_integer(srRow((     decoder_lastOfs  +  3) mod 32));
                             
                             decoder_state           := decode_message_decider_f;
                             state                   := loop_start;  -- Get next even row

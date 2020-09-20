@@ -343,44 +343,35 @@ proc create_hier_cell_delay_rx24_3459minus1024clk { parentCell nameHier } {
   create_bd_pin -dir I -type rst reset_CD100_i
   create_bd_pin -dir I -type clk s_axi_aclk_CD100_i
 
-  # Create instance: c_shift_ram_dly1024_0, and set properties
-  set c_shift_ram_dly1024_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_dly1024_0 ]
+  # Create instance: c_shift_ram_dly386_1, and set properties
+  set c_shift_ram_dly386_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_dly386_1 ]
   set_property -dict [ list \
    CONFIG.AsyncInitVal {00000000000000000000000000000000} \
    CONFIG.DefaultData {00000000000000000000000000000000} \
-   CONFIG.Depth {1024} \
+   CONFIG.Depth {386} \
    CONFIG.OptGoal {Resources} \
    CONFIG.SCLR {true} \
    CONFIG.ShiftRegType {Fixed_Length} \
    CONFIG.SyncInitVal {00000000000000000000000000000000} \
    CONFIG.Width {32} \
- ] $c_shift_ram_dly1024_0
+ ] $c_shift_ram_dly386_1
 
-  # Create instance: c_shift_ram_dly1024_1, and set properties
-  set c_shift_ram_dly1024_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_dly1024_1 ]
+  # Create instance: fifo_generator_dly2049_0, and set properties
+  set fifo_generator_dly2049_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:fifo_generator:13.2 fifo_generator_dly2049_0 ]
   set_property -dict [ list \
-   CONFIG.AsyncInitVal {00000000000000000000000000000000} \
-   CONFIG.DefaultData {00000000000000000000000000000000} \
-   CONFIG.Depth {1024} \
-   CONFIG.OptGoal {Resources} \
-   CONFIG.SCLR {true} \
-   CONFIG.ShiftRegType {Fixed_Length} \
-   CONFIG.SyncInitVal {00000000000000000000000000000000} \
-   CONFIG.Width {32} \
- ] $c_shift_ram_dly1024_1
-
-  # Create instance: c_shift_ram_dly387_2, and set properties
-  set c_shift_ram_dly387_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_dly387_2 ]
-  set_property -dict [ list \
-   CONFIG.AsyncInitVal {00000000000000000000000000000000} \
-   CONFIG.DefaultData {00000000000000000000000000000000} \
-   CONFIG.Depth {387} \
-   CONFIG.OptGoal {Resources} \
-   CONFIG.SCLR {true} \
-   CONFIG.ShiftRegType {Fixed_Length} \
-   CONFIG.SyncInitVal {00000000000000000000000000000000} \
-   CONFIG.Width {32} \
- ] $c_shift_ram_dly387_2
+   CONFIG.Data_Count_Width {11} \
+   CONFIG.Fifo_Implementation {Common_Clock_Builtin_FIFO} \
+   CONFIG.Full_Threshold_Assert_Value {2046} \
+   CONFIG.Full_Threshold_Negate_Value {2045} \
+   CONFIG.Input_Data_Width {32} \
+   CONFIG.Input_Depth {2048} \
+   CONFIG.Output_Data_Width {32} \
+   CONFIG.Output_Depth {2048} \
+   CONFIG.Read_Data_Count_Width {11} \
+   CONFIG.Reset_Type {Asynchronous_Reset} \
+   CONFIG.Use_Dout_Reset {false} \
+   CONFIG.Write_Data_Count_Width {11} \
+ ] $fifo_generator_dly2049_0
 
   # Create instance: xlconcat_0, and set properties
   set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
@@ -389,15 +380,18 @@ proc create_hier_cell_delay_rx24_3459minus1024clk { parentCell nameHier } {
    CONFIG.IN1_WIDTH {30} \
  ] $xlconcat_0
 
+  # Create instance: xlconstant_val1_len1, and set properties
+  set xlconstant_val1_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_val1_len1 ]
+
   # Create port connections
   connect_bd_net -net RF24_framectr_0 [get_bd_pins RF24_framectr] [get_bd_pins xlconcat_0/In1]
   connect_bd_net -net RF24_quarterfrm_0 [get_bd_pins RF24_quarterfrm] [get_bd_pins xlconcat_0/In0]
-  connect_bd_net -net c_shift_ram_dly1024_0_Q [get_bd_pins c_shift_ram_dly1024_0/Q] [get_bd_pins c_shift_ram_dly1024_1/D]
-  connect_bd_net -net c_shift_ram_dly1024_1_Q [get_bd_pins c_shift_ram_dly1024_1/Q] [get_bd_pins c_shift_ram_dly387_2/D]
-  connect_bd_net -net c_shift_ram_dly126_3_Q [get_bd_pins premem_rx24_quarterfrm_out] [get_bd_pins c_shift_ram_dly387_2/Q]
-  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins reset_CD100_i] [get_bd_pins c_shift_ram_dly1024_0/SCLR] [get_bd_pins c_shift_ram_dly1024_1/SCLR] [get_bd_pins c_shift_ram_dly387_2/SCLR]
-  connect_bd_net -net s_axi_aclk_CD100 [get_bd_pins s_axi_aclk_CD100_i] [get_bd_pins c_shift_ram_dly1024_0/CLK] [get_bd_pins c_shift_ram_dly1024_1/CLK] [get_bd_pins c_shift_ram_dly387_2/CLK]
-  connect_bd_net -net xlconcat_0_dout [get_bd_pins c_shift_ram_dly1024_0/D] [get_bd_pins xlconcat_0/dout]
+  connect_bd_net -net c_shift_ram_dly126_3_Q [get_bd_pins premem_rx24_quarterfrm_out] [get_bd_pins c_shift_ram_dly386_1/Q]
+  connect_bd_net -net fifo_generator_dly2049_0_dout [get_bd_pins c_shift_ram_dly386_1/D] [get_bd_pins fifo_generator_dly2049_0/dout]
+  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins reset_CD100_i] [get_bd_pins c_shift_ram_dly386_1/SCLR] [get_bd_pins fifo_generator_dly2049_0/rst]
+  connect_bd_net -net s_axi_aclk_CD100 [get_bd_pins s_axi_aclk_CD100_i] [get_bd_pins c_shift_ram_dly386_1/CLK] [get_bd_pins fifo_generator_dly2049_0/clk]
+  connect_bd_net -net xlconcat_0_dout [get_bd_pins fifo_generator_dly2049_0/din] [get_bd_pins xlconcat_0/dout]
+  connect_bd_net -net xlconstant_val1_len1_dout [get_bd_pins fifo_generator_dly2049_0/rd_en] [get_bd_pins fifo_generator_dly2049_0/wr_en] [get_bd_pins xlconstant_val1_len1/dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -446,44 +440,35 @@ proc create_hier_cell_delay_rx09_3459minus1024clk { parentCell nameHier } {
   create_bd_pin -dir I -type rst reset_CD100_i
   create_bd_pin -dir I -type clk s_axi_aclk_CD100_i
 
-  # Create instance: c_shift_ram_dly1024_0, and set properties
-  set c_shift_ram_dly1024_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_dly1024_0 ]
+  # Create instance: c_shift_ram_dly386_1, and set properties
+  set c_shift_ram_dly386_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_dly386_1 ]
   set_property -dict [ list \
    CONFIG.AsyncInitVal {00000000000000000000000000000000} \
    CONFIG.DefaultData {00000000000000000000000000000000} \
-   CONFIG.Depth {1024} \
+   CONFIG.Depth {386} \
    CONFIG.OptGoal {Resources} \
    CONFIG.SCLR {true} \
    CONFIG.ShiftRegType {Fixed_Length} \
    CONFIG.SyncInitVal {00000000000000000000000000000000} \
    CONFIG.Width {32} \
- ] $c_shift_ram_dly1024_0
+ ] $c_shift_ram_dly386_1
 
-  # Create instance: c_shift_ram_dly1024_1, and set properties
-  set c_shift_ram_dly1024_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_dly1024_1 ]
+  # Create instance: fifo_generator_dly2049_0, and set properties
+  set fifo_generator_dly2049_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:fifo_generator:13.2 fifo_generator_dly2049_0 ]
   set_property -dict [ list \
-   CONFIG.AsyncInitVal {00000000000000000000000000000000} \
-   CONFIG.DefaultData {00000000000000000000000000000000} \
-   CONFIG.Depth {1024} \
-   CONFIG.OptGoal {Resources} \
-   CONFIG.SCLR {true} \
-   CONFIG.ShiftRegType {Fixed_Length} \
-   CONFIG.SyncInitVal {00000000000000000000000000000000} \
-   CONFIG.Width {32} \
- ] $c_shift_ram_dly1024_1
-
-  # Create instance: c_shift_ram_dly387_2, and set properties
-  set c_shift_ram_dly387_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_dly387_2 ]
-  set_property -dict [ list \
-   CONFIG.AsyncInitVal {00000000000000000000000000000000} \
-   CONFIG.DefaultData {00000000000000000000000000000000} \
-   CONFIG.Depth {387} \
-   CONFIG.OptGoal {Resources} \
-   CONFIG.SCLR {true} \
-   CONFIG.ShiftRegType {Fixed_Length} \
-   CONFIG.SyncInitVal {00000000000000000000000000000000} \
-   CONFIG.Width {32} \
- ] $c_shift_ram_dly387_2
+   CONFIG.Data_Count_Width {11} \
+   CONFIG.Fifo_Implementation {Common_Clock_Builtin_FIFO} \
+   CONFIG.Full_Threshold_Assert_Value {2046} \
+   CONFIG.Full_Threshold_Negate_Value {2045} \
+   CONFIG.Input_Data_Width {32} \
+   CONFIG.Input_Depth {2048} \
+   CONFIG.Output_Data_Width {32} \
+   CONFIG.Output_Depth {2048} \
+   CONFIG.Read_Data_Count_Width {11} \
+   CONFIG.Reset_Type {Asynchronous_Reset} \
+   CONFIG.Use_Dout_Reset {false} \
+   CONFIG.Write_Data_Count_Width {11} \
+ ] $fifo_generator_dly2049_0
 
   # Create instance: xlconcat_0, and set properties
   set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
@@ -492,15 +477,18 @@ proc create_hier_cell_delay_rx09_3459minus1024clk { parentCell nameHier } {
    CONFIG.IN1_WIDTH {30} \
  ] $xlconcat_0
 
+  # Create instance: xlconstant_val1_len1, and set properties
+  set xlconstant_val1_len1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_val1_len1 ]
+
   # Create port connections
   connect_bd_net -net RF09_framectr_0 [get_bd_pins RF09_framectr] [get_bd_pins xlconcat_0/In1]
   connect_bd_net -net RF09_quarterfrm_0 [get_bd_pins RF09_quarterfrm] [get_bd_pins xlconcat_0/In0]
-  connect_bd_net -net c_shift_ram_dly1024_0_Q [get_bd_pins c_shift_ram_dly1024_0/Q] [get_bd_pins c_shift_ram_dly1024_1/D]
-  connect_bd_net -net c_shift_ram_dly1024_1_Q [get_bd_pins c_shift_ram_dly1024_1/Q] [get_bd_pins c_shift_ram_dly387_2/D]
-  connect_bd_net -net c_shift_ram_dly126_3_Q [get_bd_pins premem_rx09_quarterfrm_out] [get_bd_pins c_shift_ram_dly387_2/Q]
-  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins reset_CD100_i] [get_bd_pins c_shift_ram_dly1024_0/SCLR] [get_bd_pins c_shift_ram_dly1024_1/SCLR] [get_bd_pins c_shift_ram_dly387_2/SCLR]
-  connect_bd_net -net s_axi_aclk_CD100 [get_bd_pins s_axi_aclk_CD100_i] [get_bd_pins c_shift_ram_dly1024_0/CLK] [get_bd_pins c_shift_ram_dly1024_1/CLK] [get_bd_pins c_shift_ram_dly387_2/CLK]
-  connect_bd_net -net xlconcat_0_dout [get_bd_pins c_shift_ram_dly1024_0/D] [get_bd_pins xlconcat_0/dout]
+  connect_bd_net -net c_shift_ram_dly126_3_Q [get_bd_pins premem_rx09_quarterfrm_out] [get_bd_pins c_shift_ram_dly386_1/Q]
+  connect_bd_net -net fifo_generator_0_dout [get_bd_pins c_shift_ram_dly386_1/D] [get_bd_pins fifo_generator_dly2049_0/dout]
+  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins reset_CD100_i] [get_bd_pins c_shift_ram_dly386_1/SCLR] [get_bd_pins fifo_generator_dly2049_0/rst]
+  connect_bd_net -net s_axi_aclk_CD100 [get_bd_pins s_axi_aclk_CD100_i] [get_bd_pins c_shift_ram_dly386_1/CLK] [get_bd_pins fifo_generator_dly2049_0/clk]
+  connect_bd_net -net xlconcat_0_dout [get_bd_pins fifo_generator_dly2049_0/din] [get_bd_pins xlconcat_0/dout]
+  connect_bd_net -net xlconstant_val1_len1_dout [get_bd_pins fifo_generator_dly2049_0/rd_en] [get_bd_pins fifo_generator_dly2049_0/wr_en] [get_bd_pins xlconstant_val1_len1/dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -972,23 +960,23 @@ proc create_hier_cell_PUSHDATA { parentCell nameHier } {
   # Create instance: pushdata_rx09_fifo_generator_0, and set properties
   set pushdata_rx09_fifo_generator_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:fifo_generator:13.2 pushdata_rx09_fifo_generator_0 ]
   set_property -dict [ list \
-   CONFIG.Data_Count_Width {9} \
+   CONFIG.Data_Count_Width {12} \
    CONFIG.Fifo_Implementation {Common_Clock_Builtin_FIFO} \
-   CONFIG.Full_Threshold_Assert_Value {510} \
-   CONFIG.Full_Threshold_Negate_Value {509} \
+   CONFIG.Full_Threshold_Assert_Value {4094} \
+   CONFIG.Full_Threshold_Negate_Value {4093} \
    CONFIG.Input_Data_Width {8} \
-   CONFIG.Input_Depth {512} \
+   CONFIG.Input_Depth {4096} \
    CONFIG.Output_Data_Width {8} \
-   CONFIG.Output_Depth {512} \
-   CONFIG.Programmable_Empty_Type {No_Programmable_Empty_Threshold} \
-   CONFIG.Read_Data_Count_Width {9} \
+   CONFIG.Output_Depth {4096} \
+   CONFIG.Programmable_Empty_Type {Single_Programmable_Empty_Threshold_Constant} \
+   CONFIG.Read_Data_Count_Width {12} \
    CONFIG.Reset_Type {Asynchronous_Reset} \
-   CONFIG.Underflow_Flag {true} \
+   CONFIG.Underflow_Flag {false} \
    CONFIG.Use_Dout_Reset {true} \
    CONFIG.Use_Embedded_Registers {true} \
    CONFIG.Use_Extra_Logic {false} \
    CONFIG.Valid_Flag {false} \
-   CONFIG.Write_Data_Count_Width {9} \
+   CONFIG.Write_Data_Count_Width {12} \
  ] $pushdata_rx09_fifo_generator_0
 
   # Create instance: pushdata_rx09_util_reduced_logic_0, and set properties
@@ -1039,7 +1027,7 @@ proc create_hier_cell_PUSHDATA { parentCell nameHier } {
   connect_bd_net -net pushdata_rx09_c_shift_ram_0_Q [get_bd_pins pushdata_rx09_c_shift_ram_0/Q] [get_bd_pins pushdata_rx09_util_vector_logic_0/Op1]
   connect_bd_net -net pushdata_rx09_en_1 [get_bd_pins pushdata_rx09_en] [get_bd_pins pushdata_rx09_fifo_generator_0/wr_en]
   connect_bd_net -net pushdata_rx09_fifo_generator_0_dout [get_bd_pins pushdata_rx09_fifo_generator_0/dout] [get_bd_pins pushdata_rx09_xlconcat_0/In0]
-  connect_bd_net -net pushdata_rx09_fifo_generator_0_underflow [get_bd_pins pushdata_rx09_fifo_generator_0/underflow] [get_bd_pins pushdata_rx09_xlconcat_0/In2]
+  connect_bd_net -net pushdata_rx09_fifo_generator_0_prog_empty [get_bd_pins pushdata_rx09_fifo_generator_0/prog_empty] [get_bd_pins pushdata_rx09_xlconcat_0/In2]
   connect_bd_net -net pushdata_rx09_util_reduced_logic_0_Res [get_bd_pins pushdata_rx09_fifo_generator_0/rd_en] [get_bd_pins pushdata_rx09_util_reduced_logic_0/Res]
   connect_bd_net -net pushdata_rx09_util_vector_logic_0_Res [get_bd_pins pushdata_rx09_util_vector_logic_0/Res] [get_bd_pins pushdata_rx09_xlconcat_1/In1]
   connect_bd_net -net pushdata_rx09_xlconcat_0_dout [get_bd_pins pushdata_rx09_axi_gpio_0/gpio_io_i] [get_bd_pins pushdata_rx09_xlconcat_0/dout]
