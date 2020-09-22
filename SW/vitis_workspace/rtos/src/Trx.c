@@ -1876,7 +1876,7 @@ static void TestRF09Tx(int pwr_dBm)
 
 	/* RED on */
 	u8 state;
-	pwmLedSet(0x0000007fUL, 0x00ffffffUL);
+	pwmLedSet(0x00000020UL, 0x00ffffffUL);
 	TrxCmdRF09Set(CMD_TX);
 	while (1) {
 		TrxStateRF09Get(&state);
@@ -2059,7 +2059,7 @@ static void TestRF09Rx(void)
 
 	/* GREEN on */
 	u8 state;
-	pwmLedSet(0x00007f00UL, 0x00ffffffUL);
+	pwmLedSet(0x00002000UL, 0x00ffffffUL);
 	TrxCmdRF09Set(CMD_RX);
 	while (1) {
 		TrxStateRF09Get(&state);
@@ -2091,6 +2091,10 @@ static void TestRF09Rx(void)
 			int hdrCenterPos	= 0;
 			int hdrRemainCtr 	= 0;
 			int hdrU32Len 		= 0;
+
+			/* GREEN max on */
+			u8 state;
+			pwmLedSet(0x0000ff00UL, 0x00ffffffUL);
 
 			/* Read message */
 			do {
@@ -2169,9 +2173,12 @@ static void TestRF09Rx(void)
 			/* Dumping rest (for debugging only) */
 			TrxRxFifoDump();
 			xil_printf("TestRF09Rx: FIFO dumping done.\r\n");
+
+			/* GREEN (dimmed) on */
+			pwmLedSet(0x00002000UL, 0x00ffffffUL);
 		}
 
-		vTaskDelay(pdMS_TO_TICKS(1000));
+		vTaskDelay(pdMS_TO_TICKS(100));
 	}
 #else
 	vTaskDelay(pdMS_TO_TICKS(1000));

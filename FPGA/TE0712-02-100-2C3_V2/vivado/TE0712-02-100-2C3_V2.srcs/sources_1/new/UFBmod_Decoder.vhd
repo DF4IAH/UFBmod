@@ -85,7 +85,10 @@ begin
     type DecoderStateType                           is (NOP, 
                                                     decode_remainValue_init, decode_remainValue_loop, 
                                                     decode_u32Count_init, decode_u32Count_loop,
-                                                    decode_message_init, decode_message_loop, decode_message_decider_f, decode_message_decider_01
+                                                    decoder_forward,
+                                                    decode_message_init, decode_message_loop_r5, decode_message_loop_r3, decode_message_loop_r1,
+                                                    decode_message_decider_reduction_r1, decode_message_decider_reduction_r2, decode_message_decider_reduction_r3, decode_message_decider_reduction_r4,
+                                                    decode_message_decider_f, decode_message_decider_01
                                                     );
     variable decoder_state                          : DecoderStateType;
     
@@ -129,9 +132,30 @@ begin
     variable decoder_remainVal                      : Integer;
     variable decoder_u32Count                       : Integer;
     variable decoder_u32Cnt                         : Integer;
-    variable decoder_one_val                        : Integer;
-    variable decoder_zero_val                       : Integer;
-    variable decoder_footer_val                     : Integer;
+    variable decoder_0_val                          : Integer;
+    variable decoder_1_val                          : Integer;
+    variable decoder_f_val                          : Integer;
+    variable decoder_00_val                         : Integer;
+    variable decoder_01_val                         : Integer;
+    variable decoder_0f_val                         : Integer;
+    variable decoder_10_val                         : Integer;
+    variable decoder_11_val                         : Integer;
+    variable decoder_1f_val                         : Integer;
+    variable decoder_ff_val                         : Integer;
+    variable decoder_000_val                        : Integer;
+    variable decoder_001_val                        : Integer;
+    variable decoder_00f_val                        : Integer;
+    variable decoder_010_val                        : Integer;
+    variable decoder_011_val                        : Integer;
+    variable decoder_01f_val                        : Integer;
+    variable decoder_0ff_val                        : Integer;
+    variable decoder_100_val                        : Integer;
+    variable decoder_101_val                        : Integer;
+    variable decoder_10f_val                        : Integer;
+    variable decoder_110_val                        : Integer;
+    variable decoder_111_val                        : Integer;
+    variable decoder_11f_val                        : Integer;
+    variable decoder_1ff_val                        : Integer;
     
     variable loopCnt                                : Integer;
   begin
@@ -166,9 +190,30 @@ begin
             decoder_remainVal                       := 0;
             decoder_u32Count                        := 0;
             decoder_u32Cnt                          := 0;
-            decoder_one_val                         := 0;
-            decoder_zero_val                        := 0;
-            decoder_footer_val                      := 0;
+            decoder_0_val                           := 0;
+            decoder_1_val                           := 0;
+            decoder_f_val                           := 0;
+            decoder_00_val                          := 0;
+            decoder_01_val                          := 0;
+            decoder_0f_val                          := 0;
+            decoder_10_val                          := 0;
+            decoder_11_val                          := 0;
+            decoder_1f_val                          := 0;
+            decoder_ff_val                          := 0;
+            decoder_000_val                         := 0;
+            decoder_001_val                         := 0;
+            decoder_00f_val                         := 0;
+            decoder_010_val                         := 0;
+            decoder_011_val                         := 0;
+            decoder_01f_val                         := 0;
+            decoder_0ff_val                         := 0;
+            decoder_100_val                         := 0;
+            decoder_101_val                         := 0;
+            decoder_10f_val                         := 0;
+            decoder_110_val                         := 0;
+            decoder_111_val                         := 0;
+            decoder_11f_val                         := 0;
+            decoder_1ff_val                         := 0;
             
             loopCnt                                 := 0;
             
@@ -329,13 +374,13 @@ begin
                     end if;
                     
                 when artemis_sqlval =>
-                    decoder_rx09_noise_Int  := sumAll / 16;
+                    decoder_rx09_noise_Int  := sumAll / 16;  -- weight: 6 (x 4)
                     sqlVal                  := decoder_rx09_noise_Int + to_integer(unsigned(decoder_rx09_squelch_lvl));
                     
                     state                   := artemis_check_candidates;
-                    fftLoopIdx          := 0;
-                    preambleMaxVal      := 0;
-                    preambleMaxPos      := 0;
+                    fftLoopIdx              := 0;
+                    preambleMaxVal          := 0;
+                    preambleMaxPos          := 0;
                     
                 when artemis_check_candidates =>
                     if (sumPreambleField_t1(fftLoopIdx) >= sumPreambleField_t2(fftLoopIdx)) and (sumPreambleField_t1(fftLoopIdx) >= sumPreambleField_t0(fftLoopIdx)) then
@@ -350,7 +395,7 @@ begin
                         fftLoopIdx := fftLoopIdx + 1;
                         
                     else
-                        decoder_rx09_strength_Int           := preambleMaxVal;
+                        decoder_rx09_strength_Int           := preambleMaxVal;  -- weight 6
                         state                               := artemis_check_squelch;
                     end if;
                     
@@ -379,8 +424,8 @@ begin
                 when decoder_init =>
                     decoder_rx09_SoM_frameCtr       <= std_logic_vector(to_unsigned((to_integer(unsigned(post_fft_rx09_mem_a_addr(41 downto 10))) + 5), decoder_rx09_SoM_frameCtr'length));
                     decoder_rx09_center_pos         <= std_logic_vector(to_unsigned(decoder_rx09_center_pos_Int, decoder_rx09_center_pos'length));
-                    decoder_rx09_strength           <= std_logic_vector(to_unsigned((decoder_rx09_strength_Int / 8), decoder_rx09_strength'length));
-                    decoder_rx09_noise              <= std_logic_vector(to_unsigned((decoder_rx09_noise_Int    / 8), decoder_rx09_noise'length));
+                    decoder_rx09_strength           <= std_logic_vector(to_unsigned(decoder_rx09_strength_Int, decoder_rx09_strength'length));
+                    decoder_rx09_noise              <= std_logic_vector(to_unsigned(decoder_rx09_noise_Int, decoder_rx09_noise'length));
                     decoder_rx09_out_vec            <= (others => '0');
                     decoder_rx09_out_len            <= (others => '0');
                     
@@ -441,52 +486,235 @@ begin
                                 decoder_lastOfs     := decoder_pos;
                                 decoder_u32Count    := (32 + decoder_pos - decoder_lastCenterOfs) mod 32;
                                 
-                                decoder_state       := decode_message_init;
+                                decoder_state       := decoder_forward;
                                 state               := loop_start;  -- Get next even row
+                                decoder_LoopIdx     := 10;  -- Number of frames to move forward
+                            end if;
+                            
+                        when decoder_forward =>
+                            if (decoder_LoopIdx /= 0) then
+                                decoder_LoopIdx     := decoder_LoopIdx - 1;
+                                
+                                decoder_state       := decoder_forward;
+                                state               := loop_start;  -- Get another row
+                            else
+                                decoder_state       := decode_message_init;
+                                state               := decoder_process;  -- Direct entry without pulling another frame
                             end if;
                             
                         when decode_message_init =>
-                            decoder_one_val         := 0;
-                            decoder_zero_val        := 0;
-                            decoder_footer_val      := 0;
+                            decoder_0_val           := 0;
+                            decoder_1_val           := 0;
+                            decoder_f_val           := 0;
+                            decoder_00_val          := 0;
+                            decoder_01_val          := 0;
+                            decoder_0f_val          := 0;
+                            decoder_10_val          := 0;
+                            decoder_11_val          := 0;
+                            decoder_1f_val          := 0;
+                            decoder_ff_val          := 0;
+                            decoder_000_val         := 0;
+                            decoder_001_val         := 0;
+                            decoder_00f_val         := 0;
+                            decoder_010_val         := 0;
+                            decoder_011_val         := 0;
+                            decoder_01f_val         := 0;
+                            decoder_0ff_val         := 0;
+                            decoder_100_val         := 0;
+                            decoder_101_val         := 0;
+                            decoder_10f_val         := 0;
+                            decoder_110_val         := 0;
+                            decoder_111_val         := 0;
+                            decoder_11f_val         := 0;
+                            decoder_1ff_val         := 0;
                             
-                            decoder_state           := decode_message_loop;
+                            decoder_LoopIdx         := 1025;
+                            
+                            decoder_state           := decode_message_loop_r5;
                             state                   := loop_start;  -- Get next odd row
                             
-                        when decode_message_loop =>
-                            srRow                   := srField(1);  -- Point to last even row
-                            decoder_one_val         := to_integer(srRow((     decoder_lastOfs  + 17) mod 32));
-                            decoder_zero_val        := to_integer(srRow((32 + decoder_lastOfs  - 11) mod 32));
-                            decoder_footer_val      := to_integer(srRow((     decoder_lastOfs  +  3) mod 32));
+                        when decode_message_loop_r5 =>
+                            srRow                   := srField(5);  -- 1st generation
+                            decoder_0_val           := to_integer(srRow((64 + decoder_lastOfs  -11) mod 32));
+                            decoder_1_val           := to_integer(srRow((64 + decoder_lastOfs  +17) mod 32));
+                            decoder_f_val           := to_integer(srRow((64 + decoder_lastOfs   +3) mod 32));
                             
-                            decoder_state           := decode_message_decider_f;
-                            state                   := loop_start;  -- Get next even row
+                            decoder_state           := decode_message_loop_r3;
+                            state                   := decoder_process;  -- Direct entry without pulling another frame
+                            
+                        when decode_message_loop_r3 =>
+                            srRow                   := srField(3);  -- 2nd generation
+                            decoder_00_val          := to_integer(srRow((64 + decoder_lastOfs  -11 -11) mod 32)) + decoder_0_val;
+                            decoder_01_val          := to_integer(srRow((64 + decoder_lastOfs  -11 +17) mod 32)) + decoder_0_val;
+                            decoder_0f_val          := to_integer(srRow((64 + decoder_lastOfs  -11  +3) mod 32)) + decoder_0_val;
+                            decoder_10_val          := to_integer(srRow((64 + decoder_lastOfs  +17 -11) mod 32)) + decoder_1_val;
+                            decoder_11_val          := to_integer(srRow((64 + decoder_lastOfs  +17 +17) mod 32)) + decoder_1_val;
+                            decoder_1f_val          := to_integer(srRow((64 + decoder_lastOfs  +17  +3) mod 32)) + decoder_1_val;
+                            decoder_ff_val          := to_integer(srRow((64 + decoder_lastOfs   +3  -6) mod 32)) + decoder_f_val;
+                            
+                            decoder_state           := decode_message_loop_r1;
+                            state                   := decoder_process;  -- Direct entry without pulling another frame
+                            
+                        when decode_message_loop_r1 =>
+                            srRow                   := srField(1);  -- Point to last even row
+                            decoder_000_val         := to_integer(srRow((64 + decoder_lastOfs  -11 -11 -11) mod 32)) + decoder_00_val;
+                            decoder_001_val         := to_integer(srRow((64 + decoder_lastOfs  -11 -11 +17) mod 32)) + decoder_00_val;
+                            decoder_00f_val         := to_integer(srRow((64 + decoder_lastOfs  -11 -11  +3) mod 32)) + decoder_00_val;
+                            decoder_010_val         := to_integer(srRow((64 + decoder_lastOfs  -11 +17 -11) mod 32)) + decoder_01_val;
+                            decoder_011_val         := to_integer(srRow((64 + decoder_lastOfs  -11 +17 +17) mod 32)) + decoder_01_val;
+                            decoder_01f_val         := to_integer(srRow((64 + decoder_lastOfs  -11 +17  +3) mod 32)) + decoder_01_val;
+                            decoder_0ff_val         := to_integer(srRow((64 + decoder_lastOfs  -11  +3  -6) mod 32)) + decoder_0f_val;
+                            decoder_100_val         := to_integer(srRow((64 + decoder_lastOfs  +17 -11 -11) mod 32)) + decoder_10_val;
+                            decoder_101_val         := to_integer(srRow((64 + decoder_lastOfs  +17 -11 +17) mod 32)) + decoder_10_val;
+                            decoder_10f_val         := to_integer(srRow((64 + decoder_lastOfs  +17 -11  +3) mod 32)) + decoder_10_val;
+                            decoder_110_val         := to_integer(srRow((64 + decoder_lastOfs  +17 +17 -11) mod 32)) + decoder_11_val;
+                            decoder_111_val         := to_integer(srRow((64 + decoder_lastOfs  +17 +17 +17) mod 32)) + decoder_11_val;
+                            decoder_11f_val         := to_integer(srRow((64 + decoder_lastOfs  +17 +17  +3) mod 32)) + decoder_11_val;
+                            decoder_1ff_val         := to_integer(srRow((64 + decoder_lastOfs  +17  +3  -6) mod 32)) + decoder_1f_val;
+                            
+                            decoder_state           := decode_message_decider_reduction_r1;
+                            state                   := decoder_process;  -- Direct entry without pulling another frame
+                            
+                            
+                        when decode_message_decider_reduction_r1 =>
+                            if (decoder_000_val < decoder_100_val) then
+                                decoder_000_val := decoder_100_val;
+                                decoder_100_val := 1;
+                            else
+                                decoder_100_val := 0;
+                            end if;
+                            
+                            if (decoder_001_val < decoder_101_val) then
+                                decoder_001_val := decoder_101_val;
+                                decoder_101_val := 1;
+                            else
+                                decoder_101_val := 0;
+                            end if;
+                            
+                            if (decoder_00f_val < decoder_10f_val) then
+                                decoder_00f_val := decoder_10f_val;
+                                decoder_10f_val := 1;
+                            else
+                                decoder_10f_val := 0;
+                            end if;
+                            
+                            if (decoder_010_val < decoder_110_val) then
+                                decoder_010_val := decoder_110_val;
+                                decoder_110_val := 1;
+                            else
+                                decoder_110_val := 0;
+                            end if;
+                            
+                            if (decoder_011_val < decoder_111_val) then
+                                decoder_011_val := decoder_111_val;
+                                decoder_111_val := 1;
+                            else
+                                decoder_111_val := 0;
+                            end if;
+                            
+                            if (decoder_01f_val < decoder_11f_val) then
+                                decoder_01f_val := decoder_11f_val;
+                                decoder_11f_val := 1;
+                            else
+                                decoder_11f_val := 0;
+                            end if;
+                            
+                            if (decoder_0ff_val < decoder_1ff_val) then
+                                decoder_0ff_val := decoder_1ff_val;
+                                decoder_1ff_val := 1;
+                            else
+                                decoder_1ff_val := 0;
+                            end if;
+                            
+                            decoder_state       := decode_message_decider_reduction_r2;
+                            state               := decoder_process;  -- Direct entry without pulling another frame
+                            
+                        when decode_message_decider_reduction_r2 =>
+                            if (decoder_000_val < decoder_010_val) then
+                                decoder_000_val := decoder_010_val;
+                                decoder_010_val := decoder_110_val;
+                            else
+                                decoder_010_val := decoder_100_val;
+                            end if;
+                            
+                            if (decoder_001_val < decoder_011_val) then
+                                decoder_001_val := decoder_011_val;
+                                decoder_011_val := decoder_111_val;
+                            else
+                                decoder_011_val := decoder_101_val;
+                            end if;
+                            
+                            if (decoder_00f_val < decoder_01f_val) then
+                                decoder_00f_val := decoder_01f_val;
+                                decoder_01f_val := decoder_11f_val;
+                            else
+                                decoder_01f_val := decoder_10f_val;
+                            end if;
+                            
+                            decoder_state       := decode_message_decider_reduction_r3;
+                            state               := decoder_process;  -- Direct entry without pulling another frame
+                            
+                        when decode_message_decider_reduction_r3 =>
+                            if (decoder_000_val < decoder_001_val) then
+                                decoder_000_val := decoder_001_val;
+                                decoder_001_val := decoder_011_val;
+                            else
+                                decoder_001_val := decoder_010_val;
+                            end if;
+                            
+                            if (decoder_00f_val < decoder_0ff_val) then
+                                decoder_00f_val := decoder_0ff_val;
+                                decoder_0ff_val := decoder_1ff_val;
+                            else
+                                decoder_0ff_val := decoder_01f_val;
+                            end if;
+                            
+                            decoder_state       := decode_message_decider_reduction_r4;
+                            state               := decoder_process;  -- Direct entry without pulling another frame
+                            
+                        when decode_message_decider_reduction_r4 =>
+                            if (decoder_000_val < decoder_00f_val) then
+                                decoder_000_val := decoder_00f_val;
+                                decoder_00f_val := decoder_0ff_val;
+                            else
+                                decoder_00f_val := decoder_001_val;
+                            end if;
+                            
+                            decoder_state       := decode_message_decider_f;
+                            state               := decoder_process;  -- Direct entry without pulling another frame
+                            
                             
                         when decode_message_decider_f =>
-                            if (decoder_footer_val >= decoder_zero_val)  and  (decoder_footer_val >= decoder_one_val) then
-                                decoder_state       := NOP;  -- End of message stream
-                                state               := pushdata_prepare_calc;
+                            decoder_LoopIdx     := decoder_LoopIdx - 1;
+                            
+                            if ((decoder_ff_val >= decoder_000_val) or (decoder_LoopIdx /= 0)) then
+                                decoder_state   := NOP;  -- End of message stream
+                                state           := pushdata_prepare_calc;
+                                
                             else
-                                decoder_state       := decode_message_decider_01;
+                                decoder_state   := decode_message_decider_01;
                             end if;
                             
                         when decode_message_decider_01 =>
-                            if (decoder_zero_val >= decoder_one_val) then
+                            if (decoder_00f_val = 0) then
                                 decoder_rx09_out_vec    <= '0' & decoder_rx09_out_vec(1023 downto 1);
                                 decoder_lastOfs         := (32 + decoder_lastOfs - 11) mod 32;
+                                
                             else
                                 decoder_rx09_out_vec    <= '1' & decoder_rx09_out_vec(1023 downto 1);
                                 decoder_lastOfs         := (32 + decoder_lastOfs + 17) mod 32;
                             end if;
+                            
                             decoder_rx09_out_len        <= std_logic_vector(to_unsigned( (1 + to_integer(unsigned(decoder_rx09_out_len))) , decoder_rx09_out_len'length));
                             
-                            decoder_state               := decode_message_loop;
-                            state                       := loop_start;  -- Get next odd row
+                            decoder_state               := decode_message_loop_r5;
+                            state                       := loop_start;  -- Get next even row
                             
                         when others =>
                             decoder_state := NOP;
                             
                     end case;   -- decoder_state
+                    
                     
                 when pushdata_prepare_calc =>
                     loopCnt := (1024 - to_integer(unsigned(decoder_rx09_out_len))) / 8;     -- Number of bytes to skip

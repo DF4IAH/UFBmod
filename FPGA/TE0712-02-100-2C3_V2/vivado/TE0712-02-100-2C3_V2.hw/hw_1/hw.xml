@@ -64,7 +64,7 @@
     <Object name="msys_i/TRX_rx09_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=29"/>
     <Object name="msys_i/TRX_rx24_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=38"/>
     <Object name="msys_i/ULI_SYSTEM_XIO_1" gui_info="hw_vios/hw_vio_1=4"/>
-    <Object name="msys_i/decoder_rx09_center_pos_1[4:0]" gui_info="hw_vios/hw_vio_1=52_exp"/>
+    <Object name="msys_i/decoder_rx09_center_pos_1[4:0]" gui_info="hw_vios/hw_vio_1=52"/>
     <Object name="msys_i/decoder_rx09_noise_1[18:0]" gui_info="hw_vios/hw_vio_1=50"/>
     <Object name="msys_i/decoder_rx09_squelch_lvl[18:0]" gui_info="hw_vios/hw_vio_1=49"/>
     <Object name="msys_i/decoder_rx09_strength_1[18:0]" gui_info="hw_vios/hw_vio_1=51"/>
