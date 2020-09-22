@@ -140,7 +140,7 @@ begin
 
   -- Squelch level setting
   proc_squelch_lvl: process
-  constant C_squelch_lvl                : Integer   := 100; -- Set squelch level
+  constant C_squelch_lvl                : Integer   := 64; -- Set squelch level
   begin
     tb_decoder_rx09_squelch_lvl <= (others => '0');
     
