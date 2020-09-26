@@ -67,8 +67,23 @@ begin
   
   -- UFBmod decoder for the RF09 receiver
   proc_UFBmod_Decoder_rx09: process (resetn, clk, post_fft_rx09_mem_a_addr)
+    constant C_pre_r0                               : Integer :=  +7;
+    constant C_pre_r1                               : Integer := - 9;
+    constant C_pre_r2                               : Integer := +13;
+    constant C_pre_r3                               : Integer := -15;
+    constant C_pre_r4                               : Integer := +19;
+    constant C_pre_r5                               : Integer := -21;
+
+    constant C_bit_1                                : Integer := +17;
+    constant C_bit_0                                : Integer := -11;
+    
+    constant C_fin_0                                : Integer :=  +5;
+    constant C_fin_1                                : Integer :=  -3;
+    constant C_fin_2                                : Integer :=  +1;
+    
     type StateType                                  is (off, init, loop_start, wait_until_post_fft_done, read_in_loop,
-                                                    artemis_search, artemis_calc_row, artemis_sum_up, artemis_sqlval, artemis_check_candidates, artemis_find_max, artemis_check_squelch,
+                                                    artemis_search_1, artemis_search_2, artemis_sum_up_rows, artemis_sum_up_all,
+                                                    artemis_initial_skip, artemis_decoder_switch, artemis_check_candidates_init, artemis_check_candidates, artemis_find_max,
                                                     decoder_init, decoder_process,
                                                     pushdata_prepare_calc, pushdata_prepare_shift,
                                                     pushdata_header_a, pushdata_header_b,
@@ -82,11 +97,13 @@ begin
                                                     );
     variable state                                  : StateType;
     
-    type DecoderStateType                           is (NOP, 
+    type DecoderStateType                           is (NOP,
+                                                    decode_preload,
                                                     decode_remainValue_init, decode_remainValue_loop, 
                                                     decode_u32Count_init, decode_u32Count_loop,
                                                     decoder_forward,
                                                     decode_message_init, decode_message_loop_r5, decode_message_loop_r3, decode_message_loop_r1,
+                                                    decode_message_check_end,
                                                     decode_message_decider_reduction_r1, decode_message_decider_reduction_r2, decode_message_decider_reduction_r3, decode_message_decider_reduction_r4,
                                                     decode_message_decider_f, decode_message_decider_01
                                                     );
@@ -95,8 +112,20 @@ begin
     type Vec32u16                                   is array (31 downto 0) of unsigned(15 downto 0);
     variable srRow                                  : Vec32u16;
     
-    type Vec12Vec32u16                              is array (11 downto 0) of Vec32u16;
-    variable srField                                : Vec12Vec32u16;
+  --type Vec12Vec32u16                              is array (11 downto 0) of Vec32u16;
+  --variable srField                                : Vec12Vec32u16;
+    variable srField_t00                            : Vec32u16;
+    variable srField_t01                            : Vec32u16;
+    variable srField_t02                            : Vec32u16;
+    variable srField_t03                            : Vec32u16;
+    variable srField_t04                            : Vec32u16;
+    variable srField_t05                            : Vec32u16;
+    variable srField_t06                            : Vec32u16;
+    variable srField_t07                            : Vec32u16;
+    variable srField_t08                            : Vec32u16;
+    variable srField_t09                            : Vec32u16;
+    variable srField_t10                            : Vec32u16;
+    variable srField_t11                            : Vec32u16;
     
     type Vec32Int                                   is array (31 downto 0) of Integer;
     variable sumPreambleRow                         : Vec32Int;
@@ -108,14 +137,22 @@ begin
     variable sumOfRow                               : Vec12Int;
     
     variable sumAll                                 : Integer;
+    variable sumPreamble                            : Integer;
     
     variable preambleMaxVal                         : Integer;
     variable preambleMaxPos                         : Integer;
     
+    variable initialLoopIdx                         : Integer;
     variable historyLoopIdx                         : Integer;
     variable fftLoopIdx                             : Integer;
     
     variable sqlVal                                 : Integer;
+    variable fingerprint_t10                        : Integer;
+    variable fingerprint_t08                        : Integer;
+    variable fingerprint_t06                        : Integer;
+    variable fingerprint_t04                        : Integer;
+    variable fingerprint_t02                        : Integer;
+    variable fingerprint_t00                        : Integer;
     
     variable post_fft_rx09_mem_b_addr_Int           : Integer;
     
@@ -156,6 +193,7 @@ begin
     variable decoder_111_val                        : Integer;
     variable decoder_11f_val                        : Integer;
     variable decoder_1ff_val                        : Integer;
+    variable decoder_fff_val                        : Integer;
     
     variable loopCnt                                : Integer;
   begin
@@ -174,15 +212,24 @@ begin
             decoder_rx09_out_len                    <= (others => '0');
             
             sumAll                                  := 0;
+            sumPreamble                             := 0;
             preambleMaxVal                          := 0;
             preambleMaxPos                          := 0;
+            
             sqlVal                                  := 0;
+            fingerprint_t10                         := 0;
+            fingerprint_t08                         := 0;
+            fingerprint_t06                         := 0;
+            fingerprint_t04                         := 0;
+            fingerprint_t02                         := 0;
+            fingerprint_t00                         := 0;
             
             decoder_LoopIdx                         := 0;
             decoder_lastCenterOfs                   := 0;
             decoder_lastOfs                         := 0;
             decoder_val                             := 0;
             decoder_max                             := 0;
+            decoder_pos                             := 0;
             decoder_rx09_SoM_frameCtrA_Int          := 0;
             decoder_rx09_strength_Int               := 0;
             decoder_rx09_noise_Int                  := 0;
@@ -214,7 +261,9 @@ begin
             decoder_111_val                         := 0;
             decoder_11f_val                         := 0;
             decoder_1ff_val                         := 0;
+            decoder_fff_val                         := 0;
             
+            initialLoopIdx                          := 0;
             loopCnt                                 := 0;
             
             pushdata_rx09_en                        <= '0';
@@ -231,14 +280,28 @@ begin
                         sumPreambleRow(ii)          := 0;
                     end loop;
                     
+                    srField_t00                     := srRow;
+                    srField_t01                     := srRow;
+                    srField_t02                     := srRow;
+                    srField_t03                     := srRow;
+                    srField_t04                     := srRow;
+                    srField_t05                     := srRow;
+                    srField_t06                     := srRow;
+                    srField_t07                     := srRow;
+                    srField_t08                     := srRow;
+                    srField_t09                     := srRow;
+                    srField_t10                     := srRow;
+                    srField_t11                     := srRow;
+                    
                     for ii in 0 to 11 loop
-                        srField(ii)                 := srRow;
                         sumOfRow(ii)                := 0;
                     end loop;
                     
                     sumPreambleField_t0             := sumPreambleRow;
                     sumPreambleField_t1             := sumPreambleRow;
                     sumPreambleField_t2             := sumPreambleRow;
+                    
+                    initialLoopIdx                  := 12;
                     
                     state := loop_start;
                     
@@ -278,114 +341,126 @@ begin
                         
                     elsif (34 < post_fft_rx09_mem_b_addr_Int) then
                         -- End of loop
-                        srField := srField(10 downto 0) & srRow;
+                        srField_t11     := srField_t10;
+                        srField_t10     := srField_t09;
+                        srField_t09     := srField_t08;
+                        srField_t08     := srField_t07;
+                        srField_t07     := srField_t06;
+                        srField_t06     := srField_t05;
+                        srField_t05     := srField_t04;
+                        srField_t04     := srField_t03;
+                        srField_t03     := srField_t02;
+                        srField_t02     := srField_t01;
+                        srField_t01     := srField_t00;
+                        srField_t00     := srRow;
                         
-                        -- Prepare Artemis for fingerprint analysis
-                        historyLoopIdx := 11;
+                        -- Move up one row
+                        sumOfRow(11)    := sumOfRow(10);
+                        sumOfRow(10)    := sumOfRow( 9);
+                        sumOfRow( 9)    := sumOfRow( 8);
+                        sumOfRow( 8)    := sumOfRow( 7);
+                        sumOfRow( 7)    := sumOfRow( 6);
+                        sumOfRow( 6)    := sumOfRow( 5);
+                        sumOfRow( 5)    := sumOfRow( 4);
+                        sumOfRow( 4)    := sumOfRow( 3);
+                        sumOfRow( 3)    := sumOfRow( 2);
+                        sumOfRow( 2)    := sumOfRow( 1);
+                        sumOfRow( 1)    := sumOfRow( 0);
+                        sumOfRow( 0)    := 0;
                         
-                        state := artemis_search;
+                        -- Prepare Artemis sum up rows
+                        fftLoopIdx      := 0;
+                        
+                        state := artemis_sum_up_rows;
                     end if;
                     
                     -- RAM Loop footer
                     post_fft_rx09_mem_b_addr_Int := post_fft_rx09_mem_b_addr_Int + 1;
                     
-                    
-                when artemis_search =>
-                    -- Get current row from the history
-                    srRow := srField(historyLoopIdx);
-                    
-                    -- 32x parallel execution of single additions
-                    for fftIdx in 0 to 31 loop
-                        -- Preamble fingerprint
-                        case historyLoopIdx is
-                            when 10 =>
-                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + to_integer(srRow(((fftIdx +64  +6) mod 32)));
-                                
-                            when  8 =>
-                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + to_integer(srRow(((fftIdx +64  -6) mod 32)));
-                                
-                            when  6 =>
-                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + to_integer(srRow(((fftIdx +64  +9) mod 32)));
-                                
-                            when  4 =>
-                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + to_integer(srRow(((fftIdx +64  -9) mod 32)));
-                                
-                            when  2 =>
-                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + to_integer(srRow(((fftIdx +64 +12) mod 32)));
-                                
-                            when  0 =>
-                                sumPreambleRow(fftIdx) := sumPreambleRow(fftIdx) + to_integer(srRow(((fftIdx +64 -12) mod 32)));
-                                
-                            when others =>
-                                -- NOP
-                        end case;   -- historyLoopIdx
-                    end loop;   -- fftIdx
-                    
-                    if historyLoopIdx /= 0 then
-                        historyLoopIdx := historyLoopIdx - 1;
-                    else
-                        -- History Loop footer 1
-                        sumPreambleField_t2 := sumPreambleField_t1;
-                        sumPreambleField_t1 := sumPreambleField_t0;
-                        sumPreambleField_t0 := sumPreambleRow;
-                        
-                        -- Header fftLoop
-                        state       := artemis_calc_row;
-                        fftLoopIdx  := 0;
-                        
-                        -- Get current row
-                        srRow := srField(0);
-                        
-                        -- Move up one row
-                        sumOfRow(11) := sumOfRow(10);
-                        sumOfRow(10) := sumOfRow( 9);
-                        sumOfRow( 9) := sumOfRow( 8);
-                        sumOfRow( 8) := sumOfRow( 7);
-                        sumOfRow( 7) := sumOfRow( 6);
-                        sumOfRow( 6) := sumOfRow( 5);
-                        sumOfRow( 5) := sumOfRow( 4);
-                        sumOfRow( 4) := sumOfRow( 3);
-                        sumOfRow( 3) := sumOfRow( 2);
-                        sumOfRow( 2) := sumOfRow( 1);
-                        sumOfRow( 1) := sumOfRow( 0);
-                        sumOfRow( 0) := 0;
-                    end if;
-                    
-                when artemis_calc_row =>
-                    sumOfRow(0) := sumOfRow(0)  + to_integer(srRow(fftLoopIdx));
+                when artemis_sum_up_rows =>
+                    sumOfRow(0) := sumOfRow(0) + to_integer(srField_t00(fftLoopIdx));
                     
                     if (fftLoopIdx /= 31) then
-                        fftLoopIdx      := fftLoopIdx + 1;
+                        fftLoopIdx := fftLoopIdx + 1;
                     else
                         -- Header historyLoop 2
-                        state           := artemis_sum_up;
+                        state := artemis_sum_up_all;
                         historyLoopIdx  := 11;
                         sumAll          := 0;
                     end if;
                     
-                when artemis_sum_up =>
+                when artemis_sum_up_all =>
                     sumAll := sumAll + sumOfRow(historyLoopIdx);
                     
                     if historyLoopIdx /= 0 then
                         historyLoopIdx := historyLoopIdx - 1;
-                        
                     else
-                        state := artemis_sqlval;
+                        state   := artemis_search_1;
+                        sqlVal  := sumAll + to_integer(unsigned(decoder_rx09_squelch_lvl));
                     end if;
                     
-                when artemis_sqlval =>
-                    decoder_rx09_noise_Int  := sumAll / 64;  -- weight: 6 (x 4)
-                    sqlVal                  := decoder_rx09_noise_Int + to_integer(unsigned(decoder_rx09_squelch_lvl));
+                when artemis_search_1 =>
+                    -- 32x parallel execution of single additions
+                    for fftIdx in 0 to 31 loop
+                        fingerprint_t10 := to_integer(unsigned(srField_t10((fftIdx + (32 + C_pre_r0)) mod 32)));
+                        fingerprint_t08 := to_integer(unsigned(srField_t08((fftIdx + (32 + C_pre_r1)) mod 32)));
+                        fingerprint_t06 := to_integer(unsigned(srField_t06((fftIdx + (32 + C_pre_r2)) mod 32)));
+                        fingerprint_t04 := to_integer(unsigned(srField_t04((fftIdx + (32 + C_pre_r3)) mod 32)));
+                        fingerprint_t02 := to_integer(unsigned(srField_t02((fftIdx + (32 + C_pre_r4)) mod 32)));
+                        fingerprint_t00 := to_integer(unsigned(srField_t00((fftIdx + (32 + C_pre_r5)) mod 32)));
+                        
+                        -- Preamble fingerprint
+                        if (                                                                        -- Weight of sumAll = 32 * 12 = 384
+                            ((fingerprint_t10 * 256) > sqlVal)
+                        and ((fingerprint_t08 * 256) > sqlVal)
+                        and ((fingerprint_t06 * 256) > sqlVal)
+                        and ((fingerprint_t04 * 256) > sqlVal)
+                        and ((fingerprint_t02 * 256) > sqlVal)
+                        and ((fingerprint_t00 * 256) > sqlVal)
+                        ) then
+                            sumPreambleRow(fftIdx) := fingerprint_t10 + fingerprint_t08 + fingerprint_t06 + fingerprint_t04 + fingerprint_t02 + fingerprint_t00;
+                        end if;
+                    end loop;   -- fftIdx
                     
-                    state                   := artemis_check_candidates;
-                    fftLoopIdx              := 0;
-                    preambleMaxVal          := 0;
-                    preambleMaxPos          := 0;
+                    state := artemis_search_2;
+                    
+                when artemis_search_2 =>
+                    -- History Loop footer 1
+                    sumPreambleField_t2 := sumPreambleField_t1;
+                    sumPreambleField_t1 := sumPreambleField_t0;
+                    sumPreambleField_t0 := sumPreambleRow;
+                    
+                    if (initialLoopIdx /= 0) then
+                        state := artemis_initial_skip;
+                    else
+                        state := artemis_decoder_switch;
+                    end if;
+                    
+                when artemis_initial_skip =>
+                    initialLoopIdx      := initialLoopIdx - 1;
+                    state := loop_start;                                                            -- Skip this row and get next one
+                    
+                when artemis_decoder_switch =>
+                    if (decoder_state /= NOP) then
+                        state := decoder_process;
+                        
+                    else
+                        state := artemis_check_candidates_init;                                     -- Message and Remain/Length-value decoder
+                    end if;
+
+                when artemis_check_candidates_init =>
+                    fftLoopIdx          := 0;
+                    preambleMaxVal      := 0;
+                    preambleMaxPos      := 0;
+                    state := artemis_check_candidates;
                     
                 when artemis_check_candidates =>
-                    if (sumPreambleField_t1(fftLoopIdx) >= sumPreambleField_t2(fftLoopIdx)) and (sumPreambleField_t1(fftLoopIdx) >= sumPreambleField_t0(fftLoopIdx)) then
+                    if (
+                        (sumPreambleField_t1(fftLoopIdx) > sumPreambleField_t2(fftLoopIdx))
+                    and (sumPreambleField_t1(fftLoopIdx) > sumPreambleField_t0(fftLoopIdx))
+                    ) then
                         -- Candidate for Preamble found
-                        if (preambleMaxVal < sumPreambleField_t1(fftLoopIdx)) then
+                        if (preambleMaxVal  <  sumPreambleField_t1(fftLoopIdx)) then
                             preambleMaxVal  := sumPreambleField_t1(fftLoopIdx);
                             preambleMaxPos  := fftLoopIdx;
                         end if;
@@ -395,86 +470,86 @@ begin
                         fftLoopIdx := fftLoopIdx + 1;
                         
                     else
-                        decoder_rx09_strength_Int           := preambleMaxVal;  -- weight 6
-                        state                               := artemis_check_squelch;
-                    end if;
-                    
-                when artemis_check_squelch =>
-                    if (decoder_state /= NOP) then
-                        state                               := decoder_process;
-                        
-                    else
-                        if (sqlVal >= decoder_rx09_strength_Int) then  -- SNR without tweeks:  S=(preambleMaxVal / 6)  /   N=(sumAll / (12*32=384)
-                            -- Noise
-                            decoder_rx09_noise              <= std_logic_vector(to_unsigned(decoder_rx09_noise_Int, decoder_rx09_noise'length));
-                            
-                            state                           := loop_start;    -- Get next row
-                            
+                        if (preambleMaxVal = 0) then
+                            -- Continue to search for a preamble
+                            state := loop_start;
                         else
-                            -- Signal
-                            state                           := decoder_init;  -- Message and Remain/Length-value decoder
+                            -- Preamble found, continue with decoding message
+                            state := decoder_init;
                             
-                            decoder_lastCenterOfs           := preambleMaxPos;
-                            decoder_lastOfs                 := preambleMaxPos;
-                            decoder_rx09_center_pos_Int     := decoder_lastCenterOfs;
+                            decoder_lastCenterOfs       := (32 + preambleMaxPos - 16) mod 32;
+                            decoder_lastOfs             := decoder_lastCenterOfs;
+                            decoder_rx09_center_pos_Int := preambleMaxPos;
+                            decoder_rx09_strength_Int   := preambleMaxVal;                              -- weight:  6
+                            decoder_rx09_noise_Int      := sumAll / 64;                                 -- weight:  6
                         end if;
                     end if;
                     
                     
                 when decoder_init =>
-                    decoder_rx09_SoM_frameCtr       <= std_logic_vector(to_unsigned((to_integer(unsigned(post_fft_rx09_mem_a_addr(41 downto 10))) + 5), decoder_rx09_SoM_frameCtr'length));
-                    decoder_rx09_center_pos         <= std_logic_vector(to_unsigned(decoder_rx09_center_pos_Int, decoder_rx09_center_pos'length));
-                    decoder_rx09_strength           <= std_logic_vector(to_unsigned(decoder_rx09_strength_Int, decoder_rx09_strength'length));
-                    decoder_rx09_noise              <= std_logic_vector(to_unsigned(decoder_rx09_noise_Int, decoder_rx09_noise'length));
-                    decoder_rx09_out_vec            <= (others => '0');
-                    decoder_rx09_out_len            <= (others => '0');
+                    decoder_rx09_SoM_frameCtr   <= std_logic_vector(to_unsigned((to_integer(unsigned(post_fft_rx09_mem_a_addr(41 downto 10))) + 5), decoder_rx09_SoM_frameCtr'length));
+                    decoder_rx09_center_pos     <= std_logic_vector(to_unsigned(decoder_rx09_center_pos_Int, decoder_rx09_center_pos'length));
+                    decoder_rx09_strength       <= std_logic_vector(to_unsigned(decoder_rx09_strength_Int, decoder_rx09_strength'length));
+                    decoder_rx09_noise          <= std_logic_vector(to_unsigned(decoder_rx09_noise_Int, decoder_rx09_noise'length));
+                    decoder_rx09_out_vec        <= (others => '0');
+                    decoder_rx09_out_len        <= (others => '0');
                     
-                    decoder_state                   := decode_remainValue_init;
-                    state                           := loop_start;  -- Get next even row
+                    decoder_state   := decode_preload;
+                    state           := decoder_process;
+                    initialLoopIdx  := 4;
                     
                 when decoder_process =>
                     case decoder_state is
-                        when decode_remainValue_init =>
-                            decoder_max             := 0;
-                            decoder_pos             := 0;
-                            decoder_remainVal       := 0;
-                            decoder_LoopIdx         := 0;
+                        when decode_preload =>
+                            if (initialLoopIdx /= 0) then
+                                initialLoopIdx := initialLoopIdx - 1;
+                                
+                                decoder_state := decode_preload;
+                                state         := loop_start;                                        -- fetch next row
+                            else
+                                decoder_state := decode_remainValue_init;
+                                state         := decoder_process;
+                            end if;
                             
-                            decoder_state           := decode_remainValue_loop;
-                            state                   := loop_start;  -- Get next odd row
+                        when decode_remainValue_init =>
+                            decoder_max         := 0;
+                            decoder_pos         := 0;
+                            decoder_remainVal   := 0;
+                            decoder_LoopIdx     := 0;
+                            
+                            decoder_state := decode_remainValue_loop;
+                            state         := decoder_process;
                             
                         when decode_remainValue_loop =>
                             if decoder_LoopIdx /= 32 then
-                                srRow               := srField(1);  -- Point to last even row
-                                decoder_val         := to_integer(srRow(decoder_LoopIdx));
+                                decoder_val := to_integer(srField_t03(decoder_LoopIdx));
                                 
                                 if (decoder_max < decoder_val) then
-                                    decoder_max     := decoder_val;
-                                    decoder_pos     := decoder_LoopIdx;
+                                    decoder_max := decoder_val;
+                                    decoder_pos := decoder_LoopIdx;
                                 end if;
                                 
-                                decoder_LoopIdx     := decoder_LoopIdx + 1;
+                                decoder_LoopIdx := decoder_LoopIdx + 1;
                             else
-                                decoder_lastOfs     := decoder_pos;
-                                decoder_remainVal   := (32 + decoder_pos - decoder_lastCenterOfs) mod 32;
+                                decoder_lastOfs     := decoder_lastCenterOfs;
+                                decoder_remainVal   := (32 + decoder_pos - (16 + decoder_lastCenterOfs)) mod 32;
                                 
-                                decoder_state       := decode_u32Count_init;
-                                state               := loop_start;  -- Get next even row
+                                decoder_state := decode_u32Count_init;
+                                state         := decoder_process;
                             end if;
                             
                         when decode_u32Count_init =>
-                            decoder_max             := 0;
-                            decoder_pos             := 0;
-                            decoder_u32Count        := 0;
-                            decoder_LoopIdx         := 0;
+                            decoder_max         := 0;
+                            decoder_pos         := 0;
+                            decoder_u32Count    := 0;
+                            decoder_LoopIdx     := 0;
                             
-                            decoder_state           := decode_u32Count_loop;
-                            state                   := loop_start;  -- Get next odd row
+                            decoder_state := decode_u32Count_loop;
+                            state         := decoder_process;
                             
                         when decode_u32Count_loop =>
                             if decoder_LoopIdx /= 32 then
-                                srRow               := srField(1);  -- Point to last even row
-                                decoder_val         := to_integer(srRow(decoder_LoopIdx));
+                                decoder_val := to_integer(srField_t01(decoder_LoopIdx));
                                 
                                 if (decoder_max < decoder_val) then
                                     decoder_max     := decoder_val;
@@ -483,99 +558,125 @@ begin
                                 
                                 decoder_LoopIdx     := decoder_LoopIdx + 1;
                             else
-                                decoder_lastOfs     := decoder_pos;
-                                decoder_u32Count    := (32 + decoder_pos - decoder_lastCenterOfs) mod 32;
+                                decoder_lastOfs     := decoder_lastCenterOfs;
+                                decoder_u32Count    := (32 + decoder_pos - (16 + decoder_lastCenterOfs)) mod 32;
+                                decoder_LoopIdx     := 6;                                           -- Number of frames to move forward
                                 
-                                decoder_state       := decoder_forward;
-                                state               := decoder_process;     -- Direct entry without pulling another frame
-                                decoder_LoopIdx     := 6;                   -- Number of frames to move forward
+                                decoder_state := decoder_forward;
+                                state         := decoder_process;                                   -- Direct entry without pulling another frame
                             end if;
                             
                         when decoder_forward =>
                             if (decoder_LoopIdx /= 0) then
-                                decoder_LoopIdx     := decoder_LoopIdx - 1;
+                                decoder_LoopIdx := decoder_LoopIdx - 1;
                                 
-                                decoder_state       := decoder_forward;
-                                state               := loop_start;          -- Get another row
+                                decoder_state := decoder_forward;
+                                state         := loop_start;                                        -- Get another row
                             else
-                                decoder_state       := decode_message_init;
-                                state               := decoder_process;     -- Direct entry without pulling another frame
+                                decoder_state := decode_message_init;
+                                state         := decoder_process;                                   -- Direct entry without pulling another frame
                             end if;
                             
                         when decode_message_init =>
-                            decoder_0_val           := 0;
-                            decoder_1_val           := 0;
-                            decoder_f_val           := 0;
-                            decoder_00_val          := 0;
-                            decoder_01_val          := 0;
-                            decoder_0f_val          := 0;
-                            decoder_10_val          := 0;
-                            decoder_11_val          := 0;
-                            decoder_1f_val          := 0;
-                            decoder_ff_val          := 0;
-                            decoder_000_val         := 0;
-                            decoder_001_val         := 0;
-                            decoder_00f_val         := 0;
-                            decoder_010_val         := 0;
-                            decoder_011_val         := 0;
-                            decoder_01f_val         := 0;
-                            decoder_0ff_val         := 0;
-                            decoder_100_val         := 0;
-                            decoder_101_val         := 0;
-                            decoder_10f_val         := 0;
-                            decoder_110_val         := 0;
-                            decoder_111_val         := 0;
-                            decoder_11f_val         := 0;
-                            decoder_1ff_val         := 0;
+                            decoder_0_val   := 0;
+                            decoder_1_val   := 0;
+                            decoder_f_val   := 0;
+                            decoder_00_val  := 0;
+                            decoder_01_val  := 0;
+                            decoder_0f_val  := 0;
+                            decoder_10_val  := 0;
+                            decoder_11_val  := 0;
+                            decoder_1f_val  := 0;
+                            decoder_ff_val  := 0;
+                            decoder_000_val := 0;
+                            decoder_001_val := 0;
+                            decoder_00f_val := 0;
+                            decoder_010_val := 0;
+                            decoder_011_val := 0;
+                            decoder_01f_val := 0;
+                            decoder_0ff_val := 0;
+                            decoder_100_val := 0;
+                            decoder_101_val := 0;
+                            decoder_10f_val := 0;
+                            decoder_110_val := 0;
+                            decoder_111_val := 0;
+                            decoder_11f_val := 0;
+                            decoder_1ff_val := 0;
+                            decoder_fff_val := 0;
                             
-                            decoder_LoopIdx         := 1025;
+                            decoder_LoopIdx := 1025;
                             
-                            decoder_state           := decode_message_loop_r5;
-                            state                   := decoder_process;     -- Direct entry without pulling another frame
+                            decoder_state := decode_message_loop_r5;
+                            state         := decoder_process;                                       -- Direct entry without pulling another frame
                             
                         when decode_message_loop_r5 =>
-                            srRow                   := srField(5);          -- 1st generation
-                            decoder_0_val           := to_integer(srRow((64 + decoder_lastOfs  -11) mod 32));
-                            decoder_1_val           := to_integer(srRow((64 + decoder_lastOfs  +17) mod 32));
-                            decoder_f_val           := to_integer(srRow((64 + decoder_lastOfs   +3) mod 32));
+                            decoder_0_val   := to_integer(srField_t05((32 + 16 + decoder_lastOfs + C_bit_0) mod 32));
+                            decoder_1_val   := to_integer(srField_t05((32 + 16 + decoder_lastOfs + C_bit_1) mod 32));
+                            decoder_f_val   := to_integer(srField_t05((32 + 16 + decoder_lastOfs + C_fin_0) mod 32));
                             
-                            decoder_state           := decode_message_loop_r3;
-                            state                   := decoder_process;     -- Direct entry without pulling another frame
+                            decoder_state := decode_message_loop_r3;
+                            state         := decoder_process;                                       -- Direct entry without pulling another frame
                             
                         when decode_message_loop_r3 =>
-                            srRow                   := srField(3);          -- 2nd generation
-                            decoder_00_val          := to_integer(srRow((64 + decoder_lastOfs  -11 -11) mod 32)) + 4*decoder_0_val;
-                            decoder_01_val          := to_integer(srRow((64 + decoder_lastOfs  -11 +17) mod 32)) + 4*decoder_0_val;
-                            decoder_0f_val          := to_integer(srRow((64 + decoder_lastOfs  -11  +3) mod 32)) + 4*decoder_0_val;
-                            decoder_10_val          := to_integer(srRow((64 + decoder_lastOfs  +17 -11) mod 32)) + 4*decoder_1_val;
-                            decoder_11_val          := to_integer(srRow((64 + decoder_lastOfs  +17 +17) mod 32)) + 4*decoder_1_val;
-                            decoder_1f_val          := to_integer(srRow((64 + decoder_lastOfs  +17  +3) mod 32)) + 4*decoder_1_val;
-                            decoder_ff_val          := to_integer(srRow((64 + decoder_lastOfs   +3  -6) mod 32)) + 4*decoder_f_val;
+                            decoder_00_val  := to_integer(srField_t03((32 + 16 + decoder_lastOfs + C_bit_0 + C_bit_0) mod 32)) + 4*decoder_0_val;
+                            decoder_01_val  := to_integer(srField_t03((32 + 16 + decoder_lastOfs + C_bit_0 + C_bit_1) mod 32)) + 4*decoder_0_val;
+                            decoder_0f_val  := to_integer(srField_t03((32 + 16 + decoder_lastOfs + C_bit_0 + C_fin_0) mod 32)) + 4*decoder_0_val;
+                            decoder_10_val  := to_integer(srField_t03((32 + 16 + decoder_lastOfs + C_bit_1 + C_bit_0) mod 32)) + 4*decoder_1_val;
+                            decoder_11_val  := to_integer(srField_t03((32 + 16 + decoder_lastOfs + C_bit_1 + C_bit_1) mod 32)) + 4*decoder_1_val;
+                            decoder_1f_val  := to_integer(srField_t03((32 + 16 + decoder_lastOfs + C_bit_1 + C_fin_0) mod 32)) + 4*decoder_1_val;
+                            decoder_ff_val  := to_integer(srField_t03((32 + 16 + decoder_lastOfs           + C_fin_1) mod 32)) + 4*decoder_f_val;
                             
-                            decoder_state           := decode_message_loop_r1;
-                            state                   := decoder_process;     -- Direct entry without pulling another frame
+                            decoder_state := decode_message_loop_r1;
+                            state         := decoder_process;                                       -- Direct entry without pulling another frame
                             
                         when decode_message_loop_r1 =>
-                            srRow                   := srField(1);          -- Point to last even row
-                            decoder_000_val         := to_integer(srRow((64 + decoder_lastOfs  -11 -11 -11) mod 32)) + 2*decoder_00_val;
-                            decoder_001_val         := to_integer(srRow((64 + decoder_lastOfs  -11 -11 +17) mod 32)) + 2*decoder_00_val;
-                            decoder_00f_val         := to_integer(srRow((64 + decoder_lastOfs  -11 -11  +3) mod 32)) + 2*decoder_00_val;
-                            decoder_010_val         := to_integer(srRow((64 + decoder_lastOfs  -11 +17 -11) mod 32)) + 2*decoder_01_val;
-                            decoder_011_val         := to_integer(srRow((64 + decoder_lastOfs  -11 +17 +17) mod 32)) + 2*decoder_01_val;
-                            decoder_01f_val         := to_integer(srRow((64 + decoder_lastOfs  -11 +17  +3) mod 32)) + 2*decoder_01_val;
-                            decoder_0ff_val         := to_integer(srRow((64 + decoder_lastOfs  -11  +3  -6) mod 32)) + 2*decoder_0f_val;
-                            decoder_100_val         := to_integer(srRow((64 + decoder_lastOfs  +17 -11 -11) mod 32)) + 2*decoder_10_val;
-                            decoder_101_val         := to_integer(srRow((64 + decoder_lastOfs  +17 -11 +17) mod 32)) + 2*decoder_10_val;
-                            decoder_10f_val         := to_integer(srRow((64 + decoder_lastOfs  +17 -11  +3) mod 32)) + 2*decoder_10_val;
-                            decoder_110_val         := to_integer(srRow((64 + decoder_lastOfs  +17 +17 -11) mod 32)) + 2*decoder_11_val;
-                            decoder_111_val         := to_integer(srRow((64 + decoder_lastOfs  +17 +17 +17) mod 32)) + 2*decoder_11_val;
-                            decoder_11f_val         := to_integer(srRow((64 + decoder_lastOfs  +17 +17  +3) mod 32)) + 2*decoder_11_val;
-                            decoder_1ff_val         := to_integer(srRow((64 + decoder_lastOfs  +17  +3  -6) mod 32)) + 2*decoder_1f_val;
+                            decoder_000_val := to_integer(srField_t01((32 + 16 + decoder_lastOfs + C_bit_0 + C_bit_0 + C_bit_0) mod 32)) + 2*decoder_00_val;
+                            decoder_001_val := to_integer(srField_t01((32 + 16 + decoder_lastOfs + C_bit_0 + C_bit_0 + C_bit_1) mod 32)) + 2*decoder_00_val;
+                            decoder_00f_val := to_integer(srField_t01((32 + 16 + decoder_lastOfs + C_bit_0 + C_bit_0 + C_fin_0) mod 32)) + 2*decoder_00_val;
+                            decoder_010_val := to_integer(srField_t01((32 + 16 + decoder_lastOfs + C_bit_0 + C_bit_1 + C_bit_0) mod 32)) + 2*decoder_01_val;
+                            decoder_011_val := to_integer(srField_t01((32 + 16 + decoder_lastOfs + C_bit_0 + C_bit_1 + C_bit_1) mod 32)) + 2*decoder_01_val;
+                            decoder_01f_val := to_integer(srField_t01((32 + 16 + decoder_lastOfs + C_bit_0 + C_bit_1 + C_fin_0) mod 32)) + 2*decoder_01_val;
+                            decoder_0ff_val := to_integer(srField_t01((32 + 16 + decoder_lastOfs + C_bit_0           + C_fin_1) mod 32)) + 2*decoder_0f_val;
+                            decoder_100_val := to_integer(srField_t01((32 + 16 + decoder_lastOfs + C_bit_1 + C_bit_0 + C_bit_0) mod 32)) + 2*decoder_10_val;
+                            decoder_101_val := to_integer(srField_t01((32 + 16 + decoder_lastOfs + C_bit_1 + C_bit_0 + C_bit_1) mod 32)) + 2*decoder_10_val;
+                            decoder_10f_val := to_integer(srField_t01((32 + 16 + decoder_lastOfs + C_bit_1 + C_bit_0 + C_fin_0) mod 32)) + 2*decoder_10_val;
+                            decoder_110_val := to_integer(srField_t01((32 + 16 + decoder_lastOfs + C_bit_1 + C_bit_1 + C_bit_0) mod 32)) + 2*decoder_11_val;
+                            decoder_111_val := to_integer(srField_t01((32 + 16 + decoder_lastOfs + C_bit_1 + C_bit_1 + C_bit_1) mod 32)) + 2*decoder_11_val;
+                            decoder_11f_val := to_integer(srField_t01((32 + 16 + decoder_lastOfs + C_bit_1 + C_bit_1 + C_fin_0) mod 32)) + 2*decoder_11_val;
+                            decoder_1ff_val := to_integer(srField_t01((32 + 16 + decoder_lastOfs + C_bit_1           + C_fin_1) mod 32)) + 2*decoder_1f_val;
+                            decoder_fff_val := to_integer(srField_t01((32 + 16 + decoder_lastOfs                     + C_fin_2) mod 32)) + 2*decoder_ff_val;
                             
-                            decoder_state           := decode_message_decider_reduction_r1;
-                            state                   := decoder_process;     -- Direct entry without pulling another frame
+                            decoder_state := decode_message_check_end;
+                            state         := decoder_process;                                       -- Direct entry without pulling another frame
                             
-                            
+                        when decode_message_check_end =>
+                            if ((
+                                (decoder_fff_val >= decoder_000_val) and
+                                (decoder_fff_val >= decoder_001_val) and
+                                (decoder_fff_val >= decoder_00f_val) and
+                                (decoder_fff_val >= decoder_010_val) and
+                                (decoder_fff_val >= decoder_011_val) and
+                                (decoder_fff_val >= decoder_01f_val) and
+                                (decoder_fff_val >= decoder_0ff_val) and
+                                (decoder_fff_val >= decoder_100_val) and
+                                (decoder_fff_val >= decoder_101_val) and
+                                (decoder_fff_val >= decoder_10f_val) and
+                                (decoder_fff_val >= decoder_110_val) and
+                                (decoder_fff_val >= decoder_111_val) and
+                                (decoder_fff_val >= decoder_11f_val) and
+                                (decoder_fff_val >= decoder_1ff_val) and
+                                (((decoder_LoopIdx - 1) mod 4) = 0)  and
+                                ((decoder_LoopIdx < 1024)))
+                                or
+                                (decoder_LoopIdx = 0)
+                            ) then
+                                decoder_state := NOP;                                               -- End of message stream
+                                state         := pushdata_prepare_calc;
+                            else
+                                decoder_state := decode_message_decider_reduction_r1;
+                                state         := decoder_process;                                   -- Direct entry without pulling another frame
+                            end if;
+
                         when decode_message_decider_reduction_r1 =>
                             if (decoder_000_val < decoder_100_val) then
                                 decoder_000_val := decoder_100_val;
@@ -626,8 +727,8 @@ begin
                                 decoder_1ff_val := 0;
                             end if;
                             
-                            decoder_state       := decode_message_decider_reduction_r2;
-                            state               := decoder_process;         -- Direct entry without pulling another frame
+                            decoder_state := decode_message_decider_reduction_r2;
+                            state         := decoder_process;                                       -- Direct entry without pulling another frame
                             
                         when decode_message_decider_reduction_r2 =>
                             if (decoder_000_val < decoder_010_val) then
@@ -651,8 +752,8 @@ begin
                                 decoder_01f_val := decoder_10f_val;
                             end if;
                             
-                            decoder_state       := decode_message_decider_reduction_r3;
-                            state               := decoder_process;         -- Direct entry without pulling another frame
+                            decoder_state := decode_message_decider_reduction_r3;
+                            state         := decoder_process;                                       -- Direct entry without pulling another frame
                             
                         when decode_message_decider_reduction_r3 =>
                             if (decoder_000_val < decoder_001_val) then
@@ -669,8 +770,8 @@ begin
                                 decoder_0ff_val := decoder_01f_val;
                             end if;
                             
-                            decoder_state       := decode_message_decider_reduction_r4;
-                            state               := decoder_process;         -- Direct entry without pulling another frame
+                            decoder_state := decode_message_decider_reduction_r4;
+                            state         := decoder_process;                                       -- Direct entry without pulling another frame
                             
                         when decode_message_decider_reduction_r4 =>
                             if (decoder_000_val < decoder_00f_val) then
@@ -680,20 +781,10 @@ begin
                                 decoder_00f_val := decoder_001_val;
                             end if;
                             
-                            decoder_state       := decode_message_decider_f;
-                            state               := loop_start;              -- Get next odd row
-                            
-                            
-                        when decode_message_decider_f =>
                             decoder_LoopIdx     := decoder_LoopIdx - 1;
-                            
-                            if ((decoder_ff_val >= decoder_000_val) or (decoder_LoopIdx = 0)) then
-                                decoder_state   := NOP;                     -- End of message stream
-                                state           := pushdata_prepare_calc;
-                                
-                            else
-                                decoder_state   := decode_message_decider_01;
-                            end if;
+
+                            decoder_state := decode_message_decider_01;
+                            state         := loop_start;                                            -- Get next odd row
                             
                         when decode_message_decider_01 =>
                             if (decoder_00f_val = 0) then
@@ -707,8 +798,8 @@ begin
                             
                             decoder_rx09_out_len        <= std_logic_vector(to_unsigned( (1 + to_integer(unsigned(decoder_rx09_out_len))) , decoder_rx09_out_len'length));
                             
-                            decoder_state               := decode_message_loop_r5;
-                            state                       := loop_start;      -- Get next even row
+                            decoder_state := decode_message_loop_r5;
+                            state         := loop_start;                                            -- Get next even row
                             
                         when others =>
                             decoder_state := NOP;
@@ -717,7 +808,7 @@ begin
                     
                     
                 when pushdata_prepare_calc =>
-                    loopCnt := (1024 - to_integer(unsigned(decoder_rx09_out_len))) / 8;     -- Number of bytes to skip
+                    loopCnt := (1024 - to_integer(unsigned(decoder_rx09_out_len))) / 8;             -- Number of bytes to skip
                     state := pushdata_prepare_shift;
                     
                 when pushdata_prepare_shift =>
@@ -725,7 +816,7 @@ begin
                         decoder_rx09_out_vec <= "00000000" & decoder_rx09_out_vec(1023 downto 8);  -- SHR
                         loopCnt := loopCnt - 1;
                     else
-                        loopCnt := to_integer(unsigned(decoder_rx09_out_len(10 downto 3))); -- Number of bytes to transfer
+                        loopCnt := to_integer(unsigned(decoder_rx09_out_len(10 downto 3)));         -- Number of bytes to transfer
                         
                         state := pushdata_header_a;
                     end if;
@@ -733,114 +824,114 @@ begin
                 when pushdata_header_a =>
                     pushdata_rx09_en        <= '1';
                     pushdata_rx09_byteData  <= std_logic_vector(to_unsigned((to_integer(unsigned(decoder_rx09_out_len(10 downto 3))) + 11), pushdata_rx09_byteData'length));
-                    state                   := pushdata_header_b;
+                    state := pushdata_header_b;
                     
                 when pushdata_header_b =>
                     pushdata_rx09_en        <= '0';
-                    state                   := pushdata_signal_msb_a;
+                    state := pushdata_signal_msb_a;
                     
                 when pushdata_signal_msb_a =>
                     pushdata_rx09_en        <= '1';
                     pushdata_rx09_byteData  <= std_logic_vector(to_unsigned((decoder_rx09_strength_Int / 256), pushdata_rx09_byteData'length));
-                    state                   := pushdata_signal_msb_b;
+                    state := pushdata_signal_msb_b;
                     
                 when pushdata_signal_msb_b =>
                     pushdata_rx09_en        <= '0';
-                    state                   := pushdata_signal_lsb_a;
+                    state := pushdata_signal_lsb_a;
                     
                 when pushdata_signal_lsb_a =>
                     pushdata_rx09_en        <= '1';
                     pushdata_rx09_byteData  <= std_logic_vector(to_unsigned((decoder_rx09_strength_Int mod 256), pushdata_rx09_byteData'length));
-                    state                   := pushdata_signal_lsb_b;
+                    state := pushdata_signal_lsb_b;
                     
                 when pushdata_signal_lsb_b =>
                     pushdata_rx09_en        <= '0';
-                    state                   := pushdata_noise_msb_a;
+                    state := pushdata_noise_msb_a;
                     
                 when pushdata_noise_msb_a =>
                     pushdata_rx09_en        <= '1';
                     pushdata_rx09_byteData  <= std_logic_vector(to_unsigned((decoder_rx09_noise_Int / 256), pushdata_rx09_byteData'length));
-                    state                   := pushdata_noise_msb_b;
+                    state := pushdata_noise_msb_b;
                     
                 when pushdata_noise_msb_b =>
                     pushdata_rx09_en        <= '0';
-                    state                   := pushdata_noise_lsb_a;
+                    state := pushdata_noise_lsb_a;
                     
                 when pushdata_noise_lsb_a =>
                     pushdata_rx09_en        <= '1';
                     pushdata_rx09_byteData  <= std_logic_vector(to_unsigned((decoder_rx09_noise_Int mod 256), pushdata_rx09_byteData'length));
-                    state                   := pushdata_noise_lsb_b;
+                    state := pushdata_noise_lsb_b;
                     
                 when pushdata_noise_lsb_b =>
                     pushdata_rx09_en        <= '0';
-                    state                   := pushdata_frameCtr_p3_a;
+                    state := pushdata_frameCtr_p3_a;
                     
                 when pushdata_frameCtr_p3_a =>
                     pushdata_rx09_en        <= '1';
                     pushdata_rx09_byteData  <= decoder_rx09_SoM_frameCtr(31 downto 24);
-                    state                   := pushdata_frameCtr_p3_b;
+                    state := pushdata_frameCtr_p3_b;
                     
                 when pushdata_frameCtr_p3_b =>
                     pushdata_rx09_en        <= '0';
-                    state                   := pushdata_frameCtr_p2_a;
+                    state := pushdata_frameCtr_p2_a;
                     
                 when pushdata_frameCtr_p2_a =>
                     pushdata_rx09_en        <= '1';
                     pushdata_rx09_byteData  <= decoder_rx09_SoM_frameCtr(23 downto 16);
-                    state                   := pushdata_frameCtr_p2_b;
+                    state := pushdata_frameCtr_p2_b;
                     
                 when pushdata_frameCtr_p2_b =>
                     pushdata_rx09_en        <= '0';
-                    state                   := pushdata_frameCtr_p1_a;
+                    state := pushdata_frameCtr_p1_a;
                     
                 when pushdata_frameCtr_p1_a =>
                     pushdata_rx09_en        <= '1';
                     pushdata_rx09_byteData  <= decoder_rx09_SoM_frameCtr(15 downto 8);
-                    state                   := pushdata_frameCtr_p1_b;
+                    state := pushdata_frameCtr_p1_b;
                     
                 when pushdata_frameCtr_p1_b =>
                     pushdata_rx09_en        <= '0';
-                    state                   := pushdata_frameCtr_p0_a;
+                    state := pushdata_frameCtr_p0_a;
                     
                 when pushdata_frameCtr_p0_a =>
                     pushdata_rx09_en        <= '1';
                     pushdata_rx09_byteData  <= decoder_rx09_SoM_frameCtr(7 downto 0);
-                    state                   := pushdata_frameCtr_p0_b;
+                    state := pushdata_frameCtr_p0_b;
                     
                 when pushdata_frameCtr_p0_b =>
                     pushdata_rx09_en        <= '0';
-                    state                   := pushdata_centerpos_a;
+                    state := pushdata_centerpos_a;
                     
                 when pushdata_centerpos_a =>
                     pushdata_rx09_en        <= '1';
                     pushdata_rx09_byteData  <= std_logic_vector(to_unsigned(decoder_rx09_center_pos_Int, pushdata_rx09_byteData'length));
-                    state                   := pushdata_centerpos_b;
+                    state := pushdata_centerpos_b;
                     
                 when pushdata_centerpos_b =>
                     pushdata_rx09_en        <= '0';
-                    state                   := pushdata_remainCtr_a;
+                    state := pushdata_remainCtr_a;
                     
                 when pushdata_remainCtr_a =>
                     pushdata_rx09_en        <= '1';
                     pushdata_rx09_byteData  <= std_logic_vector(to_unsigned(decoder_remainVal, pushdata_rx09_byteData'length));
-                    state                   := pushdata_remainCtr_b;
+                    state := pushdata_remainCtr_b;
                     
                 when pushdata_remainCtr_b =>
                     pushdata_rx09_en        <= '0';
-                    state                   := pushdata_msgU32Len_a;
+                    state := pushdata_msgU32Len_a;
                     
                 when pushdata_msgU32Len_a =>
                     pushdata_rx09_en        <= '1';
                     pushdata_rx09_byteData  <= std_logic_vector(to_unsigned(decoder_u32Count, pushdata_rx09_byteData'length));
-                    state                   := pushdata_loop_begin;
+                    state := pushdata_loop_begin;
                     
                 when pushdata_loop_begin =>
                     pushdata_rx09_en        <= '0';
                     
                     if (loopCnt /= 0) then
-                        loopCnt             := loopCnt - 1;
+                        loopCnt := loopCnt - 1;
                         
-                        state               := pushdata_loop_transfer;
+                        state := pushdata_loop_transfer;
                     else
                         pushdata_rx09_byteData  <= (others => '0');
                         decoder_rx09_out_vec    <= (others => '0');
@@ -863,11 +954,11 @@ begin
                     decoder_rx09_out_vec    <= "00000000" & decoder_rx09_out_vec(1023 downto 8);
                     decoder_rx09_out_len    <= std_logic_vector(to_unsigned( (to_integer(unsigned(decoder_rx09_out_len)) - 8) , decoder_rx09_out_len'length));
                     
-                    state                   := pushdata_loop_begin;
+                    state := pushdata_loop_begin;
                     
                 when others =>
-                    state           := init;
-                    decoder_state   := NOP;
+                    decoder_state := NOP;
+                    state         := init;
             end case;   -- state
         end if;
     end if;
