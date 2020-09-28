@@ -1,12 +1,12 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company:  DF4IAH-Solutions
+-- Engineer: Ulrich Habel (DF4IAH)
 -- 
 -- Create Date: 12.05.2020 18:38:56
--- Design Name: 
--- Module Name: tb_barrel_rot32 - Behavioral
--- Project Name: 
--- Target Devices: 
+-- Design Name: UFBmod V2
+-- Module Name: tb_UFBmod_Decoder - Behavioral
+-- Project Name: UFBmod
+-- Target Devices: Xilinx Artix-7 FPGAs
 -- Tool Versions: 
 -- Description: 
 -- 
@@ -26,9 +26,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
 
-use IEEE.std_logic_1164.all;
-use IEEE.std_logic_misc.all;
-use IEEE.std_logic_signed.all;
+--use IEEE.std_logic_1164.all;
+--use IEEE.std_logic_misc.all;
+--use IEEE.std_logic_unsigned.all;
+--use IEEE.std_logic_signed.all;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
