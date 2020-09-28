@@ -59,6 +59,131 @@ architecture Behavioral of tb_UFBmod_Encoder is
     pulldata_tx09_byteData                          : in  STD_LOGIC_VECTOR( 7 downto 0)
   );
   end component UFBmod_Encoder;
+
+-- RESETS
+  signal tb_resetn : STD_LOGIC;
+
+-- CLOCKS
+  signal tb_clk : STD_LOGIC;
+
+-- STIMULUS
+  signal  tb_decoder_active                         : STD_LOGIC;
+  signal  tb_decoder_rx09_squelch_lvl               : STD_LOGIC_VECTOR(18 downto 0);
+  signal  tb_decoder_rx09_noise                     : STD_LOGIC_VECTOR(18 downto 0);
+  signal  tb_encoder_pull_FIFO_dump                 : STD_LOGIC;
+  signal  tb_encoder_pull_do_start                  : STD_LOGIC;
+  signal  tb_encoder_pull_data_len                  : STD_LOGIC_VECTOR( 6 downto 0);
+  signal  tb_pulldata_tx09_en                       : STD_LOGIC;
+  signal  tb_pulldata_tx09_byteData                 : STD_LOGIC_VECTOR( 7 downto 0);
+  
 begin
+
+-- DUT
+  UFBmod_Encoder_i: component UFBmod_Encoder
+    port map (
+        resetn                          => tb_resetn,
+        clk                             => tb_clk,
+        
+        decoder_active                  => tb_decoder_active,
+        decoder_rx09_squelch_lvl        => tb_decoder_rx09_squelch_lvl,
+        decoder_rx09_noise              => tb_decoder_rx09_noise,
+        
+        encoder_pull_FIFO_dump          => tb_encoder_pull_FIFO_dump,
+        encoder_pull_do_start           => tb_encoder_pull_do_start,
+        encoder_pull_data_len           => tb_encoder_pull_data_len,
+        
+        pulldata_tx09_en                => tb_pulldata_tx09_en,
+        pulldata_tx09_byteData          => tb_pulldata_tx09_byteData
+    );
+
+
+-- RESETS
+  proc_tb_reset: process
+  begin
+    tb_resetn   <= '0';
+    
+    wait for 10us;
+    tb_resetn   <= '1';
+    wait;
+  end process proc_tb_reset;
+
+-- CLOCKS
+  -- 100 MHz
+  proc_tb_clk: process
+  begin
+    tb_clk      <= '1';
+    wait for 5ns;
+    
+    tb_clk      <= '0';
+    wait for 5ns;
+  end process proc_tb_clk;
+
+
+-- STIMULI
+
+  -- FIFO
+  proc_fifo: process
+
+  type Vec16I                                   is array (15 downto 0) of Integer;
+  variable fifo                                 : Vec16I;
+  variable fifo_len                             : Integer;
+
+  begin
+    tb_pulldata_tx09_byteData   <= (others => '0');
+    tb_encoder_pull_data_len    <= (others => '0');
+    tb_encoder_pull_FIFO_dump   <= '0';
+    tb_encoder_pull_do_start    <= '0';
+    
+    fifo_len := 0;
+    
+    for ii in 0 to 15 loop
+        fifo(ii) := 0;
+    end loop;
+    
+    
+    -- FIFO data
+    fifo(0)     := 0;           -- Offset of preamble [-16 .. +15]  <-->  absolute [0 .. 31]
+    fifo(1)     := 0;           -- Remain counter (not used yet)
+    fifo(2)     := 1;           -- Count of u32 message words
+    
+    fifo(3)     := 16#99#;
+    fifo(4)     := 16#55#;
+    fifo(5)     := 16#f0#;
+    fifo(6)     := 16#c3#;
+    
+    fifo_len    := 7;
+    
+    
+    -- The show starts here
+    wait until tb_resetn = '1';
+    tb_encoder_pull_data_len    <= std_logic_vector(to_unsigned(fifo_len, tb_encoder_pull_data_len'length));
+    
+    loop
+        wait until tb_clk'event and tb_clk = '1';
+        
+        if (tb_pulldata_tx09_en = '1') then
+            if (fifo_len /= 0) then
+                fifo_len := fifo_len - 1;
+                
+                tb_pulldata_tx09_byteData   <= std_logic_vector(to_unsigned(fifo(0), tb_pulldata_tx09_byteData'length));
+                
+            else
+                tb_pulldata_tx09_byteData   <= (others => '0');
+                tb_encoder_pull_do_start    <= '1';
+                
+                wait until tb_clk'event and tb_clk = '1';
+                tb_encoder_pull_do_start    <= '0';
+                
+                -- End of stimulus
+                wait;
+            end if;
+            
+            for ii in 0 to 14 loop
+                fifo(ii) := fifo(ii + 1);
+            end loop;
+            fifo(15) := 0;
+        end if;
+    end loop;
+  end process proc_fifo;
 
 end Behavioral;

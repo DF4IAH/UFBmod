@@ -138,6 +138,7 @@ begin
                     
                 when fifo_pull_ofs =>
                     encoder_ofs := to_integer(unsigned(pulldata_tx09_byteData));
+                    
                     pull_cnt := pull_cnt - 1;
                     state := fifo_pull_remain;
                     
@@ -153,6 +154,7 @@ begin
                     
                 when fifo_pull_u32len =>
                     encoder_u32len := to_integer(unsigned(pulldata_tx09_byteData));
+                    
                     pull_cnt := pull_cnt - 1;
                     if (pull_cnt = 2) then
                         pulldata_tx09_en <= '0';
