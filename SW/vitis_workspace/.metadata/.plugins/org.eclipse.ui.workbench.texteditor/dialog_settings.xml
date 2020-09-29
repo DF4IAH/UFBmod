@@ -2,12 +2,16 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="GREEN" key="selection"/>
+		<item value="pwr_dBm" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="pwr_dBm"/>
+			<item value="TestRF09Tx"/>
+			<item value="TrxStateRF09Get"/>
+			<item value="RF09Get done"/>
 			<item value="GREEN"/>
 			<item value="RED"/>
 			<item value="TestRF09Rx"/>
@@ -19,10 +23,6 @@
 			<item value="V2"/>
 			<item value="CMV"/>
 			<item value="TXCUT"/>
-			<item value="testTx"/>
-			<item value="calcCorectionGet"/>
-			<item value="DdsFreqAmpSet"/>
-			<item value="RESET"/>
 		</list>
 		<list key="replacehistory">
 		</list>

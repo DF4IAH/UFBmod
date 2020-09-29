@@ -1878,13 +1878,17 @@ static void TestRF09Tx(int pwr_dBm)
 	u8 state;
 	pwmLedSet(0x00000020UL, 0x00ffffffUL);
 	TrxCmdRF09Set(CMD_TX);
+#if 0
+	// Something went wrong after last soldering the Atmel device: stays at STATE_TRANSITION=0x06
 	while (1) {
 		TrxStateRF09Get(&state);
 		if (state == STATE_TX) {
 			xil_printf("TestRF09Tx: changed into state = 0x%02X\r\n", state);
 			break;
 		}
+		vTaskDelay(pdMS_TO_TICKS(100));
 	}
+#endif
 
 #if 0
 	/* Freq. sweep 868 .. 870 MHz */
@@ -1928,9 +1932,12 @@ static void TestRF09Tx(int pwr_dBm)
 	vTaskDelay(pdMS_TO_TICKS(250));
 
 	/* RED off */
-	u32 irqs;
 	TrxCmdRF09Set(CMD_TRXOFF);
+#if 0
+	// Something went wrong after last soldering the Atmel device: stays at STATE_TXPREP=0x03
 	while (1) {
+		u32 irqs;
+
 		TrxGetIrqs(&irqs);
 		TrxStateRF09Get(&state);
 		if (state == CMD_TRXOFF) {
@@ -1938,6 +1945,7 @@ static void TestRF09Tx(int pwr_dBm)
 			break;
 		}
 	}
+#endif
 	pwmLedSet(0x00000000UL, 0x00ffffffUL);
 }
 
@@ -1977,13 +1985,17 @@ static void TestRF24Tx(int pwr_dBm)
 	u8 state;
 	pwmLedSet(0x0000007fUL, 0x00ffffffUL);
 	TrxCmdRF24Set(CMD_TX);
+#if 0
+	// Something went wrong after last soldering the Atmel device: stays at STATE_TRANSITION=0x06
 	while (1) {
 		TrxStateRF24Get(&state);
 		if (state == STATE_TX) {
 			xil_printf("TestRF24Tx: changed into state = 0x%02X\r\n", state);
 			break;
 		}
+		vTaskDelay(pdMS_TO_TICKS(100));
 	}
+#endif
 
 #if 0
 	/* Freq. sweep 2400 .. 2483.5 MHz */
@@ -2027,16 +2039,21 @@ static void TestRF24Tx(int pwr_dBm)
 	vTaskDelay(pdMS_TO_TICKS(250));
 
 	/* RED off */
-	u32 irqs;
 	TrxCmdRF24Set(CMD_TRXOFF);
+#if 0
+	// Something went wrong after last soldering the Atmel device: stays at STATE_TXPREP=0x03
 	while (1) {
+		u32 irqs;
+
 		TrxGetIrqs(&irqs);
 		TrxStateRF24Get(&state);
 		if (state == CMD_TRXOFF) {
 			xil_printf("TestRF24Tx: changed into state = 0x%02X\r\n", state);
 			break;
 		}
+		vTaskDelay(pdMS_TO_TICKS(100));
 	}
+#endif
 	pwmLedSet(0x00000000UL, 0x00ffffffUL);
 }
 
@@ -2061,13 +2078,17 @@ static void TestRF09Rx(void)
 	u8 state;
 	pwmLedSet(0x00002000UL, 0x00ffffffUL);
 	TrxCmdRF09Set(CMD_RX);
+#if 0
+	// Something went wrong after last soldering the Atmel device: stays at STATE_RESET=0x07
 	while (1) {
 		TrxStateRF09Get(&state);
 		if (state == STATE_RX) {
 			xil_printf("TestRF09Rx: changed into state = 0x%02X\r\n", state);
 			break;
 		}
+		vTaskDelay(pdMS_TO_TICKS(100));
 	}
+#endif
 
 #if 1
 	/* Clear FIFO */
@@ -2076,7 +2097,7 @@ static void TestRF09Rx(void)
 	while (1) {
 		s8 rssi = 127;
 		TrxRssiRF09Get(&rssi);
-
+#if 1
 		/* Get state of PushData FIFO */
 		u32 pdIn = XGpio_DiscreteRead(&gpio_TRX_PUSHDATA, 1U);
 		//xil_printf("TestRF09Rx: PushData IN state = 0x%04X\r\n", pdIn);
@@ -2177,8 +2198,9 @@ static void TestRF09Rx(void)
 			/* GREEN (dimmed) on */
 			pwmLedSet(0x00002000UL, 0x00ffffffUL);
 		}
+#endif
 
-		vTaskDelay(pdMS_TO_TICKS(100));
+		vTaskDelay(pdMS_TO_TICKS(1000));
 	}
 #else
 	vTaskDelay(pdMS_TO_TICKS(1000));
@@ -2395,7 +2417,7 @@ void taskTrx(void* pvParameters)
 		TrxCmdRF09Set(CMD_TRXOFF);
 
 		/* Values */										// XXX
-		int pwr_dBm = +11;									// Max. +11 dBm @ TRX
+		int pwr_dBm = +11;									// Max. +11 dBm @ TRX  (after defect: +10,+11 --> -6 dBm)
 		u32 freq_Hz = 869000000UL;  						// 868000000 ..  870000000 Hz		// RF09
 
 		/* Set frequency */
@@ -2463,7 +2485,7 @@ void taskTrx(void* pvParameters)
 			}
 		}
 
-#if 0
+#if 1
 		/* Testing the Transmitter of the TRX */
 		TestRF24Tx(pwr_dBm);
 #else

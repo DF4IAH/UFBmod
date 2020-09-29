@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 12.05.2020 18:38:56
 -- Design Name: 
--- Module Name: tb_barrel_rot32 - Behavioral
+-- Module Name: tb_auto_LVDS_rotate - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -26,59 +26,110 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
 
-use IEEE.std_logic_1164.all;
-use IEEE.std_logic_misc.all;
-use IEEE.std_logic_signed.all;
-
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity tb_barrel_rot32 is
+--use IEEE.std_logic_misc.all;
+--use IEEE.std_logic_unsigned.all;
+--use IEEE.std_logic_signed.all;
+
+
+entity tb_auto_LVDS_rotate is
 --  Port ( );
-end tb_barrel_rot32;
+end tb_auto_LVDS_rotate;
 
-architecture Behavioral of tb_barrel_rot32 is
-  component barrel_rot32 is
-  Port ( clk : in STD_LOGIC;
-         rot : in STD_LOGIC_VECTOR (4 downto 0);
-         d : in STD_LOGIC_VECTOR (31 downto 0);
-         q : out STD_LOGIC_VECTOR (31 downto 0)
-    );
-  end component barrel_rot32;
-
+architecture Behavioral of tb_auto_LVDS_rotate is
+  component auto_LVDS_rotate is
+  Port (
+    resetn       : in  STD_LOGIC;
+    clk          : in  STD_LOGIC;
+    LVDS09       : in  STD_LOGIC_VECTOR (31 downto 0);
+    LVDS09_valid : in  STD_LOGIC;
+    LVDS24       : in  STD_LOGIC_VECTOR (31 downto 0);
+    LVDS24_valid : in  STD_LOGIC;
+    rot09q       : out STD_LOGIC_VECTOR (31 downto 0);
+    rot09vld     : out STD_LOGIC;
+    rot24q       : out STD_LOGIC_VECTOR (31 downto 0);
+    rot24vld     : out STD_LOGIC
+  );
+  end component auto_LVDS_rotate;
+    
 -- RESETS
-  signal tb_reset : STD_LOGIC;
+  signal tb_resetn       : STD_LOGIC;
 
 -- CLOCKS
-  signal tb_clk : STD_LOGIC;
+  signal tb_clk          : STD_LOGIC;
 
 -- STIMULUS
-  signal tb_rot : STD_LOGIC_VECTOR (4 downto 0);
-  signal tb_d : STD_LOGIC_VECTOR (31 downto 0);
-  signal tb_q : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_LVDS09       : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_LVDS09_valid : STD_LOGIC;
+  signal tb_LVDS24       : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_LVDS24_valid : STD_LOGIC;
+  signal tb_rot09q       : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_rot09vld     : STD_LOGIC;
+  signal tb_rot24q       : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_rot24vld     : STD_LOGIC;
 
 begin
 -- DUT
-  barrel_rot32_i: component barrel_rot32
+  auto_LVDS_rotate_i: component auto_LVDS_rotate
     port map (
-      clk => tb_clk,
-      rot => tb_rot,
-      d => tb_d,
-      q => tb_q
+      resetn       => tb_resetn,
+      clk          => tb_clk,
+      LVDS09       => tb_LVDS09,
+      LVDS09_valid => tb_LVDS09_valid,
+      LVDS24       => tb_LVDS24,
+      LVDS24_valid => tb_LVDS24_valid,
+      rot09q       => tb_rot09q,
+      rot09vld     => tb_rot09vld,
+      rot24q       => tb_rot24q,
+      rot24vld     => tb_rot24vld
     );
 
 
--- RESETS
-  proc_tb_reset: process
+-- STIMULI
+  -- Data 32 bit with 64 MHz
+  proc_tb_d: process
   begin
-    tb_reset <= '1';
+    if (tb_resetn = '1') then
+      while (tb_resetn = '1') loop
+        --                   vv              vv
+        tb_LVDS09       <= "01011001100110011010011001100110";
+        tb_LVDS09_valid <= '1';
+        --                  v              vv              v
+        tb_LVDS24       <= "00011001100110001110011001100111";
+        tb_LVDS24_valid <= '1';
+        wait for 7.812ns;
+
+        tb_LVDS09_valid <= '0';
+        tb_LVDS24_valid <= '0';
+        wait for 7.813ns;
+        
+        wait for 46.875ns;
+      end loop;
+
+    else
+      tb_LVDS09       <= (others=>'0');
+      tb_LVDS09_valid <= '0';
+      tb_LVDS24       <= (others=>'0');
+      tb_LVDS24_valid <= '0';
+      wait for 10ns;
+    end if;
+  end process proc_tb_d;
+  
+  
+-- RESETS
+  proc_tb_resetn: process
+  begin
+    tb_resetn <= '0';
 
     wait for 10us;
-    tb_reset <= '0';
+    tb_resetn <= '1';
     wait;
-  end process proc_tb_reset;
+  end process proc_tb_resetn;
+
 
 -- CLOCKS
   -- 100 MHz
@@ -91,29 +142,4 @@ begin
     wait for 5ns;
   end process proc_tb_clk;
 
--- STIMULI
-  -- Data 32 bit
-  proc_tb_d: process
-  begin
-    tb_d <= "10000000010000001100100100110110";
-    wait;
-  end process proc_tb_d;
-
-  -- Rotate count value
-  proc_tb_rot: process
-    variable tb_rot_val : Integer;
-  begin
-    if (tb_reset = '1'  or  tb_reset = 'U') then
-      tb_rot_val := 0;
-      wait for 1ns;
-    else
-      while (tb_reset = '0') loop
-        wait for 2us;
-      
-        tb_rot_val := tb_rot_val + 1;
-        tb_rot <=  std_logic_vector(to_unsigned(tb_rot_val, tb_rot'length));
-      end loop;
-    end if;
-  end process proc_tb_rot;
-  
 end Behavioral;

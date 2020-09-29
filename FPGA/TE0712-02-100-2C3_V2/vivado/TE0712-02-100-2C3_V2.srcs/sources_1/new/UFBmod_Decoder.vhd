@@ -52,6 +52,7 @@ entity UFBmod_Decoder is
     decoder_rx09_center_pos                     : out STD_LOGIC_VECTOR( 4 downto 0);
     decoder_rx09_strength                       : out STD_LOGIC_VECTOR(18 downto 0);
     decoder_rx09_noise                          : out STD_LOGIC_VECTOR(18 downto 0);
+    decoder_rx09_active                         : out STD_LOGIC;
     
     pushdata_rx09_en                            : out STD_LOGIC;
     pushdata_rx09_byteData                      : out STD_LOGIC_VECTOR( 7 downto 0)
@@ -207,6 +208,7 @@ begin
             decoder_rx09_center_pos                 <= (others => '0');
             decoder_rx09_strength                   <= (others => '0');
             decoder_rx09_noise                      <= (others => '0');
+            decoder_rx09_active                     <= '0';
             
             decoder_rx09_out_vec                    <= (others => '0');
             decoder_rx09_out_len                    <= (others => '0');
@@ -300,6 +302,8 @@ begin
                     sumPreambleField_t0             := sumPreambleRow;
                     sumPreambleField_t1             := sumPreambleRow;
                     sumPreambleField_t2             := sumPreambleRow;
+                    
+                    decoder_rx09_active             <= '0';
                     
                     initialLoopIdx                  := 12;
                     
@@ -477,6 +481,7 @@ begin
                             -- Preamble found, continue with decoding message
                             state := decoder_init;
                             
+                            decoder_rx09_active         <= '1';
                             decoder_lastCenterOfs       := (32 + preambleMaxPos - 16) mod 32;
                             decoder_lastOfs             := decoder_lastCenterOfs;
                             decoder_rx09_center_pos_Int := preambleMaxPos;
@@ -808,7 +813,8 @@ begin
                     
                     
                 when pushdata_prepare_calc =>
-                    loopCnt := (1024 - to_integer(unsigned(decoder_rx09_out_len))) / 8;             -- Number of bytes to skip
+                    decoder_rx09_active <= '0';
+                    loopCnt             := (1024 - to_integer(unsigned(decoder_rx09_out_len))) / 8; -- Number of bytes to skip
                     state := pushdata_prepare_shift;
                     
                 when pushdata_prepare_shift =>

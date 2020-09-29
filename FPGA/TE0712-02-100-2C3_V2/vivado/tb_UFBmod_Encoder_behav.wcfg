@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_UFBmod_Encoder_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_UFBmod_Encoder" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="9931083fs"></ZoomStartTime>
+      <ZoomEndTime time="10169784fs"></ZoomEndTime>
+      <Cursor1Time time="10136183fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="533"></NameColumnWidth>
+      <ValueColumnWidth column_width="243"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="11" />
+   <wvobject fp_name="/tb_UFBmod_Encoder/tb_resetn" type="logic">
+      <obj_property name="ElementShortName">tb_resetn</obj_property>
+      <obj_property name="ObjectShortName">tb_resetn</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Encoder/tb_clk" type="logic">
+      <obj_property name="ElementShortName">tb_clk</obj_property>
+      <obj_property name="ObjectShortName">tb_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Encoder/tb_decoder_rx09_squelch_lvl" type="array">
+      <obj_property name="ElementShortName">tb_decoder_rx09_squelch_lvl[18:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_decoder_rx09_squelch_lvl[18:0]</obj_property>
+      <obj_property name="CustomSignalColor">#DCDCDC</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Encoder/tb_decoder_rx09_noise" type="array">
+      <obj_property name="ElementShortName">tb_decoder_rx09_noise[18:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_decoder_rx09_noise[18:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Encoder/tb_encoder_pull_FIFO_dump" type="logic">
+      <obj_property name="ElementShortName">tb_encoder_pull_FIFO_dump</obj_property>
+      <obj_property name="ObjectShortName">tb_encoder_pull_FIFO_dump</obj_property>
+      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Encoder/tb_encoder_pull_do_start" type="logic">
+      <obj_property name="ElementShortName">tb_encoder_pull_do_start</obj_property>
+      <obj_property name="ObjectShortName">tb_encoder_pull_do_start</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Encoder/tb_encoder_pull_data_len" type="array">
+      <obj_property name="ElementShortName">tb_encoder_pull_data_len[6:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_encoder_pull_data_len[6:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#808000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Encoder/tb_pulldata_tx09_en" type="logic">
+      <obj_property name="ElementShortName">tb_pulldata_tx09_en</obj_property>
+      <obj_property name="ObjectShortName">tb_pulldata_tx09_en</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Encoder/tb_pulldata_tx09_byteData" type="array">
+      <obj_property name="ElementShortName">tb_pulldata_tx09_byteData[7:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_pulldata_tx09_byteData[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Encoder/UFBmod_Encoder_i/encoder_tx09_in_len" type="array">
+      <obj_property name="ElementShortName">encoder_tx09_in_len[10:0]</obj_property>
+      <obj_property name="ObjectShortName">encoder_tx09_in_len[10:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Encoder/UFBmod_Encoder_i/encoder_tx09_in_vec" type="array">
+      <obj_property name="ElementShortName">encoder_tx09_in_vec[1023:0]</obj_property>
+      <obj_property name="ObjectShortName">encoder_tx09_in_vec[1023:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+</wave_config>

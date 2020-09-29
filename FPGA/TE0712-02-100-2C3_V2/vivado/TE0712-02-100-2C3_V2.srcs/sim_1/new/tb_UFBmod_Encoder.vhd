@@ -47,7 +47,7 @@ architecture Behavioral of tb_UFBmod_Encoder is
     resetn                                          : in  STD_LOGIC;
     clk                                             : in  STD_LOGIC;
     
-    decoder_active                                  : in  STD_LOGIC;
+    decoder_rx09_active                             : in  STD_LOGIC;
     decoder_rx09_squelch_lvl                        : in  STD_LOGIC_VECTOR(18 downto 0);
     decoder_rx09_noise                              : in  STD_LOGIC_VECTOR(18 downto 0);
     
@@ -56,7 +56,10 @@ architecture Behavioral of tb_UFBmod_Encoder is
     encoder_pull_data_len                           : in  STD_LOGIC_VECTOR( 6 downto 0);
     
     pulldata_tx09_en                                : out STD_LOGIC;
-    pulldata_tx09_byteData                          : in  STD_LOGIC_VECTOR( 7 downto 0)
+    pulldata_tx09_byteData                          : in  STD_LOGIC_VECTOR( 7 downto 0);
+    
+    dds_tx09_inc                                    : out STD_LOGIC_VECTOR(23 downto 0);
+    dds_tx09_ptt                                    : out STD_LOGIC
   );
   end component UFBmod_Encoder;
 
@@ -67,14 +70,19 @@ architecture Behavioral of tb_UFBmod_Encoder is
   signal tb_clk : STD_LOGIC;
 
 -- STIMULUS
-  signal  tb_decoder_active                         : STD_LOGIC;
-  signal  tb_decoder_rx09_squelch_lvl               : STD_LOGIC_VECTOR(18 downto 0);
-  signal  tb_decoder_rx09_noise                     : STD_LOGIC_VECTOR(18 downto 0);
-  signal  tb_encoder_pull_FIFO_dump                 : STD_LOGIC;
-  signal  tb_encoder_pull_do_start                  : STD_LOGIC;
-  signal  tb_encoder_pull_data_len                  : STD_LOGIC_VECTOR( 6 downto 0);
-  signal  tb_pulldata_tx09_en                       : STD_LOGIC;
-  signal  tb_pulldata_tx09_byteData                 : STD_LOGIC_VECTOR( 7 downto 0);
+  signal tb_decoder_rx09_active                     : STD_LOGIC;
+  signal tb_decoder_rx09_squelch_lvl                : STD_LOGIC_VECTOR(18 downto 0);
+  signal tb_decoder_rx09_noise                      : STD_LOGIC_VECTOR(18 downto 0);
+  signal tb_encoder_pull_FIFO_dump                  : STD_LOGIC;
+  signal tb_encoder_pull_do_start                   : STD_LOGIC;
+  signal tb_encoder_pull_data_len                   : STD_LOGIC_VECTOR( 6 downto 0);
+  signal tb_pulldata_tx09_en                        : STD_LOGIC;
+  signal tb_pulldata_tx09_byteData                  : STD_LOGIC_VECTOR( 7 downto 0);
+  signal tb_dds_tx09_inc                            : STD_LOGIC_VECTOR(23 downto 0);
+  signal tb_dds_tx09_ptt                            : STD_LOGIC;
+  
+  signal tb_pulldata_tx09_en_t1                     : STD_LOGIC;
+  signal tb_pulldata_tx09_en_t2                     : STD_LOGIC;
   
 begin
 
@@ -84,7 +92,7 @@ begin
         resetn                          => tb_resetn,
         clk                             => tb_clk,
         
-        decoder_active                  => tb_decoder_active,
+        decoder_rx09_active             => tb_decoder_rx09_active,
         decoder_rx09_squelch_lvl        => tb_decoder_rx09_squelch_lvl,
         decoder_rx09_noise              => tb_decoder_rx09_noise,
         
@@ -93,7 +101,10 @@ begin
         encoder_pull_data_len           => tb_encoder_pull_data_len,
         
         pulldata_tx09_en                => tb_pulldata_tx09_en,
-        pulldata_tx09_byteData          => tb_pulldata_tx09_byteData
+        pulldata_tx09_byteData          => tb_pulldata_tx09_byteData,
+        
+        dds_tx09_inc                    => tb_dds_tx09_inc,
+        dds_tx09_ptt                    => tb_dds_tx09_ptt
     );
 
 
@@ -127,10 +138,15 @@ begin
   type Vec16I                                   is array (15 downto 0) of Integer;
   variable fifo                                 : Vec16I;
   variable fifo_len                             : Integer;
-
+ 
   begin
-    tb_pulldata_tx09_byteData   <= (others => '0');
-    tb_encoder_pull_data_len    <= (others => '0');
+    tb_decoder_rx09_squelch_lvl <= std_logic_vector(to_unsigned(300, tb_decoder_rx09_squelch_lvl'length));
+    tb_decoder_rx09_noise       <= std_logic_vector(to_unsigned(100, tb_decoder_rx09_noise'length));
+    tb_pulldata_tx09_en_t1      <= '0';
+    tb_pulldata_tx09_en_t2      <= '0';
+    tb_decoder_rx09_active      <= '0';
+    tb_pulldata_tx09_byteData   <= (others => '1');
+    tb_encoder_pull_data_len    <= (others => '1');
     tb_encoder_pull_FIFO_dump   <= '0';
     tb_encoder_pull_do_start    <= '0';
     
@@ -158,31 +174,34 @@ begin
     wait until tb_resetn = '1';
     tb_encoder_pull_data_len    <= std_logic_vector(to_unsigned(fifo_len, tb_encoder_pull_data_len'length));
     
+    wait until tb_clk'event and tb_clk = '1';
+    tb_encoder_pull_do_start    <= '1';
+    
     loop
         wait until tb_clk'event and tb_clk = '1';
+        tb_encoder_pull_do_start    <= '0';
         
-        if (tb_pulldata_tx09_en = '1') then
+        if (tb_pulldata_tx09_en_t2 = '1') then
             if (fifo_len /= 0) then
                 fifo_len := fifo_len - 1;
                 
                 tb_pulldata_tx09_byteData   <= std_logic_vector(to_unsigned(fifo(0), tb_pulldata_tx09_byteData'length));
                 
+                for ii in 0 to 14 loop
+                    fifo(ii) := fifo(ii + 1);
+                end loop;
+                fifo(15) := 0;
+                
             else
                 tb_pulldata_tx09_byteData   <= (others => '0');
-                tb_encoder_pull_do_start    <= '1';
-                
-                wait until tb_clk'event and tb_clk = '1';
-                tb_encoder_pull_do_start    <= '0';
                 
                 -- End of stimulus
                 wait;
             end if;
-            
-            for ii in 0 to 14 loop
-                fifo(ii) := fifo(ii + 1);
-            end loop;
-            fifo(15) := 0;
         end if;
+        
+        tb_pulldata_tx09_en_t2      <= tb_pulldata_tx09_en_t1;
+        tb_pulldata_tx09_en_t1      <= tb_pulldata_tx09_en;
     end loop;
   end process proc_fifo;
 

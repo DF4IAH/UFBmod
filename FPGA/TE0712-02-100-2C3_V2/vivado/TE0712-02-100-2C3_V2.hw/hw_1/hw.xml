@@ -22,7 +22,7 @@
     <Object name="xc7a100t_0" gui_info="">
       <Properties Property="FULL_PROBES.FILE" value="$_project_name_.runs/impl_1/msys_wrapper.ltx"/>
       <Properties Property="PROBES.FILE" value="$_project_name_.runs/impl_1/msys_wrapper.ltx"/>
-      <Properties Property="PROGRAM.HW_BITSTREAM" value="$_project_name_.runs/impl_1/msys_wrapper.bit"/>
+      <Properties Property="PROGRAM.HW_BITSTREAM" value=""/>
       <Properties Property="PROGRAM.HW_CFGMEM_PART" value="s25fl256sxxxxxx0-spi-x1_x2_x4"/>
       <Properties Property="SLR.COUNT" value="1"/>
     </Object>
@@ -58,16 +58,16 @@
     <Object name="msys_i/SC0712_0_mon_GPIO1_I[31:0]" gui_info="hw_vios/hw_vio_1=1"/>
     <Object name="msys_i/SC0712_0_mon_GPIO1_O[31:0]" gui_info="hw_vios/hw_vio_1=2"/>
     <Object name="msys_i/SC0712_0_reset_out" gui_info="hw_vios/hw_vio_1=2"/>
-    <Object name="msys_i/Status_LVDS_rx09_synced_1" gui_info="hw_vios/hw_vio_1=30"/>
-    <Object name="msys_i/Status_LVDS_rx24_synced_1" gui_info="hw_vios/hw_vio_1=39"/>
-    <Object name="msys_i/TRX_rd_data_count_CD100[8:0]" gui_info="hw_vios/hw_vio_1=33"/>
-    <Object name="msys_i/TRX_rx09_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=29"/>
-    <Object name="msys_i/TRX_rx24_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=38"/>
+    <Object name="msys_i/Status_LVDS_rx09_synced_1" gui_info="hw_vios/hw_vio_1=29"/>
+    <Object name="msys_i/Status_LVDS_rx24_synced_1" gui_info="hw_vios/hw_vio_1=31"/>
+    <Object name="msys_i/TRX_rd_data_count_CD100[8:0]" gui_info="hw_vios/hw_vio_1=35"/>
+    <Object name="msys_i/TRX_rx09_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=30"/>
+    <Object name="msys_i/TRX_rx24_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=32"/>
     <Object name="msys_i/ULI_SYSTEM_XIO_1" gui_info="hw_vios/hw_vio_1=4"/>
-    <Object name="msys_i/decoder_rx09_center_pos_1[4:0]" gui_info="hw_vios/hw_vio_1=52"/>
-    <Object name="msys_i/decoder_rx09_noise_1[18:0]" gui_info="hw_vios/hw_vio_1=50"/>
-    <Object name="msys_i/decoder_rx09_squelch_lvl[18:0]" gui_info="hw_vios/hw_vio_1=49"/>
-    <Object name="msys_i/decoder_rx09_strength_1[18:0]" gui_info="hw_vios/hw_vio_1=51"/>
+    <Object name="msys_i/decoder_rx09_center_pos_1[4:0]" gui_info="hw_vios/hw_vio_1=44"/>
+    <Object name="msys_i/decoder_rx09_noise_1[18:0]" gui_info="hw_vios/hw_vio_1=42"/>
+    <Object name="msys_i/decoder_rx09_squelch_lvl[18:0]" gui_info="hw_vios/hw_vio_1=41"/>
+    <Object name="msys_i/decoder_rx09_strength_1[18:0]" gui_info="hw_vios/hw_vio_1=43"/>
     <Object name="msys_i/fm_mgt_ref[31:0]" gui_info="hw_vios/hw_vio_1=9"/>
     <Object name="msys_i/fm_mig_50mhz[31:0]" gui_info="hw_vios/hw_vio_1=10"/>
     <Object name="msys_i/labtools_fmeter_0_F4[31:0]" gui_info="hw_vios/hw_vio_1=6"/>
@@ -83,7 +83,7 @@
     <Object name="msys_i/lt_F2_CLK1B[31:0]" gui_info="hw_vios/hw_vio_1=8"/>
     <Object name="msys_i/lt_F3_CLK0[31:0]" gui_info="hw_vios/hw_vio_1=9"/>
     <Object name="msys_i/lt_F4_TRX_LVDS_divclk[31:0]" gui_info="hw_vios/hw_vio_1=10"/>
-    <Object name="msys_i/post_fft_rx09_mem_b_dout_0[15:0]" gui_info="hw_vios/hw_vio_1=47"/>
+    <Object name="msys_i/post_fft_rx09_mem_b_dout_0[15:0]" gui_info="hw_vios/hw_vio_1=40"/>
     <Object name="msys_i/post_fft_rx24_mem_b_addr_0[14:0]" gui_info="hw_vios/hw_vio_1=46"/>
     <Object name="msys_i/post_fft_rx24_mem_b_addr_0[9:0]" gui_info="hw_vios/hw_vio_1=46"/>
     <Object name="msys_i/post_fft_rx24_mem_b_dout_0[15:0]" gui_info="hw_vios/hw_vio_1=48"/>
@@ -95,14 +95,14 @@
     <Object name="msys_i/postmem_rx_addrb_in_0[14:0]" gui_info="hw_vios/hw_vio_1=46"/>
     <Object name="msys_i/vio_xlslice_40_Dout[12:0]" gui_info="hw_vios/hw_vio_1=27"/>
     <Object name="msys_i/vio_xlslice_41_Dout[12:0]" gui_info="hw_vios/hw_vio_1=28"/>
-    <Object name="msys_i/vio_xlslice_rx09_im_25to13_in45_Dout[12:0]" gui_info="hw_vios/hw_vio_1=32"/>
-    <Object name="msys_i/vio_xlslice_rx09_re_12to0_in44_Dout[12:0]" gui_info="hw_vios/hw_vio_1=31"/>
+    <Object name="msys_i/vio_xlslice_rx09_im_25to13_in45_Dout[12:0]" gui_info="hw_vios/hw_vio_1=34"/>
+    <Object name="msys_i/vio_xlslice_rx09_re_12to0_in44_Dout[12:0]" gui_info="hw_vios/hw_vio_1=33"/>
     <Object name="msys_i/vio_xlslice_rx24_im_25to13_in47_Dout[12:0]" gui_info="hw_vios/hw_vio_1=41"/>
     <Object name="msys_i/vio_xlslice_rx24_re_12to0_in46_Dout[12:0]" gui_info="hw_vios/hw_vio_1=40"/>
-    <Object name="msys_i/xfft_rx09_dly3449_event_data_in_channel_halt_out_0" gui_info="hw_vios/hw_vio_1=34"/>
-    <Object name="msys_i/xfft_rx09_dly3449_event_frame_started_out_0" gui_info="hw_vios/hw_vio_1=35"/>
-    <Object name="msys_i/xfft_rx09_dly3449_event_tlast_missing_out_0" gui_info="hw_vios/hw_vio_1=36"/>
-    <Object name="msys_i/xfft_rx09_dly3449_event_tlast_unexpected_out_0" gui_info="hw_vios/hw_vio_1=37"/>
+    <Object name="msys_i/xfft_rx09_dly3449_event_data_in_channel_halt_out_0" gui_info="hw_vios/hw_vio_1=36"/>
+    <Object name="msys_i/xfft_rx09_dly3449_event_frame_started_out_0" gui_info="hw_vios/hw_vio_1=37"/>
+    <Object name="msys_i/xfft_rx09_dly3449_event_tlast_missing_out_0" gui_info="hw_vios/hw_vio_1=38"/>
+    <Object name="msys_i/xfft_rx09_dly3449_event_tlast_unexpected_out_0" gui_info="hw_vios/hw_vio_1=39"/>
     <Object name="msys_i/xfft_rx24_dly3198_event_data_in_channel_halt_out_0" gui_info="hw_vios/hw_vio_1=42"/>
     <Object name="msys_i/xfft_rx24_dly3198_event_tlast_missing_out_0" gui_info="hw_vios/hw_vio_1=44"/>
     <Object name="msys_i/xfft_rx24_dly3198_event_tlast_unexpected_out_0" gui_info="hw_vios/hw_vio_1=45"/>
@@ -1711,7 +1711,7 @@
         <net name="msys_i/lt_F3_CLK0[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -1787,7 +1787,7 @@
         <net name="msys_i/post_fft_rx09_mem_b_dout_0[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2077,7 +2077,7 @@
         <net name="msys_i/vio_xlslice_rx09_re_12to0_in44_Dout[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2104,7 +2104,7 @@
         <net name="msys_i/vio_xlslice_rx24_im_25to13_in47_Dout[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2258,7 +2258,7 @@
         <Option Id="HW_VIO" value="hw_vio_1"/>
         <Option Id="NAME.CUSTOM" value=""/>
         <Option Id="NAME.SELECT" value="Short"/>
-        <Option Id="OUTPUT_VALUE" value="00000"/>
+        <Option Id="OUTPUT_VALUE" value="00200"/>
         <Option Id="OUTPUT_VALUE_RADIX" value="HEX"/>
         <Option Id="SOURCE" value="netlist"/>
       </probeOptions>
@@ -2313,7 +2313,7 @@
         <net name="msys_i/post_fft_rx24_mem_b_addr_0[0]"/>
       </nets>
     </probe>
-    <probe type="vio_output" busType="bus" source="netlist" spec="VIO_OUTPUT_V2_RT">
+    <probe type="vio_output" busType="net" source="netlist" spec="VIO_OUTPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="DISPLAY_HINT" value=""/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>

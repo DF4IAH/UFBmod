@@ -44,7 +44,6 @@ entity SCOPE_FSM is
     SCOPE_FSM_GPIO1_In          : out STD_LOGIC_VECTOR (31 downto 0);
     SCOPE_FSM_TrigSrc           : in  STD_LOGIC_VECTOR (47 downto 0);
     SCOPE_FSM_Timebase_CE       : out STD_LOGIC;
-    SCOPE_FSM_Timebase_SCLR     : out STD_LOGIC;
     SCOPE_FSM_FIFO_Rst          : out STD_LOGIC;
     SCOPE_FSM_FIFO_wr_rst_busy  : in  STD_LOGIC;
     SCOPE_FSM_FIFO_rd_rst_busy  : in  STD_LOGIC;
@@ -87,7 +86,6 @@ begin
             trgSrc                  := 0;
             SCOPE_FSM_GPIO1_In      <= (others => '0');
             SCOPE_FSM_Timebase_CE   <= '1';
-            SCOPE_FSM_Timebase_SCLR <= '1';
             SCOPE_FSM_FIFO_Rst      <= '1';
             SCOPE_FSM_FIFO_WrEn     <= '0';
             SCOPE_FSM_FIFO_RdEn     <= '0';
@@ -105,7 +103,6 @@ begin
                     trgSrc                  := 0;
                     SCOPE_FSM_GPIO1_In      <= (others => '0');
                     SCOPE_FSM_Timebase_CE   <= '1';
-                    SCOPE_FSM_Timebase_SCLR <= '1';
                     SCOPE_FSM_FIFO_Rst      <= '1';
                     SCOPE_FSM_FIFO_WrEn     <= '0';
                     SCOPE_FSM_FIFO_RdEn     <= '0';
@@ -113,7 +110,6 @@ begin
                     if (SCOPE_FSM_GPIO0_Out(GPIO0_OUT_enable) = '1') then
                         FSM_state_dbg <= x"01";
                         SCOPE_FSM_Timebase_CE   <= '1';
-                        SCOPE_FSM_Timebase_SCLR <= '1';
                         state := init;
                     end if;
                     
@@ -132,9 +128,8 @@ begin
                     FSM_state_dbg <= x"20";
                     if (SCOPE_FSM_GPIO0_Out(GPIO0_OUT_start) = '1') then
                         FSM_state_dbg <= x"21";
-                        SCOPE_FSM_Timebase_SCLR <= '0';
-                        SCOPE_FSM_FIFO_WrEn     <= '1';
-                        SCOPE_FSM_GPIO1_In(GPIO1_IN_running) <= '1';
+                        SCOPE_FSM_FIFO_WrEn                     <= '1';
+                        SCOPE_FSM_GPIO1_In(GPIO1_IN_running)    <= '1';
                         state := run;
                     end if;
                     
