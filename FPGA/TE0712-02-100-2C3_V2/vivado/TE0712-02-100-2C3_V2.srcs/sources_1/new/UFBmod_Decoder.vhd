@@ -38,32 +38,33 @@ use IEEE.NUMERIC_STD.ALL;
 entity UFBmod_Decoder is
   Port (
     -- All Clock Domain AXI 100 MHz
-    resetn                                      : in  STD_LOGIC;
-    clk                                         : in  STD_LOGIC;
+    resetn                                          : in  STD_LOGIC;
+    clk                                             : in  STD_LOGIC;
     
-    post_fft_rx09_mem_a_EoT                     : in  STD_LOGIC;
-    post_fft_rx09_mem_a_addr                    : in  STD_LOGIC_VECTOR(41 downto 0);
+    post_fft_rx09_mem_a_EoT                         : in  STD_LOGIC;
+    post_fft_rx09_mem_a_addr                        : in  STD_LOGIC_VECTOR(41 downto 0);
     
-    post_fft_rx09_mem_b_addr                    : out STD_LOGIC_VECTOR( 9 downto 0);
-    post_fft_rx09_mem_b_dout                    : in  STD_LOGIC_VECTOR(15 downto 0);
+    post_fft_rx09_mem_b_addr                        : out STD_LOGIC_VECTOR( 9 downto 0);
+    post_fft_rx09_mem_b_dout                        : in  STD_LOGIC_VECTOR(15 downto 0);
     
-    decoder_rx09_squelch_lvl                    : in  STD_LOGIC_VECTOR(18 downto 0);
+    decoder_rx09_squelch_lvl                        : in  STD_LOGIC_VECTOR(18 downto 0);
     
-    decoder_rx09_center_pos                     : out STD_LOGIC_VECTOR( 4 downto 0);
-    decoder_rx09_strength                       : out STD_LOGIC_VECTOR(18 downto 0);
-    decoder_rx09_noise                          : out STD_LOGIC_VECTOR(18 downto 0);
-    decoder_rx09_active                         : out STD_LOGIC;
+    decoder_rx09_center_pos                         : out STD_LOGIC_VECTOR( 4 downto 0);
+    decoder_rx09_strength                           : out STD_LOGIC_VECTOR(18 downto 0);
+    decoder_rx09_noise                              : out STD_LOGIC_VECTOR(18 downto 0);
+    decoder_rx09_sql_open                           : out STD_LOGIC;
+    decoder_rx09_active                             : out STD_LOGIC;
     
-    pushdata_rx09_en                            : out STD_LOGIC;
-    pushdata_rx09_byteData                      : out STD_LOGIC_VECTOR( 7 downto 0)
+    pushdata_rx09_en                                : out STD_LOGIC;
+    pushdata_rx09_byteData                          : out STD_LOGIC_VECTOR( 7 downto 0)
   );
 end UFBmod_Decoder;
 
 architecture Behavioral of UFBmod_Decoder is
-  signal decoder_rx09_SoM_frameCtr              : STD_LOGIC_VECTOR(31 downto 0);
-  signal post_fft_rx09_mem_b_complete_addr      : STD_LOGIC_VECTOR(41 downto 0);
-  signal decoder_rx09_out_vec                   : STD_LOGIC_VECTOR(1023 downto 0);
-  signal decoder_rx09_out_len                   : STD_LOGIC_VECTOR(10 downto 0);
+  signal decoder_rx09_SoM_frameCtr                  : STD_LOGIC_VECTOR(31 downto 0);
+  signal post_fft_rx09_mem_b_complete_addr          : STD_LOGIC_VECTOR(41 downto 0);
+  signal decoder_rx09_out_vec                       : STD_LOGIC_VECTOR(1023 downto 0);
+  signal decoder_rx09_out_len                       : STD_LOGIC_VECTOR(10 downto 0);
 begin
   
   -- UFBmod decoder for the RF09 receiver
@@ -82,31 +83,33 @@ begin
     constant C_fin_1                                : Integer :=  -3;
     constant C_fin_2                                : Integer :=  +1;
     
-    type StateType                                  is (off, init, loop_start, wait_until_post_fft_done, read_in_loop,
-                                                    artemis_search_1, artemis_search_2, artemis_sum_up_rows, artemis_sum_up_all,
-                                                    artemis_initial_skip, artemis_decoder_switch, artemis_check_candidates_init, artemis_check_candidates, artemis_find_max,
-                                                    decoder_init, decoder_process,
-                                                    pushdata_prepare_calc, pushdata_prepare_shift,
-                                                    pushdata_header_a, pushdata_header_b,
-                                                    pushdata_signal_msb_a, pushdata_signal_msb_b, pushdata_signal_lsb_a, pushdata_signal_lsb_b,
-                                                    pushdata_noise_msb_a, pushdata_noise_msb_b, pushdata_noise_lsb_a, pushdata_noise_lsb_b,
-                                                    pushdata_frameCtr_p3_a, pushdata_frameCtr_p3_b, pushdata_frameCtr_p2_a, pushdata_frameCtr_p2_b, pushdata_frameCtr_p1_a, pushdata_frameCtr_p1_b, pushdata_frameCtr_p0_a, pushdata_frameCtr_p0_b,
-                                                    pushdata_centerpos_a, pushdata_centerpos_b,
-                                                    pushdata_remainCtr_a, pushdata_remainCtr_b,
-                                                    pushdata_msgU32Len_a,
-                                                    pushdata_loop_begin, pushdata_loop_transfer
+    type StateType                                  is (
+                                                        init, loop_start, wait_until_post_fft_done, read_in_loop,
+                                                        artemis_search_1, artemis_search_2, artemis_sum_up_rows, artemis_sum_up_all,
+                                                        artemis_initial_skip, artemis_decoder_switch, artemis_check_candidates_init, artemis_check_candidates, artemis_find_max,
+                                                        decoder_init, decoder_process,
+                                                        pushdata_prepare_calc, pushdata_prepare_shift,
+                                                        pushdata_header_a, pushdata_header_b,
+                                                        pushdata_signal_msb_a, pushdata_signal_msb_b, pushdata_signal_lsb_a, pushdata_signal_lsb_b,
+                                                        pushdata_noise_msb_a, pushdata_noise_msb_b, pushdata_noise_lsb_a, pushdata_noise_lsb_b,
+                                                        pushdata_frameCtr_p3_a, pushdata_frameCtr_p3_b, pushdata_frameCtr_p2_a, pushdata_frameCtr_p2_b, pushdata_frameCtr_p1_a, pushdata_frameCtr_p1_b, pushdata_frameCtr_p0_a, pushdata_frameCtr_p0_b,
+                                                        pushdata_centerpos_a, pushdata_centerpos_b,
+                                                        pushdata_remainCtr_a, pushdata_remainCtr_b,
+                                                        pushdata_msgU32Len_a,
+                                                        pushdata_loop_begin, pushdata_loop_transfer
                                                     );
     variable state                                  : StateType;
     
-    type DecoderStateType                           is (NOP,
-                                                    decode_preload,
-                                                    decode_remainValue_init, decode_remainValue_loop, 
-                                                    decode_u32Count_init, decode_u32Count_loop,
-                                                    decoder_forward,
-                                                    decode_message_init, decode_message_loop_r5, decode_message_loop_r3, decode_message_loop_r1,
-                                                    decode_message_check_end,
-                                                    decode_message_decider_reduction_r1, decode_message_decider_reduction_r2, decode_message_decider_reduction_r3, decode_message_decider_reduction_r4,
-                                                    decode_message_decider_f, decode_message_decider_01
+    type DecoderStateType                           is (
+                                                        NOP,
+                                                        decode_preload,
+                                                        decode_remainValue_init, decode_remainValue_loop, 
+                                                        decode_u32Count_init, decode_u32Count_loop,
+                                                        decoder_forward,
+                                                        decode_message_init, decode_message_loop_r5, decode_message_loop_r3, decode_message_loop_r1,
+                                                        decode_message_check_end,
+                                                        decode_message_decider_reduction_r1, decode_message_decider_reduction_r2, decode_message_decider_reduction_r3, decode_message_decider_reduction_r4,
+                                                        decode_message_decider_f, decode_message_decider_01
                                                     );
     variable decoder_state                          : DecoderStateType;
     
@@ -208,6 +211,7 @@ begin
             decoder_rx09_center_pos                 <= (others => '0');
             decoder_rx09_strength                   <= (others => '0');
             decoder_rx09_noise                      <= (others => '0');
+            decoder_rx09_sql_open                   <= '0';
             decoder_rx09_active                     <= '0';
             
             decoder_rx09_out_vec                    <= (others => '0');
@@ -303,6 +307,7 @@ begin
                     sumPreambleField_t1             := sumPreambleRow;
                     sumPreambleField_t2             := sumPreambleRow;
                     
+                    decoder_rx09_sql_open           <= '0';
                     decoder_rx09_active             <= '0';
                     
                     initialLoopIdx                  := 12;
@@ -391,6 +396,13 @@ begin
                         state := artemis_sum_up_all;
                         historyLoopIdx  := 11;
                         sumAll          := 0;
+                        
+                        -- Squelch open info to the Encoder to inhibit transmission
+                        if ((sumOfRow(0) * 16) >= to_integer(unsigned(decoder_rx09_squelch_lvl))) then
+                            decoder_rx09_sql_open <= '1';
+                        else
+                            decoder_rx09_sql_open <= '0';
+                        end if;
                     end if;
                     
                 when artemis_sum_up_all =>

@@ -47,9 +47,8 @@ architecture Behavioral of tb_UFBmod_Encoder is
     resetn                                          : in  STD_LOGIC;
     clk                                             : in  STD_LOGIC;
     
+    decoder_rx09_sql_open                           : in  STD_LOGIC;
     decoder_rx09_active                             : in  STD_LOGIC;
-    decoder_rx09_squelch_lvl                        : in  STD_LOGIC_VECTOR(18 downto 0);
-    decoder_rx09_noise                              : in  STD_LOGIC_VECTOR(18 downto 0);
     
     encoder_pull_FIFO_dump                          : in  STD_LOGIC;
     encoder_pull_do_start       	                : in  STD_LOGIC;
@@ -70,9 +69,8 @@ architecture Behavioral of tb_UFBmod_Encoder is
   signal tb_clk : STD_LOGIC;
 
 -- STIMULUS
+  signal tb_decoder_rx09_sql_open                   : STD_LOGIC;
   signal tb_decoder_rx09_active                     : STD_LOGIC;
-  signal tb_decoder_rx09_squelch_lvl                : STD_LOGIC_VECTOR(18 downto 0);
-  signal tb_decoder_rx09_noise                      : STD_LOGIC_VECTOR(18 downto 0);
   signal tb_encoder_pull_FIFO_dump                  : STD_LOGIC;
   signal tb_encoder_pull_do_start                   : STD_LOGIC;
   signal tb_encoder_pull_data_len                   : STD_LOGIC_VECTOR( 6 downto 0);
@@ -92,9 +90,8 @@ begin
         resetn                          => tb_resetn,
         clk                             => tb_clk,
         
+        decoder_rx09_sql_open           => tb_decoder_rx09_sql_open,
         decoder_rx09_active             => tb_decoder_rx09_active,
-        decoder_rx09_squelch_lvl        => tb_decoder_rx09_squelch_lvl,
-        decoder_rx09_noise              => tb_decoder_rx09_noise,
         
         encoder_pull_FIFO_dump          => tb_encoder_pull_FIFO_dump,
         encoder_pull_do_start           => tb_encoder_pull_do_start,
@@ -140,10 +137,9 @@ begin
   variable fifo_len                             : Integer;
  
   begin
-    tb_decoder_rx09_squelch_lvl <= std_logic_vector(to_unsigned(300, tb_decoder_rx09_squelch_lvl'length));
-    tb_decoder_rx09_noise       <= std_logic_vector(to_unsigned(100, tb_decoder_rx09_noise'length));
     tb_pulldata_tx09_en_t1      <= '0';
     tb_pulldata_tx09_en_t2      <= '0';
+    tb_decoder_rx09_sql_open    <= '0';
     tb_decoder_rx09_active      <= '0';
     tb_pulldata_tx09_byteData   <= (others => '1');
     tb_encoder_pull_data_len    <= (others => '1');

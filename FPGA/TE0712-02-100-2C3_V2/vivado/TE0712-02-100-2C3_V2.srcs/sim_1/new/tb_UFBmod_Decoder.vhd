@@ -58,6 +58,8 @@ architecture Behavioral of tb_UFBmod_Decoder is
         decoder_rx09_center_pos                     : out STD_LOGIC_VECTOR( 4 downto 0);
         decoder_rx09_strength                       : out STD_LOGIC_VECTOR(18 downto 0);
         decoder_rx09_noise                          : out STD_LOGIC_VECTOR(18 downto 0);
+        decoder_rx09_sql_open                       : out STD_LOGIC;
+        decoder_rx09_active                         : out STD_LOGIC;
     
         pushdata_rx09_en                            : out STD_LOGIC;
         pushdata_rx09_byteData                      : out STD_LOGIC_VECTOR( 7 downto 0)
@@ -83,6 +85,8 @@ architecture Behavioral of tb_UFBmod_Decoder is
   signal tb_decoder_rx09_center_pos                 : STD_LOGIC_VECTOR ( 4 downto 0);
   signal tb_decoder_rx09_strength                   : STD_LOGIC_VECTOR (18 downto 0);
   signal tb_decoder_rx09_noise                      : STD_LOGIC_VECTOR (18 downto 0);
+  signal tb_decoder_rx09_sql_open                   : STD_LOGIC;
+  signal tb_decoder_rx09_active                     : STD_LOGIC;
   signal tb_pushdata_rx09_en                        : STD_LOGIC;
   signal tb_pushdata_rx09_byteData                  : STD_LOGIC_VECTOR ( 7 downto 0);
 begin
@@ -109,6 +113,8 @@ begin
         decoder_rx09_center_pos         => tb_decoder_rx09_center_pos,
         decoder_rx09_strength           => tb_decoder_rx09_strength,
         decoder_rx09_noise              => tb_decoder_rx09_noise,
+        decoder_rx09_sql_open           => tb_decoder_rx09_sql_open,
+        decoder_rx09_active             => tb_decoder_rx09_active,
         
         pushdata_rx09_en                => tb_pushdata_rx09_en,
         pushdata_rx09_byteData          => tb_pushdata_rx09_byteData
