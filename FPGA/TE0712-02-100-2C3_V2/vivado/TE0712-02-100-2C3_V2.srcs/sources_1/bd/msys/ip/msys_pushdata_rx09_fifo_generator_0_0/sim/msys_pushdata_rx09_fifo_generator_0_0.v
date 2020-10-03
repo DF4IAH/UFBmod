@@ -55,20 +55,20 @@
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module msys_pushdata_rx09_fifo_generator_0_0 (
   clk,
-  rst,
+  srst,
   din,
   wr_en,
   rd_en,
   dout,
   full,
   empty,
-  prog_empty
+  data_count
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME core_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0, CLK_DOMAIN msys_mig_7series_0_0_ui_clk, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 core_clk CLK" *)
 input wire clk;
-input wire rst;
+input wire srst;
 (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *)
 input wire [7 : 0] din;
 (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *)
@@ -81,7 +81,7 @@ output wire [7 : 0] dout;
 output wire full;
 (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *)
 output wire empty;
-output wire prog_empty;
+output wire [11 : 0] data_count;
 
   fifo_generator_v13_2_5 #(
     .C_COMMON_CLOCK(1),
@@ -98,22 +98,22 @@ output wire prog_empty;
     .C_HAS_ALMOST_EMPTY(0),
     .C_HAS_ALMOST_FULL(0),
     .C_HAS_BACKUP(0),
-    .C_HAS_DATA_COUNT(0),
+    .C_HAS_DATA_COUNT(1),
     .C_HAS_INT_CLK(0),
     .C_HAS_MEMINIT_FILE(0),
     .C_HAS_OVERFLOW(0),
     .C_HAS_RD_DATA_COUNT(0),
     .C_HAS_RD_RST(0),
-    .C_HAS_RST(1),
-    .C_HAS_SRST(0),
+    .C_HAS_RST(0),
+    .C_HAS_SRST(1),
     .C_HAS_UNDERFLOW(0),
     .C_HAS_VALID(0),
     .C_HAS_WR_ACK(0),
     .C_HAS_WR_DATA_COUNT(0),
     .C_HAS_WR_RST(0),
-    .C_IMPLEMENTATION_TYPE(6),
+    .C_IMPLEMENTATION_TYPE(0),
     .C_INIT_WR_PNTR_VAL(0),
-    .C_MEMORY_TYPE(4),
+    .C_MEMORY_TYPE(1),
     .C_MIF_FILE_NAME("BlankString"),
     .C_OPTIMIZATION_MODE(0),
     .C_OVERFLOW_LOW(0),
@@ -122,7 +122,7 @@ output wire prog_empty;
     .C_PRIM_FIFO_TYPE("4kx9"),
     .C_PROG_EMPTY_THRESH_ASSERT_VAL(2),
     .C_PROG_EMPTY_THRESH_NEGATE_VAL(3),
-    .C_PROG_EMPTY_TYPE(1),
+    .C_PROG_EMPTY_TYPE(0),
     .C_PROG_FULL_THRESH_ASSERT_VAL(4094),
     .C_PROG_FULL_THRESH_NEGATE_VAL(4093),
     .C_PROG_FULL_TYPE(0),
@@ -290,8 +290,8 @@ output wire prog_empty;
     .backup(1'D0),
     .backup_marker(1'D0),
     .clk(clk),
-    .rst(rst),
-    .srst(1'D0),
+    .rst(1'D0),
+    .srst(srst),
     .wr_clk(1'D0),
     .wr_rst(1'D0),
     .rd_clk(1'D0),
@@ -318,11 +318,11 @@ output wire prog_empty;
     .almost_empty(),
     .valid(),
     .underflow(),
-    .data_count(),
+    .data_count(data_count),
     .rd_data_count(),
     .wr_data_count(),
     .prog_full(),
-    .prog_empty(prog_empty),
+    .prog_empty(),
     .sbiterr(),
     .dbiterr(),
     .wr_rst_busy(),

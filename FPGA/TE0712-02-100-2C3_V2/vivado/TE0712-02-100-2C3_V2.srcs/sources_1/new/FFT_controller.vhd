@@ -39,7 +39,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity FFT_controller is
   Port (
     -- All Clock Domain AXI 100 MHz
-    resetn                      : in  STD_LOGIC;
+    reset                       : in  STD_LOGIC;
     clk                         : in  STD_LOGIC;
     
     rx09_bs_32bits              : in  STD_LOGIC_VECTOR (31 downto 0);
@@ -104,11 +104,11 @@ begin
 --PreMem24_dina <= rx24_bs_32bits(13 downto  1) & rx24_bs_32bits(29 downto 17);
   
   -- PreMem09 In - Addr
-  proc_PreMem09_in_Addr: process (resetn, clk, rx09_bs_32bits_vld)
+  proc_PreMem09_in_Addr: process (reset, clk, rx09_bs_32bits_vld)
   variable cnt09 : Integer;
   begin
     if (clk'EVENT and clk = '1') then
-        if (resetn = '0') then
+        if (reset = '1') then
             cnt09 := 0;
             PreMem09_addra_r            <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra_r'length));
             PreMem09_addra              <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra'length));
@@ -167,7 +167,7 @@ begin
   
   
   -- PreMem 09 Out - FFT feeder
-  proc_PreMem09_out_FFT: process (resetn, clk, PreMem09_addra_r)
+  proc_PreMem09_out_FFT: process (reset, clk, PreMem09_addra_r)
   variable fsm09_fft_subidx         : Integer;
   variable fsm09_fft_addr           : Integer;
   variable fsm09_fft_trigger        : Integer;
@@ -175,7 +175,7 @@ begin
   variable fsm09_fft_loop_cycle     : Integer;
   begin
     if (clk'EVENT and clk = '1') then
-        if (resetn = '0') then
+        if (reset = '1') then
             PreMem09_addrb              <= (others => '0');
             FFT_window_coef_rom_rx09    <= (others => '0');
             XFFT09_s_data_tlast_r       <= (others => '0');

@@ -47,6 +47,7 @@ extern unsigned int iicReadAndModify(UINTPTR baseAddr, u8 iicChipAddr, u8 iicReg
 extern void pwmLedSet(u32 enableBF, u32 changeMsk);
 
 extern void taskTrx(void* pvParameters);
+extern void taskTrxRxMsg(void* pvParameters);
 
 extern void emacLitePhyDelay(unsigned int seconds);
 extern u32 emacLitePhyDetect(XEmacLite* instancePtr);

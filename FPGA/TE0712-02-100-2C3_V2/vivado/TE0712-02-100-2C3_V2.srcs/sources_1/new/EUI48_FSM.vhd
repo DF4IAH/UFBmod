@@ -38,7 +38,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity EUI48_FSM is
   Port ( 
-    resetn                  : in  STD_LOGIC;
+    reset                   : in  STD_LOGIC;
     clk                     : in  STD_LOGIC;
     EUI48_onewire_tri_i     : in  STD_LOGIC;
     EUI48_onewire_tri_o     : out STD_LOGIC;
@@ -62,11 +62,11 @@ signal byteMakShift_r       : STD_LOGIC_VECTOR ( 8 downto 0);
 signal EUI48_data_r         : STD_LOGIC_VECTOR (47 downto 0);
 begin
     -- Counter for OneWire clock of 50 us
-    proc_clock: process (resetn, clk)
+    proc_clock: process (reset, clk)
     variable counter        : Integer;
     begin
         if (clk'EVENT and clk = '1') then
-            if (resetn = '0') then
+            if (reset = '1') then
                 counter := 0;
                 ow_clk_0_of_4 <= '0';
                 ow_clk_1_of_4 <= '0';
@@ -97,13 +97,13 @@ begin
 
 
     -- FSM
-    proc_fsm: process (resetn, clk, EUI48_FSM_start, EUI48_onewire_tri_i)
+    proc_fsm: process (reset, clk, EUI48_FSM_start, EUI48_onewire_tri_i)
     variable state          : Integer;
     variable ctrBit         : Integer;
     variable ctrByte        : Integer;
     begin
         if (clk'EVENT and clk = '1') then
-            if (resetn = '0') then
+            if (reset = '1') then
                 state               := 2;
                 ctrBit              := 0;
                 ctrByte             := 0;

@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="pwr_dBm" key="selection"/>
+		<item value="gpio_TRX_CONFIG" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="pwr_dBm"/>
-			<item value="TestRF09Tx"/>
-			<item value="TrxStateRF09Get"/>
-			<item value="RF09Get done"/>
-			<item value="GREEN"/>
-			<item value="RED"/>
-			<item value="TestRF09Rx"/>
-			<item value="RFX"/>
-			<item value="CF"/>
-			<item value="dcoI"/>
-			<item value="TrxFreqSet"/>
-			<item value="1V2"/>
-			<item value="V2"/>
-			<item value="CMV"/>
-			<item value="TXCUT"/>
+			<item value="gpio_TRX_CONFIG"/>
+			<item value="LVDS"/>
+			<item value="squelch"/>
+			<item value="GPIO"/>
+			<item value="gpio_TRX_PUSHDATA"/>
+			<item value="gpio_TRX_AMPT"/>
+			<item value="XPAR_TRX_TRX_CONFIG_AXI_TRX_GPIO_0_DEVICE_ID"/>
+			<item value="XPAR_TRX_TRX_RX_FFT_UNIT_PUSHDATA_PUSHDATA_RX09_AXI_GPIO_0_DEVICE_ID"/>
+			<item value="XPAR_TRX_TRX_TX_DDS_UNIT_TRX_TX_DDS_INC_AXI_GPIO_0_DEVICE_ID"/>
+			<item value="XPAR_TRX_TRX_TX_DDS_UNIT_TRX_TX_DDS_AMPT_AXI_GPIO_0_DEVICE_ID"/>
+			<item value="random"/>
+			<item value="squel"/>
+			<item value="Yellow"/>
+			<item value="taskTrxRxMsg"/>
+			<item value="PULLDATA"/>
 		</list>
 		<list key="replacehistory">
 		</list>
@@ -31,7 +31,7 @@
 		<item value="277" key="DIALOG_WIDTH"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<item value="370" key="DIALOG_HEIGHT"/>
-		<item value="1650" key="DIALOG_X_ORIGIN"/>
-		<item value="184" key="DIALOG_Y_ORIGIN"/>
+		<item value="1882" key="DIALOG_X_ORIGIN"/>
+		<item value="401" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

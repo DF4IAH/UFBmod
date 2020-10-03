@@ -38,7 +38,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity auto_LVDS_rotate is
   Port (
-    resetn              : in  STD_LOGIC;
+    reset               : in  STD_LOGIC;
     clk                 : in  STD_LOGIC;
     LVDS09              : in  STD_LOGIC_VECTOR (31 downto 0);
     LVDS09_valid        : in  STD_LOGIC;
@@ -100,10 +100,10 @@ begin
 
 
   -- FSM-inbox-09
-  proc_fsm_inbox09: process (resetn, clk, LVDS09_valid, inb_lock09)
+  proc_fsm_inbox09: process (reset, clk, LVDS09_valid, inb_lock09)
   begin
     if (clk'EVENT and clk = '1') then
-        if (resetn = '0') then
+        if (reset = '1') then
             inb09_in_r  <= (others => '0');
             inb09_out_r <= (others => '0');
             inb09_rdy   <= '0';
@@ -126,10 +126,10 @@ begin
   end process proc_fsm_inbox09;
 
   -- FSM-inbox-24
-  proc_fsm_inbox24: process (resetn, clk, LVDS24_valid, inb_lock24)
+  proc_fsm_inbox24: process (reset, clk, LVDS24_valid, inb_lock24)
   begin
     if (clk'EVENT and clk = '1') then
-        if (resetn = '0') then
+        if (reset = '1') then
             inb24_in_r  <= (others => '0');
             inb24_out_r <= (others => '0');
             inb24_rdy   <= '0';
@@ -152,13 +152,13 @@ begin
   end process proc_fsm_inbox24;
 
   -- FSM barrel
-  proc_fsm_brl: process (resetn, clk, inb09_rdy, inb24_rdy, mrkok)
+  proc_fsm_brl: process (reset, clk, inb09_rdy, inb24_rdy, mrkok)
   variable rotval09_int : Integer;
   variable rotval24_int : Integer;
   variable state        : Integer;
   begin
     if (clk'EVENT and clk = '1') then
-        if (resetn = '0') then
+        if (reset = '1') then
           rotval09_int      := 0;
           rotval24_int      := 0;
           inb_lock09        <= '0';
@@ -249,9 +249,9 @@ begin
   end process proc_fsm_brl;
 
   -- Marker bits
-  proc_markers: process (resetn, rot_out)
+  proc_markers: process (reset, rot_out)
   begin
-    if (resetn = '0') then
+    if (reset = '1') then
         mrkok <= '0';
       
     else
@@ -264,10 +264,10 @@ begin
   end process proc_markers;
 
   -- FSM-outbox-09
-  proc_fsm_outbox09: process (resetn, clk, inb_lock09, inb_lock09d)
+  proc_fsm_outbox09: process (reset, clk, inb_lock09, inb_lock09d)
   begin
     if (clk'EVENT and clk = '1') then
-        if (resetn = '0') then
+        if (reset = '1') then
             rot09vld <= '0';
 
         else
@@ -281,10 +281,10 @@ begin
   end process proc_fsm_outbox09;
 
   -- FSM-outbox-24
-  proc_fsm_outbox24: process (resetn, clk, inb_lock24, inb_lock24d)
+  proc_fsm_outbox24: process (reset, clk, inb_lock24, inb_lock24d)
   begin
     if (clk'EVENT and clk = '1') then
-        if (resetn = '0') then
+        if (reset = '1') then
             rot24vld <= '0';
           
         else

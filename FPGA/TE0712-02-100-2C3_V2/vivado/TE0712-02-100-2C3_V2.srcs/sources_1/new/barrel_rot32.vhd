@@ -37,11 +37,12 @@ use IEEE.NUMERIC_STD.ALL;
 
 
 entity barrel_rot32 is
-    Port ( clk : in STD_LOGIC;
-           rot : in STD_LOGIC_VECTOR (4 downto 0);
-           d : in STD_LOGIC_VECTOR (31 downto 0);
-           q : out STD_LOGIC_VECTOR (31 downto 0)
-    );
+  Port ( 
+    clk         : in STD_LOGIC;
+    rot         : in STD_LOGIC_VECTOR (4 downto 0);
+    d           : in STD_LOGIC_VECTOR (31 downto 0);
+    q           : out STD_LOGIC_VECTOR (31 downto 0)
+  );
 end barrel_rot32;
 
 architecture Behavioral of barrel_rot32 is

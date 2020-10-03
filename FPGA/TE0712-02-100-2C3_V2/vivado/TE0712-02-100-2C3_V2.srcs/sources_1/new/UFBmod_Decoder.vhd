@@ -38,7 +38,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity UFBmod_Decoder is
   Port (
     -- All Clock Domain AXI 100 MHz
-    resetn                                          : in  STD_LOGIC;
+    reset                                           : in  STD_LOGIC;
     clk                                             : in  STD_LOGIC;
     
     post_fft_rx09_mem_a_EoT                         : in  STD_LOGIC;
@@ -55,6 +55,8 @@ entity UFBmod_Decoder is
     decoder_rx09_sql_open                           : out STD_LOGIC;
     decoder_rx09_active                             : out STD_LOGIC;
     
+    dds_tx09_ptt                                    : in  STD_LOGIC;
+    
     pushdata_rx09_en                                : out STD_LOGIC;
     pushdata_rx09_byteData                          : out STD_LOGIC_VECTOR( 7 downto 0)
   );
@@ -68,7 +70,7 @@ architecture Behavioral of UFBmod_Decoder is
 begin
   
   -- UFBmod decoder for the RF09 receiver
-  proc_UFBmod_Decoder_rx09: process (resetn, clk, post_fft_rx09_mem_a_addr)
+  proc_UFBmod_Decoder_rx09: process (reset, clk, post_fft_rx09_mem_a_addr)
     constant C_pre_r0                               : Integer :=  +7;
     constant C_pre_r1                               : Integer := - 9;
     constant C_pre_r2                               : Integer := +13;
@@ -147,6 +149,7 @@ begin
     variable preambleMaxPos                         : Integer;
     
     variable initialLoopIdx                         : Integer;
+    variable watchdogIdx                            : Integer;
     variable historyLoopIdx                         : Integer;
     variable fftLoopIdx                             : Integer;
     
@@ -202,7 +205,7 @@ begin
     variable loopCnt                                : Integer;
   begin
     if (clk'EVENT and clk = '1') then
-        if (resetn = '0') then
+        if ((reset = '1') or (dds_tx09_ptt = '1')) then
             post_fft_rx09_mem_b_addr_Int            := 0;
             post_fft_rx09_mem_b_complete_addr       <= (others => '0');
             post_fft_rx09_mem_b_addr                <= (others => '0');
@@ -270,6 +273,7 @@ begin
             decoder_fff_val                         := 0;
             
             initialLoopIdx                          := 0;
+            watchdogIdx                             := 0;
             loopCnt                                 := 0;
             
             pushdata_rx09_en                        <= '0';
@@ -322,6 +326,8 @@ begin
                         sumPreambleRow(ii)          := 0;
                     end loop;
                     
+                    watchdogIdx                     := 65000;   -- Max one quarterframe +1 us later
+                    
                     state := wait_until_post_fft_done;
                     
                 -- Wait until the FFT / Cordic post-transfer is complete
@@ -331,6 +337,15 @@ begin
                         
                         -- RAM Loop init
                         post_fft_rx09_mem_b_addr_Int := 0;
+                        
+                    else
+                        if (watchdogIdx /= 0) then
+                            watchdogIdx := watchdogIdx - 1;
+                        else
+                            -- Allow transmitter to ramp-up also when no RX LVDS data is available
+                            decoder_rx09_sql_open   <= '0';
+                            decoder_rx09_active     <= '0';
+                        end if;
                     end if;
                     
                 when read_in_loop =>
@@ -398,7 +413,7 @@ begin
                         sumAll          := 0;
                         
                         -- Squelch open info to the Encoder to inhibit transmission
-                        if ((sumOfRow(0) * 16) >= to_integer(unsigned(decoder_rx09_squelch_lvl))) then
+                        if ((sumOfRow(0) * 8) > to_integer(unsigned(decoder_rx09_squelch_lvl))) then
                             decoder_rx09_sql_open <= '1';
                         else
                             decoder_rx09_sql_open <= '0';

@@ -62,7 +62,7 @@ ENTITY msys_TRX_tx_dds_compiler_0_0 IS
     aclken : IN STD_LOGIC;
     aresetn : IN STD_LOGIC;
     s_axis_config_tvalid : IN STD_LOGIC;
-    s_axis_config_tdata : IN STD_LOGIC_VECTOR(23 DOWNTO 0);
+    s_axis_config_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     m_axis_data_tvalid : OUT STD_LOGIC;
     m_axis_data_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
@@ -132,7 +132,7 @@ ARCHITECTURE msys_TRX_tx_dds_compiler_0_0_arch OF msys_TRX_tx_dds_compiler_0_0 I
       s_axis_phase_tuser : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       s_axis_config_tvalid : IN STD_LOGIC;
       s_axis_config_tready : OUT STD_LOGIC;
-      s_axis_config_tdata : IN STD_LOGIC_VECTOR(23 DOWNTO 0);
+      s_axis_config_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       s_axis_config_tlast : IN STD_LOGIC;
       m_axis_data_tvalid : OUT STD_LOGIC;
       m_axis_data_tready : IN STD_LOGIC;
@@ -168,7 +168,7 @@ ARCHITECTURE msys_TRX_tx_dds_compiler_0_0_arch OF msys_TRX_tx_dds_compiler_0_0 I
 "d format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_width format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_offset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TVALID";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_config_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CONFIG TDATA";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_config_tvalid: SIGNAL IS "XIL_INTERFACENAME S_AXIS_CONFIG, TDATA_NUM_BYTES 3, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 16000000, PHASE 0.000, CLK_DOMAIN msys_selectio_wiz_0_1_clk_div_out, LAYERED_METADATA undef, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_config_tvalid: SIGNAL IS "XIL_INTERFACENAME S_AXIS_CONFIG, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 16000000, PHASE 0.000, CLK_DOMAIN msys_selectio_wiz_0_1_clk_div_out, LAYERED_METADATA undef, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_config_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CONFIG TVALID";
   ATTRIBUTE X_INTERFACE_PARAMETER OF aresetn: SIGNAL IS "XIL_INTERFACENAME aresetn_intf, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF aresetn: SIGNAL IS "xilinx.com:signal:reset:1.0 aresetn_intf RST";
@@ -182,7 +182,7 @@ BEGIN
       C_XDEVICEFAMILY => "artix7",
       C_MODE_OF_OPERATION => 0,
       C_MODULUS => 9,
-      C_ACCUMULATOR_WIDTH => 24,
+      C_ACCUMULATOR_WIDTH => 32,
       C_CHANNELS => 1,
       C_HAS_PHASE_OUT => 0,
       C_HAS_PHASEGEN => 1,
@@ -215,7 +215,7 @@ BEGIN
       C_S_PHASE_TUSER_WIDTH => 1,
       C_HAS_S_CONFIG => 1,
       C_S_CONFIG_SYNC_MODE => 0,
-      C_S_CONFIG_TDATA_WIDTH => 24,
+      C_S_CONFIG_TDATA_WIDTH => 32,
       C_HAS_M_DATA => 1,
       C_M_DATA_TDATA_WIDTH => 32,
       C_M_DATA_HAS_TUSER => 0,

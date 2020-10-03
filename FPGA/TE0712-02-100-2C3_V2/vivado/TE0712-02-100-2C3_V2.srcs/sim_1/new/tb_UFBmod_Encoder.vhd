@@ -80,7 +80,6 @@ architecture Behavioral of tb_UFBmod_Encoder is
   signal tb_dds_tx09_ptt                            : STD_LOGIC;
   
   signal tb_pulldata_tx09_en_t1                     : STD_LOGIC;
-  signal tb_pulldata_tx09_en_t2                     : STD_LOGIC;
   
 begin
 
@@ -138,7 +137,6 @@ begin
  
   begin
     tb_pulldata_tx09_en_t1      <= '0';
-    tb_pulldata_tx09_en_t2      <= '0';
     tb_decoder_rx09_sql_open    <= '0';
     tb_decoder_rx09_active      <= '0';
     tb_pulldata_tx09_byteData   <= (others => '1');
@@ -177,7 +175,7 @@ begin
         wait until tb_clk'event and tb_clk = '1';
         tb_encoder_pull_do_start    <= '0';
         
-        if (tb_pulldata_tx09_en_t2 = '1') then
+        if (tb_pulldata_tx09_en_t1 = '1') then
             if (fifo_len /= 0) then
                 fifo_len := fifo_len - 1;
                 
@@ -196,7 +194,6 @@ begin
             end if;
         end if;
         
-        tb_pulldata_tx09_en_t2      <= tb_pulldata_tx09_en_t1;
         tb_pulldata_tx09_en_t1      <= tb_pulldata_tx09_en;
     end loop;
   end process proc_fifo;

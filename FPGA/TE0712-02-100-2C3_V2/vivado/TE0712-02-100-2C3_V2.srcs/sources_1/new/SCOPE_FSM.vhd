@@ -38,7 +38,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity SCOPE_FSM is
   Port ( 
-    resetn                      : in  STD_LOGIC;
+    reset                       : in  STD_LOGIC;
     clk                         : in  STD_LOGIC;
     SCOPE_FSM_GPIO0_Out         : in  STD_LOGIC_VECTOR (31 downto 0);
     SCOPE_FSM_GPIO1_In          : out STD_LOGIC_VECTOR (31 downto 0);
@@ -72,14 +72,14 @@ architecture Behavioral of SCOPE_FSM is
 begin
 
   -- FSM
-  proc_fsm: process (resetn, clk)
+  proc_fsm: process (reset, clk)
     type state_type is (off, init, waitRdy, ready, run, trig, trigTmr, stop, pop1, pop2);
     
     variable state          : state_type;
     variable trgSrc         : Integer;
   begin
     if (clk'EVENT and clk = '1') then
-        if (resetn = '0') then
+        if (reset = '1') then
             FSM_state_dbg <= x"ff";
             state                   := off;
             ctr                     <= (others => '0');

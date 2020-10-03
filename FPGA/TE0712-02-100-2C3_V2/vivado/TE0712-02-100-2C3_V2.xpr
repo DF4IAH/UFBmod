@@ -41,20 +41,20 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="te0712_100_2c"/>
-    <Option Name="WTXSimLaunchSim" Val="647"/>
+    <Option Name="WTXSimLaunchSim" Val="650"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="225"/>
-    <Option Name="WTModelSimExportSim" Val="225"/>
-    <Option Name="WTQuestaExportSim" Val="224"/>
-    <Option Name="WTIesExportSim" Val="224"/>
-    <Option Name="WTVcsExportSim" Val="224"/>
-    <Option Name="WTRivieraExportSim" Val="224"/>
-    <Option Name="WTActivehdlExportSim" Val="224"/>
+    <Option Name="WTXSimExportSim" Val="234"/>
+    <Option Name="WTModelSimExportSim" Val="234"/>
+    <Option Name="WTQuestaExportSim" Val="233"/>
+    <Option Name="WTIesExportSim" Val="233"/>
+    <Option Name="WTVcsExportSim" Val="233"/>
+    <Option Name="WTRivieraExportSim" Val="233"/>
+    <Option Name="WTActivehdlExportSim" Val="233"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -322,7 +322,6 @@
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
         <Option Name="SelectedSimModel" Val="rtl"/>
-        <Option Name="SimMode" Val="post-implementation"/>
         <Option Name="PamDesignTestbench" Val=""/>
         <Option Name="PamDutBypassFile" Val="xil_dut_bypass"/>
         <Option Name="PamSignalDriverFile" Val="xil_bypass_driver"/>
@@ -339,24 +338,6 @@
     </FileSet>
     <FileSet Name="utils_1" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
       <Filter Type="Utils"/>
-      <File Path="$PSRCDIR/utils_1/imports/synth_1/msys_wrapper.dcp">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PRUNDIR/synth_1/msys_wrapper.dcp"/>
-          <Attr Name="ImportTime" Val="1589537310"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="AutoDcp" Val="1"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/utils_1/imports/impl_1/msys_wrapper_routed.dcp">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PRUNDIR/impl_1/msys_wrapper_routed.dcp"/>
-          <Attr Name="ImportTime" Val="1589531804"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="AutoDcp" Val="1"/>
-        </FileInfo>
-      </File>
       <Config>
         <Option Name="TopAutoSet" Val="TRUE"/>
       </Config>
@@ -386,11 +367,11 @@
         <StratHandle Name="Flow_PerfOptimized_high" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design">
           <Option Id="ResourceSharing">2</Option>
-          <Option Id="ShregMinSize">5</Option>
-          <Option Id="Directive">7</Option>
-          <Option Id="KeepEquivalentRegisters">1</Option>
-          <Option Id="FsmExtraction">1</Option>
           <Option Id="NoCombineLuts">1</Option>
+          <Option Id="Directive">7</Option>
+          <Option Id="ShregMinSize">5</Option>
+          <Option Id="FsmExtraction">1</Option>
+          <Option Id="KeepEquivalentRegisters">1</Option>
         </Step>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>

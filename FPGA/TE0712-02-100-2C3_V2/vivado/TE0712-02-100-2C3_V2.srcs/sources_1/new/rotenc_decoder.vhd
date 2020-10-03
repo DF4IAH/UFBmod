@@ -39,12 +39,14 @@ use IEEE.NUMERIC_STD.ALL;
 
 
 entity rotenc_decoder is
-    Port ( clk : in STD_LOGIC;
-           resetn : in STD_LOGIC;
-           rotenc_I : in STD_LOGIC;
-           rotenc_Q : in STD_LOGIC;
-           cnt_up_dwn : out STD_LOGIC;
-           cnt_en : out STD_LOGIC);
+  Port ( 
+    clk             : in STD_LOGIC;
+    reset           : in STD_LOGIC;
+    rotenc_I        : in STD_LOGIC;
+    rotenc_Q        : in STD_LOGIC;
+    cnt_up_dwn      : out STD_LOGIC;
+    cnt_en          : out STD_LOGIC
+  );
 end rotenc_decoder;
 
 architecture Behavioral of rotenc_decoder is
@@ -52,10 +54,10 @@ architecture Behavioral of rotenc_decoder is
     signal rotenc_Q_d1 : STD_LOGIC;
     signal cnt_en_pre : STD_LOGIC;
 begin
-    process (resetn, clk)
+    process (reset, clk)
     begin
         if (clk'EVENT and clk = '1') then
-            if (resetn = '0') then
+            if (reset = '1') then
                 rotenc_I_d1 <= '0';
                 rotenc_Q_d1 <= '0';
                 cnt_en_pre <= '0';

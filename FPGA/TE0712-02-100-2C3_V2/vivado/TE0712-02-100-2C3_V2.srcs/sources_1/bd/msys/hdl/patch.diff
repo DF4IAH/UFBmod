@@ -1,5 +1,5 @@
---- msys_wrapper.vhd.orig.txt	2020-09-30 14:08:04.631814200 +0200
-+++ msys_wrapper.vhd	2020-09-30 14:40:13.551805700 +0200
+--- msys_wrapper.vhd.orig.txt	2020-10-02 18:30:38.983405100 +0200
++++ msys_wrapper.vhd	2020-10-02 18:38:31.097291600 +0200
 @@ -16,4 +16,6 @@
      BOARD_IIC_scl_io : inout STD_LOGIC;
      BOARD_IIC_sda_io : inout STD_LOGIC;
@@ -60,13 +60,15 @@
 -    TRX_rx24_fifo_valid_o : out STD_LOGIC;
      TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
      TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
-@@ -114,32 +91,5 @@
+@@ -114,35 +91,5 @@
      ULI_SYSTEM_XIO : in STD_LOGIC;
      USER_dbg_out : out STD_LOGIC_VECTOR ( 13 downto 0 );
--    dds_tx09_inc : in STD_LOGIC_VECTOR ( 23 downto 0 );
+-    dds_tx09_inc : in STD_LOGIC_VECTOR ( 25 downto 0 );
 -    dds_tx09_ptt : in STD_LOGIC;
+-    decoder_rx09_active : in STD_LOGIC;
 -    decoder_rx09_center_pos : in STD_LOGIC_VECTOR ( 4 downto 0 );
 -    decoder_rx09_noise : in STD_LOGIC_VECTOR ( 18 downto 0 );
+-    decoder_rx09_sql_open : in STD_LOGIC;
 -    decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 18 downto 0 );
 -    decoder_rx09_strength : in STD_LOGIC_VECTOR ( 18 downto 0 );
 -    encoder_pull_FIFO_dump : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -78,6 +80,7 @@
 -    fft09_data_tready_out : out STD_LOGIC;
 -    fft09_data_tvalid_in : in STD_LOGIC;
 -    microblaze_0_Clk_100MHz_o : out STD_LOGIC;
+-    mig_7series_0_ui_clk_sync_rst : out STD_LOGIC;
      phy_rst_n : out STD_LOGIC;
 -    post_fft_rx09_mem_a_EoT : out STD_LOGIC;
 -    post_fft_rx09_mem_a_addr : out STD_LOGIC_VECTOR ( 41 downto 0 );
@@ -93,23 +96,22 @@
 -    pushdata_rx09_en : in STD_LOGIC;
      qspi_flash_io0_io : inout STD_LOGIC;
      qspi_flash_io1_io : inout STD_LOGIC;
-@@ -147,8 +97,5 @@
+@@ -150,7 +97,5 @@
      qspi_flash_io3_io : inout STD_LOGIC;
      qspi_flash_ss_io : inout STD_LOGIC;
 -    reset : in STD_LOGIC;
 -    rotenc_dec_cnt_en : in STD_LOGIC;
--    rotenc_dec_cnt_up_dwn : in STD_LOGIC;
--    rst_100M_peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
+-    rotenc_dec_cnt_up_dwn : in STD_LOGIC
 +    reset : in STD_LOGIC
    );
  end msys_wrapper;
-@@ -328,4 +275,141 @@
+@@ -332,4 +277,141 @@
    );
    end component IOBUF;
 +  component rotenc_decoder is
 +  port (
 +    clk                 : in STD_LOGIC;
-+    resetn              : in STD_LOGIC;
++    reset               : in STD_LOGIC;
 +    rotenc_I            : in STD_LOGIC;
 +    rotenc_Q            : in STD_LOGIC;
 +    cnt_up_dwn          : out STD_LOGIC;
@@ -118,7 +120,7 @@
 +  end component rotenc_decoder;
 +  component auto_LVDS_rotate is
 +  port (
-+    resetn              : in  STD_LOGIC;
++    reset               : in  STD_LOGIC;
 +    clk                 : in  STD_LOGIC;
 +    LVDS09              : in  STD_LOGIC_VECTOR (31 downto 0);
 +    LVDS09_valid        : in  STD_LOGIC;
@@ -135,7 +137,7 @@
 +  component FFT_controller is
 +  port (
 +    -- All Clock Domain AXI 100 MHz
-+    resetn                      : in  STD_LOGIC;
++    reset                       : in  STD_LOGIC;
 +    clk                         : in  STD_LOGIC;
 +
 +    rx09_bs_32bits              : in  STD_LOGIC_VECTOR (31 downto 0);
@@ -180,7 +182,7 @@
 +  end component FFT_controller;
 +  component EUI48_FSM is 
 +  port (
-+    resetn                  : in  STD_LOGIC;
++    reset                   : in  STD_LOGIC;
 +    clk                     : in  STD_LOGIC;
 +    EUI48_onewire_tri_i     : in  STD_LOGIC;
 +    EUI48_onewire_tri_o     : out STD_LOGIC;
@@ -194,7 +196,7 @@
 +  end component EUI48_FSM;
 +  component UFBmod_Decoder is
 +  port (
-+    resetn                                          : in  STD_LOGIC;
++    reset                                           : in  STD_LOGIC;
 +    clk                                             : in  STD_LOGIC;
 +    post_fft_rx09_mem_a_EoT                         : in  STD_LOGIC;
 +    post_fft_rx09_mem_a_addr                        : in  STD_LOGIC_VECTOR(41 downto 0);
@@ -212,7 +214,7 @@
 +  end component UFBmod_Decoder;
 +  component UFBmod_Encoder is
 +  port (
-+    resetn                                          : in  STD_LOGIC;
++    reset                                           : in  STD_LOGIC;
 +    clk                                             : in  STD_LOGIC;
 +    decoder_rx09_sql_open                           : in  STD_LOGIC;
 +    decoder_rx09_active                             : in  STD_LOGIC;
@@ -221,13 +223,13 @@
 +    encoder_pull_data_len                           : in  STD_LOGIC_VECTOR( 6 downto 0);
 +    pulldata_tx09_en                                : out STD_LOGIC;
 +    pulldata_tx09_byteData                          : in  STD_LOGIC_VECTOR( 7 downto 0);
-+    dds_tx09_inc                                    : out STD_LOGIC_VECTOR(23 downto 0);
++    dds_tx09_inc                                    : out STD_LOGIC_VECTOR(25 downto 0);
 +    dds_tx09_ptt                                    : out STD_LOGIC
 +  );
 +  end component UFBmod_Encoder;
 +  component SCOPE_FSM is
 +  Port (
-+    resetn                      : in  STD_LOGIC;
++    reset                       : in  STD_LOGIC;
 +    clk                         : in  STD_LOGIC;
 +    SCOPE_FSM_GPIO0_Out         : in  STD_LOGIC_VECTOR (31 downto 0);
 +    SCOPE_FSM_GPIO1_In          : out STD_LOGIC_VECTOR (31 downto 0);
@@ -245,7 +247,7 @@
 +  end component SCOPE_FSM;
    signal BOARD_IIC_scl_i : STD_LOGIC;
    signal BOARD_IIC_scl_o : STD_LOGIC;
-@@ -334,7 +418,10 @@
+@@ -338,7 +420,10 @@
    signal BOARD_IIC_sda_o : STD_LOGIC;
    signal BOARD_IIC_sda_t : STD_LOGIC;
 +  signal ETH0_LINK_LED_g : STD_LOGIC;
@@ -256,7 +258,7 @@
 +  signal mw_LVDS_rx24_synced : STD_LOGIC;
    signal TRX_spi_io0_i : STD_LOGIC;
    signal TRX_spi_io0_o : STD_LOGIC;
-@@ -350,4 +437,86 @@
+@@ -354,4 +439,86 @@
    signal TRX_spi_ss_o_0 : STD_LOGIC_VECTOR ( 0 to 0 );
    signal TRX_spi_ss_t : STD_LOGIC;
 +  signal mw_decoder_rx09_sql_open : STD_LOGIC;
@@ -266,7 +268,7 @@
 +  signal mw_decoder_rx09_squelch_lvl : STD_LOGIC_VECTOR ( 18 downto 0 );
 +  signal mw_decoder_rx09_strength : STD_LOGIC_VECTOR ( 18 downto 0 );
 +  signal mw_microblaze_0_Clk_100MHz : STD_LOGIC;
-+  signal mw_rst_100M_peripheral_aresetn : STD_LOGIC;
++  signal mw_mig_7series_0_ui_clk_sync_rst : STD_LOGIC;
 +  signal mw_EUI48_FSM_start : STD_LOGIC;
 +  signal mw_EUI48_FSM_run : STD_LOGIC;
 +  signal mw_EUI48_data : STD_LOGIC_VECTOR ( 47 downto 0 );
@@ -293,7 +295,7 @@
 +--signal mw_premem_rx24_dina_in : STD_LOGIC_VECTOR ( 25 downto 0 );
 +--signal mw_premem_rx24_addrb_in : STD_LOGIC_VECTOR ( 10 downto 0 );
 +--signal mw_premem_rx24_quarterfrm_in : STD_LOGIC_VECTOR ( 2 downto 0 );
-+  signal mw_dds_tx09_inc : STD_LOGIC_VECTOR ( 23 downto 0 );
++  signal mw_dds_tx09_inc : STD_LOGIC_VECTOR ( 25 downto 0 );
 +  signal mw_dds_tx09_ptt : STD_LOGIC;
 +  signal mw_encoder_pull_FIFO_dump : STD_LOGIC;
 +  signal mw_encoder_pull_data_len : STD_LOGIC_VECTOR ( 6 downto 0 );
@@ -343,7 +345,7 @@
 +  signal mw_SCOPE_FSM_FIFO_wr_rst_busy : STD_LOGIC;
    signal qspi_flash_io0_i : STD_LOGIC;
    signal qspi_flash_io0_o : STD_LOGIC;
-@@ -366,4 +535,9 @@
+@@ -370,4 +537,9 @@
    signal qspi_flash_ss_t : STD_LOGIC;
  begin
 +ETH0_LINK_LED_0: component IBUF
@@ -353,7 +355,7 @@
 +    );
  BOARD_IIC_scl_iobuf: component IOBUF
       port map (
-@@ -415,4 +589,136 @@
+@@ -419,4 +591,136 @@
        T => TRX_spi_ss_t
      );
 +EUI_onewire_iobuf_0: component IOBUF
@@ -365,7 +367,7 @@
 +    );
 +rotenc_decoder_i: component rotenc_decoder
 +     port map (
-+      resetn            => mw_rst_100M_peripheral_aresetn,
++      reset             => mw_mig_7series_0_ui_clk_sync_rst,
 +      clk               => mw_microblaze_0_Clk_100MHz,
 +      rotenc_I          => BOARD_ROTENC_I,
 +      rotenc_Q          => BOARD_ROTENC_Q,
@@ -374,7 +376,7 @@
 +    );
 +auto_LVDS_rotate_i: component auto_LVDS_rotate
 +    port map (
-+      resetn            => mw_rst_100M_peripheral_aresetn,
++      reset             => mw_mig_7series_0_ui_clk_sync_rst,
 +      clk               => mw_microblaze_0_Clk_100MHz,
 +      LVDS09            => mw_TRX_rx09_fifo,
 +      LVDS09_valid      => mw_TRX_rx09_fifo_valid,
@@ -389,7 +391,7 @@
 +    );
 +FFT_controller_i: component FFT_controller
 +    port map (
-+      resetn                    => mw_rst_100M_peripheral_aresetn,
++      reset                     => mw_mig_7series_0_ui_clk_sync_rst,
 +      clk                       => mw_microblaze_0_Clk_100MHz,
 +      rx09_bs_32bits            => mw_TRX_rx09_bs,
 +      rx09_bs_32bits_vld        => mw_TRX_rot09vld,
@@ -429,7 +431,7 @@
 +    );
 +EUI48_FSM_i: component EUI48_FSM
 +    port map (
-+      resetn                => mw_rst_100M_peripheral_aresetn,
++      reset                 => mw_mig_7series_0_ui_clk_sync_rst,
 +      clk                   => mw_microblaze_0_Clk_100MHz,
 +      EUI48_onewire_tri_i   => mw_EUI48_onewire_tri_i,
 +      EUI48_onewire_tri_o   => mw_EUI48_onewire_tri_o,
@@ -442,7 +444,7 @@
 +    );
 +UFBmod_Decoder_i: component UFBmod_Decoder
 +    port map (
-+      resetn                        => mw_rst_100M_peripheral_aresetn,
++      reset                         => mw_mig_7series_0_ui_clk_sync_rst,
 +      clk                           => mw_microblaze_0_Clk_100MHz,
 +      post_fft_rx09_mem_a_EoT       => mw_post_fft_rx09_mem_a_EoT,
 +      post_fft_rx09_mem_a_addr      => mw_post_fft_rx09_mem_a_addr,
@@ -459,7 +461,7 @@
 +    );
 +UFBmod_Encoder_i: component UFBmod_Encoder
 +    port map (
-+      resetn                        => mw_rst_100M_peripheral_aresetn,
++      reset                         => mw_mig_7series_0_ui_clk_sync_rst,
 +      clk                           => mw_microblaze_0_Clk_100MHz,
 +      decoder_rx09_sql_open         => mw_decoder_rx09_sql_open,
 +      decoder_rx09_active           => mw_decoder_rx09_active,
@@ -473,7 +475,7 @@
 +    );
 +SCOPE_FSM_i: component SCOPE_FSM
 +    port map (
-+      resetn                        => mw_rst_100M_peripheral_aresetn,
++      reset                         => mw_mig_7series_0_ui_clk_sync_rst,
 +      clk                           => mw_microblaze_0_Clk_100MHz,
 +      SCOPE_FSM_GPIO0_Out           => mw_SCOPE_FSM_GPIO0_Out,
 +      SCOPE_FSM_GPIO1_In            => mw_SCOPE_FSM_GPIO1_In,
@@ -490,7 +492,7 @@
 +    );
  msys_i: component msys
       port map (
-@@ -454,10 +760,10 @@
+@@ -458,10 +762,10 @@
        ETH0_MDIO_MDC_mdio_o => ETH0_MDIO_MDC_mdio_o,
        ETH0_MDIO_MDC_mdio_t => ETH0_MDIO_MDC_mdio_t,
 -      EUI48_FSM_run => EUI48_FSM_run,
@@ -507,7 +509,7 @@
 +      FFT_window_coef_rom_rx09(9 downto 0) => mw_FFT_window_coef_rom_rx09(9 downto 0),
        FPGA_IO => FPGA_IO,
        LCD_BL(0) => LCD_BL(0),
-@@ -466,27 +772,27 @@
+@@ -470,27 +774,27 @@
        LED_RGB_green(0) => LED_RGB_green(0),
        LED_RGB_red(0) => LED_RGB_red(0),
 -      LVDS_rx09_synced => LVDS_rx09_synced,
@@ -551,7 +553,7 @@
 +      SCOPE_FSM_TrigSrc(47 downto 0) => mw_SCOPE_FSM_TrigSrc(47 downto 0),
        TRX_PLL_clk_25MHz_N(0) => TRX_PLL_clk_25MHz_N(0),
        TRX_PLL_clk_25MHz_P(0) => TRX_PLL_clk_25MHz_P(0),
-@@ -495,8 +801,8 @@
+@@ -499,8 +803,8 @@
        TRX_resetn(0) => TRX_resetn(0),
        TRX_rfx_mode(0) => TRX_rfx_mode(0),
 -      TRX_rx09_fifo_o(31 downto 0) => TRX_rx09_fifo_o(31 downto 0),
@@ -564,13 +566,15 @@
 +      TRX_rx24_fifo_valid_o => mw_TRX_rx24_fifo_valid,
        TRX_rx_clk_64MHz_clk_n => TRX_rx_clk_64MHz_clk_n,
        TRX_rx_clk_64MHz_clk_p => TRX_rx_clk_64MHz_clk_p,
-@@ -531,32 +837,32 @@
+@@ -535,35 +839,35 @@
        ULI_SYSTEM_XIO => ULI_SYSTEM_XIO,
        USER_dbg_out(13 downto 0) => USER_dbg_out(13 downto 0),
--      dds_tx09_inc(23 downto 0) => dds_tx09_inc(23 downto 0),
+-      dds_tx09_inc(25 downto 0) => dds_tx09_inc(25 downto 0),
 -      dds_tx09_ptt => dds_tx09_ptt,
+-      decoder_rx09_active => decoder_rx09_active,
 -      decoder_rx09_center_pos(4 downto 0) => decoder_rx09_center_pos(4 downto 0),
 -      decoder_rx09_noise(18 downto 0) => decoder_rx09_noise(18 downto 0),
+-      decoder_rx09_sql_open => decoder_rx09_sql_open,
 -      decoder_rx09_squelch_lvl(18 downto 0) => decoder_rx09_squelch_lvl(18 downto 0),
 -      decoder_rx09_strength(18 downto 0) => decoder_rx09_strength(18 downto 0),
 -      encoder_pull_FIFO_dump(0) => encoder_pull_FIFO_dump(0),
@@ -582,10 +586,13 @@
 -      fft09_data_tready_out => fft09_data_tready_out,
 -      fft09_data_tvalid_in => fft09_data_tvalid_in,
 -      microblaze_0_Clk_100MHz_o => microblaze_0_Clk_100MHz_o,
-+      dds_tx09_inc(23 downto 0) => mw_dds_tx09_inc(23 downto 0),
+-      mig_7series_0_ui_clk_sync_rst => mig_7series_0_ui_clk_sync_rst,
++      dds_tx09_inc(25 downto 0) => mw_dds_tx09_inc(25 downto 0),
 +      dds_tx09_ptt => mw_dds_tx09_ptt,
++      decoder_rx09_active => mw_decoder_rx09_active,
 +      decoder_rx09_center_pos(4 downto 0) => mw_decoder_rx09_center_pos(4 downto 0),
 +      decoder_rx09_noise(18 downto 0) => mw_decoder_rx09_noise(18 downto 0),
++      decoder_rx09_sql_open => mw_decoder_rx09_sql_open,
 +      decoder_rx09_squelch_lvl(18 downto 0) => mw_decoder_rx09_squelch_lvl(18 downto 0),
 +      decoder_rx09_strength(18 downto 0) => mw_decoder_rx09_strength(18 downto 0),
 +      encoder_pull_FIFO_dump(0) => mw_encoder_pull_FIFO_dump,
@@ -597,6 +604,7 @@
 +      fft09_data_tready_out => mw_fft09_data_tready_out,
 +      fft09_data_tvalid_in => mw_fft09_data_tvalid_in,
 +      microblaze_0_Clk_100MHz_o => mw_microblaze_0_Clk_100MHz,
++      mig_7series_0_ui_clk_sync_rst => mw_mig_7series_0_ui_clk_sync_rst,
        phy_rst_n => phy_rst_n,
 -      post_fft_rx09_mem_a_EoT => post_fft_rx09_mem_a_EoT,
 -      post_fft_rx09_mem_a_addr(41 downto 0) => post_fft_rx09_mem_a_addr(41 downto 0),
@@ -624,14 +632,12 @@
 +      pushdata_rx09_en => mw_pushdata_rx09_en,
        qspi_flash_io0_i => qspi_flash_io0_i,
        qspi_flash_io0_o => qspi_flash_io0_o,
-@@ -575,7 +881,7 @@
+@@ -582,6 +886,6 @@
        qspi_flash_ss_t => qspi_flash_ss_t,
        reset => reset,
 -      rotenc_dec_cnt_en => rotenc_dec_cnt_en,
--      rotenc_dec_cnt_up_dwn => rotenc_dec_cnt_up_dwn,
--      rst_100M_peripheral_aresetn(0) => rst_100M_peripheral_aresetn(0)
+-      rotenc_dec_cnt_up_dwn => rotenc_dec_cnt_up_dwn
 +      rotenc_dec_cnt_en => mw_rotenc_dec_cnt_en,
-+      rotenc_dec_cnt_up_dwn => mw_rotenc_dec_cnt_up_dwn,
-+      rst_100M_peripheral_aresetn(0) => mw_rst_100M_peripheral_aresetn
++      rotenc_dec_cnt_up_dwn => mw_rotenc_dec_cnt_up_dwn
      );
  qspi_flash_io0_iobuf: component IOBUF

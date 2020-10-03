@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Wed Sep 30 14:08:04 2020
+--Date        : Sat Oct  3 00:50:04 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -125,7 +125,6 @@ architecture STRUCTURE of msys_wrapper is
     LCD_BL : out STD_LOGIC_VECTOR ( 0 to 0 );
     LCD_rstn : out STD_LOGIC_VECTOR ( 0 to 0 );
     microblaze_0_Clk_100MHz_o : out STD_LOGIC;
-    rst_100M_peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 );
     rotenc_dec_cnt_up_dwn : in STD_LOGIC;
     rotenc_dec_cnt_en : in STD_LOGIC;
     BOARD_ROTENC_PUSH : in STD_LOGIC;
@@ -194,29 +193,25 @@ architecture STRUCTURE of msys_wrapper is
     encoder_pull_do_start : out STD_LOGIC_VECTOR ( 0 to 0 );
     encoder_pull_FIFO_dump : out STD_LOGIC_VECTOR ( 0 to 0 );
     pulldata_tx09_en : in STD_LOGIC;
-    dds_tx09_inc : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    dds_tx09_inc : in STD_LOGIC_VECTOR ( 25 downto 0 );
     dds_tx09_ptt : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
-    qspi_flash_io0_i : in STD_LOGIC;
-    qspi_flash_io0_o : out STD_LOGIC;
-    qspi_flash_io0_t : out STD_LOGIC;
-    qspi_flash_io1_i : in STD_LOGIC;
-    qspi_flash_io1_o : out STD_LOGIC;
-    qspi_flash_io1_t : out STD_LOGIC;
-    qspi_flash_io2_i : in STD_LOGIC;
-    qspi_flash_io2_o : out STD_LOGIC;
-    qspi_flash_io2_t : out STD_LOGIC;
-    qspi_flash_io3_i : in STD_LOGIC;
-    qspi_flash_io3_o : out STD_LOGIC;
-    qspi_flash_io3_t : out STD_LOGIC;
-    qspi_flash_ss_i : in STD_LOGIC;
-    qspi_flash_ss_o : out STD_LOGIC;
-    qspi_flash_ss_t : out STD_LOGIC;
+    mig_7series_0_ui_clk_sync_rst : out STD_LOGIC;
+    decoder_rx09_sql_open : in STD_LOGIC;
+    decoder_rx09_active : in STD_LOGIC;
     TRX_tx_clk_clk_n : out STD_LOGIC;
     TRX_tx_clk_clk_p : out STD_LOGIC;
-    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
+    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
+    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    RMII_PHY_M_0_tx_en : out STD_LOGIC;
+    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    BOARD_IIC_scl_i : in STD_LOGIC;
+    BOARD_IIC_scl_o : out STD_LOGIC;
+    BOARD_IIC_scl_t : out STD_LOGIC;
+    BOARD_IIC_sda_i : in STD_LOGIC;
+    BOARD_IIC_sda_o : out STD_LOGIC;
+    BOARD_IIC_sda_t : out STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
     DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
     DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -232,16 +227,33 @@ architecture STRUCTURE of msys_wrapper is
     DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK3_sys_diff_clk_p : in STD_LOGIC;
-    CLK3_sys_diff_clk_n : in STD_LOGIC;
     CLK2_mgt_clk0_clk_p : in STD_LOGIC;
     CLK2_mgt_clk0_clk_n : in STD_LOGIC;
-    BOARD_IIC_scl_i : in STD_LOGIC;
-    BOARD_IIC_scl_o : out STD_LOGIC;
-    BOARD_IIC_scl_t : out STD_LOGIC;
-    BOARD_IIC_sda_i : in STD_LOGIC;
-    BOARD_IIC_sda_o : out STD_LOGIC;
-    BOARD_IIC_sda_t : out STD_LOGIC;
+    CLK3_sys_diff_clk_p : in STD_LOGIC;
+    CLK3_sys_diff_clk_n : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
+    UART0_rxd : in STD_LOGIC;
+    UART0_txd : out STD_LOGIC;
+    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
+    qspi_flash_io0_i : in STD_LOGIC;
+    qspi_flash_io0_o : out STD_LOGIC;
+    qspi_flash_io0_t : out STD_LOGIC;
+    qspi_flash_io1_i : in STD_LOGIC;
+    qspi_flash_io1_o : out STD_LOGIC;
+    qspi_flash_io1_t : out STD_LOGIC;
+    qspi_flash_io2_i : in STD_LOGIC;
+    qspi_flash_io2_o : out STD_LOGIC;
+    qspi_flash_io2_t : out STD_LOGIC;
+    qspi_flash_io3_i : in STD_LOGIC;
+    qspi_flash_io3_o : out STD_LOGIC;
+    qspi_flash_io3_t : out STD_LOGIC;
+    qspi_flash_ss_i : in STD_LOGIC;
+    qspi_flash_ss_o : out STD_LOGIC;
+    qspi_flash_ss_t : out STD_LOGIC;
     TRX_spi_io0_i : in STD_LOGIC;
     TRX_spi_io0_o : out STD_LOGIC;
     TRX_spi_io0_t : out STD_LOGIC;
@@ -253,17 +265,7 @@ architecture STRUCTURE of msys_wrapper is
     TRX_spi_sck_t : out STD_LOGIC;
     TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_spi_ss_t : out STD_LOGIC;
-    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
-    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    RMII_PHY_M_0_tx_en : out STD_LOGIC;
-    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC
+    TRX_spi_ss_t : out STD_LOGIC
   );
   end component msys;
   component IOBUF is
@@ -277,7 +279,7 @@ architecture STRUCTURE of msys_wrapper is
   component rotenc_decoder is
   port (
     clk                 : in STD_LOGIC;
-    resetn              : in STD_LOGIC;
+    reset               : in STD_LOGIC;
     rotenc_I            : in STD_LOGIC;
     rotenc_Q            : in STD_LOGIC;
     cnt_up_dwn          : out STD_LOGIC;
@@ -286,7 +288,7 @@ architecture STRUCTURE of msys_wrapper is
   end component rotenc_decoder;
   component auto_LVDS_rotate is
   port (
-    resetn              : in  STD_LOGIC;
+    reset               : in  STD_LOGIC;
     clk                 : in  STD_LOGIC;
     LVDS09              : in  STD_LOGIC_VECTOR (31 downto 0);
     LVDS09_valid        : in  STD_LOGIC;
@@ -303,7 +305,7 @@ architecture STRUCTURE of msys_wrapper is
   component FFT_controller is
   port (
     -- All Clock Domain AXI 100 MHz
-    resetn                      : in  STD_LOGIC;
+    reset                       : in  STD_LOGIC;
     clk                         : in  STD_LOGIC;
 
     rx09_bs_32bits              : in  STD_LOGIC_VECTOR (31 downto 0);
@@ -348,7 +350,7 @@ architecture STRUCTURE of msys_wrapper is
   end component FFT_controller;
   component EUI48_FSM is 
   port (
-    resetn                  : in  STD_LOGIC;
+    reset                   : in  STD_LOGIC;
     clk                     : in  STD_LOGIC;
     EUI48_onewire_tri_i     : in  STD_LOGIC;
     EUI48_onewire_tri_o     : out STD_LOGIC;
@@ -362,7 +364,7 @@ architecture STRUCTURE of msys_wrapper is
   end component EUI48_FSM;
   component UFBmod_Decoder is
   port (
-    resetn                                          : in  STD_LOGIC;
+    reset                                           : in  STD_LOGIC;
     clk                                             : in  STD_LOGIC;
     post_fft_rx09_mem_a_EoT                         : in  STD_LOGIC;
     post_fft_rx09_mem_a_addr                        : in  STD_LOGIC_VECTOR(41 downto 0);
@@ -380,7 +382,7 @@ architecture STRUCTURE of msys_wrapper is
   end component UFBmod_Decoder;
   component UFBmod_Encoder is
   port (
-    resetn                                          : in  STD_LOGIC;
+    reset                                           : in  STD_LOGIC;
     clk                                             : in  STD_LOGIC;
     decoder_rx09_sql_open                           : in  STD_LOGIC;
     decoder_rx09_active                             : in  STD_LOGIC;
@@ -389,13 +391,13 @@ architecture STRUCTURE of msys_wrapper is
     encoder_pull_data_len                           : in  STD_LOGIC_VECTOR( 6 downto 0);
     pulldata_tx09_en                                : out STD_LOGIC;
     pulldata_tx09_byteData                          : in  STD_LOGIC_VECTOR( 7 downto 0);
-    dds_tx09_inc                                    : out STD_LOGIC_VECTOR(23 downto 0);
+    dds_tx09_inc                                    : out STD_LOGIC_VECTOR(25 downto 0);
     dds_tx09_ptt                                    : out STD_LOGIC
   );
   end component UFBmod_Encoder;
   component SCOPE_FSM is
   Port (
-    resetn                      : in  STD_LOGIC;
+    reset                       : in  STD_LOGIC;
     clk                         : in  STD_LOGIC;
     SCOPE_FSM_GPIO0_Out         : in  STD_LOGIC_VECTOR (31 downto 0);
     SCOPE_FSM_GPIO1_In          : out STD_LOGIC_VECTOR (31 downto 0);
@@ -443,7 +445,7 @@ architecture STRUCTURE of msys_wrapper is
   signal mw_decoder_rx09_squelch_lvl : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal mw_decoder_rx09_strength : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal mw_microblaze_0_Clk_100MHz : STD_LOGIC;
-  signal mw_rst_100M_peripheral_aresetn : STD_LOGIC;
+  signal mw_mig_7series_0_ui_clk_sync_rst : STD_LOGIC;
   signal mw_EUI48_FSM_start : STD_LOGIC;
   signal mw_EUI48_FSM_run : STD_LOGIC;
   signal mw_EUI48_data : STD_LOGIC_VECTOR ( 47 downto 0 );
@@ -470,7 +472,7 @@ architecture STRUCTURE of msys_wrapper is
 --signal mw_premem_rx24_dina_in : STD_LOGIC_VECTOR ( 25 downto 0 );
 --signal mw_premem_rx24_addrb_in : STD_LOGIC_VECTOR ( 10 downto 0 );
 --signal mw_premem_rx24_quarterfrm_in : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal mw_dds_tx09_inc : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal mw_dds_tx09_inc : STD_LOGIC_VECTOR ( 25 downto 0 );
   signal mw_dds_tx09_ptt : STD_LOGIC;
   signal mw_encoder_pull_FIFO_dump : STD_LOGIC;
   signal mw_encoder_pull_data_len : STD_LOGIC_VECTOR ( 6 downto 0 );
@@ -597,7 +599,7 @@ EUI_onewire_iobuf_0: component IOBUF
     );
 rotenc_decoder_i: component rotenc_decoder
      port map (
-      resetn            => mw_rst_100M_peripheral_aresetn,
+      reset             => mw_mig_7series_0_ui_clk_sync_rst,
       clk               => mw_microblaze_0_Clk_100MHz,
       rotenc_I          => BOARD_ROTENC_I,
       rotenc_Q          => BOARD_ROTENC_Q,
@@ -606,7 +608,7 @@ rotenc_decoder_i: component rotenc_decoder
     );
 auto_LVDS_rotate_i: component auto_LVDS_rotate
     port map (
-      resetn            => mw_rst_100M_peripheral_aresetn,
+      reset             => mw_mig_7series_0_ui_clk_sync_rst,
       clk               => mw_microblaze_0_Clk_100MHz,
       LVDS09            => mw_TRX_rx09_fifo,
       LVDS09_valid      => mw_TRX_rx09_fifo_valid,
@@ -621,7 +623,7 @@ auto_LVDS_rotate_i: component auto_LVDS_rotate
     );
 FFT_controller_i: component FFT_controller
     port map (
-      resetn                    => mw_rst_100M_peripheral_aresetn,
+      reset                     => mw_mig_7series_0_ui_clk_sync_rst,
       clk                       => mw_microblaze_0_Clk_100MHz,
       rx09_bs_32bits            => mw_TRX_rx09_bs,
       rx09_bs_32bits_vld        => mw_TRX_rot09vld,
@@ -661,7 +663,7 @@ FFT_controller_i: component FFT_controller
     );
 EUI48_FSM_i: component EUI48_FSM
     port map (
-      resetn                => mw_rst_100M_peripheral_aresetn,
+      reset                 => mw_mig_7series_0_ui_clk_sync_rst,
       clk                   => mw_microblaze_0_Clk_100MHz,
       EUI48_onewire_tri_i   => mw_EUI48_onewire_tri_i,
       EUI48_onewire_tri_o   => mw_EUI48_onewire_tri_o,
@@ -674,7 +676,7 @@ EUI48_FSM_i: component EUI48_FSM
     );
 UFBmod_Decoder_i: component UFBmod_Decoder
     port map (
-      resetn                        => mw_rst_100M_peripheral_aresetn,
+      reset                         => mw_mig_7series_0_ui_clk_sync_rst,
       clk                           => mw_microblaze_0_Clk_100MHz,
       post_fft_rx09_mem_a_EoT       => mw_post_fft_rx09_mem_a_EoT,
       post_fft_rx09_mem_a_addr      => mw_post_fft_rx09_mem_a_addr,
@@ -691,7 +693,7 @@ UFBmod_Decoder_i: component UFBmod_Decoder
     );
 UFBmod_Encoder_i: component UFBmod_Encoder
     port map (
-      resetn                        => mw_rst_100M_peripheral_aresetn,
+      reset                         => mw_mig_7series_0_ui_clk_sync_rst,
       clk                           => mw_microblaze_0_Clk_100MHz,
       decoder_rx09_sql_open         => mw_decoder_rx09_sql_open,
       decoder_rx09_active           => mw_decoder_rx09_active,
@@ -705,7 +707,7 @@ UFBmod_Encoder_i: component UFBmod_Encoder
     );
 SCOPE_FSM_i: component SCOPE_FSM
     port map (
-      resetn                        => mw_rst_100M_peripheral_aresetn,
+      reset                         => mw_mig_7series_0_ui_clk_sync_rst,
       clk                           => mw_microblaze_0_Clk_100MHz,
       SCOPE_FSM_GPIO0_Out           => mw_SCOPE_FSM_GPIO0_Out,
       SCOPE_FSM_GPIO1_In            => mw_SCOPE_FSM_GPIO1_In,
@@ -836,10 +838,12 @@ msys_i: component msys
       UART0_txd => UART0_txd,
       ULI_SYSTEM_XIO => ULI_SYSTEM_XIO,
       USER_dbg_out(13 downto 0) => USER_dbg_out(13 downto 0),
-      dds_tx09_inc(23 downto 0) => mw_dds_tx09_inc(23 downto 0),
+      dds_tx09_inc(25 downto 0) => mw_dds_tx09_inc(25 downto 0),
       dds_tx09_ptt => mw_dds_tx09_ptt,
+      decoder_rx09_active => mw_decoder_rx09_active,
       decoder_rx09_center_pos(4 downto 0) => mw_decoder_rx09_center_pos(4 downto 0),
       decoder_rx09_noise(18 downto 0) => mw_decoder_rx09_noise(18 downto 0),
+      decoder_rx09_sql_open => mw_decoder_rx09_sql_open,
       decoder_rx09_squelch_lvl(18 downto 0) => mw_decoder_rx09_squelch_lvl(18 downto 0),
       decoder_rx09_strength(18 downto 0) => mw_decoder_rx09_strength(18 downto 0),
       encoder_pull_FIFO_dump(0) => mw_encoder_pull_FIFO_dump,
@@ -851,6 +855,7 @@ msys_i: component msys
       fft09_data_tready_out => mw_fft09_data_tready_out,
       fft09_data_tvalid_in => mw_fft09_data_tvalid_in,
       microblaze_0_Clk_100MHz_o => mw_microblaze_0_Clk_100MHz,
+      mig_7series_0_ui_clk_sync_rst => mw_mig_7series_0_ui_clk_sync_rst,
       phy_rst_n => phy_rst_n,
       post_fft_rx09_mem_a_EoT => mw_post_fft_rx09_mem_a_EoT,
       post_fft_rx09_mem_a_addr(41 downto 0) => mw_post_fft_rx09_mem_a_addr(41 downto 0),
@@ -881,8 +886,7 @@ msys_i: component msys
       qspi_flash_ss_t => qspi_flash_ss_t,
       reset => reset,
       rotenc_dec_cnt_en => mw_rotenc_dec_cnt_en,
-      rotenc_dec_cnt_up_dwn => mw_rotenc_dec_cnt_up_dwn,
-      rst_100M_peripheral_aresetn(0) => mw_rst_100M_peripheral_aresetn
+      rotenc_dec_cnt_up_dwn => mw_rotenc_dec_cnt_up_dwn
     );
 qspi_flash_io0_iobuf: component IOBUF
      port map (
