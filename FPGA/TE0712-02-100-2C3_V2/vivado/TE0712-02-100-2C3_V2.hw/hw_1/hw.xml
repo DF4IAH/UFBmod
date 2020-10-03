@@ -22,7 +22,7 @@
     <Object name="xc7a100t_0" gui_info="">
       <Properties Property="FULL_PROBES.FILE" value="$_project_name_.runs/impl_1/msys_wrapper.ltx"/>
       <Properties Property="PROBES.FILE" value="$_project_name_.runs/impl_1/msys_wrapper.ltx"/>
-      <Properties Property="PROGRAM.HW_BITSTREAM" value=""/>
+      <Properties Property="PROGRAM.HW_BITSTREAM" value="$_project_name_.runs/impl_1/msys_wrapper.bit"/>
       <Properties Property="PROGRAM.HW_CFGMEM_PART" value="s25fl256sxxxxxx0-spi-x1_x2_x4"/>
       <Properties Property="SLR.COUNT" value="1"/>
     </Object>
@@ -60,21 +60,25 @@
     <Object name="msys_i/SC0712_0_reset_out" gui_info="hw_vios/hw_vio_1=2"/>
     <Object name="msys_i/Status_LVDS_rx09_synced_1" gui_info="hw_vios/hw_vio_1=27"/>
     <Object name="msys_i/Status_LVDS_rx24_synced_1" gui_info="hw_vios/hw_vio_1=29"/>
-    <Object name="msys_i/TRX_RX_RF09_PUSHDATA_FIFO_empty" gui_info="hw_vios/hw_vio_1=42"/>
-    <Object name="msys_i/TRX_TX_RF09_PULLDATA_FIFO_empty" gui_info="hw_vios/hw_vio_1=44"/>
-    <Object name="msys_i/TRX_data_count1[11:0]" gui_info="hw_vios/hw_vio_1=43"/>
-    <Object name="msys_i/TRX_data_count[11:0]" gui_info="hw_vios/hw_vio_1=45"/>
+    <Object name="msys_i/TRX_RX_RF09_PUSHDATA_FIFO_empty" gui_info="hw_vios/hw_vio_1=45"/>
+    <Object name="msys_i/TRX_TX_RF09_PULLDATA_FIFO_empty" gui_info="hw_vios/hw_vio_1=47"/>
+    <Object name="msys_i/TRX_data_count1[11:0]" gui_info="hw_vios/hw_vio_1=46"/>
+    <Object name="msys_i/TRX_data_count[11:0]" gui_info="hw_vios/hw_vio_1=48"/>
+    <Object name="msys_i/TRX_decoder_rx09_squelch_lvl[18:0]" gui_info="hw_vios/hw_vio_1=42"/>
     <Object name="msys_i/TRX_empty" gui_info="hw_vios/hw_vio_1=42"/>
     <Object name="msys_i/TRX_empty1" gui_info="hw_vios/hw_vio_1=44"/>
     <Object name="msys_i/TRX_rd_data_count_CD100[8:0]" gui_info="hw_vios/hw_vio_1=33"/>
     <Object name="msys_i/TRX_rx09_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=28"/>
     <Object name="msys_i/TRX_rx24_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=30"/>
+    <Object name="msys_i/TRX_tx_DDS0_gpio_ampt[15:0]" gui_info="hw_vios/hw_vio_1=52"/>
+    <Object name="msys_i/TRX_tx_DDS0_gpio_inc[31:0]" gui_info="hw_vios/hw_vio_1=51"/>
+    <Object name="msys_i/TRX_tx_DDS1_gpio_ampt[15:0]" gui_info="hw_vios/hw_vio_1=53"/>
     <Object name="msys_i/ULI_SYSTEM_XIO_1" gui_info="hw_vios/hw_vio_1=4"/>
-    <Object name="msys_i/dds_tx09_ptt_1" gui_info="hw_vios/hw_vio_1=48"/>
-    <Object name="msys_i/decoder_rx09_active_1" gui_info="hw_vios/hw_vio_1=47"/>
+    <Object name="msys_i/dds_tx09_ptt_1" gui_info="hw_vios/hw_vio_1=49"/>
+    <Object name="msys_i/decoder_rx09_active_1" gui_info="hw_vios/hw_vio_1=44"/>
     <Object name="msys_i/decoder_rx09_center_pos_1[4:0]" gui_info="hw_vios/hw_vio_1=39"/>
     <Object name="msys_i/decoder_rx09_noise_1[18:0]" gui_info="hw_vios/hw_vio_1=41"/>
-    <Object name="msys_i/decoder_rx09_sql_open_1" gui_info="hw_vios/hw_vio_1=46"/>
+    <Object name="msys_i/decoder_rx09_sql_open_1" gui_info="hw_vios/hw_vio_1=43"/>
     <Object name="msys_i/decoder_rx09_squelch_lvl[18:0]" gui_info="hw_vios/hw_vio_1=39"/>
     <Object name="msys_i/decoder_rx09_strength_1[18:0]" gui_info="hw_vios/hw_vio_1=40"/>
     <Object name="msys_i/fm_mgt_ref[31:0]" gui_info="hw_vios/hw_vio_1=9"/>
@@ -103,9 +107,9 @@
     <Object name="msys_i/postmem_rx_addrb_in_0[12:0]" gui_info="hw_vios/hw_vio_1=46"/>
     <Object name="msys_i/postmem_rx_addrb_in_0[14:0]" gui_info="hw_vios/hw_vio_1=46"/>
     <Object name="msys_i/pulldata_dds_inc_1[23:0]" gui_info="hw_vios/hw_vio_1=49"/>
-    <Object name="msys_i/pulldata_dds_inc_1[25:0]" gui_info="hw_vios/hw_vio_1=49"/>
-    <Object name="msys_i/vio_xlslice_40_Dout[12:0]" gui_info="hw_vios/hw_vio_1=50"/>
-    <Object name="msys_i/vio_xlslice_41_Dout[12:0]" gui_info="hw_vios/hw_vio_1=51"/>
+    <Object name="msys_i/pulldata_dds_inc_1[25:0]" gui_info="hw_vios/hw_vio_1=50"/>
+    <Object name="msys_i/vio_xlslice_40_Dout[12:0]" gui_info="hw_vios/hw_vio_1=54"/>
+    <Object name="msys_i/vio_xlslice_41_Dout[12:0]" gui_info="hw_vios/hw_vio_1=55"/>
     <Object name="msys_i/vio_xlslice_rx09_im_25to13_in45_Dout[12:0]" gui_info="hw_vios/hw_vio_1=32"/>
     <Object name="msys_i/vio_xlslice_rx09_re_12to0_in44_Dout[12:0]" gui_info="hw_vios/hw_vio_1=31"/>
     <Object name="msys_i/vio_xlslice_rx24_im_25to13_in47_Dout[12:0]" gui_info="hw_vios/hw_vio_1=41"/>
@@ -983,8 +987,8 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_VIO" value="hw_vio_1"/>
         <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
-        <Option Id="NAME.CUSTOM" value=""/>
-        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="NAME.CUSTOM" value="decoder_rx09_squelch_lvl"/>
+        <Option Id="NAME.SELECT" value="Custom"/>
         <Option Id="SOURCE" value="netlist"/>
       </probeOptions>
       <nets>
@@ -1152,6 +1156,112 @@
         <net name="msys_i/TRX_rx24_32bits_CD100[2]"/>
         <net name="msys_i/TRX_rx24_32bits_CD100[1]"/>
         <net name="msys_i/TRX_rx24_32bits_CD100[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Short"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[15]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[14]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[13]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[12]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[11]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[10]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[9]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[8]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[7]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[6]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[5]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[4]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[3]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[2]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[1]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_ampt[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Short"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[31]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[30]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[29]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[28]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[27]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[26]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[25]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[24]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[23]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[22]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[21]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[20]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[19]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[18]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[17]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[16]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[15]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[14]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[13]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[12]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[11]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[10]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[9]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[8]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[7]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[6]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[5]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[4]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[3]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[2]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[1]"/>
+        <net name="msys_i/TRX_tx_DDS0_gpio_inc[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Short"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[15]"/>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[14]"/>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[13]"/>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[12]"/>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[11]"/>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[10]"/>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[9]"/>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[8]"/>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[7]"/>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[6]"/>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[5]"/>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[4]"/>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[3]"/>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[2]"/>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[1]"/>
+        <net name="msys_i/TRX_tx_DDS1_gpio_ampt[0]"/>
       </nets>
     </probe>
     <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
@@ -1575,7 +1685,7 @@
         <net name="msys_i/labtools_fmeter_0_F7[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -1774,7 +1884,7 @@
         <net name="msys_i/lt_F0_MIG_50mhz[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -1866,7 +1976,7 @@
         <net name="msys_i/lt_F2_CLK1B[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -1912,7 +2022,7 @@
         <net name="msys_i/lt_F3_CLK0[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2215,8 +2325,8 @@
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_VIO" value="hw_vio_1"/>
         <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
-        <Option Id="NAME.CUSTOM" value=""/>
-        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="NAME.CUSTOM" value="dds_tx09_inc"/>
+        <Option Id="NAME.SELECT" value="Custom"/>
         <Option Id="SOURCE" value="netlist"/>
       </probeOptions>
       <nets>
@@ -2248,7 +2358,7 @@
         <net name="msys_i/pulldata_dds_inc_1[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>

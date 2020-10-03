@@ -1904,8 +1904,8 @@ static void TestRF09Tx(u32 freq_Hz, int pwr_dBm)
 
 #if 1
 	/* Set FPGA DDS0 */
-	DdsFreqAmpSet(0U, +00.000E+3, 0xf3U, cor);  		// ampl <= 0xf3
-	DdsFreqAmpSet(1U, +00.000E+3, 0x00U, cor);
+	//DdsFreqAmpSet(0U, +00.000E+3, 0xf3U, cor);  		// ampl <= 0xf3
+	//DdsFreqAmpSet(1U, +00.000E+3, 0x00U, cor);
 #else
 	/* Set FPGA DDS0 & DDS1 */
 	DdsFreqAmpSet(0U, +10.000E+3, 0x70U, cor);
@@ -2104,8 +2104,8 @@ static void TestRF24Tx(u32 freq_Hz, int pwr_dBm)
 
 #if 1
 	/* Set FPGA DDS0 */
-	DdsFreqAmpSet(0U, +00.000E+3, 0xf3U, cor);  // ampl <= 0xf3
-	DdsFreqAmpSet(1U,  00.000E+3, 0x00U, cor);
+	//DdsFreqAmpSet(0U, +00.000E+3, 0xf3U, cor);  // ampl <= 0xf3
+	//DdsFreqAmpSet(1U,  00.000E+3, 0x00U, cor);
 #else
 	/* Set FPGA DDS0 & DDS1 */
 	DdsFreqAmpSet(0U, +10.000E+3, 0x70U, cor);
@@ -2212,7 +2212,7 @@ static void TestRF09Rx(u32 freq_Hz)
 #endif
 
 	/* Stop FPGA DDS0/DDS1 */
-	DdsFreqAmpSet(1U, 0.0f, 0x00U, 1.0f);	// XXX
+	//DdsFreqAmpSet(1U, 0.0f, 0x00U, 1.0f);	// XXX
 
 	/* GREEN dark on */
 	pwmLedSet(0x00001000UL, 0x0000ff00UL);
@@ -2276,8 +2276,8 @@ static void TestRF24Rx(u32 freq_Hz)
 	TrxOperationModeRF09BBC0Set(CTX_DISABLE, -30);  	// CTX ContinuesWave, Power @ TRX pins
 
 	/* Stop FPGA DDS0/DDS1 */
-	DdsFreqAmpSet(0U, 0.0f, 0x00U, 1.0f);		// XXX
-	DdsFreqAmpSet(1U, 0.0f, 0x00U, 1.0f);
+	//DdsFreqAmpSet(0U, 0.0f, 0x00U, 1.0f);		// XXX
+	//DdsFreqAmpSet(1U, 0.0f, 0x00U, 1.0f);
 
 	/* BLUE on */
 	u8 state;
@@ -2398,7 +2398,7 @@ void taskTrx(void* pvParameters)
 
 		// write - bit15..bit8: DDS channel 0 amplitude IM multiply value, bit7..bit0: DDS channel 0 amplitude RE multiply value
 		//XGpio_SetDataDirection(&gpio_TRX_AMPT, 1U, 0x00000000UL);
-		XGpio_DiscreteWrite(     &gpio_TRX_AMPT, 1U, 0x0000f8f8UL);
+		XGpio_DiscreteWrite(     &gpio_TRX_AMPT, 1U, 0x0000f3f3UL);
 
 		// write - bit15..bit8: DDS channel 1 amplitude IM multiply value, bit7..bit0: DDS channel 1 amplitude RE multiply value
 		//XGpio_SetDataDirection(&gpio_TRX_AMPT, 2U, 0x00000000UL);
@@ -2418,7 +2418,7 @@ void taskTrx(void* pvParameters)
 
 		// write - bit31: Read next byte from FIFO, bit18..bit0: Squelch level
 		//XGpio_SetDataDirection(&gpio_TRX_PUSHDATA, 2U, 0x00000000UL);
-		XGpio_DiscreteWrite(     &gpio_TRX_PUSHDATA, 2U, 0x00000800UL);
+		XGpio_DiscreteWrite(     &gpio_TRX_PUSHDATA, 2U, 0x00001000UL);
 	}
 
 	/* Init SPI */
@@ -2506,7 +2506,7 @@ void taskTrx(void* pvParameters)
 		TrxCmdRF09Set(CMD_TRXOFF);
 
 		/* Values */										// XXX
-		int pwr_dBm = -10;									// Max. +11 dBm @ TRX  (after defect: +10,+11 --> -6 dBm)
+		int pwr_dBm = -20;									// Max. +11 dBm @ TRX  (after defect: +10,+11 --> -6 dBm)
 		u32 freq_Hz = 869000000UL;  						// 868000000 ..  870000000 Hz		// RF09
 
 		TrxCmdRF09Set(CMD_TXPREP);

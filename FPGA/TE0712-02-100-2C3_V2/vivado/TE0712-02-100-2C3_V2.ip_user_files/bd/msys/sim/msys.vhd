@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Sat Oct  3 00:50:04 2020
+--Date        : Sat Oct  3 16:34:12 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -11023,6 +11023,9 @@ entity TRX_tx_DDS_unit_imp_195K6TC is
     TRX_TX_RF09_PULLDATA_FIFO_empty : out STD_LOGIC;
     TRX_rx_clkdiv_16MHz_i : in STD_LOGIC;
     TRX_tx_4to1_c_counter_binary_0_THRESH0 : out STD_LOGIC;
+    TRX_tx_DDS0_gpio_ampt : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_tx_DDS1_gpio_ampt : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_tx_DDS1_gpio_inc : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_tx_im_out : out STD_LOGIC_VECTOR ( 20 downto 8 );
     TRX_tx_re_out : out STD_LOGIC_VECTOR ( 20 downto 8 );
     aresetn : in STD_LOGIC;
@@ -11326,9 +11329,9 @@ architecture STRUCTURE of TRX_tx_DDS_unit_imp_195K6TC is
   signal TRX_tx1_im_xlslice_28to16_Dout : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal TRX_tx1_re_xlslice_12to00_Dout : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal TRX_tx_4to1_c_counter_binary_0_THRESH0_0 : STD_LOGIC;
-  signal TRX_tx_axi_gpio_0_gpio2_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal TRX_tx_dds_ampt_axi_gpio_0_gpio2_io_o : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal TRX_tx_dds_ampt_axi_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \^trx_tx_dds0_gpio_ampt\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal TRX_tx_DDS0_gpio_inc : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal \^trx_tx_dds1_gpio_ampt\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal TRX_tx_dds_compiler_0_m_axis_data_tdata : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal TRX_tx_dds_compiler_1_m_axis_data_tdata : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal TRX_tx_dds_inc_axi_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -11390,6 +11393,9 @@ begin
   S_AXI_rvalid(0) <= Conn1_RVALID;
   S_AXI_wready(0) <= Conn1_WREADY;
   TRX_tx_4to1_c_counter_binary_0_THRESH0 <= TRX_tx_4to1_c_counter_binary_0_THRESH0_0;
+  TRX_tx_DDS0_gpio_ampt(15 downto 0) <= \^trx_tx_dds0_gpio_ampt\(15 downto 0);
+  TRX_tx_DDS1_gpio_ampt(15 downto 0) <= \^trx_tx_dds1_gpio_ampt\(15 downto 0);
+  TRX_tx_DDS1_gpio_inc(31 downto 0) <= TRX_tx_DDS0_gpio_inc(31 downto 0);
   TRX_tx_im_out(20 downto 8) <= TRX_tx_im_out_0(20 downto 8);
   TRX_tx_re_out(20 downto 8) <= TRX_tx_re_out_0(20 downto 8);
   aresetn_1 <= aresetn;
@@ -11421,14 +11427,14 @@ PULLDATA: entity work.PULLDATA_imp_16K4TB9
 TRX_CDC_ampt_tx0_c_shift_ram_0: component msys_c_shift_ram_0_26
      port map (
       CLK => clk_div_out_1,
-      D(15 downto 0) => TRX_tx_dds_ampt_axi_gpio_0_gpio_io_o(15 downto 0),
+      D(15 downto 0) => \^trx_tx_dds0_gpio_ampt\(15 downto 0),
       Q(15 downto 0) => TRX_CDC_ampt_tx0_c_shift_ram_0_Q(15 downto 0),
       SCLR => SCLR_1
     );
 TRX_CDC_ampt_tx1_c_shift_ram_0: component msys_c_shift_ram_0_27
      port map (
       CLK => clk_div_out_1,
-      D(15 downto 0) => TRX_tx_dds_ampt_axi_gpio_0_gpio2_io_o(15 downto 0),
+      D(15 downto 0) => \^trx_tx_dds1_gpio_ampt\(15 downto 0),
       Q(15 downto 0) => TRX_CDC_ampt_tx1_c_shift_ram_0_Q(15 downto 0),
       SCLR => SCLR_1
     );
@@ -11448,7 +11454,7 @@ TRX_CDC_dds_tx0_xlconcat_0: component msys_xlconcat_0_29
 TRX_CDC_dds_tx1_c_shift_ram_0: component msys_c_shift_ram_0_4
      port map (
       CLK => clk_div_out_1,
-      D(31 downto 0) => TRX_tx_axi_gpio_0_gpio2_io_o(31 downto 0),
+      D(31 downto 0) => TRX_tx_DDS0_gpio_inc(31 downto 0),
       Q(31 downto 0) => TRX_tx1_c_shift_ram_0_Q(31 downto 0),
       SCLR => SCLR_1
     );
@@ -11569,8 +11575,8 @@ TRX_tx_4to1_c_counter_binary_0: component msys_c_counter_binary_0_3
     );
 TRX_tx_dds_ampt_axi_gpio_0: component msys_axi_gpio_0_7
      port map (
-      gpio2_io_o(15 downto 0) => TRX_tx_dds_ampt_axi_gpio_0_gpio2_io_o(15 downto 0),
-      gpio_io_o(15 downto 0) => TRX_tx_dds_ampt_axi_gpio_0_gpio_io_o(15 downto 0),
+      gpio2_io_o(15 downto 0) => \^trx_tx_dds1_gpio_ampt\(15 downto 0),
+      gpio_io_o(15 downto 0) => \^trx_tx_dds0_gpio_ampt\(15 downto 0),
       s_axi_aclk => s_axi_aclk_1,
       s_axi_araddr(8 downto 0) => Conn2_ARADDR(8 downto 0),
       s_axi_aresetn => s_axi_aresetn_1,
@@ -11593,7 +11599,7 @@ TRX_tx_dds_ampt_axi_gpio_0: component msys_axi_gpio_0_7
     );
 TRX_tx_dds_inc_axi_gpio_0: component msys_axi_gpio_0_1
      port map (
-      gpio2_io_o(31 downto 0) => TRX_tx_axi_gpio_0_gpio2_io_o(31 downto 0),
+      gpio2_io_o(31 downto 0) => TRX_tx_DDS0_gpio_inc(31 downto 0),
       gpio_io_i(31 downto 0) => PULLDATA_prog_empty(31 downto 0),
       gpio_io_o(31 downto 0) => TRX_tx_dds_inc_axi_gpio_0_gpio_io_o(31 downto 0),
       gpio_io_t(31 downto 0) => NLW_TRX_tx_dds_inc_axi_gpio_0_gpio_io_t_UNCONNECTED(31 downto 0),
@@ -18170,6 +18176,9 @@ entity TRX_imp_W48V8V is
     TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_t : out STD_LOGIC;
+    TRX_tx_DDS0_gpio_ampt : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_tx_DDS0_gpio_inc : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_tx_DDS1_gpio_ampt : out STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_tx_clk_clk_n : out STD_LOGIC;
     TRX_tx_clk_clk_p : out STD_LOGIC;
     TRX_tx_data_n : out STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -18798,6 +18807,9 @@ TRX_tx_DDS_unit: entity work.TRX_tx_DDS_unit_imp_195K6TC
       TRX_TX_RF09_PULLDATA_FIFO_empty => TRX_TX_RF09_PULLDATA_FIFO_empty,
       TRX_rx_clkdiv_16MHz_i => TRX_rx_clkdiv_16MHz(0),
       TRX_tx_4to1_c_counter_binary_0_THRESH0 => TRX_tx_4to1_c_counter_binary_0_THRESH0_0,
+      TRX_tx_DDS0_gpio_ampt(15 downto 0) => TRX_tx_DDS0_gpio_ampt(15 downto 0),
+      TRX_tx_DDS1_gpio_ampt(15 downto 0) => TRX_tx_DDS1_gpio_ampt(15 downto 0),
+      TRX_tx_DDS1_gpio_inc(31 downto 0) => TRX_tx_DDS0_gpio_inc(31 downto 0),
       TRX_tx_im_out(20 downto 8) => TRX_tx_im_out_0(20 downto 8),
       TRX_tx_re_out(20 downto 8) => TRX_tx_re_out_0(20 downto 8),
       aresetn => TRX_proc_sys_reset_0_peripheral_aresetn(0),
@@ -19158,7 +19170,10 @@ architecture STRUCTURE of msys is
     probe_in49 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe_in50 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe_in51 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe_in52 : in STD_LOGIC_VECTOR ( 18 downto 0 )
+    probe_in52 : in STD_LOGIC_VECTOR ( 18 downto 0 );
+    probe_in53 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe_in54 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe_in55 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component msys_vio_0_0;
   component msys_xlconcat_0_0 is
@@ -19713,6 +19728,9 @@ architecture STRUCTURE of msys is
   signal TRX_rx_clkdiv_16MHz : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_rx_data_n_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal TRX_rx_data_p_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal TRX_tx_DDS0_gpio_ampt : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal TRX_tx_DDS0_gpio_inc : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal TRX_tx_DDS1_gpio_ampt : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal UART0EXT_DTRn_1 : STD_LOGIC;
   signal UART0EXT_RTSn_1 : STD_LOGIC;
   signal UART0_UART0EXT_CTSn : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -21280,6 +21298,9 @@ TRX: entity work.TRX_imp_W48V8V
       TRX_spi_ss_i(0) => TRX_TRX_spi_SS_I(0),
       TRX_spi_ss_o(0) => TRX_TRX_spi_SS_O(0),
       TRX_spi_ss_t => TRX_TRX_spi_SS_T,
+      TRX_tx_DDS0_gpio_ampt(15 downto 0) => TRX_tx_DDS0_gpio_ampt(15 downto 0),
+      TRX_tx_DDS0_gpio_inc(31 downto 0) => TRX_tx_DDS0_gpio_inc(31 downto 0),
+      TRX_tx_DDS1_gpio_ampt(15 downto 0) => TRX_tx_DDS1_gpio_ampt(15 downto 0),
       TRX_tx_clk_clk_n => TRX_TRX_tx_clk_CLK_N,
       TRX_tx_clk_clk_p => TRX_TRX_tx_clk_CLK_P,
       TRX_tx_data_n(1 downto 0) => TRX_TRX_tx_data_n(1 downto 0),
@@ -22470,6 +22491,9 @@ vio_0: component msys_vio_0_0
       probe_in50(0) => decoder_rx09_sql_open_1,
       probe_in51(0) => decoder_rx09_active_1,
       probe_in52(18 downto 0) => TRX_decoder_rx09_squelch_lvl(18 downto 0),
+      probe_in53(31 downto 0) => TRX_tx_DDS0_gpio_inc(31 downto 0),
+      probe_in54(15 downto 0) => TRX_tx_DDS0_gpio_ampt(15 downto 0),
+      probe_in55(15 downto 0) => TRX_tx_DDS1_gpio_ampt(15 downto 0),
       probe_in6(31 downto 0) => CFG_mon_GPIO1_O(31 downto 0),
       probe_in7(31 downto 0) => CFG_mon_GPIO1_I(31 downto 0),
       probe_in8(31 downto 0) => lt_F4_TRX_LVDS_divclk(31 downto 0),

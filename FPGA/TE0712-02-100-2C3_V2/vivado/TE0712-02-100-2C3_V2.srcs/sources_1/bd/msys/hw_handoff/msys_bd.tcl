@@ -1511,6 +1511,9 @@ proc create_hier_cell_TRX_tx_DDS_unit { parentCell nameHier } {
   create_bd_pin -dir O TRX_TX_RF09_PULLDATA_FIFO_empty
   create_bd_pin -dir I -type clk TRX_rx_clkdiv_16MHz_i
   create_bd_pin -dir O -type data TRX_tx_4to1_c_counter_binary_0_THRESH0
+  create_bd_pin -dir O -from 15 -to 0 TRX_tx_DDS0_gpio_ampt
+  create_bd_pin -dir O -from 15 -to 0 TRX_tx_DDS1_gpio_ampt
+  create_bd_pin -dir O -from 31 -to 0 TRX_tx_DDS1_gpio_inc
   create_bd_pin -dir O -from 20 -to 8 -type data TRX_tx_im_out
   create_bd_pin -dir O -from 20 -to 8 -type data TRX_tx_re_out
   create_bd_pin -dir I -type rst aresetn
@@ -1813,9 +1816,9 @@ proc create_hier_cell_TRX_tx_DDS_unit { parentCell nameHier } {
   connect_bd_net -net TRX_tx1_im_xlslice_28to16_Dout [get_bd_pins TRX_tx1_im_xbip_multadd_0/A] [get_bd_pins TRX_tx1_im_xlslice_28to16/Dout]
   connect_bd_net -net TRX_tx1_re_xlslice_12to00_Dout [get_bd_pins TRX_tx1_re_xbip_multadd_0/A] [get_bd_pins TRX_tx1_re_xlslice_12to00/Dout]
   connect_bd_net -net TRX_tx_4to1_c_counter_binary_0_THRESH0_0 [get_bd_pins TRX_tx_4to1_c_counter_binary_0_THRESH0] [get_bd_pins TRX_tx0_dds_compiler_0/aclken] [get_bd_pins TRX_tx1_dds_compiler_0/aclken] [get_bd_pins TRX_tx_4to1_c_counter_binary_0/THRESH0]
-  connect_bd_net -net TRX_tx_axi_gpio_0_gpio2_io_o [get_bd_pins TRX_CDC_dds_tx1_c_shift_ram_0/D] [get_bd_pins TRX_tx_dds_inc_axi_gpio_0/gpio2_io_o]
-  connect_bd_net -net TRX_tx_dds_ampt_axi_gpio_0_gpio2_io_o [get_bd_pins TRX_CDC_ampt_tx1_c_shift_ram_0/D] [get_bd_pins TRX_tx_dds_ampt_axi_gpio_0/gpio2_io_o]
-  connect_bd_net -net TRX_tx_dds_ampt_axi_gpio_0_gpio_io_o [get_bd_pins TRX_CDC_ampt_tx0_c_shift_ram_0/D] [get_bd_pins TRX_tx_dds_ampt_axi_gpio_0/gpio_io_o]
+  connect_bd_net -net TRX_tx_DDS0_gpio_ampt [get_bd_pins TRX_tx_DDS0_gpio_ampt] [get_bd_pins TRX_CDC_ampt_tx0_c_shift_ram_0/D] [get_bd_pins TRX_tx_dds_ampt_axi_gpio_0/gpio_io_o]
+  connect_bd_net -net TRX_tx_DDS0_gpio_inc [get_bd_pins TRX_tx_DDS1_gpio_inc] [get_bd_pins TRX_CDC_dds_tx1_c_shift_ram_0/D] [get_bd_pins TRX_tx_dds_inc_axi_gpio_0/gpio2_io_o]
+  connect_bd_net -net TRX_tx_DDS1_gpio_ampt [get_bd_pins TRX_tx_DDS1_gpio_ampt] [get_bd_pins TRX_CDC_ampt_tx1_c_shift_ram_0/D] [get_bd_pins TRX_tx_dds_ampt_axi_gpio_0/gpio2_io_o]
   connect_bd_net -net TRX_tx_dds_compiler_0_m_axis_data_tdata [get_bd_pins TRX_tx0_dds_compiler_0/m_axis_data_tdata] [get_bd_pins TRX_tx0_im_xlslice_28to16/Din] [get_bd_pins TRX_tx0_re_xlslice_12to00/Din]
   connect_bd_net -net TRX_tx_dds_compiler_1_m_axis_data_tdata [get_bd_pins TRX_tx1_dds_compiler_0/m_axis_data_tdata] [get_bd_pins TRX_tx1_im_xlslice_28to16/Din] [get_bd_pins TRX_tx1_re_xlslice_12to00/Din]
   connect_bd_net -net TRX_tx_dds_inc_axi_gpio_0_gpio_io_o [get_bd_pins PULLDATA/Din] [get_bd_pins TRX_tx_dds_inc_axi_gpio_0/gpio_io_o]
@@ -3095,6 +3098,9 @@ proc create_hier_cell_TRX { parentCell nameHier } {
   create_bd_pin -dir O -from 0 -to 0 -type clk TRX_rx_clkdiv_16MHz_o
   create_bd_pin -dir I -from 1 -to 0 TRX_rx_data_n
   create_bd_pin -dir I -from 1 -to 0 TRX_rx_data_p
+  create_bd_pin -dir O -from 15 -to 0 TRX_tx_DDS0_gpio_ampt
+  create_bd_pin -dir O -from 31 -to 0 TRX_tx_DDS0_gpio_inc
+  create_bd_pin -dir O -from 15 -to 0 TRX_tx_DDS1_gpio_ampt
   create_bd_pin -dir O -from 1 -to 0 TRX_tx_data_n
   create_bd_pin -dir O -from 1 -to 0 TRX_tx_data_p
   create_bd_pin -dir O -from 20 -to 8 -type data TRX_tx_im_out
@@ -3233,6 +3239,9 @@ proc create_hier_cell_TRX { parentCell nameHier } {
   connect_bd_net -net TRX_rx_selectio_wiz_0_data_out_to_pins_n [get_bd_pins TRX_tx_data_n] [get_bd_pins TRX_LVDS/TRX_tx_data_n]
   connect_bd_net -net TRX_rx_selectio_wiz_0_data_out_to_pins_p [get_bd_pins TRX_tx_data_p] [get_bd_pins TRX_LVDS/TRX_tx_data_p]
   connect_bd_net -net TRX_tx_4to1_c_counter_binary_0_THRESH0_0 [get_bd_pins TRX_LVDS/TRX_tx_4to1_c_counter_binary_0_THRESH0_4MHz] [get_bd_pins TRX_tx_DDS_unit/TRX_tx_4to1_c_counter_binary_0_THRESH0]
+  connect_bd_net -net TRX_tx_DDS0_gpio_ampt [get_bd_pins TRX_tx_DDS0_gpio_ampt] [get_bd_pins TRX_tx_DDS_unit/TRX_tx_DDS0_gpio_ampt]
+  connect_bd_net -net TRX_tx_DDS0_gpio_inc [get_bd_pins TRX_tx_DDS0_gpio_inc] [get_bd_pins TRX_tx_DDS_unit/TRX_tx_DDS1_gpio_inc]
+  connect_bd_net -net TRX_tx_DDS1_gpio_ampt [get_bd_pins TRX_tx_DDS1_gpio_ampt] [get_bd_pins TRX_tx_DDS_unit/TRX_tx_DDS1_gpio_ampt]
   connect_bd_net -net TRX_tx_DDS_unit_data_count [get_bd_pins data_count] [get_bd_pins TRX_tx_DDS_unit/data_count]
   connect_bd_net -net TRX_tx_DDS_unit_encoder_pull_FIFO_dump [get_bd_pins encoder_pull_FIFO_dump] [get_bd_pins TRX_tx_DDS_unit/encoder_pull_FIFO_dump]
   connect_bd_net -net TRX_tx_DDS_unit_encoder_pull_data_len [get_bd_pins encoder_pull_data_len] [get_bd_pins TRX_tx_DDS_unit/encoder_pull_data_len]
@@ -5426,7 +5435,7 @@ proc create_root_design { parentCell } {
   # Create instance: vio_0, and set properties
   set vio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:vio:3.0 vio_0 ]
   set_property -dict [ list \
-   CONFIG.C_NUM_PROBE_IN {53} \
+   CONFIG.C_NUM_PROBE_IN {56} \
    CONFIG.C_NUM_PROBE_OUT {0} \
    CONFIG.C_PROBE_OUT0_INIT_VAL {0x00180} \
    CONFIG.C_PROBE_OUT0_WIDTH {19} \
@@ -5634,6 +5643,9 @@ proc create_root_design { parentCell } {
   connect_bd_net -net TRX_rx_clkdiv_16MHz [get_bd_pins TRX/TRX_rx_clkdiv_16MHz_o] [get_bd_pins lt_fmeter_xlconcat_0/In4]
   connect_bd_net -net TRX_rx_data_n_1 [get_bd_ports TRX_rx_data_n] [get_bd_pins TRX/TRX_rx_data_n]
   connect_bd_net -net TRX_rx_data_p_1 [get_bd_ports TRX_rx_data_p] [get_bd_pins TRX/TRX_rx_data_p]
+  connect_bd_net -net TRX_tx_DDS0_gpio_ampt [get_bd_pins TRX/TRX_tx_DDS0_gpio_ampt] [get_bd_pins vio_0/probe_in54]
+  connect_bd_net -net TRX_tx_DDS0_gpio_inc [get_bd_pins TRX/TRX_tx_DDS0_gpio_inc] [get_bd_pins vio_0/probe_in53]
+  connect_bd_net -net TRX_tx_DDS1_gpio_ampt [get_bd_pins TRX/TRX_tx_DDS1_gpio_ampt] [get_bd_pins vio_0/probe_in55]
   connect_bd_net -net UART0EXT_DTRn_1 [get_bd_ports UART0EXT_DTRn] [get_bd_pins UART0/UART0EXT_DTRn]
   connect_bd_net -net UART0EXT_RTSn_1 [get_bd_ports UART0EXT_RTSn] [get_bd_pins UART0/UART0EXT_RTSn]
   connect_bd_net -net UART0_UART0EXT_CTSn [get_bd_ports UART0EXT_CTSn] [get_bd_pins UART0/UART0EXT_CTSn]

@@ -413,7 +413,7 @@ begin
                         sumAll          := 0;
                         
                         -- Squelch open info to the Encoder to inhibit transmission
-                        if ((sumOfRow(0) * 8) > to_integer(unsigned(decoder_rx09_squelch_lvl))) then
+                        if (sumOfRow(0) > to_integer(unsigned(decoder_rx09_squelch_lvl))) then
                             decoder_rx09_sql_open <= '1';
                         else
                             decoder_rx09_sql_open <= '0';
