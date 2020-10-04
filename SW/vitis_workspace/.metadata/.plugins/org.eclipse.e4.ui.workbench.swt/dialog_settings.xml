@@ -3,7 +3,7 @@
 	<section name="ShowViewDialog">
 		<item value="317" key="DIALOG_WIDTH"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
-		<item value="com.xilinx.sdk.performance.ui.views.MbPerfTableView" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
+		<item value="com.xilinx.sdk.performance.stm.freertos.trace.FreeRtosAnalysisView" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
 		<item value="437" key="DIALOG_HEIGHT"/>
 		<item value="1065" key="DIALOG_X_ORIGIN"/>
 		<item value="361" key="DIALOG_Y_ORIGIN"/>

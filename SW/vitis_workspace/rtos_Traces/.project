@@ -9,36 +9,4 @@
 	<natures>
 		<nature>org.eclipse.linuxtools.tmf.project.nature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>Traces/Run_Aug.-23_00-49/mdm_USER2_0_MB_Trace_Aug.-23_00-49/mdm_USER2_0_MB_Trace_Aug.-23_00-49_</name>
-			<type>1</type>
-			<location>C:/Users/espero/git/UFBmod/SW/vitis_workspace/rtos_Traces/Traces/.bookmarks</location>
-		</link>
-		<link>
-			<name>Traces/Run_Aug.-23_00-53/mdm_USER2_0_MB_Trace_Aug.-23_00-53/mdm_USER2_0_MB_Trace_Aug.-23_00-53_</name>
-			<type>1</type>
-			<location>C:/Users/espero/git/UFBmod/SW/vitis_workspace/rtos_Traces/Traces/.bookmarks</location>
-		</link>
-		<link>
-			<name>Traces/Run_Aug.-23_00-56/mdm_USER2_0_MB_Trace_Aug.-23_00-56/mdm_USER2_0_MB_Trace_Aug.-23_00-56_</name>
-			<type>1</type>
-			<location>C:/Users/espero/git/UFBmod/SW/vitis_workspace/rtos_Traces/Traces/.bookmarks</location>
-		</link>
-		<link>
-			<name>Traces/Run_Aug.-24_00-12/mdm_USER2_0_MB_Trace_Aug.-24_00-12/mdm_USER2_0_MB_Trace_Aug.-24_00-12_</name>
-			<type>1</type>
-			<location>C:/Users/espero/git/UFBmod/SW/vitis_workspace/rtos_Traces/Traces/.bookmarks</location>
-		</link>
-		<link>
-			<name>Traces/Run_Aug.-24_00-14/mdm_USER2_0_MB_Trace_Aug.-24_00-14/mdm_USER2_0_MB_Trace_Aug.-24_00-14_</name>
-			<type>1</type>
-			<location>C:/Users/espero/git/UFBmod/SW/vitis_workspace/rtos_Traces/Traces/.bookmarks</location>
-		</link>
-		<link>
-			<name>Traces/Run_Aug.-24_00-15/mdm_USER2_0_MB_Trace_Aug.-24_00-15/mdm_USER2_0_MB_Trace_Aug.-24_00-15_</name>
-			<type>1</type>
-			<location>C:/Users/espero/git/UFBmod/SW/vitis_workspace/rtos_Traces/Traces/.bookmarks</location>
-		</link>
-	</linkedResources>
 </projectDescription>

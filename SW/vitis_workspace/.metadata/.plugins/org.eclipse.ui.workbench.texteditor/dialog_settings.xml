@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="gpio_TRX_CONFIG" key="selection"/>
+		<item value="Squelch" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="squelch"/>
+			<item value="I/Q mixer"/>
+			<item value="I/Q mixer "/>
+			<item value="I/Q"/>
+			<item value="DdsFreqAmpSet"/>
+			<item value="iq"/>
+			<item value="vTaskDelay"/>
 			<item value="gpio_TRX_CONFIG"/>
 			<item value="LVDS"/>
-			<item value="squelch"/>
 			<item value="GPIO"/>
 			<item value="gpio_TRX_PUSHDATA"/>
 			<item value="gpio_TRX_AMPT"/>
 			<item value="XPAR_TRX_TRX_CONFIG_AXI_TRX_GPIO_0_DEVICE_ID"/>
 			<item value="XPAR_TRX_TRX_RX_FFT_UNIT_PUSHDATA_PUSHDATA_RX09_AXI_GPIO_0_DEVICE_ID"/>
 			<item value="XPAR_TRX_TRX_TX_DDS_UNIT_TRX_TX_DDS_INC_AXI_GPIO_0_DEVICE_ID"/>
-			<item value="XPAR_TRX_TRX_TX_DDS_UNIT_TRX_TX_DDS_AMPT_AXI_GPIO_0_DEVICE_ID"/>
-			<item value="random"/>
-			<item value="squel"/>
-			<item value="Yellow"/>
-			<item value="taskTrxRxMsg"/>
-			<item value="PULLDATA"/>
 		</list>
 		<list key="replacehistory">
 		</list>

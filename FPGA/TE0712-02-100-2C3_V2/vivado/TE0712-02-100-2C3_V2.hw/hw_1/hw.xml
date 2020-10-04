@@ -22,7 +22,7 @@
     <Object name="xc7a100t_0" gui_info="">
       <Properties Property="FULL_PROBES.FILE" value="$_project_name_.runs/impl_1/msys_wrapper.ltx"/>
       <Properties Property="PROBES.FILE" value="$_project_name_.runs/impl_1/msys_wrapper.ltx"/>
-      <Properties Property="PROGRAM.HW_BITSTREAM" value="$_project_name_.runs/impl_1/msys_wrapper.bit"/>
+      <Properties Property="PROGRAM.HW_BITSTREAM" value="F:/Xilinx/Vivado/2020.1/data/xicom/cfgmem/bitfile/spi_xc7a100t_pullnone.bit"/>
       <Properties Property="PROGRAM.HW_CFGMEM_PART" value="s25fl256sxxxxxx0-spi-x1_x2_x4"/>
       <Properties Property="SLR.COUNT" value="1"/>
     </Object>
@@ -70,9 +70,9 @@
     <Object name="msys_i/TRX_rd_data_count_CD100[8:0]" gui_info="hw_vios/hw_vio_1=33"/>
     <Object name="msys_i/TRX_rx09_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=28"/>
     <Object name="msys_i/TRX_rx24_32bits_CD100[31:0]" gui_info="hw_vios/hw_vio_1=30"/>
-    <Object name="msys_i/TRX_tx_DDS0_gpio_ampt[15:0]" gui_info="hw_vios/hw_vio_1=52"/>
-    <Object name="msys_i/TRX_tx_DDS0_gpio_inc[31:0]" gui_info="hw_vios/hw_vio_1=51"/>
-    <Object name="msys_i/TRX_tx_DDS1_gpio_ampt[15:0]" gui_info="hw_vios/hw_vio_1=53"/>
+    <Object name="msys_i/TRX_tx_DDS0_gpio_ampt[15:0]" gui_info="hw_vios/hw_vio_1=51"/>
+    <Object name="msys_i/TRX_tx_DDS0_gpio_inc[31:0]" gui_info=""/>
+    <Object name="msys_i/TRX_tx_DDS1_gpio_ampt[15:0]" gui_info="hw_vios/hw_vio_1=52"/>
     <Object name="msys_i/ULI_SYSTEM_XIO_1" gui_info="hw_vios/hw_vio_1=4"/>
     <Object name="msys_i/dds_tx09_ptt_1" gui_info="hw_vios/hw_vio_1=49"/>
     <Object name="msys_i/decoder_rx09_active_1" gui_info="hw_vios/hw_vio_1=44"/>
@@ -108,8 +108,8 @@
     <Object name="msys_i/postmem_rx_addrb_in_0[14:0]" gui_info="hw_vios/hw_vio_1=46"/>
     <Object name="msys_i/pulldata_dds_inc_1[23:0]" gui_info="hw_vios/hw_vio_1=49"/>
     <Object name="msys_i/pulldata_dds_inc_1[25:0]" gui_info="hw_vios/hw_vio_1=50"/>
-    <Object name="msys_i/vio_xlslice_40_Dout[12:0]" gui_info="hw_vios/hw_vio_1=54"/>
-    <Object name="msys_i/vio_xlslice_41_Dout[12:0]" gui_info="hw_vios/hw_vio_1=55"/>
+    <Object name="msys_i/vio_xlslice_40_Dout[12:0]" gui_info="hw_vios/hw_vio_1=53"/>
+    <Object name="msys_i/vio_xlslice_41_Dout[12:0]" gui_info="hw_vios/hw_vio_1=54"/>
     <Object name="msys_i/vio_xlslice_rx09_im_25to13_in45_Dout[12:0]" gui_info="hw_vios/hw_vio_1=32"/>
     <Object name="msys_i/vio_xlslice_rx09_re_12to0_in44_Dout[12:0]" gui_info="hw_vios/hw_vio_1=31"/>
     <Object name="msys_i/vio_xlslice_rx24_im_25to13_in47_Dout[12:0]" gui_info="hw_vios/hw_vio_1=41"/>

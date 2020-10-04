@@ -968,11 +968,11 @@ static u32 TrxOperationModeRFSet(u8 chpm)
 
 		writeBuf[0] = 0x00U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0006
 		writeBuf[1] = 0x06U;									// Reg-LSB
-		writeBuf[2] = (readBuf[2] & 0x00U) 	|  0x08U;			// RF_CFG		IRQMM=#08, IRQP=#00, DRV=#00 #01 (p19)
-		writeBuf[3] = (readBuf[3] & 0x00U) 	|  0x01U;			// RF_CLKO		DRV=#00#08, OS=#00#01 26MHz (p21)
+		writeBuf[2] = 0x08U | 0x00U;							// RF_CFG		IRQMM=#08, IRQP=#00, DRV=#00 #01 (p19)
+		writeBuf[3] = 0x00U | 0x01U;							// RF_CLKO		DRV=#00#08, OS=#00#01 26MHz (p21)
 		writeBuf[4] = (readBuf[4] & 0x1fU) 	|  0x00U;			// RF_BMDVC		BMHR, BMVTH (p79)
-		writeBuf[5] = (readBuf[5] & 0x00U) 	|  0x00U;			// RF_XOC		FS=00, TRIM=00 (p69)
-		writeBuf[6] = (readBuf[6] & 0x00U) 	|  0x39U;			// RF_IQIFC0	EXTLB=#00#80, DRV=#00#10#20#30, CMV=#00#04#08#0c, CMV1V2=#00#02, EEC=#00#01 (p27)  // XXX
+		writeBuf[5] = 0x00U;									// RF_XOC		FS=00, TRIM=00 (p69)
+		writeBuf[6] = 0x39U;									// RF_IQIFC0	EXTLB=#00#80, DRV=#00#10#20#30, CMV=#00#04#08#0c, CMV1V2=#00#02, EEC=#00#01 (p27)  // XXX
 		writeBuf[7] = (chpm  << 4) 			|  0x00U;			// RF_IQIFC1	CHPM, SKEWDRV=#00#01#02#03 (p32)
 
 		/* Write the data */
@@ -1802,7 +1802,7 @@ static u32 TrxLvdsSyncing(void)
 		/* Enable LVDS TX stream from FPGA */
 		{
 			XGpio_DiscreteSet(  &gpio_TRX_CONFIG, 1U, 0x00000001UL);
-			vTaskDelay(pdMS_TO_TICKS(10));
+			vTaskDelay(pdMS_TO_TICKS(25));
 			XGpio_DiscreteClear(&gpio_TRX_CONFIG, 1U, 0x00000001UL);
 		}
 
@@ -1870,18 +1870,16 @@ static void TestRF09Tx(u32 freq_Hz, int pwr_dBm)
 
 	/* Prepare - EES turned on to control the PTT */
 	TrxCmdRF09Set(CMD_TXPREP);
-#if 0
 	while (1) {
+		u8 state = 0;
+
 		TrxStateRF09Get(&state);
 		if (state == STATE_TXPREP) {
 			xil_printf("TestRF09Tx: changed into state = 0x%02X\r\n", state);
 			break;
 		}
-		vTaskDelay(pdMS_TO_TICKS(10));
+		vTaskDelay(pdMS_TO_TICKS(25));
 	}
-#else
-	vTaskDelay(pdMS_TO_TICKS(25));
-#endif
 
 	/* Syncing I/Q TX line */
 	TrxLvdsSyncing();
@@ -1898,15 +1896,15 @@ static void TestRF09Tx(u32 freq_Hz, int pwr_dBm)
 	TrxPllDcoIqRF09Get(&dcoI, &dcoQ);					// Automatic: bad measurement values  0x1d, 0x39  - use correction table instead
 #else
 	//dcoI = 0x0e;										// 0x0e
-	//dcoQ = 0x18;										// 0x20
+	//dcoQ = 0x20;										// 0x20
 	TrxPllDcoIqRF09Set(dcoI, dcoQ);
 #endif
 
-#if 1
+#if 0
 	/* Set FPGA DDS0 */
-	//DdsFreqAmpSet(0U, +00.000E+3, 0xf3U, cor);  		// ampl <= 0xf3
-	//DdsFreqAmpSet(1U, +00.000E+3, 0x00U, cor);
-#else
+	DdsFreqAmpSet(0U, +00.000E+3, 0xf3U, cor);  		// ampl <= 0xf3
+	DdsFreqAmpSet(1U, +00.000E+3, 0x00U, cor);
+#elif 0
 	/* Set FPGA DDS0 & DDS1 */
 	DdsFreqAmpSet(0U, +10.000E+3, 0x70U, cor);
 	DdsFreqAmpSet(1U, -15.000E+3, 0x70U, cor);
@@ -1976,7 +1974,7 @@ static void TestRF09Tx(u32 freq_Hz, int pwr_dBm)
 				}
 			}
 
-			vTaskDelay(pdMS_TO_TICKS(10));
+			vTaskDelay(pdMS_TO_TICKS(25));
 		}
 
 		/* RED off */
@@ -1987,7 +1985,6 @@ static void TestRF09Tx(u32 freq_Hz, int pwr_dBm)
 
 	/* Test park following ... */
 #if 0
-	// Something went wrong after last soldering the Atmel device: stays at STATE_TRANSITION=0x06
 	while (1) {
 		u8 state;
 
@@ -2048,9 +2045,9 @@ static void TestRF09Tx(u32 freq_Hz, int pwr_dBm)
 #endif
 
 #if 0
-	// Something went wrong after last soldering the Atmel device: stays at STATE_TXPREP=0x03
 	while (1) {
 		u32 irqs;
+		u8 state = 0;
 
 		TrxGetIrqs(&irqs);
 		TrxStateRF09Get(&state);
@@ -2072,18 +2069,16 @@ static void TestRF24Tx(u32 freq_Hz, int pwr_dBm)
 
 	/* Prepare - EES turned on to control the PTT */
 	TrxCmdRF24Set(CMD_TXPREP);
-#if 0
 	while (1) {
+		u8 state = 0;
+
 		TrxStateRF24Get(&state);
 		if (state == STATE_TXPREP) {
 			xil_printf("TestRF24Tx: changed into state = 0x%02X\r\n", state);
 			break;
 		}
-		vTaskDelay(pdMS_TO_TICKS(10));
+		vTaskDelay(pdMS_TO_TICKS(25));
 	}
-#else
-	vTaskDelay(pdMS_TO_TICKS(25));
-#endif
 
 	/* Syncing I/Q TX line */
 	TrxLvdsSyncing();
@@ -2102,11 +2097,11 @@ static void TestRF24Tx(u32 freq_Hz, int pwr_dBm)
 	TrxPllDcoIqRF24Set(dcoI, dcoQ);
 #endif
 
-#if 1
+#if 0
 	/* Set FPGA DDS0 */
-	//DdsFreqAmpSet(0U, +00.000E+3, 0xf3U, cor);  // ampl <= 0xf3
-	//DdsFreqAmpSet(1U,  00.000E+3, 0x00U, cor);
-#else
+	DdsFreqAmpSet(0U, +00.000E+3, 0xf3U, cor);  // ampl <= 0xf3
+	DdsFreqAmpSet(1U,  00.000E+3, 0x00U, cor);
+#elif 0
 	/* Set FPGA DDS0 & DDS1 */
 	DdsFreqAmpSet(0U, +10.000E+3, 0x70U, cor);
 	DdsFreqAmpSet(1U, +15.000E+3, 0x70U, cor);
@@ -2120,8 +2115,6 @@ static void TestRF24Tx(u32 freq_Hz, int pwr_dBm)
 	/* RED on */
 	pwmLedSet(0x0000007fUL, 0x00ffffffUL);
 	TrxCmdRF24Set(CMD_TX);
-#if 0
-	// Something went wrong after last soldering the Atmel device: stays at STATE_TRANSITION=0x06
 	while (1) {
 		u8 state;
 
@@ -2132,7 +2125,6 @@ static void TestRF24Tx(u32 freq_Hz, int pwr_dBm)
 		}
 		vTaskDelay(pdMS_TO_TICKS(100));
 	}
-#endif
 
 #if 0
 	/* Freq. sweep 2400 .. 2483.5 MHz */
@@ -2177,10 +2169,9 @@ static void TestRF24Tx(u32 freq_Hz, int pwr_dBm)
 
 	/* RED off */
 	TrxCmdRF24Set(CMD_TRXOFF);
-#if 0
-	// Something went wrong after last soldering the Atmel device: stays at STATE_TXPREP=0x03
 	while (1) {
 		u32 irqs;
+		u8 state = 0;
 
 		TrxGetIrqs(&irqs);
 		TrxStateRF24Get(&state);
@@ -2190,7 +2181,6 @@ static void TestRF24Tx(u32 freq_Hz, int pwr_dBm)
 		}
 		vTaskDelay(pdMS_TO_TICKS(100));
 	}
-#endif
 	pwmLedSet(0x00000000UL, 0x00ffffffUL);
 }
 
@@ -2214,28 +2204,12 @@ static void TestRF09Rx(u32 freq_Hz)
 	/* Stop FPGA DDS0/DDS1 */
 	//DdsFreqAmpSet(1U, 0.0f, 0x00U, 1.0f);	// XXX
 
+	/* Syncing I/Q TX line */
+	TrxLvdsSyncing();
+
 	/* GREEN dark on */
 	pwmLedSet(0x00001000UL, 0x0000ff00UL);
 	TrxCmdRF09Set(CMD_RX);
-#if 0
-	while (1) {
-		TrxStateRF09Get(&state);
-		if (state == STATE_RX) {
-			xil_printf("TestRF09Rx: changed into state = 0x%02X\r\n", state);
-			break;
-		}
-		vTaskDelay(pdMS_TO_TICKS(10));
-	}
-#else
-	vTaskDelay(pdMS_TO_TICKS(25));
-#endif
-
-	/* Syncing I/Q TX line */
-	//TrxLvdsSyncing();
-
-
-#if 0
-	// Something went wrong after last soldering the Atmel device: stays at STATE_RESET=0x07
 	while (1) {
 		u8 state = 0;
 
@@ -2244,7 +2218,12 @@ static void TestRF09Rx(u32 freq_Hz)
 			xil_printf("TestRF09Rx: changed into state = 0x%02X\r\n", state);
 			break;
 		}
-		vTaskDelay(pdMS_TO_TICKS(100));
+		vTaskDelay(pdMS_TO_TICKS(25));
+	}
+
+#if 0
+	while (1) {
+		vTaskDelay(pdMS_TO_TICKS(250));
 	}
 #endif
 
@@ -2283,18 +2262,14 @@ static void TestRF24Rx(u32 freq_Hz)
 	u8 state;
 	pwmLedSet(0x007f0000UL, 0x00ffffffUL);
 	TrxCmdRF24Set(CMD_RX);
-#if 0
 	while (1) {
 		TrxStateRF24Get(&state);
 		if (state == STATE_RX) {
 			xil_printf("TestRF24Rx: changed into state = 0x%02X\r\n", state);
 			break;
 		}
-		vTaskDelay(pdMS_TO_TICKS(10));
+		vTaskDelay(pdMS_TO_TICKS(25));
 	}
-#else
-	vTaskDelay(pdMS_TO_TICKS(25));
-#endif
 
 	/* Syncing I/Q TX line */
 	TrxLvdsSyncing();
@@ -2363,7 +2338,7 @@ void taskTrx(void* pvParameters)
 		// write - bit31: TRX_resetn, bit30: TRX_rfx_mode, bit0:LVDS_tx_blank
 		//XGpio_SetDataDirection(&gpio_TRX_CONFIG, 1U, 0x00000000UL);	// 32 bit output
 		XGpio_DiscreteWrite(   &gpio_TRX_CONFIG, 1U, 0x00000000UL);
-		vTaskDelay(pdMS_TO_TICKS(10));
+		vTaskDelay(pdMS_TO_TICKS(25));
 		XGpio_DiscreteSet(     &gpio_TRX_CONFIG, 1U, 0x80000000UL);
 
 		// read  - bit2: RX24 LVDS synced, bit1: RX09 LVDS synced, bit0: 25 MHz / 26 MHz TRX clock PLL locked
@@ -2418,7 +2393,7 @@ void taskTrx(void* pvParameters)
 
 		// write - bit31: Read next byte from FIFO, bit18..bit0: Squelch level
 		//XGpio_SetDataDirection(&gpio_TRX_PUSHDATA, 2U, 0x00000000UL);
-		XGpio_DiscreteWrite(     &gpio_TRX_PUSHDATA, 2U, 0x00001000UL);
+		XGpio_DiscreteWrite(     &gpio_TRX_PUSHDATA, 2U, 0x00000800UL);
 	}
 
 	/* Init SPI */
@@ -2510,7 +2485,6 @@ void taskTrx(void* pvParameters)
 		u32 freq_Hz = 869000000UL;  						// 868000000 ..  870000000 Hz		// RF09
 
 		TrxCmdRF09Set(CMD_TXPREP);
-#if 0
 		while (1) {
 			u8 state = 0;
 			u32 irqs = 0UL;
@@ -2522,7 +2496,6 @@ void taskTrx(void* pvParameters)
 				break;
 			}
 		}
-#endif
 
 		/* Testing the Receiver of the TRX */
 		TestRF09Rx(freq_Hz);
@@ -2703,10 +2676,10 @@ void taskTrxRxMsg(void* pvParameters)
 				/* GREEN dark */
 				pwmLedSet(0x00001000UL, 0x0000ff00UL);
 			}
-		}
+		}  // if ()
 
 		else {
 			vTaskDelay(pdMS_TO_TICKS(100));
 		}
-	}
+	}  // while (1)
 }

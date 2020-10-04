@@ -139,14 +139,14 @@ int main(void)
 			(const char*) "tskNet",			/* Text name for the task, provided to assist debugging only. */
 			configMINIMAL_STACK_SIZE,		/* The stack allocated to the task. */
 			NULL,							/* The task parameter is not used, so set to NULL. */
-			tskIDLE_PRIORITY + 1U,			/* The task runs at that priority. */
+			tskIDLE_PRIORITY + 2U,			/* The task runs at that priority. */
 			&thEth
 	);
 
 	xTaskCreate(
 			taskTrx, 						/* The function that implements the task. */
 			(const char*) "tskTrx",			/* Text name for the task, provided to assist debugging only. */
-			512U,							/* The stack allocated to the task. */
+			500,							/* The stack allocated to the task. */
 			NULL,							/* The task parameter is not used, so set to NULL. */
 			tskIDLE_PRIORITY + 1U,			/* The task runs at that priority. */
 			&thTrx
@@ -155,9 +155,9 @@ int main(void)
 	xTaskCreate(
 			taskTrxRxMsg, 					/* The function that implements the task. */
 			(const char*) "tskTrxRxMsg",	/* Text name for the task, provided to assist debugging only. */
-			512U,							/* The stack allocated to the task. */
+			500,							/* The stack allocated to the task. */
 			NULL,							/* The task parameter is not used, so set to NULL. */
-			tskIDLE_PRIORITY + 1U,			/* The task runs at that priority. */
+			tskIDLE_PRIORITY + 2U,			/* The task runs at that priority. */
 			&thTrxRxMsg
 	);
 
