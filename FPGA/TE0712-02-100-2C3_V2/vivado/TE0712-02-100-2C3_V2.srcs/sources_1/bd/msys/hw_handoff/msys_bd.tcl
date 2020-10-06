@@ -2930,7 +2930,6 @@ proc create_hier_cell_UART0 { parentCell nameHier } {
   create_bd_pin -dir I -type rst ext_reset_in
   create_bd_pin -dir O -type intr interrupt
   create_bd_pin -dir O -type intr ip2intc_irpt
-  create_bd_pin -dir O -from 0 -to 0 -type rst peripheral_reset
   create_bd_pin -dir I -type clk s_axi_aclk
   create_bd_pin -dir I -type rst s_axi_aresetn
   create_bd_pin -dir I -type clk slowest_sync_clk
@@ -3017,7 +3016,6 @@ proc create_hier_cell_UART0 { parentCell nameHier } {
   connect_bd_net -net axi_UART0_uartlite_0_interrupt [get_bd_pins interrupt] [get_bd_pins axi_UART0_uartlite_0/interrupt]
   connect_bd_net -net ext_reset_in_1 [get_bd_pins ext_reset_in] [get_bd_pins rst_mig_7series_0_12M/ext_reset_in]
   connect_bd_net -net rst_mig_7series_0_12M_peripheral_aresetn [get_bd_pins UART0_rst_n] [get_bd_pins rst_mig_7series_0_12M/peripheral_aresetn]
-  connect_bd_net -net rst_mig_7series_0_12M_peripheral_reset [get_bd_pins peripheral_reset] [get_bd_pins rst_mig_7series_0_12M/peripheral_reset]
   connect_bd_net -net s_axi_aclk_1 [get_bd_pins s_axi_aclk] [get_bd_pins axi_UART0_gpio_0/s_axi_aclk] [get_bd_pins axi_UART0_uartlite_0/s_axi_aclk]
   connect_bd_net -net s_axi_aresetn_1 [get_bd_pins s_axi_aresetn] [get_bd_pins axi_UART0_gpio_0/s_axi_aresetn] [get_bd_pins axi_UART0_uartlite_0/s_axi_aresetn]
   connect_bd_net -net slowest_sync_clk_1 [get_bd_pins slowest_sync_clk] [get_bd_pins rst_mig_7series_0_12M/slowest_sync_clk]
@@ -5185,7 +5183,7 @@ proc create_root_design { parentCell } {
   set dds_tx09_inc [ create_bd_port -dir I -from 25 -to 0 dds_tx09_inc ]
   set dds_tx09_ptt [ create_bd_port -dir I dds_tx09_ptt ]
   set decoder_rx09_active [ create_bd_port -dir I decoder_rx09_active ]
-  set decoder_rx09_center_pos [ create_bd_port -dir I -from 4 -to 0 -type data decoder_rx09_center_pos ]
+  set decoder_rx09_center_pos [ create_bd_port -dir I -from 7 -to 0 -type data decoder_rx09_center_pos ]
   set decoder_rx09_noise [ create_bd_port -dir I -from 18 -to 0 -type data decoder_rx09_noise ]
   set decoder_rx09_sql_open [ create_bd_port -dir I decoder_rx09_sql_open ]
   set decoder_rx09_squelch_lvl [ create_bd_port -dir O -from 18 -to 0 -type data decoder_rx09_squelch_lvl ]

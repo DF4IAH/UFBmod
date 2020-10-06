@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Sat Oct  3 16:34:11 2020
+--Date        : Tue Oct  6 22:26:57 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -4590,7 +4590,6 @@ entity UART0_imp_1B98M7Q is
     ext_reset_in : in STD_LOGIC;
     interrupt : out STD_LOGIC;
     ip2intc_irpt : out STD_LOGIC;
-    peripheral_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     s_axi_aclk : in STD_LOGIC;
     s_axi_aresetn : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
@@ -4743,13 +4742,13 @@ architecture STRUCTURE of UART0_imp_1B98M7Q is
   signal axi_UART0_uartlite_0_interrupt : STD_LOGIC;
   signal ext_reset_in_1 : STD_LOGIC;
   signal rst_mig_7series_0_12M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal rst_mig_7series_0_12M_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal s_axi_aclk_1 : STD_LOGIC;
   signal s_axi_aresetn_1 : STD_LOGIC;
   signal slowest_sync_clk_1 : STD_LOGIC;
   signal NLW_rst_mig_7series_0_12M_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_rst_mig_7series_0_12M_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_mig_7series_0_12M_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_rst_mig_7series_0_12M_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
 begin
   Conn1_ARADDR(31 downto 0) <= S_AXI_araddr(31 downto 0);
   Conn1_ARVALID(0) <= S_AXI_arvalid(0);
@@ -4797,7 +4796,6 @@ begin
   ext_reset_in_1 <= ext_reset_in;
   interrupt <= axi_UART0_uartlite_0_interrupt;
   ip2intc_irpt <= axi_UART0_gpio_0_ip2intc_irpt;
-  peripheral_reset(0) <= rst_mig_7series_0_12M_peripheral_reset(0);
   s_axi_aclk_1 <= s_axi_aclk;
   s_axi_aresetn_1 <= s_axi_aresetn;
   slowest_sync_clk_1 <= slowest_sync_clk;
@@ -4887,7 +4885,7 @@ rst_mig_7series_0_12M: component msys_rst_mig_7series_0_50M_1
       mb_debug_sys_rst => '0',
       mb_reset => NLW_rst_mig_7series_0_12M_mb_reset_UNCONNECTED,
       peripheral_aresetn(0) => rst_mig_7series_0_12M_peripheral_aresetn(0),
-      peripheral_reset(0) => rst_mig_7series_0_12M_peripheral_reset(0),
+      peripheral_reset(0) => NLW_rst_mig_7series_0_12M_peripheral_reset_UNCONNECTED(0),
       slowest_sync_clk => slowest_sync_clk_1
     );
 end STRUCTURE;
@@ -18948,7 +18946,7 @@ entity msys is
     dds_tx09_inc : in STD_LOGIC_VECTOR ( 25 downto 0 );
     dds_tx09_ptt : in STD_LOGIC;
     decoder_rx09_active : in STD_LOGIC;
-    decoder_rx09_center_pos : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    decoder_rx09_center_pos : in STD_LOGIC_VECTOR ( 7 downto 0 );
     decoder_rx09_noise : in STD_LOGIC_VECTOR ( 18 downto 0 );
     decoder_rx09_sql_open : in STD_LOGIC;
     decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 18 downto 0 );
@@ -19141,7 +19139,7 @@ architecture STRUCTURE of msys is
     probe_in20 : in STD_LOGIC_VECTOR ( 12 downto 0 );
     probe_in21 : in STD_LOGIC_VECTOR ( 18 downto 0 );
     probe_in22 : in STD_LOGIC_VECTOR ( 18 downto 0 );
-    probe_in23 : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    probe_in23 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe_in24 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_in25 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe_in26 : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -19810,7 +19808,7 @@ architecture STRUCTURE of msys is
   signal dcm_locked_1 : STD_LOGIC;
   signal dds_tx09_ptt_1 : STD_LOGIC;
   signal decoder_rx09_active_1 : STD_LOGIC;
-  signal decoder_rx09_center_pos_1 : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal decoder_rx09_center_pos_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal decoder_rx09_noise_1 : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal decoder_rx09_sql_open_1 : STD_LOGIC;
   signal decoder_rx09_strength_1 : STD_LOGIC_VECTOR ( 18 downto 0 );
@@ -20388,7 +20386,6 @@ architecture STRUCTURE of msys is
   signal xfft_rx09_dly3449_event_tlast_unexpected_out_0 : STD_LOGIC;
   signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal NLW_CLK1B_CW_0_clk_out4_000deg_UNCONNECTED : STD_LOGIC;
-  signal NLW_UART0_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_BOARD_iic_0_gpo_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_timer_0_generateout0_UNCONNECTED : STD_LOGIC;
   signal NLW_axi_timer_0_generateout1_UNCONNECTED : STD_LOGIC;
@@ -20658,7 +20655,7 @@ begin
   axi_quad_spi_0_SPI_0_SS_I <= qspi_flash_ss_i;
   dds_tx09_ptt_1 <= dds_tx09_ptt;
   decoder_rx09_active_1 <= decoder_rx09_active;
-  decoder_rx09_center_pos_1(4 downto 0) <= decoder_rx09_center_pos(4 downto 0);
+  decoder_rx09_center_pos_1(7 downto 0) <= decoder_rx09_center_pos(7 downto 0);
   decoder_rx09_noise_1(18 downto 0) <= decoder_rx09_noise(18 downto 0);
   decoder_rx09_sql_open_1 <= decoder_rx09_sql_open;
   decoder_rx09_squelch_lvl(18 downto 0) <= TRX_decoder_rx09_squelch_lvl(18 downto 0);
@@ -21398,7 +21395,6 @@ UART0: entity work.UART0_imp_1B98M7Q
       ext_reset_in => \^mig_7series_0_ui_clk_sync_rst\,
       interrupt => UART0_interrupt,
       ip2intc_irpt => UART0_ip2intc_irpt,
-      peripheral_reset(0) => NLW_UART0_peripheral_reset_UNCONNECTED(0),
       s_axi_aclk => microblaze_0_Clk_100MHz,
       s_axi_aresetn => rst_mig_7series_0_100M_peripheral_aresetn(0),
       slowest_sync_clk => UART0_clk_wiz_0_clk_out1
@@ -22458,7 +22454,7 @@ vio_0: component msys_vio_0_0
       probe_in20(12 downto 0) => vio_xlslice_rx09_im_25to13_in45_Dout(12 downto 0),
       probe_in21(18 downto 0) => decoder_rx09_strength_1(18 downto 0),
       probe_in22(18 downto 0) => decoder_rx09_noise_1(18 downto 0),
-      probe_in23(4 downto 0) => decoder_rx09_center_pos_1(4 downto 0),
+      probe_in23(7 downto 0) => decoder_rx09_center_pos_1(7 downto 0),
       probe_in24(31 downto 0) => ROTENC_decoder_Q(31 downto 0),
       probe_in25(0) => BOARD_ROTENC_PUSH_1,
       probe_in26(31 downto 0) => labtools_fmeter_0_F5(31 downto 0),

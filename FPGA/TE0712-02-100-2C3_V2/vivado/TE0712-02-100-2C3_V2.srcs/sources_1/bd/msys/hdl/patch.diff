@@ -1,5 +1,5 @@
---- msys_wrapper.vhd.orig.txt	2020-10-02 18:30:38.983405100 +0200
-+++ msys_wrapper.vhd	2020-10-02 18:38:31.097291600 +0200
+--- msys_wrapper.vhd.orig.txt	2020-10-06 22:26:59.229254100 +0200
++++ msys_wrapper.vhd	2020-10-06 22:42:52.021499000 +0200
 @@ -16,4 +16,6 @@
      BOARD_IIC_scl_io : inout STD_LOGIC;
      BOARD_IIC_sda_io : inout STD_LOGIC;
@@ -66,7 +66,7 @@
 -    dds_tx09_inc : in STD_LOGIC_VECTOR ( 25 downto 0 );
 -    dds_tx09_ptt : in STD_LOGIC;
 -    decoder_rx09_active : in STD_LOGIC;
--    decoder_rx09_center_pos : in STD_LOGIC_VECTOR ( 4 downto 0 );
+-    decoder_rx09_center_pos : in STD_LOGIC_VECTOR ( 7 downto 0 );
 -    decoder_rx09_noise : in STD_LOGIC_VECTOR ( 18 downto 0 );
 -    decoder_rx09_sql_open : in STD_LOGIC;
 -    decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 18 downto 0 );
@@ -203,7 +203,7 @@
 +    post_fft_rx09_mem_b_addr                        : out STD_LOGIC_VECTOR( 9 downto 0);
 +    post_fft_rx09_mem_b_dout                        : in  STD_LOGIC_VECTOR(15 downto 0);
 +    decoder_rx09_squelch_lvl                        : in  STD_LOGIC_VECTOR(18 downto 0);
-+    decoder_rx09_center_pos                         : out STD_LOGIC_VECTOR( 4 downto 0);
++    decoder_rx09_center_pos                         : out STD_LOGIC_VECTOR( 7 downto 0);
 +    decoder_rx09_strength                           : out STD_LOGIC_VECTOR(18 downto 0);
 +    decoder_rx09_noise                              : out STD_LOGIC_VECTOR(18 downto 0);
 +    decoder_rx09_sql_open                           : out STD_LOGIC;
@@ -263,7 +263,7 @@
    signal TRX_spi_ss_t : STD_LOGIC;
 +  signal mw_decoder_rx09_sql_open : STD_LOGIC;
 +  signal mw_decoder_rx09_active : STD_LOGIC;
-+  signal mw_decoder_rx09_center_pos : STD_LOGIC_VECTOR ( 4 downto 0 );
++  signal mw_decoder_rx09_center_pos : STD_LOGIC_VECTOR ( 7 downto 0 );
 +  signal mw_decoder_rx09_noise : STD_LOGIC_VECTOR ( 18 downto 0 );
 +  signal mw_decoder_rx09_squelch_lvl : STD_LOGIC_VECTOR ( 18 downto 0 );
 +  signal mw_decoder_rx09_strength : STD_LOGIC_VECTOR ( 18 downto 0 );
@@ -572,7 +572,7 @@
 -      dds_tx09_inc(25 downto 0) => dds_tx09_inc(25 downto 0),
 -      dds_tx09_ptt => dds_tx09_ptt,
 -      decoder_rx09_active => decoder_rx09_active,
--      decoder_rx09_center_pos(4 downto 0) => decoder_rx09_center_pos(4 downto 0),
+-      decoder_rx09_center_pos(7 downto 0) => decoder_rx09_center_pos(7 downto 0),
 -      decoder_rx09_noise(18 downto 0) => decoder_rx09_noise(18 downto 0),
 -      decoder_rx09_sql_open => decoder_rx09_sql_open,
 -      decoder_rx09_squelch_lvl(18 downto 0) => decoder_rx09_squelch_lvl(18 downto 0),
@@ -590,7 +590,7 @@
 +      dds_tx09_inc(25 downto 0) => mw_dds_tx09_inc(25 downto 0),
 +      dds_tx09_ptt => mw_dds_tx09_ptt,
 +      decoder_rx09_active => mw_decoder_rx09_active,
-+      decoder_rx09_center_pos(4 downto 0) => mw_decoder_rx09_center_pos(4 downto 0),
++      decoder_rx09_center_pos(7 downto 0) => mw_decoder_rx09_center_pos(7 downto 0),
 +      decoder_rx09_noise(18 downto 0) => mw_decoder_rx09_noise(18 downto 0),
 +      decoder_rx09_sql_open => mw_decoder_rx09_sql_open,
 +      decoder_rx09_squelch_lvl(18 downto 0) => mw_decoder_rx09_squelch_lvl(18 downto 0),

@@ -44,33 +44,35 @@ architecture Behavioral of tb_UFBmod_Decoder is
   component UFBmod_Decoder is
     Port ( 
         -- All Clock Domain AXI 100 MHz
-        resetn                                      : in  STD_LOGIC;
-        clk                                         : in  STD_LOGIC;
+        reset                                           : in  STD_LOGIC;
+        clk                                             : in  STD_LOGIC;
         
-        post_fft_rx09_mem_a_EoT                     : in  STD_LOGIC;
-        post_fft_rx09_mem_a_addr                    : in  STD_LOGIC_VECTOR(41 downto 0);
+        post_fft_rx09_mem_a_EoT                         : in  STD_LOGIC;
+        post_fft_rx09_mem_a_addr                        : in  STD_LOGIC_VECTOR(41 downto 0);
         
-        post_fft_rx09_mem_b_addr                    : out STD_LOGIC_VECTOR( 9 downto 0);
-        post_fft_rx09_mem_b_dout                    : in  STD_LOGIC_VECTOR(15 downto 0);
+        post_fft_rx09_mem_b_addr                        : out STD_LOGIC_VECTOR( 9 downto 0);
+        post_fft_rx09_mem_b_dout                        : in  STD_LOGIC_VECTOR(15 downto 0);
         
-        decoder_rx09_squelch_lvl                    : in  STD_LOGIC_VECTOR(18 downto 0);
+        decoder_rx09_squelch_lvl                        : in  STD_LOGIC_VECTOR(18 downto 0);
         
-        decoder_rx09_center_pos                     : out STD_LOGIC_VECTOR( 4 downto 0);
-        decoder_rx09_strength                       : out STD_LOGIC_VECTOR(18 downto 0);
-        decoder_rx09_noise                          : out STD_LOGIC_VECTOR(18 downto 0);
-        decoder_rx09_sql_open                       : out STD_LOGIC;
-        decoder_rx09_active                         : out STD_LOGIC;
-    
-        pushdata_rx09_en                            : out STD_LOGIC;
-        pushdata_rx09_byteData                      : out STD_LOGIC_VECTOR( 7 downto 0)
+        decoder_rx09_center_pos                         : out STD_LOGIC_VECTOR( 7 downto 0);
+        decoder_rx09_strength                           : out STD_LOGIC_VECTOR(18 downto 0);
+        decoder_rx09_noise                              : out STD_LOGIC_VECTOR(18 downto 0);
+        decoder_rx09_sql_open                           : out STD_LOGIC;
+        decoder_rx09_active                             : out STD_LOGIC;
+        
+        dds_tx09_ptt                                    : in  STD_LOGIC;
+        
+        pushdata_rx09_en                                : out STD_LOGIC;
+        pushdata_rx09_byteData                          : out STD_LOGIC_VECTOR( 7 downto 0)
     );
   end component UFBmod_Decoder;
 
 -- RESETS
-  signal tb_resetn : STD_LOGIC;
+  signal tb_reset                                   : STD_LOGIC;
 
 -- CLOCKS
-  signal tb_clk : STD_LOGIC;
+  signal tb_clk                                     : STD_LOGIC;
 
 -- STIMULUS
   signal tb_pre_fft_rx09_mem_a_addr                 : STD_LOGIC_VECTOR (10 downto 0);
@@ -82,11 +84,12 @@ architecture Behavioral of tb_UFBmod_Decoder is
   signal tb_post_fft_rx09_mem_b_dout_d0             : STD_LOGIC_VECTOR (15 downto 0);
   signal tb_post_fft_rx09_mem_b_dout                : STD_LOGIC_VECTOR (15 downto 0);
   signal tb_decoder_rx09_squelch_lvl                : STD_LOGIC_VECTOR (18 downto 0);
-  signal tb_decoder_rx09_center_pos                 : STD_LOGIC_VECTOR ( 4 downto 0);
+  signal tb_decoder_rx09_center_pos                 : STD_LOGIC_VECTOR ( 7 downto 0);
   signal tb_decoder_rx09_strength                   : STD_LOGIC_VECTOR (18 downto 0);
   signal tb_decoder_rx09_noise                      : STD_LOGIC_VECTOR (18 downto 0);
   signal tb_decoder_rx09_sql_open                   : STD_LOGIC;
   signal tb_decoder_rx09_active                     : STD_LOGIC;
+  signal tb_dds_tx09_ptt                            : STD_LOGIC;
   signal tb_pushdata_rx09_en                        : STD_LOGIC;
   signal tb_pushdata_rx09_byteData                  : STD_LOGIC_VECTOR ( 7 downto 0);
 begin
@@ -99,7 +102,7 @@ begin
 -- DUT
   UFBmod_Decoder_i: component UFBmod_Decoder
     port map (
-        resetn                          => tb_resetn,
+        reset                           => tb_reset,
         clk                             => tb_clk,
         
         post_fft_rx09_mem_a_EoT         => tb_post_fft_rx09_mem_a_EoT,
@@ -116,6 +119,8 @@ begin
         decoder_rx09_sql_open           => tb_decoder_rx09_sql_open,
         decoder_rx09_active             => tb_decoder_rx09_active,
         
+        dds_tx09_ptt                    => tb_dds_tx09_ptt,
+        
         pushdata_rx09_en                => tb_pushdata_rx09_en,
         pushdata_rx09_byteData          => tb_pushdata_rx09_byteData
     );
@@ -124,10 +129,10 @@ begin
 -- RESETS
   proc_tb_reset: process
   begin
-    tb_resetn   <= '0';
+    tb_reset    <= '1';
     
     wait for 10us;
-    tb_resetn   <= '1';
+    tb_reset    <= '0';
     wait;
   end process proc_tb_reset;
 
@@ -147,11 +152,12 @@ begin
 
   -- Squelch level setting
   proc_squelch_lvl: process
-  constant C_squelch_lvl                        : Integer   := 300;                                 -- Set squelch level
+  constant C_squelch_lvl                        : Integer   :=  225;                                -- Set squelch level: dez225 .. dez900 okay
   begin
     tb_decoder_rx09_squelch_lvl <= (others => '0');
+    tb_dds_tx09_ptt             <= '0';
     
-    wait until tb_resetn = '1';
+    wait until tb_reset = '0';
     tb_decoder_rx09_squelch_lvl <= std_logic_vector(to_unsigned(C_squelch_lvl, tb_decoder_rx09_squelch_lvl'length));
     
     wait;
@@ -166,7 +172,7 @@ begin
     pre_a_addr_Int              := 0;
     tb_pre_fft_rx09_mem_a_addr  <= (others => '0');
     
-    wait until tb_resetn = '1';
+    wait until tb_reset = '0';
     loop
         wait until tb_clk'event and tb_clk = '1';
         
@@ -189,7 +195,7 @@ begin
     tb_post_fft_rx09_mem_a_EoT          <= '0';
     tb_post_fft_rx09_mem_a_addr         <= (others => '0');
     
-    wait until tb_resetn = '1';
+    wait until tb_reset = '0';
     
     -- post_fft: Address incrementor each 64 us
     loop
@@ -432,7 +438,7 @@ begin
     
     
     -- Start output    
-    wait until tb_resetn = '1';
+    wait until tb_reset = '0';
     wait for 10 us;
     
     loop
