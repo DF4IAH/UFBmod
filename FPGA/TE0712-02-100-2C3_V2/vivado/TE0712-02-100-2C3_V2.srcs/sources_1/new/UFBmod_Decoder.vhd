@@ -133,76 +133,75 @@ begin
     variable srField_t10                            : Vec32u16;
     variable srField_t11                            : Vec32u16;
     
-    type Vec32Int                                   is array (31 downto 0) of Integer;
-    variable sumPreambleRow                         : Vec32Int;
-    variable sumPreambleField_t0                    : Vec32Int;
-    variable sumPreambleField_t1                    : Vec32Int;
-    variable sumPreambleField_t2                    : Vec32Int;
+    type Vec32Int24                                 is array (31 downto 0) of Integer  range 0 to (2**24 - 1);
+    variable sumPreambleRow                         : Vec32Int24;
+    variable sumPreambleField_t0                    : Vec32Int24;
+    variable sumPreambleField_t1                    : Vec32Int24;
+    variable sumPreambleField_t2                    : Vec32Int24;
     
-    type Vec12Int                                   is array (11 downto 0) of Integer;
-    variable sumOfRow                               : Vec12Int;
+    type Vec12Int24                                 is array (11 downto 0) of Integer  range 0 to (2**24 - 1);
+    variable sumOfRow                               : Vec12Int24;
     
-    variable sumAll                                 : Integer;
-    variable sumPreamble                            : Integer;
+    variable sumAll                                 : Integer  range 0 to (2**24 - 1);
+    variable sumPreamble                            : Integer  range 0 to (2**24 - 1);
     
-    variable preambleMaxVal                         : Integer;
-    variable preambleMaxPos                         : Integer;
+    variable preambleMaxVal                         : Integer  range 0 to (2**24 - 1);
+    variable preambleMaxPos                         : Integer  range 0 to (2**8  - 1);
     
-    variable initialLoopIdx                         : Integer;
-    variable watchdogIdx                            : Integer;
-    variable historyLoopIdx                         : Integer;
-    variable fftLoopIdx                             : Integer;
+    variable initialLoopIdx                         : Integer  range 0 to (2**4  - 1);
+    variable watchdogIdx                            : Integer  range 0 to (2**17 - 1);
+    variable historyLoopIdx                         : Integer  range 0 to (2**4  - 1);
+    variable fftLoopIdx                             : Integer  range 0 to (2**8  - 1);
     
-    variable sqlVal                                 : Integer;
-    variable fingerprint_t10                        : Integer;
-    variable fingerprint_t08                        : Integer;
-    variable fingerprint_t06                        : Integer;
-    variable fingerprint_t04                        : Integer;
-    variable fingerprint_t02                        : Integer;
-    variable fingerprint_t00                        : Integer;
+    variable sqlVal                                 : Integer  range 0 to (2**24 - 1);
+    variable fingerprint_t10                        : Integer  range 0 to (2**24 - 1);
+    variable fingerprint_t08                        : Integer  range 0 to (2**24 - 1);
+    variable fingerprint_t06                        : Integer  range 0 to (2**24 - 1);
+    variable fingerprint_t04                        : Integer  range 0 to (2**24 - 1);
+    variable fingerprint_t02                        : Integer  range 0 to (2**24 - 1);
+    variable fingerprint_t00                        : Integer  range 0 to (2**24 - 1);
     
-    variable post_fft_rx09_mem_b_addr_Int           : Integer;
+    variable post_fft_rx09_mem_b_addr_Int           : Integer  range 0 to (2**10 - 1);
     
-    variable decoder_LoopIdx                        : Integer;
-    variable decoder_lastCenterOfs                  : Integer;
-    variable decoder_lastOfs                        : Integer;
-    variable decoder_val                            : Integer;
-    variable decoder_max                            : Integer;
-    variable decoder_pos                            : Integer;
+    variable decoder_LoopIdx                        : Integer  range 0 to (2**11 - 1);
+    variable decoder_lastCenterOfs                  : Integer  range 0 to (2**8  - 1);
+    variable decoder_lastOfs                        : Integer  range 0 to (2**8  - 1);
+    variable decoder_val                            : Integer  range 0 to (2**24 - 1);
+    variable decoder_max                            : Integer  range 0 to (2**24 - 1);
+    variable decoder_pos                            : Integer  range 0 to (2**8  - 1);
     variable decoder_rx09_SoM_frameCtrA_Int         : Integer;
-    variable decoder_rx09_strength_Int              : Integer;
-    variable decoder_rx09_noise_Int                 : Integer;
-    variable decoder_rx09_center_pos_Int            : Integer;
-    variable decoder_remainVal                      : Integer;
-    variable decoder_u32Count                       : Integer;
-    variable decoder_u32Cnt                         : Integer;
-    variable decoder_0_val                          : Integer;
-    variable decoder_1_val                          : Integer;
-    variable decoder_f_val                          : Integer;
-    variable decoder_00_val                         : Integer;
-    variable decoder_01_val                         : Integer;
-    variable decoder_0f_val                         : Integer;
-    variable decoder_10_val                         : Integer;
-    variable decoder_11_val                         : Integer;
-    variable decoder_1f_val                         : Integer;
-    variable decoder_ff_val                         : Integer;
-    variable decoder_000_val                        : Integer;
-    variable decoder_001_val                        : Integer;
-    variable decoder_00f_val                        : Integer;
-    variable decoder_010_val                        : Integer;
-    variable decoder_011_val                        : Integer;
-    variable decoder_01f_val                        : Integer;
-    variable decoder_0ff_val                        : Integer;
-    variable decoder_100_val                        : Integer;
-    variable decoder_101_val                        : Integer;
-    variable decoder_10f_val                        : Integer;
-    variable decoder_110_val                        : Integer;
-    variable decoder_111_val                        : Integer;
-    variable decoder_11f_val                        : Integer;
-    variable decoder_1ff_val                        : Integer;
-    variable decoder_fff_val                        : Integer;
+    variable decoder_rx09_strength_Int              : Integer  range 0 to (2**16 - 1);
+    variable decoder_rx09_noise_Int                 : Integer  range 0 to (2**16 - 1);
+    variable decoder_rx09_center_pos_Int            : Integer  range 0 to (2**8  - 1);
+    variable decoder_remainVal                      : Integer  range 0 to (2**8  - 1);
+    variable decoder_u32Count                       : Integer  range 0 to (2**8  - 1);
+    variable decoder_0_val                          : Integer  range 0 to (2**16 - 1);
+    variable decoder_1_val                          : Integer  range 0 to (2**16 - 1);
+    variable decoder_f_val                          : Integer  range 0 to (2**16 - 1);
+    variable decoder_00_val                         : Integer  range 0 to (2**20 - 1);
+    variable decoder_01_val                         : Integer  range 0 to (2**20 - 1);
+    variable decoder_0f_val                         : Integer  range 0 to (2**20 - 1);
+    variable decoder_10_val                         : Integer  range 0 to (2**20 - 1);
+    variable decoder_11_val                         : Integer  range 0 to (2**20 - 1);
+    variable decoder_1f_val                         : Integer  range 0 to (2**20 - 1);
+    variable decoder_ff_val                         : Integer  range 0 to (2**20 - 1);
+    variable decoder_000_val                        : Integer  range 0 to (2**24 - 1);
+    variable decoder_001_val                        : Integer  range 0 to (2**24 - 1);
+    variable decoder_00f_val                        : Integer  range 0 to (2**24 - 1);
+    variable decoder_010_val                        : Integer  range 0 to (2**24 - 1);
+    variable decoder_011_val                        : Integer  range 0 to (2**24 - 1);
+    variable decoder_01f_val                        : Integer  range 0 to (2**24 - 1);
+    variable decoder_0ff_val                        : Integer  range 0 to (2**24 - 1);
+    variable decoder_100_val                        : Integer  range 0 to (2**24 - 1);
+    variable decoder_101_val                        : Integer  range 0 to (2**24 - 1);
+    variable decoder_10f_val                        : Integer  range 0 to (2**24 - 1);
+    variable decoder_110_val                        : Integer  range 0 to (2**24 - 1);
+    variable decoder_111_val                        : Integer  range 0 to (2**24 - 1);
+    variable decoder_11f_val                        : Integer  range 0 to (2**24 - 1);
+    variable decoder_1ff_val                        : Integer  range 0 to (2**24 - 1);
+    variable decoder_fff_val                        : Integer  range 0 to (2**24 - 1);
     
-    variable loopCnt                                : Integer;
+    variable loopCnt                                : Integer  range 0 to (2**8  - 1);
   begin
     if (clk'EVENT and clk = '1') then
         if ((reset = '1') or (dds_tx09_ptt = '1')) then
@@ -245,7 +244,6 @@ begin
             decoder_rx09_center_pos_Int             := 0;
             decoder_remainVal                       := 0;
             decoder_u32Count                        := 0;
-            decoder_u32Cnt                          := 0;
             decoder_0_val                           := 0;
             decoder_1_val                           := 0;
             decoder_f_val                           := 0;
