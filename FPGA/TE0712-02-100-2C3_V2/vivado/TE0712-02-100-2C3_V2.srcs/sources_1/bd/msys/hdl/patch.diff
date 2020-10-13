@@ -1,5 +1,5 @@
---- msys_wrapper.vhd.orig.txt	2020-10-06 22:26:59.229254100 +0200
-+++ msys_wrapper.vhd	2020-10-06 22:42:52.021499000 +0200
+--- msys_wrapper.vhd.orig.txt	2020-10-11 22:21:19.849861700 +0200
++++ msys_wrapper.vhd	2020-10-11 22:33:52.478844400 +0200
 @@ -16,4 +16,6 @@
      BOARD_IIC_scl_io : inout STD_LOGIC;
      BOARD_IIC_sda_io : inout STD_LOGIC;

@@ -1,0 +1,11 @@
+vhdl xil_defaultlib  \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_c_counter_binary_0_0/sim/UFBmod_c_counter_binary_0_0.vhd" \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_FFT_rx09_to_Decoder_0_0/sim/UFBmod_FFT_rx09_to_Decoder_0_0.vhd" \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_UFBmod_rx09_Decoder_0_0/sim/UFBmod_UFBmod_rx09_Decoder_0_0.vhd" \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_Decoder_rx09_to_FIFO_0_0/sim/UFBmod_Decoder_rx09_to_FIFO_0_0.vhd" \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_c_accum_0_0/sim/UFBmod_c_accum_0_0.vhd" \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_mult_gen_0_0/sim/UFBmod_mult_gen_0_0.vhd" \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_div_gen_0_0/sim/UFBmod_div_gen_0_0.vhd" \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/sim/UFBmod.vhd" \
+
+nosort

@@ -1,0 +1,139 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"2.0",
+   "Default View_TopLeft":"1786,871",
+   "ExpandedHierarchyInLayout":"/FFT_rx09_to_Decoder|/UFBmod_rx09_Decoders|/Decoder_rx09_to_FIFO",
+   "PinnedBlocks":"/FFT_rx09_to_Decoder|/UFBmod_rx09_Decoders|/Decoder_rx09_to_FIFO|/xlconstant_val0_len19|",
+   "PinnedPorts":"post_fft_rx09_mem_a_EoT|post_fft_rx09_mem_a_addr|post_fft_rx09_mem_b_dout|post_fft_rx09_mem_b_addr|decoder_rx09_ch00_squelch_lvl|pushdata_rx09_en|pushdata_rx09_byteData|dds_tx09_ptt|decoder_rx09_ch00_sql_open|decoder_rx09_ch00_active|decoder_rx09_ch00_center_pos|decoder_rx09_ch00_noise|decoder_rx09_ch00_strength|reset_100MHz|clk_100MHz|",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port reset_100MHz -pg 1 -lvl 0 -x -240 -y 940 -defaultsOSRD
+preplace port clk_100MHz -pg 1 -lvl 0 -x -240 -y 910 -defaultsOSRD
+preplace port post_fft_rx09_mem_a_EoT -pg 1 -lvl 0 -x -240 -y 1500 -defaultsOSRD
+preplace port pushdata_rx09_en -pg 1 -lvl 4 -x 4830 -y 1220 -defaultsOSRD
+preplace port dds_tx09_ptt -pg 1 -lvl 0 -x -240 -y 770 -defaultsOSRD
+preplace port decoder_rx09_ch00_sql_open -pg 1 -lvl 4 -x 4830 -y 1120 -defaultsOSRD
+preplace port decoder_rx09_ch00_active -pg 1 -lvl 4 -x 4830 -y 850 -defaultsOSRD
+preplace portBus post_fft_rx09_mem_a_addr -pg 1 -lvl 0 -x -240 -y 1530 -defaultsOSRD
+preplace portBus post_fft_rx09_mem_b_dout -pg 1 -lvl 0 -x -240 -y 1560 -defaultsOSRD
+preplace portBus post_fft_rx09_mem_b_addr -pg 1 -lvl 4 -x 4830 -y 1090 -defaultsOSRD
+preplace portBus decoder_rx09_ch00_squelch_lvl -pg 1 -lvl 0 -x -240 -y 800 -defaultsOSRD
+preplace portBus pushdata_rx09_byteData -pg 1 -lvl 4 -x 4830 -y 270 -defaultsOSRD
+preplace portBus decoder_rx09_ch00_center_pos -pg 1 -lvl 4 -x 4830 -y 550 -defaultsOSRD
+preplace portBus decoder_rx09_ch00_noise -pg 1 -lvl 4 -x 4830 -y 1150 -defaultsOSRD
+preplace portBus decoder_rx09_ch00_strength -pg 1 -lvl 4 -x 4830 -y 590 -defaultsOSRD
+preplace inst FFT_rx09_to_Decoder -pg 1 -lvl 1 -x 240 -y 1030 -defaultsOSRD
+preplace inst UFBmod_rx09_Decoders -pg 1 -lvl 2 -x 2680 -y 1410 -defaultsOSRD
+preplace inst Decoder_rx09_to_FIFO -pg 1 -lvl 3 -x 3950 -y 1050 -defaultsOSRD
+preplace inst xlconstant_val0_len19 -pg 1 -lvl 2 -x 2680 -y 1820 -defaultsOSRD
+preplace inst FFT_rx09_to_Decoder|signal_bins_rx09_ch00_blk_mem_gen_0 -pg 1 -lvl 5 -x 1820 -y 1440 -defaultsOSRD
+preplace inst FFT_rx09_to_Decoder|xlconstant_val1_len1 -pg 1 -lvl 1 -x 160 -y 1010 -defaultsOSRD
+preplace inst FFT_rx09_to_Decoder|rowsum_rx09_ch00_c_accum_0 -pg 1 -lvl 1 -x 160 -y 1140 -defaultsOSRD
+preplace inst FFT_rx09_to_Decoder|signal_correction_rx09_ch00_mult_gen_0 -pg 1 -lvl 3 -x 900 -y 1230 -defaultsOSRD
+preplace inst FFT_rx09_to_Decoder|averaging_factor_rx09_ch00_div_gen_0 -pg 1 -lvl 2 -x 550 -y 1190 -defaultsOSRD
+preplace inst FFT_rx09_to_Decoder|xlconstant_val256x32_len16 -pg 1 -lvl 1 -x 160 -y 1270 -defaultsOSRD
+preplace inst FFT_rx09_to_Decoder|xlconstant_val0_len1 -pg 1 -lvl 4 -x 1340 -y 1610 -defaultsOSRD
+preplace inst FFT_rx09_to_Decoder|xlconstant_val0_len16 -pg 1 -lvl 4 -x 1340 -y 1510 -defaultsOSRD
+preplace inst FFT_rx09_to_Decoder|FFT_rx09_to_Decoder_FSM -pg 1 -lvl 4 -x 1340 -y 1180 -defaultsOSRD
+preplace inst UFBmod_rx09_Decoders|decoder_artemis_mult_gen_3clks -pg 1 -lvl 2 -x 3200 -y 1100 -defaultsOSRD
+preplace inst UFBmod_rx09_Decoders|decoder_artemis_blk_mem_gen_2clk -pg 1 -lvl 2 -x 3200 -y 1420 -defaultsOSRD
+preplace inst UFBmod_rx09_Decoders|UFBmod_rx09_Decoder_0 -pg 1 -lvl 1 -x 2650 -y 1160 -defaultsOSRD
+preplace inst Decoder_rx09_to_FIFO|data_rx09_c_counter_binary_0 -pg 1 -lvl 1 -x 3920 -y 1300 -defaultsOSRD
+preplace inst Decoder_rx09_to_FIFO|data_rx09_fifo_generator_0 -pg 1 -lvl 1 -x 3920 -y 1040 -defaultsOSRD
+preplace inst Decoder_rx09_to_FIFO|Decoder_rx09_to_FIFO_0 -pg 1 -lvl 2 -x 4350 -y 1220 -defaultsOSRD
+preplace netloc reset_100MHz 1 0 3 -210 1700 2090J 1580 3530
+preplace netloc clk_100MHz 1 0 3 -190 1690 2100J 1570 3520
+preplace netloc post_fft_rx09_mem_a_EoT_1 1 0 1 -220J 1360n
+preplace netloc post_fft_rx09_mem_a_addr_1 1 0 1 -200J 1380n
+preplace netloc post_fft_rx09_mem_b_dout_1 1 0 1 -180J 1400n
+preplace netloc post_fft_rx09_ch00_mem_b_addr 1 1 3 2070 1550 NJ 1550 4790J
+preplace netloc decoder_fft_frame_avail_ctr 1 1 1 2080 1140n
+preplace netloc signal_bins_rx09_ch00_blk_mem_gen_0_doutb 1 1 1 2130 1160n
+preplace netloc signal_bins_rx09_ch00_blk_mem_gen_0_addrb 1 0 3 -170 1710 NJ 1710 3470
+preplace netloc decoder_rx09_ch00_squelch_lvl 1 0 2 NJ 800 2110
+preplace netloc pushdata_rx09_byteData 1 3 1 4780 270n
+preplace netloc pushdata_rx09_en 1 3 1 N 1220
+preplace netloc decoder_rx09_ch00_FIFO_accepted 1 1 3 2140 1560 NJ 1560 4780
+preplace netloc decoder_rx09_ch00_FIFO_handshake 1 2 1 3540 990n
+preplace netloc decoder_rx09_ch00_center_pos 1 2 2 3550 550 NJ
+preplace netloc decoder_rx09_ch00_strength 1 2 2 3560 590 NJ
+preplace netloc decoder_rx09_ch00_SoM_frameCtr 1 2 1 3510 1200n
+preplace netloc decoder_rx09_ch00_remainVal 1 2 1 3490 1220n
+preplace netloc decoder_rx09_ch00_u32Count 1 2 1 3480 1240n
+preplace netloc dds_tx09_ptt_1 1 0 2 NJ 770 2120J
+preplace netloc decoder_rx09_ch00_sql_open 1 2 2 3480 1400 4800J
+preplace netloc decoder_rx09_ch00_active 1 2 2 3500 850 NJ
+preplace netloc xlconstant_val0_len19_dout 1 2 2 NJ 1820 4810
+preplace netloc FFT_rx09_to_Decoder|clk_100MHz 1 0 5 -20 1330 300 1060 780 1100 1050 1010 1690
+preplace netloc FFT_rx09_to_Decoder|signal_bins_rx09_ch00_blk_mem_gen_0_doutb 1 4 2 1690 1610 NJ
+preplace netloc FFT_rx09_to_Decoder|signal_bins_rx09_ch00_blk_mem_gen_0_addrb 1 0 5 NJ 1440 NJ 1440 NJ 1440 NJ 1440 1640
+preplace netloc FFT_rx09_to_Decoder|reset_100MHz 1 0 4 NJ 1340 290J 1050 NJ 1050 1030
+preplace netloc FFT_rx09_to_Decoder|post_fft_rx09_mem_a_EoT_1 1 0 4 NJ 1360 270J 1010 NJ 1010 1040
+preplace netloc FFT_rx09_to_Decoder|post_fft_rx09_mem_a_addr_1 1 0 4 NJ 1380 280J 1020 NJ 1020 1010
+preplace netloc FFT_rx09_to_Decoder|post_fft_rx09_mem_b_dout_1 1 0 4 NJ 1400 320J 1040 NJ 1040 1000
+preplace netloc FFT_rx09_to_Decoder|post_fft_rx09_ch00_mem_b_addr 1 4 2 N 1090 NJ
+preplace netloc FFT_rx09_to_Decoder|decoder_fft_frame_avail_ctr 1 4 2 N 1270 NJ
+preplace netloc FFT_rx09_to_Decoder|signal_bins_rx09_ch00_blk_mem_gen_0_dina 1 0 5 -10 1390 NJ 1390 NJ 1390 NJ 1390 1670
+preplace netloc FFT_rx09_to_Decoder|rowsum_rx09_ch00_accum_ce 1 0 5 0 1350 NJ 1350 NJ 1350 NJ 1350 1630
+preplace netloc FFT_rx09_to_Decoder|rowsum_rx09_ch00_accum_sclr 1 0 5 10 1370 NJ 1370 NJ 1370 NJ 1370 1660
+preplace netloc FFT_rx09_to_Decoder|averaging_factor_div_dout_tdata 1 2 1 760 1190n
+preplace netloc FFT_rx09_to_Decoder|averaging_factor_div_divisor_tdata 1 1 1 N 1140
+preplace netloc FFT_rx09_to_Decoder|averaging_factor_div_dividend_tdata 1 1 1 310J 1200n
+preplace netloc FFT_rx09_to_Decoder|averaging_factor_div_dividend_tvalid 1 1 1 260 1010n
+preplace netloc FFT_rx09_to_Decoder|averaging_factor_divider_aclken 1 1 4 340 1000 NJ 1000 NJ 1000 1640
+preplace netloc FFT_rx09_to_Decoder|signal_bins_rx09_ch00_blk_mem_gen_0_douta 1 2 3 800 1130 1020 1020 1710J
+preplace netloc FFT_rx09_to_Decoder|signal_bins_rx09_ch00_blk_mem_gen_0_addra 1 4 1 1700 1210n
+preplace netloc FFT_rx09_to_Decoder|signal_bins_rx09_ch00_blk_mem_gen_0_wea 1 4 1 1680 1250n
+preplace netloc FFT_rx09_to_Decoder|xlconstant_val0_len1_dout 1 4 1 1640J 1550n
+preplace netloc FFT_rx09_to_Decoder|xlconstant_val0_len16_dout 1 4 1 NJ 1510
+preplace netloc FFT_rx09_to_Decoder|signal_correction_rx09_ch00_mult_prod 1 3 1 N 1230
+preplace netloc FFT_rx09_to_Decoder|averaging_factor_div_dout_tvalid 1 2 2 770J 1140 990
+preplace netloc FFT_rx09_to_Decoder|averaging_factor_div_divisor_tvalid 1 1 4 330 990 NJ 990 NJ 990 1680
+preplace netloc FFT_rx09_to_Decoder|signal_correction_rx09_ch00_mult_ce 1 2 3 790 1030 NJ 1030 1650
+preplace netloc UFBmod_rx09_Decoders|reset_100MHz 1 0 1 N 1080
+preplace netloc UFBmod_rx09_Decoders|clk_100MHz 1 0 2 2320 1360 3040
+preplace netloc UFBmod_rx09_Decoders|decoder_fft_frame_avail_ctr 1 0 1 N 1140
+preplace netloc UFBmod_rx09_Decoders|decoder_rx09_ch00_FIFO_accepted 1 0 1 N 1240
+preplace netloc UFBmod_rx09_Decoders|dds_tx09_ptt 1 0 1 2330 1160n
+preplace netloc UFBmod_rx09_Decoders|signal_bins_rx09_ch00_blk_mem_gen_0_addrb 1 1 2 2980 970 N
+preplace netloc UFBmod_rx09_Decoders|decoder_rx09_ch00_center_pos 1 1 2 3010 1210 3300
+preplace netloc UFBmod_rx09_Decoders|decoder_rx09_ch00_strength 1 1 2 2990 1230 3310
+preplace netloc UFBmod_rx09_Decoders|decoder_rx09_ch00_SoM_frameCtr 1 1 2 N 1200 N
+preplace netloc UFBmod_rx09_Decoders|decoder_rx09_ch00_remainVal 1 1 2 N 1220 N
+preplace netloc UFBmod_rx09_Decoders|decoder_rx09_ch00_u32Count 1 1 2 N 1240 N
+preplace netloc UFBmod_rx09_Decoders|decoder_rx09_ch00_sql_open 1 1 2 N 1280 N
+preplace netloc UFBmod_rx09_Decoders|decoder_rx09_ch00_active 1 1 2 2960 1310 N
+preplace netloc UFBmod_rx09_Decoders|decoder_rx09_ch00_FIFO_handshake 1 1 2 3020 990 N
+preplace netloc UFBmod_rx09_Decoders|decoder_rx09_squelch_lvl 1 0 1 N 1180
+preplace netloc UFBmod_rx09_Decoders|signal_bins_rx09_ch00_blk_mem_gen_0_doutb 1 0 1 2310 1120n
+preplace netloc UFBmod_rx09_Decoders|decoder_mult_gen_0_P 1 0 3 2340 960 3060 1000 3300
+preplace netloc UFBmod_rx09_Decoders|UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_ce 1 1 1 3050 1040n
+preplace netloc UFBmod_rx09_Decoders|UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_sclr 1 1 1 3030 1060n
+preplace netloc UFBmod_rx09_Decoders|UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_inpa 1 1 1 N 1080
+preplace netloc UFBmod_rx09_Decoders|decoder_artemis_blk_mem_gen_0_douta 1 0 2 2340 1450 NJ
+preplace netloc UFBmod_rx09_Decoders|UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_wea 1 1 1 2980 1100n
+preplace netloc UFBmod_rx09_Decoders|UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_addra 1 1 1 3000 1120n
+preplace netloc UFBmod_rx09_Decoders|UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_dina 1 1 1 2970 1140n
+preplace netloc Decoder_rx09_to_FIFO|clk_100MHz 1 0 2 3770 1160 N
+preplace netloc Decoder_rx09_to_FIFO|reset_100MHz 1 0 2 3750 1140 N
+preplace netloc Decoder_rx09_to_FIFO|decoder_rx09_ch00_center_pos_1 1 0 2 NJ 1170 4090
+preplace netloc Decoder_rx09_to_FIFO|decoder_rx09_ch00_strength_1 1 0 2 NJ 1200 N
+preplace netloc Decoder_rx09_to_FIFO|decoder_rx09_ch00_SoM_frameCtr_1 1 0 2 NJ 1220 N
+preplace netloc Decoder_rx09_to_FIFO|decoder_rx09_ch00_remainVal_1 1 0 2 3760J 1190 4070
+preplace netloc Decoder_rx09_to_FIFO|decoder_rx09_ch00_u32Count_1 1 0 2 3780J 1210 4060
+preplace netloc Decoder_rx09_to_FIFO|decoder_rx09_ch00_FIFO_handshake_1 1 0 2 NJ 1150 4080
+preplace netloc Decoder_rx09_to_FIFO|data_rx09_c_counter_binary_0_Q 1 1 1 N 1300
+preplace netloc Decoder_rx09_to_FIFO|Decoder_rx09_to_FIFO_0_decoder_rx09_ch00_FIFO_accepted 1 2 1 4610 1200n
+preplace netloc Decoder_rx09_to_FIFO|Decoder_rx09_to_FIFO_0_pushdata_rx09_en 1 2 1 N 1220
+preplace netloc Decoder_rx09_to_FIFO|Decoder_rx09_to_FIFO_0_pushdata_rx09_byteData 1 2 1 4620 1200n
+levelinfo -pg 1 -240 240 2680 3950 4830
+levelinfo -hier FFT_rx09_to_Decoder * 160 550 900 1340 1820 *
+levelinfo -hier UFBmod_rx09_Decoders * 2650 3200 *
+levelinfo -hier Decoder_rx09_to_FIFO * 3920 4350 *
+pagesize -pg 1 -db -bbox -sgen -520 0 5110 1900
+pagesize -hier FFT_rx09_to_Decoder -db -bbox -sgen -50 950 1950 1670
+pagesize -hier UFBmod_rx09_Decoders -db -bbox -sgen 2280 950 3340 1530
+pagesize -hier Decoder_rx09_to_FIFO -db -bbox -sgen 3720 950 4650 1380
+"
+}
+0
