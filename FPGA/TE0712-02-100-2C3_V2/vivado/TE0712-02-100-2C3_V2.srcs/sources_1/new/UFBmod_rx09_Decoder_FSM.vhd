@@ -120,36 +120,41 @@ begin
     constant C_fin_2                                : Integer :=  +1;
     
     type StateType                                  is (
-                                                        init, loop_start, wait_until_post_fft_done, read_in_loop,
-                                                        artemis_search_1, artemis_search_2, artemis_sum_up_rows, artemis_sum_up_all,
-                                                        artemis_initial_skip, artemis_decoder_switch, artemis_check_candidates_init, artemis_check_candidates, artemis_find_max,
-                                                        decoder_init, decoder_process,
-                                                        pushdata_prepare_calc, pushdata_prepare_shift,
-                                                        pushdata_header_a, pushdata_header_b,
-                                                        pushdata_signal_msb_a, pushdata_signal_msb_b, pushdata_signal_lsb_a, pushdata_signal_lsb_b,
-                                                        pushdata_noise_msb_a, pushdata_noise_msb_b, pushdata_noise_lsb_a, pushdata_noise_lsb_b,
-                                                        pushdata_frameCtr_p3_a, pushdata_frameCtr_p3_b, pushdata_frameCtr_p2_a, pushdata_frameCtr_p2_b, pushdata_frameCtr_p1_a, pushdata_frameCtr_p1_b, pushdata_frameCtr_p0_a, pushdata_frameCtr_p0_b,
-                                                        pushdata_centerpos_a, pushdata_centerpos_b,
-                                                        pushdata_remainCtr_a, pushdata_remainCtr_b,
-                                                        pushdata_msgU32Len_a,
-                                                        pushdata_loop_begin, pushdata_loop_transfer
+                                                        init, loop_start, 
+                                                        --wait_until_post_fft_done, 
+                                                        --read_in_loop,
+                                                        artemis_search_loop_start, artemis_search_decider
+                                                      --artemis_decoder_switch
+                                                      --artemis_search_1, artemis_search_2, artemis_sum_up_rows, artemis_sum_up_all,
+                                                      --artemis_initial_skip, artemis_decoder_switch, artemis_check_candidates_init, artemis_check_candidates, artemis_find_max,
+                                                      --decoder_init, decoder_process
+--                                                        pushdata_prepare_calc, pushdata_prepare_shift,
+--                                                        pushdata_header_a, pushdata_header_b,
+--                                                        pushdata_signal_msb_a, pushdata_signal_msb_b, pushdata_signal_lsb_a, pushdata_signal_lsb_b,
+--                                                        pushdata_noise_msb_a, pushdata_noise_msb_b, pushdata_noise_lsb_a, pushdata_noise_lsb_b,
+--                                                        pushdata_frameCtr_p3_a, pushdata_frameCtr_p3_b, pushdata_frameCtr_p2_a, pushdata_frameCtr_p2_b, pushdata_frameCtr_p1_a, pushdata_frameCtr_p1_b, pushdata_frameCtr_p0_a, pushdata_frameCtr_p0_b,
+--                                                        pushdata_centerpos_a, pushdata_centerpos_b,
+--                                                        pushdata_remainCtr_a, pushdata_remainCtr_b,
+--                                                        pushdata_msgU32Len_a,
+--                                                        pushdata_loop_begin, pushdata_loop_transfer
                                                     );
     variable state                                  : StateType;
     
-    type DecoderStateType                           is (
-                                                        NOP,
-                                                        decode_preload,
-                                                        decode_remainValue_init, decode_remainValue_loop, 
-                                                        decode_u32Count_init, decode_u32Count_loop,
-                                                        decoder_forward,
-                                                        decode_message_init, decode_message_loop_r5, decode_message_loop_r3, decode_message_loop_r1,
-                                                        decode_message_check_end,
-                                                        decode_message_decider_reduction_r1, decode_message_decider_reduction_r2, decode_message_decider_reduction_r3, decode_message_decider_reduction_r4,
-                                                        decode_message_decider_f, decode_message_decider_01
-                                                    );
-    variable decoder_state                          : DecoderStateType;
+--    type DecoderStateType                           is (
+--                                                        NOP,
+--                                                        decode_preload,
+--                                                        decode_remainValue_init, decode_remainValue_loop, 
+--                                                        decode_u32Count_init, decode_u32Count_loop,
+--                                                        decoder_forward,
+--                                                        decode_message_init, decode_message_loop_r5, decode_message_loop_r3, decode_message_loop_r1,
+--                                                        decode_message_check_end,
+--                                                        decode_message_decider_reduction_r1, decode_message_decider_reduction_r2, decode_message_decider_reduction_r3, decode_message_decider_reduction_r4,
+--                                                        decode_message_decider_f, decode_message_decider_01
+--                                                    );
+--    variable decoder_state                          : DecoderStateType;
     
-    variable decoder_FftFrameWork                   : STD_LOGIC_VECTOR(   1 downto 0);
+    variable decoder_FftFrameWork                   : STD_LOGIC_VECTOR(   3 downto 0);
+    variable fftArtemisIdx                          : Integer  range 0 to (2**5  - 1);
     variable loopCnt                                : Integer  range 0 to (2**8  - 1);
   begin
     if (clk'EVENT and clk = '1') then
@@ -170,52 +175,56 @@ begin
             decoder_rx09_ch00_active                <= '0';
             
             decoder_FftFrameWork                    := (others => '0');
+            fftArtemisIdx                           := 0;
             loopCnt                                 := 0;
             
             state                                   := init;
-            decoder_state                           := NOP;
+          --decoder_state                           := NOP;
             
         else
             case state is
                 when init =>
                     signal_bins_rx09_ch00_mem_addrb     <= (others => '0');
-                    
-                  --initialLoopIdx                      := 12;
-                    
                     state := loop_start;
                     
                     
                 -- Loop entry point
                 when loop_start =>
-                    if (decoder_FftFrameWork(1 downto 0) /= decoder_fft_frame_avail_ctr(1 downto 0)) then
-                        decoder_FftFrameWork             := decoder_fft_frame_avail_ctr(1 downto 0);
-                        
-                      --watchdogIdx := 65000;   -- Max one quarterframe +1 us later
-                        
-                        state := artemis_search_1;
+                    if (decoder_FftFrameWork(3 downto 0) /= decoder_fft_frame_avail_ctr(3 downto 0)) then
+                        decoder_FftFrameWork             := decoder_fft_frame_avail_ctr(3 downto 0);
+                        fftArtemisIdx                    := 0;
+                        state := artemis_search_loop_start;
                     end if;
                     
-                when artemis_search_1 =>
-                    -- 32x parallel execution of single additions
-                    for fftIdx in 0 to 31 loop
+                -- 32x parallel execution of single additions
+                when artemis_search_loop_start =>
                     
                     
-                    end loop;   -- fftIdx
                     
-                    state := artemis_decoder_switch;
                     
-                when artemis_decoder_switch =>
-                    if (decoder_state /= NOP) then
-                        state := decoder_process;
-                        
+                    
+                when artemis_search_loop_start =>
+                    if (fftArtemisIdx /= 31) then
+                        fftArtemisIdx := fftArtemisIdx + 1;
+                        state := artemis_search_loop_start;
                     else
-                        state := artemis_check_candidates_init;                                     -- Message and Remain/Length-value decoder
+                        state := artemis_search_decider;
                     end if;
-
-                when artemis_check_candidates_init =>
-                    state := artemis_check_candidates;
                     
-                when artemis_check_candidates =>
+                when artemis_search_decider =>
+                    
+--                when artemis_decoder_switch =>
+--                    if (decoder_state /= NOP) then
+--                        state := decoder_process;
+                        
+--                    else
+--                        state := artemis_check_candidates_init;                                     -- Message and Remain/Length-value decoder
+--                    end if;
+
+--                when artemis_check_candidates_init =>
+--                    state := artemis_check_candidates;
+                    
+--                when artemis_check_candidates =>
 --                    if (
 --                        (sumPreambleField_t1(fftLoopIdx) > sumPreambleField_t2(fftLoopIdx))
 --                    and (sumPreambleField_t1(fftLoopIdx) > sumPreambleField_t0(fftLoopIdx))
@@ -257,7 +266,7 @@ begin
 --                    state           := decoder_process;
 --                    initialLoopIdx  := 4;
                     
-                when decoder_process =>
+--                when decoder_process =>
 --                    case decoder_state is
 --                        when decode_preload =>
 --                            if (initialLoopIdx /= 0) then
@@ -582,7 +591,7 @@ begin
 --                    end if;
                     
                 when others =>
-                    decoder_state := NOP;
+                  --decoder_state := NOP;
                     state         := init;
             end case;   -- state
         end if;
