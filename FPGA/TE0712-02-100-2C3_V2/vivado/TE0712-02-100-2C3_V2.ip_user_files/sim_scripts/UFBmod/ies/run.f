@@ -112,6 +112,12 @@
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlconstant_0_4/sim/UFBmod_xlconstant_0_4.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_mult_gen_0_1/sim/UFBmod_mult_gen_0_1.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_blk_mem_gen_0_1/sim/UFBmod_blk_mem_gen_0_1.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/sim/UFBmod.vhd" \
 -endlib
 -makelib ies_lib/xil_defaultlib \

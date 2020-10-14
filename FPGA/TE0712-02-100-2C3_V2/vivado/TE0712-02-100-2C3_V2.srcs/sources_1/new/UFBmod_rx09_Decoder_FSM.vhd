@@ -123,12 +123,20 @@ begin
                                                         init, loop_start, 
                                                         --wait_until_post_fft_done, 
                                                         --read_in_loop,
-                                                        artemis_search_loop_start, artemis_search_loop_6up, 
+                                                        artemis_search_loop_start, artemis_search_loop_11up, 
                                                         artemis_search_loop_pre1, artemis_search_loop_pre1_ws1, artemis_search_loop_pre1_ws2, artemis_search_loop_pre1_get,
                                                         artemis_search_loop_pre1_mult, artemis_search_loop_pre1_mult_ws1, artemis_search_loop_pre1_mult_ws2, artemis_search_loop_pre1_mult_ws3, artemis_search_loop_pre1_mult_in,
                                                         artemis_search_loop_pre2, artemis_search_loop_pre2_ws1, artemis_search_loop_pre2_ws2, artemis_search_loop_pre2_get,
                                                         artemis_search_loop_pre2_mult, artemis_search_loop_pre2_mult_ws1, artemis_search_loop_pre2_mult_ws2, artemis_search_loop_pre2_mult_ws3, artemis_search_loop_pre2_mult_in,
-                                                        artemis_search_loop_end,
+                                                        artemis_search_loop_pre3, artemis_search_loop_pre3_ws1, artemis_search_loop_pre3_ws2, artemis_search_loop_pre3_get,
+                                                        artemis_search_loop_pre3_mult, artemis_search_loop_pre3_mult_ws1, artemis_search_loop_pre3_mult_ws2, artemis_search_loop_pre3_mult_ws3, artemis_search_loop_pre3_mult_in,
+                                                        artemis_search_loop_pre4, artemis_search_loop_pre4_ws1, artemis_search_loop_pre4_ws2, artemis_search_loop_pre4_get,
+                                                        artemis_search_loop_pre4_mult, artemis_search_loop_pre4_mult_ws1, artemis_search_loop_pre4_mult_ws2, artemis_search_loop_pre4_mult_ws3, artemis_search_loop_pre4_mult_in,
+                                                        artemis_search_loop_pre5, artemis_search_loop_pre5_ws1, artemis_search_loop_pre5_ws2, artemis_search_loop_pre5_get,
+                                                        artemis_search_loop_pre5_mult, artemis_search_loop_pre5_mult_ws1, artemis_search_loop_pre5_mult_ws2, artemis_search_loop_pre5_mult_ws3, artemis_search_loop_pre5_mult_in,
+                                                        artemis_search_loop_pre6, artemis_search_loop_pre6_ws1, artemis_search_loop_pre6_ws2, artemis_search_loop_pre6_get,
+                                                        artemis_search_loop_pre6_mult, artemis_search_loop_pre6_mult_ws1, artemis_search_loop_pre6_mult_ws2, artemis_search_loop_pre6_mult_ws3, artemis_search_loop_pre6_mult_in,
+                                                        artemis_search_loop_write, artemis_search_loop_end,
                                                         artemis_search_decider
                                                       --artemis_decoder_switch
                                                       --artemis_search_1, artemis_search_2, artemis_sum_up_rows, artemis_sum_up_all,
@@ -162,6 +170,7 @@ begin
     variable decoder_FftFrameWork                   : STD_LOGIC_VECTOR(   3 downto 0);
     variable fftArtemisIdx                          : Integer  range 0 to (2**5  - 1);
     variable loopCnt                                : Integer  range 0 to (2**8  - 1);
+    variable isOddRow                               : Integer  range 0 to (2**1  - 1);
     variable rowIdx                                 : Integer  range 0 to (2**4  - 1);
     variable posIdx                                 : Integer  range 0 to (2**5  - 1);
     variable signal_bins_rx09_ch00_mem_addrb_Int    : Integer  range 0 to (2**9  - 1);
@@ -188,6 +197,7 @@ begin
             
             decoder_FftFrameWork                    := (others => '0');
             fftArtemisIdx                           := 0;
+            isOddRow                                := 0;
             loopCnt                                 := 0;
             
             state                                   := init;
@@ -204,21 +214,31 @@ begin
                 when loop_start =>
                     if (decoder_FftFrameWork(3 downto 0) /= decoder_fft_frame_avail_ctr(3 downto 0)) then
                         decoder_FftFrameWork             := decoder_fft_frame_avail_ctr(3 downto 0);
-                        fftArtemisIdx                    := 0;
-                        rowIdx                           := 0;
-                        posIdx                           := 0;
-                        state := artemis_search_loop_start;
+                        if (decoder_FftFrameWork(0) = '0') then
+                            fftArtemisIdx                       := 0;
+                            isOddRow                            := 0;
+                            rowIdx                              := 0;
+                            posIdx                              := 0;
+                            
+                            -- Clear Artemis Block-RAM for Preamble hunt
+                            decoder_artemis_rx09_ch00_mult_ce   <= '1';
+                            decoder_artemis_rx09_ch00_mult_sclr <= '1';
+                            
+                            state := artemis_search_loop_start;
+                        end if;
                     end if;
                     
                 -- 32x parallel execution of single additions
                 when artemis_search_loop_start =>
+                    decoder_artemis_rx09_ch00_mult_sclr <= '0';
+                    
                     -- Current row position
                     signal_bins_rx09_ch00_mem_addrb_Int := to_integer(unsigned(decoder_fft_frame_avail_ctr(3 downto 0) & "00000"));
-                    state := artemis_search_loop_6up;
+                    state := artemis_search_loop_11up;
                     
-                when artemis_search_loop_6up =>
-                    -- Position 6 rows above (starting of the preamble)
-                    rowIdx := 6;
+                when artemis_search_loop_11up =>
+                    -- Position 5 rows above (starting of the preamble)
+                    rowIdx := 10 + isOddRow;
                     posIdx := (32 + fftArtemisIdx + C_pre_r0) mod 32;
                     signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_Int + (2**9) - (rowIdx * 32) + posIdx) mod (2**9);
                     state := artemis_search_loop_pre1;
@@ -229,16 +249,10 @@ begin
                     state := artemis_search_loop_pre1_ws1;
                     
                 when artemis_search_loop_pre1_ws1 =>
-                    state := artemis_search_loop_pre1_ws2;
-                    
-                when artemis_search_loop_pre1_ws2 =>
-                    decoder_artemis_rx09_ch00_mult_ce   <= '1';
-                    decoder_artemis_rx09_ch00_mult_sclr <= '1';
                     state := artemis_search_loop_pre1_get;
                     
                 when artemis_search_loop_pre1_get =>
                     decoder_artemis_rx09_ch00_mult_inpa <= signal_bins_rx09_ch00_mem_datab;
-                    decoder_artemis_rx09_ch00_mult_sclr <= '0';
                     state := artemis_search_loop_pre1_mult;
                     
                 when artemis_search_loop_pre1_mult =>
@@ -256,27 +270,194 @@ begin
                     
                 when artemis_search_loop_pre1_mult_in =>
                     --  product := decoder_artemis_rx09_ch00_mult_outp;
-                    rowIdx := 5;
+                    rowIdx := 8 + isOddRow;
                     posIdx := (32 + fftArtemisIdx + C_pre_r1) mod 32;
                     signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_Int + (2**9) - (rowIdx * 32) + posIdx) mod (2**9);
                     state := artemis_search_loop_pre2;
                     
                 when artemis_search_loop_pre2 =>
-                    -- Preamble 1
-                    signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_Int + ((32 - C_pre_r0 + C_pre_r1) mod 32)) mod (2**9);
+                    -- Preamble 2
                     signal_bins_rx09_ch00_mem_addrb     <= std_logic_vector(to_unsigned(signal_bins_rx09_ch00_mem_addrb_Int, signal_bins_rx09_ch00_mem_addrb'length));
-                    state := artemis_search_loop_pre1_ws1;
+                    state := artemis_search_loop_pre2_ws1;
                     
+                when artemis_search_loop_pre2_ws1 =>
+                    state := artemis_search_loop_pre2_get;
+                    
+                when artemis_search_loop_pre2_get =>
+                    decoder_artemis_rx09_ch00_mult_inpa <= signal_bins_rx09_ch00_mem_datab;
+                    state := artemis_search_loop_pre2_mult;
+                    
+                when artemis_search_loop_pre2_mult =>
+                    decoder_artemis_rx09_ch00_mult_inpa <= x"0001";
+                    state := artemis_search_loop_pre2_mult_ws1;
+                    
+                when artemis_search_loop_pre2_mult_ws1 =>
+                    state := artemis_search_loop_pre2_mult_ws2;
+                    
+                when artemis_search_loop_pre2_mult_ws2 =>
+                    state := artemis_search_loop_pre2_mult_ws3;
+                    
+                when artemis_search_loop_pre2_mult_ws3 =>
+                    state := artemis_search_loop_pre2_mult_in;
+                    
+                when artemis_search_loop_pre2_mult_in =>
+                    --  product := decoder_artemis_rx09_ch00_mult_outp;
+                    rowIdx := 6 + isOddRow;
+                    posIdx := (32 + fftArtemisIdx + C_pre_r2) mod 32;
+                    signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_Int + (2**9) - (rowIdx * 32) + posIdx) mod (2**9);
+                    state := artemis_search_loop_pre3;
+                    
+                when artemis_search_loop_pre3 =>
+                    -- Preamble 3
+                    signal_bins_rx09_ch00_mem_addrb     <= std_logic_vector(to_unsigned(signal_bins_rx09_ch00_mem_addrb_Int, signal_bins_rx09_ch00_mem_addrb'length));
+                    state := artemis_search_loop_pre3_ws1;
+                    
+                when artemis_search_loop_pre3_ws1 =>
+                    state := artemis_search_loop_pre3_get;
+                    
+                when artemis_search_loop_pre3_get =>
+                    decoder_artemis_rx09_ch00_mult_inpa <= signal_bins_rx09_ch00_mem_datab;
+                    state := artemis_search_loop_pre3_mult;
+                    
+                when artemis_search_loop_pre3_mult =>
+                    decoder_artemis_rx09_ch00_mult_inpa <= x"0001";
+                    state := artemis_search_loop_pre3_mult_ws1;
+                    
+                when artemis_search_loop_pre3_mult_ws1 =>
+                    state := artemis_search_loop_pre3_mult_ws2;
+                    
+                when artemis_search_loop_pre3_mult_ws2 =>
+                    state := artemis_search_loop_pre3_mult_ws3;
+                    
+                when artemis_search_loop_pre3_mult_ws3 =>
+                    state := artemis_search_loop_pre3_mult_in;
+                    
+                when artemis_search_loop_pre3_mult_in =>
+                    --  product := decoder_artemis_rx09_ch00_mult_outp;
+                    rowIdx := 4 + isOddRow;
+                    posIdx := (32 + fftArtemisIdx + C_pre_r3) mod 32;
+                    signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_Int + (2**9) - (rowIdx * 32) + posIdx) mod (2**9);
+                    state := artemis_search_loop_pre4;
+                    
+                when artemis_search_loop_pre4 =>
+                    -- Preamble 4
+                    signal_bins_rx09_ch00_mem_addrb     <= std_logic_vector(to_unsigned(signal_bins_rx09_ch00_mem_addrb_Int, signal_bins_rx09_ch00_mem_addrb'length));
+                    state := artemis_search_loop_pre4_ws1;
+                    
+                when artemis_search_loop_pre4_ws1 =>
+                    state := artemis_search_loop_pre4_get;
+                    
+                when artemis_search_loop_pre4_get =>
+                    decoder_artemis_rx09_ch00_mult_inpa <= signal_bins_rx09_ch00_mem_datab;
+                    state := artemis_search_loop_pre4_mult;
+                    
+                when artemis_search_loop_pre4_mult =>
+                    decoder_artemis_rx09_ch00_mult_inpa <= x"0001";
+                    state := artemis_search_loop_pre4_mult_ws1;
+                    
+                when artemis_search_loop_pre4_mult_ws1 =>
+                    state := artemis_search_loop_pre4_mult_ws2;
+                    
+                when artemis_search_loop_pre4_mult_ws2 =>
+                    state := artemis_search_loop_pre4_mult_ws3;
+                    
+                when artemis_search_loop_pre4_mult_ws3 =>
+                    state := artemis_search_loop_pre4_mult_in;
+                    
+                when artemis_search_loop_pre4_mult_in =>
+                    --  product := decoder_artemis_rx09_ch00_mult_outp;
+                    rowIdx := 2 + isOddRow;
+                    posIdx := (32 + fftArtemisIdx + C_pre_r4) mod 32;
+                    signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_Int + (2**9) - (rowIdx * 32) + posIdx) mod (2**9);
+                    state := artemis_search_loop_pre5;
+                    
+                when artemis_search_loop_pre5 =>
+                    -- Preamble 5
+                    signal_bins_rx09_ch00_mem_addrb     <= std_logic_vector(to_unsigned(signal_bins_rx09_ch00_mem_addrb_Int, signal_bins_rx09_ch00_mem_addrb'length));
+                    state := artemis_search_loop_pre5_ws1;
+                    
+                when artemis_search_loop_pre5_ws1 =>
+                    state := artemis_search_loop_pre5_get;
+                    
+                when artemis_search_loop_pre5_get =>
+                    decoder_artemis_rx09_ch00_mult_inpa <= signal_bins_rx09_ch00_mem_datab;
+                    state := artemis_search_loop_pre5_mult;
+                    
+                when artemis_search_loop_pre5_mult =>
+                    decoder_artemis_rx09_ch00_mult_inpa <= x"0001";
+                    state := artemis_search_loop_pre5_mult_ws1;
+                    
+                when artemis_search_loop_pre5_mult_ws1 =>
+                    state := artemis_search_loop_pre5_mult_ws2;
+                    
+                when artemis_search_loop_pre5_mult_ws2 =>
+                    state := artemis_search_loop_pre5_mult_ws3;
+                    
+                when artemis_search_loop_pre5_mult_ws3 =>
+                    state := artemis_search_loop_pre5_mult_in;
+                    
+                when artemis_search_loop_pre5_mult_in =>
+                    --  product := decoder_artemis_rx09_ch00_mult_outp;
+                    rowIdx := 0 + isOddRow;
+                    posIdx := (32 + fftArtemisIdx + C_pre_r5) mod 32;
+                    signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_Int + (2**9) - (rowIdx * 32) + posIdx) mod (2**9);
+                    state := artemis_search_loop_pre6;
+                    
+                when artemis_search_loop_pre6 =>
+                    -- Preamble 6
+                    signal_bins_rx09_ch00_mem_addrb     <= std_logic_vector(to_unsigned(signal_bins_rx09_ch00_mem_addrb_Int, signal_bins_rx09_ch00_mem_addrb'length));
+                    state := artemis_search_loop_pre6_ws1;
+                    
+                when artemis_search_loop_pre6_ws1 =>
+                    state := artemis_search_loop_pre6_get;
+                    
+                when artemis_search_loop_pre6_get =>
+                    decoder_artemis_rx09_ch00_mult_inpa <= signal_bins_rx09_ch00_mem_datab;
+                    state := artemis_search_loop_pre6_mult;
+                    
+                when artemis_search_loop_pre6_mult =>
+                    decoder_artemis_rx09_ch00_mult_inpa <= x"0001";
+                    state := artemis_search_loop_pre5_mult_ws1;
+                    
+                when artemis_search_loop_pre6_mult_ws1 =>
+                    state := artemis_search_loop_pre6_mult_ws2;
+                    
+                when artemis_search_loop_pre6_mult_ws2 =>
+                    state := artemis_search_loop_pre6_mult_ws3;
+                    
+                when artemis_search_loop_pre6_mult_ws3 =>
+                    state := artemis_search_loop_pre6_mult_in;
+                    
+                when artemis_search_loop_pre6_mult_in =>
+                    -- Write result to Artemis Block-RAM
+                    decoder_artemis_rx09_ch00_mem_dina  <= decoder_artemis_rx09_ch00_mult_outp;
+                    decoder_artemis_rx09_ch00_mem_addra <= std_logic_vector(to_unsigned((fftArtemisIdx + 16*isOddRow), decoder_artemis_rx09_ch00_mem_addra'length));
+                    decoder_artemis_rx09_ch00_mem_wea   <= '1';
+                    state := artemis_search_loop_write;
+                    
+                when artemis_search_loop_write =>
+                    decoder_artemis_rx09_ch00_mem_dina  <= (others => '0');
+                    decoder_artemis_rx09_ch00_mem_addra <= (others => '0');
+                    decoder_artemis_rx09_ch00_mem_wea   <= '0';
+                    state := artemis_search_loop_end;
                     
                 when artemis_search_loop_end =>
-                    if (fftArtemisIdx /= 31) then
-                        fftArtemisIdx := fftArtemisIdx + 1;
+                    -- Alternate even/odd row and increment to next column
+                    if ((fftArtemisIdx /= 31) or (isOddRow = 0)) then
+                        if (isOddRow = 0) then
+                            isOddRow := 1;
+                        else
+                            isOddRow := 0;
+                            fftArtemisIdx := fftArtemisIdx + 1;
+                        end if;
                         state := artemis_search_loop_start;
                     else
                         state := artemis_search_decider;
                     end if;
                     
+                    
                 when artemis_search_decider =>
+                    state := artemis_search_decider;
                     
 --                when artemis_decoder_switch =>
 --                    if (decoder_state /= NOP) then
@@ -411,31 +592,6 @@ begin
 --                            end if;
                             
 --                        when decode_message_init =>
---                            decoder_0_val   := 0;
---                            decoder_1_val   := 0;
---                            decoder_f_val   := 0;
---                            decoder_00_val  := 0;
---                            decoder_01_val  := 0;
---                            decoder_0f_val  := 0;
---                            decoder_10_val  := 0;
---                            decoder_11_val  := 0;
---                            decoder_1f_val  := 0;
---                            decoder_ff_val  := 0;
---                            decoder_000_val := 0;
---                            decoder_001_val := 0;
---                            decoder_00f_val := 0;
---                            decoder_010_val := 0;
---                            decoder_011_val := 0;
---                            decoder_01f_val := 0;
---                            decoder_0ff_val := 0;
---                            decoder_100_val := 0;
---                            decoder_101_val := 0;
---                            decoder_10f_val := 0;
---                            decoder_110_val := 0;
---                            decoder_111_val := 0;
---                            decoder_11f_val := 0;
---                            decoder_1ff_val := 0;
---                            decoder_fff_val := 0;
                             
 --                            decoder_LoopIdx := 1025;
                             

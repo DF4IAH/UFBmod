@@ -57,10 +57,19 @@ ENTITY UFBmod_UFBmod_rx09_Decoder_0_0 IS
   PORT (
     reset : IN STD_LOGIC;
     clk : IN STD_LOGIC;
+    signal_bins_rx09_ch00_mem_addrb : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+    signal_bins_rx09_ch00_mem_datab : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     decoder_fft_frame_avail_ctr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    decoder_fft_rx09_ch00_mem_b_addr : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
-    decoder_fft_rx09_ch00_mem_b_data : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    dds_tx09_ptt : IN STD_LOGIC;
     decoder_rx09_ch00_squelch_lvl : IN STD_LOGIC_VECTOR(18 DOWNTO 0);
+    decoder_artemis_rx09_ch00_mult_ce : OUT STD_LOGIC;
+    decoder_artemis_rx09_ch00_mult_sclr : OUT STD_LOGIC;
+    decoder_artemis_rx09_ch00_mult_inpa : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    decoder_artemis_rx09_ch00_mult_outp : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    decoder_artemis_rx09_ch00_mem_wea : OUT STD_LOGIC;
+    decoder_artemis_rx09_ch00_mem_addra : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+    decoder_artemis_rx09_ch00_mem_dina : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    decoder_artemis_rx09_ch00_mem_douta : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     decoder_rx09_ch00_center_pos : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
     decoder_rx09_ch00_strength : OUT STD_LOGIC_VECTOR(18 DOWNTO 0);
     decoder_rx09_ch00_SoM_frameCtr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -69,8 +78,7 @@ ENTITY UFBmod_UFBmod_rx09_Decoder_0_0 IS
     decoder_rx09_ch00_FIFO_handshake : OUT STD_LOGIC;
     decoder_rx09_ch00_FIFO_accepted : IN STD_LOGIC;
     decoder_rx09_ch00_sql_open : OUT STD_LOGIC;
-    decoder_rx09_ch00_active : OUT STD_LOGIC;
-    dds_tx09_ptt : IN STD_LOGIC
+    decoder_rx09_ch00_active : OUT STD_LOGIC
   );
 END UFBmod_UFBmod_rx09_Decoder_0_0;
 
@@ -81,10 +89,19 @@ ARCHITECTURE UFBmod_UFBmod_rx09_Decoder_0_0_arch OF UFBmod_UFBmod_rx09_Decoder_0
     PORT (
       reset : IN STD_LOGIC;
       clk : IN STD_LOGIC;
+      signal_bins_rx09_ch00_mem_addrb : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+      signal_bins_rx09_ch00_mem_datab : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       decoder_fft_frame_avail_ctr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      decoder_fft_rx09_ch00_mem_b_addr : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
-      decoder_fft_rx09_ch00_mem_b_data : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      dds_tx09_ptt : IN STD_LOGIC;
       decoder_rx09_ch00_squelch_lvl : IN STD_LOGIC_VECTOR(18 DOWNTO 0);
+      decoder_artemis_rx09_ch00_mult_ce : OUT STD_LOGIC;
+      decoder_artemis_rx09_ch00_mult_sclr : OUT STD_LOGIC;
+      decoder_artemis_rx09_ch00_mult_inpa : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      decoder_artemis_rx09_ch00_mult_outp : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      decoder_artemis_rx09_ch00_mem_wea : OUT STD_LOGIC;
+      decoder_artemis_rx09_ch00_mem_addra : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+      decoder_artemis_rx09_ch00_mem_dina : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      decoder_artemis_rx09_ch00_mem_douta : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       decoder_rx09_ch00_center_pos : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
       decoder_rx09_ch00_strength : OUT STD_LOGIC_VECTOR(18 DOWNTO 0);
       decoder_rx09_ch00_SoM_frameCtr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -93,8 +110,7 @@ ARCHITECTURE UFBmod_UFBmod_rx09_Decoder_0_0_arch OF UFBmod_UFBmod_rx09_Decoder_0
       decoder_rx09_ch00_FIFO_handshake : OUT STD_LOGIC;
       decoder_rx09_ch00_FIFO_accepted : IN STD_LOGIC;
       decoder_rx09_ch00_sql_open : OUT STD_LOGIC;
-      decoder_rx09_ch00_active : OUT STD_LOGIC;
-      dds_tx09_ptt : IN STD_LOGIC
+      decoder_rx09_ch00_active : OUT STD_LOGIC
     );
   END COMPONENT UFBmod_rx09_Decoder_FSM;
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
@@ -110,10 +126,19 @@ BEGIN
     PORT MAP (
       reset => reset,
       clk => clk,
+      signal_bins_rx09_ch00_mem_addrb => signal_bins_rx09_ch00_mem_addrb,
+      signal_bins_rx09_ch00_mem_datab => signal_bins_rx09_ch00_mem_datab,
       decoder_fft_frame_avail_ctr => decoder_fft_frame_avail_ctr,
-      decoder_fft_rx09_ch00_mem_b_addr => decoder_fft_rx09_ch00_mem_b_addr,
-      decoder_fft_rx09_ch00_mem_b_data => decoder_fft_rx09_ch00_mem_b_data,
+      dds_tx09_ptt => dds_tx09_ptt,
       decoder_rx09_ch00_squelch_lvl => decoder_rx09_ch00_squelch_lvl,
+      decoder_artemis_rx09_ch00_mult_ce => decoder_artemis_rx09_ch00_mult_ce,
+      decoder_artemis_rx09_ch00_mult_sclr => decoder_artemis_rx09_ch00_mult_sclr,
+      decoder_artemis_rx09_ch00_mult_inpa => decoder_artemis_rx09_ch00_mult_inpa,
+      decoder_artemis_rx09_ch00_mult_outp => decoder_artemis_rx09_ch00_mult_outp,
+      decoder_artemis_rx09_ch00_mem_wea => decoder_artemis_rx09_ch00_mem_wea,
+      decoder_artemis_rx09_ch00_mem_addra => decoder_artemis_rx09_ch00_mem_addra,
+      decoder_artemis_rx09_ch00_mem_dina => decoder_artemis_rx09_ch00_mem_dina,
+      decoder_artemis_rx09_ch00_mem_douta => decoder_artemis_rx09_ch00_mem_douta,
       decoder_rx09_ch00_center_pos => decoder_rx09_ch00_center_pos,
       decoder_rx09_ch00_strength => decoder_rx09_ch00_strength,
       decoder_rx09_ch00_SoM_frameCtr => decoder_rx09_ch00_SoM_frameCtr,
@@ -122,7 +147,6 @@ BEGIN
       decoder_rx09_ch00_FIFO_handshake => decoder_rx09_ch00_FIFO_handshake,
       decoder_rx09_ch00_FIFO_accepted => decoder_rx09_ch00_FIFO_accepted,
       decoder_rx09_ch00_sql_open => decoder_rx09_ch00_sql_open,
-      decoder_rx09_ch00_active => decoder_rx09_ch00_active,
-      dds_tx09_ptt => dds_tx09_ptt
+      decoder_rx09_ch00_active => decoder_rx09_ch00_active
     );
 END UFBmod_UFBmod_rx09_Decoder_0_0_arch;

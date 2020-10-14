@@ -43,8 +43,8 @@ end tb_UFBmod;
 architecture Behavioral of tb_UFBmod is
   component UFBmod_wrapper is
     Port ( 
-      clk                                           : in  STD_LOGIC;
-      reset                                         : in  STD_LOGIC;
+      clk_100MHz                                    : in  STD_LOGIC;
+      reset_100MHz                                  : in  STD_LOGIC;
       
       post_fft_rx09_mem_a_EoT                       : in  STD_LOGIC;
       post_fft_rx09_mem_a_addr                      : in  STD_LOGIC_VECTOR ( 41 downto 0 );
@@ -65,10 +65,10 @@ architecture Behavioral of tb_UFBmod is
   end component UFBmod_wrapper;
 
 -- RESETS
-  signal tb_reset                                   : STD_LOGIC;
+  signal tb_reset_100MHz                            : STD_LOGIC;
 
 -- CLOCKS
-  signal tb_clk                                     : STD_LOGIC;
+  signal tb_clk_100MHz                              : STD_LOGIC;
 
 -- STIMULUS
   signal tb_pre_fft_rx09_mem_a_addr                 : STD_LOGIC_VECTOR (10 downto 0);
@@ -101,8 +101,8 @@ begin
 -- DUT
   UFBmod_wrapper_i: component UFBmod_wrapper
     port map (
-        reset                           => tb_reset,
-        clk                             => tb_clk,
+        reset_100MHz                    => tb_reset_100MHz,
+        clk_100MHz                      => tb_clk_100MHz,
         
         post_fft_rx09_mem_a_addr        => tb_post_fft_rx09_mem_a_addr,
         post_fft_rx09_mem_a_EoT         => tb_post_fft_rx09_mem_a_EoT,
@@ -124,10 +124,10 @@ begin
 -- RESETS
   proc_tb_reset: process
   begin
-    tb_reset    <= '1';
+    tb_reset_100MHz    <= '1';
     
     wait for 10us;
-    tb_reset    <= '0';
+    tb_reset_100MHz    <= '0';
     wait;
   end process proc_tb_reset;
 
@@ -135,10 +135,10 @@ begin
   -- 100 MHz
   proc_tb_clk: process
   begin
-    tb_clk      <= '1';
+    tb_clk_100MHz      <= '1';
     wait for 5ns;
     
-    tb_clk      <= '0';
+    tb_clk_100MHz      <= '0';
     wait for 5ns;
   end process proc_tb_clk;
 
@@ -152,7 +152,7 @@ begin
     tb_decoder_rx09_ch00_squelch_lvl    <= (others => '0');
     tb_dds_tx09_ptt                     <= '0';
     
-    wait until tb_reset = '0';
+    wait until tb_reset_100MHz = '0';
     tb_decoder_rx09_ch00_squelch_lvl    <= std_logic_vector(to_unsigned(C_squelch_lvl_ch00, tb_decoder_rx09_ch00_squelch_lvl'length));
     
     wait;
@@ -167,9 +167,9 @@ begin
     pre_a_addr_Int              := 0;
     tb_pre_fft_rx09_mem_a_addr  <= (others => '0');
     
-    wait until tb_reset = '0';
+    wait until tb_reset_100MHz = '0';
     loop
-        wait until tb_clk'event and tb_clk = '1';
+        wait until tb_clk_100MHz'event and tb_clk_100MHz = '1';
         
         tb_pre_fft_rx09_mem_a_addr      <= std_logic_vector(to_unsigned(pre_a_addr_Int, tb_pre_fft_rx09_mem_a_addr'length));
         pre_a_addr_Int                  := (pre_a_addr_Int + 1)  mod  C_pre_mem_a_depth;
@@ -190,7 +190,7 @@ begin
     tb_post_fft_rx09_mem_a_EoT          <= '0';
     tb_post_fft_rx09_mem_a_addr         <= (others => '0');
     
-    wait until tb_reset = '0';
+    wait until tb_reset_100MHz = '0';
     
     -- post_fft: Address incrementor each 64 us
     loop
@@ -201,7 +201,7 @@ begin
         wait for 30 us;
         
         for ii in 0 to 1024 loop
-            wait until tb_clk'event and tb_clk = '1';
+            wait until tb_clk_100MHz'event and tb_clk_100MHz = '1';
             
             if (ii < 1024) then
                 post_a_addr_Int             := frame_start_Int + ii;
@@ -433,11 +433,11 @@ begin
     
     
     -- Start output    
-    wait until tb_reset = '0';
+    wait until tb_reset_100MHz = '0';
     wait for 10 us;
     
     loop
-        wait until tb_clk'event and tb_clk = '1';
+        wait until tb_clk_100MHz'event and tb_clk_100MHz = '1';
         
         -- Delay output by 2 clocks
         getAddrIn_d1                        := getAddrIn;
