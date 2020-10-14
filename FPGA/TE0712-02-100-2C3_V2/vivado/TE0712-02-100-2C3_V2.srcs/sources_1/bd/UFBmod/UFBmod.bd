@@ -1274,8 +1274,14 @@
             "vlnv": "xilinx.com:ip:fifo_generator:13.2",
             "xci_name": "UFBmod_fifo_generator_0_0",
             "parameters": {
+              "Enable_Safety_Circuit": {
+                "value": "true"
+              },
               "Fifo_Implementation": {
                 "value": "Common_Clock_Block_RAM"
+              },
+              "Full_Flags_Reset_Value": {
+                "value": "0"
               },
               "Input_Data_Width": {
                 "value": "1"
@@ -1284,7 +1290,7 @@
                 "value": "8"
               },
               "Reset_Type": {
-                "value": "Synchronous_Reset"
+                "value": "Asynchronous_Reset"
               },
               "Use_Dout_Reset": {
                 "value": "true"
@@ -1402,9 +1408,9 @@
           "reset_100MHz": {
             "ports": [
               "reset_100MHz",
-              "data_rx09_fifo_generator_0/srst",
               "data_rx09_c_counter_binary_0/SCLR",
-              "Decoder_rx09_to_FIFO_0/reset"
+              "Decoder_rx09_to_FIFO_0/reset",
+              "data_rx09_fifo_generator_0/rst"
             ]
           },
           "decoder_rx09_ch00_center_pos_1": {
