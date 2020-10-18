@@ -61,13 +61,13 @@ ENTITY UFBmod_UFBmod_rx09_Decoder_0_0 IS
     signal_bins_rx09_ch00_mem_datab : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     decoder_fft_frame_avail_ctr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     dds_tx09_ptt : IN STD_LOGIC;
-    decoder_rx09_ch00_squelch_lvl : IN STD_LOGIC_VECTOR(18 DOWNTO 0);
+    decoder_rx09_ch00_squelch_lvl : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     decoder_artemis_rx09_ch00_mult_ce : OUT STD_LOGIC;
-    decoder_artemis_rx09_ch00_mult_sclr : OUT STD_LOGIC;
-    decoder_artemis_rx09_ch00_mult_inpa : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-    decoder_artemis_rx09_ch00_mult_outp : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    decoder_artemis_rx09_ch00_mult_ina : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    decoder_artemis_rx09_ch00_mult_inb : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    decoder_artemis_rx09_ch00_mult_outp : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     decoder_artemis_rx09_ch00_mem_wea : OUT STD_LOGIC;
-    decoder_artemis_rx09_ch00_mem_addra : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+    decoder_artemis_rx09_ch00_mem_addra : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
     decoder_artemis_rx09_ch00_mem_dina : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     decoder_artemis_rx09_ch00_mem_douta : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     decoder_rx09_ch00_center_pos : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -93,13 +93,13 @@ ARCHITECTURE UFBmod_UFBmod_rx09_Decoder_0_0_arch OF UFBmod_UFBmod_rx09_Decoder_0
       signal_bins_rx09_ch00_mem_datab : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       decoder_fft_frame_avail_ctr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       dds_tx09_ptt : IN STD_LOGIC;
-      decoder_rx09_ch00_squelch_lvl : IN STD_LOGIC_VECTOR(18 DOWNTO 0);
+      decoder_rx09_ch00_squelch_lvl : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       decoder_artemis_rx09_ch00_mult_ce : OUT STD_LOGIC;
-      decoder_artemis_rx09_ch00_mult_sclr : OUT STD_LOGIC;
-      decoder_artemis_rx09_ch00_mult_inpa : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-      decoder_artemis_rx09_ch00_mult_outp : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      decoder_artemis_rx09_ch00_mult_ina : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      decoder_artemis_rx09_ch00_mult_inb : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      decoder_artemis_rx09_ch00_mult_outp : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       decoder_artemis_rx09_ch00_mem_wea : OUT STD_LOGIC;
-      decoder_artemis_rx09_ch00_mem_addra : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+      decoder_artemis_rx09_ch00_mem_addra : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
       decoder_artemis_rx09_ch00_mem_dina : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       decoder_artemis_rx09_ch00_mem_douta : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       decoder_rx09_ch00_center_pos : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -117,7 +117,7 @@ ARCHITECTURE UFBmod_UFBmod_rx09_Decoder_0_0_arch OF UFBmod_UFBmod_rx09_Decoder_0
   ATTRIBUTE IP_DEFINITION_SOURCE OF UFBmod_UFBmod_rx09_Decoder_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN UFBmod_clk, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN UFBmod_clk_100MHz, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
   ATTRIBUTE X_INTERFACE_PARAMETER OF reset: SIGNAL IS "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF reset: SIGNAL IS "xilinx.com:signal:reset:1.0 reset RST";
@@ -132,8 +132,8 @@ BEGIN
       dds_tx09_ptt => dds_tx09_ptt,
       decoder_rx09_ch00_squelch_lvl => decoder_rx09_ch00_squelch_lvl,
       decoder_artemis_rx09_ch00_mult_ce => decoder_artemis_rx09_ch00_mult_ce,
-      decoder_artemis_rx09_ch00_mult_sclr => decoder_artemis_rx09_ch00_mult_sclr,
-      decoder_artemis_rx09_ch00_mult_inpa => decoder_artemis_rx09_ch00_mult_inpa,
+      decoder_artemis_rx09_ch00_mult_ina => decoder_artemis_rx09_ch00_mult_ina,
+      decoder_artemis_rx09_ch00_mult_inb => decoder_artemis_rx09_ch00_mult_inb,
       decoder_artemis_rx09_ch00_mult_outp => decoder_artemis_rx09_ch00_mult_outp,
       decoder_artemis_rx09_ch00_mem_wea => decoder_artemis_rx09_ch00_mem_wea,
       decoder_artemis_rx09_ch00_mem_addra => decoder_artemis_rx09_ch00_mem_addra,

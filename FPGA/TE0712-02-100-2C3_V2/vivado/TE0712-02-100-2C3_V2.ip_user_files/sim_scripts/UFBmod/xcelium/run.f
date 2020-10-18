@@ -110,14 +110,10 @@
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlconstant_0_2/sim/UFBmod_xlconstant_0_2.v" \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlconstant_0_3/sim/UFBmod_xlconstant_0_3.v" \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlconstant_0_4/sim/UFBmod_xlconstant_0_4.v" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_mult_gen_0_1/sim/UFBmod_mult_gen_0_1.vhd" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_blk_mem_gen_0_1/sim/UFBmod_blk_mem_gen_0_1.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_mult_gen_0_2/sim/UFBmod_mult_gen_0_2.vhd" \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/sim/UFBmod.vhd" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \

@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Mon Oct 12 00:53:45 2020
+--Date        : Sun Oct 18 18:55:23 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -181,7 +181,7 @@ architecture STRUCTURE of msys_wrapper is
     post_fft_rx09_mem_a_addr : out STD_LOGIC_VECTOR ( 41 downto 0 );
     post_fft_rx09_mem_b_addr : in STD_LOGIC_VECTOR ( 9 downto 0 );
     post_fft_rx09_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 18 downto 0 );
+    decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 15 downto 0 );
     decoder_rx09_center_pos : in STD_LOGIC_VECTOR ( 7 downto 0 );
     decoder_rx09_strength : in STD_LOGIC_VECTOR ( 18 downto 0 );
     post_fft_rx09_mem_a_EoT : out STD_LOGIC;
@@ -198,16 +198,16 @@ architecture STRUCTURE of msys_wrapper is
     mig_7series_0_ui_clk_sync_rst : out STD_LOGIC;
     decoder_rx09_sql_open : in STD_LOGIC;
     decoder_rx09_active : in STD_LOGIC;
+    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
+    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
+    CLK3_sys_diff_clk_p : in STD_LOGIC;
+    CLK3_sys_diff_clk_n : in STD_LOGIC;
+    TRX_tx_clk_clk_n : out STD_LOGIC;
+    TRX_tx_clk_clk_p : out STD_LOGIC;
     RMII_PHY_M_0_crs_dv : in STD_LOGIC;
     RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     RMII_PHY_M_0_tx_en : out STD_LOGIC;
     RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_tx_clk_clk_n : out STD_LOGIC;
-    TRX_tx_clk_clk_p : out STD_LOGIC;
-    CLK3_sys_diff_clk_p : in STD_LOGIC;
-    CLK3_sys_diff_clk_n : in STD_LOGIC;
-    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
-    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
     TRX_spi_io0_i : in STD_LOGIC;
     TRX_spi_io0_o : out STD_LOGIC;
     TRX_spi_io0_t : out STD_LOGIC;
@@ -220,16 +220,23 @@ architecture STRUCTURE of msys_wrapper is
     TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_t : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
     TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
     TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
-    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
+    DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
+    DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
+    DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
+    DDR3_SDRAM_addr : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    DDR3_SDRAM_ba : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    DDR3_SDRAM_ras_n : out STD_LOGIC;
+    DDR3_SDRAM_cas_n : out STD_LOGIC;
+    DDR3_SDRAM_we_n : out STD_LOGIC;
+    DDR3_SDRAM_reset_n : out STD_LOGIC;
+    DDR3_SDRAM_ck_p : out STD_LOGIC_VECTOR ( 0 to 0 );
+    DDR3_SDRAM_ck_n : out STD_LOGIC_VECTOR ( 0 to 0 );
+    DDR3_SDRAM_cke : out STD_LOGIC_VECTOR ( 0 to 0 );
+    DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
+    DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
     qspi_flash_io0_i : in STD_LOGIC;
     qspi_flash_io0_o : out STD_LOGIC;
     qspi_flash_io0_t : out STD_LOGIC;
@@ -245,27 +252,20 @@ architecture STRUCTURE of msys_wrapper is
     qspi_flash_ss_i : in STD_LOGIC;
     qspi_flash_ss_o : out STD_LOGIC;
     qspi_flash_ss_t : out STD_LOGIC;
+    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
+    UART0_rxd : in STD_LOGIC;
+    UART0_txd : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
     BOARD_IIC_scl_i : in STD_LOGIC;
     BOARD_IIC_scl_o : out STD_LOGIC;
     BOARD_IIC_scl_t : out STD_LOGIC;
     BOARD_IIC_sda_i : in STD_LOGIC;
     BOARD_IIC_sda_o : out STD_LOGIC;
-    BOARD_IIC_sda_t : out STD_LOGIC;
-    DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
-    DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
-    DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
-    DDR3_SDRAM_addr : out STD_LOGIC_VECTOR ( 14 downto 0 );
-    DDR3_SDRAM_ba : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    DDR3_SDRAM_ras_n : out STD_LOGIC;
-    DDR3_SDRAM_cas_n : out STD_LOGIC;
-    DDR3_SDRAM_we_n : out STD_LOGIC;
-    DDR3_SDRAM_reset_n : out STD_LOGIC;
-    DDR3_SDRAM_ck_p : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_ck_n : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_cke : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 )
+    BOARD_IIC_sda_t : out STD_LOGIC
   );
   end component msys;
   component IOBUF is
@@ -362,24 +362,25 @@ architecture STRUCTURE of msys_wrapper is
     EUI48_abort             : out STD_LOGIC_VECTOR ( 7 downto 0)
   );
   end component EUI48_FSM;
-  component UFBmod_Decoder is
+  component UFBmod_wrapper is
   port (
-    reset                                           : in  STD_LOGIC;
-    clk                                             : in  STD_LOGIC;
+    reset_100MHz                                    : in  STD_LOGIC;
+    clk_100MHz                                      : in  STD_LOGIC;
+    dds_tx09_ptt                                    : in  STD_LOGIC;
     post_fft_rx09_mem_a_EoT                         : in  STD_LOGIC;
     post_fft_rx09_mem_a_addr                        : in  STD_LOGIC_VECTOR(41 downto 0);
     post_fft_rx09_mem_b_addr                        : out STD_LOGIC_VECTOR( 9 downto 0);
     post_fft_rx09_mem_b_dout                        : in  STD_LOGIC_VECTOR(15 downto 0);
-    decoder_rx09_squelch_lvl                        : in  STD_LOGIC_VECTOR(18 downto 0);
-    decoder_rx09_center_pos                         : out STD_LOGIC_VECTOR( 7 downto 0);
-    decoder_rx09_strength                           : out STD_LOGIC_VECTOR(18 downto 0);
-    decoder_rx09_noise                              : out STD_LOGIC_VECTOR(18 downto 0);
-    decoder_rx09_sql_open                           : out STD_LOGIC;
-    decoder_rx09_active                             : out STD_LOGIC;
+    decoder_rx09_ch00_squelch_lvl                   : in  STD_LOGIC_VECTOR(18 downto 0);
+    decoder_rx09_ch00_center_pos                    : out STD_LOGIC_VECTOR( 7 downto 0);
+    decoder_rx09_ch00_strength                      : out STD_LOGIC_VECTOR(18 downto 0);
+    decoder_rx09_ch00_noise                         : out STD_LOGIC_VECTOR(18 downto 0);
+    decoder_rx09_ch00_sql_open                      : out STD_LOGIC;
+    decoder_rx09_ch00_active                        : out STD_LOGIC;
     pushdata_rx09_en                                : out STD_LOGIC;
     pushdata_rx09_byteData                          : out STD_LOGIC_VECTOR( 7 downto 0)
   );
-  end component UFBmod_Decoder;
+  end component UFBmod_wrapper;
   component UFBmod_Encoder is
   port (
     reset                                           : in  STD_LOGIC;
@@ -438,12 +439,12 @@ architecture STRUCTURE of msys_wrapper is
   signal TRX_spi_ss_io_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_spi_ss_o_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_spi_ss_t : STD_LOGIC;
-  signal mw_decoder_rx09_sql_open : STD_LOGIC;
-  signal mw_decoder_rx09_active : STD_LOGIC;
-  signal mw_decoder_rx09_center_pos : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal mw_decoder_rx09_noise : STD_LOGIC_VECTOR ( 18 downto 0 );
-  signal mw_decoder_rx09_squelch_lvl : STD_LOGIC_VECTOR ( 18 downto 0 );
-  signal mw_decoder_rx09_strength : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal mw_decoder_rx09_ch00_sql_open : STD_LOGIC;
+  signal mw_decoder_rx09_ch00_active : STD_LOGIC;
+  signal mw_decoder_rx09_ch00_center_pos : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal mw_decoder_rx09_ch00_noise : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal mw_decoder_rx09_ch00_squelch_lvl : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal mw_decoder_rx09_ch00_strength : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal mw_microblaze_0_Clk_100MHz : STD_LOGIC;
   signal mw_mig_7series_0_ui_clk_sync_rst : STD_LOGIC;
   signal mw_EUI48_FSM_start : STD_LOGIC;
@@ -674,20 +675,21 @@ EUI48_FSM_i: component EUI48_FSM
       EUI48_state           => mw_EUI48_state,
       EUI48_abort           => mw_EUI48_abort
     );
-UFBmod_Decoder_i: component UFBmod_Decoder
+UFBmod_bd: component UFBmod_wrapper
     port map (
-      reset                         => mw_mig_7series_0_ui_clk_sync_rst,
-      clk                           => mw_microblaze_0_Clk_100MHz,
+      reset_100MHz                  => mw_mig_7series_0_ui_clk_sync_rst,
+      clk_100MHz                    => mw_microblaze_0_Clk_100MHz,
+      dds_tx09_ptt                  => mw_dds_tx09_ptt,
       post_fft_rx09_mem_a_EoT       => mw_post_fft_rx09_mem_a_EoT,
       post_fft_rx09_mem_a_addr      => mw_post_fft_rx09_mem_a_addr,
       post_fft_rx09_mem_b_addr      => mw_post_fft_rx09_mem_b_addr,
       post_fft_rx09_mem_b_dout      => mw_post_fft_rx09_mem_b_dout,
-      decoder_rx09_squelch_lvl      => mw_decoder_rx09_squelch_lvl,
-      decoder_rx09_center_pos       => mw_decoder_rx09_center_pos,
-      decoder_rx09_strength         => mw_decoder_rx09_strength,
-      decoder_rx09_noise            => mw_decoder_rx09_noise,
-      decoder_rx09_sql_open         => mw_decoder_rx09_sql_open,
-      decoder_rx09_active           => mw_decoder_rx09_active,
+      decoder_rx09_ch00_squelch_lvl => mw_decoder_rx09_ch00_squelch_lvl,
+      decoder_rx09_ch00_center_pos  => mw_decoder_rx09_ch00_center_pos,
+      decoder_rx09_ch00_strength    => mw_decoder_rx09_ch00_strength,
+      decoder_rx09_ch00_noise       => mw_decoder_rx09_ch00_noise,
+      decoder_rx09_ch00_sql_open    => mw_decoder_rx09_ch00_sql_open,
+      decoder_rx09_ch00_active      => mw_decoder_rx09_ch00_active,
       pushdata_rx09_en              => mw_pushdata_rx09_en,
       pushdata_rx09_byteData        => mw_pushdata_rx09_byteData
     );
@@ -695,8 +697,8 @@ UFBmod_Encoder_i: component UFBmod_Encoder
     port map (
       reset                         => mw_mig_7series_0_ui_clk_sync_rst,
       clk                           => mw_microblaze_0_Clk_100MHz,
-      decoder_rx09_sql_open         => mw_decoder_rx09_sql_open,
-      decoder_rx09_active           => mw_decoder_rx09_active,
+      decoder_rx09_sql_open         => mw_decoder_rx09_ch00_sql_open,
+      decoder_rx09_active           => mw_decoder_rx09_ch00_active,
       encoder_pull_FIFO_dump        => mw_encoder_pull_FIFO_dump,
       encoder_pull_do_start         => mw_encoder_pull_do_start,
       encoder_pull_data_len         => mw_encoder_pull_data_len,
@@ -840,12 +842,12 @@ msys_i: component msys
       USER_dbg_out(13 downto 0) => USER_dbg_out(13 downto 0),
       dds_tx09_inc(25 downto 0) => mw_dds_tx09_inc(25 downto 0),
       dds_tx09_ptt => mw_dds_tx09_ptt,
-      decoder_rx09_active => mw_decoder_rx09_active,
-      decoder_rx09_center_pos(7 downto 0) => mw_decoder_rx09_center_pos(7 downto 0),
-      decoder_rx09_noise(18 downto 0) => mw_decoder_rx09_noise(18 downto 0),
-      decoder_rx09_sql_open => mw_decoder_rx09_sql_open,
-      decoder_rx09_squelch_lvl(18 downto 0) => mw_decoder_rx09_squelch_lvl(18 downto 0),
-      decoder_rx09_strength(18 downto 0) => mw_decoder_rx09_strength(18 downto 0),
+      decoder_rx09_active => mw_decoder_rx09_ch00_active,
+      decoder_rx09_center_pos(7 downto 0) => mw_decoder_rx09_ch00_center_pos(7 downto 0),
+      decoder_rx09_noise(18 downto 0) => mw_decoder_rx09_ch00_noise(18 downto 0),
+      decoder_rx09_sql_open => mw_decoder_rx09_ch00_sql_open,
+      decoder_rx09_squelch_lvl(15 downto 0) => mw_decoder_rx09_ch00_squelch_lvl(15 downto 0),
+      decoder_rx09_strength(18 downto 0) => mw_decoder_rx09_ch00_strength(18 downto 0),
       encoder_pull_FIFO_dump(0) => mw_encoder_pull_FIFO_dump,
       encoder_pull_data_len(6 downto 0) => mw_encoder_pull_data_len(6 downto 0),
       encoder_pull_do_start(0) => mw_encoder_pull_do_start,

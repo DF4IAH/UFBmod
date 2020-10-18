@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Wed Oct 14 18:58:21 2020
+--Date        : Sun Oct 18 23:59:27 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target UFBmod.bd
 --Design      : UFBmod
@@ -227,6 +227,7 @@ architecture STRUCTURE of FFT_rx09_to_Decoder_imp_1D60DD is
     averaging_factor_div_dout_tvalid : in STD_LOGIC;
     averaging_factor_div_divisor_tvalid : out STD_LOGIC;
     signal_correction_rx09_ch00_mult_ce : out STD_LOGIC;
+    signal_correction_rx09_ch00_mult_ina : out STD_LOGIC_VECTOR ( 15 downto 0 );
     signal_correction_rx09_ch00_mult_prod : in STD_LOGIC_VECTOR ( 15 downto 0 );
     signal_bins_rx09_ch00_mem_addra : out STD_LOGIC_VECTOR ( 8 downto 0 );
     signal_bins_rx09_ch00_mem_dina : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -235,6 +236,7 @@ architecture STRUCTURE of FFT_rx09_to_Decoder_imp_1D60DD is
     decoder_fft_frame_avail_ctr : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component UFBmod_FFT_rx09_to_Decoder_0_0;
+  signal FFT_rx09_to_Decoder_FSM_signal_correction_rx09_ch00_mult_ina : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal averaging_factor_div_dividend_tdata : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal averaging_factor_div_dividend_tvalid : STD_LOGIC_VECTOR ( 0 to 0 );
   signal averaging_factor_div_divisor_tdata : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -257,9 +259,9 @@ architecture STRUCTURE of FFT_rx09_to_Decoder_imp_1D60DD is
   signal signal_correction_rx09_ch00_mult_prod : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal xlconstant_val0_len16_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal xlconstant_val0_len1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_averaging_factor_rx09_ch00_div_gen_0_s_axis_dividend_tready_UNCONNECTED : STD_LOGIC;
-  signal NLW_averaging_factor_rx09_ch00_div_gen_0_s_axis_divisor_tready_UNCONNECTED : STD_LOGIC;
-  signal NLW_averaging_factor_rx09_ch00_div_gen_0_m_axis_dout_tuser_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_averaging_factor_rx09_ch00_div_gen_35clks_s_axis_dividend_tready_UNCONNECTED : STD_LOGIC;
+  signal NLW_averaging_factor_rx09_ch00_div_gen_35clks_s_axis_divisor_tready_UNCONNECTED : STD_LOGIC;
+  signal NLW_averaging_factor_rx09_ch00_div_gen_35clks_m_axis_dout_tuser_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
 begin
   clk_100MHz <= clk;
   post_fft_rx09_mem_a_EoT_1 <= post_fft_rx09_mem_a_EoT;
@@ -285,23 +287,24 @@ FFT_rx09_to_Decoder_FSM: component UFBmod_FFT_rx09_to_Decoder_0_0
       signal_bins_rx09_ch00_mem_douta(15 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_douta(15 downto 0),
       signal_bins_rx09_ch00_mem_wea => signal_bins_rx09_ch00_blk_mem_gen_0_wea,
       signal_correction_rx09_ch00_mult_ce => signal_correction_rx09_ch00_mult_ce,
+      signal_correction_rx09_ch00_mult_ina(15 downto 0) => FFT_rx09_to_Decoder_FSM_signal_correction_rx09_ch00_mult_ina(15 downto 0),
       signal_correction_rx09_ch00_mult_prod(15 downto 0) => signal_correction_rx09_ch00_mult_prod(15 downto 0)
     );
-averaging_factor_rx09_ch00_div_gen_0: component UFBmod_div_gen_0_0
+averaging_factor_rx09_ch00_div_gen_35clks: component UFBmod_div_gen_0_0
      port map (
       aclk => clk_100MHz,
       aclken => averaging_factor_divider_aclken,
       m_axis_dout_tdata(31 downto 0) => averaging_factor_div_dout_tdata(31 downto 0),
-      m_axis_dout_tuser(0) => NLW_averaging_factor_rx09_ch00_div_gen_0_m_axis_dout_tuser_UNCONNECTED(0),
+      m_axis_dout_tuser(0) => NLW_averaging_factor_rx09_ch00_div_gen_35clks_m_axis_dout_tuser_UNCONNECTED(0),
       m_axis_dout_tvalid => averaging_factor_div_dout_tvalid,
       s_axis_dividend_tdata(15 downto 0) => averaging_factor_div_dividend_tdata(15 downto 0),
-      s_axis_dividend_tready => NLW_averaging_factor_rx09_ch00_div_gen_0_s_axis_dividend_tready_UNCONNECTED,
+      s_axis_dividend_tready => NLW_averaging_factor_rx09_ch00_div_gen_35clks_s_axis_dividend_tready_UNCONNECTED,
       s_axis_dividend_tvalid => averaging_factor_div_dividend_tvalid(0),
       s_axis_divisor_tdata(31 downto 0) => averaging_factor_div_divisor_tdata(31 downto 0),
-      s_axis_divisor_tready => NLW_averaging_factor_rx09_ch00_div_gen_0_s_axis_divisor_tready_UNCONNECTED,
+      s_axis_divisor_tready => NLW_averaging_factor_rx09_ch00_div_gen_35clks_s_axis_divisor_tready_UNCONNECTED,
       s_axis_divisor_tvalid => averaging_factor_div_divisor_tvalid
     );
-rowsum_rx09_ch00_c_accum_0: component UFBmod_c_accum_0_0
+rowsum_rx09_ch00_c_accum_1clk: component UFBmod_c_accum_0_0
      port map (
       B(15 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_dina(15 downto 0),
       CE => rowsum_rx09_ch00_accum_ce,
@@ -309,7 +312,7 @@ rowsum_rx09_ch00_c_accum_0: component UFBmod_c_accum_0_0
       Q(31 downto 0) => averaging_factor_div_divisor_tdata(31 downto 0),
       SCLR => rowsum_rx09_ch00_accum_sclr
     );
-signal_bins_rx09_ch00_blk_mem_gen_0: component UFBmod_blk_mem_gen_0_0
+signal_bins_rx09_ch00_blk_mem_gen_2clks: component UFBmod_blk_mem_gen_0_0
      port map (
       addra(8 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addra(8 downto 0),
       addrb(8 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addrb(8 downto 0),
@@ -322,9 +325,9 @@ signal_bins_rx09_ch00_blk_mem_gen_0: component UFBmod_blk_mem_gen_0_0
       wea(0) => signal_bins_rx09_ch00_blk_mem_gen_0_wea,
       web(0) => xlconstant_val0_len1_dout(0)
     );
-signal_correction_rx09_ch00_mult_gen_0: component UFBmod_mult_gen_0_0
+signal_correction_rx09_ch00_mult_gen_4clks: component UFBmod_mult_gen_0_0
      port map (
-      A(15 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_douta(15 downto 0),
+      A(15 downto 0) => FFT_rx09_to_Decoder_FSM_signal_correction_rx09_ch00_mult_ina(15 downto 0),
       B(31 downto 0) => averaging_factor_div_dout_tdata(31 downto 0),
       CE => signal_correction_rx09_ch00_mult_ce,
       CLK => clk_100MHz,
@@ -365,7 +368,7 @@ entity UFBmod_rx09_Decoders_imp_115KKRN is
     decoder_rx09_ch00_sql_open : out STD_LOGIC;
     decoder_rx09_ch00_strength : out STD_LOGIC_VECTOR ( 18 downto 0 );
     decoder_rx09_ch00_u32Count : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    decoder_rx09_squelch_lvl : in STD_LOGIC_VECTOR ( 18 downto 0 );
+    decoder_rx09_squelch_lvl : in STD_LOGIC_VECTOR ( 15 downto 0 );
     reset_100MHz : in STD_LOGIC;
     signal_bins_rx09_ch00_blk_mem_gen_0_addrb : out STD_LOGIC_VECTOR ( 8 downto 0 );
     signal_bins_rx09_ch00_blk_mem_gen_0_doutb : in STD_LOGIC_VECTOR ( 15 downto 0 )
@@ -373,25 +376,24 @@ entity UFBmod_rx09_Decoders_imp_115KKRN is
 end UFBmod_rx09_Decoders_imp_115KKRN;
 
 architecture STRUCTURE of UFBmod_rx09_Decoders_imp_115KKRN is
-  component UFBmod_mult_gen_0_1 is
-  port (
-    CLK : in STD_LOGIC;
-    A : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    B : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    CE : in STD_LOGIC;
-    SCLR : in STD_LOGIC;
-    P : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component UFBmod_mult_gen_0_1;
   component UFBmod_blk_mem_gen_0_1 is
   port (
     clka : in STD_LOGIC;
     wea : in STD_LOGIC_VECTOR ( 0 to 0 );
-    addra : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    addra : in STD_LOGIC_VECTOR ( 6 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 15 downto 0 );
     douta : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component UFBmod_blk_mem_gen_0_1;
+  component UFBmod_mult_gen_0_2 is
+  port (
+    CLK : in STD_LOGIC;
+    A : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    B : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    CE : in STD_LOGIC;
+    P : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component UFBmod_mult_gen_0_2;
   component UFBmod_UFBmod_rx09_Decoder_0_0 is
   port (
     reset : in STD_LOGIC;
@@ -400,13 +402,13 @@ architecture STRUCTURE of UFBmod_rx09_Decoders_imp_115KKRN is
     signal_bins_rx09_ch00_mem_datab : in STD_LOGIC_VECTOR ( 15 downto 0 );
     decoder_fft_frame_avail_ctr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     dds_tx09_ptt : in STD_LOGIC;
-    decoder_rx09_ch00_squelch_lvl : in STD_LOGIC_VECTOR ( 18 downto 0 );
+    decoder_rx09_ch00_squelch_lvl : in STD_LOGIC_VECTOR ( 15 downto 0 );
     decoder_artemis_rx09_ch00_mult_ce : out STD_LOGIC;
-    decoder_artemis_rx09_ch00_mult_sclr : out STD_LOGIC;
-    decoder_artemis_rx09_ch00_mult_inpa : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    decoder_artemis_rx09_ch00_mult_outp : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    decoder_artemis_rx09_ch00_mult_ina : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    decoder_artemis_rx09_ch00_mult_inb : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    decoder_artemis_rx09_ch00_mult_outp : in STD_LOGIC_VECTOR ( 31 downto 0 );
     decoder_artemis_rx09_ch00_mem_wea : out STD_LOGIC;
-    decoder_artemis_rx09_ch00_mem_addra : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    decoder_artemis_rx09_ch00_mem_addra : out STD_LOGIC_VECTOR ( 6 downto 0 );
     decoder_artemis_rx09_ch00_mem_dina : out STD_LOGIC_VECTOR ( 15 downto 0 );
     decoder_artemis_rx09_ch00_mem_douta : in STD_LOGIC_VECTOR ( 15 downto 0 );
     decoder_rx09_ch00_center_pos : out STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -420,27 +422,27 @@ architecture STRUCTURE of UFBmod_rx09_Decoders_imp_115KKRN is
     decoder_rx09_ch00_active : out STD_LOGIC
   );
   end component UFBmod_UFBmod_rx09_Decoder_0_0;
-  signal UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_addra : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_addra : STD_LOGIC_VECTOR ( 6 downto 0 );
   signal UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_dina : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_wea : STD_LOGIC;
   signal UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_ce : STD_LOGIC;
-  signal UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_inpa : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_sclr : STD_LOGIC;
+  signal UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_ina : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_inb : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal decoder_artemis_blk_mem_gen_0_douta : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal decoder_mult_gen_0_P : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal decoder_artemis_mult_gen_4clks_P : STD_LOGIC_VECTOR ( 31 downto 0 );
 begin
 UFBmod_rx09_Decoder_0: component UFBmod_UFBmod_rx09_Decoder_0_0
      port map (
       clk => clk_100MHz,
       dds_tx09_ptt => dds_tx09_ptt,
-      decoder_artemis_rx09_ch00_mem_addra(5 downto 0) => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_addra(5 downto 0),
+      decoder_artemis_rx09_ch00_mem_addra(6 downto 0) => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_addra(6 downto 0),
       decoder_artemis_rx09_ch00_mem_dina(15 downto 0) => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_dina(15 downto 0),
       decoder_artemis_rx09_ch00_mem_douta(15 downto 0) => decoder_artemis_blk_mem_gen_0_douta(15 downto 0),
       decoder_artemis_rx09_ch00_mem_wea => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_wea,
       decoder_artemis_rx09_ch00_mult_ce => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_ce,
-      decoder_artemis_rx09_ch00_mult_inpa(15 downto 0) => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_inpa(15 downto 0),
-      decoder_artemis_rx09_ch00_mult_outp(15 downto 0) => decoder_mult_gen_0_P(15 downto 0),
-      decoder_artemis_rx09_ch00_mult_sclr => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_sclr,
+      decoder_artemis_rx09_ch00_mult_ina(15 downto 0) => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_ina(15 downto 0),
+      decoder_artemis_rx09_ch00_mult_inb(31 downto 0) => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_inb(31 downto 0),
+      decoder_artemis_rx09_ch00_mult_outp(31 downto 0) => decoder_artemis_mult_gen_4clks_P(31 downto 0),
       decoder_fft_frame_avail_ctr(31 downto 0) => decoder_fft_frame_avail_ctr(31 downto 0),
       decoder_rx09_ch00_FIFO_accepted => decoder_rx09_ch00_FIFO_accepted,
       decoder_rx09_ch00_FIFO_handshake => decoder_rx09_ch00_FIFO_handshake,
@@ -449,29 +451,28 @@ UFBmod_rx09_Decoder_0: component UFBmod_UFBmod_rx09_Decoder_0_0
       decoder_rx09_ch00_center_pos(7 downto 0) => decoder_rx09_ch00_center_pos(7 downto 0),
       decoder_rx09_ch00_remainVal(7 downto 0) => decoder_rx09_ch00_remainVal(7 downto 0),
       decoder_rx09_ch00_sql_open => decoder_rx09_ch00_sql_open,
-      decoder_rx09_ch00_squelch_lvl(18 downto 0) => decoder_rx09_squelch_lvl(18 downto 0),
+      decoder_rx09_ch00_squelch_lvl(15 downto 0) => decoder_rx09_squelch_lvl(15 downto 0),
       decoder_rx09_ch00_strength(18 downto 0) => decoder_rx09_ch00_strength(18 downto 0),
       decoder_rx09_ch00_u32Count(7 downto 0) => decoder_rx09_ch00_u32Count(7 downto 0),
       reset => reset_100MHz,
       signal_bins_rx09_ch00_mem_addrb(8 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addrb(8 downto 0),
       signal_bins_rx09_ch00_mem_datab(15 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_doutb(15 downto 0)
     );
-decoder_artemis_blk_mem_gen_2clk: component UFBmod_blk_mem_gen_0_1
+decoder_artemis_blk_mem_gen_2clks: component UFBmod_blk_mem_gen_0_1
      port map (
-      addra(5 downto 0) => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_addra(5 downto 0),
+      addra(6 downto 0) => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_addra(6 downto 0),
       clka => clk_100MHz,
       dina(15 downto 0) => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_dina(15 downto 0),
       douta(15 downto 0) => decoder_artemis_blk_mem_gen_0_douta(15 downto 0),
       wea(0) => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_wea
     );
-decoder_artemis_mult_gen_3clks: component UFBmod_mult_gen_0_1
+decoder_artemis_mult_gen_4clks: component UFBmod_mult_gen_0_2
      port map (
-      A(15 downto 0) => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_inpa(15 downto 0),
-      B(15 downto 0) => decoder_mult_gen_0_P(15 downto 0),
+      A(15 downto 0) => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_ina(15 downto 0),
+      B(31 downto 0) => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_inb(31 downto 0),
       CE => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_ce,
       CLK => clk_100MHz,
-      P(15 downto 0) => decoder_mult_gen_0_P(15 downto 0),
-      SCLR => UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_sclr
+      P(31 downto 0) => decoder_artemis_mult_gen_4clks_P(31 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -486,7 +487,7 @@ entity UFBmod is
     decoder_rx09_ch00_center_pos : out STD_LOGIC_VECTOR ( 7 downto 0 );
     decoder_rx09_ch00_noise : out STD_LOGIC_VECTOR ( 18 downto 0 );
     decoder_rx09_ch00_sql_open : out STD_LOGIC;
-    decoder_rx09_ch00_squelch_lvl : in STD_LOGIC_VECTOR ( 18 downto 0 );
+    decoder_rx09_ch00_squelch_lvl : in STD_LOGIC_VECTOR ( 15 downto 0 );
     decoder_rx09_ch00_strength : out STD_LOGIC_VECTOR ( 18 downto 0 );
     post_fft_rx09_mem_a_EoT : in STD_LOGIC;
     post_fft_rx09_mem_a_addr : in STD_LOGIC_VECTOR ( 41 downto 0 );
@@ -527,7 +528,7 @@ architecture STRUCTURE of UFBmod is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk_100MHz : signal is "xilinx.com:signal:clock:1.0 CLK.CLK_100MHZ CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk_100MHz : signal is "XIL_INTERFACENAME CLK.CLK_100MHZ, ASSOCIATED_RESET reset_100MHz, CLK_DOMAIN UFBmod_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.000";
+  attribute X_INTERFACE_PARAMETER of clk_100MHz : signal is "XIL_INTERFACENAME CLK.CLK_100MHZ, ASSOCIATED_RESET reset_100MHz, CLK_DOMAIN UFBmod_clk_100MHz, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.000";
   attribute X_INTERFACE_INFO of reset_100MHz : signal is "xilinx.com:signal:reset:1.0 RST.RESET_100MHZ RST";
   attribute X_INTERFACE_PARAMETER of reset_100MHz : signal is "XIL_INTERFACENAME RST.RESET_100MHZ, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
   attribute X_INTERFACE_INFO of decoder_rx09_ch00_squelch_lvl : signal is "xilinx.com:signal:data:1.0 DATA.DECODER_RX09_CH00_SQUELCH_LVL DATA";
@@ -585,7 +586,7 @@ UFBmod_rx09_Decoders: entity work.UFBmod_rx09_Decoders_imp_115KKRN
       decoder_rx09_ch00_sql_open => decoder_rx09_ch00_sql_open,
       decoder_rx09_ch00_strength(18 downto 0) => \^decoder_rx09_ch00_strength\(18 downto 0),
       decoder_rx09_ch00_u32Count(7 downto 0) => decoder_rx09_ch00_u32Count(7 downto 0),
-      decoder_rx09_squelch_lvl(18 downto 0) => decoder_rx09_ch00_squelch_lvl(18 downto 0),
+      decoder_rx09_squelch_lvl(15 downto 0) => decoder_rx09_ch00_squelch_lvl(15 downto 0),
       reset_100MHz => reset_100MHz,
       signal_bins_rx09_ch00_blk_mem_gen_0_addrb(8 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addrb(8 downto 0),
       signal_bins_rx09_ch00_blk_mem_gen_0_doutb(15 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_doutb(15 downto 0)

@@ -67,6 +67,7 @@ ENTITY UFBmod_FFT_rx09_to_Decoder_0_0 IS
     averaging_factor_div_dout_tvalid : IN STD_LOGIC;
     averaging_factor_div_divisor_tvalid : OUT STD_LOGIC;
     signal_correction_rx09_ch00_mult_ce : OUT STD_LOGIC;
+    signal_correction_rx09_ch00_mult_ina : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     signal_correction_rx09_ch00_mult_prod : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     signal_bins_rx09_ch00_mem_addra : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
     signal_bins_rx09_ch00_mem_dina : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -93,6 +94,7 @@ ARCHITECTURE UFBmod_FFT_rx09_to_Decoder_0_0_arch OF UFBmod_FFT_rx09_to_Decoder_0
       averaging_factor_div_dout_tvalid : IN STD_LOGIC;
       averaging_factor_div_divisor_tvalid : OUT STD_LOGIC;
       signal_correction_rx09_ch00_mult_ce : OUT STD_LOGIC;
+      signal_correction_rx09_ch00_mult_ina : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       signal_correction_rx09_ch00_mult_prod : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       signal_bins_rx09_ch00_mem_addra : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
       signal_bins_rx09_ch00_mem_dina : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -105,7 +107,7 @@ ARCHITECTURE UFBmod_FFT_rx09_to_Decoder_0_0_arch OF UFBmod_FFT_rx09_to_Decoder_0
   ATTRIBUTE IP_DEFINITION_SOURCE OF UFBmod_FFT_rx09_to_Decoder_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN UFBmod_clk, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN UFBmod_clk_100MHz, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
   ATTRIBUTE X_INTERFACE_PARAMETER OF reset: SIGNAL IS "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF reset: SIGNAL IS "xilinx.com:signal:reset:1.0 reset RST";
@@ -124,6 +126,7 @@ BEGIN
       averaging_factor_div_dout_tvalid => averaging_factor_div_dout_tvalid,
       averaging_factor_div_divisor_tvalid => averaging_factor_div_divisor_tvalid,
       signal_correction_rx09_ch00_mult_ce => signal_correction_rx09_ch00_mult_ce,
+      signal_correction_rx09_ch00_mult_ina => signal_correction_rx09_ch00_mult_ina,
       signal_correction_rx09_ch00_mult_prod => signal_correction_rx09_ch00_mult_prod,
       signal_bins_rx09_ch00_mem_addra => signal_bins_rx09_ch00_mem_addra,
       signal_bins_rx09_ch00_mem_dina => signal_bins_rx09_ch00_mem_dina,

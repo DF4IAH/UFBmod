@@ -55,6 +55,7 @@ entity FFT_rx09_to_Decoder_FSM is
     averaging_factor_div_divisor_tvalid             : out STD_LOGIC;
     
     signal_correction_rx09_ch00_mult_ce             : out STD_LOGIC;
+    signal_correction_rx09_ch00_mult_ina            : out STD_LOGIC_VECTOR(15 downto 0);
     signal_correction_rx09_ch00_mult_prod           : in  STD_LOGIC_VECTOR(15 downto 0);
     
     -- Signal_bins  port-A
@@ -68,19 +69,17 @@ entity FFT_rx09_to_Decoder_FSM is
 end FFT_rx09_to_Decoder_FSM;
 
 architecture Behavioral of FFT_rx09_to_Decoder_FSM is
-  signal signal_bins_rx09_ch00_mem_addra_r1         : STD_LOGIC_VECTOR(8 downto 0);
-  signal signal_bins_rx09_ch00_mem_addra_r2         : STD_LOGIC_VECTOR(8 downto 0);
-  signal signal_bins_rx09_ch00_mem_addra_r3         : STD_LOGIC_VECTOR(8 downto 0);
   signal read_write_loopCtr                         : Integer  range 0 to (2**5  - 1);
   signal initial_loopCtr                            : Integer  range 0 to (2**4  - 1);
 begin
   proc_FFT_rx09_to_Mem: process (reset, clk)
     type StateType                                  is (
                                                         init, loop_start, wait_until_post_fft_done, read_in_loop, sum_ws1,
-                                                        averaging_in_valid, averaging_wait,
+                                                        averaging_wait,
                                                         correction_init, correction_loop_begin,
-                                                        correction_loop_ws1, correction_loop_ws2, correction_loop_ws3, correction_loop_ws4, correction_loop_ws5, correction_loop_ws6,
-                                                        correction_loop_write, correction_loop_end,
+                                                        correction_loop_ram_ws1, correction_loop_ram_ws2, correction_loop_ram_read,
+                                                        correction_loop_mult_ws1, correction_loop_mult_ws2, correction_loop_mult_ws3, correction_loop_mult_ws4, correction_loop_mult_read_mem_write,
+                                                        correction_loop_end,
                                                         check_init_loop,
                                                         handshake
                                                     );
@@ -105,11 +104,9 @@ begin
             averaging_factor_div_divisor_tvalid     <= '0';
             
             signal_correction_rx09_ch00_mult_ce     <= '0';
+            signal_correction_rx09_ch00_mult_ina    <= (others => '0');
             
             signal_bins_rx09_ch00_mem_addra_Int     := 0;
-            signal_bins_rx09_ch00_mem_addra_r1      <= (others => '0');
-            signal_bins_rx09_ch00_mem_addra_r2      <= (others => '0');
-            signal_bins_rx09_ch00_mem_addra_r3      <= (others => '0');
             signal_bins_rx09_ch00_mem_addra         <= (others => '0');
             signal_bins_rx09_ch00_mem_dina          <= (others => '0');
             signal_bins_rx09_ch00_mem_wea           <= '0';
@@ -120,7 +117,7 @@ begin
                     decoder_fft_frame_avail_ctr                 <= (others => '0');
                     
                     read_write_loopCtr                          <= 0;
-                    initial_loopCtr                             <= 15;
+                    initial_loopCtr                             <= 12;
                     
                     post_fft_rx09_mem_addrb                     <= (others => '0');
                     post_fft_rx09_mem_addrb_Int                 := 0;
@@ -132,11 +129,9 @@ begin
                     averaging_factor_div_divisor_tvalid         <= '0';
                     
                     signal_correction_rx09_ch00_mult_ce         <= '0';
+                    signal_correction_rx09_ch00_mult_ina        <= (others => '0');
                     
                     signal_bins_rx09_ch00_mem_addra_Int         := 0;
-                    signal_bins_rx09_ch00_mem_addra_r1          <= (others => '0');
-                    signal_bins_rx09_ch00_mem_addra_r2          <= (others => '0');
-                    signal_bins_rx09_ch00_mem_addra_r3          <= (others => '0');
                     signal_bins_rx09_ch00_mem_addra             <= (others => '0');
                     signal_bins_rx09_ch00_mem_dina              <= (others => '0');
                     signal_bins_rx09_ch00_mem_wea               <= '0';
@@ -162,10 +157,6 @@ begin
                     end if;
                     
                 when read_in_loop =>
-                    signal_bins_rx09_ch00_mem_addra             <= signal_bins_rx09_ch00_mem_addra_r1;
-                    signal_bins_rx09_ch00_mem_addra_r1          <= signal_bins_rx09_ch00_mem_addra_r2;
-                    signal_bins_rx09_ch00_mem_addra_r2          <= signal_bins_rx09_ch00_mem_addra_r3;
-                    
                     -- Request data from RAM (latency: 2 clocks
                     if (post_fft_rx09_mem_addrb_Int < 32) then
                         -- Time span of RAM read-out
@@ -175,8 +166,11 @@ begin
                         post_fft_rx09_mem_addrb                 <= (others => '0');
                     end if;
                     
-                    if (post_fft_rx09_mem_addrb_Int < 32) then
-                        signal_bins_rx09_ch00_mem_addra_r3      <= std_logic_vector(to_unsigned(signal_bins_rx09_ch00_mem_addra_Int, signal_bins_rx09_ch00_mem_addra_r3'length));
+                    if (post_fft_rx09_mem_addrb_Int < 35) then
+                        -- Delayed write
+                        signal_bins_rx09_ch00_mem_addra         <= std_logic_vector(to_unsigned(signal_bins_rx09_ch00_mem_addra_Int, signal_bins_rx09_ch00_mem_addra'length));
+                    else
+                        signal_bins_rx09_ch00_mem_addra         <= (others => '0');
                     end if;
                     
                     -- Read into shift register
@@ -185,67 +179,75 @@ begin
                         signal_bins_rx09_ch00_mem_wea           <= '1';
                         rowsum_rx09_ch00_accum_ce               <= '1';
                         
+                        -- Next address preparation
+                        signal_bins_rx09_ch00_mem_addra_Int     := signal_bins_rx09_ch00_mem_addra_Int + 1;
+                        
                     elsif (34 < post_fft_rx09_mem_addrb_Int) then
                         -- End of loop
-                        signal_bins_rx09_ch00_mem_addra         <= (others => '0');
                         signal_bins_rx09_ch00_mem_dina          <= (others => '0');
                         signal_bins_rx09_ch00_mem_wea           <= '0';
                         rowsum_rx09_ch00_accum_ce               <= '0';
                         averaging_factor_div_aclken             <= '1';
+                        averaging_factor_div_divisor_tvalid     <= '1';
                         
                         state := sum_ws1;
                     end if;
                     
                     -- RAM Loop footer
-                    post_fft_rx09_mem_addrb_Int                 := post_fft_rx09_mem_addrb_Int          + 1;
-                    signal_bins_rx09_ch00_mem_addra_Int         := signal_bins_rx09_ch00_mem_addra_Int  + 1;
+                    post_fft_rx09_mem_addrb_Int                 := post_fft_rx09_mem_addrb_Int + 1;
                     
                 when sum_ws1 =>
-                    averaging_factor_div_divisor_tvalid         <= '1';
-                    state := averaging_in_valid;
-                    
-                when averaging_in_valid =>
                     averaging_factor_div_divisor_tvalid         <= '0';
+                    
                     state := averaging_wait;
                     
                 when averaging_wait =>
                     if (averaging_factor_div_dout_tvalid = '1') then
-                        signal_correction_rx09_ch00_mult_ce     <= '1';
+                        averaging_factor_div_aclken             <= '0';
+                        
                         state := correction_init;
+                      --state := check_init_loop;                                                   -- XXX   DEBUGGING
                     end if;
                     
                 when correction_init =>
                     signal_bins_rx09_ch00_mem_addra_Int         := to_integer(unsigned(post_fft_rx09_mem_addra(13 downto 10)) & "00000");
                     read_write_loopCtr                          <= 0;
+                    signal_correction_rx09_ch00_mult_ce         <= '1';
+                    
                     state := correction_loop_begin;
                     
                 when correction_loop_begin =>
-                    averaging_factor_div_aclken                 <= '0';
                     signal_bins_rx09_ch00_mem_addra             <= std_logic_vector(to_unsigned(signal_bins_rx09_ch00_mem_addra_Int, signal_bins_rx09_ch00_mem_addra'length));
-                    signal_bins_rx09_ch00_mem_wea               <= '0';
-                    state := correction_loop_ws1;
                     
-                when correction_loop_ws1 =>
-                    state := correction_loop_ws2;
+                    state := correction_loop_ram_ws1;
                     
-                when correction_loop_ws2 =>
-                    state := correction_loop_ws3;
+                when correction_loop_ram_ws1 =>
+                    state := correction_loop_ram_ws2;
                     
-                when correction_loop_ws3 =>
-                    state := correction_loop_ws4;
+                when correction_loop_ram_ws2 =>
+                    state := correction_loop_ram_read;
                     
-                when correction_loop_ws4 =>
-                    state := correction_loop_ws5;
+                when correction_loop_ram_read =>
+                    signal_correction_rx09_ch00_mult_ina        <= signal_bins_rx09_ch00_mem_douta;
                     
-                when correction_loop_ws5 =>
-                    state := correction_loop_ws6;
+                    state := correction_loop_mult_ws1;
                     
-                when correction_loop_ws6 =>
-                    state := correction_loop_write;
+                when correction_loop_mult_ws1 =>
+                    state := correction_loop_mult_ws2;
                     
-                when correction_loop_write =>
+                when correction_loop_mult_ws2 =>
+                    state := correction_loop_mult_ws3;
+                    
+                when correction_loop_mult_ws3 =>
+                    state := correction_loop_mult_ws4;
+                    
+                when correction_loop_mult_ws4 =>
+                    state := correction_loop_mult_read_mem_write;
+                    
+                when correction_loop_mult_read_mem_write =>
                     signal_bins_rx09_ch00_mem_dina              <= signal_correction_rx09_ch00_mult_prod;
                     signal_bins_rx09_ch00_mem_wea               <= '1';
+                    
                     state := correction_loop_end;
                     
                 when correction_loop_end =>
@@ -253,9 +255,11 @@ begin
                     if (read_write_loopCtr /= 31) then
                         read_write_loopCtr                      <= read_write_loopCtr                   + 1;
                         signal_bins_rx09_ch00_mem_addra_Int     := signal_bins_rx09_ch00_mem_addra_Int  + 1;
+                        
                         state := correction_loop_begin;
                     else
                         signal_correction_rx09_ch00_mult_ce     <= '0';
+                        
                         state := check_init_loop;
                     end if;
                     
@@ -266,6 +270,7 @@ begin
                         -- Hand shaking point
                         decoder_fft_frame_avail_ctr             <= post_fft_rx09_mem_addra(41 downto 10);
                     end if;
+                    
                     state := loop_start;
                     
                 when others =>

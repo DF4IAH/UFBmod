@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xB090D6C7247F9E86",
+      "boundary_crc": "0xAA44FF99D2C12B9D",
       "device": "xc7a100tfgg484-2",
       "name": "UFBmod",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -11,19 +11,19 @@
     },
     "design_tree": {
       "FFT_rx09_to_Decoder": {
-        "signal_bins_rx09_ch00_blk_mem_gen_0": "",
+        "signal_bins_rx09_ch00_blk_mem_gen_2clks": "",
         "xlconstant_val1_len1": "",
-        "rowsum_rx09_ch00_c_accum_0": "",
-        "signal_correction_rx09_ch00_mult_gen_0": "",
-        "averaging_factor_rx09_ch00_div_gen_0": "",
+        "rowsum_rx09_ch00_c_accum_1clk": "",
+        "signal_correction_rx09_ch00_mult_gen_4clks": "",
+        "averaging_factor_rx09_ch00_div_gen_35clks": "",
         "xlconstant_val256x32_len16": "",
         "xlconstant_val0_len1": "",
         "xlconstant_val0_len16": "",
         "FFT_rx09_to_Decoder_FSM": ""
       },
       "UFBmod_rx09_Decoders": {
-        "decoder_artemis_mult_gen_3clks": "",
-        "decoder_artemis_blk_mem_gen_2clk": "",
+        "decoder_artemis_blk_mem_gen_2clks": "",
+        "decoder_artemis_mult_gen_4clks": "",
         "UFBmod_rx09_Decoder_0": ""
       },
       "Decoder_rx09_to_FIFO": {
@@ -55,7 +55,7 @@
             "value": "reset_100MHz"
           },
           "CLK_DOMAIN": {
-            "value": "UFBmod_clk",
+            "value": "UFBmod_clk_100MHz",
             "value_src": "default"
           },
           "FREQ_HZ": {
@@ -103,7 +103,7 @@
       "decoder_rx09_ch00_squelch_lvl": {
         "type": "data",
         "direction": "I",
-        "left": "18",
+        "left": "15",
         "right": "0",
         "parameters": {
           "LAYERED_METADATA": {
@@ -199,7 +199,7 @@
           }
         },
         "components": {
-          "signal_bins_rx09_ch00_blk_mem_gen_0": {
+          "signal_bins_rx09_ch00_blk_mem_gen_2clks": {
             "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
             "xci_name": "UFBmod_blk_mem_gen_0_0",
             "parameters": {
@@ -272,7 +272,7 @@
             "vlnv": "xilinx.com:ip:xlconstant:1.1",
             "xci_name": "UFBmod_xlconstant_0_0"
           },
-          "rowsum_rx09_ch00_c_accum_0": {
+          "rowsum_rx09_ch00_c_accum_1clk": {
             "vlnv": "xilinx.com:ip:c_accum:12.0",
             "xci_name": "UFBmod_c_accum_0_0",
             "parameters": {
@@ -299,7 +299,7 @@
               }
             }
           },
-          "signal_correction_rx09_ch00_mult_gen_0": {
+          "signal_correction_rx09_ch00_mult_gen_4clks": {
             "vlnv": "xilinx.com:ip:mult_gen:12.0",
             "xci_name": "UFBmod_mult_gen_0_0",
             "parameters": {
@@ -338,7 +338,7 @@
               }
             }
           },
-          "averaging_factor_rx09_ch00_div_gen_0": {
+          "averaging_factor_rx09_ch00_div_gen_35clks": {
             "vlnv": "xilinx.com:ip:div_gen:5.1",
             "xci_name": "UFBmod_div_gen_0_0",
             "parameters": {
@@ -441,7 +441,7 @@
                     "value_src": "constant"
                   },
                   "CLK_DOMAIN": {
-                    "value": "UFBmod_clk",
+                    "value": "UFBmod_clk_100MHz",
                     "value_src": "default_prop"
                   },
                   "FREQ_HZ": {
@@ -516,6 +516,17 @@
                   }
                 }
               },
+              "signal_correction_rx09_ch00_mult_ina": {
+                "direction": "O",
+                "left": "15",
+                "right": "0",
+                "parameters": {
+                  "LAYERED_METADATA": {
+                    "value": "",
+                    "value_src": "weak"
+                  }
+                }
+              },
               "signal_correction_rx09_ch00_mult_prod": {
                 "direction": "I",
                 "left": "15",
@@ -563,24 +574,24 @@
           "clk_100MHz": {
             "ports": [
               "clk",
-              "signal_bins_rx09_ch00_blk_mem_gen_0/clkb",
-              "signal_bins_rx09_ch00_blk_mem_gen_0/clka",
-              "rowsum_rx09_ch00_c_accum_0/CLK",
-              "signal_correction_rx09_ch00_mult_gen_0/CLK",
-              "averaging_factor_rx09_ch00_div_gen_0/aclk",
+              "signal_bins_rx09_ch00_blk_mem_gen_2clks/clkb",
+              "signal_bins_rx09_ch00_blk_mem_gen_2clks/clka",
+              "rowsum_rx09_ch00_c_accum_1clk/CLK",
+              "signal_correction_rx09_ch00_mult_gen_4clks/CLK",
+              "averaging_factor_rx09_ch00_div_gen_35clks/aclk",
               "FFT_rx09_to_Decoder_FSM/clk"
             ]
           },
           "signal_bins_rx09_ch00_blk_mem_gen_0_doutb": {
             "ports": [
-              "signal_bins_rx09_ch00_blk_mem_gen_0/doutb",
+              "signal_bins_rx09_ch00_blk_mem_gen_2clks/doutb",
               "signal_bins_rx09_ch00_blk_mem_gen_0_doutb"
             ]
           },
           "signal_bins_rx09_ch00_blk_mem_gen_0_addrb": {
             "ports": [
               "signal_bins_rx09_ch00_blk_mem_gen_0_addrb",
-              "signal_bins_rx09_ch00_blk_mem_gen_0/addrb"
+              "signal_bins_rx09_ch00_blk_mem_gen_2clks/addrb"
             ]
           },
           "reset_100MHz": {
@@ -622,105 +633,110 @@
           "signal_bins_rx09_ch00_blk_mem_gen_0_dina": {
             "ports": [
               "FFT_rx09_to_Decoder_FSM/signal_bins_rx09_ch00_mem_dina",
-              "rowsum_rx09_ch00_c_accum_0/B",
-              "signal_bins_rx09_ch00_blk_mem_gen_0/dina"
+              "rowsum_rx09_ch00_c_accum_1clk/B",
+              "signal_bins_rx09_ch00_blk_mem_gen_2clks/dina"
             ]
           },
           "rowsum_rx09_ch00_accum_ce": {
             "ports": [
               "FFT_rx09_to_Decoder_FSM/rowsum_rx09_ch00_accum_ce",
-              "rowsum_rx09_ch00_c_accum_0/CE"
+              "rowsum_rx09_ch00_c_accum_1clk/CE"
             ]
           },
           "rowsum_rx09_ch00_accum_sclr": {
             "ports": [
               "FFT_rx09_to_Decoder_FSM/rowsum_rx09_ch00_accum_sclr",
-              "rowsum_rx09_ch00_c_accum_0/SCLR"
+              "rowsum_rx09_ch00_c_accum_1clk/SCLR"
             ]
           },
           "averaging_factor_div_dout_tdata": {
             "ports": [
-              "averaging_factor_rx09_ch00_div_gen_0/m_axis_dout_tdata",
-              "signal_correction_rx09_ch00_mult_gen_0/B"
+              "averaging_factor_rx09_ch00_div_gen_35clks/m_axis_dout_tdata",
+              "signal_correction_rx09_ch00_mult_gen_4clks/B"
             ]
           },
           "averaging_factor_div_divisor_tdata": {
             "ports": [
-              "rowsum_rx09_ch00_c_accum_0/Q",
-              "averaging_factor_rx09_ch00_div_gen_0/s_axis_divisor_tdata"
+              "rowsum_rx09_ch00_c_accum_1clk/Q",
+              "averaging_factor_rx09_ch00_div_gen_35clks/s_axis_divisor_tdata"
             ]
           },
           "averaging_factor_div_dividend_tdata": {
             "ports": [
               "xlconstant_val256x32_len16/dout",
-              "averaging_factor_rx09_ch00_div_gen_0/s_axis_dividend_tdata"
+              "averaging_factor_rx09_ch00_div_gen_35clks/s_axis_dividend_tdata"
             ]
           },
           "averaging_factor_div_dividend_tvalid": {
             "ports": [
               "xlconstant_val1_len1/dout",
-              "averaging_factor_rx09_ch00_div_gen_0/s_axis_dividend_tvalid"
+              "averaging_factor_rx09_ch00_div_gen_35clks/s_axis_dividend_tvalid"
             ]
           },
           "averaging_factor_divider_aclken": {
             "ports": [
               "FFT_rx09_to_Decoder_FSM/averaging_factor_div_aclken",
-              "averaging_factor_rx09_ch00_div_gen_0/aclken"
+              "averaging_factor_rx09_ch00_div_gen_35clks/aclken"
             ]
           },
           "signal_bins_rx09_ch00_blk_mem_gen_0_douta": {
             "ports": [
-              "signal_bins_rx09_ch00_blk_mem_gen_0/douta",
-              "signal_correction_rx09_ch00_mult_gen_0/A",
+              "signal_bins_rx09_ch00_blk_mem_gen_2clks/douta",
               "FFT_rx09_to_Decoder_FSM/signal_bins_rx09_ch00_mem_douta"
             ]
           },
           "signal_bins_rx09_ch00_blk_mem_gen_0_addra": {
             "ports": [
               "FFT_rx09_to_Decoder_FSM/signal_bins_rx09_ch00_mem_addra",
-              "signal_bins_rx09_ch00_blk_mem_gen_0/addra"
+              "signal_bins_rx09_ch00_blk_mem_gen_2clks/addra"
             ]
           },
           "signal_bins_rx09_ch00_blk_mem_gen_0_wea": {
             "ports": [
               "FFT_rx09_to_Decoder_FSM/signal_bins_rx09_ch00_mem_wea",
-              "signal_bins_rx09_ch00_blk_mem_gen_0/wea"
+              "signal_bins_rx09_ch00_blk_mem_gen_2clks/wea"
             ]
           },
           "xlconstant_val0_len1_dout": {
             "ports": [
               "xlconstant_val0_len1/dout",
-              "signal_bins_rx09_ch00_blk_mem_gen_0/web"
+              "signal_bins_rx09_ch00_blk_mem_gen_2clks/web"
             ]
           },
           "xlconstant_val0_len16_dout": {
             "ports": [
               "xlconstant_val0_len16/dout",
-              "signal_bins_rx09_ch00_blk_mem_gen_0/dinb"
+              "signal_bins_rx09_ch00_blk_mem_gen_2clks/dinb"
             ]
           },
           "signal_correction_rx09_ch00_mult_prod": {
             "ports": [
-              "signal_correction_rx09_ch00_mult_gen_0/P",
+              "signal_correction_rx09_ch00_mult_gen_4clks/P",
               "FFT_rx09_to_Decoder_FSM/signal_correction_rx09_ch00_mult_prod"
             ]
           },
           "averaging_factor_div_dout_tvalid": {
             "ports": [
-              "averaging_factor_rx09_ch00_div_gen_0/m_axis_dout_tvalid",
+              "averaging_factor_rx09_ch00_div_gen_35clks/m_axis_dout_tvalid",
               "FFT_rx09_to_Decoder_FSM/averaging_factor_div_dout_tvalid"
             ]
           },
           "averaging_factor_div_divisor_tvalid": {
             "ports": [
               "FFT_rx09_to_Decoder_FSM/averaging_factor_div_divisor_tvalid",
-              "averaging_factor_rx09_ch00_div_gen_0/s_axis_divisor_tvalid"
+              "averaging_factor_rx09_ch00_div_gen_35clks/s_axis_divisor_tvalid"
             ]
           },
           "signal_correction_rx09_ch00_mult_ce": {
             "ports": [
               "FFT_rx09_to_Decoder_FSM/signal_correction_rx09_ch00_mult_ce",
-              "signal_correction_rx09_ch00_mult_gen_0/CE"
+              "signal_correction_rx09_ch00_mult_gen_4clks/CE"
+            ]
+          },
+          "FFT_rx09_to_Decoder_FSM_signal_correction_rx09_ch00_mult_ina": {
+            "ports": [
+              "FFT_rx09_to_Decoder_FSM/signal_correction_rx09_ch00_mult_ina",
+              "signal_correction_rx09_ch00_mult_gen_4clks/A"
             ]
           }
         }
@@ -752,7 +768,7 @@
           },
           "decoder_rx09_squelch_lvl": {
             "direction": "I",
-            "left": "18",
+            "left": "15",
             "right": "0"
           },
           "decoder_rx09_ch00_FIFO_accepted": {
@@ -797,46 +813,7 @@
           }
         },
         "components": {
-          "decoder_artemis_mult_gen_3clks": {
-            "vlnv": "xilinx.com:ip:mult_gen:12.0",
-            "xci_name": "UFBmod_mult_gen_0_1",
-            "parameters": {
-              "ClockEnable": {
-                "value": "true"
-              },
-              "Multiplier_Construction": {
-                "value": "Use_Mults"
-              },
-              "OutputWidthHigh": {
-                "value": "31"
-              },
-              "OutputWidthLow": {
-                "value": "16"
-              },
-              "PipeStages": {
-                "value": "3"
-              },
-              "PortAType": {
-                "value": "Unsigned"
-              },
-              "PortAWidth": {
-                "value": "16"
-              },
-              "PortBType": {
-                "value": "Unsigned"
-              },
-              "PortBWidth": {
-                "value": "16"
-              },
-              "SyncClear": {
-                "value": "true"
-              },
-              "Use_Custom_Output_Width": {
-                "value": "true"
-              }
-            }
-          },
-          "decoder_artemis_blk_mem_gen_2clk": {
+          "decoder_artemis_blk_mem_gen_2clks": {
             "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
             "xci_name": "UFBmod_blk_mem_gen_0_1",
             "parameters": {
@@ -868,13 +845,46 @@
                 "value": "false"
               },
               "Write_Depth_A": {
-                "value": "33"
+                "value": "128"
               },
               "Write_Width_A": {
                 "value": "16"
               },
               "use_bram_block": {
                 "value": "Stand_Alone"
+              }
+            }
+          },
+          "decoder_artemis_mult_gen_4clks": {
+            "vlnv": "xilinx.com:ip:mult_gen:12.0",
+            "xci_name": "UFBmod_mult_gen_0_2",
+            "parameters": {
+              "ClockEnable": {
+                "value": "true"
+              },
+              "Multiplier_Construction": {
+                "value": "Use_Mults"
+              },
+              "OutputWidthHigh": {
+                "value": "39"
+              },
+              "OutputWidthLow": {
+                "value": "8"
+              },
+              "PortAType": {
+                "value": "Unsigned"
+              },
+              "PortAWidth": {
+                "value": "16"
+              },
+              "PortBType": {
+                "value": "Unsigned"
+              },
+              "PortBWidth": {
+                "value": "32"
+              },
+              "Use_Custom_Output_Width": {
+                "value": "true"
               }
             }
           },
@@ -906,7 +916,7 @@
                     "value_src": "constant"
                   },
                   "CLK_DOMAIN": {
-                    "value": "UFBmod_clk",
+                    "value": "UFBmod_clk_100MHz",
                     "value_src": "default_prop"
                   },
                   "FREQ_HZ": {
@@ -935,7 +945,7 @@
               },
               "decoder_rx09_ch00_squelch_lvl": {
                 "direction": "I",
-                "left": "18",
+                "left": "15",
                 "right": "0",
                 "parameters": {
                   "LAYERED_METADATA": {
@@ -953,18 +963,20 @@
                   }
                 }
               },
-              "decoder_artemis_rx09_ch00_mult_sclr": {
+              "decoder_artemis_rx09_ch00_mult_ina": {
                 "direction": "O",
+                "left": "15",
+                "right": "0",
                 "parameters": {
-                  "POLARITY": {
+                  "LAYERED_METADATA": {
                     "value": "",
                     "value_src": "weak"
                   }
                 }
               },
-              "decoder_artemis_rx09_ch00_mult_inpa": {
+              "decoder_artemis_rx09_ch00_mult_inb": {
                 "direction": "O",
-                "left": "15",
+                "left": "31",
                 "right": "0",
                 "parameters": {
                   "LAYERED_METADATA": {
@@ -975,11 +987,11 @@
               },
               "decoder_artemis_rx09_ch00_mult_outp": {
                 "direction": "I",
-                "left": "15",
+                "left": "31",
                 "right": "0",
                 "parameters": {
                   "LAYERED_METADATA": {
-                    "value": "xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency bitwidth format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type generated dependency signed format bool minimum {} maximum {}} value FALSE}}}} DATA_WIDTH 16}",
+                    "value": "xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency bitwidth format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type generated dependency signed format bool minimum {} maximum {}} value FALSE}}}} DATA_WIDTH 32}",
                     "value_src": "ip_prop"
                   }
                 }
@@ -989,7 +1001,7 @@
               },
               "decoder_artemis_rx09_ch00_mem_addra": {
                 "direction": "O",
-                "left": "5",
+                "left": "6",
                 "right": "0"
               },
               "decoder_artemis_rx09_ch00_mem_dina": {
@@ -1052,8 +1064,8 @@
           "clk_100MHz": {
             "ports": [
               "clk_100MHz",
-              "decoder_artemis_mult_gen_3clks/CLK",
-              "decoder_artemis_blk_mem_gen_2clk/clka",
+              "decoder_artemis_blk_mem_gen_2clks/clka",
+              "decoder_artemis_mult_gen_4clks/CLK",
               "UFBmod_rx09_Decoder_0/clk"
             ]
           },
@@ -1141,53 +1153,52 @@
               "UFBmod_rx09_Decoder_0/signal_bins_rx09_ch00_mem_datab"
             ]
           },
-          "decoder_mult_gen_0_P": {
-            "ports": [
-              "decoder_artemis_mult_gen_3clks/P",
-              "decoder_artemis_mult_gen_3clks/B",
-              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_outp"
-            ]
-          },
-          "UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_ce": {
-            "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_ce",
-              "decoder_artemis_mult_gen_3clks/CE"
-            ]
-          },
-          "UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_sclr": {
-            "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_sclr",
-              "decoder_artemis_mult_gen_3clks/SCLR"
-            ]
-          },
-          "UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_inpa": {
-            "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_inpa",
-              "decoder_artemis_mult_gen_3clks/A"
-            ]
-          },
           "decoder_artemis_blk_mem_gen_0_douta": {
             "ports": [
-              "decoder_artemis_blk_mem_gen_2clk/douta",
+              "decoder_artemis_blk_mem_gen_2clks/douta",
               "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mem_douta"
             ]
           },
           "UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_wea": {
             "ports": [
               "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mem_wea",
-              "decoder_artemis_blk_mem_gen_2clk/wea"
+              "decoder_artemis_blk_mem_gen_2clks/wea"
             ]
           },
           "UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_addra": {
             "ports": [
               "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mem_addra",
-              "decoder_artemis_blk_mem_gen_2clk/addra"
+              "decoder_artemis_blk_mem_gen_2clks/addra"
             ]
           },
           "UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_dina": {
             "ports": [
               "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mem_dina",
-              "decoder_artemis_blk_mem_gen_2clk/dina"
+              "decoder_artemis_blk_mem_gen_2clks/dina"
+            ]
+          },
+          "decoder_artemis_mult_gen_4clks_P": {
+            "ports": [
+              "decoder_artemis_mult_gen_4clks/P",
+              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_outp"
+            ]
+          },
+          "UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_ce": {
+            "ports": [
+              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_ce",
+              "decoder_artemis_mult_gen_4clks/CE"
+            ]
+          },
+          "UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_ina": {
+            "ports": [
+              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_ina",
+              "decoder_artemis_mult_gen_4clks/A"
+            ]
+          },
+          "UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_inb": {
+            "ports": [
+              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_inb",
+              "decoder_artemis_mult_gen_4clks/B"
             ]
           }
         }
@@ -1328,7 +1339,7 @@
                     "value_src": "constant"
                   },
                   "CLK_DOMAIN": {
-                    "value": "UFBmod_clk",
+                    "value": "UFBmod_clk_100MHz",
                     "value_src": "default_prop"
                   },
                   "FREQ_HZ": {
@@ -1409,8 +1420,8 @@
             "ports": [
               "reset_100MHz",
               "data_rx09_c_counter_binary_0/SCLR",
-              "Decoder_rx09_to_FIFO_0/reset",
-              "data_rx09_fifo_generator_0/rst"
+              "data_rx09_fifo_generator_0/rst",
+              "Decoder_rx09_to_FIFO_0/reset"
             ]
           },
           "decoder_rx09_ch00_center_pos_1": {

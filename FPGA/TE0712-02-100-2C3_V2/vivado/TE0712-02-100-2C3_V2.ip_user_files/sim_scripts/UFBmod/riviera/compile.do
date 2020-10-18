@@ -165,14 +165,10 @@ vlog -work xil_defaultlib  -v2k5 \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlconstant_0_2/sim/UFBmod_xlconstant_0_2.v" \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlconstant_0_3/sim/UFBmod_xlconstant_0_3.v" \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlconstant_0_4/sim/UFBmod_xlconstant_0_4.v" \
-
-vcom -work xil_defaultlib -93 \
-"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_mult_gen_0_1/sim/UFBmod_mult_gen_0_1.vhd" \
-
-vlog -work xil_defaultlib  -v2k5 \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_blk_mem_gen_0_1/sim/UFBmod_blk_mem_gen_0_1.v" \
 
 vcom -work xil_defaultlib -93 \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_mult_gen_0_2/sim/UFBmod_mult_gen_0_2.vhd" \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/sim/UFBmod.vhd" \
 
 vlog -work xil_defaultlib \

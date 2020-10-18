@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Wed Oct 14 18:58:21 2020
+--Date        : Sun Oct 18 23:59:27 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target UFBmod_wrapper.bd
 --Design      : UFBmod_wrapper
@@ -19,7 +19,7 @@ entity UFBmod_wrapper is
     decoder_rx09_ch00_center_pos : out STD_LOGIC_VECTOR ( 7 downto 0 );
     decoder_rx09_ch00_noise : out STD_LOGIC_VECTOR ( 18 downto 0 );
     decoder_rx09_ch00_sql_open : out STD_LOGIC;
-    decoder_rx09_ch00_squelch_lvl : in STD_LOGIC_VECTOR ( 18 downto 0 );
+    decoder_rx09_ch00_squelch_lvl : in STD_LOGIC_VECTOR ( 15 downto 0 );
     decoder_rx09_ch00_strength : out STD_LOGIC_VECTOR ( 18 downto 0 );
     post_fft_rx09_mem_a_EoT : in STD_LOGIC;
     post_fft_rx09_mem_a_addr : in STD_LOGIC_VECTOR ( 41 downto 0 );
@@ -40,7 +40,7 @@ architecture STRUCTURE of UFBmod_wrapper is
     post_fft_rx09_mem_a_addr : in STD_LOGIC_VECTOR ( 41 downto 0 );
     post_fft_rx09_mem_b_dout : in STD_LOGIC_VECTOR ( 15 downto 0 );
     post_fft_rx09_mem_b_addr : out STD_LOGIC_VECTOR ( 9 downto 0 );
-    decoder_rx09_ch00_squelch_lvl : in STD_LOGIC_VECTOR ( 18 downto 0 );
+    decoder_rx09_ch00_squelch_lvl : in STD_LOGIC_VECTOR ( 15 downto 0 );
     pushdata_rx09_en : out STD_LOGIC;
     pushdata_rx09_byteData : out STD_LOGIC_VECTOR ( 7 downto 0 );
     dds_tx09_ptt : in STD_LOGIC;
@@ -60,7 +60,7 @@ UFBmod_i: component UFBmod
       decoder_rx09_ch00_center_pos(7 downto 0) => decoder_rx09_ch00_center_pos(7 downto 0),
       decoder_rx09_ch00_noise(18 downto 0) => decoder_rx09_ch00_noise(18 downto 0),
       decoder_rx09_ch00_sql_open => decoder_rx09_ch00_sql_open,
-      decoder_rx09_ch00_squelch_lvl(18 downto 0) => decoder_rx09_ch00_squelch_lvl(18 downto 0),
+      decoder_rx09_ch00_squelch_lvl(15 downto 0) => decoder_rx09_ch00_squelch_lvl(15 downto 0),
       decoder_rx09_ch00_strength(18 downto 0) => decoder_rx09_ch00_strength(18 downto 0),
       post_fft_rx09_mem_a_EoT => post_fft_rx09_mem_a_EoT,
       post_fft_rx09_mem_a_addr(41 downto 0) => post_fft_rx09_mem_a_addr(41 downto 0),

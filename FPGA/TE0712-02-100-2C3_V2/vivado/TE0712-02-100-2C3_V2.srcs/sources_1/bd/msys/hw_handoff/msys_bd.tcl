@@ -855,7 +855,7 @@ proc create_hier_cell_PUSHDATA { parentCell nameHier } {
   # Create pins
   create_bd_pin -dir O TRX_RX_RF09_PUSHDATA_FIFO_empty
   create_bd_pin -dir O -from 11 -to 0 data_count
-  create_bd_pin -dir O -from 18 -to 0 decoder_rx09_squelch_lvl
+  create_bd_pin -dir O -from 15 -to 0 decoder_rx09_squelch_lvl
   create_bd_pin -dir I -from 7 -to 0 pushdata_rx09_byteData
   create_bd_pin -dir I pushdata_rx09_en
   create_bd_pin -dir O -type intr pushdata_rx09_irpt_out
@@ -939,12 +939,12 @@ proc create_hier_cell_PUSHDATA { parentCell nameHier } {
    CONFIG.IN1_WIDTH {1} \
  ] $pushdata_rx09_xlconcat_1
 
-  # Create instance: pushdata_rx09_xlslice_18to0, and set properties
-  set pushdata_rx09_xlslice_18to0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 pushdata_rx09_xlslice_18to0 ]
+  # Create instance: pushdata_rx09_xlslice_15to0, and set properties
+  set pushdata_rx09_xlslice_15to0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 pushdata_rx09_xlslice_15to0 ]
   set_property -dict [ list \
-   CONFIG.DIN_FROM {18} \
-   CONFIG.DOUT_WIDTH {19} \
- ] $pushdata_rx09_xlslice_18to0
+   CONFIG.DIN_FROM {15} \
+   CONFIG.DOUT_WIDTH {16} \
+ ] $pushdata_rx09_xlslice_15to0
 
   # Create instance: pushdata_rx09_xlslice_31to31, and set properties
   set pushdata_rx09_xlslice_31to31 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 pushdata_rx09_xlslice_31to31 ]
@@ -959,7 +959,7 @@ proc create_hier_cell_PUSHDATA { parentCell nameHier } {
 
   # Create port connections
   connect_bd_net -net TRX_RX_RF09_PUSHDATA_FIFO_empty [get_bd_pins TRX_RX_RF09_PUSHDATA_FIFO_empty] [get_bd_pins pushdata_rx09_fifo_generator_0/empty] [get_bd_pins pushdata_rx09_xlconcat_0/In2]
-  connect_bd_net -net pushdata_rx09_axi_gpio_0_gpio2_io_o [get_bd_pins pushdata_rx09_axi_gpio_0/gpio2_io_o] [get_bd_pins pushdata_rx09_xlslice_18to0/Din] [get_bd_pins pushdata_rx09_xlslice_31to31/Din]
+  connect_bd_net -net pushdata_rx09_axi_gpio_0_gpio2_io_o [get_bd_pins pushdata_rx09_axi_gpio_0/gpio2_io_o] [get_bd_pins pushdata_rx09_xlslice_15to0/Din] [get_bd_pins pushdata_rx09_xlslice_31to31/Din]
   connect_bd_net -net pushdata_rx09_axi_gpio_0_ip2intc_irpt [get_bd_pins pushdata_rx09_irpt_out] [get_bd_pins pushdata_rx09_axi_gpio_0/ip2intc_irpt]
   connect_bd_net -net pushdata_rx09_byteData_1 [get_bd_pins pushdata_rx09_byteData] [get_bd_pins pushdata_rx09_fifo_generator_0/din]
   connect_bd_net -net pushdata_rx09_c_shift_ram_0_Q [get_bd_pins pushdata_rx09_c_shift_ram_0/Q] [get_bd_pins pushdata_rx09_util_vector_logic_0/Op1]
@@ -971,7 +971,7 @@ proc create_hier_cell_PUSHDATA { parentCell nameHier } {
   connect_bd_net -net pushdata_rx09_xlconcat_0_dout [get_bd_pins pushdata_rx09_axi_gpio_0/gpio_io_i] [get_bd_pins pushdata_rx09_xlconcat_0/dout]
   connect_bd_net -net pushdata_rx09_xlconcat_1_dout [get_bd_pins pushdata_rx09_util_reduced_logic_0/Op1] [get_bd_pins pushdata_rx09_xlconcat_1/dout]
   connect_bd_net -net pushdata_rx09_xlslice_0to0_Dout [get_bd_pins pushdata_rx09_c_shift_ram_0/D] [get_bd_pins pushdata_rx09_xlconcat_1/In0] [get_bd_pins pushdata_rx09_xlslice_31to31/Dout]
-  connect_bd_net -net pushdata_rx09_xlslice_18to0_Dout [get_bd_pins decoder_rx09_squelch_lvl] [get_bd_pins pushdata_rx09_xlslice_18to0/Dout]
+  connect_bd_net -net pushdata_rx09_xlslice_18to0_Dout [get_bd_pins decoder_rx09_squelch_lvl] [get_bd_pins pushdata_rx09_xlslice_15to0/Dout]
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset_0 [get_bd_pins rst_mig_7series_0_100M_peripheral_reset_in] [get_bd_pins pushdata_rx09_c_shift_ram_0/SCLR] [get_bd_pins pushdata_rx09_fifo_generator_0/srst]
   connect_bd_net -net s_axi_aclk_CD100_0 [get_bd_pins s_axi_aclk_CD100_in] [get_bd_pins pushdata_rx09_axi_gpio_0/s_axi_aclk] [get_bd_pins pushdata_rx09_c_shift_ram_0/CLK] [get_bd_pins pushdata_rx09_fifo_generator_0/clk]
   connect_bd_net -net s_axi_aresetn_1 [get_bd_pins s_axi_aresetn] [get_bd_pins pushdata_rx09_axi_gpio_0/s_axi_aresetn]
@@ -1885,7 +1885,7 @@ proc create_hier_cell_TRX_rx_FFT_unit { parentCell nameHier } {
   create_bd_pin -dir O TRX_RX_RF09_PUSHDATA_FIFO_empty
   create_bd_pin -dir I -type rst aresetn_CD100_in
   create_bd_pin -dir O -from 11 -to 0 data_count
-  create_bd_pin -dir O -from 18 -to 0 decoder_rx09_squelch_lvl
+  create_bd_pin -dir O -from 15 -to 0 decoder_rx09_squelch_lvl
   create_bd_pin -dir I -from 7 -to 0 fft09_config_tdata_in
   create_bd_pin -dir I fft09_config_tvalid_in
   create_bd_pin -dir I fft09_data_tlast_in
@@ -3109,7 +3109,7 @@ proc create_hier_cell_TRX { parentCell nameHier } {
   create_bd_pin -dir O -from 11 -to 0 data_count1
   create_bd_pin -dir I dcm_locked
   create_bd_pin -dir I -from 0 -to 0 dds_tx09_ptt_in
-  create_bd_pin -dir O -from 18 -to 0 decoder_rx09_squelch_lvl
+  create_bd_pin -dir O -from 15 -to 0 decoder_rx09_squelch_lvl
   create_bd_pin -dir O -from 0 -to 0 encoder_pull_FIFO_dump
   create_bd_pin -dir O -from 6 -to 0 encoder_pull_data_len
   create_bd_pin -dir O -from 0 -to 0 encoder_pull_do_start
@@ -5186,7 +5186,7 @@ proc create_root_design { parentCell } {
   set decoder_rx09_center_pos [ create_bd_port -dir I -from 7 -to 0 -type data decoder_rx09_center_pos ]
   set decoder_rx09_noise [ create_bd_port -dir I -from 18 -to 0 -type data decoder_rx09_noise ]
   set decoder_rx09_sql_open [ create_bd_port -dir I decoder_rx09_sql_open ]
-  set decoder_rx09_squelch_lvl [ create_bd_port -dir O -from 18 -to 0 -type data decoder_rx09_squelch_lvl ]
+  set decoder_rx09_squelch_lvl [ create_bd_port -dir O -from 15 -to 0 -type data decoder_rx09_squelch_lvl ]
   set decoder_rx09_strength [ create_bd_port -dir I -from 18 -to 0 -type data decoder_rx09_strength ]
   set encoder_pull_FIFO_dump [ create_bd_port -dir O -from 0 -to 0 encoder_pull_FIFO_dump ]
   set encoder_pull_data_len [ create_bd_port -dir O -from 6 -to 0 -type data encoder_pull_data_len ]

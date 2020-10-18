@@ -55,7 +55,7 @@ architecture Behavioral of tb_UFBmod is
       decoder_rx09_ch00_active                      : out STD_LOGIC;
       decoder_rx09_ch00_sql_open                    : out STD_LOGIC;
       
-      decoder_rx09_ch00_squelch_lvl                 : in  STD_LOGIC_VECTOR ( 18 downto 0 );
+      decoder_rx09_ch00_squelch_lvl                 : in  STD_LOGIC_VECTOR ( 15 downto 0 );
       
       pushdata_rx09_byteData                        : out STD_LOGIC_VECTOR ( 7 downto 0 );
       pushdata_rx09_en                              : out STD_LOGIC;
@@ -85,7 +85,7 @@ architecture Behavioral of tb_UFBmod is
   signal tb_decoder_rx09_ch00_active                : STD_LOGIC;
   signal tb_decoder_rx09_ch00_sql_open              : STD_LOGIC;
   
-  signal tb_decoder_rx09_ch00_squelch_lvl           : STD_LOGIC_VECTOR (18 downto 0);
+  signal tb_decoder_rx09_ch00_squelch_lvl           : STD_LOGIC_VECTOR (15 downto 0);
   
   signal tb_pushdata_rx09_byteData                  : STD_LOGIC_VECTOR ( 7 downto 0);
   signal tb_pushdata_rx09_en                        : STD_LOGIC;
@@ -147,7 +147,7 @@ begin
 
   -- Squelch level setting
   proc_squelch_lvl: process
-  constant C_squelch_lvl_ch00                   : Integer   :=  225;                                -- Set squelch level: dez225 .. dez900 okay
+  constant C_squelch_lvl_ch00                   : Integer   :=  30;
   begin
     tb_decoder_rx09_ch00_squelch_lvl    <= (others => '0');
     tb_dds_tx09_ptt                     <= '0';
@@ -239,7 +239,7 @@ begin
     constant C_postmem_depth                    : Integer   := 1024;
     constant C_postmem_pages                    : Integer   := 128;
     constant C_postmemSim_depth                 : Integer   := C_postmem_pages * C_postmem_depth;
-    constant C_startRow                         : Integer   :=  12;
+    constant C_startRow                         : Integer   :=   0;
     constant C_centerOfs                        : Integer   :=   0;
     
     
@@ -251,13 +251,13 @@ begin
   --constant C_signal_080ct                     : Integer   :=   8;
   --constant C_signal_050ct                     : Integer   :=   5;
     
-    constant C_signal_100ct                     : Integer   :=  12;
-    constant C_signal_080ct                     : Integer   :=  10;
-    constant C_signal_050ct                     : Integer   :=   6;
+  --constant C_signal_100ct                     : Integer   :=  12;
+  --constant C_signal_080ct                     : Integer   :=  10;
+  --constant C_signal_050ct                     : Integer   :=   6;
     
-  --constant C_signal_100ct                     : Integer   :=  15;
-  --constant C_signal_080ct                     : Integer   :=  12;
-  --constant C_signal_050ct                     : Integer   :=   8;
+    constant C_signal_100ct                     : Integer   :=  15;
+    constant C_signal_080ct                     : Integer   :=  12;
+    constant C_signal_050ct                     : Integer   :=   8;
     
   --constant C_signal_100ct                     : Integer   := 200;
   --constant C_signal_080ct                     : Integer   := 160;
@@ -282,15 +282,15 @@ begin
     
     getAddrIn       := 0;
     getAddrIn_d1    := 0;
-    getAddrPage     := 0;
+    getAddrPage     := C_postmem_pages - 1;
     readAddr        := 0;
     
     -- Fill message: '1' = (n-1) + 17 / '0' = (n-1) - 11
     row := C_startRow;
     
     -- PA ramp-up
-    postmemSim(row * 1024 + ((16 + C_centerOfs + 0       ) mod 32))  := C_signal_050ct;  row := row + 2; -- all is moduleo 32
-    postmemSim(row * 1024 + ((16 + C_centerOfs + 0       ) mod 32))  := C_signal_080ct;  row := row + 2;
+  --postmemSim(row * 1024 + ((16 + C_centerOfs + 0       ) mod 32))  := C_signal_050ct;  row := row + 2; -- all is moduleo 32
+  --postmemSim(row * 1024 + ((16 + C_centerOfs + 0       ) mod 32))  := C_signal_080ct;  row := row + 2;
     
     -- Preamble
     postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r0) mod 32))  := C_signal_100ct;  row := row + 2;
@@ -442,7 +442,7 @@ begin
         -- Delay output by 2 clocks
         getAddrIn_d1                        := getAddrIn;
         getAddrIn                           := to_integer(unsigned(tb_post_fft_rx09_mem_b_addr));
-        if (getAddrIn < getAddrIn_d1) then
+        if (tb_post_fft_rx09_mem_a_EoT = '1') then
             getAddrPage := (getAddrPage + 1) mod C_postmem_pages;
         end if;
         readAddr                            := getAddrIn + (getAddrPage * C_postmem_depth);

@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Mon Oct 12 00:53:43 2020
+--Date        : Sun Oct 18 18:55:21 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -2167,7 +2167,7 @@ entity PUSHDATA_imp_1IZ4HK6 is
     S_AXI_wvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_RX_RF09_PUSHDATA_FIFO_empty : out STD_LOGIC;
     data_count : out STD_LOGIC_VECTOR ( 11 downto 0 );
-    decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 18 downto 0 );
+    decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 15 downto 0 );
     pushdata_rx09_byteData : in STD_LOGIC_VECTOR ( 7 downto 0 );
     pushdata_rx09_en : in STD_LOGIC;
     pushdata_rx09_irpt_out : out STD_LOGIC;
@@ -2261,7 +2261,7 @@ architecture STRUCTURE of PUSHDATA_imp_1IZ4HK6 is
   component msys_xlslice_0_62 is
   port (
     Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    Dout : out STD_LOGIC_VECTOR ( 18 downto 0 )
+    Dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component msys_xlslice_0_62;
   signal Conn1_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -2294,7 +2294,7 @@ architecture STRUCTURE of PUSHDATA_imp_1IZ4HK6 is
   signal pushdata_rx09_xlconcat_0_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal pushdata_rx09_xlconcat_1_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal pushdata_rx09_xlslice_0to0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal pushdata_rx09_xlslice_18to0_Dout : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal pushdata_rx09_xlslice_18to0_Dout : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal rst_mig_7series_0_100M_peripheral_reset_0 : STD_LOGIC;
   signal s_axi_aclk_CD100_0 : STD_LOGIC;
   signal s_axi_aresetn_1 : STD_LOGIC;
@@ -2319,7 +2319,7 @@ begin
   S_AXI_wready(0) <= Conn1_WREADY;
   TRX_RX_RF09_PUSHDATA_FIFO_empty <= \^trx_rx_rf09_pushdata_fifo_empty\;
   data_count(11 downto 0) <= pushdata_rx09_fifo_generator_0_data_count(11 downto 0);
-  decoder_rx09_squelch_lvl(18 downto 0) <= pushdata_rx09_xlslice_18to0_Dout(18 downto 0);
+  decoder_rx09_squelch_lvl(15 downto 0) <= pushdata_rx09_xlslice_18to0_Dout(15 downto 0);
   pushdata_rx09_byteData_1(7 downto 0) <= pushdata_rx09_byteData(7 downto 0);
   pushdata_rx09_en_1 <= pushdata_rx09_en;
   pushdata_rx09_irpt_out <= pushdata_rx09_axi_gpio_0_ip2intc_irpt;
@@ -2393,10 +2393,10 @@ pushdata_rx09_xlconcat_1: component msys_xlconcat_0_27
       In1(0) => pushdata_rx09_util_vector_logic_0_Res(0),
       dout(1 downto 0) => pushdata_rx09_xlconcat_1_dout(1 downto 0)
     );
-pushdata_rx09_xlslice_18to0: component msys_xlslice_0_62
+pushdata_rx09_xlslice_15to0: component msys_xlslice_0_62
      port map (
       Din(31 downto 0) => pushdata_rx09_axi_gpio_0_gpio2_io_o(31 downto 0),
-      Dout(18 downto 0) => pushdata_rx09_xlslice_18to0_Dout(18 downto 0)
+      Dout(15 downto 0) => pushdata_rx09_xlslice_18to0_Dout(15 downto 0)
     );
 pushdata_rx09_xlslice_31to31: component msys_xlslice_0_56
      port map (
@@ -17757,7 +17757,7 @@ entity TRX_rx_FFT_unit_imp_1NLKML1 is
     TRX_RX_RF09_PUSHDATA_FIFO_empty : out STD_LOGIC;
     aresetn_CD100_in : in STD_LOGIC;
     data_count : out STD_LOGIC_VECTOR ( 11 downto 0 );
-    decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 18 downto 0 );
+    decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 15 downto 0 );
     fft09_config_tdata_in : in STD_LOGIC_VECTOR ( 7 downto 0 );
     fft09_config_tvalid_in : in STD_LOGIC;
     fft09_data_tlast_in : in STD_LOGIC;
@@ -17864,7 +17864,7 @@ architecture STRUCTURE of TRX_rx_FFT_unit_imp_1NLKML1 is
   signal Conn1_WVALID : STD_LOGIC_VECTOR ( 0 to 0 );
   signal FFT_window_coef_rom_rx09_1 : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal PUSHDATA_data_count : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal PUSHDATA_decoder_rx09_squelch_lvl : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal PUSHDATA_decoder_rx09_squelch_lvl : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal RF09_framectr_0 : STD_LOGIC_VECTOR ( 29 downto 0 );
   signal RF09_quarterfrm_0 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal aresetn_CD100_0 : STD_LOGIC;
@@ -17921,7 +17921,7 @@ begin
   S_AXI_wready(0) <= Conn1_WREADY(0);
   aresetn_CD100_0 <= aresetn_CD100_in;
   data_count(11 downto 0) <= PUSHDATA_data_count(11 downto 0);
-  decoder_rx09_squelch_lvl(18 downto 0) <= PUSHDATA_decoder_rx09_squelch_lvl(18 downto 0);
+  decoder_rx09_squelch_lvl(15 downto 0) <= PUSHDATA_decoder_rx09_squelch_lvl(15 downto 0);
   fft09_config_tdata_in_0(7 downto 0) <= fft09_config_tdata_in(7 downto 0);
   fft09_config_tvalid_in_0 <= fft09_config_tvalid_in;
   fft09_data_tlast_in_0 <= fft09_data_tlast_in;
@@ -17965,7 +17965,7 @@ PUSHDATA: entity work.PUSHDATA_imp_1IZ4HK6
       S_AXI_wvalid(0) => Conn1_WVALID(0),
       TRX_RX_RF09_PUSHDATA_FIFO_empty => TRX_RX_RF09_PUSHDATA_FIFO_empty,
       data_count(11 downto 0) => PUSHDATA_data_count(11 downto 0),
-      decoder_rx09_squelch_lvl(18 downto 0) => PUSHDATA_decoder_rx09_squelch_lvl(18 downto 0),
+      decoder_rx09_squelch_lvl(15 downto 0) => PUSHDATA_decoder_rx09_squelch_lvl(15 downto 0),
       pushdata_rx09_byteData(7 downto 0) => pushdata_rx09_byteData_1(7 downto 0),
       pushdata_rx09_en => pushdata_rx09_en_1,
       pushdata_rx09_irpt_out => pushdata_rx09_axi_gpio_0_ip2intc_irpt,
@@ -18189,7 +18189,7 @@ entity TRX_imp_W48V8V is
     data_count1 : out STD_LOGIC_VECTOR ( 11 downto 0 );
     dcm_locked : in STD_LOGIC;
     dds_tx09_ptt_in : in STD_LOGIC_VECTOR ( 0 to 0 );
-    decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 18 downto 0 );
+    decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 15 downto 0 );
     encoder_pull_FIFO_dump : out STD_LOGIC_VECTOR ( 0 to 0 );
     encoder_pull_data_len : out STD_LOGIC_VECTOR ( 6 downto 0 );
     encoder_pull_do_start : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -18381,7 +18381,7 @@ architecture STRUCTURE of TRX_imp_W48V8V is
   signal TRX_rx24_fifo_o_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal TRX_rx24_fifo_valid_o_1 : STD_LOGIC;
   signal TRX_rx_FFT_unit_data_count : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal TRX_rx_FFT_unit_decoder_rx09_squelch_lvl : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal TRX_rx_FFT_unit_decoder_rx09_squelch_lvl : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal TRX_rx_FFT_unit_event_data_in_channel_halt_0 : STD_LOGIC;
   signal TRX_rx_FFT_unit_post_fft_mem_a_rx09_EoT : STD_LOGIC;
   signal TRX_rx_LVDS_rd_data_count_CD100 : STD_LOGIC_VECTOR ( 8 downto 0 );
@@ -18559,7 +18559,7 @@ begin
   data_count(11 downto 0) <= TRX_tx_DDS_unit_data_count(11 downto 0);
   data_count1(11 downto 0) <= TRX_rx_FFT_unit_data_count(11 downto 0);
   dds_tx09_ptt_0(0) <= dds_tx09_ptt_in(0);
-  decoder_rx09_squelch_lvl(18 downto 0) <= TRX_rx_FFT_unit_decoder_rx09_squelch_lvl(18 downto 0);
+  decoder_rx09_squelch_lvl(15 downto 0) <= TRX_rx_FFT_unit_decoder_rx09_squelch_lvl(15 downto 0);
   encoder_pull_FIFO_dump(0) <= TRX_tx_DDS_unit_encoder_pull_FIFO_dump(0);
   encoder_pull_data_len(6 downto 0) <= TRX_tx_DDS_unit_encoder_pull_data_len(6 downto 0);
   encoder_pull_do_start(0) <= TRX_tx_DDS_unit_encoder_pull_do_start(0);
@@ -18741,7 +18741,7 @@ TRX_rx_FFT_unit: entity work.TRX_rx_FFT_unit_imp_1NLKML1
       TRX_RX_RF09_PUSHDATA_FIFO_empty => TRX_RX_RF09_PUSHDATA_FIFO_empty,
       aresetn_CD100_in => rst_mig_7series_0_100M_peripheral_aresetn,
       data_count(11 downto 0) => TRX_rx_FFT_unit_data_count(11 downto 0),
-      decoder_rx09_squelch_lvl(18 downto 0) => TRX_rx_FFT_unit_decoder_rx09_squelch_lvl(18 downto 0),
+      decoder_rx09_squelch_lvl(15 downto 0) => TRX_rx_FFT_unit_decoder_rx09_squelch_lvl(15 downto 0),
       fft09_config_tdata_in(7 downto 0) => fft09_config_tdata_in_0(7 downto 0),
       fft09_config_tvalid_in => fft09_config_tvalid_in_0,
       fft09_data_tlast_in => fft09_data_tlast_in_0,
@@ -18949,7 +18949,7 @@ entity msys is
     decoder_rx09_center_pos : in STD_LOGIC_VECTOR ( 7 downto 0 );
     decoder_rx09_noise : in STD_LOGIC_VECTOR ( 18 downto 0 );
     decoder_rx09_sql_open : in STD_LOGIC;
-    decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 18 downto 0 );
+    decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 15 downto 0 );
     decoder_rx09_strength : in STD_LOGIC_VECTOR ( 18 downto 0 );
     encoder_pull_FIFO_dump : out STD_LOGIC_VECTOR ( 0 to 0 );
     encoder_pull_data_len : out STD_LOGIC_VECTOR ( 6 downto 0 );
@@ -19168,7 +19168,7 @@ architecture STRUCTURE of msys is
     probe_in49 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe_in50 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe_in51 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe_in52 : in STD_LOGIC_VECTOR ( 18 downto 0 );
+    probe_in52 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe_in53 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_in54 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe_in55 : in STD_LOGIC_VECTOR ( 15 downto 0 )
@@ -19706,7 +19706,7 @@ architecture STRUCTURE of msys is
   signal TRX_clk_trx_pll_25MHz_vio : STD_LOGIC;
   signal TRX_data_count : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal TRX_data_count1 : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal TRX_decoder_rx09_squelch_lvl : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal TRX_decoder_rx09_squelch_lvl : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal TRX_encoder_pull_FIFO_dump : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_encoder_pull_data_len : STD_LOGIC_VECTOR ( 6 downto 0 );
   signal TRX_encoder_pull_do_start : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -20658,7 +20658,7 @@ begin
   decoder_rx09_center_pos_1(7 downto 0) <= decoder_rx09_center_pos(7 downto 0);
   decoder_rx09_noise_1(18 downto 0) <= decoder_rx09_noise(18 downto 0);
   decoder_rx09_sql_open_1 <= decoder_rx09_sql_open;
-  decoder_rx09_squelch_lvl(18 downto 0) <= TRX_decoder_rx09_squelch_lvl(18 downto 0);
+  decoder_rx09_squelch_lvl(15 downto 0) <= TRX_decoder_rx09_squelch_lvl(15 downto 0);
   decoder_rx09_strength_1(18 downto 0) <= decoder_rx09_strength(18 downto 0);
   encoder_pull_FIFO_dump(0) <= TRX_encoder_pull_FIFO_dump(0);
   encoder_pull_data_len(6 downto 0) <= TRX_encoder_pull_data_len(6 downto 0);
@@ -21310,7 +21310,7 @@ TRX: entity work.TRX_imp_W48V8V
       data_count1(11 downto 0) => TRX_data_count1(11 downto 0),
       dcm_locked => mig_7series_0_mmcm_locked,
       dds_tx09_ptt_in(0) => dds_tx09_ptt_1,
-      decoder_rx09_squelch_lvl(18 downto 0) => TRX_decoder_rx09_squelch_lvl(18 downto 0),
+      decoder_rx09_squelch_lvl(15 downto 0) => TRX_decoder_rx09_squelch_lvl(15 downto 0),
       encoder_pull_FIFO_dump(0) => TRX_encoder_pull_FIFO_dump(0),
       encoder_pull_data_len(6 downto 0) => TRX_encoder_pull_data_len(6 downto 0),
       encoder_pull_do_start(0) => TRX_encoder_pull_do_start(0),
@@ -22486,7 +22486,7 @@ vio_0: component msys_vio_0_0
       probe_in5(0) => SC0712_0_reset_out,
       probe_in50(0) => decoder_rx09_sql_open_1,
       probe_in51(0) => decoder_rx09_active_1,
-      probe_in52(18 downto 0) => TRX_decoder_rx09_squelch_lvl(18 downto 0),
+      probe_in52(15 downto 0) => TRX_decoder_rx09_squelch_lvl(15 downto 0),
       probe_in53(31 downto 0) => TRX_tx_DDS0_gpio_inc(31 downto 0),
       probe_in54(15 downto 0) => TRX_tx_DDS0_gpio_ampt(15 downto 0),
       probe_in55(15 downto 0) => TRX_tx_DDS1_gpio_ampt(15 downto 0),
