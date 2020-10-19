@@ -69,7 +69,7 @@ ENTITY UFBmod_FFT_rx09_to_Decoder_0_0 IS
     signal_correction_rx09_ch00_mult_ce : OUT STD_LOGIC;
     signal_correction_rx09_ch00_mult_ina : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     signal_correction_rx09_ch00_mult_prod : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-    signal_bins_rx09_ch00_mem_addra : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+    signal_bins_rx09_ch00_mem_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
     signal_bins_rx09_ch00_mem_dina : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     signal_bins_rx09_ch00_mem_douta : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     signal_bins_rx09_ch00_mem_wea : OUT STD_LOGIC;
@@ -96,7 +96,7 @@ ARCHITECTURE UFBmod_FFT_rx09_to_Decoder_0_0_arch OF UFBmod_FFT_rx09_to_Decoder_0
       signal_correction_rx09_ch00_mult_ce : OUT STD_LOGIC;
       signal_correction_rx09_ch00_mult_ina : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       signal_correction_rx09_ch00_mult_prod : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal_bins_rx09_ch00_mem_addra : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+      signal_bins_rx09_ch00_mem_addra : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
       signal_bins_rx09_ch00_mem_dina : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       signal_bins_rx09_ch00_mem_douta : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       signal_bins_rx09_ch00_mem_wea : OUT STD_LOGIC;

@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Sun Oct 18 23:59:27 2020
+--Date        : Tue Oct 20 01:11:25 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target UFBmod.bd
 --Design      : UFBmod
@@ -135,12 +135,13 @@ entity FFT_rx09_to_Decoder_imp_1D60DD is
   port (
     clk : in STD_LOGIC;
     decoder_fft_frame_avail_ctr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    decoder_rx09_ch00_noise : out STD_LOGIC_VECTOR ( 18 downto 0 );
     post_fft_rx09_ch00_mem_b_addr : out STD_LOGIC_VECTOR ( 9 downto 0 );
     post_fft_rx09_mem_a_EoT : in STD_LOGIC;
     post_fft_rx09_mem_a_addr : in STD_LOGIC_VECTOR ( 41 downto 0 );
     post_fft_rx09_mem_b_dout : in STD_LOGIC_VECTOR ( 15 downto 0 );
     reset : in STD_LOGIC;
-    signal_bins_rx09_ch00_blk_mem_gen_0_addrb : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    signal_bins_rx09_ch00_blk_mem_gen_0_addrb : in STD_LOGIC_VECTOR ( 10 downto 0 );
     signal_bins_rx09_ch00_blk_mem_gen_0_doutb : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
 end FFT_rx09_to_Decoder_imp_1D60DD;
@@ -150,12 +151,12 @@ architecture STRUCTURE of FFT_rx09_to_Decoder_imp_1D60DD is
   port (
     clka : in STD_LOGIC;
     wea : in STD_LOGIC_VECTOR ( 0 to 0 );
-    addra : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    addra : in STD_LOGIC_VECTOR ( 10 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 15 downto 0 );
     douta : out STD_LOGIC_VECTOR ( 15 downto 0 );
     clkb : in STD_LOGIC;
     web : in STD_LOGIC_VECTOR ( 0 to 0 );
-    addrb : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    addrb : in STD_LOGIC_VECTOR ( 10 downto 0 );
     dinb : in STD_LOGIC_VECTOR ( 15 downto 0 );
     doutb : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
@@ -213,6 +214,20 @@ architecture STRUCTURE of FFT_rx09_to_Decoder_imp_1D60DD is
     dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component UFBmod_xlconstant_0_3;
+  component UFBmod_xlslice_0_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 18 downto 0 )
+  );
+  end component UFBmod_xlslice_0_0;
+  component UFBmod_c_shift_ram_0_0 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 18 downto 0 );
+    CLK : in STD_LOGIC;
+    CE : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 18 downto 0 )
+  );
+  end component UFBmod_c_shift_ram_0_0;
   component UFBmod_FFT_rx09_to_Decoder_0_0 is
   port (
     reset : in STD_LOGIC;
@@ -229,7 +244,7 @@ architecture STRUCTURE of FFT_rx09_to_Decoder_imp_1D60DD is
     signal_correction_rx09_ch00_mult_ce : out STD_LOGIC;
     signal_correction_rx09_ch00_mult_ina : out STD_LOGIC_VECTOR ( 15 downto 0 );
     signal_correction_rx09_ch00_mult_prod : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    signal_bins_rx09_ch00_mem_addra : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    signal_bins_rx09_ch00_mem_addra : out STD_LOGIC_VECTOR ( 10 downto 0 );
     signal_bins_rx09_ch00_mem_dina : out STD_LOGIC_VECTOR ( 15 downto 0 );
     signal_bins_rx09_ch00_mem_douta : in STD_LOGIC_VECTOR ( 15 downto 0 );
     signal_bins_rx09_ch00_mem_wea : out STD_LOGIC;
@@ -245,13 +260,15 @@ architecture STRUCTURE of FFT_rx09_to_Decoder_imp_1D60DD is
   signal averaging_factor_div_dout_tvalid : STD_LOGIC;
   signal averaging_factor_divider_aclken : STD_LOGIC;
   signal clk_100MHz : STD_LOGIC;
+  signal noise_rx09_ch00_c_shift_ram_0_Q : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal noise_rx09_ch00_xlslice_18to0_Dout : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal post_fft_rx09_mem_a_EoT_1 : STD_LOGIC;
   signal post_fft_rx09_mem_a_addr_1 : STD_LOGIC_VECTOR ( 41 downto 0 );
   signal post_fft_rx09_mem_b_dout_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal reset_100MHz : STD_LOGIC;
   signal rowsum_rx09_ch00_accum_ce : STD_LOGIC;
   signal rowsum_rx09_ch00_accum_sclr : STD_LOGIC;
-  signal signal_bins_rx09_ch00_blk_mem_gen_0_addra : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal signal_bins_rx09_ch00_blk_mem_gen_0_addra : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal signal_bins_rx09_ch00_blk_mem_gen_0_dina : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal signal_bins_rx09_ch00_blk_mem_gen_0_douta : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal signal_bins_rx09_ch00_blk_mem_gen_0_wea : STD_LOGIC;
@@ -264,6 +281,7 @@ architecture STRUCTURE of FFT_rx09_to_Decoder_imp_1D60DD is
   signal NLW_averaging_factor_rx09_ch00_div_gen_35clks_m_axis_dout_tuser_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
 begin
   clk_100MHz <= clk;
+  decoder_rx09_ch00_noise(18 downto 0) <= noise_rx09_ch00_c_shift_ram_0_Q(18 downto 0);
   post_fft_rx09_mem_a_EoT_1 <= post_fft_rx09_mem_a_EoT;
   post_fft_rx09_mem_a_addr_1(41 downto 0) <= post_fft_rx09_mem_a_addr(41 downto 0);
   post_fft_rx09_mem_b_dout_1(15 downto 0) <= post_fft_rx09_mem_b_dout(15 downto 0);
@@ -282,7 +300,7 @@ FFT_rx09_to_Decoder_FSM: component UFBmod_FFT_rx09_to_Decoder_0_0
       reset => reset_100MHz,
       rowsum_rx09_ch00_accum_ce => rowsum_rx09_ch00_accum_ce,
       rowsum_rx09_ch00_accum_sclr => rowsum_rx09_ch00_accum_sclr,
-      signal_bins_rx09_ch00_mem_addra(8 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addra(8 downto 0),
+      signal_bins_rx09_ch00_mem_addra(10 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addra(10 downto 0),
       signal_bins_rx09_ch00_mem_dina(15 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_dina(15 downto 0),
       signal_bins_rx09_ch00_mem_douta(15 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_douta(15 downto 0),
       signal_bins_rx09_ch00_mem_wea => signal_bins_rx09_ch00_blk_mem_gen_0_wea,
@@ -304,6 +322,18 @@ averaging_factor_rx09_ch00_div_gen_35clks: component UFBmod_div_gen_0_0
       s_axis_divisor_tready => NLW_averaging_factor_rx09_ch00_div_gen_35clks_s_axis_divisor_tready_UNCONNECTED,
       s_axis_divisor_tvalid => averaging_factor_div_divisor_tvalid
     );
+noise_rx09_ch00_c_shift_ram_0: component UFBmod_c_shift_ram_0_0
+     port map (
+      CE => averaging_factor_div_divisor_tvalid,
+      CLK => clk_100MHz,
+      D(18 downto 0) => noise_rx09_ch00_xlslice_18to0_Dout(18 downto 0),
+      Q(18 downto 0) => noise_rx09_ch00_c_shift_ram_0_Q(18 downto 0)
+    );
+noise_rx09_ch00_xlslice_18to0: component UFBmod_xlslice_0_0
+     port map (
+      Din(31 downto 0) => averaging_factor_div_divisor_tdata(31 downto 0),
+      Dout(18 downto 0) => noise_rx09_ch00_xlslice_18to0_Dout(18 downto 0)
+    );
 rowsum_rx09_ch00_c_accum_1clk: component UFBmod_c_accum_0_0
      port map (
       B(15 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_dina(15 downto 0),
@@ -314,8 +344,8 @@ rowsum_rx09_ch00_c_accum_1clk: component UFBmod_c_accum_0_0
     );
 signal_bins_rx09_ch00_blk_mem_gen_2clks: component UFBmod_blk_mem_gen_0_0
      port map (
-      addra(8 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addra(8 downto 0),
-      addrb(8 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addrb(8 downto 0),
+      addra(10 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addra(10 downto 0),
+      addrb(10 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addrb(10 downto 0),
       clka => clk_100MHz,
       clkb => clk_100MHz,
       dina(15 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_dina(15 downto 0),
@@ -370,7 +400,7 @@ entity UFBmod_rx09_Decoders_imp_115KKRN is
     decoder_rx09_ch00_u32Count : out STD_LOGIC_VECTOR ( 7 downto 0 );
     decoder_rx09_squelch_lvl : in STD_LOGIC_VECTOR ( 15 downto 0 );
     reset_100MHz : in STD_LOGIC;
-    signal_bins_rx09_ch00_blk_mem_gen_0_addrb : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    signal_bins_rx09_ch00_blk_mem_gen_0_addrb : out STD_LOGIC_VECTOR ( 10 downto 0 );
     signal_bins_rx09_ch00_blk_mem_gen_0_doutb : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
 end UFBmod_rx09_Decoders_imp_115KKRN;
@@ -398,7 +428,7 @@ architecture STRUCTURE of UFBmod_rx09_Decoders_imp_115KKRN is
   port (
     reset : in STD_LOGIC;
     clk : in STD_LOGIC;
-    signal_bins_rx09_ch00_mem_addrb : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    signal_bins_rx09_ch00_mem_addrb : out STD_LOGIC_VECTOR ( 10 downto 0 );
     signal_bins_rx09_ch00_mem_datab : in STD_LOGIC_VECTOR ( 15 downto 0 );
     decoder_fft_frame_avail_ctr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     dds_tx09_ptt : in STD_LOGIC;
@@ -455,7 +485,7 @@ UFBmod_rx09_Decoder_0: component UFBmod_UFBmod_rx09_Decoder_0_0
       decoder_rx09_ch00_strength(18 downto 0) => decoder_rx09_ch00_strength(18 downto 0),
       decoder_rx09_ch00_u32Count(7 downto 0) => decoder_rx09_ch00_u32Count(7 downto 0),
       reset => reset_100MHz,
-      signal_bins_rx09_ch00_mem_addrb(8 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addrb(8 downto 0),
+      signal_bins_rx09_ch00_mem_addrb(10 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addrb(10 downto 0),
       signal_bins_rx09_ch00_mem_datab(15 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_doutb(15 downto 0)
     );
 decoder_artemis_blk_mem_gen_2clks: component UFBmod_blk_mem_gen_0_1
@@ -498,17 +528,13 @@ entity UFBmod is
     reset_100MHz : in STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of UFBmod : entity is "UFBmod,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=UFBmod,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=19,numReposBlks=16,numNonXlnxBlks=0,numHierBlks=3,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}";
+  attribute CORE_GENERATION_INFO of UFBmod : entity is "UFBmod,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=UFBmod,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=20,numReposBlks=17,numNonXlnxBlks=0,numHierBlks=3,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of UFBmod : entity is "UFBmod.hwdef";
 end UFBmod;
 
 architecture STRUCTURE of UFBmod is
-  component UFBmod_xlconstant_0_4 is
-  port (
-    dout : out STD_LOGIC_VECTOR ( 18 downto 0 )
-  );
-  end component UFBmod_xlconstant_0_4;
+  signal FFT_rx09_to_Decoder_decoder_rx09_ch00_noise : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal dds_tx09_ptt_1 : STD_LOGIC;
   signal decoder_fft_frame_avail_ctr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal decoder_rx09_ch00_FIFO_accepted : STD_LOGIC;
@@ -522,9 +548,8 @@ architecture STRUCTURE of UFBmod is
   signal post_fft_rx09_mem_a_EoT_1 : STD_LOGIC;
   signal post_fft_rx09_mem_a_addr_1 : STD_LOGIC_VECTOR ( 41 downto 0 );
   signal post_fft_rx09_mem_b_dout_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal signal_bins_rx09_ch00_blk_mem_gen_0_addrb : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal signal_bins_rx09_ch00_blk_mem_gen_0_addrb : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal signal_bins_rx09_ch00_blk_mem_gen_0_doutb : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal xlconstant_val0_len19_dout : STD_LOGIC_VECTOR ( 18 downto 0 );
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk_100MHz : signal is "xilinx.com:signal:clock:1.0 CLK.CLK_100MHZ CLK";
   attribute X_INTERFACE_PARAMETER : string;
@@ -540,7 +565,7 @@ architecture STRUCTURE of UFBmod is
 begin
   dds_tx09_ptt_1 <= dds_tx09_ptt;
   decoder_rx09_ch00_center_pos(7 downto 0) <= \^decoder_rx09_ch00_center_pos\(7 downto 0);
-  decoder_rx09_ch00_noise(18 downto 0) <= xlconstant_val0_len19_dout(18 downto 0);
+  decoder_rx09_ch00_noise(18 downto 0) <= FFT_rx09_to_Decoder_decoder_rx09_ch00_noise(18 downto 0);
   decoder_rx09_ch00_strength(18 downto 0) <= \^decoder_rx09_ch00_strength\(18 downto 0);
   post_fft_rx09_mem_a_EoT_1 <= post_fft_rx09_mem_a_EoT;
   post_fft_rx09_mem_a_addr_1(41 downto 0) <= post_fft_rx09_mem_a_addr(41 downto 0);
@@ -564,12 +589,13 @@ FFT_rx09_to_Decoder: entity work.FFT_rx09_to_Decoder_imp_1D60DD
      port map (
       clk => clk_100MHz,
       decoder_fft_frame_avail_ctr(31 downto 0) => decoder_fft_frame_avail_ctr(31 downto 0),
+      decoder_rx09_ch00_noise(18 downto 0) => FFT_rx09_to_Decoder_decoder_rx09_ch00_noise(18 downto 0),
       post_fft_rx09_ch00_mem_b_addr(9 downto 0) => post_fft_rx09_ch00_mem_b_addr(9 downto 0),
       post_fft_rx09_mem_a_EoT => post_fft_rx09_mem_a_EoT_1,
       post_fft_rx09_mem_a_addr(41 downto 0) => post_fft_rx09_mem_a_addr_1(41 downto 0),
       post_fft_rx09_mem_b_dout(15 downto 0) => post_fft_rx09_mem_b_dout_1(15 downto 0),
       reset => reset_100MHz,
-      signal_bins_rx09_ch00_blk_mem_gen_0_addrb(8 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addrb(8 downto 0),
+      signal_bins_rx09_ch00_blk_mem_gen_0_addrb(10 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addrb(10 downto 0),
       signal_bins_rx09_ch00_blk_mem_gen_0_doutb(15 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_doutb(15 downto 0)
     );
 UFBmod_rx09_Decoders: entity work.UFBmod_rx09_Decoders_imp_115KKRN
@@ -588,11 +614,7 @@ UFBmod_rx09_Decoders: entity work.UFBmod_rx09_Decoders_imp_115KKRN
       decoder_rx09_ch00_u32Count(7 downto 0) => decoder_rx09_ch00_u32Count(7 downto 0),
       decoder_rx09_squelch_lvl(15 downto 0) => decoder_rx09_ch00_squelch_lvl(15 downto 0),
       reset_100MHz => reset_100MHz,
-      signal_bins_rx09_ch00_blk_mem_gen_0_addrb(8 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addrb(8 downto 0),
+      signal_bins_rx09_ch00_blk_mem_gen_0_addrb(10 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_addrb(10 downto 0),
       signal_bins_rx09_ch00_blk_mem_gen_0_doutb(15 downto 0) => signal_bins_rx09_ch00_blk_mem_gen_0_doutb(15 downto 0)
-    );
-xlconstant_val0_len19: component UFBmod_xlconstant_0_4
-     port map (
-      dout(18 downto 0) => xlconstant_val0_len19_dout(18 downto 0)
     );
 end STRUCTURE;

@@ -59,7 +59,7 @@ entity FFT_rx09_to_Decoder_FSM is
     signal_correction_rx09_ch00_mult_prod           : in  STD_LOGIC_VECTOR(15 downto 0);
     
     -- Signal_bins  port-A
-    signal_bins_rx09_ch00_mem_addra                 : out STD_LOGIC_VECTOR( 8 downto 0);  -- 16 rows (4 bit) x 32 bins (5 bits)
+    signal_bins_rx09_ch00_mem_addra                 : out STD_LOGIC_VECTOR(10 downto 0);  -- 64 rows (6 bit) x 32 bins (5 bits)
     signal_bins_rx09_ch00_mem_dina                  : out STD_LOGIC_VECTOR(15 downto 0);
     signal_bins_rx09_ch00_mem_douta                 : in  STD_LOGIC_VECTOR(15 downto 0);
     signal_bins_rx09_ch00_mem_wea                   : out STD_LOGIC;
@@ -70,7 +70,7 @@ end FFT_rx09_to_Decoder_FSM;
 
 architecture Behavioral of FFT_rx09_to_Decoder_FSM is
   signal read_write_loopCtr                         : Integer  range 0 to (2**5  - 1);
-  signal initial_loopCtr                            : Integer  range 0 to (2**4  - 1);
+  signal initial_loopCtr                            : Integer  range 0 to (2**6  - 1);
 begin
   proc_FFT_rx09_to_Mem: process (reset, clk)
     type StateType                                  is (
@@ -117,7 +117,7 @@ begin
                     decoder_fft_frame_avail_ctr                 <= (others => '0');
                     
                     read_write_loopCtr                          <= 0;
-                    initial_loopCtr                             <= 12;
+                    initial_loopCtr                             <= 31;
                     
                     post_fft_rx09_mem_addrb                     <= (others => '0');
                     post_fft_rx09_mem_addrb_Int                 := 0;
@@ -151,7 +151,7 @@ begin
                         -- RAM Loop init
                         rowsum_rx09_ch00_accum_sclr             <= '0';
                         post_fft_rx09_mem_addrb_Int             := 0;
-                        signal_bins_rx09_ch00_mem_addra_Int     := to_integer(unsigned(post_fft_rx09_mem_addra(13 downto 10)) & "00000");
+                        signal_bins_rx09_ch00_mem_addra_Int     := to_integer(unsigned(post_fft_rx09_mem_addra(15 downto 10)) & "00000");
                         
                         state := read_in_loop;
                     end if;
@@ -210,7 +210,7 @@ begin
                     end if;
                     
                 when correction_init =>
-                    signal_bins_rx09_ch00_mem_addra_Int         := to_integer(unsigned(post_fft_rx09_mem_addra(13 downto 10)) & "00000");
+                    signal_bins_rx09_ch00_mem_addra_Int         := to_integer(unsigned(post_fft_rx09_mem_addra(15 downto 10)) & "00000");
                     read_write_loopCtr                          <= 0;
                     signal_correction_rx09_ch00_mult_ce         <= '1';
                     

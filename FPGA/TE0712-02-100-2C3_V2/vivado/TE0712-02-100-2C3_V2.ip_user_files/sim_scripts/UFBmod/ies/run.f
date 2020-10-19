@@ -109,11 +109,25 @@
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlconstant_0_1/sim/UFBmod_xlconstant_0_1.v" \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlconstant_0_2/sim/UFBmod_xlconstant_0_2.v" \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlconstant_0_3/sim/UFBmod_xlconstant_0_3.v" \
-  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlconstant_0_4/sim/UFBmod_xlconstant_0_4.v" \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_blk_mem_gen_0_1/sim/UFBmod_blk_mem_gen_0_1.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_mult_gen_0_2/sim/UFBmod_mult_gen_0_2.vhd" \
+-endlib
+-makelib ies_lib/xlslice_v1_0_2 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ipshared/11d0/hdl/xlslice_v1_0_vl_rfs.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlslice_0_0/sim/UFBmod_xlslice_0_0.v" \
+-endlib
+-makelib ies_lib/c_mux_bit_v12_0_6 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ipshared/ecb4/hdl/c_mux_bit_v12_0_vh_rfs.vhd" \
+-endlib
+-makelib ies_lib/c_shift_ram_v12_0_14 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ipshared/2598/hdl/c_shift_ram_v12_0_vh_rfs.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_c_shift_ram_0_0/sim/UFBmod_c_shift_ram_0_0.vhd" \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/sim/UFBmod.vhd" \
 -endlib
 -makelib ies_lib/xil_defaultlib \

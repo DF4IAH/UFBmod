@@ -57,7 +57,7 @@ ENTITY UFBmod_UFBmod_rx09_Decoder_0_0 IS
   PORT (
     reset : IN STD_LOGIC;
     clk : IN STD_LOGIC;
-    signal_bins_rx09_ch00_mem_addrb : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+    signal_bins_rx09_ch00_mem_addrb : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
     signal_bins_rx09_ch00_mem_datab : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     decoder_fft_frame_avail_ctr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     dds_tx09_ptt : IN STD_LOGIC;
@@ -89,7 +89,7 @@ ARCHITECTURE UFBmod_UFBmod_rx09_Decoder_0_0_arch OF UFBmod_UFBmod_rx09_Decoder_0
     PORT (
       reset : IN STD_LOGIC;
       clk : IN STD_LOGIC;
-      signal_bins_rx09_ch00_mem_addrb : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+      signal_bins_rx09_ch00_mem_addrb : OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
       signal_bins_rx09_ch00_mem_datab : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       decoder_fft_frame_avail_ctr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       dds_tx09_ptt : IN STD_LOGIC;

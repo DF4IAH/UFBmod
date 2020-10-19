@@ -11,20 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="886188968fs"></ZoomStartTime>
-      <ZoomEndTime time="886310207fs"></ZoomEndTime>
-      <Cursor1Time time="886290000fs"></Cursor1Time>
+      <ZoomStartTime time="2103367050fs"></ZoomStartTime>
+      <ZoomEndTime time="2103484601fs"></ZoomEndTime>
+      <Cursor1Time time="2103460000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="772"></NameColumnWidth>
-      <ValueColumnWidth column_width="116"></ValueColumnWidth>
+      <NameColumnWidth column_width="552"></NameColumnWidth>
+      <ValueColumnWidth column_width="260"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="12" />
-   <wave_markers>
-      <marker time="1781000000" label="" />
-      <marker time="114300000" label="" />
-      <marker time="117380000" label="" />
-   </wave_markers>
    <wvobject fp_name="/tb_UFBmod/UFBmod_wrapper_i/UFBmod_i/FFT_rx09_to_Decoder/FFT_rx09_to_Decoder_FSM/U0/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -103,8 +98,8 @@
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_UFBmod/UFBmod_wrapper_i/UFBmod_i/FFT_rx09_to_Decoder/FFT_rx09_to_Decoder_FSM/U0/signal_bins_rx09_ch00_mem_addra" type="array">
-         <obj_property name="ElementShortName">signal_bins_rx09_ch00_mem_addra[8:0]</obj_property>
-         <obj_property name="ObjectShortName">signal_bins_rx09_ch00_mem_addra[8:0]</obj_property>
+         <obj_property name="ElementShortName">signal_bins_rx09_ch00_mem_addra[10:0]</obj_property>
+         <obj_property name="ObjectShortName">signal_bins_rx09_ch00_mem_addra[10:0]</obj_property>
          <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
@@ -239,8 +234,8 @@
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_UFBmod/UFBmod_wrapper_i/UFBmod_i/UFBmod_rx09_Decoders/UFBmod_rx09_Decoder_0/signal_bins_rx09_ch00_mem_addrb" type="array">
-            <obj_property name="ElementShortName">signal_bins_rx09_ch00_mem_addrb[8:0]</obj_property>
-            <obj_property name="ObjectShortName">signal_bins_rx09_ch00_mem_addrb[8:0]</obj_property>
+            <obj_property name="ElementShortName">signal_bins_rx09_ch00_mem_addrb[10:0]</obj_property>
+            <obj_property name="ObjectShortName">signal_bins_rx09_ch00_mem_addrb[10:0]</obj_property>
             <obj_property name="CustomSignalColor">#0000FF</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
             <obj_property name="Radix">HEXRADIX</obj_property>
@@ -293,8 +288,8 @@
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/tb_UFBmod/UFBmod_wrapper_i/UFBmod_i/UFBmod_rx09_Decoders/UFBmod_rx09_Decoder_0/U0/decoder_artemis_rx09_ch00_mem_addra" type="array">
-            <obj_property name="ElementShortName">decoder_artemis_rx09_ch00_mem_addra[5:0]</obj_property>
-            <obj_property name="ObjectShortName">decoder_artemis_rx09_ch00_mem_addra[5:0]</obj_property>
+            <obj_property name="ElementShortName">decoder_artemis_rx09_ch00_mem_addra[6:0]</obj_property>
+            <obj_property name="ObjectShortName">decoder_artemis_rx09_ch00_mem_addra[6:0]</obj_property>
             <obj_property name="CustomSignalColor">#0000A0</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>

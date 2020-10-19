@@ -26,6 +26,9 @@ vlib activehdl/floating_point_v7_0_17
 vlib activehdl/xbip_dsp48_mult_v3_0_6
 vlib activehdl/xbip_dsp48_multadd_v3_0_6
 vlib activehdl/div_gen_v5_1_16
+vlib activehdl/xlslice_v1_0_2
+vlib activehdl/c_mux_bit_v12_0_6
+vlib activehdl/c_shift_ram_v12_0_14
 
 vmap xpm activehdl/xpm
 vmap blk_mem_gen_v8_4_4 activehdl/blk_mem_gen_v8_4_4
@@ -52,6 +55,9 @@ vmap floating_point_v7_0_17 activehdl/floating_point_v7_0_17
 vmap xbip_dsp48_mult_v3_0_6 activehdl/xbip_dsp48_mult_v3_0_6
 vmap xbip_dsp48_multadd_v3_0_6 activehdl/xbip_dsp48_multadd_v3_0_6
 vmap div_gen_v5_1_16 activehdl/div_gen_v5_1_16
+vmap xlslice_v1_0_2 activehdl/xlslice_v1_0_2
+vmap c_mux_bit_v12_0_6 activehdl/c_mux_bit_v12_0_6
+vmap c_shift_ram_v12_0_14 activehdl/c_shift_ram_v12_0_14
 
 vlog -work xpm  -sv2k12 \
 "F:/Xilinx/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
@@ -164,11 +170,25 @@ vlog -work xil_defaultlib  -v2k5 \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlconstant_0_1/sim/UFBmod_xlconstant_0_1.v" \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlconstant_0_2/sim/UFBmod_xlconstant_0_2.v" \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlconstant_0_3/sim/UFBmod_xlconstant_0_3.v" \
-"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlconstant_0_4/sim/UFBmod_xlconstant_0_4.v" \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_blk_mem_gen_0_1/sim/UFBmod_blk_mem_gen_0_1.v" \
 
 vcom -work xil_defaultlib -93 \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_mult_gen_0_2/sim/UFBmod_mult_gen_0_2.vhd" \
+
+vlog -work xlslice_v1_0_2  -v2k5 \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ipshared/11d0/hdl/xlslice_v1_0_vl_rfs.v" \
+
+vlog -work xil_defaultlib  -v2k5 \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_xlslice_0_0/sim/UFBmod_xlslice_0_0.v" \
+
+vcom -work c_mux_bit_v12_0_6 -93 \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ipshared/ecb4/hdl/c_mux_bit_v12_0_vh_rfs.vhd" \
+
+vcom -work c_shift_ram_v12_0_14 -93 \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ipshared/2598/hdl/c_shift_ram_v12_0_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib -93 \
+"../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/ip/UFBmod_c_shift_ram_0_0/sim/UFBmod_c_shift_ram_0_0.vhd" \
 "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod/sim/UFBmod.vhd" \
 
 vlog -work xil_defaultlib \

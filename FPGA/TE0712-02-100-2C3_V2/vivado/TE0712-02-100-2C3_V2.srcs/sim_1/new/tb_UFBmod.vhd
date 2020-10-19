@@ -30,6 +30,8 @@ use IEEE.NUMERIC_STD.ALL;
 --use IEEE.std_logic_misc.all;
 --use IEEE.std_logic_unsigned.all;
 --use IEEE.std_logic_signed.all;
+use IEEE.math_real.uniform;
+use IEEE.math_real.floor;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
@@ -147,7 +149,7 @@ begin
 
   -- Squelch level setting
   proc_squelch_lvl: process
-  constant C_squelch_lvl_ch00                   : Integer   :=  30;
+  constant C_squelch_lvl_ch00                   : Integer   :=  12;
   begin
     tb_decoder_rx09_ch00_squelch_lvl    <= (others => '0');
     tb_dds_tx09_ptt                     <= '0';
@@ -222,58 +224,93 @@ begin
 
   -- Port B data stimulus
   proc_tb_b_dout: process
-    constant C_pre_r0                           : Integer :=  +7;
-    constant C_pre_r1                           : Integer := - 9;
-    constant C_pre_r2                           : Integer := +13;
-    constant C_pre_r3                           : Integer := -15;
-    constant C_pre_r4                           : Integer := +19;
-    constant C_pre_r5                           : Integer := -21;
+    constant C_pre_r00                              : Integer :=  -2;
+    constant C_pre_r01                              : Integer :=  +2;
+    constant C_pre_r02                              : Integer :=  -4;
+    constant C_pre_r03                              : Integer :=  +4;
+    constant C_pre_r04                              : Integer :=  -6;
+    constant C_pre_r05                              : Integer :=  +6;
+    constant C_pre_r06                              : Integer :=  -8;
+    constant C_pre_r07                              : Integer :=  +8;
+    constant C_pre_r08                              : Integer := -10;
+    constant C_pre_r09                              : Integer := +10;
+    constant C_pre_r10                              : Integer := -12;
+    constant C_pre_r11                              : Integer := +12;
+    constant C_pre_r12                              : Integer := -14;
+    constant C_pre_r13                              : Integer := +14;
+    constant C_pre_r14                              : Integer := -18;
+    constant C_pre_r15                              : Integer := +18;
     
-    constant C_bit_1                            : Integer := +17;
-    constant C_bit_0                            : Integer := -11;
+    constant C_bit_0_0                              : Integer :=  -3;
+    constant C_bit_0_1                              : Integer :=  -7;
     
-    constant C_fin_0                            : Integer :=  +5;
-    constant C_fin_1                            : Integer :=  -3;
-    constant C_fin_2                            : Integer :=  +1;
+    constant C_bit_1_0                              : Integer :=  +5;
+    constant C_bit_1_1                              : Integer := +11;
     
-    constant C_postmem_depth                    : Integer   := 1024;
-    constant C_postmem_pages                    : Integer   := 128;
-    constant C_postmemSim_depth                 : Integer   := C_postmem_pages * C_postmem_depth;
-    constant C_startRow                         : Integer   :=   0;
-    constant C_centerOfs                        : Integer   :=   0;
+    constant C_fin_0                                : Integer :=  -7;
+    constant C_fin_1                                : Integer :=  +7;
+    constant C_fin_2                                : Integer :=  -5;
+    constant C_fin_3                                : Integer :=  +5;
+    constant C_fin_4                                : Integer :=  -3;
+    constant C_fin_5                                : Integer :=  +3;
+    constant C_fin_6                                : Integer :=  -1;
+    constant C_fin_7                                : Integer :=  +1;
     
-    
-  --constant C_signal_100ct                     : Integer   :=   9;
-  --constant C_signal_080ct                     : Integer   :=   7;
-  --constant C_signal_050ct                     : Integer   :=   5;
-    
-  --constant C_signal_100ct                     : Integer   :=  10;
-  --constant C_signal_080ct                     : Integer   :=   8;
-  --constant C_signal_050ct                     : Integer   :=   5;
-    
-  --constant C_signal_100ct                     : Integer   :=  12;
-  --constant C_signal_080ct                     : Integer   :=  10;
-  --constant C_signal_050ct                     : Integer   :=   6;
-    
-    constant C_signal_100ct                     : Integer   :=  15;
-    constant C_signal_080ct                     : Integer   :=  12;
-    constant C_signal_050ct                     : Integer   :=   8;
-    
-  --constant C_signal_100ct                     : Integer   := 200;
-  --constant C_signal_080ct                     : Integer   := 160;
-  --constant C_signal_050ct                     : Integer   := 100;
+    constant C_postmem_depth                        : Integer   := 1024;
+    constant C_postmem_pages                        : Integer   := 128;
+    constant C_postmemSim_depth                     : Integer   := C_postmem_pages * C_postmem_depth;
+    constant C_startRow                             : Integer   :=   0;
+    constant C_centerOfs                            : Integer   := -16;
     
     
-    type PostMemType                            is array ((C_postmemSim_depth - 1) downto 0) of Integer; 
-    variable postmemSim                         : PostMemType;
+  --constant C_signal_100ct                         : Integer   :=   2;     -- signal: 0x0003, noise: 0x000b
+  --constant C_signal_080ct                         : Integer   :=   2;
+  --constant C_signal_050ct                         : Integer   :=   1;
     
-    variable row                                : Integer;
-    variable sigPos                             : Integer;
-    variable tb_post_fft_rx09_mem_b_dout_d0_Int : Integer;
-    variable getAddrIn                          : Integer;
-    variable getAddrIn_d1                       : Integer;
-    variable getAddrPage                        : Integer;
-    variable readAddr                           : Integer;
+  --constant C_signal_100ct                         : Integer   :=   3;     -- signal: 0x0009, noise: 0x000a
+  --constant C_signal_080ct                         : Integer   :=   3;
+  --constant C_signal_050ct                         : Integer   :=   2;
+    
+  --constant C_signal_100ct                         : Integer   :=   4;     -- signal: 0x0015, noise: 0x000a
+  --constant C_signal_080ct                         : Integer   :=   3;
+  --constant C_signal_050ct                         : Integer   :=   2;
+    
+  --constant C_signal_100ct                         : Integer   :=   9;
+  --constant C_signal_080ct                         : Integer   :=   7;
+  --constant C_signal_050ct                         : Integer   :=   5;
+    
+  --constant C_signal_100ct                         : Integer   :=  10;
+  --constant C_signal_080ct                         : Integer   :=   8;
+  --constant C_signal_050ct                         : Integer   :=   5;
+    
+  --constant C_signal_100ct                         : Integer   :=  12;
+  --constant C_signal_080ct                         : Integer   :=  10;
+  --constant C_signal_050ct                         : Integer   :=   6;
+    
+  --constant C_signal_100ct                         : Integer   :=  15;
+  --constant C_signal_080ct                         : Integer   :=  12;
+  --constant C_signal_050ct                         : Integer   :=   8;
+    
+    constant C_signal_100ct                         : Integer   := 200;
+    constant C_signal_080ct                         : Integer   := 160;
+    constant C_signal_050ct                         : Integer   := 100;
+    
+    
+    type PostMemType                                is array ((C_postmemSim_depth - 1) downto 0) of Integer; 
+    variable postmemSim                             : PostMemType;
+    
+    variable row                                    : Integer;
+    variable sigPos                                 : Integer;
+    variable tb_post_fft_rx09_mem_b_dout_d0_Int     : Integer;
+    variable getAddrIn                              : Integer;
+    variable getAddrIn_d1                           : Integer;
+    variable getAddrPage                            : Integer;
+    variable readAddr                               : Integer;
+    
+    variable uni_real                               : Real      := 0.0;
+    variable uni_seed_1                             : Positive  := 1;
+    variable uni_seed_2                             : Positive  := 1;
+    variable uni_rand                               : Integer   := 0;
   begin
     -- Position address pointer just before change of full 1024 frame
   --post_fft_rx09_mem_b_dout_Int    := 5;
@@ -285,7 +322,7 @@ begin
     getAddrPage     := C_postmem_pages - 1;
     readAddr        := 0;
     
-    -- Fill message: '1' = (n-1) + 17 / '0' = (n-1) - 11
+    -- Fill message
     row := C_startRow;
     
     -- PA ramp-up
@@ -293,142 +330,152 @@ begin
   --postmemSim(row * 1024 + ((16 + C_centerOfs + 0       ) mod 32))  := C_signal_080ct;  row := row + 2;
     
     -- Preamble
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r0) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r1) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r2) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r3) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r4) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r5) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r00) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r01) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r02) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r03) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r04) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r05) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r06) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r07) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r08) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r09) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r10) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r11) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r12) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r13) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r14) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r15) mod 32))  := C_signal_100ct;  row := row + 2;
     
-    -- Loop remain counter  (TODO)
-    postmemSim(row * 1024 + ((16 + C_centerOfs +  0      ) mod 32))  := C_signal_100ct;  row := row + 2; -- 0 remaining loops after this one
-    
-    -- Loop length counter  (TODO)
-    postmemSim(row * 1024 + ((16 + C_centerOfs +  1      ) mod 32))  := C_signal_100ct;  row := row + 2; -- 1 u32 words of data following
-    sigPos := (16 + C_centerOfs     ) mod 32;                                                       -- revert to C_centerOfs
+    -- Start at C_centerOfs
+    sigPos := (16 + C_centerOfs     ) mod 32;
     
     -- Message body
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1' = 0xac
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1' = 0xac
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
-    
-    
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0' = 0x53
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
-    
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
-    
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
-    
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
-    
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
-    
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
-    
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
-    
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
     
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1' = 0xe2
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0' = 0x53
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
     
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0' = 0x0f
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1' = 0xe2
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_0) mod 32;                                                       -- '0'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
-    sigPos := (32 + sigPos + C_bit_1) mod 32;                                                       -- '1'
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    
+    
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0' = 0x0f
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    
+    sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    
+    sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
+    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     -- End of message
     
     -- Footer
-    sigPos := (32 + sigPos + C_fin_0          ) mod 32;
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
-    
-    sigPos := (32 + sigPos - C_fin_0 + C_fin_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
-    
-    sigPos := (32 + sigPos - C_fin_1 + C_fin_2) mod 32;
-    postmemSim(row * 1024       +  sigPos)              := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_0) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_1) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_2) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_3) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_4) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_5) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_6) mod 32))  := C_signal_100ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_7) mod 32))  := C_signal_100ct;  row := row + 2;
     
     -- PA ramp-down
-    sigPos := (32 + sigPos - C_fin_2          ) mod 32;
-    postmemSim(row * 1024       +  sigPos)              := C_signal_080ct;  row := row + 2;
-    postmemSim(row * 1024       +  sigPos)              := C_signal_050ct;  row := row + 2;
+  --postmemSim(row * 1024 + ((16 + C_centerOfs + 0      ) mod 32))  := C_signal_080ct;  row := row + 2;
+  --postmemSim(row * 1024 + ((16 + C_centerOfs + 0      ) mod 32))  := C_signal_050ct;  row := row + 2;
     
-        
+    
     -- Add 'noise' floor
     for ii in 0 to (C_postmemSim_depth - 1) loop
-        if (postmemSim(ii) <  (ii mod 12) + 1) then
-            postmemSim(ii) := (ii mod 12) + 1;                                                      -- Noise overwrites Signal when strength of signal is below of noise level (ADC voltage)
-        end if;
+        uniform(uni_seed_1, uni_seed_2, uni_real);
+        uni_rand := 1 + Integer(floor(uni_real * 9.0));
+        
+        postmemSim(ii) := postmemSim(ii) + uni_rand;
+        
+        --if (postmemSim(ii) < uni_rand) then
+        --    postmemSim(ii) := uni_rand;                                                             -- Noise overwrites Signal when strength of signal is below of noise level (ADC voltage)
+        --end if;
     end loop;
     
     
