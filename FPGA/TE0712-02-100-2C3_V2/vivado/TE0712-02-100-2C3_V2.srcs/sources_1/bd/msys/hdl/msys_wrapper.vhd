@@ -381,10 +381,10 @@ architecture STRUCTURE of msys_wrapper is
     pushdata_rx09_byteData                          : out STD_LOGIC_VECTOR( 7 downto 0)
   );
   end component UFBmod_Decoder_wrapper;
-  component UFBmod_Encoder is
+  component UFBmod_Encoder_wrapper is
   port (
-    reset                                           : in  STD_LOGIC;
-    clk                                             : in  STD_LOGIC;
+    reset_100MHz                                    : in  STD_LOGIC;
+    clk_100MHz                                      : in  STD_LOGIC;
     decoder_rx09_sql_open                           : in  STD_LOGIC;
     decoder_rx09_active                             : in  STD_LOGIC;
     encoder_pull_FIFO_dump                          : in  STD_LOGIC;
@@ -395,7 +395,7 @@ architecture STRUCTURE of msys_wrapper is
     dds_tx09_inc                                    : out STD_LOGIC_VECTOR(25 downto 0);
     dds_tx09_ptt                                    : out STD_LOGIC
   );
-  end component UFBmod_Encoder;
+  end component UFBmod_Encoder_wrapper;
   component SCOPE_FSM is
   Port (
     reset                       : in  STD_LOGIC;
@@ -693,10 +693,10 @@ UFBmod_Decoder_bd: component UFBmod_Decoder_wrapper
       pushdata_rx09_en              => mw_pushdata_rx09_en,
       pushdata_rx09_byteData        => mw_pushdata_rx09_byteData
     );
-UFBmod_Encoder_i: component UFBmod_Encoder
+UFBmod_Encoder_bd: component UFBmod_Encoder_wrapper
     port map (
-      reset                         => mw_mig_7series_0_ui_clk_sync_rst,
-      clk                           => mw_microblaze_0_Clk_100MHz,
+      reset_100MHz                  => mw_mig_7series_0_ui_clk_sync_rst,
+      clk_100MHz                    => mw_microblaze_0_Clk_100MHz,
       decoder_rx09_sql_open         => mw_decoder_rx09_ch00_sql_open,
       decoder_rx09_active           => mw_decoder_rx09_ch00_active,
       encoder_pull_FIFO_dump        => mw_encoder_pull_FIFO_dump,

@@ -47,13 +47,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="440"/>
-    <Option Name="WTModelSimExportSim" Val="439"/>
-    <Option Name="WTQuestaExportSim" Val="438"/>
-    <Option Name="WTIesExportSim" Val="438"/>
-    <Option Name="WTVcsExportSim" Val="438"/>
-    <Option Name="WTRivieraExportSim" Val="438"/>
-    <Option Name="WTActivehdlExportSim" Val="437"/>
+    <Option Name="WTXSimExportSim" Val="441"/>
+    <Option Name="WTModelSimExportSim" Val="440"/>
+    <Option Name="WTQuestaExportSim" Val="439"/>
+    <Option Name="WTIesExportSim" Val="439"/>
+    <Option Name="WTVcsExportSim" Val="439"/>
+    <Option Name="WTRivieraExportSim" Val="439"/>
+    <Option Name="WTActivehdlExportSim" Val="438"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -69,6 +69,12 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sources_1/new/UFBmod_tx09_Encoder_FSM.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/new/Decoder_rx09_to_FIFO_FSM.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -88,6 +94,13 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/msys/msys.bd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/bd/UFBmod_Encoder/UFBmod_Encoder.bd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -125,7 +138,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/UFBmod_Encoder.vhd">
+      <File Path="$PSRCDIR/sources_1/bd/UFBmod_Encoder/hdl/UFBmod_Encoder_wrapper.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -196,20 +209,6 @@
       <File Path="$PSRCDIR/sources_1/new/window_hann_1024_16bit_unsigned.coe">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/bd/msys/ip/msys_mig_7series_0_0/mig_a.prj">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="ScopedToCell" Val="msys_mig_7series_0_0"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/bd/UFBmod_Encoder/UFBmod_Encoder.bd">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>

@@ -1,12 +1,274 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x0",
+      "boundary_crc": "0xEF9B4DA1DCCACC63",
+      "device": "xc7a100tfgg484-2",
       "name": "UFBmod_Encoder",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
-      "synth_flow_mode": "Hierarchical",
-      "tool_version": "2020.1.1"
+      "synth_flow_mode": "Singular",
+      "tool_version": "2020.1.1",
+      "validated": "true"
     },
-    "design_tree": {}
+    "design_tree": {
+      "UFBmod_tx09_Encoder_0": ""
+    },
+    "ports": {
+      "clk_100MHz": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "reset_100MHz",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "UFBmod_Encoder_clk_100MHz",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
+          }
+        }
+      },
+      "reset_100MHz": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "decoder_rx09_sql_open": {
+        "direction": "I"
+      },
+      "decoder_rx09_active": {
+        "direction": "I"
+      },
+      "encoder_pull_FIFO_dump": {
+        "direction": "I"
+      },
+      "encoder_pull_do_start": {
+        "direction": "I"
+      },
+      "encoder_pull_data_len": {
+        "type": "data",
+        "direction": "I",
+        "left": "6",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "pulldata_tx09_byteData": {
+        "type": "data",
+        "direction": "I",
+        "left": "7",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "pulldata_tx09_en": {
+        "direction": "O"
+      },
+      "dds_tx09_ptt": {
+        "direction": "O"
+      },
+      "dds_tx09_inc": {
+        "type": "data",
+        "direction": "O",
+        "left": "25",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      }
+    },
+    "components": {
+      "UFBmod_tx09_Encoder_0": {
+        "vlnv": "xilinx.com:module_ref:UFBmod_tx09_Encoder_FSM:1.0",
+        "xci_name": "UFBmod_Encoder_UFBmod_tx09_Encoder_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "UFBmod_tx09_Encoder_FSM",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "reset": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "user_prop"
+              }
+            }
+          },
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "UFBmod_Encoder_clk_100MHz",
+                "value_src": "default_prop"
+              },
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "user_prop"
+              }
+            }
+          },
+          "decoder_rx09_sql_open": {
+            "direction": "I"
+          },
+          "decoder_rx09_active": {
+            "direction": "I"
+          },
+          "encoder_pull_FIFO_dump": {
+            "direction": "I"
+          },
+          "encoder_pull_do_start": {
+            "direction": "I"
+          },
+          "encoder_pull_data_len": {
+            "direction": "I",
+            "left": "6",
+            "right": "0",
+            "parameters": {
+              "LAYERED_METADATA": {
+                "value": "undef",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "pulldata_tx09_en": {
+            "direction": "O"
+          },
+          "pulldata_tx09_byteData": {
+            "direction": "I",
+            "left": "7",
+            "right": "0",
+            "parameters": {
+              "LAYERED_METADATA": {
+                "value": "undef",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "dds_tx09_inc": {
+            "direction": "O",
+            "left": "25",
+            "right": "0",
+            "parameters": {
+              "LAYERED_METADATA": {
+                "value": "",
+                "value_src": "weak"
+              }
+            }
+          },
+          "dds_tx09_ptt": {
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "nets": {
+      "clk_100MHz_1": {
+        "ports": [
+          "clk_100MHz",
+          "UFBmod_tx09_Encoder_0/clk"
+        ]
+      },
+      "reset_100MHz_1": {
+        "ports": [
+          "reset_100MHz",
+          "UFBmod_tx09_Encoder_0/reset"
+        ]
+      },
+      "decoder_rx09_sql_open_1": {
+        "ports": [
+          "decoder_rx09_sql_open",
+          "UFBmod_tx09_Encoder_0/decoder_rx09_sql_open"
+        ]
+      },
+      "decoder_rx09_active_1": {
+        "ports": [
+          "decoder_rx09_active",
+          "UFBmod_tx09_Encoder_0/decoder_rx09_active"
+        ]
+      },
+      "encoder_pull_FIFO_dump_1": {
+        "ports": [
+          "encoder_pull_FIFO_dump",
+          "UFBmod_tx09_Encoder_0/encoder_pull_FIFO_dump"
+        ]
+      },
+      "encoder_pull_do_start_1": {
+        "ports": [
+          "encoder_pull_do_start",
+          "UFBmod_tx09_Encoder_0/encoder_pull_do_start"
+        ]
+      },
+      "encoder_pull_data_len_1": {
+        "ports": [
+          "encoder_pull_data_len",
+          "UFBmod_tx09_Encoder_0/encoder_pull_data_len"
+        ]
+      },
+      "pulldata_tx09_byteData_1": {
+        "ports": [
+          "pulldata_tx09_byteData",
+          "UFBmod_tx09_Encoder_0/pulldata_tx09_byteData"
+        ]
+      },
+      "UFBmod_tx09_Encoder_0_pulldata_tx09_en": {
+        "ports": [
+          "UFBmod_tx09_Encoder_0/pulldata_tx09_en",
+          "pulldata_tx09_en"
+        ]
+      },
+      "UFBmod_tx09_Encoder_0_dds_tx09_ptt": {
+        "ports": [
+          "UFBmod_tx09_Encoder_0/dds_tx09_ptt",
+          "dds_tx09_ptt"
+        ]
+      },
+      "UFBmod_tx09_Encoder_0_dds_tx09_inc": {
+        "ports": [
+          "UFBmod_tx09_Encoder_0/dds_tx09_inc",
+          "dds_tx09_inc"
+        ]
+      }
+    }
   }
 }

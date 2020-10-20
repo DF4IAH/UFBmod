@@ -35,7 +35,7 @@ use IEEE.NUMERIC_STD.ALL;
 --use IEEE.std_logic_signed.all;
 
 
-entity UFBmod_Encoder is
+entity UFBmod_tx09_Encoder_FSM is
   Port (
     -- All Clock Domain AXI 100 MHz
     reset                                           : in  STD_LOGIC;
@@ -54,9 +54,9 @@ entity UFBmod_Encoder is
     dds_tx09_inc                                    : out STD_LOGIC_VECTOR(25 downto 0);
     dds_tx09_ptt                                    : out STD_LOGIC
   );
-end UFBmod_Encoder;
+end UFBmod_tx09_Encoder_FSM;
 
-architecture Behavioral of UFBmod_Encoder is
+architecture Behavioral of UFBmod_tx09_Encoder_FSM is
   signal encoder_tx09_in_vec                        : STD_LOGIC_VECTOR(1023 downto 0);
   signal encoder_tx09_in_len                        : STD_LOGIC_VECTOR(10 downto 0);
   
