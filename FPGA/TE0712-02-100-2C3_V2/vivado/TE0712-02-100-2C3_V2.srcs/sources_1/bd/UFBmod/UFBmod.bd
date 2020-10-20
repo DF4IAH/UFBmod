@@ -861,16 +861,6 @@
             "left": "31",
             "right": "0"
           },
-          "decoder_rx09_ch00_remainVal": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "decoder_rx09_ch00_u32Count": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
           "dds_tx09_ptt": {
             "direction": "I"
           },
@@ -1098,16 +1088,6 @@
                 "left": "31",
                 "right": "0"
               },
-              "decoder_rx09_ch00_remainVal": {
-                "direction": "O",
-                "left": "7",
-                "right": "0"
-              },
-              "decoder_rx09_ch00_u32Count": {
-                "direction": "O",
-                "left": "7",
-                "right": "0"
-              },
               "decoder_rx09_ch00_FIFO_handshake": {
                 "direction": "O"
               },
@@ -1178,18 +1158,6 @@
             "ports": [
               "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_SoM_frameCtr",
               "decoder_rx09_ch00_SoM_frameCtr"
-            ]
-          },
-          "decoder_rx09_ch00_remainVal": {
-            "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_remainVal",
-              "decoder_rx09_ch00_remainVal"
-            ]
-          },
-          "decoder_rx09_ch00_u32Count": {
-            "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_u32Count",
-              "decoder_rx09_ch00_u32Count"
             ]
           },
           "decoder_rx09_ch00_sql_open": {
@@ -1311,14 +1279,9 @@
             "left": "31",
             "right": "0"
           },
-          "decoder_rx09_ch00_remainVal": {
+          "decoder_rx09_ch00_noise": {
             "direction": "I",
-            "left": "7",
-            "right": "0"
-          },
-          "decoder_rx09_ch00_u32Count": {
-            "direction": "I",
-            "left": "7",
+            "left": "18",
             "right": "0"
           }
         },
@@ -1427,19 +1390,20 @@
                 "left": "18",
                 "right": "0"
               },
+              "decoder_rx09_ch00_noise": {
+                "direction": "I",
+                "left": "18",
+                "right": "0",
+                "parameters": {
+                  "LAYERED_METADATA": {
+                    "value": "xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency data_bitwidth format long minimum {} maximum {}} value 19} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} DATA_WIDTH 19}",
+                    "value_src": "ip_prop"
+                  }
+                }
+              },
               "decoder_rx09_ch00_SoM_frameCtr": {
                 "direction": "I",
                 "left": "31",
-                "right": "0"
-              },
-              "decoder_rx09_ch00_remainVal": {
-                "direction": "I",
-                "left": "7",
-                "right": "0"
-              },
-              "decoder_rx09_ch00_u32Count": {
-                "direction": "I",
-                "left": "7",
                 "right": "0"
               },
               "decoder_rx09_ch00_FIFO_handshake": {
@@ -1448,7 +1412,25 @@
               "decoder_rx09_ch00_FIFO_accepted": {
                 "direction": "O"
               },
-              "decoder_rx09_out_len": {
+              "decoder_rx09_lenCtr_sclr": {
+                "direction": "O",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "",
+                    "value_src": "weak"
+                  }
+                }
+              },
+              "decoder_rx09_lenCtr_ce": {
+                "direction": "O",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "",
+                    "value_src": "weak"
+                  }
+                }
+              },
+              "decoder_rx09_lenCtr_out": {
                 "direction": "I",
                 "left": "9",
                 "right": "0",
@@ -1488,7 +1470,6 @@
           "reset_100MHz": {
             "ports": [
               "reset_100MHz",
-              "data_rx09_c_counter_binary_0/SCLR",
               "data_rx09_fifo_generator_0/rst",
               "Decoder_rx09_to_FIFO_0/reset"
             ]
@@ -1511,18 +1492,6 @@
               "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_SoM_frameCtr"
             ]
           },
-          "decoder_rx09_ch00_remainVal_1": {
-            "ports": [
-              "decoder_rx09_ch00_remainVal",
-              "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_remainVal"
-            ]
-          },
-          "decoder_rx09_ch00_u32Count_1": {
-            "ports": [
-              "decoder_rx09_ch00_u32Count",
-              "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_u32Count"
-            ]
-          },
           "decoder_rx09_ch00_FIFO_handshake_1": {
             "ports": [
               "decoder_rx09_ch00_FIFO_handshake",
@@ -1532,7 +1501,7 @@
           "data_rx09_c_counter_binary_0_Q": {
             "ports": [
               "data_rx09_c_counter_binary_0/Q",
-              "Decoder_rx09_to_FIFO_0/decoder_rx09_out_len"
+              "Decoder_rx09_to_FIFO_0/decoder_rx09_lenCtr_out"
             ]
           },
           "Decoder_rx09_to_FIFO_0_decoder_rx09_ch00_FIFO_accepted": {
@@ -1551,6 +1520,24 @@
             "ports": [
               "Decoder_rx09_to_FIFO_0/pushdata_rx09_byteData",
               "pushdata_rx09_byteData"
+            ]
+          },
+          "Decoder_rx09_to_FIFO_0_decoder_rx09_lenCtr_ce": {
+            "ports": [
+              "Decoder_rx09_to_FIFO_0/decoder_rx09_lenCtr_ce",
+              "data_rx09_c_counter_binary_0/CE"
+            ]
+          },
+          "Decoder_rx09_to_FIFO_0_decoder_rx09_lenCtr_sclr": {
+            "ports": [
+              "Decoder_rx09_to_FIFO_0/decoder_rx09_lenCtr_sclr",
+              "data_rx09_c_counter_binary_0/SCLR"
+            ]
+          },
+          "decoder_rx09_ch00_noise_1": {
+            "ports": [
+              "decoder_rx09_ch00_noise",
+              "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_noise"
             ]
           }
         }
@@ -1665,18 +1652,6 @@
           "Decoder_rx09_to_FIFO/decoder_rx09_ch00_SoM_frameCtr"
         ]
       },
-      "decoder_rx09_ch00_remainVal": {
-        "ports": [
-          "UFBmod_rx09_Decoders/decoder_rx09_ch00_remainVal",
-          "Decoder_rx09_to_FIFO/decoder_rx09_ch00_remainVal"
-        ]
-      },
-      "decoder_rx09_ch00_u32Count": {
-        "ports": [
-          "UFBmod_rx09_Decoders/decoder_rx09_ch00_u32Count",
-          "Decoder_rx09_to_FIFO/decoder_rx09_ch00_u32Count"
-        ]
-      },
       "dds_tx09_ptt_1": {
         "ports": [
           "dds_tx09_ptt",
@@ -1698,7 +1673,8 @@
       "FFT_rx09_to_Decoder_decoder_rx09_ch00_noise": {
         "ports": [
           "FFT_rx09_to_Decoder/decoder_rx09_ch00_noise",
-          "decoder_rx09_ch00_noise"
+          "decoder_rx09_ch00_noise",
+          "Decoder_rx09_to_FIFO/decoder_rx09_ch00_noise"
         ]
       }
     }
