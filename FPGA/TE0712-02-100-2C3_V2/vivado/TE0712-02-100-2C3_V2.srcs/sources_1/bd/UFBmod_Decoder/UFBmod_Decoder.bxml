@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root MajorVersion="0" MinorVersion="39">
+  <CompositeFile CompositeFileTopName="UFBmod_Decoder" CanBeSetAsTop="false" CanDisplayChildGraph="true">
+    <Description>Composite Fileset</Description>
+    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1603233134"/>
+    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1603233134"/>
+    <Generation Name="SIMULATION" State="RESET" Timestamp="1603233134"/>
+    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1603233134"/>
+    <FileCollection Name="SOURCES" Type="SOURCES">
+      <File Name="ip\UFBmod_Decoder_data_rx09_c_counter_binary_0_0\UFBmod_Decoder_data_rx09_c_counter_binary_0_0.xci" Type="IP">
+        <Instance HierarchyPath="Decoder_rx09_to_FIFO/data_rx09_c_counter_binary_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_data_rx09_fifo_generator_0_0\UFBmod_Decoder_data_rx09_fifo_generator_0_0.xci" Type="IP">
+        <Instance HierarchyPath="Decoder_rx09_to_FIFO/data_rx09_fifo_generator_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_Decoder_rx09_to_FIFO_0_0\UFBmod_Decoder_Decoder_rx09_to_FIFO_0_0.xci" Type="IP">
+        <Instance HierarchyPath="Decoder_rx09_to_FIFO/Decoder_rx09_to_FIFO_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_signal_bins_rx09_ch00_blk_mem_gen_2clks_0\UFBmod_Decoder_signal_bins_rx09_ch00_blk_mem_gen_2clks_0.xci" Type="IP">
+        <Instance HierarchyPath="FFT_rx09_to_Decoder/signal_bins_rx09_ch00_blk_mem_gen_2clks"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_xlconstant_val1_len1_0\UFBmod_Decoder_xlconstant_val1_len1_0.xci" Type="IP">
+        <Instance HierarchyPath="FFT_rx09_to_Decoder/xlconstant_val1_len1"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_rowsum_rx09_ch00_c_accum_1clk_0\UFBmod_Decoder_rowsum_rx09_ch00_c_accum_1clk_0.xci" Type="IP">
+        <Instance HierarchyPath="FFT_rx09_to_Decoder/rowsum_rx09_ch00_c_accum_1clk"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_signal_correction_rx09_ch00_mult_gen_4clks_0\UFBmod_Decoder_signal_correction_rx09_ch00_mult_gen_4clks_0.xci" Type="IP">
+        <Instance HierarchyPath="FFT_rx09_to_Decoder/signal_correction_rx09_ch00_mult_gen_4clks"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0\UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0.xci" Type="IP">
+        <Instance HierarchyPath="FFT_rx09_to_Decoder/averaging_factor_rx09_ch00_div_gen_35clks"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_xlconstant_val256x32_len16_0\UFBmod_Decoder_xlconstant_val256x32_len16_0.xci" Type="IP">
+        <Instance HierarchyPath="FFT_rx09_to_Decoder/xlconstant_val256x32_len16"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_xlconstant_val0_len1_0\UFBmod_Decoder_xlconstant_val0_len1_0.xci" Type="IP">
+        <Instance HierarchyPath="FFT_rx09_to_Decoder/xlconstant_val0_len1"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_xlconstant_val0_len16_0\UFBmod_Decoder_xlconstant_val0_len16_0.xci" Type="IP">
+        <Instance HierarchyPath="FFT_rx09_to_Decoder/xlconstant_val0_len16"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_noise_rx09_ch00_xlslice_18to0_0\UFBmod_Decoder_noise_rx09_ch00_xlslice_18to0_0.xci" Type="IP">
+        <Instance HierarchyPath="FFT_rx09_to_Decoder/noise_rx09_ch00_xlslice_18to0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_noise_rx09_ch00_c_shift_ram_0_0\UFBmod_Decoder_noise_rx09_ch00_c_shift_ram_0_0.xci" Type="IP">
+        <Instance HierarchyPath="FFT_rx09_to_Decoder/noise_rx09_ch00_c_shift_ram_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_FFT_rx09_to_Decoder_FSM_0\UFBmod_Decoder_FFT_rx09_to_Decoder_FSM_0.xci" Type="IP">
+        <Instance HierarchyPath="FFT_rx09_to_Decoder/FFT_rx09_to_Decoder_FSM"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_decoder_artemis_blk_mem_gen_2clks_0\UFBmod_Decoder_decoder_artemis_blk_mem_gen_2clks_0.xci" Type="IP">
+        <Instance HierarchyPath="UFBmod_rx09_Decoders/decoder_artemis_blk_mem_gen_2clks"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_decoder_artemis_mult_gen_4clks_0\UFBmod_Decoder_decoder_artemis_mult_gen_4clks_0.xci" Type="IP">
+        <Instance HierarchyPath="UFBmod_rx09_Decoders/decoder_artemis_mult_gen_4clks"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_UFBmod_rx09_Decoder_0_0\UFBmod_Decoder_UFBmod_rx09_Decoder_0_0.xci" Type="IP">
+        <Instance HierarchyPath="UFBmod_rx09_Decoders/UFBmod_rx09_Decoder_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+    </FileCollection>
+  </CompositeFile>
+</Root>

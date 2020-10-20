@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Sun Oct 18 18:55:23 2020
+--Date        : Tue Oct 20 23:43:44 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -362,7 +362,7 @@ architecture STRUCTURE of msys_wrapper is
     EUI48_abort             : out STD_LOGIC_VECTOR ( 7 downto 0)
   );
   end component EUI48_FSM;
-  component UFBmod_wrapper is
+  component UFBmod_Decoder_wrapper is
   port (
     reset_100MHz                                    : in  STD_LOGIC;
     clk_100MHz                                      : in  STD_LOGIC;
@@ -371,7 +371,7 @@ architecture STRUCTURE of msys_wrapper is
     post_fft_rx09_mem_a_addr                        : in  STD_LOGIC_VECTOR(41 downto 0);
     post_fft_rx09_mem_b_addr                        : out STD_LOGIC_VECTOR( 9 downto 0);
     post_fft_rx09_mem_b_dout                        : in  STD_LOGIC_VECTOR(15 downto 0);
-    decoder_rx09_ch00_squelch_lvl                   : in  STD_LOGIC_VECTOR(18 downto 0);
+    decoder_rx09_ch00_squelch_lvl                   : in  STD_LOGIC_VECTOR(15 downto 0);
     decoder_rx09_ch00_center_pos                    : out STD_LOGIC_VECTOR( 7 downto 0);
     decoder_rx09_ch00_strength                      : out STD_LOGIC_VECTOR(18 downto 0);
     decoder_rx09_ch00_noise                         : out STD_LOGIC_VECTOR(18 downto 0);
@@ -380,7 +380,7 @@ architecture STRUCTURE of msys_wrapper is
     pushdata_rx09_en                                : out STD_LOGIC;
     pushdata_rx09_byteData                          : out STD_LOGIC_VECTOR( 7 downto 0)
   );
-  end component UFBmod_wrapper;
+  end component UFBmod_Decoder_wrapper;
   component UFBmod_Encoder is
   port (
     reset                                           : in  STD_LOGIC;
@@ -675,7 +675,7 @@ EUI48_FSM_i: component EUI48_FSM
       EUI48_state           => mw_EUI48_state,
       EUI48_abort           => mw_EUI48_abort
     );
-UFBmod_bd: component UFBmod_wrapper
+UFBmod_Decoder_bd: component UFBmod_Decoder_wrapper
     port map (
       reset_100MHz                  => mw_mig_7series_0_ui_clk_sync_rst,
       clk_100MHz                    => mw_microblaze_0_Clk_100MHz,

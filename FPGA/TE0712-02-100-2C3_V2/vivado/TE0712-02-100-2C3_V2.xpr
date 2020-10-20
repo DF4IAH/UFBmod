@@ -47,13 +47,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="438"/>
-    <Option Name="WTModelSimExportSim" Val="437"/>
-    <Option Name="WTQuestaExportSim" Val="436"/>
-    <Option Name="WTIesExportSim" Val="436"/>
-    <Option Name="WTVcsExportSim" Val="436"/>
-    <Option Name="WTRivieraExportSim" Val="436"/>
-    <Option Name="WTActivehdlExportSim" Val="435"/>
+    <Option Name="WTXSimExportSim" Val="440"/>
+    <Option Name="WTModelSimExportSim" Val="439"/>
+    <Option Name="WTQuestaExportSim" Val="438"/>
+    <Option Name="WTIesExportSim" Val="438"/>
+    <Option Name="WTVcsExportSim" Val="438"/>
+    <Option Name="WTRivieraExportSim" Val="438"/>
+    <Option Name="WTActivehdlExportSim" Val="437"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -69,6 +69,12 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sources_1/new/Decoder_rx09_to_FIFO_FSM.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/new/FFT_rx09_to_Decoder_FSM.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -81,12 +87,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/Decoder_rx09_to_FIFO_FSM.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/bd/msys/msys.bd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -94,7 +94,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/bd/UFBmod/UFBmod.bd">
+      <File Path="$PSRCDIR/sources_1/bd/UFBmod_Decoder/UFBmod_Decoder.bd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -119,13 +119,13 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/UFBmod_Encoder.vhd">
+      <File Path="$PSRCDIR/sources_1/bd/UFBmod_Decoder/hdl/UFBmod_Decoder_wrapper.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/bd/UFBmod/hdl/UFBmod_wrapper.vhd">
+      <File Path="$PSRCDIR/sources_1/new/UFBmod_Encoder.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>

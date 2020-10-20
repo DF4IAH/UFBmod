@@ -1,5 +1,5 @@
---- msys_wrapper.vhd.orig.txt	2020-10-18 18:55:23.322886200 +0200
-+++ msys_wrapper.vhd	2020-10-18 19:07:04.245732700 +0200
+--- msys_wrapper.vhd.orig.txt	2020-10-20 23:43:44.874301900 +0200
++++ msys_wrapper.vhd	2020-10-21 00:07:16.368263300 +0200
 @@ -16,4 +16,6 @@
      BOARD_IIC_scl_io : inout STD_LOGIC;
      BOARD_IIC_sda_io : inout STD_LOGIC;
@@ -203,7 +203,7 @@
 +    post_fft_rx09_mem_a_addr                        : in  STD_LOGIC_VECTOR(41 downto 0);
 +    post_fft_rx09_mem_b_addr                        : out STD_LOGIC_VECTOR( 9 downto 0);
 +    post_fft_rx09_mem_b_dout                        : in  STD_LOGIC_VECTOR(15 downto 0);
-+    decoder_rx09_ch00_squelch_lvl                   : in  STD_LOGIC_VECTOR(18 downto 0);
++    decoder_rx09_ch00_squelch_lvl                   : in  STD_LOGIC_VECTOR(15 downto 0);
 +    decoder_rx09_ch00_center_pos                    : out STD_LOGIC_VECTOR( 7 downto 0);
 +    decoder_rx09_ch00_strength                      : out STD_LOGIC_VECTOR(18 downto 0);
 +    decoder_rx09_ch00_noise                         : out STD_LOGIC_VECTOR(18 downto 0);
