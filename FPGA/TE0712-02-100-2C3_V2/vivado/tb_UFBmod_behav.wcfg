@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="823765fs"></ZoomStartTime>
-      <ZoomEndTime time="1035247fs"></ZoomEndTime>
-      <Cursor1Time time="1000000fs"></Cursor1Time>
+      <ZoomStartTime time="239758300fs"></ZoomStartTime>
+      <ZoomEndTime time="239847351fs"></ZoomEndTime>
+      <Cursor1Time time="239830000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="552"></NameColumnWidth>
-      <ValueColumnWidth column_width="236"></ValueColumnWidth>
+      <NameColumnWidth column_width="867"></NameColumnWidth>
+      <ValueColumnWidth column_width="339"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="12" />
+   <WVObjectSize size="25" />
    <wave_markers>
       <marker time="2183500000" label="" />
    </wave_markers>
@@ -30,67 +30,322 @@
    <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/reset_100MHz" type="logic">
       <obj_property name="ElementShortName">reset_100MHz</obj_property>
       <obj_property name="ObjectShortName">reset_100MHz</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider50">
       <obj_property name="label">FFT_rx09_to_Decoder</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject fp_name="group53" type="group">
-      <obj_property name="label">FSM</obj_property>
+   <wvobject fp_name="group139" type="group">
+      <obj_property name="label">BlockMem_Post-FFT_A</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-   </wvobject>
-   <wvobject fp_name="group687" type="group">
-      <obj_property name="label">BlockMem_signal_bins</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/post_fft_rx09_mem_a_EoT_0" type="logic">
+         <obj_property name="ElementShortName">post_fft_rx09_mem_a_EoT_0</obj_property>
+         <obj_property name="ObjectShortName">post_fft_rx09_mem_a_EoT_0</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/post_fft_rx09_mem_a_addr_0" type="array">
+         <obj_property name="ElementShortName">post_fft_rx09_mem_a_addr_0[41:0]</obj_property>
+         <obj_property name="ObjectShortName">post_fft_rx09_mem_a_addr_0[41:0]</obj_property>
+         <obj_property name="CustomSignalColor">#DCDCDC</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="group742" type="group">
       <obj_property name="label">Accu_RowSum</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/rowsum_rx09_ch00_accum_ce" type="logic">
+         <obj_property name="ElementShortName">rowsum_rx09_ch00_accum_ce</obj_property>
+         <obj_property name="ObjectShortName">rowsum_rx09_ch00_accum_ce</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/rowsum_rx09_ch00_accum_sclr" type="logic">
+         <obj_property name="ElementShortName">rowsum_rx09_ch00_accum_sclr</obj_property>
+         <obj_property name="ObjectShortName">rowsum_rx09_ch00_accum_sclr</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/noise_rx09_ch00_c_shift_ram_0_Q" type="array">
+         <obj_property name="ElementShortName">noise_rx09_ch00_c_shift_ram_0_Q[18:0]</obj_property>
+         <obj_property name="ObjectShortName">noise_rx09_ch00_c_shift_ram_0_Q[18:0]</obj_property>
+         <obj_property name="CustomSignalColor">#0000A0</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/noise_rx09_ch00_xlslice_18to0_Dout" type="array">
+         <obj_property name="ElementShortName">noise_rx09_ch00_xlslice_18to0_Dout[18:0]</obj_property>
+         <obj_property name="ObjectShortName">noise_rx09_ch00_xlslice_18to0_Dout[18:0]</obj_property>
+         <obj_property name="CustomSignalColor">#0000A0</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="group733" type="group">
       <obj_property name="label">Averaging factor Divider</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/averaging_factor_divider_aclken" type="logic">
+         <obj_property name="ElementShortName">averaging_factor_divider_aclken</obj_property>
+         <obj_property name="ObjectShortName">averaging_factor_divider_aclken</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/averaging_factor_div_dividend_tvalid" type="array">
+         <obj_property name="ElementShortName">averaging_factor_div_dividend_tvalid[0:0]</obj_property>
+         <obj_property name="ObjectShortName">averaging_factor_div_dividend_tvalid[0:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/averaging_factor_div_dividend_tdata" type="array">
+         <obj_property name="ElementShortName">averaging_factor_div_dividend_tdata[15:0]</obj_property>
+         <obj_property name="ObjectShortName">averaging_factor_div_dividend_tdata[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/averaging_factor_div_divisor_tvalid" type="logic">
+         <obj_property name="ElementShortName">averaging_factor_div_divisor_tvalid</obj_property>
+         <obj_property name="ObjectShortName">averaging_factor_div_divisor_tvalid</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/averaging_factor_div_divisor_tdata" type="array">
+         <obj_property name="ElementShortName">averaging_factor_div_divisor_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">averaging_factor_div_divisor_tdata[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/averaging_factor_div_dout_tvalid" type="logic">
+         <obj_property name="ElementShortName">averaging_factor_div_dout_tvalid</obj_property>
+         <obj_property name="ObjectShortName">averaging_factor_div_dout_tvalid</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/averaging_factor_div_dout_tdata" type="array">
+         <obj_property name="ElementShortName">averaging_factor_div_dout_tdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">averaging_factor_div_dout_tdata[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="group46" type="group">
       <obj_property name="label">Signal Correction Multiplier</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/FFT_rx09_to_Decoder_FSM/signal_correction_rx09_ch00_mult_ce" type="logic">
+         <obj_property name="ElementShortName">signal_correction_rx09_ch00_mult_ce</obj_property>
+         <obj_property name="ObjectShortName">signal_correction_rx09_ch00_mult_ce</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/FFT_rx09_to_Decoder_FSM/signal_correction_rx09_ch00_mult_ina" type="array">
+         <obj_property name="ElementShortName">signal_correction_rx09_ch00_mult_ina[15:0]</obj_property>
+         <obj_property name="ObjectShortName">signal_correction_rx09_ch00_mult_ina[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/FFT_rx09_to_Decoder_FSM/signal_correction_rx09_ch00_mult_prod" type="array">
+         <obj_property name="ElementShortName">signal_correction_rx09_ch00_mult_prod[15:0]</obj_property>
+         <obj_property name="ObjectShortName">signal_correction_rx09_ch00_mult_prod[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group687" type="group">
+      <obj_property name="label">BlockMem_signal_bins</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/FFT_rx09_to_Decoder_FSM/signal_bins_rx09_ch00_mem_addra" type="array">
+         <obj_property name="ElementShortName">signal_bins_rx09_ch00_mem_addra[10:0]</obj_property>
+         <obj_property name="ObjectShortName">signal_bins_rx09_ch00_mem_addra[10:0]</obj_property>
+         <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/FFT_rx09_to_Decoder_FSM/signal_bins_rx09_ch00_mem_wea" type="logic">
+         <obj_property name="ElementShortName">signal_bins_rx09_ch00_mem_wea</obj_property>
+         <obj_property name="ObjectShortName">signal_bins_rx09_ch00_mem_wea</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/FFT_rx09_to_Decoder_FSM/signal_bins_rx09_ch00_mem_dina" type="array">
+         <obj_property name="ElementShortName">signal_bins_rx09_ch00_mem_dina[15:0]</obj_property>
+         <obj_property name="ObjectShortName">signal_bins_rx09_ch00_mem_dina[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/FFT_rx09_to_Decoder_FSM/signal_bins_rx09_ch00_mem_douta" type="array">
+         <obj_property name="ElementShortName">signal_bins_rx09_ch00_mem_douta[15:0]</obj_property>
+         <obj_property name="ObjectShortName">signal_bins_rx09_ch00_mem_douta[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/signal_bins_rx09_ch00_blk_mem_gen_0_addrb" type="array">
+         <obj_property name="ElementShortName">signal_bins_rx09_ch00_blk_mem_gen_0_addrb[10:0]</obj_property>
+         <obj_property name="ObjectShortName">signal_bins_rx09_ch00_blk_mem_gen_0_addrb[10:0]</obj_property>
+         <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/FFT_rx09_to_Decoder/signal_bins_rx09_ch00_blk_mem_gen_0_doutb" type="array">
+         <obj_property name="ElementShortName">signal_bins_rx09_ch00_blk_mem_gen_0_doutb[15:0]</obj_property>
+         <obj_property name="ObjectShortName">signal_bins_rx09_ch00_blk_mem_gen_0_doutb[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/decoder_fft_frame_avail_ctr_0" type="array">
+      <obj_property name="ElementShortName">decoder_fft_frame_avail_ctr_0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">decoder_fft_frame_avail_ctr_0[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider677">
       <obj_property name="label">UFBmod_rx09_Decoders</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject fp_name="group678" type="group">
-      <obj_property name="label">FSM</obj_property>
+   <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/UFBmod_rx09_Decoders/dds_tx09_ptt" type="logic">
+      <obj_property name="ElementShortName">dds_tx09_ptt</obj_property>
+      <obj_property name="ObjectShortName">dds_tx09_ptt</obj_property>
+      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/decoder_rx09_ch00_squelch_lvl_1" type="array">
+      <obj_property name="ElementShortName">decoder_rx09_ch00_squelch_lvl_1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">decoder_rx09_ch00_squelch_lvl_1[15:0]</obj_property>
+      <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="group116" type="group">
+      <obj_property name="label">Post-FFT-Mem_B</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="group55" type="group">
-         <obj_property name="label">Signal Bins Block-Mem</obj_property>
-         <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/post_fft_rx09_ch00_mem_b_addr_0" type="array">
+         <obj_property name="ElementShortName">post_fft_rx09_ch00_mem_b_addr_0[9:0]</obj_property>
+         <obj_property name="ObjectShortName">post_fft_rx09_ch00_mem_b_addr_0[9:0]</obj_property>
+         <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject fp_name="group56" type="group">
-         <obj_property name="label">Artemis Multiplier</obj_property>
-         <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/post_fft_rx09_mem_b_dout_0" type="array">
+         <obj_property name="ElementShortName">post_fft_rx09_mem_b_dout_0[15:0]</obj_property>
+         <obj_property name="ObjectShortName">post_fft_rx09_mem_b_dout_0[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject fp_name="group57" type="group">
-         <obj_property name="label">Artemis Block-Mem</obj_property>
-         <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="group55" type="group">
+      <obj_property name="label">Signal Bins Block-Mem</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/signal_bins_rx09_ch00_blk_mem_gen_0_addrb_1" type="array">
+         <obj_property name="ElementShortName">signal_bins_rx09_ch00_blk_mem_gen_0_addrb_1[10:0]</obj_property>
+         <obj_property name="ObjectShortName">signal_bins_rx09_ch00_blk_mem_gen_0_addrb_1[10:0]</obj_property>
+         <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/signal_bins_rx09_ch00_blk_mem_gen_0_doutb_0" type="array">
+         <obj_property name="ElementShortName">signal_bins_rx09_ch00_blk_mem_gen_0_doutb_0[15:0]</obj_property>
+         <obj_property name="ObjectShortName">signal_bins_rx09_ch00_blk_mem_gen_0_doutb_0[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group56" type="group">
+      <obj_property name="label">Artemis Multiplier</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/UFBmod_rx09_Decoders/decoder_artemis_rx09_ch00_mult_ina" type="array">
+         <obj_property name="ElementShortName">decoder_artemis_rx09_ch00_mult_ina[15:0]</obj_property>
+         <obj_property name="ObjectShortName">decoder_artemis_rx09_ch00_mult_ina[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/UFBmod_rx09_Decoders/decoder_artemis_rx09_ch00_mult_inb" type="array">
+         <obj_property name="ElementShortName">decoder_artemis_rx09_ch00_mult_inb[31:0]</obj_property>
+         <obj_property name="ObjectShortName">decoder_artemis_rx09_ch00_mult_inb[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/UFBmod_rx09_Decoders/decoder_artemis_mult_gen_4clks_P" type="array">
+         <obj_property name="ElementShortName">decoder_artemis_mult_gen_4clks_P[31:0]</obj_property>
+         <obj_property name="ObjectShortName">decoder_artemis_mult_gen_4clks_P[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group57" type="group">
+      <obj_property name="label">Artemis Block-Mem</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/UFBmod_rx09_Decoders/decoder_artemis_rx09_ch00_mult_ce" type="logic">
+         <obj_property name="ElementShortName">decoder_artemis_rx09_ch00_mult_ce</obj_property>
+         <obj_property name="ObjectShortName">decoder_artemis_rx09_ch00_mult_ce</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/UFBmod_rx09_Decoders/decoder_artemis_rx09_ch00_mem_addra" type="array">
+         <obj_property name="ElementShortName">decoder_artemis_rx09_ch00_mem_addra[6:0]</obj_property>
+         <obj_property name="ObjectShortName">decoder_artemis_rx09_ch00_mem_addra[6:0]</obj_property>
+         <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/UFBmod_rx09_Decoders/decoder_artemis_rx09_ch00_mem_wea" type="logic">
+         <obj_property name="ElementShortName">decoder_artemis_rx09_ch00_mem_wea</obj_property>
+         <obj_property name="ObjectShortName">decoder_artemis_rx09_ch00_mem_wea</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/UFBmod_rx09_Decoders/decoder_artemis_rx09_ch00_mem_dina" type="array">
+         <obj_property name="ElementShortName">decoder_artemis_rx09_ch00_mem_dina[15:0]</obj_property>
+         <obj_property name="ObjectShortName">decoder_artemis_rx09_ch00_mem_dina[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/UFBmod_rx09_Decoders/decoder_artemis_blk_mem_gen_0_douta" type="array">
+         <obj_property name="ElementShortName">decoder_artemis_blk_mem_gen_0_douta[15:0]</obj_property>
+         <obj_property name="ObjectShortName">decoder_artemis_blk_mem_gen_0_douta[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/decoder_rx09_ch00_active_1" type="logic">
+      <obj_property name="ElementShortName">decoder_rx09_ch00_active_1</obj_property>
+      <obj_property name="ObjectShortName">decoder_rx09_ch00_active_1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/decoder_rx09_ch00_SoM_frameCtr_1" type="array">
+      <obj_property name="ElementShortName">decoder_rx09_ch00_SoM_frameCtr_1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">decoder_rx09_ch00_SoM_frameCtr_1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/decoder_rx09_ch00_center_pos_1" type="array">
+      <obj_property name="ElementShortName">decoder_rx09_ch00_center_pos_1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">decoder_rx09_ch00_center_pos_1[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/decoder_rx09_ch00_strength_1" type="array">
+      <obj_property name="ElementShortName">decoder_rx09_ch00_strength_1[18:0]</obj_property>
+      <obj_property name="ObjectShortName">decoder_rx09_ch00_strength_1[18:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/UFBmod_rx09_Decoders/decoder_rx09_ch00_FIFO_handshake" type="logic">
+      <obj_property name="ElementShortName">decoder_rx09_ch00_FIFO_handshake</obj_property>
+      <obj_property name="ObjectShortName">decoder_rx09_ch00_FIFO_handshake</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/UFBmod_rx09_Decoders/decoder_rx09_ch00_FIFO_accepted" type="logic">
+      <obj_property name="ElementShortName">decoder_rx09_ch00_FIFO_accepted</obj_property>
+      <obj_property name="ObjectShortName">decoder_rx09_ch00_FIFO_accepted</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider679">
       <obj_property name="label">Decoder_rx09_to_FIFO</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject fp_name="group680" type="group">
-      <obj_property name="label">FSM</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+   <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/pushdata_rx09_byteData_2" type="array">
+      <obj_property name="ElementShortName">pushdata_rx09_byteData_2[7:0]</obj_property>
+      <obj_property name="ObjectShortName">pushdata_rx09_byteData_2[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/pushdata_rx09_en_2" type="logic">
+      <obj_property name="ElementShortName">pushdata_rx09_en_2</obj_property>
+      <obj_property name="ObjectShortName">pushdata_rx09_en_2</obj_property>
    </wvobject>
 </wave_config>

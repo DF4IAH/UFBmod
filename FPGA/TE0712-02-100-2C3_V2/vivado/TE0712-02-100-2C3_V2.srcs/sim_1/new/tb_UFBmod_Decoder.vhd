@@ -260,7 +260,7 @@ begin
     constant C_postmem_pages                        : Integer   := 256;
     constant C_postmemSim_depth                     : Integer   := C_postmem_pages * C_postmem_depth;
     constant C_startRow                             : Integer   := 16;
-    constant C_centerOfs                            : Integer   := -16;
+    constant C_centerOfs                            : Integer   :=  0;
     
     
   --constant C_signal_100ct                         : Integer   :=   1;     -- signal: 0x001d, noise: 0x009f, SQL-level: > 0x0002
@@ -291,17 +291,17 @@ begin
   --constant C_signal_080ct                         : Integer   :=  10;
   --constant C_signal_050ct                         : Integer   :=   6;
     
-    constant C_signal_100ct                         : Integer   :=  15;     -- signal: 0x07ff, noise: 0x00ad, SQL-level: > 0x0000
-    constant C_signal_080ct                         : Integer   :=  12;
-    constant C_signal_050ct                         : Integer   :=   8;
+  --constant C_signal_100ct                         : Integer   :=  15;     -- signal: 0x07ff, noise: 0x00ad, SQL-level: > 0x0000
+  --constant C_signal_080ct                         : Integer   :=  12;
+  --constant C_signal_050ct                         : Integer   :=   8;
     
   --constant C_signal_100ct                         : Integer   := 200;     -- signal: 0x07ff, noise: 0x0166, SQL-level: > 0x0000
   --constant C_signal_080ct                         : Integer   := 160;
   --constant C_signal_050ct                         : Integer   := 100;
     
-  --constant C_signal_100ct                         : Integer   :=1000;     -- signal: 0x07ff, noise: 0x0486, SQL-level: > 0x0000
-  --constant C_signal_080ct                         : Integer   := 800;
-  --constant C_signal_050ct                         : Integer   := 500;
+    constant C_signal_100ct                         : Integer   :=1000;     -- signal: 0x07ff, noise: 0x0486, SQL-level: > 0x0000
+    constant C_signal_080ct                         : Integer   := 800;
+    constant C_signal_050ct                         : Integer   := 500;
     
     
     type PostMemType                                is array ((C_postmemSim_depth - 1) downto 0) of Integer  range 0 to (2**16 - 1); 

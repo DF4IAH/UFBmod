@@ -13,7 +13,7 @@
       "Decoder_rx09_to_FIFO": {
         "data_rx09_c_counter_binary_0": "",
         "data_rx09_fifo_generator_0": "",
-        "Decoder_rx09_to_FIFO_0": ""
+        "Decoder_rx09_to_FIFO_FSM": ""
       },
       "FFT_rx09_to_Decoder": {
         "signal_bins_rx09_ch00_blk_mem_gen_2clks": "",
@@ -31,7 +31,7 @@
       "UFBmod_rx09_Decoders": {
         "decoder_artemis_blk_mem_gen_2clks": "",
         "decoder_artemis_mult_gen_4clks": "",
-        "UFBmod_rx09_Decoder_0": ""
+        "UFBmod_rx09_Decoder_FSM": ""
       }
     },
     "ports": {
@@ -277,7 +277,7 @@
               }
             }
           },
-          "Decoder_rx09_to_FIFO_0": {
+          "Decoder_rx09_to_FIFO_FSM": {
             "vlnv": "xilinx.com:module_ref:Decoder_rx09_to_FIFO_FSM:1.0",
             "xci_name": "UFBmod_Decoder_Decoder_rx09_to_FIFO_0_0",
             "reference_info": {
@@ -398,80 +398,80 @@
               "clk_100MHz",
               "data_rx09_fifo_generator_0/clk",
               "data_rx09_c_counter_binary_0/CLK",
-              "Decoder_rx09_to_FIFO_0/clk"
+              "Decoder_rx09_to_FIFO_FSM/clk"
             ]
           },
           "reset_100MHz": {
             "ports": [
               "reset_100MHz",
               "data_rx09_fifo_generator_0/rst",
-              "Decoder_rx09_to_FIFO_0/reset"
+              "Decoder_rx09_to_FIFO_FSM/reset"
             ]
           },
           "decoder_rx09_ch00_SoM_frameCtr_1": {
             "ports": [
               "decoder_rx09_ch00_SoM_frameCtr",
-              "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_SoM_frameCtr"
+              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_ch00_SoM_frameCtr"
             ]
           },
           "decoder_rx09_ch00_FIFO_handshake_1": {
             "ports": [
               "decoder_rx09_ch00_FIFO_handshake",
-              "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_FIFO_handshake"
+              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_ch00_FIFO_handshake"
             ]
           },
           "data_rx09_c_counter_binary_0_Q": {
             "ports": [
               "data_rx09_c_counter_binary_0/Q",
-              "Decoder_rx09_to_FIFO_0/decoder_rx09_lenCtr_out"
+              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_lenCtr_out"
             ]
           },
           "decoder_rx09_ch00_FIFO_accepted": {
             "ports": [
-              "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_FIFO_accepted",
+              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_ch00_FIFO_accepted",
               "decoder_rx09_ch00_FIFO_accepted"
             ]
           },
           "pushdata_rx09_en": {
             "ports": [
-              "Decoder_rx09_to_FIFO_0/pushdata_rx09_en",
+              "Decoder_rx09_to_FIFO_FSM/pushdata_rx09_en",
               "pushdata_rx09_en"
             ]
           },
           "pushdata_rx09_byteData": {
             "ports": [
-              "Decoder_rx09_to_FIFO_0/pushdata_rx09_byteData",
+              "Decoder_rx09_to_FIFO_FSM/pushdata_rx09_byteData",
               "pushdata_rx09_byteData"
             ]
           },
           "decoder_rx09_lenCtr_ce": {
             "ports": [
-              "Decoder_rx09_to_FIFO_0/decoder_rx09_lenCtr_ce",
+              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_lenCtr_ce",
               "data_rx09_c_counter_binary_0/CE"
             ]
           },
           "decoder_rx09_lenCtr_sclr": {
             "ports": [
-              "Decoder_rx09_to_FIFO_0/decoder_rx09_lenCtr_sclr",
+              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_lenCtr_sclr",
               "data_rx09_c_counter_binary_0/SCLR"
             ]
           },
           "decoder_rx09_ch00_noise_1": {
             "ports": [
               "decoder_rx09_ch00_noise",
-              "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_noise"
+              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_ch00_noise"
             ]
           },
           "decoder_rx09_ch00_strength": {
             "ports": [
               "decoder_rx09_ch00_strength",
-              "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_strength"
+              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_ch00_strength"
             ]
           },
           "decoder_rx09_ch00_center_pos": {
             "ports": [
               "decoder_rx09_ch00_center_pos",
-              "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_center_pos"
+              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_ch00_center_pos"
             ]
           }
         }
@@ -1263,7 +1263,7 @@
               }
             }
           },
-          "UFBmod_rx09_Decoder_0": {
+          "UFBmod_rx09_Decoder_FSM": {
             "vlnv": "xilinx.com:module_ref:UFBmod_rx09_Decoder_FSM:1.0",
             "xci_name": "UFBmod_Decoder_UFBmod_rx09_Decoder_0_0",
             "reference_info": {
@@ -1435,7 +1435,7 @@
           "reset_100MHz": {
             "ports": [
               "reset_100MHz",
-              "UFBmod_rx09_Decoder_0/reset"
+              "UFBmod_rx09_Decoder_FSM/reset"
             ]
           },
           "clk_100MHz": {
@@ -1443,126 +1443,126 @@
               "clk_100MHz",
               "decoder_artemis_blk_mem_gen_2clks/clka",
               "decoder_artemis_mult_gen_4clks/CLK",
-              "UFBmod_rx09_Decoder_0/clk"
+              "UFBmod_rx09_Decoder_FSM/clk"
             ]
           },
           "decoder_fft_frame_avail_ctr": {
             "ports": [
               "decoder_fft_frame_avail_ctr",
-              "UFBmod_rx09_Decoder_0/decoder_fft_frame_avail_ctr"
+              "UFBmod_rx09_Decoder_FSM/decoder_fft_frame_avail_ctr"
             ]
           },
           "decoder_rx09_ch00_FIFO_accepted": {
             "ports": [
               "decoder_rx09_ch00_FIFO_accepted",
-              "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_FIFO_accepted"
+              "UFBmod_rx09_Decoder_FSM/decoder_rx09_ch00_FIFO_accepted"
             ]
           },
           "dds_tx09_ptt": {
             "ports": [
               "dds_tx09_ptt",
-              "UFBmod_rx09_Decoder_0/dds_tx09_ptt"
+              "UFBmod_rx09_Decoder_FSM/dds_tx09_ptt"
             ]
           },
           "signal_bins_rx09_ch00_blk_mem_gen_0_addrb": {
             "ports": [
-              "UFBmod_rx09_Decoder_0/signal_bins_rx09_ch00_mem_addrb",
+              "UFBmod_rx09_Decoder_FSM/signal_bins_rx09_ch00_mem_addrb",
               "signal_bins_rx09_ch00_blk_mem_gen_0_addrb"
             ]
           },
           "decoder_rx09_ch00_SoM_frameCtr": {
             "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_SoM_frameCtr",
+              "UFBmod_rx09_Decoder_FSM/decoder_rx09_ch00_SoM_frameCtr",
               "decoder_rx09_ch00_SoM_frameCtr"
             ]
           },
           "decoder_rx09_ch00_sql_open": {
             "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_sql_open",
+              "UFBmod_rx09_Decoder_FSM/decoder_rx09_ch00_sql_open",
               "decoder_rx09_ch00_sql_open"
             ]
           },
           "decoder_rx09_ch00_active": {
             "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_active",
+              "UFBmod_rx09_Decoder_FSM/decoder_rx09_ch00_active",
               "decoder_rx09_ch00_active"
             ]
           },
           "decoder_rx09_ch00_FIFO_handshake": {
             "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_FIFO_handshake",
+              "UFBmod_rx09_Decoder_FSM/decoder_rx09_ch00_FIFO_handshake",
               "decoder_rx09_ch00_FIFO_handshake"
             ]
           },
           "decoder_rx09_squelch_lvl": {
             "ports": [
               "decoder_rx09_squelch_lvl",
-              "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_squelch_lvl"
+              "UFBmod_rx09_Decoder_FSM/decoder_rx09_ch00_squelch_lvl"
             ]
           },
           "signal_bins_rx09_ch00_blk_mem_gen_0_doutb": {
             "ports": [
               "signal_bins_rx09_ch00_blk_mem_gen_0_doutb",
-              "UFBmod_rx09_Decoder_0/signal_bins_rx09_ch00_mem_datab"
+              "UFBmod_rx09_Decoder_FSM/signal_bins_rx09_ch00_mem_datab"
             ]
           },
           "decoder_artemis_blk_mem_gen_0_douta": {
             "ports": [
               "decoder_artemis_blk_mem_gen_2clks/douta",
-              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mem_douta"
+              "UFBmod_rx09_Decoder_FSM/decoder_artemis_rx09_ch00_mem_douta"
             ]
           },
           "decoder_artemis_rx09_ch00_mem_wea": {
             "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mem_wea",
+              "UFBmod_rx09_Decoder_FSM/decoder_artemis_rx09_ch00_mem_wea",
               "decoder_artemis_blk_mem_gen_2clks/wea"
             ]
           },
           "decoder_artemis_rx09_ch00_mem_addra": {
             "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mem_addra",
+              "UFBmod_rx09_Decoder_FSM/decoder_artemis_rx09_ch00_mem_addra",
               "decoder_artemis_blk_mem_gen_2clks/addra"
             ]
           },
           "decoder_artemis_rx09_ch00_mem_dina": {
             "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mem_dina",
+              "UFBmod_rx09_Decoder_FSM/decoder_artemis_rx09_ch00_mem_dina",
               "decoder_artemis_blk_mem_gen_2clks/dina"
             ]
           },
           "decoder_artemis_mult_gen_4clks_P": {
             "ports": [
               "decoder_artemis_mult_gen_4clks/P",
-              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_outp"
+              "UFBmod_rx09_Decoder_FSM/decoder_artemis_rx09_ch00_mult_outp"
             ]
           },
           "decoder_artemis_rx09_ch00_mult_ce": {
             "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_ce",
+              "UFBmod_rx09_Decoder_FSM/decoder_artemis_rx09_ch00_mult_ce",
               "decoder_artemis_mult_gen_4clks/CE"
             ]
           },
           "decoder_artemis_rx09_ch00_mult_ina": {
             "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_ina",
+              "UFBmod_rx09_Decoder_FSM/decoder_artemis_rx09_ch00_mult_ina",
               "decoder_artemis_mult_gen_4clks/A"
             ]
           },
           "decoder_artemis_rx09_ch00_mult_inb": {
             "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_inb",
+              "UFBmod_rx09_Decoder_FSM/decoder_artemis_rx09_ch00_mult_inb",
               "decoder_artemis_mult_gen_4clks/B"
             ]
           },
           "decoder_rx09_ch00_strength": {
             "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_strength",
+              "UFBmod_rx09_Decoder_FSM/decoder_rx09_ch00_strength",
               "decoder_rx09_ch00_strength"
             ]
           },
           "decoder_rx09_ch00_center_pos": {
             "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_center_pos",
+              "UFBmod_rx09_Decoder_FSM/decoder_rx09_ch00_center_pos",
               "decoder_rx09_ch00_center_pos"
             ]
           }

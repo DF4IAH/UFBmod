@@ -448,7 +448,7 @@ begin
                         -- Next position
                         if (fftArtemisIdx /= 31) then
                             fftArtemisIdx := fftArtemisIdx + 1;
-                            rowIdx        := 0;
+                            rowIdx        := 2;                                                     -- same value from  artemis_search_decider_init
                             state := artemis_search_decider_loop_start;
                         else
                             state := artemis_search_level_check;
@@ -461,8 +461,8 @@ begin
                     if (signal_row1_max_val <= decoder_rx09_ch00_squelch_lvl(15 downto 0)) then
                         state           := loop_start;
                     else
-                        decoder_state   := decode_preload;                                          -- when DEBUGGING Artemis - disable me
-                      --state           := artemis_search_handoff;
+                      --decoder_state   := decode_preload;                                          -- when DEBUGGING Artemis - disable me
+                        state           := artemis_search_handoff;
                     end if;
                     
                 when artemis_search_handoff =>
