@@ -281,7 +281,7 @@ begin
                     state := artemis_search_loop_pre1_prep;
                     
                 -- Artemis: preamble hunter
-                when artemis_search_loop_pre15_prep =>
+                when artemis_search_loop_pre1_prep =>
                     rowIdx                              := 31 - isOddRow;
                     posIdx                              := (32 + fftArtemisIdx + C_pre_ary(0)) mod 32;
                     signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_base_Int + (2**11) - (rowIdx * 32) + posIdx) mod (2**11);

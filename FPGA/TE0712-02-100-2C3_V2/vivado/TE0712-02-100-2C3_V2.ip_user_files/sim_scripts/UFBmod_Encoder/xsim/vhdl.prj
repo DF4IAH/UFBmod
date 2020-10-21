@@ -1,5 +1,0 @@
-vhdl xil_defaultlib  \
-"../../../bd/UFBmod_Encoder/ip/UFBmod_Encoder_UFBmod_tx09_Encoder_0_0/sim/UFBmod_Encoder_UFBmod_tx09_Encoder_0_0.vhd" \
-"../../../bd/UFBmod_Encoder/sim/UFBmod_Encoder.vhd" \
-
-nosort

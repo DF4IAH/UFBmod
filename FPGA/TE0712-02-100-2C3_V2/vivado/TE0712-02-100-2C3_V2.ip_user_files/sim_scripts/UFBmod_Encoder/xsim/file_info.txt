@@ -1,3 +1,0 @@
-UFBmod_Encoder_UFBmod_tx09_Encoder_0_0.vhd,vhdl,xil_defaultlib,../../../bd/UFBmod_Encoder/ip/UFBmod_Encoder_UFBmod_tx09_Encoder_0_0/sim/UFBmod_Encoder_UFBmod_tx09_Encoder_0_0.vhd,
-UFBmod_Encoder.vhd,vhdl,xil_defaultlib,../../../bd/UFBmod_Encoder/sim/UFBmod_Encoder.vhd,
-glbl.v,Verilog,xil_defaultlib,glbl.v

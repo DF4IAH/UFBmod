@@ -163,7 +163,7 @@ begin
 
   -- Pre FFT port A address stimulus
   proc_tb_pre_a_addr: process
-    constant C_pre_mem_a_depth                  : Integer  := 2048;
+    constant C_pre_mem_a_depth                  : Integer  := 4096;
     variable pre_a_addr_Int                     : Integer  range 0 to (C_pre_mem_a_depth - 1);
   begin
     pre_a_addr_Int              := 0;
@@ -259,7 +259,7 @@ begin
     constant C_postmem_depth                        : Integer   := 1024;
     constant C_postmem_pages                        : Integer   := 128;
     constant C_postmemSim_depth                     : Integer   := C_postmem_pages * C_postmem_depth;
-    constant C_startRow                             : Integer   := 8;
+    constant C_startRow                             : Integer   := 16;
     constant C_centerOfs                            : Integer   := -16;
     
     
