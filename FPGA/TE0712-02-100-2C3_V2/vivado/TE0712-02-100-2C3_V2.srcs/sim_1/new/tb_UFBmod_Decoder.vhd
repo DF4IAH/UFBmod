@@ -163,7 +163,7 @@ begin
 
   -- Pre FFT port A address stimulus
   proc_tb_pre_a_addr: process
-    constant C_pre_mem_a_depth                  : Integer  := 4096;
+    constant C_pre_mem_a_depth                  : Integer  := 1024;
     variable pre_a_addr_Int                     : Integer  range 0 to (C_pre_mem_a_depth - 1);
   begin
     pre_a_addr_Int              := 0;
@@ -257,7 +257,7 @@ begin
     constant C_fin_7                                : Integer :=  +1;
     
     constant C_postmem_depth                        : Integer   := 1024;
-    constant C_postmem_pages                        : Integer   := 128;
+    constant C_postmem_pages                        : Integer   := 256;
     constant C_postmemSim_depth                     : Integer   := C_postmem_pages * C_postmem_depth;
     constant C_startRow                             : Integer   := 16;
     constant C_centerOfs                            : Integer   := -16;
@@ -304,7 +304,7 @@ begin
   --constant C_signal_050ct                         : Integer   := 500;
     
     
-    type PostMemType                                is array ((C_postmemSim_depth - 1) downto 0) of Integer; 
+    type PostMemType                                is array ((C_postmemSim_depth - 1) downto 0) of Integer  range 0 to (2**16 - 1); 
     variable postmemSim                             : PostMemType;
     
     variable row                                    : Integer;
@@ -479,11 +479,11 @@ begin
         uniform(uni_seed_1, uni_seed_2, uni_real);
         uni_rand := 1 + Integer(floor(uni_real * 9.0));
         
-        postmemSim(ii) := postmemSim(ii) + uni_rand;
+        postmemSim(ii) := postmemSim(ii) + uni_rand;                                                -- Noise is added to the signal
         
-        --if (postmemSim(ii) < uni_rand) then
-        --    postmemSim(ii) := uni_rand;                                                             -- Noise overwrites Signal when strength of signal is below of noise level (ADC voltage)
-        --end if;
+      --if (postmemSim(ii) < uni_rand) then
+      --    postmemSim(ii) := uni_rand;                                                             -- Noise overwrites Signal when strength of signal is below of noise level (ADC voltage)
+      --end if;
     end loop;
     
     

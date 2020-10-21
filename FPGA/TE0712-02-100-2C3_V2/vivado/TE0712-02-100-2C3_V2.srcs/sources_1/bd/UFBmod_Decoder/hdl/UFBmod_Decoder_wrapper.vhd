@@ -1,8 +1,8 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Wed Oct 21 11:10:52 2020
---Host        : Hft-W-Habel running 64-bit major release  (build 9200)
+--Date        : Wed Oct 21 17:06:00 2020
+--Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target UFBmod_Decoder_wrapper.bd
 --Design      : UFBmod_Decoder_wrapper
 --Purpose     : IP block netlist
@@ -37,18 +37,18 @@ architecture STRUCTURE of UFBmod_Decoder_wrapper is
     clk_100MHz : in STD_LOGIC;
     dds_tx09_ptt : in STD_LOGIC;
     decoder_rx09_ch00_active : out STD_LOGIC;
-    decoder_rx09_ch00_center_pos : out STD_LOGIC_VECTOR ( 7 downto 0 );
     decoder_rx09_ch00_noise : out STD_LOGIC_VECTOR ( 18 downto 0 );
     decoder_rx09_ch00_sql_open : out STD_LOGIC;
     decoder_rx09_ch00_squelch_lvl : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    decoder_rx09_ch00_strength : out STD_LOGIC_VECTOR ( 18 downto 0 );
     post_fft_rx09_mem_a_EoT : in STD_LOGIC;
     post_fft_rx09_mem_a_addr : in STD_LOGIC_VECTOR ( 41 downto 0 );
     post_fft_rx09_mem_b_addr : out STD_LOGIC_VECTOR ( 9 downto 0 );
     post_fft_rx09_mem_b_dout : in STD_LOGIC_VECTOR ( 15 downto 0 );
     pushdata_rx09_byteData : out STD_LOGIC_VECTOR ( 7 downto 0 );
     pushdata_rx09_en : out STD_LOGIC;
-    reset_100MHz : in STD_LOGIC
+    reset_100MHz : in STD_LOGIC;
+    decoder_rx09_ch00_strength : out STD_LOGIC_VECTOR ( 18 downto 0 );
+    decoder_rx09_ch00_center_pos : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component UFBmod_Decoder;
 begin

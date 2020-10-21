@@ -5,7 +5,7 @@
       "device": "xc7a100tfgg484-2",
       "name": "UFBmod_Decoder",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
-      "synth_flow_mode": "Hierarchical",
+      "synth_flow_mode": "Singular",
       "tool_version": "2020.1.1",
       "validated": "true"
     },
@@ -69,11 +69,6 @@
       "decoder_rx09_ch00_active": {
         "direction": "O"
       },
-      "decoder_rx09_ch00_center_pos": {
-        "direction": "O",
-        "left": "7",
-        "right": "0"
-      },
       "decoder_rx09_ch00_noise": {
         "direction": "O",
         "left": "18",
@@ -99,11 +94,6 @@
             "value_src": "default"
           }
         }
-      },
-      "decoder_rx09_ch00_strength": {
-        "direction": "O",
-        "left": "18",
-        "right": "0"
       },
       "post_fft_rx09_mem_a_EoT": {
         "direction": "I"
@@ -157,6 +147,30 @@
             "value": "ACTIVE_HIGH"
           }
         }
+      },
+      "decoder_rx09_ch00_strength": {
+        "type": "data",
+        "direction": "O",
+        "left": "18",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "decoder_rx09_ch00_center_pos": {
+        "type": "data",
+        "direction": "O",
+        "left": "7",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
       }
     },
     "components": {
@@ -184,16 +198,6 @@
           "decoder_rx09_ch00_FIFO_handshake": {
             "direction": "I"
           },
-          "decoder_rx09_ch00_center_pos": {
-            "direction": "I",
-            "left": "7",
-            "right": "0"
-          },
-          "decoder_rx09_ch00_strength": {
-            "direction": "I",
-            "left": "18",
-            "right": "0"
-          },
           "decoder_rx09_ch00_SoM_frameCtr": {
             "direction": "I",
             "left": "31",
@@ -202,6 +206,16 @@
           "decoder_rx09_ch00_noise": {
             "direction": "I",
             "left": "18",
+            "right": "0"
+          },
+          "decoder_rx09_ch00_strength": {
+            "direction": "I",
+            "left": "18",
+            "right": "0"
+          },
+          "decoder_rx09_ch00_center_pos": {
+            "direction": "I",
+            "left": "7",
             "right": "0"
           }
         },
@@ -394,18 +408,6 @@
               "Decoder_rx09_to_FIFO_0/reset"
             ]
           },
-          "decoder_rx09_ch00_center_pos_1": {
-            "ports": [
-              "decoder_rx09_ch00_center_pos",
-              "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_center_pos"
-            ]
-          },
-          "decoder_rx09_ch00_strength_1": {
-            "ports": [
-              "decoder_rx09_ch00_strength",
-              "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_strength"
-            ]
-          },
           "decoder_rx09_ch00_SoM_frameCtr_1": {
             "ports": [
               "decoder_rx09_ch00_SoM_frameCtr",
@@ -424,31 +426,31 @@
               "Decoder_rx09_to_FIFO_0/decoder_rx09_lenCtr_out"
             ]
           },
-          "Decoder_rx09_to_FIFO_0_decoder_rx09_ch00_FIFO_accepted": {
+          "decoder_rx09_ch00_FIFO_accepted": {
             "ports": [
               "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_FIFO_accepted",
               "decoder_rx09_ch00_FIFO_accepted"
             ]
           },
-          "Decoder_rx09_to_FIFO_0_pushdata_rx09_en": {
+          "pushdata_rx09_en": {
             "ports": [
               "Decoder_rx09_to_FIFO_0/pushdata_rx09_en",
               "pushdata_rx09_en"
             ]
           },
-          "Decoder_rx09_to_FIFO_0_pushdata_rx09_byteData": {
+          "pushdata_rx09_byteData": {
             "ports": [
               "Decoder_rx09_to_FIFO_0/pushdata_rx09_byteData",
               "pushdata_rx09_byteData"
             ]
           },
-          "Decoder_rx09_to_FIFO_0_decoder_rx09_lenCtr_ce": {
+          "decoder_rx09_lenCtr_ce": {
             "ports": [
               "Decoder_rx09_to_FIFO_0/decoder_rx09_lenCtr_ce",
               "data_rx09_c_counter_binary_0/CE"
             ]
           },
-          "Decoder_rx09_to_FIFO_0_decoder_rx09_lenCtr_sclr": {
+          "decoder_rx09_lenCtr_sclr": {
             "ports": [
               "Decoder_rx09_to_FIFO_0/decoder_rx09_lenCtr_sclr",
               "data_rx09_c_counter_binary_0/SCLR"
@@ -458,6 +460,18 @@
             "ports": [
               "decoder_rx09_ch00_noise",
               "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_noise"
+            ]
+          },
+          "decoder_rx09_ch00_strength": {
+            "ports": [
+              "decoder_rx09_ch00_strength",
+              "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_strength"
+            ]
+          },
+          "decoder_rx09_ch00_center_pos": {
+            "ports": [
+              "decoder_rx09_ch00_center_pos",
+              "Decoder_rx09_to_FIFO_0/decoder_rx09_ch00_center_pos"
             ]
           }
         }
@@ -1148,16 +1162,6 @@
           "decoder_rx09_ch00_FIFO_handshake": {
             "direction": "O"
           },
-          "decoder_rx09_ch00_center_pos": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "decoder_rx09_ch00_strength": {
-            "direction": "O",
-            "left": "18",
-            "right": "0"
-          },
           "decoder_rx09_ch00_SoM_frameCtr": {
             "direction": "O",
             "left": "31",
@@ -1171,6 +1175,16 @@
           },
           "decoder_rx09_ch00_active": {
             "direction": "O"
+          },
+          "decoder_rx09_ch00_strength": {
+            "direction": "O",
+            "left": "18",
+            "right": "0"
+          },
+          "decoder_rx09_ch00_center_pos": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
           }
         },
         "components": {
@@ -1378,12 +1392,24 @@
               "decoder_rx09_ch00_center_pos": {
                 "direction": "O",
                 "left": "7",
-                "right": "0"
+                "right": "0",
+                "parameters": {
+                  "LAYERED_METADATA": {
+                    "value": "",
+                    "value_src": "weak"
+                  }
+                }
               },
               "decoder_rx09_ch00_strength": {
                 "direction": "O",
                 "left": "18",
-                "right": "0"
+                "right": "0",
+                "parameters": {
+                  "LAYERED_METADATA": {
+                    "value": "",
+                    "value_src": "weak"
+                  }
+                }
               },
               "decoder_rx09_ch00_SoM_frameCtr": {
                 "direction": "O",
@@ -1444,18 +1470,6 @@
               "signal_bins_rx09_ch00_blk_mem_gen_0_addrb"
             ]
           },
-          "decoder_rx09_ch00_center_pos": {
-            "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_center_pos",
-              "decoder_rx09_ch00_center_pos"
-            ]
-          },
-          "decoder_rx09_ch00_strength": {
-            "ports": [
-              "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_strength",
-              "decoder_rx09_ch00_strength"
-            ]
-          },
           "decoder_rx09_ch00_SoM_frameCtr": {
             "ports": [
               "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_SoM_frameCtr",
@@ -1498,19 +1512,19 @@
               "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mem_douta"
             ]
           },
-          "UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_wea": {
+          "decoder_artemis_rx09_ch00_mem_wea": {
             "ports": [
               "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mem_wea",
               "decoder_artemis_blk_mem_gen_2clks/wea"
             ]
           },
-          "UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_addra": {
+          "decoder_artemis_rx09_ch00_mem_addra": {
             "ports": [
               "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mem_addra",
               "decoder_artemis_blk_mem_gen_2clks/addra"
             ]
           },
-          "UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mem_dina": {
+          "decoder_artemis_rx09_ch00_mem_dina": {
             "ports": [
               "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mem_dina",
               "decoder_artemis_blk_mem_gen_2clks/dina"
@@ -1522,29 +1536,41 @@
               "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_outp"
             ]
           },
-          "UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_ce": {
+          "decoder_artemis_rx09_ch00_mult_ce": {
             "ports": [
               "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_ce",
               "decoder_artemis_mult_gen_4clks/CE"
             ]
           },
-          "UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_ina": {
+          "decoder_artemis_rx09_ch00_mult_ina": {
             "ports": [
               "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_ina",
               "decoder_artemis_mult_gen_4clks/A"
             ]
           },
-          "UFBmod_rx09_Decoder_0_decoder_artemis_rx09_ch00_mult_inb": {
+          "decoder_artemis_rx09_ch00_mult_inb": {
             "ports": [
               "UFBmod_rx09_Decoder_0/decoder_artemis_rx09_ch00_mult_inb",
               "decoder_artemis_mult_gen_4clks/B"
+            ]
+          },
+          "decoder_rx09_ch00_strength": {
+            "ports": [
+              "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_strength",
+              "decoder_rx09_ch00_strength"
+            ]
+          },
+          "decoder_rx09_ch00_center_pos": {
+            "ports": [
+              "UFBmod_rx09_Decoder_0/decoder_rx09_ch00_center_pos",
+              "decoder_rx09_ch00_center_pos"
             ]
           }
         }
       }
     },
     "nets": {
-      "FFT_rx09_to_Decoder_decoder_rx09_ch00_noise": {
+      "decoder_rx09_ch00_noise_0": {
         "ports": [
           "FFT_rx09_to_Decoder/decoder_rx09_ch00_noise",
           "decoder_rx09_ch00_noise",
@@ -1565,93 +1591,79 @@
           "UFBmod_rx09_Decoders/dds_tx09_ptt"
         ]
       },
-      "decoder_fft_frame_avail_ctr": {
+      "decoder_fft_frame_avail_ctr_0": {
         "ports": [
           "FFT_rx09_to_Decoder/decoder_fft_frame_avail_ctr",
           "UFBmod_rx09_Decoders/decoder_fft_frame_avail_ctr"
         ]
       },
-      "decoder_rx09_ch00_FIFO_accepted": {
+      "decoder_rx09_ch00_FIFO_accepted_2": {
         "ports": [
           "Decoder_rx09_to_FIFO/decoder_rx09_ch00_FIFO_accepted",
           "UFBmod_rx09_Decoders/decoder_rx09_ch00_FIFO_accepted"
         ]
       },
-      "decoder_rx09_ch00_FIFO_handshake": {
+      "decoder_rx09_ch00_FIFO_handshake_1": {
         "ports": [
           "UFBmod_rx09_Decoders/decoder_rx09_ch00_FIFO_handshake",
           "Decoder_rx09_to_FIFO/decoder_rx09_ch00_FIFO_handshake"
         ]
       },
-      "decoder_rx09_ch00_SoM_frameCtr": {
+      "decoder_rx09_ch00_SoM_frameCtr_1": {
         "ports": [
           "UFBmod_rx09_Decoders/decoder_rx09_ch00_SoM_frameCtr",
           "Decoder_rx09_to_FIFO/decoder_rx09_ch00_SoM_frameCtr"
         ]
       },
-      "decoder_rx09_ch00_active": {
+      "decoder_rx09_ch00_active_1": {
         "ports": [
           "UFBmod_rx09_Decoders/decoder_rx09_ch00_active",
           "decoder_rx09_ch00_active"
         ]
       },
-      "decoder_rx09_ch00_center_pos": {
-        "ports": [
-          "UFBmod_rx09_Decoders/decoder_rx09_ch00_center_pos",
-          "Decoder_rx09_to_FIFO/decoder_rx09_ch00_center_pos",
-          "decoder_rx09_ch00_center_pos"
-        ]
-      },
-      "decoder_rx09_ch00_sql_open": {
+      "decoder_rx09_ch00_sql_open_1": {
         "ports": [
           "UFBmod_rx09_Decoders/decoder_rx09_ch00_sql_open",
           "decoder_rx09_ch00_sql_open"
         ]
       },
-      "decoder_rx09_ch00_squelch_lvl": {
+      "decoder_rx09_ch00_squelch_lvl_1": {
         "ports": [
           "decoder_rx09_ch00_squelch_lvl",
           "UFBmod_rx09_Decoders/decoder_rx09_squelch_lvl"
         ]
       },
-      "decoder_rx09_ch00_strength": {
-        "ports": [
-          "UFBmod_rx09_Decoders/decoder_rx09_ch00_strength",
-          "Decoder_rx09_to_FIFO/decoder_rx09_ch00_strength",
-          "decoder_rx09_ch00_strength"
-        ]
-      },
-      "post_fft_rx09_ch00_mem_b_addr": {
+      "post_fft_rx09_ch00_mem_b_addr_0": {
         "ports": [
           "FFT_rx09_to_Decoder/post_fft_rx09_ch00_mem_b_addr",
           "post_fft_rx09_mem_b_addr"
         ]
       },
-      "post_fft_rx09_mem_a_EoT_1": {
+      "post_fft_rx09_mem_a_EoT_0": {
         "ports": [
           "post_fft_rx09_mem_a_EoT",
           "FFT_rx09_to_Decoder/post_fft_rx09_mem_a_EoT"
         ]
       },
-      "post_fft_rx09_mem_a_addr_1": {
+      "post_fft_rx09_mem_a_addr_0": {
         "ports": [
           "post_fft_rx09_mem_a_addr",
           "FFT_rx09_to_Decoder/post_fft_rx09_mem_a_addr"
         ]
       },
-      "post_fft_rx09_mem_b_dout_1": {
+      "post_fft_rx09_mem_b_dout_0": {
         "ports": [
           "post_fft_rx09_mem_b_dout",
           "FFT_rx09_to_Decoder/post_fft_rx09_mem_b_dout"
         ]
       },
-      "pushdata_rx09_byteData": {
+      "pushdata_rx09_byteData_2": {
         "ports": [
           "Decoder_rx09_to_FIFO/pushdata_rx09_byteData",
           "pushdata_rx09_byteData"
         ]
       },
-      "pushdata_rx09_en": {
+      "pushdata_rx09_en_2": {
         "ports": [
           "Decoder_rx09_to_FIFO/pushdata_rx09_en",
           "pushdata_rx09_en"
@@ -1665,16 +1677,30 @@
           "UFBmod_rx09_Decoders/reset_100MHz"
         ]
       },
-      "signal_bins_rx09_ch00_blk_mem_gen_0_addrb": {
+      "signal_bins_rx09_ch00_blk_mem_gen_0_addrb_1": {
         "ports": [
           "UFBmod_rx09_Decoders/signal_bins_rx09_ch00_blk_mem_gen_0_addrb",
           "FFT_rx09_to_Decoder/signal_bins_rx09_ch00_blk_mem_gen_0_addrb"
         ]
       },
-      "signal_bins_rx09_ch00_blk_mem_gen_0_doutb": {
+      "signal_bins_rx09_ch00_blk_mem_gen_0_doutb_0": {
         "ports": [
           "FFT_rx09_to_Decoder/signal_bins_rx09_ch00_blk_mem_gen_0_doutb",
           "UFBmod_rx09_Decoders/signal_bins_rx09_ch00_blk_mem_gen_0_doutb"
+        ]
+      },
+      "decoder_rx09_ch00_strength_1": {
+        "ports": [
+          "UFBmod_rx09_Decoders/decoder_rx09_ch00_strength",
+          "decoder_rx09_ch00_strength",
+          "Decoder_rx09_to_FIFO/decoder_rx09_ch00_strength"
+        ]
+      },
+      "decoder_rx09_ch00_center_pos_1": {
+        "ports": [
+          "UFBmod_rx09_Decoders/decoder_rx09_ch00_center_pos",
+          "decoder_rx09_ch00_center_pos",
+          "Decoder_rx09_to_FIFO/decoder_rx09_ch00_center_pos"
         ]
       }
     }

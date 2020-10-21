@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"2.0",
-   "Default View_TopLeft":"-733,-338",
+   "Default View_TopLeft":"-738,-338",
    "ExpandedHierarchyInLayout":"",
    "PinnedBlocks":"/UFBmod_tx09_Encoder_0|",
    "PinnedPorts":"clk_100MHz|reset_100MHz|decoder_rx09_sql_open|decoder_rx09_active|encoder_pull_FIFO_dump|encoder_pull_do_start|encoder_pull_data_len|pulldata_tx09_byteData|pulldata_tx09_en|dds_tx09_ptt|dds_tx09_inc|",
@@ -19,19 +19,19 @@ preplace portBus encoder_pull_data_len -pg 1 -lvl 0 -x -70 -y 120 -defaultsOSRD
 preplace portBus pulldata_tx09_byteData -pg 1 -lvl 0 -x -70 -y 150 -defaultsOSRD
 preplace portBus dds_tx09_inc -pg 1 -lvl 2 -x 420 -y 80 -defaultsOSRD
 preplace inst UFBmod_tx09_Encoder_0 -pg 1 -lvl 1 -x 200 -y 80 -defaultsOSRD
-preplace netloc clk_100MHz_1 1 0 1 -10 -50n
-preplace netloc reset_100MHz_1 1 0 1 0 -80n
-preplace netloc decoder_rx09_sql_open_1 1 0 1 -20 0n
-preplace netloc decoder_rx09_active_1 1 0 1 -30 30n
-preplace netloc encoder_pull_FIFO_dump_1 1 0 1 -40 60n
-preplace netloc encoder_pull_do_start_1 1 0 1 -50 90n
-preplace netloc encoder_pull_data_len_1 1 0 1 -20 120n
-preplace netloc pulldata_tx09_byteData_1 1 0 1 N 150
-preplace netloc UFBmod_tx09_Encoder_0_pulldata_tx09_en 1 1 1 400 50n
-preplace netloc UFBmod_tx09_Encoder_0_dds_tx09_ptt 1 1 1 400 100n
-preplace netloc UFBmod_tx09_Encoder_0_dds_tx09_inc 1 1 1 N 80
+preplace netloc clk_100MHz 1 0 1 -10 -50n
+preplace netloc reset_100MHz 1 0 1 0 -80n
+preplace netloc decoder_rx09_sql_open_0 1 0 1 -20 0n
+preplace netloc decoder_rx09_active_0 1 0 1 -30 30n
+preplace netloc encoder_pull_FIFO_dump_0 1 0 1 -40 60n
+preplace netloc encoder_pull_do_start_0 1 0 1 -50 90n
+preplace netloc encoder_pull_data_len_0 1 0 1 -20 120n
+preplace netloc pulldata_tx09_byteData_0 1 0 1 N 150
+preplace netloc pulldata_tx09_en_0 1 1 1 390 50n
+preplace netloc dds_tx09_ptt_0 1 1 1 390 100n
+preplace netloc dds_tx09_inc_0 1 1 1 N 80
 levelinfo -pg 1 -70 200 420
-pagesize -pg 1 -db -bbox -sgen -320 -230 600 260
+pagesize -pg 1 -db -bbox -sgen -300 -230 590 260
 "
 }
 {

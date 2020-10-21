@@ -203,67 +203,67 @@
       }
     },
     "nets": {
-      "clk_100MHz_1": {
+      "clk_100MHz": {
         "ports": [
           "clk_100MHz",
           "UFBmod_tx09_Encoder_0/clk"
         ]
       },
-      "reset_100MHz_1": {
+      "reset_100MHz": {
         "ports": [
           "reset_100MHz",
           "UFBmod_tx09_Encoder_0/reset"
         ]
       },
-      "decoder_rx09_sql_open_1": {
+      "decoder_rx09_sql_open_0": {
         "ports": [
           "decoder_rx09_sql_open",
           "UFBmod_tx09_Encoder_0/decoder_rx09_sql_open"
         ]
       },
-      "decoder_rx09_active_1": {
+      "decoder_rx09_active_0": {
         "ports": [
           "decoder_rx09_active",
           "UFBmod_tx09_Encoder_0/decoder_rx09_active"
         ]
       },
-      "encoder_pull_FIFO_dump_1": {
+      "encoder_pull_FIFO_dump_0": {
         "ports": [
           "encoder_pull_FIFO_dump",
           "UFBmod_tx09_Encoder_0/encoder_pull_FIFO_dump"
         ]
       },
-      "encoder_pull_do_start_1": {
+      "encoder_pull_do_start_0": {
         "ports": [
           "encoder_pull_do_start",
           "UFBmod_tx09_Encoder_0/encoder_pull_do_start"
         ]
       },
-      "encoder_pull_data_len_1": {
+      "encoder_pull_data_len_0": {
         "ports": [
           "encoder_pull_data_len",
           "UFBmod_tx09_Encoder_0/encoder_pull_data_len"
         ]
       },
-      "pulldata_tx09_byteData_1": {
+      "pulldata_tx09_byteData_0": {
         "ports": [
           "pulldata_tx09_byteData",
           "UFBmod_tx09_Encoder_0/pulldata_tx09_byteData"
         ]
       },
-      "UFBmod_tx09_Encoder_0_pulldata_tx09_en": {
+      "pulldata_tx09_en_0": {
         "ports": [
           "UFBmod_tx09_Encoder_0/pulldata_tx09_en",
           "pulldata_tx09_en"
         ]
       },
-      "UFBmod_tx09_Encoder_0_dds_tx09_ptt": {
+      "dds_tx09_ptt_0": {
         "ports": [
           "UFBmod_tx09_Encoder_0/dds_tx09_ptt",
           "dds_tx09_ptt"
         ]
       },
-      "UFBmod_tx09_Encoder_0_dds_tx09_inc": {
+      "dds_tx09_inc_0": {
         "ports": [
           "UFBmod_tx09_Encoder_0/dds_tx09_inc",
           "dds_tx09_inc"
