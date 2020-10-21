@@ -1,8 +1,8 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Wed Oct 21 00:22:36 2020
---Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
+--Date        : Wed Oct 21 11:10:52 2020
+--Host        : Hft-W-Habel running 64-bit major release  (build 9200)
 --Command     : generate_target UFBmod_Decoder_wrapper.bd
 --Design      : UFBmod_Decoder_wrapper
 --Purpose     : IP block netlist

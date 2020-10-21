@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="UFBmod_Decoder" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1603235681"/>
-    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1603235681"/>
-    <Generation Name="SIMULATION" State="RESET" Timestamp="1603235681"/>
-    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1603235681"/>
+    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1603271452"/>
+    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1603271452"/>
+    <Generation Name="SIMULATION" State="STALE" Timestamp="1603271452"/>
+    <Generation Name="HW_HANDOFF" State="STALE" Timestamp="1603271452"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\UFBmod_Decoder_data_rx09_c_counter_binary_0_0\UFBmod_Decoder_data_rx09_c_counter_binary_0_0.xci" Type="IP">
         <Instance HierarchyPath="Decoder_rx09_to_FIFO/data_rx09_c_counter_binary_0"/>
@@ -141,6 +141,43 @@
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="synth\UFBmod_Decoder.vhd" Type="VHDL">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+      </File>
+      <File Name="sim\UFBmod_Decoder.vhd" Type="VHDL">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="UFBmod_Decoder_ooc.xdc" Type="XDC">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="OUT_OF_CONTEXT"/>
+      </File>
+      <File Name="hw_handoff\UFBmod_Decoder.hwh" Type="HwHandoff">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+      </File>
+      <File Name="hw_handoff\UFBmod_Decoder_bd.tcl">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+      </File>
+      <File Name="synth\UFBmod_Decoder.hwdef">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+      </File>
+      <File Name="sim\UFBmod_Decoder.protoinst">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
       </File>
     </FileCollection>

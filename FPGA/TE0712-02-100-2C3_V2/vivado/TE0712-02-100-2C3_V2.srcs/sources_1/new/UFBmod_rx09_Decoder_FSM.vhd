@@ -281,7 +281,7 @@ begin
                     state := artemis_search_loop_pre1_prep;
                     
                 -- Artemis: preamble hunter
-                when artemis_search_loop_pre1_prep =>
+                when artemis_search_loop_pre15_prep =>
                     rowIdx                              := 31 - isOddRow;
                     posIdx                              := (32 + fftArtemisIdx + C_pre_ary(0)) mod 32;
                     signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_base_Int + (2**11) - (rowIdx * 32) + posIdx) mod (2**11);
@@ -462,7 +462,7 @@ begin
                         state           := loop_start;
                     else
                         decoder_state   := decode_preload;                                          -- when DEBUGGING Artemis - disable me
-                        state           := artemis_search_handoff;
+                      --state           := artemis_search_handoff;
                     end if;
                     
                 when artemis_search_handoff =>
@@ -472,7 +472,7 @@ begin
                     skipUntil                       := to_integer(unsigned(decoder_fft_frame_avail_ctr)) + 32;
                     
                     state := decoder_process;
-                  --state := loop_start;                                                            -- when DEBUGGING Artemis -  enable me
+                    state := loop_start;                                                            -- when DEBUGGING Artemis -  enable me
                     
                     
                 when decoder_process =>
