@@ -260,48 +260,48 @@ begin
     constant C_postmem_pages                        : Integer   := 256;
     constant C_postmemSim_depth                     : Integer   := C_postmem_pages * C_postmem_depth;
     constant C_startRow                             : Integer   := 16;
-    constant C_centerOfs                            : Integer   :=  0;
+    constant C_centerOfs                            : Integer   := 0;
     
     
-  --constant C_signal_100ct                         : Integer   :=   1;     -- signal: 0x001d, noise: 0x009f, SQL-level: > 0x0002
-  --constant C_signal_080ct                         : Integer   :=   1;
-  --constant C_signal_050ct                         : Integer   :=   0;
+    constant C_signal_100ct                         : Integer   :=   1;     -- signal: 0x004e, noise: 0x009f, SQL-level: > 0x00ec
+    constant C_signal_080ct                         : Integer   :=   1;
+    constant C_signal_050ct                         : Integer   :=   0;
     
-  --constant C_signal_100ct                         : Integer   :=   2;     -- signal: 0x010f, noise: 0x00a0, SQL-level: > 0x0002
+  --constant C_signal_100ct                         : Integer   :=   2;     -- signal: 0x02a2, noise: 0x00a0, SQL-level: > 0x00ec
   --constant C_signal_080ct                         : Integer   :=   2;
   --constant C_signal_050ct                         : Integer   :=   1;
     
-  --constant C_signal_100ct                         : Integer   :=   3;     -- signal: 0x0587, noise: 0x00a1, SQL-level: > 0x0002
+  --constant C_signal_100ct                         : Integer   :=   3;     -- signal: 0x07ff, noise: 0x00a1, SQL-level: > 0x00ec
   --constant C_signal_080ct                         : Integer   :=   3;
   --constant C_signal_050ct                         : Integer   :=   2;
     
-  --constant C_signal_100ct                         : Integer   :=   4;     -- signal: 0x07ff, noise: 0x00a2, SQL-level: > 0x0002
+  --constant C_signal_100ct                         : Integer   :=   4;     -- signal: 0x07ff, noise: 0x00a2, SQL-level: > 0x00ec
   --constant C_signal_080ct                         : Integer   :=   3;
   --constant C_signal_050ct                         : Integer   :=   2;
     
-  --constant C_signal_100ct                         : Integer   :=   9;     -- signal: 0x07ff, noise: 0x00a7, SQL-level: > 0x0001
+  --constant C_signal_100ct                         : Integer   :=   9;     -- signal: 0x07ff, noise: 0x00a7, SQL-level: > 0x00ec
   --constant C_signal_080ct                         : Integer   :=   7;
   --constant C_signal_050ct                         : Integer   :=   5;
     
-  --constant C_signal_100ct                         : Integer   :=  10;     -- signal: 0x07ff, noise: 0x00a8, SQL-level: > 0x0001
+  --constant C_signal_100ct                         : Integer   :=  10;     -- signal: 0x07ff, noise: 0x00a8, SQL-level: > 0x00ec
   --constant C_signal_080ct                         : Integer   :=   8;
   --constant C_signal_050ct                         : Integer   :=   5;
     
-  --constant C_signal_100ct                         : Integer   :=  12;     -- signal: 0x07ff, noise: 0x00aa, SQL-level: > 0x0000
+  --constant C_signal_100ct                         : Integer   :=  12;     -- signal: 0x07ff, noise: 0x00aa, SQL-level: > 0x00ec
   --constant C_signal_080ct                         : Integer   :=  10;
   --constant C_signal_050ct                         : Integer   :=   6;
     
-  --constant C_signal_100ct                         : Integer   :=  15;     -- signal: 0x07ff, noise: 0x00ad, SQL-level: > 0x0000
+  --constant C_signal_100ct                         : Integer   :=  15;     -- signal: 0x07ff, noise: 0x00ad, SQL-level: > 0x00ec
   --constant C_signal_080ct                         : Integer   :=  12;
   --constant C_signal_050ct                         : Integer   :=   8;
     
-  --constant C_signal_100ct                         : Integer   := 200;     -- signal: 0x07ff, noise: 0x0166, SQL-level: > 0x0000
+  --constant C_signal_100ct                         : Integer   := 200;     -- signal: 0x07ff, noise: 0x0166, SQL-level: > 0x00ec
   --constant C_signal_080ct                         : Integer   := 160;
   --constant C_signal_050ct                         : Integer   := 100;
     
-    constant C_signal_100ct                         : Integer   :=1000;     -- signal: 0x07ff, noise: 0x0486, SQL-level: > 0x0000
-    constant C_signal_080ct                         : Integer   := 800;
-    constant C_signal_050ct                         : Integer   := 500;
+  --constant C_signal_100ct                         : Integer   :=1000;     -- signal: 0x07ff, noise: 0x0486, SQL-level: > 0x00ec
+  --constant C_signal_080ct                         : Integer   := 800;
+  --constant C_signal_050ct                         : Integer   := 500;
     
     
     type PostMemType                                is array ((C_postmemSim_depth - 1) downto 0) of Integer  range 0 to (2**16 - 1); 
@@ -334,8 +334,8 @@ begin
     row := C_startRow;
     
     -- PA ramp-up
-    postmemSim(row * 1024 + ((16 + C_centerOfs + 0        ) mod 32))  := C_signal_050ct;  row := row + 2; -- all is moduleo 32
-    postmemSim(row * 1024 + ((16 + C_centerOfs + 0        ) mod 32))  := C_signal_080ct;  row := row + 2;
+  --postmemSim(row * 1024 + ((16 + C_centerOfs + 0        ) mod 32))  := C_signal_050ct;  row := row + 2; -- all is moduleo 32
+  --postmemSim(row * 1024 + ((16 + C_centerOfs + 0        ) mod 32))  := C_signal_080ct;  row := row + 2;
     
     -- Preamble
     postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r00) mod 32))  := C_signal_100ct;  row := row + 2;

@@ -117,7 +117,7 @@ begin
                     decoder_fft_frame_avail_ctr                 <= (others => '0');
                     
                     read_write_loopCtr                          <= 0;
-                    initial_loopCtr                             <= 31;
+                    initial_loopCtr                             <= 32;
                     
                     post_fft_rx09_mem_addrb                     <= (others => '0');
                     post_fft_rx09_mem_addrb_Int                 := 0;

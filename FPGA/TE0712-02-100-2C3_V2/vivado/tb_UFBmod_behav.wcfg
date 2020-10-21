@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="239758300fs"></ZoomStartTime>
-      <ZoomEndTime time="239847351fs"></ZoomEndTime>
-      <Cursor1Time time="239830000fs"></Cursor1Time>
+      <ZoomStartTime time="2166187468fs"></ZoomStartTime>
+      <ZoomEndTime time="2166262507fs"></ZoomEndTime>
+      <Cursor1Time time="2166250000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="867"></NameColumnWidth>
-      <ValueColumnWidth column_width="339"></ValueColumnWidth>
+      <ValueColumnWidth column_width="331"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="25" />
    <wave_markers>
@@ -315,14 +315,20 @@
    <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/decoder_rx09_ch00_SoM_frameCtr_1" type="array">
       <obj_property name="ElementShortName">decoder_rx09_ch00_SoM_frameCtr_1[31:0]</obj_property>
       <obj_property name="ObjectShortName">decoder_rx09_ch00_SoM_frameCtr_1[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/decoder_rx09_ch00_center_pos_1" type="array">
       <obj_property name="ElementShortName">decoder_rx09_ch00_center_pos_1[7:0]</obj_property>
       <obj_property name="ObjectShortName">decoder_rx09_ch00_center_pos_1[7:0]</obj_property>
+      <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/decoder_rx09_ch00_strength_1" type="array">
       <obj_property name="ElementShortName">decoder_rx09_ch00_strength_1[18:0]</obj_property>
       <obj_property name="ObjectShortName">decoder_rx09_ch00_strength_1[18:0]</obj_property>
+      <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/UFBmod_rx09_Decoders/decoder_rx09_ch00_FIFO_handshake" type="logic">
       <obj_property name="ElementShortName">decoder_rx09_ch00_FIFO_handshake</obj_property>

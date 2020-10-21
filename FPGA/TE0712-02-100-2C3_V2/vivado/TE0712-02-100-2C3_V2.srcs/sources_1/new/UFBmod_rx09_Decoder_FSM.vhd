@@ -147,12 +147,8 @@ begin
                                                         --wait_until_post_fft_done, 
                                                         --read_in_loop,
                                                         artemis_search_loop_start,
-                                                        artemis_search_loop_pre1_prep,
-                                                        artemis_search_loop_pre1, artemis_search_loop_pre1_ws1, artemis_search_loop_pre1_ws2, artemis_search_loop_pre1_get,
-                                                        artemis_search_loop_pre1_mult, artemis_search_loop_pre1_mult_ws1, artemis_search_loop_pre1_mult_ws2, artemis_search_loop_pre1_mult_ws3, artemis_search_loop_pre1_mult_in,
-                                                        artemis_search_loop_pre2, artemis_search_loop_pre2_ws1, artemis_search_loop_pre2_ws2, artemis_search_loop_pre2_get,
-                                                        artemis_search_loop_pre2_mult, artemis_search_loop_pre2_mult_ws1, artemis_search_loop_pre2_mult_ws2, artemis_search_loop_pre2_mult_ws3, artemis_search_loop_pre2_mult_in,
-                                                        artemis_search_loop_preX, artemis_search_loop_preX_ws1, artemis_search_loop_preX_ws2, artemis_search_loop_preX_get,
+                                                        artemis_search_loop_pre15_prep, artemis_search_loop_pre15_ws1, artemis_search_loop_pre15_ws2, artemis_search_loop_pre15_get,
+                                                        artemis_search_loop_preX_ws1, artemis_search_loop_preX_ws2, artemis_search_loop_preX_get,
                                                         artemis_search_loop_preX_mult, artemis_search_loop_preX_mult_ws1, artemis_search_loop_preX_mult_ws2, artemis_search_loop_preX_mult_ws3, artemis_search_loop_preX_mult_in,
                                                         artemis_search_loop_write, artemis_search_loop_end,
                                                         artemis_search_decider_init, artemis_search_decider_loop_start, artemis_search_decider_loop_ram_ws1, artemis_search_decider_loop_ram_ws2,
@@ -182,7 +178,7 @@ begin
                                                     );
     variable decoder_state                          : DecoderStateType;
     
-    variable decoder_FftFrameWork                           : STD_LOGIC_VECTOR( 7 downto 0);
+    variable decoder_FftFrameWork                           : STD_LOGIC_VECTOR(31 downto 0);
     variable fftArtemisIdx                                  : Integer  range 0 to (2**5  - 1);
     variable loopCnt                                        : Integer  range 0 to (2**8  - 1);
     variable isOddRow                                       : Integer  range 0 to (2**1  - 1);
@@ -196,8 +192,9 @@ begin
     variable signal_row0                                    : STD_LOGIC_VECTOR(15 downto 0);
     variable signal_row1                                    : STD_LOGIC_VECTOR(15 downto 0);
     variable signal_row2                                    : STD_LOGIC_VECTOR(15 downto 0);
-    variable signal_row1_max_val                            : STD_LOGIC_VECTOR(15 downto 0);
-    variable signal_row1_max_idx                            : STD_LOGIC_VECTOR( 4 downto 0);
+    variable signal_row3                                    : STD_LOGIC_VECTOR(15 downto 0);
+    variable signal_max_val                                 : STD_LOGIC_VECTOR(15 downto 0);
+    variable signal_max_idx                                 : STD_LOGIC_VECTOR( 4 downto 0);
     variable skipUntil                                      : Integer;
   begin
     if (clk'EVENT and clk = '1') then
@@ -213,8 +210,9 @@ begin
             signal_row0                                     := (others => '0');
             signal_row1                                     := (others => '0');
             signal_row2                                     := (others => '0');
-            signal_row1_max_val                             := (others => '0');
-            signal_row1_max_idx                             := (others => '0');
+            signal_row3                                     := (others => '0');
+            signal_max_val                                  := (others => '0');
+            signal_max_idx                                  := (others => '0');
             
             decoder_artemis_rx09_ch00_mult_ce               <= '0';
             decoder_artemis_rx09_ch00_mult_ina              <= (others => '0');
@@ -249,13 +247,13 @@ begin
                 -- Loop entry point
                 when loop_start =>
                     if (decoder_FftFrameWork(7 downto 0) /= decoder_fft_frame_avail_ctr(7 downto 0)) then
-                        decoder_FftFrameWork             := decoder_fft_frame_avail_ctr(7 downto 0);
+                        decoder_FftFrameWork             := decoder_fft_frame_avail_ctr;
                         
                         if (decoder_state /= NOP) then
                             state := decoder_process;
                             
                         else
-                            if (decoder_FftFrameWork(0) = '1') then
+                            if (decoder_FftFrameWork(0) = '0') then
                                 fftArtemisIdx                       := 0;
                                 isOddRow                            := 0;
                                 rowIdx                              := 0;
@@ -264,8 +262,9 @@ begin
                                 signal_row0                         := (others => '0');
                                 signal_row1                         := (others => '0');
                                 signal_row2                         := (others => '0');
-                                signal_row1_max_val                 := (others => '0');
-                                signal_row1_max_idx                 := (others => '0');
+                                signal_row3                         := (others => '0');
+                                signal_max_val                      := (others => '0');
+                                signal_max_idx                      := (others => '0');
                                 
                                 state := artemis_search_loop_start;
                             end if;
@@ -275,29 +274,29 @@ begin
                 -- 32x parallel execution of single additions
                 when artemis_search_loop_start =>
                     -- Current row position
-                    signal_bins_rx09_ch00_mem_addrb_base_Int        := to_integer(unsigned(decoder_fft_frame_avail_ctr(5 downto 0) & "00000"));
-                    decoder_artemis_rx09_ch00_mem_addra_base_Int    := to_integer(unsigned(decoder_fft_frame_avail_ctr(1 downto 0) & "00000"));
+                    signal_bins_rx09_ch00_mem_addrb_base_Int        := to_integer(unsigned(decoder_FftFrameWork(5 downto 0) & "00000"));
+                    decoder_artemis_rx09_ch00_mem_addra_base_Int    := to_integer(unsigned(decoder_FftFrameWork(1 downto 0) & "00000"));
                     
-                    state := artemis_search_loop_pre1_prep;
+                    state := artemis_search_loop_pre15_prep;
                     
                 -- Artemis: preamble hunter
-                when artemis_search_loop_pre1_prep =>
-                    rowIdx                              := 31 - isOddRow;
-                    posIdx                              := (32 + fftArtemisIdx + C_pre_ary(0)) mod 32;
+                when artemis_search_loop_pre15_prep =>
+                    rowIdx                              := 2 - isOddRow;
+                    posIdx                              := (32 + fftArtemisIdx + C_pre_ary(15)) mod 32;
                     signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_base_Int + (2**11) - (rowIdx * 32) + posIdx) mod (2**11);
                     
-                    state := artemis_search_loop_pre1_ws1;
+                    state := artemis_search_loop_pre15_ws1;
                     
-                when artemis_search_loop_pre1_ws1 =>
+                when artemis_search_loop_pre15_ws1 =>
                     -- Preamble 1
                     signal_bins_rx09_ch00_mem_addrb     <= std_logic_vector(to_unsigned(signal_bins_rx09_ch00_mem_addrb_Int, signal_bins_rx09_ch00_mem_addrb'length));
                     
-                    state := artemis_search_loop_pre1_ws2;
+                    state := artemis_search_loop_pre15_ws2;
                     
-                when artemis_search_loop_pre1_ws2 =>
-                    state := artemis_search_loop_pre1_get;
+                when artemis_search_loop_pre15_ws2 =>
+                    state := artemis_search_loop_pre15_get;
                     
-                when artemis_search_loop_pre1_get =>
+                when artemis_search_loop_pre15_get =>
                     decoder_artemis_rx09_ch00_mult_ce   <= '1';
                     -- Direct value to port B of multiplier
                     if (signal_bins_rx09_ch00_mem_datab >= C_mult_ina_inb_clamp_val(15 downto 0)) then
@@ -307,9 +306,9 @@ begin
                     end if;
                     
                     -- Skip multiplier steps and go ahead with processing of next row
-                    rowIdx                              := 29 - isOddRow;
-                    posIdx                              := (32 + fftArtemisIdx + C_pre_ary(1)) mod 32;
-                    preIdx                              := 1;
+                    rowIdx                              := 4 - isOddRow;
+                    posIdx                              := (32 + fftArtemisIdx + C_pre_ary(14)) mod 32;
+                    preIdx                              := 14;
                     signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_base_Int + (2**11) - (rowIdx * 32) + posIdx) mod (2**11);
                     
                     state := artemis_search_loop_preX_ws1;
@@ -345,8 +344,8 @@ begin
                     state := artemis_search_loop_preX_mult_in;
                     
                 when artemis_search_loop_preX_mult_in =>
-                    if (preIdx /= 15) then
-                        preIdx := preIdx + 1;
+                    if (preIdx /= 0) then
+                        preIdx := preIdx - 1;
                         
                         if (decoder_artemis_rx09_ch00_mult_outp >= C_mult_outp_clamp_val) then
                             -- Framed
@@ -357,7 +356,7 @@ begin
                         end if;
                         decoder_artemis_rx09_ch00_mult_ina  <= (others => '0');
                         
-                        rowIdx                              := 31 - (preIdx * 2) - isOddRow;
+                        rowIdx                              := (32 - (preIdx * 2)) - isOddRow;
                         posIdx                              := (32 + fftArtemisIdx + C_pre_ary(preIdx)) mod 32;
                         signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_base_Int + (2**11) - (rowIdx * 32) + posIdx) mod (2**11);
                         
@@ -373,7 +372,7 @@ begin
                         decoder_artemis_rx09_ch00_mult_ina  <= (others => '0');
                         decoder_artemis_rx09_ch00_mult_inb  <= (others => '0');
                         
-                        decoder_artemis_rx09_ch00_mem_addra_Int := (decoder_artemis_rx09_ch00_mem_addra_base_Int + (2**7) + fftArtemisIdx + ((isOddRow + 1) * 32)) mod (2**7);
+                        decoder_artemis_rx09_ch00_mem_addra_Int := (decoder_artemis_rx09_ch00_mem_addra_base_Int + (2**7) + fftArtemisIdx + (isOddRow * 32)) mod (2**7);
                         
                         decoder_artemis_rx09_ch00_mem_addra <= std_logic_vector(to_unsigned(decoder_artemis_rx09_ch00_mem_addra_Int, decoder_artemis_rx09_ch00_mem_addra'length));
                         decoder_artemis_rx09_ch00_mem_wea   <= '1';
@@ -405,7 +404,7 @@ begin
                     
                 when artemis_search_decider_init =>
                     fftArtemisIdx   := 0;
-                    rowIdx          := 2;
+                    rowIdx          := 3;
                     
                     state := artemis_search_decider_loop_start;
                     
@@ -422,7 +421,9 @@ begin
                     state := artemis_search_decider_loop_ram_get;
                     
                 when artemis_search_decider_loop_ram_get =>
-                    if (rowIdx = 2) then
+                    if (rowIdx = 3) then
+                        signal_row3 := decoder_artemis_rx09_ch00_mem_douta;
+                    elsif (rowIdx = 2) then
                         signal_row2 := decoder_artemis_rx09_ch00_mem_douta;
                     elsif (rowIdx = 1) then
                         signal_row1 := decoder_artemis_rx09_ch00_mem_douta;
@@ -438,10 +439,18 @@ begin
                         state  := artemis_search_decider_loop_start;
                     else
                         -- Set max value
+                        if ((signal_row2 > signal_row1) and (signal_row2 >= signal_row3)) then
+                            if (signal_max_val < signal_row2) then
+                                isOddRow       := 1;
+                                signal_max_val := signal_row2;
+                                signal_max_idx := std_logic_vector(to_unsigned(fftArtemisIdx, signal_max_idx'length));
+                            end if;
+                        end if;
                         if ((signal_row1 > signal_row0) and (signal_row1 >= signal_row2)) then
-                            if (signal_row1_max_val < signal_row1) then
-                                signal_row1_max_val := signal_row1;
-                                signal_row1_max_idx := std_logic_vector(to_unsigned(fftArtemisIdx, signal_row1_max_idx'length));
+                            if (signal_max_val < signal_row1) then
+                                isOddRow       := 0;
+                                signal_max_val := signal_row1;
+                                signal_max_idx := std_logic_vector(to_unsigned(fftArtemisIdx, signal_max_idx'length));
                             end if;
                         end if;
                         
@@ -458,7 +467,7 @@ begin
                 when artemis_search_level_check =>
                     decoder_artemis_rx09_ch00_mem_addra <= (others => '0');
                     
-                    if (signal_row1_max_val <= decoder_rx09_ch00_squelch_lvl(15 downto 0)) then
+                    if (signal_max_val <= decoder_rx09_ch00_squelch_lvl(15 downto 0)) then
                         state           := loop_start;
                     else
                       --decoder_state   := decode_preload;                                          -- when DEBUGGING Artemis - disable me
@@ -466,10 +475,10 @@ begin
                     end if;
                     
                 when artemis_search_handoff =>
-                    decoder_rx09_ch00_SoM_frameCtr  <= std_logic_vector(to_unsigned(to_integer(unsigned(decoder_fft_frame_avail_ctr)), decoder_rx09_ch00_SoM_frameCtr'length));
-                    decoder_rx09_ch00_center_pos    <= "000" & signal_row1_max_idx;
-                    decoder_rx09_ch00_strength      <= "000" & signal_row1_max_val;
-                    skipUntil                       := to_integer(unsigned(decoder_fft_frame_avail_ctr)) + 32;
+                    skipUntil                       :=                               to_integer(unsigned(decoder_FftFrameWork)) + 32 - isOddRow;
+                    decoder_rx09_ch00_SoM_frameCtr  <= std_logic_vector(to_unsigned((to_integer(unsigned(decoder_FftFrameWork))      - isOddRow), decoder_rx09_ch00_SoM_frameCtr'length));
+                    decoder_rx09_ch00_center_pos    <= "000" & signal_max_idx;
+                    decoder_rx09_ch00_strength      <= "000" & signal_max_val;
                     
                     state := decoder_process;
                     state := loop_start;                                                            -- when DEBUGGING Artemis -  enable me
@@ -478,7 +487,7 @@ begin
                 when decoder_process =>
                     case decoder_state is
                         when decode_preload =>
-                            if (skipUntil > to_integer(unsigned(decoder_fft_frame_avail_ctr))) then
+                            if (skipUntil > to_integer(unsigned(decoder_FftFrameWork))) then
                                 -- Wait for next frame
                                 decoder_state := decode_preload;
                                 state         := loop_start;                                        -- fetch next row
