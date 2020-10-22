@@ -515,18 +515,20 @@ begin
                             
                             
                         when decode_message_loop_start =>
-                            --
+                            bytePattern     := (others => '0');
+                            
                             decoder_state   := decode_byteTry_loop_start;
                             
                         when decode_byteTry_loop_start =>
-                            bytePattern     := (others => '0');
-                            bytePattern     := x"ac";   -- DEBUGGING: fast try
                             byteBit_idx     := 7;
                             posIdx          := decoder_rx09_ch00_center_pos_Int;
                             
                             decoder_state   := decode_message_ram_prep;
                             
                         when decode_message_ram_prep =>
+                            decoder_artemis_rx09_ch00_mult_ina <= x"0000";
+                            decoder_artemis_rx09_ch00_mult_inb <= x"00000100";
+                            
                             rowIdx := 2 * (8 - (7 - byteBit_idx));
                             
                             if (bytePattern(byteBit_idx) = '1') then
@@ -536,8 +538,6 @@ begin
                             end if;
                             
                             signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_base_Int + (2**11) - (rowIdx * 32) + posIdx) mod (2**11);
-                            
-                            byteBit_idx := byteBit_idx - 1;
                             
                             decoder_state := decode_message_ram_ws1;
                             
@@ -553,30 +553,18 @@ begin
                             decoder_artemis_rx09_ch00_mult_ce   <= '1';
                             -- Direct value to port B of multiplier
                             if (signal_bins_rx09_ch00_mem_datab >= C_mult_ina_inb_clamp_val(15 downto 0)) then
-                                decoder_artemis_rx09_ch00_mult_inb <= C_mult_ina_inb_clamp_val;
+                                decoder_artemis_rx09_ch00_mult_ina <= C_mult_ina_inb_clamp_val(15 downto 0);
                             else
-                                decoder_artemis_rx09_ch00_mult_inb <= x"0000" & signal_bins_rx09_ch00_mem_datab;
+                                decoder_artemis_rx09_ch00_mult_ina <= signal_bins_rx09_ch00_mem_datab;
                             end if;
                             
                             -- Skip multiplier steps and go ahead with processing of next row
                             decoder_state := decode_message_mult_prep;
                             
                         when decode_message_mult_prep =>
-                            rowIdx := 2 * (8 - (7 - byteBit_idx));
-                            
-                            if (bytePattern(byteBit_idx) = '1') then
-                                posIdx := (32 + posIdx + C_bit_1_0) mod 32;
-                            else
-                                posIdx := (32 + posIdx + C_bit_0_0) mod 32;
-                            end if;
-                            
-                            signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_base_Int + (2**11) - (rowIdx * 32) + posIdx) mod (2**11);
-                            
                             decoder_state := decode_message_mult_ws1;
                             
                         when decode_message_mult_ws1 =>
-                            signal_bins_rx09_ch00_mem_addrb     <= std_logic_vector(to_unsigned(signal_bins_rx09_ch00_mem_addrb_Int, signal_bins_rx09_ch00_mem_addrb'length));
-                            
                             decoder_state := decode_message_mult_ws2;
                             
                         when decode_message_mult_ws2 =>
@@ -627,16 +615,20 @@ begin
                             end if;
                             
                         when decode_message_byteTry_write =>
+                            decoder_artemis_rx09_ch00_mem_wea   <= '0';
                             
+                            decoder_state := decode_byteTry_loop_end;
                             
                         when decode_byteTry_loop_end =>
                             if (bytePattern /= x"ff") then
                                 bytePattern := std_logic_vector(to_unsigned((to_integer(unsigned(bytePattern)) + 1), bytePattern'length));
+                                decoder_state := decode_byteTry_loop_start;
                             else
+                                decoder_state := decode_message_loop_end;
                             end if;
-                            
-                            
+                                                        
                         when decode_message_loop_end =>
+                            decoder_state := decode_message_loop_end;
                             
                             
                         when others =>
