@@ -138,53 +138,69 @@ begin
   
   -- UFBmod encoder for the RF09 transmitter
   proc_UFBmod_Encoder_tx09: process (reset, clk, decoder_rx09_sql_open, decoder_rx09_active, encoder_pull_FIFO_dump, encoder_pull_do_start, encoder_pull_data_len, pulldata_tx09_byteData)
-    constant C_pre_r0                               : Integer :=  +7;
-    constant C_pre_r1                               : Integer := - 9;
-    constant C_pre_r2                               : Integer := +13;
-    constant C_pre_r3                               : Integer := -15;
-    constant C_pre_r4                               : Integer := +19;
-    constant C_pre_r5                               : Integer := -21;
-
-    constant C_bit_1                                : Integer := +17;
-    constant C_bit_0                                : Integer := -11;
+    constant C_pre_r00                              : Integer :=  -8;
+    constant C_pre_r01                              : Integer := +14;
+    constant C_pre_r02                              : Integer := -10;
+    constant C_pre_r03                              : Integer := +18;
+    constant C_pre_r04                              : Integer :=  -6;
+    constant C_pre_r05                              : Integer := +12;
+    constant C_pre_r06                              : Integer := -14;
+    constant C_pre_r07                              : Integer := +10;
+    constant C_pre_r08                              : Integer :=  -2;
+    constant C_pre_r09                              : Integer :=  +8;
+    constant C_pre_r10                              : Integer := -18;
+    constant C_pre_r11                              : Integer :=  +4;
+    constant C_pre_r12                              : Integer :=  -4;
+    constant C_pre_r13                              : Integer :=  +2;
+    constant C_pre_r14                              : Integer := -12;
+    constant C_pre_r15                              : Integer :=  +6;
+    type     T_pre_ary                              is array (0 to 15) of Integer;
+    variable C_pre_ary                              : T_pre_ary := (C_pre_r00, C_pre_r01, C_pre_r02, C_pre_r03, C_pre_r04, C_pre_r05, C_pre_r06, C_pre_r07,
+                                                                    C_pre_r08, C_pre_r09, C_pre_r10, C_pre_r11, C_pre_r12, C_pre_r13, C_pre_r14, C_pre_r15);
     
-    constant C_fin_0                                : Integer :=  +5;
-    constant C_fin_1                                : Integer :=  -3;
-    constant C_fin_2                                : Integer :=  +1;
+    constant C_bit_0_0                              : Integer :=  -3;
+    constant C_bit_0_1                              : Integer :=  -7;
+    
+    constant C_bit_1_0                              : Integer :=  +5;
+    constant C_bit_1_1                              : Integer := +11;
+    
+    constant C_fin_0                                : Integer :=  -7;
+    constant C_fin_1                                : Integer :=  +7;
+    constant C_fin_2                                : Integer :=  -5;
+    constant C_fin_3                                : Integer :=  +5;
+    constant C_fin_4                                : Integer :=  -3;
+    constant C_fin_5                                : Integer :=  +3;
+    constant C_fin_6                                : Integer :=  -1;
+    constant C_fin_7                                : Integer :=  +1;
+    type     T_fin_ary                              is array (0 to  7) of Integer;
+    variable C_fin_ary                              : T_fin_ary := (C_fin_0, C_fin_1, C_fin_2, C_fin_3, C_fin_4, C_fin_5, C_fin_6, C_fin_7);
+    
     
   --constant C_128us_loopcnt                        : Integer := 12800;
     constant C_128us_loopcnt                        : Integer := (12800 * 328);     -- Debugging purposes
     
     type StateType                                  is (
                                                         init, loop_start,
-                                                        fifo_dump, fifo_pull, fifo_pull_ws1, fifo_pull_ws2, fifo_pull_ofs, fifo_pull_remain, fifo_pull_u32len, fifo_pull_data,
+                                                        fifo_dump, fifo_pull, fifo_pull_ws1, fifo_pull_ws2, fifo_pull_ofs, fifo_pull_data,
                                                         tx_init,
                                                         tx_rampup_dds, tx_rampup_hold_2x128us,
-                                                        tx_preamble_0_dds, tx_preamble_0_hold_128us,
-                                                        tx_preamble_1_dds, tx_preamble_1_hold_128us,
-                                                        tx_preamble_2_dds, tx_preamble_2_hold_128us,
-                                                        tx_preamble_3_dds, tx_preamble_3_hold_128us,
-                                                        tx_preamble_4_dds, tx_preamble_4_hold_128us,
-                                                        tx_preamble_5_dds, tx_preamble_5_hold_128us,
-                                                        tx_remainctr_dds, tx_remainctr_hold_128us,
-                                                        tx_u32len_dds, tx_u32len_hold_128us,
+                                                        tx_preamble_preX_dds, tx_preamble_preX_hold_128us,
                                                         tx_body_dds, tx_body_hold_128us,
-                                                        tx_final_0_dds, tx_final_0_hold_128us,
-                                                        tx_final_1_dds, tx_final_1_hold_128us,
-                                                        tx_final_2_dds, tx_final_2_hold_128us,
+                                                        tx_final_finX_dds, tx_final_finX_hold_128us,
                                                         tx_rampdown_dds, tx_rampdown_hold_128us
                                                     );
     variable state                                  : StateType;
     
     variable loop_cnt                               : Integer;
-    variable pull_cnt                               : Integer;
-    variable bit_pos                                : Integer;
-    variable encoder_tx09_in_len_cnt                : Integer;
+    variable preIdx                                 : Integer  range 0 to (2**5  - 1);
+    variable pull_cnt                               : Integer  range 0 to (2**5  - 1);
+    variable bit_pos                                : Integer  range 0 to (2**1  - 1);
+    variable encoder_tx09_in_len_cnt                : Integer  range 0 to (2**5  - 1);
+    variable byteBit_cnt                            : Integer  range 0 to (2**3  - 1);
     
-    variable encoder_ofs                            : Integer;
-    variable encoder_frq_last                       : Integer;
-    variable encoder_remain                         : Integer;
-    variable encoder_u32len                         : Integer;
+    variable encoder_ofs                            : Integer  range 0 to (2**5  - 1);
+    variable encoder_frq_initial                    : Integer  range 0 to (2**5  - 1);
+    variable encoder_frq_last                       : Integer  range 0 to (2**5  - 1);
   begin
     if (clk'EVENT and clk = '1') then
         if (reset = '1') then
@@ -194,14 +210,15 @@ begin
             encoder_tx09_in_len                     <= (others => '0');
             
             loop_cnt                                := 0;
+            preIdx                                  := 0;
             pull_cnt                                := 0;
             bit_pos                                 := 0;
             encoder_tx09_in_len_cnt                 := 0;
+            byteBit_cnt                             := 0;
             
             encoder_ofs                             := 0;
+            encoder_frq_initial                     := 0;
             encoder_frq_last                        := 0;
-            encoder_remain                          := 0;
-            encoder_u32len                          := 0;
             
             dds_tx09_ptt                            <= '0';
             
@@ -251,25 +268,6 @@ begin
                     encoder_ofs     := to_integer(unsigned(pulldata_tx09_byteData));
                     
                     pull_cnt := pull_cnt - 1;
-                    state := fifo_pull_remain;
-                    
-                when fifo_pull_remain =>
-                    encoder_remain  := to_integer(unsigned(pulldata_tx09_byteData));
-                    
-                    pull_cnt := pull_cnt - 1;
-                    if (pull_cnt = 3) then
-                        pulldata_tx09_en <= '0';
-                    end if;
-                    
-                    state := fifo_pull_u32len;
-                    
-                when fifo_pull_u32len =>
-                    encoder_u32len  := to_integer(unsigned(pulldata_tx09_byteData));
-                    
-                    pull_cnt := pull_cnt - 1;
-                    if (pull_cnt = 3) then
-                        pulldata_tx09_en <= '0';
-                    end if;
                     state := fifo_pull_data;
                     
                 when fifo_pull_data =>
@@ -303,129 +301,59 @@ begin
                     if (loop_cnt /= 0) then
                         loop_cnt    := loop_cnt - 1;
                     else
-                        state := tx_preamble_0_dds;
+                        state       := tx_preamble_preX_dds;
+                        preIdx      := 0;
                     end if;
                     
                     
-                when tx_preamble_0_dds =>
-                    dds_new_freq    := (16 + encoder_ofs + C_pre_r0) mod 32;
+                when tx_preamble_preX_dds =>
+                    dds_new_freq    := (16 + encoder_ofs + C_pre_ary(preIdx)) mod 32;
                     loop_cnt        := C_128us_loopcnt;
-                    state := tx_preamble_0_hold_128us;
+                    state := tx_preamble_preX_hold_128us;
                     
-                when tx_preamble_0_hold_128us =>
+                when tx_preamble_preX_hold_128us =>
                     if (loop_cnt /= 0) then
                         loop_cnt    := loop_cnt - 1;
                     else
-                        state := tx_preamble_1_dds;
-                    end if;
-                    
-                when tx_preamble_1_dds =>
-                    dds_new_freq    := (16 + encoder_ofs + C_pre_r1) mod 32;
-                    loop_cnt        := C_128us_loopcnt;
-                    state := tx_preamble_1_hold_128us;
-                    
-                when tx_preamble_1_hold_128us =>
-                    if (loop_cnt /= 0) then
-                        loop_cnt    := loop_cnt - 1;
-                    else
-                        state := tx_preamble_2_dds;
-                    end if;
-                    
-                when tx_preamble_2_dds =>
-                    dds_new_freq    := (16 + encoder_ofs + C_pre_r2) mod 32;
-                    loop_cnt        := C_128us_loopcnt;
-                    state := tx_preamble_2_hold_128us;
-                    
-                when tx_preamble_2_hold_128us =>
-                    if (loop_cnt /= 0) then
-                        loop_cnt    := loop_cnt - 1;
-                    else
-                        state := tx_preamble_3_dds;
-                    end if;
-                    
-                when tx_preamble_3_dds =>
-                    dds_new_freq    := (16 + encoder_ofs + C_pre_r3) mod 32;
-                    loop_cnt        := C_128us_loopcnt;
-                    state := tx_preamble_3_hold_128us;
-                    
-                when tx_preamble_3_hold_128us =>
-                    if (loop_cnt /= 0) then
-                        loop_cnt    := loop_cnt - 1;
-                    else
-                        state := tx_preamble_4_dds;
-                    end if;
-                    
-                when tx_preamble_4_dds =>
-                    dds_new_freq    := (16 + encoder_ofs + C_pre_r4) mod 32;
-                    loop_cnt        := C_128us_loopcnt;
-                    state := tx_preamble_4_hold_128us;
-                    
-                when tx_preamble_4_hold_128us =>
-                    if (loop_cnt /= 0) then
-                        loop_cnt    := loop_cnt - 1;
-                    else
-                        state := tx_preamble_5_dds;
-                    end if;
-                    
-                when tx_preamble_5_dds =>
-                    dds_new_freq    := (16 + encoder_ofs + C_pre_r5) mod 32;
-                    loop_cnt        := C_128us_loopcnt;
-                    state := tx_preamble_5_hold_128us;
-                    
-                when tx_preamble_5_hold_128us =>
-                    if (loop_cnt /= 0) then
-                        loop_cnt    := loop_cnt - 1;
-                    else
-                        state := tx_remainctr_dds;
-                    end if;
-                    
-                    
-                when tx_remainctr_dds =>
-                    dds_new_freq    := (16 + encoder_ofs + encoder_remain) mod 32;
-                    loop_cnt        := C_128us_loopcnt;
-                    state := tx_remainctr_hold_128us;
-                    
-                when tx_remainctr_hold_128us =>
-                    if (loop_cnt /= 0) then
-                        loop_cnt    := loop_cnt - 1;
-                    else
-                        state := tx_u32len_dds;
-                    end if;
-                    
-                    
-                when tx_u32len_dds =>
-                    encoder_frq_last    := (16 + encoder_ofs + encoder_u32len) mod 32;
-                    dds_new_freq        := encoder_frq_last;
-                    loop_cnt            := C_128us_loopcnt;
-                    state := tx_u32len_hold_128us;
-                    
-                when tx_u32len_hold_128us =>
-                    if (loop_cnt /= 0) then
-                        loop_cnt    := loop_cnt - 1;
-                    else
-                        state := tx_body_dds;
+                        if (preIdx /= 15) then
+                            preIdx              := preIdx + 1;
+                            state               := tx_preamble_preX_dds;
+                        else
+                            state               := tx_body_dds;
+                            byteBit_cnt         := 0;
+                            encoder_frq_last    := encoder_frq_initial;
+                        end if;
                     end if;
                     
                     
                 when tx_body_dds =>
                     if (encoder_tx09_in_len_cnt /= 0) then
                         bit_pos := encoder_tx09_in_len_cnt - 1;
+                        
                         if (encoder_tx09_in_vec(bit_pos) = '1') then
-                            encoder_frq_last    := ((32 + C_bit_1) + encoder_frq_last) mod 32;
+                            encoder_frq_last    := ((32 + C_bit_1_0) + encoder_frq_last) mod 32;
                         else
-                            encoder_frq_last    := ((32 + C_bit_0) + encoder_frq_last) mod 32;
+                            encoder_frq_last    := ((32 + C_bit_0_0) + encoder_frq_last) mod 32;
                         end if;
                         encoder_tx09_in_len_cnt := encoder_tx09_in_len_cnt - 1;
                         
                         dds_new_freq            := encoder_frq_last;
                         loop_cnt                := C_128us_loopcnt;
                         
+                        if (byteBit_cnt /= 7) then
+                            byteBit_cnt := byteBit_cnt + 1;
+                        else
+                            byteBit_cnt := 0;
+                            encoder_frq_last := encoder_frq_initial;
+                        end if;
+                        
                         state := tx_body_hold_128us;
                     else
                         encoder_tx09_in_vec <= (others => '0');
                         encoder_tx09_in_len <= (others => '0');
                         
-                        state := tx_final_0_dds;
+                        preIdx  := 0;
+                        state   := tx_final_finX_dds;
                     end if;
                     
                 when tx_body_hold_128us =>
@@ -436,43 +364,22 @@ begin
                     end if;
                 
                     
-                when tx_final_0_dds =>
+                when tx_final_finX_dds =>
                     dds_new_freq    := ((32 + C_fin_0) + encoder_frq_last) mod 32;
                     loop_cnt        := C_128us_loopcnt;
                     
-                    state := tx_final_0_hold_128us;
+                    state := tx_final_finX_hold_128us;
                     
-                when tx_final_0_hold_128us =>
+                when tx_final_finX_hold_128us =>
                     if (loop_cnt /= 0) then
                         loop_cnt    := loop_cnt - 1;
                     else
-                        state := tx_final_1_dds;
-                    end if;
-                    
-                when tx_final_1_dds =>
-                    dds_new_freq    := ((32 + C_fin_1) + encoder_frq_last) mod 32;
-                    loop_cnt        := C_128us_loopcnt;
-                    
-                    state := tx_final_1_hold_128us;
-                    
-                when tx_final_1_hold_128us =>
-                    if (loop_cnt /= 0) then
-                        loop_cnt    := loop_cnt - 1;
-                    else
-                        state := tx_final_2_dds;
-                    end if;
-                    
-                when tx_final_2_dds =>
-                    dds_new_freq    := ((32 + C_fin_2) + encoder_frq_last) mod 32;
-                    loop_cnt        := C_128us_loopcnt;
-                    
-                    state := tx_final_2_hold_128us;
-                    
-                when tx_final_2_hold_128us =>
-                    if (loop_cnt /= 0) then
-                        loop_cnt    := loop_cnt - 1;
-                    else
-                        state := tx_rampdown_dds;
+                        if (preIdx /= 7) then
+                            preIdx  := preIdx + 1;
+                            state   := tx_final_finX_dds;
+                        else
+                            state   := tx_rampdown_dds;
+                        end if;
                     end if;
                     
                     
@@ -493,8 +400,6 @@ begin
                         encoder_tx09_in_len_cnt := 0;
                         encoder_ofs             := 0;
                         encoder_frq_last        := 0;
-                        encoder_remain          := 0;
-                        encoder_u32len          := 0;
                     end if;
                     
                 when others =>

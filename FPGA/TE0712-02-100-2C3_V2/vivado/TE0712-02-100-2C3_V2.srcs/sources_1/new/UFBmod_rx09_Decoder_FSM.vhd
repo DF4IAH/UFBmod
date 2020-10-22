@@ -138,6 +138,9 @@ begin
     constant C_fin_5                                : Integer :=  +3;
     constant C_fin_6                                : Integer :=  -1;
     constant C_fin_7                                : Integer :=  +1;
+    type     T_fin_ary                              is array (0 to  7) of Integer;
+    variable C_fin_ary                              : T_fin_ary := (C_fin_0, C_fin_1, C_fin_2, C_fin_3, C_fin_4, C_fin_5, C_fin_6, C_fin_7);
+    
     
     constant C_mult_ina_inb_clamp_val               : STD_LOGIC_VECTOR(31 downto 0) := x"00000200";
     constant C_mult_outp_clamp_val                  : STD_LOGIC_VECTOR(31 downto 0) := x"0007ffff";

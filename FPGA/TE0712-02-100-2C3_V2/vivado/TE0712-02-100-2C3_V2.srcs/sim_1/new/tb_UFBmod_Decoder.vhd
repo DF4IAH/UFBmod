@@ -240,6 +240,9 @@ begin
     constant C_pre_r13                              : Integer :=  +2;
     constant C_pre_r14                              : Integer := -12;
     constant C_pre_r15                              : Integer :=  +6;
+    type     T_pre_ary                              is array (0 to 15) of Integer;
+    variable C_pre_ary                              : T_pre_ary := (C_pre_r00, C_pre_r01, C_pre_r02, C_pre_r03, C_pre_r04, C_pre_r05, C_pre_r06, C_pre_r07,
+                                                                    C_pre_r08, C_pre_r09, C_pre_r10, C_pre_r11, C_pre_r12, C_pre_r13, C_pre_r14, C_pre_r15);
     
     constant C_bit_0_0                              : Integer :=  -3;
     constant C_bit_0_1                              : Integer :=  -7;
@@ -255,6 +258,9 @@ begin
     constant C_fin_5                                : Integer :=  +3;
     constant C_fin_6                                : Integer :=  -1;
     constant C_fin_7                                : Integer :=  +1;
+    type     T_fin_ary                              is array (0 to  7) of Integer;
+    variable C_fin_ary                              : T_fin_ary := (C_fin_0, C_fin_1, C_fin_2, C_fin_3, C_fin_4, C_fin_5, C_fin_6, C_fin_7);
+    
     
     constant C_postmem_depth                        : Integer   := 1024;
     constant C_postmem_pages                        : Integer   := 256;
@@ -338,27 +344,13 @@ begin
   --postmemSim(row * 1024 + ((16 + C_centerOfs + 0        ) mod 32))  := C_signal_080ct;  row := row + 2;
     
     -- Preamble
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r00) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r01) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r02) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r03) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r04) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r05) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r06) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r07) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r08) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r09) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r10) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r11) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r12) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r13) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r14) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_r15) mod 32))  := C_signal_100ct;  row := row + 2;
+    for ii in 0 to 15 loop
+        postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_ary(ii)) mod 32))  := C_signal_100ct;  row := row + 2;
+    end loop;
     
-    -- Start at C_centerOfs
-    sigPos := (16 + C_centerOfs     ) mod 32;
     
     -- Message body
+    sigPos := (16 + C_centerOfs       ) mod 32;
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1' = 0xac
     postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
@@ -384,6 +376,7 @@ begin
     postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
     
+    sigPos := (16 + C_centerOfs       ) mod 32;
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0' = 0x53
     postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
@@ -409,6 +402,7 @@ begin
     postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
     
+    sigPos := (16 + C_centerOfs       ) mod 32;
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1' = 0xe2
     postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
@@ -434,6 +428,7 @@ begin
     postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
     
+    sigPos := (16 + C_centerOfs       ) mod 32;
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0' = 0x0f
     postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     
@@ -459,15 +454,11 @@ begin
     postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
     -- End of message
     
-    -- Footer
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_0) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_1) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_2) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_3) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_4) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_5) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_6) mod 32))  := C_signal_100ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_7) mod 32))  := C_signal_100ct;  row := row + 2;
+    
+    -- Final
+    for ii in 0 to 7 loop
+        postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_ary(ii)) mod 32))  := C_signal_100ct;  row := row + 2;
+    end loop;
     
     -- PA ramp-down
     postmemSim(row * 1024 + ((16 + C_centerOfs + 0      ) mod 32))  := C_signal_080ct;  row := row + 2;
