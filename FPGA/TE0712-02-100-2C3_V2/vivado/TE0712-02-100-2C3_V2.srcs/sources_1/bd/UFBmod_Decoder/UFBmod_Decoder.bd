@@ -1220,7 +1220,7 @@
                 "value": "false"
               },
               "Write_Depth_A": {
-                "value": "128"
+                "value": "256"
               },
               "Write_Width_A": {
                 "value": "16"
@@ -1376,7 +1376,7 @@
               },
               "decoder_artemis_rx09_ch00_mem_addra": {
                 "direction": "O",
-                "left": "6",
+                "left": "7",
                 "right": "0"
               },
               "decoder_artemis_rx09_ch00_mem_dina": {

@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.0",
-   "Default View_TopLeft":"1085,-32",
+   "Default View_ScaleFactor":"1.41421",
+   "Default View_TopLeft":"1616,222",
    "ExpandedHierarchyInLayout":"/Decoder_rx09_to_FIFO|/FFT_rx09_to_Decoder|/UFBmod_rx09_Decoders",
    "PinnedBlocks":"/FFT_rx09_to_Decoder|/UFBmod_rx09_Decoders|/Decoder_rx09_to_FIFO|",
    "PinnedPorts":"clk_100MHz|dds_tx09_ptt|decoder_rx09_ch00_active|decoder_rx09_ch00_noise|decoder_rx09_ch00_sql_open|decoder_rx09_ch00_squelch_lvl|post_fft_rx09_mem_a_EoT|post_fft_rx09_mem_a_addr|post_fft_rx09_mem_b_addr|post_fft_rx09_mem_b_dout|pushdata_rx09_byteData|pushdata_rx09_en|reset_100MHz|decoder_rx09_ch00_strength|decoder_rx09_ch00_center_pos|",

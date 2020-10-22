@@ -149,7 +149,7 @@ begin
 
   -- Squelch level setting
   proc_squelch_lvl: process
-  constant C_squelch_lvl_ch00                   : Integer   :=  10;
+  constant C_squelch_lvl_ch00                   : Integer   := 256;
   begin
     tb_decoder_rx09_ch00_squelch_lvl    <= (others => '0');
     tb_dds_tx09_ptt                     <= '0';
@@ -269,9 +269,9 @@ begin
     constant C_centerOfs                            : Integer   := 0;
     
     
-    constant C_signal_100ct                         : Integer   :=   1;     -- signal: 0x004e, noise: 0x009f, SQL-level: > 0x00ec
-    constant C_signal_080ct                         : Integer   :=   1;
-    constant C_signal_050ct                         : Integer   :=   0;
+  --constant C_signal_100ct                         : Integer   :=   1;     -- signal: 0x004e, noise: 0x009f, SQL-level: > 0x00ec
+  --constant C_signal_080ct                         : Integer   :=   1;
+  --constant C_signal_050ct                         : Integer   :=   0;
     
   --constant C_signal_100ct                         : Integer   :=   2;     -- signal: 0x02a2, noise: 0x00a0, SQL-level: > 0x00ec
   --constant C_signal_080ct                         : Integer   :=   2;
@@ -297,9 +297,9 @@ begin
   --constant C_signal_080ct                         : Integer   :=  10;
   --constant C_signal_050ct                         : Integer   :=   6;
     
-  --constant C_signal_100ct                         : Integer   :=  15;     -- signal: 0x07ff, noise: 0x00ad, SQL-level: > 0x00ec
-  --constant C_signal_080ct                         : Integer   :=  12;
-  --constant C_signal_050ct                         : Integer   :=   8;
+    constant C_signal_100ct                         : Integer   :=  15;     -- signal: 0x07ff, noise: 0x00ad, SQL-level: > 0x00ec
+    constant C_signal_080ct                         : Integer   :=  12;
+    constant C_signal_050ct                         : Integer   :=   8;
     
   --constant C_signal_100ct                         : Integer   := 200;     -- signal: 0x07ff, noise: 0x0166, SQL-level: > 0x00ec
   --constant C_signal_080ct                         : Integer   := 160;

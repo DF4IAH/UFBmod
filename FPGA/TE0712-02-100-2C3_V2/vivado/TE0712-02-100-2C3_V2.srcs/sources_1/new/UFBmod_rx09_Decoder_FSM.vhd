@@ -59,7 +59,7 @@ entity UFBmod_rx09_Decoder_FSM is
     decoder_artemis_rx09_ch00_mult_outp             : in  STD_LOGIC_VECTOR(31 downto 0);
     
     decoder_artemis_rx09_ch00_mem_wea               : out STD_LOGIC;
-    decoder_artemis_rx09_ch00_mem_addra             : out STD_LOGIC_VECTOR( 6 downto 0);  -- 4 rows (2 bit) x 32 bins (5 bits)
+    decoder_artemis_rx09_ch00_mem_addra             : out STD_LOGIC_VECTOR( 7 downto 0);  -- 128(+128): 4 rows (2 bit) x 32 bins (5 bits) // 256: test byte combinations
     decoder_artemis_rx09_ch00_mem_dina              : out STD_LOGIC_VECTOR(15 downto 0);
     decoder_artemis_rx09_ch00_mem_douta             : in  STD_LOGIC_VECTOR(15 downto 0);
     
@@ -152,12 +152,12 @@ begin
                                                         artemis_search_loop_start,
                                                         artemis_search_loop_pre15_prep, artemis_search_loop_pre15_ws1, artemis_search_loop_pre15_ws2, artemis_search_loop_pre15_get,
                                                         artemis_search_loop_preX_ws1, artemis_search_loop_preX_ws2, artemis_search_loop_preX_get,
-                                                        artemis_search_loop_preX_mult, artemis_search_loop_preX_mult_ws1, artemis_search_loop_preX_mult_ws2, artemis_search_loop_preX_mult_ws3, artemis_search_loop_preX_mult_in,
+                                                        artemis_search_loop_preX_mult_prep, artemis_search_loop_preX_mult_ws1, artemis_search_loop_preX_mult_ws2, artemis_search_loop_preX_mult_ws3, artemis_search_loop_preX_mult_get,
                                                         artemis_search_loop_write, artemis_search_loop_end,
                                                         artemis_search_decider_init, artemis_search_decider_loop_start, artemis_search_decider_loop_ram_ws1, artemis_search_decider_loop_ram_ws2,
                                                         artemis_search_decider_loop_ram_get, artemis_search_decider_loop_end,
                                                         artemis_search_level_check, artemis_search_handoff,
-                                                        decoder_init, decoder_process
+                                                        decoder_process
 --                                                        pushdata_prepare_calc, pushdata_prepare_shift,
 --                                                        pushdata_header_a, pushdata_header_b,
 --                                                        pushdata_signal_msb_a, pushdata_signal_msb_b, pushdata_signal_lsb_a, pushdata_signal_lsb_b,
@@ -172,16 +172,22 @@ begin
     
     type DecoderStateType                           is (
                                                         NOP,
-                                                          decode_preload,
-                                                          decode_message_init 
---                                                        decode_message_loop_r5, decode_message_loop_r3, decode_message_loop_r1,
+                                                        decode_preload,
+                                                        decode_message_loop_start,
+                                                        decode_byteTry_loop_start, 
+                                                        decode_message_ram_prep, decode_message_ram_ws1, decode_message_ram_ws2, decode_message_ram_get,
+                                                        decode_message_mult_prep, decode_message_mult_ws1, decode_message_mult_ws2, decode_message_mult_ws3, decode_message_mult_get,
+                                                        decode_message_byteTry_write,
+                                                        decode_byteTry_loop_end,
 --                                                        decode_message_check_end,
+                                                        decode_message_loop_end
 --                                                        decode_message_decider_reduction_r1, decode_message_decider_reduction_r2, decode_message_decider_reduction_r3, decode_message_decider_reduction_r4,
 --                                                        decode_message_decider_f, decode_message_decider_01
                                                     );
     variable decoder_state                          : DecoderStateType;
     
     variable decoder_FftFrameWork                           : STD_LOGIC_VECTOR(31 downto 0);
+    variable decoder_rx09_ch00_center_pos_Int               : Integer  range 0 to (2**8  - 1);
     variable fftArtemisIdx                                  : Integer  range 0 to (2**5  - 1);
     variable loopCnt                                        : Integer  range 0 to (2**8  - 1);
     variable isOddRow                                       : Integer  range 0 to (2**1  - 1);
@@ -199,10 +205,14 @@ begin
     variable signal_max_val                                 : STD_LOGIC_VECTOR(15 downto 0);
     variable signal_max_idx                                 : STD_LOGIC_VECTOR( 4 downto 0);
     variable skipUntil                                      : Integer;
+    
+    variable bytePattern                                    : STD_LOGIC_VECTOR( 7 downto 0);
+    variable byteBit_idx                                    : Integer  range 0 to (2**3  - 1);
   begin
     if (clk'EVENT and clk = '1') then
         if ((reset = '1') or (dds_tx09_ptt = '1')) then
             signal_bins_rx09_ch00_mem_addrb                 <= (others => '0');
+            decoder_rx09_ch00_center_pos_Int                := 0;
             rowIdx                                          := 0;
             posIdx                                          := 0;
             preIdx                                          := 0;
@@ -236,6 +246,9 @@ begin
             loopCnt                                         := 0;
             
             skipUntil                                       := 0;
+            
+            bytePattern                                     := (others => '0');
+            byteBit_idx                                     := 0;
             
             state                                           := init;
             decoder_state                                   := NOP;
@@ -332,9 +345,9 @@ begin
                         decoder_artemis_rx09_ch00_mult_ina <= signal_bins_rx09_ch00_mem_datab;
                     end if;
                     
-                    state := artemis_search_loop_preX_mult;
+                    state := artemis_search_loop_preX_mult_prep;
                     
-                when artemis_search_loop_preX_mult =>
+                when artemis_search_loop_preX_mult_prep =>
                     state := artemis_search_loop_preX_mult_ws1;
                     
                 when artemis_search_loop_preX_mult_ws1 =>
@@ -344,9 +357,9 @@ begin
                     state := artemis_search_loop_preX_mult_ws3;
                     
                 when artemis_search_loop_preX_mult_ws3 =>
-                    state := artemis_search_loop_preX_mult_in;
+                    state := artemis_search_loop_preX_mult_get;
                     
-                when artemis_search_loop_preX_mult_in =>
+                when artemis_search_loop_preX_mult_get =>
                     if (preIdx /= 0) then
                         preIdx := preIdx - 1;
                         
@@ -473,18 +486,19 @@ begin
                     if (signal_max_val <= decoder_rx09_ch00_squelch_lvl(15 downto 0)) then
                         state           := loop_start;
                     else
-                      --decoder_state   := decode_preload;                                          -- when DEBUGGING Artemis - disable me
                         state           := artemis_search_handoff;
                     end if;
                     
                 when artemis_search_handoff =>
-                    skipUntil                       :=                               to_integer(unsigned(decoder_FftFrameWork)) + 32 - isOddRow;
-                    decoder_rx09_ch00_SoM_frameCtr  <= std_logic_vector(to_unsigned((to_integer(unsigned(decoder_FftFrameWork))      - isOddRow), decoder_rx09_ch00_SoM_frameCtr'length));
-                    decoder_rx09_ch00_center_pos    <= "000" & signal_max_idx;
-                    decoder_rx09_ch00_strength      <= "000" & signal_max_val;
+                    skipUntil                           :=                               to_integer(unsigned(decoder_FftFrameWork)) + 16 - isOddRow;
+                    decoder_rx09_ch00_SoM_frameCtr      <= std_logic_vector(to_unsigned((to_integer(unsigned(decoder_FftFrameWork))      - isOddRow), decoder_rx09_ch00_SoM_frameCtr'length));
+                    decoder_rx09_ch00_center_pos_Int    := to_integer(unsigned(signal_max_idx));
+                    decoder_rx09_ch00_center_pos        <= "000" & signal_max_idx;
+                    decoder_rx09_ch00_strength          <= "000" & signal_max_val;
                     
-                    state := decoder_process;
-                    state := loop_start;                                                            -- when DEBUGGING Artemis -  enable me
+                    decoder_state   := decode_preload;                                              -- when DEBUGGING Artemis - disable me
+                    state           := decoder_process;
+                  --state           := loop_start;                                                  -- when DEBUGGING Artemis -  enable me
                     
                     
                 when decoder_process =>
@@ -496,11 +510,133 @@ begin
                                 state         := loop_start;                                        -- fetch next row
                             else
                                 -- Process data
-                                decoder_state := decode_message_init;
+                                decoder_state := decode_message_loop_start;
                             end if;
                             
-                        when decode_message_init =>
-                            decoder_state := decode_message_init;
+                            
+                        when decode_message_loop_start =>
+                            --
+                            decoder_state   := decode_byteTry_loop_start;
+                            
+                        when decode_byteTry_loop_start =>
+                            bytePattern     := (others => '0');
+                            bytePattern     := x"ac";   -- DEBUGGING: fast try
+                            byteBit_idx     := 7;
+                            posIdx          := decoder_rx09_ch00_center_pos_Int;
+                            
+                            decoder_state   := decode_message_ram_prep;
+                            
+                        when decode_message_ram_prep =>
+                            rowIdx := 2 * (8 - (7 - byteBit_idx));
+                            
+                            if (bytePattern(byteBit_idx) = '1') then
+                                posIdx := (32 + posIdx + C_bit_1_0) mod 32;
+                            else
+                                posIdx := (32 + posIdx + C_bit_0_0) mod 32;
+                            end if;
+                            
+                            signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_base_Int + (2**11) - (rowIdx * 32) + posIdx) mod (2**11);
+                            
+                            byteBit_idx := byteBit_idx - 1;
+                            
+                            decoder_state := decode_message_ram_ws1;
+                            
+                        when decode_message_ram_ws1 =>
+                            signal_bins_rx09_ch00_mem_addrb     <= std_logic_vector(to_unsigned(signal_bins_rx09_ch00_mem_addrb_Int, signal_bins_rx09_ch00_mem_addrb'length));
+                            
+                            decoder_state := decode_message_ram_ws2;
+                            
+                        when decode_message_ram_ws2 =>
+                            decoder_state := decode_message_ram_get;
+                            
+                        when decode_message_ram_get =>
+                            decoder_artemis_rx09_ch00_mult_ce   <= '1';
+                            -- Direct value to port B of multiplier
+                            if (signal_bins_rx09_ch00_mem_datab >= C_mult_ina_inb_clamp_val(15 downto 0)) then
+                                decoder_artemis_rx09_ch00_mult_inb <= C_mult_ina_inb_clamp_val;
+                            else
+                                decoder_artemis_rx09_ch00_mult_inb <= x"0000" & signal_bins_rx09_ch00_mem_datab;
+                            end if;
+                            
+                            -- Skip multiplier steps and go ahead with processing of next row
+                            decoder_state := decode_message_mult_prep;
+                            
+                        when decode_message_mult_prep =>
+                            rowIdx := 2 * (8 - (7 - byteBit_idx));
+                            
+                            if (bytePattern(byteBit_idx) = '1') then
+                                posIdx := (32 + posIdx + C_bit_1_0) mod 32;
+                            else
+                                posIdx := (32 + posIdx + C_bit_0_0) mod 32;
+                            end if;
+                            
+                            signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_base_Int + (2**11) - (rowIdx * 32) + posIdx) mod (2**11);
+                            
+                            decoder_state := decode_message_mult_ws1;
+                            
+                        when decode_message_mult_ws1 =>
+                            signal_bins_rx09_ch00_mem_addrb     <= std_logic_vector(to_unsigned(signal_bins_rx09_ch00_mem_addrb_Int, signal_bins_rx09_ch00_mem_addrb'length));
+                            
+                            decoder_state := decode_message_mult_ws2;
+                            
+                        when decode_message_mult_ws2 =>
+                            decoder_state := decode_message_mult_ws3;
+                            
+                        when decode_message_mult_ws3 =>
+                            decoder_state := decode_message_mult_get;
+                            
+                        when decode_message_mult_get =>
+                            if (byteBit_idx /= 0) then
+                                byteBit_idx := byteBit_idx - 1;
+                                
+                                if (decoder_artemis_rx09_ch00_mult_outp >= C_mult_outp_clamp_val) then
+                                    -- Framed
+                                    decoder_artemis_rx09_ch00_mult_inb <= C_mult_outp_clamp_val;
+                                else
+                                    -- Value
+                                    decoder_artemis_rx09_ch00_mult_inb <= decoder_artemis_rx09_ch00_mult_outp;
+                                end if;
+                                decoder_artemis_rx09_ch00_mult_ina  <= (others => '0');
+                                
+                                rowIdx := 2 * (8 - (7 - byteBit_idx));
+                                
+                                if (bytePattern(byteBit_idx) = '1') then
+                                    posIdx := (32 + posIdx + C_bit_1_0) mod 32;
+                                else
+                                    posIdx := (32 + posIdx + C_bit_0_0) mod 32;
+                                end if;
+                                
+                                signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_base_Int + (2**11) - (rowIdx * 32) + posIdx) mod (2**11);
+                                
+                                decoder_state := decode_message_ram_ws1;
+                                
+                            else
+                                -- Write result to Artemis Block-RAM
+                                if (decoder_artemis_rx09_ch00_mult_outp >= C_mult_outp_clamp_val) then
+                                    decoder_artemis_rx09_ch00_mem_dina  <= C_mult_outp_clamp_val(23 downto 8);
+                                else
+                                    decoder_artemis_rx09_ch00_mem_dina  <= decoder_artemis_rx09_ch00_mult_outp(23 downto 8);
+                                end if;
+                                decoder_artemis_rx09_ch00_mult_ina  <= (others => '0');
+                                decoder_artemis_rx09_ch00_mult_inb  <= (others => '0');
+                                
+                                decoder_artemis_rx09_ch00_mem_addra <= bytePattern;
+                                decoder_artemis_rx09_ch00_mem_wea   <= '1';
+                                
+                                decoder_state := decode_message_byteTry_write;
+                            end if;
+                            
+                        when decode_message_byteTry_write =>
+                            
+                            
+                        when decode_byteTry_loop_end =>
+                            if (bytePattern /= x"ff") then
+                                bytePattern := std_logic_vector(to_unsigned((to_integer(unsigned(bytePattern)) + 1), bytePattern'length));
+                            else
+                            end if;
+                            
+                            
+                        when decode_message_loop_end =>
                             
                             
                         when others =>
