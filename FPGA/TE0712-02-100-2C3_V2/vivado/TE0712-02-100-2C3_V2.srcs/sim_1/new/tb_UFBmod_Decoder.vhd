@@ -273,39 +273,39 @@ begin
   --constant C_signal_080ct                         : Integer   :=   1;
   --constant C_signal_050ct                         : Integer   :=   0;
     
-  --constant C_signal_100ct                         : Integer   :=   2;     -- signal: 0x02a2, noise: 0x00a0, SQL-level: > 0x00ec
+  --constant C_signal_100ct                         : Integer   :=   2;     -- signal: 0x02a2, noise: 0x00a0, SQL-level: > 0x00ec (dBc: +9dB)  //
   --constant C_signal_080ct                         : Integer   :=   2;
   --constant C_signal_050ct                         : Integer   :=   1;
     
-  --constant C_signal_100ct                         : Integer   :=   3;     -- signal: 0x07ff, noise: 0x00a1, SQL-level: > 0x00ec
+  --constant C_signal_100ct                         : Integer   :=   3;     -- signal: 0x07ff, noise: 0x00a1, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal:
   --constant C_signal_080ct                         : Integer   :=   3;
   --constant C_signal_050ct                         : Integer   :=   2;
     
-  --constant C_signal_100ct                         : Integer   :=   4;     -- signal: 0x07ff, noise: 0x00a2, SQL-level: > 0x00ec
+  --constant C_signal_100ct                         : Integer   :=   4;     -- signal: 0x07ff, noise: 0x00a2, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal:
   --constant C_signal_080ct                         : Integer   :=   3;
   --constant C_signal_050ct                         : Integer   :=   2;
     
-  --constant C_signal_100ct                         : Integer   :=   9;     -- signal: 0x07ff, noise: 0x00a7, SQL-level: > 0x00ec
+  --constant C_signal_100ct                         : Integer   :=   9;     -- signal: 0x07ff, noise: 0x00a7, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal:
   --constant C_signal_080ct                         : Integer   :=   7;
   --constant C_signal_050ct                         : Integer   :=   5;
     
-  --constant C_signal_100ct                         : Integer   :=  10;     -- signal: 0x07ff, noise: 0x00a8, SQL-level: > 0x00ec
+  --constant C_signal_100ct                         : Integer   :=  10;     -- signal: 0x07ff, noise: 0x00a8, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal:
   --constant C_signal_080ct                         : Integer   :=   8;
   --constant C_signal_050ct                         : Integer   :=   5;
     
-  --constant C_signal_100ct                         : Integer   :=  12;     -- signal: 0x07ff, noise: 0x00aa, SQL-level: > 0x00ec
-  --constant C_signal_080ct                         : Integer   :=  10;
-  --constant C_signal_050ct                         : Integer   :=   6;
+    constant C_signal_100ct                         : Integer   :=  12;     -- signal: 0x07ff, noise: 0x00aa, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal:
+    constant C_signal_080ct                         : Integer   :=  10;
+    constant C_signal_050ct                         : Integer   :=   6;
     
-    constant C_signal_100ct                         : Integer   :=  15;     -- signal: 0x07ff, noise: 0x00ad, SQL-level: > 0x00ec
-    constant C_signal_080ct                         : Integer   :=  12;
-    constant C_signal_050ct                         : Integer   :=   8;
+  --constant C_signal_100ct                         : Integer   :=  15;     -- signal: 0x07ff, noise: 0x00ad, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal: 0x0100, 2nd: 0x099 (dBc: +4dB)
+  --constant C_signal_080ct                         : Integer   :=  12;
+  --constant C_signal_050ct                         : Integer   :=   8;
     
-  --constant C_signal_100ct                         : Integer   := 200;     -- signal: 0x07ff, noise: 0x0166, SQL-level: > 0x00ec
+  --constant C_signal_100ct                         : Integer   := 200;     -- signal: 0x07ff, noise: 0x0166, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal:
   --constant C_signal_080ct                         : Integer   := 160;
   --constant C_signal_050ct                         : Integer   := 100;
     
-  --constant C_signal_100ct                         : Integer   :=1000;     -- signal: 0x07ff, noise: 0x0486, SQL-level: > 0x00ec
+  --constant C_signal_100ct                         : Integer   :=1000;     -- signal: 0x07ff, noise: 0x0486, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal:
   --constant C_signal_080ct                         : Integer   := 800;
   --constant C_signal_050ct                         : Integer   := 500;
     
@@ -340,8 +340,8 @@ begin
     row := C_startRow;
     
     -- PA ramp-up
-  --postmemSim(row * 1024 + ((16 + C_centerOfs + 0        ) mod 32))  := C_signal_050ct;  row := row + 2; -- all is moduleo 32
-  --postmemSim(row * 1024 + ((16 + C_centerOfs + 0        ) mod 32))  := C_signal_080ct;  row := row + 2;
+    postmemSim(row * 1024 + ((16 + C_centerOfs + 0        ) mod 32))  := C_signal_050ct;  row := row + 2; -- all is moduleo 32
+    postmemSim(row * 1024 + ((16 + C_centerOfs + 0        ) mod 32))  := C_signal_080ct;  row := row + 2;
     
     -- Preamble
     for ii in 0 to 15 loop

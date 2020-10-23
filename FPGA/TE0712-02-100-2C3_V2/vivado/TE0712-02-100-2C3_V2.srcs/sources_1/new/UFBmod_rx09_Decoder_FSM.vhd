@@ -191,13 +191,13 @@ begin
     variable fftArtemisIdx                                  : Integer  range 0 to (2**5  - 1);
     variable loopCnt                                        : Integer  range 0 to (2**8  - 1);
     variable isOddRow                                       : Integer  range 0 to (2**1  - 1);
-    variable rowIdx                                         : Integer  range 0 to (2**4  - 1);
-    variable posIdx                                         : Integer  range 0 to (2**5  - 1);
-    variable preIdx                                         : Integer  range 0 to (2**5  - 1);
-    variable signal_bins_rx09_ch00_mem_addrb_base_Int       : Integer  range 0 to (2**9  - 1);
-    variable signal_bins_rx09_ch00_mem_addrb_Int            : Integer  range 0 to (2**9  - 1);
-    variable decoder_artemis_rx09_ch00_mem_addra_base_Int   : Integer  range 0 to (2**7  - 1);
-    variable decoder_artemis_rx09_ch00_mem_addra_Int        : Integer  range 0 to (2**7  - 1);
+    variable rowIdx                                         : Integer  range 0 to (2**5  - 1);
+    variable posIdx                                         : Integer  range 0 to (2**8  - 1);
+    variable preIdx                                         : Integer  range 0 to (2**8  - 1);
+    variable signal_bins_rx09_ch00_mem_addrb_base_Int       : Integer  range 0 to (2**11 - 1);
+    variable signal_bins_rx09_ch00_mem_addrb_Int            : Integer  range 0 to (2**11 - 1);
+    variable decoder_artemis_rx09_ch00_mem_addra_base_Int   : Integer  range 0 to (2**8  - 1);
+    variable decoder_artemis_rx09_ch00_mem_addra_Int        : Integer  range 0 to (2**8  - 1);
     variable signal_row0                                    : STD_LOGIC_VECTOR(15 downto 0);
     variable signal_row1                                    : STD_LOGIC_VECTOR(15 downto 0);
     variable signal_row2                                    : STD_LOGIC_VECTOR(15 downto 0);
@@ -515,7 +515,12 @@ begin
                             
                             
                         when decode_message_loop_start =>
-                            bytePattern     := (others => '0');
+                            bytePattern := (others => '0');
+                          --bytePattern := x"ac";
+                            
+                            -- Current row position
+                            signal_bins_rx09_ch00_mem_addrb_base_Int        := to_integer(unsigned(decoder_FftFrameWork(5 downto 0) & "00000"));    -- (10 .. 0)
+                            decoder_artemis_rx09_ch00_mem_addra_base_Int    := to_integer(unsigned(decoder_FftFrameWork(1 downto 0) & "00000"));
                             
                             decoder_state   := decode_byteTry_loop_start;
                             
