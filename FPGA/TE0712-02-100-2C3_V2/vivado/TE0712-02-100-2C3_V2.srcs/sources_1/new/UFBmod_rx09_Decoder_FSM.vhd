@@ -208,6 +208,7 @@ begin
     
     variable bytePattern                                    : STD_LOGIC_VECTOR( 7 downto 0);
     variable byteBit_idx                                    : Integer  range 0 to (2**3  - 1);
+    variable byteBit_sub                                    : Integer  range 0 to (2**1  - 1);
   begin
     if (clk'EVENT and clk = '1') then
         if ((reset = '1') or (dds_tx09_ptt = '1')) then
@@ -249,6 +250,7 @@ begin
             
             bytePattern                                     := (others => '0');
             byteBit_idx                                     := 0;
+            byteBit_sub                                     := 0;
             
             state                                           := init;
             decoder_state                                   := NOP;
@@ -483,14 +485,14 @@ begin
                 when artemis_search_level_check =>
                     decoder_artemis_rx09_ch00_mem_addra <= (others => '0');
                     
-                    if (signal_max_val <= decoder_rx09_ch00_squelch_lvl(15 downto 0)) then
+                    if (signal_max_val <= decoder_rx09_ch00_squelch_lvl(15 downto 0)) then          -- DEBUGGING: here preamble signal and SQL-level Test.
                         state           := loop_start;
                     else
                         state           := artemis_search_handoff;
                     end if;
                     
                 when artemis_search_handoff =>
-                    skipUntil                           :=                               to_integer(unsigned(decoder_FftFrameWork)) + 16 - isOddRow;
+                    skipUntil                           :=                               to_integer(unsigned(decoder_FftFrameWork)) + 32 - isOddRow;
                     decoder_rx09_ch00_SoM_frameCtr      <= std_logic_vector(to_unsigned((to_integer(unsigned(decoder_FftFrameWork))      - isOddRow), decoder_rx09_ch00_SoM_frameCtr'length));
                     decoder_rx09_ch00_center_pos_Int    := to_integer(unsigned(signal_max_idx));
                     decoder_rx09_ch00_center_pos        <= "000" & signal_max_idx;
@@ -519,13 +521,14 @@ begin
                           --bytePattern := x"ac";
                             
                             -- Current row position
-                            signal_bins_rx09_ch00_mem_addrb_base_Int        := to_integer(unsigned(decoder_FftFrameWork(5 downto 0) & "00000"));    -- (10 .. 0)
-                            decoder_artemis_rx09_ch00_mem_addra_base_Int    := to_integer(unsigned(decoder_FftFrameWork(1 downto 0) & "00000"));
+                            signal_bins_rx09_ch00_mem_addrb_base_Int        := to_integer(unsigned(decoder_FftFrameWork(5 downto 0) & "00000"));    -- = (10 .. 0)
+                            decoder_artemis_rx09_ch00_mem_addra_base_Int    := to_integer(unsigned(decoder_FftFrameWork(1 downto 0) & "00000"));    -- = ( 7 .. 0)
                             
                             decoder_state   := decode_byteTry_loop_start;
                             
                         when decode_byteTry_loop_start =>
                             byteBit_idx     := 7;
+                            byteBit_sub     := 0;
                             posIdx          := decoder_rx09_ch00_center_pos_Int;
                             
                             decoder_state   := decode_message_ram_prep;
@@ -534,12 +537,20 @@ begin
                             decoder_artemis_rx09_ch00_mult_ina <= x"0000";
                             decoder_artemis_rx09_ch00_mult_inb <= x"00000100";
                             
-                            rowIdx := 2 * (8 - (7 - byteBit_idx));
+                            rowIdx := 2 * (16 - (14 - (2 * byteBit_idx)) - byteBit_sub);
                             
                             if (bytePattern(byteBit_idx) = '1') then
-                                posIdx := (32 + posIdx + C_bit_1_0) mod 32;
+                                if (byteBit_sub = 1) then
+                                    posIdx := (32 + posIdx + C_bit_1_1) mod 32;
+                                else
+                                    posIdx := (32 + posIdx + C_bit_1_0) mod 32;
+                                end if;
                             else
-                                posIdx := (32 + posIdx + C_bit_0_0) mod 32;
+                                if (byteBit_sub = 1) then
+                                    posIdx := (32 + posIdx + C_bit_0_1) mod 32;
+                                else
+                                    posIdx := (32 + posIdx + C_bit_0_0) mod 32;
+                                end if;
                             end if;
                             
                             signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_base_Int + (2**11) - (rowIdx * 32) + posIdx) mod (2**11);
@@ -557,7 +568,7 @@ begin
                         when decode_message_ram_get =>
                             decoder_artemis_rx09_ch00_mult_ce   <= '1';
                             -- Direct value to port B of multiplier
-                            if (signal_bins_rx09_ch00_mem_datab >= C_mult_ina_inb_clamp_val(15 downto 0)) then
+                            if (signal_bins_rx09_ch00_mem_datab    >= C_mult_ina_inb_clamp_val(15 downto 0)) then
                                 decoder_artemis_rx09_ch00_mult_ina <= C_mult_ina_inb_clamp_val(15 downto 0);
                             else
                                 decoder_artemis_rx09_ch00_mult_ina <= signal_bins_rx09_ch00_mem_datab;
@@ -579,24 +590,37 @@ begin
                             decoder_state := decode_message_mult_get;
                             
                         when decode_message_mult_get =>
-                            if (byteBit_idx /= 0) then
-                                byteBit_idx := byteBit_idx - 1;
+                            if ((byteBit_idx /= 0) or (byteBit_sub = 0)) then
+                                if (byteBit_sub = 0) then
+                                    byteBit_sub := 1;
+                                else
+                                    byteBit_sub := 0;
+                                    byteBit_idx := byteBit_idx - 1;
+                                end if;
                                 
                                 if (decoder_artemis_rx09_ch00_mult_outp >= C_mult_outp_clamp_val) then
                                     -- Framed
-                                    decoder_artemis_rx09_ch00_mult_inb <= C_mult_outp_clamp_val;
+                                    decoder_artemis_rx09_ch00_mult_inb  <= C_mult_outp_clamp_val;
                                 else
                                     -- Value
                                     decoder_artemis_rx09_ch00_mult_inb <= decoder_artemis_rx09_ch00_mult_outp;
                                 end if;
                                 decoder_artemis_rx09_ch00_mult_ina  <= (others => '0');
                                 
-                                rowIdx := 2 * (8 - (7 - byteBit_idx));
+                                rowIdx := 2 * (16 - (14 - (2 * byteBit_idx)) - byteBit_sub);
                                 
                                 if (bytePattern(byteBit_idx) = '1') then
-                                    posIdx := (32 + posIdx + C_bit_1_0) mod 32;
+                                    if (byteBit_sub = 1) then
+                                        posIdx := (32 + posIdx + C_bit_1_1) mod 32;
+                                    else
+                                        posIdx := (32 + posIdx + C_bit_1_0) mod 32;
+                                    end if;
                                 else
-                                    posIdx := (32 + posIdx + C_bit_0_0) mod 32;
+                                    if (byteBit_sub = 1) then
+                                        posIdx := (32 + posIdx + C_bit_0_1) mod 32;
+                                    else
+                                        posIdx := (32 + posIdx + C_bit_0_0) mod 32;
+                                    end if;
                                 end if;
                                 
                                 signal_bins_rx09_ch00_mem_addrb_Int := (signal_bins_rx09_ch00_mem_addrb_base_Int + (2**11) - (rowIdx * 32) + posIdx) mod (2**11);
@@ -629,7 +653,7 @@ begin
                                 bytePattern := std_logic_vector(to_unsigned((to_integer(unsigned(bytePattern)) + 1), bytePattern'length));
                                 decoder_state := decode_byteTry_loop_start;
                             else
-                                decoder_state := decode_message_loop_end;
+                                decoder_state := decode_message_loop_end;                           -- DEBUGGING: here single bit, dual bit dBc Test.
                             end if;
                                                         
                         when decode_message_loop_end =>

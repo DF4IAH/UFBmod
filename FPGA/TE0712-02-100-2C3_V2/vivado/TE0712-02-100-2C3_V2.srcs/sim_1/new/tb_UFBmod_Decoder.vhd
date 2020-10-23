@@ -149,7 +149,7 @@ begin
 
   -- Squelch level setting
   proc_squelch_lvl: process
-  constant C_squelch_lvl_ch00                   : Integer   := 256;
+  constant C_squelch_lvl_ch00                   : Integer   := 240;
   begin
     tb_decoder_rx09_ch00_squelch_lvl    <= (others => '0');
     tb_dds_tx09_ptt                     <= '0';
@@ -269,45 +269,53 @@ begin
     constant C_centerOfs                            : Integer   := 0;
     
     
-  --constant C_signal_100ct                         : Integer   :=   1;     -- signal: 0x004e, noise: 0x009f, SQL-level: > 0x00ec
-  --constant C_signal_080ct                         : Integer   :=   1;
-  --constant C_signal_050ct                         : Integer   :=   0;
+  --constant C_signal_100ct                         : Integer   :=   1;     -- SNR=-20.0 dB // preamble signal: 0x----, noise: 0x009f, SQL-level: > 0x00ec
+  --constant C_signal_080ct                         : Integer   :=   1;     -- single-bit signal: 
+  --constant C_signal_050ct                         : Integer   :=   0;     -- double-bit signal: 
     
-  --constant C_signal_100ct                         : Integer   :=   2;     -- signal: 0x02a2, noise: 0x00a0, SQL-level: > 0x00ec (dBc: +9dB)  //
-  --constant C_signal_080ct                         : Integer   :=   2;
-  --constant C_signal_050ct                         : Integer   :=   1;
+  --constant C_signal_100ct                         : Integer   :=   2;     -- SNR=-14.0 dB // preamble signal: 0x0016, noise: 0x00a0, SQL-level: > 0x00ec (dBc: +20.6dB)
+  --constant C_signal_080ct                         : Integer   :=   2;     -- single-bit signal: 
+  --constant C_signal_050ct                         : Integer   :=   1;     -- double-bit signal: 
     
-  --constant C_signal_100ct                         : Integer   :=   3;     -- signal: 0x07ff, noise: 0x00a1, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal:
-  --constant C_signal_080ct                         : Integer   :=   3;
-  --constant C_signal_050ct                         : Integer   :=   2;
+  --constant C_signal_100ct                         : Integer   :=   3;     -- SNR=-10.5 dB // preamble signal: 0x00fa, noise: 0x00a1, SQL-level: > 0x00ec (dBc:  -5.0dB)
+  --constant C_signal_080ct                         : Integer   :=   3;     -- single-bit signal: 0x0028, 2nd: 0x002f (dBc:  +1.4dB)
+  --constant C_signal_050ct                         : Integer   :=   2;     -- double-bit signal: 0x...., 2nd: 0x.... (dBc:      dB)
     
-  --constant C_signal_100ct                         : Integer   :=   4;     -- signal: 0x07ff, noise: 0x00a2, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal:
-  --constant C_signal_080ct                         : Integer   :=   3;
-  --constant C_signal_050ct                         : Integer   :=   2;
+  --constant C_signal_100ct                         : Integer   :=   4;     -- SNR= -8.0 dB // preamble signal: 0x05bd, noise: 0x00a2, SQL-level: > 0x00ec (dBc: -15.9dB)
+  --constant C_signal_080ct                         : Integer   :=   3;     -- single-bit signal: 0x0058, 2nd: 0x0058 (dBc:   0.0dB)
+  --constant C_signal_050ct                         : Integer   :=   2;     -- double-bit signal: 0x...., 2nd: 0x.... (dBc:      dB)
     
-  --constant C_signal_100ct                         : Integer   :=   9;     -- signal: 0x07ff, noise: 0x00a7, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal:
-  --constant C_signal_080ct                         : Integer   :=   7;
-  --constant C_signal_050ct                         : Integer   :=   5;
+  --constant C_signal_100ct                         : Integer   :=   5;     -- SNR= -6.0 dB // preamble signal: 0x07ff, noise: 0x????, SQL-level: > 0x00ec (dBc: < -18dB)
+  --constant C_signal_080ct                         : Integer   :=   4;     -- single-bit signal: 0x008a, 2nd: 0x0078 (dBc:  -1.2dB)
+  --constant C_signal_050ct                         : Integer   :=   3;     -- double-bit signal: 0x...., 2nd: 0x.... (dBc:      dB)
     
-  --constant C_signal_100ct                         : Integer   :=  10;     -- signal: 0x07ff, noise: 0x00a8, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal:
-  --constant C_signal_080ct                         : Integer   :=   8;
-  --constant C_signal_050ct                         : Integer   :=   5;
+  --constant C_signal_100ct                         : Integer   :=   6;     -- SNR= -4.4 dB // preamble signal: 0x07ff, noise: 0x????, SQL-level: > 0x00ec (dBc: < -18dB)
+  --constant C_signal_080ct                         : Integer   :=   5;     -- single-bit signal: 0x00ad, 2nd: 0x0086 (dBc:  -2.2dB)
+  --constant C_signal_050ct                         : Integer   :=   3;     -- double-bit signal: 0x...., 2nd: 0x.... (dBc:      dB)
     
-    constant C_signal_100ct                         : Integer   :=  12;     -- signal: 0x07ff, noise: 0x00aa, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal:
-    constant C_signal_080ct                         : Integer   :=  10;
-    constant C_signal_050ct                         : Integer   :=   6;
+  --constant C_signal_100ct                         : Integer   :=   9;     -- SNR= -0.9 dB // preamble signal: 0x07ff, noise: 0x00a7, SQL-level: > 0x00ec (dBc: < -18dB)
+  --constant C_signal_080ct                         : Integer   :=   7;     -- single-bit signal: 0x0100, 2nd: 0x009e (dBc:  -4.2dB)
+  --constant C_signal_050ct                         : Integer   :=   5;     -- double-bit signal: 0x...., 2nd: 0x.... (dBc:      dB)
     
-  --constant C_signal_100ct                         : Integer   :=  15;     -- signal: 0x07ff, noise: 0x00ad, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal: 0x0100, 2nd: 0x099 (dBc: +4dB)
-  --constant C_signal_080ct                         : Integer   :=  12;
-  --constant C_signal_050ct                         : Integer   :=   8;
+    constant C_signal_100ct                         : Integer   :=  10;     -- SNR=  0.0 dB // preamble signal: 0x07ff, noise: 0x00a8, SQL-level: > 0x00ec (dBc: < -18dB)
+    constant C_signal_080ct                         : Integer   :=   8;     -- single-bit signal: 0x0100, 2nd: 0x009d (dBc:  -4.3dB)
+    constant C_signal_050ct                         : Integer   :=   5;     -- double-bit signal: 0x...., 2nd: 0x.... (dBc:      dB)
     
-  --constant C_signal_100ct                         : Integer   := 200;     -- signal: 0x07ff, noise: 0x0166, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal:
-  --constant C_signal_080ct                         : Integer   := 160;
-  --constant C_signal_050ct                         : Integer   := 100;
+  --constant C_signal_100ct                         : Integer   :=  12;     -- SNR= +1.6 dB // preamble signal: 0x07ff, noise: 0x00aa, SQL-level: > 0x00ec (dBc: < -18dB)
+  --constant C_signal_080ct                         : Integer   :=  10;     -- single-bit signal: 0x0100, 2nd: 0x009b (dBc:  -4.4dB)
+  --constant C_signal_050ct                         : Integer   :=   6;     -- double-bit signal: 0x...., 2nd: 0x.... (dBc:      dB)
     
-  --constant C_signal_100ct                         : Integer   :=1000;     -- signal: 0x07ff, noise: 0x0486, SQL-level: > 0x00ec (dBc: > +18dB) // single-bit signal:
-  --constant C_signal_080ct                         : Integer   := 800;
-  --constant C_signal_050ct                         : Integer   := 500;
+  --constant C_signal_100ct                         : Integer   :=  15;     -- SNR= +3.5 dB // preamble signal: 0x07ff, noise: 0x00ad, SQL-level: > 0x00ec (dBc: < -18dB)
+  --constant C_signal_080ct                         : Integer   :=  12;     -- single-bit signal: 0x0100, 2nd: 0x0099 (dBc:  -4.5dB)
+  --constant C_signal_050ct                         : Integer   :=   8;     -- double-bit signal: 0x...., 2nd: 0x.... (dBc:      dB)
+    
+  --constant C_signal_100ct                         : Integer   := 200;     -- SNR=+26.0 dB // preamble signal: 0x07ff, noise: 0x0166, SQL-level: > 0x00ec (dBc: < -18dB)
+  --constant C_signal_080ct                         : Integer   := 160;     -- single-bit signal: 0x0100, 2nd: 0x004d (dBc: -10.4dB)
+  --constant C_signal_050ct                         : Integer   := 100;     -- double-bit signal: 0x...., 2nd: 0x.... (dBc:      dB)
+    
+  --constant C_signal_100ct                         : Integer   :=1000;     -- SNR=+40.0 dB // preamble signal: 0x07ff, noise: 0x0486, SQL-level: > 0x00ec (dBc: < -18dB)
+  --constant C_signal_080ct                         : Integer   := 800;     -- single-bit signal: 0x0100, 2nd: 0x0018 (dBc: -20.6dB)
+  --constant C_signal_050ct                         : Integer   := 500;     -- double-bit signal: 0x...., 2nd: 0x.... (dBc:      dB)
     
     
     type PostMemType                                is array ((C_postmemSim_depth - 1) downto 0) of Integer  range 0 to (2**16 - 1); 
