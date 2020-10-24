@@ -11,17 +11,18 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="178897125fs"></ZoomStartTime>
-      <ZoomEndTime time="178996576fs"></ZoomEndTime>
-      <Cursor1Time time="178971175fs"></Cursor1Time>
+      <ZoomStartTime time="5832058871fs"></ZoomStartTime>
+      <ZoomEndTime time="5832156226fs"></ZoomEndTime>
+      <Cursor1Time time="5832140000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="867"></NameColumnWidth>
-      <ValueColumnWidth column_width="307"></ValueColumnWidth>
+      <ValueColumnWidth column_width="299"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="25" />
    <wave_markers>
       <marker time="2183500000" label="" />
+      <marker time="5495530000" label="" />
    </wave_markers>
    <wvobject fp_name="/tb_UFBmod_Decoder/UFBmod_wrapper_i/UFBmod_Decoder_i/clk_100MHz" type="logic">
       <obj_property name="ElementShortName">clk_100MHz</obj_property>
