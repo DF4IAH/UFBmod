@@ -104,22 +104,22 @@ architecture Behavioral of UFBmod_rx09_Decoder_FSM is
 begin
   -- UFBmod decoder for the RF09 receiver
   proc_UFBmod_rx09_Decoder: process (reset, clk)
-    constant C_pre_r00                              : Integer :=  -8;
-    constant C_pre_r01                              : Integer := +14;
-    constant C_pre_r02                              : Integer := -10;
-    constant C_pre_r03                              : Integer := +18;
-    constant C_pre_r04                              : Integer :=  -6;
-    constant C_pre_r05                              : Integer := +12;
-    constant C_pre_r06                              : Integer := -14;
-    constant C_pre_r07                              : Integer := +10;
-    constant C_pre_r08                              : Integer :=  -2;
-    constant C_pre_r09                              : Integer :=  +8;
-    constant C_pre_r10                              : Integer := -18;
-    constant C_pre_r11                              : Integer :=  +4;
-    constant C_pre_r12                              : Integer :=  -4;
-    constant C_pre_r13                              : Integer :=  +2;
-    constant C_pre_r14                              : Integer := -12;
-    constant C_pre_r15                              : Integer :=  +6;
+    constant C_pre_r00                              : Integer :=  +7;   -- 1010110100100101
+    constant C_pre_r01                              : Integer := -11;
+    constant C_pre_r02                              : Integer :=  +7;
+    constant C_pre_r03                              : Integer := -11;
+    constant C_pre_r04                              : Integer :=  +7;
+    constant C_pre_r05                              : Integer :=  +7;
+    constant C_pre_r06                              : Integer := -11;
+    constant C_pre_r07                              : Integer :=  +7;
+    constant C_pre_r08                              : Integer := -11;
+    constant C_pre_r09                              : Integer := -11;
+    constant C_pre_r10                              : Integer :=  +7;
+    constant C_pre_r11                              : Integer := -11;
+    constant C_pre_r12                              : Integer := -11;
+    constant C_pre_r13                              : Integer :=  +7;
+    constant C_pre_r14                              : Integer := -11;
+    constant C_pre_r15                              : Integer :=  +7;
     type     T_pre_ary                              is array (0 to 15) of Integer;
     variable C_pre_ary                              : T_pre_ary := (C_pre_r00, C_pre_r01, C_pre_r02, C_pre_r03, C_pre_r04, C_pre_r05, C_pre_r06, C_pre_r07,
                                                                     C_pre_r08, C_pre_r09, C_pre_r10, C_pre_r11, C_pre_r12, C_pre_r13, C_pre_r14, C_pre_r15);
@@ -142,8 +142,9 @@ begin
     variable C_fin_ary                              : T_fin_ary := (C_fin_0, C_fin_1, C_fin_2, C_fin_3, C_fin_4, C_fin_5, C_fin_6, C_fin_7);
     
     
-    constant C_mult_ina_inb_clamp_val               : STD_LOGIC_VECTOR(31 downto 0) := x"00000400";
-    constant C_mult_outp_clamp_val                  : STD_LOGIC_VECTOR(31 downto 0) := x"0007ffff";
+    constant C_mult_ina_inb_clamp_pre_val           : STD_LOGIC_VECTOR(31 downto 0) := x"00000200";
+    constant C_mult_ina_inb_clamp_bit_val           : STD_LOGIC_VECTOR(31 downto 0) := x"00000240";
+    constant C_mult_outp_clamp_val                  : STD_LOGIC_VECTOR(31 downto 0) := x"00ffffff";
     
     type StateType                                  is (
                                                         init, loop_start, 
@@ -319,8 +320,8 @@ begin
                 when artemis_search_loop_pre15_get =>
                     decoder_artemis_rx09_ch00_mult_ce   <= '1';
                     -- Direct value to port B of multiplier
-                    if (signal_bins_rx09_ch00_mem_datab >= C_mult_ina_inb_clamp_val(16 downto 1)) then      -- TODO: check clamping value
-                        decoder_artemis_rx09_ch00_mult_inb <= '0' & C_mult_ina_inb_clamp_val(31 downto 1);
+                    if (signal_bins_rx09_ch00_mem_datab    >= C_mult_ina_inb_clamp_pre_val(15 downto 0)) then
+                        decoder_artemis_rx09_ch00_mult_inb <= C_mult_ina_inb_clamp_pre_val(31 downto 0);
                     else
                         decoder_artemis_rx09_ch00_mult_inb <= x"0000" & signal_bins_rx09_ch00_mem_datab;
                     end if;
@@ -343,8 +344,8 @@ begin
                     state := artemis_search_loop_preX_get;
                     
                 when artemis_search_loop_preX_get =>
-                    if (signal_bins_rx09_ch00_mem_datab >= C_mult_ina_inb_clamp_val(16 downto 1)) then      -- TODO: check clamping value
-                        decoder_artemis_rx09_ch00_mult_ina <= C_mult_ina_inb_clamp_val(16 downto 1);
+                    if (signal_bins_rx09_ch00_mem_datab    >= C_mult_ina_inb_clamp_pre_val(15 downto 0)) then
+                        decoder_artemis_rx09_ch00_mult_ina <= C_mult_ina_inb_clamp_pre_val(15 downto 0);
                     else
                         decoder_artemis_rx09_ch00_mult_ina <= signal_bins_rx09_ch00_mem_datab;
                     end if;
@@ -369,10 +370,10 @@ begin
                         
                         if (decoder_artemis_rx09_ch00_mult_outp >= C_mult_outp_clamp_val) then
                             -- Framed
-                            decoder_artemis_rx09_ch00_mult_inb <= C_mult_outp_clamp_val;
+                            decoder_artemis_rx09_ch00_mult_inb  <= C_mult_outp_clamp_val;
                         else
                             -- Value
-                            decoder_artemis_rx09_ch00_mult_inb <= decoder_artemis_rx09_ch00_mult_outp;
+                            decoder_artemis_rx09_ch00_mult_inb <= decoder_artemis_rx09_ch00_mult_outp;                      -- = 1.0000 * outp
                         end if;
                         decoder_artemis_rx09_ch00_mult_ina  <= (others => '0');
                         
@@ -477,7 +478,7 @@ begin
                         -- Next position
                         if (fftArtemisIdx /= 31) then
                             fftArtemisIdx := fftArtemisIdx + 1;
-                            rowIdx        := 2;                                                     -- same value from  artemis_search_decider_init
+                            rowIdx        := 2;
                             state := artemis_search_decider_loop_start;
                         else
                             state := artemis_search_level_check;
@@ -570,8 +571,8 @@ begin
                         when decode_message_ram_get =>
                             decoder_artemis_rx09_ch00_mult_ce   <= '1';
                             -- Direct value to port B of multiplier
-                            if (signal_bins_rx09_ch00_mem_datab    >= C_mult_ina_inb_clamp_val(15 downto 0)) then
-                                decoder_artemis_rx09_ch00_mult_ina <= C_mult_ina_inb_clamp_val(15 downto 0);
+                            if (signal_bins_rx09_ch00_mem_datab    >= C_mult_ina_inb_clamp_bit_val(15 downto 0)) then
+                                decoder_artemis_rx09_ch00_mult_ina <= C_mult_ina_inb_clamp_bit_val(15 downto 0);
                             else
                                 decoder_artemis_rx09_ch00_mult_ina <= signal_bins_rx09_ch00_mem_datab;
                             end if;
@@ -604,8 +605,9 @@ begin
                                     -- Framed
                                     decoder_artemis_rx09_ch00_mult_inb  <= C_mult_outp_clamp_val;
                                 else
-                                    mult_out_in_calc    := to_integer(unsigned(decoder_artemis_rx09_ch00_mult_outp(31 downto 0))) 
-                                                         - to_integer(unsigned(decoder_artemis_rx09_ch00_mult_outp(31 downto 3)));  -- = 0.875 * outp
+                                    -- Value
+                                    mult_out_in_calc    := to_integer(unsigned(decoder_artemis_rx09_ch00_mult_outp(31 downto 1))) 
+                                                         + to_integer(unsigned(decoder_artemis_rx09_ch00_mult_outp(31 downto 2)));  -- = 0.75 * outp
                                     decoder_artemis_rx09_ch00_mult_inb <= std_logic_vector(to_unsigned(mult_out_in_calc, decoder_artemis_rx09_ch00_mult_inb'length));
                                 end if;
                                 decoder_artemis_rx09_ch00_mult_ina  <= (others => '0');
