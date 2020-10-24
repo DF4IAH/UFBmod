@@ -224,22 +224,6 @@ begin
 
   -- Port B data stimulus
   proc_tb_b_dout: process
-  --constant C_pre_r00                              : Integer :=  -8;
-  --constant C_pre_r01                              : Integer := +14;
-  --constant C_pre_r02                              : Integer := -10;
-  --constant C_pre_r03                              : Integer := +18;
-  --constant C_pre_r04                              : Integer :=  -6;
-  --constant C_pre_r05                              : Integer := +12;
-  --constant C_pre_r06                              : Integer := -14;
-  --constant C_pre_r07                              : Integer := +10;
-  --constant C_pre_r08                              : Integer :=  -2;
-  --constant C_pre_r09                              : Integer :=  +8;
-  --constant C_pre_r10                              : Integer := -18;
-  --constant C_pre_r11                              : Integer :=  +4;
-  --constant C_pre_r12                              : Integer :=  -4;
-  --constant C_pre_r13                              : Integer :=  +2;
-  --constant C_pre_r14                              : Integer := -12;
-  --constant C_pre_r15                              : Integer :=  +6;
     constant C_pre_r00                              : Integer :=  +7;   -- 1010110100100101
     constant C_pre_r01                              : Integer := -11;
     constant C_pre_r02                              : Integer :=  +7;
@@ -285,51 +269,51 @@ begin
     constant C_centerOfs                            : Integer   := 0;
     
     
-  --constant C_signal_100ct                         : Integer   :=   1;     -- SNR=-20.0 dB // preamble signal: 0x----, noise: 0x009f, SQL-level: > 0x00ec
+  --constant C_signal_100ct                         : Integer   :=   1;     -- SNR=-20.0 dB // preamble signal: 0x0013, noise: 0x009f, SQL-level: > 0x0026
   --constant C_signal_080ct                         : Integer   :=   1;     -- single-bit signal: 
   --constant C_signal_050ct                         : Integer   :=   0;     -- double-bit signal: 
     
-  --constant C_signal_100ct                         : Integer   :=   2;     -- SNR=-14.0 dB // preamble signal: 0x0016, noise: 0x00a0, SQL-level: > 0x000b (dBc: +20.6dB)
+  --constant C_signal_100ct                         : Integer   :=   2;     -- SNR=-14.0 dB // preamble signal: 0x002a, noise: 0x00a0, SQL-level: > 0x0026 (dBc:  -0.9dB)
   --constant C_signal_080ct                         : Integer   :=   2;     -- single-bit signal: 
-  --constant C_signal_050ct                         : Integer   :=   1;     -- double-bit signal: 
+  --constant C_signal_050ct                         : Integer   :=   1;     -- double-bit signal: 0x0003, 2nd: 0x0001 (dBc:  -9.5dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240 
     
-    constant C_signal_100ct                         : Integer   :=   3;     -- SNR=-10.5 dB // preamble signal: 0x00fa, noise: 0x00a1, SQL-level: > 0x00ec (dBc:  -5.0dB)
-    constant C_signal_080ct                         : Integer   :=   3;     -- single-bit signal: 0x0028, 2nd: 0x002f (dBc:  +1.4dB)
-    constant C_signal_050ct                         : Integer   :=   2;     -- double-bit signal: 0x001e, 2nd: 0x0008 (dBc: -11.5dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
+  --constant C_signal_100ct                         : Integer   :=   3;     -- SNR=-10.5 dB // preamble signal: 0x0151, noise: 0x00a1, SQL-level: > 0x0026 (dBc: -19.0dB)
+  --constant C_signal_080ct                         : Integer   :=   3;     -- single-bit signal: 0x0028, 2nd: 0x002f (dBc:  +1.4dB)
+  --constant C_signal_050ct                         : Integer   :=   2;     -- double-bit signal: 0x001e, 2nd: 0x0008 (dBc: -11.5dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
     
-  --constant C_signal_100ct                         : Integer   :=   4;     -- SNR= -8.0 dB // preamble signal: 0x05bd, noise: 0x00a2, SQL-level: > 0x00ec (dBc: -15.9dB)
+  --constant C_signal_100ct                         : Integer   :=   4;     -- SNR= -8.0 dB // preamble signal: 0x06a4, noise: 0x00a1, SQL-level: > 0x003c (dBc: -29.0dB)
   --constant C_signal_080ct                         : Integer   :=   3;     -- single-bit signal: 0x0058, 2nd: 0x0058 (dBc:   0.0dB)
   --constant C_signal_050ct                         : Integer   :=   2;     -- double-bit signal: 0x008a, 2nd: 0x0019 (dBc: -14.8dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
     
-  --constant C_signal_100ct                         : Integer   :=   5;     -- SNR= -6.0 dB // preamble signal: 0x07ff, noise: 0x????, SQL-level: > 0x00ec (dBc: < -18dB)
+  --constant C_signal_100ct                         : Integer   :=   5;     -- SNR= -6.0 dB // preamble signal: 0x16a4, noise: 0x00a1, SQL-level: > 0x0053 (dBc: -36.9dB)
   --constant C_signal_080ct                         : Integer   :=   4;     -- single-bit signal: 0x008a, 2nd: 0x0078 (dBc:  -1.2dB)
   --constant C_signal_050ct                         : Integer   :=   3;     -- double-bit signal: 0x01ed, 2nd: 0x0043 (dBc: -17.3dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
     
-  --constant C_signal_100ct                         : Integer   :=   6;     -- SNR= -4.4 dB // preamble signal: 0x07ff, noise: 0x????, SQL-level: > 0x00ec (dBc: < -18dB)
+  --constant C_signal_100ct                         : Integer   :=   6;     -- SNR= -4.4 dB // preamble signal: 0x3d66, noise: 0x00a1, SQL-level: > 0x006e (dBc: -43.1dB)
   --constant C_signal_080ct                         : Integer   :=   5;     -- single-bit signal: 0x00ad, 2nd: 0x0086 (dBc:  -2.2dB)
   --constant C_signal_050ct                         : Integer   :=   3;     -- double-bit signal: 0x0525, 2nd: 0x0093 (dBc: -19.0dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
     
-  --constant C_signal_100ct                         : Integer   :=   9;     -- SNR= -0.9 dB // preamble signal: 0x07ff, noise: 0x00a7, SQL-level: > 0x00ec (dBc: < -18dB)
+  --constant C_signal_100ct                         : Integer   :=   9;     -- SNR= -0.9 dB // preamble signal: 0xfb00, noise: 0x00a7, SQL-level: > 0x0097 (dBc: -52.6dB)
   --constant C_signal_080ct                         : Integer   :=   7;     -- single-bit signal: 0x0100, 2nd: 0x009e (dBc:  -4.2dB)
   --constant C_signal_050ct                         : Integer   :=   5;     -- double-bit signal: 0x11c7, 2nd: 0x0174 (dBc: -21.8dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
     
-  --constant C_signal_100ct                         : Integer   :=  10;     -- SNR=  0.0 dB // preamble signal: 0x07ff, noise: 0x00a8, SQL-level: > 0x00ec (dBc: < -18dB)
-  --constant C_signal_080ct                         : Integer   :=   8;     -- single-bit signal: 0x0100, 2nd: 0x009d (dBc:  -4.3dB)
-  --constant C_signal_050ct                         : Integer   :=   5;     -- double-bit signal: 0x1529, 2nd: 0x01a6 (dBc: -22.2dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
+    constant C_signal_100ct                         : Integer   :=  10;     -- SNR=  0.0 dB // preamble signal: 0xffff, noise: 0x00a8, SQL-level: > 0x0090 (dBc: -53.2dB)
+    constant C_signal_080ct                         : Integer   :=   8;     -- single-bit signal: 0x0100, 2nd: 0x009d (dBc:  -4.3dB)
+    constant C_signal_050ct                         : Integer   :=   5;     -- double-bit signal: 0x1529, 2nd: 0x01a6 (dBc: -22.2dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
     
-  --constant C_signal_100ct                         : Integer   :=  12;     -- SNR= +1.6 dB // preamble signal: 0x07ff, noise: 0x00aa, SQL-level: > 0x00ec (dBc: < -18dB)
+  --constant C_signal_100ct                         : Integer   :=  12;     -- SNR= +1.6 dB // preamble signal: 0xffff, noise: 0x00aa, SQL-level: > 0x0082 (dBc: -54.1dB)
   --constant C_signal_080ct                         : Integer   :=  10;     -- single-bit signal: 0x0100, 2nd: 0x009b (dBc:  -4.4dB)
   --constant C_signal_050ct                         : Integer   :=   6;     -- double-bit signal: 0x167d, 2nd: 0x01b2 (dBc: -22.5dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
     
-  --constant C_signal_100ct                         : Integer   :=  15;     -- SNR= +3.5 dB // preamble signal: 0x07ff, noise: 0x00ad, SQL-level: > 0x00ec (dBc: < -18dB)
+  --constant C_signal_100ct                         : Integer   :=  15;     -- SNR= +3.5 dB // preamble signal: 0xffff, noise: 0x00ad, SQL-level: > 0x0070 (dBc: -55.3dB)
   --constant C_signal_080ct                         : Integer   :=  12;     -- single-bit signal: 0x0100, 2nd: 0x0099 (dBc:  -4.5dB)
   --constant C_signal_050ct                         : Integer   :=   8;     -- double-bit signal: 0x167d, 2nd: 0x019c (dBc: -22.9dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
     
-  --constant C_signal_100ct                         : Integer   := 200;     -- SNR=+26.0 dB // preamble signal: 0x07ff, noise: 0x0166, SQL-level: > 0x00ec (dBc: < -18dB)
+  --constant C_signal_100ct                         : Integer   := 200;     -- SNR=+26.0 dB // preamble signal: 0xffff, noise: 0x0166, SQL-level: > 0x0026 (dBc: -64.7dB)
   --constant C_signal_080ct                         : Integer   := 160;     -- single-bit signal: 0x0100, 2nd: 0x004d (dBc: -10.4dB)
   --constant C_signal_050ct                         : Integer   := 100;     -- double-bit signal: 0x167d, 2nd: 0x0037 (dBc: -40.4dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
     
-  --constant C_signal_100ct                         : Integer   :=1000;     -- SNR=+40.0 dB // preamble signal: 0x07ff, noise: 0x0486, SQL-level: > 0x00ec (dBc: < -18dB)
+  --constant C_signal_100ct                         : Integer   :=1000;     -- SNR=+40.0 dB // preamble signal: 0xffff, noise: 0x0486, SQL-level: > 0x0026 (dBc: -64.7dB)
   --constant C_signal_080ct                         : Integer   := 800;     -- single-bit signal: 0x0100, 2nd: 0x0018 (dBc: -20.6dB)
   --constant C_signal_050ct                         : Integer   := 500;     -- double-bit signal: 0x167d, 2nd: 0x0005 (dBc: -61.2dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
     
@@ -346,8 +330,8 @@ begin
     variable readAddr                               : Integer;
     
     variable uni_real                               : Real      := 0.0;
-    variable uni_seed_1                             : Positive  := 1;
-    variable uni_seed_2                             : Positive  := 1;
+    variable uni_seed_1                             : Positive  := 1;   -- default: 1
+    variable uni_seed_2                             : Positive  := 1;   -- defautl: 1
     variable uni_rand                               : Integer   := 0;
   begin
     -- Position address pointer just before change of full 1024 frame
@@ -559,10 +543,6 @@ begin
         uni_rand := 1 + Integer(floor(uni_real * 9.0));
         
         postmemSim(ii) := postmemSim(ii) + uni_rand;                                                -- Noise is added to the signal
-        
-      --if (postmemSim(ii) < uni_rand) then
-      --    postmemSim(ii) := uni_rand;                                                             -- Noise overwrites Signal when strength of signal is below of noise level (ADC voltage)
-      --end if;
     end loop;
     
     

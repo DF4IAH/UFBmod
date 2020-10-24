@@ -521,7 +521,6 @@ begin
                             
                         when decode_message_loop_start =>
                             bytePattern := (others => '0');
-                          --bytePattern := x"ac";
                             
                             -- Current row position
                             signal_bins_rx09_ch00_mem_addrb_base_Int        := to_integer(unsigned(decoder_FftFrameWork(5 downto 0) & "00000"));    -- = (10 .. 0)
