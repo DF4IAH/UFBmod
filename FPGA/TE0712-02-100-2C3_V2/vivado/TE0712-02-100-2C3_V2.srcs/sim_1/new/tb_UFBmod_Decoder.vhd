@@ -59,6 +59,10 @@ architecture Behavioral of tb_UFBmod_Decoder is
       
       decoder_rx09_ch00_squelch_lvl                 : in  STD_LOGIC_VECTOR ( 15 downto 0 );
       
+    --decoder_msg_rx09_mem_a_add                    : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    --decoder_msg_rx09_mem_a_we                     : out STD_LOGIC;
+    --decoder_msg_rx09_mem_a_din                    : out STD_LOGIC_VECTOR ( 7 downto 0 );
+      
       pushdata_rx09_byteData                        : out STD_LOGIC_VECTOR ( 7 downto 0 );
       pushdata_rx09_en                              : out STD_LOGIC;
       

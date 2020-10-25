@@ -138,42 +138,42 @@ begin
   
   -- UFBmod encoder for the RF09 transmitter
   proc_UFBmod_Encoder_tx09: process (reset, clk, decoder_rx09_sql_open, decoder_rx09_active, encoder_pull_FIFO_dump, encoder_pull_do_start, encoder_pull_data_len, pulldata_tx09_byteData)
-    constant C_pre_r00                              : Integer :=  -8;
-    constant C_pre_r01                              : Integer := +14;
-    constant C_pre_r02                              : Integer := -10;
-    constant C_pre_r03                              : Integer := +18;
-    constant C_pre_r04                              : Integer :=  -6;
-    constant C_pre_r05                              : Integer := +12;
-    constant C_pre_r06                              : Integer := -14;
-    constant C_pre_r07                              : Integer := +10;
-    constant C_pre_r08                              : Integer :=  -2;
-    constant C_pre_r09                              : Integer :=  +8;
-    constant C_pre_r10                              : Integer := -18;
-    constant C_pre_r11                              : Integer :=  +4;
-    constant C_pre_r12                              : Integer :=  -4;
-    constant C_pre_r13                              : Integer :=  +2;
-    constant C_pre_r14                              : Integer := -12;
-    constant C_pre_r15                              : Integer :=  +6;
+    constant C_pre_r00                              : Integer :=  +7;   -- 1010110100100101
+    constant C_pre_r01                              : Integer := -11;
+    constant C_pre_r02                              : Integer :=  +7;
+    constant C_pre_r03                              : Integer := -11;
+    constant C_pre_r04                              : Integer :=  +7;
+    constant C_pre_r05                              : Integer :=  +7;
+    constant C_pre_r06                              : Integer := -11;
+    constant C_pre_r07                              : Integer :=  +7;
+    constant C_pre_r08                              : Integer := -11;
+    constant C_pre_r09                              : Integer := -11;
+    constant C_pre_r10                              : Integer :=  +7;
+    constant C_pre_r11                              : Integer := -11;
+    constant C_pre_r12                              : Integer := -11;
+    constant C_pre_r13                              : Integer :=  +7;
+    constant C_pre_r14                              : Integer := -11;
+    constant C_pre_r15                              : Integer :=  +7;
     type     T_pre_ary                              is array (0 to 15) of Integer;
     variable C_pre_ary                              : T_pre_ary := (C_pre_r00, C_pre_r01, C_pre_r02, C_pre_r03, C_pre_r04, C_pre_r05, C_pre_r06, C_pre_r07,
                                                                     C_pre_r08, C_pre_r09, C_pre_r10, C_pre_r11, C_pre_r12, C_pre_r13, C_pre_r14, C_pre_r15);
     
     constant C_bit_0_0                              : Integer :=  -3;
-    constant C_bit_0_1                              : Integer :=  -7;
+    constant C_bit_0_1                              : Integer :=  -3;
     
     constant C_bit_1_0                              : Integer :=  +5;
-    constant C_bit_1_1                              : Integer := +11;
+    constant C_bit_1_1                              : Integer :=  +5;
     
-    constant C_fin_0                                : Integer :=  -7;
-    constant C_fin_1                                : Integer :=  +7;
-    constant C_fin_2                                : Integer :=  -5;
-    constant C_fin_3                                : Integer :=  +5;
-    constant C_fin_4                                : Integer :=  -3;
-    constant C_fin_5                                : Integer :=  +3;
-    constant C_fin_6                                : Integer :=  -1;
-    constant C_fin_7                                : Integer :=  +1;
-    type     T_fin_ary                              is array (0 to  7) of Integer;
-    variable C_fin_ary                              : T_fin_ary := (C_fin_0, C_fin_1, C_fin_2, C_fin_3, C_fin_4, C_fin_5, C_fin_6, C_fin_7);
+  --constant C_fin_0                                : Integer :=  -7;
+  --constant C_fin_1                                : Integer :=  +7;
+  --constant C_fin_2                                : Integer :=  -5;
+  --constant C_fin_3                                : Integer :=  +5;
+  --constant C_fin_4                                : Integer :=  -3;
+  --constant C_fin_5                                : Integer :=  +3;
+  --constant C_fin_6                                : Integer :=  -1;
+  --constant C_fin_7                                : Integer :=  +1;
+  --type     T_fin_ary                              is array (0 to  7) of Integer;
+  --variable C_fin_ary                              : T_fin_ary := (C_fin_0, C_fin_1, C_fin_2, C_fin_3, C_fin_4, C_fin_5, C_fin_6, C_fin_7);
     
     
   --constant C_128us_loopcnt                        : Integer := 12800;
@@ -197,6 +197,7 @@ begin
     variable bit_pos                                : Integer  range 0 to (2**1  - 1);
     variable encoder_tx09_in_len_cnt                : Integer  range 0 to (2**5  - 1);
     variable byteBit_cnt                            : Integer  range 0 to (2**3  - 1);
+    variable byteBit_sub                            : Integer  range 0 to (2**1  - 1);
     
     variable encoder_ofs                            : Integer  range 0 to (2**5  - 1);
     variable encoder_frq_initial                    : Integer  range 0 to (2**5  - 1);
@@ -215,6 +216,7 @@ begin
             bit_pos                                 := 0;
             encoder_tx09_in_len_cnt                 := 0;
             byteBit_cnt                             := 0;
+            byteBit_sub                             := 0;
             
             encoder_ofs                             := 0;
             encoder_frq_initial                     := 0;
@@ -321,6 +323,7 @@ begin
                         else
                             state               := tx_body_dds;
                             byteBit_cnt         := 0;
+                            byteBit_sub         := 0;
                             encoder_frq_last    := encoder_frq_initial;
                         end if;
                     end if;
@@ -331,17 +334,30 @@ begin
                         bit_pos := encoder_tx09_in_len_cnt - 1;
                         
                         if (encoder_tx09_in_vec(bit_pos) = '1') then
-                            encoder_frq_last    := ((32 + C_bit_1_0) + encoder_frq_last) mod 32;
+                            if (byteBit_sub = 1) then
+                                encoder_frq_last := (32 + encoder_frq_last + C_bit_1_1) mod 32;
+                            else
+                                encoder_frq_last := (32 + encoder_frq_last + C_bit_1_0) mod 32;
+                            end if;
                         else
-                            encoder_frq_last    := ((32 + C_bit_0_0) + encoder_frq_last) mod 32;
+                            if (byteBit_sub = 1) then
+                                encoder_frq_last := (32 + encoder_frq_last + C_bit_0_1) mod 32;
+                            else
+                                encoder_frq_last := (32 + encoder_frq_last + C_bit_0_0) mod 32;
+                            end if;
                         end if;
                         encoder_tx09_in_len_cnt := encoder_tx09_in_len_cnt - 1;
                         
                         dds_new_freq            := encoder_frq_last;
                         loop_cnt                := C_128us_loopcnt;
                         
-                        if (byteBit_cnt /= 7) then
-                            byteBit_cnt := byteBit_cnt + 1;
+                        if ((byteBit_cnt /= 7) or (byteBit_sub = 0)) then
+                            if (byteBit_sub  = 0) then
+                                byteBit_sub := 1;
+                            else
+                                byteBit_sub := 0;
+                                byteBit_cnt := byteBit_cnt + 1;
+                            end if;
                         else
                             byteBit_cnt := 0;
                             encoder_frq_last := encoder_frq_initial;
@@ -360,27 +376,28 @@ begin
                     if (loop_cnt /= 0) then
                         loop_cnt    := loop_cnt - 1;
                     else
-                        state := tx_body_dds;
+                      --state := tx_body_dds;
+                        state := tx_rampdown_dds;
                     end if;
                 
+              --Not in use
+              --when tx_final_finX_dds =>
+              --    dds_new_freq    := ((32 + C_fin_ary(preIdx)) + encoder_frq_last) mod 32;
+              --    loop_cnt        := C_128us_loopcnt;
                     
-                when tx_final_finX_dds =>
-                    dds_new_freq    := ((32 + C_fin_0) + encoder_frq_last) mod 32;
-                    loop_cnt        := C_128us_loopcnt;
+              --    state := tx_final_finX_hold_128us;
                     
-                    state := tx_final_finX_hold_128us;
-                    
-                when tx_final_finX_hold_128us =>
-                    if (loop_cnt /= 0) then
-                        loop_cnt    := loop_cnt - 1;
-                    else
-                        if (preIdx /= 7) then
-                            preIdx  := preIdx + 1;
-                            state   := tx_final_finX_dds;
-                        else
-                            state   := tx_rampdown_dds;
-                        end if;
-                    end if;
+              --when tx_final_finX_hold_128us =>
+              --    if (loop_cnt /= 0) then
+              --        loop_cnt    := loop_cnt - 1;
+              --    else
+              --        if (preIdx /= 7) then
+              --            preIdx  := preIdx + 1;
+              --            state   := tx_final_finX_dds;
+              --        else
+              --            state   := tx_rampdown_dds;
+              --        end if;
+              --    end if;
                     
                     
                 when tx_rampdown_dds =>

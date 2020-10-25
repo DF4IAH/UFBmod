@@ -68,6 +68,11 @@ entity UFBmod_rx09_Decoder_FSM is
     decoder_rx09_ch00_strength                      : out STD_LOGIC_VECTOR(18 downto 0);
     decoder_rx09_ch00_SoM_frameCtr                  : out STD_LOGIC_VECTOR(31 downto 0);
     
+    -- Decoder message
+    decoder_msg_rx09_mem_a_addr                     : out STD_LOGIC_VECTOR ( 7 downto 0);
+    decoder_msg_rx09_mem_a_we                       : out STD_LOGIC;
+    decoder_msg_rx09_mem_a_din                      : out STD_LOGIC_VECTOR ( 7 downto 0);
+    
     -- FIFO handshake
     decoder_rx09_ch00_FIFO_handshake                : out STD_LOGIC;
     decoder_rx09_ch00_FIFO_accepted                 : in  STD_LOGIC;
@@ -130,16 +135,16 @@ begin
     constant C_bit_1_0                              : Integer :=  +5;
     constant C_bit_1_1                              : Integer :=  +5;
     
-    constant C_fin_0                                : Integer :=  -7;
-    constant C_fin_1                                : Integer :=  +7;
-    constant C_fin_2                                : Integer :=  -5;
-    constant C_fin_3                                : Integer :=  +5;
-    constant C_fin_4                                : Integer :=  -3;
-    constant C_fin_5                                : Integer :=  +3;
-    constant C_fin_6                                : Integer :=  -1;
-    constant C_fin_7                                : Integer :=  +1;
-    type     T_fin_ary                              is array (0 to  7) of Integer;
-    variable C_fin_ary                              : T_fin_ary := (C_fin_0, C_fin_1, C_fin_2, C_fin_3, C_fin_4, C_fin_5, C_fin_6, C_fin_7);
+  --constant C_fin_0                                : Integer :=  -7;
+  --constant C_fin_1                                : Integer :=  +7;
+  --constant C_fin_2                                : Integer :=  -5;
+  --constant C_fin_3                                : Integer :=  +5;
+  --constant C_fin_4                                : Integer :=  -3;
+  --constant C_fin_5                                : Integer :=  +3;
+  --constant C_fin_6                                : Integer :=  -1;
+  --constant C_fin_7                                : Integer :=  +1;
+  --type     T_fin_ary                              is array (0 to  7) of Integer;
+  --variable C_fin_ary                              : T_fin_ary := (C_fin_0, C_fin_1, C_fin_2, C_fin_3, C_fin_4, C_fin_5, C_fin_6, C_fin_7);
     
     
     constant C_mult_ina_inb_clamp_pre_val           : STD_LOGIC_VECTOR(31 downto 0) := x"00000200";
@@ -148,8 +153,6 @@ begin
     
     type StateType                                  is (
                                                         init, loop_start, 
-                                                        --wait_until_post_fft_done, 
-                                                        --read_in_loop,
                                                         artemis_search_loop_start,
                                                         artemis_search_loop_pre15_prep, artemis_search_loop_pre15_ws1, artemis_search_loop_pre15_ws2, artemis_search_loop_pre15_get,
                                                         artemis_search_loop_preX_ws1, artemis_search_loop_preX_ws2, artemis_search_loop_preX_get,
@@ -159,15 +162,6 @@ begin
                                                         artemis_search_decider_loop_ram_get, artemis_search_decider_loop_end,
                                                         artemis_search_level_check, artemis_search_handoff,
                                                         decoder_process
---                                                        pushdata_prepare_calc, pushdata_prepare_shift,
---                                                        pushdata_header_a, pushdata_header_b,
---                                                        pushdata_signal_msb_a, pushdata_signal_msb_b, pushdata_signal_lsb_a, pushdata_signal_lsb_b,
---                                                        pushdata_noise_msb_a, pushdata_noise_msb_b, pushdata_noise_lsb_a, pushdata_noise_lsb_b,
---                                                        pushdata_frameCtr_p3_a, pushdata_frameCtr_p3_b, pushdata_frameCtr_p2_a, pushdata_frameCtr_p2_b, pushdata_frameCtr_p1_a, pushdata_frameCtr_p1_b, pushdata_frameCtr_p0_a, pushdata_frameCtr_p0_b,
---                                                        pushdata_centerpos_a, pushdata_centerpos_b,
---                                                        pushdata_remainCtr_a, pushdata_remainCtr_b,
---                                                        pushdata_msgU32Len_a,
---                                                        pushdata_loop_begin, pushdata_loop_transfer
                                                     );
     variable state                                  : StateType;
     
@@ -180,10 +174,13 @@ begin
                                                         decode_message_mult_prep, decode_message_mult_ws1, decode_message_mult_ws2, decode_message_mult_ws3, decode_message_mult_get,
                                                         decode_message_byteTry_write,
                                                         decode_byteTry_loop_end,
---                                                        decode_message_check_end,
-                                                        decode_message_loop_end
---                                                        decode_message_decider_reduction_r1, decode_message_decider_reduction_r2, decode_message_decider_reduction_r3, decode_message_decider_reduction_r4,
---                                                        decode_message_decider_f, decode_message_decider_01
+                                                        decode_message_skip,
+                                                        decode_message_loop_end,
+                                                        decode_message_write_time_w3, decode_message_write_time_w2, decode_message_write_time_w1, decode_message_write_time_w0,
+                                                        decode_message_write_pos_w0,
+                                                        decode_message_write_sig_w1, decode_message_write_sig_w0,
+                                                        decode_message_write_noise_w1, decode_message_write_noise_w0, decode_message_write_noise_w0_ws,
+                                                        decode_handshake_give, decode_handshake_get
                                                     );
     variable decoder_state                          : DecoderStateType;
     
@@ -205,16 +202,21 @@ begin
     variable signal_row3                                    : STD_LOGIC_VECTOR(15 downto 0);
     variable signal_max_val                                 : STD_LOGIC_VECTOR(15 downto 0);
     variable signal_max_idx                                 : STD_LOGIC_VECTOR( 4 downto 0);
+    variable decoder_rx09_ch00_SoM_frameCtr_Int             : Integer;
     variable skipUntil                                      : Integer;
     
     variable bytePattern                                    : STD_LOGIC_VECTOR( 7 downto 0);
     variable byteBit_idx                                    : Integer  range 0 to (2**3  - 1);
     variable byteBit_sub                                    : Integer  range 0 to (2**1  - 1);
     variable mult_out_in_calc                               : Integer;
+    variable msg_out_len                                    : Integer  range 0 to (2**8  - 1);
+    variable msg_sig_max                                    : Integer  range 0 to (2**24 - 1);
+    variable msg_sig_pos                                    : Integer  range 0 to (2**8  - 1);
   begin
     if (clk'EVENT and clk = '1') then
         if ((reset = '1') or (dds_tx09_ptt = '1')) then
             signal_bins_rx09_ch00_mem_addrb                 <= (others => '0');
+            
             decoder_rx09_ch00_center_pos_Int                := 0;
             rowIdx                                          := 0;
             posIdx                                          := 0;
@@ -243,17 +245,25 @@ begin
             decoder_rx09_ch00_sql_open                      <= '0';
             decoder_rx09_ch00_active                        <= '0';
             
+            decoder_msg_rx09_mem_a_addr                     <= (others => '0');
+            decoder_msg_rx09_mem_a_we                       <= '0';
+            decoder_msg_rx09_mem_a_din                      <= (others => '0');
+            
             decoder_FftFrameWork                            := (others => '0');
             fftArtemisIdx                                   := 0;
             isOddRow                                        := 0;
             loopCnt                                         := 0;
             
+            decoder_rx09_ch00_SoM_frameCtr_Int              := 0;
             skipUntil                                       := 0;
             
             bytePattern                                     := (others => '0');
             byteBit_idx                                     := 0;
             byteBit_sub                                     := 0;
             mult_out_in_calc                                := 0;
+            msg_out_len                                     := 0;
+            msg_sig_max                                     := 0;
+            msg_sig_pos                                     := 0;
             
             state                                           := init;
             decoder_state                                   := NOP;
@@ -495,11 +505,13 @@ begin
                     end if;
                     
                 when artemis_search_handoff =>
-                    skipUntil                           :=                               to_integer(unsigned(decoder_FftFrameWork)) + 32 - isOddRow;
-                    decoder_rx09_ch00_SoM_frameCtr      <= std_logic_vector(to_unsigned((to_integer(unsigned(decoder_FftFrameWork))      - isOddRow), decoder_rx09_ch00_SoM_frameCtr'length));
+                    decoder_rx09_ch00_SoM_frameCtr_Int  := to_integer(unsigned(decoder_FftFrameWork)) - isOddRow;
+                    decoder_rx09_ch00_SoM_frameCtr      <= std_logic_vector(to_unsigned(decoder_rx09_ch00_SoM_frameCtr_Int, decoder_rx09_ch00_SoM_frameCtr'length));
                     decoder_rx09_ch00_center_pos_Int    := to_integer(unsigned(signal_max_idx));
                     decoder_rx09_ch00_center_pos        <= "000" & signal_max_idx;
                     decoder_rx09_ch00_strength          <= "000" & signal_max_val;
+                    
+                    skipUntil                           := decoder_rx09_ch00_SoM_frameCtr_Int + 32;
                     
                     decoder_state   := decode_preload;                                              -- when DEBUGGING Artemis - disable me
                     state           := decoder_process;
@@ -520,18 +532,25 @@ begin
                             
                             
                         when decode_message_loop_start =>
-                            bytePattern := (others => '0');
-                            
-                            -- Current row position
-                            signal_bins_rx09_ch00_mem_addrb_base_Int        := to_integer(unsigned(decoder_FftFrameWork(5 downto 0) & "00000"));    -- = (10 .. 0)
-                            decoder_artemis_rx09_ch00_mem_addra_base_Int    := to_integer(unsigned(decoder_FftFrameWork(1 downto 0) & "00000"));    -- = ( 7 .. 0)
+                            msg_out_len     := 0;
                             
                             decoder_state   := decode_byteTry_loop_start;
                             
                         when decode_byteTry_loop_start =>
+                            -- Current row position
+                            signal_bins_rx09_ch00_mem_addrb_base_Int        := to_integer(unsigned(decoder_FftFrameWork(5 downto 0) & "00000"));    -- = (10 .. 0)
+                            decoder_artemis_rx09_ch00_mem_addra_base_Int    := to_integer(unsigned(decoder_FftFrameWork(1 downto 0) & "00000"));    -- = ( 7 .. 0)
+                            
+                            bytePattern     := (others => '0');
                             byteBit_idx     := 7;
                             byteBit_sub     := 0;
                             posIdx          := decoder_rx09_ch00_center_pos_Int;
+                            msg_sig_max     := 0;
+                            msg_sig_pos     := 0;
+                            
+                            decoder_msg_rx09_mem_a_addr <= (others => '0');
+                            decoder_msg_rx09_mem_a_din  <= (others => '0');
+                            decoder_msg_rx09_mem_a_we   <= '0';
                             
                             decoder_state   := decode_message_ram_prep;
                             
@@ -632,23 +651,28 @@ begin
                                 decoder_state := decode_message_ram_ws1;
                                 
                             else
+                                if (msg_sig_max  < to_integer(unsigned(decoder_artemis_rx09_ch00_mult_outp(31 downto 8)))) then
+                                    msg_sig_max := to_integer(unsigned(decoder_artemis_rx09_ch00_mult_outp(31 downto 8)));
+                                    msg_sig_pos := to_integer(unsigned(bytePattern));
+                                end if;
+                                
                                 -- Write result to Artemis Block-RAM
                                 if (decoder_artemis_rx09_ch00_mult_outp >= C_mult_outp_clamp_val) then
-                                    decoder_artemis_rx09_ch00_mem_dina  <= C_mult_outp_clamp_val(23 downto 8);
+                                  --decoder_artemis_rx09_ch00_mem_dina  <= C_mult_outp_clamp_val(23 downto 8);
                                 else
-                                    decoder_artemis_rx09_ch00_mem_dina  <= decoder_artemis_rx09_ch00_mult_outp(23 downto 8);
+                                  --decoder_artemis_rx09_ch00_mem_dina  <= decoder_artemis_rx09_ch00_mult_outp(23 downto 8);
                                 end if;
                                 decoder_artemis_rx09_ch00_mult_ina  <= (others => '0');
                                 decoder_artemis_rx09_ch00_mult_inb  <= (others => '0');
                                 
-                                decoder_artemis_rx09_ch00_mem_addra <= bytePattern;
-                                decoder_artemis_rx09_ch00_mem_wea   <= '1';
+                              --decoder_msg_rx09_mem_a_addr <= bytePattern;
+                              --decoder_msg_rx09_mem_a_we   <= '1';
                                 
                                 decoder_state := decode_message_byteTry_write;
                             end if;
                             
                         when decode_message_byteTry_write =>
-                            decoder_artemis_rx09_ch00_mem_wea   <= '0';
+                          --decoder_msg_rx09_mem_a_we   <= '0';
                             
                             decoder_state := decode_byteTry_loop_end;
                             
@@ -657,11 +681,125 @@ begin
                                 bytePattern := std_logic_vector(to_unsigned((to_integer(unsigned(bytePattern)) + 1), bytePattern'length));
                                 decoder_state := decode_byteTry_loop_start;
                             else
-                                decoder_state := decode_message_loop_end;                           -- DEBUGGING: here single bit, dual bit dBc Test.
+                                if ((msg_out_len /= 255) and (0 < msg_sig_max)) then                -- DEBUGGING: here single bit, dual bit dBc Test.
+                                    decoder_msg_rx09_mem_a_addr <= std_logic_vector(to_unsigned((msg_out_len + 10), decoder_msg_rx09_mem_a_addr'length));
+                                    decoder_msg_rx09_mem_a_din  <= std_logic_vector(to_unsigned( msg_sig_pos,       decoder_msg_rx09_mem_a_din'length));
+                                    decoder_msg_rx09_mem_a_we   <= '1';
+                                    
+                                    msg_out_len     := msg_out_len + 1;
+                                    skipUntil       := to_integer(unsigned(decoder_FftFrameWork)) + 32;
+                                    
+                                    decoder_state   := decode_message_skip;
+                                else
+                                    decoder_state := decode_message_loop_end;
+                                end if;
                             end if;
-                                                        
+                            
+                        when decode_message_skip =>
+                            decoder_msg_rx09_mem_a_addr <= (others => '0');
+                            decoder_msg_rx09_mem_a_din  <= (others => '0');
+                            decoder_msg_rx09_mem_a_we   <= '0';
+                            
+                            if (skipUntil > to_integer(unsigned(decoder_FftFrameWork))) then
+                                -- Wait for next frame
+                                decoder_state := decode_message_skip;
+                                state         := loop_start;                                        -- fetch next row
+                            else
+                                -- Process data
+                                decoder_state := decode_byteTry_loop_start;
+                            end if;
+                            
+                            
                         when decode_message_loop_end =>
-                            decoder_state := decode_message_loop_end;
+                            decoder_msg_rx09_mem_a_addr <= (others => '0');
+                            decoder_msg_rx09_mem_a_din  <= (others => '0');
+                            decoder_msg_rx09_mem_a_we   <= '0';
+                            
+                            decoder_state := decode_message_write_time_w3;
+                            
+                        when decode_message_write_time_w3 =>
+                            decoder_msg_rx09_mem_a_addr <= x"01";
+                            decoder_msg_rx09_mem_a_din  <= std_logic_vector(to_unsigned( (decoder_rx09_ch00_SoM_frameCtr_Int / 2**24), decoder_msg_rx09_mem_a_din'length));
+                            decoder_msg_rx09_mem_a_we   <= '1';
+                            
+                            decoder_state := decode_message_write_time_w2;
+                            
+                        when decode_message_write_time_w2 =>
+                            decoder_msg_rx09_mem_a_addr <= x"02";
+                            decoder_msg_rx09_mem_a_din  <= std_logic_vector(to_unsigned(((decoder_rx09_ch00_SoM_frameCtr_Int / 2**16) mod 256), decoder_msg_rx09_mem_a_din'length));
+                          --decoder_msg_rx09_mem_a_we   <= '1';
+                            
+                            decoder_state := decode_message_write_time_w1;
+                        
+                        when decode_message_write_time_w1 =>
+                            decoder_msg_rx09_mem_a_addr <= x"03";
+                            decoder_msg_rx09_mem_a_din  <= std_logic_vector(to_unsigned(((decoder_rx09_ch00_SoM_frameCtr_Int /  2**8) mod 256), decoder_msg_rx09_mem_a_din'length));
+                          --decoder_msg_rx09_mem_a_we   <= '1';
+                            
+                            decoder_state := decode_message_write_time_w0;
+                        
+                        when decode_message_write_time_w0 =>
+                            decoder_msg_rx09_mem_a_addr <= x"04";
+                            decoder_msg_rx09_mem_a_din  <= std_logic_vector(to_unsigned((decoder_rx09_ch00_SoM_frameCtr_Int mod 256), decoder_msg_rx09_mem_a_din'length));
+                          --decoder_msg_rx09_mem_a_we   <= '1';
+                            
+                            decoder_state := decode_message_write_pos_w0;
+                            
+                        when decode_message_write_pos_w0 =>
+                            decoder_msg_rx09_mem_a_addr <= x"05";
+                            decoder_msg_rx09_mem_a_din  <= std_logic_vector(to_unsigned(decoder_rx09_ch00_center_pos_Int, decoder_msg_rx09_mem_a_din'length));
+                          --decoder_msg_rx09_mem_a_we   <= '1';
+                            
+                            decoder_state := decode_message_write_sig_w1;
+                            
+                        when decode_message_write_sig_w1 =>
+                            decoder_msg_rx09_mem_a_addr <= x"06";
+                            decoder_msg_rx09_mem_a_din  <= signal_max_val(15 downto 8);
+                          --decoder_msg_rx09_mem_a_we   <= '1';
+                            
+                            decoder_state := decode_message_write_sig_w0;
+                            
+                        when decode_message_write_sig_w0 =>
+                            decoder_msg_rx09_mem_a_addr <= x"07";
+                            decoder_msg_rx09_mem_a_din  <= signal_max_val( 7 downto 0);
+                          --decoder_msg_rx09_mem_a_we   <= '1';
+                            
+                            decoder_state := decode_message_write_noise_w1;
+                            
+                        when decode_message_write_noise_w1 =>
+                            decoder_msg_rx09_mem_a_addr <= x"08";
+                            decoder_msg_rx09_mem_a_din  <= std_logic_vector(to_unsigned(0, decoder_msg_rx09_mem_a_din'length));
+                          --decoder_msg_rx09_mem_a_we   <= '1';
+                            
+                            decoder_state := decode_message_write_noise_w0;
+                            
+                        when decode_message_write_noise_w0 =>
+                            decoder_msg_rx09_mem_a_addr <= x"09";
+                            decoder_msg_rx09_mem_a_din  <= std_logic_vector(to_unsigned(0, decoder_msg_rx09_mem_a_din'length));
+                          --decoder_msg_rx09_mem_a_we   <= '1';
+                            
+                            decoder_state := decode_message_write_noise_w0_ws;
+                            
+                        when decode_message_write_noise_w0_ws =>
+                            decoder_msg_rx09_mem_a_addr <= (others => '0');
+                            decoder_msg_rx09_mem_a_din  <= (others => '0');
+                            decoder_msg_rx09_mem_a_we   <= '0';
+                            
+                            decoder_state := decode_handshake_give;
+                            
+                            
+                        when decode_handshake_give =>
+                            decoder_rx09_ch00_FIFO_handshake <= '1';
+                            
+                            decoder_state := decode_handshake_get;
+                            
+                        when decode_handshake_get =>
+                            if (decoder_rx09_ch00_FIFO_accepted   = '1') then
+                                decoder_rx09_ch00_FIFO_handshake <= '0';
+                            end if;
+                            
+                            decoder_state   := NOP;
+                            state           := loop_start;
                             
                             
                         when others =>
