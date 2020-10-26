@@ -1,5 +1,5 @@
---- msys_wrapper.vhd.orig.txt	2020-10-20 23:43:44.874301900 +0200
-+++ msys_wrapper.vhd	2020-10-21 01:07:13.675232600 +0200
+--- msys_wrapper.vhd.orig.txt	2020-10-26 09:21:51.856375600 +0100
++++ msys_wrapper.vhd	2020-10-26 09:34:33.505603500 +0100
 @@ -16,4 +16,6 @@
      BOARD_IIC_scl_io : inout STD_LOGIC;
      BOARD_IIC_sda_io : inout STD_LOGIC;
@@ -60,20 +60,24 @@
 -    TRX_rx24_fifo_valid_o : out STD_LOGIC;
      TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
      TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
-@@ -114,35 +91,5 @@
+@@ -114,37 +91,5 @@
      ULI_SYSTEM_XIO : in STD_LOGIC;
      USER_dbg_out : out STD_LOGIC_VECTOR ( 13 downto 0 );
 -    dds_tx09_inc : in STD_LOGIC_VECTOR ( 25 downto 0 );
 -    dds_tx09_ptt : in STD_LOGIC;
--    decoder_rx09_active : in STD_LOGIC;
--    decoder_rx09_center_pos : in STD_LOGIC_VECTOR ( 7 downto 0 );
--    decoder_rx09_noise : in STD_LOGIC_VECTOR ( 18 downto 0 );
--    decoder_rx09_sql_open : in STD_LOGIC;
--    decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 15 downto 0 );
--    decoder_rx09_strength : in STD_LOGIC_VECTOR ( 18 downto 0 );
--    encoder_pull_FIFO_dump : out STD_LOGIC_VECTOR ( 0 to 0 );
--    encoder_pull_data_len : out STD_LOGIC_VECTOR ( 6 downto 0 );
--    encoder_pull_do_start : out STD_LOGIC_VECTOR ( 0 to 0 );
+-    decoder_rx09_ch00_FIFO_accepted : out STD_LOGIC_VECTOR ( 0 to 0 );
+-    decoder_rx09_ch00_FIFO_handshake : in STD_LOGIC;
+-    decoder_rx09_ch00_active : in STD_LOGIC;
+-    decoder_rx09_ch00_center_pos : in STD_LOGIC_VECTOR ( 7 downto 0 );
+-    decoder_rx09_ch00_msg_mem_b_addr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+-    decoder_rx09_ch00_msg_mem_b_dout : in STD_LOGIC_VECTOR ( 7 downto 0 );
+-    decoder_rx09_ch00_noise : in STD_LOGIC_VECTOR ( 18 downto 0 );
+-    decoder_rx09_ch00_sql_open : in STD_LOGIC;
+-    decoder_rx09_ch00_squelch_lvl : out STD_LOGIC_VECTOR ( 15 downto 0 );
+-    decoder_rx09_ch00_strength : in STD_LOGIC_VECTOR ( 18 downto 0 );
+-    encoder_tx09_pull_FIFO_dump : out STD_LOGIC_VECTOR ( 0 to 0 );
+-    encoder_tx09_pull_data_len : out STD_LOGIC_VECTOR ( 6 downto 0 );
+-    encoder_tx09_pull_do_start : out STD_LOGIC_VECTOR ( 0 to 0 );
 -    fft09_config_tdata_in : in STD_LOGIC_VECTOR ( 7 downto 0 );
 -    fft09_config_tvalid_in : in STD_LOGIC;
 -    fft09_data_tlast_in : in STD_LOGIC;
@@ -92,11 +96,9 @@
 -    premem_rx09_wea_in : in STD_LOGIC_VECTOR ( 0 to 0 );
 -    pulldata_tx09_byteData : out STD_LOGIC_VECTOR ( 7 downto 0 );
 -    pulldata_tx09_en : in STD_LOGIC;
--    pushdata_rx09_byteData : in STD_LOGIC_VECTOR ( 7 downto 0 );
--    pushdata_rx09_en : in STD_LOGIC;
      qspi_flash_io0_io : inout STD_LOGIC;
      qspi_flash_io1_io : inout STD_LOGIC;
-@@ -150,7 +97,5 @@
+@@ -152,7 +97,5 @@
      qspi_flash_io3_io : inout STD_LOGIC;
      qspi_flash_ss_io : inout STD_LOGIC;
 -    reset : in STD_LOGIC;
@@ -105,7 +107,7 @@
 +    reset : in STD_LOGIC
    );
  end msys_wrapper;
-@@ -332,4 +277,142 @@
+@@ -336,4 +279,144 @@
    );
    end component IOBUF;
 +  component rotenc_decoder is
@@ -209,8 +211,10 @@
 +    decoder_rx09_ch00_noise                         : out STD_LOGIC_VECTOR(18 downto 0);
 +    decoder_rx09_ch00_sql_open                      : out STD_LOGIC;
 +    decoder_rx09_ch00_active                        : out STD_LOGIC;
-+    pushdata_rx09_en                                : out STD_LOGIC;
-+    pushdata_rx09_byteData                          : out STD_LOGIC_VECTOR( 7 downto 0)
++    decoder_rx09_ch00_FIFO_accepted                 : in STD_LOGIC;
++    decoder_rx09_ch00_FIFO_handshake                : out STD_LOGIC;
++    decoder_rx09_ch00_msg_mem_b_addr                : in STD_LOGIC_VECTOR ( 7 downto 0 );
++    decoder_rx09_ch00_msg_mem_b_dout                : out STD_LOGIC_VECTOR ( 7 downto 0 )
 +  );
 +  end component UFBmod_Decoder_wrapper;
 +  component UFBmod_Encoder_wrapper is
@@ -248,7 +252,7 @@
 +  end component SCOPE_FSM;
    signal BOARD_IIC_scl_i : STD_LOGIC;
    signal BOARD_IIC_scl_o : STD_LOGIC;
-@@ -338,7 +421,10 @@
+@@ -342,7 +425,10 @@
    signal BOARD_IIC_sda_o : STD_LOGIC;
    signal BOARD_IIC_sda_t : STD_LOGIC;
 +  signal ETH0_LINK_LED_g : STD_LOGIC;
@@ -259,7 +263,7 @@
 +  signal mw_LVDS_rx24_synced : STD_LOGIC;
    signal TRX_spi_io0_i : STD_LOGIC;
    signal TRX_spi_io0_o : STD_LOGIC;
-@@ -354,4 +440,86 @@
+@@ -358,4 +444,73 @@
    signal TRX_spi_ss_o_0 : STD_LOGIC_VECTOR ( 0 to 0 );
    signal TRX_spi_ss_t : STD_LOGIC;
 +  signal mw_decoder_rx09_ch00_sql_open : STD_LOGIC;
@@ -291,31 +295,22 @@
 +  signal mw_premem_rx09_dina_in : STD_LOGIC_VECTOR ( 25 downto 0 );
 +  signal mw_premem_rx09_addrb_in : STD_LOGIC_VECTOR ( 10 downto 0 );
 +  signal mw_premem_rx09_quarterfrm_in : STD_LOGIC_VECTOR ( 2 downto 0 );
-+--signal mw_premem_rx24_addra_in : STD_LOGIC_VECTOR ( 10 downto 0 );
-+--signal mw_premem_rx24_wea_in : STD_LOGIC;
-+--signal mw_premem_rx24_dina_in : STD_LOGIC_VECTOR ( 25 downto 0 );
-+--signal mw_premem_rx24_addrb_in : STD_LOGIC_VECTOR ( 10 downto 0 );
-+--signal mw_premem_rx24_quarterfrm_in : STD_LOGIC_VECTOR ( 2 downto 0 );
 +  signal mw_dds_tx09_inc : STD_LOGIC_VECTOR ( 25 downto 0 );
 +  signal mw_dds_tx09_ptt : STD_LOGIC;
-+  signal mw_encoder_pull_FIFO_dump : STD_LOGIC;
-+  signal mw_encoder_pull_data_len : STD_LOGIC_VECTOR ( 6 downto 0 );
-+  signal mw_encoder_pull_do_start : STD_LOGIC;
++  signal mw_decoder_rx09_ch00_FIFO_accepted : STD_LOGIC;
++  signal mw_decoder_rx09_ch00_FIFO_handshake : STD_LOGIC;
++  signal mw_decoder_rx09_ch00_msg_mem_b_addr : STD_LOGIC_VECTOR ( 7 downto 0 );
++  signal mw_decoder_rx09_ch00_msg_mem_b_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
++  signal mw_encoder_tx09_pull_FIFO_dump : STD_LOGIC;
++  signal mw_encoder_tx09_pull_data_len : STD_LOGIC_VECTOR ( 6 downto 0 );
++  signal mw_encoder_tx09_pull_do_start : STD_LOGIC;
 +  signal mw_FFT_window_coef_rom_rx09 : STD_LOGIC_VECTOR ( 9 downto 0 );
-+--signal mw_FFT_window_coef_rom_rx24 : STD_LOGIC_VECTOR ( 9 downto 0 );
 +  signal mw_fft09_data_tlast_in : STD_LOGIC;
 +  signal mw_fft09_data_tready_out : STD_LOGIC;
 +  signal mw_fft09_data_tvalid_in : STD_LOGIC;
 +  signal mw_fft09_config_tdata_in : STD_LOGIC_VECTOR ( 7 downto 0 );
 +  signal mw_fft09_config_tvalid_in : STD_LOGIC;
 +  signal mw_fft09_premem_subframe_in : STD_LOGIC_VECTOR ( 1 downto 0 );
-+--signal mw_fft24_aresetn_in : STD_LOGIC;
-+--signal mw_fft24_data_tlast_in : STD_LOGIC;
-+--signal mw_fft24_data_tready_out : STD_LOGIC;
-+--signal mw_fft24_data_tvalid_in : STD_LOGIC;
-+--signal mw_fft24_config_tdata_in : STD_LOGIC_VECTOR ( 7 downto 0 );
-+--signal mw_fft24_config_tvalid_in : STD_LOGIC;
-+--signal mw_fft24_premem_subframe_in : STD_LOGIC_VECTOR ( 1 downto 0 );
 +  signal mw_postmem_rx_wea_in : STD_LOGIC;
 +  signal mw_postmem_rx_addra_in : STD_LOGIC_VECTOR ( 12 downto 0 );
 +  signal mw_post_fft_rx09_mem_a_EoT : STD_LOGIC;
@@ -324,12 +319,8 @@
 +  signal mw_post_fft_rx09_mem_b_addr : STD_LOGIC_VECTOR ( 9 downto 0 );
 +  signal mw_pulldata_tx09_byteData : STD_LOGIC_VECTOR ( 7 downto 0 );
 +  signal mw_pulldata_tx09_en : STD_LOGIC;
-+  signal mw_pushdata_rx09_byteData : STD_LOGIC_VECTOR ( 7 downto 0 );
-+  signal mw_pushdata_rx09_en : STD_LOGIC;
 +  signal mw_RF09_quarterfrm : STD_LOGIC_VECTOR ( 1 downto 0 );
 +  signal mw_RF09_framectr : STD_LOGIC_VECTOR ( 29 downto 0 );
-+--signal mw_RF24_quarterfrm : STD_LOGIC_VECTOR ( 1 downto 0 );
-+--signal mw_RF24_framectr : STD_LOGIC_VECTOR ( 29 downto 0 );
 +  signal mw_rotenc_dec_cnt_en : STD_LOGIC;
 +  signal mw_rotenc_dec_cnt_up_dwn : STD_LOGIC;
 +  signal mw_SCOPE_FSM_GPIO0_Out : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -346,7 +337,7 @@
 +  signal mw_SCOPE_FSM_FIFO_wr_rst_busy : STD_LOGIC;
    signal qspi_flash_io0_i : STD_LOGIC;
    signal qspi_flash_io0_o : STD_LOGIC;
-@@ -370,4 +538,9 @@
+@@ -374,4 +529,9 @@
    signal qspi_flash_ss_t : STD_LOGIC;
  begin
 +ETH0_LINK_LED_0: component IBUF
@@ -356,7 +347,7 @@
 +    );
  BOARD_IIC_scl_iobuf: component IOBUF
       port map (
-@@ -419,4 +592,137 @@
+@@ -423,4 +583,139 @@
        T => TRX_spi_ss_t
      );
 +EUI_onewire_iobuf_0: component IOBUF
@@ -445,35 +436,37 @@
 +    );
 +UFBmod_Decoder_bd: component UFBmod_Decoder_wrapper
 +    port map (
-+      reset_100MHz                  => mw_mig_7series_0_ui_clk_sync_rst,
-+      clk_100MHz                    => mw_microblaze_0_Clk_100MHz,
-+      dds_tx09_ptt                  => mw_dds_tx09_ptt,
-+      post_fft_rx09_mem_a_EoT       => mw_post_fft_rx09_mem_a_EoT,
-+      post_fft_rx09_mem_a_addr      => mw_post_fft_rx09_mem_a_addr,
-+      post_fft_rx09_mem_b_addr      => mw_post_fft_rx09_mem_b_addr,
-+      post_fft_rx09_mem_b_dout      => mw_post_fft_rx09_mem_b_dout,
-+      decoder_rx09_ch00_squelch_lvl => mw_decoder_rx09_ch00_squelch_lvl,
-+      decoder_rx09_ch00_center_pos  => mw_decoder_rx09_ch00_center_pos,
-+      decoder_rx09_ch00_strength    => mw_decoder_rx09_ch00_strength,
-+      decoder_rx09_ch00_noise       => mw_decoder_rx09_ch00_noise,
-+      decoder_rx09_ch00_sql_open    => mw_decoder_rx09_ch00_sql_open,
-+      decoder_rx09_ch00_active      => mw_decoder_rx09_ch00_active,
-+      pushdata_rx09_en              => mw_pushdata_rx09_en,
-+      pushdata_rx09_byteData        => mw_pushdata_rx09_byteData
++      reset_100MHz                      => mw_mig_7series_0_ui_clk_sync_rst,
++      clk_100MHz                        => mw_microblaze_0_Clk_100MHz,
++      dds_tx09_ptt                      => mw_dds_tx09_ptt,
++      post_fft_rx09_mem_a_EoT           => mw_post_fft_rx09_mem_a_EoT,
++      post_fft_rx09_mem_a_addr          => mw_post_fft_rx09_mem_a_addr,
++      post_fft_rx09_mem_b_addr          => mw_post_fft_rx09_mem_b_addr,
++      post_fft_rx09_mem_b_dout          => mw_post_fft_rx09_mem_b_dout,
++      decoder_rx09_ch00_squelch_lvl     => mw_decoder_rx09_ch00_squelch_lvl,
++      decoder_rx09_ch00_center_pos      => mw_decoder_rx09_ch00_center_pos,
++      decoder_rx09_ch00_strength        => mw_decoder_rx09_ch00_strength,
++      decoder_rx09_ch00_noise           => mw_decoder_rx09_ch00_noise,
++      decoder_rx09_ch00_sql_open        => mw_decoder_rx09_ch00_sql_open,
++      decoder_rx09_ch00_active          => mw_decoder_rx09_ch00_active,
++      decoder_rx09_ch00_msg_mem_b_addr  => mw_decoder_rx09_ch00_msg_mem_b_addr,
++      decoder_rx09_ch00_msg_mem_b_dout  => mw_decoder_rx09_ch00_msg_mem_b_dout,
++      decoder_rx09_ch00_FIFO_accepted   => mw_decoder_rx09_ch00_FIFO_accepted,
++      decoder_rx09_ch00_FIFO_handshake  => mw_decoder_rx09_ch00_FIFO_handshake
 +    );
 +UFBmod_Encoder_bd: component UFBmod_Encoder_wrapper
 +    port map (
-+      reset_100MHz                  => mw_mig_7series_0_ui_clk_sync_rst,
-+      clk_100MHz                    => mw_microblaze_0_Clk_100MHz,
-+      decoder_rx09_sql_open         => mw_decoder_rx09_ch00_sql_open,
-+      decoder_rx09_active           => mw_decoder_rx09_ch00_active,
-+      encoder_pull_FIFO_dump        => mw_encoder_pull_FIFO_dump,
-+      encoder_pull_do_start         => mw_encoder_pull_do_start,
-+      encoder_pull_data_len         => mw_encoder_pull_data_len,
-+      pulldata_tx09_en              => mw_pulldata_tx09_en,
-+      pulldata_tx09_byteData        => mw_pulldata_tx09_byteData,
-+      dds_tx09_inc                  => mw_dds_tx09_inc,
-+      dds_tx09_ptt                  => mw_dds_tx09_ptt
++      reset_100MHz                      => mw_mig_7series_0_ui_clk_sync_rst,
++      clk_100MHz                        => mw_microblaze_0_Clk_100MHz,
++      decoder_rx09_sql_open             => mw_decoder_rx09_ch00_sql_open,
++      decoder_rx09_active               => mw_decoder_rx09_ch00_active,
++      encoder_pull_FIFO_dump            => mw_encoder_tx09_pull_FIFO_dump,
++      encoder_pull_do_start             => mw_encoder_tx09_pull_do_start,
++      encoder_pull_data_len             => mw_encoder_tx09_pull_data_len,
++      pulldata_tx09_en                  => mw_pulldata_tx09_en,
++      pulldata_tx09_byteData            => mw_pulldata_tx09_byteData,
++      dds_tx09_inc                      => mw_dds_tx09_inc,
++      dds_tx09_ptt                      => mw_dds_tx09_ptt
 +    );
 +SCOPE_FSM_i: component SCOPE_FSM
 +    port map (
@@ -494,7 +487,7 @@
 +    );
  msys_i: component msys
       port map (
-@@ -458,10 +764,10 @@
+@@ -462,10 +757,10 @@
        ETH0_MDIO_MDC_mdio_o => ETH0_MDIO_MDC_mdio_o,
        ETH0_MDIO_MDC_mdio_t => ETH0_MDIO_MDC_mdio_t,
 -      EUI48_FSM_run => EUI48_FSM_run,
@@ -511,7 +504,7 @@
 +      FFT_window_coef_rom_rx09(9 downto 0) => mw_FFT_window_coef_rom_rx09(9 downto 0),
        FPGA_IO => FPGA_IO,
        LCD_BL(0) => LCD_BL(0),
-@@ -470,27 +776,27 @@
+@@ -474,27 +769,27 @@
        LED_RGB_green(0) => LED_RGB_green(0),
        LED_RGB_red(0) => LED_RGB_red(0),
 -      LVDS_rx09_synced => LVDS_rx09_synced,
@@ -555,7 +548,7 @@
 +      SCOPE_FSM_TrigSrc(47 downto 0) => mw_SCOPE_FSM_TrigSrc(47 downto 0),
        TRX_PLL_clk_25MHz_N(0) => TRX_PLL_clk_25MHz_N(0),
        TRX_PLL_clk_25MHz_P(0) => TRX_PLL_clk_25MHz_P(0),
-@@ -499,8 +805,8 @@
+@@ -503,8 +798,8 @@
        TRX_resetn(0) => TRX_resetn(0),
        TRX_rfx_mode(0) => TRX_rfx_mode(0),
 -      TRX_rx09_fifo_o(31 downto 0) => TRX_rx09_fifo_o(31 downto 0),
@@ -568,20 +561,24 @@
 +      TRX_rx24_fifo_valid_o => mw_TRX_rx24_fifo_valid,
        TRX_rx_clk_64MHz_clk_n => TRX_rx_clk_64MHz_clk_n,
        TRX_rx_clk_64MHz_clk_p => TRX_rx_clk_64MHz_clk_p,
-@@ -535,35 +841,35 @@
+@@ -539,37 +834,37 @@
        ULI_SYSTEM_XIO => ULI_SYSTEM_XIO,
        USER_dbg_out(13 downto 0) => USER_dbg_out(13 downto 0),
 -      dds_tx09_inc(25 downto 0) => dds_tx09_inc(25 downto 0),
 -      dds_tx09_ptt => dds_tx09_ptt,
--      decoder_rx09_active => decoder_rx09_active,
--      decoder_rx09_center_pos(7 downto 0) => decoder_rx09_center_pos(7 downto 0),
--      decoder_rx09_noise(18 downto 0) => decoder_rx09_noise(18 downto 0),
--      decoder_rx09_sql_open => decoder_rx09_sql_open,
--      decoder_rx09_squelch_lvl(15 downto 0) => decoder_rx09_squelch_lvl(15 downto 0),
--      decoder_rx09_strength(18 downto 0) => decoder_rx09_strength(18 downto 0),
--      encoder_pull_FIFO_dump(0) => encoder_pull_FIFO_dump(0),
--      encoder_pull_data_len(6 downto 0) => encoder_pull_data_len(6 downto 0),
--      encoder_pull_do_start(0) => encoder_pull_do_start(0),
+-      decoder_rx09_ch00_FIFO_accepted(0) => decoder_rx09_ch00_FIFO_accepted(0),
+-      decoder_rx09_ch00_FIFO_handshake => decoder_rx09_ch00_FIFO_handshake,
+-      decoder_rx09_ch00_active => decoder_rx09_ch00_active,
+-      decoder_rx09_ch00_center_pos(7 downto 0) => decoder_rx09_ch00_center_pos(7 downto 0),
+-      decoder_rx09_ch00_msg_mem_b_addr(7 downto 0) => decoder_rx09_ch00_msg_mem_b_addr(7 downto 0),
+-      decoder_rx09_ch00_msg_mem_b_dout(7 downto 0) => decoder_rx09_ch00_msg_mem_b_dout(7 downto 0),
+-      decoder_rx09_ch00_noise(18 downto 0) => decoder_rx09_ch00_noise(18 downto 0),
+-      decoder_rx09_ch00_sql_open => decoder_rx09_ch00_sql_open,
+-      decoder_rx09_ch00_squelch_lvl(15 downto 0) => decoder_rx09_ch00_squelch_lvl(15 downto 0),
+-      decoder_rx09_ch00_strength(18 downto 0) => decoder_rx09_ch00_strength(18 downto 0),
+-      encoder_tx09_pull_FIFO_dump(0) => encoder_tx09_pull_FIFO_dump(0),
+-      encoder_tx09_pull_data_len(6 downto 0) => encoder_tx09_pull_data_len(6 downto 0),
+-      encoder_tx09_pull_do_start(0) => encoder_tx09_pull_do_start(0),
 -      fft09_config_tdata_in(7 downto 0) => fft09_config_tdata_in(7 downto 0),
 -      fft09_config_tvalid_in => fft09_config_tvalid_in,
 -      fft09_data_tlast_in => fft09_data_tlast_in,
@@ -591,15 +588,19 @@
 -      mig_7series_0_ui_clk_sync_rst => mig_7series_0_ui_clk_sync_rst,
 +      dds_tx09_inc(25 downto 0) => mw_dds_tx09_inc(25 downto 0),
 +      dds_tx09_ptt => mw_dds_tx09_ptt,
-+      decoder_rx09_active => mw_decoder_rx09_ch00_active,
-+      decoder_rx09_center_pos(7 downto 0) => mw_decoder_rx09_ch00_center_pos(7 downto 0),
-+      decoder_rx09_noise(18 downto 0) => mw_decoder_rx09_ch00_noise(18 downto 0),
-+      decoder_rx09_sql_open => mw_decoder_rx09_ch00_sql_open,
-+      decoder_rx09_squelch_lvl(15 downto 0) => mw_decoder_rx09_ch00_squelch_lvl(15 downto 0),
-+      decoder_rx09_strength(18 downto 0) => mw_decoder_rx09_ch00_strength(18 downto 0),
-+      encoder_pull_FIFO_dump(0) => mw_encoder_pull_FIFO_dump,
-+      encoder_pull_data_len(6 downto 0) => mw_encoder_pull_data_len(6 downto 0),
-+      encoder_pull_do_start(0) => mw_encoder_pull_do_start,
++      decoder_rx09_ch00_FIFO_accepted(0) => mw_decoder_rx09_ch00_FIFO_accepted,
++      decoder_rx09_ch00_FIFO_handshake => mw_decoder_rx09_ch00_FIFO_handshake,
++      decoder_rx09_ch00_active => mw_decoder_rx09_ch00_active,
++      decoder_rx09_ch00_center_pos(7 downto 0) => mw_decoder_rx09_ch00_center_pos(7 downto 0),
++      decoder_rx09_ch00_msg_mem_b_addr(7 downto 0) => mw_decoder_rx09_ch00_msg_mem_b_addr(7 downto 0),
++      decoder_rx09_ch00_msg_mem_b_dout(7 downto 0) => mw_decoder_rx09_ch00_msg_mem_b_dout(7 downto 0),
++      decoder_rx09_ch00_noise(18 downto 0) => mw_decoder_rx09_ch00_noise(18 downto 0),
++      decoder_rx09_ch00_sql_open => mw_decoder_rx09_ch00_sql_open,
++      decoder_rx09_ch00_squelch_lvl(15 downto 0) => mw_decoder_rx09_ch00_squelch_lvl(15 downto 0),
++      decoder_rx09_ch00_strength(18 downto 0) => mw_decoder_rx09_ch00_strength(18 downto 0),
++      encoder_tx09_pull_FIFO_dump(0) => mw_encoder_tx09_pull_FIFO_dump,
++      encoder_tx09_pull_data_len(6 downto 0) => mw_encoder_tx09_pull_data_len(6 downto 0),
++      encoder_tx09_pull_do_start(0) => mw_encoder_tx09_pull_do_start,
 +      fft09_config_tdata_in(7 downto 0) => mw_fft09_config_tdata_in(7 downto 0),
 +      fft09_config_tvalid_in => mw_fft09_config_tvalid_in,
 +      fft09_data_tlast_in => mw_fft09_data_tlast_in,
@@ -618,8 +619,6 @@
 -      premem_rx09_wea_in(0) => premem_rx09_wea_in(0),
 -      pulldata_tx09_byteData(7 downto 0) => pulldata_tx09_byteData(7 downto 0),
 -      pulldata_tx09_en => pulldata_tx09_en,
--      pushdata_rx09_byteData(7 downto 0) => pushdata_rx09_byteData(7 downto 0),
--      pushdata_rx09_en => pushdata_rx09_en,
 +      post_fft_rx09_mem_a_EoT => mw_post_fft_rx09_mem_a_EoT,
 +      post_fft_rx09_mem_a_addr(41 downto 0) => mw_post_fft_rx09_mem_a_addr(41 downto 0),
 +      post_fft_rx09_mem_b_addr(9 downto 0) => mw_post_fft_rx09_mem_b_addr(9 downto 0),
@@ -630,11 +629,9 @@
 +      premem_rx09_wea_in(0) => mw_premem_rx09_wea_in,
 +      pulldata_tx09_byteData(7 downto 0) => mw_pulldata_tx09_byteData(7 downto 0),
 +      pulldata_tx09_en => mw_pulldata_tx09_en,
-+      pushdata_rx09_byteData(7 downto 0) => mw_pushdata_rx09_byteData(7 downto 0),
-+      pushdata_rx09_en => mw_pushdata_rx09_en,
        qspi_flash_io0_i => qspi_flash_io0_i,
        qspi_flash_io0_o => qspi_flash_io0_o,
-@@ -582,6 +888,6 @@
+@@ -588,6 +883,6 @@
        qspi_flash_ss_t => qspi_flash_ss_t,
        reset => reset,
 -      rotenc_dec_cnt_en => rotenc_dec_cnt_en,
