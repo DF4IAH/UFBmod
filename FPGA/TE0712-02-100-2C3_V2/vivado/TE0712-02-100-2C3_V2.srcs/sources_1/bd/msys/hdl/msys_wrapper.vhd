@@ -366,23 +366,23 @@ architecture STRUCTURE of msys_wrapper is
   end component EUI48_FSM;
   component UFBmod_Decoder_wrapper is
   port (
-    reset_100MHz                                    : in  STD_LOGIC;
     clk_100MHz                                      : in  STD_LOGIC;
-    dds_tx09_ptt                                    : in  STD_LOGIC;
-    post_fft_rx09_mem_a_EoT                         : in  STD_LOGIC;
-    post_fft_rx09_mem_a_addr                        : in  STD_LOGIC_VECTOR(41 downto 0);
-    post_fft_rx09_mem_b_addr                        : out STD_LOGIC_VECTOR( 9 downto 0);
-    post_fft_rx09_mem_b_dout                        : in  STD_LOGIC_VECTOR(15 downto 0);
-    decoder_rx09_ch00_squelch_lvl                   : in  STD_LOGIC_VECTOR(15 downto 0);
-    decoder_rx09_ch00_center_pos                    : out STD_LOGIC_VECTOR( 7 downto 0);
-    decoder_rx09_ch00_strength                      : out STD_LOGIC_VECTOR(18 downto 0);
-    decoder_rx09_ch00_noise                         : out STD_LOGIC_VECTOR(18 downto 0);
-    decoder_rx09_ch00_sql_open                      : out STD_LOGIC;
-    decoder_rx09_ch00_active                        : out STD_LOGIC;
-    decoder_rx09_ch00_FIFO_accepted                 : in STD_LOGIC;
-    decoder_rx09_ch00_FIFO_handshake                : out STD_LOGIC;
-    decoder_rx09_ch00_msg_mem_b_addr                : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    decoder_rx09_ch00_msg_mem_b_dout                : out STD_LOGIC_VECTOR ( 7 downto 0 )
+    reset_100MHz                                    : in  STD_LOGIC;
+    dds_tx09_ptt                                    : in STD_LOGIC;
+    post_fft_rx09_mem_a_EoT                         : in STD_LOGIC;
+    post_fft_rx09_mem_a_addr                        : in STD_LOGIC_VECTOR ( 41 downto 0 );
+    post_fft_rx09_mem_b_addr                        : out STD_LOGIC_VECTOR ( 9 downto 0 );
+    post_fft_rx09_mem_b_dout                        : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    decoder_rx09_chXX_squelch_lvl                   : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    decoder_rx09_chXX_sql_open                      : out STD_LOGIC;
+    decoder_rx09_chXX_active                        : out STD_LOGIC;
+    decoder_rx09_chXX_center_pos                    : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    decoder_rx09_chXX_strength                      : out STD_LOGIC_VECTOR ( 18 downto 0 );
+    decoder_rx09_chXX_noise                         : out STD_LOGIC_VECTOR ( 18 downto 0 );
+    decoder_rx09_chXX_FIFO_accepted                 : in STD_LOGIC;
+    decoder_rx09_chXX_FIFO_handshake                : out STD_LOGIC;
+    decoder_rx09_chXX_msg_mem_b_addr                : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    decoder_rx09_chXX_msg_mem_b_dout                : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component UFBmod_Decoder_wrapper;
   component UFBmod_Encoder_wrapper is
@@ -666,7 +666,7 @@ EUI48_FSM_i: component EUI48_FSM
       EUI48_state           => mw_EUI48_state,
       EUI48_abort           => mw_EUI48_abort
     );
-UFBmod_Decoder_bd: component UFBmod_Decoder_wrapper
+UFBmod_Decoder_rx09_ch00_bd: component UFBmod_Decoder_wrapper
     port map (
       reset_100MHz                      => mw_mig_7series_0_ui_clk_sync_rst,
       clk_100MHz                        => mw_microblaze_0_Clk_100MHz,
@@ -675,16 +675,16 @@ UFBmod_Decoder_bd: component UFBmod_Decoder_wrapper
       post_fft_rx09_mem_a_addr          => mw_post_fft_rx09_mem_a_addr,
       post_fft_rx09_mem_b_addr          => mw_post_fft_rx09_mem_b_addr,
       post_fft_rx09_mem_b_dout          => mw_post_fft_rx09_mem_b_dout,
-      decoder_rx09_ch00_squelch_lvl     => mw_decoder_rx09_ch00_squelch_lvl,
-      decoder_rx09_ch00_center_pos      => mw_decoder_rx09_ch00_center_pos,
-      decoder_rx09_ch00_strength        => mw_decoder_rx09_ch00_strength,
-      decoder_rx09_ch00_noise           => mw_decoder_rx09_ch00_noise,
-      decoder_rx09_ch00_sql_open        => mw_decoder_rx09_ch00_sql_open,
-      decoder_rx09_ch00_active          => mw_decoder_rx09_ch00_active,
-      decoder_rx09_ch00_msg_mem_b_addr  => mw_decoder_rx09_ch00_msg_mem_b_addr,
-      decoder_rx09_ch00_msg_mem_b_dout  => mw_decoder_rx09_ch00_msg_mem_b_dout,
-      decoder_rx09_ch00_FIFO_accepted   => mw_decoder_rx09_ch00_FIFO_accepted,
-      decoder_rx09_ch00_FIFO_handshake  => mw_decoder_rx09_ch00_FIFO_handshake
+      decoder_rx09_chXX_squelch_lvl     => mw_decoder_rx09_ch00_squelch_lvl,
+      decoder_rx09_chXX_sql_open        => mw_decoder_rx09_ch00_sql_open,
+      decoder_rx09_chXX_active          => mw_decoder_rx09_ch00_active,
+      decoder_rx09_chXX_center_pos      => mw_decoder_rx09_ch00_center_pos,
+      decoder_rx09_chXX_strength        => mw_decoder_rx09_ch00_strength,
+      decoder_rx09_chXX_noise           => mw_decoder_rx09_ch00_noise,
+      decoder_rx09_chXX_FIFO_handshake  => mw_decoder_rx09_ch00_FIFO_handshake,
+      decoder_rx09_chXX_FIFO_accepted   => mw_decoder_rx09_ch00_FIFO_accepted,
+      decoder_rx09_chXX_msg_mem_b_addr  => mw_decoder_rx09_ch00_msg_mem_b_addr,
+      decoder_rx09_chXX_msg_mem_b_dout  => mw_decoder_rx09_ch00_msg_mem_b_dout
     );
 UFBmod_Encoder_bd: component UFBmod_Encoder_wrapper
     port map (

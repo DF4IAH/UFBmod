@@ -48,28 +48,31 @@ architecture Behavioral of tb_UFBmod_Decoder is
       clk_100MHz                                    : in  STD_LOGIC;
       reset_100MHz                                  : in  STD_LOGIC;
       
+      dds_tx09_ptt                                  : in  STD_LOGIC;
+      
       post_fft_rx09_mem_a_EoT                       : in  STD_LOGIC;
       post_fft_rx09_mem_a_addr                      : in  STD_LOGIC_VECTOR ( 41 downto 0 );
       
       post_fft_rx09_mem_b_addr                      : out STD_LOGIC_VECTOR ( 9 downto 0 );
       post_fft_rx09_mem_b_dout                      : in  STD_LOGIC_VECTOR ( 15 downto 0 );
       
-      decoder_rx09_ch00_active                      : out STD_LOGIC;
-      decoder_rx09_ch00_sql_open                    : out STD_LOGIC;
+      decoder_rx09_chXX_active                      : out STD_LOGIC;
+      decoder_rx09_chXX_sql_open                    : out STD_LOGIC;
+      decoder_rx09_chXX_center_pos                  : out STD_LOGIC_VECTOR ( 7 downto 0 );
+      decoder_rx09_chXX_strength                    : out STD_LOGIC_VECTOR ( 18 downto 0 );
+      decoder_rx09_chXX_noise                       : out STD_LOGIC_VECTOR ( 18 downto 0 );
       
-      decoder_rx09_ch00_squelch_lvl                 : in  STD_LOGIC_VECTOR ( 15 downto 0 );
+      decoder_rx09_chXX_squelch_lvl                 : in  STD_LOGIC_VECTOR ( 15 downto 0 );
       
-    --decoder_msg_rx09_mem_a_add                    : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    --decoder_msg_rx09_mem_a_we                     : out STD_LOGIC;
-    --decoder_msg_rx09_mem_a_din                    : out STD_LOGIC_VECTOR ( 7 downto 0 );
+      decoder_rx09_chXX_msg_mem_b_addr              : in  STD_LOGIC_VECTOR ( 7 downto 0 );
+      decoder_rx09_chXX_msg_mem_b_dout              : out STD_LOGIC_VECTOR ( 7 downto 0 );
       
-      pushdata_rx09_byteData                        : out STD_LOGIC_VECTOR ( 7 downto 0 );
-      pushdata_rx09_en                              : out STD_LOGIC;
-      
-      dds_tx09_ptt                                  : in  STD_LOGIC
+      decoder_rx09_chXX_FIFO_accepted               : in  STD_LOGIC;
+      decoder_rx09_chXX_FIFO_handshake              : out STD_LOGIC
     );
   end component UFBmod_Decoder_wrapper;
-
+  
+  
 -- RESETS
   signal tb_reset_100MHz                            : STD_LOGIC;
 
@@ -84,49 +87,63 @@ architecture Behavioral of tb_UFBmod_Decoder is
   signal tb_post_fft_rx09_mem_a_addr_RAM            : STD_LOGIC_VECTOR ( 9 downto 0);
   signal tb_post_fft_rx09_mem_a_EoT                 : STD_LOGIC;
   
+  signal tb_dds_tx09_ptt                            : STD_LOGIC;
+  
   signal tb_post_fft_rx09_mem_b_addr                : STD_LOGIC_VECTOR ( 9 downto 0);
   signal tb_post_fft_rx09_mem_b_dout_d0             : STD_LOGIC_VECTOR (15 downto 0);
   signal tb_post_fft_rx09_mem_b_dout                : STD_LOGIC_VECTOR (15 downto 0);
   
   signal tb_decoder_rx09_ch00_active                : STD_LOGIC;
   signal tb_decoder_rx09_ch00_sql_open              : STD_LOGIC;
+  signal tb_decoder_rx09_ch00_center_pos            : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal tb_decoder_rx09_ch00_strength              : STD_LOGIC_VECTOR (18 downto 0 );
+  signal tb_decoder_rx09_ch00_noise                 : STD_LOGIC_VECTOR (18 downto 0 );
   
   signal tb_decoder_rx09_ch00_squelch_lvl           : STD_LOGIC_VECTOR (15 downto 0);
   
-  signal tb_pushdata_rx09_byteData                  : STD_LOGIC_VECTOR ( 7 downto 0);
-  signal tb_pushdata_rx09_en                        : STD_LOGIC;
+  signal tb_decoder_rx09_ch00_msg_mem_b_addr        : STD_LOGIC_VECTOR ( 7 downto 0);
+  signal tb_decoder_rx09_ch00_msg_mem_b_dout        : STD_LOGIC_VECTOR ( 7 downto 0);
   
-  signal tb_dds_tx09_ptt                            : STD_LOGIC;
+  signal tb_decoder_rx09_ch00_FIFO_accepted         : STD_LOGIC;
+  signal tb_decoder_rx09_ch00_FIFO_handshake        : STD_LOGIC;
+  
 begin
-
+  
   -- Debugging aid
   tb_post_fft_rx09_mem_a_addr_FrmCtr    <= tb_post_fft_rx09_mem_a_addr(41 downto 10);
   tb_post_fft_rx09_mem_a_addr_RAM       <= tb_post_fft_rx09_mem_a_addr( 9 downto  0);
-
-
+  
+  
 -- DUT
-  UFBmod_wrapper_i: component UFBmod_Decoder_wrapper
+  UFBmod_Decoder_rx09_ch00_bd: component UFBmod_Decoder_wrapper
     port map (
-        reset_100MHz                    => tb_reset_100MHz,
-        clk_100MHz                      => tb_clk_100MHz,
+        reset_100MHz                        => tb_reset_100MHz,
+        clk_100MHz                          => tb_clk_100MHz,
         
-        post_fft_rx09_mem_a_addr        => tb_post_fft_rx09_mem_a_addr,
-        post_fft_rx09_mem_a_EoT         => tb_post_fft_rx09_mem_a_EoT,
+        dds_tx09_ptt                        => tb_dds_tx09_ptt,
+
+        post_fft_rx09_mem_a_addr            => tb_post_fft_rx09_mem_a_addr,
+        post_fft_rx09_mem_a_EoT             => tb_post_fft_rx09_mem_a_EoT,
         
-        post_fft_rx09_mem_b_addr        => tb_post_fft_rx09_mem_b_addr,
-        post_fft_rx09_mem_b_dout        => tb_post_fft_rx09_mem_b_dout,
+        post_fft_rx09_mem_b_addr            => tb_post_fft_rx09_mem_b_addr,
+        post_fft_rx09_mem_b_dout            => tb_post_fft_rx09_mem_b_dout,
         
-        decoder_rx09_ch00_active        => tb_decoder_rx09_ch00_active,
-        decoder_rx09_ch00_sql_open      => tb_decoder_rx09_ch00_sql_open,
-        decoder_rx09_ch00_squelch_lvl   => tb_decoder_rx09_ch00_squelch_lvl,
+        decoder_rx09_chXX_active            => tb_decoder_rx09_ch00_active,
+        decoder_rx09_chXX_sql_open          => tb_decoder_rx09_ch00_sql_open,
+        decoder_rx09_chXX_center_pos        => tb_decoder_rx09_ch00_center_pos,
+        decoder_rx09_chXX_strength          => tb_decoder_rx09_ch00_strength,
+        decoder_rx09_chXX_noise             => tb_decoder_rx09_ch00_noise,
+        
+        decoder_rx09_chXX_squelch_lvl       => tb_decoder_rx09_ch00_squelch_lvl,
       
-        pushdata_rx09_byteData          => tb_pushdata_rx09_byteData,
-        pushdata_rx09_en                => tb_pushdata_rx09_en,
+        decoder_rx09_chXX_msg_mem_b_addr    => tb_decoder_rx09_ch00_msg_mem_b_addr,
+        decoder_rx09_chXX_msg_mem_b_dout    => tb_decoder_rx09_ch00_msg_mem_b_dout,
       
-        dds_tx09_ptt                    => tb_dds_tx09_ptt
+        decoder_rx09_chXX_FIFO_accepted     => tb_decoder_rx09_ch00_FIFO_accepted,
+        decoder_rx09_chXX_FIFO_handshake    => tb_decoder_rx09_ch00_FIFO_handshake
     );
-
-
+  
+  
 -- RESETS
   proc_tb_reset: process
   begin
