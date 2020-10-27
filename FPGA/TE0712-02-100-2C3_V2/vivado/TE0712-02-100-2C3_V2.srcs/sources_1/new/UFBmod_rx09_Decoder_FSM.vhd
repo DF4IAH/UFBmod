@@ -689,6 +689,10 @@ begin
                                     
                                     decoder_state := decode_message_skip;
                                 else
+                                    decoder_rx09_chXX_msg_mem_a_addr    <= (others => '0');
+                                    decoder_rx09_chXX_msg_mem_a_din     <= std_logic_vector(to_unsigned((msg_out_len + 9), decoder_rx09_chXX_msg_mem_a_din'length));
+                                    decoder_rx09_chXX_msg_mem_a_we      <= '1';
+                                    
                                     decoder_state := decode_message_loop_end;
                                 end if;
                             end if;
