@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="msys" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1603835904"/>
-    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1603835904"/>
-    <Generation Name="SIMULATION" State="RESET" Timestamp="1603835904"/>
-    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1603835904"/>
+    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1603885888"/>
+    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1603885888"/>
+    <Generation Name="SIMULATION" State="RESET" Timestamp="1603885888"/>
+    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1603885888"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\msys_SC0712_0_0\msys_SC0712_0_0.xci" Type="IP">
         <Instance HierarchyPath="CFG/SC0712_0"/>
@@ -16,6 +16,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_axi_interconnect_0_0\msys_axi_interconnect_0_0.xci" Type="IP">
+        <Instance HierarchyPath="axi_interconnect_0"/>
         <Properties IsEditable="false" IsVisible="false" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -79,6 +80,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_microblaze_0_axi_periph_0\msys_microblaze_0_axi_periph_0.xci" Type="IP">
+        <Instance HierarchyPath="microblaze_0_axi_periph"/>
         <Properties IsEditable="false" IsVisible="false" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -1510,6 +1512,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\msys_axi_interconnect_0_1\msys_axi_interconnect_0_1.xci" Type="IP">
+        <Instance HierarchyPath="BOOT_PLL/BOOT_PLL_axi_interconnect_0"/>
         <Properties IsEditable="false" IsVisible="false" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -1820,14 +1823,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip\msys_xlslice_0_56\msys_xlslice_0_56.xci" Type="IP">
-        <Instance HierarchyPath="TRX/TRX_rx_FFT_unit/PUSHDATA/pushdata_rx09_xlslice_7to0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip\msys_fifo_generator_0_3\msys_fifo_generator_0_3.xci" Type="IP">
         <Instance HierarchyPath="TRX/TRX_rx_FFT_unit/TRX_rx_FFT_calc/delay_rx09_3459minus1024clk/fifo_generator_dly2049_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -2006,6 +2001,22 @@
       </File>
       <File Name="ip\msys_auto_pc_1\msys_auto_pc_1.xci" Type="IP">
         <Instance HierarchyPath="BOOT_PLL/BOOT_PLL_axi_interconnect_0/s01_couplers/auto_pc"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_fifo_generator_0_4\msys_fifo_generator_0_4.xci" Type="IP">
+        <Instance HierarchyPath="TRX/TRX_rx_FFT_unit/PUSHDATA/fifo_generator_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_xlconstant_0_29\msys_xlconstant_0_29.xci" Type="IP">
+        <Instance HierarchyPath="TRX/TRX_rx_FFT_unit/PUSHDATA/xlconstant_val1_len1"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

@@ -38,22 +38,19 @@ use IEEE.NUMERIC_STD.ALL;
 entity Decoder_rx09_to_FIFO_FSM is
   Port (
     -- All Clock Domain AXI 100 MHz
-    reset                                           : in  STD_LOGIC;
-    clk                                             : in  STD_LOGIC;
+    clk_100MHz                                      : in  STD_LOGIC;
+    reset_100MHz                                    : in  STD_LOGIC;
     
-    decoder_rx09_ch00_center_pos                    : in  STD_LOGIC_VECTOR( 7 downto 0);
-    decoder_rx09_ch00_strength                      : in  STD_LOGIC_VECTOR(18 downto 0);
-    decoder_rx09_ch00_noise                         : in  STD_LOGIC_VECTOR(18 downto 0);
-    decoder_rx09_ch00_SoM_frameCtr                  : in  STD_LOGIC_VECTOR(31 downto 0);
-    decoder_rx09_ch00_FIFO_handshake                : in  STD_LOGIC;
-    decoder_rx09_ch00_FIFO_accepted                 : out STD_LOGIC;
+    -- Decoder message Mem-B
+    decoder_rx09_chXX_msg_mem_b_addr                : out STD_LOGIC_VECTOR ( 7 downto 0);
+    decoder_rx09_chXX_msg_mem_b_din                 : in  STD_LOGIC_VECTOR ( 7 downto 0);
     
-    decoder_rx09_lenCtr_sclr                        : out STD_LOGIC;
-    decoder_rx09_lenCtr_ce                          : out STD_LOGIC;
-    decoder_rx09_lenCtr_out                         : in  STD_LOGIC_VECTOR( 9 downto 0);
+    -- Decoder <--> FIFO-Mgr handshake
+    decoder_rx09_chXX_FIFO_handshake                : in  STD_LOGIC;
+    decoder_rx09_chXX_FIFO_accepted                 : out STD_LOGIC
     
-    pushdata_rx09_en                                : out STD_LOGIC;
-    pushdata_rx09_byteData                          : out STD_LOGIC_VECTOR( 7 downto 0)
+    -- FIFO-Mgr <--> FIFO
+    
   );
 end Decoder_rx09_to_FIFO_FSM;
 

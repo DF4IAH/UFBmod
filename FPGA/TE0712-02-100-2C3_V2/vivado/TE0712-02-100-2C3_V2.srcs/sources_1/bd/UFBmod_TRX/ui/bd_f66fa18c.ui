@@ -1,0 +1,27 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.566292",
+   "Default View_TopLeft":"-81,19",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace inst TRX_proc_sys_reset_0 -pg 1 -lvl 1 -x 320 -y 460 -defaultsOSRD
+preplace inst TRX_io_reset_counter_binary_0 -pg 1 -lvl 2 -x 810 -y 770 -defaultsOSRD
+preplace inst TRX_LVDS -pg 1 -lvl 4 -x 1770 -y 820 -defaultsOSRD
+preplace inst TRX_rx_FFT_unit -pg 1 -lvl 1 -x 320 -y 750 -defaultsOSRD
+preplace inst TRX_config -pg 1 -lvl 3 -x 1220 -y 950 -defaultsOSRD
+preplace inst TRX_clock -pg 1 -lvl 2 -x 810 -y 930 -defaultsOSRD
+preplace inst TRX_reset_util_vector_logic_0 -pg 1 -lvl 3 -x 1220 -y 760 -defaultsOSRD
+preplace inst TRX_tx_DDS_unit -pg 1 -lvl 3 -x 1220 -y 530 -defaultsOSRD
+preplace netloc TRX_proc_sys_reset_0_16MHz_peripheral_reset 1 1 3 630 460 980 360 1480J
+preplace netloc TRX_proc_sys_reset_0_peripheral_aresetn 1 1 2 N 500 NJ
+preplace netloc TRX_io_reset 1 1 3 640 1020 980J 830 1470
+preplace netloc TRX_io_reset_counter_binary_0_THRESH0 1 2 1 N 760
+preplace netloc TRX_tx_4to1_c_counter_binary_0_THRESH0_0 1 3 1 1460 460n
+preplace netloc TRX_config_LVDS_tx_blank_0 1 3 1 1470J 920n
+preplace netloc TRX_clock_locked 1 2 1 NJ 970
+levelinfo -pg 1 0 320 810 1220 1770 2070
+pagesize -pg 1 -db -bbox -sgen 0 0 2070 1420
+"
+}
+

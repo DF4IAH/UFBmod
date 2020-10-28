@@ -67,18 +67,17 @@ entity UFBmod_rx09_Decoder_FSM is
     decoder_rx09_chXX_center_pos                    : out STD_LOGIC_VECTOR( 7 downto 0);
     decoder_rx09_chXX_strength                      : out STD_LOGIC_VECTOR(18 downto 0);
     decoder_rx09_chXX_SoM_frameCtr                  : out STD_LOGIC_VECTOR(31 downto 0);
+    decoder_rx09_chXX_sql_open                      : out STD_LOGIC;
+    decoder_rx09_chXX_active                        : out STD_LOGIC;
     
-    -- Decoder message
+    -- Decoder message Mem-A
     decoder_rx09_chXX_msg_mem_a_addr                : out STD_LOGIC_VECTOR ( 7 downto 0);
     decoder_rx09_chXX_msg_mem_a_we                  : out STD_LOGIC;
     decoder_rx09_chXX_msg_mem_a_din                 : out STD_LOGIC_VECTOR ( 7 downto 0);
     
-    -- FIFO handshake
+    -- Decoder <--> FIFO-Mgr handshake
     decoder_rx09_chXX_FIFO_handshake                : out STD_LOGIC;
-    decoder_rx09_chXX_FIFO_accepted                 : in  STD_LOGIC;
-    
-    decoder_rx09_chXX_sql_open                      : out STD_LOGIC;
-    decoder_rx09_chXX_active                        : out STD_LOGIC
+    decoder_rx09_chXX_FIFO_accepted                 : in  STD_LOGIC
   );
 end UFBmod_rx09_Decoder_FSM;
 

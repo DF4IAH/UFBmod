@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="UFBmod_Decoder" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1603835894"/>
-    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1603835894"/>
-    <Generation Name="SIMULATION" State="RESET" Timestamp="1603835894"/>
-    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1603835894"/>
+    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1603885907"/>
+    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1603885907"/>
+    <Generation Name="SIMULATION" State="RESET" Timestamp="1603885907"/>
+    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1603885907"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\UFBmod_Decoder_signal_bins_rx09_ch00_blk_mem_gen_2clks_0\UFBmod_Decoder_signal_bins_rx09_ch00_blk_mem_gen_2clks_0.xci" Type="IP">
         <Instance HierarchyPath="FFT_rx09_chXX_to_Decoder/FFT_rx09_chXX_signal_bins_blk_mem_gen_2clks"/>
@@ -121,6 +121,14 @@
       </File>
       <File Name="ip\UFBmod_Decoder_blk_mem_gen_0_0\UFBmod_Decoder_blk_mem_gen_0_0.xci" Type="IP">
         <Instance HierarchyPath="UFBmod_rx09_chXX_Decoder/decoder_rx09_chXX_msg_blk_mem_gen_2clks"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_Decoder_Decoder_rx09_to_FIFO_0_0\UFBmod_Decoder_Decoder_rx09_to_FIFO_0_0.xci" Type="IP">
+        <Instance HierarchyPath="Decoder_rx09_chXX_to_FIFO/Decoder_rx09_to_FIFO_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
