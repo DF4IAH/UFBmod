@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Wed Oct 28 20:58:39 2020
+--Date        : Thu Oct 29 00:54:25 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target UFBmod_TRX_wrapper.bd
 --Design      : UFBmod_TRX_wrapper
@@ -240,25 +240,25 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     TRX_tx_DDS0_gpio_inc : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_tx_DDS0_gpio_ampt : out STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_tx_DDS1_gpio_ampt : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    S11_AXI_spi_araddr : in STD_LOGIC_VECTOR ( 6 downto 0 );
+    S11_AXI_spi_arready : out STD_LOGIC;
+    S11_AXI_spi_arvalid : in STD_LOGIC;
+    S11_AXI_spi_awaddr : in STD_LOGIC_VECTOR ( 6 downto 0 );
+    S11_AXI_spi_awready : out STD_LOGIC;
+    S11_AXI_spi_awvalid : in STD_LOGIC;
+    S11_AXI_spi_bready : in STD_LOGIC;
+    S11_AXI_spi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S11_AXI_spi_bvalid : out STD_LOGIC;
+    S11_AXI_spi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    S11_AXI_spi_rready : in STD_LOGIC;
+    S11_AXI_spi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S11_AXI_spi_rvalid : out STD_LOGIC;
+    S11_AXI_spi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S11_AXI_spi_wready : out STD_LOGIC;
+    S11_AXI_spi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S11_AXI_spi_wvalid : in STD_LOGIC;
     TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
     TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
-    S12_AXI_gpio_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    S12_AXI_gpio_arready : out STD_LOGIC;
-    S12_AXI_gpio_arvalid : in STD_LOGIC;
-    S12_AXI_gpio_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    S12_AXI_gpio_awready : out STD_LOGIC;
-    S12_AXI_gpio_awvalid : in STD_LOGIC;
-    S12_AXI_gpio_bready : in STD_LOGIC;
-    S12_AXI_gpio_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    S12_AXI_gpio_bvalid : out STD_LOGIC;
-    S12_AXI_gpio_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    S12_AXI_gpio_rready : in STD_LOGIC;
-    S12_AXI_gpio_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    S12_AXI_gpio_rvalid : out STD_LOGIC;
-    S12_AXI_gpio_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    S12_AXI_gpio_wready : out STD_LOGIC;
-    S12_AXI_gpio_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    S12_AXI_gpio_wvalid : in STD_LOGIC;
     S13_AXI_dds_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     S13_AXI_dds_arready : out STD_LOGIC;
     S13_AXI_dds_arvalid : in STD_LOGIC;
@@ -276,6 +276,23 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     S13_AXI_dds_wready : out STD_LOGIC;
     S13_AXI_dds_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S13_AXI_dds_wvalid : in STD_LOGIC;
+    S12_AXI_gpio_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    S12_AXI_gpio_arready : out STD_LOGIC;
+    S12_AXI_gpio_arvalid : in STD_LOGIC;
+    S12_AXI_gpio_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    S12_AXI_gpio_awready : out STD_LOGIC;
+    S12_AXI_gpio_awvalid : in STD_LOGIC;
+    S12_AXI_gpio_bready : in STD_LOGIC;
+    S12_AXI_gpio_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S12_AXI_gpio_bvalid : out STD_LOGIC;
+    S12_AXI_gpio_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    S12_AXI_gpio_rready : in STD_LOGIC;
+    S12_AXI_gpio_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S12_AXI_gpio_rvalid : out STD_LOGIC;
+    S12_AXI_gpio_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S12_AXI_gpio_wready : out STD_LOGIC;
+    S12_AXI_gpio_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S12_AXI_gpio_wvalid : in STD_LOGIC;
     S19_AXI_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     S19_AXI_arready : out STD_LOGIC;
     S19_AXI_arvalid : in STD_LOGIC;
@@ -310,8 +327,6 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     S20_AXI1_wready : out STD_LOGIC;
     S20_AXI1_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S20_AXI1_wvalid : in STD_LOGIC;
-    TRX_tx_clk_clk_n : out STD_LOGIC;
-    TRX_tx_clk_clk_p : out STD_LOGIC;
     TRX_spi_io0_i : in STD_LOGIC;
     TRX_spi_io0_o : out STD_LOGIC;
     TRX_spi_io0_t : out STD_LOGIC;
@@ -324,23 +339,8 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_spi_ss_t : out STD_LOGIC;
-    S11_AXI_spi_araddr : in STD_LOGIC_VECTOR ( 6 downto 0 );
-    S11_AXI_spi_arready : out STD_LOGIC;
-    S11_AXI_spi_arvalid : in STD_LOGIC;
-    S11_AXI_spi_awaddr : in STD_LOGIC_VECTOR ( 6 downto 0 );
-    S11_AXI_spi_awready : out STD_LOGIC;
-    S11_AXI_spi_awvalid : in STD_LOGIC;
-    S11_AXI_spi_bready : in STD_LOGIC;
-    S11_AXI_spi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    S11_AXI_spi_bvalid : out STD_LOGIC;
-    S11_AXI_spi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    S11_AXI_spi_rready : in STD_LOGIC;
-    S11_AXI_spi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    S11_AXI_spi_rvalid : out STD_LOGIC;
-    S11_AXI_spi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    S11_AXI_spi_wready : out STD_LOGIC;
-    S11_AXI_spi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    S11_AXI_spi_wvalid : in STD_LOGIC
+    TRX_tx_clk_clk_n : out STD_LOGIC;
+    TRX_tx_clk_clk_p : out STD_LOGIC
   );
   end component UFBmod_TRX;
   component IOBUF is
