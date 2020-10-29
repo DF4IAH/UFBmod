@@ -514,9 +514,11 @@ begin
                     
                     skipUntil                           := decoder_rx09_chXX_SoM_frameCtr_Int + 32;
                     
-                    decoder_state   := decode_preload;                                              -- when DEBUGGING Artemis - disable me
-                    state           := decoder_process;
-                  --state           := loop_start;                                                  -- when DEBUGGING Artemis -  enable me
+                    if (decoder_rx09_chXX_FIFO_accepted  = '0') then
+                        decoder_state   := decode_preload;                                          -- when DEBUGGING Artemis - disable me
+                        state           := decoder_process;
+                      --state           := loop_start;                                              -- when DEBUGGING Artemis -  enable me
+                    end if;
                     
                     
                 when decoder_process =>
@@ -790,11 +792,9 @@ begin
                             
                             
                         when decode_handshake_give =>
-                            if (decoder_rx09_chXX_FIFO_accepted   = '0') then
-                                decoder_rx09_chXX_FIFO_handshake <= '1';
-                                decoder_state := decode_handshake_get;
-                            end if;
+                            decoder_rx09_chXX_FIFO_handshake <= '1';
                             
+                            decoder_state := decode_handshake_get;
                             
                         when decode_handshake_get =>
                             if (decoder_rx09_chXX_FIFO_accepted   = '1') then

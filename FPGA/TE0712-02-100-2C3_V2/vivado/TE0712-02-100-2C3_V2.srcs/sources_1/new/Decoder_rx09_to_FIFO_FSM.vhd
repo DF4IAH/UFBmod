@@ -47,10 +47,11 @@ entity Decoder_rx09_to_FIFO_FSM is
     
     -- Decoder <--> FIFO-Mgr handshake
     decoder_rx09_chXX_FIFO_handshake                : in  STD_LOGIC;
-    decoder_rx09_chXX_FIFO_accepted                 : out STD_LOGIC
+    decoder_rx09_chXX_FIFO_accepted                 : out STD_LOGIC;
     
     -- FIFO-Mgr <--> FIFO
-    
+    TRX_PUSHDATA_din                                : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_PUSHDATA_wr_en                              : out STD_LOGIC
   );
 end Decoder_rx09_to_FIFO_FSM;
 
@@ -76,14 +77,19 @@ begin
     if (clk_100MHz'EVENT and clk_100MHz = '1') then
         if (reset_100MHz = '1') then
             loopCnt                                 := 0;
-            
             decoder_rx09_chXX_FIFO_accepted         <= '0';
+            TRX_PUSHDATA_din                        <= (others => '0');
+            TRX_PUSHDATA_wr_en                      <= '0';
             
             state                                   := init;
             
         else
             case state is
                 when init =>
+                    loopCnt                                 := 0;
+                    decoder_rx09_chXX_FIFO_accepted         <= '0';
+                    TRX_PUSHDATA_din                        <= (others => '0');
+                    TRX_PUSHDATA_wr_en                      <= '0';
                     
                     state := loop_start;
                     

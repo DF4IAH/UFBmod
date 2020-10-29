@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Thu Oct 29 01:10:06 2020
+--Date        : Fri Oct 30 00:01:02 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target UFBmod_Decoder_wrapper.bd
 --Design      : UFBmod_Decoder_wrapper
@@ -13,6 +13,8 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity UFBmod_Decoder_wrapper is
   port (
+    TRX_PUSHDATA_din : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_PUSHDATA_wr_en : out STD_LOGIC;
     clk_100MHz : in STD_LOGIC;
     dds_tx09_ptt : in STD_LOGIC;
     decoder_rx09_chXX_active : out STD_LOGIC;
@@ -42,12 +44,16 @@ architecture STRUCTURE of UFBmod_Decoder_wrapper is
     post_fft_rx09_mem_b_dout : in STD_LOGIC_VECTOR ( 15 downto 0 );
     reset_100MHz : in STD_LOGIC;
     decoder_rx09_chXX_strength : out STD_LOGIC_VECTOR ( 18 downto 0 );
-    decoder_rx09_chXX_center_pos : out STD_LOGIC_VECTOR ( 7 downto 0 )
+    decoder_rx09_chXX_center_pos : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_PUSHDATA_din : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_PUSHDATA_wr_en : out STD_LOGIC
   );
   end component UFBmod_Decoder;
 begin
 UFBmod_Decoder_i: component UFBmod_Decoder
      port map (
+      TRX_PUSHDATA_din(7 downto 0) => TRX_PUSHDATA_din(7 downto 0),
+      TRX_PUSHDATA_wr_en => TRX_PUSHDATA_wr_en,
       clk_100MHz => clk_100MHz,
       dds_tx09_ptt => dds_tx09_ptt,
       decoder_rx09_chXX_active => decoder_rx09_chXX_active,

@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Thu Oct 29 00:54:25 2020
+--Date        : Thu Oct 29 23:47:39 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target UFBmod_TRX_wrapper.bd
 --Design      : UFBmod_TRX_wrapper
@@ -105,6 +105,8 @@ entity UFBmod_TRX_wrapper is
     Status_LVDS_rx24_synced : in STD_LOGIC;
     TRX_PLL_clk_25MHz_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_PLL_clk_25MHz_p : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_PUSHDATA_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_PUSHDATA_wr_en : in STD_LOGIC;
     TRX_TX_RF09_PULLDATA_FIFO_empty : out STD_LOGIC;
     TRX_clk_26MHz : in STD_LOGIC;
     TRX_clk_trx_26MHz_vio : out STD_LOGIC;
@@ -240,25 +242,8 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     TRX_tx_DDS0_gpio_inc : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_tx_DDS0_gpio_ampt : out STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_tx_DDS1_gpio_ampt : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    S11_AXI_spi_araddr : in STD_LOGIC_VECTOR ( 6 downto 0 );
-    S11_AXI_spi_arready : out STD_LOGIC;
-    S11_AXI_spi_arvalid : in STD_LOGIC;
-    S11_AXI_spi_awaddr : in STD_LOGIC_VECTOR ( 6 downto 0 );
-    S11_AXI_spi_awready : out STD_LOGIC;
-    S11_AXI_spi_awvalid : in STD_LOGIC;
-    S11_AXI_spi_bready : in STD_LOGIC;
-    S11_AXI_spi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    S11_AXI_spi_bvalid : out STD_LOGIC;
-    S11_AXI_spi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    S11_AXI_spi_rready : in STD_LOGIC;
-    S11_AXI_spi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    S11_AXI_spi_rvalid : out STD_LOGIC;
-    S11_AXI_spi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    S11_AXI_spi_wready : out STD_LOGIC;
-    S11_AXI_spi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    S11_AXI_spi_wvalid : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
+    TRX_PUSHDATA_wr_en : in STD_LOGIC;
+    TRX_PUSHDATA_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
     S13_AXI_dds_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     S13_AXI_dds_arready : out STD_LOGIC;
     S13_AXI_dds_arvalid : in STD_LOGIC;
@@ -293,6 +278,25 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     S12_AXI_gpio_wready : out STD_LOGIC;
     S12_AXI_gpio_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S12_AXI_gpio_wvalid : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
+    S11_AXI_spi_araddr : in STD_LOGIC_VECTOR ( 6 downto 0 );
+    S11_AXI_spi_arready : out STD_LOGIC;
+    S11_AXI_spi_arvalid : in STD_LOGIC;
+    S11_AXI_spi_awaddr : in STD_LOGIC_VECTOR ( 6 downto 0 );
+    S11_AXI_spi_awready : out STD_LOGIC;
+    S11_AXI_spi_awvalid : in STD_LOGIC;
+    S11_AXI_spi_bready : in STD_LOGIC;
+    S11_AXI_spi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S11_AXI_spi_bvalid : out STD_LOGIC;
+    S11_AXI_spi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    S11_AXI_spi_rready : in STD_LOGIC;
+    S11_AXI_spi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S11_AXI_spi_rvalid : out STD_LOGIC;
+    S11_AXI_spi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S11_AXI_spi_wready : out STD_LOGIC;
+    S11_AXI_spi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S11_AXI_spi_wvalid : in STD_LOGIC;
     S19_AXI_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     S19_AXI_arready : out STD_LOGIC;
     S19_AXI_arvalid : in STD_LOGIC;
@@ -487,6 +491,8 @@ UFBmod_TRX_i: component UFBmod_TRX
       Status_LVDS_rx24_synced => Status_LVDS_rx24_synced,
       TRX_PLL_clk_25MHz_n(0) => TRX_PLL_clk_25MHz_n(0),
       TRX_PLL_clk_25MHz_p(0) => TRX_PLL_clk_25MHz_p(0),
+      TRX_PUSHDATA_din(7 downto 0) => TRX_PUSHDATA_din(7 downto 0),
+      TRX_PUSHDATA_wr_en => TRX_PUSHDATA_wr_en,
       TRX_TX_RF09_PULLDATA_FIFO_empty => TRX_TX_RF09_PULLDATA_FIFO_empty,
       TRX_clk_26MHz => TRX_clk_26MHz,
       TRX_clk_trx_26MHz_vio => TRX_clk_trx_26MHz_vio,

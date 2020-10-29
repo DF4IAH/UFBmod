@@ -490,17 +490,19 @@ architecture STRUCTURE of top is
     S20_AXI1_wvalid : in STD_LOGIC;
     Status_LVDS_rx09_synced : in STD_LOGIC;
     Status_LVDS_rx24_synced : in STD_LOGIC;
-    TRX_PLL_clk_25MHz_n : out STD_LOGIC;
-    TRX_PLL_clk_25MHz_p : out STD_LOGIC;
+    TRX_PLL_clk_25MHz_n : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_PLL_clk_25MHz_p : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_PUSHDATA_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_PUSHDATA_wr_en : in STD_LOGIC;
     TRX_TX_RF09_PULLDATA_FIFO_empty : out STD_LOGIC;
     TRX_clk_26MHz : in STD_LOGIC;
     TRX_clk_trx_26MHz_vio : out STD_LOGIC;
     TRX_clk_trx_pll_25MHz_vio : out STD_LOGIC;
     TRX_data_count : out STD_LOGIC_VECTOR ( 11 downto 0 );
     TRX_decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    TRX_encoder_tx09_pull_FIFO_dump : out STD_LOGIC;
+    TRX_encoder_tx09_pull_FIFO_dump : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_encoder_tx09_pull_data_len : out STD_LOGIC_VECTOR ( 6 downto 0 );
-    TRX_encoder_tx09_pull_do_start : out STD_LOGIC;
+    TRX_encoder_tx09_pull_do_start : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_fft09_data_tready_out : out STD_LOGIC;
     TRX_ip2intc_irpt : out STD_LOGIC;
     TRX_post_fft_mem_a_rx09_EoT : out STD_LOGIC;
@@ -509,8 +511,8 @@ architecture STRUCTURE of top is
     TRX_pulldata_tx09_byteData : out STD_LOGIC_VECTOR ( 7 downto 0 );
     TRX_pushdata_rx09_irpt : out STD_LOGIC;
     TRX_rd_data_count_CD100_o : out STD_LOGIC_VECTOR ( 8 downto 0 );
-    TRX_resetn : out STD_LOGIC;
-    TRX_rfx_mode : out STD_LOGIC;
+    TRX_resetn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rx09_32bits_CD100 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx09_fifo : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx09_fifo_valid : out STD_LOGIC;
@@ -519,13 +521,13 @@ architecture STRUCTURE of top is
     TRX_rx24_fifo_valid : out STD_LOGIC;
     TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
     TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
-    TRX_rx_clkdiv_16MHz : out STD_LOGIC;
+    TRX_rx_clkdiv_16MHz : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rx_data_n : in STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_rx_data_p : in STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_spi_io0_io : inout STD_LOGIC;
     TRX_spi_io1_io : inout STD_LOGIC;
     TRX_spi_sck_io : inout STD_LOGIC;
-    TRX_spi_ss_io : inout STD_LOGIC;
+    TRX_spi_ss_io : inout STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_tx_DDS0_gpio_ampt : out STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_tx_DDS0_gpio_inc : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_tx_DDS1_gpio_ampt : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -577,7 +579,9 @@ architecture STRUCTURE of top is
     post_fft_rx09_mem_a_EoT                         : in STD_LOGIC;
     post_fft_rx09_mem_a_addr                        : in STD_LOGIC_VECTOR ( 41 downto 0 );
     post_fft_rx09_mem_b_addr                        : out STD_LOGIC_VECTOR ( 9 downto 0 );
-    post_fft_rx09_mem_b_dout                        : in STD_LOGIC_VECTOR ( 15 downto 0 )
+    post_fft_rx09_mem_b_dout                        : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_PUSHDATA_din                                : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_PUSHDATA_wr_en                              : out STD_LOGIC
   );
   end component UFBmod_Decoder_wrapper;
   component UFBmod_Encoder_wrapper is
@@ -754,6 +758,9 @@ architecture STRUCTURE of top is
   
   signal top_TRX_PLL_clk_25MHz_n : STD_LOGIC;
   signal top_TRX_PLL_clk_25MHz_p : STD_LOGIC;
+  
+  signal top_TRX_PUSHDATA_din : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal top_TRX_PUSHDATA_wr_en : STD_LOGIC;
   
   signal top_TRX_clk_26MHz : STD_LOGIC;
   signal top_TRX_clk_trx_26MHz_vio : STD_LOGIC;
@@ -1086,17 +1093,19 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       S20_AXI1_wvalid                                       => top_TRX_M20_AXI_wvalid,
       Status_LVDS_rx09_synced                               => top_LVDS_rx09_synced,
       Status_LVDS_rx24_synced                               => top_LVDS_rx24_synced,
-      TRX_PLL_clk_25MHz_n                                   => top_TRX_PLL_clk_25MHz_n,
-      TRX_PLL_clk_25MHz_p                                   => top_TRX_PLL_clk_25MHz_p,
+      TRX_PLL_clk_25MHz_n(0)                                => top_TRX_PLL_clk_25MHz_n,
+      TRX_PLL_clk_25MHz_p(0)                                => top_TRX_PLL_clk_25MHz_p,
+      TRX_PUSHDATA_din                                      => top_TRX_PUSHDATA_din,
+      TRX_PUSHDATA_wr_en                                    => top_TRX_PUSHDATA_wr_en,
       TRX_TX_RF09_PULLDATA_FIFO_empty                       => top_TRX_TX_RF09_PULLDATA_FIFO_empty,
       TRX_clk_26MHz                                         => top_TRX_clk_26MHz,
       TRX_clk_trx_26MHz_vio                                 => top_TRX_clk_trx_26MHz_vio,
       TRX_clk_trx_pll_25MHz_vio                             => top_TRX_clk_trx_pll_25MHz_vio,
       TRX_data_count                                        => top_TRX_data_count,
       TRX_decoder_rx09_squelch_lvl                          => top_TRX_decoder_rx09_squelch_lvl,
-      TRX_encoder_tx09_pull_FIFO_dump                       => top_TRX_encoder_tx09_pull_FIFO_dump,
+      TRX_encoder_tx09_pull_FIFO_dump(0)                    => top_TRX_encoder_tx09_pull_FIFO_dump,
       TRX_encoder_tx09_pull_data_len                        => top_TRX_encoder_tx09_pull_data_len,
-      TRX_encoder_tx09_pull_do_start                        => top_TRX_encoder_tx09_pull_do_start,
+      TRX_encoder_tx09_pull_do_start(0)                     => top_TRX_encoder_tx09_pull_do_start,
       TRX_fft09_data_tready_out                             => top_TRX_fft09_data_tready_out,
       TRX_ip2intc_irpt                                      => top_TRX_ip2intc_irpt,
       TRX_post_fft_mem_a_rx09_EoT                           => top_TRX_post_fft_mem_a_rx09_EoT,
@@ -1105,8 +1114,8 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       TRX_pulldata_tx09_byteData                            => top_TRX_pulldata_tx09_byteData,
       TRX_pushdata_rx09_irpt                                => top_TRX_pushdata_rx09_irpt,
       TRX_rd_data_count_CD100_o                             => top_TRX_rd_data_count_CD100,
-      TRX_resetn                                            => top_TRX_resetn,
-      TRX_rfx_mode                                          => top_TRX_rfx_mode,
+      TRX_resetn(0)                                         => top_TRX_resetn,
+      TRX_rfx_mode(0)                                       => top_TRX_rfx_mode,
       TRX_rx09_32bits_CD100                                 => top_TRX_rx09_32bits_CD100,
       TRX_rx09_fifo                                         => top_TRX_rx09_fifo,
       TRX_rx09_fifo_valid                                   => top_TRX_rx09_fifo_valid,
@@ -1115,13 +1124,13 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       TRX_rx24_fifo_valid                                   => top_TRX_rx24_fifo_valid,
       TRX_rx_clk_64MHz_clk_n                                => top_TRX_rx_clk_64MHz_clk_n,
       TRX_rx_clk_64MHz_clk_p                                => top_TRX_rx_clk_64MHz_clk_p,
-      TRX_rx_clkdiv_16MHz                                   => top_TRX_rx_clkdiv_16MHz,
+      TRX_rx_clkdiv_16MHz(0)                                => top_TRX_rx_clkdiv_16MHz,
       TRX_rx_data_n                                         => top_TRX_rx_data_n,
       TRX_rx_data_p                                         => top_TRX_rx_data_p,
       TRX_spi_io0_io                                        => TRX_spi_io0_io,
       TRX_spi_io1_io                                        => TRX_spi_io1_io,
       TRX_spi_sck_io                                        => TRX_spi_sck_io,
-      TRX_spi_ss_io                                         => TRX_spi_ss_io,
+      TRX_spi_ss_io(0)                                      => TRX_spi_ss_io,
       TRX_tx_DDS0_gpio_ampt                                 => top_TRX_tx_DDS0_gpio_ampt,
       TRX_tx_DDS0_gpio_inc                                  => top_TRX_tx_DDS0_gpio_inc,
       TRX_tx_DDS1_gpio_ampt                                 => top_TRX_tx_DDS1_gpio_ampt,
@@ -1172,7 +1181,9 @@ UFBmod_Decoder_rx09_ch00_bd: component UFBmod_Decoder_wrapper
       decoder_rx09_chXX_FIFO_handshake  => top_TRX_decoder_rx09_ch00_FIFO_handshake,
       decoder_rx09_chXX_FIFO_accepted   => top_TRX_decoder_rx09_ch00_FIFO_accepted,
       decoder_rx09_chXX_msg_mem_b_addr  => top_TRX_decoder_rx09_ch00_msg_mem_b_addr,
-      decoder_rx09_chXX_msg_mem_b_dout  => top_TRX_decoder_rx09_ch00_msg_mem_b_dout
+      decoder_rx09_chXX_msg_mem_b_dout  => top_TRX_decoder_rx09_ch00_msg_mem_b_dout,
+      TRX_PUSHDATA_din                  => top_TRX_PUSHDATA_din,
+      TRX_PUSHDATA_wr_en                => top_TRX_PUSHDATA_wr_en
     );
 UFBmod_Encoder_bd: component UFBmod_Encoder_wrapper
     port map (

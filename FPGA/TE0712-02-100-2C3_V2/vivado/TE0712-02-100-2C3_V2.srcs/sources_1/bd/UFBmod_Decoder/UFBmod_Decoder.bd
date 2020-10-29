@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x1509AC59B088C17A",
+      "boundary_crc": "0x9251597C2ACFE269",
       "device": "xc7a100tfgg484-2",
       "name": "UFBmod_Decoder",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -150,6 +150,21 @@
             "value_src": "default"
           }
         }
+      },
+      "TRX_PUSHDATA_din": {
+        "type": "data",
+        "direction": "O",
+        "left": "7",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "TRX_PUSHDATA_wr_en": {
+        "direction": "O"
       }
     },
     "components": {
@@ -1382,6 +1397,14 @@
           },
           "decoder_rx09_chXX_FIFO_handshake": {
             "direction": "I"
+          },
+          "TRX_PUSHDATA_din": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "TRX_PUSHDATA_wr_en": {
+            "direction": "O"
           }
         },
         "components": {
@@ -1436,6 +1459,20 @@
               },
               "decoder_rx09_chXX_FIFO_accepted": {
                 "direction": "O"
+              },
+              "TRX_PUSHDATA_din": {
+                "direction": "O",
+                "left": "7",
+                "right": "0",
+                "parameters": {
+                  "LAYERED_METADATA": {
+                    "value": "",
+                    "value_src": "weak"
+                  }
+                }
+              },
+              "TRX_PUSHDATA_wr_en": {
+                "direction": "O"
               }
             }
           }
@@ -1475,6 +1512,18 @@
             "ports": [
               "decoder_rx09_chXX_FIFO_handshake",
               "Decoder_rx09_to_FIFO_0/decoder_rx09_chXX_FIFO_handshake"
+            ]
+          },
+          "Decoder_rx09_to_FIFO_0_TRX_PUSHDATA_din": {
+            "ports": [
+              "Decoder_rx09_to_FIFO_0/TRX_PUSHDATA_din",
+              "TRX_PUSHDATA_din"
+            ]
+          },
+          "Decoder_rx09_to_FIFO_0_TRX_PUSHDATA_wr_en": {
+            "ports": [
+              "Decoder_rx09_to_FIFO_0/TRX_PUSHDATA_wr_en",
+              "TRX_PUSHDATA_wr_en"
             ]
           }
         }
@@ -1597,6 +1646,18 @@
         "ports": [
           "UFBmod_rx09_chXX_Decoder/decoder_rx09_chXX_FIFO_handshake",
           "Decoder_rx09_chXX_to_FIFO/decoder_rx09_chXX_FIFO_handshake"
+        ]
+      },
+      "Decoder_rx09_chXX_to_FIFO_TRX_PUSHDATA_din": {
+        "ports": [
+          "Decoder_rx09_chXX_to_FIFO/TRX_PUSHDATA_din",
+          "TRX_PUSHDATA_din"
+        ]
+      },
+      "Decoder_rx09_chXX_to_FIFO_TRX_PUSHDATA_wr_en": {
+        "ports": [
+          "Decoder_rx09_chXX_to_FIFO/TRX_PUSHDATA_wr_en",
+          "TRX_PUSHDATA_wr_en"
         ]
       }
     }
