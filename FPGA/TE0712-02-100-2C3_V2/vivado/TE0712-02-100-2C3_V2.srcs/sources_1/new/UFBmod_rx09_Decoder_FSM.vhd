@@ -67,7 +67,7 @@ entity UFBmod_rx09_Decoder_FSM is
     TRX_decoder_rx_rf09_chXX_center_pos             : out STD_LOGIC_VECTOR( 7 downto 0);
     TRX_decoder_rx_rf09_chXX_strength               : out STD_LOGIC_VECTOR(18 downto 0);
     TRX_decoder_rx_rf09_chXX_noise                  : in  STD_LOGIC_VECTOR(18 downto 0);
-    decoder_rx09_chXX_SoM_frameCtr                  : out STD_LOGIC_VECTOR(31 downto 0);
+    TRX_decoder_rx09_chXX_SoM_frameCtr              : out STD_LOGIC_VECTOR(31 downto 0);
     TRX_decoder_rx_rf09_chXX_sql_open               : out STD_LOGIC;
     TRX_decoder_rx_rf09_chXX_active                 : out STD_LOGIC;
     
@@ -185,7 +185,7 @@ begin
     variable decoder_state                                      : DecoderStateType;
     
     variable decoder_FftFrameWork                               : STD_LOGIC_VECTOR(31 downto 0);
-    variable decoder_rx09_chXX_center_pos_Int                   : Integer  range 0 to (2**8  - 1);
+    variable TRX_decoder_rx09_chXX_center_pos_Int               : Integer  range 0 to (2**8  - 1);
     variable fftArtemisIdx                                      : Integer  range 0 to (2**5  - 1);
     variable loopCnt                                            : Integer  range 0 to (2**8  - 1);
     variable isOddRow                                           : Integer  range 0 to (2**1  - 1);
@@ -202,7 +202,7 @@ begin
     variable signal_row3                                        : STD_LOGIC_VECTOR(15 downto 0);
     variable signal_max_val                                     : STD_LOGIC_VECTOR(15 downto 0);
     variable signal_max_idx                                     : STD_LOGIC_VECTOR( 4 downto 0);
-    variable decoder_rx09_chXX_SoM_frameCtr_Int                 : Integer;
+    variable TRX_decoder_rx09_chXX_SoM_frameCtr_Int             : Integer;
     variable skipUntil                                          : Integer;
     
     variable bytePattern                                        : STD_LOGIC_VECTOR( 7 downto 0);
@@ -217,7 +217,7 @@ begin
         if ((reset_100MHz = '1') or (TRX_dds_tx_rf09_ptt = '1')) then
             decoder_rx09_chXX_signal_bins_mem_addrb             <= (others => '0');
             
-            decoder_rx09_chXX_center_pos_Int                    := 0;
+            TRX_decoder_rx09_chXX_center_pos_Int                := 0;
             rowIdx                                              := 0;
             posIdx                                              := 0;
             preIdx                                              := 0;
@@ -239,7 +239,7 @@ begin
             decoder_rx09_chXX_artemis_mem_addra                 <= (others => '0');
             decoder_rx09_chXX_artemis_mem_dina                  <= (others => '0');
             
-            decoder_rx09_chXX_SoM_frameCtr                      <= (others => '0');
+            TRX_decoder_rx09_chXX_SoM_frameCtr                  <= (others => '0');
             TRX_decoder_rx_rf09_chXX_center_pos                 <= (others => '0');
             TRX_decoder_rx_rf09_chXX_strength                   <= (others => '0');
             TRX_decoder_rx_rf09_chXX_sql_open                   <= '0';
@@ -256,7 +256,7 @@ begin
             isOddRow                                            := 0;
             loopCnt                                             := 0;
             
-            decoder_rx09_chXX_SoM_frameCtr_Int                  := 0;
+            TRX_decoder_rx09_chXX_SoM_frameCtr_Int              := 0;
             skipUntil                                           := 0;
             
             bytePattern                                         := (others => '0');
@@ -511,14 +511,14 @@ begin
                     end if;
                     
                 when artemis_search_handoff =>
-                    decoder_rx09_chXX_SoM_frameCtr_Int  := to_integer(unsigned(decoder_FftFrameWork)) - isOddRow;
-                    decoder_rx09_chXX_SoM_frameCtr      <= std_logic_vector(to_unsigned(decoder_rx09_chXX_SoM_frameCtr_Int, decoder_rx09_chXX_SoM_frameCtr'length));
-                    decoder_rx09_chXX_center_pos_Int    := to_integer(unsigned(signal_max_idx));
-                    TRX_decoder_rx_rf09_chXX_center_pos <= "000" & signal_max_idx;
-                    TRX_decoder_rx_rf09_chXX_strength   <= "000" & signal_max_val;
+                    TRX_decoder_rx09_chXX_SoM_frameCtr_Int  := to_integer(unsigned(decoder_FftFrameWork)) - isOddRow;
+                    TRX_decoder_rx09_chXX_SoM_frameCtr      <= std_logic_vector(to_unsigned(TRX_decoder_rx09_chXX_SoM_frameCtr_Int, TRX_decoder_rx09_chXX_SoM_frameCtr'length));
+                    TRX_decoder_rx09_chXX_center_pos_Int    := to_integer(unsigned(signal_max_idx));
+                    TRX_decoder_rx_rf09_chXX_center_pos     <= "000" & signal_max_idx;
+                    TRX_decoder_rx_rf09_chXX_strength       <= "000" & signal_max_val;
                     
-                    skipUntil                           := decoder_rx09_chXX_SoM_frameCtr_Int + 32;
-                    TRX_decoder_rx_rf09_chXX_active     <= '1';
+                    skipUntil                               := TRX_decoder_rx09_chXX_SoM_frameCtr_Int + 32;
+                    TRX_decoder_rx_rf09_chXX_active         <= '1';
                     
                     if (decoder_rx09_chXX_FIFO_accepted  = '0') then
                         decoder_state   := decode_preload;                                          -- when DEBUGGING Artemis - disable me
@@ -562,7 +562,7 @@ begin
                             
                             byteBit_idx     := 7;
                             byteBit_sub     := 0;
-                            posIdx          := decoder_rx09_chXX_center_pos_Int;
+                            posIdx          := TRX_decoder_rx09_chXX_center_pos_Int;
                             
                             decoder_state := decode_message_ram_calc;
                             
@@ -727,35 +727,35 @@ begin
                             
                         when decode_message_write_time_w3 =>
                             decoder_rx09_chXX_msg_mem_a_addr            <= x"01";
-                            decoder_rx09_chXX_msg_mem_a_din             <= std_logic_vector(to_unsigned( (decoder_rx09_chXX_SoM_frameCtr_Int / 2**24), decoder_rx09_chXX_msg_mem_a_din'length));
+                            decoder_rx09_chXX_msg_mem_a_din             <= std_logic_vector(to_unsigned( (TRX_decoder_rx09_chXX_SoM_frameCtr_Int / 2**24), decoder_rx09_chXX_msg_mem_a_din'length));
                             decoder_rx09_chXX_msg_mem_a_we              <= '1';
                             
                             decoder_state := decode_message_write_time_w2;
                             
                         when decode_message_write_time_w2 =>
                             decoder_rx09_chXX_msg_mem_a_addr            <= x"02";
-                            decoder_rx09_chXX_msg_mem_a_din             <= std_logic_vector(to_unsigned(((decoder_rx09_chXX_SoM_frameCtr_Int / 2**16) mod 256), decoder_rx09_chXX_msg_mem_a_din'length));
+                            decoder_rx09_chXX_msg_mem_a_din             <= std_logic_vector(to_unsigned(((TRX_decoder_rx09_chXX_SoM_frameCtr_Int / 2**16) mod 256), decoder_rx09_chXX_msg_mem_a_din'length));
                           --decoder_rx09_chXX_msg_mem_a_we              <= '1';
                             
                             decoder_state := decode_message_write_time_w1;
                         
                         when decode_message_write_time_w1 =>
                             decoder_rx09_chXX_msg_mem_a_addr            <= x"03";
-                            decoder_rx09_chXX_msg_mem_a_din             <= std_logic_vector(to_unsigned(((decoder_rx09_chXX_SoM_frameCtr_Int /  2**8) mod 256), decoder_rx09_chXX_msg_mem_a_din'length));
+                            decoder_rx09_chXX_msg_mem_a_din             <= std_logic_vector(to_unsigned(((TRX_decoder_rx09_chXX_SoM_frameCtr_Int /  2**8) mod 256), decoder_rx09_chXX_msg_mem_a_din'length));
                           --decoder_rx09_chXX_msg_mem_a_we              <= '1';
                             
                             decoder_state := decode_message_write_time_w0;
                         
                         when decode_message_write_time_w0 =>
                             decoder_rx09_chXX_msg_mem_a_addr            <= x"04";
-                            decoder_rx09_chXX_msg_mem_a_din             <= std_logic_vector(to_unsigned((decoder_rx09_chXX_SoM_frameCtr_Int mod 256), decoder_rx09_chXX_msg_mem_a_din'length));
+                            decoder_rx09_chXX_msg_mem_a_din             <= std_logic_vector(to_unsigned((TRX_decoder_rx09_chXX_SoM_frameCtr_Int mod 256), decoder_rx09_chXX_msg_mem_a_din'length));
                           --decoder_rx09_chXX_msg_mem_a_we              <= '1';
                             
                             decoder_state := decode_message_write_pos_w0;
                             
                         when decode_message_write_pos_w0 =>
                             decoder_rx09_chXX_msg_mem_a_addr            <= x"05";
-                            decoder_rx09_chXX_msg_mem_a_din             <= std_logic_vector(to_unsigned(decoder_rx09_chXX_center_pos_Int, decoder_rx09_chXX_msg_mem_a_din'length));
+                            decoder_rx09_chXX_msg_mem_a_din             <= std_logic_vector(to_unsigned(TRX_decoder_rx09_chXX_center_pos_Int, decoder_rx09_chXX_msg_mem_a_din'length));
                           --decoder_rx09_chXX_msg_mem_a_we              <= '1';
                             
                             decoder_state := decode_message_write_sig_w1;

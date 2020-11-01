@@ -1,141 +1,54 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.0",
-   "Default View_TopLeft":"3085,-1452",
-   "ExpandedHierarchyInLayout":"/FFT_rx09_chXX_to_Decoder|/UFBmod_rx09_chXX_Decoder|/Decoder_rx09_to_FIFO",
+   "Default View_ScaleFactor":"1.41421",
+   "Default View_TopLeft":"166,-831",
+   "ExpandedHierarchyInLayout":"",
    "PinnedBlocks":"/FFT_rx09_chXX_to_Decoder|/UFBmod_rx09_chXX_Decoder|/Decoder_rx09_to_FIFO|",
    "PinnedPorts":"clk_100MHz|reset_100MHz|TRX_dds_tx_rf09_ptt|TRX_decoder_rx_rf09_chXX_active|TRX_decoder_rx_rf09_chXX_noise|TRX_decoder_rx_rf09_chXX_sql_open|TRX_decoder_rx_rf09_chXX_squelch_lvl|TRX_post_fft_rx_rf09_mem_a_EoT|TRX_post_fft_rx_rf09_mem_a_addr|TRX_post_fft_rx_rf09_chXX_mem_b_dout|TRX_decoder_rx_rf09_chXX_strength|TRX_decoder_rx_rf09_chXX_center_pos|TRX_pushdata_rx_rf09_chXX_din|TRX_pushdata_rx_rf09_chXX_wr_en|TRX_post_fft_rx_rf09_chXX_mem_b_addr|",
    "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
 preplace port clk_100MHz -pg 1 -lvl 0 -x -100 -y -710 -defaultsOSRD
 preplace port TRX_dds_tx_rf09_ptt -pg 1 -lvl 0 -x -100 -y -808 -defaultsOSRD
-preplace port TRX_decoder_rx_rf09_chXX_active -pg 1 -lvl 4 -x 5390 -y -572 -defaultsOSRD
-preplace port TRX_decoder_rx_rf09_chXX_sql_open -pg 1 -lvl 4 -x 5390 -y -512 -defaultsOSRD
+preplace port TRX_decoder_rx_rf09_chXX_active -pg 1 -lvl 4 -x 2700 -y -572 -defaultsOSRD
+preplace port TRX_decoder_rx_rf09_chXX_sql_open -pg 1 -lvl 4 -x 2700 -y -512 -defaultsOSRD
 preplace port TRX_post_fft_rx_rf09_mem_a_EoT -pg 1 -lvl 0 -x -100 -y -530 -defaultsOSRD
 preplace port reset_100MHz -pg 1 -lvl 0 -x -100 -y -590 -defaultsOSRD
-preplace port TRX_pushdata_rx_rf09_chXX_wr_en -pg 1 -lvl 4 -x 5390 -y -662 -defaultsOSRD
-preplace portBus TRX_decoder_rx_rf09_chXX_noise -pg 1 -lvl 4 -x 5390 -y -482 -defaultsOSRD
+preplace port TRX_pushdata_rx_rf09_chXX_wr_en -pg 1 -lvl 4 -x 2700 -y -662 -defaultsOSRD
+preplace portBus TRX_decoder_rx_rf09_chXX_noise -pg 1 -lvl 4 -x 2700 -y -482 -defaultsOSRD
 preplace portBus TRX_decoder_rx_rf09_chXX_squelch_lvl -pg 1 -lvl 0 -x -100 -y -778 -defaultsOSRD
 preplace portBus TRX_post_fft_rx_rf09_mem_a_addr -pg 1 -lvl 0 -x -100 -y -560 -defaultsOSRD
 preplace portBus TRX_post_fft_rx_rf09_chXX_mem_b_dout -pg 1 -lvl 0 -x -100 -y -500 -defaultsOSRD
-preplace portBus TRX_decoder_rx_rf09_chXX_strength -pg 1 -lvl 4 -x 5390 -y -602 -defaultsOSRD
-preplace portBus TRX_decoder_rx_rf09_chXX_center_pos -pg 1 -lvl 4 -x 5390 -y -542 -defaultsOSRD
-preplace portBus TRX_pushdata_rx_rf09_chXX_din -pg 1 -lvl 4 -x 5390 -y -692 -defaultsOSRD
-preplace portBus TRX_post_fft_rx_rf09_chXX_mem_b_addr -pg 1 -lvl 4 -x 5390 -y -632 -defaultsOSRD
-preplace inst FFT_rx09_chXX_to_Decoder -pg 1 -lvl 1 -x 450 -y -690 -defaultsOSRD
-preplace inst UFBmod_rx09_chXX_Decoder -pg 1 -lvl 2 -x 3270 -y -660 -defaultsOSRD
-preplace inst Decoder_rx09_to_FIFO -pg 1 -lvl 3 -x 4810 -y -710 -defaultsOSRD
-preplace inst FFT_rx09_chXX_to_Decoder|FFT_rx_rf09_chXX_signal_bins_blk_mem_gen_2clks -pg 1 -lvl 7 -x 2400 -y -510 -defaultsOSRD
-preplace inst FFT_rx09_chXX_to_Decoder|xlconstant_val1_len1 -pg 1 -lvl 1 -x 250 -y 140 -defaultsOSRD
-preplace inst FFT_rx09_chXX_to_Decoder|FFT_rx_rf09_chXX_rowsum_c_accum_1clk -pg 1 -lvl 5 -x 1900 -y -660 -defaultsOSRD
-preplace inst FFT_rx09_chXX_to_Decoder|FFT_rx_rf09_chXX_signal_correction_mult_gen_4clks -pg 1 -lvl 3 -x 940 -y -140 -defaultsOSRD
-preplace inst FFT_rx09_chXX_to_Decoder|FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks -pg 1 -lvl 2 -x 600 -y 110 -defaultsOSRD
-preplace inst FFT_rx09_chXX_to_Decoder|xlconstant_val256x32_len16 -pg 1 -lvl 1 -x 250 -y 40 -defaultsOSRD
-preplace inst FFT_rx09_chXX_to_Decoder|xlconstant_val0_len1 -pg 1 -lvl 6 -x 2160 -y -400 -defaultsOSRD
-preplace inst FFT_rx09_chXX_to_Decoder|xlconstant_val0_len16 -pg 1 -lvl 6 -x 2160 -y -500 -defaultsOSRD
-preplace inst FFT_rx09_chXX_to_Decoder|FFT_rx_rf09_chXX_noise_xlslice_18to0 -pg 1 -lvl 6 -x 2160 -y -180 -defaultsOSRD
-preplace inst FFT_rx09_chXX_to_Decoder|FFT_rx_rf09_chXX_noise_c_shift_ram_0 -pg 1 -lvl 7 -x 2400 -y -160 -defaultsOSRD
-preplace inst FFT_rx09_chXX_to_Decoder|FFT_rx_rf09_chXX_to_Decoder_FSM -pg 1 -lvl 4 -x 1400 -y -400 -defaultsOSRD
-preplace inst UFBmod_rx09_chXX_Decoder|decoder_rx09_chXX_artemis_blk_mem_gen_2clks -pg 1 -lvl 3 -x 4060 -y -660 -defaultsOSRD
-preplace inst UFBmod_rx09_chXX_Decoder|decoder_rx09_chXX_artemis_mult_gen_4clks -pg 1 -lvl 1 -x 3040 -y -230 -defaultsOSRD
-preplace inst UFBmod_rx09_chXX_Decoder|decoder_rx09_chXX_msg_blk_mem_gen_2clks -pg 1 -lvl 3 -x 4060 -y -180 -defaultsOSRD
-preplace inst UFBmod_rx09_chXX_Decoder|UFBmod_rx09_chXX_Decoder_FSM -pg 1 -lvl 2 -x 3510 -y -540 -defaultsOSRD
-preplace inst Decoder_rx09_to_FIFO|Decoder_rx09_to_FIFO_FSM -pg 1 -lvl 1 -x 4850 -y -680 -defaultsOSRD
-preplace netloc TRX_decoder_rx09_chXX_noise_0 1 1 3 2720 -840 NJ -840 5350J
-preplace netloc clk_100MHz_0 1 0 3 -50 -810 2740 -810 4400
-preplace netloc TRX_dds_tx_rf09_ptt_0 1 0 2 -80J -830 2700
-preplace netloc TRX_decoder_fft_frame_avail_ctr_0 1 1 1 2730 -590n
-preplace netloc TRX_decoder_rx09_chXX_active_0 1 2 2 4380 -570 5370J
-preplace netloc TRX_decoder_rx09_chXX_sql_open_0 1 2 2 4390 -512 NJ
-preplace netloc TRX_decoder_rx09_chXX_squelch_lvl_1 1 0 2 -70J -820 2690
-preplace netloc TRX_post_fft_rx09_mem_a_EoT_0 1 0 1 -70 -530n
-preplace netloc TRX_post_fft_rx09_mem_a_addr_0 1 0 1 -60 -560n
-preplace netloc TRX_post_fft_rx09_chXX_mem_b_dout_0 1 0 1 -80 -500n
-preplace netloc reset_100MHz_0 1 0 3 -40 -800 2730 -800 4360
-preplace netloc TRX_fft_rx09_chXX_signal_bins_blk_mem_gen_0_addrb_1 1 0 3 -30 -850 NJ -850 4350
-preplace netloc TRX_decoder_rx09_chXX_signal_bins_blk_mem_gen_0_doutb_0 1 1 1 2740 -570n
-preplace netloc TRX_decoder_rx09_chXX_strength_0 1 2 2 N -450 5360J
-preplace netloc TRX_decoder_rx09_chXX_center_pos_0 1 2 2 4400 -542 NJ
-preplace netloc TRX_decoder_rx09_chXX_msg_mem_b_dout_0 1 2 1 4370 -670n
-preplace netloc TRX_decoder_rx09_chXX_msg_mem_b_addr_1 1 1 3 2760 -830 NJ -830 5300
-preplace netloc TRX_decoder_rx09_chXX_FIFO_accepted_1 1 1 3 2750 -860 NJ -860 5310
-preplace netloc TRX_decoder_rx09_chXX_FIFO_handshake_0 1 2 1 4360 -650n
-preplace netloc TRX_pushdata_rx_rf09_chXX_din_0 1 3 1 5320 -692n
-preplace netloc TRX_pushdata_rx_rf09_chXX_wr_en_0 1 3 1 5330 -662n
-preplace netloc TRX_post_fft_rx09_chXX_mem_b_addr_0 1 1 3 2710 -820 NJ -820 5340J
-preplace netloc FFT_rx09_chXX_to_Decoder|clk_100MHz_0 1 0 7 NJ -470 360 -470 810 -470 1070 -570 1790 -560 2010J -590 2270
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_signal_bins_blk_mem_gen_0_doutb_0 1 6 2 2290 -60 NJ
-preplace netloc FFT_rx09_chXX_to_Decoder|TRX_fft_rx09_chXX_signal_bins_blk_mem_gen_0_addrb_0 1 0 7 150J -580 NJ -580 NJ -580 NJ -580 1800J -570 2000J -600 2290
-preplace netloc FFT_rx09_chXX_to_Decoder|TRX_post_fft_rx09_mem_a_EoT_0 1 0 4 NJ -430 NJ -430 NJ -430 N
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_signal_bins_blk_mem_gen_0_dina_0 1 4 3 1760 -540 2060J -560 N
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_averaging_factor_div_dout_tdata_0 1 2 1 830 -130n
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_averaging_factor_div_divisor_tdata_0 1 1 5 380 -250 NJ -250 1050J -210 NJ -210 2030
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_averaging_factor_div_dividend_tdata_0 1 1 1 350J 40n
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_averaging_factor_div_dividend_tvalid_0 1 1 1 NJ 140
-preplace netloc FFT_rx09_chXX_to_Decoder|xlconstant_val0_len1_dout_0 1 6 1 NJ -400
-preplace netloc FFT_rx09_chXX_to_Decoder|xlconstant_val0_len16_dout_0 1 6 1 2260J -500n
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_averaging_factor_div_dout_tvalid_0 1 2 2 820 -370 NJ
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_averaging_factor_div_divisor_tvalid_0 1 1 6 390 -50 NJ -50 NJ -50 1750 -120 NJ -120 2270
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_noise_xlslice_18to0_Dout_0 1 6 1 NJ -180
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_noise_c_shift_ram_Q_0 1 7 1 2500 -160n
-preplace netloc FFT_rx09_chXX_to_Decoder|reset_100MHz_0 1 0 4 NJ -450 NJ -450 NJ -450 N
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_averaging_factor_div_aclken_0 1 1 4 370 -260 NJ -260 1080J -240 1730
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_signal_correction_mult_ce_0 1 2 3 840 -230 1040J -220 1740
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_signal_correction_mult_ina_0 1 2 3 830 -240 1060J -230 1720
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_rowsum_accum_sclr_0 1 4 1 1780 -630n
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_rowsum_accum_ce_0 1 4 1 1770 -650n
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_signal_bins_mem_addra_0 1 4 3 NJ -360 2020J -610 2300
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_signal_bins_mem_wea_0 1 4 3 NJ -320 2050J -580 2260
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_frame_avail_ctr_0 1 4 4 N -300 NJ -300 NJ -300 NJ
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_signal_correction_mult_gen_4clks_P_0 1 3 1 1070 -350n
-preplace netloc FFT_rx09_chXX_to_Decoder|fft_rx09_chXX_signal_bins_blk_mem_gen_2clks_douta_0 1 3 4 1080 -560 1730J -550 2040J -570 2280
-preplace netloc FFT_rx09_chXX_to_Decoder|TRX_post_rx_rf09_chXX_mem_a_addr_1 1 0 4 NJ -410 NJ -410 NJ -410 N
-preplace netloc FFT_rx09_chXX_to_Decoder|TRX_post_rx_rf09_chXX_mem_b_dout_1 1 0 4 NJ -390 NJ -390 NJ -390 N
-preplace netloc FFT_rx09_chXX_to_Decoder|TRX_post_fft_rx_rf09_chXX_mem_b_addr_0 1 4 4 1720 -750 NJ -750 NJ -750 NJ
-preplace netloc UFBmod_rx09_chXX_Decoder|reset_100MHz_1 1 0 2 NJ -630 3140
-preplace netloc UFBmod_rx09_chXX_Decoder|clk_100MHz_1 1 0 3 2920 -640 3160 -750 3910
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_fft_frame_avail_ctr_1 1 0 2 NJ -590 N
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_FIFO_accepted_1 1 0 2 NJ -510 3160
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_signal_bins_blk_mem_gen_0_addrb_1 1 2 2 3880 -550 NJ
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_SoM_frameCtr_1 1 2 2 N -510 NJ
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_sql_open_1 1 2 2 N -490 NJ
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_active_1 1 2 2 N -470 NJ
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_FIFO_handshake_1 1 2 2 3930 -530 NJ
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_signal_bins_blk_mem_gen_0_doutb_1 1 0 2 NJ -570 N
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_artemis_blk_mem_gen_0_douta_1 1 1 2 3180 -760 3930
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_artemis_rx_rf09_chXX_mem_wea_1 1 2 1 N -610
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_artemis_mem_addra_1 1 2 1 3900 -690n
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_artemis_rx_rf09_chXX_mem_dina_1 1 2 1 3920 -650n
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_artemis_mult_gen_4clks_P_1 1 1 1 3170 -510n
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_artemis_rx_rf09_chXX_mult_ce_1 1 0 3 2930 -120 NJ -120 3860
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_artemis_rx_rf09_chXX_mult_ina_1 1 0 3 2930 -330 NJ -330 3850
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_artemis_rx_rf09_chXX_mult_inb_1 1 0 3 2920 -130 NJ -130 3840
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_strength_1 1 2 2 3920 -450 NJ
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_center_pos_1 1 2 2 3870 -500 4160J
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_msg_mem_a_addr_0 1 2 1 3900 -450n
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_msg_mem_a_we_0 1 2 1 3890 -430n
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_msg_mem_a_din_0 1 2 1 3880 -410n
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_msg_blk_mem_gen_2clks_doutb_1 1 2 2 3890 -40 NJ
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_msg_mem_b_addr_1 1 0 3 NJ -470 3140J -140 N
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_dds_tx_rf09_ptt_1 1 0 2 2930J -550 N
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_ch00_squelch_lvl_1 1 0 2 NJ -530 N
-preplace netloc UFBmod_rx09_chXX_Decoder|TRX_decoder_rx_rf09_chXX_noise_1 1 0 2 NJ -450 3150
-preplace netloc Decoder_rx09_to_FIFO|clk_100MHz_0 1 0 1 N -710
-preplace netloc Decoder_rx09_to_FIFO|reset_100MHz_0 1 0 1 N -690
-preplace netloc Decoder_rx09_to_FIFO|TRX_decoder_rx_rf09_chXX_msg_mem_b_addr_0 1 1 1 N -710
-preplace netloc Decoder_rx09_to_FIFO|TRX_decoder_rx_rf09_chXX_FIFO_accepted_0 1 1 1 N -690
-preplace netloc Decoder_rx09_to_FIFO|TRX_decoder_rx_rf09_chXX_FIFO_handshake_0 1 0 1 N -650
-preplace netloc Decoder_rx09_to_FIFO|TRX_pushdata_rx_rf09_chXX_din_0 1 1 1 N -670
-preplace netloc Decoder_rx09_to_FIFO|TRX_pushdata_rx_rf09_chXX_wr_en_0 1 1 1 N -650
-preplace netloc Decoder_rx09_to_FIFO|TRX_decoder_rx_rf09_chXX_msg_mem_b_dout_0 1 0 1 N -670
-levelinfo -pg 1 -100 450 3270 4810 5390
-levelinfo -hier FFT_rx09_chXX_to_Decoder * 250 600 940 1400 1900 2160 2400 *
-levelinfo -hier UFBmod_rx09_chXX_Decoder * 3040 3510 4060 *
-levelinfo -hier Decoder_rx09_to_FIFO * 4850 *
-pagesize -pg 1 -db -bbox -sgen -440 -1790 5720 1070
-pagesize -hier FFT_rx09_chXX_to_Decoder -db -bbox -sgen 120 -770 2530 240
-pagesize -hier UFBmod_rx09_chXX_Decoder -db -bbox -sgen 2890 -770 4190 -30
-pagesize -hier Decoder_rx09_to_FIFO -db -bbox -sgen 4530 -770 5170 -590
+preplace portBus TRX_decoder_rx_rf09_chXX_strength -pg 1 -lvl 4 -x 2700 -y -602 -defaultsOSRD
+preplace portBus TRX_decoder_rx_rf09_chXX_center_pos -pg 1 -lvl 4 -x 2700 -y -542 -defaultsOSRD
+preplace portBus TRX_pushdata_rx_rf09_chXX_din -pg 1 -lvl 4 -x 2700 -y -692 -defaultsOSRD
+preplace portBus TRX_post_fft_rx_rf09_chXX_mem_b_addr -pg 1 -lvl 4 -x 2700 -y -632 -defaultsOSRD
+preplace inst FFT_rx09_chXX_to_Decoder -pg 1 -lvl 1 -x 450 -y -692 -defaultsOSRD
+preplace inst UFBmod_rx09_chXX_Decoder -pg 1 -lvl 2 -x 1429 -y -662 -defaultsOSRD
+preplace inst Decoder_rx09_to_FIFO -pg 1 -lvl 3 -x 2299 -y -712 -defaultsOSRD
+preplace netloc TRX_decoder_rx09_chXX_noise_0 1 1 3 840 -842 1900J -840 2650J
+preplace netloc clk_100MHz_0 1 0 3 -60 -812 890 -812 1870
+preplace netloc TRX_dds_tx_rf09_ptt_0 1 0 2 -80J -832 860
+preplace netloc TRX_decoder_fft_frame_avail_ctr_0 1 1 1 N -702
+preplace netloc TRX_decoder_rx09_chXX_active_0 1 2 2 1900 -624 2640J
+preplace netloc TRX_decoder_rx09_chXX_sql_open_0 1 2 2 1890 -566 2610J
+preplace netloc TRX_decoder_rx09_chXX_squelch_lvl_1 1 0 2 -70J -822 850
+preplace netloc TRX_post_fft_rx09_mem_a_EoT_0 1 0 1 -40 -702n
+preplace netloc TRX_post_fft_rx09_mem_a_addr_0 1 0 1 -30 -682n
+preplace netloc TRX_post_fft_rx09_chXX_mem_b_dout_0 1 0 1 -20 -662n
+preplace netloc reset_100MHz_0 1 0 3 -50 -802 880 -802 1860
+preplace netloc TRX_fft_rx09_chXX_signal_bins_blk_mem_gen_0_addrb_1 1 0 3 -10 -850 830J -852 1850
+preplace netloc TRX_decoder_rx09_chXX_signal_bins_blk_mem_gen_0_doutb_0 1 1 1 N -682
+preplace netloc TRX_decoder_rx09_chXX_strength_0 1 2 2 1880 -614 2630J
+preplace netloc TRX_decoder_rx09_chXX_center_pos_0 1 2 2 1870 -596 2620J
+preplace netloc TRX_decoder_rx09_chXX_msg_mem_b_dout_0 1 2 1 1860 -702n
+preplace netloc TRX_decoder_rx09_chXX_msg_mem_b_addr_1 1 1 3 910 -832 1890J -830 2630
+preplace netloc TRX_decoder_rx09_chXX_FIFO_accepted_1 1 1 3 900 -862 1900J -860 2640
+preplace netloc TRX_decoder_rx09_chXX_FIFO_handshake_0 1 2 1 1850 -712n
+preplace netloc TRX_pushdata_rx_rf09_chXX_din_0 1 3 1 2680 -702n
+preplace netloc TRX_pushdata_rx_rf09_chXX_wr_en_0 1 3 1 2660 -682n
+preplace netloc TRX_post_fft_rx09_chXX_mem_b_addr_0 1 1 3 870 -822 1880J -820 2670J
+levelinfo -pg 1 -100 450 1429 2299 2700
+pagesize -pg 1 -db -bbox -sgen -460 -1790 3050 1070
 "
 }
 0

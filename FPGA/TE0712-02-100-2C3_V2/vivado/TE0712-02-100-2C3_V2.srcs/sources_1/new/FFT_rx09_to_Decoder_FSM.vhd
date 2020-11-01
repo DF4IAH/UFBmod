@@ -44,7 +44,7 @@ entity FFT_rx09_to_Decoder_FSM is
     TRX_post_fft_rx_rf09_mem_a_EoT                      : in  STD_LOGIC;
     TRX_post_fft_rx_rf09_mem_a_addr                     : in  STD_LOGIC_VECTOR(41 downto 0);
     
-    TRX_post_fft_rx_rf09_chXX_mem_b_addr                : out STD_LOGIC_VECTOR( 9 downto 0);
+    TRX_post_fft_rx_rf09_chXX_mem_b_addr                : out STD_LOGIC_VECTOR( 4 downto 0);
     TRX_post_fft_rx_rf09_chXX_mem_b_dout                : in  STD_LOGIC_VECTOR(15 downto 0);
     
     fft_rx09_chXX_rowsum_accum_sclr                     : out STD_LOGIC;
@@ -87,8 +87,8 @@ begin
                                                             handshake
                                                         );
     variable state                                      : StateType;
-    variable TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int   : Integer  range 0 to (2**9  - 1);
-    variable fft_rx09_chXX_signal_bins_mem_addra_Int    : Integer  range 0 to (2**9  - 1);
+    variable TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int   : Integer  range 0 to (2**6  - 1);
+    variable fft_rx09_chXX_signal_bins_mem_addra_Int    : Integer  range 0 to (2**11 - 1);
   begin
     if (clk_100MHz'EVENT and clk_100MHz = '1') then
         if (reset_100MHz = '1') then

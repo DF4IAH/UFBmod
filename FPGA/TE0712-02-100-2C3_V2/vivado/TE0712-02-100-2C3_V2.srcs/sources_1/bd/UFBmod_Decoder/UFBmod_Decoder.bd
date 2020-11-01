@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xBA7A9110B22C7B69",
+      "boundary_crc": "0xF7C348D0FF95A2A9",
       "device": "xc7a100tfgg484-2",
       "name": "UFBmod_Decoder",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -169,7 +169,7 @@
       "TRX_post_fft_rx_rf09_chXX_mem_b_addr": {
         "type": "data",
         "direction": "O",
-        "left": "9",
+        "left": "4",
         "right": "0",
         "parameters": {
           "LAYERED_METADATA": {
@@ -200,7 +200,7 @@
           },
           "TRX_post_rx_rf09_chXX_mem_b_addr": {
             "direction": "O",
-            "left": "9",
+            "left": "4",
             "right": "0"
           },
           "TRX_post_rx_rf09_chXX_mem_b_dout": {
@@ -527,7 +527,7 @@
               },
               "TRX_post_fft_rx_rf09_chXX_mem_b_addr": {
                 "direction": "O",
-                "left": "9",
+                "left": "4",
                 "right": "0",
                 "parameters": {
                   "LAYERED_METADATA": {
@@ -1211,7 +1211,7 @@
                   }
                 }
               },
-              "decoder_rx09_chXX_SoM_frameCtr": {
+              "TRX_decoder_rx09_chXX_SoM_frameCtr": {
                 "direction": "O",
                 "left": "31",
                 "right": "0"
@@ -1281,7 +1281,6 @@
           },
           "TRX_decoder_rx_rf09_chXX_SoM_frameCtr_1": {
             "ports": [
-              "UFBmod_rx09_chXX_Decoder_FSM/decoder_rx09_chXX_SoM_frameCtr",
               "TRX_decoder_rx_rf09_chXX_SoM_frameCtr"
             ]
           },

@@ -589,7 +589,7 @@ architecture STRUCTURE of top is
     TRX_post_fft_rx_rf09_chXX_mem_b_dout                : in    STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_post_fft_rx_rf09_mem_a_EoT                      : in    STD_LOGIC;
     TRX_post_fft_rx_rf09_mem_a_addr                     : in    STD_LOGIC_VECTOR ( 41 downto 0 );
-    TRX_post_fft_rx_rf09_chXX_mem_b_addr                : out   STD_LOGIC_VECTOR ( 9 downto 0 );
+    TRX_post_fft_rx_rf09_chXX_mem_b_addr                : out   STD_LOGIC_VECTOR ( 4 downto 0 );
     TRX_pushdata_rx_rf09_chXX_din                       : out   STD_LOGIC_VECTOR ( 7 downto 0 );
     TRX_pushdata_rx_rf09_chXX_wr_en                     : out   STD_LOGIC
   );
@@ -824,8 +824,8 @@ architecture STRUCTURE of top is
   
   signal top_TRX_pushdata_rx_rf09_ch00_din : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal top_TRX_pushdata_rx_rf09_ch00_wr_en : STD_LOGIC;
-  signal top_TRX_pushdata_rx_rf09_ch01_din : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal top_TRX_pushdata_rx_rf09_ch01_wr_en : STD_LOGIC;
+--signal top_TRX_pushdata_rx_rf09_ch01_din : STD_LOGIC_VECTOR ( 7 downto 0 );
+--signal top_TRX_pushdata_rx_rf09_ch01_wr_en : STD_LOGIC;
   
   signal top_TRX_pushdata_rx_rf09_irpt : STD_LOGIC;
   
@@ -879,8 +879,6 @@ architecture STRUCTURE of top is
   signal top_mig_7series_0_ui_addn_clk_0_200MHz : STD_LOGIC;
   signal top_mig_7series_0_ui_clk_sync_rst : STD_LOGIC;
   
-  signal top_post_fft_rx09_mem_a_EoT : STD_LOGIC;
-  
   signal top_postmem_rx_addra_in : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal top_postmem_rx_wea_in : STD_LOGIC;
   
@@ -897,27 +895,6 @@ ETH0_LINK_LED_0: component IBUF
      port map (
       I                                                     => ETH0_LINK_LED,
       O                                                     => ETH0_LINK_LED_g
-    );
-BOARD_IIC_scl_iobuf: component IOBUF
-     port map (
-      I                                                     => BOARD_IIC_scl_o,
-      IO                                                    => BOARD_IIC_scl_io,
-      O                                                     => BOARD_IIC_scl_i,
-      T                                                     => BOARD_IIC_scl_t
-    );
-BOARD_IIC_sda_iobuf: component IOBUF
-     port map (
-      I                                                     => BOARD_IIC_sda_o,
-      IO                                                    => BOARD_IIC_sda_io,
-      O                                                     => BOARD_IIC_sda_i,
-      T                                                     => BOARD_IIC_sda_t
-    );
-ETH0_MDIO_MDC_mdio_iobuf: component IOBUF
-     port map (
-      I                                                     => ETH0_MDIO_MDC_mdio_o,
-      IO                                                    => ETH0_MDIO_MDC_mdio_io,
-      O                                                     => ETH0_MDIO_MDC_mdio_i,
-      T                                                     => ETH0_MDIO_MDC_mdio_t
     );
 EUI_onewire_iobuf_0: component IOBUF
      port map (
@@ -1008,10 +985,10 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       FFT_window_coef_rom_rx09                              => top_FFT_window_coef_rom_rx09,
       RF09_framectr                                         => top_RF09_framectr,
       RF09_quarterfrm                                       => top_RF09_quarterfrm,
-      S11_AXI_spi_araddr                                    => top_TRX_M11_AXI_araddr,
+      S11_AXI_spi_araddr                                    => top_TRX_M11_AXI_araddr(6 downto 0),
       S11_AXI_spi_arready                                   => top_TRX_M11_AXI_arready,
       S11_AXI_spi_arvalid                                   => top_TRX_M11_AXI_arvalid,
-      S11_AXI_spi_awaddr                                    => top_TRX_M11_AXI_awaddr,
+      S11_AXI_spi_awaddr                                    => top_TRX_M11_AXI_awaddr(6 downto 0),
       S11_AXI_spi_awready                                   => top_TRX_M11_AXI_awready,
       S11_AXI_spi_awvalid                                   => top_TRX_M11_AXI_awvalid,
       S11_AXI_spi_bready                                    => top_TRX_M11_AXI_bready,
@@ -1025,10 +1002,10 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       S11_AXI_spi_wready                                    => top_TRX_M11_AXI_wready,
       S11_AXI_spi_wstrb                                     => top_TRX_M11_AXI_wstrb,
       S11_AXI_spi_wvalid                                    => top_TRX_M11_AXI_wvalid,
-      S12_AXI_gpio_araddr                                   => top_TRX_M12_AXI_araddr,
+      S12_AXI_gpio_araddr                                   => top_TRX_M12_AXI_araddr(8 downto 0),
       S12_AXI_gpio_arready                                  => top_TRX_M12_AXI_arready,
       S12_AXI_gpio_arvalid                                  => top_TRX_M12_AXI_arvalid,
-      S12_AXI_gpio_awaddr                                   => top_TRX_M12_AXI_awaddr,
+      S12_AXI_gpio_awaddr                                   => top_TRX_M12_AXI_awaddr(8 downto 0),
       S12_AXI_gpio_awready                                  => top_TRX_M12_AXI_awready,
       S12_AXI_gpio_awvalid                                  => top_TRX_M12_AXI_awvalid,
       S12_AXI_gpio_bready                                   => top_TRX_M12_AXI_bready,
@@ -1042,10 +1019,10 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       S12_AXI_gpio_wready                                   => top_TRX_M12_AXI_wready,
       S12_AXI_gpio_wstrb                                    => top_TRX_M12_AXI_wstrb,
       S12_AXI_gpio_wvalid                                   => top_TRX_M12_AXI_wvalid,
-      S13_AXI_dds_araddr                                    => top_TRX_M13_AXI_araddr,
+      S13_AXI_dds_araddr                                    => top_TRX_M13_AXI_araddr(8 downto 0),
       S13_AXI_dds_arready                                   => top_TRX_M13_AXI_arready,
       S13_AXI_dds_arvalid                                   => top_TRX_M13_AXI_arvalid,
-      S13_AXI_dds_awaddr                                    => top_TRX_M13_AXI_awaddr,
+      S13_AXI_dds_awaddr                                    => top_TRX_M13_AXI_awaddr(8 downto 0),
       S13_AXI_dds_awready                                   => top_TRX_M13_AXI_awready,
       S13_AXI_dds_awvalid                                   => top_TRX_M13_AXI_awvalid,
       S13_AXI_dds_bready                                    => top_TRX_M13_AXI_bready,
@@ -1059,10 +1036,10 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       S13_AXI_dds_wready                                    => top_TRX_M13_AXI_wready,
       S13_AXI_dds_wstrb                                     => top_TRX_M13_AXI_wstrb,
       S13_AXI_dds_wvalid                                    => top_TRX_M13_AXI_wvalid,
-      S19_AXI_araddr                                        => top_TRX_M19_AXI_araddr,
+      S19_AXI_araddr                                        => top_TRX_M19_AXI_araddr(8 downto 0),
       S19_AXI_arready                                       => top_TRX_M19_AXI_arready,
       S19_AXI_arvalid                                       => top_TRX_M19_AXI_arvalid,
-      S19_AXI_awaddr                                        => top_TRX_M19_AXI_awaddr,
+      S19_AXI_awaddr                                        => top_TRX_M19_AXI_awaddr(8 downto 0),
       S19_AXI_awready                                       => top_TRX_M19_AXI_awready,
       S19_AXI_awvalid                                       => top_TRX_M19_AXI_awvalid,
       S19_AXI_bready                                        => top_TRX_M19_AXI_bready,
@@ -1076,10 +1053,10 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       S19_AXI_wready                                        => top_TRX_M19_AXI_wready,
       S19_AXI_wstrb                                         => top_TRX_M19_AXI_wstrb,
       S19_AXI_wvalid                                        => top_TRX_M19_AXI_wvalid,
-      S20_AXI1_araddr                                       => top_TRX_M20_AXI_araddr,
+      S20_AXI1_araddr                                       => top_TRX_M20_AXI_araddr(8 downto 0),
       S20_AXI1_arready                                      => top_TRX_M20_AXI_arready,
       S20_AXI1_arvalid                                      => top_TRX_M20_AXI_arvalid,
-      S20_AXI1_awaddr                                       => top_TRX_M20_AXI_awaddr,
+      S20_AXI1_awaddr                                       => top_TRX_M20_AXI_awaddr(8 downto 0),
       S20_AXI1_awready                                      => top_TRX_M20_AXI_awready,
       S20_AXI1_awvalid                                      => top_TRX_M20_AXI_awvalid,
       S20_AXI1_bready                                       => top_TRX_M20_AXI_bready,
@@ -1120,8 +1097,8 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       TRX_rx_clk_64MHz_clk_p                                => top_TRX_rx_clk_64MHz_clk_p,
       TRX_rx_rf09_ch00_Post_FFT_mem_b_addr                  => top_TRX_post_fft_rx_rf09_ch00_mem_b_addr,
       TRX_rx_rf09_ch00_Post_FFT_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch00_mem_b_dout,
-      TRX_rx_rf09_ch01_Post_FFT_mem_b_addr                  => top_TRX_post_fft_rx_rf09_ch01_mem_b_addr,
-      TRX_rx_rf09_ch01_Post_FFT_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch01_mem_b_dout,
+      TRX_rx_rf09_ch01_Post_FFT_mem_b_addr                  => (others => '0'),  -- top_TRX_post_fft_rx_rf09_ch01_mem_b_addr,
+    --TRX_rx_rf09_ch01_Post_FFT_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch01_mem_b_dout,
       TRX_rx_rf09_ch02_Post_FFT_mem_b_addr                  => (others => '0'),
     --TRX_rx_rf09_ch02_Post_FFT_mem_b_dout                  => (none),
       TRX_rx_rf09_ch03_Post_FFT_mem_b_addr                  => (others => '0'),
@@ -1184,10 +1161,10 @@ UFBmod_Decoder_rx09_ch00_bd: component UFBmod_Decoder_wrapper
       reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
-      TRX_post_fft_rx_rf09_mem_a_EoT                        => top_post_fft_rx09_mem_a_EoT,
-      TRX_post_fft_rx_rf09_mem_a_addr                       => top_TRX_pre_fft_rx_rf09_mem_a_addr,
-      TRX_post_fft_rx_rf09_chXX_mem_b_addr                  => top_TRX_pre_fft_rx_rf09_mem_b_addr,
-      TRX_post_fft_rx_rf09_chXX_mem_b_dout                  => top_TRX_pre_fft_rx_rf09_mem_b_dout,
+      TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
+      TRX_post_fft_rx_rf09_mem_a_addr                       => top_TRX_post_fft_rx_rf09_mem_a_addr,
+      TRX_post_fft_rx_rf09_chXX_mem_b_addr                  => top_TRX_post_fft_rx_rf09_ch00_mem_b_addr,
+      TRX_post_fft_rx_rf09_chXX_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch00_mem_b_dout,
       TRX_decoder_rx_rf09_chXX_squelch_lvl                  => top_TRX_decoder_rx_rf09_ch00_squelch_lvl,
       TRX_decoder_rx_rf09_chXX_sql_open                     => top_TRX_decoder_rx_rf09_ch00_sql_open,
       TRX_decoder_rx_rf09_chXX_active                       => top_TRX_decoder_rx_rf09_ch00_active,
@@ -1197,24 +1174,24 @@ UFBmod_Decoder_rx09_ch00_bd: component UFBmod_Decoder_wrapper
       TRX_pushdata_rx_rf09_chXX_din                         => top_TRX_pushdata_rx_rf09_ch00_din,
       TRX_pushdata_rx_rf09_chXX_wr_en                       => top_TRX_pushdata_rx_rf09_ch00_wr_en
     );
-UFBmod_Decoder_rx09_ch01_bd: component UFBmod_Decoder_wrapper
-    port map (
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
-      clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
-      TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
-      TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
-      TRX_post_fft_rx_rf09_mem_a_addr                       => top_TRX_post_fft_rx_rf09_mem_a_addr,
-      TRX_post_fft_rx_rf09_chXX_mem_b_addr                  => top_TRX_post_fft_rx_rf09_ch01_mem_b_addr,
-      TRX_post_fft_rx_rf09_chXX_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch01_mem_b_dout,
-      TRX_decoder_rx_rf09_chXX_active                       => top_TRX_decoder_rx_rf09_ch01_active,
-      TRX_decoder_rx_rf09_chXX_center_pos                   => top_TRX_decoder_rx_rf09_ch01_center_pos,
-      TRX_decoder_rx_rf09_chXX_noise                        => top_TRX_decoder_rx_rf09_ch01_noise,
-      TRX_decoder_rx_rf09_chXX_sql_open                     => top_TRX_decoder_rx_rf09_ch01_sql_open,
-      TRX_decoder_rx_rf09_chXX_squelch_lvl                  => top_TRX_decoder_rx_rf09_ch01_squelch_lvl,
-      TRX_decoder_rx_rf09_chXX_strength                     => top_TRX_decoder_rx_rf09_ch01_strength,
-      TRX_pushdata_rx_rf09_chXX_din                         => top_TRX_pushdata_rx_rf09_ch01_din,
-      TRX_pushdata_rx_rf09_chXX_wr_en                       => top_TRX_pushdata_rx_rf09_ch01_wr_en
-    );
+--UFBmod_Decoder_rx09_ch01_bd: component UFBmod_Decoder_wrapper
+--    port map (
+--      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+--      clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
+--      TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
+--      TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
+--      TRX_post_fft_rx_rf09_mem_a_addr                       => top_TRX_post_fft_rx_rf09_mem_a_addr,
+--      TRX_post_fft_rx_rf09_chXX_mem_b_addr                  => top_TRX_post_fft_rx_rf09_ch01_mem_b_addr,
+--      TRX_post_fft_rx_rf09_chXX_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch01_mem_b_dout,
+--      TRX_decoder_rx_rf09_chXX_active                       => top_TRX_decoder_rx_rf09_ch01_active,
+--      TRX_decoder_rx_rf09_chXX_center_pos                   => top_TRX_decoder_rx_rf09_ch01_center_pos,
+--      TRX_decoder_rx_rf09_chXX_noise                        => top_TRX_decoder_rx_rf09_ch01_noise,
+--      TRX_decoder_rx_rf09_chXX_sql_open                     => top_TRX_decoder_rx_rf09_ch01_sql_open,
+--      TRX_decoder_rx_rf09_chXX_squelch_lvl                  => top_TRX_decoder_rx_rf09_ch01_squelch_lvl,
+--      TRX_decoder_rx_rf09_chXX_strength                     => top_TRX_decoder_rx_rf09_ch01_strength,
+--      TRX_pushdata_rx_rf09_chXX_din                         => top_TRX_pushdata_rx_rf09_ch01_din,
+--      TRX_pushdata_rx_rf09_chXX_wr_en                       => top_TRX_pushdata_rx_rf09_ch01_wr_en
+--    );
 UFBmod_Encoder_bd: component UFBmod_Encoder_wrapper
     port map (
       reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,

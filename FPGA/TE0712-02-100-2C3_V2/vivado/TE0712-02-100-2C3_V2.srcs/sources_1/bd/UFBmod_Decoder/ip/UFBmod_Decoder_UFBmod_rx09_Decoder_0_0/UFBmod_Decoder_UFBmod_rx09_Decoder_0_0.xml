@@ -313,7 +313,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>decoder_rx09_chXX_SoM_frameCtr</spirit:name>
+        <spirit:name>TRX_decoder_rx09_chXX_SoM_frameCtr</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
