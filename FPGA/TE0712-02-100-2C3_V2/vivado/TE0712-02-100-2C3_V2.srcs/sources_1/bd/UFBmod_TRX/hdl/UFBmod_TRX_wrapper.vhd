@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Thu Oct 29 23:47:39 2020
+--Date        : Sun Nov  1 17:09:43 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target UFBmod_TRX_wrapper.bd
 --Design      : UFBmod_TRX_wrapper
@@ -120,7 +120,6 @@ entity UFBmod_TRX_wrapper is
     TRX_ip2intc_irpt : out STD_LOGIC;
     TRX_post_fft_mem_a_rx09_EoT : out STD_LOGIC;
     TRX_post_fft_rx09_mem_a_addr : out STD_LOGIC_VECTOR ( 41 downto 0 );
-    TRX_post_fft_rx09_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_pulldata_tx09_byteData : out STD_LOGIC_VECTOR ( 7 downto 0 );
     TRX_pushdata_rx09_irpt : out STD_LOGIC;
     TRX_rd_data_count_CD100_o : out STD_LOGIC_VECTOR ( 8 downto 0 );
@@ -137,6 +136,23 @@ entity UFBmod_TRX_wrapper is
     TRX_rx_clkdiv_16MHz : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rx_data_n : in STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_rx_data_p : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TRX_rx_rf09_Pre_FFT_mem_addrb : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    TRX_rx_rf09_ch00_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch00_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch01_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch01_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch02_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch02_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch03_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch03_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch04_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch04_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch05_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch05_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch06_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch06_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch07_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch07_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_spi_io0_io : inout STD_LOGIC;
     TRX_spi_io1_io : inout STD_LOGIC;
     TRX_spi_sck_io : inout STD_LOGIC;
@@ -163,9 +179,7 @@ entity UFBmod_TRX_wrapper is
     mig_7series_0_mmcm_locked : in STD_LOGIC;
     mig_7series_0_ui_addn_clk_0_200MHz : in STD_LOGIC;
     mig_7series_0_ui_clk_sync_rst : in STD_LOGIC;
-    post_fft_rx09_mem_b_addr_in : in STD_LOGIC_VECTOR ( 9 downto 0 );
     premem_rx09_addra_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
-    premem_rx09_addrb_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
     premem_rx09_dina_in : in STD_LOGIC_VECTOR ( 25 downto 0 );
     premem_rx09_wea_in : in STD_LOGIC;
     pulldata_dds_inc : in STD_LOGIC_VECTOR ( 25 downto 0 );
@@ -194,9 +208,9 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     premem_rx09_addra_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
     premem_rx09_dina_in : in STD_LOGIC_VECTOR ( 25 downto 0 );
     premem_rx09_wea_in : in STD_LOGIC;
-    premem_rx09_addrb_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    TRX_rx_rf09_Pre_FFT_mem_addrb : in STD_LOGIC_VECTOR ( 10 downto 0 );
     RF09_quarterfrm : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    post_fft_rx09_mem_b_addr_in : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    TRX_rx_rf09_ch00_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
     dds_tx09_ptt_in : in STD_LOGIC;
     Status_LVDS_rx09_synced : in STD_LOGIC;
     Status_LVDS_rx24_synced : in STD_LOGIC;
@@ -224,7 +238,7 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     TRX_xfft_rx09_dly3449_event_tlast_unexpected : out STD_LOGIC;
     TRX_xfft_rx09_dly3449_event_tlast_missing : out STD_LOGIC;
     TRX_xfft_rx09_dly3449_event_data_in_channel_halt : out STD_LOGIC;
-    TRX_post_fft_rx09_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch00_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_clk_trx_26MHz_vio : out STD_LOGIC;
     TRX_clk_trx_pll_25MHz_vio : out STD_LOGIC;
     TRX_tx_re_out : out STD_LOGIC_VECTOR ( 20 downto 8 );
@@ -244,6 +258,32 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     TRX_tx_DDS1_gpio_ampt : out STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_PUSHDATA_wr_en : in STD_LOGIC;
     TRX_PUSHDATA_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_rx_rf09_ch01_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch02_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch03_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch04_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch05_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch06_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch07_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch01_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch02_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch06_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch07_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch03_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch04_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch05_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_spi_io0_i : in STD_LOGIC;
+    TRX_spi_io0_o : out STD_LOGIC;
+    TRX_spi_io0_t : out STD_LOGIC;
+    TRX_spi_io1_i : in STD_LOGIC;
+    TRX_spi_io1_o : out STD_LOGIC;
+    TRX_spi_io1_t : out STD_LOGIC;
+    TRX_spi_sck_i : in STD_LOGIC;
+    TRX_spi_sck_o : out STD_LOGIC;
+    TRX_spi_sck_t : out STD_LOGIC;
+    TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_spi_ss_t : out STD_LOGIC;
     S13_AXI_dds_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     S13_AXI_dds_arready : out STD_LOGIC;
     S13_AXI_dds_arvalid : in STD_LOGIC;
@@ -261,6 +301,23 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     S13_AXI_dds_wready : out STD_LOGIC;
     S13_AXI_dds_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S13_AXI_dds_wvalid : in STD_LOGIC;
+    S19_AXI_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    S19_AXI_arready : out STD_LOGIC;
+    S19_AXI_arvalid : in STD_LOGIC;
+    S19_AXI_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    S19_AXI_awready : out STD_LOGIC;
+    S19_AXI_awvalid : in STD_LOGIC;
+    S19_AXI_bready : in STD_LOGIC;
+    S19_AXI_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S19_AXI_bvalid : out STD_LOGIC;
+    S19_AXI_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    S19_AXI_rready : in STD_LOGIC;
+    S19_AXI_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S19_AXI_rvalid : out STD_LOGIC;
+    S19_AXI_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S19_AXI_wready : out STD_LOGIC;
+    S19_AXI_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S19_AXI_wvalid : in STD_LOGIC;
     S12_AXI_gpio_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     S12_AXI_gpio_arready : out STD_LOGIC;
     S12_AXI_gpio_arvalid : in STD_LOGIC;
@@ -297,23 +354,6 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     S11_AXI_spi_wready : out STD_LOGIC;
     S11_AXI_spi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S11_AXI_spi_wvalid : in STD_LOGIC;
-    S19_AXI_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    S19_AXI_arready : out STD_LOGIC;
-    S19_AXI_arvalid : in STD_LOGIC;
-    S19_AXI_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    S19_AXI_awready : out STD_LOGIC;
-    S19_AXI_awvalid : in STD_LOGIC;
-    S19_AXI_bready : in STD_LOGIC;
-    S19_AXI_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    S19_AXI_bvalid : out STD_LOGIC;
-    S19_AXI_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    S19_AXI_rready : in STD_LOGIC;
-    S19_AXI_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    S19_AXI_rvalid : out STD_LOGIC;
-    S19_AXI_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    S19_AXI_wready : out STD_LOGIC;
-    S19_AXI_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    S19_AXI_wvalid : in STD_LOGIC;
     S20_AXI1_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
     S20_AXI1_arready : out STD_LOGIC;
     S20_AXI1_arvalid : in STD_LOGIC;
@@ -331,18 +371,6 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     S20_AXI1_wready : out STD_LOGIC;
     S20_AXI1_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S20_AXI1_wvalid : in STD_LOGIC;
-    TRX_spi_io0_i : in STD_LOGIC;
-    TRX_spi_io0_o : out STD_LOGIC;
-    TRX_spi_io0_t : out STD_LOGIC;
-    TRX_spi_io1_i : in STD_LOGIC;
-    TRX_spi_io1_o : out STD_LOGIC;
-    TRX_spi_io1_t : out STD_LOGIC;
-    TRX_spi_sck_i : in STD_LOGIC;
-    TRX_spi_sck_o : out STD_LOGIC;
-    TRX_spi_sck_t : out STD_LOGIC;
-    TRX_spi_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_spi_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_spi_ss_t : out STD_LOGIC;
     TRX_tx_clk_clk_n : out STD_LOGIC;
     TRX_tx_clk_clk_p : out STD_LOGIC
   );
@@ -506,7 +534,6 @@ UFBmod_TRX_i: component UFBmod_TRX
       TRX_ip2intc_irpt => TRX_ip2intc_irpt,
       TRX_post_fft_mem_a_rx09_EoT => TRX_post_fft_mem_a_rx09_EoT,
       TRX_post_fft_rx09_mem_a_addr(41 downto 0) => TRX_post_fft_rx09_mem_a_addr(41 downto 0),
-      TRX_post_fft_rx09_mem_b_dout(15 downto 0) => TRX_post_fft_rx09_mem_b_dout(15 downto 0),
       TRX_pulldata_tx09_byteData(7 downto 0) => TRX_pulldata_tx09_byteData(7 downto 0),
       TRX_pushdata_rx09_irpt => TRX_pushdata_rx09_irpt,
       TRX_rd_data_count_CD100_o(8 downto 0) => TRX_rd_data_count_CD100_o(8 downto 0),
@@ -523,6 +550,23 @@ UFBmod_TRX_i: component UFBmod_TRX
       TRX_rx_clkdiv_16MHz(0) => TRX_rx_clkdiv_16MHz(0),
       TRX_rx_data_n(1 downto 0) => TRX_rx_data_n(1 downto 0),
       TRX_rx_data_p(1 downto 0) => TRX_rx_data_p(1 downto 0),
+      TRX_rx_rf09_Pre_FFT_mem_addrb(10 downto 0) => TRX_rx_rf09_Pre_FFT_mem_addrb(10 downto 0),
+      TRX_rx_rf09_ch00_Post_FFT_mem_b_addr(4 downto 0) => TRX_rx_rf09_ch00_Post_FFT_mem_b_addr(4 downto 0),
+      TRX_rx_rf09_ch00_Post_FFT_mem_b_dout(15 downto 0) => TRX_rx_rf09_ch00_Post_FFT_mem_b_dout(15 downto 0),
+      TRX_rx_rf09_ch01_Post_FFT_mem_b_addr(4 downto 0) => TRX_rx_rf09_ch01_Post_FFT_mem_b_addr(4 downto 0),
+      TRX_rx_rf09_ch01_Post_FFT_mem_b_dout(15 downto 0) => TRX_rx_rf09_ch01_Post_FFT_mem_b_dout(15 downto 0),
+      TRX_rx_rf09_ch02_Post_FFT_mem_b_addr(4 downto 0) => TRX_rx_rf09_ch02_Post_FFT_mem_b_addr(4 downto 0),
+      TRX_rx_rf09_ch02_Post_FFT_mem_b_dout(15 downto 0) => TRX_rx_rf09_ch02_Post_FFT_mem_b_dout(15 downto 0),
+      TRX_rx_rf09_ch03_Post_FFT_mem_b_addr(4 downto 0) => TRX_rx_rf09_ch03_Post_FFT_mem_b_addr(4 downto 0),
+      TRX_rx_rf09_ch03_Post_FFT_mem_b_dout(15 downto 0) => TRX_rx_rf09_ch03_Post_FFT_mem_b_dout(15 downto 0),
+      TRX_rx_rf09_ch04_Post_FFT_mem_b_addr(4 downto 0) => TRX_rx_rf09_ch04_Post_FFT_mem_b_addr(4 downto 0),
+      TRX_rx_rf09_ch04_Post_FFT_mem_b_dout(15 downto 0) => TRX_rx_rf09_ch04_Post_FFT_mem_b_dout(15 downto 0),
+      TRX_rx_rf09_ch05_Post_FFT_mem_b_addr(4 downto 0) => TRX_rx_rf09_ch05_Post_FFT_mem_b_addr(4 downto 0),
+      TRX_rx_rf09_ch05_Post_FFT_mem_b_dout(15 downto 0) => TRX_rx_rf09_ch05_Post_FFT_mem_b_dout(15 downto 0),
+      TRX_rx_rf09_ch06_Post_FFT_mem_b_addr(4 downto 0) => TRX_rx_rf09_ch06_Post_FFT_mem_b_addr(4 downto 0),
+      TRX_rx_rf09_ch06_Post_FFT_mem_b_dout(15 downto 0) => TRX_rx_rf09_ch06_Post_FFT_mem_b_dout(15 downto 0),
+      TRX_rx_rf09_ch07_Post_FFT_mem_b_addr(4 downto 0) => TRX_rx_rf09_ch07_Post_FFT_mem_b_addr(4 downto 0),
+      TRX_rx_rf09_ch07_Post_FFT_mem_b_dout(15 downto 0) => TRX_rx_rf09_ch07_Post_FFT_mem_b_dout(15 downto 0),
       TRX_spi_io0_i => TRX_spi_io0_i,
       TRX_spi_io0_o => TRX_spi_io0_o,
       TRX_spi_io0_t => TRX_spi_io0_t,
@@ -557,9 +601,7 @@ UFBmod_TRX_i: component UFBmod_TRX
       mig_7series_0_mmcm_locked => mig_7series_0_mmcm_locked,
       mig_7series_0_ui_addn_clk_0_200MHz => mig_7series_0_ui_addn_clk_0_200MHz,
       mig_7series_0_ui_clk_sync_rst => mig_7series_0_ui_clk_sync_rst,
-      post_fft_rx09_mem_b_addr_in(9 downto 0) => post_fft_rx09_mem_b_addr_in(9 downto 0),
       premem_rx09_addra_in(10 downto 0) => premem_rx09_addra_in(10 downto 0),
-      premem_rx09_addrb_in(10 downto 0) => premem_rx09_addrb_in(10 downto 0),
       premem_rx09_dina_in(25 downto 0) => premem_rx09_dina_in(25 downto 0),
       premem_rx09_wea_in => premem_rx09_wea_in,
       pulldata_dds_inc(25 downto 0) => pulldata_dds_inc(25 downto 0),

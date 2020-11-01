@@ -49,8 +49,8 @@ entity UFBmod_rx09_Decoder_FSM is
     decoder_rx09_chXX_signal_bins_mem_datab         : in  STD_LOGIC_VECTOR(15 downto 0);
     
     -- Decoder settings
-    dds_tx09_ptt                                    : in  STD_LOGIC;
-    decoder_rx09_chXX_squelch_lvl                   : in  STD_LOGIC_VECTOR(15 downto 0);
+    TRX_dds_tx_rf09_ptt                             : in  STD_LOGIC;
+    TRX_decoder_rx_rf09_chXX_squelch_lvl            : in  STD_LOGIC_VECTOR(15 downto 0);
     
     -- Decoder Artemis (hunter) Mult and Mem
     decoder_rx09_chXX_artemis_mult_ce               : out STD_LOGIC;
@@ -64,11 +64,12 @@ entity UFBmod_rx09_Decoder_FSM is
     decoder_rx09_chXX_artemis_mem_douta             : in  STD_LOGIC_VECTOR(15 downto 0);
     
     -- Decoder information
-    decoder_rx09_chXX_center_pos                    : out STD_LOGIC_VECTOR( 7 downto 0);
-    decoder_rx09_chXX_strength                      : out STD_LOGIC_VECTOR(18 downto 0);
+    TRX_decoder_rx_rf09_chXX_center_pos             : out STD_LOGIC_VECTOR( 7 downto 0);
+    TRX_decoder_rx_rf09_chXX_strength               : out STD_LOGIC_VECTOR(18 downto 0);
+    TRX_decoder_rx_rf09_chXX_noise                  : in  STD_LOGIC_VECTOR(18 downto 0);
     decoder_rx09_chXX_SoM_frameCtr                  : out STD_LOGIC_VECTOR(31 downto 0);
-    decoder_rx09_chXX_sql_open                      : out STD_LOGIC;
-    decoder_rx09_chXX_active                        : out STD_LOGIC;
+    TRX_decoder_rx_rf09_chXX_sql_open               : out STD_LOGIC;
+    TRX_decoder_rx_rf09_chXX_active                 : out STD_LOGIC;
     
     -- Decoder message Mem-A
     decoder_rx09_chXX_msg_mem_a_addr                : out STD_LOGIC_VECTOR ( 7 downto 0);
@@ -213,7 +214,7 @@ begin
     variable msg_sig_pos                                        : Integer  range 0 to (2**8  - 1);
   begin
     if (clk_100MHz'EVENT and clk_100MHz = '1') then
-        if ((reset_100MHz = '1') or (dds_tx09_ptt = '1')) then
+        if ((reset_100MHz = '1') or (TRX_dds_tx_rf09_ptt = '1')) then
             decoder_rx09_chXX_signal_bins_mem_addrb             <= (others => '0');
             
             decoder_rx09_chXX_center_pos_Int                    := 0;
@@ -239,10 +240,10 @@ begin
             decoder_rx09_chXX_artemis_mem_dina                  <= (others => '0');
             
             decoder_rx09_chXX_SoM_frameCtr                      <= (others => '0');
-            decoder_rx09_chXX_center_pos                        <= (others => '0');
-            decoder_rx09_chXX_strength                          <= (others => '0');
-            decoder_rx09_chXX_sql_open                          <= '0';
-            decoder_rx09_chXX_active                            <= '0';
+            TRX_decoder_rx_rf09_chXX_center_pos                 <= (others => '0');
+            TRX_decoder_rx_rf09_chXX_strength                   <= (others => '0');
+            TRX_decoder_rx_rf09_chXX_sql_open                   <= '0';
+            TRX_decoder_rx_rf09_chXX_active                     <= '0';
             
             decoder_rx09_chXX_FIFO_handshake                    <= '0';
             
@@ -278,6 +279,8 @@ begin
                     
                 -- Loop entry point
                 when loop_start =>
+                    decoder_rx09_chXX_FIFO_handshake <= '0';
+                    
                     if (decoder_FftFrameWork(7 downto 0) /= decoder_fft_frame_avail_ctr(7 downto 0)) then
                         decoder_FftFrameWork             := decoder_fft_frame_avail_ctr;
                         
@@ -499,9 +502,11 @@ begin
                 when artemis_search_level_check =>
                     decoder_rx09_chXX_artemis_mem_addra <= (others => '0');
                     
-                    if (signal_max_val <= decoder_rx09_chXX_squelch_lvl(15 downto 0)) then          -- DEBUGGING: here preamble signal and SQL-level Test.
+                    if (signal_max_val <= TRX_decoder_rx_rf09_chXX_squelch_lvl(15 downto 0)) then          -- DEBUGGING: here preamble signal and SQL-level Test.
                         state := loop_start;
                     else
+                        TRX_decoder_rx_rf09_chXX_sql_open   <= '1';
+                        
                         state := artemis_search_handoff;
                     end if;
                     
@@ -509,10 +514,11 @@ begin
                     decoder_rx09_chXX_SoM_frameCtr_Int  := to_integer(unsigned(decoder_FftFrameWork)) - isOddRow;
                     decoder_rx09_chXX_SoM_frameCtr      <= std_logic_vector(to_unsigned(decoder_rx09_chXX_SoM_frameCtr_Int, decoder_rx09_chXX_SoM_frameCtr'length));
                     decoder_rx09_chXX_center_pos_Int    := to_integer(unsigned(signal_max_idx));
-                    decoder_rx09_chXX_center_pos        <= "000" & signal_max_idx;
-                    decoder_rx09_chXX_strength          <= "000" & signal_max_val;
+                    TRX_decoder_rx_rf09_chXX_center_pos <= "000" & signal_max_idx;
+                    TRX_decoder_rx_rf09_chXX_strength   <= "000" & signal_max_val;
                     
                     skipUntil                           := decoder_rx09_chXX_SoM_frameCtr_Int + 32;
+                    TRX_decoder_rx_rf09_chXX_active     <= '1';
                     
                     if (decoder_rx09_chXX_FIFO_accepted  = '0') then
                         decoder_state   := decode_preload;                                          -- when DEBUGGING Artemis - disable me
@@ -694,13 +700,14 @@ begin
                                     decoder_rx09_chXX_msg_mem_a_din     <= std_logic_vector(to_unsigned((msg_out_len + 9), decoder_rx09_chXX_msg_mem_a_din'length));
                                     decoder_rx09_chXX_msg_mem_a_we      <= '1';
                                     
+                                    TRX_decoder_rx_rf09_chXX_active     <= '0';
+                                    TRX_decoder_rx_rf09_chXX_sql_open   <= '0';
+                                    
                                     decoder_state := decode_message_loop_end;
                                 end if;
                             end if;
                             
                         when decode_message_skip =>
-                            decoder_rx09_chXX_msg_mem_a_addr            <= (others => '0');
-                            decoder_rx09_chXX_msg_mem_a_din             <= (others => '0');
                             decoder_rx09_chXX_msg_mem_a_we              <= '0';
                             
                             if (skipUntil > to_integer(unsigned(decoder_FftFrameWork))) then
@@ -714,8 +721,6 @@ begin
                             
                             
                         when decode_message_loop_end =>
-                            decoder_rx09_chXX_msg_mem_a_addr            <= (others => '0');
-                            decoder_rx09_chXX_msg_mem_a_din             <= (others => '0');
                             decoder_rx09_chXX_msg_mem_a_we              <= '0';
                             
                             decoder_state := decode_message_write_time_w3;
@@ -790,17 +795,14 @@ begin
                             
                             decoder_state := decode_handshake_give;
                             
-                            
                         when decode_handshake_give =>
                             decoder_rx09_chXX_FIFO_handshake <= '1';
-                            
-                            decoder_state := decode_handshake_get;
-                            
-                        when decode_handshake_get =>
                             if (decoder_rx09_chXX_FIFO_accepted   = '1') then
                                 decoder_rx09_chXX_FIFO_handshake <= '0';
+                                decoder_state := decode_handshake_get;
                             end if;
                             
+                        when decode_handshake_get =>
                             decoder_state   := NOP;
                             state           := loop_start;
                             

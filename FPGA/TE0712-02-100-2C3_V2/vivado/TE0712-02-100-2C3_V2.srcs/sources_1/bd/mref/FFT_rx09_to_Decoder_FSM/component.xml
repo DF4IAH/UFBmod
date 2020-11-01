@@ -33,7 +33,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>dc432caf</spirit:value>
+            <spirit:value>c356d3b8</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -46,7 +46,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>dc432caf</spirit:value>
+            <spirit:value>c356d3b8</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -87,7 +87,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>post_fft_rx09_mem_a_EoT</spirit:name>
+        <spirit:name>TRX_post_fft_rx_rf09_mem_a_EoT</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -100,7 +100,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>post_fft_rx09_mem_addra</spirit:name>
+        <spirit:name>TRX_post_fft_rx_rf09_mem_a_addr</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
@@ -117,7 +117,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>post_fft_rx09_mem_addrb</spirit:name>
+        <spirit:name>TRX_post_fft_rx_rf09_chXX_mem_b_addr</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -134,7 +134,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>post_fft_rx09_mem_doutb</spirit:name>
+        <spirit:name>TRX_post_fft_rx_rf09_chXX_mem_b_dout</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
@@ -378,7 +378,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2020-10-27T17:04:21Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2020-11-01T16:57:45Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.1.1</xilinx:xilinxVersion>

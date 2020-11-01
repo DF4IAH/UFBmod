@@ -117,7 +117,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>dds_tx09_ptt</spirit:name>
+        <spirit:name>TRX_dds_tx_rf09_ptt</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -129,7 +129,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>decoder_rx09_chXX_squelch_lvl</spirit:name>
+        <spirit:name>TRX_decoder_rx_rf09_chXX_squelch_lvl</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
@@ -265,7 +265,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>decoder_rx09_chXX_center_pos</spirit:name>
+        <spirit:name>TRX_decoder_rx_rf09_chXX_center_pos</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -281,9 +281,25 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>decoder_rx09_chXX_strength</spirit:name>
+        <spirit:name>TRX_decoder_rx_rf09_chXX_strength</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">18</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>TRX_decoder_rx_rf09_chXX_noise</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
           <spirit:vector>
             <spirit:left spirit:format="long">18</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
@@ -313,7 +329,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>decoder_rx09_chXX_sql_open</spirit:name>
+        <spirit:name>TRX_decoder_rx_rf09_chXX_sql_open</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -325,7 +341,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>decoder_rx09_chXX_active</spirit:name>
+        <spirit:name>TRX_decoder_rx_rf09_chXX_active</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>

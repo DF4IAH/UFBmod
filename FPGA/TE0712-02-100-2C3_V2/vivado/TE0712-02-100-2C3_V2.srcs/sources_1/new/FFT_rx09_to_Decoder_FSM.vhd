@@ -41,11 +41,11 @@ entity FFT_rx09_to_Decoder_FSM is
     clk_100MHz                                          : in  STD_LOGIC;
     reset_100MHz                                        : in  STD_LOGIC;
     
-    post_fft_rx09_mem_a_EoT                             : in  STD_LOGIC;
-    post_fft_rx09_mem_addra                             : in  STD_LOGIC_VECTOR(41 downto 0);
+    TRX_post_fft_rx_rf09_mem_a_EoT                      : in  STD_LOGIC;
+    TRX_post_fft_rx_rf09_mem_a_addr                     : in  STD_LOGIC_VECTOR(41 downto 0);
     
-    post_fft_rx09_mem_addrb                             : out STD_LOGIC_VECTOR( 9 downto 0);
-    post_fft_rx09_mem_doutb                             : in  STD_LOGIC_VECTOR(15 downto 0);
+    TRX_post_fft_rx_rf09_chXX_mem_b_addr                : out STD_LOGIC_VECTOR( 9 downto 0);
+    TRX_post_fft_rx_rf09_chXX_mem_b_dout                : in  STD_LOGIC_VECTOR(15 downto 0);
     
     fft_rx09_chXX_rowsum_accum_sclr                     : out STD_LOGIC;
     fft_rx09_chXX_rowsum_accum_ce                       : out STD_LOGIC;
@@ -68,9 +68,12 @@ entity FFT_rx09_to_Decoder_FSM is
   );
 end FFT_rx09_to_Decoder_FSM;
 
+
 architecture Behavioral of FFT_rx09_to_Decoder_FSM is
+  
   signal read_write_loopCtr                             : Integer  range 0 to (2**5  - 1);
   signal initial_loopCtr                                : Integer  range 0 to (2**6  - 1);
+  
 begin
   proc_FFT_rx09_to_Mem: process (clk_100MHz, reset_100MHz)
     type StateType                                      is (
@@ -84,7 +87,7 @@ begin
                                                             handshake
                                                         );
     variable state                                      : StateType;
-    variable post_fft_rx09_mem_addrb_Int                : Integer  range 0 to (2**9  - 1);
+    variable TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int   : Integer  range 0 to (2**9  - 1);
     variable fft_rx09_chXX_signal_bins_mem_addra_Int    : Integer  range 0 to (2**9  - 1);
   begin
     if (clk_100MHz'EVENT and clk_100MHz = '1') then
@@ -94,8 +97,8 @@ begin
             read_write_loopCtr                                  <= 0;
             initial_loopCtr                                     <= 0;
             
-            post_fft_rx09_mem_addrb_Int                         := 0;
-            post_fft_rx09_mem_addrb                             <= (others => '0');
+            TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int            := 0;
+            TRX_post_fft_rx_rf09_chXX_mem_b_addr                <= (others => '0');
             
             fft_rx09_chXX_rowsum_accum_sclr                     <= '0';
             fft_rx09_chXX_rowsum_accum_ce                       <= '0';
@@ -111,6 +114,8 @@ begin
             fft_rx09_chXX_signal_bins_mem_dina                  <= (others => '0');
             fft_rx09_chXX_signal_bins_mem_wea                   <= '0';
             
+            state := init;
+            
         else
             case state is
                 when init =>
@@ -119,8 +124,8 @@ begin
                     read_write_loopCtr                                      <= 0;
                     initial_loopCtr                                         <= 32;
                     
-                    post_fft_rx09_mem_addrb                                 <= (others => '0');
-                    post_fft_rx09_mem_addrb_Int                             := 0;
+                    TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int                := 0;
+                    TRX_post_fft_rx_rf09_chXX_mem_b_addr                    <= (others => '0');
                     
                     fft_rx09_chXX_rowsum_accum_sclr                         <= '0';
                     fft_rx09_chXX_rowsum_accum_ce                           <= '0';
@@ -147,26 +152,26 @@ begin
                     
                 -- Wait until the FFT / Cordic post-transfer is complete
                 when wait_until_post_fft_done =>
-                    if (post_fft_rx09_mem_a_EoT = '1') then
+                    if (TRX_post_fft_rx_rf09_mem_a_EoT = '1') then
                         -- RAM Loop init
                         fft_rx09_chXX_rowsum_accum_sclr                     <= '0';
-                        post_fft_rx09_mem_addrb_Int                         := 0;
-                        fft_rx09_chXX_signal_bins_mem_addra_Int             := to_integer(unsigned(post_fft_rx09_mem_addra(15 downto 10)) & "00000");
+                        TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int            := 0;
+                        fft_rx09_chXX_signal_bins_mem_addra_Int             := to_integer(unsigned(TRX_post_fft_rx_rf09_mem_a_addr(15 downto 10)) & "00000");
                         
                         state := read_in_loop;
                     end if;
                     
                 when read_in_loop =>
                     -- Request data from RAM (latency: 2 clocks
-                    if (post_fft_rx09_mem_addrb_Int < 32) then
+                    if (TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int < 32) then
                         -- Time span of RAM read-out
-                        post_fft_rx09_mem_addrb                             <= std_logic_vector(to_unsigned(post_fft_rx09_mem_addrb_Int, post_fft_rx09_mem_addrb'length));
+                        TRX_post_fft_rx_rf09_chXX_mem_b_addr                <= std_logic_vector(to_unsigned(TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int, TRX_post_fft_rx_rf09_chXX_mem_b_addr'length));
                     else
                         -- Time span of latency
-                        post_fft_rx09_mem_addrb                             <= (others => '0');
+                        TRX_post_fft_rx_rf09_chXX_mem_b_addr                <= (others => '0');
                     end if;
                     
-                    if (post_fft_rx09_mem_addrb_Int < 35) then
+                    if (TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int < 35) then
                         -- Delayed write
                         fft_rx09_chXX_signal_bins_mem_addra                 <= std_logic_vector(to_unsigned(fft_rx09_chXX_signal_bins_mem_addra_Int, fft_rx09_chXX_signal_bins_mem_addra'length));
                     else
@@ -174,15 +179,15 @@ begin
                     end if;
                     
                     -- Read into shift register
-                    if ((2 < post_fft_rx09_mem_addrb_Int)  and  (post_fft_rx09_mem_addrb_Int <= 34)) then
-                        fft_rx09_chXX_signal_bins_mem_dina                  <= post_fft_rx09_mem_doutb;
+                    if ((2 < TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int)  and  (TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int <= 34)) then
+                        fft_rx09_chXX_signal_bins_mem_dina                  <= TRX_post_fft_rx_rf09_chXX_mem_b_dout;
                         fft_rx09_chXX_signal_bins_mem_wea                   <= '1';
                         fft_rx09_chXX_rowsum_accum_ce                       <= '1';
                         
                         -- Next address preparation
                         fft_rx09_chXX_signal_bins_mem_addra_Int             := fft_rx09_chXX_signal_bins_mem_addra_Int + 1;
                         
-                    elsif (34 < post_fft_rx09_mem_addrb_Int) then
+                    elsif (34 < TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int) then
                         -- End of loop
                         fft_rx09_chXX_signal_bins_mem_dina                  <= (others => '0');
                         fft_rx09_chXX_signal_bins_mem_wea                   <= '0';
@@ -194,7 +199,7 @@ begin
                     end if;
                     
                     -- RAM Loop footer
-                    post_fft_rx09_mem_addrb_Int                             := post_fft_rx09_mem_addrb_Int + 1;
+                    TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int                := TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int + 1;
                     
                 when sum_ws1 =>
                     fft_rx09_chXX_averaging_factor_div_divisor_tvalid       <= '0';
@@ -210,7 +215,7 @@ begin
                     end if;
                     
                 when correction_init =>
-                    fft_rx09_chXX_signal_bins_mem_addra_Int                 := to_integer(unsigned(post_fft_rx09_mem_addra(15 downto 10)) & "00000");
+                    fft_rx09_chXX_signal_bins_mem_addra_Int                 := to_integer(unsigned(TRX_post_fft_rx_rf09_mem_a_addr(15 downto 10)) & "00000");
                     read_write_loopCtr                                      <= 0;
                     fft_rx09_chXX_signal_correction_mult_ce                 <= '1';
                     
@@ -268,7 +273,7 @@ begin
                         initial_loopCtr <= initial_loopCtr - 1;
                     else
                         -- Hand shaking point
-                        fft_rx09_chXX_frame_avail_ctr                       <= post_fft_rx09_mem_addra(41 downto 10);
+                        fft_rx09_chXX_frame_avail_ctr                       <= TRX_post_fft_rx_rf09_mem_a_addr(41 downto 10);
                     end if;
                     
                     state := loop_start;

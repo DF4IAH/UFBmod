@@ -42,16 +42,16 @@ entity Decoder_rx09_to_FIFO_FSM is
     reset_100MHz                                    : in  STD_LOGIC;
     
     -- Decoder message Mem-B
-    decoder_rx09_chXX_msg_mem_b_addr                : out STD_LOGIC_VECTOR ( 7 downto 0);
-    decoder_rx09_chXX_msg_mem_b_din                 : in  STD_LOGIC_VECTOR ( 7 downto 0);
+    decoder_rx09_ch00_msg_mem_b_addr                : out STD_LOGIC_VECTOR ( 7 downto 0);
+    decoder_rx09_ch00_msg_mem_b_din                 : in  STD_LOGIC_VECTOR ( 7 downto 0);
     
     -- Decoder <--> FIFO-Mgr handshake
-    decoder_rx09_chXX_FIFO_handshake                : in  STD_LOGIC;
-    decoder_rx09_chXX_FIFO_accepted                 : out STD_LOGIC;
+    decoder_rx09_ch00_FIFO_handshake                : in  STD_LOGIC;
+    decoder_rx09_ch00_FIFO_accepted                 : out STD_LOGIC;
     
     -- FIFO-Mgr <--> FIFO
-    TRX_PUSHDATA_din                                : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    TRX_PUSHDATA_wr_en                              : out STD_LOGIC
+    TRX_pushdata_rx_rf09_chXX_din                   : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_pushdata_rx_rf09_chXX_wr_en                 : out STD_LOGIC
   );
 end Decoder_rx09_to_FIFO_FSM;
 
@@ -63,61 +63,99 @@ begin
   -- UFBmod decoder for the RF09 receiver
   proc_Decoder_rx09_to_FIFO: process (clk_100MHz, reset_100MHz)
     type StateType                                  is (
-                                                        init, loop_start, pushdata_loop_begin, pushdata_loop_transfer
+                                                        init,
+                                                        handshake_wait,
+                                                        read_length_prep, read_length_ws1, read_length_get,
+                                                        pushdata_loop_begin,
+                                                        pushdata_loop_read_prep, pushdata_loop_read_ws1, pushdata_loop_read_get,
+                                                        pushdata_loop_end
                                                     );
     variable state                                  : StateType;
     
-  --variable initialLoopIdx                         : Integer  range 0 to (2**4  - 1);
-  --variable watchdogIdx                            : Integer  range 0 to (2**17 - 1);
-  --variable historyLoopIdx                         : Integer  range 0 to (2**4  - 1);
-  --variable fftLoopIdx                             : Integer  range 0 to (2**8  - 1);
-    
+    variable dual_ram_Int                           : Integer  range 0 to (2**8  - 1);
     variable loopCnt                                : Integer  range 0 to (2**8  - 1);
   begin
     if (clk_100MHz'EVENT and clk_100MHz = '1') then
         if (reset_100MHz = '1') then
             loopCnt                                 := 0;
-            decoder_rx09_chXX_FIFO_accepted         <= '0';
-            TRX_PUSHDATA_din                        <= (others => '0');
-            TRX_PUSHDATA_wr_en                      <= '0';
+            decoder_rx09_ch00_FIFO_accepted         <= '0';
+            
+            decoder_rx09_ch00_msg_mem_b_addr        <= (others => '0');
+            
+            TRX_pushdata_rx_rf09_chXX_din           <= (others => '0');
+            TRX_pushdata_rx_rf09_chXX_wr_en         <= '0';
             
             state                                   := init;
             
         else
             case state is
                 when init =>
-                    loopCnt                                 := 0;
-                    decoder_rx09_chXX_FIFO_accepted         <= '0';
-                    TRX_PUSHDATA_din                        <= (others => '0');
-                    TRX_PUSHDATA_wr_en                      <= '0';
+                    loopCnt                             := 0;
+                    decoder_rx09_ch00_FIFO_accepted     <= '0';
                     
-                    state := loop_start;
+                    decoder_rx09_ch00_msg_mem_b_addr    <= (others => '0');
+                    
+                    TRX_pushdata_rx_rf09_chXX_din       <= (others => '0');
+                    TRX_pushdata_rx_rf09_chXX_wr_en     <= '0';
+                    
+                    state := handshake_wait;
                     
                 -- Loop entry point
-                when loop_start =>
-                    if (decoder_rx09_chXX_FIFO_handshake = '1') then
-                        decoder_rx09_chXX_FIFO_accepted <= '1';
+                when handshake_wait =>
+                    if (decoder_rx09_ch00_FIFO_handshake = '1') then
+                        decoder_rx09_ch00_FIFO_accepted <= '1';
                         
-                        state := pushdata_loop_begin;
+                        state := read_length_prep;
                     end if;
                     
-                when pushdata_loop_begin =>
+                when read_length_prep =>
+                    -- Length of the message
+                    dual_ram_Int := 0;
+                    decoder_rx09_ch00_msg_mem_b_addr    <= std_logic_vector(to_unsigned(dual_ram_Int, decoder_rx09_ch00_msg_mem_b_addr'length));
                     
-                    if (loopCnt /= 0) then
-                        loopCnt := loopCnt - 1;
-                        
-                        state := pushdata_loop_transfer;
-                    else
-                        
-                        state := loop_start;
-                    end if;
+                    state := read_length_ws1;
                     
-                when pushdata_loop_transfer =>
+                when read_length_ws1 =>
+                    state := read_length_get;
+                    
+                when read_length_get =>
+                    loopCnt := to_integer(unsigned(decoder_rx09_ch00_msg_mem_b_din));
                     
                     state := pushdata_loop_begin;
                     
+                when pushdata_loop_begin =>
+                    if (loopCnt = 0) then
+                        state := init;
+                    else
+                        loopCnt         := loopCnt      - 1;
+                        dual_ram_Int    := dual_ram_Int + 1;
+                        
+                        state := pushdata_loop_read_prep;
+                    end if;
+                    
+                when pushdata_loop_read_prep =>
+                    decoder_rx09_ch00_msg_mem_b_addr     <= std_logic_vector(to_unsigned(dual_ram_Int, decoder_rx09_ch00_msg_mem_b_addr'length));
+                    
+                    state := pushdata_loop_read_ws1;
+                    
+                when pushdata_loop_read_ws1 =>
+                    state := pushdata_loop_read_get;
+                    
+                when pushdata_loop_read_get =>
+                    TRX_pushdata_rx_rf09_chXX_din   <= decoder_rx09_ch00_msg_mem_b_din;
+                    TRX_pushdata_rx_rf09_chXX_wr_en <= '1';
+                    
+                    state := pushdata_loop_end;
+                    
+                when pushdata_loop_end =>
+                    TRX_pushdata_rx_rf09_chXX_wr_en <= '0';
+                    
+                    state := pushdata_loop_begin;
+                    
+                    
                 when others =>
                     state := init;
+                    
             end case;   -- state
         end if;
     end if;

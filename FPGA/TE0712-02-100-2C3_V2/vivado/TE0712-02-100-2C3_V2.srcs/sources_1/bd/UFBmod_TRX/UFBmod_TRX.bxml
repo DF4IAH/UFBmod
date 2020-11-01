@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="UFBmod_TRX" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1604012677"/>
-    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1604012677"/>
-    <Generation Name="SIMULATION" State="RESET" Timestamp="1604012677"/>
-    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1604012677"/>
+    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1604250879"/>
+    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1604250879"/>
+    <Generation Name="SIMULATION" State="RESET" Timestamp="1604250879"/>
+    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1604250879"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\UFBmod_TRX_TRX_proc_sys_reset_0_1\UFBmod_TRX_TRX_proc_sys_reset_0_1.xci" Type="IP">
         <Instance HierarchyPath="TRX_proc_sys_reset_0"/>
@@ -456,7 +456,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\UFBmod_TRX_post_fft_rx09_blk_mem_gen_0_1\UFBmod_TRX_post_fft_rx09_blk_mem_gen_0_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX_rx_FFT_unit/post_fft_rx09_blk_mem_gen_0"/>
+        <Instance HierarchyPath="TRX_rx_FFT_unit/post_fft_rx09_ch00_blk_mem_gen_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -480,7 +480,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\UFBmod_TRX_post_fft_rx09_xlslice_9downto0_1\UFBmod_TRX_post_fft_rx09_xlslice_9downto0_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX_rx_FFT_unit/post_fft_rx09_xlslice_9downto0"/>
+        <Instance HierarchyPath="TRX_rx_FFT_unit/post_fft_rx09_xlslice_9to0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -905,6 +905,86 @@
       </File>
       <File Name="ip\UFBmod_TRX_TRX_CDC_dds_tx0_xlconcat_0_1\UFBmod_TRX_TRX_CDC_dds_tx0_xlconcat_0_1.xci" Type="IP">
         <Instance HierarchyPath="TRX_tx_DDS_unit/TRX_CDC_dds_tx0_xlconcat_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_TRX_xlslice_0_0\UFBmod_TRX_xlslice_0_0.xci" Type="IP">
+        <Instance HierarchyPath="TRX_rx_FFT_unit/post_fft_rx09_ch00_xlslice_4to0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_TRX_TRX_post_fft_rx09_ad_0_0\UFBmod_TRX_TRX_post_fft_rx09_ad_0_0.xci" Type="IP">
+        <Instance HierarchyPath="TRX_rx_FFT_unit/TRX_post_fft_rx09_decoder_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_TRX_xlslice_0_1\UFBmod_TRX_xlslice_0_1.xci" Type="IP">
+        <Instance HierarchyPath="TRX_rx_FFT_unit/TRX_post_fft_rx09_xlslice_9to5"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_0\UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_0.xci" Type="IP">
+        <Instance HierarchyPath="TRX_rx_FFT_unit/post_fft_rx09_ch01_blk_mem_gen"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_1\UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_1.xci" Type="IP">
+        <Instance HierarchyPath="TRX_rx_FFT_unit/post_fft_rx09_ch02_blk_mem_gen"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_2\UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_2.xci" Type="IP">
+        <Instance HierarchyPath="TRX_rx_FFT_unit/post_fft_rx09_ch03_blk_mem_gen"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_3\UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_3.xci" Type="IP">
+        <Instance HierarchyPath="TRX_rx_FFT_unit/post_fft_rx09_ch04_blk_mem_gen"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_4\UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_4.xci" Type="IP">
+        <Instance HierarchyPath="TRX_rx_FFT_unit/post_fft_rx09_ch05_blk_mem_gen"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_5\UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_5.xci" Type="IP">
+        <Instance HierarchyPath="TRX_rx_FFT_unit/post_fft_rx09_ch06_blk_mem_gen"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_6\UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_6.xci" Type="IP">
+        <Instance HierarchyPath="TRX_rx_FFT_unit/post_fft_rx09_ch07_blk_mem_gen"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

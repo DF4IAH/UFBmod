@@ -69,7 +69,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>post_fft_rx09_mem_a_EoT</spirit:name>
+        <spirit:name>TRX_post_fft_rx_rf09_mem_a_EoT</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -81,7 +81,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>post_fft_rx09_mem_addra</spirit:name>
+        <spirit:name>TRX_post_fft_rx_rf09_mem_a_addr</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
@@ -97,7 +97,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>post_fft_rx09_mem_addrb</spirit:name>
+        <spirit:name>TRX_post_fft_rx_rf09_chXX_mem_b_addr</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -113,7 +113,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>post_fft_rx09_mem_doutb</spirit:name>
+        <spirit:name>TRX_post_fft_rx_rf09_chXX_mem_b_dout</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
