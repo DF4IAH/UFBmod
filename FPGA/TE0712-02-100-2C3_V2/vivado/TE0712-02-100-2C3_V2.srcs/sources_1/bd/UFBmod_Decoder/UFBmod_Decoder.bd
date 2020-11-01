@@ -1490,26 +1490,32 @@
                   }
                 }
               },
-              "decoder_rx09_ch00_msg_mem_b_addr": {
+              "decoder_rx09_chXX_msg_mem_b_addr": {
                 "direction": "O",
                 "left": "7",
                 "right": "0"
               },
-              "decoder_rx09_ch00_msg_mem_b_din": {
+              "decoder_rx09_chXX_msg_mem_b_din": {
                 "direction": "I",
                 "left": "7",
                 "right": "0"
               },
-              "decoder_rx09_ch00_FIFO_handshake": {
+              "decoder_rx09_chXX_FIFO_handshake": {
                 "direction": "I"
               },
-              "decoder_rx09_ch00_FIFO_accepted": {
+              "decoder_rx09_chXX_FIFO_accepted": {
                 "direction": "O"
               },
               "TRX_pushdata_rx_rf09_chXX_din": {
                 "direction": "O",
                 "left": "7",
-                "right": "0"
+                "right": "0",
+                "parameters": {
+                  "LAYERED_METADATA": {
+                    "value": "",
+                    "value_src": "weak"
+                  }
+                }
               },
               "TRX_pushdata_rx_rf09_chXX_wr_en": {
                 "direction": "O"
@@ -1532,36 +1538,38 @@
           },
           "TRX_decoder_rx_rf09_chXX_msg_mem_b_addr_0": {
             "ports": [
-              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_ch00_msg_mem_b_addr",
+              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_chXX_msg_mem_b_addr",
               "TRX_decoder_rx_rf09_chXX_msg_mem_b_addr"
             ]
           },
           "TRX_decoder_rx_rf09_chXX_FIFO_accepted_0": {
             "ports": [
-              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_ch00_FIFO_accepted",
+              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_chXX_FIFO_accepted",
               "TRX_decoder_rx_rf09_chXX_FIFO_accepted"
             ]
           },
           "TRX_decoder_rx_rf09_chXX_FIFO_handshake_0": {
             "ports": [
               "TRX_decoder_rx_rf09_chXX_FIFO_handshake",
-              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_ch00_FIFO_handshake"
+              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_chXX_FIFO_handshake"
             ]
           },
           "TRX_pushdata_rx_rf09_chXX_din_0": {
             "ports": [
+              "Decoder_rx09_to_FIFO_FSM/TRX_pushdata_rx_rf09_chXX_din",
               "TRX_pushdata_rx_rf09_chXX_din"
             ]
           },
           "TRX_pushdata_rx_rf09_chXX_wr_en_0": {
             "ports": [
+              "Decoder_rx09_to_FIFO_FSM/TRX_pushdata_rx_rf09_chXX_wr_en",
               "TRX_pushdata_rx_rf09_chXX_wr_en"
             ]
           },
           "TRX_decoder_rx_rf09_chXX_msg_mem_b_dout_0": {
             "ports": [
               "TRX_decoder_rx_rf09_chXX_msg_mem_b_din",
-              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_ch00_msg_mem_b_din"
+              "Decoder_rx09_to_FIFO_FSM/decoder_rx09_chXX_msg_mem_b_din"
             ]
           }
         }

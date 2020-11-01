@@ -69,7 +69,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>decoder_rx09_ch00_msg_mem_b_addr</spirit:name>
+        <spirit:name>decoder_rx09_chXX_msg_mem_b_addr</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -85,7 +85,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>decoder_rx09_ch00_msg_mem_b_din</spirit:name>
+        <spirit:name>decoder_rx09_chXX_msg_mem_b_din</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
@@ -101,7 +101,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>decoder_rx09_ch00_FIFO_handshake</spirit:name>
+        <spirit:name>decoder_rx09_chXX_FIFO_handshake</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -113,7 +113,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>decoder_rx09_ch00_FIFO_accepted</spirit:name>
+        <spirit:name>decoder_rx09_chXX_FIFO_accepted</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
