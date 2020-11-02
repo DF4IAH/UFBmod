@@ -60,6 +60,7 @@ entity top is
     RMII_PHY_M_0_rxd                                    : in    STD_LOGIC_VECTOR (  1 downto 0 );
     RMII_PHY_M_0_tx_en                                  : out   STD_LOGIC;
     RMII_PHY_M_0_txd                                    : out   STD_LOGIC_VECTOR (  1 downto 0 );
+    TRX_clk_26MHz                                       : in    STD_LOGIC;
     TRX_PLL_clk_25MHz_p                                 : out   STD_LOGIC;
     TRX_PLL_clk_25MHz_n                                 : out   STD_LOGIC;
     TRX_int                                             : in    STD_LOGIC;
@@ -303,6 +304,7 @@ architecture STRUCTURE of top is
     decoder_rx09_ch00_strength : in STD_LOGIC_VECTOR ( 18 downto 0 );
     microblaze_0_Clk_100MHz : out STD_LOGIC;
     mig_7series_0_mmcm_locked : out STD_LOGIC;
+    mig_7series_0_ui_addn_clk_0_200MHz : out STD_LOGIC;
     mig_7series_0_ui_clk_sync_rst : out STD_LOGIC;
     phy_rst_n : out STD_LOGIC;
     premem_rx09_dina_in : in STD_LOGIC_VECTOR ( 25 downto 0 );
@@ -779,7 +781,6 @@ architecture STRUCTURE of top is
   signal top_TRX_M20_AXI_wstrb : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal top_TRX_M20_AXI_wvalid : STD_LOGIC;
   
-  signal top_TRX_clk_26MHz : STD_LOGIC;
   signal top_TRX_clk_trx_26MHz_vio : STD_LOGIC;
   signal top_TRX_clk_trx_pll_25MHz_vio : STD_LOGIC;
   
@@ -1076,7 +1077,7 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       TRX_PUSHDATA_din                                      => top_TRX_pushdata_rx_rf09_ch00_din,
       TRX_PUSHDATA_wr_en                                    => top_TRX_pushdata_rx_rf09_ch00_wr_en,
       TRX_TX_RF09_PULLDATA_FIFO_empty                       => top_TRX_pulldata_tx_rf09_FIFO_empty,
-      TRX_clk_26MHz                                         => top_TRX_clk_26MHz,
+      TRX_clk_26MHz                                         => TRX_clk_26MHz,
       TRX_clk_trx_26MHz_vio                                 => top_TRX_clk_trx_26MHz_vio,
       TRX_clk_trx_pll_25MHz_vio                             => top_TRX_clk_trx_pll_25MHz_vio,
       TRX_data_count                                        => top_TRX_data_count,
@@ -1425,6 +1426,7 @@ msys_bd: component msys_wrapper
       decoder_rx09_ch00_strength                            => top_TRX_decoder_rx_rf09_ch00_strength,
       microblaze_0_Clk_100MHz                               => top_microblaze_0_Clk_100MHz,
       mig_7series_0_mmcm_locked                             => top_mig_7series_0_mmcm_locked,
+      mig_7series_0_ui_addn_clk_0_200MHz                    => top_mig_7series_0_ui_addn_clk_0_200MHz,
       mig_7series_0_ui_clk_sync_rst                         => top_mig_7series_0_ui_clk_sync_rst,
       phy_rst_n                                             => phy_rst_n,
       premem_rx09_dina_in                                   => top_TRX_pre_fft_rx_rf09_mem_a_din,
