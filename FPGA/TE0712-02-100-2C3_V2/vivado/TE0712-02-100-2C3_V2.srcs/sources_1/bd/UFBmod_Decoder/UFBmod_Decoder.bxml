@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="UFBmod_Decoder" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1604270942"/>
-    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1604270942"/>
-    <Generation Name="SIMULATION" State="RESET" Timestamp="1604270942"/>
-    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1604270942"/>
+    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1604315119"/>
+    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1604315119"/>
+    <Generation Name="SIMULATION" State="RESET" Timestamp="1604315119"/>
+    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1604315119"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\UFBmod_Decoder_signal_bins_rx09_ch00_blk_mem_gen_2clks_0\UFBmod_Decoder_signal_bins_rx09_ch00_blk_mem_gen_2clks_0.xci" Type="IP">
         <Instance HierarchyPath="FFT_rx09_chXX_to_Decoder/FFT_rx_rf09_chXX_signal_bins_blk_mem_gen_2clks"/>

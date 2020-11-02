@@ -3015,16 +3015,16 @@
           }
         },
         "interface_nets": {
-          "rx_clk_CD064": {
-            "interface_ports": [
-              "TRX_rx_clk_64MHz",
-              "TRX_LVDS_selectio_wiz_0/diff_clk_in"
-            ]
-          },
           "Conn4": {
             "interface_ports": [
               "TRX_tx_clk",
               "TRX_LVDS_selectio_wiz_0/diff_clk_to_pins"
+            ]
+          },
+          "rx_clk_CD064": {
+            "interface_ports": [
+              "TRX_rx_clk_64MHz",
+              "TRX_LVDS_selectio_wiz_0/diff_clk_in"
             ]
           }
         },
@@ -5737,10 +5737,10 @@
           }
         },
         "interface_nets": {
-          "S_AXI_gpio_0": {
+          "S_AXI_spi_0": {
             "interface_ports": [
-              "S_AXI_gpio",
-              "axi_TRX_gpio_0/S_AXI"
+              "S_AXI_spi",
+              "TRX_axi_quad_spi_0/AXI_LITE"
             ]
           },
           "Conn2": {
@@ -5749,10 +5749,10 @@
               "TRX_axi_quad_spi_0/SPI_0"
             ]
           },
-          "S_AXI_spi_0": {
+          "S_AXI_gpio_0": {
             "interface_ports": [
-              "S_AXI_spi",
-              "TRX_axi_quad_spi_0/AXI_LITE"
+              "S_AXI_gpio",
+              "axi_TRX_gpio_0/S_AXI"
             ]
           }
         },
@@ -7374,28 +7374,22 @@
           "TRX_tx_DDS_unit/S_AXI"
         ]
       },
-      "TRX_rx_clk_64MHz_1": {
-        "interface_ports": [
-          "TRX_rx_clk_64MHz",
-          "TRX_LVDS/TRX_rx_clk_64MHz"
-        ]
-      },
       "S_AXI_gpio_1": {
         "interface_ports": [
           "S12_AXI_gpio",
           "TRX_config/S_AXI_gpio"
         ]
       },
-      "S_AXI_1": {
+      "TRX_rx_clk_64MHz_1": {
         "interface_ports": [
-          "S19_AXI",
-          "TRX_tx_DDS_unit/S_AXI1"
+          "TRX_rx_clk_64MHz",
+          "TRX_LVDS/TRX_rx_clk_64MHz"
         ]
       },
-      "TRX_TRX_spi": {
+      "S_AXI_spi_1": {
         "interface_ports": [
-          "TRX_spi",
-          "TRX_config/TRX_spi"
+          "S11_AXI_spi",
+          "TRX_config/S_AXI_spi"
         ]
       },
       "TRX_TRX_tx_clk": {
@@ -7404,10 +7398,16 @@
           "TRX_LVDS/TRX_tx_clk"
         ]
       },
-      "S_AXI_spi_1": {
+      "TRX_TRX_spi": {
         "interface_ports": [
-          "S11_AXI_spi",
-          "TRX_config/S_AXI_spi"
+          "TRX_spi",
+          "TRX_config/TRX_spi"
+        ]
+      },
+      "S_AXI_1": {
+        "interface_ports": [
+          "S19_AXI",
+          "TRX_tx_DDS_unit/S_AXI1"
         ]
       },
       "S_AXI1_1": {
@@ -7467,13 +7467,13 @@
           "TRX_LVDS/reset_CD100_i"
         ]
       },
-      "TRX_rx_rf09_data_p_0": {
+      "TRX_rx_data_p_0": {
         "ports": [
           "TRX_rx_data_p",
           "TRX_LVDS/TRX_rx_data_p"
         ]
       },
-      "TRX_rx_rf09_data_n_0": {
+      "TRX_rx_data_n_0": {
         "ports": [
           "TRX_rx_data_n",
           "TRX_LVDS/TRX_rx_data_n"
