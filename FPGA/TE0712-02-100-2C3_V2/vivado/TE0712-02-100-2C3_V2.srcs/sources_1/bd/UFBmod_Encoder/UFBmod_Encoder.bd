@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xEF9B4DA1DCCACC63",
+      "boundary_crc": "0xF94183B6DB8C2AD7",
       "device": "xc7a100tfgg484-2",
       "name": "UFBmod_Encoder",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -55,12 +55,6 @@
           }
         }
       },
-      "decoder_rx09_sql_open": {
-        "direction": "I"
-      },
-      "decoder_rx09_active": {
-        "direction": "I"
-      },
       "encoder_pull_FIFO_dump": {
         "direction": "I"
       },
@@ -108,6 +102,16 @@
             "value_src": "default"
           }
         }
+      },
+      "decoder_rx09_chAll_sql_open": {
+        "direction": "I",
+        "left": "7",
+        "right": "0"
+      },
+      "decoder_rx09_chAll_active": {
+        "direction": "I",
+        "left": "7",
+        "right": "0"
       }
     },
     "components": {
@@ -148,11 +152,15 @@
               }
             }
           },
-          "decoder_rx09_sql_open": {
-            "direction": "I"
+          "decoder_rx09_chAll_sql_open": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
           },
-          "decoder_rx09_active": {
-            "direction": "I"
+          "decoder_rx09_chAll_active": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
           },
           "encoder_pull_FIFO_dump": {
             "direction": "I"
@@ -215,18 +223,6 @@
           "UFBmod_tx09_Encoder_0/reset"
         ]
       },
-      "decoder_rx09_sql_open_0": {
-        "ports": [
-          "decoder_rx09_sql_open",
-          "UFBmod_tx09_Encoder_0/decoder_rx09_sql_open"
-        ]
-      },
-      "decoder_rx09_active_0": {
-        "ports": [
-          "decoder_rx09_active",
-          "UFBmod_tx09_Encoder_0/decoder_rx09_active"
-        ]
-      },
       "encoder_pull_FIFO_dump_0": {
         "ports": [
           "encoder_pull_FIFO_dump",
@@ -267,6 +263,18 @@
         "ports": [
           "UFBmod_tx09_Encoder_0/dds_tx09_inc",
           "dds_tx09_inc"
+        ]
+      },
+      "decoder_rx09_chAll_sql_open_1": {
+        "ports": [
+          "decoder_rx09_chAll_sql_open",
+          "UFBmod_tx09_Encoder_0/decoder_rx09_chAll_sql_open"
+        ]
+      },
+      "decoder_rx09_chAll_active_1": {
+        "ports": [
+          "decoder_rx09_chAll_active",
+          "UFBmod_tx09_Encoder_0/decoder_rx09_chAll_active"
         ]
       }
     }

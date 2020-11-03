@@ -72,6 +72,9 @@ set_false_path -from [get_clocks -of_objects [get_pins UFBmod_TRX_bd/UFBmod_TRX_
 set_false_path -from [get_clocks TRX_rx_clk_64MHz_clk_p] -to [get_clocks CFGMCLK]
 set_false_path -from [get_clocks TRX_rx_clk_64MHz_clk_p] -to [get_clocks CLK0_clk_p]
 
+# CFG/CLKMCLK_PLL_65MHz_vio
+set_false_path -from [get_clocks -of_objects [get_pins msys_bd/msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT]] -to [get_clocks -of_objects [get_pins msys_bd/msys_i/CFG/CFG_clk_wiz_0/inst/plle2_adv_inst/CLKOUT1]]
+
 set _xlnx_shared_i0  [get_pins {msys_bd/msys_i/vio_0/inst/PROBE_IN_INST/probe_in_reg_reg[*]/D}]
 set_false_path -from [get_pins {msys_bd/msys_i/labtools_fmeter_0/U0/F_reg[*]/C}] -to $_xlnx_shared_i0
 set_false_path -from [get_pins  msys_bd/msys_i/labtools_fmeter_0/U0/COUNTER_REFCLK_inst/bl.DSP48E_2/CLK] -to $_xlnx_shared_i0

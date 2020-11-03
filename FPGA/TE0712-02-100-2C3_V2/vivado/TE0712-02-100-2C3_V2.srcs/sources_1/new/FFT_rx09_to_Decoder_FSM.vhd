@@ -35,41 +35,59 @@ use IEEE.NUMERIC_STD.ALL;
 --use IEEE.std_logic_signed.all;
 
 
+-- LO-Frequency = 866.975 000 MHz   -   offset idx 016 = + 0.062 500 MHz
+--
+-- ch 00	idx 016 .. idx 047			867.037500 MHz .. 867.162500 MHz		-	center frequency: 867.100 MHz
+-- ch 01	idx 067 .. idx 098			867.237500 MHz .. 867.362500 MHz		-	center frequency: 867.300 MHz
+-- ch 02	idx 118 .. idx 149			867.437500 MHz .. 867.562500 MHz		-	center frequency: 867.500 MHz
+-- ch 03	idx 170 .. idx 201			867.637500 MHz .. 867.762500 MHz		-	center frequency: 867.700 MHz
+-- ch 04	idx 221 .. idx 252			867.837500 MHz .. 867.962500 MHz		-	center frequency: 867.900 MHz
+-- ch 05	idx 272 .. idx 303			868.037500 MHz .. 868.162500 MHz		-	center frequency: 868.100 MHz
+-- ch 06	idx 323 .. idx 354			868.237500 MHz .. 868.362500 MHz		-	center frequency: 868.300 MHz
+-- ch 07	idx 374 .. idx 405			868.437500 MHz .. 868.562500 MHz		-	center frequency: 868.500 MHz
+
+
 entity FFT_rx09_to_Decoder_FSM is
   Port (
     -- All Clock Domain AXI 100 MHz
-    clk_100MHz                                          : in  STD_LOGIC;
-    reset_100MHz                                        : in  STD_LOGIC;
+    clk_100MHz                                          : in    STD_LOGIC;
+    reset_100MHz                                        : in    STD_LOGIC;
     
-    TRX_post_fft_rx_rf09_mem_a_EoT                      : in  STD_LOGIC;
-    TRX_post_fft_rx_rf09_mem_a_addr                     : in  STD_LOGIC_VECTOR(41 downto 0);
+    TRX_channel_rx_rf09_id                              : in    STD_LOGIC_VECTOR(  2 downto 0 );
     
-    TRX_post_fft_rx_rf09_chXX_mem_b_addr                : out STD_LOGIC_VECTOR( 4 downto 0);
-    TRX_post_fft_rx_rf09_chXX_mem_b_dout                : in  STD_LOGIC_VECTOR(15 downto 0);
+    TRX_post_fft_rx_rf09_mem_a_EoT                      : in    STD_LOGIC;
+    TRX_post_fft_rx_rf09_mem_a_addr                     : in    STD_LOGIC_VECTOR( 41 downto 0 );
     
-    fft_rx09_chXX_rowsum_accum_sclr                     : out STD_LOGIC;
-    fft_rx09_chXX_rowsum_accum_ce                       : out STD_LOGIC;
+    TRX_post_fft_rx_rf09_chXX_mem_b_addr                : out   STD_LOGIC_VECTOR(  4 downto 0 );
+    TRX_post_fft_rx_rf09_chXX_mem_b_dout                : in    STD_LOGIC_VECTOR( 15 downto 0 );
+    
+    fft_rx09_chXX_rowsum_accum_sclr                     : out   STD_LOGIC;
+    fft_rx09_chXX_rowsum_accum_ce                       : out   STD_LOGIC;
 
-    fft_rx09_chXX_averaging_factor_div_aclken           : out STD_LOGIC;
-    fft_rx09_chXX_averaging_factor_div_dout_tvalid      : in  STD_LOGIC;
-    fft_rx09_chXX_averaging_factor_div_divisor_tvalid   : out STD_LOGIC;
+    fft_rx09_chXX_averaging_factor_div_aclken           : out   STD_LOGIC;
+    fft_rx09_chXX_averaging_factor_div_dout_tvalid      : in    STD_LOGIC;
+    fft_rx09_chXX_averaging_factor_div_divisor_tvalid   : out   STD_LOGIC;
     
-    fft_rx09_chXX_signal_correction_mult_ce             : out STD_LOGIC;
-    fft_rx09_chXX_signal_correction_mult_ina            : out STD_LOGIC_VECTOR(15 downto 0);
-    fft_rx09_chXX_signal_correction_mult_prod           : in  STD_LOGIC_VECTOR(15 downto 0);
+    fft_rx09_chXX_signal_correction_mult_ce             : out   STD_LOGIC;
+    fft_rx09_chXX_signal_correction_mult_ina            : out   STD_LOGIC_VECTOR( 15 downto 0 );
+    fft_rx09_chXX_signal_correction_mult_prod           : in    STD_LOGIC_VECTOR( 15 downto 0 );
     
     -- Signal_bins  port-A
-    fft_rx09_chXX_signal_bins_mem_addra                 : out STD_LOGIC_VECTOR(10 downto 0);  -- 64 rows (6 bit) x 32 bins (5 bits)
-    fft_rx09_chXX_signal_bins_mem_dina                  : out STD_LOGIC_VECTOR(15 downto 0);
-    fft_rx09_chXX_signal_bins_mem_douta                 : in  STD_LOGIC_VECTOR(15 downto 0);
-    fft_rx09_chXX_signal_bins_mem_wea                   : out STD_LOGIC;
+    fft_rx09_chXX_signal_bins_mem_addra                 : out   STD_LOGIC_VECTOR( 10 downto 0 );  -- 64 rows (6 bit) x 32 bins (5 bits)
+    fft_rx09_chXX_signal_bins_mem_dina                  : out   STD_LOGIC_VECTOR( 15 downto 0 );
+    fft_rx09_chXX_signal_bins_mem_douta                 : in    STD_LOGIC_VECTOR( 15 downto 0 );
+    fft_rx09_chXX_signal_bins_mem_wea                   : out   STD_LOGIC;
     
-    fft_rx09_chXX_frame_avail_ctr                       : out STD_LOGIC_VECTOR(31 downto 0)
+    fft_rx09_chXX_frame_avail_ctr                       : out   STD_LOGIC_VECTOR( 31 downto 0 )
   );
 end FFT_rx09_to_Decoder_FSM;
 
 
 architecture Behavioral of FFT_rx09_to_Decoder_FSM is
+--constant C_RX_LO_frequency                            : Integer := 866975000;
+  
+  type     T_RX_bin_ofs_ary                             is array (0 to 7) of Integer range 0 to (2**9);
+  constant C_RX_bin_ofs                                 : T_RX_bin_ofs_ary := ( 16, 67, 118, 170, 221, 272, 323, 374 );
   
   signal read_write_loopCtr                             : Integer  range 0 to (2**5  - 1);
   signal initial_loopCtr                                : Integer  range 0 to (2**6  - 1);
@@ -165,7 +183,7 @@ begin
                     -- Request data from RAM (latency: 2 clocks
                     if (TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int < 32) then
                         -- Time span of RAM read-out
-                        TRX_post_fft_rx_rf09_chXX_mem_b_addr                <= std_logic_vector(to_unsigned(TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int, TRX_post_fft_rx_rf09_chXX_mem_b_addr'length));
+                        TRX_post_fft_rx_rf09_chXX_mem_b_addr                <= std_logic_vector(to_unsigned((TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int + C_RX_bin_ofs(to_integer(unsigned(TRX_channel_rx_rf09_id)))), TRX_post_fft_rx_rf09_chXX_mem_b_addr'length));
                     else
                         -- Time span of latency
                         TRX_post_fft_rx_rf09_chXX_mem_b_addr                <= (others => '0');

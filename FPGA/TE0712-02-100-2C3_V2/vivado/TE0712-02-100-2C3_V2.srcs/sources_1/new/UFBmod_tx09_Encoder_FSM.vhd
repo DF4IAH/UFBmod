@@ -38,21 +38,21 @@ use IEEE.NUMERIC_STD.ALL;
 entity UFBmod_tx09_Encoder_FSM is
   Port (
     -- All Clock Domain AXI 100 MHz
-    reset                                           : in  STD_LOGIC;
-    clk                                             : in  STD_LOGIC;
+    reset                                           : in    STD_LOGIC;
+    clk                                             : in    STD_LOGIC;
     
-    decoder_rx09_sql_open                           : in  STD_LOGIC;
-    decoder_rx09_active                             : in  STD_LOGIC;
+    decoder_rx09_chAll_sql_open                     : in    STD_LOGIC_VECTOR(  7 downto 0 );
+    decoder_rx09_chAll_active                       : in    STD_LOGIC_VECTOR(  7 downto 0 );
     
-    encoder_pull_FIFO_dump                          : in  STD_LOGIC;
-    encoder_pull_do_start                           : in  STD_LOGIC;
-    encoder_pull_data_len                           : in  STD_LOGIC_VECTOR( 6 downto 0);
+    encoder_pull_FIFO_dump                          : in    STD_LOGIC;
+    encoder_pull_do_start                           : in    STD_LOGIC;
+    encoder_pull_data_len                           : in    STD_LOGIC_VECTOR(  6 downto 0 );
     
-    pulldata_tx09_en                                : out STD_LOGIC;
-    pulldata_tx09_byteData                          : in  STD_LOGIC_VECTOR( 7 downto 0);
+    pulldata_tx09_en                                : out   STD_LOGIC;
+    pulldata_tx09_byteData                          : in    STD_LOGIC_VECTOR(  7 downto 0 );
     
-    dds_tx09_inc                                    : out STD_LOGIC_VECTOR(25 downto 0);
-    dds_tx09_ptt                                    : out STD_LOGIC
+    dds_tx09_inc                                    : out   STD_LOGIC_VECTOR( 25 downto 0 );
+    dds_tx09_ptt                                    : out   STD_LOGIC
   );
 end UFBmod_tx09_Encoder_FSM;
 
@@ -137,7 +137,7 @@ begin
   
   
   -- UFBmod encoder for the RF09 transmitter
-  proc_UFBmod_Encoder_tx09: process (reset, clk, decoder_rx09_sql_open, decoder_rx09_active, encoder_pull_FIFO_dump, encoder_pull_do_start, encoder_pull_data_len, pulldata_tx09_byteData)
+  proc_UFBmod_Encoder_tx09: process (reset, clk, decoder_rx09_chAll_sql_open, decoder_rx09_chAll_active, encoder_pull_FIFO_dump, encoder_pull_do_start, encoder_pull_data_len, pulldata_tx09_byteData)
     constant C_pre_r00                              : Integer :=  +7;   -- 1010110100100101
     constant C_pre_r01                              : Integer := -11;
     constant C_pre_r02                              : Integer :=  +7;
@@ -288,7 +288,7 @@ begin
                     
                 when tx_init =>
                     -- Inhibit transmission when Decoder detects signal or does message decoding
-                    if ((decoder_rx09_sql_open = '0') and (decoder_rx09_active = '0')) then
+                    if ((decoder_rx09_chAll_sql_open = x"00")  and  (decoder_rx09_chAll_active = x"00")) then
                         state := tx_rampup_dds;
                         dds_tx09_ptt <= '1';
                     end if;

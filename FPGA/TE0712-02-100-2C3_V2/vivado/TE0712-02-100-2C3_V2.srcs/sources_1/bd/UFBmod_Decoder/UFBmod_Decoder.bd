@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xF7C348D0FF95A2A9",
+      "boundary_crc": "0x4699F832FB5D00D0",
       "device": "xc7a100tfgg484-2",
       "name": "UFBmod_Decoder",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -177,6 +177,24 @@
             "value_src": "default"
           }
         }
+      },
+      "TRX_pushdata_rx_rf09_chXX_req": {
+        "direction": "O"
+      },
+      "TRX_pushdata_rx_rf09_chXX_grant": {
+        "direction": "I"
+      },
+      "TRX_channel_rx_rf09_id": {
+        "type": "data",
+        "direction": "I",
+        "left": "2",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
       }
     },
     "components": {
@@ -227,6 +245,11 @@
           "TRX_fft_rx_rf09_chXX_noise": {
             "direction": "O",
             "left": "18",
+            "right": "0"
+          },
+          "TRX_channel_rx_rf09_id": {
+            "direction": "I",
+            "left": "2",
             "right": "0"
           }
         },
@@ -514,6 +537,17 @@
                   "POLARITY": {
                     "value": "ACTIVE_HIGH",
                     "value_src": "user_prop"
+                  }
+                }
+              },
+              "TRX_channel_rx_rf09_id": {
+                "direction": "I",
+                "left": "2",
+                "right": "0",
+                "parameters": {
+                  "LAYERED_METADATA": {
+                    "value": "undef",
+                    "value_src": "default_prop"
                   }
                 }
               },
@@ -831,6 +865,12 @@
             "ports": [
               "FFT_rx_rf09_chXX_to_Decoder_FSM/TRX_post_fft_rx_rf09_chXX_mem_b_addr",
               "TRX_post_rx_rf09_chXX_mem_b_addr"
+            ]
+          },
+          "TRX_channel_rx_rf09_id_1": {
+            "ports": [
+              "TRX_channel_rx_rf09_id",
+              "FFT_rx_rf09_chXX_to_Decoder_FSM/TRX_channel_rx_rf09_id"
             ]
           }
         }
@@ -1450,6 +1490,12 @@
           },
           "TRX_pushdata_rx_rf09_chXX_wr_en": {
             "direction": "O"
+          },
+          "TRX_pushdata_rx_rf09_chXX_req": {
+            "direction": "O"
+          },
+          "TRX_pushdata_rx_rf09_chXX_grant": {
+            "direction": "I"
           }
         },
         "components": {
@@ -1505,6 +1551,15 @@
               "decoder_rx09_chXX_FIFO_accepted": {
                 "direction": "O"
               },
+              "TRX_pushdata_rx_rf09_chXX_req": {
+                "direction": "O"
+              },
+              "TRX_pushdata_rx_rf09_chXX_grant": {
+                "direction": "I"
+              },
+              "TRX_pushdata_rx_rf09_chXX_wr_en": {
+                "direction": "O"
+              },
               "TRX_pushdata_rx_rf09_chXX_din": {
                 "direction": "O",
                 "left": "7",
@@ -1515,9 +1570,6 @@
                     "value_src": "weak"
                   }
                 }
-              },
-              "TRX_pushdata_rx_rf09_chXX_wr_en": {
-                "direction": "O"
               }
             }
           }
@@ -1569,6 +1621,18 @@
             "ports": [
               "TRX_decoder_rx_rf09_chXX_msg_mem_b_din",
               "Decoder_rx09_to_FIFO_FSM/decoder_rx09_chXX_msg_mem_b_din"
+            ]
+          },
+          "TRX_pushdata_rx_rf09_chXX_req_2": {
+            "ports": [
+              "Decoder_rx09_to_FIFO_FSM/TRX_pushdata_rx_rf09_chXX_req",
+              "TRX_pushdata_rx_rf09_chXX_req"
+            ]
+          },
+          "TRX_pushdata_rx_rf09_chXX_grant_2": {
+            "ports": [
+              "TRX_pushdata_rx_rf09_chXX_grant",
+              "Decoder_rx09_to_FIFO_FSM/TRX_pushdata_rx_rf09_chXX_grant"
             ]
           }
         }
@@ -1710,6 +1774,24 @@
         "ports": [
           "FFT_rx09_chXX_to_Decoder/TRX_post_rx_rf09_chXX_mem_b_addr",
           "TRX_post_fft_rx_rf09_chXX_mem_b_addr"
+        ]
+      },
+      "TRX_pushdata_rx_rf09_chXX_req_2": {
+        "ports": [
+          "Decoder_rx09_to_FIFO/TRX_pushdata_rx_rf09_chXX_req",
+          "TRX_pushdata_rx_rf09_chXX_req"
+        ]
+      },
+      "TRX_pushdata_rx_rf09_chXX_grant_2": {
+        "ports": [
+          "TRX_pushdata_rx_rf09_chXX_grant",
+          "Decoder_rx09_to_FIFO/TRX_pushdata_rx_rf09_chXX_grant"
+        ]
+      },
+      "TRX_channel_rx_rf09_id_1": {
+        "ports": [
+          "TRX_channel_rx_rf09_id",
+          "FFT_rx09_chXX_to_Decoder/TRX_channel_rx_rf09_id"
         ]
       }
     }

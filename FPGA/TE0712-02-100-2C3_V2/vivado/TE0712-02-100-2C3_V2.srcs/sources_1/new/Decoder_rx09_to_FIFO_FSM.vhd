@@ -38,20 +38,22 @@ use IEEE.NUMERIC_STD.ALL;
 entity Decoder_rx09_to_FIFO_FSM is
   Port (
     -- All Clock Domain AXI 100 MHz
-    clk_100MHz                                      : in  STD_LOGIC;
-    reset_100MHz                                    : in  STD_LOGIC;
+    clk_100MHz                                      : in    STD_LOGIC;
+    reset_100MHz                                    : in    STD_LOGIC;
     
     -- Decoder message Mem-B
-    decoder_rx09_chXX_msg_mem_b_addr                : out STD_LOGIC_VECTOR ( 7 downto 0);
-    decoder_rx09_chXX_msg_mem_b_din                 : in  STD_LOGIC_VECTOR ( 7 downto 0);
+    decoder_rx09_chXX_msg_mem_b_addr                : out   STD_LOGIC_VECTOR (  7 downto 0 );
+    decoder_rx09_chXX_msg_mem_b_din                 : in    STD_LOGIC_VECTOR (  7 downto 0 );
     
     -- Decoder <--> FIFO-Mgr handshake
-    decoder_rx09_chXX_FIFO_handshake                : in  STD_LOGIC;
-    decoder_rx09_chXX_FIFO_accepted                 : out STD_LOGIC;
+    decoder_rx09_chXX_FIFO_handshake                : in    STD_LOGIC;
+    decoder_rx09_chXX_FIFO_accepted                 : out   STD_LOGIC;
     
     -- FIFO-Mgr <--> FIFO
-    TRX_pushdata_rx_rf09_chXX_din                   : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    TRX_pushdata_rx_rf09_chXX_wr_en                 : out STD_LOGIC
+    TRX_pushdata_rx_rf09_chXX_req                   : out   STD_LOGIC;
+    TRX_pushdata_rx_rf09_chXX_grant                 : in    STD_LOGIC;
+    TRX_pushdata_rx_rf09_chXX_wr_en                 : out   STD_LOGIC;
+    TRX_pushdata_rx_rf09_chXX_din                   : out   STD_LOGIC_VECTOR (  7 downto 0 )
   );
 end Decoder_rx09_to_FIFO_FSM;
 
@@ -82,6 +84,7 @@ begin
             
             decoder_rx09_chXX_msg_mem_b_addr        <= (others => '0');
             
+            TRX_pushdata_rx_rf09_chXX_req           <= '0';
             TRX_pushdata_rx_rf09_chXX_din           <= (others => '0');
             TRX_pushdata_rx_rf09_chXX_wr_en         <= '0';
             
@@ -95,6 +98,7 @@ begin
                     
                     decoder_rx09_chXX_msg_mem_b_addr    <= (others => '0');
                     
+                    TRX_pushdata_rx_rf09_chXX_req       <= '0';
                     TRX_pushdata_rx_rf09_chXX_din       <= (others => '0');
                     TRX_pushdata_rx_rf09_chXX_wr_en     <= '0';
                     
@@ -104,8 +108,11 @@ begin
                 when handshake_wait =>
                     if (decoder_rx09_chXX_FIFO_handshake = '1') then
                         decoder_rx09_chXX_FIFO_accepted <= '1';
+                        TRX_pushdata_rx_rf09_chXX_req   <= '1';
                         
-                        state := read_length_prep;
+                        if (TRX_pushdata_rx_rf09_chXX_grant = '1') then
+                            state := read_length_prep;
+                        end if;
                     end if;
                     
                 when read_length_prep =>

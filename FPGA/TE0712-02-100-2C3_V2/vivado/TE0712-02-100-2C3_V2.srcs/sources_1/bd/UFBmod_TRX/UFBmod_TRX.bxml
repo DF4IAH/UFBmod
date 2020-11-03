@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="UFBmod_TRX" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1604323784"/>
-    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1604323784"/>
-    <Generation Name="SIMULATION" State="RESET" Timestamp="1604323784"/>
-    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1604323784"/>
+    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1604428620"/>
+    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1604428620"/>
+    <Generation Name="SIMULATION" State="RESET" Timestamp="1604428620"/>
+    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1604428620"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\UFBmod_TRX_TRX_proc_sys_reset_0_1\UFBmod_TRX_TRX_proc_sys_reset_0_1.xci" Type="IP">
         <Instance HierarchyPath="TRX_proc_sys_reset_0"/>
@@ -1001,6 +1001,14 @@
       </File>
       <File Name="ip\UFBmod_TRX_c_shift_ram_0_0\UFBmod_TRX_c_shift_ram_0_0.xci" Type="IP">
         <Instance HierarchyPath="TRX_rx_FFT_unit/PUSHDATA/pushdata_rx09_c_shift_ram_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\UFBmod_TRX_TRX_FIFO_Arbiter_0_0\UFBmod_TRX_TRX_FIFO_Arbiter_0_0.xci" Type="IP">
+        <Instance HierarchyPath="TRX_rx_FFT_unit/PUSHDATA/TRX_FIFO_Arbiter_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xAD14FF87DC1A7AF6",
+      "boundary_crc": "0x5FC29994D87D4721",
       "device": "xc7a100tfgg484-2",
       "name": "UFBmod_TRX",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -94,18 +94,19 @@
           "fifo_generator_0": "",
           "pushdata_rx09_util_reduced_logic_0": "",
           "pushdata_rx09_xlconcat_1": "",
-          "pushdata_rx09_c_shift_ram_0": ""
+          "pushdata_rx09_c_shift_ram_0": "",
+          "TRX_FIFO_Arbiter_0": ""
         },
         "post_fft_rx09_ch00_xlslice_4to0": "",
         "TRX_post_fft_rx09_xlslice_9to5": "",
-        "TRX_post_fft_rx09_decoder_0": "",
         "post_fft_rx09_ch01_blk_mem_gen": "",
         "post_fft_rx09_ch02_blk_mem_gen": "",
         "post_fft_rx09_ch03_blk_mem_gen": "",
         "post_fft_rx09_ch04_blk_mem_gen": "",
         "post_fft_rx09_ch05_blk_mem_gen": "",
         "post_fft_rx09_ch06_blk_mem_gen": "",
-        "post_fft_rx09_ch07_blk_mem_gen": ""
+        "post_fft_rx09_ch07_blk_mem_gen": "",
+        "TRX_post_fft_rx09_decoder_0": ""
       },
       "TRX_config": {
         "TRX_gpio_xlslice_31downto31_resetn_0": "",
@@ -1470,10 +1471,10 @@
           }
         }
       },
-      "TRX_PUSHDATA_wr_en": {
+      "TRX_PUSHDATA_ch00_wr_en": {
         "direction": "I"
       },
-      "TRX_PUSHDATA_din": {
+      "TRX_PUSHDATA_ch00_din": {
         "type": "data",
         "direction": "I",
         "left": "7",
@@ -1645,6 +1646,159 @@
         "type": "data",
         "direction": "O",
         "left": "15",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "TRX_PUSHDATA_ch01_wr_en": {
+        "direction": "I"
+      },
+      "TRX_PUSHDATA_ch01_din": {
+        "type": "data",
+        "direction": "I",
+        "left": "7",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "TRX_PUSHDATA_ch00_req": {
+        "direction": "I"
+      },
+      "TRX_PUSHDATA_ch01_req": {
+        "direction": "I"
+      },
+      "TRX_PUSHDATA_ch00_grant": {
+        "direction": "O"
+      },
+      "TRX_PUSHDATA_ch01_grant": {
+        "direction": "O"
+      },
+      "TRX_PUSHDATA_ch02_grant": {
+        "direction": "O"
+      },
+      "TRX_PUSHDATA_ch03_grant": {
+        "direction": "O"
+      },
+      "TRX_PUSHDATA_ch04_grant": {
+        "direction": "O"
+      },
+      "TRX_PUSHDATA_ch05_grant": {
+        "direction": "O"
+      },
+      "TRX_PUSHDATA_ch06_grant": {
+        "direction": "O"
+      },
+      "TRX_PUSHDATA_ch07_grant": {
+        "direction": "O"
+      },
+      "TRX_PUSHDATA_ch02_req": {
+        "direction": "I"
+      },
+      "TRX_PUSHDATA_ch03_req": {
+        "direction": "I"
+      },
+      "TRX_PUSHDATA_ch04_req": {
+        "direction": "I"
+      },
+      "TRX_PUSHDATA_ch05_req": {
+        "direction": "I"
+      },
+      "TRX_PUSHDATA_ch06_req": {
+        "direction": "I"
+      },
+      "TRX_PUSHDATA_ch07_req": {
+        "direction": "I"
+      },
+      "TRX_PUSHDATA_ch02_wr_en": {
+        "direction": "I"
+      },
+      "TRX_PUSHDATA_ch03_wr_en": {
+        "direction": "I"
+      },
+      "TRX_PUSHDATA_ch04_wr_en": {
+        "direction": "I"
+      },
+      "TRX_PUSHDATA_ch05_wr_en": {
+        "direction": "I"
+      },
+      "TRX_PUSHDATA_ch06_wr_en": {
+        "direction": "I"
+      },
+      "TRX_PUSHDATA_ch07_wr_en": {
+        "direction": "I"
+      },
+      "TRX_PUSHDATA_ch02_din": {
+        "type": "data",
+        "direction": "I",
+        "left": "7",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "TRX_PUSHDATA_ch03_din": {
+        "type": "data",
+        "direction": "I",
+        "left": "7",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "TRX_PUSHDATA_ch04_din": {
+        "type": "data",
+        "direction": "I",
+        "left": "7",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "TRX_PUSHDATA_ch05_din": {
+        "type": "data",
+        "direction": "I",
+        "left": "7",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "TRX_PUSHDATA_ch06_din": {
+        "type": "data",
+        "direction": "I",
+        "left": "7",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "TRX_PUSHDATA_ch07_din": {
+        "type": "data",
+        "direction": "I",
+        "left": "7",
         "right": "0",
         "parameters": {
           "LAYERED_METADATA": {
@@ -3015,16 +3169,16 @@
           }
         },
         "interface_nets": {
-          "Conn4": {
-            "interface_ports": [
-              "TRX_tx_clk",
-              "TRX_LVDS_selectio_wiz_0/diff_clk_to_pins"
-            ]
-          },
           "rx_clk_CD064": {
             "interface_ports": [
               "TRX_rx_clk_64MHz",
               "TRX_LVDS_selectio_wiz_0/diff_clk_in"
+            ]
+          },
+          "Conn4": {
+            "interface_ports": [
+              "TRX_tx_clk",
+              "TRX_LVDS_selectio_wiz_0/diff_clk_to_pins"
             ]
           }
         },
@@ -3404,6 +3558,110 @@
           "TRX_rx_rf09_ch07_Post_FFT_mem_b_dout": {
             "direction": "O",
             "left": "15",
+            "right": "0"
+          },
+          "TRX_PUSHDATA_ch00_req": {
+            "direction": "I"
+          },
+          "TRX_PUSHDATA_ch01_req": {
+            "direction": "I"
+          },
+          "TRX_PUSHDATA_ch02_req": {
+            "direction": "I"
+          },
+          "TRX_PUSHDATA_ch03_req": {
+            "direction": "I"
+          },
+          "TRX_PUSHDATA_ch04_req": {
+            "direction": "I"
+          },
+          "TRX_PUSHDATA_ch05_req": {
+            "direction": "I"
+          },
+          "TRX_PUSHDATA_ch06_req": {
+            "direction": "I"
+          },
+          "TRX_PUSHDATA_ch07_req": {
+            "direction": "I"
+          },
+          "TRX_PUSHDATA_ch00_grant": {
+            "direction": "O"
+          },
+          "TRX_PUSHDATA_ch01_grant": {
+            "direction": "O"
+          },
+          "TRX_PUSHDATA_ch02_grant": {
+            "direction": "O"
+          },
+          "TRX_PUSHDATA_ch03_grant": {
+            "direction": "O"
+          },
+          "TRX_PUSHDATA_ch04_grant": {
+            "direction": "O"
+          },
+          "TRX_PUSHDATA_ch05_grant": {
+            "direction": "O"
+          },
+          "TRX_PUSHDATA_ch06_grant": {
+            "direction": "O"
+          },
+          "TRX_PUSHDATA_ch07_grant": {
+            "direction": "O"
+          },
+          "TRX_PUSHDATA_ch01_wr_en": {
+            "direction": "I"
+          },
+          "TRX_PUSHDATA_ch02_wr_en": {
+            "direction": "I"
+          },
+          "TRX_PUSHDATA_ch03_wr_en": {
+            "direction": "I"
+          },
+          "TRX_PUSHDATA_ch04_wr_en": {
+            "direction": "I"
+          },
+          "TRX_PUSHDATA_ch05_wr_en": {
+            "direction": "I"
+          },
+          "TRX_PUSHDATA_ch06_wr_en": {
+            "direction": "I"
+          },
+          "TRX_PUSHDATA_ch07_wr_en": {
+            "direction": "I"
+          },
+          "TRX_PUSHDATA_ch01_din": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "TRX_PUSHDATA_ch02_din": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "TRX_PUSHDATA_ch03_din": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "TRX_PUSHDATA_ch04_din": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "TRX_PUSHDATA_ch05_din": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "TRX_PUSHDATA_ch06_din": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "TRX_PUSHDATA_ch07_din": {
+            "direction": "I",
+            "left": "7",
             "right": "0"
           }
         },
@@ -4379,6 +4637,110 @@
                 "direction": "I",
                 "left": "7",
                 "right": "0"
+              },
+              "TRX_PUSHDATA_ch00_req": {
+                "direction": "I"
+              },
+              "TRX_PUSHDATA_ch01_req": {
+                "direction": "I"
+              },
+              "TRX_PUSHDATA_ch02_req": {
+                "direction": "I"
+              },
+              "TRX_PUSHDATA_ch03_req": {
+                "direction": "I"
+              },
+              "TRX_PUSHDATA_ch04_req": {
+                "direction": "I"
+              },
+              "TRX_PUSHDATA_ch05_req": {
+                "direction": "I"
+              },
+              "TRX_PUSHDATA_ch06_req": {
+                "direction": "I"
+              },
+              "TRX_PUSHDATA_ch07_req": {
+                "direction": "I"
+              },
+              "TRX_PUSHDATA_ch00_grant": {
+                "direction": "O"
+              },
+              "TRX_PUSHDATA_ch01_grant": {
+                "direction": "O"
+              },
+              "TRX_PUSHDATA_ch02_grant": {
+                "direction": "O"
+              },
+              "TRX_PUSHDATA_ch03_grant": {
+                "direction": "O"
+              },
+              "TRX_PUSHDATA_ch04_grant": {
+                "direction": "O"
+              },
+              "TRX_PUSHDATA_ch05_grant": {
+                "direction": "O"
+              },
+              "TRX_PUSHDATA_ch06_grant": {
+                "direction": "O"
+              },
+              "TRX_PUSHDATA_ch07_grant": {
+                "direction": "O"
+              },
+              "TRX_PUSHDATA_ch01_wr_en": {
+                "direction": "I"
+              },
+              "TRX_PUSHDATA_ch02_wr_en": {
+                "direction": "I"
+              },
+              "TRX_PUSHDATA_ch03_wr_en": {
+                "direction": "I"
+              },
+              "TRX_PUSHDATA_ch04_wr_en": {
+                "direction": "I"
+              },
+              "TRX_PUSHDATA_ch05_wr_en": {
+                "direction": "I"
+              },
+              "TRX_PUSHDATA_ch06_wr_en": {
+                "direction": "I"
+              },
+              "TRX_PUSHDATA_ch07_wr_en": {
+                "direction": "I"
+              },
+              "TRX_PUSHDATA_ch01_din": {
+                "direction": "I",
+                "left": "7",
+                "right": "0"
+              },
+              "TRX_PUSHDATA_ch02_din": {
+                "direction": "I",
+                "left": "7",
+                "right": "0"
+              },
+              "TRX_PUSHDATA_ch03_din": {
+                "direction": "I",
+                "left": "7",
+                "right": "0"
+              },
+              "TRX_PUSHDATA_ch04_din": {
+                "direction": "I",
+                "left": "7",
+                "right": "0"
+              },
+              "TRX_PUSHDATA_ch05_din": {
+                "direction": "I",
+                "left": "7",
+                "right": "0"
+              },
+              "TRX_PUSHDATA_ch06_din": {
+                "direction": "I",
+                "left": "7",
+                "right": "0"
+              },
+              "TRX_PUSHDATA_ch07_din": {
+                "direction": "I",
+                "left": "7",
+                "right": "0"
               }
             },
             "components": {
@@ -4502,6 +4864,212 @@
                     "value": "1"
                   }
                 }
+              },
+              "TRX_FIFO_Arbiter_0": {
+                "vlnv": "xilinx.com:module_ref:TRX_FIFO_Arbiter:1.0",
+                "xci_name": "UFBmod_TRX_TRX_FIFO_Arbiter_0_0",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "TRX_FIFO_Arbiter",
+                  "boundary_crc": "0x0"
+                },
+                "ports": {
+                  "reset_100MHz": {
+                    "type": "rst",
+                    "direction": "I",
+                    "parameters": {
+                      "POLARITY": {
+                        "value": "ACTIVE_HIGH",
+                        "value_src": "user_prop"
+                      }
+                    }
+                  },
+                  "clk_100MHz": {
+                    "direction": "I",
+                    "parameters": {
+                      "CLK_DOMAIN": {
+                        "value": "msys_mig_7series_0_0_ui_clk",
+                        "value_src": "user_prop"
+                      },
+                      "FREQ_HZ": {
+                        "value": "100000000",
+                        "value_src": "user_prop"
+                      },
+                      "PHASE": {
+                        "value": "0",
+                        "value_src": "user_prop"
+                      }
+                    }
+                  },
+                  "TRX_PUSHDATA_ch00_req": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch00_grant": {
+                    "direction": "O"
+                  },
+                  "TRX_PUSHDATA_ch00_wr_en": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch00_din": {
+                    "direction": "I",
+                    "left": "7",
+                    "right": "0",
+                    "parameters": {
+                      "LAYERED_METADATA": {
+                        "value": "undef",
+                        "value_src": "default_prop"
+                      }
+                    }
+                  },
+                  "TRX_PUSHDATA_ch01_req": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch01_grant": {
+                    "direction": "O"
+                  },
+                  "TRX_PUSHDATA_ch01_wr_en": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch01_din": {
+                    "direction": "I",
+                    "left": "7",
+                    "right": "0",
+                    "parameters": {
+                      "LAYERED_METADATA": {
+                        "value": "undef",
+                        "value_src": "default_prop"
+                      }
+                    }
+                  },
+                  "TRX_PUSHDATA_ch02_req": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch02_grant": {
+                    "direction": "O"
+                  },
+                  "TRX_PUSHDATA_ch02_wr_en": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch02_din": {
+                    "direction": "I",
+                    "left": "7",
+                    "right": "0",
+                    "parameters": {
+                      "LAYERED_METADATA": {
+                        "value": "undef",
+                        "value_src": "default_prop"
+                      }
+                    }
+                  },
+                  "TRX_PUSHDATA_ch03_req": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch03_grant": {
+                    "direction": "O"
+                  },
+                  "TRX_PUSHDATA_ch03_wr_en": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch03_din": {
+                    "direction": "I",
+                    "left": "7",
+                    "right": "0",
+                    "parameters": {
+                      "LAYERED_METADATA": {
+                        "value": "undef",
+                        "value_src": "default_prop"
+                      }
+                    }
+                  },
+                  "TRX_PUSHDATA_ch04_req": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch04_grant": {
+                    "direction": "O"
+                  },
+                  "TRX_PUSHDATA_ch04_wr_en": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch04_din": {
+                    "direction": "I",
+                    "left": "7",
+                    "right": "0",
+                    "parameters": {
+                      "LAYERED_METADATA": {
+                        "value": "undef",
+                        "value_src": "default_prop"
+                      }
+                    }
+                  },
+                  "TRX_PUSHDATA_ch05_req": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch05_grant": {
+                    "direction": "O"
+                  },
+                  "TRX_PUSHDATA_ch05_wr_en": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch05_din": {
+                    "direction": "I",
+                    "left": "7",
+                    "right": "0",
+                    "parameters": {
+                      "LAYERED_METADATA": {
+                        "value": "undef",
+                        "value_src": "default_prop"
+                      }
+                    }
+                  },
+                  "TRX_PUSHDATA_ch06_req": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch06_grant": {
+                    "direction": "O"
+                  },
+                  "TRX_PUSHDATA_ch06_wr_en": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch06_din": {
+                    "direction": "I",
+                    "left": "7",
+                    "right": "0",
+                    "parameters": {
+                      "LAYERED_METADATA": {
+                        "value": "undef",
+                        "value_src": "default_prop"
+                      }
+                    }
+                  },
+                  "TRX_PUSHDATA_ch07_req": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch07_grant": {
+                    "direction": "O"
+                  },
+                  "TRX_PUSHDATA_ch07_wr_en": {
+                    "direction": "I"
+                  },
+                  "TRX_PUSHDATA_ch07_din": {
+                    "direction": "I",
+                    "left": "7",
+                    "right": "0",
+                    "parameters": {
+                      "LAYERED_METADATA": {
+                        "value": "undef",
+                        "value_src": "default_prop"
+                      }
+                    }
+                  },
+                  "TRX_PUSHDATA_wr_en": {
+                    "direction": "O"
+                  },
+                  "TRX_PUSHDATA_din": {
+                    "direction": "O",
+                    "left": "7",
+                    "right": "0"
+                  }
+                }
               }
             },
             "interface_nets": {
@@ -4518,7 +5086,8 @@
                   "s_axi_aclk_CD100_in",
                   "pushdata_rx09_axi_gpio_0/s_axi_aclk",
                   "fifo_generator_0/clk",
-                  "pushdata_rx09_c_shift_ram_0/CLK"
+                  "pushdata_rx09_c_shift_ram_0/CLK",
+                  "TRX_FIFO_Arbiter_0/clk_100MHz"
                 ]
               },
               "pushdata_rx09_axi_gpio_0_ip2intc_irpt": {
@@ -4573,19 +5142,8 @@
               "rst_mig_7series_0_100M_peripheral_reset_in_1": {
                 "ports": [
                   "rst_mig_7series_0_100M_peripheral_reset_in",
-                  "fifo_generator_0/srst"
-                ]
-              },
-              "TRX_PUSHDATA_wr_en_1": {
-                "ports": [
-                  "TRX_PUSHDATA_wr_en",
-                  "fifo_generator_0/wr_en"
-                ]
-              },
-              "TRX_PUSHDATA_din_1": {
-                "ports": [
-                  "TRX_PUSHDATA_din",
-                  "fifo_generator_0/din"
+                  "fifo_generator_0/srst",
+                  "TRX_FIFO_Arbiter_0/reset_100MHz"
                 ]
               },
               "pushdata_rx09_util_reduced_logic_0_Res": {
@@ -4611,6 +5169,210 @@
                 "ports": [
                   "pushdata_rx09_c_shift_ram_0/Q",
                   "pushdata_rx09_xlconcat_1/In1"
+                ]
+              },
+              "TRX_PUSHDATA_ch00_req_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch00_req",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch00_req"
+                ]
+              },
+              "TRX_PUSHDATA_ch01_req_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch01_req",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch01_req"
+                ]
+              },
+              "TRX_PUSHDATA_ch02_req_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch02_req",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch02_req"
+                ]
+              },
+              "TRX_PUSHDATA_ch03_req_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch03_req",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch03_req"
+                ]
+              },
+              "TRX_PUSHDATA_ch04_req_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch04_req",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch04_req"
+                ]
+              },
+              "TRX_PUSHDATA_ch05_req_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch05_req",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch05_req"
+                ]
+              },
+              "TRX_PUSHDATA_ch06_req_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch06_req",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch06_req"
+                ]
+              },
+              "TRX_PUSHDATA_ch07_req_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch07_req",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch07_req"
+                ]
+              },
+              "TRX_FIFO_Arbiter_0_TRX_PUSHDATA_ch00_grant": {
+                "ports": [
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch00_grant",
+                  "TRX_PUSHDATA_ch00_grant"
+                ]
+              },
+              "TRX_FIFO_Arbiter_0_TRX_PUSHDATA_ch01_grant": {
+                "ports": [
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch01_grant",
+                  "TRX_PUSHDATA_ch01_grant"
+                ]
+              },
+              "TRX_FIFO_Arbiter_0_TRX_PUSHDATA_ch02_grant": {
+                "ports": [
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch02_grant",
+                  "TRX_PUSHDATA_ch02_grant"
+                ]
+              },
+              "TRX_FIFO_Arbiter_0_TRX_PUSHDATA_ch03_grant": {
+                "ports": [
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch03_grant",
+                  "TRX_PUSHDATA_ch03_grant"
+                ]
+              },
+              "TRX_FIFO_Arbiter_0_TRX_PUSHDATA_ch04_grant": {
+                "ports": [
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch04_grant",
+                  "TRX_PUSHDATA_ch04_grant"
+                ]
+              },
+              "TRX_FIFO_Arbiter_0_TRX_PUSHDATA_ch05_grant": {
+                "ports": [
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch05_grant",
+                  "TRX_PUSHDATA_ch05_grant"
+                ]
+              },
+              "TRX_FIFO_Arbiter_0_TRX_PUSHDATA_ch06_grant": {
+                "ports": [
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch06_grant",
+                  "TRX_PUSHDATA_ch06_grant"
+                ]
+              },
+              "TRX_FIFO_Arbiter_0_TRX_PUSHDATA_ch07_grant": {
+                "ports": [
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch07_grant",
+                  "TRX_PUSHDATA_ch07_grant"
+                ]
+              },
+              "TRX_FIFO_Arbiter_0_TRX_PUSHDATA_wr_en": {
+                "ports": [
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_wr_en",
+                  "fifo_generator_0/wr_en"
+                ]
+              },
+              "TRX_FIFO_Arbiter_0_TRX_PUSHDATA_din": {
+                "ports": [
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_din",
+                  "fifo_generator_0/din"
+                ]
+              },
+              "TRX_PUSHDATA_wr_en_1": {
+                "ports": [
+                  "TRX_PUSHDATA_wr_en",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch00_wr_en"
+                ]
+              },
+              "TRX_PUSHDATA_ch01_wr_en_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch01_wr_en",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch01_wr_en"
+                ]
+              },
+              "TRX_PUSHDATA_ch02_wr_en_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch02_wr_en",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch02_wr_en"
+                ]
+              },
+              "TRX_PUSHDATA_ch03_wr_en_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch03_wr_en",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch03_wr_en"
+                ]
+              },
+              "TRX_PUSHDATA_ch04_wr_en_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch04_wr_en",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch04_wr_en"
+                ]
+              },
+              "TRX_PUSHDATA_ch05_wr_en_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch05_wr_en",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch05_wr_en"
+                ]
+              },
+              "TRX_PUSHDATA_ch06_wr_en_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch06_wr_en",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch06_wr_en"
+                ]
+              },
+              "TRX_PUSHDATA_ch07_wr_en_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch07_wr_en",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch07_wr_en"
+                ]
+              },
+              "TRX_PUSHDATA_din_1": {
+                "ports": [
+                  "TRX_PUSHDATA_din",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch00_din"
+                ]
+              },
+              "TRX_PUSHDATA_ch01_din_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch01_din",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch01_din"
+                ]
+              },
+              "TRX_PUSHDATA_ch02_din_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch02_din",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch02_din"
+                ]
+              },
+              "TRX_PUSHDATA_ch03_din_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch03_din",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch03_din"
+                ]
+              },
+              "TRX_PUSHDATA_ch04_din_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch04_din",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch04_din"
+                ]
+              },
+              "TRX_PUSHDATA_ch05_din_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch05_din",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch05_din"
+                ]
+              },
+              "TRX_PUSHDATA_ch06_din_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch06_din",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch06_din"
+                ]
+              },
+              "TRX_PUSHDATA_ch07_din_1": {
+                "ports": [
+                  "TRX_PUSHDATA_ch07_din",
+                  "TRX_FIFO_Arbiter_0/TRX_PUSHDATA_ch07_din"
                 ]
               }
             }
@@ -4645,76 +5407,6 @@
               },
               "DOUT_WIDTH": {
                 "value": "5"
-              }
-            }
-          },
-          "TRX_post_fft_rx09_decoder_0": {
-            "vlnv": "xilinx.com:module_ref:TRX_post_fft_rx09_addr_decoder:1.0",
-            "xci_name": "UFBmod_TRX_TRX_post_fft_rx09_ad_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "TRX_post_fft_rx09_addr_decoder",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "clk_100MHz": {
-                "direction": "I",
-                "parameters": {
-                  "CLK_DOMAIN": {
-                    "value": "msys_mig_7series_0_0_ui_clk",
-                    "value_src": "user_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "100000000",
-                    "value_src": "user_prop"
-                  },
-                  "PHASE": {
-                    "value": "0",
-                    "value_src": "user_prop"
-                  }
-                }
-              },
-              "reset_100MHz": {
-                "type": "rst",
-                "direction": "I",
-                "parameters": {
-                  "POLARITY": {
-                    "value": "ACTIVE_HIGH",
-                    "value_src": "user_prop"
-                  }
-                }
-              },
-              "tvalid": {
-                "direction": "I"
-              },
-              "addr": {
-                "direction": "I",
-                "left": "4",
-                "right": "0"
-              },
-              "ena_ch00": {
-                "direction": "O"
-              },
-              "ena_ch01": {
-                "direction": "O"
-              },
-              "ena_ch02": {
-                "direction": "O"
-              },
-              "ena_ch03": {
-                "direction": "O"
-              },
-              "ena_ch04": {
-                "direction": "O"
-              },
-              "ena_ch05": {
-                "direction": "O"
-              },
-              "ena_ch06": {
-                "direction": "O"
-              },
-              "ena_ch07": {
-                "direction": "O"
               }
             }
           },
@@ -5137,6 +5829,76 @@
                 "value": "Stand_Alone"
               }
             }
+          },
+          "TRX_post_fft_rx09_decoder_0": {
+            "vlnv": "xilinx.com:module_ref:TRX_post_fft_rx09_addr_decoder:1.0",
+            "xci_name": "UFBmod_TRX_TRX_post_fft_rx09_ad_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "TRX_post_fft_rx09_addr_decoder",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk_100MHz": {
+                "direction": "I",
+                "parameters": {
+                  "CLK_DOMAIN": {
+                    "value": "msys_mig_7series_0_0_ui_clk",
+                    "value_src": "user_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "100000000",
+                    "value_src": "user_prop"
+                  },
+                  "PHASE": {
+                    "value": "0",
+                    "value_src": "user_prop"
+                  }
+                }
+              },
+              "reset_100MHz": {
+                "type": "rst",
+                "direction": "I",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "ACTIVE_HIGH",
+                    "value_src": "user_prop"
+                  }
+                }
+              },
+              "tvalid": {
+                "direction": "I"
+              },
+              "addr": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "ena_ch00": {
+                "direction": "O"
+              },
+              "ena_ch01": {
+                "direction": "O"
+              },
+              "ena_ch02": {
+                "direction": "O"
+              },
+              "ena_ch03": {
+                "direction": "O"
+              },
+              "ena_ch04": {
+                "direction": "O"
+              },
+              "ena_ch05": {
+                "direction": "O"
+              },
+              "ena_ch06": {
+                "direction": "O"
+              },
+              "ena_ch07": {
+                "direction": "O"
+              }
+            }
           }
         },
         "interface_nets": {
@@ -5155,14 +5917,14 @@
               "pre_fft_rx09_blk_mem_gen_0/rstb",
               "post_fft_rx09_ch00_blk_mem_gen_0/rstb",
               "PUSHDATA/rst_mig_7series_0_100M_peripheral_reset_in",
-              "TRX_post_fft_rx09_decoder_0/reset_100MHz",
               "post_fft_rx09_ch01_blk_mem_gen/rstb",
               "post_fft_rx09_ch03_blk_mem_gen/rstb",
               "post_fft_rx09_ch04_blk_mem_gen/rstb",
               "post_fft_rx09_ch05_blk_mem_gen/rstb",
               "post_fft_rx09_ch06_blk_mem_gen/rstb",
               "post_fft_rx09_ch07_blk_mem_gen/rstb",
-              "post_fft_rx09_ch02_blk_mem_gen/rstb"
+              "post_fft_rx09_ch02_blk_mem_gen/rstb",
+              "TRX_post_fft_rx09_decoder_0/reset_100MHz"
             ]
           },
           "s_axi_aclk_CD100_0": {
@@ -5174,7 +5936,6 @@
               "pre_fft_rx09_blk_mem_gen_0/clka",
               "pre_fft_rx09_blk_mem_gen_0/clkb",
               "PUSHDATA/s_axi_aclk_CD100_in",
-              "TRX_post_fft_rx09_decoder_0/clk_100MHz",
               "post_fft_rx09_ch01_blk_mem_gen/clka",
               "post_fft_rx09_ch01_blk_mem_gen/clkb",
               "post_fft_rx09_ch03_blk_mem_gen/clka",
@@ -5188,7 +5949,8 @@
               "post_fft_rx09_ch07_blk_mem_gen/clka",
               "post_fft_rx09_ch07_blk_mem_gen/clkb",
               "post_fft_rx09_ch02_blk_mem_gen/clka",
-              "post_fft_rx09_ch02_blk_mem_gen/clkb"
+              "post_fft_rx09_ch02_blk_mem_gen/clkb",
+              "TRX_post_fft_rx09_decoder_0/clk_100MHz"
             ]
           },
           "TRX_rx_rf09_FFT_data_tlast_0": {
@@ -5558,6 +6320,186 @@
             "ports": [
               "post_fft_rx09_ch07_blk_mem_gen/doutb",
               "TRX_rx_rf09_ch07_Post_FFT_mem_b_dout"
+            ]
+          },
+          "TRX_PUSHDATA_ch00_req_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch00_req",
+              "PUSHDATA/TRX_PUSHDATA_ch00_req"
+            ]
+          },
+          "TRX_PUSHDATA_ch01_req_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch01_req",
+              "PUSHDATA/TRX_PUSHDATA_ch01_req"
+            ]
+          },
+          "TRX_PUSHDATA_ch02_req_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch02_req",
+              "PUSHDATA/TRX_PUSHDATA_ch02_req"
+            ]
+          },
+          "TRX_PUSHDATA_ch03_req_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch03_req",
+              "PUSHDATA/TRX_PUSHDATA_ch03_req"
+            ]
+          },
+          "TRX_PUSHDATA_ch04_req_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch04_req",
+              "PUSHDATA/TRX_PUSHDATA_ch04_req"
+            ]
+          },
+          "TRX_PUSHDATA_ch05_req_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch05_req",
+              "PUSHDATA/TRX_PUSHDATA_ch05_req"
+            ]
+          },
+          "TRX_PUSHDATA_ch06_req_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch06_req",
+              "PUSHDATA/TRX_PUSHDATA_ch06_req"
+            ]
+          },
+          "TRX_PUSHDATA_ch07_req_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch07_req",
+              "PUSHDATA/TRX_PUSHDATA_ch07_req"
+            ]
+          },
+          "PUSHDATA_TRX_PUSHDATA_ch00_grant": {
+            "ports": [
+              "PUSHDATA/TRX_PUSHDATA_ch00_grant",
+              "TRX_PUSHDATA_ch00_grant"
+            ]
+          },
+          "PUSHDATA_TRX_PUSHDATA_ch01_grant": {
+            "ports": [
+              "PUSHDATA/TRX_PUSHDATA_ch01_grant",
+              "TRX_PUSHDATA_ch01_grant"
+            ]
+          },
+          "PUSHDATA_TRX_PUSHDATA_ch02_grant": {
+            "ports": [
+              "PUSHDATA/TRX_PUSHDATA_ch02_grant",
+              "TRX_PUSHDATA_ch02_grant"
+            ]
+          },
+          "PUSHDATA_TRX_PUSHDATA_ch03_grant": {
+            "ports": [
+              "PUSHDATA/TRX_PUSHDATA_ch03_grant",
+              "TRX_PUSHDATA_ch03_grant"
+            ]
+          },
+          "PUSHDATA_TRX_PUSHDATA_ch04_grant": {
+            "ports": [
+              "PUSHDATA/TRX_PUSHDATA_ch04_grant",
+              "TRX_PUSHDATA_ch04_grant"
+            ]
+          },
+          "PUSHDATA_TRX_PUSHDATA_ch05_grant": {
+            "ports": [
+              "PUSHDATA/TRX_PUSHDATA_ch05_grant",
+              "TRX_PUSHDATA_ch05_grant"
+            ]
+          },
+          "PUSHDATA_TRX_PUSHDATA_ch06_grant": {
+            "ports": [
+              "PUSHDATA/TRX_PUSHDATA_ch06_grant",
+              "TRX_PUSHDATA_ch06_grant"
+            ]
+          },
+          "PUSHDATA_TRX_PUSHDATA_ch07_grant": {
+            "ports": [
+              "PUSHDATA/TRX_PUSHDATA_ch07_grant",
+              "TRX_PUSHDATA_ch07_grant"
+            ]
+          },
+          "TRX_PUSHDATA_ch01_wr_en_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch01_wr_en",
+              "PUSHDATA/TRX_PUSHDATA_ch01_wr_en"
+            ]
+          },
+          "TRX_PUSHDATA_ch02_wr_en_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch02_wr_en",
+              "PUSHDATA/TRX_PUSHDATA_ch02_wr_en"
+            ]
+          },
+          "TRX_PUSHDATA_ch03_wr_en_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch03_wr_en",
+              "PUSHDATA/TRX_PUSHDATA_ch03_wr_en"
+            ]
+          },
+          "TRX_PUSHDATA_ch04_wr_en_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch04_wr_en",
+              "PUSHDATA/TRX_PUSHDATA_ch04_wr_en"
+            ]
+          },
+          "TRX_PUSHDATA_ch05_wr_en_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch05_wr_en",
+              "PUSHDATA/TRX_PUSHDATA_ch05_wr_en"
+            ]
+          },
+          "TRX_PUSHDATA_ch06_wr_en_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch06_wr_en",
+              "PUSHDATA/TRX_PUSHDATA_ch06_wr_en"
+            ]
+          },
+          "TRX_PUSHDATA_ch07_wr_en_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch07_wr_en",
+              "PUSHDATA/TRX_PUSHDATA_ch07_wr_en"
+            ]
+          },
+          "TRX_PUSHDATA_ch01_din_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch01_din",
+              "PUSHDATA/TRX_PUSHDATA_ch01_din"
+            ]
+          },
+          "TRX_PUSHDATA_ch02_din_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch02_din",
+              "PUSHDATA/TRX_PUSHDATA_ch02_din"
+            ]
+          },
+          "TRX_PUSHDATA_ch03_din_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch03_din",
+              "PUSHDATA/TRX_PUSHDATA_ch03_din"
+            ]
+          },
+          "TRX_PUSHDATA_ch04_din_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch04_din",
+              "PUSHDATA/TRX_PUSHDATA_ch04_din"
+            ]
+          },
+          "TRX_PUSHDATA_ch05_din_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch05_din",
+              "PUSHDATA/TRX_PUSHDATA_ch05_din"
+            ]
+          },
+          "TRX_PUSHDATA_ch06_din_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch06_din",
+              "PUSHDATA/TRX_PUSHDATA_ch06_din"
+            ]
+          },
+          "TRX_PUSHDATA_ch07_din_1": {
+            "ports": [
+              "TRX_PUSHDATA_ch07_din",
+              "PUSHDATA/TRX_PUSHDATA_ch07_din"
             ]
           }
         }
@@ -7368,28 +8310,10 @@
       }
     },
     "interface_nets": {
-      "S_AXI_dds_1": {
-        "interface_ports": [
-          "S13_AXI_dds",
-          "TRX_tx_DDS_unit/S_AXI"
-        ]
-      },
       "S_AXI_gpio_1": {
         "interface_ports": [
           "S12_AXI_gpio",
           "TRX_config/S_AXI_gpio"
-        ]
-      },
-      "TRX_rx_clk_64MHz_1": {
-        "interface_ports": [
-          "TRX_rx_clk_64MHz",
-          "TRX_LVDS/TRX_rx_clk_64MHz"
-        ]
-      },
-      "S_AXI_spi_1": {
-        "interface_ports": [
-          "S11_AXI_spi",
-          "TRX_config/S_AXI_spi"
         ]
       },
       "TRX_TRX_tx_clk": {
@@ -7398,22 +8322,40 @@
           "TRX_LVDS/TRX_tx_clk"
         ]
       },
+      "S_AXI_dds_1": {
+        "interface_ports": [
+          "S13_AXI_dds",
+          "TRX_tx_DDS_unit/S_AXI"
+        ]
+      },
       "TRX_TRX_spi": {
         "interface_ports": [
           "TRX_spi",
           "TRX_config/TRX_spi"
         ]
       },
-      "S_AXI_1": {
+      "S_AXI_spi_1": {
         "interface_ports": [
-          "S19_AXI",
-          "TRX_tx_DDS_unit/S_AXI1"
+          "S11_AXI_spi",
+          "TRX_config/S_AXI_spi"
+        ]
+      },
+      "TRX_rx_clk_64MHz_1": {
+        "interface_ports": [
+          "TRX_rx_clk_64MHz",
+          "TRX_LVDS/TRX_rx_clk_64MHz"
         ]
       },
       "S_AXI1_1": {
         "interface_ports": [
           "S20_AXI1",
           "TRX_rx_FFT_unit/S_AXI"
+        ]
+      },
+      "S_AXI_1": {
+        "interface_ports": [
+          "S19_AXI",
+          "TRX_tx_DDS_unit/S_AXI1"
         ]
       }
     },
@@ -7806,13 +8748,13 @@
       },
       "TRX_rx_rf09_PUSHDATA_wr_en_0": {
         "ports": [
-          "TRX_PUSHDATA_wr_en",
+          "TRX_PUSHDATA_ch00_wr_en",
           "TRX_rx_FFT_unit/TRX_PUSHDATA_wr_en"
         ]
       },
       "TRX_rx_rf09_PUSHDATA_din_0": {
         "ports": [
-          "TRX_PUSHDATA_din",
+          "TRX_PUSHDATA_ch00_din",
           "TRX_rx_FFT_unit/TRX_PUSHDATA_din"
         ]
       },
@@ -7943,6 +8885,186 @@
         "ports": [
           "TRX_rx_FFT_unit/TRX_rx_rf09_ch07_Post_FFT_mem_b_dout",
           "TRX_rx_rf09_ch07_Post_FFT_mem_b_dout"
+        ]
+      },
+      "TRX_PUSHDATA_ch00_req_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch00_req",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch00_req"
+        ]
+      },
+      "TRX_PUSHDATA_ch01_req_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch01_req",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch01_req"
+        ]
+      },
+      "TRX_PUSHDATA_ch02_req_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch02_req",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch02_req"
+        ]
+      },
+      "TRX_PUSHDATA_ch03_req_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch03_req",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch03_req"
+        ]
+      },
+      "TRX_PUSHDATA_ch04_req_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch04_req",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch04_req"
+        ]
+      },
+      "TRX_PUSHDATA_ch05_req_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch05_req",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch05_req"
+        ]
+      },
+      "TRX_PUSHDATA_ch06_req_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch06_req",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch06_req"
+        ]
+      },
+      "TRX_PUSHDATA_ch07_req_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch07_req",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch07_req"
+        ]
+      },
+      "TRX_rx_FFT_unit_TRX_PUSHDATA_ch00_grant": {
+        "ports": [
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch00_grant",
+          "TRX_PUSHDATA_ch00_grant"
+        ]
+      },
+      "TRX_rx_FFT_unit_TRX_PUSHDATA_ch01_grant": {
+        "ports": [
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch01_grant",
+          "TRX_PUSHDATA_ch01_grant"
+        ]
+      },
+      "TRX_rx_FFT_unit_TRX_PUSHDATA_ch02_grant": {
+        "ports": [
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch02_grant",
+          "TRX_PUSHDATA_ch02_grant"
+        ]
+      },
+      "TRX_rx_FFT_unit_TRX_PUSHDATA_ch03_grant": {
+        "ports": [
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch03_grant",
+          "TRX_PUSHDATA_ch03_grant"
+        ]
+      },
+      "TRX_rx_FFT_unit_TRX_PUSHDATA_ch04_grant": {
+        "ports": [
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch04_grant",
+          "TRX_PUSHDATA_ch04_grant"
+        ]
+      },
+      "TRX_rx_FFT_unit_TRX_PUSHDATA_ch05_grant": {
+        "ports": [
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch05_grant",
+          "TRX_PUSHDATA_ch05_grant"
+        ]
+      },
+      "TRX_rx_FFT_unit_TRX_PUSHDATA_ch06_grant": {
+        "ports": [
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch06_grant",
+          "TRX_PUSHDATA_ch06_grant"
+        ]
+      },
+      "TRX_rx_FFT_unit_TRX_PUSHDATA_ch07_grant": {
+        "ports": [
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch07_grant",
+          "TRX_PUSHDATA_ch07_grant"
+        ]
+      },
+      "TRX_PUSHDATA_ch01_wr_en_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch01_wr_en",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch01_wr_en"
+        ]
+      },
+      "TRX_PUSHDATA_ch02_wr_en_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch02_wr_en",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch02_wr_en"
+        ]
+      },
+      "TRX_PUSHDATA_ch03_wr_en_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch03_wr_en",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch03_wr_en"
+        ]
+      },
+      "TRX_PUSHDATA_ch04_wr_en_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch04_wr_en",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch04_wr_en"
+        ]
+      },
+      "TRX_PUSHDATA_ch05_wr_en_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch05_wr_en",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch05_wr_en"
+        ]
+      },
+      "TRX_PUSHDATA_ch06_wr_en_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch06_wr_en",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch06_wr_en"
+        ]
+      },
+      "TRX_PUSHDATA_ch07_wr_en_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch07_wr_en",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch07_wr_en"
+        ]
+      },
+      "TRX_PUSHDATA_ch01_din_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch01_din",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch01_din"
+        ]
+      },
+      "TRX_PUSHDATA_ch02_din_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch02_din",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch02_din"
+        ]
+      },
+      "TRX_PUSHDATA_ch03_din_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch03_din",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch03_din"
+        ]
+      },
+      "TRX_PUSHDATA_ch04_din_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch04_din",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch04_din"
+        ]
+      },
+      "TRX_PUSHDATA_ch05_din_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch05_din",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch05_din"
+        ]
+      },
+      "TRX_PUSHDATA_ch06_din_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch06_din",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch06_din"
+        ]
+      },
+      "TRX_PUSHDATA_ch07_din_1": {
+        "ports": [
+          "TRX_PUSHDATA_ch07_din",
+          "TRX_rx_FFT_unit/TRX_PUSHDATA_ch07_din"
         ]
       }
     },
