@@ -1,0 +1,14 @@
+===================================
+Configuration Memory information
+===================================
+File Format        MCS
+Interface          SPIX4
+Size               32M
+Start Address      0x00000000
+End Address        0x01FFFFFF
+Checksum           0xD6C48485
+Fill Value         0xFF
+
+Addr1         Addr2         Date                    File(s)                                                                                                 Checksum
+0x00000000    0x002E29F7    Nov  4 20:35:57 2020    C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.runs/impl_1/top.bit    0x06C0528D
+File Checksum Total                                                                                                                                         0x06C0528D
