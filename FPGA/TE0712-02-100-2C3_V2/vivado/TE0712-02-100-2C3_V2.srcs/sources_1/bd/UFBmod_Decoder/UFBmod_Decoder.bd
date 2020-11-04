@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x4699F832FB5D00D0",
+      "boundary_crc": "0x6B9D0BB18DF43FBA",
       "device": "xc7a100tfgg484-2",
       "name": "UFBmod_Decoder",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -188,6 +188,18 @@
         "type": "data",
         "direction": "I",
         "left": "2",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "TRX_decoder_rx_rf09_chXX_SoM_frameCtr": {
+        "type": "data",
+        "direction": "O",
+        "left": "31",
         "right": "0",
         "parameters": {
           "LAYERED_METADATA": {
@@ -1254,7 +1266,13 @@
               "TRX_decoder_rx09_chXX_SoM_frameCtr": {
                 "direction": "O",
                 "left": "31",
-                "right": "0"
+                "right": "0",
+                "parameters": {
+                  "LAYERED_METADATA": {
+                    "value": "",
+                    "value_src": "weak"
+                  }
+                }
               },
               "TRX_decoder_rx_rf09_chXX_sql_open": {
                 "direction": "O"
@@ -1321,6 +1339,7 @@
           },
           "TRX_decoder_rx_rf09_chXX_SoM_frameCtr_1": {
             "ports": [
+              "UFBmod_rx09_chXX_Decoder_FSM/TRX_decoder_rx09_chXX_SoM_frameCtr",
               "TRX_decoder_rx_rf09_chXX_SoM_frameCtr"
             ]
           },
@@ -1792,6 +1811,12 @@
         "ports": [
           "TRX_channel_rx_rf09_id",
           "FFT_rx09_chXX_to_Decoder/TRX_channel_rx_rf09_id"
+        ]
+      },
+      "UFBmod_rx09_chXX_Decoder_TRX_decoder_rx_rf09_chXX_SoM_frameCtr": {
+        "ports": [
+          "UFBmod_rx09_chXX_Decoder/TRX_decoder_rx_rf09_chXX_SoM_frameCtr",
+          "TRX_decoder_rx_rf09_chXX_SoM_frameCtr"
         ]
       }
     }

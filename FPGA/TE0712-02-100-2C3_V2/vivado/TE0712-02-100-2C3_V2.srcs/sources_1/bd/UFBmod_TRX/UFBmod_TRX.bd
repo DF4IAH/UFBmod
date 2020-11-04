@@ -97,8 +97,6 @@
           "pushdata_rx09_c_shift_ram_0": "",
           "TRX_FIFO_Arbiter_0": ""
         },
-        "post_fft_rx09_ch00_xlslice_4to0": "",
-        "TRX_post_fft_rx09_xlslice_9to5": "",
         "post_fft_rx09_ch01_blk_mem_gen": "",
         "post_fft_rx09_ch02_blk_mem_gen": "",
         "post_fft_rx09_ch03_blk_mem_gen": "",
@@ -3169,16 +3167,16 @@
           }
         },
         "interface_nets": {
-          "rx_clk_CD064": {
-            "interface_ports": [
-              "TRX_rx_clk_64MHz",
-              "TRX_LVDS_selectio_wiz_0/diff_clk_in"
-            ]
-          },
           "Conn4": {
             "interface_ports": [
               "TRX_tx_clk",
               "TRX_LVDS_selectio_wiz_0/diff_clk_to_pins"
+            ]
+          },
+          "rx_clk_CD064": {
+            "interface_ports": [
+              "TRX_rx_clk_64MHz",
+              "TRX_LVDS_selectio_wiz_0/diff_clk_in"
             ]
           }
         },
@@ -5377,39 +5375,6 @@
               }
             }
           },
-          "post_fft_rx09_ch00_xlslice_4to0": {
-            "vlnv": "xilinx.com:ip:xlslice:1.0",
-            "xci_name": "UFBmod_TRX_xlslice_0_0",
-            "parameters": {
-              "DIN_FROM": {
-                "value": "4"
-              },
-              "DIN_WIDTH": {
-                "value": "42"
-              },
-              "DOUT_WIDTH": {
-                "value": "5"
-              }
-            }
-          },
-          "TRX_post_fft_rx09_xlslice_9to5": {
-            "vlnv": "xilinx.com:ip:xlslice:1.0",
-            "xci_name": "UFBmod_TRX_xlslice_0_1",
-            "parameters": {
-              "DIN_FROM": {
-                "value": "9"
-              },
-              "DIN_TO": {
-                "value": "5"
-              },
-              "DIN_WIDTH": {
-                "value": "42"
-              },
-              "DOUT_WIDTH": {
-                "value": "5"
-              }
-            }
-          },
           "post_fft_rx09_ch01_blk_mem_gen": {
             "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
             "xci_name": "UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_0",
@@ -5866,12 +5831,27 @@
                   }
                 }
               },
+              "addr_in": {
+                "direction": "I",
+                "left": "9",
+                "right": "0"
+              },
               "tvalid": {
                 "direction": "I"
               },
-              "addr": {
+              "din": {
                 "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "addr_out": {
+                "direction": "O",
                 "left": "4",
+                "right": "0"
+              },
+              "dout": {
+                "direction": "O",
+                "left": "15",
                 "right": "0"
               },
               "ena_ch00": {
@@ -6010,14 +5990,7 @@
           "TRX_rx_rf09_Post_FFT_mem_magnitude_0": {
             "ports": [
               "TRX_rx_FFT_calc/rx09_postmem_magnitude_out",
-              "post_fft_rx09_ch00_blk_mem_gen_0/dina",
-              "post_fft_rx09_ch01_blk_mem_gen/dina",
-              "post_fft_rx09_ch03_blk_mem_gen/dina",
-              "post_fft_rx09_ch04_blk_mem_gen/dina",
-              "post_fft_rx09_ch05_blk_mem_gen/dina",
-              "post_fft_rx09_ch06_blk_mem_gen/dina",
-              "post_fft_rx09_ch07_blk_mem_gen/dina",
-              "post_fft_rx09_ch02_blk_mem_gen/dina"
+              "TRX_post_fft_rx09_decoder_0/din"
             ]
           },
           "TRX_rx_rf09_Cordic_rx09_tvalid_0": {
@@ -6092,9 +6065,7 @@
             "ports": [
               "TRX_rx_FFT_calc/cordic_rx09_m_tuser_out",
               "post_fft_rx09_mem_a_addr_out",
-              "post_fft_rx09_xlslice_9to0/Din",
-              "post_fft_rx09_ch00_xlslice_4to0/Din",
-              "TRX_post_fft_rx09_xlslice_9to5/Din"
+              "post_fft_rx09_xlslice_9to0/Din"
             ]
           },
           "TRX_rx_rf09_framectr_0": {
@@ -6112,7 +6083,8 @@
           "TRX_rx_rf09_Post_FFT_xlslice_14downto0_dout_0": {
             "ports": [
               "post_fft_rx09_xlslice_9to0/Dout",
-              "post_fft_mem_a_rx09_xlconcat_0/In0"
+              "post_fft_mem_a_rx09_xlconcat_0/In0",
+              "TRX_post_fft_rx09_decoder_0/addr_in"
             ]
           },
           "val1_len1_0": {
@@ -6173,7 +6145,7 @@
           },
           "post_fft_rx09_ch00_xlslice_4to0_Dout": {
             "ports": [
-              "post_fft_rx09_ch00_xlslice_4to0/Dout",
+              "TRX_post_fft_rx09_decoder_0/addr_out",
               "post_fft_rx09_ch00_blk_mem_gen_0/addra",
               "post_fft_rx09_ch01_blk_mem_gen/addra",
               "post_fft_rx09_ch03_blk_mem_gen/addra",
@@ -6182,12 +6154,6 @@
               "post_fft_rx09_ch06_blk_mem_gen/addra",
               "post_fft_rx09_ch07_blk_mem_gen/addra",
               "post_fft_rx09_ch02_blk_mem_gen/addra"
-            ]
-          },
-          "xlslice_9to5_Dout": {
-            "ports": [
-              "TRX_post_fft_rx09_xlslice_9to5/Dout",
-              "TRX_post_fft_rx09_decoder_0/addr"
             ]
           },
           "TRX_post_fft_rx09_ad_0_ena_ch00": {
@@ -6501,6 +6467,19 @@
               "TRX_PUSHDATA_ch07_din",
               "PUSHDATA/TRX_PUSHDATA_ch07_din"
             ]
+          },
+          "TRX_post_fft_rx09_decoder_0_dout": {
+            "ports": [
+              "TRX_post_fft_rx09_decoder_0/dout",
+              "post_fft_rx09_ch02_blk_mem_gen/dina",
+              "post_fft_rx09_ch07_blk_mem_gen/dina",
+              "post_fft_rx09_ch06_blk_mem_gen/dina",
+              "post_fft_rx09_ch05_blk_mem_gen/dina",
+              "post_fft_rx09_ch04_blk_mem_gen/dina",
+              "post_fft_rx09_ch03_blk_mem_gen/dina",
+              "post_fft_rx09_ch01_blk_mem_gen/dina",
+              "post_fft_rx09_ch00_blk_mem_gen_0/dina"
+            ]
           }
         }
       },
@@ -6685,16 +6664,16 @@
               "TRX_axi_quad_spi_0/AXI_LITE"
             ]
           },
-          "Conn2": {
-            "interface_ports": [
-              "TRX_spi",
-              "TRX_axi_quad_spi_0/SPI_0"
-            ]
-          },
           "S_AXI_gpio_0": {
             "interface_ports": [
               "S_AXI_gpio",
               "axi_TRX_gpio_0/S_AXI"
+            ]
+          },
+          "Conn2": {
+            "interface_ports": [
+              "TRX_spi",
+              "TRX_axi_quad_spi_0/SPI_0"
             ]
           }
         },
@@ -8310,10 +8289,28 @@
       }
     },
     "interface_nets": {
+      "S_AXI_1": {
+        "interface_ports": [
+          "S19_AXI",
+          "TRX_tx_DDS_unit/S_AXI1"
+        ]
+      },
+      "S_AXI1_1": {
+        "interface_ports": [
+          "S20_AXI1",
+          "TRX_rx_FFT_unit/S_AXI"
+        ]
+      },
       "S_AXI_gpio_1": {
         "interface_ports": [
           "S12_AXI_gpio",
           "TRX_config/S_AXI_gpio"
+        ]
+      },
+      "TRX_rx_clk_64MHz_1": {
+        "interface_ports": [
+          "TRX_rx_clk_64MHz",
+          "TRX_LVDS/TRX_rx_clk_64MHz"
         ]
       },
       "TRX_TRX_tx_clk": {
@@ -8328,34 +8325,16 @@
           "TRX_tx_DDS_unit/S_AXI"
         ]
       },
-      "TRX_TRX_spi": {
-        "interface_ports": [
-          "TRX_spi",
-          "TRX_config/TRX_spi"
-        ]
-      },
       "S_AXI_spi_1": {
         "interface_ports": [
           "S11_AXI_spi",
           "TRX_config/S_AXI_spi"
         ]
       },
-      "TRX_rx_clk_64MHz_1": {
+      "TRX_TRX_spi": {
         "interface_ports": [
-          "TRX_rx_clk_64MHz",
-          "TRX_LVDS/TRX_rx_clk_64MHz"
-        ]
-      },
-      "S_AXI1_1": {
-        "interface_ports": [
-          "S20_AXI1",
-          "TRX_rx_FFT_unit/S_AXI"
-        ]
-      },
-      "S_AXI_1": {
-        "interface_ports": [
-          "S19_AXI",
-          "TRX_tx_DDS_unit/S_AXI1"
+          "TRX_spi",
+          "TRX_config/TRX_spi"
         ]
       }
     },

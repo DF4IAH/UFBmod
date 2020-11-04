@@ -636,6 +636,7 @@ architecture STRUCTURE of top is
     clk_100MHz                                          : in    STD_LOGIC;
     reset_100MHz                                        : in    STD_LOGIC;
     TRX_dds_tx_rf09_ptt                                 : in    STD_LOGIC;
+    TRX_decoder_rx_rf09_chXX_SoM_frameCtr               : out   STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_decoder_rx_rf09_chXX_active                     : out   STD_LOGIC;
     TRX_decoder_rx_rf09_chXX_center_pos                 : out   STD_LOGIC_VECTOR (  7 downto 0 );
     TRX_decoder_rx_rf09_chXX_noise                      : out   STD_LOGIC_VECTOR ( 18 downto 0 );
@@ -836,6 +837,8 @@ architecture STRUCTURE of top is
   signal top_TRX_decoder_rx_rf09_chAll_sql_open     : STD_LOGIC_VECTOR (  7 downto 0 );
   signal top_TRX_decoder_rx_rf09_chAll_squelch_lvl  : STD_LOGIC_VECTOR ( 15 downto 0 );
   
+  signal top_TRX_decoder_rx_rf09_chXX_SoM_frameCtr  : STD_LOGIC_VECTOR ( 31 downto 0 );
+    
   signal top_TRX_decoder_rx_rf09_ch00_center_pos : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal top_TRX_decoder_rx_rf09_ch00_noise : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal top_TRX_decoder_rx_rf09_ch00_strength : STD_LOGIC_VECTOR ( 18 downto 0 );
@@ -1312,6 +1315,7 @@ UFBmod_Decoder_rx09_ch00_bd: component UFBmod_Decoder_wrapper
       TRX_post_fft_rx_rf09_mem_a_addr                       => top_TRX_post_fft_rx_rf09_mem_a_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_addr                  => top_TRX_post_fft_rx_rf09_ch00_mem_b_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch00_mem_b_dout,
+      TRX_decoder_rx_rf09_chXX_SoM_frameCtr                 => top_TRX_decoder_rx_rf09_chXX_SoM_frameCtr,
       TRX_decoder_rx_rf09_chXX_squelch_lvl                  => top_TRX_decoder_rx_rf09_chAll_squelch_lvl,
       TRX_decoder_rx_rf09_chXX_sql_open                     => top_TRX_decoder_rx_rf09_chAll_sql_open(0),
       TRX_decoder_rx_rf09_chXX_active                       => top_TRX_decoder_rx_rf09_chAll_active(0),

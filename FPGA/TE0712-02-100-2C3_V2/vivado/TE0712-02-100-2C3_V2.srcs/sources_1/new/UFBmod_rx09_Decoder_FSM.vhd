@@ -38,47 +38,47 @@ use IEEE.NUMERIC_STD.ALL;
 entity UFBmod_rx09_Decoder_FSM is
   Port (
     -- All Clock Domain AXI 100 MHz
-    clk_100MHz                                      : in  STD_LOGIC;
-    reset_100MHz                                    : in  STD_LOGIC;
+    clk_100MHz                                      : in    STD_LOGIC;
+    reset_100MHz                                    : in    STD_LOGIC;
     
     -- FFT handshake
-    decoder_fft_frame_avail_ctr                     : in  STD_LOGIC_VECTOR(31 downto 0);
+    decoder_fft_frame_avail_ctr                     : in    STD_LOGIC_VECTOR( 31 downto 0 );
     
     -- Signal_bins  port-B
-    decoder_rx09_chXX_signal_bins_mem_addrb         : out STD_LOGIC_VECTOR(10 downto 0);  -- 64 rows (6 bit) x 32 bins (5 bits)
-    decoder_rx09_chXX_signal_bins_mem_datab         : in  STD_LOGIC_VECTOR(15 downto 0);
+    decoder_rx09_chXX_signal_bins_mem_addrb         : out   STD_LOGIC_VECTOR( 10 downto 0 );  -- 64 rows (6 bit) x 32 bins (5 bits)
+    decoder_rx09_chXX_signal_bins_mem_datab         : in    STD_LOGIC_VECTOR( 15 downto 0 );
     
     -- Decoder settings
-    TRX_dds_tx_rf09_ptt                             : in  STD_LOGIC;
-    TRX_decoder_rx_rf09_chXX_squelch_lvl            : in  STD_LOGIC_VECTOR(15 downto 0);
+    TRX_dds_tx_rf09_ptt                             : in    STD_LOGIC;
+    TRX_decoder_rx_rf09_chXX_squelch_lvl            : in    STD_LOGIC_VECTOR( 15 downto 0 );
     
     -- Decoder Artemis (hunter) Mult and Mem
-    decoder_rx09_chXX_artemis_mult_ce               : out STD_LOGIC;
-    decoder_rx09_chXX_artemis_mult_ina              : out STD_LOGIC_VECTOR(15 downto 0);
-    decoder_rx09_chXX_artemis_mult_inb              : out STD_LOGIC_VECTOR(31 downto 0);
-    decoder_rx09_chXX_artemis_mult_outp             : in  STD_LOGIC_VECTOR(31 downto 0);
+    decoder_rx09_chXX_artemis_mult_ce               : out   STD_LOGIC;
+    decoder_rx09_chXX_artemis_mult_ina              : out   STD_LOGIC_VECTOR( 15 downto 0 );
+    decoder_rx09_chXX_artemis_mult_inb              : out   STD_LOGIC_VECTOR( 31 downto 0 );
+    decoder_rx09_chXX_artemis_mult_outp             : in    STD_LOGIC_VECTOR( 31 downto 0 );
     
-    decoder_rx09_chXX_artemis_mem_wea               : out STD_LOGIC;
-    decoder_rx09_chXX_artemis_mem_addra             : out STD_LOGIC_VECTOR( 7 downto 0);  -- 128(+128): 4 rows (2 bit) x 32 bins (5 bits) // 256: test byte combinations
-    decoder_rx09_chXX_artemis_mem_dina              : out STD_LOGIC_VECTOR(15 downto 0);
-    decoder_rx09_chXX_artemis_mem_douta             : in  STD_LOGIC_VECTOR(15 downto 0);
+    decoder_rx09_chXX_artemis_mem_wea               : out   STD_LOGIC;
+    decoder_rx09_chXX_artemis_mem_addra             : out   STD_LOGIC_VECTOR(  7 downto 0 );  -- 128(+128): 4 rows (2 bit) x 32 bins (5 bits) // 256: test byte combinations
+    decoder_rx09_chXX_artemis_mem_dina              : out   STD_LOGIC_VECTOR( 15 downto 0 );
+    decoder_rx09_chXX_artemis_mem_douta             : in    STD_LOGIC_VECTOR( 15 downto 0 );
     
     -- Decoder information
-    TRX_decoder_rx_rf09_chXX_center_pos             : out STD_LOGIC_VECTOR( 7 downto 0);
-    TRX_decoder_rx_rf09_chXX_strength               : out STD_LOGIC_VECTOR(18 downto 0);
-    TRX_decoder_rx_rf09_chXX_noise                  : in  STD_LOGIC_VECTOR(18 downto 0);
-    TRX_decoder_rx09_chXX_SoM_frameCtr              : out STD_LOGIC_VECTOR(31 downto 0);
-    TRX_decoder_rx_rf09_chXX_sql_open               : out STD_LOGIC;
-    TRX_decoder_rx_rf09_chXX_active                 : out STD_LOGIC;
+    TRX_decoder_rx_rf09_chXX_center_pos             : out   STD_LOGIC_VECTOR(  7 downto 0 );
+    TRX_decoder_rx_rf09_chXX_strength               : out   STD_LOGIC_VECTOR( 18 downto 0 );
+    TRX_decoder_rx_rf09_chXX_noise                  : in    STD_LOGIC_VECTOR( 18 downto 0 );
+    TRX_decoder_rx09_chXX_SoM_frameCtr              : out   STD_LOGIC_VECTOR( 31 downto 0 );
+    TRX_decoder_rx_rf09_chXX_sql_open               : out   STD_LOGIC;
+    TRX_decoder_rx_rf09_chXX_active                 : out   STD_LOGIC;
     
     -- Decoder message Mem-A
-    decoder_rx09_chXX_msg_mem_a_addr                : out STD_LOGIC_VECTOR ( 7 downto 0);
-    decoder_rx09_chXX_msg_mem_a_we                  : out STD_LOGIC;
-    decoder_rx09_chXX_msg_mem_a_din                 : out STD_LOGIC_VECTOR ( 7 downto 0);
+    decoder_rx09_chXX_msg_mem_a_addr                : out   STD_LOGIC_VECTOR(  7 downto 0 );
+    decoder_rx09_chXX_msg_mem_a_we                  : out   STD_LOGIC;
+    decoder_rx09_chXX_msg_mem_a_din                 : out   STD_LOGIC_VECTOR(  7 downto 0 );
     
     -- Decoder <--> FIFO-Mgr handshake
-    decoder_rx09_chXX_FIFO_handshake                : out STD_LOGIC;
-    decoder_rx09_chXX_FIFO_accepted                 : in  STD_LOGIC
+    decoder_rx09_chXX_FIFO_handshake                : out   STD_LOGIC;
+    decoder_rx09_chXX_FIFO_accepted                 : in    STD_LOGIC
   );
 end UFBmod_rx09_Decoder_FSM;
 
@@ -486,6 +486,10 @@ begin
                                 isOddRow       := 0;
                                 signal_max_val := signal_row1;
                                 signal_max_idx := std_logic_vector(to_unsigned(fftArtemisIdx, signal_max_idx'length));
+                                
+                                if (signal_max_val >= TRX_decoder_rx_rf09_chXX_squelch_lvl(15 downto 0)) then
+                                    TRX_decoder_rx_rf09_chXX_sql_open <= '1';
+                                end if;
                             end if;
                         end if;
                         
@@ -503,9 +507,11 @@ begin
                     decoder_rx09_chXX_artemis_mem_addra <= (others => '0');
                     
                     if (signal_max_val <= TRX_decoder_rx_rf09_chXX_squelch_lvl(15 downto 0)) then          -- DEBUGGING: here preamble signal and SQL-level Test.
+                        TRX_decoder_rx_rf09_chXX_sql_open <= '0';
+                        
                         state := loop_start;
                     else
-                        TRX_decoder_rx_rf09_chXX_sql_open   <= '1';
+                        TRX_decoder_rx_rf09_chXX_sql_open <= '1';
                         
                         state := artemis_search_handoff;
                     end if;

@@ -42,8 +42,8 @@ entity Decoder_rx09_to_FIFO_FSM is
     reset_100MHz                                    : in    STD_LOGIC;
     
     -- Decoder message Mem-B
-    decoder_rx09_chXX_msg_mem_b_addr                : out   STD_LOGIC_VECTOR (  7 downto 0 );
-    decoder_rx09_chXX_msg_mem_b_din                 : in    STD_LOGIC_VECTOR (  7 downto 0 );
+    decoder_rx09_chXX_msg_mem_b_addr                : out   STD_LOGIC_VECTOR(  7 downto 0 );
+    decoder_rx09_chXX_msg_mem_b_din                 : in    STD_LOGIC_VECTOR(  7 downto 0 );
     
     -- Decoder <--> FIFO-Mgr handshake
     decoder_rx09_chXX_FIFO_handshake                : in    STD_LOGIC;
@@ -53,7 +53,7 @@ entity Decoder_rx09_to_FIFO_FSM is
     TRX_pushdata_rx_rf09_chXX_req                   : out   STD_LOGIC;
     TRX_pushdata_rx_rf09_chXX_grant                 : in    STD_LOGIC;
     TRX_pushdata_rx_rf09_chXX_wr_en                 : out   STD_LOGIC;
-    TRX_pushdata_rx_rf09_chXX_din                   : out   STD_LOGIC_VECTOR (  7 downto 0 )
+    TRX_pushdata_rx_rf09_chXX_din                   : out   STD_LOGIC_VECTOR(  7 downto 0 )
   );
 end Decoder_rx09_to_FIFO_FSM;
 
@@ -66,7 +66,7 @@ begin
   proc_Decoder_rx09_to_FIFO: process (clk_100MHz, reset_100MHz)
     type StateType                                  is (
                                                         init,
-                                                        handshake_wait,
+                                                        handshake_wait, handshake_wait2,
                                                         read_length_prep, read_length_ws1, read_length_get,
                                                         pushdata_loop_begin,
                                                         pushdata_loop_read_prep, pushdata_loop_read_ws1, pushdata_loop_read_get, read_length_write,
@@ -110,9 +110,12 @@ begin
                         decoder_rx09_chXX_FIFO_accepted <= '1';
                         TRX_pushdata_rx_rf09_chXX_req   <= '1';
                         
-                        if (TRX_pushdata_rx_rf09_chXX_grant = '1') then
-                            state := read_length_prep;
-                        end if;
+                        state := handshake_wait2;
+                    end if;
+                    
+                when handshake_wait2 =>
+                    if (TRX_pushdata_rx_rf09_chXX_grant = '1') then
+                        state := read_length_prep;
                     end if;
                     
                 when read_length_prep =>

@@ -86,9 +86,6 @@ end FFT_rx09_to_Decoder_FSM;
 architecture Behavioral of FFT_rx09_to_Decoder_FSM is
 --constant C_RX_LO_frequency                            : Integer := 866975000;
   
-  type     T_RX_bin_ofs_ary                             is array (0 to 7) of Integer range 0 to (2**9);
-  constant C_RX_bin_ofs                                 : T_RX_bin_ofs_ary := ( 16, 67, 118, 170, 221, 272, 323, 374 );
-  
   signal read_write_loopCtr                             : Integer  range 0 to (2**5  - 1);
   signal initial_loopCtr                                : Integer  range 0 to (2**6  - 1);
   
@@ -183,7 +180,7 @@ begin
                     -- Request data from RAM (latency: 2 clocks
                     if (TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int < 32) then
                         -- Time span of RAM read-out
-                        TRX_post_fft_rx_rf09_chXX_mem_b_addr                <= std_logic_vector(to_unsigned((TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int + C_RX_bin_ofs(to_integer(unsigned(TRX_channel_rx_rf09_id)))), TRX_post_fft_rx_rf09_chXX_mem_b_addr'length));
+                        TRX_post_fft_rx_rf09_chXX_mem_b_addr                <= std_logic_vector(to_unsigned((TRX_post_fft_rx_rf09_chXX_mem_b_addr_Int), TRX_post_fft_rx_rf09_chXX_mem_b_addr'length));
                     else
                         -- Time span of latency
                         TRX_post_fft_rx_rf09_chXX_mem_b_addr                <= (others => '0');

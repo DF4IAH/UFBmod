@@ -45,27 +45,33 @@ end tb_UFBmod_Decoder;
 architecture Behavioral of tb_UFBmod_Decoder is
   component UFBmod_Decoder_wrapper is
     Port ( 
-      clk_100MHz                                    : in  STD_LOGIC;
-      reset_100MHz                                  : in  STD_LOGIC;
+      clk_100MHz                                    : in    STD_LOGIC;
+      reset_100MHz                                  : in    STD_LOGIC;
       
-      TRX_dds_tx_rf09_ptt                           : in  STD_LOGIC;
+      TRX_channel_rx_rf09_id                        : in    STD_LOGIC_VECTOR(  2 downto 0 );
       
-      TRX_post_fft_rx_rf09_mem_a_EoT                : in  STD_LOGIC;
-      TRX_post_fft_rx_rf09_mem_a_addr               : in  STD_LOGIC_VECTOR ( 41 downto 0 );
+      TRX_dds_tx_rf09_ptt                           : in    STD_LOGIC;
       
-      TRX_post_fft_rx_rf09_chXX_mem_b_addr          : out STD_LOGIC_VECTOR ( 9 downto 0 );
-      TRX_post_fft_rx_rf09_chXX_mem_b_dout          : in  STD_LOGIC_VECTOR ( 15 downto 0 );
+      TRX_post_fft_rx_rf09_mem_a_EoT                : in    STD_LOGIC;
+      TRX_post_fft_rx_rf09_mem_a_addr               : in    STD_LOGIC_VECTOR( 41 downto 0 );
       
-      TRX_decoder_rx_rf09_chXX_active               : out STD_LOGIC;
-      TRX_decoder_rx_rf09_chXX_sql_open             : out STD_LOGIC;
-      TRX_decoder_rx_rf09_chXX_center_pos           : out STD_LOGIC_VECTOR ( 7 downto 0 );
-      TRX_decoder_rx_rf09_chXX_strength             : out STD_LOGIC_VECTOR ( 18 downto 0 );
-      TRX_decoder_rx_rf09_chXX_noise                : out STD_LOGIC_VECTOR ( 18 downto 0 );
+      TRX_post_fft_rx_rf09_chXX_mem_b_addr          : out   STD_LOGIC_VECTOR(  4 downto 0 );
+      TRX_post_fft_rx_rf09_chXX_mem_b_dout          : in    STD_LOGIC_VECTOR( 15 downto 0 );
       
-      TRX_decoder_rx_rf09_chXX_squelch_lvl          : in  STD_LOGIC_VECTOR ( 15 downto 0 );
+      TRX_decoder_rx_rf09_chXX_active               : out   STD_LOGIC;
+      TRX_decoder_rx_rf09_chXX_sql_open             : out   STD_LOGIC;
+      TRX_decoder_rx_rf09_chXX_SoM_frameCtr         : out   STD_LOGIC_VECTOR( 31 downto 0 );
+      TRX_decoder_rx_rf09_chXX_center_pos           : out   STD_LOGIC_VECTOR(  7 downto 0 );
+      TRX_decoder_rx_rf09_chXX_strength             : out   STD_LOGIC_VECTOR( 18 downto 0 );
+      TRX_decoder_rx_rf09_chXX_noise                : out   STD_LOGIC_VECTOR( 18 downto 0 );
       
-      TRX_pushdata_rx_rf09_chXX_din                 : out STD_LOGIC_VECTOR ( 7 downto 0 );
-      TRX_pushdata_rx_rf09_chXX_wr_en               : out STD_LOGIC
+      TRX_decoder_rx_rf09_chXX_squelch_lvl          : in    STD_LOGIC_VECTOR( 15 downto 0 );
+      
+      TRX_pushdata_rx_rf09_chXX_req                 : out   STD_LOGIC;
+      TRX_pushdata_rx_rf09_chXX_grant               : in    STD_LOGIC;
+      
+      TRX_pushdata_rx_rf09_chXX_din                 : out   STD_LOGIC_VECTOR(  7 downto 0 );
+      TRX_pushdata_rx_rf09_chXX_wr_en               : out   STD_LOGIC
     );
   end component UFBmod_Decoder_wrapper;
   
@@ -77,26 +83,30 @@ architecture Behavioral of tb_UFBmod_Decoder is
   signal tb_clk_100MHz                              : STD_LOGIC;
 
 -- STIMULUS
-  signal tb_TRX_pre_fft_rx_rf09_mem_a_addr          : STD_LOGIC_VECTOR (10 downto 0);
+  signal tb_TRX_pre_fft_rx_rf09_mem_a_addr          : STD_LOGIC_VECTOR ( 10 downto 0 );
   
-  signal tb_TRX_post_fft_rx_rf09_mem_a_addr         : STD_LOGIC_VECTOR (41 downto 0);
-  signal tb_TRX_post_fft_rx_rf09_mem_a_addr_FrmCtr  : STD_LOGIC_VECTOR (31 downto 0);
-  signal tb_TRX_post_fft_rx_rf09_mem_a_addr_RAM     : STD_LOGIC_VECTOR ( 9 downto 0);
+  signal tb_TRX_post_fft_rx_rf09_mem_a_addr         : STD_LOGIC_VECTOR ( 41 downto 0 );
+  signal tb_TRX_post_fft_rx_rf09_mem_a_addr_FrmCtr  : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal tb_TRX_post_fft_rx_rf09_mem_a_addr_RAM     : STD_LOGIC_VECTOR (  9 downto 0 );
   signal tb_TRX_post_fft_rx_rf09_mem_a_EoT          : STD_LOGIC;
   
   signal tb_TRX_dds_tx_rf09_ptt                     : STD_LOGIC;
   
-  signal tb_TRX_post_fft_rx_rf09_chXX_mem_b_addr    : STD_LOGIC_VECTOR ( 9 downto 0);
-  signal tb_TRX_post_fft_rx_rf09_chXX_mem_b_dout_d0 : STD_LOGIC_VECTOR (15 downto 0);
-  signal tb_TRX_post_fft_rx_rf09_chXX_mem_b_dout    : STD_LOGIC_VECTOR (15 downto 0);
+  signal tb_TRX_post_fft_rx_rf09_ch00_mem_b_addr    : STD_LOGIC_VECTOR (  4 downto 0 );
+  signal tb_TRX_post_fft_rx_rf09_ch00_mem_b_dout_d0 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal tb_TRX_post_fft_rx_rf09_ch00_mem_b_dout    : STD_LOGIC_VECTOR ( 15 downto 0 );
   
-  signal tb_TRX_decoder_rx_rf09_chXX_active         : STD_LOGIC;
-  signal tb_TRX_decoder_rx_rf09_chXX_sql_open       : STD_LOGIC;
-  signal tb_TRX_decoder_rx_rf09_chXX_center_pos     : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal tb_TRX_decoder_rx_rf09_chXX_strength       : STD_LOGIC_VECTOR (18 downto 0 );
-  signal tb_TRX_decoder_rx_rf09_chXX_noise          : STD_LOGIC_VECTOR (18 downto 0 );
+  signal tb_TRX_decoder_rx_rf09_ch00_active         : STD_LOGIC;
+  signal tb_TRX_decoder_rx_rf09_ch00_sql_open       : STD_LOGIC;
+  signal tb_TRX_decoder_rx_rf09_ch00_SoM_frameCtr   : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal tb_TRX_decoder_rx_rf09_ch00_center_pos     : STD_LOGIC_VECTOR (  7 downto 0 );
+  signal tb_TRX_decoder_rx_rf09_ch00_strength       : STD_LOGIC_VECTOR ( 18 downto 0 );
+  signal tb_TRX_decoder_rx_rf09_ch00_noise          : STD_LOGIC_VECTOR ( 18 downto 0 );
   
-  signal tb_TRX_decoder_rx_rf09_chXX_squelch_lvl    : STD_LOGIC_VECTOR (15 downto 0);
+  signal tb_TRX_decoder_rx_rf09_ch00_squelch_lvl    : STD_LOGIC_VECTOR ( 15 downto 0 );
+  
+  signal tb_TRX_pushdata_rx_rf09_ch00_req           : STD_LOGIC;
+  signal tb_TRX_pushdata_rx_rf09_ch00_grant         : STD_LOGIC;
   
 begin
   
@@ -106,26 +116,32 @@ begin
   
   
 -- DUT
-  UFBmod_Decoder_rx09_chXX_bd: component UFBmod_Decoder_wrapper
+  UFBmod_Decoder_rx09_ch00_bd: component UFBmod_Decoder_wrapper
     port map (
         reset_100MHz                            => tb_reset_100MHz,
         clk_100MHz                              => tb_clk_100MHz,
+        
+        TRX_channel_rx_rf09_id                  => "000",
         
         TRX_dds_tx_rf09_ptt                     => tb_TRX_dds_tx_rf09_ptt,
 
         TRX_post_fft_rx_rf09_mem_a_addr         => tb_TRX_post_fft_rx_rf09_mem_a_addr,
         TRX_post_fft_rx_rf09_mem_a_EoT          => tb_TRX_post_fft_rx_rf09_mem_a_EoT,
         
-        TRX_post_fft_rx_rf09_chXX_mem_b_addr    => tb_TRX_post_fft_rx_rf09_chXX_mem_b_addr,
-        TRX_post_fft_rx_rf09_chXX_mem_b_dout    => tb_TRX_post_fft_rx_rf09_chXX_mem_b_dout,
+        TRX_post_fft_rx_rf09_chXX_mem_b_addr    => tb_TRX_post_fft_rx_rf09_ch00_mem_b_addr,
+        TRX_post_fft_rx_rf09_chXX_mem_b_dout    => tb_TRX_post_fft_rx_rf09_ch00_mem_b_dout,
         
-        TRX_decoder_rx_rf09_chXX_active         => tb_TRX_decoder_rx_rf09_chXX_active,
-        TRX_decoder_rx_rf09_chXX_sql_open       => tb_TRX_decoder_rx_rf09_chXX_sql_open,
-        TRX_decoder_rx_rf09_chXX_center_pos     => tb_TRX_decoder_rx_rf09_chXX_center_pos,
-        TRX_decoder_rx_rf09_chXX_strength       => tb_TRX_decoder_rx_rf09_chXX_strength,
-        TRX_decoder_rx_rf09_chXX_noise          => tb_TRX_decoder_rx_rf09_chXX_noise,
+        TRX_decoder_rx_rf09_chXX_active         => tb_TRX_decoder_rx_rf09_ch00_active,
+        TRX_decoder_rx_rf09_chXX_sql_open       => tb_TRX_decoder_rx_rf09_ch00_sql_open,
+        TRX_decoder_rx_rf09_chXX_SoM_frameCtr   => tb_TRX_decoder_rx_rf09_ch00_SoM_frameCtr,
+        TRX_decoder_rx_rf09_chXX_center_pos     => tb_TRX_decoder_rx_rf09_ch00_center_pos,
+        TRX_decoder_rx_rf09_chXX_strength       => tb_TRX_decoder_rx_rf09_ch00_strength,
+        TRX_decoder_rx_rf09_chXX_noise          => tb_TRX_decoder_rx_rf09_ch00_noise,
         
-        TRX_decoder_rx_rf09_chXX_squelch_lvl    => tb_TRX_decoder_rx_rf09_chXX_squelch_lvl
+        TRX_decoder_rx_rf09_chXX_squelch_lvl    => tb_TRX_decoder_rx_rf09_ch00_squelch_lvl,
+        
+        TRX_pushdata_rx_rf09_chXX_req           => tb_TRX_pushdata_rx_rf09_ch00_req,
+        TRX_pushdata_rx_rf09_chXX_grant         => tb_TRX_pushdata_rx_rf09_ch00_grant
     );
   
   
@@ -157,11 +173,11 @@ begin
   proc_squelch_lvl: process
   constant C_squelch_lvl_chXX                   : Integer   := 240;
   begin
-    tb_TRX_decoder_rx_rf09_chXX_squelch_lvl     <= (others => '0');
+    tb_TRX_decoder_rx_rf09_ch00_squelch_lvl     <= (others => '0');
     tb_TRX_dds_tx_rf09_ptt                      <= '0';
     
     wait until tb_reset_100MHz = '0';
-    tb_TRX_decoder_rx_rf09_chXX_squelch_lvl     <= std_logic_vector(to_unsigned(C_squelch_lvl_chXX, tb_TRX_decoder_rx_rf09_chXX_squelch_lvl'length));
+    tb_TRX_decoder_rx_rf09_ch00_squelch_lvl     <= std_logic_vector(to_unsigned(C_squelch_lvl_chXX, tb_TRX_decoder_rx_rf09_ch00_squelch_lvl'length));
     
     wait;
   end process proc_squelch_lvl;
@@ -268,7 +284,7 @@ begin
     variable C_fin_ary                                      : T_fin_ary := (C_fin_0, C_fin_1, C_fin_2, C_fin_3, C_fin_4, C_fin_5, C_fin_6, C_fin_7);
     
     
-    constant C_postmem_depth                                : Integer   := 1024;
+    constant C_postmem_depth                                : Integer   := 32;
     constant C_postmem_pages                                : Integer   := 256;
     constant C_postmemSim_depth                             : Integer   := C_postmem_pages * C_postmem_depth;
     constant C_startRow                                     : Integer   := 16;
@@ -303,9 +319,9 @@ begin
   --constant C_signal_080ct                                 : Integer   :=   7;     -- single-bit signal: 0x0100, 2nd: 0x009e (dBc:  -4.2dB)
   --constant C_signal_050ct                                 : Integer   :=   5;     -- double-bit signal: 0x11c7, 2nd: 0x0174 (dBc: -21.8dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
     
-    constant C_signal_100ct                                 : Integer   :=  10;     -- SNR=  0.0 dB // preamble signal: 0xffff, noise: 0x00a8, SQL-level: > 0x0090 (dBc: -53.2dB)
-    constant C_signal_080ct                                 : Integer   :=   8;     -- single-bit signal: 0x0100, 2nd: 0x009d (dBc:  -4.3dB)
-    constant C_signal_050ct                                 : Integer   :=   5;     -- double-bit signal: 0x1529, 2nd: 0x01a6 (dBc: -22.2dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
+  --constant C_signal_100ct                                 : Integer   :=  10;     -- SNR=  0.0 dB // preamble signal: 0xffff, noise: 0x00a8, SQL-level: > 0x0090 (dBc: -53.2dB)
+  --constant C_signal_080ct                                 : Integer   :=   8;     -- single-bit signal: 0x0100, 2nd: 0x009d (dBc:  -4.3dB)
+  --constant C_signal_050ct                                 : Integer   :=   5;     -- double-bit signal: 0x1529, 2nd: 0x01a6 (dBc: -22.2dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
     
   --constant C_signal_100ct                                 : Integer   :=  12;     -- SNR= +1.6 dB // preamble signal: 0xffff, noise: 0x00aa, SQL-level: > 0x0082 (dBc: -54.1dB)
   --constant C_signal_080ct                                 : Integer   :=  10;     -- single-bit signal: 0x0100, 2nd: 0x009b (dBc:  -4.4dB)
@@ -319,9 +335,9 @@ begin
   --constant C_signal_080ct                                 : Integer   := 160;     -- single-bit signal: 0x0100, 2nd: 0x004d (dBc: -10.4dB)
   --constant C_signal_050ct                                 : Integer   := 100;     -- double-bit signal: 0x167d, 2nd: 0x0037 (dBc: -40.4dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
     
-  --constant C_signal_100ct                                 : Integer   :=1000;     -- SNR=+40.0 dB // preamble signal: 0xffff, noise: 0x0486, SQL-level: > 0x0026 (dBc: -64.7dB)
-  --constant C_signal_080ct                                 : Integer   := 800;     -- single-bit signal: 0x0100, 2nd: 0x0018 (dBc: -20.6dB)
-  --constant C_signal_050ct                                 : Integer   := 500;     -- double-bit signal: 0x167d, 2nd: 0x0005 (dBc: -61.2dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
+    constant C_signal_100ct                                 : Integer   :=1000;     -- SNR=+40.0 dB // preamble signal: 0xffff, noise: 0x0486, SQL-level: > 0x0026 (dBc: -64.7dB)
+    constant C_signal_080ct                                 : Integer   := 800;     -- single-bit signal: 0x0100, 2nd: 0x0018 (dBc: -20.6dB)
+    constant C_signal_050ct                                 : Integer   := 500;     -- double-bit signal: 0x167d, 2nd: 0x0005 (dBc: -61.2dB)  -- mult_in := 0.75 * mult_out // mult_in max = 0x0240
     
     
     type PostMemType                                        is array ((C_postmemSim_depth - 1) downto 0) of Integer  range 0 to (2**16 - 1); 
@@ -329,7 +345,7 @@ begin
     
     variable row                                            : Integer;
     variable sigPos                                         : Integer;
-    variable tb_TRX_post_fft_rx_rf09_chXX_mem_b_dout_d0_Int : Integer;
+    variable tb_TRX_post_fft_rx_rf09_ch00_mem_b_dout_d0_Int : Integer;
     variable getAddrIn                                      : Integer;
     variable getAddrIn_d1                                   : Integer;
     variable getAddrPage                                    : Integer;
@@ -342,8 +358,8 @@ begin
   begin
     -- Position address pointer just before change of full 1024 frame
   --post_fft_rx09_mem_b_dout_Int    := 5;
-    tb_TRX_post_fft_rx_rf09_chXX_mem_b_dout     <= (others => '0');
-    tb_TRX_post_fft_rx_rf09_chXX_mem_b_dout_d0  <= (others => '0');
+    tb_TRX_post_fft_rx_rf09_ch00_mem_b_dout     <= (others => '0');
+    tb_TRX_post_fft_rx_rf09_ch00_mem_b_dout_d0  <= (others => '0');
     
     getAddrIn       := 0;
     getAddrIn_d1    := 0;
@@ -354,193 +370,194 @@ begin
     row := C_startRow;
     
     -- PA ramp-up
-    postmemSim(row * 1024 + ((16 + C_centerOfs + 0        ) mod 32))  := C_signal_050ct;  row := row + 2; -- all is moduleo 32
-    postmemSim(row * 1024 + ((16 + C_centerOfs + 0        ) mod 32))  := C_signal_080ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth + ((16 + C_centerOfs + 0        ) mod 32))  := C_signal_050ct;  row := row + 2; -- all is moduleo 32
+    postmemSim(row * C_postmem_depth + ((16 + C_centerOfs + 0        ) mod 32))  := C_signal_080ct;  row := row + 2;
     
     -- Preamble
     for ii in 0 to 15 loop
-        postmemSim(row * 1024 + ((16 + C_centerOfs + C_pre_ary(ii)) mod 32))  := C_signal_100ct;  row := row + 2;
+        postmemSim(row * C_postmem_depth + ((16 + C_centerOfs + C_pre_ary(ii)) mod 32))  := C_signal_100ct;  row := row + 2;
     end loop;
     
     
     -- Message body
+    -- For each channel there is an own 32 bin width row - here we fill ch00, only.
     sigPos := (16 + C_centerOfs       ) mod 32;
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1' = 0xac
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     
     sigPos := (16 + C_centerOfs       ) mod 32;
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0' = 0x53
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     
     sigPos := (16 + C_centerOfs       ) mod 32;
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1' = 0xe2
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     
     sigPos := (16 + C_centerOfs       ) mod 32;
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0' = 0x0f
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_0_0) mod 32;       -- '0'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_0_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     
     sigPos := (32 + sigPos + C_bit_1_0) mod 32;       -- '1'
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     sigPos := (32 + sigPos + C_bit_1_1) mod 32;
-    postmemSim(row * 1024       +  sigPos)                          := C_signal_100ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth +  sigPos)                     := C_signal_100ct;  row := row + 2;
     -- End of message
     
     
     -- Final
     for ii in 0 to 7 loop
-        postmemSim(row * 1024 + ((16 + C_centerOfs + C_fin_ary(ii)) mod 32))  := C_signal_100ct;  row := row + 2;
+        postmemSim(row * C_postmem_depth + ((16 + C_centerOfs + C_fin_ary(ii)) mod 32))  := C_signal_100ct;  row := row + 2;
     end loop;
     
     -- PA ramp-down
-    postmemSim(row * 1024 + ((16 + C_centerOfs + 0      ) mod 32))  := C_signal_080ct;  row := row + 2;
-    postmemSim(row * 1024 + ((16 + C_centerOfs + 0      ) mod 32))  := C_signal_050ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth + ((16 + C_centerOfs + 0      ) mod 32))  := C_signal_080ct;  row := row + 2;
+    postmemSim(row * C_postmem_depth + ((16 + C_centerOfs + 0      ) mod 32))  := C_signal_050ct;  row := row + 2;
     
     
     -- Add 'noise' floor
@@ -561,17 +578,30 @@ begin
         
         -- Delay output by 2 clocks
         getAddrIn_d1                        := getAddrIn;
-        getAddrIn                           := to_integer(unsigned(tb_TRX_post_fft_rx_rf09_chXX_mem_b_addr));
+        getAddrIn                           := to_integer(unsigned(tb_TRX_post_fft_rx_rf09_ch00_mem_b_addr));
         if (tb_TRX_post_fft_rx_rf09_mem_a_EoT = '1') then
             getAddrPage := (getAddrPage + 1) mod C_postmem_pages;
         end if;
         readAddr                            := getAddrIn + (getAddrPage * C_postmem_depth);
         
-        tb_TRX_post_fft_rx_rf09_chXX_mem_b_dout_d0_Int  := postmemSim(readAddr mod C_postmemSim_depth);
-        tb_TRX_post_fft_rx_rf09_chXX_mem_b_dout         <= tb_TRX_post_fft_rx_rf09_chXX_mem_b_dout_d0;
-        tb_TRX_post_fft_rx_rf09_chXX_mem_b_dout_d0      <= std_logic_vector(to_unsigned(tb_TRX_post_fft_rx_rf09_chXX_mem_b_dout_d0_Int, tb_TRX_post_fft_rx_rf09_chXX_mem_b_dout_d0'length));
+        tb_TRX_post_fft_rx_rf09_ch00_mem_b_dout_d0_Int  := postmemSim(readAddr mod C_postmemSim_depth);
+        tb_TRX_post_fft_rx_rf09_ch00_mem_b_dout         <= tb_TRX_post_fft_rx_rf09_ch00_mem_b_dout_d0;
+        tb_TRX_post_fft_rx_rf09_ch00_mem_b_dout_d0      <= std_logic_vector(to_unsigned(tb_TRX_post_fft_rx_rf09_ch00_mem_b_dout_d0_Int, tb_TRX_post_fft_rx_rf09_ch00_mem_b_dout_d0'length));
     end loop;
     
   end process proc_tb_b_dout;
+  
+  
+  proc_tb_fifo_arbiter: process
+  begin
+    tb_TRX_pushdata_rx_rf09_ch00_grant <= '0';
+    
+    wait until tb_reset_100MHz = '0';
+    loop
+        wait until tb_clk_100MHz'event and tb_clk_100MHz = '1';
+        
+        tb_TRX_pushdata_rx_rf09_ch00_grant  <= tb_TRX_pushdata_rx_rf09_ch00_req;
+    end loop;
+  end process proc_tb_fifo_arbiter;
   
 end Behavioral;
