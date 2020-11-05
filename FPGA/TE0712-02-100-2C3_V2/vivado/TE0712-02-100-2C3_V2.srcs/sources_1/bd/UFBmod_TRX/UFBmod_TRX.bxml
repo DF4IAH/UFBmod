@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="UFBmod_TRX" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1604514331"/>
-    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1604514331"/>
-    <Generation Name="SIMULATION" State="RESET" Timestamp="1604514331"/>
-    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1604514331"/>
+    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1604603089"/>
+    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1604603089"/>
+    <Generation Name="SIMULATION" State="RESET" Timestamp="1604603089"/>
+    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1604603089"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\UFBmod_TRX_TRX_proc_sys_reset_0_1\UFBmod_TRX_TRX_proc_sys_reset_0_1.xci" Type="IP">
         <Instance HierarchyPath="TRX_proc_sys_reset_0"/>
@@ -511,14 +511,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip\UFBmod_TRX_pushdata_rx09_axi_gpio_0_1\UFBmod_TRX_pushdata_rx09_axi_gpio_0_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX_rx_FFT_unit/PUSHDATA/pushdata_rx09_axi_gpio_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip\UFBmod_TRX_pushdata_rx09_xlconcat_0_1\UFBmod_TRX_pushdata_rx09_xlconcat_0_1.xci" Type="IP">
         <Instance HierarchyPath="TRX_rx_FFT_unit/PUSHDATA/pushdata_rx09_xlconcat_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -561,22 +553,6 @@
       </File>
       <File Name="ip\UFBmod_TRX_TRX_gpio_xlslice_30downto30_rfxmode_0_1\UFBmod_TRX_TRX_gpio_xlslice_30downto30_rfxmode_0_1.xci" Type="IP">
         <Instance HierarchyPath="TRX_config/TRX_gpio_xlslice_30downto30_rfxmode_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\UFBmod_TRX_axi_TRX_gpio_0_1\UFBmod_TRX_axi_TRX_gpio_0_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX_config/axi_TRX_gpio_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\UFBmod_TRX_TRX_axi_quad_spi_0_1\UFBmod_TRX_TRX_axi_quad_spi_0_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX_config/TRX_axi_quad_spi_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -735,14 +711,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip\UFBmod_TRX_TRX_tx_dds_inc_axi_gpio_0_1\UFBmod_TRX_TRX_tx_dds_inc_axi_gpio_0_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX_tx_DDS_unit/TRX_tx_dds_inc_axi_gpio_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip\UFBmod_TRX_TRX_tx0_dds_compiler_0_1\UFBmod_TRX_TRX_tx0_dds_compiler_0_1.xci" Type="IP">
         <Instance HierarchyPath="TRX_tx_DDS_unit/TRX_tx0_dds_compiler_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -761,14 +729,6 @@
       </File>
       <File Name="ip\UFBmod_TRX_xlconstant_val1_len1_9\UFBmod_TRX_xlconstant_val1_len1_9.xci" Type="IP">
         <Instance HierarchyPath="TRX_tx_DDS_unit/xlconstant_val1_len1"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\UFBmod_TRX_TRX_tx_dds_ampt_axi_gpio_0_1\UFBmod_TRX_TRX_tx_dds_ampt_axi_gpio_0_1.xci" Type="IP">
-        <Instance HierarchyPath="TRX_tx_DDS_unit/TRX_tx_dds_ampt_axi_gpio_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

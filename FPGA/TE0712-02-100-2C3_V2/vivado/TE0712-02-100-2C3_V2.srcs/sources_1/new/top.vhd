@@ -163,109 +163,25 @@ architecture STRUCTURE of top is
     SCOPE_FSM_GPIO1_In : in STD_LOGIC_VECTOR ( 31 downto 0 );
     SCOPE_FSM_Timebase_CE : in STD_LOGIC;
     SCOPE_FSM_TrigSrc : out STD_LOGIC_VECTOR ( 47 downto 0 );
-    TRX_M11_AXI_araddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M11_AXI_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    TRX_M11_AXI_arready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M11_AXI_arvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M11_AXI_awaddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M11_AXI_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    TRX_M11_AXI_awready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M11_AXI_awvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M11_AXI_bready : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M11_AXI_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_M11_AXI_bvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M11_AXI_rdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M11_AXI_rready : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M11_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_M11_AXI_rvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M11_AXI_wdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M11_AXI_wready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M11_AXI_wstrb : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    TRX_M11_AXI_wvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M12_AXI_araddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M12_AXI_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    TRX_M12_AXI_arready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M12_AXI_arvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M12_AXI_awaddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M12_AXI_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    TRX_M12_AXI_awready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M12_AXI_awvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M12_AXI_bready : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M12_AXI_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_M12_AXI_bvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M12_AXI_rdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M12_AXI_rready : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M12_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_M12_AXI_rvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M12_AXI_wdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M12_AXI_wready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M12_AXI_wstrb : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    TRX_M12_AXI_wvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M13_AXI_araddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M13_AXI_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    TRX_M13_AXI_arready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M13_AXI_arvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M13_AXI_awaddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M13_AXI_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    TRX_M13_AXI_awready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M13_AXI_awvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M13_AXI_bready : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M13_AXI_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_M13_AXI_bvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M13_AXI_rdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M13_AXI_rready : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M13_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_M13_AXI_rvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M13_AXI_wdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M13_AXI_wready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M13_AXI_wstrb : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    TRX_M13_AXI_wvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M19_AXI_araddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M19_AXI_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    TRX_M19_AXI_arready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M19_AXI_arvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M19_AXI_awaddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M19_AXI_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    TRX_M19_AXI_awready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M19_AXI_awvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M19_AXI_bready : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M19_AXI_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_M19_AXI_bvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M19_AXI_rdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M19_AXI_rready : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M19_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_M19_AXI_rvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M19_AXI_wdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M19_AXI_wready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M19_AXI_wstrb : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    TRX_M19_AXI_wvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M20_AXI_araddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M20_AXI_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    TRX_M20_AXI_arready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M20_AXI_arvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M20_AXI_awaddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M20_AXI_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    TRX_M20_AXI_awready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M20_AXI_awvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M20_AXI_bready : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M20_AXI_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_M20_AXI_bvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M20_AXI_rdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M20_AXI_rready : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M20_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_M20_AXI_rvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M20_AXI_wdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_M20_AXI_wready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_M20_AXI_wstrb : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    TRX_M20_AXI_wvalid : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_CONFIG_GPIO1_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_CONFIG_GPIO2_i : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_CONFIG_SPI_io0_io : inout STD_LOGIC;
+    TRX_CONFIG_SPI_io1_io : inout STD_LOGIC;
+    TRX_CONFIG_SPI_sck_io : inout STD_LOGIC;
+    TRX_CONFIG_SPI_ss_io : inout STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_RX_PUSHDATA_GPIO1_i : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_RX_PUSHDATA_GPIO2_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_TX_DDSAMPL_GPIO1_o : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_TX_DDSAMPL_GPIO2_o : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_TX_DDS_GPIO1_i : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_TX_DDS_GPIO1_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_TX_DDS_GPIO2_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_TX_RF09_PULLDATA_FIFO_empty : in STD_LOGIC;
     TRX_clk_trx_26MHz_vio : in STD_LOGIC;
     TRX_clk_trx_pll_25MHz_vio : in STD_LOGIC;
     TRX_data_count : in STD_LOGIC_VECTOR ( 11 downto 0 );
     TRX_decoder_rx09_ch00_squelch_lvl : in STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_int : in STD_LOGIC;
-    TRX_ip2intc_irpt : in STD_LOGIC;
-    TRX_pushdata_rx09_irpt : in STD_LOGIC;
     TRX_rd_data_count_CD100 : in STD_LOGIC_VECTOR ( 8 downto 0 );
     TRX_rx09_32bits_CD100 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx24_32bits_CD100 : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -426,209 +342,126 @@ architecture STRUCTURE of top is
   end component EUI48_FSM;
   component UFBmod_TRX_wrapper is
   port (
-    FFT_window_coef_rom_rx09                            : in    STD_LOGIC_VECTOR (  9 downto 0 );
-    RF09_framectr                                       : in    STD_LOGIC_VECTOR ( 29 downto 0 );
-    RF09_quarterfrm                                     : in    STD_LOGIC_VECTOR (  1 downto 0 );
-    S11_AXI_spi_araddr                                  : in    STD_LOGIC_VECTOR (  6 downto 0 );
-    S11_AXI_spi_arready                                 : out   STD_LOGIC;
-    S11_AXI_spi_arvalid                                 : in    STD_LOGIC;
-    S11_AXI_spi_awaddr                                  : in    STD_LOGIC_VECTOR (  6 downto 0 );
-    S11_AXI_spi_awready                                 : out   STD_LOGIC;
-    S11_AXI_spi_awvalid                                 : in    STD_LOGIC;
-    S11_AXI_spi_bready                                  : in    STD_LOGIC;
-    S11_AXI_spi_bresp                                   : out   STD_LOGIC_VECTOR (  1 downto 0 );
-    S11_AXI_spi_bvalid                                  : out   STD_LOGIC;
-    S11_AXI_spi_rdata                                   : out   STD_LOGIC_VECTOR ( 31 downto 0 );
-    S11_AXI_spi_rready                                  : in    STD_LOGIC;
-    S11_AXI_spi_rresp                                   : out   STD_LOGIC_VECTOR (  1 downto 0 );
-    S11_AXI_spi_rvalid                                  : out   STD_LOGIC;
-    S11_AXI_spi_wdata                                   : in    STD_LOGIC_VECTOR ( 31 downto 0 );
-    S11_AXI_spi_wready                                  : out   STD_LOGIC;
-    S11_AXI_spi_wstrb                                   : in    STD_LOGIC_VECTOR (  3 downto 0 );
-    S11_AXI_spi_wvalid                                  : in    STD_LOGIC;
-    S12_AXI_gpio_araddr                                 : in    STD_LOGIC_VECTOR (  8 downto 0 );
-    S12_AXI_gpio_arready                                : out   STD_LOGIC;
-    S12_AXI_gpio_arvalid                                : in    STD_LOGIC;
-    S12_AXI_gpio_awaddr                                 : in    STD_LOGIC_VECTOR (  8 downto 0 );
-    S12_AXI_gpio_awready                                : out   STD_LOGIC;
-    S12_AXI_gpio_awvalid                                : in    STD_LOGIC;
-    S12_AXI_gpio_bready                                 : in    STD_LOGIC;
-    S12_AXI_gpio_bresp                                  : out   STD_LOGIC_VECTOR (  1 downto 0 );
-    S12_AXI_gpio_bvalid                                 : out   STD_LOGIC;
-    S12_AXI_gpio_rdata                                  : out   STD_LOGIC_VECTOR ( 31 downto 0 );
-    S12_AXI_gpio_rready                                 : in    STD_LOGIC;
-    S12_AXI_gpio_rresp                                  : out   STD_LOGIC_VECTOR (  1 downto 0 );
-    S12_AXI_gpio_rvalid                                 : out   STD_LOGIC;
-    S12_AXI_gpio_wdata                                  : in    STD_LOGIC_VECTOR ( 31 downto 0 );
-    S12_AXI_gpio_wready                                 : out   STD_LOGIC;
-    S12_AXI_gpio_wstrb                                  : in    STD_LOGIC_VECTOR (  3 downto 0 );
-    S12_AXI_gpio_wvalid                                 : in    STD_LOGIC;
-    S13_AXI_dds_araddr                                  : in    STD_LOGIC_VECTOR (  8 downto 0 );
-    S13_AXI_dds_arready                                 : out   STD_LOGIC;
-    S13_AXI_dds_arvalid                                 : in    STD_LOGIC;
-    S13_AXI_dds_awaddr                                  : in    STD_LOGIC_VECTOR (  8 downto 0 );
-    S13_AXI_dds_awready                                 : out   STD_LOGIC;
-    S13_AXI_dds_awvalid                                 : in    STD_LOGIC;
-    S13_AXI_dds_bready                                  : in    STD_LOGIC;
-    S13_AXI_dds_bresp                                   : out   STD_LOGIC_VECTOR (  1 downto 0 );
-    S13_AXI_dds_bvalid                                  : out   STD_LOGIC;
-    S13_AXI_dds_rdata                                   : out   STD_LOGIC_VECTOR ( 31 downto 0 );
-    S13_AXI_dds_rready                                  : in    STD_LOGIC;
-    S13_AXI_dds_rresp                                   : out   STD_LOGIC_VECTOR (  1 downto 0 );
-    S13_AXI_dds_rvalid                                  : out   STD_LOGIC;
-    S13_AXI_dds_wdata                                   : in    STD_LOGIC_VECTOR ( 31 downto 0 );
-    S13_AXI_dds_wready                                  : out   STD_LOGIC;
-    S13_AXI_dds_wstrb                                   : in    STD_LOGIC_VECTOR (  3 downto 0 );
-    S13_AXI_dds_wvalid                                  : in    STD_LOGIC;
-    S19_AXI_araddr                                      : in    STD_LOGIC_VECTOR (  8 downto 0 );
-    S19_AXI_arready                                     : out   STD_LOGIC;
-    S19_AXI_arvalid                                     : in    STD_LOGIC;
-    S19_AXI_awaddr                                      : in    STD_LOGIC_VECTOR (  8 downto 0 );
-    S19_AXI_awready                                     : out   STD_LOGIC;
-    S19_AXI_awvalid                                     : in    STD_LOGIC;
-    S19_AXI_bready                                      : in    STD_LOGIC;
-    S19_AXI_bresp                                       : out   STD_LOGIC_VECTOR (  1 downto 0 );
-    S19_AXI_bvalid                                      : out   STD_LOGIC;
-    S19_AXI_rdata                                       : out   STD_LOGIC_VECTOR ( 31 downto 0 );
-    S19_AXI_rready                                      : in    STD_LOGIC;
-    S19_AXI_rresp                                       : out   STD_LOGIC_VECTOR (  1 downto 0 );
-    S19_AXI_rvalid                                      : out   STD_LOGIC;
-    S19_AXI_wdata                                       : in    STD_LOGIC_VECTOR ( 31 downto 0 );
-    S19_AXI_wready                                      : out   STD_LOGIC;
-    S19_AXI_wstrb                                       : in    STD_LOGIC_VECTOR (  3 downto 0 );
-    S19_AXI_wvalid                                      : in    STD_LOGIC;
-    S20_AXI1_araddr                                     : in    STD_LOGIC_VECTOR (  8 downto 0 );
-    S20_AXI1_arready                                    : out   STD_LOGIC;
-    S20_AXI1_arvalid                                    : in    STD_LOGIC;
-    S20_AXI1_awaddr                                     : in    STD_LOGIC_VECTOR (  8 downto 0 );
-    S20_AXI1_awready                                    : out   STD_LOGIC;
-    S20_AXI1_awvalid                                    : in    STD_LOGIC;
-    S20_AXI1_bready                                     : in    STD_LOGIC;
-    S20_AXI1_bresp                                      : out   STD_LOGIC_VECTOR (  1 downto 0 );
-    S20_AXI1_bvalid                                     : out   STD_LOGIC;
-    S20_AXI1_rdata                                      : out   STD_LOGIC_VECTOR ( 31 downto 0 );
-    S20_AXI1_rready                                     : in    STD_LOGIC;
-    S20_AXI1_rresp                                      : out   STD_LOGIC_VECTOR (  1 downto 0 );
-    S20_AXI1_rvalid                                     : out   STD_LOGIC;
-    S20_AXI1_wdata                                      : in    STD_LOGIC_VECTOR ( 31 downto 0 );
-    S20_AXI1_wready                                     : out   STD_LOGIC;
-    S20_AXI1_wstrb                                      : in    STD_LOGIC_VECTOR (  3 downto 0 );
-    S20_AXI1_wvalid                                     : in    STD_LOGIC;
-    Status_LVDS_rx09_synced                             : in    STD_LOGIC;
-    Status_LVDS_rx24_synced                             : in    STD_LOGIC;
-    TRX_PLL_clk_25MHz_n                                 : out   STD_LOGIC_VECTOR (  0 to 0 );
-    TRX_PLL_clk_25MHz_p                                 : out   STD_LOGIC_VECTOR (  0 to 0 );
-    TRX_PUSHDATA_ch00_din                               : in    STD_LOGIC_VECTOR ( 7 downto 0 );
-    TRX_PUSHDATA_ch00_grant                             : out   STD_LOGIC;
-    TRX_PUSHDATA_ch00_req                               : in    STD_LOGIC;
-    TRX_PUSHDATA_ch00_wr_en                             : in    STD_LOGIC;
-    TRX_PUSHDATA_ch01_din                               : in    STD_LOGIC_VECTOR ( 7 downto 0 );
-    TRX_PUSHDATA_ch01_grant                             : out   STD_LOGIC;
-    TRX_PUSHDATA_ch01_req                               : in    STD_LOGIC;
-    TRX_PUSHDATA_ch01_wr_en                             : in    STD_LOGIC;
-    TRX_PUSHDATA_ch02_din                               : in    STD_LOGIC_VECTOR ( 7 downto 0 );
-    TRX_PUSHDATA_ch02_grant                             : out   STD_LOGIC;
-    TRX_PUSHDATA_ch02_req                               : in    STD_LOGIC;
-    TRX_PUSHDATA_ch02_wr_en                             : in    STD_LOGIC;
-    TRX_PUSHDATA_ch03_din                               : in    STD_LOGIC_VECTOR ( 7 downto 0 );
-    TRX_PUSHDATA_ch03_grant                             : out   STD_LOGIC;
-    TRX_PUSHDATA_ch03_req                               : in    STD_LOGIC;
-    TRX_PUSHDATA_ch03_wr_en                             : in    STD_LOGIC;
-    TRX_PUSHDATA_ch04_din                               : in    STD_LOGIC_VECTOR ( 7 downto 0 );
-    TRX_PUSHDATA_ch04_grant                             : out   STD_LOGIC;
-    TRX_PUSHDATA_ch04_req                               : in    STD_LOGIC;
-    TRX_PUSHDATA_ch04_wr_en                             : in    STD_LOGIC;
-    TRX_PUSHDATA_ch05_din                               : in    STD_LOGIC_VECTOR ( 7 downto 0 );
-    TRX_PUSHDATA_ch05_grant                             : out   STD_LOGIC;
-    TRX_PUSHDATA_ch05_req                               : in    STD_LOGIC;
-    TRX_PUSHDATA_ch05_wr_en                             : in    STD_LOGIC;
-    TRX_PUSHDATA_ch06_din                               : in    STD_LOGIC_VECTOR ( 7 downto 0 );
-    TRX_PUSHDATA_ch06_grant                             : out   STD_LOGIC;
-    TRX_PUSHDATA_ch06_req                               : in    STD_LOGIC;
-    TRX_PUSHDATA_ch06_wr_en                             : in    STD_LOGIC;
-    TRX_PUSHDATA_ch07_din                               : in    STD_LOGIC_VECTOR ( 7 downto 0 );
-    TRX_PUSHDATA_ch07_grant                             : out   STD_LOGIC;
-    TRX_PUSHDATA_ch07_req                               : in    STD_LOGIC;
-    TRX_PUSHDATA_ch07_wr_en                             : in    STD_LOGIC;
-    TRX_TX_RF09_PULLDATA_FIFO_empty                     : out   STD_LOGIC;
-    TRX_clk_26MHz                                       : in    STD_LOGIC;
-    TRX_clk_trx_26MHz_vio                               : out   STD_LOGIC;
-    TRX_clk_trx_pll_25MHz_vio                           : out   STD_LOGIC;
-    TRX_data_count                                      : out   STD_LOGIC_VECTOR ( 11 downto 0 );
-    TRX_decoder_rx09_squelch_lvl                        : out   STD_LOGIC_VECTOR ( 15 downto 0 );
-    TRX_encoder_tx09_pull_FIFO_dump                     : out   STD_LOGIC_VECTOR (  0 to 0 );
-    TRX_encoder_tx09_pull_data_len                      : out   STD_LOGIC_VECTOR (  6 downto 0 );
-    TRX_encoder_tx09_pull_do_start                      : out   STD_LOGIC_VECTOR (  0 to 0 );
-    TRX_fft09_data_tready_out                           : out   STD_LOGIC;
-    TRX_ip2intc_irpt                                    : out   STD_LOGIC;
-    TRX_post_fft_mem_a_rx09_EoT                         : out   STD_LOGIC;
-    TRX_post_fft_rx09_mem_a_addr                        : out   STD_LOGIC_VECTOR ( 41 downto 0 );
-    TRX_pulldata_tx09_byteData                          : out   STD_LOGIC_VECTOR (  7 downto 0 );
-    TRX_pushdata_rx09_irpt                              : out   STD_LOGIC;
-    TRX_rd_data_count_CD100_o                           : out   STD_LOGIC_VECTOR (  8 downto 0 );
-    TRX_resetn                                          : out   STD_LOGIC_VECTOR (  0 to 0 );
-    TRX_rfx_mode                                        : out   STD_LOGIC_VECTOR (  0 to 0 );
-    TRX_rx09_32bits_CD100                               : out   STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_rx09_fifo                                       : out   STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_rx09_fifo_valid                                 : out   STD_LOGIC;
-    TRX_rx24_32bits_CD100                               : out   STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_rx24_fifo                                       : out   STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_rx24_fifo_valid                                 : out   STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_n                              : in    STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_p                              : in    STD_LOGIC;
-    TRX_rx_clkdiv_16MHz                                 : out   STD_LOGIC_VECTOR (  0 to 0 );
-    TRX_rx_data_n                                       : in    STD_LOGIC_VECTOR (  1 downto 0 );
-    TRX_rx_data_p                                       : in    STD_LOGIC_VECTOR (  1 downto 0 );
-    TRX_rx_rf09_Pre_FFT_mem_addrb                       : in    STD_LOGIC_VECTOR ( 10 downto 0 );
-    TRX_rx_rf09_ch00_Post_FFT_mem_b_addr                : in    STD_LOGIC_VECTOR (  4 downto 0 );
-    TRX_rx_rf09_ch00_Post_FFT_mem_b_dout                : out   STD_LOGIC_VECTOR ( 15 downto 0 );
-    TRX_rx_rf09_ch01_Post_FFT_mem_b_addr                : in    STD_LOGIC_VECTOR (  4 downto 0 );
-    TRX_rx_rf09_ch01_Post_FFT_mem_b_dout                : out   STD_LOGIC_VECTOR ( 15 downto 0 );
-    TRX_rx_rf09_ch02_Post_FFT_mem_b_addr                : in    STD_LOGIC_VECTOR (  4 downto 0 );
-    TRX_rx_rf09_ch02_Post_FFT_mem_b_dout                : out   STD_LOGIC_VECTOR ( 15 downto 0 );
-    TRX_rx_rf09_ch03_Post_FFT_mem_b_addr                : in    STD_LOGIC_VECTOR (  4 downto 0 );
-    TRX_rx_rf09_ch03_Post_FFT_mem_b_dout                : out   STD_LOGIC_VECTOR ( 15 downto 0 );
-    TRX_rx_rf09_ch04_Post_FFT_mem_b_addr                : in    STD_LOGIC_VECTOR (  4 downto 0 );
-    TRX_rx_rf09_ch04_Post_FFT_mem_b_dout                : out   STD_LOGIC_VECTOR ( 15 downto 0 );
-    TRX_rx_rf09_ch05_Post_FFT_mem_b_addr                : in    STD_LOGIC_VECTOR (  4 downto 0 );
-    TRX_rx_rf09_ch05_Post_FFT_mem_b_dout                : out   STD_LOGIC_VECTOR ( 15 downto 0 );
-    TRX_rx_rf09_ch06_Post_FFT_mem_b_addr                : in    STD_LOGIC_VECTOR (  4 downto 0 );
-    TRX_rx_rf09_ch06_Post_FFT_mem_b_dout                : out   STD_LOGIC_VECTOR ( 15 downto 0 );
-    TRX_rx_rf09_ch07_Post_FFT_mem_b_addr                : in    STD_LOGIC_VECTOR (  4 downto 0 );
-    TRX_rx_rf09_ch07_Post_FFT_mem_b_dout                : out   STD_LOGIC_VECTOR ( 15 downto 0 );
-    TRX_spi_io0_io                                      : inout STD_LOGIC;
-    TRX_spi_io1_io                                      : inout STD_LOGIC;
-    TRX_spi_sck_io                                      : inout STD_LOGIC;
-    TRX_spi_ss_io                                       : inout STD_LOGIC_VECTOR (  0 to 0 );
-    TRX_tx_DDS0_gpio_ampt                               : out   STD_LOGIC_VECTOR ( 15 downto 0 );
-    TRX_tx_DDS0_gpio_inc                                : out   STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_tx_DDS1_gpio_ampt                               : out   STD_LOGIC_VECTOR ( 15 downto 0 );
-    TRX_tx_clk_clk_n                                    : out   STD_LOGIC;
-    TRX_tx_clk_clk_p                                    : out   STD_LOGIC;
-    TRX_tx_data_n                                       : out   STD_LOGIC_VECTOR (  1 downto 0 );
-    TRX_tx_data_p                                       : out   STD_LOGIC_VECTOR (  1 downto 0 );
-    TRX_tx_im_out                                       : out   STD_LOGIC_VECTOR ( 20 downto 8 );
-    TRX_tx_re_out                                       : out   STD_LOGIC_VECTOR ( 20 downto 8 );
-    TRX_xfft_rx09_dly3449_event_data_in_channel_halt    : out   STD_LOGIC;
-    TRX_xfft_rx09_dly3449_event_frame_started           : out   STD_LOGIC;
-    TRX_xfft_rx09_dly3449_event_tlast_missing           : out   STD_LOGIC;
-    TRX_xfft_rx09_dly3449_event_tlast_unexpected        : out   STD_LOGIC;
-    dds_tx09_ptt_in                                     : in    STD_LOGIC;
-    fft09_config_tdata_in                               : in    STD_LOGIC_VECTOR (  7 downto 0 );
-    fft09_config_tvalid_in                              : in    STD_LOGIC;
-    fft09_data_tlast_in                                 : in    STD_LOGIC;
-    fft09_data_tvalid_in                                : in    STD_LOGIC;
-    microblaze_0_Clk_100MHz                             : in    STD_LOGIC;
-    mig_7series_0_mmcm_locked                           : in    STD_LOGIC;
-    mig_7series_0_ui_addn_clk_0_200MHz                  : in    STD_LOGIC;
-    mig_7series_0_ui_clk_sync_rst                       : in    STD_LOGIC;
-    premem_rx09_addra_in                                : in    STD_LOGIC_VECTOR ( 10 downto 0 );
-    premem_rx09_dina_in                                 : in    STD_LOGIC_VECTOR ( 25 downto 0 );
-    premem_rx09_wea_in                                  : in    STD_LOGIC;
-    pulldata_dds_inc                                    : in    STD_LOGIC_VECTOR ( 25 downto 0 );
-    pulldata_tx09_en                                    : in    STD_LOGIC;
-    rst_mig_7series_0_100M_peripheral_aresetn           : in    STD_LOGIC;
-    rst_mig_7series_0_100M_peripheral_reset             : in    STD_LOGIC
+    FFT_window_coef_rom_rx09 : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    RF09_framectr : in STD_LOGIC_VECTOR ( 29 downto 0 );
+    RF09_quarterfrm : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    Status_LVDS_rx09_synced : in STD_LOGIC;
+    Status_LVDS_rx24_synced : in STD_LOGIC;
+    TRX_CONFIG_GPIO1_o : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_CONFIG_GPIO2_i : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_PLL_clk_25MHz_n : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_PLL_clk_25MHz_p : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_PUSHDATA_ch00_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_PUSHDATA_ch00_grant : out STD_LOGIC;
+    TRX_PUSHDATA_ch00_req : in STD_LOGIC;
+    TRX_PUSHDATA_ch00_wr_en : in STD_LOGIC;
+    TRX_PUSHDATA_ch01_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_PUSHDATA_ch01_grant : out STD_LOGIC;
+    TRX_PUSHDATA_ch01_req : in STD_LOGIC;
+    TRX_PUSHDATA_ch01_wr_en : in STD_LOGIC;
+    TRX_PUSHDATA_ch02_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_PUSHDATA_ch02_grant : out STD_LOGIC;
+    TRX_PUSHDATA_ch02_req : in STD_LOGIC;
+    TRX_PUSHDATA_ch02_wr_en : in STD_LOGIC;
+    TRX_PUSHDATA_ch03_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_PUSHDATA_ch03_grant : out STD_LOGIC;
+    TRX_PUSHDATA_ch03_req : in STD_LOGIC;
+    TRX_PUSHDATA_ch03_wr_en : in STD_LOGIC;
+    TRX_PUSHDATA_ch04_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_PUSHDATA_ch04_grant : out STD_LOGIC;
+    TRX_PUSHDATA_ch04_req : in STD_LOGIC;
+    TRX_PUSHDATA_ch04_wr_en : in STD_LOGIC;
+    TRX_PUSHDATA_ch05_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_PUSHDATA_ch05_grant : out STD_LOGIC;
+    TRX_PUSHDATA_ch05_req : in STD_LOGIC;
+    TRX_PUSHDATA_ch05_wr_en : in STD_LOGIC;
+    TRX_PUSHDATA_ch06_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_PUSHDATA_ch06_grant : out STD_LOGIC;
+    TRX_PUSHDATA_ch06_req : in STD_LOGIC;
+    TRX_PUSHDATA_ch06_wr_en : in STD_LOGIC;
+    TRX_PUSHDATA_ch07_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_PUSHDATA_ch07_grant : out STD_LOGIC;
+    TRX_PUSHDATA_ch07_req : in STD_LOGIC;
+    TRX_PUSHDATA_ch07_wr_en : in STD_LOGIC;
+    TRX_RX_PUSHDATA_GPIO1_i : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_RX_PUSHDATA_GPIO2_o : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_TX_DDSAMPL_GPIO1_o : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_TX_DDSAMPL_GPIO2_o : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_TX_DDS_GPIO1_i : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_TX_DDS_GPIO1_o : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_TX_DDS_GPIO2_o : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_TX_RF09_PULLDATA_FIFO_empty : out STD_LOGIC;
+    TRX_clk_26MHz : in STD_LOGIC;
+    TRX_clk_trx_26MHz_vio : out STD_LOGIC;
+    TRX_clk_trx_pll_25MHz_vio : out STD_LOGIC;
+    TRX_data_count : out STD_LOGIC_VECTOR ( 11 downto 0 );
+    TRX_decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_encoder_tx09_pull_FIFO_dump : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_encoder_tx09_pull_data_len : out STD_LOGIC_VECTOR ( 6 downto 0 );
+    TRX_encoder_tx09_pull_do_start : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_fft09_data_tready_out : out STD_LOGIC;
+    TRX_post_fft_mem_a_rx09_EoT : out STD_LOGIC;
+    TRX_post_fft_rx09_mem_a_addr : out STD_LOGIC_VECTOR ( 41 downto 0 );
+    TRX_pulldata_tx09_byteData : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    TRX_rd_data_count_CD100_o : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    TRX_resetn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_rx09_32bits_CD100 : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_rx09_fifo : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_rx09_fifo_valid : out STD_LOGIC;
+    TRX_rx24_32bits_CD100 : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_rx24_fifo : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_rx24_fifo_valid : out STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
+    TRX_rx_clkdiv_16MHz : out STD_LOGIC_VECTOR ( 0 to 0 );
+    TRX_rx_data_n : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TRX_rx_data_p : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TRX_rx_rf09_Pre_FFT_mem_addrb : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    TRX_rx_rf09_ch00_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch00_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch01_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch01_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch02_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch02_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch03_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch03_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch04_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch04_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch05_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch05_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch06_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch06_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_rx_rf09_ch07_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    TRX_rx_rf09_ch07_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_tx_DDS0_gpio_ampt : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_tx_DDS1_gpio_ampt : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_tx_clk_clk_n : out STD_LOGIC;
+    TRX_tx_clk_clk_p : out STD_LOGIC;
+    TRX_tx_data_n : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TRX_tx_data_p : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    TRX_tx_im_out : out STD_LOGIC_VECTOR ( 20 downto 8 );
+    TRX_tx_re_out : out STD_LOGIC_VECTOR ( 20 downto 8 );
+    TRX_xfft_rx09_dly3449_event_data_in_channel_halt : out STD_LOGIC;
+    TRX_xfft_rx09_dly3449_event_frame_started : out STD_LOGIC;
+    TRX_xfft_rx09_dly3449_event_tlast_missing : out STD_LOGIC;
+    TRX_xfft_rx09_dly3449_event_tlast_unexpected : out STD_LOGIC;
+    dds_tx09_ptt_in : in STD_LOGIC;
+    fft09_config_tdata_in : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    fft09_config_tvalid_in : in STD_LOGIC;
+    fft09_data_tlast_in : in STD_LOGIC;
+    fft09_data_tvalid_in : in STD_LOGIC;
+    microblaze_0_Clk_100MHz : in STD_LOGIC;
+    mig_7series_0_mmcm_locked : in STD_LOGIC;
+    mig_7series_0_ui_addn_clk_0_200MHz : in STD_LOGIC;
+    mig_7series_0_ui_clk_sync_rst : in STD_LOGIC;
+    premem_rx09_addra_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    premem_rx09_dina_in : in STD_LOGIC_VECTOR ( 25 downto 0 );
+    premem_rx09_wea_in : in STD_LOGIC;
+    pulldata_dds_inc : in STD_LOGIC_VECTOR ( 25 downto 0 );
+    pulldata_tx09_en : in STD_LOGIC;
+    rst_mig_7series_0_100M_peripheral_aresetn : in STD_LOGIC;
+    rst_mig_7series_0_100M_peripheral_reset : in STD_LOGIC
   );
   end component UFBmod_TRX_wrapper;
   component UFBmod_Decoder_wrapper is
@@ -729,101 +562,14 @@ architecture STRUCTURE of top is
   signal top_SCOPE_FSM_FIFO_rd_rst_busy : STD_LOGIC;
   signal top_SCOPE_FSM_FIFO_wr_rst_busy : STD_LOGIC;
   
-  signal top_TRX_M11_AXI_araddr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M11_AXI_arprot : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal top_TRX_M11_AXI_arready : STD_LOGIC;
-  signal top_TRX_M11_AXI_arvalid : STD_LOGIC;
-  signal top_TRX_M11_AXI_awaddr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M11_AXI_awprot : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal top_TRX_M11_AXI_awready : STD_LOGIC;
-  signal top_TRX_M11_AXI_awvalid : STD_LOGIC;
-  signal top_TRX_M11_AXI_bready : STD_LOGIC;
-  signal top_TRX_M11_AXI_bresp : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal top_TRX_M11_AXI_bvalid : STD_LOGIC;
-  signal top_TRX_M11_AXI_rdata : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M11_AXI_rready : STD_LOGIC;
-  signal top_TRX_M11_AXI_rresp : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal top_TRX_M11_AXI_rvalid : STD_LOGIC;
-  signal top_TRX_M11_AXI_wdata : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M11_AXI_wready : STD_LOGIC;
-  signal top_TRX_M11_AXI_wstrb : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal top_TRX_M11_AXI_wvalid : STD_LOGIC;
-  signal top_TRX_M12_AXI_araddr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M12_AXI_arprot : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal top_TRX_M12_AXI_arready : STD_LOGIC;
-  signal top_TRX_M12_AXI_arvalid : STD_LOGIC;
-  signal top_TRX_M12_AXI_awaddr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M12_AXI_awprot : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal top_TRX_M12_AXI_awready : STD_LOGIC;
-  signal top_TRX_M12_AXI_awvalid : STD_LOGIC;
-  signal top_TRX_M12_AXI_bready : STD_LOGIC;
-  signal top_TRX_M12_AXI_bresp : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal top_TRX_M12_AXI_bvalid : STD_LOGIC;
-  signal top_TRX_M12_AXI_rdata : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M12_AXI_rready : STD_LOGIC;
-  signal top_TRX_M12_AXI_rresp : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal top_TRX_M12_AXI_rvalid : STD_LOGIC;
-  signal top_TRX_M12_AXI_wdata : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M12_AXI_wready : STD_LOGIC;
-  signal top_TRX_M12_AXI_wstrb : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal top_TRX_M12_AXI_wvalid : STD_LOGIC;
-  signal top_TRX_M13_AXI_araddr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M13_AXI_arprot : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal top_TRX_M13_AXI_arready : STD_LOGIC;
-  signal top_TRX_M13_AXI_arvalid : STD_LOGIC;
-  signal top_TRX_M13_AXI_awaddr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M13_AXI_awprot : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal top_TRX_M13_AXI_awready : STD_LOGIC;
-  signal top_TRX_M13_AXI_awvalid : STD_LOGIC;
-  signal top_TRX_M13_AXI_bready : STD_LOGIC;
-  signal top_TRX_M13_AXI_bresp : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal top_TRX_M13_AXI_bvalid : STD_LOGIC;
-  signal top_TRX_M13_AXI_rdata : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M13_AXI_rready : STD_LOGIC;
-  signal top_TRX_M13_AXI_rresp : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal top_TRX_M13_AXI_rvalid : STD_LOGIC;
-  signal top_TRX_M13_AXI_wdata : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M13_AXI_wready : STD_LOGIC;
-  signal top_TRX_M13_AXI_wstrb : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal top_TRX_M13_AXI_wvalid : STD_LOGIC;
-  signal top_TRX_M19_AXI_araddr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M19_AXI_arprot : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal top_TRX_M19_AXI_arready : STD_LOGIC;
-  signal top_TRX_M19_AXI_arvalid : STD_LOGIC;
-  signal top_TRX_M19_AXI_awaddr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M19_AXI_awprot : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal top_TRX_M19_AXI_awready : STD_LOGIC;
-  signal top_TRX_M19_AXI_awvalid : STD_LOGIC;
-  signal top_TRX_M19_AXI_bready : STD_LOGIC;
-  signal top_TRX_M19_AXI_bresp : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal top_TRX_M19_AXI_bvalid : STD_LOGIC;
-  signal top_TRX_M19_AXI_rdata : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M19_AXI_rready : STD_LOGIC;
-  signal top_TRX_M19_AXI_rresp : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal top_TRX_M19_AXI_rvalid : STD_LOGIC;
-  signal top_TRX_M19_AXI_wdata : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M19_AXI_wready : STD_LOGIC;
-  signal top_TRX_M19_AXI_wstrb : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal top_TRX_M19_AXI_wvalid : STD_LOGIC;
-  signal top_TRX_M20_AXI_araddr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M20_AXI_arprot : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal top_TRX_M20_AXI_arready : STD_LOGIC;
-  signal top_TRX_M20_AXI_arvalid : STD_LOGIC;
-  signal top_TRX_M20_AXI_awaddr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M20_AXI_awprot : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal top_TRX_M20_AXI_awready : STD_LOGIC;
-  signal top_TRX_M20_AXI_awvalid : STD_LOGIC;
-  signal top_TRX_M20_AXI_bready : STD_LOGIC;
-  signal top_TRX_M20_AXI_bresp : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal top_TRX_M20_AXI_bvalid : STD_LOGIC;
-  signal top_TRX_M20_AXI_rdata : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M20_AXI_rready : STD_LOGIC;
-  signal top_TRX_M20_AXI_rresp : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal top_TRX_M20_AXI_rvalid : STD_LOGIC;
-  signal top_TRX_M20_AXI_wdata : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal top_TRX_M20_AXI_wready : STD_LOGIC;
-  signal top_TRX_M20_AXI_wstrb : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal top_TRX_M20_AXI_wvalid : STD_LOGIC;
+  signal top_TRX_CONFIG_GPIO1_o : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal top_TRX_CONFIG_GPIO2_i : STD_LOGIC_VECTOR ( 31 downto 0 );
+  
+  signal top_TRX_RX_PUSHDATA_GPIO1_i : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal top_TRX_RX_PUSHDATA_GPIO2_o : STD_LOGIC_VECTOR ( 31 downto 0 );
+  
+  signal top_TRX_TX_DDSAMPL_GPIO1_o : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal top_TRX_TX_DDSAMPL_GPIO2_o : STD_LOGIC_VECTOR ( 15 downto 0 );
   
   signal top_TRX_clk_trx_26MHz_vio : STD_LOGIC;
   signal top_TRX_clk_trx_pll_25MHz_vio : STD_LOGIC;
@@ -881,8 +627,6 @@ architecture STRUCTURE of top is
   signal top_TRX_fft_rx_rf09_data_tready_out : STD_LOGIC;
   signal top_TRX_fft_rx_rf09_data_tvalid_in : STD_LOGIC;
   signal top_TRX_fft_rx_rf09_premem_subframe_in : STD_LOGIC_VECTOR ( 1 downto 0 );
-  
-  signal top_TRX_ip2intc_irpt : STD_LOGIC;
   
   signal top_TRX_post_fft_rx_rf09_ch00_mem_b_addr : STD_LOGIC_VECTOR (  4 downto 0 );
   signal top_TRX_post_fft_rx_rf09_ch00_mem_b_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -949,8 +693,6 @@ architecture STRUCTURE of top is
   signal top_TRX_pushdata_rx_rf09_ch07_wr_en : STD_LOGIC;
   signal top_TRX_pushdata_rx_rf09_ch07_din : STD_LOGIC_VECTOR ( 7 downto 0 );
   
-  signal top_TRX_pushdata_rx_rf09_irpt : STD_LOGIC;
-  
   signal top_TRX_pre_fft_rx_rf09_mem_a_addr : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal top_TRX_pre_fft_rx_rf09_mem_a_din  : STD_LOGIC_VECTOR ( 25 downto 0 );
   signal top_TRX_pre_fft_rx_rf09_mem_a_we   : STD_LOGIC;
@@ -974,7 +716,9 @@ architecture STRUCTURE of top is
   signal top_TRX_rx_rf24_fifo_valid : STD_LOGIC;
   
   signal top_TRX_tx_DDS0_gpio_ampt : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal top_TRX_tx_DDS0_gpio_inc : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal top_TRX_TX_DDS_GPIO1_o    : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal top_TRX_TX_DDS_GPIO1_i    : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal top_TRX_TX_DDS_GPIO2_o    : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal top_TRX_tx_DDS1_gpio_ampt : STD_LOGIC_VECTOR ( 15 downto 0 );
   
   signal top_TRX_tx_im : STD_LOGIC_VECTOR ( 12 downto 0 );
@@ -1104,93 +848,10 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       FFT_window_coef_rom_rx09                              => top_FFT_window_coef_rom_rx09,
       RF09_framectr                                         => top_RF09_framectr,
       RF09_quarterfrm                                       => top_RF09_quarterfrm,
-      S11_AXI_spi_araddr                                    => top_TRX_M11_AXI_araddr(6 downto 0),
-      S11_AXI_spi_arready                                   => top_TRX_M11_AXI_arready,
-      S11_AXI_spi_arvalid                                   => top_TRX_M11_AXI_arvalid,
-      S11_AXI_spi_awaddr                                    => top_TRX_M11_AXI_awaddr(6 downto 0),
-      S11_AXI_spi_awready                                   => top_TRX_M11_AXI_awready,
-      S11_AXI_spi_awvalid                                   => top_TRX_M11_AXI_awvalid,
-      S11_AXI_spi_bready                                    => top_TRX_M11_AXI_bready,
-      S11_AXI_spi_bresp                                     => top_TRX_M11_AXI_bresp,
-      S11_AXI_spi_bvalid                                    => top_TRX_M11_AXI_bvalid,
-      S11_AXI_spi_rdata                                     => top_TRX_M11_AXI_rdata,
-      S11_AXI_spi_rready                                    => top_TRX_M11_AXI_rready,
-      S11_AXI_spi_rresp                                     => top_TRX_M11_AXI_rresp,
-      S11_AXI_spi_rvalid                                    => top_TRX_M11_AXI_rvalid,
-      S11_AXI_spi_wdata                                     => top_TRX_M11_AXI_wdata,
-      S11_AXI_spi_wready                                    => top_TRX_M11_AXI_wready,
-      S11_AXI_spi_wstrb                                     => top_TRX_M11_AXI_wstrb,
-      S11_AXI_spi_wvalid                                    => top_TRX_M11_AXI_wvalid,
-      S12_AXI_gpio_araddr                                   => top_TRX_M12_AXI_araddr(8 downto 0),
-      S12_AXI_gpio_arready                                  => top_TRX_M12_AXI_arready,
-      S12_AXI_gpio_arvalid                                  => top_TRX_M12_AXI_arvalid,
-      S12_AXI_gpio_awaddr                                   => top_TRX_M12_AXI_awaddr(8 downto 0),
-      S12_AXI_gpio_awready                                  => top_TRX_M12_AXI_awready,
-      S12_AXI_gpio_awvalid                                  => top_TRX_M12_AXI_awvalid,
-      S12_AXI_gpio_bready                                   => top_TRX_M12_AXI_bready,
-      S12_AXI_gpio_bresp                                    => top_TRX_M12_AXI_bresp,
-      S12_AXI_gpio_bvalid                                   => top_TRX_M12_AXI_bvalid,
-      S12_AXI_gpio_rdata                                    => top_TRX_M12_AXI_rdata,
-      S12_AXI_gpio_rready                                   => top_TRX_M12_AXI_rready,
-      S12_AXI_gpio_rresp                                    => top_TRX_M12_AXI_rresp,
-      S12_AXI_gpio_rvalid                                   => top_TRX_M12_AXI_rvalid,
-      S12_AXI_gpio_wdata                                    => top_TRX_M12_AXI_wdata,
-      S12_AXI_gpio_wready                                   => top_TRX_M12_AXI_wready,
-      S12_AXI_gpio_wstrb                                    => top_TRX_M12_AXI_wstrb,
-      S12_AXI_gpio_wvalid                                   => top_TRX_M12_AXI_wvalid,
-      S13_AXI_dds_araddr                                    => top_TRX_M13_AXI_araddr(8 downto 0),
-      S13_AXI_dds_arready                                   => top_TRX_M13_AXI_arready,
-      S13_AXI_dds_arvalid                                   => top_TRX_M13_AXI_arvalid,
-      S13_AXI_dds_awaddr                                    => top_TRX_M13_AXI_awaddr(8 downto 0),
-      S13_AXI_dds_awready                                   => top_TRX_M13_AXI_awready,
-      S13_AXI_dds_awvalid                                   => top_TRX_M13_AXI_awvalid,
-      S13_AXI_dds_bready                                    => top_TRX_M13_AXI_bready,
-      S13_AXI_dds_bresp                                     => top_TRX_M13_AXI_bresp,
-      S13_AXI_dds_bvalid                                    => top_TRX_M13_AXI_bvalid,
-      S13_AXI_dds_rdata                                     => top_TRX_M13_AXI_rdata,
-      S13_AXI_dds_rready                                    => top_TRX_M13_AXI_rready,
-      S13_AXI_dds_rresp                                     => top_TRX_M13_AXI_rresp,
-      S13_AXI_dds_rvalid                                    => top_TRX_M13_AXI_rvalid,
-      S13_AXI_dds_wdata                                     => top_TRX_M13_AXI_wdata,
-      S13_AXI_dds_wready                                    => top_TRX_M13_AXI_wready,
-      S13_AXI_dds_wstrb                                     => top_TRX_M13_AXI_wstrb,
-      S13_AXI_dds_wvalid                                    => top_TRX_M13_AXI_wvalid,
-      S19_AXI_araddr                                        => top_TRX_M19_AXI_araddr(8 downto 0),
-      S19_AXI_arready                                       => top_TRX_M19_AXI_arready,
-      S19_AXI_arvalid                                       => top_TRX_M19_AXI_arvalid,
-      S19_AXI_awaddr                                        => top_TRX_M19_AXI_awaddr(8 downto 0),
-      S19_AXI_awready                                       => top_TRX_M19_AXI_awready,
-      S19_AXI_awvalid                                       => top_TRX_M19_AXI_awvalid,
-      S19_AXI_bready                                        => top_TRX_M19_AXI_bready,
-      S19_AXI_bresp                                         => top_TRX_M19_AXI_bresp,
-      S19_AXI_bvalid                                        => top_TRX_M19_AXI_bvalid,
-      S19_AXI_rdata                                         => top_TRX_M19_AXI_rdata,
-      S19_AXI_rready                                        => top_TRX_M19_AXI_rready,
-      S19_AXI_rresp                                         => top_TRX_M19_AXI_rresp,
-      S19_AXI_rvalid                                        => top_TRX_M19_AXI_rvalid,
-      S19_AXI_wdata                                         => top_TRX_M19_AXI_wdata,
-      S19_AXI_wready                                        => top_TRX_M19_AXI_wready,
-      S19_AXI_wstrb                                         => top_TRX_M19_AXI_wstrb,
-      S19_AXI_wvalid                                        => top_TRX_M19_AXI_wvalid,
-      S20_AXI1_araddr                                       => top_TRX_M20_AXI_araddr(8 downto 0),
-      S20_AXI1_arready                                      => top_TRX_M20_AXI_arready,
-      S20_AXI1_arvalid                                      => top_TRX_M20_AXI_arvalid,
-      S20_AXI1_awaddr                                       => top_TRX_M20_AXI_awaddr(8 downto 0),
-      S20_AXI1_awready                                      => top_TRX_M20_AXI_awready,
-      S20_AXI1_awvalid                                      => top_TRX_M20_AXI_awvalid,
-      S20_AXI1_bready                                       => top_TRX_M20_AXI_bready,
-      S20_AXI1_bresp                                        => top_TRX_M20_AXI_bresp,
-      S20_AXI1_bvalid                                       => top_TRX_M20_AXI_bvalid,
-      S20_AXI1_rdata                                        => top_TRX_M20_AXI_rdata,
-      S20_AXI1_rready                                       => top_TRX_M20_AXI_rready,
-      S20_AXI1_rresp                                        => top_TRX_M20_AXI_rresp,
-      S20_AXI1_rvalid                                       => top_TRX_M20_AXI_rvalid,
-      S20_AXI1_wdata                                        => top_TRX_M20_AXI_wdata,
-      S20_AXI1_wready                                       => top_TRX_M20_AXI_wready,
-      S20_AXI1_wstrb                                        => top_TRX_M20_AXI_wstrb,
-      S20_AXI1_wvalid                                       => top_TRX_M20_AXI_wvalid,
       Status_LVDS_rx09_synced                               => top_LVDS_rx_rf09_synced,
       Status_LVDS_rx24_synced                               => top_LVDS_rx_rf24_synced,
+      TRX_CONFIG_GPIO1_o                                    => top_TRX_CONFIG_GPIO1_o,
+      TRX_CONFIG_GPIO2_i                                    => top_TRX_CONFIG_GPIO2_i,
       TRX_PLL_clk_25MHz_n(0)                                => TRX_PLL_clk_25MHz_n,
       TRX_PLL_clk_25MHz_p(0)                                => TRX_PLL_clk_25MHz_p,
       TRX_PUSHDATA_ch00_req                                 => top_TRX_pushdata_rx_rf09_ch00_req,
@@ -1225,6 +886,8 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       TRX_PUSHDATA_ch07_grant                               => top_TRX_pushdata_rx_rf09_ch07_grant,
       TRX_PUSHDATA_ch07_wr_en                               => top_TRX_PUSHDATA_rx_rf09_ch07_wr_en,
       TRX_PUSHDATA_ch07_din(7 downto 0)                     => top_TRX_PUSHDATA_rx_rf09_ch07_din(7 downto 0),
+      TRX_RX_PUSHDATA_GPIO1_i                               => top_TRX_RX_PUSHDATA_GPIO1_i,      
+      TRX_RX_PUSHDATA_GPIO2_o                               => top_TRX_RX_PUSHDATA_GPIO2_o,      
       TRX_TX_RF09_PULLDATA_FIFO_empty                       => top_TRX_pulldata_tx_rf09_FIFO_empty,
       TRX_clk_26MHz                                         => TRX_clk_26MHz,
       TRX_clk_trx_26MHz_vio                                 => top_TRX_clk_trx_26MHz_vio,
@@ -1235,11 +898,9 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       TRX_encoder_tx09_pull_data_len                        => top_TRX_encoder_tx_rf09_pull_data_len,
       TRX_encoder_tx09_pull_do_start(0)                     => top_TRX_encoder_tx_rf09_pull_do_start,
       TRX_fft09_data_tready_out                             => top_TRX_fft_rx_rf09_data_tready_out,
-      TRX_ip2intc_irpt                                      => top_TRX_ip2intc_irpt,
       TRX_post_fft_mem_a_rx09_EoT                           => top_TRX_post_fft_rx_rf09_mem_a_EoT,
       TRX_post_fft_rx09_mem_a_addr                          => top_TRX_post_fft_rx_rf09_mem_a_addr,
       TRX_pulldata_tx09_byteData                            => top_TRX_pulldata_tx_rf09_byteData,
-      TRX_pushdata_rx09_irpt                                => top_TRX_pushdata_rx_rf09_irpt,
       TRX_rd_data_count_CD100_o                             => top_TRX_rd_data_count_CD100,
       TRX_resetn(0)                                         => TRX_resetn,
       TRX_rx_clk_64MHz_clk_n                                => TRX_rx_clk_64MHz_clk_n,
@@ -1270,12 +931,12 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       TRX_rx_clkdiv_16MHz(0)                                => top_TRX_rx_clkdiv_16MHz,
       TRX_rx_data_n                                         => TRX_rx_data_n,
       TRX_rx_data_p                                         => TRX_rx_data_p,
-      TRX_spi_io0_io                                        => TRX_spi_io0_io,
-      TRX_spi_io1_io                                        => TRX_spi_io1_io,
-      TRX_spi_sck_io                                        => TRX_spi_sck_io,
-      TRX_spi_ss_io(0)                                      => TRX_spi_ss_io,
+      TRX_TX_DDS_GPIO1_i                                    => top_TRX_TX_DDS_GPIO1_i,              -- 31: FIFO empty (< 3 entries)
+      TRX_TX_DDS_GPIO1_o                                    => top_TRX_TX_DDS_GPIO1_o,              -- 30: push strobe, 07..00: push data
+      TRX_TX_DDS_GPIO2_o                                    => top_TRX_TX_DDS_GPIO2_o,              -- 31..00: DDS0 increment
+      TRX_TX_DDSAMPL_GPIO1_o                                => top_TRX_TX_DDSAMPL_GPIO1_o,          -- 15..00: DDS0 amplitude
+      TRX_TX_DDSAMPL_GPIO2_o                                => top_TRX_TX_DDSAMPL_GPIO2_o,          -- 15..00: DDS1 amplitude
       TRX_tx_DDS0_gpio_ampt                                 => top_TRX_tx_DDS0_gpio_ampt,
-      TRX_tx_DDS0_gpio_inc                                  => top_TRX_tx_DDS0_gpio_inc,
       TRX_tx_DDS1_gpio_ampt                                 => top_TRX_tx_DDS1_gpio_ampt,
       TRX_tx_clk_clk_n                                      => TRX_tx_clk_clk_n,
       TRX_tx_clk_clk_p                                      => TRX_tx_clk_clk_p,
@@ -1562,116 +1223,32 @@ msys_bd: component msys_wrapper
       SCOPE_FSM_GPIO1_In                                    => top_SCOPE_FSM_GPIO1_In,
       SCOPE_FSM_Timebase_CE                                 => top_SCOPE_FSM_Timebase_CE,
       SCOPE_FSM_TrigSrc                                     => top_SCOPE_FSM_TrigSrc,
-      TRX_M11_AXI_araddr                                    => top_TRX_M11_AXI_araddr,
-      TRX_M11_AXI_arprot                                    => top_TRX_M11_AXI_arprot,
-      TRX_M11_AXI_arready(0)                                => top_TRX_M11_AXI_arready,
-      TRX_M11_AXI_arvalid(0)                                => top_TRX_M11_AXI_arvalid,
-      TRX_M11_AXI_awaddr                                    => top_TRX_M11_AXI_awaddr,
-      TRX_M11_AXI_awprot                                    => top_TRX_M11_AXI_awprot,
-      TRX_M11_AXI_awready(0)                                => top_TRX_M11_AXI_awready,
-      TRX_M11_AXI_awvalid(0)                                => top_TRX_M11_AXI_awvalid,
-      TRX_M11_AXI_bready(0)                                 => top_TRX_M11_AXI_bready,
-      TRX_M11_AXI_bresp                                     => top_TRX_M11_AXI_bresp,
-      TRX_M11_AXI_bvalid(0)                                 => top_TRX_M11_AXI_bvalid,
-      TRX_M11_AXI_rdata                                     => top_TRX_M11_AXI_rdata,
-      TRX_M11_AXI_rready(0)                                 => top_TRX_M11_AXI_rready,
-      TRX_M11_AXI_rresp                                     => top_TRX_M11_AXI_rresp,
-      TRX_M11_AXI_rvalid(0)                                 => top_TRX_M11_AXI_rvalid,
-      TRX_M11_AXI_wdata                                     => top_TRX_M11_AXI_wdata,
-      TRX_M11_AXI_wready(0)                                 => top_TRX_M11_AXI_wready,
-      TRX_M11_AXI_wstrb                                     => top_TRX_M11_AXI_wstrb,
-      TRX_M11_AXI_wvalid(0)                                 => top_TRX_M11_AXI_wvalid,
-      TRX_M12_AXI_araddr                                    => top_TRX_M12_AXI_araddr,
-      TRX_M12_AXI_arprot                                    => top_TRX_M12_AXI_arprot,
-      TRX_M12_AXI_arready(0)                                => top_TRX_M12_AXI_arready,
-      TRX_M12_AXI_arvalid(0)                                => top_TRX_M12_AXI_arvalid,
-      TRX_M12_AXI_awaddr                                    => top_TRX_M12_AXI_awaddr,
-      TRX_M12_AXI_awprot                                    => top_TRX_M12_AXI_awprot,
-      TRX_M12_AXI_awready(0)                                => top_TRX_M12_AXI_awready,
-      TRX_M12_AXI_awvalid(0)                                => top_TRX_M12_AXI_awvalid,
-      TRX_M12_AXI_bready(0)                                 => top_TRX_M12_AXI_bready,
-      TRX_M12_AXI_bresp                                     => top_TRX_M12_AXI_bresp,
-      TRX_M12_AXI_bvalid(0)                                 => top_TRX_M12_AXI_bvalid,
-      TRX_M12_AXI_rdata                                     => top_TRX_M12_AXI_rdata,
-      TRX_M12_AXI_rready(0)                                 => top_TRX_M12_AXI_rready,
-      TRX_M12_AXI_rresp                                     => top_TRX_M12_AXI_rresp,
-      TRX_M12_AXI_rvalid(0)                                 => top_TRX_M12_AXI_rvalid,
-      TRX_M12_AXI_wdata                                     => top_TRX_M12_AXI_wdata,
-      TRX_M12_AXI_wready(0)                                 => top_TRX_M12_AXI_wready,
-      TRX_M12_AXI_wstrb                                     => top_TRX_M12_AXI_wstrb,
-      TRX_M12_AXI_wvalid(0)                                 => top_TRX_M12_AXI_wvalid,
-      TRX_M13_AXI_araddr                                    => top_TRX_M13_AXI_araddr,
-      TRX_M13_AXI_arprot                                    => top_TRX_M13_AXI_arprot,
-      TRX_M13_AXI_arready(0)                                => top_TRX_M13_AXI_arready,
-      TRX_M13_AXI_arvalid(0)                                => top_TRX_M13_AXI_arvalid,
-      TRX_M13_AXI_awaddr                                    => top_TRX_M13_AXI_awaddr,
-      TRX_M13_AXI_awprot                                    => top_TRX_M13_AXI_awprot,
-      TRX_M13_AXI_awready(0)                                => top_TRX_M13_AXI_awready,
-      TRX_M13_AXI_awvalid(0)                                => top_TRX_M13_AXI_awvalid,
-      TRX_M13_AXI_bready(0)                                 => top_TRX_M13_AXI_bready,
-      TRX_M13_AXI_bresp                                     => top_TRX_M13_AXI_bresp,
-      TRX_M13_AXI_bvalid(0)                                 => top_TRX_M13_AXI_bvalid,
-      TRX_M13_AXI_rdata                                     => top_TRX_M13_AXI_rdata,
-      TRX_M13_AXI_rready(0)                                 => top_TRX_M13_AXI_rready,
-      TRX_M13_AXI_rresp                                     => top_TRX_M13_AXI_rresp,
-      TRX_M13_AXI_rvalid(0)                                 => top_TRX_M13_AXI_rvalid,
-      TRX_M13_AXI_wdata                                     => top_TRX_M13_AXI_wdata,
-      TRX_M13_AXI_wready(0)                                 => top_TRX_M13_AXI_wready,
-      TRX_M13_AXI_wstrb                                     => top_TRX_M13_AXI_wstrb,
-      TRX_M13_AXI_wvalid(0)                                 => top_TRX_M13_AXI_wvalid,
-      TRX_M19_AXI_araddr                                    => top_TRX_M19_AXI_araddr,
-      TRX_M19_AXI_arprot                                    => top_TRX_M19_AXI_arprot,
-      TRX_M19_AXI_arready(0)                                => top_TRX_M19_AXI_arready,
-      TRX_M19_AXI_arvalid(0)                                => top_TRX_M19_AXI_arvalid,
-      TRX_M19_AXI_awaddr                                    => top_TRX_M19_AXI_awaddr,
-      TRX_M19_AXI_awprot                                    => top_TRX_M19_AXI_awprot,
-      TRX_M19_AXI_awready(0)                                => top_TRX_M19_AXI_awready,
-      TRX_M19_AXI_awvalid(0)                                => top_TRX_M19_AXI_awvalid,
-      TRX_M19_AXI_bready(0)                                 => top_TRX_M19_AXI_bready,
-      TRX_M19_AXI_bresp                                     => top_TRX_M19_AXI_bresp,
-      TRX_M19_AXI_bvalid(0)                                 => top_TRX_M19_AXI_bvalid,
-      TRX_M19_AXI_rdata                                     => top_TRX_M19_AXI_rdata,
-      TRX_M19_AXI_rready(0)                                 => top_TRX_M19_AXI_rready,
-      TRX_M19_AXI_rresp                                     => top_TRX_M19_AXI_rresp,
-      TRX_M19_AXI_rvalid(0)                                 => top_TRX_M19_AXI_rvalid,
-      TRX_M19_AXI_wdata                                     => top_TRX_M19_AXI_wdata,
-      TRX_M19_AXI_wready(0)                                 => top_TRX_M19_AXI_wready,
-      TRX_M19_AXI_wstrb                                     => top_TRX_M19_AXI_wstrb,
-      TRX_M19_AXI_wvalid(0)                                 => top_TRX_M19_AXI_wvalid,
-      TRX_M20_AXI_araddr                                    => top_TRX_M20_AXI_araddr,
-      TRX_M20_AXI_arprot                                    => top_TRX_M20_AXI_arprot,
-      TRX_M20_AXI_arready(0)                                => top_TRX_M20_AXI_arready,
-      TRX_M20_AXI_arvalid(0)                                => top_TRX_M20_AXI_arvalid,
-      TRX_M20_AXI_awaddr                                    => top_TRX_M20_AXI_awaddr,
-      TRX_M20_AXI_awprot                                    => top_TRX_M20_AXI_awprot,
-      TRX_M20_AXI_awready(0)                                => top_TRX_M20_AXI_awready,
-      TRX_M20_AXI_awvalid(0)                                => top_TRX_M20_AXI_awvalid,
-      TRX_M20_AXI_bready(0)                                 => top_TRX_M20_AXI_bready,
-      TRX_M20_AXI_bresp                                     => top_TRX_M20_AXI_bresp,
-      TRX_M20_AXI_bvalid(0)                                 => top_TRX_M20_AXI_bvalid,
-      TRX_M20_AXI_rdata                                     => top_TRX_M20_AXI_rdata,
-      TRX_M20_AXI_rready(0)                                 => top_TRX_M20_AXI_rready,
-      TRX_M20_AXI_rresp                                     => top_TRX_M20_AXI_rresp,
-      TRX_M20_AXI_rvalid(0)                                 => top_TRX_M20_AXI_rvalid,
-      TRX_M20_AXI_wdata                                     => top_TRX_M20_AXI_wdata,
-      TRX_M20_AXI_wready(0)                                 => top_TRX_M20_AXI_wready,
-      TRX_M20_AXI_wstrb                                     => top_TRX_M20_AXI_wstrb,
-      TRX_M20_AXI_wvalid(0)                                 => top_TRX_M20_AXI_wvalid,
+      TRX_CONFIG_GPIO1_o                                    => top_TRX_CONFIG_GPIO1_o,
+      TRX_CONFIG_GPIO2_i                                    => top_TRX_CONFIG_GPIO2_i,
+      TRX_CONFIG_SPI_io0_io                                 => TRX_spi_io0_io,
+      TRX_CONFIG_SPI_io1_io                                 => TRX_spi_io1_io,
+      TRX_CONFIG_SPI_sck_io                                 => TRX_spi_sck_io,
+      TRX_CONFIG_SPI_ss_io(0)                               => TRX_spi_ss_io,
+      TRX_RX_PUSHDATA_GPIO1_i                               => top_TRX_RX_PUSHDATA_GPIO1_i,      
+      TRX_RX_PUSHDATA_GPIO2_o                               => top_TRX_RX_PUSHDATA_GPIO2_o,      
       TRX_TX_RF09_PULLDATA_FIFO_empty                       => top_TRX_pulldata_tx_rf09_FIFO_empty,
       TRX_clk_trx_26MHz_vio                                 => top_TRX_clk_trx_26MHz_vio,
       TRX_clk_trx_pll_25MHz_vio                             => top_TRX_clk_trx_pll_25MHz_vio,
       TRX_data_count                                        => top_TRX_data_count,
       TRX_decoder_rx09_ch00_squelch_lvl                     => top_TRX_decoder_rx_rf09_chAll_squelch_lvl,
       TRX_int                                               => TRX_int,
-      TRX_ip2intc_irpt                                      => top_TRX_ip2intc_irpt,
-      TRX_pushdata_rx09_irpt                                => top_TRX_pushdata_rx_rf09_irpt,
       TRX_rd_data_count_CD100                               => top_TRX_rd_data_count_CD100,
       TRX_rx09_32bits_CD100                                 => top_TRX_rx_rf09_32bits_CD100,
       TRX_rx24_32bits_CD100                                 => top_TRX_rx_rf24_32bits_CD100,
       TRX_rx_clkdiv_16MHz_in                                => top_TRX_rx_clkdiv_16MHz,
+      TRX_TX_DDS_GPIO1_i                                    => top_TRX_TX_DDS_GPIO1_i,
+      TRX_TX_DDS_GPIO1_o                                    => top_TRX_TX_DDS_GPIO1_o,
+      TRX_TX_DDS_GPIO2_o                                    => top_TRX_TX_DDS_GPIO2_o,
+      TRX_tx_DDS0_gpio_inc                                  => top_TRX_TX_DDS_GPIO1_o,
       TRX_tx_DDS0_gpio_ampt                                 => top_TRX_tx_DDS0_gpio_ampt,
-      TRX_tx_DDS0_gpio_inc                                  => top_TRX_tx_DDS0_gpio_inc,
       TRX_tx_DDS1_gpio_ampt                                 => top_TRX_tx_DDS1_gpio_ampt,
+      TRX_TX_DDSAMPL_GPIO1_o                                => top_TRX_TX_DDSAMPL_GPIO1_o,
+      TRX_TX_DDSAMPL_GPIO2_o                                => top_TRX_TX_DDSAMPL_GPIO2_o,
       TRX_tx_im                                             => top_TRX_tx_im,
       TRX_tx_re                                             => top_TRX_tx_re,
     --TRX_xfft_rx09_dly3449_event_data_in_channel_halt      => top_TRX_xfft_rx09_dly3449_event_data_in_channel_halt,

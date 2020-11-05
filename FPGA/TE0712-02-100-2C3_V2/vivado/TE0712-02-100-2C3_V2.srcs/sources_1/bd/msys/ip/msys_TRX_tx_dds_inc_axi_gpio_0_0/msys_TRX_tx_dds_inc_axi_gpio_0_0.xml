@@ -2,7 +2,7 @@
 <spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <spirit:vendor>xilinx.com</spirit:vendor>
   <spirit:library>customized_ip</spirit:library>
-  <spirit:name>UFBmod_TRX_TRX_tx_dds_ampt_axi_gpio_0_1</spirit:name>
+  <spirit:name>msys_TRX_tx_dds_inc_axi_gpio_0_0</spirit:name>
   <spirit:version>1.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
@@ -702,7 +702,7 @@
           <spirit:displayName>Channel_1_GPIO_DATA</spirit:displayName>
           <spirit:description>Channel-1 AXI GPIO Data register</spirit:description>
           <spirit:addressOffset>0x0</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO_WIDTH&apos;)))">16</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO_WIDTH&apos;)))">32</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>read-write</spirit:access>
           <spirit:reset>
@@ -721,7 +721,7 @@ For each I/O bit programmed as output
       data register bit and output pin
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO_WIDTH&apos;)))">16</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO_WIDTH&apos;)))">32</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>read-write</spirit:access>
             <spirit:writeValueConstraint>
@@ -736,7 +736,7 @@ For each I/O bit programmed as output
           <spirit:displayName>Channel_1_GPIO_TRI</spirit:displayName>
           <spirit:description>Channel-1 AXI GPIO 3-State Control register</spirit:description>
           <spirit:addressOffset>0x4</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO_WIDTH&apos;)))">16</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO_WIDTH&apos;)))">32</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>read-write</spirit:access>
           <spirit:reset>
@@ -749,7 +749,7 @@ For each I/O bit programmed as output
 Each I/O pin of the AXI GPIO is individually programmable as an input or output   For each of the bits     0 - I/O pin configured as output     1 - I/O pin configured as input
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO_WIDTH&apos;)))">16</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO_WIDTH&apos;)))">32</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>read-write</spirit:access>
             <spirit:writeValueConstraint>
@@ -764,7 +764,7 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
           <spirit:displayName>Channel_2_GPIO_DATA</spirit:displayName>
           <spirit:description>Channel-2 AXI GPIO Data register</spirit:description>
           <spirit:addressOffset>0x8</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO2_WIDTH&apos;)))">16</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO2_WIDTH&apos;)))">32</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>read-write</spirit:access>
           <spirit:reset>
@@ -783,7 +783,7 @@ For each I/O bit programmed as output
       data register bit and output pin
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO2_WIDTH&apos;)))">16</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO2_WIDTH&apos;)))">32</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>read-write</spirit:access>
             <spirit:writeValueConstraint>
@@ -798,7 +798,7 @@ For each I/O bit programmed as output
           <spirit:displayName>Channel_2_GPIO_TRI</spirit:displayName>
           <spirit:description>Channel-2 AXI GPIO 3-State Control register</spirit:description>
           <spirit:addressOffset>0xC</spirit:addressOffset>
-          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO2_WIDTH&apos;)))">16</spirit:size>
+          <spirit:size spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO2_WIDTH&apos;)))">32</spirit:size>
           <spirit:volatile>true</spirit:volatile>
           <spirit:access>read-write</spirit:access>
           <spirit:reset>
@@ -811,7 +811,7 @@ For each I/O bit programmed as output
 Each I/O pin of the AXI GPIO is individually programmable as an input or output   For each of the bits     0 - I/O pin configured as output     1 - I/O pin configured as input
 </spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
-            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO2_WIDTH&apos;)))">16</spirit:bitWidth>
+            <spirit:bitWidth spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO2_WIDTH&apos;)))">32</spirit:bitWidth>
             <spirit:volatile>true</spirit:volatile>
             <spirit:access>read-write</spirit:access>
             <spirit:writeValueConstraint>
@@ -1262,7 +1262,7 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO_WIDTH&apos;)) - 1)">15</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO_WIDTH&apos;)) - 1)">31</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -1278,7 +1278,7 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gpio_io_i" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ALL_OUTPUTS&apos;)) =0)">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gpio_io_i" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ALL_OUTPUTS&apos;)) =0)">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -1288,7 +1288,7 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO_WIDTH&apos;)) - 1)">15</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO_WIDTH&apos;)) - 1)">31</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -1311,7 +1311,7 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO_WIDTH&apos;)) - 1)">15</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO_WIDTH&apos;)) - 1)">31</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -1324,7 +1324,7 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gpio_io_t" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ALL_INPUTS&apos;)) =0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ALL_OUTPUTS&apos;)) =0)">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gpio_io_t" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_ALL_INPUTS&apos;)) =0) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_ALL_OUTPUTS&apos;)) =0)">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -1334,7 +1334,7 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO2_WIDTH&apos;)) - 1)">15</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO2_WIDTH&apos;)) - 1)">31</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -1360,7 +1360,7 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO2_WIDTH&apos;)) - 1)">15</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO2_WIDTH&apos;)) - 1)">31</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -1383,7 +1383,7 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO2_WIDTH&apos;)) - 1)">15</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_GPIO2_WIDTH&apos;)) - 1)">31</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -1420,12 +1420,12 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_GPIO_WIDTH</spirit:name>
         <spirit:displayName>GPIO Width</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_GPIO_WIDTH" spirit:minimum="1" spirit:maximum="32" spirit:rangeType="long">16</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_GPIO_WIDTH" spirit:minimum="1" spirit:maximum="32" spirit:rangeType="long">32</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_GPIO2_WIDTH</spirit:name>
         <spirit:displayName>GPIO2 Data Width</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_GPIO2_WIDTH" spirit:minimum="1" spirit:maximum="32" spirit:rangeType="long">16</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_GPIO2_WIDTH" spirit:minimum="1" spirit:maximum="32" spirit:rangeType="long">32</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ALL_INPUTS</spirit:name>
@@ -1440,7 +1440,7 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ALL_OUTPUTS</spirit:name>
         <spirit:displayName>All Outputs</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ALL_OUTPUTS" spirit:minimum="0" spirit:maximum="1" spirit:rangeType="long">1</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ALL_OUTPUTS" spirit:minimum="0" spirit:maximum="1" spirit:rangeType="long">0</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ALL_OUTPUTS_2</spirit:name>
@@ -1460,7 +1460,7 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
       <spirit:modelParameter spirit:dataType="std_logic_vector(31 downto 0)">
         <spirit:name>C_TRI_DEFAULT</spirit:name>
         <spirit:displayName>Default tri state value</spirit:displayName>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_TRI_DEFAULT" spirit:bitStringLength="32">0xFFFFFFFF</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_TRI_DEFAULT" spirit:bitStringLength="32">0x80000000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_IS_DUAL</spirit:name>
@@ -1509,11 +1509,11 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
     <spirit:parameter>
       <spirit:name>C_TRI_DEFAULT</spirit:name>
       <spirit:displayName>Default Tri State Value</spirit:displayName>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.C_TRI_DEFAULT" spirit:order="2000" spirit:bitStringLength="32">0xFFFFFFFF</spirit:value>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.C_TRI_DEFAULT" spirit:order="2000" spirit:bitStringLength="32">0x80000000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TRI_DEFAULT">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.C_TRI_DEFAULT">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>
@@ -1521,7 +1521,7 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
     <spirit:parameter>
       <spirit:name>C_GPIO_WIDTH</spirit:name>
       <spirit:displayName>GPIO Width</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_GPIO_WIDTH" spirit:order="1900" spirit:minimum="1" spirit:maximum="32" spirit:rangeType="long">16</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_GPIO_WIDTH" spirit:order="1900" spirit:minimum="1" spirit:maximum="32" spirit:rangeType="long">32</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -1533,7 +1533,7 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
     <spirit:parameter>
       <spirit:name>C_GPIO2_WIDTH</spirit:name>
       <spirit:displayName>GPIO Width</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_GPIO2_WIDTH" spirit:order="1800" spirit:minimum="1" spirit:maximum="32" spirit:rangeType="long">16</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_GPIO2_WIDTH" spirit:order="1800" spirit:minimum="1" spirit:maximum="32" spirit:rangeType="long">32</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -1628,7 +1628,7 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">UFBmod_TRX_TRX_tx_dds_ampt_axi_gpio_0_1</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">msys_TRX_tx_dds_inc_axi_gpio_0_0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -1674,7 +1674,7 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
     <spirit:parameter>
       <spirit:name>C_ALL_OUTPUTS</spirit:name>
       <spirit:displayName>All Outputs</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_ALL_OUTPUTS" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2100">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_ALL_OUTPUTS" spirit:choiceRef="choice_pairs_4873554b" spirit:order="2100">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -1707,9 +1707,9 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.ARUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.AWUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.BUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.CLK_DOMAIN" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.CLK_DOMAIN" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.DATA_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.FREQ_HZ" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_BRESP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_BURST" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_CACHE" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
@@ -1720,31 +1720,32 @@ Each I/O pin of the AXI GPIO is individually programmable as an input or output 
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_RRESP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_WSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.ID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.MAX_BURST_LENGTH" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_READ_OUTSTANDING" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_READ_THREADS" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_WRITE_OUTSTANDING" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_WRITE_THREADS" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.PHASE" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.MAX_BURST_LENGTH" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_READ_OUTSTANDING" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_READ_THREADS" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_WRITE_OUTSTANDING" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_WRITE_THREADS" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.PHASE" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.PROTOCOL" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.READ_WRITE_MODE" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.RUSER_BITS_PER_BYTE" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.RUSER_BITS_PER_BYTE" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.RUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.SUPPORTS_NARROW_BURST" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.WUSER_BITS_PER_BYTE" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.SUPPORTS_NARROW_BURST" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.WUSER_BITS_PER_BYTE" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.WUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_ACLK.ASSOCIATED_BUSIF" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_ACLK.ASSOCIATED_RESET" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_ACLK.CLK_DOMAIN" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_ACLK.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_ACLK.CLK_DOMAIN" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_ACLK.FREQ_HZ" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_ACLK.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_ACLK.PHASE" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_ACLK.PHASE" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_ARESETN.POLARITY" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_ALL_OUTPUTS" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_ALL_OUTPUTS_2" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_GPIO2_WIDTH" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_GPIO_WIDTH" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_IS_DUAL" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_TRI_DEFAULT" xilinx:valueSource="user"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>

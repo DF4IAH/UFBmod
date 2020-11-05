@@ -69,33 +69,31 @@ begin
     if (clk_100MHz'EVENT and clk_100MHz = '1') then
         if (reset_100MHz = '1') then
             -- SRST
-            if (clk_100MHz'EVENT) and (clk_100MHz = '1') then
-                addr_in_Int := 0;
-                addr_out    <= (others => '0');
-                
-                ena_ch00    <= '0';
-                ena_ch01    <= '0';
-                ena_ch02    <= '0';
-                ena_ch03    <= '0';
-                ena_ch04    <= '0';
-                ena_ch05    <= '0';
-                ena_ch06    <= '0';
-                ena_ch07    <= '0';
-            end if;
+            addr_in_Int     := 0;
+            addr_out        <= (others => '0');
+            
+            ena_ch00        <= '0';
+            ena_ch01        <= '0';
+            ena_ch02        <= '0';
+            ena_ch03        <= '0';
+            ena_ch04        <= '0';
+            ena_ch05        <= '0';
+            ena_ch06        <= '0';
+            ena_ch07        <= '0';
             
         else
             addr_in_Int     := to_integer(unsigned(addr_in));
             addr_out_Int    := 0;
             
             -- MUX/Logic
-            ena_ch00    <= '0';
-            ena_ch01    <= '0';
-            ena_ch02    <= '0';
-            ena_ch03    <= '0';
-            ena_ch04    <= '0';
-            ena_ch05    <= '0';
-            ena_ch06    <= '0';
-            ena_ch07    <= '0';
+            ena_ch00        <= '0';
+            ena_ch01        <= '0';
+            ena_ch02        <= '0';
+            ena_ch03        <= '0';
+            ena_ch04        <= '0';
+            ena_ch05        <= '0';
+            ena_ch06        <= '0';
+            ena_ch07        <= '0';
             
             if (tvalid = '1') then
                 if    (C_RX_bin_ofs(0) <= addr_in_Int)  and  (addr_in_Int <=  (C_RX_bin_ofs(0) + 31)) then

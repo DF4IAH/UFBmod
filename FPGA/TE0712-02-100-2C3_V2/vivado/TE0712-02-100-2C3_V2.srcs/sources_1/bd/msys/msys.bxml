@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="msys" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1604514288"/>
-    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1604514288"/>
-    <Generation Name="SIMULATION" State="RESET" Timestamp="1604514288"/>
-    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1604514288"/>
+    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1604603071"/>
+    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1604603071"/>
+    <Generation Name="SIMULATION" State="RESET" Timestamp="1604603071"/>
+    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1604603071"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\msys_SC0712_0_0\msys_SC0712_0_0.xci" Type="IP">
         <Instance HierarchyPath="CFG/SC0712_0"/>
@@ -1006,6 +1006,46 @@
       </File>
       <File Name="ip\msys_xlslice_1_6\msys_xlslice_1_6.xci" Type="IP">
         <Instance HierarchyPath="CLOCK/CLOCK_xlslice_63to32"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_TRX_axi_quad_spi_0_0\msys_TRX_axi_quad_spi_0_0.xci" Type="IP">
+        <Instance HierarchyPath="AXI_TRX/TRX_CONFIG_quad_spi_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_axi_TRX_gpio_0_0\msys_axi_TRX_gpio_0_0.xci" Type="IP">
+        <Instance HierarchyPath="AXI_TRX/TRX_CONFIG_TRX_gpio_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_TRX_tx_dds_inc_axi_gpio_0_0\msys_TRX_tx_dds_inc_axi_gpio_0_0.xci" Type="IP">
+        <Instance HierarchyPath="AXI_TRX/TRX_TX_DDS_inc_axi_gpio_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_TRX_tx_dds_ampt_axi_gpio_0_0\msys_TRX_tx_dds_ampt_axi_gpio_0_0.xci" Type="IP">
+        <Instance HierarchyPath="AXI_TRX/TRX_TX_DDS_ampt_axi_gpio_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\msys_pushdata_rx09_axi_gpio_0_0\msys_pushdata_rx09_axi_gpio_0_0.xci" Type="IP">
+        <Instance HierarchyPath="AXI_TRX/TRX_RX_PUSHDATA_axi_gpio_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
