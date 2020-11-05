@@ -2329,7 +2329,7 @@ void taskTrx(void* pvParameters)
 
 	/* Init TRX-GPIO */
 	{
-		int statusTrx = XGpio_Initialize(&gpio_TRX_CONFIG, XPAR_TRX_TRX_CONFIG_AXI_TRX_GPIO_0_DEVICE_ID);
+		int statusTrx = XGpio_Initialize(&gpio_TRX_CONFIG, XPAR_AXI_TRX_TRX_CONFIG_TRX_GPIO_0_DEVICE_ID);
 		if (statusTrx != XST_SUCCESS) {
 			xil_printf("TaskTrx: *** GPIO TRX Config Initialization Failed\r\n");
 			return /*XST_FAILURE*/;
@@ -2347,7 +2347,7 @@ void taskTrx(void* pvParameters)
 
 	/* Init TRX-DDS-GPIO */
 	{
-		int statusTrx = XGpio_Initialize(&gpio_TRX_DDS, XPAR_TRX_TRX_TX_DDS_UNIT_TRX_TX_DDS_INC_AXI_GPIO_0_DEVICE_ID);
+		int statusTrx = XGpio_Initialize(&gpio_TRX_DDS, XPAR_AXI_TRX_TRX_TX_DDS_INC_AXI_GPIO_0_DEVICE_ID);
 		if (statusTrx != XST_SUCCESS) {
 			xil_printf("TaskTrx: *** GPIO TRX TX DDS Initialization Failed\r\n");
 			return /*XST_FAILURE*/;
@@ -2365,7 +2365,7 @@ void taskTrx(void* pvParameters)
 
 	/* Init TRX-AMPT-GPIO */
 	{
-		int statusTrx = XGpio_Initialize(&gpio_TRX_AMPT, XPAR_TRX_TRX_TX_DDS_UNIT_TRX_TX_DDS_AMPT_AXI_GPIO_0_DEVICE_ID);
+		int statusTrx = XGpio_Initialize(&gpio_TRX_AMPT, XPAR_AXI_TRX_TRX_TX_DDS_AMPT_AXI_GPIO_0_DEVICE_ID);
 		if (statusTrx != XST_SUCCESS) {
 			xil_printf("TaskTrx: *** GPIO TRX TX AMPT Initialization Failed\r\n");
 			return /*XST_FAILURE*/;
@@ -2382,7 +2382,7 @@ void taskTrx(void* pvParameters)
 
 	/* Init TRX-PUSHDATA-GPIO */
 	{
-		int statusTrx = XGpio_Initialize(&gpio_TRX_PUSHDATA, XPAR_TRX_TRX_RX_FFT_UNIT_PUSHDATA_PUSHDATA_RX09_AXI_GPIO_0_DEVICE_ID);
+		int statusTrx = XGpio_Initialize(&gpio_TRX_PUSHDATA, XPAR_AXI_TRX_TRX_RX_PUSHDATA_AXI_GPIO_0_DEVICE_ID);
 		if (statusTrx != XST_SUCCESS) {
 			xil_printf("TaskTrx: *** GPIO TRX RX PushData Initialization Failed\r\n");
 			return /*XST_FAILURE*/;
@@ -2399,7 +2399,7 @@ void taskTrx(void* pvParameters)
 	/* Init SPI */
 	{
 		/* Set up the device in loopback mode and enable master mode */
-		spiConfigPtr = XSpi_LookupConfig(XPAR_TRX_TRX_CONFIG_TRX_AXI_QUAD_SPI_0_DEVICE_ID);
+		spiConfigPtr = XSpi_LookupConfig(XPAR_CFG_CFG_AXI_QUAD_SPI_0_DEVICE_ID);
 		if (spiConfigPtr == NULL) {
 			return /*XST_DEVICE_NOT_FOUND*/;
 		}

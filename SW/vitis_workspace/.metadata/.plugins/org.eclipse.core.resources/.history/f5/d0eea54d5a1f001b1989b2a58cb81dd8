@@ -1,0 +1,6 @@
+
+rtos.srec: rtos.elf
+	@echo 'Invoking: MicroBlaze ELF to SREC convertion'
+	mb-objcopy -O srec rtos.elf rtos.srec
+	@echo 'Finished building: $@'
+	@echo ' '

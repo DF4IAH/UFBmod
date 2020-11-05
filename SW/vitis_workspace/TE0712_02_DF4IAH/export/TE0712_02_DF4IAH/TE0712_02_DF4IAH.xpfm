@@ -8,7 +8,7 @@
 TE0712_02_DF4IAH
     </sdx:description>
     <sdx:hardwarePlatforms>
-        <sdx:hardwarePlatform sdx:path="hw" sdx:name="msys_wrapper.xsa"/>
+        <sdx:hardwarePlatform sdx:path="hw" sdx:name="top.xsa"/>
     </sdx:hardwarePlatforms>
     <sdx:softwarePlatforms>
         <sdx:softwarePlatform sdx:path="sw" sdx:name="TE0712_02_DF4IAH.spfm"/>

@@ -11,7 +11,7 @@ TE0712_02_DF4IAH
     <sdx:systemConfigurations sdx:defaultConfiguration="TE0712_02_DF4IAH">
         <sdx:configuration sdx:name="TE0712_02_DF4IAH"
                            sdx:displayName="TE0712_02_DF4IAH"
-                           sdx:defaultProcessorGroup="rtos"
+                           sdx:defaultProcessorGroup="srec_on_microblaze_0"
                            sdx:runtimes="cpp">
             <sdx:description>TE0712_02_DF4IAH</sdx:description>
             <sdx:bootImages sdx:default="standard">
@@ -40,6 +40,17 @@ TE0712_02_DF4IAH
                         sdx:bspLibraryPaths="TE0712_02_DF4IAH/rtos/bsplib/lib"
                         sdx:bspIncludePaths="TE0712_02_DF4IAH/rtos/bspinclude/include"
                         sdx:bspConfig="TE0712_02_DF4IAH/rtos/system.mss"
+                />
+            </sdx:processorGroup>
+            <sdx:processorGroup sdx:name="srec_on_microblaze_0"
+                                sdx:displayName="srec_on_microblaze_0"
+                                sdx:cpuType="microblaze_0"
+                                sdx:cpuInstance="microblaze_0">
+                <sdx:os sdx:name="standalone"
+                        sdx:displayName="standalone"
+                        sdx:bspLibraryPaths="TE0712_02_DF4IAH/srec_on_microblaze_0/bsplib/lib"
+                        sdx:bspIncludePaths="TE0712_02_DF4IAH/srec_on_microblaze_0/bspinclude/include"
+                        sdx:bspConfig="TE0712_02_DF4IAH/srec_on_microblaze_0/system.mss"
                 />
             </sdx:processorGroup>
         </sdx:configuration>
