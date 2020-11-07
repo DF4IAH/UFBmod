@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Thu Nov  5 19:38:53 2020
+--Date        : Fri Nov  6 23:03:02 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target UFBmod_TRX_wrapper.bd
 --Design      : UFBmod_TRX_wrapper
@@ -20,6 +20,7 @@ entity UFBmod_TRX_wrapper is
     Status_LVDS_rx24_synced : in STD_LOGIC;
     TRX_CONFIG_GPIO1_o : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_CONFIG_GPIO2_i : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_LVDS_tx09_fifo_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_PLL_clk_25MHz_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_PLL_clk_25MHz_p : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_PUSHDATA_ch00_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -66,6 +67,8 @@ entity UFBmod_TRX_wrapper is
     TRX_clk_trx_26MHz_vio : out STD_LOGIC;
     TRX_clk_trx_pll_25MHz_vio : out STD_LOGIC;
     TRX_data_count : out STD_LOGIC_VECTOR ( 11 downto 0 );
+    TRX_dds_tx_rf09_inc : in STD_LOGIC_VECTOR ( 25 downto 0 );
+    TRX_dds_tx_rf09_ptt : in STD_LOGIC;
     TRX_decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_encoder_tx09_pull_FIFO_dump : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_encoder_tx09_pull_data_len : out STD_LOGIC_VECTOR ( 6 downto 0 );
@@ -117,7 +120,6 @@ entity UFBmod_TRX_wrapper is
     TRX_xfft_rx09_dly3449_event_frame_started : out STD_LOGIC;
     TRX_xfft_rx09_dly3449_event_tlast_missing : out STD_LOGIC;
     TRX_xfft_rx09_dly3449_event_tlast_unexpected : out STD_LOGIC;
-    dds_tx09_ptt_in : in STD_LOGIC;
     fft09_config_tdata_in : in STD_LOGIC_VECTOR ( 7 downto 0 );
     fft09_config_tvalid_in : in STD_LOGIC;
     fft09_data_tlast_in : in STD_LOGIC;
@@ -129,7 +131,6 @@ entity UFBmod_TRX_wrapper is
     premem_rx09_addra_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
     premem_rx09_dina_in : in STD_LOGIC_VECTOR ( 25 downto 0 );
     premem_rx09_wea_in : in STD_LOGIC;
-    pulldata_dds_inc : in STD_LOGIC_VECTOR ( 25 downto 0 );
     pulldata_tx09_en : in STD_LOGIC;
     rst_mig_7series_0_100M_peripheral_aresetn : in STD_LOGIC;
     rst_mig_7series_0_100M_peripheral_reset : in STD_LOGIC
@@ -158,13 +159,13 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     TRX_rx_rf09_Pre_FFT_mem_addrb : in STD_LOGIC_VECTOR ( 10 downto 0 );
     RF09_quarterfrm : in STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_rx_rf09_ch00_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    dds_tx09_ptt_in : in STD_LOGIC;
+    TRX_dds_tx_rf09_ptt : in STD_LOGIC;
     Status_LVDS_rx09_synced : in STD_LOGIC;
     Status_LVDS_rx24_synced : in STD_LOGIC;
     RF09_framectr : in STD_LOGIC_VECTOR ( 29 downto 0 );
     FFT_window_coef_rom_rx09 : in STD_LOGIC_VECTOR ( 9 downto 0 );
     pulldata_tx09_en : in STD_LOGIC;
-    pulldata_dds_inc : in STD_LOGIC_VECTOR ( 25 downto 0 );
+    TRX_dds_tx_rf09_inc : in STD_LOGIC_VECTOR ( 25 downto 0 );
     TRX_resetn : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_PLL_clk_25MHz_p : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -246,10 +247,6 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     TRX_PUSHDATA_ch05_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
     TRX_PUSHDATA_ch06_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
     TRX_PUSHDATA_ch07_din : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    TRX_tx_clk_clk_n : out STD_LOGIC;
-    TRX_tx_clk_clk_p : out STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
     TRX_CONFIG_GPIO1_o : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_CONFIG_GPIO2_i : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_TX_DDS_GPIO2_o : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -258,7 +255,12 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     TRX_TX_DDSAMPL_GPIO1_o : in STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_TX_DDSAMPL_GPIO2_o : in STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_RX_PUSHDATA_GPIO2_o : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_RX_PUSHDATA_GPIO1_i : out STD_LOGIC_VECTOR ( 31 downto 0 )
+    TRX_RX_PUSHDATA_GPIO1_i : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_LVDS_tx09_fifo_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
+    TRX_tx_clk_clk_n : out STD_LOGIC;
+    TRX_tx_clk_clk_p : out STD_LOGIC
   );
   end component UFBmod_TRX;
 begin
@@ -271,6 +273,7 @@ UFBmod_TRX_i: component UFBmod_TRX
       Status_LVDS_rx24_synced => Status_LVDS_rx24_synced,
       TRX_CONFIG_GPIO1_o(31 downto 0) => TRX_CONFIG_GPIO1_o(31 downto 0),
       TRX_CONFIG_GPIO2_i(31 downto 0) => TRX_CONFIG_GPIO2_i(31 downto 0),
+      TRX_LVDS_tx09_fifo_din(31 downto 0) => TRX_LVDS_tx09_fifo_din(31 downto 0),
       TRX_PLL_clk_25MHz_n(0) => TRX_PLL_clk_25MHz_n(0),
       TRX_PLL_clk_25MHz_p(0) => TRX_PLL_clk_25MHz_p(0),
       TRX_PUSHDATA_ch00_din(7 downto 0) => TRX_PUSHDATA_ch00_din(7 downto 0),
@@ -317,6 +320,8 @@ UFBmod_TRX_i: component UFBmod_TRX
       TRX_clk_trx_26MHz_vio => TRX_clk_trx_26MHz_vio,
       TRX_clk_trx_pll_25MHz_vio => TRX_clk_trx_pll_25MHz_vio,
       TRX_data_count(11 downto 0) => TRX_data_count(11 downto 0),
+      TRX_dds_tx_rf09_inc(25 downto 0) => TRX_dds_tx_rf09_inc(25 downto 0),
+      TRX_dds_tx_rf09_ptt => TRX_dds_tx_rf09_ptt,
       TRX_decoder_rx09_squelch_lvl(15 downto 0) => TRX_decoder_rx09_squelch_lvl(15 downto 0),
       TRX_encoder_tx09_pull_FIFO_dump(0) => TRX_encoder_tx09_pull_FIFO_dump(0),
       TRX_encoder_tx09_pull_data_len(6 downto 0) => TRX_encoder_tx09_pull_data_len(6 downto 0),
@@ -368,7 +373,6 @@ UFBmod_TRX_i: component UFBmod_TRX
       TRX_xfft_rx09_dly3449_event_frame_started => TRX_xfft_rx09_dly3449_event_frame_started,
       TRX_xfft_rx09_dly3449_event_tlast_missing => TRX_xfft_rx09_dly3449_event_tlast_missing,
       TRX_xfft_rx09_dly3449_event_tlast_unexpected => TRX_xfft_rx09_dly3449_event_tlast_unexpected,
-      dds_tx09_ptt_in => dds_tx09_ptt_in,
       fft09_config_tdata_in(7 downto 0) => fft09_config_tdata_in(7 downto 0),
       fft09_config_tvalid_in => fft09_config_tvalid_in,
       fft09_data_tlast_in => fft09_data_tlast_in,
@@ -380,7 +384,6 @@ UFBmod_TRX_i: component UFBmod_TRX
       premem_rx09_addra_in(10 downto 0) => premem_rx09_addra_in(10 downto 0),
       premem_rx09_dina_in(25 downto 0) => premem_rx09_dina_in(25 downto 0),
       premem_rx09_wea_in => premem_rx09_wea_in,
-      pulldata_dds_inc(25 downto 0) => pulldata_dds_inc(25 downto 0),
       pulldata_tx09_en => pulldata_tx09_en,
       rst_mig_7series_0_100M_peripheral_aresetn => rst_mig_7series_0_100M_peripheral_aresetn,
       rst_mig_7series_0_100M_peripheral_reset => rst_mig_7series_0_100M_peripheral_reset

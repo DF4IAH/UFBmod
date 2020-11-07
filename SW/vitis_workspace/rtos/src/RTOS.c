@@ -106,7 +106,7 @@ static TaskHandle_t thTrxRxMsg;
 /* Instances 												 */
 
 static XGpio gpio_Rotenc;																		/* ROTENC 	               */
-static XGpio gpio_PWM_Lights;																	/* PWM Lights              */
+       XGpio gpio_PWM_Lights;																	/* PWM Lights              */
 static XGpio gpio_CLK1B_PS;																		/* CLK1B fine PS tuning    */
 static XGpio gpio0_SCOPE;																		/* SCOPE unit for analysis */
 static XGpio gpio1_SCOPE;																		/* GPIO2 and GPIO3         */
@@ -123,7 +123,9 @@ static XGpio gpio1_SCOPE;																		/* GPIO2 and GPIO3         */
 
 int main(void)
 {
+#ifdef LOGGING
 	xil_printf("\r\n\r\n*** UFBmod start-up ***\r\n" );
+#endif
 
 	xTaskCreate(
 			taskDefault, 					/* The function that implements the task. */
@@ -219,6 +221,7 @@ void pwmLedSet(u32 enableBF, u32 changeMsk)
 
 static void clkwiz_print_DRP(void)
 {
+#ifdef LOGGING
 	const UINTPTR ba = XPAR_CLK_WIZ_0_BASEADDR;
 
 	u32 reg;
@@ -297,6 +300,7 @@ static void clkwiz_print_DRP(void)
 	xil_printf("Control Reg \t\t\t\t= 0x%08lx\r\n", reg);
 
 	xil_printf("\r\ndone.\r\n");
+#endif
 }
 
 
@@ -307,6 +311,7 @@ static void taskDefault(void* pvParameters)
 {
 #if 1
 	/* Read EUI48 address from Onewire S-EEPROM as Ethernet MAC address */
+#ifdef LOGGING
 	{
 		int statusEui48 = owreadEUI48();
 		if (statusEui48 != XST_SUCCESS) {
@@ -317,13 +322,16 @@ static void taskDefault(void* pvParameters)
 		}
 	}
 #endif
+#endif
 
 #if 1
 	/* ROTENC counter and push button */
 	{
 		int statusRotenc = XGpio_Initialize(&gpio_Rotenc, XPAR_ROTENC_DECODER_AXI_ROTENC_GPIO_0_DEVICE_ID);
 		if (statusRotenc != XST_SUCCESS) {
+#ifdef LOGGING
 			xil_printf("GPIO Rotenc Initialization Failed\r\n");
+#endif
 			return;
 		}
 		XGpio_SetDataDirection(&gpio_Rotenc, 1U, 0xffffffffUL);  // 32 bit input
@@ -336,7 +344,9 @@ static void taskDefault(void* pvParameters)
 	{
 		int statusPwmLights = XGpio_Initialize(&gpio_PWM_Lights, XPAR_PWM_LIGHTS_AXI_PWM_GPIO_0_DEVICE_ID);
 		if (statusPwmLights != XST_SUCCESS) {
+#ifdef LOGGING
 			xil_printf("GPIO PWM Lights Initialization Failed\r\n");
+#endif
 			return;
 		}
 		XGpio_SetDataDirection(&gpio_PWM_Lights, 1U, 0x00000000UL);  // 32 bit output
@@ -350,13 +360,17 @@ static void taskDefault(void* pvParameters)
 	{
 		int statusScope = XGpio_Initialize(&gpio0_SCOPE, XPAR_SCOPE_SCOPE_AXI_GPIO_0_DEVICE_ID);
 		if (statusScope != XST_SUCCESS) {
+#ifdef LOGGING
 			xil_printf("GPIO SCOPE (GPIO0) Failed\r\n");
+#endif
 			return;
 		}
 
 		statusScope = XGpio_Initialize(&gpio1_SCOPE, XPAR_SCOPE_SCOPE_AXI_GPIO_1_DEVICE_ID);
 		if (statusScope != XST_SUCCESS) {
+#ifdef LOGGING
 			xil_printf("GPIO SCOPE (GPIO1) Failed\r\n");
+#endif
 			return;
 		}
 
@@ -370,6 +384,7 @@ static void taskDefault(void* pvParameters)
 
 #if 0
 	/* I2C address mapping list */
+#ifdef LOGGING
 	{
 		u32 ByteCount;
 		u8 iicData;
@@ -388,6 +403,7 @@ static void taskDefault(void* pvParameters)
 			}
 		}
 	}
+#endif
 #endif
 
 
@@ -412,7 +428,9 @@ static void taskDefault(void* pvParameters)
 		mode = 3U;
 #endif
 
+#ifdef LOGGING
 		xil_printf("\r\nClock Wizard - CLK1B -->\r\n");
+#endif
 
 #if 0
 		/* Debugging */
@@ -493,7 +511,9 @@ static void taskDefault(void* pvParameters)
 		clkwiz_print_DRP();
 #endif
 
+#ifdef LOGGING
 		xil_printf("=====\r\n\r\n");
+#endif
 	}
 #endif
 
@@ -506,7 +526,9 @@ static void taskDefault(void* pvParameters)
 
 		int statusClk1b = XGpio_Initialize(&gpio_CLK1B_PS, XPAR_CLK1B_CW_0_CLK1B_AXI_GPIO_0_DEVICE_ID);
 		if (statusClk1b != XST_SUCCESS) {
+#ifdef LOGGING
 			xil_printf("GPIO LK1B ClockWizard fine PS tuning Initialization Failed\r\n");
+#endif
 			return;
 		}
 		XGpio_SetDataDirection(&gpio_CLK1B_PS, 1U, ~0x00000003UL);  //  2 bit output
@@ -551,65 +573,10 @@ static void taskDefault(void* pvParameters)
 	}
 #endif
 
-
 #if 1
 	/* LCD */
-	{
-		/* Pull and release reset line of the LCD */
-		{
-			const u32 pwmLights_gpio2_prev  	= XGpio_DiscreteRead(&gpio_PWM_Lights, 2U);
-			const u32 pwmLights_gpio2_lcd_rstn  = pwmLights_gpio2_prev & ~0x01UL;
-			const u32 pwmLights_gpio2_lcd_actv  = pwmLights_gpio2_prev |  0x01UL;
-
-			xil_printf("LCD reset: rstn --> actv\r\n");
-
-			XGpio_DiscreteWrite(&gpio_PWM_Lights, 2U, pwmLights_gpio2_lcd_rstn);
-			vTaskDelay(pdMS_TO_TICKS(10));
-
-			XGpio_DiscreteWrite(&gpio_PWM_Lights, 2U, pwmLights_gpio2_lcd_actv);
-			vTaskDelay(pdMS_TO_TICKS(50));
-		}
-
-		xil_printf("IIC LCD Addr = 0x%02x --> ", IIC_LCD_ONCHIP_ADDRESS);
-
-		u16 StatusReg = XIic_ReadReg(IIC_BOARD_BASE_ADDRESS, XIIC_SR_REG_OFFSET);
-		if(!(StatusReg & XIIC_SR_BUS_BUSY_MASK)) {
-			const u8 iicData1[2] = { 0x00, 0x38 };
-			XIic_Send(IIC_BOARD_BASE_ADDRESS, IIC_LCD_ONCHIP_ADDRESS, (u8*) &iicData1, sizeof(iicData1), XIIC_STOP);
-			vTaskDelay(pdMS_TO_TICKS(50));
-
-			const u8 iicData2[2] = { 0x00, 0x39 };
-			XIic_Send(IIC_BOARD_BASE_ADDRESS, IIC_LCD_ONCHIP_ADDRESS, (u8*) &iicData2, sizeof(iicData2), XIIC_STOP);
-			vTaskDelay(pdMS_TO_TICKS(10));
-
-			const u8 iicData3[12] = {
-					0x80U, 0x14U, 			/* Internal OSC frequency - 1/5 bias; Osc frequency: abt. 183 Hz */
-					0x80U, 0x74U,			/* 							Contrast: LSB 36 of [0..63] */
-					0x80U, 0x56U,			/* Icon: off; Booster: on; 	Contrast: MSB 36 of [0..63] */
-					0x80U, 0x6cU,			/* Follower: on; amplification ratio: 4 of [0..7] */
-					0x80U, 0x0cU,			/* Display: on; Cursor: off; Cursor position: off */
-					0x00U, 0x01U,			/* Clear display */
-			};
-			XIic_Send(IIC_BOARD_BASE_ADDRESS, IIC_LCD_ONCHIP_ADDRESS, (u8*) &iicData3, sizeof(iicData3), XIIC_STOP);
-			vTaskDelay(pdMS_TO_TICKS(10));
-
-			const u8 col 			= 0U;
-			const u8 rowL1			= 0U;
-			const char strBufL1[] 	= "* UFBmod  V2.x *";
-			const u8 strLenL1		= 16;
-			lcdTextWrite(rowL1, col, strLenL1, strBufL1);
-
-			const u8 rowL2			= 1U;
-			//const char strBufL2[] = "*Demo by DF4IAH*";
-			const char strBufL2[] 	= "Demo by HFT Labs";
-			const u8 strLenL2		= 16;
-			lcdTextWrite(rowL2, col, strLenL2, strBufL2);
-
-			xil_printf(".\r\n");
-		}
-	}
+	lcdInit();
 #endif
-
 
 	//u8 loopIdx = 0U;
 	while (1) {
@@ -643,12 +610,15 @@ static void taskDefault(void* pvParameters)
 				XGpio_DiscreteSet(  &gpio_CLK1B_PS, 1, 0x00000002UL);
 			}
 
+#ifdef LOGGING
 			xil_printf( "CLK1B_PS: dwnUp=%d, ctr=%4ld\r\n", dwnUp, ctr);
+#endif
 		}
 #endif
 
 #if 0
 		/* SCOPE Triggering and Readout */
+#ifdef LOGGING
 		{
 			u32 gpio1, gpio3, gpio4;
 
@@ -754,7 +724,7 @@ static void taskDefault(void* pvParameters)
 		XGpio_DiscreteWrite(&gpio0_SCOPE, 1U, 0UL);
 		xil_printf("\r\n");
 #endif
-
+#endif
 
 #if 0
 		const u32 gpio1_ctr  = XGpio_DiscreteRead(&gpio_Rotenc, 1U);
@@ -863,7 +833,9 @@ static void taskEth(void* pvParameters)
 						portMAX_DELAY );	/* Wait without a timeout for data. */
 
 		/* Print the received data. */
+#ifdef LOGGING
 		xil_printf( "Rx task received string from Tx task: %s\r\n", Recdstring );
+#endif
 		RxtaskCntr++;
 #endif
 
@@ -896,7 +868,9 @@ static void vTimerCallback( TimerHandle_t pxTimer )
 	lTimerId = ( long ) pvTimerGetTimerID( pxTimer );
 
 	if (lTimerId != TIMER_ID) {
+#ifdef LOGGING
 		xil_printf("FreeRTOS Hello World Example FAILED");
+#endif
 	}
 
 	/* If the RxtaskCntr is updated every time the Rx task is called. The
@@ -904,11 +878,13 @@ static void vTimerCallback( TimerHandle_t pxTimer )
 	 sends a message every 1 second.
 	 The timer expires after 10 seconds. We expect the RxtaskCntr to at least
 	 have a value of 9 (TIMER_CHECK_THRESHOLD) when the timer expires. */
+#ifdef LOGGING
 	if (RxtaskCntr >= TIMER_CHECK_THRESHOLD) {
 		xil_printf("Successfully ran FreeRTOS Hello World Example");
 	} else {
 		xil_printf("FreeRTOS Hello World Example FAILED");
 	}
+#endif
 
 	vTaskDelete(thEth);
 	vTaskDelete(thDflt);

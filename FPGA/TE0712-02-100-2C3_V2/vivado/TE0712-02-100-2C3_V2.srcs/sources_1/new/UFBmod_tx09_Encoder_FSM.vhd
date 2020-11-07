@@ -81,6 +81,7 @@ begin
             dds_current_freq    := 0;
             dds_current_inc     := 0;
             dds_new_inc         := 0;
+            
         else
             case state is
                 when init =>
@@ -137,7 +138,7 @@ begin
   
   
   -- UFBmod encoder for the RF09 transmitter
-  proc_UFBmod_Encoder_tx09: process (reset, clk, decoder_rx09_chAll_sql_open, decoder_rx09_chAll_active, encoder_pull_FIFO_dump, encoder_pull_do_start, encoder_pull_data_len, pulldata_tx09_byteData)
+  proc_UFBmod_Encoder_tx09: process (reset, clk)
     constant C_pre_r00                              : Integer :=  +7;   -- 1010110100100101
     constant C_pre_r01                              : Integer := -11;
     constant C_pre_r02                              : Integer :=  +7;
@@ -205,6 +206,9 @@ begin
   begin
     if (clk'EVENT and clk = '1') then
         if (reset = '1') then
+            pulldata_tx09_en                        <= '0';
+            
+            dds_tx09_ptt                            <= '0';
             dds_new_freq                            := 0;
             
             encoder_tx09_in_vec                     <= (others => '0');
@@ -222,15 +226,12 @@ begin
             encoder_frq_initial                     := 0;
             encoder_frq_last                        := 0;
             
-            dds_tx09_ptt                            <= '0';
-            
-            pulldata_tx09_en                        <= '0';
-            
             state                                   := init;
             
         else
             case state is
                 when init =>
+                    dds_tx09_ptt        <= '0';
                     dds_new_freq        := 0;
                     pulldata_tx09_en    <= '0';
                     
@@ -241,6 +242,7 @@ begin
                     pull_cnt := to_integer(unsigned(encoder_pull_data_len));
                     
                     if ((encoder_pull_FIFO_dump = '1') or ((encoder_pull_do_start = '1') and ((pull_cnt < 3) or (131 < pull_cnt)))) then
+                        -- Drop complete data of the FIFO
                         state := fifo_dump;
                         
                     elsif (encoder_pull_do_start = '1') then
@@ -369,15 +371,15 @@ begin
                         encoder_tx09_in_len <= (others => '0');
                         
                         preIdx  := 0;
-                        state   := tx_final_finX_dds;
+                      --state   := tx_final_finX_dds;
+                        state   := tx_rampdown_dds;
                     end if;
                     
                 when tx_body_hold_128us =>
                     if (loop_cnt /= 0) then
                         loop_cnt    := loop_cnt - 1;
                     else
-                      --state := tx_body_dds;
-                        state := tx_rampdown_dds;
+                        state := tx_body_dds;
                     end if;
                 
               --Not in use

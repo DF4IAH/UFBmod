@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x4FDBA300900222C4",
+      "boundary_crc": "0x9ECBE0F80A9E835E",
       "device": "xc7a100tfgg484-2",
       "name": "UFBmod_TRX",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -58,7 +58,8 @@
         },
         "TRX_LVDS_selectio_wiz_0": "",
         "xlconstant_1_len1": "",
-        "TRX_LVDS_util_ds_buf_0": ""
+        "TRX_LVDS_util_ds_buf_0": "",
+        "xlconstant_val0_len2": ""
       },
       "TRX_rx_FFT_unit": {
         "TRX_rx_FFT_calc": {
@@ -405,7 +406,7 @@
           }
         }
       },
-      "dds_tx09_ptt_in": {
+      "TRX_dds_tx_rf09_ptt": {
         "direction": "I"
       },
       "Status_LVDS_rx09_synced": {
@@ -449,7 +450,7 @@
       "pulldata_tx09_en": {
         "direction": "I"
       },
-      "pulldata_dds_inc": {
+      "TRX_dds_tx_rf09_inc": {
         "type": "data",
         "direction": "I",
         "left": "25",
@@ -1302,6 +1303,22 @@
             "value_src": "ip_prop"
           }
         }
+      },
+      "TRX_LVDS_tx09_fifo_din": {
+        "type": "data",
+        "direction": "O",
+        "left": "31",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          },
+          "PortWidth": {
+            "value": "32",
+            "value_src": "default"
+          }
+        }
       }
     },
     "components": {
@@ -1432,7 +1449,7 @@
             "left": "20",
             "right": "8"
           },
-          "dds_tx09_ptt_in": {
+          "TRX_dds_tx_rf09_ptt": {
             "direction": "I",
             "left": "0",
             "right": "0"
@@ -1449,6 +1466,11 @@
           "reset_CD100_i": {
             "type": "rst",
             "direction": "I"
+          },
+          "TRX_LVDS_tx09_fifo_din": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
           }
         },
         "components": {
@@ -2106,7 +2128,7 @@
                 "left": "20",
                 "right": "8"
               },
-              "TRX_tx_PTT_in": {
+              "TRX_dds_tx_rf09_ptt": {
                 "direction": "I",
                 "left": "0",
                 "right": "0"
@@ -2465,7 +2487,7 @@
               },
               "TRX_tx_PTT_in_0": {
                 "ports": [
-                  "TRX_tx_PTT_in",
+                  "TRX_dds_tx_rf09_ptt",
                   "TRX_tx_word_format_xlconcat_0/In4"
                 ]
               },
@@ -2662,19 +2684,31 @@
                 "value": "BUFG"
               }
             }
+          },
+          "xlconstant_val0_len2": {
+            "vlnv": "xilinx.com:ip:xlconstant:1.1",
+            "xci_name": "UFBmod_TRX_xlconstant_0_0",
+            "parameters": {
+              "CONST_VAL": {
+                "value": "0"
+              },
+              "CONST_WIDTH": {
+                "value": "2"
+              }
+            }
           }
         },
         "interface_nets": {
-          "rx_clk_CD064": {
-            "interface_ports": [
-              "TRX_rx_clk_64MHz",
-              "TRX_LVDS_selectio_wiz_0/diff_clk_in"
-            ]
-          },
           "Conn4": {
             "interface_ports": [
               "TRX_tx_clk",
               "TRX_LVDS_selectio_wiz_0/diff_clk_to_pins"
+            ]
+          },
+          "rx_clk_CD064": {
+            "interface_ports": [
+              "TRX_rx_clk_64MHz",
+              "TRX_LVDS_selectio_wiz_0/diff_clk_in"
             ]
           }
         },
@@ -2820,14 +2854,15 @@
           },
           "TRX_LVDS_tx_rf09_DDS_ptt_0": {
             "ports": [
-              "dds_tx09_ptt_in",
-              "TRX_tx_concat/TRX_tx_PTT_in"
+              "TRX_dds_tx_rf09_ptt",
+              "TRX_tx_concat/TRX_dds_tx_rf09_ptt"
             ]
           },
           "TRX_tx_rf09_FIFO_din_0": {
             "ports": [
               "TRX_tx_concat/TRX_tx09_fifo_din",
-              "TRX_tx09_fifo_generator_0/din"
+              "TRX_tx09_fifo_generator_0/din",
+              "TRX_LVDS_tx09_fifo_din"
             ]
           },
           "TRX_LVDS_tx_rf09_concat_tx_blank_0": {
@@ -2858,6 +2893,12 @@
             "ports": [
               "TRX_LVDS_selectio_wiz_0/clk_div_out",
               "TRX_LVDS_util_ds_buf_0/BUFG_I"
+            ]
+          },
+          "xlconstant_val0_len2_dout": {
+            "ports": [
+              "xlconstant_val0_len2/dout",
+              "TRX_LVDS_selectio_wiz_0/bitslip"
             ]
           }
         }
@@ -7570,16 +7611,16 @@
       }
     },
     "interface_nets": {
-      "TRX_TRX_tx_clk": {
-        "interface_ports": [
-          "TRX_tx_clk",
-          "TRX_LVDS/TRX_tx_clk"
-        ]
-      },
       "TRX_rx_clk_64MHz_1": {
         "interface_ports": [
           "TRX_rx_clk_64MHz",
           "TRX_LVDS/TRX_rx_clk_64MHz"
+        ]
+      },
+      "TRX_TRX_tx_clk": {
+        "interface_ports": [
+          "TRX_tx_clk",
+          "TRX_LVDS/TRX_tx_clk"
         ]
       }
     },
@@ -7705,8 +7746,8 @@
       },
       "TRX_tx_rf09_DDS_ptt_0": {
         "ports": [
-          "dds_tx09_ptt_in",
-          "TRX_LVDS/dds_tx09_ptt_in"
+          "TRX_dds_tx_rf09_ptt",
+          "TRX_LVDS/TRX_dds_tx_rf09_ptt"
         ]
       },
       "TRX_rx_rf09_LVDS_status_synced_0": {
@@ -7741,7 +7782,7 @@
       },
       "TRX_tx_rf09_PULLDATA_dds_inc_0": {
         "ports": [
-          "pulldata_dds_inc",
+          "TRX_dds_tx_rf09_inc",
           "TRX_tx_DDS_unit/pulldata_dds_inc"
         ]
       },
@@ -8323,6 +8364,12 @@
         "ports": [
           "TRX_RX_PUSHDATA_GPIO2_o",
           "TRX_rx_FFT_unit/TRX_RX_PUSHDATA_GPIO2_o"
+        ]
+      },
+      "TRX_LVDS_TRX_LVDS_tx09_fifo_din": {
+        "ports": [
+          "TRX_LVDS/TRX_LVDS_tx09_fifo_din",
+          "TRX_LVDS_tx09_fifo_din"
         ]
       }
     }

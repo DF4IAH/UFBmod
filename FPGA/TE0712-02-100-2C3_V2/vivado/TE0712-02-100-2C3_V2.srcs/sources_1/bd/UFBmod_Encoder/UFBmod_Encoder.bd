@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xF94183B6DB8C2AD7",
+      "boundary_crc": "0x61AA724FF40297F2",
       "device": "xc7a100tfgg484-2",
       "name": "UFBmod_Encoder",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -88,10 +88,10 @@
       "pulldata_tx09_en": {
         "direction": "O"
       },
-      "dds_tx09_ptt": {
+      "TRX_dds_tx_rf09_ptt": {
         "direction": "O"
       },
-      "dds_tx09_inc": {
+      "TRX_dds_tx_rf09_inc": {
         "type": "data",
         "direction": "O",
         "left": "25",
@@ -256,13 +256,13 @@
       "dds_tx09_ptt_0": {
         "ports": [
           "UFBmod_tx09_Encoder_0/dds_tx09_ptt",
-          "dds_tx09_ptt"
+          "TRX_dds_tx_rf09_ptt"
         ]
       },
       "dds_tx09_inc_0": {
         "ports": [
           "UFBmod_tx09_Encoder_0/dds_tx09_inc",
-          "dds_tx09_inc"
+          "TRX_dds_tx_rf09_inc"
         ]
       },
       "decoder_rx09_chAll_sql_open_1": {

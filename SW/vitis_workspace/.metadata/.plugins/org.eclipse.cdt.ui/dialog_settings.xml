@@ -7,6 +7,10 @@
 		<item value="995" key="DIALOG_X_ORIGIN"/>
 		<item value="351" key="DIALOG_Y_ORIGIN"/>
 	</section>
+	<section name="RefactoringWizard.preview">
+		<item value="600" key="width"/>
+		<item value="400" key="height"/>
+	</section>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration.internal">
 		<item value="180" key="size.height"/>
 		<item value="743" key="size.width"/>
@@ -16,6 +20,9 @@
 	<section name="RenameInformationPopup">
 	</section>
 	<section name="CRenameRefactoringInputPage">
+	</section>
+	<section name="ExtractFunctionWizard">
+		<item value="private" key="AccessModifier"/>
 	</section>
 	<section name="completion_proposal_size">
 	</section>

@@ -44,7 +44,7 @@
 #define CR       13
 
 /* Comment the following line, if you want a smaller and faster bootloader which will be silent */
-#define VERBOSE
+//#define VERBOSE
 
 /* Declarations */
 static void display_progress (uint32_t lines);
