@@ -2,39 +2,11 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="msys" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1604681351"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1604681352"/>
-    <Generation Name="SIMULATION" State="STALE" Timestamp="1604681345"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1604681352"/>
+    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1604913717"/>
+    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1604913717"/>
+    <Generation Name="SIMULATION" State="RESET" Timestamp="1604913717"/>
+    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1604913717"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
-      <File Name="msys_sim_netlist.vhdl" Type="VHDL">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="1604682065" IsTrackable="true" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SIMULATION"/>
-        <UsedIn Val="SINGLE_LANGUAGE"/>
-      </File>
-      <File Name="msys_sim_netlist.v" Type="Verilog">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="1604682047" IsTrackable="true" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SIMULATION"/>
-        <UsedIn Val="SINGLE_LANGUAGE"/>
-      </File>
-      <File Name="msys_stub.vhdl" Type="VHDL">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="1604682040" IsTrackable="true" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTH_BLACKBOX_STUB"/>
-      </File>
-      <File Name="msys_stub.v" Type="Verilog">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="1604682039" IsTrackable="true" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTH_BLACKBOX_STUB"/>
-      </File>
-      <File Name="msys.dcp" Type="DCP">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="1604682039" IsTrackable="true" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-      </File>
       <File Name="ip\msys_SC0712_0_0\msys_SC0712_0_0.xci" Type="IP">
         <Instance HierarchyPath="CFG/SC0712_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -1080,21 +1052,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="synth\msys.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-      </File>
-      <File Name="sim\msys.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="sim\msys.protoinst">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip\msys_tier2_xbar_0_0\msys_tier2_xbar_0_0.xci" Type="IP">
         <Instance HierarchyPath="microblaze_0_axi_periph/tier2_xbar_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -1150,34 +1107,6 @@
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="msys.bmm" Type="BMM">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="msys_ooc.xdc" Type="XDC">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="OUT_OF_CONTEXT"/>
-      </File>
-      <File Name="hw_handoff\msys.hwh" Type="HwHandoff">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="HW_HANDOFF"/>
-      </File>
-      <File Name="hw_handoff\msys_bd.tcl">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="HW_HANDOFF"/>
-      </File>
-      <File Name="synth\msys.hwdef">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="HW_HANDOFF"/>
       </File>
     </FileCollection>
   </CompositeFile>

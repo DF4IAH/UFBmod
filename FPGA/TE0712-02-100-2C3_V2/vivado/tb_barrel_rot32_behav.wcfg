@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_auto_LVDS_rotate_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_auto_LVDS_rotate" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="26114500fs"></ZoomStartTime>
+      <ZoomEndTime time="66374501fs"></ZoomEndTime>
+      <Cursor1Time time="43514500fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="788"></NameColumnWidth>
+      <ValueColumnWidth column_width="362"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="15" />
+   <wave_markers>
+      <marker time="2183500000" label="" />
+      <marker time="5495530000" label="" />
+   </wave_markers>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_reset" type="logic">
+      <obj_property name="ElementShortName">tb_reset</obj_property>
+      <obj_property name="ObjectShortName">tb_reset</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_clk" type="logic">
+      <obj_property name="ElementShortName">tb_clk</obj_property>
+      <obj_property name="ObjectShortName">tb_clk</obj_property>
+      <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_LVDS09" type="array">
+      <obj_property name="ElementShortName">tb_LVDS09[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_LVDS09[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_LVDS09_valid" type="logic">
+      <obj_property name="ElementShortName">tb_LVDS09_valid</obj_property>
+      <obj_property name="ObjectShortName">tb_LVDS09_valid</obj_property>
+      <obj_property name="CustomSignalColor">#008000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_LVDS24" type="array">
+      <obj_property name="ElementShortName">tb_LVDS24[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_LVDS24[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_LVDS24_valid" type="logic">
+      <obj_property name="ElementShortName">tb_LVDS24_valid</obj_property>
+      <obj_property name="ObjectShortName">tb_LVDS24_valid</obj_property>
+      <obj_property name="CustomSignalColor">#008000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_rot09q" type="array">
+      <obj_property name="ElementShortName">tb_rot09q[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_rot09q[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_rot09vld" type="logic">
+      <obj_property name="ElementShortName">tb_rot09vld</obj_property>
+      <obj_property name="ObjectShortName">tb_rot09vld</obj_property>
+      <obj_property name="CustomSignalColor">#008000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_rot24q" type="array">
+      <obj_property name="ElementShortName">tb_rot24q[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_rot24q[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_rot24vld" type="logic">
+      <obj_property name="ElementShortName">tb_rot24vld</obj_property>
+      <obj_property name="ObjectShortName">tb_rot24vld</obj_property>
+      <obj_property name="CustomSignalColor">#008000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_LVDS_rx09_synced" type="logic">
+      <obj_property name="ElementShortName">tb_LVDS_rx09_synced</obj_property>
+      <obj_property name="ObjectShortName">tb_LVDS_rx09_synced</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_auto_LVDS_rotate/tb_LVDS_rx24_synced" type="logic">
+      <obj_property name="ElementShortName">tb_LVDS_rx24_synced</obj_property>
+      <obj_property name="ObjectShortName">tb_LVDS_rx24_synced</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider55">
+      <obj_property name="label">INTERNALS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group63" type="group">
+      <obj_property name="label">rx09</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_auto_LVDS_rotate/auto_LVDS_rotate_i/rot_09_in" type="array">
+         <obj_property name="ElementShortName">rot_09_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rot_09_in[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_auto_LVDS_rotate/auto_LVDS_rotate_i/rot_09_in_hld" type="array">
+         <obj_property name="ElementShortName">rot_09_in_hld[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rot_09_in_hld[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_auto_LVDS_rotate/auto_LVDS_rotate_i/rot_09_val" type="array">
+         <obj_property name="ElementShortName">rot_09_val[4:0]</obj_property>
+         <obj_property name="ObjectShortName">rot_09_val[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_auto_LVDS_rotate/auto_LVDS_rotate_i/rot_09_out" type="array">
+         <obj_property name="ElementShortName">rot_09_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rot_09_out[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_auto_LVDS_rotate/auto_LVDS_rotate_i/mrk09ok" type="logic">
+         <obj_property name="ElementShortName">mrk09ok</obj_property>
+         <obj_property name="ObjectShortName">mrk09ok</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group64" type="group">
+      <obj_property name="label">rx24</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_auto_LVDS_rotate/auto_LVDS_rotate_i/rot_24_in" type="array">
+         <obj_property name="ElementShortName">rot_24_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rot_24_in[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_auto_LVDS_rotate/auto_LVDS_rotate_i/rot_24_in_hld" type="array">
+         <obj_property name="ElementShortName">rot_24_in_hld[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rot_24_in_hld[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_auto_LVDS_rotate/auto_LVDS_rotate_i/rot_24_val" type="array">
+         <obj_property name="ElementShortName">rot_24_val[4:0]</obj_property>
+         <obj_property name="ObjectShortName">rot_24_val[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_auto_LVDS_rotate/auto_LVDS_rotate_i/rot_24_out" type="array">
+         <obj_property name="ElementShortName">rot_24_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rot_24_out[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_auto_LVDS_rotate/auto_LVDS_rotate_i/mrk24ok" type="logic">
+         <obj_property name="ElementShortName">mrk24ok</obj_property>
+         <obj_property name="ObjectShortName">mrk24ok</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Fri Nov  6 23:03:02 2020
+--Date        : Sun Nov  8 20:08:28 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target UFBmod_TRX_wrapper.bd
 --Design      : UFBmod_TRX_wrapper
@@ -80,10 +80,8 @@ entity UFBmod_TRX_wrapper is
     TRX_rd_data_count_CD100_o : out STD_LOGIC_VECTOR ( 8 downto 0 );
     TRX_resetn : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_rx09_32bits_CD100 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx09_fifo : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx09_fifo_valid : out STD_LOGIC;
-    TRX_rx24_32bits_CD100 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx24_fifo : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx24_fifo_valid : out STD_LOGIC;
     TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
@@ -173,8 +171,6 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     TRX_rx_clkdiv_16MHz : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_tx_data_p : out STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_tx_data_n : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_rx24_32bits_CD100 : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_rx09_32bits_CD100 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rd_data_count_CD100_o : out STD_LOGIC_VECTOR ( 8 downto 0 );
     TRX_rx09_fifo : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx24_fifo : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -333,10 +329,8 @@ UFBmod_TRX_i: component UFBmod_TRX
       TRX_rd_data_count_CD100_o(8 downto 0) => TRX_rd_data_count_CD100_o(8 downto 0),
       TRX_resetn(0) => TRX_resetn(0),
       TRX_rfx_mode(0) => TRX_rfx_mode(0),
-      TRX_rx09_32bits_CD100(31 downto 0) => TRX_rx09_32bits_CD100(31 downto 0),
       TRX_rx09_fifo(31 downto 0) => TRX_rx09_fifo(31 downto 0),
       TRX_rx09_fifo_valid => TRX_rx09_fifo_valid,
-      TRX_rx24_32bits_CD100(31 downto 0) => TRX_rx24_32bits_CD100(31 downto 0),
       TRX_rx24_fifo(31 downto 0) => TRX_rx24_fifo(31 downto 0),
       TRX_rx24_fifo_valid => TRX_rx24_fifo_valid,
       TRX_rx_clk_64MHz_clk_n => TRX_rx_clk_64MHz_clk_n,

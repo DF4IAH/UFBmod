@@ -38,39 +38,41 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity barrel_rot32 is
   Port ( 
-    clk         : in STD_LOGIC;
-    rot         : in STD_LOGIC_VECTOR (4 downto 0);
-    d           : in STD_LOGIC_VECTOR (31 downto 0);
-    q           : out STD_LOGIC_VECTOR (31 downto 0)
+    clk                 : in    STD_LOGIC;
+    reset               : in    STD_LOGIC;
+    
+    rot                 : in    STD_LOGIC_VECTOR (4 downto 0);
+    d                   : in    STD_LOGIC_VECTOR (31 downto 0);
+    
+    q                   : out   STD_LOGIC_VECTOR (31 downto 0)
   );
 end barrel_rot32;
 
 architecture Behavioral of barrel_rot32 is
 begin
-  process (clk, rot, d)
-    variable const : Integer;
-    variable temp : STD_LOGIC_VECTOR (31 downto 0);
+  proc_fsm: process (clk)
+    variable const      : Integer  range 0 to (2**6 - 1);
+    variable temp       : STD_LOGIC_VECTOR (31 downto 0);
+    
   begin
-    const := to_integer(unsigned(rot));
-    if (const < 0) then
-        const := const + 32;
-    end if;
-
-    temp  := d;
-  
     if (clk'EVENT and clk = '1') then
-        for i in 1 to 32 loop
-            if i <= const then
-                if (temp(31) = '1') then
-                    temp := temp(30 downto 0) & '1';
-                else
-                    temp := temp(30 downto 0) & '0';
+        if (reset = '1') then
+            q <= (others => '0');
+            
+        else
+            const := (32 + to_integer(unsigned(rot))) mod 32;
+            temp  := d;
+            
+            for ii in 1 to 32 loop
+                if (ii <= const) then
+                    -- Rotate left by one bit
+                    temp := temp(30 downto 0) & temp(31);
                 end if;
-            end if;
-        end loop;
-
-        q <= temp;
+            end loop;
+            
+            q <= temp;
+        end if;
     end if;
-  end process;
-
+  end process proc_fsm;
+  
 end Behavioral;

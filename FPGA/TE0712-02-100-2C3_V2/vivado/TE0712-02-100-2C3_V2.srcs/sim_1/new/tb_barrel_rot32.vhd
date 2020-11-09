@@ -42,32 +42,32 @@ end tb_barrel_rot32;
 
 architecture Behavioral of tb_barrel_rot32 is
   component barrel_rot32 is
-  Port ( clk : in STD_LOGIC;
-         rot : in STD_LOGIC_VECTOR (4 downto 0);
-         d : in STD_LOGIC_VECTOR (31 downto 0);
-         q : out STD_LOGIC_VECTOR (31 downto 0)
+  Port ( clk            : in STD_LOGIC;
+         rot            : in STD_LOGIC_VECTOR (4 downto 0);
+         d              : in STD_LOGIC_VECTOR (31 downto 0);
+         q              : out STD_LOGIC_VECTOR (31 downto 0)
     );
   end component barrel_rot32;
 
 -- RESETS
-  signal tb_reset : STD_LOGIC;
+  signal tb_reset       : STD_LOGIC;
 
 -- CLOCKS
-  signal tb_clk : STD_LOGIC;
+  signal tb_clk         : STD_LOGIC;
 
 -- STIMULUS
-  signal tb_rot : STD_LOGIC_VECTOR (4 downto 0);
-  signal tb_d : STD_LOGIC_VECTOR (31 downto 0);
-  signal tb_q : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_rot         : STD_LOGIC_VECTOR (4 downto 0);
+  signal tb_d           : STD_LOGIC_VECTOR (31 downto 0);
+  signal tb_q           : STD_LOGIC_VECTOR (31 downto 0);
 
 begin
 -- DUT
   barrel_rot32_i: component barrel_rot32
     port map (
-      clk => tb_clk,
-      rot => tb_rot,
-      d => tb_d,
-      q => tb_q
+      clk               => tb_clk,
+      rot               => tb_rot,
+      d                 => tb_d,
+      q                 => tb_q
     );
 
 
@@ -92,6 +92,7 @@ begin
     wait for 5ns;
   end process proc_tb_clk;
 
+
 -- STIMULI
   -- Data 32 bit
   proc_tb_d: process
@@ -104,22 +105,17 @@ begin
   proc_tb_rot: process
     variable tb_rot_val : Integer;
   begin
-    if (tb_reset = '1'  or  tb_reset = 'U') then
-      tb_rot_val := 0;
-      tb_rot <=  std_logic_vector(to_unsigned(tb_rot_val, tb_rot'length));
+    if (tb_reset /= '0') then
+      tb_rot_val    := 0;
+      tb_rot        <=  std_logic_vector(to_unsigned(tb_rot_val, tb_rot'length));
       wait for 1ns;
-
+      
     else
       while (tb_reset = '0') loop
         wait for 2us;
-      
-        if (tb_rot_val < 31) then
-          tb_rot_val := tb_rot_val + 1;
-        else
-          tb_rot_val := 0;
-        end if;
-
-        tb_rot <=  std_logic_vector(to_unsigned(tb_rot_val, tb_rot'length));
+        
+        tb_rot_val  := (tb_rot_val + 1) mod 32;
+        tb_rot      <=  std_logic_vector(to_unsigned(tb_rot_val, tb_rot'length));
       end loop;
     end if;
   end process proc_tb_rot;

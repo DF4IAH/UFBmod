@@ -410,10 +410,8 @@ architecture STRUCTURE of top is
     TRX_rd_data_count_CD100_o : out STD_LOGIC_VECTOR ( 8 downto 0 );
     TRX_resetn : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_rx09_32bits_CD100 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx09_fifo : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx09_fifo_valid : out STD_LOGIC;
-    TRX_rx24_32bits_CD100 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx24_fifo : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx24_fifo_valid : out STD_LOGIC;
     TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
@@ -708,12 +706,10 @@ architecture STRUCTURE of top is
   
   signal top_TRX_rx_clkdiv_16MHz : STD_LOGIC;
   
-  signal top_TRX_rx_rf09_32bits_CD100 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal top_TRX_rx_rf09_bs : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal top_TRX_rx_rf09_fifo : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal top_TRX_rx_rf09_fifo_valid : STD_LOGIC;
   
-  signal top_TRX_rx_rf24_32bits_CD100 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal top_TRX_rx_rf24_bs : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal top_TRX_rx_rf24_fifo : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal top_TRX_rx_rf24_fifo_valid : STD_LOGIC;
@@ -926,10 +922,8 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       TRX_rx_rf09_ch07_Post_FFT_mem_b_addr                  => (others => '0'),  -- top_TRX_post_fft_rx_rf09_ch07_mem_b_addr
       TRX_rx_rf09_ch07_Post_FFT_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch07_mem_b_dout,
       TRX_rfx_mode(0)                                       => TRX_rfx_mode,
-      TRX_rx09_32bits_CD100                                 => top_TRX_rx_rf09_32bits_CD100,
       TRX_rx09_fifo                                         => top_TRX_rx_rf09_fifo,
       TRX_rx09_fifo_valid                                   => top_TRX_rx_rf09_fifo_valid,
-      TRX_rx24_32bits_CD100                                 => top_TRX_rx_rf24_32bits_CD100,
       TRX_rx24_fifo                                         => top_TRX_rx_rf24_fifo,
       TRX_rx24_fifo_valid                                   => top_TRX_rx_rf24_fifo_valid,
       TRX_rx_clkdiv_16MHz(0)                                => top_TRX_rx_clkdiv_16MHz,
@@ -1242,8 +1236,8 @@ msys_bd: component msys_wrapper
       TRX_decoder_rx09_ch00_squelch_lvl                     => top_TRX_decoder_rx_rf09_chAll_squelch_lvl,
       TRX_int                                               => TRX_int,
       TRX_rd_data_count_CD100                               => top_TRX_rd_data_count_CD100,
-      TRX_rx09_32bits_CD100                                 => top_TRX_rx_rf09_32bits_CD100,
-      TRX_rx24_32bits_CD100                                 => top_TRX_rx_rf24_32bits_CD100,
+      TRX_rx09_32bits_CD100                                 => top_TRX_rx_rf09_fifo,
+      TRX_rx24_32bits_CD100                                 => top_TRX_rx_rf09_fifo,
       TRX_rx_clkdiv_16MHz_in                                => top_TRX_rx_clkdiv_16MHz,
       TRX_LVDS_tx09_fifo_din                                => top_TRX_LVDS_tx09_fifo_din,
       TRX_TX_DDS_GPIO1_i                                    => top_TRX_TX_DDS_GPIO1_i,

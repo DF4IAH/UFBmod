@@ -38,263 +38,296 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity auto_LVDS_rotate is
   Port (
-    reset               : in  STD_LOGIC;
-    clk                 : in  STD_LOGIC;
-    LVDS09              : in  STD_LOGIC_VECTOR (31 downto 0);
-    LVDS09_valid        : in  STD_LOGIC;
-    LVDS24              : in  STD_LOGIC_VECTOR (31 downto 0);
-    LVDS24_valid        : in  STD_LOGIC;
-    rot09q              : out STD_LOGIC_VECTOR (31 downto 0);
-    rot09vld            : out STD_LOGIC;
-    rot24q              : out STD_LOGIC_VECTOR (31 downto 0);
-    rot24vld            : out STD_LOGIC;
-    LVDS_rx09_synced    : out STD_LOGIC;
-    LVDS_rx24_synced    : out STD_LOGIC
+    clk                 : in    STD_LOGIC;
+    reset               : in    STD_LOGIC;
+    
+    LVDS09              : in    STD_LOGIC_VECTOR (31 downto 0);
+    LVDS09_valid        : in    STD_LOGIC;
+    
+    LVDS24              : in    STD_LOGIC_VECTOR (31 downto 0);
+    LVDS24_valid        : in    STD_LOGIC;
+    
+    rot09q              : out   STD_LOGIC_VECTOR (31 downto 0);
+    rot09vld            : out   STD_LOGIC;
+    
+    rot24q              : out   STD_LOGIC_VECTOR (31 downto 0);
+    rot24vld            : out   STD_LOGIC;
+    
+    LVDS_rx09_synced    : out   STD_LOGIC;
+    LVDS_rx24_synced    : out   STD_LOGIC
   );
 end auto_LVDS_rotate;
 
 architecture Behavioral of auto_LVDS_rotate is
   component barrel_rot32 is
   Port (
-    clk                 : in  STD_LOGIC;
-    rot                 : in  STD_LOGIC_VECTOR (4 downto 0);
-    d                   : in  STD_LOGIC_VECTOR (31 downto 0);
-    q                   : out STD_LOGIC_VECTOR (31 downto 0)
+    clk                 : in    STD_LOGIC;
+    reset               : in    STD_LOGIC;
+    
+    rot                 : in    STD_LOGIC_VECTOR (4 downto 0);
+    d                   : in    STD_LOGIC_VECTOR (31 downto 0);
+    
+    q                   : out   STD_LOGIC_VECTOR (31 downto 0)
   );
   end component barrel_rot32;
-
-
-  -- FSM inbox09
-  signal inb09_in_r     : STD_LOGIC_VECTOR (31 downto 0);
-  signal inb09_out_r    : STD_LOGIC_VECTOR (31 downto 0);
-  signal inb09_rdy      : STD_LOGIC;
-
-  -- FSM inbox24
-  signal inb24_in_r     : STD_LOGIC_VECTOR (31 downto 0);
-  signal inb24_out_r    : STD_LOGIC_VECTOR (31 downto 0);
-  signal inb24_rdy      : STD_LOGIC;
-
-  -- FSM brl
-  signal inb_lock09     : STD_LOGIC;
-  signal inb_lock09d    : STD_LOGIC;
-  signal inb_lock24     : STD_LOGIC;
-  signal inb_lock24d    : STD_LOGIC;
-
+  
   -- FSM barrel
-  signal rot_in         : STD_LOGIC_VECTOR (31 downto 0);
-  signal rot_out        : STD_LOGIC_VECTOR (31 downto 0);
-  signal rot_val        : STD_LOGIC_VECTOR (4 downto 0);
+  signal rot_09_val     : STD_LOGIC_VECTOR (4 downto 0);
+  signal rot_09_in      : STD_LOGIC_VECTOR (31 downto 0);
+  signal rot_09_in_hld  : STD_LOGIC_VECTOR (31 downto 0);
+  signal rot_09_out     : STD_LOGIC_VECTOR (31 downto 0);
 
+  signal rot_24_val     : STD_LOGIC_VECTOR (4 downto 0);
+  signal rot_24_in      : STD_LOGIC_VECTOR (31 downto 0);
+  signal rot_24_in_hld  : STD_LOGIC_VECTOR (31 downto 0);
+  signal rot_24_out     : STD_LOGIC_VECTOR (31 downto 0);
+  
   -- Marker bits
-  signal mrkok          : STD_LOGIC;
-
-
+  signal mrk09ok        : STD_LOGIC;
+  signal mrk24ok        : STD_LOGIC;
+  
 begin
-  barrel_rot32_i: component barrel_rot32
+  barrel_rx09_i: component barrel_rot32
     port map (
-      clk => clk,
-      rot => rot_val,
-      d   => rot_in,
-      q   => rot_out
+      clk               => clk,
+      reset             => reset,
+      
+      rot               => rot_09_val,
+      d                 => rot_09_in,
+      
+      q                 => rot_09_out
+    );
+
+  barrel_rx24_i: component barrel_rot32
+    port map (
+      clk               => clk,
+      reset             => reset,
+      
+      rot               => rot_24_val,
+      d                 => rot_24_in,
+      
+      q                 => rot_24_out
     );
 
 
-  -- FSM-inbox-09
-  proc_fsm_inbox09: process (reset, clk, LVDS09_valid, inb_lock09)
+  -- FSM rx09 barrel
+  proc_rx09_brl_fsm: process (clk, reset)
+    type StateType                                              is (
+                                                                    init, check_in, new_rotval, delay
+                                                                );
+    variable state                                              : StateType;
+    
+    variable rotval_int                                         : Integer  range 0 to (2**5 - 1);
+    variable rot_dly_int                                        : Integer  range 0 to (2**4 - 1);
+    
   begin
     if (clk'EVENT and clk = '1') then
         if (reset = '1') then
-            inb09_in_r  <= (others => '0');
-            inb09_out_r <= (others => '0');
-            inb09_rdy   <= '0';
-
+            rotval_int          := 0;
+            rot_09_val          <= (others => '0');
+            
+            rot_09_in_hld       <= (others => '0');
+            rot_09_in           <= (others => '0');
+            rot09q              <= (others => '0');
+            rot09vld            <= '0';
+            
+            rot_dly_int         := 0;
+            
+            LVDS_rx09_synced    <= '0';
+            
+            state := init;
+            
         else
-            if (LVDS09_valid = '1') then
-                inb09_in_r <= LVDS09;
-                inb09_rdy  <= '1';
-                if (inb_lock09 = '0') then
-                    inb09_out_r <= LVDS09;
-                end if;
-
-            elsif (inb_lock09 = '0') then
-                inb09_out_r <= inb09_in_r;
-            else
-                inb09_rdy <= '0';
-            end if;
-        end if;
-    end if;
-  end process proc_fsm_inbox09;
-
-  -- FSM-inbox-24
-  proc_fsm_inbox24: process (reset, clk, LVDS24_valid, inb_lock24)
-  begin
-    if (clk'EVENT and clk = '1') then
-        if (reset = '1') then
-            inb24_in_r  <= (others => '0');
-            inb24_out_r <= (others => '0');
-            inb24_rdy   <= '0';
-
-        else
-            if (LVDS24_valid = '1') then
-                inb24_in_r <= LVDS24;
-                inb24_rdy  <= '1';
-                if (inb_lock24 = '0') then
-                    inb24_out_r <= LVDS24;
-                end if;
-
-            elsif (inb_lock24 = '0') then
-                inb24_out_r <= inb24_in_r;
-            else
-                inb24_rdy <= '0';
-            end if;
-        end if;
-    end if;
-  end process proc_fsm_inbox24;
-
-  -- FSM barrel
-  proc_fsm_brl: process (reset, clk, inb09_rdy, inb24_rdy, mrkok)
-  variable rotval09_int : Integer;
-  variable rotval24_int : Integer;
-  variable state        : Integer;
-  begin
-    if (clk'EVENT and clk = '1') then
-        if (reset = '1') then
-          rotval09_int      := 0;
-          rotval24_int      := 0;
-          inb_lock09        <= '0';
-          inb_lock09d       <= '0';
-          inb_lock24        <= '0';
-          inb_lock24d       <= '0';
-          LVDS_rx09_synced  <= '0';
-          LVDS_rx24_synced  <= '0';
-          rot_val           <= (others => '0');
-          rot09q            <= (others => '0');
-          rot24q            <= (others => '0');
-          state             := 0;
-
-        else
-            inb_lock09d     <= inb_lock09;
-            inb_lock24d     <= inb_lock24;
-
+            
             case state is
-                when 0 =>
-                    if (inb09_rdy = '1') then
-                        inb_lock09 <= '1';
-                        rot_in     <= inb09_out_r;
-                        rot_val    <= std_logic_vector(to_unsigned(rotval09_int, rot_val'length));
-                        state      := 4;
-
-                    elsif (inb24_rdy = '1') then
-                        inb_lock24 <= '1';
-                        rot_in     <= inb24_out_r;
-                        rot_val    <= std_logic_vector(to_unsigned(rotval24_int, rot_val'length));
-                        state      := 8;
-                    end if;
-
-                -- wait state
-                when 4 =>
-                    state := 5;
-
-                when 5 =>
-                    if (mrkok = '0') then
-                        if (rotval09_int < 31) then
-                            rotval09_int := rotval09_int + 1;
-                        else
-                            rotval09_int := 0;
-                        end if;
-                        LVDS_rx09_synced    <= '0';
-                        rot09q              <= (others => '0');
-
+                when init =>
+                    rotval_int      := 0;
+                    rot_09_val      <= (others => '0');
+                    
+                    rot_09_in_hld   <= (others => '0');
+                    rot_09_in       <= (others => '0');
+                    rot09q          <= (others => '0');
+                    rot09vld        <= '0';
+                    
+                    rot_dly_int     := 0;
+                    
+                    state := check_in;
+                    
+                when check_in =>
+                    if (LVDS09_valid = '1') then
+                        -- Live
+                        rot_09_in       <= LVDS09;
+                        rot_09_in_hld   <= LVDS09;
+                        
                     else
-                        rot09q              <= rot_out;
+                        -- Hold
+                        rot_09_in       <= rot_09_in_hld;
+                    end if;
+                    
+                    if (mrk09ok = '1') then
+                        -- Keep in this state
+                        rot09q              <= rot_09_out;
+                        rot09vld            <= '1';
                         LVDS_rx09_synced    <= '1';
-                    end if;
-                    inb_lock09 <= '0';
-                    state := 0;
-
-                -- wait state
-                when 8 =>
-                    state := 9;
-
-                when 9 =>
-                    if (mrkok = '0') then
-                        if (rotval24_int < 31) then
-                            rotval24_int := rotval24_int + 1;
-                        else
-                            rotval24_int := 0;
-                        end if;
-                        LVDS_rx24_synced    <= '0';
-                        rot24q              <= (others => '0');
-                        state := 0;
-
+                        
+                      --state := check_in;
+                        
                     else
-                        rot24q              <= rot_out;
-                        LVDS_rx24_synced    <= '1';
+                        -- Search for a new rotval value
+                        rot09q              <= (others => '0');
+                        rot09vld            <= '0';
+                        LVDS_rx09_synced    <= '0';
+                        
+                        state := new_rotval;
                     end if;
-                    inb_lock24 <= '0';
-                    state := 0;
-
+                    
+                when new_rotval =>
+                    rotval_int  := (rotval_int + 1) mod 32;
+                    rot_09_val  <= std_logic_vector(to_unsigned(rotval_int, rot_09_val'length));
+                    rot_dly_int := 15;
+                    
+                    state := delay;
+                    
+                when delay =>
+                    if (rot_dly_int /= 0) then
+                        rot_dly_int := rot_dly_int - 1;
+                        
+                    else
+                        state := check_in;
+                    end if;
+                    
                 when others =>
-                    rotval09_int := 0;
-                    rotval24_int := 0;
-                    inb_lock09   <= '0';
-                    inb_lock24   <= '0';
-                    rot_val      <= (others => '0');
-                    rot09q       <= (others => '0');
-                    rot24q       <= (others => '0');
-                    state        := 0;
+                    state := init;
             end case;
         end if;
     end if;
-  end process proc_fsm_brl;
+  end process proc_rx09_brl_fsm;
+
+
+  -- FSM rx24 barrel
+  proc_rx24_brl_fsm: process (clk, reset)
+    type StateType                                              is (
+                                                                    init, check_in, new_rotval, delay
+                                                                );
+    variable state                                              : StateType;
+    
+    variable rotval_int                                         : Integer  range 0 to (2**5 - 1);
+    variable rot_dly_int                                        : Integer  range 0 to (2**4 - 1);
+    
+  begin
+    if (clk'EVENT and clk = '1') then
+        if (reset = '1') then
+            rotval_int          := 0;
+            rot_24_val          <= (others => '0');
+            
+            rot_24_in_hld       <= (others => '0');
+            rot_24_in           <= (others => '0');
+            rot24q              <= (others => '0');
+            rot24vld            <= '0';
+            
+            LVDS_rx24_synced    <= '0';
+            
+            rot_dly_int         := 0;
+            
+            state := init;
+            
+        else
+            
+            case state is
+                when init =>
+                    rotval_int      := 0;
+                    rot_24_val      <= (others => '0');
+                    
+                    rot_24_in_hld   <= (others => '0');
+                    rot_24_in       <= (others => '0');
+                    rot24q          <= (others => '0');
+                    rot24vld        <= '0';
+                    
+                    rot_dly_int     := 0;
+                    
+                    state := check_in;
+                    
+                when check_in =>
+                    if (LVDS24_valid = '1') then
+                        -- Live
+                        rot_24_in       <= LVDS24;
+                        rot_24_in_hld   <= LVDS24;
+                        
+                    else
+                        -- Hold
+                        rot_24_in       <= rot_24_in_hld;
+                    end if;
+                    
+                    if (mrk24ok = '1') then
+                        -- Keep in this state
+                        rot24q              <= rot_24_out;
+                        rot24vld            <= '1';
+                        LVDS_rx24_synced    <= '1';
+                        
+                      --state := check_in;
+                        
+                    else
+                        -- Search for a new rotval value
+                        rot24q              <= (others => '0');
+                        rot24vld            <= '0';
+                        LVDS_rx24_synced    <= '0';
+                        
+                        state := new_rotval;
+                    end if;
+                    
+                when new_rotval =>
+                    rotval_int  := (rotval_int + 1) mod 32;
+                    rot_24_val  <= std_logic_vector(to_unsigned(rotval_int, rot_24_val'length));
+                    rot_dly_int := 15;
+                    
+                    state := delay;
+                    
+                when delay =>
+                    if (rot_dly_int /= 0) then
+                        rot_dly_int := rot_dly_int - 1;
+                        
+                    else
+                        state := check_in;
+                    end if;
+                    
+                when others =>
+                    state := init;
+            end case;
+        end if;
+    end if;
+  end process proc_rx24_brl_fsm;
+
 
   -- Marker bits
-  proc_markers: process (reset, rot_out)
+  proc_markers: process (clk, reset)
   begin
-    if (reset = '1') then
-        mrkok <= '0';
-      
-    else
-        if (rot_out(31) = '1' and rot_out(30) = '0'  and  rot_out(15) = '0' and rot_out(14) = '1') then
-            mrkok <= '1';
+    if (clk'EVENT and clk = '1') then
+        if (reset = '1') then
+            mrk09ok             <= '0';
+            mrk24ok             <= '0';
+            
         else
-            mrkok <= '0';
+            -- rx09
+            if ((rot_09_out(31) = '1') and (rot_09_out(30) = '0')  and
+                (rot_09_out(15) = '0') and (rot_09_out(14) = '1')) then
+                
+                mrk09ok <= '1';
+                
+            else
+                mrk09ok <= '0';
+            end if;
+            
+            -- rx24
+            if ((rot_24_out(31) = '1') and (rot_24_out(30) = '0')  and
+                (rot_24_out(15) = '0') and (rot_24_out(14) = '1')) then
+                
+                mrk24ok <= '1';
+                
+            else
+                mrk24ok <= '0';
+            end if;
         end if;
     end if;
   end process proc_markers;
 
-  -- FSM-outbox-09
-  proc_fsm_outbox09: process (reset, clk, inb_lock09, inb_lock09d)
-  begin
-    if (clk'EVENT and clk = '1') then
-        if (reset = '1') then
-            rot09vld <= '0';
-
-        else
-            if (inb_lock09 = '0' and inb_lock09d = '1') then
-                rot09vld <= '1';
-            else
-                rot09vld <= '0';
-            end if;
-        end if;
-    end if;
-  end process proc_fsm_outbox09;
-
-  -- FSM-outbox-24
-  proc_fsm_outbox24: process (reset, clk, inb_lock24, inb_lock24d)
-  begin
-    if (clk'EVENT and clk = '1') then
-        if (reset = '1') then
-            rot24vld <= '0';
-          
-        else
-            if (inb_lock24 = '0' and inb_lock24d = '1') then
-                rot24vld <= '1';
-            else
-                rot24vld <= '0';
-            end if;
-        end if;
-    end if;
-  end process proc_fsm_outbox24;
-  
 end Behavioral;

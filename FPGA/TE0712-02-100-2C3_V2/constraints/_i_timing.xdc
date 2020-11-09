@@ -10,13 +10,6 @@ create_clock -period 15.625 -name TRX_rx_clk_64MHz_clk_p -waveform {0.000  7.812
 create_clock -period 40.000 -name RMII_rx_clk            -waveform {0.000 20.000} [get_pins msys_bd/msys_i/ETH0/ETH0_mii_to_rmii_0/U0/rmii2mac_rx_clk_bi_reg/Q]
 
 
-set_multicycle_path -setup -from [get_pins {auto_LVDS_rotate_i/rot_in_reg[*]/C}] -to [get_pins {auto_LVDS_rotate_i/barrel_rot32_i/q_reg[*]/D}] 2
-set_multicycle_path -hold  -from [get_pins {auto_LVDS_rotate_i/rot_in_reg[*]/C}] -to [get_pins {auto_LVDS_rotate_i/barrel_rot32_i/q_reg[*]/D}] 2
-
-set_multicycle_path -setup -from [get_pins {auto_LVDS_rotate_i/rot_val_reg[*]*/C}] -to [get_pins {auto_LVDS_rotate_i/barrel_rot32_i/q_reg[*]/D}] 2
-set_multicycle_path -hold  -from [get_pins {auto_LVDS_rotate_i/rot_val_reg[*]*/C}] -to [get_pins {auto_LVDS_rotate_i/barrel_rot32_i/q_reg[*]/D}] 2
-
-
 # CFGMCLK
 set_false_path -from [get_clocks CFGMCLK] -to [get_clocks -of_objects [get_pins msys_bd/msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKFBOUT]]
 set_false_path -from [get_clocks CFGMCLK] -to [get_clocks -of_objects [get_pins msys_bd/msys_i/mig_7series_0/u_msys_mig_7series_0_0_mig/u_ddr3_infrastructure/gen_ui_extra_clocks.mmcm_i/CLKOUT1]]

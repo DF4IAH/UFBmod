@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x9ECBE0F80A9E835E",
+      "boundary_crc": "0x8263B2764B2B60BE",
       "device": "xc7a100tfgg484-2",
       "name": "UFBmod_TRX",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -57,7 +57,7 @@
           "TRX_blank_tx_c_shift_ram_0": ""
         },
         "TRX_LVDS_selectio_wiz_0": "",
-        "xlconstant_1_len1": "",
+        "xlconstant_val1_len1": "",
         "TRX_LVDS_util_ds_buf_0": "",
         "xlconstant_val0_len2": ""
       },
@@ -107,10 +107,13 @@
         "TRX_post_fft_rx09_decoder_0": ""
       },
       "TRX_config": {
-        "TRX_gpio_xlslice_31downto31_resetn_0": "",
-        "TRX_gpio_xlslice_30downto30_rfxmode_0": "",
-        "TRX_gpio_xlslice_0downto0_blankTx_0": "",
-        "TRX_gpio_xlconcat_0": ""
+        "TRX_gpio_xlslice_31to31_resetn_0": "",
+        "TRX_gpio_xlslice_30to30_rfxmode_0": "",
+        "TRX_gpio_xlslice_0to0_blankTx_0": "",
+        "TRX_gpio_xlconcat_0": "",
+        "TRX_gpio_xlslice_25to16_LVDS_delay_val_0": "",
+        "TRX_gpio_xlslice_2to2_LVDS_delay_reset_0": "",
+        "TRX_gpio_xlslice_1to1_proc_sys_reset_0": ""
       },
       "TRX_clock": {
         "TRX_PLL_clk_wiz_0": "",
@@ -584,30 +587,6 @@
         "direction": "O",
         "left": "1",
         "right": "0"
-      },
-      "TRX_rx24_32bits_CD100": {
-        "type": "data",
-        "direction": "O",
-        "left": "31",
-        "right": "0",
-        "parameters": {
-          "LAYERED_METADATA": {
-            "value": "undef",
-            "value_src": "default"
-          }
-        }
-      },
-      "TRX_rx09_32bits_CD100": {
-        "type": "data",
-        "direction": "O",
-        "left": "31",
-        "right": "0",
-        "parameters": {
-          "LAYERED_METADATA": {
-            "value": "undef",
-            "value_src": "default"
-          }
-        }
       },
       "TRX_rd_data_count_CD100_o": {
         "type": "data",
@@ -1326,6 +1305,9 @@
         "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
         "xci_name": "UFBmod_TRX_TRX_proc_sys_reset_0_1",
         "parameters": {
+          "C_AUX_RESET_HIGH": {
+            "value": "1"
+          },
           "RESET_BOARD_INTERFACE": {
             "value": "Custom"
           },
@@ -1470,6 +1452,16 @@
           "TRX_LVDS_tx09_fifo_din": {
             "direction": "O",
             "left": "31",
+            "right": "0"
+          },
+          "LVDS_rx_delay_reset": {
+            "direction": "I",
+            "left": "0",
+            "right": "0"
+          },
+          "LVDS_rx_delay_val": {
+            "direction": "I",
+            "left": "9",
             "right": "0"
           }
         },
@@ -2617,6 +2609,9 @@
               "BUS_SIG_TYPE": {
                 "value": "DIFF"
               },
+              "CLK_DELAY": {
+                "value": "FIXED"
+              },
               "CLK_FWD": {
                 "value": "true"
               },
@@ -2626,6 +2621,9 @@
               "CLK_FWD_SIG_TYPE": {
                 "value": "DIFF"
               },
+              "CLK_TAP": {
+                "value": "16"
+              },
               "IDELAY_HIGH_PERF_MODE": {
                 "value": "false"
               },
@@ -2633,7 +2631,7 @@
                 "value": "DDR"
               },
               "SELIO_BUS_IN_DELAY": {
-                "value": "FIXED"
+                "value": "VAR_LOADABLE"
               },
               "SELIO_CLK_BUF": {
                 "value": "BUFIO"
@@ -2664,7 +2662,7 @@
               }
             }
           },
-          "xlconstant_1_len1": {
+          "xlconstant_val1_len1": {
             "vlnv": "xilinx.com:ip:xlconstant:1.1",
             "xci_name": "UFBmod_TRX_xlconstant_1_len1_1",
             "parameters": {
@@ -2699,16 +2697,16 @@
           }
         },
         "interface_nets": {
-          "Conn4": {
-            "interface_ports": [
-              "TRX_tx_clk",
-              "TRX_LVDS_selectio_wiz_0/diff_clk_to_pins"
-            ]
-          },
           "rx_clk_CD064": {
             "interface_ports": [
               "TRX_rx_clk_64MHz",
               "TRX_LVDS_selectio_wiz_0/diff_clk_in"
+            ]
+          },
+          "Conn4": {
+            "interface_ports": [
+              "TRX_tx_clk",
+              "TRX_LVDS_selectio_wiz_0/diff_clk_to_pins"
             ]
           }
         },
@@ -2762,7 +2760,7 @@
           },
           "val1_len1": {
             "ports": [
-              "xlconstant_1_len1/dout",
+              "xlconstant_val1_len1/dout",
               "TRX_rx09_fifo_generator_0/rd_en",
               "TRX_rx09_fifo_generator_0/wr_en",
               "TRX_rx24_fifo_generator_0/rd_en",
@@ -2898,7 +2896,21 @@
           "xlconstant_val0_len2_dout": {
             "ports": [
               "xlconstant_val0_len2/dout",
-              "TRX_LVDS_selectio_wiz_0/bitslip"
+              "TRX_LVDS_selectio_wiz_0/bitslip",
+              "TRX_LVDS_selectio_wiz_0/in_delay_data_inc",
+              "TRX_LVDS_selectio_wiz_0/in_delay_data_ce"
+            ]
+          },
+          "LVDS_rx_delay_reset_0": {
+            "ports": [
+              "LVDS_rx_delay_reset",
+              "TRX_LVDS_selectio_wiz_0/in_delay_reset"
+            ]
+          },
+          "LVDS_rx_delay_val_1": {
+            "ports": [
+              "LVDS_rx_delay_val",
+              "TRX_LVDS_selectio_wiz_0/in_delay_tap_in"
             ]
           }
         }
@@ -6011,10 +6023,25 @@
             "direction": "O",
             "left": "31",
             "right": "0"
+          },
+          "LVDS_rx_delay_reset": {
+            "direction": "O",
+            "left": "0",
+            "right": "0"
+          },
+          "LVDS_rx_delay_val": {
+            "direction": "O",
+            "left": "9",
+            "right": "0"
+          },
+          "proc_sys_reset_aux": {
+            "direction": "O",
+            "left": "0",
+            "right": "0"
           }
         },
         "components": {
-          "TRX_gpio_xlslice_31downto31_resetn_0": {
+          "TRX_gpio_xlslice_31to31_resetn_0": {
             "vlnv": "xilinx.com:ip:xlslice:1.0",
             "xci_name": "UFBmod_TRX_TRX_gpio_xlslice_31downto31_resetn_0_1",
             "parameters": {
@@ -6032,7 +6059,7 @@
               }
             }
           },
-          "TRX_gpio_xlslice_30downto30_rfxmode_0": {
+          "TRX_gpio_xlslice_30to30_rfxmode_0": {
             "vlnv": "xilinx.com:ip:xlslice:1.0",
             "xci_name": "UFBmod_TRX_TRX_gpio_xlslice_30downto30_rfxmode_0_1",
             "parameters": {
@@ -6050,7 +6077,7 @@
               }
             }
           },
-          "TRX_gpio_xlslice_0downto0_blankTx_0": {
+          "TRX_gpio_xlslice_0to0_blankTx_0": {
             "vlnv": "xilinx.com:ip:xlslice:1.0",
             "xci_name": "UFBmod_TRX_TRX_gpio_xlslice_0downto0_blankTx_0_1"
           },
@@ -6074,26 +6101,74 @@
                 "value": "4"
               }
             }
+          },
+          "TRX_gpio_xlslice_25to16_LVDS_delay_val_0": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "UFBmod_TRX_xlslice_0_0",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "25"
+              },
+              "DIN_TO": {
+                "value": "16"
+              },
+              "DOUT_WIDTH": {
+                "value": "10"
+              }
+            }
+          },
+          "TRX_gpio_xlslice_2to2_LVDS_delay_reset_0": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "UFBmod_TRX_xlslice_0_2",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "2"
+              },
+              "DIN_TO": {
+                "value": "2"
+              },
+              "DOUT_WIDTH": {
+                "value": "1"
+              }
+            }
+          },
+          "TRX_gpio_xlslice_1to1_proc_sys_reset_0": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "UFBmod_TRX_xlslice_0_3",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "1"
+              },
+              "DIN_TO": {
+                "value": "1"
+              },
+              "DOUT_WIDTH": {
+                "value": "1"
+              }
+            }
           }
         },
         "nets": {
           "axi_TRX_gpio_0_gpio_io_o_0": {
             "ports": [
               "TRX_CONFIG_GPIO1_o",
-              "TRX_gpio_xlslice_31downto31_resetn_0/Din",
-              "TRX_gpio_xlslice_30downto30_rfxmode_0/Din",
-              "TRX_gpio_xlslice_0downto0_blankTx_0/Din"
+              "TRX_gpio_xlslice_31to31_resetn_0/Din",
+              "TRX_gpio_xlslice_30to30_rfxmode_0/Din",
+              "TRX_gpio_xlslice_0to0_blankTx_0/Din",
+              "TRX_gpio_xlslice_25to16_LVDS_delay_val_0/Din",
+              "TRX_gpio_xlslice_2to2_LVDS_delay_reset_0/Din",
+              "TRX_gpio_xlslice_1to1_proc_sys_reset_0/Din"
             ]
           },
           "TRX_gpio_xlslice_0to0_resetn_dout_0": {
             "ports": [
-              "TRX_gpio_xlslice_31downto31_resetn_0/Dout",
+              "TRX_gpio_xlslice_31to31_resetn_0/Dout",
               "TRX_resetn"
             ]
           },
           "TRX_gpio_xlslice_1to1_rfxmode_dout_0": {
             "ports": [
-              "TRX_gpio_xlslice_30downto30_rfxmode_0/Dout",
+              "TRX_gpio_xlslice_30to30_rfxmode_0/Dout",
               "TRX_rfx_mode"
             ]
           },
@@ -6117,7 +6192,7 @@
           },
           "TRX_gpio_xlslice_1to1_blankTx_dout_0": {
             "ports": [
-              "TRX_gpio_xlslice_0downto0_blankTx_0/Dout",
+              "TRX_gpio_xlslice_0to0_blankTx_0/Dout",
               "LVDS_tx_blank"
             ]
           },
@@ -6125,6 +6200,24 @@
             "ports": [
               "TRX_gpio_xlconcat_0/dout",
               "TRX_CONFIG_GPIO2_i"
+            ]
+          },
+          "LVDS_delay_reset_0": {
+            "ports": [
+              "TRX_gpio_xlslice_2to2_LVDS_delay_reset_0/Dout",
+              "LVDS_rx_delay_reset"
+            ]
+          },
+          "LVDS_rx_delay_val_0": {
+            "ports": [
+              "TRX_gpio_xlslice_25to16_LVDS_delay_val_0/Dout",
+              "LVDS_rx_delay_val"
+            ]
+          },
+          "proc_sys_reset_aux_0": {
+            "ports": [
+              "TRX_gpio_xlslice_1to1_proc_sys_reset_0/Dout",
+              "proc_sys_reset_aux"
             ]
           }
         }
@@ -7834,7 +7927,6 @@
       "TRX_rx_rf09_32bits_CD100_0": {
         "ports": [
           "TRX_LVDS/TRX_rx09_fifo_o",
-          "TRX_rx09_32bits_CD100",
           "TRX_rx09_fifo"
         ]
       },
@@ -7847,8 +7939,7 @@
       "TRX_rx_rf24_FIFO_dout_0": {
         "ports": [
           "TRX_LVDS/TRX_rx24_fifo_o",
-          "TRX_rx24_fifo",
-          "TRX_rx24_32bits_CD100"
+          "TRX_rx24_fifo"
         ]
       },
       "TRX_rx_rf09_FIFO_valid_0": {
@@ -8370,6 +8461,24 @@
         "ports": [
           "TRX_LVDS/TRX_LVDS_tx09_fifo_din",
           "TRX_LVDS_tx09_fifo_din"
+        ]
+      },
+      "LVDS_rx_delay_reset_0": {
+        "ports": [
+          "TRX_config/LVDS_rx_delay_reset",
+          "TRX_LVDS/LVDS_rx_delay_reset"
+        ]
+      },
+      "LVDS_rx_delay_val_0": {
+        "ports": [
+          "TRX_config/LVDS_rx_delay_val",
+          "TRX_LVDS/LVDS_rx_delay_val"
+        ]
+      },
+      "proc_sys_reset_aux_0": {
+        "ports": [
+          "TRX_config/proc_sys_reset_aux",
+          "TRX_proc_sys_reset_0/aux_reset_in"
         ]
       }
     }

@@ -200,7 +200,7 @@ begin
     variable byteBit_cnt                            : Integer  range 0 to (2**3  - 1);
     variable byteBit_sub                            : Integer  range 0 to (2**1  - 1);
     
-    variable encoder_ofs                            : Integer  range 0 to (2**5  - 1);
+  --variable encoder_ofs                            : Integer  range 0 to (2**5  - 1);
     variable encoder_frq_initial                    : Integer  range 0 to (2**5  - 1);
     variable encoder_frq_last                       : Integer  range 0 to (2**5  - 1);
   begin
@@ -222,7 +222,6 @@ begin
             byteBit_cnt                             := 0;
             byteBit_sub                             := 0;
             
-            encoder_ofs                             := 0;
             encoder_frq_initial                     := 0;
             encoder_frq_last                        := 0;
             
@@ -269,7 +268,8 @@ begin
                     state := fifo_pull_ofs;
                     
                 when fifo_pull_ofs =>
-                    encoder_ofs     := to_integer(unsigned(pulldata_tx09_byteData));
+                    encoder_frq_initial := (16 + to_integer(unsigned(pulldata_tx09_byteData))) mod 32;
+                    dds_new_freq        := encoder_frq_initial;
                     
                     pull_cnt := pull_cnt - 1;
                     state := fifo_pull_data;
@@ -297,7 +297,7 @@ begin
                     
                 when tx_rampup_dds =>
                     -- One bit time is 128 us
-                    dds_new_freq    := (16 + encoder_ofs) mod 32;
+                    dds_new_freq    := encoder_frq_initial;
                     loop_cnt        := 2 * C_128us_loopcnt;
                     state := tx_rampup_hold_2x128us;
                     
@@ -311,7 +311,7 @@ begin
                     
                     
                 when tx_preamble_preX_dds =>
-                    dds_new_freq    := (16 + encoder_ofs + C_pre_ary(preIdx)) mod 32;
+                    dds_new_freq    := (32 + dds_new_freq + C_pre_ary(preIdx)) mod 32;
                     loop_cnt        := C_128us_loopcnt;
                     state := tx_preamble_preX_hold_128us;
                     
@@ -417,7 +417,6 @@ begin
                         
                         dds_new_freq            := 0;
                         encoder_tx09_in_len_cnt := 0;
-                        encoder_ofs             := 0;
                         encoder_frq_last        := 0;
                     end if;
                     
