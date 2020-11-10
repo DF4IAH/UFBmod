@@ -58,9 +58,10 @@ end UFBmod_tx09_Encoder_FSM;
 
 architecture Behavioral of UFBmod_tx09_Encoder_FSM is
   signal encoder_tx09_in_vec                        : STD_LOGIC_VECTOR(1023 downto 0);
-  signal encoder_tx09_in_len                        : STD_LOGIC_VECTOR(10 downto 0);
+  signal encoder_tx09_in_len                        : STD_LOGIC_VECTOR(  10 downto 0);
   
   shared variable dds_new_freq                      : Integer;
+  
 begin
   
   -- DDS calc engine

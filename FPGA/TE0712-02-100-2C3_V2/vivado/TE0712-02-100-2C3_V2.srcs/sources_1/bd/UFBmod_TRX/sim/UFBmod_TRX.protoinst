@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"UFBmod_TRX": {
+			"proto_instances": {
+			}
+		}
+	}
+}

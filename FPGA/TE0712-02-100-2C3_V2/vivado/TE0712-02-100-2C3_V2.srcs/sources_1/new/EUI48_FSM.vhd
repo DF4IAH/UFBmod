@@ -38,28 +38,33 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity EUI48_FSM is
   Port ( 
-    reset                   : in  STD_LOGIC;
-    clk                     : in  STD_LOGIC;
-    EUI48_onewire_tri_i     : in  STD_LOGIC;
-    EUI48_onewire_tri_o     : out STD_LOGIC;
-    EUI48_onewire_tri_t     : out STD_LOGIC;
-    EUI48_FSM_start         : in  STD_LOGIC;
-    EUI48_FSM_run           : out STD_LOGIC;
-    EUI48_data              : out STD_LOGIC_VECTOR (47 downto 0);
-    EUI48_state             : out STD_LOGIC_VECTOR ( 7 downto 0);
-    EUI48_abort             : out STD_LOGIC_VECTOR ( 7 downto 0)
+    clk                         : in    STD_LOGIC;
+    reset                       : in    STD_LOGIC;
+    
+    EUI48_onewire_tri_i         : in    STD_LOGIC;
+    EUI48_onewire_tri_o         : out   STD_LOGIC;
+    EUI48_onewire_tri_t         : out   STD_LOGIC;
+    
+    EUI48_FSM_start             : in    STD_LOGIC;
+    EUI48_FSM_run               : out   STD_LOGIC;
+    
+    EUI48_data                  : out   STD_LOGIC_VECTOR (47 downto 0);
+    
+    EUI48_state                 : out   STD_LOGIC_VECTOR ( 7 downto 0);
+    EUI48_abort                 : out   STD_LOGIC_VECTOR ( 7 downto 0)
   );
 end EUI48_FSM;
 
 architecture Behavioral of EUI48_FSM is
-signal ow_clk_0_of_4        : STD_LOGIC;
-signal ow_clk_1_of_4        : STD_LOGIC;
-signal ow_clk_2_of_4        : STD_LOGIC;
-signal ow_clk_3_of_4        : STD_LOGIC;
-signal bitLeft              : STD_LOGIC;
-signal bitRight             : STD_LOGIC;
-signal byteMakShift_r       : STD_LOGIC_VECTOR ( 8 downto 0);
-signal EUI48_data_r         : STD_LOGIC_VECTOR (47 downto 0);
+  signal ow_clk_0_of_4          : STD_LOGIC;
+  signal ow_clk_1_of_4          : STD_LOGIC;
+  signal ow_clk_2_of_4          : STD_LOGIC;
+  signal ow_clk_3_of_4          : STD_LOGIC;
+  signal bitLeft                : STD_LOGIC;
+  signal bitRight               : STD_LOGIC;
+  signal byteMakShift_r         : STD_LOGIC_VECTOR ( 8 downto 0);
+  signal EUI48_data_r           : STD_LOGIC_VECTOR (47 downto 0);
+
 begin
     -- Counter for OneWire clock of 50 us
     proc_clock: process (reset, clk)

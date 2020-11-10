@@ -2,11 +2,39 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="UFBmod_TRX" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1604913716"/>
-    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1604913716"/>
-    <Generation Name="SIMULATION" State="RESET" Timestamp="1604913716"/>
-    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1604913716"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1604992346"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1604992346"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1604992346"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1604992346"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
+      <File Name="UFBmod_TRX_sim_netlist.vhdl" Type="VHDL">
+        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+        <UsedIn Val="SINGLE_LANGUAGE"/>
+      </File>
+      <File Name="UFBmod_TRX_sim_netlist.v" Type="Verilog">
+        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+        <UsedIn Val="SINGLE_LANGUAGE"/>
+      </File>
+      <File Name="UFBmod_TRX_stub.vhdl" Type="VHDL">
+        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTH_BLACKBOX_STUB"/>
+      </File>
+      <File Name="UFBmod_TRX_stub.v" Type="Verilog">
+        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTH_BLACKBOX_STUB"/>
+      </File>
+      <File Name="UFBmod_TRX.dcp" Type="DCP">
+        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+      </File>
       <File Name="ip\UFBmod_TRX_TRX_proc_sys_reset_0_1\UFBmod_TRX_TRX_proc_sys_reset_0_1.xci" Type="IP">
         <Instance HierarchyPath="TRX_proc_sys_reset_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -967,28 +995,49 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip\UFBmod_TRX_xlslice_0_0\UFBmod_TRX_xlslice_0_0.xci" Type="IP">
-        <Instance HierarchyPath="TRX_config/TRX_gpio_xlslice_25to16_LVDS_delay_val_0"/>
+      <File Name="ip\UFBmod_TRX_TRX_gpio_xlslice_0to0_blankTx_0_0\UFBmod_TRX_TRX_gpio_xlslice_0to0_blankTx_0_0.xci" Type="IP">
+        <Instance HierarchyPath="TRX_config/TRX_gpio_xlslice_1to1_proc_sys_reset_aux_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip\UFBmod_TRX_xlslice_0_2\UFBmod_TRX_xlslice_0_2.xci" Type="IP">
-        <Instance HierarchyPath="TRX_config/TRX_gpio_xlslice_2to2_LVDS_delay_reset_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+      <File Name="synth\UFBmod_TRX.vhd" Type="VHDL">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
+      </File>
+      <File Name="sim\UFBmod_TRX.vhd" Type="VHDL">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip\UFBmod_TRX_xlslice_0_3\UFBmod_TRX_xlslice_0_3.xci" Type="IP">
-        <Instance HierarchyPath="TRX_config/TRX_gpio_xlslice_1to1_proc_sys_reset_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+      <File Name="UFBmod_TRX_ooc.xdc" Type="XDC">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="OUT_OF_CONTEXT"/>
+      </File>
+      <File Name="hw_handoff\UFBmod_TRX.hwh" Type="HwHandoff">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+      </File>
+      <File Name="hw_handoff\UFBmod_TRX_bd.tcl">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+      </File>
+      <File Name="synth\UFBmod_TRX.hwdef">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+      </File>
+      <File Name="sim\UFBmod_TRX.protoinst">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
       </File>
     </FileCollection>

@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Nov  9 21:52:51 2020" VIVADOVERSION="2020.1.1">
+
+  <SYSTEMINFO ARCH="artix7" BOARD="trenz.biz:te0712_100_2c:part0:1.0" DEVICE="7a100t" NAME="UFBmod_Encoder" PACKAGE="fgg484" SPEEDGRADE="-2"/>
+
+  <EXTERNALPORTS>
+    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk_100MHz" SIGIS="clk" SIGNAME="External_Ports_clk_100MHz">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="UFBmod_tx09_Encoder_0" PORT="clk"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="reset_100MHz" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_reset_100MHz">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="UFBmod_tx09_Encoder_0" PORT="reset"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="encoder_pull_FIFO_dump" SIGIS="undef" SIGNAME="External_Ports_encoder_pull_FIFO_dump">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="UFBmod_tx09_Encoder_0" PORT="encoder_pull_FIFO_dump"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="encoder_pull_do_start" SIGIS="undef" SIGNAME="External_Ports_encoder_pull_do_start">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="UFBmod_tx09_Encoder_0" PORT="encoder_pull_do_start"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="6" NAME="encoder_pull_data_len" RIGHT="0" SIGIS="data" SIGNAME="External_Ports_encoder_pull_data_len">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="UFBmod_tx09_Encoder_0" PORT="encoder_pull_data_len"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="7" NAME="pulldata_tx09_byteData" RIGHT="0" SIGIS="data" SIGNAME="External_Ports_pulldata_tx09_byteData">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="UFBmod_tx09_Encoder_0" PORT="pulldata_tx09_byteData"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="pulldata_tx09_en" SIGIS="undef" SIGNAME="UFBmod_tx09_Encoder_0_pulldata_tx09_en">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="UFBmod_tx09_Encoder_0" PORT="pulldata_tx09_en"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="TRX_dds_tx_rf09_ptt" SIGIS="undef" SIGNAME="UFBmod_tx09_Encoder_0_dds_tx09_ptt">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="UFBmod_tx09_Encoder_0" PORT="dds_tx09_ptt"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="25" NAME="TRX_dds_tx_rf09_inc" RIGHT="0" SIGIS="data" SIGNAME="UFBmod_tx09_Encoder_0_dds_tx09_inc">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="UFBmod_tx09_Encoder_0" PORT="dds_tx09_inc"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="7" NAME="decoder_rx09_chAll_sql_open" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_decoder_rx09_chAll_sql_open">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="UFBmod_tx09_Encoder_0" PORT="decoder_rx09_chAll_sql_open"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="7" NAME="decoder_rx09_chAll_active" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_decoder_rx09_chAll_active">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="UFBmod_tx09_Encoder_0" PORT="decoder_rx09_chAll_active"/>
+      </CONNECTIONS>
+    </PORT>
+  </EXTERNALPORTS>
+
+  <EXTERNALINTERFACES/>
+
+  <MODULES>
+    <MODULE COREREVISION="1" FULLNAME="/UFBmod_tx09_Encoder_0" HWVERSION="1.0" INSTANCE="UFBmod_tx09_Encoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="UFBmod_tx09_Encoder_FSM" VLNV="xilinx.com:module_ref:UFBmod_tx09_Encoder_FSM:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="UFBmod_Encoder_UFBmod_tx09_Encoder_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_reset_100MHz">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="reset_100MHz"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk_100MHz">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk_100MHz"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="decoder_rx09_chAll_sql_open" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_decoder_rx09_chAll_sql_open">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="decoder_rx09_chAll_sql_open"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="decoder_rx09_chAll_active" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_decoder_rx09_chAll_active">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="decoder_rx09_chAll_active"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="encoder_pull_FIFO_dump" SIGIS="undef" SIGNAME="External_Ports_encoder_pull_FIFO_dump">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="encoder_pull_FIFO_dump"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="encoder_pull_do_start" SIGIS="undef" SIGNAME="External_Ports_encoder_pull_do_start">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="encoder_pull_do_start"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="6" NAME="encoder_pull_data_len" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_encoder_pull_data_len">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="encoder_pull_data_len"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="pulldata_tx09_en" SIGIS="undef" SIGNAME="UFBmod_tx09_Encoder_0_pulldata_tx09_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pulldata_tx09_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="pulldata_tx09_byteData" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_pulldata_tx09_byteData">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pulldata_tx09_byteData"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="25" NAME="dds_tx09_inc" RIGHT="0" SIGIS="undef" SIGNAME="UFBmod_tx09_Encoder_0_dds_tx09_inc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="TRX_dds_tx_rf09_inc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="dds_tx09_ptt" SIGIS="undef" SIGNAME="UFBmod_tx09_Encoder_0_dds_tx09_ptt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="TRX_dds_tx_rf09_ptt"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+  </MODULES>
+
+</EDKSYSTEM>

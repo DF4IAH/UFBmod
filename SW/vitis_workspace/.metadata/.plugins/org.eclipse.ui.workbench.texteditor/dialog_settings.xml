@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="gpio_PWM_Lights" key="selection"/>
+		<item value="AGCC" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="AGCC"/>
+			<item value="868"/>
+			<item value="LVDS_PTT"/>
+			<item value="TestRF09Rx"/>
 			<item value="gpio_PWM_Lights"/>
 			<item value="867"/>
 			<item value="869"/>
-			<item value="868"/>
 			<item value="PUSHDATA"/>
 			<item value="squelch"/>
-			<item value="TestRF09Rx"/>
 			<item value="GPIO"/>
 			<item value="_CONFIG_AXI"/>
 			<item value="xilisf.h"/>
 			<item value="I/Q mixer"/>
 			<item value="I/Q mixer "/>
 			<item value="I/Q"/>
-			<item value="DdsFreqAmpSet"/>
-			<item value="iq"/>
 		</list>
 		<list key="replacehistory">
 		</list>

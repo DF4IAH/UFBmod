@@ -39,47 +39,47 @@ use IEEE.NUMERIC_STD.ALL;
 entity FFT_controller is
   Port (
     -- All Clock Domain AXI 100 MHz
-    reset                       : in  STD_LOGIC;
-    clk                         : in  STD_LOGIC;
+    clk                                 : in    STD_LOGIC;
+    reset                               : in    STD_LOGIC;
     
-    rx09_bs_32bits              : in  STD_LOGIC_VECTOR (31 downto 0);
-    rx09_bs_32bits_vld          : in  STD_LOGIC;
+    rx09_bs_32bits                      : in    STD_LOGIC_VECTOR (31 downto 0);
+    rx09_bs_32bits_vld                  : in    STD_LOGIC;
 
-  --rx24_bs_32bits              : in  STD_LOGIC_VECTOR (31 downto 0);
-  --rx24_bs_32bits_vld          : in  STD_LOGIC;
+  --rx24_bs_32bits                      : in    STD_LOGIC_VECTOR (31 downto 0);
+  --rx24_bs_32bits_vld                  : in    STD_LOGIC;
     
-    PreMem09_addra              : out STD_LOGIC_VECTOR (10 downto 0);  -- (a)  2x FFT frame of 1024 points = 2048 addresses
-    PreMem09_wea                : out STD_LOGIC;
-    PreMem09_dina               : out STD_LOGIC_VECTOR (25 downto 0);  -- (b)  29..17: I-data, 13..01: Q-data
-    PreMem09_addrb              : out STD_LOGIC_VECTOR (10 downto 0);  -- see above (a)
+    PreMem09_addra                      : out   STD_LOGIC_VECTOR (10 downto 0);  -- (a)  2x FFT frame of 1024 points = 2048 addresses
+    PreMem09_wea                        : out   STD_LOGIC;
+    PreMem09_dina                       : out   STD_LOGIC_VECTOR (25 downto 0);  -- (b)  29..17: I-data, 13..01: Q-data
+    PreMem09_addrb                      : out   STD_LOGIC_VECTOR (10 downto 0);  -- see above (a)
     
-    FFT_window_coef_rom_rx09    : out STD_LOGIC_VECTOR ( 9 downto 0);
+    FFT_window_coef_rom_rx09            : out   STD_LOGIC_VECTOR ( 9 downto 0);
     
-    RF09_quarterfrm             : out STD_LOGIC_VECTOR ( 1 downto 0);  -- subframes of  64 us
-    RF09_framectr               : out STD_LOGIC_VECTOR (29 downto 0);  -- frames    of 256 us
+    RF09_quarterfrm                     : out   STD_LOGIC_VECTOR ( 1 downto 0);  -- subframes of  64 us
+    RF09_framectr                       : out   STD_LOGIC_VECTOR (29 downto 0);  -- frames    of 256 us
     
-  --PreMem24_addra              : out STD_LOGIC_VECTOR (10 downto 0);  -- (a)  2x FFT frame of 1024 points = 2048 addresses
-  --PreMem24_wea                : out STD_LOGIC;
-  --PreMem24_dina               : out STD_LOGIC_VECTOR (25 downto 0);  -- see above (b)
-  --PreMem24_addrb              : out STD_LOGIC_VECTOR (10 downto 0);  -- see above (a)
+  --PreMem24_addra                      : out   STD_LOGIC_VECTOR (10 downto 0);  -- (a)  2x FFT frame of 1024 points = 2048 addresses
+  --PreMem24_wea                        : out   STD_LOGIC;
+  --PreMem24_dina                       : out   STD_LOGIC_VECTOR (25 downto 0);  -- see above (b)
+  --PreMem24_addrb                      : out   STD_LOGIC_VECTOR (10 downto 0);  -- see above (a)
     
-  --FFT_window_coef_rom_rx24    : out STD_LOGIC_VECTOR ( 9 downto 0);
+  --FFT_window_coef_rom_rx24            : out   STD_LOGIC_VECTOR ( 9 downto 0);
     
-  --RF24_quarterfrm             : out STD_LOGIC_VECTOR ( 1 downto 0);  -- subframes of  64 us
-  --RF24_framectr               : out STD_LOGIC_VECTOR (29 downto 0);  -- frames    of 256 us
+  --RF24_quarterfrm                     : out   STD_LOGIC_VECTOR ( 1 downto 0);  -- subframes of  64 us
+  --RF24_framectr                       : out   STD_LOGIC_VECTOR (29 downto 0);  -- frames    of 256 us
     
-    XFFT09_s_data_tlast         : out STD_LOGIC;
-    XFFT09_s_data_tready        : in  STD_LOGIC;
-    XFFT09_s_data_tvalid        : out STD_LOGIC;
-    XFFT09_s_conf_tdata         : out STD_LOGIC_VECTOR ( 7 downto 0);
-    XFFT09_s_conf_tvalid        : out STD_LOGIC
+    XFFT09_s_data_tlast                 : out   STD_LOGIC;
+    XFFT09_s_data_tready                : in    STD_LOGIC;
+    XFFT09_s_data_tvalid                : out   STD_LOGIC;
+    XFFT09_s_conf_tdata                 : out   STD_LOGIC_VECTOR ( 7 downto 0);
+    XFFT09_s_conf_tvalid                : out   STD_LOGIC
     
-  --XFFT24_aresetn              : out STD_LOGIC;
-  --XFFT24_s_data_tlast         : out STD_LOGIC;
-  --XFFT24_s_data_tready        : in  STD_LOGIC;
-  --XFFT24_s_data_tvalid        : out STD_LOGIC;
-  --XFFT24_s_conf_tdata         : out STD_LOGIC_VECTOR ( 7 downto 0);
-  --XFFT24_s_conf_tvalid        : out STD_LOGIC
+  --XFFT24_aresetn                      : out   STD_LOGIC;
+  --XFFT24_s_data_tlast                 : out   STD_LOGIC;
+  --XFFT24_s_data_tready                : in    STD_LOGIC;
+  --XFFT24_s_data_tvalid                : out   STD_LOGIC;
+  --XFFT24_s_conf_tdata                 : out   STD_LOGIC_VECTOR ( 7 downto 0);
+  --XFFT24_s_conf_tvalid                : out   STD_LOGIC
   );
 end FFT_controller;
 
@@ -110,17 +110,14 @@ begin
     if (clk'EVENT and clk = '1') then
         if (reset = '1') then
             cnt09 := 0;
+            
             PreMem09_addra_r            <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra_r'length));
             PreMem09_addra              <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra'length));
             PreMem09_wea                <= '0';
             
         else
             if (rx09_bs_32bits_vld = '1') then
-                if (cnt09 /= 2047) then
-                    cnt09 := cnt09 + 1;
-                else
-                    cnt09 := 0;
-                end if;
+                cnt09 := (cnt09 + 1) mod 2048;
                 
                 PreMem09_addra_r    <= std_logic_vector(to_unsigned(cnt09, PreMem09_addra_r'length));
                 PreMem09_wea        <= '1';
@@ -141,17 +138,14 @@ begin
 --  if (clk'EVENT and clk = '1') then
 --      if (resetn = '0') then
 --          cnt24 := 0;
+--
 --          PreMem24_addra_r            <= std_logic_vector(to_unsigned(cnt24, PreMem24_addra_r'length));
 --          PreMem24_addra              <= std_logic_vector(to_unsigned(cnt24, PreMem24_addra'length));
 --          PreMem24_wea                <= '0';
 --            
 --      else
---          if (rx09_bs_32bits_vld = '1') then
---              if (cnt24 /= 2047) then
---                  cnt24 := cnt24 + 1;
---              else
---                  cnt24 := 0;
---              end if;
+--          if (rx24_bs_32bits_vld = '1') then
+--              cnt24 := (cnt09 + 1) mod 2048;
 --              
 --              PreMem24_addra_r  <= std_logic_vector(to_unsigned(cnt24, PreMem24_addra_r'length));
 --              PreMem24_wea      <= '1';
@@ -168,11 +162,12 @@ begin
   
   -- PreMem 09 Out - FFT feeder
   proc_PreMem09_out_FFT: process (reset, clk, PreMem09_addra_r)
-  variable fsm09_fft_subidx         : Integer;
-  variable fsm09_fft_addr           : Integer;
-  variable fsm09_fft_trigger        : Integer;
-  variable fsm09_fft_state          : Integer;
-  variable fsm09_fft_loop_cycle     : Integer;
+    variable fsm09_fft_subidx           : Integer;
+    variable fsm09_fft_addr             : Integer;
+    variable fsm09_fft_trigger          : Integer;
+    variable fsm09_fft_state            : Integer;
+    variable fsm09_fft_loop_cycle       : Integer;
+  
   begin
     if (clk'EVENT and clk = '1') then
         if (reset = '1') then
@@ -308,11 +303,12 @@ begin
 
   -- PreMem 24 Out - FFT feeder
 --proc_PreMem24_out_FFT: process (resetn, clk, PreMem24_addra_r)
---variable fsm24_fft_subidx         : Integer;
---variable fsm24_fft_addr           : Integer;
---variable fsm24_fft_trigger        : Integer;
---variable fsm24_fft_state          : Integer;
---variable fsm24_fft_loop_cycle     : Integer;
+--  variable fsm24_fft_subidx           : Integer;
+--  variable fsm24_fft_addr             : Integer;
+--  variable fsm24_fft_trigger          : Integer;
+--  variable fsm24_fft_state            : Integer;
+--  variable fsm24_fft_loop_cycle       : Integer;
+--
 --begin
 --  if (clk'EVENT and clk = '1') then
 --      if (resetn = '0') then

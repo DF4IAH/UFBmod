@@ -33,8 +33,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity TRX_FIFO_Arbiter is
   Port ( 
-    reset_100MHz                                        : in    STD_LOGIC;
     clk_100MHz                                          : in    STD_LOGIC;
+    reset_100MHz                                        : in    STD_LOGIC;
     
     -- Clients
     TRX_PUSHDATA_ch00_req                               : in    STD_LOGIC;
@@ -89,14 +89,15 @@ begin
 proc_arbiter_FSM: process(reset_100MHz, clk_100MHz)
   variable round_robin_idx                              : Integer range 0 to (2**3 - 1);
   variable sub_idx                                      : Integer range 0 to (2**2 - 1);
-  variable TRX_PUSHDATA_ch00_grant_v                    : STD_LOGIC;                      
-  variable TRX_PUSHDATA_ch01_grant_v                    : STD_LOGIC;                      
-  variable TRX_PUSHDATA_ch02_grant_v                    : STD_LOGIC;                      
-  variable TRX_PUSHDATA_ch03_grant_v                    : STD_LOGIC;                      
-  variable TRX_PUSHDATA_ch04_grant_v                    : STD_LOGIC;                      
-  variable TRX_PUSHDATA_ch05_grant_v                    : STD_LOGIC;                      
-  variable TRX_PUSHDATA_ch06_grant_v                    : STD_LOGIC;                      
-  variable TRX_PUSHDATA_ch07_grant_v                    : STD_LOGIC;                      
+  variable TRX_PUSHDATA_ch00_grant_v                    : STD_LOGIC;
+  variable TRX_PUSHDATA_ch01_grant_v                    : STD_LOGIC;
+  variable TRX_PUSHDATA_ch02_grant_v                    : STD_LOGIC;
+  variable TRX_PUSHDATA_ch03_grant_v                    : STD_LOGIC;
+  variable TRX_PUSHDATA_ch04_grant_v                    : STD_LOGIC;
+  variable TRX_PUSHDATA_ch05_grant_v                    : STD_LOGIC;
+  variable TRX_PUSHDATA_ch06_grant_v                    : STD_LOGIC;
+  variable TRX_PUSHDATA_ch07_grant_v                    : STD_LOGIC;
+  
 begin
     if (clk_100MHz'EVENT and clk_100MHz = '1') then
         if (reset_100MHz = '1') then

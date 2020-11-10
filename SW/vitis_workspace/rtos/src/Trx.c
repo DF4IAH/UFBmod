@@ -1023,12 +1023,12 @@ static u32 TrxOperationModeRFSet(u8 chpm)
 		writeBuf[3] = 0x00U | 0x01U;							// RF_CLKO		DRV=#00#08, OS=#01 26MHz (p21)
 		writeBuf[4] = (readBuf[4] & 0x1fU) 	|  0x00U;			// RF_BMDVC		BMHR, BMVTH (p79)
 		writeBuf[5] = 0x00U;									// RF_XOC		FS=00, TRIM=00 (p69)
-#ifdef LVDS_PTT
-		writeBuf[6] = 0x30U | 0x08U | 0x01U;					// RF_IQIFC0	EXTLB=#00, DRV=(#00#10#20)#30, CMV=(#00#04)#08(#0c), CMV1V2=#00(#02), EEC=#00#01 (p27)  // XXX
+#ifdef LVDS_PTT													// XXX
+		writeBuf[6] = 0x10U | 0x00U | 0x02U | 0x01U;			// RF_IQIFC0	EXTLB=#00, DRV=(#00#10#20)#30, CMV=(#00#04)#08(#0c), CMV1V2=#00(#02), EEC=#00#01 (p27)
 #else
-		writeBuf[6] = 0x30U | 0x08U | 0x00U;					// RF_IQIFC0	EXTLB=#00, DRV=(#00#10#20)#30, CMV=(#00#04)#08(#0c), CMV1V2=#00(#02), EEC=#00#01 (p27)  // XXX
+		writeBuf[6] = 0x10U | 0x00U | 0x02U | 0x00U;			// RF_IQIFC0	EXTLB=#00, DRV=(#00#10#20)#30, CMV=(#00#04)#08(#0c), CMV1V2=#00(#02), EEC=#00#01 (p27)
 #endif
-		writeBuf[7] = (chpm  << 4) 			|  0x00U;			// RF_IQIFC1	CHPM, SKEWDRV=#00(#01#02#03) (p32)
+		writeBuf[7] = (chpm  << 4) 			| 0x03U;			// RF_IQIFC1	CHPM, SKEWDRV=#00(#01#02#03) (p32)
 
 		/* Write the data */
 		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
@@ -1121,8 +1121,15 @@ static u32 TrxOperationModeRF09BBC0Set(u8 ctx, s32 pwr)
 		writeBuf[1] = 0x09U;									// Reg-LSB
 		writeBuf[2] = ((readBuf[2] & 0x00U) | (0x0bU << 0));	// RF09_RXBWC	IFI=00, IFS=00, BW=0b (p57)
 		writeBuf[3] = ((readBuf[3] & 0x00U) | (0x01U << 0));	// RF09_RXDFE	RCUT=00, SR=01 (p58)
+#if 0
+		/* AGC disabled */
+		writeBuf[4] = ((readBuf[4] & 0x80U) | (0x00U << 0));	// RF09_AGCC	AGCI=#40 00, AVGS=#30 00, RST=#08 00, FRZC=#02 00, EN=#01 01 (p59)
+		writeBuf[5] = (0x00U << 5)          | (0x00U << 0);		// RF09_AGCS	TGT=#E0 00 [60], GCW=#1F 17 (p60)
+#else
+		/* AGC enabled */
 		writeBuf[4] = ((readBuf[4] & 0x80U) | (0x01U << 0));	// RF09_AGCC	AGCI=#40 00, AVGS=#30 00, RST=#08 00, FRZC=#02 00, EN=#01 01 (p59)
-		writeBuf[5] = ((readBuf[5] & 0x00U) | (0x00U << 0));	// RF09_AGCS	TGT=#E0 00 [60], GCW=#1F 17 (p60)
+		writeBuf[5] = ((readBuf[5] & 0x00U) | (0xe0U << 0));	// RF09_AGCS	TGT=#E0 00 [60], GCW=#1F 17 (p60)
+#endif
 		writeBuf[6] = ((readBuf[6] & 0x00U) | (0x00U << 0));	// RF09_RSSI	(p60)
 		writeBuf[7] = ((readBuf[7] & 0x00U) | (0x00U << 0));	// RF09_EDC	EDM=00 (p60)
 		writeBuf[8] = ((readBuf[8] & 0x00U) | (0x48U << 0));	// RF09_EDD	DF=40, DTB=08 (p61)
@@ -2338,7 +2345,7 @@ static void TestRF09Rx(u32 freq_Hz)
 	TrxOperationModeRFSet(CHPM_RF_MODE_RF);  			// CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF
 	TrxOperationModeRF09BBC0Set(CTX_DISABLE, -30);  	// CTX ContinuesWave, Power @ TRX pins
 
-#if 1
+#if 0
 	/* RFX1010 Gain setting: Hi */
 	XGpio_DiscreteSet(&gpio_TRX_CONFIG, 1U, 0x40000000UL);
 #else
@@ -2499,8 +2506,16 @@ void taskTrx(void* pvParameters)
 
 		// write - bit31: TRX_resetn, bit30: TRX_rfx_mode, bit0:LVDS_tx_blank
 		//XGpio_SetDataDirection(&gpio_TRX_CONFIG, 1U, 0x00000000UL);	// 32 bit output
-		XGpio_DiscreteWrite(   &gpio_TRX_CONFIG, 1U, 0x00000000UL);
-		vTaskDelay(pdMS_TO_TICKS(25));
+
+		// LVDS IDELAY: set tap of data channel
+		//XGpio_DiscreteWrite(   &gpio_TRX_CONFIG, 1U, ((16UL << 21) | (16UL << 16)));
+
+		// LVDS IDELAY: load tap values
+		/* TRX proc_sys_reset_0 */
+		XGpio_DiscreteWrite(   &gpio_TRX_CONFIG, 1U, 0x00000002UL);
+		XGpio_DiscreteClear(   &gpio_TRX_CONFIG, 1U, 0x00000002UL);
+
+		/* Release TRX chip resetn */
 		XGpio_DiscreteSet(     &gpio_TRX_CONFIG, 1U, 0x80000000UL);
 
 		// read  - bit2: RX24 LVDS synced, bit1: RX09 LVDS synced, bit0: 25 MHz / 26 MHz TRX clock PLL locked
@@ -2652,7 +2667,7 @@ void taskTrx(void* pvParameters)
 	while (1) {
 		/* Values */										// XXX
 		int pwr_dBm = -20;									// Max. +11 dBm @ TRX  (after defect: +10,+11 --> -6 dBm)
-		u32 freq_Hz = 868100000UL;  						// 867000000 ..  870000000 Hz		// RF09
+		u32 freq_Hz = 867100000UL;  						// 867000000 ..  870000000 Hz		// RF09
 
 #if 0
 		/* Check interrupts */

@@ -53,7 +53,10 @@ entity auto_LVDS_rotate is
     rot24q              : out   STD_LOGIC_VECTOR (31 downto 0);
     rot24vld            : out   STD_LOGIC;
     
+    LVDS_mrk09ok        : out   STD_LOGIC;
     LVDS_rx09_synced    : out   STD_LOGIC;
+    
+    LVDS_mrk24ok        : out   STD_LOGIC;
     LVDS_rx24_synced    : out   STD_LOGIC
   );
 end auto_LVDS_rotate;
@@ -154,6 +157,7 @@ begin
                     state := check_in;
                     
                 when check_in =>
+                    -- Feed barrel shifter
                     if (LVDS09_valid = '1') then
                         -- Live
                         rot_09_in       <= LVDS09;
@@ -164,13 +168,14 @@ begin
                         rot_09_in       <= rot_09_in_hld;
                     end if;
                     
+                    -- Error management
                     if (mrk09ok = '1') then
                         -- Keep in this state
                         rot09q              <= rot_09_out;
                         rot09vld            <= '1';
                         LVDS_rx09_synced    <= '1';
                         
-                      --state := check_in;
+                        state := check_in;
                         
                     else
                         -- Search for a new rotval value
@@ -248,6 +253,7 @@ begin
                     state := check_in;
                     
                 when check_in =>
+                    -- Feed barrel shifter
                     if (LVDS24_valid = '1') then
                         -- Live
                         rot_24_in       <= LVDS24;
@@ -258,13 +264,14 @@ begin
                         rot_24_in       <= rot_24_in_hld;
                     end if;
                     
+                    -- Error management
                     if (mrk24ok = '1') then
                         -- Keep in this state
                         rot24q              <= rot_24_out;
                         rot24vld            <= '1';
                         LVDS_rx24_synced    <= '1';
                         
-                      --state := check_in;
+                        state := check_in;
                         
                     else
                         -- Search for a new rotval value
@@ -303,8 +310,11 @@ begin
   begin
     if (clk'EVENT and clk = '1') then
         if (reset = '1') then
-            mrk09ok             <= '0';
-            mrk24ok             <= '0';
+            mrk09ok      <= '0';
+            LVDS_mrk09ok <= '0';
+            
+            mrk24ok      <= '0';
+            LVDS_mrk24ok <= '0';
             
         else
             -- rx09
@@ -327,6 +337,10 @@ begin
                 mrk24ok <= '0';
             end if;
         end if;
+        
+        -- Export states
+        LVDS_mrk09ok <= mrk09ok;
+        LVDS_mrk24ok <= mrk24ok;
     end if;
   end process proc_markers;
 

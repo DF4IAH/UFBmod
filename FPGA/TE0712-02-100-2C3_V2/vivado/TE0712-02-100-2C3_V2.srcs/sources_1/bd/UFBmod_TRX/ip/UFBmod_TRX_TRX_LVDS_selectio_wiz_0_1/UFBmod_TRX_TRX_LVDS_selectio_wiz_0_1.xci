@@ -83,8 +83,8 @@
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_INTERFACE_TYPE">NETWORKING</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_NOTES">None</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SELIO_ACTIVE_EDGE">DDR</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SELIO_BUS_IN_DELAY">VAR_LOADABLE</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SELIO_BUS_IN_TAP">0</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SELIO_BUS_IN_DELAY">FIXED</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SELIO_BUS_IN_TAP">16</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SELIO_BUS_OUT_DELAY">NONE</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SELIO_BUS_OUT_TAP">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SELIO_CLK_BUF">BUFIO</spirit:configurableElementValue>
@@ -134,8 +134,8 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.INTERFACE_TYPE">NETWORKING</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.NOTES">None</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.SELIO_ACTIVE_EDGE">DDR</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.SELIO_BUS_IN_DELAY">VAR_LOADABLE</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.SELIO_BUS_IN_TAP">0</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.SELIO_BUS_IN_DELAY">FIXED</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.SELIO_BUS_IN_TAP">16</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.SELIO_BUS_OUT_DELAY">NONE</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.SELIO_BUS_OUT_TAP">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.SELIO_CLK_BUF">BUFIO</spirit:configurableElementValue>
@@ -200,6 +200,7 @@
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.IDELAY_HIGH_PERF_MODE" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.SELIO_ACTIVE_EDGE" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.SELIO_BUS_IN_DELAY" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.SELIO_BUS_IN_TAP" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.SELIO_CLK_BUF" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.SELIO_CLK_IO_STD" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.SELIO_CLK_SIG_TYPE" xilinx:valueSource="user"/>

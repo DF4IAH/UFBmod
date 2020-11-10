@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Fri Nov  6 17:49:05 2020
+--Date        : Mon Nov  9 23:48:44 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -52,6 +52,8 @@ entity msys_wrapper is
     LED_RGB_blue : out STD_LOGIC_VECTOR ( 0 to 0 );
     LED_RGB_green : out STD_LOGIC_VECTOR ( 0 to 0 );
     LED_RGB_red : out STD_LOGIC_VECTOR ( 0 to 0 );
+    LVDS_mrk09ok : in STD_LOGIC;
+    LVDS_mrk24ok : in STD_LOGIC;
     LVDS_rx09_synced : in STD_LOGIC;
     LVDS_rx24_synced : in STD_LOGIC;
     PLL_I2C_ext_scl_o : out STD_LOGIC;
@@ -90,16 +92,16 @@ entity msys_wrapper is
     TRX_TX_RF09_PULLDATA_FIFO_empty : in STD_LOGIC;
     TRX_clk_trx_26MHz_vio : in STD_LOGIC;
     TRX_clk_trx_pll_25MHz_vio : in STD_LOGIC;
-    TRX_data_count : in STD_LOGIC_VECTOR ( 11 downto 0 );
     TRX_decoder_rx09_ch00_squelch_lvl : in STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_int : in STD_LOGIC;
-    TRX_rd_data_count_CD100 : in STD_LOGIC_VECTOR ( 8 downto 0 );
     TRX_rx09_32bits_CD100 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx24_32bits_CD100 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx_clkdiv_16MHz_in : in STD_LOGIC;
+    TRX_rx_rd_data_count : in STD_LOGIC_VECTOR ( 3 downto 0 );
     TRX_tx_DDS0_gpio_ampt : in STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_tx_DDS0_gpio_inc : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_tx_DDS1_gpio_ampt : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_tx_data_count : in STD_LOGIC_VECTOR ( 11 downto 0 );
     TRX_tx_im : in STD_LOGIC_VECTOR ( 12 downto 0 );
     TRX_tx_re : in STD_LOGIC_VECTOR ( 12 downto 0 );
     UART0EXT_CTSn : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -218,12 +220,12 @@ architecture STRUCTURE of msys_wrapper is
     TRX_rx_clkdiv_16MHz_in : in STD_LOGIC;
     TRX_rx24_32bits_CD100 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx09_32bits_CD100 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_rd_data_count_CD100 : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    TRX_rx_rd_data_count : in STD_LOGIC_VECTOR ( 3 downto 0 );
     TRX_clk_trx_26MHz_vio : in STD_LOGIC;
     TRX_clk_trx_pll_25MHz_vio : in STD_LOGIC;
     TRX_tx_re : in STD_LOGIC_VECTOR ( 12 downto 0 );
     TRX_tx_im : in STD_LOGIC_VECTOR ( 12 downto 0 );
-    TRX_data_count : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    TRX_tx_data_count : in STD_LOGIC_VECTOR ( 11 downto 0 );
     TRX_TX_RF09_PULLDATA_FIFO_empty : in STD_LOGIC;
     TRX_decoder_rx09_ch00_squelch_lvl : in STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_tx_DDS0_gpio_inc : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -263,27 +265,8 @@ architecture STRUCTURE of msys_wrapper is
     TRX_RX_PUSHDATA_GPIO1_i : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_RX_PUSHDATA_GPIO2_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_LVDS_tx09_fifo_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
-    DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
-    DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
-    DDR3_SDRAM_addr : out STD_LOGIC_VECTOR ( 14 downto 0 );
-    DDR3_SDRAM_ba : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    DDR3_SDRAM_ras_n : out STD_LOGIC;
-    DDR3_SDRAM_cas_n : out STD_LOGIC;
-    DDR3_SDRAM_we_n : out STD_LOGIC;
-    DDR3_SDRAM_reset_n : out STD_LOGIC;
-    DDR3_SDRAM_ck_p : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_ck_n : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_cke : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK3_sys_diff_clk_p : in STD_LOGIC;
-    CLK3_sys_diff_clk_n : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
+    LVDS_mrk09ok : in STD_LOGIC;
+    LVDS_mrk24ok : in STD_LOGIC;
     qspi_flash_io0_i : in STD_LOGIC;
     qspi_flash_io0_o : out STD_LOGIC;
     qspi_flash_io0_t : out STD_LOGIC;
@@ -299,20 +282,14 @@ architecture STRUCTURE of msys_wrapper is
     qspi_flash_ss_i : in STD_LOGIC;
     qspi_flash_ss_o : out STD_LOGIC;
     qspi_flash_ss_t : out STD_LOGIC;
+    CLK3_sys_diff_clk_p : in STD_LOGIC;
+    CLK3_sys_diff_clk_n : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_t : out STD_LOGIC;
     CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
     CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
-    BOARD_IIC_scl_i : in STD_LOGIC;
-    BOARD_IIC_scl_o : out STD_LOGIC;
-    BOARD_IIC_scl_t : out STD_LOGIC;
-    BOARD_IIC_sda_i : in STD_LOGIC;
-    BOARD_IIC_sda_o : out STD_LOGIC;
-    BOARD_IIC_sda_t : out STD_LOGIC;
-    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
-    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    RMII_PHY_M_0_tx_en : out STD_LOGIC;
-    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
     TRX_CONFIG_SPI_io0_i : in STD_LOGIC;
     TRX_CONFIG_SPI_io0_o : out STD_LOGIC;
     TRX_CONFIG_SPI_io0_t : out STD_LOGIC;
@@ -325,8 +302,35 @@ architecture STRUCTURE of msys_wrapper is
     TRX_CONFIG_SPI_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_CONFIG_SPI_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_CONFIG_SPI_ss_t : out STD_LOGIC;
+    BOARD_IIC_scl_i : in STD_LOGIC;
+    BOARD_IIC_scl_o : out STD_LOGIC;
+    BOARD_IIC_scl_t : out STD_LOGIC;
+    BOARD_IIC_sda_i : in STD_LOGIC;
+    BOARD_IIC_sda_o : out STD_LOGIC;
+    BOARD_IIC_sda_t : out STD_LOGIC;
+    DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
+    DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
+    DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
+    DDR3_SDRAM_addr : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    DDR3_SDRAM_ba : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    DDR3_SDRAM_ras_n : out STD_LOGIC;
+    DDR3_SDRAM_cas_n : out STD_LOGIC;
+    DDR3_SDRAM_we_n : out STD_LOGIC;
+    DDR3_SDRAM_reset_n : out STD_LOGIC;
+    DDR3_SDRAM_ck_p : out STD_LOGIC_VECTOR ( 0 to 0 );
+    DDR3_SDRAM_ck_n : out STD_LOGIC_VECTOR ( 0 to 0 );
+    DDR3_SDRAM_cke : out STD_LOGIC_VECTOR ( 0 to 0 );
+    DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
+    DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
+    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
+    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    RMII_PHY_M_0_tx_en : out STD_LOGIC;
+    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
     CLK2_mgt_clk0_clk_p : in STD_LOGIC;
-    CLK2_mgt_clk0_clk_n : in STD_LOGIC
+    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
+    UART0_rxd : in STD_LOGIC;
+    UART0_txd : out STD_LOGIC
   );
   end component msys;
   component IOBUF is
@@ -471,6 +475,8 @@ msys_i: component msys
       LED_RGB_blue(0) => LED_RGB_blue(0),
       LED_RGB_green(0) => LED_RGB_green(0),
       LED_RGB_red(0) => LED_RGB_red(0),
+      LVDS_mrk09ok => LVDS_mrk09ok,
+      LVDS_mrk24ok => LVDS_mrk24ok,
       LVDS_rx09_synced => LVDS_rx09_synced,
       LVDS_rx24_synced => LVDS_rx24_synced,
       PLL_I2C_ext_scl_o => PLL_I2C_ext_scl_o,
@@ -517,16 +523,16 @@ msys_i: component msys
       TRX_TX_RF09_PULLDATA_FIFO_empty => TRX_TX_RF09_PULLDATA_FIFO_empty,
       TRX_clk_trx_26MHz_vio => TRX_clk_trx_26MHz_vio,
       TRX_clk_trx_pll_25MHz_vio => TRX_clk_trx_pll_25MHz_vio,
-      TRX_data_count(11 downto 0) => TRX_data_count(11 downto 0),
       TRX_decoder_rx09_ch00_squelch_lvl(15 downto 0) => TRX_decoder_rx09_ch00_squelch_lvl(15 downto 0),
       TRX_int => TRX_int,
-      TRX_rd_data_count_CD100(8 downto 0) => TRX_rd_data_count_CD100(8 downto 0),
       TRX_rx09_32bits_CD100(31 downto 0) => TRX_rx09_32bits_CD100(31 downto 0),
       TRX_rx24_32bits_CD100(31 downto 0) => TRX_rx24_32bits_CD100(31 downto 0),
       TRX_rx_clkdiv_16MHz_in => TRX_rx_clkdiv_16MHz_in,
+      TRX_rx_rd_data_count(3 downto 0) => TRX_rx_rd_data_count(3 downto 0),
       TRX_tx_DDS0_gpio_ampt(15 downto 0) => TRX_tx_DDS0_gpio_ampt(15 downto 0),
       TRX_tx_DDS0_gpio_inc(31 downto 0) => TRX_tx_DDS0_gpio_inc(31 downto 0),
       TRX_tx_DDS1_gpio_ampt(15 downto 0) => TRX_tx_DDS1_gpio_ampt(15 downto 0),
+      TRX_tx_data_count(11 downto 0) => TRX_tx_data_count(11 downto 0),
       TRX_tx_im(12 downto 0) => TRX_tx_im(12 downto 0),
       TRX_tx_re(12 downto 0) => TRX_tx_re(12 downto 0),
       UART0EXT_CTSn(0) => UART0EXT_CTSn(0),

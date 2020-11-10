@@ -38,20 +38,24 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity SCOPE_FSM is
   Port ( 
-    reset                       : in  STD_LOGIC;
-    clk                         : in  STD_LOGIC;
-    SCOPE_FSM_GPIO0_Out         : in  STD_LOGIC_VECTOR (31 downto 0);
-    SCOPE_FSM_GPIO1_In          : out STD_LOGIC_VECTOR (31 downto 0);
-    SCOPE_FSM_TrigSrc           : in  STD_LOGIC_VECTOR (47 downto 0);
-    SCOPE_FSM_Timebase_CE       : out STD_LOGIC;
-    SCOPE_FSM_FIFO_Rst          : out STD_LOGIC;
-    SCOPE_FSM_FIFO_wr_rst_busy  : in  STD_LOGIC;
-    SCOPE_FSM_FIFO_rd_rst_busy  : in  STD_LOGIC;
-    SCOPE_FSM_FIFO_WrFull       : in  STD_LOGIC;
-    SCOPE_FSM_FIFO_RdEmpty      : in  STD_LOGIC;
-    SCOPE_FSM_FIFO_WrEn         : out STD_LOGIC;
-    SCOPE_FSM_FIFO_RdEn         : out STD_LOGIC;
-    SCOPE_FSM_FIFO_RdValid      : in  STD_LOGIC
+    clk                             : in    STD_LOGIC;
+    reset                           : in    STD_LOGIC;
+    
+    SCOPE_FSM_GPIO0_Out             : in    STD_LOGIC_VECTOR (31 downto 0);
+    SCOPE_FSM_GPIO1_In              : out   STD_LOGIC_VECTOR (31 downto 0);
+    
+    SCOPE_FSM_TrigSrc               : in    STD_LOGIC_VECTOR (47 downto 0);
+    
+    SCOPE_FSM_Timebase_CE           : out   STD_LOGIC;
+    
+    SCOPE_FSM_FIFO_Rst              : out   STD_LOGIC;
+    SCOPE_FSM_FIFO_wr_rst_busy      : in    STD_LOGIC;
+    SCOPE_FSM_FIFO_rd_rst_busy      : in    STD_LOGIC;
+    SCOPE_FSM_FIFO_WrFull           : in    STD_LOGIC;
+    SCOPE_FSM_FIFO_RdEmpty          : in    STD_LOGIC;
+    SCOPE_FSM_FIFO_WrEn             : out   STD_LOGIC;
+    SCOPE_FSM_FIFO_RdEn             : out   STD_LOGIC;
+    SCOPE_FSM_FIFO_RdValid          : in    STD_LOGIC
   );
 end SCOPE_FSM;
 
@@ -69,6 +73,7 @@ architecture Behavioral of SCOPE_FSM is
 
   signal FSM_state_dbg              : STD_LOGIC_VECTOR (7 downto 0);
   signal ctr                        : STD_LOGIC_VECTOR(15 downto 0);
+  
 begin
 
   -- FSM

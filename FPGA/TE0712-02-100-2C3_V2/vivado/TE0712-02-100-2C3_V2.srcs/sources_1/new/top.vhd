@@ -142,6 +142,8 @@ architecture STRUCTURE of top is
     LED_RGB_blue : out STD_LOGIC_VECTOR ( 0 to 0 );
     LED_RGB_green : out STD_LOGIC_VECTOR ( 0 to 0 );
     LED_RGB_red : out STD_LOGIC_VECTOR ( 0 to 0 );
+    LVDS_mrk09ok : in STD_LOGIC;
+    LVDS_mrk24ok : in STD_LOGIC;
     LVDS_rx09_synced : in STD_LOGIC;
     LVDS_rx24_synced : in STD_LOGIC;
     PLL_I2C_ext_scl_o : out STD_LOGIC;
@@ -180,10 +182,10 @@ architecture STRUCTURE of top is
     TRX_TX_RF09_PULLDATA_FIFO_empty : in STD_LOGIC;
     TRX_clk_trx_26MHz_vio : in STD_LOGIC;
     TRX_clk_trx_pll_25MHz_vio : in STD_LOGIC;
-    TRX_data_count : in STD_LOGIC_VECTOR ( 11 downto 0 );
     TRX_decoder_rx09_ch00_squelch_lvl : in STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_int : in STD_LOGIC;
-    TRX_rd_data_count_CD100 : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    TRX_tx_data_count : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    TRX_rx_rd_data_count : in STD_LOGIC_VECTOR ( 3 downto 0 );
     TRX_rx09_32bits_CD100 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx24_32bits_CD100 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx_clkdiv_16MHz_in : in STD_LOGIC;
@@ -259,33 +261,43 @@ architecture STRUCTURE of top is
   port (
     clk                                                 : in    STD_LOGIC;
     reset                                               : in    STD_LOGIC;
+    
     rotenc_I                                            : in    STD_LOGIC;
     rotenc_Q                                            : in    STD_LOGIC;
+    
     cnt_up_dwn                                          : out   STD_LOGIC;
     cnt_en                                              : out   STD_LOGIC
   );
   end component rotenc_decoder;
   component auto_LVDS_rotate is
   port (
-    reset                                               : in    STD_LOGIC;
     clk                                                 : in    STD_LOGIC;
+    reset                                               : in    STD_LOGIC;
+    
     LVDS09                                              : in    STD_LOGIC_VECTOR ( 31 downto 0 );
     LVDS09_valid                                        : in    STD_LOGIC;
+    
     LVDS24                                              : in    STD_LOGIC_VECTOR ( 31 downto 0 );
     LVDS24_valid                                        : in    STD_LOGIC;
+    
     rot09q                                              : out   STD_LOGIC_VECTOR ( 31 downto 0 );
     rot09vld                                            : out   STD_LOGIC;
+    
     rot24q                                              : out   STD_LOGIC_VECTOR ( 31 downto 0 );
     rot24vld                                            : out   STD_LOGIC;
+    
+    LVDS_mrk09ok                                        : out   STD_LOGIC;
     LVDS_rx09_synced                                    : out   STD_LOGIC;
+    
+    LVDS_mrk24ok                                        : out   STD_LOGIC;
     LVDS_rx24_synced                                    : out   STD_LOGIC
   );
   end component auto_LVDS_rotate;
   component FFT_controller is
   port (
     -- All Clock Domain AXI 100 MHz
-    reset                                               : in    STD_LOGIC;
     clk                                                 : in    STD_LOGIC;
+    reset                                               : in    STD_LOGIC;
 
     rx09_bs_32bits                                      : in    STD_LOGIC_VECTOR ( 31 downto 0 );
     rx09_bs_32bits_vld                                  : in    STD_LOGIC;
@@ -329,14 +341,18 @@ architecture STRUCTURE of top is
   end component FFT_controller;
   component EUI48_FSM is 
   port (
-    reset                                               : in    STD_LOGIC;
     clk                                                 : in    STD_LOGIC;
+    reset                                               : in    STD_LOGIC;
+    
     EUI48_onewire_tri_i                                 : in    STD_LOGIC;
     EUI48_onewire_tri_o                                 : out   STD_LOGIC;
     EUI48_onewire_tri_t                                 : out   STD_LOGIC;
+    
     EUI48_FSM_start                                     : in    STD_LOGIC;
     EUI48_FSM_run                                       : out   STD_LOGIC;
+    
     EUI48_data                                          : out   STD_LOGIC_VECTOR ( 47 downto 0 );
+    
     EUI48_state                                         : out   STD_LOGIC_VECTOR (  7 downto 0 );
     EUI48_abort                                         : out   STD_LOGIC_VECTOR (  7 downto 0 )
   );
@@ -396,7 +412,6 @@ architecture STRUCTURE of top is
     TRX_clk_26MHz : in STD_LOGIC;
     TRX_clk_trx_26MHz_vio : out STD_LOGIC;
     TRX_clk_trx_pll_25MHz_vio : out STD_LOGIC;
-    TRX_data_count : out STD_LOGIC_VECTOR ( 11 downto 0 );
     TRX_dds_tx_rf09_inc : in STD_LOGIC_VECTOR ( 25 downto 0 );
     TRX_dds_tx_rf09_ptt : in STD_LOGIC;
     TRX_decoder_rx09_squelch_lvl : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -407,7 +422,6 @@ architecture STRUCTURE of top is
     TRX_post_fft_mem_a_rx09_EoT : out STD_LOGIC;
     TRX_post_fft_rx09_mem_a_addr : out STD_LOGIC_VECTOR ( 41 downto 0 );
     TRX_pulldata_tx09_byteData : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    TRX_rd_data_count_CD100_o : out STD_LOGIC_VECTOR ( 8 downto 0 );
     TRX_resetn : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rx09_fifo : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -419,6 +433,7 @@ architecture STRUCTURE of top is
     TRX_rx_clkdiv_16MHz : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rx_data_n : in STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_rx_data_p : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    TRX_rx_rd_data_count : out STD_LOGIC_VECTOR ( 3 downto 0 );
     TRX_rx_rf09_Pre_FFT_mem_addrb : in STD_LOGIC_VECTOR ( 10 downto 0 );
     TRX_rx_rf09_ch00_Post_FFT_mem_b_addr : in STD_LOGIC_VECTOR ( 4 downto 0 );
     TRX_rx_rf09_ch00_Post_FFT_mem_b_dout : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -440,6 +455,7 @@ architecture STRUCTURE of top is
     TRX_tx_DDS1_gpio_ampt : out STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_tx_clk_clk_n : out STD_LOGIC;
     TRX_tx_clk_clk_p : out STD_LOGIC;
+    TRX_tx_data_count : out STD_LOGIC_VECTOR ( 11 downto 0 );
     TRX_tx_data_n : out STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_tx_data_p : out STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_tx_im_out : out STD_LOGIC_VECTOR ( 20 downto 8 );
@@ -468,7 +484,9 @@ architecture STRUCTURE of top is
   port (
     clk_100MHz                                          : in    STD_LOGIC;
     reset_100MHz                                        : in    STD_LOGIC;
+    
     TRX_dds_tx_rf09_ptt                                 : in    STD_LOGIC;
+    
     TRX_decoder_rx_rf09_chXX_SoM_frameCtr               : out   STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_decoder_rx_rf09_chXX_active                     : out   STD_LOGIC;
     TRX_decoder_rx_rf09_chXX_center_pos                 : out   STD_LOGIC_VECTOR (  7 downto 0 );
@@ -476,10 +494,12 @@ architecture STRUCTURE of top is
     TRX_decoder_rx_rf09_chXX_sql_open                   : out   STD_LOGIC;
     TRX_decoder_rx_rf09_chXX_squelch_lvl                : in    STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_decoder_rx_rf09_chXX_strength                   : out   STD_LOGIC_VECTOR ( 18 downto 0 );
+    
     TRX_post_fft_rx_rf09_chXX_mem_b_dout                : in    STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_post_fft_rx_rf09_mem_a_EoT                      : in    STD_LOGIC;
     TRX_post_fft_rx_rf09_mem_a_addr                     : in    STD_LOGIC_VECTOR ( 41 downto 0 );
     TRX_post_fft_rx_rf09_chXX_mem_b_addr                : out   STD_LOGIC_VECTOR (  4 downto 0 );
+    
     TRX_pushdata_rx_rf09_chXX_din                       : out   STD_LOGIC_VECTOR (  7 downto 0 );
     TRX_pushdata_rx_rf09_chXX_grant                     : in    STD_LOGIC;
     TRX_pushdata_rx_rf09_chXX_req                       : out   STD_LOGIC;
@@ -490,25 +510,33 @@ architecture STRUCTURE of top is
   port (
     clk_100MHz                                          : in    STD_LOGIC;
     reset_100MHz                                        : in    STD_LOGIC;
+    
     decoder_rx09_chAll_sql_open                         : in    STD_LOGIC_VECTOR(  7 downto 0 );
     decoder_rx09_chAll_active                           : in    STD_LOGIC_VECTOR(  7 downto 0 );
+    
     encoder_pull_FIFO_dump                              : in    STD_LOGIC;
     encoder_pull_do_start                               : in    STD_LOGIC;
     encoder_pull_data_len                               : in    STD_LOGIC_VECTOR(  6 downto 0 );
+    
     pulldata_tx09_en                                    : out   STD_LOGIC;
     pulldata_tx09_byteData                              : in    STD_LOGIC_VECTOR(  7 downto 0 );
+    
     TRX_dds_tx_rf09_inc                                 : out   STD_LOGIC_VECTOR ( 25 downto 0 );
     TRX_dds_tx_rf09_ptt                                 : out   STD_LOGIC
   );
  end component UFBmod_Encoder_wrapper;
   component SCOPE_FSM is
   Port (
-    reset                                               : in    STD_LOGIC;
     clk                                                 : in    STD_LOGIC;
+    reset                                               : in    STD_LOGIC;
+    
     SCOPE_FSM_GPIO0_Out                                 : in    STD_LOGIC_VECTOR ( 31 downto 0 );
     SCOPE_FSM_GPIO1_In                                  : out   STD_LOGIC_VECTOR ( 31 downto 0 );
+    
     SCOPE_FSM_TrigSrc                                   : in    STD_LOGIC_VECTOR ( 47 downto 0 );
+    
     SCOPE_FSM_Timebase_CE                               : out   STD_LOGIC;
+    
     SCOPE_FSM_FIFO_Rst                                  : out   STD_LOGIC;
     SCOPE_FSM_FIFO_wr_rst_busy                          : in    STD_LOGIC;
     SCOPE_FSM_FIFO_rd_rst_busy                          : in    STD_LOGIC;
@@ -543,7 +571,10 @@ architecture STRUCTURE of top is
   
   signal top_FFT_window_coef_rom_rx09 : STD_LOGIC_VECTOR ( 9 downto 0 );
   
+  signal top_LVDS_mrk09ok        : STD_LOGIC;
   signal top_LVDS_rx_rf09_synced : STD_LOGIC;
+  
+  signal top_LVDS_mrk24ok        : STD_LOGIC;
   signal top_LVDS_rx_rf24_synced : STD_LOGIC;
   
   signal top_RF09_framectr : STD_LOGIC_VECTOR ( 29 downto 0 );
@@ -575,8 +606,6 @@ architecture STRUCTURE of top is
   
   signal top_TRX_clk_trx_26MHz_vio : STD_LOGIC;
   signal top_TRX_clk_trx_pll_25MHz_vio : STD_LOGIC;
-  
-  signal top_TRX_data_count : STD_LOGIC_VECTOR ( 11 downto 0 );
   
   signal top_TRX_dds_tx_rf09_inc : STD_LOGIC_VECTOR ( 25 downto 0 );
   signal top_TRX_dds_tx_rf09_ptt : STD_LOGIC;
@@ -700,7 +729,9 @@ architecture STRUCTURE of top is
   signal top_TRX_pre_fft_rx_rf09_mem_b_addr : STD_LOGIC_VECTOR ( 10 downto 0 );
 --signal top_TRX_pre_fft_rx_rf09_mem_b_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
   
-  signal top_TRX_rd_data_count_CD100 : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal top_TRX_tx_data_count              : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal top_TRX_rx_rd_data_count           : STD_LOGIC_VECTOR (  3 downto 0 );
+  
   signal top_TRX_rot09vld : STD_LOGIC;
   signal top_TRX_rot24vld : STD_LOGIC;
   
@@ -763,38 +794,51 @@ EUI_onewire_iobuf_0: component IOBUF
     
 rotenc_decoder_i: component rotenc_decoder
      port map (
-      reset                                                 => top_mig_7series_0_ui_clk_sync_rst,
       clk                                                   => top_microblaze_0_Clk_100MHz,
+      reset                                                 => top_mig_7series_0_ui_clk_sync_rst,
+      
       rotenc_I                                              => BOARD_ROTENC_I,
       rotenc_Q                                              => BOARD_ROTENC_Q,
+      
       cnt_up_dwn                                            => top_rotenc_dec_cnt_up_dwn,
       cnt_en                                                => top_rotenc_dec_cnt_en
     );
     
 auto_LVDS_rotate_i: component auto_LVDS_rotate
     port map (
-      reset                                                 => top_mig_7series_0_ui_clk_sync_rst,
       clk                                                   => top_microblaze_0_Clk_100MHz,
+      reset                                                 => top_mig_7series_0_ui_clk_sync_rst,
+      
       LVDS09                                                => top_TRX_rx_rf09_fifo,
       LVDS09_valid                                          => top_TRX_rx_rf09_fifo_valid,
+      
       LVDS24                                                => top_TRX_rx_rf24_fifo,
       LVDS24_valid                                          => top_TRX_rx_rf24_fifo_valid,
+      
       rot09q                                                => top_TRX_rx_rf09_bs,
       rot09vld                                              => top_TRX_rot09vld,
+      
       rot24q                                                => top_TRX_rx_rf24_bs,
       rot24vld                                              => top_TRX_rot24vld,
+      
+      LVDS_mrk09ok                                          => top_LVDS_mrk09ok,
       LVDS_rx09_synced                                      => top_LVDS_rx_rf09_synced,
+      
+      LVDS_mrk24ok                                          => top_LVDS_mrk24ok,
       LVDS_rx24_synced                                      => top_LVDS_rx_rf24_synced
     );
     
 FFT_controller_i: component FFT_controller
     port map (
-      reset                                                 => top_mig_7series_0_ui_clk_sync_rst,
       clk                                                   => top_microblaze_0_Clk_100MHz,
+      reset                                                 => top_mig_7series_0_ui_clk_sync_rst,
+      
       rx09_bs_32bits                                        => top_TRX_rx_rf09_bs,
       rx09_bs_32bits_vld                                    => top_TRX_rot09vld,
+      
     --rx24_bs_32bits                                        => top_TRX_rx_rf24_bs,
     --rx24_bs_32bits_vld                                    => top_TRX_rot24vld,
+    
       PreMem09_addra                                        => top_TRX_pre_fft_rx_rf09_mem_a_addr,
       PreMem09_wea                                          => top_TRX_pre_fft_rx_rf09_mem_a_we,
       PreMem09_dina                                         => top_TRX_pre_fft_rx_rf09_mem_a_din,
@@ -804,7 +848,7 @@ FFT_controller_i: component FFT_controller
       
       RF09_quarterfrm                                       => top_RF09_quarterfrm,
       RF09_framectr                                         => top_RF09_framectr,
-
+      
     --PreMem24_addra                                        => top_premem_rx24_addra_in,
     --PreMem24_wea                                          => top_premem_rx24_wea_in,
     --PreMem24_dina                                         => top_premem_rx24_dina_in,
@@ -814,7 +858,7 @@ FFT_controller_i: component FFT_controller
       
     --RF24_quarterfrm                                       => top_RF24_quarterfrm,
     --RF24_framectr                                         => top_RF24_framectr,
-
+      
       XFFT09_s_data_tlast                                   => top_TRX_fft_rx_rf09_data_tlast_in,
       XFFT09_s_data_tready                                  => top_TRX_fft_rx_rf09_data_tready_out,
       XFFT09_s_data_tvalid                                  => top_TRX_fft_rx_rf09_data_tvalid_in,
@@ -830,14 +874,18 @@ FFT_controller_i: component FFT_controller
     
 EUI48_FSM_i: component EUI48_FSM
     port map (
-      reset                                                 => top_mig_7series_0_ui_clk_sync_rst,
       clk                                                   => top_microblaze_0_Clk_100MHz,
+      reset                                                 => top_mig_7series_0_ui_clk_sync_rst,
+      
       EUI48_onewire_tri_i                                   => top_EUI48_onewire_tri_i,
       EUI48_onewire_tri_o                                   => top_EUI48_onewire_tri_o,
       EUI48_onewire_tri_t                                   => top_EUI48_onewire_tri_t,
+      
       EUI48_FSM_start                                       => top_EUI48_FSM_start,
       EUI48_FSM_run                                         => top_EUI48_FSM_run,
+      
       EUI48_data                                            => top_EUI48_data(47 downto 0),
+      
       EUI48_state                                           => top_EUI48_state,
       EUI48_abort                                           => top_EUI48_abort
     );
@@ -892,7 +940,6 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       TRX_clk_26MHz                                         => TRX_clk_26MHz,
       TRX_clk_trx_26MHz_vio                                 => top_TRX_clk_trx_26MHz_vio,
       TRX_clk_trx_pll_25MHz_vio                             => top_TRX_clk_trx_pll_25MHz_vio,
-      TRX_data_count                                        => top_TRX_data_count,
       TRX_decoder_rx09_squelch_lvl                          => top_TRX_decoder_rx_rf09_chAll_squelch_lvl,
       TRX_encoder_tx09_pull_FIFO_dump(0)                    => top_TRX_encoder_tx_rf09_pull_FIFO_dump,
       TRX_encoder_tx09_pull_data_len                        => top_TRX_encoder_tx_rf09_pull_data_len,
@@ -901,7 +948,8 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       TRX_post_fft_mem_a_rx09_EoT                           => top_TRX_post_fft_rx_rf09_mem_a_EoT,
       TRX_post_fft_rx09_mem_a_addr                          => top_TRX_post_fft_rx_rf09_mem_a_addr,
       TRX_pulldata_tx09_byteData                            => top_TRX_pulldata_tx_rf09_byteData,
-      TRX_rd_data_count_CD100_o                             => top_TRX_rd_data_count_CD100,
+      TRX_rx_rd_data_count                                  => top_TRX_rx_rd_data_count,
+      TRX_tx_data_count                                     => top_TRX_tx_data_count,
       TRX_resetn(0)                                         => TRX_resetn,
       TRX_rx_clk_64MHz_clk_n                                => TRX_rx_clk_64MHz_clk_n,
       TRX_rx_clk_64MHz_clk_p                                => TRX_rx_clk_64MHz_clk_p,
@@ -967,13 +1015,16 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
     
 UFBmod_Decoder_rx09_ch00_bd: component UFBmod_Decoder_wrapper
     port map (
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
+      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
+      
       TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
       TRX_post_fft_rx_rf09_mem_a_addr                       => top_TRX_post_fft_rx_rf09_mem_a_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_addr                  => top_TRX_post_fft_rx_rf09_ch00_mem_b_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch00_mem_b_dout,
+      
       TRX_decoder_rx_rf09_chXX_SoM_frameCtr                 => top_TRX_decoder_rx_rf09_chXX_SoM_frameCtr,
       TRX_decoder_rx_rf09_chXX_squelch_lvl                  => top_TRX_decoder_rx_rf09_chAll_squelch_lvl,
       TRX_decoder_rx_rf09_chXX_sql_open                     => top_TRX_decoder_rx_rf09_chAll_sql_open(0),
@@ -981,6 +1032,7 @@ UFBmod_Decoder_rx09_ch00_bd: component UFBmod_Decoder_wrapper
       TRX_decoder_rx_rf09_chXX_center_pos                   => top_TRX_decoder_rx_rf09_ch00_center_pos,
       TRX_decoder_rx_rf09_chXX_strength                     => top_TRX_decoder_rx_rf09_ch00_strength,
       TRX_decoder_rx_rf09_chXX_noise                        => top_TRX_decoder_rx_rf09_ch00_noise,
+      
       TRX_pushdata_rx_rf09_chXX_req                         => top_TRX_pushdata_rx_rf09_ch00_req,
       TRX_pushdata_rx_rf09_chXX_grant                       => top_TRX_pushdata_rx_rf09_ch00_grant,
       TRX_pushdata_rx_rf09_chXX_wr_en                       => top_TRX_pushdata_rx_rf09_ch00_wr_en,
@@ -988,19 +1040,23 @@ UFBmod_Decoder_rx09_ch00_bd: component UFBmod_Decoder_wrapper
     );
 UFBmod_Decoder_rx09_ch01_bd: component UFBmod_Decoder_wrapper
     port map (
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
+      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
+      
       TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
       TRX_post_fft_rx_rf09_mem_a_addr                       => top_TRX_post_fft_rx_rf09_mem_a_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_addr                  => top_TRX_post_fft_rx_rf09_ch01_mem_b_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch01_mem_b_dout,
+      
       TRX_decoder_rx_rf09_chXX_active                       => top_TRX_decoder_rx_rf09_chAll_active(1),
       TRX_decoder_rx_rf09_chXX_center_pos                   => top_TRX_decoder_rx_rf09_ch01_center_pos,
       TRX_decoder_rx_rf09_chXX_noise                        => top_TRX_decoder_rx_rf09_ch01_noise,
       TRX_decoder_rx_rf09_chXX_sql_open                     => top_TRX_decoder_rx_rf09_chAll_sql_open(1),
       TRX_decoder_rx_rf09_chXX_squelch_lvl                  => top_TRX_decoder_rx_rf09_chAll_squelch_lvl,
       TRX_decoder_rx_rf09_chXX_strength                     => top_TRX_decoder_rx_rf09_ch01_strength,
+      
       TRX_pushdata_rx_rf09_chXX_req                         => top_TRX_pushdata_rx_rf09_ch01_req,
       TRX_pushdata_rx_rf09_chXX_grant                       => top_TRX_pushdata_rx_rf09_ch01_grant,
       TRX_pushdata_rx_rf09_chXX_wr_en                       => top_TRX_pushdata_rx_rf09_ch01_wr_en,
@@ -1008,19 +1064,23 @@ UFBmod_Decoder_rx09_ch01_bd: component UFBmod_Decoder_wrapper
     );
 UFBmod_Decoder_rx09_ch02_bd: component UFBmod_Decoder_wrapper
     port map (
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
+      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
+      
       TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
       TRX_post_fft_rx_rf09_mem_a_addr                       => top_TRX_post_fft_rx_rf09_mem_a_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_addr                  => top_TRX_post_fft_rx_rf09_ch02_mem_b_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch02_mem_b_dout,
+      
       TRX_decoder_rx_rf09_chXX_active                       => top_TRX_decoder_rx_rf09_chAll_active(2),
       TRX_decoder_rx_rf09_chXX_center_pos                   => top_TRX_decoder_rx_rf09_ch02_center_pos,
       TRX_decoder_rx_rf09_chXX_noise                        => top_TRX_decoder_rx_rf09_ch02_noise,
       TRX_decoder_rx_rf09_chXX_sql_open                     => top_TRX_decoder_rx_rf09_chAll_sql_open(2),
       TRX_decoder_rx_rf09_chXX_squelch_lvl                  => top_TRX_decoder_rx_rf09_chAll_squelch_lvl,
       TRX_decoder_rx_rf09_chXX_strength                     => top_TRX_decoder_rx_rf09_ch02_strength,
+      
       TRX_pushdata_rx_rf09_chXX_req                         => top_TRX_pushdata_rx_rf09_ch02_req,
       TRX_pushdata_rx_rf09_chXX_grant                       => top_TRX_pushdata_rx_rf09_ch02_grant,
       TRX_pushdata_rx_rf09_chXX_wr_en                       => top_TRX_pushdata_rx_rf09_ch02_wr_en,
@@ -1028,19 +1088,23 @@ UFBmod_Decoder_rx09_ch02_bd: component UFBmod_Decoder_wrapper
     );
 UFBmod_Decoder_rx09_ch03_bd: component UFBmod_Decoder_wrapper
     port map (
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
+      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
+      
       TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
       TRX_post_fft_rx_rf09_mem_a_addr                       => top_TRX_post_fft_rx_rf09_mem_a_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_addr                  => top_TRX_post_fft_rx_rf09_ch03_mem_b_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch03_mem_b_dout,
+      
       TRX_decoder_rx_rf09_chXX_active                       => top_TRX_decoder_rx_rf09_chAll_active(3),
       TRX_decoder_rx_rf09_chXX_center_pos                   => top_TRX_decoder_rx_rf09_ch03_center_pos,
       TRX_decoder_rx_rf09_chXX_noise                        => top_TRX_decoder_rx_rf09_ch03_noise,
       TRX_decoder_rx_rf09_chXX_sql_open                     => top_TRX_decoder_rx_rf09_chAll_sql_open(3),
       TRX_decoder_rx_rf09_chXX_squelch_lvl                  => top_TRX_decoder_rx_rf09_chAll_squelch_lvl,
       TRX_decoder_rx_rf09_chXX_strength                     => top_TRX_decoder_rx_rf09_ch03_strength,
+      
       TRX_pushdata_rx_rf09_chXX_req                         => top_TRX_pushdata_rx_rf09_ch03_req,
       TRX_pushdata_rx_rf09_chXX_grant                       => top_TRX_pushdata_rx_rf09_ch03_grant,
       TRX_pushdata_rx_rf09_chXX_wr_en                       => top_TRX_pushdata_rx_rf09_ch03_wr_en,
@@ -1048,19 +1112,23 @@ UFBmod_Decoder_rx09_ch03_bd: component UFBmod_Decoder_wrapper
     );
 UFBmod_Decoder_rx09_ch04_bd: component UFBmod_Decoder_wrapper
     port map (
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
+      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
+      
       TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
       TRX_post_fft_rx_rf09_mem_a_addr                       => top_TRX_post_fft_rx_rf09_mem_a_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_addr                  => top_TRX_post_fft_rx_rf09_ch04_mem_b_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch04_mem_b_dout,
+      
       TRX_decoder_rx_rf09_chXX_active                       => top_TRX_decoder_rx_rf09_chAll_active(4),
       TRX_decoder_rx_rf09_chXX_center_pos                   => top_TRX_decoder_rx_rf09_ch04_center_pos,
       TRX_decoder_rx_rf09_chXX_noise                        => top_TRX_decoder_rx_rf09_ch04_noise,
       TRX_decoder_rx_rf09_chXX_sql_open                     => top_TRX_decoder_rx_rf09_chAll_sql_open(4),
       TRX_decoder_rx_rf09_chXX_squelch_lvl                  => top_TRX_decoder_rx_rf09_chAll_squelch_lvl,
       TRX_decoder_rx_rf09_chXX_strength                     => top_TRX_decoder_rx_rf09_ch04_strength,
+      
       TRX_pushdata_rx_rf09_chXX_req                         => top_TRX_pushdata_rx_rf09_ch04_req,
       TRX_pushdata_rx_rf09_chXX_grant                       => top_TRX_pushdata_rx_rf09_ch04_grant,
       TRX_pushdata_rx_rf09_chXX_wr_en                       => top_TRX_pushdata_rx_rf09_ch04_wr_en,
@@ -1068,19 +1136,23 @@ UFBmod_Decoder_rx09_ch04_bd: component UFBmod_Decoder_wrapper
     );
 UFBmod_Decoder_rx09_ch05_bd: component UFBmod_Decoder_wrapper
     port map (
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
+      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
+      
       TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
       TRX_post_fft_rx_rf09_mem_a_addr                       => top_TRX_post_fft_rx_rf09_mem_a_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_addr                  => top_TRX_post_fft_rx_rf09_ch05_mem_b_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch05_mem_b_dout,
+      
       TRX_decoder_rx_rf09_chXX_active                       => top_TRX_decoder_rx_rf09_chAll_active(5),
       TRX_decoder_rx_rf09_chXX_center_pos                   => top_TRX_decoder_rx_rf09_ch05_center_pos,
       TRX_decoder_rx_rf09_chXX_noise                        => top_TRX_decoder_rx_rf09_ch05_noise,
       TRX_decoder_rx_rf09_chXX_sql_open                     => top_TRX_decoder_rx_rf09_chAll_sql_open(5),
       TRX_decoder_rx_rf09_chXX_squelch_lvl                  => top_TRX_decoder_rx_rf09_chAll_squelch_lvl,
       TRX_decoder_rx_rf09_chXX_strength                     => top_TRX_decoder_rx_rf09_ch05_strength,
+      
       TRX_pushdata_rx_rf09_chXX_req                         => top_TRX_pushdata_rx_rf09_ch05_req,
       TRX_pushdata_rx_rf09_chXX_grant                       => top_TRX_pushdata_rx_rf09_ch05_grant,
       TRX_pushdata_rx_rf09_chXX_wr_en                       => top_TRX_pushdata_rx_rf09_ch05_wr_en,
@@ -1088,19 +1160,23 @@ UFBmod_Decoder_rx09_ch05_bd: component UFBmod_Decoder_wrapper
     );
 UFBmod_Decoder_rx09_ch06_bd: component UFBmod_Decoder_wrapper
     port map (
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
+      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
+      
       TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
       TRX_post_fft_rx_rf09_mem_a_addr                       => top_TRX_post_fft_rx_rf09_mem_a_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_addr                  => top_TRX_post_fft_rx_rf09_ch06_mem_b_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch06_mem_b_dout,
+      
       TRX_decoder_rx_rf09_chXX_active                       => top_TRX_decoder_rx_rf09_chAll_active(6),
       TRX_decoder_rx_rf09_chXX_center_pos                   => top_TRX_decoder_rx_rf09_ch06_center_pos,
       TRX_decoder_rx_rf09_chXX_noise                        => top_TRX_decoder_rx_rf09_ch06_noise,
       TRX_decoder_rx_rf09_chXX_sql_open                     => top_TRX_decoder_rx_rf09_chAll_sql_open(6),
       TRX_decoder_rx_rf09_chXX_squelch_lvl                  => top_TRX_decoder_rx_rf09_chAll_squelch_lvl,
       TRX_decoder_rx_rf09_chXX_strength                     => top_TRX_decoder_rx_rf09_ch06_strength,
+      
       TRX_pushdata_rx_rf09_chXX_req                         => top_TRX_pushdata_rx_rf09_ch06_req,
       TRX_pushdata_rx_rf09_chXX_grant                       => top_TRX_pushdata_rx_rf09_ch06_grant,
       TRX_pushdata_rx_rf09_chXX_wr_en                       => top_TRX_pushdata_rx_rf09_ch06_wr_en,
@@ -1108,19 +1184,23 @@ UFBmod_Decoder_rx09_ch06_bd: component UFBmod_Decoder_wrapper
     );
 UFBmod_Decoder_rx09_ch07_bd: component UFBmod_Decoder_wrapper
     port map (
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
+      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
+      
       TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
       TRX_post_fft_rx_rf09_mem_a_addr                       => top_TRX_post_fft_rx_rf09_mem_a_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_addr                  => top_TRX_post_fft_rx_rf09_ch07_mem_b_addr,
       TRX_post_fft_rx_rf09_chXX_mem_b_dout                  => top_TRX_post_fft_rx_rf09_ch07_mem_b_dout,
+      
       TRX_decoder_rx_rf09_chXX_active                       => top_TRX_decoder_rx_rf09_chAll_active(7),
       TRX_decoder_rx_rf09_chXX_center_pos                   => top_TRX_decoder_rx_rf09_ch07_center_pos,
       TRX_decoder_rx_rf09_chXX_noise                        => top_TRX_decoder_rx_rf09_ch07_noise,
       TRX_decoder_rx_rf09_chXX_sql_open                     => top_TRX_decoder_rx_rf09_chAll_sql_open(7),
       TRX_decoder_rx_rf09_chXX_squelch_lvl                  => top_TRX_decoder_rx_rf09_chAll_squelch_lvl,
       TRX_decoder_rx_rf09_chXX_strength                     => top_TRX_decoder_rx_rf09_ch07_strength,
+      
       TRX_pushdata_rx_rf09_chXX_req                         => top_TRX_pushdata_rx_rf09_ch07_req,
       TRX_pushdata_rx_rf09_chXX_grant                       => top_TRX_pushdata_rx_rf09_ch07_grant,
       TRX_pushdata_rx_rf09_chXX_wr_en                       => top_TRX_pushdata_rx_rf09_ch07_wr_en,
@@ -1129,27 +1209,35 @@ UFBmod_Decoder_rx09_ch07_bd: component UFBmod_Decoder_wrapper
     
 UFBmod_Encoder_bd: component UFBmod_Encoder_wrapper
     port map (
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
+      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      
       decoder_rx09_chAll_sql_open                           => top_TRX_decoder_rx_rf09_chAll_sql_open,
       decoder_rx09_chAll_active                             => top_TRX_decoder_rx_rf09_chAll_active,
+      
       encoder_pull_FIFO_dump                                => top_TRX_encoder_tx_rf09_pull_FIFO_dump,
       encoder_pull_do_start                                 => top_TRX_encoder_tx_rf09_pull_do_start,
       encoder_pull_data_len                                 => top_TRX_encoder_tx_rf09_pull_data_len,
+      
       pulldata_tx09_en                                      => top_TRX_pulldata_tx_rf09_en,
       pulldata_tx09_byteData                                => top_TRX_pulldata_tx_rf09_byteData,
+      
       TRX_dds_tx_rf09_inc                                   => top_TRX_dds_tx_rf09_inc,
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt
     );
     
 SCOPE_FSM_i: component SCOPE_FSM
     port map (
-      reset                                                 => top_mig_7series_0_ui_clk_sync_rst,
       clk                                                   => top_microblaze_0_Clk_100MHz,
+      reset                                                 => top_mig_7series_0_ui_clk_sync_rst,
+      
       SCOPE_FSM_GPIO0_Out                                   => top_SCOPE_FSM_GPIO0_Out,
       SCOPE_FSM_GPIO1_In                                    => top_SCOPE_FSM_GPIO1_In,
+      
       SCOPE_FSM_TrigSrc                                     => top_SCOPE_FSM_TrigSrc,
+      
       SCOPE_FSM_Timebase_CE                                 => top_SCOPE_FSM_Timebase_CE,
+      
       SCOPE_FSM_FIFO_Rst                                    => top_SCOPE_FSM_FIFO_Rst,
       SCOPE_FSM_FIFO_wr_rst_busy                            => top_SCOPE_FSM_FIFO_wr_rst_busy,
       SCOPE_FSM_FIFO_rd_rst_busy                            => top_SCOPE_FSM_FIFO_rd_rst_busy,
@@ -1200,7 +1288,9 @@ msys_bd: component msys_wrapper
       LED_RGB_blue(0)                                       => LED_RGB_blue,
       LED_RGB_green(0)                                      => LED_RGB_green,
       LED_RGB_red(0)                                        => LED_RGB_red,
+      LVDS_mrk09ok                                          => top_LVDS_mrk09ok,
       LVDS_rx09_synced                                      => top_LVDS_rx_rf09_synced,
+      LVDS_mrk24ok                                          => top_LVDS_mrk24ok,
       LVDS_rx24_synced                                      => top_LVDS_rx_rf24_synced,
       PLL_I2C_ext_scl_o                                     => PLL_I2C_ext_scl_o,
       PLL_I2C_ext_sda                                       => PLL_I2C_ext_sda,
@@ -1232,12 +1322,12 @@ msys_bd: component msys_wrapper
       TRX_TX_RF09_PULLDATA_FIFO_empty                       => top_TRX_pulldata_tx_rf09_FIFO_empty,
       TRX_clk_trx_26MHz_vio                                 => top_TRX_clk_trx_26MHz_vio,
       TRX_clk_trx_pll_25MHz_vio                             => top_TRX_clk_trx_pll_25MHz_vio,
-      TRX_data_count                                        => top_TRX_data_count,
       TRX_decoder_rx09_ch00_squelch_lvl                     => top_TRX_decoder_rx_rf09_chAll_squelch_lvl,
       TRX_int                                               => TRX_int,
-      TRX_rd_data_count_CD100                               => top_TRX_rd_data_count_CD100,
-      TRX_rx09_32bits_CD100                                 => top_TRX_rx_rf09_fifo,
-      TRX_rx24_32bits_CD100                                 => top_TRX_rx_rf09_fifo,
+      TRX_tx_data_count                                     => top_TRX_tx_data_count,
+      TRX_rx_rd_data_count                                  => top_TRX_rx_rd_data_count,
+      TRX_rx09_32bits_CD100                                 => top_TRX_rx_rf09_bs,
+      TRX_rx24_32bits_CD100                                 => top_TRX_rx_rf24_bs,
       TRX_rx_clkdiv_16MHz_in                                => top_TRX_rx_clkdiv_16MHz,
       TRX_LVDS_tx09_fifo_din                                => top_TRX_LVDS_tx09_fifo_din,
       TRX_TX_DDS_GPIO1_i                                    => top_TRX_TX_DDS_GPIO1_i,
