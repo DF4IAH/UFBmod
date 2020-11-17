@@ -43,7 +43,6 @@ static XGpio 		gpio_TRX_DDS;
 static XGpio 		gpio_TRX_AMPT;
 static XGpio 		gpio_TRX_PUSHDATA;
 
-static XSpi_Config* spiTrxPtr;			/* Pointer to Transceiver chip */
 static XSpi  		spiTrxInstance;
 
 /*
@@ -2583,6 +2582,7 @@ void taskTrx(void* pvParameters)
 
 	/* Init SPI */
 	{
+#if 0
 		/* Set up the device in loopback mode and enable master mode */
 		spiTrxPtr = XSpi_LookupConfig(XPAR_AXI_TRX_TRX_CONFIG_QUAD_SPI_0_DEVICE_ID);
 		if (spiTrxPtr == NULL) {
@@ -2590,6 +2590,9 @@ void taskTrx(void* pvParameters)
 		}
 
 		int status = XSpi_CfgInitialize(&spiTrxInstance, spiTrxPtr, spiTrxPtr->BaseAddress);
+#else
+		int status = XSpi_CfgInitialize(&spiTrxInstance, XPAR_AXI_TRX_TRX_CONFIG_QUAD_SPI_0_DEVICE_ID);
+#endif
 		if (status != XST_SUCCESS) {
 #ifdef LOGGING
 			xil_printf("TaskTrx: *** SPI init error 1\r\n");

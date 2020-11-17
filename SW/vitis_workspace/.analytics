@@ -3511,3 +3511,24 @@ timestamp=[2020-11-17 15:12:02], mode=BUILD, duration=0:00:00.766, duration_ms=7
 timestamp=[2020-11-17 15:14:51], mode=BUILD, duration=0:00:01.391, duration_ms=1391, data={name=rtos, configuration=Debug, clean_build=false}
 timestamp=[2020-11-17 15:17:08], mode=BUILD, duration=0:00:00.765, duration_ms=765, data={name=rtos, configuration=Debug, clean_build=false}
 timestamp=[2020-11-17 15:19:52], mode=BUILD, duration=0:00:00.750, duration_ms=750, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:23:50], mode=WORKBENCH_START, duration=0:00:13.404, duration_ms=13404, data={}
+timestamp=[2020-11-17 15:23:50], mode=WORKBENCH_UI_INIT, duration=0:00:00.906, duration_ms=906, data={editors_count=4, platform_editors_count=0, projects_count=18, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,TE0712_02_DF4IAH,boot,boot_system,exp_echo,rtos,rtos_Traces,rtos_system,srec_loader,srec_loader_system,xemaclite_ping_reply_example_1,xemaclite_ping_req_example_1,xemaclite_polled_example_1,xemaclite_selftest_example_1,xgpio_low_level_example_1,xiic_low_level_eeprom_example_1,xiic_low_level_tempsensor_example_1,xiic_tempsensor_example_1}
+timestamp=[2020-11-17 15:23:52], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.062, duration_ms=62, data={}
+timestamp=[2020-11-17 15:29:11], mode=BUILD, duration=0:00:00.235, duration_ms=235, data={name=rtos, configuration=Debug, clean_build=true}
+timestamp=[2020-11-17 15:29:16], mode=BUILD, duration=0:00:04.093, duration_ms=4093, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:29:57], mode=BUILD, duration=0:00:00.188, duration_ms=188, data={name=rtos, configuration=Debug, clean_build=true}
+timestamp=[2020-11-17 15:29:59], mode=BUILD, duration=0:00:01.360, duration_ms=1360, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:30:18], mode=BUILD, duration=0:00:00.860, duration_ms=860, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:30:53], mode=BUILD, duration=0:00:00.594, duration_ms=594, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:31:41], mode=BUILD, duration=0:00:00.735, duration_ms=735, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:32:24], mode=BUILD, duration=0:00:00.704, duration_ms=704, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:35:07], mode=BUILD, duration=0:00:01.016, duration_ms=1016, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:36:38], mode=BUILD, duration=0:00:00.908, duration_ms=908, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:41:26], mode=BUILD, duration=0:00:00.891, duration_ms=891, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:42:03], mode=BUILD, duration=0:00:00.391, duration_ms=391, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:42:16], mode=BUILD, duration=0:00:00.422, duration_ms=422, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:42:28], mode=BUILD, duration=0:00:00.406, duration_ms=406, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:49:41], mode=BUILD, duration=0:00:01.172, duration_ms=1172, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:49:53], mode=BUILD, duration=0:00:00.390, duration_ms=390, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:54:50], mode=BUILD, duration=0:00:00.890, duration_ms=890, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-17 15:55:29], mode=BUILD, duration=0:00:00.985, duration_ms=985, data={name=rtos, configuration=Debug, clean_build=false}
