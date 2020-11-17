@@ -96,7 +96,7 @@ begin
                 when get_new_frequency =>
                     -- DDS step: 0.95367431640625 Hz = (1 / 2^26) * (16 MHz / 4)
                     -- 1 channel step = 3906.25 Hz => 4 x 16384 DDS-increment steps
-                    -- max. 16 us for 32 channel inc/dec. <-->  100 clocks for 32768 steps => abt. 328 steps per 100 MHz clock
+                    -- max. 8 us for 32 channel inc/dec. <-->  0.04 channeles per 100 clock => abt. 2621 steps per 100 MHz clock
                     -- LVDS 4 MSPS = 1/4 x 16 MHz
                     if (dds_new_freq /= dds_current_freq) then
                         if (dds_new_freq > dds_current_freq) then
@@ -111,7 +111,7 @@ begin
                     end if;
                     
                 when freq_inc =>
-                    dds_current_inc := dds_current_inc + 328;                   -- 8 us  of  64 us  'normal' variant, 1 / 8th of the quarterframe duration
+                    dds_current_inc := dds_current_inc + 2621;                   -- 8 us  of  64 us  'normal' variant, 1 / 8th of the quarterframe duration
                     dds_tx09_inc        <= std_logic_vector(to_unsigned(dds_current_inc, dds_tx09_inc'length));
                     
                     if (dds_current_inc >= dds_new_inc) then
@@ -121,7 +121,7 @@ begin
                     end if;
                     
                 when freq_dec =>
-                  dds_current_inc   := dds_current_inc - 328;
+                  dds_current_inc   := dds_current_inc - 2621;
                     dds_tx09_inc        <= std_logic_vector(to_unsigned(dds_current_inc, dds_tx09_inc'length));
                     
                     if (dds_current_inc <= dds_new_inc) then
@@ -178,8 +178,8 @@ begin
   --variable C_fin_ary                              : T_fin_ary := (C_fin_0, C_fin_1, C_fin_2, C_fin_3, C_fin_4, C_fin_5, C_fin_6, C_fin_7);
     
     
-  --constant C_128us_loopcnt                        : Integer := 12800;
-    constant C_128us_loopcnt                        : Integer := (12800 * 328);     -- Debugging purposes
+    constant C_128us_loopcnt                        : Integer := 12800;
+  --constant C_128us_loopcnt                        : Integer := (12800 * 328);     -- Debugging purposes
     
     type StateType                                  is (
                                                         init, loop_start,

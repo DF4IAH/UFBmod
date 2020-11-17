@@ -3620,12 +3620,12 @@
       <spirit:modelParameter spirit:dataType="std_logic_vector">
         <spirit:name>C_MASK</spirit:name>
         <spirit:displayName>SLMB Address Decode Mask</spirit:displayName>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_MASK" spirit:bitStringLength="64">0x0000000040000000</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_MASK" spirit:bitStringLength="64">0x0000000001000000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="std_logic_vector">
         <spirit:name>C_MASK1</spirit:name>
         <spirit:displayName>SLMB1 Address Decode Mask</spirit:displayName>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_MASK1" spirit:bitStringLength="64">0x0000000040000000</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_MASK1" spirit:bitStringLength="64">0x0000000001000000</spirit:value>
         <spirit:vendorExtensions>
           <xilinx:parameterInfo>
             <xilinx:enablement>
@@ -3908,7 +3908,7 @@
     <spirit:parameter>
       <spirit:name>C_MASK</spirit:name>
       <spirit:displayName>SLMB Address Decode Mask</spirit:displayName>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.C_MASK" spirit:order="1300" spirit:configGroups="1 Addresses" spirit:bitStringLength="64">0x0000000040000000</spirit:value>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.C_MASK" spirit:order="1300" spirit:configGroups="1 Addresses" spirit:bitStringLength="64">0x0000000001000000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -3920,7 +3920,7 @@
     <spirit:parameter>
       <spirit:name>C_MASK1</spirit:name>
       <spirit:displayName>SLMB1 Address Decode Mask</spirit:displayName>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.C_MASK1" spirit:order="1400" spirit:configGroups="1 Addresses" spirit:bitStringLength="64">0x0000000040000000</spirit:value>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.C_MASK1" spirit:order="1400" spirit:configGroups="1 Addresses" spirit:bitStringLength="64">0x0000000001000000</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>

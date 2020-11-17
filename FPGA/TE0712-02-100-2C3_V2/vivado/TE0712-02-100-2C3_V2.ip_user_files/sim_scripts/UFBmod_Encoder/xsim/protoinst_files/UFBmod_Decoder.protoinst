@@ -1,9 +1,0 @@
-{
-	"version": "1.0",
-	"modules": {
-		"UFBmod_Decoder": {
-			"proto_instances": {
-			}
-		}
-	}
-}

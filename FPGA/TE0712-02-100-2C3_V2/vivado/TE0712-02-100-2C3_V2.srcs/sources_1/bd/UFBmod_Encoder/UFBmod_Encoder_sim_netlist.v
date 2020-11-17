@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-// Date        : Mon Nov  9 21:54:16 2020
+// Date        : Tue Nov 10 10:58:47 2020
 // Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod_Encoder/UFBmod_Encoder_sim_netlist.v
@@ -94,9 +94,8 @@ module UFBmod_Encoder_UFBmod_Encoder_UFBmod_tx09_Encoder_0_0
   output [25:0]dds_tx09_inc;
   output dds_tx09_ptt;
 
-  wire \<const0> ;
   wire clk;
-  wire [25:2]\^dds_tx09_inc ;
+  wire [25:0]dds_tx09_inc;
   wire dds_tx09_ptt;
   wire [7:0]decoder_rx09_chAll_active;
   wire [7:0]decoder_rx09_chAll_sql_open;
@@ -107,14 +106,10 @@ module UFBmod_Encoder_UFBmod_Encoder_UFBmod_tx09_Encoder_0_0
   wire pulldata_tx09_en;
   wire reset;
 
-  assign dds_tx09_inc[25:2] = \^dds_tx09_inc [25:2];
-  assign dds_tx09_inc[1] = \<const0> ;
-  assign dds_tx09_inc[0] = \<const0> ;
-  GND GND
-       (.G(\<const0> ));
   UFBmod_Encoder_UFBmod_tx09_Encoder_FSM U0
        (.clk(clk),
-        .dds_tx09_inc(\^dds_tx09_inc ),
+        .dds_tx09_inc(dds_tx09_inc[25:1]),
+        .\dds_tx09_inc_reg[0]_0 (dds_tx09_inc[0]),
         .dds_tx09_ptt(dds_tx09_ptt),
         .decoder_rx09_chAll_active(decoder_rx09_chAll_active),
         .decoder_rx09_chAll_sql_open(decoder_rx09_chAll_sql_open),
@@ -128,7 +123,8 @@ endmodule
 
 (* ORIG_REF_NAME = "UFBmod_tx09_Encoder_FSM" *) 
 module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
-   (dds_tx09_inc,
+   (\dds_tx09_inc_reg[0]_0 ,
+    dds_tx09_inc,
     pulldata_tx09_en,
     dds_tx09_ptt,
     reset,
@@ -139,7 +135,8 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
     encoder_pull_data_len,
     decoder_rx09_chAll_active,
     decoder_rx09_chAll_sql_open);
-  output [23:0]dds_tx09_inc;
+  output \dds_tx09_inc_reg[0]_0 ;
+  output [24:0]dds_tx09_inc;
   output pulldata_tx09_en;
   output dds_tx09_ptt;
   input reset;
@@ -210,12 +207,11 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   wire \dds_new_inc_reg_n_0_[18] ;
   wire \dds_new_inc_reg_n_0_[19] ;
   wire \dds_new_inc_reg_n_0_[20] ;
-  wire [23:0]dds_tx09_inc;
+  wire [24:0]dds_tx09_inc;
   wire dds_tx09_inc1_carry__0_i_1_n_0;
   wire dds_tx09_inc1_carry__0_i_2_n_0;
   wire dds_tx09_inc1_carry__0_i_3_n_0;
   wire dds_tx09_inc1_carry__0_i_4_n_0;
-  wire dds_tx09_inc1_carry__0_i_5_n_0;
   wire dds_tx09_inc1_carry__0_n_0;
   wire dds_tx09_inc1_carry__0_n_1;
   wire dds_tx09_inc1_carry__0_n_2;
@@ -226,6 +222,7 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   wire dds_tx09_inc1_carry__1_i_4_n_0;
   wire dds_tx09_inc1_carry__1_i_5_n_0;
   wire dds_tx09_inc1_carry__1_i_6_n_0;
+  wire dds_tx09_inc1_carry__1_i_7_n_0;
   wire dds_tx09_inc1_carry__1_n_0;
   wire dds_tx09_inc1_carry__1_n_1;
   wire dds_tx09_inc1_carry__1_n_2;
@@ -233,6 +230,8 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   wire dds_tx09_inc1_carry__2_i_1_n_0;
   wire dds_tx09_inc1_carry__2_i_2_n_0;
   wire dds_tx09_inc1_carry__2_i_3_n_0;
+  wire dds_tx09_inc1_carry__2_i_4_n_0;
+  wire dds_tx09_inc1_carry__2_n_0;
   wire dds_tx09_inc1_carry__2_n_1;
   wire dds_tx09_inc1_carry__2_n_2;
   wire dds_tx09_inc1_carry__2_n_3;
@@ -252,6 +251,7 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   wire \dds_tx09_inc1_inferred__0/i__carry__1_n_1 ;
   wire \dds_tx09_inc1_inferred__0/i__carry__1_n_2 ;
   wire \dds_tx09_inc1_inferred__0/i__carry__1_n_3 ;
+  wire \dds_tx09_inc1_inferred__0/i__carry__2_n_0 ;
   wire \dds_tx09_inc1_inferred__0/i__carry__2_n_1 ;
   wire \dds_tx09_inc1_inferred__0/i__carry__2_n_2 ;
   wire \dds_tx09_inc1_inferred__0/i__carry__2_n_3 ;
@@ -261,6 +261,7 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   wire \dds_tx09_inc1_inferred__0/i__carry_n_3 ;
   wire dds_tx09_inc2_carry__0_i_1_n_0;
   wire dds_tx09_inc2_carry__0_i_2_n_0;
+  wire dds_tx09_inc2_carry__0_i_3_n_0;
   wire dds_tx09_inc2_carry__0_n_0;
   wire dds_tx09_inc2_carry__0_n_1;
   wire dds_tx09_inc2_carry__0_n_2;
@@ -271,8 +272,6 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   wire dds_tx09_inc2_carry__0_n_7;
   wire dds_tx09_inc2_carry__1_i_1_n_0;
   wire dds_tx09_inc2_carry__1_i_2_n_0;
-  wire dds_tx09_inc2_carry__1_i_3_n_0;
-  wire dds_tx09_inc2_carry__1_i_4_n_0;
   wire dds_tx09_inc2_carry__1_n_0;
   wire dds_tx09_inc2_carry__1_n_1;
   wire dds_tx09_inc2_carry__1_n_2;
@@ -331,12 +330,13 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   wire dds_tx09_inc2_carry__5_n_7;
   wire dds_tx09_inc2_carry__6_i_1_n_0;
   wire dds_tx09_inc2_carry__6_i_2_n_0;
+  wire dds_tx09_inc2_carry__6_i_3_n_0;
+  wire dds_tx09_inc2_carry__6_n_2;
   wire dds_tx09_inc2_carry__6_n_3;
+  wire dds_tx09_inc2_carry__6_n_5;
   wire dds_tx09_inc2_carry__6_n_6;
   wire dds_tx09_inc2_carry__6_n_7;
   wire dds_tx09_inc2_carry_i_1_n_0;
-  wire dds_tx09_inc2_carry_i_2_n_0;
-  wire dds_tx09_inc2_carry_i_3_n_0;
   wire dds_tx09_inc2_carry_n_0;
   wire dds_tx09_inc2_carry_n_1;
   wire dds_tx09_inc2_carry_n_2;
@@ -393,7 +393,9 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   wire \dds_tx09_inc2_inferred__0/i__carry__5_n_5 ;
   wire \dds_tx09_inc2_inferred__0/i__carry__5_n_6 ;
   wire \dds_tx09_inc2_inferred__0/i__carry__5_n_7 ;
+  wire \dds_tx09_inc2_inferred__0/i__carry__6_n_2 ;
   wire \dds_tx09_inc2_inferred__0/i__carry__6_n_3 ;
+  wire \dds_tx09_inc2_inferred__0/i__carry__6_n_5 ;
   wire \dds_tx09_inc2_inferred__0/i__carry__6_n_6 ;
   wire \dds_tx09_inc2_inferred__0/i__carry__6_n_7 ;
   wire \dds_tx09_inc2_inferred__0/i__carry_n_0 ;
@@ -403,6 +405,8 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   wire \dds_tx09_inc2_inferred__0/i__carry_n_4 ;
   wire \dds_tx09_inc2_inferred__0/i__carry_n_5 ;
   wire \dds_tx09_inc2_inferred__0/i__carry_n_6 ;
+  wire \dds_tx09_inc2_inferred__0/i__carry_n_7 ;
+  wire \dds_tx09_inc[0]_i_1_n_0 ;
   wire \dds_tx09_inc[10]_i_1_n_0 ;
   wire \dds_tx09_inc[11]_i_1_n_0 ;
   wire \dds_tx09_inc[12]_i_1_n_0 ;
@@ -417,6 +421,7 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   wire \dds_tx09_inc[18]_i_2_n_0 ;
   wire \dds_tx09_inc[19]_i_1_n_0 ;
   wire \dds_tx09_inc[19]_i_2_n_0 ;
+  wire \dds_tx09_inc[1]_i_1_n_0 ;
   wire \dds_tx09_inc[20]_i_1_n_0 ;
   wire \dds_tx09_inc[20]_i_2_n_0 ;
   wire \dds_tx09_inc[21]_i_1_n_0 ;
@@ -433,6 +438,7 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   wire \dds_tx09_inc[7]_i_1_n_0 ;
   wire \dds_tx09_inc[8]_i_1_n_0 ;
   wire \dds_tx09_inc[9]_i_1_n_0 ;
+  wire \dds_tx09_inc_reg[0]_0 ;
   wire dds_tx09_ptt;
   wire dds_tx09_ptt0__14;
   wire dds_tx09_ptt_i_1_n_0;
@@ -493,7 +499,6 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   wire \encoder_tx09_in_vec[1]_i_1_n_0 ;
   wire i__carry__0_i_1__0_n_0;
   wire i__carry__0_i_1_n_0;
-  wire i__carry__0_i_2__0_n_0;
   wire i__carry__0_i_2_n_0;
   wire i__carry__0_i_3_n_0;
   wire i__carry__0_i_4_n_0;
@@ -501,7 +506,9 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   wire i__carry__0_i_6_n_0;
   wire i__carry__0_i_7_n_0;
   wire i__carry__0_i_8_n_0;
+  wire i__carry__1_i_1__0_n_0;
   wire i__carry__1_i_1_n_0;
+  wire i__carry__1_i_2__0_n_0;
   wire i__carry__1_i_2_n_0;
   wire i__carry__1_i_3_n_0;
   wire i__carry__1_i_4_n_0;
@@ -515,12 +522,16 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   wire i__carry__2_i_4_n_0;
   wire i__carry__2_i_5_n_0;
   wire i__carry__2_i_6_n_0;
+  wire i__carry__2_i_7_n_0;
+  wire i__carry__2_i_8_n_0;
   wire i__carry_i_1__0_n_0;
   wire i__carry_i_1__1_n_0;
   wire i__carry_i_1_n_0;
   wire i__carry_i_2__0_n_0;
+  wire i__carry_i_2__1_n_0;
   wire i__carry_i_2_n_0;
   wire i__carry_i_3__0_n_0;
+  wire i__carry_i_3__1_n_0;
   wire i__carry_i_3_n_0;
   wire i__carry_i_4__0_n_0;
   wire i__carry_i_4_n_0;
@@ -725,18 +736,15 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   wire [3:0]NLW_dds_tx09_inc1_carry_O_UNCONNECTED;
   wire [3:0]NLW_dds_tx09_inc1_carry__0_O_UNCONNECTED;
   wire [3:0]NLW_dds_tx09_inc1_carry__1_O_UNCONNECTED;
-  wire [3:3]NLW_dds_tx09_inc1_carry__2_CO_UNCONNECTED;
   wire [3:0]NLW_dds_tx09_inc1_carry__2_O_UNCONNECTED;
   wire [3:0]\NLW_dds_tx09_inc1_inferred__0/i__carry_O_UNCONNECTED ;
   wire [3:0]\NLW_dds_tx09_inc1_inferred__0/i__carry__0_O_UNCONNECTED ;
   wire [3:0]\NLW_dds_tx09_inc1_inferred__0/i__carry__1_O_UNCONNECTED ;
-  wire [3:3]\NLW_dds_tx09_inc1_inferred__0/i__carry__2_CO_UNCONNECTED ;
   wire [3:0]\NLW_dds_tx09_inc1_inferred__0/i__carry__2_O_UNCONNECTED ;
-  wire [3:1]NLW_dds_tx09_inc2_carry__6_CO_UNCONNECTED;
-  wire [3:2]NLW_dds_tx09_inc2_carry__6_O_UNCONNECTED;
-  wire [0:0]\NLW_dds_tx09_inc2_inferred__0/i__carry_O_UNCONNECTED ;
-  wire [3:1]\NLW_dds_tx09_inc2_inferred__0/i__carry__6_CO_UNCONNECTED ;
-  wire [3:2]\NLW_dds_tx09_inc2_inferred__0/i__carry__6_O_UNCONNECTED ;
+  wire [3:2]NLW_dds_tx09_inc2_carry__6_CO_UNCONNECTED;
+  wire [3:3]NLW_dds_tx09_inc2_carry__6_O_UNCONNECTED;
+  wire [3:2]\NLW_dds_tx09_inc2_inferred__0/i__carry__6_CO_UNCONNECTED ;
+  wire [3:3]\NLW_dds_tx09_inc2_inferred__0/i__carry__6_O_UNCONNECTED ;
   wire [3:2]NLW_loop_cnt0_carry__6_CO_UNCONNECTED;
   wire [3:3]NLW_loop_cnt0_carry__6_O_UNCONNECTED;
   wire [3:3]\NLW_state1_inferred__0/i__carry_CO_UNCONNECTED ;
@@ -888,61 +896,61 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
     .INIT(64'h0020AA2000200020)) 
     \dds_current_inc[26]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__5_n_7 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__5_n_6 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__5_n_7),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__5_n_6),
         .O(p_1_in[26]));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_current_inc[27]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__5_n_6 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__5_n_5 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__5_n_6),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__5_n_5),
         .O(p_1_in[27]));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_current_inc[28]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__5_n_5 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__5_n_4 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__5_n_5),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__5_n_4),
         .O(p_1_in[28]));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_current_inc[29]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__5_n_4 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__6_n_7 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__5_n_4),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__6_n_7),
         .O(p_1_in[29]));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_current_inc[30]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__6_n_7 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__6_n_6 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__6_n_7),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__6_n_6),
         .O(p_1_in[30]));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_current_inc[31]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__6_n_6 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__6_n_5 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__6_n_6),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__6_n_5),
         .O(p_1_in[31]));
   FDRE \dds_current_inc_reg[26] 
        (.C(clk),
@@ -1280,149 +1288,155 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
        (.CI(dds_tx09_inc1_carry_n_0),
         .CO({dds_tx09_inc1_carry__0_n_0,dds_tx09_inc1_carry__0_n_1,dds_tx09_inc1_carry__0_n_2,dds_tx09_inc1_carry__0_n_3}),
         .CYINIT(1'b0),
-        .DI({dds_tx09_inc1_carry__0_i_1_n_0,1'b0,1'b0,1'b0}),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(NLW_dds_tx09_inc1_carry__0_O_UNCONNECTED[3:0]),
-        .S({dds_tx09_inc1_carry__0_i_2_n_0,dds_tx09_inc1_carry__0_i_3_n_0,dds_tx09_inc1_carry__0_i_4_n_0,dds_tx09_inc1_carry__0_i_5_n_0}));
-  LUT4 #(
-    .INIT(16'h2F02)) 
+        .S({dds_tx09_inc1_carry__0_i_1_n_0,dds_tx09_inc1_carry__0_i_2_n_0,dds_tx09_inc1_carry__0_i_3_n_0,dds_tx09_inc1_carry__0_i_4_n_0}));
+  LUT2 #(
+    .INIT(4'h1)) 
     dds_tx09_inc1_carry__0_i_1
-       (.I0(\dds_new_inc_reg_n_0_[16] ),
+       (.I0(dds_tx09_inc2_carry__2_n_6),
         .I1(dds_tx09_inc2_carry__2_n_5),
-        .I2(dds_tx09_inc2_carry__2_n_4),
-        .I3(\dds_new_inc_reg_n_0_[17] ),
         .O(dds_tx09_inc1_carry__0_i_1_n_0));
-  LUT4 #(
-    .INIT(16'h9009)) 
+  LUT2 #(
+    .INIT(4'h1)) 
     dds_tx09_inc1_carry__0_i_2
-       (.I0(\dds_new_inc_reg_n_0_[16] ),
-        .I1(dds_tx09_inc2_carry__2_n_5),
-        .I2(\dds_new_inc_reg_n_0_[17] ),
-        .I3(dds_tx09_inc2_carry__2_n_4),
+       (.I0(dds_tx09_inc2_carry__1_n_4),
+        .I1(dds_tx09_inc2_carry__2_n_7),
         .O(dds_tx09_inc1_carry__0_i_2_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     dds_tx09_inc1_carry__0_i_3
-       (.I0(dds_tx09_inc2_carry__2_n_7),
-        .I1(dds_tx09_inc2_carry__2_n_6),
+       (.I0(dds_tx09_inc2_carry__1_n_6),
+        .I1(dds_tx09_inc2_carry__1_n_5),
         .O(dds_tx09_inc1_carry__0_i_3_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     dds_tx09_inc1_carry__0_i_4
-       (.I0(dds_tx09_inc2_carry__1_n_5),
-        .I1(dds_tx09_inc2_carry__1_n_4),
+       (.I0(dds_tx09_inc2_carry__0_n_4),
+        .I1(dds_tx09_inc2_carry__1_n_7),
         .O(dds_tx09_inc1_carry__0_i_4_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
-    dds_tx09_inc1_carry__0_i_5
-       (.I0(dds_tx09_inc2_carry__1_n_7),
-        .I1(dds_tx09_inc2_carry__1_n_6),
-        .O(dds_tx09_inc1_carry__0_i_5_n_0));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 dds_tx09_inc1_carry__1
        (.CI(dds_tx09_inc1_carry__0_n_0),
         .CO({dds_tx09_inc1_carry__1_n_0,dds_tx09_inc1_carry__1_n_1,dds_tx09_inc1_carry__1_n_2,dds_tx09_inc1_carry__1_n_3}),
         .CYINIT(1'b0),
-        .DI({1'b0,1'b0,dds_tx09_inc1_carry__1_i_1_n_0,dds_tx09_inc1_carry__1_i_2_n_0}),
+        .DI({1'b0,dds_tx09_inc1_carry__1_i_1_n_0,dds_tx09_inc1_carry__1_i_2_n_0,dds_tx09_inc1_carry__1_i_3_n_0}),
         .O(NLW_dds_tx09_inc1_carry__1_O_UNCONNECTED[3:0]),
-        .S({dds_tx09_inc1_carry__1_i_3_n_0,dds_tx09_inc1_carry__1_i_4_n_0,dds_tx09_inc1_carry__1_i_5_n_0,dds_tx09_inc1_carry__1_i_6_n_0}));
+        .S({dds_tx09_inc1_carry__1_i_4_n_0,dds_tx09_inc1_carry__1_i_5_n_0,dds_tx09_inc1_carry__1_i_6_n_0,dds_tx09_inc1_carry__1_i_7_n_0}));
   LUT3 #(
     .INIT(8'h04)) 
     dds_tx09_inc1_carry__1_i_1
-       (.I0(dds_tx09_inc2_carry__3_n_5),
+       (.I0(dds_tx09_inc2_carry__3_n_4),
         .I1(\dds_new_inc_reg_n_0_[20] ),
-        .I2(dds_tx09_inc2_carry__3_n_4),
+        .I2(dds_tx09_inc2_carry__4_n_7),
         .O(dds_tx09_inc1_carry__1_i_1_n_0));
   LUT4 #(
     .INIT(16'h2F02)) 
     dds_tx09_inc1_carry__1_i_2
        (.I0(\dds_new_inc_reg_n_0_[18] ),
-        .I1(dds_tx09_inc2_carry__3_n_7),
-        .I2(dds_tx09_inc2_carry__3_n_6),
+        .I1(dds_tx09_inc2_carry__3_n_6),
+        .I2(dds_tx09_inc2_carry__3_n_5),
         .I3(\dds_new_inc_reg_n_0_[19] ),
         .O(dds_tx09_inc1_carry__1_i_2_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
+  LUT4 #(
+    .INIT(16'h2F02)) 
     dds_tx09_inc1_carry__1_i_3
-       (.I0(dds_tx09_inc2_carry__4_n_5),
-        .I1(dds_tx09_inc2_carry__4_n_4),
+       (.I0(\dds_new_inc_reg_n_0_[16] ),
+        .I1(dds_tx09_inc2_carry__2_n_4),
+        .I2(dds_tx09_inc2_carry__3_n_7),
+        .I3(\dds_new_inc_reg_n_0_[17] ),
         .O(dds_tx09_inc1_carry__1_i_3_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     dds_tx09_inc1_carry__1_i_4
-       (.I0(dds_tx09_inc2_carry__4_n_7),
-        .I1(dds_tx09_inc2_carry__4_n_6),
+       (.I0(dds_tx09_inc2_carry__4_n_6),
+        .I1(dds_tx09_inc2_carry__4_n_5),
         .O(dds_tx09_inc1_carry__1_i_4_n_0));
   LUT3 #(
     .INIT(8'h09)) 
     dds_tx09_inc1_carry__1_i_5
        (.I0(\dds_new_inc_reg_n_0_[20] ),
-        .I1(dds_tx09_inc2_carry__3_n_5),
-        .I2(dds_tx09_inc2_carry__3_n_4),
+        .I1(dds_tx09_inc2_carry__3_n_4),
+        .I2(dds_tx09_inc2_carry__4_n_7),
         .O(dds_tx09_inc1_carry__1_i_5_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     dds_tx09_inc1_carry__1_i_6
        (.I0(\dds_new_inc_reg_n_0_[18] ),
-        .I1(dds_tx09_inc2_carry__3_n_7),
+        .I1(dds_tx09_inc2_carry__3_n_6),
         .I2(\dds_new_inc_reg_n_0_[19] ),
-        .I3(dds_tx09_inc2_carry__3_n_6),
+        .I3(dds_tx09_inc2_carry__3_n_5),
         .O(dds_tx09_inc1_carry__1_i_6_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    dds_tx09_inc1_carry__1_i_7
+       (.I0(\dds_new_inc_reg_n_0_[16] ),
+        .I1(dds_tx09_inc2_carry__2_n_4),
+        .I2(\dds_new_inc_reg_n_0_[17] ),
+        .I3(dds_tx09_inc2_carry__3_n_7),
+        .O(dds_tx09_inc1_carry__1_i_7_n_0));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 dds_tx09_inc1_carry__2
        (.CI(dds_tx09_inc1_carry__1_n_0),
-        .CO({NLW_dds_tx09_inc1_carry__2_CO_UNCONNECTED[3],dds_tx09_inc1_carry__2_n_1,dds_tx09_inc1_carry__2_n_2,dds_tx09_inc1_carry__2_n_3}),
+        .CO({dds_tx09_inc1_carry__2_n_0,dds_tx09_inc1_carry__2_n_1,dds_tx09_inc1_carry__2_n_2,dds_tx09_inc1_carry__2_n_3}),
         .CYINIT(1'b0),
-        .DI({1'b0,dds_tx09_inc2_carry__6_n_6,1'b0,1'b0}),
+        .DI({dds_tx09_inc2_carry__6_n_5,1'b0,1'b0,1'b0}),
         .O(NLW_dds_tx09_inc1_carry__2_O_UNCONNECTED[3:0]),
-        .S({1'b0,dds_tx09_inc1_carry__2_i_1_n_0,dds_tx09_inc1_carry__2_i_2_n_0,dds_tx09_inc1_carry__2_i_3_n_0}));
+        .S({dds_tx09_inc1_carry__2_i_1_n_0,dds_tx09_inc1_carry__2_i_2_n_0,dds_tx09_inc1_carry__2_i_3_n_0,dds_tx09_inc1_carry__2_i_4_n_0}));
   LUT2 #(
     .INIT(4'h1)) 
     dds_tx09_inc1_carry__2_i_1
-       (.I0(dds_tx09_inc2_carry__6_n_7),
-        .I1(dds_tx09_inc2_carry__6_n_6),
+       (.I0(dds_tx09_inc2_carry__6_n_6),
+        .I1(dds_tx09_inc2_carry__6_n_5),
         .O(dds_tx09_inc1_carry__2_i_1_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     dds_tx09_inc1_carry__2_i_2
-       (.I0(dds_tx09_inc2_carry__5_n_5),
-        .I1(dds_tx09_inc2_carry__5_n_4),
+       (.I0(dds_tx09_inc2_carry__5_n_4),
+        .I1(dds_tx09_inc2_carry__6_n_7),
         .O(dds_tx09_inc1_carry__2_i_2_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     dds_tx09_inc1_carry__2_i_3
-       (.I0(dds_tx09_inc2_carry__5_n_7),
-        .I1(dds_tx09_inc2_carry__5_n_6),
+       (.I0(dds_tx09_inc2_carry__5_n_6),
+        .I1(dds_tx09_inc2_carry__5_n_5),
         .O(dds_tx09_inc1_carry__2_i_3_n_0));
   LUT2 #(
     .INIT(4'h1)) 
+    dds_tx09_inc1_carry__2_i_4
+       (.I0(dds_tx09_inc2_carry__4_n_4),
+        .I1(dds_tx09_inc2_carry__5_n_7),
+        .O(dds_tx09_inc1_carry__2_i_4_n_0));
+  LUT2 #(
+    .INIT(4'h1)) 
     dds_tx09_inc1_carry_i_1
-       (.I0(dds_tx09_inc2_carry__0_n_5),
-        .I1(dds_tx09_inc2_carry__0_n_4),
+       (.I0(dds_tx09_inc2_carry__0_n_6),
+        .I1(dds_tx09_inc2_carry__0_n_5),
         .O(dds_tx09_inc1_carry_i_1_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     dds_tx09_inc1_carry_i_2
-       (.I0(dds_tx09_inc2_carry__0_n_7),
-        .I1(dds_tx09_inc2_carry__0_n_6),
+       (.I0(dds_tx09_inc2_carry_n_4),
+        .I1(dds_tx09_inc2_carry__0_n_7),
         .O(dds_tx09_inc1_carry_i_2_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     dds_tx09_inc1_carry_i_3
-       (.I0(dds_tx09_inc2_carry_n_5),
-        .I1(dds_tx09_inc2_carry_n_4),
+       (.I0(dds_tx09_inc2_carry_n_6),
+        .I1(dds_tx09_inc2_carry_n_5),
         .O(dds_tx09_inc1_carry_i_3_n_0));
   LUT2 #(
-    .INIT(4'h1)) 
+    .INIT(4'h2)) 
     dds_tx09_inc1_carry_i_4
-       (.I0(dds_tx09_inc[0]),
-        .I1(dds_tx09_inc2_carry_n_6),
+       (.I0(\dds_tx09_inc_reg[0]_0 ),
+        .I1(dds_tx09_inc2_carry_n_7),
         .O(dds_tx09_inc1_carry_i_4_n_0));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 \dds_tx09_inc1_inferred__0/i__carry 
        (.CI(1'b0),
         .CO({\dds_tx09_inc1_inferred__0/i__carry_n_0 ,\dds_tx09_inc1_inferred__0/i__carry_n_1 ,\dds_tx09_inc1_inferred__0/i__carry_n_2 ,\dds_tx09_inc1_inferred__0/i__carry_n_3 }),
         .CYINIT(1'b1),
-        .DI({i__carry_i_1_n_0,i__carry_i_2_n_0,i__carry_i_3_n_0,i__carry_i_4_n_0}),
+        .DI({i__carry_i_1__0_n_0,i__carry_i_2__0_n_0,i__carry_i_3__0_n_0,i__carry_i_4_n_0}),
         .O(\NLW_dds_tx09_inc1_inferred__0/i__carry_O_UNCONNECTED [3:0]),
         .S({i__carry_i_5__0_n_0,i__carry_i_6__0_n_0,i__carry_i_7_n_0,i__carry_i_8_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
@@ -1430,7 +1444,7 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
        (.CI(\dds_tx09_inc1_inferred__0/i__carry_n_0 ),
         .CO({\dds_tx09_inc1_inferred__0/i__carry__0_n_0 ,\dds_tx09_inc1_inferred__0/i__carry__0_n_1 ,\dds_tx09_inc1_inferred__0/i__carry__0_n_2 ,\dds_tx09_inc1_inferred__0/i__carry__0_n_3 }),
         .CYINIT(1'b0),
-        .DI({i__carry__0_i_1__0_n_0,i__carry__0_i_2__0_n_0,i__carry__0_i_3_n_0,i__carry__0_i_4_n_0}),
+        .DI({i__carry__0_i_1__0_n_0,i__carry__0_i_2_n_0,i__carry__0_i_3_n_0,i__carry__0_i_4_n_0}),
         .O(\NLW_dds_tx09_inc1_inferred__0/i__carry__0_O_UNCONNECTED [3:0]),
         .S({i__carry__0_i_5_n_0,i__carry__0_i_6_n_0,i__carry__0_i_7_n_0,i__carry__0_i_8_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
@@ -1438,33 +1452,33 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
        (.CI(\dds_tx09_inc1_inferred__0/i__carry__0_n_0 ),
         .CO({\dds_tx09_inc1_inferred__0/i__carry__1_n_0 ,\dds_tx09_inc1_inferred__0/i__carry__1_n_1 ,\dds_tx09_inc1_inferred__0/i__carry__1_n_2 ,\dds_tx09_inc1_inferred__0/i__carry__1_n_3 }),
         .CYINIT(1'b0),
-        .DI({i__carry__1_i_1_n_0,i__carry__1_i_2_n_0,i__carry__1_i_3_n_0,i__carry__1_i_4_n_0}),
+        .DI({i__carry__1_i_1__0_n_0,i__carry__1_i_2__0_n_0,i__carry__1_i_3_n_0,i__carry__1_i_4_n_0}),
         .O(\NLW_dds_tx09_inc1_inferred__0/i__carry__1_O_UNCONNECTED [3:0]),
         .S({i__carry__1_i_5_n_0,i__carry__1_i_6_n_0,i__carry__1_i_7_n_0,i__carry__1_i_8_n_0}));
   (* COMPARATOR_THRESHOLD = "11" *) 
   CARRY4 \dds_tx09_inc1_inferred__0/i__carry__2 
        (.CI(\dds_tx09_inc1_inferred__0/i__carry__1_n_0 ),
-        .CO({\NLW_dds_tx09_inc1_inferred__0/i__carry__2_CO_UNCONNECTED [3],\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ,\dds_tx09_inc1_inferred__0/i__carry__2_n_2 ,\dds_tx09_inc1_inferred__0/i__carry__2_n_3 }),
+        .CO({\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ,\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ,\dds_tx09_inc1_inferred__0/i__carry__2_n_2 ,\dds_tx09_inc1_inferred__0/i__carry__2_n_3 }),
         .CYINIT(1'b0),
-        .DI({1'b0,i__carry__2_i_1_n_0,i__carry__2_i_2_n_0,i__carry__2_i_3_n_0}),
+        .DI({i__carry__2_i_1_n_0,i__carry__2_i_2_n_0,i__carry__2_i_3_n_0,i__carry__2_i_4_n_0}),
         .O(\NLW_dds_tx09_inc1_inferred__0/i__carry__2_O_UNCONNECTED [3:0]),
-        .S({1'b0,i__carry__2_i_4_n_0,i__carry__2_i_5_n_0,i__carry__2_i_6_n_0}));
+        .S({i__carry__2_i_5_n_0,i__carry__2_i_6_n_0,i__carry__2_i_7_n_0,i__carry__2_i_8_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 dds_tx09_inc2_carry
        (.CI(1'b0),
         .CO({dds_tx09_inc2_carry_n_0,dds_tx09_inc2_carry_n_1,dds_tx09_inc2_carry_n_2,dds_tx09_inc2_carry_n_3}),
-        .CYINIT(1'b0),
-        .DI({dds_tx09_inc[3:1],1'b0}),
+        .CYINIT(\dds_tx09_inc_reg[0]_0 ),
+        .DI({1'b0,1'b0,1'b0,dds_tx09_inc[0]}),
         .O({dds_tx09_inc2_carry_n_4,dds_tx09_inc2_carry_n_5,dds_tx09_inc2_carry_n_6,dds_tx09_inc2_carry_n_7}),
-        .S({dds_tx09_inc2_carry_i_1_n_0,dds_tx09_inc2_carry_i_2_n_0,dds_tx09_inc2_carry_i_3_n_0,dds_tx09_inc[0]}));
+        .S({dds_tx09_inc[3:1],dds_tx09_inc2_carry_i_1_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 dds_tx09_inc2_carry__0
        (.CI(dds_tx09_inc2_carry_n_0),
         .CO({dds_tx09_inc2_carry__0_n_0,dds_tx09_inc2_carry__0_n_1,dds_tx09_inc2_carry__0_n_2,dds_tx09_inc2_carry__0_n_3}),
         .CYINIT(1'b0),
-        .DI({dds_tx09_inc[7],1'b0,dds_tx09_inc[5],1'b0}),
+        .DI({dds_tx09_inc[7:5],1'b0}),
         .O({dds_tx09_inc2_carry__0_n_4,dds_tx09_inc2_carry__0_n_5,dds_tx09_inc2_carry__0_n_6,dds_tx09_inc2_carry__0_n_7}),
-        .S({dds_tx09_inc2_carry__0_i_1_n_0,dds_tx09_inc[6],dds_tx09_inc2_carry__0_i_2_n_0,dds_tx09_inc[4]}));
+        .S({dds_tx09_inc2_carry__0_i_1_n_0,dds_tx09_inc2_carry__0_i_2_n_0,dds_tx09_inc2_carry__0_i_3_n_0,dds_tx09_inc[4]}));
   LUT1 #(
     .INIT(2'h1)) 
     dds_tx09_inc2_carry__0_i_1
@@ -1473,16 +1487,21 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   LUT1 #(
     .INIT(2'h1)) 
     dds_tx09_inc2_carry__0_i_2
-       (.I0(dds_tx09_inc[5]),
+       (.I0(dds_tx09_inc[6]),
         .O(dds_tx09_inc2_carry__0_i_2_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    dds_tx09_inc2_carry__0_i_3
+       (.I0(dds_tx09_inc[5]),
+        .O(dds_tx09_inc2_carry__0_i_3_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 dds_tx09_inc2_carry__1
        (.CI(dds_tx09_inc2_carry__0_n_0),
         .CO({dds_tx09_inc2_carry__1_n_0,dds_tx09_inc2_carry__1_n_1,dds_tx09_inc2_carry__1_n_2,dds_tx09_inc2_carry__1_n_3}),
         .CYINIT(1'b0),
-        .DI(dds_tx09_inc[11:8]),
+        .DI({dds_tx09_inc[11],1'b0,dds_tx09_inc[9],1'b0}),
         .O({dds_tx09_inc2_carry__1_n_4,dds_tx09_inc2_carry__1_n_5,dds_tx09_inc2_carry__1_n_6,dds_tx09_inc2_carry__1_n_7}),
-        .S({dds_tx09_inc2_carry__1_i_1_n_0,dds_tx09_inc2_carry__1_i_2_n_0,dds_tx09_inc2_carry__1_i_3_n_0,dds_tx09_inc2_carry__1_i_4_n_0}));
+        .S({dds_tx09_inc2_carry__1_i_1_n_0,dds_tx09_inc[10],dds_tx09_inc2_carry__1_i_2_n_0,dds_tx09_inc[8]}));
   LUT1 #(
     .INIT(2'h1)) 
     dds_tx09_inc2_carry__1_i_1
@@ -1491,18 +1510,8 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   LUT1 #(
     .INIT(2'h1)) 
     dds_tx09_inc2_carry__1_i_2
-       (.I0(dds_tx09_inc[10]),
-        .O(dds_tx09_inc2_carry__1_i_2_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    dds_tx09_inc2_carry__1_i_3
        (.I0(dds_tx09_inc[9]),
-        .O(dds_tx09_inc2_carry__1_i_3_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    dds_tx09_inc2_carry__1_i_4
-       (.I0(dds_tx09_inc[8]),
-        .O(dds_tx09_inc2_carry__1_i_4_n_0));
+        .O(dds_tx09_inc2_carry__1_i_2_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 dds_tx09_inc2_carry__2
        (.CI(dds_tx09_inc2_carry__1_n_0),
@@ -1592,37 +1601,37 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
        (.CI(dds_tx09_inc2_carry__4_n_0),
         .CO({dds_tx09_inc2_carry__5_n_0,dds_tx09_inc2_carry__5_n_1,dds_tx09_inc2_carry__5_n_2,dds_tx09_inc2_carry__5_n_3}),
         .CYINIT(1'b0),
-        .DI(dds_current_inc[29:26]),
+        .DI({dds_current_inc[28:26],dds_tx09_inc[24]}),
         .O({dds_tx09_inc2_carry__5_n_4,dds_tx09_inc2_carry__5_n_5,dds_tx09_inc2_carry__5_n_6,dds_tx09_inc2_carry__5_n_7}),
         .S({dds_tx09_inc2_carry__5_i_1_n_0,dds_tx09_inc2_carry__5_i_2_n_0,dds_tx09_inc2_carry__5_i_3_n_0,dds_tx09_inc2_carry__5_i_4_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
     dds_tx09_inc2_carry__5_i_1
-       (.I0(dds_current_inc[29]),
+       (.I0(dds_current_inc[28]),
         .O(dds_tx09_inc2_carry__5_i_1_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     dds_tx09_inc2_carry__5_i_2
-       (.I0(dds_current_inc[28]),
+       (.I0(dds_current_inc[27]),
         .O(dds_tx09_inc2_carry__5_i_2_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     dds_tx09_inc2_carry__5_i_3
-       (.I0(dds_current_inc[27]),
+       (.I0(dds_current_inc[26]),
         .O(dds_tx09_inc2_carry__5_i_3_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     dds_tx09_inc2_carry__5_i_4
-       (.I0(dds_current_inc[26]),
+       (.I0(dds_tx09_inc[24]),
         .O(dds_tx09_inc2_carry__5_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 dds_tx09_inc2_carry__6
        (.CI(dds_tx09_inc2_carry__5_n_0),
-        .CO({NLW_dds_tx09_inc2_carry__6_CO_UNCONNECTED[3:1],dds_tx09_inc2_carry__6_n_3}),
+        .CO({NLW_dds_tx09_inc2_carry__6_CO_UNCONNECTED[3:2],dds_tx09_inc2_carry__6_n_2,dds_tx09_inc2_carry__6_n_3}),
         .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,dds_current_inc[30]}),
-        .O({NLW_dds_tx09_inc2_carry__6_O_UNCONNECTED[3:2],dds_tx09_inc2_carry__6_n_6,dds_tx09_inc2_carry__6_n_7}),
-        .S({1'b0,1'b0,dds_tx09_inc2_carry__6_i_1_n_0,dds_tx09_inc2_carry__6_i_2_n_0}));
+        .DI({1'b0,1'b0,dds_current_inc[30:29]}),
+        .O({NLW_dds_tx09_inc2_carry__6_O_UNCONNECTED[3],dds_tx09_inc2_carry__6_n_5,dds_tx09_inc2_carry__6_n_6,dds_tx09_inc2_carry__6_n_7}),
+        .S({1'b0,dds_tx09_inc2_carry__6_i_1_n_0,dds_tx09_inc2_carry__6_i_2_n_0,dds_tx09_inc2_carry__6_i_3_n_0}));
   LUT1 #(
     .INIT(2'h1)) 
     dds_tx09_inc2_carry__6_i_1
@@ -1635,43 +1644,38 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
         .O(dds_tx09_inc2_carry__6_i_2_n_0));
   LUT1 #(
     .INIT(2'h1)) 
+    dds_tx09_inc2_carry__6_i_3
+       (.I0(dds_current_inc[29]),
+        .O(dds_tx09_inc2_carry__6_i_3_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
     dds_tx09_inc2_carry_i_1
-       (.I0(dds_tx09_inc[3]),
+       (.I0(dds_tx09_inc[0]),
         .O(dds_tx09_inc2_carry_i_1_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    dds_tx09_inc2_carry_i_2
-       (.I0(dds_tx09_inc[2]),
-        .O(dds_tx09_inc2_carry_i_2_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    dds_tx09_inc2_carry_i_3
-       (.I0(dds_tx09_inc[1]),
-        .O(dds_tx09_inc2_carry_i_3_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \dds_tx09_inc2_inferred__0/i__carry 
        (.CI(1'b0),
         .CO({\dds_tx09_inc2_inferred__0/i__carry_n_0 ,\dds_tx09_inc2_inferred__0/i__carry_n_1 ,\dds_tx09_inc2_inferred__0/i__carry_n_2 ,\dds_tx09_inc2_inferred__0/i__carry_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,dds_tx09_inc[1],1'b0}),
-        .O({\dds_tx09_inc2_inferred__0/i__carry_n_4 ,\dds_tx09_inc2_inferred__0/i__carry_n_5 ,\dds_tx09_inc2_inferred__0/i__carry_n_6 ,\NLW_dds_tx09_inc2_inferred__0/i__carry_O_UNCONNECTED [0]}),
-        .S({dds_tx09_inc[3:2],i__carry_i_1__0_n_0,dds_tx09_inc[0]}));
+        .CYINIT(\dds_tx09_inc_reg[0]_0 ),
+        .DI({dds_tx09_inc[3:1],1'b0}),
+        .O({\dds_tx09_inc2_inferred__0/i__carry_n_4 ,\dds_tx09_inc2_inferred__0/i__carry_n_5 ,\dds_tx09_inc2_inferred__0/i__carry_n_6 ,\dds_tx09_inc2_inferred__0/i__carry_n_7 }),
+        .S({i__carry_i_1_n_0,i__carry_i_2_n_0,i__carry_i_3_n_0,dds_tx09_inc[0]}));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \dds_tx09_inc2_inferred__0/i__carry__0 
        (.CI(\dds_tx09_inc2_inferred__0/i__carry_n_0 ),
         .CO({\dds_tx09_inc2_inferred__0/i__carry__0_n_0 ,\dds_tx09_inc2_inferred__0/i__carry__0_n_1 ,\dds_tx09_inc2_inferred__0/i__carry__0_n_2 ,\dds_tx09_inc2_inferred__0/i__carry__0_n_3 }),
         .CYINIT(1'b0),
-        .DI({1'b0,dds_tx09_inc[6],1'b0,dds_tx09_inc[4]}),
+        .DI({1'b0,1'b0,1'b0,dds_tx09_inc[4]}),
         .O({\dds_tx09_inc2_inferred__0/i__carry__0_n_4 ,\dds_tx09_inc2_inferred__0/i__carry__0_n_5 ,\dds_tx09_inc2_inferred__0/i__carry__0_n_6 ,\dds_tx09_inc2_inferred__0/i__carry__0_n_7 }),
-        .S({dds_tx09_inc[7],i__carry__0_i_1_n_0,dds_tx09_inc[5],i__carry__0_i_2_n_0}));
+        .S({dds_tx09_inc[7:5],i__carry__0_i_1_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \dds_tx09_inc2_inferred__0/i__carry__1 
        (.CI(\dds_tx09_inc2_inferred__0/i__carry__0_n_0 ),
         .CO({\dds_tx09_inc2_inferred__0/i__carry__1_n_0 ,\dds_tx09_inc2_inferred__0/i__carry__1_n_1 ,\dds_tx09_inc2_inferred__0/i__carry__1_n_2 ,\dds_tx09_inc2_inferred__0/i__carry__1_n_3 }),
         .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .DI({1'b0,dds_tx09_inc[10],1'b0,dds_tx09_inc[8]}),
         .O({\dds_tx09_inc2_inferred__0/i__carry__1_n_4 ,\dds_tx09_inc2_inferred__0/i__carry__1_n_5 ,\dds_tx09_inc2_inferred__0/i__carry__1_n_6 ,\dds_tx09_inc2_inferred__0/i__carry__1_n_7 }),
-        .S(dds_tx09_inc[11:8]));
+        .S({dds_tx09_inc[11],i__carry__1_i_1_n_0,dds_tx09_inc[9],i__carry__1_i_2_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \dds_tx09_inc2_inferred__0/i__carry__2 
        (.CI(\dds_tx09_inc2_inferred__0/i__carry__1_n_0 ),
@@ -1703,74 +1707,83 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({\dds_tx09_inc2_inferred__0/i__carry__5_n_4 ,\dds_tx09_inc2_inferred__0/i__carry__5_n_5 ,\dds_tx09_inc2_inferred__0/i__carry__5_n_6 ,\dds_tx09_inc2_inferred__0/i__carry__5_n_7 }),
-        .S(dds_current_inc[29:26]));
+        .S({dds_current_inc[28:26],dds_tx09_inc[24]}));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 \dds_tx09_inc2_inferred__0/i__carry__6 
        (.CI(\dds_tx09_inc2_inferred__0/i__carry__5_n_0 ),
-        .CO({\NLW_dds_tx09_inc2_inferred__0/i__carry__6_CO_UNCONNECTED [3:1],\dds_tx09_inc2_inferred__0/i__carry__6_n_3 }),
+        .CO({\NLW_dds_tx09_inc2_inferred__0/i__carry__6_CO_UNCONNECTED [3:2],\dds_tx09_inc2_inferred__0/i__carry__6_n_2 ,\dds_tx09_inc2_inferred__0/i__carry__6_n_3 }),
         .CYINIT(1'b0),
         .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\NLW_dds_tx09_inc2_inferred__0/i__carry__6_O_UNCONNECTED [3:2],\dds_tx09_inc2_inferred__0/i__carry__6_n_6 ,\dds_tx09_inc2_inferred__0/i__carry__6_n_7 }),
-        .S({1'b0,1'b0,dds_current_inc[31:30]}));
+        .O({\NLW_dds_tx09_inc2_inferred__0/i__carry__6_O_UNCONNECTED [3],\dds_tx09_inc2_inferred__0/i__carry__6_n_5 ,\dds_tx09_inc2_inferred__0/i__carry__6_n_6 ,\dds_tx09_inc2_inferred__0/i__carry__6_n_7 }),
+        .S({1'b0,dds_current_inc[31:29]}));
+  LUT5 #(
+    .INIT(32'h00022202)) 
+    \dds_tx09_inc[0]_i_1 
+       (.I0(\state_reg[1]__0_n_0 ),
+        .I1(\dds_tx09_inc_reg[0]_0 ),
+        .I2(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I3(\state_reg[0]__0_n_0 ),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .O(\dds_tx09_inc[0]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[10]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__1_n_7 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__1_n_6 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__1_n_7),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__1_n_6),
         .O(\dds_tx09_inc[10]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[11]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__1_n_6 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__1_n_5 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__1_n_6),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__1_n_5),
         .O(\dds_tx09_inc[11]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[12]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__1_n_5 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__1_n_4 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__1_n_5),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__1_n_4),
         .O(\dds_tx09_inc[12]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[13]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__1_n_4 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__2_n_7 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__1_n_4),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__2_n_7),
         .O(\dds_tx09_inc[13]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[14]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__2_n_7 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__2_n_6 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__2_n_7),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__2_n_6),
         .O(\dds_tx09_inc[14]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[15]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__2_n_6 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__2_n_5 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__2_n_6),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__2_n_5),
         .O(\dds_tx09_inc[15]_i_1_n_0 ));
   LUT2 #(
     .INIT(4'h8)) 
@@ -1781,12 +1794,12 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   LUT6 #(
     .INIT(64'hEF40EF4FEF40E040)) 
     \dds_tx09_inc[16]_i_2 
-       (.I0(dds_tx09_inc1_carry__2_n_1),
-        .I1(dds_tx09_inc2_carry__2_n_5),
+       (.I0(dds_tx09_inc1_carry__2_n_0),
+        .I1(dds_tx09_inc2_carry__2_n_4),
         .I2(\state_reg[0]__0_n_0 ),
         .I3(\dds_new_inc_reg_n_0_[16] ),
-        .I4(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I5(\dds_tx09_inc2_inferred__0/i__carry__2_n_5 ),
+        .I4(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I5(\dds_tx09_inc2_inferred__0/i__carry__2_n_4 ),
         .O(\dds_tx09_inc[16]_i_2_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT2 #(
@@ -1798,12 +1811,12 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   LUT6 #(
     .INIT(64'hEF40EF4FEF40E040)) 
     \dds_tx09_inc[17]_i_2 
-       (.I0(dds_tx09_inc1_carry__2_n_1),
-        .I1(dds_tx09_inc2_carry__2_n_4),
+       (.I0(dds_tx09_inc1_carry__2_n_0),
+        .I1(dds_tx09_inc2_carry__3_n_7),
         .I2(\state_reg[0]__0_n_0 ),
         .I3(\dds_new_inc_reg_n_0_[17] ),
-        .I4(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I5(\dds_tx09_inc2_inferred__0/i__carry__2_n_4 ),
+        .I4(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I5(\dds_tx09_inc2_inferred__0/i__carry__3_n_7 ),
         .O(\dds_tx09_inc[17]_i_2_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT2 #(
@@ -1815,12 +1828,12 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   LUT6 #(
     .INIT(64'hEF40EF4FEF40E040)) 
     \dds_tx09_inc[18]_i_2 
-       (.I0(dds_tx09_inc1_carry__2_n_1),
-        .I1(dds_tx09_inc2_carry__3_n_7),
+       (.I0(dds_tx09_inc1_carry__2_n_0),
+        .I1(dds_tx09_inc2_carry__3_n_6),
         .I2(\state_reg[0]__0_n_0 ),
         .I3(\dds_new_inc_reg_n_0_[18] ),
-        .I4(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I5(\dds_tx09_inc2_inferred__0/i__carry__3_n_7 ),
+        .I4(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I5(\dds_tx09_inc2_inferred__0/i__carry__3_n_6 ),
         .O(\dds_tx09_inc[18]_i_2_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT2 #(
@@ -1832,13 +1845,23 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   LUT6 #(
     .INIT(64'hEF40EF4FEF40E040)) 
     \dds_tx09_inc[19]_i_2 
-       (.I0(dds_tx09_inc1_carry__2_n_1),
-        .I1(dds_tx09_inc2_carry__3_n_6),
+       (.I0(dds_tx09_inc1_carry__2_n_0),
+        .I1(dds_tx09_inc2_carry__3_n_5),
         .I2(\state_reg[0]__0_n_0 ),
         .I3(\dds_new_inc_reg_n_0_[19] ),
-        .I4(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I5(\dds_tx09_inc2_inferred__0/i__carry__3_n_6 ),
+        .I4(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I5(\dds_tx09_inc2_inferred__0/i__carry__3_n_5 ),
         .O(\dds_tx09_inc[19]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h0020AA2000200020)) 
+    \dds_tx09_inc[1]_i_1 
+       (.I0(\state_reg[1]__0_n_0 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry_n_7 ),
+        .I3(\state_reg[0]__0_n_0 ),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry_n_7),
+        .O(\dds_tx09_inc[1]_i_1_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT2 #(
     .INIT(4'h8)) 
@@ -1849,52 +1872,52 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   LUT6 #(
     .INIT(64'hEF40EF4FEF40E040)) 
     \dds_tx09_inc[20]_i_2 
-       (.I0(dds_tx09_inc1_carry__2_n_1),
-        .I1(dds_tx09_inc2_carry__3_n_5),
+       (.I0(dds_tx09_inc1_carry__2_n_0),
+        .I1(dds_tx09_inc2_carry__3_n_4),
         .I2(\state_reg[0]__0_n_0 ),
         .I3(\dds_new_inc_reg_n_0_[20] ),
-        .I4(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I5(\dds_tx09_inc2_inferred__0/i__carry__3_n_5 ),
+        .I4(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I5(\dds_tx09_inc2_inferred__0/i__carry__3_n_4 ),
         .O(\dds_tx09_inc[20]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[21]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__3_n_4 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__4_n_7 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__3_n_4),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__4_n_7),
         .O(\dds_tx09_inc[21]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[22]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__4_n_7 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__4_n_6 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__4_n_7),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__4_n_6),
         .O(\dds_tx09_inc[22]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[23]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__4_n_6 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__4_n_5 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__4_n_6),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__4_n_5),
         .O(\dds_tx09_inc[23]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[24]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__4_n_5 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__4_n_4 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__4_n_5),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__4_n_4),
         .O(\dds_tx09_inc[24]_i_1_n_0 ));
   LUT2 #(
     .INIT(4'hB)) 
@@ -1906,235 +1929,247 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[25]_i_2 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__4_n_4 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__5_n_7 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__4_n_4),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__5_n_7),
         .O(\dds_tx09_inc[25]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[2]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(dds_tx09_inc2_carry_n_7),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry_n_6 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc[0]),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry_n_6),
         .O(\dds_tx09_inc[2]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[3]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry_n_6 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry_n_5 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry_n_6),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry_n_5),
         .O(\dds_tx09_inc[3]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[4]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry_n_5 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry_n_4 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry_n_5),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry_n_4),
         .O(\dds_tx09_inc[4]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[5]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry_n_4 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__0_n_7 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry_n_4),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__0_n_7),
         .O(\dds_tx09_inc[5]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[6]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__0_n_7 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__0_n_6 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__0_n_7),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__0_n_6),
         .O(\dds_tx09_inc[6]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[7]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__0_n_6 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__0_n_5 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__0_n_6),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__0_n_5),
         .O(\dds_tx09_inc[7]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[8]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__0_n_5 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__0_n_4 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__0_n_5),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__0_n_4),
         .O(\dds_tx09_inc[8]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0020AA2000200020)) 
     \dds_tx09_inc[9]_i_1 
        (.I0(\state_reg[1]__0_n_0 ),
-        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__0_n_4 ),
+        .I1(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__1_n_7 ),
         .I3(\state_reg[0]__0_n_0 ),
-        .I4(dds_tx09_inc1_carry__2_n_1),
-        .I5(dds_tx09_inc2_carry__0_n_4),
+        .I4(dds_tx09_inc1_carry__2_n_0),
+        .I5(dds_tx09_inc2_carry__1_n_7),
         .O(\dds_tx09_inc[9]_i_1_n_0 ));
+  FDRE \dds_tx09_inc_reg[0] 
+       (.C(clk),
+        .CE(\dds_tx09_inc[25]_i_1_n_0 ),
+        .D(\dds_tx09_inc[0]_i_1_n_0 ),
+        .Q(\dds_tx09_inc_reg[0]_0 ),
+        .R(reset));
   FDRE \dds_tx09_inc_reg[10] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[10]_i_1_n_0 ),
-        .Q(dds_tx09_inc[8]),
+        .Q(dds_tx09_inc[9]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[11] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[11]_i_1_n_0 ),
-        .Q(dds_tx09_inc[9]),
+        .Q(dds_tx09_inc[10]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[12] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[12]_i_1_n_0 ),
-        .Q(dds_tx09_inc[10]),
+        .Q(dds_tx09_inc[11]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[13] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[13]_i_1_n_0 ),
-        .Q(dds_tx09_inc[11]),
+        .Q(dds_tx09_inc[12]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[14] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[14]_i_1_n_0 ),
-        .Q(dds_tx09_inc[12]),
+        .Q(dds_tx09_inc[13]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[15] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[15]_i_1_n_0 ),
-        .Q(dds_tx09_inc[13]),
+        .Q(dds_tx09_inc[14]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[16] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[16]_i_1_n_0 ),
-        .Q(dds_tx09_inc[14]),
+        .Q(dds_tx09_inc[15]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[17] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[17]_i_1_n_0 ),
-        .Q(dds_tx09_inc[15]),
+        .Q(dds_tx09_inc[16]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[18] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[18]_i_1_n_0 ),
-        .Q(dds_tx09_inc[16]),
+        .Q(dds_tx09_inc[17]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[19] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[19]_i_1_n_0 ),
-        .Q(dds_tx09_inc[17]),
+        .Q(dds_tx09_inc[18]),
+        .R(reset));
+  FDRE \dds_tx09_inc_reg[1] 
+       (.C(clk),
+        .CE(\dds_tx09_inc[25]_i_1_n_0 ),
+        .D(\dds_tx09_inc[1]_i_1_n_0 ),
+        .Q(dds_tx09_inc[0]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[20] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[20]_i_1_n_0 ),
-        .Q(dds_tx09_inc[18]),
+        .Q(dds_tx09_inc[19]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[21] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[21]_i_1_n_0 ),
-        .Q(dds_tx09_inc[19]),
+        .Q(dds_tx09_inc[20]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[22] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[22]_i_1_n_0 ),
-        .Q(dds_tx09_inc[20]),
+        .Q(dds_tx09_inc[21]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[23] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[23]_i_1_n_0 ),
-        .Q(dds_tx09_inc[21]),
+        .Q(dds_tx09_inc[22]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[24] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[24]_i_1_n_0 ),
-        .Q(dds_tx09_inc[22]),
+        .Q(dds_tx09_inc[23]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[25] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[25]_i_2_n_0 ),
-        .Q(dds_tx09_inc[23]),
+        .Q(dds_tx09_inc[24]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[2] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[2]_i_1_n_0 ),
-        .Q(dds_tx09_inc[0]),
+        .Q(dds_tx09_inc[1]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[3] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[3]_i_1_n_0 ),
-        .Q(dds_tx09_inc[1]),
+        .Q(dds_tx09_inc[2]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[4] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[4]_i_1_n_0 ),
-        .Q(dds_tx09_inc[2]),
+        .Q(dds_tx09_inc[3]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[5] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[5]_i_1_n_0 ),
-        .Q(dds_tx09_inc[3]),
+        .Q(dds_tx09_inc[4]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[6] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[6]_i_1_n_0 ),
-        .Q(dds_tx09_inc[4]),
+        .Q(dds_tx09_inc[5]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[7] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[7]_i_1_n_0 ),
-        .Q(dds_tx09_inc[5]),
+        .Q(dds_tx09_inc[6]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[8] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[8]_i_1_n_0 ),
-        .Q(dds_tx09_inc[6]),
+        .Q(dds_tx09_inc[7]),
         .R(reset));
   FDRE \dds_tx09_inc_reg[9] 
        (.C(clk),
         .CE(\dds_tx09_inc[25]_i_1_n_0 ),
         .D(\dds_tx09_inc[9]_i_1_n_0 ),
-        .Q(dds_tx09_inc[7]),
+        .Q(dds_tx09_inc[8]),
         .R(reset));
   LUT2 #(
     .INIT(4'h2)) 
@@ -2590,165 +2625,182 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__0_i_1
-       (.I0(dds_tx09_inc[6]),
-        .O(i__carry__0_i_1_n_0));
-  LUT4 #(
-    .INIT(16'h2F02)) 
-    i__carry__0_i_1__0
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__2_n_5 ),
-        .I1(\dds_new_inc_reg_n_0_[16] ),
-        .I2(\dds_new_inc_reg_n_0_[17] ),
-        .I3(\dds_tx09_inc2_inferred__0/i__carry__2_n_4 ),
-        .O(i__carry__0_i_1__0_n_0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    i__carry__0_i_2
        (.I0(dds_tx09_inc[4]),
+        .O(i__carry__0_i_1_n_0));
+  LUT2 #(
+    .INIT(4'hE)) 
+    i__carry__0_i_1__0
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__2_n_6 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__2_n_5 ),
+        .O(i__carry__0_i_1__0_n_0));
+  LUT2 #(
+    .INIT(4'hE)) 
+    i__carry__0_i_2
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__1_n_4 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__2_n_7 ),
         .O(i__carry__0_i_2_n_0));
   LUT2 #(
     .INIT(4'hE)) 
-    i__carry__0_i_2__0
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__2_n_7 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__2_n_6 ),
-        .O(i__carry__0_i_2__0_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
     i__carry__0_i_3
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__1_n_5 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__1_n_4 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__1_n_6 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__1_n_5 ),
         .O(i__carry__0_i_3_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     i__carry__0_i_4
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__1_n_7 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__1_n_6 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__0_n_4 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__1_n_7 ),
         .O(i__carry__0_i_4_n_0));
-  LUT4 #(
-    .INIT(16'h9009)) 
+  LUT2 #(
+    .INIT(4'h1)) 
     i__carry__0_i_5
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__2_n_5 ),
-        .I1(\dds_new_inc_reg_n_0_[16] ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__2_n_4 ),
-        .I3(\dds_new_inc_reg_n_0_[17] ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__2_n_6 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__2_n_5 ),
         .O(i__carry__0_i_5_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__0_i_6
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__2_n_7 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__2_n_6 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__1_n_4 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__2_n_7 ),
         .O(i__carry__0_i_6_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__0_i_7
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__1_n_5 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__1_n_4 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__1_n_6 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__1_n_5 ),
         .O(i__carry__0_i_7_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__0_i_8
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__1_n_7 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__1_n_6 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__0_n_4 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__1_n_7 ),
         .O(i__carry__0_i_8_n_0));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__1_i_1
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__4_n_5 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__4_n_4 ),
+       (.I0(dds_tx09_inc[10]),
         .O(i__carry__1_i_1_n_0));
   LUT2 #(
     .INIT(4'hE)) 
+    i__carry__1_i_1__0
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__4_n_6 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__4_n_5 ),
+        .O(i__carry__1_i_1__0_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
     i__carry__1_i_2
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__4_n_7 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__4_n_6 ),
+       (.I0(dds_tx09_inc[8]),
         .O(i__carry__1_i_2_n_0));
   LUT3 #(
     .INIT(8'hF2)) 
-    i__carry__1_i_3
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__3_n_5 ),
+    i__carry__1_i_2__0
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__3_n_4 ),
         .I1(\dds_new_inc_reg_n_0_[20] ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__3_n_4 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__4_n_7 ),
+        .O(i__carry__1_i_2__0_n_0));
+  LUT4 #(
+    .INIT(16'h2F02)) 
+    i__carry__1_i_3
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__3_n_6 ),
+        .I1(\dds_new_inc_reg_n_0_[18] ),
+        .I2(\dds_new_inc_reg_n_0_[19] ),
+        .I3(\dds_tx09_inc2_inferred__0/i__carry__3_n_5 ),
         .O(i__carry__1_i_3_n_0));
   LUT4 #(
     .INIT(16'h2F02)) 
     i__carry__1_i_4
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__3_n_7 ),
-        .I1(\dds_new_inc_reg_n_0_[18] ),
-        .I2(\dds_new_inc_reg_n_0_[19] ),
-        .I3(\dds_tx09_inc2_inferred__0/i__carry__3_n_6 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__2_n_4 ),
+        .I1(\dds_new_inc_reg_n_0_[16] ),
+        .I2(\dds_new_inc_reg_n_0_[17] ),
+        .I3(\dds_tx09_inc2_inferred__0/i__carry__3_n_7 ),
         .O(i__carry__1_i_4_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__1_i_5
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__4_n_5 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__4_n_4 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__4_n_6 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__4_n_5 ),
         .O(i__carry__1_i_5_n_0));
-  LUT2 #(
-    .INIT(4'h1)) 
-    i__carry__1_i_6
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__4_n_7 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__4_n_6 ),
-        .O(i__carry__1_i_6_n_0));
   LUT3 #(
     .INIT(8'h09)) 
-    i__carry__1_i_7
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__3_n_5 ),
+    i__carry__1_i_6
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__3_n_4 ),
         .I1(\dds_new_inc_reg_n_0_[20] ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__3_n_4 ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__4_n_7 ),
+        .O(i__carry__1_i_6_n_0));
+  LUT4 #(
+    .INIT(16'h9009)) 
+    i__carry__1_i_7
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__3_n_6 ),
+        .I1(\dds_new_inc_reg_n_0_[18] ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__3_n_5 ),
+        .I3(\dds_new_inc_reg_n_0_[19] ),
         .O(i__carry__1_i_7_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
     i__carry__1_i_8
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__3_n_7 ),
-        .I1(\dds_new_inc_reg_n_0_[18] ),
-        .I2(\dds_tx09_inc2_inferred__0/i__carry__3_n_6 ),
-        .I3(\dds_new_inc_reg_n_0_[19] ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__2_n_4 ),
+        .I1(\dds_new_inc_reg_n_0_[16] ),
+        .I2(\dds_tx09_inc2_inferred__0/i__carry__3_n_7 ),
+        .I3(\dds_new_inc_reg_n_0_[17] ),
         .O(i__carry__1_i_8_n_0));
   LUT2 #(
     .INIT(4'h2)) 
     i__carry__2_i_1
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__6_n_7 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__6_n_6 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__6_n_6 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__6_n_5 ),
         .O(i__carry__2_i_1_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     i__carry__2_i_2
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__5_n_5 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__5_n_4 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__5_n_4 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__6_n_7 ),
         .O(i__carry__2_i_2_n_0));
   LUT2 #(
     .INIT(4'hE)) 
     i__carry__2_i_3
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__5_n_7 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__5_n_6 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__5_n_6 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__5_n_5 ),
         .O(i__carry__2_i_3_n_0));
   LUT2 #(
-    .INIT(4'h1)) 
+    .INIT(4'hE)) 
     i__carry__2_i_4
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__6_n_7 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__6_n_6 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__4_n_4 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__5_n_7 ),
         .O(i__carry__2_i_4_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__2_i_5
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__5_n_5 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__5_n_4 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__6_n_6 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__6_n_5 ),
         .O(i__carry__2_i_5_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry__2_i_6
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__5_n_7 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__5_n_6 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__5_n_4 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__6_n_7 ),
         .O(i__carry__2_i_6_n_0));
   LUT2 #(
-    .INIT(4'hE)) 
-    i__carry_i_1
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__0_n_5 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__0_n_4 ),
-        .O(i__carry_i_1_n_0));
+    .INIT(4'h1)) 
+    i__carry__2_i_7
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__5_n_6 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__5_n_5 ),
+        .O(i__carry__2_i_7_n_0));
+  LUT2 #(
+    .INIT(4'h1)) 
+    i__carry__2_i_8
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__4_n_4 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__5_n_7 ),
+        .O(i__carry__2_i_8_n_0));
   LUT1 #(
     .INIT(2'h1)) 
+    i__carry_i_1
+       (.I0(dds_tx09_inc[3]),
+        .O(i__carry_i_1_n_0));
+  LUT2 #(
+    .INIT(4'hE)) 
     i__carry_i_1__0
-       (.I0(dds_tx09_inc[1]),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__0_n_6 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__0_n_5 ),
         .O(i__carry_i_1__0_n_0));
   LUT2 #(
     .INIT(4'h2)) 
@@ -2756,39 +2808,49 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
        (.I0(\dds_new_freq_reg_n_0_[4] ),
         .I1(\dds_new_inc_reg_n_0_[20] ),
         .O(i__carry_i_1__1_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    i__carry_i_2
+       (.I0(dds_tx09_inc[2]),
+        .O(i__carry_i_2_n_0));
   LUT2 #(
     .INIT(4'hE)) 
-    i__carry_i_2
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__0_n_7 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__0_n_6 ),
-        .O(i__carry_i_2_n_0));
+    i__carry_i_2__0
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry_n_4 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__0_n_7 ),
+        .O(i__carry_i_2__0_n_0));
   LUT4 #(
     .INIT(16'h2F02)) 
-    i__carry_i_2__0
+    i__carry_i_2__1
        (.I0(\dds_new_freq_reg_n_0_[2] ),
         .I1(\dds_new_inc_reg_n_0_[18] ),
         .I2(\dds_new_inc_reg_n_0_[19] ),
         .I3(\dds_new_freq_reg_n_0_[3] ),
-        .O(i__carry_i_2__0_n_0));
+        .O(i__carry_i_2__1_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    i__carry_i_3
+       (.I0(dds_tx09_inc[1]),
+        .O(i__carry_i_3_n_0));
   LUT2 #(
     .INIT(4'hE)) 
-    i__carry_i_3
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry_n_5 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry_n_4 ),
-        .O(i__carry_i_3_n_0));
+    i__carry_i_3__0
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry_n_6 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry_n_5 ),
+        .O(i__carry_i_3__0_n_0));
   LUT4 #(
     .INIT(16'h2F02)) 
-    i__carry_i_3__0
+    i__carry_i_3__1
        (.I0(\dds_new_freq_reg_n_0_[0] ),
         .I1(\dds_new_inc_reg_n_0_[16] ),
         .I2(\dds_new_inc_reg_n_0_[17] ),
         .I3(\dds_new_freq_reg_n_0_[1] ),
-        .O(i__carry_i_3__0_n_0));
+        .O(i__carry_i_3__1_n_0));
   LUT2 #(
-    .INIT(4'hE)) 
+    .INIT(4'hD)) 
     i__carry_i_4
-       (.I0(dds_tx09_inc2_carry_n_7),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry_n_6 ),
+       (.I0(\dds_tx09_inc_reg[0]_0 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry_n_7 ),
         .O(i__carry_i_4_n_0));
   LUT2 #(
     .INIT(4'h9)) 
@@ -2807,8 +2869,8 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   LUT2 #(
     .INIT(4'h1)) 
     i__carry_i_5__0
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__0_n_5 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__0_n_4 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry__0_n_6 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__0_n_5 ),
         .O(i__carry_i_5__0_n_0));
   LUT4 #(
     .INIT(16'h9009)) 
@@ -2821,20 +2883,20 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   LUT2 #(
     .INIT(4'h1)) 
     i__carry_i_6__0
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry__0_n_7 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry__0_n_6 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry_n_4 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry__0_n_7 ),
         .O(i__carry_i_6__0_n_0));
   LUT2 #(
     .INIT(4'h1)) 
     i__carry_i_7
-       (.I0(\dds_tx09_inc2_inferred__0/i__carry_n_5 ),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry_n_4 ),
+       (.I0(\dds_tx09_inc2_inferred__0/i__carry_n_6 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry_n_5 ),
         .O(i__carry_i_7_n_0));
   LUT2 #(
-    .INIT(4'h1)) 
+    .INIT(4'h2)) 
     i__carry_i_8
-       (.I0(dds_tx09_inc2_carry_n_7),
-        .I1(\dds_tx09_inc2_inferred__0/i__carry_n_6 ),
+       (.I0(\dds_tx09_inc_reg[0]_0 ),
+        .I1(\dds_tx09_inc2_inferred__0/i__carry_n_7 ),
         .O(i__carry_i_8_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 loop_cnt0_carry
@@ -3062,14 +3124,16 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
        (.I0(\loop_cnt_reg_n_0_[0] ),
         .I1(\state_reg_n_0_[0] ),
         .O(\loop_cnt[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
+  LUT5 #(
+    .INIT(32'h2222222F)) 
     \loop_cnt[10]_i_1 
        (.I0(loop_cnt0[10]),
         .I1(\state_reg_n_0_[0] ),
+        .I2(\state_reg_n_0_[1] ),
+        .I3(\state_reg_n_0_[4] ),
+        .I4(\state_reg_n_0_[2] ),
         .O(\loop_cnt[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \loop_cnt[11]_i_1 
@@ -3085,23 +3149,24 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
         .I3(\state_reg_n_0_[0] ),
         .I4(loop_cnt0[12]),
         .O(\loop_cnt[12]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h2222222F)) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
+  LUT2 #(
+    .INIT(4'hE)) 
     \loop_cnt[13]_i_1 
        (.I0(loop_cnt0[13]),
+        .I1(\state_reg_n_0_[0] ),
+        .O(\loop_cnt[13]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT5 #(
+    .INIT(32'h2222222F)) 
+    \loop_cnt[14]_i_1 
+       (.I0(loop_cnt0[14]),
         .I1(\state_reg_n_0_[0] ),
         .I2(\state_reg_n_0_[1] ),
         .I3(\state_reg_n_0_[4] ),
         .I4(\state_reg_n_0_[2] ),
-        .O(\loop_cnt[13]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \loop_cnt[14]_i_1 
-       (.I0(loop_cnt0[14]),
-        .I1(\state_reg_n_0_[0] ),
         .O(\loop_cnt[14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \loop_cnt[15]_i_1 
@@ -3115,21 +3180,21 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
        (.I0(loop_cnt0[16]),
         .I1(\state_reg_n_0_[0] ),
         .O(\loop_cnt[16]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \loop_cnt[17]_i_1 
        (.I0(loop_cnt0[17]),
         .I1(\state_reg_n_0_[0] ),
         .O(\loop_cnt[17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \loop_cnt[18]_i_1 
        (.I0(loop_cnt0[18]),
         .I1(\state_reg_n_0_[0] ),
         .O(\loop_cnt[18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \loop_cnt[19]_i_1 
@@ -3143,40 +3208,35 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
        (.I0(loop_cnt0[1]),
         .I1(\state_reg_n_0_[0] ),
         .O(\loop_cnt[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \loop_cnt[20]_i_1 
        (.I0(loop_cnt0[20]),
         .I1(\state_reg_n_0_[0] ),
         .O(\loop_cnt[20]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \loop_cnt[21]_i_1 
        (.I0(loop_cnt0[21]),
         .I1(\state_reg_n_0_[0] ),
         .O(\loop_cnt[21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT5 #(
-    .INIT(32'hFEFEFE00)) 
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
     \loop_cnt[22]_i_1 
-       (.I0(\state_reg_n_0_[1] ),
-        .I1(\state_reg_n_0_[4] ),
-        .I2(\state_reg_n_0_[2] ),
-        .I3(\state_reg_n_0_[0] ),
-        .I4(loop_cnt0[22]),
+       (.I0(loop_cnt0[22]),
+        .I1(\state_reg_n_0_[0] ),
         .O(\loop_cnt[22]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h2222222F)) 
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
     \loop_cnt[23]_i_1 
        (.I0(loop_cnt0[23]),
         .I1(\state_reg_n_0_[0] ),
-        .I2(\state_reg_n_0_[1] ),
-        .I3(\state_reg_n_0_[4] ),
-        .I4(\state_reg_n_0_[2] ),
         .O(\loop_cnt[23]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \loop_cnt[24]_i_1 
@@ -3374,12 +3434,14 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
        (.I0(loop_cnt0[8]),
         .I1(\state_reg_n_0_[0] ),
         .O(\loop_cnt[8]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair27" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
+  LUT5 #(
+    .INIT(32'hFEFEFE00)) 
     \loop_cnt[9]_i_1 
-       (.I0(loop_cnt0[9]),
-        .I1(\state_reg_n_0_[0] ),
+       (.I0(\state_reg_n_0_[1] ),
+        .I1(\state_reg_n_0_[4] ),
+        .I2(\state_reg_n_0_[2] ),
+        .I3(\state_reg_n_0_[0] ),
+        .I4(loop_cnt0[9]),
         .O(\loop_cnt[9]_i_1_n_0 ));
   FDRE \loop_cnt_reg[0] 
        (.C(clk),
@@ -3841,7 +3903,7 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
        (.CI(1'b0),
         .CO({\NLW_state1_inferred__0/i__carry_CO_UNCONNECTED [3],\state1_inferred__0/i__carry_n_1 ,\state1_inferred__0/i__carry_n_2 ,\state1_inferred__0/i__carry_n_3 }),
         .CYINIT(1'b0),
-        .DI({1'b0,i__carry_i_1__1_n_0,i__carry_i_2__0_n_0,i__carry_i_3__0_n_0}),
+        .DI({1'b0,i__carry_i_1__1_n_0,i__carry_i_2__1_n_0,i__carry_i_3__1_n_0}),
         .O(\NLW_state1_inferred__0/i__carry_O_UNCONNECTED [3:0]),
         .S({1'b0,i__carry_i_4__0_n_0,i__carry_i_5_n_0,i__carry_i_6_n_0}));
   LUT4 #(
@@ -3855,9 +3917,9 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   LUT6 #(
     .INIT(64'h00000000B8FFB833)) 
     \state[0]__0_i_2 
-       (.I0(dds_tx09_inc1_carry__2_n_1),
+       (.I0(dds_tx09_inc1_carry__2_n_0),
         .I1(\state_reg[0]__0_n_0 ),
-        .I2(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
+        .I2(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
         .I3(\state_reg[1]__0_n_0 ),
         .I4(dds_current_freq0_carry_n_2),
         .I5(reset),
@@ -3895,9 +3957,9 @@ module UFBmod_Encoder_UFBmod_tx09_Encoder_FSM
   LUT6 #(
     .INIT(64'hFF00FF0047CC4700)) 
     \state[1]__0_i_1 
-       (.I0(dds_tx09_inc1_carry__2_n_1),
+       (.I0(dds_tx09_inc1_carry__2_n_0),
         .I1(\state_reg[0]__0_n_0 ),
-        .I2(\dds_tx09_inc1_inferred__0/i__carry__2_n_1 ),
+        .I2(\dds_tx09_inc1_inferred__0/i__carry__2_n_0 ),
         .I3(\state_reg[1]__0_n_0 ),
         .I4(dds_current_freq0_carry_n_2),
         .I5(reset),

@@ -8,29 +8,29 @@
     <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1604955173"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="UFBmod_Decoder_sim_netlist.vhdl" Type="VHDL">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="1604955354" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
         <UsedIn Val="SINGLE_LANGUAGE"/>
       </File>
       <File Name="UFBmod_Decoder_sim_netlist.v" Type="Verilog">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="1604955352" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
         <UsedIn Val="SINGLE_LANGUAGE"/>
       </File>
       <File Name="UFBmod_Decoder_stub.vhdl" Type="VHDL">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="1604955351" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTH_BLACKBOX_STUB"/>
       </File>
       <File Name="UFBmod_Decoder_stub.v" Type="Verilog">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="1604955351" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTH_BLACKBOX_STUB"/>
       </File>
       <File Name="UFBmod_Decoder.dcp" Type="DCP">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="1604955351" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>

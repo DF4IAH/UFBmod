@@ -7,7 +7,7 @@
   <device name="xc7a100t_0" gui_info="dashboard1=hw_vios[xc7a100t_0/hw_vio_1=VIO_PROBES_1;]"/>
   <ObjectList object_type="hw_cfgmem" gui_info="">
     <Object name="" gui_info="">
-      <Properties Property="PROGRAM.ADDRESS_RANGE" value="entire_device"/>
+      <Properties Property="PROGRAM.ADDRESS_RANGE" value="use_file"/>
       <Properties Property="PROGRAM.BLANK_CHECK" value="0"/>
       <Properties Property="PROGRAM.CFG_PROGRAM" value="1"/>
       <Properties Property="PROGRAM.CHECKSUM" value="0"/>
@@ -22,7 +22,7 @@
     <Object name="xc7a100t_0" gui_info="">
       <Properties Property="FULL_PROBES.FILE" value="$_project_name_.runs/impl_1/top.ltx"/>
       <Properties Property="PROBES.FILE" value="$_project_name_.runs/impl_1/top.ltx"/>
-      <Properties Property="PROGRAM.HW_BITSTREAM" value="$_project_name_.runs/impl_1/top.bit"/>
+      <Properties Property="PROGRAM.HW_BITSTREAM" value=""/>
       <Properties Property="PROGRAM.HW_CFGMEM_PART" value="s25fl256sxxxxxx0-spi-x1_x2_x4"/>
       <Properties Property="SLR.COUNT" value="1"/>
     </Object>
@@ -193,9 +193,9 @@
     <Object name="msys_i/xfft_rx24_dly3449_event_frame_started_out_0" gui_info="hw_vios/hw_vio_1=43"/>
   </ObjectList>
   <ObjectList object_type="hw_vio" gui_info="">
-    <Object name="hw_vio_1" gui_info="hw_vios/hw_vio_1/TablePreference=5	1083	Name	0	2147483647	15	493	493	Value	1	2147483647	15	257	257	Activity	2	2147483647	15	94	94	Direction	3	2147483647	15	113	113	VIO	4	2147483647	15	126	126			1	6	1	Name	Value	Activity	Direction	VIO"/>
+    <Object name="hw_vio_1" gui_info="hw_vios/hw_vio_1/TablePreference=5	949	Name	0	2147483647	15	493	493	Value	1	2147483647	15	123	123	Activity	2	2147483647	15	94	94	Direction	3	2147483647	15	113	113	VIO	4	2147483647	15	126	126			1	6	1	Name	Value	Activity	Direction	VIO"/>
     <Object name="msys_bd/msys_i/vio_0" gui_info="">
-      <Properties Property="CORE_REFRESH_RATE_MS" value="500"/>
+      <Properties Property="CORE_REFRESH_RATE_MS" value="100"/>
     </Object>
     <Object name="msys_i/vio_0" gui_info="">
       <Properties Property="CORE_REFRESH_RATE_MS" value="250"/>
