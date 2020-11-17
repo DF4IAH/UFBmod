@@ -38,13 +38,13 @@
 
 /************************** Variable Definitions *****************************/
 
-static XGpio gpio_TRX_CONFIG;
-static XGpio gpio_TRX_DDS;
-static XGpio gpio_TRX_AMPT;
-static XGpio gpio_TRX_PUSHDATA;
+static XGpio 		gpio_TRX_CONFIG;
+static XGpio 		gpio_TRX_DDS;
+static XGpio 		gpio_TRX_AMPT;
+static XGpio 		gpio_TRX_PUSHDATA;
 
-static XSpi_Config* spiConfigPtr;	/* Pointer to Configuration data */
-static XSpi  spiInstance;
+static XSpi_Config* spiTrxPtr;			/* Pointer to Transceiver chip */
+static XSpi  		spiTrxInstance;
 
 /*
  * The buffer used for Transmission/Reception of the SPI data frames.
@@ -344,10 +344,10 @@ static u32 TrxGetIrqs(u32* irqs)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Read the IRQs: RF09_IRQS, RF24_IRQS, BBC0_IRQS, BBC1_IRQS */
 	{
@@ -358,7 +358,7 @@ static u32 TrxGetIrqs(u32* irqs)
 		writeBuf[1] = 0x00U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		u32 irqWord;
 		irqWord  = ((u32) readBuf[2])      ;
@@ -374,7 +374,7 @@ static u32 TrxGetIrqs(u32* irqs)
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	//xil_printf("TaskTrx: TrxGetIrqs done, RF09_IRQS RF24_IRQS BBC0_IRQS BBC1_IRQS = 0x%02X 0x%02X 0x%02X 0x%02X\r\n", rf09_irqs, rf24_irqs, bbc0_irqs, bbc1_irqs);
@@ -390,10 +390,10 @@ static u32 TrxBatteryGet(u8* state)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Read the STATE RF_BMDVC.BMS */
 	{
@@ -404,13 +404,13 @@ static u32 TrxBatteryGet(u8* state)
 		writeBuf[1] = 0x08U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		*state = (readBuf[2] & 0x20U) ?  0x01U : 0x00U;
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxBatteryGet done, state = 0x%02X\r\n", *state);
@@ -426,10 +426,10 @@ static u32 TrxAVccGet(u8* state)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Read the STATE RF09_AUXS.AVS */
 	{
@@ -440,13 +440,13 @@ static u32 TrxAVccGet(u8* state)
 		writeBuf[1] = 0x01U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		*state = (readBuf[2] & 0x04U) ?  0x01U : 0x00U;
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxAVccGet done, state = 0x%02X\r\n", *state);
@@ -458,10 +458,10 @@ static u32 TrxAVccGet(u8* state)
 static u32 TrxPllCfRF09Set(u8 cf)
 {
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Write the RF09_PLLCF.CF value */
 	{
@@ -473,11 +473,11 @@ static u32 TrxPllCfRF09Set(u8 cf)
 		writeBuf[2] = cf & 0x3f;
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxPllCfRF09Set done, set cf = 0x%02X\r\n", cf);
@@ -493,10 +493,10 @@ static u32 TrxPllLockedCfRF09Get(u8* ls, u8* cf)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Read the STATE RF09_PLL.LS, RF09_PLLCF.CF */
 	{
@@ -507,14 +507,14 @@ static u32 TrxPllLockedCfRF09Get(u8* ls, u8* cf)
 		writeBuf[1] = 0x21U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		*ls = (readBuf[2] & 0x02U) ?  0x01U : 0x00U;
 		*cf = readBuf[3];
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxPllLockedCfRF09Get done, ls = 0x%02X, cf = 0x%02X\r\n", *ls, *cf);
@@ -526,10 +526,10 @@ static u32 TrxPllLockedCfRF09Get(u8* ls, u8* cf)
 static u32 TrxPllCfRF24Set(u8 cf)
 {
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Write the RF24_PLLCF.CF value */
 	{
@@ -541,11 +541,11 @@ static u32 TrxPllCfRF24Set(u8 cf)
 		writeBuf[2] = cf & 0x3f;
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxPllCfRF24Set done, set cf = 0x%02X\r\n", cf);
@@ -561,10 +561,10 @@ static u32 TrxPllLockedCfRF24Get(u8* ls, u8* cf)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Read the STATE RF24_PLL.LS, RF24_PLLCF.CF */
 	{
@@ -575,14 +575,14 @@ static u32 TrxPllLockedCfRF24Get(u8* ls, u8* cf)
 		writeBuf[1] = 0x21U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		*ls = (readBuf[2] & 0x02U) ?  0x01U : 0x00U;
 		*cf = readBuf[3];
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxPllLockedCfRF24Get done, ls = 0x%02X, cf = 0x%02X\r\n", *ls, *cf);
@@ -598,10 +598,10 @@ static u32 TrxPllDcoIqRF09Set(u8 dcoI, u8 dcoQ)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Write the RF09_TXCQ.DCOI and RF09_TXCQ.DCOQ values */
 	{
@@ -614,11 +614,11 @@ static u32 TrxPllDcoIqRF09Set(u8 dcoI, u8 dcoQ)
 		writeBuf[3] = dcoQ & 0x3f;
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxPllDcoIqRF09Set done, set dcoI = 0x%02X \tdcoQ = 0x%02X\r\n", dcoI, dcoQ);
@@ -634,10 +634,10 @@ static u32 TrxPllDcoIqRF09Get(u8* dcoI, u8* dcoQ)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Read the RF09_TXCQ.DCOI and RF09_TXCQ.DCOQ values */
 	{
@@ -648,14 +648,14 @@ static u32 TrxPllDcoIqRF09Get(u8* dcoI, u8* dcoQ)
 		writeBuf[1] = 0x25U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		*dcoI = readBuf[2] & 0x3f;
 		*dcoQ = readBuf[3] & 0x3f;
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxPllDcoIqRF09Get done, get dcoI = 0x%02X \tdcoQ = 0x%02X\r\n", *dcoI, *dcoQ);
@@ -671,10 +671,10 @@ static u32 TrxPllDcoIqRF24Set(u8 dcoI, u8 dcoQ)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Write the RF24_TXCQ.DCOI and RF24_TXCQ.DCOQ values */
 	{
@@ -687,11 +687,11 @@ static u32 TrxPllDcoIqRF24Set(u8 dcoI, u8 dcoQ)
 		writeBuf[3] = dcoQ & 0x3f;
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxPllDcoIqRF24Set done, set dcoI = 0x%02X \tdcoQ = 0x%02X\r\n", dcoI, dcoQ);
@@ -707,10 +707,10 @@ static u32 TrxPllDcoIqRF24Get(u8* dcoI, u8* dcoQ)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Read the RF24_TXCQ.DCOI and RF24_TXCQ.DCOQ values */
 	{
@@ -721,14 +721,14 @@ static u32 TrxPllDcoIqRF24Get(u8* dcoI, u8* dcoQ)
 		writeBuf[1] = 0x25U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		*dcoI = readBuf[2] & 0x3f;
 		*dcoQ = readBuf[3] & 0x3f;
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxPllDcoIqRF24Get done, get dcoI = 0x%02X \tdcoQ = 0x%02X\r\n", *dcoI, *dcoQ);
@@ -744,10 +744,10 @@ static u32 TrxIqSyncGet(u8* state)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Read the STATE RF_IQIFC0.SF, RF_IQIFC2.SYNC */
 	{
@@ -758,7 +758,7 @@ static u32 TrxIqSyncGet(u8* state)
 		writeBuf[1] = 0x0aU;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 #if 0
 		*state = !((readBuf[2] & 0x40U) >> 6);					// RF_IQIFC0.SF
@@ -768,7 +768,7 @@ static u32 TrxIqSyncGet(u8* state)
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	//xil_printf("TaskTrx: TrxIqSyncGet done, state = 0x%02X\r\n", *state);
@@ -780,10 +780,10 @@ static u32 TrxIqSyncGet(u8* state)
 static u32 TrxCmdRF09Set(u8 cmd)
 {
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Write the CMD */
 	{
@@ -795,11 +795,11 @@ static u32 TrxCmdRF09Set(u8 cmd)
 		writeBuf[2] = (u8) (cmd & 0x07U);						// CMD
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxCmdRF09Set done, cmd = 0x%02X\r\n", cmd);
@@ -815,10 +815,10 @@ static u32 TrxStateRF09Get(u8* state)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Read the STATE */
 	{
@@ -829,13 +829,13 @@ static u32 TrxStateRF09Get(u8* state)
 		writeBuf[1] = 0x02U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		*state = readBuf[2] & 0x07U;
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	//xil_printf("TaskTrx: TrxStateRF09Get done, state = 0x%02X\r\n", *state);
@@ -847,10 +847,10 @@ static u32 TrxStateRF09Get(u8* state)
 static u32 TrxCmdRF24Set(u8 cmd)
 {
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Write the CMD */
 	{
@@ -862,11 +862,11 @@ static u32 TrxCmdRF24Set(u8 cmd)
 		writeBuf[2] = (u8) (cmd & 0x07U);						// CMD
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxCmdRF24Set done, cmd = 0x%02X\r\n", cmd);
@@ -882,10 +882,10 @@ static u32 TrxStateRF24Get(u8* state)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Read the STATE */
 	{
@@ -896,13 +896,13 @@ static u32 TrxStateRF24Get(u8* state)
 		writeBuf[1] = 0x02U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		*state = readBuf[2] & 0x07U;
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxStateRF24Get done, state = 0x%02X\r\n", *state);
@@ -918,10 +918,10 @@ static u32 TrxRssiRF09Get(s8* rssi)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Read the RSSI of RF09 */
 	{
@@ -932,13 +932,13 @@ static u32 TrxRssiRF09Get(s8* rssi)
 		writeBuf[1] = 0x0dU;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		*rssi = readBuf[2];
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	//xil_printf("TaskTrx: TrxRssiRF09Get done, rssi = %i dBm\r\n", *rssi);
@@ -954,10 +954,10 @@ static u32 TrxRssiRF24Get(s8* rssi)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* Read the RSSI of RF24 */
 	{
@@ -968,13 +968,13 @@ static u32 TrxRssiRF24Get(s8* rssi)
 		writeBuf[1] = 0x0dU;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		*rssi = readBuf[2];
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxRssiRF24Get done, rssi = %i dBm\r\n", *rssi);
@@ -1001,10 +1001,10 @@ static u32 TrxOperationModeRFSet(u8 chpm)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* 0x0006 ff.: RF_CFG, RF_CLKO, RF_BMDVC, RF_XOC, RF_IQIFC0, RF_IQIFC01, RF_IQIFC02 */
 	{
@@ -1015,7 +1015,7 @@ static u32 TrxOperationModeRFSet(u8 chpm)
 		writeBuf[1] = 0x06U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		writeBuf[0] = 0x00U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0006
 		writeBuf[1] = 0x06U;									// Reg-LSB
@@ -1024,18 +1024,18 @@ static u32 TrxOperationModeRFSet(u8 chpm)
 		writeBuf[4] = (readBuf[4] & 0x1fU) 	|  0x00U;			// RF_BMDVC		BMHR, BMVTH (p79)
 		writeBuf[5] = 0x00U;									// RF_XOC		FS=00, TRIM=00 (p69)
 #ifdef LVDS_PTT													// XXX
-		writeBuf[6] = 0x10U | 0x00U | 0x02U | 0x01U;			// RF_IQIFC0	EXTLB=#00, DRV=(#00#10#20)#30, CMV=(#00#04)#08(#0c), CMV1V2=#00(#02), EEC=#00#01 (p27)
+		writeBuf[6] = 0x30U | 0x00U | 0x08U | 0x01U;			// RF_IQIFC0	EXTLB=#00, DRV=(#00#10#20)#30, CMV=(#00#04)#08(#0c), CMV1V2=#00(#02), EEC=#00#01 (p27)
 #else
 		writeBuf[6] = 0x10U | 0x00U | 0x02U | 0x00U;			// RF_IQIFC0	EXTLB=#00, DRV=(#00#10#20)#30, CMV=(#00#04)#08(#0c), CMV1V2=#00(#02), EEC=#00#01 (p27)
 #endif
 		writeBuf[7] = (chpm  << 4) 			| 0x03U;			// RF_IQIFC1	CHPM, SKEWDRV=#00(#01#02#03) (p32)
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxOperationModeRFSet done\r\n");
@@ -1078,10 +1078,10 @@ static u32 TrxOperationModeRF09BBC0Set(u8 ctx, s32 pwr)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* 0x0112 ff.: RF09_TXCUTC, RF09_TXDFE, RF09_PAC */
 	{
@@ -1093,7 +1093,7 @@ static u32 TrxOperationModeRF09BBC0Set(u8 ctx, s32 pwr)
 		writeBuf[1] = 0x12U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 #endif
 
 		writeBuf[0] = 0x01U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0112
@@ -1103,7 +1103,7 @@ static u32 TrxOperationModeRF09BBC0Set(u8 ctx, s32 pwr)
 		writeBuf[4] = ((pacur & 0x03U) << 5) | (txpwr & 0x1fU);	// RF09_PAC		PACUR, TXPWR (p49)
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* 0x0109 ff.: RF09_RXBWC, RF09_RXDFE, RF09_AGCC, RF09_AGCS, RF09_RSSI, RF09_EDC, RF09_EDD, RF09_EDV  */
@@ -1115,7 +1115,7 @@ static u32 TrxOperationModeRF09BBC0Set(u8 ctx, s32 pwr)
 		writeBuf[1] = 0x09U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		writeBuf[0] = 0x01U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0109
 		writeBuf[1] = 0x09U;									// Reg-LSB
@@ -1135,7 +1135,7 @@ static u32 TrxOperationModeRF09BBC0Set(u8 ctx, s32 pwr)
 		writeBuf[8] = ((readBuf[8] & 0x00U) | (0x48U << 0));	// RF09_EDD	DF=40, DTB=08 (p61)
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* 0x0101: RF09_AUXS */
@@ -1148,7 +1148,7 @@ static u32 TrxOperationModeRF09BBC0Set(u8 ctx, s32 pwr)
 		writeBuf[2] = 0x22U;									// RF09_AUXS	EXTLNABYP=00, AGCMAP=20, AVEXT=00, AVEN=00, PAVC=02  (p72)
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* 0x0116: RF09_PADFE */
@@ -1161,7 +1161,7 @@ static u32 TrxOperationModeRF09BBC0Set(u8 ctx, s32 pwr)
 		writeBuf[2] = 0x40U;									// RF09_PADFE	PADFE=40  (p73)
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* 0x0301 ff.: BBC0_PC */
@@ -1174,7 +1174,7 @@ static u32 TrxOperationModeRF09BBC0Set(u8 ctx, s32 pwr)
 		writeBuf[1] = 0x01U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 #endif
 
 		writeBuf[0] = 0x03U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0301
@@ -1182,11 +1182,11 @@ static u32 TrxOperationModeRF09BBC0Set(u8 ctx, s32 pwr)
 		writeBuf[2] = 0x55U | (ctx << 7);						// BBC0_PC	FCSFE=40, TXAFCS=10, FCST=00, BBEN=04, PT=01 (p84)
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxOperationModeRF09BB0Set done\r\n");
@@ -1229,10 +1229,10 @@ static u32 TrxOperationModeRF24BBC1Set(u8 ctx, s32 pwr)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* 0x0212 ff.: RF24_TXCUTC, RF24_TXDFE, RF24_PAC */
 	{
@@ -1244,7 +1244,7 @@ static u32 TrxOperationModeRF24BBC1Set(u8 ctx, s32 pwr)
 		writeBuf[1] = 0x12U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 #endif
 
 		writeBuf[0] = 0x02U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0212
@@ -1254,7 +1254,7 @@ static u32 TrxOperationModeRF24BBC1Set(u8 ctx, s32 pwr)
 		writeBuf[4] = ((pacur & 0x03U) << 5) | (txpwr & 0x1fU);	// RF09_PAC		PACUR, TXPWR (p49)
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* 0x0209 ff.: RF24_RXBWC, RF24_RXDFE, RF24_AGCC, RF24_AGCS, RF24_RSSI, RF24_EDC, RF24_EDD, RF24_EDV  */
@@ -1266,7 +1266,7 @@ static u32 TrxOperationModeRF24BBC1Set(u8 ctx, s32 pwr)
 		writeBuf[1] = 0x09U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		writeBuf[0] = 0x02U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0209
 		writeBuf[1] = 0x09U;									// Reg-LSB
@@ -1279,7 +1279,7 @@ static u32 TrxOperationModeRF24BBC1Set(u8 ctx, s32 pwr)
 		writeBuf[8] = ((readBuf[8] & 0x00U) | (0x48U << 0));	// RF09_EDD	DF=40, DTB=08 (p61)
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* 0x0201: RF24_AUXS */
@@ -1292,7 +1292,7 @@ static u32 TrxOperationModeRF24BBC1Set(u8 ctx, s32 pwr)
 		writeBuf[2] = 0x22U;									// RF09_AUXS	EXTLNABYP=00, AGCMAP=20, AVEXT=00, AVEN=00, PAVC=02  (p72)
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* 0x0216: RF24_PADFE */
@@ -1305,7 +1305,7 @@ static u32 TrxOperationModeRF24BBC1Set(u8 ctx, s32 pwr)
 		writeBuf[2] = 0x40U;									// RF09_PADFE	PADFE=40  (p73)
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* 0x0401 ff.: BBC1_PC */
@@ -1318,7 +1318,7 @@ static u32 TrxOperationModeRF24BBC1Set(u8 ctx, s32 pwr)
 		writeBuf[1] = 0x01U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 #endif
 
 		writeBuf[0] = 0x04U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0401
@@ -1326,11 +1326,11 @@ static u32 TrxOperationModeRF24BBC1Set(u8 ctx, s32 pwr)
 		writeBuf[2] = 0x55U | (ctx << 7);						// BBC0_PC	FCSFE=40, TXAFCS=10, FCST=00, BBEN=04, PT=01 (p84)
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxOperationModeRF24BB1Set done\r\n");
@@ -1349,10 +1349,10 @@ static u32 TrxCtxBBC0Set(u8 ctx)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* 0x0301 ff.: BBC0_PC */
 	{
@@ -1363,18 +1363,18 @@ static u32 TrxCtxBBC0Set(u8 ctx)
 		writeBuf[1] = 0x01U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		writeBuf[0] = 0x03U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0301
 		writeBuf[1] = 0x01U;									// Reg-LSB
 		writeBuf[2] = ((readBuf[2] & 0x7fU) | (ctx << 7));		// BBC0_PC	CTX (p84)
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxCtxBBC0Set done, ctx = %d\r\n", ctx);
@@ -1393,10 +1393,10 @@ static u32 TrxCtxBBC1Set(u8 ctx)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* 0x0401 ff.: BBC1_PC */
 	{
@@ -1407,18 +1407,18 @@ static u32 TrxCtxBBC1Set(u8 ctx)
 		writeBuf[1] = 0x01U;									// Reg-LSB
 
 		/* Read the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		writeBuf[0] = 0x04U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0401
 		writeBuf[1] = 0x01U;									// Reg-LSB
 		writeBuf[2] = ((readBuf[2] & 0x7fU) | (ctx << 7));		// BBC0_PC	CTX (p84)
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxCtxBBC1Set done, ctx = %d\r\n", ctx);
@@ -1430,10 +1430,10 @@ static u32 TrxCtxBBC1Set(u8 ctx)
 static u32 TrxDacCwRF09Set(u8 enable)
 {
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* 0x0127 ff.: RF09_TXDACI, RF09_TXDACQ */
 	{
@@ -1452,11 +1452,11 @@ static u32 TrxDacCwRF09Set(u8 enable)
 		}
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxDacCwRF09Set done, enable = %d\r\n", (enable ?  1 : 0));
@@ -1468,10 +1468,10 @@ static u32 TrxDacCwRF09Set(u8 enable)
 static u32 TrxDacCwRF24Set(u8 enable)
 {
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* 0x0227 ff.: RF24_TXDACI, RF24_TXDACQ */
 	{
@@ -1490,11 +1490,11 @@ static u32 TrxDacCwRF24Set(u8 enable)
 		}
 
 		/* Write the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxDacCwRF24Set done, enable = %d\r\n", (enable ?  1 : 0));
@@ -1530,16 +1530,16 @@ static u32 TrxFreqSet(u32 frequencyHz)
 		writeBuf[6] = (0x02U << 6) | ((u8) ((calc >> 24) & 0x01ULL));	// RF09_CNH 	Mode2
 
 		/* Start the SPI driver so that the device is enabled */
-		XSpi_Start(&spiInstance);
+		XSpi_Start(&spiTrxInstance);
 
 		/* Disable Global interrupt to use polled mode operation */
-		XSpi_IntrGlobalDisable(&spiInstance);
+		XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 		/* Transmit the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		/* Stop the SPI driver */
-		XSpi_Stop(&spiInstance);
+		XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 		xil_printf("TaskTrx: RF09 - frequency set to %lu Hz\r\n", frequencyHz);
@@ -1569,16 +1569,16 @@ static u32 TrxFreqSet(u32 frequencyHz)
 		writeBuf[6] = (0x03U << 6) | ((u8) ((calc >> 24) & 0x01ULL));	// RF24_CNH 	Mode3
 
 		/* Start the SPI driver so that the device is enabled */
-		XSpi_Start(&spiInstance);
+		XSpi_Start(&spiTrxInstance);
 
 		/* Disable Global interrupt to use polled mode operation */
-		XSpi_IntrGlobalDisable(&spiInstance);
+		XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 		/* Transmit the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		/* Stop the SPI driver */
-		XSpi_Stop(&spiInstance);
+		XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 		xil_printf("TaskTrx: RF24 - frequency set to %lu Hz\r\n", frequencyHz);
@@ -1604,10 +1604,10 @@ static u32 TrxTxFlBBC0Set(u16 txFlCount)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* 0x0306 ff.: BBC0_TXFLL, BBC0_TXFLH */
 	{
@@ -1620,11 +1620,11 @@ static u32 TrxTxFlBBC0Set(u16 txFlCount)
 		writeBuf[3] = (u8) ((txFlCount >>  8) & 0x07U);			// BBC0_TXFLH
 
 		/* Transmit the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxTxFlBBC0Set done with BBC0_TXFL = %d\r\n", txFlCount);
@@ -1646,10 +1646,10 @@ static u32 TrxTxFlBBC1Set(u16 txFlCount)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* 0x0406 ff.: BBC1_TXFLL, BBC1_TXFLH */
 	{
@@ -1662,11 +1662,11 @@ static u32 TrxTxFlBBC1Set(u16 txFlCount)
 		writeBuf[3] = (u8) ((txFlCount >>  8) & 0x07U);			// BBC0_TXFLH
 
 		/* Transmit the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxTxFlBBC1Set done with BBC0_TXFL = %d\r\n", txFlCount);
@@ -1678,10 +1678,10 @@ static u32 TrxTxFlBBC1Set(u16 txFlCount)
 static u32 TrxFbliBBC0Set(u16 level)
 {
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* 0x0308 f.: BBC0_FBLIL, BBC0_FBLIH */
 	{
@@ -1694,11 +1694,11 @@ static u32 TrxFbliBBC0Set(u16 level)
 		writeBuf[3] = (u8) ((level >>  8) & 0x07U);				// BBC0_FBLH
 
 		/* Transmit the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxFbliBBC0Set done, level = 0x%04X\r\n", level);
@@ -1714,10 +1714,10 @@ static u32 TrxFblBBC0Get(u16* level)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* 0x0308 f.: BBC0_FBLL, BBC0_FBLH */
 	{
@@ -1728,14 +1728,14 @@ static u32 TrxFblBBC0Get(u16* level)
 		writeBuf[1] = 0x08U;									// Reg-LSB
 
 		/* Transmit the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		u16 word = (((u16) readBuf[3]) << 8) | ((u16) readBuf[2]);
 		*level = word;
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxFblBBC0Get done, returned level = 0x%04X\r\n", *level);
@@ -1748,10 +1748,10 @@ static u32 TrxFblBBC0Get(u16* level)
 static u32 TrxFbliBBC1Set(u16 level)
 {
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* 0x0408 f.: BBC1_FBLIL, BBC1_FBLIH */
 	{
@@ -1764,11 +1764,11 @@ static u32 TrxFbliBBC1Set(u16 level)
 		writeBuf[3] = (u8) ((level >>  8) & 0x07U);				// BBC0_FBLH
 
 		/* Transmit the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxFbliBBC1Set done, level = 0x%04X\r\n", level);
@@ -1784,10 +1784,10 @@ static u32 TrxFblBBC1Get(u16* level)
 	}
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	/* 0x0408 f.: BBC1_FBLL, BBC1_FBLH */
 	{
@@ -1798,14 +1798,14 @@ static u32 TrxFblBBC1Get(u16* level)
 		writeBuf[1] = 0x08U;									// Reg-LSB
 
 		/* Transmit the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, frameLen);
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
 
 		u16 word = (((u16) readBuf[3]) << 8) | ((u16) readBuf[2]);
 		*level = word;
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxFblBBC1Get done, returned level = 0x%04X\r\n", *level);
@@ -1823,10 +1823,10 @@ static u32 TrxTxFrameBufBBC0Set(u16 len, u8* txFrameBufTemplate)
 	TrxTxFlBBC0Set(len);
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	for (u16 lenIdx = 0U; lenIdx < min((BUFFER_SIZE >> 1), (len - lenIdx)); lenIdx += min((BUFFER_SIZE >> 1), (len - lenIdx))) {
 		u8 readBuf[BUFFER_SIZE]  = { 0 };
@@ -1839,11 +1839,11 @@ static u32 TrxTxFrameBufBBC0Set(u16 len, u8* txFrameBufTemplate)
 		}
 
 		/* Transmit the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, 2U + (BUFFER_SIZE >> 1));
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, 2U + (BUFFER_SIZE >> 1));
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 	return XST_SUCCESS;
 }
@@ -1857,10 +1857,10 @@ static u32 TrxTxFrameBufBBC1Set(u16 len, u8* txFrameBufTemplate)
 	TrxTxFlBBC1Set(len);
 
 	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiInstance);
+	XSpi_Start(&spiTrxInstance);
 
 	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiInstance);
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 	for (u16 lenIdx = 0U; lenIdx < min((BUFFER_SIZE >> 1), (len - lenIdx)); lenIdx += min((BUFFER_SIZE >> 1), (len - lenIdx))) {
 		u8 readBuf[BUFFER_SIZE]  = { 0 };
@@ -1873,11 +1873,11 @@ static u32 TrxTxFrameBufBBC1Set(u16 len, u8* txFrameBufTemplate)
 		}
 
 		/* Transmit the data */
-		XSpi_Transfer(&spiInstance, writeBuf, readBuf, 2U + (BUFFER_SIZE >> 1));
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, 2U + (BUFFER_SIZE >> 1));
 	}
 
 	/* Stop the SPI driver */
-	XSpi_Stop(&spiInstance);
+	XSpi_Stop(&spiTrxInstance);
 
 	return XST_SUCCESS;
 }
@@ -2510,13 +2510,15 @@ void taskTrx(void* pvParameters)
 		// LVDS IDELAY: set tap of data channel
 		//XGpio_DiscreteWrite(   &gpio_TRX_CONFIG, 1U, ((16UL << 21) | (16UL << 16)));
 
+		/* Release TRX chip resetn */
+		XGpio_DiscreteWrite(   &gpio_TRX_CONFIG, 1U, 0x00000002UL);
+		vTaskDelay(pdMS_TO_TICKS(25));
+		XGpio_DiscreteSet(     &gpio_TRX_CONFIG, 1U, 0x80000000UL);
+
 		// LVDS IDELAY: load tap values
 		/* TRX proc_sys_reset_0 */
-		XGpio_DiscreteWrite(   &gpio_TRX_CONFIG, 1U, 0x00000002UL);
+		vTaskDelay(pdMS_TO_TICKS(25));
 		XGpio_DiscreteClear(   &gpio_TRX_CONFIG, 1U, 0x00000002UL);
-
-		/* Release TRX chip resetn */
-		XGpio_DiscreteSet(     &gpio_TRX_CONFIG, 1U, 0x80000000UL);
 
 		// read  - bit2: RX24 LVDS synced, bit1: RX09 LVDS synced, bit0: 25 MHz / 26 MHz TRX clock PLL locked
 		//XGpio_SetDataDirection(&gpio_TRX_CONFIG, 2U, 0xffffffffUL);	// 32 bit input
@@ -2582,12 +2584,12 @@ void taskTrx(void* pvParameters)
 	/* Init SPI */
 	{
 		/* Set up the device in loopback mode and enable master mode */
-		spiConfigPtr = XSpi_LookupConfig(XPAR_AXI_TRX_TRX_CONFIG_QUAD_SPI_0_DEVICE_ID);
-		if (spiConfigPtr == NULL) {
+		spiTrxPtr = XSpi_LookupConfig(XPAR_AXI_TRX_TRX_CONFIG_QUAD_SPI_0_DEVICE_ID);
+		if (spiTrxPtr == NULL) {
 			return /*XST_DEVICE_NOT_FOUND*/;
 		}
 
-		int status = XSpi_CfgInitialize(&spiInstance, spiConfigPtr, spiConfigPtr->BaseAddress);
+		int status = XSpi_CfgInitialize(&spiTrxInstance, spiTrxPtr, spiTrxPtr->BaseAddress);
 		if (status != XST_SUCCESS) {
 #ifdef LOGGING
 			xil_printf("TaskTrx: *** SPI init error 1\r\n");
@@ -2596,7 +2598,7 @@ void taskTrx(void* pvParameters)
 		}
 
 		/* Set the SPI device as a master */
-		status = XSpi_SetOptions(&spiInstance, XSP_MASTER_OPTION);
+		status = XSpi_SetOptions(&spiTrxInstance, XSP_MASTER_OPTION);
 		if (status != XST_SUCCESS) {
 #ifdef LOGGING
 			xil_printf("TaskTrx: *** SPI init error 2\r\n");
@@ -2605,7 +2607,7 @@ void taskTrx(void* pvParameters)
 		}
 
 		/* Set the one and only select line during access */
-		XSpi_SetSlaveSelect(&spiInstance, 0x00000001UL);
+		XSpi_SetSlaveSelect(&spiTrxInstance, 0x00000001UL);
 	}
 
 	/* Check version of TRX chip */
@@ -2614,10 +2616,10 @@ void taskTrx(void* pvParameters)
 		u8 Trx_Reg_pn_vn[4] 		= { 0x00U, 0x0dU, 0x00U, 0x00U };
 
 		/* Start the SPI driver so that the device is enabled */
-		XSpi_Start(&spiInstance);
+		XSpi_Start(&spiTrxInstance);
 
 		/* Disable Global interrupt to use polled mode operation */
-		XSpi_IntrGlobalDisable(&spiInstance);
+		XSpi_IntrGlobalDisable(&spiTrxInstance);
 
 		/* Prepare Receive buffer */
 		for (u8 idx = 0; idx < BUFFER_SIZE; ++idx) {
@@ -2625,10 +2627,10 @@ void taskTrx(void* pvParameters)
 		}
 
 		/* Transmit the data */
-		int status = XSpi_Transfer(&spiInstance, Trx_Reg_pn_vn, buffer, NumBytesToSend);
+		int status = XSpi_Transfer(&spiTrxInstance, Trx_Reg_pn_vn, buffer, NumBytesToSend);
 
 		/* Stop the SPI driver */
-		XSpi_Stop(&spiInstance);
+		XSpi_Stop(&spiTrxInstance);
 
 		if (status != XST_SUCCESS) {
 #ifdef LOGGING

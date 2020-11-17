@@ -7,6 +7,7 @@ extern "C" {
 
 #include "xparameters.h"
 #include "xemaclite.h"
+#include "include/xilisf.h"
 
 
 #ifndef IP_ADDR_SIZE
@@ -43,6 +44,8 @@ extern u8 owreadEUI48(void);
 
 extern unsigned int iicRead(UINTPTR baseAddr, u8 iicChipAddr, u8 iicRegister, u8* getValue);
 extern unsigned int iicReadAndModify(UINTPTR baseAddr, u8 iicChipAddr, u8 iicRegister, u8 setValue, u8 readMask);
+
+extern int XIsf_GetStatus(XIsf* InstancePtr, u8* ReadPtr);
 
 extern unsigned int lcdInit(void);
 extern void pwmLedSet(u32 enableBF, u32 changeMsk);

@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="AGCC" key="selection"/>
+		<item value="03" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="x13"/>
+			<item value="x03"/>
+			<item value="03"/>
+			<item value="sr_load_exec"/>
+			<item value="BYTE1"/>
+			<item value="BYTE"/>
+			<item value="InstancePtr-&gt;WriteBufPtr[BYTE1] = XISF_CMD_SUB_SECTOR_ERASE;"/>
+			<item value="XIsf_GetStatus"/>
+			<item value="u8"/>
+			<item value="LD_SREC_LINE_ERROR"/>
+			<item value="BYTE2"/>
+			<item value="spiTrxPtr"/>
+			<item value="spiTrx"/>
+			<item value="SPI"/>
 			<item value="AGCC"/>
-			<item value="868"/>
-			<item value="LVDS_PTT"/>
-			<item value="TestRF09Rx"/>
-			<item value="gpio_PWM_Lights"/>
-			<item value="867"/>
-			<item value="869"/>
-			<item value="PUSHDATA"/>
-			<item value="squelch"/>
-			<item value="GPIO"/>
-			<item value="_CONFIG_AXI"/>
-			<item value="xilisf.h"/>
-			<item value="I/Q mixer"/>
-			<item value="I/Q mixer "/>
-			<item value="I/Q"/>
 		</list>
 		<list key="replacehistory">
 		</list>

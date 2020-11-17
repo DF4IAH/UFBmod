@@ -1,6 +1,0 @@
-
-rtos.srec: rtos.elf
-	@echo 'Invoking: MicroBlaze ELF to SREC convertion'
-	mb-size rtos.elf  |tee "rtos.elf.size"
-	@echo 'Finished building: $@'
-	@echo ' '

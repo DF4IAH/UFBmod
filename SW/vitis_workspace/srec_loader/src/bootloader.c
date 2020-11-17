@@ -78,7 +78,7 @@ static XIsf Isf;
 static XSpi Spi;
 
 
-XIsf_ReadParam ReadParam;
+XIsf_ReadParam sr_readParam;
 
 /*
  * The following variables are shared between non-interrupt processing and
@@ -109,7 +109,7 @@ u8 IsfWriteBuffer[XISF_CMD_SEND_EXTRA_BYTES];
 /*
  * Buffer used during Read transactions.
  */
-u8 ReadBuffer[ISF_PAGE_SIZE + XISF_CMD_SEND_EXTRA_BYTES];
+u8 sr_readBuffer[ISF_PAGE_SIZE + XISF_CMD_SEND_EXTRA_BYTES];
 
 extern int srec_line;
 
@@ -273,10 +273,11 @@ static uint8_t load_exec ()
 
 static uint8_t flash_get_srec_line (uint8_t *buf)
 {
-    int Status;
+    int status;
 	uint8_t c;
     int count = 0;
     int mode = XISF_CMD_SEND_EXTRA_BYTES;
+
     while (1) {
     	TransferInProgress = TRUE;
 
@@ -286,9 +287,9 @@ static uint8_t flash_get_srec_line (uint8_t *buf)
 		 * - Number of bytes to be read from the Serial Flash.
 		 * - Read Buffer to which the data is to be read.
 		 */
-    	ReadParam.Address = flbuf++;
-    	ReadParam.NumBytes = 1;
-    	ReadParam.ReadPtr = ReadBuffer;
+    	sr_readParam.Address = flbuf++;
+    	sr_readParam.NumBytes = 1;
+    	sr_readParam.ReadPtr = sr_readBuffer;
 
 
 #if ((XPAR_XISF_FLASH_FAMILY == INTEL) || (XPAR_XISF_FLASH_FAMILY == STM) || \
@@ -301,43 +302,43 @@ static uint8_t flash_get_srec_line (uint8_t *buf)
 		if (((Isf.ManufacturerID == XISF_MANUFACTURER_ID_MICRON) ||
 				(Isf.ManufacturerID == XISF_MANUFACTURER_ID_SPANSION)) &&
 				(((u8)Isf.DeviceCode) > XISF_SPANSION_ID_BYTE2_128)) {
-			Status = XIsf_WriteEnable(&Isf, XISF_WRITE_ENABLE);
-			if(Status != XST_SUCCESS) {
+			status = XIsf_WriteEnable(&Isf, XISF_WRITE_ENABLE);
+			if(status != XST_SUCCESS) {
 				return XST_FAILURE;
 			}
 
-			Status = IsfWaitForFlashNotBusy();
-			if(Status != XST_SUCCESS) {
+			status = IsfWaitForFlashNotBusy();
+			if(status != XST_SUCCESS) {
 				return XST_FAILURE;
 			}
 
 			mode = XISF_CMD_SEND_EXTRA_BYTES_4BYTE_MODE;
 			XIsf_MicronFlashEnter4BAddMode(&Isf);
 
-			Status = IsfWaitForFlashNotBusy();
-			if(Status != XST_SUCCESS) {
+			status = IsfWaitForFlashNotBusy();
+			if(status != XST_SUCCESS) {
 				return XST_FAILURE;
 			}
 		}
 #endif
-    	Status = XIsf_Read(&Isf, XISF_READ, (void*) &ReadParam);
-    	if(Status != XST_SUCCESS) {
+    	status = XIsf_Read(&Isf, XISF_READ, (void*) &sr_readParam);
+    	if(status != XST_SUCCESS) {
     		return XST_FAILURE;
     	}
 
     	IsfWaitForFlashNotBusy();
-        c  = ReadBuffer[mode];
+        c  = sr_readBuffer[mode];
 
         if (c == 0xD) {
             /* Eat up the 0xA too */
         	TransferInProgress = TRUE;
-        	ReadParam.Address = flbuf++;
-        	ReadParam.NumBytes = 1;
-        	ReadParam.ReadPtr = ReadBuffer;
+        	sr_readParam.Address = flbuf++;
+        	sr_readParam.NumBytes = 1;
+        	sr_readParam.ReadPtr = sr_readBuffer;
 
-        	XIsf_Read(&Isf, XISF_READ, (void*) &ReadParam);
+        	XIsf_Read(&Isf, XISF_READ, (void*) &sr_readParam);
         	IsfWaitForFlashNotBusy();
-        	c  = ReadBuffer[mode];
+        	c  = sr_readBuffer[mode];
 
             return 0;
         }
@@ -352,20 +353,20 @@ static uint8_t flash_get_srec_line (uint8_t *buf)
 		if (((Isf.ManufacturerID == XISF_MANUFACTURER_ID_MICRON) ||
 					(Isf.ManufacturerID == XISF_MANUFACTURER_ID_SPANSION)) &&
 					(((u8)Isf.DeviceCode) > XISF_SPANSION_ID_BYTE2_128)) {
-			Status = XIsf_WriteEnable(&Isf, XISF_WRITE_ENABLE);
-			if(Status != XST_SUCCESS) {
+			status = XIsf_WriteEnable(&Isf, XISF_WRITE_ENABLE);
+			if(status != XST_SUCCESS) {
 				return XST_FAILURE;
 			}
 
-			Status = IsfWaitForFlashNotBusy();
-			if(Status != XST_SUCCESS) {
+			status = IsfWaitForFlashNotBusy();
+			if(status != XST_SUCCESS) {
 				return XST_FAILURE;
 			}
 
 			XIsf_MicronFlashExit4BAddMode(&Isf);
 
-			Status = IsfWaitForFlashNotBusy();
-			if(Status != XST_SUCCESS) {
+			status = IsfWaitForFlashNotBusy();
+			if(status != XST_SUCCESS) {
 				return XST_FAILURE;
 			}
 		}
@@ -389,7 +390,7 @@ int IsfWaitForFlashNotBusy(void)
 		 * Get the Status Register.
 		 */
 		TransferInProgress = TRUE;
-		Status = XIsf_GetStatus(&Isf, ReadBuffer);
+		Status = XIsf_GetStatus(&Isf, sr_readBuffer);
 		if(Status != XST_SUCCESS) {
 			return XST_FAILURE;
 		}
@@ -399,7 +400,7 @@ int IsfWaitForFlashNotBusy(void)
 		 * Check if the Serial Flash is ready to accept the next
 		 * command. If so break.
 		 */
-		StatusReg = ReadBuffer[BYTE2];
+		StatusReg = sr_readBuffer[BYTE2];
 		if((StatusReg & XISF_SR_IS_READY_MASK) == 0) {
 			break;
 		}

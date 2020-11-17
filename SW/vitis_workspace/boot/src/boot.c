@@ -104,7 +104,7 @@ static unsigned int iicReadAndModify(UINTPTR baseAddr, u8 iicChipAddr, u8 iicReg
 /************************** Variable Definitions *****************************/
 
 u8 WriteBuffer[PAGE_SIZE];	  	/* Write buffer for writing a page */
-u8 ReadBuffer[PAGE_SIZE];	  	/* Read buffer for reading a page */
+u8 sr_readBuffer[PAGE_SIZE];	  	/* Read buffer for reading a page */
 
 u8 Si5338IicAddr;		  		/* Variable for storing Si5338 PLL I2C address */
 
@@ -352,13 +352,13 @@ unsigned int iicRead(UINTPTR baseAddr, u8 iicChipAddr, u8 iicRegister, u8* getVa
 	if (!byteCount) {
 		return XST_FAILURE;
 	}
-	byteCount = XIic_Recv(baseAddr, iicChipAddr, ReadBuffer, 1U, XIIC_STOP);
+	byteCount = XIic_Recv(baseAddr, iicChipAddr, sr_readBuffer, 1U, XIIC_STOP);
 	if (!byteCount) {
 		return XST_FAILURE;
 	}
 
 	/* Data enters target variable */
-	*getValue = ReadBuffer[0];
+	*getValue = sr_readBuffer[0];
 	return XST_SUCCESS;
 }
 

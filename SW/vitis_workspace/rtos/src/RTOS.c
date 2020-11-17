@@ -24,6 +24,17 @@
 #include "xgpio.h"
 #include "xiic.h"
 
+#include "xspi.h"				/* SPI device driver */
+#include "xspi_l.h"
+
+/* Serial Flash Library header file */
+#define  XPAR_XISF_FLASH_FAMILY  	SPANSION
+#include "include/blconfig.h"
+#include "include/errors.h"
+#include "include/srec.h"
+#include "include/xilisf.h"
+#include "include/xilisf_intelstm.h"
+
 #include "externals.h"
 #include "Lcd.h"
 
@@ -84,6 +95,35 @@ enum SCOPE_TRIGSRC_48LINES_ENUM {
 	SCOPE_TRIGSRC_MII_TX_ER,
 	SCOPE_TRIGSRC_MII_TX_CLK,
 };
+
+
+
+#define ISF_SPI_SELECT				0x01
+#define ISF_PAGE_SIZE				256
+#define XISF_CMD_SEND_EXTRA_BYTES	4	/**< Command extra bytes */
+
+
+
+/************************** Variable Definitions *****************************/
+
+static XSpi_Config* spiConfigPtr;		/* Pointer to Configuration data */
+static XSpi  		spiConfigInstance;
+
+
+XIsf_ReadParam 		sr_readParam;
+volatile static int sr_transferInProgress;
+
+u8 					sr_readBuffer[ISF_PAGE_SIZE + XISF_CMD_SEND_EXTRA_BYTES];
+
+static srec_info_t 	srinfo;
+static u8 			sr_buf[SREC_MAX_BYTES];
+static u8 			sr_data_buf[SREC_DATA_MAX_BYTES];
+
+static u8			xisfConfigWriteBuffer[XISF_CMD_SEND_EXTRA_BYTES];
+static u8			xisfConfigReadBuffer[ISF_PAGE_SIZE + XISF_CMD_SEND_EXTRA_BYTES];
+static XIsf			xisfConfigInstancePtr;
+static u8*			xisfConfigWritePtr;
+static u8*			xisfConfigFlbuf;
 
 
 /*-----------------------------------------------------------*/
@@ -301,6 +341,199 @@ static void clkwiz_print_DRP(void)
 
 	xil_printf("\r\ndone.\r\n");
 #endif
+}
+
+
+static int sr_waitForFlashNotBusy(void)
+{
+	int status;
+	u8 	statusReg;
+
+	while (1) {
+		/*
+		 * Get the Status Register.
+		 */
+		sr_transferInProgress = TRUE;
+		status = XIsf_GetStatus(&xisfConfigInstancePtr, sr_readBuffer);
+		if (status != XST_SUCCESS) {
+			return XST_FAILURE;
+		}
+
+		/*
+		 * Check if the Serial Flash is ready to accept the next
+		 * command. If so break.
+		 */
+		statusReg = sr_readBuffer[BYTE2];
+		if ((statusReg & XISF_SR_IS_READY_MASK) == 0) {
+			break;
+		}
+	}
+
+	return XST_SUCCESS;
+}
+
+static u8 sr_flash_get_srec_line(u8* buf)
+{
+    int status;
+	u8 	c;
+    int count = 0;
+    int mode = XISF_CMD_SEND_EXTRA_BYTES;
+
+    while (1) {
+    	sr_transferInProgress = TRUE;
+
+    	/*
+		 * Set the
+		 * - Address in the Serial Flash where the data is to be read from.
+		 * - Number of bytes to be read from the Serial Flash.
+		 * - Read Buffer to which the data is to be read.
+		 */
+    	sr_readParam.Address 	= (u32) xisfConfigFlbuf++;
+    	sr_readParam.NumBytes 	= 1;
+    	sr_readParam.ReadPtr 	= sr_readBuffer;
+
+#if ((XPAR_XISF_FLASH_FAMILY == INTEL)   || (XPAR_XISF_FLASH_FAMILY == STM) || \
+    (XPAR_XISF_FLASH_FAMILY == WINBOND)  ||  \
+    (XPAR_XISF_FLASH_FAMILY == SPANSION) || (XPAR_XISF_FLASH_FAMILY == SST))
+    	/*
+		 * Check if the flash part is micron or spansion in which case,
+		 * switch to 4 byte addressing mode if FlashSize is >128Mb.
+		 */
+		if ((	(xisfConfigInstancePtr.ManufacturerID == XISF_MANUFACTURER_ID_MICRON) 		||
+				(xisfConfigInstancePtr.ManufacturerID == XISF_MANUFACTURER_ID_SPANSION)) 	&& (((u8)xisfConfigInstancePtr.DeviceCode) > XISF_SPANSION_ID_BYTE2_128))
+		{
+			status = XIsf_WriteEnable(&xisfConfigInstancePtr, XISF_WRITE_ENABLE);
+			if (status != XST_SUCCESS) {
+				return XST_FAILURE;
+			}
+
+			status = sr_waitForFlashNotBusy();
+			if (status != XST_SUCCESS) {
+				return XST_FAILURE;
+			}
+
+			mode = XISF_CMD_SEND_EXTRA_BYTES_4BYTE_MODE;
+			XIsf_MicronFlashEnter4BAddMode(&xisfConfigInstancePtr);
+
+			status = sr_waitForFlashNotBusy();
+			if (status != XST_SUCCESS) {
+				return XST_FAILURE;
+			}
+		}
+#endif
+
+    	status = XIsf_Read(&xisfConfigInstancePtr, XISF_READ, (void*) &sr_readParam);
+    	if (status != XST_SUCCESS) {
+    		return XST_FAILURE;
+    	}
+
+    	sr_waitForFlashNotBusy();
+        c  = sr_readBuffer[mode];
+
+        if (c == 0xD) {
+            /* Eat up the 0xA too */
+        	sr_transferInProgress 	= TRUE;
+        	sr_readParam.Address 	= (u32) xisfConfigFlbuf++;
+        	sr_readParam.NumBytes 	= 1;
+        	sr_readParam.ReadPtr 	= sr_readBuffer;
+
+        	XIsf_Read(&xisfConfigInstancePtr, XISF_READ, (void*) &sr_readParam);
+        	sr_waitForFlashNotBusy();
+        	c  = sr_readBuffer[mode];
+
+            return 0;
+        }
+
+#if ((XPAR_XISF_FLASH_FAMILY == INTEL)   || (XPAR_XISF_FLASH_FAMILY == STM) || \
+    (XPAR_XISF_FLASH_FAMILY == WINBOND)  ||  \
+    (XPAR_XISF_FLASH_FAMILY == SPANSION) || (XPAR_XISF_FLASH_FAMILY == SST))
+        /*
+		 * For micron or spansion flash part supporting 4 byte addressing mode,
+		 * exit from 4 Byte mode if FlashSize is >128Mb.
+		 */
+		if ((       (xisfConfigInstancePtr.ManufacturerID == XISF_MANUFACTURER_ID_MICRON)    ||
+					(xisfConfigInstancePtr.ManufacturerID == XISF_MANUFACTURER_ID_SPANSION)) &&
+					(((u8)xisfConfigInstancePtr.DeviceCode) > XISF_SPANSION_ID_BYTE2_128)) {
+			status = XIsf_WriteEnable(&xisfConfigInstancePtr, XISF_WRITE_ENABLE);
+			if (status != XST_SUCCESS) {
+				return XST_FAILURE;
+			}
+
+			status = sr_waitForFlashNotBusy();
+			if (status != XST_SUCCESS) {
+				return XST_FAILURE;
+			}
+
+			XIsf_MicronFlashExit4BAddMode(&xisfConfigInstancePtr);
+
+			status = sr_waitForFlashNotBusy();
+			if (status != XST_SUCCESS) {
+				return XST_FAILURE;
+			}
+		}
+#endif
+
+        *buf++ = c;
+        count++;
+        if (count > SREC_MAX_BYTES) {
+            return LD_SREC_LINE_ERROR;
+        }
+    }
+}
+
+static u8 sr_load_exec(void)
+{
+    u8 		ret;
+    void 	(*laddr)();
+    s8 		done = 0;
+
+    srinfo.sr_data = sr_data_buf;
+
+    while (!done) {
+    	memset(sr_buf, 0, sizeof(sr_buf));
+        if ((ret = sr_flash_get_srec_line(sr_buf)) != 0) {
+            return ret;
+        }
+
+#ifdef NOT_YET
+        if ((ret = decode_srec_line(sr_buf, &srinfo)) != 0) {
+            return ret;
+        }
+
+#ifdef VERBOSE
+        display_progress (srec_line);
+#endif
+        switch (srinfo.type) {
+            case SREC_TYPE_0:
+                break;
+            case SREC_TYPE_1:
+            case SREC_TYPE_2:
+            case SREC_TYPE_3:
+                memcpy((void*)srinfo.addr, (void*)srinfo.sr_data, srinfo.dlen);
+                break;
+            case SREC_TYPE_5:
+                break;
+            case SREC_TYPE_7:
+            case SREC_TYPE_8:
+            case SREC_TYPE_9:
+                laddr = (void (*)())srinfo.addr;
+                done = 1;
+                ret = 0;
+                break;
+        }
+#endif
+    }
+
+#ifdef VERBOSE
+    print ("\r\nExecuting program starting at address: ");
+    putnum ((uint32_t)laddr);
+    print ("\r\n");
+#endif
+
+    (*laddr)();
+
+    /* We will be dead at this point */
+    return 0;
 }
 
 
@@ -576,6 +809,137 @@ static void taskDefault(void* pvParameters)
 #if 1
 	/* LCD */
 	lcdInit();
+#endif
+
+#if 1
+	{
+		int status = XSpi_Initialize(&spiConfigInstance, XPAR_CFG_CFG_AXI_QUAD_SPI_0_DEVICE_ID);
+		if ((status != XST_SUCCESS)  &&  (status != XST_DEVICE_IS_STARTED)) {
+			//return XST_FAILURE;
+		}
+
+		XSpi_Start(&spiConfigInstance);
+		XSpi_IntrGlobalDisable(&spiConfigInstance);
+
+//#define USE_XISF
+//#define USE_XSPI
+#ifdef USE_XISF
+		/* Access w/ XIsf library */
+		status = XIsf_Initialize(&xisfConfigInstancePtr, &spiConfigInstance, ISF_SPI_SELECT, xisfConfigWriteBuffer);
+		if (status != XST_SUCCESS) {
+			//return XST_FAILURE;
+		}
+
+		xisfConfigFlbuf = (u8*) FLASH_IMAGE_BASEADDR;
+	    status = sr_load_exec();
+	    xil_printf("TaskDefault: *** sr_load_exec status = %d\r\n", (int) status);
+
+#elif defined(USE_XSPI)
+		/* Test QSPI access for the Boot Flash device */
+
+		/* Set the SPI device as a master */
+		status = XSpi_SetOptions(&spiConfigInstance, XSP_MASTER_OPTION);
+		if (status != XST_SUCCESS) {
+#ifdef LOGGING
+			xil_printf("TaskDefault: *** SPI init error 2\r\n");
+#endif
+			return /*XST_FAILURE*/;
+		}
+
+		/* Set the one and only select line during access */
+		XSpi_SetSlaveSelect(&spiConfigInstance, 0x00000001UL);
+
+		/* Start the SPI driver so that the device is enabled */
+		XSpi_Start(&spiConfigInstance);
+
+		/* Disable Global interrupt to use polled mode operation */
+		XSpi_IntrGlobalDisable(&spiConfigInstance);
+
+		/* Read */
+		{
+#define FRAME_LEN	128
+			const u8 frameLen 		= FRAME_LEN;
+			u8 readBuf[FRAME_LEN] 	= { 0 };
+			u8 writeBuf[FRAME_LEN]	= { 0 };
+			writeBuf[0] 			= 0x6cU;   // Single: 0x13U // Quad: 0x6cU
+			writeBuf[1] 			= 0x00U;
+			writeBuf[2] 			= 0x80U;
+			writeBuf[3] 			= 0x00U;
+			writeBuf[4] 			= 0x00U;
+
+			/* Read the data */
+			const u32 time1 = *(u32*)0x40100000UL;
+			XSpi_Transfer(&spiConfigInstance, writeBuf, readBuf, frameLen);
+			const u32 time2 = *(u32*)0x40100000UL;
+
+			u8 c0 = readBuf[5];
+			u8 c1 = readBuf[6];
+			(void) c0; (void) c1; (void) time1; (void) time2;
+		}
+
+		/* Stop the SPI driver */
+		XSpi_Stop(&spiConfigInstance);
+#else
+		/* Register programming QSPI-device */
+		volatile u32* qspi_addr_SRR	 		= (u32*) (spiConfigInstance.BaseAddr + 0x40);
+		volatile u32* qspi_addr_SPICR	 	= (u32*) (spiConfigInstance.BaseAddr + 0x60);
+		volatile u32* qspi_addr_SPISR	 	= (u32*) (spiConfigInstance.BaseAddr + 0x64);
+		volatile u32* qspi_addr_SPIDTR	 	= (u32*) (spiConfigInstance.BaseAddr + 0x68);
+		volatile u32* qspi_addr_SPIDRR	 	= (u32*) (spiConfigInstance.BaseAddr + 0x6c);
+		volatile u32* qspi_addr_SPISSR	 	= (u32*) (spiConfigInstance.BaseAddr + 0x70);
+		volatile u32* qspi_addr_TX_OCCU 	= (u32*) (spiConfigInstance.BaseAddr + 0x74);
+		volatile u32* qspi_addr_RX_OCCU 	= (u32*) (spiConfigInstance.BaseAddr + 0x78);
+
+		volatile u32* qspi_addr_DGIER	 	= (u32*) (spiConfigInstance.BaseAddr + 0x1c);
+		volatile u32* qspi_addr_IPISR	 	= (u32*) (spiConfigInstance.BaseAddr + 0x20);
+
+#if 0
+		/* Reset */
+		*qspi_addr_SRR		= 0x0000000aUL;
+#endif
+
+		/* Preparations: Master inhibit + FIFO reset (PG153 p106) */
+		*qspi_addr_SPICR	= 0x0001e6UL;
+
+		/* Preparations: Select de-assert */
+		*qspi_addr_SPISSR 	= 0x01UL;
+
+		/* Read command */
+		*qspi_addr_SPIDTR	= 0x6cU;				// Single: 0x13U // Quad: 0x6cU
+		*qspi_addr_SPIDTR	= 0x00U;
+		*qspi_addr_SPIDTR	= 0x80U;
+		*qspi_addr_SPIDTR	= 0x00U;
+		*qspi_addr_SPIDTR	= 0x00U;
+		for (int ii = 0; ii < 64; ii++) {			// Response buffer
+			*qspi_addr_SPIDTR	= 0x00U;
+		}
+
+		/* Issue chip select */
+		*qspi_addr_SPISSR 	= 0x00UL;
+
+		/* Enable master transaction */
+		*qspi_addr_SPICR   &= ~0x00000100UL;
+
+		/* SPI communication runs until TX buffer empty */
+		while (!(*qspi_addr_SPISR & 0x0004UL))
+			;
+
+		/* Deassert chip select */
+		*qspi_addr_SPISSR	= 0x01UL;
+
+		/* Disable master transaction */
+		*qspi_addr_SPICR   |=  0x00000100UL;
+
+		/* Read SPIDRR */
+		int idx = 0;
+		u8  readBuf[64] = { 0 };
+		while (!(*qspi_addr_SPISR & 0x01U)) {
+			readBuf[idx++] = *qspi_addr_SPIDRR;
+		}
+		u8 c = readBuf[0];
+		(void) c;
+#endif
+	}
 #endif
 
 	//u8 loopIdx = 0U;

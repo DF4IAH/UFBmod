@@ -1,2 +1,0 @@
-mb-objcopy -O srec rtos.elf rtos.srec
-
