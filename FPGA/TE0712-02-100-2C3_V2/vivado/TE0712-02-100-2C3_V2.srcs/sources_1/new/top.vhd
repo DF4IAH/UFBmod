@@ -487,6 +487,8 @@ architecture STRUCTURE of top is
     
     TRX_dds_tx_rf09_ptt                                 : in    STD_LOGIC;
     
+    TRX_channel_rx_rf09_id                              : in    STD_LOGIC_VECTOR ( 2 downto 0 );
+    
     TRX_decoder_rx_rf09_chXX_SoM_frameCtr               : out   STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_decoder_rx_rf09_chXX_active                     : out   STD_LOGIC;
     TRX_decoder_rx_rf09_chXX_center_pos                 : out   STD_LOGIC_VECTOR (  7 downto 0 );
@@ -524,7 +526,7 @@ architecture STRUCTURE of top is
     TRX_dds_tx_rf09_inc                                 : out   STD_LOGIC_VECTOR ( 25 downto 0 );
     TRX_dds_tx_rf09_ptt                                 : out   STD_LOGIC
   );
- end component UFBmod_Encoder_wrapper;
+  end component UFBmod_Encoder_wrapper;
   component SCOPE_FSM is
   Port (
     clk                                                 : in    STD_LOGIC;
@@ -1018,6 +1020,8 @@ UFBmod_Decoder_rx09_ch00_bd: component UFBmod_Decoder_wrapper
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
       reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
       
+      TRX_channel_rx_rf09_id                                => "000",
+      
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
       
       TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
@@ -1043,6 +1047,8 @@ UFBmod_Decoder_rx09_ch01_bd: component UFBmod_Decoder_wrapper
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
       reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
       
+      TRX_channel_rx_rf09_id                                => "001",
+      
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
       
       TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
@@ -1066,6 +1072,8 @@ UFBmod_Decoder_rx09_ch02_bd: component UFBmod_Decoder_wrapper
     port map (
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
       reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      
+      TRX_channel_rx_rf09_id                                => "010",
       
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
       
@@ -1091,6 +1099,8 @@ UFBmod_Decoder_rx09_ch03_bd: component UFBmod_Decoder_wrapper
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
       reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
       
+      TRX_channel_rx_rf09_id                                => "011",
+      
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
       
       TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
@@ -1114,6 +1124,8 @@ UFBmod_Decoder_rx09_ch04_bd: component UFBmod_Decoder_wrapper
     port map (
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
       reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      
+      TRX_channel_rx_rf09_id                                => "100",
       
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
       
@@ -1139,6 +1151,8 @@ UFBmod_Decoder_rx09_ch05_bd: component UFBmod_Decoder_wrapper
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
       reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
       
+      TRX_channel_rx_rf09_id                                => "101",
+      
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
       
       TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
@@ -1163,6 +1177,8 @@ UFBmod_Decoder_rx09_ch06_bd: component UFBmod_Decoder_wrapper
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
       reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
       
+      TRX_channel_rx_rf09_id                                => "110",
+      
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
       
       TRX_post_fft_rx_rf09_mem_a_EoT                        => top_TRX_post_fft_rx_rf09_mem_a_EoT,
@@ -1186,6 +1202,8 @@ UFBmod_Decoder_rx09_ch07_bd: component UFBmod_Decoder_wrapper
     port map (
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
       reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      
+      TRX_channel_rx_rf09_id                                => "111",
       
       TRX_dds_tx_rf09_ptt                                   => top_TRX_dds_tx_rf09_ptt,
       

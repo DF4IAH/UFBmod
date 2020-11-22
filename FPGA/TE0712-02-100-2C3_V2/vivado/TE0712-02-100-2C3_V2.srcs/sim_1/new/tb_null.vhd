@@ -41,94 +41,94 @@ entity tb_null is
 end tb_null;
 
 architecture Behavioral of tb_null is
-  component msys_wrapper is
+  component top is
   port (
-    BOARD_IIC_scl_io : inout STD_LOGIC;
-    BOARD_IIC_sda_io : inout STD_LOGIC;
-    BOARD_ROTENC_I : in STD_LOGIC;
-    BOARD_ROTENC_Q : in STD_LOGIC;
-    BOARD_ROTENC_PUSH : in STD_LOGIC;
-    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK1B_clk : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
-    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
-    CLK3_sys_diff_clk_n : in STD_LOGIC;
-    CLK3_sys_diff_clk_p : in STD_LOGIC;
-    DDR3_SDRAM_addr : out STD_LOGIC_VECTOR ( 14 downto 0 );
-    DDR3_SDRAM_ba : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    DDR3_SDRAM_cas_n : out STD_LOGIC;
-    DDR3_SDRAM_ck_n : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_ck_p : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_cke : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    DDR3_SDRAM_dq : inout STD_LOGIC_VECTOR ( 31 downto 0 );
-    DDR3_SDRAM_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
-    DDR3_SDRAM_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
-    DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
-    DDR3_SDRAM_ras_n : out STD_LOGIC;
-    DDR3_SDRAM_reset_n : out STD_LOGIC;
-    DDR3_SDRAM_we_n : out STD_LOGIC;
-    DDR3_init_calib_complete : out STD_LOGIC;
-    ETH0_DA_G : out STD_LOGIC_VECTOR ( 0 to 0 );
-    ETH0_DA_Y : out STD_LOGIC_VECTOR ( 0 to 0 );
-    ETH0_LINK_LED : in STD_LOGIC;
-    ETH0_MDIO_MDC_mdc : out STD_LOGIC;
-    ETH0_MDIO_MDC_mdio_io : inout STD_LOGIC;
-    EUI48_onewire_io : inout STD_LOGIC;
-    FPGA_IO : in STD_LOGIC;
-    LCD_BL : out STD_LOGIC_VECTOR ( 0 to 0 );
-    LCD_rstn : out STD_LOGIC_VECTOR ( 0 to 0 );
-    LED_RGB_blue : out STD_LOGIC_VECTOR ( 0 to 0 );
-    LED_RGB_green : out STD_LOGIC_VECTOR ( 0 to 0 );
-    LED_RGB_red : out STD_LOGIC_VECTOR ( 0 to 0 );
-    PLL_I2C_ext_scl_o : out STD_LOGIC;
-    PLL_I2C_ext_sda : inout STD_LOGIC;
-    PLL_int : in STD_LOGIC;
-    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
-    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    RMII_PHY_M_0_tx_en : out STD_LOGIC;
-    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_PLL_clk_25MHz_N : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_PLL_clk_25MHz_P : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_clk_26MHz : in STD_LOGIC;
-    TRX_int : in STD_LOGIC;
-    TRX_resetn : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_rfx_mode : out STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
-    TRX_rx_data_n : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_rx_data_p : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_spi_io0_io : inout STD_LOGIC;
-    TRX_spi_io1_io : inout STD_LOGIC;
-    TRX_spi_sck_io : inout STD_LOGIC;
-    TRX_spi_ss_io : inout STD_LOGIC_VECTOR ( 0 to 0 );
-    TRX_tx_clk_clk_n : out STD_LOGIC;
-    TRX_tx_clk_clk_p : out STD_LOGIC;
-    TRX_tx_data_n : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    TRX_tx_data_p : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    UART0EXT_CTSn : out STD_LOGIC_VECTOR ( 0 to 0 );
-    UART0EXT_DCDn : out STD_LOGIC_VECTOR ( 0 to 0 );
-    UART0EXT_DSRn : out STD_LOGIC_VECTOR ( 0 to 0 );
-    UART0EXT_DTRn : in STD_LOGIC;
-    UART0EXT_RIn : out STD_LOGIC_VECTOR ( 0 to 0 );
-    UART0EXT_RTSn : in STD_LOGIC;
-    UART0_clk : out STD_LOGIC;
-    UART0_rst_n : out STD_LOGIC_VECTOR ( 0 to 0 );
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
-    ULI_SYSTEM_XIO : in STD_LOGIC;
-    USER_dbg_out : out STD_LOGIC_VECTOR ( 13 downto 0 );
-    phy_rst_n : out STD_LOGIC;
-    qspi_flash_io0_io : inout STD_LOGIC;
-    qspi_flash_io1_io : inout STD_LOGIC;
-    qspi_flash_io2_io : inout STD_LOGIC;
-    qspi_flash_io3_io : inout STD_LOGIC;
-    qspi_flash_ss_io : inout STD_LOGIC;
-    reset : in STD_LOGIC
+    BOARD_IIC_scl_io                                    : inout STD_LOGIC;
+    BOARD_IIC_sda_io                                    : inout STD_LOGIC;
+    BOARD_ROTENC_I                                      : in    STD_LOGIC;
+    BOARD_ROTENC_Q                                      : in    STD_LOGIC;
+    BOARD_ROTENC_PUSH                                   : in    STD_LOGIC;
+    CLK0_clk_n                                          : in    STD_LOGIC;
+    CLK0_clk_p                                          : in    STD_LOGIC;
+    CLK1B_clk                                           : in    STD_LOGIC;
+    CLK2_mgt_clk0_clk_n                                 : in    STD_LOGIC;
+    CLK2_mgt_clk0_clk_p                                 : in    STD_LOGIC;
+    CLK3_sys_diff_clk_n                                 : in    STD_LOGIC;
+    CLK3_sys_diff_clk_p                                 : in    STD_LOGIC;
+    DDR3_SDRAM_addr                                     : out   STD_LOGIC_VECTOR ( 14 downto 0 );
+    DDR3_SDRAM_ba                                       : out   STD_LOGIC_VECTOR (  2 downto 0 );
+    DDR3_SDRAM_cas_n                                    : out   STD_LOGIC;
+    DDR3_SDRAM_ck_n                                     : out   STD_LOGIC_VECTOR (  0 downto 0 );
+    DDR3_SDRAM_ck_p                                     : out   STD_LOGIC_VECTOR (  0 downto 0 );
+    DDR3_SDRAM_cke                                      : out   STD_LOGIC_VECTOR (  0 downto 0 );
+    DDR3_SDRAM_cs_n                                     : out   STD_LOGIC_VECTOR (  0 downto 0 );
+    DDR3_SDRAM_dm                                       : out   STD_LOGIC_VECTOR (  3 downto 0 );
+    DDR3_SDRAM_dq                                       : inout STD_LOGIC_VECTOR ( 31 downto 0 );
+    DDR3_SDRAM_dqs_n                                    : inout STD_LOGIC_VECTOR (  3 downto 0 );
+    DDR3_SDRAM_dqs_p                                    : inout STD_LOGIC_VECTOR (  3 downto 0 );
+    DDR3_SDRAM_odt                                      : out   STD_LOGIC_VECTOR (  0 downto 0 );
+    DDR3_SDRAM_ras_n                                    : out   STD_LOGIC;
+    DDR3_SDRAM_reset_n                                  : out   STD_LOGIC;
+    DDR3_SDRAM_we_n                                     : out   STD_LOGIC;
+    DDR3_init_calib_complete                            : out   STD_LOGIC;
+    ETH0_DA_G                                           : out   STD_LOGIC;
+    ETH0_DA_Y                                           : out   STD_LOGIC;
+    ETH0_LINK_LED                                       : in    STD_LOGIC;
+    ETH0_MDIO_MDC_mdc                                   : out   STD_LOGIC;
+    ETH0_MDIO_MDC_mdio_io                               : inout STD_LOGIC;
+    EUI48_onewire_io                                    : inout STD_LOGIC;
+    FPGA_IO                                             : in    STD_LOGIC;
+    LCD_BL                                              : out   STD_LOGIC;
+    LCD_rstn                                            : out   STD_LOGIC;
+    LED_RGB_blue                                        : out   STD_LOGIC;
+    LED_RGB_green                                       : out   STD_LOGIC;
+    LED_RGB_red                                         : out   STD_LOGIC;
+    PLL_I2C_ext_scl_o                                   : out   STD_LOGIC;
+    PLL_I2C_ext_sda                                     : inout STD_LOGIC;
+    PLL_int                                             : in    STD_LOGIC;
+    RMII_PHY_M_0_crs_dv                                 : in    STD_LOGIC;
+    RMII_PHY_M_0_rxd                                    : in    STD_LOGIC_VECTOR (  1 downto 0 );
+    RMII_PHY_M_0_tx_en                                  : out   STD_LOGIC;
+    RMII_PHY_M_0_txd                                    : out   STD_LOGIC_VECTOR (  1 downto 0 );
+    TRX_clk_26MHz                                       : in    STD_LOGIC;
+    TRX_PLL_clk_25MHz_p                                 : out   STD_LOGIC;
+    TRX_PLL_clk_25MHz_n                                 : out   STD_LOGIC;
+    TRX_int                                             : in    STD_LOGIC;
+    TRX_resetn                                          : out   STD_LOGIC;
+    TRX_rfx_mode                                        : out   STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_p                              : in    STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_n                              : in    STD_LOGIC;
+    TRX_rx_data_p                                       : in    STD_LOGIC_VECTOR (  1 downto 0 );
+    TRX_rx_data_n                                       : in    STD_LOGIC_VECTOR (  1 downto 0 );
+    TRX_spi_io0_io                                      : inout STD_LOGIC;
+    TRX_spi_io1_io                                      : inout STD_LOGIC;
+    TRX_spi_sck_io                                      : inout STD_LOGIC;
+    TRX_spi_ss_io                                       : inout STD_LOGIC;
+    TRX_tx_clk_clk_p                                    : out   STD_LOGIC;
+    TRX_tx_clk_clk_n                                    : out   STD_LOGIC;
+    TRX_tx_data_p                                       : out   STD_LOGIC_VECTOR (  1 downto 0 );
+    TRX_tx_data_n                                       : out   STD_LOGIC_VECTOR (  1 downto 0 );
+    UART0EXT_CTSn                                       : out   STD_LOGIC;
+    UART0EXT_DCDn                                       : out   STD_LOGIC;
+    UART0EXT_DSRn                                       : out   STD_LOGIC;
+    UART0EXT_DTRn                                       : in    STD_LOGIC;
+    UART0EXT_RIn                                        : out   STD_LOGIC;
+    UART0EXT_RTSn                                       : in    STD_LOGIC;
+    UART0_clk                                           : out   STD_LOGIC;
+    UART0_rst_n                                         : out   STD_LOGIC;
+    UART0_rxd                                           : in    STD_LOGIC;
+    UART0_txd                                           : out   STD_LOGIC;
+    ULI_SYSTEM_XIO                                      : in    STD_LOGIC;
+    USER_dbg_out                                        : out   STD_LOGIC_VECTOR ( 13 downto 0 );
+    phy_rst_n                                           : out   STD_LOGIC;
+    qspi_flash_io0_io                                   : inout STD_LOGIC;
+    qspi_flash_io1_io                                   : inout STD_LOGIC;
+    qspi_flash_io2_io                                   : inout STD_LOGIC;
+    qspi_flash_io3_io                                   : inout STD_LOGIC;
+    qspi_flash_ss_io                                    : inout STD_LOGIC;
+    reset                                               : in    STD_LOGIC
   );
-  end component msys_wrapper;
+end component top;
 
 
 -- Constants SCOPE
@@ -148,10 +148,10 @@ architecture Behavioral of tb_null is
   signal tb_reset : STD_LOGIC;
   
 -- CLOCKS
-  signal tb_CLK0_clk_p : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal tb_CLK0_clk_n : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal tb_CLK0_clk_p : STD_LOGIC;
+  signal tb_CLK0_clk_n : STD_LOGIC;
 
-  signal tb_CLK1B_clk : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal tb_CLK1B_clk : STD_LOGIC;
 
   signal tb_CLK2_mgt_clk0_clk_p : STD_LOGIC;
   signal tb_CLK2_mgt_clk0_clk_n : STD_LOGIC;
@@ -192,7 +192,8 @@ architecture Behavioral of tb_null is
   signal tb_RMII_PHY_M_0_rxd : STD_LOGIC_VECTOR (1 downto 0);
 
 begin
-msys_wrapper_i: component msys_wrapper
+
+top_i: component top
   port map (
     -- RESETS
 
@@ -290,7 +291,7 @@ msys_wrapper_i: component msys_wrapper
     TRX_spi_io0_io => tb_TRX_spi_io0_io,
     TRX_spi_io1_io => tb_TRX_spi_io1_io,
     TRX_spi_sck_io => tb_TRX_spi_sck_io,
-    TRX_spi_ss_io(0) => tb_TRX_spi_ss_io,
+    TRX_spi_ss_io => tb_TRX_spi_ss_io,
 
     TRX_int => '0',
 --    TRX_resetn : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -324,22 +325,22 @@ msys_wrapper_i: component msys_wrapper
   -- 100 MHz  no more in use
   proc_tb_CLK0_clk: process
   begin
-    tb_CLK0_clk_p(0) <= '1';
-    tb_CLK0_clk_n(0) <= '0';
+    tb_CLK0_clk_p <= '1';
+    tb_CLK0_clk_n <= '0';
     wait for 5ns;
 
-    tb_CLK0_clk_p(0) <= '0';
-    tb_CLK0_clk_n(0) <= '1';
+    tb_CLK0_clk_p <= '0';
+    tb_CLK0_clk_n <= '1';
     wait for 5ns;
   end process proc_tb_CLK0_clk;
 
   -- 50 MHz  for PHY chip
   proc_tb_CLK1B_clk: process
   begin
-    tb_CLK1B_clk(0) <= '1';
+    tb_CLK1B_clk <= '1';
     wait for 10ns;
 
-    tb_CLK1B_clk(0) <= '0';
+    tb_CLK1B_clk <= '0';
     wait for 10ns;
   end process proc_tb_CLK1B_clk;
 
@@ -1073,7 +1074,7 @@ msys_wrapper_i: component msys_wrapper
 
     -- Preamble
     for ii in 0 to 6 loop
-        wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+        wait until falling_edge(tb_CLK1B_clk);
         tb_RMII_PHY_M_0_rxd     <= "01";
         tb_RMII_PHY_M_0_crs_dv  <= '1';
         wait for 20 ns;
@@ -1083,7 +1084,7 @@ msys_wrapper_i: component msys_wrapper
     end loop;
     
     -- Start Frame Delimiter 
-    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    wait until falling_edge(tb_CLK1B_clk);
     tb_RMII_PHY_M_0_rxd     <= "01";
     tb_RMII_PHY_M_0_crs_dv  <= '1';
     wait for 20 ns;
@@ -1093,9 +1094,9 @@ msys_wrapper_i: component msys_wrapper
     wait for 19 ns;
 
     -- Destination MAC - 6 octets   ff:ff:ff:ff:ff:ff   (broadcast MAC address)
-    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    wait until falling_edge(tb_CLK1B_clk);
     for ii in 0 to 5 loop
-        wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+        wait until falling_edge(tb_CLK1B_clk);
         tb_RMII_PHY_M_0_rxd     <= "11";
         tb_RMII_PHY_M_0_crs_dv  <= '1';
         wait for 20 ns;
@@ -1105,9 +1106,9 @@ msys_wrapper_i: component msys_wrapper
     end loop;
     
     -- Source MAC - 6 octets        aa:aa:aa:aa:aa:aa   (faked MAC address)
-    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    wait until falling_edge(tb_CLK1B_clk);
     for ii in 0 to 5 loop
-        wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+        wait until falling_edge(tb_CLK1B_clk);
         tb_RMII_PHY_M_0_rxd     <= "10";
         tb_RMII_PHY_M_0_crs_dv  <= '1';
         wait for 20 ns;
@@ -1117,7 +1118,7 @@ msys_wrapper_i: component msys_wrapper
     end loop;
     
     -- Ethernet II  0x8000    
-    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    wait until falling_edge(tb_CLK1B_clk);
     tb_RMII_PHY_M_0_rxd     <= "00";
     tb_RMII_PHY_M_0_crs_dv  <= '1';
     wait for 20 ns;
@@ -1125,30 +1126,30 @@ msys_wrapper_i: component msys_wrapper
     wait for 20 ns;
     wait for 19 ns;
 
-    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    wait until falling_edge(tb_CLK1B_clk);
     tb_RMII_PHY_M_0_rxd     <= "00";
     tb_RMII_PHY_M_0_crs_dv  <= '1';
     wait for 20 ns;
     wait for 20 ns;
     wait for 19 ns;
 
-    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    wait until falling_edge(tb_CLK1B_clk);
     tb_RMII_PHY_M_0_rxd     <= "10";
     tb_RMII_PHY_M_0_crs_dv  <= '1';
     wait for 19 ns;
     
     -- Payload
-    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    wait until falling_edge(tb_CLK1B_clk);
     tb_RMII_PHY_M_0_rxd     <= "00";
     tb_RMII_PHY_M_0_crs_dv  <= '1';
     
     -- CRC
-    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    wait until falling_edge(tb_CLK1B_clk);
     tb_RMII_PHY_M_0_rxd     <= "00";
     tb_RMII_PHY_M_0_crs_dv  <= '1';
     
     -- Release
-    wait until tb_CLK1B_clk(0)'event and tb_CLK1B_clk(0) = '0';
+    wait until falling_edge(tb_CLK1B_clk);
     tb_RMII_PHY_M_0_rxd     <= "00";
     tb_RMII_PHY_M_0_crs_dv  <= '0';
     
