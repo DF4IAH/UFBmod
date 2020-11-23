@@ -256,7 +256,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>c17a6860</spirit:value>
+            <spirit:value>cfc86e05</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -269,7 +269,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>c17a6860</spirit:value>
+            <spirit:value>cfc86e05</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -630,7 +630,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>SREC_startn</spirit:name>
+        <spirit:name>SREC_start</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -643,7 +643,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>SREC_do_boot</spirit:name>
+        <spirit:name>SREC_enable</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -736,7 +736,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2020-11-21T21:12:59Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2020-11-23T23:48:44Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.1.1</xilinx:xilinxVersion>

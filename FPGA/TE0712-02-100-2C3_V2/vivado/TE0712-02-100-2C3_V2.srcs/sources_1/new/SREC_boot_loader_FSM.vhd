@@ -59,8 +59,8 @@ entity SREC_boot_loader_FSM is
         
         qspi_irpt                                       : in    STD_LOGIC;
         
-        SREC_startn                                     : in    STD_LOGIC;
-        SREC_do_boot                                    : in    STD_LOGIC;
+        SREC_start                                      : in    STD_LOGIC;
+        SREC_enable                                     : in    STD_LOGIC;
         
         SREC_error                                      : out   STD_LOGIC;
         SREC_resetn                                     : out   STD_LOGIC;
@@ -192,7 +192,6 @@ architecture Behavioral of SREC_boot_loader_FSM is
     
     signal fsm_init_txn_ff                              : STD_LOGIC;
     signal fsm_init_txn_ff2                             : STD_LOGIC;
-    signal fsm_init_txn_edge                            : STD_LOGIC;
     signal fsm_init_txn_pulse                           : STD_LOGIC;
     
     
@@ -254,7 +253,7 @@ begin
 	           fsm_init_txn_ff     <= '0';
 	           fsm_init_txn_ff2    <= '0';
 	       else
-	           fsm_init_txn_ff     <= not SREC_startn;
+	           fsm_init_txn_ff     <= SREC_start;
 	           fsm_init_txn_ff2    <= fsm_init_txn_ff;
 	       end if;
 	   end if;
@@ -443,7 +442,7 @@ begin
     begin
         if (rising_edge (m00_axi_aclk)) then
             if (m00_axi_aresetn = '0' or fsm_init_txn_pulse = '1') then
-                io_axi_rready <= '1';
+                io_axi_rready <= '0';
             else
                 if (m00_axi_rvalid = '1' and io_axi_rready = '0') then
                     -- accept/acknowledge rdata/rresp with axi_rready by the master
@@ -504,7 +503,7 @@ begin
             else
                 if (fsm_start_axi_write = '1') then
                     io_axi_wdata <= fsm_axi_wdata;
-                elsif (m00_axi_wready = '1' and io_axi_wvalid = '1') then
+              --elsif (m00_axi_wready = '1' and io_axi_wvalid = '1') then
                     -- Data write transfer complete
                   --io_axi_wdata <= (others => '0');
                 end if;
@@ -638,7 +637,7 @@ begin
     --
     axi_FSM_proc : process (m00_axi_aclk)
         constant QSPI_SKIP_CNT                      : Integer := 9;
-        constant QSPI_LOAD_CNT                      : Integer := 16;    -- 128;
+        constant QSPI_LOAD_CNT                      : Integer := 245;
         
         constant QSPI_BASE_ADDR                     : STD_LOGIC_VECTOR (31 downto 0) := x"45310000";
         
@@ -707,11 +706,11 @@ begin
         
         variable fsm_dec_do_copy                    : STD_LOGIC;
         variable fsm_dec_do_exec                    : STD_LOGIC;
+        variable fsm_dec_nibble                     : Integer  range 0 to ( 2**8 - 1 );
         variable fsm_dec_addrlen                    : Integer  range 2 to 4;
         variable fsm_dec_cnt                        : Integer  range 0 to ( 2**8 - 1 );
         variable fsm_dec_addr                       : Integer;
         variable fsm_dec_data                       : Integer  range 0 to ( 2**8 - 1 );
-        variable fsm_dec_checkByte                  : Integer  range 0 to ( 2**8 - 1 );
         variable fsm_dec_checksum                   : Integer  range 0 to ( 2**8 - 1 );
         
     begin
@@ -722,7 +721,7 @@ begin
                 fsm_axi_araddr          <= (others => '0');
                 
                 fsm_out_error           <= '0';
-                fsm_out_resetn          <= '0';
+                fsm_out_resetn          <= not SREC_enable;
                 
                 fsm_start_axi_write     <= '0';
                 fsm_start_axi_read      <= '0';
@@ -741,11 +740,11 @@ begin
                 fsm_dec_s_type          := 0;
                 fsm_dec_do_copy         := '0';
                 fsm_dec_do_exec         := '0';
+                fsm_dec_nibble          := 0;
                 fsm_dec_addrlen         := 2;
                 fsm_dec_cnt             := 0;
                 fsm_dec_addr            := 0;
                 fsm_dec_data            := 0;
-                fsm_dec_checkByte       := 0;
                 fsm_dec_checksum        := 0;
                 
                 state := axi_init;
@@ -758,7 +757,6 @@ begin
                         fsm_axi_araddr          <= (others => '0');
                         
                         fsm_out_error           <= '0';
-                        fsm_out_resetn          <= not SREC_do_boot;
                         
                         fsm_start_axi_write     <= '0';
                         fsm_start_axi_read      <= '0';
@@ -777,11 +775,11 @@ begin
                         fsm_dec_s_type          := 0;
                         fsm_dec_do_copy         := '0';
                         fsm_dec_do_exec         := '0';
+                        fsm_dec_nibble          := 0;
                         fsm_dec_addrlen         := 2;
                         fsm_dec_cnt             := 0;
                         fsm_dec_addr            := 0;
                         fsm_dec_data            := 0;
-                        fsm_dec_checkByte       := 0;
                         fsm_dec_checksum        := 0;
                         
                         if (fsm_fifo_reset_do = '1') then
@@ -812,6 +810,8 @@ begin
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
                         end if;
                         
                     when fifo_reset_complete =>
@@ -836,6 +836,8 @@ begin
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
                         end if;
                         
                     when fifo_int1_start =>
@@ -853,6 +855,8 @@ begin
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
                         end if;
                         
                     when fifo_int2_start =>
@@ -863,13 +867,16 @@ begin
                         state := fifo_int2_wait;
                         
                     when fifo_int2_wait =>
-                        fsm_start_axi_write  <= '0';
+                        fsm_start_axi_write <= '0';
+                        fsm_fifo_reset_run  <= '0';
                         if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
                             if (m00_axi_bresp(1) = '0') then
                                 state := axi_init;
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
                         end if;
                         
                         
@@ -888,10 +895,12 @@ begin
                             if (m00_axi_bresp(1) = '0') then
                                 fsm_fifo_read_cnt := fsm_fifo_read_cnt + 1;
                                 
-                                state := fifo_srec_load_1_start;
+                                state           := fifo_srec_load_1_start;
                             else
-                                state := axi_error;
+                                state           := axi_error;
                             end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
                         end if;
                         
                     when fifo_srec_load_1_start =>
@@ -911,6 +920,8 @@ begin
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
                         end if;
                         
                     when fifo_srec_load_2_start =>
@@ -930,6 +941,8 @@ begin
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
                         end if;
                         
                     when fifo_srec_load_3_start =>
@@ -949,6 +962,8 @@ begin
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
                         end if;
                         
                     when fifo_srec_load_4_start =>
@@ -968,11 +983,13 @@ begin
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
                         end if;
                         
                         
                     when fifo_srec_load_prefill_init =>
-                        fsm_fifo_prefill_cnt := QSPI_SKIP_CNT + QSPI_LOAD_CNT;
+                        fsm_fifo_prefill_cnt := (QSPI_SKIP_CNT - 5) + QSPI_LOAD_CNT;
                         state := fifo_srec_load_prefill_start;
                         
                     when fifo_srec_load_prefill_start =>
@@ -997,6 +1014,8 @@ begin
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
                         end if;
                         
                         
@@ -1015,6 +1034,8 @@ begin
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
                         end if;
                         
                         
@@ -1033,6 +1054,8 @@ begin
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
                         end if;
                         
                         
@@ -1058,6 +1081,8 @@ begin
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
                         end if;
                         
                         
@@ -1076,12 +1101,14 @@ begin
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
                         end if;
                         
                       
                     -- Strip first section off  
                     when fifo_srec_load_strip_init =>
-                        fsm_fifo_strip_cnt := qspi_skip_cnt;
+                        fsm_fifo_strip_cnt := QSPI_SKIP_CNT;
                         state := fifo_srec_load_strip_start;
                         
                     when fifo_srec_load_strip_start =>
@@ -1104,6 +1131,7 @@ begin
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_araddr  <= (others => '0');
                         end if;
                         
                         
@@ -1127,34 +1155,38 @@ begin
                             if (m00_axi_rresp(1) = '0') then
                                 fsm_fifo_read_cnt   := fsm_fifo_read_cnt    - 1;
                                 fsm_srec_decoder_c  <= m00_axi_rdata(7 downto 0);
-                                state           := axi_dec_init;
-                                fsm_dec_state   := searchS;
+                                state := axi_dec_init;
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_araddr  <= (others => '0');
                         end if;
                         
                         
                     when axi_dec_init =>
+                        -- Default target state if not otherwise overwritten
+                        state := fifo_srec_read_init;
+                        
                         case fsm_dec_state is
                             when searchS =>
                                 fsm_dec_do_copy     := '0';
                                 fsm_dec_do_exec     := '0';
+                                fsm_dec_nibble      := 0;
                                 fsm_dec_addrlen     := 2;
                                 fsm_dec_cnt         := 0;
                                 fsm_dec_addr        := 0;
                                 fsm_dec_data        := 0;
-                                fsm_dec_checkByte   := 0;
                                 fsm_dec_checksum    := 0;
                                 
-                                if ((fsm_srec_decoder_c = x"00")  or  (fsm_srec_decoder_c = x"00")) then
+                                if ((fsm_srec_decoder_c = x"53")  or  (fsm_srec_decoder_c = x"73")) then
                                     -- 'S' found
                                     fsm_dec_state := getStype;
                                 end if;
                                 
                             when getStype =>
                                 if ((48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 58)) then
-                                    fsm_dec_s_type := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;    -- hex character '0'
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;    -- hex character '0'
+                                    fsm_dec_s_type := fsm_dec_nibble;
                                     
                                     case fsm_dec_s_type is
                                         when 1 =>
@@ -1195,25 +1227,27 @@ begin
                                 
                             when getCountHi =>
                                 if (   (48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  58)) then
-                                    fsm_dec_cnt := 16 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 48);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;
                                 elsif ((65 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  71)) then
-                                    fsm_dec_cnt := 16 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10;
                                 elsif ((97 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 103)) then
-                                    fsm_dec_cnt := 16 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10;
                                 end if;
+                                fsm_dec_cnt         := 16 * fsm_dec_nibble;
+                                fsm_dec_checksum    := 16 * fsm_dec_nibble;
                                 
                                 fsm_dec_state := getCountLo;
                                 
                             when getCountLo =>
                                 if (   (48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  58)) then
-                                    fsm_dec_cnt := fsm_dec_cnt + (to_Integer(unsigned(fsm_srec_decoder_c)) - 48);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;
                                 elsif ((65 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  71)) then
-                                    fsm_dec_cnt := fsm_dec_cnt + (to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10;
                                 elsif ((97 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 103)) then
-                                    fsm_dec_cnt := fsm_dec_cnt + (to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10;
                                 end if;
-                                
-                                fsm_dec_checksum := fsm_dec_checksum + fsm_dec_cnt;
+                                fsm_dec_cnt         := fsm_dec_cnt + fsm_dec_nibble;
+                                fsm_dec_checksum    := (fsm_dec_checksum + fsm_dec_nibble) mod 256;
                                 
                                 if    (fsm_dec_addrlen = 4) then
                                     fsm_dec_state := getAddr3Hi;
@@ -1233,25 +1267,27 @@ begin
                                 fsm_dec_cnt := fsm_dec_cnt - 1;
                                 
                                 if (   (48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  58)) then
-                                    fsm_dec_addr := 268435456 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 48);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;
                                 elsif ((65 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  71)) then
-                                    fsm_dec_addr := 268435456 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10;
                                 elsif ((97 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 103)) then
-                                    fsm_dec_addr := 268435456 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10;
                                 end if;
+                                fsm_dec_addr        := 268435456 * fsm_dec_nibble;
+                                fsm_dec_checksum    := (fsm_dec_checksum + 16 * fsm_dec_nibble) mod 256;
                                 
                                 fsm_dec_state := getAddr3Lo;
                                 
                             when getAddr3Lo =>
                                 if (   (48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  58)) then
-                                    fsm_dec_addr := fsm_dec_addr + 16777216 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 48);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;
                                 elsif ((65 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  71)) then
-                                    fsm_dec_addr := fsm_dec_addr + 16777216 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10;
                                 elsif ((97 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 103)) then
-                                    fsm_dec_addr := fsm_dec_addr + 16777216 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10;
                                 end if;
-                                
-                                fsm_dec_checksum := fsm_dec_checksum + ((fsm_dec_addr / 16777216) mod 256);
+                                fsm_dec_addr        := fsm_dec_addr + 16777216 * fsm_dec_nibble;
+                                fsm_dec_checksum    := (fsm_dec_checksum + fsm_dec_nibble) mod 256;
                                 
                                 fsm_dec_state := getAddr2Hi;
                                 
@@ -1259,25 +1295,27 @@ begin
                                 fsm_dec_cnt := fsm_dec_cnt - 1;
                                 
                                 if (   (48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  58)) then
-                                    fsm_dec_addr := fsm_dec_addr +  1048576 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 48);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;
                                 elsif ((65 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  71)) then
-                                    fsm_dec_addr := fsm_dec_addr +  1048576 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10;
                                 elsif ((97 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 103)) then
-                                    fsm_dec_addr := fsm_dec_addr +  1048576 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10;
                                 end if;
+                                fsm_dec_addr        := fsm_dec_addr + 1048576 * fsm_dec_nibble;
+                                fsm_dec_checksum    := (fsm_dec_checksum + 16 * fsm_dec_nibble) mod 256;
                                 
                                 fsm_dec_state := getAddr2Lo;
                                 
                             when getAddr2Lo =>
                                 if (   (48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  58)) then
-                                    fsm_dec_addr := fsm_dec_addr +   65536 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 48);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;
                                 elsif ((65 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  71)) then
-                                    fsm_dec_addr := fsm_dec_addr +   65536 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10;
                                 elsif ((97 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 103)) then
-                                    fsm_dec_addr := fsm_dec_addr +   65536 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10;
                                 end if;
-                                
-                                fsm_dec_checksum := fsm_dec_checksum + ((fsm_dec_addr / 65536) mod 256);
+                                fsm_dec_addr        := fsm_dec_addr + 65536 * fsm_dec_nibble;
+                                fsm_dec_checksum    := (fsm_dec_checksum + fsm_dec_nibble) mod 256;
                                 
                                 fsm_dec_state := getAddr1Hi;
                                 
@@ -1285,25 +1323,27 @@ begin
                                 fsm_dec_cnt := fsm_dec_cnt - 1;
                                 
                                 if (   (48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  58)) then
-                                    fsm_dec_addr := fsm_dec_addr +    4096 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 48);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;
                                 elsif ((65 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  71)) then
-                                    fsm_dec_addr := fsm_dec_addr +    4096 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10;
                                 elsif ((97 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 103)) then
-                                    fsm_dec_addr := fsm_dec_addr +    4096 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10;
                                 end if;
+                                fsm_dec_addr        := fsm_dec_addr + 4096 * fsm_dec_nibble;
+                                fsm_dec_checksum    := (fsm_dec_checksum + 16 * fsm_dec_nibble) mod 256;
                                 
                                 fsm_dec_state := getAddr1Lo;
                                 
                             when getAddr1Lo =>
                                 if (   (48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  58)) then
-                                    fsm_dec_addr := fsm_dec_addr +     256 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 48);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;
                                 elsif ((65 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  71)) then
-                                    fsm_dec_addr := fsm_dec_addr +     256 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10;
                                 elsif ((97 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 103)) then
-                                    fsm_dec_addr := fsm_dec_addr +     256 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10;
                                 end if;
-                                
-                                fsm_dec_checksum := fsm_dec_checksum + ((fsm_dec_addr / 256) mod 256);
+                                fsm_dec_addr        := fsm_dec_addr + 256 * fsm_dec_nibble;
+                                fsm_dec_checksum    := (fsm_dec_checksum + fsm_dec_nibble) mod 256;
                                 
                                 fsm_dec_state := getAddr0Hi;
                                 
@@ -1311,59 +1351,71 @@ begin
                                 fsm_dec_cnt := fsm_dec_cnt - 1;
                                 
                                 if (   (48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  58)) then
-                                    fsm_dec_addr := fsm_dec_addr +      16 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 48);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;
                                 elsif ((65 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  71)) then
-                                    fsm_dec_addr := fsm_dec_addr +      16 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10;
                                 elsif ((97 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 103)) then
-                                    fsm_dec_addr := fsm_dec_addr +      16 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10;
                                 end if;
+                                fsm_dec_addr        := fsm_dec_addr + fsm_dec_nibble;
+                                fsm_dec_checksum    := (fsm_dec_checksum + 16 * fsm_dec_nibble) mod 256;
                                 
                                 fsm_dec_state := getAddr0Lo;
                                 
                             when getAddr0Lo =>
                                 if (   (48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  58)) then
-                                    fsm_dec_addr := fsm_dec_addr +           (to_Integer(unsigned(fsm_srec_decoder_c)) - 48);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;
                                 elsif ((65 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  71)) then
-                                    fsm_dec_addr := fsm_dec_addr +           (to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10;
                                 elsif ((97 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 103)) then
-                                    fsm_dec_addr := fsm_dec_addr +           (to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10;
                                 end if;
+                                fsm_dec_addr        := fsm_dec_addr + fsm_dec_nibble;
+                                fsm_dec_checksum    := (fsm_dec_checksum + fsm_dec_nibble) mod 256;
                                 
-                                fsm_dec_checksum := fsm_dec_checksum + fsm_dec_addr;
-
-                                fsm_dec_state := getDataHi;
-                                
-                            when getDataHi =>
                                 if (fsm_dec_cnt > 1) then
-                                    if (   (48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  58)) then
-                                        fsm_dec_data := 16 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 48);
-                                    elsif ((65 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  71)) then
-                                        fsm_dec_data := 16 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10);
-                                    elsif ((97 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 103)) then
-                                        fsm_dec_data := 16 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10);
-                                    end if;
-                                    
-                                    fsm_dec_state := getDataLo;
-                                    
+                                    fsm_dec_state := getDataHi;
                                 else
                                     fsm_dec_state := getChecksumHi;
                                 end if;
                                 
+                            when getDataHi =>
+                                fsm_dec_cnt := fsm_dec_cnt - 1;
+                                
+                                if (   (48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  58)) then
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;
+                                elsif ((65 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  71)) then
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10;
+                                elsif ((97 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 103)) then
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10;
+                                end if;
+                                fsm_dec_data        := 16 * fsm_dec_nibble;
+                                fsm_dec_checksum    := (fsm_dec_checksum + 16 * fsm_dec_nibble) mod 256;
+                                
+                                fsm_dec_state := getDataLo;
+                                
                             when getDataLo =>
                                 if (   (48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  58)) then
-                                    fsm_dec_data := fsm_dec_data + (to_Integer(unsigned(fsm_srec_decoder_c)) - 48);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;
                                 elsif ((65 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  71)) then
-                                    fsm_dec_data := fsm_dec_data + (to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10;
                                 elsif ((97 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 103)) then
-                                    fsm_dec_data := fsm_dec_data + (to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10;
                                 end if;
-                                
-                                fsm_dec_checksum := fsm_dec_checksum + fsm_dec_data;
+                                fsm_dec_data        := fsm_dec_data + fsm_dec_nibble;
+                                fsm_dec_checksum    := (fsm_dec_checksum + fsm_dec_nibble) mod 256;
                                 
                                 if (fsm_dec_do_copy = '1') then
-                                    fsm_dec_state := copy_start;
+                                    -- Continue with next clock @ copy_start
+                                    state           := axi_dec_init;
+                                    fsm_dec_state   := copy_start;
                                 else
-                                    fsm_dec_state := getDataHi;
+                                    -- Consume and process
+                                    if (fsm_dec_cnt > 1) then
+                                        fsm_dec_state := getDataHi;
+                                    else
+                                        fsm_dec_state := getChecksumHi;
+                                    end if;
                                 end if;
                                 
                             when copy_start =>
@@ -1372,54 +1424,73 @@ begin
                                 fsm_start_axi_write     <= '1';
                                 
                                 fsm_dec_addr            := fsm_dec_addr + 1;
-                                fsm_dec_state := copy_wait;
+                                
+                                -- Continue with next clock @ copy_wait
+                                state           := axi_dec_init;
+                                fsm_dec_state   := copy_wait;
                                 
                             when copy_wait =>
                                 fsm_start_axi_write     <= '0';
                                 
                                 if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
                                     if (m00_axi_bresp(1) = '0') then
-                                        fsm_dec_state := getDataHi;
+                                        if (fsm_dec_cnt > 1) then
+                                            fsm_dec_state := getDataHi;
+                                        else
+                                            fsm_dec_state := getChecksumHi;
+                                        end if;
                                     else
                                         fsm_dec_state := dec_stop;
                                     end if;
+                                    fsm_axi_awaddr      <= (others => '0');
+                                    fsm_axi_wdata       <= (others => '0');
+                                    
+                                else
+                                    -- Continue with this state
+                                    state           := axi_dec_init;
+                                    fsm_dec_state   := copy_wait;
                                 end if;
                                 
                             when getChecksumHi =>
+                                fsm_dec_cnt := fsm_dec_cnt - 1;
+                                
                                 if (   (48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  58)) then
-                                    fsm_dec_checkByte := 16 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 48);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;
                                 elsif ((65 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  71)) then
-                                    fsm_dec_checkByte := 16 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10;
                                 elsif ((97 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 103)) then
-                                    fsm_dec_checkByte := 16 * (to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10;
                                 end if;
+                                fsm_dec_checksum    := (fsm_dec_checksum + 16 * fsm_dec_nibble) mod 256;
                                 
                                 fsm_dec_state := getChecksumLo;
                                 
                             when getChecksumLo =>
                                 if (   (48 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  58)) then
-                                    fsm_dec_checkByte := fsm_dec_checkByte + (to_Integer(unsigned(fsm_srec_decoder_c)) - 48);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 48;
                                 elsif ((65 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) <  71)) then
-                                    fsm_dec_checkByte := fsm_dec_checkByte + (to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 65 + 10;
                                 elsif ((97 <= to_Integer(unsigned(fsm_srec_decoder_c)))  and  (to_Integer(unsigned(fsm_srec_decoder_c)) < 103)) then
-                                    fsm_dec_checkByte := fsm_dec_checkByte + (to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10);
+                                    fsm_dec_nibble := to_Integer(unsigned(fsm_srec_decoder_c)) - 97 + 10;
                                 end if;
+                                fsm_dec_checksum := (fsm_dec_checksum + fsm_dec_nibble) mod 256;
                                 
-                                if (((fsm_dec_checksum + fsm_dec_checkByte) mod 256) = 0) then
+                                if (fsm_dec_checksum = 255) then
                                     if (fsm_dec_do_exec = '1') then
-                                        fsm_dec_state := exec_start;
+                                        fsm_dec_state   := exec_start;
                                     else
-                                        fsm_dec_state := searchS;
+                                        fsm_dec_state   := searchS;
                                     end if;
                                     
                                 else
                                     -- Bad checksum
-                                    fsm_dec_state := dec_stop;
+                                    fsm_dec_state   := dec_stop;
+                                    state           := axi_error;
                                 end if;
                                 
                                 
                             when exec_start =>
-                                -- Do reset CPU (when not already released by SREC_do_boot)
+                                -- Start CPU
                                 fsm_out_resetn  <= '1';
                                 fsm_dec_state   := dec_stop;
                                 state           := axi_init;
@@ -1452,12 +1523,21 @@ begin
                             else
                                 state := axi_error;
                             end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
                         end if;
                         
                         
                     when axi_error =>
                         -- Some error has occured.
                         fsm_out_error <= '1';
+                        
+                        fsm_fifo_reset_run      <= '0';
+                        fsm_srec_process_run    <= '0';
+                        fsm_master_reset_run    <= '0';
+                        
+                        fsm_out_resetn          <= '1';     -- Start CPU for debugging
+                        
                         
                     when others =>
                         state := axi_init;
@@ -1496,7 +1576,11 @@ begin
                         fsm_srec_process_do     <= '0';
                         fsm_master_reset_do     <= '0';
                         
-                        if (fsm_init_txn_pulse = '1') then
+                        if (SREC_enable = '0') then
+                            -- Stay at init when SREC is disabled
+                            state := init;
+                            
+                        elsif (fsm_init_txn_pulse = '1') then
                             state := fifo_reset_start;
                         end if;
                         

@@ -69,8 +69,8 @@ architecture Behavioral of tb_SREC_boot_loader is
         
         qspi_irpt                                       : in    STD_LOGIC;
         
-        SREC_startn                                     : in    STD_LOGIC;
-        SREC_do_boot                                    : in    STD_LOGIC;
+        SREC_start                                      : in    STD_LOGIC;
+        SREC_enable                                     : in    STD_LOGIC;
         
         SREC_error                                      : out   STD_LOGIC;
         SREC_resetn                                     : out   STD_LOGIC;
@@ -107,8 +107,8 @@ architecture Behavioral of tb_SREC_boot_loader is
         
   signal tb_qspi_irpt                                       : STD_LOGIC;
         
-  signal tb_SREC_startn                                     : STD_LOGIC;
-  signal tb_SREC_do_boot                                    : STD_LOGIC;
+  signal tb_SREC_start                                      : STD_LOGIC;
+  signal tb_SREC_enable                                     : STD_LOGIC;
         
   signal tb_SREC_error                                      : STD_LOGIC;
   signal tb_SREC_resetn                                     : STD_LOGIC;
@@ -145,8 +145,8 @@ begin
         
         qspi_irpt                       => tb_qspi_irpt,
         
-        SREC_startn                     => tb_SREC_startn,
-        SREC_do_boot                    => tb_SREC_do_boot,
+        SREC_start                      => tb_SREC_start,
+        SREC_enable                     => tb_SREC_enable,
         
         SREC_error                      => tb_SREC_error,
         SREC_resetn                     => tb_SREC_resetn,
@@ -169,13 +169,13 @@ begin
   proc_tb_reset: process
   begin
     tb_resetn       <= '0';
-    tb_SREC_startn  <= '0';
+    tb_SREC_start   <= '0';
     
     wait for 10us;
     tb_resetn       <= '1';
     
     wait for 5us;
-    tb_SREC_startn  <= '1';
+    tb_SREC_start   <= '1';
     wait;
   end process proc_tb_reset;
   
@@ -186,11 +186,9 @@ begin
   proc_axi_static: process
   begin
     tb_m00_axi_bresp    <= "00";        -- OK
-    tb_m00_axi_bvalid   <= '1';         -- Always valid bresp
-    
     tb_m00_axi_rresp    <= "00";        -- OK
     
-    tb_SREC_do_boot     <= '1';         -- Do boot after copy    
+    tb_SREC_enable      <= '1';         -- Enable SREC_boot_loader    
     wait;
   end process proc_axi_static;
 
@@ -206,6 +204,8 @@ begin
     variable fifo_len                           : Integer  range 0 to (2**8 - 1);
     variable fifo_idx                           : Integer  range 0 to (2**8 - 1);
     variable fsm_sel_ctr                        : Integer  range 0 to (2**4 - 1);
+    
+    variable fsm_ar_valid_last                  : STD_LOGIC;
   
   begin
     fifo_len := 0;
@@ -228,22 +228,22 @@ begin
     fifo(  8)   := 16#ee#;
     fifo_len    := fifo_len +  9;
     
-    fifo(  9)   := 16#53#;
-    fifo( 10)   := 16#30#;
-    fifo( 11)   := 16#31#;
-    fifo( 12)   := 16#37#;
-    fifo( 13)   := 16#30#;
-    fifo( 14)   := 16#30#;
-    fifo( 15)   := 16#30#;
-    fifo( 16)   := 16#30#;
-    fifo( 17)   := 16#37#;
-    fifo( 18)   := 16#32#;
-    fifo( 19)   := 16#37#;
-    fifo( 20)   := 16#34#;
-    fifo( 21)   := 16#36#;
-    fifo( 22)   := 16#46#;
-    fifo( 23)   := 16#37#;
-    fifo( 24)   := 16#33#;
+    fifo(  9)   := 16#53#;              -- 'S'
+    fifo( 10)   := 16#30#;              -- S-Type nibble        0x0
+    fifo( 11)   := 16#31#;              -- Length hi-nibble     0x17
+    fifo( 12)   := 16#37#;              -- Length lo-nibble
+    fifo( 13)   := 16#30#;              -- Addr_1 hi-nibble     0x00 ..
+    fifo( 14)   := 16#30#;              -- Addr_1 lo-nibble
+    fifo( 15)   := 16#30#;              -- Addr_0 hi-nibble          .. 0x00
+    fifo( 16)   := 16#30#;              -- Addr_0 lo-nibble
+    fifo( 17)   := 16#37#;              -- Data   hi-nibble     0x72
+    fifo( 18)   := 16#32#;              -- Data   lo-nibble
+    fifo( 19)   := 16#37#;              -- Data   hi-nibble     0x74
+    fifo( 20)   := 16#34#;              -- Data   lo-nibble
+    fifo( 21)   := 16#36#;              -- Data   hi-nibble     0x6f
+    fifo( 22)   := 16#46#;              -- Data   lo-nibble
+    fifo( 23)   := 16#37#;              -- Data   hi-nibble     0x73
+    fifo( 24)   := 16#33#;              -- Data   lo-nibble
     fifo_len    := fifo_len + 16;
 
     fifo( 25)   := 16#00#;
@@ -257,22 +257,22 @@ begin
     fifo( 33)   := 16#ee#;
     fifo_len    := fifo_len +  9;
     
-    fifo( 34)   := 16#32#;
-    fifo( 35)   := 16#46#;
-    fifo( 36)   := 16#34#;
-    fifo( 37)   := 16#34#;
-    fifo( 38)   := 16#36#;
-    fifo( 39)   := 16#35#;
-    fifo( 40)   := 16#36#;
-    fifo( 41)   := 16#32#;
-    fifo( 42)   := 16#37#;
-    fifo( 43)   := 16#35#;
-    fifo( 44)   := 16#36#;
-    fifo( 45)   := 16#37#;
-    fifo( 46)   := 16#32#;
-    fifo( 47)   := 16#46#;
-    fifo( 48)   := 16#37#;
-    fifo( 49)   := 16#32#;
+    fifo( 34)   := 16#32#;              -- Data   hi-nibble     0x2f
+    fifo( 35)   := 16#46#;              -- Data   lo-nibble
+    fifo( 36)   := 16#34#;              -- Data   hi-nibble     0x44
+    fifo( 37)   := 16#34#;              -- Data   lo-nibble
+    fifo( 38)   := 16#36#;              -- Data   hi-nibble     0x65
+    fifo( 39)   := 16#35#;              -- Data   lo-nibble
+    fifo( 40)   := 16#36#;              -- Data   hi-nibble     0x62
+    fifo( 41)   := 16#32#;              -- Data   lo-nibble
+    fifo( 42)   := 16#37#;              -- Data   hi-nibble     0x75
+    fifo( 43)   := 16#35#;              -- Data   lo-nibble
+    fifo( 44)   := 16#36#;              -- Data   hi-nibble     0x67
+    fifo( 45)   := 16#37#;              -- Data   lo-nibble
+    fifo( 46)   := 16#32#;              -- Data   hi-nibble     0x2f
+    fifo( 47)   := 16#46#;              -- Data   lo-nibble
+    fifo( 48)   := 16#37#;              -- Data   hi-nibble     0x72
+    fifo( 49)   := 16#32#;              -- Data   lo-nibble
     fifo_len    := fifo_len + 16;
 
     fifo( 50)   := 16#00#;
@@ -286,22 +286,22 @@ begin
     fifo( 58)   := 16#ee#;
     fifo_len    := fifo_len +  9;
     
-    fifo( 59)   := 16#37#;
-    fifo( 60)   := 16#34#;
-    fifo( 61)   := 16#36#;
-    fifo( 62)   := 16#46#;
-    fifo( 63)   := 16#37#;
-    fifo( 64)   := 16#33#;
-    fifo( 65)   := 16#32#;
-    fifo( 66)   := 16#45#;
-    fifo( 67)   := 16#37#;
-    fifo( 68)   := 16#33#;
-    fifo( 69)   := 16#37#;
-    fifo( 70)   := 16#32#;
-    fifo( 71)   := 16#36#;
-    fifo( 72)   := 16#35#;
-    fifo( 73)   := 16#36#;
-    fifo( 74)   := 16#33#;
+    fifo( 59)   := 16#37#;              -- Data   hi-nibble     0x74
+    fifo( 60)   := 16#34#;              -- Data   lo-nibble
+    fifo( 61)   := 16#36#;              -- Data   hi-nibble     0x6f
+    fifo( 62)   := 16#46#;              -- Data   lo-nibble
+    fifo( 63)   := 16#37#;              -- Data   hi-nibble     0x73
+    fifo( 64)   := 16#33#;              -- Data   lo-nibble
+    fifo( 65)   := 16#32#;              -- Data   hi-nibble     0x2e
+    fifo( 66)   := 16#45#;              -- Data   lo-nibble
+    fifo( 67)   := 16#37#;              -- Data   hi-nibble     0x73
+    fifo( 68)   := 16#33#;              -- Data   lo-nibble
+    fifo( 69)   := 16#37#;              -- Data   hi-nibble     0x72
+    fifo( 70)   := 16#32#;              -- Data   lo-nibble
+    fifo( 71)   := 16#36#;              -- Data   hi-nibble     0x65
+    fifo( 72)   := 16#35#;              -- Data   lo-nibble
+    fifo( 73)   := 16#36#;              -- Data   hi-nibble     0x63
+    fifo( 74)   := 16#33#;              -- Data   lo-nibble
     fifo_len    := fifo_len + 16;
 
     fifo( 75)   := 16#00#;
@@ -315,22 +315,22 @@ begin
     fifo( 83)   := 16#ee#;
     fifo_len    := fifo_len +  9;
     
-    fifo( 84)   := 16#33#;
-    fifo( 85)   := 16#38#;
-    fifo( 86)   := 16#0a#;
-    fifo( 87)   := 16#53#;
-    fifo( 88)   := 16#33#;
-    fifo( 89)   := 16#30#;
-    fifo( 90)   := 16#44#;
-    fifo( 91)   := 16#30#;
-    fifo( 92)   := 16#30#;
-    fifo( 93)   := 16#30#;
-    fifo( 94)   := 16#31#;
-    fifo( 95)   := 16#30#;
-    fifo( 96)   := 16#30#;
-    fifo( 97)   := 16#30#;
-    fifo( 98)   := 16#30#;
-    fifo( 99)   := 16#30#;
+    fifo( 84)   := 16#33#;              -- Checksum  hi-nibble  0x38
+    fifo( 85)   := 16#38#;              -- Checksum  lo-nibble
+    fifo( 86)   := 16#0a#;              -- LF
+    fifo( 87)   := 16#53#;              -- 'S'
+    fifo( 88)   := 16#33#;              -- S-Type nibble        0x3
+    fifo( 89)   := 16#30#;              -- Length hi-nibble     0x0d
+    fifo( 90)   := 16#44#;              -- Length lo-nibble
+    fifo( 91)   := 16#30#;              -- Addr_3 hi-nibble     0x00 ..
+    fifo( 92)   := 16#30#;              -- Addr_3 lo-nibble
+    fifo( 93)   := 16#30#;              -- Addr_2 hi-nibble          .. 0x01 ..
+    fifo( 94)   := 16#31#;              -- Addr_2 lo-nibble
+    fifo( 95)   := 16#30#;              -- Addr_1 hi-nibble                  .. 0x00 ..
+    fifo( 96)   := 16#30#;              -- Addr_1 lo-nibble
+    fifo( 97)   := 16#30#;              -- Addr_0 hi-nibble                          .. 0x00
+    fifo( 98)   := 16#30#;              -- Addr_0 lo-nibble
+    fifo( 99)   := 16#30#;              -- Data   hi-nibble     0x00
     fifo_len    := fifo_len + 16;
 
     fifo(100)   := 16#00#;
@@ -344,22 +344,22 @@ begin
     fifo(108)   := 16#ee#;
     fifo_len    := fifo_len +  9;
     
-    fifo(109)   := 16#30#;
-    fifo(110)   := 16#38#;
-    fifo(111)   := 16#30#;
-    fifo(112)   := 16#30#;
-    fifo(113)   := 16#30#;
-    fifo(114)   := 16#42#;
-    fifo(115)   := 16#30#;
-    fifo(116)   := 16#30#;
-    fifo(117)   := 16#30#;
-    fifo(118)   := 16#30#;
-    fifo(119)   := 16#30#;
-    fifo(120)   := 16#30#;
-    fifo(121)   := 16#38#;
-    fifo(122)   := 16#42#;
-    fifo(123)   := 16#38#;
-    fifo(124)   := 16#30#;
+    fifo(109)   := 16#30#;              -- Data   lo-nibble
+    fifo(110)   := 16#38#;              -- Data   hi-nibble     0x80
+    fifo(111)   := 16#30#;              -- Data   lo-nibble
+    fifo(112)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(113)   := 16#30#;              -- Data   lo-nibble
+    fifo(114)   := 16#42#;              -- Data   hi-nibble     0xb0
+    fifo(115)   := 16#30#;              -- Data   lo-nibble
+    fifo(116)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(117)   := 16#30#;              -- Data   lo-nibble
+    fifo(118)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(119)   := 16#30#;              -- Data   lo-nibble
+    fifo(120)   := 16#30#;              -- Data   hi-nibble     0x08
+    fifo(121)   := 16#38#;              -- Data   lo-nibble
+    fifo(122)   := 16#42#;              -- Data   hi-nibble     0xb8
+    fifo(123)   := 16#38#;              -- Data   lo-nibble
+    fifo(124)   := 16#30#;              -- Checksum  hi-nibble  0x01
     fifo_len    := fifo_len + 16;
 
     fifo(125)   := 16#00#;
@@ -373,8 +373,8 @@ begin
     fifo(133)   := 16#ee#;
     fifo_len    := fifo_len +  9;
     
-    fifo(134)   := 16#31#;
-    fifo(135)   := 16#0a#;
+    fifo(134)   := 16#31#;              -- Checksum  lo-nibble
+    fifo(135)   := 16#0a#;              -- LF
     fifo(136)   := 16#53#;
     fifo(137)   := 16#33#;
     fifo(138)   := 16#31#;
@@ -508,7 +508,9 @@ begin
     fifo_len    := fifo_len + 16;
     
     fifo_idx    := 0;
-    fsm_sel_ctr := 0;
+
+    fsm_sel_ctr         := 0;
+    fsm_ar_valid_last   := '0';
     
     
     -- The show starts after the synchron reset
@@ -517,6 +519,7 @@ begin
     
     tb_m00_axi_awready  <= '0';
     tb_m00_axi_wready   <= '0';
+    tb_m00_axi_bvalid   <= '0';
     tb_m00_axi_arready  <= '0';
     tb_m00_axi_rdata    <= (others => '0');
     tb_m00_axi_rvalid   <= '0';
@@ -530,6 +533,7 @@ begin
         
         tb_m00_axi_awready  <= '0';
         tb_m00_axi_wready   <= '0';
+        tb_m00_axi_bvalid   <= '0';
         tb_m00_axi_arready  <= '0';
         tb_m00_axi_rvalid   <= '0';
         
@@ -545,22 +549,22 @@ begin
         
         
         -- READ  FIFO pull
-        if ((tb_m00_axi_araddr = QSPI_SPIDRR_ADDR)  and  (tb_m00_axi_arvalid = '1')  and  (tb_m00_axi_rready = '1')) then
+        if ((tb_m00_axi_araddr = QSPI_SPIDRR_ADDR)  and  (tb_m00_axi_arvalid = '1')) then
             -- FIFO get
             tb_m00_axi_arready  <= '1';
             tb_m00_axi_rdata    <= std_logic_vector(to_unsigned(fifo(fifo_idx), tb_m00_axi_rdata'length));
             tb_m00_axi_rvalid   <= '1';
-            fifo_idx            := (fifo_idx + 1) mod 256;
+            fsm_ar_valid_last   := '1';
             
         -- READ  Interrupt status
-        elsif ((tb_m00_axi_araddr = QSPI_IPISR_ADDR)  and  (tb_m00_axi_arvalid = '1')  and  (tb_m00_axi_rready = '1')) then
+        elsif ((tb_m00_axi_araddr = QSPI_IPISR_ADDR)  and  (tb_m00_axi_arvalid = '1')) then
             tb_m00_axi_arready  <= '1';
             tb_m00_axi_rdata    <= x"00000004";
             tb_m00_axi_rvalid   <= '1';
-            tb_qspi_irpt <= '0';
+            fsm_sel_ctr         := 0;
             
         -- READ  Any other read access
-        elsif ((tb_m00_axi_arvalid = '1')  and  (tb_m00_axi_rready = '1')) then
+        elsif ((tb_m00_axi_arvalid = '1')) then
             tb_m00_axi_arready  <= '1';
             tb_m00_axi_rdata    <= x"00000000";
             tb_m00_axi_rvalid   <= '1';
@@ -570,6 +574,7 @@ begin
         elsif ((tb_m00_axi_awaddr = QSPI_SPISSR_ADDR)  and  (tb_m00_axi_awvalid = '1')  and  (tb_m00_axi_wvalid = '1')) then
             tb_m00_axi_awready  <= '1';
             tb_m00_axi_wready   <= '1';
+            tb_m00_axi_bvalid   <= '1';
             
             if (tb_m00_axi_wdata(0) = '0') then
                 fsm_sel_ctr := 15;
@@ -581,9 +586,19 @@ begin
         elsif ((tb_m00_axi_awvalid = '1')  and  (tb_m00_axi_wvalid = '1')) then
             tb_m00_axi_awready  <= '1';
             tb_m00_axi_wready   <= '1';
+            tb_m00_axi_bvalid   <= '1';
         end if;
-
+        
+        
+        -- Helper for READ  FIFO pull
+        if ((tb_m00_axi_araddr = QSPI_SPIDRR_ADDR)  and  (tb_m00_axi_arvalid = '0')) then
+            if (fsm_ar_valid_last = '1') then
+                fifo_idx            := (fifo_idx + 1) mod 256;
+                fsm_ar_valid_last   := '0';
+            end if;
+        end if;
+        
     end loop;
   end process proc_axi;
-
+  
 end Behavioral;
