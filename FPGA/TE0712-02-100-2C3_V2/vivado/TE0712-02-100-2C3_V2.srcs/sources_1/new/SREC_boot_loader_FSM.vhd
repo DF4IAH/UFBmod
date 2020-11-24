@@ -637,7 +637,7 @@ begin
     --
     axi_FSM_proc : process (m00_axi_aclk)
         constant QSPI_SKIP_CNT                      : Integer := 9;
-        constant QSPI_LOAD_CNT                      : Integer := 245;
+        constant QSPI_LOAD_CNT                      : Integer := 16;   -- production: 245;
         
         constant QSPI_BASE_ADDR                     : STD_LOGIC_VECTOR (31 downto 0) := x"45310000";
         
@@ -654,10 +654,20 @@ begin
         constant QSPI_IPISR_ADDR                    : STD_LOGIC_VECTOR (31 downto 0) := x"45310020";
         constant QSPI_IPIER_ADDR                    : STD_LOGIC_VECTOR (31 downto 0) := x"45310028";
         
+
+        constant GPIO_LIGHTS_BASE_ADDR              : STD_LOGIC_VECTOR (31 downto 0) := x"54040000";
+
+        constant GPIO_LIGHTS_GPIO_DATA_ADDR         : STD_LOGIC_VECTOR (31 downto 0) := x"54040000";
+        constant GPIO_LIGHTS_GPIO_TRI_ADDR          : STD_LOGIC_VECTOR (31 downto 0) := x"54040004";
+        constant GPIO_LIGHTS_GPIO2_DATA_ADDR        : STD_LOGIC_VECTOR (31 downto 0) := x"54040008";
+        constant GPIO_LIGHTS_GPIO2_TRI_ADDR         : STD_LOGIC_VECTOR (31 downto 0) := x"5404000c";
+        
+        
         type StateType                              is (
                                                         axi_init,
                                                         
                                                         fifo_reset_start,               fifo_reset_wait,                    fifo_reset_complete,
+                                                        fifo_show_start,                fifo_show_wait,
                                                         fifo_deassert_start,            fifo_deassert_wait,                 fifo_deassert_complete,
                                                         fifo_int1_start,                fifo_int1_wait,
                                                         fifo_int2_start,                fifo_int2_wait,
@@ -669,11 +679,13 @@ begin
                                                         fifo_srec_load_4_start,         fifo_srec_load_4_wait,
                                                         fifo_srec_load_5_start,         fifo_srec_load_5_wait,
                                                         fifo_srec_load_prefill_init,    fifo_srec_load_prefill_start,       fifo_srec_load_prefill_loop,
+                                                        fifo_srec_load_show_start,      fifo_srec_load_show_wait,
                                                         fifo_srec_load_cs_start,        fifo_srec_load_cs_wait,
                                                         fifo_srec_load_master_start,    fifo_srec_load_master_wait,
                                                         fifo_srec_load_int_wait,
                                                         fifo_srec_load_un_cs_start,     fifo_srec_load_un_cs_wait,
                                                         fifo_srec_load_un_master_start, fifo_srec_load_un_master_wait,
+                                                        fifo_srec_proc_show_start,      fifo_srec_proc_show_wait,
                                                         fifo_srec_load_strip_init,      fifo_srec_load_strip_start,         fifo_srec_load_strip_loop,
                                                         
                                                         fifo_srec_read_init,            fifo_srec_read_start,               fifo_srec_read_wait,
@@ -681,7 +693,8 @@ begin
                                                         
                                                         qspi_master_reset_start,        qspi_master_reset_wait,
                                                         
-                                                        axi_error
+                                                        axi_good,                       axi_good_show_start,                axi_good_show_wait,                 axi_good_final,
+                                                        axi_error,                      axi_error_show_start,               axi_error_show_wait,                axi_error_final
                                                     );
         variable state                              : StateType;
         
@@ -721,7 +734,7 @@ begin
                 fsm_axi_araddr          <= (others => '0');
                 
                 fsm_out_error           <= '0';
-                fsm_out_resetn          <= not SREC_enable;
+                fsm_out_resetn          <= '0';
                 
                 fsm_start_axi_write     <= '0';
                 fsm_start_axi_read      <= '0';
@@ -757,6 +770,7 @@ begin
                         fsm_axi_araddr          <= (others => '0');
                         
                         fsm_out_error           <= '0';
+                        fsm_out_resetn          <= not SREC_enable;
                         
                         fsm_start_axi_write     <= '0';
                         fsm_start_axi_read      <= '0';
@@ -817,9 +831,28 @@ begin
                     when fifo_reset_complete =>
                         fsm_fifo_reset_run <= '0';
                         if (fsm_fifo_reset_do = '0') then
-                            state := fifo_deassert_start;
+                            state := fifo_show_start;
                         end if;
                         
+                    
+                    when fifo_show_start =>
+                        fsm_axi_awaddr          <= GPIO_LIGHTS_GPIO_DATA_ADDR;
+                        fsm_axi_wdata           <= x"00200000";     -- Blue LED
+                        fsm_start_axi_write     <= '1';
+                        state := fifo_show_wait;
+                        
+                    when fifo_show_wait =>
+                        fsm_start_axi_write  <= '0';
+                        if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
+                            if (m00_axi_bresp(1) = '0') then
+                                state := fifo_deassert_start;
+                            else
+                                state := axi_error;
+                            end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
+                        end if;
+                    
                         
                     when fifo_deassert_start =>
                         -- Write to SPICR - Preparations: Master inhibit + FIFO reset (PG153 p106) - value: 0x0001e6
@@ -1009,8 +1042,27 @@ begin
                                 if (fsm_fifo_prefill_cnt /= 0) then
                                     state := fifo_srec_load_prefill_start;
                                 else
-                                    state := fifo_srec_load_cs_start;
+                                    state := fifo_srec_load_show_start;
                                 end if;
+                            else
+                                state := axi_error;
+                            end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
+                        end if;
+                        
+                        
+                    when fifo_srec_load_show_start =>
+                        fsm_axi_awaddr          <= GPIO_LIGHTS_GPIO_DATA_ADDR;
+                        fsm_axi_wdata           <= x"00002020";     -- Yellow LED
+                        fsm_start_axi_write     <= '1';
+                        state := fifo_srec_proc_show_wait;
+                        
+                    when fifo_srec_load_show_wait =>
+                        fsm_start_axi_write  <= '0';
+                        if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
+                            if (m00_axi_bresp(1) = '0') then
+                                state := fifo_srec_load_cs_start;
                             else
                                 state := axi_error;
                             end if;
@@ -1097,6 +1149,25 @@ begin
                         fsm_start_axi_write  <= '0';
                         if (m00_axi_bvalid = '1' and io_axi_bready = '1') then 
                             if (m00_axi_bresp(1) = '0') then
+                                state := fifo_srec_proc_show_start;
+                            else
+                                state := axi_error;
+                            end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
+                        end if;
+                        
+                        
+                    when fifo_srec_proc_show_start =>
+                        fsm_axi_awaddr          <= GPIO_LIGHTS_GPIO_DATA_ADDR;
+                        fsm_axi_wdata           <= x"00200000";     -- Blue LED
+                        fsm_start_axi_write     <= '1';
+                        state := fifo_srec_proc_show_wait;
+                        
+                    when fifo_srec_proc_show_wait =>
+                        fsm_start_axi_write  <= '0';
+                        if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
+                            if (m00_axi_bresp(1) = '0') then
                                 state := fifo_srec_load_strip_init;
                             else
                                 state := axi_error;
@@ -1105,7 +1176,7 @@ begin
                             fsm_axi_wdata       <= (others => '0');
                         end if;
                         
-                      
+                        
                     -- Strip first section off  
                     when fifo_srec_load_strip_init =>
                         fsm_fifo_strip_cnt := QSPI_SKIP_CNT;
@@ -1519,13 +1590,53 @@ begin
                             fsm_master_reset_run <= '0';
                             
                             if (m00_axi_bresp(1) = '0') then
-                                state := axi_init;
+                                state := axi_good;
                             else
                                 state := axi_error;
                             end if;
                             fsm_axi_awaddr      <= (others => '0');
                             fsm_axi_wdata       <= (others => '0');
                         end if;
+                        
+                        
+                    when axi_good =>
+                        fsm_axi_awaddr          <= (others => '0');
+                        fsm_axi_wdata           <= (others => '0');
+                        fsm_axi_araddr          <= (others => '0');
+                        
+                        fsm_out_error           <= '0';
+                        
+                        fsm_start_axi_write     <= '0';
+                        fsm_start_axi_read      <= '0';
+                        
+                        fsm_fifo_reset_run      <= '0';
+                        fsm_srec_process_run    <= '0';
+                        fsm_master_reset_run    <= '0';
+                        
+                        fsm_srec_decoder_c      <= (others => '0');
+                        
+                        state := axi_good_show_start;
+                        
+                    when axi_good_show_start =>
+                        fsm_axi_awaddr          <= GPIO_LIGHTS_GPIO_DATA_ADDR;
+                        fsm_axi_wdata           <= x"00002000";     -- Green LED
+                        fsm_start_axi_write     <= '1';
+                        state := axi_good_show_wait;
+                        
+                    when axi_good_show_wait =>
+                        fsm_start_axi_write  <= '0';
+                        if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
+                            if (m00_axi_bresp(1) = '0') then
+                                state := axi_good_final;
+                            else
+                                state := axi_error;
+                            end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
+                        end if;
+                        
+                    when axi_good_final =>
+                        -- GOOD
                         
                         
                     when axi_error =>
@@ -1537,6 +1648,29 @@ begin
                         fsm_master_reset_run    <= '0';
                         
                         fsm_out_resetn          <= '1';     -- Start CPU for debugging
+                        
+                        state := axi_error_show_start;
+                        
+                    when axi_error_show_start =>
+                        fsm_axi_awaddr          <= GPIO_LIGHTS_GPIO_DATA_ADDR;
+                        fsm_axi_wdata           <= x"00000020";     -- Red LED
+                        fsm_start_axi_write     <= '1';
+                        state := axi_error_show_wait;
+                        
+                    when axi_error_show_wait =>
+                        fsm_start_axi_write  <= '0';
+                        if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
+                            if (m00_axi_bresp(1) = '0') then
+                                state := axi_error_final;
+                            else
+                                state := axi_error;
+                            end if;
+                            fsm_axi_awaddr      <= (others => '0');
+                            fsm_axi_wdata       <= (others => '0');
+                        end if;
+                        
+                    when axi_error_final =>
+                        -- ERROR
                         
                         
                     when others =>

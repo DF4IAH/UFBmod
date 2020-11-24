@@ -199,8 +199,8 @@ begin
     constant QSPI_SPISSR_ADDR                   : STD_LOGIC_VECTOR (31 downto 0) := x"45310070";
     constant QSPI_IPISR_ADDR                    : STD_LOGIC_VECTOR (31 downto 0) := x"45310020";
     
-    type Vec256I                                is array ((2**8 - 1) downto 0) of Integer;
-    variable fifo                               : Vec256I;
+    type Vec280I                                is array (0 to 279) of Integer;
+    variable fifo                               : Vec280I;
     variable fifo_len                           : Integer  range 0 to (2**8 - 1);
     variable fifo_idx                           : Integer  range 0 to (2**8 - 1);
     variable fsm_sel_ctr                        : Integer  range 0 to (2**4 - 1);
@@ -210,7 +210,7 @@ begin
   begin
     fifo_len := 0;
     
-    for ii in 0 to 255 loop
+    for ii in 0 to 279 loop
         fifo(ii) := 16#ff#;
     end loop;
     
@@ -506,6 +506,17 @@ begin
     fifo(248)   := 16#ff#;
     fifo(249)   := 16#ff#;
     fifo_len    := fifo_len + 16;
+
+    fifo(250)   := 16#00#;
+    fifo(251)   := 16#00#;
+    fifo(252)   := 16#00#;
+    fifo(253)   := 16#00#;
+    fifo(254)   := 16#00#;
+    fifo(255)   := 16#ee#;
+    fifo(256)   := 16#ee#;
+    fifo(257)   := 16#ee#;
+    fifo(258)   := 16#ee#;
+    fifo_len    := fifo_len +  9;
     
     fifo_idx    := 0;
 
