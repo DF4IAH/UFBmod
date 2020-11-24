@@ -503,9 +503,9 @@ begin
             else
                 if (fsm_start_axi_write = '1') then
                     io_axi_wdata <= fsm_axi_wdata;
-              --elsif (m00_axi_wready = '1' and io_axi_wvalid = '1') then
+                elsif (m00_axi_wready = '1' and io_axi_wvalid = '1') then
                     -- Data write transfer complete
-                  --io_axi_wdata <= (others => '0');
+                    io_axi_wdata <= (others => '0');
                 end if;
             end if;
         end if;
@@ -734,7 +734,7 @@ begin
                 fsm_axi_araddr          <= (others => '0');
                 
                 fsm_out_error           <= '0';
-                fsm_out_resetn          <= '0';
+                fsm_out_resetn          <= not SREC_enable;
                 
                 fsm_start_axi_write     <= '0';
                 fsm_start_axi_read      <= '0';
@@ -770,7 +770,6 @@ begin
                         fsm_axi_araddr          <= (others => '0');
                         
                         fsm_out_error           <= '0';
-                        fsm_out_resetn          <= not SREC_enable;
                         
                         fsm_start_axi_write     <= '0';
                         fsm_start_axi_read      <= '0';
@@ -1563,6 +1562,7 @@ begin
                             when exec_start =>
                                 -- Start CPU
                                 fsm_out_resetn  <= '1';
+                                
                                 fsm_dec_state   := dec_stop;
                                 state           := axi_init;
                                 
@@ -1624,13 +1624,14 @@ begin
                         state := axi_good_show_wait;
                         
                     when axi_good_show_wait =>
-                        fsm_start_axi_write  <= '0';
+                        fsm_start_axi_write <= '0';
                         if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
                             if (m00_axi_bresp(1) = '0') then
                                 state := axi_good_final;
                             else
                                 state := axi_error;
                             end if;
+                            
                             fsm_axi_awaddr      <= (others => '0');
                             fsm_axi_wdata       <= (others => '0');
                         end if;
@@ -1660,11 +1661,8 @@ begin
                     when axi_error_show_wait =>
                         fsm_start_axi_write  <= '0';
                         if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
-                            if (m00_axi_bresp(1) = '0') then
-                                state := axi_error_final;
-                            else
-                                state := axi_error;
-                            end if;
+                            state := axi_error_final;
+                            
                             fsm_axi_awaddr      <= (others => '0');
                             fsm_axi_wdata       <= (others => '0');
                         end if;
