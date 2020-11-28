@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Sat Nov 21 22:20:04 2020
+--Date        : Sat Nov 28 07:28:00 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target UFBmod_TRX_wrapper.bd
 --Design      : UFBmod_TRX_wrapper
@@ -125,7 +125,6 @@ entity UFBmod_TRX_wrapper is
     microblaze_0_Clk_100MHz : in STD_LOGIC;
     mig_7series_0_mmcm_locked : in STD_LOGIC;
     mig_7series_0_ui_addn_clk_0_200MHz : in STD_LOGIC;
-    mig_7series_0_ui_clk_sync_rst : in STD_LOGIC;
     premem_rx09_addra_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
     premem_rx09_dina_in : in STD_LOGIC_VECTOR ( 25 downto 0 );
     premem_rx09_wea_in : in STD_LOGIC;
@@ -141,7 +140,6 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     microblaze_0_Clk_100MHz : in STD_LOGIC;
     rst_mig_7series_0_100M_peripheral_aresetn : in STD_LOGIC;
     TRX_clk_26MHz : in STD_LOGIC;
-    mig_7series_0_ui_clk_sync_rst : in STD_LOGIC;
     mig_7series_0_ui_addn_clk_0_200MHz : in STD_LOGIC;
     mig_7series_0_mmcm_locked : in STD_LOGIC;
     rst_mig_7series_0_100M_peripheral_reset : in STD_LOGIC;
@@ -253,10 +251,10 @@ architecture STRUCTURE of UFBmod_TRX_wrapper is
     TRX_RX_PUSHDATA_GPIO2_o : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_RX_PUSHDATA_GPIO1_i : out STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_LVDS_tx09_fifo_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
-    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC;
     TRX_tx_clk_clk_n : out STD_LOGIC;
-    TRX_tx_clk_clk_p : out STD_LOGIC
+    TRX_tx_clk_clk_p : out STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_n : in STD_LOGIC;
+    TRX_rx_clk_64MHz_clk_p : in STD_LOGIC
   );
   end component UFBmod_TRX;
 begin
@@ -374,7 +372,6 @@ UFBmod_TRX_i: component UFBmod_TRX
       microblaze_0_Clk_100MHz => microblaze_0_Clk_100MHz,
       mig_7series_0_mmcm_locked => mig_7series_0_mmcm_locked,
       mig_7series_0_ui_addn_clk_0_200MHz => mig_7series_0_ui_addn_clk_0_200MHz,
-      mig_7series_0_ui_clk_sync_rst => mig_7series_0_ui_clk_sync_rst,
       premem_rx09_addra_in(10 downto 0) => premem_rx09_addra_in(10 downto 0),
       premem_rx09_dina_in(25 downto 0) => premem_rx09_dina_in(25 downto 0),
       premem_rx09_wea_in => premem_rx09_wea_in,

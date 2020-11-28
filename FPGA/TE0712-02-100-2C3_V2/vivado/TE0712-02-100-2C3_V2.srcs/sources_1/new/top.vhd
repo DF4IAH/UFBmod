@@ -89,7 +89,20 @@ entity top is
     UART0_rxd                                           : in    STD_LOGIC;
     UART0_txd                                           : out   STD_LOGIC;
     ULI_SYSTEM_XIO                                      : in    STD_LOGIC;
-    USER_dbg_out                                        : out   STD_LOGIC_VECTOR ( 13 downto 0 );
+    USER_dbg_00_signal                                  : out   STD_LOGIC;
+    USER_dbg_01_signal                                  : out   STD_LOGIC;
+    USER_dbg_02_signal                                  : out   STD_LOGIC;
+    USER_dbg_03_signal                                  : out   STD_LOGIC;
+    USER_dbg_04_signal                                  : out   STD_LOGIC;
+    USER_dbg_05_signal                                  : out   STD_LOGIC;
+    USER_dbg_06_signal                                  : out   STD_LOGIC;
+    USER_dbg_07_signal                                  : out   STD_LOGIC;
+    USER_dbg_08_signal                                  : out   STD_LOGIC;
+    USER_dbg_09_signal                                  : out   STD_LOGIC;
+    USER_dbg_10_signal                                  : out   STD_LOGIC;
+    USER_dbg_11_signal                                  : out   STD_LOGIC;
+    USER_dbg_12_signal                                  : out   STD_LOGIC;
+    USER_dbg_13_signal                                  : out   STD_LOGIC;
     phy_rst_n                                           : out   STD_LOGIC;
     qspi_flash_io0_io                                   : inout STD_LOGIC;
     qspi_flash_io1_io                                   : inout STD_LOGIC;
@@ -184,14 +197,14 @@ architecture STRUCTURE of top is
     TRX_clk_trx_pll_25MHz_vio : in STD_LOGIC;
     TRX_decoder_rx09_ch00_squelch_lvl : in STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_int : in STD_LOGIC;
-    TRX_tx_data_count : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    TRX_rx_rd_data_count : in STD_LOGIC_VECTOR ( 3 downto 0 );
     TRX_rx09_32bits_CD100 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx24_32bits_CD100 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_rx_clkdiv_16MHz_in : in STD_LOGIC;
+    TRX_rx_rd_data_count : in STD_LOGIC_VECTOR ( 3 downto 0 );
     TRX_tx_DDS0_gpio_ampt : in STD_LOGIC_VECTOR ( 15 downto 0 );
     TRX_tx_DDS0_gpio_inc : in STD_LOGIC_VECTOR ( 31 downto 0 );
     TRX_tx_DDS1_gpio_ampt : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    TRX_tx_data_count : in STD_LOGIC_VECTOR ( 11 downto 0 );
     TRX_tx_im : in STD_LOGIC_VECTOR ( 12 downto 0 );
     TRX_tx_re : in STD_LOGIC_VECTOR ( 12 downto 0 );
     UART0EXT_CTSn : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -204,7 +217,20 @@ architecture STRUCTURE of top is
     UART0_rst_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     UART0_rxd : in STD_LOGIC;
     UART0_txd : out STD_LOGIC;
-    USER_dbg_out : out STD_LOGIC_VECTOR ( 13 downto 0 );
+    USER_dbg_00_signal : out STD_LOGIC;
+    USER_dbg_01_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_02_signal : out STD_LOGIC;
+    USER_dbg_03_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_04_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_05_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_06_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_07_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_08_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_09_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_10_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_11_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_12_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_13_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
     dds_tx09_inc : in STD_LOGIC_VECTOR ( 25 downto 0 );
     dds_tx09_ptt : in STD_LOGIC;
     decoder_rx09_ch00_center_pos : in STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -236,7 +262,6 @@ architecture STRUCTURE of top is
     microblaze_0_Clk_100MHz : out STD_LOGIC;
     mig_7series_0_mmcm_locked : out STD_LOGIC;
     mig_7series_0_ui_addn_clk_0_200MHz : out STD_LOGIC;
-    mig_7series_0_ui_clk_sync_rst : out STD_LOGIC;
     phy_rst_n : out STD_LOGIC;
     qspi_flash_io0_io : inout STD_LOGIC;
     qspi_flash_io1_io : inout STD_LOGIC;
@@ -246,6 +271,7 @@ architecture STRUCTURE of top is
     reset : in STD_LOGIC;
     rotenc_dec_cnt_en : in STD_LOGIC;
     rotenc_dec_cnt_up_dwn : in STD_LOGIC;
+    rst_mig_7series_0_100M_peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 );
     rst_mig_7series_0_100M_peripheral_reset : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_wrapper;
@@ -471,7 +497,6 @@ architecture STRUCTURE of top is
     microblaze_0_Clk_100MHz : in STD_LOGIC;
     mig_7series_0_mmcm_locked : in STD_LOGIC;
     mig_7series_0_ui_addn_clk_0_200MHz : in STD_LOGIC;
-    mig_7series_0_ui_clk_sync_rst : in STD_LOGIC;
     premem_rx09_addra_in : in STD_LOGIC_VECTOR ( 10 downto 0 );
     premem_rx09_dina_in : in STD_LOGIC_VECTOR ( 25 downto 0 );
     premem_rx09_wea_in : in STD_LOGIC;
@@ -1003,7 +1028,7 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
       microblaze_0_Clk_100MHz                               => top_microblaze_0_Clk_100MHz,
       mig_7series_0_mmcm_locked                             => top_mig_7series_0_mmcm_locked,
       mig_7series_0_ui_addn_clk_0_200MHz                    => top_mig_7series_0_ui_addn_clk_0_200MHz,
-      mig_7series_0_ui_clk_sync_rst                         => top_mig_7series_0_ui_clk_sync_rst,
+    --mig_7series_0_ui_clk_sync_rst                         => top_mig_7series_0_ui_clk_sync_rst,
       premem_rx09_addra_in                                  => top_TRX_pre_fft_rx_rf09_mem_a_addr,
       TRX_rx_rf09_Pre_FFT_mem_addrb                         => top_TRX_pre_fft_rx_rf09_mem_b_addr,
       premem_rx09_dina_in                                   => top_TRX_pre_fft_rx_rf09_mem_a_din,
@@ -1018,7 +1043,7 @@ UFBmod_TRX_bd: component UFBmod_TRX_wrapper
 UFBmod_Decoder_rx09_ch00_bd: component UFBmod_Decoder_wrapper
     port map (
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      reset_100MHz                                          => top_rst_mig_7series_0_100M_peripheral_reset,
       
       TRX_channel_rx_rf09_id                                => "000",
       
@@ -1045,7 +1070,7 @@ UFBmod_Decoder_rx09_ch00_bd: component UFBmod_Decoder_wrapper
 UFBmod_Decoder_rx09_ch01_bd: component UFBmod_Decoder_wrapper
     port map (
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      reset_100MHz                                          => top_rst_mig_7series_0_100M_peripheral_reset,
       
       TRX_channel_rx_rf09_id                                => "001",
       
@@ -1071,7 +1096,7 @@ UFBmod_Decoder_rx09_ch01_bd: component UFBmod_Decoder_wrapper
 UFBmod_Decoder_rx09_ch02_bd: component UFBmod_Decoder_wrapper
     port map (
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      reset_100MHz                                          => top_rst_mig_7series_0_100M_peripheral_reset,
       
       TRX_channel_rx_rf09_id                                => "010",
       
@@ -1097,7 +1122,7 @@ UFBmod_Decoder_rx09_ch02_bd: component UFBmod_Decoder_wrapper
 UFBmod_Decoder_rx09_ch03_bd: component UFBmod_Decoder_wrapper
     port map (
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      reset_100MHz                                          => top_rst_mig_7series_0_100M_peripheral_reset,
       
       TRX_channel_rx_rf09_id                                => "011",
       
@@ -1123,7 +1148,7 @@ UFBmod_Decoder_rx09_ch03_bd: component UFBmod_Decoder_wrapper
 UFBmod_Decoder_rx09_ch04_bd: component UFBmod_Decoder_wrapper
     port map (
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      reset_100MHz                                          => top_rst_mig_7series_0_100M_peripheral_reset,
       
       TRX_channel_rx_rf09_id                                => "100",
       
@@ -1149,7 +1174,7 @@ UFBmod_Decoder_rx09_ch04_bd: component UFBmod_Decoder_wrapper
 UFBmod_Decoder_rx09_ch05_bd: component UFBmod_Decoder_wrapper
     port map (
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      reset_100MHz                                          => top_rst_mig_7series_0_100M_peripheral_reset,
       
       TRX_channel_rx_rf09_id                                => "101",
       
@@ -1175,7 +1200,7 @@ UFBmod_Decoder_rx09_ch05_bd: component UFBmod_Decoder_wrapper
 UFBmod_Decoder_rx09_ch06_bd: component UFBmod_Decoder_wrapper
     port map (
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      reset_100MHz                                          => top_rst_mig_7series_0_100M_peripheral_reset,
       
       TRX_channel_rx_rf09_id                                => "110",
       
@@ -1201,7 +1226,7 @@ UFBmod_Decoder_rx09_ch06_bd: component UFBmod_Decoder_wrapper
 UFBmod_Decoder_rx09_ch07_bd: component UFBmod_Decoder_wrapper
     port map (
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      reset_100MHz                                          => top_rst_mig_7series_0_100M_peripheral_reset,
       
       TRX_channel_rx_rf09_id                                => "111",
       
@@ -1228,7 +1253,7 @@ UFBmod_Decoder_rx09_ch07_bd: component UFBmod_Decoder_wrapper
 UFBmod_Encoder_bd: component UFBmod_Encoder_wrapper
     port map (
       clk_100MHz                                            => top_microblaze_0_Clk_100MHz,
-      reset_100MHz                                          => top_mig_7series_0_ui_clk_sync_rst,
+      reset_100MHz                                          => top_rst_mig_7series_0_100M_peripheral_reset,
       
       decoder_rx09_chAll_sql_open                           => top_TRX_decoder_rx_rf09_chAll_sql_open,
       decoder_rx09_chAll_active                             => top_TRX_decoder_rx_rf09_chAll_active,
@@ -1247,7 +1272,7 @@ UFBmod_Encoder_bd: component UFBmod_Encoder_wrapper
 SCOPE_FSM_i: component SCOPE_FSM
     port map (
       clk                                                   => top_microblaze_0_Clk_100MHz,
-      reset                                                 => top_mig_7series_0_ui_clk_sync_rst,
+      reset                                                 => top_rst_mig_7series_0_100M_peripheral_reset,
       
       SCOPE_FSM_GPIO0_Out                                   => top_SCOPE_FSM_GPIO0_Out,
       SCOPE_FSM_GPIO1_In                                    => top_SCOPE_FSM_GPIO1_In,
@@ -1372,7 +1397,20 @@ msys_bd: component msys_wrapper
       UART0_rst_n(0)                                        => UART0_rst_n,
       UART0_rxd                                             => UART0_rxd,
       UART0_txd                                             => UART0_txd,
-      USER_dbg_out                                          => USER_dbg_out,
+      USER_dbg_00_signal                                    => USER_dbg_00_signal,
+      USER_dbg_01_signal(0)                                 => USER_dbg_01_signal,
+      USER_dbg_02_signal                                    => USER_dbg_02_signal,
+      USER_dbg_03_signal(0)                                 => USER_dbg_03_signal,
+      USER_dbg_04_signal(0)                                 => USER_dbg_04_signal,
+      USER_dbg_05_signal(0)                                 => USER_dbg_05_signal,
+      USER_dbg_06_signal(0)                                 => USER_dbg_06_signal,
+      USER_dbg_07_signal(0)                                 => USER_dbg_07_signal,
+      USER_dbg_08_signal(0)                                 => USER_dbg_08_signal,
+      USER_dbg_09_signal(0)                                 => USER_dbg_09_signal,
+      USER_dbg_10_signal(0)                                 => USER_dbg_10_signal,
+      USER_dbg_11_signal(0)                                 => USER_dbg_11_signal,
+      USER_dbg_12_signal(0)                                 => USER_dbg_12_signal,
+      USER_dbg_13_signal(0)                                 => USER_dbg_13_signal,
       dds_tx09_inc                                          => top_TRX_dds_tx_rf09_inc,
       dds_tx09_ptt                                          => top_TRX_dds_tx_rf09_ptt,
       decoder_rx09_chXX_sql_open                            => top_TRX_decoder_rx_rf09_chAll_sql_open,
@@ -1404,7 +1442,7 @@ msys_bd: component msys_wrapper
       microblaze_0_Clk_100MHz                               => top_microblaze_0_Clk_100MHz,
       mig_7series_0_mmcm_locked                             => top_mig_7series_0_mmcm_locked,
       mig_7series_0_ui_addn_clk_0_200MHz                    => top_mig_7series_0_ui_addn_clk_0_200MHz,
-      mig_7series_0_ui_clk_sync_rst                         => top_mig_7series_0_ui_clk_sync_rst,
+    --mig_7series_0_ui_clk_sync_rst                         => top_mig_7series_0_ui_clk_sync_rst,
       phy_rst_n                                             => phy_rst_n,
       qspi_flash_io0_io                                     => qspi_flash_io0_io,
       qspi_flash_io1_io                                     => qspi_flash_io1_io,
@@ -1414,7 +1452,8 @@ msys_bd: component msys_wrapper
       reset                                                 => reset,
       rotenc_dec_cnt_en                                     => top_rotenc_dec_cnt_en,
       rotenc_dec_cnt_up_dwn                                 => top_rotenc_dec_cnt_up_dwn,
-      rst_mig_7series_0_100M_peripheral_reset(0)            => top_rst_mig_7series_0_100M_peripheral_reset
+      rst_mig_7series_0_100M_peripheral_reset(0)            => top_rst_mig_7series_0_100M_peripheral_reset,
+      rst_mig_7series_0_100M_peripheral_aresetn(0)          => top_rst_mig_7series_0_100M_peripheral_aresetn
     );
 
 end STRUCTURE;

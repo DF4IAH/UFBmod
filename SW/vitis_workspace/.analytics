@@ -3532,3 +3532,49 @@ timestamp=[2020-11-17 15:49:41], mode=BUILD, duration=0:00:01.172, duration_ms=1
 timestamp=[2020-11-17 15:49:53], mode=BUILD, duration=0:00:00.390, duration_ms=390, data={name=rtos, configuration=Debug, clean_build=false}
 timestamp=[2020-11-17 15:54:50], mode=BUILD, duration=0:00:00.890, duration_ms=890, data={name=rtos, configuration=Debug, clean_build=false}
 timestamp=[2020-11-17 15:55:29], mode=BUILD, duration=0:00:00.985, duration_ms=985, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-20 14:10:12], mode=WORKBENCH_START, duration=0:00:18.183, duration_ms=18183, data={}
+timestamp=[2020-11-20 14:10:13], mode=WORKBENCH_UI_INIT, duration=0:00:00.856, duration_ms=856, data={editors_count=5, platform_editors_count=1, projects_count=18, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,TE0712_02_DF4IAH,boot,boot_system,exp_echo,rtos,rtos_Traces,rtos_system,srec_loader,srec_loader_system,xemaclite_ping_reply_example_1,xemaclite_ping_req_example_1,xemaclite_polled_example_1,xemaclite_selftest_example_1,xgpio_low_level_example_1,xiic_low_level_eeprom_example_1,xiic_low_level_tempsensor_example_1,xiic_tempsensor_example_1}
+timestamp=[2020-11-20 14:10:15], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.688, duration_ms=688, data={}
+timestamp=[2020-11-23 20:37:42], mode=WORKBENCH_START, duration=0:00:22.908, duration_ms=22908, data={}
+timestamp=[2020-11-23 20:37:43], mode=WORKBENCH_UI_INIT, duration=0:00:00.958, duration_ms=958, data={editors_count=5, platform_editors_count=1, projects_count=18, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,TE0712_02_DF4IAH,boot,boot_system,exp_echo,rtos,rtos_Traces,rtos_system,srec_loader,srec_loader_system,xemaclite_ping_reply_example_1,xemaclite_ping_req_example_1,xemaclite_polled_example_1,xemaclite_selftest_example_1,xgpio_low_level_example_1,xiic_low_level_eeprom_example_1,xiic_low_level_tempsensor_example_1,xiic_tempsensor_example_1}
+timestamp=[2020-11-23 20:37:46], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.324, duration_ms=324, data={}
+timestamp=[2020-11-23 20:39:12], mode=PLATFORM_GENERATION, duration=0:00:58.539, duration_ms=58539, data={name=TE0712_02_DF4IAH}
+timestamp=[2020-11-23 20:39:15], mode=BUILD, duration=0:00:02.732, duration_ms=2732, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-23 20:44:08], mode=BUILD, duration=0:00:00.526, duration_ms=526, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-23 20:44:36], mode=BUILD, duration=0:00:00.403, duration_ms=403, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-24 17:59:50], mode=WORKBENCH_START, duration=0:01:01.513, duration_ms=61513, data={}
+timestamp=[2020-11-24 17:59:52], mode=WORKBENCH_UI_INIT, duration=0:00:01.072, duration_ms=1072, data={editors_count=5, platform_editors_count=1, projects_count=18, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,TE0712_02_DF4IAH,boot,boot_system,exp_echo,rtos,rtos_Traces,rtos_system,srec_loader,srec_loader_system,xemaclite_ping_reply_example_1,xemaclite_ping_req_example_1,xemaclite_polled_example_1,xemaclite_selftest_example_1,xgpio_low_level_example_1,xiic_low_level_eeprom_example_1,xiic_low_level_tempsensor_example_1,xiic_tempsensor_example_1}
+timestamp=[2020-11-24 17:59:53], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.218, duration_ms=218, data={}
+timestamp=[2020-11-24 22:56:16], mode=PLATFORM_GENERATION, duration=0:00:07.335, duration_ms=7335, data={name=TE0712_02_DF4IAH}
+timestamp=[2020-11-24 22:58:12], mode=PLATFORM_GENERATION, duration=0:01:05.643, duration_ms=65643, data={name=TE0712_02_DF4IAH}
+timestamp=[2020-11-24 22:58:27], mode=BUILD, duration=0:00:03.267, duration_ms=3267, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-24 22:58:35], mode=BUILD, duration=0:00:00.453, duration_ms=453, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-24 22:58:35], mode=BUILD, duration=0:00:00.213, duration_ms=213, data={name=rtos_system, configuration=Debug, clean_build=true}
+timestamp=[2020-11-24 22:58:36], mode=BUILD, duration=0:00:00.167, duration_ms=167, data={name=rtos_system, configuration=Debug, clean_build=false}
+timestamp=[2020-11-24 22:59:50], mode=BUILD, duration=0:00:00.483, duration_ms=483, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-24 23:02:07], mode=BUILD, duration=0:00:01.109, duration_ms=1109, data={name=rtos, configuration=Debug, clean_build=false}
+timestamp=[2020-11-28 19:55:24], mode=WORKBENCH_START, duration=0:00:22.620, duration_ms=22620, data={}
+timestamp=[2020-11-28 19:55:24], mode=WORKBENCH_UI_INIT, duration=0:00:00.838, duration_ms=838, data={editors_count=5, platform_editors_count=1, projects_count=18, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,TE0712_02_DF4IAH,boot,boot_system,exp_echo,rtos,rtos_Traces,rtos_system,srec_loader,srec_loader_system,xemaclite_ping_reply_example_1,xemaclite_ping_req_example_1,xemaclite_polled_example_1,xemaclite_selftest_example_1,xgpio_low_level_example_1,xiic_low_level_eeprom_example_1,xiic_low_level_tempsensor_example_1,xiic_tempsensor_example_1}
+timestamp=[2020-11-28 19:55:27], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.105, duration_ms=105, data={}
+timestamp=[2020-11-28 19:57:24], mode=PLATFORM_GENERATION, duration=0:00:05.425, duration_ms=5425, data={name=TE0712_02_DF4IAH}
+timestamp=[2020-11-28 20:34:43], mode=PLATFORM_CREATION, duration=0:00:06.724, duration_ms=6724, data={platform_source=dsa, os=standalone, processor=microblaze, platform=null}
+timestamp=[2020-11-28 20:36:00], mode=PLATFORM_GENERATION, duration=0:00:15.188, duration_ms=15188, data={name=TE0712_02_DF4IAH_V2}
+timestamp=[2020-11-28 20:41:23], mode=PLATFORM_GENERATION, duration=0:00:14.900, duration_ms=14900, data={name=TE0712_02_DF4IAH_V2}
+timestamp=[2020-11-28 20:48:43], mode=PLATFORM_GENERATION, duration=0:00:34.249, duration_ms=34249, data={name=TE0712_02_DF4IAH_V2}
+timestamp=[2020-11-28 20:54:00], mode=APP_CREATION, duration=0:00:02.467, duration_ms=2467, data={name=cfg_si5338, project_type=sdk, os=standalone, processor=CFG_Si5338_CFG_microblaze_0, runtime=C/C++, platform=TE0712_02_DF4IAH_V2, application_type=application}
+timestamp=[2020-11-28 20:56:36], mode=BUILD, duration=0:00:03.321, duration_ms=3321, data={name=cfg_si5338, configuration=Debug, clean_build=false}
+timestamp=[2020-11-28 20:56:37], mode=BUILD, duration=0:00:00.144, duration_ms=144, data={name=cfg_si5338_system, configuration=Debug, clean_build=false}
+timestamp=[2020-11-28 20:59:16], mode=BUILD, duration=0:00:00.993, duration_ms=993, data={name=cfg_si5338, configuration=Debug, clean_build=false}
+timestamp=[2020-11-28 21:32:08], mode=PLATFORM_GENERATION, duration=0:00:04.580, duration_ms=4580, data={name=TE0712_02_DF4IAH}
+timestamp=[2020-11-28 21:32:08], mode=BUILD, duration=0:00:00.256, duration_ms=256, data={name=boot, configuration=Debug, clean_build=true}
+timestamp=[2020-11-28 21:32:09], mode=BUILD, duration=0:00:00.201, duration_ms=201, data={name=boot_system, configuration=Debug, clean_build=true}
+timestamp=[2020-11-28 21:32:18], mode=PLATFORM_GENERATION, duration=0:00:04.234, duration_ms=4234, data={name=TE0712_02_DF4IAH}
+timestamp=[2020-11-28 21:32:18], mode=BUILD, duration=0:00:00.288, duration_ms=288, data={name=srec_loader, configuration=Debug, clean_build=true}
+timestamp=[2020-11-28 21:32:27], mode=PLATFORM_GENERATION, duration=0:00:04.761, duration_ms=4761, data={name=TE0712_02_DF4IAH}
+timestamp=[2020-11-28 21:32:28], mode=BUILD, duration=0:00:00.226, duration_ms=226, data={name=rtos, configuration=Debug, clean_build=true}
+timestamp=[2020-11-28 21:32:28], mode=BUILD, duration=0:00:00.202, duration_ms=202, data={name=rtos_system, configuration=Debug, clean_build=true}
+timestamp=[2020-11-28 21:32:44], mode=PLATFORM_GENERATION, duration=0:00:05.053, duration_ms=5053, data={name=TE0712_02_DF4IAH}
+timestamp=[2020-11-28 21:32:56], mode=BUILD, duration=0:00:00.200, duration_ms=200, data={name=cfg_si5338, configuration=Debug, clean_build=false}
+timestamp=[2020-11-28 21:32:56], mode=BUILD, duration=0:00:00.272, duration_ms=272, data={name=cfg_si5338_system, configuration=Debug, clean_build=false}
+timestamp=[2020-11-28 21:36:45], mode=APP_CREATION, duration=0:00:01.006, duration_ms=1006, data={name=rtos_ufbmod, project_type=sdk, os=freertos10_xilinx, processor=microblaze_0, runtime=C/C++, platform=TE0712_02_DF4IAH_V2, application_type=application}
+timestamp=[2020-11-28 21:37:39], mode=BUILD, duration=0:00:02.572, duration_ms=2572, data={name=rtos_ufbmod, configuration=Debug, clean_build=false}

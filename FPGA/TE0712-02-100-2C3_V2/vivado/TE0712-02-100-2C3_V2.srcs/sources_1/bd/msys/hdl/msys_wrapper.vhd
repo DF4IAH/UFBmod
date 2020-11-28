@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Sat Nov 21 22:20:01 2020
+--Date        : Sat Nov 28 21:01:41 2020
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys_wrapper.bd
 --Design      : msys_wrapper
@@ -114,7 +114,20 @@ entity msys_wrapper is
     UART0_rst_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     UART0_rxd : in STD_LOGIC;
     UART0_txd : out STD_LOGIC;
-    USER_dbg_out : out STD_LOGIC_VECTOR ( 13 downto 0 );
+    USER_dbg_00_signal : out STD_LOGIC;
+    USER_dbg_01_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_02_signal : out STD_LOGIC;
+    USER_dbg_03_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_04_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_05_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_06_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_07_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_08_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_09_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_10_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_11_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_12_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_13_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
     dds_tx09_inc : in STD_LOGIC_VECTOR ( 25 downto 0 );
     dds_tx09_ptt : in STD_LOGIC;
     decoder_rx09_ch00_center_pos : in STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -146,7 +159,6 @@ entity msys_wrapper is
     microblaze_0_Clk_100MHz : out STD_LOGIC;
     mig_7series_0_mmcm_locked : out STD_LOGIC;
     mig_7series_0_ui_addn_clk_0_200MHz : out STD_LOGIC;
-    mig_7series_0_ui_clk_sync_rst : out STD_LOGIC;
     phy_rst_n : out STD_LOGIC;
     qspi_flash_io0_io : inout STD_LOGIC;
     qspi_flash_io1_io : inout STD_LOGIC;
@@ -156,6 +168,7 @@ entity msys_wrapper is
     reset : in STD_LOGIC;
     rotenc_dec_cnt_en : in STD_LOGIC;
     rotenc_dec_cnt_up_dwn : in STD_LOGIC;
+    rst_mig_7series_0_100M_peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 );
     rst_mig_7series_0_100M_peripheral_reset : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
 end msys_wrapper;
@@ -202,7 +215,6 @@ architecture STRUCTURE of msys_wrapper is
     SCOPE_FSM_FIFO_RdEmpty : out STD_LOGIC;
     SCOPE_FSM_TrigSrc : out STD_LOGIC_VECTOR ( 47 downto 0 );
     SCOPE_FSM_FIFO_WrEn : in STD_LOGIC;
-    USER_dbg_out : out STD_LOGIC_VECTOR ( 13 downto 0 );
     SCOPE_FSM_FIFO_rd_rst_busy : out STD_LOGIC;
     SCOPE_FSM_FIFO_wr_rst_busy : out STD_LOGIC;
     SCOPE_FSM_GPIO0_Out : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -214,7 +226,6 @@ architecture STRUCTURE of msys_wrapper is
     decoder_rx09_ch00_noise : in STD_LOGIC_VECTOR ( 18 downto 0 );
     dds_tx09_inc : in STD_LOGIC_VECTOR ( 25 downto 0 );
     dds_tx09_ptt : in STD_LOGIC;
-    mig_7series_0_ui_clk_sync_rst : out STD_LOGIC;
     mig_7series_0_mmcm_locked : out STD_LOGIC;
     rst_mig_7series_0_100M_peripheral_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_rx_clkdiv_16MHz_in : in STD_LOGIC;
@@ -267,6 +278,25 @@ architecture STRUCTURE of msys_wrapper is
     TRX_LVDS_tx09_fifo_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
     LVDS_mrk09ok : in STD_LOGIC;
     LVDS_mrk24ok : in STD_LOGIC;
+    rst_mig_7series_0_100M_peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_00_signal : out STD_LOGIC;
+    USER_dbg_01_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_02_signal : out STD_LOGIC;
+    USER_dbg_03_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_04_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_05_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_06_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_07_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_08_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_09_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_10_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_11_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_12_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    USER_dbg_13_signal : out STD_LOGIC_VECTOR ( 0 to 0 );
+    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
+    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    RMII_PHY_M_0_tx_en : out STD_LOGIC;
+    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
     TRX_CONFIG_SPI_io0_i : in STD_LOGIC;
     TRX_CONFIG_SPI_io0_o : out STD_LOGIC;
     TRX_CONFIG_SPI_io0_t : out STD_LOGIC;
@@ -279,14 +309,18 @@ architecture STRUCTURE of msys_wrapper is
     TRX_CONFIG_SPI_ss_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_CONFIG_SPI_ss_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     TRX_CONFIG_SPI_ss_t : out STD_LOGIC;
+    UART0_rxd : in STD_LOGIC;
+    UART0_txd : out STD_LOGIC;
+    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
+    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
     BOARD_IIC_scl_i : in STD_LOGIC;
     BOARD_IIC_scl_o : out STD_LOGIC;
     BOARD_IIC_scl_t : out STD_LOGIC;
     BOARD_IIC_sda_i : in STD_LOGIC;
     BOARD_IIC_sda_o : out STD_LOGIC;
     BOARD_IIC_sda_t : out STD_LOGIC;
-    CLK3_sys_diff_clk_p : in STD_LOGIC;
-    CLK3_sys_diff_clk_n : in STD_LOGIC;
     ETH0_MDIO_MDC_mdc : out STD_LOGIC;
     ETH0_MDIO_MDC_mdio_i : in STD_LOGIC;
     ETH0_MDIO_MDC_mdio_o : out STD_LOGIC;
@@ -306,10 +340,6 @@ architecture STRUCTURE of msys_wrapper is
     DDR3_SDRAM_cs_n : out STD_LOGIC_VECTOR ( 0 to 0 );
     DDR3_SDRAM_dm : out STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR3_SDRAM_odt : out STD_LOGIC_VECTOR ( 0 to 0 );
-    RMII_PHY_M_0_crs_dv : in STD_LOGIC;
-    RMII_PHY_M_0_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    RMII_PHY_M_0_tx_en : out STD_LOGIC;
-    RMII_PHY_M_0_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
     qspi_flash_io0_i : in STD_LOGIC;
     qspi_flash_io0_o : out STD_LOGIC;
     qspi_flash_io0_t : out STD_LOGIC;
@@ -325,12 +355,8 @@ architecture STRUCTURE of msys_wrapper is
     qspi_flash_ss_i : in STD_LOGIC;
     qspi_flash_ss_o : out STD_LOGIC;
     qspi_flash_ss_t : out STD_LOGIC;
-    CLK2_mgt_clk0_clk_p : in STD_LOGIC;
-    CLK2_mgt_clk0_clk_n : in STD_LOGIC;
-    UART0_rxd : in STD_LOGIC;
-    UART0_txd : out STD_LOGIC;
-    CLK0_clk_p : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK0_clk_n : in STD_LOGIC_VECTOR ( 0 to 0 )
+    CLK3_sys_diff_clk_p : in STD_LOGIC;
+    CLK3_sys_diff_clk_n : in STD_LOGIC
   );
   end component msys;
   component IOBUF is
@@ -545,7 +571,20 @@ msys_i: component msys
       UART0_rst_n(0) => UART0_rst_n(0),
       UART0_rxd => UART0_rxd,
       UART0_txd => UART0_txd,
-      USER_dbg_out(13 downto 0) => USER_dbg_out(13 downto 0),
+      USER_dbg_00_signal => USER_dbg_00_signal,
+      USER_dbg_01_signal(0) => USER_dbg_01_signal(0),
+      USER_dbg_02_signal => USER_dbg_02_signal,
+      USER_dbg_03_signal(0) => USER_dbg_03_signal(0),
+      USER_dbg_04_signal(0) => USER_dbg_04_signal(0),
+      USER_dbg_05_signal(0) => USER_dbg_05_signal(0),
+      USER_dbg_06_signal(0) => USER_dbg_06_signal(0),
+      USER_dbg_07_signal(0) => USER_dbg_07_signal(0),
+      USER_dbg_08_signal(0) => USER_dbg_08_signal(0),
+      USER_dbg_09_signal(0) => USER_dbg_09_signal(0),
+      USER_dbg_10_signal(0) => USER_dbg_10_signal(0),
+      USER_dbg_11_signal(0) => USER_dbg_11_signal(0),
+      USER_dbg_12_signal(0) => USER_dbg_12_signal(0),
+      USER_dbg_13_signal(0) => USER_dbg_13_signal(0),
       dds_tx09_inc(25 downto 0) => dds_tx09_inc(25 downto 0),
       dds_tx09_ptt => dds_tx09_ptt,
       decoder_rx09_ch00_center_pos(7 downto 0) => decoder_rx09_ch00_center_pos(7 downto 0),
@@ -577,7 +616,6 @@ msys_i: component msys
       microblaze_0_Clk_100MHz => microblaze_0_Clk_100MHz,
       mig_7series_0_mmcm_locked => mig_7series_0_mmcm_locked,
       mig_7series_0_ui_addn_clk_0_200MHz => mig_7series_0_ui_addn_clk_0_200MHz,
-      mig_7series_0_ui_clk_sync_rst => mig_7series_0_ui_clk_sync_rst,
       phy_rst_n => phy_rst_n,
       qspi_flash_io0_i => qspi_flash_io0_i,
       qspi_flash_io0_o => qspi_flash_io0_o,
@@ -597,6 +635,7 @@ msys_i: component msys
       reset => reset,
       rotenc_dec_cnt_en => rotenc_dec_cnt_en,
       rotenc_dec_cnt_up_dwn => rotenc_dec_cnt_up_dwn,
+      rst_mig_7series_0_100M_peripheral_aresetn(0) => rst_mig_7series_0_100M_peripheral_aresetn(0),
       rst_mig_7series_0_100M_peripheral_reset(0) => rst_mig_7series_0_100M_peripheral_reset(0)
     );
 qspi_flash_io0_iobuf: component IOBUF

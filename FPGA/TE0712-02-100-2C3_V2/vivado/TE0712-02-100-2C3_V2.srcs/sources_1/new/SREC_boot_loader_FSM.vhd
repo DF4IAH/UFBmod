@@ -639,20 +639,20 @@ begin
         constant QSPI_SKIP_CNT                      : Integer := 9;
         constant QSPI_LOAD_CNT                      : Integer := 16;   -- production: 245;
         
-        constant QSPI_BASE_ADDR                     : STD_LOGIC_VECTOR (31 downto 0) := x"45310000";
+        constant QSPI_BASE_ADDR                     : STD_LOGIC_VECTOR (31 downto 0) := x"75310000";
         
-        constant QSPI_SRR_ADDR                      : STD_LOGIC_VECTOR (31 downto 0) := x"45310040";
-        constant QSPI_SPICR_ADDR                    : STD_LOGIC_VECTOR (31 downto 0) := x"45310060";
-        constant QSPI_SPISR_ADDR                    : STD_LOGIC_VECTOR (31 downto 0) := x"45310064";
-        constant QSPI_SPIDTR_ADDR                   : STD_LOGIC_VECTOR (31 downto 0) := x"45310068";
-        constant QSPI_SPIDRR_ADDR                   : STD_LOGIC_VECTOR (31 downto 0) := x"4531006c";
-        constant QSPI_SPISSR_ADDR                   : STD_LOGIC_VECTOR (31 downto 0) := x"45310070";
-        constant QSPI_TX_OCCI_ADDR                  : STD_LOGIC_VECTOR (31 downto 0) := x"45310074";
-        constant QSPI_RX_OCCU_ADDR                  : STD_LOGIC_VECTOR (31 downto 0) := x"45310078";
+        constant QSPI_SRR_ADDR                      : STD_LOGIC_VECTOR (31 downto 0) := x"75310040";
+        constant QSPI_SPICR_ADDR                    : STD_LOGIC_VECTOR (31 downto 0) := x"75310060";
+        constant QSPI_SPISR_ADDR                    : STD_LOGIC_VECTOR (31 downto 0) := x"75310064";
+        constant QSPI_SPIDTR_ADDR                   : STD_LOGIC_VECTOR (31 downto 0) := x"75310068";
+        constant QSPI_SPIDRR_ADDR                   : STD_LOGIC_VECTOR (31 downto 0) := x"7531006c";
+        constant QSPI_SPISSR_ADDR                   : STD_LOGIC_VECTOR (31 downto 0) := x"75310070";
+        constant QSPI_TX_OCCI_ADDR                  : STD_LOGIC_VECTOR (31 downto 0) := x"75310074";
+        constant QSPI_RX_OCCU_ADDR                  : STD_LOGIC_VECTOR (31 downto 0) := x"75310078";
         
-        constant QSPI_DGIER_ADDR                    : STD_LOGIC_VECTOR (31 downto 0) := x"4531001c";
-        constant QSPI_IPISR_ADDR                    : STD_LOGIC_VECTOR (31 downto 0) := x"45310020";
-        constant QSPI_IPIER_ADDR                    : STD_LOGIC_VECTOR (31 downto 0) := x"45310028";
+        constant QSPI_DGIER_ADDR                    : STD_LOGIC_VECTOR (31 downto 0) := x"7531001c";
+        constant QSPI_IPISR_ADDR                    : STD_LOGIC_VECTOR (31 downto 0) := x"75310020";
+        constant QSPI_IPIER_ADDR                    : STD_LOGIC_VECTOR (31 downto 0) := x"75310028";
         
 
         constant GPIO_LIGHTS_BASE_ADDR              : STD_LOGIC_VECTOR (31 downto 0) := x"54040000";
@@ -715,7 +715,7 @@ begin
         
         variable fsm_fifo_prefill_cnt               : Integer  range 0 to (2**8 - 1);
         variable fsm_fifo_read_cnt                  : Integer  range 0 to (2**8 - 1);
-        variable fsm_fifo_strip_cnt                 : Integer  range 0 to (2**3 - 1);
+        variable fsm_fifo_strip_cnt                 : Integer  range 0 to (2**4 - 1);
         
         variable fsm_dec_do_copy                    : STD_LOGIC;
         variable fsm_dec_do_exec                    : STD_LOGIC;

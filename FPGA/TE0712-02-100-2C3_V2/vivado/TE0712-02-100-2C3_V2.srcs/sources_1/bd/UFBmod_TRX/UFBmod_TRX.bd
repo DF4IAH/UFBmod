@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x87317B022D1C6FF3",
+      "boundary_crc": "0x607D555DFD3CFAC9",
       "device": "xc7a100tfgg484-2",
       "name": "UFBmod_TRX",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -248,19 +248,6 @@
           "PHASE": {
             "value": "0.000",
             "value_src": "default"
-          }
-        }
-      },
-      "mig_7series_0_ui_clk_sync_rst": {
-        "type": "rst",
-        "direction": "I",
-        "parameters": {
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "POLARITY": {
-            "value": "ACTIVE_HIGH"
           }
         }
       },
@@ -2697,16 +2684,16 @@
           }
         },
         "interface_nets": {
-          "rx_clk_CD064": {
-            "interface_ports": [
-              "TRX_rx_clk_64MHz",
-              "TRX_LVDS_selectio_wiz_0/diff_clk_in"
-            ]
-          },
           "Conn4": {
             "interface_ports": [
               "TRX_tx_clk",
               "TRX_LVDS_selectio_wiz_0/diff_clk_to_pins"
+            ]
+          },
+          "rx_clk_CD064": {
+            "interface_ports": [
+              "TRX_rx_clk_64MHz",
+              "TRX_LVDS_selectio_wiz_0/diff_clk_in"
             ]
           }
         },
@@ -7636,16 +7623,16 @@
       }
     },
     "interface_nets": {
-      "TRX_rx_clk_64MHz_1": {
-        "interface_ports": [
-          "TRX_rx_clk_64MHz",
-          "TRX_LVDS/TRX_rx_clk_64MHz"
-        ]
-      },
       "TRX_TRX_tx_clk": {
         "interface_ports": [
           "TRX_tx_clk",
           "TRX_LVDS/TRX_tx_clk"
+        ]
+      },
+      "TRX_rx_clk_64MHz_1": {
+        "interface_ports": [
+          "TRX_rx_clk_64MHz",
+          "TRX_LVDS/TRX_rx_clk_64MHz"
         ]
       }
     },
@@ -7671,13 +7658,6 @@
           "TRX_clock/TRX_clk_26MHz"
         ]
       },
-      "TRX_ext_reset_0": {
-        "ports": [
-          "mig_7series_0_ui_clk_sync_rst",
-          "TRX_proc_sys_reset_0/ext_reset_in",
-          "TRX_tx_DDS_unit/ui_clk_sync_rst"
-        ]
-      },
       "TRX_ref_clock_200MHz_0": {
         "ports": [
           "mig_7series_0_ui_addn_clk_0_200MHz",
@@ -7694,7 +7674,9 @@
         "ports": [
           "rst_mig_7series_0_100M_peripheral_reset",
           "TRX_rx_FFT_unit/rst_mig_7series_0_100M_peripheral_reset_in",
-          "TRX_LVDS/reset_CD100_i"
+          "TRX_LVDS/reset_CD100_i",
+          "TRX_proc_sys_reset_0/ext_reset_in",
+          "TRX_tx_DDS_unit/ui_clk_sync_rst"
         ]
       },
       "TRX_rx_data_p_0": {

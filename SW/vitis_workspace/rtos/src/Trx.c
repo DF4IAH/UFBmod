@@ -2591,7 +2591,7 @@ void taskTrx(void* pvParameters)
 
 		int status = XSpi_CfgInitialize(&spiTrxInstance, spiTrxPtr, spiTrxPtr->BaseAddress);
 #else
-		int status = XSpi_CfgInitialize(&spiTrxInstance, XPAR_AXI_TRX_TRX_CONFIG_QUAD_SPI_0_DEVICE_ID);
+		int status = XSpi_Initialize(&spiTrxInstance, XPAR_AXI_TRX_TRX_CONFIG_QUAD_SPI_0_DEVICE_ID);
 #endif
 		if (status != XST_SUCCESS) {
 #ifdef LOGGING
