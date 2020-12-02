@@ -3,7 +3,6 @@
 	<name>srec_loader</name>
 	<comment>Created by Vitis v2020.1</comment>
 	<projects>
-		<project>TE0712_02_DF4IAH</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

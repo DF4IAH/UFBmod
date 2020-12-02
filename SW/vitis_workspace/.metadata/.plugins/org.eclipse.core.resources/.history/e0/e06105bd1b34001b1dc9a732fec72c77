@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="rtos_ufbmod" location="C:/Users/espero/git/UFBmod/SW/vitis_workspace/rtos_ufbmod" platform="C:/Users/espero/git/UFBmod/SW/vitis_workspace/TE0712_02_DF4IAH_V2/export/TE0712_02_DF4IAH_V2/TE0712_02_DF4IAH_V2.xpfm" platformUID="xilinx:te0712_100_2c::0.0(custom)" systemProject="rtos_ufbmod_system" sysConfig="TE0712_02_DF4IAH_V2" runtime="C/C++" cpu="rtos" cpuInstance="microblaze_0" os="freertos10_xilinx" mssSignature="98001e094066a633cff2844dc891b238">
+  <configuration name="Debug" id="xilinx.gnu.mb.exe.debug.1073510951">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.mb.exe.release.159779154" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>

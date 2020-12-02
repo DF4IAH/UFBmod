@@ -586,69 +586,92 @@ static void taskDefault(void* pvParameters)
 	lcdInit();
 #endif
 
-#if 1
+#if 0
 	{
-#define QSPI_BUF_SIZE  255
+#define QSPI_BUF_SIZE  256
 
 		u8 qspi_readbuf[QSPI_BUF_SIZE] = { 0 };
 
-
-
 		/* Register programming QSPI-device */
-		volatile u32* qspi_addr_SRR	 		= (u32*) (XPAR_SPI_0_BASEADDR + 0x40);
-		volatile u32* qspi_addr_SPICR	 	= (u32*) (XPAR_SPI_0_BASEADDR + 0x60);
-		volatile u32* qspi_addr_SPISR	 	= (u32*) (XPAR_SPI_0_BASEADDR + 0x64);
-		volatile u32* qspi_addr_SPIDTR	 	= (u32*) (XPAR_SPI_0_BASEADDR + 0x68);
-		volatile u32* qspi_addr_SPIDRR	 	= (u32*) (XPAR_SPI_0_BASEADDR + 0x6c);
-		volatile u32* qspi_addr_SPISSR	 	= (u32*) (XPAR_SPI_0_BASEADDR + 0x70);
-		volatile u32* qspi_addr_TX_OCCU 	= (u32*) (XPAR_SPI_0_BASEADDR + 0x74);
-		volatile u32* qspi_addr_RX_OCCU 	= (u32*) (XPAR_SPI_0_BASEADDR + 0x78);
+		volatile u32* qspi_addr_SRR	 		= (u32*) (XPAR_CFG_SI5338_CFG_SI5338_AXI_QUAD_SPI_0_BASEADDR + 0x40);
+		volatile u32* qspi_addr_SPICR	 	= (u32*) (XPAR_CFG_SI5338_CFG_SI5338_AXI_QUAD_SPI_0_BASEADDR + 0x60);
+		volatile u32* qspi_addr_SPISR	 	= (u32*) (XPAR_CFG_SI5338_CFG_SI5338_AXI_QUAD_SPI_0_BASEADDR + 0x64);
+		volatile u32* qspi_addr_SPIDTR	 	= (u32*) (XPAR_CFG_SI5338_CFG_SI5338_AXI_QUAD_SPI_0_BASEADDR + 0x68);
+		volatile u32* qspi_addr_SPIDRR	 	= (u32*) (XPAR_CFG_SI5338_CFG_SI5338_AXI_QUAD_SPI_0_BASEADDR + 0x6c);
+		volatile u32* qspi_addr_SPISSR	 	= (u32*) (XPAR_CFG_SI5338_CFG_SI5338_AXI_QUAD_SPI_0_BASEADDR + 0x70);
+		volatile u32* qspi_addr_TX_OCCU 	= (u32*) (XPAR_CFG_SI5338_CFG_SI5338_AXI_QUAD_SPI_0_BASEADDR + 0x74);
+		volatile u32* qspi_addr_RX_OCCU 	= (u32*) (XPAR_CFG_SI5338_CFG_SI5338_AXI_QUAD_SPI_0_BASEADDR + 0x78);
 
-		volatile u32* qspi_addr_DGIER	 	= (u32*) (XPAR_SPI_0_BASEADDR + 0x1c);
-		volatile u32* qspi_addr_IPISR	 	= (u32*) (XPAR_SPI_0_BASEADDR + 0x20);
-		volatile u32* qspi_addr_IPIER	 	= (u32*) (XPAR_SPI_0_BASEADDR + 0x28);
+		volatile u32* qspi_addr_DGIER	 	= (u32*) (XPAR_CFG_SI5338_CFG_SI5338_AXI_QUAD_SPI_0_BASEADDR + 0x1c);
+		volatile u32* qspi_addr_IPISR	 	= (u32*) (XPAR_CFG_SI5338_CFG_SI5338_AXI_QUAD_SPI_0_BASEADDR + 0x20);
+		volatile u32* qspi_addr_IPIER	 	= (u32*) (XPAR_CFG_SI5338_CFG_SI5338_AXI_QUAD_SPI_0_BASEADDR + 0x28);
 
-#if 0
+
+		volatile u32* gpio_addr_GPIO_DATA   = (u32*) (XPAR_GPIO_8_BASEADDR + 0x00);  // XPAR_PWM_LIGHTS_AXI_PWM_GPIO_0_DEVICE_ID
+
+#if 1
 		/* Reset */
 		*qspi_addr_SRR		= 0x0000000aUL;
 #endif
 
 		/* Preparations: Master inhibit + FIFO reset (PG153 p106) */
-		*qspi_addr_SPICR	= 0x0001e6UL;
+		*qspi_addr_SPICR	= 0x000001e6UL;								// DBG_out <= "00010001";
+
+		/* Blue LED */
+		*gpio_addr_GPIO_DATA= 0x00200000UL;								// DBG_out <= "00011000";
 
 		/* Preparations: Select de-assert */
-		*qspi_addr_SPISSR 	= 0x01UL;
+		*qspi_addr_SPISSR 	= 0x00000001UL;								// DBG_out <= "00011100";
+
+		/* Enable DTR empty interrupt */
+		*qspi_addr_IPIER 	= 0x00000004UL;								// DBG_out <= "00011101";
+
+		/* Enable global interrupt */
+		*qspi_addr_DGIER 	= 0x80000000UL;								// DBG_out <= "00011110";
 
 		/* Read command */
-		*qspi_addr_SPIDTR	= 0x6cU;				// Single: 0x13U // Quad: 0x6cU
-		*qspi_addr_SPIDTR	= 0x00U;
-		*qspi_addr_SPIDTR	= 0x80U;
-		*qspi_addr_SPIDTR	= 0x00U;
-		*qspi_addr_SPIDTR	= 0x00U;
-		for (int ii = 0; ii < QSPI_BUF_SIZE; ii++) {			// Response buffer
-			*qspi_addr_SPIDTR	= 0x00U;
+		*qspi_addr_SPIDTR	= 0x0000006cUL;								// DBG_out <= "00100001";	// Single: 0x13U // Quad: 0x6cU
+		*qspi_addr_SPIDTR	= 0x00000000UL;								// DBG_out <= "00100010";
+		*qspi_addr_SPIDTR	= 0x00000080UL;								// DBG_out <= "00100011";
+		*qspi_addr_SPIDTR	= 0x00000000UL;								// DBG_out <= "00100100";
+		*qspi_addr_SPIDTR	= 0x00000000UL;
+		for (int ii = 0; ii < (QSPI_BUF_SIZE - 11); ii++) {				// DBG_out <= "00100101";	// Response buffer
+			*qspi_addr_SPIDTR	= 0x00000000UL;							// DBG_out <= "00100110";
 		}
 
+		/* Yellow LED */
+		*gpio_addr_GPIO_DATA= 0x00002020UL;								// DBG_out <= "00100111";
+
 		/* Issue chip select */
-		*qspi_addr_SPISSR 	= 0x00UL;
+		*qspi_addr_SPISSR 	= 0x00000000UL;								// DBG_out <= "00101000";
 
 		/* Enable master transaction */
-		*qspi_addr_SPICR   &= ~0x00000100UL;
+		*qspi_addr_SPICR   	= 0x00000086UL;								// DBG_out <= "00101001";
 
-		/* SPI communication runs until TX buffer empty */
-		while (!(*qspi_addr_SPISR & 0x0004UL))
+#if 0
+		/* Wait until pspi_intr is going hi */							// DBG_out <= "00101010";
+		while (0)														// DBG_out <= "00101011";
 			;
 
+#else
+		/* SPI communication runs until TX buffer empty */
+		while (!(*qspi_addr_SPISR & 0x00000004UL))
+			;
+#endif
+
 		/* Deassert chip select */
-		*qspi_addr_SPISSR	= 0x01UL;
+		*qspi_addr_SPISSR	= 0x00000001UL;								// DBG_out <= "00101100";
 
 		/* Disable master transaction */
-		*qspi_addr_SPICR   |=  0x00000100UL;
+		*qspi_addr_SPICR	= 0x00000186UL;								// DBG_out <= "00101101";
+
+		/* Blue LED */
+		*gpio_addr_GPIO_DATA= 0x00200000UL;								// DBG_out <= "00101110";
 
 		/* Read SPIDRR */
-		int dropCtr = 9;
+		int dropCtr = 9;												// DBG_out <= "00101110";
 		int idx 	= 0;
-		while (!(*qspi_addr_SPISR & 0x01U)) {
+		while (!(*qspi_addr_SPISR & 0x00000001UL)) {					// DBG_out <= "00101111";
 			if (dropCtr) {
 				--dropCtr;
 				(void) *qspi_addr_SPIDRR;

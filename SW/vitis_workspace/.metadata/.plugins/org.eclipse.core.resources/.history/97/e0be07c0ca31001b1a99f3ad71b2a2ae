@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="srec_loader" location="C:/Users/espero/git/UFBmod/SW/vitis_workspace/srec_loader" platform="C:/Users/espero/git/UFBmod/SW/vitis_workspace/TE0712_02_DF4IAH/export/TE0712_02_DF4IAH/TE0712_02_DF4IAH.xpfm" platformUID="xilinx:te0712_100_2c::0.0(custom)" systemProject="srec_loader_system" sysConfig="TE0712_02_DF4IAH" runtime="cpp" cpu="srec_on_microblaze_0" cpuInstance="microblaze_0" os="standalone" mssSignature="9d2b77302293da6d01ed0a5212f9f194">
+  <configuration name="Debug" id="xilinx.gnu.mb.exe.debug.88117749">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.mb.exe.release.1772356484" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="srec_spi_bootloader" hasBspSettings="true"/>
+</sdkproject:SdkProject>

@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="03" key="selection"/>
+		<item value="AXI_GPIO" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="AXI_GPIO"/>
 			<item value="x13"/>
 			<item value="x03"/>
 			<item value="03"/>
@@ -22,7 +23,6 @@
 			<item value="spiTrxPtr"/>
 			<item value="spiTrx"/>
 			<item value="SPI"/>
-			<item value="AGCC"/>
 		</list>
 		<list key="replacehistory">
 		</list>
