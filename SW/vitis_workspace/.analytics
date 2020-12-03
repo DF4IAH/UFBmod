@@ -3686,3 +3686,10 @@ timestamp=[2020-12-02 00:39:45], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00
 timestamp=[2020-12-02 00:40:40], mode=PLATFORM_GENERATION, duration=0:00:03.881, duration_ms=3881, data={name=TE0712_02_DF4IAH_V2}
 timestamp=[2020-12-02 00:41:25], mode=PLATFORM_GENERATION, duration=0:00:36.021, duration_ms=36021, data={name=TE0712_02_DF4IAH_V2}
 timestamp=[2020-12-02 00:41:29], mode=BUILD, duration=0:00:04.103, duration_ms=4103, data={name=rtos_ufbmod, configuration=Debug, clean_build=false}
+timestamp=[2020-12-02 07:31:51], mode=WORKBENCH_START, duration=0:00:22.630, duration_ms=22630, data={}
+timestamp=[2020-12-02 07:31:53], mode=WORKBENCH_UI_INIT, duration=0:00:01.371, duration_ms=1371, data={editors_count=3, platform_editors_count=1, projects_count=17, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,TE0712_02_DF4IAH_V2,cfg_si5338,cfg_si5338_system,exp_echo,rtos_ufbmod,rtos_ufbmod_system,srec_loader,srec_loader_system,xemaclite_ping_reply_example_1,xemaclite_ping_req_example_1,xemaclite_polled_example_1,xemaclite_selftest_example_1,xgpio_low_level_example_1,xiic_low_level_eeprom_example_1,xiic_low_level_tempsensor_example_1,xiic_tempsensor_example_1}
+timestamp=[2020-12-02 07:31:55], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.272, duration_ms=272, data={}
+timestamp=[2020-12-02 07:45:36], mode=PLATFORM_GENERATION, duration=0:00:04.137, duration_ms=4137, data={name=TE0712_02_DF4IAH_V2}
+timestamp=[2020-12-02 07:46:35], mode=PLATFORM_GENERATION, duration=0:00:36.219, duration_ms=36219, data={name=TE0712_02_DF4IAH_V2}
+timestamp=[2020-12-02 07:46:39], mode=BUILD, duration=0:00:03.957, duration_ms=3957, data={name=rtos_ufbmod, configuration=Debug, clean_build=false}
+timestamp=[2020-12-02 07:46:40], mode=BUILD, duration=0:00:00.149, duration_ms=149, data={name=rtos_ufbmod_system, configuration=Debug, clean_build=false}

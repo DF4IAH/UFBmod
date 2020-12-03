@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="msys" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1606868696"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1606868697"/>
-    <Generation Name="SIMULATION" State="STALE" Timestamp="1606868694"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1606868697"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1607034388"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1607034388"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1607034388"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1607034388"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="msys_sim_netlist.vhdl" Type="VHDL">
         <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
@@ -1111,6 +1111,14 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
+      <File Name="ip\msys_CFG_Si5338_axi_gpio_0_0\msys_CFG_Si5338_axi_gpio_0_0.xci" Type="IP">
+        <Instance HierarchyPath="CFG_Si5338/CFG_Si5338_DBG_axi_gpio_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
       <File Name="ip\msys_auto_cc_0\msys_auto_cc_0.xci" Type="IP">
         <Instance HierarchyPath="microblaze_0_axi_periph_interconnect_0/m03_couplers/auto_cc"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -1172,6 +1180,11 @@
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="HW_HANDOFF"/>
+      </File>
+      <File Name="sim\msys.protoinst">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
       </File>
     </FileCollection>
   </CompositeFile>

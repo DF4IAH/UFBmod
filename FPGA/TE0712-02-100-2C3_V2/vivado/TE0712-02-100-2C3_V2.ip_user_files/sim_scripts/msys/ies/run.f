@@ -516,6 +516,7 @@
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_SREC_boot_loader_FSM_1_0/sim/msys_SREC_boot_loader_FSM_1_0.vhd" \
   "../../../bd/msys/ip/msys_rst_CFG_Si5338_0_65M_0/sim/msys_rst_CFG_Si5338_0_65M_0.vhd" \
+  "../../../bd/msys/ip/msys_CFG_Si5338_axi_gpio_0_0/sim/msys_CFG_Si5338_axi_gpio_0_0.vhd" \
 -endlib
 -makelib ies_lib/axi_clock_converter_v2_1_20 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/7589/hdl/axi_clock_converter_v2_1_vl_rfs.v" \

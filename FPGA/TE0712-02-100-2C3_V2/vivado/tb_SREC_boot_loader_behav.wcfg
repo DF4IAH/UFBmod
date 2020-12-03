@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="44715966fs"></ZoomStartTime>
-      <ZoomEndTime time="45104807fs"></ZoomEndTime>
-      <Cursor1Time time="44955683fs"></Cursor1Time>
+      <ZoomStartTime time="17095730fs"></ZoomStartTime>
+      <ZoomEndTime time="17421351fs"></ZoomEndTime>
+      <Cursor1Time time="17133985fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="756"></NameColumnWidth>
-      <ValueColumnWidth column_width="214"></ValueColumnWidth>
+      <ValueColumnWidth column_width="206"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="12" />
    <wvobject fp_name="/tb_SREC_boot_loader/tb_clk" type="logic">

@@ -195,9 +195,11 @@ begin
   -- AXI live
   proc_axi: process
 
-    constant QSPI_SPIDRR_ADDR                   : STD_LOGIC_VECTOR (31 downto 0) := x"4531006c";
-    constant QSPI_SPISSR_ADDR                   : STD_LOGIC_VECTOR (31 downto 0) := x"45310070";
-    constant QSPI_IPISR_ADDR                    : STD_LOGIC_VECTOR (31 downto 0) := x"45310020";
+    constant QSPI_SPIDRR_ADDR                   : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"7531006c";
+    constant QSPI_SPISSR_ADDR                   : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"75310070";
+    constant QSPI_IPISR_ADDR                    : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"75310020";
+    constant QSPI_TX_OCCU_ADDR                  : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"75310074";
+    constant QSPI_RX_OCCU_ADDR                  : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"75310078";
     
     type Vec280I                                is array (0 to 279) of Integer;
     variable fifo                               : Vec280I;
@@ -573,6 +575,18 @@ begin
             tb_m00_axi_rdata    <= x"00000004";
             tb_m00_axi_rvalid   <= '1';
             fsm_sel_ctr         := 0;
+            
+        -- READ  TX FIFO fill grade
+        elsif ((tb_m00_axi_araddr = QSPI_TX_OCCU_ADDR)  and  (tb_m00_axi_arvalid = '1')) then
+            tb_m00_axi_arready  <= '1';
+            tb_m00_axi_rdata    <= x"00000000";
+            tb_m00_axi_rvalid   <= '1';
+            
+        -- READ  RX FIFO fill grade
+        elsif ((tb_m00_axi_araddr = QSPI_RX_OCCU_ADDR)  and  (tb_m00_axi_arvalid = '1')) then
+            tb_m00_axi_arready  <= '1';
+            tb_m00_axi_rdata    <= x"00000000";
+            tb_m00_axi_rvalid   <= '1';
             
         -- READ  Any other read access
         elsif ((tb_m00_axi_arvalid = '1')) then

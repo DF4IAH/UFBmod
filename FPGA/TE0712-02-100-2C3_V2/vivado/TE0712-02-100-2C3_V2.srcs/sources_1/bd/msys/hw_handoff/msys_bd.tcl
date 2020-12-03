@@ -2261,6 +2261,8 @@ proc create_hier_cell_CFG_Si5338 { parentCell nameHier } {
   create_bd_pin -dir O PLL_I2C_ext_scl_o
   create_bd_pin -dir IO PLL_I2C_ext_sda
   create_bd_pin -dir I -type rst ext_reset
+  create_bd_pin -dir O -from 31 -to 0 gpio2_io_o
+  create_bd_pin -dir O -from 31 -to 0 gpio_io_o
   create_bd_pin -dir O -from 0 -to 0 -type rst interconnect_aresetn
   create_bd_pin -dir I -type rst mb_debug_sys_rst
   create_bd_pin -dir O -from 31 -to 0 mon_GPIO1_I
@@ -2269,6 +2271,17 @@ proc create_hier_cell_CFG_Si5338 { parentCell nameHier } {
 
   # Create instance: CFG_Local_BRAM
   create_hier_cell_CFG_Local_BRAM $hier_obj CFG_Local_BRAM
+
+  # Create instance: CFG_Si5338_DBG_axi_gpio_0, and set properties
+  set CFG_Si5338_DBG_axi_gpio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 CFG_Si5338_DBG_axi_gpio_0 ]
+  set_property -dict [ list \
+   CONFIG.C_ALL_INPUTS {0} \
+   CONFIG.C_ALL_INPUTS_2 {0} \
+   CONFIG.C_ALL_OUTPUTS {1} \
+   CONFIG.C_ALL_OUTPUTS_2 {1} \
+   CONFIG.C_DOUT_DEFAULT {0x00000003} \
+   CONFIG.C_IS_DUAL {1} \
+ ] $CFG_Si5338_DBG_axi_gpio_0
 
   # Create instance: CFG_Si5338_axi_gpio_0, and set properties
   set CFG_Si5338_axi_gpio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 CFG_Si5338_axi_gpio_0 ]
@@ -2288,7 +2301,7 @@ proc create_hier_cell_CFG_Si5338 { parentCell nameHier } {
   # Create instance: CFG_Si5338_axi_periph_interconnect_0, and set properties
   set CFG_Si5338_axi_periph_interconnect_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 CFG_Si5338_axi_periph_interconnect_0 ]
   set_property -dict [ list \
-   CONFIG.NUM_MI {3} \
+   CONFIG.NUM_MI {4} \
    CONFIG.NUM_SI {3} \
  ] $CFG_Si5338_axi_periph_interconnect_0
 
@@ -2404,6 +2417,7 @@ proc create_hier_cell_CFG_Si5338 { parentCell nameHier } {
   connect_bd_intf_net -intf_net BOOT_PLL_microblaze_0_DLMB [get_bd_intf_pins CFG_Local_BRAM/DLMB_M] [get_bd_intf_pins CFG_microblaze_0/DLMB]
   connect_bd_intf_net -intf_net BOOT_PLL_microblaze_0_ILMB [get_bd_intf_pins CFG_Local_BRAM/ILMB_M] [get_bd_intf_pins CFG_microblaze_0/ILMB]
   connect_bd_intf_net -intf_net BOOT_PLL_microblaze_0_M_AXI_DP [get_bd_intf_pins CFG_Si5338_axi_periph_interconnect_0/S00_AXI] [get_bd_intf_pins CFG_microblaze_0/M_AXI_DP]
+  connect_bd_intf_net -intf_net CFG_Si5338_axi_periph_interconnect_0_M03_AXI [get_bd_intf_pins CFG_Si5338_DBG_axi_gpio_0/S_AXI] [get_bd_intf_pins CFG_Si5338_axi_periph_interconnect_0/M03_AXI]
   connect_bd_intf_net -intf_net Conn2 [get_bd_intf_pins mdm_USER2_0_BOOT_LMB_0_in] [get_bd_intf_pins CFG_Local_BRAM/mdm_USER2_0_BOOT_LMB_0_in]
   connect_bd_intf_net -intf_net Conn4 [get_bd_intf_pins DEBUG] [get_bd_intf_pins CFG_microblaze_0/DEBUG]
   connect_bd_intf_net -intf_net axi_interconnect_0_M00_AXI [get_bd_intf_pins CFG_Si5338_axi_gpio_0/S_AXI] [get_bd_intf_pins CFG_Si5338_axi_periph_interconnect_0/M00_AXI]
@@ -2412,12 +2426,14 @@ proc create_hier_cell_CFG_Si5338 { parentCell nameHier } {
 
   # Create port connections
   connect_bd_net -net BOOT_PLL_axi_gpio_0_gpio_io_o [get_bd_pins CFG_Si5338_axi_gpio_0/gpio_io_o] [get_bd_pins SC0712_0/GPIO1_O]
+  connect_bd_net -net CFG_Si5338_DBG_axi_gpio_0_gpio2_io_o [get_bd_pins gpio2_io_o] [get_bd_pins CFG_Si5338_DBG_axi_gpio_0/gpio2_io_o]
+  connect_bd_net -net CFG_Si5338_DBG_axi_gpio_0_gpio_io_o [get_bd_pins gpio_io_o] [get_bd_pins CFG_Si5338_DBG_axi_gpio_0/gpio_io_o]
   connect_bd_net -net CFG_Si5338_axi_quad_spi_0_ip2intc_65MHz_irpt [get_bd_pins CFG_Si5338_qspi_ip2intc_irpt] [get_bd_pins CFG_Si5338_axi_quad_spi_0/ip2intc_irpt]
-  connect_bd_net -net CFG_Si5338_clk_wiz_0_65MHz_0 [get_bd_pins CFG_Si5338_clk_wiz_0_65MHz_out] [get_bd_pins CFG_Local_BRAM/LMB_Clk] [get_bd_pins CFG_Si5338_axi_gpio_0/s_axi_aclk] [get_bd_pins CFG_Si5338_axi_iic_0/s_axi_aclk] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/ACLK] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/M00_ACLK] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/M01_ACLK] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/M02_ACLK] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/S00_ACLK] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/S01_ACLK] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/S02_ACLK] [get_bd_pins CFG_Si5338_axi_quad_spi_0/s_axi_aclk] [get_bd_pins CFG_Si5338_clk_wiz_0/clk_out1_65MHz] [get_bd_pins CFG_microblaze_0/Clk] [get_bd_pins SC0712_0/mcs_clk_in] [get_bd_pins rst_dbg_CFG_Si5338_0_65M_1/slowest_sync_clk] [get_bd_pins rst_proc_CFG_Si5338_0_65M/slowest_sync_clk]
+  connect_bd_net -net CFG_Si5338_clk_wiz_0_65MHz_0 [get_bd_pins CFG_Si5338_clk_wiz_0_65MHz_out] [get_bd_pins CFG_Local_BRAM/LMB_Clk] [get_bd_pins CFG_Si5338_DBG_axi_gpio_0/s_axi_aclk] [get_bd_pins CFG_Si5338_axi_gpio_0/s_axi_aclk] [get_bd_pins CFG_Si5338_axi_iic_0/s_axi_aclk] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/ACLK] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/M00_ACLK] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/M01_ACLK] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/M02_ACLK] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/M03_ACLK] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/S00_ACLK] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/S01_ACLK] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/S02_ACLK] [get_bd_pins CFG_Si5338_axi_quad_spi_0/s_axi_aclk] [get_bd_pins CFG_Si5338_clk_wiz_0/clk_out1_65MHz] [get_bd_pins CFG_microblaze_0/Clk] [get_bd_pins SC0712_0/mcs_clk_in] [get_bd_pins rst_dbg_CFG_Si5338_0_65M_1/slowest_sync_clk] [get_bd_pins rst_proc_CFG_Si5338_0_65M/slowest_sync_clk]
   connect_bd_net -net CFG_Si5338_clk_wiz_0_clk_out2_32MHz5 [get_bd_pins CFG_Si5338_axi_quad_spi_0/ext_spi_clk] [get_bd_pins CFG_Si5338_clk_wiz_0/clk_out2_32MHz5]
   connect_bd_net -net CFG_Si5338_clk_wiz_0_locked [get_bd_pins CFG_Si5338_clk_wiz_0/locked] [get_bd_pins rst_dbg_CFG_Si5338_0_65M_1/dcm_locked] [get_bd_pins rst_proc_CFG_Si5338_0_65M/dcm_locked]
   connect_bd_net -net CFG_Si5338_proc_sys_reset_0_interconnect_aresetn [get_bd_pins CFG_Si5338_interconnect_aresetn] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/ARESETN] [get_bd_pins rst_proc_CFG_Si5338_0_65M/interconnect_aresetn]
-  connect_bd_net -net CFG_Si5338_proc_sys_reset_0_peripheral_aresetn [get_bd_pins CFG_Si5338_peripheral_aresetn] [get_bd_pins CFG_Si5338_axi_gpio_0/s_axi_aresetn] [get_bd_pins CFG_Si5338_axi_iic_0/s_axi_aresetn] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/M00_ARESETN] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/M01_ARESETN] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/M02_ARESETN] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/S00_ARESETN] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/S01_ARESETN] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/S02_ARESETN] [get_bd_pins CFG_Si5338_axi_quad_spi_0/s_axi_aresetn] [get_bd_pins rst_proc_CFG_Si5338_0_65M/peripheral_aresetn]
+  connect_bd_net -net CFG_Si5338_proc_sys_reset_0_peripheral_aresetn [get_bd_pins CFG_Si5338_peripheral_aresetn] [get_bd_pins CFG_Si5338_DBG_axi_gpio_0/s_axi_aresetn] [get_bd_pins CFG_Si5338_axi_gpio_0/s_axi_aresetn] [get_bd_pins CFG_Si5338_axi_iic_0/s_axi_aresetn] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/M00_ARESETN] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/M01_ARESETN] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/M02_ARESETN] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/M03_ARESETN] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/S00_ARESETN] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/S01_ARESETN] [get_bd_pins CFG_Si5338_axi_periph_interconnect_0/S02_ARESETN] [get_bd_pins CFG_Si5338_axi_quad_spi_0/s_axi_aresetn] [get_bd_pins rst_proc_CFG_Si5338_0_65M/peripheral_aresetn]
   connect_bd_net -net CFG_axi_quad_spi_0_cfgmclk [get_bd_pins CFG_Si5338_axi_quad_spi_0/cfgmclk] [get_bd_pins CFG_Si5338_clk_wiz_0/clk_in1]
   connect_bd_net -net CFG_axi_quad_spi_0_eos [get_bd_pins CFG_Si5338_axi_quad_spi_0/eos] [get_bd_pins rst_dbg_CFG_Si5338_0_65M_1/aux_reset_in] [get_bd_pins rst_proc_CFG_Si5338_0_65M/aux_reset_in]
   connect_bd_net -net Net [get_bd_pins PLL_I2C_ext_sda] [get_bd_pins SC0712_0/ext_sda]
@@ -3078,8 +3094,10 @@ proc create_root_design { parentCell } {
   connect_bd_net -net CFG_PLL_I2C_ext_scl_o [get_bd_ports PLL_I2C_ext_scl_o] [get_bd_pins CFG_Si5338/PLL_I2C_ext_scl_o]
   connect_bd_net -net CFG_SC0712_0_reset_0 [get_bd_pins CFG_Si5338/reset_out] [get_bd_pins mig_7series_0/sys_rst] [get_bd_pins vio_0/probe_in5]
   connect_bd_net -net CFG_Si5338_clk_wiz_0_65MHz_1 [get_bd_pins CFG_Si5338/CFG_Si5338_clk_wiz_0_65MHz_out] [get_bd_pins ETH0/CFG_Si5338_pll_65MHz_in] [get_bd_pins labtools_fmeter_0/refclk] [get_bd_pins mdm_USER2_0/M_AXI_ACLK] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M03_ACLK] [get_bd_pins vio_0/clk]
+  connect_bd_net -net CFG_Si5338_gpio2_io_o [get_bd_pins CFG_Si5338/gpio2_io_o] [get_bd_pins vio_0/probe_in57]
+  connect_bd_net -net CFG_Si5338_gpio_io_o [get_bd_pins CFG_Si5338/gpio_io_o] [get_bd_pins vio_0/probe_in56]
   connect_bd_net -net CFG_Si5338_peripheral_aresetn [get_bd_pins CFG_Si5338/CFG_Si5338_peripheral_aresetn] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M03_ARESETN]
-  connect_bd_net -net CFG_Si5338_qspi_0_ip2intc_irpt [get_bd_pins CFG_Si5338/CFG_Si5338_qspi_ip2intc_irpt] [get_bd_pins INT_ctrl/In2] [get_bd_pins SREC_boot_loader_FSM_0/qspi_irpt]
+  connect_bd_net -net CFG_Si5338_qspi_0_ip2intc_irpt [get_bd_ports USER_dbg_00_signal] [get_bd_pins CFG_Si5338/CFG_Si5338_qspi_ip2intc_irpt] [get_bd_pins INT_ctrl/In2] [get_bd_pins SREC_boot_loader_FSM_0/qspi_irpt]
   connect_bd_net -net CFG_Si5338_rst_dbg_interconnect_aresetn [get_bd_pins CFG_Si5338/interconnect_aresetn] [get_bd_pins mdm_USER2_0/M_AXI_ARESETN]
   connect_bd_net -net CFG_Si5338_rst_proc_interconnect_aresetn_0 [get_bd_pins CFG_Si5338/CFG_Si5338_interconnect_aresetn] [get_bd_pins mig_7series_0/aresetn]
   connect_bd_net -net CFG_mon_GPIO1_I [get_bd_pins CFG_Si5338/mon_GPIO1_I] [get_bd_pins vio_0/probe_in7]
@@ -3196,8 +3214,6 @@ proc create_root_design { parentCell } {
   connect_bd_net -net decoder_rx09_ch05_center_pos_1 [get_bd_ports decoder_rx09_ch05_center_pos] [get_bd_pins vio_0/probe_in55]
   connect_bd_net -net decoder_rx09_ch05_noise_1 [get_bd_ports decoder_rx09_ch05_noise] [get_bd_pins vio_0/probe_in53]
   connect_bd_net -net decoder_rx09_ch05_strength_1 [get_bd_ports decoder_rx09_ch05_strength] [get_bd_pins vio_0/probe_in54]
-  connect_bd_net -net decoder_rx09_ch06_noise_1 [get_bd_ports decoder_rx09_ch06_noise] [get_bd_pins vio_0/probe_in56]
-  connect_bd_net -net decoder_rx09_ch06_strength_1 [get_bd_ports decoder_rx09_ch06_strength] [get_bd_pins vio_0/probe_in57]
   connect_bd_net -net decoder_rx09_chXX_active_1 [get_bd_ports decoder_rx09_chXX_active] [get_bd_pins vio_0/probe_in36]
   connect_bd_net -net decoder_rx09_chXX_sql_open_1 [get_bd_ports decoder_rx09_chXX_sql_open] [get_bd_pins vio_0/probe_in35]
   connect_bd_net -net ext_reset_1 [get_bd_ports reset] [get_bd_pins CFG_Si5338/ext_reset] [get_bd_pins CLOCK/reset]
@@ -3227,9 +3243,10 @@ proc create_root_design { parentCell } {
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_aresetn [get_bd_ports rst_mig_7series_0_100M_peripheral_aresetn] [get_bd_pins AXI_TRX/s_axi_aresetn] [get_bd_pins CLK1B_CW_0/s_axi_aresetn] [get_bd_pins CLOCK/s_axi_aresetn] [get_bd_pins ETH0/s_axi_aresetn_in] [get_bd_pins EUI48/s_axi_aresetn] [get_bd_pins INT_ctrl/s_axi_aresetn] [get_bd_pins PWM_lights/s_axi_aresetn] [get_bd_pins ROTENC_decoder/s_axi_aresetn] [get_bd_pins SCOPE/s_axi_aresetn] [get_bd_pins SREC_boot_loader_FSM_0/m00_axi_aresetn] [get_bd_pins UART0/s_axi_aresetn] [get_bd_pins axi_BOARD_iic_0/s_axi_aresetn] [get_bd_pins axi_timer_0/s_axi_aresetn] [get_bd_pins microblaze_0_axi_mem_interconnect_0/M00_ARESETN] [get_bd_pins microblaze_0_axi_mem_interconnect_0/S00_ARESETN] [get_bd_pins microblaze_0_axi_mem_interconnect_0/S01_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M00_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M01_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M02_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M04_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M05_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M06_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M07_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M08_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M09_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M10_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/S00_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/S01_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M00_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M01_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M02_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M03_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M04_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M05_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M06_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M07_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M08_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M09_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/S00_ARESETN] [get_bd_pins rst_mig_7series_0_100M/peripheral_aresetn]
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_ports rst_mig_7series_0_100M_peripheral_reset] [get_bd_pins ETH0/ext_reset_in] [get_bd_pins ROTENC_decoder/SINIT] [get_bd_pins SCOPE/SCLR] [get_bd_pins UART0/ext_reset_in] [get_bd_pins rst_mig_7series_0_100M/peripheral_reset]
   connect_bd_net -net vio_0_probe_out0 [get_bd_pins SREC_boot_loader_FSM_0/SREC_enable] [get_bd_pins vio_0/probe_out0]
-  connect_bd_net -net xlconstant_val0_len1_dout [get_bd_ports USER_dbg_00_signal] [get_bd_ports USER_dbg_01_signal] [get_bd_ports USER_dbg_02_signal] [get_bd_ports USER_dbg_03_signal] [get_bd_ports USER_dbg_04_signal] [get_bd_ports USER_dbg_05_signal] [get_bd_ports USER_dbg_06_signal] [get_bd_ports USER_dbg_07_signal] [get_bd_ports USER_dbg_08_signal] [get_bd_ports USER_dbg_09_signal] [get_bd_ports USER_dbg_10_signal] [get_bd_ports USER_dbg_11_signal] [get_bd_ports USER_dbg_12_signal] [get_bd_ports USER_dbg_13_signal] [get_bd_pins xlconstant_val0_len1/dout]
+  connect_bd_net -net xlconstant_val0_len1_dout [get_bd_ports USER_dbg_01_signal] [get_bd_ports USER_dbg_02_signal] [get_bd_ports USER_dbg_03_signal] [get_bd_ports USER_dbg_04_signal] [get_bd_ports USER_dbg_05_signal] [get_bd_ports USER_dbg_06_signal] [get_bd_ports USER_dbg_07_signal] [get_bd_ports USER_dbg_08_signal] [get_bd_ports USER_dbg_09_signal] [get_bd_ports USER_dbg_10_signal] [get_bd_ports USER_dbg_11_signal] [get_bd_ports USER_dbg_12_signal] [get_bd_ports USER_dbg_13_signal] [get_bd_pins xlconstant_val0_len1/dout]
 
   # Create address segments
+  assign_bd_address -offset 0x74310000 -range 0x00010000 -target_address_space [get_bd_addr_spaces SREC_boot_loader_FSM_0/m00_axi] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_DBG_axi_gpio_0/S_AXI/Reg] -force
   assign_bd_address -offset 0x74300000 -range 0x00010000 -target_address_space [get_bd_addr_spaces SREC_boot_loader_FSM_0/m00_axi] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_axi_gpio_0/S_AXI/Reg] -force
   assign_bd_address -offset 0x76060000 -range 0x00010000 -target_address_space [get_bd_addr_spaces SREC_boot_loader_FSM_0/m00_axi] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_axi_iic_0/S_AXI/Reg] -force
   assign_bd_address -offset 0x75310000 -range 0x00010000 -target_address_space [get_bd_addr_spaces SREC_boot_loader_FSM_0/m00_axi] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_axi_quad_spi_0/AXI_LITE/Reg] -force
@@ -3254,11 +3271,13 @@ proc create_root_design { parentCell } {
   assign_bd_address -offset 0x400A0000 -range 0x00010000 -target_address_space [get_bd_addr_spaces SREC_boot_loader_FSM_0/m00_axi] [get_bd_addr_segs INT_ctrl/microblaze_0_axi_intc/S_AXI/Reg] -force
   assign_bd_address -offset 0x74300000 -range 0x00010000 -target_address_space [get_bd_addr_spaces mdm_USER2_0/Data] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_axi_gpio_0/S_AXI/Reg] -force
   assign_bd_address -offset 0x76060000 -range 0x00010000 -target_address_space [get_bd_addr_spaces mdm_USER2_0/Data] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_axi_iic_0/S_AXI/Reg] -force
+  assign_bd_address -offset 0x74310000 -range 0x00010000 -target_address_space [get_bd_addr_spaces mdm_USER2_0/Data] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_DBG_axi_gpio_0/S_AXI/Reg] -force
   assign_bd_address -offset 0x75310000 -range 0x00010000 -target_address_space [get_bd_addr_spaces mdm_USER2_0/Data] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_axi_quad_spi_0/AXI_LITE/Reg] -force
   assign_bd_address -offset 0x00000000 -range 0x00004000 -target_address_space [get_bd_addr_spaces mdm_USER2_0/Data] [get_bd_addr_segs CFG_Si5338/CFG_Local_BRAM/dlmb_bram_if_cntlr_0/SLMB1/Mem] -force
   assign_bd_address -offset 0x00010000 -range 0x00004000 -target_address_space [get_bd_addr_spaces mdm_USER2_0/Data_LMB_1] [get_bd_addr_segs microblaze_0_local_memory/dlmb_bram_if_cntlr/SLMB1/Mem] -force
   assign_bd_address -offset 0x74300000 -range 0x00010000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_axi_gpio_0/S_AXI/Reg] -force
   assign_bd_address -offset 0x76060000 -range 0x00010000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_axi_iic_0/S_AXI/Reg] -force
+  assign_bd_address -offset 0x74310000 -range 0x00010000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_DBG_axi_gpio_0/S_AXI/Reg] -force
   assign_bd_address -offset 0x75310000 -range 0x00010000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_axi_quad_spi_0/AXI_LITE/Reg] -force
   assign_bd_address -offset 0x54090000 -range 0x00010000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs CLK1B_CW_0/CLK1B_axi_gpio_0/S_AXI/Reg] -force
   assign_bd_address -offset 0x52090000 -range 0x00010000 -target_address_space [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs CLK1B_CW_0/CLK1B_clk_wiz_0/s_axi_lite/Reg] -force
@@ -3285,6 +3304,7 @@ proc create_root_design { parentCell } {
   assign_bd_address -offset 0x80000000 -range 0x40000000 -target_address_space [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs mig_7series_0/memmap/memaddr] -force
   assign_bd_address -offset 0x74300000 -range 0x00010000 -target_address_space [get_bd_addr_spaces CFG_Si5338/CFG_microblaze_0/Data] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_axi_gpio_0/S_AXI/Reg] -force
   assign_bd_address -offset 0x76060000 -range 0x00010000 -target_address_space [get_bd_addr_spaces CFG_Si5338/CFG_microblaze_0/Data] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_axi_iic_0/S_AXI/Reg] -force
+  assign_bd_address -offset 0x74310000 -range 0x00010000 -target_address_space [get_bd_addr_spaces CFG_Si5338/CFG_microblaze_0/Data] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_DBG_axi_gpio_0/S_AXI/Reg] -force
   assign_bd_address -offset 0x75310000 -range 0x00010000 -target_address_space [get_bd_addr_spaces CFG_Si5338/CFG_microblaze_0/Data] [get_bd_addr_segs CFG_Si5338/CFG_Si5338_axi_quad_spi_0/AXI_LITE/Reg] -force
   assign_bd_address -offset 0x00000000 -range 0x00004000 -target_address_space [get_bd_addr_spaces CFG_Si5338/CFG_microblaze_0/Data] [get_bd_addr_segs CFG_Si5338/CFG_Local_BRAM/dlmb_bram_if_cntlr_0/SLMB/Mem] -force
   assign_bd_address -offset 0x00000000 -range 0x00004000 -target_address_space [get_bd_addr_spaces CFG_Si5338/CFG_microblaze_0/Instruction] [get_bd_addr_segs CFG_Si5338/CFG_Local_BRAM/ilmb_bram_if_cntlr_0/SLMB/Mem] -force
