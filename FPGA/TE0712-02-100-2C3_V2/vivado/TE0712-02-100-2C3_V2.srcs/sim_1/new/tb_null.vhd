@@ -150,26 +150,27 @@ end component top;
 -- CLOCKS
   signal tb_CLK0_clk_p : STD_LOGIC;
   signal tb_CLK0_clk_n : STD_LOGIC;
-
+  
   signal tb_CLK1B_clk : STD_LOGIC;
-
+  
   signal tb_CLK2_mgt_clk0_clk_p : STD_LOGIC;
   signal tb_CLK2_mgt_clk0_clk_n : STD_LOGIC;
-
+  
   signal tb_CLK3_sys_diff_clk_p : STD_LOGIC;
   signal tb_CLK3_sys_diff_clk_n : STD_LOGIC;
-
+  
   signal tb_TRX_clk_26MHz : STD_LOGIC;
-
+  
   signal tb_TRX_rx_clk_64MHz_clk_p : STD_LOGIC;
   signal tb_TRX_rx_clk_64MHz_clk_n : STD_LOGIC;
-
+  
   signal tb_TRX_rx_data_p : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal tb_TRX_rx_data_n : STD_LOGIC_VECTOR ( 1 downto 0 );
-
+  
   signal tb_TRX_tx_clk_p : STD_LOGIC;
   signal tb_TRX_tx_clk_n : STD_LOGIC;
   
+  signal tb_qspi_flash_sck : STD_LOGIC;
   signal tb_qspi_flash_io0_io : STD_LOGIC;
   signal tb_qspi_flash_io1_io : STD_LOGIC;
   signal tb_qspi_flash_io2_io : STD_LOGIC;
@@ -389,6 +390,16 @@ top_i: component top
     tb_TRX_rx_clk_64MHz_clk_n <= '1';
     wait for 7.8125ns;
   end process proc_tb_TRX_rx_clk_64MHz_clk;
+  
+  -- 25 MHz QSPI clock
+  proc_tb_qspi_flash_SCK: process
+  begin
+    tb_qspi_flash_sck <= '1';
+    wait for 50ns;
+    
+    tb_qspi_flash_sck <= '0';
+    wait for 50ns;
+  end process proc_tb_qspi_flash_SCK;
   
   
 -- STIMULATION
@@ -1164,10 +1175,24 @@ top_i: component top
   begin
     tb_qspi_flash_io0_io <= 'L';
     tb_qspi_flash_io1_io <= 'L';
-    tb_qspi_flash_io2_io <= 'L';
+    tb_qspi_flash_io2_io <= 'H';
     tb_qspi_flash_io3_io <= 'H';
     tb_qspi_flash_ss_io  <= 'H';
-    wait;
+    
+    -- The show starts after the synchron reset
+    wait until tb_reset = '1';
+    wait until rising_edge(tb_qspi_flash_sck);
+    
+    tb_qspi_flash_io1_io <= '0';
+    
+    wait until tb_reset = '0';
+    
+    loop
+        wait until rising_edge(tb_qspi_flash_sck);
+        
+        -- 
+    end loop;
+    
   end process proc_tb_qspi_flash;
   
   proc_tb_ETH0_MDIO_MDC_mdio_io: process

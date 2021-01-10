@@ -625,7 +625,7 @@
 /******************************************************************/
 
 /* Definitions for driver GPIO */
-#define XPAR_XGPIO_NUM_INSTANCES 13
+#define XPAR_XGPIO_NUM_INSTANCES 14
 
 /* Definitions for peripheral AXI_TRX_TRX_CONFIG_TRX_GPIO_0 */
 #define XPAR_AXI_TRX_TRX_CONFIG_TRX_GPIO_0_BASEADDR 0x44100000
@@ -731,6 +731,14 @@
 #define XPAR_UART0_AXI_UART0_GPIO_0_IS_DUAL 1
 
 
+/* Definitions for peripheral CFG_SI5338_CFG_SI5338_DBG_AXI_GPIO_0 */
+#define XPAR_CFG_SI5338_CFG_SI5338_DBG_AXI_GPIO_0_BASEADDR 0x74310000
+#define XPAR_CFG_SI5338_CFG_SI5338_DBG_AXI_GPIO_0_HIGHADDR 0x7431FFFF
+#define XPAR_CFG_SI5338_CFG_SI5338_DBG_AXI_GPIO_0_DEVICE_ID 13
+#define XPAR_CFG_SI5338_CFG_SI5338_DBG_AXI_GPIO_0_INTERRUPT_PRESENT 0
+#define XPAR_CFG_SI5338_CFG_SI5338_DBG_AXI_GPIO_0_IS_DUAL 1
+
+
 /******************************************************************/
 
 /* Canonical definitions for peripheral AXI_TRX_TRX_CONFIG_TRX_GPIO_0 */
@@ -823,6 +831,13 @@
 #define XPAR_GPIO_12_DEVICE_ID XPAR_UART0_AXI_UART0_GPIO_0_DEVICE_ID
 #define XPAR_GPIO_12_INTERRUPT_PRESENT 1
 #define XPAR_GPIO_12_IS_DUAL 1
+
+/* Canonical definitions for peripheral CFG_SI5338_CFG_SI5338_DBG_AXI_GPIO_0 */
+#define XPAR_GPIO_13_BASEADDR 0x74310000
+#define XPAR_GPIO_13_HIGHADDR 0x7431FFFF
+#define XPAR_GPIO_13_DEVICE_ID XPAR_CFG_SI5338_CFG_SI5338_DBG_AXI_GPIO_0_DEVICE_ID
+#define XPAR_GPIO_13_INTERRUPT_PRESENT 0
+#define XPAR_GPIO_13_IS_DUAL 1
 
 
 /******************************************************************/
