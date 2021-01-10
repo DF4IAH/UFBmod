@@ -18840,7 +18840,7 @@ Subminiature Tact Switch for SMT</description>
 <part name="C1101" library="df4iah_rcl" deviceset="C-EU" device="C0805" value="4.7uF"/>
 <part name="C1102" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="1uF"/>
 <part name="C1111" library="df4iah_rcl" deviceset="C-EU" device="C0805" value="22uF"/>
-<part name="R1103" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="187kR"/>
+<part name="R1103" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="N/A"/>
 <part name="R1104" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="N/A">
 <variant name="Std" populate="no"/>
 </part>
@@ -18856,7 +18856,7 @@ Subminiature Tact Switch for SMT</description>
 <part name="C1122" library="df4iah_rcl" deviceset="C-EU" device="C0805" value="N/A">
 <variant name="Std" populate="no"/>
 </part>
-<part name="R1131" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="3.01kR"/>
+<part name="R1131" library="df4iah_rcl" deviceset="R-EU_" device="R0402" value="15kR"/>
 <part name="C1131" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="100nF"/>
 <part name="C1132" library="df4iah_rcl" deviceset="C-EU" device="C0402" value="1nF"/>
 <part name="C1152" library="df4iah_rcl" deviceset="C-EU" device="C0805" value="100uF"/>
