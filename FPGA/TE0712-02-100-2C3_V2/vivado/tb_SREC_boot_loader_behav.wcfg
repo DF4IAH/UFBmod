@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="17095730fs"></ZoomStartTime>
-      <ZoomEndTime time="17421351fs"></ZoomEndTime>
-      <Cursor1Time time="17133985fs"></Cursor1Time>
+      <ZoomStartTime time="21689102fs"></ZoomStartTime>
+      <ZoomEndTime time="21918180fs"></ZoomEndTime>
+      <Cursor1Time time="21840000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="756"></NameColumnWidth>
-      <ValueColumnWidth column_width="206"></ValueColumnWidth>
+      <ValueColumnWidth column_width="190"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="12" />
+   <WVObjectSize size="13" />
    <wvobject fp_name="/tb_SREC_boot_loader/tb_clk" type="logic">
       <obj_property name="ElementShortName">tb_clk</obj_property>
       <obj_property name="ObjectShortName">tb_clk</obj_property>
@@ -59,7 +59,7 @@
       <wvobject fp_name="/tb_SREC_boot_loader/tb_m00_axi_awaddr" type="array">
          <obj_property name="ElementShortName">tb_m00_axi_awaddr[31:0]</obj_property>
          <obj_property name="ObjectShortName">tb_m00_axi_awaddr[31:0]</obj_property>
-         <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_SREC_boot_loader/tb_m00_axi_awprot" type="array">
@@ -71,7 +71,7 @@
       <wvobject fp_name="/tb_SREC_boot_loader/tb_m00_axi_awvalid" type="logic">
          <obj_property name="ElementShortName">tb_m00_axi_awvalid</obj_property>
          <obj_property name="ObjectShortName">tb_m00_axi_awvalid</obj_property>
-         <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_SREC_boot_loader/tb_m00_axi_awready" type="logic">
@@ -83,7 +83,7 @@
       <wvobject fp_name="/tb_SREC_boot_loader/tb_m00_axi_wdata" type="array">
          <obj_property name="ElementShortName">tb_m00_axi_wdata[31:0]</obj_property>
          <obj_property name="ObjectShortName">tb_m00_axi_wdata[31:0]</obj_property>
-         <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_SREC_boot_loader/tb_m00_axi_wstrb" type="array">
@@ -96,13 +96,13 @@
       <wvobject fp_name="/tb_SREC_boot_loader/tb_m00_axi_wvalid" type="logic">
          <obj_property name="ElementShortName">tb_m00_axi_wvalid</obj_property>
          <obj_property name="ObjectShortName">tb_m00_axi_wvalid</obj_property>
-         <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_SREC_boot_loader/tb_m00_axi_wready" type="logic">
          <obj_property name="ElementShortName">tb_m00_axi_wready</obj_property>
          <obj_property name="ObjectShortName">tb_m00_axi_wready</obj_property>
-         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_SREC_boot_loader/tb_m00_axi_bresp" type="array">
@@ -181,6 +181,7 @@
       <obj_property name="ObjectShortName">fsm_srec_decoder_c[7:0]</obj_property>
       <obj_property name="CustomSignalColor">#00FFFF</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_SREC_boot_loader/tb_SREC_error" type="logic">
       <obj_property name="ElementShortName">tb_SREC_error</obj_property>
@@ -199,5 +200,96 @@
       <obj_property name="ObjectShortName">tb_SREC_done</obj_property>
       <obj_property name="CustomSignalColor">#FFD700</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="group44" type="group">
+      <obj_property name="label">DBG</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_SREC_boot_loader/SREC_boot_loader_i/fsm_write_index" type="array">
+         <obj_property name="ElementShortName">fsm_write_index[7:0]</obj_property>
+         <obj_property name="ObjectShortName">fsm_write_index[7:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#808080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SREC_boot_loader/SREC_boot_loader_i/fsm_read_index" type="array">
+         <obj_property name="ElementShortName">fsm_read_index[7:0]</obj_property>
+         <obj_property name="ObjectShortName">fsm_read_index[7:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#808080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SREC_boot_loader/SREC_boot_loader_i/DBG_FSM_out" type="array">
+         <obj_property name="ElementShortName">DBG_FSM_out[15:0]</obj_property>
+         <obj_property name="ObjectShortName">DBG_FSM_out[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SREC_boot_loader/SREC_boot_loader_i/DBG_Sig_NxtLoad_out" type="logic">
+         <obj_property name="ElementShortName">DBG_Sig_NxtLoad_out</obj_property>
+         <obj_property name="ObjectShortName">DBG_Sig_NxtLoad_out</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SREC_boot_loader/SREC_boot_loader_i/DBG_Sig_NxtWrite_out" type="logic">
+         <obj_property name="ElementShortName">DBG_Sig_NxtWrite_out</obj_property>
+         <obj_property name="ObjectShortName">DBG_Sig_NxtWrite_out</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SREC_boot_loader/SREC_boot_loader_i/DBG_Flash_Adr" type="array">
+         <obj_property name="ElementShortName">DBG_Flash_Adr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DBG_Flash_Adr[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#0000FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SREC_boot_loader/SREC_boot_loader_i/DBG_Flash_RD_07" type="array">
+         <obj_property name="ElementShortName">DBG_Flash_RD_07[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DBG_Flash_RD_07[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SREC_boot_loader/SREC_boot_loader_i/DBG_Flash_RD_06" type="array">
+         <obj_property name="ElementShortName">DBG_Flash_RD_06[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DBG_Flash_RD_06[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SREC_boot_loader/SREC_boot_loader_i/DBG_Flash_RD_05" type="array">
+         <obj_property name="ElementShortName">DBG_Flash_RD_05[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DBG_Flash_RD_05[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SREC_boot_loader/SREC_boot_loader_i/DBG_Flash_RD_04" type="array">
+         <obj_property name="ElementShortName">DBG_Flash_RD_04[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DBG_Flash_RD_04[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SREC_boot_loader/SREC_boot_loader_i/DBG_Flash_RD_03" type="array">
+         <obj_property name="ElementShortName">DBG_Flash_RD_03[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DBG_Flash_RD_03[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SREC_boot_loader/SREC_boot_loader_i/DBG_Flash_RD_02" type="array">
+         <obj_property name="ElementShortName">DBG_Flash_RD_02[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DBG_Flash_RD_02[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SREC_boot_loader/SREC_boot_loader_i/DBG_Flash_RD_01" type="array">
+         <obj_property name="ElementShortName">DBG_Flash_RD_01[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DBG_Flash_RD_01[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_SREC_boot_loader/SREC_boot_loader_i/DBG_Flash_RD_00" type="array">
+         <obj_property name="ElementShortName">DBG_Flash_RD_00[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DBG_Flash_RD_00[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
    </wvobject>
 </wave_config>

@@ -1,4 +1,4 @@
--- (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -82,7 +82,10 @@ ENTITY msys_SREC_boot_loader_FSM_1_0 IS
     SREC_error : OUT STD_LOGIC;
     SREC_resetn : OUT STD_LOGIC;
     SREC_done : OUT STD_LOGIC;
-    DBG_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+    DBG_FSM_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    DBG_AXI_Addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    DBG_Sig_NxtLoad_out : OUT STD_LOGIC;
+    DBG_Sig_NxtWrite_out : OUT STD_LOGIC
   );
 END msys_SREC_boot_loader_FSM_1_0;
 
@@ -118,7 +121,10 @@ ARCHITECTURE msys_SREC_boot_loader_FSM_1_0_arch OF msys_SREC_boot_loader_FSM_1_0
       SREC_error : OUT STD_LOGIC;
       SREC_resetn : OUT STD_LOGIC;
       SREC_done : OUT STD_LOGIC;
-      DBG_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+      DBG_FSM_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      DBG_AXI_Addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      DBG_Sig_NxtLoad_out : OUT STD_LOGIC;
+      DBG_Sig_NxtWrite_out : OUT STD_LOGIC
     );
   END COMPONENT SREC_boot_loader_FSM;
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
@@ -182,6 +188,9 @@ BEGIN
       SREC_error => SREC_error,
       SREC_resetn => SREC_resetn,
       SREC_done => SREC_done,
-      DBG_out => DBG_out
+      DBG_FSM_out => DBG_FSM_out,
+      DBG_AXI_Addr => DBG_AXI_Addr,
+      DBG_Sig_NxtLoad_out => DBG_Sig_NxtLoad_out,
+      DBG_Sig_NxtWrite_out => DBG_Sig_NxtWrite_out
     );
 END msys_SREC_boot_loader_FSM_1_0_arch;

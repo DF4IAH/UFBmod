@@ -27,6 +27,7 @@
     <Option Name="TargetLanguage" Val="VHDL"/>
     <Option Name="BoardPart" Val="trenz.biz:te0712_100_2c:part0:1.0"/>
     <Option Name="BoardPartRepoPaths" Val="$PPRDIR/../board_files"/>
+    <Option Name="SourceMgmtMode" Val="DisplayOnly"/>
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
@@ -41,20 +42,20 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="te0712_100_2c"/>
-    <Option Name="WTXSimLaunchSim" Val="1299"/>
+    <Option Name="WTXSimLaunchSim" Val="1325"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="624"/>
-    <Option Name="WTModelSimExportSim" Val="623"/>
-    <Option Name="WTQuestaExportSim" Val="622"/>
-    <Option Name="WTIesExportSim" Val="622"/>
-    <Option Name="WTVcsExportSim" Val="622"/>
-    <Option Name="WTRivieraExportSim" Val="622"/>
-    <Option Name="WTActivehdlExportSim" Val="621"/>
+    <Option Name="WTXSimExportSim" Val="630"/>
+    <Option Name="WTModelSimExportSim" Val="629"/>
+    <Option Name="WTQuestaExportSim" Val="628"/>
+    <Option Name="WTIesExportSim" Val="628"/>
+    <Option Name="WTVcsExportSim" Val="628"/>
+    <Option Name="WTRivieraExportSim" Val="628"/>
+    <Option Name="WTActivehdlExportSim" Val="627"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -264,15 +265,14 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sim_1/new/tb_null.vhd">
+      <File Path="$PSRCDIR/sim_1/new/tb_SREC_boot_loader.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sim_1/new/tb_SREC_boot_loader.vhd">
+      <File Path="$PSRCDIR/sim_1/new/tb_null.vhd">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -380,7 +380,7 @@
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="tb_null"/>
+        <Option Name="TopModule" Val="tb_SREC_boot_loader"/>
         <Option Name="TopLib" Val="xil_defaultlib"/>
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
@@ -480,19 +480,18 @@
     </Simulator>
   </Simulators>
   <Runs Version="1" Minor="11">
-    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7a100tfgg484-2" ConstrsSet="constrs_1" Description="Higher performance designs, resource sharing is turned off, the global fanout guide is set to a lower number, FSM extraction forced to one-hot, LUT combining is disabled, equivalent registers are preserved, SRL are inferred  with a larger threshold" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true">
+    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7a100tfgg484-2" ConstrsSet="constrs_1" Description="Higher performance designs, resource sharing is turned off, the global fanout guide is set to a lower number, FSM extraction forced to one-hot, LUT combining is disabled, equivalent registers are preserved, SRL are inferred  with a larger threshold" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Flow_PerfOptimized_high" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design">
           <Option Id="ResourceSharing">2</Option>
-          <Option Id="Directive">7</Option>
-          <Option Id="NoCombineLuts">1</Option>
           <Option Id="FsmExtraction">1</Option>
           <Option Id="ShregMinSize">5</Option>
+          <Option Id="Directive">7</Option>
+          <Option Id="NoCombineLuts">1</Option>
           <Option Id="KeepEquivalentRegisters">1</Option>
         </Step>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
@@ -537,7 +536,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="constrs_1" Description="Uses multiple algorithms for optimization, placement, and routing to get potentially better results." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true" GenFullBitstream="true">
+    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a100tfgg484-2" ConstrsSet="constrs_1" Description="Uses multiple algorithms for optimization, placement, and routing to get potentially better results." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" SynthRun="synth_1" IncludeInArchive="true" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Performance_Explore" Flow="Vivado Implementation 2020"/>
         <Step Id="init_design"/>
@@ -558,7 +557,6 @@
         <Step Id="post_route_phys_opt_design"/>
         <Step Id="write_bitstream"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>

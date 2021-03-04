@@ -195,333 +195,314 @@ begin
   -- AXI live
   proc_axi: process
 
+    constant QSPI_SPIDTR_ADDR                   : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"75310068";
     constant QSPI_SPIDRR_ADDR                   : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"7531006c";
     constant QSPI_SPISSR_ADDR                   : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"75310070";
     constant QSPI_IPISR_ADDR                    : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"75310020";
     constant QSPI_TX_OCCU_ADDR                  : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"75310074";
     constant QSPI_RX_OCCU_ADDR                  : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"75310078";
     
+    type Vec009I                                is array (0 to   8) of Integer;
+    variable preload                            : Vec009I;
+    
     type Vec280I                                is array (0 to 279) of Integer;
     variable fifo                               : Vec280I;
     variable fifo_len                           : Integer  range 0 to (2**8 - 1);
-    variable fifo_idx                           : Integer  range 0 to (2**8 - 1);
+    variable fifo_wr_idx                        : Integer  range 0 to (2**8 - 1);
+    variable fifo_rd_idx                        : Integer  range 0 to (2**8 - 1);
+    variable fifo_addr                          : Integer  range 0 to (2**8 - 1);
+
     variable fsm_sel_ctr                        : Integer  range 0 to (2**4 - 1);
+    variable fsm_flash_addr                     : STD_LOGIC_VECTOR ( 31 downto 0 );
     
     variable fsm_ar_valid_last                  : STD_LOGIC;
   
   begin
-    fifo_len := 0;
+    fifo_len        := 0;
+    fsm_flash_addr  := (others => '0');
     
     for ii in 0 to 279 loop
         fifo(ii) := 16#ff#;
     end loop;
     
     -- FIFO data
-    fifo_len    := 0;
     
-    fifo(  0)   := 16#00#;
-    fifo(  1)   := 16#00#;
-    fifo(  2)   := 16#00#;
-    fifo(  3)   := 16#00#;
-    fifo(  4)   := 16#00#;
-    fifo(  5)   := 16#ee#;
-    fifo(  6)   := 16#ee#;
-    fifo(  7)   := 16#ee#;
-    fifo(  8)   := 16#ee#;
-    fifo_len    := fifo_len +  9;
+    preload(0)  := 16#00#;
+    preload(1)  := 16#00#;
+    preload(2)  := 16#00#;
+    preload(3)  := 16#00#;
+    preload(4)  := 16#00#;
+    preload(5)  := 16#ee#;
+    preload(6)  := 16#ee#;
+    preload(7)  := 16#ee#;
+    preload(8)  := 16#ee#;
     
-    fifo(  9)   := 16#53#;              -- 'S'
-    fifo( 10)   := 16#30#;              -- S-Type nibble        0x0
-    fifo( 11)   := 16#31#;              -- Length hi-nibble     0x17
-    fifo( 12)   := 16#37#;              -- Length lo-nibble
-    fifo( 13)   := 16#30#;              -- Addr_1 hi-nibble     0x00 ..
-    fifo( 14)   := 16#30#;              -- Addr_1 lo-nibble
-    fifo( 15)   := 16#30#;              -- Addr_0 hi-nibble          .. 0x00
-    fifo( 16)   := 16#30#;              -- Addr_0 lo-nibble
-    fifo( 17)   := 16#37#;              -- Data   hi-nibble     0x72
-    fifo( 18)   := 16#32#;              -- Data   lo-nibble
-    fifo( 19)   := 16#37#;              -- Data   hi-nibble     0x74
-    fifo( 20)   := 16#34#;              -- Data   lo-nibble
-    fifo( 21)   := 16#36#;              -- Data   hi-nibble     0x6f
-    fifo( 22)   := 16#46#;              -- Data   lo-nibble
-    fifo( 23)   := 16#37#;              -- Data   hi-nibble     0x73
-    fifo( 24)   := 16#33#;              -- Data   lo-nibble
-    fifo_len    := fifo_len + 16;
+    
+    
+    fifo(  0)   := 16#0d#;              -- CR
+    
+--  S30D00010000008000B0000008B801
+    fifo(  1)   := 16#0a#;              -- LF
+    fifo(  2)   := 16#53#;              -- 'S'
+    fifo(  3)   := 16#33#;              -- S-Type nibble        0x3
+    fifo(  4)   := 16#30#;              -- Length hi-nibble     0x0d
+    fifo(  5)   := 16#44#;              -- Length lo-nibble
+    fifo(  6)   := 16#30#;              -- Addr_3 hi-nibble     0x00 ..
+    fifo(  7)   := 16#30#;              -- Addr_3 lo-nibble
+    fifo(  8)   := 16#30#;              -- Addr_2 hi-nibble          .. 0x01 ..
+    fifo(  9)   := 16#31#;              -- Addr_2 lo-nibble
+    fifo( 10)   := 16#30#;              -- Addr_1 hi-nibble                  .. 0x00 ..
+    fifo( 11)   := 16#30#;              -- Addr_1 lo-nibble
+    fifo( 12)   := 16#30#;              -- Addr_0 hi-nibble                          .. 0x00
+    fifo( 13)   := 16#30#;              -- Addr_0 lo-nibble
+    fifo( 14)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo( 15)   := 16#30#;              -- Data   lo-nibble
+    fifo( 16)   := 16#38#;              -- Data   hi-nibble     0x80
+    fifo( 17)   := 16#30#;              -- Data   lo-nibble
+    fifo( 18)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo( 19)   := 16#30#;              -- Data   lo-nibble
+    fifo( 20)   := 16#42#;              -- Data   hi-nibble     0xb0
+    fifo( 21)   := 16#30#;              -- Data   lo-nibble
+    fifo( 22)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo( 23)   := 16#30#;              -- Data   lo-nibble
+    fifo( 24)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo( 25)   := 16#30#;              -- Data   lo-nibble
+    fifo( 26)   := 16#30#;              -- Data   hi-nibble     0x08
+    fifo( 27)   := 16#38#;              -- Data   lo-nibble
+    fifo( 28)   := 16#42#;              -- Data   hi-nibble     0xb8
+    fifo( 29)   := 16#38#;              -- Data   lo-nibble
+    fifo( 30)   := 16#30#;              -- Checksum  hi-nibble  0x01
+    fifo( 31)   := 16#31#;              -- Checksum  lo-nibble
+    fifo( 32)   := 16#0d#;              -- CR
+    
+--  S30D00010008008000B0581508B88C
+    fifo( 33)   := 16#0a#;              -- LF
+    fifo( 34)   := 16#53#;              -- 'S'
+    fifo( 35)   := 16#33#;              -- S-Type nibble        0x3
+    fifo( 36)   := 16#30#;              -- Length hi-nibble     0x0d
+    fifo( 37)   := 16#44#;              -- Length lo-nibble
+    fifo( 38)   := 16#30#;              -- Addr_3 hi-nibble     0x00 ..
+    fifo( 39)   := 16#30#;              -- Addr_3 lo-nibble
+    fifo( 40)   := 16#30#;              -- Addr_2 hi-nibble          .. 0x01 ..
+    fifo( 41)   := 16#31#;              -- Addr_2 lo-nibble
+    fifo( 42)   := 16#30#;              -- Addr_1 hi-nibble                  .. 0x00 ..
+    fifo( 43)   := 16#30#;              -- Addr_1 lo-nibble
+    fifo( 44)   := 16#30#;              -- Addr_0 hi-nibble                          .. 0x08
+    fifo( 45)   := 16#38#;              -- Addr_0 lo-nibble
+    fifo( 46)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo( 47)   := 16#30#;              -- Data   lo-nibble
+    fifo( 48)   := 16#38#;              -- Data   hi-nibble     0x80
+    fifo( 49)   := 16#30#;              -- Data   lo-nibble
+    fifo( 50)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo( 51)   := 16#30#;              -- Data   lo-nibble
+    fifo( 52)   := 16#42#;              -- Data   hi-nibble     0xb0
+    fifo( 53)   := 16#30#;              -- Data   lo-nibble
+    fifo( 54)   := 16#35#;              -- Data   hi-nibble     0x58
+    fifo( 55)   := 16#38#;              -- Data   lo-nibble
+    fifo( 56)   := 16#31#;              -- Data   hi-nibble     0x15
+    fifo( 57)   := 16#35#;              -- Data   lo-nibble
+    fifo( 58)   := 16#30#;              -- Data   hi-nibble     0x08
+    fifo( 59)   := 16#38#;              -- Data   lo-nibble
+    fifo( 60)   := 16#42#;              -- Data   hi-nibble     0xb8
+    fifo( 61)   := 16#38#;              -- Data   lo-nibble
+    fifo( 62)   := 16#38#;              -- Checksum  hi-nibble  0x8c
+    fifo( 63)   := 16#43#;              -- Checksum  lo-nibble
+    fifo( 64)   := 16#0d#;              -- CR
 
-    fifo( 25)   := 16#00#;
-    fifo( 26)   := 16#00#;
-    fifo( 27)   := 16#00#;
-    fifo( 28)   := 16#00#;
-    fifo( 29)   := 16#00#;
-    fifo( 30)   := 16#ee#;
-    fifo( 31)   := 16#ee#;
-    fifo( 32)   := 16#ee#;
-    fifo( 33)   := 16#ee#;
-    fifo_len    := fifo_len +  9;
-    
-    fifo( 34)   := 16#32#;              -- Data   hi-nibble     0x2f
-    fifo( 35)   := 16#46#;              -- Data   lo-nibble
-    fifo( 36)   := 16#34#;              -- Data   hi-nibble     0x44
-    fifo( 37)   := 16#34#;              -- Data   lo-nibble
-    fifo( 38)   := 16#36#;              -- Data   hi-nibble     0x65
-    fifo( 39)   := 16#35#;              -- Data   lo-nibble
-    fifo( 40)   := 16#36#;              -- Data   hi-nibble     0x62
-    fifo( 41)   := 16#32#;              -- Data   lo-nibble
-    fifo( 42)   := 16#37#;              -- Data   hi-nibble     0x75
-    fifo( 43)   := 16#35#;              -- Data   lo-nibble
-    fifo( 44)   := 16#36#;              -- Data   hi-nibble     0x67
-    fifo( 45)   := 16#37#;              -- Data   lo-nibble
-    fifo( 46)   := 16#32#;              -- Data   hi-nibble     0x2f
-    fifo( 47)   := 16#46#;              -- Data   lo-nibble
-    fifo( 48)   := 16#37#;              -- Data   hi-nibble     0x72
-    fifo( 49)   := 16#32#;              -- Data   lo-nibble
-    fifo_len    := fifo_len + 16;
+--  S30D00010010008000B0800508B86C
+    fifo( 65)   := 16#0a#;              -- LF
+    fifo( 66)   := 16#53#;              -- 'S'
+    fifo( 67)   := 16#33#;              -- S-Type nibble        0x3
+    fifo( 68)   := 16#30#;              -- Length hi-nibble     0x0d
+    fifo( 69)   := 16#44#;              -- Length lo-nibble
+    fifo( 70)   := 16#30#;              -- Addr_3 hi-nibble     0x00 ..
+    fifo( 71)   := 16#30#;              -- Addr_3 lo-nibble
+    fifo( 72)   := 16#30#;              -- Addr_2 hi-nibble          .. 0x01 ..
+    fifo( 73)   := 16#31#;              -- Addr_2 lo-nibble
+    fifo( 74)   := 16#30#;              -- Addr_1 hi-nibble                  .. 0x00 ..
+    fifo( 75)   := 16#30#;              -- Addr_1 lo-nibble
+    fifo( 76)   := 16#31#;              -- Addr_0 hi-nibble                          .. 0x10
+    fifo( 77)   := 16#30#;              -- Addr_0 lo-nibble
+    fifo( 78)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo( 79)   := 16#30#;              -- Data   lo-nibble
+    fifo( 80)   := 16#38#;              -- Data   hi-nibble     0x80
+    fifo( 81)   := 16#30#;              -- Data   lo-nibble
+    fifo( 82)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo( 83)   := 16#30#;              -- Data   lo-nibble
+    fifo( 84)   := 16#42#;              -- Data   hi-nibble     0xb0
+    fifo( 85)   := 16#30#;              -- Data   lo-nibble
+    fifo( 86)   := 16#38#;              -- Data   hi-nibble     0x80
+    fifo( 87)   := 16#30#;              -- Data   lo-nibble
+    fifo( 88)   := 16#30#;              -- Data   hi-nibble     0x05
+    fifo( 89)   := 16#35#;              -- Data   lo-nibble
+    fifo( 90)   := 16#30#;              -- Data   hi-nibble     0x08
+    fifo( 91)   := 16#38#;              -- Data   lo-nibble
+    fifo( 92)   := 16#42#;              -- Data   hi-nibble     0xb8
+    fifo( 93)   := 16#38#;              -- Data   lo-nibble
+    fifo( 94)   := 16#36#;              -- Checksum  hi-nibble  0x6c
+    fifo( 95)   := 16#43#;              -- Checksum  lo-nibble
+    fifo( 96)   := 16#0d#;              -- CR
 
-    fifo( 50)   := 16#00#;
-    fifo( 51)   := 16#00#;
-    fifo( 52)   := 16#00#;
-    fifo( 53)   := 16#00#;
-    fifo( 54)   := 16#00#;
-    fifo( 55)   := 16#ee#;
-    fifo( 56)   := 16#ee#;
-    fifo( 57)   := 16#ee#;
-    fifo( 58)   := 16#ee#;
-    fifo_len    := fifo_len +  9;
-    
-    fifo( 59)   := 16#37#;              -- Data   hi-nibble     0x74
-    fifo( 60)   := 16#34#;              -- Data   lo-nibble
-    fifo( 61)   := 16#36#;              -- Data   hi-nibble     0x6f
-    fifo( 62)   := 16#46#;              -- Data   lo-nibble
-    fifo( 63)   := 16#37#;              -- Data   hi-nibble     0x73
-    fifo( 64)   := 16#33#;              -- Data   lo-nibble
-    fifo( 65)   := 16#32#;              -- Data   hi-nibble     0x2e
-    fifo( 66)   := 16#45#;              -- Data   lo-nibble
-    fifo( 67)   := 16#37#;              -- Data   hi-nibble     0x73
-    fifo( 68)   := 16#33#;              -- Data   lo-nibble
-    fifo( 69)   := 16#37#;              -- Data   hi-nibble     0x72
-    fifo( 70)   := 16#32#;              -- Data   lo-nibble
-    fifo( 71)   := 16#36#;              -- Data   hi-nibble     0x65
-    fifo( 72)   := 16#35#;              -- Data   lo-nibble
-    fifo( 73)   := 16#36#;              -- Data   hi-nibble     0x63
-    fifo( 74)   := 16#33#;              -- Data   lo-nibble
-    fifo_len    := fifo_len + 16;
-
-    fifo( 75)   := 16#00#;
-    fifo( 76)   := 16#00#;
-    fifo( 77)   := 16#00#;
-    fifo( 78)   := 16#00#;
-    fifo( 79)   := 16#00#;
-    fifo( 80)   := 16#ee#;
-    fifo( 81)   := 16#ee#;
-    fifo( 82)   := 16#ee#;
-    fifo( 83)   := 16#ee#;
-    fifo_len    := fifo_len +  9;
-    
-    fifo( 84)   := 16#33#;              -- Checksum  hi-nibble  0x38
-    fifo( 85)   := 16#38#;              -- Checksum  lo-nibble
-    fifo( 86)   := 16#0a#;              -- LF
-    fifo( 87)   := 16#53#;              -- 'S'
-    fifo( 88)   := 16#33#;              -- S-Type nibble        0x3
-    fifo( 89)   := 16#30#;              -- Length hi-nibble     0x0d
-    fifo( 90)   := 16#44#;              -- Length lo-nibble
-    fifo( 91)   := 16#30#;              -- Addr_3 hi-nibble     0x00 ..
-    fifo( 92)   := 16#30#;              -- Addr_3 lo-nibble
-    fifo( 93)   := 16#30#;              -- Addr_2 hi-nibble          .. 0x01 ..
-    fifo( 94)   := 16#31#;              -- Addr_2 lo-nibble
-    fifo( 95)   := 16#30#;              -- Addr_1 hi-nibble                  .. 0x00 ..
-    fifo( 96)   := 16#30#;              -- Addr_1 lo-nibble
-    fifo( 97)   := 16#30#;              -- Addr_0 hi-nibble                          .. 0x00
-    fifo( 98)   := 16#30#;              -- Addr_0 lo-nibble
-    fifo( 99)   := 16#30#;              -- Data   hi-nibble     0x00
-    fifo_len    := fifo_len + 16;
-
-    fifo(100)   := 16#00#;
-    fifo(101)   := 16#00#;
-    fifo(102)   := 16#00#;
-    fifo(103)   := 16#00#;
-    fifo(104)   := 16#00#;
-    fifo(105)   := 16#ee#;
-    fifo(106)   := 16#ee#;
-    fifo(107)   := 16#ee#;
-    fifo(108)   := 16#ee#;
-    fifo_len    := fifo_len +  9;
-    
-    fifo(109)   := 16#30#;              -- Data   lo-nibble
-    fifo(110)   := 16#38#;              -- Data   hi-nibble     0x80
+--  S30D00010020008000B0F00008B8F1
+    fifo( 97)   := 16#0a#;              -- LF
+    fifo( 98)   := 16#53#;              -- 'S'
+    fifo( 99)   := 16#33#;              -- S-Type nibble        0x3
+    fifo(100)   := 16#30#;              -- Length hi-nibble     0x0d
+    fifo(101)   := 16#44#;              -- Length lo-nibble
+    fifo(102)   := 16#30#;              -- Addr_3 hi-nibble     0x00 ..
+    fifo(103)   := 16#30#;              -- Addr_3 lo-nibble
+    fifo(104)   := 16#30#;              -- Addr_2 hi-nibble          .. 0x01 ..
+    fifo(105)   := 16#31#;              -- Addr_2 lo-nibble
+    fifo(106)   := 16#30#;              -- Addr_1 hi-nibble                  .. 0x00 ..
+    fifo(107)   := 16#30#;              -- Addr_1 lo-nibble
+    fifo(108)   := 16#32#;              -- Addr_0 hi-nibble                          .. 0x20
+    fifo(109)   := 16#30#;              -- Addr_0 lo-nibble
+    fifo(110)   := 16#30#;              -- Data   hi-nibble     0x00
     fifo(111)   := 16#30#;              -- Data   lo-nibble
-    fifo(112)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(112)   := 16#38#;              -- Data   hi-nibble     0x80
     fifo(113)   := 16#30#;              -- Data   lo-nibble
-    fifo(114)   := 16#42#;              -- Data   hi-nibble     0xb0
+    fifo(114)   := 16#30#;              -- Data   hi-nibble     0x00
     fifo(115)   := 16#30#;              -- Data   lo-nibble
-    fifo(116)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(116)   := 16#42#;              -- Data   hi-nibble     0xb0
     fifo(117)   := 16#30#;              -- Data   lo-nibble
-    fifo(118)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(118)   := 16#46#;              -- Data   hi-nibble     0xf0
     fifo(119)   := 16#30#;              -- Data   lo-nibble
-    fifo(120)   := 16#30#;              -- Data   hi-nibble     0x08
-    fifo(121)   := 16#38#;              -- Data   lo-nibble
-    fifo(122)   := 16#42#;              -- Data   hi-nibble     0xb8
+    fifo(120)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(121)   := 16#30#;              -- Data   lo-nibble
+    fifo(122)   := 16#30#;              -- Data   hi-nibble     0x08
     fifo(123)   := 16#38#;              -- Data   lo-nibble
-    fifo(124)   := 16#30#;              -- Checksum  hi-nibble  0x01
-    fifo_len    := fifo_len + 16;
-
-    fifo(125)   := 16#00#;
-    fifo(126)   := 16#00#;
-    fifo(127)   := 16#00#;
-    fifo(128)   := 16#00#;
-    fifo(129)   := 16#00#;
-    fifo(130)   := 16#ee#;
-    fifo(131)   := 16#ee#;
-    fifo(132)   := 16#ee#;
-    fifo(133)   := 16#ee#;
-    fifo_len    := fifo_len +  9;
+    fifo(124)   := 16#42#;              -- Data   hi-nibble     0xb8
+    fifo(125)   := 16#38#;              -- Data   lo-nibble
+    fifo(126)   := 16#46#;              -- Checksum  hi-nibble  0xf1
+    fifo(127)   := 16#31#;              -- Checksum  lo-nibble
+    fifo(128)   := 16#0d#;              -- CR
     
-    fifo(134)   := 16#31#;              -- Checksum  lo-nibble
-    fifo(135)   := 16#0a#;              -- LF
-    fifo(136)   := 16#53#;
-    fifo(137)   := 16#33#;
-    fifo(138)   := 16#31#;
-    fifo(139)   := 16#35#;
-    fifo(140)   := 16#38#;
-    fifo(141)   := 16#30#;
-    fifo(142)   := 16#30#;
-    fifo(143)   := 16#30#;
-    fifo(144)   := 16#43#;
-    fifo(145)   := 16#33#;
-    fifo(146)   := 16#45#;
-    fifo(147)   := 16#30#;
-    fifo(148)   := 16#39#;
-    fifo(149)   := 16#38#;
-    fifo_len    := fifo_len + 16;
-
-    fifo(150)   := 16#00#;
-    fifo(151)   := 16#00#;
-    fifo(152)   := 16#00#;
-    fifo(153)   := 16#00#;
-    fifo(154)   := 16#00#;
-    fifo(155)   := 16#ee#;
-    fifo(156)   := 16#ee#;
-    fifo(157)   := 16#ee#;
-    fifo(158)   := 16#ee#;
-    fifo_len    := fifo_len +  9;
+--  S31580000000008000B078C4A031008000B068C1403064
+    fifo(129)   := 16#0a#;              -- LF
+    fifo(130)   := 16#53#;              -- 'S'
+    fifo(131)   := 16#33#;              -- S-Type nibble        0x3
+    fifo(132)   := 16#31#;              -- Length hi-nibble     0x15
+    fifo(133)   := 16#35#;              -- Length lo-nibble
+    fifo(134)   := 16#38#;              -- Addr_3 hi-nibble     0x80 ..
+    fifo(135)   := 16#30#;              -- Addr_3 lo-nibble
+    fifo(136)   := 16#30#;              -- Addr_2 hi-nibble          .. 0x00 ..
+    fifo(137)   := 16#30#;              -- Addr_2 lo-nibble
+    fifo(138)   := 16#30#;              -- Addr_1 hi-nibble                  .. 0x00 ..
+    fifo(139)   := 16#30#;              -- Addr_1 lo-nibble
+    fifo(140)   := 16#30#;              -- Addr_0 hi-nibble                          .. 0x00
+    fifo(141)   := 16#30#;              -- Addr_0 lo-nibble
+    fifo(142)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(143)   := 16#30#;              -- Data   lo-nibble
+    fifo(144)   := 16#38#;              -- Data   hi-nibble     0x80
+    fifo(145)   := 16#30#;              -- Data   lo-nibble
+    fifo(146)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(147)   := 16#30#;              -- Data   lo-nibble
+    fifo(148)   := 16#42#;              -- Data   hi-nibble     0xb0
+    fifo(149)   := 16#30#;              -- Data   lo-nibble
+    fifo(150)   := 16#37#;              -- Data   hi-nibble     0x78
+    fifo(151)   := 16#38#;              -- Data   lo-nibble
+    fifo(152)   := 16#43#;              -- Data   hi-nibble     0xc4
+    fifo(153)   := 16#34#;              -- Data   lo-nibble
+    fifo(154)   := 16#41#;              -- Data   hi-nibble     0xa0
+    fifo(155)   := 16#30#;              -- Data   lo-nibble
+    fifo(156)   := 16#33#;              -- Data   hi-nibble     0x31
+    fifo(157)   := 16#31#;              -- Data   lo-nibble
+    fifo(158)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(159)   := 16#30#;              -- Data   lo-nibble
+    fifo(160)   := 16#38#;              -- Data   hi-nibble     0x80
+    fifo(161)   := 16#30#;              -- Data   lo-nibble
+    fifo(162)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(163)   := 16#30#;              -- Data   lo-nibble
+    fifo(164)   := 16#42#;              -- Data   hi-nibble     0xb0
+    fifo(165)   := 16#30#;              -- Data   lo-nibble
+    fifo(166)   := 16#36#;              -- Data   hi-nibble     0x68
+    fifo(167)   := 16#38#;              -- Data   lo-nibble
+    fifo(168)   := 16#43#;              -- Data   hi-nibble     0xc1
+    fifo(169)   := 16#31#;              -- Data   lo-nibble
+    fifo(170)   := 16#34#;              -- Data   hi-nibble     0x40
+    fifo(171)   := 16#30#;              -- Data   lo-nibble
+    fifo(172)   := 16#33#;              -- Data   hi-nibble     0x30
+    fifo(173)   := 16#30#;              -- Data   lo-nibble
+    fifo(174)   := 16#36#;              -- Checksum  hi-nibble  0x64
+    fifo(175)   := 16#34#;              -- Checksum  lo-nibble
+    fifo(176)   := 16#0d#;              -- CR
     
-    fifo(159)   := 16#35#;
-    fifo(160)   := 16#30#;
-    fifo(161)   := 16#30#;
-    fifo(162)   := 16#30#;
-    fifo(163)   := 16#38#;
-    fifo(164)   := 16#30#;
-    fifo(165)   := 16#30#;
-    fifo(166)   := 16#30#;
-    fifo(167)   := 16#30#;
-    fifo(168)   := 16#30#;
-    fifo(169)   := 16#30#;
-    fifo(170)   := 16#30#;
-    fifo(171)   := 16#30#;
-    fifo(172)   := 16#30#;
-    fifo(173)   := 16#39#;
-    fifo(174)   := 16#38#;
-    fifo_len    := fifo_len + 16;
-
-    fifo(175)   := 16#00#;
-    fifo(176)   := 16#00#;
-    fifo(177)   := 16#00#;
-    fifo(178)   := 16#00#;
-    fifo(179)   := 16#00#;
-    fifo(180)   := 16#ee#;
-    fifo(181)   := 16#ee#;
-    fifo(182)   := 16#ee#;
-    fifo(183)   := 16#ee#;
-    fifo_len    := fifo_len +  9;
+--  S31580000010018000B0E0E02030000000B01800F4B9A4
+    fifo(177)   := 16#0a#;              -- LF
+    fifo(178)   := 16#53#;              -- 'S'
+    fifo(179)   := 16#33#;              -- S-Type nibble        0x3
+    fifo(180)   := 16#31#;              -- Length hi-nibble     0x15
+    fifo(181)   := 16#35#;              -- Length lo-nibble
+    fifo(182)   := 16#38#;              -- Addr_3 hi-nibble     0x80 ..
+    fifo(183)   := 16#30#;              -- Addr_3 lo-nibble
+    fifo(184)   := 16#30#;              -- Addr_2 hi-nibble          .. 0x00 ..
+    fifo(185)   := 16#30#;              -- Addr_2 lo-nibble
+    fifo(186)   := 16#30#;              -- Addr_1 hi-nibble                  .. 0x00 ..
+    fifo(187)   := 16#30#;              -- Addr_1 lo-nibble
+    fifo(188)   := 16#31#;              -- Addr_0 hi-nibble                          .. 0x10
+    fifo(189)   := 16#30#;              -- Addr_0 lo-nibble
+    fifo(190)   := 16#30#;              -- Data   hi-nibble     0x01
+    fifo(191)   := 16#31#;              -- Data   lo-nibble
+    fifo(192)   := 16#38#;              -- Data   hi-nibble     0x80
+    fifo(193)   := 16#30#;              -- Data   lo-nibble
+    fifo(194)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(195)   := 16#30#;              -- Data   lo-nibble
+    fifo(196)   := 16#42#;              -- Data   hi-nibble     0xb0
+    fifo(197)   := 16#30#;              -- Data   lo-nibble
+    fifo(198)   := 16#45#;              -- Data   hi-nibble     0xe0
+    fifo(199)   := 16#30#;              -- Data   lo-nibble
+    fifo(200)   := 16#45#;              -- Data   hi-nibble     0xe0
+    fifo(201)   := 16#30#;              -- Data   lo-nibble
+    fifo(202)   := 16#32#;              -- Data   hi-nibble     0x20
+    fifo(203)   := 16#30#;              -- Data   lo-nibble
+    fifo(204)   := 16#33#;              -- Data   hi-nibble     0x30
+    fifo(205)   := 16#30#;              -- Data   lo-nibble
+    fifo(206)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(207)   := 16#30#;              -- Data   lo-nibble
+    fifo(208)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(209)   := 16#30#;              -- Data   lo-nibble
+    fifo(210)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(211)   := 16#30#;              -- Data   lo-nibble
+    fifo(212)   := 16#42#;              -- Data   hi-nibble     0xb0
+    fifo(213)   := 16#30#;              -- Data   lo-nibble
+    fifo(214)   := 16#31#;              -- Data   hi-nibble     0x18
+    fifo(215)   := 16#38#;              -- Data   lo-nibble
+    fifo(216)   := 16#30#;              -- Data   hi-nibble     0x00
+    fifo(217)   := 16#30#;              -- Data   lo-nibble
+    fifo(218)   := 16#46#;              -- Data   hi-nibble     0xf4
+    fifo(219)   := 16#34#;              -- Data   lo-nibble
+    fifo(220)   := 16#42#;              -- Data   hi-nibble     0xb9
+    fifo(221)   := 16#39#;              -- Data   lo-nibble
+    fifo(222)   := 16#41#;              -- Checksum  hi-nibble  0xa4
+    fifo(223)   := 16#34#;              -- Checksum  lo-nibble
+    fifo(224)   := 16#0d#;              -- CR
     
-    fifo(184)   := 16#35#;
-    fifo(185)   := 16#30#;
-    fifo(186)   := 16#30#;
-    fifo(187)   := 16#30#;
-    fifo(188)   := 16#38#; 
-    fifo(189)   := 16#30#;
-    fifo(190)   := 16#30#;
-    fifo(191)   := 16#30#;
-    fifo(192)   := 16#30#;
-    fifo(193)   := 16#30#;
-    fifo(194)   := 16#30#;
-    fifo(195)   := 16#30#;
-    fifo(196)   := 16#30#;
-    fifo(197)   := 16#30#;
-    fifo(198)   := 16#46#;
-    fifo(199)   := 16#37#;
-    fifo_len    := fifo_len + 16;
-
-    fifo(200)   := 16#00#;
-    fifo(201)   := 16#00#;
-    fifo(202)   := 16#00#;
-    fifo(203)   := 16#00#;
-    fifo(204)   := 16#00#;
-    fifo(205)   := 16#ee#;
-    fifo(206)   := 16#ee#;
-    fifo(207)   := 16#ee#;
-    fifo(208)   := 16#ee#;
-    fifo_len    := fifo_len +  9;
+--  ...
     
-    fifo(209)   := 16#0a#;
-    fifo(210)   := 16#53#;
-    fifo(211)   := 16#37#;
-    fifo(212)   := 16#30#;
-    fifo(213)   := 16#35#;
-    fifo(214)   := 16#30#;
-    fifo(215)   := 16#30#;
-    fifo(216)   := 16#30#;
-    fifo(217)   := 16#31#;
-    fifo(218)   := 16#30#;
-    fifo(219)   := 16#30#;
-    fifo(220)   := 16#30#;
-    fifo(221)   := 16#30#;
-    fifo(222)   := 16#46#;
-    fifo(223)   := 16#39#;
-    fifo(224)   := 16#0a#;
-    fifo_len    := fifo_len + 16;
-
-    fifo(225)   := 16#00#;
-    fifo(226)   := 16#00#;
-    fifo(227)   := 16#00#;
-    fifo(228)   := 16#00#;
-    fifo(229)   := 16#00#;
-    fifo(230)   := 16#ee#;
-    fifo(231)   := 16#ee#;
-    fifo(232)   := 16#ee#;
-    fifo(233)   := 16#ee#;
-    fifo_len    := fifo_len +  9;
+--  S70500010000F9
+    fifo(225)   := 16#0a#;              -- LF
+    fifo(226)   := 16#53#;              -- 'S'
+    fifo(227)   := 16#37#;              -- S-Type nibble        0x7
+    fifo(228)   := 16#30#;              -- Length hi-nibble     0x05
+    fifo(229)   := 16#35#;              -- Length lo-nibble
+    fifo(230)   := 16#30#;              -- Addr_3 hi-nibble     0x00 ..
+    fifo(231)   := 16#30#;              -- Addr_3 lo-nibble
+    fifo(232)   := 16#30#;              -- Addr_2 hi-nibble          .. 0x01 ..
+    fifo(233)   := 16#31#;              -- Addr_2 lo-nibble
+    fifo(234)   := 16#30#;              -- Addr_1 hi-nibble                  .. 0x00 ..
+    fifo(235)   := 16#30#;              -- Addr_1 lo-nibble
+    fifo(236)   := 16#30#;              -- Addr_0 hi-nibble                          .. 0x00
+    fifo(237)   := 16#30#;              -- Addr_0 lo-nibble
+    fifo(238)   := 16#46#;              -- Checksum  hi-nibble  0xf9
+    fifo(239)   := 16#39#;              -- Checksum  lo-nibble
+    fifo(240)   := 16#0d#;              -- CR
     
-    fifo(234)   := 16#ff#;
-    fifo(235)   := 16#ff#;
-    fifo(236)   := 16#ff#;
-    fifo(237)   := 16#ff#;
-    fifo(238)   := 16#ff#;
-    fifo(239)   := 16#ff#;
-    fifo(240)   := 16#ff#;
-    fifo(241)   := 16#ff#;
-    fifo(242)   := 16#ff#;
-    fifo(243)   := 16#ff#;
-    fifo(244)   := 16#ff#;
-    fifo(245)   := 16#ff#;
-    fifo(246)   := 16#ff#;
-    fifo(247)   := 16#ff#;
-    fifo(248)   := 16#ff#;
-    fifo(249)   := 16#ff#;
-    fifo_len    := fifo_len + 16;
-
-    fifo(250)   := 16#00#;
-    fifo(251)   := 16#00#;
-    fifo(252)   := 16#00#;
-    fifo(253)   := 16#00#;
-    fifo(254)   := 16#00#;
-    fifo(255)   := 16#ee#;
-    fifo(256)   := 16#ee#;
-    fifo(257)   := 16#ee#;
-    fifo(258)   := 16#ee#;
-    fifo_len    := fifo_len +  9;
     
-    fifo_idx    := 0;
-
+    fifo_len    := 241;
+    fifo_wr_idx := 0;
+    fifo_rd_idx := 0;
+    fifo_addr   := 0;
+    
     fsm_sel_ctr         := 0;
     fsm_ar_valid_last   := '0';
     
@@ -565,7 +546,11 @@ begin
         if ((tb_m00_axi_araddr = QSPI_SPIDRR_ADDR)  and  (tb_m00_axi_arvalid = '1')) then
             -- FIFO get
             tb_m00_axi_arready  <= '1';
-            tb_m00_axi_rdata    <= std_logic_vector(to_unsigned(fifo(fifo_idx), tb_m00_axi_rdata'length));
+            if (fifo_rd_idx < 9) then
+                tb_m00_axi_rdata    <= std_logic_vector(to_unsigned(preload(fifo_rd_idx), tb_m00_axi_rdata'length));
+            else
+                tb_m00_axi_rdata    <= std_logic_vector(to_unsigned(fifo(to_integer(unsigned(fsm_flash_addr))), tb_m00_axi_rdata'length));
+            end if;
             tb_m00_axi_rvalid   <= '1';
             fsm_ar_valid_last   := '1';
             
@@ -603,9 +588,31 @@ begin
             
             if (tb_m00_axi_wdata(0) = '0') then
                 fsm_sel_ctr := 15;
+                fifo_wr_idx := 0;
             elsif (tb_m00_axi_wdata(0) = '1') then
                 fsm_sel_ctr := 0;
             end if;
+            
+        -- WRITE Set select signal for starting transfer
+        elsif ((tb_m00_axi_awaddr = QSPI_SPIDTR_ADDR)  and  (tb_m00_axi_awvalid = '1')  and  (tb_m00_axi_wvalid = '1')  and  (tb_m00_axi_wready = '1')) then
+            tb_m00_axi_awready  <= '1';
+            tb_m00_axi_wready   <= '1';
+            tb_m00_axi_bvalid   <= '1';
+            
+            if (fifo_wr_idx < 5) then
+                -- MSB first
+                fsm_flash_addr  := fsm_flash_addr(23 downto 0) & tb_m00_axi_wdata(7 downto 0);
+                
+                if (fifo_wr_idx = 4) then
+                    if ((8388608 <= to_integer(unsigned(fsm_flash_addr))) and (to_integer(unsigned(fsm_flash_addr)) < (8388608 + 256))) then    -- 0x00800000 .. 0x008000ff
+                        -- Valid data
+                        fsm_flash_addr  := std_logic_vector(to_unsigned(to_integer(unsigned(fsm_flash_addr)) - 8388608, fsm_flash_addr'length));  -- 0x00800000
+                        fifo_rd_idx     := 0;
+                    end if;
+                end if;
+            end if;
+            
+            fifo_wr_idx := fifo_wr_idx + 1;
             
         -- WRITE Any other write access
         elsif ((tb_m00_axi_awvalid = '1')  and  (tb_m00_axi_wvalid = '1')) then
@@ -618,8 +625,15 @@ begin
         -- Helper for READ  FIFO pull
         if ((tb_m00_axi_araddr = QSPI_SPIDRR_ADDR)  and  (tb_m00_axi_arvalid = '0')) then
             if (fsm_ar_valid_last = '1') then
-                fifo_idx            := (fifo_idx + 1) mod 256;
                 fsm_ar_valid_last   := '0';
+                
+                if (fifo_rd_idx < 9) then
+                    -- Preload increment
+                    fifo_rd_idx         := fifo_rd_idx + 1;
+                else
+                    -- Addr increment
+                    fsm_flash_addr      := std_logic_vector(to_unsigned(to_integer(unsigned(fsm_flash_addr)) + 1, fsm_flash_addr'length));
+                end if;
             end if;
         end if;
         

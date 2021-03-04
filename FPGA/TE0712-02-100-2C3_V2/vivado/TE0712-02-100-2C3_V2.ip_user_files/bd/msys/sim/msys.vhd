@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Thu Dec  3 23:25:40 2020
+--Date        : Sat Feb 27 23:01:21 2021
 --Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
 --Command     : generate_target msys.bd
 --Design      : msys
@@ -16016,7 +16016,7 @@ architecture STRUCTURE of msys is
     probe_in52 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe_in53 : in STD_LOGIC_VECTOR ( 18 downto 0 );
     probe_in54 : in STD_LOGIC_VECTOR ( 18 downto 0 );
-    probe_in55 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe_in55 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_in56 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_in57 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe_in58 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -16024,7 +16024,7 @@ architecture STRUCTURE of msys is
     probe_in60 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe_in61 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe_in62 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe_in63 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe_in63 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe_out0 : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component msys_vio_0_0;
@@ -16397,7 +16397,10 @@ architecture STRUCTURE of msys is
     SREC_error : out STD_LOGIC;
     SREC_resetn : out STD_LOGIC;
     SREC_done : out STD_LOGIC;
-    DBG_out : out STD_LOGIC_VECTOR ( 7 downto 0 )
+    DBG_FSM_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    DBG_AXI_Addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    DBG_Sig_NxtLoad_out : out STD_LOGIC;
+    DBG_Sig_NxtWrite_out : out STD_LOGIC
   );
   end component msys_SREC_boot_loader_FSM_1_0;
   signal ARESETN_1 : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -16537,7 +16540,10 @@ architecture STRUCTURE of msys is
   signal SCOPE_SCOPE_FSM_FIFO_wr_rst_busy : STD_LOGIC;
   signal SCOPE_SCOPE_FSM_GPIO0_Out : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal SCOPE_SCOPE_FSM_TrigSrc : STD_LOGIC_VECTOR ( 47 downto 0 );
-  signal SREC_boot_loader_FSM_0_DBG_out : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal SREC_boot_loader_FSM_0_DBG_AXI_Addr_0 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal SREC_boot_loader_FSM_0_DBG_FSM_out : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal SREC_boot_loader_FSM_0_DBG_Sig_NxtLoad_out_0 : STD_LOGIC;
+  signal SREC_boot_loader_FSM_0_DBG_Sig_NxtWrite_out_0 : STD_LOGIC;
   signal SREC_boot_loader_FSM_1_SREC_done : STD_LOGIC;
   signal SREC_boot_loader_FSM_1_SREC_error : STD_LOGIC;
   signal SREC_boot_loader_FSM_1_SREC_resetn : STD_LOGIC;
@@ -16875,7 +16881,6 @@ architecture STRUCTURE of msys is
   signal decoder_rx09_ch04_center_pos_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal decoder_rx09_ch04_noise_1 : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal decoder_rx09_ch04_strength_1 : STD_LOGIC_VECTOR ( 18 downto 0 );
-  signal decoder_rx09_ch05_center_pos_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal decoder_rx09_ch05_noise_1 : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal decoder_rx09_ch05_strength_1 : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal decoder_rx09_chXX_active_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -17542,8 +17547,8 @@ begin
   UART0_rst_n(0) <= UART0_UART0_rst_n(0);
   UART0_txd <= UART0_UART0_TxD;
   USER_dbg_00_signal(0) <= CFG_Si5338_qspi_0_ip2intc_irpt(0);
-  USER_dbg_01_signal(0) <= xlconstant_val0_len1_dout(0);
-  USER_dbg_02_signal(0) <= xlconstant_val0_len1_dout(0);
+  USER_dbg_01_signal(0) <= SREC_boot_loader_FSM_0_DBG_Sig_NxtLoad_out_0;
+  USER_dbg_02_signal(0) <= SREC_boot_loader_FSM_0_DBG_Sig_NxtWrite_out_0;
   USER_dbg_03_signal(0) <= xlconstant_val0_len1_dout(0);
   USER_dbg_04_signal(0) <= xlconstant_val0_len1_dout(0);
   USER_dbg_05_signal(0) <= xlconstant_val0_len1_dout(0);
@@ -17579,7 +17584,6 @@ begin
   decoder_rx09_ch04_center_pos_1(7 downto 0) <= decoder_rx09_ch04_center_pos(7 downto 0);
   decoder_rx09_ch04_noise_1(18 downto 0) <= decoder_rx09_ch04_noise(18 downto 0);
   decoder_rx09_ch04_strength_1(18 downto 0) <= decoder_rx09_ch04_strength(18 downto 0);
-  decoder_rx09_ch05_center_pos_1(7 downto 0) <= decoder_rx09_ch05_center_pos(7 downto 0);
   decoder_rx09_ch05_noise_1(18 downto 0) <= decoder_rx09_ch05_noise(18 downto 0);
   decoder_rx09_ch05_strength_1(18 downto 0) <= decoder_rx09_ch05_strength(18 downto 0);
   decoder_rx09_chXX_active_1(7 downto 0) <= decoder_rx09_chXX_active(7 downto 0);
@@ -18158,7 +18162,10 @@ SCOPE: entity work.SCOPE_imp_FH2SDI
     );
 SREC_boot_loader_FSM_0: component msys_SREC_boot_loader_FSM_1_0
      port map (
-      DBG_out(7 downto 0) => SREC_boot_loader_FSM_0_DBG_out(7 downto 0),
+      DBG_AXI_Addr(31 downto 0) => SREC_boot_loader_FSM_0_DBG_AXI_Addr_0(31 downto 0),
+      DBG_FSM_out(15 downto 0) => SREC_boot_loader_FSM_0_DBG_FSM_out(15 downto 0),
+      DBG_Sig_NxtLoad_out => SREC_boot_loader_FSM_0_DBG_Sig_NxtLoad_out_0,
+      DBG_Sig_NxtWrite_out => SREC_boot_loader_FSM_0_DBG_Sig_NxtWrite_out_0,
       SREC_done => SREC_boot_loader_FSM_1_SREC_done,
       SREC_enable => vio_0_probe_out0(0),
       SREC_error => SREC_boot_loader_FSM_1_SREC_error,
@@ -19370,7 +19377,7 @@ vio_0: component msys_vio_0_0
       probe_in52(7 downto 0) => decoder_rx09_ch04_center_pos_1(7 downto 0),
       probe_in53(18 downto 0) => decoder_rx09_ch05_noise_1(18 downto 0),
       probe_in54(18 downto 0) => decoder_rx09_ch05_strength_1(18 downto 0),
-      probe_in55(7 downto 0) => decoder_rx09_ch05_center_pos_1(7 downto 0),
+      probe_in55(31 downto 0) => SREC_boot_loader_FSM_0_DBG_AXI_Addr_0(31 downto 0),
       probe_in56(31 downto 0) => CFG_Si5338_gpio_io_o(31 downto 0),
       probe_in57(31 downto 0) => CFG_Si5338_gpio2_io_o(31 downto 0),
       probe_in58(0) => SREC_boot_loader_FSM_1_SREC_done,
@@ -19379,7 +19386,7 @@ vio_0: component msys_vio_0_0
       probe_in60(0) => LVDS_mrk09ok_1,
       probe_in61(0) => LVDS_mrk24ok_1,
       probe_in62(31 downto 0) => TRX_LVDS_tx09_fifo_din_1(31 downto 0),
-      probe_in63(7 downto 0) => SREC_boot_loader_FSM_0_DBG_out(7 downto 0),
+      probe_in63(15 downto 0) => SREC_boot_loader_FSM_0_DBG_FSM_out(15 downto 0),
       probe_in7(31 downto 0) => CFG_mon_GPIO1_I(31 downto 0),
       probe_in8(31 downto 0) => labtools_fmeter_0_F4_TRX_LVDS_divclk(31 downto 0),
       probe_in9(31 downto 0) => labtools_fmeter_0_F5_ETH0_s_mii_tx_clk(31 downto 0),
