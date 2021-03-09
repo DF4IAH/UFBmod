@@ -78,17 +78,16 @@
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_microblaze_0_axi_intc_0/sim/msys_microblaze_0_axi_intc_0.vhd" \
 -endlib
--makelib ies_lib/lmb_bram_if_cntlr_v4_0_18 \
-  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/246e/hdl/lmb_bram_if_cntlr_v4_0_vh_rfs.vhd" \
--endlib
--makelib ies_lib/xil_defaultlib \
-  "../../../bd/msys/ip/msys_dlmb_bram_if_cntlr_0/sim/msys_dlmb_bram_if_cntlr_0.vhd" \
--endlib
 -makelib ies_lib/lmb_v10_v3_0_11 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/c2ed/hdl/lmb_v10_v3_0_vh_rfs.vhd" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_dlmb_v10_0/sim/msys_dlmb_v10_0.vhd" \
+-endlib
+-makelib ies_lib/lmb_bram_if_cntlr_v4_0_18 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/246e/hdl/lmb_bram_if_cntlr_v4_0_vh_rfs.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_ilmb_bram_if_cntlr_0/sim/msys_ilmb_bram_if_cntlr_0.vhd" \
   "../../../bd/msys/ip/msys_ilmb_v10_0/sim/msys_ilmb_v10_0.vhd" \
 -endlib
@@ -518,11 +517,15 @@
   "../../../bd/msys/ip/msys_rst_CFG_Si5338_0_65M_0/sim/msys_rst_CFG_Si5338_0_65M_0.vhd" \
   "../../../bd/msys/ip/msys_CFG_Si5338_axi_gpio_0_0/sim/msys_CFG_Si5338_axi_gpio_0_0.vhd" \
 -endlib
--makelib ies_lib/axi_clock_converter_v2_1_20 \
-  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/7589/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
+-makelib ies_lib/axi_bram_ctrl_v4_1_3 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/db86/hdl/axi_bram_ctrl_v4_1_rfs.vhd" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
-  "../../../bd/msys/ip/msys_auto_cc_0/sim/msys_auto_cc_0.v" \
+  "../../../bd/msys/ip/msys_axi_bram_ctrl_0_0/sim/msys_axi_bram_ctrl_0_0.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_xbar_6/sim/msys_xbar_6.v" \
+  "../../../bd/msys/ip/msys_xbar_7/sim/msys_xbar_7.v" \
 -endlib
 -makelib ies_lib/axi_protocol_converter_v2_1_21 \
   "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/8dfa/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
@@ -530,6 +533,13 @@
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/ip/msys_auto_pc_0/sim/msys_auto_pc_0.v" \
   "../../../bd/msys/ip/msys_auto_pc_1/sim/msys_auto_pc_1.v" \
+  "../../../bd/msys/ip/msys_auto_pc_2/sim/msys_auto_pc_2.v" \
+-endlib
+-makelib ies_lib/axi_clock_converter_v2_1_20 \
+  "../../../../TE0712-02-100-2C3_V2.srcs/sources_1/bd/msys/ipshared/7589/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/msys/ip/msys_auto_cc_0/sim/msys_auto_cc_0.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/msys/sim/msys.vhd" \

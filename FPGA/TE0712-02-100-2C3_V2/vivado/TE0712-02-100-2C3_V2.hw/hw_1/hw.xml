@@ -23,49 +23,54 @@
     <Object name="xc7a100t_0" gui_info="">
       <Properties Property="FULL_PROBES.FILE" value="$_project_name_.runs/impl_1/top.ltx"/>
       <Properties Property="PROBES.FILE" value="$_project_name_.runs/impl_1/top.ltx"/>
-      <Properties Property="PROGRAM.HW_BITSTREAM" value="$_project_name_.runs/impl_1/top.bit"/>
+      <Properties Property="PROGRAM.HW_BITSTREAM" value=""/>
       <Properties Property="PROGRAM.HW_CFGMEM_PART" value="s25fl256sxxxxxx0-spi-x1_x2_x4"/>
       <Properties Property="SLR.COUNT" value="1"/>
     </Object>
   </ObjectList>
   <ObjectList object_type="hw_probe" gui_info="">
-    <Object name="msys_bd/msys_i/BOARD_ROTENC_PUSH_1" gui_info="hw_vios/hw_vio_1=32"/>
+    <Object name="msys_bd/msys_i/BOARD_ROTENC_PUSH_1" gui_info="hw_vios/hw_vio_1=37"/>
     <Object name="msys_bd/msys_i/CFG_SC0712_0_reset_0" gui_info="hw_vios/hw_vio_1=2"/>
     <Object name="msys_bd/msys_i/CFG_SC0712_0_reset_out" gui_info="hw_vios/hw_vio_1=2"/>
     <Object name="msys_bd/msys_i/CFG_Si5338_gpio2_io_o[31:0]" gui_info="hw_vios/hw_vio_1=4"/>
     <Object name="msys_bd/msys_i/CFG_Si5338_gpio_io_o[31:0]" gui_info="hw_vios/hw_vio_1=3"/>
     <Object name="msys_bd/msys_i/CFG_mon_GPIO1_I[31:0]" gui_info="hw_vios/hw_vio_1=1"/>
     <Object name="msys_bd/msys_i/CFG_mon_GPIO1_O[31:0]" gui_info="hw_vios/hw_vio_1=0"/>
-    <Object name="msys_bd/msys_i/CLK1B_CW_0_psdone" gui_info="hw_vios/hw_vio_1=30"/>
+    <Object name="msys_bd/msys_i/CLK1B_CW_0_psdone" gui_info="hw_vios/hw_vio_1=35"/>
     <Object name="msys_bd/msys_i/ETH0_LEDstatus_0[3:0]" gui_info="hw_vios/hw_vio_1=20"/>
-    <Object name="msys_bd/msys_i/ETH0_LEDstatus_vio_0[3:0]" gui_info="hw_vios/hw_vio_1=34"/>
+    <Object name="msys_bd/msys_i/ETH0_LEDstatus_vio_0[3:0]" gui_info="hw_vios/hw_vio_1=39"/>
     <Object name="msys_bd/msys_i/ETH0_MIIstatus_0[4:0]" gui_info="hw_vios/hw_vio_1=21"/>
-    <Object name="msys_bd/msys_i/ETH0_MIIstatus_vio_0[4:0]" gui_info="hw_vios/hw_vio_1=35"/>
+    <Object name="msys_bd/msys_i/ETH0_MIIstatus_vio_0[4:0]" gui_info="hw_vios/hw_vio_1=40"/>
     <Object name="msys_bd/msys_i/ETH0_m_mii_txd_0[3:0]" gui_info="hw_vios/hw_vio_1=23"/>
-    <Object name="msys_bd/msys_i/ETH0_m_mii_txd_vio_0[3:0]" gui_info="hw_vios/hw_vio_1=36"/>
-    <Object name="msys_bd/msys_i/ETH0_mii_rxd_vio_0[3:0]" gui_info="hw_vios/hw_vio_1=37"/>
+    <Object name="msys_bd/msys_i/ETH0_m_mii_txd_vio_0[3:0]" gui_info="hw_vios/hw_vio_1=41"/>
+    <Object name="msys_bd/msys_i/ETH0_mii_rxd_vio_0[3:0]" gui_info="hw_vios/hw_vio_1=42"/>
     <Object name="msys_bd/msys_i/ETH0_s_mii_rxd_0[3:0]" gui_info="hw_vios/hw_vio_1=22"/>
-    <Object name="msys_bd/msys_i/EUI48_data_1[47:0]" gui_info="hw_vios/hw_vio_1=31"/>
+    <Object name="msys_bd/msys_i/EUI48_data_1[47:0]" gui_info="hw_vios/hw_vio_1=36"/>
     <Object name="msys_bd/msys_i/LVDS_mrk09ok_1" gui_info="hw_vios/hw_vio_1=48"/>
     <Object name="msys_bd/msys_i/LVDS_mrk24ok_1" gui_info="hw_vios/hw_vio_1=50"/>
-    <Object name="msys_bd/msys_i/ROTENC_decoder_Q[31:0]" gui_info="hw_vios/hw_vio_1=33"/>
+    <Object name="msys_bd/msys_i/ROTENC_decoder_Q[31:0]" gui_info="hw_vios/hw_vio_1=38"/>
     <Object name="msys_bd/msys_i/SC0712_0_reset_out" gui_info="hw_vios/hw_vio_1=2"/>
-    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_AXI_Addr_0[31:0]" gui_info="hw_vios/hw_vio_1=11"/>
+    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_AXI_Addr_0[31:0]" gui_info="hw_vios/hw_vio_1=12"/>
     <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_AXI_DtaPad[31:0]" gui_info="hw_vios/hw_vio_1=7"/>
     <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_FSM_out[15:0]" gui_info="hw_vios/hw_vio_1=8"/>
     <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_FSM_out_0[7:0]" gui_info="hw_vios/hw_vio_1=64"/>
-    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_Adr[31:0]" gui_info="hw_vios/hw_vio_1=10"/>
-    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_00[31:0]" gui_info="hw_vios/hw_vio_1=19"/>
-    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_01[31:0]" gui_info="hw_vios/hw_vio_1=18"/>
-    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_02[31:0]" gui_info="hw_vios/hw_vio_1=17"/>
-    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_03[31:0]" gui_info="hw_vios/hw_vio_1=16"/>
-    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_04[31:0]" gui_info="hw_vios/hw_vio_1=15"/>
-    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_05[31:0]" gui_info="hw_vios/hw_vio_1=14"/>
-    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_06[31:0]" gui_info="hw_vios/hw_vio_1=13"/>
-    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_07[31:0]" gui_info="hw_vios/hw_vio_1=12"/>
+    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_Adr[31:0]" gui_info="hw_vios/hw_vio_1=11"/>
+    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_00[31:0]" gui_info="hw_vios/hw_vio_1=24"/>
+    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_01[31:0]" gui_info="hw_vios/hw_vio_1=23"/>
+    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_02[31:0]" gui_info="hw_vios/hw_vio_1=22"/>
+    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_03[31:0]" gui_info="hw_vios/hw_vio_1=21"/>
+    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_04[31:0]" gui_info="hw_vios/hw_vio_1=20"/>
+    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_05[31:0]" gui_info="hw_vios/hw_vio_1=19"/>
+    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_06[31:0]" gui_info="hw_vios/hw_vio_1=18"/>
+    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_07[31:0]" gui_info="hw_vios/hw_vio_1=17"/>
+    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[31:0]" gui_info="hw_vios/hw_vio_1=16"/>
+    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[31:0]" gui_info="hw_vios/hw_vio_1=15"/>
+    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[31:0]" gui_info="hw_vios/hw_vio_1=14"/>
+    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[31:0]" gui_info="hw_vios/hw_vio_1=13"/>
     <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_out[7:0]" gui_info="hw_vios/hw_vio_1=3"/>
     <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_SREC_done" gui_info="hw_vios/hw_vio_1=5"/>
     <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_SREC_error" gui_info="hw_vios/hw_vio_1=4"/>
+    <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_0_fsm_axi_last_b[1:0]" gui_info="hw_vios/hw_vio_1=9"/>
     <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_1_SREC_done" gui_info="hw_vios/hw_vio_1=6"/>
     <Object name="msys_bd/msys_i/SREC_boot_loader_FSM_1_SREC_error" gui_info="hw_vios/hw_vio_1=5"/>
     <Object name="msys_bd/msys_i/Status_LVDS_rx09_synced_1" gui_info="hw_vios/hw_vio_1=49"/>
@@ -73,7 +78,7 @@
     <Object name="msys_bd/msys_i/TRX_LVDS_tx09_fifo_din_1[31:0]" gui_info="hw_vios/hw_vio_1=64"/>
     <Object name="msys_bd/msys_i/TRX_TX_RF09_PULLDATA_FIFO_empty_1" gui_info="hw_vios/hw_vio_1=56"/>
     <Object name="msys_bd/msys_i/TRX_data_count_1[11:0]" gui_info="hw_vios/hw_vio_1=55"/>
-    <Object name="msys_bd/msys_i/TRX_decoder_rx09_ch00_squelch_lvl_1[15:0]" gui_info="hw_vios/hw_vio_1=40"/>
+    <Object name="msys_bd/msys_i/TRX_decoder_rx09_ch00_squelch_lvl_1[15:0]" gui_info="hw_vios/hw_vio_1=45"/>
     <Object name="msys_bd/msys_i/TRX_rd_data_count_CD100_1[3:0]" gui_info="hw_vios/hw_vio_1=54"/>
     <Object name="msys_bd/msys_i/TRX_rd_data_count_CD100_1[8:0]" gui_info="hw_vios/hw_vio_1=53"/>
     <Object name="msys_bd/msys_i/TRX_rx09_32bits_CD100_1[31:0]" gui_info="hw_vios/hw_vio_1=52"/>
@@ -86,12 +91,12 @@
     <Object name="msys_bd/msys_i/TRX_tx_im_1[12:0]" gui_info="hw_vios/hw_vio_1=63"/>
     <Object name="msys_bd/msys_i/TRX_tx_re_1[12:0]" gui_info="hw_vios/hw_vio_1=62"/>
     <Object name="msys_bd/msys_i/dds_tx09_ptt_1" gui_info="hw_vios/hw_vio_1=57"/>
-    <Object name="msys_bd/msys_i/decoder_rx09_ch00_center_pos_1[7:0]" gui_info="hw_vios/hw_vio_1=43"/>
-    <Object name="msys_bd/msys_i/decoder_rx09_ch00_noise_1[18:0]" gui_info="hw_vios/hw_vio_1=41"/>
-    <Object name="msys_bd/msys_i/decoder_rx09_ch00_strength_1[18:0]" gui_info="hw_vios/hw_vio_1=42"/>
-    <Object name="msys_bd/msys_i/decoder_rx09_ch01_center_pos_1[7:0]" gui_info="hw_vios/hw_vio_1=46"/>
-    <Object name="msys_bd/msys_i/decoder_rx09_ch01_noise_1[18:0]" gui_info="hw_vios/hw_vio_1=44"/>
-    <Object name="msys_bd/msys_i/decoder_rx09_ch01_strength_1[18:0]" gui_info="hw_vios/hw_vio_1=45"/>
+    <Object name="msys_bd/msys_i/decoder_rx09_ch00_center_pos_1[7:0]" gui_info="hw_vios/hw_vio_1=44"/>
+    <Object name="msys_bd/msys_i/decoder_rx09_ch00_noise_1[18:0]" gui_info="hw_vios/hw_vio_1=46"/>
+    <Object name="msys_bd/msys_i/decoder_rx09_ch00_strength_1[18:0]" gui_info="hw_vios/hw_vio_1=47"/>
+    <Object name="msys_bd/msys_i/decoder_rx09_ch01_center_pos_1[7:0]" gui_info="hw_vios/hw_vio_1=47"/>
+    <Object name="msys_bd/msys_i/decoder_rx09_ch01_noise_1[18:0]" gui_info="hw_vios/hw_vio_1=45"/>
+    <Object name="msys_bd/msys_i/decoder_rx09_ch01_strength_1[18:0]" gui_info="hw_vios/hw_vio_1=46"/>
     <Object name="msys_bd/msys_i/decoder_rx09_ch02_center_pos_1[7:0]" gui_info="hw_vios/hw_vio_1=40"/>
     <Object name="msys_bd/msys_i/decoder_rx09_ch02_noise_1[18:0]" gui_info="hw_vios/hw_vio_1=47"/>
     <Object name="msys_bd/msys_i/decoder_rx09_ch02_strength_1[18:0]" gui_info="hw_vios/hw_vio_1=39"/>
@@ -110,24 +115,24 @@
     <Object name="msys_bd/msys_i/decoder_rx09_ch07_center_pos_1[7:0]" gui_info="hw_vios/hw_vio_1=48"/>
     <Object name="msys_bd/msys_i/decoder_rx09_ch07_noise_1[18:0]" gui_info="hw_vios/hw_vio_1=46"/>
     <Object name="msys_bd/msys_i/decoder_rx09_ch07_strength_1[18:0]" gui_info="hw_vios/hw_vio_1=47"/>
-    <Object name="msys_bd/msys_i/decoder_rx09_chXX_active_1[7:0]" gui_info="hw_vios/hw_vio_1=39"/>
-    <Object name="msys_bd/msys_i/decoder_rx09_chXX_sql_open_1[7:0]" gui_info="hw_vios/hw_vio_1=38"/>
+    <Object name="msys_bd/msys_i/decoder_rx09_chXX_active_1[7:0]" gui_info="hw_vios/hw_vio_1=44"/>
+    <Object name="msys_bd/msys_i/decoder_rx09_chXX_sql_open_1[7:0]" gui_info="hw_vios/hw_vio_1=43"/>
     <Object name="msys_bd/msys_i/labtools_fmeter_0_F0_CFG_clkmclk_pll_65MHz[31:0]" gui_info="hw_vios/hw_vio_1=6"/>
-    <Object name="msys_bd/msys_i/labtools_fmeter_0_F0_microblaze_0_Clk_100MHz[31:0]" gui_info="hw_vios/hw_vio_1=20"/>
-    <Object name="msys_bd/msys_i/labtools_fmeter_0_F1_CLK2_125MHz_mgt[31:0]" gui_info="hw_vios/hw_vio_1=21"/>
-    <Object name="msys_bd/msys_i/labtools_fmeter_0_F2_CLK1B_50MHz_eth[31:0]" gui_info="hw_vios/hw_vio_1=22"/>
-    <Object name="msys_bd/msys_i/labtools_fmeter_0_F3_CLK0_NA[31:0]" gui_info="hw_vios/hw_vio_1=23"/>
-    <Object name="msys_bd/msys_i/labtools_fmeter_0_F4_TRX_LVDS_divclk[31:0]" gui_info="hw_vios/hw_vio_1=24"/>
+    <Object name="msys_bd/msys_i/labtools_fmeter_0_F0_microblaze_0_Clk_100MHz[31:0]" gui_info="hw_vios/hw_vio_1=25"/>
+    <Object name="msys_bd/msys_i/labtools_fmeter_0_F1_CLK2_125MHz_mgt[31:0]" gui_info="hw_vios/hw_vio_1=26"/>
+    <Object name="msys_bd/msys_i/labtools_fmeter_0_F2_CLK1B_50MHz_eth[31:0]" gui_info="hw_vios/hw_vio_1=27"/>
+    <Object name="msys_bd/msys_i/labtools_fmeter_0_F3_CLK0_NA[31:0]" gui_info="hw_vios/hw_vio_1=28"/>
+    <Object name="msys_bd/msys_i/labtools_fmeter_0_F4_TRX_LVDS_divclk[31:0]" gui_info="hw_vios/hw_vio_1=29"/>
     <Object name="msys_bd/msys_i/labtools_fmeter_0_F5[31:0]" gui_info="hw_vios/hw_vio_1=13"/>
-    <Object name="msys_bd/msys_i/labtools_fmeter_0_F5_ETH0_s_mii_tx_clk[31:0]" gui_info="hw_vios/hw_vio_1=25"/>
+    <Object name="msys_bd/msys_i/labtools_fmeter_0_F5_ETH0_s_mii_tx_clk[31:0]" gui_info="hw_vios/hw_vio_1=30"/>
     <Object name="msys_bd/msys_i/labtools_fmeter_0_F6[31:0]" gui_info="hw_vios/hw_vio_1=14"/>
-    <Object name="msys_bd/msys_i/labtools_fmeter_0_F6_ETH0_s_mii_rx_clk[31:0]" gui_info="hw_vios/hw_vio_1=26"/>
+    <Object name="msys_bd/msys_i/labtools_fmeter_0_F6_ETH0_s_mii_rx_clk[31:0]" gui_info="hw_vios/hw_vio_1=31"/>
     <Object name="msys_bd/msys_i/labtools_fmeter_0_F7[31:0]" gui_info="hw_vios/hw_vio_1=15"/>
-    <Object name="msys_bd/msys_i/labtools_fmeter_0_F7_TRX_clk_trx_26MHz[31:0]" gui_info="hw_vios/hw_vio_1=27"/>
+    <Object name="msys_bd/msys_i/labtools_fmeter_0_F7_TRX_clk_trx_26MHz[31:0]" gui_info="hw_vios/hw_vio_1=32"/>
     <Object name="msys_bd/msys_i/labtools_fmeter_0_F8[31:0]" gui_info="hw_vios/hw_vio_1=16"/>
-    <Object name="msys_bd/msys_i/labtools_fmeter_0_F8_TRX_clk_trx_pll_25MHz[31:0]" gui_info="hw_vios/hw_vio_1=28"/>
+    <Object name="msys_bd/msys_i/labtools_fmeter_0_F8_TRX_clk_trx_pll_25MHz[31:0]" gui_info="hw_vios/hw_vio_1=33"/>
     <Object name="msys_bd/msys_i/labtools_fmeter_0_F9[31:0]" gui_info="hw_vios/hw_vio_1=17"/>
-    <Object name="msys_bd/msys_i/labtools_fmeter_0_update" gui_info="hw_vios/hw_vio_1=29"/>
+    <Object name="msys_bd/msys_i/labtools_fmeter_0_update" gui_info="hw_vios/hw_vio_1=34"/>
     <Object name="msys_bd/msys_i/lt_F0_MIG_50mhz[31:0]" gui_info="hw_vios/hw_vio_1=8"/>
     <Object name="msys_bd/msys_i/lt_F1_mgt_ref[31:0]" gui_info="hw_vios/hw_vio_1=9"/>
     <Object name="msys_bd/msys_i/lt_F2_CLK1B[31:0]" gui_info="hw_vios/hw_vio_1=10"/>
@@ -147,7 +152,7 @@
     <Object name="msys_bd/msys_i/vio_0/probe_out7[0:0]" gui_info="hw_vios/hw_vio_1=71"/>
     <Object name="msys_bd/msys_i/vio_0/probe_out8[0:0]" gui_info="hw_vios/hw_vio_1=72"/>
     <Object name="msys_bd/msys_i/vio_0/probe_out9[0:0]" gui_info="hw_vios/hw_vio_1=73"/>
-    <Object name="msys_bd/msys_i/vio_0_probe_out0" gui_info="hw_vios/hw_vio_1=9"/>
+    <Object name="msys_bd/msys_i/vio_0_probe_out0" gui_info="hw_vios/hw_vio_1=10"/>
     <Object name="msys_i/BOARD_ROTENC_PUSH_1" gui_info="hw_vios/hw_vio_1=21"/>
     <Object name="msys_i/CFG_mon_GPIO1_I[31:0]" gui_info="hw_vios/hw_vio_1=1"/>
     <Object name="msys_i/CFG_mon_GPIO1_O[31:0]" gui_info="hw_vios/hw_vio_1=0"/>
@@ -1354,6 +1359,190 @@
         <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_07[0]"/>
       </nets>
     </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Short"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[31]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[30]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[29]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[28]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[27]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[26]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[25]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[24]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[23]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[22]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[21]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[20]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[19]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[18]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[17]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[16]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[15]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[14]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[13]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[12]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[11]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[10]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[9]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[8]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[7]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[6]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[5]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[4]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[3]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[2]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[1]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_08[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Short"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[31]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[30]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[29]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[28]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[27]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[26]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[25]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[24]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[23]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[22]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[21]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[20]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[19]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[18]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[17]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[16]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[15]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[14]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[13]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[12]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[11]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[10]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[9]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[8]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[7]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[6]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[5]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[4]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[3]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[2]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[1]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_09[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Short"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[31]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[30]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[29]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[28]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[27]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[26]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[25]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[24]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[23]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[22]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[21]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[20]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[19]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[18]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[17]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[16]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[15]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[14]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[13]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[12]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[11]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[10]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[9]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[8]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[7]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[6]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[5]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[4]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[3]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[2]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[1]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_10[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="HEX"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Short"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[31]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[30]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[29]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[28]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[27]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[26]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[25]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[24]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[23]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[22]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[21]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[20]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[19]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[18]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[17]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[16]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[15]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[14]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[13]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[12]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[11]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[10]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[9]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[8]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[7]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[6]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[5]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[4]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[3]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[2]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[1]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_DBG_Flash_RD_11[0]"/>
+      </nets>
+    </probe>
     <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
@@ -1404,6 +1593,22 @@
       </probeOptions>
       <nets>
         <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_SREC_error"/>
+      </nets>
+    </probe>
+    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="INPUT_VALUE_RADIX" value="BINARY"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Short"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_fsm_axi_last_b[1]"/>
+        <net name="msys_bd/msys_i/SREC_boot_loader_FSM_0_fsm_axi_last_b[0]"/>
       </nets>
     </probe>
     <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
@@ -1935,7 +2140,7 @@
         <net name="msys_bd/msys_i/dds_tx09_ptt_1"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2023,7 +2228,7 @@
         <net name="msys_bd/msys_i/decoder_rx09_ch00_strength_1[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2045,7 +2250,7 @@
         <net name="msys_bd/msys_i/decoder_rx09_ch01_center_pos_1[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2078,7 +2283,7 @@
         <net name="msys_bd/msys_i/decoder_rx09_ch01_noise_1[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -2133,7 +2338,7 @@
         <net name="msys_bd/msys_i/decoder_rx09_ch02_center_pos_1[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>
@@ -3281,7 +3486,7 @@
         <net name="msys_bd/msys_i/labtools_fmeter_0_F8[0]"/>
       </nets>
     </probe>
-    <probe type="vio_input" busType="bus" source="netlist" spec="VIO_INPUT_V2_RT">
+    <probe type="vio_input" busType="net" source="netlist" spec="VIO_INPUT_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="ACTIVITY_PERSISTENCE" value="SHORT"/>
         <Option Id="DISPLAY_HINT" value=""/>

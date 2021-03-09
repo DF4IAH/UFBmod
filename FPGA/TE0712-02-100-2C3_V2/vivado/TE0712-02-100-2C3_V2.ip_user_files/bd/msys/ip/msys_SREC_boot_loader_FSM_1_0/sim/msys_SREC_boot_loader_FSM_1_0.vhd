@@ -76,6 +76,7 @@ ENTITY msys_SREC_boot_loader_FSM_1_0 IS
     m00_axi_rresp : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
     m00_axi_rvalid : IN STD_LOGIC;
     m00_axi_rready : OUT STD_LOGIC;
+    fsm_axi_last_b : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
     qspi_irpt : IN STD_LOGIC;
     SREC_start : IN STD_LOGIC;
     SREC_enable : IN STD_LOGIC;
@@ -83,9 +84,19 @@ ENTITY msys_SREC_boot_loader_FSM_1_0 IS
     SREC_resetn : OUT STD_LOGIC;
     SREC_done : OUT STD_LOGIC;
     DBG_FSM_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    DBG_AXI_DtaPad : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     DBG_AXI_Addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     DBG_Sig_NxtLoad_out : OUT STD_LOGIC;
-    DBG_Sig_NxtWrite_out : OUT STD_LOGIC
+    DBG_Sig_NxtWrite_out : OUT STD_LOGIC;
+    DBG_Flash_RD_00 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    DBG_Flash_RD_01 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    DBG_Flash_RD_02 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    DBG_Flash_RD_03 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    DBG_Flash_RD_04 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    DBG_Flash_RD_05 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    DBG_Flash_RD_06 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    DBG_Flash_RD_07 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    DBG_Flash_Adr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
 END msys_SREC_boot_loader_FSM_1_0;
 
@@ -115,6 +126,7 @@ ARCHITECTURE msys_SREC_boot_loader_FSM_1_0_arch OF msys_SREC_boot_loader_FSM_1_0
       m00_axi_rresp : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
       m00_axi_rvalid : IN STD_LOGIC;
       m00_axi_rready : OUT STD_LOGIC;
+      fsm_axi_last_b : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
       qspi_irpt : IN STD_LOGIC;
       SREC_start : IN STD_LOGIC;
       SREC_enable : IN STD_LOGIC;
@@ -122,9 +134,19 @@ ARCHITECTURE msys_SREC_boot_loader_FSM_1_0_arch OF msys_SREC_boot_loader_FSM_1_0
       SREC_resetn : OUT STD_LOGIC;
       SREC_done : OUT STD_LOGIC;
       DBG_FSM_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      DBG_AXI_DtaPad : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       DBG_AXI_Addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       DBG_Sig_NxtLoad_out : OUT STD_LOGIC;
-      DBG_Sig_NxtWrite_out : OUT STD_LOGIC
+      DBG_Sig_NxtWrite_out : OUT STD_LOGIC;
+      DBG_Flash_RD_00 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      DBG_Flash_RD_01 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      DBG_Flash_RD_02 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      DBG_Flash_RD_03 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      DBG_Flash_RD_04 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      DBG_Flash_RD_05 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      DBG_Flash_RD_06 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      DBG_Flash_RD_07 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      DBG_Flash_Adr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
   END COMPONENT SREC_boot_loader_FSM;
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
@@ -182,6 +204,7 @@ BEGIN
       m00_axi_rresp => m00_axi_rresp,
       m00_axi_rvalid => m00_axi_rvalid,
       m00_axi_rready => m00_axi_rready,
+      fsm_axi_last_b => fsm_axi_last_b,
       qspi_irpt => qspi_irpt,
       SREC_start => SREC_start,
       SREC_enable => SREC_enable,
@@ -189,8 +212,18 @@ BEGIN
       SREC_resetn => SREC_resetn,
       SREC_done => SREC_done,
       DBG_FSM_out => DBG_FSM_out,
+      DBG_AXI_DtaPad => DBG_AXI_DtaPad,
       DBG_AXI_Addr => DBG_AXI_Addr,
       DBG_Sig_NxtLoad_out => DBG_Sig_NxtLoad_out,
-      DBG_Sig_NxtWrite_out => DBG_Sig_NxtWrite_out
+      DBG_Sig_NxtWrite_out => DBG_Sig_NxtWrite_out,
+      DBG_Flash_RD_00 => DBG_Flash_RD_00,
+      DBG_Flash_RD_01 => DBG_Flash_RD_01,
+      DBG_Flash_RD_02 => DBG_Flash_RD_02,
+      DBG_Flash_RD_03 => DBG_Flash_RD_03,
+      DBG_Flash_RD_04 => DBG_Flash_RD_04,
+      DBG_Flash_RD_05 => DBG_Flash_RD_05,
+      DBG_Flash_RD_06 => DBG_Flash_RD_06,
+      DBG_Flash_RD_07 => DBG_Flash_RD_07,
+      DBG_Flash_Adr => DBG_Flash_Adr
     );
 END msys_SREC_boot_loader_FSM_1_0_arch;

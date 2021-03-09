@@ -9,7 +9,6 @@ vhdl xil_defaultlib  \
 "../../../bd/msys/ip/msys_mdm_1_0/sim/msys_mdm_1_0.vhd" \
 "../../../bd/msys/ip/msys_microblaze_0_0/sim/msys_microblaze_0_0.vhd" \
 "../../../bd/msys/ip/msys_microblaze_0_axi_intc_0/sim/msys_microblaze_0_axi_intc_0.vhd" \
-"../../../bd/msys/ip/msys_dlmb_bram_if_cntlr_0/sim/msys_dlmb_bram_if_cntlr_0.vhd" \
 "../../../bd/msys/ip/msys_dlmb_v10_0/sim/msys_dlmb_v10_0.vhd" \
 "../../../bd/msys/ip/msys_ilmb_bram_if_cntlr_0/sim/msys_ilmb_bram_if_cntlr_0.vhd" \
 "../../../bd/msys/ip/msys_ilmb_v10_0/sim/msys_ilmb_v10_0.vhd" \
@@ -95,6 +94,7 @@ vhdl xil_defaultlib  \
 "../../../bd/msys/ip/msys_SREC_boot_loader_FSM_1_0/sim/msys_SREC_boot_loader_FSM_1_0.vhd" \
 "../../../bd/msys/ip/msys_rst_CFG_Si5338_0_65M_0/sim/msys_rst_CFG_Si5338_0_65M_0.vhd" \
 "../../../bd/msys/ip/msys_CFG_Si5338_axi_gpio_0_0/sim/msys_CFG_Si5338_axi_gpio_0_0.vhd" \
+"../../../bd/msys/ip/msys_axi_bram_ctrl_0_0/sim/msys_axi_bram_ctrl_0_0.vhd" \
 "../../../bd/msys/sim/msys.vhd" \
 
 nosort

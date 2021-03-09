@@ -1,7 +1,7 @@
 #ifndef IP_MSYS_XBAR_3_SC_H_
 #define IP_MSYS_XBAR_3_SC_H_
 
-// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -80,8 +80,6 @@ public: // module socket-to-socket TLM interface
   xtlm::xtlm_aximm_target_socket* target_0_wr_socket;
   xtlm::xtlm_aximm_initiator_socket* initiator_0_rd_socket;
   xtlm::xtlm_aximm_initiator_socket* initiator_0_wr_socket;
-  xtlm::xtlm_aximm_target_socket* target_1_rd_socket;
-  xtlm::xtlm_aximm_target_socket* target_1_wr_socket;
   xtlm::xtlm_aximm_initiator_socket* initiator_1_rd_socket;
   xtlm::xtlm_aximm_initiator_socket* initiator_1_wr_socket;
   xtlm::xtlm_aximm_initiator_socket* initiator_2_rd_socket;

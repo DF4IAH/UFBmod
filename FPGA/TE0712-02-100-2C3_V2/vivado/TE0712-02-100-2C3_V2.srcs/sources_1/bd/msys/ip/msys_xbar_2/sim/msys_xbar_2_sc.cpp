@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -61,9 +61,9 @@ msys_xbar_2_sc::msys_xbar_2_sc(const sc_core::sc_module_name& nm) : sc_core::sc_
 
   // initialize module
     xsc::common_cpp::properties model_param_props;
-    model_param_props.addLong("C_NUM_SLAVE_SLOTS", "2");
+    model_param_props.addLong("C_NUM_SLAVE_SLOTS", "3");
     model_param_props.addLong("C_NUM_MASTER_SLOTS", "1");
-    model_param_props.addLong("C_AXI_ID_WIDTH", "1");
+    model_param_props.addLong("C_AXI_ID_WIDTH", "2");
     model_param_props.addLong("C_AXI_ADDR_WIDTH", "32");
     model_param_props.addLong("C_AXI_DATA_WIDTH", "32");
     model_param_props.addLong("C_AXI_PROTOCOL", "0");
@@ -79,16 +79,16 @@ msys_xbar_2_sc::msys_xbar_2_sc(const sc_core::sc_module_name& nm) : sc_core::sc_
     model_param_props.addString("C_FAMILY", "artix7");
     model_param_props.addBitString("C_M_AXI_BASE_ADDR", "0000000000000000000000000000000010000000000000000000000000000000", 64);
     model_param_props.addBitString("C_M_AXI_ADDR_WIDTH", "00000000000000000000000000011110", 32);
-    model_param_props.addBitString("C_S_AXI_BASE_ID", "0000000000000000000000000000000100000000000000000000000000000000", 64);
-    model_param_props.addBitString("C_S_AXI_THREAD_ID_WIDTH", "0000000000000000000000000000000000000000000000000000000000000000", 64);
-    model_param_props.addBitString("C_M_AXI_WRITE_CONNECTIVITY", "00000000000000000000000000000001", 32);
-    model_param_props.addBitString("C_M_AXI_READ_CONNECTIVITY", "00000000000000000000000000000011", 32);
-    model_param_props.addBitString("C_S_AXI_SINGLE_THREAD", "0000000000000000000000000000000000000000000000000000000000000000", 64);
-    model_param_props.addBitString("C_S_AXI_WRITE_ACCEPTANCE", "0000000000000000000000000000001000000000000000000000000000001000", 64);
-    model_param_props.addBitString("C_S_AXI_READ_ACCEPTANCE", "0000000000000000000000000000001000000000000000000000000000000010", 64);
+    model_param_props.addBitString("C_S_AXI_BASE_ID", "000000000000000000000000000000100000000000000000000000000000000100000000000000000000000000000000", 96);
+    model_param_props.addBitString("C_S_AXI_THREAD_ID_WIDTH", "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000", 96);
+    model_param_props.addBitString("C_M_AXI_WRITE_CONNECTIVITY", "00000000000000000000000000000110", 32);
+    model_param_props.addBitString("C_M_AXI_READ_CONNECTIVITY", "00000000000000000000000000000111", 32);
+    model_param_props.addBitString("C_S_AXI_SINGLE_THREAD", "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000", 96);
+    model_param_props.addBitString("C_S_AXI_WRITE_ACCEPTANCE", "000000000000000000000000000000100000000000000000000000000000100000000000000000000000000000000010", 96);
+    model_param_props.addBitString("C_S_AXI_READ_ACCEPTANCE", "000000000000000000000000000000100000000000000000000000000000001000000000000000000000000000000010", 96);
     model_param_props.addBitString("C_M_AXI_WRITE_ISSUING", "00000000000000000000000000001000", 32);
     model_param_props.addBitString("C_M_AXI_READ_ISSUING", "00000000000000000000000000001000", 32);
-    model_param_props.addBitString("C_S_AXI_ARB_PRIORITY", "0000000000000000000000000000000000000000000000000000000000000000", 64);
+    model_param_props.addBitString("C_S_AXI_ARB_PRIORITY", "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000", 96);
     model_param_props.addBitString("C_M_AXI_SECURE", "00000000000000000000000000000000", 32);
 
   mp_impl = new axi_crossbar("inst", model_param_props);
@@ -100,6 +100,8 @@ msys_xbar_2_sc::msys_xbar_2_sc(const sc_core::sc_module_name& nm) : sc_core::sc_
   initiator_0_wr_socket = mp_impl->initiator_0_wr_socket;
   target_1_rd_socket = mp_impl->target_1_rd_socket;
   target_1_wr_socket = mp_impl->target_1_wr_socket;
+  target_2_rd_socket = mp_impl->target_2_rd_socket;
+  target_2_wr_socket = mp_impl->target_2_wr_socket;
 }
 
 msys_xbar_2_sc::~msys_xbar_2_sc()

@@ -56,6 +56,7 @@ entity SREC_boot_loader_FSM is
         m00_axi_rresp                                   : in    STD_LOGIC_VECTOR (  1 downto 0 );
         m00_axi_rvalid                                  : in    STD_LOGIC;
         m00_axi_rready                                  : out   STD_LOGIC;
+        fsm_axi_last_b                                  : out   STD_LOGIC_VECTOR (  1 downto 0 );
         
         qspi_irpt                                       : in    STD_LOGIC;
         
@@ -79,6 +80,10 @@ entity SREC_boot_loader_FSM is
         DBG_Flash_RD_05                                 : out   STD_LOGIC_VECTOR( 31 downto 0 );
         DBG_Flash_RD_06                                 : out   STD_LOGIC_VECTOR( 31 downto 0 );
         DBG_Flash_RD_07                                 : out   STD_LOGIC_VECTOR( 31 downto 0 );
+        DBG_Flash_RD_08                                 : out   STD_LOGIC_VECTOR( 31 downto 0 );
+        DBG_Flash_RD_09                                 : out   STD_LOGIC_VECTOR( 31 downto 0 );
+        DBG_Flash_RD_10                                 : out   STD_LOGIC_VECTOR( 31 downto 0 );
+        DBG_Flash_RD_11                                 : out   STD_LOGIC_VECTOR( 31 downto 0 );
         DBG_Flash_Adr                                   : out   STD_LOGIC_VECTOR( 31 downto 0 )
         
     );
@@ -212,7 +217,7 @@ architecture Behavioral of SREC_boot_loader_FSM is
     
     
     -- AXI access FSM
-    signal fsm_fifo_reset_run                           : STD_LOGIC;
+  --signal fsm_fifo_reset_run                           : STD_LOGIC;
     signal fsm_srec_process_run                         : STD_LOGIC;
     signal fsm_master_reset_run                         : STD_LOGIC;
     signal fsm_srec_decoder_c                           : STD_LOGIC_VECTOR (  7 downto 0 );
@@ -220,7 +225,7 @@ architecture Behavioral of SREC_boot_loader_FSM is
     signal fsm_out_error                                : STD_LOGIC;
     
     -- MAIN FSM
-    signal fsm_fifo_reset_do                            : STD_LOGIC;
+  --signal fsm_fifo_reset_do                            : STD_LOGIC;
     signal fsm_srec_process_do                          : STD_LOGIC;
     signal fsm_master_reset_do                          : STD_LOGIC;
     signal fsm_main_done                                : STD_LOGIC;
@@ -383,12 +388,14 @@ begin
     begin
         if (rising_edge (m00_axi_aclk)) then
             if (m00_axi_aresetn = '0' or fsm_init_txn_pulse = '1') then
-                io_axi_bready <= '0';
+                io_axi_bready   <= '0';
+                fsm_axi_last_b  <= "00";
             else
                 if (m00_axi_bvalid = '1' and io_axi_bready = '0') then
                     -- accept/acknowledge bresp with axi_bready by the master
                     -- when M_AXI_BVALID is asserted by slave
-                    io_axi_bready <= '1';
+                    io_axi_bready   <= '1';
+                    fsm_axi_last_b  <= m00_axi_bresp;
                 elsif (io_axi_bready = '1') then
                     -- deassert after one clock cycle
                     io_axi_bready <= '0';
@@ -657,8 +664,7 @@ begin
     -- AXI access FSM
     --
     axi_FSM_proc : process (m00_axi_aclk)
-        constant QSPI_HDR_CNT                       : Integer := 5;   -- u8 cmd + u32 address
-        constant QSPI_LOAD_CNT                      : Integer := 64;  -- max. 245
+        constant QSPI_LOAD_CNT                      : Integer := 64;  -- min. 48, max. 245
         
         constant QSPI_BASE_ADDR                     : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"75310000";
         
@@ -675,9 +681,9 @@ begin
         constant QSPI_IPISR_ADDR                    : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"75310020";
         constant QSPI_IPIER_ADDR                    : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"75310028";
         
-
+        
         constant GPIO_LIGHTS_BASE_ADDR              : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"54040000";
-
+        
         constant GPIO_LIGHTS_GPIO_DATA_ADDR         : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"54040000";
         constant GPIO_LIGHTS_GPIO_TRI_ADDR          : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"54040004";
         constant GPIO_LIGHTS_GPIO2_DATA_ADDR        : STD_LOGIC_VECTOR ( 31 downto 0 ) := x"54040008";
@@ -693,19 +699,16 @@ begin
                                                         axi_init,
                                                         
                                                         qspi_reset_start,               qspi_reset_wait,
-                                                        
-                                                        fifo_reset_start,               fifo_reset_wait,                    fifo_reset_complete,
+                                                        fifo_reset_start,               fifo_reset_wait,                  --fifo_reset_complete,
                                                         fifo_show_start,                fifo_show_wait,
                                                         fifo_deassert_start,            fifo_deassert_wait,                 fifo_deassert_complete,
                                                         fifo_int1_start,                fifo_int1_wait,
                                                         fifo_int2_start,                fifo_int2_wait,
-                                                        
                                                         fifo_srec_load_0_start,         fifo_srec_load_0_wait,
                                                         fifo_srec_load_1_start,         fifo_srec_load_1_wait,
                                                         fifo_srec_load_2_start,         fifo_srec_load_2_wait,
                                                         fifo_srec_load_3_start,         fifo_srec_load_3_wait,
                                                         fifo_srec_load_4_start,         fifo_srec_load_4_wait,
-                                                        fifo_srec_load_5_start,         fifo_srec_load_5_wait,
                                                         fifo_srec_load_prefill_init,    fifo_srec_load_prefill_start,       fifo_srec_load_prefill_loop,
                                                         fifo_srec_load_show_start,      fifo_srec_load_show_wait,
                                                         fifo_srec_int1_start,           fifo_srec_int1_wait,
@@ -714,6 +717,7 @@ begin
                                                         fifo_srec_load_cs_start,        fifo_srec_load_cs_wait,
                                                         fifo_srec_load_master_start,    fifo_srec_load_master_wait,
                                                         fifo_srec_load_int_wait,
+                                                        fifo_srec_load_int_pstdly_start,fifo_srec_load_int_pstdly_wait,     fifo_srec_load_int_pstdly_loop,
                                                         fifo_srec_load_un_cs_start,     fifo_srec_load_un_cs_wait,
                                                         fifo_srec_load_un_master_start, fifo_srec_load_un_master_wait,
                                                         fifo_srec_proc_show_start,      fifo_srec_proc_show_wait,
@@ -754,12 +758,13 @@ begin
         variable fsm_pad32                          : STD_LOGIC_VECTOR (31 downto 0);
         variable fsm_copy32                         : STD_LOGIC_VECTOR (31 downto 0);
         
-        variable DBG_Flash_RD_vec                   : STD_LOGIC_VECTOR (255 downto 0);
+        variable DBG_Flash_RD_vec                   : STD_LOGIC_VECTOR (383 downto 0);
         
         variable fsm_dec_s_type                     : Integer  range 0 to (2**4 - 1);
         
         variable fsm_fifo_prefill_cnt               : Integer  range 0 to (2**8 - 1);
         variable fsm_fifo_read_cnt                  : Integer  range 0 to (2**8 - 1);
+        variable fsn_fifo_int_pstdly_cnt            : Integer  range 0 to (2**4 - 1);
         
         variable fsm_dec_do_copy                    : STD_LOGIC;
         variable fsm_dec_do_exec                    : STD_LOGIC;
@@ -783,7 +788,7 @@ begin
                 fsm_start_axi_write     <= '0';
                 fsm_start_axi_read      <= '0';
                 
-                fsm_fifo_reset_run      <= '0';
+              --fsm_fifo_reset_run      <= '0';
                 fsm_srec_process_run    <= '0';
                 fsm_master_reset_run    <= '0';
                 
@@ -795,6 +800,7 @@ begin
                 
                 fsm_fifo_prefill_cnt    := 0;
                 fsm_fifo_read_cnt       := 0;
+                fsn_fifo_int_pstdly_cnt := 0;
                 
                 fsm_srec_decoder_c      <= (others => '0');
                 
@@ -839,18 +845,19 @@ begin
                         fsm_start_axi_write     <= '0';
                         fsm_start_axi_read      <= '0';
                         
-                        fsm_fifo_reset_run      <= '0';
+                      --fsm_fifo_reset_run      <= '0';
                         fsm_srec_process_run    <= '0';
                         fsm_master_reset_run    <= '0';
                         
                         -- Enter start address
-                        fsm_addr                := x"00800000";  -- DEBUGGING: start with 2nd line
+                        fsm_addr                := x"00800000";
                         
                         fsm_pad32               := (others => '0');
                         fsm_copy32              := (others => '0');
                         
                         fsm_fifo_prefill_cnt    := 0;
                         fsm_fifo_read_cnt       := 0;
+                        fsn_fifo_int_pstdly_cnt := 0;
                         
                         fsm_srec_decoder_c      <= (others => '0');
                         
@@ -871,13 +878,14 @@ begin
                         
                         dbg_state := axi_error_final;
                         
-                        if (fsm_fifo_reset_do = '1') then
-                            DBG_FSM_out <= x"0010";
-                            state := qspi_reset_start;
-                            
-                        elsif (fsm_srec_process_do = '1') then
+                      --if (fsm_fifo_reset_do = '1') then
+                      --    DBG_FSM_out <= x"0010";
+                      --    state := qspi_reset_start;
+                      --    
+                      --els
+                        if (fsm_srec_process_do = '1') then
                             DBG_FSM_out <= x"0020";
-                            state := fifo_srec_load_0_start;
+                            state := qspi_reset_start;
                             
                         elsif (fsm_master_reset_do = '1') then
                             DBG_FSM_out <= x"0030";
@@ -887,7 +895,7 @@ begin
                         
                     -- ENTER
                     when qspi_reset_start =>
-                        fsm_fifo_reset_run      <= '1';
+                      --fsm_fifo_reset_run      <= '1';
                         DBG_FSM_out <= x"1000";
                         
                         -- Write to SPICR - Preparations: Master inhibit + FIFO reset (PG153 p106) - value: 0x0001e6
@@ -913,7 +921,7 @@ begin
                         end if;
                         
                     when fifo_reset_start =>
-                        fsm_fifo_reset_run      <= '1';
+                      --fsm_fifo_reset_run      <= '1';
                         DBG_FSM_out <= x"1010";
                         
                         -- Write to SPICR - Preparations: Master inhibit + FIFO reset (PG153 p106) - value: 0x0001e6
@@ -929,7 +937,7 @@ begin
                             DBG_FSM_out <= x"1012";
                             if (m00_axi_bresp(1) = '0') then
                                 DBG_FSM_out <= x"1013";
-                                state := fifo_reset_complete;
+                                state := fifo_show_start;   -- fifo_reset_complete;
                             else
                                 DBG_FSM_out <= x"1014";
                                 state := axi_error;
@@ -938,13 +946,13 @@ begin
                             fsm_axi_wdata       <= (others => '0');
                         end if;
                         
-                    when fifo_reset_complete =>
-                        DBG_FSM_out <= x"1015";
-                        fsm_fifo_reset_run <= '0';
-                        if (fsm_fifo_reset_do = '0') then
-                            DBG_FSM_out <= x"1016";
-                            state := fifo_show_start;
-                        end if;
+                  --when fifo_reset_complete =>
+                  --    DBG_FSM_out <= x"1015";
+                  --    fsm_fifo_reset_run <= '0';
+                  --    if (fsm_fifo_reset_do = '0') then
+                  --        DBG_FSM_out <= x"1016";
+                  --        state := fifo_show_start;
+                  --    end if;
                         
                     
                     when fifo_show_start =>
@@ -1020,11 +1028,11 @@ begin
                         
                     when fifo_int2_wait =>
                         fsm_start_axi_write <= '0';
-                        fsm_fifo_reset_run  <= '0';
+                      --fsm_fifo_reset_run  <= '0';
                         if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
                             if (m00_axi_bresp(1) = '0') then
                                 DBG_FSM_out <= x"1104";
-                                state := axi_init;                              -- Return to initial selector
+                                state := fifo_srec_load_0_start;    -- axi_init;                              -- Return to initial selector
                             else
                                 state := axi_error;
                             end if;
@@ -1033,10 +1041,9 @@ begin
                         end if;
                         
                         
-                    -- ENTER
                     when fifo_srec_load_0_start =>
                         fsm_srec_process_run    <= '1';
-                        DBG_FSM_out <= x"1110";
+                        DBG_FSM_out <= x"1112";
                         DBG_Sig_NxtLoad_out     <= '1';
                         fsm_fifo_read_cnt       := 0; 
                         fsm_axi_awaddr          <= QSPI_SPIDTR_ADDR;
@@ -1049,7 +1056,7 @@ begin
                         fsm_start_axi_write  <= '0';
                         if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
                             if (m00_axi_bresp(1) = '0') then
-                                DBG_FSM_out <= x"1111";
+                                DBG_FSM_out <= x"1113";
                                 fsm_fifo_read_cnt := fsm_fifo_read_cnt + 1;
                                 
                                 state           := fifo_srec_load_1_start;
@@ -1064,6 +1071,7 @@ begin
                         fsm_axi_awaddr          <= QSPI_SPIDTR_ADDR;
                         fsm_axi_wdata           <= x"000000" & fsm_addr(31 downto 24);   -- Source address: MSB
                         fsm_start_axi_write     <= '1';
+                        DBG_FSM_out <= x"1114";
                         
                         state := fifo_srec_load_1_wait;
                         
@@ -1071,7 +1079,7 @@ begin
                         fsm_start_axi_write  <= '0';
                         if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
                             if (m00_axi_bresp(1) = '0') then
-                                DBG_FSM_out <= x"1113";
+                                DBG_FSM_out <= x"1115";
                                 fsm_fifo_read_cnt := fsm_fifo_read_cnt + 1;
                                 
                                 state := fifo_srec_load_2_start;
@@ -1086,6 +1094,7 @@ begin
                         fsm_axi_awaddr          <= QSPI_SPIDTR_ADDR;
                         fsm_axi_wdata           <= x"000000" & fsm_addr(23 downto 16);   -- Source address
                         fsm_start_axi_write     <= '1';
+                        DBG_FSM_out <= x"1116";
                         
                         state := fifo_srec_load_2_wait;
                         
@@ -1093,7 +1102,7 @@ begin
                         fsm_start_axi_write  <= '0';
                         if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
                             if (m00_axi_bresp(1) = '0') then
-                                DBG_FSM_out <= x"1115";
+                                DBG_FSM_out <= x"1117";
                                 fsm_fifo_read_cnt := fsm_fifo_read_cnt + 1;
                                 
                                 state := fifo_srec_load_3_start;
@@ -1108,6 +1117,7 @@ begin
                         fsm_axi_awaddr          <= QSPI_SPIDTR_ADDR;
                         fsm_axi_wdata           <= x"000000" & fsm_addr(15 downto  8);   -- Source address
                         fsm_start_axi_write     <= '1';
+                        DBG_FSM_out <= x"1118";
                         
                         state := fifo_srec_load_3_wait;
                         
@@ -1115,12 +1125,12 @@ begin
                         fsm_start_axi_write  <= '0';
                         if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
                             if (m00_axi_bresp(1) = '0') then
-                                DBG_FSM_out <= x"1117";
+                                DBG_FSM_out <= x"1119";
                                 fsm_fifo_read_cnt := fsm_fifo_read_cnt + 1;
                                 
                                 state := fifo_srec_load_4_start;
                             else
-                                DBG_FSM_out <= x"1118";
+                                DBG_FSM_out <= x"111a";
                                 state := axi_error;
                             end if;
                             fsm_axi_awaddr      <= (others => '0');
@@ -1131,6 +1141,7 @@ begin
                         fsm_axi_awaddr          <= QSPI_SPIDTR_ADDR;
                         fsm_axi_wdata           <= x"000000" & fsm_addr( 7 downto  0);   -- Source address: LSB
                         fsm_start_axi_write     <= '1';
+                        DBG_FSM_out <= x"111b";
                         
                         state := fifo_srec_load_4_wait;
                         
@@ -1138,12 +1149,12 @@ begin
                         fsm_start_axi_write  <= '0';
                         if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
                             if (m00_axi_bresp(1) = '0') then
-                                DBG_FSM_out <= x"111a";
+                                DBG_FSM_out <= x"111c";
                                 fsm_fifo_read_cnt := fsm_fifo_read_cnt + 1;
                                 
                                 state := fifo_srec_load_prefill_init;
                             else
-                                DBG_FSM_out <= x"111b";
+                                DBG_FSM_out <= x"111d";
                                 state := axi_error;
                             end if;
                             fsm_axi_awaddr      <= (others => '0');
@@ -1329,6 +1340,23 @@ begin
                         DBG_FSM_out <= x"1200";
                         if (qspi_irpt = '1') then
                             DBG_FSM_out <= x"1201";
+                            state := fifo_srec_load_int_pstdly_start;
+                        end if;
+                        
+                        
+                    when fifo_srec_load_int_pstdly_start =>
+                        fsn_fifo_int_pstdly_cnt := (2**4 - 1);
+                        state := fifo_srec_load_int_pstdly_wait;
+                        
+                    when fifo_srec_load_int_pstdly_wait =>
+                        fsn_fifo_int_pstdly_cnt := fsn_fifo_int_pstdly_cnt - 1;
+                        state := fifo_srec_load_int_pstdly_loop;
+                        
+                    when fifo_srec_load_int_pstdly_loop =>
+                        if (fsn_fifo_int_pstdly_cnt /= 0) then
+                            state := fifo_srec_load_int_pstdly_wait;
+                        else
+                            DBG_FSM_out <= x"1202";
                             state := fifo_srec_load_un_cs_start;
                         end if;
                         
@@ -1342,7 +1370,7 @@ begin
                         
                     when fifo_srec_load_un_cs_wait =>
                         fsm_start_axi_write  <= '0';
-                        if (m00_axi_bvalid = '1' and io_axi_bready = '1') then
+                        if (m00_axi_bvalid = '1' and io_axi_bready = '1') then  -- w/o int_pstldy the handshake does not come sometimes
                             if (m00_axi_bresp(1) = '0') then
                                 DBG_FSM_out <= x"1203";
                                 state := fifo_srec_load_un_master_start;
@@ -1454,7 +1482,7 @@ begin
                             -- Get next chunk from QSPI FLASH chip
                             --fsm_addr := std_logic_vector(to_unsigned(to_integer(unsigned(fsm_addr)) + QSPI_LOAD_CNT, fsm_addr'length));
                             --DBG_FSM_out <= x"1311";
-                            --state := fifo_srec_load_0_start;
+                            --state := qspi_reset_start;    -- fifo_srec_load_0_start;
                             
                             DBG_FSM_out <= x"9311";
                             state := axi_error; -- DEBUGGING AID
@@ -1477,7 +1505,7 @@ begin
                                 fsm_addr            := std_logic_vector(to_unsigned(to_integer(unsigned(fsm_addr)) + 1, fsm_addr'length));
                                 
                                 fsm_srec_decoder_c  <= m00_axi_rdata(7 downto 0);
-                                DBG_Flash_RD_vec    := DBG_Flash_RD_vec(247 downto 0) & m00_axi_rdata(7 downto 0);
+                                DBG_Flash_RD_vec    := DBG_Flash_RD_vec(375 downto 0) & m00_axi_rdata(7 downto 0);
                                 
                                 state := axi_dec_init;
                             else
@@ -1904,7 +1932,7 @@ begin
                                         fsm_dec_state   := searchS;
                                         
                                         -- Read next line from the Flash
-                                        state           := fifo_srec_load_0_start;
+                                        state           := qspi_reset_start;    -- fifo_srec_load_0_start;
                                     end if;
                                     
                                 else
@@ -1974,7 +2002,7 @@ begin
                         fsm_start_axi_write     <= '0';
                         fsm_start_axi_read      <= '0';
                         
-                        fsm_fifo_reset_run      <= '0';
+                      --fsm_fifo_reset_run      <= '0';
                         fsm_srec_process_run    <= '0';
                         fsm_master_reset_run    <= '0';
                         
@@ -2010,7 +2038,7 @@ begin
                         -- Some error has occured.
                         fsm_out_error <= '1';
                         
-                        fsm_fifo_reset_run      <= '0';
+                      --fsm_fifo_reset_run      <= '0';
                         fsm_srec_process_run    <= '0';
                         fsm_master_reset_run    <= '0';
                         
@@ -2126,6 +2154,10 @@ begin
                 DBG_Flash_RD_05 <= DBG_Flash_RD_vec(191 downto 160);
                 DBG_Flash_RD_06 <= DBG_Flash_RD_vec(223 downto 192);
                 DBG_Flash_RD_07 <= DBG_Flash_RD_vec(255 downto 224);
+                DBG_Flash_RD_08 <= DBG_Flash_RD_vec(287 downto 256);
+                DBG_Flash_RD_09 <= DBG_Flash_RD_vec(319 downto 288);
+                DBG_Flash_RD_10 <= DBG_Flash_RD_vec(351 downto 320);
+                DBG_Flash_RD_11 <= DBG_Flash_RD_vec(383 downto 352);
             end if;
         end if;
     end process axi_FSM_proc;
@@ -2136,7 +2168,7 @@ begin
     main_FSM_proc : process (m00_axi_aclk)
         type StateType                              is (
                                                         init,
-                                                        fifo_reset_start, fifo_reset_wait, 
+                                                      --fifo_reset_start, fifo_reset_wait, 
                                                         fifo_read_activate_start, fifo_read_activate_wait,
                                                         master_reset_start, master_reset_wait,
                                                         final
@@ -2146,7 +2178,7 @@ begin
         if (rising_edge (m00_axi_aclk)) then
             if (m00_axi_aresetn = '0') then
                 fsm_main_done           <= '0';
-                fsm_fifo_reset_do       <= '0';
+              --fsm_fifo_reset_do       <= '0';
                 fsm_srec_process_do     <= '0';
                 fsm_master_reset_do     <= '0';
                 state := init;
@@ -2155,7 +2187,7 @@ begin
                 case state is
                     when init =>
                         fsm_main_done           <= '0';
-                        fsm_fifo_reset_do       <= '0';
+                      --fsm_fifo_reset_do       <= '0';
                         fsm_srec_process_do     <= '0';
                         fsm_master_reset_do     <= '0';
                         
@@ -2164,21 +2196,21 @@ begin
                             state := init;
                             
                         elsif (fsm_init_txn_pulse = '1') then
-                            state := fifo_reset_start;
+                            state := fifo_read_activate_start;  -- fifo_reset_start
                         end if;
                         
                         
-                    when fifo_reset_start =>
-                        fsm_fifo_reset_do <= '1';
-                        if (fsm_fifo_reset_run = '1') then
-                            fsm_fifo_reset_do <= '0';
-                            state := fifo_reset_wait;
-                        end if;
+                  --when fifo_reset_start =>
+                  --    fsm_fifo_reset_do <= '1';
+                  --    if (fsm_fifo_reset_run = '1') then
+                  --        fsm_fifo_reset_do <= '0';
+                  --        state := fifo_reset_wait;
+                  --    end if;
                         
-                    when fifo_reset_wait =>
-                        if (fsm_fifo_reset_run = '0') then
-                            state := fifo_read_activate_start;
-                        end if;
+                  --when fifo_reset_wait =>
+                  --    if (fsm_fifo_reset_run = '0') then
+                  --        state := fifo_read_activate_start;
+                  --    end if;
                         
                         
                     when fifo_read_activate_start =>
