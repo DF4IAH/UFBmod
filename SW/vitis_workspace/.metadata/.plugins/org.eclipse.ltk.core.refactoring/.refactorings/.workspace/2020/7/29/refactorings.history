@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;xiic_repeated_start_example_1_system&apos;" deleteContents="true" description="Delete resource &apos;xiic_repeated_start_example_1_system&apos;" element1="/xiic_repeated_start_example_1_system" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1595055800637"/>&#x0A;<refactoring comment="Delete 3 resources" deleteContents="true" description="Delete 3 resources" element1="/xiic_low_level_eeprom_example_1_system" element2="/xiic_low_level_tempsensor_example_1_system" element3="/xiic_tempsensor_example_1_system" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="3" stamp="1595169519257"/>
-</session>

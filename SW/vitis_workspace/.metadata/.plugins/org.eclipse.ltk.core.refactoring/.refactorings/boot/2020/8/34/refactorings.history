@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;boot/src/boot_pll.c&apos; to &apos;boot.c&apos;" description="Rename resource &apos;boot_pll.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/boot_pll.c" name="boot.c" stamp="1597922723784" updateReferences="true"/>
-</session>
