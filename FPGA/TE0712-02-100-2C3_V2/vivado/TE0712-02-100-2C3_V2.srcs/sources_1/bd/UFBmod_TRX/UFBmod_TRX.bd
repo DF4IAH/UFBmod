@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x607D555DFD3CFAC9",
+      "boundary_crc": "0x607D555D779828CC",
       "device": "xc7a100tfgg484-2",
       "name": "UFBmod_TRX",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -191,7 +191,7 @@
         "direction": "I",
         "parameters": {
           "ASSOCIATED_RESET": {
-            "value": "rst_mig_7series_0_100M_peripheral_aresetn:rst_mig_7series_0_100M_peripheral_reset:mig_7series_0_ui_clk_sync_rst",
+            "value": "rst_mig_7series_0_100M_peripheral_aresetn:rst_mig_7series_0_100M_peripheral_reset",
             "value_src": "default"
           },
           "CLK_DOMAIN": {
@@ -374,11 +374,11 @@
           },
           "PortType": {
             "value": "data",
-            "value_src": "default"
+            "value_src": "ip_prop"
           },
           "PortType.PROP_SRC": {
             "value": "false",
-            "value_src": "default"
+            "value_src": "ip_prop"
           }
         }
       },
@@ -415,11 +415,11 @@
           },
           "PortType": {
             "value": "data",
-            "value_src": "default"
+            "value_src": "ip_prop"
           },
           "PortType.PROP_SRC": {
             "value": "false",
-            "value_src": "default"
+            "value_src": "ip_prop"
           }
         }
       },
@@ -450,11 +450,11 @@
           },
           "PortType": {
             "value": "data",
-            "value_src": "default"
+            "value_src": "ip_prop"
           },
           "PortType.PROP_SRC": {
             "value": "false",
-            "value_src": "default"
+            "value_src": "ip_prop"
           }
         }
       },
@@ -1280,7 +1280,7 @@
           },
           "PortWidth": {
             "value": "32",
-            "value_src": "default"
+            "value_src": "ip_prop"
           }
         }
       }
@@ -7623,16 +7623,16 @@
       }
     },
     "interface_nets": {
-      "TRX_TRX_tx_clk": {
-        "interface_ports": [
-          "TRX_tx_clk",
-          "TRX_LVDS/TRX_tx_clk"
-        ]
-      },
       "TRX_rx_clk_64MHz_1": {
         "interface_ports": [
           "TRX_rx_clk_64MHz",
           "TRX_LVDS/TRX_rx_clk_64MHz"
+        ]
+      },
+      "TRX_TRX_tx_clk": {
+        "interface_ports": [
+          "TRX_tx_clk",
+          "TRX_LVDS/TRX_tx_clk"
         ]
       }
     },

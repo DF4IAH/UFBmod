@@ -1,8 +1,8 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-// Date        : Sat Nov 28 22:34:10 2020
-// Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
+// Date        : Thu Mar 11 00:16:09 2021
+// Host        : DESKTOP-I3NV8HO running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.srcs/sources_1/bd/UFBmod_Encoder/UFBmod_Encoder_sim_netlist.v
 // Design      : UFBmod_Encoder

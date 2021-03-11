@@ -48,13 +48,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="633"/>
-    <Option Name="WTModelSimExportSim" Val="632"/>
-    <Option Name="WTQuestaExportSim" Val="631"/>
-    <Option Name="WTIesExportSim" Val="631"/>
-    <Option Name="WTVcsExportSim" Val="631"/>
-    <Option Name="WTRivieraExportSim" Val="631"/>
-    <Option Name="WTActivehdlExportSim" Val="630"/>
+    <Option Name="WTXSimExportSim" Val="634"/>
+    <Option Name="WTModelSimExportSim" Val="633"/>
+    <Option Name="WTQuestaExportSim" Val="632"/>
+    <Option Name="WTIesExportSim" Val="632"/>
+    <Option Name="WTVcsExportSim" Val="632"/>
+    <Option Name="WTRivieraExportSim" Val="632"/>
+    <Option Name="WTActivehdlExportSim" Val="631"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -211,8 +211,10 @@
           <Attr Name="ScopedToCell" Val="msys_mig_7series_0_0"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../SW/vitis_workspace/cfg_si5338/Debug/cfg_si5338.elf">
+      <File Path="$PSRCDIR/sources_1/imports/ELF_SREC/cfg_si5338.elf">
         <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../SW/ELF_SREC/cfg_si5338.elf"/>
+          <Attr Name="ImportTime" Val="1615462330"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="ScopedToRef" Val="msys"/>
           <Attr Name="ScopedToCell" Val="CFG_Si5338/CFG_microblaze_0"/>
@@ -485,11 +487,11 @@
         <StratHandle Name="Flow_PerfOptimized_high" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design">
           <Option Id="ResourceSharing">2</Option>
-          <Option Id="Directive">7</Option>
-          <Option Id="ShregMinSize">5</Option>
+          <Option Id="NoCombineLuts">1</Option>
           <Option Id="FsmExtraction">1</Option>
           <Option Id="KeepEquivalentRegisters">1</Option>
-          <Option Id="NoCombineLuts">1</Option>
+          <Option Id="Directive">7</Option>
+          <Option Id="ShregMinSize">5</Option>
         </Step>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
