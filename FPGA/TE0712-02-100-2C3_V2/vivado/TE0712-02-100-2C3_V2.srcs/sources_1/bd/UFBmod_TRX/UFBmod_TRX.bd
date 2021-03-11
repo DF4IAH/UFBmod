@@ -1,12 +1,12 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x607D555D779828CC",
+      "boundary_crc": "0x607D555DC793D61A",
       "device": "xc7a100tfgg484-2",
       "name": "UFBmod_TRX",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Singular",
-      "tool_version": "2020.1.1",
+      "tool_version": "2020.2",
       "validated": "true"
     },
     "design_tree": {
@@ -14,7 +14,6 @@
       "TRX_io_reset_counter_binary_0": "",
       "TRX_LVDS": {
         "TRX_rx09_concat": {
-          "TRX_rx09_xlconcat_0": "",
           "TRX_rx_xlslice_00to00": "",
           "TRX_rx_xlslice_02to02": "",
           "TRX_rx_xlslice_04to04": "",
@@ -22,10 +21,10 @@
           "TRX_rx_xlslice_10to10": "",
           "TRX_rx_xlslice_12to12": "",
           "TRX_rx_xlslice_14to14": "",
-          "TRX_rx_xlslice_08to08": ""
+          "TRX_rx_xlslice_08to08": "",
+          "TRX_rx09_xlconcat_0": ""
         },
         "TRX_rx24_concat": {
-          "TRX_rx24_xlconcat_0": "",
           "TRX_rx_xlslice_15to15": "",
           "TRX_rx_xlslice_13to13": "",
           "TRX_rx_xlslice_11to11": "",
@@ -33,13 +32,13 @@
           "TRX_rx_xlslice_07to07": "",
           "TRX_rx_xlslice_05to05": "",
           "TRX_rx_xlslice_03to03": "",
-          "TRX_rx_xlslice_01to01": ""
+          "TRX_rx_xlslice_01to01": "",
+          "TRX_rx24_xlconcat_0": ""
         },
         "TRX_rx09_fifo_generator_0": "",
         "TRX_rx24_fifo_generator_0": "",
         "TRX_tx09_fifo_generator_0": "",
         "TRX_tx_concat": {
-          "TRX_tx_LVDS_interleave_xlconcat_0": "",
           "xlslice_00to00": "",
           "xlslice_01to01": "",
           "xlslice_02to02": "",
@@ -48,36 +47,37 @@
           "xlslice_05to05": "",
           "xlslice_06to06": "",
           "xlslice_07to07": "",
-          "TRX_tx_word_format_xlconcat_0": "",
           "xlconstant_val0_len1": "",
           "xlconstant_val1_len1": "",
+          "TRX_blank_tx_c_shift_ram_0": "",
           "TRX_blank_tx_util_vector_logic_0": "",
-          "TRX_blank_tx_xlconcat_0": "",
           "TRX_blank_tx_util_vector_logic_1": "",
-          "TRX_blank_tx_c_shift_ram_0": ""
+          "TRX_blank_tx_xlconcat_0": "",
+          "TRX_tx_LVDS_interleave_xlconcat_0": "",
+          "TRX_tx_word_format_xlconcat_0": ""
         },
         "TRX_LVDS_selectio_wiz_0": "",
         "xlconstant_val1_len1": "",
-        "TRX_LVDS_util_ds_buf_0": "",
-        "xlconstant_val0_len2": ""
+        "xlconstant_val0_len2": "",
+        "TRX_LVDS_util_ds_buf_0": ""
       },
       "TRX_rx_FFT_unit": {
         "TRX_rx_FFT_calc": {
           "delay_rx09_3459minus1024clk": {
             "c_shift_ram_dly386_1": "",
-            "xlconcat_0": "",
             "fifo_generator_dly2049_0": "",
-            "xlconstant_val1_len1": ""
+            "xlconstant_val1_len1": "",
+            "xlconcat_0": ""
           },
           "cordic_rx09": "",
           "rx09_xlslice_15to0": "",
-          "fft_rx09_s_data_xlconcat_0": "",
-          "cordic_rx09_xlconcat_0": "",
           "cordic_rx09_addra_xlslice_9to0": "",
-          "xfft_rx09_dly3459": "",
           "window_rx09_re_mult_gen_0": "",
           "window_rx09_im_mult_gen_0": "",
-          "window_coef_rom_blk_mem_gen_0": ""
+          "window_coef_rom_blk_mem_gen_0": "",
+          "cordic_rx09_xlconcat_0": "",
+          "fft_rx09_s_data_xlconcat_0": "",
+          "xfft_rx09_dly3459": ""
         },
         "pre_fft_rx09_blk_mem_gen_0": "",
         "post_fft_rx09_ch00_blk_mem_gen_0": "",
@@ -86,16 +86,15 @@
         "post_fft_rx09_xlslice_9to0": "",
         "xlconstant_val1_len1": "",
         "post_fft_mem_a_rx09_util_reduced_logic_0": "",
-        "post_fft_mem_a_rx09_xlconcat_0": "",
         "PUSHDATA": {
-          "pushdata_rx09_xlconcat_0": "",
           "pushdata_rx09_xlslice_31to16": "",
           "pushdata_rx09_xlslice_8to8": "",
           "fifo_generator_0": "",
           "pushdata_rx09_util_reduced_logic_0": "",
-          "pushdata_rx09_xlconcat_1": "",
           "pushdata_rx09_c_shift_ram_0": "",
-          "TRX_FIFO_Arbiter_0": ""
+          "TRX_FIFO_Arbiter_0": "",
+          "pushdata_rx09_xlconcat_0": "",
+          "pushdata_rx09_xlconcat_1": ""
         },
         "post_fft_rx09_ch01_blk_mem_gen": "",
         "post_fft_rx09_ch02_blk_mem_gen": "",
@@ -104,20 +103,20 @@
         "post_fft_rx09_ch05_blk_mem_gen": "",
         "post_fft_rx09_ch06_blk_mem_gen": "",
         "post_fft_rx09_ch07_blk_mem_gen": "",
-        "TRX_post_fft_rx09_decoder_0": ""
+        "TRX_post_fft_rx09_decoder_0": "",
+        "post_fft_mem_a_rx09_xlconcat_0": ""
       },
       "TRX_config": {
         "TRX_gpio_xlslice_31to31_resetn_0": "",
         "TRX_gpio_xlslice_30to30_rfxmode_0": "",
         "TRX_gpio_xlslice_0to0_blankTx_0": "",
-        "TRX_gpio_xlconcat_0": "",
-        "TRX_gpio_xlslice_1to1_proc_sys_reset_aux_0": ""
+        "TRX_gpio_xlslice_1to1_proc_sys_reset_aux_0": "",
+        "TRX_gpio_xlconcat_0": ""
       },
       "TRX_clock": {
         "TRX_PLL_clk_wiz_0": "",
         "TRX_PLL_util_ds_buf_0": ""
       },
-      "TRX_reset_util_vector_logic_0": "",
       "TRX_tx_DDS_unit": {
         "TRX_tx_4to1_c_counter_binary_0": "",
         "TRX_tx0_re_xlslice_12to00": "",
@@ -146,15 +145,16 @@
           "xlslice_30to30": "",
           "pulldata_tx09_c_shift_ram_0": "",
           "pulldata_tx09_util_reduced_logic_0": "",
+          "xlslice_14to8": "",
+          "xlslice_29to29": "",
+          "xlslice_28to28": "",
           "pulldata_tx09_util_vector_logic_0": "",
           "pulldata_tx09_xlconcat_1": "",
-          "xlslice_14to8": "",
-          "xlconcat_0": "",
-          "xlslice_29to29": "",
-          "xlslice_28to28": ""
+          "xlconcat_0": ""
         },
         "TRX_CDC_dds_tx0_xlconcat_0": ""
-      }
+      },
+      "TRX_reset_util_vector_logic_0": ""
     },
     "interface_ports": {
       "TRX_rx_clk_64MHz": {
@@ -371,14 +371,6 @@
           "LAYERED_METADATA": {
             "value": "undef",
             "value_src": "default"
-          },
-          "PortType": {
-            "value": "data",
-            "value_src": "ip_prop"
-          },
-          "PortType.PROP_SRC": {
-            "value": "false",
-            "value_src": "ip_prop"
           }
         }
       },
@@ -412,14 +404,6 @@
           "LAYERED_METADATA": {
             "value": "undef",
             "value_src": "default"
-          },
-          "PortType": {
-            "value": "data",
-            "value_src": "ip_prop"
-          },
-          "PortType.PROP_SRC": {
-            "value": "false",
-            "value_src": "ip_prop"
           }
         }
       },
@@ -447,14 +431,6 @@
           "LAYERED_METADATA": {
             "value": "undef",
             "value_src": "default"
-          },
-          "PortType": {
-            "value": "data",
-            "value_src": "ip_prop"
-          },
-          "PortType.PROP_SRC": {
-            "value": "false",
-            "value_src": "ip_prop"
           }
         }
       },
@@ -1206,13 +1182,7 @@
       "TRX_TX_DDS_GPIO2_o": {
         "direction": "I",
         "left": "31",
-        "right": "0",
-        "parameters": {
-          "LAYERED_METADATA": {
-            "value": "",
-            "value_src": "weak"
-          }
-        }
+        "right": "0"
       },
       "TRX_TX_DDS_GPIO1_i": {
         "direction": "O",
@@ -1233,24 +1203,12 @@
       "TRX_TX_DDSAMPL_GPIO1_o": {
         "direction": "I",
         "left": "15",
-        "right": "0",
-        "parameters": {
-          "LAYERED_METADATA": {
-            "value": "",
-            "value_src": "weak"
-          }
-        }
+        "right": "0"
       },
       "TRX_TX_DDSAMPL_GPIO2_o": {
         "direction": "I",
         "left": "15",
-        "right": "0",
-        "parameters": {
-          "LAYERED_METADATA": {
-            "value": "",
-            "value_src": "weak"
-          }
-        }
+        "right": "0"
       },
       "TRX_RX_PUSHDATA_GPIO2_o": {
         "direction": "I",
@@ -1277,10 +1235,6 @@
           "LAYERED_METADATA": {
             "value": "undef",
             "value_src": "default"
-          },
-          "PortWidth": {
-            "value": "32",
-            "value_src": "ip_prop"
           }
         }
       }
@@ -1455,15 +1409,6 @@
               }
             },
             "components": {
-              "TRX_rx09_xlconcat_0": {
-                "vlnv": "xilinx.com:ip:xlconcat:2.1",
-                "xci_name": "UFBmod_TRX_TRX_rx09_xlconcat_0_1",
-                "parameters": {
-                  "NUM_PORTS": {
-                    "value": "8"
-                  }
-                }
-              },
               "TRX_rx_xlslice_00to00": {
                 "vlnv": "xilinx.com:ip:xlslice:1.0",
                 "xci_name": "UFBmod_TRX_TRX_rx_xlslice_00to00_1",
@@ -1607,6 +1552,18 @@
                     "value": "1"
                   }
                 }
+              },
+              "TRX_rx09_xlconcat_0": {
+                "vlnv": "xilinx.com:ip:xlconcat:2.1",
+                "xci_name": "UFBmod_TRX_TRX_rx09_xlconcat_0_1",
+                "parameters": {
+                  "NUM_PORTS": {
+                    "value": "8"
+                  },
+                  "dout_width": {
+                    "value": "8"
+                  }
+                }
               }
             },
             "nets": {
@@ -1693,15 +1650,6 @@
               }
             },
             "components": {
-              "TRX_rx24_xlconcat_0": {
-                "vlnv": "xilinx.com:ip:xlconcat:2.1",
-                "xci_name": "UFBmod_TRX_TRX_rx24_xlconcat_0_1",
-                "parameters": {
-                  "NUM_PORTS": {
-                    "value": "8"
-                  }
-                }
-              },
               "TRX_rx_xlslice_15to15": {
                 "vlnv": "xilinx.com:ip:xlslice:1.0",
                 "xci_name": "UFBmod_TRX_TRX_rx_xlslice_15to15_1",
@@ -1843,6 +1791,18 @@
                   },
                   "DOUT_WIDTH": {
                     "value": "1"
+                  }
+                }
+              },
+              "TRX_rx24_xlconcat_0": {
+                "vlnv": "xilinx.com:ip:xlconcat:2.1",
+                "xci_name": "UFBmod_TRX_TRX_rx24_xlconcat_0_1",
+                "parameters": {
+                  "NUM_PORTS": {
+                    "value": "8"
+                  },
+                  "dout_width": {
+                    "value": "8"
                   }
                 }
               }
@@ -2125,15 +2085,6 @@
               }
             },
             "components": {
-              "TRX_tx_LVDS_interleave_xlconcat_0": {
-                "vlnv": "xilinx.com:ip:xlconcat:2.1",
-                "xci_name": "UFBmod_TRX_TRX_tx_LVDS_interleave_xlconcat_0_1",
-                "parameters": {
-                  "NUM_PORTS": {
-                    "value": "16"
-                  }
-                }
-              },
               "xlslice_00to00": {
                 "vlnv": "xilinx.com:ip:xlslice:1.0",
                 "xci_name": "UFBmod_TRX_xlslice_00to00_1",
@@ -2269,39 +2220,6 @@
                   }
                 }
               },
-              "TRX_tx_word_format_xlconcat_0": {
-                "vlnv": "xilinx.com:ip:xlconcat:2.1",
-                "xci_name": "UFBmod_TRX_TRX_tx_word_format_xlconcat_0_1",
-                "parameters": {
-                  "IN0_WIDTH": {
-                    "value": "1"
-                  },
-                  "IN1_WIDTH": {
-                    "value": "13"
-                  },
-                  "IN2_WIDTH": {
-                    "value": "1"
-                  },
-                  "IN3_WIDTH": {
-                    "value": "1"
-                  },
-                  "IN4_WIDTH": {
-                    "value": "1"
-                  },
-                  "IN5_WIDTH": {
-                    "value": "13"
-                  },
-                  "IN6_WIDTH": {
-                    "value": "1"
-                  },
-                  "IN7_WIDTH": {
-                    "value": "1"
-                  },
-                  "NUM_PORTS": {
-                    "value": "8"
-                  }
-                }
-              },
               "xlconstant_val0_len1": {
                 "vlnv": "xilinx.com:ip:xlconstant:1.1",
                 "xci_name": "UFBmod_TRX_xlconstant_val0_len1_2",
@@ -2315,12 +2233,42 @@
                 "vlnv": "xilinx.com:ip:xlconstant:1.1",
                 "xci_name": "UFBmod_TRX_xlconstant_val1_len1_5"
               },
+              "TRX_blank_tx_c_shift_ram_0": {
+                "vlnv": "xilinx.com:ip:c_shift_ram:12.0",
+                "xci_name": "UFBmod_TRX_TRX_blank_tx_c_shift_ram_0_1",
+                "parameters": {
+                  "AsyncInitVal": {
+                    "value": "0"
+                  },
+                  "DefaultData": {
+                    "value": "0"
+                  },
+                  "Depth": {
+                    "value": "2"
+                  },
+                  "Width": {
+                    "value": "1"
+                  }
+                }
+              },
               "TRX_blank_tx_util_vector_logic_0": {
                 "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
                 "xci_name": "UFBmod_TRX_TRX_blank_tx_util_vector_logic_0_1",
                 "parameters": {
                   "C_SIZE": {
                     "value": "16"
+                  }
+                }
+              },
+              "TRX_blank_tx_util_vector_logic_1": {
+                "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+                "xci_name": "UFBmod_TRX_TRX_blank_tx_util_vector_logic_1_1",
+                "parameters": {
+                  "C_OPERATION": {
+                    "value": "not"
+                  },
+                  "C_SIZE": {
+                    "value": "1"
                   }
                 }
               },
@@ -2378,36 +2326,57 @@
                   },
                   "NUM_PORTS": {
                     "value": "16"
+                  },
+                  "dout_width": {
+                    "value": "16"
                   }
                 }
               },
-              "TRX_blank_tx_util_vector_logic_1": {
-                "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
-                "xci_name": "UFBmod_TRX_TRX_blank_tx_util_vector_logic_1_1",
+              "TRX_tx_LVDS_interleave_xlconcat_0": {
+                "vlnv": "xilinx.com:ip:xlconcat:2.1",
+                "xci_name": "UFBmod_TRX_TRX_tx_LVDS_interleave_xlconcat_0_1",
                 "parameters": {
-                  "C_OPERATION": {
-                    "value": "not"
+                  "NUM_PORTS": {
+                    "value": "16"
                   },
-                  "C_SIZE": {
-                    "value": "1"
+                  "dout_width": {
+                    "value": "16"
                   }
                 }
               },
-              "TRX_blank_tx_c_shift_ram_0": {
-                "vlnv": "xilinx.com:ip:c_shift_ram:12.0",
-                "xci_name": "UFBmod_TRX_TRX_blank_tx_c_shift_ram_0_1",
+              "TRX_tx_word_format_xlconcat_0": {
+                "vlnv": "xilinx.com:ip:xlconcat:2.1",
+                "xci_name": "UFBmod_TRX_TRX_tx_word_format_xlconcat_0_1",
                 "parameters": {
-                  "AsyncInitVal": {
-                    "value": "0"
-                  },
-                  "DefaultData": {
-                    "value": "0"
-                  },
-                  "Depth": {
-                    "value": "2"
-                  },
-                  "Width": {
+                  "IN0_WIDTH": {
                     "value": "1"
+                  },
+                  "IN1_WIDTH": {
+                    "value": "13"
+                  },
+                  "IN2_WIDTH": {
+                    "value": "1"
+                  },
+                  "IN3_WIDTH": {
+                    "value": "1"
+                  },
+                  "IN4_WIDTH": {
+                    "value": "1"
+                  },
+                  "IN5_WIDTH": {
+                    "value": "13"
+                  },
+                  "IN6_WIDTH": {
+                    "value": "1"
+                  },
+                  "IN7_WIDTH": {
+                    "value": "1"
+                  },
+                  "NUM_PORTS": {
+                    "value": "8"
+                  },
+                  "dout_width": {
+                    "value": "32"
                   }
                 }
               }
@@ -2424,9 +2393,9 @@
                   "TRX_tx_LVDS_interleave_xlconcat_0/In11",
                   "TRX_tx_LVDS_interleave_xlconcat_0/In13",
                   "TRX_tx_LVDS_interleave_xlconcat_0/In15",
-                  "TRX_tx_word_format_xlconcat_0/In6",
+                  "TRX_tx_word_format_xlconcat_0/In0",
                   "TRX_tx_word_format_xlconcat_0/In3",
-                  "TRX_tx_word_format_xlconcat_0/In0"
+                  "TRX_tx_word_format_xlconcat_0/In6"
                 ]
               },
               "TRX_tx09_fifo_dout_0": {
@@ -2457,8 +2426,8 @@
               "xlconstant_val1_len1_dout": {
                 "ports": [
                   "xlconstant_val1_len1/dout",
-                  "TRX_tx_word_format_xlconcat_0/In7",
-                  "TRX_tx_word_format_xlconcat_0/In2"
+                  "TRX_tx_word_format_xlconcat_0/In2",
+                  "TRX_tx_word_format_xlconcat_0/In7"
                 ]
               },
               "TRX_tx_PTT_in_0": {
@@ -2661,15 +2630,6 @@
               }
             }
           },
-          "TRX_LVDS_util_ds_buf_0": {
-            "vlnv": "xilinx.com:ip:util_ds_buf:2.1",
-            "xci_name": "UFBmod_TRX_TRX_LVDS_util_ds_buf_0_1",
-            "parameters": {
-              "C_BUF_TYPE": {
-                "value": "BUFG"
-              }
-            }
-          },
           "xlconstant_val0_len2": {
             "vlnv": "xilinx.com:ip:xlconstant:1.1",
             "xci_name": "UFBmod_TRX_xlconstant_0_0",
@@ -2679,6 +2639,15 @@
               },
               "CONST_WIDTH": {
                 "value": "2"
+              }
+            }
+          },
+          "TRX_LVDS_util_ds_buf_0": {
+            "vlnv": "xilinx.com:ip:util_ds_buf:2.1",
+            "xci_name": "UFBmod_TRX_TRX_LVDS_util_ds_buf_0_1",
+            "parameters": {
+              "C_BUF_TYPE": {
+                "value": "BUFG"
               }
             }
           }
@@ -3332,18 +3301,6 @@
                       }
                     }
                   },
-                  "xlconcat_0": {
-                    "vlnv": "xilinx.com:ip:xlconcat:2.1",
-                    "xci_name": "UFBmod_TRX_xlconcat_0_2",
-                    "parameters": {
-                      "IN0_WIDTH": {
-                        "value": "2"
-                      },
-                      "IN1_WIDTH": {
-                        "value": "30"
-                      }
-                    }
-                  },
                   "fifo_generator_dly2049_0": {
                     "vlnv": "xilinx.com:ip:fifo_generator:13.2",
                     "xci_name": "UFBmod_TRX_fifo_generator_dly2049_0_1",
@@ -3362,6 +3319,21 @@
                   "xlconstant_val1_len1": {
                     "vlnv": "xilinx.com:ip:xlconstant:1.1",
                     "xci_name": "UFBmod_TRX_xlconstant_val1_len1_6"
+                  },
+                  "xlconcat_0": {
+                    "vlnv": "xilinx.com:ip:xlconcat:2.1",
+                    "xci_name": "UFBmod_TRX_xlconcat_0_2",
+                    "parameters": {
+                      "IN0_WIDTH": {
+                        "value": "2"
+                      },
+                      "IN1_WIDTH": {
+                        "value": "30"
+                      },
+                      "dout_width": {
+                        "value": "32"
+                      }
+                    }
                   }
                 },
                 "nets": {
@@ -3478,51 +3450,6 @@
                   }
                 }
               },
-              "fft_rx09_s_data_xlconcat_0": {
-                "vlnv": "xilinx.com:ip:xlconcat:2.1",
-                "xci_name": "UFBmod_TRX_fft_rx09_s_data_xlconcat_0_1",
-                "parameters": {
-                  "IN0_WIDTH": {
-                    "value": "16"
-                  },
-                  "IN1_WIDTH": {
-                    "value": "16"
-                  },
-                  "IN2_WIDTH": {
-                    "value": "13"
-                  },
-                  "IN3_WIDTH": {
-                    "value": "3"
-                  },
-                  "IN4_WIDTH": {
-                    "value": "13"
-                  },
-                  "IN5_WIDTH": {
-                    "value": "3"
-                  },
-                  "IN6_WIDTH": {
-                    "value": "13"
-                  },
-                  "IN7_WIDTH": {
-                    "value": "3"
-                  },
-                  "NUM_PORTS": {
-                    "value": "2"
-                  }
-                }
-              },
-              "cordic_rx09_xlconcat_0": {
-                "vlnv": "xilinx.com:ip:xlconcat:2.1",
-                "xci_name": "UFBmod_TRX_cordic_rx09_xlconcat_0_1",
-                "parameters": {
-                  "IN0_WIDTH": {
-                    "value": "10"
-                  },
-                  "IN1_WIDTH": {
-                    "value": "32"
-                  }
-                }
-              },
               "cordic_rx09_addra_xlslice_9to0": {
                 "vlnv": "xilinx.com:ip:xlslice:1.0",
                 "xci_name": "UFBmod_TRX_cordic_rx09_addra_xlslice_9to0_1",
@@ -3535,72 +3462,6 @@
                   },
                   "DOUT_WIDTH": {
                     "value": "10"
-                  }
-                }
-              },
-              "xfft_rx09_dly3459": {
-                "vlnv": "xilinx.com:ip:xfft:9.1",
-                "xci_name": "UFBmod_TRX_xfft_rx09_dly3459_1",
-                "parameters": {
-                  "aresetn": {
-                    "value": "true"
-                  },
-                  "butterfly_type": {
-                    "value": "use_xtremedsp_slices"
-                  },
-                  "channels": {
-                    "value": "1"
-                  },
-                  "complex_mult_type": {
-                    "value": "use_mults_performance"
-                  },
-                  "cyclic_prefix_insertion": {
-                    "value": "false"
-                  },
-                  "data_format": {
-                    "value": "fixed_point"
-                  },
-                  "implementation_options": {
-                    "value": "radix_4_burst_io"
-                  },
-                  "input_width": {
-                    "value": "16"
-                  },
-                  "memory_options_data": {
-                    "value": "block_ram"
-                  },
-                  "memory_options_hybrid": {
-                    "value": "true"
-                  },
-                  "memory_options_phase_factors": {
-                    "value": "block_ram"
-                  },
-                  "number_of_stages_using_block_ram_for_data_and_phase_factors": {
-                    "value": "0"
-                  },
-                  "output_ordering": {
-                    "value": "bit_reversed_order"
-                  },
-                  "rounding_modes": {
-                    "value": "convergent_rounding"
-                  },
-                  "scaling_options": {
-                    "value": "unscaled"
-                  },
-                  "target_clock_frequency": {
-                    "value": "100"
-                  },
-                  "target_data_throughput": {
-                    "value": "50"
-                  },
-                  "throttle_scheme": {
-                    "value": "realtime"
-                  },
-                  "transform_length": {
-                    "value": "1024"
-                  },
-                  "xk_index": {
-                    "value": "true"
                   }
                 }
               },
@@ -3726,6 +3587,123 @@
                     "value": "Stand_Alone"
                   }
                 }
+              },
+              "cordic_rx09_xlconcat_0": {
+                "vlnv": "xilinx.com:ip:xlconcat:2.1",
+                "xci_name": "UFBmod_TRX_cordic_rx09_xlconcat_0_1",
+                "parameters": {
+                  "IN0_WIDTH": {
+                    "value": "10"
+                  },
+                  "IN1_WIDTH": {
+                    "value": "32"
+                  },
+                  "dout_width": {
+                    "value": "42"
+                  }
+                }
+              },
+              "fft_rx09_s_data_xlconcat_0": {
+                "vlnv": "xilinx.com:ip:xlconcat:2.1",
+                "xci_name": "UFBmod_TRX_fft_rx09_s_data_xlconcat_0_1",
+                "parameters": {
+                  "IN0_WIDTH": {
+                    "value": "16"
+                  },
+                  "IN1_WIDTH": {
+                    "value": "16"
+                  },
+                  "IN2_WIDTH": {
+                    "value": "13"
+                  },
+                  "IN3_WIDTH": {
+                    "value": "3"
+                  },
+                  "IN4_WIDTH": {
+                    "value": "13"
+                  },
+                  "IN5_WIDTH": {
+                    "value": "3"
+                  },
+                  "IN6_WIDTH": {
+                    "value": "13"
+                  },
+                  "IN7_WIDTH": {
+                    "value": "3"
+                  },
+                  "NUM_PORTS": {
+                    "value": "2"
+                  },
+                  "dout_width": {
+                    "value": "32"
+                  }
+                }
+              },
+              "xfft_rx09_dly3459": {
+                "vlnv": "xilinx.com:ip:xfft:9.1",
+                "xci_name": "UFBmod_TRX_xfft_rx09_dly3459_1",
+                "parameters": {
+                  "aresetn": {
+                    "value": "true"
+                  },
+                  "butterfly_type": {
+                    "value": "use_xtremedsp_slices"
+                  },
+                  "channels": {
+                    "value": "1"
+                  },
+                  "complex_mult_type": {
+                    "value": "use_mults_performance"
+                  },
+                  "cyclic_prefix_insertion": {
+                    "value": "false"
+                  },
+                  "data_format": {
+                    "value": "fixed_point"
+                  },
+                  "implementation_options": {
+                    "value": "radix_4_burst_io"
+                  },
+                  "input_width": {
+                    "value": "16"
+                  },
+                  "memory_options_data": {
+                    "value": "block_ram"
+                  },
+                  "memory_options_hybrid": {
+                    "value": "true"
+                  },
+                  "memory_options_phase_factors": {
+                    "value": "block_ram"
+                  },
+                  "number_of_stages_using_block_ram_for_data_and_phase_factors": {
+                    "value": "0"
+                  },
+                  "output_ordering": {
+                    "value": "bit_reversed_order"
+                  },
+                  "rounding_modes": {
+                    "value": "convergent_rounding"
+                  },
+                  "scaling_options": {
+                    "value": "unscaled"
+                  },
+                  "target_clock_frequency": {
+                    "value": "100"
+                  },
+                  "target_data_throughput": {
+                    "value": "50"
+                  },
+                  "throttle_scheme": {
+                    "value": "realtime"
+                  },
+                  "transform_length": {
+                    "value": "1024"
+                  },
+                  "xk_index": {
+                    "value": "true"
+                  }
+                }
               }
             },
             "nets": {
@@ -3752,10 +3730,10 @@
                   "s_axi_aclk_CD100_in",
                   "cordic_rx09/aclk",
                   "delay_rx09_3459minus1024clk/s_axi_aclk_CD100_i",
-                  "xfft_rx09_dly3459/aclk",
                   "window_rx09_re_mult_gen_0/CLK",
                   "window_rx09_im_mult_gen_0/CLK",
-                  "window_coef_rom_blk_mem_gen_0/clka"
+                  "window_coef_rom_blk_mem_gen_0/clka",
+                  "xfft_rx09_dly3459/aclk"
                 ]
               },
               "fft09_data_tlast_in_0": {
@@ -3924,8 +3902,8 @@
               "aresetn_CD100_0": {
                 "ports": [
                   "aresetn_CD100_in",
-                  "xfft_rx09_dly3459/aresetn",
-                  "cordic_rx09/aresetn"
+                  "cordic_rx09/aresetn",
+                  "xfft_rx09_dly3459/aresetn"
                 ]
               }
             }
@@ -4111,18 +4089,6 @@
               }
             }
           },
-          "post_fft_mem_a_rx09_xlconcat_0": {
-            "vlnv": "xilinx.com:ip:xlconcat:2.1",
-            "xci_name": "UFBmod_TRX_post_fft_mem_a_rx09_xlconcat_0_1",
-            "parameters": {
-              "IN0_WIDTH": {
-                "value": "10"
-              },
-              "IN1_WIDTH": {
-                "value": "1"
-              }
-            }
-          },
           "PUSHDATA": {
             "ports": {
               "s_axi_aclk_CD100_in": {
@@ -4266,27 +4232,6 @@
               }
             },
             "components": {
-              "pushdata_rx09_xlconcat_0": {
-                "vlnv": "xilinx.com:ip:xlconcat:2.1",
-                "xci_name": "UFBmod_TRX_pushdata_rx09_xlconcat_0_1",
-                "parameters": {
-                  "IN0_WIDTH": {
-                    "value": "8"
-                  },
-                  "IN1_WIDTH": {
-                    "value": "22"
-                  },
-                  "IN2_WIDTH": {
-                    "value": "1"
-                  },
-                  "IN3_WIDTH": {
-                    "value": "1"
-                  },
-                  "NUM_PORTS": {
-                    "value": "4"
-                  }
-                }
-              },
               "pushdata_rx09_xlslice_31to16": {
                 "vlnv": "xilinx.com:ip:xlslice:1.0",
                 "xci_name": "UFBmod_TRX_pushdata_rx09_xlslice_31to16_1",
@@ -4327,18 +4272,6 @@
                 "parameters": {
                   "C_SIZE": {
                     "value": "2"
-                  }
-                }
-              },
-              "pushdata_rx09_xlconcat_1": {
-                "vlnv": "xilinx.com:ip:xlconcat:2.1",
-                "xci_name": "UFBmod_TRX_xlconcat_0_4",
-                "parameters": {
-                  "IN0_WIDTH": {
-                    "value": "1"
-                  },
-                  "IN1_WIDTH": {
-                    "value": "1"
                   }
                 }
               },
@@ -4565,6 +4498,42 @@
                     "right": "0"
                   }
                 }
+              },
+              "pushdata_rx09_xlconcat_0": {
+                "vlnv": "xilinx.com:ip:xlconcat:2.1",
+                "xci_name": "UFBmod_TRX_pushdata_rx09_xlconcat_0_1",
+                "parameters": {
+                  "IN0_WIDTH": {
+                    "value": "8"
+                  },
+                  "IN1_WIDTH": {
+                    "value": "22"
+                  },
+                  "IN2_WIDTH": {
+                    "value": "1"
+                  },
+                  "IN3_WIDTH": {
+                    "value": "1"
+                  },
+                  "NUM_PORTS": {
+                    "value": "4"
+                  },
+                  "dout_width": {
+                    "value": "32"
+                  }
+                }
+              },
+              "pushdata_rx09_xlconcat_1": {
+                "vlnv": "xilinx.com:ip:xlconcat:2.1",
+                "xci_name": "UFBmod_TRX_xlconcat_0_4",
+                "parameters": {
+                  "IN0_WIDTH": {
+                    "value": "1"
+                  },
+                  "IN1_WIDTH": {
+                    "value": "1"
+                  }
+                }
               }
             },
             "nets": {
@@ -4635,8 +4604,8 @@
               "pushdata_rx09_xlslice_8to8_Dout": {
                 "ports": [
                   "pushdata_rx09_xlslice_8to8/Dout",
-                  "pushdata_rx09_xlconcat_1/In0",
-                  "pushdata_rx09_c_shift_ram_0/D"
+                  "pushdata_rx09_c_shift_ram_0/D",
+                  "pushdata_rx09_xlconcat_1/In0"
                 ]
               },
               "pushdata_rx09_c_shift_ram_0_Q": {
@@ -5355,6 +5324,21 @@
                 "direction": "O"
               }
             }
+          },
+          "post_fft_mem_a_rx09_xlconcat_0": {
+            "vlnv": "xilinx.com:ip:xlconcat:2.1",
+            "xci_name": "UFBmod_TRX_post_fft_mem_a_rx09_xlconcat_0_1",
+            "parameters": {
+              "IN0_WIDTH": {
+                "value": "10"
+              },
+              "IN1_WIDTH": {
+                "value": "1"
+              },
+              "dout_width": {
+                "value": "11"
+              }
+            }
           }
         },
         "nets": {
@@ -5464,8 +5448,8 @@
           "TRX_rx_rf09_Cordic_rx09_tvalid_0": {
             "ports": [
               "TRX_rx_FFT_calc/cordic_rx09_tvalid_out",
-              "post_fft_mem_a_rx09_xlconcat_0/In1",
-              "TRX_post_fft_rx09_decoder_0/tvalid"
+              "TRX_post_fft_rx09_decoder_0/tvalid",
+              "post_fft_mem_a_rx09_xlconcat_0/In1"
             ]
           },
           "TRX_rx_rf09_Pre_FFT_mem_addra_0": {
@@ -5551,8 +5535,8 @@
           "TRX_rx_rf09_Post_FFT_xlslice_14downto0_dout_0": {
             "ports": [
               "post_fft_rx09_xlslice_9to0/Dout",
-              "post_fft_mem_a_rx09_xlconcat_0/In0",
-              "TRX_post_fft_rx09_decoder_0/addr_in"
+              "TRX_post_fft_rx09_decoder_0/addr_in",
+              "post_fft_mem_a_rx09_xlconcat_0/In0"
             ]
           },
           "val1_len1_0": {
@@ -6044,6 +6028,21 @@
             "vlnv": "xilinx.com:ip:xlslice:1.0",
             "xci_name": "UFBmod_TRX_TRX_gpio_xlslice_0downto0_blankTx_0_1"
           },
+          "TRX_gpio_xlslice_1to1_proc_sys_reset_aux_0": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "UFBmod_TRX_TRX_gpio_xlslice_0to0_blankTx_0_0",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "1"
+              },
+              "DIN_TO": {
+                "value": "1"
+              },
+              "DOUT_WIDTH": {
+                "value": "1"
+              }
+            }
+          },
           "TRX_gpio_xlconcat_0": {
             "vlnv": "xilinx.com:ip:xlconcat:2.1",
             "xci_name": "UFBmod_TRX_TRX_gpio_xlconcat_0_1",
@@ -6062,21 +6061,9 @@
               },
               "NUM_PORTS": {
                 "value": "4"
-              }
-            }
-          },
-          "TRX_gpio_xlslice_1to1_proc_sys_reset_aux_0": {
-            "vlnv": "xilinx.com:ip:xlslice:1.0",
-            "xci_name": "UFBmod_TRX_TRX_gpio_xlslice_0to0_blankTx_0_0",
-            "parameters": {
-              "DIN_FROM": {
-                "value": "1"
               },
-              "DIN_TO": {
-                "value": "1"
-              },
-              "DOUT_WIDTH": {
-                "value": "1"
+              "dout_width": {
+                "value": "32"
               }
             }
           }
@@ -6347,18 +6334,6 @@
               "TRX_PLL_clk_wiz_0/locked",
               "locked"
             ]
-          }
-        }
-      },
-      "TRX_reset_util_vector_logic_0": {
-        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
-        "xci_name": "UFBmod_TRX_TRX_reset_util_vector_logic_0_1",
-        "parameters": {
-          "C_OPERATION": {
-            "value": "not"
-          },
-          "C_SIZE": {
-            "value": "1"
           }
         }
       },
@@ -7133,30 +7108,6 @@
                   }
                 }
               },
-              "pulldata_tx09_util_vector_logic_0": {
-                "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
-                "xci_name": "UFBmod_TRX_pulldata_tx09_util_vector_logic_0_1",
-                "parameters": {
-                  "C_OPERATION": {
-                    "value": "not"
-                  },
-                  "C_SIZE": {
-                    "value": "1"
-                  }
-                }
-              },
-              "pulldata_tx09_xlconcat_1": {
-                "vlnv": "xilinx.com:ip:xlconcat:2.1",
-                "xci_name": "UFBmod_TRX_pulldata_tx09_xlconcat_1_1",
-                "parameters": {
-                  "IN0_WIDTH": {
-                    "value": "1"
-                  },
-                  "IN1_WIDTH": {
-                    "value": "1"
-                  }
-                }
-              },
               "xlslice_14to8": {
                 "vlnv": "xilinx.com:ip:xlslice:1.0",
                 "xci_name": "UFBmod_TRX_xlslice_14to8_1",
@@ -7169,18 +7120,6 @@
                   },
                   "DOUT_WIDTH": {
                     "value": "7"
-                  }
-                }
-              },
-              "xlconcat_0": {
-                "vlnv": "xilinx.com:ip:xlconcat:2.1",
-                "xci_name": "UFBmod_TRX_xlconcat_0_3",
-                "parameters": {
-                  "IN0_WIDTH": {
-                    "value": "31"
-                  },
-                  "IN1_WIDTH": {
-                    "value": "1"
                   }
                 }
               },
@@ -7211,6 +7150,45 @@
                   },
                   "DOUT_WIDTH": {
                     "value": "1"
+                  }
+                }
+              },
+              "pulldata_tx09_util_vector_logic_0": {
+                "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+                "xci_name": "UFBmod_TRX_pulldata_tx09_util_vector_logic_0_1",
+                "parameters": {
+                  "C_OPERATION": {
+                    "value": "not"
+                  },
+                  "C_SIZE": {
+                    "value": "1"
+                  }
+                }
+              },
+              "pulldata_tx09_xlconcat_1": {
+                "vlnv": "xilinx.com:ip:xlconcat:2.1",
+                "xci_name": "UFBmod_TRX_pulldata_tx09_xlconcat_1_1",
+                "parameters": {
+                  "IN0_WIDTH": {
+                    "value": "1"
+                  },
+                  "IN1_WIDTH": {
+                    "value": "1"
+                  }
+                }
+              },
+              "xlconcat_0": {
+                "vlnv": "xilinx.com:ip:xlconcat:2.1",
+                "xci_name": "UFBmod_TRX_xlconcat_0_3",
+                "parameters": {
+                  "IN0_WIDTH": {
+                    "value": "31"
+                  },
+                  "IN1_WIDTH": {
+                    "value": "1"
+                  },
+                  "dout_width": {
+                    "value": "32"
                   }
                 }
               }
@@ -7254,8 +7232,8 @@
               "xlslice_30to30_Dout": {
                 "ports": [
                   "xlslice_30to30/Dout",
-                  "pulldata_tx09_xlconcat_1/In0",
-                  "pulldata_tx09_c_shift_ram_0/D"
+                  "pulldata_tx09_c_shift_ram_0/D",
+                  "pulldata_tx09_xlconcat_1/In0"
                 ]
               },
               "pulldata_tx09_c_shift_ram_0_Q": {
@@ -7316,8 +7294,8 @@
               "TRX_TX_RF09_PULLDATA_FIFO_empty": {
                 "ports": [
                   "pulldata_tx09_fifo_generator_0/empty",
-                  "xlconcat_0/In1",
-                  "TRX_TX_RF09_PULLDATA_FIFO_empty"
+                  "TRX_TX_RF09_PULLDATA_FIFO_empty",
+                  "xlconcat_0/In1"
                 ]
               },
               "TRX_tx_data_count_0": {
@@ -7337,6 +7315,9 @@
               },
               "IN1_WIDTH": {
                 "value": "6"
+              },
+              "dout_width": {
+                "value": "32"
               }
             }
           }
@@ -7620,19 +7601,31 @@
             ]
           }
         }
+      },
+      "TRX_reset_util_vector_logic_0": {
+        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+        "xci_name": "UFBmod_TRX_TRX_reset_util_vector_logic_0_1",
+        "parameters": {
+          "C_OPERATION": {
+            "value": "not"
+          },
+          "C_SIZE": {
+            "value": "1"
+          }
+        }
       }
     },
     "interface_nets": {
-      "TRX_rx_clk_64MHz_1": {
-        "interface_ports": [
-          "TRX_rx_clk_64MHz",
-          "TRX_LVDS/TRX_rx_clk_64MHz"
-        ]
-      },
       "TRX_TRX_tx_clk": {
         "interface_ports": [
           "TRX_tx_clk",
           "TRX_LVDS/TRX_tx_clk"
+        ]
+      },
+      "TRX_rx_clk_64MHz_1": {
+        "interface_ports": [
+          "TRX_rx_clk_64MHz",
+          "TRX_LVDS/TRX_rx_clk_64MHz"
         ]
       }
     },

@@ -5,7 +5,7 @@
    "ExpandedHierarchyInLayout":"",
    "PinnedBlocks":"",
    "PinnedPorts":"",
-   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
 #  -string -flagsOSRD
 preplace port TRX_rx_clk_64MHz -pg 1 -lvl 0 -x -180 -y 2040 -defaultsOSRD
 preplace port TRX_tx_clk -pg 1 -lvl 5 -x 2260 -y 2060 -defaultsOSRD
@@ -129,8 +129,8 @@ preplace inst TRX_LVDS -pg 1 -lvl 4 -x 1820 -y 2160 -defaultsOSRD
 preplace inst TRX_rx_FFT_unit -pg 1 -lvl 4 -x 1820 -y 730 -defaultsOSRD
 preplace inst TRX_config -pg 1 -lvl 3 -x 950 -y 1430 -defaultsOSRD
 preplace inst TRX_clock -pg 1 -lvl 3 -x 950 -y 100 -defaultsOSRD
-preplace inst TRX_reset_util_vector_logic_0 -pg 1 -lvl 3 -x 950 -y 1900 -defaultsOSRD
 preplace inst TRX_tx_DDS_unit -pg 1 -lvl 3 -x 950 -y 1700 -defaultsOSRD
+preplace inst TRX_reset_util_vector_logic_0 -pg 1 -lvl 3 -x 950 -y 1900 -defaultsOSRD
 preplace netloc s_axi_aclk_0 1 0 4 NJ 1550 NJ 1550 650 1530 1320
 preplace netloc s_axi_aresetn_0 1 0 4 NJ 1520 NJ 1520 610 290 N
 preplace netloc TRX_clk_26MHz_0 1 0 3 NJ 100 NJ 100 NJ
@@ -253,8 +253,8 @@ preplace netloc TRX_rx_FFT_unit_TRX_RX_PUSHDATA_GPIO1_i 1 4 1 2140J 970n
 preplace netloc TRX_RX_PUSHDATA_GPIO2_o_1 1 0 4 20J 1190 NJ 1190 NJ 1190 NJ
 preplace netloc TRX_LVDS_TRX_LVDS_tx09_fifo_din 1 4 1 2140J 2250n
 preplace netloc proc_sys_reset_aux_1 1 0 4 30 1330 NJ 1330 NJ 1330 1220
-preplace netloc TRX_TRX_tx_clk 1 4 1 2240J 2060n
 preplace netloc TRX_rx_clk_64MHz_1 1 0 4 NJ 2040 NJ 2040 NJ 2040 NJ
+preplace netloc TRX_TRX_tx_clk 1 4 1 2240J 2060n
 levelinfo -pg 1 -180 210 500 950 1820 2260
 pagesize -pg 1 -db -bbox -sgen -550 0 2650 2350
 "

@@ -20,7 +20,7 @@ set script_folder [_tcl::get_script_folder]
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2020.1
+set scripts_vivado_version 2020.2
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
@@ -550,6 +550,7 @@ proc create_hier_cell_microblaze_0_local_memory { parentCell nameHier } {
    CONFIG.ECC_TYPE {0} \
    CONFIG.PROTOCOL {AXI4LITE} \
    CONFIG.SINGLE_PORT_BRAM {1} \
+   CONFIG.SUPPORTS_NARROW_BURST {0} \
  ] $axi_bram_ctrl_0
 
   # Create instance: dlmb_v10, and set properties
@@ -1004,7 +1005,7 @@ proc create_hier_cell_SCOPE { parentCell nameHier } {
    CONFIG.C_ALL_OUTPUTS {1} \
    CONFIG.C_GPIO_WIDTH {32} \
    CONFIG.C_IS_DUAL {1} \
-   CONFIG.C_TRI_DEFAULT {0xFFFF0000} \
+   CONFIG.C_TRI_DEFAULT {0xFFFFFFFF} \
  ] $SCOPE_axi_gpio_0
 
   # Create instance: SCOPE_axi_gpio_1, and set properties
@@ -2360,8 +2361,8 @@ proc create_hier_cell_CFG_Si5338 { parentCell nameHier } {
    CONFIG.PRIMITIVE {PLL} \
    CONFIG.PRIM_IN_FREQ {65} \
    CONFIG.PRIM_SOURCE {Global_buffer} \
-   CONFIG.RESET_PORT {resetn} \
-   CONFIG.RESET_TYPE {ACTIVE_LOW} \
+   CONFIG.RESET_PORT {reset} \
+   CONFIG.RESET_TYPE {ACTIVE_HIGH} \
    CONFIG.SECONDARY_IN_FREQ {100.000} \
    CONFIG.SECONDARY_SOURCE {Single_ended_clock_capable_pin} \
    CONFIG.USE_INCLK_SWITCHOVER {false} \

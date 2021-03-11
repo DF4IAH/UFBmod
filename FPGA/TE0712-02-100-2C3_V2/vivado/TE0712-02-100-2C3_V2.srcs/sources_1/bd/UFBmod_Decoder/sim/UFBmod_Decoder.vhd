@@ -1,8 +1,8 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
---Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Sat Nov 28 22:32:20 2020
---Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
+--Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+--Date        : Thu Mar 11 17:01:46 2021
+--Host        : DESKTOP-I3NV8HO running 64-bit major release  (build 9200)
 --Command     : generate_target UFBmod_Decoder.bd
 --Design      : UFBmod_Decoder
 --Purpose     : IP block netlist
@@ -134,21 +134,6 @@ architecture STRUCTURE of FFT_rx09_chXX_to_Decoder_imp_1G2C2U is
     P : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component UFBmod_Decoder_signal_correction_rx09_ch00_mult_gen_4clks_0;
-  component UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0 is
-  port (
-    aclk : in STD_LOGIC;
-    aclken : in STD_LOGIC;
-    s_axis_divisor_tvalid : in STD_LOGIC;
-    s_axis_divisor_tready : out STD_LOGIC;
-    s_axis_divisor_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axis_dividend_tvalid : in STD_LOGIC;
-    s_axis_dividend_tready : out STD_LOGIC;
-    s_axis_dividend_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    m_axis_dout_tvalid : out STD_LOGIC;
-    m_axis_dout_tuser : out STD_LOGIC_VECTOR ( 0 to 0 );
-    m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0;
   component UFBmod_Decoder_xlconstant_val256x32_len16_0 is
   port (
     dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
@@ -202,6 +187,21 @@ architecture STRUCTURE of FFT_rx09_chXX_to_Decoder_imp_1G2C2U is
     fft_rx09_chXX_frame_avail_ctr : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component UFBmod_Decoder_FFT_rx09_to_Decoder_FSM_0;
+  component UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0 is
+  port (
+    aclk : in STD_LOGIC;
+    aclken : in STD_LOGIC;
+    s_axis_divisor_tvalid : in STD_LOGIC;
+    s_axis_divisor_tready : out STD_LOGIC;
+    s_axis_divisor_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axis_dividend_tvalid : in STD_LOGIC;
+    s_axis_dividend_tready : out STD_LOGIC;
+    s_axis_dividend_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    m_axis_dout_tvalid : out STD_LOGIC;
+    m_axis_dout_tuser : out STD_LOGIC_VECTOR ( 0 to 0 );
+    m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0;
   signal TRX_channel_rx_rf09_id_1 : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal TRX_fft_rx09_chXX_signal_bins_blk_mem_gen_0_addrb_0 : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal TRX_post_fft_rx09_mem_a_EoT_0 : STD_LOGIC;
@@ -556,10 +556,10 @@ entity UFBmod_Decoder is
     clk_100MHz : in STD_LOGIC;
     reset_100MHz : in STD_LOGIC
   );
-  attribute core_generation_info : string;
-  attribute core_generation_info of UFBmod_Decoder : entity is "UFBmod_Decoder,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=UFBmod_Decoder,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=19,numReposBlks=16,numNonXlnxBlks=0,numHierBlks=3,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}";
-  attribute hw_handoff : string;
-  attribute hw_handoff of UFBmod_Decoder : entity is "UFBmod_Decoder.hwdef";
+  attribute CORE_GENERATION_INFO : string;
+  attribute CORE_GENERATION_INFO of UFBmod_Decoder : entity is "UFBmod_Decoder,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=UFBmod_Decoder,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=19,numReposBlks=16,numNonXlnxBlks=0,numHierBlks=3,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}";
+  attribute HW_HANDOFF : string;
+  attribute HW_HANDOFF of UFBmod_Decoder : entity is "UFBmod_Decoder.hwdef";
 end UFBmod_Decoder;
 
 architecture STRUCTURE of UFBmod_Decoder is
@@ -589,28 +589,28 @@ architecture STRUCTURE of UFBmod_Decoder is
   signal UFBmod_rx09_chXX_Decoder_TRX_decoder_rx_rf09_chXX_SoM_frameCtr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal clk_100MHz_0 : STD_LOGIC;
   signal reset_100MHz_0 : STD_LOGIC;
-  attribute x_interface_info : string;
-  attribute x_interface_info of clk_100MHz : signal is "xilinx.com:signal:clock:1.0 CLK.CLK_100MHZ CLK";
-  attribute x_interface_parameter : string;
-  attribute x_interface_parameter of clk_100MHz : signal is "XIL_INTERFACENAME CLK.CLK_100MHZ, ASSOCIATED_RESET reset_100MHz, CLK_DOMAIN UFBmod_Decoder_clk_100MHz, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.000";
-  attribute x_interface_info of reset_100MHz : signal is "xilinx.com:signal:reset:1.0 RST.RESET_100MHZ RST";
-  attribute x_interface_parameter of reset_100MHz : signal is "XIL_INTERFACENAME RST.RESET_100MHZ, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
-  attribute x_interface_info of TRX_channel_rx_rf09_id : signal is "xilinx.com:signal:data:1.0 DATA.TRX_CHANNEL_RX_RF09_ID DATA";
-  attribute x_interface_parameter of TRX_channel_rx_rf09_id : signal is "XIL_INTERFACENAME DATA.TRX_CHANNEL_RX_RF09_ID, LAYERED_METADATA undef";
-  attribute x_interface_info of TRX_decoder_rx_rf09_chXX_SoM_frameCtr : signal is "xilinx.com:signal:data:1.0 DATA.TRX_DECODER_RX_RF09_CHXX_SOM_FRAMECTR DATA";
-  attribute x_interface_parameter of TRX_decoder_rx_rf09_chXX_SoM_frameCtr : signal is "XIL_INTERFACENAME DATA.TRX_DECODER_RX_RF09_CHXX_SOM_FRAMECTR, LAYERED_METADATA undef";
-  attribute x_interface_info of TRX_decoder_rx_rf09_chXX_center_pos : signal is "xilinx.com:signal:data:1.0 DATA.TRX_DECODER_RX_RF09_CHXX_CENTER_POS DATA";
-  attribute x_interface_parameter of TRX_decoder_rx_rf09_chXX_center_pos : signal is "XIL_INTERFACENAME DATA.TRX_DECODER_RX_RF09_CHXX_CENTER_POS, LAYERED_METADATA undef";
-  attribute x_interface_info of TRX_decoder_rx_rf09_chXX_squelch_lvl : signal is "xilinx.com:signal:data:1.0 DATA.TRX_DECODER_RX_RF09_CHXX_SQUELCH_LVL DATA";
-  attribute x_interface_parameter of TRX_decoder_rx_rf09_chXX_squelch_lvl : signal is "XIL_INTERFACENAME DATA.TRX_DECODER_RX_RF09_CHXX_SQUELCH_LVL, LAYERED_METADATA undef";
-  attribute x_interface_info of TRX_decoder_rx_rf09_chXX_strength : signal is "xilinx.com:signal:data:1.0 DATA.TRX_DECODER_RX_RF09_CHXX_STRENGTH DATA";
-  attribute x_interface_parameter of TRX_decoder_rx_rf09_chXX_strength : signal is "XIL_INTERFACENAME DATA.TRX_DECODER_RX_RF09_CHXX_STRENGTH, LAYERED_METADATA undef";
-  attribute x_interface_info of TRX_post_fft_rx_rf09_chXX_mem_b_addr : signal is "xilinx.com:signal:data:1.0 DATA.TRX_POST_FFT_RX_RF09_CHXX_MEM_B_ADDR DATA";
-  attribute x_interface_parameter of TRX_post_fft_rx_rf09_chXX_mem_b_addr : signal is "XIL_INTERFACENAME DATA.TRX_POST_FFT_RX_RF09_CHXX_MEM_B_ADDR, LAYERED_METADATA undef";
-  attribute x_interface_info of TRX_post_fft_rx_rf09_chXX_mem_b_dout : signal is "xilinx.com:signal:data:1.0 DATA.TRX_POST_FFT_RX_RF09_CHXX_MEM_B_DOUT DATA";
-  attribute x_interface_parameter of TRX_post_fft_rx_rf09_chXX_mem_b_dout : signal is "XIL_INTERFACENAME DATA.TRX_POST_FFT_RX_RF09_CHXX_MEM_B_DOUT, LAYERED_METADATA undef";
-  attribute x_interface_info of TRX_pushdata_rx_rf09_chXX_din : signal is "xilinx.com:signal:data:1.0 DATA.TRX_PUSHDATA_RX_RF09_CHXX_DIN DATA";
-  attribute x_interface_parameter of TRX_pushdata_rx_rf09_chXX_din : signal is "XIL_INTERFACENAME DATA.TRX_PUSHDATA_RX_RF09_CHXX_DIN, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO : string;
+  attribute X_INTERFACE_INFO of clk_100MHz : signal is "xilinx.com:signal:clock:1.0 CLK.CLK_100MHZ CLK";
+  attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of clk_100MHz : signal is "XIL_INTERFACENAME CLK.CLK_100MHZ, ASSOCIATED_RESET reset_100MHz, CLK_DOMAIN UFBmod_Decoder_clk_100MHz, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.000";
+  attribute X_INTERFACE_INFO of reset_100MHz : signal is "xilinx.com:signal:reset:1.0 RST.RESET_100MHZ RST";
+  attribute X_INTERFACE_PARAMETER of reset_100MHz : signal is "XIL_INTERFACENAME RST.RESET_100MHZ, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
+  attribute X_INTERFACE_INFO of TRX_channel_rx_rf09_id : signal is "xilinx.com:signal:data:1.0 DATA.TRX_CHANNEL_RX_RF09_ID DATA";
+  attribute X_INTERFACE_PARAMETER of TRX_channel_rx_rf09_id : signal is "XIL_INTERFACENAME DATA.TRX_CHANNEL_RX_RF09_ID, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of TRX_decoder_rx_rf09_chXX_SoM_frameCtr : signal is "xilinx.com:signal:data:1.0 DATA.TRX_DECODER_RX_RF09_CHXX_SOM_FRAMECTR DATA";
+  attribute X_INTERFACE_PARAMETER of TRX_decoder_rx_rf09_chXX_SoM_frameCtr : signal is "XIL_INTERFACENAME DATA.TRX_DECODER_RX_RF09_CHXX_SOM_FRAMECTR, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of TRX_decoder_rx_rf09_chXX_center_pos : signal is "xilinx.com:signal:data:1.0 DATA.TRX_DECODER_RX_RF09_CHXX_CENTER_POS DATA";
+  attribute X_INTERFACE_PARAMETER of TRX_decoder_rx_rf09_chXX_center_pos : signal is "XIL_INTERFACENAME DATA.TRX_DECODER_RX_RF09_CHXX_CENTER_POS, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of TRX_decoder_rx_rf09_chXX_squelch_lvl : signal is "xilinx.com:signal:data:1.0 DATA.TRX_DECODER_RX_RF09_CHXX_SQUELCH_LVL DATA";
+  attribute X_INTERFACE_PARAMETER of TRX_decoder_rx_rf09_chXX_squelch_lvl : signal is "XIL_INTERFACENAME DATA.TRX_DECODER_RX_RF09_CHXX_SQUELCH_LVL, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of TRX_decoder_rx_rf09_chXX_strength : signal is "xilinx.com:signal:data:1.0 DATA.TRX_DECODER_RX_RF09_CHXX_STRENGTH DATA";
+  attribute X_INTERFACE_PARAMETER of TRX_decoder_rx_rf09_chXX_strength : signal is "XIL_INTERFACENAME DATA.TRX_DECODER_RX_RF09_CHXX_STRENGTH, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of TRX_post_fft_rx_rf09_chXX_mem_b_addr : signal is "xilinx.com:signal:data:1.0 DATA.TRX_POST_FFT_RX_RF09_CHXX_MEM_B_ADDR DATA";
+  attribute X_INTERFACE_PARAMETER of TRX_post_fft_rx_rf09_chXX_mem_b_addr : signal is "XIL_INTERFACENAME DATA.TRX_POST_FFT_RX_RF09_CHXX_MEM_B_ADDR, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of TRX_post_fft_rx_rf09_chXX_mem_b_dout : signal is "xilinx.com:signal:data:1.0 DATA.TRX_POST_FFT_RX_RF09_CHXX_MEM_B_DOUT DATA";
+  attribute X_INTERFACE_PARAMETER of TRX_post_fft_rx_rf09_chXX_mem_b_dout : signal is "XIL_INTERFACENAME DATA.TRX_POST_FFT_RX_RF09_CHXX_MEM_B_DOUT, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of TRX_pushdata_rx_rf09_chXX_din : signal is "xilinx.com:signal:data:1.0 DATA.TRX_PUSHDATA_RX_RF09_CHXX_DIN DATA";
+  attribute X_INTERFACE_PARAMETER of TRX_pushdata_rx_rf09_chXX_din : signal is "XIL_INTERFACENAME DATA.TRX_PUSHDATA_RX_RF09_CHXX_DIN, LAYERED_METADATA undef";
 begin
   TRX_channel_rx_rf09_id_1(2 downto 0) <= TRX_channel_rx_rf09_id(2 downto 0);
   TRX_dds_tx_rf09_ptt_0 <= TRX_dds_tx_rf09_ptt;

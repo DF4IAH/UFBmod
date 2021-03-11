@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
---Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Thu Mar 11 00:12:47 2021
+--Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+--Date        : Thu Mar 11 17:01:35 2021
 --Host        : DESKTOP-I3NV8HO running 64-bit major release  (build 9200)
 --Command     : generate_target UFBmod_TRX.bd
 --Design      : UFBmod_TRX
@@ -67,6 +67,24 @@ architecture STRUCTURE of PULLDATA_imp_1WTMK8 is
     Res : out STD_LOGIC
   );
   end component UFBmod_TRX_pulldata_tx09_util_reduced_logic_0_1;
+  component UFBmod_TRX_xlslice_14to8_1 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 6 downto 0 )
+  );
+  end component UFBmod_TRX_xlslice_14to8_1;
+  component UFBmod_TRX_xlslice_29to29_1 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component UFBmod_TRX_xlslice_29to29_1;
+  component UFBmod_TRX_xlslice_28to28_1 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component UFBmod_TRX_xlslice_28to28_1;
   component UFBmod_TRX_pulldata_tx09_util_vector_logic_0_1 is
   port (
     Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -80,12 +98,6 @@ architecture STRUCTURE of PULLDATA_imp_1WTMK8 is
     dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
   );
   end component UFBmod_TRX_pulldata_tx09_xlconcat_1_1;
-  component UFBmod_TRX_xlslice_14to8_1 is
-  port (
-    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    Dout : out STD_LOGIC_VECTOR ( 6 downto 0 )
-  );
-  end component UFBmod_TRX_xlslice_14to8_1;
   component UFBmod_TRX_xlconcat_0_3 is
   port (
     In0 : in STD_LOGIC_VECTOR ( 30 downto 0 );
@@ -93,18 +105,6 @@ architecture STRUCTURE of PULLDATA_imp_1WTMK8 is
     dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component UFBmod_TRX_xlconcat_0_3;
-  component UFBmod_TRX_xlslice_29to29_1 is
-  port (
-    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component UFBmod_TRX_xlslice_29to29_1;
-  component UFBmod_TRX_xlslice_28to28_1 is
-  port (
-    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component UFBmod_TRX_xlslice_28to28_1;
   signal Din_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal \^trx_tx_rf09_pulldata_fifo_empty\ : STD_LOGIC;
   signal TRX_tx_data_count_0 : STD_LOGIC_VECTOR ( 11 downto 0 );
@@ -250,15 +250,6 @@ entity PUSHDATA_imp_TPI30Q is
 end PUSHDATA_imp_TPI30Q;
 
 architecture STRUCTURE of PUSHDATA_imp_TPI30Q is
-  component UFBmod_TRX_pushdata_rx09_xlconcat_0_1 is
-  port (
-    In0 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    In1 : in STD_LOGIC_VECTOR ( 21 downto 0 );
-    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component UFBmod_TRX_pushdata_rx09_xlconcat_0_1;
   component UFBmod_TRX_pushdata_rx09_xlslice_31to16_1 is
   port (
     Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -289,13 +280,6 @@ architecture STRUCTURE of PUSHDATA_imp_TPI30Q is
     Res : out STD_LOGIC
   );
   end component UFBmod_TRX_util_reduced_logic_0_0;
-  component UFBmod_TRX_xlconcat_0_4 is
-  port (
-    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
-  );
-  end component UFBmod_TRX_xlconcat_0_4;
   component UFBmod_TRX_c_shift_ram_0_0 is
   port (
     D : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -343,6 +327,22 @@ architecture STRUCTURE of PUSHDATA_imp_TPI30Q is
     TRX_PUSHDATA_din : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component UFBmod_TRX_TRX_FIFO_Arbiter_0_0;
+  component UFBmod_TRX_pushdata_rx09_xlconcat_0_1 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    In1 : in STD_LOGIC_VECTOR ( 21 downto 0 );
+    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component UFBmod_TRX_pushdata_rx09_xlconcat_0_1;
+  component UFBmod_TRX_xlconcat_0_4 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component UFBmod_TRX_xlconcat_0_4;
   signal TRX_FIFO_Arbiter_0_TRX_PUSHDATA_ch00_grant : STD_LOGIC;
   signal TRX_FIFO_Arbiter_0_TRX_PUSHDATA_ch01_grant : STD_LOGIC;
   signal TRX_FIFO_Arbiter_0_TRX_PUSHDATA_ch02_grant : STD_LOGIC;
@@ -616,6 +616,12 @@ architecture STRUCTURE of TRX_config_imp_1VZ7P75 is
     Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component UFBmod_TRX_TRX_gpio_xlslice_0downto0_blankTx_0_1;
+  component UFBmod_TRX_TRX_gpio_xlslice_0to0_blankTx_0_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component UFBmod_TRX_TRX_gpio_xlslice_0to0_blankTx_0_0;
   component UFBmod_TRX_TRX_gpio_xlconcat_0_1 is
   port (
     In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -625,12 +631,6 @@ architecture STRUCTURE of TRX_config_imp_1VZ7P75 is
     dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component UFBmod_TRX_TRX_gpio_xlconcat_0_1;
-  component UFBmod_TRX_TRX_gpio_xlslice_0to0_blankTx_0_0 is
-  port (
-    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component UFBmod_TRX_TRX_gpio_xlslice_0to0_blankTx_0_0;
   signal TRX_gpio_xlconcat_0_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal TRX_gpio_xlslice_0to0_resetn_dout_0 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_gpio_xlslice_1to1_blankTx_dout_0 : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -691,19 +691,6 @@ entity TRX_rx09_concat_imp_1KKL3Z9 is
 end TRX_rx09_concat_imp_1KKL3Z9;
 
 architecture STRUCTURE of TRX_rx09_concat_imp_1KKL3Z9 is
-  component UFBmod_TRX_TRX_rx09_xlconcat_0_1 is
-  port (
-    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In4 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In5 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In6 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In7 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    dout : out STD_LOGIC_VECTOR ( 7 downto 0 )
-  );
-  end component UFBmod_TRX_TRX_rx09_xlconcat_0_1;
   component UFBmod_TRX_TRX_rx_xlslice_00to00_1 is
   port (
     Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -752,6 +739,19 @@ architecture STRUCTURE of TRX_rx09_concat_imp_1KKL3Z9 is
     Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component UFBmod_TRX_TRX_rx_xlslice_08to08_1;
+  component UFBmod_TRX_TRX_rx09_xlconcat_0_1 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component UFBmod_TRX_TRX_rx09_xlconcat_0_1;
   signal Din_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal TRX_rx09_8bits : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal TRX_rx_xlslice_00to00_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -830,19 +830,6 @@ entity TRX_rx24_concat_imp_LD03GF is
 end TRX_rx24_concat_imp_LD03GF;
 
 architecture STRUCTURE of TRX_rx24_concat_imp_LD03GF is
-  component UFBmod_TRX_TRX_rx24_xlconcat_0_1 is
-  port (
-    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In4 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In5 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In6 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In7 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    dout : out STD_LOGIC_VECTOR ( 7 downto 0 )
-  );
-  end component UFBmod_TRX_TRX_rx24_xlconcat_0_1;
   component UFBmod_TRX_TRX_rx_xlslice_15to15_1 is
   port (
     Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -891,6 +878,19 @@ architecture STRUCTURE of TRX_rx24_concat_imp_LD03GF is
     Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component UFBmod_TRX_TRX_rx_xlslice_01to01_1;
+  component UFBmod_TRX_TRX_rx24_xlconcat_0_1 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component UFBmod_TRX_TRX_rx24_xlconcat_0_1;
   signal Din_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal TRX_rx24_8bits : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal TRX_rx_xlslice_01to01_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -975,27 +975,6 @@ entity TRX_tx_concat_imp_18SKXTB is
 end TRX_tx_concat_imp_18SKXTB;
 
 architecture STRUCTURE of TRX_tx_concat_imp_18SKXTB is
-  component UFBmod_TRX_TRX_tx_LVDS_interleave_xlconcat_0_1 is
-  port (
-    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In4 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In5 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In6 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In7 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In8 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In9 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In11 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In12 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In13 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In14 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In15 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component UFBmod_TRX_TRX_tx_LVDS_interleave_xlconcat_0_1;
   component UFBmod_TRX_xlslice_00to00_1 is
   port (
     Din : in STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -1044,19 +1023,6 @@ architecture STRUCTURE of TRX_tx_concat_imp_18SKXTB is
     Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component UFBmod_TRX_xlslice_07to07_1;
-  component UFBmod_TRX_TRX_tx_word_format_xlconcat_0_1 is
-  port (
-    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In1 : in STD_LOGIC_VECTOR ( 12 downto 0 );
-    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In4 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In5 : in STD_LOGIC_VECTOR ( 12 downto 0 );
-    In6 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In7 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component UFBmod_TRX_TRX_tx_word_format_xlconcat_0_1;
   component UFBmod_TRX_xlconstant_val0_len1_2 is
   port (
     dout : out STD_LOGIC_VECTOR ( 0 to 0 )
@@ -1067,6 +1033,13 @@ architecture STRUCTURE of TRX_tx_concat_imp_18SKXTB is
     dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component UFBmod_TRX_xlconstant_val1_len1_5;
+  component UFBmod_TRX_TRX_blank_tx_c_shift_ram_0_1 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component UFBmod_TRX_TRX_blank_tx_c_shift_ram_0_1;
   component UFBmod_TRX_TRX_blank_tx_util_vector_logic_0_1 is
   port (
     Op1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -1074,6 +1047,12 @@ architecture STRUCTURE of TRX_tx_concat_imp_18SKXTB is
     Res : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component UFBmod_TRX_TRX_blank_tx_util_vector_logic_0_1;
+  component UFBmod_TRX_TRX_blank_tx_util_vector_logic_1_1 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component UFBmod_TRX_TRX_blank_tx_util_vector_logic_1_1;
   component UFBmod_TRX_TRX_blank_tx_xlconcat_0_1 is
   port (
     In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -1095,19 +1074,40 @@ architecture STRUCTURE of TRX_tx_concat_imp_18SKXTB is
     dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component UFBmod_TRX_TRX_blank_tx_xlconcat_0_1;
-  component UFBmod_TRX_TRX_blank_tx_util_vector_logic_1_1 is
+  component UFBmod_TRX_TRX_tx_LVDS_interleave_xlconcat_0_1 is
   port (
-    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In8 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In9 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In10 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In11 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In12 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In13 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In14 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In15 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  end component UFBmod_TRX_TRX_blank_tx_util_vector_logic_1_1;
-  component UFBmod_TRX_TRX_blank_tx_c_shift_ram_0_1 is
+  end component UFBmod_TRX_TRX_tx_LVDS_interleave_xlconcat_0_1;
+  component UFBmod_TRX_TRX_tx_word_format_xlconcat_0_1 is
   port (
-    D : in STD_LOGIC_VECTOR ( 0 to 0 );
-    CLK : in STD_LOGIC;
-    Q : out STD_LOGIC_VECTOR ( 0 to 0 )
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In5 : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    In6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  end component UFBmod_TRX_TRX_blank_tx_c_shift_ram_0_1;
+  end component UFBmod_TRX_TRX_tx_word_format_xlconcat_0_1;
   signal TRX_blank_tx_c_shift_ram_0_Q : STD_LOGIC_VECTOR ( 0 to 0 );
   signal TRX_blank_tx_util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal TRX_blank_tx_xlconcat_0_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -1280,13 +1280,6 @@ architecture STRUCTURE of delay_rx09_3459minus1024clk_imp_AONRGF is
     Q : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component UFBmod_TRX_c_shift_ram_dly386_1_1;
-  component UFBmod_TRX_xlconcat_0_2 is
-  port (
-    In0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    In1 : in STD_LOGIC_VECTOR ( 29 downto 0 );
-    dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component UFBmod_TRX_xlconcat_0_2;
   component UFBmod_TRX_fifo_generator_dly2049_0_1 is
   port (
     clk : in STD_LOGIC;
@@ -1304,6 +1297,13 @@ architecture STRUCTURE of delay_rx09_3459minus1024clk_imp_AONRGF is
     dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component UFBmod_TRX_xlconstant_val1_len1_6;
+  component UFBmod_TRX_xlconcat_0_2 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    In1 : in STD_LOGIC_VECTOR ( 29 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component UFBmod_TRX_xlconcat_0_2;
   signal RF09_framectr_0 : STD_LOGIC_VECTOR ( 29 downto 0 );
   signal RF09_quarterfrm_0 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal c_shift_ram_dly126_3_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -1460,17 +1460,17 @@ architecture STRUCTURE of TRX_LVDS_imp_GRAJC5 is
     dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component UFBmod_TRX_xlconstant_1_len1_1;
+  component UFBmod_TRX_xlconstant_0_0 is
+  port (
+    dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component UFBmod_TRX_xlconstant_0_0;
   component UFBmod_TRX_TRX_LVDS_util_ds_buf_0_1 is
   port (
     BUFG_I : in STD_LOGIC_VECTOR ( 0 to 0 );
     BUFG_O : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component UFBmod_TRX_TRX_LVDS_util_ds_buf_0_1;
-  component UFBmod_TRX_xlconstant_0_0 is
-  port (
-    dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
-  );
-  end component UFBmod_TRX_xlconstant_0_0;
   signal Conn4_CLK_N : STD_LOGIC;
   signal Conn4_CLK_P : STD_LOGIC;
   signal TRX_LVDS_peripheral_reset_0 : STD_LOGIC;
@@ -1698,47 +1698,12 @@ architecture STRUCTURE of TRX_rx_FFT_calc_imp_VKX3UL is
     Dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component UFBmod_TRX_rx09_xlslice_15to0_1;
-  component UFBmod_TRX_fft_rx09_s_data_xlconcat_0_1 is
-  port (
-    In0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    In1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component UFBmod_TRX_fft_rx09_s_data_xlconcat_0_1;
-  component UFBmod_TRX_cordic_rx09_xlconcat_0_1 is
-  port (
-    In0 : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    In1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    dout : out STD_LOGIC_VECTOR ( 41 downto 0 )
-  );
-  end component UFBmod_TRX_cordic_rx09_xlconcat_0_1;
   component UFBmod_TRX_cordic_rx09_addra_xlslice_9to0_1 is
   port (
     Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
     Dout : out STD_LOGIC_VECTOR ( 9 downto 0 )
   );
   end component UFBmod_TRX_cordic_rx09_addra_xlslice_9to0_1;
-  component UFBmod_TRX_xfft_rx09_dly3459_1 is
-  port (
-    aclk : in STD_LOGIC;
-    aresetn : in STD_LOGIC;
-    s_axis_config_tdata : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    s_axis_config_tvalid : in STD_LOGIC;
-    s_axis_config_tready : out STD_LOGIC;
-    s_axis_data_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axis_data_tvalid : in STD_LOGIC;
-    s_axis_data_tready : out STD_LOGIC;
-    s_axis_data_tlast : in STD_LOGIC;
-    m_axis_data_tdata : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    m_axis_data_tuser : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    m_axis_data_tvalid : out STD_LOGIC;
-    m_axis_data_tlast : out STD_LOGIC;
-    event_frame_started : out STD_LOGIC;
-    event_tlast_unexpected : out STD_LOGIC;
-    event_tlast_missing : out STD_LOGIC;
-    event_data_in_channel_halt : out STD_LOGIC
-  );
-  end component UFBmod_TRX_xfft_rx09_dly3459_1;
   component UFBmod_TRX_window_rx09_re_mult_gen_0_1 is
   port (
     CLK : in STD_LOGIC;
@@ -1762,6 +1727,41 @@ architecture STRUCTURE of TRX_rx_FFT_calc_imp_VKX3UL is
     douta : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component UFBmod_TRX_window_coef_rom_blk_mem_gen_0_1;
+  component UFBmod_TRX_cordic_rx09_xlconcat_0_1 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    In1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 41 downto 0 )
+  );
+  end component UFBmod_TRX_cordic_rx09_xlconcat_0_1;
+  component UFBmod_TRX_fft_rx09_s_data_xlconcat_0_1 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    In1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component UFBmod_TRX_fft_rx09_s_data_xlconcat_0_1;
+  component UFBmod_TRX_xfft_rx09_dly3459_1 is
+  port (
+    aclk : in STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    s_axis_config_tdata : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    s_axis_config_tvalid : in STD_LOGIC;
+    s_axis_config_tready : out STD_LOGIC;
+    s_axis_data_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axis_data_tvalid : in STD_LOGIC;
+    s_axis_data_tready : out STD_LOGIC;
+    s_axis_data_tlast : in STD_LOGIC;
+    m_axis_data_tdata : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    m_axis_data_tuser : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    m_axis_data_tvalid : out STD_LOGIC;
+    m_axis_data_tlast : out STD_LOGIC;
+    event_frame_started : out STD_LOGIC;
+    event_tlast_unexpected : out STD_LOGIC;
+    event_tlast_missing : out STD_LOGIC;
+    event_data_in_channel_halt : out STD_LOGIC
+  );
+  end component UFBmod_TRX_xfft_rx09_dly3459_1;
   signal FFT_window_coef_rom_rx09_1 : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal RF09_framectr_0 : STD_LOGIC_VECTOR ( 29 downto 0 );
   signal RF09_quarterfrm_0 : STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -2491,13 +2491,6 @@ architecture STRUCTURE of TRX_rx_FFT_unit_imp_6J07ED is
     Res : out STD_LOGIC
   );
   end component UFBmod_TRX_post_fft_mem_a_rx09_util_reduced_logic_0_1;
-  component UFBmod_TRX_post_fft_mem_a_rx09_xlconcat_0_1 is
-  port (
-    In0 : in STD_LOGIC_VECTOR ( 9 downto 0 );
-    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    dout : out STD_LOGIC_VECTOR ( 10 downto 0 )
-  );
-  end component UFBmod_TRX_post_fft_mem_a_rx09_xlconcat_0_1;
   component UFBmod_TRX_post_fft_rx09_ch00_blk_mem_gen_0_0 is
   port (
     clka : in STD_LOGIC;
@@ -2608,6 +2601,13 @@ architecture STRUCTURE of TRX_rx_FFT_unit_imp_6J07ED is
     ena_ch07 : out STD_LOGIC
   );
   end component UFBmod_TRX_TRX_post_fft_rx09_ad_0_0;
+  component UFBmod_TRX_post_fft_mem_a_rx09_xlconcat_0_1 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 10 downto 0 )
+  );
+  end component UFBmod_TRX_post_fft_mem_a_rx09_xlconcat_0_1;
   signal PUSHDATA_TRX_PUSHDATA_ch00_grant : STD_LOGIC;
   signal PUSHDATA_TRX_PUSHDATA_ch01_grant : STD_LOGIC;
   signal PUSHDATA_TRX_PUSHDATA_ch02_grant : STD_LOGIC;
@@ -3307,11 +3307,11 @@ architecture STRUCTURE of UFBmod_TRX is
   attribute X_INTERFACE_INFO of FFT_window_coef_rom_rx09 : signal is "xilinx.com:signal:data:1.0 DATA.FFT_WINDOW_COEF_ROM_RX09 DATA";
   attribute X_INTERFACE_PARAMETER of FFT_window_coef_rom_rx09 : signal is "XIL_INTERFACENAME DATA.FFT_WINDOW_COEF_ROM_RX09, LAYERED_METADATA undef";
   attribute X_INTERFACE_INFO of RF09_framectr : signal is "xilinx.com:signal:data:1.0 DATA.RF09_FRAMECTR DATA";
-  attribute X_INTERFACE_PARAMETER of RF09_framectr : signal is "XIL_INTERFACENAME DATA.RF09_FRAMECTR, LAYERED_METADATA undef, PortType data, PortType.PROP_SRC false";
+  attribute X_INTERFACE_PARAMETER of RF09_framectr : signal is "XIL_INTERFACENAME DATA.RF09_FRAMECTR, LAYERED_METADATA undef";
   attribute X_INTERFACE_INFO of RF09_quarterfrm : signal is "xilinx.com:signal:data:1.0 DATA.RF09_QUARTERFRM DATA";
-  attribute X_INTERFACE_PARAMETER of RF09_quarterfrm : signal is "XIL_INTERFACENAME DATA.RF09_QUARTERFRM, LAYERED_METADATA undef, PortType data, PortType.PROP_SRC false";
+  attribute X_INTERFACE_PARAMETER of RF09_quarterfrm : signal is "XIL_INTERFACENAME DATA.RF09_QUARTERFRM, LAYERED_METADATA undef";
   attribute X_INTERFACE_INFO of TRX_LVDS_tx09_fifo_din : signal is "xilinx.com:signal:data:1.0 DATA.TRX_LVDS_TX09_FIFO_DIN DATA";
-  attribute X_INTERFACE_PARAMETER of TRX_LVDS_tx09_fifo_din : signal is "XIL_INTERFACENAME DATA.TRX_LVDS_TX09_FIFO_DIN, LAYERED_METADATA undef, PortWidth 32";
+  attribute X_INTERFACE_PARAMETER of TRX_LVDS_tx09_fifo_din : signal is "XIL_INTERFACENAME DATA.TRX_LVDS_TX09_FIFO_DIN, LAYERED_METADATA undef";
   attribute X_INTERFACE_INFO of TRX_PLL_clk_25MHz_n : signal is "xilinx.com:signal:clock:1.0 CLK.TRX_PLL_CLK_25MHZ_N CLK";
   attribute X_INTERFACE_PARAMETER of TRX_PLL_clk_25MHz_n : signal is "XIL_INTERFACENAME CLK.TRX_PLL_CLK_25MHZ_N, CLK_DOMAIN /TRX_clock/TRX_PLL_clk_wiz_0_clk_out1, FREQ_HZ 25000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0";
   attribute X_INTERFACE_INFO of TRX_PLL_clk_25MHz_p : signal is "xilinx.com:signal:clock:1.0 CLK.TRX_PLL_CLK_25MHZ_P CLK";
@@ -3333,7 +3333,7 @@ architecture STRUCTURE of UFBmod_TRX is
   attribute X_INTERFACE_INFO of TRX_PUSHDATA_ch07_din : signal is "xilinx.com:signal:data:1.0 DATA.TRX_PUSHDATA_CH07_DIN DATA";
   attribute X_INTERFACE_PARAMETER of TRX_PUSHDATA_ch07_din : signal is "XIL_INTERFACENAME DATA.TRX_PUSHDATA_CH07_DIN, LAYERED_METADATA undef";
   attribute X_INTERFACE_INFO of TRX_dds_tx_rf09_inc : signal is "xilinx.com:signal:data:1.0 DATA.TRX_DDS_TX_RF09_INC DATA";
-  attribute X_INTERFACE_PARAMETER of TRX_dds_tx_rf09_inc : signal is "XIL_INTERFACENAME DATA.TRX_DDS_TX_RF09_INC, LAYERED_METADATA undef, PortType data, PortType.PROP_SRC false";
+  attribute X_INTERFACE_PARAMETER of TRX_dds_tx_rf09_inc : signal is "XIL_INTERFACENAME DATA.TRX_DDS_TX_RF09_INC, LAYERED_METADATA undef";
   attribute X_INTERFACE_INFO of TRX_decoder_rx09_squelch_lvl : signal is "xilinx.com:signal:data:1.0 DATA.TRX_DECODER_RX09_SQUELCH_LVL DATA";
   attribute X_INTERFACE_PARAMETER of TRX_decoder_rx09_squelch_lvl : signal is "XIL_INTERFACENAME DATA.TRX_DECODER_RX09_SQUELCH_LVL, LAYERED_METADATA undef";
   attribute X_INTERFACE_INFO of TRX_encoder_tx09_pull_data_len : signal is "xilinx.com:signal:data:1.0 DATA.TRX_ENCODER_TX09_PULL_DATA_LEN DATA";

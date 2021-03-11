@@ -1,4 +1,4 @@
--- (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -101,16 +101,16 @@ ARCHITECTURE UFBmod_TRX_window_rx09_re_mult_gen_0_1_arch OF UFBmod_TRX_window_rx
     );
   END COMPONENT mult_gen_v12_0_16;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF UFBmod_TRX_window_rx09_re_mult_gen_0_1_arch: ARCHITECTURE IS "mult_gen_v12_0_16,Vivado 2020.1.1";
+  ATTRIBUTE X_CORE_INFO OF UFBmod_TRX_window_rx09_re_mult_gen_0_1_arch: ARCHITECTURE IS "mult_gen_v12_0_16,Vivado 2020.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF UFBmod_TRX_window_rx09_re_mult_gen_0_1_arch : ARCHITECTURE IS "UFBmod_TRX_window_rx09_re_mult_gen_0_1,mult_gen_v12_0_16,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF UFBmod_TRX_window_rx09_re_mult_gen_0_1_arch: ARCHITECTURE IS "UFBmod_TRX_window_rx09_re_mult_gen_0_1,mult_gen_v12_0_16,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=mult_gen,x_ipVersion=12.0,x_ipCoreRevision=16,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_VERBOSITY=0,C_MODEL_TYPE=0,C_OPTIMIZE_GOAL=1,C_XDEVICEFAMILY=artix7,C_HAS_CE=0,C_HAS_SCLR=0,C_LATENCY=3,C_A_WIDTH=13,C_A_TYPE=0,C_B_WIDTH=16,C_B_TYPE=1,C_OUT_HIGH=28,C_OUT_LOW=13,C_MULT_TYPE=1,C_CE_OVERRIDES_SCLR=0,C_CCM_IMP=0,C_B_VALUE=10000001,C_HAS_ZERO_DETECT=0,C_ROUND_OUTPUT" & 
-"=1,C_ROUND_PT=13}";
+  ATTRIBUTE CORE_GENERATION_INFO OF UFBmod_TRX_window_rx09_re_mult_gen_0_1_arch: ARCHITECTURE IS "UFBmod_TRX_window_rx09_re_mult_gen_0_1,mult_gen_v12_0_16,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=mult_gen,x_ipVersion=12.0,x_ipCoreRevision=16,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_VERBOSITY=0,C_MODEL_TYPE=0,C_OPTIMIZE_GOAL=1,C_XDEVICEFAMILY=artix7,C_HAS_CE=0,C_HAS_SCLR=0,C_LATENCY=3,C_A_WIDTH=13,C_A_TYPE=0,C_B_WIDTH=16,C_B_TYPE=1,C_OUT_HIGH=28,C_OUT_LOW=13,C_MULT_TYPE=1,C_CE_OVERRIDES_SCLR=0,C_CCM_IMP=0,C_B_VALUE=10000001,C_HAS_ZERO_DETECT=0,C_ROUND_OUTPUT=1" & 
+",C_ROUND_PT=13}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF P: SIGNAL IS "XIL_INTERFACENAME p_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency bitwidth format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type generated dependency signed format bool minimum {} maximu" & 
-"m {}} value TRUE}}}} DATA_WIDTH 16}, PortType data, PortType.PROP_SRC false";
+"m {}} value TRUE}}}} DATA_WIDTH 16}, PortType data";
   ATTRIBUTE X_INTERFACE_INFO OF P: SIGNAL IS "xilinx.com:signal:data:1.0 p_intf DATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF B: SIGNAL IS "XIL_INTERFACENAME b_intf, LAYERED_METADATA undef";
   ATTRIBUTE X_INTERFACE_INFO OF B: SIGNAL IS "xilinx.com:signal:data:1.0 b_intf DATA";

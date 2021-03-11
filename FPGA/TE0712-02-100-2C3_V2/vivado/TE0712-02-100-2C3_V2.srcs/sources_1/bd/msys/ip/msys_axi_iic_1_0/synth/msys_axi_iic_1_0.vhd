@@ -47,14 +47,14 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:ip:axi_iic:2.0
--- IP Revision: 24
+-- IP Revision: 25
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-LIBRARY axi_iic_v2_0_24;
-USE axi_iic_v2_0_24.axi_iic;
+LIBRARY axi_iic_v2_0_25;
+USE axi_iic_v2_0_25.axi_iic;
 
 ENTITY msys_axi_iic_1_0 IS
   PORT (
@@ -140,12 +140,12 @@ ARCHITECTURE msys_axi_iic_1_0_arch OF msys_axi_iic_1_0 IS
     );
   END COMPONENT axi_iic;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF msys_axi_iic_1_0_arch: ARCHITECTURE IS "axi_iic,Vivado 2020.1.1";
+  ATTRIBUTE X_CORE_INFO OF msys_axi_iic_1_0_arch: ARCHITECTURE IS "axi_iic,Vivado 2020.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF msys_axi_iic_1_0_arch : ARCHITECTURE IS "msys_axi_iic_1_0,axi_iic,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF msys_axi_iic_1_0_arch: ARCHITECTURE IS "msys_axi_iic_1_0,axi_iic,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_iic,x_ipVersion=2.0,x_ipCoreRevision=24,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_S_AXI_ADDR_WIDTH=9,C_S_AXI_DATA_WIDTH=32,C_IIC_FREQ=100000,C_TEN_BIT_ADR=0,C_GPO_WIDTH=1,C_S_AXI_ACLK_FREQ_HZ=100000000,C_SCL_INERTIAL_DELAY=0,C_SDA_INERTIAL_DELAY=0,C_SDA_LEVEL=1,C_SMBUS_PMBUS_HOST=0,C_DISABLE_SETUP_VIOLATION_CHECK=0,C_STATIC_TIMING_REG_WIDTH=0,C_TIMING_REG_WIDTH=32,C_DEFAULT_VAL" & 
-"UE=0x00}";
+  ATTRIBUTE CORE_GENERATION_INFO OF msys_axi_iic_1_0_arch: ARCHITECTURE IS "msys_axi_iic_1_0,axi_iic,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_iic,x_ipVersion=2.0,x_ipCoreRevision=25,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_S_AXI_ADDR_WIDTH=9,C_S_AXI_DATA_WIDTH=32,C_IIC_FREQ=100000,C_TEN_BIT_ADR=0,C_GPO_WIDTH=1,C_S_AXI_ACLK_FREQ_HZ=100000000,C_SCL_INERTIAL_DELAY=0,C_SDA_INERTIAL_DELAY=0,C_SDA_LEVEL=1,C_SMBUS_PMBUS_HOST=0,C_DISABLE_SETUP_VIOLATION_CHECK=0,C_STATIC_TIMING_REG_WIDTH=0,C_TIMING_REG_WIDTH=32,C_DEFAULT_VALUE" & 
+"=0x00}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF scl_t: SIGNAL IS "xilinx.com:interface:iic:1.0 IIC SCL_T";

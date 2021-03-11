@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Nov 28 22:32:22 2020" VIVADOVERSION="2020.1.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Mar 11 17:01:46 2021" VIVADOVERSION="2020.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="trenz.biz:te0712_100_2c:part0:1.0" DEVICE="7a100t" NAME="UFBmod_Decoder" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -10,9 +10,9 @@
         <CONNECTION INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_signal_bins_blk_mem_gen_2clks" PORT="clka"/>
         <CONNECTION INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_rowsum_c_accum_1clk" PORT="CLK"/>
         <CONNECTION INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_signal_correction_mult_gen_4clks" PORT="CLK"/>
-        <CONNECTION INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks" PORT="aclk"/>
         <CONNECTION INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_noise_c_shift_ram_0" PORT="CLK"/>
         <CONNECTION INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_to_Decoder_FSM" PORT="clk_100MHz"/>
+        <CONNECTION INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks" PORT="aclk"/>
         <CONNECTION INSTANCE="UFBmod_rx09_chXX_Decoder_decoder_rx09_chXX_artemis_blk_mem_gen_2clks" PORT="clka"/>
         <CONNECTION INSTANCE="UFBmod_rx09_chXX_Decoder_decoder_rx09_chXX_artemis_mult_gen_4clks" PORT="CLK"/>
         <CONNECTION INSTANCE="UFBmod_rx09_chXX_Decoder_decoder_rx09_chXX_msg_blk_mem_gen_2clks" PORT="clka"/>
@@ -178,7 +178,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="16" FULLNAME="/FFT_rx09_chXX_to_Decoder/FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks" HWVERSION="5.1" INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="div_gen" VLNV="xilinx.com:ip:div_gen:5.1">
+    <MODULE COREREVISION="17" FULLNAME="/FFT_rx09_chXX_to_Decoder/FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks" HWVERSION="5.1" INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="div_gen" VLNV="xilinx.com:ip:div_gen:5.1">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=div_gen;v=v5_1;d=pg151-div-gen.pdf"/>
       </DOCUMENTS>
@@ -508,8 +508,8 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="Q" RIGHT="0" SIGIS="data" SIGNAME="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_rowsum_c_accum_1clk_Q">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks" PORT="s_axis_divisor_tdata"/>
             <CONNECTION INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_noise_xlslice_18to0" PORT="Din"/>
+            <CONNECTION INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks" PORT="s_axis_divisor_tdata"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -670,7 +670,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_clk_100MHz">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="clk_100MHz"/>
           </CONNECTIONS>
@@ -695,7 +695,7 @@
             <CONNECTION INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_to_Decoder_FSM" PORT="fft_rx09_chXX_signal_bins_mem_douta"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_clk_100MHz">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="clk_100MHz"/>
           </CONNECTIONS>
@@ -895,8 +895,8 @@
         </PORT>
         <PORT DIR="O" NAME="fft_rx09_chXX_averaging_factor_div_divisor_tvalid" SIGIS="undef" SIGNAME="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_to_Decoder_FSM_fft_rx09_chXX_averaging_factor_div_divisor_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks" PORT="s_axis_divisor_tvalid"/>
             <CONNECTION INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_noise_c_shift_ram_0" PORT="CE"/>
+            <CONNECTION INSTANCE="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks" PORT="s_axis_divisor_tvalid"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="fft_rx09_chXX_signal_correction_mult_ce" SIGIS="undef" SIGNAME="FFT_rx09_chXX_to_Decoder_FFT_rx_rf09_chXX_to_Decoder_FSM_fft_rx09_chXX_signal_correction_mult_ce">
@@ -1306,7 +1306,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_clk_100MHz">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="clk_100MHz"/>
           </CONNECTIONS>
@@ -1582,7 +1582,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_clk_100MHz">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="clk_100MHz"/>
           </CONNECTIONS>
@@ -1602,7 +1602,7 @@
             <CONNECTION INSTANCE="UFBmod_rx09_chXX_Decoder_UFBmod_rx09_chXX_Decoder_FSM" PORT="decoder_rx09_chXX_msg_mem_a_din"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_clk_100MHz">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="clk_100MHz"/>
           </CONNECTIONS>

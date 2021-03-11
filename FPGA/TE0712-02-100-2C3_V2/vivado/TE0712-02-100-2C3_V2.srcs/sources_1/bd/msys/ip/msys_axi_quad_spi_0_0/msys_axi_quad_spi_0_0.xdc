@@ -98,7 +98,8 @@ set_property IOB true [get_cells -hierarchical -filter {NAME =~*IO*_I_REG}]
 
 #### Following command creates a divide by 2 clock
 #### It also takes into account the delay added by STARTUP block to route the CCLK
-##create_generated_clock -name clk_sck -source [get_pins -hierarchical *axi_quad_spi_1/ext_spi_clk] [get_pins -hierarchical *USRCCLKO] -edges {3 5 7} -edge_shift [list $cclk_delay $cclk_delay $cclk_delay]
+####create_generated_clock -name clk_sck -source [get_pins -hierarchical *axi_quad_spi_1/ext_spi_clk] [get_pins -hierarchical *USRCCLKO] -edges {3 5 7} -edge_shift [list $cclk_delay $cclk_delay $cclk_delay]
+##create_generated_clock -name clk_sck -source [get_pins -filter {REF_PIN_NAME==ext_spi_clk} -of [get_cells -hier -filter {REF_NAME=~axi_quad_spi_0}]] [get_pins -hierarchical *USRCCLKO] -edges {3 5 7} -edge_shift [list $cclk_delay $cclk_delay $cclk_delay]
 
 #### Data is captured into FPGA on the second rising edge of ext_spi_clk after the SCK falling edge
 #### Data is driven by the FPGA on every alternate rising_edge of ext_spi_clk

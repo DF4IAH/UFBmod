@@ -122,11 +122,11 @@ ARCHITECTURE msys_SREC_boot_loader_FSM_1_0_arch OF msys_SREC_boot_loader_FSM_1_0
     );
   END COMPONENT SREC_boot_loader_FSM;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF msys_SREC_boot_loader_FSM_1_0_arch: ARCHITECTURE IS "SREC_boot_loader_FSM,Vivado 2020.1.1";
+  ATTRIBUTE X_CORE_INFO OF msys_SREC_boot_loader_FSM_1_0_arch: ARCHITECTURE IS "SREC_boot_loader_FSM,Vivado 2020.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF msys_SREC_boot_loader_FSM_1_0_arch : ARCHITECTURE IS "msys_SREC_boot_loader_FSM_1_0,SREC_boot_loader_FSM,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF msys_SREC_boot_loader_FSM_1_0_arch: ARCHITECTURE IS "msys_SREC_boot_loader_FSM_1_0,SREC_boot_loader_FSM,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=SREC_boot_loader_FSM,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF msys_SREC_boot_loader_FSM_1_0_arch: ARCHITECTURE IS "msys_SREC_boot_loader_FSM_1_0,SREC_boot_loader_FSM,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=SREC_boot_loader_FSM,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF msys_SREC_boot_loader_FSM_1_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;

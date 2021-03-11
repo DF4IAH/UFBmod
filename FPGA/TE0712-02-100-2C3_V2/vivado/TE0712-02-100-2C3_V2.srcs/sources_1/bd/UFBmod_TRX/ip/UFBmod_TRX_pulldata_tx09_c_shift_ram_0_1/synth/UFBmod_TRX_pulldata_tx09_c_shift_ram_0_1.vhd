@@ -1,4 +1,4 @@
--- (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -105,12 +105,12 @@ ARCHITECTURE UFBmod_TRX_pulldata_tx09_c_shift_ram_0_1_arch OF UFBmod_TRX_pulldat
     );
   END COMPONENT c_shift_ram_v12_0_14;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF UFBmod_TRX_pulldata_tx09_c_shift_ram_0_1_arch: ARCHITECTURE IS "c_shift_ram_v12_0_14,Vivado 2020.1.1";
+  ATTRIBUTE X_CORE_INFO OF UFBmod_TRX_pulldata_tx09_c_shift_ram_0_1_arch: ARCHITECTURE IS "c_shift_ram_v12_0_14,Vivado 2020.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF UFBmod_TRX_pulldata_tx09_c_shift_ram_0_1_arch : ARCHITECTURE IS "UFBmod_TRX_pulldata_tx09_c_shift_ram_0_1,c_shift_ram_v12_0_14,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF UFBmod_TRX_pulldata_tx09_c_shift_ram_0_1_arch: ARCHITECTURE IS "UFBmod_TRX_pulldata_tx09_c_shift_ram_0_1,c_shift_ram_v12_0_14,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=c_shift_ram,x_ipVersion=12.0,x_ipCoreRevision=14,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=artix7,C_VERBOSITY=0,C_WIDTH=1,C_DEPTH=1,C_ADDR_WIDTH=4,C_SHIFT_TYPE=0,C_OPT_GOAL=0,C_AINIT_VAL=0,C_SINIT_VAL=0,C_DEFAULT_DATA=0,C_HAS_A=0,C_HAS_CE=0,C_REG_LAST_BIT=1,C_SYNC_PRIORITY=1,C_SYNC_ENABLE=0,C_HAS_SCLR=1,C_HAS_SSET=0,C_HAS_SINIT=0,C_MEM_INIT_FILE=n" & 
-"o_coe_file_loaded,C_ELABORATION_DIR=./,C_READ_MIF=0,C_PARSER_TYPE=0}";
+  ATTRIBUTE CORE_GENERATION_INFO OF UFBmod_TRX_pulldata_tx09_c_shift_ram_0_1_arch: ARCHITECTURE IS "UFBmod_TRX_pulldata_tx09_c_shift_ram_0_1,c_shift_ram_v12_0_14,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=c_shift_ram,x_ipVersion=12.0,x_ipCoreRevision=14,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=artix7,C_VERBOSITY=0,C_WIDTH=1,C_DEPTH=1,C_ADDR_WIDTH=4,C_SHIFT_TYPE=0,C_OPT_GOAL=0,C_AINIT_VAL=0,C_SINIT_VAL=0,C_DEFAULT_DATA=0,C_HAS_A=0,C_HAS_CE=0,C_REG_LAST_BIT=1,C_SYNC_PRIORITY=1,C_SYNC_ENABLE=0,C_HAS_SCLR=1,C_HAS_SSET=0,C_HAS_SINIT=0,C_MEM_INIT_FILE=no_" & 
+"coe_file_loaded,C_ELABORATION_DIR=./,C_READ_MIF=0,C_PARSER_TYPE=0}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF Q: SIGNAL IS "XIL_INTERFACENAME q_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency data_bitwidth format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} DATA_WIDTH 1}";

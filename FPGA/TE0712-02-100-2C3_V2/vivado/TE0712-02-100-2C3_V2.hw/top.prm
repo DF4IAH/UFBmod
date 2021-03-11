@@ -6,10 +6,10 @@ Interface          SPIX4
 Size               32M
 Start Address      0x00000000
 End Address        0x01FFFFFF
-Checksum           0xD4631FE3
+Checksum           0xD3721AC2
 Fill Value         0xFF
 
 Addr1         Addr2         Date                    File(s)                                                                                                 Checksum
-0x00000000    0x002F5E1F    Mar 11 12:55:14 2021    C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.runs/impl_1/top.bit    0x0764992F
-0x00800000    0x00824E21    Mar 11 12:45:38 2021    C:/Users/espero/git/UFBmod/SW/ELF_SREC/rtos_ufbmod.srec                                                 0x00791C72
-File Checksum Total                                                                                                                                         0x07DDB5A1
+0x00000000    0x00303EB7    Mar 11 17:25:51 2021    C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/TE0712-02-100-2C3_V2.runs/impl_1/top.bit    0x07534B76
+0x00800000    0x00824E21    Mar 11 13:15:57 2021    C:/Users/espero/git/UFBmod/SW/ELF_SREC/rtos_ufbmod.srec                                                 0x00791C72
+File Checksum Total                                                                                                                                         0x07CC67E8

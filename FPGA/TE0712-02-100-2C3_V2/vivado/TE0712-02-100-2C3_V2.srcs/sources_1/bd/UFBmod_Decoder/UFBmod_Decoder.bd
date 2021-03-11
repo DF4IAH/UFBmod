@@ -6,7 +6,7 @@
       "name": "UFBmod_Decoder",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Singular",
-      "tool_version": "2020.1.1",
+      "tool_version": "2020.2",
       "validated": "true"
     },
     "design_tree": {
@@ -15,13 +15,13 @@
         "xlconstant_val1_len1": "",
         "FFT_rx_rf09_chXX_rowsum_c_accum_1clk": "",
         "FFT_rx_rf09_chXX_signal_correction_mult_gen_4clks": "",
-        "FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks": "",
         "xlconstant_val256x32_len16": "",
         "xlconstant_val0_len1": "",
         "xlconstant_val0_len16": "",
         "FFT_rx_rf09_chXX_noise_xlslice_18to0": "",
         "FFT_rx_rf09_chXX_noise_c_shift_ram_0": "",
-        "FFT_rx_rf09_chXX_to_Decoder_FSM": ""
+        "FFT_rx_rf09_chXX_to_Decoder_FSM": "",
+        "FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks": ""
       },
       "UFBmod_rx09_chXX_Decoder": {
         "decoder_rx09_chXX_artemis_blk_mem_gen_2clks": "",
@@ -408,51 +408,6 @@
               }
             }
           },
-          "FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks": {
-            "vlnv": "xilinx.com:ip:div_gen:5.1",
-            "xci_name": "UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0",
-            "parameters": {
-              "ACLKEN": {
-                "value": "true"
-              },
-              "FlowControl": {
-                "value": "Blocking"
-              },
-              "OptimizeGoal": {
-                "value": "Resources"
-              },
-              "algorithm_type": {
-                "value": "Radix2"
-              },
-              "clocks_per_division": {
-                "value": "1"
-              },
-              "divide_by_zero_detect": {
-                "value": "true"
-              },
-              "dividend_and_quotient_width": {
-                "value": "16"
-              },
-              "divisor_width": {
-                "value": "32"
-              },
-              "fractional_width": {
-                "value": "16"
-              },
-              "latency": {
-                "value": "35"
-              },
-              "latency_configuration": {
-                "value": "Automatic"
-              },
-              "operand_sign": {
-                "value": "Unsigned"
-              },
-              "remainder_type": {
-                "value": "Fractional"
-              }
-            }
-          },
           "xlconstant_val256x32_len16": {
             "vlnv": "xilinx.com:ip:xlconstant:1.1",
             "xci_name": "UFBmod_Decoder_xlconstant_val256x32_len16_0",
@@ -574,13 +529,7 @@
               "TRX_post_fft_rx_rf09_chXX_mem_b_addr": {
                 "direction": "O",
                 "left": "4",
-                "right": "0",
-                "parameters": {
-                  "LAYERED_METADATA": {
-                    "value": "",
-                    "value_src": "weak"
-                  }
-                }
+                "right": "0"
               },
               "TRX_post_fft_rx_rf09_chXX_mem_b_dout": {
                 "direction": "I",
@@ -594,63 +543,27 @@
                 }
               },
               "fft_rx09_chXX_rowsum_accum_sclr": {
-                "direction": "O",
-                "parameters": {
-                  "POLARITY": {
-                    "value": "",
-                    "value_src": "weak"
-                  }
-                }
+                "direction": "O"
               },
               "fft_rx09_chXX_rowsum_accum_ce": {
-                "direction": "O",
-                "parameters": {
-                  "POLARITY": {
-                    "value": "",
-                    "value_src": "weak"
-                  }
-                }
+                "direction": "O"
               },
               "fft_rx09_chXX_averaging_factor_div_aclken": {
-                "direction": "O",
-                "parameters": {
-                  "POLARITY": {
-                    "value": "",
-                    "value_src": "weak"
-                  }
-                }
+                "direction": "O"
               },
               "fft_rx09_chXX_averaging_factor_div_dout_tvalid": {
                 "direction": "I"
               },
               "fft_rx09_chXX_averaging_factor_div_divisor_tvalid": {
-                "direction": "O",
-                "parameters": {
-                  "POLARITY": {
-                    "value": "",
-                    "value_src": "weak"
-                  }
-                }
+                "direction": "O"
               },
               "fft_rx09_chXX_signal_correction_mult_ce": {
-                "direction": "O",
-                "parameters": {
-                  "POLARITY": {
-                    "value": "",
-                    "value_src": "weak"
-                  }
-                }
+                "direction": "O"
               },
               "fft_rx09_chXX_signal_correction_mult_ina": {
                 "direction": "O",
                 "left": "15",
-                "right": "0",
-                "parameters": {
-                  "LAYERED_METADATA": {
-                    "value": "",
-                    "value_src": "weak"
-                  }
-                }
+                "right": "0"
               },
               "fft_rx09_chXX_signal_correction_mult_prod": {
                 "direction": "I",
@@ -671,13 +584,7 @@
               "fft_rx09_chXX_signal_bins_mem_dina": {
                 "direction": "O",
                 "left": "15",
-                "right": "0",
-                "parameters": {
-                  "LAYERED_METADATA": {
-                    "value": "",
-                    "value_src": "weak"
-                  }
-                }
+                "right": "0"
               },
               "fft_rx09_chXX_signal_bins_mem_douta": {
                 "direction": "I",
@@ -693,6 +600,51 @@
                 "right": "0"
               }
             }
+          },
+          "FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks": {
+            "vlnv": "xilinx.com:ip:div_gen:5.1",
+            "xci_name": "UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0",
+            "parameters": {
+              "ACLKEN": {
+                "value": "true"
+              },
+              "FlowControl": {
+                "value": "Blocking"
+              },
+              "OptimizeGoal": {
+                "value": "Resources"
+              },
+              "algorithm_type": {
+                "value": "Radix2"
+              },
+              "clocks_per_division": {
+                "value": "1"
+              },
+              "divide_by_zero_detect": {
+                "value": "true"
+              },
+              "dividend_and_quotient_width": {
+                "value": "16"
+              },
+              "divisor_width": {
+                "value": "32"
+              },
+              "fractional_width": {
+                "value": "16"
+              },
+              "latency": {
+                "value": "35"
+              },
+              "latency_configuration": {
+                "value": "Automatic"
+              },
+              "operand_sign": {
+                "value": "Unsigned"
+              },
+              "remainder_type": {
+                "value": "Fractional"
+              }
+            }
           }
         },
         "nets": {
@@ -703,9 +655,9 @@
               "FFT_rx_rf09_chXX_signal_bins_blk_mem_gen_2clks/clka",
               "FFT_rx_rf09_chXX_rowsum_c_accum_1clk/CLK",
               "FFT_rx_rf09_chXX_signal_correction_mult_gen_4clks/CLK",
-              "FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks/aclk",
               "FFT_rx_rf09_chXX_noise_c_shift_ram_0/CLK",
-              "FFT_rx_rf09_chXX_to_Decoder_FSM/clk_100MHz"
+              "FFT_rx_rf09_chXX_to_Decoder_FSM/clk_100MHz",
+              "FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks/aclk"
             ]
           },
           "fft_rx09_chXX_signal_bins_blk_mem_gen_0_doutb_0": {
@@ -742,8 +694,8 @@
           "fft_rx09_chXX_averaging_factor_div_divisor_tdata_0": {
             "ports": [
               "FFT_rx_rf09_chXX_rowsum_c_accum_1clk/Q",
-              "FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks/s_axis_divisor_tdata",
-              "FFT_rx_rf09_chXX_noise_xlslice_18to0/Din"
+              "FFT_rx_rf09_chXX_noise_xlslice_18to0/Din",
+              "FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks/s_axis_divisor_tdata"
             ]
           },
           "fft_rx09_chXX_averaging_factor_div_dividend_tdata_0": {
@@ -779,8 +731,8 @@
           "fft_rx09_chXX_averaging_factor_div_divisor_tvalid_0": {
             "ports": [
               "FFT_rx_rf09_chXX_to_Decoder_FSM/fft_rx09_chXX_averaging_factor_div_divisor_tvalid",
-              "FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks/s_axis_divisor_tvalid",
-              "FFT_rx_rf09_chXX_noise_c_shift_ram_0/CE"
+              "FFT_rx_rf09_chXX_noise_c_shift_ram_0/CE",
+              "FFT_rx_rf09_chXX_averaging_factor_div_gen_35clks/s_axis_divisor_tvalid"
             ]
           },
           "fft_rx09_chXX_noise_xlslice_18to0_Dout_0": {
@@ -1171,35 +1123,17 @@
                 }
               },
               "decoder_rx09_chXX_artemis_mult_ce": {
-                "direction": "O",
-                "parameters": {
-                  "POLARITY": {
-                    "value": "",
-                    "value_src": "weak"
-                  }
-                }
+                "direction": "O"
               },
               "decoder_rx09_chXX_artemis_mult_ina": {
                 "direction": "O",
                 "left": "15",
-                "right": "0",
-                "parameters": {
-                  "LAYERED_METADATA": {
-                    "value": "",
-                    "value_src": "weak"
-                  }
-                }
+                "right": "0"
               },
               "decoder_rx09_chXX_artemis_mult_inb": {
                 "direction": "O",
                 "left": "31",
-                "right": "0",
-                "parameters": {
-                  "LAYERED_METADATA": {
-                    "value": "",
-                    "value_src": "weak"
-                  }
-                }
+                "right": "0"
               },
               "decoder_rx09_chXX_artemis_mult_outp": {
                 "direction": "I",
@@ -1233,24 +1167,12 @@
               "TRX_decoder_rx_rf09_chXX_center_pos": {
                 "direction": "O",
                 "left": "7",
-                "right": "0",
-                "parameters": {
-                  "LAYERED_METADATA": {
-                    "value": "",
-                    "value_src": "weak"
-                  }
-                }
+                "right": "0"
               },
               "TRX_decoder_rx_rf09_chXX_strength": {
                 "direction": "O",
                 "left": "18",
-                "right": "0",
-                "parameters": {
-                  "LAYERED_METADATA": {
-                    "value": "",
-                    "value_src": "weak"
-                  }
-                }
+                "right": "0"
               },
               "TRX_decoder_rx_rf09_chXX_noise": {
                 "direction": "I",
@@ -1266,13 +1188,7 @@
               "TRX_decoder_rx09_chXX_SoM_frameCtr": {
                 "direction": "O",
                 "left": "31",
-                "right": "0",
-                "parameters": {
-                  "LAYERED_METADATA": {
-                    "value": "",
-                    "value_src": "weak"
-                  }
-                }
+                "right": "0"
               },
               "TRX_decoder_rx_rf09_chXX_sql_open": {
                 "direction": "O"
@@ -1582,13 +1498,7 @@
               "TRX_pushdata_rx_rf09_chXX_din": {
                 "direction": "O",
                 "left": "7",
-                "right": "0",
-                "parameters": {
-                  "LAYERED_METADATA": {
-                    "value": "",
-                    "value_src": "weak"
-                  }
-                }
+                "right": "0"
               }
             }
           }

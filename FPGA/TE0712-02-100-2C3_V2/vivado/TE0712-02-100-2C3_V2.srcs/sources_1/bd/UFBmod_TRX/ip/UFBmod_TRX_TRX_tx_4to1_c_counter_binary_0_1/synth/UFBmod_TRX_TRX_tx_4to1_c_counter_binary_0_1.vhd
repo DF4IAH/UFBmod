@@ -1,4 +1,4 @@
--- (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -107,12 +107,12 @@ ARCHITECTURE UFBmod_TRX_TRX_tx_4to1_c_counter_binary_0_1_arch OF UFBmod_TRX_TRX_
     );
   END COMPONENT c_counter_binary_v12_0_14;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF UFBmod_TRX_TRX_tx_4to1_c_counter_binary_0_1_arch: ARCHITECTURE IS "c_counter_binary_v12_0_14,Vivado 2020.1.1";
+  ATTRIBUTE X_CORE_INFO OF UFBmod_TRX_TRX_tx_4to1_c_counter_binary_0_1_arch: ARCHITECTURE IS "c_counter_binary_v12_0_14,Vivado 2020.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF UFBmod_TRX_TRX_tx_4to1_c_counter_binary_0_1_arch : ARCHITECTURE IS "UFBmod_TRX_TRX_tx_4to1_c_counter_binary_0_1,c_counter_binary_v12_0_14,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF UFBmod_TRX_TRX_tx_4to1_c_counter_binary_0_1_arch: ARCHITECTURE IS "UFBmod_TRX_TRX_tx_4to1_c_counter_binary_0_1,c_counter_binary_v12_0_14,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=c_counter_binary,x_ipVersion=12.0,x_ipCoreRevision=14,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_IMPLEMENTATION=0,C_VERBOSITY=0,C_XDEVICEFAMILY=artix7,C_WIDTH=3,C_HAS_CE=0,C_HAS_SCLR=1,C_RESTRICT_COUNT=1,C_COUNT_TO=11,C_COUNT_BY=1,C_COUNT_MODE=0,C_THRESH0_VALUE=11,C_CE_OVERRIDES_SYNC=0,C_HAS_THRESH0=1,C_HAS_LOAD=0,C_LOAD_LOW=0,C_LATENCY=1,C_FB_LATENCY=0," & 
-"C_AINIT_VAL=0,C_SINIT_VAL=0,C_SCLR_OVERRIDES_SSET=1,C_HAS_SSET=0,C_HAS_SINIT=0}";
+  ATTRIBUTE CORE_GENERATION_INFO OF UFBmod_TRX_TRX_tx_4to1_c_counter_binary_0_1_arch: ARCHITECTURE IS "UFBmod_TRX_TRX_tx_4to1_c_counter_binary_0_1,c_counter_binary_v12_0_14,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=c_counter_binary,x_ipVersion=12.0,x_ipCoreRevision=14,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_IMPLEMENTATION=0,C_VERBOSITY=0,C_XDEVICEFAMILY=artix7,C_WIDTH=3,C_HAS_CE=0,C_HAS_SCLR=1,C_RESTRICT_COUNT=1,C_COUNT_TO=11,C_COUNT_BY=1,C_COUNT_MODE=0,C_THRESH0_VALUE=11,C_CE_OVERRIDES_SYNC=0,C_HAS_THRESH0=1,C_HAS_LOAD=0,C_LOAD_LOW=0,C_LATENCY=1,C_FB_LATENCY=0,C_" & 
+"AINIT_VAL=0,C_SINIT_VAL=0,C_SCLR_OVERRIDES_SSET=1,C_HAS_SSET=0,C_HAS_SINIT=0}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF Q: SIGNAL IS "XIL_INTERFACENAME q_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency bitwidth format long minimum {} maximum {}} value 3} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}}" & 

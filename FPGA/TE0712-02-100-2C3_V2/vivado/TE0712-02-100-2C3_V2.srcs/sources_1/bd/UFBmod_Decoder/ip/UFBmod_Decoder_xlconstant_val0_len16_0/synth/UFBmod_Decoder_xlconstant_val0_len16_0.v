@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -50,9 +50,9 @@
 // IP VLNV: xilinx.com:ip:xlconstant:1.1
 // IP Revision: 7
 
-(* X_CORE_INFO = "xlconstant_v1_1_7_xlconstant,Vivado 2020.1.1" *)
+(* X_CORE_INFO = "xlconstant_v1_1_7_xlconstant,Vivado 2020.2" *)
 (* CHECK_LICENSE_TYPE = "UFBmod_Decoder_xlconstant_val0_len16_0,xlconstant_v1_1_7_xlconstant,{}" *)
-(* CORE_GENERATION_INFO = "UFBmod_Decoder_xlconstant_val0_len16_0,xlconstant_v1_1_7_xlconstant,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xlconstant,x_ipVersion=1.1,x_ipCoreRevision=7,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,CONST_WIDTH=16,CONST_VAL=0x0001}" *)
+(* CORE_GENERATION_INFO = "UFBmod_Decoder_xlconstant_val0_len16_0,xlconstant_v1_1_7_xlconstant,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xlconstant,x_ipVersion=1.1,x_ipCoreRevision=7,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,CONST_WIDTH=16,CONST_VAL=0x0001}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module UFBmod_Decoder_xlconstant_val0_len16_0 (
   dout
@@ -62,7 +62,7 @@ output wire [15 : 0] dout;
 
   xlconstant_v1_1_7_xlconstant #(
     .CONST_WIDTH(16),
-    .CONST_VAL('H0001)
+    .CONST_VAL(16'H0001)
   ) inst (
     .dout(dout)
   );

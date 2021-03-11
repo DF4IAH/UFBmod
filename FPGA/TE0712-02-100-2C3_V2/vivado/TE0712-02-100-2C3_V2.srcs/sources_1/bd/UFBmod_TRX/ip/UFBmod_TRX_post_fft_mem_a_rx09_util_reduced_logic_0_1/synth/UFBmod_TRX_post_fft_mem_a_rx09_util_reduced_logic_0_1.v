@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -50,9 +50,9 @@
 // IP VLNV: xilinx.com:ip:util_reduced_logic:2.0
 // IP Revision: 4
 
-(* X_CORE_INFO = "util_reduced_logic_v2_0_4_util_reduced_logic,Vivado 2020.1.1" *)
+(* X_CORE_INFO = "util_reduced_logic_v2_0_4_util_reduced_logic,Vivado 2020.2" *)
 (* CHECK_LICENSE_TYPE = "UFBmod_TRX_post_fft_mem_a_rx09_util_reduced_logic_0_1,util_reduced_logic_v2_0_4_util_reduced_logic,{}" *)
-(* CORE_GENERATION_INFO = "UFBmod_TRX_post_fft_mem_a_rx09_util_reduced_logic_0_1,util_reduced_logic_v2_0_4_util_reduced_logic,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=util_reduced_logic,x_ipVersion=2.0,x_ipCoreRevision=4,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_OPERATION=and,C_SIZE=11}" *)
+(* CORE_GENERATION_INFO = "UFBmod_TRX_post_fft_mem_a_rx09_util_reduced_logic_0_1,util_reduced_logic_v2_0_4_util_reduced_logic,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=util_reduced_logic,x_ipVersion=2.0,x_ipCoreRevision=4,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_OPERATION=and,C_SIZE=11}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module UFBmod_TRX_post_fft_mem_a_rx09_util_reduced_logic_0_1 (
   Op1,

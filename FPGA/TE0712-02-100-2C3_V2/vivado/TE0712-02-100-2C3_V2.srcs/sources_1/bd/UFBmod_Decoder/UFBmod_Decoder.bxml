@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="UFBmod_Decoder" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1606599142"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1606599142"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1606599142"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1606599142"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1615478506"/>
+    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1615478506"/>
+    <Generation Name="SIMULATION" State="STALE" Timestamp="1615478506"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1615478506"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="UFBmod_Decoder_sim_netlist.vhdl" Type="VHDL">
         <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
@@ -185,6 +185,11 @@
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="HW_HANDOFF"/>
       </File>
+      <File Name="UFBmod_Decoder.bda">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+      </File>
       <File Name="hw_handoff\UFBmod_Decoder_bd.tcl">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
@@ -194,11 +199,6 @@
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="HW_HANDOFF"/>
-      </File>
-      <File Name="sim\UFBmod_Decoder.protoinst">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SIMULATION"/>
       </File>
     </FileCollection>
   </CompositeFile>

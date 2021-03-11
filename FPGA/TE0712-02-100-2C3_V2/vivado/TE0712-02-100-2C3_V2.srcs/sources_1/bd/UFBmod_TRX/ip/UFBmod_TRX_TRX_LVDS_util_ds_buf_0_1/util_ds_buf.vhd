@@ -137,7 +137,8 @@ entity util_ds_buf is
            OBUFDS_GTE5_ADV_I   : in    std_logic_vector((4 * C_SIZE) - 1 downto 0);
            OBUFDS_GTE5_ADV_O   : out   std_logic_vector(C_SIZE-1 downto 0);
            OBUFDS_GTE5_ADV_OB  : out   std_logic_vector(C_SIZE-1 downto 0);
-
+           OBUFDS_GTE5_ADV_RXRECCLKSEL : in    std_logic_vector((2 * C_SIZE)-1 downto 0);
+           
     -- port for OBUFDS_GTE3 
            OBUFDS_GTE3_CEB : in    std_logic_vector(C_SIZE-1 downto 0);
            OBUFDS_GTE3_I   : in    std_logic_vector(C_SIZE-1 downto 0);
@@ -202,6 +203,7 @@ entity util_ds_buf is
            OBUFDS_GTME5_ADV_I     : in    std_logic_vector((4 * C_SIZE) -1 downto 0);
            OBUFDS_GTME5_ADV_O     : out   std_logic_vector(C_SIZE-1 downto 0);
            OBUFDS_GTME5_ADV_OB    : out   std_logic_vector(C_SIZE-1 downto 0);
+           OBUFDS_GTME5_ADV_RXRECCLKSEL : in    std_logic_vector((2 * C_SIZE)-1 downto 0);
 
     -- ports for BUFG_GT
            BUFG_GT_I              : in    std_logic_vector(C_SIZE-1 downto 0);
@@ -210,7 +212,12 @@ entity util_ds_buf is
            BUFG_GT_CLR            : in    std_logic_vector(C_SIZE-1 downto 0);
            BUFG_GT_CLRMASK        : in    std_logic_vector(C_SIZE-1 downto 0);
            BUFG_GT_DIV            : in    std_logic_vector((3 * C_SIZE) - 1 downto 0);
-           BUFG_GT_O              : out   std_logic_vector(C_SIZE-1 downto 0)
+           BUFG_GT_O              : out   std_logic_vector(C_SIZE-1 downto 0);
+
+  -- port for BUFG_PS 
+           BUFG_PS_I             : in    std_logic_vector(C_SIZE-1 downto 0);
+           BUFG_PS_O             : out   std_logic_vector(C_SIZE-1 downto 0)
+
      );
 
 
@@ -251,6 +258,7 @@ architecture IMP of util_ds_buf is
 
    constant BUFFER_TYPE : string := LowerCase_String(C_BUF_TYPE);
    constant BIT1       : bit := '0';
+   constant BIT1_1     : bit := '1';
    constant BIT2       : std_logic_vector (1 downto 0) := "00";
    constant BIT3       : std_logic_vector (2 downto 0) := "010";
 
@@ -417,6 +425,28 @@ begin
    end generate USE_BUFGCE;
 
 
+
+  
+
+-- instantiate BUFG_PS
+   
+   USE_BUFG_PS : if (BUFFER_TYPE = "bufg_ps") generate 
+         
+       GEN_BUFG_PS : for i in 0 to C_SIZE-1 generate 
+          BUFG_PS_U : BUFG_PS
+                
+          port map (
+               O   => BUFG_PS_O(i),
+               I   => BUFG_PS_I(i)
+           );
+      
+       end generate GEN_BUFG_PS;
+   end generate USE_BUFG_PS;
+
+
+
+
+       
   -- instantiate BUFH
    USE_BUFH : if (BUFFER_TYPE = "bufh") generate
 
@@ -501,6 +531,9 @@ begin
    end generate USE_BUFG_GT;
 
 
+
+
+
   -- OBUFDS_GTE3: Gigabit Transceiver Buffer
   -- UltraScale
   
@@ -510,7 +543,7 @@ begin
          OBUFDS_GTE3_U :  OBUFDS_GTE3
 
         generic map (
-          REFCLK_EN_TX_PATH => BIT1, --'0', 
+          REFCLK_EN_TX_PATH => BIT1_1, --'0', 
           REFCLK_ICNTL_TX   => C_REFCLK_ICNTL_TX
         )
         port map (
@@ -524,8 +557,8 @@ begin
        end generate USE_OBUFDS_GTE3;
 
 
-
   -- End of OBUFDS_GTE3_inst instantiation
+
 
 
   -- OBUFDS_GTE3_ADV: Gigabit Transceiver Buffer
@@ -537,7 +570,7 @@ begin
         OBUFDS_GTE3_U_ADV :  OBUFDS_GTE3_ADV
 
         generic map (
-          REFCLK_EN_TX_PATH => BIT1, --'0', 
+          REFCLK_EN_TX_PATH => BIT1_1, --'0', 
           REFCLK_ICNTL_TX   => C_REFCLK_ICNTL_TX
         )
         port map (
@@ -545,7 +578,7 @@ begin
           OB           => OBUFDS_GTE3_ADV_OB(i), 
           CEB          => OBUFDS_GTE3_ADV_CEB(i), 
           I            => OBUFDS_GTE3_ADV_I((4*i)+3 downto (4*i)),
-          RXRECCLK_SEL => RXRECCLK_SEL_GTE3_ADV((2*i)+1 downto (2*i)) 
+          RXRECCLK_SEL => RXRECCLK_SEL_GTE3_ADV((2*i)+1 downto 2*i) 
         );
 
 
@@ -565,7 +598,7 @@ begin
          OBUFDS_GTE4_U :  OBUFDS_GTE4
 
         generic map (
-          REFCLK_EN_TX_PATH => BIT1, --'0', 
+          REFCLK_EN_TX_PATH => BIT1_1, --'0', 
           REFCLK_ICNTL_TX   => C_REFCLK_ICNTL_TX
         )
         port map (
@@ -580,6 +613,7 @@ begin
 
   -- End of OBUFDS_GTE4_inst instantiation
 
+
   -- OBUFDS_GTE4_ADV: Gigabit Transceiver Buffer
   -- UltraScale
   
@@ -589,7 +623,7 @@ begin
          OBUFDS_GTE4_ADV_U :  OBUFDS_GTE4_ADV
 
         generic map (
-          REFCLK_EN_TX_PATH => BIT1, --'0', 
+          REFCLK_EN_TX_PATH => BIT1_1, --'0', 
           REFCLK_ICNTL_TX   => C_REFCLK_ICNTL_TX
         )
         port map (
@@ -607,6 +641,7 @@ begin
 
 
 
+
   -- IBUFDS_GTME5: Gigabit Transceiver Buffer
   -- UltraScale
   
@@ -616,8 +651,6 @@ begin
          IBUFDS_GTME5_U :  IBUFDS_GTME5
 
         generic map (
-          REFCLK_CTL_DRV_SWING => BIT3, --"010",
-          REFCLK_EN_DRV        => BIT1, --'0',
           REFCLK_EN_TX_PATH    => BIT1, --'0',
           REFCLK_HROW_CK_SEL   => 0,
           REFCLK_ICNTL_RX      => 0
@@ -634,6 +667,8 @@ begin
        end generate USE_IBUFDS_GTME5;
 
   -- End of IBUFDS_GTME5_inst instantiation
+
+
 
   -- IBUFDS_GTM: Gigabit Transceiver Buffer
   -- UltraScale
@@ -671,7 +706,7 @@ begin
          OBUFDS_GTM_U :  OBUFDS_GTM
 
         generic map (
-          REFCLK_EN_TX_PATH  => BIT1 --'0'
+          REFCLK_EN_TX_PATH  => BIT1_1 --'0'
                  )
         port map (
           O            => OBUFDS_GTM_O(i), 
@@ -686,6 +721,7 @@ begin
 
   -- End of IBUFDS_GTM_inst instantiation
 
+
   -- OBUFDS_GTM_ADV: Gigabit Transceiver Buffer
   -- UltraScale
   
@@ -695,7 +731,7 @@ begin
          OBUFDS_GTM_ADV_U :  OBUFDS_GTM_ADV
 
         generic map (
-          REFCLK_EN_TX_PATH  => BIT1, --'0',
+          REFCLK_EN_TX_PATH  => BIT1_1, --'0',
           REFCLK_ICNTL_TX    => 0,
           RXRECCLK_SEL       => BIT2  --"00"
         )
@@ -713,6 +749,7 @@ begin
   -- End of OBUFDS_GTM_inst instantiation
 
 
+
   -- OBUFDS_GTME5: Gigabit Transceiver Buffer
   -- UltraScale
   
@@ -722,7 +759,8 @@ begin
          OBUFDS_GTME5_U :  OBUFDS_GTME5
 
         generic map (
-          REFCLK_EN_TX_PATH  => BIT1 --'0'
+          REFCLK_EN_TX_PATH  => BIT1, --'0',
+          REFCLK_EN_DRV     => BIT1 
         )
         port map (
           O            => OBUFDS_GTME5_O(i), 
@@ -735,7 +773,8 @@ begin
        end generate USE_OBUFDS_GTME5;
 
 
-  -- End of OBUFDS_GTM_inst instantiation
+  -- End of OBUFDS_GTME5_inst instantiation
+
 
 
   -- OBUFDS_GTME5_ADV: Gigabit Transceiver Buffer
@@ -748,19 +787,22 @@ begin
 
         generic map (
           REFCLK_EN_TX_PATH  => BIT1, --'0',
-          RXRECCLK_SEL       => BIT2  -- "00"   -- integer
+          REFCLK_EN_DRV       => BIT1
         )
         port map (
           O            => OBUFDS_GTME5_ADV_O(i), 
           OB           => OBUFDS_GTME5_ADV_OB(i), 
           CEB          => OBUFDS_GTME5_ADV_CEB(i), 
-          I            => OBUFDS_GTME5_ADV_I((4*i)+3 downto (4*i))
+          I            => OBUFDS_GTME5_ADV_I((4*i)+3 downto (4*i)) ,
+         RXRECCLKSEL => OBUFDS_GTME5_ADV_RXRECCLKSEL(((2*i)+1) downto (2*i)) 
+
         );
 
          end generate GEN_OBUFDS_GTME5_ADV;
        end generate USE_OBUFDS_GTME5_ADV;
 
 
-  -- End of OBUFDS_GTM_inst instantiation
+  -- End of OBUFDS_GTME5_ADV_inst instantiation
+
 
 end IMP;

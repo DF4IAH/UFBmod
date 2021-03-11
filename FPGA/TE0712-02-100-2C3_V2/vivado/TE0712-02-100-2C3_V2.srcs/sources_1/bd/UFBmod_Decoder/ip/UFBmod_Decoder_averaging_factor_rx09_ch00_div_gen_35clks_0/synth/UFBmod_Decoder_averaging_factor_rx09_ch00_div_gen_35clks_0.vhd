@@ -1,4 +1,4 @@
--- (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -47,14 +47,14 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:ip:div_gen:5.1
--- IP Revision: 16
+-- IP Revision: 17
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-LIBRARY div_gen_v5_1_16;
-USE div_gen_v5_1_16.div_gen_v5_1_16;
+LIBRARY div_gen_v5_1_17;
+USE div_gen_v5_1_17.div_gen_v5_1_17;
 
 ENTITY UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0 IS
   PORT (
@@ -75,7 +75,7 @@ END UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0;
 ARCHITECTURE UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0_arch OF UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
   ATTRIBUTE DowngradeIPIdentifiedWarnings OF UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0_arch: ARCHITECTURE IS "yes";
-  COMPONENT div_gen_v5_1_16 IS
+  COMPONENT div_gen_v5_1_17 IS
     GENERIC (
       C_XDEVICEFAMILY : STRING;
       C_HAS_ARESETN : INTEGER;
@@ -122,14 +122,14 @@ ARCHITECTURE UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0_arch OF 
       m_axis_dout_tlast : OUT STD_LOGIC;
       m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
-  END COMPONENT div_gen_v5_1_16;
+  END COMPONENT div_gen_v5_1_17;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0_arch: ARCHITECTURE IS "div_gen_v5_1_16,Vivado 2020.1.1";
+  ATTRIBUTE X_CORE_INFO OF UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0_arch: ARCHITECTURE IS "div_gen_v5_1_17,Vivado 2020.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
-  ATTRIBUTE CHECK_LICENSE_TYPE OF UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0_arch : ARCHITECTURE IS "UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0,div_gen_v5_1_16,{}";
+  ATTRIBUTE CHECK_LICENSE_TYPE OF UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0_arch : ARCHITECTURE IS "UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0,div_gen_v5_1_17,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0_arch: ARCHITECTURE IS "UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0,div_gen_v5_1_16,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=div_gen,x_ipVersion=5.1,x_ipCoreRevision=16,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=artix7,C_HAS_ARESETN=0,C_HAS_ACLKEN=1,C_LATENCY=35,ALGORITHM_TYPE=1,DIVISOR_WIDTH=32,DIVIDEND_WIDTH=16,SIGNED_B=0,DIVCLK_SEL=1,FRACTIONAL_B=1,FRACTIONAL_WIDTH=16,C_HAS_DIV_BY_ZERO=1,C_THROTTLE_SCHEME=4,C_TLAST_RESOLUTION=0,C_HAS_S_AXIS_DIVISOR_TUSER=" & 
-"0,C_HAS_S_AXIS_DIVISOR_TLAST=0,C_S_AXIS_DIVISOR_TDATA_WIDTH=32,C_S_AXIS_DIVISOR_TUSER_WIDTH=1,C_HAS_S_AXIS_DIVIDEND_TUSER=0,C_HAS_S_AXIS_DIVIDEND_TLAST=0,C_S_AXIS_DIVIDEND_TDATA_WIDTH=16,C_S_AXIS_DIVIDEND_TUSER_WIDTH=1,C_M_AXIS_DOUT_TDATA_WIDTH=32,C_M_AXIS_DOUT_TUSER_WIDTH=1}";
+  ATTRIBUTE CORE_GENERATION_INFO OF UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0_arch: ARCHITECTURE IS "UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0,div_gen_v5_1_17,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=div_gen,x_ipVersion=5.1,x_ipCoreRevision=17,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=artix7,C_HAS_ARESETN=0,C_HAS_ACLKEN=1,C_LATENCY=35,ALGORITHM_TYPE=1,DIVISOR_WIDTH=32,DIVIDEND_WIDTH=16,SIGNED_B=0,DIVCLK_SEL=1,FRACTIONAL_B=1,FRACTIONAL_WIDTH=16,C_HAS_DIV_BY_ZERO=1,C_THROTTLE_SCHEME=4,C_TLAST_RESOLUTION=0,C_HAS_S_AXIS_DIVISOR_TUSER=0," & 
+"C_HAS_S_AXIS_DIVISOR_TLAST=0,C_S_AXIS_DIVISOR_TDATA_WIDTH=32,C_S_AXIS_DIVISOR_TUSER_WIDTH=1,C_HAS_S_AXIS_DIVIDEND_TUSER=0,C_HAS_S_AXIS_DIVIDEND_TLAST=0,C_S_AXIS_DIVIDEND_TDATA_WIDTH=16,C_S_AXIS_DIVIDEND_TUSER_WIDTH=1,C_M_AXIS_DOUT_TDATA_WIDTH=32,C_M_AXIS_DOUT_TUSER_WIDTH=1}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_dout_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DOUT TDATA";
@@ -159,7 +159,7 @@ ARCHITECTURE UFBmod_Decoder_averaging_factor_rx09_ch00_div_gen_35clks_0_arch OF 
   ATTRIBUTE X_INTERFACE_PARAMETER OF aclk: SIGNAL IS "XIL_INTERFACENAME aclk_intf, ASSOCIATED_BUSIF S_AXIS_DIVIDEND:S_AXIS_DIVISOR:M_AXIS_DOUT, ASSOCIATED_RESET aresetn, ASSOCIATED_CLKEN aclken, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN UFBmod_Decoder_clk_100MHz, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 aclk_intf CLK";
 BEGIN
-  U0 : div_gen_v5_1_16
+  U0 : div_gen_v5_1_17
     GENERIC MAP (
       C_XDEVICEFAMILY => "artix7",
       C_HAS_ARESETN => 0,

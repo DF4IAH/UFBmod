@@ -1,0 +1,1008 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key attr.name="base_addr" attr.type="string" for="node" id="BA"/>
+  <key attr.name="base_param" attr.type="string" for="node" id="BP"/>
+  <key attr.name="edge_hid" attr.type="int" for="edge" id="EH"/>
+  <key attr.name="high_addr" attr.type="string" for="node" id="HA"/>
+  <key attr.name="high_param" attr.type="string" for="node" id="HP"/>
+  <key attr.name="master_addrspace" attr.type="string" for="node" id="MA"/>
+  <key attr.name="master_instance" attr.type="string" for="node" id="MX"/>
+  <key attr.name="master_interface" attr.type="string" for="node" id="MI"/>
+  <key attr.name="master_segment" attr.type="string" for="node" id="MS"/>
+  <key attr.name="master_vlnv" attr.type="string" for="node" id="MV"/>
+  <key attr.name="memory_type" attr.type="string" for="node" id="TM"/>
+  <key attr.name="slave_instance" attr.type="string" for="node" id="SX"/>
+  <key attr.name="slave_interface" attr.type="string" for="node" id="SI"/>
+  <key attr.name="slave_segment" attr.type="string" for="node" id="SS"/>
+  <key attr.name="slave_vlnv" attr.type="string" for="node" id="SV"/>
+  <key attr.name="usage_type" attr.type="string" for="node" id="TU"/>
+  <key attr.name="vert_hid" attr.type="int" for="node" id="VH"/>
+  <key attr.name="vert_name" attr.type="string" for="node" id="VM"/>
+  <key attr.name="vert_type" attr.type="string" for="node" id="VT"/>
+  <graph edgedefault="undirected" id="G" parse.edgeids="canonical" parse.nodeids="canonical" parse.order="nodesfirst">
+    <node id="n0">
+      <data key="BA">0x74310000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7431FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_CFG_Si5338_DBG_axi_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_DBG_axi_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n1">
+      <data key="BA">0x54200000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x5420FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_SCOPE_axi_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/SCOPE/SCOPE_axi_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n2">
+      <data key="BA">0x54040000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x5404FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">m00_axi</data>
+      <data key="MX">/SREC_boot_loader_FSM_0</data>
+      <data key="MI">m00_axi</data>
+      <data key="MS">SEG_axi_PWM_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:module_ref:SREC_boot_loader_FSM:1.0</data>
+      <data key="TM">both</data>
+      <data key="SX">/PWM_lights/axi_PWM_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n3">
+      <data key="BA">0x44100000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x4410FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_TRX_CONFIG_TRX_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/AXI_TRX/TRX_CONFIG_TRX_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n4">
+      <data key="BA">0x00010000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x00013FFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data_LMB_1</data>
+      <data key="MX">/mdm_USER2_0</data>
+      <data key="MI">LMB_1</data>
+      <data key="MS">SEG_ilmb_bram_if_cntlr_Mem</data>
+      <data key="MV">xilinx.com:ip:mdm:3.2</data>
+      <data key="TM">both</data>
+      <data key="SX">/microblaze_0_local_memory/ilmb_bram_if_cntlr</data>
+      <data key="SI">SLMB2</data>
+      <data key="SS">Mem</data>
+      <data key="SV">xilinx.com:ip:lmb_bram_if_cntlr:4.0</data>
+      <data key="TU">memory</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n5">
+      <data key="BA">0x80000000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0xBFFFFFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">m00_axi</data>
+      <data key="MX">/SREC_boot_loader_FSM_0</data>
+      <data key="MI">m00_axi</data>
+      <data key="MS">SEG_mig_7series_0_memaddr</data>
+      <data key="MV">xilinx.com:module_ref:SREC_boot_loader_FSM:1.0</data>
+      <data key="TM">both</data>
+      <data key="SX">/mig_7series_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">memaddr</data>
+      <data key="SV">xilinx.com:ip:mig_7series:4.2</data>
+      <data key="TU">memory</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n6">
+      <data key="BA">0x76060000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7606FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">m00_axi</data>
+      <data key="MX">/SREC_boot_loader_FSM_0</data>
+      <data key="MI">m00_axi</data>
+      <data key="MS">SEG_CFG_Si5338_axi_iic_0_Reg</data>
+      <data key="MV">xilinx.com:module_ref:SREC_boot_loader_FSM:1.0</data>
+      <data key="TM">both</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_axi_iic_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_iic:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n7">
+      <data key="BA">0x00010000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x00013FFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">DLMB</data>
+      <data key="MS">SEG_ilmb_bram_if_cntlr_Mem</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/microblaze_0_local_memory/ilmb_bram_if_cntlr</data>
+      <data key="SI">SLMB1</data>
+      <data key="SS">Mem</data>
+      <data key="SV">xilinx.com:ip:lmb_bram_if_cntlr:4.0</data>
+      <data key="TU">memory</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n8">
+      <data key="BA">0x54210000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x5421FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_SCOPE_axi_gpio_1_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/SCOPE/SCOPE_axi_gpio_1</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n9">
+      <data key="BA">0x54050000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x5405FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_axi_UART0_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/UART0/axi_UART0_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n10">
+      <data key="BA">0x74300000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7430FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">m00_axi</data>
+      <data key="MX">/SREC_boot_loader_FSM_0</data>
+      <data key="MI">m00_axi</data>
+      <data key="MS">SEG_CFG_Si5338_axi_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:module_ref:SREC_boot_loader_FSM:1.0</data>
+      <data key="TM">both</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_axi_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n11">
+      <data key="BA">0x75310000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7531FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/mdm_USER2_0</data>
+      <data key="MI">M_AXI</data>
+      <data key="MS">SEG_CFG_axi_quad_spi_0_Reg</data>
+      <data key="MV">xilinx.com:ip:mdm:3.2</data>
+      <data key="TM">both</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_axi_quad_spi_0</data>
+      <data key="SI">AXI_LITE</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_quad_spi:3.2</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n12">
+      <data key="BA">0x74300000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7430FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_BOOT_PLL_axi_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_axi_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n13">
+      <data key="BA">0x74310000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7431FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">m00_axi</data>
+      <data key="MX">/SREC_boot_loader_FSM_0</data>
+      <data key="MI">m00_axi</data>
+      <data key="MS">SEG_CFG_Si5338_DBG_axi_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:module_ref:SREC_boot_loader_FSM:1.0</data>
+      <data key="TM">both</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_DBG_axi_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n14">
+      <data key="VM">msys</data>
+      <data key="VT">BC</data>
+    </node>
+    <node id="n15">
+      <data key="BA">0x75310000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7531FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_CFG_axi_quad_spi_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_axi_quad_spi_0</data>
+      <data key="SI">AXI_LITE</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_quad_spi:3.2</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n16">
+      <data key="BA">0x44130000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x4413FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_TRX_TX_DDS_ampt_axi_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/AXI_TRX/TRX_TX_DDS_ampt_axi_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n17">
+      <data key="BA">0x41010000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x4101FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_axi_timer_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/axi_timer_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_timer:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n18">
+      <data key="TU">active</data>
+      <data key="VH">2</data>
+      <data key="VT">PM</data>
+    </node>
+    <node id="n19">
+      <data key="BA">0x80000000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0xBFFFFFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DC</data>
+      <data key="MS">SEG_mig_7series_0_memaddr</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/mig_7series_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">memaddr</data>
+      <data key="SV">xilinx.com:ip:mig_7series:4.2</data>
+      <data key="TU">memory</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n20">
+      <data key="BA">0x80000000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0xBFFFFFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Instruction</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_IC</data>
+      <data key="MS">SEG_mig_7series_0_memaddr</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">instruction</data>
+      <data key="SX">/mig_7series_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">memaddr</data>
+      <data key="SV">xilinx.com:ip:mig_7series:4.2</data>
+      <data key="TU">memory</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n21">
+      <data key="BA">0x54040000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x5404FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_axi_PWM_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/PWM_lights/axi_PWM_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n22">
+      <data key="BA">0x400A0000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x400AFFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_microblaze_0_axi_intc_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/INT_ctrl/microblaze_0_axi_intc</data>
+      <data key="SI">s_axi</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_intc:4.1</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n23">
+      <data key="BA">0x440B0000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x440BFFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_axi_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/CLOCK/axi_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n24">
+      <data key="BA">0x44110000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x4411FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_TRX_RX_PUSHDATA_axi_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/AXI_TRX/TRX_RX_PUSHDATA_axi_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n25">
+      <data key="BA">0x00000000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x00003FFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Instruction</data>
+      <data key="MX">/CFG_Si5338/CFG_microblaze_0</data>
+      <data key="MI">ILMB</data>
+      <data key="MS">SEG_ilmb_bram_if_cntlr_0_Mem</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">instruction</data>
+      <data key="SX">/CFG_Si5338/CFG_Local_BRAM/ilmb_bram_if_cntlr_0</data>
+      <data key="SI">SLMB</data>
+      <data key="SS">Mem</data>
+      <data key="SV">xilinx.com:ip:lmb_bram_if_cntlr:4.0</data>
+      <data key="TU">memory</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n26">
+      <data key="BA">0x74310000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7431FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/CFG_Si5338/CFG_microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_CFG_Si5338_DBG_axi_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_DBG_axi_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n27">
+      <data key="BA">0x56070000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x5607FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_axi_BOARD_iic_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/axi_BOARD_iic_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_iic:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n28">
+      <data key="BA">0x00000000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x00003FFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/mdm_USER2_0</data>
+      <data key="MI">LMB_0</data>
+      <data key="MS">SEG_dlmb_bram_if_cntlr_0_Mem</data>
+      <data key="MV">xilinx.com:ip:mdm:3.2</data>
+      <data key="TM">both</data>
+      <data key="SX">/CFG_Si5338/CFG_Local_BRAM/dlmb_bram_if_cntlr_0</data>
+      <data key="SI">SLMB1</data>
+      <data key="SS">Mem</data>
+      <data key="SV">xilinx.com:ip:lmb_bram_if_cntlr:4.0</data>
+      <data key="TU">memory</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n29">
+      <data key="BA">0x54020000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x5402FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_axi_EUI48_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/EUI48/axi_EUI48_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n30">
+      <data key="BA">0x52090000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x5209FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_CLK1B_clk_wiz_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/CLK1B_CW_0/CLK1B_clk_wiz_0</data>
+      <data key="SI">s_axi_lite</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:clk_wiz:6.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n31">
+      <data key="BA">0x45100000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x4510FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_TRX_CONFIG_quad_spi_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/AXI_TRX/TRX_CONFIG_quad_spi_0</data>
+      <data key="SI">AXI_LITE</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_quad_spi:3.2</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n32">
+      <data key="BA">0x76060000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7606FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/CFG_Si5338/CFG_microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_BOOT_PLL_axi_iic_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_axi_iic_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_iic:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n33">
+      <data key="BA">0x54090000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x5409FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_CLK1B_axi_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/CLK1B_CW_0/CLK1B_axi_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n34">
+      <data key="BA">0x47080000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x4708FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_ETH0_axi_ethernetlite_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/ETH0/ETH0_axi_ethernetlite_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_ethernetlite:3.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n35">
+      <data key="VH">2</data>
+      <data key="VM">msys</data>
+      <data key="VT">VR</data>
+    </node>
+    <node id="n36">
+      <data key="BA">0x75310000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7531FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">m00_axi</data>
+      <data key="MX">/SREC_boot_loader_FSM_0</data>
+      <data key="MI">m00_axi</data>
+      <data key="MS">SEG_CFG_Si5338_axi_quad_spi_0_Reg</data>
+      <data key="MV">xilinx.com:module_ref:SREC_boot_loader_FSM:1.0</data>
+      <data key="TM">both</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_axi_quad_spi_0</data>
+      <data key="SI">AXI_LITE</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_quad_spi:3.2</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n37">
+      <data key="BA">0x53050000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x5305FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_axi_UART0_uartlite_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/UART0/axi_UART0_uartlite_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_uartlite:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n38">
+      <data key="BA">0x76060000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7606FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_BOOT_PLL_axi_iic_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_axi_iic_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_iic:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n39">
+      <data key="BA">0x44120000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x4412FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_TRX_TX_DDS_inc_axi_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/AXI_TRX/TRX_TX_DDS_inc_axi_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n40">
+      <data key="BA">0x00000000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x00003FFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/CFG_Si5338/CFG_microblaze_0</data>
+      <data key="MI">DLMB</data>
+      <data key="MS">SEG_dlmb_bram_if_cntlr_0_Mem</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/CFG_Si5338/CFG_Local_BRAM/dlmb_bram_if_cntlr_0</data>
+      <data key="SI">SLMB</data>
+      <data key="SS">Mem</data>
+      <data key="SV">xilinx.com:ip:lmb_bram_if_cntlr:4.0</data>
+      <data key="TU">memory</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n41">
+      <data key="BA">0x74300000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7430FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/CFG_Si5338/CFG_microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_BOOT_PLL_axi_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_axi_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n42">
+      <data key="BA">0x74310000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7431FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/mdm_USER2_0</data>
+      <data key="MI">M_AXI</data>
+      <data key="MS">SEG_CFG_Si5338_DBG_axi_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:mdm:3.2</data>
+      <data key="TM">both</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_DBG_axi_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n43">
+      <data key="BA">0x76060000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7606FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/mdm_USER2_0</data>
+      <data key="MI">M_AXI</data>
+      <data key="MS">SEG_BOOT_PLL_axi_iic_0_Reg</data>
+      <data key="MV">xilinx.com:ip:mdm:3.2</data>
+      <data key="TM">both</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_axi_iic_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_iic:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n44">
+      <data key="BA">0x75310000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7531FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/CFG_Si5338/CFG_microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_CFG_axi_quad_spi_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_axi_quad_spi_0</data>
+      <data key="SI">AXI_LITE</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_quad_spi:3.2</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n45">
+      <data key="BA">0x00010000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x00013FFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Instruction</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">ILMB</data>
+      <data key="MS">SEG_ilmb_bram_if_cntlr_Mem</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">instruction</data>
+      <data key="SX">/microblaze_0_local_memory/ilmb_bram_if_cntlr</data>
+      <data key="SI">SLMB</data>
+      <data key="SS">Mem</data>
+      <data key="SV">xilinx.com:ip:lmb_bram_if_cntlr:4.0</data>
+      <data key="TU">memory</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n46">
+      <data key="BA">0x00010000</data>
+      <data key="BP">C_S_AXI_BASEADDR</data>
+      <data key="HA">0x00013FFF</data>
+      <data key="HP">C_S_AXI_HIGHADDR</data>
+      <data key="MA">m00_axi</data>
+      <data key="MX">/SREC_boot_loader_FSM_0</data>
+      <data key="MI">m00_axi</data>
+      <data key="MS">SEG_axi_bram_ctrl_0_Mem0</data>
+      <data key="MV">xilinx.com:module_ref:SREC_boot_loader_FSM:1.0</data>
+      <data key="TM">both</data>
+      <data key="SX">/microblaze_0_local_memory/axi_bram_ctrl_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Mem0</data>
+      <data key="SV">xilinx.com:ip:axi_bram_ctrl:4.1</data>
+      <data key="TU">memory</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n47">
+      <data key="BA">0x74300000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x7430FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/mdm_USER2_0</data>
+      <data key="MI">M_AXI</data>
+      <data key="MS">SEG_BOOT_PLL_axi_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:mdm:3.2</data>
+      <data key="TM">both</data>
+      <data key="SX">/CFG_Si5338/CFG_Si5338_axi_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n48">
+      <data key="BA">0x54030000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x5403FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">Data</data>
+      <data key="MX">/microblaze_0</data>
+      <data key="MI">M_AXI_DP</data>
+      <data key="MS">SEG_axi_ROTENC_gpio_0_Reg</data>
+      <data key="MV">xilinx.com:ip:microblaze:11.0</data>
+      <data key="TM">data</data>
+      <data key="SX">/ROTENC_decoder/axi_ROTENC_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <edge id="e0" source="n14" target="n35">
+    </edge>
+    <edge id="e1" source="n35" target="n18">
+    </edge>
+    <edge id="e2" source="n41" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e3" source="n32" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e4" source="n26" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e5" source="n44" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e6" source="n40" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e7" source="n47" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e8" source="n43" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e9" source="n42" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e10" source="n11" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e11" source="n28" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e12" source="n12" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e13" source="n38" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e14" source="n0" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e15" source="n15" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e16" source="n33" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e17" source="n30" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e18" source="n34" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e19" source="n1" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e20" source="n8" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e21" source="n3" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e22" source="n31" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e23" source="n16" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e24" source="n39" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e25" source="n27" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e26" source="n29" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e27" source="n21" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e28" source="n48" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e29" source="n9" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e30" source="n37" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e31" source="n23" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e32" source="n17" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e33" source="n7" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e34" source="n22" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e35" source="n19" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e36" source="n24" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e37" source="n13" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e38" source="n10" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e39" source="n6" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e40" source="n36" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e41" source="n2" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e42" source="n46" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e43" source="n5" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e44" source="n25" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e45" source="n4" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e46" source="n45" target="n18">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e47" source="n20" target="n18">
+      <data key="EH">2</data>
+    </edge>
+  </graph>
+</graphml>

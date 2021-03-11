@@ -1,4 +1,4 @@
--- (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -106,12 +106,12 @@ ARCHITECTURE UFBmod_Decoder_rowsum_rx09_ch00_c_accum_1clk_0_arch OF UFBmod_Decod
     );
   END COMPONENT c_accum_v12_0_14;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF UFBmod_Decoder_rowsum_rx09_ch00_c_accum_1clk_0_arch: ARCHITECTURE IS "c_accum_v12_0_14,Vivado 2020.1.1";
+  ATTRIBUTE X_CORE_INFO OF UFBmod_Decoder_rowsum_rx09_ch00_c_accum_1clk_0_arch: ARCHITECTURE IS "c_accum_v12_0_14,Vivado 2020.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF UFBmod_Decoder_rowsum_rx09_ch00_c_accum_1clk_0_arch : ARCHITECTURE IS "UFBmod_Decoder_rowsum_rx09_ch00_c_accum_1clk_0,c_accum_v12_0_14,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF UFBmod_Decoder_rowsum_rx09_ch00_c_accum_1clk_0_arch: ARCHITECTURE IS "UFBmod_Decoder_rowsum_rx09_ch00_c_accum_1clk_0,c_accum_v12_0_14,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=c_accum,x_ipVersion=12.0,x_ipCoreRevision=14,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=artix7,C_IMPLEMENTATION=1,C_VERBOSITY=0,C_B_WIDTH=16,C_OUT_WIDTH=32,C_B_TYPE=1,C_CE_OVERRIDES_SCLR=0,C_ADD_MODE=0,C_HAS_C_IN=0,C_HAS_CE=1,C_HAS_BYPASS=0,C_HAS_SCLR=1,C_LATENCY=1,C_SCALE=0,C_AINIT_VAL=0,C_SINIT_VAL=0,C_BYPASS_LOW=0,C_SCLR_OVERRIDES_SSET=1,C_HAS" & 
-"_SSET=0,C_HAS_SINIT=0}";
+  ATTRIBUTE CORE_GENERATION_INFO OF UFBmod_Decoder_rowsum_rx09_ch00_c_accum_1clk_0_arch: ARCHITECTURE IS "UFBmod_Decoder_rowsum_rx09_ch00_c_accum_1clk_0,c_accum_v12_0_14,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=c_accum,x_ipVersion=12.0,x_ipCoreRevision=14,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=artix7,C_IMPLEMENTATION=1,C_VERBOSITY=0,C_B_WIDTH=16,C_OUT_WIDTH=32,C_B_TYPE=1,C_CE_OVERRIDES_SCLR=0,C_ADD_MODE=0,C_HAS_C_IN=0,C_HAS_CE=1,C_HAS_BYPASS=0,C_HAS_SCLR=1,C_LATENCY=1,C_SCALE=0,C_AINIT_VAL=0,C_SINIT_VAL=0,C_BYPASS_LOW=0,C_SCLR_OVERRIDES_SSET=1,C_HAS_S" & 
+"SET=0,C_HAS_SINIT=0}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF Q: SIGNAL IS "XIL_INTERFACENAME q_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency bitwidth format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type generated dependency signed format bool minimum {} maximu" & 

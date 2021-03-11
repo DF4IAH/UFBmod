@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Product Version: Vivado v2020.1.1 (64-bit)                   -->
+<!-- Product Version: Vivado v2020.2 (64-bit)                     -->
 <!--                                                              -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.        -->
 
@@ -23,7 +23,7 @@
     <Object name="xc7a100t_0" gui_info="">
       <Properties Property="FULL_PROBES.FILE" value="$_project_name_.runs/impl_1/top.ltx"/>
       <Properties Property="PROBES.FILE" value="$_project_name_.runs/impl_1/top.ltx"/>
-      <Properties Property="PROGRAM.HW_BITSTREAM" value="$_project_name_.runs/impl_1/top.bit"/>
+      <Properties Property="PROGRAM.HW_BITSTREAM" value=""/>
       <Properties Property="PROGRAM.HW_CFGMEM_PART" value="s25fl256sxxxxxx0-spi-x1_x2_x4"/>
       <Properties Property="SLR.COUNT" value="1"/>
     </Object>
@@ -249,7 +249,7 @@
     <Object name="msys_i/xfft_rx24_dly3449_event_frame_started_out_0" gui_info="hw_vios/hw_vio_1=43"/>
   </ObjectList>
   <ObjectList object_type="hw_vio" gui_info="">
-    <Object name="hw_vio_1" gui_info="hw_vios/hw_vio_1/TablePreference=5	838	Name	0	2147483647	15	359	359	Value	1	2147483647	15	309	309	Activity	2	2147483647	15	44	44	Direction	3	2147483647	15	58	58	VIO	4	2147483647	15	68	68			1	6	1	Name	Value	Activity	Direction	VIO"/>
+    <Object name="hw_vio_1" gui_info="hw_vios/hw_vio_1/TablePreference=5	842	Name	0	2147483647	15	359	359	Value	1	2147483647	15	309	309	Activity	2	2147483647	15	47	47	Direction	3	2147483647	15	58	58	VIO	4	2147483647	15	69	69			1	6	1	Name	Value	Activity	Direction	VIO"/>
     <Object name="msys_bd/msys_i/vio_0" gui_info="">
       <Properties Property="CORE_REFRESH_RATE_MS" value="500"/>
     </Object>

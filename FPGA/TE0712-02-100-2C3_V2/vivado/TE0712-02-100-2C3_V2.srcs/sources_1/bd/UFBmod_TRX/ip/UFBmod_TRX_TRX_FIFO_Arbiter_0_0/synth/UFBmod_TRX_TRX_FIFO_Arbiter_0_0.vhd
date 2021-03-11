@@ -138,11 +138,11 @@ ARCHITECTURE UFBmod_TRX_TRX_FIFO_Arbiter_0_0_arch OF UFBmod_TRX_TRX_FIFO_Arbiter
     );
   END COMPONENT TRX_FIFO_Arbiter;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF UFBmod_TRX_TRX_FIFO_Arbiter_0_0_arch: ARCHITECTURE IS "TRX_FIFO_Arbiter,Vivado 2020.1.1";
+  ATTRIBUTE X_CORE_INFO OF UFBmod_TRX_TRX_FIFO_Arbiter_0_0_arch: ARCHITECTURE IS "TRX_FIFO_Arbiter,Vivado 2020.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF UFBmod_TRX_TRX_FIFO_Arbiter_0_0_arch : ARCHITECTURE IS "UFBmod_TRX_TRX_FIFO_Arbiter_0_0,TRX_FIFO_Arbiter,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF UFBmod_TRX_TRX_FIFO_Arbiter_0_0_arch: ARCHITECTURE IS "UFBmod_TRX_TRX_FIFO_Arbiter_0_0,TRX_FIFO_Arbiter,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=TRX_FIFO_Arbiter,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF UFBmod_TRX_TRX_FIFO_Arbiter_0_0_arch: ARCHITECTURE IS "UFBmod_TRX_TRX_FIFO_Arbiter_0_0,TRX_FIFO_Arbiter,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=TRX_FIFO_Arbiter,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF UFBmod_TRX_TRX_FIFO_Arbiter_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
