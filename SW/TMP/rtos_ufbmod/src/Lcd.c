@@ -36,29 +36,36 @@ const char Lcd_active  = '#';
 const char Lcd_blank   = ' ';
 
 const char Lcd_menu_top_msgs[][17] = {
-		"  UFBmod (dflt) ",
+		"  === TOP ===   ",
+		"  UFBmod        ",
 		"  HF1-Labor     ",
-		"  HF2-Labor     "
+		"  HF2-Labor     ",
 };
-const u8 Lcd_menu_top_upper_pos_max = 1;
+const u8 Lcd_menu_top_upper_pos_max = 2;
 
 const char Lcd_menu_ufbmod_msgs[][17] = {
-		"  (UFBmod)      ",
-		"  zurueck       "
+		"  == UFBmod ==  ",
+		"  zurueck       ",
 };
 const u8 Lcd_menu_ufbmod_upper_pos_max = 0;
 
 const char Lcd_menu_hf1_msgs[][17] = {
-		"  (HF1)         ",
-		"  zurueck       "
+		"  === HF1 ===   ",
+		"  HF1: Vers. 1  ",
+		"  HF1: Vers. 2  ",
+		"  HF1: Vers. 3  ",
+		"  HF1: Vers. 4  ",
+		"  zurueck       ",
 };
-const u8 Lcd_menu_hf1_upper_pos_max = 0;
+const u8 Lcd_menu_hf1_upper_pos_max = 4;
 
 const char Lcd_menu_hf2_msgs[][17] = {
-		"  (HF2)         ",
-		"  zurueck       "
+		"  === HF2 ===   ",
+		"  HF2: Vers. 1  ",
+		"  HF2: Vers. 2  ",
+		"  zurueck       ",
 };
-const u8 Lcd_menu_hf2_upper_pos_max = 0;
+const u8 Lcd_menu_hf2_upper_pos_max = 2;
 
 
 u8 WriteBuffer[PAGE_SIZE];	  	/* Write buffer for writing a page */
@@ -238,18 +245,23 @@ void taskUI(void* pvParameters)
 {
 	static enum LCD_FSM_STATES lcd_fsm_state 	= LCD_FSM_INIT;
 
-	static s32 gpio1_ctr_last					= 0;
+	static s32 gpio1_ctr_last;
+	static s32 gpio1_ctr;
 	static s32 gpio2_ctr_diff_last 				= 0;
+	static s32 gpio2_ctr_diff					= 0;
+	static u32 gpio2_push						= 0;
 
 	/* Which menu is currently selected */
 	static u8 lcd_current_menu					= 0;
 
 	/* Being in the current menu */
 	static u8 lcd_menu_current_was_dwn			= 0;
-	static u8 lcd_menu_current_is_dwn			= 0;
+	static u8 lcd_menu_current_is_dwn			= 1;
 	static u8 lcd_menu_current_upper_pos_max	= 0;
 	static u8 lcd_menu_current_upper_pos		= 0;
 	static u8 lcd_menu_current_active			= 0;
+	static u8 lcd_menu_current_jump_do			= 0;
+	static u8 lcd_menu_current_jump_there		= 0;
 	const char* lcd_menu_current_msgs			= &(Lcd_menu_top_msgs[0][0]);
 
 	static u8 lcd_menu_top_upper_pos;
@@ -263,7 +275,6 @@ void taskUI(void* pvParameters)
 
 	static u8 lcd_menu_hf2_upper_pos;
 	static u8 lcd_menu_hf2_active;
-
 
 	/* Wait until all is up */
 	vTaskDelay(pdMS_TO_TICKS(250));
@@ -280,9 +291,8 @@ void taskUI(void* pvParameters)
 		XGpio_SetDataDirection(&gpio_Rotenc, 1U, 0xffffffffUL);  // 32 bit input
 		XGpio_SetDataDirection(&gpio_Rotenc, 2U, 0x0000ffffUL);  // 16 bit output - 16 bit input
 
-		gpio1_ctr_last  = XGpio_DiscreteRead(&gpio_Rotenc, 1U);
-		//const u32 gpio2_push_init = (0 == XGpio_DiscreteRead(&gpio_Rotenc, 2U);
-		//xil_printf( "ROTENC decoder: ctr=%08lx, push=%d\r\n", gpio1_ctr, gpio2_push);
+		/* Get current counter value to init with */
+		gpio1_ctr_last = gpio1_ctr = XGpio_DiscreteRead(&gpio_Rotenc, 1U);
 	}
 
 	/* LCD init */
@@ -294,31 +304,26 @@ void taskUI(void* pvParameters)
 	}
 
 	while (1) {
-		s32 gpio1_ctr;
-		s32 gpio2_ctr_diff;
-		u32 gpio2_push;
-
 		/* Read ROTENC counter and Push Button */
 		gpio1_ctr  = XGpio_DiscreteRead(&gpio_Rotenc, 1U);
 		gpio2_push = (0 == XGpio_DiscreteRead(&gpio_Rotenc, 2U));
 
 		/* Calculate movement offset */
 		gpio2_ctr_diff_last	= gpio2_ctr_diff;
-		gpio2_ctr_diff = (gpio1_ctr - gpio1_ctr_last) / 2;
-		if (gpio2_ctr_diff <= -1000 || 1000 <= gpio2_ctr_diff) {
-			gpio2_ctr_diff = 0;
-		}
-		gpio1_ctr_last 		= gpio1_ctr;
-
-
-		/* Last direction of cursor movement */
-		if (gpio2_ctr_diff > 0) {
+		gpio2_ctr_diff 		= gpio1_ctr - gpio1_ctr_last;
+		if (gpio2_ctr_diff >= 3) {
+			/* Counting up */
+			gpio1_ctr_last 				= gpio1_ctr;
 			lcd_menu_current_was_dwn	= lcd_menu_current_is_dwn;
 			lcd_menu_current_is_dwn 	= 1;
 
-		} else if (gpio2_ctr_diff < 0) {
+		} else if (gpio2_ctr_diff <= -3) {
+			/* Counting down */
+			gpio1_ctr_last 				= gpio1_ctr;
 			lcd_menu_current_was_dwn 	= lcd_menu_current_is_dwn;
 			lcd_menu_current_is_dwn 	= 0;
+		} else {
+			gpio2_ctr_diff = 0;
 		}
 
 		/* Better control */
@@ -338,7 +343,6 @@ void taskUI(void* pvParameters)
 		/* Has action happened? */
 		if ((lcd_fsm_state == LCD_FSM_NOP) && (gpio2_ctr_diff || gpio2_push)) {
 			lcd_fsm_state = LCD_FSM_SHOW;
-
 		}
 
 
@@ -350,21 +354,25 @@ void taskUI(void* pvParameters)
 
 		case LCD_FSM_INIT: {
 			lcd_menu_top_upper_pos		= 0;
-			lcd_menu_top_active 		= 0;
+			lcd_menu_top_active 		= 1;
 
 			lcd_menu_ufbmod_upper_pos	= 0;
-			lcd_menu_ufbmod_active		= 0;
+			lcd_menu_ufbmod_active		= 1;
 
 			lcd_menu_hf1_upper_pos		= 0;
-			lcd_menu_hf1_active			= 0;
+			lcd_menu_hf1_active			= 1;
 
 			lcd_menu_hf2_upper_pos		= 0;
-			lcd_menu_hf2_active			= 0;
+			lcd_menu_hf2_active			= 1;
 
-			lcdTextWrite(0,  0, 16, Lcd_menu_top_msgs[0]);
-			lcdTextWrite(1,  0, 16, Lcd_menu_top_msgs[1]);
-			lcdTextWrite(0, 14,  1, &Lcd_pointer); // 14 --> 0
-			lcdTextWrite(0, 15,  1, &Lcd_active);
+			/* Showing the TOP menu */
+			{
+				lcdTextWrite(0,  0, 16, Lcd_menu_top_msgs[0]);
+				lcdTextWrite(1,  0, 16, Lcd_menu_top_msgs[1]);
+
+				lcdTextWrite(lcd_menu_top_upper_pos + (lcd_menu_current_is_dwn ?  1 : 0), 	14,  1, &Lcd_pointer);		// 14 --> 0
+				lcdTextWrite(lcd_menu_top_active, 											15,  1, &Lcd_active);
+			}
 
 			lcd_fsm_state = LCD_FSM_NOP;
 		} break;
@@ -408,30 +416,91 @@ void taskUI(void* pvParameters)
 
 			/* Determine new states */
 			{
-				if (!lcd_menu_current_was_dwn && !lcd_menu_current_is_dwn) {
-					/* Turning 2x up direction */
+				if (!gpio2_push && (!lcd_menu_current_was_dwn && !lcd_menu_current_is_dwn)) {
+					/* Moving one line up */
 					if (lcd_menu_current_upper_pos > 0) {
-						/* Shifting one row up */
+						/* within range */
 						--lcd_menu_current_upper_pos;
 					}
 
-				} else if (lcd_menu_current_was_dwn && lcd_menu_current_is_dwn) {
-					/* Turning 2x down direction */
+				} else if (!gpio2_push && (lcd_menu_current_was_dwn && lcd_menu_current_is_dwn)) {
+					/* Moving one line down */
 					if (lcd_menu_current_upper_pos < lcd_menu_current_upper_pos_max) {
-						/* Shifting one row down */
+						/* within range */
 						++lcd_menu_current_upper_pos;
 					}
-				}
 
-				if (gpio2_push) {
+				} else if (gpio2_push) {
 					u8 lcd_menu_current_active_last = lcd_menu_current_active;
-					lcd_menu_current_active = lcd_menu_current_upper_pos + (!lcd_menu_current_is_dwn ?  0 : 1);
+					lcd_menu_current_active = lcd_menu_current_upper_pos + (lcd_menu_current_is_dwn ?  1 : 0);
 
 					if (lcd_menu_current_active_last == lcd_menu_current_active) {
-						/* Second time pressed */
-						pwmLedSet(0xff000000UL, 0xff000000UL);
-						vTaskDelay(pdMS_TO_TICKS(25));
-						pwmLedSet(0x20000000UL, 0xff000000UL);
+						/* Second time pressed - light blip */
+						{
+							pwmLedSet(0xff000000UL, 0xff000000UL);
+							vTaskDelay(pdMS_TO_TICKS(25));
+							pwmLedSet(0x20000000UL, 0xff000000UL);
+
+							if (!lcd_menu_current_active) {
+								/* Title can not be selected */
+								pwmLedSet(0x00000040UL, 0x000000ffUL);
+								vTaskDelay(pdMS_TO_TICKS(250));
+								pwmLedSet(0x00000000UL, 0x000000ffUL);
+							}
+						}
+
+						/* Enter into sub-menu */
+						if (lcd_current_menu == 0) {
+							/* Top menu */
+
+							if (lcd_menu_current_active >= 1) {
+								lcd_menu_current_jump_there = lcd_menu_current_active;
+								lcd_menu_current_jump_do 	= 1;
+
+								/* Correct position when cursor in up line for re-entering with cursor in down line */
+								if (!lcd_menu_current_is_dwn) {
+									--lcd_menu_current_upper_pos;
+								}
+							}
+
+						} else if (lcd_current_menu == 1) {
+							/* UFBmod menu */
+
+							if (lcd_menu_current_active == (Lcd_menu_ufbmod_upper_pos_max + 1)) {
+								/* Go to TOP menu */
+								lcd_menu_current_jump_there = 0;
+								lcd_menu_current_jump_do 	= 1;
+							}
+
+						} else if (lcd_current_menu == 2) {
+							/* HF1 menu */
+
+							if (lcd_menu_current_active == (Lcd_menu_hf1_upper_pos_max + 1)) {
+								/* Go to TOP menu */
+								lcd_menu_current_jump_there = 0;
+								lcd_menu_current_jump_do 	= 1;
+							}
+
+						} else if (lcd_current_menu == 3) {
+							/* HF2 menu */
+
+							if (lcd_menu_current_active == (Lcd_menu_hf2_upper_pos_max + 1)) {
+								/* Go to TOP menu */
+								lcd_menu_current_jump_there = 0;
+								lcd_menu_current_jump_do 	= 1;
+							}
+						}
+
+						/* Delay until un-pressed */
+						do {
+							gpio2_push = (0 == XGpio_DiscreteRead(&gpio_Rotenc, 2U));
+
+							if (!gpio2_push) {
+								break;
+							}
+
+							vTaskDelay(pdMS_TO_TICKS(25));
+						} while(1);
 					}
 				}
 			}
@@ -503,7 +572,20 @@ void taskUI(void* pvParameters)
 				break;
 			}
 
-			lcd_fsm_state = LCD_FSM_NOP;
+
+			/* Prepare for new menu hierarchy position */
+			if (lcd_menu_current_jump_do) {
+				lcd_current_menu 			= lcd_menu_current_jump_there;
+				lcd_menu_current_jump_do	= 0;
+
+				lcd_menu_current_was_dwn	= 0;	// Show the cursor always in the second line ...
+				lcd_menu_current_is_dwn		= 1;	// ... without down movement
+
+				lcd_fsm_state 				= LCD_FSM_SHOW;
+
+			} else {
+				lcd_fsm_state 				= LCD_FSM_NOP;
+			}
 		} break;
 
 		default:
