@@ -1,0 +1,46 @@
+{
+  "version": "2020.2",
+  "applications": [],
+  "platforms": [
+    {
+      "name": "TE0712_02_DF4IAH_V2"
+    }
+  ],
+  "systems": [
+    {
+      "name": "cfg_si5338_system",
+      "platform": "C:/Users/espero/git/UFBmod/SW/vitis_workspace/TE0712_02_DF4IAH_V2/export/TE0712_02_DF4IAH_V2/TE0712_02_DF4IAH_V2.xpfm",
+      "sysConfig": "TE0712_02_DF4IAH_V2",
+      "buildConfig": "Debug",
+      "applications": [
+        {
+          "name": "cfg_si5338",
+          "platform": "C:/Users/espero/git/UFBmod/SW/vitis_workspace/TE0712_02_DF4IAH_V2/export/TE0712_02_DF4IAH_V2/TE0712_02_DF4IAH_V2.xpfm",
+          "platformPath": "C:\\Users\\espero\\git\\UFBmod\\SW\\vitis_workspace\\TE0712_02_DF4IAH_V2\\export\\TE0712_02_DF4IAH_V2",
+          "sysConfig": "TE0712_02_DF4IAH_V2",
+          "domain": "standalone_domain",
+          "system": "cfg_si5338_system"
+        }
+      ],
+      "platformPath": "C:\\Users\\espero\\git\\UFBmod\\SW\\vitis_workspace\\TE0712_02_DF4IAH_V2\\export\\TE0712_02_DF4IAH_V2"
+    },
+    {
+      "name": "rtos_ufbmod_system",
+      "platform": "C:/Users/espero/git/UFBmod/SW/vitis_workspace/TE0712_02_DF4IAH_V2/export/TE0712_02_DF4IAH_V2/TE0712_02_DF4IAH_V2.xpfm",
+      "sysConfig": "TE0712_02_DF4IAH_V2",
+      "buildConfig": "Debug",
+      "applications": [
+        {
+          "name": "rtos_ufbmod",
+          "platform": "C:/Users/espero/git/UFBmod/SW/vitis_workspace/TE0712_02_DF4IAH_V2/export/TE0712_02_DF4IAH_V2/TE0712_02_DF4IAH_V2.xpfm",
+          "platformPath": "C:\\Users\\espero\\git\\UFBmod\\SW\\vitis_workspace\\TE0712_02_DF4IAH_V2\\export\\TE0712_02_DF4IAH_V2",
+          "sysConfig": "TE0712_02_DF4IAH_V2",
+          "domain": "rtos",
+          "system": "rtos_ufbmod_system"
+        }
+      ],
+      "platformPath": "C:\\Users\\espero\\git\\UFBmod\\SW\\vitis_workspace\\TE0712_02_DF4IAH_V2\\export\\TE0712_02_DF4IAH_V2"
+    }
+  ],
+  "others": []
+}
