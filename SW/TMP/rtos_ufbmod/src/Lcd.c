@@ -35,22 +35,27 @@ const char Lcd_pointer = '>';
 const char Lcd_active  = '#';
 const char Lcd_blank   = ' ';
 
+/* lcd_current_menu == LCD_CM_TOP */
 const char Lcd_menu_top_msgs[][17] = {
-		"  === TOP ===   ",
+		" == TOP ==      ",
 		"  UFBmod        ",
 		"  HF1-Labor     ",
 		"  HF2-Labor     ",
 };
 const u8 Lcd_menu_top_upper_pos_max = 2;
 
+
+/* lcd_current_menu == LCD_CM_UFBMOD */
 const char Lcd_menu_ufbmod_msgs[][17] = {
-		"  == UFBmod ==  ",
+		" == UFBmod ==   ",
 		"  zurueck       ",
 };
 const u8 Lcd_menu_ufbmod_upper_pos_max = 0;
 
+
+/* lcd_current_menu == LCD_CM_HF1 */
 const char Lcd_menu_hf1_msgs[][17] = {
-		"  === HF1 ===   ",
+		" == HF1 ==      ",
 		"  HF1: Vers. 1  ",
 		"  HF1: Vers. 2  ",
 		"  HF1: Vers. 3  ",
@@ -59,8 +64,22 @@ const char Lcd_menu_hf1_msgs[][17] = {
 };
 const u8 Lcd_menu_hf1_upper_pos_max = 4;
 
+/* lcd_current_menu == LCD_CM_HF1_V01 */
+const char Lcd_menu_hf1_v01_msgs[][17] = {
+		" == HF1 V1 ==   ",
+		"  AUS           ",
+		"  868MHz -30dBm ",
+		"  868MHz   0dBm ",
+		"  2,4GHz -30dBm ",
+		"  2,4GHz   0dBm ",
+		"  zurueck       ",
+};
+const u8 Lcd_menu_hf1_v01_upper_pos_max = 5;
+
+
+/* lcd_current_menu == LCD_CM_HF2 */
 const char Lcd_menu_hf2_msgs[][17] = {
-		"  === HF2 ===   ",
+		" == HF2 ==      ",
 		"  HF2: Vers. 1  ",
 		"  HF2: Vers. 2  ",
 		"  zurueck       ",
@@ -68,7 +87,7 @@ const char Lcd_menu_hf2_msgs[][17] = {
 const u8 Lcd_menu_hf2_upper_pos_max = 2;
 
 
-u8 WriteBuffer[PAGE_SIZE];	  	/* Write buffer for writing a page */
+u8 sr_writeBuffer[PAGE_SIZE];	  	/* Write buffer for writing a page */
 u8 sr_readBuffer[PAGE_SIZE];	  	/* Read buffer for reading a page */
 
 
@@ -114,11 +133,11 @@ u32 iicReadAndModify(UINTPTR baseAddr, u8 iicChipAddr, u8 iicRegister, u8 setVal
 	accu |= (setValue & readMask);
 
 	/* Prepare write buffer */
-	WriteBuffer[0] = iicRegister;
-	WriteBuffer[1] = accu;
+	sr_writeBuffer[0] = iicRegister;
+	sr_writeBuffer[1] = accu;
 
 	/* Write register */
-	unsigned int byteCount = XIic_Send(baseAddr, iicChipAddr, WriteBuffer, 2U, XIIC_STOP);
+	unsigned int byteCount = XIic_Send(baseAddr, iicChipAddr, sr_writeBuffer, 2U, XIIC_STOP);
 	if (!byteCount) {
 		return XST_FAILURE;
 	}
@@ -273,6 +292,9 @@ void taskUI(void* pvParameters)
 	static u8 lcd_menu_hf1_upper_pos;
 	static u8 lcd_menu_hf1_active;
 
+	static u8 lcd_menu_hf1_v01_upper_pos;
+	static u8 lcd_menu_hf1_v01_active;
+
 	static u8 lcd_menu_hf2_upper_pos;
 	static u8 lcd_menu_hf2_active;
 
@@ -298,7 +320,7 @@ void taskUI(void* pvParameters)
 	/* LCD init */
 	{
 		lcdInit();
-		pwmLedSet(0x20000000UL, 0xff000000UL);
+		pwmLedSet(LED_LCDDISP_010, LED_LCDDISP_MASK);
 		lcdWelcomeHF1HF2();
 		vTaskDelay(pdMS_TO_TICKS(3000));
 	}
@@ -362,6 +384,9 @@ void taskUI(void* pvParameters)
 			lcd_menu_hf1_upper_pos		= 0;
 			lcd_menu_hf1_active			= 1;
 
+			lcd_menu_hf1_v01_upper_pos	= 0;
+			lcd_menu_hf1_v01_active		= 1;
+
 			lcd_menu_hf2_upper_pos		= 0;
 			lcd_menu_hf2_active			= 1;
 
@@ -380,15 +405,15 @@ void taskUI(void* pvParameters)
 		case LCD_FSM_SHOW: {
 			switch (lcd_current_menu) {
 			default:
-			case 0:
-				/* Show top menu */
+			case LCD_CM_TOP:
+				/* Show TOP menu */
 				lcd_menu_current_upper_pos_max 	= Lcd_menu_top_upper_pos_max;
 				lcd_menu_current_upper_pos		= lcd_menu_top_upper_pos;
 				lcd_menu_current_active 		= lcd_menu_top_active;
 				lcd_menu_current_msgs			= &(Lcd_menu_top_msgs[0][0]);
 				break;
 
-			case 1:
+			case LCD_CM_UFBMOD:
 				/* Show UFBmod menu */
 				lcd_menu_current_upper_pos_max 	= Lcd_menu_ufbmod_upper_pos_max;
 				lcd_menu_current_upper_pos		= lcd_menu_ufbmod_upper_pos;
@@ -396,7 +421,7 @@ void taskUI(void* pvParameters)
 				lcd_menu_current_msgs			= &(Lcd_menu_ufbmod_msgs[0][0]);
 				break;
 
-			case 2:
+			case LCD_CM_HF1:
 				/* Show HF1 menu */
 				lcd_menu_current_upper_pos_max 	= Lcd_menu_hf1_upper_pos_max;
 				lcd_menu_current_upper_pos		= lcd_menu_hf1_upper_pos;
@@ -404,7 +429,15 @@ void taskUI(void* pvParameters)
 				lcd_menu_current_msgs			= &(Lcd_menu_hf1_msgs[0][0]);
 				break;
 
-			case 3:
+			case LCD_CM_HF1_V01:
+				/* Show HF1 Vers. 01 menu */
+				lcd_menu_current_upper_pos_max 	= Lcd_menu_hf1_v01_upper_pos_max;
+				lcd_menu_current_upper_pos		= lcd_menu_hf1_v01_upper_pos;
+				lcd_menu_current_active 		= lcd_menu_hf1_v01_active;
+				lcd_menu_current_msgs			= &(Lcd_menu_hf1_v01_msgs[0][0]);
+				break;
+
+			case LCD_CM_HF2:
 				/* Show HF2 menu */
 				lcd_menu_current_upper_pos_max 	= Lcd_menu_hf2_upper_pos_max;
 				lcd_menu_current_upper_pos		= lcd_menu_hf2_upper_pos;
@@ -435,59 +468,130 @@ void taskUI(void* pvParameters)
 					lcd_menu_current_active = lcd_menu_current_upper_pos + (lcd_menu_current_is_dwn ?  1 : 0);
 
 					if (lcd_menu_current_active_last == lcd_menu_current_active) {
-						/* Second time pressed - light blip */
+						/* LED reaction */
 						{
-							pwmLedSet(0xff000000UL, 0xff000000UL);
+							/* Second time pressed - light blip */
+							pwmLedSet(LED_LCDDISP_100, LED_LCDDISP_MASK);
 							vTaskDelay(pdMS_TO_TICKS(25));
-							pwmLedSet(0x20000000UL, 0xff000000UL);
+							pwmLedSet(LED_LCDDISP_010, LED_LCDDISP_MASK);
 
+							/* Top most line: show LED red */
 							if (!lcd_menu_current_active) {
 								/* Title can not be selected */
-								pwmLedSet(0x00000040UL, 0x000000ffUL);
+								pwmLedSet(LED_RGB_RED_BRIGHT, LED_RGB_MASK);
 								vTaskDelay(pdMS_TO_TICKS(250));
-								pwmLedSet(0x00000000UL, 0x000000ffUL);
+								pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);
 							}
 						}
 
 						/* Enter into sub-menu */
-						if (lcd_current_menu == 0) {
+						if (lcd_current_menu == LCD_CM_TOP) {
 							/* Top menu */
 
 							if (lcd_menu_current_active >= 1) {
 								lcd_menu_current_jump_there = lcd_menu_current_active;
 								lcd_menu_current_jump_do 	= 1;
-
-								/* Correct position when cursor in up line for re-entering with cursor in down line */
-								if (!lcd_menu_current_is_dwn) {
-									--lcd_menu_current_upper_pos;
-								}
 							}
 
-						} else if (lcd_current_menu == 1) {
+							/* Correct position when cursor in up line for re-entering with cursor in down line */
+							if (!lcd_menu_current_is_dwn) {
+								--lcd_menu_current_upper_pos;
+							}
+
+						} else if (lcd_current_menu == LCD_CM_UFBMOD) {
 							/* UFBmod menu */
 
 							if (lcd_menu_current_active == (Lcd_menu_ufbmod_upper_pos_max + 1)) {
 								/* Go to TOP menu */
-								lcd_menu_current_jump_there = 0;
+								lcd_menu_current_jump_there = LCD_CM_TOP;
 								lcd_menu_current_jump_do 	= 1;
 							}
 
-						} else if (lcd_current_menu == 2) {
+							/* Correct position when cursor in up line for re-entering with cursor in down line */
+							if (!lcd_menu_current_is_dwn) {
+								--lcd_menu_current_upper_pos;
+							}
+
+						} else if (lcd_current_menu == LCD_CM_HF1) {
 							/* HF1 menu */
 
-							if (lcd_menu_current_active == (Lcd_menu_hf1_upper_pos_max + 1)) {
+							if (lcd_menu_current_active == 1) {
+								/* Go to HF1 V01 menu */
+								lcd_menu_current_jump_there = LCD_CM_HF1_V01;
+								lcd_menu_current_jump_do 	= 1;
+
+							} else if (lcd_menu_current_active == (Lcd_menu_hf1_upper_pos_max + 1)) {
 								/* Go to TOP menu */
-								lcd_menu_current_jump_there = 0;
+								lcd_menu_current_jump_there = LCD_CM_TOP;
 								lcd_menu_current_jump_do 	= 1;
 							}
 
-						} else if (lcd_current_menu == 3) {
+							/* Correct position when cursor in up line for re-entering with cursor in down line */
+							if (!lcd_menu_current_is_dwn) {
+								--lcd_menu_current_upper_pos;
+							}
+
+						} else if (lcd_current_menu == LCD_CM_HF1_V01) {
+							/* HF1 Vers. 01 menu */
+
+							if (lcd_menu_current_active == 1) {
+								/* Select: OFF */
+
+								/* LED off */
+								pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);
+
+							} else if (lcd_menu_current_active == 2) {
+								/* Select: 868 MHz, -30 dBm */
+
+								/* LED dimmed yellow */
+								pwmLedSet(LED_RGB_YELLOW_DIMMED, LED_RGB_MASK);
+
+							} else if (lcd_menu_current_active == 3) {
+								/* Select: 868 MHz,   0 dBm */
+
+								/* LED bright yellow */
+								pwmLedSet(LED_RGB_YELLOW_BRIGHT, LED_RGB_MASK);
+
+							} else if (lcd_menu_current_active == 4) {
+								/* Select: 2.4 GHz, -30 dBm */
+
+								/* LED dimmed blue */
+								pwmLedSet(LED_RGB_BLUE_DIMMED, LED_RGB_MASK);
+
+							} else if (lcd_menu_current_active == 5) {
+								/* Select: 2.4 GHz,   0 dBm */
+
+								/* LED bright blue */
+								pwmLedSet(LED_RGB_BLUE_BRIGHT, LED_RGB_MASK);
+
+							} else if (lcd_menu_current_active == (Lcd_menu_hf1_v01_upper_pos_max + 1)) {
+								/* Turn off */
+
+								/* LED off */
+								pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);
+
+								/* Go to HF1 menu */
+								lcd_menu_current_jump_there = LCD_CM_HF1;
+								lcd_menu_current_jump_do 	= 1;
+							}
+
+							/* Correct position when cursor in up line for re-entering with cursor in down line */
+							if (!lcd_menu_current_is_dwn) {
+								--lcd_menu_current_upper_pos;
+							}
+
+						} else if (lcd_current_menu == LCD_CM_HF2) {
 							/* HF2 menu */
 
 							if (lcd_menu_current_active == (Lcd_menu_hf2_upper_pos_max + 1)) {
 								/* Go to TOP menu */
-								lcd_menu_current_jump_there = 0;
+								lcd_menu_current_jump_there = LCD_CM_TOP;
 								lcd_menu_current_jump_do 	= 1;
+							}
+
+							/* Correct position when cursor in up line for re-entering with cursor in down line */
+							if (!lcd_menu_current_is_dwn) {
+								--lcd_menu_current_upper_pos;
 							}
 						}
 
@@ -547,25 +651,31 @@ void taskUI(void* pvParameters)
 			/* Write back current state */
 			switch (lcd_current_menu) {
 			default:
-			case 0:
+			case LCD_CM_TOP:
 				/* Push top menu */
 				lcd_menu_top_upper_pos 			= lcd_menu_current_upper_pos;
 				lcd_menu_top_active				= lcd_menu_current_active;
 				break;
 
-			case 1:
+			case LCD_CM_UFBMOD:
 				/* Push UFBmod menu */
 				lcd_menu_ufbmod_upper_pos 		= lcd_menu_current_upper_pos;
 				lcd_menu_ufbmod_active			= lcd_menu_current_active;
 				break;
 
-			case 2:
+			case LCD_CM_HF1:
 				/* Push HF1 menu */
 				lcd_menu_hf1_upper_pos 			= lcd_menu_current_upper_pos;
 				lcd_menu_hf1_active				= lcd_menu_current_active;
 				break;
 
-			case 3:
+			case LCD_CM_HF1_V01:
+				/* Push HF1 Vers. 01 menu */
+				lcd_menu_hf1_v01_upper_pos 		= lcd_menu_current_upper_pos;
+				lcd_menu_hf1_v01_active			= lcd_menu_current_active;
+				break;
+
+			case LCD_CM_HF2:
 				/* Push HF2 menu */
 				lcd_menu_hf2_upper_pos 			= lcd_menu_current_upper_pos;
 				lcd_menu_hf2_active				= lcd_menu_current_active;

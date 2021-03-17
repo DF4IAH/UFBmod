@@ -1956,12 +1956,8 @@ static void TrxTxFifoDump(void)
 
 static void TestRF09Tx(u32 freq_Hz, int pwr_dBm)
 {
-	/* All LEDs off */
-	pwmLedSet(0x00000000UL, 0x00ffffffUL);
-
-
 	/* YELLOW dimmed on */
-	pwmLedSet(0x00001010UL, 0x0000ffffUL);
+	pwmLedSet(LED_RGB_YELLOW_DIMMED, LED_RGB_MASK);
 
 	/* Prepare - EES turned on to control the PTT */
 	TrxCmdRF09Set(CMD_TXPREP);
@@ -2053,7 +2049,7 @@ static void TestRF09Tx(u32 freq_Hz, int pwr_dBm)
 
 
 		/* RED bright on */
-		pwmLedSet(0x00000080UL, 0x0000ffffUL);
+		pwmLedSet(LED_RGB_RED_BRIGHT, LED_RGB_MASK);
 
 #ifndef LVDS_PTT
 		/* Start Transmitter */
@@ -2103,7 +2099,7 @@ static void TestRF09Tx(u32 freq_Hz, int pwr_dBm)
 		}
 
 		/* RED off */
-		pwmLedSet(0x00000000UL, 0x0000ffffUL);
+		pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);
 	}
 #endif
 
@@ -2241,7 +2237,7 @@ static void TestRF24Tx(u32 freq_Hz, int pwr_dBm)
 	TrxCtxBBC1Set(CTX_ENABLE);
 
 	/* RED on */
-	pwmLedSet(0x0000007fUL, 0x00ffffffUL);
+	pwmLedSet(LED_RGB_RED_BRIGHT, LED_RGB_MASK);
 	TrxCmdRF24Set(CMD_TX);
 	while (1) {
 		u8 state;
@@ -2316,7 +2312,7 @@ static void TestRF24Tx(u32 freq_Hz, int pwr_dBm)
 		}
 		vTaskDelay(pdMS_TO_TICKS(100));
 	}
-	pwmLedSet(0x00000000UL, 0x00ffffffUL);
+	pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);
 }
 
 static void TestRF09Rx(u32 freq_Hz)
@@ -2359,8 +2355,8 @@ static void TestRF09Rx(u32 freq_Hz)
 	/* Stop FPGA DDS0/DDS1 */
 	//DdsFreqAmpSet(1U, 0.0f, 0x00U, 1.0f);	// XXX
 
-	/* GREEN dark on */
-	pwmLedSet(0x00001000UL, 0x0000ff00UL);
+	/* GREEN dimmed on */
+	pwmLedSet(LED_RGB_GREEN_DIMMED, LED_RGB_MASK);
 	TrxCmdRF09Set(CMD_RX);
 	while (1) {
 		u8 state = 0;
@@ -2416,7 +2412,7 @@ static void TestRF24Rx(u32 freq_Hz)
 
 	/* BLUE on */
 	u8 state;
-	pwmLedSet(0x007f0000UL, 0x00ffffffUL);
+	pwmLedSet(LED_RGB_BLUE_BRIGHT, LED_RGB_MASK);
 	TrxCmdRF24Set(CMD_RX);
 	while (1) {
 		TrxStateRF24Get(&state);
@@ -2455,7 +2451,7 @@ static void TestRF24Rx(u32 freq_Hz)
 			break;
 		}
 	}
-	pwmLedSet(0x00000000UL, 0x00ffffffUL);
+	pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);
 }
 
 
@@ -2665,7 +2661,7 @@ void taskTrx(void* pvParameters)
 #endif
 
 	/* All LEDs off */
-	pwmLedSet(0x00000000UL, 0x00ffffffUL);
+	pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);
 
 #if 1
 	/* TRX RF09 going Live */
@@ -2796,7 +2792,7 @@ void taskTrxRxMsg(void* pvParameters)
 
 				if (rssi != 127) {
 					/* GREEN max on */
-					pwmLedSet(0x0000ff00UL, 0x0000ff00UL);
+					pwmLedSet(LED_RGB_GREEN_BRIGHT, LED_RGB_MASK);
 
 #ifdef LOGGING
 					xil_printf("TaskTrxRxMsg: rssi = %i dBm\r\n", rssi);
@@ -2904,8 +2900,8 @@ void taskTrxRxMsg(void* pvParameters)
 #endif
 
 				if (rssi != 127) {
-					/* GREEN dark */
-					pwmLedSet(0x00001000UL, 0x0000ff00UL);
+					/* GREEN dimmed */
+					pwmLedSet(LED_RGB_GREEN_DIMMED, LED_RGB_MASK);
 				}
 			}  // if ()
 

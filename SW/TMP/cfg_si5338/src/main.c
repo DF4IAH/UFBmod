@@ -103,7 +103,7 @@ static unsigned int iicReadAndModify(UINTPTR baseAddr, u8 iicChipAddr, u8 iicReg
 
 /************************** Variable Definitions *****************************/
 
-u8 WriteBuffer[PAGE_SIZE];	  	/* Write buffer for writing a page */
+u8 sr_writeBuffer[PAGE_SIZE];	  	/* Write buffer for writing a page */
 u8 sr_readBuffer[PAGE_SIZE];	  	/* Read buffer for reading a page */
 
 u8 Si5338IicAddr;		  		/* Variable for storing Si5338 PLL I2C address */
@@ -471,11 +471,11 @@ unsigned int iicReadAndModify(UINTPTR baseAddr, u8 iicChipAddr, u8 iicRegister, 
 	accu |= (setValue & readMask);
 
 	/* Prepare write buffer */
-	WriteBuffer[0] = iicRegister;
-	WriteBuffer[1] = accu;
+	sr_writeBuffer[0] = iicRegister;
+	sr_writeBuffer[1] = accu;
 
 	/* Write register */
-	unsigned int byteCount = XIic_Send(baseAddr, iicChipAddr, WriteBuffer, 2U, XIIC_STOP);
+	unsigned int byteCount = XIic_Send(baseAddr, iicChipAddr, sr_writeBuffer, 2U, XIIC_STOP);
 	if (!byteCount) {
 		return XST_FAILURE;
 	}
