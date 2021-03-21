@@ -67,6 +67,9 @@ extern "C" {
 #define CHPM_RF_MODE_BBRF09			0x04
 #define CHPM_RF_MODE_BBRF24			0x05
 
+#define PTT_MANU					0x00
+#define PTT_LVDS					0x01
+
 #define CTX_DISABLE					0
 #define CTX_ENABLE					1
 

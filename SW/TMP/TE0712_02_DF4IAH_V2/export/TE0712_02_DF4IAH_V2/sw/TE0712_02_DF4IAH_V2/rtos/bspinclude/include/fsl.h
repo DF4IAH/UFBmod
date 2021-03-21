@@ -1,24 +1,58 @@
-#ifndef FSL_H
-#define FSL_H
+/******************************************************************************
+* Copyright (C) 2007 - 2020 Xilinx, Inc.  All rights reserved.
+* SPDX-License-Identifier: MIT
+******************************************************************************/
+
 /*****************************************************************************/
 /**
-*
 * @file fsl.h
-*
-* @addtogroup microblaze_fsl_macro MicroBlaze Processor FSL Macros
-*
-*  Microblaze BSP includes macros to provide convenient access to accelerators
-* connected to the MicroBlaze Fast Simplex Link (FSL) Interfaces.To use these functions,
-* include the header file fsl.h in your source code
-*
+* @addtogroup cpu_v2_11
 * @{
 *
+* This file contains macros for interfacing to the Fast Simplex Link (FSL)
+* interface..
+*
+* <pre>
+* MODIFICATION HISTORY:
+*
+* Ver   Who  Date     Changes
+* ----- ---- -------- ---------------------------------------------------
+* 1.00a ecm  06/20/07 Initial version, moved over from bsp area
+* 1.11c ecm  08/26/08 Fixed the missing 'FSL_DEFAULT' define that was causing
+*					  assembly errors.
+* </pre>
+*
+* @note
+*
+* None.
+*
 ******************************************************************************/
-#include "mb_interface.h"       /* Legacy reasons. We just have to include this guy who defines the FSL stuff */
+
+
+#ifndef _FSL_H
+#define _FSL_H
+
+/***************************** Include Files *********************************/
+
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+/************************** Constant Definitions *****************************/
+
+/**************************** Type Definitions *******************************/
+
+/***************** Macros (Inline Functions) Definitions *********************/
+
+
+/* if these have not been defined already, define here */
+#ifndef stringify
+
+/* necessary for pre-processor */
+#define stringify(s)    tostring(s)
+#define tostring(s)     #s
+
+#endif /* stringify */
 
 /* Extended FSL macros. These now replace all of the previous FSL macros */
 #define FSL_DEFAULT
@@ -41,73 +75,72 @@ extern "C" {
 
 #define FSL_NONBLOCKING_EXCEPTION_CONTROL_ATOMIC neca
 
-/**
-Performs a get function on an input FSL of the MicroBlaze processor
-@param val    variable to sink data from get function
-@param id     literal in the range of 0 to 7 (0 to 15 for MicroBlaze v7.00.a and later)
-@param flags  valid FSL macro flags
-*/
 #define getfslx(val, id, flags)      asm volatile (stringify(flags) "get\t%0,rfsl" stringify(id) : "=d" (val))
-
-/**
-Performs a put function on an input FSL of the MicroBlaze processor
-@param val    variable to source data to put function
-@param id     literal in the range of 0 to 7 (0 to 15 for MicroBlaze v7.00.a and later)
-@param flags  valid FSL macro flags
-*/
 #define putfslx(val, id, flags)      asm volatile (stringify(flags) "put\t%0,rfsl" stringify(id) :: "d" (val))
 
-/**
-Performs a test get function on an input FSL of the MicroBlaze processor
-@param val    variable to sink data from get function
-@param id     literal in the range of 0 to 7 (0 to 15 for MicroBlaze v7.00.a and later)
-@param flags  valid FSL macro flags
-*/
 #define tgetfslx(val, id, flags)     asm volatile ("t" stringify(flags) "get\t%0,rfsl" stringify(id) : "=d" (val))
-
-/**
-Performs a put function on an input FSL of the MicroBlaze processor
-@param id     FSL identifier
-@param flags  valid FSL macro flags
-*/
 #define tputfslx(id, flags)          asm volatile ("t" stringify(flags) "put\trfsl" stringify(id))
 
-/**
-Performs a getd function on an input FSL of the MicroBlaze processor
-@param val    variable to sink data from getd function
-@param var    literal in the range of 0 to 7 (0 to 15 for MicroBlaze v7.00.a and later)
-@param flags  valid FSL macro flags
-*/
 #define getdfslx(val, var, flags)    asm volatile (stringify(flags) "getd\t%0,%1" : "=d" (val) : "d" (var))
-
-/**
-Performs a putd function on an input FSL of the MicroBlaze processor
-@param val    variable to source data to putd function
-@param var    literal in the range of 0 to 7 (0 to 15 for MicroBlaze v7.00.a and later)
-@param flags  valid FSL macro flags
-*/
 #define putdfslx(val, var, flags)    asm volatile (stringify(flags) "putd\t%0,%1" :: "d" (val), "d" (var))
 
-/**
-Performs a test getd function on an input FSL of the MicroBlaze processor;
-@param val    variable to sink data from getd function
-@param var    literal in the range of 0 to 7 (0 to 15 for MicroBlaze v7.00.a and later)
-@param flags  valid FSL macro flags
-*/
 #define tgetdfslx(val, var, flags)   asm volatile ("t" stringify(flags) "getd\t%0,%1" : "=d" (val) : "d" (var))
-
-/**
-Performs a put function on an input FSL of the MicroBlaze processor
-@param var     FSL identifier
-@param flags  valid FSL macro flags
-*/
 #define tputdfslx(var, flags)        asm volatile ("t" stringify(flags) "putd\t%0" :: "d" (var))
 
+/* if the mb_interface.h file has been included already, the following are not needed and will not be defined */
+
+/* Legacy FSL Access Macros */
+
+#ifndef getfsl
+
+/* Blocking Data Read and Write to FSL no. id */
+#define getfsl(val, id)         asm volatile ("get\t%0,rfsl" stringify(id) : "=d" (val))
+#define putfsl(val, id)         asm volatile ("put\t%0,rfsl" stringify(id) :: "d" (val))
+
+/* Non-blocking Data Read and Write to FSL no. id */
+#define ngetfsl(val, id)        asm volatile ("nget\t%0,rfsl" stringify(id) : "=d" (val))
+#define nputfsl(val, id)        asm volatile ("nput\t%0,rfsl" stringify(id) :: "d" (val))
+
+/* Blocking Control Read and Write to FSL no. id */
+#define cgetfsl(val, id)        asm volatile ("cget\t%0,rfsl" stringify(id) : "=d" (val))
+#define cputfsl(val, id)        asm volatile ("cput\t%0,rfsl" stringify(id) :: "d" (val))
+
+/* Non-blocking Control Read and Write to FSL no. id */
+#define ncgetfsl(val, id)       asm volatile ("ncget\t%0,rfsl" stringify(id) : "=d" (val))
+#define ncputfsl(val, id)       asm volatile ("ncput\t%0,rfsl" stringify(id) :: "d" (val))
+
+/* Polling versions of FSL access macros. This makes the FSL access interruptible */
+#define getfsl_interruptible(val, id)       asm volatile ("\n1:\n\tnget\t%0,rfsl" stringify(id) "\n\t"   \
+                                                          "addic\tr18,r0,0\n\t"                \
+                                                          "bnei\tr18,1b\n"                     \
+                                                           : "=d" (val) :: "r18")
+
+#define putfsl_interruptible(val, id)       asm volatile ("\n1:\n\tnput\t%0,rfsl" stringify(id) "\n\t"   \
+                                                          "addic\tr18,r0,0\n\t"                \
+                                                          "bnei\tr18,1b\n"                     \
+                                                          :: "d" (val) : "r18")
+
+#define cgetfsl_interruptible(val, id)      asm volatile ("\n1:\n\tncget\t%0,rfsl" stringify(id) "\n\t"  \
+                                                          "addic\tr18,r0,0\n\t"                \
+                                                          "bnei\tr18,1b\n"                     \
+                                                          : "=d" (val) :: "r18")
+
+#define cputfsl_interruptible(val, id)      asm volatile ("\n1:\n\tncput\t%0,rfsl" stringify(id) "\n\t"  \
+                                                          "addic\tr18,r0,0\n\t"                \
+                                                          "bnei\tr18,1b\n"                     \
+                                                          :: "d" (val) : "r18")
+/* FSL valid and error check macros. */
+#define fsl_isinvalid(result)               asm volatile ("addic\t%0,r0,0"  : "=d" (result))
+#define fsl_iserror(error)                  asm volatile ("mfs\t%0,rmsr\n\t"  \
+                                                              "andi\t%0,%0,0x10" : "=d" (error))
+
+#endif /* legacy FSL defines */
+/************************** Function Prototypes ******************************/
+
+/************************** Variable Definitions *****************************/
 
 #ifdef __cplusplus
 }
 #endif
-#endif /* FSL_H */
-/**
-* @} End of "addtogroup microblaze_fsl_macro".
-*/
+#endif /* _FSL_H */
+/** @} */

@@ -22,6 +22,31 @@ extern "C" {
 #define min(a,b)	((a) > (b) ?  (b) : (a))
 
 
+enum MsgLcd2Trx_cmd_ENUM {
+	MsgLcd2Trx_cmd_NOP					= 0,
+	MsgLcd2Trx_cmd_TX_OFF,
+	MsgLcd2Trx_cmd_TX_ON,
+	MsgLcd2Trx_cmd_TX_FREQ_SET,
+	MsgLcd2Trx_cmd_TX_PWR_SET,
+	MsgLcd2Trx_cmd_TX_MODE_CW_SET,
+
+	MsgLcd2Trx_cmd_TX_UFBMOD_AUTO_EXEC	= 64,
+};
+
+
+typedef struct MsgLcd2Trx {
+	u8		cmd;
+	u32		par;
+} t_MsgLcd2Trx;
+
+
+typedef struct MsgTrx2Lcd {
+	u8		status;
+	u32		par;
+} t_MsgTrx2Lcd;
+
+
+
 /************************** Global Variables *********************************/
 
 extern volatile u8 owEUI48[EUI48_SIZE];
@@ -35,6 +60,9 @@ extern u8  emacLiteRxFrame[XEL_MAX_FRAME_SIZE];
 extern u8  emacLiteTxFrame[XEL_MAX_FRAME_SIZE];
 
 extern XEmacLite emacLiteInstance;					/* Instance of the EmacLite */
+
+extern QueueHandle_t qhLcd2Trx;
+extern QueueHandle_t qhTrx2Lcd;
 
 
 /************************** Global Functions *********************************/

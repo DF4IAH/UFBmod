@@ -30,6 +30,9 @@
 extern XGpio gpio_Rotenc;
 extern XGpio gpio_PWM_Lights;
 
+static t_MsgLcd2Trx lcd_msgLcd2Trx = { 0 };
+static t_MsgTrx2Lcd lcd_msgTrx2Lcd = { 0 };
+
 
 const char Lcd_pointer = '>';
 const char Lcd_active  = '#';
@@ -70,8 +73,8 @@ const char Lcd_menu_hf1_v01_msgs[][17] = {
 		"  AUS           ",
 		"  868MHz -30dBm ",
 		"  868MHz   0dBm ",
+		"  2,4GHz -50dBm ",
 		"  2,4GHz -30dBm ",
-		"  2,4GHz   0dBm ",
 		"  zurueck       ",
 };
 const u8 Lcd_menu_hf1_v01_upper_pos_max = 5;
@@ -321,6 +324,7 @@ void taskUI(void* pvParameters)
 	{
 		lcdInit();
 		pwmLedSet(LED_LCDDISP_010, LED_LCDDISP_MASK);
+		pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);
 		lcdWelcomeHF1HF2();
 		vTaskDelay(pdMS_TO_TICKS(3000));
 	}
@@ -536,36 +540,162 @@ void taskUI(void* pvParameters)
 
 							if (lcd_menu_current_active == 1) {
 								/* Select: OFF */
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_OFF;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
 
 								/* LED off */
 								pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);
 
 							} else if (lcd_menu_current_active == 2) {
 								/* Select: 868 MHz, -30 dBm */
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_OFF;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_MODE_CW_SET;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_FREQ_SET;
+								lcd_msgLcd2Trx.par = 868000000UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_PWR_SET;
+								lcd_msgLcd2Trx.par = (u32) -32L;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_ON;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
 
 								/* LED dimmed yellow */
 								pwmLedSet(LED_RGB_YELLOW_DIMMED, LED_RGB_MASK);
 
 							} else if (lcd_menu_current_active == 3) {
 								/* Select: 868 MHz,   0 dBm */
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_OFF;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_MODE_CW_SET;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_FREQ_SET;
+								lcd_msgLcd2Trx.par = 868000000UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_PWR_SET;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_ON;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
 
 								/* LED bright yellow */
 								pwmLedSet(LED_RGB_YELLOW_BRIGHT, LED_RGB_MASK);
 
 							} else if (lcd_menu_current_active == 4) {
 								/* Select: 2.4 GHz, -30 dBm */
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_OFF;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_MODE_CW_SET;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_FREQ_SET;
+								lcd_msgLcd2Trx.par = 2400000000UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_PWR_SET;
+								lcd_msgLcd2Trx.par = (u32) -32L;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_ON;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
 
 								/* LED dimmed blue */
 								pwmLedSet(LED_RGB_BLUE_DIMMED, LED_RGB_MASK);
 
 							} else if (lcd_menu_current_active == 5) {
 								/* Select: 2.4 GHz,   0 dBm */
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_OFF;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_MODE_CW_SET;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_FREQ_SET;
+								lcd_msgLcd2Trx.par = 2400000000UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_PWR_SET;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
+
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_ON;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
 
 								/* LED bright blue */
 								pwmLedSet(LED_RGB_BLUE_BRIGHT, LED_RGB_MASK);
 
 							} else if (lcd_menu_current_active == (Lcd_menu_hf1_v01_upper_pos_max + 1)) {
 								/* Turn off */
+								lcd_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_TX_OFF;
+								lcd_msgLcd2Trx.par = 0UL;
+								if (xQueueSend(qhLcd2Trx, (void*) &lcd_msgLcd2Trx, pdMS_TO_TICKS(25)) != pdPASS) {
+									/* Failed to post the message */
+								}
 
 								/* LED off */
 								pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);

@@ -99,6 +99,7 @@ enum SCOPE_TRIGSRC_48LINES_ENUM {
 
 static void taskDefault(void* pvParameters);
 static void taskEth(void* pvParameters);
+
 //static void vTimerCallback(TimerHandle_t pxTimer);
 
 /*-----------------------------------------------------------*/
@@ -107,7 +108,10 @@ static TaskHandle_t thUI;
 static TaskHandle_t thEth;
 static TaskHandle_t thTrx;
 static TaskHandle_t thTrxRxMsg;
-//static QueueHandle_t qhTodo = NULL;
+
+QueueHandle_t qhLcd2Trx;
+QueueHandle_t qhTrx2Lcd;
+
 //static TimerHandle_t thTodo = NULL;
 
 
@@ -123,6 +127,7 @@ static XGpio gpio1_SCOPE;																		/* GPIO2 and GPIO3         */
 
 /* App includes */
 #include "Eth.h"
+#include "Lcd.h"
 
 
 /*-----------------------------------------------------------*/
@@ -181,15 +186,24 @@ int main(void)
 			&thTrxRxMsg
 	);
 
-#if 0
-	xQueue = xQueueCreate(
+
+	qhLcd2Trx = xQueueCreate(
 		1,									/* Number of entries. */
-		sizeof(HWstring)					/* Size of each entries. */
+		sizeof(t_MsgLcd2Trx)				/* Size of each entries. */
 	);
 
 	/* Check the queue was created. */
-	configASSERT(xQueue);
-#endif
+	configASSERT(qhLcd2Trx);
+
+
+	qhTrx2Lcd = xQueueCreate(
+		1,									/* Number of entries. */
+		sizeof(t_MsgTrx2Lcd)				/* Size of each entries. */
+	);
+
+	/* Check the queue was created. */
+	configASSERT(qhTrx2Lcd);
+
 
 #if 0
 	/* Create a timer with a timer expiry of 10 seconds. The timer would expire

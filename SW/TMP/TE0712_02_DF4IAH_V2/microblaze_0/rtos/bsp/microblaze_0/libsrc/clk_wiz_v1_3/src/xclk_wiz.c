@@ -140,7 +140,7 @@ static u32  XClk_Wiz_CalculateDivisors (XClk_Wiz  *InstancePtr, u64 SetRate)
 					} else {
 						Diff = SetRate - Freq;
 					}
- 					if (Diff == 0 ) {
+					if (Diff == 0 ) {
 						InstancePtr->MVal = m;
 						InstancePtr->DVal = d;
 						InstancePtr->OVal = Div;

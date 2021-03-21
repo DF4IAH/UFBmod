@@ -45,6 +45,11 @@ static XGpio 		gpio_TRX_PUSHDATA;
 
 static XSpi  		spiTrxInstance;
 
+
+static t_MsgLcd2Trx trx_msgLcd2Trx = { 0 };
+static t_MsgTrx2Lcd trx_msgTrx2Lcd = { 0 };
+
+
 /*
  * The buffer used for Transmission/Reception of the SPI data frames.
  */
@@ -982,7 +987,195 @@ static u32 TrxRssiRF24Get(s8* rssi)
 	return XST_SUCCESS;
 }
 
-static u32 TrxOperationModeRFSet(u8 chpm)
+static u32 TrxCtxBBC0Set(u8 ctx)
+{
+	/* Parameters */
+	{
+		if (ctx) {
+			ctx = 0x01U;
+		}
+	}
+
+	/* Start the SPI driver so that the device is enabled */
+	XSpi_Start(&spiTrxInstance);
+
+	/* Disable Global interrupt to use polled mode operation */
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
+
+	/* 0x0301 ff.: BBC0_PC */
+	{
+		const u8 frameLen = 3;
+		u8 readBuf[3]  = { 0 };
+		u8 writeBuf[3] = { 0 };
+#if 0
+		writeBuf[0] = 0x03U | 0x00U;							// Reg-MSB with Read CMD starting @ 0x0301
+		writeBuf[1] = 0x01U;									// Reg-LSB
+
+		/* Read the data */
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
+#endif
+
+		writeBuf[0] = 0x03U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0301
+		writeBuf[1] = 0x01U;									// Reg-LSB
+		writeBuf[2] = 0x55U | (ctx << 7);						// BBC0_PC	FCSFE=40, TXAFCS=10, FCST=00, BBEN=04, PT=01 (p84)
+
+		/* Write the data */
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
+	}
+
+	/* Stop the SPI driver */
+	XSpi_Stop(&spiTrxInstance);
+
+#ifdef LOGGING
+	xil_printf("TaskTrx: TrxCtxBBC0Set done, ctx = %d\r\n", ctx);
+#endif
+
+	return XST_SUCCESS;
+}
+
+static u32 TrxCtxBBC1Set(u8 ctx)
+{
+	/* Parameters */
+	{
+		if (ctx) {
+			ctx = 0x01U;
+		}
+	}
+
+	/* Start the SPI driver so that the device is enabled */
+	XSpi_Start(&spiTrxInstance);
+
+	/* Disable Global interrupt to use polled mode operation */
+	XSpi_IntrGlobalDisable(&spiTrxInstance);
+
+	/* 0x0401 ff.: BBC1_PC */
+	{
+		const u8 frameLen = 3;
+		u8 readBuf[3]  = { 0 };
+		u8 writeBuf[3] = { 0 };
+#if 0
+		writeBuf[0] = 0x04U | 0x00U;							// Reg-MSB with Read CMD starting @ 0x0401
+		writeBuf[1] = 0x01U;									// Reg-LSB
+
+		/* Read the data */
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
+#endif
+
+		writeBuf[0] = 0x04U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0401
+		writeBuf[1] = 0x01U;									// Reg-LSB
+		writeBuf[2] = 0x55U | (ctx << 7);						// BBC0_PC	FCSFE=40, TXAFCS=10, FCST=00, BBEN=04, PT=01 (p84)
+
+		/* Write the data */
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
+	}
+
+	/* Stop the SPI driver */
+	XSpi_Stop(&spiTrxInstance);
+
+#ifdef LOGGING
+	xil_printf("TaskTrx: TrxCtxBBC1Set done, ctx = %d\r\n", ctx);
+#endif
+
+	return XST_SUCCESS;
+}
+
+static u32 TrxFreqRF09Set(u32 frequencyHz)
+{
+	u64 calc;
+
+	if (((FREQ_SAWFILT_MIN - 1000000UL) <= frequencyHz) && (frequencyHz <= (FREQ_SAWFILT_MAX + 1000000UL))) {
+		/*  Fine resolution channel scheme mode 2 - 0x0104 ff. */
+		calc = frequencyHz - TRX_FRCS_MODE2_OFS;
+		calc <<= 16;
+		calc /= TRX_FRCS_MODE2_DIV;
+
+		/* border values p64 */
+		Xil_AssertNonvoid(126030 <= calc);
+		Xil_AssertNonvoid(calc   <= 1340967);
+
+		const u8 frameLen = 7;
+		u8 readBuf[7]  = { 0 };
+		u8 writeBuf[7] = { 0 };
+		writeBuf[0] = 0x01U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0104
+		writeBuf[1] = 0x04U;									// Reg-LSB
+		writeBuf[2] = 0x06U;									// RF09_CS = 6x 25 kHz = 150 kHz  (p64 ff.)
+		writeBuf[3] = (u8) ((calc >>  8) & 0xffULL);			// RF09_CCF0L	Middle
+		writeBuf[4] = (u8) ((calc >> 16) & 0xffULL);			// RF09_CCF0H	Hi
+		writeBuf[5] = (u8) ( calc        & 0xffULL);			// RF09_CNL 	Lo
+		writeBuf[6] = (0x02U << 6) | ((u8) ((calc >> 24) & 0x01ULL));	// RF09_CNH 	Mode2
+
+		/* Start the SPI driver so that the device is enabled */
+		XSpi_Start(&spiTrxInstance);
+
+		/* Disable Global interrupt to use polled mode operation */
+		XSpi_IntrGlobalDisable(&spiTrxInstance);
+
+		/* Transmit the data */
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
+
+		/* Stop the SPI driver */
+		XSpi_Stop(&spiTrxInstance);
+
+#ifdef LOGGING
+		xil_printf("TaskTrx: RF09 - frequency set to %lu Hz\r\n", frequencyHz);
+#endif
+
+		return XST_SUCCESS;
+	}
+
+	/* Out of band */
+	return XST_FAILURE;
+}
+
+static u32 TrxFreqRF24Set(u32 frequencyHz)
+{
+	u64 calc;
+
+	if ((FREQ_MODE3_MIN <= frequencyHz) && (frequencyHz <= FREQ_MODE3_MAX)) {
+		/*  Fine resolution channel scheme mode 3 - 0x0204 ff. */
+		calc = frequencyHz - TRX_FRCS_MODE3_OFS;
+		calc <<= 16;
+		calc /= TRX_FRCS_MODE3_DIV;
+
+		/* border values p64 */
+		Xil_AssertNonvoid( 85700 <= calc);
+		Xil_AssertNonvoid(calc   <= 296172);
+
+		const u8 frameLen = 7;
+		u8 readBuf[7]  = { 0 };
+		u8 writeBuf[7] = { 0 };
+		writeBuf[0] = 0x02U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0204
+		writeBuf[1] = 0x04U;									// Reg-LSB
+		writeBuf[2] = 0x06U;									// RF24_CS = 6x 25 kHz = 150 kHz  (p64 ff.)
+		writeBuf[3] = (u8) ((calc >>  8) & 0xffULL);			// RF24_CCF0L	Middle
+		writeBuf[4] = (u8) ((calc >> 16) & 0xffULL);			// RF24_CCF0H	Hi
+		writeBuf[5] = (u8) ( calc        & 0xffULL);			// RF24_CNL 	Lo
+		writeBuf[6] = (0x03U << 6) | ((u8) ((calc >> 24) & 0x01ULL));	// RF24_CNH 	Mode3
+
+		/* Start the SPI driver so that the device is enabled */
+		XSpi_Start(&spiTrxInstance);
+
+		/* Disable Global interrupt to use polled mode operation */
+		XSpi_IntrGlobalDisable(&spiTrxInstance);
+
+		/* Transmit the data */
+		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
+
+		/* Stop the SPI driver */
+		XSpi_Stop(&spiTrxInstance);
+
+#ifdef LOGGING
+		xil_printf("TaskTrx: RF24 - frequency set to %lu Hz\r\n", frequencyHz);
+#endif
+
+		return XST_SUCCESS;
+	}
+
+	/* Out of band */
+	return XST_FAILURE;
+}
+
+static u32 TrxOperationModeRFSet(u8 chpm, u8 lvds_ptt)
 {
 	/* Parameters */
 	{
@@ -1022,11 +1215,13 @@ static u32 TrxOperationModeRFSet(u8 chpm)
 		writeBuf[3] = 0x00U | 0x01U;							// RF_CLKO		DRV=#00#08, OS=#01 26MHz (p21)
 		writeBuf[4] = (readBuf[4] & 0x1fU) 	|  0x00U;			// RF_BMDVC		BMHR, BMVTH (p79)
 		writeBuf[5] = 0x00U;									// RF_XOC		FS=00, TRIM=00 (p69)
-#ifdef LVDS_PTT													// XXX
-		writeBuf[6] = 0x30U | 0x00U | 0x08U | 0x01U;			// RF_IQIFC0	EXTLB=#00, DRV=(#00#10#20)#30, CMV=(#00#04)#08(#0c), CMV1V2=#00(#02), EEC=#00#01 (p27)
-#else
-		writeBuf[6] = 0x10U | 0x00U | 0x02U | 0x00U;			// RF_IQIFC0	EXTLB=#00, DRV=(#00#10#20)#30, CMV=(#00#04)#08(#0c), CMV1V2=#00(#02), EEC=#00#01 (p27)
-#endif
+
+		if (lvds_ptt) {
+			writeBuf[6] = 0x30U | 0x00U | 0x08U | 0x01U;		// RF_IQIFC0	EXTLB=#00, DRV=(#00#10#20)#30, CMV=(#00#04)#08(#0c), CMV1V2=#00(#02), EEC=#00#01 (p27)
+		} else {
+			writeBuf[6] = 0x10U | 0x00U | 0x02U | 0x00U;		// RF_IQIFC0	EXTLB=#00, DRV=(#00#10#20)#30, CMV=(#00#04)#08(#0c), CMV1V2=#00(#02), EEC=#00#01 (p27)
+		}
+
 		writeBuf[7] = (chpm  << 4) 			| 0x03U;			// RF_IQIFC1	CHPM, SKEWDRV=#00(#01#02#03) (p32)
 
 		/* Write the data */
@@ -1098,7 +1293,7 @@ static u32 TrxOperationModeRF09BBC0Set(u8 ctx, s32 pwr)
 		writeBuf[0] = 0x01U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0112
 		writeBuf[1] = 0x12U;									// Reg-LSB
 		writeBuf[2] = ((readBuf[2] & 0x00U) | 0xc8U);			// RF09_TXCUTC	PARAMP=#c0 32us, LPFCUT=#00 80kHz #08 500kHz #0b 1000kHz (p48)
-		writeBuf[3] = ((readBuf[3] & 0x00U) | 0x00U);			// RF09_TXDFE	RCUT=#00 fs/8 #20 0.1875*fs #40 fs/4 #60 0.375*fs #80 fs/2, DM=00 , SR=01 4MSPS (p48)
+		writeBuf[3] = ((readBuf[3] & 0x00U) | 0x01U);			// RF09_TXDFE	RCUT=#00 fs/8 #20 0.1875*fs #40 fs/4 #60 0.375*fs #80 fs/2, DM=00 , SR=01 4MSPS (p48)
 		writeBuf[4] = ((pacur & 0x03U) << 5) | (txpwr & 0x1fU);	// RF09_PAC		PACUR, TXPWR (p49)
 
 		/* Write the data */
@@ -1164,25 +1359,7 @@ static u32 TrxOperationModeRF09BBC0Set(u8 ctx, s32 pwr)
 	}
 
 	/* 0x0301 ff.: BBC0_PC */
-	{
-		const u8 frameLen = 3;
-		u8 readBuf[3]  = { 0 };
-		u8 writeBuf[3] = { 0 };
-#if 0
-		writeBuf[0] = 0x03U | 0x00U;							// Reg-MSB with Read CMD starting @ 0x0301
-		writeBuf[1] = 0x01U;									// Reg-LSB
-
-		/* Read the data */
-		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
-#endif
-
-		writeBuf[0] = 0x03U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0301
-		writeBuf[1] = 0x01U;									// Reg-LSB
-		writeBuf[2] = 0x55U | (ctx << 7);						// BBC0_PC	FCSFE=40, TXAFCS=10, FCST=00, BBEN=04, PT=01 (p84)
-
-		/* Write the data */
-		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
-	}
+	(void) TrxCtxBBC0Set(ctx);
 
 	/* Stop the SPI driver */
 	XSpi_Stop(&spiTrxInstance);
@@ -1271,8 +1448,15 @@ static u32 TrxOperationModeRF24BBC1Set(u8 ctx, s32 pwr)
 		writeBuf[1] = 0x09U;									// Reg-LSB
 		writeBuf[2] = ((readBuf[2] & 0x00U) | (0x0bU << 0));	// RF09_RXBWC	IFI=00, IFS=00, BW=0b (p57)
 		writeBuf[3] = ((readBuf[3] & 0x00U) | (0x01U << 0));	// RF09_RXDFE	RCUT=00, SR=01 (p58)
+#if 0
+		/* AGC disabled */
+		writeBuf[4] = ((readBuf[4] & 0x80U) | (0x00U << 0));	// RF09_AGCC	AGCI=00, AVGS=00, RST=00, FRZC=00, EN=01 (p59)
+		writeBuf[5] = ((readBuf[5] & 0x1fU) | (0x00U << 0));	// RF09_AGCS	TGT=60 (p60)
+#else
+		/* AGC enabled */
 		writeBuf[4] = ((readBuf[4] & 0x80U) | (0x01U << 0));	// RF09_AGCC	AGCI=00, AVGS=00, RST=00, FRZC=00, EN=01 (p59)
 		writeBuf[5] = ((readBuf[5] & 0x1fU) | (0x60U << 0));	// RF09_AGCS	TGT=60 (p60)
+#endif
 		writeBuf[6] = ((readBuf[6] & 0x00U) | (0x00U << 0));	// RF09_RSSI	(p60)
 		writeBuf[7] = ((readBuf[7] & 0x00U) | (0x00U << 0));	// RF09_EDC	EDM=00 (p60)
 		writeBuf[8] = ((readBuf[8] & 0x00U) | (0x48U << 0));	// RF09_EDD	DF=40, DTB=08 (p61)
@@ -1308,119 +1492,13 @@ static u32 TrxOperationModeRF24BBC1Set(u8 ctx, s32 pwr)
 	}
 
 	/* 0x0401 ff.: BBC1_PC */
-	{
-		const u8 frameLen = 3;
-		u8 readBuf[3]  = { 0 };
-		u8 writeBuf[3] = { 0 };
-#if 0
-		writeBuf[0] = 0x04U | 0x00U;							// Reg-MSB with Read CMD starting @ 0x0401
-		writeBuf[1] = 0x01U;									// Reg-LSB
-
-		/* Read the data */
-		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
-#endif
-
-		writeBuf[0] = 0x04U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0401
-		writeBuf[1] = 0x01U;									// Reg-LSB
-		writeBuf[2] = 0x55U | (ctx << 7);						// BBC0_PC	FCSFE=40, TXAFCS=10, FCST=00, BBEN=04, PT=01 (p84)
-
-		/* Write the data */
-		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
-	}
+	(void) TrxCtxBBC1Set(ctx);
 
 	/* Stop the SPI driver */
 	XSpi_Stop(&spiTrxInstance);
 
 #ifdef LOGGING
 	xil_printf("TaskTrx: TrxOperationModeRF24BB1Set done\r\n");
-#endif
-
-	return XST_SUCCESS;
-}
-
-static u32 TrxCtxBBC0Set(u8 ctx)
-{
-	/* Parameters */
-	{
-		if (ctx) {
-			ctx = 0x01U;
-		}
-	}
-
-	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiTrxInstance);
-
-	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiTrxInstance);
-
-	/* 0x0301 ff.: BBC0_PC */
-	{
-		const u8 frameLen = 3;
-		u8 readBuf[3]  = { 0 };
-		u8 writeBuf[3] = { 0 };
-		writeBuf[0] = 0x03U | 0x00U;							// Reg-MSB with Read CMD starting @ 0x0301
-		writeBuf[1] = 0x01U;									// Reg-LSB
-
-		/* Read the data */
-		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
-
-		writeBuf[0] = 0x03U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0301
-		writeBuf[1] = 0x01U;									// Reg-LSB
-		writeBuf[2] = ((readBuf[2] & 0x7fU) | (ctx << 7));		// BBC0_PC	CTX (p84)
-
-		/* Write the data */
-		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
-	}
-
-	/* Stop the SPI driver */
-	XSpi_Stop(&spiTrxInstance);
-
-#ifdef LOGGING
-	xil_printf("TaskTrx: TrxCtxBBC0Set done, ctx = %d\r\n", ctx);
-#endif
-
-	return XST_SUCCESS;
-}
-
-static u32 TrxCtxBBC1Set(u8 ctx)
-{
-	/* Parameters */
-	{
-		if (ctx) {
-			ctx = 0x01U;
-		}
-	}
-
-	/* Start the SPI driver so that the device is enabled */
-	XSpi_Start(&spiTrxInstance);
-
-	/* Disable Global interrupt to use polled mode operation */
-	XSpi_IntrGlobalDisable(&spiTrxInstance);
-
-	/* 0x0401 ff.: BBC1_PC */
-	{
-		const u8 frameLen = 3;
-		u8 readBuf[3]  = { 0 };
-		u8 writeBuf[3] = { 0 };
-		writeBuf[0] = 0x04U | 0x00U;							// Reg-MSB with Read CMD starting @ 0x0401
-		writeBuf[1] = 0x01U;									// Reg-LSB
-
-		/* Read the data */
-		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
-
-		writeBuf[0] = 0x04U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0401
-		writeBuf[1] = 0x01U;									// Reg-LSB
-		writeBuf[2] = ((readBuf[2] & 0x7fU) | (ctx << 7));		// BBC0_PC	CTX (p84)
-
-		/* Write the data */
-		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
-	}
-
-	/* Stop the SPI driver */
-	XSpi_Stop(&spiTrxInstance);
-
-#ifdef LOGGING
-	xil_printf("TaskTrx: TrxCtxBBC1Set done, ctx = %d\r\n", ctx);
 #endif
 
 	return XST_SUCCESS;
@@ -1502,93 +1580,6 @@ static u32 TrxDacCwRF24Set(u8 enable)
 	return XST_SUCCESS;
 }
 
-
-static u32 TrxFreqSet(u32 frequencyHz)
-{
-	u64 calc;
-
-	if (((FREQ_SAWFILT_MIN - 1000000UL) <= frequencyHz) && (frequencyHz <= (FREQ_SAWFILT_MAX + 1000000UL))) {
-		/*  Fine resolution channel scheme mode 2 - 0x0104 ff. */
-		calc = frequencyHz - TRX_FRCS_MODE2_OFS;
-		calc <<= 16;
-		calc /= TRX_FRCS_MODE2_DIV;
-
-		/* border values p64 */
-		Xil_AssertNonvoid(126030 <= calc);
-		Xil_AssertNonvoid(calc   <= 1340967);
-
-		const u8 frameLen = 7;
-		u8 readBuf[7]  = { 0 };
-		u8 writeBuf[7] = { 0 };
-		writeBuf[0] = 0x01U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0104
-		writeBuf[1] = 0x04U;									// Reg-LSB
-		writeBuf[2] = 0x06U;									// RF09_CS = 6x 25 kHz = 150 kHz  (p64 ff.)
-		writeBuf[3] = (u8) ((calc >>  8) & 0xffULL);			// RF09_CCF0L	Middle
-		writeBuf[4] = (u8) ((calc >> 16) & 0xffULL);			// RF09_CCF0H	Hi
-		writeBuf[5] = (u8) ( calc        & 0xffULL);			// RF09_CNL 	Lo
-		writeBuf[6] = (0x02U << 6) | ((u8) ((calc >> 24) & 0x01ULL));	// RF09_CNH 	Mode2
-
-		/* Start the SPI driver so that the device is enabled */
-		XSpi_Start(&spiTrxInstance);
-
-		/* Disable Global interrupt to use polled mode operation */
-		XSpi_IntrGlobalDisable(&spiTrxInstance);
-
-		/* Transmit the data */
-		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
-
-		/* Stop the SPI driver */
-		XSpi_Stop(&spiTrxInstance);
-
-#ifdef LOGGING
-		xil_printf("TaskTrx: RF09 - frequency set to %lu Hz\r\n", frequencyHz);
-#endif
-
-		return XST_SUCCESS;
-
-	} else if ((FREQ_MODE3_MIN <= frequencyHz) && (frequencyHz <= FREQ_MODE3_MAX)) {
-		/*  Fine resolution channel scheme mode 3 - 0x0204 ff. */
-		calc = frequencyHz - TRX_FRCS_MODE3_OFS;
-		calc <<= 16;
-		calc /= TRX_FRCS_MODE3_DIV;
-
-		/* border values p64 */
-		Xil_AssertNonvoid( 85700 <= calc);
-		Xil_AssertNonvoid(calc   <= 296172);
-
-		const u8 frameLen = 7;
-		u8 readBuf[7]  = { 0 };
-		u8 writeBuf[7] = { 0 };
-		writeBuf[0] = 0x02U | 0x80U;							// Reg-MSB with Write CMD starting @ 0x0204
-		writeBuf[1] = 0x04U;									// Reg-LSB
-		writeBuf[2] = 0x06U;									// RF24_CS = 6x 25 kHz = 150 kHz  (p64 ff.)
-		writeBuf[3] = (u8) ((calc >>  8) & 0xffULL);			// RF24_CCF0L	Middle
-		writeBuf[4] = (u8) ((calc >> 16) & 0xffULL);			// RF24_CCF0H	Hi
-		writeBuf[5] = (u8) ( calc        & 0xffULL);			// RF24_CNL 	Lo
-		writeBuf[6] = (0x03U << 6) | ((u8) ((calc >> 24) & 0x01ULL));	// RF24_CNH 	Mode3
-
-		/* Start the SPI driver so that the device is enabled */
-		XSpi_Start(&spiTrxInstance);
-
-		/* Disable Global interrupt to use polled mode operation */
-		XSpi_IntrGlobalDisable(&spiTrxInstance);
-
-		/* Transmit the data */
-		XSpi_Transfer(&spiTrxInstance, writeBuf, readBuf, frameLen);
-
-		/* Stop the SPI driver */
-		XSpi_Stop(&spiTrxInstance);
-
-#ifdef LOGGING
-		xil_printf("TaskTrx: RF24 - frequency set to %lu Hz\r\n", frequencyHz);
-#endif
-
-		return XST_SUCCESS;
-	}
-
-	/* Out of band */
-	return XST_FAILURE;
-}
 
 static u32 TrxTxFlBBC0Set(u16 txFlCount)
 {
@@ -1954,6 +1945,38 @@ static void TrxTxFifoDump(void)
 
 /*-----------------------------------------------------------*/
 
+static void TrxRF09TxCW(u32 freq_Hz, int pwr_dBm)
+{
+	TrxCmdRF09Set(CMD_TXPREP);
+	while (1) {
+		u8 state = 0;
+
+		TrxStateRF09Get(&state);
+		if (state == STATE_TXPREP) {
+#ifdef LOGGING
+			xil_printf("TestRF09Tx: changed into state = 0x%02X\r\n", state);
+#endif
+			break;
+		}
+		vTaskDelay(pdMS_TO_TICKS(25));
+	}
+
+	/* Set frequency */
+	TrxFreqRF09Set(freq_Hz);
+
+	/* Set power and operation mode */
+	TrxOperationModeRFSet(CHPM_RF_MODE_BBRF09, PTT_MANU); 	// CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF24
+	TrxOperationModeRF09BBC0Set(CTX_ENABLE, pwr_dBm);  		// CTX ContinuesWave, Power @ TRX pins
+
+	/* Test-Cycles */
+	//TrxTxFlBBC0Set(2047U);
+	TrxDacCwRF09Set(DAC_CW_ENABLE);
+	//TrxCtxBBC0Set(CTX_ENABLE);
+
+	/* Start Transmitter */
+	TrxCmdRF09Set(CMD_TX);
+}
+
 static void TestRF09Tx(u32 freq_Hz, int pwr_dBm)
 {
 	/* YELLOW dimmed on */
@@ -1980,10 +2003,10 @@ static void TestRF09Tx(u32 freq_Hz, int pwr_dBm)
 	CalcCorectionRF09Get(pwr_dBm, &cor, &dcoI, &dcoQ);
 
 	/* Set frequency */
-	TrxFreqSet(freq_Hz);
+	TrxFreqRF09Set(freq_Hz);
 
 	/* Set power and operation mode */
-	TrxOperationModeRFSet(CHPM_RF_MODE_RF);  			// CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF
+	TrxOperationModeRFSet(CHPM_RF_MODE_RF, PTT_LVDS);	// CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF
 	TrxOperationModeRF09BBC0Set(CTX_DISABLE, pwr_dBm);  // CTX ContinuesWave, Power @ TRX pins
 
 	/* I/Q mixer balance */
@@ -2184,6 +2207,38 @@ static void TestRF09Tx(u32 freq_Hz, int pwr_dBm)
 #endif
 }
 
+static void TrxRF24TxCW(u32 freq_Hz, int pwr_dBm)
+{
+	TrxCmdRF24Set(CMD_TXPREP);
+	while (1) {
+		u8 state = 0;
+
+		TrxStateRF24Get(&state);
+		if (state == STATE_TXPREP) {
+#ifdef LOGGING
+			xil_printf("TestRF24Tx: changed into state = 0x%02X\r\n", state);
+#endif
+			break;
+		}
+		vTaskDelay(pdMS_TO_TICKS(25));
+	}
+
+	/* Set frequency */
+	TrxFreqRF24Set(freq_Hz);
+
+	/* Set power and operation mode */
+	TrxOperationModeRFSet(CHPM_RF_MODE_BBRF24, PTT_MANU);  	// CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF24
+	TrxOperationModeRF24BBC1Set(CTX_ENABLE, pwr_dBm);  		// CTX ContinuesWave, Power @ TRX pins
+
+	/* Test-Cycles */
+	//TrxTxFlBBC1Set(2047U);
+	TrxDacCwRF24Set(DAC_CW_ENABLE);
+	//TrxCtxBBC1Set(CTX_ENABLE);
+
+	/* Start Transmitter */
+	TrxCmdRF24Set(CMD_TX);
+}
+
 static void TestRF24Tx(u32 freq_Hz, int pwr_dBm)
 {
 	/* Get correction values */
@@ -2208,11 +2263,11 @@ static void TestRF24Tx(u32 freq_Hz, int pwr_dBm)
 	}
 
 	/* Set frequency */
-	TrxFreqSet(freq_Hz);
+	TrxFreqRF24Set(freq_Hz);
 
 	/* Set power and operation mode */
-	TrxOperationModeRFSet(CHPM_RF_MODE_RF);  			// CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF
-	TrxOperationModeRF09BBC0Set(CTX_DISABLE, pwr_dBm);  // CTX ContinuesWave, Power @ TRX pins
+	TrxOperationModeRFSet(CHPM_RF_MODE_RF, PTT_LVDS);		// CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF
+	TrxOperationModeRF24BBC1Set(CTX_DISABLE, pwr_dBm);		// CTX ContinuesWave, Power @ TRX pins
 
 	/* I/Q mixer balance */
 #if 0
@@ -2334,10 +2389,10 @@ static void TestRF09Rx(u32 freq_Hz)
 	}
 
 	/* Set frequency */
-	TrxFreqSet(freq_Hz);
+	TrxFreqRF09Set(freq_Hz);
 
 	/* Set power and operation mode */
-	TrxOperationModeRFSet(CHPM_RF_MODE_RF);  			// CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF
+	TrxOperationModeRFSet(CHPM_RF_MODE_RF, PTT_LVDS);	// CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF
 	TrxOperationModeRF09BBC0Set(CTX_DISABLE, -30);  	// CTX ContinuesWave, Power @ TRX pins
 
 #if 0
@@ -2400,11 +2455,11 @@ static void TestRF09Rx(u32 freq_Hz)
 static void TestRF24Rx(u32 freq_Hz)
 {
 	/* Set frequency */
-	TrxFreqSet(freq_Hz);
+	TrxFreqRF24Set(freq_Hz);
 
 	/* Set power and operation mode */
-	TrxOperationModeRFSet(CHPM_RF_MODE_RF);  			// CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF
-	TrxOperationModeRF09BBC0Set(CTX_DISABLE, -30);  	// CTX ContinuesWave, Power @ TRX pins
+	TrxOperationModeRFSet(CHPM_RF_MODE_RF, PTT_LVDS);		// CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF
+	TrxOperationModeRF24BBC1Set(CTX_DISABLE, -30);  		// CTX ContinuesWave, Power @ TRX pins
 
 	/* Stop FPGA DDS0/DDS1 */
 	//DdsFreqAmpSet(0U, 0.0f, 0x00U, 1.0f);		// XXX
@@ -2454,11 +2509,84 @@ static void TestRF24Rx(u32 freq_Hz)
 	pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);
 }
 
+void TestTxRxBlock(u32 freq_Hz, int pwr_dBm) {
+#if 1
+	/* TRX RF09 going Live */
+	{
+		/* UFBmod mode */
+		/* TRX RF09 going Live */
+		/* Values */
+		// XXX
+		int pwr_dBm = -20;
+		// Max. +11 dBm @ TRX  (after defect: +10,+11 --> -6 dBm)u32 freq_Hz = 867100000UL;
+		// 867000000 ..  870000000 Hz		// RF09/* New setup */
+		//TrxCmdRF09Set(CMD_RESET);
+		TrxCmdRF09Set(CMD_TRXOFF);
+		/* Testing the Receiver of the TRX */
+		TestRF09Rx(freq_Hz);
+		vTaskDelay(pdMS_TO_TICKS(3000));
+		/* Testing the Transmitter of the TRX */
+		TestRF09Tx(freq_Hz, pwr_dBm);
+	}
+#endif
+
+#if 0
+	/* TRX RF24 going Live */
+	{
+		u32 irqs;
+		TrxGetIrqs(&irqs);
+		TrxCmdRF24Set(CMD_TRXOFF);
+
+		/* Values */										// XXX
+		int pwr_dBm = +14;									// Max. +14 dBm @ TRX
+		u32 freq_Hz = 2450000000UL;  						// 2400000000 .. 2500000000 Hz		// RF24
+
+		/* Set frequency */
+		TrxFreqSet(freq_Hz);
+
+		/* Set power and operation mode */
+		TrxOperationModeRFSet(CHPM_RF_MODE_RF);  			// CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF
+		TrxOperationModeRF24BBC1Set(CTX_DISABLE, pwr_dBm);	// CTX ContinuesWave, Power @ TRX pins
+
+		/* Yellow */
+		u8 state;
+		pwmLedSet(0x00003f4fUL, 0x00ffffffUL);
+		TrxCmdRF24Set(CMD_TXPREP);
+		while (1) {
+			TrxGetIrqs(&irqs);
+			TrxStateRF24Get(&state);
+			if (state == STATE_TXPREP) {
+#ifdef LOGGING
+				xil_printf("TaskTrx: RF24 changed into state = 0x%02X\r\n", state);
+#endif
+				break;
+			}
+		}
+
+#if 0
+		/* Testing the Receiver of the TRX */
+		TestRF24Rx(freq_Hz);
+#else
+		/* Testing the Transmitter of the TRX */
+		TestRF24Tx(freq_Hz, pwr_dBm);
+#endif
+
+		while (1) {
+			vTaskDelay(pdMS_TO_TICKS(1000));
+		}
+	}
+#endif
+}
 
 /*-----------------------------------------------------------*/
 
 void taskTrx(void* pvParameters)
 {
+	static u8 trxUfbmodAutoRun 			= 0U;
+	static u8 trxModeCw					= 0U;
+	static u32 trxTxFreq				= 0UL;
+	static int trxTxPwr					= -50;
+
 	vTaskDelay(pdMS_TO_TICKS(500));
 
 	/* DAC pull voltage */
@@ -2474,7 +2602,6 @@ void taskTrx(void* pvParameters)
 #ifdef LOGGING
 				xil_printf("TaskTrx: Read version of PLL chip: 0x%02X (0x00 = 'A', 0x01 = 'B')\r\n", val);
 #endif
-
 			} else {
 #ifdef LOGGING
 				xil_printf("TaskTrx: *** I2C read operation failed\r\n");
@@ -2531,11 +2658,9 @@ void taskTrx(void* pvParameters)
 
 		// read  - bit31: FIFO is empty
 		// write - bit30: write one byte to the FIFO, bit29: do start TX, bit28: FIFO dump, bit14..bit8: pull data length, bit7..bit0: byte for FIFO.
-		//XGpio_SetDataDirection(&gpio_TRX_DDS, 1U, 0x80000000UL);
 		XGpio_DiscreteWrite(     &gpio_TRX_DDS, 1U, 0x00000000UL);
 
 		// write - bit31..bit0: DDS channel 1 increment value
-		//XGpio_SetDataDirection(&gpio_TRX_DDS, 2U, 0x00000000UL);
 		XGpio_DiscreteWrite(     &gpio_TRX_DDS, 2U, 0x00000000UL);
 	}
 
@@ -2550,12 +2675,11 @@ void taskTrx(void* pvParameters)
 		}
 
 		// write - bit15..bit8: DDS channel 0 amplitude IM multiply value, bit7..bit0: DDS channel 0 amplitude RE multiply value
-		//XGpio_SetDataDirection(&gpio_TRX_AMPT, 1U, 0x00000000UL);
 		XGpio_DiscreteWrite(     &gpio_TRX_AMPT, 1U, 0x0000f3f3UL);
 
 		// write - bit15..bit8: DDS channel 1 amplitude IM multiply value, bit7..bit0: DDS channel 1 amplitude RE multiply value
-		//XGpio_SetDataDirection(&gpio_TRX_AMPT, 2U, 0x00000000UL);
-		XGpio_DiscreteWrite(     &gpio_TRX_AMPT, 2U, 0x00000000UL);
+		//XGpio_DiscreteWrite(     &gpio_TRX_AMPT, 2U, 0x00000000UL);
+		XGpio_DiscreteWrite(     &gpio_TRX_AMPT, 2U, 0x0000f3f3UL);
 	}
 
 	/* Init TRX-PUSHDATA-GPIO */
@@ -2578,17 +2702,8 @@ void taskTrx(void* pvParameters)
 
 	/* Init SPI */
 	{
-#if 0
-		/* Set up the device in loopback mode and enable master mode */
-		spiTrxPtr = XSpi_LookupConfig(XPAR_AXI_TRX_TRX_CONFIG_QUAD_SPI_0_DEVICE_ID);
-		if (spiTrxPtr == NULL) {
-			return /*XST_DEVICE_NOT_FOUND*/;
-		}
-
-		int status = XSpi_CfgInitialize(&spiTrxInstance, spiTrxPtr, spiTrxPtr->BaseAddress);
-#else
 		int status = XSpi_Initialize(&spiTrxInstance, XPAR_AXI_TRX_TRX_CONFIG_QUAD_SPI_0_DEVICE_ID);
-#endif
+
 		if (status != XST_SUCCESS) {
 #ifdef LOGGING
 			xil_printf("TaskTrx: *** SPI init error 1\r\n");
@@ -2660,93 +2775,89 @@ void taskTrx(void* pvParameters)
 	}
 #endif
 
-	/* All LEDs off */
-	pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);
 
-#if 1
-	/* TRX RF09 going Live */
 	while (1) {
-		if (1) {
-			/* HFT mode */
+		/* Check for new message */
+		if (xQueueReceive(qhLcd2Trx, &trx_msgLcd2Trx, pdMS_TO_TICKS(25))) {
+			/* Process message */
+			switch (trx_msgLcd2Trx.cmd) {
+			case MsgLcd2Trx_cmd_TX_OFF:
+				if (trxModeCw > 1) {
+					trxModeCw 		= 1U;
+				}
 
-			vTaskDelay(pdMS_TO_TICKS(1000));
+				trxUfbmodAutoRun 	= 0U;
 
-		} else {
-			/* UFBmod mode */
+				/* Stop Transmitter */
+				TrxCmdRF09Set(CMD_TRXOFF);
+				TrxCmdRF24Set(CMD_TRXOFF);
+				break;
 
-			/* Values */										// XXX
-			int pwr_dBm = -20;									// Max. +11 dBm @ TRX  (after defect: +10,+11 --> -6 dBm)
-			u32 freq_Hz = 867100000UL;  						// 867000000 ..  870000000 Hz		// RF09
+			case MsgLcd2Trx_cmd_TX_ON:
+				if (trxModeCw) {
+					trxModeCw = 2;
 
-#if 0
-			/* Check interrupts */
-			{
-				u32 irqs = 0UL;
-				TrxGetIrqs(&irqs);
-			}
-#endif
+					if (((FREQ_SAWFILT_MIN - 1000000UL) <= trxTxFreq) && (trxTxFreq <= (FREQ_SAWFILT_MAX + 1000000UL))) {
+						TrxRF09TxCW(trxTxFreq, trxTxPwr);
 
-			/* New setup */
-			//TrxCmdRF09Set(CMD_RESET);
-			TrxCmdRF09Set(CMD_TRXOFF);
+					} else if ((FREQ_MODE3_MIN <= trxTxFreq) && (trxTxFreq <= FREQ_MODE3_MAX)) {
+						TrxRF24TxCW(trxTxFreq, trxTxPwr);
+					}
+				}
+				break;
 
-			/* Testing the Receiver of the TRX */
-			TestRF09Rx(freq_Hz);
-			vTaskDelay(pdMS_TO_TICKS(3000));
+			case MsgLcd2Trx_cmd_TX_FREQ_SET:
+				trxTxFreq = trx_msgLcd2Trx.par;
 
-			/* Testing the Transmitter of the TRX */
-			TestRF09Tx(freq_Hz, pwr_dBm);
-		}
-	}  // while (1)
-#endif
+				if (trxModeCw >= 1) {
+					if (((FREQ_SAWFILT_MIN - 1000000UL) <= trxTxFreq) && (trxTxFreq <= (FREQ_SAWFILT_MAX + 1000000UL))) {
+						TrxFreqRF09Set(trxTxFreq);
 
+					} else if ((FREQ_MODE3_MIN <= trxTxFreq) && (trxTxFreq <= FREQ_MODE3_MAX)) {
+						TrxFreqRF24Set(trxTxFreq);
+					}
+				}
+				break;
 
-#if 0
-	/* TRX RF24 going Live */
-	{
-		u32 irqs;
-		TrxGetIrqs(&irqs);
-		TrxCmdRF24Set(CMD_TRXOFF);
+			case MsgLcd2Trx_cmd_TX_PWR_SET:
+				trxTxPwr = (int) trx_msgLcd2Trx.par;
 
-		/* Values */										// XXX
-		int pwr_dBm = +14;									// Max. +14 dBm @ TRX
-		u32 freq_Hz = 2450000000UL;  						// 2400000000 .. 2500000000 Hz		// RF24
+				if (trxModeCw >= 1) {
+					if (((FREQ_SAWFILT_MIN - 1000000UL) <= trxTxFreq) && (trxTxFreq <= (FREQ_SAWFILT_MAX + 1000000UL))) {
+						TrxOperationModeRF09BBC0Set(DAC_CW_ENABLE, trxTxPwr);
 
-		/* Set frequency */
-		TrxFreqSet(freq_Hz);
+					} else if ((FREQ_MODE3_MIN <= trxTxFreq) && (trxTxFreq <= FREQ_MODE3_MAX)) {
+						TrxOperationModeRF24BBC1Set(DAC_CW_ENABLE, trxTxPwr);
 
-		/* Set power and operation mode */
-		TrxOperationModeRFSet(CHPM_RF_MODE_RF);  			// CHPM_RF_MODE_BBRF09 / CHPM_RF_MODE_BBRF
-		TrxOperationModeRF24BBC1Set(CTX_DISABLE, pwr_dBm);	// CTX ContinuesWave, Power @ TRX pins
+					} else {
+						/* Bad setup - transmission inhibited */
+						trxModeCw = 0;
+					}
+				}
+				break;
 
-		/* Yellow */
-		u8 state;
-		pwmLedSet(0x00003f4fUL, 0x00ffffffUL);
-		TrxCmdRF24Set(CMD_TXPREP);
-		while (1) {
-			TrxGetIrqs(&irqs);
-			TrxStateRF24Get(&state);
-			if (state == STATE_TXPREP) {
-#ifdef LOGGING
-				xil_printf("TaskTrx: RF24 changed into state = 0x%02X\r\n", state);
-#endif
+			case MsgLcd2Trx_cmd_TX_MODE_CW_SET:
+				trxModeCw 			= 1U;
+				trxUfbmodAutoRun 	= 0U;
+				break;
+
+			case MsgLcd2Trx_cmd_TX_UFBMOD_AUTO_EXEC:
+				trxUfbmodAutoRun 	= 1U;
+				trxModeCw			= 0U;
+				break;
+
+			default:
+			case MsgLcd2Trx_cmd_NOP:
 				break;
 			}
 		}
 
-#if 0
-		/* Testing the Receiver of the TRX */
-		TestRF24Rx(freq_Hz);
-#else
-		/* Testing the Transmitter of the TRX */
-		TestRF24Tx(freq_Hz, pwr_dBm);
-#endif
 
-		while (1) {
+		if (trxUfbmodAutoRun) {
+			TestTxRxBlock(trxTxFreq, trxTxPwr);
 			vTaskDelay(pdMS_TO_TICKS(1000));
 		}
-	}
-#endif
+	}  // while (1)
 }
 
 

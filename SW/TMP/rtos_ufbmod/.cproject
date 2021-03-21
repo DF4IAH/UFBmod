@@ -75,6 +75,8 @@
                                     								
                                 </option>
                                 								
+                                <option id="xilinx.gnu.compiler.inferred.swplatform.flags.1931418334" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value=" " valueType="string"/>
+                                								
                                 <inputType id="xilinx.gnu.compiler.input.60245596" name="C source files" superClass="xilinx.gnu.compiler.input"/>
                                 							
                             </tool>
@@ -106,6 +108,8 @@
                                     <listOptionValue builtIn="false" value="${resolvePlatformFile:project=rtos_ufbmod,fileType=bspInclude}"/>
                                     								
                                 </option>
+                                								
+                                <option id="xilinx.gnu.compiler.inferred.swplatform.flags.801754916" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value=" " valueType="string"/>
                                 							
                             </tool>
                             							
@@ -138,6 +142,8 @@
                                 <option id="xilinx.gnu.linker.inferred.swplatform.flags.1431550691" superClass="xilinx.gnu.linker.inferred.swplatform.flags" valueType="libs">
                                     									
                                     <listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-lfreertos,-lgcc,-lc,--end-group"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group"/>
                                     								
                                 </option>
                                 								
@@ -182,6 +188,8 @@
                                 <option id="xilinx.gnu.linker.inferred.swplatform.flags.1728332577" superClass="xilinx.gnu.linker.inferred.swplatform.flags" valueType="libs">
                                     									
                                     <listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-lfreertos,-lgcc,-lc,--end-group"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group"/>
                                     								
                                 </option>
                                 								
@@ -281,6 +289,8 @@
                                     								
                                 </option>
                                 								
+                                <option id="xilinx.gnu.compiler.inferred.swplatform.flags.2116448410" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value=" " valueType="string"/>
+                                								
                                 <inputType id="xilinx.gnu.compiler.input.940232362" name="C source files" superClass="xilinx.gnu.compiler.input"/>
                                 							
                             </tool>
@@ -312,6 +322,8 @@
                                     <listOptionValue builtIn="false" value="${resolvePlatformFile:project=rtos_ufbmod,fileType=bspInclude}"/>
                                     								
                                 </option>
+                                								
+                                <option id="xilinx.gnu.compiler.inferred.swplatform.flags.590310993" superClass="xilinx.gnu.compiler.inferred.swplatform.flags" value=" " valueType="string"/>
                                 							
                             </tool>
                             							
@@ -344,6 +356,8 @@
                                 <option id="xilinx.gnu.linker.inferred.swplatform.flags.1275720018" superClass="xilinx.gnu.linker.inferred.swplatform.flags" valueType="libs">
                                     									
                                     <listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-lfreertos,-lgcc,-lc,--end-group"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group"/>
                                     								
                                 </option>
                                 								
@@ -388,6 +402,8 @@
                                 <option id="xilinx.gnu.linker.inferred.swplatform.flags.475616237" superClass="xilinx.gnu.linker.inferred.swplatform.flags" valueType="libs">
                                     									
                                     <listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-lfreertos,-lgcc,-lc,--end-group"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="-Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group"/>
                                     								
                                 </option>
                                 								
