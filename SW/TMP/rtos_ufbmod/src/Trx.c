@@ -2776,11 +2776,14 @@ void taskTrx(void* pvParameters)
 #endif
 
 
+	/* Task loop */
 	while (1) {
 		/* Check for new message */
 		if (xQueueReceive(qhLcd2Trx, &trx_msgLcd2Trx, pdMS_TO_TICKS(25))) {
 			/* Process message */
+			trx_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_NOP;	// TODO: remove me!
 			switch (trx_msgLcd2Trx.cmd) {
+
 			case MsgLcd2Trx_cmd_TX_OFF:
 				if (trxModeCw > 1) {
 					trxModeCw 		= 1U;
@@ -2850,7 +2853,8 @@ void taskTrx(void* pvParameters)
 			case MsgLcd2Trx_cmd_NOP:
 				break;
 			}
-		}
+
+		}	// switch (trx_msgLcd2Trx.cmd)
 
 
 		if (trxUfbmodAutoRun) {
@@ -2876,6 +2880,8 @@ void taskTrxRxMsg(void* pvParameters)
 		TrxRxFifoDump();
 	}
 
+
+	/* Task loop */
 	while (1) {
 		if (1) {
 			/* Message-Decoder disabled */
