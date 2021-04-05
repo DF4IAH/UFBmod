@@ -39,3 +39,20 @@ bsp write
 bsp reload
 catch {bsp regenerate}
 platform generate
+platform active {TE0712_02_DF4IAH_V2}
+platform config -updatehw {C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/top.xsa}
+platform -make-local
+platform clean
+platform clean
+platform clean
+platform generate
+platform active {TE0712_02_DF4IAH_V2}
+platform config -updatehw {C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/top.xsa}
+platform -make-local
+platform generate -domains 
+platform config -updatehw {C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/top.xsa}
+platform config -updatehw {C:/Users/espero/git/UFBmod/FPGA/TE0712-02-100-2C3_V2/vivado/top.xsa}
+platform -make-local
+platform generate -domains 
+platform clean
+platform generate

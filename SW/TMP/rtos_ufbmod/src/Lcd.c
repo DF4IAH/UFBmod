@@ -222,8 +222,8 @@ u32 lcdInit(void)
 
 		const u8 iicData3[12] = {
 				0x80U, 0x14U, 			/* Internal OSC frequency - 1/5 bias; Osc frequency: abt. 183 Hz */
-				0x80U, 0x77U,			/* 							Contrast: LSB 36 of [0..63] */
-				0x80U, 0x56U,			/* Icon: off; Booster: on; 	Contrast: MSB 36 of [0..63] */
+				0x80U, 0x73U,			/* 							Contrast: LSB 0x3 of [0..63] (mask: 0x0f) */
+				0x80U, 0x56U,			/* Icon: off; Booster: on; 	Contrast: MSB 0x2 of [0..63] (mask: 0x03) */
 				0x80U, 0x6cU,			/* Follower: on; amplification ratio: 4 of [0..7] */
 				0x80U, 0x0cU,			/* Display: on; Cursor: off; Cursor position: off */
 				0x00U, 0x01U,			/* Clear display */
@@ -354,7 +354,7 @@ void taskUI(void* pvParameters)
 			lcd_menu_current_is_dwn 	= 1;
 
 			/* Show up blip */
-			pwmLedSet(LED_RGB_RED_BRIGHT, LED_RGB_MASK);
+			pwmLedSet(LED_RGB_PURPLE_DIMMED, LED_RGB_MASK);
 			vTaskDelay(pdMS_TO_TICKS(25));
 			pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);
 
@@ -364,7 +364,7 @@ void taskUI(void* pvParameters)
 			lcd_menu_current_is_dwn 	= 0;
 
 			/* Show down blip */
-			pwmLedSet(LED_RGB_GREEN_BRIGHT, LED_RGB_MASK);
+			pwmLedSet(LED_RGB_PURPLE_DIMMED, LED_RGB_MASK);
 			vTaskDelay(pdMS_TO_TICKS(25));
 			pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);
 		}

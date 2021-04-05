@@ -1,8 +1,8 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
---Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
---Date        : Sat Nov 28 22:32:19 2020
---Host        : ULRICHHABEL6701 running 64-bit major release  (build 9200)
+--Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+--Date        : Mon Apr  5 23:05:00 2021
+--Host        : DESKTOP-I3NV8HO running 64-bit major release  (build 9200)
 --Command     : generate_target UFBmod_Encoder.bd
 --Design      : UFBmod_Encoder
 --Purpose     : IP block netlist
@@ -25,10 +25,10 @@ entity UFBmod_Encoder is
     pulldata_tx09_en : out STD_LOGIC;
     reset_100MHz : in STD_LOGIC
   );
-  attribute core_generation_info : string;
-  attribute core_generation_info of UFBmod_Encoder : entity is "UFBmod_Encoder,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=UFBmod_Encoder,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=1,numReposBlks=1,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_clkrst_cnt=1,synth_mode=OOC_per_BD}";
-  attribute hw_handoff : string;
-  attribute hw_handoff of UFBmod_Encoder : entity is "UFBmod_Encoder.hwdef";
+  attribute CORE_GENERATION_INFO : string;
+  attribute CORE_GENERATION_INFO of UFBmod_Encoder : entity is "UFBmod_Encoder,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=UFBmod_Encoder,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=1,numReposBlks=1,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_clkrst_cnt=1,synth_mode=OOC_per_BD}";
+  attribute HW_HANDOFF : string;
+  attribute HW_HANDOFF of UFBmod_Encoder : entity is "UFBmod_Encoder.hwdef";
 end UFBmod_Encoder;
 
 architecture STRUCTURE of UFBmod_Encoder is
@@ -56,18 +56,18 @@ architecture STRUCTURE of UFBmod_Encoder is
   signal encoder_pull_do_start_0 : STD_LOGIC;
   signal pulldata_tx09_byteData_0 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal pulldata_tx09_en_0 : STD_LOGIC;
-  attribute x_interface_info : string;
-  attribute x_interface_info of clk_100MHz : signal is "xilinx.com:signal:clock:1.0 CLK.CLK_100MHZ CLK";
-  attribute x_interface_parameter : string;
-  attribute x_interface_parameter of clk_100MHz : signal is "XIL_INTERFACENAME CLK.CLK_100MHZ, ASSOCIATED_RESET reset_100MHz, CLK_DOMAIN UFBmod_Encoder_clk_100MHz, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.000";
-  attribute x_interface_info of reset_100MHz : signal is "xilinx.com:signal:reset:1.0 RST.RESET_100MHZ RST";
-  attribute x_interface_parameter of reset_100MHz : signal is "XIL_INTERFACENAME RST.RESET_100MHZ, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
-  attribute x_interface_info of TRX_dds_tx_rf09_inc : signal is "xilinx.com:signal:data:1.0 DATA.TRX_DDS_TX_RF09_INC DATA";
-  attribute x_interface_parameter of TRX_dds_tx_rf09_inc : signal is "XIL_INTERFACENAME DATA.TRX_DDS_TX_RF09_INC, LAYERED_METADATA undef";
-  attribute x_interface_info of encoder_pull_data_len : signal is "xilinx.com:signal:data:1.0 DATA.ENCODER_PULL_DATA_LEN DATA";
-  attribute x_interface_parameter of encoder_pull_data_len : signal is "XIL_INTERFACENAME DATA.ENCODER_PULL_DATA_LEN, LAYERED_METADATA undef";
-  attribute x_interface_info of pulldata_tx09_byteData : signal is "xilinx.com:signal:data:1.0 DATA.PULLDATA_TX09_BYTEDATA DATA";
-  attribute x_interface_parameter of pulldata_tx09_byteData : signal is "XIL_INTERFACENAME DATA.PULLDATA_TX09_BYTEDATA, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO : string;
+  attribute X_INTERFACE_INFO of clk_100MHz : signal is "xilinx.com:signal:clock:1.0 CLK.CLK_100MHZ CLK";
+  attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of clk_100MHz : signal is "XIL_INTERFACENAME CLK.CLK_100MHZ, ASSOCIATED_RESET reset_100MHz, CLK_DOMAIN UFBmod_Encoder_clk_100MHz, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.000";
+  attribute X_INTERFACE_INFO of reset_100MHz : signal is "xilinx.com:signal:reset:1.0 RST.RESET_100MHZ RST";
+  attribute X_INTERFACE_PARAMETER of reset_100MHz : signal is "XIL_INTERFACENAME RST.RESET_100MHZ, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
+  attribute X_INTERFACE_INFO of TRX_dds_tx_rf09_inc : signal is "xilinx.com:signal:data:1.0 DATA.TRX_DDS_TX_RF09_INC DATA";
+  attribute X_INTERFACE_PARAMETER of TRX_dds_tx_rf09_inc : signal is "XIL_INTERFACENAME DATA.TRX_DDS_TX_RF09_INC, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of encoder_pull_data_len : signal is "xilinx.com:signal:data:1.0 DATA.ENCODER_PULL_DATA_LEN DATA";
+  attribute X_INTERFACE_PARAMETER of encoder_pull_data_len : signal is "XIL_INTERFACENAME DATA.ENCODER_PULL_DATA_LEN, LAYERED_METADATA undef";
+  attribute X_INTERFACE_INFO of pulldata_tx09_byteData : signal is "xilinx.com:signal:data:1.0 DATA.PULLDATA_TX09_BYTEDATA DATA";
+  attribute X_INTERFACE_PARAMETER of pulldata_tx09_byteData : signal is "XIL_INTERFACENAME DATA.PULLDATA_TX09_BYTEDATA, LAYERED_METADATA undef";
 begin
   TRX_dds_tx_rf09_inc(25 downto 0) <= dds_tx09_inc_0(25 downto 0);
   TRX_dds_tx_rf09_ptt <= dds_tx09_ptt_0;

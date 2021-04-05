@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Mar 11 17:01:42 2021" VIVADOVERSION="2020.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Apr  5 23:05:18 2021" VIVADOVERSION="2020.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="trenz.biz:te0712_100_2c:part0:1.0" DEVICE="7a100t" NAME="UFBmod_TRX" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -1699,7 +1699,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -2520,7 +2520,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -2959,7 +2959,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="TRX_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="TRX_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRX_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -5722,7 +5722,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="srst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="srst" SIGIS="undef" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rst_mig_7series_0_100M_peripheral_reset"/>
           </CONNECTIONS>
@@ -7121,7 +7121,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rst_mig_7series_0_100M_peripheral_reset"/>
           </CONNECTIONS>
@@ -7673,7 +7673,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
@@ -8398,7 +8398,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
@@ -8423,12 +8423,12 @@
             <CONNECTION INSTANCE="TRX_rx_FFT_unit_TRX_post_fft_rx09_decoder_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rst_mig_7series_0_100M_peripheral_reset"/>
           </CONNECTIONS>
@@ -8631,7 +8631,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
@@ -8656,12 +8656,12 @@
             <CONNECTION INSTANCE="TRX_rx_FFT_unit_TRX_post_fft_rx09_decoder_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rst_mig_7series_0_100M_peripheral_reset"/>
           </CONNECTIONS>
@@ -8864,7 +8864,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
@@ -8889,12 +8889,12 @@
             <CONNECTION INSTANCE="TRX_rx_FFT_unit_TRX_post_fft_rx09_decoder_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rst_mig_7series_0_100M_peripheral_reset"/>
           </CONNECTIONS>
@@ -9097,7 +9097,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
@@ -9122,12 +9122,12 @@
             <CONNECTION INSTANCE="TRX_rx_FFT_unit_TRX_post_fft_rx09_decoder_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rst_mig_7series_0_100M_peripheral_reset"/>
           </CONNECTIONS>
@@ -9330,7 +9330,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
@@ -9355,12 +9355,12 @@
             <CONNECTION INSTANCE="TRX_rx_FFT_unit_TRX_post_fft_rx09_decoder_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rst_mig_7series_0_100M_peripheral_reset"/>
           </CONNECTIONS>
@@ -9563,7 +9563,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
@@ -9588,12 +9588,12 @@
             <CONNECTION INSTANCE="TRX_rx_FFT_unit_TRX_post_fft_rx09_decoder_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rst_mig_7series_0_100M_peripheral_reset"/>
           </CONNECTIONS>
@@ -9796,7 +9796,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
@@ -9821,12 +9821,12 @@
             <CONNECTION INSTANCE="TRX_rx_FFT_unit_TRX_post_fft_rx09_decoder_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rst_mig_7series_0_100M_peripheral_reset"/>
           </CONNECTIONS>
@@ -10029,7 +10029,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
@@ -10054,12 +10054,12 @@
             <CONNECTION INSTANCE="TRX_rx_FFT_unit_TRX_post_fft_rx09_decoder_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rst_mig_7series_0_100M_peripheral_reset"/>
           </CONNECTIONS>
@@ -10287,7 +10287,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
@@ -10307,12 +10307,12 @@
             <CONNECTION INSTANCE="External_Ports" PORT="premem_rx09_dina_in"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
+        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="External_Ports_microblaze_0_Clk_100MHz">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rst_mig_7series_0_100M_peripheral_reset"/>
           </CONNECTIONS>
@@ -10887,7 +10887,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="microblaze_0_Clk_100MHz"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="srst" POLARITY="ACTIVE_HIGH" SIGIS="undef" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
+        <PORT DIR="I" NAME="srst" SIGIS="undef" SIGNAME="External_Ports_rst_mig_7series_0_100M_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rst_mig_7series_0_100M_peripheral_reset"/>
           </CONNECTIONS>

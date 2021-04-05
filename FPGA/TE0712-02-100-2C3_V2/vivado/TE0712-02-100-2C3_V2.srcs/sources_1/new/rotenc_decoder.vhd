@@ -41,60 +41,63 @@ use IEEE.NUMERIC_STD.ALL;
 entity rotenc_decoder is
   Port ( 
     clk             : in STD_LOGIC;
-    reset           : in STD_LOGIC;
+    resetn          : in STD_LOGIC;
     rotenc_I        : in STD_LOGIC;
     rotenc_Q        : in STD_LOGIC;
-    cnt_up_dwn      : out STD_LOGIC;
-    cnt_en          : out STD_LOGIC
+    cntval          : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
 end rotenc_decoder;
 
 architecture Behavioral of rotenc_decoder is
-    signal rotenc_I_d1 : STD_LOGIC;
-    signal rotenc_Q_d1 : STD_LOGIC;
-    signal cnt_en_pre : STD_LOGIC;
+    signal rotenc_In    : STD_LOGIC;
+    signal rotenc_Qn    : STD_LOGIC;
+    signal rotenc_In_d1 : STD_LOGIC;
+    signal rotenc_Qn_d1 : STD_LOGIC;
+    signal cnt_i        : Integer    := 2**28;
 begin
-    process (reset, clk)
+    -- Negate logic
+    rotenc_In <= '1' xor rotenc_I;
+    rotenc_Qn <= '1' xor rotenc_Q;
+    
+    process (resetn, clk)
     begin
-        if (clk'EVENT and clk = '1') then
-            if (reset = '1') then
-                rotenc_I_d1 <= '0';
-                rotenc_Q_d1 <= '0';
-                cnt_en_pre <= '0';
-                cnt_up_dwn <= '0';
-            else
-                -- one clock delayed clk_enable for counter
-                cnt_en <= cnt_en_pre;
-
-                -- default value to be overwritten when needed
-                cnt_en_pre <= '0';
+        if (rising_edge(clk)) then
+            if (resetn = '0') then
+                rotenc_In_d1    <= '0';
+                rotenc_Qn_d1    <= '0';
+                cnt_i           <= 2**28;  -- 0x40000000 minus 2 bits
                 
-                if (rotenc_I /= rotenc_I_d1  or  rotenc_Q /= rotenc_Q_d1) then
-                    -- Rotenc switch was turned
-                    cnt_en_pre <= '1';
+            else
+                -- Concat counter value with I/Q to binary bits
+                if    ( (rotenc_In_d1 = '0') and (rotenc_Qn_d1 = '0') ) then
+                    cntval <= std_logic_vector(to_unsigned(cnt_i, (cntval'length - 2))) & "00";
                     
-                    -- 4 quadrants in right direction = up
-                    if (
-                        (rotenc_I_d1 = '0' and rotenc_I = '1' and rotenc_Q_d1 = '0' and rotenc_Q = '0') or
-                        (rotenc_I_d1 = '1' and rotenc_I = '1' and rotenc_Q_d1 = '0' and rotenc_Q = '1') or
-                        (rotenc_I_d1 = '1' and rotenc_I = '0' and rotenc_Q_d1 = '1' and rotenc_Q = '1') or
-                        (rotenc_I_d1 = '0' and rotenc_I = '0' and rotenc_Q_d1 = '1' and rotenc_Q = '0')
-                    ) then
-                        cnt_up_dwn <= '0';
-                    -- 4 quadrants in left direction = down
-                    elsif (
-                        (rotenc_I_d1 = '0' and rotenc_I = '0' and rotenc_Q_d1 = '0' and rotenc_Q = '1') or
-                        (rotenc_I_d1 = '0' and rotenc_I = '1' and rotenc_Q_d1 = '1' and rotenc_Q = '1') or
-                        (rotenc_I_d1 = '1' and rotenc_I = '1' and rotenc_Q_d1 = '1' and rotenc_Q = '0') or
-                        (rotenc_I_d1 = '1' and rotenc_I = '0' and rotenc_Q_d1 = '0' and rotenc_Q = '0')
-                    ) then
-                        cnt_up_dwn <= '1';
+                elsif ( (rotenc_In_d1 = '0') and (rotenc_Qn_d1 = '1') ) then
+                    cntval <= std_logic_vector(to_unsigned(cnt_i, (cntval'length - 2))) & "01";
+                    
+                elsif ( (rotenc_In_d1 = '1') and (rotenc_Qn_d1 = '1') ) then
+                    cntval <= std_logic_vector(to_unsigned(cnt_i, (cntval'length - 2))) & "10";
+                    
+                else
+                    cntval <= std_logic_vector(to_unsigned(cnt_i, (cntval'length - 2))) & "11";
+                end if;
+                
+                -- Counter
+                if ((rotenc_In_d1 /= rotenc_In) or (rotenc_Qn_d1 /= rotenc_Qn)) then
+                    -- ROTENC switch was turned
+                    if (    (rotenc_In_d1 = '0' and rotenc_Qn_d1 = '0') and (rotenc_In = '1' and rotenc_Qn = '0') ) then
+                        -- Direction left turn = down
+                        cnt_i <= cnt_i - 1;
+                        
+                    elsif ( (rotenc_In_d1 = '1' and rotenc_Qn_d1 = '0') and (rotenc_In = '0' and rotenc_Qn = '0') ) then
+                        -- Direction right turn = up
+                        cnt_i <= cnt_i + 1;
                     end if;
                 end if;
                 
-                -- update delayed values
-                rotenc_I_d1 <= rotenc_I;
-                rotenc_Q_d1 <= rotenc_Q;
+                -- Update delayed register values
+                rotenc_In_d1 <= rotenc_In;
+                rotenc_Qn_d1 <= rotenc_Qn;
             end if;
         end if;
     end process;

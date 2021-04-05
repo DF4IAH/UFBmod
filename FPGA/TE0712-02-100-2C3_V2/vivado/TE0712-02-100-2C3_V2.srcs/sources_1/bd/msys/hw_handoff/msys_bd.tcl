@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# SREC_boot_loader_FSM
+# SREC_boot_loader_FSM, rotenc_decoder
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -1147,25 +1147,13 @@ proc create_hier_cell_ROTENC_decoder { parentCell nameHier } {
 
 
   # Create pins
-  create_bd_pin -dir I -from 0 -to 0 BOARD_ROTENC_PUSH
+  create_bd_pin -dir I BOARD_ROTENC_I_in
+  create_bd_pin -dir I -from 0 -to 0 BOARD_ROTENC_PUSH_in
+  create_bd_pin -dir I BOARD_ROTENC_Q_in
   create_bd_pin -dir I -type clk CLK
   create_bd_pin -dir O -from 31 -to 0 -type data Q
-  create_bd_pin -dir I -type data SINIT
   create_bd_pin -dir O -type intr ip2intc_irpt
-  create_bd_pin -dir I -type ce rotenc_dec_cnt_en
-  create_bd_pin -dir I -type data rotenc_dec_cnt_up_dwn
   create_bd_pin -dir I -type rst s_axi_aresetn
-
-  # Create instance: ROTENC_counter_32bit_0, and set properties
-  set ROTENC_counter_32bit_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_counter_binary:12.0 ROTENC_counter_32bit_0 ]
-  set_property -dict [ list \
-   CONFIG.CE {true} \
-   CONFIG.Count_Mode {UPDOWN} \
-   CONFIG.Load {false} \
-   CONFIG.Output_Width {32} \
-   CONFIG.SINIT {true} \
-   CONFIG.SINIT_Value {40000000} \
- ] $ROTENC_counter_32bit_0
 
   # Create instance: axi_ROTENC_gpio_0, and set properties
   set axi_ROTENC_gpio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_ROTENC_gpio_0 ]
@@ -1182,18 +1170,28 @@ proc create_hier_cell_ROTENC_decoder { parentCell nameHier } {
    CONFIG.C_TRI_DEFAULT_2 {0xFFFFFFFF} \
  ] $axi_ROTENC_gpio_0
 
+  # Create instance: rotenc_decoder_0, and set properties
+  set block_name rotenc_decoder
+  set block_cell_name rotenc_decoder_0
+  if { [catch {set rotenc_decoder_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $rotenc_decoder_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create interface connections
   connect_bd_intf_net -intf_net Conn1 [get_bd_intf_pins S_AXI] [get_bd_intf_pins axi_ROTENC_gpio_0/S_AXI]
 
   # Create port connections
-  connect_bd_net -net BOARD_ROTENC_PUSH_1 [get_bd_pins BOARD_ROTENC_PUSH] [get_bd_pins axi_ROTENC_gpio_0/gpio2_io_i]
-  connect_bd_net -net CLK_1 [get_bd_pins CLK] [get_bd_pins ROTENC_counter_32bit_0/CLK] [get_bd_pins axi_ROTENC_gpio_0/s_axi_aclk]
-  connect_bd_net -net ROTENC_counter_32bit_0_Q [get_bd_pins Q] [get_bd_pins ROTENC_counter_32bit_0/Q] [get_bd_pins axi_ROTENC_gpio_0/gpio_io_i]
-  connect_bd_net -net SINIT_1 [get_bd_pins SINIT] [get_bd_pins ROTENC_counter_32bit_0/SINIT]
+  connect_bd_net -net BOARD_ROTENC_I_01 [get_bd_pins BOARD_ROTENC_I_in] [get_bd_pins rotenc_decoder_0/rotenc_I]
+  connect_bd_net -net BOARD_ROTENC_PUSH_0 [get_bd_pins BOARD_ROTENC_PUSH_in] [get_bd_pins axi_ROTENC_gpio_0/gpio2_io_i]
+  connect_bd_net -net CLK_1 [get_bd_pins CLK] [get_bd_pins axi_ROTENC_gpio_0/s_axi_aclk] [get_bd_pins rotenc_decoder_0/clk]
+  connect_bd_net -net ROTENC_counter_32bit_0_Q [get_bd_pins Q] [get_bd_pins axi_ROTENC_gpio_0/gpio_io_i] [get_bd_pins rotenc_decoder_0/cntval]
   connect_bd_net -net axi_ROTENC_gpio_0_ip2intc_irpt [get_bd_pins ip2intc_irpt] [get_bd_pins axi_ROTENC_gpio_0/ip2intc_irpt]
-  connect_bd_net -net rotenc_dec_cnt_en_1 [get_bd_pins rotenc_dec_cnt_en] [get_bd_pins ROTENC_counter_32bit_0/CE]
-  connect_bd_net -net rotenc_dec_cnt_up_dwn_1 [get_bd_pins rotenc_dec_cnt_up_dwn] [get_bd_pins ROTENC_counter_32bit_0/UP]
-  connect_bd_net -net s_axi_aresetn_1 [get_bd_pins s_axi_aresetn] [get_bd_pins axi_ROTENC_gpio_0/s_axi_aresetn]
+  connect_bd_net -net rotenc_Q_0_1 [get_bd_pins BOARD_ROTENC_Q_in] [get_bd_pins rotenc_decoder_0/rotenc_Q]
+  connect_bd_net -net s_axi_aresetn_1 [get_bd_pins s_axi_aresetn] [get_bd_pins axi_ROTENC_gpio_0/s_axi_aresetn] [get_bd_pins rotenc_decoder_0/resetn]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -2671,7 +2669,9 @@ proc create_root_design { parentCell } {
 
 
   # Create ports
+  set BOARD_ROTENC_I [ create_bd_port -dir I BOARD_ROTENC_I ]
   set BOARD_ROTENC_PUSH [ create_bd_port -dir I BOARD_ROTENC_PUSH ]
+  set BOARD_ROTENC_Q [ create_bd_port -dir I BOARD_ROTENC_Q ]
   set CLK1B_clk [ create_bd_port -dir I -from 0 -to 0 -type clk -freq_hz 50000000 CLK1B_clk ]
   set DDR3_init_calib_complete [ create_bd_port -dir O DDR3_init_calib_complete ]
   set ETH0_DA_G [ create_bd_port -dir O -from 0 -to 0 ETH0_DA_G ]
@@ -2800,8 +2800,6 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_HIGH} \
  ] $reset
-  set rotenc_dec_cnt_en [ create_bd_port -dir I rotenc_dec_cnt_en ]
-  set rotenc_dec_cnt_up_dwn [ create_bd_port -dir I rotenc_dec_cnt_up_dwn ]
   set rst_mig_7series_0_100M_peripheral_aresetn [ create_bd_port -dir O -from 0 -to 0 -type rst rst_mig_7series_0_100M_peripheral_aresetn ]
   set rst_mig_7series_0_100M_peripheral_reset [ create_bd_port -dir O -from 0 -to 0 -type rst rst_mig_7series_0_100M_peripheral_reset ]
 
@@ -3114,7 +3112,9 @@ proc create_root_design { parentCell } {
   connect_bd_net -net AXI_TRX_TRX_TX_DDSAMPL_GPIO2_0 [get_bd_ports TRX_TX_DDSAMPL_GPIO2_o] [get_bd_pins AXI_TRX/TRX_TX_DDSAMPL_GPIO2_o]
   connect_bd_net -net AXI_TRX_TRX_TX_DDS_GPIO1_0 [get_bd_ports TRX_TX_DDS_GPIO1_o] [get_bd_pins AXI_TRX/TRX_TX_DDS_GPIO1_o]
   connect_bd_net -net AXI_TRX_TRX_TX_DDS_GPIO2_0 [get_bd_ports TRX_TX_DDS_GPIO2_o] [get_bd_pins AXI_TRX/TRX_TX_DDS_GPIO2_o]
-  connect_bd_net -net BOARD_ROTENC_PUSH_1 [get_bd_ports BOARD_ROTENC_PUSH] [get_bd_pins ROTENC_decoder/BOARD_ROTENC_PUSH] [get_bd_pins vio_0/probe_in18]
+  connect_bd_net -net BOARD_ROTENC_I_0 [get_bd_ports BOARD_ROTENC_I] [get_bd_pins ROTENC_decoder/BOARD_ROTENC_I_in]
+  connect_bd_net -net BOARD_ROTENC_PUSH_0 [get_bd_ports BOARD_ROTENC_PUSH] [get_bd_pins ROTENC_decoder/BOARD_ROTENC_PUSH_in] [get_bd_pins vio_0/probe_in18]
+  connect_bd_net -net BOARD_ROTENC_Q_0 [get_bd_ports BOARD_ROTENC_Q] [get_bd_pins ROTENC_decoder/BOARD_ROTENC_Q_in]
   connect_bd_net -net CFG_PLL_I2C_ext_scl_o [get_bd_ports PLL_I2C_ext_scl_o] [get_bd_pins CFG_Si5338/PLL_I2C_ext_scl_o]
   connect_bd_net -net CFG_SC0712_0_reset_0 [get_bd_pins CFG_Si5338/reset_out] [get_bd_pins mig_7series_0/sys_rst] [get_bd_pins vio_0/probe_in5]
   connect_bd_net -net CFG_Si5338_CFG_Si5338_peripheral_aresetn [get_bd_pins CFG_Si5338/CFG_Si5338_peripheral_aresetn] [get_bd_pins SREC_axi_periph_interconnect_0/M00_ARESETN]
@@ -3180,9 +3180,27 @@ proc create_root_design { parentCell } {
   connect_bd_net -net SCOPE_SCOPE_FSM_FIFO_wr_rst_busy [get_bd_ports SCOPE_FSM_FIFO_wr_rst_busy] [get_bd_pins SCOPE/SCOPE_FSM_FIFO_wr_rst_busy]
   connect_bd_net -net SCOPE_SCOPE_FSM_GPIO0_Out [get_bd_ports SCOPE_FSM_GPIO0_Out] [get_bd_pins SCOPE/SCOPE_FSM_GPIO0_Out]
   connect_bd_net -net SCOPE_SCOPE_FSM_TrigSrc [get_bd_ports SCOPE_FSM_TrigSrc] [get_bd_pins SCOPE/SCOPE_FSM_TrigSrc]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_AXI_Addr [get_bd_pins SREC_boot_loader_FSM_0/DBG_AXI_Addr] [get_bd_pins vio_0/probe_in40]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_AXI_DtaPad [get_bd_pins SREC_boot_loader_FSM_0/DBG_AXI_DtaPad] [get_bd_pins vio_0/probe_in39]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_FSM_out [get_bd_pins SREC_boot_loader_FSM_0/DBG_FSM_out] [get_bd_pins vio_0/probe_in38]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Flash_Adr [get_bd_pins SREC_boot_loader_FSM_0/DBG_Flash_Adr] [get_bd_pins vio_0/probe_in43]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Flash_RD_00 [get_bd_pins SREC_boot_loader_FSM_0/DBG_Flash_RD_00] [get_bd_pins vio_0/probe_in44]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Flash_RD_01 [get_bd_pins SREC_boot_loader_FSM_0/DBG_Flash_RD_01] [get_bd_pins vio_0/probe_in45]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Flash_RD_02 [get_bd_pins SREC_boot_loader_FSM_0/DBG_Flash_RD_02] [get_bd_pins vio_0/probe_in46]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Flash_RD_03 [get_bd_pins SREC_boot_loader_FSM_0/DBG_Flash_RD_03] [get_bd_pins vio_0/probe_in47]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Flash_RD_04 [get_bd_pins SREC_boot_loader_FSM_0/DBG_Flash_RD_04] [get_bd_pins vio_0/probe_in48]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Flash_RD_05 [get_bd_pins SREC_boot_loader_FSM_0/DBG_Flash_RD_05] [get_bd_pins vio_0/probe_in49]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Flash_RD_06 [get_bd_pins SREC_boot_loader_FSM_0/DBG_Flash_RD_06] [get_bd_pins vio_0/probe_in50]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Flash_RD_07 [get_bd_pins SREC_boot_loader_FSM_0/DBG_Flash_RD_07] [get_bd_pins vio_0/probe_in51]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Flash_RD_08 [get_bd_pins SREC_boot_loader_FSM_0/DBG_Flash_RD_08] [get_bd_pins vio_0/probe_in52]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Flash_RD_09 [get_bd_pins SREC_boot_loader_FSM_0/DBG_Flash_RD_09] [get_bd_pins vio_0/probe_in53]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Flash_RD_10 [get_bd_pins SREC_boot_loader_FSM_0/DBG_Flash_RD_10] [get_bd_pins vio_0/probe_in54]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Flash_RD_11 [get_bd_pins SREC_boot_loader_FSM_0/DBG_Flash_RD_11] [get_bd_pins vio_0/probe_in55]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Sig_NxtLoad_out [get_bd_pins SREC_boot_loader_FSM_0/DBG_Sig_NxtLoad_out] [get_bd_pins vio_0/probe_in41]
   connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Sig_NxtLoad_out_0 [get_bd_ports USER_dbg_01_signal]
+  connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Sig_NxtWrite_out [get_bd_pins SREC_boot_loader_FSM_0/DBG_Sig_NxtWrite_out] [get_bd_pins vio_0/probe_in42]
   connect_bd_net -net SREC_boot_loader_FSM_0_DBG_Sig_NxtWrite_out_0 [get_bd_ports USER_dbg_02_signal]
-  connect_bd_net -net SREC_boot_loader_FSM_0_fsm_axi_last_b [get_bd_pins SREC_boot_loader_FSM_0/fsm_axi_last_b] [get_bd_pins vio_0/probe_in44]
+  connect_bd_net -net SREC_boot_loader_FSM_0_fsm_axi_last_b [get_bd_pins SREC_boot_loader_FSM_0/fsm_axi_last_b] [get_bd_pins vio_0/probe_in63]
   connect_bd_net -net SREC_boot_loader_FSM_1_SREC_done [get_bd_pins SREC_boot_loader_FSM_0/SREC_done] [get_bd_pins vio_0/probe_in58]
   connect_bd_net -net SREC_boot_loader_FSM_1_SREC_error [get_bd_pins SREC_boot_loader_FSM_0/SREC_error] [get_bd_pins vio_0/probe_in59]
   connect_bd_net -net SREC_boot_loader_FSM_1_SREC_resetn [get_bd_pins SREC_boot_loader_FSM_0/SREC_resetn] [get_bd_pins rst_microblaze_0_sys_reset_0/aux_reset_in]
@@ -3221,25 +3239,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net axi_timer_0_interrupt [get_bd_pins INT_ctrl/In0] [get_bd_pins axi_timer_0/interrupt]
   connect_bd_net -net dcm_locked_1 [get_bd_pins CLK1B_CW_0/locked] [get_bd_pins ETH0/dcm_locked_in]
   connect_bd_net -net dds_tx09_ptt_1 [get_bd_ports dds_tx09_ptt] [get_bd_pins vio_0/probe_in32]
-  connect_bd_net -net decoder_rx09_ch00_center_pos_1 [get_bd_ports decoder_rx09_ch00_center_pos] [get_bd_pins vio_0/probe_in40]
   connect_bd_net -net decoder_rx09_ch00_int_0 [get_bd_ports TRX_int] [get_bd_pins INT_ctrl/In3]
-  connect_bd_net -net decoder_rx09_ch00_noise_1 [get_bd_ports decoder_rx09_ch00_noise] [get_bd_pins vio_0/probe_in38]
-  connect_bd_net -net decoder_rx09_ch00_strength_1 [get_bd_ports decoder_rx09_ch00_strength] [get_bd_pins vio_0/probe_in39]
-  connect_bd_net -net decoder_rx09_ch01_center_pos_1 [get_bd_ports decoder_rx09_ch01_center_pos] [get_bd_pins vio_0/probe_in43]
-  connect_bd_net -net decoder_rx09_ch01_noise_1 [get_bd_ports decoder_rx09_ch01_noise] [get_bd_pins vio_0/probe_in41]
-  connect_bd_net -net decoder_rx09_ch01_strength_1 [get_bd_ports decoder_rx09_ch01_strength] [get_bd_pins vio_0/probe_in42]
-  connect_bd_net -net decoder_rx09_ch02_center_pos_1 [get_bd_ports decoder_rx09_ch02_center_pos] [get_bd_pins vio_0/probe_in47]
-  connect_bd_net -net decoder_rx09_ch02_noise_1 [get_bd_ports decoder_rx09_ch02_noise] [get_bd_pins vio_0/probe_in45]
-  connect_bd_net -net decoder_rx09_ch02_strength_1 [get_bd_ports decoder_rx09_ch02_strength] [get_bd_pins vio_0/probe_in46]
-  connect_bd_net -net decoder_rx09_ch03_center_pos_1 [get_bd_ports decoder_rx09_ch03_center_pos] [get_bd_pins vio_0/probe_in50]
-  connect_bd_net -net decoder_rx09_ch03_noise_1 [get_bd_ports decoder_rx09_ch03_noise] [get_bd_pins vio_0/probe_in48]
-  connect_bd_net -net decoder_rx09_ch03_strength_1 [get_bd_ports decoder_rx09_ch03_strength] [get_bd_pins vio_0/probe_in49]
-  connect_bd_net -net decoder_rx09_ch04_center_pos_1 [get_bd_ports decoder_rx09_ch04_center_pos] [get_bd_pins vio_0/probe_in53]
-  connect_bd_net -net decoder_rx09_ch04_noise_1 [get_bd_ports decoder_rx09_ch04_noise] [get_bd_pins vio_0/probe_in51]
-  connect_bd_net -net decoder_rx09_ch04_strength_1 [get_bd_ports decoder_rx09_ch04_strength] [get_bd_pins vio_0/probe_in52]
-  connect_bd_net -net decoder_rx09_ch05_center_pos_1 [get_bd_ports decoder_rx09_ch05_center_pos] [get_bd_pins vio_0/probe_in63]
-  connect_bd_net -net decoder_rx09_ch05_noise_1 [get_bd_ports decoder_rx09_ch05_noise] [get_bd_pins vio_0/probe_in54]
-  connect_bd_net -net decoder_rx09_ch05_strength_1 [get_bd_ports decoder_rx09_ch05_strength] [get_bd_pins vio_0/probe_in55]
   connect_bd_net -net decoder_rx09_chXX_active_1 [get_bd_ports decoder_rx09_chXX_active] [get_bd_pins vio_0/probe_in36]
   connect_bd_net -net decoder_rx09_chXX_sql_open_1 [get_bd_ports decoder_rx09_chXX_sql_open] [get_bd_pins vio_0/probe_in35]
   connect_bd_net -net ext_reset_1 [get_bd_ports reset] [get_bd_pins CFG_Si5338/ext_reset] [get_bd_pins CLOCK/reset]
@@ -3261,13 +3261,11 @@ proc create_root_design { parentCell } {
   connect_bd_net -net mig_7series_0_ui_addn_clk_0_200MHz [get_bd_ports mig_7series_0_ui_addn_clk_0_200MHz] [get_bd_pins mig_7series_0/clk_ref_i] [get_bd_pins mig_7series_0/ui_addn_clk_0]
   connect_bd_net -net mig_7series_0_ui_clk_sync_rst [get_bd_pins mig_7series_0/ui_clk_sync_rst] [get_bd_pins rst_mig_7series_0_100M/ext_reset_in]
   connect_bd_net -net pulldata_dds_inc_1 [get_bd_ports dds_tx09_inc] [get_bd_pins vio_0/probe_in31]
-  connect_bd_net -net rotenc_dec_cnt_en_1 [get_bd_ports rotenc_dec_cnt_en] [get_bd_pins ROTENC_decoder/rotenc_dec_cnt_en]
-  connect_bd_net -net rotenc_dec_cnt_up_dwn_1 [get_bd_ports rotenc_dec_cnt_up_dwn] [get_bd_pins ROTENC_decoder/rotenc_dec_cnt_up_dwn]
   connect_bd_net -net rst_mig_7series_0_100M_bus_struct_reset [get_bd_pins BOARD_clk_wiz_0/reset] [get_bd_pins microblaze_0_local_memory/SYS_Rst] [get_bd_pins rst_mig_7series_0_100M/bus_struct_reset]
   connect_bd_net -net rst_mig_7series_0_100M_mb_reset [get_bd_pins INT_ctrl/processor_rst] [get_bd_pins microblaze_0/Reset] [get_bd_pins rst_microblaze_0_sys_reset_0/mb_reset]
   connect_bd_net -net rst_mig_7series_0_100M_mb_reset1 [get_bd_pins SREC_boot_loader_FSM_0/SREC_start] [get_bd_pins rst_microblaze_0_sys_reset_0/ext_reset_in] [get_bd_pins rst_mig_7series_0_100M/mb_reset]
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_aresetn [get_bd_ports rst_mig_7series_0_100M_peripheral_aresetn] [get_bd_pins AXI_TRX/s_axi_aresetn] [get_bd_pins CLK1B_CW_0/s_axi_aresetn] [get_bd_pins CLOCK/s_axi_aresetn] [get_bd_pins ETH0/s_axi_aresetn_in] [get_bd_pins EUI48/s_axi_aresetn] [get_bd_pins INT_ctrl/s_axi_aresetn] [get_bd_pins PWM_lights/s_axi_aresetn] [get_bd_pins ROTENC_decoder/s_axi_aresetn] [get_bd_pins SCOPE/s_axi_aresetn] [get_bd_pins SREC_axi_all_interconnect_0/ARESETN] [get_bd_pins SREC_axi_all_interconnect_0/M00_ARESETN] [get_bd_pins SREC_axi_all_interconnect_0/M01_ARESETN] [get_bd_pins SREC_axi_all_interconnect_0/M02_ARESETN] [get_bd_pins SREC_axi_all_interconnect_0/S00_ARESETN] [get_bd_pins SREC_axi_periph_interconnect_0/ARESETN] [get_bd_pins SREC_axi_periph_interconnect_0/M01_ARESETN] [get_bd_pins SREC_axi_periph_interconnect_0/S00_ARESETN] [get_bd_pins SREC_axi_periph_interconnect_0/S01_ARESETN] [get_bd_pins SREC_boot_loader_FSM_0/m00_axi_aresetn] [get_bd_pins UART0/s_axi_aresetn] [get_bd_pins axi_BOARD_iic_0/s_axi_aresetn] [get_bd_pins axi_timer_0/s_axi_aresetn] [get_bd_pins microblaze_0_axi_mem_interconnect_0/M00_ARESETN] [get_bd_pins microblaze_0_axi_mem_interconnect_0/S00_ARESETN] [get_bd_pins microblaze_0_axi_mem_interconnect_0/S01_ARESETN] [get_bd_pins microblaze_0_axi_mem_interconnect_0/S02_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M00_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M01_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M02_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M03_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M04_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M05_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M06_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M07_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M08_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M09_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/M10_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_0/S00_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M00_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M01_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M02_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M03_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M04_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M05_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M06_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M07_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/M08_ARESETN] [get_bd_pins microblaze_0_axi_periph_interconnect_1/S00_ARESETN] [get_bd_pins rst_mig_7series_0_100M/peripheral_aresetn]
-  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_ports rst_mig_7series_0_100M_peripheral_reset] [get_bd_pins ETH0/ext_reset_in] [get_bd_pins ROTENC_decoder/SINIT] [get_bd_pins SCOPE/SCLR] [get_bd_pins UART0/ext_reset_in] [get_bd_pins rst_mig_7series_0_100M/peripheral_reset]
+  connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_ports rst_mig_7series_0_100M_peripheral_reset] [get_bd_pins ETH0/ext_reset_in] [get_bd_pins SCOPE/SCLR] [get_bd_pins UART0/ext_reset_in] [get_bd_pins rst_mig_7series_0_100M/peripheral_reset]
   connect_bd_net -net vio_0_probe_out0 [get_bd_pins SREC_boot_loader_FSM_0/SREC_enable] [get_bd_pins vio_0/probe_out0]
   connect_bd_net -net xlconstant_val0_len1_dout [get_bd_ports USER_dbg_03_signal] [get_bd_ports USER_dbg_04_signal] [get_bd_ports USER_dbg_05_signal] [get_bd_ports USER_dbg_06_signal] [get_bd_ports USER_dbg_07_signal] [get_bd_ports USER_dbg_08_signal] [get_bd_ports USER_dbg_09_signal] [get_bd_ports USER_dbg_10_signal] [get_bd_ports USER_dbg_11_signal] [get_bd_ports USER_dbg_12_signal] [get_bd_ports USER_dbg_13_signal] [get_bd_pins xlconstant_val0_len1/dout]
 
