@@ -332,11 +332,18 @@ void taskUI(void* pvParameters)
 	while (1) {
 		/* Read ROTENC unbounced counter value */
 		do {
+			vTaskDelay(pdMS_TO_TICKS(10));
 			gpio1_ctr_d2	= gpio1_ctr_d1;
 			gpio1_ctr_d1	= gpio1_ctr_d0;
 			gpio1_ctr_d0  	= XGpio_DiscreteRead(&gpio_Rotenc, 1U);
 		} while ((gpio1_ctr_d0 != gpio1_ctr_d1) || (gpio1_ctr_d0 != gpio1_ctr_d2));
 		gpio1_ctr = (gpio1_ctr_d0 + 2) / 4;
+
+		/* DEBUGGING COUNTER */
+//#define LOGGING 1
+#ifdef LOGGING
+		xil_printf("\r\nLCD - ROTENC counter = 0x%08x", gpio1_ctr_d0);
+#endif
 
 		/* Read ROTENC Push Button */
 		gpio2_push	= (0 == XGpio_DiscreteRead(&gpio_Rotenc, 2U));
@@ -354,9 +361,10 @@ void taskUI(void* pvParameters)
 			lcd_menu_current_is_dwn 	= 1;
 
 			/* Show up blip */
-			pwmLedSet(LED_RGB_PURPLE_DIMMED, LED_RGB_MASK);
+			u32 led_prev = pwmLedGet();
+			pwmLedSet(LED_RGB_RED_DIMMED, LED_RGB_MASK);
 			vTaskDelay(pdMS_TO_TICKS(25));
-			pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);
+			pwmLedSet(led_prev, LED_RGB_MASK);
 
 		} else if (gpio2_ctr_diff < 0) {
 			/* Counting down */
@@ -364,9 +372,10 @@ void taskUI(void* pvParameters)
 			lcd_menu_current_is_dwn 	= 0;
 
 			/* Show down blip */
-			pwmLedSet(LED_RGB_PURPLE_DIMMED, LED_RGB_MASK);
+			u32 led_prev = pwmLedGet();
+			pwmLedSet(LED_RGB_GREEN_DIMMED, LED_RGB_MASK);
 			vTaskDelay(pdMS_TO_TICKS(25));
-			pwmLedSet(LED_RGB_BLACK, LED_RGB_MASK);
+			pwmLedSet(led_prev, LED_RGB_MASK);
 		}
 
 		/* Has action happened? */

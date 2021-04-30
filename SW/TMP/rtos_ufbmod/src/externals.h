@@ -74,6 +74,7 @@ extern u32 iicReadAndModify(UINTPTR baseAddr, u8 iicChipAddr, u8 iicRegister, u8
 
 extern u32 lcdInit(void);
 extern void pwmLedSet(u32 enableBF, u32 changeMsk);
+extern u32 pwmLedGet(void);
 extern u32 lcdWelcomeUFBmod(void);
 extern u32 lcdWelcomeHF1HF2(void);
 extern void taskUI(void* pvParameters);

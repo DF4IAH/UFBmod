@@ -250,6 +250,11 @@ void pwmLedSet(u32 enableBF, u32 changeMsk)
 	XGpio_DiscreteWrite(&gpio_PWM_Lights, 1U, gpio1_leds);
 }
 
+u32 pwmLedGet(void)
+{
+	return XGpio_DiscreteRead(&gpio_PWM_Lights, 1U);
+}
+
 
 static void clkwiz_print_DRP(void)
 {

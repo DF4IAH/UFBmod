@@ -2781,7 +2781,7 @@ void taskTrx(void* pvParameters)
 		/* Check for new message */
 		if (xQueueReceive(qhLcd2Trx, &trx_msgLcd2Trx, pdMS_TO_TICKS(25))) {
 			/* Process message */
-			trx_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_NOP;	// TODO: remove me!
+			//trx_msgLcd2Trx.cmd = MsgLcd2Trx_cmd_NOP;	// TODO: for DEBUGGING menu --> remove me!
 			switch (trx_msgLcd2Trx.cmd) {
 
 			case MsgLcd2Trx_cmd_TX_OFF:

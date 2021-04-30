@@ -76,11 +76,11 @@ ARCHITECTURE msys_rotenc_decoder_0_0_arch OF msys_rotenc_decoder_0_0 IS
     );
   END COMPONENT rotenc_decoder;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF msys_rotenc_decoder_0_0_arch: ARCHITECTURE IS "rotenc_decoder,Vivado 2020.2";
+  ATTRIBUTE X_CORE_INFO OF msys_rotenc_decoder_0_0_arch: ARCHITECTURE IS "rotenc_decoder,Vivado 2020.2.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF msys_rotenc_decoder_0_0_arch : ARCHITECTURE IS "msys_rotenc_decoder_0_0,rotenc_decoder,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF msys_rotenc_decoder_0_0_arch: ARCHITECTURE IS "msys_rotenc_decoder_0_0,rotenc_decoder,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=rotenc_decoder,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF msys_rotenc_decoder_0_0_arch: ARCHITECTURE IS "msys_rotenc_decoder_0_0,rotenc_decoder,{x_ipProduct=Vivado 2020.2.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=rotenc_decoder,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF msys_rotenc_decoder_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;

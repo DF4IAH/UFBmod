@@ -49,20 +49,18 @@ entity rotenc_decoder is
 end rotenc_decoder;
 
 architecture Behavioral of rotenc_decoder is
-    signal rotenc_In    : STD_LOGIC;
-    signal rotenc_Qn    : STD_LOGIC;
+    signal rotenc_In_d0 : STD_LOGIC;
+    signal rotenc_Qn_d0 : STD_LOGIC;
     signal rotenc_In_d1 : STD_LOGIC;
     signal rotenc_Qn_d1 : STD_LOGIC;
     signal cnt_i        : Integer    := 2**28;
 begin
-    -- Negate logic
-    rotenc_In <= '1' xor rotenc_I;
-    rotenc_Qn <= '1' xor rotenc_Q;
-    
     process (resetn, clk)
     begin
         if (rising_edge(clk)) then
             if (resetn = '0') then
+                rotenc_In_d0    <= '0';
+                rotenc_Qn_d0    <= '0';
                 rotenc_In_d1    <= '0';
                 rotenc_Qn_d1    <= '0';
                 cnt_i           <= 2**28;  -- 0x40000000 minus 2 bits
@@ -83,21 +81,25 @@ begin
                 end if;
                 
                 -- Counter
-                if ((rotenc_In_d1 /= rotenc_In) or (rotenc_Qn_d1 /= rotenc_Qn)) then
+                if ((rotenc_In_d1 /= rotenc_In_d0) or (rotenc_Qn_d1 /= rotenc_Qn_d0)) then
                     -- ROTENC switch was turned
-                    if (    (rotenc_In_d1 = '0' and rotenc_Qn_d1 = '0') and (rotenc_In = '1' and rotenc_Qn = '0') ) then
+                    if (    (rotenc_In_d1 = '0' and rotenc_Qn_d1 = '0') and (rotenc_In_d0 = '1' and rotenc_Qn_d0 = '0') ) then
                         -- Direction left turn = down
                         cnt_i <= cnt_i - 1;
                         
-                    elsif ( (rotenc_In_d1 = '1' and rotenc_Qn_d1 = '0') and (rotenc_In = '0' and rotenc_Qn = '0') ) then
+                    elsif ( (rotenc_In_d1 = '1' and rotenc_Qn_d1 = '0') and (rotenc_In_d0 = '0' and rotenc_Qn_d0 = '0') ) then
                         -- Direction right turn = up
                         cnt_i <= cnt_i + 1;
                     end if;
                 end if;
                 
                 -- Update delayed register values
-                rotenc_In_d1 <= rotenc_In;
-                rotenc_Qn_d1 <= rotenc_Qn;
+                rotenc_In_d1 <= rotenc_In_d0;
+                rotenc_Qn_d1 <= rotenc_Qn_d0;
+                
+                -- Negate logic and phase in
+                rotenc_In_d0 <= '1' xor rotenc_I;
+                rotenc_Qn_d0 <= '1' xor rotenc_Q;
             end if;
         end if;
     end process;
